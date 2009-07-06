@@ -1,0 +1,892 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Ergebnisse der 1.Kundenbefragung:
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Vertrieb
+\end_layout
+
+\begin_layout Itemize
+Welches Budget steht zur Verfügung ?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Orientierung am Prototyp, anhand der 1.Version des Angebots
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Möchte der Auftraggeber die exklusiven Verwertungsrechte ? ( open source
+ ?) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: OpenSource
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche(r) Mitarbeiter sind unsere Ansprechpartner ? Schnittstellen ! 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Kunden (Katharina Görlach, Peter Reimann) & Betreuer (Marko Vrhovnik,
+ Michael Reiter)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Festpreisprojekt oder Time & Material ? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Aufwandsschätzung erwartet, gelegentliche Treffen zur Feststellung des
+ Fortschritts
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Arbeitsort ? Beim Kunde oder in unserer Firma ? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Uni Stuttgart
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Geforderte Qualität ? Wie wichtig ist ist die Zuverlässigkeit.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Keine Strafzahlungen, maximal mögliche Korrektheit, Fehlerfreiheit.
+ Frühzeitige Meldung bei Problemen.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Liefertermin ? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: April 2010, Abnahmetest (danach kleine Änderungen möglich)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche Kosten kommen auf uns zu bei späterer Fertigstellung ? € / Woche.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: keine
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In welchem Umfang werde hinterher Schulungen benötigt ? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: keine, gute Demo und Doku reichen
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Folgefrage: Was bedeutet eine 
+\begin_inset Quotes eld
+\end_inset
+
+gute
+\begin_inset Quotes erd
+\end_inset
+
+ Demo?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Wie soll der Service erreichbar sein ? 24 Stunden / 7 Tage ? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: werktags, Urlaubsplan an Kunden schicken
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wartungsvertrag ? Für Fehler die nach der Gewährleistung auftreten.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Nein
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche Unterstützung bekommen wir während der Entwicklung vom Auftraggeber
+ ? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Wie in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Ausschreibung"
+
+\end_inset
+
+] und [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Kick-Off-Folien"
+
+\end_inset
+
+] beschrieben.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wie lange benötigen Sie Garantie ? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: keine
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Generische BPEL Aktivitäten 
+\end_layout
+
+\begin_layout Itemize
+Replacement, Delete in Klammern bedeutet optional, oder wenn möglich? (siehe
+ Folie Nr.7 in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Kick-Off-Folien"
+
+\end_inset
+
+])
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Alle selbst erstellen => Orientierung an BPEL/SQL-Paper (siehe Patterns
+ in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL/SQL Paper"
+
+\end_inset
+
+]) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Anlegen von DB-Tabellen wird gewünscht, auch Änderung und Löschen von Tabellen?
+ (siehe Folie Nr.7 in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Kick-Off-Folien"
+
+\end_inset
+
+])
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Alles soll möglich sein (siehe Patterns in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL/SQL Paper"
+
+\end_inset
+
+])
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+BPEL-Aktivitäten von uns zu erstellen oder bereits irgendwie vorhanden (müssen
+ nur noch angepasst werden)?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Nichts vorhanden, BPEL Extension Activity
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Anbindung versch.
+ Datenquellen 
+\end_layout
+
+\begin_layout Itemize
+Welche? Theoretisch alle?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Generisch, soviel wie möglich.
+ IBM DB2 + OpenSourceDB's (mind.
+ 1*RDB + mind.
+ 1*XMLDB) + mind.
+ 1*SensorDB (z.B.
+ TinyDB)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche Dateiformate müssen unterstützt werden (lesen/schreiben)?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Alle, wenn Einschränkungen stattfinden müssen diese begründet werden
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche Anfragesprachen für den Datenbankzugriff müssen unterstützt werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Alle, Kick-Off-Angaben als Minimum!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In welchem Umfang sollen Transaktionen unterstützt werden und welche Funktionen/
+Konzepte (2-Phase-Commit, ChangeHistory, ...) sollen integriert sein? Transaktionen
+ über mehrere Datenquellen?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt
+ werden.
+ Konzepte frei wählbar.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Folgefrage: Zugriffe auf mehrere Datenquellen innerhalb eines Prozess und
+ wie werden diese dann angegeben und die Queries referenziert?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Wie sollen Anforderungen an eine Datenquelle durch den User modelliert werden
+ können? Anotationen?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Wenn DB als Web-Service dann mit Anotation mit/über 
+\begin_inset Quotes eld
+\end_inset
+
+QUALITY OF SERVICE
+\begin_inset Quotes erd
+\end_inset
+
+, sonst statische Auswahl zur Modellierungs- oder Laufzeit
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sollen Daten aus Datenbanken in einem Prozess auch in lokale Dateien exportiert
+ werden können und wenn ja in welche Formate?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Ja.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Folgefrage: Welche Formate werden dabei benötigt bzw.
+ sind sinnvoll?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+sollen alle Operationen atomar sein, wenn nicht: welche Operationen sollen
+ als Transaktion durchgeführt werden (bzw.
+ wo ist Atomizität notwendig, wo nicht?)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: nicht zwangsweise, da Web-Services auch als atomar von Aussen angesehen
+ werden.
+ Atomic Scopes
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Modellierung der Anforderungen an eine Datenquelle
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+bedeutet das ein Nutzer kann eingeben was die Datenquelle können muss und
+ das Programm wählt eine passende aus?
+\end_layout
+
+\begin_layout Itemize
+A: Ja
+\end_layout
+
+\begin_layout Itemize
+wie soll die Modellierung der Anforderungen genau gesehen, was muss enthalten
+ sein? 
+\end_layout
+
+\begin_layout Itemize
+A: Definition eines Anforderungskatalogs (Absprache mit Kunden)
+\end_layout
+
+\begin_layout Itemize
+Woran soll sich die Strategie orientieren, bzw.
+ Sich hauptsächlich orientieren?
+\end_layout
+
+\begin_layout Itemize
+A: Anforderungen, Strategien entwickeln und mit Kunden absprechen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+welche Kriterien sollen die Strategien enthalten (Auf welche Art sollen
+ die Datenbanken/ Datenquellen beschrieben werden, was soll alles enthalten
+ sein) (siehe Folie Nr.8 in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Kick-Off-Folien"
+
+\end_inset
+
+] )
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Selber definieren und mit Kunde absprechen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+wie sollen die Anotations ausgewertet werden, bzw.
+ wie sollen die Informationen genutzt werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Selber definieren und mit Kunde absprechen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gibt es Datenquellen für Testzwecke?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Michael Reiter fragen.
+ RDB Biowissenschaften (SwissProt, UniProt, blast)
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Autorisierung der Zugriffe 
+\end_layout
+
+\begin_layout Itemize
+Sollen Authorisierung und Authentifizierung nur für Datenquellen bereitgestellt
+ werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Ja (Erweiterbarkeit!)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welches Authentifizierungsverfahren ist gewünscht? Gibt es bereits Zugriffsregel
+n? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Es sind verschiedene Verfahren gewünscht und in jeder Situation das Bestmögli
+che.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Gibt es bereits ein Authentifizierungsverfahren bei dem Zugriff auf die
+ wissenschaftlichen Datenbanken?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Michael Reiter, als Beispiel 
+\begin_inset Quotes eld
+\end_inset
+
+Kepler-Projekt
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wo und in welchem Umfang soll die Autorisierung und die Authentifizierung
+ stattfinden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Zugriff auf Datenquellen, Single-Sign-On (Prozess oder Instanz, unsere
+ Entscheidung)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Beschränken sich Autorisierung und Authentifizierung nur auf die Ausführung
+ oder auch auf die Modellierung/Implementierung von Prozessen (z.B.
+ bei Implementierung von abstrakten Prozessen)?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: nur auf die Ausführung
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wie und wo sollen Autorisierungs- und Authentifizierungsparameter für einen
+ Prozess spezifiziert werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Auf Datenquellenebene.
+ Bei Datenbanken über Schema, bei Dateisystemen z.B.
+ über extra Dateien und bei Sensornetzen über spezielle Datenbank (TinyDB?).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Autorisierung bei allen Datenquellen notwendig? wenn ja auf die selbe Art?
+ wenn nein bei welchen ist es notwendig?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: bei allen Datenquellen notwendig, verschiedene Arten
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Monitoring der Prozessausführung 
+\end_layout
+
+\begin_layout Itemize
+Extra Datenbank für das Monitoring kann eine feste oder frei wählbare sein?
+ Oder Unterstützung verschiedener Datenbanken? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: ODE hat eigene Monitoring-DB, muss frei wählbar sein über Rahmenwerk,
+ Monitoring nicht verteilt über mehrere DB's
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wo soll das Monitoring ansetzen, bei BPEL Aktivitäten oder bei Datenbankzugriffe
+n? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: BPEL hat schon ein Monitoring, für unsere Zwecke Monitoring erstellen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wie ausführlich soll das erfasst werden, welche Informationen werden benötig?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Modell für Monitoring (Informationen) erstellen und mit Kunden absprechen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+wie lang sollen Daten gespeichert werden (History = 2 wochen, 1 Monat ...
+ ?) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Variabel, soll als Parameter übergeben werden können
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Monitoring immer aktiv, oder nur auf Userwunsch
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: default: aktiv, auch abschaltbar.
+ Über Eclipse BPEL-Designer mit Deployment-Deskriptoren definierbar
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Sonstige Fragen 
+\end_layout
+
+\begin_layout Itemize
+Wie soll die Demo genau aussehen? Was soll gezeigt werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Inhalte werden später geklärt, die wichtigsten Use-Cases sollen vorgeführt
+ werden und kurzer Einblick in die Doku
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche Schritte werden bei der Prozessmodellierung ausgeführt, die die Funktiona
+lität des Rahmenwerks nutzen?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: FRAGE UMFORMULIEREN UND NOCHMAL FRAGEN...
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In welcher Form soll das Rahmenwerk am Ende zur Verfügung stehen?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Komplettpaket und als Eclipse Plug-In
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Folgefrage: Wird das Rahmenwerk direkt in Eclipse als Plug-In ausgeführt
+ oder soll das Rahmenwerk unabhängig von Eclipse sein und zusätzlich ein
+ Eclipse Plug-In erstellt werden?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Welche speziellen Dokumente müssen am Ende des Projekts angefertigt worden
+ sein? (Erweiterte BPEL-Spec, ...)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Eine zentrale Spezifikation / Dokumentation mit allen Erweiterungen
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Stehen die Kunden während des Projekts für Reviews oder ähnliches zu Verfügung?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Ja, nach Terminabsprache
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bedeutung/Definition von Erweiterbarkeit des Frameworks? (siehe [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Ausschreibung"
+
+\end_inset
+
+])
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Schnittstellen leicht erweiterbar, modularer Aufbau (Erweiterbarkeit
+ wichtiges Merkmal)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche Teile/Aspekte sollen erweiterbar sein? (siehe [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Ausschreibung"
+
+\end_inset
+
+])
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Alle (modularer Aufbau)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Welche Erfahrungen haben die Nutzer?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: keine bis wenig (keine Informatiker)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Zielgruppe?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Wissenschaftler, Ingenieure
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Überprüfung der Benutzereingaben?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Syntax und Plausibilitätsprüfung für unsere Erweiterungen (z.B.
+ für neue BPEL-Aktivitäten)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wird eine bestimmte Middleware bevorzugt?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: keine Vorgaben
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Ist-Analyse: (nur Antworten)
+\end_layout
+
+\begin_layout Itemize
+Konzepte/Ansätze: siehe Seminarthemen
+\end_layout
+
+\begin_layout Itemize
+WS-RF (Ressource Framework) Anbindung von Ressourcen mit Properties
+\end_layout
+
+\begin_layout Itemize
+BPEL wird im Moment nicht in Scientific Workflows verwendet
+\end_layout
+
+\begin_layout Itemize
+Scientific Workflow Management Systeme Info bei Görlach, Reiter
+\end_layout
+
+\begin_layout Itemize
+myexperiment.org
+\end_layout
+
+\begin_layout Section
+Nichtfunktionale Anforderungen (nur Antworten)
+\end_layout
+
+\begin_layout Itemize
+Fehlertoleranz: Scopes mit Handler; CompensationHandler und FaultHandler
+ implementieren Logik für Kompensation und Fehler (rollback)
+\end_layout
+
+\begin_layout Itemize
+Ausfallsicherheit: so gut wie möglich
+\end_layout
+
+\begin_layout Itemize
+Usability: Zielgruppe, größtmögliche Transparenz
+\end_layout
+
+\begin_layout Section
+NEUER TERMIN
+\end_layout
+
+\begin_layout Standard
+2.Kundengespräch: Freitag 10.07.2009 10:00 Uhr Raum 1.049
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Ausschreibung"
+
+\end_inset
+
+Projektantrag_StuProA_ODE.pdf
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Kick-Off-Folien"
+
+\end_inset
+
+SIMPL_KickOff.pdf
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+
+\lang german
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:BPEL/SQL Paper"
+
+\end_inset
+
+Vrhovnik, M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
+ Support in Workflow Products.
+ In: Proc.
+ of the 24th International Conference on Data Engineering (ICDE 2008), Cancún,
+ México, April 7-12, 2008
+\end_layout
+
+\end_body
+\end_document
