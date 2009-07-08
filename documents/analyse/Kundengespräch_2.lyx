@@ -36,6 +36,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -65,19 +66,8 @@ Vertrieb
 \end_layout
 
 \begin_layout Itemize
-Folgefrage: Was bedeutet eine 
-\begin_inset Quotes eld
-\end_inset
-
-gute
-\begin_inset Quotes erd
-\end_inset
-
- Demo?
-\end_layout
-
-\begin_layout Section
-Generische BPEL Aktivitäten
+Folgefrage: Für welche Datenquellen soll der Zugriff in der Demo gezeigt
+ werden?
 \end_layout
 
 \begin_layout Section
@@ -97,12 +87,30 @@ Folgefrage: Welche Formate werden beim export in lokale Dateien benötigt
  sind sinnvoll?
 \end_layout
 
-\begin_layout Section
-Autorisierung der Zugriffe 
+\begin_layout Itemize
+Sollen auch Datenbanken aus einem Prozess heraus erstellt werden können?
+\end_layout
+
+\begin_layout Itemize
+Wie wird das Datenbankmanagement realisiert und von wem (Wer setzt Zugriffsrecht
+e auf der DB)?
 \end_layout
 
 \begin_layout Section
-Monitoring der Prozessausführung 
+Authentifizierung und Autorisierung der Zugriffe
+\end_layout
+
+\begin_layout Itemize
+Wie soll die Angabe von Authentifizierungs- und Authorisierungseinstellungen
+ über den Eclipse BPEL Designer realisisert werden?
+\end_layout
+
+\begin_layout Section
+Monitoring der Prozessausführung
+\end_layout
+
+\begin_layout Itemize
+Muss das vorhandene Monitoring von BPEL und Apache ODE erweitert werden?
 \end_layout
 
 \begin_layout Section
@@ -122,12 +130,24 @@ Folgefrage: Wird das Rahmenwerk direkt in Eclipse als Plug-In ausgeführt
  Eclipse Plug-In erstellt werden?
 \end_layout
 
+\begin_layout Itemize
+Auf welcher Infrastruktur läuft das System später?
+\end_layout
+
 \begin_layout Section
 Ist-Analyse
 \end_layout
 
+\begin_layout Itemize
+Wie werden im Moment Workflows und BPEL genutzt?
+\end_layout
+
 \begin_layout Section
 Nichtfunktionale Anforderungen
+\end_layout
+
+\begin_layout Itemize
+Wie hoch muss die Skalierbarkeit des Systems sein?
 \end_layout
 
 \end_body
