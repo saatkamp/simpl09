@@ -3,9 +3,22 @@
 \begin_document
 \begin_header
 \textclass article
-\use_default_options true
-\language english
-\inputencoding auto
+\begin_preamble
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+%Nicht einrücken
+\end_preamble
+\use_default_options false
+\language ngerman
+\inputencoding latin9
 \font_roman default
 \font_sans default
 \font_typewriter default
@@ -16,18 +29,23 @@
 \font_tt_scale 100
 
 \graphics default
-\paperfontsize default
+\paperfontsize 12
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
-\use_amsmath 1
-\use_esint 1
+\use_geometry true
+\use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 5cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
+\paragraph_separation skip
 \defskip medskip
 \quotes_language english
 \papercolumns 1
@@ -36,202 +54,1176 @@
 \tracking_changes false
 \output_changes false
 \author "" 
-\author "" 
 \end_header
 
 \begin_body
 
-\begin_layout Title
-Projektangebot
-\end_layout
-
-\begin_layout Author
-Michael Hahn, Firas Zoabi, Daniel Brüderle
-\end_layout
-
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für das Deckblatt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{fancy}
 \end_layout
 
-\begin_layout Section
-Einleitug
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+headheight}{22mm}
 \end_layout
 
-\begin_layout Subsection
-Zweck und Abgrenzung
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\headrulewidth}{0mm}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
 \end_layout
 
-\begin_layout Subsection
-Projektüberblick, Motivation
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
 \end_layout
 
-\begin_layout Subsection
-Leistungen der Vertragspartner
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
-\begin_layout Subsubsection
-Infrastruktur
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead
 \end_layout
 
-\begin_layout Subsubsection
-Hardware
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
 \end_layout
 
-\begin_layout Section
-Produktbeschreibung
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
-\begin_layout Subsection
-Lieferumfang
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
 \end_layout
 
-\begin_layout Subsubsection
-Lieferumfang an der Kunde
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
 \end_layout
 
-\begin_layout Standard
-Der Kunde erhält in den Lieferumfang folgender Dokumenete:
+\end_inset
+
+
+\begin_inset Graphics
+	filename SIMPL4.pdf
+	width 20mm
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
-\begin_layout Itemize
-Projektplan
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot
 \end_layout
 
-\begin_layout Itemize
-Spezifikation
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
 \end_layout
 
-\begin_layout Itemize
-Begrifflexikon 
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
 \end_layout
 
-\begin_layout Itemize
-Einen umfassenden Dokument, das als Einleitung bzw.
- Handbuch sein soll, mit der eigentliche Produkt als entpackte Datei am
- ende des Projektes
+\end_inset
+
+
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape italic
+\size footnotesize
+Geschäftsdaten:
+\shape default
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape italic
+\size footnotesize
+Wolfgang Hüttig
+\shape default
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
-\begin_layout Itemize
-Dokumente, die vom Modultest als Ergebnis sich ergeben
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot
 \end_layout
 
-\begin_layout Itemize
-Quellcode 
-\color red
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+Angebot für SIMPL © 2009 $IMPL
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset space \space{}
+\end_inset
+
 
 \begin_inset Newline newline
 \end_inset
 
-(@Michael, Daniel: sollen wir die einzelne Dokumente genauer definieren,
- was jeweils enthalten soll im groben ???? )
+ 
+\shape italic
+\size footnotesize
+Kto.Nr.1234567, BLZ 60010001
+\shape default
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+/ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "LastPage"
+
+\end_inset
+
+
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape italic
+\size footnotesize
+HR.-Nr.:123456789
+\shape default
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\shape italic
+\size footnotesize
+USt.-Nr.:DE-1234/98765
+\shape default
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Die Dokumenete werden im Pdf Format geliefert, sowie die dazugehörige LaTex-Date
-ien.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Adressat und Ansprechpartner
 \end_layout
 
-\begin_layout Subsubsection
-Projektelemente, die nicht zu Lieferumfang gehören
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features>
+<column alignment="none" valignment="top" width="0" special="@{}p{12cm}">
+<column alignment="none" valignment="top" width="4cm">
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+\size footnotesize
+$IMPL GmbH, Universitätsstraße 38, 70569 Stuttgart
+\shape default
+\size default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Wolfgang Hüttig
+\size default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Katharina Görlach, 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Projektleiter SIMPL
+\size default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Peter Reimann 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Universitätsstraße 38
+\size default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Universitätsstraße 38 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+70569 Stuttgart
+\size default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70569 Stuttgart 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+w.huettig@yahoo.de
+\size default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Folgende Dokumente gehören nicht zur Lieferumfang:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Vertikaler Zwischenraum über 2cm
 \end_layout
 
-\begin_layout Itemize
-Lastenheft
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Itemize
-Grob-Entwurf
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-Feinentwurf
-\end_layout
 
-\begin_layout Subsection
-xxx
-\end_layout
+\begin_inset VSpace 2cm
+\end_inset
 
-\begin_layout Subsection
-Eingesetzte Technologien
+
 \end_layout
 
 \begin_layout Standard
-für die Projektarbeit werden verschiedene Software Tools eingesetzt.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Angebot und Datum Zeile
 \end_layout
 
-\begin_layout Itemize
-Subversion: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://svnbook.red-bean.com"
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+flushleft
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Angebot
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Vertikaler Zwischenraum über 2cm
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Text für das Deckblatt
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-Maven: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://maven.apache.org"
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ausser dem nachfolgenden Text darf hier nichts geändert werden! (Änderungswünsch
+e führe ich nach Absprache aus)
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-Hudson: 
-\begin_inset CommandInset href
-LatexCommand href
-target "https://hudson.dev.java.net/"
+\begin_layout Standard
+Sehr geehrter Herr X, 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+vielen Dank für Ihr Interesse an unseren Beratungsleistungen.
+ Gerne bieten wir Ihnen unsere Unterstützung bei der Prozessverbesserung
+ Ihres Entwicklungsprozesses an.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie finden hierzu auf den folgenden Seiten unser ausführliches Angebot.
+ Über eine Zusammenarbeit in diesem Projekt würden wir uns sehr freuen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bei Rückfragen können Sie sich selbstverständlich gerne jederzeit mit uns
+ in Verbindung setzen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit freundlichen Grüßen 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Name
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Neue Seite beginnen
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für alle anderen Seiten
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+fancy
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+headheight}{22mm}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\headrulewidth}{0mm}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename SIMPL4.pdf
+	width 20mm
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+Angebot für SIMPL © 2009 $IMPL
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+/ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "LastPage"
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-Apache ODE: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://ode.apache.org/"
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ab hier beginnt das eigentliche Dokument, weiter oben darf nur der TEXT
+ geändert werden.
+ 
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-Eclipse BPEL Designer: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://www.eclipse.org/bpel/"
-
-\end_inset
-
-
+\begin_layout Section*
+Ausgangssitation
 \end_layout
 
-\begin_layout Itemize
-IBM DB2: 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://publib.boulder.ibm.com/infocenter/db2luw/v9r5/index.jsp "
+\begin_layout Section*
+Ziel
+\end_layout
 
-\end_inset
+\begin_layout Section*
+Unser Vorgehen
+\end_layout
 
+\begin_layout Section*
+Nutzen
+\end_layout
 
+\begin_layout Section*
+Leistungen im Rahmen des Angebots
+\end_layout
+
+\begin_layout Section*
+Zeitplan
+\end_layout
+
+\begin_layout Section*
+Unsere Konditionen
 \end_layout
 
 \end_body
