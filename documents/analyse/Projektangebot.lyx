@@ -32,6 +32,15 @@
 \paperfontsize 12
 \spacing single
 \use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -53,6 +62,7 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
+\author "" 
 \author "" 
 \end_header
 
@@ -171,6 +181,26 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
+\backslash
+hspace{11cm}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename SIMPL5.pdf
+	width 20mm
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -197,13 +227,6 @@ status collapsed
 
 {
 \end_layout
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename SIMPL4.pdf
-	width 20mm
 
 \end_inset
 
@@ -578,10 +601,6 @@ Universitätsstraße 38
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size small
-w.huettig@yahoo.de
-\size default
  
 \end_layout
 
@@ -741,7 +760,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1010,7 +1029,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename SIMPL4.pdf
+	filename SIMPL5.pdf
 	width 20mm
 
 \end_inset
