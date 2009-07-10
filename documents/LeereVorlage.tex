@@ -1,0 +1,63 @@
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+\usepackage{graphicx}
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+%Header und Footer Definitionen für das Deckblatt
+\thispagestyle{fancy}
+\renewcommand{\headrulewidth}{0mm}
+\lhead{{\small }}
+\chead{{\small }}
+\rhead{{\small }}
+\lfoot{{\small SIMPL © 2009 \$IMPL}}
+\cfoot{{\small \today}}
+\rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+
+%Text für das Deckblatt
+\vspace*{5cm}
+\noindent{\LARGE Studienprojekt SIMPL} \\
+\noindent\rule[1ex]{\textwidth}{1pt}
+\vspace*{1cm}
+\begin{flushleft}
+	{\Huge \textbf{Dokumentname z.B.: Projektplan}} \\
+	\vspace{0.5cm}
+	{\LARGE Version 1.0} \\
+	\vspace{0.5cm}
+	{\LARGE \today} \\
+\end{flushleft}
+\vspace*{1cm}
+\noindent\rule[1ex]{\textwidth}{1pt}
+
+\vspace*{3cm}
+\begin{center}
+	\includegraphics{SIMPL5.pdf}
+\end{center}
+
+%Neue Seite beginnen
+\pagebreak{}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0mm}
+\lhead{{\small }}
+\chead{{\small }}
+\rhead{{\small }}
+\lfoot{{\small SIMPL © 2009 \$IMPL}}
+\cfoot{{\small }}
+\rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents
+
+\end{document}
