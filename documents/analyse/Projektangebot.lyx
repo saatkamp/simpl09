@@ -190,7 +190,7 @@ hspace{11cm}
 
  
 \begin_inset Graphics
-	filename E:/StuproA/Projekt_Workspace/Repository/documents/organisatorisches/Logo2_firas.png
+	filename Logo2_firas.png
 	width 30mm
 	height 15mm
 
@@ -244,7 +244,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1030,7 +1030,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename E:/StuproA/Projekt_Workspace/Repository/documents/organisatorisches/Logo2_firas.png
+	filename Logo2_firas.png
 	width 30mm
 	height 15mm
 
