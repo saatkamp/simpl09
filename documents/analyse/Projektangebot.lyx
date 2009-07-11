@@ -1348,6 +1348,10 @@ Fax: +49 (0)711 7816-424
 E-Mail: Marko.Vrhovnik@ipvs.uni-stuttgart.de 
 \end_layout
 
+\begin_layout Subsection
+Projektbeschreibung
+\end_layout
+
 \begin_layout Section
 Ziel
 \end_layout
@@ -1362,6 +1366,58 @@ Nutzen
 
 \begin_layout Section
 Leistungen im Rahmen des Angebots
+\end_layout
+
+\begin_layout Subsection
+Lieferumfang
+\end_layout
+
+\begin_layout Subsubsection
+Lieferumfang an der Kunde
+\end_layout
+
+\begin_layout Standard
+Der Kunde erhält in den Lieferumfang folgende Dokumente:
+\end_layout
+
+\begin_layout Itemize
+Projektplan
+\end_layout
+
+\begin_layout Itemize
+Spezifikation
+\end_layout
+
+\begin_layout Itemize
+Begrifflexikon
+\end_layout
+
+\begin_layout Itemize
+Einen umfassenden Dokument, was als Einleitung bzw.
+ Handbuch dienen soll.
+\end_layout
+
+\begin_layout Itemize
+Der eigentliche Produkt als entpackbares Datei 
+\end_layout
+
+\begin_layout Itemize
+Quellcode
+\end_layout
+
+\begin_layout Standard
+Die Dokumente werden im Pdf format geliefert, sowie die dazugehörige LaTex-Sourc
+dateien.
+ 
+\end_layout
+
+\begin_layout Standard
+(@Michael:
+\color red
+ ob man auch die Projekteinheiten, die nicht zu lieferumfang gehören, auch
+ als extra unterabschnitt aufzählen soll ???
+\color inherit
+)
 \end_layout
 
 \begin_layout Section
