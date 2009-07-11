@@ -1359,7 +1359,18 @@ Projektbeschreibung
 \end_layout
 
 \begin_layout Subsection
-Nichtfunktionale Anforderungen (oder Entwicklungsgrundlagen)
+Entwicklungsgrundlagen
+\end_layout
+
+\begin_layout Standard
+(
+\color red
+ob wir alle dieser Aspekte im Angebot aufnehmen ? es ist mir nciht klar
+ .
+ aber wir sollen manche hier aufnehmen wegen ihre wichtigkeit für das Angebot,
+ wie Sicherheit und Mengengerüst
+\color inherit
+)
 \end_layout
 
 \begin_layout Subsubsection
