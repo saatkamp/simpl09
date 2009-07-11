@@ -190,8 +190,9 @@ hspace{11cm}
 
  
 \begin_inset Graphics
-	filename SIMPL5.pdf
-	width 20mm
+	filename E:/StuproA/Projekt_Workspace/Repository/documents/organisatorisches/Logo2_firas.png
+	width 30mm
+	height 15mm
 
 \end_inset
 
@@ -1029,8 +1030,9 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename SIMPL5.pdf
-	width 20mm
+	filename E:/StuproA/Projekt_Workspace/Repository/documents/organisatorisches/Logo2_firas.png
+	width 30mm
+	height 15mm
 
 \end_inset
 
@@ -1352,12 +1354,122 @@ E-Mail: Marko.Vrhovnik@ipvs.uni-stuttgart.de
 Projektbeschreibung
 \end_layout
 
+\begin_layout Subsubsection
+Überblick
+\end_layout
+
+\begin_layout Subsection
+Nichtfunktionale Anforderungen (oder Entwicklungsgrundlagen)
+\end_layout
+
+\begin_layout Subsubsection
+Wartbarkeit und Änderbarkeit
+\end_layout
+
+\begin_layout Subsubsection
+Mengengerüst
+\end_layout
+
+\begin_layout Subsubsection
+Skalierbarkeit
+\end_layout
+
+\begin_layout Subsubsection
+Lokalisierbarkeit
+\end_layout
+
+\begin_layout Subsubsection
+Sicherheit
+\end_layout
+
 \begin_layout Section
 Ziel
 \end_layout
 
 \begin_layout Section
 Unser Vorgehen
+\end_layout
+
+\begin_layout Subsection
+Interne Projektteams Organisation
+\end_layout
+
+\begin_layout Standard
+(
+\color red
+hier kommt die Struktur des Teams,die Aufteilung anhand Aufgabenbereich
+ , Rollen beschreibung und eine kleine Graphische Darstellung für die Team-Struk
+tur ist sehr angebracht im Angebot meine Meinung nach.
+\color inherit
+)
+\end_layout
+
+\begin_layout Subsubsection
+Rollen im Team
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\color black
+Projektleiter 
+\end_layout
+
+\begin_layout Standard
+Der Projektleiter ist der Ansprechpartner für der Kunden.
+ Er koordiniert sämtliche Schriftverkehr und den Komunikation zwischen den
+ Kunden, den Betreuern und das Team.
+ Er auch für den Projekt an der erste Stelle verantwortlich.
+\end_layout
+
+\begin_layout Standard
+Von seiner Aufgaben ist das Moderieren unsere interne Teamgespräche bzw.
+ Arbeit, sowie die Aufgabeverteilung innerhalb des Teames.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\color black
+Administartor
+\end_layout
+
+\begin_layout Standard
+Der Administrator ist zuständig für die gesammte Infrastruktur auf Software-
+ sowie auch Hardware-Ebene für die Projektarbeit.
+ Er ist für die Betrieb und Wartung des SVN verantwortlich.
+\end_layout
+
+\begin_layout Standard
+Ausserdem seiner Aufgabengebiet befasst sich mit dem Bereitstellung von
+ alle für den Projekt notwendigen Entwicklungs-Werkzeuge zuständig.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\color black
+Qualitätsmanagment
+\end_layout
+
+\begin_layout Standard
+Dokument Qualitätsmanagment ist ein Team, der für Wartung und Erstellung
+ der Vorlagen für die Projektdokumente.
+ Dieser Team überwacht und kontrolliert die Qualität der Erstellte Dokumente
+ anhand vom Team festgellegten Richtlinien.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\color black
+Entwickler
+\end_layout
+
+\begin_layout Standard
+Entwickler sind alle Teammitglieder.
+ Ein Entwickler arbeitet im Rahmen die vom Projektleiter erteilete Aufgaben
+ an die Dokumente sowie am eigentliche Quellcode.
 \end_layout
 
 \begin_layout Section
@@ -1424,8 +1536,26 @@ dateien.
 Zeitplan
 \end_layout
 
+\begin_layout Subsection
+Aufwandsschätzung
+\end_layout
+
 \begin_layout Section
 Unsere Konditionen
+\end_layout
+
+\begin_layout Subsection
+Kostenschätzung
+\end_layout
+
+\begin_layout Standard
+(
+\color red
+sollen wir hier einen bestimmten schätzung verfahren verwenden wie Cocomo
+ etc.
+ ?
+\color inherit
+)
 \end_layout
 
 \end_body
