@@ -450,18 +450,9 @@ Dokumentname z.B.: Projektplan
 Version 1.0
 \size default
  
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\size largest
-\begin_inset space ~
+\begin_inset Newline newline
 \end_inset
 
-Verfasser: xxx
-\size default
  
 \begin_inset VSpace 0.5cm
 \end_inset
@@ -482,6 +473,18 @@ today
 \end_inset
 
 
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset VSpace 0.5cm
+\end_inset
+
+ 
+\size largest
+Verfasser:
 \size default
  
 \begin_inset Newline newline
