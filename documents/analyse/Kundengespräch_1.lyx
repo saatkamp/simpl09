@@ -441,7 +441,7 @@ textwidth}{1pt}
 \begin_inset Newline newline
 \end_inset
 
- 
+
 \begin_inset VSpace 0.5cm
 \end_inset
 
@@ -474,6 +474,19 @@ today
 
 
 \size default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset VSpace 0.5cm
+\end_inset
+
+ 
+\size largest
+Verfasser: Wolfgang Hüttig, Daniel Brüderle, Michael Schneidt, René Rehn,
+ Firas Zoabi, Tu Xi, Michael Hahn
+\size default
  
 \begin_inset Newline newline
 \end_inset
@@ -485,6 +498,10 @@ today
 \begin_inset VSpace 1cm*
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
  
 \begin_inset ERT
 status open
