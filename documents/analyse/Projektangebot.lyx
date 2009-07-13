@@ -1317,7 +1317,7 @@ Fax: +49 (0)711 7816-472
 \end_layout
 
 \begin_layout Standard
-E-Mail: katharina.goerlach@iaas.uni-stuttgart.de
+E-Mail: katharina.goerlach(@)iaas.uni-stuttgart.de
 \end_layout
 
 \begin_layout Description
@@ -1344,7 +1344,7 @@ Fax: +49 (0)711 7816-424
 \end_layout
 
 \begin_layout Standard
-E-Mail: Peter.Reimann@ipvs.uni-stuttgart.de
+E-Mail: Peter.Reimann(@)ipvs.uni-stuttgart.de
 \end_layout
 
 \begin_layout Subsubsection
@@ -1375,7 +1375,7 @@ Fax: +49 (0)711 7816-472
 \end_layout
 
 \begin_layout Standard
-E-Mail: michael.reiter@iaas.uni-stuttgart.de
+E-Mail: michael.reiter(@)iaas.uni-stuttgart.de
 \end_layout
 
 \begin_layout Description
@@ -1402,41 +1402,15 @@ Fax: +49 (0)711 7816-424
 \end_layout
 
 \begin_layout Standard
-E-Mail: Marko.Vrhovnik@ipvs.uni-stuttgart.de 
+E-Mail: Marko.Vrhovnik(@)ipvs.uni-stuttgart.de 
 \end_layout
 
 \begin_layout Subsection
 Projektbeschreibung
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Entwicklungsgrundlagen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -1491,7 +1465,7 @@ Rollen im Team
 
 \series bold
 \color black
-Projektleiter 
+Projektleiter: Wolfgang Hüttig (Stellvertreter: Michael Hahn)
 \end_layout
 
 \begin_layout Standard
@@ -1509,8 +1483,18 @@ Von seiner Aufgaben ist das Moderieren unsere interne Teamgespräche bzw.
 \begin_layout Standard
 
 \series bold
+Architekt: Michael Schneidt
+\end_layout
+
+\begin_layout Standard
+Der Architekt
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 \color black
-Administrator
+Administrator: René Rehn (Stellvertreter: Michael Schneidt)
 \end_layout
 
 \begin_layout Standard
@@ -1528,7 +1512,7 @@ Ausserdem seiner Aufgabengebiet befasst sich mit dem Bereitstellung von
 
 \series bold
 \color black
-Qualitätsmanagment
+Qualitätsmanagment: Michael Hahn
 \end_layout
 
 \begin_layout Standard
@@ -1542,7 +1526,7 @@ Dokument Qualitätsmanagment ist ein Team, der für Wartung und Erstellung
 
 \series bold
 \color black
-Entwickler
+Entwickler: Alle
 \end_layout
 
 \begin_layout Standard
@@ -1603,6 +1587,62 @@ Kontaktdaten der Projektteam-Mitglieder
 
 \begin_layout Standard
 
+\series bold
+Wolfgang Hüttig:
+\series default
+ w.huettig(@)yahoo.de
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Daniel
+\series default
+ 
+\series bold
+Brüderle: 
+\series default
+daniel(@)brotherlee.de
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Michael Schneidt: 
+\series default
+schneimi(@)studi.informatik.uni-stuttgart.de
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+René Rehn:
+\series default
+ Rene_Rehn(@)gmx.de
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Firas Zoabi:
+\series default
+ zoabifs(@)studi.informatik.uni-stuttgart.de
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tu Xi: 
+\series default
+tu_xi(@)hotmail.com
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Michael Hahn:
+\series default
+ hahnml(@)studi.informatik.uni-stuttgart.de
 \end_layout
 
 \begin_layout Section
@@ -2075,6 +2115,30 @@ Beschreibung der Phasen
 \end_layout
 
 \begin_layout Subsubsection
+Analyse
+\end_layout
+
+\begin_layout Subsubsection
+Einarbeitung
+\end_layout
+
+\begin_layout Subsubsection
+Spezifikation
+\end_layout
+
+\begin_layout Subsubsection
+Entwurf
+\end_layout
+
+\begin_layout Subsubsection
+Codierung
+\end_layout
+
+\begin_layout Subsubsection
+Test
+\end_layout
+
+\begin_layout Subsubsection
 Abnahmetest
 \end_layout
 
@@ -2095,6 +2159,10 @@ Der Kunde hat zwei Wochen Zeit, um sicherzustellen, ob das von uns gelieferten
  Produkt seiner Anforderungen wie verabredet etspricht.
  Wenn das der Fall ist, dann gilt dieser Projekt als abgeschlossen und falls
  nicht dann werden die Nachbesserungen angebracht.
+\end_layout
+
+\begin_layout Subsubsection
+Puffer
 \end_layout
 
 \begin_layout Section
