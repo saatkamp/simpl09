@@ -8,46 +8,24 @@
 %Packages für eigen definierte Header und Footer
 \usepackage{lastpage}
 \usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Dokumententitel}
+\def\docvers{1.0}
+\def\docautor{Max Mustermann}
+\def\docdate{12. Juli 2009}
+
+\def\doclogo{SIMPL5.pdf}
+
 %Nicht einrücken
 %\setlength{\parindent}{0pt}
 
 \begin{document}
 
-%Header und Footer Definitionen für das Deckblatt
-\thispagestyle{fancy}
-\renewcommand{\headrulewidth}{0mm}
-\lhead{{\small }}
-\chead{{\small }}
-\rhead{{\small }}
-\lfoot{{\small SIMPL © 2009 \$IMPL}}
-\cfoot{{\small \today}}
-\rfoot{{\small \thepage\ / \pageref{LastPage}}}
-
-
-%Text für das Deckblatt
-\vspace*{5cm}
-\noindent{\LARGE Studienprojekt SIMPL} \\
-\noindent\rule[1ex]{\textwidth}{1pt}
-\vspace*{1cm}
-\begin{flushleft}
-	{\Huge \textbf{Dokumentname z.B.: Projektplan}} \\
-	\vspace{0.5cm}
-	{\LARGE Version 1.0} \\
-	\vspace{0.5cm}
-	{\LARGE \today} \\
-	\vspace{0.5cm}
-	{\LARGE Verfasser:}
-\end{flushleft}
-\vspace*{1cm}
-\noindent\rule[1ex]{\textwidth}{1pt}
-
-\vspace*{3cm}
-\begin{center}
-	\includegraphics{SIMPL5.pdf}
-\end{center}
-
-%Neue Seite beginnen
-\pagebreak{}
+\input{Deckblatt}
 
 %Header und Footer Definitionen für alle anderen Seiten
 \pagestyle{fancy}

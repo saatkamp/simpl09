@@ -3,32 +3,6 @@
 \begin_document
 \begin_header
 \textclass article
-\begin_preamble
-
-
-
-
-
-\usepackage{babel}
-
-%Packages für eigen definierte Header und Footer
-\usepackage{lastpage}
-\usepackage{fancyhdr}
-
-% doctitel = Titel des Dokuments
-% docvers = Versionsnr.
-% docautor = Author(en)
-% docdate = Datum der letzten Änderung
-\def\doctitel{Dokumententitel}
-\def\docvers{1.0}
-\def\docautor{Max Mustermann}
-\def\docdate{12. Juli 2009}
-
-\def\doclogo{SIMPL5.pdf}
-
-%Nicht einrücken
-%\setlength{\parindent}{0pt}
-\end_preamble
 \use_default_options false
 \language ngerman
 \inputencoding latin9
@@ -73,22 +47,12 @@
 \begin_body
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Deckblatt.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-%Header und Footer Definitionen für alle anderen Seiten
+%Header und Footer Definitionen für das Deckblatt
 \end_layout
 
 \begin_layout Plain Layout
@@ -105,36 +69,14 @@ status collapsed
 
 
 \backslash
-pagestyle
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-fancy
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+thispagestyle{fancy}
 \end_layout
 
 \end_inset
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -306,6 +248,23 @@ status collapsed
 \end_inset
 
 
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+docdate
+\end_layout
+
+\end_inset
+
+
+\size default
+
 \begin_inset ERT
 status collapsed
 
@@ -388,7 +347,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-%Ab hier beginnt das Dokument
+%Text für das Deckblatt
 \end_layout
 
 \begin_layout Plain Layout
@@ -398,8 +357,171 @@ status collapsed
 \end_inset
 
 
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_inset VSpace 5cm*
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\end_layout
+
+\end_inset
+
+ 
+\size largest
+Studienprojekt SIMPL
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+rule[1ex]{
+\backslash
+textwidth}{1pt}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset VSpace 1cm*
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\series bold
+\size giant
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+doctitel
+\end_layout
+
+\end_inset
+
+
+\series default
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset VSpace 0.5cm
+\end_inset
+
+ 
+\size largest
+Version 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+docvers
+\end_layout
+
+\end_inset
+
+
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset VSpace 0.5cm
+\end_inset
+
+ 
+\size largest
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+docdate
+\end_layout
+
+\end_inset
+
+
+\size default
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset VSpace 0.5cm
+\end_inset
+
+ 
+\size largest
+Verfasser: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+docautor
+\end_layout
+
+\end_inset
+
+
+\size default
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1cm*
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+rule[1ex]{
+\backslash
+textwidth}{1pt}
+\end_layout
 
 \end_inset
 
@@ -407,24 +529,44 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\noindent
+\begin_inset VSpace 1cm*
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename quellen/SIMPL.pdf
+	width 8cm
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Neue Seite beginnen
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
-\end_layout
+\begin_inset Newpage pagebreak
+\end_inset
 
-\begin_layout Section
-Änderungsgeschichte
-\end_layout
 
-\begin_layout Itemize
-
-\series bold
-Version 0.1
-\series default
-, 22.
- Juni 2009: Erstellung des Dokuments.
- 
 \end_layout
 
 \end_body
