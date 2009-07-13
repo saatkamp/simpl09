@@ -1241,8 +1241,41 @@ Ab hier beginnt das eigentliche Dokument, weiter oben darf nur der TEXT
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Ausgangssituation
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Zur Modellierung und Ausführung von Workflows jeglicher Art wird bisher
+ die Sprache BPEL ( Business Process Execution Language ) verwendet.
+ BPEL hat seine Stärke wie der Name schon sagt im Bereich der Geschäftsprozesse.
+ Im wissenschaftlichen Bereich gelten andere Anforderungen und dafür ist
+ BPEL nicht gut geeignet.
+ Da aber auch im wissenschaftlichen Bereich immer öfter Workflows eingesetzt
+ werden, sei es bei der Durchführung von komplexen Berechnungen im Rahmen
+ von Simulationen oder Ausführung von Experimenten werden, bedarf es einer
+ Anpassung von BPEL an die wissenschaftlichen Bedürfnisse.
+ Gekennzeichnet sind wissenschaftliche Workflows in der Regel durch große
+ Datenmengen, Heterogenität der Daten und somit dem Bedarf nach großer Rechenkap
+azität.
 \end_layout
 
 \begin_layout Subsection
@@ -1376,8 +1409,17 @@ E-Mail: Marko.Vrhovnik@ipvs.uni-stuttgart.de
 Projektbeschreibung
 \end_layout
 
-\begin_layout Subsubsection
-Überblick
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1385,38 +1427,33 @@ Entwicklungsgrundlagen
 \end_layout
 
 \begin_layout Standard
-(
-\color red
-ob wir alle dieser Aspekte im Angebot aufnehmen ? es ist mir nciht klar
- .
- aber wir sollen manche hier aufnehmen wegen ihre wichtigkeit für das Angebot,
- wie Sicherheit und Mengengerüst
-\color inherit
-)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Subsubsection
-Wartbarkeit und Änderbarkeit
-\end_layout
+\end_inset
 
-\begin_layout Subsubsection
-Mengengerüst
-\end_layout
 
-\begin_layout Subsubsection
-Skalierbarkeit
-\end_layout
-
-\begin_layout Subsubsection
-Lokalisierbarkeit
-\end_layout
-
-\begin_layout Subsubsection
-Sicherheit
 \end_layout
 
 \begin_layout Section
-Ziel
+Projektaufgabe
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wird von Daniel ausgefüllt.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1424,81 +1461,14 @@ Unser Vorgehen
 \end_layout
 
 \begin_layout Subsection
-Lieferumfang
-\end_layout
-
-\begin_layout Subsubsection
-Lieferumfang an der Kunde
+Interne Projektteam-Organisation
 \end_layout
 
 \begin_layout Standard
-Der Kunde erhält in den Lieferumfang folgende Dokumente:
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Itemize
-Projektplan
-\end_layout
-
-\begin_layout Itemize
-Spezifikation
-\end_layout
-
-\begin_layout Itemize
-Begrifflexikon
-\end_layout
-
-\begin_layout Itemize
-Einen umfassenden Dokument, was als Einleitung bzw.
- Handbuch dienen soll.
-\end_layout
-
-\begin_layout Itemize
-Der eigentliche Produkt als entpackbares Datei 
-\end_layout
-
-\begin_layout Itemize
-Quellcode
-\end_layout
-
-\begin_layout Standard
-Die Dokumente werden im Pdf format geliefert, sowie die dazugehörige LaTex-Sourc
-dateien.
- 
-\end_layout
-
-\begin_layout Subsubsection
-Projekteinheiten, die nicht zu Leieferumfang gehören
-\end_layout
-
-\begin_layout Standard
-Folgende Dokumente gehören nicht zur Lieferumfang:
-\end_layout
-
-\begin_layout Itemize
-Lastenheft
-\end_layout
-
-\begin_layout Itemize
-Grob-Entwurf
-\end_layout
-
-\begin_layout Itemize
-Feientwurf
-\end_layout
-
-\begin_layout Itemize
-Testdokumente
-\end_layout
-
-\begin_layout Itemize
-Interne organisatorische Dokumente, wie Protokolle etc.
-\end_layout
-
-\begin_layout Subsection
-Interne Projektteams Organisation
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 (
 \color red
 hier kommt die Struktur des Teams,die Aufteilung anhand Aufgabenbereich
@@ -1506,6 +1476,11 @@ hier kommt die Struktur des Teams,die Aufteilung anhand Aufgabenbereich
 tur ist sehr angebracht im Angebot meine Meinung nach.
 \color inherit
 )
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1520,10 +1495,10 @@ Projektleiter
 \end_layout
 
 \begin_layout Standard
-Der Projektleiter ist der Ansprechpartner für der Kunden.
- Er koordiniert sämtliche Schriftverkehr und den Komunikation zwischen den
- Kunden, den Betreuern und das Team.
- Er auch für den Projekt an der erste Stelle verantwortlich.
+Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
+ Er koordiniert sämtlichen Schriftverkehr und die Komunikation zwischen
+ den Kunden, den Betreuern und dem Team.
+ Er ist auch an erster Stelle für das Projekt verantwortlich.
 \end_layout
 
 \begin_layout Standard
@@ -1535,13 +1510,13 @@ Von seiner Aufgaben ist das Moderieren unsere interne Teamgespräche bzw.
 
 \series bold
 \color black
-Administartor
+Administrator
 \end_layout
 
 \begin_layout Standard
-Der Administrator ist zuständig für die gesammte Infrastruktur auf Software-
- sowie auch Hardware-Ebene für die Projektarbeit.
- Er ist für die Betrieb und Wartung des SVN verantwortlich.
+Der Administrator ist zuständig für die gesamte Infrastruktur auf Software-
+ sowie auch auf Hardware-Ebene für die Projektarbeit.
+ Er ist für den Betrieb und die Wartung des SVN verantwortlich.
 \end_layout
 
 \begin_layout Standard
@@ -1584,86 +1559,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
+\noindent
+\align center
 \begin_inset Graphics
 	filename rollen.png
 	scale 50
@@ -1677,6 +1574,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Rollen-im-Team"
+
+\end_inset
+
 Rollen im Team
 \end_layout
 
@@ -1694,20 +1597,12 @@ Rollen im Team
 
 \end_layout
 
-\begin_layout Subsection
-Abnahme des Projekts
+\begin_layout Subsubsection
+Kontaktdaten der Projektteam-Mitglieder
 \end_layout
 
 \begin_layout Standard
-Am Ende der Test Phase erfolgt die Abnahme der Projekts und aller genannten
- Dokumente (siehe dafür 3.1.1 Lieferumfang an der Kunde).
-\end_layout
 
-\begin_layout Standard
-Der Kunde hat zwei Wochen Zeit, um sicherzustellen, ob das von uns gelieferten
- Produkt seiner Anforderungen wie verabredet etspricht.
- Wenn das der Fall ist, dann gilt dieser Projekt als abgeschlossen und falls
- nicht dann werden die Nachbesserungen angebracht.
 \end_layout
 
 \begin_layout Section
@@ -1718,28 +1613,104 @@ Nutzen
 Leistungen im Rahmen des Angebots
 \end_layout
 
-\begin_layout Section
-Zeitplan
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Auszuliefernde-Software-Einheiten"
+
+\end_inset
+
+Auszuliefernde Software-Einheiten
+\end_layout
+
+\begin_layout Itemize
+Projektplan
+\end_layout
+
+\begin_layout Itemize
+Spezifikation
+\end_layout
+
+\begin_layout Itemize
+Begriffslexikon
+\end_layout
+
+\begin_layout Itemize
+Einen umfassenden Dokument, was als Einleitung bzw.
+ Handbuch dienen soll.
+\end_layout
+
+\begin_layout Itemize
+Testfälle
+\end_layout
+
+\begin_layout Itemize
+Testprotokolle
+\end_layout
+
+\begin_layout Itemize
+Der eigentliche Produkt als entpackbares Datei 
+\end_layout
+
+\begin_layout Itemize
+Quellcode
+\end_layout
+
+\begin_layout Standard
+Die Dokumente werden im PDF-Format geliefert, sowie die dazugehörigen LaTex-Sour
+cedateien.
+ 
 \end_layout
 
 \begin_layout Subsection
-Terminplannung
+Software-Einheiten, die nicht zum Lieferumfang gehören
 \end_layout
 
 \begin_layout Standard
-Das Studienprojekt läuft über zwei Semester und endet im Mai 2010.
- Jeder Projektteilnehmer hat den Arbeitszeit von XXX Stunden.
- Die Projektphasen Analyse und Einarbeitung beanspruchen XX%, Spezifikation
- und Entwurf (inkl.
- Feinentwurf) XX% und zuletzt die Codierung und Modultest bzw.
- Test XX%.
- (siehe Abbildung 1.)
+Folgende Dokumente gehören nicht zur Lieferumfang:
+\end_layout
+
+\begin_layout Itemize
+Anforderungskatalog
+\end_layout
+
+\begin_layout Itemize
+Grob-Entwurf
+\end_layout
+
+\begin_layout Itemize
+Feinentwurf
+\end_layout
+
+\begin_layout Itemize
+Interne organisatorische Dokumente, wie Protokolle etc.
+\end_layout
+
+\begin_layout Section
+Terminplanung
 \end_layout
 
 \begin_layout Standard
-Nach Berücksichtegung alle Einflussfaktoren von Seiten der Kunde und den
- Entwicklungsteam wird durch dieser Plannung vorausgesetzt, dass der Kunde
- das Endprodukt Mitte bis Ende Mai 2010 annehmen wird.
+Das Studienprojekt läuft über zwei Semester und endet am Mai 2010.
+ Jeder Projektteilnehmer hat dabei einen Arbeitsaufwand von 400 Stunden.
+ Die Projektphasen Analyse und Einarbeitung beanspruchen dabei XX%, Spezifikatio
+n und Entwurf (inkl.
+ Feinentwurf) XX% und zuletzt die Codierung und der Test XX%.
+ (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Gant-Diagramm"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Nach Berücksichtigung aller Einflussfaktoren von Seiten des Kunden und des
+ Entwicklungsteams wird durch diese Plannung vorausgesetzt, dass der Kunde
+ das Endprodukt Mitte April 2010 testet und zwischen Anfang und Ende Mai
+ 2010 nach Bedarf noch kleinere Änderungen durchgeführt werden.
  
 \end_layout
 
@@ -1751,267 +1722,33 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="3">
+<lyxtabular version="3" rows="9" columns="3">
 <features>
-<column alignment="center" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
 Phase
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
 Von / Bis
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -2029,148 +1766,16 @@ Aufwand
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Analyse
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2190,120 +1795,16 @@ Analyse
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Einarbeitung
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2323,120 +1824,16 @@ Einarbeitung
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Spezifikation
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2456,144 +1853,16 @@ Spezifikation
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Entwurf
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2613,132 +1882,16 @@ Entwurf
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Codierung
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2758,159 +1911,40 @@ Codierung
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Test
-\begin_inset space ~
+\end_layout
+
 \end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+12.03.2010-15.04.2010
+\end_layout
 
-\begin_inset space ~
 \end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+--
+\end_layout
 
-\begin_inset space ~
 \end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abnahmetest
 \end_layout
 
 \end_inset
@@ -2919,7 +1953,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-12.03.2010-15.04.2010
+15.04.2010
 \end_layout
 
 \end_inset
@@ -2940,142 +1974,6 @@ Test
 
 \begin_layout Plain Layout
 Puffer
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -3110,7 +2008,13 @@ Puffer
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Phasen der Projekt
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Phasen-des-Projekts"
+
+\end_inset
+
+Phasen des Projekts
 \end_layout
 
 \end_inset
@@ -3131,6 +2035,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename simpl_GTDiagramm.png
 	scale 50
@@ -3145,7 +2051,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Terminplannung für die Entwicklungsphasen
+\begin_inset CommandInset label
+LatexCommand label
+name "Gant-Diagramm"
+
+\end_inset
+
+Terminplanung für die Entwicklungsphasen
 \end_layout
 
 \end_inset
@@ -3156,10 +2068,33 @@ Terminplannung für die Entwicklungsphasen
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Beschreibung der Phasen
+\end_layout
+
+\begin_layout Subsubsection
+Abnahmetest
 \end_layout
 
 \begin_layout Standard
-Dieser Terminplannung wird im Projektplan in Unterprojektsphasen verfeinert.
+Am Ende der Test Phase erfolgt die Abnahme der Projekts und aller genannten
+ Dokumente (siehe dafür Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Auszuliefernde-Software-Einheiten"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Der Kunde hat zwei Wochen Zeit, um sicherzustellen, ob das von uns gelieferten
+ Produkt seiner Anforderungen wie verabredet etspricht.
+ Wenn das der Fall ist, dann gilt dieser Projekt als abgeschlossen und falls
+ nicht dann werden die Nachbesserungen angebracht.
 \end_layout
 
 \begin_layout Section
@@ -3175,6 +2110,10 @@ Kostenschätzung
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 (
 \color red
 sollen wir hier einen bestimmten schätzung verfahren verwenden wie Cocomo
@@ -3182,6 +2121,11 @@ sollen wir hier einen bestimmten schätzung verfahren verwenden wie Cocomo
  ?
 \color inherit
 )
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
