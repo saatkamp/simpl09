@@ -76,7 +76,7 @@ thispagestyle{fancy}
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -357,7 +357,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset VSpace 5cm*
+\begin_inset VSpace 3cm*
 \end_inset
 
 
@@ -485,8 +485,16 @@ docdate
 \end_inset
 
  
-\size largest
-Verfasser: 
+\size larger
+Verfasser:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace 0.5cm
+\end_inset
+
+ 
 \begin_inset ERT
 status collapsed
 
@@ -499,8 +507,6 @@ docautor
 
 \end_inset
 
-
-\size default
  
 \end_layout
 

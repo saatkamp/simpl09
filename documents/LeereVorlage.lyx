@@ -24,7 +24,6 @@
 \def\docautor{Max Mustermann}
 \def\docdate{12. Juli 2009}
 
-\def\doclogo{SIMPL5.pdf}
 
 %Nicht einrücken
 %\setlength{\parindent}{0pt}
