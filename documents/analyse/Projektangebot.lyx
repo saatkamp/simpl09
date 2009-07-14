@@ -1705,6 +1705,46 @@ Projektbeschreibung
 Entwicklungsgrundlagen
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+hier habe ich an die Anforderungen der Kunde (im Anforderungskatalog).
+ Es soll die Inhalt nach sprachige Korrektheit überprüft werden.
+ (feras)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Entwicklung von SIMPL erfolgt nach softwaretechnischen Prinzipien.
+ Dafür soll die Qualität der Produkt geleistet werden.
+ Solche Prinzipien bilden sich aus Wartbarkeit und Änderbarkeit der System,
+ sodass die System in der Zukunft in weitere Datenresourcen etc.
+ Erweiterbar bzw.
+ Änderbarkeit sein soll.
+ Ein weitere wechtige softwaretechnischen Prinzip ist die Skalierbarkeit,
+ die flexibel Infrastruktur erlaubt das heisst, dass die eingesetzte Hardwarekom
+poneten innerhalb der Infrastruktur variable Eigenschaften besitzt.
+\end_layout
+
+\begin_layout Standard
+Zuletzt ist die Prinzipien Sicherheit und Usability vom großen grundlegenden
+ Wert in unsere Entwicklungsprozess.
+ Die Usability sollte sich an eine bestimmte Benutzergruppe richten und
+ weit wie möglich die Transparenz-Eigenschaft entsprechen.
+\end_layout
+
+\begin_layout Standard
+Bei der Sicherheit-Prinzip geht es darum, die Aktivitäten und Nutzung der
+ System ,durch Authentifizierung innerhalb eines bestimmten Authentifizierungsve
+rfahren und Zugriffrechten innerhalb die Autorisierungsregeln, beschränken.
+\end_layout
+
 \begin_layout Section
 Projektaufgabe
 \end_layout
@@ -1740,8 +1780,9 @@ status open
 hier kommt die Struktur des Teams,die Aufteilung anhand Aufgabenbereich
  , Rollen beschreibung und eine kleine Graphische Darstellung für die Team-Struk
 tur ist sehr angebracht im Angebot meine Meinung nach.
+
 \color inherit
-)
+ feras)
 \end_layout
 
 \end_inset
@@ -1775,11 +1816,24 @@ Von seiner Aufgaben ist das Moderieren unsere interne Teamgespräche bzw.
 \begin_layout Standard
 
 \series bold
-Architekt: Michael Schneidt
+Architekt: Michael Schneidt, Daniel Brüderle
 \end_layout
 
 \begin_layout Standard
-Der Architekt
+Der Architekt ist zuständig für die Beschreibung von der grundlegenden Komponent
+en und deren Zusammenspiel innerhalb eines Softwaresystems.
+ Die Architekturkomponenten sind in unsere Fall sind die einzelne Komponenten
+ des SIMPL - Prozess und welche Technologien um sie zu verwirklechen.
+ Eine die wesentliche Aufgaben eines Architekt ist das sich mit 
+\begin_inset Quotes eld
+\end_inset
+
+Wie Implementiert man es am Besten
+\begin_inset Quotes erd
+\end_inset
+
+ beschäftigen.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1804,7 +1858,7 @@ Ausserdem seiner Aufgabengebiet befasst sich mit dem Bereitstellung von
 
 \series bold
 \color black
-Qualitätsmanagment: Michael Hahn
+Qualitätsmanagment: Michael Hahn, Firas Zoabi
 \end_layout
 
 \begin_layout Standard
@@ -1918,7 +1972,7 @@ René Rehn:
 \series bold
 Firas Zoabi:
 \series default
- zoabifs(@)studi.informatik.uni-stuttgart.de
+ Firas.Zoabi(@)web.de
 \end_layout
 
 \begin_layout Standard
@@ -2481,6 +2535,18 @@ sollen wir hier einen bestimmten schätzung verfahren verwenden wie Cocomo
  ?
 \color inherit
 )
+\end_layout
+
+\begin_layout Plain Layout
+davor soll eine einleitende Text geben das Machen wir dann.
+\end_layout
+
+\begin_layout Plain Layout
+Es wird von Michael und Wolfgang nach functionPoint verfahren vorbereitet.
+\end_layout
+
+\begin_layout Plain Layout
+(feras)
 \end_layout
 
 \end_inset
