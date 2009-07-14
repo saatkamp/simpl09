@@ -16,13 +16,13 @@
 \usepackage{fancyhdr}
 %Nicht einrücken
 
-% doctitel = Titel des Dokuments 
-% docvers = Versionsnr.
-% docautor = Author(en)
-% docdate = Datum der letzten Änderung
-\def\doctitel{Angebot}
-\def\docvers{0.1}
-\def\docautor{Daniel Brüderle, Firas Zoabi, Michael Hahn}
+% doctitel = Titel des Dokuments  
+% docvers = Versionsnr. 
+% docautor = Author(en) 
+% docdate = Datum der letzten Änderung 
+\def\doctitel{Angebot} 
+\def\docvers{0.1} 
+\def\docautor{Daniel Brüderle, Firas Zoabi, Michael Hahn} 
 \def\docdate{13. Juli 2009}
 \end_preamble
 \use_default_options false
@@ -79,22 +79,21 @@
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 %Header und Footer Definitionen für das Deckblatt
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -107,7 +106,7 @@ thispagestyle{fancy}
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -279,13 +278,13 @@ status collapsed
 \size small
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-today
+docdate
 \end_layout
 
 \end_inset
@@ -728,13 +727,13 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-today
+docdate
 \end_layout
 
 \end_inset
@@ -853,7 +852,7 @@ Name
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -878,7 +877,305 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für das Deckblatt 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{fancy} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+headrulewidth}{0mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+headheight}{0mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+footskip}{32mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot{
+\backslash
+small 
+\backslash
+docdate} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot{
+\backslash
+small Angebot für SIMPL © 2009 
+\backslash
+$IMPL} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot{
+\backslash
+small 
+\backslash
+thepage
+\backslash
+ / 
+\backslash
+pageref{LastPage}}
+\end_layout
+
+\begin_layout Plain Layout
+
+%Text für das Deckblatt 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{2cm} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent{
+\backslash
+LARGE Studienprojekt SIMPL} 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+rule[1ex]{
+\backslash
+textwidth}{1pt} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{1cm} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{flushleft} 	
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+Huge 
+\backslash
+textbf{
+\backslash
+doctitel}} 
+\backslash
+
+\backslash
+ 	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm} 	
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+LARGE Version 
+\backslash
+docvers} 
+\backslash
+
+\backslash
+ 	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm} 	
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+LARGE 
+\backslash
+docdate} 
+\backslash
+
+\backslash
+ 	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm} 	
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+Large Verfasser: 
+\backslash
+
+\backslash
+ 
+\backslash
+vspace{0.5cm} 
+\backslash
+docautor} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{flushleft} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{1cm} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+rule[1ex]{
+\backslash
+textwidth}{1pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{1cm} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 	
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=7cm]{SIMPL.pdf} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+%Neue Seite beginnen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
@@ -887,13 +1184,18 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
+\backslash
+setlength{
+\backslash
+footskip}{10mm}
 \end_layout
 
 \end_inset
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -928,7 +1230,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -948,7 +1250,7 @@ headheight}{22mm}
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -983,7 +1285,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1007,7 +1309,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1061,7 +1363,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1087,13 +1389,13 @@ status collapsed
 \size small
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-today
+docdate
 \end_layout
 
 \end_inset
@@ -1113,7 +1415,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1152,7 +1454,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1210,16 +1512,6 @@ status collapsed
 
 }
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "C:/Dokumente und Einstellungen/Administrator/Eigene Dateien/StuProA/simpl09/documents/Deckblatt.lyx"
 
 \end_inset
 
