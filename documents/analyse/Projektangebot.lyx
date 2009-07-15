@@ -1762,6 +1762,29 @@ Wird von Daniel ausgefüllt.
 
 \end_layout
 
+\begin_layout Standard
+Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk erstellen
+ welches den Zugriff auf nahezu beliebige Datenquellen zu ermöglichen.
+ Bei den Datenquellen kann es sich beispielsweise um Sensordaten, Datenbanken,
+ Dateisysteme und anders handeln.
+ Der Schwerpunkt soll jedoch klar auf wissenschaftlichen Workflows beruhen.
+ Es soll beliebige Datenmanagement Funktionen in einen BPEL-Prozess eingebunden
+ werden.
+ Vorhandene Konzepte werden evaluiert und bei sehr guter Eignung für die
+ Zielerreichung werden diese übernommen.
+ Dabei kann auch die Sprache BPEL für unsere Zwecke erweitert werden.
+ Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
+ werden, so dass während der Laufzeit des Systemes die möglichen Funktionen
+ sowie die Datenquellen festgelegt werden können.
+ Weiterhin sollte auch die Möglichkeit bestehen die Datenquellen und -funktionen
+ statisch definieren zu können.
+ Der Kunde besteht darauf dass eine BPEL Engine sowie ein Modellierungstool
+ um diese gewünschten Funktionen erweitert bzw.
+ angepasst werden.
+ Die BPEL-Prozesse sollen mit dem entsprechenden Modellierungstool modelliert
+ und mit dern BPEL-Engine ausgeführt werden können.
+\end_layout
+
 \begin_layout Section
 Unser Vorgehen
 \end_layout
@@ -1915,10 +1938,6 @@ Rollen im Team
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
