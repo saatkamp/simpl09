@@ -1,0 +1,16 @@
+= Begriffslexikon =
+
+||AbnahmeTest||xxx||
+||Administrator||Verwaltet den Server und ist zuständig für die Entwicklungstools und die Softwareinfrastuktur.||
+||Aktivität||xxx||
+||Annotation||Kommentare im Quellcode die zur Laufzeit ausgewertet werden||
+||Apache Ode||BPEL Runtime Engine für BPEL Prozesse||
+||Apache Tomcat||xxx||
+||Atomic Scope||xxx||
+||Ausfallsicherheit||So lange die äusseren Bedingungen stimmen läuft das Programm ohne Wartung weiter.||
+||Auswahlstrategie||xxx||
+||Autentifizierung||xxx||
+||Autorisierung||xxx||
+||Axis2||xxx||
+||Benutzer||xxx||
+||BPEL||xxx||
