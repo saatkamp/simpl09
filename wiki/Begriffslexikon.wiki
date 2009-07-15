@@ -1,0 +1,84 @@
+= Begriffslexikon =
+
+||AbnahmeTest||xxx||
+||Administrator||Verwaltet den Server und ist zuständig für die Entwicklungstools und die Softwareinfrastuktur.||
+||Aktivität||xxx||
+||Annotation||Kommentare im Quellcode die zur Laufzeit ausgewertet werden||
+||Apache Ode||BPEL Runtime Engine für BPEL Prozesse||
+||Apache Tomcat||xxx||
+||Atomic Scope||xxx||
+||Ausfallsicherheit||So lange die äusseren Bedingungen stimmen läuft das Programm ohne Wartung weiter.||
+||Auswahlstrategie||xxx||
+||Autentifizierung||xxx||
+||Autorisierung||xxx||
+||Axis2||xxx||
+||Benutzer||xxx||
+||BPEL||xxx||
+||BPEL Extension Activity||xxx||
+||Dateisystem||xxx||
+||Datenmanagement||xxx||
+||Datenquellen||xxx||
+||DB Anbindung||xxx||
+||Demo||xxx||
+||Deployment||xxx||
+||Deployment Descriptor||xxx||
+||dynamisch||xxx||
+||Eclipse||xxx||
+||Eclipse BPEL Designer||xxx||
+||Engine||xxx||
+||Erweiterbarkeit||xxx||
+||Fehlertoleranz||xxx||
+||Funktionalität||xxx||
+||generisch||xxx||
+||Handler||xxx||
+||History||xxx||
+||IBM DB2||xxx||
+||Infrastuktur||xxx||
+||Instanz||xxx||
+||konkrete Adresse||xxx||
+||Kunde||xxx||
+||Late Binding||xxx||
+||Liefertermin||xxx||
+||Logische Adresse||xxx||
+||Modellierung||xxx||
+||Modul||xxx||
+||modular||xxx||
+||Monitoring||xxx||
+||Open Source||xxx||
+||Pattern||xxx||
+||Plugin||xxx||
+||Pointer||xxx||
+||Prototyp||xxx||
+||Prozess||xxx||
+||Prozesslogik||xxx||
+||Qualitiy of Service||xxx||
+||Query||xxx||
+||Rahmenwerk||xxx||
+||RDB||xxx||
+||Referenz||xxx||
+||Referenz Resolution System||xxx||
+||Schema||xxx||
+||Scientific Workflows||xxx||
+||Scopes||xxx||
+||Sensornetze||xxx||
+||Single Sign On||xxx||
+||Skalierbarkeit||xxx||
+||SQL||xxx||
+||Statement||xxx||
+||Statment||xxx||
+||statisch||xxx||
+||Strategie||xxx||
+||Team||xxx||
+||Termin||xxx||
+||Tiny DB||xxx||
+||Transaktio||xxx||
+||Transparenz||xxx||
+||Usability||xxx||
+||User||xxx||
+||Variable||xxx||
+||Verwertungsrechte||xxx||
+||Wartbarkeit||xxx||
+||Webservice||xxx||
+||XML||xxx||
+||XMLDB||xxx||
+||Xquery||xxx||
