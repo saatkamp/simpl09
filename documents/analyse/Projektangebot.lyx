@@ -121,7 +121,7 @@ headheight}{22mm}
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -2571,6 +2571,247 @@ Es wird von Michael und Wolfgang nach functionPoint verfahren vorbereitet.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+AGBs
+\end_layout
+
+\begin_layout Standard
+Allgemeine Geschäftsbedingungen (AGB) der SIMPL GmbH
+\end_layout
+
+\begin_layout Standard
+1.
+ Geltungsbereich und Vertragsschluss 
+\end_layout
+
+\begin_layout Standard
+Diese allgemeinen Geschäftsbedingungen gelten für alle Vertragsbeziehungen
+ und vorvertraglichen Verhandlungen mit unseren Kunden, unabhängig von Art
+ und Umfang der Leistung im Rahmen laufender und zukünftiger Geschäftsverbindung
+en.
+ Allgemeine Geschäftsbedingungen des Kunden werden ausdrücklich nicht Vertragsin
+halt, auch wenn ihnen seitens der Firma SIMPL GmbH nicht ausdrücklich widersproc
+hen wird.
+ Für den Fall das der Kunde die nachfolgenden allgemeinen Geschäfts-bedingungen
+ nicht gelten lassen will, hat er dies vorher schriftlich der Firma SIMPL
+ GmbH anzuzeigen.
+ Mündliche, telefonische und telegrafische Vereinbarungen bedürfen zu ihrer
+ Wirksamkeit unserer schriftlichen Bestätigung.
+ Unsere Angebote sind freibleibend und unverbindlich; sie dienen allein
+ der Aufforderung des Kunden zur Abgabe eines Auftrages; dessen Annahme
+ wir uns vorbehalten.
+\end_layout
+
+\begin_layout Standard
+2.Preise
+\end_layout
+
+\begin_layout Standard
+Alle Preise, auch diejenigen in der Auftragsbestätigung sind freibleibend.
+ Für den Fall wesentlicher Änderungen der den Preis bestimmender Faktoren
+ vor endgültiger Abwicklung der Bestellung bleibt eine entsprechende Anpassung
+ an diese Änderungen vorbehalten.
+\end_layout
+
+\begin_layout Standard
+3.
+ Auftragsannullierung
+\end_layout
+
+\begin_layout Standard
+Auftragsannullierungen bedürfen unser ausdrücklichen schriftlichen Zustimmung.
+\end_layout
+
+\begin_layout Standard
+4.
+ Lieferung 
+\end_layout
+
+\begin_layout Standard
+Alle von der Firma SIMPL GmbH genannten Liefertermine sind unverbindliche
+ Liefertermine , es sei denn, dass ein Liefertermin ausdrücklich schriftlich
+ vereinbart wird.
+ Verlangt der Kunde nach Auftragerteilung Änderungen oder Ergänzungen des
+ Auftrages oder treten sonstige Umstände ein, die der Firma SIMPL GmbH eine
+ Einhaltung des Liefertermins unmöglich machen, obwohl die Firma SIMPL GmbH
+ diese Umstände nicht zu vertreten hat, so verschiebt sich der Liefertermin
+ um einen angemessenen Zeitraum.
+ Wird die Firma SIMPL GmbH an der rechtzeitigen Vertragserfüllung z.
+ B.
+ durch Beschaffungs-, Fabrikations- oder Lieferstörungen bei ihr oder ihrem
+ Zulieferanten gehindert, so gelten die allgemeinen Rechtsgrundsätze mit
+ der Maßgabe, dass der Kunde nach Ablauf von einem Monat eine Nachfrist
+ von 6 Wochen setzten kann.
+ Ist die Nichteinhaltung eines verbindlichen Liefertermins nachweislich
+ auf Krieg, Aufruhr, Streik oder Aussperrung oder aus sonstige nach allgemeinen
+ Rechtsgrundsätzen von der Firma SIMPL GmbH nicht zu vertretende Umstände
+ zurückzuführen, so wird die Lieferfrist angemessen verlängert.
+ Der Kunde kann vom Vertrag zurücktreten, wenn die Firma SIMPL GmbH nach
+ Ablauf der verlängerten Frist eine angemessene Nachfrist zur Lieferung
+ nicht erfüllt Der Rücktritt hat schriftlich zu erfolgen.
+ Wird der Firma SIMPL GmbH die Vertragserfüllung aus den vorgenannten Gründen
+ ganz oder teilweise unmöglich, so wird sie von ihrer Lieferpflicht befreit.
+\end_layout
+
+\begin_layout Standard
+5.
+ Zahlung und Verzug
+\end_layout
+
+\begin_layout Standard
+Hardware und Software werden auch im Rahmen eines Gesamtauftrages sofort
+ in Rechnung gestellt.
+ Alle Rechnungen der Firma SIMPL GmbH sind innerhalb von 10 Tagen ab Rechnungsda
+tum zahlbar.
+ Maßgebend ist das Datum des Einganges der Zahlung bei der Firma SIMPL GmbH.
+ Kommt der Kunde mit fälligen Zahlungen mehr als 7 Tage in Verzug, so ist
+ die Firma SIMPL GmbH berechtigt, Verzugszinsen in Höhe von 5% über dem
+ jeweiligen Referenzzinssatz der Europäischen Zentralbank zu berechnen.
+ Weitere Ansprüche bleiben unberührt.
+\end_layout
+
+\begin_layout Standard
+6.
+ Rücktrittsrecht
+\end_layout
+
+\begin_layout Standard
+Hängt die Liefermöglichkeit von der Belieferung durch einen Vorlieferanten
+ ab und scheitert diese Belieferung aus Gründen, die wir nicht zu vertreten
+ haben, so sind wir zum Rücktritt vom Vertrag berechtigt.
+ Erhalten wir nach Vertragsschluss Kenntnis von Tatsachen, die auf fehlende
+ Kreditwürdigkeit des Kunden schließen lassen, so sind wir zum Rücktritt
+ berechtigt, wenn der Käufer trotzdem zur Zug-um-Zug-Leistung oder Sicherheitsle
+istung nicht bereit ist.
+\end_layout
+
+\begin_layout Standard
+7.
+ Patent- und Urheberrechte 
+\end_layout
+
+\begin_layout Standard
+Die Firma SIMPL GmbH bleibt Inhaberin aller Urheber-, und Nutzungsrechte
+ an der dem Kunden überlassenen Software, einschließlich der gesamten Dokumentat
+ion, auch wenn der Kunde sie verändert.
+ Ohne unsere schriftliche Zustimmung dürfen weder die Software noch die
+ Unterlagen, weder mittelbar noch unmittelbar, Dritten zugänglich gemacht
+ werden.
+\end_layout
+
+\begin_layout Standard
+8.
+ Überlassung von Software
+\end_layout
+
+\begin_layout Standard
+Zwischen der SIMPL GmbH und dem Kunden wird in einem gesonderten Vertragswerk,
+ dem Rahmenvertrag, folgendes geregelt: Vertragsgegenstand, Vertragsdauer,
+ Leistungsumfang, Nutzungsbedingungen für die beschriebene Software, Nutzung
+ von Fremdsoftware, Beratungs- und Pflegeleistungen, Mitwirkungspflichten
+ des Kunden, die Abnahme durch den Kunden, die Vergütung, die Gewährleistung,
+ Haftung, Geheimhaltung und Datenschutz.
+ Welche Leistungen im einzelnen von SIMPL GmbH zu erbringen sind ergibt
+ sich aus den Leistungsscheinen und dem Software-Pflegevertrag, die als
+ Anlagen zu dem Rahmenvertrag genommen werden.
+ Die SIMPL GmbH gewährt dem Kunden das nicht weiter übertragbare und nicht
+ ausschließliche Recht, die in dem Lizenzschein aufgeführte spezifische
+ Software und das Dokumentationsmaterial auf unbestimmte Zeit zu nutzen.
+\end_layout
+
+\begin_layout Standard
+9.
+ Eigentumsvorbehalt
+\end_layout
+
+\begin_layout Standard
+Die Ware bleibt bis zum vollständigen Ausgleich unserer sämtlichen, auch
+ künftig entstehenden Forderungen gegen den Kunden aus der Geschäftsverbindung
+ - bei Herausgabe von Wechseln oder Schecks bis zu deren vorbehaltloser
+ Einlösung - unser Eigentum.
+\end_layout
+
+\begin_layout Standard
+10.
+ Gewährleistung
+\end_layout
+
+\begin_layout Standard
+Die Gewährleistungsfrist beim Handelsgeschäft unter Kaufleuten beträgt 12
+ Monate.
+ Sie beginnt mit der Auslieferung der Software an den Lizenznehmer.
+ Der Kunde ist verpflichtet die gelieferte Software unverzüglich zu prüfen.
+\end_layout
+
+\begin_layout Standard
+11.
+ Haftung 
+\end_layout
+
+\begin_layout Standard
+SIMPL GmbH haftet wie folgt: Der Höhe nach unbegrenzt für Schäden, die auf
+ Rechtsmängeln, zugesicherten Eigenschaften, Arglist oder auf vorsätzlichem
+ oder grob fahrlässigem Verhalten der gesetzlichen Vertreter oder leitenden
+ Angestellten von Intera beruhen.
+ Unbegrenzt ist auch die Haftung nach dem Produkthaftungsgesetz.
+ Für Schäden die aus der (leicht) fahrlässigen Verletzung wesentlicher Vertragsp
+flichten (Kardinalpflichten) resultieren, die vorsätzlich oder grob fahrlässig
+ durch Erfüllungsgehilfen oder leitende Angestellte verursacht wurden oder
+ die auf anfänglichem Unvermögen beruhen, ist die Haftung von SIMPL GmbH
+ wie folgt begrenzt: - Auf Schäden, mit deren Entstehen man typischerweise
+ rechnen musste, sowie - auf die Hälfte der Lizenzvergütung für die betreffende
+ Vertragssoftware, sofern es sich um Schäden aus der Überlassung eines Vertrags-
+ softwareproduktes handelt, bzw.
+ auf die Hälfte der im letzten Kalenderjahr für den betreffenden Service
+ geleisteten Servicegebühr, sofern es sich um Schäden aus den vertraglichen
+ Serviceleistungen handelt; - Auf den typischen Wiederherstellungsaufwand,
+ der bei regelmäßiger und gefahrentsprechender Anfertigung von Sicherungskopien
+ eingetreten wäre, wenn es sich um Schäden handelt, die auf dem Verlust
+ von Daten beruhen.
+ Im übrigen ist die Haftung ausgeschlossen.
+ Intera trägt keinerlei Verantwortung für Inhalte, die der Kunde unter Verwendun
+g der Software in das Internet und/oder sein Intranet stellt.
+ Dies gilt auch dann, wenn Intera den Kunden bei der Auswahl der Inhalte
+ beraten hat.
+ Der Kunde wird Intera von jeglichen Ansprüchen freistellen, die gegen Intera
+ wegen der angeblichen oder tatsächlichen Rechtswidrigkeit von mit unserer
+ Software verarbeiteten Inhalten gestellt werden.
+ Sämtliche Kosten, die Intera in diesem Zusammenhang entstehen, wird der
+ Kunde erstatten.
+ Die vorstehenden Regelungen gelten auch zugunsten der Mitarbeiter von Intera.
+\end_layout
+
+\begin_layout Standard
+12.
+ Rechtswahl, Erfüllungsort und Gerichtsstand 
+\end_layout
+
+\begin_layout Standard
+Unsere gesamten Geschäftsbeziehungen mit unseren Kunden unterliegen ausschließli
+ch dem Recht der Bundesrepublik Deutschland.
+ Die Anwendung des UN-Kaufrechts wird ausdrücklich ausgeschlossen.
+ Der Erfüllungsort ist Stuttgart.
+ Der Gerichtstand ist Stuttgart.
+\end_layout
+
+\begin_layout Standard
+13.
+ Salvatorische Klausel
+\end_layout
+
+\begin_layout Standard
+Sollten eine oder mehrere der vorstehenden Vertragsbedingungen, oder daneben
+ etwa abgeschlossener individueller Vereinbarungen ganz oder teilweise ungültig
+ sein, berührt das die Wirksamkeit der übrigen Bedingungen nicht.
+ Beide Vertragspartner sind in diesem Falle verpflichtet, eine unwirksame
+ durch eine wirksame Bedingung zu ersetzen, die dem wirtschaftlichen Zweck
+ der unwirksamen am nächsten kommt.
+\end_layout
+
+\begin_layout Standard
+Stuttgart, den 15.07.2009
 \end_layout
 
 \end_body
