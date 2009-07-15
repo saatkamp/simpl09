@@ -81,4 +81,4 @@
 ||Webservice||xxx||
 ||XML||xxx||
 ||XMLDB||xxx||
-||Xquery||xxx||
+||Xquery||testen||
