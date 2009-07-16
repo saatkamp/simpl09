@@ -1755,7 +1755,15 @@ rozesses von großem Interesse.
 status open
 
 \begin_layout Plain Layout
-Ist Sicherheit eine nichtfunktionale Anforderung?
+Ist Sicherheit eine nichtfunktionale Anforderung? - Feras: es kann sein
+ .aber hier nicht darum was nichtfunktional oder funktionale
+\end_layout
+
+\begin_layout Plain Layout
+Anforderung !! sondern was in das Entwicklung von SIMPL als wechtige Aspekte,
+ die ich anhand die Anforderungs der Kunde als wechtig bewerte und hier
+ dazu gehören .
+ 
 \end_layout
 
 \end_inset
