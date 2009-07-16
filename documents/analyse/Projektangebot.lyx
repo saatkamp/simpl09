@@ -14,7 +14,8 @@
 %Packages für eigen definierte Header und Footer
 \usepackage{lastpage}
 \usepackage{fancyhdr}
-\usepackage{hyperref} % Verlinkung des Inhaltsverzeichnisses
+% Verlinkung des Inhaltsverzeichnisses
+\usepackage[pdfborder={0 0 0},colorlinks=false]{hyperref} 
 %Nicht einrücken
 
 % doctitel = Titel des Dokuments  
@@ -22,9 +23,9 @@
 % docautor = Author(en) 
 % docdate = Datum der letzten Änderung 
 \def\doctitel{Angebot} 
-\def\docvers{0.1} 
+\def\docvers{0.2} 
 \def\docautor{Daniel Brüderle, Firas Zoabi, Michael Hahn} 
-\def\docdate{13. Juli 2009}
+\def\docdate{16. Juli 2009}
 \end_preamble
 \use_default_options false
 \language ngerman
@@ -349,7 +350,7 @@ status collapsed
 
 
 \size small
-Angebot für SIMPL © 2009 $IMPL
+Angebot für SIMPL © 2009 SIMPL GmbH
 \size default
  
 \begin_inset Newline newline
@@ -503,7 +504,7 @@ status collapsed
 
 \shape italic
 \size footnotesize
-$IMPL GmbH, Universitätsstraße 38, 70569 Stuttgart
+SIMPL GmbH, Universitätsstraße 38, 70569 Stuttgart
 \shape default
 \size default
  
@@ -957,9 +958,7 @@ docdate}
 \backslash
 cfoot{
 \backslash
-small Angebot für SIMPL © 2009 
-\backslash
-$IMPL} 
+small Angebot für SIMPL © 2009 SIMPL GmbH} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1440,9 +1439,9 @@ status collapsed
 
 
 \size small
-Angebot für SIMPL © 2009 $IMPL
+Angebot für SIMPL © 2009 SIMPL
 \size default
-
+ GmbH
 \begin_inset ERT
 status collapsed
 
@@ -1555,8 +1554,7 @@ Ausgangssituation
 \end_layout
 
 \begin_layout Standard
-
-\lang english
+\noindent
 Zur Modellierung und Ausführung von Workflows jeglicher Art wird bisher
  die Sprache BPEL ( Business Process Execution Language ) verwendet.
  BPEL hat seine Stärke, wie der Name schon sagt, im Bereich der Geschäftsprozess
@@ -1737,7 +1735,7 @@ Die Entwicklung von SIMPL erfolgt nach softwaretechnischen Prinzipien, dadurch
  und den Umgang mit weiteren Datenformaten ergänzt werden soll.
  Ein weitere wichtige Qualität ist die Skalierbarkeit des Systems, die eine
  sehr flexible Infrastruktur erlauben muss, da die Computersysteme auf denen
- SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinandergehen,
+ SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinander gehen,
  d.h.
  vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
  möglich sein.
@@ -1746,9 +1744,9 @@ Die Entwicklung von SIMPL erfolgt nach softwaretechnischen Prinzipien, dadurch
 \begin_layout Standard
 Zuletzt sind die Qualitäten Sicherheit und Usability innerhalb des Entwicklungsp
 rozesses von großem Interesse.
- Die Usability sollte sich vorallem an unerfahrene und Nutzer mit wenig
- Kentnissen richten und dafür die bestmögliche Transparenz liefern, um die
- Verwendung von SIMPL für alle Benutzergruppen zu ermöglichen.
+ Die Usability sollte sich vor allem an unerfahrene und Nutzer mit wenig
+ Kenntnissen richten und dafür die bestmögliche Transparenz liefern, um
+ die Verwendung von SIMPL für alle Benutzergruppen zu ermöglichen.
  
 \end_layout
 
@@ -1796,7 +1794,7 @@ Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk erstellen,
  erweitert oder angepasst.
  Dabei kann auch die Sprache BPEL für unsere Zwecke erweitert werden.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
- werden, so dass während der Laufzeit des Systemes die möglichen Funktionen
+ werden, so dass während der Laufzeit des Systems die möglichen Funktionen
  sowie die Datenquellen festgelegt werden können.
  Weiterhin sollte auch die Möglichkeit bestehen die Datenquellen und -funktionen
  statisch definieren zu können.
@@ -1823,7 +1821,7 @@ status open
 (
 \color red
 hier kommt die Struktur des Teams,die Aufteilung anhand Aufgabenbereich
- , Rollen beschreibung und eine kleine Graphische Darstellung für die Team-Struk
+ , Rollen Beschreibung und eine kleine Graphische Darstellung für die Team-Struk
 tur ist sehr angebracht im Angebot meine Meinung nach.
 
 \color inherit
@@ -1848,7 +1846,7 @@ Projektleiter: Wolfgang Hüttig (Stellvertreter: Michael Hahn)
 
 \begin_layout Standard
 Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
- Er koordiniert sämtlichen Schriftverkehr und die Komunikation zwischen
+ Er koordiniert sämtlichen Schriftverkehr und die Kommunikation zwischen
  den Kunden, den Betreuern und dem Team.
  Er ist auch an erster Stelle für das Projekt verantwortlich.
 \end_layout
@@ -2049,6 +2047,19 @@ Michael Hahn:
 Nutzen
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Nutzen den das Rahmenwerk liefert.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Leistungen im Rahmen des Angebots
 \end_layout
@@ -2064,10 +2075,6 @@ Auszuliefernde Software-Einheiten
 \end_layout
 
 \begin_layout Itemize
-Projektplan
-\end_layout
-
-\begin_layout Itemize
 Spezifikation
 \end_layout
 
@@ -2076,8 +2083,11 @@ Begriffslexikon
 \end_layout
 
 \begin_layout Itemize
-Einen umfassenden Dokument, was als Einleitung bzw.
- Handbuch dienen soll.
+Handbuch
+\end_layout
+
+\begin_layout Itemize
+Dokumentation der Erweiterungen
 \end_layout
 
 \begin_layout Itemize
@@ -2089,7 +2099,11 @@ Testprotokolle
 \end_layout
 
 \begin_layout Itemize
-Der eigentliche Produkt als entpackbares Datei 
+Installationspaket, das alle benötigten Software-Komponenten beinhaltet
+\end_layout
+
+\begin_layout Itemize
+Eclipse Plug-In
 \end_layout
 
 \begin_layout Itemize
@@ -2097,9 +2111,7 @@ Quellcode
 \end_layout
 
 \begin_layout Standard
-Die Dokumente werden im PDF-Format geliefert, sowie die dazugehörigen LaTex-Sour
-cedateien.
- 
+Alle Dokumente werden im PDF-Format geliefert.
 \end_layout
 
 \begin_layout Subsection
@@ -2115,15 +2127,16 @@ Anforderungskatalog
 \end_layout
 
 \begin_layout Itemize
-Grob-Entwurf
+Projektplan
 \end_layout
 
 \begin_layout Itemize
-Feinentwurf
+Entwurf
 \end_layout
 
 \begin_layout Itemize
-Interne organisatorische Dokumente, wie Protokolle etc.
+Alle internen und organisatorischen Dokumente, wie z.B.
+ Protokolle
 \end_layout
 
 \begin_layout Section
@@ -2131,11 +2144,13 @@ Terminplanung
 \end_layout
 
 \begin_layout Standard
-Das Studienprojekt läuft über zwei Semester und endet am Mai 2010.
- Jeder Projektteilnehmer hat dabei einen Arbeitsaufwand von 400 Stunden.
- Die Projektphasen Analyse und Einarbeitung beanspruchen dabei XX%, Spezifikatio
+Das Studienprojekt läuft über zwei Semester und endet im Mai 2010.
+ Jeder Projektteilnehmer hat dabei einen Arbeitsaufwand von ca.
+ 450 Stunden zu leisten, dadurch entsteht ein Gesamtaufwand von ca.
+ 3200 Stunden für alle 7 Teilnehmer.
+ Die Projektphasen Analyse und Einarbeitung beanspruchen dabei 38%, Spezifikatio
 n und Entwurf (inkl.
- Feinentwurf) XX% und zuletzt die Codierung und der Test XX%.
+ Fein-Entwurf) 26% und zuletzt die Codierung und der Test 36%.
  (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2148,10 +2163,25 @@ reference "Gant-Diagramm"
 
 \begin_layout Standard
 Nach Berücksichtigung aller Einflussfaktoren von Seiten des Kunden und des
- Entwicklungsteams wird durch diese Plannung vorausgesetzt, dass der Kunde
+ Entwicklungsteams wird durch diese Planung vorausgesetzt, dass der Kunde
  das Endprodukt Mitte April 2010 testet und zwischen Anfang und Ende Mai
  2010 nach Bedarf noch kleinere Änderungen durchgeführt werden.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In dieser Berechnung wurden die 3200h auf alle Phasen ausser den Puffer
+ verteilt, falls dies nicht so sein soll müssen die Tabelle und die Prozentangab
+en im Text neu berechnet werden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2228,7 +2258,7 @@ Analyse
 \begin_inset Text
 
 \begin_layout Plain Layout
---
+682 h
 \end_layout
 
 \end_inset
@@ -2257,7 +2287,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
---
+545 h
 \end_layout
 
 \end_inset
@@ -2286,7 +2316,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
---
+567 h
 \end_layout
 
 \end_inset
@@ -2315,7 +2345,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
---
+252 h
 \end_layout
 
 \end_inset
@@ -2344,7 +2374,7 @@ Codierung
 \begin_inset Text
 
 \begin_layout Plain Layout
---
+808 h
 \end_layout
 
 \end_inset
@@ -2373,7 +2403,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
---
+346 h
 \end_layout
 
 \end_inset
@@ -2431,7 +2461,7 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
---
+? h
 \end_layout
 
 \end_inset
@@ -2517,28 +2547,98 @@ Terminplanung für die Entwicklungsphasen
 Beschreibung der Phasen
 \end_layout
 
+\begin_layout Standard
+In diesem Abschnitt wird jede der oben aufgeführten Phasen und die darin
+ enthaltenen Aufgaben kurz näher erläutert.
+\end_layout
+
 \begin_layout Subsubsection
 Analyse
+\end_layout
+
+\begin_layout Standard
+Das Ziel der Analysephase ist es die funktionalen und nichtfunktionalen
+ Anforderungen, die der Kunde an das zu entwickelnde Softwaresystem hat,
+ festzustellen und einen Einblick in den momentanen Zustand des Bereichs
+ zu haben, für den die Software entwickelt werden soll um bereits realisierte
+ Anforderungen aufzunehmen.
+ Dies geschieht vor allem über die Durchführung von Kundengesprächen, die
+ zur Klärung der Anforderungen genutzt werden.
+ Am Ende der Analysephase wird aus den gewonnenen Erkenntnissen ein Anforderungs
+katalog erstellt, der als Referenz für die spätere Spezifikation der Software
+ verwendet wird.
 \end_layout
 
 \begin_layout Subsubsection
 Einarbeitung
 \end_layout
 
+\begin_layout Standard
+Da es sich bei diesem Projekt um ein recht aktuelles Thema handelt und zum
+ Teil wenige bis gar keine Ansätze für Bestandteile des Projekts wie z.B.
+ die Verwendung von BPEL in Scientific Workflows existieren, müssen alle
+ vorhandenen Ansätze evaluiert oder z.T.
+ auch neue Ansätze geschaffen werden.
+ Dafür wurde eine Einarbeitungsphase festgelegt, deren Ziel es ist, für
+ alle Anforderungen die entsprechenden Ansätze definiert und evaluiert zu
+ haben, sodass danach das Projekt mit dem nötigen Know-How und Wissen fortgesetz
+t werden kann.
+\end_layout
+
 \begin_layout Subsubsection
 Spezifikation
+\end_layout
+
+\begin_layout Standard
+In dieser Phase wird die zu entwickelnde Software genau spezifiziert, d.h.
+ in einem Dokument, der Spezifikation, werden alle funktionalen und nichtfunktio
+nalen Anforderungen an die Software und ihre Schnittstellen präzise, vollständig
+ und überprüfbar definiert.
+ Ebenso werden spätere Abläufe im Umgang mit der Software und ihren Funktionen
+ beschrieben.
+ Die Spezifikation dient darüber hinaus als Referenz für viele nachfolgende
+ Dokumente, wie z.B.
+ das Handbuch und den Entwurf und sie ist unerlässlich für die Testphase
+ und die spätere Wartung oder für spätere Erweiterungen der Software.
+ Anhand der Spezifikation kann sich auch der Kunde davon überzeugen, dass
+ wirklich seine Anforderungen umgesetzt werden.
 \end_layout
 
 \begin_layout Subsubsection
 Entwurf
 \end_layout
 
+\begin_layout Standard
+In der Entwurfsphase wird die Architektur der Software festgelegt und in
+ verschiedenen Granularitäten in den Dokumenten Grob-Entwurf (Architektur
+ des Gesamtsystems) und Fein-Entwurf (Architektur der einzelnen Module)
+ festgehalten.
+\end_layout
+
 \begin_layout Subsubsection
 Codierung
 \end_layout
 
+\begin_layout Standard
+In der Codierungsphase werden die Anforderungen aus der Spezifikation mit
+ der Architektur des Entwurfs umgesetzt.
+ Am Ende dieser Phase existiert eine ausführbare Software.
+\end_layout
+
 \begin_layout Subsubsection
 Test
+\end_layout
+
+\begin_layout Standard
+Die Testphase dient dazu die Software gegen die Spezifikation zu prüfen,
+ d.h.
+ alle Anforderungen aus der Spezifikation werden mit geeigneten Testfällen
+ überprüft und die Software entsprechend korrigiert, falls sie nicht die
+ gewünschten Ergebnisse liefert.
+ Dazu wird eine Reihe von Testfällen definiert und deren Ausführung in einem
+ Testprotokoll aufgezeichnet.
+ Diese zwei Dokumente sind auch für den Kunden wichtig, da sie als Referenz
+ für seine internen Tests während der Abnahme genutzt werden können.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2546,8 +2646,8 @@ Abnahmetest
 \end_layout
 
 \begin_layout Standard
-Am Ende der Test Phase erfolgt die Abnahme der Projekts und aller genannten
- Dokumente (siehe dafür Kapitel 
+Am Ende der Testphase erfolgt die Abnahme der Projekts und aller genannten
+ Dokumente (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Auszuliefernde-Software-Einheiten"
@@ -2558,14 +2658,20 @@ reference "sub:Auszuliefernde-Software-Einheiten"
 \end_layout
 
 \begin_layout Standard
-Der Kunde hat zwei Wochen Zeit, um sicherzustellen, ob das von uns gelieferten
- Produkt seiner Anforderungen wie verabredet etspricht.
- Wenn das der Fall ist, dann gilt dieser Projekt als abgeschlossen und falls
- nicht dann werden die Nachbesserungen angebracht.
+Der Kunde hat zwei Wochen Zeit, um sicherzustellen, ob das von uns gelieferte
+ Produkt seinen Anforderungen entspricht.
+ Ist das der Fall, dann gilt das Projekt als abgeschlossen, andernfalls
+ werden die nötigen Nachbesserungen oder Änderungen durchgeführt.
 \end_layout
 
 \begin_layout Subsubsection
 Puffer
+\end_layout
+
+\begin_layout Standard
+Ein extra Zeitfenster vor dem endgültigen Abgabetermin Ende Mai 2010.
+ In dieser Phase können noch kleinere Änderungswünsche, die der Kunde nach
+ dem Abnahmetest eventuell hat, umgesetzt werden.
 \end_layout
 
 \begin_layout Section
@@ -2579,7 +2685,7 @@ Risiken
 \begin_layout Standard
 Aufgrund der geforderten sehr breiten Verwendungsmöglichkeiten im Rahmen
  der wissenschaftlichen Workflows besteht ein hohes Unsicherheitspotential
- im Bezug auf die Implentierungsdauer und auf sich ändernde Anforderungen.
+ im Bezug auf die Implementierungsdauer und auf sich ändernde Anforderungen.
 \end_layout
 
 \begin_layout Standard
@@ -2821,7 +2927,7 @@ Werkzeuge nicht einsetzbar
 \begin_inset Text
 
 \begin_layout Plain Layout
-Oranisatorischer Slack schaffen
+Organisatorischer Slack schaffen
 \end_layout
 
 \end_inset
@@ -3129,7 +3235,7 @@ en.
  Allgemeine Geschäftsbedingungen des Kunden werden ausdrücklich nicht Vertragsin
 halt, auch wenn ihnen seitens der Firma SIMPL GmbH nicht ausdrücklich widersproc
 hen wird.
- Für den Fall das der Kunde die nachfolgenden allgemeinen Geschäfts-bedingungen
+ Für den Fall das der Kunde die nachfolgenden allgemeinen Geschäftsbedingungen
  nicht gelten lassen will, hat er dies vorher schriftlich der Firma SIMPL
  GmbH anzuzeigen.
  Mündliche, telefonische und telegrafische Vereinbarungen bedürfen zu ihrer
