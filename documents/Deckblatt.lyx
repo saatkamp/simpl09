@@ -76,7 +76,7 @@ thispagestyle{fancy}
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -545,7 +545,7 @@ textwidth}{1pt}
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename quellen/SIMPL.pdf
+	filename SIMPL.pdf
 	width 8cm
 
 \end_inset
