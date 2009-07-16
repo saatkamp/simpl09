@@ -14,6 +14,7 @@
 %Packages für eigen definierte Header und Footer
 \usepackage{lastpage}
 \usepackage{fancyhdr}
+\usepackage{hyperref} % Verlinkung des Inhaltsverzeichnisses
 %Nicht einrücken
 
 % doctitel = Titel des Dokuments  
@@ -1558,7 +1559,8 @@ Ausgangssituation
 \lang english
 Zur Modellierung und Ausführung von Workflows jeglicher Art wird bisher
  die Sprache BPEL ( Business Process Execution Language ) verwendet.
- BPEL hat seine Stärke wie der Name schon sagt im Bereich der Geschäftsprozesse.
+ BPEL hat seine Stärke, wie der Name schon sagt, im Bereich der Geschäftsprozess
+e.
  Im wissenschaftlichen Bereich gelten andere Anforderungen und dafür ist
  BPEL nicht gut geeignet.
  Da aber auch im wissenschaftlichen Bereich immer öfter Workflows eingesetzt
@@ -1701,18 +1703,13 @@ E-Mail: Marko.Vrhovnik(@)ipvs.uni-stuttgart.de
 Projektbeschreibung
 \end_layout
 
-\begin_layout Subsection
-Entwicklungsgrundlagen
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-hier habe ich an die Anforderungen der Kunde (im Anforderungskatalog).
- Es soll die Inhalt nach sprachige Korrektheit überprüft werden.
- (feras)
+Hier eventuell noch aussagen über Prozessmodell und ?Iterationen?, beziehungswei
+se andere organisatorische Projekteigenschaften.
 \end_layout
 
 \end_inset
@@ -1721,25 +1718,50 @@ hier habe ich an die Anforderungen der Kunde (im Anforderungskatalog).
 \end_layout
 
 \begin_layout Standard
+Das Projekt wird als Time & Material Projekt durchgeführt und die Aufwände
+ und Fortschritte des Projekts werden in regelmäßigen Abständen dem Kunden
+ mitgeteilt.
+ 
+\end_layout
+
+\begin_layout Subsection
+Entwicklungsgrundlagen
+\end_layout
+
+\begin_layout Standard
 Die Entwicklung von SIMPL erfolgt nach softwaretechnischen Prinzipien, dadurch
  soll eine hohe Qualität des Produkts gewährleistet werden.
- Solche Prinzipien bilden sich aus Wartbarkeit und Änderbarkeit des Systems,
- sodass die System in der Zukunft in weitere Datenresourcen etc.
- Erweiterbar bzw.
- Änderbarkeit sein soll.
- Ein weitere wechtige softwaretechnischen Prinzip ist die Skalierbarkeit,
- die flexibel Infrastruktur erlaubt das heisst, dass die eingesetzte Hardwarekom
-poneten innerhalb der Infrastruktur variable Eigenschaften besitzt.
+ Wichtige Qualitäten sind dabei die Wartbarkeit und die Erweiterbarkeit
+ des Systems, da es über einen längeren Zeitraum bestehen soll und in der
+ Zukunft um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff
+ und den Umgang mit weiteren Datenformaten ergänzt werden soll.
+ Ein weitere wichtige Qualität ist die Skalierbarkeit des Systems, die eine
+ sehr flexible Infrastruktur erlauben muss, da die Computersysteme auf denen
+ SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinandergehen,
+ d.h.
+ vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
+ möglich sein.
 \end_layout
 
 \begin_layout Standard
-Zuletzt ist die Prinzipien Sicherheit und Usability vom großen grundlegenden
- Wert in unsere Entwicklungsprozess.
- Die Usability sollte sich an eine bestimmte Benutzergruppe richten und
- weit wie möglich die Transparenz-Eigenschaft entsprechen.
+Zuletzt sind die Qualitäten Sicherheit und Usability innerhalb des Entwicklungsp
+rozesses von großem Interesse.
+ Die Usability sollte sich vorallem an unerfahrene und Nutzer mit wenig
+ Kentnissen richten und dafür die bestmögliche Transparenz liefern, um die
+ Verwendung von SIMPL für alle Benutzergruppen zu ermöglichen.
+ 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ist Sicherheit eine nichtfunktionale Anforderung?
+\end_layout
+
+\end_inset
+
 Bei der Sicherheit-Prinzip geht es darum, die Aktivitäten und Nutzung der
  System ,durch Authentifizierung innerhalb eines bestimmten Authentifizierungsve
 rfahren und Zugriffrechten innerhalb die Autorisierungsregeln, beschränken.
@@ -1754,7 +1776,7 @@ Projektaufgabe
 status open
 
 \begin_layout Plain Layout
-Wird von Daniel ausgefüllt.
+Mit der ganzen Gruppe erweitern und noch ausführlicher beschreiben 
 \end_layout
 
 \end_inset
@@ -1763,26 +1785,26 @@ Wird von Daniel ausgefüllt.
 \end_layout
 
 \begin_layout Standard
-Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk erstellen
- welches den Zugriff auf nahezu beliebige Datenquellen zu ermöglichen.
- Bei den Datenquellen kann es sich beispielsweise um Sensordaten, Datenbanken,
- Dateisysteme und anders handeln.
+Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk erstellen,
+ welches den Zugriff auf nahezu beliebige Datenquellen ermöglichen soll.
+ Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
+ und Dateisysteme handeln.
  Der Schwerpunkt soll jedoch klar auf wissenschaftlichen Workflows beruhen.
- Es soll beliebige Datenmanagement Funktionen in einen BPEL-Prozess eingebunden
- werden.
- Vorhandene Konzepte werden evaluiert und bei sehr guter Eignung für die
- Zielerreichung werden diese übernommen.
+ Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
+ BPEL-Prozess eingebunden werden können.
+ Dafür werden bereits vorhandene Konzepte evaluiert und für unsere Zwecke
+ erweitert oder angepasst.
  Dabei kann auch die Sprache BPEL für unsere Zwecke erweitert werden.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
  werden, so dass während der Laufzeit des Systemes die möglichen Funktionen
  sowie die Datenquellen festgelegt werden können.
  Weiterhin sollte auch die Möglichkeit bestehen die Datenquellen und -funktionen
  statisch definieren zu können.
- Der Kunde besteht darauf dass eine BPEL Engine sowie ein Modellierungstool
+ Der Kunde besteht darauf, dass eine BPEL-Engine sowie ein Modellierungstool
  um diese gewünschten Funktionen erweitert bzw.
  angepasst werden.
  Die BPEL-Prozesse sollen mit dem entsprechenden Modellierungstool modelliert
- und mit dern BPEL-Engine ausgeführt werden können.
+ und mit der BPEL-Engine ausgeführt werden können.
 \end_layout
 
 \begin_layout Section
@@ -1832,8 +1854,9 @@ Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
 \end_layout
 
 \begin_layout Standard
-Von seiner Aufgaben ist das Moderieren unsere interne Teamgespräche bzw.
- Arbeit, sowie die Aufgabeverteilung innerhalb des Teames.
+Seine zentralen Aufgaben liegen in der Verwaltung des Projekts, d.h.
+ er plant, bewertet und kontrolliert, und verteilt alle Tätigkeiten und
+ Ereignisse während des Projekts.
 \end_layout
 
 \begin_layout Standard
@@ -1843,20 +1866,14 @@ Architekt: Michael Schneidt (Stellvertreter: Daniel Brüderle)
 \end_layout
 
 \begin_layout Standard
-Der Architekt ist zuständig für die Beschreibung von der grundlegenden Komponent
-en und deren Zusammenspiel innerhalb eines Softwaresystems.
- Die Architekturkomponenten sind in unsere Fall sind die einzelne Komponenten
- des SIMPL - Prozess und welche Technologien um sie zu verwirklechen.
- Eine die wesentliche Aufgaben eines Architekt ist das sich mit 
-\begin_inset Quotes eld
-\end_inset
-
-Wie Implementiert man es am Besten
-\begin_inset Quotes erd
-\end_inset
-
- beschäftigen.
- 
+Der Architekt ist zuständig für die Architektur des zu entwickelnden Softwaresys
+tems und die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
+ innerhalb des Softwaresystems.
+ Er trifft die grundlegenden Entscheidungen über die Art und den Aufbau
+ der Software-Architektur und überwacht deren Einhaltung während der Codierung.
+ Der Architekt gewährleistet damit eine einfache Integration der einzelnen
+ Software-Komponenten und ermöglicht die einfache Wartbarkeit und Erweiterbarkei
+t des Softwaresystems.
 \end_layout
 
 \begin_layout Standard
@@ -1869,12 +1886,13 @@ Administrator: René Rehn (Stellvertreter: Michael Schneidt)
 \begin_layout Standard
 Der Administrator ist zuständig für die gesamte Infrastruktur auf Software-
  sowie auch auf Hardware-Ebene für die Projektarbeit.
- Er ist für den Betrieb und die Wartung des SVN verantwortlich.
-\end_layout
-
-\begin_layout Standard
-Ausserdem seiner Aufgabengebiet befasst sich mit dem Bereitstellung von
- alle für den Projekt notwendigen Entwicklungs-Werkzeuge zuständig.
+ Er ist für den Betrieb und die Wartung des Servers und den Betrieb der
+ darauf ausgeführten Software verantwortlich.
+ Weiterhin sorgt er für die Bereitstellung der nötigen Software-Infrastruktur,
+ d.h.
+ er liefert die Software, wie z.B.
+ Werkzeuge für Entwicklung, Test und Entwurf, die zur Realisierung des Projekts
+ benötigt wird.
 \end_layout
 
 \begin_layout Standard
@@ -1885,10 +1903,13 @@ Qualitätsmanagment: Michael Hahn (Stellvertreter: Firas Zoabi)
 \end_layout
 
 \begin_layout Standard
-Dokument Qualitätsmanagment ist ein Team, der für Wartung und Erstellung
- der Vorlagen für die Projektdokumente.
- Dieser Team überwacht und kontrolliert die Qualität der Erstellte Dokumente
- anhand vom Team festgellegten Richtlinien.
+Der Qualitätsmanager sorgt dafür, dass alle Dokumente und auch Software-Komponen
+ten eine bestimmte Qualität besitzen.
+ Diese Qualität soll durch die Definition und Einhaltung von Richtlinien,
+ durch die ständige Durchführung von Qualitätskontrollen und durch die Erstellun
+g von einheitlichen Dokumentvorlagen erreicht werden.
+ So soll während des gesamten Projektverlaufs die Qualität der Dokumente
+ und Software-Einheiten maximiert werden.
 \end_layout
 
 \begin_layout Standard
@@ -1899,9 +1920,22 @@ Entwickler: Alle
 \end_layout
 
 \begin_layout Standard
-Entwickler sind alle Teammitglieder.
- Ein Entwickler arbeitet im Rahmen die vom Projektleiter erteilete Aufgaben
- an die Dokumente sowie am eigentliche Quellcode.
+Als Entwickler arbeiten alle Teammitglieder.
+ Ein Entwickler arbeitet dabei im Rahmen der vom Projektleiter erteilten
+ Aufgaben an Dokumenten und Software-Komponenten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Bild ist nur in LyX-Ansicht verkleinert, im PDF ist es so groß wie seither
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1916,6 +1950,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename rollen.png
+	lyxscale 50
 	scale 50
 
 \end_inset
