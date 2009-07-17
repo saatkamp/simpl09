@@ -23,9 +23,9 @@
 % docautor = Author(en) 
 % docdate = Datum der letzten Änderung 
 \def\doctitel{Angebot} 
-\def\docvers{0.2} 
+\def\docvers{1.0} 
 \def\docautor{Daniel Brüderle, Firas Zoabi, Michael Hahn} 
-\def\docdate{16. Juli 2009}
+\def\docdate{17. Juli 2009}
 \end_preamble
 \use_default_options false
 \language ngerman
@@ -123,7 +123,7 @@ headheight}{22mm}
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -1721,8 +1721,9 @@ se andere organisatorische Projekteigenschaften.
 Das Projekt wird als Time & Material Projekt durchgeführt und die Aufwände
  und Fortschritte des Projekts werden in regelmäßigen Abständen dem Kunden
  mitgeteilt.
- Dies erfolgt spätestens nach dem Abschluss einer Phase, aber auch bei wichtigen
- dazwischen wenn es für sinnvoll erachtet wird.
+ Dies erfolgt spätestens nach dem Abschluss einer Phase.
+ Bei wichtigen Phasen auch innerhalb der Phasen, wenn es für sinnvoll erachtet
+ wird.
 \end_layout
 
 \begin_layout Subsection
@@ -1745,35 +1746,12 @@ Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
 \end_layout
 
 \begin_layout Standard
-Zuletzt sind die Qualitäten Sicherheit und Usability innerhalb des Entwicklungsp
-rozesses von großem Interesse.
+Robustheit und Usability der Software sind für uns innerhalb des Entwicklungspro
+zesses von großem Interesse.
  Die Usability sollte sich vor allem an unerfahrene und Nutzer mit wenig
  Kenntnissen richten und dafür die bestmögliche Transparenz liefern, um
  die Verwendung von SIMPL für alle Benutzergruppen zu ermöglichen.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ist Sicherheit eine nichtfunktionale Anforderung? - Feras: es kann sein
- .aber hier nicht darum was nichtfunktional oder funktionale
-\end_layout
-
-\begin_layout Plain Layout
-Anforderung !! sondern was in das Entwicklung von SIMPL als wechtige Aspekte,
- die ich anhand die Anforderungs der Kunde als wechtig bewerte und hier
- dazu gehören .
- 
-\end_layout
-
-\end_inset
-
-Bei der Sicherheit-Prinzip geht es darum, die Aktivitäten und Nutzung der
- System ,durch Authentifizierung innerhalb eines bestimmten Authentifizierungsve
-rfahren und Zugriffrechten innerhalb die Autorisierungsregeln, beschränken.
 \end_layout
 
 \begin_layout Section
@@ -1798,17 +1776,17 @@ Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk erstellen,
  welches den Zugriff auf nahezu beliebige Datenquellen ermöglichen soll.
  Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
  und Dateisysteme handeln.
- Der Schwerpunkt soll jedoch klar auf wissenschaftlichen Workflows beruhen.
+ Der Schwerpunkt soll klar auf wissenschaftlichen Workflows beruhen.
  Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
  BPEL-Prozess eingebunden werden können.
  Dafür werden bereits vorhandene Konzepte evaluiert und für unsere Zwecke
  erweitert oder angepasst.
- Dabei kann auch die Sprache BPEL für unsere Zwecke erweitert werden.
+ Dabei wird auch die Sprache BPEL für unsere Zwecke erweitert.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
- werden, so dass während der Laufzeit des Systems die möglichen Funktionen
- sowie die Datenquellen festgelegt werden können.
- Weiterhin sollte auch die Möglichkeit bestehen die Datenquellen und -funktionen
- statisch definieren zu können.
+ werden, so dass während der Laufzeit des Systems die Datenquellen festgelegt
+ werden können.
+ Weiterhin sollte auch die Möglichkeit bestehen die Datenquellen statisch
+ anbinden zu können.
  Der Kunde besteht darauf, dass eine BPEL-Engine sowie ein Modellierungstool
  um diese gewünschten Funktionen erweitert bzw.
  angepasst werden.
@@ -2059,27 +2037,31 @@ Nutzen
 \end_layout
 
 \begin_layout Standard
+Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung von
+ wissentschaftlichen Workflows mit BPEL ermöglicht werden.
+ Weiterhin werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst
+ erweitert, um z.B.
+ dynamische Datenquellenzugriffe und deren Überwachung möglich zu machen.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Nutzen den das Rahmenwerk liefert.
+Die Nutzen, die durch diesen Projekt erreicht werden, fassen sich mit Effizienz
+ in der Arbeit im wissenschaftlichen Bereiche.
+\end_layout
+
+\begin_layout Plain Layout
+Wie wir es wissen im wissenschaftlichen Bereich werden komplexe Berechnungen
+ benötigt und Tag zu Tag werden die Datenmengen umfangreicher sowie komplexere
+ Berechnungen und Analysen erförderlich werden.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Die Nutzen, die durch diesen Projekt erreicht werden, fassen sich mit Effizienz
- in der Arbeit im wissenschaftlichen Bereiche.
-\end_layout
-
-\begin_layout Standard
-Wie wir es wissen im wissenschaftlichen Bereich werden komplexe Berechnungen
- benötigt und Tag zu Tag werden die Datenmengen umfangreicher sowie komplexere
- Berechnungen und Analysen erförderlich werden.
 \end_layout
 
 \begin_layout Section
@@ -2564,96 +2546,18 @@ Analyse
 \end_layout
 
 \begin_layout Standard
-Das Ziel der Analysephase ist es die funktionalen und nichtfunktionalen
- Anforderungen, die der Kunde an das zu entwickelnde Softwaresystem hat,
- festzustellen 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-alternative: 
-\begin_inset Quotes eld
-\end_inset
-
-hervorzuheben
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- und einen Einblick in den momentanen Zustand des Bereichs
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-, für den die Software entwickelt werden soll um bereits realisierte Anforderung
-en aufzunehmen, 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-zu gewinnen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- zu haben , für den die Software entwickelt werden soll um bereits realisierte
+Das Ziel der Analysephase ist es durch Kundengespräche die funktionalen
+ und nichtfunktionalen Anforderungen zu erheben, die der Kunde an das zu
+ entwickelnde Softwaresystem stellt.
+ Das Ziel ist es einen Einblick in den momentanen Zustand des Arbeitsbereichs
+ für den die Software entwickelt werden soll zu bekommen, um bereits realisierte
  Anforderungen aufzunehmen.
 \end_layout
 
 \begin_layout Standard
-Dies geschieht vor allem über die Durchführung von Kundengesprächen, die
- zur Klärung der Anforderungen genutzt werden.
- Am Ende der Analysephase wird
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-werden
-\end_layout
-
-\end_inset
-
- aus den gewonnenen Erkenntnissen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-der Projektangebot sowie
-\end_layout
-
-\end_inset
-
- ein Anforderungskatalog erstellt 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(erstellt löschen und an ende des satzes bringen) 
-\end_layout
-
-\end_inset
-
-, der als Referenz für die spätere Spezifikation der Software verwendet
- wird.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-, erstellt
-\end_layout
-
-\end_inset
-
-
+Am Ende der Analysephase wird aus den gewonnenen Erkenntnissen ein Anforderungsk
+atalog erstellt, der als Referenz für die spätere Spezifikation der Software
+ verwendet wird.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2661,15 +2565,13 @@ Einarbeitung
 \end_layout
 
 \begin_layout Standard
-Da es sich bei diesem Projekt um ein recht aktuelles Thema handelt und zum
- Teil wenige bis gar keine Ansätze für Bestandteile des Projekts wie z.B.
+Da wenige bis gar keine Ansätze für Teilbereiche des Projekts wie z.B.
  die Verwendung von BPEL in Scientific Workflows existieren, müssen alle
  vorhandenen Ansätze evaluiert oder z.T.
  auch neue Ansätze geschaffen werden.
- Dafür wurde eine Einarbeitungsphase festgelegt, deren Ziel es ist, für
- alle Anforderungen die entsprechenden Ansätze definiert und evaluiert zu
- haben, sodass danach das Projekt mit dem nötigen Know-How und Wissen fortgesetz
-t werden kann.
+ Die Einarbeitungsphase dient dazu sich in die verschiedenen Themenbereiche
+ einzuarbeiten und festzustellen in welchem Umfang Erweiterungsmaßnahmen
+ notwendig sind.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2745,8 +2647,8 @@ reference "sub:Auszuliefernde-Software-Einheiten"
 \end_layout
 
 \begin_layout Standard
-Der Kunde hat zwei Wochen Zeit, um sicherzustellen, ob das von uns gelieferte
- Produkt seinen Anforderungen entspricht.
+Dem Kunden wird damit Zeit zur Verfügung gestellt sicherzustellen, dass
+ das von uns gelieferte Produkt seinen Anforderungen entspricht.
  Ist das der Fall, dann gilt das Projekt als abgeschlossen, andernfalls
  werden die nötigen Nachbesserungen oder Änderungen durchgeführt.
 \end_layout
@@ -3267,7 +3169,7 @@ Kostenschätzung
 \end_layout
 
 \begin_layout Standard
-Unsere internen Berechnungen nach der Funktion-Poin-Methode ergabe folgende
+Unsere internen Berechnungen nach der Funktion-Point-Methode ergab folgende
  Kostenschätzung :
 \end_layout
 
@@ -3319,12 +3221,12 @@ Stundensätze
 \end_layout
 
 \begin_layout Standard
-Entwickler : 69€ zzgl.
+Entwickler : 69 € zzgl.
  MwSt.
 \end_layout
 
 \begin_layout Standard
-Projektleiter : 99€ zzgl.
+Projektleiter : 99 € zzgl.
  MwSt.
 \end_layout
 
@@ -3333,47 +3235,16 @@ Gesamtkostenschätzung :
 \end_layout
 
 \begin_layout Standard
-6 Entwickler x 69€/Stunde x 160 Stunden x 3 Monate = 198.720€ 
+6 Entwickler x 69 €/Stunde x 160 Stunden x 3 Monate = 198.720 € 
 \end_layout
 
 \begin_layout Standard
-1 Projektleiter x 99€/Stunde x 160 Stunden x 3 Monate = 47.520€
+1 Projektleiter x 99 €/Stunde x 160 Stunden x 3 Monate = 47.520 €
 \end_layout
 
 \begin_layout Section*
-Gesamt : 246.240€ zzgl 19 % MwSt.
- = 293.025€ 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(
-\color red
-sollen wir hier einen bestimmten schätzung verfahren verwenden wie Cocomo
- etc.
- ?
-\color inherit
-)
-\end_layout
-
-\begin_layout Plain Layout
-davor soll eine einleitende Text geben das Machen wir dann.
-\end_layout
-
-\begin_layout Plain Layout
-Es wird von Michael und Wolfgang nach functionPoint verfahren vorbereitet.
-\end_layout
-
-\begin_layout Plain Layout
-(feras)
-\end_layout
-
-\end_inset
-
-
+Gesamt : 246.240 € zzgl 19 % MwSt.
+ = 293.025 € 
 \end_layout
 
 \begin_layout Subsection
