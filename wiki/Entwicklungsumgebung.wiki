@@ -34,7 +34,8 @@ Update-URL des Plugins eintragen, den neuen Punkt und evtl. zusätzlich dazu ers
  * BPEL Designer: http://download.eclipse.org/technology/bpel/update-site/
  * Subclipse: http://subclipse.tigris.org/update_1.6.x
  * m2e: http://m2eclipse.sonatype.org/update/ ("Maven Integration for AJDT (Optional)" abwählen!)
-
+ * mylyn: http://download.eclipse.org/tools/mylyn/update/incubator
+ 
 ==== Update von Eclipse ====
 Help -> Software Updates -> Available Software -> Update
 
@@ -82,6 +83,21 @@ plugins\org.eclipse.osgi_3.4.3.R34x_v20081215-1030.jar
 {{{
 Ziel: C:\eclipse\eclipse.exe -vm C:\Programme\Java\jdk1.6.0_14\bin
 }}}
+
+==== Google Code Issue Task List ====
+window -> Show View -> Other -> Tasks -> Task Repositories -> Add Task Repository -> Web Template (Advanced) -> Next -> Eclipse Outliner (Google Code) auswählen und ändern
+
+{{{
+Server: http://code.google.com/p/simpl09/issues
+Anonymous: true
+}}}
+
+window -> Show View -> Other -> Tasks -> Task List
+
+==== WST Version zurücksetzen ====
+Da der BPEL Designer nicht mit der aktuellen WST Version zurecht kommt, muss die Configuration wieder zurückgesetzt werden.
+
+Help -> Software Updates -> Installed Software -> Revert Configuration... -> Soweit zurückgehen, bis die WST Komponenten v 3.0.4 installiert sind
 
 == 6 Windows Einstellungen ==
 === 6.1 Umgebungsvariablen ===
