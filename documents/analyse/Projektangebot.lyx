@@ -2567,14 +2567,94 @@ Analyse
 \begin_layout Standard
 Das Ziel der Analysephase ist es die funktionalen und nichtfunktionalen
  Anforderungen, die der Kunde an das zu entwickelnde Softwaresystem hat,
- festzustellen und einen Einblick in den momentanen Zustand des Bereichs
- zu haben, für den die Software entwickelt werden soll um bereits realisierte
+ festzustellen 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+alternative: 
+\begin_inset Quotes eld
+\end_inset
+
+hervorzuheben
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ und einen Einblick in den momentanen Zustand des Bereichs
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+, für den die Software entwickelt werden soll um bereits realisierte Anforderung
+en aufzunehmen, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+zu gewinnen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ zu haben , für den die Software entwickelt werden soll um bereits realisierte
  Anforderungen aufzunehmen.
- Dies geschieht vor allem über die Durchführung von Kundengesprächen, die
+\end_layout
+
+\begin_layout Standard
+Dies geschieht vor allem über die Durchführung von Kundengesprächen, die
  zur Klärung der Anforderungen genutzt werden.
- Am Ende der Analysephase wird aus den gewonnenen Erkenntnissen ein Anforderungs
-katalog erstellt, der als Referenz für die spätere Spezifikation der Software
- verwendet wird.
+ Am Ende der Analysephase wird
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+werden
+\end_layout
+
+\end_inset
+
+ aus den gewonnenen Erkenntnissen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+der Projektangebot sowie
+\end_layout
+
+\end_inset
+
+ ein Anforderungskatalog erstellt 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(erstellt löschen und an ende des satzes bringen) 
+\end_layout
+
+\end_inset
+
+, der als Referenz für die spätere Spezifikation der Software verwendet
+ wird.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+, erstellt
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
