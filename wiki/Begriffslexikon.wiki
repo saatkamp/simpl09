@@ -49,7 +49,7 @@
 ||Open Source|| ||Bedeutet das der Quellcode einer Software öffentlich zugänglich ist.||
 ||Pattern|| ||xxx||
 ||Plugin|| ||Ein Softwareprogramm welches in andere Softwareprodukte eingebunden wird und deren Funktionalität erweitert.||
-||Pointer|| ||xxx||
+||Pointer|| ||Meist eine spezielle Variable die auf eine andere Variable oder Funktion verweist||
 ||Prototyp|| ||xxx||
 ||Prozess||BPEL Prozess||xxx||
 ||Prozesslogik|| ||xxx||
@@ -64,7 +64,7 @@
 ||Scopes|| ||xxx||
 ||Sensornetze|| ||xxx||
 ||Single Sign On|| ||xxx||
-||Skalierbarkeit|| ||xxx||
+||Skalierbarkeit|| ||Das System soll sowohl auf einem einzelnen Heimrechner, als auch auf einem System aus meheren Serversystemen.||
 ||SQL|| ||xxx||
 ||Statement|| ||xxx||
 ||Statment|| ||xxx||
@@ -72,14 +72,15 @@
 ||Strategie|| ||xxx||
 ||Team|| ||xxx||
 ||Termin|| ||xxx||
-||Tiny DB|| ||xxx||
+||Tiny DB|| ||Eine Sensornetz Datenbanksystem||
 ||Transaktio|| ||xxx||
 ||Transparenz|| ||xxx||
 ||Usability|| ||xxx||
 ||User|| ||xxx||
 ||Variable|| ||xxx||
 ||Verwertungsrechte|| ||xxx||
-||Wartbarkeit|| ||xxx||
+||Wartbarkeit|| ||Der Quellcode soll Modular aufgebaut sein und der Quellcode durch Kommentare gut lesbar gehalten werden, so dass das Programm später gut zu warten ist
+||
 ||Webservice|| ||xxx||
 ||XML|| ||xxx||
 ||XMLDB|| ||xxx||
