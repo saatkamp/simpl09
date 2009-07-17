@@ -1795,16 +1795,12 @@ Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk erstellen,
 \end_layout
 
 \begin_layout Section
-Unser Vorgehen
-\end_layout
-
-\begin_layout Subsection
-Interne Projektteam-Organisation
+Projektteam-Organisation
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 (
@@ -1822,7 +1818,7 @@ tur ist sehr angebracht im Angebot meine Meinung nach.
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Rollen im Team
 \end_layout
 
@@ -1968,7 +1964,7 @@ Rollen im Team
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Kontaktdaten der Projektteam-Mitglieder
 \end_layout
 
@@ -2037,29 +2033,25 @@ Nutzen
 \end_layout
 
 \begin_layout Standard
+Die Arbeit im wissenschaftlichen Bereich und die Datenmengen die damit verbunden
+ sind, werden immer größer, heterogener und komplexer.
+ Zur Vereinfachung und zur Automatisierung werden im Moment nur vereinzelt
+ Scientific Workflows eingesetzt.
+\end_layout
+
+\begin_layout Standard
 Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung von
- wissentschaftlichen Workflows mit BPEL ermöglicht werden.
+ wissenschaftlichen Workflows mit BPEL ermöglicht werden, welches im Business-Be
+reich bereits viele Jahre erfolgreich eingesetzt wird.
  Weiterhin werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst
- erweitert, um z.B.
- dynamische Datenquellenzugriffe und deren Überwachung möglich zu machen.
+ erweitert um so die direkte Anbindung von Datenquellen innerhalb von BPEL-Proze
+ssen zu realisieren.
+ Dadurch ist es auch für ungeübte Workflow-Benutzer wie z.B.
+ Wissenschaftler und Ingenieure möglich, einfach und schnell Scientific
+ Workflows zu erstellen und zu nutzen.
 \end_layout
 
 \begin_layout Standard
-<<<<<<< .mine
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Text sprachlich überprüfen !!!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-=======
 \begin_inset Note Note
 status open
 
