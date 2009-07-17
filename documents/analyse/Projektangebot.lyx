@@ -2168,11 +2168,11 @@ Terminplanung
 \begin_layout Standard
 Das Studienprojekt läuft über zwei Semester und endet im Mai 2010.
  Jeder Projektteilnehmer hat dabei einen Arbeitsaufwand von ca.
- 450 Stunden zu leisten, dadurch entsteht ein Gesamtaufwand von ca.
- 3200 Stunden für alle 7 Teilnehmer.
- Die Projektphasen Analyse und Einarbeitung beanspruchen dabei 38%, Spezifikatio
+ 480 Stunden zu leisten, dadurch entsteht ein Gesamtaufwand von ca.
+ 3360 Stunden für alle 7 Teilnehmer.
+ Die Projektphasen Analyse und Einarbeitung beanspruchen dabei 35%, Spezifikatio
 n und Entwurf (inkl.
- Fein-Entwurf) 26% und zuletzt die Codierung und der Test 36%.
+ Fein-Entwurf) 24% und zuletzt die Codierung und der Test 33%.
  (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2189,21 +2189,6 @@ Nach Berücksichtigung aller Einflussfaktoren von Seiten des Kunden und des
  das Endprodukt Mitte April 2010 testet und zwischen Anfang und Ende Mai
  2010 nach Bedarf noch kleinere Änderungen durchgeführt werden.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In dieser Berechnung wurden die 3200h auf alle Phasen ausser den Puffer
- verteilt, falls dies nicht so sein soll müssen die Tabelle und die Prozentangab
-en im Text neu berechnet werden.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2280,7 +2265,7 @@ Analyse
 \begin_inset Text
 
 \begin_layout Plain Layout
-682 h
+658 h
 \end_layout
 
 \end_inset
@@ -2309,7 +2294,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-545 h
+526 h
 \end_layout
 
 \end_inset
@@ -2338,7 +2323,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-567 h
+547 h
 \end_layout
 
 \end_inset
@@ -2367,7 +2352,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-252 h
+243 h
 \end_layout
 
 \end_inset
@@ -2396,7 +2381,7 @@ Codierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-808 h
+779 h
 \end_layout
 
 \end_inset
@@ -2425,7 +2410,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-346 h
+334 h
 \end_layout
 
 \end_inset
@@ -2483,7 +2468,7 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-? h
+273 h
 \end_layout
 
 \end_inset
