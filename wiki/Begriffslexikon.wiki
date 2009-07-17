@@ -34,21 +34,21 @@
 ||generisch|| ||Nicht an eine Sache gebunden z.B. eine Datenquelle||
 ||Handler|| ||Eine Komponente die für eine bestimmte Aufgabe zuständig ist und sich darum kümmert||
 ||History|| ||Chronologisch aufgezeichnete Aktivitäten in einem Prozess||
-||IBM DB2|| ||xxx||
-||Infrastuktur|| ||xxx||
-||Instanz|| ||xxx||
+||IBM DB2|| ||Ein Datenbanksystem der Firma IBM||
+||Infrastuktur|| ||Bezeichnet alle Hard- und Softwarekomponenten die zu einem Computersystem gehören, oder von ihm genutzt werden.||
+||Instanz|| ||Ein Exemplar oder eine Ausprägung eines gegebenen Schemas.||
 ||konkrete Adresse|| ||xxx||
-||Kunde|| ||xxx||
-||Late Binding|| ||xxx||
-||Liefertermin|| ||xxx||
-||Logische Adresse|| ||xxx||
-||Modellierung|| ||xxx||
-||Modul|| ||xxx||
-||modular|| ||xxx||
-||Monitoring|| ||xxx||
-||Open Source|| ||xxx||
+||Kunde|| ||Peter Reimann, Katharina Görlach||
+||Late Binding|| ||Ein Vorgehen bei dem Objekte erst zur Laufzeit typisiert werden.||
+||Liefertermin|| ||Der Termin an dem die Software beim Kunden eingegangen sein muss.||
+||Logische Adresse|| ||Die Adresse eines Computers die für die Kommunikation außerhalb eines Netzwerksegments zuständig ist.||
+||Modellierung|| ||Bildung eines Modells um einen Teil der Realität auf ein Computer-Modell abzubilden.||
+||Modul|| ||Bestandteil eines Computersystems, meist mit einer selbstständigen Funktionalität.||
+||modular|| ||Bezeichnung eines Computersystems welches aus verschiedenen Modulen aufgebaut ist.||
+||Monitoring|| ||Erfassung, Beobachtung und Überwachung aller Einganben des Nutzers||
+||Open Source|| ||Bedeutet das der Quellcode einer Software öffentlich zugänglich ist.||
 ||Pattern|| ||xxx||
-||Plugin|| ||xxx||
+||Plugin|| ||Ein Softwareprogramm welches in andere Softwareprodukte eingebunden wird und deren Funktionalität erweitert.||
 ||Pointer|| ||xxx||
 ||Prototyp|| ||xxx||
 ||Prozess||BPEL Prozess||xxx||
