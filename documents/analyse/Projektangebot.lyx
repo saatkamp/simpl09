@@ -3268,23 +3268,82 @@ Kostenschätzung
 \end_layout
 
 \begin_layout Standard
-19 MM / 7 Mann = 2,71 
+Unsere internen Berechnungen nach der Funktion-Poin-Methode ergabe folgende
+ Kostenschätzung :
+\end_layout
+
+\begin_layout Subsection*
+Gesamtentwicklungszeit : 
 \end_layout
 
 \begin_layout Standard
-2,71 Effektifarbeitszeit * 1,10 = 2,981
+19 MM (Mann-Monate) 
+\end_layout
+
+\begin_layout Subsubsection*
+Entwicklungszeit pro Mitarbeiter : 
 \end_layout
 
 \begin_layout Standard
-Volle entwicklermonate, 5 Tage die Woche 8 Stunden am Tag
+19 MM / 7 Mann = 2,71 Monate Entwicklungszeit pro Mitarbeiter
+\end_layout
+
+\begin_layout Subsubsection*
+Zuschlag Entwicklungszeit (wg.
+ Krankheit / Urlaub ) :
 \end_layout
 
 \begin_layout Standard
-160 Stunden im Monat
+2,71 Monate * 1,10 = 2,981 Monate Entwicklungszeit pro Mitarbeiter
+\end_layout
+
+\begin_layout Subsubsection*
+Mitarbeiterstunden :
 \end_layout
 
 \begin_layout Standard
-160 * 2,981 = 477 Stundne Pro person.
+Die Mitarbeiter haben alle eine 5 Tage Woche mit jeweils 8 Stunden, können
+ also im Monat 160 Stunden arbeiten.
+\end_layout
+
+\begin_layout Standard
+Bei einer effektiven Entwicklungszeit von gerundet 3 Monaten ( 2,981) wird
+ jede Person 480 Stunden
+\end_layout
+
+\begin_layout Standard
+arbeiten.
+\end_layout
+
+\begin_layout Subsection*
+Stundensätze
+\end_layout
+
+\begin_layout Standard
+Entwickler : 69€ zzgl.
+ MwSt.
+\end_layout
+
+\begin_layout Standard
+Projektleiter : 99€ zzgl.
+ MwSt.
+\end_layout
+
+\begin_layout Subsection*
+Gesamtkostenschätzung :
+\end_layout
+
+\begin_layout Standard
+6 Entwickler x 69€/Stunde x 160 Stunden x 3 Monate = 198.720€ 
+\end_layout
+
+\begin_layout Standard
+1 Projektleiter x 99€/Stunde x 160 Stunden x 3 Monate = 47.520€
+\end_layout
+
+\begin_layout Section*
+Gesamt : 246.240€ zzgl 19 % MwSt.
+ = 293.025€ 
 \end_layout
 
 \begin_layout Standard
