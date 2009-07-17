@@ -3268,6 +3268,26 @@ Kostenschätzung
 \end_layout
 
 \begin_layout Standard
+19 MM / 7 Mann = 2,71 
+\end_layout
+
+\begin_layout Standard
+2,71 Effektifarbeitszeit * 1,10 = 2,981
+\end_layout
+
+\begin_layout Standard
+Volle entwicklermonate, 5 Tage die Woche 8 Stunden am Tag
+\end_layout
+
+\begin_layout Standard
+160 Stunden im Monat
+\end_layout
+
+\begin_layout Standard
+160 * 2,981 = 477 Stundne Pro person.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
