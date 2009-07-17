@@ -1568,6 +1568,8 @@ e.
  Gekennzeichnet sind wissenschaftliche Workflows in der Regel durch große
  Datenmengen, die Heterogenität der Daten und somit dem Bedarf nach großer
  Rechenkapazität.
+ Diesen Anforderungen soll durch die neu zu entwickelnde Software Rechnung
+ getragen werden.
 \end_layout
 
 \begin_layout Subsection
@@ -1719,7 +1721,8 @@ se andere organisatorische Projekteigenschaften.
 Das Projekt wird als Time & Material Projekt durchgeführt und die Aufwände
  und Fortschritte des Projekts werden in regelmäßigen Abständen dem Kunden
  mitgeteilt.
- 
+ Dies erfolgt spätestens nach dem Abschluss einer Phase, aber auch bei wichtigen
+ dazwischen wenn es für sinnvoll erachtet wird.
 \end_layout
 
 \begin_layout Subsection
@@ -1727,8 +1730,8 @@ Entwicklungsgrundlagen
 \end_layout
 
 \begin_layout Standard
-Die Entwicklung von SIMPL erfolgt nach softwaretechnischen Prinzipien, dadurch
- soll eine hohe Qualität des Produkts gewährleistet werden.
+Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
+ Dadurch wird eine hohe Qualität des Produkts gewährleistet.
  Wichtige Qualitäten sind dabei die Wartbarkeit und die Erweiterbarkeit
  des Systems, da es über einen längeren Zeitraum bestehen soll und in der
  Zukunft um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff
