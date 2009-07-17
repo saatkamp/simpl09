@@ -123,7 +123,7 @@ headheight}{22mm}
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -2045,18 +2045,39 @@ Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung von
 \end_layout
 
 \begin_layout Standard
+<<<<<<< .mine
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Die Nutzen, die durch diesen Projekt erreicht werden, fassen sich mit Effizienz
- in der Arbeit im wissenschaftlichen Bereiche.
+Text sprachlich überprüfen !!!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+=======
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+>>>>>>> Die Nutzen, die durch diesen Projekt erreicht werden, fassen sich
+ mit Effizienz in der Arbeit im wissenschaftlichen Bereiche.
 \end_layout
 
 \begin_layout Plain Layout
-Wie wir es wissen im wissenschaftlichen Bereich werden komplexe Berechnungen
- benötigt und Tag zu Tag werden die Datenmengen umfangreicher sowie komplexere
+Wie wir es wissen im wissenschaftlichen Bereich werden komplexe Berechnungen,
+ um die Ziele zu erreichen, benötigt.
+ Im Laufe der Zeit werden die Datenmengen umfangreicher sowie komplexere
  Berechnungen und Analysen erförderlich werden.
+\end_layout
+
+\begin_layout Plain Layout
+Um die Ziele zu erreichen, werden im wissenschaftlichen Bereiche wissenschaftlic
+he Workflows eingesetzt 
 \end_layout
 
 \end_inset
