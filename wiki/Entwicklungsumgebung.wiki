@@ -94,6 +94,19 @@ Anonymous: true
 
 window -> Show View -> Other -> Tasks -> Task List
 
+Rechter Mausklick -> New -> Query -> SIMPL09 (Google Code)
+
+Für den Entwickler reicht es lediglich die eigenen Tasks zu sehen, dazu kann die Query folgendermaßen angepasst werden:
+
+Advanced Configuration -> Query Pattern
+{{{
+{Owner}
+
+ersetzen durch
+
+{Deine Email bei Google Code (bei Gmail nur den Benutzernamen verwenden!)}
+}}}
+
 ==== WST Version zurücksetzen ====
 Da der BPEL Designer nicht mit der aktuellen WST Version zurecht kommt, muss die Configuration wieder zurückgesetzt werden.
 
