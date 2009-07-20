@@ -53,7 +53,7 @@
 ||Prototyp|| ||xxx||
 ||Prozess||BPEL Prozess||xxx||
 ||Prozesslogik|| ||xxx||
-||Qualitiy of Service|| ||xxx||
+||Qualitiy of Service|| ||Eine Ebene des Webservice Standard Stack. Beinhaltet Standards Reliae messaging, Security und Transactions||
 ||Query|| ||xxx||
 ||Rahmenwerk|| ||xxx||
 ||RDB|| ||xxx||
