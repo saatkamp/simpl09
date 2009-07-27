@@ -13,7 +13,7 @@
 ||Autentifizierung|| ||Authentifizierung eines Benutzers gegenüber einer Datenquelle||
 ||Autorisierung|| ||Autorisierung der Zugriffe auf eine Datenquelle||
 ||Axis2|| ||Web Service Engine für Java||
-||Benutzer|| ||Benutzer innerhalb eines BPEL Prozess||
+||Benutzer||User||Benutzer des Rahmenwerks||
 ||BPEL||Business Process Execution Language||XML basierte Sprache zur Formulierung von Geschäftsprozessen||
 ||BPEL Extension Activity|| ||Aktivität zur Erweiterung der Funktionalität von BPEL||
 ||Dateisystem|| ||Umgebung in der Dateien abgelegt und verwaltet werden||
