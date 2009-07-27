@@ -7,7 +7,7 @@
 ||Annotation|| ||Kommentare im Quellcode die zur Laufzeit ausgewertet werden||
 ||Apache ODE||ODE||BPEL Runtime Engine für BPEL Prozesse||
 ||Apache Tomcat||Tomcat||Open Source Software Implementierung von Java Servlet and JavaServer Pages.||
-||Atomic Scope|| ||Lokale Umgebung in BPEL, die...||
+||Atomic Scope|| ||Lokale Umgebung in BPEL in der alle Aktivitäten atomar sind||
 ||Ausfallsicherheit|| ||So lange die äusseren Bedingungen stimmen läuft das Programm ohne Wartung weiter||
 ||Auswahlstrategie|| ||Verfahren zur Auswahl einer passenden Datenquelle zu entsprechenden Annotationen||
 ||Autentifizierung|| ||Authentifizierung eines Benutzers gegenüber einer Datenquelle||
