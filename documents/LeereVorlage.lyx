@@ -1,5 +1,5 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX file created by tex2lyx 1.6.3
+\lyxformat 249
 \begin_document
 \begin_header
 \textclass article
@@ -24,11 +24,20 @@
 \def\docautor{Max Mustermann}
 \def\docdate{12. Juli 2009}
 
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\endstate{-}
 
 %Nicht einrücken
 %\setlength{\parindent}{0pt}
+
+
 \end_preamble
-\use_default_options false
 \language ngerman
 \inputencoding latin9
 \font_roman default
@@ -39,24 +48,12 @@
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref true
-\pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
-\pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
-\pdf_pdfborder true
-\pdf_colorlinks false
-\pdf_backref false
-\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 0
-\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -68,22 +65,21 @@
 \tocdepth 3
 \paragraph_separation indent
 \defskip medskip
-\quotes_language english
+\quotes_language ngerman
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\author "" 
-\author "" 
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Deckblatt.lyx"
+
+
+\begin_inset Include \input{Deckblatt.lyx}
+preview false
 
 \end_inset
 
@@ -91,15 +87,29 @@ filename "Deckblatt.lyx"
 \end_layout
 
 \begin_layout Standard
+
+
+\begin_inset Include \input{DokStatus.lyx}
+preview false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 %Header und Footer Definitionen für alle anderen Seiten
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 
 \end_layout
 
@@ -109,7 +119,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -122,7 +132,7 @@ pagestyle
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 {
 \end_layout
@@ -133,7 +143,7 @@ fancy
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 }
 \end_layout
@@ -149,7 +159,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -162,7 +172,7 @@ lhead
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 {
 \end_layout
@@ -170,10 +180,14 @@ status collapsed
 \end_inset
 
 
+\size small
+
+\size default
+
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 }
 \end_layout
@@ -184,7 +198,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -197,7 +211,7 @@ chead
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 {
 \end_layout
@@ -205,10 +219,14 @@ status collapsed
 \end_inset
 
 
+\size small
+
+\size default
+
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 }
 \end_layout
@@ -219,7 +237,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -232,7 +250,7 @@ rhead
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 {
 \end_layout
@@ -240,10 +258,14 @@ status collapsed
 \end_inset
 
 
+\size small
+
+\size default
+
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 }
 \end_layout
@@ -254,7 +276,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -267,7 +289,7 @@ lfoot
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 {
 \end_layout
@@ -282,7 +304,7 @@ SIMPL © 2009 $IMPL
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 }
 \end_layout
@@ -293,7 +315,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -306,7 +328,7 @@ cfoot
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 {
 \end_layout
@@ -314,10 +336,14 @@ status collapsed
 \end_inset
 
 
+\size small
+
+\size default
+
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 }
 \end_layout
@@ -328,7 +354,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -341,7 +367,7 @@ rfoot
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 {
 \end_layout
@@ -354,7 +380,7 @@ status collapsed
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 
 \backslash
@@ -363,14 +389,9 @@ thepage
 
 \end_inset
 
-
-\begin_inset space \space{}
-\end_inset
-
+\InsetSpace \space{}
 / 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "LastPage"
+\begin_inset LatexCommand \pageref{LastPage}
 
 \end_inset
 
@@ -380,7 +401,7 @@ reference "LastPage"
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 }
 \end_layout
@@ -391,23 +412,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+
+
 \begin_inset ERT
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 %Ab hier beginnt das Dokument
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 
 \end_layout
 
 \end_inset
 
 
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_inset LatexCommand \tableofcontents
 
 \end_inset
 
@@ -415,24 +438,24 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
 
+
+\newpage
 
 \end_layout
 
 \begin_layout Section
+
 Änderungsgeschichte
 \end_layout
 
 \begin_layout Itemize
 
+
 \series bold
 Version 0.1
 \series default
-, 22.
- Juni 2009: Erstellung des Dokuments.
- 
+, 22. Juni 2009: Erstellung des Dokuments. 
 \end_layout
 
 \end_body

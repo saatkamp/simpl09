@@ -18,7 +18,14 @@
 \def\docautor{Max Mustermann}
 \def\docdate{12. Juli 2009}
 
-\def\doclogo{SIMPL5.pdf}
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\endstate{-}
 
 %Nicht einrücken
 %\setlength{\parindent}{0pt}
@@ -26,6 +33,8 @@
 \begin{document}
 
 \input{Deckblatt}
+
+\input{DokStatus}
 
 %Header und Footer Definitionen für alle anderen Seiten
 \pagestyle{fancy}

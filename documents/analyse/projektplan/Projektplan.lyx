@@ -24,6 +24,15 @@
 \def\docautor{Michael Hahn}
 \def\docdate{22. Juli 2009}
 
+% docstate = Status des Dokuments aus {neu, bearbeitet} 
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\endstate{-}
+
 
 %Nicht einrücken
 %\setlength{\parindent}{0pt}
@@ -84,6 +93,16 @@
 \begin_inset CommandInset include
 LatexCommand input
 filename "Deckblatt.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "DokStatus.lyx"
 
 \end_inset
 
