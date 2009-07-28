@@ -1786,6 +1786,124 @@ Berichtswesen, Formate für Berichte, Informationsflüsse, Reviews und Audits;
 
 \end_layout
 
+\begin_layout Subsubsection
+Berichtswesen
+\end_layout
+
+\begin_layout Subsubsection
+Qualitätssicherung und Konfigurationsmanagement
+\end_layout
+
+\begin_layout Standard
+Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
+ Dokument bzw.
+ jede Software-Einheit von zwei unabhängigen Instanzen geprüft.
+ Zuerst wird die Software-Einheit durch die Qualitätsmanager auf formale
+ Aspekte wie Style-Guide Konformität oder die Einhaltung des vorgeschriebenen
+ Layouts hin untersucht.
+ Anschließend wird die SE (Software-Einheit) falls sie Fehler enthält (positive
+ QS-Prüfung) mit entsprechenden Kommentaren zurück an die Verfasser geschickt.
+ Eine formal korrekte (negativ QS-geprüfte) SE wird an den Projektleiter
+ weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesammten
+ SE prüft.
+ Der Projektleiter leitet positiv geprüfte SE mit entsprechenden Kommentaren
+ ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
+ ausführt.
+ Negativ geprüfte SE werden vom Projektleiter freigegeben und erhalten so
+ Auslieferungsstatus.
+ Wird eine bereits freigegebene SE verändert oder an neue Bedürfnisse angepasst
+ muss sie noch einmal den gesamten QS-Prozess durchlaufen.
+ Sollte der Projektleiter eine SE prüfen, die seiner Meinung nach so viele
+ Fehler oder Mängel enthält das eine Korrektur sich nicht lohnt, so kann
+ er die SE verwerfen, d.h.
+ die Verfasser erhalten eine Nachricht und müssen die SE neu verfassen.
+ Eine detailierte Beschreibung des gesamten Ablaufs des QS-Prozesses zeigt
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Prüfungsablauf-für-die"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename QS_Ablauf_Entsch.jpeg
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Prüfungsablauf-für-die"
+
+\end_inset
+
+Prüfungsablauf für die Qualitätssicherung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Konfigurationsverwaltung ist ein wichtiger Bestandteil der Infrastruktur
+ eines Projekts.
+ In diesem Projekt wird zur Realisierung das Konfigurationsverwaltungssystem
+ 
+\emph on
+Subversion 
+\emph default
+genutzt.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Das-grundlegende-Modell"
+
+\end_inset
+
+ zeigt das grundlegende Modell der Konfigurationsverwaltung und die Verwendung
+ von Subversion (SVN).
+ Hierzu werden verschiedene Umgebungen eingerichtet, die durch gewisse Rahmenbed
+ingungen für bestimmte Tätigkeiten ausgelegt sind und so z.B.
+ speziell für den Test oder die Implementierung eingerichtet sind.
+ Die Referenz-Umgebung bildet die Zentrale der Konfigurationsverwaltung
+ und wird durch Subversion realisiert.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Entstehungsprozess-für-Software-Einheiten"
+
+\end_inset
+
+ wird der Entstehungsprozess von SE aufgezeigt und welche Umgebungen dabei
+ durchlaufen werden.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -1809,6 +1927,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Das-grundlegende-Modell"
+
+\end_inset
+
 Das grundlegende Modell der Konfigurationsverwaltung
 \end_layout
 
@@ -1849,47 +1973,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Entstehungsprozess-für-Software-Einheiten"
+
+\end_inset
+
 Entstehungsprozess für Software-Einheiten
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename QS_Ablauf_Entsch.jpeg
-	lyxscale 50
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Prüfungsablauf für die Qualitätssicherung
 \end_layout
 
 \end_inset
