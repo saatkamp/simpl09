@@ -11,3 +11,8 @@ Momentan lesen des Developer Guides auf der Apache ODE Seite. Ist allerdings bis
 Auf dieser Seite befindet sich eine Übersicht dazu, welche BPEL Aktivitäten in ODE unterstützt sind und welche nur teilweise oder gar nicht unterstützt sind:
 
 http://ode.apache.org/ws-bpel-20-specification-compliance.html
+
+Das Monitoring in ODE wird wie ich es bisher verstanden habe über das ProcessManagementInterface und das InstanceManagementInterface durchgeführt. Werd mir dazu allerdings heute und am WE nochmal ein paar Sachen anschauen und überprüfen ob das soweit stimmt. Hier mal die Javacode Pages zu den beiden Interfaces:
+
+http://ode.apache.org/javadoc/org/apache/ode/bpel/pmapi/ProcessManagement.html
+http://ode.apache.org/javadoc/org/apache/ode/bpel/pmapi/InstanceManagement.html
