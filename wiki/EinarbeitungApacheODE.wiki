@@ -16,3 +16,7 @@ Das Monitoring in ODE wird wie ich es bisher verstanden habe über das ProcessMa
 
 http://ode.apache.org/javadoc/org/apache/ode/bpel/pmapi/ProcessManagement.html
 http://ode.apache.org/javadoc/org/apache/ode/bpel/pmapi/InstanceManagement.html
+
+So wie ich es gerade sehe, scheint hauptsächlich das Process ManagementInterface für Monitoring Funktionen zuständig zu sein. Mit diesem können alle Prozesse oder ein Teil der Prozesse aufgelistet werden. Weiterhin kann man sich die Details zu allen Prozessen anzeigen lassen. Zum Beispiel wann und von wem sie gestartet wurden usw.
+
+Komplette Liste und Ausarbeitung folgt.
