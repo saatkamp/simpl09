@@ -22,7 +22,7 @@
 \def\doctitel{Spezifikation}
 \def\docvers{1.0}
 \def\docautor{Firas Zoabi}
-\def\docdate{12. Juli 2009}
+\def\docdate{01. August 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft}
@@ -554,6 +554,139 @@ hier gehts darum für wem ist der Egebniss dieser Projkt.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Einschränkungen
+\end_layout
+
+\begin_layout Section
+SIMPL 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Spezifiche Beschreibung für das Projektziel .
+ Eine graphische Darstellung für ein Beispiel wissin.
+ Workflow mithilfe von Bpel-Prozess ist sehr angebracht .es verschaft besseren
+ überblick bei den Kunden sowie im Projektteam.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Work Flow
+\end_layout
+
+\begin_layout Subsection
+BPEL-Prozess
+\end_layout
+
+\begin_layout Subsection
+Erweiterbarkeit des BPEL-Prozesses
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+wo und wie sind Erweiterungen für das BPEL-Prozess.
+ Hier soll das eigentliche Vorgehen unsere Arbeit dargestellt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Weitere Anforderungen
+\end_layout
+
+\begin_layout Subsection
+Technische Anforderungen
+\end_layout
+
+\begin_layout Subsubsection
+Speicherplatz
+\end_layout
+
+\begin_layout Subsubsection
+Geschwindigkeit und Performance
+\end_layout
+
+\begin_layout Subsection
+Nicht-funktionale Anforderungen
+\end_layout
+
+\begin_layout Subsubsection
+Mengengerüst
+\end_layout
+
+\begin_layout Subsubsection
+Erweiterbarkeit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+man könnte diesen unterpunkt als ein Hauptpunkt wegen ihre wichtigkeit nehmen
+ und behandeln.
+ ???
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sicherheit
+\end_layout
+
+\begin_layout Subsubsection
+Wartbarkeit
+\end_layout
+
+\begin_layout Subsubsection
+Verfügbarkeit
+\end_layout
+
+\begin_layout Subsubsection
+Robustheit
+\end_layout
+
+\begin_layout Subsubsection
+Zuverlässigkeit
+\end_layout
+
+\begin_layout Subsection
+Allgemeine Anforderungen
+\end_layout
+
+\begin_layout Subsubsection
+Kompatibilität
+\end_layout
+
+\begin_layout Subsubsection
+Hardware
+\end_layout
+
+\begin_layout Subsubsection
+Software
+\end_layout
+
+\begin_layout Subsubsection
+Sprache
 \end_layout
 
 \begin_layout Section
