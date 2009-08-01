@@ -2112,6 +2112,64 @@ target "http://pub...w/v9r5/index.jsp"
 
 \end_layout
 
+\begin_layout Subsubsection
+Unterstützende Werkzeuge im Projektarbeit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
+ unterstützen , wie beim Dokumenten Erzeugen oder SVN-Tool
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Subversion 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://svnbook.red-bean.com"
+target "http://svnbook.red-bean.com"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Maven 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://svnbook.red-bean.com"
+target "http://svnbook.red-bean.com"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Lyx xxxxx 
+\end_layout
+
+\begin_layout Description
+LaTeX xxx
+\end_layout
+
+\begin_layout Description
+Eclipse-Subversion xxxxx
+\end_layout
+
+\begin_layout Description
+TortoiseSVN xxx
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
