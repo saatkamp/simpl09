@@ -2020,7 +2020,96 @@ Technische Prozesse
 \end_layout
 
 \begin_layout Subsection
-Methoden, Werkzeuge und Techniken 
+Methoden, Werkzeuge und Techniken
+\end_layout
+
+\begin_layout Subsubsection
+Technologien bzw.
+ Werkzeuge für die Entwicklung
+\end_layout
+
+\begin_layout Standard
+Es werden die Verchiedene Technologien in Entwicklung eingesetzt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
+\end_layout
+
+\begin_layout Plain Layout
+über jeden folgender Technologien bzw.
+ Werkzeuge eine kleinen Text 
+\end_layout
+
+\begin_layout Plain Layout
+-was die sind 
+\end_layout
+
+\begin_layout Plain Layout
+-und wichtig auch wofür sie in unsere Projekt gebraucht sind 
+\end_layout
+
+\begin_layout Plain Layout
+-und warum die und nicht andere.
+ Vorteil ,Nachteil.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Hudson 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://hudson.dev.java.net/"
+target "https://hudson.dev.java.net/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+ApacheODE 
+\begin_inset CommandInset href
+LatexCommand href
+name "http:/ode.apache.org"
+target "http:/ode.apache.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Eclipse-Bpel-Designer 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.eclipse.org/bpel"
+target "http://www.eclipse.org/bpel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+IBM-DB2 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://pub...w/v9r5/index.jsp"
+target "http://pub...w/v9r5/index.jsp"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
