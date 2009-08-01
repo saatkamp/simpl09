@@ -21,7 +21,7 @@
 % docdate = Datum der letzten Änderung
 \def\doctitel{Projektplan}
 \def\docvers{0.1}
-\def\docautor{Michael Hahn}
+\def\docautor{Michael Hahn, Firas Zoabi}
 \def\docdate{22. Juli 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet} 
