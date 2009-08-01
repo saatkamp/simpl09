@@ -4,9 +4,9 @@
 <name>SIMPL</name>
 <property name="view" value="0"/>
 <property name="fontsize" value="10"/>
-<property name="zoomfactor" value="107"/>
-<property name="export-width" value="29.7"/>
-<property name="export-height" value="21.0"/>
+<property name="zoomfactor" value="100"/>
+<property name="export-width" value="65.0"/>
+<property name="export-height" value="30.0"/>
 <property name="export-dpi" value="50.0"/>
 <property name="export-standartsize" value="benutzerdefiniert"/>
 <instance>
