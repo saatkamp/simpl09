@@ -5,7 +5,7 @@
 <property name="view" value="0"/>
 <property name="fontsize" value="10"/>
 <property name="zoomfactor" value="100"/>
-<property name="export-width" value="65.0"/>
+<property name="export-width" value="60.0"/>
 <property name="export-height" value="30.0"/>
 <property name="export-dpi" value="50.0"/>
 <property name="export-standartsize" value="benutzerdefiniert"/>
@@ -183,7 +183,7 @@
 <name>Implementierung</name>
 <short-name>imp</short-name>
 <start-date date="1" month="12" year="2009"/>
-<end-date date="1" month="3" year="2010"/>
+<end-date date="22" month="2" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="-1070695339" type="end-begin"/>
@@ -193,33 +193,61 @@
 <name>Glassbox Testfälle</name>
 <short-name>gbtf</short-name>
 <start-date date="15" month="1" year="2010"/>
-<end-date date="1" month="3" year="2010"/>
+<end-date date="22" month="2" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 </activity>
 <activity id="-912530410">
 <name>Handbuch</name>
 <short-name>Handb</short-name>
-<start-date date="1" month="3" year="2010"/>
-<end-date date="24" month="4" year="2010"/>
+<start-date date="22" month="2" year="2010"/>
+<end-date date="17" month="4" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
+<activity id="-226064656">
+<name>Erstellung</name>
+<short-name>HBers</short-name>
+<start-date date="22" month="2" year="2010"/>
+<end-date date="25" month="3" year="2010"/>
+<property name="keep-length" value="false"/>
+<property name="move-dependencies" value="true"/>
+<dependency activity-id="-733823745" type="begin-end"/>
+</activity>
+<activity id="-733823745">
+<name>Handbuch Review</name>
+<short-name>HBrew</short-name>
+<start-date date="25" month="3" year="2010"/>
+<end-date date="29" month="3" year="2010"/>
+<property name="keep-length" value="false"/>
+<property name="move-dependencies" value="true"/>
+<dependency activity-id="-226064656" type="end-begin"/>
+<dependency activity-id="874667420" type="begin-end"/>
+</activity>
+<activity id="874667420">
+<name>Handbuch Überarbeitung</name>
+<short-name>HBübe</short-name>
+<start-date date="29" month="3" year="2010"/>
+<end-date date="17" month="4" year="2010"/>
+<property name="keep-length" value="false"/>
+<property name="move-dependencies" value="true"/>
+<dependency activity-id="-733823745" type="end-begin"/>
+</activity>
 </activity>
 <activity id="207130901">
 <name>Test</name>
 <short-name>test</short-name>
-<start-date date="1" month="3" year="2010"/>
-<end-date date="24" month="4" year="2010"/>
+<start-date date="22" month="2" year="2010"/>
+<end-date date="17" month="4" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
-<dependency activity-id="60788455" type="begin-end"/>
-<dependency activity-id="-1854221508" type="end-begin"/>
 <dependency activity-id="-283047784" type="begin-begin"/>
+<dependency activity-id="-1854221508" type="end-begin"/>
+<dependency activity-id="60788455" type="begin-end"/>
 <activity id="-283047784">
 <name>Modultest</name>
 <short-name>modte</short-name>
-<start-date date="1" month="3" year="2010"/>
-<end-date date="11" month="3" year="2010"/>
+<start-date date="22" month="2" year="2010"/>
+<end-date date="4" month="3" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="207130901" type="begin-begin"/>
@@ -228,8 +256,8 @@
 <activity id="-847728832">
 <name>Neue Phase</name>
 <short-name>IntTe</short-name>
-<start-date date="11" month="3" year="2010"/>
-<end-date date="31" month="3" year="2010"/>
+<start-date date="4" month="3" year="2010"/>
+<end-date date="23" month="3" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="-283047784" type="end-begin"/>
@@ -238,8 +266,8 @@
 <activity id="-199821848">
 <name>Systemtest</name>
 <short-name>SysTe</short-name>
-<start-date date="31" month="3" year="2010"/>
-<end-date date="24" month="4" year="2010"/>
+<start-date date="23" month="3" year="2010"/>
+<end-date date="16" month="4" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="-847728832" type="end-begin"/>
@@ -248,18 +276,18 @@
 <activity id="60788455">
 <name>Puffer</name>
 <short-name>Puff</short-name>
-<start-date date="24" month="4" year="2010"/>
+<start-date date="17" month="4" year="2010"/>
 <end-date date="13" month="5" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
+<dependency activity-id="207130901" type="end-begin"/>
 <dependency activity-id="-1517210010" type="begin-begin"/>
 <dependency activity-id="1751739749" type="end-end"/>
-<dependency activity-id="207130901" type="end-begin"/>
 <activity id="-1517210010">
 <name>Abnahmetest</name>
 <short-name>abnah</short-name>
-<start-date date="24" month="4" year="2010"/>
-<end-date date="24" month="4" year="2010"/>
+<start-date date="17" month="4" year="2010"/>
+<end-date date="17" month="4" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="60788455" type="begin-begin"/>
@@ -267,7 +295,7 @@
 <activity id="1751739749">
 <name>Erweiterung</name>
 <short-name>erwei</short-name>
-<start-date date="24" month="4" year="2010"/>
+<start-date date="17" month="4" year="2010"/>
 <end-date date="13" month="5" year="2010"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
