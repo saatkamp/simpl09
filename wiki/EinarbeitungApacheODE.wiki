@@ -31,3 +31,11 @@ Then add your implementation in the server's classpath and add a property in ode
 ode-axis2.event.listeners=com.compamy.product.MyOdeEventListener 
 
 Start your server and you're done!
+
+Das heißt es ist relativ einfach möglich neue EventListener für ODE zu implementieren. Denk aber das wir das nicht brauchen werden.
+
+Hier noch einmal eine Liste der Erweiterungen die ODE gegenüber dem normalen WS-BPEL enthält:
+
+http://ode.apache.org/bpel-extensions.html
+
+Diese Erweiterungen sind nichts anderes als einige Funktionen die ODE zusätzlich implementiert und die es im normalen BPEL nicht gibt.
