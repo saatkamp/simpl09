@@ -20,3 +20,12 @@ http://ode.apache.org/javadoc/org/apache/ode/bpel/pmapi/InstanceManagement.html
 So wie ich es gerade sehe, scheint hauptsächlich das Process ManagementInterface für Monitoring Funktionen zuständig zu sein. Mit diesem können alle Prozesse oder ein Teil der Prozesse aufgelistet werden. Weiterhin kann man sich die Details zu allen Prozessen anzeigen lassen. Zum Beispiel wann und von wem sie gestartet wurden usw.
 
 Komplette Liste und Ausarbeitung folgt.
+
+So hier auch noch was interessantes (direkt von der ODE Seite kopiert):
+
+Ode lets you register your own event listeners to analyze all produced events and do whatever you want to do with them. To create a listener you just need to implement the org.apache.ode.bpel.iapi.BpelEventListener interface.
+
+Then add your implementation in the server's classpath and add a property in ode-axis2.properties giving your fully qualified implementation class name. Something like:
+ode-axis2.event.listeners=com.compamy.product.MyOdeEventListener 
+
+Start your server and you're done!
