@@ -895,6 +895,23 @@ Prozessmodell
 \end_layout
 
 \begin_layout Standard
+Strenges Wasserfallmodell: 
+\end_layout
+
+\begin_layout Standard
+Begründung: Das Studienprojekt hat einen sehr straffen Zeitplan, der unbedingt
+ eingahlten werden muss.
+ So ist es für alle beteiligten(Betreuer, Kunden, Studenten) gut zu wissen
+ wo sie sich gerade befinden, was hier gut möglich ist, da ein zurückspringen
+ in andere Phasen nicht möglich ist.
+ Dies bedeutet jedoch nicht, das nicht zum Beispiel die Spezifikation zu
+ späteren Zeitpunkten noch mal übrearbeiten werden könnte, sondern lediglich,
+ das man zum überarbeiten der Spezifikation nicht noch einmal in die entsprechen
+de Phase zurückkehrt, sondern die Überarbeitung in der Aktuellen Phase stattfind
+en lässt.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -929,8 +946,7 @@ reference "fig:Organisationsstruktur-als-Organigramm"
  Aufgabengebiet umgesetzt werden sollte.
  Der Projektleiter kann jedoch trotzdem diese Entscheidungen stürzen und
  so auch demokratische Entscheidungen des Teams gegen den Verantwortlichen
- des Aufgabengebiets durchsetzen.
- 
+ des Aufgabengebiets durchsetzen, sollte dies notwendig sein.
 \end_layout
 
 \begin_layout Standard
@@ -1053,10 +1069,6 @@ Schnittstellen innerhalb der Organisation
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1157,7 +1169,7 @@ g von einheitlichen Dokumentvorlagen erreicht werden.
 \end_layout
 
 \begin_layout Subsubsection
-Entwickler: Alle Teammitglieder
+Entwickler: Firas, Michael S., Michael H., Xi, Daniel, René
 \end_layout
 
 \begin_layout Standard
@@ -2371,10 +2383,11 @@ Die im vorigen Abschnitt definierten Phasen werden nun in Arbeitspakete
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="23" columns="3">
+<lyxtabular version="3" rows="26" columns="4">
 <features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
-<column alignment="left" valignment="top" width="2.1cm">
+<column alignment="left" valignment="top" width="3cm">
 <column alignment="left" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="6cm">
 <column alignment="left" valignment="top" width="6cm">
 <row endhead="true" endfirsthead="true">
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -2399,13 +2412,22 @@ Bezeichnung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
 Aufgaben
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dokumente
 \end_layout
 
 \end_inset
@@ -2432,11 +2454,20 @@ Projektplan
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Erstellung des Projektplans
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Projektplan
 \end_layout
 
 \end_inset
@@ -2463,11 +2494,20 @@ Angebot
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Erstellung des Angebots für die Kunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Angebot
 \end_layout
 
 \end_inset
@@ -2530,7 +2570,7 @@ Einarbeitung in Tools
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2559,6 +2599,15 @@ SVN
 
 \begin_layout Itemize
 IBM DB2 (einb#tools#6)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Foliensammlung als Nachschlagewerk
 \end_layout
 
 \end_inset
@@ -2609,7 +2658,7 @@ Einarbeitung in Konzepte
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2630,6 +2679,16 @@ Eclipse BPEL Designer
 
 \begin_layout Itemize
 BPEL/SQL (einb#konzept#4)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Berichte als Grundlage für Spezifikation und Implementierung bzw.
+ Erweiterung der Technologien.
 \end_layout
 
 \end_inset
@@ -2656,11 +2715,20 @@ Spezifikation erstellen
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Erstellung der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikationsdokument
 \end_layout
 
 \end_inset
@@ -2687,11 +2755,20 @@ spez#rev1
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Interner Review der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reviewprotokoll
 \end_layout
 
 \end_inset
@@ -2718,11 +2795,20 @@ spez#kor1
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Korrektur der Spezifikation nach dem 1.Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrigiertes Spezifikationsdokument
 \end_layout
 
 \end_inset
@@ -2749,11 +2835,20 @@ spez#rev2
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Weiterer Review der Spezifikation diesmal mit den Kunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reviewprotokoll
 \end_layout
 
 \end_inset
@@ -2780,7 +2875,7 @@ spez#kor2
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2789,33 +2884,11 @@ Korrektur der Spezifikation nach dem 2.Review
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-entw#erstell
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Entwurf erstellen
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erstellung des Entwurfsdokuments
+Kundenfassung der Spezifikation
 \end_layout
 
 \end_inset
@@ -2828,7 +2901,7 @@ Erstellung des Entwurfsdokuments
 \begin_layout Plain Layout
 
 \shape italic
-entw#rev
+GrEntw#erstell
 \end_layout
 
 \end_inset
@@ -2837,7 +2910,16 @@ entw#rev
 \begin_inset Text
 
 \begin_layout Plain Layout
-Review des Entwurfs
+Grobentwurf erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung des Grobentwurfs (zusammenhang zwischen Komponenten)
 \end_layout
 
 \end_inset
@@ -2846,7 +2928,47 @@ Review des Entwurfs
 \begin_inset Text
 
 \begin_layout Plain Layout
-Interner Review des Entwurfs
+Dokument des Grobentwurfs
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+GrEntw#rev
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Review des Grobentwurfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interner Review des Grobentwurfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ReviewProtokoll
 \end_layout
 
 \end_inset
@@ -2873,7 +2995,7 @@ Korrektur des Entwurfs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2882,6 +3004,53 @@ Korrektur des Entwurfs nach dem Review
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Grobentwurf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FeinEntw#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feinentwurf erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellen des Feinentwurfes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dokument des Feinentwurf
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -2891,6 +3060,15 @@ Korrektur des Entwurfs nach dem Review
 
 \shape italic
 code#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2935,28 +3113,6 @@ code#
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-code#
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -2997,6 +3153,15 @@ code#
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -3014,7 +3179,47 @@ code#
 \begin_layout Plain Layout
 
 \shape italic
-code#handb
+code#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+handb#erstell
 \end_layout
 
 \end_inset
@@ -3028,11 +3233,96 @@ Handbuch erstellen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Erstellung eines Handbuches
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+handb#rev
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interner review des Handbuches
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Review Protokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+handb#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrigiern des Handbuchs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch Korrektur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung Handbuch
 \end_layout
 
 \end_inset
@@ -3059,12 +3349,21 @@ Modultest
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Planung und Durchführung des Modulttests mit anschließender Korrektur der
  entdeckten Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testprotokoll
 \end_layout
 
 \end_inset
@@ -3091,12 +3390,21 @@ Integrationstest
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Planung und Durchführung des Integrationstests mit anschließender Korrektur
  der entdeckten Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testprotokoll
 \end_layout
 
 \end_inset
@@ -3123,12 +3431,21 @@ Systemtest
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Planung und Durchführung des Systemtests mit anschließender Korrektur der
  entdeckten Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testpotokoll
 \end_layout
 
 \end_inset
@@ -3155,11 +3472,20 @@ Abnahme
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Abnahme durch die Kunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3186,11 +3512,20 @@ Erweiterung/Anpassung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Durchführung möglicher Erweiterungen und/oder Anpassungen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3230,7 +3565,7 @@ Ressourcenanforderung
 \end_layout
 
 \begin_layout Standard
-a
+
 \end_layout
 
 \begin_layout Standard
@@ -3346,7 +3681,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.07.2009-07.09.2009
+17.07.2009-07.08.2009
 \end_layout
 
 \end_inset
@@ -3355,7 +3690,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-526 h
+252 h
 \end_layout
 
 \end_inset
@@ -3375,7 +3710,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.09.2009-31.10.2009
+07.08.2009-31.09.2009
 \end_layout
 
 \end_inset
@@ -3384,7 +3719,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-547 h
+588 h
 \end_layout
 
 \end_inset
@@ -3404,7 +3739,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-31.10.2009-24.12.2209
+31.09.2009-01.12.2009
 \end_layout
 
 \end_inset
@@ -3413,7 +3748,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-243 h
+672 h
 \end_layout
 
 \end_inset
@@ -3433,7 +3768,7 @@ Codierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-24.12.2009-12.03.2010
+01.12.2009-22.02.2010
 \end_layout
 
 \end_inset
@@ -3442,7 +3777,7 @@ Codierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-779 h
+924 h
 \end_layout
 
 \end_inset
@@ -3462,7 +3797,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-12.03.2010-15.04.2010
+22.02.2010-17.04.2010
 \end_layout
 
 \end_inset
@@ -3471,7 +3806,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-334 h
+588 h
 \end_layout
 
 \end_inset
@@ -3491,7 +3826,7 @@ Abnahmetest
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.04.2010
+17.04.2010
 \end_layout
 
 \end_inset
@@ -3520,7 +3855,7 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.04.2010-13.05.2010
+17.04.2010-13.05.2010
 \end_layout
 
 \end_inset
@@ -3529,7 +3864,7 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-273 h
+294 h
 \end_layout
 
 \end_inset
@@ -3670,6 +4005,11 @@ Version 0.1
 , 22.
  Juli 2009: Erstellung des Dokuments.
  
+\end_layout
+
+\begin_layout Itemize
+Version 0.2, 02.
+ August 2009: Überarbeitung des Dokuments.
 \end_layout
 
 \end_body
