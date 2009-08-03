@@ -71,9 +71,9 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
-\author "" 
+\author "Administrator" 
 \author "" 
 \end_header
 
@@ -492,7 +492,7 @@ status collapsed
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
+<lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="none" valignment="top" width="0" special="@{}p{12cm}">
 <column alignment="none" valignment="top" width="4cm">
@@ -555,7 +555,7 @@ Projektleiter SIMPL
 \begin_inset Text
 
 \begin_layout Plain Layout
-Peter Reimann 
+Peter Reimann, 
 \end_layout
 
 \end_inset
@@ -567,6 +567,30 @@ Peter Reimann
 
 \size small
 Universitätsstraße 38
+\size default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mirko Sonntag
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+70569 Stuttgart
 \size default
  
 \end_layout
@@ -589,10 +613,6 @@ Universitätsstraße 38
 
 \begin_layout Plain Layout
 
-\size small
-70569 Stuttgart
-\size default
- 
 \end_layout
 
 \end_inset
@@ -802,7 +822,8 @@ e führe ich nach Absprache aus)
 \end_layout
 
 \begin_layout Standard
-Sehr geehrte Frau Görlach, sehr geehrter Herr Reimann, 
+Sehr geehrte Frau Görlach, sehr geehrter Herr Reimann, sehr geehrter Herr
+ Sonntag, 
 \begin_inset Newline newline
 \end_inset
 
@@ -812,6 +833,15 @@ Sehr geehrte Frau Görlach, sehr geehrter Herr Reimann,
 \begin_layout Standard
 vielen Dank für Ihr Interesse an einem Angebot unserer Firma.
  Gerne würden wir ihre Vorstellungen im Rahmen eines Entwicklungsprojekts
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Entwicklunsprojekt noch beschreiben oder ändern
+\end_layout
+
+\end_inset
+
  umsetzen.
  
 \begin_inset Newline newline
@@ -1555,16 +1585,78 @@ Ausgangssituation
 
 \begin_layout Standard
 \noindent
-Zur Modellierung und Ausführung von Workflows jeglicher Art wird bisher
- die Sprache BPEL ( Business Process Execution Language ) verwendet.
- BPEL hat seine Stärke, wie der Name schon sagt, im Bereich der Geschäftsprozess
-e.
+Zur Modellierung und Ausführung von 
+\change_inserted 0 1249309718
+Business 
+\change_unchanged
+Workflows 
+\change_deleted 0 1249309722
+jeglicher Art
+\change_unchanged
+ wird 
+\change_deleted 0 1249309747
+bisher 
+\change_inserted 0 1249309756
+ 
+\change_unchanged
+die Sprache BPEL ( Business Process Execution Language ) 
+\change_inserted 0 1249309790
+bereits lange und effektiv 
+\change_deleted 0 1249309792
+verwendet
+\change_inserted 0 1249309796
+ eingesetzt
+\change_unchanged
+.
+ 
+\change_inserted 0 1249310143
+Die Stärken von BPEL, die 
+\change_deleted 0 1249310152
+BPEL hat seine Stärke, 
+\change_inserted 0 1249310278
+,wie der Name schon sagt, 
+\change_unchanged
+im Bereich der Geschäftsprozesse
+\change_inserted 0 1249310313
+ liegen, sollen nun auch für wissenschaftliche Workflows ausgenutzt werden
+ können
+\change_unchanged
+.
  Im wissenschaftlichen Bereich gelten andere Anforderungen und dafür ist
- BPEL nicht gut geeignet.
+ BPEL
+\change_deleted 0 1249310348
+ nicht
+\change_unchanged
+ 
+\change_inserted 0 1249310330
+bis jetzt noch nicht 
+\change_deleted 0 1249310331
+gut 
+\change_unchanged
+geeignet.
  Da aber auch im wissenschaftlichen Bereich immer öfter Workflows eingesetzt
  werden, sei es bei der Durchführung von komplexen Berechnungen im Rahmen
- von Simulationen oder bei der Ausführung von Experimenten, bedarf es einer
- Anpassung von BPEL an die wissenschaftlichen Bedürfnisse.
+ von Simulationen oder bei der Ausführung von Experimenten, 
+\change_deleted 0 1249310370
+bedarf
+\change_inserted 0 1249310469
+sollen
+\change_unchanged
+ 
+\change_deleted 0 1249310373
+es 
+\change_inserted 0 1249310393
+ mithilfe einer
+\change_unchanged
+ Anpassung von BPEL 
+\change_deleted 0 1249310430
+an
+\change_unchanged
+ die wissenschaftlichen Bedürfnisse
+\change_inserted 0 1249310483
+ an BPEL erfüllt werden
+\change_unchanged
+.
  Gekennzeichnet sind wissenschaftliche Workflows in der Regel durch große
  Datenmengen, die Heterogenität der Daten und somit dem Bedarf nach großer
  Rechenkapazität.
@@ -1573,21 +1665,46 @@ e.
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 0 1249310544
 Externe Beteiligte
+\change_inserted 0 1249310553
+Projektbeteiligte
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249310572
 An dieser Stelle werden die externen Projektbeteiligten genannt.
  Dies sind die Kunden und die Betreuer vom Institut für Architektur von
  Anwendungssystemen (IAAS) und dem Institut für Parallele und Verteilte
  Systeme (IPVS).
+\change_inserted 0 1249312333
+In diesem Abschnitt geht es um die beteiligten Parteien des Projekts.
+ Diese sind, nachfolgend als die Kunden bezeichnet, Katharina Görlach, Peter
+ Reimann und Mirko Sonntag, sowie die Firma SIMPL, nachfolgend als Auftragnehmer
+ bezeichnet, die durch Wolfgang Hüttig vertreten wird.
+ Der Auftragnehmer besteht aus den Projektmitarbeitern: Wolfgang Hüttig,
+ Michael Schneidt, René Rehn, Michael Hahn, Firas Zoabi, Daniel Brüderle
+ und Xi Tu, wobei Wolfgang Hüttig der zentrale Ansprechpartner des Auftragnehmer
+s für das Projekt ist.
+ Im Rahmen dieses Angebots kommt dabei ein Vertrag zwischen den Kunden und
+ dem Auftragnehmer zustande.
 \end_layout
 
-\begin_layout Subsubsection
-Kunden
+\begin_layout Standard
+
+\change_inserted 0 1249312916
+Die Kontaktdaten der Kunden sind wie folgt:
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Description
+\begin_layout Standard
 
 \series bold
 Dipl.-Inf.
@@ -1612,13 +1729,25 @@ Fax: +49 (0)711 7816-472
 
 \begin_layout Standard
 E-Mail: katharina.goerlach(@)iaas.uni-stuttgart.de
+\change_inserted 0 1249312898
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
-\begin_layout Description
+\begin_layout Standard
+
+\series bold
 Dipl.-Inf.
+ Peter
+\series default
  
 \series bold
-Peter Reimann
+Reimann
 \end_layout
 
 \begin_layout Standard
@@ -1639,17 +1768,29 @@ Fax: +49 (0)711 7816-424
 
 \begin_layout Standard
 E-Mail: Peter.Reimann(@)ipvs.uni-stuttgart.de
+\change_inserted 0 1249312893
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
-\begin_layout Subsubsection
-Betreuer
-\end_layout
-
-\begin_layout Description
+\begin_layout Standard
 
 \series bold
-Dipl.-Math.
- Michael Reiter
+Dipl.
+\series default
+-
+\series bold
+Inf.
+
+\series default
+ 
+\series bold
+Mirko Sonntag
 \end_layout
 
 \begin_layout Standard
@@ -1657,46 +1798,19 @@ Institut für Architektur von Anwendungssystemen
 \end_layout
 
 \begin_layout Standard
-Universitätsstraße 38, 70569 Stuttgart (Zimmer 1.037)
+Universitätsstraße 38, 70569 Stuttgart (Zimmer 1.332)
 \end_layout
 
 \begin_layout Standard
-Telefon: +49 (0)711 7816-416 
+Telefon: +49 (0)711 7816-202 
 \end_layout
 
 \begin_layout Standard
-Fax: +49 (0)711 7816-472 
+Fax: +49 (0)711 7816-472
 \end_layout
 
 \begin_layout Standard
-E-Mail: michael.reiter(@)iaas.uni-stuttgart.de
-\end_layout
-
-\begin_layout Description
-
-\series bold
-Dipl.-Inf.
- Marko Vrhovnik
-\end_layout
-
-\begin_layout Standard
-Institut für Parallele und Verteilte Systeme
-\end_layout
-
-\begin_layout Standard
-Universitätsstraße 38, 70569 Stuttgart (Zimmer 2.467)
-\end_layout
-
-\begin_layout Standard
-Telefon: +49 (0)711 7816-242 
-\end_layout
-
-\begin_layout Standard
-Fax: +49 (0)711 7816-424 
-\end_layout
-
-\begin_layout Standard
-E-Mail: Marko.Vrhovnik(@)ipvs.uni-stuttgart.de 
+E-Mail: mirko.sonntag(@)iaas.uni-stuttgart.de
 \end_layout
 
 \begin_layout Subsection
