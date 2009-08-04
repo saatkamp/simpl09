@@ -1599,7 +1599,15 @@ bisher
 \change_inserted 0 1249309756
  
 \change_unchanged
-die Sprache BPEL ( Business Process Execution Language ) 
+die Sprache BPEL (
+\change_deleted 0 1249377846
+ 
+\change_unchanged
+Business Process Execution Language
+\change_deleted 0 1249377849
+ 
+\change_unchanged
+) 
 \change_inserted 0 1249309790
 bereits lange und effektiv 
 \change_deleted 0 1249309792
@@ -1658,8 +1666,13 @@ an
 \change_unchanged
 .
  Gekennzeichnet sind wissenschaftliche Workflows in der Regel durch große
- Datenmengen, die Heterogenität der Daten und somit dem Bedarf nach großer
- Rechenkapazität.
+ Datenmengen, die Heterogenität der Daten und somit de
+\change_deleted 0 1249377897
+m
+\change_inserted 0 1249377897
+n
+\change_unchanged
+ Bedarf nach großer Rechenkapazität.
  Diesen Anforderungen soll durch die neu zu entwickelnde Software Rechnung
  getragen werden.
 \end_layout
@@ -1702,16 +1715,22 @@ Die Kontaktdaten der Kunden sind wie folgt:
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing double
+\noindent
 
 \series bold
 Dipl.-Inf.
  Katharina Görlach
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
+
+\series default
 Institut für Architektur von Anwendungssystemen 
 \end_layout
 
@@ -1729,17 +1748,15 @@ Fax: +49 (0)711 7816-472
 
 \begin_layout Standard
 E-Mail: katharina.goerlach(@)iaas.uni-stuttgart.de
-\change_inserted 0 1249312898
-
 \begin_inset Newline newline
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing double
+\noindent
 
 \series bold
 Dipl.-Inf.
@@ -1748,9 +1765,11 @@ Dipl.-Inf.
  
 \series bold
 Reimann
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
+
+\series default
 Institut für Parallele und Verteilte Systeme
 \end_layout
 
@@ -1768,17 +1787,15 @@ Fax: +49 (0)711 7816-424
 
 \begin_layout Standard
 E-Mail: Peter.Reimann(@)ipvs.uni-stuttgart.de
-\change_inserted 0 1249312893
-
 \begin_inset Newline newline
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
+\paragraph_spacing double
+\noindent
 
 \series bold
 Dipl.
@@ -1791,9 +1808,11 @@ Inf.
  
 \series bold
 Mirko Sonntag
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
+
+\series default
 Institut für Architektur von Anwendungssystemen 
 \end_layout
 
@@ -1822,8 +1841,7 @@ Projektbeschreibung
 status open
 
 \begin_layout Plain Layout
-Hier eventuell noch aussagen über Prozessmodell und ?Iterationen?, beziehungswei
-se andere organisatorische Projekteigenschaften.
+Verbesserung dieses Abschnitts anhand der Kommentare von Mirko Sonntag
 \end_layout
 
 \end_inset
@@ -1848,13 +1866,23 @@ Entwicklungsgrundlagen
 Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
  Dadurch wird eine hohe Qualität des Produkts gewährleistet.
  Wichtige Qualitäten sind dabei die Wartbarkeit und die Erweiterbarkeit
- des Systems, da es über einen längeren Zeitraum bestehen soll und in der
+ des Systems, da es über einen längeren Zeitraum bestehen soll und in
+\change_deleted 0 1249378036
+ der
+\change_unchanged
  Zukunft um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff
  und den Umgang mit weiteren Datenformaten ergänzt werden soll.
- Ein weitere wichtige Qualität ist die Skalierbarkeit des Systems, die eine
- sehr flexible Infrastruktur erlauben muss, da die Computersysteme auf denen
- SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinander gehen,
- d.h.
+ Ein
+\change_inserted 0 1249378047
+e
+\change_unchanged
+ weitere wichtige Qualität ist die Skalierbarkeit des Systems, die eine
+ sehr flexible Infrastruktur erlauben muss, da die Computersysteme
+\change_inserted 0 1249378057
+,
+\change_unchanged
+ auf denen SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinander
+ gehen, d.h.
  vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
  möglich sein.
 \end_layout
@@ -1863,8 +1891,24 @@ Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
 Robustheit und Usability der Software sind für uns innerhalb des Entwicklungspro
 zesses von großem Interesse.
  Die Usability sollte sich vor allem an unerfahrene und Nutzer mit wenig
- Kenntnissen richten und dafür die bestmögliche Transparenz liefern, um
- die Verwendung von SIMPL für alle Benutzergruppen zu ermöglichen.
+ Kenntnissen 
+\change_inserted 0 1249378120
+im Umgang mit Workflows und BPEL 
+\change_unchanged
+richten und dafür die bestmögliche Transparenz
+\change_inserted 0 1249378360
+ liefern.
+ d.h.
+ das die interne Prozesslogik der Software bestmöglich vom Benutzer
+\change_unchanged
+ 
+\change_inserted 0 1249378347
+abgeschirmt wird und das er eine möglichst einfache und schnell verständliche
+ Schnittstelle zur Software erhält, 
+\change_deleted 0 1249378368
+liefern,
+\change_unchanged
+ um die Verwendung von SIMPL für alle Benutzergruppen zu ermöglichen.
  
 \end_layout
 
@@ -1886,30 +1930,90 @@ Mit der ganzen Gruppe erweitern und noch ausführlicher beschreiben
 \end_layout
 
 \begin_layout Standard
-Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk erstellen,
- welches den Zugriff auf nahezu beliebige Datenquellen ermöglichen soll.
+Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk 
+\change_inserted 0 1249378487
+für die Modellierung und Ausführung von Workflows 
+\change_unchanged
+erstellen, welches den Zugriff auf nahezu beliebige Datenquellen ermöglichen
+ soll.
  Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
  und Dateisysteme handeln.
  Der Schwerpunkt soll klar auf wissenschaftlichen Workflows beruhen.
  Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
  BPEL-Prozess eingebunden werden können.
- Dafür werden bereits vorhandene Konzepte evaluiert und für unsere Zwecke
+ Dafür werden bereits vorhandene Konzepte evaluiert und 
+\change_deleted 0 1249378584
+für unsere Zwecke
+\change_inserted 0 1249378587
+falls nötig
+\change_unchanged
  erweitert oder angepasst.
- Dabei wird auch die Sprache BPEL für unsere Zwecke erweitert.
+ 
+\change_deleted 0 1249378620
+Dabei wird auch die Sprache BPEL für unsere Zwecke erweitert
+\change_inserted 0 1249378655
+Es wird untersucht, inwiefern die Sprache BPEL ebenfalls erweitert werden
+ muss
+\change_unchanged
+.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
- werden, so dass während der Laufzeit des Systems die Datenquellen festgelegt
- werden können.
- Weiterhin sollte auch die Möglichkeit bestehen die Datenquellen statisch
- anbinden zu können.
- Der Kunde besteht darauf, dass eine BPEL-Engine sowie ein Modellierungstool
- um diese gewünschten Funktionen erweitert bzw.
+ werden, so dass 
+\change_inserted 0 1249378720
+erst 
+\change_unchanged
+während der Laufzeit des Systems die Datenquellen festgelegt werden können.
+ 
+\change_deleted 0 1249378760
+Weiterhin
+\change_inserted 0 1249378765
+Nichtsdestotrotz
+\change_unchanged
+ sollte auch die Möglichkeit bestehen
+\change_inserted 0 1249378746
+,
+\change_unchanged
+ die Datenquellen statisch anbinden zu können.
+ 
+\change_deleted 0 1249378798
+Der Kunde besteht darauf
+\change_inserted 0 1249378805
+Eine Anforderung des Kunden ist
+\change_unchanged
+, dass eine 
+\change_inserted 0 1249378815
+vorhandene 
+\change_unchanged
+BPEL-Engine sowie ein 
+\change_inserted 0 1249378833
+vorhandenes 
+\change_unchanged
+Modellierungstool um diese gewünschten Funktionen erweitert bzw.
  angepasst werden.
- Die BPEL-Prozesse sollen mit dem entsprechenden Modellierungstool modelliert
+ Die BPEL-Prozesse sollen mit dem entsprechenden Modellierungstool 
+\change_deleted 0 1249378847
+modelliert
+\change_inserted 0 1249378849
+spezifiziert
+\change_unchanged
  und mit der BPEL-Engine ausgeführt werden können.
 \end_layout
 
 \begin_layout Section
 Projektteam-Organisation
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249379341
+In diesem Abschnitt wird die Organisation des Projektteams vorgestellt.
+ Alle Teammitglieder haben dabei mindestens eine bestimmte Rolle, die mit
+ entsprechenden Aufgaben und Pflichten verküpft ist.
+ Nachfolgend werden diese Rollen beschrieben und die Teammitglieder, die
+ diese Rolle besitzen, angegeben.
+ Danach folgen noch die Kontaktdaten aller Teammitglieder, damit der Kunde
+ bei spezifischen Fragen direkt mit dem Verantwortlichen oder bei nichterreichen
+ des Projektleiters mit dessen Stellvertreter Kontakt aufnehmen kann.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1941,9 +2045,18 @@ Rollen im Team
 \series bold
 \color black
 Projektleiter: Wolfgang Hüttig (Stellvertreter: Michael Hahn)
+\change_inserted 0 1249381455
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 0 1249381455
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
 Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
  Er koordiniert sämtlichen Schriftverkehr und die Kommunikation zwischen
  den Kunden, den Betreuern und dem Team.
@@ -1952,25 +2065,103 @@ Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
 
 \begin_layout Standard
 Seine zentralen Aufgaben liegen in der Verwaltung des Projekts, d.h.
- er plant, bewertet und kontrolliert, und verteilt alle Tätigkeiten und
- Ereignisse während des Projekts.
+ er plant
+\change_inserted 0 1249379688
+ den Ablauf des Projekts und der einzelnen Phasen
+\change_unchanged
+, 
+\change_inserted 0 1249379696
+er 
+\change_unchanged
+bewertet und kontrolliert
+\change_inserted 0 1249379840
+ abschliessend, als letzte Instanz, alle erstellten Dokumente vor ihrer
+ Freigabe
+\change_deleted 0 1249379794
+,
+\change_unchanged
+ und 
+\change_inserted 0 1249379798
+er 
+\change_deleted 0 1249379807
+verteilt alle Tätigkeiten und Ereignisse
+\change_unchanged
+ 
+\change_inserted 0 1249379855
+kümmert sich um die Verteilung der einzelnen Arbeitspakete 
+\change_unchanged
+während des Projekts.
+\change_inserted 0 1249381488
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249381491
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 Architekt: Michael Schneidt (Stellvertreter: Daniel Brüderle)
+\change_inserted 0 1249381447
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 0 1249381447
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_deleted 0 1249381448
+
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_unchanged
+
+\series default
 Der Architekt ist zuständig für die Architektur des zu entwickelnden Softwaresys
 tems und die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
  innerhalb des Softwaresystems.
  Er trifft die grundlegenden Entscheidungen über die Art und den Aufbau
- der Software-Architektur und überwacht deren Einhaltung während der Codierung.
- Der Architekt gewährleistet damit eine einfache Integration der einzelnen
+ der Software-Architektur und überwacht deren Einhaltung während der 
+\change_deleted 0 1249380221
+Codierung
+\change_inserted 0 1249380225
+Projektlaufzeit
+\change_unchanged
+.
+ 
+\change_deleted 0 1249380246
+Der Architekt gewährleistet damit eine einfache Integration der einzelnen
  Software-Komponenten und ermöglicht die einfache Wartbarkeit und Erweiterbarkei
 t des Softwaresystems.
+\change_inserted 0 1249381494
+Die Architektur soll die Einhaltung der unter Abschnitt ??? genannten Softwarequ
+alitäten sicherstellen.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249381495
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1978,18 +2169,71 @@ t des Softwaresystems.
 \series bold
 \color black
 Administrator: René Rehn (Stellvertreter: Michael Schneidt)
+\change_inserted 0 1249381438
+
 \end_layout
 
 \begin_layout Standard
-Der Administrator ist zuständig für die gesamte Infrastruktur auf Software-
- sowie auch auf Hardware-Ebene für die Projektarbeit.
- Er ist für den Betrieb und die Wartung des Servers und den Betrieb der
- darauf ausgeführten Software verantwortlich.
+
+\change_inserted 0 1249381438
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
+Der Administrator ist 
+\change_inserted 0 1249380436
+in der Projektarbeit 
+\change_unchanged
+zuständig für die gesamte Infrastruktur auf Software- sowie auch auf Hardware-Eb
+ene
+\change_deleted 0 1249380444
+ für die Projektarbeit
+\change_unchanged
+.
+ Er ist für den Betrieb und die Wartung de
+\change_deleted 0 1249380458
+s
+\change_inserted 0 1249380458
+r
+\change_unchanged
+ Server
+\change_deleted 0 1249380460
+s
+\change_unchanged
+ und den Betrieb der darauf ausgeführten Software verantwortlich.
  Weiterhin sorgt er für die Bereitstellung der nötigen Software-Infrastruktur,
  d.h.
- er liefert die Software, wie z.B.
+ er 
+\change_deleted 0 1249380565
+liefert
+\change_inserted 0 1249380580
+sorgt dafür, dass die zur Verfügung stehende 
+\change_deleted 0 1249380581
+ die 
+\change_unchanged
+Software, wie z.B.
  Werkzeuge für Entwicklung, Test und Entwurf, die zur Realisierung des Projekts
- benötigt wird.
+ benötigt w
+\change_inserted 0 1249380687
+ird, für das Projekt eingerichtet und betriebsbereit ist.
+\change_deleted 0 1249380591
+ird
+\change_unchanged
+.
+\change_inserted 0 1249381499
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249381500
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1997,29 +2241,96 @@ Der Administrator ist zuständig für die gesamte Infrastruktur auf Software-
 \series bold
 \color black
 Qualitätsmanagment: Michael Hahn, Firas Zoabi
+\change_inserted 0 1249381411
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249381420
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Qualitätsmanagement genauer beschreiben, evtl.
+ durch extra Punkt im Dokumentverlauf
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Der Qualitätsmanager sorgt dafür, dass alle Dokumente und auch Software-Komponen
-ten eine bestimmte Qualität besitzen.
+ten 
+\change_deleted 0 1249380873
+eine
+\change_inserted 0 1249380941
+die bestmögliche
+\change_unchanged
+ 
+\change_deleted 0 1249380883
+bestimmte 
+\change_unchanged
+Qualität besitzen.
  Diese Qualität soll durch die Definition und Einhaltung von Richtlinien,
  durch die ständige Durchführung von Qualitätskontrollen und durch die Erstellun
 g von einheitlichen Dokumentvorlagen erreicht werden.
  So soll während des gesamten Projektverlaufs die Qualität der Dokumente
  und Software-Einheiten maximiert werden.
+\change_inserted 0 1249381503
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249381504
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 
 \series bold
 \color black
-Entwickler: Alle
+Entwickler: 
+\change_deleted 0 1249380715
+Alle
+\change_inserted 0 1249381385
+Michael Schneidt, René Rehn, Daniel Brüderle, Michael Hahn, Firas Zoabi,
+ Xi Tu
 \end_layout
 
 \begin_layout Standard
-Als Entwickler arbeiten alle Teammitglieder.
+
+\change_inserted 0 1249381308
+\begin_inset VSpace medskip
+\end_inset
+
+
+\change_unchanged
+Als Entwickler arbeiten alle Teammitglieder
+\change_inserted 0 1249381308
+ ausser dem Projektleiter
+\change_unchanged
+.
  Ein Entwickler arbeitet dabei im Rahmen der vom Projektleiter erteilten
- Aufgaben an Dokumenten und Software-Komponenten.
+ Aufgaben
+\change_inserted 0 1249381308
+ 
+\change_unchanged
+an Dokumenten und Software-Komponenten.
 \end_layout
 
 \begin_layout Standard
@@ -2027,7 +2338,16 @@ Als Entwickler arbeiten alle Teammitglieder.
 status open
 
 \begin_layout Plain Layout
-Bild ist nur in LyX-Ansicht verkleinert, im PDF ist es so groß wie seither
+Bild ist anscheinend inkonsistent.
+ Änderung durch Feras: 
+\begin_inset Quotes eld
+\end_inset
+
+freier
+\begin_inset Quotes erd
+\end_inset
+
+ Entwickler noch in Architekt Kreis einbinden
 \end_layout
 
 \end_inset
@@ -2147,27 +2467,69 @@ Nutzen
 \end_layout
 
 \begin_layout Standard
-Die Arbeit im wissenschaftlichen Bereich und die Datenmengen die damit verbunden
- sind, werden immer größer, heterogener und komplexer.
+Die Arbeit im wissenschaftlichen Bereich und die Datenmengen
+\change_inserted 0 1249381649
+,
+\change_unchanged
+ die damit verbunden sind, werden immer größer, heterogener und komplexer.
  Zur Vereinfachung und zur Automatisierung werden im Moment nur vereinzelt
  Scientific Workflows eingesetzt.
 \end_layout
 
 \begin_layout Standard
-Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung von
- wissenschaftlichen Workflows mit BPEL ermöglicht werden, welches im Business-Be
-reich bereits viele Jahre erfolgreich eingesetzt wird.
- Weiterhin werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst
- erweitert um so die direkte Anbindung von Datenquellen innerhalb von BPEL-Proze
-ssen zu realisieren.
+Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung 
+\change_inserted 0 1249381680
+und die Ausführung 
+\change_unchanged
+von wissenschaftlichen Workflows mit BPEL
+\change_inserted 0 1249381745
+, welches im Business-Bereich bereits viele Jahre erfolgreich eingesetzt
+ wird,
+\change_unchanged
+ 
+\change_deleted 0 1249381725
+ermöglicht
+\change_inserted 0 1249381742
+vereinfacht
+\change_unchanged
+ werden
+\change_inserted 0 1249381885
+.
+ Dazu soll das Rahmenwerk den Datenzugriff direkt aus einem Workflow heraus
+ ermöglichen.
+\change_deleted 0 1249381749
+,
+\change_unchanged
+ 
+\change_deleted 0 1249381738
+welches im Business-Bereich bereits viele Jahre erfolgreich eingesetzt wird
+\change_unchanged
+.
+ 
+\change_deleted 0 1249381900
+Weiterhin
+\change_inserted 0 1249381962
+Dafür
+\change_unchanged
+ werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst erweitert
+\change_inserted 0 1249381918
+,
+\change_unchanged
+ um so die direkte Anbindung von Datenquellen innerhalb von BPEL-Prozessen
+ zu realisieren.
  Dadurch ist es auch für ungeübte Workflow-Benutzer wie z.B.
- Wissenschaftler und Ingenieure möglich, einfach und schnell Scientific
+ Wissenschaftler und Ingenieure möglich, einfach und schnell 
+\change_deleted 0 1249381930
+Scientific
+\change_inserted 0 1249381934
+wissenschaftliche
+\change_unchanged
  Workflows zu erstellen und zu nutzen.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 >>>>>>> Die Nutzen, die durch diesen Projekt erreicht werden, fassen sich
@@ -2193,6 +2555,30 @@ he Workflows eingesetzt
 
 \begin_layout Section
 Leistungen im Rahmen des Angebots
+\change_inserted 0 1249382580
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249382603
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1249382641
+Eventuell Abschnitt komplett ändern und Dokumente tabellarisch aufführen
+ mit Beschreibung, wie im Projektplan
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -2206,11 +2592,33 @@ Auszuliefernde Software-Einheiten
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted 0 1249382492
+Anforderungskatalog
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 0 1249382492
+Projektplan
+\end_layout
+
+\begin_layout Itemize
 Spezifikation
 \end_layout
 
 \begin_layout Itemize
 Begriffslexikon
+\change_inserted 0 1249382442
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 0 1249382446
+Entwurf
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -2231,10 +2639,16 @@ Testprotokolle
 
 \begin_layout Itemize
 Installationspaket, das alle benötigten Software-Komponenten beinhaltet
+\change_deleted 0 1249382505
+
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 0 1249382502
 Eclipse Plug-In
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -2242,7 +2656,11 @@ Quellcode
 \end_layout
 
 \begin_layout Standard
-Alle Dokumente werden im PDF-Format geliefert.
+Alle Dokumente werden im PDF-Format 
+\change_inserted 0 1249382412
+und als LaTeX-Quelldateien 
+\change_unchanged
+geliefert.
 \end_layout
 
 \begin_layout Subsection
@@ -2250,19 +2668,33 @@ Software-Einheiten, die nicht zum Lieferumfang gehören
 \end_layout
 
 \begin_layout Standard
-Folgende Dokumente gehören nicht zur Lieferumfang:
+Folgende Dokumente gehören nicht zu
+\change_deleted 0 1249382529
+r
+\change_inserted 0 1249382529
+m
+\change_unchanged
+ Lieferumfang:
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 0 1249382486
 Anforderungskatalog
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 0 1249382486
 Projektplan
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted 0 1249382450
 Entwurf
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -2272,6 +2704,30 @@ Alle internen und organisatorischen Dokumente, wie z.B.
 
 \begin_layout Section
 Terminplanung
+\change_inserted 0 1249382803
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249382804
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1249382835
+Tabelle anpassen, Prozente anpassen, Puffer im Text erwähnen, Testphase
+ aufsplitten, Intergation fehlt!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2472,7 +2928,11 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-Codierung
+
+\change_inserted 0 1249382757
+Implementierung
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2673,12 +3133,43 @@ Analyse
 \end_layout
 
 \begin_layout Standard
-Das Ziel der Analysephase ist es durch Kundengespräche die funktionalen
- und nichtfunktionalen Anforderungen zu erheben, die der Kunde an das zu
- entwickelnde Softwaresystem stellt.
- Das Ziel ist es einen Einblick in den momentanen Zustand des Arbeitsbereichs
- für den die Software entwickelt werden soll zu bekommen, um bereits realisierte
- Anforderungen aufzunehmen.
+Das Ziel der Analysephase ist es
+\change_inserted 0 1249382891
+,
+\change_unchanged
+ durch Kundengespräche die funktionalen und nichtfunktionalen Anforderungen
+ zu erheben, die der Kunde an das zu entwickelnde Softwaresystem stellt.
+ Das Ziel ist es
+\change_inserted 0 1249382903
+,
+\change_unchanged
+ einen Einblick in den momentanen Zustand des 
+\change_inserted 0 1249382990
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1249382995
+besser formulieren
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+Arbeitsbereichs
+\change_inserted 0 1249382931
+,
+\change_unchanged
+ für den die Software entwickelt werden soll
+\change_inserted 0 1249382933
+,
+\change_unchanged
+ zu bekommen, um bereits realisierte Anforderungen aufzunehmen.
 \end_layout
 
 \begin_layout Standard
@@ -2696,9 +3187,15 @@ Da wenige bis gar keine Ansätze für Teilbereiche des Projekts wie z.B.
  die Verwendung von BPEL in Scientific Workflows existieren, müssen alle
  vorhandenen Ansätze evaluiert oder z.T.
  auch neue Ansätze geschaffen werden.
- Die Einarbeitungsphase dient dazu sich in die verschiedenen Themenbereiche
- einzuarbeiten und festzustellen in welchem Umfang Erweiterungsmaßnahmen
- notwendig sind.
+ Die Einarbeitungsphase dient dazu
+\change_inserted 0 1249383007
+,
+\change_unchanged
+ sich in die verschiedenen Themenbereiche einzuarbeiten und festzustellen
+\change_inserted 0 1249383009
+,
+\change_unchanged
+ in welchem Umfang Erweiterungsmaßnahmen notwendig sind.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2714,10 +3211,41 @@ nalen Anforderungen an die Software und ihre Schnittstellen präzise, vollständ
  beschrieben.
  Die Spezifikation dient darüber hinaus als Referenz für viele nachfolgende
  Dokumente, wie z.B.
- das Handbuch und den Entwurf und sie ist unerlässlich für die Testphase
- und die spätere Wartung oder für spätere Erweiterungen der Software.
+ das Handbuch und den Entwurf
+\change_inserted 0 1249383026
+.
+
+\change_unchanged
+ 
+\change_deleted 0 1249383029
+und s
+\change_inserted 0 1249383031
+S
+\change_unchanged
+ie ist unerlässlich für die Testphase und die spätere Wartung oder für spätere
+ Erweiterungen der Software.
  Anhand der Spezifikation kann sich auch der Kunde davon überzeugen, dass
- wirklich seine Anforderungen umgesetzt werden.
+ 
+\change_inserted 0 1249383066
+alle 
+\change_deleted 0 1249383068
+wirklich 
+\change_unchanged
+seine Anforderungen 
+\change_deleted 0 1249383071
+umgesetzt
+\change_unchanged
+ 
+\change_inserted 0 1249383121
+aufgenommen und nach seinen Vorstellungen spezifiziert 
+\change_unchanged
+w
+\change_deleted 0 1249383076
+e
+\change_inserted 0 1249383077
+u
+\change_unchanged
+rden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2732,13 +3260,37 @@ In der Entwurfsphase wird die Architektur der Software festgelegt und in
 \end_layout
 
 \begin_layout Subsubsection
+
+\change_deleted 0 1249383142
 Codierung
+\change_inserted 0 1249383144
+Implementierung
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-In der Codierungsphase werden die Anforderungen aus der Spezifikation mit
- der Architektur des Entwurfs umgesetzt.
- Am Ende dieser Phase existiert eine ausführbare Software.
+In der 
+\change_deleted 0 1249383230
+Codierung
+\change_inserted 0 1249383233
+Implementierung
+\change_unchanged
+sphase werden die Anforderungen aus der Spezifikation mit der Architektur
+ des Entwurfs umgesetzt.
+ 
+\change_inserted 0 1249383218
+Nach der Integration der implementierten Software-Module exisitert 
+\change_deleted 0 1249383218
+A
+\change_inserted 0 1249383219
+a
+\change_unchanged
+m Ende dieser Phase 
+\change_deleted 0 1249383222
+existiert
+\change_unchanged
+ eine ausführbare Software.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2746,15 +3298,62 @@ Test
 \end_layout
 
 \begin_layout Standard
-Die Testphase dient dazu die Software gegen die Spezifikation zu prüfen,
+Die Testphase
+\change_inserted 0 1249383329
+ enthält die drei Unterphasen Modultest, Integrationstest und Systemtest.
+
+\change_unchanged
+ 
+\change_inserted 0 1249383501
+Durch den Modultest werden die einzelnen Software-Module auf ihre korrekte
+ Funktionalität innerhalb des Moduls getestet.
+ Im Integrationstest wird die Integration der Module zum Gesamtsystem überprüft,
  d.h.
+ es wird überprüft, ob alle Module korrekt zusammenarbeiten.
+ Der Systemtest 
+\change_unchanged
+dient dazu die Software gegen die Spezifikation zu prüfen, d.h.
  alle Anforderungen aus der Spezifikation werden mit geeigneten Testfällen
  überprüft und die Software entsprechend korrigiert, falls sie nicht die
  gewünschten Ergebnisse liefert.
- Dazu wird eine Reihe von Testfällen definiert und deren Ausführung in einem
- Testprotokoll aufgezeichnet.
- Diese zwei Dokumente sind auch für den Kunden wichtig, da sie als Referenz
- für seine internen Tests während der Abnahme genutzt werden können.
+ 
+\change_inserted 0 1249383545
+Für alle drei Testarten gilt, dass 
+\change_deleted 0 1249383550
+Dazu wird
+\change_inserted 0 1249383551
+ immer
+\change_unchanged
+ eine Reihe von Testfällen definiert und deren Ausführung in einem Testprotokoll
+ aufgezeichnet
+\change_inserted 0 1249383574
+ wird
+\change_unchanged
+.
+
+\change_inserted 0 1249383694
+ Falls während eines Tests Fehler auftreten, so werden diese nach Ausführung
+ des Test
+\change_unchanged
+ 
+\change_inserted 0 1249383716
+von den Entwicklern korrigiert und dann erneut geprüft.
+ 
+\change_unchanged
+Die
+\change_deleted 0 1249383735
+se
+\change_inserted 0 1249383744
+ in der Testphase erzeugten
+\change_deleted 0 1249383735
+ zwei
+\change_unchanged
+ Dokumente
+\change_inserted 0 1249383773
+, die Testfälle und Testprotokolle,
+\change_unchanged
+ sind auch für den Kunden wichtig, da sie als Referenz für seine internen
+ Tests während der Abnahme genutzt werden können.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2778,6 +3377,37 @@ Dem Kunden wird damit Zeit zur Verfügung gestellt sicherzustellen, dass
  das von uns gelieferte Produkt seinen Anforderungen entspricht.
  Ist das der Fall, dann gilt das Projekt als abgeschlossen, andernfalls
  werden die nötigen Nachbesserungen oder Änderungen durchgeführt.
+\change_inserted 0 1249383815
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249383817
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1249383853
+Mirko Sonntag: 
+\begin_inset Quotes eld
+\end_inset
+
+Was ist, wenn selbst nach den Nachbesserungen noch erhebliche Mängel bestehen?
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2785,13 +3415,44 @@ Puffer
 \end_layout
 
 \begin_layout Standard
-Ein extra Zeitfenster vor dem endgültigen Abgabetermin Ende Mai 2010.
+
+\change_inserted 0 1249383869
+Die Puffer-Phase ist 
+\change_deleted 0 1249383870
+E
+\change_inserted 0 1249383870
+e
+\change_unchanged
+in extra Zeitfenster vor dem endgültigen Abgabetermin Ende Mai 2010.
  In dieser Phase können noch kleinere Änderungswünsche, die der Kunde nach
  dem Abnahmetest eventuell hat, umgesetzt werden.
 \end_layout
 
 \begin_layout Section
 Unsere Konditionen
+\change_inserted 0 1249383885
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 0 1249383897
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 0 1249383908
+=>Einleitender Text
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -3336,11 +3997,7 @@ Die Mitarbeiter haben alle eine 5 Tage Woche mit jeweils 8 Stunden, können
 
 \begin_layout Standard
 Bei einer effektiven Entwicklungszeit von gerundet 3 Monaten ( 2,981) wird
- jede Person 480 Stunden
-\end_layout
-
-\begin_layout Standard
-arbeiten.
+ jede Person 480 Stunden arbeiten.
 \end_layout
 
 \begin_layout Subsection*
@@ -3372,17 +4029,25 @@ Gesamtkostenschätzung :
 \begin_layout Section*
 Gesamt : 246.240€ zzgl 19 % MwSt.
  = 293.025€ 
+\change_deleted 0 1249383984
+
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted 0 1249383981
 AGBs
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Allgemeine Geschäftsbedingungen (AGB) der SIMPL GmbH
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 
 \series bold
 1.
@@ -3392,6 +4057,8 @@ Allgemeine Geschäftsbedingungen (AGB) der SIMPL GmbH
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Diese allgemeinen Geschäftsbedingungen gelten für alle Vertragsbeziehungen
  und vorvertraglichen Verhandlungen mit unseren Kunden, unabhängig von Art
  und Umfang der Leistung im Rahmen laufender und zukünftiger Geschäftsverbindung
@@ -3411,12 +4078,16 @@ hen wird.
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 2.
  Preise
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Alle Preise, auch diejenigen in der Auftragsbestätigung sind freibleibend.
  Für den Fall wesentlicher Änderungen der den Preis bestimmender Faktoren
  vor endgültiger Abwicklung der Bestellung bleibt eine entsprechende Anpassung
@@ -3425,16 +4096,22 @@ Alle Preise, auch diejenigen in der Auftragsbestätigung sind freibleibend.
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 3.
  Auftragsannullierung
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Auftragsannullierungen bedürfen unser ausdrücklichen schriftlichen Zustimmung.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 
 \series bold
 4.
@@ -3444,6 +4121,8 @@ Auftragsannullierungen bedürfen unser ausdrücklichen schriftlichen Zustimmung.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Alle von der Firma SIMPL GmbH genannten Liefertermine sind unverbindliche
  Liefertermine , es sei denn, dass ein Liefertermin ausdrücklich schriftlich
  vereinbart wird.
@@ -3471,12 +4150,16 @@ Alle von der Firma SIMPL GmbH genannten Liefertermine sind unverbindliche
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 5.
  Zahlung und Verzug
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Hardware und Software werden auch im Rahmen eines Gesamtauftrages sofort
  in Rechnung gestellt.
  Alle Rechnungen der Firma SIMPL GmbH sind innerhalb von 10 Tagen ab Rechnungsda
@@ -3490,12 +4173,16 @@ tum zahlbar.
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 6.
  Rücktrittsrecht
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Hängt die Liefermöglichkeit von der Belieferung durch einen Vorlieferanten
  ab und scheitert diese Belieferung aus Gründen, die wir nicht zu vertreten
  haben, so sind wir zum Rücktritt vom Vertrag berechtigt.
@@ -3507,6 +4194,8 @@ istung nicht bereit ist.
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 7.
  Patent- und Urheberrechte
@@ -3515,6 +4204,8 @@ istung nicht bereit ist.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Die Firma SIMPL GmbH bleibt Inhaberin aller Urheber-, und Nutzungsrechte
  an der dem Kunden überlassenen Software, einschließlich der gesamten Dokumentat
 ion, auch wenn der Kunde sie verändert.
@@ -3525,12 +4216,16 @@ ion, auch wenn der Kunde sie verändert.
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 8.
  Überlassung von Software
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Zwischen der SIMPL GmbH und dem Kunden wird in einem gesonderten Vertragswerk,
  dem Rahmenvertrag, folgendes geregelt: Vertragsgegenstand, Vertragsdauer,
  Leistungsumfang, Nutzungsbedingungen für die beschriebene Software, Nutzung
@@ -3547,12 +4242,16 @@ Zwischen der SIMPL GmbH und dem Kunden wird in einem gesonderten Vertragswerk,
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 9.
  Eigentumsvorbehalt
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Die Ware bleibt bis zum vollständigen Ausgleich unserer sämtlichen, auch
  künftig entstehenden Forderungen gegen den Kunden aus der Geschäftsverbindung
  - bei Herausgabe von Wechseln oder Schecks bis zu deren vorbehaltloser
@@ -3561,12 +4260,16 @@ Die Ware bleibt bis zum vollständigen Ausgleich unserer sämtlichen, auch
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 10.
  Gewährleistung
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Die Gewährleistungsfrist beim Handelsgeschäft unter Kaufleuten beträgt 12
  Monate.
  Sie beginnt mit der Auslieferung der Software an den Lizenznehmer.
@@ -3574,6 +4277,8 @@ Die Gewährleistungsfrist beim Handelsgeschäft unter Kaufleuten beträgt 12
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 
 \series bold
 11.
@@ -3583,6 +4288,8 @@ Die Gewährleistungsfrist beim Handelsgeschäft unter Kaufleuten beträgt 12
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 SIMPL GmbH haftet wie folgt: Der Höhe nach unbegrenzt für Schäden, die auf
  Rechtsmängeln, zugesicherten Eigenschaften, Arglist oder auf vorsätzlichem
  oder grob fahrlässigem Verhalten der gesetzlichen Vertreter oder leitenden
@@ -3617,6 +4324,8 @@ g der Software in das Internet und/oder sein Intranet stellt.
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 12.
  Rechtswahl, Erfüllungsort und Gerichtsstand
@@ -3625,6 +4334,8 @@ g der Software in das Internet und/oder sein Intranet stellt.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Unsere gesamten Geschäftsbeziehungen mit unseren Kunden unterliegen ausschließli
 ch dem Recht der Bundesrepublik Deutschland.
  Die Anwendung des UN-Kaufrechts wird ausdrücklich ausgeschlossen.
@@ -3634,12 +4345,16 @@ ch dem Recht der Bundesrepublik Deutschland.
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 13.
  Salvatorische Klausel
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 0 1249383981
 Sollten eine oder mehrere der vorstehenden Vertragsbedingungen, oder daneben
  etwa abgeschlossener individueller Vereinbarungen ganz oder teilweise ungültig
  sein, berührt das die Wirksamkeit der übrigen Bedingungen nicht.
@@ -3650,8 +4365,12 @@ Sollten eine oder mehrere der vorstehenden Vertragsbedingungen, oder daneben
 
 \begin_layout Standard
 
+\change_deleted 0 1249383981
+
 \series bold
 Stuttgart, den 15.07.2009
+\change_unchanged
+
 \end_layout
 
 \end_body
