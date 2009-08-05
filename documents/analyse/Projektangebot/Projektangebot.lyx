@@ -23,9 +23,9 @@
 % docautor = Author(en) 
 % docdate = Datum der letzten Änderung 
 \def\doctitel{Angebot} 
-\def\docvers{1.0} 
-\def\docautor{Daniel Brüderle, Firas Zoabi, Michael Hahn} 
-\def\docdate{17. Juli 2009}
+\def\docvers{1.1} 
+\def\docautor{Daniel Brüderle, Firas Zoabi, Michael Hahn, Wolfgang Hüttig} 
+\def\docdate{07. August 2009}
 \end_preamble
 \use_default_options false
 \language ngerman
@@ -71,9 +71,9 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
-\author "Administrator" 
+\author "" 
 \author "" 
 \end_header
 
@@ -293,26 +293,6 @@ docdate
 
 
 \size default
- 
-\begin_inset Newline newline
-\end_inset
-
- 
-\shape italic
-\size footnotesize
-Geschäftsdaten:
-\shape default
-\size default
- 
-\begin_inset Newline newline
-\end_inset
-
- 
-\shape italic
-\size footnotesize
-Wolfgang Hüttig
-\shape default
-\size default
 
 \begin_inset ERT
 status collapsed
@@ -350,25 +330,7 @@ status collapsed
 
 
 \size small
-Angebot für SIMPL © 2009 SIMPL GmbH
-\size default
- 
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\shape italic
-\size footnotesize
-Kto.Nr.1234567, BLZ 60010001
-\shape default
+Angebot für SIMPL
 \size default
 
 \begin_inset ERT
@@ -433,37 +395,9 @@ reference "LastPage"
 
 
 \size default
- 
-\begin_inset Newline newline
-\end_inset
-
- 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\shape italic
-\size footnotesize
-HR.-Nr.:123456789
-\shape default
-\size default
- 
-\begin_inset Newline newline
-\end_inset
-
- 
-\shape italic
-\size footnotesize
-USt.-Nr.:DE-1234/98765
-\shape default
-\size default
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -504,7 +438,7 @@ status collapsed
 
 \shape italic
 \size footnotesize
-SIMPL GmbH, Universitätsstraße 38, 70569 Stuttgart
+SIMPL, Universitätsstraße 38, 70569 Stuttgart
 \shape default
 \size default
  
@@ -832,17 +766,7 @@ Sehr geehrte Frau Görlach, sehr geehrter Herr Reimann, sehr geehrter Herr
 
 \begin_layout Standard
 vielen Dank für Ihr Interesse an einem Angebot unserer Firma.
- Gerne würden wir ihre Vorstellungen im Rahmen eines Entwicklungsprojekts
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Entwicklunsprojekt noch beschreiben oder ändern
-\end_layout
-
-\end_inset
-
- umsetzen.
+ Gerne würden wir ihre Vorstellungen im Rahmen eines Softwareprojekts umsetzen.
  
 \begin_inset Newline newline
 \end_inset
@@ -988,7 +912,7 @@ docdate}
 \backslash
 cfoot{
 \backslash
-small Angebot für SIMPL © 2009 SIMPL GmbH} 
+small Angebot für SIMPL} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1469,9 +1393,9 @@ status collapsed
 
 
 \size small
-Angebot für SIMPL © 2009 SIMPL
+Angebot für SIMPL
 \size default
- GmbH
+
 \begin_inset ERT
 status collapsed
 
@@ -1585,116 +1509,31 @@ Ausgangssituation
 
 \begin_layout Standard
 \noindent
-Zur Modellierung und Ausführung von 
-\change_inserted 0 1249309718
-Business 
-\change_unchanged
-Workflows 
-\change_deleted 0 1249309722
-jeglicher Art
-\change_unchanged
- wird 
-\change_deleted 0 1249309747
-bisher 
-\change_inserted 0 1249309756
- 
-\change_unchanged
-die Sprache BPEL (
-\change_deleted 0 1249377846
- 
-\change_unchanged
-Business Process Execution Language
-\change_deleted 0 1249377849
- 
-\change_unchanged
-) 
-\change_inserted 0 1249309790
-bereits lange und effektiv 
-\change_deleted 0 1249309792
-verwendet
-\change_inserted 0 1249309796
- eingesetzt
-\change_unchanged
-.
- 
-\change_inserted 0 1249310143
-Die Stärken von BPEL, die 
-\change_deleted 0 1249310152
-BPEL hat seine Stärke, 
-\change_inserted 0 1249310278
-,wie der Name schon sagt, 
-\change_unchanged
-im Bereich der Geschäftsprozesse
-\change_inserted 0 1249310313
- liegen, sollen nun auch für wissenschaftliche Workflows ausgenutzt werden
- können
-\change_unchanged
-.
+Zur Modellierung und Ausführung von Business Workflows wird die Sprache
+ BPEL (Business Process Execution Language) bereits lange und effektiv eingesetz
+t.
+ Die Stärken von BPEL, die ,wie der Name schon sagt, im Bereich der Geschäftspro
+zesse liegen, sollen nun auch für wissenschaftliche Workflows genutzt werden
+ können.
  Im wissenschaftlichen Bereich gelten andere Anforderungen und dafür ist
- BPEL
-\change_deleted 0 1249310348
- nicht
-\change_unchanged
- 
-\change_inserted 0 1249310330
-bis jetzt noch nicht 
-\change_deleted 0 1249310331
-gut 
-\change_unchanged
-geeignet.
+ BPEL bis jetzt noch nicht geeignet.
  Da aber auch im wissenschaftlichen Bereich immer öfter Workflows eingesetzt
  werden, sei es bei der Durchführung von komplexen Berechnungen im Rahmen
- von Simulationen oder bei der Ausführung von Experimenten, 
-\change_deleted 0 1249310370
-bedarf
-\change_inserted 0 1249310469
-sollen
-\change_unchanged
- 
-\change_deleted 0 1249310373
-es 
-\change_inserted 0 1249310393
- mithilfe einer
-\change_unchanged
- Anpassung von BPEL 
-\change_deleted 0 1249310430
-an
-\change_unchanged
- die wissenschaftlichen Bedürfnisse
-\change_inserted 0 1249310483
- an BPEL erfüllt werden
-\change_unchanged
-.
+ von Simulationen oder bei der Ausführung von Experimenten, sollen mithilfe
+ einer Anpassung von BPEL die wissenschaftlichen Bedürfnisse an BPEL erfüllt
+ werden.
  Gekennzeichnet sind wissenschaftliche Workflows in der Regel durch große
- Datenmengen, die Heterogenität der Daten und somit de
-\change_deleted 0 1249377897
-m
-\change_inserted 0 1249377897
-n
-\change_unchanged
- Bedarf nach großer Rechenkapazität.
+ Datenmengen, die Heterogenität der Daten und somit den Bedarf nach großer
+ Rechenkapazität.
  Diesen Anforderungen soll durch die neu zu entwickelnde Software Rechnung
  getragen werden.
 \end_layout
 
 \begin_layout Subsection
-
-\change_deleted 0 1249310544
-Externe Beteiligte
-\change_inserted 0 1249310553
 Projektbeteiligte
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 0 1249310572
-An dieser Stelle werden die externen Projektbeteiligten genannt.
- Dies sind die Kunden und die Betreuer vom Institut für Architektur von
- Anwendungssystemen (IAAS) und dem Institut für Parallele und Verteilte
- Systeme (IPVS).
-\change_inserted 0 1249312333
 In diesem Abschnitt geht es um die beteiligten Parteien des Projekts.
  Diese sind, nachfolgend als die Kunden bezeichnet, Katharina Görlach, Peter
  Reimann und Mirko Sonntag, sowie die Firma SIMPL, nachfolgend als Auftragnehmer
@@ -1708,14 +1547,10 @@ s für das Projekt ist.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249312916
 Die Kontaktdaten der Kunden sind wie folgt:
 \begin_inset Newline newline
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -1833,32 +1668,6 @@ E-Mail: mirko.sonntag(@)iaas.uni-stuttgart.de
 \end_layout
 
 \begin_layout Subsection
-Projektbeschreibung
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Verbesserung dieses Abschnitts anhand der Kommentare von Mirko Sonntag
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Projekt wird als Time & Material Projekt durchgeführt und die Aufwände
- und Fortschritte des Projekts werden in regelmäßigen Abständen dem Kunden
- mitgeteilt.
- Dies erfolgt spätestens nach dem Abschluss einer Phase.
- Bei wichtigen Phasen auch innerhalb der Phasen, wenn es für sinnvoll erachtet
- wird.
-\end_layout
-
-\begin_layout Subsection
 Entwicklungsgrundlagen
 \end_layout
 
@@ -1866,21 +1675,11 @@ Entwicklungsgrundlagen
 Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
  Dadurch wird eine hohe Qualität des Produkts gewährleistet.
  Wichtige Qualitäten sind dabei die Wartbarkeit und die Erweiterbarkeit
- des Systems, da es über einen längeren Zeitraum bestehen soll und in
-\change_deleted 0 1249378036
- der
-\change_unchanged
- Zukunft um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff
- und den Umgang mit weiteren Datenformaten ergänzt werden soll.
- Ein
-\change_inserted 0 1249378047
-e
-\change_unchanged
- weitere wichtige Qualität ist die Skalierbarkeit des Systems, die eine
- sehr flexible Infrastruktur erlauben muss, da die Computersysteme
-\change_inserted 0 1249378057
-,
-\change_unchanged
+ des Systems, da es über einen längeren Zeitraum bestehen soll und in Zukunft
+ um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff und
+ den Umgang mit weiteren Datenformaten ergänzt werden soll.
+ Eine weitere wichtige Qualität ist die Skalierbarkeit des Systems, die
+ eine sehr flexible Infrastruktur erlauben muss, da die Computersysteme,
  auf denen SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinander
  gehen, d.h.
  vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
@@ -1891,24 +1690,12 @@ e
 Robustheit und Usability der Software sind für uns innerhalb des Entwicklungspro
 zesses von großem Interesse.
  Die Usability sollte sich vor allem an unerfahrene und Nutzer mit wenig
- Kenntnissen 
-\change_inserted 0 1249378120
-im Umgang mit Workflows und BPEL 
-\change_unchanged
-richten und dafür die bestmögliche Transparenz
-\change_inserted 0 1249378360
- liefern.
- d.h.
- das die interne Prozesslogik der Software bestmöglich vom Benutzer
-\change_unchanged
- 
-\change_inserted 0 1249378347
-abgeschirmt wird und das er eine möglichst einfache und schnell verständliche
- Schnittstelle zur Software erhält, 
-\change_deleted 0 1249378368
-liefern,
-\change_unchanged
- um die Verwendung von SIMPL für alle Benutzergruppen zu ermöglichen.
+ Kenntnissen im Umgang mit Workflows und BPEL richten und dafür die bestmögliche
+ Transparenz liefern, d.h.
+ das die interne Prozesslogik der Software bestmöglich vom Benutzer abgeschirmt
+ wird und das er eine möglichst einfache und schnell verständliche Schnittstelle
+ zur Software erhält, um die Verwendung von SIMPL für alle Benutzergruppen
+ zu ermöglichen.
  
 \end_layout
 
@@ -1930,71 +1717,28 @@ Mit der ganzen Gruppe erweitern und noch ausführlicher beschreiben
 \end_layout
 
 \begin_layout Standard
-Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk 
-\change_inserted 0 1249378487
-für die Modellierung und Ausführung von Workflows 
-\change_unchanged
-erstellen, welches den Zugriff auf nahezu beliebige Datenquellen ermöglichen
- soll.
+Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk für
+ die Modellierung und Ausführung von Workflows erstellen, welches den Zugriff
+ auf nahezu beliebige Datenquellen ermöglichen soll.
  Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
  und Dateisysteme handeln.
  Der Schwerpunkt soll klar auf wissenschaftlichen Workflows beruhen.
  Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
  BPEL-Prozess eingebunden werden können.
- Dafür werden bereits vorhandene Konzepte evaluiert und 
-\change_deleted 0 1249378584
-für unsere Zwecke
-\change_inserted 0 1249378587
-falls nötig
-\change_unchanged
- erweitert oder angepasst.
- 
-\change_deleted 0 1249378620
-Dabei wird auch die Sprache BPEL für unsere Zwecke erweitert
-\change_inserted 0 1249378655
-Es wird untersucht, inwiefern die Sprache BPEL ebenfalls erweitert werden
- muss
-\change_unchanged
-.
+ Dafür werden bereits vorhandene Konzepte evaluiert und falls nötig erweitert
+ oder angepasst.
+ Es wird untersucht, inwiefern die Sprache BPEL ebenfalls erweitert werden
+ muss.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
- werden, so dass 
-\change_inserted 0 1249378720
-erst 
-\change_unchanged
-während der Laufzeit des Systems die Datenquellen festgelegt werden können.
- 
-\change_deleted 0 1249378760
-Weiterhin
-\change_inserted 0 1249378765
-Nichtsdestotrotz
-\change_unchanged
- sollte auch die Möglichkeit bestehen
-\change_inserted 0 1249378746
-,
-\change_unchanged
- die Datenquellen statisch anbinden zu können.
- 
-\change_deleted 0 1249378798
-Der Kunde besteht darauf
-\change_inserted 0 1249378805
-Eine Anforderung des Kunden ist
-\change_unchanged
-, dass eine 
-\change_inserted 0 1249378815
-vorhandene 
-\change_unchanged
-BPEL-Engine sowie ein 
-\change_inserted 0 1249378833
-vorhandenes 
-\change_unchanged
-Modellierungstool um diese gewünschten Funktionen erweitert bzw.
+ werden, so dass erst während der Laufzeit des Systems die Datenquellen
+ festgelegt werden können.
+ Nichtsdestotrotz sollte auch die Möglichkeit bestehen, die Datenquellen
+ statisch anbinden zu können.
+ Eine Anforderung des Kunden ist, dass eine vorhandene BPEL-Engine sowie
+ ein vorhandenes Modellierungstool um diese gewünschten Funktionen erweitert
+ bzw.
  angepasst werden.
- Die BPEL-Prozesse sollen mit dem entsprechenden Modellierungstool 
-\change_deleted 0 1249378847
-modelliert
-\change_inserted 0 1249378849
-spezifiziert
-\change_unchanged
+ Die BPEL-Prozesse sollen mit dem entsprechenden Modellierungstool spezifiziert
  und mit der BPEL-Engine ausgeführt werden können.
 \end_layout
 
@@ -2003,11 +1747,9 @@ Projektteam-Organisation
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249379341
 In diesem Abschnitt wird die Organisation des Projektteams vorgestellt.
  Alle Teammitglieder haben dabei mindestens eine bestimmte Rolle, die mit
- entsprechenden Aufgaben und Pflichten verküpft ist.
+ entsprechenden Aufgaben und Pflichten verknüpft ist.
  Nachfolgend werden diese Rollen beschrieben und die Teammitglieder, die
  diese Rolle besitzen, angegeben.
  Danach folgen noch die Kontaktdaten aller Teammitglieder, damit der Kunde
@@ -2045,18 +1787,12 @@ Rollen im Team
 \series bold
 \color black
 Projektleiter: Wolfgang Hüttig (Stellvertreter: Michael Hahn)
-\change_inserted 0 1249381455
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381455
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
 Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
  Er koordiniert sämtlichen Schriftverkehr und die Kommunikation zwischen
  den Kunden, den Betreuern und dem Team.
@@ -2065,44 +1801,16 @@ Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
 
 \begin_layout Standard
 Seine zentralen Aufgaben liegen in der Verwaltung des Projekts, d.h.
- er plant
-\change_inserted 0 1249379688
- den Ablauf des Projekts und der einzelnen Phasen
-\change_unchanged
-, 
-\change_inserted 0 1249379696
-er 
-\change_unchanged
-bewertet und kontrolliert
-\change_inserted 0 1249379840
- abschliessend, als letzte Instanz, alle erstellten Dokumente vor ihrer
- Freigabe
-\change_deleted 0 1249379794
-,
-\change_unchanged
- und 
-\change_inserted 0 1249379798
-er 
-\change_deleted 0 1249379807
-verteilt alle Tätigkeiten und Ereignisse
-\change_unchanged
- 
-\change_inserted 0 1249379855
-kümmert sich um die Verteilung der einzelnen Arbeitspakete 
-\change_unchanged
-während des Projekts.
-\change_inserted 0 1249381488
-
+ er plant den Ablauf des Projekts und der einzelnen Phasen, er bewertet
+ und kontrolliert abschliessend, als letzte Instanz, alle erstellten Dokumente
+ vor ihrer Freigabe und er kümmert sich um die Verteilung der einzelnen
+ Arbeitspakete während des Projekts.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381491
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -2110,57 +1818,26 @@ während des Projekts.
 
 \series bold
 Architekt: Michael Schneidt (Stellvertreter: Daniel Brüderle)
-\change_inserted 0 1249381447
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381447
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_deleted 0 1249381448
-
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
-
-\series default
 Der Architekt ist zuständig für die Architektur des zu entwickelnden Softwaresys
 tems und die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
  innerhalb des Softwaresystems.
  Er trifft die grundlegenden Entscheidungen über die Art und den Aufbau
- der Software-Architektur und überwacht deren Einhaltung während der 
-\change_deleted 0 1249380221
-Codierung
-\change_inserted 0 1249380225
-Projektlaufzeit
-\change_unchanged
-.
- 
-\change_deleted 0 1249380246
-Der Architekt gewährleistet damit eine einfache Integration der einzelnen
- Software-Komponenten und ermöglicht die einfache Wartbarkeit und Erweiterbarkei
-t des Softwaresystems.
-\change_inserted 0 1249381494
-Die Architektur soll die Einhaltung der unter Abschnitt ??? genannten Softwarequ
-alitäten sicherstellen.
+ der Software-Architektur und überwacht deren Einhaltung während der Projektlauf
+zeit.
+ Die Architektur soll die Einhaltung der unter Abschnitt ??? genannten Softwareq
+ualitäten sicherstellen.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381495
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -2169,70 +1846,27 @@ alitäten sicherstellen.
 \series bold
 \color black
 Administrator: René Rehn (Stellvertreter: Michael Schneidt)
-\change_inserted 0 1249381438
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381438
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
-Der Administrator ist 
-\change_inserted 0 1249380436
-in der Projektarbeit 
-\change_unchanged
-zuständig für die gesamte Infrastruktur auf Software- sowie auch auf Hardware-Eb
-ene
-\change_deleted 0 1249380444
- für die Projektarbeit
-\change_unchanged
-.
- Er ist für den Betrieb und die Wartung de
-\change_deleted 0 1249380458
-s
-\change_inserted 0 1249380458
-r
-\change_unchanged
- Server
-\change_deleted 0 1249380460
-s
-\change_unchanged
- und den Betrieb der darauf ausgeführten Software verantwortlich.
+Der Administrator ist in der Projektarbeit zuständig für die gesamte Infrastrukt
+ur auf Software- sowie auch auf Hardware-Ebene.
+ Er ist für den Betrieb und die Wartung der Server und den Betrieb der darauf
+ ausgeführten Software verantwortlich.
  Weiterhin sorgt er für die Bereitstellung der nötigen Software-Infrastruktur,
  d.h.
- er 
-\change_deleted 0 1249380565
-liefert
-\change_inserted 0 1249380580
-sorgt dafür, dass die zur Verfügung stehende 
-\change_deleted 0 1249380581
- die 
-\change_unchanged
-Software, wie z.B.
+ er sorgt dafür, dass die zur Verfügung stehende Software, wie z.B.
  Werkzeuge für Entwicklung, Test und Entwurf, die zur Realisierung des Projekts
- benötigt w
-\change_inserted 0 1249380687
-ird, für das Projekt eingerichtet und betriebsbereit ist.
-\change_deleted 0 1249380591
-ird
-\change_unchanged
-.
-\change_inserted 0 1249381499
-
+ benötigt wird, für das Projekt eingerichtet und betriebsbereit ist..
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381500
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -2241,18 +1875,12 @@ ird
 \series bold
 \color black
 Qualitätsmanagment: Michael Hahn, Firas Zoabi
-\change_inserted 0 1249381411
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381420
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
 
 \begin_inset Note Note
 status open
@@ -2269,34 +1897,18 @@ Qualitätsmanagement genauer beschreiben, evtl.
 
 \begin_layout Standard
 Der Qualitätsmanager sorgt dafür, dass alle Dokumente und auch Software-Komponen
-ten 
-\change_deleted 0 1249380873
-eine
-\change_inserted 0 1249380941
-die bestmögliche
-\change_unchanged
- 
-\change_deleted 0 1249380883
-bestimmte 
-\change_unchanged
-Qualität besitzen.
+ten die bestmögliche Qualität besitzen.
  Diese Qualität soll durch die Definition und Einhaltung von Richtlinien,
  durch die ständige Durchführung von Qualitätskontrollen und durch die Erstellun
 g von einheitlichen Dokumentvorlagen erreicht werden.
  So soll während des gesamten Projektverlaufs die Qualität der Dokumente
  und Software-Einheiten maximiert werden.
-\change_inserted 0 1249381503
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381504
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -2304,33 +1916,17 @@ g von einheitlichen Dokumentvorlagen erreicht werden.
 
 \series bold
 \color black
-Entwickler: 
-\change_deleted 0 1249380715
-Alle
-\change_inserted 0 1249381385
-Michael Schneidt, René Rehn, Daniel Brüderle, Michael Hahn, Firas Zoabi,
- Xi Tu
+Entwickler: Michael Schneidt, René Rehn, Daniel Brüderle, Michael Hahn,
+ Firas Zoabi, Xi Tu
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249381308
 \begin_inset VSpace medskip
 \end_inset
 
-
-\change_unchanged
-Als Entwickler arbeiten alle Teammitglieder
-\change_inserted 0 1249381308
- ausser dem Projektleiter
-\change_unchanged
-.
+Als Entwickler arbeiten alle Teammitglieder ausser dem Projektleiter.
  Ein Entwickler arbeitet dabei im Rahmen der vom Projektleiter erteilten
- Aufgaben
-\change_inserted 0 1249381308
- 
-\change_unchanged
-an Dokumenten und Software-Komponenten.
+ Aufgaben an Dokumenten und Software-Komponenten.
 \end_layout
 
 \begin_layout Standard
@@ -2467,63 +2063,24 @@ Nutzen
 \end_layout
 
 \begin_layout Standard
-Die Arbeit im wissenschaftlichen Bereich und die Datenmengen
-\change_inserted 0 1249381649
-,
-\change_unchanged
- die damit verbunden sind, werden immer größer, heterogener und komplexer.
+Die Arbeit im wissenschaftlichen Bereich und die Datenmengen, die damit
+ verbunden sind, werden immer größer, heterogener und komplexer.
  Zur Vereinfachung und zur Automatisierung werden im Moment nur vereinzelt
  Scientific Workflows eingesetzt.
 \end_layout
 
 \begin_layout Standard
-Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung 
-\change_inserted 0 1249381680
-und die Ausführung 
-\change_unchanged
-von wissenschaftlichen Workflows mit BPEL
-\change_inserted 0 1249381745
-, welches im Business-Bereich bereits viele Jahre erfolgreich eingesetzt
- wird,
-\change_unchanged
- 
-\change_deleted 0 1249381725
-ermöglicht
-\change_inserted 0 1249381742
-vereinfacht
-\change_unchanged
- werden
-\change_inserted 0 1249381885
-.
+Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung und
+ die Ausführung von wissenschaftlichen Workflows mit BPEL, welches im Business-B
+ereich bereits viele Jahre erfolgreich eingesetzt wird, vereinfacht werden.
  Dazu soll das Rahmenwerk den Datenzugriff direkt aus einem Workflow heraus
  ermöglichen.
-\change_deleted 0 1249381749
-,
-\change_unchanged
- 
-\change_deleted 0 1249381738
-welches im Business-Bereich bereits viele Jahre erfolgreich eingesetzt wird
-\change_unchanged
-.
- 
-\change_deleted 0 1249381900
-Weiterhin
-\change_inserted 0 1249381962
-Dafür
-\change_unchanged
- werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst erweitert
-\change_inserted 0 1249381918
-,
-\change_unchanged
+ .
+ Dafür werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst erweitert,
  um so die direkte Anbindung von Datenquellen innerhalb von BPEL-Prozessen
  zu realisieren.
  Dadurch ist es auch für ungeübte Workflow-Benutzer wie z.B.
- Wissenschaftler und Ingenieure möglich, einfach und schnell 
-\change_deleted 0 1249381930
-Scientific
-\change_inserted 0 1249381934
-wissenschaftliche
-\change_unchanged
+ Wissenschaftler und Ingenieure möglich, einfach und schnell wissenschaftliche
  Workflows zu erstellen und zu nutzen.
 \end_layout
 
@@ -2555,29 +2112,19 @@ he Workflows eingesetzt
 
 \begin_layout Section
 Leistungen im Rahmen des Angebots
-\change_inserted 0 1249382580
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249382603
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1249382641
 Eventuell Abschnitt komplett ändern und Dokumente tabellarisch aufführen
  mit Beschreibung, wie im Projektplan
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -2592,14 +2139,10 @@ Auszuliefernde Software-Einheiten
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 0 1249382492
 Anforderungskatalog
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 0 1249382492
 Projektplan
 \end_layout
 
@@ -2609,16 +2152,10 @@ Spezifikation
 
 \begin_layout Itemize
 Begriffslexikon
-\change_inserted 0 1249382442
-
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 0 1249382446
 Entwurf
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -2639,16 +2176,6 @@ Testprotokolle
 
 \begin_layout Itemize
 Installationspaket, das alle benötigten Software-Komponenten beinhaltet
-\change_deleted 0 1249382505
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 0 1249382502
-Eclipse Plug-In
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -2656,11 +2183,7 @@ Quellcode
 \end_layout
 
 \begin_layout Standard
-Alle Dokumente werden im PDF-Format 
-\change_inserted 0 1249382412
-und als LaTeX-Quelldateien 
-\change_unchanged
-geliefert.
+Alle Dokumente werden im PDF-Format und als LaTeX-Quelldateien geliefert.
 \end_layout
 
 \begin_layout Subsection
@@ -2668,33 +2191,7 @@ Software-Einheiten, die nicht zum Lieferumfang gehören
 \end_layout
 
 \begin_layout Standard
-Folgende Dokumente gehören nicht zu
-\change_deleted 0 1249382529
-r
-\change_inserted 0 1249382529
-m
-\change_unchanged
- Lieferumfang:
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 0 1249382486
-Anforderungskatalog
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 0 1249382486
-Projektplan
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 0 1249382450
-Entwurf
-\change_unchanged
-
+Folgende Dokumente gehören nicht zum Lieferumfang:
 \end_layout
 
 \begin_layout Itemize
@@ -2703,30 +2200,24 @@ Alle internen und organisatorischen Dokumente, wie z.B.
 \end_layout
 
 \begin_layout Section
-Terminplanung
-\change_inserted 0 1249382803
+Projektdurchführung
+\end_layout
 
+\begin_layout Subsection
+Terminplanung
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249382804
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1249382835
 Tabelle anpassen, Prozente anpassen, Puffer im Text erwähnen, Testphase
  aufsplitten, Intergation fehlt!
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -2928,11 +2419,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1249382757
 Implementierung
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3133,43 +2620,10 @@ Analyse
 \end_layout
 
 \begin_layout Standard
-Das Ziel der Analysephase ist es
-\change_inserted 0 1249382891
-,
-\change_unchanged
- durch Kundengespräche die funktionalen und nichtfunktionalen Anforderungen
- zu erheben, die der Kunde an das zu entwickelnde Softwaresystem stellt.
- Das Ziel ist es
-\change_inserted 0 1249382903
-,
-\change_unchanged
- einen Einblick in den momentanen Zustand des 
-\change_inserted 0 1249382990
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 0 1249382995
-besser formulieren
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-Arbeitsbereichs
-\change_inserted 0 1249382931
-,
-\change_unchanged
- für den die Software entwickelt werden soll
-\change_inserted 0 1249382933
-,
-\change_unchanged
- zu bekommen, um bereits realisierte Anforderungen aufzunehmen.
+Das Ziel der Analysephase ist es, durch Kundengespräche die funktionalen
+ und nichtfunktionalen Anforderungen zu erheben, die der Kunde an das zu
+ entwickelnde Softwaresystem stellt.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3187,15 +2641,9 @@ Da wenige bis gar keine Ansätze für Teilbereiche des Projekts wie z.B.
  die Verwendung von BPEL in Scientific Workflows existieren, müssen alle
  vorhandenen Ansätze evaluiert oder z.T.
  auch neue Ansätze geschaffen werden.
- Die Einarbeitungsphase dient dazu
-\change_inserted 0 1249383007
-,
-\change_unchanged
- sich in die verschiedenen Themenbereiche einzuarbeiten und festzustellen
-\change_inserted 0 1249383009
-,
-\change_unchanged
- in welchem Umfang Erweiterungsmaßnahmen notwendig sind.
+ Die Einarbeitungsphase dient dazu, sich in die verschiedenen Themenbereiche
+ einzuarbeiten und festzustellen, in welchem Umfang Erweiterungsmaßnahmen
+ notwendig sind.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3211,41 +2659,12 @@ nalen Anforderungen an die Software und ihre Schnittstellen präzise, vollständ
  beschrieben.
  Die Spezifikation dient darüber hinaus als Referenz für viele nachfolgende
  Dokumente, wie z.B.
- das Handbuch und den Entwurf
-\change_inserted 0 1249383026
-.
-
-\change_unchanged
- 
-\change_deleted 0 1249383029
-und s
-\change_inserted 0 1249383031
-S
-\change_unchanged
-ie ist unerlässlich für die Testphase und die spätere Wartung oder für spätere
- Erweiterungen der Software.
+ das Handbuch und den Entwurf.
+ Sie ist unerlässlich für die Testphase und die spätere Wartung oder für
+ spätere Erweiterungen der Software.
  Anhand der Spezifikation kann sich auch der Kunde davon überzeugen, dass
- 
-\change_inserted 0 1249383066
-alle 
-\change_deleted 0 1249383068
-wirklich 
-\change_unchanged
-seine Anforderungen 
-\change_deleted 0 1249383071
-umgesetzt
-\change_unchanged
- 
-\change_inserted 0 1249383121
-aufgenommen und nach seinen Vorstellungen spezifiziert 
-\change_unchanged
-w
-\change_deleted 0 1249383076
-e
-\change_inserted 0 1249383077
-u
-\change_unchanged
-rden.
+ alle seine Anforderungen aufgenommen und nach seinen Vorstellungen spezifiziert
+ wurden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3260,37 +2679,14 @@ In der Entwurfsphase wird die Architektur der Software festgelegt und in
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_deleted 0 1249383142
-Codierung
-\change_inserted 0 1249383144
 Implementierung
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-In der 
-\change_deleted 0 1249383230
-Codierung
-\change_inserted 0 1249383233
-Implementierung
-\change_unchanged
-sphase werden die Anforderungen aus der Spezifikation mit der Architektur
- des Entwurfs umgesetzt.
- 
-\change_inserted 0 1249383218
-Nach der Integration der implementierten Software-Module exisitert 
-\change_deleted 0 1249383218
-A
-\change_inserted 0 1249383219
-a
-\change_unchanged
-m Ende dieser Phase 
-\change_deleted 0 1249383222
-existiert
-\change_unchanged
- eine ausführbare Software.
+In der Implementierungsphase werden die Anforderungen aus der Spezifikation
+ mit der Architektur des Entwurfs umgesetzt.
+ Nach der Integration der implementierten Software-Module exisitert, am
+ Ende dieser Phase, eine ausführbare Software.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3298,60 +2694,23 @@ Test
 \end_layout
 
 \begin_layout Standard
-Die Testphase
-\change_inserted 0 1249383329
- enthält die drei Unterphasen Modultest, Integrationstest und Systemtest.
-
-\change_unchanged
- 
-\change_inserted 0 1249383501
-Durch den Modultest werden die einzelnen Software-Module auf ihre korrekte
+Die Testphase enthält die drei Unterphasen Modultest, Integrationstest und
+ Systemtest.
+ Durch den Modultest werden die einzelnen Software-Module auf ihre korrekte
  Funktionalität innerhalb des Moduls getestet.
  Im Integrationstest wird die Integration der Module zum Gesamtsystem überprüft,
  d.h.
  es wird überprüft, ob alle Module korrekt zusammenarbeiten.
- Der Systemtest 
-\change_unchanged
-dient dazu die Software gegen die Spezifikation zu prüfen, d.h.
+ Der Systemtest dient dazu die Software gegen die Spezifikation zu prüfen,
+ d.h.
  alle Anforderungen aus der Spezifikation werden mit geeigneten Testfällen
  überprüft und die Software entsprechend korrigiert, falls sie nicht die
  gewünschten Ergebnisse liefert.
- 
-\change_inserted 0 1249383545
-Für alle drei Testarten gilt, dass 
-\change_deleted 0 1249383550
-Dazu wird
-\change_inserted 0 1249383551
- immer
-\change_unchanged
- eine Reihe von Testfällen definiert und deren Ausführung in einem Testprotokoll
- aufgezeichnet
-\change_inserted 0 1249383574
- wird
-\change_unchanged
-.
-
-\change_inserted 0 1249383694
+ Für alle drei Testarten gilt, dass immer eine Reihe von Testfällen definiert
+ und deren Ausführung in einem Testprotokoll aufgezeichnet wird.
  Falls während eines Tests Fehler auftreten, so werden diese nach Ausführung
- des Test
-\change_unchanged
- 
-\change_inserted 0 1249383716
-von den Entwicklern korrigiert und dann erneut geprüft.
- 
-\change_unchanged
-Die
-\change_deleted 0 1249383735
-se
-\change_inserted 0 1249383744
- in der Testphase erzeugten
-\change_deleted 0 1249383735
- zwei
-\change_unchanged
- Dokumente
-\change_inserted 0 1249383773
-, die Testfälle und Testprotokolle,
-\change_unchanged
+ des Test von den Entwicklern korrigiert und dann erneut geprüft.
+ Die in der Testphase erzeugten Dokumente, die Testfälle und Testprotokolle,
  sind auch für den Kunden wichtig, da sie als Referenz für seine internen
  Tests während der Abnahme genutzt werden können.
 \end_layout
@@ -3377,19 +2736,16 @@ Dem Kunden wird damit Zeit zur Verfügung gestellt sicherzustellen, dass
  das von uns gelieferte Produkt seinen Anforderungen entspricht.
  Ist das der Fall, dann gilt das Projekt als abgeschlossen, andernfalls
  werden die nötigen Nachbesserungen oder Änderungen durchgeführt.
-\change_inserted 0 1249383815
-
+ Sollten nach den Nachbesserungen noch erhebliche Mängel bestehen, so können
+ diese z.B.
+ im Rahmen eines HiWi-Jobs korrigiert werden.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249383817
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 0 1249383853
 Mirko Sonntag: 
 \begin_inset Quotes eld
 \end_inset
@@ -3399,14 +2755,10 @@ Was ist, wenn selbst nach den Nachbesserungen noch erhebliche Mängel bestehen?
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -3415,44 +2767,2852 @@ Puffer
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 0 1249383869
-Die Puffer-Phase ist 
-\change_deleted 0 1249383870
-E
-\change_inserted 0 1249383870
-e
-\change_unchanged
-in extra Zeitfenster vor dem endgültigen Abgabetermin Ende Mai 2010.
+Die Puffer-Phase ist ein extra Zeitfenster vor dem endgültigen Abgabetermin
+ Ende Mai 2010.
  In dieser Phase können noch kleinere Änderungswünsche, die der Kunde nach
  dem Abnahmetest eventuell hat, umgesetzt werden.
 \end_layout
 
-\begin_layout Section
-Unsere Konditionen
-\change_inserted 0 1249383885
-
+\begin_layout Subsection
+Arbeitspakete
 \end_layout
 
 \begin_layout Standard
+Die im vorigen Abschnitt definierten Phasen werden nun in Arbeitspakete
+ gegliedert und aufgeteilt.
+ Die nachfolgende Tabelle enthält alle Arbeitspakete und eine kurze Beschreibung
+ der darin enthaltenen Aufgaben.
+\end_layout
 
-\change_inserted 0 1249383897
-\begin_inset Note Note
-status open
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="35" columns="4">
+<features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
+<column alignment="left" valignment="top" width="2.6cm">
+<column alignment="left" valignment="top" width="2.5cm">
+<column alignment="left" valignment="top" width="4.5cm">
+<column alignment="left" valignment="top" width="4cm">
+<row endhead="true" endfirsthead="true">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
 
-\change_inserted 0 1249383908
-=>Einleitender Text
-\change_unchanged
+\series bold
+Id
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Bezeichnung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Aufgaben
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dokumente
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+anly#proplan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Projektplan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung des Projektplans
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Projektplan (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+anly#angeb
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Angebot
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung des Angebots für die Kunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Angebot (PDF)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+anly#angeb#
+\begin_inset Newline newline
+\end_inset
+
+kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Angebot korrigieren
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur des Angebots
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Angebot 2.Version (PDF)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+einb#tools
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#1
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#2
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#3
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#4
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#5
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einarbeitung in Tools
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einarbeitung in:
+\end_layout
+
+\begin_layout Itemize
+Apache ODE (einb#tools#1)
+\end_layout
+
+\begin_layout Itemize
+Eclipse BPEL Designer
+\end_layout
+
+\begin_layout Itemize
+Maven
+\end_layout
+
+\begin_layout Itemize
+Hudson
+\end_layout
+
+\begin_layout Itemize
+SVN
+\end_layout
+
+\begin_layout Itemize
+IBM DB2 (einb#tools#6)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(interne Dokumente)
+\end_layout
+
+\begin_layout Plain Layout
+Foliensammlung als Nachschlagewerk
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+einb#konzept
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#1
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#2
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#3
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+#4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einarbeitung in Konzepte
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einarbeitung in:
+\end_layout
+
+\begin_layout Itemize
+BPEL (einb#konzept#1)
+\end_layout
+
+\begin_layout Itemize
+Apache ODE
+\end_layout
+
+\begin_layout Itemize
+Eclipse BPEL Designer
+\end_layout
+
+\begin_layout Itemize
+BPEL/SQL (einb#konzept#4)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(interne Dokumente)
+\end_layout
+
+\begin_layout Plain Layout
+Berichte als Grundlage für Spezifikation und Implementierung bzw.
+ Erweiterung der Technologien.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spez#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Erster Entwurf des Spezifikationsdokuments
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spez#rev1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.Review der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interner Review der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Reviewprotokoll 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spez#kor1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.Korrektur der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur der Spezifikation nach dem 1.Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Korrigiertes Spezifikationsdokument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spez#rev2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.Review der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weiterer Review der Spezifikation diesmal mit den Kunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Reviewprotokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spez#kor2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.Korrektur der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur der Spezifikation nach dem 2.Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung der Spezifikation (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+grEntw#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Grobentwurf erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung des Grobentwurfs (zusammenhang zwischen Komponenten)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Grobentwurf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+grEntw#rev
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Review des Grobentwurfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Review des Grobentwurfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+ReviewProtokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+entw#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur des Entwurfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur des Grobentwurfs nach dem Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung Grobentwurf (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+feinEntw#
+\begin_inset Newline newline
+\end_inset
+
+erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feinentwurf erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellen des Feinentwurfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Feinentwurf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+feinEntw#
+\begin_inset Newline newline
+\end_inset
+
+rev
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feinentwurf Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interner Review des Feinentwurfs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+ReviewProtokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+feinEntw#
+\begin_inset Newline newline
+\end_inset
+
+kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feinentwurf Korrektur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur des Feinentwurfs nach dem Review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung Feinentwurf (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+code#BPELdes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BPEL-Designer erweitern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erweiterung des Eclipse BPEL-Designer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quellcode der Erweiterungen (Java)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+code#Apache
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apache ODE erweitern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erweiterung der Apache ODE Workflow-Engine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quellcode der Erweiterungen (Java)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+code#module
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Module implementieren
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Basismodule des Rahmenwerks implementieren 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quellcode der Module (Java)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+code#integr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integration der einzelnen Basismodule zum Rahmenwerk
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Integrationsprotokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+handb#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung eines Handbuches inklusive Installationsanweisungen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Handbuch
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+handb#rev
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch review
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interner Review des Handbuches
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument)
+\end_layout
+
+\begin_layout Plain Layout
+Review Protokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+handb#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrigiern des Handbuchs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch Korrektur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung Handbuch (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#mod#erst
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Modultests erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung der Modultestfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testfälle (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#mod
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Modultest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durchführung des Modulttests und Protokollierung der Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testprotokoll (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#mod#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Modultest Korrektur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur aller entdeckten Fehler anhand des Testprotokolls
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrigierter Quellcode (Java)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#integ#erst
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrationstests erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung der Integrationstestfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testfälle (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#integ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrationstest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durchführung des Integrationstests und Protokollierung der Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testprotokoll (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#integ#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrationstest Korrektur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur aller entdeckten Fehler anhand des Testprotokolls
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrigierter Quellcode (Java)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#sys#erst
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Systemtests erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung der Systemtestfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testfälle (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#sys
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Systemtest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durchführung des Systemtests und Protokollierung der Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testprotokoll (PDF und LaTeX)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#sys#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Systemtest Korrektur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur aller entdeckten Fehler anhand des Testprotokolls
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrigierter Quellcode (Java)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+puff#abn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abnahme
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abnahme durch die Kunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CD/DVD mit: Installationspaket (RAR), Dokumentation der Erweiterungen (PDF
+ und LaTeX), Quellcode (Java) und evtl.
+ bereits ausgelieferte aktualisierte Dokumente
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+puff#erw
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erweiterung/Anpassung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durchführung möglicher Erweiterungen und/oder Anpassungen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle veränderten Dokumente
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Meilensteine
+\end_layout
+
+\begin_layout Standard
+Die Abnahmeverantwortlichkeit für interne Dokumente (siehe Arbeitspaket-Tabelle)
+ liegt beim Projektleiter und für externe Dokumente beim Kunden.
+ Interne Meilensteine sind in der nachfolgenden Tabelle 
+\shape italic
+kursiv
+\shape default
+ dargestellt und externe Meilensteine 
+\bar under
+unterstrichen
+\bar default
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="21" columns="4">
+<features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
+<column alignment="left" valignment="middle" width="2.5cm">
+<column alignment="left" valignment="middle" width="3cm">
+<column alignment="left" valignment="middle" width="4.5cm">
+<column alignment="left" valignment="middle" width="3.5cm">
+<row endhead="true" endfirsthead="true">
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Meilenstein
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+zugehörige Arbeitspakete
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Abnahmekriterien
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Zieltermin
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Angebot
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+anly#angeb, anly#angeb#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kunde akzeptiert das Angebot.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+07.
+ August 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Projektplan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+anly#proplan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Projektplan ist vollständig und wird von Qualitätsmanager und Projektleiter
+ akzeptiert.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14.
+ August 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Einarbeitung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+einb#tools#1 
+\end_layout
+
+\begin_layout Plain Layout
+bis
+\shape italic
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\shape italic
+einb#tools#6, einb#konzept#1
+\end_layout
+
+\begin_layout Plain Layout
+bis
+\end_layout
+
+\begin_layout Plain Layout
+
+\shape italic
+einb#konzept#4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Spezifikation 1.Version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spez#erstell, spez#rev1, spez#kor1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.
+ September 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spez#rev2, spez#kor2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Kunde hat keine Anmerkungen und alle im Review entdeckten Fehler und
+ Mängel sind beseitigt.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+01.
+ Oktober 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Grobentwurf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+grEntw#erstell, grEntw#rev, entw#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+07.
+ November 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Feinentwurf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+feinEntw#erstell, feinEntw#rev, feinEntw#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+01.
+ Dezember 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Handbuch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.
+ April 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Modul
+\begin_inset Newline newline
+\end_inset
+
+implemen
+\begin_inset Newline newline
+\end_inset
+
+tierung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+code#module
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+08.
+ Februar 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Erweiterungen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+code#BPELdes, code#Apache
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+08.
+ Februar 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Integration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+code#integr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.
+ Februar 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Modultest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#mod#erst, test#mod, test#mod#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+04.
+ März 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Integrationstest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#integ#erst, test#integ, test#integ#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23.
+ März 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Systemtest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#sys#erst, test#sys, test#sys#kor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.
+ April 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Abnahmetest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+puff#abn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Qualitätssicherung und Konfigurationsmanagement
+\end_layout
+
+\begin_layout Standard
+Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
+ Dokument bzw.
+ jede Software-Einheit von zwei unabhängigen Instanzen geprüft.
+ Zuerst wird die Software-Einheit durch die Qualitätsmanager auf formale
+ Aspekte wie Style-Guide Konformität oder die Einhaltung des vorgeschriebenen
+ Layouts hin untersucht.
+ Anschließend wird die SE (Software-Einheit) falls sie Fehler enthält (positive
+ QS-Prüfung) mit entsprechenden Kommentaren zurück an die Verfasser geschickt.
+ Eine formal korrekte (negativ QS-geprüfte) SE wird an den Projektleiter
+ weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesammten
+ SE prüft.
+ Der Projektleiter leitet positiv geprüfte SE mit entsprechenden Kommentaren
+ ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
+ ausführt.
+ Negativ geprüfte SE werden vom Projektleiter freigegeben und erhalten so
+ Auslieferungsstatus.
+ Wird eine bereits freigegebene SE verändert oder an neue Bedürfnisse angepasst
+ muss sie noch einmal den gesamten QS-Prozess durchlaufen.
+ Sollte der Projektleiter eine SE prüfen, die seiner Meinung nach so viele
+ Fehler oder Mängel enthält das eine Korrektur sich nicht lohnt, so kann
+ er die SE verwerfen, d.h.
+ die Verfasser erhalten eine Nachricht und müssen die SE neu verfassen.
+ Eine detailierte Beschreibung des gesamten Ablaufs des QS-Prozesses zeigt
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Prüfungsablauf-für-die"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename QS_Ablauf_Entsch.jpeg
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Prüfungsablauf-für-die"
+
+\end_inset
+
+Prüfungsablauf für die Qualitätssicherung
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
 
-\change_unchanged
+\end_layout
 
+\begin_layout Standard
+Die Konfigurationsverwaltung ist ein wichtiger Bestandteil der Infrastruktur
+ eines Projekts.
+ In diesem Projekt wird zur Realisierung das Konfigurationsverwaltungssystem
+ 
+\emph on
+Subversion 
+\emph default
+genutzt.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Das-grundlegende-Modell"
+
+\end_inset
+
+ zeigt das grundlegende Modell der Konfigurationsverwaltung und die Verwendung
+ von Subversion (SVN).
+ Hierzu werden verschiedene Umgebungen eingerichtet, die durch gewisse Rahmenbed
+ingungen für bestimmte Tätigkeiten ausgelegt sind und so z.B.
+ speziell für den Test oder die Implementierung eingerichtet sind.
+ Die Referenz-Umgebung bildet die Zentrale der Konfigurationsverwaltung
+ und wird durch Subversion realisiert.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Entstehungsprozess-für-Software-Einheiten"
+
+\end_inset
+
+ wird der Entstehungsprozess von SE aufgezeigt und welche Umgebungen dabei
+ durchlaufen werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Konfigurationsverwaltung.jpeg
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Das-grundlegende-Modell"
+
+\end_inset
+
+Das grundlegende Modell der Konfigurationsverwaltung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename KV_Ablauf.jpeg
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Entstehungsprozess-für-Software-Einheiten"
+
+\end_inset
+
+Entstehungsprozess für Software-Einheiten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Unsere Konditionen
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden die Kosten und die Risiken des Projekts aufgezeigt
+ und beschrieben.
+\end_layout
+
+\begin_layout Subsection
+Kostenschätzung
+\end_layout
+
+\begin_layout Standard
+Unsere internen Berechnungen nach der Funktion-Point-Methode ergab 268 Adjusted
+ Function Points (AFP).
+ Aus einer Referenztabelle für abgeschlossene Projekte ergibt sich folgende
+ Kostenschätzung:
+\end_layout
+
+\begin_layout Subsection*
+Gesamtentwicklungszeit: 
+\end_layout
+
+\begin_layout Standard
+19 MM (Mann-Monate) 
+\end_layout
+
+\begin_layout Subsubsection*
+Arbeitszeit pro Mitarbeiter: 
+\end_layout
+
+\begin_layout Standard
+19 MM / 7 Mann = 2,71 Monate Entwicklungszeit pro Mitarbeiter
+\end_layout
+
+\begin_layout Subsubsection*
+Zuschlag Arbeitszeit (wg.
+ Krankheit / Urlaub):
+\end_layout
+
+\begin_layout Standard
+2,71 Monate * 1,10 = 2,981 Monate Entwicklungszeit pro Mitarbeiter
+\end_layout
+
+\begin_layout Subsubsection*
+Mitarbeiterstunden:
+\end_layout
+
+\begin_layout Standard
+Die Mitarbeiter haben alle eine 5 Tage Woche mit jeweils 8 Stunden, können
+ also im Monat 160 Stunden arbeiten.
+\end_layout
+
+\begin_layout Standard
+Bei einer effektiven Entwicklungszeit von gerundet 3 Monaten ( 2,981) wird
+ jede Person 480 Stunden arbeiten.
+\end_layout
+
+\begin_layout Subsection*
+Stundensätze
+\end_layout
+
+\begin_layout Standard
+Entwickler : 69€ zzgl.
+ MwSt.
+\end_layout
+
+\begin_layout Standard
+Projektleiter : 99€ zzgl.
+ MwSt.
+\end_layout
+
+\begin_layout Subsection*
+Gesamtkostenschätzung:
+\end_layout
+
+\begin_layout Standard
+6 Entwickler x 69€/Stunde x 160 Stunden x 3 Monate = 198.720€ 
+\end_layout
+
+\begin_layout Standard
+1 Projektleiter x 99€/Stunde x 160 Stunden x 3 Monate = 47.520€
+\end_layout
+
+\begin_layout Section*
+Gesamt: 246.240€ zzgl.
+ 19 % MwSt.
+ = 293.025€
+\end_layout
+
+\begin_layout Standard
+Da es sich um ein Studienprojekt handelt, wird kein Geld bezahlt.
+ Die Berechnungen sind hypotetisch und wurden nur zu Planungszwecken durchgeführ
+t.
 \end_layout
 
 \begin_layout Subsection
@@ -3949,427 +6109,6 @@ Anforderungen reduzieren.
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsection
-Kostenschätzung
-\end_layout
-
-\begin_layout Standard
-Unsere internen Berechnungen nach der Funktion-Point-Methode ergab folgende
- Kostenschätzung :
-\end_layout
-
-\begin_layout Subsection*
-Gesamtentwicklungszeit : 
-\end_layout
-
-\begin_layout Standard
-19 MM (Mann-Monate) 
-\end_layout
-
-\begin_layout Subsubsection*
-Entwicklungszeit pro Mitarbeiter : 
-\end_layout
-
-\begin_layout Standard
-19 MM / 7 Mann = 2,71 Monate Entwicklungszeit pro Mitarbeiter
-\end_layout
-
-\begin_layout Subsubsection*
-Zuschlag Entwicklungszeit (wg.
- Krankheit / Urlaub ) :
-\end_layout
-
-\begin_layout Standard
-2,71 Monate * 1,10 = 2,981 Monate Entwicklungszeit pro Mitarbeiter
-\end_layout
-
-\begin_layout Subsubsection*
-Mitarbeiterstunden :
-\end_layout
-
-\begin_layout Standard
-Die Mitarbeiter haben alle eine 5 Tage Woche mit jeweils 8 Stunden, können
- also im Monat 160 Stunden arbeiten.
-\end_layout
-
-\begin_layout Standard
-Bei einer effektiven Entwicklungszeit von gerundet 3 Monaten ( 2,981) wird
- jede Person 480 Stunden arbeiten.
-\end_layout
-
-\begin_layout Subsection*
-Stundensätze
-\end_layout
-
-\begin_layout Standard
-Entwickler : 69€ zzgl.
- MwSt.
-\end_layout
-
-\begin_layout Standard
-Projektleiter : 99€ zzgl.
- MwSt.
-\end_layout
-
-\begin_layout Subsection*
-Gesamtkostenschätzung :
-\end_layout
-
-\begin_layout Standard
-6 Entwickler x 69€/Stunde x 160 Stunden x 3 Monate = 198.720€ 
-\end_layout
-
-\begin_layout Standard
-1 Projektleiter x 99€/Stunde x 160 Stunden x 3 Monate = 47.520€
-\end_layout
-
-\begin_layout Section*
-Gesamt : 246.240€ zzgl 19 % MwSt.
- = 293.025€ 
-\change_deleted 0 1249383984
-
-\end_layout
-
-\begin_layout Subsection
-
-\change_deleted 0 1249383981
-AGBs
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Allgemeine Geschäftsbedingungen (AGB) der SIMPL GmbH
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-1.
- Geltungsbereich und Vertragsschluss
-\series default
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Diese allgemeinen Geschäftsbedingungen gelten für alle Vertragsbeziehungen
- und vorvertraglichen Verhandlungen mit unseren Kunden, unabhängig von Art
- und Umfang der Leistung im Rahmen laufender und zukünftiger Geschäftsverbindung
-en.
- Allgemeine Geschäftsbedingungen des Kunden werden ausdrücklich nicht Vertragsin
-halt, auch wenn ihnen seitens der Firma SIMPL GmbH nicht ausdrücklich widersproc
-hen wird.
- Für den Fall das der Kunde die nachfolgenden allgemeinen Geschäftsbedingungen
- nicht gelten lassen will, hat er dies vorher schriftlich der Firma SIMPL
- GmbH anzuzeigen.
- Mündliche, telefonische und telegrafische Vereinbarungen bedürfen zu ihrer
- Wirksamkeit unserer schriftlichen Bestätigung.
- Unsere Angebote sind freibleibend und unverbindlich; sie dienen allein
- der Aufforderung des Kunden zur Abgabe eines Auftrages; dessen Annahme
- wir uns vorbehalten.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-2.
- Preise
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Alle Preise, auch diejenigen in der Auftragsbestätigung sind freibleibend.
- Für den Fall wesentlicher Änderungen der den Preis bestimmender Faktoren
- vor endgültiger Abwicklung der Bestellung bleibt eine entsprechende Anpassung
- an diese Änderungen vorbehalten.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-3.
- Auftragsannullierung
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Auftragsannullierungen bedürfen unser ausdrücklichen schriftlichen Zustimmung.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-4.
- Lieferung
-\series default
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Alle von der Firma SIMPL GmbH genannten Liefertermine sind unverbindliche
- Liefertermine , es sei denn, dass ein Liefertermin ausdrücklich schriftlich
- vereinbart wird.
- Verlangt der Kunde nach Auftragerteilung Änderungen oder Ergänzungen des
- Auftrages oder treten sonstige Umstände ein, die der Firma SIMPL GmbH eine
- Einhaltung des Liefertermins unmöglich machen, obwohl die Firma SIMPL GmbH
- diese Umstände nicht zu vertreten hat, so verschiebt sich der Liefertermin
- um einen angemessenen Zeitraum.
- Wird die Firma SIMPL GmbH an der rechtzeitigen Vertragserfüllung z.
- B.
- durch Beschaffungs-, Fabrikations- oder Lieferstörungen bei ihr oder ihrem
- Zulieferanten gehindert, so gelten die allgemeinen Rechtsgrundsätze mit
- der Maßgabe, dass der Kunde nach Ablauf von einem Monat eine Nachfrist
- von 6 Wochen setzten kann.
- Ist die Nichteinhaltung eines verbindlichen Liefertermins nachweislich
- auf Krieg, Aufruhr, Streik oder Aussperrung oder aus sonstige nach allgemeinen
- Rechtsgrundsätzen von der Firma SIMPL GmbH nicht zu vertretende Umstände
- zurückzuführen, so wird die Lieferfrist angemessen verlängert.
- Der Kunde kann vom Vertrag zurücktreten, wenn die Firma SIMPL GmbH nach
- Ablauf der verlängerten Frist eine angemessene Nachfrist zur Lieferung
- nicht erfüllt Der Rücktritt hat schriftlich zu erfolgen.
- Wird der Firma SIMPL GmbH die Vertragserfüllung aus den vorgenannten Gründen
- ganz oder teilweise unmöglich, so wird sie von ihrer Lieferpflicht befreit.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-5.
- Zahlung und Verzug
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Hardware und Software werden auch im Rahmen eines Gesamtauftrages sofort
- in Rechnung gestellt.
- Alle Rechnungen der Firma SIMPL GmbH sind innerhalb von 10 Tagen ab Rechnungsda
-tum zahlbar.
- Maßgebend ist das Datum des Einganges der Zahlung bei der Firma SIMPL GmbH.
- Kommt der Kunde mit fälligen Zahlungen mehr als 7 Tage in Verzug, so ist
- die Firma SIMPL GmbH berechtigt, Verzugszinsen in Höhe von 5% über dem
- jeweiligen Referenzzinssatz der Europäischen Zentralbank zu berechnen.
- Weitere Ansprüche bleiben unberührt.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-6.
- Rücktrittsrecht
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Hängt die Liefermöglichkeit von der Belieferung durch einen Vorlieferanten
- ab und scheitert diese Belieferung aus Gründen, die wir nicht zu vertreten
- haben, so sind wir zum Rücktritt vom Vertrag berechtigt.
- Erhalten wir nach Vertragsschluss Kenntnis von Tatsachen, die auf fehlende
- Kreditwürdigkeit des Kunden schließen lassen, so sind wir zum Rücktritt
- berechtigt, wenn der Käufer trotzdem zur Zug-um-Zug-Leistung oder Sicherheitsle
-istung nicht bereit ist.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-7.
- Patent- und Urheberrechte
-\series default
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Die Firma SIMPL GmbH bleibt Inhaberin aller Urheber-, und Nutzungsrechte
- an der dem Kunden überlassenen Software, einschließlich der gesamten Dokumentat
-ion, auch wenn der Kunde sie verändert.
- Ohne unsere schriftliche Zustimmung dürfen weder die Software noch die
- Unterlagen, weder mittelbar noch unmittelbar, Dritten zugänglich gemacht
- werden.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-8.
- Überlassung von Software
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Zwischen der SIMPL GmbH und dem Kunden wird in einem gesonderten Vertragswerk,
- dem Rahmenvertrag, folgendes geregelt: Vertragsgegenstand, Vertragsdauer,
- Leistungsumfang, Nutzungsbedingungen für die beschriebene Software, Nutzung
- von Fremdsoftware, Beratungs- und Pflegeleistungen, Mitwirkungspflichten
- des Kunden, die Abnahme durch den Kunden, die Vergütung, die Gewährleistung,
- Haftung, Geheimhaltung und Datenschutz.
- Welche Leistungen im einzelnen von SIMPL GmbH zu erbringen sind ergibt
- sich aus den Leistungsscheinen und dem Software-Pflegevertrag, die als
- Anlagen zu dem Rahmenvertrag genommen werden.
- Die SIMPL GmbH gewährt dem Kunden das nicht weiter übertragbare und nicht
- ausschließliche Recht, die in dem Lizenzschein aufgeführte spezifische
- Software und das Dokumentationsmaterial auf unbestimmte Zeit zu nutzen.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-9.
- Eigentumsvorbehalt
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Die Ware bleibt bis zum vollständigen Ausgleich unserer sämtlichen, auch
- künftig entstehenden Forderungen gegen den Kunden aus der Geschäftsverbindung
- - bei Herausgabe von Wechseln oder Schecks bis zu deren vorbehaltloser
- Einlösung - unser Eigentum.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-10.
- Gewährleistung
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Die Gewährleistungsfrist beim Handelsgeschäft unter Kaufleuten beträgt 12
- Monate.
- Sie beginnt mit der Auslieferung der Software an den Lizenznehmer.
- Der Kunde ist verpflichtet die gelieferte Software unverzüglich zu prüfen.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-11.
- Haftung
-\series default
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-SIMPL GmbH haftet wie folgt: Der Höhe nach unbegrenzt für Schäden, die auf
- Rechtsmängeln, zugesicherten Eigenschaften, Arglist oder auf vorsätzlichem
- oder grob fahrlässigem Verhalten der gesetzlichen Vertreter oder leitenden
- Angestellten von Intera beruhen.
- Unbegrenzt ist auch die Haftung nach dem Produkthaftungsgesetz.
- Für Schäden die aus der (leicht) fahrlässigen Verletzung wesentlicher Vertragsp
-flichten (Kardinalpflichten) resultieren, die vorsätzlich oder grob fahrlässig
- durch Erfüllungsgehilfen oder leitende Angestellte verursacht wurden oder
- die auf anfänglichem Unvermögen beruhen, ist die Haftung von SIMPL GmbH
- wie folgt begrenzt: - Auf Schäden, mit deren Entstehen man typischerweise
- rechnen musste, sowie - auf die Hälfte der Lizenzvergütung für die betreffende
- Vertragssoftware, sofern es sich um Schäden aus der Überlassung eines Vertrags-
- softwareproduktes handelt, bzw.
- auf die Hälfte der im letzten Kalenderjahr für den betreffenden Service
- geleisteten Servicegebühr, sofern es sich um Schäden aus den vertraglichen
- Serviceleistungen handelt; - Auf den typischen Wiederherstellungsaufwand,
- der bei regelmäßiger und gefahrentsprechender Anfertigung von Sicherungskopien
- eingetreten wäre, wenn es sich um Schäden handelt, die auf dem Verlust
- von Daten beruhen.
- Im übrigen ist die Haftung ausgeschlossen.
- Intera trägt keinerlei Verantwortung für Inhalte, die der Kunde unter Verwendun
-g der Software in das Internet und/oder sein Intranet stellt.
- Dies gilt auch dann, wenn Intera den Kunden bei der Auswahl der Inhalte
- beraten hat.
- Der Kunde wird Intera von jeglichen Ansprüchen freistellen, die gegen Intera
- wegen der angeblichen oder tatsächlichen Rechtswidrigkeit von mit unserer
- Software verarbeiteten Inhalten gestellt werden.
- Sämtliche Kosten, die Intera in diesem Zusammenhang entstehen, wird der
- Kunde erstatten.
- Die vorstehenden Regelungen gelten auch zugunsten der Mitarbeiter von Intera.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-12.
- Rechtswahl, Erfüllungsort und Gerichtsstand
-\series default
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Unsere gesamten Geschäftsbeziehungen mit unseren Kunden unterliegen ausschließli
-ch dem Recht der Bundesrepublik Deutschland.
- Die Anwendung des UN-Kaufrechts wird ausdrücklich ausgeschlossen.
- Der Erfüllungsort ist Stuttgart.
- Der Gerichtstand ist Stuttgart.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-13.
- Salvatorische Klausel
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-Sollten eine oder mehrere der vorstehenden Vertragsbedingungen, oder daneben
- etwa abgeschlossener individueller Vereinbarungen ganz oder teilweise ungültig
- sein, berührt das die Wirksamkeit der übrigen Bedingungen nicht.
- Beide Vertragspartner sind in diesem Falle verpflichtet, eine unwirksame
- durch eine wirksame Bedingung zu ersetzen, die dem wirtschaftlichen Zweck
- der unwirksamen am nächsten kommt.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 0 1249383981
-
-\series bold
-Stuttgart, den 15.07.2009
-\change_unchanged
 
 \end_layout
 

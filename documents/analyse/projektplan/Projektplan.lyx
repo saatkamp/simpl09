@@ -2385,10 +2385,10 @@ Die im vorigen Abschnitt definierten Phasen werden nun in Arbeitspakete
 \begin_inset Tabular
 <lyxtabular version="3" rows="26" columns="4">
 <features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
-<column alignment="left" valignment="top" width="3cm">
-<column alignment="left" valignment="top" width="5cm">
-<column alignment="left" valignment="top" width="6cm">
-<column alignment="left" valignment="top" width="6cm">
+<column alignment="left" valignment="top" width="2.6cm">
+<column alignment="left" valignment="top" width="2.5cm">
+<column alignment="left" valignment="top" width="4.5cm">
+<column alignment="left" valignment="top" width="4cm">
 <row endhead="true" endfirsthead="true">
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2427,6 +2427,8 @@ Aufgaben
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Dokumente
 \end_layout
 
@@ -2901,7 +2903,7 @@ Kundenfassung der Spezifikation
 \begin_layout Plain Layout
 
 \shape italic
-GrEntw#erstell
+grEntw#erstell
 \end_layout
 
 \end_inset
@@ -2941,7 +2943,7 @@ Dokument des Grobentwurfs
 \begin_layout Plain Layout
 
 \shape italic
-GrEntw#rev
+grEntw#rev
 \end_layout
 
 \end_inset
@@ -3019,7 +3021,9 @@ Grobentwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-FeinEntw#erstell
+
+\shape italic
+feinEntw#erstell
 \end_layout
 
 \end_inset
@@ -3257,6 +3261,8 @@ Handbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 handb#rev
 \end_layout
 
@@ -3295,6 +3301,8 @@ Review Protokoll
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 handb#kor
 \end_layout
 
