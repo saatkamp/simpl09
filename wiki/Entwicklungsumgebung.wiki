@@ -44,7 +44,7 @@ Update-URL des Plugins eintragen, den neuen Punkt und evtl. zusätzlich dazu ers
 ==== Update von Eclipse ====
 Help -> Software Updates -> Available Software -> Update
 
-=== 5.2 Einstellungen ===
+=== 6.2 Einstellungen ===
 ==== SVN Labels im Package Explorer ====
 Window -> Preferences -> Team -> SVN -> Label Decorations
 {{{
@@ -122,8 +122,8 @@ Da der BPEL Designer nicht mit der aktuellen WST Version zurecht kommt, muss die
 
 Help -> Software Updates -> Installed Software -> Revert Configuration... -> Soweit zurückgehen, bis die WST Komponenten v 3.0.4 installiert sind
 
-== 6 Windows Einstellungen ==
-=== 6.1 Umgebungsvariablen ===
+== 7 Windows Einstellungen ==
+=== 7.1 Umgebungsvariablen ===
 Systemeigenschaften -> Erweitert -> Umgebungsvariablen -> Systemvariablen
 
 *JAVA_HOME* (Neu)
@@ -152,8 +152,8 @@ C:\Programme\Apache\apache-maven-2.1.0
 ;C:\Programme\Apache\apache-maven-2.1.0\bin;%JAVA_HOME%\bin
 }}}
 
-== 7 Test ==
-=== 7.1 Umgebungsvariablen ===
+== 8 Test ==
+=== 8.1 Umgebungsvariablen ===
 Kommandozeile (cmd.exe)
 {{{
 java
@@ -161,7 +161,7 @@ mvn
 }}}
 Befehle müssen gefunden werden.
 
-=== 7.2 Maven Testprojekt ===
+=== 8.2 Maven Testprojekt ===
 ==== In Eclipse ====
 File -> New -> Other -> Maven -> Maven Project -> Next -> Next
 {{{
