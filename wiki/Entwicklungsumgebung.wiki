@@ -9,7 +9,7 @@
  * _apache-maven-2.1.0-bin.zip_ - Apache Maven, Java Build-Management-Tool, http://maven.apache.org/
  * _eclipse-java-ganymede-SR2-win32.zip_ - Eclipse, IDE, http://eclipse.org/
  * _apache-ode-war-1.3.2.zip_ - Apache ODE, BPEL Engine, http://ode.apache.org/
- * _axis2-1.5-bin.zip_ - Apache Axis2, Web Service Runtime Engine, http://ode.apache.org/
+ * _axis2-1.5-bin.zip_ - Apache Axis2, Web Service Runtime Engine, http://ws.apache.org/axis2/
 
 == 1 Tortoise ==
 _TortoiseSVN-1.6.3.16613-win32-svn-1.6.3.msi_ ausführen und Installationsanweisungen folgen.
