@@ -1753,8 +1753,9 @@ In diesem Abschnitt wird die Organisation des Projektteams vorgestellt.
  Nachfolgend werden diese Rollen beschrieben und die Teammitglieder, die
  diese Rolle besitzen, angegeben.
  Danach folgen noch die Kontaktdaten aller Teammitglieder, damit der Kunde
- bei spezifischen Fragen direkt mit dem Verantwortlichen oder bei nichterreichen
- des Projektleiters mit dessen Stellvertreter Kontakt aufnehmen kann.
+ bei spezifischen Fragen direkt mit dem Verantwortlichen oder bei nicht
+ erreichen des Projektleiters mit dessen Stellvertreter Kontakt aufnehmen
+ kann.
  
 \end_layout
 
@@ -1802,7 +1803,7 @@ Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
 \begin_layout Standard
 Seine zentralen Aufgaben liegen in der Verwaltung des Projekts, d.h.
  er plant den Ablauf des Projekts und der einzelnen Phasen, er bewertet
- und kontrolliert abschliessend, als letzte Instanz, alle erstellten Dokumente
+ und kontrolliert abschließend, als letzte Instanz, alle erstellten Dokumente
  vor ihrer Freigabe und er kümmert sich um die Verteilung der einzelnen
  Arbeitspakete während des Projekts.
 \end_layout
@@ -1830,8 +1831,17 @@ tems und die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
  Er trifft die grundlegenden Entscheidungen über die Art und den Aufbau
  der Software-Architektur und überwacht deren Einhaltung während der Projektlauf
 zeit.
- Die Architektur soll die Einhaltung der unter Abschnitt ??? genannten Softwareq
-ualitäten sicherstellen.
+ Die Architektur soll die Einhaltung der unter Abschnitt 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Referenz einfügen
+\end_layout
+
+\end_inset
+
+??? genannten Softwarequalitäten sicherstellen.
 \end_layout
 
 \begin_layout Standard
@@ -1874,7 +1884,7 @@ ur auf Software- sowie auch auf Hardware-Ebene.
 
 \series bold
 \color black
-Qualitätsmanagment: Michael Hahn, Firas Zoabi
+Qualitätsmanagement: Michael Hahn, Firas Zoabi
 \end_layout
 
 \begin_layout Standard
@@ -1924,7 +1934,7 @@ Entwickler: Michael Schneidt, René Rehn, Daniel Brüderle, Michael Hahn,
 \begin_inset VSpace medskip
 \end_inset
 
-Als Entwickler arbeiten alle Teammitglieder ausser dem Projektleiter.
+Als Entwickler arbeiten alle Teammitglieder außer dem Projektleiter.
  Ein Entwickler arbeitet dabei im Rahmen der vom Projektleiter erteilten
  Aufgaben an Dokumenten und Software-Komponenten.
 \end_layout
@@ -2066,7 +2076,7 @@ Nutzen
 Die Arbeit im wissenschaftlichen Bereich und die Datenmengen, die damit
  verbunden sind, werden immer größer, heterogener und komplexer.
  Zur Vereinfachung und zur Automatisierung werden im Moment nur vereinzelt
- Scientific Workflows eingesetzt.
+ wissenschaftliche Workflows eingesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -2140,7 +2150,7 @@ ichen Dokumente vorhanden und geprüft sind und den Anforderungen entsprechen.
 \begin_layout Standard
 Im nachfolgenden Abschnitt wird die Terminplanung des Projekts kurz erläutert.
  Danach wird dann auf die definierten Projektphasen, Arbeitspakete, Meilensteine
- und die Durchführung der Qualitätsicherung und Konfigurationsverwaltung
+ und die Durchführung der Qualitätssicherung und Konfigurationsverwaltung
  eingegangen.
 \end_layout
 
@@ -2566,8 +2576,8 @@ Einarbeitung
 
 \begin_layout Standard
 Da wenige bis gar keine Ansätze für Teilbereiche des Projekts wie z.B.
- die Verwendung von BPEL in Scientific Workflows existieren, müssen alle
- vorhandenen Ansätze evaluiert oder z.T.
+ die Verwendung von BPEL in wissenschaftliche Workflows existieren, müssen
+ alle vorhandenen Ansätze evaluiert oder z.T.
  auch neue Ansätze geschaffen werden.
  Die Einarbeitungsphase dient dazu, sich in die verschiedenen Themenbereiche
  einzuarbeiten und festzustellen, in welchem Umfang Erweiterungsmaßnahmen
@@ -2613,7 +2623,7 @@ Implementierung
 \begin_layout Standard
 In der Implementierungsphase werden die Anforderungen aus der Spezifikation
  mit der Architektur des Entwurfs umgesetzt.
- Nach der Integration der implementierten Software-Module exisitert, am
+ Nach der Integration der implementierten Software-Module existiert, am
  Ende dieser Phase, eine ausführbare Software.
 \end_layout
 
@@ -3791,7 +3801,7 @@ handb#rev
 \begin_inset Text
 
 \begin_layout Plain Layout
-Handbuch review
+Handbuch Review
 \end_layout
 
 \end_inset
@@ -3835,7 +3845,7 @@ handb#kor
 \begin_inset Text
 
 \begin_layout Plain Layout
-Korrigiern des Handbuchs
+Korrigieren des Handbuchs
 \end_layout
 
 \end_inset
@@ -3924,7 +3934,7 @@ Modultest
 \begin_inset Text
 
 \begin_layout Plain Layout
-Durchführung des Modulttests und Protokollierung der Fehler
+Durchführung des Modultests und Protokollierung der Fehler
 \end_layout
 
 \end_inset
@@ -4518,7 +4528,7 @@ einb#konzept#4
 
 \begin_layout Plain Layout
 Einarbeitungsberichte jedes 2er-Teams liegen vor und werden vom Projektleiter
- aktzeptiert
+ akzeptiert
 \end_layout
 
 \end_inset
@@ -5085,7 +5095,7 @@ Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
  Anschließend wird die SE (Software-Einheit) falls sie Fehler enthält (positive
  QS-Prüfung) mit entsprechenden Kommentaren zurück an die Verfasser geschickt.
  Eine formal korrekte (negativ QS-geprüfte) SE wird an den Projektleiter
- weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesammten
+ weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesamten
  SE prüft.
  Der Projektleiter leitet positiv geprüfte SE mit entsprechenden Kommentaren
  ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
@@ -5098,7 +5108,7 @@ Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
  Fehler oder Mängel enthält das eine Korrektur sich nicht lohnt, so kann
  er die SE verwerfen, d.h.
  die Verfasser erhalten eine Nachricht und müssen die SE neu verfassen.
- Eine detailierte Beschreibung des gesamten Ablaufs des QS-Prozesses zeigt
+ Eine detaillierte Beschreibung des gesamten Ablaufs des QS-Prozesses zeigt
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5440,8 +5450,8 @@ kein Geld
 \size default
 \emph default
  bezahlt.
- Die Berechnungen sind hypotetisch und wurden nur zu Planungszwecken durchgeführ
-t.
+ Die Berechnungen sind hypothetisch und wurden nur zu Planungszwecken durchgefüh
+rt.
 \end_layout
 
 \begin_layout Subsection
@@ -5734,7 +5744,7 @@ Chaotische Änderungen der Dokumente
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausgibige Dokumentprüfung durch Qualitätssicherung und Projektleiter
+Ausgiebige Dokumentprüfung durch Qualitätssicherung und Projektleiter
 \end_layout
 
 \begin_layout Plain Layout
@@ -5826,17 +5836,117 @@ Das Angebot in dieser Form ist, ab Erhalt, eine Woche (7 Tage) gültig.
 \end_layout
 
 \begin_layout Section*
-Vertrag zur Auftragserteilung und Auftragsnahme
+\begin_inset Newpage newpage
+\end_inset
+
+Vertrag zur Auftragserteilung und Auftragsannahme
 \end_layout
 
 \begin_layout Standard
 Durch die nachfolgenden Unterschriften von Auftraggeber und Auftragnehmer
  erklären sich beide Parteien dazu bereit, den durch das Angebot festgelegten
  Rahmen für das Projekt, zu akzeptieren.
- Darüberhinaus bestätigt die Unterschrift des Auftraggebers die Erteilung
+ Darüber hinaus bestätigt die Unterschrift des Auftraggebers die Erteilung
  des Auftrags an den Auftragnehmer.
  Die Unterschrift des Auftragnehmers bestätigt die Annahme des Auftrags
  des Auftraggebers.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+parbox{6cm}{Stuttgart, den 
+\backslash
+docdate 
+\backslash
+hrule 
+\backslash
+strut 
+\backslash
+centering
+\backslash
+footnotesize Ort, Datum} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hfill
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+parbox{8cm}{
+\backslash
+vspace{10pt} 
+\backslash
+hrule 
+\backslash
+strut 
+\backslash
+centering
+\backslash
+footnotesize Bevollmächtigter Vertreter des Auftraggebers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hfill
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+parbox{8cm}{
+\backslash
+hrule 
+\backslash
+strut 
+\backslash
+centering
+\backslash
+footnotesize Bevollmächtigter Vertreter des Auftragnehmers}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
