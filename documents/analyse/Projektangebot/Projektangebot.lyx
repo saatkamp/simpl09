@@ -2075,7 +2075,6 @@ Durch das in diesem Projekt erstellte Rahmenwerk soll die Modellierung und
 ereich bereits viele Jahre erfolgreich eingesetzt wird, vereinfacht werden.
  Dazu soll das Rahmenwerk den Datenzugriff direkt aus einem Workflow heraus
  ermöglichen.
- .
  Dafür werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst erweitert,
  um so die direkte Anbindung von Datenquellen innerhalb von BPEL-Prozessen
  zu realisieren.
@@ -2111,96 +2110,38 @@ he Workflows eingesetzt
 \end_layout
 
 \begin_layout Section
-Leistungen im Rahmen des Angebots
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Eventuell Abschnitt komplett ändern und Dokumente tabellarisch aufführen
- mit Beschreibung, wie im Projektplan
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Auszuliefernde-Software-Einheiten"
-
-\end_inset
-
-Auszuliefernde Software-Einheiten
-\end_layout
-
-\begin_layout Itemize
-Anforderungskatalog
-\end_layout
-
-\begin_layout Itemize
-Projektplan
-\end_layout
-
-\begin_layout Itemize
-Spezifikation
-\end_layout
-
-\begin_layout Itemize
-Begriffslexikon
-\end_layout
-
-\begin_layout Itemize
-Entwurf
-\end_layout
-
-\begin_layout Itemize
-Handbuch
-\end_layout
-
-\begin_layout Itemize
-Dokumentation der Erweiterungen
-\end_layout
-
-\begin_layout Itemize
-Testfälle
-\end_layout
-
-\begin_layout Itemize
-Testprotokolle
-\end_layout
-
-\begin_layout Itemize
-Installationspaket, das alle benötigten Software-Komponenten beinhaltet
-\end_layout
-
-\begin_layout Itemize
-Quellcode
-\end_layout
-
-\begin_layout Standard
-Alle Dokumente werden im PDF-Format und als LaTeX-Quelldateien geliefert.
-\end_layout
-
-\begin_layout Subsection
-Software-Einheiten, die nicht zum Lieferumfang gehören
-\end_layout
-
-\begin_layout Standard
-Folgende Dokumente gehören nicht zum Lieferumfang:
-\end_layout
-
-\begin_layout Itemize
-Alle internen und organisatorischen Dokumente, wie z.B.
- Protokolle
-\end_layout
-
-\begin_layout Section
 Projektdurchführung
+\end_layout
+
+\begin_layout Standard
+Als Prozessmodell für die Durchführung des Projekts wird das Phasenmodell,
+ mit dem Wasserfallmodell als Vorgehensmodell, verwendet.
+ Diese Kombination liefert entscheidende Vorteile, die wichtig sind, da
+ das Studienprojekt einen sehr straffen Zeitplan hat und dieser unbedingt
+ eingehalten werden muss.
+ Einer dieser Vorteile ist es, dass alle Beteiligten (Kunden und Projektmitglied
+er) zu jeder Zeit genau wissen, in welcher Phase sich das Projekt gerade
+ befindet und welche Dokumente am Ende der Phase existieren müssen, da ein
+ zurückspringen in abgeschlossene Phasen unmöglich ist.
+ Dies bedeutet jedoch nicht, dass nicht zum Beispiel die Spezifikation zu
+ späteren Zeitpunkten noch einmal überarbeitet werden könnte, sondern lediglich,
+ dass man für die Überarbeitung der Spezifikation nicht noch einmal in die
+ entsprechende Phase zurückkehrt, sondern die Überarbeitung in der aktuellen
+ Phase durchführt.
+ Ein weiterer Vorteil ist, dass am Ende jeder Phase, vor dem Erreichen des
+ Meilensteins, alle Dokumente, die in dieser Phase erstellt wurden, geprüft
+ werden, um den Meilenstein zu erreichen und damit die Phase abzuschließen,
+ d.h.
+ der Abschluss einer Phase bzw.
+ das Erreichen eines Meilensteins bedeutet auch gleichzeitig, dass die erforderl
+ichen Dokumente vorhanden und geprüft sind und den Anforderungen entsprechen.
+\end_layout
+
+\begin_layout Standard
+Im nachfolgenden Abschnitt wird die Terminplanung des Projekts kurz erläutert.
+ Danach wird dann auf die definierten Projektphasen, Arbeitspakete, Meilensteine
+ und die Durchführung der Qualitätsicherung und Konfigurationsverwaltung
+ eingegangen.
 \end_layout
 
 \begin_layout Subsection
@@ -2208,27 +2149,14 @@ Terminplanung
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Tabelle anpassen, Prozente anpassen, Puffer im Text erwähnen, Testphase
- aufsplitten, Intergation fehlt!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Das Studienprojekt läuft über zwei Semester und endet im Mai 2010.
  Jeder Projektteilnehmer hat dabei einen Arbeitsaufwand von ca.
  480 Stunden zu leisten, dadurch entsteht ein Gesamtaufwand von ca.
  3360 Stunden für alle 7 Teilnehmer.
- Die Projektphasen Analyse und Einarbeitung beanspruchen dabei 35%, Spezifikatio
+ Die Projektphasen Analyse und Einarbeitung beanspruchen dabei 17%, Spezifikatio
 n und Entwurf (inkl.
- Fein-Entwurf) 24% und zuletzt die Codierung und der Test 33%.
+ Fein-Entwurf) 34%, die Codierung und der Test 41% und zuletzt der Puffer
+ 8%.
  (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2321,7 +2249,7 @@ Analyse
 \begin_inset Text
 
 \begin_layout Plain Layout
-658 h
+350 h
 \end_layout
 
 \end_inset
@@ -2341,7 +2269,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.07.2009-07.09.2009
+17.07.2009-07.08.2009
 \end_layout
 
 \end_inset
@@ -2350,7 +2278,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-526 h
+252 h
 \end_layout
 
 \end_inset
@@ -2370,7 +2298,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.09.2009-31.10.2009
+07.08.2009-31.09.2009
 \end_layout
 
 \end_inset
@@ -2379,7 +2307,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-547 h
+588 h
 \end_layout
 
 \end_inset
@@ -2399,7 +2327,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-31.10.2009-24.12.2209
+31.09.2009-01.12.2009
 \end_layout
 
 \end_inset
@@ -2408,7 +2336,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-243 h
+672 h
 \end_layout
 
 \end_inset
@@ -2428,7 +2356,7 @@ Implementierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-24.12.2009-12.03.2010
+01.12.2009-22.02.2010
 \end_layout
 
 \end_inset
@@ -2437,7 +2365,7 @@ Implementierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-779 h
+924 h
 \end_layout
 
 \end_inset
@@ -2457,7 +2385,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-12.03.2010-15.04.2010
+22.02.2010-17.04.2010
 \end_layout
 
 \end_inset
@@ -2466,7 +2394,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-334 h
+588 h
 \end_layout
 
 \end_inset
@@ -2486,7 +2414,7 @@ Abnahmetest
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.04.2010
+17.04.2010-27.04.2010
 \end_layout
 
 \end_inset
@@ -2515,7 +2443,7 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.04.2010-13.05.2010
+17.04.2010-13.05.2010
 \end_layout
 
 \end_inset
@@ -2524,7 +2452,7 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-273 h
+294 h
 \end_layout
 
 \end_inset
@@ -2732,34 +2660,36 @@ reference "sub:Auszuliefernde-Software-Einheiten"
 \end_layout
 
 \begin_layout Standard
-Dem Kunden wird damit Zeit zur Verfügung gestellt sicherzustellen, dass
- das von uns gelieferte Produkt seinen Anforderungen entspricht.
- Ist das der Fall, dann gilt das Projekt als abgeschlossen, andernfalls
- werden die nötigen Nachbesserungen oder Änderungen durchgeführt.
- Sollten nach den Nachbesserungen noch erhebliche Mängel bestehen, so können
- diese z.B.
- im Rahmen eines HiWi-Jobs korrigiert werden.
+Der Kunden hat dann 10 Tage Zeit sicherzustellen, dass das von uns gelieferte
+ Produkt seinen Anforderungen entspricht.
+ Ist das der Fall, dann gilt das Projekt als abgeschlossen.
+ Andernfalls wird das Projekt vom Kunden einer der folgenden Fehlerkategorien
+ zugeordnet:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
+unbenutzbar Keine der grundlegenden Anforderungen wurde korrekt umgesetzt,
+ die Software ist nicht einsetzbar.
+\end_layout
+
+\begin_layout Description
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Mirko Sonntag: 
-\begin_inset Quotes eld
-\end_inset
-
-Was ist, wenn selbst nach den Nachbesserungen noch erhebliche Mängel bestehen?
-\begin_inset Quotes erd
-\end_inset
-
-
+Fehlerkategorien einfügen...
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+werden die nötigen Nachbesserungen oder Änderungen durchgeführt.
+ Sollten nach den Nachbesserungen noch erhebliche Mängel bestehen, so können
+ diese z.B.
+ im Rahmen eines HiWi-Jobs korrigiert werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2781,7 +2711,8 @@ Arbeitspakete
 Die im vorigen Abschnitt definierten Phasen werden nun in Arbeitspakete
  gegliedert und aufgeteilt.
  Die nachfolgende Tabelle enthält alle Arbeitspakete und eine kurze Beschreibung
- der darin enthaltenen Aufgaben.
+ der darin enthaltenen Aufgaben und zu erstellenden Dokumente.
+ Sofern nicht anders angegeben, sind alle Dokumente auf Deutsch verfasst.
 \end_layout
 
 \begin_layout Standard
@@ -3838,7 +3769,7 @@ Erstellung eines Handbuches inklusive Installationsanweisungen
 \end_layout
 
 \begin_layout Plain Layout
-Handbuch
+Handbuch (auf Englisch und Deutsch)
 \end_layout
 
 \end_inset
@@ -3922,7 +3853,7 @@ Handbuch Korrektur
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kundenfassung Handbuch (PDF und LaTeX)
+Kundenfassung Handbuch (auf Englisch und Deutsch) (PDF und LaTeX)
 \end_layout
 
 \end_inset
@@ -4322,8 +4253,8 @@ Abnahme durch die Kunden
 \begin_inset Text
 
 \begin_layout Plain Layout
-CD/DVD mit: Installationspaket (RAR), Dokumentation der Erweiterungen (PDF
- und LaTeX), Quellcode (Java) und evtl.
+CD/DVD mit: Installationspaket (RAR), Dokumentation der Erweiterungen (auf
+ Englisch und Deutsch) (PDF und LaTeX), Quellcode (Java) und evtl.
  bereits ausgelieferte aktualisierte Dokumente
 \end_layout
 
@@ -4398,7 +4329,7 @@ unterstrichen
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="4">
+<lyxtabular version="3" rows="16" columns="4">
 <features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="middle" width="2.5cm">
 <column alignment="left" valignment="middle" width="3cm">
@@ -4586,7 +4517,8 @@ einb#konzept#4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Einarbeitungsberichte jedes 2er-Teams liegen vor und werden vom Projektleiter
+ aktzeptiert
 \end_layout
 
 \end_inset
@@ -4595,7 +4527,8 @@ einb#konzept#4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+17.
+ September 2009
 \end_layout
 
 \end_inset
@@ -4715,7 +4648,7 @@ grEntw#erstell, grEntw#rev, entw#kor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Kunde akzeptiert den Grobentwurf.
 \end_layout
 
 \end_inset
@@ -4758,7 +4691,7 @@ feinEntw#erstell, feinEntw#rev, feinEntw#kor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
 \end_layout
 
 \end_inset
@@ -4791,6 +4724,8 @@ Handbuch
 
 \begin_layout Plain Layout
 
+\shape italic
+handb#erstell, handb#rev, handb#kor
 \end_layout
 
 \end_inset
@@ -4799,7 +4734,8 @@ Handbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Kunde hat keine Anmerkungen und alle im Review entdeckten Fehler und
+ Mängel sind beseitigt.
 \end_layout
 
 \end_inset
@@ -4850,7 +4786,7 @@ code#module
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle spezifizierten Use-Cases sind innerhalb der Module implementiert.
 \end_layout
 
 \end_inset
@@ -4893,7 +4829,7 @@ code#BPELdes, code#Apache
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle spezifizierten Erweiterungen sind implementiert.
 \end_layout
 
 \end_inset
@@ -4936,7 +4872,7 @@ code#integr
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Module wurden erfolgreich zu einer lauffähigen Software integriert.
 \end_layout
 
 \end_inset
@@ -4979,7 +4915,9 @@ test#mod#erst, test#mod, test#mod#kor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
+ und der Code anhand der Ergebnisse korrigiert.
+ Weiterhin muss eine Code-Überdeckung von 95% erreicht worden sein.
 \end_layout
 
 \end_inset
@@ -5022,7 +4960,8 @@ test#integ#erst, test#integ, test#integ#kor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
+ und der Code anhand der Ergebnisse korrigiert.
 \end_layout
 
 \end_inset
@@ -5065,7 +5004,8 @@ test#sys#erst, test#sys, test#sys#kor
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle aus der Spezifikation erstellten Testfälle wurden ausgeführt, deren
+ Verlauf protokolliert und der Code anhand der Ergebnisse korrigiert.
 \end_layout
 
 \end_inset
@@ -5082,7 +5022,7 @@ test#sys#erst, test#sys, test#sys#kor
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5093,7 +5033,7 @@ Abnahmetest
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5104,201 +5044,11 @@ puff#abn
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+Der Kunde akzeptiert die Software.
 \end_layout
 
 \end_inset
@@ -5307,7 +5057,8 @@ puff#abn
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+27.
+ April 2010
 \end_layout
 
 \end_inset
@@ -5340,7 +5091,7 @@ Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
  ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
  ausführt.
  Negativ geprüfte SE werden vom Projektleiter freigegeben und erhalten so
- Auslieferungsstatus.
+ Auslieferungsstatus oder werden noch einem Review unterzogen.
  Wird eine bereits freigegebene SE verändert oder an neue Bedürfnisse angepasst
  muss sie noch einmal den gesamten QS-Prozess durchlaufen.
  Sollte der Projektleiter eine SE prüfen, die seiner Meinung nach so viele
@@ -5518,6 +5269,49 @@ Entstehungsprozess für Software-Einheiten
 
 \end_layout
 
+\begin_layout Subsubsection
+Durchführung der Reviews
+\end_layout
+
+\begin_layout Standard
+Die Reviews werden in Gruppen von 5-6 Personen abgehalten.
+ Dabei gilt folgende Rollenverteilung:
+\end_layout
+
+\begin_layout Description
+Moderator Der Moderator leitet und organisiert das Review.
+ Bei Unklarheiten in Reviewpunkten führt er eine Einigung herbei.
+\end_layout
+
+\begin_layout Description
+Aktuar Der Aktuar protokolliert die angesprochenen Befunde und deren zugeordnete
+ Fehlerkategorie.
+ Er selbst nimmt nicht an Diskussionen und Wertungen der Fehler teil.
+\end_layout
+
+\begin_layout Description
+Gutachter Drei bis vier Gutachter untersuchen das Dokument nach vorher festgeleg
+ten Gesichtspunkten und ordnen ihre Befunden einer Fehlerkategorie zu.
+\end_layout
+
+\begin_layout Standard
+Spätestens drei Tage vor Beginn des Reviews schickt der Moderator Einladungen,
+ mit dem zu begutachtenden Dokument, an die Gutachter des Reviews.
+ Die Gutachter untersuchen dann bis zum Review-Termin das Dokument anhand
+ der vom Moderator festgelegten Kriterien.
+ Am Review-Termin treffen sich alle Teilnehmer und der Moderator eröffnet
+ und leitet das Review.
+ Nun werden die Gutachter der Reihe nach nach ihren Befunden befragt und
+ diese unter den Gutachtern diskutiert.
+ Der Aktuar notiert alle genannten Befunde und deren Fehlerkategorien.
+ Sollte das Review nach Ablauf von zwei Stunden nicht beendet sein, so vertagt
+ der Moderator das Review frühestens auf den nächsten Tag.
+ Am Ende des Reviews unterschreiben alle Beteiligten das Reviewprotokoll.
+ Der Aktuar schickt das Reviewprotokoll an den Projektleiter, der es an
+ die entsprechenden Entwickler weiterleitet, damit diese die nötigen Korrekturen
+ durchführen können.
+\end_layout
+
 \begin_layout Section
 Unsere Konditionen
 \end_layout
@@ -5538,23 +5332,38 @@ Unsere internen Berechnungen nach der Funktion-Point-Methode ergab 268 Adjusted
  Kostenschätzung:
 \end_layout
 
-\begin_layout Subsection*
-Gesamtentwicklungszeit: 
+\begin_layout Standard
+
+\series bold
+\size large
+Gesamtentwicklungszeit:
+\series default
+\size default
+ 
 \end_layout
 
 \begin_layout Standard
 19 MM (Mann-Monate) 
 \end_layout
 
-\begin_layout Subsubsection*
-Arbeitszeit pro Mitarbeiter: 
+\begin_layout Standard
+
+\series bold
+\size large
+Arbeitszeit pro Mitarbeiter:
+\series default
+\size default
+ 
 \end_layout
 
 \begin_layout Standard
 19 MM / 7 Mann = 2,71 Monate Entwicklungszeit pro Mitarbeiter
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
+
+\series bold
+\size large
 Zuschlag Arbeitszeit (wg.
  Krankheit / Urlaub):
 \end_layout
@@ -5563,7 +5372,10 @@ Zuschlag Arbeitszeit (wg.
 2,71 Monate * 1,10 = 2,981 Monate Entwicklungszeit pro Mitarbeiter
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
+
+\series bold
+\size large
 Mitarbeiterstunden:
 \end_layout
 
@@ -5577,8 +5389,11 @@ Bei einer effektiven Entwicklungszeit von gerundet 3 Monaten ( 2,981) wird
  jede Person 480 Stunden arbeiten.
 \end_layout
 
-\begin_layout Subsection*
-Stundensätze
+\begin_layout Standard
+
+\series bold
+\size large
+Stundensätze:
 \end_layout
 
 \begin_layout Standard
@@ -5591,7 +5406,10 @@ Projektleiter : 99€ zzgl.
  MwSt.
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Standard
+
+\series bold
+\size large
 Gesamtkostenschätzung:
 \end_layout
 
@@ -5603,14 +5421,25 @@ Gesamtkostenschätzung:
 1 Projektleiter x 99€/Stunde x 160 Stunden x 3 Monate = 47.520€
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+
+\series bold
+\size larger
 Gesamt: 246.240€ zzgl.
  19 % MwSt.
  = 293.025€
 \end_layout
 
 \begin_layout Standard
-Da es sich um ein Studienprojekt handelt, wird kein Geld bezahlt.
+Da es sich um ein Studienprojekt handelt, wird 
+\series bold
+\size large
+\emph on
+kein Geld
+\series default
+\size default
+\emph default
+ bezahlt.
  Die Berechnungen sind hypotetisch und wurden nur zu Planungszwecken durchgeführ
 t.
 \end_layout
@@ -5620,20 +5449,22 @@ Risiken
 \end_layout
 
 \begin_layout Standard
-Aufgrund der geforderten sehr breiten Verwendungsmöglichkeiten im Rahmen
- der wissenschaftlichen Workflows besteht ein hohes Unsicherheitspotential
- im Bezug auf die Implementierungsdauer und auf sich ändernde Anforderungen.
+Während des Projekts können Ereignisse auftreten, die das Projekt behindern
+ oder gar scheitern lassen.
+ In der folgenden Tabellen werden einige dieser Risiken, ihre Eintrittswahrschei
+nlichkeiten, die dadurch verursachten Kosten und geeignete Gegenmaßnahmen,
+ die den Eintritt oder die Kosten der Risiken senken, aufgelistet.
 \end_layout
 
 \begin_layout Standard
 \noindent
 \begin_inset Tabular
-<lyxtabular version="3" rows="12" columns="4">
+<lyxtabular version="3" rows="7" columns="4">
 <features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="7cm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5694,7 +5525,7 @@ Mitarbeiter fällt aus
 \begin_inset Text
 
 \begin_layout Plain Layout
-20
+15
 \end_layout
 
 \end_inset
@@ -5712,45 +5543,8 @@ Mitarbeiter fällt aus
 \begin_inset Text
 
 \begin_layout Plain Layout
-Wissen teilen, Zeitarbeit
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Produkthaftung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1-10 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Versicherung abschliessen
+Wöchentliche Treffen (Informationsaustausch), Ernennung von Stellvertretern
+ und Erstellung von internen Dokumentationen
 \end_layout
 
 \end_inset
@@ -5770,7 +5564,7 @@ Versicherung abschliessen
 \begin_inset Text
 
 \begin_layout Plain Layout
-50
+20
 \end_layout
 
 \end_inset
@@ -5788,7 +5582,7 @@ Versicherung abschliessen
 \begin_inset Text
 
 \begin_layout Plain Layout
-Flexible Struktur herstellen, regelmäßige Rücksprache mit Kunden
+Genaue Anforderungserhebung und regelmäßige Rücksprache mit den Kunden
 \end_layout
 
 \end_inset
@@ -5799,7 +5593,7 @@ Flexible Struktur herstellen, regelmäßige Rücksprache mit Kunden
 \begin_inset Text
 
 \begin_layout Plain Layout
-Qualität nicht ausreichend
+Anforderungen werden nicht oder nur teilweise erfüllt
 \end_layout
 
 \end_inset
@@ -5826,7 +5620,7 @@ Qualität nicht ausreichend
 \begin_inset Text
 
 \begin_layout Plain Layout
-längere Testphase
+ausgiebige Tests, regelmäßige Rücksprache mit den Kunden und Prototyping
 \end_layout
 
 \end_inset
@@ -5837,7 +5631,7 @@ längere Testphase
 \begin_inset Text
 
 \begin_layout Plain Layout
-Werkzeuge nicht einsetzbar
+Ausgewähltes Werkzeug stellt sich als unbrauchbar heraus
 \end_layout
 
 \end_inset
@@ -5855,7 +5649,7 @@ Werkzeuge nicht einsetzbar
 \begin_inset Text
 
 \begin_layout Plain Layout
-5 MM
+0,5 MM
 \end_layout
 
 \end_inset
@@ -5864,7 +5658,7 @@ Werkzeuge nicht einsetzbar
 \begin_inset Text
 
 \begin_layout Plain Layout
-Organisatorischer Slack schaffen
+Genaue Evaluation der Werkzeuge vor ihrem Einsatz
 \end_layout
 
 \end_inset
@@ -5875,128 +5669,7 @@ Organisatorischer Slack schaffen
 \begin_inset Text
 
 \begin_layout Plain Layout
-Infrastruktur Probleme
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-20
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-einheitliche, zertifizierte Hardware
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Anforderungen werden unterschätzt
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-40
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Schulungen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Software nicht lauffähig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-20
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Prototyping
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-Wildwuchs
-\begin_inset Quotes erd
-\end_inset
-
- der Änderungen
+Nicht realisierbare Anforderungen
 \end_layout
 
 \end_inset
@@ -6014,83 +5687,45 @@ Wildwuchs
 \begin_inset Text
 
 \begin_layout Plain Layout
+4 MM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+frühzeitige Evaluierung der einzusetzenden Technologien
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chaotische Änderungen der Dokumente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 2 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Versionsmanagement
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Entwicklungsverzug
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Überstunden
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kundenwünsche unrealistisch
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1-5 MM
 \end_layout
 
 \end_inset
@@ -6099,7 +5734,11 @@ Kundenwünsche unrealistisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-Anforderungen reduzieren.
+Ausgibige Dokumentprüfung durch Qualitätssicherung und Projektleiter
+\end_layout
+
+\begin_layout Plain Layout
+Konfigurationsverwaltung mit Subversion
 \end_layout
 
 \end_inset
@@ -6109,6 +5748,98 @@ Anforderungen reduzieren.
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section
+Rechtliche Rahmenbedingungen
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel werden die rechtlichen Rahmenbedingungen des Projekts
+ erläutert.
+\end_layout
+
+\begin_layout Subsection
+Gewährleistung
+\end_layout
+
+\begin_layout Standard
+Die Gewährleistungsfrist beträgt 6 Monate und beginnt mit der Auslieferung
+ der Software.
+ Der Kunde verpflichtet sich die Software innerhalb von 10 Tagen nach der
+ Auslieferung zu prüfen.
+ Innerhalb der Gewährleistungsfrist werden nur Korrekturen von entdeckten
+ Fehlern durchgeführt, jedoch keine zusätzlichen Erweiterungen implementiert.
+ Sollten zusätzliche Erweiterungen gewünscht werden, müssen diese neu ausgehande
+lt werden.
+\end_layout
+
+\begin_layout Subsection
+Pflichten des Auftragnehmers
+\end_layout
+
+\begin_layout Standard
+Der Auftragnehmer verpflichtet sich dazu alle im Angebot aufgeführten Tätigkeite
+n nach Bestem Wissen und Gewissen auszuführen.
+ Weiterhin verpflichtet sich der Auftragnehmer den Auftraggeber über den
+ Fortschritt des Projekts in regelmäßigen Abständen zu unterrichten, spätestens
+ aber nach erreichen eines Meilensteins oder bei auftreten von Problemen,
+ welche den Verlauf des Projekts negativ beeinflussen.
+\end_layout
+
+\begin_layout Subsection
+Pflichten des Auftraggebers
+\end_layout
+
+\begin_layout Standard
+Der Auftraggeber verpflichtet sich die nötige Infrastruktur (Räume, Server
+ und Arbeitsgeräte) während der Projektlaufzeit zur Verfügung zu stellen.
+ Darüber hinaus ist der Auftraggeber dazu verpflichtet für den weiteren
+ Informationsaustausch zur Verfügung zu stehen und das Projektteam über
+ längere Nichterreichbarkeit rechtzeitig zu informieren.
+ Nach Erhalt der Software verpflichtet sich der Auftraggeber die Software
+ in einem Abnahmetest zu prüfen und den Auftragnehmer über die erhaltenen
+ Ergebnisse zu informieren.
+ Sollten beim Abnahmetest Mängel oder Fehler entdeckt worden sein, so muss
+ der Auftraggeber dem Auftragnehmer die Möglichkeit zur Korrektur einräumen.
+ Sollte der Abnahmetest ohne Beanstandungen abgeschlossen werden, so ist
+ der Auftraggeber verpflichtet die Software abzunehmen und den Erhalt, sowie
+ die Korrektheit der Software zu quittieren.
+\end_layout
+
+\begin_layout Subsection
+Nutzungs- und Urheberrecht
+\end_layout
+
+\begin_layout Standard
+Das Projekt und alle erstellten Software-Einheiten stehen unter der Apache
+ 2.0-Lizenz (http://www.apache.org/licenses/LICENSE-2.0).
+\end_layout
+
+\begin_layout Subsection
+Gültigkeit des Angebots
+\end_layout
+
+\begin_layout Standard
+Das Angebot in dieser Form ist, ab Erhalt, eine Woche (7 Tage) gültig.
+\end_layout
+
+\begin_layout Section*
+Vertrag zur Auftragserteilung und Auftragsnahme
+\end_layout
+
+\begin_layout Standard
+Durch die nachfolgenden Unterschriften von Auftraggeber und Auftragnehmer
+ erklären sich beide Parteien dazu bereit, den durch das Angebot festgelegten
+ Rahmen für das Projekt, zu akzeptieren.
+ Darüberhinaus bestätigt die Unterschrift des Auftraggebers die Erteilung
+ des Auftrags an den Auftragnehmer.
+ Die Unterschrift des Auftragnehmers bestätigt die Annahme des Auftrags
+ des Auftraggebers.
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
