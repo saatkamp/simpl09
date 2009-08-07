@@ -1704,19 +1704,6 @@ Projektaufgabe
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mit der ganzen Gruppe erweitern und noch ausführlicher beschreiben 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk für
  die Modellierung und Ausführung von Workflows erstellen, welches den Zugriff
  auf nahezu beliebige Datenquellen ermöglichen soll.
@@ -1866,22 +1853,6 @@ Alle generischen BPEL-Aktivitäten, die für den Umgang mit Datenquellen benöti
 
 \begin_layout Enumerate
 Das Anlegen, Löschen und Ändern von DB-Tabellen soll möglich sein.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Monitoring:
-\end_layout
-
-\begin_layout Enumerate
-ODE hat bereits eine eigene Monitoring-DB, doch es soll möglich sein eine
- frei wählbare Monitoring-DB anzugeben.
-\end_layout
-
-\begin_layout Enumerate
-Das bereits vorhandene Monitoring muss, um die von uns neu erstellten Funktionen
-, erweitert werden.
 \end_layout
 
 \begin_layout Standard
@@ -2102,6 +2073,74 @@ Grobes Gesamtkonzept und Software-Architektur
 \end_layout
 
 \begin_layout Standard
+In diesem Abschnitt wird das vorläufige Gesamtkonzept und die vorläufige
+ Software-Architekur der zu entwickelnden Software beschrieben.
+\end_layout
+
+\begin_layout Standard
+Wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Architektur"
+
+\end_inset
+
+ dargestellt, soll das Rahmenwerk in drei Schichten unterteilt werden.
+ 
+\end_layout
+
+\begin_layout Standard
+Die Präsentationsschicht wird durch den Eclipse BPEL-Designer realisiert.
+ Dort ist es möglich BPEL-Prozesse mit Datenmanagement-Funktionen zu modellieren
+ und auszuführen.
+ Die Datenmanagement-Funktionen werden durch Extension Activity Plug-Ins
+ in den Designer eingebunden.
+ Einstellungen, die erst zur Laufzeit dem SIMPL Core übergeben werden sollen,
+ können über Deployment-Deskriptoren festgelegt werden.
+ Von dort wird der Prozess an die Anwendungsschicht übergeben.
+\end_layout
+
+\begin_layout Standard
+In der Anwendungsschicht wird der Prozess ausgewertet und von der Workflow-Engin
+e ausgeführt.
+ Bei der Ausführung des Prozess kann auf Funktionalitäten des SIMPL Core
+ zugegriffen werden.
+ Der SIMPL Core realisiert folgende Funktionen und Konzepte über eine Service
+ Component Architecture (SCA):
+\end_layout
+
+\begin_layout Itemize
+Authentifizierte und autorisierte Datenquellenzugriffe
+\end_layout
+
+\begin_layout Itemize
+Monitoring der Datenquellenzugriffe
+\end_layout
+
+\begin_layout Itemize
+Datenquellenunabhängige Zugriffe auf heterogene Daten
+\end_layout
+
+\begin_layout Itemize
+Verwendung von Transaktionen für Datenzugriffe
+\end_layout
+
+\begin_layout Itemize
+Auswahl geeigneter Datenquellen anhand definierter Strategien und vom Benutzer
+ angegebener Eigenschaften
+\end_layout
+
+\begin_layout Itemize
+Binden und Auflösen von logischen Namen
+\end_layout
+
+\begin_layout Standard
+Die Datenschicht beeinhaltet alle verwendbaren Datenquellen mit den dazugehörige
+n Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
+ der jeweiligen Datenquelle.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -2112,7 +2151,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename GrundlegendeDMArchitektur.jpeg
+	filename GrundlegendeArchitektur.jpeg
 	lyxscale 40
 	width 80text%
 
@@ -2125,15 +2164,17 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Architektur"
+
+\end_inset
+
 Übersicht über das grobe Gesamtkonzept
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2144,6 +2185,21 @@ status open
 
 \begin_layout Subsection
 Systemumgebung
+\end_layout
+
+\begin_layout Standard
+Die Systemumgebung (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Systemumgebung"
+
+\end_inset
+
+)besteht aus den unterschiedlichen Datenquellen, Eclipse mit dem BPEL-Designer
+ Plug-In und dem Apache Tomcat Web-Server, in dem das Rahmenwerk und die
+ Apache ODE Workflow-Engine ausgeführt wird.
+ Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers
+ und die Datenquellen sind verteilt auf verschiedenen Servern.
 \end_layout
 
 \begin_layout Standard
@@ -2158,8 +2214,8 @@ status open
 \align center
 \begin_inset Graphics
 	filename Systemumgebung.jpeg
-	lyxscale 50
-	width 100text%
+	lyxscale 80
+	width 70text%
 
 \end_inset
 
@@ -2170,15 +2226,17 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Systemumgebung"
+
+\end_inset
+
 Übersicht über die Systemumgebung von SIMPL
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2202,26 +2260,6 @@ In diesem Abschnitt wird die Organisation des Projektteams vorgestellt.
  erreichen des Projektleiters mit dessen Stellvertreter Kontakt aufnehmen
  kann.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-(
-\color red
-hier kommt die Struktur des Teams,die Aufteilung anhand Aufgabenbereich
- , Rollen Beschreibung und eine kleine Graphische Darstellung für die Team-Struk
-tur ist sehr angebracht im Angebot meine Meinung nach.
-
-\color inherit
- feras)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -2379,6 +2417,7 @@ Als Entwickler arbeiten alle Teammitglieder außer dem Projektleiter.
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Float figure
 placement H
 wide false
@@ -2391,7 +2430,7 @@ status open
 \begin_inset Graphics
 	filename rollen.png
 	lyxscale 50
-	scale 50
+	width 100text%
 
 \end_inset
 
@@ -2510,32 +2549,6 @@ ereich bereits viele Jahre erfolgreich eingesetzt wird, vereinfacht werden.
  Workflows zu erstellen und zu nutzen.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
->>>>>>> Die Nutzen, die durch diesen Projekt erreicht werden, fassen sich
- mit Effizienz in der Arbeit im wissenschaftlichen Bereiche.
-\end_layout
-
-\begin_layout Plain Layout
-Wie wir es wissen im wissenschaftlichen Bereich werden komplexe Berechnungen,
- um die Ziele zu erreichen, benötigt.
- Im Laufe der Zeit werden die Datenmengen umfangreicher sowie komplexere
- Berechnungen und Analysen erförderlich werden.
-\end_layout
-
-\begin_layout Plain Layout
-Um die Ziele zu erreichen, werden im wissenschaftlichen Bereiche wissenschaftlic
-he Workflows eingesetzt 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Projektdurchführung
 \end_layout
@@ -2604,7 +2617,6 @@ Nach Berücksichtigung aller Einflussfaktoren von Seiten des Kunden und des
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
 wide false
 sideways false
 status open
@@ -2928,9 +2940,8 @@ status open
 \begin_inset Graphics
 	filename Gantt_detail.png
 	lyxscale 50
-	width 100text%
-	BoundingBox 0bp 20bp 300bp 771bp
-	clip
+	width 98text%
+	BoundingBox 0bp 0bp 1181bp 689bp
 
 \end_inset
 
@@ -3067,6 +3078,8 @@ Die Testphase enthält die drei Unterphasen Modultest, Integrationstest und
  Die in der Testphase erzeugten Dokumente, die Testfälle und Testprotokolle,
  sind auch für den Kunden wichtig, da sie als Referenz für seine internen
  Tests während der Abnahme genutzt werden können.
+ Sofern zeitlich möglich, wird 2 Wochen vor dem eigentlichen Abnahmetest,
+ eine Demo-Version für einen Beta-Test zur Verfügung gestellt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3094,25 +3107,41 @@ Der Kunden hat dann 10 Tage Zeit sicherzustellen, dass das von uns gelieferte
 \end_layout
 
 \begin_layout Description
-unbenutzbar Keine der grundlegenden Anforderungen wurde korrekt umgesetzt,
- die Software ist nicht einsetzbar.
+nicht
+\begin_inset space ~
+\end_inset
+
+einsetzbar Grundlegende Anforderungen wurden unzureichend umgesetzt, die
+ Software ist nicht einsetzbar.
+ Die Software kann nicht akzeptiert werden und das Projekt ist gescheitert.
 \end_layout
 
 \begin_layout Description
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Fehlerkategorien einfügen...
+mangelhaft Einige grundlegende Anforderungen wurden korrekt umgesetzt, jedoch
+ behindern Fehler und Mängel den Einsatz der Software erheblich.
+ Die Software kann nur mit umfangreichen Korrekturmaßnahmen akzeptiert werden.
 \end_layout
 
+\begin_layout Description
+bedingt
+\begin_inset space ~
 \end_inset
 
+einsetzbar Grundlegende Anforderungen wurden größtenteils umgesetzt.
+ Fehler und Mängel behindern in Teilbereichen den Einsatz der Software.
+ Die Software kann nach Korrektur der Teilbereiche zeitnah akzeptiert werden.
+\end_layout
 
+\begin_layout Description
+einsetzbar Alle grundlegenden Anforderungen wurden korrekt umgesetzt.
+ Kleinere Fehler und Mängel sind vorhanden, beeinflussen aber nicht die
+ Kernfunktionalität der Software.
+ Das Projekt ist erfolgreich abgeschlossen und die Software wird akzeptiert.
 \end_layout
 
 \begin_layout Standard
-werden die nötigen Nachbesserungen oder Änderungen durchgeführt.
+Nach der Rückmeldung des Kunden werden die nötigen Nachbesserungen oder
+ Änderungen durchgeführt.
  Sollten nach den Nachbesserungen noch erhebliche Mängel bestehen, so können
  diese z.B.
  im Rahmen eines HiWi-Jobs korrigiert werden.
@@ -3725,7 +3754,8 @@ Korrektur der Spezifikation nach dem 2.Review
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kundenfassung der Spezifikation (PDF und LaTeX)
+Kundenfassung der Spezifikation (PDF und LaTeX) und Prototyp des erweiterten
+ Eclipse BPEL-Designers
 \end_layout
 
 \end_inset
@@ -3853,7 +3883,7 @@ Korrektur des Grobentwurfs nach dem Review
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kundenfassung Grobentwurf (PDF und LaTeX)
+Kundenfassung und zeitnahe Präsentation des Grobentwurfs (PDF und LaTeX)
 \end_layout
 
 \end_inset
@@ -4756,6 +4786,8 @@ kursiv
 unterstrichen
 \bar default
 .
+ Beim erreichen von externen Meilensteinen werden dem Kunden die Dokumente
+ der Arbeitspakete des Meilensteins zur Verfügung gestellt.
 \end_layout
 
 \begin_layout Standard
@@ -5518,8 +5550,15 @@ Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
  Dokument bzw.
  jede Software-Einheit von zwei unabhängigen Instanzen geprüft.
  Zuerst wird die Software-Einheit durch die Qualitätsmanager auf formale
- Aspekte wie Style-Guide Konformität oder die Einhaltung des vorgeschriebenen
- Layouts hin untersucht.
+ Aspekte wie Style-Guide (
+\begin_inset Quotes eld
+\end_inset
+
+Code Conventions for the Java Programming Language
+\begin_inset Quotes erd
+\end_inset
+
+) Konformität oder die Einhaltung des vorgeschriebenen Layouts hin untersucht.
  Anschließend wird die SE (Software-Einheit) falls sie Fehler enthält (positive
  QS-Prüfung) mit entsprechenden Kommentaren zurück an die Verfasser geschickt.
  Eine formal korrekte (negativ QS-geprüfte) SE wird an den Projektleiter
