@@ -5,8 +5,8 @@
 <property name="view" value="0"/>
 <property name="fontsize" value="10"/>
 <property name="zoomfactor" value="100"/>
-<property name="export-width" value="29.7"/>
-<property name="export-height" value="21.0"/>
+<property name="export-width" value="60.0"/>
+<property name="export-height" value="35.0"/>
 <property name="export-dpi" value="50.0"/>
 <property name="export-standartsize" value="benutzerdefiniert"/>
 <instance>
@@ -53,10 +53,9 @@
 <name>Einarbeitung</name>
 <short-name>einar</short-name>
 <start-date date="17" month="7" year="2009"/>
-<end-date date="7" month="8" year="2009"/>
+<end-date date="17" month="9" year="2009"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
-<dependency activity-id="-399554543" type="begin-end"/>
 <dependency activity-id="998713925" type="end-begin"/>
 </activity>
 <activity id="-399554543">
@@ -69,7 +68,6 @@
 <dependency activity-id="590696256" type="begin-begin"/>
 <dependency activity-id="-327426080" type="end-end"/>
 <dependency activity-id="-1070695339" type="begin-end"/>
-<dependency activity-id="648482377" type="end-begin"/>
 <activity id="590696256">
 <name>Erstellung</name>
 <short-name>spErs</short-name>
@@ -129,13 +127,13 @@
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="-399554543" type="end-begin"/>
-<dependency activity-id="-574768162" type="begin-begin"/>
 <dependency activity-id="-1854221508" type="begin-end"/>
+<dependency activity-id="-574768162" type="begin-begin"/>
 <activity id="-574768162">
 <name>Grobentwurf</name>
 <short-name>entEr</short-name>
 <start-date date="1" month="10" year="2009"/>
-<end-date date="27" month="10" year="2009"/>
+<end-date date="20" month="10" year="2009"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="-1070695339" type="begin-begin"/>
@@ -144,18 +142,18 @@
 <activity id="371550322">
 <name> Review Grobentwurf</name>
 <short-name>rewgr</short-name>
-<start-date date="27" month="10" year="2009"/>
-<end-date date="1" month="11" year="2009"/>
+<start-date date="20" month="10" year="2009"/>
+<end-date date="25" month="10" year="2009"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
-<dependency activity-id="-574768162" type="end-begin"/>
 <dependency activity-id="1744504576" type="begin-end"/>
+<dependency activity-id="-574768162" type="end-begin"/>
 </activity>
 <activity id="1744504576">
 <name>Überarbeitung Grob</name>
 <short-name>UeGro</short-name>
-<start-date date="1" month="11" year="2009"/>
-<end-date date="7" month="11" year="2009"/>
+<start-date date="25" month="10" year="2009"/>
+<end-date date="30" month="10" year="2009"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="371550322" type="end-begin"/>
@@ -164,11 +162,31 @@
 <activity id="912390328">
 <name>Feinentwurf</name>
 <short-name>entFe</short-name>
-<start-date date="7" month="11" year="2009"/>
-<end-date date="1" month="12" year="2009"/>
+<start-date date="30" month="10" year="2009"/>
+<end-date date="23" month="11" year="2009"/>
 <property name="keep-length" value="false"/>
 <property name="move-dependencies" value="true"/>
 <dependency activity-id="1744504576" type="end-begin"/>
+<dependency activity-id="1943830278" type="begin-end"/>
+</activity>
+<activity id="1943830278">
+<name>Review Fein</name>
+<short-name>RewFe</short-name>
+<start-date date="23" month="11" year="2009"/>
+<end-date date="25" month="11" year="2009"/>
+<property name="keep-length" value="false"/>
+<property name="move-dependencies" value="true"/>
+<dependency activity-id="912390328" type="end-begin"/>
+<dependency activity-id="-1233072364" type="begin-end"/>
+</activity>
+<activity id="-1233072364">
+<name>Fein Entwurf Überarbeit.</name>
+<short-name>EntÜb</short-name>
+<start-date date="25" month="11" year="2009"/>
+<end-date date="1" month="12" year="2009"/>
+<property name="keep-length" value="false"/>
+<property name="move-dependencies" value="true"/>
+<dependency activity-id="1943830278" type="end-begin"/>
 </activity>
 </activity>
 <activity id="-463647861">
