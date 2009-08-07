@@ -39,3 +39,7 @@ Hier noch einmal eine Liste der Erweiterungen die ODE gegenüber dem normalen WS
 http://ode.apache.org/bpel-extensions.html
 
 Diese Erweiterungen sind nichts anderes als einige Funktionen die ODE zusätzlich implementiert und die es im normalen BPEL nicht gibt.
+
+Hier ist eine Übersicht über das Monitoring Package von ODE zu sehen:
+
+http://ode.apache.org/javadoc/org/apache/ode/bpel/runtime/monitor/package-tree.html
