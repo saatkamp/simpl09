@@ -24,7 +24,7 @@
 % docdate = Datum der letzten Änderung 
 \def\doctitel{Angebot} 
 \def\docvers{1.1} 
-\def\docautor{Daniel Brüderle, Firas Zoabi, Michael Hahn, Wolfgang Hüttig} 
+\def\docautor{Michael Hahn, Daniel Brüderle, Firas Zoabi, Wolfgang Hüttig} 
 \def\docdate{07. August 2009}
 \end_preamble
 \use_default_options false
@@ -1742,6 +1742,451 @@ Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk für
  und mit der BPEL-Engine ausgeführt werden können.
 \end_layout
 
+\begin_layout Standard
+In den nachfolgenden Abschnitten werden die aufgenommenen Anforderungen
+ der Kundengespräche, das vorläufige grobe Gesamtkonzept und die vorläufige
+ Software-Architektur, sowie die vorläufige vollständige Systemumbegung
+ des Rahmenwerks beschrieben.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Grobspezifikation"
+
+\end_inset
+
+Grobspezifikation
+\end_layout
+
+\begin_layout Standard
+Folgende grundlegende Anforderungen sollen im Rahmen des Projektes umgesetzt
+ werden.
+\end_layout
+
+\begin_layout Subsubsection
+Nichtfunktionale Anforderungen:
+\end_layout
+
+\begin_layout Enumerate
+Die Schnittstellen des Rahmenwerks sollen leicht erweiterbar sein und insgesamt
+ soll ein modularer Aufbau zugrunde liegen.
+\end_layout
+
+\begin_layout Enumerate
+Fehlertoleranz: Scopes mit Handler.
+ CompensationHandler und FaultHandler implementieren Logik für die Kompensation
+ von Fehlern (rollback).
+\end_layout
+
+\begin_layout Enumerate
+Ausfallsicherheit soll so gut wie möglich sein.
+\end_layout
+
+\begin_layout Enumerate
+Usability sollte sich an Benutzer orientieren und dazu die größtmögliche
+ Transparenz liefern.
+\end_layout
+
+\begin_layout Enumerate
+Es gibt keine bestimmte Infrastruktur in der das System später läuft.
+ ODE läuft überall lokal und die Datenbanken sind verteilt.
+\end_layout
+
+\begin_layout Enumerate
+Skalierbarkeit: keine bestimmte Infrastruktur => von schlechten PC’s bis
+ zu Supercomputern ist alles möglich.
+\end_layout
+
+\begin_layout Enumerate
+Performance soll so gut wie möglich sein.
+\end_layout
+
+\begin_layout Subsubsection
+Funktionale Anforderungen:
+\end_layout
+
+\begin_layout Enumerate
+Das Rahmenwerk soll als Eclipse Plug-In verwendet werden.
+\end_layout
+
+\begin_layout Enumerate
+Verarbeitung von großen heterogenen Datenmengen im Rahmen eines wissenschaftlich
+en Workflows.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\color black
+BPEL:
+\end_layout
+
+\begin_layout Enumerate
+Fehlerbehandlung und Kompensation im Workflow.
+\end_layout
+
+\begin_layout Enumerate
+Unterstützung von Referenzen in BPEL-Prozessen
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Referenzen (z.B.
+ auf eine Tabelle) im SQL Statement via BPEL Variable
+\end_layout
+
+\begin_layout Enumerate
+Implementierung eines Reference Resolution System in einer Testumgebung
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Referenz/ Pointer im BPEL Prozess auflösen
+\end_layout
+
+\begin_layout Enumerate
+Bei Daten, die nicht für die Prozesslogik, soll die Referenz / der Pointer
+ vom Service aufgelöst werden (zur Entlastung der Engine)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+
+\series bold
+BPEL Aktivitäten:
+\end_layout
+
+\begin_layout Enumerate
+Alle generischen BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt
+ werden, müssen erstellt werden.
+\end_layout
+
+\begin_layout Enumerate
+Das Anlegen, Löschen und Ändern von DB-Tabellen soll möglich sein.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Monitoring:
+\end_layout
+
+\begin_layout Enumerate
+ODE hat bereits eine eigene Monitoring-DB, doch es soll möglich sein eine
+ frei wählbare Monitoring-DB anzugeben.
+\end_layout
+
+\begin_layout Enumerate
+Das bereits vorhandene Monitoring muss, um die von uns neu erstellten Funktionen
+, erweitert werden.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Anbindung von Datenquellen:
+\end_layout
+
+\begin_layout Enumerate
+Late-binding bei Datenquellen: Kriterien zur Beschreibung von Datenquellen
+ – Annotation von Datenquellen, Modellierung der Anforderungen an eine Datenquel
+le (durch den Benutzer), Strategien zur Auswahl einer geeigneten Datenbank.
+\end_layout
+
+\begin_layout Enumerate
+Anforderungen an eine Datenquelle sollen, falls die Datenquelle über einen
+ Web-Service eingebunden ist, mit Anotation mit/über “QUALITY OF SERVICE”
+ angegeben werden, sonst statische Auswahl einer Datenquelle zur Modellierungs-
+ oder Laufzeit.
+\end_layout
+
+\begin_layout Enumerate
+Ein Nutzer soll angeben können, was die Datenquelle können muss und das
+ Rahmenwerk wählt eine passende Datenquelle aus (Strategie).
+\end_layout
+
+\begin_layout Enumerate
+Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle gestellt
+ werden können sollten, wird über die Definition eines Anforderungskataloges,
+ der nach Fertigstellung mit dem Kunden abgesprochen werden muss, realisiert.
+\end_layout
+
+\begin_layout Enumerate
+Ebenso sollen auch Strategien für die Auswahl von Datenquellen anhand definierte
+r Anforderungen entwickelt und mit dem Kunden abgesprochen werden.
+\end_layout
+
+\begin_layout Enumerate
+Die Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
+ angegebenen Anforderungen verwendet werden, müssen selbst definiert und
+ anschließend mit dem Kunden abgesprochen werden.
+\end_layout
+
+\begin_layout Enumerate
+Die Auswertung der Anotationen und die Verarbeitung der darin enthaltenen
+ Informationen soll, ebenfalls selbst definiert und anschließend mit dem
+ Kunden abgesprochen werden.
+\end_layout
+
+\begin_layout Enumerate
+Adressierung der Datenbanken: Statisch über konkrete Adresse oder dynamisch
+ über logische Adresse.
+\end_layout
+
+\begin_layout Enumerate
+Anbindung soll generisch sein, soviele Anbindungen wie möglich realisieren.
+ Als Minimum gilt: IBM DB2 + OpenSourceDB’s (mind.
+ 1*RDB + mind.
+ 1*XMLDB) + mind.
+ 1*SensorDB (z.B.
+ TinyDB).
+\end_layout
+
+\begin_layout Enumerate
+Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozess
+ möglich sein, dazu besitzt jede Aktivität seine eigene Datenquellen-Referenz.
+\end_layout
+
+\begin_layout Enumerate
+Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
+ mindestens SQL und XQuery.
+\end_layout
+
+\begin_layout Enumerate
+Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
+ Konzepte frei wählbar.
+\end_layout
+
+\begin_layout Enumerate
+Es soll möglich sein, dass Daten aus Datenbanken aus einem Prozess auch
+ in lokale Dateien exportiert werden können.
+ Dabei gilt: XML als Standardformat (siehe IBM Ansatz: RDB-Tabellen <->XML).
+\end_layout
+
+\begin_layout Enumerate
+Datenbanken existieren bereits und müssen nicht durch das Rahmenwerk erstellt
+ werden.
+ Weiterhin sollen aber Schema-Definitionen möglich sein und das Erstellen,
+ Ändern und Löschen von Tabellen innerhalb der Schemas.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Autorisierung und Authentifizierung:
+\end_layout
+
+\begin_layout Enumerate
+Autorisierung und Authentifizierung soll momentan nur für Datenquellen bereitges
+tellt werden, allerdings soll eine spätere Erweiterung einfach realisiert
+ werden können.
+\end_layout
+
+\begin_layout Enumerate
+Für die Authentifizierung sind verschiedene Verfahren gewünscht, sodass
+ in jeder Situation das Bestmögliche verwendet wird.
+\end_layout
+
+\begin_layout Enumerate
+Die Autorisierung und die Authentifizierung sollen, über einen Single-Sign-On
+ entweder im Prozess oder in der Instanz, beim Zugriff auf Datenquellen
+ durchgeführt werden.
+\end_layout
+
+\begin_layout Enumerate
+Autorisierung und Authentifizierung sollen auf die Ausführung von Prozessen
+ beschränkt sein.
+\end_layout
+
+\begin_layout Enumerate
+Autorisierungs- und Authentifizierungsparameter für einen Prozess sollen
+ auf Datenquellenebene spezifiziert werden, d.h.
+ bei Datenbanken über Schema und bei Dateisystemen z.B.
+ über extra Dateien.
+\end_layout
+
+\begin_layout Enumerate
+Autorisierung und Authentifizierung ist bei allen Datenquellen notwendig
+ und soll auf verschiedene Arten möglich sein.
+\end_layout
+
+\begin_layout Enumerate
+
+\color black
+Angaben über Autorisierung und Authentifizierung sollen extra abgefragt
+ und als Nachricht an die DB geschickt werden.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Monitoring:
+\end_layout
+
+\begin_layout Enumerate
+Monitoring der Prozessausführung: ExecutingHistory in einer angebundenen
+ Datenbank speichern (nicht im lokalen Speicher der Engine).
+\end_layout
+
+\begin_layout Enumerate
+Die Datenbank für das Monitoring muss über das Rahmenwerk frei wählbar sein
+ und es soll nicht über mehrere Datenbanken verteilt sein.
+\end_layout
+
+\begin_layout Enumerate
+Für unsere Zwecke muss ein komplettes Monitoring erstellt werden, d.h.
+ ein Monitoring für BPEL, ODE und alle Datenquellenaktionen.
+\end_layout
+
+\begin_layout Enumerate
+Das vorhandene Monitoring von BPEL und Apache ODE muss um das Monitoring
+ unserer Funktionalitäten und die Möglichkeit eine variable DB als Monitoring-DB
+ anzugeben erweitert werden.
+\end_layout
+
+\begin_layout Enumerate
+Es soll ein Modell für das Monitoring (Informationen) erstellt und mit den
+ Kunden abgesprochen werden.
+\end_layout
+
+\begin_layout Enumerate
+Die Speicherungsdauer der Monitoring-Daten soll variabel als Parameter übergeben
+ werden können.
+\end_layout
+
+\begin_layout Enumerate
+Das Monitoring soll standardmäßig aktiv sein, aber auch auf Benutzerwunsch
+ abschaltbar.
+ Dies soll auch über den Eclipse BPEL-Designer mit Deployment-Deskriptoren
+ definierbar sein.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Demo-Programm:
+\end_layout
+
+\begin_layout Enumerate
+Die Inhalte der Demo werden später geklärt.
+ Es sollen darin die wichtigsten Use-Cases vorgeführt und ein kurzer Einblick
+ in die Dokumentation gegeben werden.
+\end_layout
+
+\begin_layout Enumerate
+In der Demo soll der Zugriff auf die IBM DB2 Datenbank, eine OpenSource
+ RDB und eine OpenSource XMLDB, sowie evtl.
+ auf Sensornetzdaten mittels TinyDB (falls öffentlich zugänglich) gezeigt
+ werden.
+ Ebenso soll eine kurze Vorstellung der Monitoring-DB-Anbindung, mit einer
+ der oben genannten Datenbanken, gezeigt werden.
+\end_layout
+
+\begin_layout Subsubsection
+Benutzer:
+\end_layout
+
+\begin_layout Enumerate
+Benutzer sind im Normalfall Wissenschaftler und Ingenieure.
+\end_layout
+
+\begin_layout Enumerate
+Benutzer haben keine bis wenig Vorkentnisse im Bereich Workflow und Informatik.
+\end_layout
+
+\begin_layout Subsection
+Grobes Gesamtkonzept und Software-Architektur
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename GrundlegendeDMArchitektur.jpeg
+	lyxscale 40
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Übersicht über das grobe Gesamtkonzept
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Systemumgebung
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Systemumgebung.jpeg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Übersicht über die Systemumgebung von SIMPL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Projektteam-Organisation
 \end_layout
@@ -1832,16 +2277,13 @@ tems und die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
  der Software-Architektur und überwacht deren Einhaltung während der Projektlauf
 zeit.
  Die Architektur soll die Einhaltung der unter Abschnitt 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Referenz einfügen
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Grobspezifikation"
 
 \end_inset
 
-??? genannten Softwarequalitäten sicherstellen.
+ genannten Softwarequalitäten sicherstellen.
 \end_layout
 
 \begin_layout Standard
@@ -1892,17 +2334,6 @@ Qualitätsmanagement: Michael Hahn, Firas Zoabi
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Qualitätsmanagement genauer beschreiben, evtl.
- durch extra Punkt im Dokumentverlauf
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1913,6 +2344,14 @@ ten die bestmögliche Qualität besitzen.
 g von einheitlichen Dokumentvorlagen erreicht werden.
  So soll während des gesamten Projektverlaufs die Qualität der Dokumente
  und Software-Einheiten maximiert werden.
+ Der genaue Ablauf der Qualitätssicherung wird in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Qualitätssicherung-und-Konfigurationsmanagement"
+
+\end_inset
+
+ beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -1937,28 +2376,6 @@ Entwickler: Michael Schneidt, René Rehn, Daniel Brüderle, Michael Hahn,
 Als Entwickler arbeiten alle Teammitglieder außer dem Projektleiter.
  Ein Entwickler arbeitet dabei im Rahmen der vom Projektleiter erteilten
  Aufgaben an Dokumenten und Software-Komponenten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Bild ist anscheinend inkonsistent.
- Änderung durch Feras: 
-\begin_inset Quotes eld
-\end_inset
-
-freier
-\begin_inset Quotes erd
-\end_inset
-
- Entwickler noch in Architekt Kreis einbinden
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2308,7 +2725,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.08.2009-31.09.2009
+07.08.2009-01.10.2009
 \end_layout
 
 \end_inset
@@ -2337,7 +2754,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-31.09.2009-01.12.2009
+01.10.2009-01.12.2009
 \end_layout
 
 \end_inset
@@ -2509,12 +2926,11 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Gantt-Diagramm.eps
+	filename Gantt_detail.png
 	lyxscale 50
 	width 100text%
 	BoundingBox 0bp 20bp 300bp 771bp
 	clip
-	rotateAngle -90
 
 \end_inset
 
@@ -2662,7 +3078,7 @@ Am Ende der Testphase erfolgt die Abnahme der Projekts und aller genannten
  Dokumente (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Auszuliefernde-Software-Einheiten"
+reference "sub:Arbeitspakete"
 
 \end_inset
 
@@ -2714,6 +3130,12 @@ Die Puffer-Phase ist ein extra Zeitfenster vor dem endgültigen Abgabetermin
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Arbeitspakete"
+
+\end_inset
+
 Arbeitspakete
 \end_layout
 
@@ -5082,6 +5504,12 @@ Der Kunde akzeptiert die Software.
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Qualitätssicherung-und-Konfigurationsmanagement"
+
+\end_inset
+
 Qualitätssicherung und Konfigurationsmanagement
 \end_layout
 
@@ -5868,9 +6296,7 @@ status open
 
 
 \backslash
-parbox{6cm}{Stuttgart, den 
-\backslash
-docdate 
+parbox{6cm}{Stuttgart, den  
 \backslash
 hrule 
 \backslash
