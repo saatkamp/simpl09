@@ -431,7 +431,63 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Ein einfacher BPEL-Prozess in Eclipse
+Einführung in den Eclipse BPEL Designer 
+\end_layout
+
+\begin_layout Standard
+Der BPEL-Designer unter Eclipse ist ein Editor um dem Ersteller eines BPEL
+ Prozesses eine grafische Unterstützung zu bieten.
+ WS-BPEL ( Web Service Business Process Execution Language ) oder auch BPEL
+ ist die Hersteller neutrale Spezifikation welche von OASIS entwickelt wurde
+ um Geschäftsprozesse als als Interaktionen zwischen Web Services zu spezifizier
+en.
+ Ausführliche Informationen, insbesonder HowTos und Guides zum BPEL Designer
+ sind unter folgenden URLs verfügbar :
+\end_layout
+
+\begin_layout Itemize
+http://www.eclipse.org/bpel/users.php
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Install the Designer
+\end_layout
+
+\begin_layout Itemize
+Create a New Project
+\end_layout
+
+\begin_layout Itemize
+Add a WSDL
+\end_layout
+
+\begin_layout Itemize
+Add a Schema
+\end_layout
+
+\begin_layout Itemize
+Write a custom extension Activity 
+\end_layout
+
+\begin_layout Itemize
+Develop, deploy and run a Hello World Process with the BPEL Designer and
+ Apache ODE
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+http://www.se.uni-hannover.de/lehre/tutorials/BPEL-ODE-HelloBPEL.php
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Deutschsprachige BPEL Tutorials der Leibnitz Universität Hannover
+\end_layout
+
+\end_deeper
+\begin_layout Section
+BPEL Prozess in Eclipse 
 \end_layout
 
 \begin_layout Standard
