@@ -1,72 +1,79 @@
 #summary Einrichtung der Entwicklungsumgebung für SIMPL
-#labels Entwicklungsumgebung,Windows,Eclipse,Plugins,Programme
+#labels Phase-Requirements
 = Entwicklungsumgebung =
 
 == Installationsdateien ==
- * _TortoiseSVN-1.6.3.16613-win32-svn-1.6.3.msi_, SVN Integration für Windows, http://tortoisesvn.tigris.org/
- * _jdk-6u14-windows-i586.exe_, Java Development Kit, Java-Entwicklungswerkzeuge + Runtime-Environment, http://java.sun.com/
- * _apache-tomcat-6.0.20.exe_ - Apache Tomcat, Web Server zur Ausführung von Java-Code, http://tomcat.apache.org/
- * _apache-maven-2.1.0-bin.zip_ - Apache Maven, Java Build-Management-Tool, http://maven.apache.org/
- * _eclipse-java-ganymede-SR2-win32.zip_ - Eclipse, IDE, http://eclipse.org/
- * _apache-ode-war-1.3.2.zip_ - Apache ODE, BPEL Engine, http://ode.apache.org/
- * _axis2-1.5-bin.zip_ - Apache Axis2, Web Service Runtime Engine, http://ws.apache.org/axis2/
+ * _TortoiseSVN-1.6.4.16808-win32-svn-1.6.4.msi_, SVN Integration für Windows, http://tortoisesvn.tigris.org
+ * _jdk-6u15-windows-i586.exe_, Java Development Kit, Java-Entwicklungswerkzeuge + Runtime-Environment, http://java.sun.com
+ * _apache-tomcat-6.0.20.exe_ - Apache Tomcat, Web Server zur Ausführung von Java-Code, http://tomcat.apache.org
+ * _apache-maven-2.1.0-bin.zip_ - Apache Maven, Java Build-Management-Tool, http://maven.apache.org
+ * _eclipse-java-galileo-win32.zip_ - Eclipse IDE for Java Developers, http://eclipse.org
+ * _apache-ode-war-1.3.2.zip_ - Apache ODE, BPEL Engine, http://ode.apache.org
+ * _apache-tuscany-sca-all-2.0-M3.zip_ - Apache Tuscany SCA, SOA Development Infrastructure, http://tuscany.apache.org
+ * _apache-tuscany-sdo-1.1.1.zip_ - Apache Tuscany SDO, Service Data Object, http://tuscany.apache.org
+ * _tuscany-das-1.0-incubating-beta2-bin.zip_ - Apache Tuscany DAS, Data Access Service, http://tuscany.apache.org
 
 == 1 Tortoise ==
-_TortoiseSVN-1.6.3.16613-win32-svn-1.6.3.msi_ ausführen und Installationsanweisungen folgen.
+_TortoiseSVN-1.6.4.16808-win32-svn-1.6.4.msi_ ausführen und Installationsanweisungen folgen.
 
 == 2 Java Development Kit ==
-_jdk-6u14-windows-i586.exe_ ausführen und Installationsanweisungen folgen.
+_jdk-6u15-windows-i586.exe_ ausführen und Installationsanweisungen folgen.
 
 == 3 Apache Maven ==
-_apache-maven-2.1.0-bin.zip_ in Programmverzeichnis entpacken z.B. nach _C:\Programme\Apache\apache-maven-2.1.0_
+_apache-maven-2.1.0-bin.zip_ in Programmverzeichnis entpacken nach z.B. _C:\Programme\Apache\apache-maven-2.1.0_
 
 == 4 Apache ODE ==
-_ode.war_ aus der _apache-ode-war-1.3.2.zip_ in _C:\Programme\Apache\Tomcat 6.0\webapps_ kopieren und diese dort zusätzlich entpacken z.B. nach _C:\Programme\Apache\Tomcat 6.0\webapps\ode_
+_ode.war_ aus der _apache-ode-war-1.3.2.zip_ nach _C:\Programme\Apache\Tomcat 6.0\webapps_ kopieren und diese dort zusätzlich entpacken nach z.B. _C:\Programme\Apache\Tomcat 6.0\webapps\ode_
 
-== 5 Apache Axis2 ==
-axis2-1.5-bin.zip entpacken z.B. nach _C:\Programme\axis2-1.5_
+== 5 Apache Tuscony ==
+_apache-tuscany-sca-all-2.0-M3.zip_ nach z.B. _C:\Programme\Apache\tuscany-sca-2.0-M3_ entpacken.
+
+_tuscany-das-1.0-incubating-beta2-bin.zip_ nach z.B. C:\Programme\Apache\tuscany-das-1.0-incubating-beta2 entpacken.
+
+_apache-tuscany-sdo-1.1.1.zip_ nach z.B. C:\Programme\Apache\tuscany-sdo-1.1.1 entpacken.
 
 == 6 Eclipse ==
-_eclipse-java-ganymede-SR2-win32.zip_ entpacken z.B. nach _C:\Programme\eclipse_
+_eclipse-java-galileo-win32.zip_ entpacken nach z.B. _C:\Programme\eclipse_
 
-=== 6.1 Updates und Plugins ===
-Achtung: Kein Update vorhandener Software machen!
+=== 6.1 Plugins ===
 
-==== Plugins hinzufügen ====
-Help -> Software Updates -> Available Software -> Add Site
+==== Plugins und Update ====
+Help -> Install New Software -> Add Site
 
-Update-URL des Plugins eintragen, den neuen Punkt und evtl. zusätzlich dazu erscheinende Punkte auswählen und auf Installation klicken.
- * BPEL Designer: http://download.eclipse.org/technology/bpel/update-site/
+Name und Update-URL des Plugins eintragen, die erscheinenden Punkte auswählen und auf _Install_ klicken.
+ * BPEL Designer: http://swordfish-tooling.googlecode.com/svn/trunk/org.eclipse.swordfish.third-parties/bpel/
  * Subclipse: http://subclipse.tigris.org/update_1.6.x
- * m2e: http://m2eclipse.sonatype.org/update/ ("Maven Integration for AJDT (Optional)" abwählen!)
- * mylyn: http://download.eclipse.org/tools/mylyn/update/incubator
+ * Maven: http://m2eclipse.sonatype.org/update/, Nach Auflistung "Maven Integration for AJDT (Optional)" sofort abwählen!
+ * Mylyn: http://download.eclipse.org/tools/mylyn/update/incubator, Nur "Mylyn Connector: Web Templates (Advanced)" auswählen.
+
+==== SOA Tools ====
+Help -> Install New Software -> Work with: Galileo - http://download.eclipse.org/releases/galileo -> SOA Development -> Next -> Finish
+
+==== Web Developer Tools ====
+Help -> Install New Software -> Work width: Galileo - http://download.eclipse.org/releases/galileo -> Web, XML, and Java EE Development -> Eclipse Web Developer Tools -> Next -> Finish
  
 ==== Update von Eclipse ====
-Help -> Software Updates -> Available Software -> Update
+Help -> Check for Updates
 
 === 6.2 Einstellungen ===
-==== SVN Labels im Package Explorer ====
-Window -> Preferences -> Team -> SVN -> Label Decorations
-{{{
-File Format: {added_flag}{dirty_flag}{name}
-Folder Format: {external_flag}{added_flag}{dirty_flag}{name}
-Folder Project: {dirty_flag}{name}
-}}}
-
-==== SVN Toolbar ====
-Window -> Customize Perspective -> Commands -> SVN aktivieren
 
 ==== Apache ODE ====
-File -> New -> Server -> Server auswählen -> Ode v1.x Server auswählen -> Next
+File -> New -> Other -> Server (Ordner) -> _Server_ auswählen -> _Ode v1.x Server_ auswählen -> Next
 {{{
-ODE's home directory: C:\Programme\Apache\Tomcat 6.0\webapps\ode
+ODE's home directory: C:\Programme\Tomcat 6.0\webapps\ode
 Tomcat's home directory: C:\Programme\Apache\Tomcat 6.0
 }}}
 
-==== Apache Axis2 ====
-Window -> Preferences -> Web Services -> Axis2 Preferences
+==== Apache Tuscany ====
+Window -> Preferences -> SCA Tools -> Tuscany Directory: _C:\Programme\Apache\tuscany-sca-2.0-M3_
 
-Axis2 runtime location: C:\Programme\axis2-1.5
+Window -> Preferences -> Java -> Build Path -> User Libraries -> New -> _TUSCANY_ eingeben -> OK
+
+- > Add JARs -> In _C:\Programme\Apache\tuscany-sca-2.0-M3\modules_ alle JARs auswählen -> Öffnen
+
+-> TUSCONY wieder auswählen -> Add JARs -> _C:\Programme\Apache\tuscany-das-1.0-incubating-beta2\lib_ alle JARs auswählen -> Öffnen
+
+-> TUSCONY wieder auswählen -> Add JARs -> _C:\Programme\Apache\tuscany-sdo-1.1.1\lib_ alle JARs auswählen -> Öffnen
 
 ==== Maven-Plugin ====
 Eclipse muss für das Maven-Plugin mit dem JDK starten. Dazu kann man entweder die eclipse.ini anpassen oder eine angepasste Verknüpfung zu Eclipse erstellen.
@@ -74,41 +81,39 @@ Eclipse muss für das Maven-Plugin mit dem JDK starten. Dazu kann man entweder d
 *C:\eclipse\eclipse.ini*
 {{{
 -vm 
-C:\Programme\Java\jdk1.6.0_14\bin
--showsplash
-org.eclipse.platform
---launcher.XXMaxPermSize
-256M
--framework
-plugins\org.eclipse.osgi_3.4.3.R34x_v20081215-1030.jar
--vmargs
--Dosgi.requiredJavaVersion=1.5
+C:\Programme\Java\jdk1.6.0_15\bin
+.
+.
+.
 -Xms40m
 -Xmx256m
 }}}
 
-(Mit den beiden letzten Einstellungen können zusätzlich die Speichereinstellungen erhöht werden, falls Eclipse im Laufe des Projekts zu langsam wird.)
+Mit den beiden letzten Einstellungen können zusätzlich die Speichereinstellungen erhöht werden, falls Eclipse im Laufe des Projekts zu langsam wird.
 
 *Verknüpfung zu eclipse.exe*
 {{{
-Ziel: C:\eclipse\eclipse.exe -vm C:\Programme\Java\jdk1.6.0_14\bin
+Ziel: C:\eclipse\eclipse.exe -vm C:\Programme\Java\jdk1.6.0_15\bin
 }}}
 
 ==== Google Code Issue Task List ====
-Window -> Show View -> Other -> Tasks -> Task Repositories -> Add Task Repository -> Web Template (Advanced) -> Next -> Eclipse Outliner (Google Code) auswählen und ändern
+Window -> Show View -> Task List
+
+Window -> Show View -> Other -> Tasks -> Task Repositories
+
+Rechter Mausklick in Task Repositories -> Add Task Repository -> _Web Template (Advanced)_ auswählen -> Next -> _Eclipse Outliner (Google Code)_ auswählen und folgendes ändern:
 
 {{{
 Server: http://code.google.com/p/simpl09/issues
 Anonymous: true
 }}}
 
-Window -> Show View -> Other -> Tasks -> Task List
-
-Rechter Mausklick -> New -> Query -> SIMPL09 (Google Code)
-
-Für den Entwickler reicht es lediglich die eigenen Tasks zu sehen, dazu kann die Query folgendermaßen angepasst werden:
+Die Frage ob eine Query erstellt werden soll mit _Ja_ beantworten.
 
 Advanced Configuration -> Query Pattern
+
+Für den Entwickler reicht es lediglich die eigenen Tasks zu sehen, dazu kann die Query folgendermaßen angepasst werden.
+
 {{{
 {Owner}
 
@@ -117,10 +122,30 @@ ersetzen durch
 {Deine Email bei Google Code (bei Gmail nur den Benutzernamen verwenden!)}
 }}}
 
-==== WST Version zurücksetzen ====
-Da der BPEL Designer nicht mit der aktuellen WST Version zurecht kommt, muss die Configuration wieder zurückgesetzt werden.
+-> Finish
 
-Help -> Software Updates -> Installed Software -> Revert Configuration... -> Soweit zurückgehen, bis die WST Komponenten v 3.0.4 installiert sind
+==== Coding Style ====
+Coding Style Guide
+Window -> Preferences -> Java -> Code Style -> Formatter -> New
+
+{{{
+Profile name:
+SIMPL
+Initialize settings with the following profile:
+Java Conventions [built-in]
+}}}
+
+-> OK
+
+{{{
+[Indentation]
+Use spaces to indent wrapped lines -> aktivieren
+Indention size: 2
+Tab size: 2
+.
+.
+.
+}}}
 
 == 7 Windows Einstellungen ==
 === 7.1 Umgebungsvariablen ===
@@ -128,7 +153,7 @@ Systemeigenschaften -> Erweitert -> Umgebungsvariablen -> Systemvariablen
 
 *JAVA_HOME* (Neu)
 {{{
-C:\Programme\Java\jdk1.6.0_14
+C:\Programme\Java\jdk1.6.0_15
 }}}
 
 *M2* (Neu)
@@ -152,12 +177,19 @@ C:\Programme\Apache\apache-maven-2.1.0
 ;C:\Programme\Apache\apache-maven-2.1.0\bin;%JAVA_HOME%\bin
 }}}
 
+Bei Problemen mit Maven Build, kann mit MAVEN_OPTS der Speicher erhöht werden.
+
+*MAVEN_OPTS* (Neu)
+{{{
+-Xmx512m
+}}}
+
 == 8 Test ==
 === 8.1 Umgebungsvariablen ===
 Kommandozeile (cmd.exe)
 {{{
 java
-mvn
+mvn -v
 }}}
 Befehle müssen gefunden werden.
 
