@@ -1,0 +1,40 @@
+#summary Arbeiten mit Eclipse
+#labels Featured
+
+= Eclipse =
+Hier befinden sich alle zusätzlichen Informationen und Einstellungen zum bequemen und effektiven Arbeiten mit Eclipse.
+
+== Einstellungen ==
+
+=== SVN Labels ===
+Die SVN Labels neben den Dateinamen im Package Explorer können angepasst werden.
+
+Window -> Preferences -> Team -> SVN -> Label Decorations
+
+Bsp: Nur Dateinamen anzeigen
+{{{
+File Format: {added_flag}{dirty_flag}{name}
+Folder Format: {external_flag}{added_flag}{dirty_flag}{name}
+Project Format: {dirty_flag}{name}
+}}}
+
+==== SVN Menüleiste ====
+Window -> Customize Perspective -> Command Groups Availability -> SVN aktivieren
+
+Window -> Customize Perspective -> Menu Visibility -> SVN aktivieren
+
+=== Code Folding ===
+Das automatische Zusammenfalten von Code kann deaktiviert werden.
+
+Window -> Preferences -> Java -> Editor -> Folding -> _Enable folding_ deaktivieren
+
+== HotKeys==
+_Strg + Shift + F_<br>
+Im Editor: Formatierung des Codes nach eingestelltem Code Style.
+
+_Strg + Shift + O_<br>
+Im Editor: Organisierung der Imports innerhalb der Klasse (Interface).<br>
+Ausgewähltes Projekt: Organisierung der Imports über das ganze Projekt.
+
+_Strg + Shift + G_<br>
+Ausgewählte Funktion im Code: Liefert eine Liste mit allen Stellen wo die Funktion verwendet wird.
