@@ -67,13 +67,12 @@ Tomcat's home directory: C:\Programme\Apache\Tomcat 6.0
 ==== Apache Tuscany ====
 Window -> Preferences -> SCA Tools -> Tuscany Directory: _C:\Programme\Apache\tuscany-sca-2.0-M3_
 
-Window -> Preferences -> Java -> Build Path -> User Libraries -> New -> _TUSCANY_ eingeben -> OK
-
-- > Add JARs -> In _C:\Programme\Apache\tuscany-sca-2.0-M3\modules_ alle JARs auswählen -> Öffnen
-
--> TUSCONY wieder auswählen -> Add JARs -> _C:\Programme\Apache\tuscany-das-1.0-incubating-beta2\lib_ alle JARs auswählen -> Öffnen
-
--> TUSCONY wieder auswählen -> Add JARs -> _C:\Programme\Apache\tuscany-sdo-1.1.1\lib_ alle JARs auswählen -> Öffnen
+Window -> Preferences -> Java -> Build Path -> User Libraries<br>
+-> New -> _TUSCANY SCA_ eingeben -> OK - > Add JARs -> In _C:\Programme\Apache\tuscany-sca-2.0-M3\modules_ alle JARs auswählen und öffnen
+<br>
+-> New -> _TUSCANY SDO_ eingeben -> OK -> Add JARs -> _C:\Programme\Apache\tuscany-sdo-1.1.1\lib_ alle JARs auswählen und öffnen
+<br>
+-> New -> _TUSCANY DAS_ eingeben -> OK -> Add JARs -> _C:\Programme\Apache\tuscany-das-1.0-incubating-beta2\lib_ alle JARs auswählen und öffnen
 
 ==== Maven-Plugin ====
 Eclipse muss für das Maven-Plugin mit dem JDK starten. Dazu kann man entweder die eclipse.ini anpassen oder eine angepasste Verknüpfung zu Eclipse erstellen.
