@@ -1,14 +1,6 @@
-#summary One-sentence summary of this page.
+#EinarbeitungsBericht mit ein erstellten Tutorial.
 
 = Introduction =
 
 Bitte siehe dafür im SVN den Einarbeitung Tutorial "BpelDesignerEinarbeitungBericht"
 unter documents\BPelDesignerEinarbeitungsberichte.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
