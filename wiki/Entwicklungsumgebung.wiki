@@ -45,6 +45,7 @@ Name und Update-URL des Plugins eintragen, die erscheinenden Punkte auswählen u
  * Subclipse: http://subclipse.tigris.org/update_1.6.x
  * Maven: http://m2eclipse.sonatype.org/update/, Nach Auflistung "Maven Integration for AJDT (Optional)" sofort abwählen!
  * Mylyn: http://download.eclipse.org/tools/mylyn/update/incubator, Nur "Mylyn Connector: Web Templates (Advanced)" auswählen.
+ * Quantum: http://quantum.sourceforge.net/update-site
 
 ==== SOA Tools ====
 Help -> Install New Software -> Work with: Galileo - http://download.eclipse.org/releases/galileo -> SOA Development -> Next -> Finish
