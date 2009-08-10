@@ -1,6 +1,5 @@
 #summary Arbeiten mit Eclipse
 #labels Featured
-
 = Eclipse =
 Hier befinden sich alle zusätzlichen Informationen und Einstellungen zum bequemen und effektiven Arbeiten mit Eclipse.
 
@@ -19,8 +18,7 @@ Project Format: {dirty_flag}{name}
 }}}
 
 ==== SVN Menüleiste ====
-Window -> Customize Perspective -> Command Groups Availability -> SVN aktivieren
-
+Window -> Customize Perspective -> Command Groups Availability -> SVN aktivieren<br>
 Window -> Customize Perspective -> Menu Visibility -> SVN aktivieren
 
 === Code Folding ===
@@ -28,13 +26,31 @@ Das automatische Zusammenfalten von Code kann deaktiviert werden.
 
 Window -> Preferences -> Java -> Editor -> Folding -> _Enable folding_ deaktivieren
 
-== !HotKeys==
+=== Source Clean Up ===
+Um den Code im gesamten Projekt nach dem Code Style zu formatieren und zusätzlich bestimmte Konventionen zu erzwingen, kann über das gesamte Projekt ein Clean Up gemacht werden. Anschließend öffnet sich ein Fenster in dem die Änderungen in einer Gegenüberstellung (wie in SVN) gezeigt werden, bevor sie übernommen werden können.
+
+Source -> Clean Up
+
+== HotKeys==
 _Strg + Shift + F_<br>
 Im Editor: Formatierung des Codes nach eingestelltem Code Style.
 
 _Strg + Shift + O_<br>
 Im Editor: Organisierung der Imports innerhalb der Klasse (Interface).<br>
-Ausgewähltes Projekt: Organisierung der Imports über das ganze Projekt.
+Auf ausgewähltes Projekt: Organisierung der Imports über das ganze Projekt.
 
 _Strg + Shift + G_<br>
-Ausgewählte Funktion im Code: Liefert eine Liste mit allen Stellen wo die Funktion verwendet wird.
+Auf ausgewählte Funktion: Liefert eine Liste mit allen Stellen wo die Funktion verwendet wird.
+
+== Optimierungen ==
+
+=== Speichereinstellung ===
+Wer viel Speicher hat, kann Eclipse noch mit folgenden Einstellungen beschleunigen.
+
+*C:\eclipse\eclipse.ini*
+{{{
+-Xms512m
+-Xmx512m
+-XX:PermSize=128M
+-XX:MaxPermSize=128M
+}}}
