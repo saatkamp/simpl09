@@ -846,144 +846,6 @@ zesse liegen, sollen nun auch für wissenschaftliche Workflows genutzt werden
 \end_layout
 
 \begin_layout Subsection
-Projektbeteiligte
-\end_layout
-
-\begin_layout Standard
-In diesem Abschnitt geht es um die beteiligten Parteien des Projekts.
- Diese sind, nachfolgend als die Kunden bezeichnet, Katharina Görlach, Peter
- Reimann und Mirko Sonntag, sowie die Firma SIMPL, nachfolgend als Auftragnehmer
- bezeichnet, die durch Wolfgang Hüttig vertreten wird.
- Der Auftragnehmer besteht aus den Projektmitarbeitern: Wolfgang Hüttig,
- Michael Schneidt, René Rehn, Michael Hahn, Firas Zoabi, Daniel Brüderle
- und Xi Tu, wobei Wolfgang Hüttig der zentrale Ansprechpartner des Auftragnehmer
-s für das Projekt ist.
- Im Rahmen dieses Angebots kommt dabei ein Vertrag zwischen den Kunden und
- dem Auftragnehmer zustande.
-\end_layout
-
-\begin_layout Standard
-Die Kontaktdaten der Kunden sind wie folgt:
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\paragraph_spacing double
-\noindent
-
-\series bold
-Dipl.-Inf.
- Katharina Görlach
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-Institut für Architektur von Anwendungssystemen 
-\end_layout
-
-\begin_layout Standard
-Universitätsstraße 38, 70569 Stuttgart (Zimmer 1.328)
-\end_layout
-
-\begin_layout Standard
-Telefon: +49 (0)711 7816-333 
-\end_layout
-
-\begin_layout Standard
-Fax: +49 (0)711 7816-472 
-\end_layout
-
-\begin_layout Standard
-E-Mail: katharina.goerlach(@)iaas.uni-stuttgart.de
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\paragraph_spacing double
-\noindent
-
-\series bold
-Dipl.-Inf.
- Peter
-\series default
- 
-\series bold
-Reimann
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-Institut für Parallele und Verteilte Systeme
-\end_layout
-
-\begin_layout Standard
-Universitätsstraße 38, 70569 Stuttgart (Zimmer 2.467)
-\end_layout
-
-\begin_layout Standard
-Telefon: +49 (0)711 7816-445 
-\end_layout
-
-\begin_layout Standard
-Fax: +49 (0)711 7816-424
-\end_layout
-
-\begin_layout Standard
-E-Mail: Peter.Reimann(@)ipvs.uni-stuttgart.de
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\paragraph_spacing double
-\noindent
-
-\series bold
-Dipl.
-\series default
--
-\series bold
-Inf.
-
-\series default
- 
-\series bold
-Mirko Sonntag
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-Institut für Architektur von Anwendungssystemen 
-\end_layout
-
-\begin_layout Standard
-Universitätsstraße 38, 70569 Stuttgart (Zimmer 1.332)
-\end_layout
-
-\begin_layout Standard
-Telefon: +49 (0)711 7816-202 
-\end_layout
-
-\begin_layout Standard
-Fax: +49 (0)711 7816-472
-\end_layout
-
-\begin_layout Standard
-E-Mail: mirko.sonntag(@)iaas.uni-stuttgart.de
-\end_layout
-
-\begin_layout Subsection
 Entwicklungsgrundlagen
 \end_layout
 
@@ -1115,44 +977,6 @@ Grobspezifikation
 \begin_layout Standard
 Folgende grundlegende Anforderungen sollen im Rahmen des Projektes umgesetzt
  werden.
-\end_layout
-
-\begin_layout Subsubsection
-Nichtfunktionale Anforderungen:
-\end_layout
-
-\begin_layout Enumerate
-Die Schnittstellen des Rahmenwerks sollen leicht erweiterbar sein und insgesamt
- soll ein modularer Aufbau zugrunde liegen.
-\end_layout
-
-\begin_layout Enumerate
-Fehlertoleranz: Scopes mit Handler.
- CompensationHandler und FaultHandler implementieren Logik für die Kompensation
- von Fehlern (rollback).
-\end_layout
-
-\begin_layout Enumerate
-Ausfallsicherheit soll so gut wie möglich sein.
-\end_layout
-
-\begin_layout Enumerate
-Usability sollte sich an Benutzer orientieren und dazu die größtmögliche
- Transparenz liefern.
-\end_layout
-
-\begin_layout Enumerate
-Es gibt keine bestimmte Infrastruktur in der das System später läuft.
- ODE läuft überall lokal und die Datenbanken sind verteilt.
-\end_layout
-
-\begin_layout Enumerate
-Skalierbarkeit: keine bestimmte Infrastruktur => von schlechten PC’s bis
- zu Supercomputern ist alles möglich.
-\end_layout
-
-\begin_layout Enumerate
-Performance soll so gut wie möglich sein.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1643,6 +1467,40 @@ Geschwindigkeit und Performance
 
 \begin_layout Subsection
 Nicht-funktionale Anforderungen
+\end_layout
+
+\begin_layout Enumerate
+Die Schnittstellen des Rahmenwerks sollen leicht erweiterbar sein und insgesamt
+ soll ein modularer Aufbau zugrunde liegen.
+\end_layout
+
+\begin_layout Enumerate
+Fehlertoleranz: Scopes mit Handler.
+ CompensationHandler und FaultHandler implementieren Logik für die Kompensation
+ von Fehlern (rollback).
+\end_layout
+
+\begin_layout Enumerate
+Ausfallsicherheit soll so gut wie möglich sein.
+\end_layout
+
+\begin_layout Enumerate
+Usability sollte sich an Benutzer orientieren und dazu die größtmögliche
+ Transparenz liefern.
+\end_layout
+
+\begin_layout Enumerate
+Es gibt keine bestimmte Infrastruktur in der das System später läuft.
+ ODE läuft überall lokal und die Datenbanken sind verteilt.
+\end_layout
+
+\begin_layout Enumerate
+Skalierbarkeit: keine bestimmte Infrastruktur => von schlechten PC’s bis
+ zu Supercomputern ist alles möglich.
+\end_layout
+
+\begin_layout Enumerate
+Performance soll so gut wie möglich sein.
 \end_layout
 
 \begin_layout Subsubsection
