@@ -12,6 +12,8 @@
  * _apache-tuscany-sca-all-2.0-M3.zip_ - Apache Tuscany SCA, SOA Development Infrastructure, http://tuscany.apache.org
  * _apache-tuscany-sdo-1.1.1.zip_ - Apache Tuscany SDO, Service Data Object, http://tuscany.apache.org
  * _tuscany-das-1.0-incubating-beta2-bin.zip_ - Apache Tuscany DAS, Data Access Service, http://tuscany.apache.org
+ * _eclipse_cleanup.xml_ - Eclipse Code Clean Up Einstellungen
+ * _eclipse_formatter.xml_ - Eclipse Code Formatter Einstellungen
 
 == 1 Tortoise ==
 _TortoiseSVN-1.6.4.16808-win32-svn-1.6.4.msi_ ausführen und Installationsanweisungen folgen.
@@ -68,28 +70,23 @@ Tomcat's home directory: C:\Programme\Apache\Tomcat 6.0
 ==== Apache Tuscany ====
 Window -> Preferences -> SCA Tools -> Tuscany Directory: _C:\Programme\Apache\tuscany-sca-2.0-M3_
 
-Window -> Preferences -> Java -> Build Path -> User Libraries<br>
+Window -> Preferences -> Java -> Build Path -> User Libraries
+
 -> New -> _TUSCANY SCA_ eingeben -> OK - > Add JARs -> In _C:\Programme\Apache\tuscany-sca-2.0-M3\modules_ alle JARs auswählen und öffnen
-<br>
+
 -> New -> _TUSCANY SDO_ eingeben -> OK -> Add JARs -> _C:\Programme\Apache\tuscany-sdo-1.1.1\lib_ alle JARs auswählen und öffnen
-<br>
+
 -> New -> _TUSCANY DAS_ eingeben -> OK -> Add JARs -> _C:\Programme\Apache\tuscany-das-1.0-incubating-beta2\lib_ alle JARs auswählen und öffnen
 
 ==== Maven-Plugin ====
 Eclipse muss für das Maven-Plugin mit dem JDK starten. Dazu kann man entweder die eclipse.ini anpassen oder eine angepasste Verknüpfung zu Eclipse erstellen.
 
 *C:\eclipse\eclipse.ini*
+Oben einfügen
 {{{
 -vm 
 C:\Programme\Java\jdk1.6.0_15\bin
-.
-.
-.
--Xms40m
--Xmx256m
 }}}
-
-Mit den beiden letzten Einstellungen können zusätzlich die Speichereinstellungen erhöht werden, falls Eclipse im Laufe des Projekts zu langsam wird.
 
 *Verknüpfung zu eclipse.exe*
 {{{
@@ -124,28 +121,9 @@ ersetzen durch
 
 -> Finish
 
-==== Coding Style ====
-Coding Style Guide
-Window -> Preferences -> Java -> Code Style -> Formatter -> New
-
-{{{
-Profile name:
-SIMPL
-Initialize settings with the following profile:
-Java Conventions [built-in]
-}}}
-
--> OK
-
-{{{
-[Indentation]
-Use spaces to indent wrapped lines -> aktivieren
-Indention size: 2
-Tab size: 2
-.
-.
-.
-}}}
+==== Code Style ====
+Window -> Preferences -> Java -> Code Style -> Clean Up -> Import: _eclipse_cleanup.xml_<br>
+Window -> Preferences -> Java -> Code Style -> Formatter -> Import: _eclipse_formatter.xml_
 
 == 7 Windows Einstellungen ==
 === 7.1 Umgebungsvariablen ===
