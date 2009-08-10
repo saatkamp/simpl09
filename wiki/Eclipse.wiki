@@ -28,7 +28,7 @@ Das automatische Zusammenfalten von Code kann deaktiviert werden.
 
 Window -> Preferences -> Java -> Editor -> Folding -> _Enable folding_ deaktivieren
 
-== HotKeys==
+== !HotKeys==
 _Strg + Shift + F_<br>
 Im Editor: Formatierung des Codes nach eingestelltem Code Style.
 
