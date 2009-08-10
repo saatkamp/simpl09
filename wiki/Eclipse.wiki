@@ -17,7 +17,7 @@ Folder Format: {external_flag}{added_flag}{dirty_flag}{name}
 Project Format: {dirty_flag}{name}
 }}}
 
-==== SVN Menüleiste ====
+=== SVN Menüleiste ===
 Window -> Customize Perspective -> Command Groups Availability -> SVN aktivieren<br>
 Window -> Customize Perspective -> Menu Visibility -> SVN aktivieren
 
@@ -31,7 +31,7 @@ Um den Code im gesamten Projekt nach dem Code Style zu formatieren und zusätzli
 
 Source -> Clean Up
 
-== HotKeys==
+== !HotKeys==
 _Strg + Shift + F_<br>
 Im Editor: Formatierung des Codes nach eingestelltem Code Style.
 
