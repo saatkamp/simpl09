@@ -1530,17 +1530,18 @@ zesse liegen, sollen nun auch für wissenschaftliche Workflows genutzt werden
 \end_layout
 
 \begin_layout Subsection
-Vertragsparteien
+Projektbeteiligte
 \end_layout
 
 \begin_layout Standard
-Das Angebot richtet sich an die Kunden vom IAAS und IPVS, vertreten durch
- Katharina Görlach, Peter Reimann und Mirko Sonntag.
- Auftragnehmer ist das Studenprojekt SIMPL, das durch Wolfgang Hüttig vertreten
- wird und sind aus folgenden Projektmitarbeitern zusammensetzt: Wolfgang
- Hüttig, Michael Schneidt, René Rehn, Michael Hahn, Firas Zoabi, Daniel
- Brüderle und Xi Tu, wobei Wolfgang Hüttig der zentrale Ansprechpartner
- für den Auftraggeber ist.
+In diesem Abschnitt geht es um die beteiligten Parteien des Projekts.
+ Diese sind, nachfolgend als die Kunden bezeichnet, Katharina Görlach, Peter
+ Reimann und Mirko Sonntag, sowie die Firma SIMPL, nachfolgend als Auftragnehmer
+ bezeichnet, die durch Wolfgang Hüttig vertreten wird.
+ Der Auftragnehmer besteht aus den Projektmitarbeitern: Wolfgang Hüttig,
+ Michael Schneidt, René Rehn, Michael Hahn, Firas Zoabi, Daniel Brüderle
+ und Xi Tu, wobei Wolfgang Hüttig der zentrale Ansprechpartner des Auftragnehmer
+s für das Projekt ist.
  Im Rahmen dieses Angebots kommt dabei ein Vertrag zwischen den Kunden und
  dem Auftragnehmer zustande.
 \end_layout
@@ -1666,6 +1667,55 @@ Fax: +49 (0)711 7816-472
 E-Mail: mirko.sonntag(@)iaas.uni-stuttgart.de
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Das Angebot richtet sich an Das institut IAAS und IPVS vertreten durch....
+\end_layout
+
+\begin_layout Plain Layout
+Umbenennen in Vertragparteien
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Entwicklungsgrundlagen
+\end_layout
+
+\begin_layout Standard
+Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
+ Dadurch wird eine hohe Qualität des Produkts gewährleistet.
+ Wichtige Qualitäten sind dabei die Wartbarkeit und die Erweiterbarkeit
+ des Systems, da es über einen längeren Zeitraum bestehen soll und in Zukunft
+ um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff und
+ den Umgang mit weiteren Datenformaten ergänzt werden soll.
+ Eine weitere wichtige Qualität ist die Skalierbarkeit des Systems, die
+ eine sehr flexible Infrastruktur erlauben muss, da die Computersysteme,
+ auf denen SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinander
+ gehen, d.h.
+ vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
+ möglich sein.
+\end_layout
+
+\begin_layout Standard
+Robustheit und Usability der Software sind für uns innerhalb des Entwicklungspro
+zesses von großem Interesse.
+ Die Usability sollte sich vor allem an unerfahrene und Nutzer mit wenig
+ Kenntnissen im Umgang mit Workflows und BPEL richten und dafür die bestmögliche
+ Transparenz liefern, d.h.
+ das die interne Prozesslogik der Software bestmöglich vom Benutzer abgeschirmt
+ wird und das er eine möglichst einfache und schnell verständliche Schnittstelle
+ zur Software erhält, um die Verwendung von SIMPL für alle Benutzergruppen
+ zu ermöglichen.
+ 
+\end_layout
+
 \begin_layout Section
 Projektaufgabe
 \end_layout
@@ -1704,79 +1754,6 @@ In den nachfolgenden Abschnitten werden die aufgenommenen Anforderungen
 \end_layout
 
 \begin_layout Subsection
-Systemumgebung
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-steht teilwese in 2.2 könnte manvielelicht verschmelzen.
- Am bild ist komisch dsa datenquellen nur über Tomcat ausgewählt wird
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Systemumgebung in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Systemumgebung"
-
-\end_inset
-
- besteht aus den unterschiedlichen Datenquellen, Eclipse mit dem BPEL-Designer
- Plug-In und dem Apache Tomcat Web-Server, in dem das Rahmenwerk und die
- Apache ODE Workflow-Engine ausgeführt wird.
- Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers
- und die Datenquellen können auch verschiedene Server verteilt sein.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Systemumgebung.jpeg
-	lyxscale 80
-	width 70text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Systemumgebung"
-
-\end_inset
-
-Übersicht über die Systemumgebung von SIMPL
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Grobspezifikation"
@@ -1807,38 +1784,61 @@ Folgende grundlegende Anforderungen sollen im Rahmen des Projektes umgesetzt
 \end_layout
 
 \begin_layout Subsubsection
-Nichtfunktionale Anforderungen
+Nichtfunktionale Anforderungen:
 \end_layout
 
 \begin_layout Standard
-Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
- Dadurch wird eine hohe Qualität des Produkts gewährleistet.
- Wichtige Qualitäten sind dabei die Wartbarkeit und die Erweiterbarkeit
- des Systems, da es über einen längeren Zeitraum bestehen soll und in Zukunft
- um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff und
- den Umgang mit weiteren Datenformaten ergänzt werden soll.
- Um die Erweiterbarkeit des Systems zu gewährleisten, wird ein modularer
- Aufbau zugrunde gelegt und werden entsprechende Schnittstellen geschaffen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Kapitel 1.2 hier verwenden.
 \end_layout
 
-\begin_layout Standard
-Eine weitere wichtige Qualität ist die Skalierbarkeit des Systems, die eine
- sehr flexible Infrastruktur erlauben muss, da die Computersysteme, auf
- denen SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinander
- gehen, d.h.
- vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
- möglich sein.
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-Desweiteren sind Robustheit und Usability der Software von großem Interesse.
- Die Usability soll sich vor allem an Nutzer mit wenig Kenntnissen im Umgang
- mit Workflows und BPEL richten und dafür die bestmögliche Transparenz liefern,
- d.h.
- dass die interne Prozesslogik der Software bestmöglich vom Benutzer abgeschirmt
- wird und er eine möglichst einfache und schnell verständliche Schnittstelle
- zur Software erhält, um die Verwendung von SIMPL für alle Benutzergruppen
- zu ermöglichen.
+\begin_layout Enumerate
+Die Schnittstellen des Rahmenwerks sollen leicht erweiterbar sein und insgesamt
+ soll ein modularer Aufbau zugrunde liegen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+gesamtes Rahmenwerk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Fehlertoleranz: Scopes mit Handler.
+ CompensationHandler und FaultHandler implementieren Logik für die Kompensation
+ von Fehlern (rollback
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+rollback oft != comensation Handler
+\end_layout
+
+\end_inset
+
+).
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+funktinale Anforderungen(zu Bpel) bsp zu fehler.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1858,11 +1858,26 @@ Näher definieren.
 \end_layout
 
 \begin_layout Enumerate
+Usability sollte sich an Benutzer orientieren und dazu die größtmögliche
+ Transparenz liefern.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Zu schwamming, 1,2 mit verwenden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
 Es gibt keine bestimmte Infrastruktur in der das System später läuft.
  ODE läuft überall lokal und die Datenbanken sind verteilt.
  
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ode oben erwähnen und BPEl designer.
@@ -1877,8 +1892,22 @@ Ode oben erwähnen und BPEl designer.
 \end_layout
 
 \begin_layout Enumerate
-Die Performanz soll so gut wie möglich sein und für den Benutzer keine unnötigen
- Verzögerungen bedeuten.
+Skalierbarkeit: keine bestimmte Infrastruktur => von schlechten PC’s bis
+ zu Supercomputern ist alles möglich.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Desktop rechner statt schlechte pcs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Performance soll so gut wie möglich sein.
 \begin_inset Note Note
 status open
 
@@ -1906,10 +1935,9 @@ ausformulieren
 \end_layout
 
 \begin_layout Enumerate
-Das Rahmenwerk soll als Eclipse Plug-In verwendet werden und als Laufzeitumgebun
-g integriert sein.
+Das Rahmenwerk soll als Eclipse Plug-In verwendet werden.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 wird aus eclipse heraus verwendet
@@ -1923,31 +1951,6 @@ wird aus eclipse heraus verwendet
 \begin_layout Enumerate
 Verarbeitung von großen heterogenen Datenmengen im Rahmen eines wissenschaftlich
 en Workflows.
-\end_layout
-
-\begin_layout Enumerate
-Fehlertoleranz: Scopes mit Handler, CompensationHandler und FaultHandler
- implementieren Logik für die Kompensation von Fehlern (rollback
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-rollback oft != comensation Handler
-\end_layout
-
-\end_inset
-
-).
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-funktinale Anforderungen(zu Bpel) bsp zu fehler.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2809,6 +2812,79 @@ name "fig:Architektur"
 \end_inset
 
 Übersicht über das grobe Gesamtkonzept
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Systemumgebung
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+steht teilwese in 2.2 könnte manvielelicht verschmelzen.
+ Am bild ist komisch dsa datenquellen nur über Tomcat ausgewählt wird
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Systemumgebung (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Systemumgebung"
+
+\end_inset
+
+)besteht aus den unterschiedlichen Datenquellen, Eclipse mit dem BPEL-Designer
+ Plug-In und dem Apache Tomcat Web-Server, in dem das Rahmenwerk und die
+ Apache ODE Workflow-Engine ausgeführt wird.
+ Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers
+ und die Datenquellen sind verteilt auf verschiedenen Servern.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Systemumgebung.jpeg
+	lyxscale 80
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Systemumgebung"
+
+\end_inset
+
+Übersicht über die Systemumgebung von SIMPL
 \end_layout
 
 \end_inset
