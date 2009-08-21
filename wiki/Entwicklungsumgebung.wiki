@@ -79,9 +79,18 @@ Window -> Preferences -> Java -> Build Path -> User Libraries
 -> New -> _TUSCANY DAS_ eingeben -> OK -> Add JARs -> _C:\Programme\Apache\tuscany-das-1.0-incubating-beta2\lib_ alle JARs auswählen und öffnen
 
 ==== Maven-Plugin ====
+===== Tuscany Archetypes =====
+Window -> Preferences -> Maven -> Archetypes -> Add Remote Catalog
+{{{
+Catalog File: http://tuscany.apache.org
+Description: Tuscany
+}}}
+
+===== JDK =====
 Eclipse muss für das Maven-Plugin mit dem JDK starten. Dazu kann man entweder die eclipse.ini anpassen oder eine angepasste Verknüpfung zu Eclipse erstellen.
 
 *C:\eclipse\eclipse.ini*
+
 Oben einfügen
 {{{
 -vm 
