@@ -1871,7 +1871,9 @@ Näher definieren.
 \begin_inset Formula $\frac{Betriebszeit-Ausfallzeit}{Betriebszeit}*100\%$
 \end_inset
 
-
+.
+ Anzahl der Neunen liefert Verfügbarkeitsklasse, also 99,99% = Klasse 4
+ wegen 4 Neunen.
 \end_layout
 
 \end_inset
@@ -2590,7 +2592,7 @@ In der Demo soll insbesondere der Zugriff auf die IBM DB2 Datenbank, eine
 status open
 
 \begin_layout Plain Layout
-Insbesondere zugriff auf imdb 2 datenbank.
+Insbesondere zugriff auf ibm db2 datenbank.
  Dateisystem fehlt noch.
  3.
  Punkt.
@@ -3167,7 +3169,7 @@ Terminplanung
 status open
 
 \begin_layout Plain Layout
-Hier schon erwähnen das die Funktion point methode verwendet wurde und man
+Hier schon erwähnen das die Function point methode verwendet wurde und man
  so auf die 480 stunden kam.
 \end_layout
 
@@ -3178,7 +3180,8 @@ Hier schon erwähnen das die Funktion point methode verwendet wurde und man
 
 \begin_layout Standard
 Das Studienprojekt läuft über zwei Semester und endet im Mai 2010.
- Jeder Projektteilnehmer hat dabei einen Arbeitsaufwand von ca.
+ Jeder Projektteilnehmer hat dabei, nach einer Aufwandsschätzung mit der
+ Function Point Methode, einen Arbeitsaufwand von ca.
  480 Stunden zu leisten, dadurch entsteht ein Gesamtaufwand von ca.
  3360 
 \begin_inset Note Note
@@ -3208,7 +3211,7 @@ reference "Gant-Diagramm"
 \begin_layout Standard
 Nach Berücksichtigung aller Einflussfaktoren von Seiten des Kunden und des
  Entwicklungsteams wird durch diese Planung vorausgesetzt, dass der Kunde
- das Endprodukt Mitte April 2010 testet und zwischen Anfang und Ende Mai
+ das Endprodukt Mitte April 2010 testet und zwischen Anfang und Mitte Mai
  
 \begin_inset Note Note
 status open
@@ -3242,6 +3245,13 @@ name "tab:Phasen-des-Projekts"
 Phasen des Projekts
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
 \end_inset
 
 
@@ -3780,11 +3790,11 @@ einsetzbar Alle grundlegenden Anforderungen wurden korrekt umgesetzt.
 \begin_layout Standard
 Nach der Rückmeldung des Kunden werden die nötigen Nachbesserungen oder
  Änderungen durchgeführt.
- Sollten nach den Nachbesserungen noch erhebliche Mängel bestehen, so können
- diese z.B.
- im Rahmen eines HiWi-Jobs korrigiert werden.
+ Sollten nach den Nachbesserungen noch erhebliche Mängel bestehen, so wird
+ Art und Umfang der weiteren Nachbesserungen und Korrekturen in einem zeitnahen
+ Gespräch zwischen Kunde und Auftragnehmer geklärt.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Nicht mit reinschreiben da nicht klar
@@ -4183,8 +4193,13 @@ Kundenfassung der Spezifikation (PDF und LaTeX) und Prototyp des erweiterten
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Kunde hat keine Anmerkungen und alle im Review entdeckten Fehler und
- Mängel sind beseitigt.
+Der Kunde hat am 
+\series bold
+externen Review
+\series default
+ des Dokuments teilgenommen.
+ Er hat nach den Korrekturen keine weiteren Anmerkungen und alle im Review
+ entdeckten Fehler und Mängel sind beseitigt.
 \end_layout
 
 \end_inset
@@ -4289,64 +4304,6 @@ Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
 \begin_layout Plain Layout
 01.
  Dezember 2009
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\bar under
-Handbuch
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kundenfassung Handbuch (auf Englisch und Deutsch) (PDF und LaTeX)
-\end_layout
-
-\begin_layout Plain Layout
-(interne Dokumente)
-\shape italic
- Reviewprotokoll
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der Kunde hat keine Anmerkungen und alle im Review entdeckten Fehler und
- Mängel sind beseitigt.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-17.
- April 2010
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Vor abnahmetest einfügen damit es zeitlich sortiert ist
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -4636,6 +4593,64 @@ wird man mit BPEl files machen.
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Handbuch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung Handbuch (auf Englisch und Deutsch) (PDF und LaTeX)
+\end_layout
+
+\begin_layout Plain Layout
+(interne Dokumente)
+\shape italic
+ Reviewprotokoll
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Kunde hat keine Anmerkungen und alle im Review entdeckten Fehler und
+ Mängel sind beseitigt.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.
+ April 2010
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Vor abnahmetest einfügen damit es zeitlich sortiert ist
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -4713,7 +4728,7 @@ Um die Qualität der erstellten Dokumente gewährleisten zu können, wird jedes
  Dokument bzw.
  jede Software-Einheit (SE) von zwei unabhängigen Instanzen geprüft.
  Zuerst wird die Software-Einheit durch die Qualitätsmanager auf formale
- Aspekte wie Style-Guide (
+ Aspekte, wie Style-Guide (
 \begin_inset Quotes eld
 \end_inset
 
@@ -4721,22 +4736,34 @@ Code Conventions for the Java Programming Language
 \begin_inset Quotes erd
 \end_inset
 
-) Konformität oder die Einhaltung des vorgeschriebenen Layouts hin untersucht.
+) Konformität oder die Einhaltung des vorgeschriebenen Layouts und auf inhaltlic
+he Aspekte, wie Plausibilität, Korrektheit der Aussagen oder die Konsistenz
+ des Dokuments, hin untersucht.
  Anschließend wird die SE, falls sie Fehler enthält (positive QS-Prüfung),
  mit entsprechenden Kommentaren zurück an die Verfasser geschickt.
  Eine formal korrekte (negativ QS-geprüfte) SE wird an den Projektleiter
  weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesamten
- SE prüft.
+ SE, im Rahmen seiner Kenntnisse, prüft.
  Der Projektleiter leitet positiv geprüfte SE mit entsprechenden Kommentaren
  ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
  ausführt.
- Negativ geprüfte SE werden vom Projektleiter freigegeben und erhalten so
- Auslieferungsstatus oder werden noch einem Review unterzogen.
+ Negativ geprüfte SE werden vom Projektleiter falls ein Review geplant ist,
+ an die Gutachter geschickt oder freigegeben und erhalten so Auslieferungsstatus.
+ Im Review entdeckte Fehler und Mängel werden ebenso wieder von den Verfassern
+ korrigiert und der gesamte QS-Prozess danach erneut durchlaufen, siehe
+ hierzu Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Durchführung-von-Reviews"
+
+\end_inset
+
+.
  Wird eine bereits freigegebene SE verändert oder an neue Bedürfnisse angepasst,
  muss sie noch einmal den gesamten QS-Prozess durchlaufen.
- Sollte der Projektleiter eine SE prüfen, die seiner Meinung nach so viele
- Fehler oder Mängel enthält, dass eine Korrektur sich nicht lohnt, so kann
- er die SE verwerfen, d.h.
+ Sollte der Projektleiter oder die Qualitätsmanager eine SE prüfen, die
+ ihrer Meinung nach so viele Fehler oder Mängel enthält, dass eine Korrektur
+ sich nicht lohnt, so kann die SE verworfen werden, d.h.
  die Verfasser erhalten eine Nachricht und müssen die SE neu verfassen.
  Eine detaillierte Beschreibung des gesamten Ablaufs des QS-Prozesses zeigt
  Abbildung 
@@ -4748,7 +4775,7 @@ reference "fig:Prüfungsablauf-für-die"
 
 .
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Projektleiter hat meist nicht so viel ahnung vom inhalt.
@@ -4762,7 +4789,6 @@ Projektleiter hat meist nicht so viel ahnung vom inhalt.
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -4796,7 +4822,7 @@ Prüfungsablauf für die Qualitätssicherung
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Muss klar sein was das bild ausdrückt.
@@ -4837,20 +4863,10 @@ ingungen für bestimmte Tätigkeiten ausgelegt sind und so z.B.
  speziell für den Test oder die Implementierung eingerichtet sind.
  Die Referenzumgebung bildet die Zentrale der Konfigurationsverwaltung und
  wird durch Subversion realisiert.
- In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Entstehungsprozess-für-Software-Einheiten"
-
-\end_inset
-
- wird der Entstehungsprozess von SE aufgezeigt und welche Umgebungen dabei
- durchlaufen werden.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -4890,61 +4906,13 @@ Das grundlegende Modell der Konfigurationsverwaltung
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename KV_Ablauf.jpeg
-	lyxscale 50
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
+\begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Entstehungsprozess-für-Software-Einheiten"
+name "sub:Durchführung-von-Reviews"
 
 \end_inset
 
-Entstehungsprozess für Software-Einheiten
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Genauer spezifizieren was mit softwareeinheit gemeint.
- Ist damit jedes commit gemeint.
- Jedes svn Commit wäre overpowert.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
 Durchführung von Reviews
 \end_layout
 
@@ -4957,6 +4925,314 @@ Reviewtermine reinschreiben.
  Für jede abgeabe intern nen review.
  Zur spez wird noch nen externes kundnereview emacht.
  Kunden werden regelmäßig die Iterationen vorgestellt.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Interne und externe Reviewtermine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features>
+<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="4cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dokument
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Art des Reviews
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Begin des Reviewzeitraums (Versenden der Einladungen)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ende des Reviewzeitraums
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Termine einfügen!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+extern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Grobentwurf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feinentwurf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -5013,7 +5289,7 @@ Haupt und Nebenfehler
 Spätestens drei Tage bzw.
  1 Woche, bei externen Reviews, 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 mit kunden eine woche vorher
@@ -5023,7 +5299,7 @@ mit kunden eine woche vorher
 
 vor Beginn des Reviews schickt der Moderator 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Kunden sind Gutachter fürs zweite Review
@@ -5040,7 +5316,44 @@ Einladungen, mit dem zu begutachtenden Dokument an die Gutachter des Reviews.
  Nun werden die Gutachter der Reihe nach nach ihren Befunden befragt und
  diese unter den Gutachtern diskutiert.
  Der Aktuar notiert alle genannten Befunde und deren Fehlerkategorien.
- Sollte das Review nach Ablauf von zwei Stunden nicht beendet sein, so vertagt
+ Am Ende des Reviews gibt jeder Gutachter eine Empfehlung über den Annahmestatus
+ des Dokuments ab.
+ 
+\end_layout
+
+\begin_layout Standard
+Dabei gibt es folgende drei Möglichkeiten: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Akzeptieren ohne Änderungen
+\emph default
+, falls das Dokument so freigegeben werden kann,
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Akzeptieren mit Änderungen
+\emph default
+, wenn das Dokument im Kern in Ordnung ist und nach der Korrektur freigegeben
+ werden kann und
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Nicht akzeptieren
+\emph default
+, falls das Dokument so viele bzw.
+ schwere Fehler enthält, dass nach der Korrektur ein erneutes Review notwendig
+ ist.
+\end_layout
+
+\begin_layout Standard
+Sollte das Review nach Ablauf von zwei Stunden nicht beendet sein, so vertagt
  der Moderator das Review frühestens auf den nächsten Tag.
  Am Ende des Reviews unterschreiben alle Beteiligten das Reviewprotokoll.
  Der Aktuar schickt das Reviewprotokoll an den Projektleiter, der es an
@@ -5067,7 +5380,7 @@ Unsere internen Berechnungen nach der Function-Point-Methode ergab 268 Adjusted
  Aus einer Referenztabelle für abgeschlossene Projekte ergibt sich folgende
  Kostenschätzung:
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 überall entiwcklungszeit durch arbeitszeit ersetzten
@@ -5091,7 +5404,7 @@ Gesamtentwicklungszeit:
 \begin_layout Standard
 19 MM (Mitarbeiter-Monate) 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mitarbeiter Monate
@@ -5254,10 +5567,17 @@ name "tab:Übersicht-der-Risiken"
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="left" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0">
@@ -5314,7 +5634,7 @@ Gegenmaßnahmen
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mitarbeiter fällt aus
+Mitarbeiter fällt zeitweise aus
 \begin_inset Note Note
 status open
 
@@ -5373,6 +5693,53 @@ bei komplettaufall muss mit kunde rückpsrache gehalten werdne.
 \begin_inset Text
 
 \begin_layout Plain Layout
+Mitarbeiter fällt dauerhaft aus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ausfüllen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rücksprache mit den Kunden
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 Änderung der Anforderungen
 \end_layout
 
@@ -5400,7 +5767,7 @@ bei komplettaufall muss mit kunde rückpsrache gehalten werdne.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Genaue Anforderungserhebung und regelmäßige Rücksprache mit den Kunden
+genaue Anforderungserhebung und regelmäßige Rücksprache mit den Kunden
 \end_layout
 
 \end_inset
@@ -5476,7 +5843,7 @@ Ausgewähltes Werkzeug stellt sich als unbrauchbar heraus
 \begin_inset Text
 
 \begin_layout Plain Layout
-Genaue Evaluation der Werkzeuge vor ihrem Einsatz
+genaue Evaluation der Werkzeuge vor ihrem Einsatz
 \end_layout
 
 \end_inset
@@ -5516,7 +5883,7 @@ Nicht realisierbare Anforderungen
 \begin_layout Plain Layout
 frühzeitige Evaluierung der einzusetzenden Technologien
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 rücksprache mit Kunden
@@ -5524,7 +5891,7 @@ rücksprache mit Kunden
 
 \end_inset
 
-
+ und Rücksprache mit den Kunden
 \end_layout
 
 \end_inset
@@ -5562,13 +5929,13 @@ Chaotische Änderungen der Dokumente
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausgiebige Dokumentprüfung durch Qualitätssicherung und Projektleiter
+ausgiebige Dokumentprüfung durch Qualitätssicherung und Projektleiter
 \end_layout
 
 \begin_layout Plain Layout
 Konfigurationsverwaltung mit Subversion
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 tabelle ist nicht beschriftet.
@@ -5616,10 +5983,10 @@ Die Gewährleistungsfrist beträgt 4 Wochen und beginnt mit der Auslieferung
  Auslieferung zu prüfen.
  Innerhalb der Gewährleistungsfrist werden nur Korrekturen von entdeckten
  Fehlern durchgeführt, jedoch keine zusätzlichen Erweiterungen implementiert.
- Sollten zusätzliche Erweiterungen gewünscht werden, müssen diese neu ausgehande
-lt werden.
+ Sollten zusätzliche Erweiterungen gewünscht werden, müssen diese nach dem
+ Ende des Abnahmetests neu ausgehandelt werden.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 nach ende abnahmetest
@@ -5638,9 +6005,10 @@ Pflichten des Auftragnehmers
 Der Auftragnehmer verpflichtet sich dazu, alle im Angebot aufgeführten Tätigkeit
 en nach bestem Wissen und Gewissen auszuführen.
  Weiterhin verpflichtet sich der Auftragnehmer, den Auftraggeber über den
- Fortschritt des Projekts in regelmäßigen Abständen zu unterrichten
+ Fortschritt des Projekts in regelmäßigen Abständen, d.h.
+ mindestens alle vier Wochen, zu unterrichten,
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 mindestens in vier wöchentlichen turnus
@@ -5648,10 +6016,10 @@ mindestens in vier wöchentlichen turnus
 
 \end_inset
 
-, spätestens aber nach Erreichen eines Meilensteins oder bei Auftreten von
+ spätestens aber nach Erreichen eines Meilensteins oder bei Auftreten von
  Problemen, welche den Verlauf des Projekts negativ beeinflussen.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Pünkliche abgabe der softwareeinheiten und dokumente
@@ -5659,7 +6027,8 @@ Pünkliche abgabe der softwareeinheiten und dokumente
 
 \end_inset
 
-
+ Der Auftragnehmer verpflichtet sich darüber hinaus alle Software-Einheiten
+ und Dokumente pünktlich zum gesetzten Termin dem Auftraggeber zu übermitteln.
 \end_layout
 
 \begin_layout Subsection
@@ -5670,7 +6039,9 @@ Pflichten des Auftraggebers
 Der Auftraggeber verpflichtet sich, die nötige Infrastruktur (Räume, Server
  und Arbeitsgeräte) während der Projektlaufzeit zur Verfügung zu stellen.
  Darüber hinaus ist der Auftraggeber dazu verpflichtet, für den weiteren
- Informationsaustausch
+ Informationsaustausch, d.h.
+ z.B.
+ für Kundengespräche
 \begin_inset Note Note
 status open
 
@@ -5682,6 +6053,10 @@ Genauer: Kundengespräche usw.
 
  zur Verfügung zu stehen und das Projektteam über längere Nichterreichbarkeit
  rechtzeitig zu informieren.
+ Generell gilt, dass der Auftraggeber drei Werktage Zeit hat, um auf Anfragen
+ des Auftragnehmers zu antworten.
+ Der Auftraggeber verpflichtet sich weiterhin als Gutachter an externen
+ Reviews von Dokumenten teilzunehmen.
  Nach Erhalt der Software verpflichtet sich der Auftraggeber, die Software
  in einem Abnahmetest zu prüfen und den Auftragnehmer über die erhaltenen
  Ergebnisse zu informieren.
@@ -5691,7 +6066,7 @@ Genauer: Kundengespräche usw.
  der Auftraggeber verpflichtet, die Software abzunehmen und den Erhalt,
  sowie die Korrektheit der Software zu quittieren.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Kunde verprlichtet sich am review zur spezifikation Teilzunehmen.
@@ -5718,7 +6093,23 @@ Gültigkeit des Angebots
 \end_layout
 
 \begin_layout Standard
-Das Angebot in dieser Form ist, ab Erhalt eine Woche (7 Tage) gültig.
+Das Angebot in dieser Form ist, ab Erhalt eine Woche (7 Tage) gültig, d.h.
+ es verliert seine Gültigkeit nach dem 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{11.
+ August 2009}
+\end_layout
+
+\end_inset
+
+.
+ 
 \begin_inset Note Note
 status open
 

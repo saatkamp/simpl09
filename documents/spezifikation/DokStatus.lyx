@@ -41,6 +41,7 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
@@ -426,12 +427,11 @@ docstate
 \end_inset
 
 
-\size default
- 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
- 
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset VSpace 0.5cm
 \end_inset
 
@@ -454,12 +454,11 @@ qsstate
 \end_inset
 
 
-\size default
- 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
- 
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset VSpace 0.5cm
 \end_inset
 
@@ -482,12 +481,38 @@ proofstate
 \end_inset
 
 
-\size default
- 
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset VSpace 0.5cm
 \end_inset
 
  
+\series bold
+\size giant
+Review-Status:
+\series default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+reviewstate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
 \begin_inset VSpace 0.5cm
 \end_inset
 
@@ -510,8 +535,6 @@ endstate
 \end_inset
 
 
-\size default
- 
 \end_layout
 
 \begin_layout Standard
