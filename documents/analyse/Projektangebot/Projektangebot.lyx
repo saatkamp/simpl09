@@ -1886,19 +1886,6 @@ Es gibt keine vorgegebene Infrastruktur in der das Rahmenwerk später läuft.
  Die Workflow-Engine Apache ODE läuft auf den Desktoprechnern der Benutzer
  lokal und die Datenbanken können verteilt sein.
  
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Ode oben erwähnen und BPEl designer.
- 4.
- kapitel eher ganz nach oben.
- Dantenbanken können verteilt sein
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1938,15 +1925,6 @@ In diesem Abschnitt folgen die funktionalen Anforderungen an das Rahmenwerk,
 \begin_layout Standard
 Das Rahmenwerk soll als Eclipse Plug-In verwendet werden und als Laufzeitumgebun
 g integriert sein.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-wird aus eclipse heraus verwendet
-\end_layout
-
-\end_inset
-
  Ebenso soll die Verarbeitung von großen, heterogenen Datenmengen im Rahmen
  eines wissenschaftlichen Workflows möglich sein.
 \end_layout
@@ -1980,38 +1958,13 @@ funktinale Anforderungen(zu Bpel) bsp zu fehler.
 
 \series bold
 \color black
-BPEL:
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-\color black
-Eigenen Worten (kick off folien 1 zu 1)
-\end_layout
-
-\end_inset
-
-
+BPEL
 \end_layout
 
 \begin_layout Standard
 Die Fehlerbehandlung und Kompensation im Workflow soll auch für die zu erstellen
 den (neuen) BPEL-Aktivitäten realisiert werden.
  
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Genauer, kann BPEL schon.
- Aus neuen Aktivitäten heraus neue Fault Handler und Compensaton handler
- modelierbar
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2021,45 +1974,12 @@ Genauer, kann BPEL schon.
  auf eine Tabelle) innerhalb eines SQL-Befehls über eine BPEL Variable anzugeben
  oder auch die Ergebnisse eines Queries per Referenz im Prozess bereit zu
  halten.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-A und B von einernader trennen.
- Besser raus bringen.
- Daten bei Reference und per Value übertragen.
-\end_layout
-
-\end_inset
-
-Dazu ist es erforderlich, dass ein Reference Resolution System mit verschiedenen
- Adaptern implementiert wird.
- Dieses System dient dazu Referenzen/Pointer 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-transformations komponente.
- 
-\end_layout
-
-\end_inset
-
-innerhalb eines BPEL Prozesses aufzulösen und so z.B.
+ Dazu ist es erforderlich, dass ein Reference Resolution System mit verschiedene
+n Adaptern implementiert wird.
+ Dieses System dient dazu Referenzen/Pointer innerhalb eines BPEL Prozesses
+ aufzulösen und so z.B.
  auch Daten in den Prozess-Cache zu laden.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Große Datenmengen die nur referenziert werden müssen aber nicht verarbeitetn
- müssen werden referenziert.
-\end_layout
-
-\end_inset
-
-Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
+ Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
  Referenz/der Pointer vom Service, zur Entlastung der Workflow-Engine, aufgelöst
  werden.
  Mithilfe eines Transformers wird übersetzt der BPEL Designer den BPEL-Code
@@ -2070,7 +1990,7 @@ Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
 \begin_layout Standard
 
 \series bold
-BPEL Aktivitäten: 
+BPEL Aktivitäten 
 \begin_inset Note Note
 status open
 
@@ -2131,7 +2051,7 @@ Ist in punkt 1 schon mit dabei.
 \begin_layout Standard
 
 \series bold
-Anbindung von Datenquellen:
+Anbindung von Datenquellen
 \end_layout
 
 \begin_layout Enumerate
@@ -2573,7 +2493,7 @@ Die Granularität des Auditings sollte wählbar sein.
 \begin_layout Standard
 
 \series bold
-Demo-Programm:
+Demo-Programm
 \end_layout
 
 \begin_layout Enumerate
@@ -2652,17 +2572,7 @@ reference "fig:Architektur"
 \begin_layout Standard
 Die Präsentationsschicht wird durch den Eclipse BPEL-Designer realisiert.
  Dort ist es möglich, BPEL-Prozesse mit Datenmanagement-Funktionen zu modelliere
-n und die Ausführung zu starten
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-wird dort gestartet aber nicht ausgeführt
-\end_layout
-
-\end_inset
-
-.
+n und die Ausführung zu starten.
  Die Datenmanagement-Funktionen werden durch Extension Activity Plug-Ins
  in den Designer eingebunden.
  Einstellungen, die erst zur Deployment-Zeit dem SIMPL Core übergeben werden
@@ -3212,17 +3122,7 @@ reference "Gant-Diagramm"
 Nach Berücksichtigung aller Einflussfaktoren von Seiten des Kunden und des
  Entwicklungsteams wird durch diese Planung vorausgesetzt, dass der Kunde
  das Endprodukt Mitte April 2010 testet und zwischen Anfang und Mitte Mai
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mitte Mai
-\end_layout
-
-\end_inset
-
-2010 nach Bedarf noch kleinere Änderungen durchgeführt werden.
+ 2010 nach Bedarf noch kleinere Änderungen durchgeführt werden.
  
 \end_layout
 
@@ -3793,16 +3693,6 @@ Nach der Rückmeldung des Kunden werden die nötigen Nachbesserungen oder
  Sollten nach den Nachbesserungen noch erhebliche Mängel bestehen, so wird
  Art und Umfang der weiteren Nachbesserungen und Korrekturen in einem zeitnahen
  Gespräch zwischen Kunde und Auftragnehmer geklärt.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Nicht mit reinschreiben da nicht klar
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -3848,17 +3738,6 @@ unterstrichen
  Beim erreichen von externen Meilensteinen werden dem Kunden die Dokumente
  des Meilensteins zur Verfügung gestellt.
  Sofern nicht anders angegeben, sind alle Dokumente auf Deutsch verfasst.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-nur tabelle mit meilensteine und dokumente die geliefert werden.
- Externes Review noch mti in die Tabelle rein.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4774,17 +4653,6 @@ reference "fig:Prüfungsablauf-für-die"
 \end_inset
 
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Projektleiter hat meist nicht so viel ahnung vom inhalt.
- Qs sollte inhalt prüfen und Projektleiter macht nur endabnahme
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4816,18 +4684,6 @@ name "fig:Prüfungsablauf-für-die"
 \end_inset
 
 Prüfungsablauf für die Qualitätssicherung
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Muss klar sein was das bild ausdrückt.
- sind reviews mit drin in welchem zustannd ist das dokument wenn es durch
- die prüfung geht usw.
 \end_layout
 
 \end_inset
@@ -5272,42 +5128,12 @@ en zu: Gut, Nebenfehler, Hauptfehler oder kritischer Fehler.
  Zweck unbrauchbar ist.
  Kritische Fehler müssen unbedingt vor der Freigabe des Dokuments behoben
  worden sein.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Haupt und Nebenfehler
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Spätestens drei Tage bzw.
- 1 Woche, bei externen Reviews, 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-mit kunden eine woche vorher
-\end_layout
-
-\end_inset
-
-vor Beginn des Reviews schickt der Moderator 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Kunden sind Gutachter fürs zweite Review
-\end_layout
-
-\end_inset
-
-Einladungen, mit dem zu begutachtenden Dokument an die Gutachter des Reviews.
+ 1 Woche, bei externen Reviews, vor Beginn des Reviews schickt der Moderator
+ Einladungen, mit dem zu begutachtenden Dokument an die Gutachter des Reviews.
  Bei externen Reviews nehmen die Kunden als Gutachter am Review teil.
  Die Gutachter untersuchen dann bis zum Review-Termin das Dokument anhand
  der vom Moderator festgelegten Kriterien.
@@ -5379,16 +5205,6 @@ Unsere internen Berechnungen nach der Function-Point-Methode ergab 268 Adjusted
  Function Points (AFP).
  Aus einer Referenztabelle für abgeschlossene Projekte ergibt sich folgende
  Kostenschätzung:
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-überall entiwcklungszeit durch arbeitszeit ersetzten
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5403,16 +5219,6 @@ Gesamtentwicklungszeit:
 
 \begin_layout Standard
 19 MM (Mitarbeiter-Monate) 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Mitarbeiter Monate
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5509,15 +5315,6 @@ kein Geld
 \size default
 \emph default
  an den Auftragnehmer gezahlt.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Auftraggeber zahlt kein geld an auftragnehmer.
-\end_layout
-
-\end_inset
-
  Die Berechnungen sind hypothetisch und wurden nur zu Planungszwecken durchgefüh
 rt.
 \end_layout
@@ -5881,17 +5678,8 @@ Nicht realisierbare Anforderungen
 \begin_inset Text
 
 \begin_layout Plain Layout
-frühzeitige Evaluierung der einzusetzenden Technologien
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-rücksprache mit Kunden
-\end_layout
-
-\end_inset
-
- und Rücksprache mit den Kunden
+frühzeitige Evaluierung der einzusetzenden Technologien und Rücksprache
+ mit den Kunden
 \end_layout
 
 \end_inset
@@ -5934,18 +5722,6 @@ ausgiebige Dokumentprüfung durch Qualitätssicherung und Projektleiter
 
 \begin_layout Plain Layout
 Konfigurationsverwaltung mit Subversion
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-tabelle ist nicht beschriftet.
- alle tabellen beschriften.
- Tabellen beschriftung über Tabelle.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -5985,16 +5761,6 @@ Die Gewährleistungsfrist beträgt 4 Wochen und beginnt mit der Auslieferung
  Fehlern durchgeführt, jedoch keine zusätzlichen Erweiterungen implementiert.
  Sollten zusätzliche Erweiterungen gewünscht werden, müssen diese nach dem
  Ende des Abnahmetests neu ausgehandelt werden.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-nach ende abnahmetest
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -6006,27 +5772,9 @@ Der Auftragnehmer verpflichtet sich dazu, alle im Angebot aufgeführten Tätigke
 en nach bestem Wissen und Gewissen auszuführen.
  Weiterhin verpflichtet sich der Auftragnehmer, den Auftraggeber über den
  Fortschritt des Projekts in regelmäßigen Abständen, d.h.
- mindestens alle vier Wochen, zu unterrichten,
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-mindestens in vier wöchentlichen turnus
-\end_layout
-
-\end_inset
-
- spätestens aber nach Erreichen eines Meilensteins oder bei Auftreten von
- Problemen, welche den Verlauf des Projekts negativ beeinflussen.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Pünkliche abgabe der softwareeinheiten und dokumente
-\end_layout
-
-\end_inset
-
+ mindestens alle vier Wochen, zu unterrichten, spätestens aber nach Erreichen
+ eines Meilensteins oder bei Auftreten von Problemen, welche den Verlauf
+ des Projekts negativ beeinflussen.
  Der Auftragnehmer verpflichtet sich darüber hinaus alle Software-Einheiten
  und Dokumente pünktlich zum gesetzten Termin dem Auftraggeber zu übermitteln.
 \end_layout
