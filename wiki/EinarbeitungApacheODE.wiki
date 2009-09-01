@@ -43,3 +43,13 @@ Diese Erweiterungen sind nichts anderes als einige Funktionen die ODE zusätzlic
 Hier ist eine Übersicht über das Monitoring Package von ODE zu sehen:
 
 http://ode.apache.org/javadoc/org/apache/ode/bpel/runtime/monitor/package-tree.html
+
+
+So nach einem kurzen Gespräch mit Tammo van Lessen hat er mir ein paar Links gegeben in denen Infos über das Monitoring und die Extensions stehen.
+Auditing, sprich das Speichern der Informationen, welcher Nutzer, wann was gemacht hat, gibt es in ODE gar nicht. Wenn wir etwas derartiges Nutzen wollen, müssen wir es komplett selbst implementieren.
+
+Hier die Links:
+http://ode.apache.org/user-guide.html#UserGuide-ManagementAPI
+http://svn.eu.apache.org/viewvc/ode/trunk/extensions/e4x/
+http://svn.eu.apache.org/viewvc/ode/trunk/bpel-api/src/main/java/org/apache/ode/bpel/extension/
+http://ode.apache.org/extension-activities-extensible-assign-operations.html
