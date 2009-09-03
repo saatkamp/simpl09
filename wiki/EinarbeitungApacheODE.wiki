@@ -50,6 +50,9 @@ Auditing, sprich das Speichern der Informationen, welcher Nutzer, wann was gemac
 
 Hier die Links:
 http://ode.apache.org/user-guide.html#UserGuide-ManagementAPI
+
 http://svn.eu.apache.org/viewvc/ode/trunk/extensions/e4x/
+
 http://svn.eu.apache.org/viewvc/ode/trunk/bpel-api/src/main/java/org/apache/ode/bpel/extension/
+
 http://ode.apache.org/extension-activities-extensible-assign-operations.html
