@@ -60,3 +60,9 @@ http://ode.apache.org/extension-activities-extensible-assign-operations.html
 Hier direkt mal die Readme zu den E4x Extensions:
 
 http://svn.eu.apache.org/viewvc/ode/trunk/extensions/e4x/README?revision=712885
+
+So hier noch die WSDL der ProzessManagement API, Tammo van Lessen meinte, dass hier alle Operationen die uns für das Monitoring zur Verfügung stehen aufgeführt sind. Außerdem sind hier auch die Links zu den beiden Webinterfaces des Monitorings enthalten (Prozesse und Instanzen), am Ende des Dokuments.
+
+http://svn.apache.org/repos/asf/ode/trunk/axis2/src/main/wsdl/pmapi.wsdl
+
+Auf die Interfaces konnte ich vom Laptop wegen irgend eines Fehlers nicht zugreifen, werd später zu Hause an meinem Rechner nochmal kucken woran das liegt ...
