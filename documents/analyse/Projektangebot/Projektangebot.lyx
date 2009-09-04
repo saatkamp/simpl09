@@ -1796,6 +1796,12 @@ Folgende grundlegenden Anforderungen sollen im Rahmen des Projektes umgesetzt
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Nichtfunktionale-Anforderungen"
+
+\end_inset
+
 Nichtfunktionale Anforderungen
 \end_layout
 
@@ -1837,7 +1843,7 @@ Die Verfügbarkeit des Rahmenwerks soll mindestens so hoch sein, dass sie
  entstehen.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Näher definieren.
@@ -1859,7 +1865,6 @@ Näher definieren.
 Es gibt keine vorgegebene Infrastruktur in der das Rahmenwerk später läuft.
  Die Workflow-Engine Apache ODE läuft auf den Desktoprechnern der Benutzer
  lokal und die Datenbanken können verteilt sein.
- 
 \end_layout
 
 \begin_layout Standard
@@ -1878,17 +1883,7 @@ auf deutsch und zu schwamming
 \end_layout
 
 \begin_layout Subsubsection
-Funktionale Anforderungen:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ausformulieren
-\end_layout
-
-\end_inset
-
-
+Funktionale Anforderungen
 \end_layout
 
 \begin_layout Standard
@@ -1904,28 +1899,12 @@ g integriert sein.
 \end_layout
 
 \begin_layout Standard
-Fehlertoleranz: Scopes mit Handler, CompensationHandler und FaultHandler
- implementieren Logik für die Kompensation von Fehlern (rollback
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-rollback oft != comensation Handler
-\end_layout
-
-\end_inset
-
-).
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-funktinale Anforderungen(zu Bpel) bsp zu fehler.
-\end_layout
-
-\end_inset
-
-
+\noindent
+Um die Fehlertoleranz des Rahmenwerks zu realisieren, sollen Fehler der
+ neu definierten Aktivitäten erkannt und durch entsprechende FaultHandler
+ abgefangen werden können.
+ Abgefangene Fehler werden dann durch entsprechende CompensationHandler
+ kompensiert oder die vorher ausgeführten Aktionen rückgängig gemacht.
 \end_layout
 
 \begin_layout Standard
@@ -1965,61 +1944,69 @@ n Adaptern implementiert wird.
 
 \series bold
 BPEL Aktivitäten 
-\begin_inset Note Note
-status open
+\end_layout
 
-\begin_layout Plain Layout
-
+\begin_layout Standard
+Alle BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt werden,
+ müssen erstellt werden und sollen erweiterbar sein.
+ Als Anhaltspunkt welche Aktivitäten benötigt werden, gelten die folgenden
+ Datenmanagement Patterns: Das 
 \series bold
-Genauer
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Alle generischen BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt
- werden, müssen erstellt werden.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Im hintergrund haben das wissenscahftler das benutzen.
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Generische Datenpattern sollen erweiterbar sein.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Das Anlegen, Löschen und Ändern von DB-Tabellen soll möglich sein.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ist in punkt 1 schon mit dabei.
- Welche pattern gibt es bei den verschiedenen datenquellen
-\end_layout
-
-\end_inset
-
-
+Query Pattern
+\series default
+ beschreibt die Notwendigkeit mithilfe von SQL-Befehlen externe Daten anfordern
+ zu können.
+ Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
+ extern gespeichert oder direkt im Prozessspeicher gehalten werden.
+ Das 
+\series bold
+Set UID Pattern
+\series default
+ beschreibt die Möglichkeit mengenorientiertes Einfügen (insert), Aktualisieren
+ (update) und Löschen (delete) auf externen Daten durchführen zu können.
+ Das 
+\series bold
+Data Setup Pattern
+\series default
+ liefert die Möglichkeit benötigte Data Definition Language (DDL) Befehle
+ auf einem relationalen Datenbanksystem auszuführen, um so während der Prozessau
+sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
+ Schema, usw.) zu erstellen.
+ Da die Verarbeitung von komplexen Daten meist durch Stored Procedures erfolgt,
+ ist es bei der Verarbeitung von externen Daten unbedingt erforderlich,
+ Stored Procedures auch aus einem Prozess heraus aufrufen zu können (
+\series bold
+Stored Procedure Pattern
+\series default
+).
+ Manchmal ist es nötig Daten innerhalb des Prozessspeichers verarbeiten
+ zu können.
+ Das 
+\series bold
+Set Retrieval Pattern
+\series default
+ liefert dafür eine mengenorientierte Datenstruktur, in die man die angefragten
+ externen Daten innerhalb des Prozessspeichers abgelegen kann.
+ Diese Datenstruktur verhält sich dabei wie ein Cache im Prozessspeicher,
+ der keine Verbindung zur originalen Datenquelle besitzt.
+ Das 
+\series bold
+Set Access Pattern
+\series default
+ beschreibt die Notwendigkeit auf den erzeugten Datencache sequentiell und
+ direkt (random) zugreifen zu können.
+ Das 
+\series bold
+Tuple IUD Pattern
+\series default
+ beinhaltet einfügen (insert), aktualisieren (update) und löschen (delete)
+ von Daten im Datencache.
+ Das 
+\series bold
+Synchronization Pattern
+\series default
+ realisiert die Synchronisation eines lokalen Datencaches mit der originalen
+ Datenquelle.
 \end_layout
 
 \begin_layout Standard
@@ -2028,19 +2015,56 @@ Ist in punkt 1 schon mit dabei.
 Anbindung von Datenquellen
 \end_layout
 
-\begin_layout Enumerate
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Umschreiben wegen kickoff
+\begin_layout Standard
+Die Anbindung von Datenquellen soll generisch sein und es sollen soviele
+ Anbindungen wie möglich realisiert werden.
+ Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSourceDB’s (eine
+ RDB und eine XMLDB), mindestens eine SensorDB (z.B.
+ TinyDB) und mindestens ein Dateisystem (z.B.
+ ext3).
+ Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozess
+ möglich sein, dazu besitzt jede Aktivität eine Variable, in der der logische
+ Namen der Datenquelle auf die zugegriffen werden soll, hinterlegt ist.
+ Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
+ mindestens SQL und XQuery.
+ Zusätzlich sollen auch alle SQL-Dialekte unterstützt werden.
+ Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
+ Die Konzepte sind nach Absprache mit dem Kunden frei wählbar.
+ Es soll auch möglich sein, dass Daten aus Datenquellen aus einem Prozess
+ auch in lokale Dateien exportiert werden können und umgekehrt soll es auch
+ möglich sein lokale Daten zu importieren.
+ Dabei gilt XML als Standardformat.
 \end_layout
 
-\end_inset
+\begin_layout Standard
+Die Datenbanken, die verwendet werden, existieren bereits und müssen nicht
+ durch das Rahmenwerk erstellt werden.
+ Weiterhin sollen aber Schema-Definitionen möglich sein und das Erstellen,
+ Ändern und Löschen von Tabellen innerhalb der Schemas.
+\end_layout
 
-Late-binding bei Datenquellen: Kriterien zur Beschreibung von Datenquellen
- – Annotation von Datenquellen, Modellierung der Anforderungen an eine Datenquel
-le (durch den Benutzer), Strategien zur Auswahl einer geeigneten Datenbank.
+\begin_layout Standard
+Das Late-binding von Datenquellen soll unterstützt werden.
+ Dazu müssen Kriterien zur Beschreibung von Datenquellen erstellt werden.
+ Diese Kriterien werden dann als Anforderungen durch den Benutzer modelliert
+ und als Anotationen übertragen.
+ Die Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle
+ gestellt werden können sollten, wird über die Definition eines Anforderungskata
+loges, der nach Fertigstellung mit dem Kunden abgesprochen werden muss,
+ realisiert.
+ Die Anotationen dienen dazu, dass Datenquellen durch definierte Strategien
+ automatisch ausgewählt werden können.
+ Diese Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
+ angegebenen Anforderungen verwendet werden, müssen von uns definiert und
+ anschließend mit dem Kunden abgesprochen werden.
+ Die Auswertung der Anotationen und die Verarbeitung der darin enthaltenen
+ Informationen soll, ebenfalls selbst definiert und anschließend mit dem
+ Kunden abgesprochen werden.
+ Die Adressierung der Datenbanken soll statisch über konkrete Adressen oder
+ auch dynamisch über logische Namen mithilfe der JNDI API möglich sein.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -2055,195 +2079,19 @@ Uddi.
 
 \end_layout
 
-\begin_layout Enumerate
-Anforderungen an eine Datenquelle sollen, falls die Datenquelle über einen
- Web-Service eingebunden ist, mit Anotation mit/über “QUALITY OF SERVICE”
- angegeben werden, sonst statische Auswahl einer Datenquelle zur Modellierungs-
- oder Laufzeit.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Die beiden usecases trennen.
- Such mir ne datnequelle oder selber bestimmen.
- Zweitet usecase system bestimmt automatisch über annotation.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle gestellt
- werden können sollten, wird über die Definition eines Anforderungskataloges,
- der nach Fertigstellung mit dem Kunden abgesprochen werden muss, realisiert.
-\end_layout
-
-\begin_layout Enumerate
-Die Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
- angegebenen Anforderungen verwendet werden, müssen selbst definiert und
- anschließend mit dem Kunden abgesprochen werden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Wo ist der unterschied zu 5.?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Die Auswertung der Anotationen und die Verarbeitung der darin enthaltenen
- Informationen soll, ebenfalls selbst definiert und anschließend mit dem
- Kunden abgesprochen werden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-4-7 umändern zusammenfassen neu gliedern
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Adressierung der Datenbanken: Statisch über konkrete Adresse oder dynamisch
- über logische Adresse.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-8-11.
- bezieht sich mehr auf datenquellen oder auf BPEL aktivitäten.
- 8.
- Copy Paste.
- JNDI Admin konsole mit der man datenquellen näher definierne kann.
- Wichtig Statisch über logische Adresse über jndi adresse.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Anbindung soll generisch sein, soviele Anbindungen wie möglich realisieren.
- Als Minimum gilt: IBM DB2 + OpenSourceDB’s (mindestens 1*RDB + mindestens
- 1*XMLDB) + mindestens 1*SensorDB (z.B.
- TinyDB) + mindestens 1*Dateisystem (z.B Ext)
-\end_layout
-
-\begin_layout Enumerate
-Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozess
- möglich sein, dazu besitzt jede Aktivität seine eigene Datenquellen-Referenz.
- 
-\end_layout
-
-\begin_layout Enumerate
-Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
- mindestens SQL und XQuery.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-anmerkung: Sql hat verschiedene Dialekte.
- Das berücksichtigen.
- #vollständiger sprachumfang sollte möglich sein
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
- Konzepte frei wählbar.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Die Konzepte sind nach absprache mit dem Kunden frei wählbar
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Es soll möglich sein, dass Daten aus Datenbanken aus einem Prozess auch
- in lokale Dateien exportiert werden können.
- Dabei gilt: XML als Standardformat (siehe IBM Ansatz: RDB-Tabellen <->XML).
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Daten aus Datenquellen.
- Import muss möglich sein.
- Daten in prozesspeicher ablegen muss auch gehen.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Datenbanken existieren bereits und müssen nicht durch das Rahmenwerk erstellt
- werden.
- Weiterhin sollen aber Schema-Definitionen möglich sein und das Erstellen,
- Ändern und Löschen von Tabellen innerhalb der Schemas.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-in Bpel aktivitäten ein paar Patterns beschreiben.
- Als Feature wäre es nicht schlecht wenn man das auch könnte.
- Datenbank instanzen erstellen wäre schön.
- (also in einer datenbank kann man mehrere Instanzen erstellen wo mehrer
- tabellen drin sind usw)
-\end_layout
-
-\end_inset
-
-
+\begin_layout Subsubsection*
+Admin-Konsole
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Autorisierung und Authentifizierung:
+Die Admin-Konsole ist ein Werkzeug mit dem verschiedene Einstellungen des
+ Rahmenwerks auch während der Laufzeit noch geändert werden können.
+ Dazu gehört beispielsweise das An- und Abschalten des Auditings und Einstellen
+ der Granularität.
+ 
 \end_layout
 
-\begin_layout Enumerate
-Autorisierung und Authentifizierung soll momentan nur für Datenquellen bereitges
-tellt werden, allerdings soll eine spätere Erweiterung einfach realisiert
- werden können.
-\end_layout
-
-\begin_layout Enumerate
-Für die Authentifizierung und Authorisierung sind verschiedene Verfahren
- gewünscht, sodass in jeder Situation das Bestmögliche verwendet wird.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Anmerkung: Flexible anbindung konkreter verfahren.
-\end_layout
-
-\end_inset
-
-
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -2258,45 +2106,13 @@ Admin Konsole wäre sinnvoll.
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Reicht in einer Instanz.
- Damin kann in Admin konsole definieren ob er single signon oder etwas anders
+Damit kann in Admin konsole definieren ob er single signon oder etwas anders
  will
-\end_layout
-
-\end_inset
-
-Die Autorisierung und die Authentifizierung sollen, über einen Single-Sign-On
- entweder im Prozess oder in der Instanz, beim Zugriff auf Datenquellen
- durchgeführt werden.
-\end_layout
-
-\begin_layout Enumerate
-Autorisierungs- und Authentifizierungsparameter für einen Prozess sollen
- auf Datenquellenebene spezifiziert werden, d.h.
- bei Datenbanken über Schema und bei Dateisystemen z.B.
- über extra Dateien.
-\end_layout
-
-\begin_layout Enumerate
-Autorisierung und Authentifizierung ist bei allen Datenquellen notwendig
- und soll auf verschiedene Arten möglich sein.
-\end_layout
-
-\begin_layout Enumerate
-
-\color black
-Angaben über Autorisierung und Authentifizierung sollen extra abgefragt
- und als Nachricht an die DB geschickt werden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Genau beschreiben von wem es abefragt wird oder von webservice.
 \end_layout
 
 \end_inset
@@ -2307,9 +2123,38 @@ Genau beschreiben von wem es abefragt wird oder von webservice.
 \begin_layout Standard
 
 \series bold
-Monitoring:
+Autorisierung und Authentifizierung
+\end_layout
+
+\begin_layout Standard
+Die Autorisierung und Authentifizierung soll momentan nur für Datenquellen
+ bereitgestellt werden, allerdings soll eine spätere Erweiterung einfach
+ realisiert werden können.
+ Für die Authentifizierung und Authorisierung sind verschiedene Verfahren
+ gewünscht, sodass in jeder Situation das Bestmögliche verwendet wird.
+ Dazu soll es möglich sein, verschiedene konkrete Verfahren flexibel anbinden
+ zu können.
+ Die Autorisierung und die Authentifizierung soll dabei über einen Single-Sign-O
+n in der Instanz beim Zugriff auf Datenquellen durchgeführt werden.
+ Autorisierungs- und Authentifizierungsparameter für einen Prozess sollen
+ auf Datenquellenebene spezifiziert werden, d.h.
+ bei Datenbanken über Schema und bei Dateisystemen z.B.
+ über extra Dateien.
+ Die Autorisierung und Authentifizierung ist bei allen Datenquellen notwendig
+ und soll auf verschiedene Arten möglich sein.
+
+\color black
+ Angaben über Autorisierung und Authentifizierung sollen extra im Eclipse
+ BPEL Designer abgefragt und als Nachricht an die Datenquelle geschickt
+ werden.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Auditing und Monitoring
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2323,34 +2168,33 @@ alles Auditing.
 
 \end_layout
 
-\begin_layout Enumerate
-Monitoring der Prozessausführung: Ausführungshistorie in einer angebundenen
- Datenbank speichern (nicht im lokalen Speicher der Engine).
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Monitoring Visualsiert die Daten.
- Was hier als Monitoring bezeichnet ist ist Auditin.
- Abspeichern von daten.
+\begin_layout Standard
+Es soll ein Auditing der Prozessausführung geben, dafür soll die Ausführungshist
+orie in einer angebundenen Datenbank und nicht im lokalen Speicher der Engine
+ gespeicher werden können.
+ Die Datenbank für das Auditing soll über das Rahmenwerk frei wählbar sein.
+ Die Auditing-Daten werden dabei auf einer Datenbank gespeichert und nicht
+ über mehrere verteilt.
+ Das vorhandene Auditing von Apache ODE muss dafür um das Auditing unserer
+ Funktionalitäten und die Möglichkeit, eine variable DB als Auditing-DB
+ anzugeben, erweitert werden.
+ Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
+ werden können.
+ Das Auditing soll standardmäßig aktiv sein.
+ Auf Benutzerwunsch soll die Granularität des Auditings veränderbar sein
+ oder das Auditing auch komplett abschaltbar.
+ Dies soll auch wärend der Laufzeit über eine Adminkonsole steuerbar sein.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Die Datenbank für das Monitoring muss über das Rahmenwerk frei wählbar sein
- und es soll nicht über mehrere Datenbanken verteilt sein.
-\end_layout
-
-\begin_layout Enumerate
+\begin_layout Standard
 Für unsere Zwecke muss ein komplettes Monitoring erstellt werden, d.h.
- ein Monitoring für BPEL, ODE und alle Datenquellenaktionen.
+ ein Monitoring für alle Datenquellenaktionen und die Anpassung und Erweiterung
+ des bestehenden Monitorings von Apache ODE.
+ Dazu soll das Event-Modell von Apache ODE für das Monitoring, d.h.
+ welche Informationen angezeigt werden können, für unsere Erweiterungen
+ modifiziert und mit den Kunden abgesprochen werden.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Event Model anpassen für unsere erweiterungen an BPEL.
@@ -2368,12 +2212,9 @@ Event Model anpassen für unsere erweiterungen an BPEL.
 
 \end_layout
 
-\begin_layout Enumerate
-Das vorhandene Auditing von BPEL und Apache ODE muss um das Monitoring unserer
- Funktionalitäten und die Möglichkeit, eine variable DB als Auditing-DB
- anzugeben, erweitert werden.
+\begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Schön wäre ein Monitoring tool.
@@ -2384,70 +2225,23 @@ Schön wäre ein Monitoring tool.
 
 \end_layout
 
-\begin_layout Enumerate
-Es soll ein Event-Modell für das Monitoring, d.h.
- welche Informationen angezeigt werden können, erweitert und mit den Kunden
- abgesprochen werden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Bestehendes erweitern
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
- werden können.
-\end_layout
-
-\begin_layout Enumerate
-Das Monitoring soll standardmäßig aktiv sein.
- Auf Benutzerwunsch soll die Granularität veränderbar und komplett abschaltbar
- sein.
- Dies soll auch wärend der Laufzeit über die Adminkonsole steuerbar sein.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Über damin konsole noch änderbar nachdem prozess deployed wurde.
- Zur laufzeit änderbar.
- Granularität des Audiging sollte wählbar sein.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Die Granularität des Auditings sollte wählbar sein.
-\end_layout
-
 \begin_layout Standard
 
 \series bold
 Demo-Programm
 \end_layout
 
-\begin_layout Enumerate
-Es sollen darin die wichtigsten Use-Cases vorgeführt und ein kurzer Einblick
- in die Dokumentation gegeben werden.
-\end_layout
-
-\begin_layout Enumerate
-In der Demo soll insbesondere der Zugriff auf die IBM DB2 Datenbank, eine
- OpenSource RDB und eine OpenSource XMLDB, sowie evtl.
+\begin_layout Standard
+Durch das Demo-Programm sollen die wichtigsten Use-Cases vorgeführt und
+ ein kurzer Einblick in die Dokumentation gegeben werden.
+ In der Demo soll weiterhin der Zugriff auf die IBM DB2 Datenbank, eine
+ OpenSource RDB, eine OpenSource XMLDB und ein Dateisystem, sowie evtl.
  auf Sensornetzdaten mittels TinyDB (falls öffentlich zugänglich) gezeigt
  werden.
  Ebenso soll eine kurze Vorstellung der Monitoring-DB-Anbindung, mit einer
  der oben genannten Datenbanken, gezeigt werden.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Insbesondere zugriff auf ibm db2 datenbank.
@@ -2460,20 +2254,27 @@ Insbesondere zugriff auf ibm db2 datenbank.
 
 \end_inset
 
-
+ Darüber hinaus soll ein Tutorial erstellt werden, in dem die Modellierung
+ der definierten generischen Aktivitäten mithilfe des Eclipse BPEL Designers
+ gezeigt und erläutert werden.
 \end_layout
 
 \begin_layout Subsubsection
-Benutzer:
+Benutzer
 \end_layout
 
-\begin_layout Enumerate
-Benutzer sind im Normalfall Wissenschaftler und Ingenieure.
-\end_layout
+\begin_layout Standard
+Die Benutzer sind im Normalfall Wissenschaftler und Ingenieure.
+ Sie haben meist keine bis wenig Vorkenntnisse im Bereich Workflow und Informati
+k und stellen so entsprechende Anforderungen an die Usability des Rahmenwerks
+ (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Nichtfunktionale-Anforderungen"
 
-\begin_layout Enumerate
-Benutzer haben meist keine bis wenig Vorkenntnisse im Bereich Workflow und
- Informatik.
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -2515,17 +2316,7 @@ n und die Ausführung zu starten.
  in den Designer eingebunden.
  Einstellungen, die erst zur Deployment-Zeit dem SIMPL Core übergeben werden
  können, können über Deployment-Deskriptoren festgelegt werden.
- Von dort 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-von wo?
-\end_layout
-
-\end_inset
-
-wird der Prozess an die Anwendungsschicht übergeben.
+ Vom Designer wird der Prozess an die Anwendungsschicht übergeben.
 \end_layout
 
 \begin_layout Standard
@@ -2556,7 +2347,7 @@ Authentifizierte und autorisierte Datenquellenzugriffe
 \end_layout
 
 \begin_layout Itemize
-Auditing der Datenquellenzugriffe.
+Auditing der Datenquellenzugriffe
 \begin_inset Note Note
 status open
 
@@ -2590,16 +2381,6 @@ Binden und Auflösen von logischen Namen
 Die Datenschicht beeinhaltet alle verwendbaren Datenquellen mit den dazugehörige
 n Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
  der jeweiligen Datenquelle.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Im BIld das Rss fehlet
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2953,20 +2734,20 @@ Projektdurchführung
 \end_layout
 
 \begin_layout Standard
-Als Prozessmodell für das Projekt, wird ein Inkrementelles Modell zum Einsatz
+Als Prozessmodell für das Projekt, wird ein inkrementelles Modell zum Einsatz
  kommen.
  
 \end_layout
 
 \begin_layout Standard
-Das heißt, dass wir nach Beendigung des Grobentwurfes mehrere Entwicklungsittera
-tionen durchlaufen werden, welche aus Planung, Implementierung und Tests
- des entsprechenden Softwareabschnitts besteht.
+Das heißt, dass wir nach Beendigung des Grobentwurfs mehrere Entwicklungsiterati
+onen durchlaufen werden, welche aus Planung, Implementierung und Tests des
+ entsprechenden Softwareabschnitts bestehen.
  Dieses Vorgehen bietet sich für das Projekt an, da es sich hierbei um eine
  Kernkomponente handelt, welche nach und nach durch verschiedene Module
  und Plugins erweitert wird.
- Für das Entwicklerteam aber auch den Kunden, hat dies den Vorteil, dass
- am Ende jeder Iteration ein Lauffähiger Prototyp zur Verfügung steht, an
+ Für das Entwicklerteam, aber auch den Kunden, hat dies den Vorteil, dass
+ am Ende jeder Iteration ein lauffähiger Prototyp zur Verfügung steht, an
  dem der Kunde mögliche Änderungswünsche frühzeitig äussern kann.
 \end_layout
 
@@ -3012,17 +2793,6 @@ Im nachfolgenden Abschnitt wird die Terminplanung des Projekts kurz erläutert.
 
 \begin_layout Subsection
 Terminplanung
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Hier schon erwähnen das die Function point methode verwendet wurde und man
- so auf die 480 stunden kam.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3030,20 +2800,10 @@ Das Studienprojekt läuft über zwei Semester und endet im Mai 2010.
  Jeder Projektteilnehmer hat dabei, nach einer Aufwandsschätzung mit der
  Function Point Methode, einen Arbeitsaufwand von ca.
  480 Stunden zu leisten, dadurch entsteht ein Gesamtaufwand von ca.
- 3360 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Noch mal überprüfen
-\end_layout
-
-\end_inset
-
-Stunden für alle 7 Teilnehmer.
- Die Projektphasen Analyse und Einarbeitung beanspruchen dabei 17%, Spezifikatio
+ 3360 Stunden für alle 7 Teilnehmer.
+ Die Projektphasen Analyse und Einarbeitung beanspruchen dabei 15%, Spezifikatio
 n und Entwurf (inkl.
- Fein-Entwurf) 34%, die Implementierung und der Test 41% und zuletzt der
+ Fein-Entwurf) 35%, die Implementierung und der Test 42% und zuletzt der
  Puffer 8%.
  (siehe Abbildung 
 \begin_inset CommandInset ref
@@ -3060,7 +2820,6 @@ Nach Berücksichtigung aller Einflussfaktoren von Seiten des Kunden und des
  Entwicklungsteams wird durch diese Planung vorausgesetzt, dass der Kunde
  das Endprodukt Mitte April 2010 testet und zwischen Anfang und Mitte Mai
  2010 nach Bedarf noch kleinere Änderungen durchgeführt werden.
- 
 \end_layout
 
 \begin_layout Standard
@@ -3089,16 +2848,6 @@ Phasen des Projekts
 
 \begin_layout Plain Layout
 \begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Aufwand anpassen
-\end_layout
-
 \end_inset
 
 
@@ -3171,7 +2920,7 @@ Analyse
 \begin_inset Text
 
 \begin_layout Plain Layout
-350 h
+306 h
 \end_layout
 
 \end_inset
@@ -3200,7 +2949,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-252 h
+208 h
 \end_layout
 
 \end_inset
@@ -3229,7 +2978,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-588 h
+544 h
 \end_layout
 
 \end_inset
@@ -3258,7 +3007,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-672 h
+628 h
 \end_layout
 
 \end_inset
@@ -3287,7 +3036,7 @@ Implementierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-924 h
+880 h
 \end_layout
 
 \end_inset
@@ -3316,7 +3065,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-588 h
+544 h
 \end_layout
 
 \end_inset
@@ -3374,7 +3123,7 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-294 h
+250 h
 \end_layout
 
 \end_inset
@@ -3393,11 +3142,24 @@ Puffer
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Gantt-Diagramm mit Termintabelle und Meilensteinterminen abgleichen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -3655,6 +3417,16 @@ unterstrichen
  Beim erreichen von externen Meilensteinen werden dem Kunden die Dokumente
  des Meilensteins zur Verfügung gestellt.
  Sofern nicht anders angegeben, sind alle Dokumente auf Deutsch verfasst.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Meilensteintermine aktualisieren
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5622,18 +5394,6 @@ Der Auftraggeber verpflichtet sich, die nötige Infrastruktur (Räume, Server
  Sollte der Abnahmetest ohne Beanstandungen abgeschlossen werden, so ist
  der Auftraggeber verpflichtet, die Software abzunehmen und den Erhalt,
  sowie die Korrektheit der Software zu quittieren.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Kunde verprlichtet sich am review zur spezifikation Teilzunehmen.
- Der Kunde hat abVersand 3 Werktage Zeit auf mails zu antworten.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -5680,25 +5440,75 @@ Vertrag zur Auftragserteilung und Auftragsannahme
 Durch die nachfolgenden Unterschriften von Auftraggeber und Auftragnehmer
  erklären sich beide Parteien dazu bereit, den durch das Angebot festgelegten
  Rahmen für das Projekt, zu akzeptieren.
- Darüber hinaus bestätigt die Unterschrift des Auftraggebers die Erteilung
- des Auftrags an den Auftragnehmer.
- Die Unterschrift des Auftragnehmers bestätigt die Annahme des Auftrags
- des Auftraggebers.
+ Dazu gehören folgende Dokumente:
+\end_layout
+
+\begin_layout Itemize
+Angebot (PDF),
+\end_layout
+
+\begin_layout Itemize
+Projektplan (PDF und LaTeX),
+\end_layout
+
+\begin_layout Itemize
+Spezifikation (PDF und LaTeX) und Prototyp des erweiterten Eclipse BPEL-Designer
+s,
+\end_layout
+
+\begin_layout Itemize
+Grobentwurf mit zeitnaher Präsentation (PDF und LaTeX),
+\end_layout
+
+\begin_layout Itemize
+Feinentwurf (PDF und LaTeX),
+\end_layout
+
+\begin_layout Itemize
+Handbuch (auf Englisch und Deutsch) (PDF und LaTeX) und
+\end_layout
+
+\begin_layout Itemize
+CD/DVD mit: Installationspaket (RAR), Dokumentation der Erweiterungen (auf
+ Englisch und Deutsch) (PDF und LaTeX), Quellcode (Java) mit englischen
+ Kommentaren und evtl.
+ bereits ausgelieferte aktualisierte Dokumente.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Vorher noch mal eine auflistung von derm Lieferumfang der Software und danach
- die Meilensteine.
- Quellcode kommentare sprache angeben.
+Die folgenden Meilensteine sind definiert und werden während des Projekts
+ erreicht:
 \end_layout
 
-\end_inset
+\begin_layout Itemize
+Angebot,
+\end_layout
 
+\begin_layout Itemize
+Spezifikation,
+\end_layout
 
+\begin_layout Itemize
+Grobentwurf,
+\end_layout
+
+\begin_layout Itemize
+Feinentwurf,
+\end_layout
+
+\begin_layout Itemize
+Handbuch und
+\end_layout
+
+\begin_layout Itemize
+Abnahmetest
+\end_layout
+
+\begin_layout Standard
+Darüber hinaus bestätigt die Unterschrift des Auftraggebers die Erteilung
+ des Auftrags an den Auftragnehmer.
+ Die Unterschrift des Auftragnehmers bestätigt die Annahme des Auftrags
+ des Auftraggebers.
 \end_layout
 
 \begin_layout Standard
