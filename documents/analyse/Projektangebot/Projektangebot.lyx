@@ -1719,17 +1719,6 @@ Apache ODE
 
 \begin_layout Subsection
 Systemumgebung
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-steht teilwese in 2.2 könnte manvielelicht verschmelzen.
- Am bild ist komisch dsa datenquellen nur über Tomcat ausgewählt wird
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1799,21 +1788,6 @@ name "sub:Grobspezifikation"
 \end_inset
 
 Grobspezifikation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Fließtext.
- Bessere beschreibungen der punkte.
- Auch bei den Aufzählungen ganze Sätze.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2162,21 +2136,9 @@ status open
 
 \begin_layout Enumerate
 Anbindung soll generisch sein, soviele Anbindungen wie möglich realisieren.
- Als Minimum gilt: IBM DB2 + OpenSourceDB’s (mind.
- 1*RDB + mind.
- 1*XMLDB) + mind.
- 1*SensorDB (z.B.
- TinyDB).
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-1 Dateisystem mit dabei.
-\end_layout
-
-\end_inset
-
-
+ Als Minimum gilt: IBM DB2 + OpenSourceDB’s (mindestens 1*RDB + mindestens
+ 1*XMLDB) + mindestens 1*SensorDB (z.B.
+ TinyDB) + mindestens 1*Dateisystem (z.B Ext)
 \end_layout
 
 \begin_layout Enumerate
@@ -2270,18 +2232,8 @@ tellt werden, allerdings soll eine spätere Erweiterung einfach realisiert
 \end_layout
 
 \begin_layout Enumerate
-Für die Authentifizierung 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-und Authorisierung
-\end_layout
-
-\end_inset
-
-sind verschiedene Verfahren gewünscht, sodass in jeder Situation das Bestmöglich
-e verwendet wird.
+Für die Authentifizierung und Authorisierung sind verschiedene Verfahren
+ gewünscht, sodass in jeder Situation das Bestmögliche verwendet wird.
 \begin_inset Note Note
 status open
 
@@ -2321,22 +2273,6 @@ Reicht in einer Instanz.
 Die Autorisierung und die Authentifizierung sollen, über einen Single-Sign-On
  entweder im Prozess oder in der Instanz, beim Zugriff auf Datenquellen
  durchgeführt werden.
-\end_layout
-
-\begin_layout Enumerate
-Autorisierung und Authentifizierung sollen auf die Ausführung von Prozessen
- beschränkt sein.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Weg
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -2470,10 +2406,12 @@ Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
 \end_layout
 
 \begin_layout Enumerate
-Das Monitoring soll standardmäßig aktiv sein, aber auch auf Benutzerwunsch
- abschaltbar.
+Das Monitoring soll standardmäßig aktiv sein.
+ Auf Benutzerwunsch soll die Granularität veränderbar und komplett abschaltbar
+ sein.
+ Dies soll auch wärend der Laufzeit über die Adminkonsole steuerbar sein.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Über damin konsole noch änderbar nachdem prozess deployed wurde.
@@ -2656,23 +2594,7 @@ n Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
 status open
 
 \begin_layout Plain Layout
-Im BIld das Rss fehlet und die Adminconsole.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der Simple core sollte in allen java basierenden containern deployed werden
- können.
- Simple core soll nicht tomcat spezifisch sein.
+Im BIld das Rss fehlet
 \end_layout
 
 \end_inset
@@ -3031,20 +2953,30 @@ Projektdurchführung
 \end_layout
 
 \begin_layout Standard
-Als Prozessmodell für die Durchführung des Projekts wird das Phasenmodell,
- mit dem Wasserfallmodell als Vorgehensmodell, verwendet.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Iteratives modell? Inkrementeelles modell.
- Mehrer iterationen ab fein entwurf.
- Erstemal schauen wie sehen aktivitäten aus dann sql aktivitäten usw.
- Zwischendurch immer mal was zeigen damit wir ein ständiges feedback haben.
+Als Prozessmodell für das Projekt, wird ein Inkrementelles Modell zum Einsatz
+ kommen.
+ 
 \end_layout
 
-\end_inset
+\begin_layout Standard
+Das heißt, dass wir nach Beendigung des Grobentwurfes mehrere Entwicklungsittera
+tionen durchlaufen werden, welche aus Planung, Implementierung und Tests
+ des entsprechenden Softwareabschnitts besteht.
+ Dieses Vorgehen bietet sich für das Projekt an, da es sich hierbei um eine
+ Kernkomponente handelt, welche nach und nach durch verschiedene Module
+ und Plugins erweitert wird.
+ Für das Entwicklerteam aber auch den Kunden, hat dies den Vorteil, dass
+ am Ende jeder Iteration ein Lauffähiger Prototyp zur Verfügung steht, an
+ dem der Kunde mögliche Änderungswünsche frühzeitig äussern kann.
+\end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Als Prozessmodell für die Durchführung des Projekts wird das Phasenmodell,
+ mit dem Wasserfallmodell als Vorgehensmodell, verwendet.
  Diese Kombination liefert entscheidende Vorteile, die wichtig sind, da
  das Studienprojekt einen sehr straffen Zeitplan hat und dieser unbedingt
  eingehalten werden muss.
@@ -3066,11 +2998,16 @@ er) zu jeder Zeit genau wissen, in welcher Phase sich das Projekt gerade
 ichen Dokumente vorhanden und geprüft sind und den Anforderungen entsprechen.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Im nachfolgenden Abschnitt wird die Terminplanung des Projekts kurz erläutert.
  Danach wird dann auf die definierten Projektphasen, Arbeitspakete, Meilensteine
  und die Durchführung der Qualitätssicherung und Konfigurationsverwaltung
  eingegangen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3152,6 +3089,16 @@ Phasen des Projekts
 
 \begin_layout Plain Layout
 \begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Aufwand anpassen
+\end_layout
+
 \end_inset
 
 
@@ -3244,17 +3191,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.07.2009-07.08.2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-noch ändern
-\end_layout
-
-\end_inset
-
-
+17.07.2009-07.09.2009
 \end_layout
 
 \end_inset
@@ -3313,16 +3250,6 @@ Entwurf
 
 \begin_layout Plain Layout
 01.10.2009-01.12.2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-entwurf und implementierung sich überschneidne lassen ab feinentwurf
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -3351,7 +3278,7 @@ Implementierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-01.12.2009-22.02.2010
+30.10.2009-22.02.2010
 \end_layout
 
 \end_inset
@@ -3380,17 +3307,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-22.02.2010-17.04.2010
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-sich mit der Implementierung überschneiden
-\end_layout
-
-\end_inset
-
-
+01.12.2010-17.04.2010
 \end_layout
 
 \end_inset
@@ -3743,7 +3660,7 @@ unterstrichen
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="17" columns="4">
+<lyxtabular version="3" rows="16" columns="4">
 <features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="middle" width="2.5cm">
 <column alignment="left" valignment="middle" width="3cm">
@@ -3927,66 +3844,6 @@ Projektplan ist vollständig und wird von Qualitätsmanager und Projektleiter
 \begin_layout Plain Layout
 14.
  August 2009
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-Einarbeitung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-(interne Dokumente)
-\end_layout
-
-\begin_layout Plain Layout
-
-\shape italic
-Foliensammlung als Nachschlagewerk, Berichte als Grundlage für Spezifikation
- und Implementierung bzw.
- Erweiterung der Technologien.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Einarbeitungsberichte jedes 2er-Teams liegen vor und werden vom Projektleiter
- akzeptiert
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-17.
- September 2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-nicht interessant für Kunden
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -4514,16 +4371,6 @@ Der Kunde hat keine Anmerkungen und alle im Review entdeckten Fehler und
 \begin_layout Plain Layout
 17.
  April 2010
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Vor abnahmetest einfügen damit es zeitlich sortiert ist
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -4896,16 +4743,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Termine einfügen!
-\end_layout
-
-\end_inset
-
-
+08.09.09
 \end_layout
 
 \end_inset
@@ -4914,7 +4752,7 @@ Termine einfügen!
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+13.09.09
 \end_layout
 
 \end_inset
@@ -4945,6 +4783,16 @@ extern
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Überschneidung.
+ Noch mal im team diskutiern
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -4985,7 +4833,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+20.10.09
 \end_layout
 
 \end_inset
@@ -4994,7 +4842,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+25.10.09
 \end_layout
 
 \end_inset
@@ -5025,7 +4873,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+20.11.09
 \end_layout
 
 \end_inset
@@ -5034,7 +4882,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+25.11.09
 \end_layout
 
 \end_inset
@@ -5065,7 +4913,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+25.03.10
 \end_layout
 
 \end_inset
@@ -5074,7 +4922,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+29.03.10
 \end_layout
 
 \end_inset
@@ -5432,16 +5280,6 @@ Gegenmaßnahmen
 
 \begin_layout Plain Layout
 Mitarbeiter fällt zeitweise aus
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Dauerhaft aufal, trennen von Temporärer ausfall.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -5470,16 +5308,6 @@ Dauerhaft aufal, trennen von Temporärer ausfall.
 \begin_layout Plain Layout
 Wöchentliche Treffen (Informationsaustausch), Ernennung von Stellvertretern
  und Erstellung von internen Dokumentationen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bei komplettaufall muss mit kunde rückpsrache gehalten werdne.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -5499,7 +5327,7 @@ Mitarbeiter fällt dauerhaft aus
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+10
 \end_layout
 
 \end_inset
@@ -5508,16 +5336,7 @@ Mitarbeiter fällt dauerhaft aus
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ausfüllen
-\end_layout
-
-\end_inset
-
-
+4 MM
 \end_layout
 
 \end_inset
@@ -5789,18 +5608,8 @@ Der Auftraggeber verpflichtet sich, die nötige Infrastruktur (Räume, Server
  Darüber hinaus ist der Auftraggeber dazu verpflichtet, für den weiteren
  Informationsaustausch, d.h.
  z.B.
- für Kundengespräche
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Genauer: Kundengespräche usw.
-\end_layout
-
-\end_inset
-
- zur Verfügung zu stehen und das Projektteam über längere Nichterreichbarkeit
- rechtzeitig zu informieren.
+ für Kundengespräche und Reviews zur Verfügung zu stehen und das Projektteam
+ über längere Nichterreichbarkeit rechtzeitig zu informieren.
  Generell gilt, dass der Auftraggeber drei Werktage Zeit hat, um auf Anfragen
  des Auftragnehmers zu antworten.
  Der Auftraggeber verpflichtet sich weiterhin als Gutachter an externen
@@ -5841,7 +5650,8 @@ Gültigkeit des Angebots
 \end_layout
 
 \begin_layout Standard
-Das Angebot in dieser Form ist, ab Erhalt eine Woche (7 Tage) gültig, d.h.
+Das Angebot in dieser Form ist, ab Erhalt, unter berücksichtigung der Abwesenhei
+t des Kunden, eine Woche (7 Tage) gültig, d.h.
  es verliert seine Gültigkeit nach dem 
 \begin_inset ERT
 status open
@@ -5850,26 +5660,13 @@ status open
 
 
 \backslash
-mbox{11.
- August 2009}
+mbox{21.
+ September 2009}
 \end_layout
 
 \end_inset
 
 .
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-genaues Datum.
- Abgabe anfang september.
- gültigkeit die ferien der kunden mit einberechnen.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section*
