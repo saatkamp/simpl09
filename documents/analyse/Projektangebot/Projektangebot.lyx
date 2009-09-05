@@ -2940,7 +2940,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.07.2009-07.09.2009
+17.07.2009-17.09.2009
 \end_layout
 
 \end_inset
@@ -2969,7 +2969,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.08.2009-01.10.2009
+07.08.2009-15.10.2009
 \end_layout
 
 \end_inset
@@ -2998,7 +2998,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-01.10.2009-01.12.2009
+15.10.2009-15.12.2009
 \end_layout
 
 \end_inset
@@ -3027,7 +3027,7 @@ Implementierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-30.10.2009-22.02.2010
+13.11.2009-25.02.2010
 \end_layout
 
 \end_inset
@@ -3056,7 +3056,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-01.12.2010-17.04.2010
+15.12.2010-17.04.2010
 \end_layout
 
 \end_inset
@@ -3134,19 +3134,6 @@ Puffer
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Gantt-Diagramm mit Termintabelle und Meilensteinterminen abgleichen.
 \end_layout
 
 \end_inset
@@ -3417,16 +3404,6 @@ unterstrichen
  Beim erreichen von externen Meilensteinen werden dem Kunden die Dokumente
  des Meilensteins zur Verfügung gestellt.
  Sofern nicht anders angegeben, sind alle Dokumente auf Deutsch verfasst.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Meilensteintermine aktualisieren
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3572,8 +3549,8 @@ Der Kunde akzeptiert das Angebot.
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.
- August 2009
+4.
+ September 2009
 \end_layout
 
 \end_inset
@@ -3614,8 +3591,8 @@ Projektplan ist vollständig und wird von Qualitätsmanager und Projektleiter
 \begin_inset Text
 
 \begin_layout Plain Layout
-14.
- August 2009
+30.
+ September 2009
 \end_layout
 
 \end_inset
@@ -3662,7 +3639,7 @@ Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.
+28.
  September 2009
 \end_layout
 
@@ -3716,7 +3693,7 @@ externen Review
 \begin_inset Text
 
 \begin_layout Plain Layout
-01.
+15.
  Oktober 2009
 \end_layout
 
@@ -3763,7 +3740,7 @@ Der Kunde akzeptiert den Grobentwurf.
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.
+13.
  November 2009
 \end_layout
 
@@ -3810,7 +3787,7 @@ Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
 \begin_inset Text
 
 \begin_layout Plain Layout
-01.
+15.
  Dezember 2009
 \end_layout
 
@@ -3859,7 +3836,7 @@ Alle spezifizierten Use-Cases sind innerhalb der Module implementiert.
 \begin_inset Text
 
 \begin_layout Plain Layout
-08.
+25.
  Februar 2010
 \end_layout
 
@@ -3900,48 +3877,7 @@ Alle spezifizierten Erweiterungen sind implementiert.
 \begin_inset Text
 
 \begin_layout Plain Layout
-08.
- Februar 2010
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-Integration
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-(internes Dokument) Integrationsprotokoll
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Module wurden erfolgreich zu einer lauffähigen Software integriert.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-22.
+25.
  Februar 2010
 \end_layout
 
@@ -3984,10 +3920,10 @@ Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
 \begin_inset Text
 
 \begin_layout Plain Layout
-04.
+07.
  März 2010
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Sollte vor integration Laufen
@@ -3996,6 +3932,47 @@ Sollte vor integration Laufen
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Integration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(internes Dokument) Integrationsprotokoll
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Module wurden erfolgreich zu einer lauffähigen Software integriert.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10.
+ März 2010
 \end_layout
 
 \end_inset
@@ -4040,7 +4017,7 @@ Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
 \begin_inset Text
 
 \begin_layout Plain Layout
-23.
+25.
  März 2010
 \end_layout
 
@@ -4085,7 +4062,7 @@ Alle aus der Spezifikation erstellten Testfälle wurden ausgeführt, deren
 17.
  April 2010
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 wird man mit BPEl files machen.
@@ -4392,19 +4369,6 @@ Durchführung von Reviews
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Reviewtermine reinschreiben.
- Für jede abgeabe intern nen review.
- Zur spez wird noch nen externes kundnereview emacht.
- Kunden werden regelmäßig die Iterationen vorgestellt.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Float table
 placement h
 wide false
@@ -4515,7 +4479,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-08.09.09
+18.09.09
 \end_layout
 
 \end_inset
@@ -4524,7 +4488,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-13.09.09
+23.09.09
 \end_layout
 
 \end_inset
@@ -4555,17 +4519,7 @@ extern
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Überschneidung.
- Noch mal im team diskutiern
-\end_layout
-
-\end_inset
-
-
+28.09.09
 \end_layout
 
 \end_inset
@@ -4574,7 +4528,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+07.10.09
 \end_layout
 
 \end_inset
@@ -4605,7 +4559,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-20.10.09
+03.11.09
 \end_layout
 
 \end_inset
@@ -4614,7 +4568,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-25.10.09
+08.11.09
 \end_layout
 
 \end_inset
@@ -4645,7 +4599,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-20.11.09
+05.12.09
 \end_layout
 
 \end_inset
@@ -4654,7 +4608,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-25.11.09
+09.12.09
 \end_layout
 
 \end_inset
@@ -5603,10 +5557,6 @@ footnotesize Bevollmächtigter Vertreter des Auftragnehmers}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
