@@ -23,9 +23,9 @@
 % docautor = Author(en) 
 % docdate = Datum der letzten Änderung 
 \def\doctitel{Angebot} 
-\def\docvers{1.1} 
+\def\docvers{1.2} 
 \def\docautor{Michael Hahn, Daniel Brüderle, Firas Zoabi, Wolfgang Hüttig} 
-\def\docdate{07. August 2009}
+\def\docdate{07. September 2009}
 
 
 % LaTeX verbieten, dass SIMPL getrennt wird
@@ -1540,8 +1540,8 @@ Vertragsparteien
 \begin_layout Standard
 Das Angebot richtet sich an die Kunden vom IAAS und IPVS, vertreten durch
  Katharina Görlach, Peter Reimann und Mirko Sonntag.
- Auftragnehmer ist das Studenprojekt SIMPL, das durch Wolfgang Hüttig vertreten
- wird und sind aus folgenden Projektmitarbeitern zusammensetzt: Wolfgang
+ Auftragnehmer ist das Studienprojekt SIMPL, das durch Wolfgang Hüttig vertreten
+ wird und sich aus folgenden Projektmitarbeitern zusammensetzt: Wolfgang
  Hüttig, Michael Schneidt, René Rehn, Michael Hahn, Firas Zoabi, Daniel
  Brüderle und Xi Tu, wobei Wolfgang Hüttig der zentrale Ansprechpartner
  für den Auftraggeber ist.
@@ -1826,7 +1826,7 @@ Eine weitere wichtige Qualität ist die Skalierbarkeit des Systems, die eine
 \end_layout
 
 \begin_layout Standard
-Desweiteren sind Robustheit und Usability der Software von großem Interesse.
+Des weiteren sind Robustheit und Usability der Software von großem Interesse.
  Die Usability soll sich vor allem an Nutzer mit wenig Kenntnissen im Umgang
  mit Workflows und BPEL richten und dafür die bestmögliche Transparenz liefern,
  d.h.
@@ -1915,12 +1915,6 @@ BPEL
 \end_layout
 
 \begin_layout Standard
-Die Fehlerbehandlung und Kompensation im Workflow soll auch für die zu erstellen
-den (neuen) BPEL-Aktivitäten realisiert werden.
- 
-\end_layout
-
-\begin_layout Standard
 Über den Eclipse BPEL Designer sollen innerhalb von BPEL-Prozessen Referenzen
  unterstützt werden, d.h.
  es soll möglich sein Referenzen (z.B.
@@ -1935,9 +1929,9 @@ n Adaptern implementiert wird.
  Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
  Referenz/der Pointer vom Service, zur Entlastung der Workflow-Engine, aufgelöst
  werden.
- Mithilfe eines Transformers wird übersetzt der BPEL Designer den BPEL-Code
- mit Referenzen in Standard BPEL-Code, der dann auf der Workflow-Engine
- ausgeführt werden kann.
+ Mithilfe eines Transformers übersetzt der BPEL Designer den BPEL-Code mit
+ Referenzen in Standard BPEL-Code, der dann auf der Workflow-Engine ausgeführt
+ werden kann.
 \end_layout
 
 \begin_layout Standard
@@ -1951,23 +1945,23 @@ Alle BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt werden,
  müssen erstellt werden und sollen erweiterbar sein.
  Als Anhaltspunkt welche Aktivitäten benötigt werden, gelten die folgenden
  Datenmanagement Patterns: Das 
-\series bold
+\shape italic
 Query Pattern
-\series default
+\shape default
  beschreibt die Notwendigkeit mithilfe von SQL-Befehlen externe Daten anfordern
  zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
  extern gespeichert oder direkt im Prozessspeicher gehalten werden.
  Das 
-\series bold
+\shape italic
 Set UID Pattern
-\series default
+\shape default
  beschreibt die Möglichkeit mengenorientiertes Einfügen (insert), Aktualisieren
  (update) und Löschen (delete) auf externen Daten durchführen zu können.
  Das 
-\series bold
+\shape italic
 Data Setup Pattern
-\series default
+\shape default
  liefert die Möglichkeit benötigte Data Definition Language (DDL) Befehle
  auf einem relationalen Datenbanksystem auszuführen, um so während der Prozessau
 sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
@@ -1975,36 +1969,36 @@ sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
  Da die Verarbeitung von komplexen Daten meist durch Stored Procedures erfolgt,
  ist es bei der Verarbeitung von externen Daten unbedingt erforderlich,
  Stored Procedures auch aus einem Prozess heraus aufrufen zu können (
-\series bold
+\shape italic
 Stored Procedure Pattern
-\series default
+\shape default
 ).
  Manchmal ist es nötig Daten innerhalb des Prozessspeichers verarbeiten
  zu können.
  Das 
-\series bold
+\shape italic
 Set Retrieval Pattern
-\series default
+\shape default
  liefert dafür eine mengenorientierte Datenstruktur, in die man die angefragten
  externen Daten innerhalb des Prozessspeichers abgelegen kann.
  Diese Datenstruktur verhält sich dabei wie ein Cache im Prozessspeicher,
  der keine Verbindung zur originalen Datenquelle besitzt.
  Das 
-\series bold
+\shape italic
 Set Access Pattern
-\series default
+\shape default
  beschreibt die Notwendigkeit auf den erzeugten Datencache sequentiell und
  direkt (random) zugreifen zu können.
  Das 
-\series bold
+\shape italic
 Tuple IUD Pattern
-\series default
+\shape default
  beinhaltet einfügen (insert), aktualisieren (update) und löschen (delete)
  von Daten im Datencache.
  Das 
-\series bold
+\shape italic
 Synchronization Pattern
-\series default
+\shape default
  realisiert die Synchronisation eines lokalen Datencaches mit der originalen
  Datenquelle.
 \end_layout
@@ -2016,13 +2010,13 @@ Anbindung von Datenquellen
 \end_layout
 
 \begin_layout Standard
-Die Anbindung von Datenquellen soll generisch sein und es sollen soviele
+Die Anbindung von Datenquellen soll generisch sein und es sollen so viele
  Anbindungen wie möglich realisiert werden.
  Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSourceDB’s (eine
  RDB und eine XMLDB), mindestens eine SensorDB (z.B.
  TinyDB) und mindestens ein Dateisystem (z.B.
  ext3).
- Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozess
+ Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozesses
  möglich sein, dazu besitzt jede Aktivität eine Variable, in der der logische
  Namen der Datenquelle auf die zugegriffen werden soll, hinterlegt ist.
  Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
@@ -2088,7 +2082,8 @@ Die Admin-Konsole ist ein Werkzeug mit dem verschiedene Einstellungen des
  Rahmenwerks auch während der Laufzeit noch geändert werden können.
  Dazu gehört beispielsweise das An- und Abschalten des Auditings und Einstellen
  der Granularität.
- 
+ Eine solche Komponente soll für die Administration des Rahmenwerks erstellt
+ werden.
 \end_layout
 
 \begin_layout Standard
@@ -2098,7 +2093,7 @@ status open
 \begin_layout Plain Layout
 Admin Konsole wäre sinnvoll.
  Einstellungen für JNDI.
- Daten refferenzen usw angeben.
+ Daten Referenzen usw angeben.
 \end_layout
 
 \end_inset
@@ -2130,7 +2125,7 @@ Autorisierung und Authentifizierung
 Die Autorisierung und Authentifizierung soll momentan nur für Datenquellen
  bereitgestellt werden, allerdings soll eine spätere Erweiterung einfach
  realisiert werden können.
- Für die Authentifizierung und Authorisierung sind verschiedene Verfahren
+ Für die Authentifizierung und Autorisierung sind verschiedene Verfahren
  gewünscht, sodass in jeder Situation das Bestmögliche verwendet wird.
  Dazu soll es möglich sein, verschiedene konkrete Verfahren flexibel anbinden
  zu können.
@@ -2171,7 +2166,7 @@ alles Auditing.
 \begin_layout Standard
 Es soll ein Auditing der Prozessausführung geben, dafür soll die Ausführungshist
 orie in einer angebundenen Datenbank und nicht im lokalen Speicher der Engine
- gespeicher werden können.
+ gespeichert werden können.
  Die Datenbank für das Auditing soll über das Rahmenwerk frei wählbar sein.
  Die Auditing-Daten werden dabei auf einer Datenbank gespeichert und nicht
  über mehrere verteilt.
@@ -2183,7 +2178,7 @@ orie in einer angebundenen Datenbank und nicht im lokalen Speicher der Engine
  Das Auditing soll standardmäßig aktiv sein.
  Auf Benutzerwunsch soll die Granularität des Auditings veränderbar sein
  oder das Auditing auch komplett abschaltbar.
- Dies soll auch wärend der Laufzeit über eine Adminkonsole steuerbar sein.
+ Dies soll auch während der Laufzeit über die Admin-Konsole steuerbar sein.
 \end_layout
 
 \begin_layout Standard
@@ -2322,7 +2317,7 @@ n und die Ausführung zu starten.
 \begin_layout Standard
 In der Anwendungsschicht wird der Prozess ausgewertet 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Annotationen bezüglich der Datenquellen sollten nicht in die aktivitäte
@@ -2378,8 +2373,8 @@ Binden und Auflösen von logischen Namen
 \end_layout
 
 \begin_layout Standard
-Die Datenschicht beeinhaltet alle verwendbaren Datenquellen mit den dazugehörige
-n Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
+Die Datenschicht beinhaltet alle verwendbaren Datenquellen mit den dazugehörigen
+ Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
  der jeweiligen Datenquelle.
 \end_layout
 
@@ -2736,19 +2731,15 @@ Projektdurchführung
 \begin_layout Standard
 Als Prozessmodell für das Projekt, wird ein inkrementelles Modell zum Einsatz
  kommen.
- 
-\end_layout
-
-\begin_layout Standard
-Das heißt, dass wir nach Beendigung des Grobentwurfs mehrere Entwicklungsiterati
-onen durchlaufen werden, welche aus Planung, Implementierung und Tests des
+ Das heißt, dass wir nach Beendigung des Grobentwurfs mehrere Entwicklungsiterat
+ionen durchlaufen werden, welche aus Planung, Implementierung und Test des
  entsprechenden Softwareabschnitts bestehen.
- Dieses Vorgehen bietet sich für das Projekt an, da es sich hierbei um eine
- Kernkomponente handelt, welche nach und nach durch verschiedene Module
- und Plugins erweitert wird.
+ Dieses Vorgehen bietet sich für das Projekt an, da es sich hierbei um die
+ Entwicklung einer Kernkomponente handelt, welche nach und nach durch verschiede
+ne Module und Plug-In's erweitert werden kann.
  Für das Entwicklerteam, aber auch den Kunden, hat dies den Vorteil, dass
  am Ende jeder Iteration ein lauffähiger Prototyp zur Verfügung steht, an
- dem der Kunde mögliche Änderungswünsche frühzeitig äussern kann.
+ dem der Kunde mögliche Änderungswünsche frühzeitig äußern kann.
 \end_layout
 
 \begin_layout Standard
@@ -3154,8 +3145,8 @@ status open
 \begin_inset Graphics
 	filename Gantt_detail.png
 	lyxscale 50
-	width 98text%
-	BoundingBox 0bp 0bp 1181bp 689bp
+	width 100text%
+	BoundingBox 0bp 0bp 585bp 413bp
 
 \end_inset
 
@@ -3367,7 +3358,7 @@ Puffer
 
 \begin_layout Standard
 Die Puffer-Phase ist ein extra Zeitfenster vor dem endgültigen Abgabetermin
- Ende Mai 2010.
+ Mitte Mai 2010.
  In dieser Phase können noch kleinere Änderungswünsche, die der Kunde nach
  dem Abnahmetest eventuell hat, umgesetzt werden.
 \end_layout
@@ -4216,14 +4207,15 @@ he Aspekte, wie Plausibilität, Korrektheit der Aussagen oder die Konsistenz
  des Dokuments, hin untersucht.
  Anschließend wird die SE, falls sie Fehler enthält (positive QS-Prüfung),
  mit entsprechenden Kommentaren zurück an die Verfasser geschickt.
- Eine formal korrekte (negativ QS-geprüfte) SE wird an den Projektleiter
- weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesamten
- SE, im Rahmen seiner Kenntnisse, prüft.
+ Eine formal und inhaltlich korrekte (negativ QS-geprüfte) SE wird an den
+ Projektleiter weitergeleitet, der abschließend nocheinmal den Inhalt und
+ die Korrektheit der gesamten SE, im Rahmen seiner Kenntnisse, prüft.
  Der Projektleiter leitet positiv geprüfte SE mit entsprechenden Kommentaren
  ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
  ausführt.
  Negativ geprüfte SE werden vom Projektleiter falls ein Review geplant ist,
- an die Gutachter geschickt oder freigegeben und erhalten so Auslieferungsstatus.
+ an die Gutachter geschickt oder werden freigegeben und erhalten so Auslieferung
+sstatus.
  Im Review entdeckte Fehler und Mängel werden ebenso wieder von den Verfassern
  korrigiert und der gesamte QS-Prozess danach erneut durchlaufen, siehe
  hierzu Kapitel 
@@ -4253,6 +4245,7 @@ reference "fig:Prüfungsablauf-für-die"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -4262,7 +4255,7 @@ status open
 \begin_inset Graphics
 	filename QS_Ablauf_Entsch.jpeg
 	lyxscale 50
-	width 80text%
+	width 75text%
 
 \end_inset
 
@@ -4319,6 +4312,7 @@ ingungen für bestimmte Tätigkeiten ausgelegt sind und so z.B.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -4404,7 +4398,7 @@ Interne und externe Reviewtermine
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="4">
 <features>
-<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="3.5cm">
 <column alignment="center" valignment="top" width="2cm">
 <column alignment="center" valignment="top" width="4cm">
 <column alignment="center" valignment="top" width="4cm">
@@ -4853,6 +4847,10 @@ Entwickler : 69€ zzgl.
 \begin_layout Standard
 Projektleiter : 99€ zzgl.
  MwSt.
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4915,6 +4913,7 @@ reference "tab:Übersicht-der-Risiken"
 \begin_layout Standard
 \noindent
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -5364,8 +5363,8 @@ Gültigkeit des Angebots
 \end_layout
 
 \begin_layout Standard
-Das Angebot in dieser Form ist, ab Erhalt, unter berücksichtigung der Abwesenhei
-t des Kunden, eine Woche (7 Tage) gültig, d.h.
+Das Angebot in dieser Form ist, ab Erhalt, unter Berücksichtigung der Abwesenhei
+t des Kunden, zwei Wochen (14 Tage) gültig, d.h.
  es verliert seine Gültigkeit nach dem 
 \begin_inset ERT
 status open
@@ -5430,8 +5429,8 @@ CD/DVD mit: Installationspaket (RAR), Dokumentation der Erweiterungen (auf
 \end_layout
 
 \begin_layout Standard
-Die folgenden Meilensteine sind definiert und werden während des Projekts
- erreicht:
+Diese Dokumente werden beim Erreichen folgender definierter Meilensteine
+ dem Auftraggeber geliefert:
 \end_layout
 
 \begin_layout Itemize
@@ -5455,7 +5454,14 @@ Handbuch und
 \end_layout
 
 \begin_layout Itemize
-Abnahmetest
+Abnahmetest.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
