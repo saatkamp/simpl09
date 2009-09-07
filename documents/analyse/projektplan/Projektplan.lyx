@@ -662,7 +662,7 @@ Liefertermin
 \begin_inset Text
 
 \begin_layout Plain Layout
-Spezifikation 
+Spezifikation
 \end_layout
 
 \end_inset
@@ -671,7 +671,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-31.09.2009
+15.10.2009
 \end_layout
 
 \end_inset
@@ -691,7 +691,7 @@ Handbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
-24.04.2010
+17.04.2010
 \end_layout
 
 \end_inset
@@ -896,34 +896,17 @@ Prozessmodell
 \end_layout
 
 \begin_layout Standard
-Strenges Wasserfallmodell: 
-\end_layout
-
-\begin_layout Standard
-Begründung: Das Studienprojekt hat einen sehr straffen Zeitplan, der unbedingt
- eingahlten werden muss.
- So ist es für alle beteiligten(Betreuer, Kunden, Studenten) gut zu wissen
- wo sie sich gerade befinden, was hier gut möglich ist, da ein zurückspringen
- in andere Phasen nicht möglich ist.
- Dies bedeutet jedoch nicht, das nicht zum Beispiel die Spezifikation zu
- späteren Zeitpunkten noch mal übrearbeiten werden könnte, sondern lediglich,
- das man zum überarbeiten der Spezifikation nicht noch einmal in die entsprechen
-de Phase zurückkehrt, sondern die Überarbeitung in der Aktuellen Phase stattfind
-en lässt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Beziehungen zwischen den Projektfunktionen und -aktivitäten mit Hauptmeilenstein
-en, Baselines, Reviews, Produkte (interne und auszuliefernde) und Abschlüsse
-\end_layout
-
-\end_inset
-
-
+Als Prozessmodell für das Projekt, wird ein inkrementelles Modell zum Einsatz
+ kommen.
+ Das heißt, dass wir nach Beendigung des Grobentwurfs mehrere Entwicklungsiterat
+ionen durchlaufen werden, welche aus Planung, Implementierung und Test des
+ entsprechenden Softwareabschnitts bestehen.
+ Dieses Vorgehen bietet sich für das Projekt an, da es sich hierbei um die
+ Entwicklung einer Kernkomponente handelt, welche nach und nach durch verschiede
+ne Module und Plug-In’s erweitert werden kann.
+ Für das Entwicklerteam, aber auch den Kunden, hat dies den Vorteil, dass
+ am Ende jeder Iteration ein lauffähiger Prototyp zur Verfügung steht, an
+ dem der Kunde mögliche Änderungswünsche frühzeitig äußern kann.
 \end_layout
 
 \begin_layout Subsection
@@ -1093,88 +1076,124 @@ Verantwortlichkeiten
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Auflistung aller Projektfunktionen und -aktivitäten unter Nennung der Verantwort
-lichen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
 
 \series bold
+\color black
 Projektleiter: Wolfgang Hüttig (Stellvertreter: Michael Hahn)
-\series default
- 
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
 Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
  Er koordiniert sämtlichen Schriftverkehr und die Kommunikation zwischen
  den Kunden, den Betreuern und dem Team.
  Er ist auch an erster Stelle für das Projekt verantwortlich.
- Seine zentralen Aufgaben liegen in der Verwaltung des Projekts, d.h.
- er plant, bewertet und kontrolliert, und verteilt alle Tätigkeiten und
- Ereignisse während des Projekts.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
+Seine zentralen Aufgaben liegen in der Verwaltung des Projekts, d.h.
+ er plant den Ablauf des Projekts und der einzelnen Phasen, er bewertet
+ und kontrolliert abschließend als letzte Instanz alle erstellten Dokumente
+ vor ihrer Freigabe und kümmert sich um die Verteilung der einzelnen Arbeitspake
+te während des Projekts.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\series bold
 Architekt: Michael Schneidt (Stellvertreter: Daniel Brüderle)
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
 Der Architekt ist zuständig für die Architektur des zu entwickelnden Softwaresys
-tems und die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
+tems, die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
  innerhalb des Softwaresystems.
  Er trifft die grundlegenden Entscheidungen über die Art und den Aufbau
- der Software-Architektur und überwacht deren Einhaltung während der Codierung.
- Der Architekt gewährleistet damit eine einfache Integration der einzelnen
- Software-Komponenten und ermöglicht die einfache Wartbarkeit und Erweiterbarkei
-t des Softwaresystems.
+ der Software-Architektur und überwacht deren Einhaltung während der Projektlauf
+zeit.
+ Die Architektur soll die Einhaltung der unter Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Grobspezifikation"
+
+\end_inset
+
+ genannten Softwarequalitäten sicherstellen.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\series bold
+\color black
 Administrator: René Rehn (Stellvertreter: Michael Schneidt)
 \end_layout
 
 \begin_layout Standard
-Der Administrator ist zuständig für die gesamte Infrastruktur auf Software-
- sowie auch auf Hardware-Ebene für die Projektarbeit.
- Er ist für den Betrieb und die Wartung des Servers und den Betrieb der
- darauf ausgeführten Software verantwortlich.
+\begin_inset VSpace medskip
+\end_inset
+
+Der Administrator ist in der Projektarbeit zuständig für die gesamte Infrastrukt
+ur auf Software- sowie auch auf Hardware-Ebene.
+ Er ist für den Betrieb und die Wartung der Server und den Betrieb der darauf
+ ausgeführten Software verantwortlich.
  Weiterhin sorgt er für die Bereitstellung der nötigen Software-Infrastruktur,
  d.h.
- er liefert die Software, wie z.B.
+ er sorgt dafür, dass die zur Verfügung stehende Software, wie z.B.
  Werkzeuge für Entwicklung, Test und Entwurf, die zur Realisierung des Projekts
- benötigt wird.
-\end_layout
-
-\begin_layout Subsubsection
-Qualitätsmanagment: Michael Hahn, Firas Zoabi
+ benötigt wird, für das Projekt eingerichtet und betriebsbereit ist..
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\series bold
+\color black
+Qualitätsmanagement: Michael Hahn, Firas Zoabi
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
 Der Qualitätsmanager sorgt dafür, dass alle Dokumente und auch Software-Komponen
-ten eine bestimmte Qualität besitzen.
+ten die bestmögliche Qualität besitzen.
  Diese Qualität soll durch die Definition und Einhaltung von Richtlinien,
  durch die ständige Durchführung von Qualitätskontrollen und durch die Erstellun
 g von einheitlichen Dokumentvorlagen erreicht werden.
  So soll während des gesamten Projektverlaufs die Qualität der Dokumente
  und Software-Einheiten maximiert werden.
-\end_layout
-
-\begin_layout Subsubsection
-Entwickler: Firas, Michael S., Michael H., Xi, Daniel, René
+ 
 \end_layout
 
 \begin_layout Standard
-Als Entwickler arbeiten alle Teammitglieder ausser dem Projektleiter.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\series bold
+\color black
+Entwickler: Michael Schneidt, René Rehn, Daniel Brüderle, Michael Hahn,
+ Firas Zoabi, Xi Tu
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Als Entwickler arbeiten alle Teammitglieder außer dem Projektleiter.
  Ein Entwickler arbeitet dabei im Rahmen der vom Projektleiter erteilten
  Aufgaben an Dokumenten und Software-Komponenten.
 \end_layout
@@ -1248,7 +1267,6 @@ Aufgrund der geforderten sehr breiten Verwendungsmöglichkeiten im Rahmen
 
 \begin_layout Standard
 \noindent
-\align center
 \begin_inset Float table
 placement H
 wide false
@@ -1256,15 +1274,40 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Übersicht-der-Risiken"
+
+\end_inset
+
+Übersicht der Risiken und geplanten Gegenmaßnahmen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="12" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
 <column alignment="left" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="7cm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1316,7 +1359,7 @@ Gegenmaßnahmen
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mitarbeiter fällt aus
+Mitarbeiter fällt zeitweise aus
 \end_layout
 
 \end_inset
@@ -1325,7 +1368,7 @@ Mitarbeiter fällt aus
 \begin_inset Text
 
 \begin_layout Plain Layout
-20
+15
 \end_layout
 
 \end_inset
@@ -1343,7 +1386,8 @@ Mitarbeiter fällt aus
 \begin_inset Text
 
 \begin_layout Plain Layout
-Wissen teilen, Zeitarbeit
+Wöchentliche Treffen (Informationsaustausch), Ernennung von Stellvertretern
+ und Erstellung von internen Dokumentationen
 \end_layout
 
 \end_inset
@@ -1354,7 +1398,7 @@ Wissen teilen, Zeitarbeit
 \begin_inset Text
 
 \begin_layout Plain Layout
-Produkthaftung
+Mitarbeiter fällt dauerhaft aus
 \end_layout
 
 \end_inset
@@ -1363,7 +1407,7 @@ Produkthaftung
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+10
 \end_layout
 
 \end_inset
@@ -1372,7 +1416,7 @@ Produkthaftung
 \begin_inset Text
 
 \begin_layout Plain Layout
-1-10 MM
+4 MM
 \end_layout
 
 \end_inset
@@ -1381,7 +1425,7 @@ Produkthaftung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Versicherung abschliessen
+Rücksprache mit den Kunden
 \end_layout
 
 \end_inset
@@ -1401,7 +1445,7 @@ Versicherung abschliessen
 \begin_inset Text
 
 \begin_layout Plain Layout
-50
+20
 \end_layout
 
 \end_inset
@@ -1419,7 +1463,7 @@ Versicherung abschliessen
 \begin_inset Text
 
 \begin_layout Plain Layout
-Flexible Struktur herstellen, regelmäßige Rücksprache mit Kunden
+genaue Anforderungserhebung und regelmäßige Rücksprache mit den Kunden
 \end_layout
 
 \end_inset
@@ -1430,7 +1474,7 @@ Flexible Struktur herstellen, regelmäßige Rücksprache mit Kunden
 \begin_inset Text
 
 \begin_layout Plain Layout
-Qualität nicht ausreichend
+Anforderungen werden nicht oder nur teilweise erfüllt
 \end_layout
 
 \end_inset
@@ -1457,7 +1501,7 @@ Qualität nicht ausreichend
 \begin_inset Text
 
 \begin_layout Plain Layout
-längere Testphase
+ausgiebige Tests, regelmäßige Rücksprache mit den Kunden und Prototyping
 \end_layout
 
 \end_inset
@@ -1468,7 +1512,7 @@ längere Testphase
 \begin_inset Text
 
 \begin_layout Plain Layout
-Werkzeuge nicht einsetzbar
+Ausgewähltes Werkzeug stellt sich als unbrauchbar heraus
 \end_layout
 
 \end_inset
@@ -1486,7 +1530,7 @@ Werkzeuge nicht einsetzbar
 \begin_inset Text
 
 \begin_layout Plain Layout
-5 MM
+0,5 MM
 \end_layout
 
 \end_inset
@@ -1495,7 +1539,7 @@ Werkzeuge nicht einsetzbar
 \begin_inset Text
 
 \begin_layout Plain Layout
-Organisatorischer Slack schaffen
+genaue Evaluation der Werkzeuge vor ihrem Einsatz
 \end_layout
 
 \end_inset
@@ -1506,128 +1550,7 @@ Organisatorischer Slack schaffen
 \begin_inset Text
 
 \begin_layout Plain Layout
-Infrastruktur Probleme
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-20
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-einheitliche, zertifizierte Hardware
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Anforderungen werden unterschätzt
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-40
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Schulungen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Software nicht lauffähig
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-20
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Prototyping
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-Wildwuchs
-\begin_inset Quotes erd
-\end_inset
-
- der Änderungen
+Nicht realisierbare Anforderungen
 \end_layout
 
 \end_inset
@@ -1645,83 +1568,46 @@ Wildwuchs
 \begin_inset Text
 
 \begin_layout Plain Layout
+4 MM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+frühzeitige Evaluierung der einzusetzenden Technologien und Rücksprache
+ mit den Kunden
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chaotische Änderungen der Dokumente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 2 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Versionsmanagement
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Entwicklungsverzug
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6 MM
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Überstunden
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kundenwünsche unrealistisch
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1-5 MM
 \end_layout
 
 \end_inset
@@ -1730,25 +1616,17 @@ Kundenwünsche unrealistisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-Anforderungen reduzieren.
+ausgiebige Dokumentprüfung durch Qualitätssicherung und Projektleiter
+\end_layout
+
+\begin_layout Plain Layout
+Konfigurationsverwaltung mit Subversion
 \end_layout
 
 \end_inset
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Identifizierte Risiken und ihre geplanten Gegenmaßnahmen
-\end_layout
 
 \end_inset
 
@@ -3598,10 +3476,34 @@ Zuteilung des Budgets und der Ressourcen auf Projektfunktionen und Aktivitäten
 
 \begin_layout Standard
 \begin_inset Float table
-placement H
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Phasen-des-Projekts"
+
+\end_inset
+
+Phasen des Projekts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \noindent
@@ -3670,7 +3572,7 @@ Analyse
 \begin_inset Text
 
 \begin_layout Plain Layout
-658 h
+306 h
 \end_layout
 
 \end_inset
@@ -3690,7 +3592,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.07.2009-07.08.2009
+17.07.2009-17.09.2009
 \end_layout
 
 \end_inset
@@ -3699,7 +3601,7 @@ Einarbeitung
 \begin_inset Text
 
 \begin_layout Plain Layout
-252 h
+208 h
 \end_layout
 
 \end_inset
@@ -3719,7 +3621,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.08.2009-31.09.2009
+07.08.2009-15.10.2009
 \end_layout
 
 \end_inset
@@ -3728,7 +3630,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-588 h
+544 h
 \end_layout
 
 \end_inset
@@ -3748,7 +3650,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-31.09.2009-01.12.2009
+15.10.2009-15.12.2009
 \end_layout
 
 \end_inset
@@ -3757,7 +3659,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-672 h
+628 h
 \end_layout
 
 \end_inset
@@ -3768,7 +3670,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-Codierung
+Implementierung
 \end_layout
 
 \end_inset
@@ -3777,7 +3679,7 @@ Codierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-01.12.2009-22.02.2010
+13.11.2009-25.02.2010
 \end_layout
 
 \end_inset
@@ -3786,7 +3688,7 @@ Codierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-924 h
+880 h
 \end_layout
 
 \end_inset
@@ -3806,7 +3708,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-22.02.2010-17.04.2010
+15.12.2010-17.04.2010
 \end_layout
 
 \end_inset
@@ -3815,7 +3717,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-588 h
+544 h
 \end_layout
 
 \end_inset
@@ -3835,7 +3737,7 @@ Abnahmetest
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.04.2010
+17.04.2010-27.04.2010
 \end_layout
 
 \end_inset
@@ -3873,31 +3775,13 @@ Puffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-294 h
+250 h
 \end_layout
 
 \end_inset
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:Verteilung-des-Zeitbudgets"
-
-\end_inset
-
-Verteilung des Zeitbudgets
-\end_layout
 
 \end_inset
 
