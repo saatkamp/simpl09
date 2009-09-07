@@ -1577,6 +1577,150 @@ Sprache
 \end_layout
 
 \begin_layout Section
+Usecases
+\end_layout
+
+\begin_layout Subsection
+Eclipse BPEL Designer
+\end_layout
+
+\begin_layout Subsubsection
+Authentifizierung/Autorisierung
+\end_layout
+
+\begin_layout Enumerate
+Authentifizierungsparameter angeben
+\end_layout
+
+\begin_layout Subsubsection
+Aktivitäten erstellen, Aktivitäten löschen, Aktivitäten ändern
+\end_layout
+
+\begin_layout Enumerate
+Select
+\end_layout
+
+\begin_layout Enumerate
+Insert
+\end_layout
+
+\begin_layout Enumerate
+Update
+\end_layout
+
+\begin_layout Enumerate
+Delete
+\end_layout
+
+\begin_layout Enumerate
+Create
+\end_layout
+
+\begin_layout Enumerate
+Call Procedure
+\end_layout
+
+\begin_layout Enumerate
+Retrive Set
+\end_layout
+
+\begin_layout Enumerate
+Write Back
+\end_layout
+
+\begin_layout Enumerate
+Import
+\end_layout
+
+\begin_layout Enumerate
+Export
+\end_layout
+
+\begin_layout Enumerate
+Move
+\end_layout
+
+\begin_layout Subsubsection
+Dattenquelle auswählen
+\end_layout
+
+\begin_layout Enumerate
+Datenquelle manuell auswählen
+\end_layout
+
+\begin_layout Enumerate
+Datenquelle per Strategie auswählen
+\end_layout
+
+\begin_layout Enumerate
+Datenquelle per physikalische Adresse auswählen
+\end_layout
+
+\begin_layout Enumerate
+Strategie auswählen
+\end_layout
+
+\begin_layout Enumerate
+Datenquellen Eigenschaften festlegen
+\end_layout
+
+\begin_layout Enumerate
+Datenquellen Art auswählen???????????
+\end_layout
+
+\begin_layout Subsection
+Annotations
+\end_layout
+
+\begin_layout Enumerate
+Erstellen
+\end_layout
+
+\begin_layout Enumerate
+Laden
+\end_layout
+
+\begin_layout Enumerate
+Speichern
+\end_layout
+
+\begin_layout Enumerate
+Bearbeiten
+\end_layout
+
+\begin_layout Enumerate
+Löschen
+\end_layout
+
+\begin_layout Subsection
+Adminkonsole
+\end_layout
+
+\begin_layout Subsubsection
+Monitoring/Auditing
+\end_layout
+
+\begin_layout Enumerate
+Anschalten
+\end_layout
+
+\begin_layout Enumerate
+Abschalten
+\end_layout
+
+\begin_layout Enumerate
+Granularität ändern/festlegen
+\end_layout
+
+\begin_layout Enumerate
+Auditing Db festlegen
+\end_layout
+
+\begin_layout Subsection*
+
+\end_layout
+
+\begin_layout Section
 Änderungsgeschichte
 \end_layout
 
