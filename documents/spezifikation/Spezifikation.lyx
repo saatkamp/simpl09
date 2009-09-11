@@ -1668,6 +1668,18 @@ Datenquellen Eigenschaften festlegen
 Datenquellen Art auswählen???????????
 \end_layout
 
+\begin_layout Subsubsection
+Sonstiges Funktinalität
+\end_layout
+
+\begin_layout Enumerate
+Adminkonsole öffnen.
+\end_layout
+
+\begin_layout Enumerate
+Prozess deployn.
+\end_layout
+
 \begin_layout Subsection
 Annotations
 \end_layout
@@ -1716,8 +1728,72 @@ Granularität ändern/festlegen
 Auditing Db festlegen
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsubsection
+Referenzen
+\end_layout
 
+\begin_layout Enumerate
+Einfügen (rrs)
+\end_layout
+
+\begin_layout Enumerate
+Bearbeiten (rrs)
+\end_layout
+
+\begin_layout Enumerate
+Löschen (rrs)
+\end_layout
+
+\begin_layout Subsection
+Interne Usecases
+\end_layout
+
+\begin_layout Subsubsection
+RRS
+\end_layout
+
+\begin_layout Enumerate
+Referenz auflösen (dereferenzieren)
+\end_layout
+
+\begin_layout Enumerate
+Plugin einfügen????????????????
+\end_layout
+
+\begin_layout Subsubsection
+Aktivitäten
+\end_layout
+
+\begin_layout Enumerate
+Ausführen
+\end_layout
+
+\begin_layout Enumerate
+Kompensieren
+\end_layout
+
+\begin_layout Enumerate
+Rollback (deutsch?) Wiederherstellung???
+\end_layout
+
+\begin_layout Subsubsection
+Late Bindung
+\end_layout
+
+\begin_layout Enumerate
+Datenquellan abrufen (woher auch immer)
+\end_layout
+
+\begin_layout Enumerate
+Annotation auswerten.(Schneimi weiß es)
+\end_layout
+
+\begin_layout Enumerate
+Liste filtern (anhand der Eigenschaften)
+\end_layout
+
+\begin_layout Enumerate
+Datenquelle per Strategie auswählen.
 \end_layout
 
 \begin_layout Section
