@@ -952,6 +952,29 @@ Nichtfunktionale Anforderungen
 Mengengerüst
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+-hier soll darüber argumintiert wieviele Datenquellen gleichzeitig angebunden
+ und wervendet werden können.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+-wieviel Benutzern den plugin gleichzeitig wenn überhaupt benutzen können.
+\end_layout
+
+\begin_layout Plain Layout
+-...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Benutzbarkeit
 \end_layout
@@ -972,6 +995,27 @@ Robustheit
 
 \begin_layout Subsection
 Sicherheit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die Verbindung zwischen Client auf der DatenBanken erfolgt über vom Admin
+ vordefinierte bzw.
+ vorgegebene Username und passwört (Einlogdaten).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Der Administratot und alle anedere Verwaltung-Aktuere haben eigene von der
+ normale Benutzern unabängige Passwort.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
