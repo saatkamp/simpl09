@@ -11,7 +11,10 @@
 
 \usepackage{babel}
 
-%Packages für eigen definierte Header und Footer
+% Package für das Einfärben von Tabellen
+\usepackage{colortbl}
+
+% Packages für eigen definierte Header und Footer
 \usepackage{lastpage}
 \usepackage{fancyhdr}
 
@@ -20,11 +23,11 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
-\def\docvers{1.0}
-\def\docautor{Firas Zoabi, Michael Schneidt,Daniel Brüderle, René Rehn}
-\def\docdate{01. August 2009}
+\def\docvers{0.1}
+\def\docautor{Max Mustermann}
+\def\docdate{11. September 2009}
 
-% docstate = Status des Dokuments aus {neu, bearbeitet} 
+% docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
 % proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
 % reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
@@ -34,6 +37,9 @@
 \def\proofstate{nicht geprüft}
 \def\reviewstate{kein Review durchgeführt}
 \def\endstate{-}
+
+% Definierter Grauton für die Tabellenfärbung
+\definecolor{lightgray}{rgb}{0.7,0.7,0.7}
 
 %Nicht einrücken
 %\setlength{\parindent}{0pt}
@@ -53,7 +59,16 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -432,375 +447,14 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Section
-Einleitung
-\end_layout
-
-\begin_layout Subsection
-Zweck des Dokument
-\end_layout
-
-\begin_layout Standard
-Die Spezifikation wird in allen Projektphasen als Referenzdokument verwendet.
- Sie dient als Orientierungsinstrument für den Entwicklern in allen Entwicklungs
-phasen.
- 
-\end_layout
-
-\begin_layout Standard
-Die Spezifikation:
-\end_layout
-
-\begin_layout Itemize
-wird auch für die Einhaltung der Anforderungen und Projektziele zwischen
- Auftraggeber und Auftragnehmer benutzt
-\end_layout
-
-\begin_layout Itemize
-dient als ein Masstab, um zu überprüfen, ob die Software im laufe der Pojektentw
-icklung korrekt entwickelt wird
-\end_layout
-
-\begin_layout Itemize
-wird zur Erstellung des Testplan sowie zur Erstellung der Testfälle genutzt
-\end_layout
-
-\begin_layout Itemize
-dient die Herstellung des Handbuches
-\end_layout
-
-\begin_layout Standard
-Wegen alle oben genannte Anwendungsfälle und Wichtigkeit dieses Dokumentes
- muss dieser bei jeder Änderung der Anforderungen oder Funktionalitäten
- aktualiesiert werden.
-\end_layout
-
-\begin_layout Subsection
-Übersicht über das Dokument
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-es soll ein überblick gegeben , welche Paragraphen beinhaltet dieses Spezifikati
-on und welche hauptpunkte es behandelt.
- Ähnlich wie Gliederung aber stichpunkt-mässig.
-\end_layout
-
-\end_inset
-
-Dieses Dokument behandelt drei Verschiedene Kapiteln:
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-Allgemeine Beschreibung 
-\series default
-behandelt alle nicht funktionale aspekte, die den Projekt direkt 
-\begin_inset Newline newline
-\end_inset
-
-betriffen wie Benutzergruppe und Beschränkungen.
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-SIMPL
-\series default
- beinhaltet alle direkt projektbezogene Beschreibung wie die grobe Architektur,
- sowie BPEL-Prozess und die Erweiterbarkeit des BPEL-Designer Plugin.
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-Weitere Anforderungen
-\series default
- fasst alle Elemente zusammen, die die Systemrahmen bzw.
- Systemumgebung konstruieren, wie technische, nicht-Funktionale und allgemeine
- Anfordetungen.
-\end_layout
-
-\begin_layout Subsection
-Referenzierte Dokumente
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-hier dokumentieren wir die dokumente, die im zusammenhang mit der Spezifikation
- stehen .
- Begriffslexikon und Projektplan und natürlich über jedes Dokument kurzes
- Text was, und wofür.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Begriffslexikon: Durch das Begriffslexikon werden alle Begriffe, Definitionen
- und Abkürzungen definiert, die zu Missverständnissen innerhalb des Projektteams
- oder zwischen Projektteam und Kunde führen könnten.
- Das Begriffslexikon enthält sowohl technische als auch fachliche Begriffe.
-\end_layout
-
-\begin_layout Itemize
-Projektplan: Der Projektplan stellt der zeitlichen Ablauf des Projekts dar.
- Sowohl enthält der Projektplan gewisse Rahmenbedingungen für das Projekt.
- Insbesondere sind dies die eingesetzten Technologien und die Rahmenbedingungen
- für die Entwicklung.
-\end_layout
-
-\begin_layout Subsection
-Begriffe, Definitionen und Abkürzungen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-hier soll darauf hingewiessen werden ,dass die Begriffe und Definitionen
- in dieser Spezifikation sind im Begrifflexikon klare dargestellt bzw.
- definiert.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Begriffe, Definitionen und Abkürzungen, die in der Spezifikation verwendet
- werden, sind in der beigefügte Begriffslexikon, wie im vorhergehenden Abschnitt
- beschrieben ist, definiert und eindeudig erklärt.
-\end_layout
-
-\begin_layout Standard
-Dies dient dazu, Missverständnisse zu vermeiden und die Fachbegriffe leichter
- zu verstehen.
-\end_layout
-
-\begin_layout Section
-Allgemeine Beschreibung
-\end_layout
-
-\begin_layout Subsection
-Projektteam-Organisation
-\end_layout
-
-\begin_layout Standard
-In diesem Abschnitt wird die Organisation des Projektteams vorgestellt.
- Alle Teammitglieder haben dabei mindestens eine bestimmte Rolle, die mit
- entsprechenden Aufgaben und Pflichten verknüpft ist.
- Nachfolgend werden diese Rollen beschrieben und die Teammitglieder, die
- diese Rolle besitzen, angegeben.
- Danach folgen noch die Kontaktdaten aller Teammitglieder, damit der Kunde
- bei spezifischen Fragen direkt mit dem Verantwortlichen oder bei nicht
- erreichen des Projektleiters mit dessen Stellvertreter Kontakt aufnehmen
- kann.
- 
-\end_layout
-
-\begin_layout Subsection
-Rollen im Team
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\color black
-Projektleiter: Wolfgang Hüttig (Stellvertreter: Michael Hahn)
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-Der Projektleiter ist der zentrale Ansprechpartner für den Kunden.
- Er koordiniert sämtlichen Schriftverkehr und die Kommunikation zwischen
- den Kunden, den Betreuern und dem Team.
- Er ist auch an erster Stelle für das Projekt verantwortlich.
-\end_layout
-
-\begin_layout Standard
-Seine zentralen Aufgaben liegen in der Verwaltung des Projekts, d.h.
- er plant den Ablauf des Projekts und der einzelnen Phasen, er bewertet
- und kontrolliert abschließend, als letzte Instanz, alle erstellten Dokumente
- vor ihrer Freigabe und er kümmert sich um die Verteilung der einzelnen
- Arbeitspakete während des Projekts.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Architekt: Michael Schneidt (Stellvertreter: Daniel Brüderle)
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-Der Architekt ist zuständig für die Architektur des zu entwickelnden Softwaresys
-tems und die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
- innerhalb des Softwaresystems.
- Er trifft die grundlegenden Entscheidungen über die Art und den Aufbau
- der Software-Architektur und überwacht deren Einhaltung während der Projektlauf
-zeit.
- Die Architektur soll die Einhaltung der unter Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Grobspezifikation"
-
-\end_inset
-
- genannten Softwarequalitäten sicherstellen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\color black
-Administrator: René Rehn (Stellvertreter: Michael Schneidt)
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-Der Administrator ist in der Projektarbeit zuständig für die gesamte Infrastrukt
-ur auf Software- sowie auch auf Hardware-Ebene.
- Er ist für den Betrieb und die Wartung der Server und den Betrieb der darauf
- ausgeführten Software verantwortlich.
- Weiterhin sorgt er für die Bereitstellung der nötigen Software-Infrastruktur,
- d.h.
- er sorgt dafür, dass die zur Verfügung stehende Software, wie z.B.
- Werkzeuge für Entwicklung, Test und Entwurf, die zur Realisierung des Projekts
- benötigt wird, für das Projekt eingerichtet und betriebsbereit ist..
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\color black
-Qualitätsmanagement: Michael Hahn, Firas Zoabi
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Qualitätsmanager sorgt dafür, dass alle Dokumente und auch Software-Komponen
-ten die bestmögliche Qualität besitzen.
- Diese Qualität soll durch die Definition und Einhaltung von Richtlinien,
- durch die ständige Durchführung von Qualitätskontrollen und durch die Erstellun
-g von einheitlichen Dokumentvorlagen erreicht werden.
- So soll während des gesamten Projektverlaufs die Qualität der Dokumente
- und Software-Einheiten maximiert werden.
- Der genaue Ablauf der Qualitätssicherung wird in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Qualitätssicherung-und-Konfigurationsmanagement"
-
-\end_inset
-
- beschrieben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\color black
-Entwickler: Michael Schneidt, René Rehn, Daniel Brüderle, Michael Hahn,
- Firas Zoabi, Xi Tu
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-Als Entwickler arbeiten alle Teammitglieder außer dem Projektleiter.
- Ein Entwickler arbeitet dabei im Rahmen der vom Projektleiter erteilten
- Aufgaben an Dokumenten und Software-Komponenten.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename E:/StuproA/Projekt_Workspace/Repository/documents/analyse/Projektangebot/rollen.png
-	lyxscale 50
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Rollen-im-Team"
-
-\end_inset
-
-Rollen im Team
-\end_layout
-
-\end_inset
-
-
+Beschreibungen, was in welchem Abschnitt (von Abschnitt 1 bis 2) erwartet
+ wird, sind im Buch von Prof.
+ Ludewig zu finden (Seite 363 f.).
 \end_layout
 
 \end_inset
@@ -809,78 +463,42 @@ Rollen im Team
 \end_layout
 
 \begin_layout Section
-Ausgangssituation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-allgemeine Beschreibung für das Projekt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Zur Modellierung und Ausführung von Business Workflows wird die Sprache
- BPEL (Business Process Execution Language) bereits lange und effektiv eingesetz
-t.
- Die Stärken von BPEL, die ,wie der Name schon sagt, im Bereich der Geschäftspro
-zesse liegen, sollen nun auch für wissenschaftliche Workflows genutzt werden
- können.
- Im wissenschaftlichen Bereich gelten andere Anforderungen und dafür ist
- BPEL bis jetzt noch nicht geeignet.
- Da aber auch im wissenschaftlichen Bereich immer öfter Workflows eingesetzt
- werden, sei es bei der Durchführung von komplexen Berechnungen im Rahmen
- von Simulationen oder bei der Ausführung von Experimenten, sollen mithilfe
- einer Anpassung von BPEL die wissenschaftlichen Bedürfnisse an BPEL erfüllt
- werden.
- Gekennzeichnet sind wissenschaftliche Workflows in der Regel durch große
- Datenmengen, die Heterogenität der Daten und somit den Bedarf nach großer
- Rechenkapazität.
- Diesen Anforderungen soll durch die neu zu entwickelnde Software Rechnung
- getragen werden.
+Einleitung
 \end_layout
 
 \begin_layout Subsection
-Entwicklungsgrundlagen
+Zweck des Dokuments
 \end_layout
 
 \begin_layout Standard
-Die Entwicklung von SIMPL erfolgt nach erprobten softwaretechnischen Prinzipien.
- Dadurch wird eine hohe Qualität des Produkts gewährleistet.
- Wichtige Qualitäten sind dabei die Wartbarkeit und die Erweiterbarkeit
- des Systems, da es über einen längeren Zeitraum bestehen soll und in Zukunft
- um die Anbindung weiterer Datenquellen, Konzepte für den Datenzugriff und
- den Umgang mit weiteren Datenformaten ergänzt werden soll.
- Eine weitere wichtige Qualität ist die Skalierbarkeit des Systems, die
- eine sehr flexible Infrastruktur erlauben muss, da die Computersysteme,
- auf denen SIMPL später ausgeführt wird, in ihrer Leistung sehr weit auseinander
- gehen, d.h.
- vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
- möglich sein.
+Diese Spezifikation ist die Grundlage für alle weiteren Dokumente, die im
+ Rahmen dieses Projekts entstehen.
+ In ihr sind sämtliche Anforderungen an die zu entwickelnde Software festgelegt.
+ Sie muss stets mit den anderen Dokumenten, insbesondere mit dem Entwurf
+ und der Implementierung, konsistent gehalten werden.
+ Die Spezifikation dient den Team-Mitgliedern als Grundlage und Richtschnur
+ für die Entwicklung der Software und den Kunden als Zwischenergebnis zur
+ Kontrolle.
 \end_layout
 
 \begin_layout Standard
-Robustheit und Usability der Software sind für uns innerhalb des Entwicklungspro
-zesses von großem Interesse.
- Die Usability sollte sich vor allem an unerfahrene und Nutzer mit wenig
- Kenntnissen im Umgang mit Workflows und BPEL richten und dafür die bestmögliche
- Transparenz liefern, d.h.
- das die interne Prozesslogik der Software bestmöglich vom Benutzer abgeschirmt
- wird und das er eine möglichst einfache und schnell verständliche Schnittstelle
- zur Software erhält, um die Verwendung von SIMPL für alle Benutzergruppen
- zu ermöglichen.
- 
+Zum Leserkreis dieser Spezifikation gehören: 
+\end_layout
+
+\begin_layout Itemize
+Die Entwickler der Software, 
+\end_layout
+
+\begin_layout Itemize
+die Kunden und
+\end_layout
+
+\begin_layout Itemize
+die Gutachter der Spezifikationsreviews.
 \end_layout
 
 \begin_layout Subsection
-Projektaufgabe
+Einsatzbereich und Ziele
 \end_layout
 
 \begin_layout Standard
@@ -909,15 +527,8 @@ Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk für
  und mit der BPEL-Engine ausgeführt werden können.
 \end_layout
 
-\begin_layout Standard
-In den nachfolgenden Abschnitten werden die aufgenommenen Anforderungen
- der Kundengespräche, das vorläufige grobe Gesamtkonzept und die vorläufige
- Software-Architektur, sowie die vorläufige vollständige Systemumbegung
- des Rahmenwerks beschrieben.
-\end_layout
-
 \begin_layout Subsection
-Benutzergruppe
+Definitionen
 \end_layout
 
 \begin_layout Standard
@@ -925,8 +536,7 @@ Benutzergruppe
 status open
 
 \begin_layout Plain Layout
-hier gehts darum für wem ist der Egebniss dieser Projkt.
- Zielgruppe ...
+Verweis auf Begriffslexikon
 \end_layout
 
 \end_inset
@@ -934,452 +544,55 @@ hier gehts darum für wem ist der Egebniss dieser Projkt.
 
 \end_layout
 
-\begin_layout Enumerate
-Benutzer sind im Normalfall Wissenschaftler und Ingenieure.
-\end_layout
-
-\begin_layout Enumerate
-Benutzer haben keine bis wenig Vorkentnisse im Bereich Workflow und Informatik.
-\end_layout
-
 \begin_layout Subsection
-Einschränkungen
+Überblick
+\end_layout
+
+\begin_layout Standard
+In diesem Dokument werden alle Anforderungen des Kunden festgehalten.
+ Nach einem kurzen Überblick über das Projekt selbst, folgen sowohl nichtfunktio
+nale als auch funktionale Anforderungen an das zu entwickelnde Produkt.
+ Die Beschreibung der funktionalen Anforderung, also des Funktionsumfangs,
+ geschieht durch Use-Cases, sowie durch die Beschreibung der späteren Benutzerob
+erfläche.
+ Ebenso wichtig ist die Beschreibung der nichtfunktionalen Anforderungen,
+ die eventuelle Abhängigkeiten, Einschränkungen, Größenordnungen und Bedingungen
+ im Bezug auf Portabilität, Robustheit, Sicherheit und weitere Aspekte beschreib
+en.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+noch sinnvoll abändern und erweitern (anhand der finalen Dokumentstruktur)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-SIMPL 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Spezifiche Beschreibung für das Projektziel .
- Eine graphische Darstellung für ein Beispiel wissin.
- Workflow mithilfe von Bpel-Prozess ist sehr angebracht .es verschaft besseren
- überblick bei den Kunden sowie im Projektteam.
-\end_layout
-
-\end_inset
-
-
+Allgemeine Beschreibung
 \end_layout
 
 \begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Grobspezifikation"
-
-\end_inset
-
-Grobspezifikation
+Einbettung
 \end_layout
 
 \begin_layout Standard
-Folgende grundlegende Anforderungen sollen im Rahmen des Projektes umgesetzt
- werden.
-\end_layout
-
-\begin_layout Subsubsection
-Funktionale Anforderungen:
-\end_layout
-
-\begin_layout Enumerate
-Das Rahmenwerk soll als Eclipse Plug-In verwendet werden.
-\end_layout
-
-\begin_layout Enumerate
-Verarbeitung von großen heterogenen Datenmengen im Rahmen eines wissenschaftlich
-en Workflows.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\color black
-BPEL:
-\end_layout
-
-\begin_layout Enumerate
-Fehlerbehandlung und Kompensation im Workflow.
-\end_layout
-
-\begin_layout Enumerate
-Unterstützung von Referenzen in BPEL-Prozessen
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Referenzen (z.B.
- auf eine Tabelle) im SQL Statement via BPEL Variable
-\end_layout
-
-\begin_layout Enumerate
-Implementierung eines Reference Resolution System in einer Testumgebung
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Referenz/ Pointer im BPEL Prozess auflösen
-\end_layout
-
-\begin_layout Enumerate
-Bei Daten, die nicht für die Prozesslogik, soll die Referenz / der Pointer
- vom Service aufgelöst werden (zur Entlastung der Engine)
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-
-\series bold
-BPEL Aktivitäten:
-\end_layout
-
-\begin_layout Enumerate
-Alle generischen BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt
- werden, müssen erstellt werden.
-\end_layout
-
-\begin_layout Enumerate
-Das Anlegen, Löschen und Ändern von DB-Tabellen soll möglich sein.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Anbindung von Datenquellen:
-\end_layout
-
-\begin_layout Enumerate
-Late-binding bei Datenquellen: Kriterien zur Beschreibung von Datenquellen
- – Annotation von Datenquellen, Modellierung der Anforderungen an eine Datenquel
-le (durch den Benutzer), Strategien zur Auswahl einer geeigneten Datenbank.
-\end_layout
-
-\begin_layout Enumerate
-Anforderungen an eine Datenquelle sollen, falls die Datenquelle über einen
- Web-Service eingebunden ist, mit Anotation mit/über “QUALITY OF SERVICE”
- angegeben werden, sonst statische Auswahl einer Datenquelle zur Modellierungs-
- oder Laufzeit.
-\end_layout
-
-\begin_layout Enumerate
-Ein Nutzer soll angeben können, was die Datenquelle können muss und das
- Rahmenwerk wählt eine passende Datenquelle aus (Strategie).
-\end_layout
-
-\begin_layout Enumerate
-Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle gestellt
- werden können sollten, wird über die Definition eines Anforderungskataloges,
- der nach Fertigstellung mit dem Kunden abgesprochen werden muss, realisiert.
-\end_layout
-
-\begin_layout Enumerate
-Ebenso sollen auch Strategien für die Auswahl von Datenquellen anhand definierte
-r Anforderungen entwickelt und mit dem Kunden abgesprochen werden.
-\end_layout
-
-\begin_layout Enumerate
-Die Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
- angegebenen Anforderungen verwendet werden, müssen selbst definiert und
- anschließend mit dem Kunden abgesprochen werden.
-\end_layout
-
-\begin_layout Enumerate
-Die Auswertung der Anotationen und die Verarbeitung der darin enthaltenen
- Informationen soll, ebenfalls selbst definiert und anschließend mit dem
- Kunden abgesprochen werden.
-\end_layout
-
-\begin_layout Enumerate
-Adressierung der Datenbanken: Statisch über konkrete Adresse oder dynamisch
- über logische Adresse.
-\end_layout
-
-\begin_layout Enumerate
-Anbindung soll generisch sein, soviele Anbindungen wie möglich realisieren.
- Als Minimum gilt: IBM DB2 + OpenSourceDB’s (mind.
- 1*RDB + mind.
- 1*XMLDB) + mind.
- 1*SensorDB (z.B.
- TinyDB).
-\end_layout
-
-\begin_layout Enumerate
-Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozess
- möglich sein, dazu besitzt jede Aktivität seine eigene Datenquellen-Referenz.
-\end_layout
-
-\begin_layout Enumerate
-Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
- mindestens SQL und XQuery.
-\end_layout
-
-\begin_layout Enumerate
-Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
- Konzepte frei wählbar.
-\end_layout
-
-\begin_layout Enumerate
-Es soll möglich sein, dass Daten aus Datenbanken aus einem Prozess auch
- in lokale Dateien exportiert werden können.
- Dabei gilt: XML als Standardformat (siehe IBM Ansatz: RDB-Tabellen <->XML).
-\end_layout
-
-\begin_layout Enumerate
-Datenbanken existieren bereits und müssen nicht durch das Rahmenwerk erstellt
- werden.
- Weiterhin sollen aber Schema-Definitionen möglich sein und das Erstellen,
- Ändern und Löschen von Tabellen innerhalb der Schemas.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Autorisierung und Authentifizierung:
-\end_layout
-
-\begin_layout Enumerate
-Autorisierung und Authentifizierung soll momentan nur für Datenquellen bereitges
-tellt werden, allerdings soll eine spätere Erweiterung einfach realisiert
- werden können.
-\end_layout
-
-\begin_layout Enumerate
-Für die Authentifizierung sind verschiedene Verfahren gewünscht, sodass
- in jeder Situation das Bestmögliche verwendet wird.
-\end_layout
-
-\begin_layout Enumerate
-Die Autorisierung und die Authentifizierung sollen, über einen Single-Sign-On
- entweder im Prozess oder in der Instanz, beim Zugriff auf Datenquellen
- durchgeführt werden.
-\end_layout
-
-\begin_layout Enumerate
-Autorisierung und Authentifizierung sollen auf die Ausführung von Prozessen
- beschränkt sein.
-\end_layout
-
-\begin_layout Enumerate
-Autorisierungs- und Authentifizierungsparameter für einen Prozess sollen
- auf Datenquellenebene spezifiziert werden, d.h.
- bei Datenbanken über Schema und bei Dateisystemen z.B.
- über extra Dateien.
-\end_layout
-
-\begin_layout Enumerate
-Autorisierung und Authentifizierung ist bei allen Datenquellen notwendig
- und soll auf verschiedene Arten möglich sein.
-\end_layout
-
-\begin_layout Enumerate
-
-\color black
-Angaben über Autorisierung und Authentifizierung sollen extra abgefragt
- und als Nachricht an die DB geschickt werden.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Monitoring:
-\end_layout
-
-\begin_layout Enumerate
-Monitoring der Prozessausführung: ExecutingHistory in einer angebundenen
- Datenbank speichern (nicht im lokalen Speicher der Engine).
-\end_layout
-
-\begin_layout Enumerate
-Die Datenbank für das Monitoring muss über das Rahmenwerk frei wählbar sein
- und es soll nicht über mehrere Datenbanken verteilt sein.
-\end_layout
-
-\begin_layout Enumerate
-Für unsere Zwecke muss ein komplettes Monitoring erstellt werden, d.h.
- ein Monitoring für BPEL, ODE und alle Datenquellenaktionen.
-\end_layout
-
-\begin_layout Enumerate
-Das vorhandene Monitoring von BPEL und Apache ODE muss um das Monitoring
- unserer Funktionalitäten und die Möglichkeit eine variable DB als Monitoring-DB
- anzugeben erweitert werden.
-\end_layout
-
-\begin_layout Enumerate
-Es soll ein Modell für das Monitoring (Informationen) erstellt und mit den
- Kunden abgesprochen werden.
-\end_layout
-
-\begin_layout Enumerate
-Die Speicherungsdauer der Monitoring-Daten soll variabel als Parameter übergeben
- werden können.
-\end_layout
-
-\begin_layout Enumerate
-Das Monitoring soll standardmäßig aktiv sein, aber auch auf Benutzerwunsch
- abschaltbar.
- Dies soll auch über den Eclipse BPEL-Designer mit Deployment-Deskriptoren
- definierbar sein.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Demo-Programm:
-\end_layout
-
-\begin_layout Enumerate
-Die Inhalte der Demo werden später geklärt.
- Es sollen darin die wichtigsten Use-Cases vorgeführt und ein kurzer Einblick
- in die Dokumentation gegeben werden.
-\end_layout
-
-\begin_layout Enumerate
-In der Demo soll der Zugriff auf die IBM DB2 Datenbank, eine OpenSource
- RDB und eine OpenSource XMLDB, sowie evtl.
- auf Sensornetzdaten mittels TinyDB (falls öffentlich zugänglich) gezeigt
- werden.
- Ebenso soll eine kurze Vorstellung der Monitoring-DB-Anbindung, mit einer
- der oben genannten Datenbanken, gezeigt werden.
-\end_layout
-
-\begin_layout Subsection
-Grobes Gesamtkonzept und Software-Architektur
-\end_layout
-
-\begin_layout Standard
-In diesem Abschnitt wird das vorläufige Gesamtkonzept und die vorläufige
- Software-Architekur der zu entwickelnden Software beschrieben.
-\end_layout
-
-\begin_layout Standard
-Wie in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Architektur"
-
-\end_inset
-
- dargestellt, soll das Rahmenwerk in drei Schichten unterteilt werden.
- 
-\end_layout
-
-\begin_layout Standard
-Die Präsentationsschicht wird durch den Eclipse BPEL-Designer realisiert.
- Dort ist es möglich BPEL-Prozesse mit Datenmanagement-Funktionen zu modellieren
- und auszuführen.
- Die Datenmanagement-Funktionen werden durch Extension Activity Plug-Ins
- in den Designer eingebunden.
- Einstellungen, die erst zur Laufzeit dem SIMPL Core übergeben werden sollen,
- können über Deployment-Deskriptoren festgelegt werden.
- Von dort wird der Prozess an die Anwendungsschicht übergeben.
-\end_layout
-
-\begin_layout Standard
-In der Anwendungsschicht wird der Prozess ausgewertet und von der Workflow-Engin
-e ausgeführt.
- Bei der Ausführung des Prozess kann auf Funktionalitäten des SIMPL Core
- zugegriffen werden.
- Der SIMPL Core realisiert folgende Funktionen und Konzepte über eine Service
- Component Architecture (SCA):
-\end_layout
-
-\begin_layout Itemize
-Authentifizierte und autorisierte Datenquellenzugriffe
-\end_layout
-
-\begin_layout Itemize
-Monitoring der Datenquellenzugriffe
-\end_layout
-
-\begin_layout Itemize
-Datenquellenunabhängige Zugriffe auf heterogene Daten
-\end_layout
-
-\begin_layout Itemize
-Verwendung von Transaktionen für Datenzugriffe
-\end_layout
-
-\begin_layout Itemize
-Auswahl geeigneter Datenquellen anhand definierter Strategien und vom Benutzer
- angegebener Eigenschaften
-\end_layout
-
-\begin_layout Itemize
-Binden und Auflösen von logischen Namen
-\end_layout
-
-\begin_layout Standard
-Die Datenschicht beeinhaltet alle verwendbaren Datenquellen mit den dazugehörige
-n Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
- der jeweiligen Datenquelle.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename E:/StuproA/Projekt_Workspace/Repository/documents/analyse/Projektangebot/GrundlegendeArchitektur.jpeg
-	lyxscale 40
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Architektur"
-
-\end_inset
-
-Übersicht über das grobe Gesamtkonzept
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Systemumgebung
-\end_layout
-
-\begin_layout Standard
-Die Systemumgebung (siehe Abbildung 
+Die Systemumgebung in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Systemumgebung"
 
 \end_inset
 
-)besteht aus den unterschiedlichen Datenquellen, Eclipse mit dem BPEL-Designer
- Plug-In und dem Apache Tomcat Web-Server, in dem das Rahmenwerk und die
- Apache ODE Workflow-Engine ausgeführt wird.
- Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers
- und die Datenquellen sind verteilt auf verschiedenen Servern.
+ besteht aus den unterschiedlichen Datenquellen, Eclipse mit dem BPEL-Designer
+ Plug-In und einem Web-Server, wie z.B.
+ dem Apache Tomcat, in dem das Rahmenwerk und eine Workflow-Engine (z.B.
+ Apache ODE) ausgeführt werden.
+ Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
+ die Datenquellen können auf verschiedene Server verteilt sein.
 \end_layout
 
 \begin_layout Standard
@@ -1393,7 +606,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename E:/StuproA/Projekt_Workspace/Repository/documents/analyse/Projektangebot/Systemumgebung.jpeg
+	filename Systemumgebung.jpeg
 	lyxscale 80
 	width 70text%
 
@@ -1426,110 +639,526 @@ name "fig:Systemumgebung"
 \end_layout
 
 \begin_layout Subsection
-Work Flow
-\end_layout
-
-\begin_layout Subsection
-BPEL-Prozess
-\end_layout
-
-\begin_layout Subsection
-Erweiterbarkeit des BPEL-Prozesses
-\end_layout
-
-\begin_layout Subsection
-Use-Cases
+Funktionen
 \end_layout
 
 \begin_layout Standard
-
+In diesem Abschnitt folgen die wichtigsten Funktionen des Rahmenwerks, die
+ später dessen Kernfunktionalität bilden.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-wo und wie sind Erweiterungen für das BPEL-Prozess.
- Hier soll das eigentliche Vorgehen unsere Arbeit dargestellt.
+Das Rahmenwerk soll als Eclipse Plug-In verwendet werden und als Laufzeitumgebun
+g integriert sein.
+ Ebenso soll die Verarbeitung von großen, heterogenen Datenmengen im Rahmen
+ eines wissenschaftlichen Workflows möglich sein.
 \end_layout
+
+\begin_layout Standard
+\noindent
+Um die Fehlertoleranz des Rahmenwerks zu realisieren, sollen Fehler der
+ neu definierten Aktivitäten erkannt und durch entsprechende FaultHandler
+ abgefangen werden können.
+ Abgefangene Fehler werden dann durch entsprechende CompensationHandler
+ kompensiert oder die vorher ausgeführten Aktionen rückgängig gemacht.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+\color black
+BPEL
+\end_layout
+
+\begin_layout Standard
+Über den Eclipse BPEL Designer sollen innerhalb von BPEL-Prozessen Referenzen
+ unterstützt werden, d.h.
+ es soll möglich sein Referenzen (z.B.
+ auf eine Tabelle) innerhalb eines SQL-Befehls über eine BPEL Variable anzugeben
+ oder auch die Ergebnisse eines Queries per Referenz im Prozess bereit zu
+ halten.
+ Dazu ist es erforderlich, dass ein Reference Resolution System mit verschiedene
+n Adaptern implementiert wird.
+ Dieses System dient dazu Referenzen/Pointer innerhalb eines BPEL Prozesses
+ aufzulösen und so z.B.
+ auch Daten in den Prozess-Cache zu laden.
+ Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
+ Referenz/der Pointer vom Service, zur Entlastung der Workflow-Engine, aufgelöst
+ werden.
+ Mithilfe eines Transformers übersetzt der BPEL Designer den BPEL-Code mit
+ Referenzen in Standard BPEL-Code, der dann auf der Workflow-Engine ausgeführt
+ werden kann.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+BPEL Aktivitäten 
+\end_layout
+
+\begin_layout Standard
+Alle BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt werden,
+ müssen erstellt werden und sollen erweiterbar sein.
+ Als Anhaltspunkt welche Aktivitäten benötigt werden, gelten die folgenden
+ Datenmanagement Patterns: Das 
+\shape italic
+Query Pattern
+\shape default
+ beschreibt die Notwendigkeit mithilfe von SQL-Befehlen externe Daten anfordern
+ zu können.
+ Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
+ extern gespeichert oder direkt im Prozessspeicher gehalten werden.
+ Das 
+\shape italic
+Set UID Pattern
+\shape default
+ beschreibt die Möglichkeit mengenorientiertes Einfügen (insert), Aktualisieren
+ (update) und Löschen (delete) auf externen Daten durchführen zu können.
+ Das 
+\shape italic
+Data Setup Pattern
+\shape default
+ liefert die Möglichkeit benötigte Data Definition Language (DDL) Befehle
+ auf einem relationalen Datenbanksystem auszuführen, um so während der Prozessau
+sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
+ Schema, usw.) zu erstellen.
+ Da die Verarbeitung von komplexen Daten meist durch Stored Procedures erfolgt,
+ ist es bei der Verarbeitung von externen Daten unbedingt erforderlich,
+ Stored Procedures auch aus einem Prozess heraus aufrufen zu können (
+\shape italic
+Stored Procedure Pattern
+\shape default
+).
+ Manchmal ist es nötig Daten innerhalb des Prozessspeichers verarbeiten
+ zu können.
+ Das 
+\shape italic
+Set Retrieval Pattern
+\shape default
+ liefert dafür eine mengenorientierte Datenstruktur, in die man die angefragten
+ externen Daten innerhalb des Prozessspeichers abgelegen kann.
+ Diese Datenstruktur verhält sich dabei wie ein Cache im Prozessspeicher,
+ der keine Verbindung zur originalen Datenquelle besitzt.
+ Das 
+\shape italic
+Set Access Pattern
+\shape default
+ beschreibt die Notwendigkeit auf den erzeugten Datencache sequentiell und
+ direkt (random) zugreifen zu können.
+ Das 
+\shape italic
+Tuple IUD Pattern
+\shape default
+ beinhaltet einfügen (insert), aktualisieren (update) und löschen (delete)
+ von Daten im Datencache.
+ Das 
+\shape italic
+Synchronization Pattern
+\shape default
+ realisiert die Synchronisation eines lokalen Datencaches mit der originalen
+ Datenquelle.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+Anbindung von Datenquellen
+\end_layout
+
+\begin_layout Standard
+Die Anbindung von Datenquellen soll generisch sein und es sollen so viele
+ Anbindungen wie möglich realisiert werden.
+ Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSourceDB’s (eine
+ RDB und eine XMLDB), mindestens eine SensorDB (z.B.
+ TinyDB) und mindestens ein Dateisystem (z.B.
+ ext3).
+ Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozesses
+ möglich sein, dazu besitzt jede Aktivität eine Variable, in der der logische
+ Namen der Datenquelle auf die zugegriffen werden soll, hinterlegt ist.
+ Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
+ mindestens SQL und XQuery.
+ Zusätzlich sollen auch alle SQL-Dialekte unterstützt werden.
+ Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
+ Die Konzepte sind nach Absprache mit dem Kunden frei wählbar.
+ Es soll auch möglich sein, dass Daten aus Datenquellen aus einem Prozess
+ auch in lokale Dateien exportiert werden können und umgekehrt soll es auch
+ möglich sein lokale Daten zu importieren.
+ Dabei gilt XML als Standardformat.
+\end_layout
+
+\begin_layout Standard
+Die Datenbanken, die verwendet werden, existieren bereits und müssen nicht
+ durch das Rahmenwerk erstellt werden.
+ Weiterhin sollen aber Schema-Definitionen möglich sein und das Erstellen,
+ Ändern und Löschen von Tabellen innerhalb der Schemas.
+\end_layout
+
+\begin_layout Standard
+Das Late-binding von Datenquellen soll unterstützt werden.
+ Dazu müssen Kriterien zur Beschreibung von Datenquellen erstellt werden.
+ Diese Kriterien werden dann als Anforderungen durch den Benutzer modelliert
+ und als Anotationen übertragen.
+ Die Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle
+ gestellt werden können sollten, wird über die Definition eines Anforderungskata
+loges, der nach Fertigstellung mit dem Kunden abgesprochen werden muss,
+ realisiert.
+ Die Anotationen dienen dazu, dass Datenquellen durch definierte Strategien
+ automatisch ausgewählt werden können.
+ Diese Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
+ angegebenen Anforderungen verwendet werden, müssen von uns definiert und
+ anschließend mit dem Kunden abgesprochen werden.
+ Die Auswertung der Anotationen und die Verarbeitung der darin enthaltenen
+ Informationen soll, ebenfalls selbst definiert und anschließend mit dem
+ Kunden abgesprochen werden.
+ Die Adressierung der Datenbanken soll statisch über konkrete Adressen oder
+ auch dynamisch über logische Namen mithilfe der JNDI API möglich sein.
+\end_layout
+
+\begin_layout Subsubsection*
+Admin-Konsole
+\end_layout
+
+\begin_layout Standard
+Die Admin-Konsole ist ein Werkzeug mit dem verschiedene Einstellungen des
+ Rahmenwerks auch während der Laufzeit noch geändert werden können.
+ Dazu gehört beispielsweise das An- und Abschalten des Auditings und Einstellen
+ der Granularität.
+ Eine solche Komponente soll für die Administration des Rahmenwerks erstellt
+ werden.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+Autorisierung und Authentifizierung
+\end_layout
+
+\begin_layout Standard
+Die Autorisierung und Authentifizierung soll momentan nur für Datenquellen
+ bereitgestellt werden, allerdings soll eine spätere Erweiterung einfach
+ realisiert werden können.
+ Für die Authentifizierung und Autorisierung sind verschiedene Verfahren
+ gewünscht, sodass in jeder Situation das Bestmögliche verwendet wird.
+ Dazu soll es möglich sein, verschiedene konkrete Verfahren flexibel anbinden
+ zu können.
+ Die Autorisierung und die Authentifizierung soll dabei über einen Single-Sign-O
+n in der Instanz beim Zugriff auf Datenquellen durchgeführt werden.
+ Autorisierungs- und Authentifizierungsparameter für einen Prozess sollen
+ auf Datenquellenebene spezifiziert werden, d.h.
+ bei Datenbanken über Schema und bei Dateisystemen z.B.
+ über extra Dateien.
+ Die Autorisierung und Authentifizierung ist bei allen Datenquellen notwendig
+ und soll auf verschiedene Arten möglich sein.
+
+\color black
+ Angaben über Autorisierung und Authentifizierung sollen extra im Eclipse
+ BPEL Designer abgefragt und als Nachricht an die Datenquelle geschickt
+ werden.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+Auditing und Monitoring
+\end_layout
+
+\begin_layout Standard
+Es soll ein Auditing der Prozessausführung geben, dafür soll die Ausführungshist
+orie in einer angebundenen Datenbank und nicht im lokalen Speicher der Engine
+ gespeichert werden können.
+ Die Datenbank für das Auditing soll über das Rahmenwerk frei wählbar sein.
+ Die Auditing-Daten werden dabei auf einer Datenbank gespeichert und nicht
+ über mehrere verteilt.
+ Das vorhandene Auditing von Apache ODE muss dafür um das Auditing unserer
+ Funktionalitäten und die Möglichkeit, eine variable DB als Auditing-DB
+ anzugeben, erweitert werden.
+ Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
+ werden können.
+ Das Auditing soll standardmäßig aktiv sein.
+ Auf Benutzerwunsch soll die Granularität des Auditings veränderbar sein
+ oder das Auditing auch komplett abschaltbar.
+ Dies soll auch während der Laufzeit über die Admin-Konsole steuerbar sein.
+\end_layout
+
+\begin_layout Standard
+Für unsere Zwecke muss ein komplettes Monitoring erstellt werden, d.h.
+ ein Monitoring für alle Datenquellenaktionen und die Anpassung und Erweiterung
+ des bestehenden Monitorings von Apache ODE.
+ Dazu soll das Event-Modell von Apache ODE für das Monitoring, d.h.
+ welche Informationen angezeigt werden können, für unsere Erweiterungen
+ modifiziert und mit den Kunden abgesprochen werden.
+\end_layout
+
+\begin_layout Subsection
+Sprache
+\end_layout
+
+\begin_layout Subsection
+Distributionsform und Installation
+\end_layout
+
+\begin_layout Subsection
+Benutzerprofile
+\end_layout
+
+\begin_layout Standard
+Die Benutzer sind im Normalfall Wissenschaftler und Ingenieure.
+ Sie haben meist keine bis wenig Vorkenntnisse im Bereich Workflow und Informati
+k und stellen so entsprechende Anforderungen an die Benutzbarkeit des Rahmenwerk
+s (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Nichtfunktionale-Anforderungen"
 
 \end_inset
 
+).
+\end_layout
 
+\begin_layout Subsection
+Einschränkungen
+\end_layout
+
+\begin_layout Subsection
+Annahmen und Abhängigkeiten
 \end_layout
 
 \begin_layout Section
-Weitere Anforderungen
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Nichtfunktionale-Anforderungen"
+
+\end_inset
+
+Nichtfunktionale Anforderungen
 \end_layout
 
 \begin_layout Subsection
-Technische Anforderungen
-\end_layout
-
-\begin_layout Subsubsection
-Speicherplatz
-\end_layout
-
-\begin_layout Subsubsection
-Geschwindigkeit und Performance
-\end_layout
-
-\begin_layout Subsection
-Nicht-funktionale Anforderungen
-\end_layout
-
-\begin_layout Enumerate
-Die Schnittstellen des Rahmenwerks sollen leicht erweiterbar sein und insgesamt
- soll ein modularer Aufbau zugrunde liegen.
-\end_layout
-
-\begin_layout Enumerate
-Fehlertoleranz: Scopes mit Handler.
- CompensationHandler und FaultHandler implementieren Logik für die Kompensation
- von Fehlern (rollback).
-\end_layout
-
-\begin_layout Enumerate
-Ausfallsicherheit soll so gut wie möglich sein.
-\end_layout
-
-\begin_layout Enumerate
-Usability sollte sich an Benutzer orientieren und dazu die größtmögliche
- Transparenz liefern.
-\end_layout
-
-\begin_layout Enumerate
-Es gibt keine bestimmte Infrastruktur in der das System später läuft.
- ODE läuft überall lokal und die Datenbanken sind verteilt.
-\end_layout
-
-\begin_layout Enumerate
-Skalierbarkeit: keine bestimmte Infrastruktur => von schlechten PC’s bis
- zu Supercomputern ist alles möglich.
-\end_layout
-
-\begin_layout Enumerate
-Performance soll so gut wie möglich sein.
-\end_layout
-
-\begin_layout Subsubsection
 Mengengerüst
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
+Benutzbarkeit
+\end_layout
+
+\begin_layout Standard
+Die Benutzbarkeit soll sich vor allem an Nutzer mit wenig Kenntnissen im
+ Umgang mit Workflows und BPEL richten und dafür die größtmögliche Transparenz
+ liefern, d.h.
+ dass die interne Prozesslogik der Software bestmöglich vom Benutzer abgeschirmt
+ wird und er eine möglichst einfache und schnell verständliche Schnittstelle
+ zur Software erhält, um die Verwendung von SIMPL für alle Benutzergruppen
+ zu ermöglichen.
+\end_layout
+
+\begin_layout Subsection
+Robustheit
+\end_layout
+
+\begin_layout Subsection
+Sicherheit
+\end_layout
+
+\begin_layout Subsection
+Portabilität
+\end_layout
+
+\begin_layout Subsection
 Erweiterbarkeit
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+Die Erweiterbarkeit des Systems spielt eine zentrale Anforderung, da es
+ über einen langen Zeitraum genutzt und in Zukunft um die Anbindung weiterer
+ Datenquellen, Konzepte für den Datenzugriff und den Umgang mit weiteren
+ Datenformaten ergänzt werden soll.
+ Um die Erweiterbarkeit des Systems zu gewährleisten, wird ein modularer
+ Aufbau zugrunde gelegt und entsprechende Schnittstellen geschaffen.
+\end_layout
+
+\begin_layout Subsection
+Wartbarkeit
+\end_layout
+
+\begin_layout Subsection
+Skalierbarkeit
+\end_layout
+
+\begin_layout Standard
+Die Skalierbarkeit des Systems muss eine sehr flexible Infrastruktur erlauben,
+ da die Computersysteme, auf denen SIMPL später ausgeführt wird, in ihrer
+ Leistung sehr weit auseinander gehen können, d.h.
+ vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
+ möglich sein.
+\end_layout
+
+\begin_layout Subsection
+...
+\end_layout
+
+\begin_layout Section
+Akteure
+\end_layout
+
+\begin_layout Subsection
+Prozess-Modellierer?
+\end_layout
+
+\begin_layout Subsection
+Workflow-Administrator?
+\end_layout
+
+\begin_layout Subsection
+Datenquellen-Administrator
+\end_layout
+
+\begin_layout Subsection
+...
+\end_layout
+
+\begin_layout Section
+Anwendungsfälle (Use-Cases)
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfall Diagramme
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle der Prozess-Modellierer
+\end_layout
+
+\begin_layout Subsubsection
+Data-Management-Aktivität erstellen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-man könnte diesen unterpunkt als ein Hauptpunkt, wegen ihre wichtigkeit,
- nehmen und behandeln.
- ???
+Ziel
 \end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -1537,263 +1166,4886 @@ man könnte diesen unterpunkt als ein Hauptpunkt, wegen ihre wichtigkeit,
 \end_layout
 
 \begin_layout Subsubsection
-Sicherheit
+Data-Management-Aktivität bearbeiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Wartbarkeit
+Data-Management-Aktivität löschen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Verfügbarkeit
+Datenquelle manuell auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Robustheit
+Datenquelle per Strategie auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Zuverlässigkeit
+Datenquelle per physikalische Adresse auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Strategie auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellen-Eigenschaften festlegen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellenart auswählen ???
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Authentifizierungsparameter angeben
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Anotation erstellen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Anotation bearbeiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Anotation löschen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Anotation speichern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Anotation laden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Prozess deployen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Allgemeine Anforderungen
+Anwendungsfälle der Workflow-Administratoren
 \end_layout
 
 \begin_layout Subsubsection
-Kompatibilität
+Admin-Konsole öffnen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Hardware
+Monitoring anschalten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Software
+Monitoring abschalten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
-Sprache
+Monitoring-Granularität ändern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Auditing anschalten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Auditing abschalten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Auditing-Granularität ändern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Auditing-Datenbank festlegen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Neue Referenz in RRS einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS bearbeiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS löschen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle der Datenquellen-Administratoren
+\end_layout
+
+\begin_layout Subsubsection
+???
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle in UDDI-Registry registrieren
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle aus UDDI-Registry entfernen
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle aus UDDI-Registry bearbeiten
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelleneigenschaften (in UDDI-Registry) bearbeiten
+\end_layout
+
+\begin_layout Subsubsection
+???
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle der ODE Workflow-Engine
+\end_layout
+
+\begin_layout Subsubsection
+Data-Management-Aktivität ausführen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Data-Management-Aktivität kompensieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Data-Management-Aktivität rückgängig machen (rollback)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle des Eclipse BPEL Designers
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellen abrufen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Anotation auswerten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellenliste filtern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle per Strategie auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle des Reference Resolution Systems
+\end_layout
+
+\begin_layout Subsubsection
+Neues Datenquellen-Plug-In in RRS einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Referenz auflösen/dereferenzieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="center" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Usecases
+Konzepte und Realisierungen
+\end_layout
+
+\begin_layout Subsection
+Reference Resolution System
+\end_layout
+
+\begin_layout Subsection
+BPEL-SQL
 \end_layout
 
 \begin_layout Subsection
 Eclipse BPEL Designer
 \end_layout
 
-\begin_layout Subsubsection
-Authentifizierung/Autorisierung
-\end_layout
-
-\begin_layout Enumerate
-Authentifizierungsparameter angeben
-\end_layout
-
-\begin_layout Subsubsection
-Aktivitäten erstellen, Aktivitäten löschen, Aktivitäten ändern
-\end_layout
-
-\begin_layout Enumerate
-Select
-\end_layout
-
-\begin_layout Enumerate
-Insert
-\end_layout
-
-\begin_layout Enumerate
-Update
-\end_layout
-
-\begin_layout Enumerate
-Delete
-\end_layout
-
-\begin_layout Enumerate
-Create
-\end_layout
-
-\begin_layout Enumerate
-Call Procedure
-\end_layout
-
-\begin_layout Enumerate
-Retrive Set
-\end_layout
-
-\begin_layout Enumerate
-Write Back
-\end_layout
-
-\begin_layout Enumerate
-Import
-\end_layout
-
-\begin_layout Enumerate
-Export
-\end_layout
-
-\begin_layout Enumerate
-Move
-\end_layout
-
-\begin_layout Subsubsection
-Dattenquelle auswählen
-\end_layout
-
-\begin_layout Enumerate
-Datenquelle manuell auswählen
-\end_layout
-
-\begin_layout Enumerate
-Datenquelle per Strategie auswählen
-\end_layout
-
-\begin_layout Enumerate
-Datenquelle per physikalische Adresse auswählen
-\end_layout
-
-\begin_layout Enumerate
-Strategie auswählen
-\end_layout
-
-\begin_layout Enumerate
-Datenquellen Eigenschaften festlegen
-\end_layout
-
-\begin_layout Enumerate
-Datenquellen Art auswählen???????????
-\end_layout
-
-\begin_layout Subsubsection
-Sonstiges Funktinalität
-\end_layout
-
-\begin_layout Enumerate
-Adminkonsole öffnen.
-\end_layout
-
-\begin_layout Enumerate
-Prozess deployn.
+\begin_layout Subsection
+Monitoring
 \end_layout
 
 \begin_layout Subsection
-Annotations
+...
 \end_layout
 
-\begin_layout Enumerate
-Erstellen
-\end_layout
-
-\begin_layout Enumerate
-Laden
-\end_layout
-
-\begin_layout Enumerate
-Speichern
-\end_layout
-
-\begin_layout Enumerate
-Bearbeiten
-\end_layout
-
-\begin_layout Enumerate
-Löschen
+\begin_layout Section
+Einzusetzende Technologien
 \end_layout
 
 \begin_layout Subsection
-Adminkonsole
-\end_layout
-
-\begin_layout Subsubsection
-Monitoring/Auditing
-\end_layout
-
-\begin_layout Enumerate
-Anschalten
-\end_layout
-
-\begin_layout Enumerate
-Abschalten
-\end_layout
-
-\begin_layout Enumerate
-Granularität ändern/festlegen
-\end_layout
-
-\begin_layout Enumerate
-Auditing Db festlegen
-\end_layout
-
-\begin_layout Subsubsection
-Referenzen
-\end_layout
-
-\begin_layout Enumerate
-Einfügen (rrs)
-\end_layout
-
-\begin_layout Enumerate
-Bearbeiten (rrs)
-\end_layout
-
-\begin_layout Enumerate
-Löschen (rrs)
+Materialien
 \end_layout
 
 \begin_layout Subsection
-Interne Usecases
+Werkzeuge
 \end_layout
 
 \begin_layout Subsubsection
-RRS
-\end_layout
-
-\begin_layout Enumerate
-Referenz auflösen (dereferenzieren)
-\end_layout
-
-\begin_layout Enumerate
-Plugin einfügen????????????????
+Entwicklungsumgebung
 \end_layout
 
 \begin_layout Subsubsection
-Aktivitäten
-\end_layout
-
-\begin_layout Enumerate
-Ausführen
-\end_layout
-
-\begin_layout Enumerate
-Kompensieren
-\end_layout
-
-\begin_layout Enumerate
-Rollback (deutsch?) Wiederherstellung???
-\end_layout
-
-\begin_layout Subsubsection
-Late Bindung
-\end_layout
-
-\begin_layout Enumerate
-Datenquellan abrufen (woher auch immer)
-\end_layout
-
-\begin_layout Enumerate
-Annotation auswerten.(Schneimi weiß es)
-\end_layout
-
-\begin_layout Enumerate
-Liste filtern (anhand der Eigenschaften)
-\end_layout
-
-\begin_layout Enumerate
-Datenquelle per Strategie auswählen.
+Sonstige Werkzeuge
 \end_layout
 
 \begin_layout Section
@@ -1805,8 +6057,8 @@ Datenquelle per Strategie auswählen.
 \series bold
 Version 0.1
 \series default
-, 01.
- August 2009: Erstellung des Dokuments.
+, 22.
+ Juni 2009: Erstellung des Dokuments.
  
 \end_layout
 
