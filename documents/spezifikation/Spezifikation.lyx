@@ -24,7 +24,7 @@
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
 \def\docvers{0.1}
-\def\docautor{Max Mustermann}
+\def\docautor{Wolfgang Huettig, Michael Hahn,Firas Zoabi, Michael Schneidt,Daniel Brüderle, René Rehn}
 \def\docdate{11. September 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
@@ -536,12 +536,27 @@ Definitionen
 status open
 
 \begin_layout Plain Layout
-Verweis auf Begriffslexikon
+hier dokumentieren wir die dokumente, die im zusammenhang mit der Spezifikation
+ stehen .
+ Begriffslexikon und natürlich über der Dokument kurzes Text was, und wofür.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Durch das Begriffslexikon werden alle Begriffe, Definitionen und Abkürzungen
+ definiert, die zu Missverständnissen innerhalb des Projektteams oder zwischen
+ Projektteam und Kunde führen könnten.
+ Das Begriffslexikon enthält sowohl technische als auch fachliche Begriffe.
+\end_layout
+
+\begin_layout Standard
+Die in der Spezifikation verwendeten Begriffe, Definitionen und Abkürzungen,
+ werden in der beigefügte Begriffslexikon, wie oben beschrieben ist, definiert
+ und eindeudig erklärt.
 \end_layout
 
 \begin_layout Subsection
