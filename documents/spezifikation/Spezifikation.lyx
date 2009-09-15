@@ -466,6 +466,13 @@ Beschreibungen, was in welchem Abschnitt (von Abschnitt 1 bis 2) erwartet
 Einleitung
 \end_layout
 
+\begin_layout Standard
+In diesem Abschnitt wird der Zweck dieses Dokuments sowie der Einsatzbereich
+ und die Ziele der zu entwickelnden Software beschrieben.
+ Weiterhin werden die, in diesem Dokument, verwendeten Definitionen erläutert
+ und ein Überblick über das restliche Dokument gegeben.
+\end_layout
+
 \begin_layout Subsection
 Zweck des Dokuments
 \end_layout
@@ -533,7 +540,7 @@ Definitionen
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 hier dokumentieren wir die dokumente, die im zusammenhang mit der Spezifikation
@@ -547,16 +554,12 @@ hier dokumentieren wir die dokumente, die im zusammenhang mit der Spezifikation
 \end_layout
 
 \begin_layout Standard
-Durch das Begriffslexikon werden alle Begriffe, Definitionen und Abkürzungen
- definiert, die zu Missverständnissen innerhalb des Projektteams oder zwischen
- Projektteam und Kunde führen könnten.
- Das Begriffslexikon enthält sowohl technische als auch fachliche Begriffe.
-\end_layout
-
-\begin_layout Standard
-Die in der Spezifikation verwendeten Begriffe, Definitionen und Abkürzungen,
- werden in der beigefügte Begriffslexikon, wie oben beschrieben ist, definiert
- und eindeudig erklärt.
+Die in der Spezifikation verwendeten Begriffe, Definitionen und Abkürzungen
+ werden in einem separaten Begriffslexikon definiert und eindeutig erklärt.
+ Durch das Begriffslexikon werden somit alle technischen und fachlichen
+ Begriffe, Definitionen und Abkürzungen, die zu Missverständnissen innerhalb
+ des Projektteams oder zwischen Projektteam und Kunde führen könnten, eindeutig
+ definiert.
 \end_layout
 
 \begin_layout Subsection
@@ -590,20 +593,29 @@ noch sinnvoll abändern und erweitern (anhand der finalen Dokumentstruktur)
 Allgemeine Beschreibung
 \end_layout
 
+\begin_layout Standard
+Dieser Abschnitt liefert allgemeine Informationen über die zu entwickelnde
+ Software.
+ Dazu gehöhren beispielsweise die Beschreibung der späteren Systemumgebung,
+ die wichtigsten Funktionen, die verwendete Sprache und Informationen über
+ den Benutzerkreis der Software.
+\end_layout
+
 \begin_layout Subsection
 Einbettung
 \end_layout
 
 \begin_layout Standard
-Die Systemumgebung in Abbildung 
+Das SIMPL Rahmenwerk soll in die, in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Systemumgebung"
 
 \end_inset
 
- besteht aus den unterschiedlichen Datenquellen, Eclipse mit dem BPEL-Designer
- Plug-In und einem Web-Server, wie z.B.
+ dargestellte, Systemumgebung eingebettet werden.
+ Die Systemumgebung besteht dabei aus den unterschiedlichen Datenquellen,
+ Eclipse mit dem BPEL-Designer Plug-In und einem Web-Server, wie z.B.
  dem Apache Tomcat, in dem das Rahmenwerk und eine Workflow-Engine (z.B.
  Apache ODE) ausgeführt werden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
@@ -659,7 +671,7 @@ Funktionen
 
 \begin_layout Standard
 In diesem Abschnitt folgen die wichtigsten Funktionen des Rahmenwerks, die
- später dessen Kernfunktionalität bilden.
+ später dessen Kernfunktionalität bilden sollen.
 \end_layout
 
 \begin_layout Standard
@@ -908,6 +920,16 @@ Für unsere Zwecke muss ein komplettes Monitoring erstellt werden, d.h.
 Sprache
 \end_layout
 
+\begin_layout Standard
+Generell gilt, dass alle Dokumente auf Deutsch und jeder Quellcode einschließlic
+h Kommentaren auf Englisch verfasst und ausgeliefert werden.
+ Eine Ausnahme bilden das Handbuch und die verschiedenen Dokumentationen
+ der durchzuführenden Erweiterungen, wie z.B.
+ die Erweiterungen von Apache ODE oder dem Eclipse BPEL Designer.
+ Diese Dokumente werden auf Deutsch und auf Englisch verfasst, um sie einem
+ breiteren Leserkreis zur Verfügung stellen zu können.
+\end_layout
+
 \begin_layout Subsection
 Distributionsform und Installation
 \end_layout
@@ -946,6 +968,13 @@ name "sec:Nichtfunktionale-Anforderungen"
 \end_inset
 
 Nichtfunktionale Anforderungen
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden die nichtfunktionalen Anforderungen an die zu
+ entwickelnde Software beschrieben.
+ Dafür werden die entsprechenden Software-Qualitäten aufgeführt und ihre
+ Bedeutung für die zu entwickelnde Software erläutert.
 \end_layout
 
 \begin_layout Subsection
@@ -1059,8 +1088,17 @@ Die Skalierbarkeit des Systems muss eine sehr flexible Infrastruktur erlauben,
 Akteure
 \end_layout
 
+\begin_layout Standard
+In diesem Abschnitt werden die einzelnen Akteure der Software beschrieben
+ und ihre Abhängigkeiten untereinander definiert.
+\end_layout
+
 \begin_layout Subsection
 Prozess-Modellierer
+\end_layout
+
+\begin_layout Standard
+Der P
 \end_layout
 
 \begin_layout Subsection
@@ -1087,12 +1125,123 @@ SIMPL Core
 Anwendungsfälle (Use-Cases)
 \end_layout
 
+\begin_layout Standard
+Dieser Abschnitt beschreibt die funktionalen Anforderungen an die Software.
+ Dazu werden alle Anwendungsfälle eines jeden Akteurs beschrieben und deren
+ Zusammenhänge in entsprechenden Diagrammen graphisch dargestellt.
+\end_layout
+
 \begin_layout Subsection
-Anwendungsfall Diagramme
+Diagramm aller Anwendungsfälle
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Gesamt-Anwendungsfall-Diagramm"
+
+\end_inset
+
+ zeigt das Diagramm aller Anwendungsfälle der gesamten Software.
+ Dadurch wird die Funktionalität und die Akteure des späteren Gesamtsystems
+ sichtbar.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Overview.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Gesamt-Anwendungsfall-Diagramm"
+
+\end_inset
+
+Anwendungsfall-Diagramm des gesamten Softwaresystems
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Anwendungsfälle der Prozess-Modellierer
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProzessModelierer.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaProzessModell"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Prozess-Modelierer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2743,6 +2892,48 @@ Sonderfälle
 Anwendungsfälle der Workflow-Administratoren
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename WorkflowAdmin.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaWFAdmin"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Prozess-Modelierer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Admin-Konsole öffnen
 \end_layout
@@ -4254,6 +4445,48 @@ Sonderfälle
 Anwendungsfälle der Datenquellen-Administratoren
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename DQAdmin.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaDQAdmin"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Prozess-Modelierer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Datenquelle registrieren
 \end_layout
@@ -4669,6 +4902,48 @@ Sonderfälle
 Anwendungsfälle der ODE Workflow-Engine
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ODEwfEngine.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaODEWFEngine"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Prozess-Modelierer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Data-Management-Aktivität ausführen
 \end_layout
@@ -5082,6 +5357,48 @@ Sonderfälle
 
 \begin_layout Subsection
 Anwendungsfälle des Eclipse BPEL Designers
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename BPELdesigner.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaBPELDesigner"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Prozess-Modelierer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -5636,6 +5953,48 @@ Sonderfälle
 Anwendungsfälle des SIMPL Core
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SIMPLcore.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaSIMPLCore"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Prozess-Modelierer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 BPEL-Datei transformieren
 \end_layout
@@ -6102,7 +6461,16 @@ Version 0.1
 \series default
 , 11.
  September 2009: Erstellung des Dokuments.
- 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Begriffslexikon
 \end_layout
 
 \end_body
