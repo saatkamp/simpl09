@@ -1253,7 +1253,7 @@ Data-Management-Aktivität erstellen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1264,7 +1264,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1284,7 +1284,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1304,7 +1304,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1324,7 +1324,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1344,7 +1344,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1364,7 +1364,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1390,7 +1390,7 @@ Data-Management-Aktivität bearbeiten
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1401,7 +1401,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1421,7 +1421,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1441,7 +1441,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1461,7 +1461,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1481,7 +1481,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1501,7 +1501,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1527,7 +1527,7 @@ Data-Management-Aktivität löschen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1538,7 +1538,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1558,7 +1558,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1578,7 +1578,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1598,7 +1598,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1618,7 +1618,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1638,7 +1638,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1664,7 +1664,7 @@ Strategie auswählen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1675,7 +1675,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1695,7 +1695,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1715,7 +1715,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1735,7 +1735,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1755,7 +1755,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1775,7 +1775,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1801,7 +1801,7 @@ Datenquellen-Eigenschaften festlegen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1812,7 +1812,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1832,7 +1832,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1852,7 +1852,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1872,7 +1872,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1892,7 +1892,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1912,7 +1912,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1938,7 +1938,7 @@ Datenquelle auswählen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -1949,7 +1949,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1969,7 +1969,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1989,7 +1989,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2009,7 +2009,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2029,7 +2029,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2049,7 +2049,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2075,7 +2075,7 @@ Annotation erstellen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -2086,7 +2086,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2106,7 +2106,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2126,7 +2126,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2146,7 +2146,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2166,7 +2166,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2186,7 +2186,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2212,7 +2212,7 @@ Annotation bearbeiten
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -2223,7 +2223,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2243,7 +2243,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2263,7 +2263,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2283,7 +2283,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2303,7 +2303,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2323,7 +2323,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2349,7 +2349,7 @@ Annotation löschen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -2360,7 +2360,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2380,7 +2380,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2400,7 +2400,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2420,7 +2420,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2440,7 +2440,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2460,7 +2460,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2486,7 +2486,7 @@ Annotationen speichern
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -2497,7 +2497,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2517,7 +2517,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2537,7 +2537,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2557,7 +2557,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2577,7 +2577,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2597,7 +2597,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2623,7 +2623,7 @@ Annotationen laden
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -2634,7 +2634,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2654,7 +2654,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2674,7 +2674,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2694,7 +2694,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2714,7 +2714,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2734,7 +2734,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2760,7 +2760,7 @@ Prozess ausführen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -2771,7 +2771,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2791,7 +2791,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2811,7 +2811,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2831,7 +2831,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2851,7 +2851,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2871,7 +2871,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2943,7 +2943,7 @@ Admin-Konsole öffnen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -2954,7 +2954,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2974,7 +2974,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2994,7 +2994,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3014,7 +3014,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3034,7 +3034,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3054,7 +3054,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3080,7 +3080,7 @@ Monitoring aktivieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3091,7 +3091,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3111,7 +3111,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3131,7 +3131,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3151,7 +3151,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3171,7 +3171,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3191,7 +3191,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3217,7 +3217,7 @@ Monitoring deaktivieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3228,7 +3228,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3248,7 +3248,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3268,7 +3268,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3288,7 +3288,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3308,7 +3308,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3328,7 +3328,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3354,7 +3354,7 @@ Monitoring-Granularität ändern
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3365,7 +3365,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3385,7 +3385,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3405,7 +3405,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3425,7 +3425,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3445,7 +3445,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3465,7 +3465,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3491,7 +3491,7 @@ Auditing aktivieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3502,7 +3502,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3522,7 +3522,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3542,7 +3542,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3562,7 +3562,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3582,7 +3582,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3602,7 +3602,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3628,7 +3628,7 @@ Auditing deaktivieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3639,7 +3639,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3659,7 +3659,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3679,7 +3679,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3699,7 +3699,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3719,7 +3719,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3739,7 +3739,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3765,7 +3765,7 @@ Auditing-Granularität ändern
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3776,7 +3776,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3796,7 +3796,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3816,7 +3816,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3836,7 +3836,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3856,7 +3856,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3876,7 +3876,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3902,7 +3902,7 @@ Auditing-Datenbank festlegen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3913,7 +3913,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3933,7 +3933,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3953,7 +3953,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3973,7 +3973,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3993,7 +3993,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4013,7 +4013,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4039,7 +4039,7 @@ Neue Referenz in RRS einfügen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -4050,7 +4050,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4070,7 +4070,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4090,7 +4090,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4110,7 +4110,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4130,7 +4130,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4150,7 +4150,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4176,7 +4176,7 @@ Referenz aus RRS bearbeiten
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -4187,7 +4187,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4207,7 +4207,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4227,7 +4227,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4247,7 +4247,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4267,7 +4267,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4287,7 +4287,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4313,7 +4313,7 @@ Referenz aus RRS löschen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -4324,7 +4324,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4344,7 +4344,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4364,7 +4364,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4384,7 +4384,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4404,7 +4404,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4424,7 +4424,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4496,7 +4496,7 @@ Datenquelle registrieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -4507,7 +4507,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4527,7 +4527,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4547,7 +4547,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4567,7 +4567,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4587,7 +4587,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4607,7 +4607,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4633,7 +4633,7 @@ Datenquelle entfernen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -4644,7 +4644,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4664,7 +4664,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4684,7 +4684,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4704,7 +4704,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4724,7 +4724,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4744,7 +4744,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4770,7 +4770,7 @@ Datenquelle bearbeiten
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -4781,7 +4781,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4801,7 +4801,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4821,7 +4821,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4841,7 +4841,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4861,7 +4861,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4881,7 +4881,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4953,7 +4953,7 @@ Data-Management-Aktivität ausführen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -4964,7 +4964,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4984,7 +4984,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5004,7 +5004,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5024,7 +5024,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5044,7 +5044,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5064,7 +5064,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5090,7 +5090,7 @@ Data-Management-Aktivität kompensieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -5101,7 +5101,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5121,7 +5121,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5141,7 +5141,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5161,7 +5161,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5181,7 +5181,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5201,7 +5201,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5227,7 +5227,7 @@ Data-Management-Aktivität rückgängig machen (rollback)
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -5238,7 +5238,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5258,7 +5258,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5278,7 +5278,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5298,7 +5298,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5318,7 +5318,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5338,7 +5338,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5410,7 +5410,7 @@ Datenquellen abrufen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -5421,7 +5421,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5441,7 +5441,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5461,7 +5461,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5481,7 +5481,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5501,7 +5501,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5521,7 +5521,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5547,7 +5547,7 @@ Annotation auswerten
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -5558,7 +5558,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5578,7 +5578,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5598,7 +5598,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5618,7 +5618,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5638,7 +5638,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5658,7 +5658,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5684,7 +5684,7 @@ Datenquellenliste filtern
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -5695,7 +5695,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5715,7 +5715,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5735,7 +5735,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5755,7 +5755,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5775,7 +5775,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5795,7 +5795,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5821,7 +5821,7 @@ Datenquelle per Strategie auswählen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -5832,7 +5832,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5852,7 +5852,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5872,7 +5872,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5892,7 +5892,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5912,7 +5912,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -5932,7 +5932,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6004,7 +6004,7 @@ BPEL-Datei transformieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -6015,7 +6015,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6035,7 +6035,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6055,7 +6055,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6075,7 +6075,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6095,7 +6095,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6115,7 +6115,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6141,7 +6141,7 @@ Neues Datenquellen-Plug-In in RRS einfügen
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -6152,7 +6152,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6172,7 +6172,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6192,7 +6192,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6212,7 +6212,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6232,7 +6232,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6252,7 +6252,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6278,7 +6278,7 @@ Referenz auflösen/dereferenzieren
 <lyxtabular version="3" rows="6" columns="2">
 <features>
 <column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="center" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="11cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -6289,7 +6289,7 @@ Ziel
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6309,7 +6309,7 @@ Vorbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6329,7 +6329,7 @@ Nachbedingung
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6349,7 +6349,7 @@ Nachbedingung im Sonderfall
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6369,7 +6369,7 @@ Normalablauf
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6389,7 +6389,7 @@ Sonderfälle
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
