@@ -24,7 +24,7 @@
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
 \def\docvers{0.1}
-\def\docautor{Wolfgang Huettig, Michael Hahn,Firas Zoabi, Michael Schneidt,Daniel Brüderle, René Rehn}
+\def\docautor{Wolfgang Huettig, Michael Hahn,Firas Zoabi, Michael Schneidt}
 \def\docdate{11. September 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
@@ -1046,6 +1046,11 @@ Sicherheit
 status open
 
 \begin_layout Plain Layout
+Die Sicherheit im System wird durch das Authentifizierungs und Autorisierungsver
+fahren Benutzername & Passwort geleistet.
+\end_layout
+
+\begin_layout Plain Layout
 Die Verbindung zwischen Client auf der DatenBanken erfolgt über vom Admin
  vordefinierte bzw.
  vorgegebene Username und passwört (Einlogdaten).
@@ -1053,8 +1058,8 @@ Die Verbindung zwischen Client auf der DatenBanken erfolgt über vom Admin
 \end_layout
 
 \begin_layout Plain Layout
-Der Administratot und alle anedere Verwaltung-Aktuere haben eigene von der
- normale Benutzern unabängige Passwort.
+Der Administratot und alle anedere Verwaltung-Aktuere, die andere , haben
+ eigene von der normale Benutzern unabängige Passwort.
 \end_layout
 
 \end_inset
@@ -1096,7 +1101,47 @@ Die Skalierbarkeit des Systems muss eine sehr flexible Infrastruktur erlauben,
 \end_layout
 
 \begin_layout Subsection
-...
+Ausfallsicherheit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Das System soll soweit wie möglich Ausfallsicher sein.
+ Über die eingehaltene ACID Transaktion Eigenschaften soll Datenverlust
+ etc.
+ vermieden werden.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+(hier mussen wir auch schreiben wie gehts es Technisch....)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Wartbarkeit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Durch qualitativ hochwertige Dokumentation und ein strukturiertes, geplantes
+ und sauberes Entwicklungsvorgehen wird der Anspruch erhoben, eine möglichst
+ hohe Wartbarkeit zu erreichen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -8241,8 +8286,268 @@ Eclipse BPEL Designer
 Monitoring
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/monitoring_menu.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Monitoring im Menu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/screen6.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Monitoring Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/screen7.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Monitoring-Granularität Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Event-Modell
+\end_layout
+
+\begin_layout Subsection
+Admin-Konsole
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/Adminkonsole_menu.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Admin-Konsole im Menu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/screen9.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Admin-Konsole
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Globale Eigenschaften
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/GlobaleEigenschaften_menu.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften im Menu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/screen4.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
