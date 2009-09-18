@@ -1159,8 +1159,8 @@ reference "fig:Gesamt-Anwendungsfall-Diagramm"
 \end_inset
 
  zeigt das Diagramm aller Anwendungsfälle der gesamten Software.
- Dadurch wird die Funktionalität und die Akteure des späteren Gesamtsystems
- sichtbar.
+ Dadurch soll die Funktionalität und die Akteure des späteren Gesamtsystems
+ sichtbar werden.
 \end_layout
 
 \begin_layout Standard
@@ -1283,7 +1283,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Erstellung einer neue Daten-Management-Aktivität.
 \end_layout
 
 \end_inset
@@ -1303,7 +1303,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ein vorhandener BPEL-Prozess muss im Eclipse BPEL Designer geöffnet und
+ die BPEL Designer-Palette muss angezeigt werden.
 \end_layout
 
 \end_inset
@@ -1323,7 +1324,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die erstellte Aktivität wurde an der selektierten Position in den Prozess
+ eingefügt und der eingegebene Namen wird angezeigt.
 \end_layout
 
 \end_inset
@@ -1343,7 +1345,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die erstellte Aktivität wurde an der selektierten Position in den Prozess
+ eingefügt und der vorgeschlagene Namen wird angezeigt.
 \end_layout
 
 \end_inset
@@ -1363,7 +1366,19 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Auswahl einer Aktivität, durch Markierung mit der Maus, aus der Palette
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Selektion der Stelle des Prozesses an der die ausgewählte Aktivität eingefügt
+ werden soll
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Eingabe eines Aktivitätsnamens
 \end_layout
 
 \end_inset
@@ -1383,7 +1398,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3a.
+ Der angezeigte Namensvorschlag wird vom Benutzer mit [Enter] bestätigt
 \end_layout
 
 \end_inset
@@ -1420,7 +1436,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Bearbeitung der Eigenschaften einer vorhandenen Daten-Management-Aktivität.
 \end_layout
 
 \end_inset
@@ -1440,7 +1456,16 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Ein vorhandener BPEL-Prozess muss im Eclipse BPEL Designer geöffnet, die
+ zu bearbeitende Aktivität muss ausgewählt sein und der 
+\begin_inset Quotes eld
+\end_inset
 
+Properties-View
+\begin_inset Quotes erd
+\end_inset
+
+ von Eclipse muss angezeigt werden.
 \end_layout
 
 \end_inset
@@ -1460,7 +1485,16 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Alle durchgeführten Änderungen der Eigenschaften wurden korrekt übernommen
+ und werden im 
+\begin_inset Quotes eld
+\end_inset
 
+Properties-View
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -1500,7 +1534,26 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Auswahl einer Aktivität, durch Markierung mit der Maus, aus dem Prozess
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Eigenschaften der Aktivität werden in der 
+\begin_inset Quotes eld
+\end_inset
+
+Properties-View
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Änderungen der Eigenschaften
 \end_layout
 
 \end_inset
@@ -1557,7 +1610,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Löschen der ausgewählten Daten-Management-Aktivität.
 \end_layout
 
 \end_inset
@@ -1577,7 +1630,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ein vorhandener BPEL-Prozess muss im Eclipse BPEL Designer geöffnet und
+ die zu löschende Aktivität muss ausgewählt sein.
 \end_layout
 
 \end_inset
@@ -1597,7 +1651,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die ausgewählte Aktivität wurde vollständig und korrekt aus dem Prozess
+ gelöscht.
 \end_layout
 
 \end_inset
@@ -1637,7 +1692,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Auswahl einer Aktivität, durch Markierung mit der Maus, aus dem Prozess
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Löschen der Aktivität
 \end_layout
 
 \end_inset
@@ -1657,6 +1718,16 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was passiert wenn von zwei voneinander abhängigen Aktivitäten eine gelöscht
+ wird?
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1694,7 +1765,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Auswahl einer Strategie zur Datenquellenauswahl.
 \end_layout
 
 \end_inset
@@ -1714,7 +1785,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Dialog zur Strategieauswahl in den globalen Einstellungen muss angezeigt
+ werden.
 \end_layout
 
 \end_inset
@@ -1734,7 +1806,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die ausgewählte Stategie wird gespeichert und für das Late-binding der Datenquel
+len verwendet.
 \end_layout
 
 \end_inset
@@ -1774,7 +1847,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Auswahl einer Strategie aus der Liste
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Speichern der globalen Einstellungen
 \end_layout
 
 \end_inset
@@ -1831,7 +1910,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Festlegen der benötigten Datenquellen-Eigenschaften.
 \end_layout
 
 \end_inset
@@ -1851,7 +1930,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Dialog zur Angabe der benötigten Datenquellen-Eigenschaften in den globalen
+ Einstellungen muss angezeigt werden.
 \end_layout
 
 \end_inset
@@ -1871,7 +1951,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die angegebenen Eigenschaftswerte werden gespeichert und für das Late-binding
+ der Datenquellen verwendet.
 \end_layout
 
 \end_inset
@@ -1911,7 +1992,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Eingabe der gewünschten Werte in den entsprechenden Eigenschaftsfeldern
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Speichern der globalen Einstellungen
 \end_layout
 
 \end_inset
@@ -2790,7 +2877,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ausführen des Prozesses auf der Apache ODE Workflow-Engine.
 \end_layout
 
 \end_inset
@@ -2810,6 +2897,18 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Ein Prozess muss im Eclipse BPEL Designer geöffnet und die Apache ODE Workflow-E
+ngine korrekt in Eclipse eingebunden sein.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Momentan: Tomcat darf nicht gestartet sein
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -2830,7 +2929,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und
+ der Prozess wird ausgeführt.
 \end_layout
 
 \end_inset
@@ -2870,7 +2970,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Erstellung eines ODE Deployment-Deskriptors
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ 
 \end_layout
 
 \end_inset
@@ -2891,6 +2997,292 @@ Sonderfälle
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Globale Einstellungen speichern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speicherung der globalen Einstellungen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Das Fenster für die globalen Einstellungen wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle Werte der globalen Einstellungen wurden korrekt gespeichert und alle
+ veralteten Werte mit neuen überschrieben.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle geänderten Werte der globalen Einstellungen bleiben durch den Speichervorga
+ng unverändert und es kann ein erneuter Versuch durchgeführt werden.
+ Die Werte bleiben dabei solange erhalten, bis Eclipse beendet wird.
+ Nach der Beendigung von Eclipse werden die Werte dann verworfen und beim
+ nächsten Start die zuletzt gespeicherten Einstellungen geladen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick auf den Button [Speichern]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Beim Speichern der Werte tritt ein Fehler auf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Globale Einstellungen zurücksetzen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zurücksetzen der globalen Einstellungen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Das Fenster für die globalen Einstellungen wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle geänderten Werte der globalen Einstellungen wurden auf die gespeicherten
+ Werte zurückgesetzt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle geänderten Werte der globalen Einstellungen bleiben durch den Zurücksetz-Vo
+rgang unverändert und es kann ein erneuter Versuch durchgeführt werden.
+ Die Werte bleiben dabei solange erhalten, bis Eclipse beendet wird.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick auf den Button [Zurücksetzen]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Beim Laden der Werte tritt ein Fehler auf
 \end_layout
 
 \end_inset
@@ -3110,7 +3502,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Monitoring von SIMPL aktivieren.
 \end_layout
 
 \end_inset
@@ -3130,7 +3522,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Admin-Konsole muss angezeigt werden und das Monitoring nicht aktiv.
 \end_layout
 
 \end_inset
@@ -3150,7 +3542,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Das Monitoring ist aktiviert und kann über das SIMPL Menü angezeigt werden.
 \end_layout
 
 \end_inset
@@ -3190,7 +3582,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Monitoring aktivieren
 \end_layout
 
 \end_inset
@@ -3247,7 +3640,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Monitoring von SIMPL deaktivieren.
 \end_layout
 
 \end_inset
@@ -3267,7 +3660,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Admin-Konsole muss angezeigt werden und das Monitoring ist aktiv.
 \end_layout
 
 \end_inset
@@ -3287,7 +3680,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Das Monitoring ist deaktiviert.
 \end_layout
 
 \end_inset
@@ -3327,7 +3720,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Monitoring deaktivieren
 \end_layout
 
 \end_inset
@@ -3361,7 +3755,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Monitoring-Granularität ändern
+Monitoring-Granularität ändern (optional)
 \end_layout
 
 \begin_layout Standard
@@ -3521,7 +3915,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Auditing von SIMPL aktivieren.
 \end_layout
 
 \end_inset
@@ -3541,7 +3935,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Admin-Konsole muss angezeigt werden und das Auditing ist nicht aktiv.
 \end_layout
 
 \end_inset
@@ -3561,7 +3955,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Das Auditing ist aktiviert.
 \end_layout
 
 \end_inset
@@ -3601,7 +3995,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Auditing aktivieren
 \end_layout
 
 \end_inset
@@ -3658,7 +4053,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Auditing von SIMPL deaktivieren.
 \end_layout
 
 \end_inset
@@ -3678,7 +4073,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Admin-Konsole muss angezeigt werden und das Auditing ist aktiv.
 \end_layout
 
 \end_inset
@@ -3698,7 +4093,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Das Auditing ist deaktiviert.
 \end_layout
 
 \end_inset
@@ -3738,7 +4133,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Auditing deaktivieren
 \end_layout
 
 \end_inset
@@ -3772,7 +4168,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Auditing-Granularität ändern
+Auditing-Granularität ändern (optional)
 \end_layout
 
 \begin_layout Standard
@@ -3932,7 +4328,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Festlegung einer Datenbank für das Auditing.
 \end_layout
 
 \end_inset
@@ -3952,7 +4348,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Admin-Console ist geöffnet.
 \end_layout
 
 \end_inset
@@ -3972,7 +4368,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Datenbank für das Auditing wurde festgelegt und kann verwendet werden.
 \end_layout
 
 \end_inset
@@ -3992,7 +4388,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Administrator wird durch eine entsprechende Fehlermeldung darauf hingewiesen
+, dass die angegebene Datenbank nicht erreichbar ist.
 \end_layout
 
 \end_inset
@@ -4012,7 +4409,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Angabe der Datenbank-Adresse
 \end_layout
 
 \end_inset
@@ -4032,7 +4430,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ Auf die angegebene Datenbank kann nicht zugegriffen werden
 \end_layout
 
 \end_inset
@@ -4069,7 +4468,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Referenz in RRS einfügen.
 \end_layout
 
 \end_inset
@@ -5440,7 +5839,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Abrufen aller verfügbaren Datenquellen.
 \end_layout
 
 \end_inset
@@ -5714,7 +6113,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Filterung der Datenquellenliste anhand von Eigenschaften.
 \end_layout
 
 \end_inset
@@ -5734,7 +6133,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Benutzer hat Werte für Datenquellen-Eigenschaften, die erfüllt werden
+ sollen, angegeben.
 \end_layout
 
 \end_inset
@@ -5754,7 +6154,9 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die durch die Filterung resultierende Datenquellenliste enthält genau die
+ Datenquellen, die die angegebenen Eigenschaften erfüllen und sonst keine
+ weiteren.
 \end_layout
 
 \end_inset
@@ -5774,7 +6176,16 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
+Die Liste aller verfügbarer Datenquellen bleibt ungefiltert und unverändert,
+ damit hat der Benutzer noch die Möglichkeit eine Datenquelle 
+\begin_inset Quotes eld
+\end_inset
 
+per Hand
+\begin_inset Quotes erd
+\end_inset
+
+ auszuwählen.
 \end_layout
 
 \end_inset
@@ -5794,7 +6205,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Eigenschaftswerte werden gelesen
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Liste aller verfügbarer Datenquellen wird anhand der Eigenschaften gefiltert
 \end_layout
 
 \end_inset
@@ -5814,7 +6231,13 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
+1a.
+ Eigenschaftswerte können nicht gelesen werden
+\end_layout
 
+\begin_layout Plain Layout
+2a.
+ Keine der verfügbaren Datenquellen erfüllt die Eigenschaften
 \end_layout
 
 \end_inset
@@ -5851,7 +6274,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Auswahl einer Datenquelle per Strategie.
 \end_layout
 
 \end_inset
@@ -5871,7 +6294,9 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Benutzer hat Eigenschaften angegeben anhand derer die Liste der verfügbaren
+ Datenquellen gefiltert wurde und eine korrekte und vollständige Datenquellenlis
+te steht zur Verfügung.
 \end_layout
 
 \end_inset
@@ -5891,7 +6316,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine der ausgewählten Strategie entsprechende Datenquelle wurde ausgewählt
+ und kann nun im Prozess verwendet werden.
 \end_layout
 
 \end_inset
@@ -5911,7 +6337,14 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
+Es wurde eine Datenquelle nach der Standard-Strategie (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Strategien"
 
+\end_inset
+
+) aus der Liste ausgewählt und kann nun im Prozess verwendet werden.
 \end_layout
 
 \end_inset
@@ -5931,7 +6364,18 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Filterung der Datenquellenliste
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Lesen der ausgewählten Strategie aus den globalen Einstellungen
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Auswahl einer Datenquelle aus der Liste anhand der gegebenen Strategie
 \end_layout
 
 \end_inset
@@ -5951,7 +6395,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2a.
+ Beim Lesen der ausgewählten Strategie tritt ein Fehler auf
 \end_layout
 
 \end_inset
@@ -6034,7 +6479,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Umwandlung einer BPEL-Datei in Standard-BPEL-Quellcode.
 \end_layout
 
 \end_inset
@@ -6054,7 +6499,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine BPEL-Datei muss vorhanden sein.
 \end_layout
 
 \end_inset
@@ -6308,7 +6753,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der zugrundeliegende Wert einer Referenz wird ausgelesen.
 \end_layout
 
 \end_inset
@@ -6328,7 +6773,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Angegebene Referenz muss existieren und die Quelle des referenzierten Werts
+ erreichbar sein.
 \end_layout
 
 \end_inset
@@ -6348,7 +6794,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der korrekte Wert einer Referenz wird geliefert.
 \end_layout
 
 \end_inset
@@ -6388,7 +6834,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Wert der Referenz wird im RRS abgefragt
 \end_layout
 
 \end_inset
@@ -7153,12 +7600,6 @@ Beispiele:
 
 \begin_deeper
 \begin_layout Itemize
-[CREATE PROCEDURE PARTS_ON_HAND (IN PARTNUM INTEGER, OUT COST DECIMAL(7,2),
- OUT QUANTITY INTEGER) EXTERNAL NAME ’parts!onhand’ LANGUAGE JAVA PARAMETER
- STYLE DB2GENERAL;]
-\end_layout
-
-\begin_layout Itemize
 CALL PARTS_ON_HAND (?,?,?) 
 \shape italic
 (? = Parameter der Prozedur)
@@ -7805,7 +8246,85 @@ Event-Modell
 \end_layout
 
 \begin_layout Subsection
-...
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Strategien"
+
+\end_inset
+
+Strategien zur dynamischen Datenquellenauswahl
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Quotes eld
+\end_inset
+
+Erster Fund
+\begin_inset Quotes erd
+\end_inset
+
+ (Standard-Strategie)
+\end_layout
+
+\begin_layout Standard
+Liefert die erste gefundene Datenquelle, aus der Datenquellenliste, die
+ alle Eigenschaften erfüllt.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Quotes eld
+\end_inset
+
+Die Beste
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Liefert die beste gefundene Datenquelle, aus der Datenquellenliste, die
+ alle Eigenschaften erfüllt.
+ Das heisst es werden alle passenden Datenquellen verglichen und davon die
+ Größte, Funktionsfähigste, ...
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Beste
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Quotes eld
+\end_inset
+
+Die Schlechteste
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Liefert die schlechteste gefundene Datenquelle, aus der Datenquellenliste,
+ die alle Eigenschaften erfüllt.
+ Das heisst es werden alle passenden Datenquellen verglichen und davon diejenige
+ ausgewählt, die gerade so alle Eigenschaften erfüllt.
+ So wird verhindert, dass z.B.
+ eine viel zu große Datenquelle, die Andere dringender bräuchten, angebunden
+ wird.
+\end_layout
+
+\begin_layout Subsubsection
+...?
+\end_layout
+
+\begin_layout Subsection
+Datenquellen-Eigenschaften
 \end_layout
 
 \begin_layout Section
