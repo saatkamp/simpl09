@@ -562,6 +562,30 @@ Die in der Spezifikation verwendeten Begriffe, Definitionen und Abkürzungen
  definiert.
 \end_layout
 
+\begin_layout Standard
+Auf alle in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Resultierende-BPEL-Aktivitäten"
+
+\end_inset
+
+ beschriebenen Aktivitäten wird in diesem Dokument mit dem Sammelbegriff
+ Data-Management-Aktivität verwiesen.
+ Wird also von einer Data-Management-Aktivität gesprochen, ist indirekt
+ eine dieser Aktivitäten gemeint.
+ Über die Definition und Verwendung dieses Sammelbegriffs soll lediglich
+ die Allgemeingültigkeit der getroffenen Aussagen, für jede der in Abschnitt
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Resultierende-BPEL-Aktivitäten"
+
+\end_inset
+
+ beschriebenen Aktivitäten, realisiert werden.
+\end_layout
+
 \begin_layout Subsection
 Überblick
 \end_layout
@@ -1155,10 +1179,6 @@ In diesem Abschnitt werden die einzelnen Akteure der Software beschrieben
 
 \begin_layout Subsection
 Prozess-Modellierer
-\end_layout
-
-\begin_layout Standard
-Der P
 \end_layout
 
 \begin_layout Subsection
@@ -8524,6 +8544,10 @@ Globale Eigenschaften Dialog
 
 \end_layout
 
+\begin_layout Subsubsection
+Data-Management-Aktivitäten
+\end_layout
+
 \begin_layout Subsection
 Monitoring
 \end_layout
@@ -8542,6 +8566,12 @@ name "sub:Strategien"
 Strategien zur dynamischen Datenquellenauswahl
 \end_layout
 
+\begin_layout Standard
+In diesem Abschnitt werden verschiedene Strategien, mithilfe derer später
+ die Datenquellen über angegebene Eigenschaften ausgewählt werden, definiert
+ und erläutert.
+\end_layout
+
 \begin_layout Subsubsection
 \begin_inset Quotes eld
 \end_inset
@@ -8550,28 +8580,38 @@ Erster Fund
 \begin_inset Quotes erd
 \end_inset
 
- (Standard-Strategie)
+ (First Find)
 \end_layout
 
 \begin_layout Standard
-Liefert die erste gefundene Datenquelle, aus der Datenquellenliste, die
- alle Eigenschaften erfüllt.
+Diese Strategie liefert immer die erste passende Datenquelle, aus der Datenquell
+enliste, die alle vom Benutzer angegebenen Eigenschaften erfüllt.
+ Der Vorteil dieser Strategie liegt klar in der Geschwindigkeit in der eine
+ passende Datenquelle, falls eine solche existiert, gefunden wird.
+ Als Nachteil muss man bei dieser Strategie in Kauf nehmen, dass man keinen
+ weiteren Einfluss auf die Auswahl der Datenquelle hat, solange die Eigenschafte
+n erfüllt werden.
+ D.h.
+ konkret, dass man bei dieser Strategie nicht weiß in welchem Maße die ausgewähl
+te Datenquelle die angegebenen Eigenschaften erfüllt, also ob die Datenquelle
+ die Eigenschaften gerade so erfüllt oder sogar eventuell unnötigerweise
+ um ein vielfaches überbietet.
 \end_layout
 
 \begin_layout Subsubsection
 \begin_inset Quotes eld
 \end_inset
 
-Die Beste
+Bester Fund
 \begin_inset Quotes erd
 \end_inset
 
-
+ (Best Find)
 \end_layout
 
 \begin_layout Standard
-Liefert die beste gefundene Datenquelle, aus der Datenquellenliste, die
- alle Eigenschaften erfüllt.
+Diese Strategie liefert die beste gefundene Datenquelle, aus der Datenquellenlis
+te, die alle Eigenschaften erfüllt.
  Das heisst es werden alle passenden Datenquellen verglichen und davon die
  Größte, Funktionsfähigste, ...
  und 
@@ -8583,35 +8623,77 @@ Beste
 \end_inset
 
  ausgewählt.
+ Der Vorteil dieser Strategie ist, dass bei sich ändernden Anforderungen,
+ wie z.B.
+ eines höheren Speicherbedarfs, nicht zwangsweise der Prozess neu ausgeführt
+ und die Datenquelle gewechselt werden müssen.
+ Nachteile sind eine etwas längere Suchzeit, da alle verfügbaren und passenden
+ Datenquellen miteinander verglichen werden müssen und ebenso wieder die
+ Möglichkeit, dass eine 
+\begin_inset Quotes eld
+\end_inset
+
+zu gute
+\begin_inset Quotes erd
+\end_inset
+
+ Datenquelle, die nicht voll ausgelastet wird, ausgewählt wurde und dadurch
+ möglicherweise denen die sie wirklich benötigen nicht mehr zur Verfügung
+ steht.
 \end_layout
 
 \begin_layout Subsubsection
 \begin_inset Quotes eld
 \end_inset
 
-Die Schlechteste
+Passender Fund
 \begin_inset Quotes erd
 \end_inset
 
-
+ (Matching Find (Standard-Strategie))
 \end_layout
 
 \begin_layout Standard
-Liefert die schlechteste gefundene Datenquelle, aus der Datenquellenliste,
- die alle Eigenschaften erfüllt.
+Diese Strategie liefert die passendste gefundene Datenquelle, aus der Datenquell
+enliste, die alle Eigenschaften erfüllt.
  Das heisst es werden alle passenden Datenquellen verglichen und davon diejenige
- ausgewählt, die gerade so alle Eigenschaften erfüllt.
- So wird verhindert, dass z.B.
- eine viel zu große Datenquelle, die Andere dringender bräuchten, angebunden
+ ausgewählt, die gerade so alle Eigenschaften erfüllt und somit den Angaben
+ des Benutzers entspricht.
+ Der Vorteil dieser Strategie ist, dass dadurch verhindert wird, dass z.B.
+ eine viel zu große Datenquelle, die Andere dringender bräuchten, ausgewählt
  wird.
-\end_layout
-
-\begin_layout Subsubsection
-...?
+ Die Nachteile sind wieder die etwas längere Suchzeit und die fehlende Flexibili
+tät dynamisch auf steigende Anforderungen zu reagieren, da diese eben genau
+ erfüllt werden.
 \end_layout
 
 \begin_layout Subsection
 Datenquellen-Eigenschaften
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt sollen sinnvolle Datenquellen-Eigenschaften, anhand
+ derer Datenquellen verglichen und automatisch ausgewählt werden können,
+ definiert werden.
+ Dazu werden zuerst spezifische Eigenschaften der drei grundlegenden Datenquelle
+nkategorien (Dateisysteme, Datenbanken und Sensornetze) identifiziert und
+ anschließend um weitere gemeinsame Eigenschaften ergänzt.
+\end_layout
+
+\begin_layout Subsubsection
+Dateisysteme
+\end_layout
+
+\begin_layout Subsubsection
+Datenbanken
+\end_layout
+
+\begin_layout Subsubsection
+Sensornetze
+\end_layout
+
+\begin_layout Subsubsection
+Resultierender Eigenschaftskatalog
 \end_layout
 
 \begin_layout Section
