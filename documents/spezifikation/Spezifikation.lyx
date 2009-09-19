@@ -8282,7 +8282,7 @@ DROP ALL
 Eclipse BPEL Designer
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Monitoring
 \end_layout
 
@@ -8291,7 +8291,7 @@ Monitoring
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8314,10 +8314,6 @@ Monitoring im Menu
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -8327,7 +8323,7 @@ Monitoring im Menu
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8350,10 +8346,6 @@ Monitoring Dialog
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -8364,7 +8356,7 @@ Monitoring Dialog
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8387,20 +8379,12 @@ Monitoring-Granularität Dialog
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Subsubsection
-Event-Modell
-\end_layout
-
-\begin_layout Subsection
 Admin-Konsole
 \end_layout
 
@@ -8409,7 +8393,7 @@ Admin-Konsole
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8432,10 +8416,6 @@ Admin-Konsole im Menu
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -8446,7 +8426,7 @@ Admin-Konsole im Menu
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8469,21 +8449,13 @@ Admin-Konsole
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Globale Eigenschaften
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -8491,7 +8463,7 @@ Globale Eigenschaften
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8514,10 +8486,6 @@ Globale Eigenschaften im Menu
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -8528,7 +8496,7 @@ Globale Eigenschaften im Menu
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -8551,13 +8519,17 @@ Globale Eigenschaften Dialog
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Monitoring
+\end_layout
+
+\begin_layout Subsubsection
+Event-Modell
 \end_layout
 
 \begin_layout Subsection
