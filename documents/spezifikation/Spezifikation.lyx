@@ -973,6 +973,29 @@ h Kommentaren auf Englisch verfasst und ausgeliefert werden.
 Distributionsform und Installation
 \end_layout
 
+\begin_layout Standard
+Das Rahmenwerk wird als Teil eines großen Installationpakets ausgeliefert.
+ Dieses Installationspaket besteht aus allen Programmen, die für die Verwendung
+ des Rahmenwerks benötigt werden.
+ Dazu gehöhrt ein Modellierungstool (Eclipse BPEL Designer), ein Web-Server
+ (Apache Tomcat), der eine Workflow-Engine ausführen kann, eine Workflow-Engine
+ (Apache ODE) und natürlich das Rahmenwerk selbst.
+ Mithilfe des Installationspakets ist es möglich viele Einstellungen bereits
+ vorzudefinieren und dem Benutzer die Installation zu erleichern.
+ Das Installationspaket wird dabei als RAR-Archiv zusammen mit allen wichtigen
+ Dokumenten auf einer CD/DVD ausgeliefert.
+ Zu den Dokumenten zählen die Spezifikation, das Handbuch mit Installationsanlei
+tung auf Deutsch und Englisch, die vollständige Dokumentation aller Erweiterunge
+n auf Deutsch und Englisch und der gesammte Quellcode des Rahmenwerks.
+ So können nachträgliche Erweiterungen/Korrekturen des Rahmenwerks mithilfe
+ der Dokumentationen leichter realisiert werden.
+\end_layout
+
+\begin_layout Standard
+Die Installation der einzelnen Komponenten wird dann anhand der mitgelieferten
+ Installationsanleitung durchgeführt.
+\end_layout
+
 \begin_layout Subsection
 Benutzerprofile
 \end_layout
@@ -1112,6 +1135,21 @@ Die Erweiterbarkeit des Systems spielt eine zentrale Anforderung, da es
 Wartbarkeit
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Durch qualitativ hochwertige Dokumentation und ein strukturiertes, geplantes
+ und sauberes Entwicklungsvorgehen wird der Anspruch erhoben, eine möglichst
+ hohe Wartbarkeit zu erreichen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Skalierbarkeit
 \end_layout
@@ -1149,25 +1187,6 @@ Das System soll soweit wie möglich Ausfallsicher sein.
 
 \end_layout
 
-\begin_layout Subsection
-Wartbarkeit
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Durch qualitativ hochwertige Dokumentation und ein strukturiertes, geplantes
- und sauberes Entwicklungsvorgehen wird der Anspruch erhoben, eine möglichst
- hohe Wartbarkeit zu erreichen.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Akteure
 \end_layout
@@ -1181,8 +1200,31 @@ In diesem Abschnitt werden die einzelnen Akteure der Software beschrieben
 Prozess-Modellierer
 \end_layout
 
+\begin_layout Standard
+Ein Prozess-Modellierer erstellt mit dem Eclipse BPEL Designer BPEL Prozesse.
+ Dazu kann er BPEL-Aktivitäten erstellen, bearbeiten und auch löschen.
+ Weiterhin kann er für die dynamische Datenquellenauswahl zur Laufzeit,
+ die von ihm benötigten Datenquellen-Eigenschaften angeben und eine geeignete
+ Auswahl-Strategie auswählen.
+ Hat der Prozess-Modellierer den BPEL-Prozess fertig modelliert, kann er
+ diesen im Anschluss auf einer Workflow-Engine ausführen lassen.
+\end_layout
+
 \begin_layout Subsection
 Workflow-Administrator
+\end_layout
+
+\begin_layout Standard
+Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers,
+ d.h.
+ er kann alle Anwendungsfälle des Prozess-Modellierers und noch weitere
+ administrative Anwendungsfälle ausführen.
+ Er kann beispielsweise über die Admin-Konsole während der Prozesslaufzeit
+ das Auditing und Monitoring an- und abschalten oder dessen Granularität
+ ändern.
+ Ebenso legt er die Datenbank für das Speichern der Auditing-Daten fest
+ und administriert das Reference Resolution System, d.h.
+ er kann Referenzen anlegen, löschen und bearbeiten.
 \end_layout
 
 \begin_layout Subsection
@@ -8528,7 +8570,7 @@ Globale Eigenschaften im Menu
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8691,23 +8733,1080 @@ In diesem Abschnitt sollen sinnvolle Datenquellen-Eigenschaften, anhand
  definiert werden.
  Dazu werden zuerst spezifische Eigenschaften der drei grundlegenden Datenquelle
 nkategorien (Dateisysteme, Datenbanken und Sensornetze) identifiziert und
- anschließend um weitere gemeinsame Eigenschaften ergänzt.
+ anschließend um weitere gemeinsame bzw.
+ allgemeine Eigenschaften ergänzt.
 \end_layout
 
 \begin_layout Subsubsection
 Dateisysteme
 \end_layout
 
+\begin_layout Standard
+In Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Dateisystem-Eigenschaften"
+
+\end_inset
+
+ werden nachfolgend einige für den Benutzer relevante Eigenschaften von
+ Dateisystemen genannt und kurz beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Dateisystem-Eigenschaften"
+
+\end_inset
+
+Dateisystem-Eigenschaften
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features>
+<column alignment="left" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenschaft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Art des Dateisystems
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage um welches Dateisystem es sich handelt: Linux (ext3), Apple-Macintos
+h (HFS+), Microsoft (NTFS) oder Andere.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Verfügbarer Speicherplatz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der auf einem Dateisystem noch zur Verfügung stehende Speicherplatz.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unterscheidet Groß-/ Kleinschreibung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage, ob das Dateisystem bei Dateinamen oder Verzeichnispfaden zwischen
+ Groß- und Kleinschreibung unterscheidet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Dateigröße
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage, wie groß eine einzelne Datei maximal sein darf.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Dateinamenlänge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Anzahl von Zeichen, die ein Dateinamen lang sein darf.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Datenbanken
+\end_layout
+
+\begin_layout Standard
+In Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Datenbank-Eigenschaften"
+
+\end_inset
+
+ werden nachfolgend einige für den Benutzer relevante Eigenschaften von
+ Datenbanken genannt und kurz beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Datenbank-Eigenschaften"
+
+\end_inset
+
+Datenbank-Eigenschaften
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="2">
+<features>
+<column alignment="left" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenschaft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Art der Datenbank
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage um welche Art von Datenbank es sich handelt: Relationale DB,
+ XML-DB, Objektrelationale DB oder Andere.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Datenbank-Version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Welche Versionsnummer die zugrundeliegende Datenbank besitzt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Spaltenzahl in Tabellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wieviele Spalten in einer Tabelle erstellt werden können.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Anzahl von Tabellenangaben pro Befehl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gibt an, wieviele Tabellen z.B.
+ in einem SQL-SELECT Befehl angegeben werden können, d.h.
+ aus wievielen Tabellen, Daten gemeinsam gelesen werden können.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Befehlslänge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage, wie lang ein Befehl, der an die Datenbank geschickt wird, maximal
+ sein darf.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Anzahl von Bytes pro Tabellenzeile
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gibt an, welche Menge an Daten (in Byte) in eine einzige Zeile einer Tabelle
+ geschrieben werden können.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Länge von Tabellennamen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage der maximalen Länge von Tabellennamen, die von der Datenbank
+ unterstützt werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Anzahl an konkurrierenden Verbindungen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Liefert die maximale Anzahl an Verbindungen, die gleichzeitig (konkurrierend)
+ auf Daten der Datenbank zugreifen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unterstützung von 
+\emph on
+stored procedures
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage, ob die Verwendung von 
+\emph on
+stored procedures 
+\emph default
+von einer Datenbank
+\emph on
+ 
+\emph default
+unterstützt wird.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unterstützung von Transaktionen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage, ob Transaktionen von der Datenbank unterstützt werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 Sensornetze
 \end_layout
 
+\begin_layout Standard
+In Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sensornetz-Eigenschaften"
+
+\end_inset
+
+ werden nachfolgend einige für den Benutzer relevante Eigenschaften von
+ Dateisystemen genannt und kurz beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Sensornetz-Eigenschaften"
+
+\end_inset
+
+Sensornetz-Eigenschaften
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features>
+<column alignment="left" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenschaft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
-Resultierender Eigenschaftskatalog
+Gemeinsame/Allgemeine Eigenschaften
+\end_layout
+
+\begin_layout Standard
+In Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Allgemeine-DQ-Eigenschaften"
+
+\end_inset
+
+ werden nun nachfolgend noch alle relevanten gemeinsamen bzw.
+ allgemeinen Eigenschaften, die für alle Datenquellen gelten, genannt und
+ kurz beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Allgemeine-DQ-Eigenschaften"
+
+\end_inset
+
+Gemeinsame/Allgemeine Eigenschaften aller Datenquellen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="5cm">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenschaft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der definierte Name einer Datenquelle.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Typ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zur Abfrage um welche Art von Datenquelle es sich handelt: Dateisystem,
+ Datenbank oder Sensornetz.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Adresse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die physikalische Adresse der Datenquelle.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
