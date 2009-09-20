@@ -24,7 +24,7 @@
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
 \def\docvers{0.1}
-\def\docautor{Wolfgang Huettig, Michael Hahn,Firas Zoabi, Michael Schneidt}
+\def\docautor{Wolfgang Huettig, Michael Hahn, Firas Zoabi, Michael Schneidt}
 \def\docdate{11. September 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
@@ -8314,8 +8314,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/monitoring_menu.jpg
+	width 100text%
 
 \end_inset
 
@@ -8346,8 +8348,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/screen6.jpg
+	width 100text%
 
 \end_inset
 
@@ -8379,8 +8383,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/screen7.jpg
+	width 100text%
 
 \end_inset
 
@@ -8416,8 +8422,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/Adminkonsole_menu.jpg
+	width 100text%
 
 \end_inset
 
@@ -8449,8 +8457,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/screen9.jpg
+	width 100text%
 
 \end_inset
 
@@ -8486,8 +8496,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/GlobaleEigenschaften_menu.jpg
+	width 100text%
 
 \end_inset
 
@@ -8516,11 +8528,13 @@ Globale Eigenschaften im Menu
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/screen4.jpg
+	width 100text%
 
 \end_inset
 
