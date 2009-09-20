@@ -8604,6 +8604,42 @@ Globale Eigenschaften Dialog
 Data-Management-Aktivitäten
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/SelectBPELPropertySectionFinal.JPG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Eigenschaftsfenster einer Data-Management-Aktivität am Beispiel einer SELECT
+ Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Monitoring
 \end_layout
