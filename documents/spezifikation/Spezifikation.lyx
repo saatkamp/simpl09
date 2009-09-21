@@ -9229,11 +9229,84 @@ Eigenschaftsfenster einer Data-Management-Aktivität am Beispiel einer SELECT
 \end_layout
 
 \begin_layout Subsection
-Monitoring
+Monitoring und Auditing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Nur eine erste Version, wird noch genauer überarbeitet ...
+ Event-Modelle werde ich heute oder morgen erstellen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im BPEL Designer ist der Zugriff auf das Monitoring und Auditing unter dem
+ entsprechenden Menüpunkt möglich.
+ Hier kommt man nun zum entsprechenden Interface in dem sich verschiedene
+ Einstellungen für das Auditing und das Monitoring tätigen lassen (siehe
+ 6.3.1).
+ Es ist möglich das Auditing als auch das Echtzeitmonitoring zu aktivieren
+ oder zu deaktivieren.
 \end_layout
 
 \begin_layout Subsubsection
-Event-Modell
+Auditing
+\end_layout
+
+\begin_layout Standard
+Wenn das Auditing aktiviert wird (mit Auswahl der entsprechenden Kriterien),
+ wird eine Liste der Prozesse und/oder Instanzen erstellt (mit Hilfe der
+ ODE Management API).
+ Dadurch ist es nun möglich die verschiedene Informationen und aufgetreten
+ Events (in Bezug auf die zuvor ausgewählten Kriterien) abzurufen.
+ Diese Informationen und Events werden in Form einer xml-Datei übergeben.
+ Diese kann nun (optinal) geparst werden um die Informationen als Strings
+ in einer „normalen“ realtionalen Datenbank zu speichern oder aber direkt
+ die xml-Datein in einer entsprechenden Datenbank abzuspeichern.
+\end_layout
+
+\begin_layout Subsubsection
+Monitoring
+\end_layout
+
+\begin_layout Standard
+Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert, welches
+ beginnt Informationen ab dem Zeitpunkt an dem es aktiviert wurde abzurufen
+ (mit Hilfe von Event Listenern) und dies wird solange getan, bis es wieder
+ deaktiviert wurde.
+ Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel
+ Anzahl der aktiven Prozesse oder Prozessinstanzen soll möglich sein.
+ Geplant sind bisher zwei Arten der Visualisierung die in der Konzept-Grafik
+ in 6.3.1 zu sehen sind.
+ Die Monitoring Informationen werden nicht gespeichert sondern dienen jedeglich
+ der Visualisierung.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Event-Modelle
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Event Modelle für Auditing und Monitoring hier erstellen.
+ Noch nicht sicher ob ein Modell ausreichend oder zwei voneinander getrennte
+ Modelle notwendig oder besser.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -10485,18 +10558,6 @@ hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
 \end_layout
 
 \begin_layout Description
-Hudson 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://hudson.dev.java.net/"
-target "https://hudson.dev.java.net/"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
 ApacheODE 
 \begin_inset CommandInset href
 LatexCommand href
@@ -10506,6 +10567,14 @@ target "http:/ode.apache.org"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Apache ODE ist eine BPEL-fähige Workflow-Engine.
+ Es wird sowohl WS-BPEL 2.0 als auch BPEL4WS 1.1 unterstützt und die Ausführung
+ von Prozessen in SOA ist möglich.
+ Zudem ist das hot deplyoment von Prozessen möglich als auch die Analyse
+ und Validierung von Prozessen.
 \end_layout
 
 \begin_layout Description
@@ -10520,6 +10589,13 @@ target "http://www.eclipse.org/bpel"
 
 \end_layout
 
+\begin_layout Standard
+Der Eclipse BPEL Designer ist ein Eclipse Plugin zum Arbeiten mit BPEL Prozessen.
+ Er verfügt über eine leicht verständliche GUI, eine Fehlererkennnung für
+ BPEL Prozesse und außerdem ist die Schritt für Schritt Ausführung von Prozessen
+ möglich.
+\end_layout
+
 \begin_layout Description
 IBM-DB2 
 \begin_inset CommandInset href
@@ -10530,6 +10606,11 @@ target "http://pub...w/v9r5/index.jsp"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Die IBM-DB2 ist ein Hybriddatenserver mit dem sowohl die Verwaltung von
+ XML-Daten als auch von relationalen Daten möglich ist.
 \end_layout
 
 \begin_layout Subsection
@@ -10562,6 +10643,11 @@ target "http://svnbook.red-bean.com"
 
 \end_layout
 
+\begin_layout Standard
+Subversion ist eine Software zur Versionskontrolle und eine Weiterentwicklung
+ von CVS.
+\end_layout
+
 \begin_layout Description
 Maven 
 \begin_inset CommandInset href
@@ -10572,6 +10658,10 @@ target "http://svnbook.red-bean.com"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Maven ist ein Projekt-Management-Tool.
 \end_layout
 
 \begin_layout Description
@@ -10619,6 +10709,27 @@ target "http://tortoisesvn.net/"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Description
+Hudson 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://hudson.dev.java.net/"
+target "https://hudson.dev.java.net/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hudson ist ein webbasiertes System zur kontinuierlichen Integration von
+ Softwareprojekten.
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
