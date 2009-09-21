@@ -10437,7 +10437,7 @@ Wird für die Authentifizierung und Autorisierung auf zugriffsgeschützten
 \end_layout
 
 \begin_layout Section
-Einzusetzende Technologien
+Materialien, Werkzeuge und Technologien
 \end_layout
 
 \begin_layout Subsection
@@ -10445,7 +10445,198 @@ Materialien
 \end_layout
 
 \begin_layout Subsection
+Technologien
+\end_layout
+
+\begin_layout Standard
+Es werden die Verchiedene Technologien in Entwicklung eingesetzt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
+\end_layout
+
+\begin_layout Plain Layout
+über jeden folgender Technologien bzw.
+ Werkzeuge eine kleinen Text 
+\end_layout
+
+\begin_layout Plain Layout
+-was die sind 
+\end_layout
+
+\begin_layout Plain Layout
+-und wichtig auch wofür sie in unsere Projekt gebraucht sind 
+\end_layout
+
+\begin_layout Plain Layout
+-und warum die und nicht andere.
+ Vorteil ,Nachteil.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Hudson 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://hudson.dev.java.net/"
+target "https://hudson.dev.java.net/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+ApacheODE 
+\begin_inset CommandInset href
+LatexCommand href
+name "http:/ode.apache.org"
+target "http:/ode.apache.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Eclipse-Bpel-Designer 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.eclipse.org/bpel"
+target "http://www.eclipse.org/bpel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+IBM-DB2 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://pub...w/v9r5/index.jsp"
+target "http://pub...w/v9r5/index.jsp"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Werkzeuge
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
+ unterstützen , wie beim Dokumenten Erzeugen oder SVN-Tool
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Subversion 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://svnbook.red-bean.com"
+target "http://svnbook.red-bean.com"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Maven 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://svnbook.red-bean.com"
+target "http://svnbook.red-bean.com"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Lyx 
+\begin_inset CommandInset href
+LatexCommand href
+name "www.lyx.org"
+target "www.lyx.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+LaTeX 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.latex-project.org"
+target "http://www.latex-project.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Eclipse-Subversion 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://javathreads.de/2009/07/subversion-unter-eclipse-galileo-konfigurieren/"
+target "http://javathreads.de/2009/07/subversion-unter-eclipse-galileo-konfigurieren/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+TortoiseSVN 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://tortoisesvn.net/"
+target "http://tortoisesvn.net/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
+ Notationen, Techniken und Methoden, um das System und andere auszuliefernde
+ Produkte zu spezifizieren, entwerfen, konstruieren, testen, integrieren,
+ dokumentieren, modifizieren oder pflegen; technische Standards, Richtlinien,
+ Zertifizierungskriterien
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
