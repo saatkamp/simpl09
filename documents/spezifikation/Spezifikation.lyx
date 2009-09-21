@@ -1829,7 +1829,7 @@ Sonderfälle
 status open
 
 \begin_layout Plain Layout
-Was passiert wenn von zwei voneinander abhängigen Aktivitäten eine gelöscht
+Was passiert wenn eine von zwei voneinander abhängigen Aktivitäten gelöscht
  wird?
 \end_layout
 
@@ -1849,7 +1849,7 @@ Was passiert wenn von zwei voneinander abhängigen Aktivitäten eine gelöscht
 \end_layout
 
 \begin_layout Subsubsection
-Strategie auswählen
+Lokale Strategie auswählen
 \end_layout
 
 \begin_layout Standard
@@ -1872,7 +1872,152 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Auswahl einer Strategie zur Datenquellenauswahl.
+Auswahl einer lokalen Strategie zur Datenquellenauswahl, d.h.
+ Auswahl einer Strategie, die nur für die Datenquellenauswahl der ausgewählten
+ Aktivität gilt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Das Eigenschaftsfenster einer Data-Management-Aktivität wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die ausgewählte Stategie wird intern gespeichert und für das Late-binding
+ der Datenquelle der ausgewählten Aktivität verwendet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die in den globalen Einstellungen ausgewählte Strategie wird für das Late-bindin
+g von Datenquellen für diese Aktivität verwendet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Auswahl einer Strategie aus der Liste
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Auswahl der globalen Strategie (Standardwert)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Globale Strategie auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auswahl einer globalen Strategie zur Datenquellenauswahl, d.h.
+ Auswahl einer Standard-Strategie, die für alle Aktivitäten als Standardwert
+ festgelegt ist.
 \end_layout
 
 \end_inset
@@ -1994,7 +2139,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Datenquellen-Eigenschaften festlegen
+Lokale Datenquellen-Eigenschaften festlegen
 \end_layout
 
 \begin_layout Standard
@@ -2017,7 +2162,151 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Festlegen der benötigten Datenquellen-Eigenschaften.
+Lokales Festlegen der benötigten Datenquellen-Eigenschaften in der ausgewählten
+ Aktivität.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Das Eigenschaftsfenster einer Data-Management-Aktivität wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die angegebenen Eigenschaftswerte werden intern gespeichert und für das
+ Late-binding der Datenquelle der ausgewählten Aktivität verwendet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die in den globalen Einstellungen hinterlegten Eigenschaftswerte werden
+ für das Late-binding der Datenquelle der ausgewählten Aktivität verwendet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Eingabe der gewünschten Werte in den entsprechenden Eigenschaftsfeldern
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Auswahl der Checkbox zur Nutzung der global hinterlegten Eigenschaften
+ in den globalen Einstellungen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Globale Datenquellen-Eigenschaften festlegen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Globales Festlegen der benötigten Datenquellen-Eigenschaften in den globalen
+ Einstellungen.
 \end_layout
 
 \end_inset
@@ -2139,7 +2428,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Datenquelle auswählen
+Lokale Datenquelle auswählen
 \end_layout
 
 \begin_layout Standard
@@ -2162,7 +2451,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Auswählen einer lokalen Datenquelle für die ausgewählte Aktivität zur Modellieru
+ngszeit.
 \end_layout
 
 \end_inset
@@ -2182,7 +2472,17 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Bestehende Verbindung zur Datenquellen-Registry 
+\begin_inset Note Note
+status open
 
+\begin_layout Plain Layout
+UDDI???
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -2202,7 +2502,9 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die ausgewählte Datenquelle wurde intern als zugrundeliegende Datenquelle
+ der Aktivität hinterlegt und ein erfolgreicher Verbindungstest mit den
+ in den lokalen Eigenschaften hinterlegten Login-Daten ausgeführt.
 \end_layout
 
 \end_inset
@@ -2222,7 +2524,10 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer darüber
+ informiert, warum der Verbindungstest nicht erfolgreich war.
+ Ob z.B.
+ die Login-Daten falsch waren oder die Datenquelle nicht erreichbar ist.
 \end_layout
 
 \end_inset
@@ -2242,7 +2547,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Auswahl einer Datenquelle aus der Liste
 \end_layout
 
 \end_inset
@@ -2262,7 +2568,170 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
+1a.
+ Der Verbindungstest schlägt fehl
+\end_layout
 
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Globale Datenquelle auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auswählen einer globalen Datenquelle, die als Standard-Datenquelle für alle
+ Aktivitäten genutzt werden kann, zur Modellierungszeit.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Dialog zur Auswahl einer Datenquelle in den globalen Einstellungen muss
+ angezeigt werden und es muss eine Verbindung zur Datenquellen-Registry
+ bestehen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+UDDI???
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die ausgewählte Datenquelle wurde als globale Datenquelle hinterlegt, die
+ globalen Einstellungen erfolgreich gespeichert und ein erfolgreicher Verbindung
+stest ausgeführt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer darüber
+ informiert, warum der Verbindungstest nicht erfolgreich war.
+ Ob z.B.
+ die Login-Daten falsch waren oder die Datenquelle nicht erreichbar ist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Auswahl der gewünschten Datenquelle aus der Liste
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Speichern der globalen Einstellungen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Der Verbindungstest schlägt fehl
 \end_layout
 
 \end_inset
@@ -3036,8 +3505,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und
- der Prozess wird ausgeführt.
+Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert, der
+ Prozess wurde erfolgreich deployed und wird ausgeführt.
 \end_layout
 
 \end_inset
@@ -3083,6 +3552,11 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
+ Kopieren der Prozess-Artefakte in Workflow-Engine
+\end_layout
+
+\begin_layout Plain Layout
+3.
  
 \end_layout
 
@@ -3472,7 +3946,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Öffnen der Admin-Konsole.
 \end_layout
 
 \end_inset
@@ -3492,7 +3966,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eclipse muss geöffnet sein.
 \end_layout
 
 \end_inset
@@ -3512,7 +3986,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Admin-Konsole wird angezeigt und kann verwendet werden.
 \end_layout
 
 \end_inset
@@ -3552,7 +4026,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Klick auf das SIMPL Menü
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Klick auf den Menüeintrag [Admin-Konsole]
 \end_layout
 
 \end_inset
@@ -3629,7 +4109,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole muss angezeigt werden und das Monitoring nicht aktiv.
+Admin-Konsole muss angezeigt werden und das Monitoring nicht aktiv sein.
 \end_layout
 
 \end_inset
@@ -3866,136 +4346,9 @@ Monitoring-Granularität ändern (optional)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+Zu Beginn wird nur ein statisches Monitoring unterstützt, d.h.
+ es wird nicht möglich sein die Granularität zu ändern.
+ Sofern zeitlich machbar wird diese Funktionalität noch nachgeliefert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4279,136 +4632,9 @@ Auditing-Granularität ändern (optional)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
+Zu Beginn wird nur ein statisches Auditing unterstützt, d.h.
+ es wird nicht möglich sein die Granularität zu ändern.
+ Sofern zeitlich machbar wird diese Funktionalität noch nachgeliefert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4615,7 +4841,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die neue Referenz wurde korrekt in das RRS eingefügt und kann nun verwendet
+ werden.
 \end_layout
 
 \end_inset
@@ -4712,7 +4939,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Bearbeiten einer vorhandenen Referenz des RRS.
 \end_layout
 
 \end_inset
@@ -4752,7 +4979,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert und
+ die Referenz wurde aktualisiert.
 \end_layout
 
 \end_inset
@@ -4849,7 +5077,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Löschen einer vorhandenen Referenz aus dem RRS.
 \end_layout
 
 \end_inset
@@ -4889,7 +5117,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS entfernt
+ und kann nun nicht mehr verwendet werden.
 \end_layout
 
 \end_inset
@@ -5032,7 +5261,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Registrierung einer Datenquelle in der Datenquellen-Registry.
 \end_layout
 
 \end_inset
@@ -5052,7 +5281,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
+ Rechte.
 \end_layout
 
 \end_inset
@@ -5072,7 +5302,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine neue Datenquelle wurde anhand der Benutzerangaben in der Datenquellen-Regis
+try korrekt registriert und kann nun in Workflows verwendet werden.
 \end_layout
 
 \end_inset
@@ -5112,6 +5343,22 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Anlegen eines neuen Datenquellenobjekts
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Registrierung des Datenquellenobjekts in der Datenquellen-Registry
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+???
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -5169,7 +5416,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Entfernen einer vorhandenen Datenquelle aus der Datenquellen-Registry
 \end_layout
 
 \end_inset
@@ -5189,7 +5436,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
+ Rechte.
 \end_layout
 
 \end_inset
@@ -5209,7 +5457,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig aus
+ der Datenquellen-Registry entfernt und kann nun nicht mehr verwendet werden.
 \end_layout
 
 \end_inset
@@ -5249,7 +5498,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Auswahl der Datenquelle
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Entfernen der Datenquelle aus der Datenquellen-Registry
 \end_layout
 
 \end_inset
@@ -5306,7 +5561,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Entfernen einer vorhandenen Datenquelle aus der Datenquellen-Registry
 \end_layout
 
 \end_inset
@@ -5326,7 +5581,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
+ Rechte.
 \end_layout
 
 \end_inset
@@ -5346,7 +5602,9 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig anhand
+ der vom Benutzer durchgeführten Änderungen (Änderung der Eigenschaften,
+ der Adresse, usw.) aktualisiert.
 \end_layout
 
 \end_inset
@@ -5386,7 +5644,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Auswahl der Datenquelle
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Bearbeiten der Werte der Datenquelle
 \end_layout
 
 \end_inset
@@ -5489,7 +5753,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Ausführen einer Data-Management-Aktivität.
 \end_layout
 
 \end_inset
@@ -5923,6 +6187,154 @@ Anwendungsfall-Diagramm für die Prozess-Modelierer
 \end_layout
 
 \begin_layout Subsubsection
+Prozess-Artefakte in Workflow-Engine kopieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kopieren aller Prozess-Artefakte (Deployment Deskriptor, BPEL-Dateien, WSDL-Date
+ien) eines Projekts in die Worflow-Engine.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle Prozess-Artefakte befinden sich nun im Verzeichnis der Workflow-Engine
+ und eine .deployed Datei wurde erstellt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die kopierten Dateien sind unverändert, es wurde keine .deployed Datei erstellt
+ und die aufgetretenen Fehler werden in der ODE-Konsole im Eclipse BPEL
+ Designer angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Kopieren der Prozess-Artefakte
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Prozess wird automatisch deployed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2a.
+ Fehler beim Deployment des Prozesses
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Datenquellen abrufen
 \end_layout
 
@@ -5966,7 +6378,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Datenquellen-Registry ist erreichbar.
 \end_layout
 
 \end_inset
@@ -5986,7 +6398,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine Liste mit allen verfügbaren Datenquellen steht zur Verfügung.
 \end_layout
 
 \end_inset
@@ -6026,7 +6438,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Mit Datenquellen-Registry verbinden
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Verfügbare Datenquellen abfragen
 \end_layout
 
 \end_inset
@@ -6504,6 +6922,176 @@ Sonderfälle
 \begin_layout Plain Layout
 2a.
  Beim Lesen der ausgewählten Strategie tritt ein Fehler auf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Globale Einstellungen laden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Laden der globalen Einstellungen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle Werte der Datei mit den gespeicherten globalen Einstellungen wurden
+ geladen und im Fenster 
+\begin_inset Quotes eld
+\end_inset
+
+Globale Einstellungen
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es wurden globale Standard-Einstellungen, die im Quellcode hinterlegt sind,
+ geladen und im Fenster 
+\begin_inset Quotes eld
+\end_inset
+
+Globale Einstellungen
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Laden der Werte aus der Datei
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Füllen der Felder des 
+\begin_inset Quotes eld
+\end_inset
+
+Globale Einstellungen
+\begin_inset Quotes erd
+\end_inset
+
+-Fensters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Beim Laden der Werte tritt ein Fehler auf
 \end_layout
 
 \end_inset
@@ -8609,7 +9197,7 @@ Data-Management-Aktivitäten
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8791,6 +9379,7 @@ reference "tab:Dateisystem-Eigenschaften"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -9798,7 +10387,7 @@ Die physikalische Adresse der Datenquelle.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Benutzername
 \end_layout
 
 \end_inset
@@ -9807,7 +10396,8 @@ Die physikalische Adresse der Datenquelle.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Wird für die Authentifizierung und Autorisierung auf zugriffsgeschützten
+ Datenquellen benötigt.
 \end_layout
 
 \end_inset
@@ -9818,7 +10408,7 @@ Die physikalische Adresse der Datenquelle.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Passwort
 \end_layout
 
 \end_inset
@@ -9827,7 +10417,8 @@ Die physikalische Adresse der Datenquelle.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Wird für die Authentifizierung und Autorisierung auf zugriffsgeschützten
+ Datenquellen benötigt.
 \end_layout
 
 \end_inset
