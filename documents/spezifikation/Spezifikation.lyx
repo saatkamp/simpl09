@@ -7581,7 +7581,1039 @@ In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
 \end_layout
 
 \begin_layout Subsection
+Referenzen in BPEL
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Da bereits ein Konzept und umfassende Erkentnisse zur Bereitstellung und
+ Verwaltung von Referenzen in BPEL, durch Quelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:ReferencesInBPEL"
+
+\end_inset
+
+ 
+\emph on
+(
+\begin_inset Quotes eld
+\end_inset
+
+Towards Reference Passing in Web Service and Workflow-based Applications
+\begin_inset Quotes eld
+\end_inset
+
+)
+\emph default
+ vorlag, wurden an dieser Stelle nur die Ergebnisse des Dokuments zusammengefass
+t und auf unsere Bedürfnisse reduziert.
+\end_layout
+
+\begin_layout Standard
+\noindent
+In BPEL werden Daten immer in Variblen gespeichert und 
+\emph on
+by value
+\emph default
+ (die Werte) innerhalb des Workflows weitergegeben.
+ Dies hat zur Folge, dass gerade bei großen Datenmengen, wie sie in wissentschaf
+tlichen Workflows normal sind, die Performanz stark durch das Transportieren
+ der Daten beeinflusst wird.
+ Um dies zu verhindern sollen Referenzen eingeführt werden, diese werden
+ dann zwischen den einzelnen Web-Services weitergegeben (Daten werden 
+\emph on
+by reference
+\emph default
+ übergeben) und die Daten bleiben, sofern sie nicht im Workflow benötigt
+ werden, auf ihrer Quelle und werden dort auch bearbeitet.
+\end_layout
+
+\begin_layout Standard
+Zur Umsetzung dieses Konzepts muss ein neue Art von BPEL Variablen eingeführt
+ werden, dies sind sogenannte Referenz-Variablen, die dazu genutzt werden
+ können auf Daten zu verweisen.
+ Dadurch müssen nur noch Referenzen zwischen den Web-Services und Workflows
+ weitergeleitet werden und nicht mehr die Daten selbst.
+ Für wissentschaftliche Workflows reduziert sich dadurch der Datentransport
+ von großen Datenmengen zwischen den Web-Services und dem Workflow erheblich.
+\end_layout
+
+\begin_layout Standard
+Zur Bereitstellung solcher Referenzen für Web-Services und Workflows müssen
+ diese extern verwaltet werden und auch extern abrufbar sein.
+ So kann ein globales oder firmenweites Variablenkonzept erstellt werden,
+ dass es ermöglicht dieselben Daten in mehreren Workflows zu nutzen und
+ nur einmal zentral zur Verfügung zu stellen.
+\end_layout
+
+\begin_layout Standard
+Die Umsetzung der Referenzen wird durch sogenannte Endpoint References,
+ die in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Endpoint-References"
+
+\end_inset
+
+ beschrieben werden, realisiert.
+ Das externe Verwaltungssystem der Referenzen, das sogenannte Reference
+ Resolution System, wird in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Reference-Resolution-System"
+
+\end_inset
+
+ näher erläutert.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Reference-Resolution-System"
+
+\end_inset
+
 Reference Resolution System
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS"
+
+\end_inset
+
+ zeigt die Architektur des Reference Resolution Systems (RRS).
+ Am unteren Ende der Abbildung werden die verschiedenen möglichen Nutzer
+ des Systems gezeigt: Workflows oder Web-Services, die eingangs nur die
+ Rechte haben, um den Wert einer Referenz auszulesen und ein menschlicher
+ Nutzer, der z.B.
+ ein Administrator ist und damit die Rechte besitzt Referenzen im System
+ anzulegen, zu aktualisieren und zu löschen.
+ Er kann auch anderen Nutzern wie Workflows und Web-Services Rechte erteilen,
+ damit diese auch Referenzen anlegen, aktualisieren oder löschen können.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Dokumente und Einstellungen/Administrator/Desktop/RRSKopieAusDok.JPG
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS"
+
+\end_inset
+
+Die Architektur des Reference Resolution Systems (RRS).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Nachfragen, ob Bilder kopiert werden dürfen oder neu gezeichnet werden
+ müssen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für jeden der verschiedenen Nutzer wird eine entsprechende Web-Service Schnittst
+elle bereitgestellt:
+\end_layout
+
+\begin_layout Itemize
+Die erste Schnittstelle ist der 
+\emph on
+Reference Retrieval Web Service
+\emph default
+ mit der Methode 
+\emph on
+get
+\emph default
+ und einer 
+\emph on
+enpoint reference
+\emph default
+ (EPR) als Eingabe.
+ Das Konzept der endpoint references wird im Web Services Addressing Standard
+ [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:WS-Addressing"
+
+\end_inset
+
+] beschrieben und kann ohne Anpassungen für die Repräsentation einer Referenz
+ genutzt werden.
+ Der Rückgabewert der Methode ist der Wert, der durch die angegebene EPR
+ referenziert wurde.
+\end_layout
+
+\begin_layout Itemize
+Die zweite Schnittstelle ist der Reference Management Web Service, der drei
+ Methoden bereitstellt.
+ Die Methode 
+\emph on
+insert
+\emph default
+ um eine neue Referenz zu erstellen, dabei ist die Eingabe der Wert der
+ Referenz, wo dieser Wert gespeichert wird und wie er dort wieder ausgelesen
+ werden kann.
+ Dies könnte beispielsweise durch entsprechende SQL-Befehle angegeben werden.
+ Der Rückgabewert ist eine Meldung, die die neu generierte EPR enthält.
+ Als Zweites die 
+\emph on
+update
+\emph default
+ Methode, die für die Aktualisierung von gespeicherten Werten einer Referenz
+ benötigt wird.
+ Dabei ist die Eingabe der neue Wert der Referenz und wie dieser Wert gespeicher
+t wird.
+ Der Rückgabewert ist eine Meldung, ob die Aktualisierung erfolgreich war.
+ Die 
+\emph on
+delete
+\emph default
+ Methode löscht eine Referenz aus dem RRS, d.h.
+ der Wert und alle sonstigen Informationen der Referenz werden aus dem System
+ entfernt.
+ Die Eingabe ist dabei die EPR, die entfernt werden soll und der Rückgabewert
+ ist eine Meldung, ob die Referenz erfolgreich entfernt wurde.
+\end_layout
+
+\begin_layout Standard
+Die Hauptkomponente ist allerdings das Reference Resolution System selbst.
+ Es verbindet beide Web-Service Schnittstellen und hält eine Menge von Adaptern
+ für die Integration verschiedenster Datenquellen bereit.
+ Jeder dieser Adapter besteht dabei aus einem Lookup-Service für gespeicherte
+ Queries und Informationen, sowie aus einem ausführenden Service mit dem
+ Queries auf den Datenquellen ausgeführt werden können.
+ Anhand einer gegebenen Referenz wird dazu der passende Adapter gesucht,
+ ausgewählt und für das Auflösen der Referenzen in Werte verwendet.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS"
+
+\end_inset
+
+ zeigt am oberen Ende einige solcher Adapter, wobei das RRS erweiterbar
+ ist und mit Adaptern für alle Arten von Datenquellen ergänzt werden kann.
+\end_layout
+
+\begin_layout Standard
+In [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:ReferencesInBPEL"
+
+\end_inset
+
+] werden mehrere mögliche Anbindungen des RRS in der Workflow-Umgebung genannt.
+ Im Zusammenhang mit unseren Gegebenheiten, vorallem im Hinblick darauf,
+ dass die Workflow-Engine lokal auf dem Benutzer-Rechner ausgeführt wird,
+ bietet sich die Variante 
+\begin_inset Quotes eld
+\end_inset
+
+Ein RRS pro Workflow-Engine
+\begin_inset Quotes erd
+\end_inset
+
+ an.
+ Dadurch erhalten wir mehrere wichtige Vorteile: 
+\end_layout
+
+\begin_layout Itemize
+Jeder Prozess-Modellierer (Workflow-Administrator) kann Referenzen nach
+ Bedarf selbst sofort erstellen und verwalten.
+\end_layout
+
+\begin_layout Itemize
+Die Referenzen können nur lokal geändert werden und sind nicht global (von
+ aussen) zugänglich, dadurch benötigen wir keinen Zugriffsschutz.
+\end_layout
+
+\begin_layout Itemize
+Wird bei der Modellierung von BPEL-Prozessen festgestellt, dass entsprechende
+ Referenzen benötigt werden, können diese sofort angelegt und auch sofort
+ in der Prozess-Modellierung verwendet werden.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Endpoint-References"
+
+\end_inset
+
+Referenzen und Endpoint References
+\end_layout
+
+\begin_layout Standard
+Nachdem nun die Architektur des Systems beschrieben wurde, folgt jetzt die
+ Beschreibung des wichtigsten Teils des Systems, die Referenzen selbst.
+ Dazu wird die Repräsentation der Referenzen anhand des WSAddressing Konzepts
+ der 
+\emph on
+endpoint references
+\emph default
+ (EPR's) beschrieben [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:WS-Addressing"
+
+\end_inset
+
+].
+ Das Ziel bei der Definition der Referenzen ist diese so flexibel und erweiterba
+r wie möglich zu realisieren und zu versuchen die vollständige Abgeschlossenheit
+ der EPR's zu erreichen.
+ Vollständige Abgeschlossenheit bedeutet dabei, dass alle für die Auflösung
+ einer Referenz benötigten Informationen in der EPR hinterlegt sind.
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:EPR-Schema"
+
+\end_inset
+
+ zeigt das Schema einer EPR und wie diese zur Repräsentation einer Referenz
+ genutzt werden.
+ Im Schema und allen nachfolgenden Listings werden dabei folgende BNF Konvention
+en verwendet: 
+\begin_inset Quotes eld
+\end_inset
+
+?
+\begin_inset Quotes erd
+\end_inset
+
+ bezeichnet Optionalität (0 oder 1), 
+\begin_inset Quotes eld
+\end_inset
+
+*
+\begin_inset Quotes erd
+\end_inset
+
+ (0 oder mehr), 
+\begin_inset Quotes eld
+\end_inset
+
++
+\begin_inset Quotes erd
+\end_inset
+
+ (1 oder mehr) und 
+\begin_inset Quotes eld
+\end_inset
+
+|
+\begin_inset Quotes erd
+\end_inset
+
+ steht für eine Auswahlmöglichkeit.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<wsa:EndpointReference> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<wsa:Address> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		xs:anyURI 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</wsa:Address> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<wsa:ReferenceProperties> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<rrs:resolutionSystem> 
+\end_layout
+
+\begin_layout Plain Layout
+
+			(xs:String | xs:anyURI | 
+\end_layout
+
+\begin_layout Plain Layout
+
+			xs:QName) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		</rrs:resolutionSystem> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</wsa:ReferenceProperties> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<wsa:ReferenceParameters> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		(xs:anyURI | 
+\end_layout
+
+\begin_layout Plain Layout
+
+		xs:any) 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</wsa:ReferenceParameters> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<wsa:PortType>xs:QName</wsa:PortType> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<wsa:ServiceName PortName="xs:NCName"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		xs:QName 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</wsa:ServiceName> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<wsp:Policy>Policy</wsp:Policy>? 
+\end_layout
+
+\begin_layout Plain Layout
+
+</wsa:EndpointReference>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:EPR-Schema"
+
+\end_inset
+
+EPR Schema
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die verschiedenen Bestandteile einer EPR werden dabei für folgende Zwecke
+ benötigt: Der 
+\family typewriter
+Address
+\family default
+ Teil verweist auf den Endpunkt des RRS, das die Werte der Referenzen verwaltet.
+ In den 
+\family typewriter
+ReferenceProperties
+\family default
+ wird der Adapter des RRS, der für das Auflösen der Referenz zuständig ist,
+ angegeben.
+ Alle Informationen, die der entsprechende Adapter zur Auflösung der Referenz
+ benötigt, werden in den 
+\family typewriter
+ReferenceParameters
+\family default
+ angegeben.
+ Diese Informationen können entweder direkt angegeben werden, wie z.B.
+ ein SQL-Query oder aber auch zentral gespeichert und anschließend über
+ einen 
+\emph on
+Uniform Resource Identifier
+\emph default
+ (URI) referenziert werden.
+ Beide Möglichkeiten haben Vorteile: Die direkte Angabe erlaubt es den Query
+ in der EPR wärend der Laufzeit zu ändern.
+ Mit der Verwendung von gespeicherten Queries wird dafür sichergestellt,
+ dass alle den gleichen Query ausführen und niemand ungewollte Queries ausführen
+ kann.
+ 
+\family typewriter
+PortType
+\family default
+ und 
+\family typewriter
+ServiceName
+\family default
+ sind technische Parameter, die das dynamische Binden des RRS erlauben sollen.
+ 
+\family typewriter
+Policy
+\family default
+ ist optional und erlaubt das Hinzufügen von nichtfunktionalen Eigenschaften
+ für die Ausführung der Queries.
+ So kann z.B.
+ 
+\emph on
+Quality of Context
+\emph default
+ (QoC) (Aktualität, Korrektheit, usw.), der für die zurückgelieferten Daten
+ gelten soll, angegeben werden.
+\end_layout
+
+\begin_layout Standard
+Weitere Details zu den Design-Entscheidungen und deren Nutzen finden sich
+ in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:ReferencesInBPEL"
+
+\end_inset
+
+] unter 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Main Design Issues and Benefits of the Architecture
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Realisierung von Referenzen in BPEL
+\end_layout
+
+\begin_layout Standard
+In [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:ReferencesInBPEL"
+
+\end_inset
+
+] werden zwei verschiedene Ansätze (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:AltRealisierungRefBPEL"
+
+\end_inset
+
+) zur Integration des Referenzen-Konzepts in BPEL beschrieben und deren
+ Vor- und Nachteile erläutert.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Dokumente und Einstellungen/Administrator/Desktop/RealisierungReferenzenKopieAusDok.JPG
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:AltRealisierungRefBPEL"
+
+\end_inset
+
+Alternativen zur Realisierung von Referenzen in BPEL
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Nachfragen, ob Bilder kopiert werden dürfen oder neu gezeichnet werden
+ müssen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für beide Konzepte muss ein entsprechendes Modellierungswerkzeug erweitert
+ werden, danach unterscheiden sich dann die Konzepte.
+ Die erste Variante besteht darin den erweiterten BPEL-Quellcode unverändert
+ auf einer erweiterten Workflow-Engine auszuführen, dass hat natürlich den
+ entscheidenen Nachteil, dass nur noch eine entsprechend erweiterte Workflow-Eng
+ine diese Prozesse ausführen kann.
+ Die zweite Variante umgeht dieses Problem, indem der veränderte BPEL-Quellcode
+ in Standard-BPEL-Quellcode transformiert wird.
+ Wir konzentrieren uns hier auf die Beschreibung der zweiten Variante, da
+ diese einen universelleren Ansatz liefert, auf nahezu alle standard-konformen
+ Workflow-Engines portiert werden kann und somit die Ausführungsumgebung
+ des generierten BPEL-Quellcodes nicht eingeschränkt wird.
+\end_layout
+
+\begin_layout Subsubsection*
+Erweiterung des Modellierungswerkzeugs
+\end_layout
+
+\begin_layout Standard
+Wie schon gesagt, muss auf jeden Fall das Modellierungswerkzeug erweitert
+ werden, um BPEL Prozesse mit Referenzen modellieren zu können.
+ Zur Modellierung von solchen 
+\family typewriter
+<referenceVariable>
+\family default
+s muss ein neuer Variablentyp eingeführt werden.
+ Den Aufbau dieser Variablen zeigt das Schema in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:<referenceVariable>-Schema"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<referenceVariable name="refName" valueType="xsd: schema" 
+\end_layout
+
+\begin_layout Plain Layout
+
+	referenceType="onInstantiation | fresh |
+\end_layout
+
+\begin_layout Plain Layout
+
+	periodic | external" 
+\end_layout
+
+\begin_layout Plain Layout
+
+	period="duration"? 
+\end_layout
+
+\begin_layout Plain Layout
+
+	external="partnerLink"? />*
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:<referenceVariable>-Schema"
+
+\end_inset
+
+Code eines 
+\family typewriter
+<referenceVariable>
+\family default
+-Schemas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dieses Schema ist eine Erweiterung des Standard BPEL Variablen-Schemas.
+ Das Attribut 
+\family typewriter
+valueType
+\family default
+ spiegelt den Datentyp der referenzierten Variable wieder.
+ Die Referenz-Variable selbst, ist implizit vom Type 
+\family typewriter
+xsd:EPR
+\family default
+ und dient dazu die eigentliche Referenz zu speichern.
+ Über das Attribut 
+\family typewriter
+referenceType
+\family default
+ kann angegeben werden, wie aktuell referenzierte Werte sein sollen, also
+ wann und wie oft die in den Referenzen hinterlegten Werte aktualisiert
+ werden sollen.
+ In [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:ReferencesInBPEL"
+
+\end_inset
+
+] werden vier solcher Aktualitätskonstanten vorgestellt, wobei eine vielzahl
+ weiterer solcher Konstanten denkbar ist.
+ Ihre Bedeutung und Verwendung wird nachfolgend bei der Beschreibung der
+ Modelltransformation aufgezeigt.
+\end_layout
+
+\begin_layout Subsubsection*
+Transformation des Modells
+\end_layout
+
+\begin_layout Standard
+Die Integration eines Modelltransformation-Zwischenschritts vor dem Deployment
+ des Prozesses erlaubt uns ein virtuelles Referenz-Handling für Prozesse
+ zu realisieren ohne dabei die den Prozess ausführende Engine zu modifizieren.
+ Die Grundidee ist dabei die Sprache BPEL nur im Modellierungswerkzeug,
+ in dem wir zwischen normalen Variablen und Referenzen unterscheiden, zu
+ erweitern.
+ Der zusätzliche Transformationsschritt generiert dabei standard-konforme
+ BPEL Konstrukte für die Handhabung von Referenzen und speist diese in das
+ originale Prozess-Modell ein.
+ Für jede Referenz, die im Prozessmodell deklariert ist, werden dafür zwei
+ entsprechende Variablendeklarationen, wie in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:VariablenDeklaration"
+
+\end_inset
+
+ dargestellt, generiert.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<variable name="refName" type="xsd:schema"/> 
+\end_layout
+
+\begin_layout Plain Layout
+
+<variable name="refNameEPR" type="xsd:EPR"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:VariablenDeklaration"
+
+\end_inset
+
+Code der generierten Variablen-Deklaration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die erste Deklaration wird dabei für die Haltung des aktuellen Werts genutzt,
+ die Zweite um die Referenz, die durch eine EPR repräsentiert wird, auf
+ diesen Wert zu speichern.
+ Weiterhin muss das RRS im Prozessmodel sichtbar sein, dies wird durch die
+ Generierung eines entsprechenden 
+\family typewriter
+<partnerLink>
+\family default
+'s realisiert.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<invoke name="refNameRefresh_1" partnerLink="RRS"
+\end_layout
+
+\begin_layout Plain Layout
+
+	operation="GET" inputVariable="refNameEPR"
+\end_layout
+
+\begin_layout Plain Layout
+
+	outputVariable="refName"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Dereferenzierungsaktivität"
+
+\end_inset
+
+Code einer Dereferenzierungs-Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zu guter Letzt zeigt Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Dereferenzierungsaktivität"
+
+\end_inset
+
+ die tatsächliche Dereferenzierung einer Referenz über einen Web-Service
+ Aufruf, der das RRS, das der Hauptbestandteil der Dereferenzierungsaktivität
+ ist, aufruft.
+ Der Modelltransformationsansatz speist Variablendeklarationen und Dereferenzier
+ungsaktivitäten in den Workflow ein, um die Aktualisierung der Werte der
+ Referenzen auszuführen.
+ Wie bereits weiter oben erwähnt, ermöglicht es das Attribut 
+\family typewriter
+referenceType
+\family default
+ dem Modellierer eine von verschiedenen Aktualisierungsoptionen für die
+ Werte der Referenzen auszuwählen.
+ Abhängig von der Auswahl des Modellierers müssen die Dereferenzierungsaktivität
+en an der entsprechenden Position im Prozess folgendermaßen eingefügt werden:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+onInstantiation (default)
+\emph default
+:
+\emph on
+ 
+\emph default
+Bei der Instanzierung des Prozesses werden die Werte vom RRS abgefragt und
+ die Variablen entsprechend gesetzt.
+ Diese Einstellung ist für die Definition von Konstanten, die beim Prozessstart
+ gesetzt werden und während der ganzen Laufzeit des Prozesses unverändert
+ bleiben, sinnvoll.
+ Für jede Referenz die auf 
+\emph on
+onInstantiation
+\emph default
+ gesetzt ist, wird die RRS Invoke-Aktivität aus Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Dereferenzierungsaktivität"
+
+\end_inset
+
+ zu einer Sequenz, die bei der Prozessinstanzierung ausgeführt wird, hinzugefügt.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+fresh
+\emph default
+:
+\emph on
+ 
+\emph default
+So frisch wie nur möglich - der Wert wird jedesmal abgefragt, wenn auf die
+ Variable zugegriffen wird.
+ Diese Einstellung ist nützlich, falls auf sich oft ändernde externe Werte,
+ wie z.B.
+ Sensordaten, zugegriffen werden soll.
+ Hier muss die Dereferenzierungsaktivität direkt vor jeder Aktivität, die
+ den Wert der Referenz liest, ausgeführt werden.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+periodic
+\emph default
+: Im Attribut 
+\family typewriter
+period
+\family default
+ kann ein Zeitwert, wie z.B.
+ 10 min, angegeben werden.
+ Dieses Attribut beschreibt das maximale Alter (Zeitspanne seit letzter
+ Aktualisierung), das ein lokal gespeicherter temporärer Wert einer Referenz
+ haben darf.
+ Nachdem diese Zeitspanne abgelaufen ist, wird der Wert aus dem RRS abgefragt
+ und die temporäre Variable aktualisiert.
+ Dafür wird ein 
+\family typewriter
+<onAlarm>
+\family default
+ Element im globalen 
+\family typewriter
+<eventHandlers>
+\family default
+ Element während der Transformation eingefügt.
+ Diese Konstruktion liefert die periodische Aktualisierung von Werten über
+ das wiederholte Abfragen dieser Werte aus dem RRS.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+external
+\emph default
+: Ein externer Event im Bereich der Web-Service Orchestrierung ist typischerweis
+e eine Nachricht, die an die Prozessinstanz geschickt wird (oder ein Signal,
+ das für alle Instanzen eines Prozessmodells gültig ist).
+ Wird dieser Wert als 
+\family typewriter
+referenceType
+\family default
+ gesetzt, können Aktualisierungen der Werte von Aussen, durch das Senden
+ entsprechender Nachrichten an die Prozess-Engine, ausgelöst werden.
+ Der Service von dem solch eine Nachricht erwartet wird, kann im Attribut
+ 
+\family typewriter
+external
+\family default
+ angegeben werden.
+ Im Transformationsschritt wird dazu ein 
+\family typewriter
+<onEvent>
+\family default
+ Konstrukt im globalen 
+\family typewriter
+<eventHandlers>
+\family default
+ Element eingefügt.
 \end_layout
 
 \begin_layout Subsection
@@ -9128,7 +10160,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/GlobaleEigenschaften_menu.jpg
+	filename ProtoTyp_Screenshots/GlobaleEinstellungen_menu.jpg
 	width 100text%
 
 \end_inset
@@ -10800,6 +11832,43 @@ Vrhovnik, M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
  In: Proc.
  of the 24th International Conference on Data Engineering (ICDE 2008), Cancún,
  México, April 7-12, 2008
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:ReferencesInBPEL"
+
+\end_inset
+
+Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: Towards Reference Passing
+ in Web Service and Workflow-based Applications.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:WS-Addressing"
+
+\end_inset
+
+W3C.
+ Web Services Addressing 1.0 - Core, W3C Recommendation.
+ http://www.w3.org/TR/ ws-addr-core/, 2006.
 \end_layout
 
 \end_body
