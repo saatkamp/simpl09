@@ -10479,6 +10479,53 @@ g von SIMPL gegeben.
 Momentane Situation - Monitoring von ODE
 \end_layout
 
+\begin_layout Standard
+Das Monitoring von ODE wird durch sogenannte Events und Event Listener sowie
+ die Management API realisiert.
+\end_layout
+
+\begin_layout Subsubsection*
+Events: 
+\end_layout
+
+\begin_layout Standard
+Events sind Ereignisse die auftreten wenn bestimmte Aktionen innerhalb der
+ ODE Engine durchgeführt werden.
+ Zum Beispiel das Aktivieren eines Prozesses oder das Erzeugen einer neuen
+ Prozessinstanz.
+ Diese Events machen es möglich, zu verfolgen was innerhalb der ODE Engine
+ passiert und produzieren detailierte Informationen über die Prozessausführung.
+ Sie können mit Hilfe der Management API abgefragt werden oder man nutzt
+ Event Listener.
+\end_layout
+
+\begin_layout Subsubsection*
+Event Listener:
+\end_layout
+
+\begin_layout Standard
+Event Listener sind bestimmte Konstrukte die es ermöglichen bei Auftreten
+ bestimmter Events eine direkte Rückmeldung zu geben, oder auf verschiedene
+ Events zu reagieren und event-spezifische Aktionen durchführen.
+\end_layout
+
+\begin_layout Subsubsection*
+Management API:
+\end_layout
+
+\begin_layout Standard
+Die Management API der ODE Engine macht es möglich zahlreiche Informationen
+ abzurufen.
+ So ist es beispielsweies möglich, zu überprüfen welche Prozesse gerade
+ eingesetzt werden und welche Prozessinstanzen ausgeführt werden oder beendet
+ sind.
+ Dies ist besonders für das Monitoring wichtig, da es hierdurch möglich
+ ist spezifische Informationen zu einem bestimmten Prozess oder einer bestimmten
+ Instanz abzurufen.
+ Dies kann zum Beispiel das Erstellungsdatum sein, eine Liste der Events
+ die für diesen Prozess oder diese Instanz generiert wurden und vieles mehr.
+\end_layout
+
 \begin_layout Subsubsection
 Monitoring und Auditing von SIMPL
 \end_layout
@@ -10492,6 +10539,11 @@ Im BPEL Designer ist der Zugriff auf das Monitoring und Auditing unter dem
  Es ist möglich das Auditing als auch das Echtzeitmonitoring zu aktivieren
  oder zu deaktivieren und es ist außerdem möglich die Datenbank für das
  Speichern der Auditing Daten festzulegen.
+\end_layout
+
+\begin_layout Standard
+Das Monitoring und Auditing von SIMPL wird sich nur auf die Prozesse und
+ Instanzen der Datenzugriffsaktivitäten beschränken.
 \end_layout
 
 \begin_layout Subsubsection
