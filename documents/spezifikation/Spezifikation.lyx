@@ -591,29 +591,69 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 \end_layout
 
 \begin_layout Standard
-In diesem Dokument werden alle Anforderungen des Kunden festgehalten.
- Nach einem kurzen Überblick über das Projekt selbst, folgen sowohl nichtfunktio
-nale als auch funktionale Anforderungen an das zu entwickelnde Produkt.
- Die Beschreibung der funktionalen Anforderung, also des Funktionsumfangs,
- geschieht durch Use-Cases, sowie durch die Beschreibung der späteren Benutzerob
-erfläche.
- Ebenso wichtig ist die Beschreibung der nichtfunktionalen Anforderungen,
- die eventuelle Abhängigkeiten, Einschränkungen, Größenordnungen und Bedingungen
- im Bezug auf Portabilität, Robustheit, Sicherheit und weitere Aspekte beschreib
-en.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-noch sinnvoll abändern und erweitern (anhand der finalen Dokumentstruktur)
-\end_layout
+In diesem Dokument soll die zu entwickelnde Software spezifiziert werden.
+ Dazu werden in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Allgemeine-Beschreibung"
 
 \end_inset
 
+ die spätere Systemumgebung, die Kernfunktionen, die Sprache und weitere
+ Aspekte der Software beschrieben.
+ So erhält der Leser einen Überblick über die Software, deren Verwendung
+ und die Ziele und Aufgaben, die für die Realisierung bestehen.
+ Anschließend werden die vom Kunden genannten Anforderungen durch die Abschnitte
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Nichtfunktionale-Anforderungen"
 
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Anwendungsfälle-(Use-Cases)"
+
+\end_inset
+
+ aufgezeigt.
+ Dabei werden durch die nichtfunktionalen Anforderungen qualitative (Robustheit,
+ Portabilität, usw.) und quantitative (Mengengerüst) Anforderungen an die
+ Software spezifiziert.
+ Die Anwendungfälle beschreiben im Anschluss die funktionalen Anforderungen,
+ also konkret die Funktionen, die z.T.
+ schon in der Übersicht der Kernfunktionalität weiter oben aufgeführt sind,
+ die die Software enthalten soll.
+ Im Anschluss folgen dann in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Konzepte-und-Realisierungen"
+
+\end_inset
+
+ die Beschreibungen und Definitionen einiger Konzepte bzw.
+ Ansätze, die zur Umsetzung der gewünschten Funktionalität benötigt werden.
+ Am Ende des Dokuments werden dann noch die verwendeten Materialien, Werkzeuge
+ und Technologien, die für die Erstellung der Software benötigt werden,
+ in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:MaterialienWerkzeuge"
+
+\end_inset
+
+ vorgestellt.
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Allgemeine-Beschreibung"
+
+\end_inset
+
 Allgemeine Beschreibung
 \end_layout
 
@@ -690,7 +730,17 @@ name "fig:Systemumgebung"
 \end_layout
 
 \begin_layout Subsection
-Funktionen
+Funktionen 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Noch ändern anhand von Kommentaren zum Angebot (da von dort kopiert)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -989,10 +1039,7 @@ tung auf Deutsch und Englisch, die vollständige Dokumentation aller Erweiterung
 n auf Deutsch und Englisch und der gesammte Quellcode des Rahmenwerks.
  So können nachträgliche Erweiterungen/Korrekturen des Rahmenwerks mithilfe
  der Dokumentationen leichter realisiert werden.
-\end_layout
-
-\begin_layout Standard
-Die Installation der einzelnen Komponenten wird dann anhand der mitgelieferten
+ Die Installation der einzelnen Komponenten wird dann anhand der mitgelieferten
  Installationsanleitung durchgeführt.
 \end_layout
 
@@ -1260,6 +1307,12 @@ SIMPL Core
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Anwendungsfälle-(Use-Cases)"
+
+\end_inset
+
 Anwendungsfälle (Use-Cases)
 \end_layout
 
@@ -2053,8 +2106,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Dialog zur Strategieauswahl in den globalen Einstellungen muss angezeigt
- werden.
+Der Dialog zur Strategieauswahl in der Admin-Konsole muss angezeigt werden.
 \end_layout
 
 \end_inset
@@ -2121,7 +2173,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Speichern der globalen Einstellungen
+ Speichern der Eingaben
 \end_layout
 
 \end_inset
@@ -2321,8 +2373,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Globales Festlegen der benötigten Datenquellen-Eigenschaften in den globalen
- Einstellungen.
+Globales Festlegen der benötigten Datenquellen-Eigenschaften in der Admin-Konsol
+e.
 \end_layout
 
 \end_inset
@@ -2342,8 +2394,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Dialog zur Angabe der benötigten Datenquellen-Eigenschaften in den globalen
- Einstellungen muss angezeigt werden.
+Der Dialog zur Angabe der benötigten Datenquellen-Eigenschaften in der Admin-Kon
+sole muss angezeigt werden.
 \end_layout
 
 \end_inset
@@ -2410,7 +2462,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Speichern der globalen Einstellungen
+ Speichern der Eingaben
 \end_layout
 
 \end_inset
@@ -2488,17 +2540,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bestehende Verbindung zur Datenquellen-Registry 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-UDDI???
-\end_layout
-
-\end_inset
-
-.
+Bestehende Verbindung zur Datenquellen-Registry.
 \end_layout
 
 \end_inset
@@ -2643,19 +2685,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Dialog zur Auswahl einer Datenquelle in den globalen Einstellungen muss
- angezeigt werden und es muss eine Verbindung zur Datenquellen-Registry
- bestehen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-UDDI???
-\end_layout
-
-\end_inset
-
-.
+Der Dialog zur Auswahl einer Datenquelle in der Admin-Konsole muss angezeigt
+ werden und es muss eine Verbindung zur Datenquellen-Registry bestehen.
 \end_layout
 
 \end_inset
@@ -2676,8 +2707,8 @@ Nachbedingung
 
 \begin_layout Plain Layout
 Die ausgewählte Datenquelle wurde als globale Datenquelle hinterlegt, die
- globalen Einstellungen erfolgreich gespeichert und ein erfolgreicher Verbindung
-stest ausgeführt.
+ Eingaben der Admin-Konsole erfolgreich gespeichert und ein erfolgreicher
+ Verbindungstest ausgeführt.
 \end_layout
 
 \end_inset
@@ -2726,7 +2757,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Speichern der globalen Einstellungen
+ Speichern der Eingaben
 \end_layout
 
 \end_inset
@@ -3607,7 +3638,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Globale Einstellungen speichern
+Admin-Konsole speichern
 \end_layout
 
 \begin_layout Standard
@@ -3630,7 +3661,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Speicherung der globalen Einstellungen.
+Speicherung des Inhalts der Admin-Konsole.
 \end_layout
 
 \end_inset
@@ -3650,7 +3681,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das Fenster für die globalen Einstellungen wird angezeigt.
+Die Admin-Konsole wird angezeigt.
 \end_layout
 
 \end_inset
@@ -3670,8 +3701,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle Werte der globalen Einstellungen wurden korrekt gespeichert und alle
- veralteten Werte mit neuen überschrieben.
+Alle Werte der Admin-Konsole wurden korrekt gespeichert und alle veralteten
+ Werte mit neuen überschrieben.
 \end_layout
 
 \end_inset
@@ -3691,8 +3722,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der globalen Einstellungen bleiben durch den Speichervorga
-ng unverändert und es kann ein erneuter Versuch durchgeführt werden.
+Alle geänderten Werte der Admin-Konsole bleiben durch den Speichervorgang
+ unverändert und es kann ein erneuter Versuch durchgeführt werden.
  Die Werte bleiben dabei solange erhalten, bis Eclipse beendet wird.
  Nach der Beendigung von Eclipse werden die Werte dann verworfen und beim
  nächsten Start die zuletzt gespeicherten Einstellungen geladen.
@@ -3774,7 +3805,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Zurücksetzen der globalen Einstellungen.
+Zurücksetzen des Inhalts der Admin-Konsole.
 \end_layout
 
 \end_inset
@@ -3794,7 +3825,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das Fenster für die globalen Einstellungen wird angezeigt.
+Die Admin-Konsole wird angezeigt.
 \end_layout
 
 \end_inset
@@ -3814,8 +3845,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der globalen Einstellungen wurden auf die gespeicherten
- Werte zurückgesetzt.
+Alle geänderten Werte der Admin-Konsole wurden auf die gespeicherten Werte
+ zurückgesetzt.
 \end_layout
 
 \end_inset
@@ -3835,8 +3866,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der globalen Einstellungen bleiben durch den Zurücksetz-Vo
-rgang unverändert und es kann ein erneuter Versuch durchgeführt werden.
+Alle geänderten Werte der Admin-Konsole bleiben durch den Zurücksetz-Vorgang
+ unverändert und es kann ein erneuter Versuch durchgeführt werden.
  Die Werte bleiben dabei solange erhalten, bis Eclipse beendet wird.
 \end_layout
 
@@ -4759,7 +4790,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Angabe der Datenbank-Adresse
+ Angabe der Datenbank-Adresse (optional Auswahl über Datenbank-Registry)
 \end_layout
 
 \end_inset
@@ -4817,7 +4848,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Referenz in RRS einfügen.
+Referenz in Reference Resolution System (RRS) einfügen.
 \end_layout
 
 \end_inset
@@ -4837,7 +4868,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Das RRS ist angebunden und erreichbar.
 \end_layout
 
 \end_inset
@@ -4878,7 +4909,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Referenz wurd nicht in das RRS eingefügt und es wird ein entsprechender
+ Fehlerdialog angezeigt, der den Benutzer über die aufgetretenen Fehler
+ informiert.
 \end_layout
 
 \end_inset
@@ -4898,7 +4931,18 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Erstellung einer neuer Referenz
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Eingeben aller benötigten Parameter
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Referenz einfügen
 \end_layout
 
 \end_inset
@@ -4918,7 +4962,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3a.
+ Fehler beim Einfügen der Referenz in das RRS
 \end_layout
 
 \end_inset
@@ -4975,7 +5020,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Das RRS ist angebunden und erreichbar.
 \end_layout
 
 \end_inset
@@ -5016,7 +5061,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die lokal veränderte Referenz bleibt im RRS unverändert und es wird ein
+ entsprechender Fehlerdialog angezeigt, der den Benutzer über die aufgetretenen
+ Fehler informiert.
 \end_layout
 
 \end_inset
@@ -5036,7 +5083,18 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Die zu bearbeitende Referenz auswählen
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Werte der Referenz ändern
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Änderungen im RRS speichern
 \end_layout
 
 \end_inset
@@ -5056,7 +5114,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3a.
+ Beim Speichern der Änderungen tritt ein Fehler auf
 \end_layout
 
 \end_inset
@@ -5113,7 +5172,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Das RRS ist angebunden und erreichbar.
 \end_layout
 
 \end_inset
@@ -5154,7 +5213,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die zu löschende Referenz bleibt im RRS unverändert und es wird ein entsprechend
+er Fehlerdialog angezeigt, der den Benutzer über die aufgetretenen Fehler
+ informiert.
 \end_layout
 
 \end_inset
@@ -5174,7 +5235,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Die zu entfernende Referenz auswählen
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Referenz aus RRS löschen
 \end_layout
 
 \end_inset
@@ -5194,7 +5261,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2a.
+ Beim Löschen der Referenz tritt ein Fehler auf
 \end_layout
 
 \end_inset
@@ -5366,16 +5434,6 @@ Normalablauf
 \begin_layout Plain Layout
 2.
  Registrierung des Datenquellenobjekts in der Datenquellen-Registry
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-???
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -6951,7 +7009,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Globale Einstellungen laden
+Admin-Konsole laden
 \end_layout
 
 \begin_layout Standard
@@ -6974,7 +7032,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Laden der globalen Einstellungen.
+Laden der Inhalte der Admin-Konsole.
 \end_layout
 
 \end_inset
@@ -7014,16 +7072,16 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle Werte der Datei mit den gespeicherten globalen Einstellungen wurden
- geladen und im Fenster 
+Alle Werte der Datei mit den Einstellungen/Eingaben (Inhalten) der Admin-Konsole
+ wurden geladen und im Fenster 
 \begin_inset Quotes eld
 \end_inset
 
-Globale Einstellungen
+Admin-Konsole
 \begin_inset Quotes erd
 \end_inset
 
- angezeigt.
+ und dessen Unterfenstern angezeigt.
 \end_layout
 
 \end_inset
@@ -7043,16 +7101,16 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurden globale Standard-Einstellungen, die im Quellcode hinterlegt sind,
- geladen und im Fenster 
+Es wurden Standard-Einstellungen, die im Quellcode hinterlegt sind, geladen
+ und im Fenster 
 \begin_inset Quotes eld
 \end_inset
 
-Globale Einstellungen
+Admin-Konsole
 \begin_inset Quotes erd
 \end_inset
 
- angezeigt.
+ und dessen Unterfenstern angezeigt.
 \end_layout
 
 \end_inset
@@ -7078,15 +7136,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Füllen der Felder des 
-\begin_inset Quotes eld
-\end_inset
-
-Globale Einstellungen
-\begin_inset Quotes erd
-\end_inset
-
--Fensters
+ Füllen der Felder der Admin-Konsole
 \end_layout
 
 \end_inset
@@ -7210,7 +7260,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine BPEL-Datei muss vorhanden sein.
+Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das Reference Resolution
+ System (RRS) muss angebunden und erreichbar sein.
 \end_layout
 
 \end_inset
@@ -7230,7 +7281,11 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wurde ein korrekter standard-konformer BPEL-Prozess, der die gleiche
+ Kern-Funktionalität wie der originale Prozess besitzt und zur Verwendung
+ von Referenzen um entsprechende Aktivitäten oder Events erweitert wurde,
+ erzeugt.
+ 
 \end_layout
 
 \end_inset
@@ -7250,7 +7305,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wurde kein neuer BPEL-Prozess erzeugt, der originale BPEL-Prozess ist
+ unverändert und es wird eine entsprechende Fehlermeldung ausgegeben.
 \end_layout
 
 \end_inset
@@ -7270,7 +7326,26 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Auslesen des originalen Prozesses
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder
+ Events für Referenzen (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Endpoint-References"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Generierung des neuen BPEL-standard-konformen erweiterten Prozesses
 \end_layout
 
 \end_inset
@@ -7290,7 +7365,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3a.
+ Bei der Generierung tritt ein Fehler auf
 \end_layout
 
 \end_inset
@@ -7484,8 +7560,9 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Angegebene Referenz muss existieren und die Quelle des referenzierten Werts
+Die angegebene Referenz muss existieren und das RRS muss angebunden und
  erreichbar sein.
+ Ebenso muss die Quelle des referenzierten Werts erreichbar sein.
 \end_layout
 
 \end_inset
@@ -7580,6 +7657,12 @@ Sonderfälle
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Konzepte-und-Realisierungen"
+
+\end_inset
+
 Konzepte und Realisierungen
 \end_layout
 
@@ -7587,7 +7670,7 @@ Konzepte und Realisierungen
 In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  deren Realisierung erläutert.
  Dazu zählt z.B.
- die Beschreibung eines Reference Resolution Systems, dass es ermöglicht
+ die Beschreibung eines Referenzen Konzepts für BPEL, dass es ermöglicht
  mit Referenzen innerhalb von Workflows zu arbeiten oder die Identifizierung
  und Definition von benötigten Datenmanagement Aktivitäten zur Realisierung
  einer SQL-inline Unterstützung für BPEL.
@@ -11558,6 +11641,12 @@ Wird für die Authentifizierung und Autorisierung auf zugriffsgeschützten
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:MaterialienWerkzeuge"
+
+\end_inset
+
 Materialien, Werkzeuge und Technologien
 \end_layout
 
