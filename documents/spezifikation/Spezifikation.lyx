@@ -10482,7 +10482,8 @@ Im BPEL Designer ist der Zugriff auf das Monitoring und Auditing unter dem
  Einstellungen für das Auditing und das Monitoring tätigen lassen (siehe
  6.3.1).
  Es ist möglich das Auditing als auch das Echtzeitmonitoring zu aktivieren
- oder zu deaktivieren.
+ oder zu deaktivieren und es ist außerdem möglich die Datenbank für das
+ Speichern der Auditing Daten festzulegen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -10490,15 +10491,28 @@ Auditing
 \end_layout
 
 \begin_layout Standard
-Wenn das Auditing aktiviert wird (mit Auswahl der entsprechenden Kriterien),
- wird eine Liste der Prozesse und/oder Instanzen erstellt (mit Hilfe der
- ODE Management API).
- Dadurch ist es nun möglich die verschiedene Informationen und aufgetreten
- Events (in Bezug auf die zuvor ausgewählten Kriterien) abzurufen.
- Diese Informationen und Events werden in Form einer xml-Datei übergeben.
- Diese kann nun (optinal) geparst werden um die Informationen als Strings
- in einer „normalen“ realtionalen Datenbank zu speichern oder aber direkt
- die xml-Datein in einer entsprechenden Datenbank abzuspeichern.
+Wenn das Audutiting aktiviert wird, wird eine Liste der Prozesse und Instanzen
+ die momentan in der ODE Engine existieren abgerufen.
+ Diese Listen werden in Form von XML-Datein übergeben.
+ Nach Verarbeitung dieser Listen ist es nun weiterhin möglich detailierte
+ Informationen und die aufgetretenen Events zu den einzelnen Prozessen und
+ Instanzen abzurufen.
+ Diese Informationen und Events werden ebenfalls in Form von xml-Datein
+ übergeben.
+ Diese Informationen werden anschließend als xml-Datein in einer entsprechenden
+ Datenbank gespeichert.
+ Es ist bisher nicht vorgesehen die Auditing Daten in irgendeiner Form weiterzuv
+erarbeiten um diese als Strings in einer relationalen Datenbanke zu speichern.
+\end_layout
+
+\begin_layout Standard
+Der zuvor beschriebene Vorgang des Abrufens und Verarbeitens der Daten,
+ wird, so lange das Auditing aktiv ist, regelmäßig wiederholt.
+ Es ist momentan noch nicht genau bestimmbar, ob diese Vorgänge dauerhaft
+ durchgeführt werden können, oder ob eine Wartezeit zwischen Speicherung
+ der Daten und Neubeginn des Abrufes notwendig ist.
+ Grund dafür ist, dass es momentan nicht möglich ist eventuelle Performanzproble
+me und die Menge der Daten zu bestimmen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -10506,17 +10520,21 @@ Monitoring
 \end_layout
 
 \begin_layout Standard
-Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert, welches
- beginnt Informationen ab dem Zeitpunkt an dem es aktiviert wurde abzurufen
- (mit Hilfe von Event Listenern) und dies wird solange getan, bis es wieder
- deaktiviert wurde.
- Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel
+Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert.
+ Die Informationsgewinnung des Monitoring würd über direkte Rückmeldungen
+ auf Events die innerhalb der ODE Engine auftreten realisiert.
+ Wenn ein Event auftritt, so zum Beispiel das Aktivieren eines Prozesses,
+ oder das generieren einer neuen Prozessinstanz, dann erhält das Monitoring
+ eine direkte Rückmeldung darüber und die Visualisierung ist möglich.
+\end_layout
+
+\begin_layout Standard
+Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel:
  Anzahl der aktiven Prozesse oder Prozessinstanzen soll möglich sein.
- Geplant sind bisher zwei Arten der Visualisierung die in der Konzept-Grafik
+ Geplant sind bisher zwei Arten der Visualisierung, die in der Konzept-Grafik
  in 6.3.1 zu sehen sind.
  Die Monitoring Informationen werden nicht gespeichert sondern dienen jedeglich
  der Visualisierung.
- 
 \end_layout
 
 \begin_layout Subsubsection
