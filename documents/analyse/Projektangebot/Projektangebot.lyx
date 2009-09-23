@@ -25,7 +25,7 @@
 \def\doctitel{Angebot} 
 \def\docvers{1.2} 
 \def\docautor{Michael Hahn, Daniel Brüderle, Firas Zoabi, Wolfgang Hüttig} 
-\def\docdate{07. September 2009}
+\def\docdate{25. September 2009}
 
 
 % LaTeX verbieten, dass SIMPL getrennt wird
@@ -1917,21 +1917,36 @@ BPEL
 \begin_layout Standard
 Über den Eclipse BPEL Designer sollen innerhalb von BPEL-Prozessen Referenzen
  unterstützt werden, d.h.
- es soll möglich sein Referenzen (z.B.
- auf eine Tabelle) innerhalb eines SQL-Befehls über eine BPEL Variable anzugeben
- oder auch die Ergebnisse eines Queries per Referenz im Prozess bereit zu
- halten.
+ es soll möglich sein Referenzen auf externe Daten (z.B.
+ auf eine Tabelle) innerhalb eines Prozesses nutzen zu können.
+ So können z.B.
+ Daten innerhalb eines SQL-Befehls über eine entsprechende BPEL Referenz-Variabl
+e angegeben werden oder aber auch die Ergebnisse eines ausgeführten Queries
+ per Referenz im Prozess bereit gehalten werden.
  Dazu ist es erforderlich, dass ein Reference Resolution System mit verschiedene
 n Adaptern implementiert wird.
- Dieses System dient dazu Referenzen/Pointer innerhalb eines BPEL Prozesses
- aufzulösen und so z.B.
- auch Daten in den Prozess-Cache zu laden.
- Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
- Referenz/der Pointer vom Service, zur Entlastung der Workflow-Engine, aufgelöst
- werden.
- Mithilfe eines Transformers übersetzt der BPEL Designer den BPEL-Code mit
- Referenzen in Standard BPEL-Code, der dann auf der Workflow-Engine ausgeführt
- werden kann.
+ Dieses System dient dazu Referenzen/Pointer zu verwalten und bei Bedarf
+ aufzulösen.
+ Die Verwendung von Referenzen macht es möglich den Datentransport zwischen
+ den Web-Services und der Workflow-Engine zu reduzieren, da die benötigten
+ Daten nicht mehr über die Workflow-Engine an den Web-Service übergeben
+ werden müssen, sondern diesem eine Referenz übergeben werden kann und der
+ Web-Service sich die Daten anschließend über das RRS mit der Referenz selbst
+ holen kann.
+\end_layout
+
+\begin_layout Standard
+Für die Realisierung von Referenzen in BPEL muss allerdings das Modellierungswer
+kzeug (Eclipse BPEL Designer) und die von diesem unterstützte BPEL-Sprache
+ selbst entsprechend erweitert werden.
+ Um nun den vom erweiterten Modellierungswerkzeug generierten BPEL-Code
+ auf einer nicht speziell veränderten (normalen) Workflow-Engine ausführen
+ zu können, muss der BPEL-Code nach der Modellierung entsprechend in standard-ko
+nformen BPEL-Code transformiert werden.
+ Dies geschieht mithilfe eines Transformers, der den BPEL-Code mit Referenzen
+ in Standard BPEL-Code übersetzt.
+ Der so generierte BPEL-Code kann dann auf beliebigen dem BPEL-Standard
+ entsprechenden Workflow-Engines ausgeführt werden.
 \end_layout
 
 \begin_layout Standard
@@ -1942,13 +1957,14 @@ BPEL Aktivitäten
 
 \begin_layout Standard
 Alle BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt werden,
- müssen erstellt werden und sollen erweiterbar sein.
- Als Anhaltspunkt welche Aktivitäten benötigt werden, gelten die folgenden
+ müssen erstellt werden und sollen für die Anbindung von weiteren Datenquellen
+ erweiterbar sein.
+ Als Anhaltspunkt, welche Aktivitäten benötigt werden, gelten die folgenden
  Datenmanagement Patterns: Das 
 \shape italic
 Query Pattern
 \shape default
- beschreibt die Notwendigkeit mithilfe von SQL-Befehlen externe Daten anfordern
+ beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen externe Daten anfordern
  zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
  extern gespeichert oder direkt im Prozessspeicher gehalten werden.
@@ -1962,7 +1978,7 @@ Set UID Pattern
 \shape italic
 Data Setup Pattern
 \shape default
- liefert die Möglichkeit benötigte Data Definition Language (DDL) Befehle
+ liefert die Möglichkeit, benötigte Data Definition Language (DDL) Befehle
  auf einem relationalen Datenbanksystem auszuführen, um so während der Prozessau
 sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
  Schema, usw.) zu erstellen.
@@ -1987,13 +2003,13 @@ Set Retrieval Pattern
 \shape italic
 Set Access Pattern
 \shape default
- beschreibt die Notwendigkeit auf den erzeugten Datencache sequentiell und
- direkt (random) zugreifen zu können.
+ beschreibt die Notwendigkeit, auf den erzeugten Datencache sequentiell
+ und direkt (random) zugreifen zu können.
  Das 
 \shape italic
 Tuple IUD Pattern
 \shape default
- beinhaltet einfügen (insert), aktualisieren (update) und löschen (delete)
+ beinhaltet das Einfügen (insert), Aktualisieren (update) und Löschen (delete)
  von Daten im Datencache.
  Das 
 \shape italic
@@ -2012,16 +2028,19 @@ Anbindung von Datenquellen
 \begin_layout Standard
 Die Anbindung von Datenquellen soll generisch sein und es sollen so viele
  Anbindungen wie möglich realisiert werden.
- Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSourceDB’s (eine
- RDB und eine XMLDB), mindestens eine SensorDB (z.B.
+ Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSource-Datenbanken
+ (eine relationale Datenbank (RDB) und eine XML Datenbank (XMLDB)), mindestens
+ eine Sensor-Datenbank (z.B.
  TinyDB) und mindestens ein Dateisystem (z.B.
  ext3).
  Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozesses
  möglich sein, dazu besitzt jede Aktivität eine Variable, in der der logische
- Namen der Datenquelle auf die zugegriffen werden soll, hinterlegt ist.
+ Namen der Datenquelle, auf die zugegriffen werden soll, hinterlegt ist.
  Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
  mindestens SQL und XQuery.
- Zusätzlich sollen auch alle SQL-Dialekte unterstützt werden.
+ Die Unterstützung der Anfragesprachen sollte dabei so erweiterbar sein,
+ dass eine nachträgliche Anbindung und Unterstützung von weiteren Anfragesprache
+n oder auch SQL-Dialekten einfach realisiert werden kann.
  Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
  Die Konzepte sind nach Absprache mit dem Kunden frei wählbar.
  Es soll auch möglich sein, dass Daten aus Datenquellen aus einem Prozess
@@ -2046,12 +2065,12 @@ Das Late-binding von Datenquellen soll unterstützt werden.
  gestellt werden können sollten, wird über die Definition eines Anforderungskata
 loges, der nach Fertigstellung mit dem Kunden abgesprochen werden muss,
  realisiert.
- Die Anotationen dienen dazu, dass Datenquellen durch definierte Strategien
+ Die Annotationen dienen dazu, dass Datenquellen durch definierte Strategien
  automatisch ausgewählt werden können.
  Diese Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
  angegebenen Anforderungen verwendet werden, müssen von uns definiert und
  anschließend mit dem Kunden abgesprochen werden.
- Die Auswertung der Anotationen und die Verarbeitung der darin enthaltenen
+ Die Auswertung der Annotationen und die Verarbeitung der darin enthaltenen
  Informationen soll, ebenfalls selbst definiert und anschließend mit dem
  Kunden abgesprochen werden.
  Die Adressierung der Datenbanken soll statisch über konkrete Adressen oder
@@ -2078,7 +2097,7 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Standard
-Die Admin-Konsole ist ein Werkzeug mit dem verschiedene Einstellungen des
+Die Admin-Konsole ist ein Werkzeug, mit dem verschiedene Einstellungen des
  Rahmenwerks auch während der Laufzeit noch geändert werden können.
  Dazu gehört beispielsweise das An- und Abschalten des Auditings und Einstellen
  der Granularität.
@@ -2164,16 +2183,35 @@ alles Auditing.
 \end_layout
 
 \begin_layout Standard
-Es soll ein Auditing der Prozessausführung geben, dafür soll die Ausführungshist
-orie in einer angebundenen Datenbank und nicht im lokalen Speicher der Engine
- gespeichert werden können.
+Es soll ein Auditing der Prozessausführung geben.
+ Dafür soll die Ausführungshistorie in einer angebundenen Datenbank und
+ nicht im lokalen Speicher der Engine gespeichert werden können.
  Die Datenbank für das Auditing soll über das Rahmenwerk frei wählbar sein.
  Die Auditing-Daten werden dabei auf einer Datenbank gespeichert und nicht
  über mehrere verteilt.
  Das vorhandene Auditing von Apache ODE muss dafür um das Auditing unserer
  Funktionalitäten und die Möglichkeit, eine variable DB als Auditing-DB
  anzugeben, erweitert werden.
- Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mirko Sonntag: 
+\begin_inset Quotes eld
+\end_inset
+
+Und was würde passieren, wenn die Speicherdauer überschritten ist? Werden
+ die Daten aktiv gelöscht? Kann man als Speicherdauer auch "unendlich" angeben?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
  werden können.
  Das Auditing soll standardmäßig aktiv sein.
  Auf Benutzerwunsch soll die Granularität des Auditings veränderbar sein
@@ -2299,23 +2337,23 @@ reference "fig:Architektur"
 
 \end_inset
 
- dargestellt, soll das Rahmenwerk in drei Schichten unterteilt werden.
+ dargestellt, soll das Rahmenwerk in drei Ebenen unterteilt werden.
  
 \end_layout
 
 \begin_layout Standard
-Die Präsentationsschicht wird durch den Eclipse BPEL-Designer realisiert.
+Die oberste Ebene wird durch den Eclipse BPEL-Designer realisiert.
  Dort ist es möglich, BPEL-Prozesse mit Datenmanagement-Funktionen zu modelliere
 n und die Ausführung zu starten.
  Die Datenmanagement-Funktionen werden durch Extension Activity Plug-Ins
  in den Designer eingebunden.
  Einstellungen, die erst zur Deployment-Zeit dem SIMPL Core übergeben werden
  können, können über Deployment-Deskriptoren festgelegt werden.
- Vom Designer wird der Prozess an die Anwendungsschicht übergeben.
+ Vom Designer wird der Prozess an die mittlere Ebene übergeben.
 \end_layout
 
 \begin_layout Standard
-In der Anwendungsschicht wird der Prozess ausgewertet 
+In der mittleren Ebene wird der Prozess ausgewertet 
 \begin_inset Note Note
 status collapsed
 
@@ -2373,8 +2411,8 @@ Binden und Auflösen von logischen Namen
 \end_layout
 
 \begin_layout Standard
-Die Datenschicht beinhaltet alle verwendbaren Datenquellen mit den dazugehörigen
- Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
+Die unterste Ebene beinhaltet alle verwendbaren Datenquellen mit den dazugehörig
+en Authentifizierungs- und Autorisierungsinformationen und den Eigenschaften
  der jeweiligen Datenquelle.
 \end_layout
 
@@ -2719,7 +2757,7 @@ ereich bereits viele Jahre erfolgreich eingesetzt wird, vereinfacht werden.
  Dafür werden der Eclipse BPEL-Designer, Apache ODE und BPEL selbst erweitert,
  um so die direkte Anbindung von Datenquellen innerhalb von BPEL-Prozessen
  zu realisieren.
- Das Ziel ist es auch ungeübten Workflow-Benutzern, wie z.B.
+ Das Ziel ist es auch, ungeübten Workflow-Benutzern, wie z.B.
  Wissenschaftlern und Ingenieuren, zu ermöglichen, einfach und schnell wissensch
 aftliche Workflows zu erstellen und zu nutzen.
 \end_layout
@@ -3392,7 +3430,7 @@ reference "tab:Meilensteine-mit-auszuliefernden"
 unterstrichen
 \bar default
 .
- Beim erreichen von externen Meilensteinen werden dem Kunden die Dokumente
+ Beim Erreichen von externen Meilensteinen werden dem Kunden die Dokumente
  des Meilensteins zur Verfügung gestellt.
  Sofern nicht anders angegeben, sind alle Dokumente auf Deutsch verfasst.
 \end_layout
@@ -4213,9 +4251,9 @@ he Aspekte, wie Plausibilität, Korrektheit der Aussagen oder die Konsistenz
  Der Projektleiter leitet positiv geprüfte SE mit entsprechenden Kommentaren
  ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
  ausführt.
- Negativ geprüfte SE werden vom Projektleiter falls ein Review geplant ist,
- an die Gutachter geschickt oder werden freigegeben und erhalten so Auslieferung
-sstatus.
+ Negativ geprüfte SE werden vom Projektleiter, falls ein Review geplant
+ ist, an die Gutachter geschickt oder werden freigegeben und erhalten so
+ Auslieferungsstatus.
  Im Review entdeckte Fehler und Mängel werden ebenso wieder von den Verfassern
  korrigiert und der gesamte QS-Prozess danach erneut durchlaufen, siehe
  hierzu Kapitel 
@@ -4699,8 +4737,8 @@ en zu: Gut, Nebenfehler, Hauptfehler oder kritischer Fehler.
 \end_layout
 
 \begin_layout Standard
-Spätestens drei Tage bzw.
- 1 Woche, bei externen Reviews, vor Beginn des Reviews schickt der Moderator
+Spätestens drei Tage bei internen Reviews bzw.
+ 1 Woche bei externen Reviews vor Beginn des Reviews schickt der Moderator
  Einladungen, mit dem zu begutachtenden Dokument an die Gutachter des Reviews.
  Bei externen Reviews nehmen die Kunden als Gutachter am Review teil.
  Die Gutachter untersuchen dann bis zum Review-Termin das Dokument anhand
@@ -5319,7 +5357,7 @@ en nach bestem Wissen und Gewissen auszuführen.
  mindestens alle vier Wochen, zu unterrichten, spätestens aber nach Erreichen
  eines Meilensteins oder bei Auftreten von Problemen, welche den Verlauf
  des Projekts negativ beeinflussen.
- Der Auftragnehmer verpflichtet sich darüber hinaus alle Software-Einheiten
+ Der Auftragnehmer verpflichtet sich darüber hinaus, alle Software-Einheiten
  und Dokumente pünktlich zum gesetzten Termin dem Auftraggeber zu übermitteln.
 \end_layout
 
@@ -5373,8 +5411,8 @@ status open
 
 
 \backslash
-mbox{21.
- September 2009}
+mbox{09.
+ Oktober 2009}
 \end_layout
 
 \end_inset

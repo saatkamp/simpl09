@@ -774,21 +774,36 @@ BPEL
 \begin_layout Standard
 Über den Eclipse BPEL Designer sollen innerhalb von BPEL-Prozessen Referenzen
  unterstützt werden, d.h.
- es soll möglich sein Referenzen (z.B.
- auf eine Tabelle) innerhalb eines SQL-Befehls über eine BPEL Variable anzugeben
- oder auch die Ergebnisse eines Queries per Referenz im Prozess bereit zu
- halten.
+ es soll möglich sein Referenzen auf externe Daten (z.B.
+ auf eine Tabelle) innerhalb eines Prozesses nutzen zu können.
+ So können z.B.
+ Daten innerhalb eines SQL-Befehls über eine entsprechende BPEL Referenz-Variabl
+e angegeben werden oder aber auch die Ergebnisse eines ausgeführten Queries
+ per Referenz im Prozess bereit gehalten werden.
  Dazu ist es erforderlich, dass ein Reference Resolution System mit verschiedene
 n Adaptern implementiert wird.
- Dieses System dient dazu Referenzen/Pointer innerhalb eines BPEL Prozesses
- aufzulösen und so z.B.
- auch Daten in den Prozess-Cache zu laden.
- Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
- Referenz/der Pointer vom Service, zur Entlastung der Workflow-Engine, aufgelöst
- werden.
- Mithilfe eines Transformers übersetzt der BPEL Designer den BPEL-Code mit
- Referenzen in Standard BPEL-Code, der dann auf der Workflow-Engine ausgeführt
- werden kann.
+ Dieses System dient dazu Referenzen/Pointer zu verwalten und bei Bedarf
+ aufzulösen.
+ Die Verwendung von Referenzen macht es möglich den Datentransport zwischen
+ den Web-Services und der Workflow-Engine zu reduzieren, da die benötigten
+ Daten nicht mehr über die Workflow-Engine an den Web-Service übergeben
+ werden müssen, sondern diesem eine Referenz übergeben werden kann und der
+ Web-Service sich die Daten anschließend über das RRS mit der Referenz selbst
+ holen kann.
+\end_layout
+
+\begin_layout Standard
+Für die Realisierung von Referenzen in BPEL muss allerdings das Modellierungswer
+kzeug (Eclipse BPEL Designer) und die von diesem unterstützte BPEL-Sprache
+ selbst entsprechend erweitert werden.
+ Um nun den vom erweiterten Modellierungswerkzeug generierten BPEL-Code
+ auf einer nicht speziell veränderten (normalen) Workflow-Engine ausführen
+ zu können, muss der BPEL-Code nach der Modellierung entsprechend in standard-ko
+nformen BPEL-Code transformiert werden.
+ Dies geschieht mithilfe eines Transformers, der den BPEL-Code mit Referenzen
+ in Standard BPEL-Code übersetzt.
+ Der so generierte BPEL-Code kann dann auf beliebigen dem BPEL-Standard
+ entsprechenden Workflow-Engines ausgeführt werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -799,8 +814,9 @@ BPEL Aktivitäten
 
 \begin_layout Standard
 Alle BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt werden,
- müssen erstellt werden und sollen erweiterbar sein.
- Als Anhaltspunkt welche Aktivitäten benötigt werden, gelten die folgenden
+ müssen erstellt werden und sollen für die Anbindung von weiteren Datenquellen
+ erweiterbar sein.
+ Als Anhaltspunkt, welche Aktivitäten benötigt werden, gelten die folgenden
  Datenmanagement Patterns (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -816,11 +832,11 @@ reference "BPEL/SQL Paper"
 
 \end_inset
 
-]: Das 
+]): Das 
 \shape italic
 Query Pattern
 \shape default
- beschreibt die Notwendigkeit mithilfe von SQL-Befehlen externe Daten anfordern
+ beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen externe Daten anfordern
  zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
  extern gespeichert oder direkt im Prozessspeicher gehalten werden.
@@ -834,7 +850,7 @@ Set UID Pattern
 \shape italic
 Data Setup Pattern
 \shape default
- liefert die Möglichkeit benötigte Data Definition Language (DDL) Befehle
+ liefert die Möglichkeit, benötigte Data Definition Language (DDL) Befehle
  auf einem relationalen Datenbanksystem auszuführen, um so während der Prozessau
 sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
  Schema, usw.) zu erstellen.
@@ -859,13 +875,13 @@ Set Retrieval Pattern
 \shape italic
 Set Access Pattern
 \shape default
- beschreibt die Notwendigkeit auf den erzeugten Datencache sequentiell und
- direkt (random) zugreifen zu können.
+ beschreibt die Notwendigkeit, auf den erzeugten Datencache sequentiell
+ und direkt (random) zugreifen zu können.
  Das 
 \shape italic
 Tuple IUD Pattern
 \shape default
- beinhaltet einfügen (insert), aktualisieren (update) und löschen (delete)
+ beinhaltet das Einfügen (insert), Aktualisieren (update) und Löschen (delete)
  von Daten im Datencache.
  Das 
 \shape italic
@@ -884,16 +900,19 @@ Anbindung von Datenquellen
 \begin_layout Standard
 Die Anbindung von Datenquellen soll generisch sein und es sollen so viele
  Anbindungen wie möglich realisiert werden.
- Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSourceDB’s (eine
- RDB und eine XMLDB), mindestens eine SensorDB (z.B.
+ Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSource-Datenbanken
+ (eine relationale Datenbank (RDB) und eine XML Datenbank (XMLDB)), mindestens
+ eine Sensor-Datenbank (z.B.
  TinyDB) und mindestens ein Dateisystem (z.B.
  ext3).
  Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozesses
  möglich sein, dazu besitzt jede Aktivität eine Variable, in der der logische
- Namen der Datenquelle auf die zugegriffen werden soll, hinterlegt ist.
+ Namen der Datenquelle, auf die zugegriffen werden soll, hinterlegt ist.
  Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
  mindestens SQL und XQuery.
- Zusätzlich sollen auch alle SQL-Dialekte unterstützt werden.
+ Die Unterstützung der Anfragesprachen sollte dabei so erweiterbar sein,
+ dass eine nachträgliche Anbindung und Unterstützung von weiteren Anfragesprache
+n oder auch SQL-Dialekten einfach realisiert werden kann.
  Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
  Die Konzepte sind nach Absprache mit dem Kunden frei wählbar.
  Es soll auch möglich sein, dass Daten aus Datenquellen aus einem Prozess
@@ -913,7 +932,7 @@ Die Datenbanken, die verwendet werden, existieren bereits und müssen nicht
 Das Late-binding von Datenquellen soll unterstützt werden.
  Dazu müssen Kriterien zur Beschreibung von Datenquellen erstellt werden.
  Diese Kriterien werden dann als Anforderungen durch den Benutzer modelliert
- und als Annotationen übertragen.
+ und als Anotationen übertragen.
  Die Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle
  gestellt werden können sollten, wird über die Definition eines Anforderungskata
 loges, der nach Fertigstellung mit dem Kunden abgesprochen werden muss,
@@ -935,7 +954,7 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Standard
-Die Admin-Konsole ist ein Werkzeug mit dem verschiedene Einstellungen des
+Die Admin-Konsole ist ein Werkzeug, mit dem verschiedene Einstellungen des
  Rahmenwerks auch während der Laufzeit noch geändert werden können.
  Dazu gehört beispielsweise das An- und Abschalten des Auditings und Einstellen
  der Granularität.
@@ -979,16 +998,35 @@ Auditing und Monitoring
 \end_layout
 
 \begin_layout Standard
-Es soll ein Auditing der Prozessausführung geben, dafür soll die Ausführungshist
-orie in einer angebundenen Datenbank und nicht im lokalen Speicher der Engine
- gespeichert werden können.
+Es soll ein Auditing der Prozessausführung geben.
+ Dafür soll die Ausführungshistorie in einer angebundenen Datenbank und
+ nicht im lokalen Speicher der Engine gespeichert werden können.
  Die Datenbank für das Auditing soll über das Rahmenwerk frei wählbar sein.
  Die Auditing-Daten werden dabei auf einer Datenbank gespeichert und nicht
  über mehrere verteilt.
  Das vorhandene Auditing von Apache ODE muss dafür um das Auditing unserer
  Funktionalitäten und die Möglichkeit, eine variable DB als Auditing-DB
  anzugeben, erweitert werden.
- Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mirko Sonntag: 
+\begin_inset Quotes eld
+\end_inset
+
+Und was würde passieren, wenn die Speicherdauer überschritten ist? Werden
+ die Daten aktiv gelöscht? Kann man als Speicherdauer auch "unendlich" angeben?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
  werden können.
  Das Auditing soll standardmäßig aktiv sein.
  Auf Benutzerwunsch soll die Granularität des Auditings veränderbar sein
@@ -10093,7 +10131,7 @@ Eclipse BPEL Designer
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
