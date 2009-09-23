@@ -1145,7 +1145,7 @@ Sicherheit
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die Sicherheit im System wird durch das Authentifizierungs und Autorisierungsver
@@ -1283,8 +1283,7 @@ Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers,
  er kann alle Anwendungsfälle des Prozess-Modellierers und noch weitere
  administrative Anwendungsfälle ausführen.
  Er kann beispielsweise über die Admin-Konsole während der Prozesslaufzeit
- das Auditing und Monitoring an- und abschalten oder dessen Granularität
- ändern.
+ das Auditing und Monitoring an- und abschalten.
  Ebenso legt er die Datenbank für das Speichern der Auditing-Daten fest
  und administriert das Reference Resolution System, d.h.
  er kann Referenzen anlegen, löschen und bearbeiten.
@@ -1294,16 +1293,53 @@ Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers,
 Datenquellen-Administrator
 \end_layout
 
+\begin_layout Standard
+Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese über
+ die Datenquellen-Registry anderen Nutzern zu Verfügung.
+ Dazu kann er Datenquellen in der Datenquellen-Registry registrieren, die
+ Eigenschaften bereits registrierter Datenquellen bearbeiten und registrierte
+ Datenquellen auch wieder aus der Datenquellen-Registry löschen.
+\end_layout
+
 \begin_layout Subsection
 ODE Workflow-Engine
+\end_layout
+
+\begin_layout Standard
+Die ODE Workflow-Engine ist ein durch Software realisierter Akteur.
+ Sie führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
+ Anwendungsfälle indirekt aufgerufen werden.
+ Zu ihren Aufgaben gehöhrt das Ausführen, Kompensieren und rückgängig Machen
+ von Daten-Management-Aktivitäten.
 \end_layout
 
 \begin_layout Subsection
 Eclipse BPEL Designer
 \end_layout
 
+\begin_layout Standard
+Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
+ Akteur.
+ Er führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
+ Anwendungsfälle indirekt aufgerufen werden.
+ Der Eclipse BPEL Designer kann Datenquellen aus der Datenquellen-Registry
+ abrufen und die erhaltene Liste anhand der vom Prozess-Modellierer hinterlegten
+ Eigenschaften filtern.
+ Weiterhin sorgt er für die automatische Datenquellenauswahl per Strategie,
+ das Laden der Einstellungen der Admin-Konsole und das Kopieren aller Prozess-Ar
+tefakte auf die Workflow-Engine.
+\end_layout
+
 \begin_layout Subsection
 SIMPL Core
+\end_layout
+
+\begin_layout Standard
+Der SIMPL Core ist ebenfalls ein durch Software realisierter Akteur.
+ Er führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
+ Anwendungsfälle indirekt aufgerufen werden.
+ Der SIMPL Core löst dabei die Transformation der modellierten BPEL-Prozesse
+ aus und sorgt für das automatische Ausflösen von Referenzen.
 \end_layout
 
 \begin_layout Section
@@ -3522,17 +3558,6 @@ Vorbedingung
 \begin_layout Plain Layout
 Ein Prozess muss im Eclipse BPEL Designer geöffnet und die Apache ODE Workflow-E
 ngine korrekt in Eclipse eingebunden sein.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Momentan: Tomcat darf nicht gestartet sein
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -3782,7 +3807,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Globale Einstellungen zurücksetzen
+Admin-Konsole zurücksetzen
 \end_layout
 
 \begin_layout Standard
@@ -10061,6 +10086,41 @@ DROP ALL
 \end_deeper
 \begin_layout Subsection
 Eclipse BPEL Designer
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/SIMPL_menu.JPG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+SIMPL Menü
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
