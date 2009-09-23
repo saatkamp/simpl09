@@ -4545,7 +4545,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Nutzer erhält eine Fehlermeldung die ihn informiert, dass keine Auditing
+ Datenbank festgelegt wurde und wird gebeten eine auszuwählen.
+ Das Auditing ist nicht aktiv.
 \end_layout
 
 \end_inset
@@ -4586,7 +4588,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ Vom Nutzer wurde keine Auditing Datenbank zum speichern der Daten festgelegt.
 \end_layout
 
 \end_inset
@@ -10462,17 +10465,22 @@ Monitoring und Auditing
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Nur eine erste Version, wird noch genauer überarbeitet ...
- Event-Modelle werde ich heute oder morgen erstellen.
+In diesem Abschnitt wird eine Beschreibung des geplannten Auditing und Monitorin
+g von SIMPL gegeben.
+ Zunächst wird auf die bestehenden Möglichkeiten des Monitorings von ODE
+ eingegangen.
+ Hier folgt eine Erläuterung aller relevanten Begriffe die für das Monitoring
+ wichtig sind, sowie einige Übersichten zur Veranschaulichung.
+ Anschließend folgt eine kurze Beschreibung darüber wie das Monitoring und
+ Auditing in ODE aussehen soll, dies wird durch Event Modelle veranschaulicht.
 \end_layout
 
-\end_inset
+\begin_layout Subsubsection
+Momentane Situation - Monitoring von ODE
+\end_layout
 
-
+\begin_layout Subsubsection
+Monitoring und Auditing von SIMPL
 \end_layout
 
 \begin_layout Standard
@@ -10497,7 +10505,7 @@ Wenn das Audutiting aktiviert wird, wird eine Liste der Prozesse und Instanzen
  Nach Verarbeitung dieser Listen ist es nun weiterhin möglich detailierte
  Informationen und die aufgetretenen Events zu den einzelnen Prozessen und
  Instanzen abzurufen.
- Diese Informationen und Events werden ebenfalls in Form von xml-Datein
+ Diese Informationen und Events werden ebenfalls in Form von XML-Datein
  übergeben.
  Diese Informationen werden anschließend als xml-Datein in einer entsprechenden
  Datenbank gespeichert.
@@ -10507,12 +10515,8 @@ erarbeiten um diese als Strings in einer relationalen Datenbanke zu speichern.
 
 \begin_layout Standard
 Der zuvor beschriebene Vorgang des Abrufens und Verarbeitens der Daten,
- wird, so lange das Auditing aktiv ist, regelmäßig wiederholt.
- Es ist momentan noch nicht genau bestimmbar, ob diese Vorgänge dauerhaft
- durchgeführt werden können, oder ob eine Wartezeit zwischen Speicherung
- der Daten und Neubeginn des Abrufes notwendig ist.
- Grund dafür ist, dass es momentan nicht möglich ist eventuelle Performanzproble
-me und die Menge der Daten zu bestimmen.
+ wird, so lange das Auditing aktiv ist, regelmäßig innerhalb einer bestimmten
+ Zeit wiederholt.
 \end_layout
 
 \begin_layout Subsubsection
