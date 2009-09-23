@@ -1084,6 +1084,14 @@ Die Benutzbarkeit soll sich vor allem an Nutzer mit wenig Kenntnissen im
 Robustheit
 \end_layout
 
+\begin_layout Standard
+Unter Robustheit versteht man hier, zwar kommt die ungünstigen Bedingungen,
+ aber SIMPL kann noch stabil zuverlässig angewanden ,richtigen Aktivitäten
+ durchgeführt und korrekte Ergebniss liefert werden,oder sicher beendet
+ werden.
+ 
+\end_layout
+
 \begin_layout Subsection
 Sicherheit
 \end_layout
@@ -1116,6 +1124,14 @@ Der Administratot und alle anedere Verwaltung-Aktuere, die andere , haben
 
 \begin_layout Subsection
 Portabilität
+\end_layout
+
+\begin_layout Standard
+Portabilität bedeutet hier, wenn man bei verschiedenen Softwareumgebungen
+ bzw.
+ verschiedenen Operationsystems (z.B.nicht nur bei windows sonder auch bei
+ linux)die SIMPL durchlaufen wollte, zwischen der verschiedenen Varianten
+ braucht man nur weniger Anpassungen einzustellen.
 \end_layout
 
 \begin_layout Subsection
