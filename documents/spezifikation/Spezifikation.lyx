@@ -1331,13 +1331,6 @@ Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers,
 Datenquellen-Administrator
 \end_layout
 
-\begin_layout Standard
-Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese über
- die Datenquellen-Registry anderen Nutzern zu Verfügung.
- Dazu kann er Datenquellen in der Datenquellen-Registry registrieren, die
- Eigenschaften bereits registrierter Datenquellen bearbeiten und registrierte
- Datenquellen auch wieder aus der Datenquellen-Registry löschen.
-\end_layout
 
 \begin_layout Subsection
 ODE Workflow-Engine
@@ -1355,18 +1348,6 @@ Die ODE Workflow-Engine ist ein durch Software realisierter Akteur.
 Eclipse BPEL Designer
 \end_layout
 
-\begin_layout Standard
-Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
- Akteur.
- Er führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
- Anwendungsfälle indirekt aufgerufen werden.
- Der Eclipse BPEL Designer kann Datenquellen aus der Datenquellen-Registry
- abrufen und die erhaltene Liste anhand der vom Prozess-Modellierer hinterlegten
- Eigenschaften filtern.
- Weiterhin sorgt er für die automatische Datenquellenauswahl per Strategie,
- das Laden der Einstellungen der Admin-Konsole und das Kopieren aller Prozess-Ar
-tefakte auf die Workflow-Engine.
-\end_layout
 
 \begin_layout Subsection
 SIMPL Core
@@ -3663,11 +3644,6 @@ Normalablauf
 \begin_layout Plain Layout
 2.
  Kopieren der Prozess-Artefakte in Workflow-Engine
-\end_layout
-
-\begin_layout Plain Layout
-3.
- 
 \end_layout
 
 \end_inset
