@@ -10429,7 +10429,7 @@ Data-Management-Aktivitäten
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -10598,13 +10598,64 @@ Event-Modelle
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+Anmerkung: Optionale Bestandteile des Monitoring und Auditing, die vorraussichtl
+ich nicht im Lieferumfang enthalten sind, wurden im Event Modell markiert.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
 
 \begin_layout Plain Layout
-Event Modelle für Auditing und Monitoring hier erstellen.
- Noch nicht sicher ob ein Modell ausreichend oder zwei voneinander getrennte
- Modelle notwendig oder besser.
+\begin_inset Graphics
+	filename Monitoring Event Modell.jpg
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Event Modell des Monitoring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Event Modell Auditing.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Event Modell des Monitoring
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
