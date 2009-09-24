@@ -10602,6 +10602,24 @@ Event-Modelle
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ok hab grad nocheinmal genauer gekuckt welche Art von Event Modell gefordert
+ ist und anscheinend ist das was ich hier gemacht hab nich ganz das was
+ gefordert ist ...
+ Naja das jetzt noch irgendwie zu überarbeiten schaff ich leider nicht ...
+ werd morgen wahrscheinlich mal euere Hilfe brauchen um das ganze noch hinzubeko
+mmen!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Anmerkung: Optionale Bestandteile des Monitoring und Auditing, die vorraussichtl
 ich nicht im Lieferumfang enthalten sind, wurden im Event Modell markiert.
  
