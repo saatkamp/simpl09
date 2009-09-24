@@ -5913,7 +5913,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wurde ein Prozess, der eine Data-Management-Aktivität enthält deplyoed
+ und es wurde eine Instanz dieses Prozesses erzeugt.
 \end_layout
 
 \end_inset
@@ -5933,7 +5934,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Aktivität wurde ausgeführ und das Management der Daten war erfolgreich.
 \end_layout
 
 \end_inset
@@ -5973,7 +5974,33 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Die Ausführung der Instanz wird gestartet
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Die Aktivität wird als bereit gekennzeichnet
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Die Ausführung der Aktivität wird gestartet
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Ausführung der Data-Management Operationen
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Die Ausführung der Aktivität ist beendet
+\end_layout
+
+\begin_layout Plain Layout
+6.
+ Die Aktivität wird als vollständig gekennzeichnet
 \end_layout
 
 \end_inset
@@ -6167,7 +6194,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Rückgängig machen einer Data-Management-Aktivität so das der Zustand vor
+ Ausführung der Aktivität wiederhergestellt wird.
 \end_layout
 
 \end_inset
@@ -6187,7 +6215,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine Data-Management-Aktivität wurde durchgeführt.
 \end_layout
 
 \end_inset
@@ -6207,7 +6235,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Zustand vor Ausführung der Data-Management-Aktivität wurde erfolgreich
+ wiederhergestellt.
 \end_layout
 
 \end_inset
