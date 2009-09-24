@@ -10544,6 +10544,9 @@ Im BPEL Designer ist der Zugriff auf das Monitoring und Auditing unter dem
 \begin_layout Standard
 Das Monitoring und Auditing von SIMPL wird sich nur auf die Prozesse und
  Instanzen der Datenzugriffsaktivitäten beschränken.
+ Weiterhin ist zu erwähnen, dass das Auditing standardmäßig aktiviert ist,
+ allerdings über die Adminkonsole deaktiviert und auch erneut aktiviert
+ werden kann.
 \end_layout
 
 \begin_layout Subsubsection
@@ -10551,8 +10554,9 @@ Auditing
 \end_layout
 
 \begin_layout Standard
-Wenn das Audutiting aktiviert wird, wird eine Liste der Prozesse und Instanzen
- die momentan in der ODE Engine existieren abgerufen.
+Wenn das Audutiting aktiviert wird, im Standardfall wenn SIMPL gestartet
+ wird, wird eine Liste der Prozesse und Instanzen die momentan in der ODE
+ Engine existieren abgerufen.
  Diese Listen werden in Form von XML-Datein übergeben.
  Nach Verarbeitung dieser Listen ist es nun weiterhin möglich detailierte
  Informationen und die aufgetretenen Events zu den einzelnen Prozessen und
