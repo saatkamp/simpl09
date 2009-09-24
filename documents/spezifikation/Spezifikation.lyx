@@ -1331,6 +1331,13 @@ Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers,
 Datenquellen-Administrator
 \end_layout
 
+\begin_layout Standard
+Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese über
+ die Datenquellen-Registry anderen Nutzern zu Verfügung.
+ Dazu kann er Datenquellen in der Datenquellen-Registry registrieren, die
+ Eigenschaften bereits registrierter Datenquellen bearbeiten und registrierte
+ Datenquellen auch wieder aus der Datenquellen-Registry löschen.
+\end_layout
 
 \begin_layout Subsection
 ODE Workflow-Engine
@@ -1348,6 +1355,18 @@ Die ODE Workflow-Engine ist ein durch Software realisierter Akteur.
 Eclipse BPEL Designer
 \end_layout
 
+\begin_layout Standard
+Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
+ Akteur.
+ Er führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
+ Anwendungsfälle indirekt aufgerufen werden.
+ Der Eclipse BPEL Designer kann Datenquellen aus der Datenquellen-Registry
+ abrufen und die erhaltene Liste anhand der vom Prozess-Modellierer hinterlegten
+ Eigenschaften filtern.
+ Weiterhin sorgt er für die automatische Datenquellenauswahl per Strategie,
+ das Laden der Einstellungen der Admin-Konsole und das Kopieren aller Prozess-Ar
+tefakte auf die Workflow-Engine.
+\end_layout
 
 \begin_layout Subsection
 SIMPL Core
@@ -10175,7 +10194,6 @@ Monitoring
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status collapsed
@@ -10183,41 +10201,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/monitoring_menu.jpg
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Monitoring im Menu
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/screen6.jpg
+	filename ProtoTyp_Screenshots/Monitoring_general.jpg
 	width 100text%
 
 \end_inset
@@ -10242,41 +10226,6 @@ Monitoring Dialog
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/screen7.jpg
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Monitoring-Granularität Dialog
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 Admin-Konsole
 \end_layout
@@ -10291,42 +10240,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/Adminkonsole_menu.jpg
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Admin-Konsole im Menu
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/screen9.jpg
+	filename ProtoTyp_Screenshots/AdminKonsoleNeu.jpg
 	width 100text%
 
 \end_inset
@@ -10352,7 +10266,7 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Subsubsection
-Globale Eigenschaften
+Globale Einstellungen
 \end_layout
 
 \begin_layout Standard
@@ -10365,7 +10279,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/GlobaleEinstellungen_menu.jpg
+	filename ProtoTyp_Screenshots/GlobaleSettings_AuthenticationData.jpg
 	width 100text%
 
 \end_inset
@@ -10377,7 +10291,46 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Globale Eigenschaften im Menu
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sonstiges
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/References_General.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
 \end_layout
 
 \end_inset
@@ -10400,7 +10353,182 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/screen4.jpg
+	filename ProtoTyp_Screenshots/References_Management.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/edit_Reference.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/DataSources_General.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/DataSources_viewDataSource.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/DataSources_GlobalProperties.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/Strategies.jpg
 	width 100text%
 
 \end_inset
@@ -10434,7 +10562,7 @@ Data-Management-Aktivitäten
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
