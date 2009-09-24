@@ -10113,10 +10113,6 @@ Eclipse BPEL Designer
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 Im folgender Abbildung ist der kommplete UI der Rahmenwerk von SIMPL.
  Auf der rechte Seite befindet sich Menu 
 \begin_inset Quotes eld
@@ -10131,14 +10127,14 @@ DataManagement
  zuständig sind.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Beim Auswählen bzw.
  Drag-and-Drop einer dieser graphische Darstellungen der Aktivitäten, dann
  erscheint entsprechend einer neue Aktivität in dem Bpel-prozess an der
  ausgewählte Position im Prozess.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Ausserdem können wir den Popup-Menu vom SIMPL im Eclipse Menuleiste sehen,
  dass alle Navigationspunkte für die Anwendungsaktivitäten wie 
 \begin_inset Quotes eld
@@ -10160,21 +10156,15 @@ Settings
  beinhaltet.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
-Im Abbildung 11 
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/SIMPL_menu.JPG
 	width 100text%
@@ -10206,10 +10196,6 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 Beim anklicken auf dem Untermenupunkt 
 \begin_inset Quotes eld
 \end_inset
@@ -10221,13 +10207,9 @@ Admin Console
  öffnet sich der Adminkonsole Dialog.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -10259,10 +10241,6 @@ Admin-Konsole Untermenupunkt
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 Hier ist der Adminkonsole Dialog zu sehen.
  Mithilfe die Unterbaumpunkte können verschiedene Einstellungen angebracht
  werden wie 
@@ -10276,7 +10254,7 @@ Global settings
 , die Strategien oder Datenquellen etc.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Auf der untere rechte Seite dieser Dialog befinden sich die zwei Schaltflechen
  
 \begin_inset Quotes eld
@@ -10298,7 +10276,7 @@ Cancel
  
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Itemize
 \begin_inset Quotes eld
 \end_inset
 
@@ -10310,7 +10288,7 @@ Save
  Dialog wird geschlossen.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Itemize
 \begin_inset Quotes eld
 \end_inset
 
@@ -10320,11 +10298,6 @@ Cancel
 
  Schaltfläche: damit wird einfach der Dialog geschlossen ohne Berücksichtigung
  der Änderungen, die innerhalb der Konsole angebracht wurden.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -10350,6 +10323,611 @@ status open
 
 \begin_layout Plain Layout
 Admin-Konsole
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Monitoring
+\end_layout
+
+\begin_layout Standard
+Über Untermenupunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Monitoring
+\begin_inset Quotes erd
+\end_inset
+
+ kann der Benutzer der Monitoring Dialog öffnen.
+\end_layout
+
+\begin_layout Standard
+Im Abbildung 12 kann Man die Monitoring unter dem Adminkonsole Unerpunkt
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Monitoring-General
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen und über die zwei Radio-Buttons die Monitoring Funktionalität
+ Aktivieren bzw.
+ Deaktivieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/Monitoring_general.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Monitoring Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Globale Eigenschaften
+\end_layout
+
+\begin_layout Standard
+In folgeneden Dialog kann der Benutzer über den Unterbaumpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Global settings-Authentication Data
+\begin_inset Quotes erd
+\end_inset
+
+ die Zugangsdaten angeben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/GlobaleSettings_AuthenticationData.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Referenzen
+\end_layout
+
+\begin_layout Standard
+Im Abbildung 14 wird der Dialog für Referenz einstellen dargestellt.
+ Mithilfe von dem Textfeld wird die RRS Adresse eingegeben und festgelegt
+ und dann mithilfe die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+save
+\begin_inset Quotes erd
+\end_inset
+
+ gespeichert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/References_General.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Referenzen Generel Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Als weitere Unterbaumpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Management
+\begin_inset Quotes erd
+\end_inset
+
+ ist eine Tabelle mit dem verschiedenen Referenzen zu sehen.
+ Man kann über drei Schaltflächen 
+\begin_inset Quotes eld
+\end_inset
+
+Open
+\begin_inset Quotes erd
+\end_inset
+
+ ,
+\begin_inset Quotes erd
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ die Referenzen verwalten bzw.
+ manegen.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Open
+\begin_inset Quotes erd
+\end_inset
+
+ Schaltfläche: beim anklicken dieser Schaltfläche wird dieses Referenz in
+ einen neuen Dialog mit alle seiner Attribute angezeigt und/oder bearbeitet
+ (siehe dazu Abbildung 17).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ Schaltfläche: mithilfe dieser Schaltfläche kann der Benutzer einer Ausgewählter
+ Referenze bzw.
+ Zeile löschen (siehe dazu Abbildung 16).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ Schaltfläche: beim anklicken dieser Schaltfläche wird einen Dialog geöffnet
+ zur Erstellung ein neues Referenz.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/References_Management.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Referenzen Verwaltung Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/new_Reference.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Erzeugen eines Referenzes Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/edit_Reference.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Bearbeitung eines Referenzes Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Datenquellen
+\end_layout
+
+\begin_layout Standard
+Im Abbildung 18 wird beim Auswählen dem Adminkonsole Unerpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Monitoring-General
+\begin_inset Quotes erd
+\end_inset
+
+ der Dialog für einstellen eines generellen Datenquelle-Registry Adresse
+ angezeigt.
+ Mithilfe von dem Textfeld wird die DQ-Registry Adresse eingegeben und festgeleg
+t und dann mithilfe die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+save
+\begin_inset Quotes erd
+\end_inset
+
+ gespeichert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/DataSources_General.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Datenquellen Generel Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Beim anklicken der Unerpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Global properties
+\begin_inset Quotes erd
+\end_inset
+
+ wird der Dialog für einstellen der Attribute bzw.
+ Eigenschaften einen gewählter Datenquelle angezeigt.
+ Mithilfe der Combobox neben 
+\begin_inset Quotes eld
+\end_inset
+
+Kind of DataSource
+\begin_inset Quotes erd
+\end_inset
+
+ wird der Art der Datenquelle ausgewählt und dann in der Tabelle 
+\begin_inset Quotes eld
+\end_inset
+
+DataSource Properties
+\begin_inset Quotes erd
+\end_inset
+
+ der Attribute alle Werte angegeben.
+ Mithilfe die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Werte gespeichert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/DataSources_GlobalProperties.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Datenquellen Eigenschaften Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Beim anklicken der Unerpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+View Data sources
+\begin_inset Quotes erd
+\end_inset
+
+ wird der Dialog für anzeigen und Einstellung einen gewählter Datenquelle
+ als Globale Datenquelle angezeigt.
+ Mithilfe der Check wird festgelegt, ob der gewählter Datenquelle als Global
+ Datenquelle vom System benutzt werden kann.
+ Mithilfe die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Werte gespeichert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/DataSources_viewDataSource.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Globale Datenquellen Dialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Strategien
+\end_layout
+
+\begin_layout Standard
+Beim anklicken der Unerpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Strategies
+\begin_inset Quotes erd
+\end_inset
+
+ wird der Dialog für die Auswahl einer Strategie angezeigt.
+ Mithilfe die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Werte gespeichert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/Strategies.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Strategien Dialog
 \end_layout
 
 \end_inset
@@ -10390,6 +10968,7 @@ Monitoring
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -10408,124 +10987,6 @@ status open
 
 \begin_layout Plain Layout
 Monitoring Untermenupunkt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Im Abbildung 11 kann Man die Monitoring unter dem Adminkonsole Unerpunkt
- 
-\begin_inset Quotes eld
-\end_inset
-
-Monitoring-General
-\begin_inset Quotes erd
-\end_inset
-
- auswählen und über die zwei Radio-Buttons die Monitoring Funktionalität
- Aktivieren bzw.
- Deaktivieren.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/Monitoring_general.jpg
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Monitoring Dialog
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Globale Eigenschaften
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In folgeneden Dialog kann der Benutzer über den Unterbaumpunkt 
-\begin_inset Quotes eld
-\end_inset
-
-Global settings-Authentication Data
-\begin_inset Quotes erd
-\end_inset
-
- die Zugangsdaten angeben.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/GlobaleSettings_AuthenticationData.jpg
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Globale Eigenschaften Dialog
 \end_layout
 
 \end_inset
