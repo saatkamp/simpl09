@@ -774,21 +774,36 @@ BPEL
 \begin_layout Standard
 Über den Eclipse BPEL Designer sollen innerhalb von BPEL-Prozessen Referenzen
  unterstützt werden, d.h.
- es soll möglich sein Referenzen (z.B.
- auf eine Tabelle) innerhalb eines SQL-Befehls über eine BPEL Variable anzugeben
- oder auch die Ergebnisse eines Queries per Referenz im Prozess bereit zu
- halten.
+ es soll möglich sein Referenzen auf externe Daten (z.B.
+ auf eine Tabelle) innerhalb eines Prozesses nutzen zu können.
+ So können z.B.
+ Daten innerhalb eines SQL-Befehls über eine entsprechende BPEL Referenz-Variabl
+e angegeben werden oder aber auch die Ergebnisse eines ausgeführten Queries
+ per Referenz im Prozess bereit gehalten werden.
  Dazu ist es erforderlich, dass ein Reference Resolution System mit verschiedene
 n Adaptern implementiert wird.
- Dieses System dient dazu Referenzen/Pointer innerhalb eines BPEL Prozesses
- aufzulösen und so z.B.
- auch Daten in den Prozess-Cache zu laden.
- Bei Daten, die nicht für die Prozesslogik relevant sind, soll dabei die
- Referenz/der Pointer vom Service, zur Entlastung der Workflow-Engine, aufgelöst
- werden.
- Mithilfe eines Transformers übersetzt der BPEL Designer den BPEL-Code mit
- Referenzen in Standard BPEL-Code, der dann auf der Workflow-Engine ausgeführt
- werden kann.
+ Dieses System dient dazu Referenzen/Pointer zu verwalten und bei Bedarf
+ aufzulösen.
+ Die Verwendung von Referenzen macht es möglich den Datentransport zwischen
+ den Web-Services und der Workflow-Engine zu reduzieren, da die benötigten
+ Daten nicht mehr über die Workflow-Engine an den Web-Service übergeben
+ werden müssen, sondern diesem eine Referenz übergeben werden kann und der
+ Web-Service sich die Daten anschließend über das RRS mit der Referenz selbst
+ holen kann.
+\end_layout
+
+\begin_layout Standard
+Für die Realisierung von Referenzen in BPEL muss allerdings das Modellierungswer
+kzeug (Eclipse BPEL Designer) und die von diesem unterstützte BPEL-Sprache
+ selbst entsprechend erweitert werden.
+ Um nun den vom erweiterten Modellierungswerkzeug generierten BPEL-Code
+ auf einer nicht speziell veränderten (normalen) Workflow-Engine ausführen
+ zu können, muss der BPEL-Code nach der Modellierung entsprechend in standard-ko
+nformen BPEL-Code transformiert werden.
+ Dies geschieht mithilfe eines Transformers, der den BPEL-Code mit Referenzen
+ in Standard BPEL-Code übersetzt.
+ Der so generierte BPEL-Code kann dann auf beliebigen dem BPEL-Standard
+ entsprechenden Workflow-Engines ausgeführt werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -799,8 +814,9 @@ BPEL Aktivitäten
 
 \begin_layout Standard
 Alle BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt werden,
- müssen erstellt werden und sollen erweiterbar sein.
- Als Anhaltspunkt welche Aktivitäten benötigt werden, gelten die folgenden
+ müssen erstellt werden und sollen für die Anbindung von weiteren Datenquellen
+ erweiterbar sein.
+ Als Anhaltspunkt, welche Aktivitäten benötigt werden, gelten die folgenden
  Datenmanagement Patterns (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -816,11 +832,11 @@ reference "BPEL/SQL Paper"
 
 \end_inset
 
-]: Das 
+]): Das 
 \shape italic
 Query Pattern
 \shape default
- beschreibt die Notwendigkeit mithilfe von SQL-Befehlen externe Daten anfordern
+ beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen externe Daten anfordern
  zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
  extern gespeichert oder direkt im Prozessspeicher gehalten werden.
@@ -834,7 +850,7 @@ Set UID Pattern
 \shape italic
 Data Setup Pattern
 \shape default
- liefert die Möglichkeit benötigte Data Definition Language (DDL) Befehle
+ liefert die Möglichkeit, benötigte Data Definition Language (DDL) Befehle
  auf einem relationalen Datenbanksystem auszuführen, um so während der Prozessau
 sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
  Schema, usw.) zu erstellen.
@@ -859,13 +875,13 @@ Set Retrieval Pattern
 \shape italic
 Set Access Pattern
 \shape default
- beschreibt die Notwendigkeit auf den erzeugten Datencache sequentiell und
- direkt (random) zugreifen zu können.
+ beschreibt die Notwendigkeit, auf den erzeugten Datencache sequentiell
+ und direkt (random) zugreifen zu können.
  Das 
 \shape italic
 Tuple IUD Pattern
 \shape default
- beinhaltet einfügen (insert), aktualisieren (update) und löschen (delete)
+ beinhaltet das Einfügen (insert), Aktualisieren (update) und Löschen (delete)
  von Daten im Datencache.
  Das 
 \shape italic
@@ -884,16 +900,19 @@ Anbindung von Datenquellen
 \begin_layout Standard
 Die Anbindung von Datenquellen soll generisch sein und es sollen so viele
  Anbindungen wie möglich realisiert werden.
- Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSourceDB’s (eine
- RDB und eine XMLDB), mindestens eine SensorDB (z.B.
+ Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSource-Datenbanken
+ (eine relationale Datenbank (RDB) und eine XML Datenbank (XMLDB)), mindestens
+ eine Sensor-Datenbank (z.B.
  TinyDB) und mindestens ein Dateisystem (z.B.
  ext3).
  Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozesses
  möglich sein, dazu besitzt jede Aktivität eine Variable, in der der logische
- Namen der Datenquelle auf die zugegriffen werden soll, hinterlegt ist.
+ Namen der Datenquelle, auf die zugegriffen werden soll, hinterlegt ist.
  Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
  mindestens SQL und XQuery.
- Zusätzlich sollen auch alle SQL-Dialekte unterstützt werden.
+ Die Unterstützung der Anfragesprachen sollte dabei so erweiterbar sein,
+ dass eine nachträgliche Anbindung und Unterstützung von weiteren Anfragesprache
+n oder auch SQL-Dialekten einfach realisiert werden kann.
  Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
  Die Konzepte sind nach Absprache mit dem Kunden frei wählbar.
  Es soll auch möglich sein, dass Daten aus Datenquellen aus einem Prozess
@@ -913,7 +932,7 @@ Die Datenbanken, die verwendet werden, existieren bereits und müssen nicht
 Das Late-binding von Datenquellen soll unterstützt werden.
  Dazu müssen Kriterien zur Beschreibung von Datenquellen erstellt werden.
  Diese Kriterien werden dann als Anforderungen durch den Benutzer modelliert
- und als Annotationen übertragen.
+ und als Anotationen übertragen.
  Die Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle
  gestellt werden können sollten, wird über die Definition eines Anforderungskata
 loges, der nach Fertigstellung mit dem Kunden abgesprochen werden muss,
@@ -935,7 +954,7 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Standard
-Die Admin-Konsole ist ein Werkzeug mit dem verschiedene Einstellungen des
+Die Admin-Konsole ist ein Werkzeug, mit dem verschiedene Einstellungen des
  Rahmenwerks auch während der Laufzeit noch geändert werden können.
  Dazu gehört beispielsweise das An- und Abschalten des Auditings und Einstellen
  der Granularität.
@@ -979,16 +998,35 @@ Auditing und Monitoring
 \end_layout
 
 \begin_layout Standard
-Es soll ein Auditing der Prozessausführung geben, dafür soll die Ausführungshist
-orie in einer angebundenen Datenbank und nicht im lokalen Speicher der Engine
- gespeichert werden können.
+Es soll ein Auditing der Prozessausführung geben.
+ Dafür soll die Ausführungshistorie in einer angebundenen Datenbank und
+ nicht im lokalen Speicher der Engine gespeichert werden können.
  Die Datenbank für das Auditing soll über das Rahmenwerk frei wählbar sein.
  Die Auditing-Daten werden dabei auf einer Datenbank gespeichert und nicht
  über mehrere verteilt.
  Das vorhandene Auditing von Apache ODE muss dafür um das Auditing unserer
  Funktionalitäten und die Möglichkeit, eine variable DB als Auditing-DB
  anzugeben, erweitert werden.
- Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mirko Sonntag: 
+\begin_inset Quotes eld
+\end_inset
+
+Und was würde passieren, wenn die Speicherdauer überschritten ist? Werden
+ die Daten aktiv gelöscht? Kann man als Speicherdauer auch "unendlich" angeben?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
  werden können.
  Das Auditing soll standardmäßig aktiv sein.
  Auf Benutzerwunsch soll die Granularität des Auditings veränderbar sein
@@ -1294,21 +1332,6 @@ Datenquellen-Administrator
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-daten quellen .
- verwaltet registry....
- siehe use case diagramm .
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese über
  die Datenquellen-Registry anderen Nutzern zu Verfügung.
  Dazu kann er Datenquellen in der Datenquellen-Registry registrieren, die
@@ -1330,20 +1353,6 @@ Die ODE Workflow-Engine ist ein durch Software realisierter Akteur.
 
 \begin_layout Subsection
 Eclipse BPEL Designer
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ist ein interne Akteuer.
- was macht (er) .an der use-cases orientieren
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4531,7 +4540,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Nutzer erhält eine Fehlermeldung die ihn informiert, dass keine Auditing
+ Datenbank festgelegt wurde und wird gebeten eine auszuwählen.
+ Das Auditing ist nicht aktiv.
 \end_layout
 
 \end_inset
@@ -4572,7 +4583,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ Vom Nutzer wurde keine Auditing Datenbank zum speichern der Daten festgelegt.
 \end_layout
 
 \end_inset
@@ -5896,7 +5908,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wurde ein Prozess, der eine Data-Management-Aktivität enthält deplyoed
+ und es wurde eine Instanz dieses Prozesses erzeugt.
 \end_layout
 
 \end_inset
@@ -5916,7 +5929,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Aktivität wurde ausgeführ und das Management der Daten war erfolgreich.
 \end_layout
 
 \end_inset
@@ -5956,7 +5969,33 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Die Ausführung der Instanz wird gestartet
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Die Aktivität wird als bereit gekennzeichnet
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Die Ausführung der Aktivität wird gestartet
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Ausführung der Data-Management Operationen
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Die Ausführung der Aktivität ist beendet
+\end_layout
+
+\begin_layout Plain Layout
+6.
+ Die Aktivität wird als vollständig gekennzeichnet
 \end_layout
 
 \end_inset
@@ -6150,7 +6189,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Rückgängig machen einer Data-Management-Aktivität so das der Zustand vor
+ Ausführung der Aktivität wiederhergestellt wird.
 \end_layout
 
 \end_inset
@@ -6170,7 +6210,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine Data-Management-Aktivität wurde durchgeführt.
 \end_layout
 
 \end_inset
@@ -6190,7 +6230,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der Zustand vor Ausführung der Data-Management-Aktivität wurde erfolgreich
+ wiederhergestellt.
 \end_layout
 
 \end_inset
@@ -7888,8 +7929,7 @@ Die Architektur des Reference Resolution Systems (RRS).
 
 \end_inset
 
- Nachfragen, ob Bilder kopiert werden dürfen oder neu gezeichnet werden
- müssen
+ Bilder neu zeichnen
 \end_layout
 
 \end_inset
@@ -8372,8 +8412,7 @@ Alternativen zur Realisierung von Referenzen in BPEL
 
 \end_inset
 
- Nachfragen, ob Bilder kopiert werden dürfen oder neu gezeichnet werden
- müssen
+ Bilder neu zeichnen
 \end_layout
 
 \end_inset
@@ -10229,6 +10268,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/SIMPL_menu_mini.jpg
 
@@ -10435,7 +10475,7 @@ Global settings-Authentication Data
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -10805,7 +10845,7 @@ save
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -10864,7 +10904,7 @@ save
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -10988,6 +11028,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/SIMPL_menu_mini.jpg
 
@@ -11058,17 +11099,69 @@ Monitoring und Auditing
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Nur eine erste Version, wird noch genauer überarbeitet ...
- Event-Modelle werde ich heute oder morgen erstellen.
+In diesem Abschnitt wird eine Beschreibung des geplannten Auditing und Monitorin
+g von SIMPL gegeben.
+ Zunächst wird auf die bestehenden Möglichkeiten des Monitorings von ODE
+ eingegangen.
+ Hier folgt eine Erläuterung aller relevanten Begriffe die für das Monitoring
+ wichtig sind, sowie einige Übersichten zur Veranschaulichung.
+ Anschließend folgt eine kurze Beschreibung darüber wie das Monitoring und
+ Auditing in ODE aussehen soll, dies wird durch Event Modelle veranschaulicht.
 \end_layout
 
-\end_inset
+\begin_layout Subsubsection
+Momentane Situation - Monitoring von ODE
+\end_layout
 
+\begin_layout Standard
+Das Monitoring von ODE wird durch sogenannte Events und Event Listener sowie
+ die Management API realisiert.
+\end_layout
 
+\begin_layout Subsubsection*
+Events: 
+\end_layout
+
+\begin_layout Standard
+Events sind Ereignisse die auftreten wenn bestimmte Aktionen innerhalb der
+ ODE Engine durchgeführt werden.
+ Zum Beispiel das Aktivieren eines Prozesses oder das Erzeugen einer neuen
+ Prozessinstanz.
+ Diese Events machen es möglich, zu verfolgen was innerhalb der ODE Engine
+ passiert und produzieren detailierte Informationen über die Prozessausführung.
+ Sie können mit Hilfe der Management API abgefragt werden oder man nutzt
+ Event Listener.
+\end_layout
+
+\begin_layout Subsubsection*
+Event Listener:
+\end_layout
+
+\begin_layout Standard
+Event Listener sind bestimmte Konstrukte die es ermöglichen bei Auftreten
+ bestimmter Events eine direkte Rückmeldung zu geben, oder auf verschiedene
+ Events zu reagieren und event-spezifische Aktionen durchführen.
+\end_layout
+
+\begin_layout Subsubsection*
+Management API:
+\end_layout
+
+\begin_layout Standard
+Die Management API der ODE Engine macht es möglich zahlreiche Informationen
+ abzurufen.
+ So ist es beispielsweies möglich, zu überprüfen welche Prozesse gerade
+ eingesetzt werden und welche Prozessinstanzen ausgeführt werden oder beendet
+ sind.
+ Dies ist besonders für das Monitoring wichtig, da es hierdurch möglich
+ ist spezifische Informationen zu einem bestimmten Prozess oder einer bestimmten
+ Instanz abzurufen.
+ Dies kann zum Beispiel das Erstellungsdatum sein, eine Liste der Events
+ die für diesen Prozess oder diese Instanz generiert wurden und vieles mehr.
+\end_layout
+
+\begin_layout Subsubsection
+Monitoring und Auditing von SIMPL
 \end_layout
 
 \begin_layout Standard
@@ -11078,7 +11171,16 @@ Im BPEL Designer ist der Zugriff auf das Monitoring und Auditing unter dem
  Einstellungen für das Auditing und das Monitoring tätigen lassen (siehe
  6.3.1).
  Es ist möglich das Auditing als auch das Echtzeitmonitoring zu aktivieren
- oder zu deaktivieren.
+ oder zu deaktivieren und es ist außerdem möglich die Datenbank für das
+ Speichern der Auditing Daten festzulegen.
+\end_layout
+
+\begin_layout Standard
+Das Monitoring und Auditing von SIMPL wird sich nur auf die Prozesse und
+ Instanzen der Datenzugriffsaktivitäten beschränken.
+ Weiterhin ist zu erwähnen, dass das Auditing standardmäßig aktiviert ist,
+ allerdings über die Adminkonsole deaktiviert und auch erneut aktiviert
+ werden kann.
 \end_layout
 
 \begin_layout Subsubsection
@@ -11086,15 +11188,25 @@ Auditing
 \end_layout
 
 \begin_layout Standard
-Wenn das Auditing aktiviert wird (mit Auswahl der entsprechenden Kriterien),
- wird eine Liste der Prozesse und/oder Instanzen erstellt (mit Hilfe der
- ODE Management API).
- Dadurch ist es nun möglich die verschiedene Informationen und aufgetreten
- Events (in Bezug auf die zuvor ausgewählten Kriterien) abzurufen.
- Diese Informationen und Events werden in Form einer xml-Datei übergeben.
- Diese kann nun (optinal) geparst werden um die Informationen als Strings
- in einer „normalen“ realtionalen Datenbank zu speichern oder aber direkt
- die xml-Datein in einer entsprechenden Datenbank abzuspeichern.
+Wenn das Audutiting aktiviert wird, im Standardfall wenn SIMPL gestartet
+ wird, wird eine Liste der Prozesse und Instanzen die momentan in der ODE
+ Engine existieren abgerufen.
+ Diese Listen werden in Form von XML-Datein übergeben.
+ Nach Verarbeitung dieser Listen ist es nun weiterhin möglich detailierte
+ Informationen und die aufgetretenen Events zu den einzelnen Prozessen und
+ Instanzen abzurufen.
+ Diese Informationen und Events werden ebenfalls in Form von XML-Datein
+ übergeben.
+ Diese Informationen werden anschließend als xml-Datein in einer entsprechenden
+ Datenbank gespeichert.
+ Es ist bisher nicht vorgesehen die Auditing Daten in irgendeiner Form weiterzuv
+erarbeiten um diese als Strings in einer relationalen Datenbanke zu speichern.
+\end_layout
+
+\begin_layout Standard
+Der zuvor beschriebene Vorgang des Abrufens und Verarbeitens der Daten,
+ wird, so lange das Auditing aktiv ist, regelmäßig innerhalb einer bestimmten
+ Zeit wiederholt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -11102,17 +11214,21 @@ Monitoring
 \end_layout
 
 \begin_layout Standard
-Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert, welches
- beginnt Informationen ab dem Zeitpunkt an dem es aktiviert wurde abzurufen
- (mit Hilfe von Event Listenern) und dies wird solange getan, bis es wieder
- deaktiviert wurde.
- Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel
+Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert.
+ Die Informationsgewinnung des Monitoring würd über direkte Rückmeldungen
+ auf Events die innerhalb der ODE Engine auftreten realisiert.
+ Wenn ein Event auftritt, so zum Beispiel das Aktivieren eines Prozesses,
+ oder das generieren einer neuen Prozessinstanz, dann erhält das Monitoring
+ eine direkte Rückmeldung darüber und die Visualisierung ist möglich.
+\end_layout
+
+\begin_layout Standard
+Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel:
  Anzahl der aktiven Prozesse oder Prozessinstanzen soll möglich sein.
- Geplant sind bisher zwei Arten der Visualisierung die in der Konzept-Grafik
+ Geplant sind bisher zwei Arten der Visualisierung, die in der Konzept-Grafik
  in 6.3.1 zu sehen sind.
  Die Monitoring Informationen werden nicht gespeichert sondern dienen jedeglich
  der Visualisierung.
- 
 \end_layout
 
 \begin_layout Subsubsection
@@ -11124,9 +11240,80 @@ Event-Modelle
 status open
 
 \begin_layout Plain Layout
-Event Modelle für Auditing und Monitoring hier erstellen.
- Noch nicht sicher ob ein Modell ausreichend oder zwei voneinander getrennte
- Modelle notwendig oder besser.
+Ok hab grad nocheinmal genauer gekuckt welche Art von Event Modell gefordert
+ ist und anscheinend ist das was ich hier gemacht hab nich ganz das was
+ gefordert ist ...
+ Naja das jetzt noch irgendwie zu überarbeiten schaff ich leider nicht ...
+ werd morgen wahrscheinlich mal euere Hilfe brauchen um das ganze noch hinzubeko
+mmen!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Anmerkung: Optionale Bestandteile des Monitoring und Auditing, die vorraussichtl
+ich nicht im Lieferumfang enthalten sind, wurden im Event Modell markiert.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Monitoring Event Modell.jpg
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Event Modell des Monitoring
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Event Modell Auditing.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Event Modell des Monitoring
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
