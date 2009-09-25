@@ -535,6 +535,10 @@ Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk für
 \end_layout
 
 \begin_layout Subsection
+Evolution des Dokuments
+\end_layout
+
+\begin_layout Subsection
 Definitionen
 \end_layout
 
@@ -731,16 +735,6 @@ name "fig:Systemumgebung"
 
 \begin_layout Subsection
 Funktionen 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Noch ändern anhand von Kommentaren zum Angebot (da von dort kopiert)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -756,291 +750,38 @@ g integriert sein.
 \end_layout
 
 \begin_layout Standard
-\noindent
-Um die Fehlertoleranz des Rahmenwerks zu realisieren, sollen Fehler der
- neu definierten Aktivitäten erkannt und durch entsprechende FaultHandler
- abgefangen werden können.
- Abgefangene Fehler werden dann durch entsprechende CompensationHandler
- kompensiert oder die vorher ausgeführten Aktionen rückgängig gemacht.
-\end_layout
-
-\begin_layout Subsubsection*
-
-\series bold
-\color black
-BPEL
-\end_layout
-
-\begin_layout Standard
-Über den Eclipse BPEL Designer sollen innerhalb von BPEL-Prozessen Referenzen
- unterstützt werden, d.h.
- es soll möglich sein Referenzen auf externe Daten (z.B.
- auf eine Tabelle) innerhalb eines Prozesses nutzen zu können.
- So können z.B.
- Daten innerhalb eines SQL-Befehls über eine entsprechende BPEL Referenz-Variabl
-e angegeben werden oder aber auch die Ergebnisse eines ausgeführten Queries
- per Referenz im Prozess bereit gehalten werden.
- Dazu ist es erforderlich, dass ein Reference Resolution System mit verschiedene
-n Adaptern implementiert wird.
- Dieses System dient dazu Referenzen/Pointer zu verwalten und bei Bedarf
- aufzulösen.
- Die Verwendung von Referenzen macht es möglich den Datentransport zwischen
- den Web-Services und der Workflow-Engine zu reduzieren, da die benötigten
- Daten nicht mehr über die Workflow-Engine an den Web-Service übergeben
- werden müssen, sondern diesem eine Referenz übergeben werden kann und der
- Web-Service sich die Daten anschließend über das RRS mit der Referenz selbst
- holen kann.
-\end_layout
-
-\begin_layout Standard
-Für die Realisierung von Referenzen in BPEL muss allerdings das Modellierungswer
-kzeug (Eclipse BPEL Designer) und die von diesem unterstützte BPEL-Sprache
- selbst entsprechend erweitert werden.
- Um nun den vom erweiterten Modellierungswerkzeug generierten BPEL-Code
- auf einer nicht speziell veränderten (normalen) Workflow-Engine ausführen
- zu können, muss der BPEL-Code nach der Modellierung entsprechend in standard-ko
-nformen BPEL-Code transformiert werden.
- Dies geschieht mithilfe eines Transformers, der den BPEL-Code mit Referenzen
- in Standard BPEL-Code übersetzt.
- Der so generierte BPEL-Code kann dann auf beliebigen dem BPEL-Standard
- entsprechenden Workflow-Engines ausgeführt werden.
-\end_layout
-
-\begin_layout Subsubsection*
-
-\series bold
-BPEL Aktivitäten 
-\end_layout
-
-\begin_layout Standard
-Alle BPEL-Aktivitäten, die für den Umgang mit Datenquellen benötigt werden,
- müssen erstellt werden und sollen für die Anbindung von weiteren Datenquellen
- erweiterbar sein.
- Als Anhaltspunkt, welche Aktivitäten benötigt werden, gelten die folgenden
- Datenmanagement Patterns (siehe Abschnitt 
+Die vorhandenen BPEL-Aktivitäten des Eclipse BPEL Designer werden dazu um
+ neue Daten-Management-Aktivitäten erweitert.
+ Mit deren Hilfe wird die Anbindung von Datenquellen in BPEL-Prozessen vereinfac
+ht.
+ Am Anfang werden die Datenquellen über ihre physikalische Adresse angebunden.
+ In einer späteren Iteration wird eine Datenquellen-Registry bereitgestellt.
+ Diese ermöglicht die Realisierung einer grafischen Auswahlmöglichkeit für
+ Datenquellen im Eclipse BPEL Designer.
+ Eine nähere Beschreibung der Daten-Management-Aktivitäten wird in Abschnitt
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:BPEL-SQL"
 
 \end_inset
 
- bzw.
- Quelle [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
-
-\end_inset
-
-]): Das 
-\shape italic
-Query Pattern
-\shape default
- beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen externe Daten anfordern
- zu können.
- Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
- extern gespeichert oder direkt im Prozessspeicher gehalten werden.
- Das 
-\shape italic
-Set UID Pattern
-\shape default
- beschreibt die Möglichkeit mengenorientiertes Einfügen (insert), Aktualisieren
- (update) und Löschen (delete) auf externen Daten durchführen zu können.
- Das 
-\shape italic
-Data Setup Pattern
-\shape default
- liefert die Möglichkeit, benötigte Data Definition Language (DDL) Befehle
- auf einem relationalen Datenbanksystem auszuführen, um so während der Prozessau
-sführung die Datenquelle zu konfigurieren oder neue Container (Tabellen,
- Schema, usw.) zu erstellen.
- Da die Verarbeitung von komplexen Daten meist durch Stored Procedures erfolgt,
- ist es bei der Verarbeitung von externen Daten unbedingt erforderlich,
- Stored Procedures auch aus einem Prozess heraus aufrufen zu können (
-\shape italic
-Stored Procedure Pattern
-\shape default
-).
- Manchmal ist es nötig Daten innerhalb des Prozessspeichers verarbeiten
- zu können.
- Das 
-\shape italic
-Set Retrieval Pattern
-\shape default
- liefert dafür eine mengenorientierte Datenstruktur, in die man die angefragten
- externen Daten innerhalb des Prozessspeichers abgelegen kann.
- Diese Datenstruktur verhält sich dabei wie ein Cache im Prozessspeicher,
- der keine Verbindung zur originalen Datenquelle besitzt.
- Das 
-\shape italic
-Set Access Pattern
-\shape default
- beschreibt die Notwendigkeit, auf den erzeugten Datencache sequentiell
- und direkt (random) zugreifen zu können.
- Das 
-\shape italic
-Tuple IUD Pattern
-\shape default
- beinhaltet das Einfügen (insert), Aktualisieren (update) und Löschen (delete)
- von Daten im Datencache.
- Das 
-\shape italic
-Synchronization Pattern
-\shape default
- realisiert die Synchronisation eines lokalen Datencaches mit der originalen
- Datenquelle.
-\end_layout
-
-\begin_layout Subsubsection*
-
-\series bold
-Anbindung von Datenquellen
-\end_layout
-
-\begin_layout Standard
-Die Anbindung von Datenquellen soll generisch sein und es sollen so viele
- Anbindungen wie möglich realisiert werden.
- Als Minimum gilt dabei die IBM DB2, mindestens zwei OpenSource-Datenbanken
- (eine relationale Datenbank (RDB) und eine XML Datenbank (XMLDB)), mindestens
- eine Sensor-Datenbank (z.B.
- TinyDB) und mindestens ein Dateisystem (z.B.
- ext3).
- Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozesses
- möglich sein, dazu besitzt jede Aktivität eine Variable, in der der logische
- Namen der Datenquelle, auf die zugegriffen werden soll, hinterlegt ist.
- Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
- mindestens SQL und XQuery.
- Die Unterstützung der Anfragesprachen sollte dabei so erweiterbar sein,
- dass eine nachträgliche Anbindung und Unterstützung von weiteren Anfragesprache
-n oder auch SQL-Dialekten einfach realisiert werden kann.
- Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt werden.
- Die Konzepte sind nach Absprache mit dem Kunden frei wählbar.
- Es soll auch möglich sein, dass Daten aus Datenquellen aus einem Prozess
- auch in lokale Dateien exportiert werden können und umgekehrt soll es auch
- möglich sein lokale Daten zu importieren.
- Dabei gilt XML als Standardformat.
-\end_layout
-
-\begin_layout Standard
-Die Datenbanken, die verwendet werden, existieren bereits und müssen nicht
- durch das Rahmenwerk erstellt werden.
- Weiterhin sollen aber Schema-Definitionen möglich sein und das Erstellen,
- Ändern und Löschen von Tabellen innerhalb der Schemas.
-\end_layout
-
-\begin_layout Standard
-Das Late-binding von Datenquellen soll unterstützt werden.
- Dazu müssen Kriterien zur Beschreibung von Datenquellen erstellt werden.
- Diese Kriterien werden dann als Anforderungen durch den Benutzer modelliert
- und als Anotationen übertragen.
- Die Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle
- gestellt werden können sollten, wird über die Definition eines Anforderungskata
-loges, der nach Fertigstellung mit dem Kunden abgesprochen werden muss,
- realisiert.
- Die Annotationen dienen dazu, dass Datenquellen durch definierte Strategien
- automatisch ausgewählt werden können.
- Diese Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
- angegebenen Anforderungen verwendet werden, müssen von uns definiert und
- anschließend mit dem Kunden abgesprochen werden.
- Die Auswertung der Annotationen und die Verarbeitung der darin enthaltenen
- Informationen soll, ebenfalls selbst definiert und anschließend mit dem
- Kunden abgesprochen werden.
- Die Adressierung der Datenbanken soll statisch über konkrete Adressen oder
- auch dynamisch über logische Namen mithilfe der JNDI API möglich sein.
-\end_layout
-
-\begin_layout Subsubsection*
-Admin-Konsole
-\end_layout
-
-\begin_layout Standard
-Die Admin-Konsole ist ein Werkzeug, mit dem verschiedene Einstellungen des
- Rahmenwerks auch während der Laufzeit noch geändert werden können.
- Dazu gehört beispielsweise das An- und Abschalten des Auditings und Einstellen
- der Granularität.
- Eine solche Komponente soll für die Administration des Rahmenwerks erstellt
- werden.
-\end_layout
-
-\begin_layout Subsubsection*
-
-\series bold
-Autorisierung und Authentifizierung
-\end_layout
-
-\begin_layout Standard
-Die Autorisierung und Authentifizierung soll momentan nur für Datenquellen
- bereitgestellt werden, allerdings soll eine spätere Erweiterung einfach
- realisiert werden können.
- Für die Authentifizierung und Autorisierung sind verschiedene Verfahren
- gewünscht, sodass in jeder Situation das Bestmögliche verwendet wird.
- Dazu soll es möglich sein, verschiedene konkrete Verfahren flexibel anbinden
- zu können.
- Die Autorisierung und die Authentifizierung soll dabei über einen Single-Sign-O
-n in der Instanz beim Zugriff auf Datenquellen durchgeführt werden.
- Autorisierungs- und Authentifizierungsparameter für einen Prozess sollen
- auf Datenquellenebene spezifiziert werden, d.h.
- bei Datenbanken über Schema und bei Dateisystemen z.B.
- über extra Dateien.
- Die Autorisierung und Authentifizierung ist bei allen Datenquellen notwendig
- und soll auf verschiedene Arten möglich sein.
-
-\color black
- Angaben über Autorisierung und Authentifizierung sollen extra im Eclipse
- BPEL Designer abgefragt und als Nachricht an die Datenquelle geschickt
- werden.
-\end_layout
-
-\begin_layout Subsubsection*
-
-\series bold
-Auditing und Monitoring
-\end_layout
-
-\begin_layout Standard
-Es soll ein Auditing der Prozessausführung geben.
- Dafür soll die Ausführungshistorie in einer angebundenen Datenbank und
- nicht im lokalen Speicher der Engine gespeichert werden können.
- Die Datenbank für das Auditing soll über das Rahmenwerk frei wählbar sein.
- Die Auditing-Daten werden dabei auf einer Datenbank gespeichert und nicht
- über mehrere verteilt.
- Das vorhandene Auditing von Apache ODE muss dafür um das Auditing unserer
- Funktionalitäten und die Möglichkeit, eine variable DB als Auditing-DB
- anzugeben, erweitert werden.
+ gegeben.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Mirko Sonntag: 
-\begin_inset Quotes eld
-\end_inset
-
-Und was würde passieren, wenn die Speicherdauer überschritten ist? Werden
- die Daten aktiv gelöscht? Kann man als Speicherdauer auch "unendlich" angeben?
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Die Speicherungsdauer der Auditing-Daten soll variabel als Parameter übergeben
- werden können.
- Das Auditing soll standardmäßig aktiv sein.
- Auf Benutzerwunsch soll die Granularität des Auditings veränderbar sein
- oder das Auditing auch komplett abschaltbar.
- Dies soll auch während der Laufzeit über die Admin-Konsole steuerbar sein.
 \end_layout
 
 \begin_layout Standard
-Für unsere Zwecke muss ein komplettes Monitoring erstellt werden, d.h.
- ein Monitoring für alle Datenquellenaktionen und die Anpassung und Erweiterung
- des bestehenden Monitorings von Apache ODE.
- Dazu soll das Event-Modell von Apache ODE für das Monitoring, d.h.
- welche Informationen angezeigt werden können, für unsere Erweiterungen
- modifiziert und mit den Kunden abgesprochen werden.
+Alle Ereignisse, die wärend der Laufzeit eines Prozesses auftreten(z.B.
+ Zugriff auf eine Datenquelle), werden durch ein Auditing in einer vom Nutzer
+ definierten Datenbank gespeichert.
+\end_layout
+
+\begin_layout Standard
+Für die Verwaltung des SIMPL-Rahmenwerks und zur Änderung von Einstellungen
+ auch während der Laufzeit von Prozessen, wird eine Admin-Konsole implementiert.
+ Über diese kann zum Beispiel das Auditing an und ausgeschaltet und eine
+ Datenbank zur Speicherung der Auditinginformationen angegeben werden.
+ 
 \end_layout
 
 \begin_layout Subsection
