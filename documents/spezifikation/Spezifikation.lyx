@@ -10929,25 +10929,13 @@ Auditing
 \end_layout
 
 \begin_layout Standard
-Wenn das Audutiting aktiviert wird, im Standardfall wenn SIMPL gestartet
- wird, wird eine Liste der Prozesse und Instanzen die momentan in der ODE
- Engine existieren abgerufen.
- Diese Listen werden in Form von XML-Datein übergeben.
- Nach Verarbeitung dieser Listen ist es nun weiterhin möglich detailierte
- Informationen und die aufgetretenen Events zu den einzelnen Prozessen und
- Instanzen abzurufen.
- Diese Informationen und Events werden ebenfalls in Form von XML-Datein
- übergeben.
- Diese Informationen werden anschließend als xml-Datein in einer entsprechenden
- Datenbank gespeichert.
- Es ist bisher nicht vorgesehen die Auditing Daten in irgendeiner Form weiterzuv
-erarbeiten um diese als Strings in einer relationalen Datenbanke zu speichern.
-\end_layout
-
-\begin_layout Standard
-Der zuvor beschriebene Vorgang des Abrufens und Verarbeitens der Daten,
- wird, so lange das Auditing aktiv ist, regelmäßig innerhalb einer bestimmten
- Zeit wiederholt.
+Für das Auditing von SIMPL werden die von ODE erzeugten Daten direkt an
+ den SIMPL Core übergeben und weitervarbeitet, anstatt diese wie bisher
+ in der virtuellen Datenbank von ODE abzulegen.
+ Dies wird realisiert durch die Implementierung eines eigenen Data Access
+ Objects, was entsprechende Funktionalitäten anbietet.
+ Diese Informationen werden anschließend in einer,.
+ zuvor in der Adminkonsolw festgelegten Auditing Datenquelle abgelegt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -10961,15 +10949,13 @@ Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert.
  Wenn ein Event auftritt, so zum Beispiel das Aktivieren eines Prozesses,
  oder das generieren einer neuen Prozessinstanz, dann erhält das Monitoring
  eine direkte Rückmeldung darüber und die Visualisierung ist möglich.
+ Eine weitere Möglichkeit zur Gewinnung der Monitoring-Daten ist es diese
+ direkt aus der Auditing Datenquelle abzufragen.
 \end_layout
 
 \begin_layout Standard
 Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel:
  Anzahl der aktiven Prozesse oder Prozessinstanzen soll möglich sein.
- Geplant sind bisher zwei Arten der Visualisierung, die in der Konzept-Grafik
- in 6.3.1 zu sehen sind.
- Die Monitoring Informationen werden nicht gespeichert sondern dienen jedeglich
- der Visualisierung.
 \end_layout
 
 \begin_layout Subsubsection
@@ -11001,7 +10987,7 @@ ich nicht im Lieferumfang enthalten sind, wurden im Event Modell markiert.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -11032,7 +11018,7 @@ Event Modell des Monitoring
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
