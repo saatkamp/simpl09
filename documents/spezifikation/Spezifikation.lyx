@@ -7629,20 +7629,16 @@ reference "fig:RRS"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Dokumente und Einstellungen/Administrator/Desktop/RRSKopieAusDok.JPG
+	filename RRSdiagramm.jpg
 	width 50text%
 
 \end_inset
@@ -7666,11 +7662,6 @@ Die Architektur des Reference Resolution Systems (RRS).
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
- Bilder neu zeichnen
 \end_layout
 
 \end_inset
@@ -8113,20 +8104,16 @@ reference "fig:AltRealisierungRefBPEL"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Dokumente und Einstellungen/Administrator/Desktop/RealisierungReferenzenKopieAusDok.JPG
-	width 50text%
+	filename ReferenzUmsetzungDiagramm.jpg
+	width 100text%
 
 \end_inset
 
@@ -8149,11 +8136,6 @@ Alternativen zur Realisierung von Referenzen in BPEL
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
- Bilder neu zeichnen
 \end_layout
 
 \end_inset
