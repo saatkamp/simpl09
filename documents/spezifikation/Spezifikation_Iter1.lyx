@@ -3603,12 +3603,10 @@ Konzepte und Realisierungen
 In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  deren Realisierung erläutert.
  Dazu zählt z.B.
- die Beschreibung eines Referenzen Konzepts für BPEL, dass es ermöglicht
- mit Referenzen innerhalb von Workflows zu arbeiten oder die Identifizierung
- und Definition von benötigten Datenmanagement Aktivitäten zur Realisierung
- einer SQL-inline Unterstützung für BPEL.
+ die Beschreibung und Definition der benötigten Datenmanagement Aktivitäten,
+ die zur Realisierung einer SQL-inline Unterstützung für BPEL benötigt werden.
  Ebenso werden die benötigten Eclipse BPEL Designer Erweiterungen, sowie
- die Realisierung des Datenquellen-Monitorings und das dafür zugrunde liegende
+ die Realisierung des Datenquellen-Auditings und das dafür zugrunde liegende
  Event-Modell beschrieben.
 \end_layout
 
@@ -3624,8 +3622,8 @@ BPEL-SQL
 
 \begin_layout Standard
 In diesem Abschnitt werden die zu realisierenden Datenmanagement-Patterns
- zur Realisierung einer SQL-inline Unterstützung vorgestellt und im weiteren
- Verlauf deren Umsetzung für die verschiedenen Datenquellen, d.h.
+ zur Umsetzung einer SQL-inline Unterstützung vorgestellt und im weiteren
+ Verlauf deren Realisierung für die verschiedenen Datenquellen, d.h.
  für Dateisysteme, Datenbanken und Sensornetze, erläutert.
  Aus den in Abschnitt 
 \begin_inset CommandInset ref
@@ -3634,15 +3632,16 @@ reference "sub:Umsetzung-der-Datenmanagement"
 
 \end_inset
 
- identifizierten Methoden und Funktionen werden dann in Abschnitt 
+ identifizierten Funktionen, die für die Umsetzung der Datenmanagement-Patterns
+ benötigt werden, werden dann in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Resultierende-BPEL-Aktivitäten"
 
 \end_inset
 
- neue benötigte BPEL-Aktivitäten abstrahiert, die dann später die entpsrechenden
- Methoden und Funktionen realisieren werden.
+ neue benötigte BPEL-Aktivitäten abstrahiert, die dann später die entsprechenden
+ Funktionen ausführen werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3762,7 +3761,7 @@ Umsetzung der Datenmanagement Patterns
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird die Realisierung der acht Datenmanagement Patterns
+In diesem Abschnitt wird die Realisierung der acht Datenmanagement Patterns
  aus Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3771,16 +3770,6 @@ reference "sub:Datenmanagement-Patterns"
 \end_inset
 
  im Zusammenhang mit den jeweiligen Datenquellentypen beschrieben.
- Es wird versucht eine einheitliche Realisierung zu erreichen, um die Usability
- möglichst hoch zu halten.
- Dafür sollen alle Befehle, die der Benutzer angeben kann, eine SQL bzw.
- XQuery konforme Befehlsform haben.
- D.h.
- sollte es im Moment nicht möglich sein einen benötigten Befehl in SQL oder
- XQuery anzugeben, so werden im Rahmen unserer Erweiterungen neue Befehlsformen
- erstellt, die dann auch Zugriffe auf Dateien oder Ähnliches realisieren
- und trotzdem nicht stark von der SQL- bzw.
- XQuery-Syntax abweichen.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3795,10 +3784,8 @@ reference "sub:Datenmanagement-Patterns"
 
 \end_inset
 
- beschriebenen Patterns im Bereich der Dateisysteme durch SQL oder XQuery
- ähnliche Befehle, die intern durch bestehende Java-Methoden oder falls
- erforderlich durch die Definition neuer zu implementierender Funktionen
- realisiert werden, beschrieben.
+ beschriebenen Patterns im Bereich der Dateisysteme durch entsprechende
+ Systemaufrufe (Betriebssystem) beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -3906,144 +3893,51 @@ Wie wird dann aber die Verbindung zum Zielrechner, auf dem das Binding für
 \end_layout
 
 \begin_layout Itemize
-Query Pattern: Realisierung durch eine Select-Methode, die intern java.io
- Methoden verwendet, um Inhalte aus Dateien oder komplette Dateien aus einem
- Dateisystem zu lesen.
+Query Pattern: Realisierung durch eine GET-Methode, die intern java.io Methoden
+ verwendet, um Inhalte aus Dateien oder komplette Dateien aus einem Dateisystem
+ zu lesen.
  Dafür muss noch ein Konzept erarbeitet werden, wie entsprechende Daten
- gezielt über ein SQL-Select ähnlichen Befehl oder XQuery (bei XML-Dateien
- oder eventuell auch Anderen) ausgewählt und abgefragt werden können.
+ gezielt über einen Befehl ausgewählt und abgefragt werden können.
+ Eine Möglichkeit wäre z.B.
+ einen Filter-Dialog zur Angabe von Suchparametern über die GUI bereitzustellen,
+ der es ermöglicht Dateiinhalte zu suchen und zurückzugeben.
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-Beispiel für eine CSV-Datei: SELECT * FROM 
-\emph on
-DATEINAME
-\emph default
- WHERE 
-\emph on
-SPALTE1
-\emph default
- LIKE 'abc', wobei Spalte1 der erste Wert aus der comma-separated-values-Liste
- ist.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Set IUD Pattern: Realisierung durch entsprechende INSERT, UPDATE und DELETE-Meth
-oden, die intern java.io Methoden verwenden, um Inhalt in Dateien zu schreiben
- und aus ihnen zu löschen.
+Set IUD Pattern: Realisierung durch eine entsprechende PUT- und eine REMOVE-Meth
+ode (RM), die intern java.io Methoden verwenden, um Inhalt in Dateien zu
+ schreiben und aus ihnen zu löschen.
  Ein Update wird bei Dateien intern durch das Löschen des alten Wertes und
  anschließendem Einfügen des neuen Wertes ausgeführt.
  Dafür muss noch ein Konzept erarbeitet werden, wie entsprechende Informationen
- gezielt über SQL ähnliche Befehle oder XQuery (bei XML-Dateien oder eventuell
- auch Anderen) eingefügt und gelöscht werden können.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Beispiel für eine CSV-Datei: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-INSERT INTO 
-\emph on
-DATEINAME
-\emph default
- VALUES (hans, meyer, 12345, Musterstadt) [
-\color red
-AT END, AT BEGINING, AS 
-\emph on
-3
-\emph default
-, SORTED
-\color inherit
-, ...]
+ gezielt über einen Befehl eingefügt und gelöscht werden können.
 \end_layout
 
 \begin_layout Itemize
-UPDATE 
-\emph on
-DATEINAME
-\emph default
- SET 
-\emph on
-SPALTE3
-\emph default
- = ’Chef’ WHERE 
-\emph on
-SPALTE1
-\emph default
- = ’000290’
-\end_layout
-
-\begin_layout Itemize
-DELETE FROM 
-\emph on
-DATEINAME
-\emph default
- WHERE 
-\emph on
-SPALTE1 = 'hans'
-\emph default
- AND 
-\emph on
-SPALTE2 = 'meyer'
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Data Setup Pattern: Realisierung durch die Verwendung entsprechender CREATE-Meth
-oden, die intern durch java.io-Methoden realisiert sind.
+Data Setup Pattern: Realisierung durch die Verwendung entsprechender Erzeugungs-
+Methoden, wie MKDIR und MKFILE zur Erzeugung von Ordnern und Dateien.
+ Diese werden intern wieder durch java.io-Methoden realisiert.
  Hier sollte es auf jeden Fall möglich sein, Dateien und Ordner in einem
  Dateisystem erzeugen zu können.
  Ebenso sollte optional das Löschen auf der gleichen Ebene, d.h.
  von ganzen Dateien und Ordnern, möglich sein.
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Beispiele:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-CREATE FILE 'datei.csv' 
-\color red
-INTO 'uri (z.B.
- C:/)'
-\end_layout
-
-\begin_layout Itemize
-CREATE FOLDER 'test' 
-\color red
-INTO 'uri (z.B.
- C:/)'
-\end_layout
-
-\begin_layout Itemize
-DROP FILE 'datei.csv'
-\end_layout
-
-\begin_layout Itemize
-DROP FOLDER 'test'
-\end_layout
-
-\end_deeper
-\end_deeper
 \begin_layout Itemize
 Stored Procedure Pattern: Findet im Rahmen der Dateisysteme keine Verwendung.
 \end_layout
 
 \begin_layout Itemize
 Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
- einer entsprechenden Activity, die Daten kapselt und im Prozessspeicher
+ einer entsprechenden Aktivität, die Daten kapselt und im Prozessspeicher
  halten kann, für BPEL.
- Eine solche Activity liefert dann die Möglichkeit, dass in ihren Ausprägungen
- Ergebnisse von Queries (siehe Query Pattern), die über die SDO API abstrahiert
- wurden, innerhalb des Prozessspeichers abgelegt werden können.
+ Eine solche Aktivität liefert dann die Möglichkeit, dass in ihren Ausprägungen
+ Ergebnisse von Queries (siehe Query Pattern), die über die 
+\emph on
+Service Data Objects API
+\emph default
+ (SDO API) abstrahiert wurden, innerhalb des Prozessspeichers abgelegt werden
+ können.
  Die Firma IBM hat mit ihrer 
 \emph on
 Business Integration Suite
@@ -4052,7 +3946,7 @@ Business Integration Suite
 \emph on
 WebSphere Integration Developer
 \emph default
- bereits eine Umsetzung dieses Patterns als Activity mit der Bezeichnung
+ bereits eine Umsetzung dieses Patterns als Aktivität mit der Bezeichnung
  
 \emph on
 
@@ -4083,7 +3977,7 @@ Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen Methoden,
  die eine sequentielle und direkte Bearbeitung des Datencache einer RetrieveSet
  Activity realisieren, bereitgestellt werden.
  D.h.
- konkret, dass es möglich sein muss, mit der definierten Activity innerhalb
+ konkret, dass es möglich sein muss, mit der definierten Aktivität innerhalb
  von BPEL zu arbeiten.
  Die SDO API liefert dafür bereits einige Methoden die verwendet werden
  können.
@@ -4109,8 +4003,11 @@ n werden sollen.
  Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
  Pattern beschriebenen Methoden um die Daten aus dem Prozesscache auf die
  Datenquelle zu übertragen.
- Die SDO API und die DAS API liefern dafür bereits einige Methoden die verwendet
- werden können.
+ Die SDO API und die 
+\emph on
+Data Access Services API
+\emph default
+ (DAS API) liefern dafür bereits einige Methoden die verwendet werden können.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4312,8 +4209,8 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Drop Activity
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Stored Procedure Pattern: Realisierung durch [(optional) SQL-CREATE PROCEDURE
- und] SQL-CALL (Aufruf über JDBC API möglich).
+Stored Procedure Pattern: Realisierung durch SQL-CALL (Aufruf über JDBC
+ API möglich).
 \end_layout
 
 \begin_deeper
@@ -4345,12 +4242,12 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Call Activity
 \end_deeper
 \begin_layout Itemize
 Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
- eines mengenorientierten Datentyps oder einer entsprechenden Activity,
- die solch einen Datentyp kapselt, für BPEL.
- Ein solcher Datentyp/Activity liefert dann die Möglichkeit, dass in Ausprägunge
-n dieses Datentyps/Activity, Ergebnisse von Queries (siehe Query Pattern),
- die über die SDO API abstrahiert wurden, innerhalb des Prozessspeichers
- abgelegt werden können.
+ einer entsprechenden Aktivität, die eine mengenorientierte Datenstrukur
+ kapseln kann, für BPEL.
+ Eine solche Aktivität liefert dann die Möglichkeit, dass in Ausprägungen
+ dieser Aktivität, Ergebnisse von Queries (siehe Query Pattern), die über
+ die SDO API abstrahiert wurden, innerhalb des Prozessspeichers abgelegt
+ werden können.
  Die Firma IBM hat mit ihrer 
 \emph on
 Business Integration Suite
@@ -4359,7 +4256,7 @@ Business Integration Suite
 \emph on
 WebSphere Integration Developer
 \emph default
- bereits eine Umsetzung dieses Patterns als Activity mit der Bezeichnung
+ bereits eine Umsetzung dieses Patterns als Aktivität mit der Bezeichnung
  
 \emph on
 
@@ -4401,8 +4298,8 @@ Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen Methoden,
  die eine sequentielle und direkte Bearbeitung der mengenorientierten Datenstruk
 tur realisieren, bereitgestellt werden.
  D.h.
- konkret, dass es möglich sein muss, mit dem definierten mengenorientierten
- Datentyp innerhalb von BPEL zu arbeiten.
+ konkret, dass es möglich sein muss, mit mengenorientierten Daten innerhalb
+ von BPEL zu arbeiten.
  Die SDO API liefert dafür bereits einige Methoden die verwendet werden
  können.
  Bei der Kapselung als Aktivität muss es auch möglich sein, dass die entsprechen
@@ -4664,7 +4561,8 @@ reference "sub:Umsetzung-der-Datenmanagement"
  Dazu gehört z.B.
  auch welche Attribute welchen Typs für die einzelnen Aktivitäten benötigt
  werden.
- Generell gilt, dass alle Aktivitäten mindestens die vier Variablen 
+ Generell gilt, dass alle Aktivitäten momentan mindestens die drei Variablen
+ 
 \emph on
 kind
 \emph default
@@ -4676,11 +4574,7 @@ dqAddress
 \emph on
  statement
 \emph default
- vom Typ String und 
-\emph on
-dqReference
-\emph default
- vom Typ EPR (endpoint reference) besitzen.
+ vom Typ String besitzen.
  Die Variable 
 \emph on
 kind
@@ -4688,8 +4582,8 @@ kind
  dient zur Angabe des Datenquellentyps für den die Aktivität ausgeführt
  wird, also ob es sich um ein Dateisystem, eine Datenbank oder ein Sensornetz
  handelt.
- Diese Auswahl ist wichtig um intern den richtigen SQL-Dialekt für die entsprech
-ende Datenquelle auszuwählen.
+ Diese Auswahl ist wichtig um intern den richtigen SQL-Dialekt bzw.
+ Befehlssatz für die entsprechende Datenquelle auszuwählen.
  Die Variable 
 \emph on
 dqAddress
@@ -4698,20 +4592,11 @@ dqAddress
 \emph on
 statement 
 \emph default
-zur Haltung des entsprechenden SQL- oder XQuery-Befehls der ausgeführt werden
- soll.
- Die Variable 
-\emph on
-dqReference
-\emph default
- ist eine 
-\emph on
-endpoint reference
-\emph default
- auf eine Datenquelle und dient als Alternative zur Datenquellenadresse.
- Diese vier Variablen besitzt jede der definierten Aktivitäten.
- Darum werden diese nachfolgend nicht jedesmal explizit angegeben und nur
- falls benötigt weitere aktivitätsspezifische Variablen beschrieben.
+zur Haltung des entsprechenden Systemaufrufs bzw.
+ SQL- oder XQuery-Befehls der ausgeführt werden soll.
+ Diese drei Variablen besitzt jede der definierten Aktivitäten.
+ Darum werden diese nachfolgend nicht mehr angegeben und nur falls benötigt
+ weitere aktivitätsspezifische Variablen beschrieben.
  Weiterhin werden die verschiedenen Ausprägungen der einzelnen Aktivitäten
  im Hinblick auf die zugrundeliegende Datenquelle aufgezeigt, so dass am
  Ende ein vollständiger Überblick aller definierten Aktivitäten und ihrer
@@ -4722,31 +4607,40 @@ endpoint reference
  bereits in der graphischen Oberfläche, also dem Eclipse BPEL Designer,
  eingegangen werden soll und diese so durch entsprechende Dialoge intern
  immer auf dieselbe Struktur abgebildet werden können.
- Eben dazu sollen auch alle Befehle in einer SQL-ähnlichen Syntax angegeben
- werden, um genau diese allgemeine Handhabung realisieren zu können.
- Wie diese Befehle nun intern verarbeitet werden, braucht der Benutzer nicht
- zu wissen und er kann dadurch schnellstmöglich mit nur 
+ Eben dazu sollen auch alle Befehle über entsprechende graphische Elemente
+ angegeben werden können, indem sie einfach 
 \begin_inset Quotes eld
 \end_inset
 
-einer
+zusammengeklickt
 \begin_inset Quotes erd
 \end_inset
 
- Anfragesprache alle zur Verfügung gestellten Daten- und Datenquellenbefehle
+ werden können (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
+
+\end_inset
+
+).
+ Dadurch solle eine allgemein einfachere Handhabung realisiert werden, denn
+ wie diese Befehle nun intern verarbeitet werden, braucht der Benutzer nicht
+ zu wissen und er kann dadurch schnellstmöglich ohne sehr detailierte Kentnisse
+ der Anfragesprache alle zur Verfügung gestellten Daten- und Datenquellenbefehle
  für alle unterstützten Datenquellen ausführen.
 \end_layout
 
 \begin_layout Subsubsection*
-Select Activity
+Query Activity
 \end_layout
 
 \begin_layout Standard
 Diese Aktivität ermöglicht es aus jeder beliebigen Datenquelle Daten zu
  lesen.
  Weitere spezifische Attribute werden dafür nicht benötigt.
- Die Select Activity ist für alle Datenquellen gleich strukturiert und nur
- die entsprechenden SQL-Befehle unterscheiden sich.
+ Die Query Activity ist für alle Datenquellen gleich strukturiert und nur
+ die entsprechenden Query-Befehle unterscheiden sich je nach Datenquelle.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4803,11 +4697,11 @@ Dateisysteme
 
 \begin_deeper
 \begin_layout Itemize
-CREATE FOLDER
+MKDIR FOLDER
 \end_layout
 
 \begin_layout Itemize
-CREATE FILE
+MKFILE FILE
 \end_layout
 
 \end_deeper
@@ -4919,11 +4813,11 @@ Dateisysteme
 
 \begin_deeper
 \begin_layout Itemize
-DROP FOLDER
+RMDIR FOLDER
 \end_layout
 
 \begin_layout Itemize
-DROP FILE
+RM FILE
 \end_layout
 
 \end_deeper
@@ -5275,7 +5169,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Eigenschaftsfenster einer Data-Management-Aktivität am Beispiel einer SELECT
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
+
+\end_inset
+
+Eigenschaftsfenster einer Data-Management-Aktivität am Beispiel einer Query
  Activity
 \end_layout
 
