@@ -537,6 +537,83 @@ Das Entwicklungsteam soll ein erweiterbares und generisches Rahmenwerk für
 Evolution des Dokuments
 \end_layout
 
+\begin_layout Standard
+Das Projekt SIMPL ist in drei Iterationsstufen aufgeteilt.
+ Die vorliegende Spezifikation spiegelt die erste Iterationsstufe des Rahmenwerk
+s wieder und stellt dessen Grundfunktionalität dar.
+ Die Spezifikation und damit die Spezifizierung der weitergehenden Funktionalitä
+t wird in späteren Iterationen vervollständigt.
+\end_layout
+
+\begin_layout Standard
+Darüberhinaus wird in weiterführenden Kundengepsprächen über die Präferenzordnun
+g von optionalen Implementierungen diskutiert, welche in den entsprechenden
+ Iterationen umgesetzt werden sollen.
+\end_layout
+
+\begin_layout Subsubsection
+Basisfunktinoalität
+\end_layout
+
+\begin_layout Itemize
+Die statische Anbindung von Datenquellen: Relationale Datenbank, XML-Datenbank,
+ Sensor Datenbank und Dateisystem
+\end_layout
+
+\begin_layout Itemize
+Eine grundlegende Adminkonsole, die Funktionen wie das An- und Ausschalten
+ des Auditings und die Eingabe globaler Einstellungen für das Rahmenwerk.
+\end_layout
+
+\begin_layout Itemize
+Bereitstellung von generischen BPEL-Aktivitäten für den Zugriff auf Datenquellen.
+\end_layout
+
+\begin_layout Subsubsection
+Ausblick
+\end_layout
+
+\begin_layout Paragraph
+Planung
+\end_layout
+
+\begin_layout Itemize
+Es wird ein Plug-In-System für die Anbindung von verschiedenen Datenquellen
+ umgesetzt.
+ 
+\end_layout
+
+\begin_layout Itemize
+Implementierung einer Datenquellen Registriy mithilfe derer Datenquellen
+ über den Eclipse BPEL Designer ausgewählt werden können.
+\end_layout
+
+\begin_layout Itemize
+Beispiel-Plugin für Dateitypen.
+\end_layout
+
+\begin_layout Paragraph
+Optional (Kunden Präferenz) 
+\end_layout
+
+\begin_layout Itemize
+Unterstützung von Referenzen in BPEL (Reference Resolution System)
+\end_layout
+
+\begin_layout Itemize
+Monitoring.
+ 
+\end_layout
+
+\begin_layout Itemize
+Dynamische Auswahl von Datenquellen (per Strategie) 
+\end_layout
+
+\begin_layout Itemize
+Granularitätsfestlegung von Auditing und Monitoring.
+ 
+\end_layout
+
 \begin_layout Subsection
 Definitionen
 \end_layout
