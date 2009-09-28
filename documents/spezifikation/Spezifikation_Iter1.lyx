@@ -2875,7 +2875,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ 
 \end_layout
 
 \end_inset
@@ -2941,7 +2942,68 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
+1a.
+ Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
+ment-Aktivität beendeet.
+\end_layout
 
+\begin_layout Plain Layout
+2a.
+ Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
+ment-Aktivität beendet.
+\end_layout
+
+\begin_layout Plain Layout
+2b.
+ Es wird ein Terminate_Activity Event an die Aktivität geschickt, worauf
+ hin sie beendet wird.
+\end_layout
+
+\begin_layout Plain Layout
+2c.
+ Es wird ein Complete_Acitivity Event an die Aktivität gesendet, worauf
+ hin sie als vollständig gekennzeichnet wird.
+\end_layout
+
+\begin_layout Plain Layout
+3a.
+ Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
+ment-Aktivität beendet.
+\end_layout
+
+\begin_layout Plain Layout
+3b.
+ Es wird ein Terminate_Activity Event an die Aktivität geschickt, worauf
+ hin sie beendet wird.
+\end_layout
+
+\begin_layout Plain Layout
+3c.
+ Die Aktivität erzeugt einen Fehler, deswegen wird die Aktivität als fehlgeschla
+gen gekennzeichnet
+\end_layout
+
+\begin_layout Plain Layout
+4a.
+ Die in der Daten-Management-Aktivität angegebene Datenbank oder die angegebenen
+ Datensätze konnten nicht gefunden werden.
+\end_layout
+
+\begin_layout Plain Layout
+4b.
+ Die Aktivität wird als fehlgeschlagen gekennzeichnet.
+\end_layout
+
+\begin_layout Plain Layout
+5a.
+ Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
+ment-Aktivität beendet.
+\end_layout
+
+\begin_layout Plain Layout
+5b.
+ Es wird ein Terminate_Activity Event an die Aktivität geschickt, worauf
+ hin sie beendet wird.
 \end_layout
 
 \end_inset
@@ -3197,7 +3259,24 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Im Normalablauf einer Data-Management-Aktivität tritt ein Fehler auf.
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Alle Änderungen die vorgenommen wurden werden verworfen.
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Es werden keine Compensation Handler installiert
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Und der Status aller Links die durch die Data-Management-Aktivität entstanden
+ sind, werden auf falsch gesetzt.
 \end_layout
 
 \end_inset
@@ -5171,25 +5250,13 @@ Auditing
 \end_layout
 
 \begin_layout Standard
-Wenn das Audutiting aktiviert wird, im Standardfall wenn SIMPL gestartet
- wird, wird eine Liste der Prozesse und Instanzen die momentan in der ODE
- Engine existieren abgerufen.
- Diese Listen werden in Form von XML-Datein übergeben.
- Nach Verarbeitung dieser Listen ist es nun weiterhin möglich detailierte
- Informationen und die aufgetretenen Events zu den einzelnen Prozessen und
- Instanzen abzurufen.
- Diese Informationen und Events werden ebenfalls in Form von XML-Datein
- übergeben.
- Diese Informationen werden anschließend als xml-Datein in einer entsprechenden
- Datenbank gespeichert.
- Es ist bisher nicht vorgesehen die Auditing Daten in irgendeiner Form weiterzuv
-erarbeiten um diese als Strings in einer relationalen Datenbanke zu speichern.
-\end_layout
-
-\begin_layout Standard
-Der zuvor beschriebene Vorgang des Abrufens und Verarbeitens der Daten,
- wird, so lange das Auditing aktiv ist, regelmäßig innerhalb einer bestimmten
- Zeit wiederholt.
+Für das Auditing von SIMPL werden die von ODE erzeugten Daten direkt an
+ den SIMPL Core übergeben und weitervarbeitet, anstatt diese wie bisher
+ in der virtuellen Datenbank von ODE abzulegen.
+ Dies wird realisiert durch die Implementierung eines eigenen Data Access
+ Objects, was entsprechende Funktionalitäten anbietet.
+ Diese Informationen werden anschließend in einer,.
+ zuvor in der Adminkonsolw festgelegten Auditing Datenquelle abgelegt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5203,105 +5270,26 @@ Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert.
  Wenn ein Event auftritt, so zum Beispiel das Aktivieren eines Prozesses,
  oder das generieren einer neuen Prozessinstanz, dann erhält das Monitoring
  eine direkte Rückmeldung darüber und die Visualisierung ist möglich.
+ Eine weitere Möglichkeit zur Gewinnung der Monitoring-Daten ist es diese
+ direkt aus der Auditing Datenquelle abzufragen.
 \end_layout
 
 \begin_layout Standard
 Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel:
  Anzahl der aktiven Prozesse oder Prozessinstanzen soll möglich sein.
- Geplant sind bisher zwei Arten der Visualisierung, die in der Konzept-Grafik
- in 6.3.1 zu sehen sind.
- Die Monitoring Informationen werden nicht gespeichert sondern dienen jedeglich
- der Visualisierung.
 \end_layout
 
 \begin_layout Subsubsection
-Event-Modelle
+Event-Modell
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ok hab grad nocheinmal genauer gekuckt welche Art von Event Modell gefordert
- ist und anscheinend ist das was ich hier gemacht hab nich ganz das was
- gefordert ist ...
- Naja das jetzt noch irgendwie zu überarbeiten schaff ich leider nicht ...
- werd morgen wahrscheinlich mal euere Hilfe brauchen um das ganze noch hinzubeko
-mmen!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Anmerkung: Optionale Bestandteile des Monitoring und Auditing, die vorraussichtl
-ich nicht im Lieferumfang enthalten sind, wurden im Event Modell markiert.
- 
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename Monitoring Event Modell.jpg
-	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Event Modell des Monitoring
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename Event Modell Auditing.jpg
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Event Modell des Monitoring
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+Anhand unserer bisherigen Erkenntnisse im Projektverlauf ist es für uns
+ nicht notwendig das Event-Modell des Monitorings für SIMPL zu verändern
+ oder in irgendeiner Form zu erweitern.
+ Der Grund dafür ist, dass wir nur neue Aktivitäten erzeugen, deren Informations
+abfrage und Monitoring über die bestehenden Möglichkeiten realisiert werden
+ soll.
 \end_layout
 
 \begin_layout Section
@@ -5319,7 +5307,8 @@ Materialien
 \end_layout
 
 \begin_layout Standard
-java
+Als Material für SIMPL verwenden wir die Programmiersprache Java in der
+ aktuellsten Version (6.16.).
 \end_layout
 
 \begin_layout Subsection
@@ -5327,7 +5316,7 @@ Technologien
 \end_layout
 
 \begin_layout Standard
-Es werden die Verchiedene Technologien in Entwicklung eingesetzt:
+In der Entwicklung von SIMPL werden folgende Technologien zum Einsatz kommen:
 \end_layout
 
 \begin_layout Standard
@@ -5418,9 +5407,66 @@ Die IBM-DB2 ist ein Hybriddatenserver mit dem sowohl die Verwaltung von
  XML-Daten als auch von relationalen Daten möglich ist.
 \end_layout
 
+\begin_layout Subsubsection*
+Apache Tuscany 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://tuscany.apache.org"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Apache Tuscany, Webservices, axis2, DAS (Data Access Service), SDO (Service
- Data Objects), 
+Apache Tuscany ist ein Software-Projekt, welches es zum Ziel hat die Erstellung
+ von Service Oriented Architecture (SOA) zu vereinfachen, indem eine verständlic
+he Infrastruktur und grundlegende Komponenten zur Verfügung gestellt werden.
+\end_layout
+
+\begin_layout Subsubsection*
+Webservices
+\end_layout
+
+\begin_layout Standard
+Webservices sind Software-Anwendungen, die zur direkten Interaktion mit
+ anderen Software-Agenten dienen.
+\end_layout
+
+\begin_layout Subsubsection*
+Axis2 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ws.apache.org/axis2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Axis2 ist eine SOAP-Engine zur Konstruktion von darauf basierenden Web Services
+ und Client-Anwendungen.
+\end_layout
+
+\begin_layout Subsubsection*
+Data Access Service (DAS)
+\end_layout
+
+\begin_layout Standard
+DAS vereinfacht die Handhabung von Daten, während der Kommunikation mit
+ der back-end Datenquelle.
+ Weiterhin erleichtert es die Transformation zwischen end source typs und
+ SDO Datenobjekt-Typen.
+\end_layout
+
+\begin_layout Subsubsection*
+Service Data Object (SDO)
+\end_layout
+
+\begin_layout Standard
+SDO stellt eine einheitliche API zur Verfügung, mit der die Handhabung verschied
+ener Datei-Typen möglich ist.
 \end_layout
 
 \begin_layout Subsection
@@ -5428,8 +5474,13 @@ Werkzeuge
 \end_layout
 
 \begin_layout Standard
+Es werden folgende Werkzeuge eingesetzt um den Entwicklungsvorgang und die
+ Dokumentation zu unterstützen:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
@@ -5456,6 +5507,9 @@ target "http://svnbook.red-bean.com"
 \begin_layout Standard
 Subversion ist eine Software zur Versionskontrolle und eine Weiterentwicklung
  von CVS.
+ Es wird genutzt um mehreren Nutzern den gleichzeitigen Zugriff und ein
+ gleichzeitiges Bearbeiten von verschiedenen Datein und Dokumenten zu ermögliche
+n.
 \end_layout
 
 \begin_layout Description
@@ -5472,6 +5526,9 @@ target "http://svnbook.red-bean.com"
 
 \begin_layout Standard
 Maven ist ein Projekt-Management-Tool.
+ Es wird zur automatischen Erstellung von Software-Projekten genutzt.
+ Mit Maven ist es möglich viele Schritte, die die Entwickler normalerweise
+ von Hand erledigen müssen zu automatisieren.
 \end_layout
 
 \begin_layout Description
@@ -5484,6 +5541,11 @@ target "www.lyx.org"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Lyx ist ein Textverarbeitungsprogramm, mit dem es möglich ist auf einfachste
+ Art und Weise LaTeX-Dokumenten zu erstellen.
 \end_layout
 
 \begin_layout Description
@@ -5525,11 +5587,8 @@ Entwicklungsumgebung
 \end_layout
 
 \begin_layout Standard
-Eclipse (Galileo 3.5 usw.), 
-\end_layout
-
-\begin_layout Subsubsection
-Sonstige Werkzeuge
+Die IDE in der das Projekt SIMPL entwickelt wird ist Eclipse in der Version
+ 3.5 (Galileo).
 \end_layout
 
 \begin_layout Section
