@@ -843,8 +843,24 @@ reference "sec:Nichtfunktionale-Anforderungen"
 Einschränkungen
 \end_layout
 
-\begin_layout Subsection
-Annahmen und Abhängigkeiten
+\begin_layout Itemize
+Die Modellierung von BPEL-Prozessen ist an das Modellierungswerkzeug Eclipse
+ BPEL Designer gebunden.
+ 
+\end_layout
+
+\begin_layout Itemize
+Das Auditing der Prozessausführung wird nur für die Workflow-Engine Apache
+ ODE bereitgestellt.
+\end_layout
+
+\begin_layout Itemize
+Als Workflow-Modellierungssprache dient die Business Process Execution Language
+ (BPEL).
+\end_layout
+
+\begin_layout Itemize
+Als Programmiersprache für das SIMPL Rahmenwerk kommt Java zum Einsatz.
 \end_layout
 
 \begin_layout Section
@@ -868,13 +884,32 @@ In diesem Abschnitt werden die nichtfunktionalen Anforderungen an die zu
 Mengengerüst
 \end_layout
 
+\begin_layout Itemize
+Jeder Aktivität kann maximal eine Datenquelle zugewiesen werden.
+\end_layout
+
+\begin_layout Itemize
+Für das Auditing kann nur eine feste aber frei wählbare Datenbank verwendet
+ werden.
+\end_layout
+
+\begin_layout Itemize
+Das Rahmenwerk kann immer nur von einem Benutzer verwendet werden.
+\end_layout
+
+\begin_layout Itemize
+Alle laufenden Prozesse einer Workflow-Engine können nur Daten in Höhe des
+ Speichers, der durch das Betriebssystem zur Verfügung gestellt wird, verarbeite
+n.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
--hier soll darüber argumintiert wieviele Datenquellen gleichzeitig angebunden
- und wervendet werden können.
+-hier soll darüber argumentiert werden, wieviele Datenquellen gleichzeitig
+ angebunden und verwendet werden können.
  
 \end_layout
 
@@ -918,6 +953,12 @@ Unter Robustheit ist hier zu verstehen, dass selbst wenn es zu ungünstigen
 
 \begin_layout Subsection
 Sicherheit
+\end_layout
+
+\begin_layout Standard
+Da das Rahmenwerk nur lokal ausgeführt wird und alle lokalen Benutzer (Prozess-M
+odellierer und Workflow-Administrator) die gleichen Rechte besitzen, wird
+ auf Authentifizierungs- und Autorisierungsmaßnahmen verzichtet.
 \end_layout
 
 \begin_layout Standard
@@ -976,18 +1017,12 @@ Wartbarkeit
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Durch qualitativ hochwertige Dokumentation und ein strukturiertes, geplantes
- und sauberes Entwicklungsvorgehen wird der Anspruch erhoben, eine möglichst
- hohe Wartbarkeit zu erreichen.
-\end_layout
-
-\end_inset
-
-
+Durch eine qualitativ hochwertige Dokumentation und ein strukturiertes,
+ geplantes und sauberes Entwicklungsvorgehen soll eine hohe Wartbarkeit
+ erreicht werden.
+ Dazu werden alle Dokumente entsprechend gepflegt und laufend aktualisiert.
+ Weiterhin werden nach jedem Wartungsintervall Tests durchgeführt und deren
+ Ergebnisse protokolliert.
 \end_layout
 
 \begin_layout Subsection
@@ -1016,11 +1051,11 @@ Prozess-Modellierer
 \end_layout
 
 \begin_layout Standard
-Ein Prozess-Modellierer erstellt mit dem Eclipse BPEL Designer BPEL Prozesse.
+Ein Prozess-Modellierer besitzt entsprechendes Fachwissen z.B.
+ aus der Biologie, das er bei der Modellierung eines wissentschaftlichen
+ Workflows verwendet.
+ Zur Modellierung der Workflows nutzt er den Eclipse BPEL Designer.
  Dazu kann er BPEL-Aktivitäten erstellen, bearbeiten und auch löschen.
- Weiterhin kann er für die dynamische Datenquellenauswahl zur Laufzeit,
- die von ihm benötigten Datenquellen-Eigenschaften angeben und eine geeignete
- Auswahl-Strategie auswählen.
  Hat der Prozess-Modellierer den BPEL-Prozess fertig modelliert, kann er
  diesen im Anschluss auf einer Workflow-Engine ausführen lassen.
 \end_layout
@@ -1034,11 +1069,11 @@ Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers,
  d.h.
  er kann alle Anwendungsfälle des Prozess-Modellierers und noch weitere
  administrative Anwendungsfälle ausführen.
+ Seine Kentnisse liegen im technischen Bereich, wie z.B.
+ bei der Konfiguration des Rahmenwerks.
  Er kann beispielsweise über die Admin-Konsole während der Prozesslaufzeit
- das Auditing und Monitoring an- und abschalten.
- Ebenso legt er die Datenbank für das Speichern der Auditing-Daten fest
- und administriert das Reference Resolution System, d.h.
- er kann Referenzen anlegen, löschen und bearbeiten.
+ das Auditing an- und abschalten.
+ Ebenso legt er die Datenbank für das Speichern der Auditing-Daten fest.
 \end_layout
 
 \begin_layout Subsection
@@ -1062,12 +1097,8 @@ Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
  Akteur.
  Er führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
  Anwendungsfälle indirekt aufgerufen werden.
- Der Eclipse BPEL Designer kann Datenquellen aus der Datenquellen-Registry
- abrufen und die erhaltene Liste anhand der vom Prozess-Modellierer hinterlegten
- Eigenschaften filtern.
- Weiterhin sorgt er für die automatische Datenquellenauswahl per Strategie,
- das Laden der Einstellungen der Admin-Konsole und das Kopieren aller Prozess-Ar
-tefakte auf die Workflow-Engine.
+ Der Eclipse BPEL Designer sorgt für das Laden der Einstellungen der Admin-Konso
+le.
 \end_layout
 
 \begin_layout Section
@@ -1087,7 +1118,7 @@ Dieser Abschnitt beschreibt die funktionalen Anforderungen an die Software.
 \end_layout
 
 \begin_layout Subsection
-Diagramm aller Anwendungsfälle
+Diagramm der Anwendungsfälle
 \end_layout
 
 \begin_layout Standard
@@ -1265,7 +1296,7 @@ Nachbedingung
 
 \begin_layout Plain Layout
 Die erstellte Aktivität wurde an der selektierten Position in den Prozess
- eingefügt und der eingegebene Namen wird angezeigt.
+ eingefügt und der eingegebene Name wird angezeigt.
 \end_layout
 
 \end_inset
@@ -1286,7 +1317,7 @@ Nachbedingung im Sonderfall
 
 \begin_layout Plain Layout
 Die erstellte Aktivität wurde an der selektierten Position in den Prozess
- eingefügt und der vorgeschlagene Namen wird angezeigt.
+ eingefügt und der vorgeschlagene Name wird angezeigt.
 \end_layout
 
 \end_inset
@@ -1307,7 +1338,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl einer Aktivität, durch Markierung mit der Maus, aus der Palette
+ Selektion einer Aktivität, durch Auswahl mit der Maus, aus der Palette
 \end_layout
 
 \begin_layout Plain Layout
@@ -1339,7 +1370,7 @@ Sonderfälle
 
 \begin_layout Plain Layout
 3a.
- Der angezeigte Namensvorschlag wird vom Benutzer mit [Enter] bestätigt
+ Der angezeigte Namensvorschlag wird vom Benutzer bestätigt
 \end_layout
 
 \end_inset
@@ -1426,7 +1457,7 @@ Nachbedingung
 
 \begin_layout Plain Layout
 Alle durchgeführten Änderungen der Eigenschaften wurden korrekt übernommen
- und werden im 
+ und werden in der 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1475,7 +1506,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl einer Aktivität, durch Markierung mit der Maus, aus dem Prozess
+ Selektierung einer Aktivität, durch Auswahl mit der Maus, aus dem Prozess
 \end_layout
 
 \begin_layout Plain Layout
@@ -1633,7 +1664,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl einer Aktivität, durch Markierung mit der Maus, aus dem Prozess
+ Selektierung einer Aktivität, durch Auswahl mit der Maus, aus dem Prozess
 \end_layout
 
 \begin_layout Plain Layout
@@ -1658,16 +1689,6 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Was passiert wenn eine von zwei voneinander abhängigen Aktivitäten gelöscht
- wird?
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -1726,7 +1747,8 @@ Vorbedingung
 
 \begin_layout Plain Layout
 Ein Prozess muss im Eclipse BPEL Designer geöffnet und die Apache ODE Workflow-E
-ngine korrekt in Eclipse eingebunden sein.
+ngine korrekt in Eclipse eingebunden sein und die Server-View angezeigt
+ werden.
 \end_layout
 
 \end_inset
@@ -1793,7 +1815,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Kopieren der Prozess-Artefakte in Workflow-Engine
+ Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View
 \end_layout
 
 \end_inset
@@ -1891,7 +1913,7 @@ Nachbedingung
 
 \begin_layout Plain Layout
 Alle Werte der Admin-Konsole wurden korrekt gespeichert und alle veralteten
- Werte mit neuen überschrieben.
+ Werte mit Neuen überschrieben.
 \end_layout
 
 \end_inset
@@ -1936,7 +1958,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Klick auf den Button [Speichern]
+ Klick auf den Button [Save]
 \end_layout
 
 \end_inset
@@ -2034,8 +2056,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole wurden auf die gespeicherten Werte
- zurückgesetzt.
+Alle geänderten Werte der Admin-Konsole wurden auf die Standardwerte zurückgeset
+zt.
 \end_layout
 
 \end_inset
@@ -2055,9 +2077,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole bleiben durch den Zurücksetz-Vorgang
- unverändert und es kann ein erneuter Versuch durchgeführt werden.
- Die Werte bleiben dabei solange erhalten, bis Eclipse beendet wird.
+
 \end_layout
 
 \end_inset
@@ -2078,7 +2098,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Klick auf den Button [Zurücksetzen]
+ Klick auf den Button [Default]
 \end_layout
 
 \end_inset
@@ -2098,8 +2118,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-1a.
- Beim Laden der Werte tritt ein Fehler auf
+
 \end_layout
 
 \end_inset
@@ -2268,7 +2287,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Klick auf den Menüeintrag [Admin-Konsole]
+ Klick auf den Menüeintrag [Admin Console]
 \end_layout
 
 \end_inset
@@ -2385,8 +2404,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Nutzer erhält eine Fehlermeldung die ihn informiert, dass keine Auditing
- Datenbank festgelegt wurde und wird gebeten eine auszuwählen.
+Der Nutzer erhält eine Fehlermeldung die ihn über den entsprechenden Fehler
+ informiert.
  Das Auditing ist nicht aktiv.
 \end_layout
 
@@ -2429,7 +2448,12 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.
- Vom Nutzer wurde keine Auditing Datenbank zum speichern der Daten festgelegt.
+ Vom Nutzer wurde keine Auditing Datenbank zum Speichern der Daten festgelegt.
+\end_layout
+
+\begin_layout Plain Layout
+1b.
+ Die angegebene Auditing Datenbank kann nicht verwendet werden
 \end_layout
 
 \end_inset
@@ -2624,7 +2648,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Admin-Console ist geöffnet.
+Die Admin-Konsole ist geöffnet.
 \end_layout
 
 \end_inset
@@ -2665,7 +2689,7 @@ Nachbedingung im Sonderfall
 
 \begin_layout Plain Layout
 Der Administrator wird durch eine entsprechende Fehlermeldung darauf hingewiesen
-, dass die angegebene Datenbank nicht erreichbar ist.
+, dass die angegebene Datenbank nicht verwendet werden kann.
 \end_layout
 
 \end_inset
@@ -2707,7 +2731,7 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.
- Auf die angegebene Datenbank kann nicht zugegriffen werden
+ Die angegebene Datenbank kann nicht verwendet werden
 \end_layout
 
 \end_inset
@@ -3246,154 +3270,6 @@ Anwendungsfall-Diagramm für die Prozess-Modelierer
 
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Prozess-Artefakte in Workflow-Engine kopieren
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kopieren aller Prozess-Artefakte (Deployment Deskriptor, BPEL-Dateien, WSDL-Date
-ien) eines Projekts in die Worflow-Engine.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Alle Prozess-Artefakte befinden sich nun im Verzeichnis der Workflow-Engine
- und eine .deployed Datei wurde erstellt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die kopierten Dateien sind unverändert, es wurde keine .deployed Datei erstellt
- und die aufgetretenen Fehler werden in der ODE-Konsole im Eclipse BPEL
- Designer angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Kopieren der Prozess-Artefakte
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Prozess wird automatisch deployed
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2a.
- Fehler beim Deployment des Prozesses
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
 
 \end_inset
 
