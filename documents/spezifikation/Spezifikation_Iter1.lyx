@@ -467,9 +467,9 @@ Einleitung
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt wird der Zweck dieses Dokuments sowie der Einsatzbereich
+In diesem Abschnitt wird der Zweck dieses Dokuments, sowie der Einsatzbereich
  und die Ziele der zu entwickelnden Software beschrieben.
- Weiterhin werden die, in diesem Dokument, verwendeten Definitionen erläutert
+ Weiterhin werden die in diesem Dokument verwendeten Definitionen erläutert
  und ein Überblick über das restliche Dokument gegeben.
 \end_layout
 
@@ -483,7 +483,7 @@ Diese Spezifikation ist die Grundlage für alle weiteren Dokumente, die im
  In ihr sind sämtliche Anforderungen an die zu entwickelnde Software festgelegt.
  Sie muss stets mit den anderen Dokumenten, insbesondere mit dem Entwurf
  und der Implementierung, konsistent gehalten werden.
- Die Spezifikation dient den Team-Mitgliedern als Grundlage und Richtschnur
+ Die Spezifikation dient den Team-Mitgliedern als Grundlage und Richtlinie
  für die Entwicklung der Software und den Kunden als Zwischenergebnis zur
  Kontrolle.
 \end_layout
@@ -509,29 +509,28 @@ Einsatzbereich und Ziele
 \end_layout
 
 \begin_layout Standard
-Das Entwicklungsteam soll ein erweiterbares, generisches Rahmenwerk für
+Das Entwicklungsteam soll ein erweiterbares und generisches Rahmenwerk für
  die Modellierung und Ausführung von Workflows erstellen, welches den Zugriff
  auf nahezu beliebige Datenquellen ermöglichen soll.
  Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
  und Dateisysteme handeln.
- Der Schwerpunkt soll klar auf wissenschaftlichen Workflows beruhen.
+ Der Schwerpunkt soll klar auf wissenschaftlichen Workflows liegen, in denen
+ es möglich sein muss große heterogene Datenmengen verarbeiten zu können.
  Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
  BPEL-Prozess eingebunden werden können.
- Dafür werden bereits vorhandene Konzepte evaluiert und falls nötig erweitert
- oder angepasst.
- Es wird untersucht, inwiefern die Sprache BPEL ebenfalls erweitert werden
- muss.
+ Dafür werden bereits vorhandene Konzepte evaluiert, wie z.B.
+ die Sprache BPEL, und falls nötig erweitert und angepasst.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
- werden, so dass erst während der Laufzeit des Systems die Datenquellen
- festgelegt werden können.
+ werden, so dass auch erst zur Laufzeit des Systems die Datenquellen festgelegt
+ werden können.
  Nichtsdestotrotz sollte auch die Möglichkeit bestehen, die Datenquellen
  statisch anbinden zu können.
- Eine Anforderung des Kunden ist, dass eine vorhandene BPEL-Engine sowie
- ein vorhandenes Modellierungstool um diese gewünschten Funktionen erweitert
- bzw.
+ Eine Anforderung des Kunden ist, dass eine vorhandene BPEL-Workflow-Engine
+ sowie ein vorhandenes Modellierungstool um diese gewünschten Funktionen
+ erweitert bzw.
  angepasst werden.
  Die BPEL-Prozesse sollen mit dem entsprechenden Modellierungstool spezifiziert
- und mit der BPEL-Engine ausgeführt werden können.
+ und mit der BPEL-Workflow-Engine ausgeführt werden können.
 \end_layout
 
 \begin_layout Subsection
@@ -559,11 +558,9 @@ hier dokumentieren wir die dokumente, die im zusammenhang mit der Spezifikation
 
 \begin_layout Standard
 Die in der Spezifikation verwendeten Begriffe, Definitionen und Abkürzungen
- werden in einem separaten Begriffslexikon definiert und eindeutig erklärt.
- Durch das Begriffslexikon werden somit alle technischen und fachlichen
- Begriffe, Definitionen und Abkürzungen, die zu Missverständnissen innerhalb
- des Projektteams oder zwischen Projektteam und Kunde führen könnten, eindeutig
- definiert.
+ werden in einem separaten Begriffslexikon eindeutig definiert und erklärt,
+ dadurch werden Missverständnisse innerhalb des Projektteams oder zwischen
+ Projektteam und Kunde vermieden.
 \end_layout
 
 \begin_layout Standard
@@ -587,7 +584,7 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 
 \end_inset
 
- beschriebenen Aktivitäten, realisiert werden.
+ beschriebenen Aktivitäten, erreicht werden.
 \end_layout
 
 \begin_layout Subsection
@@ -605,8 +602,10 @@ reference "sec:Allgemeine-Beschreibung"
 
  die spätere Systemumgebung, die Kernfunktionen, die Sprache und weitere
  Aspekte der Software beschrieben.
- So erhält der Leser einen Überblick über die Software, deren Verwendung
- und die Ziele und Aufgaben, die für die Realisierung bestehen.
+ So erhält der Leser einen Überblick über die Funktionalität der Software
+ und deren Verwendung.
+ Weiterhin werden die Ziele und Aufgaben, die für die Realisierung der Software
+ bestehen, aufgezeigt.
  Anschließend werden die vom Kunden genannten Anforderungen durch die Abschnitte
  
 \begin_inset CommandInset ref
@@ -639,16 +638,15 @@ reference "sec:Konzepte-und-Realisierungen"
 
  die Beschreibungen und Definitionen einiger Konzepte bzw.
  Ansätze, die zur Umsetzung der gewünschten Funktionalität benötigt werden.
- Am Ende des Dokuments werden dann noch die verwendeten Materialien, Werkzeuge
- und Technologien, die für die Erstellung der Software benötigt werden,
- in Abschnitt 
+ Am Ende des Dokuments werden in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:MaterialienWerkzeuge"
 
 \end_inset
 
- vorgestellt.
+ die verwendeten Materialien, Werkzeuge und Technologien, die für die Erstellung
+ der Software benötigt werden, vorgestellt.
 \end_layout
 
 \begin_layout Section
@@ -682,10 +680,10 @@ reference "fig:Systemumgebung"
 \end_inset
 
  dargestellte, Systemumgebung eingebettet werden.
- Die Systemumgebung besteht dabei aus den unterschiedlichen Datenquellen,
- Eclipse mit dem BPEL-Designer Plug-In und einem Web-Server, wie z.B.
- dem Apache Tomcat, in dem das Rahmenwerk und eine Workflow-Engine (z.B.
- Apache ODE) ausgeführt werden.
+ Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL-Designer Plug-In,
+ einem Web-Server, wie z.B.
+ dem Apache Tomcat, auf dem das Rahmenwerk und eine Workflow-Engine (z.B.
+ Apache ODE) ausgeführt werden und den unterschiedlichen Datenquellen.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
 \end_layout
@@ -751,14 +749,15 @@ g integriert sein.
 
 \begin_layout Standard
 Die vorhandenen BPEL-Aktivitäten des Eclipse BPEL Designer werden dazu um
- neue Daten-Management-Aktivitäten erweitert.
+ neue Aktivitäten für die Verwaltung von Daten (Data-Management-Aktivitäten)
+ erweitert.
  Mit deren Hilfe wird die Anbindung von Datenquellen in BPEL-Prozessen vereinfac
 ht.
  Am Anfang werden die Datenquellen über ihre physikalische Adresse angebunden.
  In einer späteren Iteration wird eine Datenquellen-Registry bereitgestellt.
  Diese ermöglicht die Realisierung einer grafischen Auswahlmöglichkeit für
  Datenquellen im Eclipse BPEL Designer.
- Eine nähere Beschreibung der Daten-Management-Aktivitäten wird in Abschnitt
+ Eine nähere Beschreibung der Data-Management-Aktivitäten wird in Abschnitt
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -790,9 +789,9 @@ Sprache
 
 \begin_layout Standard
 Generell gilt, dass alle Dokumente auf Deutsch und jeder Quellcode einschließlic
-h Kommentaren auf Englisch verfasst und ausgeliefert werden.
+h Kommentaren auf Englisch verfasst und ausgeliefert werden sollen.
  Eine Ausnahme bilden das Handbuch und die verschiedenen Dokumentationen
- der durchzuführenden Erweiterungen, wie z.B.
+ der von uns durchgeführten Erweiterungen, wie z.B.
  die Erweiterungen von Apache ODE oder dem Eclipse BPEL Designer.
  Diese Dokumente werden auf Deutsch und auf Englisch verfasst, um sie einem
  breiteren Leserkreis zur Verfügung stellen zu können.
@@ -898,7 +897,7 @@ Benutzbarkeit
 
 \begin_layout Standard
 Die Benutzbarkeit soll sich vor allem an Nutzer mit wenig Kenntnissen im
- Umgang mit Workflows und BPEL richten und dafür die größtmögliche Transparenz
+ Umgang mit Workflows und BPEL richten und die dafür größtmöglichste Transparenz
  liefern, d.h.
  dass die interne Prozesslogik der Software bestmöglich vom Benutzer abgeschirmt
  wird und er eine möglichst einfache und schnell verständliche Schnittstelle
@@ -911,11 +910,10 @@ Robustheit
 \end_layout
 
 \begin_layout Standard
-Unter Robustheit versteht man hier, zwar kommt die ungünstigen Bedingungen,
- aber SIMPL kann noch stabil zuverlässig angewanden ,richtigen Aktivitäten
- durchgeführt und korrekte Ergebniss liefert werden,oder sicher beendet
- werden.
- 
+Unter Robustheit ist hier zu verstehen, dass selbst wenn es zu ungünstigen
+ Bedingungen kommt, SIMPL weiterhin fehlerfrei verwendet werden kann.
+ Dazu sollen Prozesse fehlerfrei ausgeführt werden und entsprechend korrekte
+ Ergebnisse liefern oder das Rahmenwerk soll sicher beendet werden können.
 \end_layout
 
 \begin_layout Subsection
@@ -1002,31 +1000,6 @@ Die Skalierbarkeit des Systems muss eine sehr flexible Infrastruktur erlauben,
  Leistung sehr weit auseinander gehen können, d.h.
  vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
  möglich sein.
-\end_layout
-
-\begin_layout Subsection
-Ausfallsicherheit
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Das System soll soweit wie möglich Ausfallsicher sein.
- Über die eingehaltene ACID Transaktion Eigenschaften soll Datenverlust
- etc.
- vermieden werden.
- 
-\end_layout
-
-\begin_layout Plain Layout
-(hier mussen wir auch schreiben wie gehts es Technisch....)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3600,8 +3573,8 @@ Konzepte und Realisierungen
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
- deren Realisierung erläutert.
+In diesem Abschnitt werden alle Konzepte, die für SIMPL benötigt werden,
+ und deren Realisierung erläutert.
  Dazu zählt z.B.
  die Beschreibung und Definition der benötigten Datenmanagement Aktivitäten,
  die zur Realisierung einer SQL-inline Unterstützung für BPEL benötigt werden.
@@ -3655,7 +3628,7 @@ Datenmanagement Patterns
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel werden die Datenmanagement Patterns, die zur Realisierung
+In diesem Abschnitt werden die Datenmanagement Patterns, die zur Realisierung
  einer SQL-inline Unterstützung benötigt werden, aufgeführt und beschrieben
  (siehe Quelle [
 \begin_inset CommandInset ref
