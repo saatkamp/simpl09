@@ -1290,7 +1290,7 @@ name "fig:UseCaseDiaProzessModell"
 
 \end_inset
 
-Anwendungsfall-Diagramm für die Prozess-Modelierer
+Anwendungsfall-Diagramm für den Prozess-Modellierer
 \end_layout
 
 \end_inset
@@ -2241,7 +2241,7 @@ name "fig:UseCaseDiaWFAdmin"
 
 \end_inset
 
-Anwendungsfall-Diagramm für die Prozess-Modelierer
+Anwendungsfall-Diagramm für den Workflow-Administrator
 \end_layout
 
 \end_inset
@@ -2854,7 +2854,7 @@ name "fig:UseCaseDiaODEWFEngine"
 
 \end_inset
 
-Anwendungsfall-Diagramm für die Prozess-Modelierer
+Anwendungsfall-Diagramm für die ODE Workflow-Engine
 \end_layout
 
 \end_inset
@@ -2911,7 +2911,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurde ein Prozess, der eine Data-Management-Aktivität enthält deplyoed
+Es wurde ein Prozess, der eine Data-Management-Aktivität enthält, deployed
  und es wurde eine Instanz dieses Prozesses erzeugt.
 \end_layout
 
@@ -2932,7 +2932,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Aktivität wurde ausgeführ und das Management der Daten war erfolgreich.
+Die Aktivität wurde ausgeführt und das Management der Daten war erfolgreich.
 \end_layout
 
 \end_inset
@@ -2952,8 +2952,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-1a.
- 
+Die Aktivität befindet sich in einem definierten Endzustand.
 \end_layout
 
 \end_inset
@@ -2999,7 +2998,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 6.
- Die Aktivität wird als vollständig gekennzeichnet
+ Die Aktivität wird als abgeschlossen gekennzeichnet
 \end_layout
 
 \end_inset
@@ -3020,67 +3019,58 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.
- Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
-ment-Aktivität beendeet.
+ Die übergeordnete Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 2a.
- Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
-ment-Aktivität beendet.
+ Die übergeordnete Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 2b.
- Es wird ein Terminate_Activity Event an die Aktivität geschickt, worauf
- hin sie beendet wird.
+ Es wird ein Terminate_Activity Event an die Aktivität geschickt
 \end_layout
 
 \begin_layout Plain Layout
 2c.
- Es wird ein Complete_Acitivity Event an die Aktivität gesendet, worauf
- hin sie als vollständig gekennzeichnet wird.
+ Es wird ein Complete_Acitivity Event an die Aktivität gesendet
 \end_layout
 
 \begin_layout Plain Layout
 3a.
- Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
-ment-Aktivität beendet.
+ Die übergeordnete Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 3b.
- Es wird ein Terminate_Activity Event an die Aktivität geschickt, worauf
- hin sie beendet wird.
+ Es wird ein Terminate_Activity Event an die Aktivität geschickt
 \end_layout
 
 \begin_layout Plain Layout
 3c.
- Die Aktivität erzeugt einen Fehler, deswegen wird die Aktivität als fehlgeschla
-gen gekennzeichnet
+ Die Aktivität erzeugt einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 4a.
  Die in der Daten-Management-Aktivität angegebene Datenbank oder die angegebenen
- Datensätze konnten nicht gefunden werden.
+ Datensätze konnten nicht gefunden werden
 \end_layout
 
 \begin_layout Plain Layout
 4b.
- Die Aktivität wird als fehlgeschlagen gekennzeichnet.
+ Die Aktivität wird als fehlgeschlagen gekennzeichnet
 \end_layout
 
 \begin_layout Plain Layout
 5a.
- Die übergeordnete Aktivität meldet einen Fehler, deswegen wird die Daten-Manage
-ment-Aktivität beendet.
+ Die übergeordnete Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 5b.
- Es wird ein Terminate_Activity Event an die Aktivität geschickt, worauf
- hin sie beendet wird.
+ Es wird ein Terminate_Activity Event an die Aktivität geschickt
 \end_layout
 
 \end_inset
@@ -3254,8 +3244,9 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rückgängig machen einer Data-Management-Aktivität so das der Zustand vor
+Rückgängig machen einer Data-Management-Aktivität, so dass der Zustand vor
  Ausführung der Aktivität wiederhergestellt wird.
+ 
 \end_layout
 
 \end_inset
@@ -3337,23 +3328,12 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Im Normalablauf einer Data-Management-Aktivität tritt ein Fehler auf.
+ Im Normalablauf einer Data-Management-Aktivität tritt ein Fehler auf
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Alle Änderungen die vorgenommen wurden werden verworfen.
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Es werden keine Compensation Handler installiert
-\end_layout
-
-\begin_layout Plain Layout
-4.
- Und der Status aller Links die durch die Data-Management-Aktivität entstanden
- sind, werden auf falsch gesetzt.
+ Alle Änderungen werden zurückgesetzt
 \end_layout
 
 \end_inset
@@ -3419,7 +3399,7 @@ name "fig:UseCaseDiaBPELDesigner"
 
 \end_inset
 
-Anwendungsfall-Diagramm für die Prozess-Modelierer
+Anwendungsfall-Diagramm für den Eclipse BPEL Designer
 \end_layout
 
 \end_inset
@@ -3496,16 +3476,16 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle Werte der Datei mit den Einstellungen/Eingaben (Inhalten) der Admin-Konsole
- wurden geladen und im Fenster 
+Alle Werte der Datei mit den Einstellungen der Admin-Konsole wurden geladen
+ und können im Fenster 
 \begin_inset Quotes eld
 \end_inset
 
-Admin-Konsole
+Admin Console
 \begin_inset Quotes erd
 \end_inset
 
- und dessen Unterfenstern angezeigt.
+ und dessen Unterfenstern angezeigt werden.
 \end_layout
 
 \end_inset
@@ -3530,7 +3510,7 @@ Es wurden Standard-Einstellungen, die im Quellcode hinterlegt sind, geladen
 \begin_inset Quotes eld
 \end_inset
 
-Admin-Konsole
+Admin Console
 \begin_inset Quotes erd
 \end_inset
 
@@ -3680,7 +3660,7 @@ Query Pattern
 Das Query Pattern beschreibt die Notwendigkeit mithilfe von SQL-Befehlen
  externe Daten anfordern zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
- extern gespeichert oder direkt im Prozessspeicher gehalten werden.
+ zwischengespeichert oder direkt im Prozessspeicher gehalten werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3905,7 +3885,7 @@ Query Pattern: Realisierung durch eine GET-Methode, die intern java.io Methoden
  gezielt über einen Befehl ausgewählt und abgefragt werden können.
  Eine Möglichkeit wäre z.B.
  einen Filter-Dialog zur Angabe von Suchparametern über die GUI bereitzustellen,
- der es ermöglicht Dateiinhalte zu suchen und zurückzugeben.
+ der es ermöglicht Datei-Inhalte zu suchen und zurückzugeben.
 \end_layout
 
 \begin_layout Itemize
@@ -4043,7 +4023,7 @@ Beispiele:
 
 \begin_deeper
 \begin_layout Itemize
-SELECT Info FROM Customer 
+SELECT info FROM customer 
 \begin_inset Note Note
 status collapsed
 
@@ -4074,7 +4054,7 @@ Beispiele:
 
 \begin_deeper
 \begin_layout Itemize
-INSERT INTO DEPARTMENT VALUES (’E31’, ’ARCHITECTURE’, ’00390’, ’E01’) 
+INSERT INTO department VALUES (’E31’, ’architecture’, ’00390’, ’E01’) 
 \begin_inset Note Note
 status collapsed
 
@@ -4088,7 +4068,7 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Insert Activity
 \end_layout
 
 \begin_layout Itemize
-UPDATE EMPLOYEE SET JOB = ’LABORER’ WHERE EMPNO = ’000290’ 
+UPDATE employee SET job = ’laborer’ WHERE empno = ’000290’ 
 \begin_inset Note Note
 status collapsed
 
@@ -4102,7 +4082,7 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Update Activity
 \end_layout
 
 \begin_layout Itemize
-DELETE FROM DEPARTMENT WHERE DEPTNO = ’D11’ 
+DELETE FROM department WHERE deptno = ’D11’ 
 \begin_inset Note Note
 status collapsed
 
@@ -4128,7 +4108,7 @@ N8X 7F8</pcode-zip> </billto> after $mycust/customerinfo/phone[last()] return
 \end_layout
 
 \begin_layout Itemize
-UPDATE Customer SET info = XMLQUERY( ’declare default element namespace
+UPDATE customer SET info = XMLQUERY( ’declare default element namespace
  "http://posample.org"; transform copy $newinfo := $info modify do delete
  ($newinfo/customerinfo/phone) return $newinfo’ passing info as "info")
  WHERE cid = 1002
@@ -4167,35 +4147,35 @@ Hier eventuell auch eine Create Activity in deren Eigenschaften man Schema,
 
 \begin_deeper
 \begin_layout Itemize
-CREATE SCHEMA INTERNAL AUTHORIZATION ADMIN 
+CREATE SCHEMA internal AUTHORIZATION admin 
 \end_layout
 
 \begin_layout Itemize
-CREATE TABLE TDEPT (DEPTNO CHAR(3) NOT NULL, DEPTNAME VARCHAR(36) NOT NULL,
- MGRNO CHAR(6), ADMRDEPT CHAR(3) NOT NULL, PRIMARY KEY(DEPTNO)) IN DEPARTX
+CREATE TABLE tdept (deptno CHAR(3) NOT NULL, deptname VARCHAR(36) NOT NULL,
+ mgrno CHAR(6), admrdept CHAR(3) NOT NULL, PRIMARY KEY(deptno)) IN departx
  
 \end_layout
 
 \begin_layout Itemize
-CREATE VIEW ADMINISTRATOR.KUND_WITH_ADR AS 
+CREATE VIEW administrator.kund_with_adr AS 
 \begin_inset Newline newline
 \end_inset
 
-SELECT KUNDEN.KUNDEN_NR, KUNDEN.VORNAME, KUNDEN.NACHNAME, ADRESSEN.STRASSE,
- ADRESSEN.POSTLEITZAHL, ADRESSEN.STADT FROM "SYSTEM".KUNDEN AS KUNDEN, "SYSTEM".ADRE
-SSEN AS ADRESSEN WHERE KUNDEN.KUNDEN_NR = ADRESSEN.KUNDEN_NR
+SELECT kunden.kunden_nr, kunden.vorname, kunden.nachname, adressen.strasse,
+ adressen.postleitzahl, adressen.stadt FROM "system".kunden as kunden, "system".adre
+ssen as adressen where kunden.kunden_nr = adressen.kunden_nr
 \end_layout
 
 \begin_layout Itemize
-DROP SCHEMA INTERNAL
+DROP SCHEMA internal
 \end_layout
 
 \begin_layout Itemize
-DROP TABLE TDEPT
+DROP TABLE tdept
 \end_layout
 
 \begin_layout Itemize
-DROP VIEW ADMINISTRATOR.KUND_WITH_ADR
+DROP VIEW administrator.kund_with_adr
 \end_layout
 
 \begin_layout Standard
@@ -4225,7 +4205,7 @@ Beispiele:
 
 \begin_deeper
 \begin_layout Itemize
-CALL PARTS_ON_HAND (?,?,?) 
+CALL parts_on_hand (?,?,?) 
 \shape italic
 (? = Parameter der Prozedur)
 \end_layout
@@ -4405,7 +4385,7 @@ name
 \end_deeper
 \begin_layout Itemize
 Set IUD Pattern: Dieses Pattern wird von Sensornetz-Datenbanken nicht unterstütz
-t, da Sensoren nur ausgelesen und nicht beschrieben werden können.
+t, da Sensoren nur ausgelesen und nicht geschrieben werden können.
  Darum ist das Einfügen, Aktualisieren und Löschen von externen Daten auf
  einer Sensornetz-Datenbank nicht möglich.
  Es besteht lediglich die Möglichkeit sensornetzintern in einem Buffer Werte
@@ -4569,7 +4549,7 @@ reference "sub:Umsetzung-der-Datenmanagement"
  Generell gilt, dass alle Aktivitäten momentan mindestens die drei Variablen
  
 \emph on
-kind
+type
 \emph default
 , 
 \emph on
@@ -4582,7 +4562,7 @@ dqAddress
  vom Typ String besitzen.
  Die Variable 
 \emph on
-kind
+type
 \emph default
  dient zur Angabe des Datenquellentyps für den die Aktivität ausgeführt
  wird, also ob es sich um ein Dateisystem, eine Datenbank oder ein Sensornetz
@@ -4608,11 +4588,11 @@ zur Haltung des entsprechenden Systemaufrufs bzw.
  Ausprägungen vorliegt.
  Generell gibt es durch die verschiedenen Datenquellen nur wenige strukturelle
  Unterschiede in den Aktivitäten.
- Das liegt vorallem daran, dass auf datenquellenspezifische Eigenschaften
+ Das liegt vor allem daran, dass auf datenquellenspezifische Eigenschaften
  bereits in der graphischen Oberfläche, also dem Eclipse BPEL Designer,
  eingegangen werden soll und diese so durch entsprechende Dialoge intern
  immer auf dieselbe Struktur abgebildet werden können.
- Eben dazu sollen auch alle Befehle über entsprechende graphische Elemente
+ Eben dazu sollen alle Befehle auch über entsprechende graphische Elemente
  angegeben werden können, indem sie einfach 
 \begin_inset Quotes eld
 \end_inset
@@ -4629,11 +4609,10 @@ reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
 \end_inset
 
 ).
- Dadurch solle eine allgemein einfachere Handhabung realisiert werden, denn
- wie diese Befehle nun intern verarbeitet werden, braucht der Benutzer nicht
- zu wissen und er kann dadurch schnellstmöglich ohne sehr detailierte Kentnisse
- der Anfragesprache alle zur Verfügung gestellten Daten- und Datenquellenbefehle
- für alle unterstützten Datenquellen ausführen.
+ Dadurch soll eine einfachere Handhabung realisiert werden, damit der Benutzer
+ schnellstmöglich, ohne detaillierte Kenntnisse der Anfragesprache, alle
+ zur Verfügung gestellten Daten- und Datenquellenbefehle für alle unterstützten
+ Datenquellen ausführen kann.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4654,9 +4633,9 @@ Insert Activity
 
 \begin_layout Standard
 Diese Aktivität ermöglicht es Daten in jede Datenquelle einzufügen.
- Da dies für Sensornetze nicht relevant ist, wird diese Aktivität für Sensornetz
-e für das sensornetzinterne Einfügen von Sensornetzdaten in Buffer-Tabellen
- genutzt (wie auch in Abschnitt 
+ Da dies für Sensornetze nicht relevant ist, wird diese Aktivität für das
+ sensornetzinterne Einfügen von Sensornetzdaten in Buffer-Tabellen genutzt
+ (wie auch in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Sensornetze"
@@ -4860,20 +4839,26 @@ Eclipse BPEL Designer
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Diesen kompleten Abschnitt 6.3 sprachlich überprüfen und korrigieren .
- Feras :) 
-\end_layout
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Menü"
 
 \end_inset
 
-
+ zeigt den erweiterten Eclipse BPEL Designer.
+ In der Palette befinden sich die SIMPL Data-Management-Aktivitäten, die
+ wie bereits vorhandene Aktivitäten zur Modellierung von Prozessen verwendet
+ werden können.
+ Für SIMPL wird ein Menü bereitgestellt, über das alle wichtigen Einstellungen
+ und Informationen des SIMPL Rahmenwerks erreicht werden können.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Im folgender Abbildung ist der kommplete UI der Rahmenwerk von SIMPL.
  Auf der rechte Seite befindet sich Menu 
 \begin_inset Quotes eld
@@ -4888,14 +4873,14 @@ DataManagement
  zuständig sind.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Beim Auswählen bzw.
  Drag-and-Drop einer dieser graphische Darstellungen der Aktivitäten, dann
  erscheint entsprechend einer neue Aktivität in dem Bpel-prozess an der
  ausgewählte Position im Prozess.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Ausserdem können wir den Popup-Menu vom SIMPL im Eclipse Menuleiste sehen,
  dass alle Navigationspunkte für die Anwendungsaktivitäten wie 
 \begin_inset Quotes eld
@@ -4915,6 +4900,11 @@ Settings
 
  etc.
  beinhaltet.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4939,6 +4929,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Menü"
+
+\end_inset
+
 SIMPL Menü und Eclipse BPEL Designer mit einigen Data-Management-Aktivitäten
 \end_layout
 
@@ -4957,6 +4953,10 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Beim anklicken auf dem Untermenupunkt 
 \begin_inset Quotes eld
 \end_inset
@@ -4965,36 +4965,7 @@ Admin Console
 \begin_inset Quotes erd
 \end_inset
 
- öffnet sich der Adminkonsole Dialog.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/SIMPL_menu_mini_iter1.jpg
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Admin-Konsole Untermenupunkt
-\end_layout
-
-\end_inset
-
-
+ öffnet sich der Admin-Konsole Dialog.
 \end_layout
 
 \end_inset
@@ -5003,6 +4974,41 @@ Admin-Konsole Untermenupunkt
 \end_layout
 
 \begin_layout Standard
+Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
+ Möglichkeit, Einstellungen innerhalb des Rahmenwerks vorzunehmen.
+ Dazu gehört beispielsweise die Angabe von globalen Einstellungen und die
+ Verwaltung des Auditings (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Admin-Konsole"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Folgende Schaltflächen stehen durchgängig zur Verfügung:
+\end_layout
+
+\begin_layout Itemize
+[Default]: Laden der Standard-Einstellungen
+\end_layout
+
+\begin_layout Itemize
+[Save]: Speichern aller aktuellen Einstellungen
+\end_layout
+
+\begin_layout Itemize
+[Cancel]: Schließen der Admin-Konsole und Verwerfen aller Änderungen
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 Hier ist der Adminkonsole Dialog zu sehen.
  Mithilfe die Unterbaumpunkte können verschiedene Einstellungen angebracht
  werden wie 
@@ -5016,7 +5022,7 @@ Global settings
 , die Strategien oder Datenquellen etc.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Auf der untere rechte Seite dieser Dialog befinden sich die zwei Schaltflechen
  
 \begin_inset Quotes eld
@@ -5074,6 +5080,11 @@ Default
 gen geladen.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -5096,6 +5107,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Admin-Konsole"
+
+\end_inset
+
 Admin-Konsole
 \end_layout
 
@@ -5109,11 +5126,36 @@ Admin-Konsole
 
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Paragraph*
 Globale Eigenschaften
 \end_layout
 
 \begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GlobalSettings"
+
+\end_inset
+
+ wird der Unterpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Global Settings
+\begin_inset Quotes erd
+\end_inset
+
+ der Admin-Konsole gezeigt.
+ Hier können z.B.
+ Standardwerte für die Authentifizierung bei Datenquellen angegeben werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 In folgeneden Dialog kann der Benutzer über den Unterbaumpunkt 
 \begin_inset Quotes eld
 \end_inset
@@ -5123,6 +5165,11 @@ Global settings-Authentication Data
 \end_inset
 
  die Zugangsdaten angeben.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5147,7 +5194,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Globale Eigenschaften Dialog
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GlobalSettings"
+
+\end_inset
+
+Dialog der globalen Eigenschaften
 \end_layout
 
 \end_inset
@@ -5160,8 +5213,29 @@ Globale Eigenschaften Dialog
 
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Paragraph*
 Auditing
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Auditing-Einstellungen"
+
+\end_inset
+
+ wird der Unterpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Auditing
+\begin_inset Quotes erd
+\end_inset
+
+ der Admin-Konsole gezeigt.
+ Hier kann das Auditing an- und abgeschaltet werden und eine Datenbank für
+ das Auditing angegeben werden.
 \end_layout
 
 \begin_layout Standard
@@ -5186,7 +5260,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Globale Eigenschaften Dialog
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Auditing-Einstellungen"
+
+\end_inset
+
+Dialog für die Auditing Einstellungen
 \end_layout
 
 \end_inset
@@ -5201,6 +5281,30 @@ Globale Eigenschaften Dialog
 
 \begin_layout Subsubsection
 Data-Management-Aktivitäten
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
+
+\end_inset
+
+ wird die 
+\begin_inset Quotes eld
+\end_inset
+
+PropertyView
+\begin_inset Quotes erd
+\end_inset
+
+ einer Query-Aktivität gezeigt.
+ Hier kann die im Prozess ausgewählte Aktivität parametriert werden.
+ Dazu wird die Art der Datenquelle ausgewählt, ein Befehl über entsprechende
+ grafische Elemente erstellt und die physikalische Adresse der Datenquelle
+ angegeben.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5246,18 +5350,13 @@ Eigenschaftsfenster einer Data-Management-Aktivität am Beispiel einer Query
 \end_layout
 
 \begin_layout Subsection
-Monitoring und Auditing
+Auditing
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt wird eine Beschreibung des geplannten Auditing und Monitorin
-g von SIMPL gegeben.
- Zunächst wird auf die bestehenden Möglichkeiten des Monitorings von ODE
- eingegangen.
- Hier folgt eine Erläuterung aller relevanten Begriffe die für das Monitoring
- wichtig sind, sowie einige Übersichten zur Veranschaulichung.
- Anschließend folgt eine kurze Beschreibung darüber wie das Monitoring und
- Auditing in ODE aussehen soll, dies wird durch Event Modelle veranschaulicht.
+In diesem Abschnitt wird eine Beschreibung des geplanten Auditing von SIMPL
+ gegeben.
+ Dazu wird zunächst auf das bestehende Monitoring von ODE eingegangen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5267,6 +5366,23 @@ Momentane Situation - Monitoring von ODE
 \begin_layout Standard
 Das Monitoring von ODE wird durch sogenannte Events und Event Listener sowie
  die Management API realisiert.
+\end_layout
+
+\begin_layout Subsubsection*
+Management API:
+\end_layout
+
+\begin_layout Standard
+Die Management API der ODE Engine macht es möglich zahlreiche Informationen
+ abzurufen.
+ So ist es beispielsweies möglich, zu überprüfen welche Prozesse gerade
+ eingesetzt werden und welche Prozessinstanzen ausgeführt werden oder beendet
+ sind.
+ Dies ist besonders für das Monitoring wichtig, da es hierdurch möglich
+ ist spezifische Informationen zu einem bestimmten Prozess oder einer bestimmten
+ Instanz abzurufen.
+ Dies kann zum Beispiel das Erstellungsdatum sein, eine Liste der Events
+ die für diesen Prozess oder diese Instanz generiert wurden und vieles mehr.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5289,96 +5405,41 @@ Event Listener:
 \end_layout
 
 \begin_layout Standard
-Event Listener sind bestimmte Konstrukte die es ermöglichen bei Auftreten
- bestimmter Events eine direkte Rückmeldung zu geben, oder auf verschiedene
- Events zu reagieren und event-spezifische Aktionen durchführen.
-\end_layout
-
-\begin_layout Subsubsection*
-Management API:
-\end_layout
-
-\begin_layout Standard
-Die Management API der ODE Engine macht es möglich zahlreiche Informationen
- abzurufen.
- So ist es beispielsweies möglich, zu überprüfen welche Prozesse gerade
- eingesetzt werden und welche Prozessinstanzen ausgeführt werden oder beendet
- sind.
- Dies ist besonders für das Monitoring wichtig, da es hierdurch möglich
- ist spezifische Informationen zu einem bestimmten Prozess oder einer bestimmten
- Instanz abzurufen.
- Dies kann zum Beispiel das Erstellungsdatum sein, eine Liste der Events
- die für diesen Prozess oder diese Instanz generiert wurden und vieles mehr.
+Event Listener sind bestimmte Konstrukte, die es ermöglichen bei Auftreten
+ bestimmter Events eine direkte Rückmeldung zu geben oder auf verschiedene
+ Events zu reagieren und event-spezifische Aktionen durchzuführen.
 \end_layout
 
 \begin_layout Subsubsection
-Monitoring und Auditing von SIMPL
+Auditing von SIMPL
 \end_layout
 
 \begin_layout Standard
-Im BPEL Designer ist der Zugriff auf das Monitoring und Auditing unter dem
- entsprechenden Menüpunkt möglich.
+Im BPEL Designer ist der Zugriff auf das Auditing unter dem entsprechenden
+ Menüpunkt möglich.
  Hier kommt man nun zum entsprechenden Interface in dem sich verschiedene
- Einstellungen für das Auditing und das Monitoring tätigen lassen (siehe
- 6.3.1).
- Es ist möglich das Auditing als auch das Echtzeitmonitoring zu aktivieren
- oder zu deaktivieren und es ist außerdem möglich die Datenbank für das
- Speichern der Auditing Daten festzulegen.
-\end_layout
+ Einstellungen für das Auditingtätigen lassen (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Auditing-Einstellungen"
 
-\begin_layout Standard
-Das Monitoring und Auditing von SIMPL wird sich nur auf die Prozesse und
- Instanzen der Datenzugriffsaktivitäten beschränken.
- Weiterhin ist zu erwähnen, dass das Auditing standardmäßig aktiviert ist,
- allerdings über die Adminkonsole deaktiviert und auch erneut aktiviert
- werden kann.
-\end_layout
+\end_inset
 
-\begin_layout Subsubsection
-Auditing
+).
+ Es ist möglich das Auditing zu aktivieren oder zu deaktivieren und es ist
+ außerdem möglich die Datenbank für das Speichern der Auditing Daten festzulegen.
+ Das Auditing ist standardmäßig aktiviert, kann allerdings über die Adminkonsole
+ deaktiviert und auch erneut aktiviert werden.
 \end_layout
 
 \begin_layout Standard
 Für das Auditing von SIMPL werden die von ODE erzeugten Daten direkt an
- den SIMPL Core übergeben und weitervarbeitet, anstatt diese wie bisher
+ den SIMPL Core übergeben und weiterverarbeitet, anstatt diese wie bisher
  in der virtuellen Datenbank von ODE abzulegen.
  Dies wird realisiert durch die Implementierung eines eigenen Data Access
  Objects, was entsprechende Funktionalitäten anbietet.
- Diese Informationen werden anschließend in einer,.
- zuvor in der Adminkonsolw festgelegten Auditing Datenquelle abgelegt.
-\end_layout
-
-\begin_layout Subsubsection
-Monitoring
-\end_layout
-
-\begin_layout Standard
-Das Monitoring von SIMPL wird als ein Echtzeitmonitoring realisiert.
- Die Informationsgewinnung des Monitoring würd über direkte Rückmeldungen
- auf Events die innerhalb der ODE Engine auftreten realisiert.
- Wenn ein Event auftritt, so zum Beispiel das Aktivieren eines Prozesses,
- oder das generieren einer neuen Prozessinstanz, dann erhält das Monitoring
- eine direkte Rückmeldung darüber und die Visualisierung ist möglich.
- Eine weitere Möglichkeit zur Gewinnung der Monitoring-Daten ist es diese
- direkt aus der Auditing Datenquelle abzufragen.
-\end_layout
-
-\begin_layout Standard
-Eine Visualisierung nach verschiedenen Gesichtspunkten, wie zum Beispiel:
- Anzahl der aktiven Prozesse oder Prozessinstanzen soll möglich sein.
-\end_layout
-
-\begin_layout Subsubsection
-Event-Modell
-\end_layout
-
-\begin_layout Standard
-Anhand unserer bisherigen Erkenntnisse im Projektverlauf ist es für uns
- nicht notwendig das Event-Modell des Monitorings für SIMPL zu verändern
- oder in irgendeiner Form zu erweitern.
- Der Grund dafür ist, dass wir nur neue Aktivitäten erzeugen, deren Informations
-abfrage und Monitoring über die bestehenden Möglichkeiten realisiert werden
- soll.
+ Diese Informationen werden anschließend in einer zuvor in der Adminkonsole
+ festgelegten Auditing-Datenbank abgelegt.
 \end_layout
 
 \begin_layout Section
@@ -5391,13 +5452,18 @@ name "sec:MaterialienWerkzeuge"
 Materialien, Werkzeuge und Technologien
 \end_layout
 
+\begin_layout Standard
+In diesem Abschnitt folgt ein Überblick über die im Projekt genutzten Materialie
+n und die verwendeten Werkzeuge und Technologien.
+\end_layout
+
 \begin_layout Subsection
 Materialien
 \end_layout
 
 \begin_layout Standard
 Als Material für SIMPL verwenden wir die Programmiersprache Java in der
- aktuellsten Version (6.16.).
+ aktuellsten Version (Java SE 6).
 \end_layout
 
 \begin_layout Subsection
@@ -5405,7 +5471,8 @@ Technologien
 \end_layout
 
 \begin_layout Standard
-In der Entwicklung von SIMPL werden folgende Technologien zum Einsatz kommen:
+In der Entwicklung von SIMPL werden die folgenden Technologien zum Einsatz
+ kommen:
 \end_layout
 
 \begin_layout Standard
@@ -5440,7 +5507,7 @@ hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
 
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 ApacheODE 
 \begin_inset CommandInset href
 LatexCommand href
@@ -5453,15 +5520,22 @@ target "http:/ode.apache.org"
 \end_layout
 
 \begin_layout Standard
-Apache ODE ist eine BPEL-fähige Workflow-Engine.
+Apache ODE ist eine BPEL-Workflow-Engine.
  Es wird sowohl WS-BPEL 2.0 als auch BPEL4WS 1.1 unterstützt und die Ausführung
  von Prozessen in SOA ist möglich.
- Zudem ist das hot deplyoment von Prozessen möglich als auch die Analyse
- und Validierung von Prozessen.
+ Zudem ist das 
+\begin_inset Quotes eld
+\end_inset
+
+Hot Deployment
+\begin_inset Quotes erd
+\end_inset
+
+ von Prozessen möglich, als auch die Analyse und Validierung von Prozessen.
 \end_layout
 
-\begin_layout Description
-Eclipse-Bpel-Designer 
+\begin_layout Subsubsection*
+Eclipse BPEL Designer 
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.eclipse.org/bpel"
@@ -5473,13 +5547,14 @@ target "http://www.eclipse.org/bpel"
 \end_layout
 
 \begin_layout Standard
-Der Eclipse BPEL Designer ist ein Eclipse Plugin zum Arbeiten mit BPEL Prozessen.
- Er verfügt über eine leicht verständliche GUI, eine Fehlererkennnung für
- BPEL Prozesse und außerdem ist die Schritt für Schritt Ausführung von Prozessen
- möglich.
+Der Eclipse BPEL Designer ist ein Eclipse Plugin für die Modellierung von
+ BPEL-Prozessen.
+ Er verfügt über eine leicht verständliche GUI, eine Plausibilitätsprüfung
+ für BPEL-Prozesse und außerdem ist die Schritt für Schritt Ausführung von
+ Prozessen möglich.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 IBM-DB2 
 \begin_inset CommandInset href
 LatexCommand href
@@ -5509,8 +5584,9 @@ target "http://tuscany.apache.org"
 
 \begin_layout Standard
 Apache Tuscany ist ein Software-Projekt, welches es zum Ziel hat die Erstellung
- von Service Oriented Architecture (SOA) zu vereinfachen, indem eine verständlic
-he Infrastruktur und grundlegende Komponenten zur Verfügung gestellt werden.
+ von Service Oriented Architecture (SOA) Anwendungen zu vereinfachen, indem
+ eine verständliche Infrastruktur und grundlegende Komponenten zur Verfügung
+ gestellt werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5539,23 +5615,24 @@ Axis2 ist eine SOAP-Engine zur Konstruktion von darauf basierenden Web Services
 \end_layout
 
 \begin_layout Subsubsection*
-Data Access Service (DAS)
-\end_layout
-
-\begin_layout Standard
-DAS vereinfacht die Handhabung von Daten, während der Kommunikation mit
- der back-end Datenquelle.
- Weiterhin erleichtert es die Transformation zwischen end source typs und
- SDO Datenobjekt-Typen.
-\end_layout
-
-\begin_layout Subsubsection*
 Service Data Object (SDO)
 \end_layout
 
 \begin_layout Standard
 SDO stellt eine einheitliche API zur Verfügung, mit der die Handhabung verschied
-ener Datei-Typen möglich ist.
+ener heterogener Daten und Datenquellen vereinfacht wird.
+\end_layout
+
+\begin_layout Subsubsection*
+Data Access Services (DAS)
+\end_layout
+
+\begin_layout Standard
+DAS ermöglichen den einheitlichen Zugriff auf Datenquellen, in dem eine
+ zentrale Schnittstelle für das Lesen und Schreiben von heterogenen Daten
+ bereitgestellt wird.
+ Die Daten werden dabei in Service Data Objects gekapselt und so von ihrer
+ Quelle unabhängig gemacht.
 \end_layout
 
 \begin_layout Subsection
@@ -5581,7 +5658,7 @@ unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
 
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 Subversion 
 \begin_inset CommandInset href
 LatexCommand href
@@ -5597,11 +5674,11 @@ target "http://svnbook.red-bean.com"
 Subversion ist eine Software zur Versionskontrolle und eine Weiterentwicklung
  von CVS.
  Es wird genutzt um mehreren Nutzern den gleichzeitigen Zugriff und ein
- gleichzeitiges Bearbeiten von verschiedenen Datein und Dokumenten zu ermögliche
-n.
+ gleichzeitiges Bearbeiten von verschiedenen Dateien und Dokumenten zu ermöglich
+en.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 Maven 
 \begin_inset CommandInset href
 LatexCommand href
@@ -5620,7 +5697,7 @@ Maven ist ein Projekt-Management-Tool.
  von Hand erledigen müssen zu automatisieren.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 Lyx 
 \begin_inset CommandInset href
 LatexCommand href
@@ -5637,7 +5714,7 @@ Lyx ist ein Textverarbeitungsprogramm, mit dem es möglich ist auf einfachste
  Art und Weise LaTeX-Dokumenten zu erstellen.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 Hudson 
 \begin_inset CommandInset href
 LatexCommand href
@@ -5676,7 +5753,7 @@ Entwicklungsumgebung
 \end_layout
 
 \begin_layout Standard
-Die IDE in der das Projekt SIMPL entwickelt wird ist Eclipse in der Version
+Die IDE in der das Projekt SIMPL entwickelt wird, ist Eclipse in der Version
  3.5 (Galileo).
 \end_layout
 
