@@ -1922,7 +1922,7 @@ Global Settings
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 In folgeneden Dialog kann der Benutzer über den Unterbaumpunkt 
@@ -3155,7 +3155,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eclipse muss geöffnet sein.
+Eclipse mit dem SIMPL Eclipse Plug-In ist geöffnet.
 \end_layout
 
 \end_inset
@@ -3195,7 +3195,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3216,7 +3216,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Klick auf das SIMPL Menü
+ Klick auf das SIMPL Menü in der Menüleiste
 \end_layout
 
 \begin_layout Plain Layout
@@ -3241,7 +3241,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3298,7 +3298,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt.
+Die Admin-Konsole wird angezeigt und es wurde mindestens ein Wert geändert.
 \end_layout
 
 \end_inset
@@ -3318,8 +3318,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole wurden auf die Standardwerte zurückgeset
-zt.
+Alle geänderten Werte der Admin-Konsole wurden auf die zuletzt gespeicherten
+ Einstellungen zurückgesetzt.
 \end_layout
 
 \end_inset
@@ -3339,7 +3339,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3360,7 +3360,20 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Klick auf den Button [Default]
+ Klick auf den Button [Reset]
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3380,7 +3393,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3417,7 +3430,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Speicherung des Inhalts der Admin-Konsole.
+Speicherung des Inhalts der Admin-Konsole in eine Datenbank.
 \end_layout
 
 \end_inset
@@ -3478,11 +3491,18 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole bleiben durch den Speichervorgang
- unverändert und es kann ein erneuter Versuch durchgeführt werden.
- Die Werte bleiben dabei solange erhalten, bis Eclipse beendet wird.
- Nach der Beendigung von Eclipse werden die Werte dann verworfen und beim
- nächsten Start die zuletzt gespeicherten Einstellungen geladen.
+1a.
+ Alle geänderten Werte der Admin-Konsole bleiben unverändert.
+ Es wird eine entsprechende Fehlermeldung angezeigt und ein erneuter Speicherver
+such kann durchgeführt werden.
+ Die Werte bleiben dabei solange erhalten, bis die Admin-Konsole geschlossen
+ wird.
+\end_layout
+
+\begin_layout Plain Layout
+1b.&1c.
+ Der Benutzer erhält eine Fehlermeldung, die ihn über den entsprechenden
+ Fehler informiert.
 \end_layout
 
 \end_inset
@@ -3527,6 +3547,18 @@ Sonderfälle
  Beim Speichern der Werte tritt ein Fehler auf
 \end_layout
 
+\begin_layout Plain Layout
+1b.
+ Vom Benutzer wurde keine Auditing-Datenbank zum Speichern der Auditing-Daten
+ festgelegt.
+\end_layout
+
+\begin_layout Plain Layout
+1c.
+ Die angegebene Auditing-Datenbank kann nicht verwendet werden, da sie z.B.
+ nicht erreichbar ist oder die Authentifizierung fehlgeschlagen ist
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -3561,7 +3593,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Schließen der Admin-Konsole.
 \end_layout
 
 \end_inset
@@ -3581,7 +3613,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Admin-Konsole wird angezeigt.
 \end_layout
 
 \end_inset
@@ -3601,7 +3633,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Änderungen
+ wurden verworfen.
 \end_layout
 
 \end_inset
@@ -3621,7 +3654,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3641,7 +3674,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Klick auf den Button [Close]
 \end_layout
 
 \end_inset
@@ -3661,7 +3695,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3698,7 +3732,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Laden der Standardwerte in der Admin-Konsole.
 \end_layout
 
 \end_inset
@@ -3718,7 +3752,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Admin-Konsole wird angezeigt.
 \end_layout
 
 \end_inset
@@ -3738,7 +3772,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle geänderten Werte der Admin-Konsole wurden auf die gespeicherten Standardwer
+te zurückgesetzt.
 \end_layout
 
 \end_inset
@@ -3758,7 +3793,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3778,7 +3813,21 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Klick auf den Button [Default]
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3798,7 +3847,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -3855,7 +3904,15 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole muss angezeigt werden und das Auditing ist nicht aktiv.
+Die Admin-Konsole ist geöffnet, der Unterpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Auditing
+\begin_inset Quotes erd
+\end_inset
+
+ wird angezeigt und das Auditing ist nicht aktiv.
 \end_layout
 
 \end_inset
@@ -3875,7 +3932,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das Auditing ist aktiviert.
+Das Auditing ist aktiv.
 \end_layout
 
 \end_inset
@@ -3895,9 +3952,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Nutzer erhält eine Fehlermeldung die ihn über den entsprechenden Fehler
- informiert.
- Das Auditing ist nicht aktiv.
+keine
 \end_layout
 
 \end_inset
@@ -3918,7 +3973,20 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auditing aktivieren
+ Setzen der Auditing-Checkbox
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3938,13 +4006,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-1a.
- Vom Nutzer wurde keine Auditing Datenbank zum Speichern der Daten festgelegt.
-\end_layout
-
-\begin_layout Plain Layout
-1b.
- Die angegebene Auditing Datenbank kann nicht verwendet werden
+keine
 \end_layout
 
 \end_inset
@@ -4001,7 +4063,15 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole muss angezeigt werden und das Auditing ist aktiv.
+Die Admin-Konsole ist geöffnet, der Unterpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Auditing
+\begin_inset Quotes erd
+\end_inset
+
+ wird angezeigt und das Auditing ist aktiv.
 \end_layout
 
 \end_inset
@@ -4041,7 +4111,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -4062,7 +4132,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auditing deaktivieren
+ Zurücksetzen der Auditing-Checkbox
 \end_layout
 
 \end_inset
@@ -4082,7 +4152,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -4139,7 +4209,15 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Admin-Konsole ist geöffnet.
+Die Admin-Konsole ist geöffnet und der Unterpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Auditing
+\begin_inset Quotes erd
+\end_inset
+
+ wird angezeigt.
 \end_layout
 
 \end_inset
@@ -4159,7 +4237,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Datenbank für das Auditing wurde festgelegt und kann verwendet werden.
+Die Datenbank für das Auditing wurde festgelegt, gespeichert und kann verwendet
+ werden.
 \end_layout
 
 \end_inset
@@ -4179,8 +4258,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Administrator wird durch eine entsprechende Fehlermeldung darauf hingewiesen
-, dass die angegebene Datenbank nicht verwendet werden kann.
+keine
 \end_layout
 
 \end_inset
@@ -4201,7 +4279,20 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Angabe der Datenbank-Adresse (optional Auswahl über Datenbank-Registry)
+ Angabe einer Datenbank-URL (optional Auswahl über Datenbank-Registry)
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4221,8 +4312,176 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-1a.
- Die angegebene Datenbank kann nicht verwendet werden
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Globale Einstellungen festlegen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+noch in Diagramm ergänzen!!!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Festlegung der globalen Einstellungen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole ist geöffnet und der Unterpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Global Settings
+\begin_inset Quotes erd
+\end_inset
+
+ wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die globalen Einstellungen wurden festgelegt und gespeichert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Eingabe/Änderung der Werte
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
 \end_layout
 
 \end_inset
@@ -4236,7 +4495,18 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsection
-Anwendungsfälle der ODE Workflow-Engine
+Anwendungsfälle der ODE Workflow-Engine 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+muss noch überarbeitet werden...
+ (Freitag)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4365,7 +4635,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die DM-Aktivität wurde ausgeführt und das Management der Daten war erfolgreich.
+Die DM-Aktivität und die darin enthaltene Datenmanagementoperation wurden
+ erfolgreich ausgeführt.
 \end_layout
 
 \end_inset
@@ -4385,7 +4656,57 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die DM-Aktivität befindet sich in einem definierten Endzustand.
+Die DM-Aktivität befindet sich in einem definierten Endzustand:
+\end_layout
+
+\begin_layout Plain Layout
+1a.1.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+1a.2.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+1a.3.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+2a.1.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+2a.2.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+2a.3.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+3a.1.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+3a.2.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+4a.1.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+4a.2.
+ 
 \end_layout
 
 \end_inset
@@ -4406,31 +4727,26 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Die Ausführung der Instanz wird gestartet
-\end_layout
-
-\begin_layout Plain Layout
-2.
  Die DM-Aktivität wird als bereit gekennzeichnet
 \end_layout
 
 \begin_layout Plain Layout
-3.
+2.
  Die Ausführung der DM-Aktivität wird gestartet
 \end_layout
 
 \begin_layout Plain Layout
-4.
+3.
  Ausführung der Data-Management Operationen
 \end_layout
 
 \begin_layout Plain Layout
-5.
+4.
  Die Ausführung der DM-Aktivität ist beendet
 \end_layout
 
 \begin_layout Plain Layout
-6.
+5.
  Die DM-Aktivität wird als abgeschlossen gekennzeichnet
 \end_layout
 
@@ -4451,58 +4767,53 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-1a.
+1a.1.
  Die übergeordnete DM-Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
-2a.
- Die übergeordnete DM-Aktivität meldet einen Fehler
-\end_layout
-
-\begin_layout Plain Layout
-2b.
+1a.2.
  Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
 \end_layout
 
 \begin_layout Plain Layout
-2c.
+1a.3.
  Es wird ein Complete_Acitivity Event an die DM-Aktivität gesendet
 \end_layout
 
 \begin_layout Plain Layout
-3a.
+2a.1.
  Die übergeordnete Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
-3b.
+2a.2.
  Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
 \end_layout
 
 \begin_layout Plain Layout
-3c.
+2a.3.
  Die DM-Aktivität erzeugt einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
-4a.
+3a.1.
  Die in der DM-Aktivität angegebene Datenbank oder die angegebenen Datensätze
  konnten nicht gefunden werden
 \end_layout
 
 \begin_layout Plain Layout
-4b.
+3a.2.
  Die DM-Aktivität wird als fehlgeschlagen gekennzeichnet
 \end_layout
 
 \begin_layout Plain Layout
-5a.
+4a.1.
  Die übergeordnete DM-Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
-5b.
+4a.2.
  Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
 \end_layout
 
@@ -4766,7 +5077,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eclipse mit dem SIMPL Eclipse Plug-In ist geöffnet.
 \end_layout
 
 \end_inset
@@ -4815,8 +5126,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurden Standard-Einstellungen, die im Quellcode hinterlegt sind, geladen
- und im Fenster 
+Es wird eine entsprechende Fehlermeldung angezeigt, die hinterlegten Standard-Ei
+nstellungen wurden geladen und werden im Fenster 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4845,7 +5156,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Laden der Werte aus der Datei
+ Laden der Werte aus einer Datenquelle
 \end_layout
 
 \begin_layout Plain Layout
@@ -4871,7 +5182,8 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.
- Beim Laden der Werte tritt ein Fehler auf
+ Beim Laden der Werte tritt ein Fehler auf und die Standardwerte werden
+ geladen
 \end_layout
 
 \end_inset
@@ -4892,6 +5204,16 @@ name "sec:Konzepte-und-Realisierungen"
 \end_inset
 
 Konzepte und Realisierungen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ab hier weiter
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6606,8 +6928,18 @@ key "key-1"
 
 \end_inset
 
-BPEL 2.0 Spec (Evtl.
+BPEL 2.0 Spec 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(Evtl.
  auch hier Referenz auf Website)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -6617,7 +6949,17 @@ key "key-2"
 
 \end_inset
 
-Eclipse BPEL Designer (Website)
+Eclipse BPEL Designer 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(Website angeben)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -6627,7 +6969,17 @@ key "key-3"
 
 \end_inset
 
-Apache ODE (Website)
+Apache ODE 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(Website angeben)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -6637,7 +6989,17 @@ key "key-4"
 
 \end_inset
 
-Apache Tomcat (Website)
+Apache Tomcat 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(Website angeben)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
