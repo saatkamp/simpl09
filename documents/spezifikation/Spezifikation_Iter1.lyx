@@ -486,7 +486,7 @@ Beschreibungen, was in welchem Abschnitt (von Abschnitt 1 bis 2) erwartet
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="4">
+<lyxtabular version="3" rows="7" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -581,7 +581,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.2
 \end_layout
 
 \end_inset
@@ -590,7 +590,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+14.09.2009
 \end_layout
 
 \end_inset
@@ -599,7 +599,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+zoabfs, hahnml
 \end_layout
 
 \end_inset
@@ -608,7 +608,14 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Nichtfunktionale-Anforderungen"
 
+\end_inset
+
+ eingefügt.
 \end_layout
 
 \end_inset
@@ -619,7 +626,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.3
 \end_layout
 
 \end_inset
@@ -628,7 +635,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+17.09.2009
 \end_layout
 
 \end_inset
@@ -637,7 +644,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
 \end_layout
 
 \end_inset
@@ -646,7 +653,66 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Konzepte-und-Realisierungen"
 
+\end_inset
+
+ eingefügt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.09.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Akteure"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Anwendungsfälle-(Use-Cases)"
+
+\end_inset
+
+ eingefügt.
 \end_layout
 
 \end_inset
@@ -675,7 +741,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
 \end_layout
 
 \end_inset
@@ -684,7 +750,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Überarbeitung des Dokuments.
+Abschließende Überarbeitung des Dokuments.
 \end_layout
 
 \end_inset
@@ -695,7 +761,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.1
 \end_layout
 
 \end_inset
@@ -704,7 +770,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+16.10.2009
 \end_layout
 
 \end_inset
@@ -713,7 +779,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
 \end_layout
 
 \end_inset
@@ -722,7 +788,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Korrektur der Spezifikation nach dem Review mit den Kunden.
 \end_layout
 
 \end_inset
@@ -936,6 +1002,15 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 \end_inset
 
  beschriebenen Aktivitäten, erreicht werden.
+ Nachfolgend wird weiterhin für den Begriff 
+\begin_inset Quotes eld
+\end_inset
+
+Data-Management-Aktivität
+\begin_inset Quotes erd
+\end_inset
+
+ die Abkürzung DM-Aktivität in diesem Dokument verwendet.
 \end_layout
 
 \begin_layout Subsection
@@ -1303,7 +1378,7 @@ Alle laufenden Prozesse einer Workflow-Engine können zu einem Zeitpunkt
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 -hier soll darüber argumentiert werden, wieviele Datenquellen gleichzeitig
@@ -1374,6 +1449,16 @@ Unter Robustheit ist hier zu verstehen, dass selbst wenn es zu ungünstigen
  Ergebnisse liefern oder das Rahmenwerk sicher beendet werden können.
  Nach dem Neustart des Rahmenwerks müssen auch die Prozesse neu gestartet
  werden.
+\end_layout
+
+\begin_layout Standard
+Benutzereingaben werden nicht vom Rahmenwerk überprüft.
+ Fehlerhafte Eingaben resultieren während dem Deployment bzw.
+ dem Prozessablauf jedoch immer in stabilen Zuständen, die über entsprechende
+ Fehlermeldungen dem Benutzer mitgeteilt werden.
+ Anhand der Fehlermeldungen kann der Benutzer seine Eingaben korrigieren
+ und den Prozess neu deployen bzw.
+ ausführen.
 \end_layout
 
 \begin_layout Subsection
@@ -2111,17 +2196,7 @@ name "sec:Anwendungsfälle-(Use-Cases)"
 
 \end_inset
 
-Anwendungsfälle (Use-Cases) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-hier ab morgen weiter
-\end_layout
-
-\end_inset
-
-
+Anwendungsfälle (Use-Cases)
 \end_layout
 
 \begin_layout Standard
@@ -2145,6 +2220,8 @@ reference "fig:Gesamt-Anwendungsfall-Diagramm"
  zeigt das Diagramm aller Anwendungsfälle der gesamten Software.
  Dadurch sollen die Funktionalität und die Akteure des späteren Gesamtsystems
  sichtbar werden.
+ Die einzelnen Anwendungsfälle der verschiedenen Akteure werden in den folgenden
+ Abschnitten näher beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -2194,7 +2271,34 @@ Anwendungsfall-Diagramm des gesamten Softwaresystems
 \end_layout
 
 \begin_layout Subsection
-Anwendungsfälle der Prozess-Modellierer
+Anwendungsfälle des Prozess-Modellierers
+\end_layout
+
+\begin_layout Standard
+Ein Prozess-Modellierer kann folgende Anwendungsfälle (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UseCaseDiaProzessModell"
+
+\end_inset
+
+) ausführen:
+\end_layout
+
+\begin_layout Itemize
+Data-Management-Aktivität erstellen
+\end_layout
+
+\begin_layout Itemize
+Data-Management-Aktivität bearbeiten
+\end_layout
+
+\begin_layout Itemize
+Data-Management-Aktivität löschen
+\end_layout
+
+\begin_layout Itemize
+Prozess ausführen
 \end_layout
 
 \begin_layout Standard
@@ -2208,7 +2312,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ProzessModelierer_iter1.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -2267,7 +2370,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erstellung einer neue Daten-Management-Aktivität.
+Erstellung einer neuen DM-Aktivität.
 \end_layout
 
 \end_inset
@@ -2287,8 +2390,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein vorhandener BPEL-Prozess muss im Eclipse BPEL Designer geöffnet und
- die BPEL Designer-Palette muss angezeigt werden.
+Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die
+ BPEL Designer-Palette wird angezeigt.
 \end_layout
 
 \end_inset
@@ -2308,8 +2411,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die erstellte Aktivität wurde an der selektierten Position in den Prozess
- eingefügt und der eingegebene Name wird angezeigt.
+Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess
+ eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.
 \end_layout
 
 \end_inset
@@ -2329,8 +2432,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die erstellte Aktivität wurde an der selektierten Position in den Prozess
- eingefügt und der vorgeschlagene Name wird angezeigt.
+Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess
+ eingefügt, und der vom Eclipse BPEL Designer vorgeschlagene Name wird angezeigt.
 \end_layout
 
 \end_inset
@@ -2350,19 +2453,21 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.
- Selektion einer Aktivität, durch Auswahl mit der Maus, aus der Palette
+1a.
+ Selektion einer DM-Aktivität, durch Auswahl mit der linken Maustaste, aus
+ der Palette und anschließend Selektion der Stelle des Prozesses an der
+ die ausgewählte DM-Aktivität eingefügt werden soll
+\end_layout
+
+\begin_layout Plain Layout
+1b.
+ (alternativ) Drag&Drop einer DM-Aktivität aus der Palette an die gewünschte
+ Stelle im Prozess
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Selektion der Stelle des Prozesses an der die ausgewählte Aktivität eingefügt
- werden soll
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Eingabe eines Aktivitätsnamens
+ Eingabe eines Aktivitätsnamens durch den Benutzer
 \end_layout
 
 \end_inset
@@ -2382,7 +2487,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
+2a.
  Der angezeigte Namensvorschlag wird vom Benutzer bestätigt
 \end_layout
 
@@ -2420,7 +2525,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bearbeitung der Eigenschaften einer vorhandenen Daten-Management-Aktivität.
+Bearbeitung der Eigenschaften einer vorhandenen DM-Aktivität.
 \end_layout
 
 \end_inset
@@ -2440,8 +2545,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein vorhandener BPEL-Prozess muss im Eclipse BPEL Designer geöffnet, die
- zu bearbeitende Aktivität muss ausgewählt sein und der 
+Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet, die
+ zu bearbeitende DM-Aktivität ist ausgewählt und der 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2449,7 +2554,7 @@ Properties-View
 \begin_inset Quotes erd
 \end_inset
 
- von Eclipse muss angezeigt werden.
+ von Eclipse wird angezeigt.
 \end_layout
 
 \end_inset
@@ -2498,7 +2603,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -2519,12 +2624,13 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Selektierung einer Aktivität, durch Auswahl mit der Maus, aus dem Prozess
+ Selektierung einer DM-Aktivität, durch Auswahl mit der linken Maustaste,
+ aus dem Prozess
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Eigenschaften der Aktivität werden in der 
+ Eigenschaften der DM-Aktivität werden innerhalb der 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2537,7 +2643,7 @@ Properties-View
 
 \begin_layout Plain Layout
 3.
- Änderungen der Eigenschaften
+ Änderung der Eigenschaften
 \end_layout
 
 \end_inset
@@ -2557,7 +2663,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -2594,7 +2700,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Löschen der ausgewählten Daten-Management-Aktivität.
+Löschen der ausgewählten DM-Aktivität.
 \end_layout
 
 \end_inset
@@ -2614,8 +2720,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein vorhandener BPEL-Prozess muss im Eclipse BPEL Designer geöffnet und
- die zu löschende Aktivität muss ausgewählt sein.
+Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet.
 \end_layout
 
 \end_inset
@@ -2635,7 +2740,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die ausgewählte Aktivität wurde vollständig und korrekt aus dem Prozess
+Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess
  gelöscht.
 \end_layout
 
@@ -2656,7 +2761,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -2677,12 +2782,13 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Selektierung einer Aktivität, durch Auswahl mit der Maus, aus dem Prozess
+ Selektierung einer DM-Aktivität, durch Auswahl mit der linken Maustaste,
+ aus dem Prozess
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Löschen der Aktivität
+ Löschen der DM-Aktivität
 \end_layout
 
 \end_inset
@@ -2702,7 +2808,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -2759,9 +2865,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Prozess muss im Eclipse BPEL Designer geöffnet und die Apache ODE Workflow-E
-ngine korrekt in Eclipse eingebunden sein und die Server-View angezeigt
- werden.
+Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engin
+e korrekt in Eclipse eingebunden und die Server-View wird angezeigt.
 \end_layout
 
 \end_inset
@@ -2802,6 +2907,294 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
+3a.
+ Der Prozess wurde nicht gestartet.
+\end_layout
+
+\begin_layout Plain Layout
+3b.
+ Der Prozess wurde nicht gestartet.
+\end_layout
+
+\begin_layout Plain Layout
+3c.
+ Der Prozess wurde beendet und es wird eine Fehlermeldung angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Erstellung eines ODE Deployment-Deskriptors über File->New->Other->BPEL2.0->Apac
+he ODE Deployment Descriptor
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+\end_layout
+
+\begin_layout Itemize
+Rechter Mausklick auf den ODE-Server
+\end_layout
+
+\begin_layout Itemize
+Auswahl des Menüpunkts 
+\begin_inset Quotes eld
+\end_inset
+
+Add and Remove
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hinzufügen der BPEL Prozess-Datei
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Starten des ODE-Servers über rechten Mausklick und 
+\begin_inset Quotes eld
+\end_inset
+
+Start
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3a.
+ ODE-Server startet nicht
+\end_layout
+
+\begin_layout Plain Layout
+3b.
+ Beim Starten des Prozesses tritt ein Fehler auf
+\end_layout
+
+\begin_layout Plain Layout
+3c.
+ Während der Ausführung des Prozesses tritt ein Fehler auf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle des Workflow-Administrators
+\end_layout
+
+\begin_layout Standard
+Ein Workflow-Administrator kann folgende Anwendungsfälle (siehe Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UseCaseDiaWFAdmin"
+
+\end_inset
+
+) ausführen:
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole öffnen
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole zurücksetzen
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole speichern
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole schließen
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole Defaults laden
+\end_layout
+
+\begin_layout Itemize
+Auditing aktivieren
+\end_layout
+
+\begin_layout Itemize
+Auditing deaktivieren
+\end_layout
+
+\begin_layout Itemize
+Auditing-Datenbank festlegen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename WorkflowAdmin_iter1.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaWFAdmin"
+
+\end_inset
+
+Anwendungsfall-Diagramm für den Workflow-Administrator
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Admin-Konsole öffnen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Öffnen der Admin-Konsole.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eclipse muss geöffnet sein.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole wird angezeigt und kann verwendet werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2823,12 +3216,151 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Erstellung eines ODE Deployment-Deskriptors
+ Klick auf das SIMPL Menü
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View
+ Klick auf den Menüeintrag [Admin Console]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Admin-Konsole zurücksetzen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zurücksetzen des Inhalts der Admin-Konsole.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle geänderten Werte der Admin-Konsole wurden auf die Standardwerte zurückgeset
+zt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick auf den Button [Default]
 \end_layout
 
 \end_inset
@@ -3006,7 +3538,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Admin-Konsole zurücksetzen
+Admin-Konsole schließen
 \end_layout
 
 \begin_layout Standard
@@ -3029,7 +3561,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Zurücksetzen des Inhalts der Admin-Konsole.
+
 \end_layout
 
 \end_inset
@@ -3049,7 +3581,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt.
+
 \end_layout
 
 \end_inset
@@ -3069,8 +3601,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole wurden auf die Standardwerte zurückgeset
-zt.
+
 \end_layout
 
 \end_inset
@@ -3110,8 +3641,7 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.
- Klick auf den Button [Default]
+
 \end_layout
 
 \end_inset
@@ -3144,54 +3674,8 @@ Sonderfälle
 
 \end_layout
 
-\begin_layout Subsection
-Anwendungsfälle der Workflow-Administratoren
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename WorkflowAdmin_iter1.jpg
-	lyxscale 50
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:UseCaseDiaWFAdmin"
-
-\end_inset
-
-Anwendungsfall-Diagramm für den Workflow-Administrator
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
-Admin-Konsole öffnen
+Admin-Konsole Defaults laden
 \end_layout
 
 \begin_layout Standard
@@ -3214,7 +3698,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Öffnen der Admin-Konsole.
+
 \end_layout
 
 \end_inset
@@ -3234,7 +3718,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eclipse muss geöffnet sein.
+
 \end_layout
 
 \end_inset
@@ -3254,7 +3738,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt und kann verwendet werden.
+
 \end_layout
 
 \end_inset
@@ -3294,13 +3778,7 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.
- Klick auf das SIMPL Menü
-\end_layout
 
-\begin_layout Plain Layout
-2.
- Klick auf den Menüeintrag [Admin Console]
 \end_layout
 
 \end_inset
@@ -3762,6 +4240,26 @@ Anwendungsfälle der ODE Workflow-Engine
 \end_layout
 
 \begin_layout Standard
+Die ODE Workflow-Engine kann durch unsere Erweiterungen folgende Anwendungsfälle
+ (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UseCaseDiaODEWFEngine"
+
+\end_inset
+
+) ausführen:
+\end_layout
+
+\begin_layout Itemize
+Data-Management-Aktivität ausführen
+\end_layout
+
+\begin_layout Itemize
+Data-Management-Aktivität kompensieren
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -3772,7 +4270,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ODEwfEngine_iter1.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -3827,7 +4324,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausführen einer Data-Management-Aktivität.
+Ausführen einer DM-Aktivität.
 \end_layout
 
 \end_inset
@@ -3847,8 +4344,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurde ein Prozess, der eine Data-Management-Aktivität enthält, deployed
- und es wurde eine Instanz dieses Prozesses erzeugt.
+Es wurde ein Prozess, der eine DM-Aktivität enthält, deployed und es wurde
+ eine Instanz dieses Prozesses erzeugt.
 \end_layout
 
 \end_inset
@@ -3868,7 +4365,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Aktivität wurde ausgeführt und das Management der Daten war erfolgreich.
+Die DM-Aktivität wurde ausgeführt und das Management der Daten war erfolgreich.
 \end_layout
 
 \end_inset
@@ -3888,7 +4385,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Aktivität befindet sich in einem definierten Endzustand.
+Die DM-Aktivität befindet sich in einem definierten Endzustand.
 \end_layout
 
 \end_inset
@@ -3914,12 +4411,12 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Die Aktivität wird als bereit gekennzeichnet
+ Die DM-Aktivität wird als bereit gekennzeichnet
 \end_layout
 
 \begin_layout Plain Layout
 3.
- Die Ausführung der Aktivität wird gestartet
+ Die Ausführung der DM-Aktivität wird gestartet
 \end_layout
 
 \begin_layout Plain Layout
@@ -3929,12 +4426,12 @@ Normalablauf
 
 \begin_layout Plain Layout
 5.
- Die Ausführung der Aktivität ist beendet
+ Die Ausführung der DM-Aktivität ist beendet
 \end_layout
 
 \begin_layout Plain Layout
 6.
- Die Aktivität wird als abgeschlossen gekennzeichnet
+ Die DM-Aktivität wird als abgeschlossen gekennzeichnet
 \end_layout
 
 \end_inset
@@ -3955,22 +4452,22 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.
- Die übergeordnete Aktivität meldet einen Fehler
+ Die übergeordnete DM-Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 2a.
- Die übergeordnete Aktivität meldet einen Fehler
+ Die übergeordnete DM-Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 2b.
- Es wird ein Terminate_Activity Event an die Aktivität geschickt
+ Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
 \end_layout
 
 \begin_layout Plain Layout
 2c.
- Es wird ein Complete_Acitivity Event an die Aktivität gesendet
+ Es wird ein Complete_Acitivity Event an die DM-Aktivität gesendet
 \end_layout
 
 \begin_layout Plain Layout
@@ -3980,33 +4477,33 @@ Sonderfälle
 
 \begin_layout Plain Layout
 3b.
- Es wird ein Terminate_Activity Event an die Aktivität geschickt
+ Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
 \end_layout
 
 \begin_layout Plain Layout
 3c.
- Die Aktivität erzeugt einen Fehler
+ Die DM-Aktivität erzeugt einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 4a.
- Die in der Daten-Management-Aktivität angegebene Datenbank oder die angegebenen
- Datensätze konnten nicht gefunden werden
+ Die in der DM-Aktivität angegebene Datenbank oder die angegebenen Datensätze
+ konnten nicht gefunden werden
 \end_layout
 
 \begin_layout Plain Layout
 4b.
- Die Aktivität wird als fehlgeschlagen gekennzeichnet
+ Die DM-Aktivität wird als fehlgeschlagen gekennzeichnet
 \end_layout
 
 \begin_layout Plain Layout
 5a.
- Die übergeordnete Aktivität meldet einen Fehler
+ Die übergeordnete DM-Aktivität meldet einen Fehler
 \end_layout
 
 \begin_layout Plain Layout
 5b.
- Es wird ein Terminate_Activity Event an die Aktivität geschickt
+ Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
 \end_layout
 
 \end_inset
@@ -4043,8 +4540,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rückgängig machen einer Data-Management-Aktivität, so dass der Zustand vor
- Ausführung der Aktivität wiederhergestellt wird.
+Rückgängig machen einer DM-Aktivität, so dass der Zustand vor Ausführung
+ der DM-Aktivität wiederhergestellt wird.
  
 \end_layout
 
@@ -4065,7 +4562,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Data-Management-Aktivität wurde durchgeführt.
+Eine DM-Aktivität wurde durchgeführt.
 \end_layout
 
 \end_inset
@@ -4085,8 +4582,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der Zustand vor Ausführung der Data-Management-Aktivität wurde erfolgreich
- wiederhergestellt.
+Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.
 \end_layout
 
 \end_inset
@@ -4127,7 +4623,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Im Normalablauf einer Data-Management-Aktivität tritt ein Fehler auf
+ Im Normalablauf einer DM-Aktivität tritt ein Fehler auf
 \end_layout
 
 \begin_layout Plain Layout
@@ -4170,6 +4666,22 @@ Anwendungsfälle des Eclipse BPEL Designers
 \end_layout
 
 \begin_layout Standard
+Der Eclipse BPEL Designer kann durch unsere Erweiterungen folgende Anwendungsfäl
+le (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UseCaseDiaBPELDesigner"
+
+\end_inset
+
+) ausführen:
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole laden
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -4180,7 +4692,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename BPELdesigner_iter1.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -4387,7 +4898,7 @@ Konzepte und Realisierungen
 In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  deren Realisierung erläutert.
  Dazu zählt z.B.
- die Beschreibung und Definition der benötigten Datenmanagement Aktivitäten,
+ die Beschreibung und Definition der benötigten Data-Management-Aktivitäten,
  die zur Realisierung einer SQL-inline Unterstützung für BPEL benötigt werden.
  Ebenso werden die benötigten Eclipse BPEL Designer Erweiterungen, sowie
  die Realisierung des Datenquellen-Auditings und das dafür zugrunde liegende
