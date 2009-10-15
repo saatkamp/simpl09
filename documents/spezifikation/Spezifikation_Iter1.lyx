@@ -1592,22 +1592,12 @@ name "sec:Benutzeroberfläche"
 
 \end_inset
 
-Benutzeroberfläche des SIMPL Eclipse Plug-In
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Noch überarbeiten anhand der korrigierten Use-Cases.
-\end_layout
-
-\end_inset
-
-
+Benutzeroberfläche des SIMPL Eclipse Plug-Ins
 \end_layout
 
 \begin_layout Standard
 In diesem Kapitel wird die grafische Benutzeroberfläche des SIMPL Eclipse
- Plug-In beschrieben.
+ Plug-Ins beschrieben.
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1620,60 +1610,8 @@ reference "fig:SIMPL-Menü"
  wie bereits vorhandene Aktivitäten zur Modellierung von Prozessen verwendet
  werden können.
  Für SIMPL wird ein Menü bereitgestellt, über das alle wichtigen Einstellungen
- und Informationen des SIMPL Rahmenwerks erreicht werden können.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Im folgender Abbildung ist der kommplete UI der Rahmenwerk von SIMPL.
- Auf der rechte Seite befindet sich Menu 
-\begin_inset Quotes eld
-\end_inset
-
-DataManagement
-\begin_inset Quotes erd
-\end_inset
-
- mit aller Aktivitäten für die Erzeugung von Data-Aktivität, Select, update
- etc.
- zuständig sind.
-\end_layout
-
-\begin_layout Plain Layout
-Beim Auswählen bzw.
- Drag-and-Drop einer dieser graphische Darstellungen der Aktivitäten, dann
- erscheint entsprechend einer neue Aktivität in dem Bpel-prozess an der
- ausgewählte Position im Prozess.
-\end_layout
-
-\begin_layout Plain Layout
-Ausserdem können wir den Popup-Menu vom SIMPL im Eclipse Menuleiste sehen,
- dass alle Navigationspunkte für die Anwendungsaktivitäten wie 
-\begin_inset Quotes eld
-\end_inset
-
-Admin console
-\begin_inset Quotes erd
-\end_inset
-
- oder 
-\begin_inset Quotes eld
-\end_inset
-
-Settings
-\begin_inset Quotes erd
-\end_inset
-
- etc.
- beinhaltet.
-\end_layout
-
-\end_inset
-
-
+ und Informationen des SIMPL Rahmenwerks vorgenommen bzw.
+ angezeigt werden können.
 \end_layout
 
 \begin_layout Standard
@@ -1687,7 +1625,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ProtoTyp_Screenshots/SIMPL_menu_iter1.JPG
-	width 100text%
+	width 80text%
 
 \end_inset
 
@@ -1722,29 +1660,8 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Beim anklicken auf dem Untermenupunkt 
-\begin_inset Quotes eld
-\end_inset
-
-Admin Console
-\begin_inset Quotes erd
-\end_inset
-
- öffnet sich der Admin-Konsole Dialog.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
- Möglichkeit, Einstellungen innerhalb des Rahmenwerks vorzunehmen.
+ Möglichkeit, Einstellungen für das Rahmenwerk vorzunehmen.
  Dazu gehört beispielsweise die Angabe von globalen Einstellungen und die
  Verwaltung des Auditings (siehe Abbildung 
 \begin_inset CommandInset ref
@@ -1766,92 +1683,16 @@ Folgende Schaltflächen stehen durchgängig zur Verfügung:
 \end_layout
 
 \begin_layout Itemize
-[Save]: Speichern aller aktuellen Einstellungen
+[Reset]: Zurücksetzen aller durchgeführten Änderungen auf den letzten Speicherst
+and
 \end_layout
 
 \begin_layout Itemize
-[Cancel]: Schließen der Admin-Konsole und Verwerfen aller Änderungen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Hier ist der Adminkonsole Dialog zu sehen.
- Mithilfe die Unterbaumpunkte können verschiedene Einstellungen angebracht
- werden wie 
-\begin_inset Quotes eld
-\end_inset
-
-Global settings
-\begin_inset Quotes erd
-\end_inset
-
-, die Strategien oder Datenquellen etc.
-\end_layout
-
-\begin_layout Plain Layout
-Auf der untere rechte Seite dieser Dialog befinden sich die zwei Schaltflechen
- 
-\begin_inset Quotes eld
-\end_inset
-
-Save
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Cancel
-\begin_inset Quotes erd
-\end_inset
-
-.
- 
+[Save]: Speichern aller durchgeführten Änderungen
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Save
-\begin_inset Quotes erd
-\end_inset
-
- Schaltfläche: damit werden die angebrachte Änderungen gespeichert und der
- Dialog wird geschlossen.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Cancel
-\begin_inset Quotes erd
-\end_inset
-
- Schaltfläche: damit wird einfach der Dialog geschlossen ohne Berücksichtigung
- der Änderungen, die innerhalb der Konsole angebracht wurden.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Default
-\begin_inset Quotes erd
-\end_inset
-
- Schaltfläche: beim Betätigen dieser Schaltfläche werden die Standard-Einstellun
-gen geladen.
-\end_layout
-
-\end_inset
-
-
+[Close]: Schließen der Admin-Konsole und Verwerfen aller Änderungen
 \end_layout
 
 \begin_layout Standard
@@ -1864,8 +1705,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/AdminKonsoleNeuIter1.jpg
-	width 100text%
+	filename ProtoTyp_Screenshots/Iter1Screens/AdminConsole.JPG
+	width 80text%
 
 \end_inset
 
@@ -1896,7 +1737,7 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Subsubsection
-Globale Eigenschaften
+Globale Einstellungen
 \end_layout
 
 \begin_layout Standard
@@ -1916,8 +1757,8 @@ Global Settings
 \end_inset
 
  der Admin-Konsole gezeigt.
- Hier können z.B.
- Standardwerte für die Authentifizierung bei Datenquellen angegeben werden.
+ Hier können Standardwerte für die Authentifizierung bei Datenquellen angegeben
+ werden.
 \end_layout
 
 \begin_layout Standard
@@ -1951,8 +1792,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/GlobaleSettings_AuthenticationDataIter1.jpg
-	width 100text%
+	filename ProtoTyp_Screenshots/Iter1Screens/AdminConsoleGlobalSettings.JPG
+	width 80text%
 
 \end_inset
 
@@ -2017,8 +1858,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/Auditing_generalIter1.jpg
-	width 100text%
+	filename ProtoTyp_Screenshots/Iter1Screens/AdminConsoleAuditing.JPG
+	width 80text%
 
 \end_inset
 
@@ -2069,11 +1910,32 @@ PropertyView
 \end_inset
 
  einer Query-Aktivität gezeigt.
- Hier kann die im Prozess ausgewählte Aktivität parametriert werden.
+ Hier kann die im Prozess ausgewählte Aktivität parametrisiert werden.
+ Das bedeutet, dass die Aktivität hier mit Inhalt gefüllt wird, wie z.B.
+ der Zieldatenquelle oder dem Befehl, der auf dieser ausgeführt werden soll.
  Dazu wird die Art der Datenquelle ausgewählt, ein Befehl über entsprechende
  grafische Elemente erstellt und die physikalische Adresse der Datenquelle
  angegeben.
- 
+ Falls die Checkbox 
+\begin_inset Quotes eld
+\end_inset
+
+Show resulting statement
+\begin_inset Quotes erd
+\end_inset
+
+ gesetzt ist, wird der durch die grafischen Elemente definierte Befehl im
+ Textfeld 
+\begin_inset Quotes eld
+\end_inset
+
+Resulting statement
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt.
+ Im Textfeld wird dabei der Befehl in seiner vollen Länge angezeigt, genau
+ so wie er auf der Datenquelle ausgeführt wird.
 \end_layout
 
 \begin_layout Standard
@@ -4327,16 +4189,6 @@ keine
 
 \begin_layout Subsubsection
 Globale Einstellungen festlegen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-noch in Diagramm ergänzen!!!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
