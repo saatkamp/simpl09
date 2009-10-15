@@ -856,9 +856,16 @@ Das Entwicklungsteam soll ein erweiterbares und generisches Rahmenwerk für
  Der Schwerpunkt soll klar auf wissenschaftlichen Workflows liegen, in denen
  es möglich sein muss große heterogene Datenmengen verarbeiten zu können.
  Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
- BPEL-Prozess eingebunden werden können.
+ Business Process Execution Language (BPEL)-Prozess eingebunden werden können.
  Dafür werden bereits vorhandene Konzepte evaluiert, wie z.B.
- die Sprache BPEL, und falls nötig erweitert und angepasst.
+ die Sprache BPEL (siehe [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+]), und falls nötig erweitert und angepasst.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
  werden, so dass auch erst zur Laufzeit des Systems die Datenquellen festgelegt
  werden können.
@@ -895,8 +902,8 @@ Basisfunktionalität
 \end_layout
 
 \begin_layout Itemize
-Die statische Anbindung von Datenquellen: Relationale Datenbank, XML-Datenbank,
- Sensor Datenbank und Dateisystem
+Die statische Anbindung von Datenquellen: Relationale Datenbank, Extensible
+ Markup Language (XML)-Datenbank, Sensor Datenbank und Dateisystem
 \end_layout
 
 \begin_layout Itemize
@@ -924,8 +931,15 @@ Es wird ein Plug-In-System für die Anbindung von verschiedenen Datenquellen
 
 \begin_layout Itemize
 Implementierung einer Datenquellen Registriy mithilfe derer Datenquellen
- über den Eclipse BPEL Designer manuell durch den Benutzer oder dynamisch
- durch das SIMPL Eclipse Plug-In ausgewählt werden können.
+ über den Eclipse BPEL Designer (siehe [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Eclipse-BPEL-Designer"
+
+\end_inset
+
+]) manuell durch den Benutzer oder dynamisch durch das SIMPL Eclipse Plug-In
+ ausgewählt werden können.
 \end_layout
 
 \begin_layout Itemize
@@ -937,7 +951,7 @@ Optional (Kunden Präferenz)
 \end_layout
 
 \begin_layout Itemize
-Unterstützung von Referenzen in BPEL (Reference Resolution System)
+Unterstützung von Referenzen in BPEL (Reference Resolution System (RRS))
 \end_layout
 
 \begin_layout Itemize
@@ -1133,9 +1147,22 @@ reference "fig:Systemumgebung"
  dargestellte Systemumgebung eingebettet werden.
  Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL-Designer Plug-In,
  einem Web-Server, wie z.B.
- dem Apache Tomcat, auf dem der SIMPL Core und eine Workflow-Engine (z.B.
- Apache ODE) ausgeführt werden und den Datenquellen auf die zugegriffen
- wird.
+ dem Apache Tomcat (siehe [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Apache-Tomcat"
+
+\end_inset
+
+]), auf dem der SIMPL Core und eine Workflow-Engine (z.B.
+ Apache Orchestration Director Engine (ODE), siehe [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:Apache-ODE"
+
+\end_inset
+
+]) ausgeführt werden und den Datenquellen auf die zugegriffen wird.
  SIMPL unterstützt die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1229,7 +1256,7 @@ ht.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:BPEL-SQL"
+reference "sub:Data-Management-Aktivitäten"
 
 \end_inset
 
@@ -1282,7 +1309,7 @@ Das Rahmenwerk wird als Teil eines großen Installationpakets ausgeliefert.
  der Dokumentationen leichter realisiert werden.
  Die Installation der einzelnen Komponenten wird dann anhand der mitgelieferten
  Installationsanleitung durchgeführt.
- Nähere Informationen liefert Quelle [
+ Nähere Informationen liefert [
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "the:Angebot"
@@ -5073,26 +5100,39 @@ In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  deren Realisierung erläutert.
  Dazu zählt z.B.
  die Beschreibung und Definition der benötigten Data-Management-Aktivitäten,
- die zur Realisierung einer SQL-inline Unterstützung für BPEL benötigt werden.
- Ebenso werden die benötigten Eclipse BPEL Designer Erweiterungen, sowie
- die Realisierung des Datenquellen-Auditings und das dafür zugrunde liegende
- Event-Modell beschrieben.
+ die zur Realisierung einer generischen Unterstützung von verschiedenen
+ Abfragesprachen, wie z.B.
+ SQL oder XQuery, für BPEL benötigt werden.
+ Ebenso werden die benötigten Erweiterungen des Eclipse BPEL Designers,
+ sowie die Realisierung des Datenquellen-Auditings und das dafür zugrunde
+ liegende Event-Modell beschrieben.
 \end_layout
 
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:BPEL-SQL"
+name "sub:Data-Management-Aktivitäten"
 
 \end_inset
 
-BPEL-SQL
+Data-Management-Aktivitäten
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+nur Kleinigkeiten korrigiert, große Änderungen noch diskutieren...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 In diesem Abschnitt werden die zu realisierenden Datenmanagement-Patterns
- zur Umsetzung einer SQL-inline Unterstützung vorgestellt und im weiteren
- Verlauf deren Realisierung für die verschiedenen Datenquellen, d.h.
+ zur Umsetzung einer generischen Unterstützung verschiedener Abfragesprachen
+ für BPEL vorgestellt und im weiteren Verlauf deren Realisierung für die
+ verschiedenen Datenquellen, d.h.
  für Dateisysteme, Datenbanken und Sensornetze, erläutert.
  Aus den in Abschnitt 
 \begin_inset CommandInset ref
@@ -5116,17 +5156,17 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Datenmanagement-Patterns"
+name "sub:Datenmanagement-Patterns-SQL"
 
 \end_inset
 
-Datenmanagement Patterns
+Datenmanagement-Patterns für SQL Datenbanken
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt werden die Datenmanagement Patterns, die zur Realisierung
- einer SQL-inline Unterstützung benötigt werden, aufgeführt und beschrieben
- (siehe Quelle [
+In diesem Abschnitt werden die Datenmanagement-Patterns, die zur Realisierung
+ einer SQL-inline Unterstützung für BPEL benötigt werden, aufgeführt und
+ beschrieben (siehe [
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "BPEL/SQL Paper"
@@ -5141,10 +5181,10 @@ Query Pattern
 \end_layout
 
 \begin_layout Standard
-Das Query Pattern beschreibt die Notwendigkeit mithilfe von SQL-Befehlen
+Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
  externe Daten anfordern zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
- zwischengespeichert oder direkt im Prozessspeicher gehalten werden.
+ zwischengespeichert oder direkt im BPEL-Prozess gehalten werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5152,9 +5192,11 @@ Set IUD Pattern
 \end_layout
 
 \begin_layout Standard
-Das Set IUD Pattern beschreibt die Möglichkeit mengenorientiertes Einfügen
- (insert), Aktualisieren (update) und Löschen (delete) auf externen Daten
- durchführen zu können.
+Das Set IUD Pattern beschreibt die Möglichkeit auf mengenorientierten Daten
+ außerhalb des Prozesses verschiedene Datenmanipulations-Operationen ausführen
+ zu können.
+ Zu diesen Operationen zählen das mengenorientierte Einfügen (insert), Aktualisi
+eren (update) und Löschen (delete) von Daten.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5162,7 +5204,7 @@ Data Setup Pattern
 \end_layout
 
 \begin_layout Standard
-Das Data Setup Pattern liefert die Möglichkeit benötigte Data Definition
+Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
  Language (DDL) Befehle auf einem relationalen Datenbanksystem auszuführen,
  um so während der Prozessausführung die Datenquelle zu konfigurieren oder
  neue Container (Tabellen, Schema, usw.) zu erstellen.
@@ -5173,8 +5215,8 @@ Stored Procedure Pattern
 \end_layout
 
 \begin_layout Standard
-Da die Verarbeitung von komplexen Daten meist durch Stored Procedures erfolgt,
- ist es bei der Verarbeitung von externen Daten unbedingt erforderlich,
+Da komplexe Verarbeitungen von Daten meist durch Stored Procedures realisiert
+ werden, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
  Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
 \end_layout
 
@@ -5183,8 +5225,7 @@ Set Retrieval Pattern
 \end_layout
 
 \begin_layout Standard
-Manchmal ist es nötig Daten innerhalb des Prozessspeichers verarbeiten zu
- können.
+Manchmal ist es nötig, Daten innerhalb des Prozessspeichers zu verarbeiten.
  Das Set Retrieval Pattern liefert dafür eine mengenorientierte Datenstruktur,
  in die man die angefragten externen Daten innerhalb des Prozessspeichers
  ablegen kann.
@@ -5197,8 +5238,8 @@ Set Access Pattern
 \end_layout
 
 \begin_layout Standard
-Das Set Access Pattern beschreibt die Notwendigkeit auf den erzeugten Datencache
- sequentiell und direkt (random) zugreifen zu können.
+Das Set Access Pattern beschreibt die Notwendigkeit, auf den erzeugten Datencach
+e sequentiell und direkt (random) zugreifen zu können.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5206,8 +5247,8 @@ Tuple IUD Pattern
 \end_layout
 
 \begin_layout Standard
-Das Tuple IUD Pattern beinhaltet einfügen (insert), aktualisieren (update)
- und löschen (delete) von Daten im Datencache.
+Das Tuple IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencach
+e Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden können.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5234,7 +5275,7 @@ In diesem Abschnitt wird die Realisierung der acht Datenmanagement Patterns
  aus Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenmanagement-Patterns"
+reference "sub:Datenmanagement-Patterns-SQL"
 
 \end_inset
 
@@ -5249,12 +5290,12 @@ Dateisysteme
 Hier wird die Umsetzung der in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenmanagement-Patterns"
+reference "sub:Datenmanagement-Patterns-SQL"
 
 \end_inset
 
  beschriebenen Patterns im Bereich der Dateisysteme durch entsprechende
- Systemaufrufe (Betriebssystem) beschrieben.
+ Systemaufrufe des dem Dateisystem zugrundeliegenden Betriebssystems beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -5398,7 +5439,7 @@ Stored Procedure Pattern: Findet im Rahmen der Dateisysteme keine Verwendung.
 
 \begin_layout Itemize
 Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
- einer entsprechenden Aktivität, die Daten kapselt und im Prozessspeicher
+ einer entsprechenden BPEL-Aktivität, die Daten kapselt und im Prozessspeicher
  halten kann, für BPEL.
  Eine solche Aktivität liefert dann die Möglichkeit, dass in ihren Ausprägungen
  Ergebnisse von Queries (siehe Query Pattern), die über die 
@@ -5407,7 +5448,14 @@ Service Data Objects API
 \emph default
  (SDO API) abstrahiert wurden, innerhalb des Prozessspeichers abgelegt werden
  können.
- Die Firma IBM hat mit ihrer 
+ Wie in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BPEL/SQL Paper"
+
+\end_inset
+
+] beschrieben, wurde dieses Konzept bereits durch die 
 \emph on
 Business Integration Suite
 \emph default
@@ -5415,8 +5463,7 @@ Business Integration Suite
 \emph on
 WebSphere Integration Developer
 \emph default
- bereits eine Umsetzung dieses Patterns als Aktivität mit der Bezeichnung
- 
+ mit der Bezeichnung 
 \emph on
 
 \begin_inset Quotes eld
@@ -5431,14 +5478,7 @@ Retrieve Set Activity
  realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
  innerhalb des Prozessspeichers geladen, eine etwas ausführlichere Beschreibung
- liefert [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
-
-\end_inset
-
-].
+ liefert .
 \end_layout
 
 \begin_layout Itemize
@@ -5487,13 +5527,13 @@ Datenbanken
 Hier wird die Umsetzung der in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenmanagement-Patterns"
+reference "sub:Datenmanagement-Patterns-SQL"
 
 \end_inset
 
- beschriebenen Patterns im Bereich der Datenbanken durch bestehende SQL
- und XQuery-Befehle oder falls erforderlich durch die Definition neuer zu
- implementierender Funktionen beschrieben.
+ beschriebenen Patterns im Bereich der Datenbanken durch bestehende SQL-
+ und XQuery-Befehle oder, falls erforderlich, durch die Definition neuer
+ zu implementierender Funktionen beschrieben.
 \end_layout
 
 \begin_layout Itemize
@@ -5521,7 +5561,7 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => SELECT Activity
 \end_layout
 
 \begin_layout Itemize
-XQUERY db2-fn:xmlcolumn (’CUSTOMER.INFO’)
+FOR $d IN $doc/books/book RETURN {$d/title/text}
 \end_layout
 
 \end_deeper
@@ -5549,6 +5589,10 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Insert Activity
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+INSERT INTO department SELECT * FROM old_department
 \end_layout
 
 \begin_layout Itemize
@@ -5580,28 +5624,20 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Delete Activity
 \end_layout
 
 \begin_layout Itemize
-xquery transform copy $mycust := db2-fn:sqlquery(’select info from customer
- where cid = 1004’) modify do insert <billto country="Canada"> <street>4441
- Wagner</street> <city>Aurora</city> <prov-state>Ontario</prov-state> <pcode-zip
->
-\begin_inset Newline newline
-\end_inset
-
-N8X 7F8</pcode-zip> </billto> after $mycust/customerinfo/phone[last()] return
- $mycust
+INSERT NODE <year>2005</year> AFTER fn:doc("bib.xml")/books/book[1]/publisher
 \end_layout
 
 \begin_layout Itemize
-UPDATE customer SET info = XMLQUERY( ’declare default element namespace
- "http://posample.org"; transform copy $newinfo := $info modify do delete
- ($newinfo/customerinfo/phone) return $newinfo’ passing info as "info")
- WHERE cid = 1002
+REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH fn:doc("bib.xml")
+/books/book[1]/price * 1.1
 \end_layout
 
 \begin_layout Itemize
-xquery transform copy $mycust := db2-fn:sqlquery(’select INFO from CUSTOMER
- where Cid = 1003’) modify do delete $mycust/customerinfo/phone[@type!="home"]
- return $mycust
+RENAME NODE fn:doc("bib.xml")/books/book[1]/author[1] AS "principal-author"
+\end_layout
+
+\begin_layout Itemize
+DELETE NODE fn:doc("bib.xml")/books/book[1]/author[last()]
 \end_layout
 
 \end_deeper
@@ -5609,8 +5645,8 @@ xquery transform copy $mycust := db2-fn:sqlquery(’select INFO from CUSTOMER
 \begin_layout Itemize
 Data Setup Pattern: Realisierung durch SQL-CREATE SCHEMA, SQL-CREATE TABLE,
  SQL-CREATE VIEW und weitere SQL-CREATE Befehle.
- Falls optional auch das Löschen dieser Objekte möglich sein soll, wird
- dies durch SQL-DROP realisiert.
+ Weiterhin sollte auch das Löschen dieser Objekte möglich sein, dies wird
+ durch SQL-DROP realisiert.
 \end_layout
 
 \begin_deeper
@@ -5631,23 +5667,21 @@ Hier eventuell auch eine Create Activity in deren Eigenschaften man Schema,
 
 \begin_deeper
 \begin_layout Itemize
-CREATE SCHEMA internal AUTHORIZATION admin 
+CREATE SCHEMA internal AUTHORIZATION admin
 \end_layout
 
 \begin_layout Itemize
 CREATE TABLE tdept (deptno CHAR(3) NOT NULL, deptname VARCHAR(36) NOT NULL,
- mgrno CHAR(6), admrdept CHAR(3) NOT NULL, PRIMARY KEY(deptno)) IN departx
+ mgrno CHAR(6), admrdept CHAR(3) NOT NULL, PRIMARY KEY(deptno)) IN internal
  
 \end_layout
 
 \begin_layout Itemize
-CREATE VIEW administrator.kund_with_adr AS 
+CREATE VIEW internal.departmentView AS 
 \begin_inset Newline newline
 \end_inset
 
-SELECT kunden.kunden_nr, kunden.vorname, kunden.nachname, adressen.strasse,
- adressen.postleitzahl, adressen.stadt FROM "system".kunden as kunden, "system".adre
-ssen as adressen where kunden.kunden_nr = adressen.kunden_nr
+SELECT deptno, deptname FROM internal.tdept
 \end_layout
 
 \begin_layout Itemize
@@ -5659,7 +5693,7 @@ DROP TABLE tdept
 \end_layout
 
 \begin_layout Itemize
-DROP VIEW administrator.kund_with_adr
+DROP VIEW internal.departmentView
 \end_layout
 
 \begin_layout Standard
@@ -5711,13 +5745,20 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Call Activity
 \end_deeper
 \begin_layout Itemize
 Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
- einer entsprechenden Aktivität, die eine mengenorientierte Datenstrukur
+ einer entsprechenden BPEL-Aktivität, die eine mengenorientierte Datenstrukur
  kapseln kann, für BPEL.
  Eine solche Aktivität liefert dann die Möglichkeit, dass in Ausprägungen
  dieser Aktivität, Ergebnisse von Queries (siehe Query Pattern), die über
  die SDO API abstrahiert wurden, innerhalb des Prozessspeichers abgelegt
  werden können.
- Die Firma IBM hat mit ihrer 
+ Wie in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BPEL/SQL Paper"
+
+\end_inset
+
+] beschrieben, wurde dieses Konzept bereits durch die 
 \emph on
 Business Integration Suite
 \emph default
@@ -5725,8 +5766,7 @@ Business Integration Suite
 \emph on
 WebSphere Integration Developer
 \emph default
- bereits eine Umsetzung dieses Patterns als Aktivität mit der Bezeichnung
- 
+ mit der Bezeichnung 
 \emph on
 
 \begin_inset Quotes eld
@@ -5769,31 +5809,31 @@ tur realisieren, bereitgestellt werden.
  D.h.
  konkret, dass es möglich sein muss, mit mengenorientierten Daten innerhalb
  von BPEL zu arbeiten.
- Die SDO API liefert dafür bereits einige Methoden die verwendet werden
+ Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
  Bei der Kapselung als Aktivität muss es auch möglich sein, dass die entsprechen
 de Aktivität auch in Containern, wie z.B.
- einer ForEach Activity, entsprechend korrekt ausgeführt wird.
+ einer ForEach Activität, korrekt ausgeführt wird.
  
 \end_layout
 
 \begin_layout Itemize
 Tuple IUD Pattern: Erweitert die Set Access Pattern Methoden um die Möglichkeite
-n Werte innerhalb der mengenorientierten Datenstruktur im Prozessspeicher
+n, Tupel innerhalb der mengenorientierten Datenstruktur im Prozessspeicher
  zu aktualisieren, einzufügen und zu löschen.
- Die SDO API liefert dafür bereits einige Methoden die verwendet werden
+ Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
  
 \end_layout
 
 \begin_layout Itemize
 Synchronization Pattern: Um die Daten aus dem Prozesscache zurück auf die
- originale Datenquelle zu übertragen, muss ebenfalls eine neue BPEL-Aktivität
+ originale Datenbank zu übertragen, muss ebenfalls eine neue BPEL-Aktivität
  erstellt werden, durch die der Benutzer angibt, dass die Daten zurückgeschriebe
 n werden sollen.
  Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
  Pattern beschriebenen Methoden und ebenso SQL-Befehle um die Daten aus
- dem Prozesscache auf die Datenquelle zu übertragen.
+ dem Prozesscache auf die Datenbank zu übertragen.
  Die SDO API und die DAS API liefern dafür bereits einige Methoden die verwendet
  werden können.
  
@@ -5823,29 +5863,53 @@ Sensornetze
 Hier wird die Umsetzung der in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenmanagement-Patterns"
+reference "sub:Datenmanagement-Patterns-SQL"
 
 \end_inset
 
  beschriebenen Patterns im Bereich der Sensornetze und deren Datenbanken
- durch bestehende sensornetzspezifische SQL-Befehle oder falls erforderlich
+ durch bestehende sensornetzspezifische SQL-Befehle oder, falls erforderlich,
  durch die Definition neuer zu implementierender Funktionen beschrieben.
- Alle SQL-Befehls Beispiele beziehen sich hier auf den SQL-Dialekt der Sensornet
-z-Datenbank TinyDB.
+ Alle SQL-Befehlsbeispiele beziehen sich hier auf den SQL-Dialekt der Sensornetz
+-Datenbank TinyDB (siehe [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:TinyDB"
+
+\end_inset
+
+]).
 \end_layout
 
 \begin_layout Itemize
 Query Pattern: Realisierung durch ein entsprechendes SQL-SELECT der Sensornetz-D
 atenbank.
+ Weiterhin besteht die Möglichkeit, sensornetzintern in einem Buffer Werte
+ zwischenzuspeichern.
+ Realisiert wird dies durch im Arbeitsspeicher von Sensoren (siehe Data
+ Setup Pattern) erstellte Tabellen, die mit momentanen Sensorwerten gefüllt
+ werden können, um später die Daten zeitversetzt abrufen zu können.
+ Die gewünschten Werte werden dabei mit einem entsprechenden SQL-SELECT
+ Befehl in den Buffer geschrieben.
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Befehlsstruktur: SELECT select-list [FROM sensors] WHERE where-clause [GROUP
- BY gb-list [HAVING having-list]][TRIGGER ACTION command-name[(param)]]
- [EPOCH DURATION integer]
+Befehlsstruktur: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+SELECT select-list [FROM sensors] WHERE where-clause [GROUP BY gb-list [HAVING
+ having-list]][TRIGGER ACTION command-name[(param)]] [EPOCH DURATION integer]
+\end_layout
+
+\begin_layout Itemize
+Werte einfügen in Buffer-Tabelle: SELECT field1, field2, ...
+ FROM sensors SAMPLE PERIOD x INTO name
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Beispiele: 
 \end_layout
@@ -5869,31 +5933,11 @@ name
 \end_deeper
 \begin_layout Itemize
 Set IUD Pattern: Dieses Pattern wird von Sensornetz-Datenbanken nicht unterstütz
-t, da Sensoren nur ausgelesen und nicht geschrieben werden können.
+t, da Sensoren nur ausgelesen, und nicht geschrieben werden können.
  Darum ist das Einfügen, Aktualisieren und Löschen von externen Daten auf
  einer Sensornetz-Datenbank nicht möglich.
- Es besteht lediglich die Möglichkeit sensornetzintern in einem Buffer Werte
- zwischenzuspeichern und den Buffer zu löschen.
- Realisiert wird dies durch im Arbeitsspeicher von Sensoren (siehe Data
- Setup Pattern) erstellte Tabellen, die mit momentanen Sensorwerten gefüllt
- werden können, um später die Daten zeitversetzt abrufen zu können.
- Die gewünschten Werte werden dabei mit einem entsprechenden SQL-SELECT
- Befehl in den Buffer geschrieben.
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Befehlsstruktur: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Werte einfügen in Buffer-Tabelle: SELECT field1, field2, ...
- FROM sensors SAMPLE PERIOD x INTO name
-\end_layout
-
-\end_deeper
-\end_deeper
 \begin_layout Itemize
 Data Setup Pattern: Es können Tabellen im Arbeitsspeicher der Sensoren erstellt
  werden, die dann Werte von Sensoren aufnehmen und halten können.
@@ -5943,23 +5987,18 @@ Alle Buffer-Tabellen löschen: DROP ALL
 
 \end_deeper
 \begin_layout Itemize
-Stored Procedure Pattern: Es gibt für die TinyDB einen 
-\emph on
-stored procedures
-\emph default
- ähnlichen Ansatz, dabei können falls eine bestimmte Bedingung gilt (z.B.
- Temperatur > 20°C) sogenannte 
+Stored Procedure Pattern: Es gibt für die TinyDB einen Stored Procedure-ähnliche
+n Ansatz.
+ Dabei können, falls eine bestimmte Bedingung gilt (z.B.
+ Temperatur > 20°C), sogenannte 
 \emph on
 commands 
 \emph default
 aufgerufen werden.
  Der Code für diese Methoden wird auf die entsprechenden Sensoren übertragen
  und dort dann bei Bedarf ausgeführt.
- Ein Zugriff von außerhalb wie bei 
-\emph on
-stored procedures
-\emph default
- ist hier allerdings nicht möglich.
+ Ein Zugriff von außerhalb wie bei Stored Procedures ist hier allerdings
+ nicht möglich.
 \end_layout
 
 \begin_deeper
@@ -6028,16 +6067,15 @@ reference "sub:Umsetzung-der-Datenmanagement"
  identifizierten BPEL-Aktivitäten aufgezählt und ihre Funktion noch einmal
  kurz beschrieben.
  Dazu gehört z.B.
- auch welche Attribute welchen Typs für die einzelnen Aktivitäten benötigt
+ auch, welche Attribute welchen Typs für die einzelnen Aktivitäten benötigt
  werden.
- Generell gilt, dass alle Aktivitäten momentan mindestens die drei Variablen
- 
+ Generell gilt, dass alle Aktivitäten mindestens die drei Variablen 
 \emph on
 type
 \emph default
 , 
 \emph on
-dqAddress
+dsAddress
 \emph default
  und
 \emph on
@@ -6048,24 +6086,24 @@ dqAddress
 \emph on
 type
 \emph default
- dient zur Angabe des Datenquellentyps für den die Aktivität ausgeführt
+ dient zur Angabe des Datenquellentyps, für den die Aktivität ausgeführt
  wird, also ob es sich um ein Dateisystem, eine Datenbank oder ein Sensornetz
  handelt.
- Diese Auswahl ist wichtig um intern den richtigen SQL-Dialekt bzw.
+ Diese Auswahl ist wichtig, um intern den richtigen SQL-Dialekt bzw.
  Befehlssatz für die entsprechende Datenquelle auszuwählen.
  Die Variable 
 \emph on
-dqAddress
+dsAddress
 \emph default
  dient zur Angabe der Datenquellenadresse und die Variable 
 \emph on
 statement 
 \emph default
 zur Haltung des entsprechenden Systemaufrufs bzw.
- SQL- oder XQuery-Befehls der ausgeführt werden soll.
- Diese drei Variablen besitzt jede der definierten Aktivitäten.
- Darum werden diese nachfolgend nicht mehr angegeben und nur falls benötigt
- weitere aktivitätsspezifische Variablen beschrieben.
+ SQL- oder XQuery-Befehls, der ausgeführt werden soll.
+ Da jede der definierten Aktivitäten diese drei Variablen besitzt, werden
+ diese nachfolgend nicht mehr angegeben und nur falls benötigt weitere aktivität
+sspezifische Variablen beschrieben.
  Weiterhin werden die verschiedenen Ausprägungen der einzelnen Aktivitäten
  im Hinblick auf die zugrundeliegende Datenquelle aufgezeigt, so dass am
  Ende ein vollständiger Überblick aller definierten Aktivitäten und ihrer
@@ -6094,29 +6132,29 @@ reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
 
 ).
  Dadurch soll eine einfachere Handhabung realisiert werden, damit der Benutzer
- schnellstmöglich, ohne detaillierte Kenntnisse der Anfragesprache, alle
- zur Verfügung gestellten Daten- und Datenquellenbefehle für alle unterstützten
+ schnellstmöglich ohne detaillierte Kenntnisse der Abfragesprache alle zur
+ Verfügung gestellten Daten- und Datenquellenbefehle für alle unterstützten
  Datenquellen ausführen kann.
 \end_layout
 
 \begin_layout Subsubsection*
-Query Activity
+Query Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es aus jeder beliebigen Datenquelle Daten zu
+Diese Aktivität ermöglicht es, aus jeder beliebigen Datenquelle Daten zu
  lesen.
  Weitere spezifische Attribute werden dafür nicht benötigt.
- Die Query Activity ist für alle Datenquellen gleich strukturiert und nur
- die entsprechenden Query-Befehle unterscheiden sich je nach Datenquelle.
+ Die Query Aktivität ist für alle Datenquellen gleich strukturiert, und
+ nur die entsprechenden Query-Befehle unterscheiden sich je nach Datenquelle.
 \end_layout
 
 \begin_layout Subsubsection*
-Insert Activity
+Insert Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es Daten in jede Datenquelle einzufügen.
+Diese Aktivität ermöglicht es, Daten in eine Datenquelle einzufügen.
  Da dies für Sensornetze nicht relevant ist, wird diese Aktivität für das
  sensornetzinterne Einfügen von Sensornetzdaten in Buffer-Tabellen genutzt
  (wie auch in Abschnitt 
@@ -6130,33 +6168,33 @@ reference "sub:Sensornetze"
 \end_layout
 
 \begin_layout Subsubsection*
-Update Activity
+Update Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es Daten aus Datenquellen mit externen Daten
- zu aktualisieren.
- Diese Aktivität existiert nicht für Sensornetze.
+Diese Aktivität ermöglicht es, auf einer Datenquelle hinterlegte Daten durch
+ aktuellere externe Daten zu ersetzen.
+ Diese Aktivität kann nicht auf Sensornetze angewendet werden.
 \end_layout
 
 \begin_layout Subsubsection*
-Delete Activity
+Delete Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es Daten auf beliebigen Datenquellen zu löschen.
- Diese Aktivität existiert nicht für Sensornetze.
+Diese Aktivität ermöglicht es, Daten in Datenquellen zu löschen.
+ Diese Aktivität kann nicht auf Sensornetze angewendet werden.
 \end_layout
 
 \begin_layout Subsubsection*
-Create Activity
+Create Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es Zuordnungseinheiten (Dateien, Ordner, Tabellen,
- Schema, usw.) auf beliebigen Datenquellen zu erstellen.
+Diese Aktivität ermöglicht es, Zuordnungseinheiten (Dateien, Ordner, Tabellen,
+ Schemata, usw.) auf beliebigen Datenquellen zu erstellen.
  Dabei werden die folgenden Befehle zur Erstellung von Zuordnungseinheiten
- auf den entsprechenden Datenquellen benötigt:
+ auf den entsprechenden Datenquellen unterstützt:
 \end_layout
 
 \begin_layout Itemize
@@ -6190,6 +6228,24 @@ CREATE SCHEMA
 CREATE VIEW
 \end_layout
 
+\begin_layout Itemize
+optional:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CREATE DOMAIN
+\end_layout
+
+\begin_layout Itemize
+CREATE INDEX 
+\end_layout
+
+\begin_layout Itemize
+CREATE TRIGGER
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 Sensornetze
@@ -6202,79 +6258,36 @@ CREATE BUFFER
 
 \end_deeper
 \begin_layout Subsubsection*
-Call Activity
+Call Aktivität
 \end_layout
 
 \begin_layout Standard
 Diese Aktivität ermöglicht es auf der Datenquelle hinterlegte Prozeduren
  auszuführen.
- Diese Aktivität existiert nur für Datenbanken.
+ Diese Aktivität kann nur für Datenbanken verwendet werden.
 \end_layout
 
 \begin_layout Subsubsection*
-RetrieveSet Activity
+RetrieveSet Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es Daten von Datenquellen in den Prozessspeicher
+Diese Aktivität ermöglicht es, Daten von Datenquellen in den Prozessspeicher
  zu laden.
 \end_layout
 
 \begin_layout Subsubsection*
-WriteBack Activity
+
+\series bold
+Drop Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es Daten aus dem Prozessspeicher auf die originale
- Datenquelle zurückzuschreiben.
- Diese Aktivität existiert nicht für Sensornetze.
-\end_layout
-
-\begin_layout Subsubsection*
-Optionale Aktivitäten:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Import Activity
-\series default
-: Diese Aktivität ermöglicht es lokale Daten (z.B.
- Simulationsparameter) des Benutzers in einen Prozess einzubinden und in
- diesem zu verwenden.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Export Activity
-\series default
-: Diese Aktivität ermöglicht es Daten eines Prozesses (z.B.
- Simulationsergebnisse) lokal auf den Benutzer-Rechner zu exportieren.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Move Activity
-\series default
-: Diese Aktivität ermöglicht es Daten zwischen beliebigen Datenquellen zu
- kopieren/verschieben, d.h.
- es können beispielsweise Daten aus einer Datei in eine Datenbank-Tabelle
- verschoben/kopiert werden.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Drop Activity
-\series default
-: Diese Aktivität ermöglicht es Zuordnungseinheiten auf beliebigen Datenquellen
+Diese Aktivität ermöglicht es Zuordnungseinheiten auf beliebigen Datenquellen
  zu löschen.
- Dazu werden die folgenden Befehle benötigt:
+ Dazu werden die folgenden Befehle unterstützt:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Dateisysteme
 \end_layout
@@ -6306,6 +6319,24 @@ DROP SCHEMA
 DROP VIEW
 \end_layout
 
+\begin_layout Itemize
+optional:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DROP DOMAIN
+\end_layout
+
+\begin_layout Itemize
+DROP INDEX 
+\end_layout
+
+\begin_layout Itemize
+DROP TRIGGER
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 Sensornetze
@@ -6317,7 +6348,63 @@ DROP ALL
 \end_layout
 
 \end_deeper
-\end_deeper
+\begin_layout Subsubsection*
+Optionale Aktivitäten:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Import Aktivität
+\series default
+: Diese Aktivität ermöglicht es, lokale Daten (z.B.
+ Simulationsparameter) des Benutzers in einen Prozess einzubinden und in
+ diesem zu verwenden.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Export Aktivität
+\series default
+: Diese Aktivität ermöglicht es, Daten eines Prozesses (z.B.
+ Simulationsergebnisse) lokal auf den Benutzer-Rechner zu exportieren.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Move Aktivität
+\series default
+: Diese Aktivität ermöglicht es, Daten zwischen beliebigen Datenquellen
+ zu kopieren/verschieben, d.h.
+ es können beispielsweise Daten aus einer Datei in eine Datenbank-Tabelle
+ verschoben/kopiert werden.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+WriteBack Aktivität:
+\series default
+ Diese Aktivität ermöglicht es, Daten aus dem Prozessspeicher auf die originale
+ Datenquelle zurückzuschreiben.
+ Diese Aktivität existiert nicht für Sensornetze.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Alter Aktivität:
+\series default
+ Diese Aktivität ermöglicht es, bereits bestehende Zuordnungseinheiten (Tabellen
+, Schemata, usw.) nachträglich gezielt zu verändern und an veränderte Anforderung
+en anzupassen.
+ Es ist z.B.
+ möglich in eine Tabelle neue Spalten einzufügen, bestehende Spalten neu
+ zu benennen oder zu löschen.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -6770,88 +6857,7 @@ name "the:Angebot"
 
 \end_inset
 
-Angebot, Version 1.2, 25.September 2009
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-1"
-
-\end_inset
-
-BPEL 2.0 Spec 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(Evtl.
- auch hier Referenz auf Website)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-2"
-
-\end_inset
-
-Eclipse BPEL Designer 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(Website angeben)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-3"
-
-\end_inset
-
-Apache ODE 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(Website angeben)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-4"
-
-\end_inset
-
-Apache Tomcat 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(Website angeben)
-\end_layout
-
-\end_inset
-
-
+SIMPL Angebot, Version 1.2, 25.September 2009
 \end_layout
 
 \begin_layout Bibliography
@@ -6878,7 +6884,7 @@ Vrhovnik, M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-1"
+key "key-3"
 
 \end_inset
 
@@ -6893,6 +6899,102 @@ Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: Towards Reference Passing
  in Web Service and Workflow-based Applications.
  In: Proceedings of the 13th IEEE Enterprise Distributed Object Conference
  (EDOC 2009)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-4"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:BPEL-2.0-Spec"
+
+\end_inset
+
+Web Services Business Process Execution Language Version 2.0, http://www.oasis-ope
+n.org/specs/, 15.10.2009 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Direkte Referenz: http://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-5"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Eclipse-BPEL-Designer"
+
+\end_inset
+
+Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 15.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-6"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Apache-ODE"
+
+\end_inset
+
+Apache ODE, http://ode.apache.org/, 15.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-7"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Apache-Tomcat"
+
+\end_inset
+
+Apache Tomcat, http://tomcat.apache.org/, 15.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-8"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:TinyDB"
+
+\end_inset
+
+TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 15.10.2009
 \end_layout
 
 \end_body
