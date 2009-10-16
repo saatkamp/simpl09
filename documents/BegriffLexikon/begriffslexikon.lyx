@@ -2117,7 +2117,19 @@ Monitoring
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erfassung, Beobachtung und Überwachung aller Einganben des Nutzers 
+Erfassung, Beobachtung und Überwachung aller Einganben des Benuutzers .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Erfassung bzw.
+ Protokolierung alle einzelne Prozessaktivitäten 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2146,7 +2158,17 @@ Open Source
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bedeutet das der Quellcode einer Software öffentlich zugänglich ist.
+Bedeutet das der Quellcode 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quellcode sowie alle System-dokumente
+\end_layout
+
+\end_inset
+
+einer Software öffentlich zugänglich bereitgestellt werden.
 \end_layout
 
 \end_inset
@@ -2205,8 +2227,27 @@ Plugin
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Softwareprogramm welches in andere Softwareprodukte eingebunden wird
- und deren Funktionalität erweitert.
+Ein 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fertiges Softwaremodul 
+\end_layout
+
+\end_inset
+
+welches in andere Softwareprodukte
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Programme
+\end_layout
+
+\end_inset
+
+ eingebunden werden kann und deren Funktionalität erweitert.
 \end_layout
 
 \end_inset
@@ -2257,6 +2298,16 @@ Prototyp
 
 \begin_layout Plain Layout
 Demo
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Vor-/ Erstversion
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2265,7 +2316,17 @@ Demo
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erster Prototyp des Rahmenwerks mit eingeschränkter Funktionalität
+Erster
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ein
+\end_layout
+
+\end_inset
+
+ Prototyp des Rahmenwerks mit eingeschränkter Funktionalität
 \end_layout
 
 \end_inset
@@ -2323,7 +2384,17 @@ Prozesslogik
 \begin_inset Text
 
 \begin_layout Plain Layout
-Beschreibung des Prozessablaufs
+Beschreibung des Prozessablaufs 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2352,8 +2423,27 @@ Qualitiy of Service
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Ebene des Webservice Standard Stack, beinhaltet die Standards Reliable
- Messaging, Security und Transactions
+Eine Ebene des Webservice Standard Stack, beinhaltet 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ 
+\end_layout
+
+\end_inset
+
+die Standards Reliable Messaging, Security und Transactions 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+beinhaltet
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -2411,7 +2501,18 @@ SIMPL
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das SIMPL Rahmenwerk für den Zugriff auf Datenquellen aus einem BPEL-Prozess
+Das SIMPL 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+bzw.
+ SIMPL-Rahmenwerk
+\end_layout
+
+\end_inset
+
+Rahmenwerk für den Zugriff auf Datenquellen aus einem BPEL-Prozess
 \end_layout
 
 \end_inset
@@ -3024,7 +3125,7 @@ Usability
 \begin_inset Text
 
 \begin_layout Plain Layout
-Benutzerfreundlichkeit, Gebrauchstauglichkeit
+Benutzerfreundlichkeit, Gebrauchstauglichkeit etc.
 \end_layout
 
 \end_inset
@@ -3320,20 +3421,6 @@ Abfragesprache für XML Datenbanken
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Änderungsgeschichte
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Version 0.1
-\series default
-, 22.
- Juni 2009: Erstellung des Dokuments.
- 
 \end_layout
 
 \end_body
