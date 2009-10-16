@@ -16,6 +16,7 @@
 ||Benutzer||User||Benutzer des Rahmenwerks||
 ||BPEL||Business Process Execution Language||XML basierte Sprache zur Formulierung von Geschäftsprozessen||
 ||BPEL Extension Activity|| ||Aktivität zur Erweiterung der Funktionalität von BPEL||
+||Data Management Aktivität||DM-Aktivität||BPEL Aktivität für den Zugriff auf Datenquellen mit SIMPL||
 ||Dateisystem|| ||Umgebung in der Dateien abgelegt und verwaltet werden||
 ||Datenmanagement|| ||Alle Operationen und Maßnahmen zur Verwendung von Daten in einem Prozess||
 ||Datenquelle|| ||Ein Endpunkt von dem Daten verschiedenster Art abgerufen und ggf. auch geändert und gelöscht werden können||
@@ -63,7 +64,8 @@
 ||Scope|| ||Lokale Umgebung in BPEL||
 ||Sensornetz|| ||Ein Netz aus Sensoren, die miteinander verbunden sind||
 ||SSO||Single Sign On||Eine Technik, die es einem Benutzer ermöglicht, mit einmaliger Authentifikation, mehrere (verteilte) Aktionen zu tätigen.||
-||Skalierbarkeit|| ||Das System soll sowohl auf einem einzelnen Heimrechner, als auch auf einem System aus mehreren Serversystemen laufen.||
+||Skalierbarkeit|| ||Das System soll sowohl auf einem einzelnen Heimrechner, als auch auf einem System aus mehreren Serversystemen laufen||
+||SOAP|| ||Netzwerkprotokoll für Datenaustausch zwischen Web Services||
 ||SQL||Structured Query Language||Eine standardisierte Sprache für Datenbankabfragen||
 ||Statement||SQL Query||Eine formulierte Abfrage (Query) in SQL||
 ||statisch|| ||nicht veränderbar, fest||
@@ -73,12 +75,14 @@
 ||Tiny DB|| ||Datenbanksystem für Sensornetze||
 ||Transaktion|| ||Eine Folge von Operationen, die ganz oder gar nicht durchgeführt werden||
 ||Transparenz|| ||Durchsichtigkeit von Dingen für den Benutzer durch versteckte Komplexität||
+||UDDI||Universal Description, Discovery and Integration||Verzeichnisdienst für Web Services||
 ||Usability|| ||Benutzerfreundlichkeit, Gebrauchstauglichkeit||
 ||User|| ||Der Benutzer in einem BPEL Prozess???||
 ||URI||Uniform Resource Identifier||Eindeutiger Identifikator einer Resource||
 ||Variable|| ||BPEL Variable||
 ||Verwertungsrechte|| ||Die Rechte zur Verwendung, Änderung und Vertrieb des Rahmenwerks||
 ||Wartbarkeit|| ||Der Quellcode soll Modular aufgebaut sein und der Quellcode durch Kommentare gut lesbar gehalten werden, so dass das Programm später gut zu warten ist.||
+||Web Container|| ||Laufzeitumgebung für Webservices||
 ||Webservice|| ||Eine Software-Anwendung, die über eine URI lokalisierbar ist und über eine XML Schnittstelle verfügt.||
 ||XML||Extensible Markup Language||Auszeichnungssprache für hierarchisch strukturierte Daten||
 ||XMLDB|| ||Datenbank die auf XML basiert reps. die Datenhaltung über XML-Dateien realisiert||
