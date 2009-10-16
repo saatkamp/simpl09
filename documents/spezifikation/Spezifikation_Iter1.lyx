@@ -450,14 +450,6 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -479,7 +471,7 @@ Beschreibungen, was in welchem Abschnitt (von Abschnitt 1 bis 2) erwartet
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Section*
 Änderungsgeschichte
 \end_layout
 
@@ -1401,29 +1393,6 @@ Für die Speicherung der Auditing-Daten kann nur eine Datenbank gleichzeitig
 Alle laufenden Prozesse einer Workflow-Engine können zu einem Zeitpunkt
  gemeinsam nur Daten in Höhe des Speichers, der durch das Betriebssystem
  zur Verfügung gestellt wird, halten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
--hier soll darüber argumentiert werden, wieviele Datenquellen gleichzeitig
- angebunden und verwendet werden können.
- 
-\end_layout
-
-\begin_layout Plain Layout
--wieviel Benutzern den plugin gleichzeitig wenn überhaupt benutzen können.
-\end_layout
-
-\begin_layout Plain Layout
--...
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -5083,16 +5052,6 @@ name "sec:Konzepte-und-Realisierungen"
 \end_inset
 
 Konzepte und Realisierungen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ab hier weiter
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5103,9 +5062,8 @@ In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  die zur Realisierung einer generischen Unterstützung von verschiedenen
  Abfragesprachen, wie z.B.
  SQL oder XQuery, für BPEL benötigt werden.
- Ebenso werden die benötigten Erweiterungen des Eclipse BPEL Designers,
- sowie die Realisierung des Datenquellen-Auditings und das dafür zugrunde
- liegende Event-Modell beschrieben.
+ Ebenso werden die Realisierung des Datenquellen-Auditings und das dafür
+ zugrunde liegende Event-Modell beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -5160,13 +5118,23 @@ name "sub:Datenmanagement-Patterns-SQL"
 
 \end_inset
 
-Datenmanagement-Patterns für SQL Datenbanken
+Datenmanagement-Patterns
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt werden die Datenmanagement-Patterns, die zur Realisierung
- einer SQL-inline Unterstützung für BPEL benötigt werden, aufgeführt und
- beschrieben (siehe [
+In diesem Abschnitt werden alle Datenmanagement-Patterns, die zur Realisierung
+ einer generischen Unterstützung von verschiedenen Abfragesprachen, aufgeführt
+ und beschrieben.
+\end_layout
+
+\begin_layout Subsubsection*
+SQL-Datenbanken
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die zur Realisierung
+ einer SQL-inline Unterstützung für BPEL benötigt werden (vgl.
+ [
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "BPEL/SQL Paper"
@@ -5176,7 +5144,7 @@ reference "BPEL/SQL Paper"
 ]).
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Query Pattern
 \end_layout
 
@@ -5187,7 +5155,7 @@ Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
  zwischengespeichert oder direkt im BPEL-Prozess gehalten werden.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Set IUD Pattern
 \end_layout
 
@@ -5199,7 +5167,7 @@ Das Set IUD Pattern beschreibt die Möglichkeit auf mengenorientierten Daten
 eren (update) und Löschen (delete) von Daten.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Data Setup Pattern
 \end_layout
 
@@ -5210,17 +5178,17 @@ Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
  neue Container (Tabellen, Schema, usw.) zu erstellen.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Stored Procedure Pattern
 \end_layout
 
 \begin_layout Standard
-Da komplexe Verarbeitungen von Daten meist durch Stored Procedures realisiert
- werden, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
+Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
+ wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
  Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Set Retrieval Pattern
 \end_layout
 
@@ -5233,7 +5201,7 @@ Manchmal ist es nötig, Daten innerhalb des Prozessspeichers zu verarbeiten.
  der keine Verbindung zur originalen Datenquelle besitzt.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Set Access Pattern
 \end_layout
 
@@ -5242,7 +5210,7 @@ Das Set Access Pattern beschreibt die Notwendigkeit, auf den erzeugten Datencach
 e sequentiell und direkt (random) zugreifen zu können.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Tuple IUD Pattern
 \end_layout
 
@@ -5251,13 +5219,227 @@ Das Tuple IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencach
 e Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden können.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 Synchronization Pattern
 \end_layout
 
 \begin_layout Standard
 Das Synchronization Pattern realisiert die Synchronisation eines lokalen
  Datencaches mit der originalen Datenquelle.
+\end_layout
+
+\begin_layout Subsubsection*
+XQuery-Datenbanken
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die zur Realisierung
+ einer XQuery-inline Unterstützung für BPEL benötigt werden.
+\end_layout
+
+\begin_layout Paragraph*
+Query Pattern
+\end_layout
+
+\begin_layout Standard
+Das Query Pattern beschreibt die Notwendigkeit, mithilfe von XQuery-Befehlen
+ externe Daten anfordern zu können.
+ Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
+ zwischengespeichert oder direkt im BPEL-Prozess gehalten werden.
+\end_layout
+
+\begin_layout Paragraph*
+Tree IUD Pattern
+\end_layout
+
+\begin_layout Standard
+Das Tree IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
+Operationen auf Knoten von baumartigen Daten außerhalb des Prozesses ausführen
+ zu können.
+ Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Knoten.
+\end_layout
+
+\begin_layout Paragraph*
+Node IUD Pattern
+\end_layout
+
+\begin_layout Standard
+Das Node IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
+Operationen in Knoten von baumartigen Daten außerhalb des Prozesses ausführen
+ zu können.
+ Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Werten
+ innerhalb von Knoten.
+\end_layout
+
+\begin_layout Paragraph*
+Data Setup Pattern
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+???
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
+ Language (DDL) Befehle auf einem XML-Datenbanksystem auszuführen, um so
+ während der Prozessausführung die Datenquelle zu konfigurieren oder neue
+ Container (Tabellen, Schema, usw.) zu erstellen.
+\end_layout
+
+\begin_layout Paragraph*
+Stored Procedure Pattern
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+???
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
+ wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
+ Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
+\end_layout
+
+\begin_layout Paragraph*
+Tree Retrieval Pattern
+\end_layout
+
+\begin_layout Standard
+Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
+ Das Tree Retrieval Pattern liefert dafür eine baumartige Datenstruktur,
+ in die man die angefragten externen Daten innerhalb des BPEL-Prozesses
+ ablegen kann.
+ Diese Datenstruktur verhält sich dabei wie ein Cache im BPEL-Prozess, der
+ keine Verbindung zur originalen Datenquelle besitzt.
+\end_layout
+
+\begin_layout Paragraph*
+Tree Access Pattern
+\end_layout
+
+\begin_layout Standard
+Das Tree Access Pattern beschreibt die Notwendigkeit, auf den erzeugten
+ Datencache sequentiell und direkt (random) zugreifen zu können.
+\end_layout
+
+\begin_layout Paragraph*
+Node IUD Pattern
+\end_layout
+
+\begin_layout Standard
+Das Node IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencache
+ baumartige Daten eingefügt, aktualisiert und wieder aus diesem gelöscht
+ werden können.
+\end_layout
+
+\begin_layout Paragraph*
+Synchronization Pattern
+\end_layout
+
+\begin_layout Standard
+Das Synchronization Pattern realisiert die Synchronisation eines lokalen
+ Datencaches mit der originalen Datenquelle.
+\end_layout
+
+\begin_layout Subsubsection*
+Dateisysteme
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die für die Unterstüt
+zung von Dateisystemen in BPEL benötigt werden.
+\end_layout
+
+\begin_layout Paragraph*
+Query Pattern
+\end_layout
+
+\begin_layout Standard
+Das Query Pattern beschreibt die Notwendigkeit, mithilfe ??? externe Daten
+ anfordern zu können.
+ Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
+ zwischengespeichert oder direkt im BPEL-Prozess gehalten werden.
+\end_layout
+
+\begin_layout Paragraph*
+File IUD Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Data IUD Pattern
+\end_layout
+
+\begin_layout Paragraph*
+File Setup Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Stored Procedure Pattern
+\end_layout
+
+\begin_layout Paragraph*
+File Retrieval Pattern
+\end_layout
+
+\begin_layout Paragraph*
+File Access Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Data IUD Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Synchronization Pattern
+\end_layout
+
+\begin_layout Subsubsection*
+Sensornetze
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die für die Unterstüt
+zung von Sensornetzen in BPEL benötigt werden.
+\end_layout
+
+\begin_layout Paragraph*
+Query Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Data Setup Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Stored Procedure Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Set Retrieval Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Set Access Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Tuple IUD Pattern
+\end_layout
+
+\begin_layout Paragraph*
+Synchronization Pattern
 \end_layout
 
 \begin_layout Subsubsection
@@ -5267,7 +5449,7 @@ name "sub:Umsetzung-der-Datenmanagement"
 
 \end_inset
 
-Umsetzung der Datenmanagement Patterns 
+Umsetzung der Datenmanagement Patterns
 \end_layout
 
 \begin_layout Standard
@@ -5625,6 +5807,11 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => Delete Activity
 
 \begin_layout Itemize
 INSERT NODE <year>2005</year> AFTER fn:doc("bib.xml")/books/book[1]/publisher
+\end_layout
+
+\begin_layout Itemize
+REPLACE NODE fn:doc("bib.xml")/books/book[1]/publisher WITH fn:doc("bib.xml")/book
+s/book[2]/publisher 
 \end_layout
 
 \begin_layout Itemize
@@ -6147,6 +6334,90 @@ Diese Aktivität ermöglicht es, aus jeder beliebigen Datenquelle Daten zu
  Weitere spezifische Attribute werden dafür nicht benötigt.
  Die Query Aktivität ist für alle Datenquellen gleich strukturiert, und
  nur die entsprechenden Query-Befehle unterscheiden sich je nach Datenquelle.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+   <anyElementQName standard-attributes>
+\end_layout
+
+\begin_layout Plain Layout
+
+      standard-elements
+\end_layout
+
+\begin_layout Plain Layout
+
+   </anyElementQName>
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+vs.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<extensionActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<anyElementQName name="’MyName"’ suppressJoinFailure = "‘yes"’ > ...
+ <targets>? <joinCondition expressionLanguage="anyURI"?>? bool-expr </joinCondit
+ion> <target linkName="NCName" />+ </targets> <sources>? <source linkName="NCNam
+e">+ <transitionCondition expressionLanguage="anyURI"?>? bool-expr </transitionC
+ondition> </source> </sources> ...
+ </anyElementQName> </extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Query Aktivität"
+
+\end_inset
+
+Struktur einer Query Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6821,7 +7092,7 @@ Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsubsection*
 Entwicklungsumgebung
 \end_layout
 
@@ -6843,7 +7114,164 @@ Referenzen überarbeiten
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Angebot"
+
+\end_inset
+
+SIMPL Angebot, Version 1.2, 25.September 2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "BPEL/SQL Paper"
+
+\end_inset
+
+Vrhovnik, M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
+ Support in Workflow Products.
+ In: Proc.
+ of the 24th International Conference on Data Engineering (ICDE 2008), Cancún,
+ México, April 7-12, 2008
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:ReferencesInBPEL"
+
+\end_inset
+
+Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: Towards Reference Passing
+ in Web Service and Workflow-based Applications.
+ In: Proceedings of the 13th IEEE Enterprise Distributed Object Conference
+ (EDOC 2009)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-4"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:BPEL-2.0-Spec"
+
+\end_inset
+
+Web Services Business Process Execution Language Version 2.0, http://www.oasis-ope
+n.org/specs/, 15.10.2009 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Direkte Referenz: http://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-5"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Eclipse-BPEL-Designer"
+
+\end_inset
+
+Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 15.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-6"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Apache-ODE"
+
+\end_inset
+
+Apache ODE, http://ode.apache.org/, 15.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-7"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Apache-Tomcat"
+
+\end_inset
+
+Apache Tomcat, http://tomcat.apache.org/, 15.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-8"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:TinyDB"
+
+\end_inset
+
+TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 15.10.2009
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size larger
 Abkürzungsverzeichnis
 \end_layout
 
@@ -7261,158 +7689,12 @@ XML Query Language
 
 \end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-1"
+\begin_layout Standard
+\begin_inset FloatList figure
 
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Angebot"
-
-\end_inset
-
-SIMPL Angebot, Version 1.2, 25.September 2009
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-2"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "BPEL/SQL Paper"
-
-\end_inset
-
-Vrhovnik, M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
- Support in Workflow Products.
- In: Proc.
- of the 24th International Conference on Data Engineering (ICDE 2008), Cancún,
- México, April 7-12, 2008
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-3"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:ReferencesInBPEL"
-
-\end_inset
-
-Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: Towards Reference Passing
- in Web Service and Workflow-based Applications.
- In: Proceedings of the 13th IEEE Enterprise Distributed Object Conference
- (EDOC 2009)
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-4"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:BPEL-2.0-Spec"
-
-\end_inset
-
-Web Services Business Process Execution Language Version 2.0, http://www.oasis-ope
-n.org/specs/, 15.10.2009 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Direkte Referenz: http://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.pdf
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-5"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Eclipse-BPEL-Designer"
-
-\end_inset
-
-Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 15.10.2009
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-6"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Apache-ODE"
-
-\end_inset
-
-Apache ODE, http://ode.apache.org/, 15.10.2009
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-7"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Apache-Tomcat"
-
-\end_inset
-
-Apache Tomcat, http://tomcat.apache.org/, 15.10.2009
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-8"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:TinyDB"
-
-\end_inset
-
-TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 15.10.2009
 \end_layout
 
 \end_body
