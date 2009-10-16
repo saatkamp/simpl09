@@ -591,7 +591,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-zoabfs, hahnml
+zoabfs, hahnml, xitu
 \end_layout
 
 \end_inset
@@ -636,7 +636,7 @@ reference "sec:Nichtfunktionale-Anforderungen"
 \begin_inset Text
 
 \begin_layout Plain Layout
-hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
+hahnml, zoabisfs
 \end_layout
 
 \end_inset
@@ -681,7 +681,7 @@ reference "sec:Konzepte-und-Realisierungen"
 \begin_inset Text
 
 \begin_layout Plain Layout
-hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
+hahnml, zoabisfs, rehnre
 \end_layout
 
 \end_inset
@@ -733,7 +733,7 @@ reference "sec:Anwendungsfälle-(Use-Cases)"
 \begin_inset Text
 
 \begin_layout Plain Layout
-hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
+hahnml, zoabisfs, schneimi, bruededl, huettiwg, rehnre
 \end_layout
 
 \end_inset
@@ -771,7 +771,7 @@ Abschließende Überarbeitung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-hahnml, zoabisfs, schneimi, xitu, bruededl, huettiwg, rehnre
+hahnml, schneimi, rehnre
 \end_layout
 
 \end_inset
@@ -5114,7 +5114,7 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Datenmanagement-Patterns-SQL"
+name "sub:Datenmanagement-Patterns"
 
 \end_inset
 
@@ -5193,12 +5193,12 @@ Set Retrieval Pattern
 \end_layout
 
 \begin_layout Standard
-Manchmal ist es nötig, Daten innerhalb des Prozessspeichers zu verarbeiten.
+Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
  Das Set Retrieval Pattern liefert dafür eine mengenorientierte Datenstruktur,
- in die man die angefragten externen Daten innerhalb des Prozessspeichers
+ in die man die angefragten externen Daten innerhalb des BPEL-Prozesses
  ablegen kann.
- Diese Datenstruktur verhält sich dabei wie ein Cache im Prozessspeicher,
- der keine Verbindung zur originalen Datenquelle besitzt.
+ Diese Datenstruktur verhält sich dabei wie ein Cache im BPEL-Prozess, der
+ keine Verbindung zur originalen Datenquelle besitzt.
 \end_layout
 
 \begin_layout Paragraph*
@@ -5272,38 +5272,7 @@ Operationen in Knoten von baumartigen Daten außerhalb des Prozesses ausführen
 \end_layout
 
 \begin_layout Paragraph*
-Data Setup Pattern
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-???
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
- Language (DDL) Befehle auf einem XML-Datenbanksystem auszuführen, um so
- während der Prozessausführung die Datenquelle zu konfigurieren oder neue
- Container (Tabellen, Schema, usw.) zu erstellen.
-\end_layout
-
-\begin_layout Paragraph*
 Stored Procedure Pattern
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-???
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5367,9 +5336,9 @@ Query Pattern
 \end_layout
 
 \begin_layout Standard
-Das Query Pattern beschreibt die Notwendigkeit, mithilfe ??? externe Daten
- anfordern zu können.
- Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
+Das Query Pattern beschreibt die Notwendigkeit externe Daten anfordern zu
+ können.
+ Die aus den Abfragen resultierenden Daten können dabei auf der Datenquelle
  zwischengespeichert oder direkt im BPEL-Prozess gehalten werden.
 \end_layout
 
@@ -5377,32 +5346,80 @@ Das Query Pattern beschreibt die Notwendigkeit, mithilfe ??? externe Daten
 File IUD Pattern
 \end_layout
 
+\begin_layout Standard
+Das File IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
+Operationen auf Dateien eines Dateisystems ausführen zu können.
+ Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Dateien.
+\end_layout
+
 \begin_layout Paragraph*
 Data IUD Pattern
 \end_layout
 
+\begin_layout Standard
+Das Data IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
+Operationen innerhalb von Dateien eines Dateisystems ausführen zu können.
+ Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Dateiinhal
+ten.
+\end_layout
+
 \begin_layout Paragraph*
-File Setup Pattern
+Data Setup Pattern
+\end_layout
+
+\begin_layout Standard
+Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
+ Language (DDL) Befehle auf einem Dateisystem auszuführen, um so während
+ der Prozessausführung die Datenquelle zu konfigurieren oder neue Container
+ (Ordner, Dateien, usw.) zu erstellen.
 \end_layout
 
 \begin_layout Paragraph*
 Stored Procedure Pattern
 \end_layout
 
+\begin_layout Standard
+Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
+ wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
+ Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
+\end_layout
+
 \begin_layout Paragraph*
 File Retrieval Pattern
+\end_layout
+
+\begin_layout Standard
+Das File Retrieval Pattern liefert eine Datenstruktur, in die man, aus einem
+ Dateisystem, abgefragte Dateien innerhalb des BPEL-Prozesses ablegen kann.
+ Diese Datenstruktur verhält sich dabei wie ein Cache im BPEL-Prozess, der
+ keine Verbindung zur originalen Datenquelle besitzt.
 \end_layout
 
 \begin_layout Paragraph*
 File Access Pattern
 \end_layout
 
+\begin_layout Standard
+Das File Access Pattern beschreibt die Notwendigkeit, auf den erzeugten
+ Datencache sequentiell zugreifen zu können.
+\end_layout
+
 \begin_layout Paragraph*
 Data IUD Pattern
 \end_layout
 
+\begin_layout Standard
+Das Data IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencache
+ Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden können.
+\end_layout
+
 \begin_layout Paragraph*
 Synchronization Pattern
+\end_layout
+
+\begin_layout Standard
+Das Synchronization Pattern realisiert die Synchronisation eines lokalen
+ Datencaches mit der originalen Datenquelle.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5418,28 +5435,64 @@ zung von Sensornetzen in BPEL benötigt werden.
 Query Pattern
 \end_layout
 
+\begin_layout Standard
+Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
+ externe Daten anfordern zu können.
+ Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
+ in Buffer-Tabellen zwischengespeichert oder direkt im BPEL-Prozess gehalten
+ werden.
+\end_layout
+
 \begin_layout Paragraph*
 Data Setup Pattern
+\end_layout
+
+\begin_layout Standard
+Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
+ Language (DDL) Befehle auf dem Sensornetz-Datenbanksystem auszuführen,
+ um so während der Prozessausführung die Datenquelle zu konfigurieren oder
+ neue Container (Buffer-Tabellen) zu erstellen.
 \end_layout
 
 \begin_layout Paragraph*
 Stored Procedure Pattern
 \end_layout
 
+\begin_layout Standard
+Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
+ wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
+ Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
+\end_layout
+
 \begin_layout Paragraph*
 Set Retrieval Pattern
+\end_layout
+
+\begin_layout Standard
+Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
+ Das Set Retrieval Pattern liefert dafür eine mengenorientierte Datenstruktur,
+ in die man die angefragten externen Daten innerhalb des BPEL-Prozesses
+ ablegen kann.
+ Diese Datenstruktur verhält sich dabei wie ein Cache im BPEL-Prozesses,
+ der keine Verbindung zur originalen Datenquelle besitzt.
 \end_layout
 
 \begin_layout Paragraph*
 Set Access Pattern
 \end_layout
 
+\begin_layout Standard
+Das Set Access Pattern beschreibt die Notwendigkeit, auf den erzeugten Datencach
+e sequentiell und direkt (random) zugreifen zu können.
+\end_layout
+
 \begin_layout Paragraph*
 Tuple IUD Pattern
 \end_layout
 
-\begin_layout Paragraph*
-Synchronization Pattern
+\begin_layout Standard
+Das Tuple IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencach
+e Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden können.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5449,19 +5502,337 @@ name "sub:Umsetzung-der-Datenmanagement"
 
 \end_inset
 
-Umsetzung der Datenmanagement Patterns
+Umsetzung der Datenmanagement-Patterns
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt wird die Realisierung der acht Datenmanagement Patterns
- aus Abschnitt 
+In diesem Abschnitt wird die Realisierung der verschiedenen Datenmanagement-Patt
+erns aus Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenmanagement-Patterns-SQL"
+reference "sub:Datenmanagement-Patterns"
 
 \end_inset
 
  im Zusammenhang mit den jeweiligen Datenquellentypen beschrieben.
+\end_layout
+
+\begin_layout Subsubsection*
+SQL-Datenbanken
+\end_layout
+
+\begin_layout Standard
+Hier wird die Umsetzung der in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datenmanagement-Patterns"
+
+\end_inset
+
+ beschriebenen Patterns im Bereich der SQL-Datenbanken durch bestehende
+ SQL-Befehle oder, falls erforderlich, durch die Definition neuer zu implementie
+render Funktionen beschrieben.
+\end_layout
+
+\begin_layout Itemize
+Query Pattern: Realisierung durch SQL-SELECT.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beispiel: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+SELECT info FROM customer
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Set IUD Pattern: Realisierung durch SQL-INSERT, SQL-UPDATE, SQL-DELETE.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beispiele: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+INSERT INTO department VALUES (’E31’, ’architecture’, ’00390’, ’E01’)
+\end_layout
+
+\begin_layout Itemize
+INSERT INTO department SELECT * FROM old_department
+\end_layout
+
+\begin_layout Itemize
+UPDATE employee SET job = ’laborer’ WHERE empno = ’000290’
+\end_layout
+
+\begin_layout Itemize
+DELETE FROM department WHERE deptno = ’D11’
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Data Setup Pattern: Realisierung durch SQL-CREATE SCHEMA, SQL-CREATE TABLE,
+ SQL-CREATE VIEW und weitere SQL-CREATE Befehle.
+ Weiterhin sollte auch das Löschen dieser Objekte möglich sein, dies wird
+ durch SQL-DROP realisiert.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beispiele: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CREATE SCHEMA internal AUTHORIZATION admin
+\end_layout
+
+\begin_layout Itemize
+CREATE TABLE tdept (deptno CHAR(3) NOT NULL, deptname VARCHAR(36) NOT NULL,
+ mgrno CHAR(6), admrdept CHAR(3) NOT NULL, PRIMARY KEY(deptno)) IN internal
+ 
+\end_layout
+
+\begin_layout Itemize
+CREATE VIEW internal.departmentView AS 
+\begin_inset Newline newline
+\end_inset
+
+SELECT deptno, deptname FROM internal.tdept
+\end_layout
+
+\begin_layout Itemize
+DROP SCHEMA internal
+\end_layout
+
+\begin_layout Itemize
+DROP TABLE tdept
+\end_layout
+
+\begin_layout Itemize
+DROP VIEW internal.departmentView
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Stored Procedure Pattern: Realisierung durch SQL-CALL.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beispiele:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CALL parts_on_hand (?,?,?) 
+\shape italic
+(? = Parameter der Prozedur)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
+ einer entsprechenden BPEL-Aktivität, die eine mengenorientierte Datenstrukur
+ kapseln kann, für BPEL.
+ Eine solche Aktivität liefert dann die Möglichkeit, dass in Ausprägungen
+ dieser Aktivität, Ergebnisse von Queries (siehe Query Pattern), die über
+ die SDO API abstrahiert wurden, innerhalb des BPEL-Prozesses abgelegt werden
+ können.
+ Wie in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BPEL/SQL Paper"
+
+\end_inset
+
+] beschrieben, wurde dieses Konzept bereits durch die 
+\emph on
+Business Integration Suite
+\emph default
+ und dem darin enthaltenen 
+\emph on
+WebSphere Integration Developer
+\emph default
+ mit der Bezeichnung 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Retrieve Set Activity
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph default
+ realisiert.
+ Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
+ innerhalb des Prozessspeichers geladen, eine etwas ausführlichere Beschreibung
+ liefert [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BPEL/SQL Paper"
+
+\end_inset
+
+].
+\end_layout
+
+\begin_layout Itemize
+Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen Methoden,
+ die eine sequentielle und direkte Bearbeitung der mengenorientierten Datenstruk
+tur realisieren, bereitgestellt werden.
+ D.h.
+ konkret, dass es möglich sein muss, mit mengenorientierten Daten innerhalb
+ von BPEL zu arbeiten.
+ Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
+ können.
+ Bei der Kapselung als Aktivität muss es auch möglich sein, dass die entsprechen
+de Aktivität auch in Containern, wie z.B.
+ einer ForEach Activität, korrekt ausgeführt wird.
+ 
+\end_layout
+
+\begin_layout Itemize
+Tuple IUD Pattern: Erweitert die Set Access Pattern Methoden um die Möglichkeite
+n, Tupel innerhalb der mengenorientierten Datenstruktur im Prozessspeicher
+ zu aktualisieren, einzufügen und zu löschen.
+ Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
+ können.
+ 
+\end_layout
+
+\begin_layout Itemize
+Synchronization Pattern: Um die Daten aus dem Prozesscache zurück auf die
+ originale Datenbank zu übertragen, muss ebenfalls eine neue BPEL-Aktivität
+ erstellt werden, durch die der Benutzer angibt, dass die Daten zurückgeschriebe
+n werden sollen.
+ Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
+ Pattern beschriebenen Methoden und ebenso SQL-Befehle um die Daten aus
+ dem Prozesscache auf die Datenbank zu übertragen.
+ Die SDO API und die DAS API liefern dafür bereits einige Methoden, die
+ verwendet werden können.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+NEUE BPEL-AKTIVITÄT: Namensvorschlag => WriteBack Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+XQuery-Datenbanken
+\end_layout
+
+\begin_layout Standard
+Hier wird die Umsetzung der in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datenmanagement-Patterns"
+
+\end_inset
+
+ beschriebenen Patterns im Bereich der XQuery-Datenbanken durch bestehende
+ XQuery-Befehle oder, falls erforderlich, durch die Definition neuer zu
+ implementierender Funktionen beschrieben.
+\end_layout
+
+\begin_layout Itemize
+Query Pattern: Realisierung durch entsprechende FLWOR-XQuery-Befehle.
+\end_layout
+
+\begin_layout Itemize
+Beispiel: 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+NEUE BPEL-AKTIVITÄT: Namensvorschlag => SELECT Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+FOR $d IN $doc/books/book RETURN {$d/title/text}
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Set IUD Pattern: Realisierung durch entsprechende XQuery-Befehle.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beispiele:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+INSERT NODE <year>2005</year> AFTER fn:doc("bib.xml")/books/book[1]/publisher
+\end_layout
+
+\begin_layout Itemize
+REPLACE NODE fn:doc("bib.xml")/books/book[1]/publisher WITH fn:doc("bib.xml")/book
+s/book[2]/publisher 
+\end_layout
+
+\begin_layout Itemize
+REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH fn:doc("bib.xml")
+/books/book[1]/price * 1.1
+\end_layout
+
+\begin_layout Itemize
+RENAME NODE fn:doc("bib.xml")/books/book[1]/author[1] AS "principal-author"
+\end_layout
+
+\begin_layout Itemize
+DELETE NODE fn:doc("bib.xml")/books/book[1]/author[last()]
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Data Setup Pattern: Wird erst in einer späteren Iteration realisiert.
+\end_layout
+
+\begin_layout Itemize
+Stored Procedure Pattern: Wird erst in einer späteren Iteration realisiert.
+\end_layout
+
+\begin_layout Itemize
+Set Retrieval Pattern: Wird erst in einer späteren Iteration realisiert.
+\end_layout
+
+\begin_layout Itemize
+Set Access Pattern: Wird erst in einer späteren Iteration realisiert.
+\end_layout
+
+\begin_layout Itemize
+Tuple IUD Pattern: Wird erst in einer späteren Iteration realisiert.
+\end_layout
+
+\begin_layout Itemize
+Synchronization Pattern: Wird erst in einer späteren Iteration realisiert.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5472,7 +5843,7 @@ Dateisysteme
 Hier wird die Umsetzung der in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenmanagement-Patterns-SQL"
+reference "sub:Datenmanagement-Patterns"
 
 \end_inset
 
@@ -5480,125 +5851,22 @@ reference "sub:Datenmanagement-Patterns-SQL"
  Systemaufrufe des dem Dateisystem zugrundeliegenden Betriebssystems beschrieben.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Minimale Unterstützung von folgenden OS und ihren Dateisystemen:
-\end_layout
-
-\begin_layout Plain Layout
-Linux: ext3 (http://de.wikipedia.org/wiki/Ext3)
-\end_layout
-
-\begin_layout Plain Layout
-Microsoft: NTFS (http://de.wikipedia.org/wiki/NTFS)
-\end_layout
-
-\begin_layout Plain Layout
-Mac: HFS+ (http://de.wikipedia.org/wiki/HFS_plus)
-\end_layout
-
-\begin_layout Plain Layout
-siehe auch wikipedia: http://de.wikipedia.org/wiki/Liste_von_Dateisystemen
- und http://de.wikipedia.org/wiki/Dateisystem
-\end_layout
-
-\begin_layout Plain Layout
------------------------------------------------------------------
-\end_layout
-
-\begin_layout Plain Layout
-C:
-\backslash
-Dokumente und Einstellungen
-\backslash
-benutzername
-\backslash
-Eigene Dateien
-\backslash
-Texte
-\backslash
-Brief1.txt (Windows 2000/XP) 
-\end_layout
-
-\begin_layout Plain Layout
-/Users/benutzername/Texte/Brief1.txt (Mac OS X) 
-\end_layout
-
-\begin_layout Plain Layout
-/home/benutzername/Texte/Brief1.txt (Unix/Linux)
-\end_layout
-
-\begin_layout Plain Layout
------------------------------------------------------------------
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-WebDAV (Web-based Distributed Authoring and Versioning) ist ein offener
- Standard zur Bereitstellung von Dateien im Internet.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Dabei können Benutzer auf ihre Daten wie auf eine Online-Festplatte zugreifen.
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-Quelle: http://de.wikipedia.org/wiki/WebDAV
-\end_layout
-
-\begin_layout Plain Layout
------------------------------------------------------------------
-\end_layout
-
-\begin_layout Plain Layout
-Java unterstützt mindestens UNIX und Windows Dateisysteme, über Mac keine
- Aussage gefunden.
-\end_layout
-
-\begin_layout Plain Layout
-(http://java.sun.com/javase/6/docs/api/java/io/File.html)
-\end_layout
-
-\begin_layout Plain Layout
-Wahrscheinlich Zugriff über JNDI-FileSystemServiceProvider ähnlich, wie
- bei DB und DataSource-Objekten.
-\end_layout
-
-\begin_layout Plain Layout
-Wie wird dann aber die Verbindung zum Zielrechner, auf dem das Binding für
- das Dateisystem liegt, hergestellt?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
-Query Pattern: Realisierung durch eine GET-Methode, die intern java.io Methoden
+Query Pattern: Realisierung durch einen GET-Befehl, der intern java.io Methoden
  verwendet, um Inhalte aus Dateien oder komplette Dateien aus einem Dateisystem
  zu lesen.
- Dafür muss noch ein Konzept erarbeitet werden, wie entsprechende Daten
- gezielt über einen Befehl ausgewählt und abgefragt werden können.
+ Für das Abfragen von Dateiinhalten muss noch ein Konzept erarbeitet werden,
+ wie entsprechende Daten gezielt über einen Befehl ausgewählt und abgefragt
+ werden können.
  Eine Möglichkeit wäre z.B.
  einen Filter-Dialog zur Angabe von Suchparametern über die GUI bereitzustellen,
- der es ermöglicht Datei-Inhalte zu suchen und zurückzugeben.
+ der es ermöglicht Dateiinhalte zu suchen und zurückzugeben.
 \end_layout
 
 \begin_layout Itemize
-Set IUD Pattern: Realisierung durch eine entsprechende PUT- und eine REMOVE-Meth
-ode (RM), die intern java.io Methoden verwenden, um Inhalt in Dateien zu
- schreiben und aus ihnen zu löschen.
+Set IUD Pattern: Realisierung durch einen entsprechenden PUT- und REMOVE-Befehl
+ (RM), die intern java.io Methoden verwenden, um Inhalt in Dateien zu schreiben
+ und aus ihnen zu löschen.
  Ein Update wird bei Dateien intern durch das Löschen des alten Wertes und
  anschließendem Einfügen des neuen Wertes ausgeführt.
  Dafür muss noch ein Konzept erarbeitet werden, wie entsprechende Informationen
@@ -5616,7 +5884,10 @@ Methoden, wie MKDIR und MKFILE zur Erzeugung von Ordnern und Dateien.
 \end_layout
 
 \begin_layout Itemize
-Stored Procedure Pattern: Findet im Rahmen der Dateisysteme keine Verwendung.
+Stored Procedure Pattern: Wird nur eventuell in einer späteren Iteration
+ umgesetzt.
+ Eine Realisierung wäre z.B.
+ über den Aufruf von auf dem Dateisystem hinterlegten Batch-Dateien denkbar.
 \end_layout
 
 \begin_layout Itemize
@@ -5628,7 +5899,7 @@ Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
 \emph on
 Service Data Objects API
 \emph default
- (SDO API) abstrahiert wurden, innerhalb des Prozessspeichers abgelegt werden
+ (SDO API) abstrahiert wurden, innerhalb des BPEL-Prozesses abgelegt werden
  können.
  Wie in [
 \begin_inset CommandInset ref
@@ -5702,341 +5973,6 @@ Data Access Services API
 \end_layout
 
 \begin_layout Subsubsection*
-Datenbanken
-\end_layout
-
-\begin_layout Standard
-Hier wird die Umsetzung der in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Datenmanagement-Patterns-SQL"
-
-\end_inset
-
- beschriebenen Patterns im Bereich der Datenbanken durch bestehende SQL-
- und XQuery-Befehle oder, falls erforderlich, durch die Definition neuer
- zu implementierender Funktionen beschrieben.
-\end_layout
-
-\begin_layout Itemize
-Query Pattern: Realisierung durch SQL-SELECT oder entsprechende XQuery-Befehle.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Beispiele: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-SELECT info FROM customer 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => SELECT Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-FOR $d IN $doc/books/book RETURN {$d/title/text}
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Set IUD Pattern: Realisierung durch SQL-INSERT, SQL-UPDATE, SQL-DELETE oder
- entsprechende XQuery-Befehle.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Beispiele: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-INSERT INTO department VALUES (’E31’, ’architecture’, ’00390’, ’E01’) 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => Insert Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-INSERT INTO department SELECT * FROM old_department
-\end_layout
-
-\begin_layout Itemize
-UPDATE employee SET job = ’laborer’ WHERE empno = ’000290’ 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => Update Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-DELETE FROM department WHERE deptno = ’D11’ 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => Delete Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-INSERT NODE <year>2005</year> AFTER fn:doc("bib.xml")/books/book[1]/publisher
-\end_layout
-
-\begin_layout Itemize
-REPLACE NODE fn:doc("bib.xml")/books/book[1]/publisher WITH fn:doc("bib.xml")/book
-s/book[2]/publisher 
-\end_layout
-
-\begin_layout Itemize
-REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH fn:doc("bib.xml")
-/books/book[1]/price * 1.1
-\end_layout
-
-\begin_layout Itemize
-RENAME NODE fn:doc("bib.xml")/books/book[1]/author[1] AS "principal-author"
-\end_layout
-
-\begin_layout Itemize
-DELETE NODE fn:doc("bib.xml")/books/book[1]/author[last()]
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Data Setup Pattern: Realisierung durch SQL-CREATE SCHEMA, SQL-CREATE TABLE,
- SQL-CREATE VIEW und weitere SQL-CREATE Befehle.
- Weiterhin sollte auch das Löschen dieser Objekte möglich sein, dies wird
- durch SQL-DROP realisiert.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Beispiele: 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Hier eventuell auch eine Create Activity in deren Eigenschaften man Schema,
- Table oder View als Option auswählt.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-CREATE SCHEMA internal AUTHORIZATION admin
-\end_layout
-
-\begin_layout Itemize
-CREATE TABLE tdept (deptno CHAR(3) NOT NULL, deptname VARCHAR(36) NOT NULL,
- mgrno CHAR(6), admrdept CHAR(3) NOT NULL, PRIMARY KEY(deptno)) IN internal
- 
-\end_layout
-
-\begin_layout Itemize
-CREATE VIEW internal.departmentView AS 
-\begin_inset Newline newline
-\end_inset
-
-SELECT deptno, deptname FROM internal.tdept
-\end_layout
-
-\begin_layout Itemize
-DROP SCHEMA internal
-\end_layout
-
-\begin_layout Itemize
-DROP TABLE tdept
-\end_layout
-
-\begin_layout Itemize
-DROP VIEW internal.departmentView
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => Drop Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Stored Procedure Pattern: Realisierung durch SQL-CALL (Aufruf über JDBC
- API möglich).
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Beispiele:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-CALL parts_on_hand (?,?,?) 
-\shape italic
-(? = Parameter der Prozedur)
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => Call Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
- einer entsprechenden BPEL-Aktivität, die eine mengenorientierte Datenstrukur
- kapseln kann, für BPEL.
- Eine solche Aktivität liefert dann die Möglichkeit, dass in Ausprägungen
- dieser Aktivität, Ergebnisse von Queries (siehe Query Pattern), die über
- die SDO API abstrahiert wurden, innerhalb des Prozessspeichers abgelegt
- werden können.
- Wie in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
-
-\end_inset
-
-] beschrieben, wurde dieses Konzept bereits durch die 
-\emph on
-Business Integration Suite
-\emph default
- und dem darin enthaltenen 
-\emph on
-WebSphere Integration Developer
-\emph default
- mit der Bezeichnung 
-\emph on
-
-\begin_inset Quotes eld
-\end_inset
-
-Retrieve Set Activity
-\begin_inset Quotes erd
-\end_inset
-
-
-\emph default
- realisiert.
- Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
- innerhalb des Prozessspeichers geladen, eine etwas ausführlichere Beschreibung
- liefert [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
-
-\end_inset
-
-].
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => RetrieveSet Activity (IBM)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen Methoden,
- die eine sequentielle und direkte Bearbeitung der mengenorientierten Datenstruk
-tur realisieren, bereitgestellt werden.
- D.h.
- konkret, dass es möglich sein muss, mit mengenorientierten Daten innerhalb
- von BPEL zu arbeiten.
- Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
- können.
- Bei der Kapselung als Aktivität muss es auch möglich sein, dass die entsprechen
-de Aktivität auch in Containern, wie z.B.
- einer ForEach Activität, korrekt ausgeführt wird.
- 
-\end_layout
-
-\begin_layout Itemize
-Tuple IUD Pattern: Erweitert die Set Access Pattern Methoden um die Möglichkeite
-n, Tupel innerhalb der mengenorientierten Datenstruktur im Prozessspeicher
- zu aktualisieren, einzufügen und zu löschen.
- Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
- können.
- 
-\end_layout
-
-\begin_layout Itemize
-Synchronization Pattern: Um die Daten aus dem Prozesscache zurück auf die
- originale Datenbank zu übertragen, muss ebenfalls eine neue BPEL-Aktivität
- erstellt werden, durch die der Benutzer angibt, dass die Daten zurückgeschriebe
-n werden sollen.
- Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
- Pattern beschriebenen Methoden und ebenso SQL-Befehle um die Daten aus
- dem Prozesscache auf die Datenbank zu übertragen.
- Die SDO API und die DAS API liefern dafür bereits einige Methoden die verwendet
- werden können.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => WriteBack Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Sensornetze"
@@ -6050,7 +5986,7 @@ Sensornetze
 Hier wird die Umsetzung der in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenmanagement-Patterns-SQL"
+reference "sub:Datenmanagement-Patterns"
 
 \end_inset
 
@@ -6119,13 +6055,6 @@ name
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Set IUD Pattern: Dieses Pattern wird von Sensornetz-Datenbanken nicht unterstütz
-t, da Sensoren nur ausgelesen, und nicht geschrieben werden können.
- Darum ist das Einfügen, Aktualisieren und Löschen von externen Daten auf
- einer Sensornetz-Datenbank nicht möglich.
-\end_layout
-
-\begin_layout Itemize
 Data Setup Pattern: Es können Tabellen im Arbeitsspeicher der Sensoren erstellt
  werden, die dann Werte von Sensoren aufnehmen und halten können.
  Die Erstellung solcher Tabellen wird durch SQL-CREATE BUFFER und das Löschen
@@ -6136,7 +6065,7 @@ Data Setup Pattern: Es können Tabellen im Arbeitsspeicher der Sensoren erstellt
 \begin_layout Itemize
 Eine Buffer-Tabelle erstellen: CREATE BUFFER name SIZE x ( field1 type,
  field2 type, ...
- ) 
+ )
 \end_layout
 
 \begin_deeper
@@ -6215,22 +6144,15 @@ command
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Set Retrieval Pattern: Realisierung ebenso wie bei Datenbanken beschrieben.
+Set Retrieval Pattern: Realisierung ebenso wie bei SQL-Datenbanken beschrieben.
 \end_layout
 
 \begin_layout Itemize
-Set Access Pattern: Realisierung ebenso wie bei Datenbanken beschrieben.
+Set Access Pattern: Realisierung ebenso wie bei SQL-Datenbanken beschrieben.
 \end_layout
 
 \begin_layout Itemize
-Tuple IUD Pattern: Realisierung ebenso wie bei Datenbanken beschrieben.
-\end_layout
-
-\begin_layout Itemize
-Synchronization Pattern: Hier gilt dasselbe wie für das Set IUD Pattern.
- Da es nicht möglich ist, Daten von außen in die Sensornetz-Datenbank einzubring
-en, wird die Realisierung dieses Patterns nicht unterstützt bzw.
- benötigt.
+Tuple IUD Pattern: Realisierung ebenso wie bei SQL-Datenbanken beschrieben.
 \end_layout
 
 \begin_layout Subsubsection
