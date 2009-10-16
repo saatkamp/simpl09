@@ -5128,7 +5128,7 @@ In diesem Abschnitt werden alle Datenmanagement-Patterns, die zur Realisierung
 \end_layout
 
 \begin_layout Subsubsection*
-SQL-Datenbanken
+Relationale Datenbanken
 \end_layout
 
 \begin_layout Standard
@@ -5229,7 +5229,7 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 \end_layout
 
 \begin_layout Subsubsection*
-XQuery-Datenbanken
+XML-Datenbanken
 \end_layout
 
 \begin_layout Standard
@@ -5269,6 +5269,17 @@ Operationen in Knoten von baumartigen Daten außerhalb des Prozesses ausführen
  zu können.
  Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Werten
  innerhalb von Knoten.
+\end_layout
+
+\begin_layout Paragraph*
+Data Setup Pattern
+\end_layout
+
+\begin_layout Standard
+Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
+ Language (DDL) Befehle auf einem XML-Datenbanksystem auszuführen, um so
+ während der Prozessausführung die Datenquelle zu konfigurieren oder neue
+ Container (Tabellen, Schema, usw.) zu erstellen.
 \end_layout
 
 \begin_layout Paragraph*
@@ -5503,6 +5514,17 @@ name "sub:Umsetzung-der-Datenmanagement"
 \end_inset
 
 Umsetzung der Datenmanagement-Patterns
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+komplett überarbeiten, anhand von Abschnitt 7.1.1 (Für #Retrievel Pattern
+ => Orientierung an File Retrieval Pattern in Abschnitt Dateisysteme
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5518,7 +5540,7 @@ reference "sub:Datenmanagement-Patterns"
 \end_layout
 
 \begin_layout Subsubsection*
-SQL-Datenbanken
+Relationale Datenbanken
 \end_layout
 
 \begin_layout Standard
@@ -5643,12 +5665,15 @@ CALL parts_on_hand (?,?,?)
 \end_deeper
 \begin_layout Itemize
 Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
- einer entsprechenden BPEL-Aktivität, die eine mengenorientierte Datenstrukur
- kapseln kann, für BPEL.
- Eine solche Aktivität liefert dann die Möglichkeit, dass in Ausprägungen
- dieser Aktivität, Ergebnisse von Queries (siehe Query Pattern), die über
- die SDO API abstrahiert wurden, innerhalb des BPEL-Prozesses abgelegt werden
- können.
+ einer entsprechenden BPEL-Aktivität.
+ Diese Aktivität liefert dann die Möglichkeit, dass durch einen SQL-SELECT
+ Befehl abgefragte Daten (siehe Query Pattern) in den BPEL-Prozess geladen
+ und in einer BPEL-Variable ablegt werden können.
+ Die Daten werden dazu über die 
+\emph on
+Service Data Objects API
+\emph default
+ (SDO API) abstrahiert.
  Wie in [
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5678,7 +5703,7 @@ Retrieve Set Activity
 \emph default
  realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
- innerhalb des Prozessspeichers geladen, eine etwas ausführlichere Beschreibung
+ innerhalb des BPEL-Prozesses geladen, eine etwas ausführlichere Beschreibung
  liefert [
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5706,7 +5731,7 @@ de Aktivität auch in Containern, wie z.B.
 
 \begin_layout Itemize
 Tuple IUD Pattern: Erweitert die Set Access Pattern Methoden um die Möglichkeite
-n, Tupel innerhalb der mengenorientierten Datenstruktur im Prozessspeicher
+n, Tupel innerhalb der mengenorientierten Datenstruktur im BPEL-Prozess
  zu aktualisieren, einzufügen und zu löschen.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
@@ -5737,7 +5762,7 @@ NEUE BPEL-AKTIVITÄT: Namensvorschlag => WriteBack Activity
 \end_layout
 
 \begin_layout Subsubsection*
-XQuery-Datenbanken
+XML-Datenbanken
 \end_layout
 
 \begin_layout Standard
@@ -5758,17 +5783,7 @@ Query Pattern: Realisierung durch entsprechende FLWOR-XQuery-Befehle.
 \end_layout
 
 \begin_layout Itemize
-Beispiel: 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-NEUE BPEL-AKTIVITÄT: Namensvorschlag => SELECT Activity
-\end_layout
-
-\end_inset
-
-
+Beispiel:
 \end_layout
 
 \begin_deeper
@@ -5778,7 +5793,7 @@ FOR $d IN $doc/books/book RETURN {$d/title/text}
 
 \end_deeper
 \begin_layout Itemize
-Set IUD Pattern: Realisierung durch entsprechende XQuery-Befehle.
+Tree IUD Pattern: Realisierung durch entsprechende XQuery-Befehle.
 \end_layout
 
 \begin_deeper
@@ -5797,16 +5812,28 @@ s/book[2]/publisher
 \end_layout
 
 \begin_layout Itemize
-REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH fn:doc("bib.xml")
-/books/book[1]/price * 1.1
-\end_layout
-
-\begin_layout Itemize
 RENAME NODE fn:doc("bib.xml")/books/book[1]/author[1] AS "principal-author"
 \end_layout
 
 \begin_layout Itemize
 DELETE NODE fn:doc("bib.xml")/books/book[1]/author[last()]
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Node IUD Pattern: Realisierung durch entsprechende XQuery-Befehle.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beispiel:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH fn:doc("bib.xml")
+/books/book[1]/price * 1.1
 \end_layout
 
 \end_deeper
@@ -5820,15 +5847,15 @@ Stored Procedure Pattern: Wird erst in einer späteren Iteration realisiert.
 \end_layout
 
 \begin_layout Itemize
-Set Retrieval Pattern: Wird erst in einer späteren Iteration realisiert.
+Tree Retrieval Pattern: Wird erst in einer späteren Iteration realisiert.
 \end_layout
 
 \begin_layout Itemize
-Set Access Pattern: Wird erst in einer späteren Iteration realisiert.
+Tree Access Pattern: Wird erst in einer späteren Iteration realisiert.
 \end_layout
 
 \begin_layout Itemize
-Tuple IUD Pattern: Wird erst in einer späteren Iteration realisiert.
+Node IUD Pattern: Wird erst in einer späteren Iteration realisiert.
 \end_layout
 
 \begin_layout Itemize
@@ -5864,7 +5891,7 @@ Query Pattern: Realisierung durch einen GET-Befehl, der intern java.io Methoden
 \end_layout
 
 \begin_layout Itemize
-Set IUD Pattern: Realisierung durch einen entsprechenden PUT- und REMOVE-Befehl
+File IUD Pattern: Realisierung durch einen entsprechenden PUT- und REMOVE-Befehl
  (RM), die intern java.io Methoden verwenden, um Inhalt in Dateien zu schreiben
  und aus ihnen zu löschen.
  Ein Update wird bei Dateien intern durch das Löschen des alten Wertes und
@@ -5874,12 +5901,16 @@ Set IUD Pattern: Realisierung durch einen entsprechenden PUT- und REMOVE-Befehl
 \end_layout
 
 \begin_layout Itemize
-Data Setup Pattern: Realisierung durch die Verwendung entsprechender Erzeugungs-
-Methoden, wie MKDIR und MKFILE zur Erzeugung von Ordnern und Dateien.
+Data IUD Pattern: Wird erst in einer späteren Iteration realisiert.
+\end_layout
+
+\begin_layout Itemize
+Data Setup Pattern: Realisierung durch die Verwendung entsprechender Erzeugungsb
+efehle, wie MKDIR und MKFILE zur Erzeugung von Ordnern und Dateien.
  Diese werden intern wieder durch java.io-Methoden realisiert.
  Hier sollte es auf jeden Fall möglich sein, Dateien und Ordner in einem
  Dateisystem erzeugen zu können.
- Ebenso sollte optional das Löschen auf der gleichen Ebene, d.h.
+ Ebenso sollte das Löschen auf der gleichen Ebene, d.h.
  von ganzen Dateien und Ordnern, möglich sein.
 \end_layout
 
@@ -5891,16 +5922,16 @@ Stored Procedure Pattern: Wird nur eventuell in einer späteren Iteration
 \end_layout
 
 \begin_layout Itemize
-Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
- einer entsprechenden BPEL-Aktivität, die Daten kapselt und im Prozessspeicher
- halten kann, für BPEL.
- Eine solche Aktivität liefert dann die Möglichkeit, dass in ihren Ausprägungen
- Ergebnisse von Queries (siehe Query Pattern), die über die 
+File Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
+ einer entsprechenden BPEL-Aktivität.
+ Diese Aktivität liefert dann die Möglichkeit, dass durch einen GET-Befehl
+ abgefragte Daten (siehe Query Pattern) in den BPEL-Prozess geladen und
+ in einer BPEL-Variable ablegt werden können.
+ Die Daten werden dazu über die 
 \emph on
 Service Data Objects API
 \emph default
- (SDO API) abstrahiert wurden, innerhalb des BPEL-Prozesses abgelegt werden
- können.
+ (SDO API) abstrahiert.
  Wie in [
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5928,31 +5959,39 @@ Retrieve Set Activity
 
 
 \emph default
- realisiert.
+ für mengenorientierte Daten realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
- innerhalb des Prozessspeichers geladen, eine etwas ausführlichere Beschreibung
- liefert .
+ innerhalb des BPEL-Prozesses geladen, eine etwas ausführlichere Beschreibung
+ liefert [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BPEL/SQL Paper"
+
+\end_inset
+
+].
 \end_layout
 
 \begin_layout Itemize
-Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen Methoden,
- die eine sequentielle und direkte Bearbeitung des Datencache einer RetrieveSet
- Activity realisieren, bereitgestellt werden.
+File Access Pattern: Um das File Access Pattern zu realisieren, müssen innerhalb
+ des Projekts Methoden, die eine sequentielle Bearbeitung des, durch eine
+ RetrieveData Aktivität erzeugten, Datencaches realisieren, bereitgestellt
+ werden.
  D.h.
- konkret, dass es möglich sein muss, mit der definierten Aktivität innerhalb
+ konkret, dass es möglich sein muss, mit den definierten Variablen innerhalb
  von BPEL zu arbeiten.
- Die SDO API liefert dafür bereits einige Methoden die verwendet werden
+ Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
- Es muss weiterhin möglich sein, dass eine entsprechende Aktivität auch
- in Containern, wie z.B.
- einer ForEach Activity, korrekt ausgeführt wird.
+ Es muss weiterhin möglich sein, dass eine entsprechende Variable auch in
+ Containern, wie z.B.
+ einer ForEach Activity, verwendet werden kann.
 \end_layout
 
 \begin_layout Itemize
-Tuple IUD Pattern: Erweitert die Set Access Pattern Methoden um die Möglichkeite
-n Werte innerhalb der mengenorientierten Datenstruktur im Prozessspeicher
- zu aktualisieren, einzufügen und zu löschen.
- Die SDO API liefert dafür bereits einige Methoden die verwendet werden
+Data IUD Pattern: Erweitert die File Access Pattern Methoden um die Möglichkeite
+n Werte innerhalb des Datencaches des BPEL-Prozesses zu aktualisieren, einzufüge
+n und zu löschen.
+ Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
  
 \end_layout
@@ -6310,12 +6349,99 @@ vs.
 
 \begin_layout Plain Layout
 
-	<anyElementQName name="’MyName"’ suppressJoinFailure = "‘yes"’ > ...
- <targets>? <joinCondition expressionLanguage="anyURI"?>? bool-expr </joinCondit
-ion> <target linkName="NCName" />+ </targets> <sources>? <source linkName="NCNam
-e">+ <transitionCondition expressionLanguage="anyURI"?>? bool-expr </transitionC
-ondition> </source> </sources> ...
- </anyElementQName> </extensionActivity>
+	<anyElementQName name="’MyName"’ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		suppressJoinFailure = "‘yes"’ > 
+\end_layout
+
+\begin_layout Plain Layout
+
+		...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>? 
+\end_layout
+
+\begin_layout Plain Layout
+
+			<joinCondition expressionLanguage="anyURI"?>? 
+\end_layout
+
+\begin_layout Plain Layout
+
+				bool-expr 
+\end_layout
+
+\begin_layout Plain Layout
+
+			</joinCondition> 
+\end_layout
+
+\begin_layout Plain Layout
+
+			<target linkName="NCName" />+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>? 
+\end_layout
+
+\begin_layout Plain Layout
+
+			<source linkName="NCName">+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+				<transitionCondition expressionLanguage="anyURI"?>? 
+\end_layout
+
+\begin_layout Plain Layout
+
+					bool-expr 
+\end_layout
+
+\begin_layout Plain Layout
+
+				</transitionCondition> 
+\end_layout
+
+\begin_layout Plain Layout
+
+			</source> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources> 
+\end_layout
+
+\begin_layout Plain Layout
+
+		...
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	</anyElementQName> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6461,11 +6587,11 @@ Diese Aktivität ermöglicht es auf der Datenquelle hinterlegte Prozeduren
 \end_layout
 
 \begin_layout Subsubsection*
-RetrieveSet Aktivität
+RetrieveData Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es, Daten von Datenquellen in den Prozessspeicher
+Diese Aktivität ermöglicht es, Daten von Datenquellen in den BPEL-Prozess
  zu laden.
 \end_layout
 
@@ -6580,7 +6706,7 @@ Move Aktivität
 \series bold
 WriteBack Aktivität:
 \series default
- Diese Aktivität ermöglicht es, Daten aus dem Prozessspeicher auf die originale
+ Diese Aktivität ermöglicht es, Daten aus dem BPEL-Prozess auf die originale
  Datenquelle zurückzuschreiben.
  Diese Aktivität existiert nicht für Sensornetze.
 \end_layout
