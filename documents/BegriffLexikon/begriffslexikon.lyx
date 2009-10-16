@@ -1857,7 +1857,7 @@ physikalische Adresse
 status open
 
 \begin_layout Plain Layout
-von was?
+von was? (spezifiger)
 \end_layout
 
 \end_inset
@@ -1920,7 +1920,17 @@ Late Binding
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Vorgehen bei dem Objekte erst zur Laufzeit typisiert werden.
+Ein Vorgehen bei dem Objekte erst zur Laufzeit typisiert 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+klarer villeicht ?
+\end_layout
+
+\end_inset
+
+ werden.
 \end_layout
 
 \end_inset
@@ -2098,7 +2108,7 @@ Monitoring
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erfassung, Beobachtung und Überwachung aller Einganben des Nutzers
+Erfassung, Beobachtung und Überwachung aller Einganben des Nutzers 
 \end_layout
 
 \end_inset
