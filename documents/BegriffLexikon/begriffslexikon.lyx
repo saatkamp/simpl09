@@ -631,7 +631,27 @@ Abnahmetest
 \begin_inset Text
 
 \begin_layout Plain Layout
-Test des Rahmenwerks durch den Kunden vor der Abnahme
+Test des 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+für das
+\end_layout
+
+\end_inset
+
+Rahmenwerks durch den Kunden vor der
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+bei der Abnahme
+\end_layout
+
+\end_inset
+
+ Abnahme
 \end_layout
 
 \end_inset
@@ -660,8 +680,17 @@ Administrator
 \begin_inset Text
 
 \begin_layout Plain Layout
-Verwaltet den Server und ist zuständig für die Entwicklungstools und die
- Softwareinfrastuktur
+Verwaltet den Server und ist zuständig für die Entwicklungstools
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+??
+\end_layout
+
+\end_inset
+
+ und die Softwareinfrastuktur
 \end_layout
 
 \end_inset
@@ -806,7 +835,17 @@ Atomic Scope
 \begin_inset Text
 
 \begin_layout Plain Layout
-Lokale Umgebung in BPEL in der alle Aktivitäten atomar sind
+Lokale Umgebung in BPEL in der alle Aktivitäten atomar sind 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lokale Umgebung ??
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -836,7 +875,17 @@ Ausfallsicherheit
 
 \begin_layout Plain Layout
 So lange die äusseren Bedingungen stimmen läuft das Programm ohne Wartung
- weiter
+ weiter 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+kann man weglassen,da es im Spezi als nicht-funk Anfo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -926,6 +975,19 @@ Autorisierung
 Autorisierung der Zugriffe auf eine Datenquelle
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beinhaltet die Zugriffrechte auf die Datenquelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -1011,6 +1073,17 @@ Business Process Execution Language
 
 \begin_layout Plain Layout
 XML basierte Sprache zur Formulierung von Geschäftsprozessen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+bzw.
+ Wissenschaftliche Prozessen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1039,6 +1112,15 @@ BPEL Extension Activity
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ist eine Erweiterungs(aktivität)
+\end_layout
+
+\end_inset
+
 Aktivität zur Erweiterung der Funktionalität von BPEL
 \end_layout
 
@@ -1127,6 +1209,16 @@ Datenmanagement
 
 \begin_layout Plain Layout
 Alle Operationen und Maßnahmen zur Verwendung von Daten in einem Prozess
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+befasst alle operationen zu editierung,Löschen und Erzeugung von daten 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1155,7 +1247,17 @@ Datenquelle
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Endpunkt von dem Daten verschiedenster Art abgerufen und ggf.
+Ein Endpunkt
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ein Schnittstelle /System Baustein
+\end_layout
+
+\end_inset
+
+ von dem Daten verschiedenster Art abgerufen und ggf.
  auch geändert und gelöscht werden können
 \end_layout
 
@@ -1188,6 +1290,20 @@ Datenbank
 System zur Verwaltung großer Datenmengen
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eine Art strukturiertes Ablage für die Daten, die in Spalten und Tabellen
+ sortiert sind.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -1216,6 +1332,16 @@ Deployment
 \begin_layout Plain Layout
 Zum Einsatz bringen z.B.
  eines Web Services auf einem Server
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1246,6 +1372,16 @@ Deployment Descriptor
 \begin_layout Plain Layout
 Eine Zeile im Code, die vor der Ausführung ausgewertet wird und diese beeinfluss
 t
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1420,7 +1556,17 @@ Erweiterbarkeit
 
 \begin_layout Plain Layout
 Die Möglichkeit das Rahmenwerk zu erweitern in Hinsicht auf verwendete Technolog
-ien und Unterstützung von Datenquellen
+ien und Unterstützung von Datenquellen 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+als nicht-funk anfor vorhanden
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1511,6 +1657,16 @@ generisch
 \begin_layout Plain Layout
 Nicht an eine Sache gebunden z.B.
  eine Datenquelle Handler Eine Komponente 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1541,6 +1697,16 @@ Handler
 \begin_layout Plain Layout
 Eine Komponente die für eine bestimmte Aufgabe zuständig ist und sich darum
  kümmert
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+, falls eine Ereigniss (fault-Hhandler,Compensation-ha ndler) auftritt
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1686,7 +1852,17 @@ konkrete Adresse
 \begin_inset Text
 
 \begin_layout Plain Layout
-physikalische Adresse
+physikalische Adresse 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+von was?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
