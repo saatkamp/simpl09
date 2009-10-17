@@ -5668,7 +5668,9 @@ Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
  einer entsprechenden BPEL-Aktivität.
  Diese Aktivität liefert dann die Möglichkeit, dass durch einen SQL-SELECT
  Befehl abgefragte Daten (siehe Query Pattern) in den BPEL-Prozess geladen
- und in einer BPEL-Variable ablegt werden können.
+ und in einer entsprechenden BPEL-Variable ablegt werden können.
+ Dazu müssen neue Variablentypen bereitgestellt werden, die den Strukturen
+ der zu haltenden Daten entsprechen, also mengenartige Daten halten können.
  Die Daten werden dazu über die 
 \emph on
 Service Data Objects API
@@ -5715,18 +5717,18 @@ reference "BPEL/SQL Paper"
 \end_layout
 
 \begin_layout Itemize
-Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen Methoden,
- die eine sequentielle und direkte Bearbeitung der mengenorientierten Datenstruk
-tur realisieren, bereitgestellt werden.
+Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen im
+ Projektverlauf Methoden, die eine sequentielle und direkte Bearbeitung
+ des durch eine RetrieveData Aktivität erzeugten Datencaches, bereitgestellt
+ werden.
  D.h.
- konkret, dass es möglich sein muss, mit mengenorientierten Daten innerhalb
- von BPEL zu arbeiten.
+ konkret, dass es möglich sein muss, mit den definierten Variablen und deren
+ Typen innerhalb von BPEL zu arbeiten.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
- Bei der Kapselung als Aktivität muss es auch möglich sein, dass die entsprechen
-de Aktivität auch in Containern, wie z.B.
- einer ForEach Activität, korrekt ausgeführt wird.
- 
+ Es muss weiterhin möglich sein, dass entsprechende Variablen auch in BPEL-Aktiv
+itäten, wie z.B.
+ einer ForEach Activity, verwendet werden können.
 \end_layout
 
 \begin_layout Itemize
@@ -5807,8 +5809,11 @@ INSERT NODE <year>2005</year> AFTER fn:doc("bib.xml")/books/book[1]/publisher
 \end_layout
 
 \begin_layout Itemize
-REPLACE NODE fn:doc("bib.xml")/books/book[1]/publisher WITH fn:doc("bib.xml")/book
-s/book[2]/publisher 
+REPLACE NODE fn:doc("bib.xml")/books/book[1]/publisher WITH 
+\begin_inset Newline newline
+\end_inset
+
+fn:doc("bib.xml")/books/book[2]/publisher 
 \end_layout
 
 \begin_layout Itemize
@@ -5832,8 +5837,11 @@ Beispiel:
 
 \begin_deeper
 \begin_layout Itemize
-REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH fn:doc("bib.xml")
-/books/book[1]/price * 1.1
+REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH 
+\begin_inset Newline newline
+\end_inset
+
+fn:doc("bib.xml")/books/book[1]/price * 1.1
 \end_layout
 
 \end_deeper
@@ -5909,7 +5917,7 @@ Data Setup Pattern: Realisierung durch die Verwendung entsprechender Erzeugungsb
 efehle, wie MKDIR und MKFILE zur Erzeugung von Ordnern und Dateien.
  Diese werden intern wieder durch java.io-Methoden realisiert.
  Hier sollte es auf jeden Fall möglich sein, Dateien und Ordner in einem
- Dateisystem erzeugen zu können.
+ Dateisystem zu erzeugen.
  Ebenso sollte das Löschen auf der gleichen Ebene, d.h.
  von ganzen Dateien und Ordnern, möglich sein.
 \end_layout
@@ -5926,7 +5934,9 @@ File Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
  einer entsprechenden BPEL-Aktivität.
  Diese Aktivität liefert dann die Möglichkeit, dass durch einen GET-Befehl
  abgefragte Daten (siehe Query Pattern) in den BPEL-Prozess geladen und
- in einer BPEL-Variable ablegt werden können.
+ in einer entsprechenden BPEL-Variable ablegt werden können.
+ Dazu müssen neue Variablentypen bereitgestellt werden, die den Strukturen
+ der zu haltenden Daten entsprechen.
  Die Daten werden dazu über die 
 \emph on
 Service Data Objects API
@@ -5973,18 +5983,17 @@ reference "BPEL/SQL Paper"
 \end_layout
 
 \begin_layout Itemize
-File Access Pattern: Um das File Access Pattern zu realisieren, müssen innerhalb
- des Projekts Methoden, die eine sequentielle Bearbeitung des, durch eine
- RetrieveData Aktivität erzeugten, Datencaches realisieren, bereitgestellt
- werden.
+File Access Pattern: Um das File Access Pattern zu realisieren, müssen im
+ Projektverlauf Methoden, die eine sequentielle Bearbeitung des durch eine
+ RetrieveData Aktivität erzeugten Datencaches, bereitgestellt werden.
  D.h.
- konkret, dass es möglich sein muss, mit den definierten Variablen innerhalb
- von BPEL zu arbeiten.
+ konkret, dass es möglich sein muss, mit den definierten Variablen und deren
+ Typen innerhalb von BPEL zu arbeiten.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
- Es muss weiterhin möglich sein, dass eine entsprechende Variable auch in
- Containern, wie z.B.
- einer ForEach Activity, verwendet werden kann.
+ Es muss weiterhin möglich sein, dass entsprechende Variablen auch in BPEL-Aktiv
+itäten, wie z.B.
+ einer ForEach Activity, verwendet werden können.
 \end_layout
 
 \begin_layout Itemize
@@ -6009,6 +6018,9 @@ n werden sollen.
 Data Access Services API
 \emph default
  (DAS API) liefern dafür bereits einige Methoden die verwendet werden können.
+ Die Umsetzung dieses Patterns wird erst in einer späteren Iteration realisiert,
+ da zuerst Erkentnisse im Bereich der Datenbanken gesammelt werden und mit
+ diesen dann ein Ansatz für Dateisysteme erarbeitet wird.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6217,9 +6229,13 @@ reference "sub:Umsetzung-der-Datenmanagement"
  Dazu gehört z.B.
  auch, welche Attribute welchen Typs für die einzelnen Aktivitäten benötigt
  werden.
- Generell gilt, dass alle Aktivitäten mindestens die drei Variablen 
+ Generell gilt, dass alle Aktivitäten mindestens die vier Variablen 
 \emph on
 type
+\emph default
+, 
+\emph on
+kind
 \emph default
 , 
 \emph on
@@ -6237,7 +6253,14 @@ type
  dient zur Angabe des Datenquellentyps, für den die Aktivität ausgeführt
  wird, also ob es sich um ein Dateisystem, eine Datenbank oder ein Sensornetz
  handelt.
- Diese Auswahl ist wichtig, um intern den richtigen SQL-Dialekt bzw.
+ Die Variable 
+\emph on
+kind
+\emph default
+ dient zur Angabe der Datenquellenart, d.h.
+ um was für ein Dateisystem, was für eine Datenbank oder welche Art von
+ Sensornetz es sich handelt.
+ Diese Informationen sind wichtig, um intern den richtigen SQL-Dialekt bzw.
  Befehlssatz für die entsprechende Datenquelle auszuwählen.
  Die Variable 
 \emph on
@@ -6249,7 +6272,7 @@ statement
 \emph default
 zur Haltung des entsprechenden Systemaufrufs bzw.
  SQL- oder XQuery-Befehls, der ausgeführt werden soll.
- Da jede der definierten Aktivitäten diese drei Variablen besitzt, werden
+ Da jede der definierten Aktivitäten diese vier Variablen besitzt, werden
  diese nachfolgend nicht mehr angegeben und nur falls benötigt weitere aktivität
 sspezifische Variablen beschrieben.
  Weiterhin werden die verschiedenen Ausprägungen der einzelnen Aktivitäten
@@ -6283,6 +6306,44 @@ reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
  schnellstmöglich ohne detaillierte Kenntnisse der Abfragesprache alle zur
  Verfügung gestellten Daten- und Datenquellenbefehle für alle unterstützten
  Datenquellen ausführen kann.
+ Trotz der Einschränkungen, die ohne Zweifel durch die grafische Erstellung
+ der Befehle bestehen, steht dem Benutzer der volle Sprachumfang der jeweiligen
+ Datenquellensprache bzw.
+ der vollständige Befehlssatz der Datenquelle zur Verfügung.
+ Der volle Sprachumfang kann dabei mindestens, wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
+
+\end_inset
+
+ dargestellt, über die Angabe von Befehlen im 
+\begin_inset Quotes eld
+\end_inset
+
+Resulting statement
+\begin_inset Quotes erd
+\end_inset
+
+-Textfeld genutzt werden.
+\end_layout
+
+\begin_layout Standard
+Nachfolgend werden alle, durch die Abschnitte 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datenmanagement-Patterns"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Umsetzung-der-Datenmanagement"
+
+\end_inset
+
+ identifizierten, Aktivtäten aufgezeigt und beschrieben.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6295,6 +6356,31 @@ Diese Aktivität ermöglicht es, aus jeder beliebigen Datenquelle Daten zu
  Weitere spezifische Attribute werden dafür nicht benötigt.
  Die Query Aktivität ist für alle Datenquellen gleich strukturiert, und
  nur die entsprechenden Query-Befehle unterscheiden sich je nach Datenquelle.
+ Diese Aktivität wird auch für das sensornetzinterne Einfügen von Sensordaten
+ in Buffer-Tabellen genutzt (wie auch in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Sensornetze"
+
+\end_inset
+
+ beschrieben).
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Query Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer Query Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6311,132 +6397,163 @@ status open
 
 \begin_layout Plain Layout
 
-   <anyElementQName standard-attributes>
+	<queryActivity name="NCName"? suppressJoinFailure="yes|no"?>
 \end_layout
 
 \begin_layout Plain Layout
 
-      standard-elements
+		
 \end_layout
 
 \begin_layout Plain Layout
 
-   </anyElementQName>
+		<targets>?
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+   		<joinCondition expressionLanguage="anyURI"?>?
 \end_layout
 
 \begin_layout Plain Layout
 
+      		bool-expr
 \end_layout
 
 \begin_layout Plain Layout
 
-vs.
+   		</joinCondition>
 \end_layout
 
 \begin_layout Plain Layout
 
+   		<target linkName="NCName" />+
 \end_layout
 
 \begin_layout Plain Layout
 
-<extensionActivity> 
+		</targets>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<anyElementQName name="’MyName"’ 
-\end_layout
-
-\begin_layout Plain Layout
-
-		suppressJoinFailure = "‘yes"’ > 
-\end_layout
-
-\begin_layout Plain Layout
-
-		...
  
 \end_layout
 
 \begin_layout Plain Layout
 
-		<targets>? 
+		<sources>?
 \end_layout
 
 \begin_layout Plain Layout
 
-			<joinCondition expressionLanguage="anyURI"?>? 
+   		<source linkName="NCName">+
 \end_layout
 
 \begin_layout Plain Layout
 
-				bool-expr 
+      		<transitionCondition expressionLanguage="anyURI"?>?
 \end_layout
 
 \begin_layout Plain Layout
 
-			</joinCondition> 
+         		bool-expr
 \end_layout
 
 \begin_layout Plain Layout
 
-			<target linkName="NCName" />+ 
+      		</transitionCondition>
 \end_layout
 
 \begin_layout Plain Layout
 
-		</targets> 
+   		</source>
 \end_layout
 
 \begin_layout Plain Layout
 
-		<sources>? 
+		</sources>
 \end_layout
 
 \begin_layout Plain Layout
 
-			<source linkName="NCName">+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-				<transitionCondition expressionLanguage="anyURI"?>? 
+		<catch faultName="QName"?
 \end_layout
 
 \begin_layout Plain Layout
 
-					bool-expr 
+        	faultVariable="BPELVariableName"?
 \end_layout
 
 \begin_layout Plain Layout
 
-				</transitionCondition> 
+        	faultMessageType="QName"?
 \end_layout
 
 \begin_layout Plain Layout
 
-			</source> 
+        	faultElement="QName"?>*
 \end_layout
 
 \begin_layout Plain Layout
 
-		</sources> 
+        	activity
 \end_layout
 
 \begin_layout Plain Layout
 
-		...
- 
+    	</catch>
 \end_layout
 
 \begin_layout Plain Layout
 
-	</anyElementQName> 
+\end_layout
+
+\begin_layout Plain Layout
+
+    	<catchAll>?
+\end_layout
+
+\begin_layout Plain Layout
+
+        	activity
+\end_layout
+
+\begin_layout Plain Layout
+
+    	</catchAll>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    	<compensationHandler>?
+\end_layout
+
+\begin_layout Plain Layout
+
+        	activity
+\end_layout
+
+\begin_layout Plain Layout
+
+    	</compensationHandler>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</queryActivity> 
 \end_layout
 
 \begin_layout Plain Layout
@@ -6455,7 +6572,7 @@ name "lst:Query Aktivität"
 
 \end_inset
 
-Struktur einer Query Aktivität
+Schema einer Query Aktivität
 \end_layout
 
 \end_inset
@@ -6474,16 +6591,152 @@ Insert Aktivität
 
 \begin_layout Standard
 Diese Aktivität ermöglicht es, Daten in eine Datenquelle einzufügen.
- Da dies für Sensornetze nicht relevant ist, wird diese Aktivität für das
- sensornetzinterne Einfügen von Sensornetzdaten in Buffer-Tabellen genutzt
- (wie auch in Abschnitt 
+ Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Sensornetze"
+reference "lst:Insert Aktivität"
 
 \end_inset
 
- beschrieben).
+ zeigt das BPEL-Schema einer Insert Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<insertActivity name="NCName"? suppressJoinFailure="yes|no"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<joinCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+      		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</joinCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<target linkName="NCName" />+
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets>
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<source linkName="NCName">+
+\end_layout
+
+\begin_layout Plain Layout
+
+      		<transitionCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+         		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+      		</transitionCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</source>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</insertActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Insert Aktivität"
+
+\end_inset
+
+Schema einer Insert Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6494,6 +6747,152 @@ Update Aktivität
 Diese Aktivität ermöglicht es, auf einer Datenquelle hinterlegte Daten durch
  aktuellere externe Daten zu ersetzen.
  Diese Aktivität kann nicht auf Sensornetze angewendet werden.
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Insert Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer Update Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<updateActivity name="NCName"? suppressJoinFailure="yes|no"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<joinCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+      		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</joinCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<target linkName="NCName" />+
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets>
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<source linkName="NCName">+
+\end_layout
+
+\begin_layout Plain Layout
+
+      		<transitionCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+         		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+      		</transitionCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</source>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</updateActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Update Aktivität"
+
+\end_inset
+
+Schema einer Update Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6503,6 +6902,152 @@ Delete Aktivität
 \begin_layout Standard
 Diese Aktivität ermöglicht es, Daten in Datenquellen zu löschen.
  Diese Aktivität kann nicht auf Sensornetze angewendet werden.
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Delete Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer Delete Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<deleteActivity name="NCName"? suppressJoinFailure="yes|no"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<joinCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+      		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</joinCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<target linkName="NCName" />+
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets>
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<source linkName="NCName">+
+\end_layout
+
+\begin_layout Plain Layout
+
+      		<transitionCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+         		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+      		</transitionCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</source>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</deleteActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Delete Aktivität"
+
+\end_inset
+
+Schema einer Delete Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6576,6 +7121,155 @@ CREATE BUFFER
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Create Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer Create Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<createActivity name="NCName"? suppressJoinFailure="yes|no"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<joinCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+      		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</joinCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<target linkName="NCName" />+
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets>
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<source linkName="NCName">+
+\end_layout
+
+\begin_layout Plain Layout
+
+      		<transitionCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+         		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+      		</transitionCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</source>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</createActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Create Aktivität"
+
+\end_inset
+
+Schema einer Create Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
 Call Aktivität
 \end_layout
@@ -6583,7 +7277,153 @@ Call Aktivität
 \begin_layout Standard
 Diese Aktivität ermöglicht es auf der Datenquelle hinterlegte Prozeduren
  auszuführen.
- Diese Aktivität kann nur für Datenbanken verwendet werden.
+ Diese Aktivität kann vorerst nur für Datenbanken verwendet werden.
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Call Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer Call Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<callActivity name="NCName"? suppressJoinFailure="yes|no"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<joinCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+      		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</joinCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<target linkName="NCName" />+
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets>
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<source linkName="NCName">+
+\end_layout
+
+\begin_layout Plain Layout
+
+      		<transitionCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+         		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+      		</transitionCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</source>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</callActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Call Aktivität"
+
+\end_inset
+
+Schema einer Call Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6593,6 +7433,152 @@ RetrieveData Aktivität
 \begin_layout Standard
 Diese Aktivität ermöglicht es, Daten von Datenquellen in den BPEL-Prozess
  zu laden.
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:RetrieveData Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer RetrieveData Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<retrieveDataActivity name="NCName"? suppressJoinFailure="yes|no"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<joinCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+      		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</joinCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<target linkName="NCName" />+
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets>
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<source linkName="NCName">+
+\end_layout
+
+\begin_layout Plain Layout
+
+      		<transitionCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+         		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+      		</transitionCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</source>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</retrieveDataActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:RetrieveData Aktivität"
+
+\end_inset
+
+Schema einer RetrieveData Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6667,6 +7653,155 @@ DROP ALL
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Drop Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer Drop Aktivität mit der in [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:BPEL-2.0-Spec"
+
+\end_inset
+
+] definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<dropActivity name="NCName"? suppressJoinFailure="yes|no"?>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		<targets>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<joinCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+      		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</joinCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<target linkName="NCName" />+
+\end_layout
+
+\begin_layout Plain Layout
+
+		</targets>
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		<sources>?
+\end_layout
+
+\begin_layout Plain Layout
+
+   		<source linkName="NCName">+
+\end_layout
+
+\begin_layout Plain Layout
+
+      		<transitionCondition expressionLanguage="anyURI"?>?
+\end_layout
+
+\begin_layout Plain Layout
+
+         		bool-expr
+\end_layout
+
+\begin_layout Plain Layout
+
+      		</transitionCondition>
+\end_layout
+
+\begin_layout Plain Layout
+
+   		</source>
+\end_layout
+
+\begin_layout Plain Layout
+
+		</sources>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</dropActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Drop Aktivität"
+
+\end_inset
+
+Schema einer Drop Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection*
 Optionale Aktivitäten:
 \end_layout
@@ -6722,6 +7857,765 @@ en anzupassen.
  Es ist z.B.
  möglich in eine Tabelle neue Spalten einzufügen, bestehende Spalten neu
  zu benennen oder zu löschen.
+\end_layout
+
+\begin_layout Standard
+In Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:ResultierendeAktivitäten"
+
+\end_inset
+
+ werden nocheinmal alle resultierenden DM-Aktivitäten und ihre Verwendbarkeit
+ im Bezug auf die verschiedenen Datenquellen aufgezeigt.
+ Dabei steht ein 
+\begin_inset Quotes eld
+\end_inset
+
+x
+\begin_inset Quotes erd
+\end_inset
+
+ für die vollständige Anwendbarkeit einer Aktivität auf eine Datenquelle,
+ 
+\begin_inset Quotes eld
+\end_inset
+
+(x)
+\begin_inset Quotes erd
+\end_inset
+
+ steht für die teilweise Verwendbarkeit (z.B.
+ in einer Move Aktivität können Sensornetze nur als Quelle nicht als Ziel
+ angegeben werden) bzw.
+ dass eventuell erst in einer späteren Iterationen diese Aktivität auf eine
+ Datenquelle angewendet werden kann.
+ Ein 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+ steht dafür, dass eine Aktivität nicht mit einer entsprechenden Datenquelle
+ verwendet werden kann.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:ResultierendeAktivitäten"
+
+\end_inset
+
+Übersicht der resultierenden Aktivitäten und ihrer Anwendbarkeit auf verschieden
+e Datenquellen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="5">
+<features>
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="4cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML-DB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dateisysteme
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sensornetze (TinyDB)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Query Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Insert Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Update Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Delete Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Create Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Call Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RetrieveData Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Drop Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Import Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Export Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Move Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WriteBack Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alter Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(x)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
