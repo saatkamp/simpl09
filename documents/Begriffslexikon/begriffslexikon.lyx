@@ -433,7 +433,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
+<lyxtabular version="3" rows="4" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -524,7 +524,7 @@ Erstellung des Dokuments.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -533,7 +533,7 @@ Erstellung des Dokuments.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -542,7 +542,7 @@ Erstellung des Dokuments.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -551,11 +551,49 @@ zoabifs
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Editieren der Begriffe aus dem Wiki-seite
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.10.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Überarbeitung und Ergänzung der Begriffe
 \end_layout
 
 \end_inset
@@ -574,10 +612,10 @@ Die Begriffe
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="86" columns="3">
+<lyxtabular version="3" rows="84" columns="3">
 <features islongtable="true" headTopDL="true">
-<column alignment="left" valignment="top" width="1.5in">
-<column alignment="left" valignment="top" width="1in">
+<column alignment="left" valignment="top" width="1.7in">
+<column alignment="left" valignment="top" width="1.3in">
 <column alignment="left" valignment="middle" width="3in">
 <row endhead="true" newpage="true">
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -631,27 +669,7 @@ Abnahmetest
 \begin_inset Text
 
 \begin_layout Plain Layout
-Test des 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-für das
-\end_layout
-
-\end_inset
-
-Rahmenwerks durch den Kunden vor der
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bei der Abnahme
-\end_layout
-
-\end_inset
-
- Abnahme
+Test des Rahmenwerks durch den Kunden vor der Abnahme.
 \end_layout
 
 \end_inset
@@ -680,17 +698,8 @@ Administrator
 \begin_inset Text
 
 \begin_layout Plain Layout
-Verwaltet den Server und ist zuständig für die Entwicklungstools
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-??
-\end_layout
-
-\end_inset
-
- und die Softwareinfrastuktur
+Verwaltet den Server und ist zuständig für den Einsatz der Entwicklungswerkzeuge
+ und die Softwareinfrastuktur.
 \end_layout
 
 \end_inset
@@ -719,7 +728,7 @@ BPEL Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-Container für den Umgang mit Web Services
+Container für den Umgang mit Web Services.
 \end_layout
 
 \end_inset
@@ -748,7 +757,8 @@ Annotation
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kommentare im Quellcode die zur Laufzeit ausgewertet werden
+Formulierte Anforderung an eine Datenquelle, die erst zur Laufzeit ausgewertet
+ wird um die Datenquelle durch eine Auswahlstrategie zu bestimmen.
 \end_layout
 
 \end_inset
@@ -777,7 +787,7 @@ ODE
 \begin_inset Text
 
 \begin_layout Plain Layout
-BPEL Runtime Engine für BPEL Prozesse
+BPEL Runtime Engine für BPEL Prozesse.
 \end_layout
 
 \end_inset
@@ -835,17 +845,7 @@ Atomic Scope
 \begin_inset Text
 
 \begin_layout Plain Layout
-Lokale Umgebung in BPEL in der alle Aktivitäten atomar sind 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Lokale Umgebung ??
-\end_layout
-
-\end_inset
-
-
+Ein Prozessbereich, in dem alle Aktivitäten atomar durchgeführt werden.
 \end_layout
 
 \end_inset
@@ -856,7 +856,7 @@ Lokale Umgebung ??
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausfallsicherheit
+Auditing
 \end_layout
 
 \end_inset
@@ -874,18 +874,9 @@ Ausfallsicherheit
 \begin_inset Text
 
 \begin_layout Plain Layout
-So lange die äusseren Bedingungen stimmen läuft das Programm ohne Wartung
- weiter 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-kann man weglassen,da es im Spezi als nicht-funk Anfo
-\end_layout
-
-\end_inset
-
-
+Speicherung bzw.
+ Protokollierung von Daten und Ereignissen, die beim Ablauf eines Prozesses
+ anfallen.
 \end_layout
 
 \end_inset
@@ -914,7 +905,7 @@ Auswahlstrategie
 \begin_inset Text
 
 \begin_layout Plain Layout
-Verfahren zur Auswahl einer passenden Datenquelle zu entsprechenden Annotationen
+Verfahren zur Auswahl einer passenden Datenquelle zu entsprechenden Annotationen.
 \end_layout
 
 \end_inset
@@ -925,7 +916,7 @@ Verfahren zur Auswahl einer passenden Datenquelle zu entsprechenden Annotationen
 \begin_inset Text
 
 \begin_layout Plain Layout
-Autentifizierung
+Authentifizierung
 \end_layout
 
 \end_inset
@@ -943,7 +934,7 @@ Autentifizierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Authentifizierung eines Benutzers gegenüber einer Datenquelle
+Authentifizierung eines Benutzers gegenüber einer Datenquelle.
 \end_layout
 
 \end_inset
@@ -972,20 +963,7 @@ Autorisierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Autorisierung der Zugriffe auf eine Datenquelle
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Beinhaltet die Zugriffrechte auf die Datenquelle
-\end_layout
-
-\end_inset
-
-
+Autorisierung der Zugriffe auf eine Datenquelle anhand von Zugriffsrechten.
 \end_layout
 
 \end_inset
@@ -1034,7 +1012,7 @@ Benutzer
 \begin_inset Text
 
 \begin_layout Plain Layout
-User 
+
 \end_layout
 
 \end_inset
@@ -1043,7 +1021,8 @@ User
 \begin_inset Text
 
 \begin_layout Plain Layout
-Benutzer des Rahmenwerks
+Ein Benutzer des Rahmenwerks in der Rolle des Prozess-Modellierers oder
+ Workflow-Administrators.
 \end_layout
 
 \end_inset
@@ -1072,56 +1051,7 @@ Business Process Execution Language
 \begin_inset Text
 
 \begin_layout Plain Layout
-XML basierte Sprache zur Formulierung von Geschäftsprozessen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bzw.
- Wissenschaftliche Prozessen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-BPEL Extension Activity
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ist eine Erweiterungs(aktivität)
-\end_layout
-
-\end_inset
-
-Aktivität zur Erweiterung der Funktionalität von BPEL
+XML basierte Sprache zur Formulierung von Geschäftsprozessen.
 \end_layout
 
 \end_inset
@@ -1150,7 +1080,7 @@ DM-Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-BPEL Aktivität für den Zugriff auf Datenquellen mit SIMPL
+BPEL Aktivität für den Zugriff auf Datenquellen mit SIMPL.
 \end_layout
 
 \end_inset
@@ -1179,7 +1109,7 @@ Dateisystem
 \begin_inset Text
 
 \begin_layout Plain Layout
-Umgebung in der Dateien abgelegt und verwaltet werden
+Umgebung in der Dateien abgelegt und verwaltet werden.
 \end_layout
 
 \end_inset
@@ -1208,17 +1138,8 @@ Datenmanagement
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle Operationen und Maßnahmen zur Verwendung von Daten in einem Prozess
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-befasst alle operationen zu editierung,Löschen und Erzeugung von daten 
-\end_layout
-
-\end_inset
-
-
+Alle Operationen und Maßnahmen zum Abrufen und Verarbeiten von Daten in
+ einem Prozess.
 \end_layout
 
 \end_inset
@@ -1247,18 +1168,9 @@ Datenquelle
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Endpunkt
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ein Schnittstelle /System Baustein
-\end_layout
-
-\end_inset
-
- von dem Daten verschiedenster Art abgerufen und ggf.
- auch geändert und gelöscht werden können
+Ein System zur Datenhaltung, von dem Daten verschiedenster Art abgerufen
+ und ggf.
+ auch geändert und gelöscht werden können.
 \end_layout
 
 \end_inset
@@ -1287,21 +1199,94 @@ Datenbank
 \begin_inset Text
 
 \begin_layout Plain Layout
-System zur Verwaltung großer Datenmengen
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Eine Art strukturiertes Ablage für die Daten, die in Spalten und Tabellen
- sortiert sind.
+System zur Verwaltung und Strukturierung großer Datenmengen.
 \end_layout
 
 \end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+DB2
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IBM DB2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ein Datenbanksystem der Firma IBM.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DDL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Definition Language
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sprache zum Aufbau und zur Manipulation von Datenstrukturen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Demo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Das Endprodukt des Rahmenwerks mit Beispielprozessen zur Demonstration.
 \end_layout
 
 \end_inset
@@ -1330,18 +1315,8 @@ Deployment
 \begin_inset Text
 
 \begin_layout Plain Layout
-Zum Einsatz bringen z.B.
- eines Web Services auf einem Server
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-?
-\end_layout
-
-\end_inset
-
-
+Das zum Einsatz bringen eines Prozesses auf einer Workflow-Engine oder das
+ zum Einsatz bringen eines Web-Services auf einem Server.
 \end_layout
 
 \end_inset
@@ -1370,18 +1345,37 @@ Deployment Descriptor
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Zeile im Code, die vor der Ausführung ausgewertet wird und diese beeinfluss
-t
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-?
+XML-Datei zu einem BPEL-Prozess, in der Anweisungen und Einstellungen zum
+ Deployment des Prozesses formuliert werden können.
 \end_layout
 
 \end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
+\begin_layout Plain Layout
+DML
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Manipulation Language
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sprache um Daten lesen, schreiben, ändern und löschen zu können.
 \end_layout
 
 \end_inset
@@ -1439,7 +1433,7 @@ Eclipse
 \begin_inset Text
 
 \begin_layout Plain Layout
-Entwicklungsumgebung für die Softwareentwicklung mit Java
+Entwicklungsumgebung für die Softwareentwicklung mit Java.
 \end_layout
 
 \end_inset
@@ -1468,7 +1462,7 @@ Eclipse BPEL Designer
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eclipse Plugin zur Modellierung von BPEL Prozessen
+Eclipse Plugin zur Modellierung von BPEL Prozessen.
 \end_layout
 
 \end_inset
@@ -1497,7 +1491,7 @@ Endpunkt
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Web Service der von einem BPEL Prozess gestellt oder benutzt wird
+Ein Web Service der von einem BPEL Prozess gestellt oder benutzt wird.
 \end_layout
 
 \end_inset
@@ -1526,7 +1520,7 @@ Apache ODE Engine
 \begin_inset Text
 
 \begin_layout Plain Layout
-Laufzeitumgebung für Prozesse
+Laufzeitumgebung für BPEL-Prozesse.
 \end_layout
 
 \end_inset
@@ -1537,7 +1531,7 @@ Laufzeitumgebung für Prozesse
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erweiterbarkeit
+Extension Activity
 \end_layout
 
 \end_inset
@@ -1546,7 +1540,7 @@ Erweiterbarkeit
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+BPEL Extension Activity
 \end_layout
 
 \end_inset
@@ -1555,49 +1549,8 @@ Erweiterbarkeit
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Möglichkeit das Rahmenwerk zu erweitern in Hinsicht auf verwendete Technolog
-ien und Unterstützung von Datenquellen 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-als nicht-funk anfor vorhanden
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Fehlertoleranz
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Eigenschaft des Rahmenwerks bei Fehlern weiterhin zu funktionieren,
- bzw.
- in einen sicheren Zustand überzugehen
+Eine spezielle Aktivität in BPEL, mit der die Funktionalität von BPEL erweitert
+ werden kann
 \end_layout
 
 \end_inset
@@ -1626,7 +1579,7 @@ Funktionalität
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Fähigkeit eines Systems bestimmte Funktionen zu erfüllen
+Die Fähigkeit eines Systems bestimmte Funktionen zu erfüllen.
 \end_layout
 
 \end_inset
@@ -1655,18 +1608,8 @@ generisch
 \begin_inset Text
 
 \begin_layout Plain Layout
-Nicht an eine Sache gebunden z.B.
- eine Datenquelle Handler Eine Komponente 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-?
-\end_layout
-
-\end_inset
-
-
+Universell anwendbar, nicht an eine Sache gebunden z.B.
+ an einen bestimmten Typ von Datenquelle.
 \end_layout
 
 \end_inset
@@ -1695,18 +1638,8 @@ Handler
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Komponente die für eine bestimmte Aufgabe zuständig ist und sich darum
- kümmert
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-, falls eine Ereigniss (fault-Hhandler,Compensation-ha ndler) auftritt
-\end_layout
-
-\end_inset
-
-
+Eine Komponente die auf bestimmte Ereignisse reagiert, in BPEL z.B.
+ der FaultHandler und CompensationHandler.
 \end_layout
 
 \end_inset
@@ -1735,36 +1668,7 @@ History
 \begin_inset Text
 
 \begin_layout Plain Layout
-Chronologisch aufgezeichnete Aktivitäten in einem Prozess
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-IBM DB2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ein Datenbanksystem der Firma IBM
+Chronologisch aufgezeichnete Aktivitäten in einem Prozess.
 \end_layout
 
 \end_inset
@@ -1852,17 +1756,8 @@ konkrete Adresse
 \begin_inset Text
 
 \begin_layout Plain Layout
-physikalische Adresse 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-von was? (spezifiger)
-\end_layout
-
-\end_inset
-
-
+Die physikalische Adresse z.B.
+ IP-Adresse einer Datenquelle.
 \end_layout
 
 \end_inset
@@ -1891,7 +1786,7 @@ Kunden
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Auftraggeber IPVS & IAAS
+Die Auftraggeber vom IPVS und IAAS.
 \end_layout
 
 \end_inset
@@ -1920,17 +1815,8 @@ Late Binding
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Vorgehen bei dem Objekte erst zur Laufzeit typisiert 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-klarer villeicht ?
-\end_layout
-
-\end_inset
-
- werden.
+Die Bestimmung von Datenquellen zur Laufzeit über das Auflösen einer Referenz
+ über das Referenz Resolution System.
 \end_layout
 
 \end_inset
@@ -2018,17 +1904,7 @@ Modellierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bildung
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Abbildung einen Teil der Realität auf ein Computer-Modell
-\end_layout
-
-\end_inset
-
- eines Modells um einen Teil der Realität auf ein Computer-Modell abzubilden.
+Abbildung eines Teils der Realität auf ein Computer-Modell.
 \end_layout
 
 \end_inset
@@ -2117,19 +1993,8 @@ Monitoring
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erfassung, Beobachtung und Überwachung aller Einganben des Benuutzers .
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Erfassung bzw.
- Protokolierung alle einzelne Prozessaktivitäten 
-\end_layout
-
-\end_inset
-
-
+Präsentation der beim Auditing anfallenden Daten beim Benutzer, zur Beobachtung
+ und Überwachung der Prozesse.
 \end_layout
 
 \end_inset
@@ -2158,17 +2023,8 @@ Open Source
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bedeutet das der Quellcode 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Quellcode sowie alle System-dokumente
-\end_layout
-
-\end_inset
-
-einer Software öffentlich zugänglich bereitgestellt werden.
+Eine Lizenz die den Quellcode, sowie alle dazugehörenden Dokumente einer
+ Software, unter öffentlichen Zugang stellt.
 \end_layout
 
 \end_inset
@@ -2197,8 +2053,7 @@ Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-Entwurfsmuster z.B.
- für Datenbanksysteme (Stored Procedure Pattern)
+Entwurfsmuster für den Zugriff auf Datenquellen und die Behandlung der Daten.
 \end_layout
 
 \end_inset
@@ -2227,27 +2082,8 @@ Plugin
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-fertiges Softwaremodul 
-\end_layout
-
-\end_inset
-
-welches in andere Softwareprodukte
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Programme
-\end_layout
-
-\end_inset
-
- eingebunden werden kann und deren Funktionalität erweitert.
+Ein Softwaremodul, das in andere Softwareprodukte eingebunden werden kann
+ um deren Funktionalität zu erweitern.
 \end_layout
 
 \end_inset
@@ -2277,7 +2113,7 @@ Pointer
 
 \begin_layout Plain Layout
 Meist eine spezielle Variable die auf eine andere Variable oder Funktion
- verweist
+ verweist.
 \end_layout
 
 \end_inset
@@ -2297,16 +2133,6 @@ Prototyp
 \begin_inset Text
 
 \begin_layout Plain Layout
-Demo
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Vor-/ Erstversion
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -2316,17 +2142,7 @@ Vor-/ Erstversion
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erster
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ein
-\end_layout
-
-\end_inset
-
- Prototyp des Rahmenwerks mit eingeschränkter Funktionalität
+Lauffähige Version des Rahmenwerks nach einer Iteration.
 \end_layout
 
 \end_inset
@@ -2346,55 +2162,16 @@ Prozess
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 BPEL Prozess
 \end_layout
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Prozesslogik
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Beschreibung des Prozessablaufs 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-?
-\end_layout
-
-\end_inset
-
-
+Ein in BPEL formulierter Workflow.
 \end_layout
 
 \end_inset
@@ -2423,27 +2200,8 @@ Qualitiy of Service
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Ebene des Webservice Standard Stack, beinhaltet 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- 
-\end_layout
-
-\end_inset
-
-die Standards Reliable Messaging, Security und Transactions 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-beinhaltet
-\end_layout
-
-\end_inset
-
-.
+Eine Ebene des Webservice Standard Stack, welche die Standards Reliable
+ Messaging, Security und Transactions beinhaltet.
 \end_layout
 
 \end_inset
@@ -2472,7 +2230,7 @@ Query
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Datenbankanfrage
+Datenbankanfrage
 \end_layout
 
 \end_inset
@@ -2492,7 +2250,7 @@ Rahmenwerk
 \begin_inset Text
 
 \begin_layout Plain Layout
-SIMPL
+SIMPL, SIMPL-Rahmenwerk
 \end_layout
 
 \end_inset
@@ -2501,18 +2259,7 @@ SIMPL
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das SIMPL 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bzw.
- SIMPL-Rahmenwerk
-\end_layout
-
-\end_inset
-
-Rahmenwerk für den Zugriff auf Datenquellen aus einem BPEL-Prozess
+Das SIMPL-Rahmenwerk für den Zugriff auf Datenquellen aus einem BPEL-Prozess.
 \end_layout
 
 \end_inset
@@ -2572,7 +2319,7 @@ Referenz
 \begin_layout Plain Layout
 Ein Zeiger bzw.
  Verweis z.B.
- auf eine Datenquelle
+ auf eine Datenquelle.
 \end_layout
 
 \end_inset
@@ -2592,7 +2339,7 @@ Referenz Resolution System
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+RRS
 \end_layout
 
 \end_inset
@@ -2601,7 +2348,7 @@ Referenz Resolution System
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein System zur Auflösung von Referenzen
+Ein System zur Auflösung von Referenzen.
 \end_layout
 
 \end_inset
@@ -2630,7 +2377,7 @@ Schema
 \begin_inset Text
 
 \begin_layout Plain Layout
-Namensraum in einer DB
+Namensraum in einer Datenbank.
 \end_layout
 
 \end_inset
@@ -2659,7 +2406,7 @@ Scientific Workflows
 \begin_inset Text
 
 \begin_layout Plain Layout
-Workflows im wissenschaftlichen Bereich
+Workflows im wissenschaftlichen Bereich.
 \end_layout
 
 \end_inset
@@ -2688,7 +2435,7 @@ Scope
 \begin_inset Text
 
 \begin_layout Plain Layout
-Lokale Umgebung in BPEL
+Lokale Umgebung in BPEL.
 \end_layout
 
 \end_inset
@@ -2717,7 +2464,7 @@ Sensornetz
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Netz aus Sensoren, die miteinander verbunden sind
+Ein Netz aus Sensoren, die miteinander verbunden sind.
 \end_layout
 
 \end_inset
@@ -2758,36 +2505,6 @@ Eine Technik, die es einem Benutzer ermöglicht, mit einmaliger Authentifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-Skalierbarkeit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Das System soll sowohl auf einem einzelnen Heimrechner, als auch auf einem
- System aus mehreren Serversystemen laufen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 SOAP
 \end_layout
 
@@ -2806,7 +2523,7 @@ SOAP
 \begin_inset Text
 
 \begin_layout Plain Layout
-Netzwerkprotokoll für Datenaustausch zwischen Web Services
+Netzwerkprotokoll für Datenaustausch zwischen Web Services.
 \end_layout
 
 \end_inset
@@ -2835,7 +2552,7 @@ Structured Query Language
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine standardisierte Sprache für Datenbankabfragen
+Eine standardisierte Sprache für Datenbankabfragen.
 \end_layout
 
 \end_inset
@@ -2864,7 +2581,7 @@ SQL Query
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine formulierte Abfrage (Query) in SQL
+Eine formulierte Abfrage (Query) in SQL.
 \end_layout
 
 \end_inset
@@ -2913,7 +2630,7 @@ Strategie
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Auswahlstrategie
 \end_layout
 
 \end_inset
@@ -2922,7 +2639,7 @@ Strategie
 \begin_inset Text
 
 \begin_layout Plain Layout
-Verfahren zur Auswahl einer Datenquelle anhand von Annotationen
+Verfahren zur Auswahl einer Datenquelle anhand von Annotationen.
 \end_layout
 
 \end_inset
@@ -2942,7 +2659,7 @@ STUPRO
 \begin_inset Text
 
 \begin_layout Plain Layout
-STUPROA, STUPRO-A, STUPRO A
+STUPRO-A, Stupro-A, Stupro
 \end_layout
 
 \end_inset
@@ -3067,7 +2784,37 @@ Transparenz
 \begin_inset Text
 
 \begin_layout Plain Layout
-Durchsichtigkeit von Dingen für den Benutzer durch versteckte Komplexität
+Leichte Verständlichkeit und Vereinfachung für den Benutzer, durch das Verstecke
+n von Komplexität.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UDI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Update, Delete, Insert
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DML-Funktionen
 \end_layout
 
 \end_inset
@@ -3136,45 +2883,6 @@ Benutzerfreundlichkeit, Gebrauchstauglichkeit etc.
 \begin_inset Text
 
 \begin_layout Plain Layout
-User
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der Benutzer in einem BPEL Prozess??? ????
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-???
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 Variable
 \end_layout
 
@@ -3184,7 +2892,7 @@ Variable
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+BPEL Variable
 \end_layout
 
 \end_inset
@@ -3193,7 +2901,7 @@ Variable
 \begin_inset Text
 
 \begin_layout Plain Layout
-BPEL Variable
+Eine Variable in einem BPEL Prozess.
 \end_layout
 
 \end_inset
@@ -3222,48 +2930,7 @@ Verwertungsrechte
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Rechte zur Verwendung, Änderung und Vertrieb des Rahmenwerks
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Wartbarkeit
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der Quellcode soll Modular aufgebaut sein und der Quellcode durch Kommentare
- gut lesbar gehalten werden, so dass das Programm später gut zu warten ist.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ist doch bereit im Spezi als Nicht-Funk Anfor ???
-\end_layout
-
-\end_inset
-
-
+Die Rechte zur Verwendung, Änderung und Vertrieb des Rahmenwerks.
 \end_layout
 
 \end_inset
@@ -3312,7 +2979,7 @@ Webservice
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Web-Service, Web Service
 \end_layout
 
 \end_inset
@@ -3351,7 +3018,7 @@ Extensible Markup Language
 \begin_inset Text
 
 \begin_layout Plain Layout
-Auszeichnungssprache für hierarchisch strukturierte Daten
+Auszeichnungssprache für hierarchisch strukturierte Daten.
 \end_layout
 
 \end_inset
@@ -3371,7 +3038,7 @@ XMLDB
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+XML-DB
 \end_layout
 
 \end_inset
@@ -3380,8 +3047,8 @@ XMLDB
 \begin_inset Text
 
 \begin_layout Plain Layout
-Datenbank die auf XML basiert reps.
- die Datenhaltung über XML-Dateien realisiert
+Datenbank die auf XML basiert resp.
+ die Datenhaltung über XML-Dateien realisiert.
 \end_layout
 
 \end_inset
