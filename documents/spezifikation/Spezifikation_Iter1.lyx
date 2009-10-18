@@ -8681,7 +8681,7 @@ Benutzername und Passwort
 
 \begin_layout Standard
 Benutzername und Passwort können in der ersten Iteration zunächst nur in
- den Globalen Einstellungen (siehe
+ den Globalen Einstellungen (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Globale-Einstellungen"
