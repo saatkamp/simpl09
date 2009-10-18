@@ -1097,7 +1097,7 @@ reference "sec:Konzepte-und-Realisierungen"
  Am Ende des Dokuments werden in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:MaterialienWerkzeuge"
+reference "sec:Technologien und Werkzeuge"
 
 \end_inset
 
@@ -1733,6 +1733,12 @@ Admin-Konsole
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Globale-Einstellungen"
+
+\end_inset
+
 Globale Einstellungen
 \end_layout
 
@@ -8635,6 +8641,83 @@ name "sub:Authentifizierung-und-Autorisierung"
 Authentifizierung und Autorisierung
 \end_layout
 
+\begin_layout Standard
+Dieser Abschnitt behandelt die Authentifizierung und Autorisierung bei dem
+ Zugriff auf Datenquellen und die dabei eingesetzten Technologien und Konzepte.
+ Bei beiden Verfahren handelt es sich um Verfahren auf Seite der Datenquellen,
+ d.h.
+ es findet keine Autorisierung und Authentifizierung der Benutzer innerhalb
+ eines Prozesses statt.
+ Das Rahmenwerk bietet dem Benutzer lediglich die Möglichkeit benötigte
+ Authentifizierung- und Autorisierungsinformationen bereitzustellen und
+ ggf.
+ Zwischenzuspeichern.
+ Ziel des Rahmenwerks ist es, eine Vielzahl an Authentifizierungs- und Autorisie
+rung-Verfahren zu unterstützen und für weitere Verfahren erweiterbar zu
+ sein.
+\end_layout
+
+\begin_layout Subsubsection
+Authentifizierung
+\end_layout
+
+\begin_layout Standard
+Bei der Authentifizierung wird vor dem eigentlichen Zugriff zunächst ein
+ Vertrauensverhältnis zwischen Benutzer und Datenquelle hergestellt.
+ Je nach Verfahren wird dabei das Vertrauen einseitig oder auch beidseitig
+ hergestellt.
+ Für das Rahmenwerk soll dabei das Konzept des Single Sign On (SSO) angewendet
+ werden, das nach einer erfolgreich durchgeführten Authentifizierung verhindert,
+ dass bei weiteren Zugriffen eine erneute Authentifizierung durchgeführt
+ werden muss.
+ Unabhängig von der Realisierung, soll das für den Benutzer auch bedeuten,
+ dass die Authentifizierungsinformationen nicht in jeder DM-Aktivität zu
+ einer Datenquelle redundant angegeben werden müssen.
+\end_layout
+
+\begin_layout Subsubsection*
+Benutzername und Passwort
+\end_layout
+
+\begin_layout Standard
+Benutzername und Passwort können in der ersten Iteration zunächst nur in
+ den Globalen Einstellungen (siehe
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Globale-Einstellungen"
+
+\end_inset
+
+) für alle Datenquellen festgelegt werden.
+\end_layout
+
+\begin_layout Subsubsection
+Autorisierung
+\end_layout
+
+\begin_layout Standard
+Eine Autorisierung findet meist nach einer erfolgreichen Authentifizierung
+ statt und überprüft, ob die Operation eines Zugriffs berechtigt ist.
+ Dazu werden Zugriffsrechte überprüft, die als Regeln formuliert auf Seite
+ der Datenquellen verwaltet werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Sollen wir wenn es geht Autorisierunginformationen abrufen und die Autorisierung
+ auf SIMPL Seite durchführen, um dem Benutzer zB bestimmte Operationen erst
+ gar nicht zur Auswahl zu stellen? Oder einfach zulassen und auf einen Fehler
+ warten?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Auditing
 \end_layout
@@ -8731,25 +8814,16 @@ Für das Auditing von SIMPL werden die von ODE erzeugten Daten direkt an
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:MaterialienWerkzeuge"
+name "sec:Technologien und Werkzeuge"
 
 \end_inset
 
-Materialien, Werkzeuge und Technologien
+Technologien und Werkzeuge
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel folgt ein Überblick über die im Projekt genutzten Materialien
- und die verwendeten Werkzeuge und Technologien.
-\end_layout
-
-\begin_layout Subsection
-Materialien
-\end_layout
-
-\begin_layout Standard
-Als Material für SIMPL verwenden wir die Programmiersprache Java in der
- aktuellsten Version (Java SE 6).
+In diesem Kapitel folgt ein Überblick über die im Projekt verwendeten Technologi
+en und Werkzeuge.
 \end_layout
 
 \begin_layout Subsection
@@ -8794,101 +8868,10 @@ hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
 \end_layout
 
 \begin_layout Subsubsection*
-ApacheODE 
-\begin_inset CommandInset href
-LatexCommand href
-name "http:/ode.apache.org"
-target "http:/ode.apache.org"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Apache ODE ist eine BPEL-Workflow-Engine.
- Es wird sowohl WS-BPEL 2.0 als auch BPEL4WS 1.1 unterstützt und die Ausführung
- von Prozessen in SOA ist möglich.
- Zudem ist das 
-\begin_inset Quotes eld
-\end_inset
-
-Hot Deployment
-\begin_inset Quotes erd
-\end_inset
-
- von Prozessen möglich, als auch die Analyse und Validierung von Prozessen.
-\end_layout
-
-\begin_layout Subsubsection*
-Eclipse BPEL Designer 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://www.eclipse.org/bpel"
-target "http://www.eclipse.org/bpel"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Eclipse BPEL Designer ist ein Eclipse Plugin für die Modellierung von
- BPEL-Prozessen.
- Er verfügt über eine leicht verständliche GUI, eine Plausibilitätsprüfung
- für BPEL-Prozesse und außerdem ist die Schritt für Schritt Ausführung von
- Prozessen möglich.
-\end_layout
-
-\begin_layout Subsubsection*
-IBM-DB2 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://pub...w/v9r5/index.jsp"
-target "http://pub...w/v9r5/index.jsp"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die IBM-DB2 ist ein Hybriddatenserver mit dem sowohl die Verwaltung von
- XML-Daten als auch von relationalen Daten möglich ist.
-\end_layout
-
-\begin_layout Subsubsection*
-Apache Tuscany 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://tuscany.apache.org"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Apache Tuscany ist ein Software-Projekt, welches es zum Ziel hat die Erstellung
- von Service Oriented Architecture (SOA) Anwendungen zu vereinfachen, indem
- eine verständliche Infrastruktur und grundlegende Komponenten zur Verfügung
- gestellt werden.
-\end_layout
-
-\begin_layout Subsubsection*
-Webservices
-\end_layout
-
-\begin_layout Standard
-Webservices sind Software-Anwendungen, die zur direkten Interaktion mit
- anderen Software-Agenten dienen.
-\end_layout
-
-\begin_layout Subsubsection*
-Axis2 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://ws.apache.org/axis2"
+Apache Axis2 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-5"
 
 \end_inset
 
@@ -8901,24 +8884,173 @@ Axis2 ist eine SOAP-Engine zur Konstruktion von darauf basierenden Web Services
 \end_layout
 
 \begin_layout Subsubsection*
-Service Data Object (SDO)
+Apache ODE 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-SDO stellt eine einheitliche API zur Verfügung, mit der die Handhabung verschied
-ener heterogener Daten und Datenquellen vereinfacht wird.
+Apache ODE ist eine BPEL-Workflow-Engine.
+ Es wird sowohl WS-BPEL 2.0 als auch BPEL4WS 1.1 unterstützt, und die Ausführung
+ von Prozessen in SOA ist möglich.
+ Zudem ist ein Deployment von Prozessen zur Laufzeit (Hot Deployment) möglich,
+ als auch die Analyse und Validierung von Prozessen.
 \end_layout
 
 \begin_layout Subsubsection*
-Data Access Services (DAS)
+Apache Tomcat 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-7"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-DAS ermöglichen den einheitlichen Zugriff auf Datenquellen, in dem eine
- zentrale Schnittstelle für das Lesen und Schreiben von heterogenen Daten
- bereitgestellt wird.
+Apache Tomcat ist ein Web Container für Web Services, der aber auch einen
+ kompletten Webserver beinhaltet.
+\end_layout
+
+\begin_layout Subsubsection*
+Apache Tuscany DAS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-8"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Data Access Services ermöglichen den einheitlichen Zugriff auf Datenquellen,
+ indem eine zentrale Schnittstelle für das Lesen und Schreiben von heterogenen
+ Daten bereitgestellt wird.
  Die Daten werden dabei in Service Data Objects gekapselt und so von ihrer
  Quelle unabhängig gemacht.
+\end_layout
+
+\begin_layout Subsubsection*
+Apache Tuscany SDO 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-9"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Service Data Objects stellen eine einheitliche API zur Verfügung, mit der
+ die Handhabung verschiedener heterogener Daten und Datenquellen vereinfacht
+ wird.
+\end_layout
+
+\begin_layout Subsubsection*
+Eclipse BPEL Designer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-10"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Eclipse BPEL Designer ist ein Eclipse Plugin für die Modellierung von
+ BPEL-Prozessen.
+ Er verfügt über eine leicht verständliche GUI und über eine Syntaxsprüfung
+ für BPEL-Prozesse.
+ Zudem bietet der Eclipse BPEL Designer, in Kombination mit Apache ODE,
+ eine Schritt für Schritt Ausführung von Prozessen.
+\end_layout
+
+\begin_layout Subsubsection*
+IBM-DB2 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-11"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die IBM-DB2 ist ein Hybriddatenserver mit dem sowohl die Verwaltung von
+ XML-Daten als auch von relationalen Daten möglich ist.
+\end_layout
+
+\begin_layout Subsubsection*
+Java 6 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-12"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Java ist eine objektorientierte Programmiersprache der Firma Sun Microsystems,
+ mit der sich plattformunabhängige Programme entwickeln lassen.
+\end_layout
+
+\begin_layout Subsubsection*
+JAX-WS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-13"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+JAX-WS ist eine Java API zur Erstellung von Webservices, die für das Deployment
+ Java Annotationen verwendet.
+\end_layout
+
+\begin_layout Subsubsection*
+TinyDB 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-14"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TinyDB ist ein Datenbanksystem für Sensornetze und bietet eine SQL-ähnliche
+ Schnittstelle.
+\end_layout
+
+\begin_layout Subsubsection*
+Webservices
+\end_layout
+
+\begin_layout Standard
+Webservices sind abgeschlossene Software-Einheiten, die sich selbst beschreiben
+ und die ihre Dienste über ein Netzwerk, wie beispielsweise das Internet,
+ bereitstellen.
+ Damit werden verteilte Anwendungen möglich, die flexibel auf sich ändernde
+ Anforderungen angepasst werden können.
+ Die Schnittstellen von Webservices werden mit WSDL beschrieben und können
+ damit unabhängig von Betriebssystem, Plattform und Programmiersprache verwendet
+ werden.
 \end_layout
 
 \begin_layout Subsection
@@ -8926,13 +9058,13 @@ Werkzeuge
 \end_layout
 
 \begin_layout Standard
-Es werden folgende Werkzeuge eingesetzt um den Entwicklungsvorgang und die
- Dokumentation zu unterstützen:
+Es werden folgende Werkzeuge eingesetzt, um den Entwicklungsvorgang und
+ die Dokumentation zu unterstützen:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
@@ -8945,11 +9077,92 @@ unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
 \end_layout
 
 \begin_layout Subsubsection*
+Apache Maven 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-15"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Maven ist ein Projekt-Management-Tool zur standardisierten Erstellung und
+ Verwaltung von Java-Programmen.
+ Mit Maven ist es möglich viele Schritte, die die Entwickler normalerweise
+ von Hand erledigen müssen, zu automatisieren.
+\end_layout
+
+\begin_layout Subsubsection*
+Eclipse 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-16"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eclipse ist eine IDE für Java und auch andere Programmiersprachen.
+ Für SIMPL wird Eclipse in der Version 3.5 (Galileo) verwendet.
+\end_layout
+
+\begin_layout Subsubsection*
+Hudson 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-17"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hudson ist ein webbasiertes System zur kontinuierlichen Integration von
+ Softwareprojekten.
+\end_layout
+
+\begin_layout Subsubsection*
+LyX 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-18"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX ist ein Textverarbeitungsprogramm, mit dem es möglich ist, auf einfache
+ Art und Weise LaTeX-Dokumente zu erstellen.
+\end_layout
+
+\begin_layout Subsubsection*
+PDF-XChange Viewer 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-19"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit dem PDF-XChange Viewer lassen sich PDF-Dateien nicht nur öffnen, lesen
+ und drucken, sondern zusätzlich Kommentare, Notizen und Markierungen vornehmen.
+\end_layout
+
+\begin_layout Subsubsection*
 Subversion 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://svnbook.red-bean.com"
-target "http://svnbook.red-bean.com"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-20"
 
 \end_inset
 
@@ -8964,59 +9177,6 @@ Subversion ist eine Software zur Versionskontrolle und eine Weiterentwicklung
 en.
 \end_layout
 
-\begin_layout Subsubsection*
-Maven 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://svnbook.red-bean.com"
-target "http://svnbook.red-bean.com"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Maven ist ein Projekt-Management-Tool.
- Es wird zur automatischen Erstellung von Software-Projekten genutzt.
- Mit Maven ist es möglich viele Schritte, die die Entwickler normalerweise
- von Hand erledigen müssen zu automatisieren.
-\end_layout
-
-\begin_layout Subsubsection*
-Lyx 
-\begin_inset CommandInset href
-LatexCommand href
-name "www.lyx.org"
-target "www.lyx.org"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Lyx ist ein Textverarbeitungsprogramm, mit dem es möglich ist auf einfachste
- Art und Weise LaTeX-Dokumenten zu erstellen.
-\end_layout
-
-\begin_layout Subsubsection*
-Hudson 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://hudson.dev.java.net/"
-target "https://hudson.dev.java.net/"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Hudson ist ein webbasiertes System zur kontinuierlichen Integration von
- Softwareprojekten.
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -9027,28 +9187,6 @@ Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
  Produkte zu spezifizieren, entwerfen, konstruieren, testen, integrieren,
  dokumentieren, modifizieren oder pflegen; technische Standards, Richtlinien,
  Zertifizierungskriterien
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-Entwicklungsumgebung
-\end_layout
-
-\begin_layout Standard
-Die IDE in der das Projekt SIMPL entwickelt wird, ist Eclipse in der Version
- 3.5 (Galileo).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Referenzen überarbeiten
 \end_layout
 
 \end_inset
@@ -9128,18 +9266,8 @@ name "the:BPEL-2.0-Spec"
 
 \end_inset
 
-Web Services Business Process Execution Language Version 2.0, http://www.oasis-ope
-n.org/specs/, 15.10.2009 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Direkte Referenz: http://docs.oasis-open.org/wsbpel/2.0/wsbpel-v2.0.pdf
-\end_layout
-
-\end_inset
-
-
+Web Services Business Process Execution Language Version 2.0, http://docs.oasis-op
+en.org/wsbpel/2.0/wsbpel-v2.0.pdf, 15.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9152,11 +9280,11 @@ key "key-5"
 
 \begin_inset CommandInset label
 LatexCommand label
-name "the:Eclipse-BPEL-Designer"
+name "the:Axis2"
 
 \end_inset
 
-Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 15.10.2009
+Axis2, http://ws.apache.org/axis2/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9173,7 +9301,7 @@ name "the:Apache-ODE"
 
 \end_inset
 
-Apache ODE, http://ode.apache.org/, 15.10.2009
+Apache ODE, http://ode.apache.org/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9190,7 +9318,7 @@ name "the:Apache-Tomcat"
 
 \end_inset
 
-Apache Tomcat, http://tomcat.apache.org/, 15.10.2009
+Apache Tomcat, http://tomcat.apache.org/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9203,11 +9331,215 @@ key "key-8"
 
 \begin_inset CommandInset label
 LatexCommand label
+name "the:Apache Tuscany DAS"
+
+\end_inset
+
+Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-9"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Apache Tuscany SDO"
+
+\end_inset
+
+Apache Tuscany SDO, http://tuscany.apache.org/sdo-overview.html, 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-10"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Eclipse-BPEL-Designer"
+
+\end_inset
+
+Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-11"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:DB2"
+
+\end_inset
+
+IBM-DB2, http://www.ibm.com/db2/, 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-12"
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Java"
+
+\end_inset
+
+Java 6, http://java.sun.com/, 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-13"
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "the:JAX-WS"
+
+\end_inset
+
+JAX-WS, https://jax-ws.dev.java.net/, 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-14"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
 name "the:TinyDB"
 
 \end_inset
 
-TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 15.10.2009
+TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-15"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Apache-Maven"
+
+\end_inset
+
+Apache Maven, http://maven.apache.org/, 18.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-16"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Eclipse"
+
+\end_inset
+
+Eclipse, http://www.eclipse.org/, 18.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-17"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Hudson"
+
+\end_inset
+
+Hudson, https://hudson.dev.java.net/, 18.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-18"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:LyX"
+
+\end_inset
+
+LyX, http://www.lyx.org/, 18.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-19"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:PDF-XChange-Viewer"
+
+\end_inset
+
+PDF-XChange Viewer, http://pdf-xchange-viewer.softonic.de/, 18.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-20"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "the:Subversion"
+
+\end_inset
+
+Subversion, http://subversion.tigris.org/, 18.10.2009
 \end_layout
 
 \begin_layout Standard
@@ -9220,7 +9552,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="2">
+<lyxtabular version="3" rows="23" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="6cm">
@@ -9259,6 +9591,26 @@ BPEL
 
 \begin_layout Plain Layout
 Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DAS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Access Service(s)
 \end_layout
 
 \end_inset
@@ -9319,6 +9671,26 @@ FLWOR
 
 \begin_layout Plain Layout
 FOR, LET, WHERE, ORDER, RETURN
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrated Development Environment
 \end_layout
 
 \end_inset
@@ -9418,7 +9790,7 @@ SDO
 \begin_inset Text
 
 \begin_layout Plain Layout
-Service Data Object
+Service Data Object(s)
 \end_layout
 
 \end_inset
@@ -9579,6 +9951,26 @@ WS
 
 \begin_layout Plain Layout
 Web Service
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WSDL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Web Service Description Language
 \end_layout
 
 \end_inset
