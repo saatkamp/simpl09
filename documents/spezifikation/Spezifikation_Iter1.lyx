@@ -976,43 +976,43 @@ ftlichen Bereich) zu erheblichen Performanzeinbußen führt.
 \end_layout
 
 \begin_layout Itemize
-Implementierung einer Datenquellen Registry mithilfe derer Datenquellen
- über den Eclipse BPEL Designer (siehe [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:Eclipse-BPEL-Designer"
+Bereitstellung einer Datenquellen-Registry mit Hilfe derer Datenquellen
+ über den Eclipse BPEL Designer (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-10"
 
 \end_inset
 
-]) manuell durch den Benutzer oder dynamisch durch das SIMPL Eclipse Plug-In
+) manuell durch den Benutzer oder dynamisch durch das SIMPL Eclipse Plug-In
  ausgewählt werden können.
 \end_layout
 
 \begin_layout Itemize
-Beispiel-Plugin für einen Datentyp: Es wird ein Beispielplugin für den Zugriff
- auf CSV-Dateien implementiert.
+Implementierung eines Dateisystem-Adapters am Beispiel des CSV-Dateiformats.
 \end_layout
 
 \begin_layout Itemize
-Dynamische Auswahl von Datenquellen (per Strategie): Vom Nutzer kann eine
- Strategie ausgewählt werden, mit deren Hilfe eine Datenquelle, die seine
- Anforderungen erfüllt, ausgewählt wird ohne das er detailierte Kentnisse
- über Datenquellen benötigt.
+Unterstützung einer automatischen Auswahl von Datenquellen zur Laufzeit.
+ Dabei kann der Benutzer Anforderungen an Datenquellen formulieren und eine
+ Strategie auswählen, mit deren Hilfe eine Datenquelle, die seine Anforderungen
+ erfüllt, ausgewählt wird.
 \end_layout
 
 \begin_layout Itemize
-Granularitätsfestlegung von Auditing und Monitoring.
+Einstellung der Granularität von Auditing und Monitoring.
 \end_layout
 
 \begin_layout Standard
 Im Folgenden wird beschrieben, was von uns (unter Absprache mit dem Kunden)
- als Optionale Anforderungen definiert wurden.
- Diese werden umgesetzt, wenn der Zeitliche Rahmen des Projekts es zulässt.
+ als optionale Anforderungen definiert wurden.
+ Diese werden umgesetzt, wenn der zeitliche Rahmen des Projekts es zulässt.
 \end_layout
 
 \begin_layout Itemize
-Monitoring welches das Implementierte Auditing benutzt um diese Daten in
- definierten Abständen auszulesen und dem Nutzer anzuzeigen.
+Implementierung eines Monitorings, welches das bestehende Auditing nutzt,
+ um dessen Daten in definierten Abständen auszulesen und dem Benutzer, zur
+ Beobachtung und Überwachung von BPEL-Prozessen, anzuzeigen.
  Die kann später auch einfach vom Kunden nachgerüstet werden.
 \end_layout
 
