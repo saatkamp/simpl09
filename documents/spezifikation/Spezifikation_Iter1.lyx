@@ -8152,6 +8152,16 @@ Eine Autorisierung findet meist nach einer erfolgreichen Authentifizierung
  statt und überprüft, ob die Operation eines Zugriffs berechtigt ist.
  Dazu werden Zugriffsrechte überprüft, die als Regeln formuliert auf Seite
  der Datenquellen verwaltet werden.
+ In der ersten Iteration wird lediglich die Autorisierung über den Benutzernamen
+ unterstützt.
+\end_layout
+
+\begin_layout Subsubsection*
+Benutzername
+\end_layout
+
+\begin_layout Standard
+Wird durch die Authentifizierung durch Benutzername und Passwort unterstützt.
 \end_layout
 
 \begin_layout Standard
