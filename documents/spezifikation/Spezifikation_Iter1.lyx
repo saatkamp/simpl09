@@ -4909,7 +4909,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -4950,7 +4950,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -5217,16 +5217,6 @@ name "sub:Data-Management-Aktivitäten"
 \end_inset
 
 Data-Management-Aktivitäten
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-nur Kleinigkeiten korrigiert, große Änderungen noch diskutieren...
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
