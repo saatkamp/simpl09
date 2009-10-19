@@ -887,20 +887,49 @@ t wird in späteren Iterationen vervollständigt.
 Darüberhinaus wird in weiterführenden Kundengepsprächen über die Präferenzordnun
 g von optionalen Implementierungen diskutiert, welche in den entsprechenden
  Iterationen umgesetzt werden sollen.
+ In den folgenden Abschnitten (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Basisfunktionalität"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Ausblick"
+
+\end_inset
+
+ ) sind Detailierte Informationen enthalten, in welche Aufgabenbereiche
+ sich die Basisfunktionalität gliedert und welche Funktionen in späteren
+ Iterationen geplant sind.
 \end_layout
 
 \begin_layout Subsubsection
-Basisfunktionalität
+Basisfunktionalität 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Basisfunktionalität"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Folgende Funktionrn bilden die Basisfunktionalität des SIMPL-Rahmenwerks
 \end_layout
 
 \begin_layout Itemize
-Die statische Anbindung von Datenquellen: Relationale Datenbank, Extensible
- Markup Language (XML)-Datenbank, Sensor Datenbank und Dateisystem
+Die statische Anbindung von Datenquellen: Relationale Datenbanken, Extensible
+ Markup Language (XML)-Datenbanken, Sensornetze und Dateisysteme.
 \end_layout
 
 \begin_layout Itemize
 Eine grundlegende Adminkonsole, die Funktionen wie das An- und Ausschalten
- des Auditings und die Eingabe globaler Einstellungen für das Rahmenwerk.
+ des Auditings und die Eingabe globaler Einstellungen für das Rahmenwerk
+ bereitstellt.
 \end_layout
 
 \begin_layout Itemize
@@ -908,17 +937,44 @@ Bereitstellung von generischen BPEL-Aktivitäten für den Zugriff auf Datenquell
 \end_layout
 
 \begin_layout Subsubsection
-Ausblick
+Ausblick 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ausblick"
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Paragraph
-Planung
+\begin_layout Standard
+In diesen Abschnitt geht es darum, welche Funktionalität in weiteren Iterationen
+ hinzugefügt wird.
+ Die folgende Liste enthällt die Punkte, die auf jedenfall in einer der
+ folgenden Iterationen umgesetzt werden.
+ 
 \end_layout
 
 \begin_layout Itemize
 Es wird ein Plug-In-System für die Anbindung von verschiedenen Datenquellen
- umgesetzt.
+ umgesetzt, mit deren Hilfe ein deutlich vereinfachter Zugriff auf implementiert
+e Dateitypen möglich wird.
+\end_layout
+
+\begin_layout Itemize
+Unterstützung von Referenzen in BPEL (Reference Resolution System (RRS):
  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "the:ReferencesInBPEL"
+
+\end_inset
+
+): Daten die nicht im Workflow vorgehalten werden müssen, werden als Referenzen
+ innerhalb des Workflows transportiert.
+ Dies Geschieht aus Performanz gründen, da Datenübergabe standardmäßig nur
+ per Value erfolgt, was bei großen Datenpaketen (bis zu Gigabyte im Wissenschaft
+lichen Bereich) zu erheblichen Performanzeinbußen führt.
 \end_layout
 
 \begin_layout Itemize
@@ -928,29 +984,31 @@ Implementierung einer Datenquellen Registriy mithilfe derer Datenquellen
 \end_layout
 
 \begin_layout Itemize
-Beispiel-Plugin für Dateitypen.
-\end_layout
-
-\begin_layout Paragraph
-Optional (Kunden Präferenz) 
+Beispiel-Plugin für einen Datentyp: Es wird ein Beispielplugin für den Zugriff
+ auf CSV-Dateien implementiert.
 \end_layout
 
 \begin_layout Itemize
-Unterstützung von Referenzen in BPEL (Reference Resolution System (RRS))
-\end_layout
-
-\begin_layout Itemize
-Monitoring.
- 
-\end_layout
-
-\begin_layout Itemize
-Dynamische Auswahl von Datenquellen (per Strategie) 
+Dynamische Auswahl von Datenquellen (per Strategie): Vom Nutzer kann eine
+ Strategie ausgewählt werden, mit deren Hilfe eine Datenquelle, die seine
+ Anforderungen erfüllt, ausgewählt wird ohne das er detailierte Kentnisse
+ über Datenquellen benötigt.
 \end_layout
 
 \begin_layout Itemize
 Granularitätsfestlegung von Auditing und Monitoring.
- 
+\end_layout
+
+\begin_layout Standard
+Im Folgenden wird beschrieben, was von uns (unter Absprache mit dem Kunden)
+ als Optionale Anforderungen definiert wurden.
+ Diese werden umgesetzt, wenn der Zeitliche Rahmen des Projekts es zulässt.
+\end_layout
+
+\begin_layout Itemize
+Monitoring welches das Implementierte Auditing benutzt um diese Daten in
+ definierten Abständen auszulesen und dem Nutzer anzuzeigen.
+ Die kann später auch einfach vom Kunden nachgerüstet werden.
 \end_layout
 
 \begin_layout Subsection
