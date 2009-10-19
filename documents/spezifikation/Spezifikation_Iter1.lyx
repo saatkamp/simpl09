@@ -23,9 +23,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
-\def\docvers{1.0}
+\def\docvers{1.1}
 \def\docautor{}
-\def\docdate{28. September 2009}
+\def\docdate{19. Oktober 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -762,7 +762,7 @@ Abschließende Überarbeitung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-16.10.2009
+19.10.2009
 \end_layout
 
 \end_inset
@@ -6087,14 +6087,14 @@ reference "sub:Datenmanagement-Patterns"
  durch bestehende sensornetzspezifische SQL-Befehle oder, falls erforderlich,
  durch die Definition neuer zu implementierender Funktionen beschrieben.
  Alle SQL-Befehlsbeispiele beziehen sich hier auf den SQL-Dialekt der Sensornetz
--Datenbank TinyDB (siehe [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:TinyDB"
+-Datenbank TinyDB (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-14"
 
 \end_inset
 
-]).
+).
 \end_layout
 
 \begin_layout Itemize
@@ -6386,7 +6386,7 @@ reference "sub:Umsetzung-der-Datenmanagement"
 \end_inset
 
  identifizierten, Aktivtäten aufgezeigt und beschrieben.
- Dabei werden die in 
+ Dabei werden in den Listings der DM-Aktivitäten die in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-4"
@@ -6394,6 +6394,8 @@ key "key-4"
 \end_inset
 
  beschriebenen Notationen und Definitionen verwendet.
+ Die Schemata der DM-Aktivitäten werden im Verlauf der 1.Iteration vervollständig
+t.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -8200,7 +8202,7 @@ Das Monitoring von ODE wird durch sogenannte Events und Event Listener sowie
 \end_layout
 
 \begin_layout Subsubsection*
-Management API:
+Management API
 \end_layout
 
 \begin_layout Standard
@@ -8217,7 +8219,7 @@ Die Management API der ODE Engine macht es möglich zahlreiche Informationen
 \end_layout
 
 \begin_layout Subsubsection*
-Events: 
+Events
 \end_layout
 
 \begin_layout Standard
@@ -8232,7 +8234,7 @@ Events sind Ereignisse die auftreten wenn bestimmte Aktionen innerhalb der
 \end_layout
 
 \begin_layout Subsubsection*
-Event Listener:
+Event Listener
 \end_layout
 
 \begin_layout Standard
@@ -8280,16 +8282,55 @@ Event Modell
 \begin_layout Standard
 In diesem Unterabschnitt wird das Event Modell für das Auditing von SIMPL
  aufgeführt und erläutert.
- In Abbildung X ist das Event Modell für die Ausführung von DM-Aktivitäten
- zu sehen.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Event-Modell-des-Auditings"
+
+\end_inset
+
+ ist das Event Modell für die Ausführung von DM-Aktivitäten zu sehen.
  Darin enthalten sind die verschiedenen WS-BPEL Events enthalten.
  Auf diesem Modell aufbauend wird analyisert welche Events in ODE hinzugefügt
  werden müssen.
 \end_layout
 
 \begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename BPEL Event Modell DM-Aktivität Ablauf 2.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Event-Modell-des-Auditings"
+
+\end_inset
+
+Event-Modell des Auditings von SIMPL
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -8305,7 +8346,7 @@ Aus den Events im BPEL Event Modell der Ausführung folgt, dass zwei neue
 \end_layout
 
 \begin_layout Paragraph
-Connection_Events:
+Connection_Events
 \end_layout
 
 \begin_layout Itemize
@@ -8325,7 +8366,7 @@ Connection_TimeOut_Event
 \end_layout
 
 \begin_layout Paragraph
-DM_Events:
+DM_Events
 \end_layout
 
 \begin_layout Itemize
