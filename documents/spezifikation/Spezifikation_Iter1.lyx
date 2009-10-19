@@ -4860,7 +4860,16 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Im Normalablauf einer DM-Aktivität tritt ein Fehler auf
+Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle
+ des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Data-Management-Aktivität ausführen
+\begin_inset Quotes erd
+\end_inset
+
+).
 \end_layout
 
 \end_inset
@@ -8289,13 +8298,13 @@ Management API
 \begin_layout Standard
 Die Management API der ODE Engine macht es möglich zahlreiche Informationen
  abzurufen.
- So ist es beispielsweies möglich, zu überprüfen welche Prozesse gerade
+ So ist es beispielsweies möglich, zu überprüfen, welche Prozesse gerade
  eingesetzt werden und welche Prozessinstanzen ausgeführt werden oder beendet
  sind.
  Dies ist besonders für das Monitoring wichtig, da es hierdurch möglich
  ist spezifische Informationen zu einem bestimmten Prozess oder einer bestimmten
  Instanz abzurufen.
- Dies kann zum Beispiel das Erstellungsdatum sein, eine Liste der Events
+ Dies kann zum Beispiel das Erstellungsdatum sein, eine Liste der Events,
  die für diesen Prozess oder diese Instanz generiert wurden und vieles mehr.
 \end_layout
 
@@ -8304,11 +8313,11 @@ Events
 \end_layout
 
 \begin_layout Standard
-Events sind Ereignisse die auftreten wenn bestimmte Aktionen innerhalb der
- ODE Engine durchgeführt werden.
+Events sind Ereignisse, die auftreten, wenn bestimmte Aktionen innerhalb
+ der ODE Engine durchgeführt werden.
  Zum Beispiel das Aktivieren eines Prozesses oder das Erzeugen einer neuen
  Prozessinstanz.
- Diese Events machen es möglich, zu verfolgen was innerhalb der ODE Engine
+ Diese Events machen es möglich, zu verfolgen, was innerhalb der ODE Engine
  passiert und produzieren detailierte Informationen über die Prozessausführung.
  Sie können mit Hilfe der Management API abgefragt werden oder man nutzt
  Event Listener.
@@ -8329,10 +8338,10 @@ Auditing von SIMPL
 \end_layout
 
 \begin_layout Standard
-Im BPEL Designer ist der Zugriff auf das Auditing unter dem entsprechenden
- Menüpunkt möglich.
- Hier kommt man nun zum entsprechenden Interface in dem sich verschiedene
- Einstellungen für das Auditingtätigen lassen (siehe Abbildung 
+Im BPEL Designer ist der Zugriff auf das Auditing und die Auditingeinstellungen
+ unter dem entsprechenden Menüpunkt möglich.
+ Hier kommt man nun zum entsprechenden Interface, in dem sich verschiedene
+ Einstellungen für das Auditing tätigen lassen (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Auditing-Einstellungen"
@@ -8340,8 +8349,9 @@ reference "fig:Auditing-Einstellungen"
 \end_inset
 
 ).
- Es ist möglich das Auditing zu aktivieren oder zu deaktivieren und es ist
- außerdem möglich die Datenbank für das Speichern der Auditing Daten festzulegen.
+ Es ist möglich das Auditing zu aktivieren oder zu deaktivieren.
+ Weiterhin ist möglich die Datenbank für das Speichern der Auditing Daten
+ festzulegen.
  Das Auditing ist standardmäßig aktiviert, kann allerdings über die Adminkonsole
  deaktiviert und auch erneut aktiviert werden.
 \end_layout
@@ -8350,10 +8360,8 @@ reference "fig:Auditing-Einstellungen"
 Für das Auditing von SIMPL werden die von ODE erzeugten Daten direkt an
  den SIMPL Core übergeben und weiterverarbeitet, anstatt diese wie bisher
  in der virtuellen Datenbank von ODE abzulegen.
- Dies wird realisiert durch die Implementierung eines eigenen Data Access
- Objects, was entsprechende Funktionalitäten anbietet.
- Diese Informationen werden anschließend in einer zuvor in der Adminkonsole
- festgelegten Auditing-Datenbank abgelegt.
+ Die so erzeugten Daten über die Prozesse, Instanzen und Events werden anschließ
+end in einer zuvor in der Adminkonsole festgelegten Auditing-Datenbank abgelegt.
 \end_layout
 
 \begin_layout Subsubsection
