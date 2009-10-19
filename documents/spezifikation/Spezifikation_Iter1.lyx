@@ -850,14 +850,14 @@ Das Entwicklungsteam soll ein erweiterbares und generisches Rahmenwerk für
  Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
  Business Process Execution Language (BPEL)-Prozess eingebunden werden können.
  Dafür werden bereits vorhandene Konzepte evaluiert, wie z.B.
- die Sprache BPEL (siehe [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ die Sprache BPEL (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-]), und falls nötig erweitert und angepasst.
+), und falls nötig erweitert und angepasst.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
  werden, so dass auch erst zur Laufzeit des Systems die Datenquellen festgelegt
  werden können.
@@ -879,12 +879,12 @@ Evolution des Dokuments
 Das Projekt SIMPL ist in drei Iterationsstufen aufgeteilt.
  Die vorliegende Spezifikation spiegelt die erste Iterationsstufe des Rahmenwerk
 s wieder und stellt dessen Grundfunktionalität dar.
- Die Spezifikation und damit die Spezifizierung der weitergehenden Funktionalitä
-t wird in späteren Iterationen vervollständigt.
+ Die Spezifikation und damit die Beschreibung der weitergehenden Funktionalität
+ wird in späteren Iterationen vervollständigt.
 \end_layout
 
 \begin_layout Standard
-Darüberhinaus wird in weiterführenden Kundengepsprächen über die Präferenzordnun
+Darüber hinaus wird in weiterführenden Kundengesprächen über die Präferenzordnun
 g von optionalen Implementierungen diskutiert, welche in den entsprechenden
  Iterationen umgesetzt werden sollen.
  In den folgenden Abschnitten (
@@ -901,7 +901,7 @@ reference "sub:Ausblick"
 
 \end_inset
 
- ) sind Detailierte Informationen enthalten, in welche Aufgabenbereiche
+) sind detaillierte Informationen enthalten, in welche Aufgabenbereiche
  sich die Basisfunktionalität gliedert und welche Funktionen in späteren
  Iterationen geplant sind.
 \end_layout
@@ -918,12 +918,12 @@ name "sub:Basisfunktionalität"
 \end_layout
 
 \begin_layout Standard
-Folgende Funktionrn bilden die Basisfunktionalität des SIMPL-Rahmenwerks
+Folgende Funktionen bilden die Basisfunktionalität des SIMPL-Rahmenwerks
 \end_layout
 
 \begin_layout Itemize
-Die statische Anbindung von Datenquellen: Relationale Datenbanken, Extensible
- Markup Language (XML)-Datenbanken, Sensornetze und Dateisysteme.
+Die statische Anbindung von Datenquellen: Relationale Datenbanken, XML-Datenbank
+en, Sensornetze und Dateisysteme.
 \end_layout
 
 \begin_layout Itemize
@@ -933,7 +933,8 @@ Eine grundlegende Adminkonsole, die Funktionen wie das An- und Ausschalten
 \end_layout
 
 \begin_layout Itemize
-Bereitstellung von generischen BPEL-Aktivitäten für den Zugriff auf Datenquellen.
+Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
+ für den Zugriff auf Datenquellen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -948,38 +949,34 @@ name "sub:Ausblick"
 \end_layout
 
 \begin_layout Standard
-In diesen Abschnitt geht es darum, welche Funktionalität in weiteren Iterationen
+In diesem Abschnitt geht es darum, welche Funktionalität in weiteren Iterationen
  hinzugefügt wird.
- Die folgende Liste enthällt die Punkte, die auf jedenfall in einer der
+ Die folgende Liste enthält die Punkte, die auf jeden Fall in einer der
  folgenden Iterationen umgesetzt werden.
  
 \end_layout
 
 \begin_layout Itemize
-Es wird ein Plug-In-System für die Anbindung von verschiedenen Datenquellen
+Es wird ein Plug-In System für die Anbindung von verschiedenen Datenquellen
  umgesetzt.
- Mit Hilfe der Implementierten Plug-In' s wird die möglichkeit gegeben,
- einfacher auf diese Dateitypen zuzugreifen.
 \end_layout
 
 \begin_layout Itemize
-Unterstützung von Referenzen in BPEL (Reference Resolution System (RRS):
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:ReferencesInBPEL"
+Unterstützung von Referenzen in BPEL (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
 
 \end_inset
 
-): Daten die nicht im Workflow vorgehalten werden müssen, werden als Referenzen
- innerhalb des Workflows transportiert.
- Dies Geschieht aus Performanz gründen, da Datenübergabe standardmäßig nur
- per Value erfolgt, was bei großen Datenpaketen (bis zu Gigabyte im Wissenschaft
-lichen Bereich) zu erheblichen Performanzeinbußen führt.
+), damit auf Daten auch per Referenz im Workflow zugegriffen werden kann.
+ Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe standardmäß
+ig per Value erfolgt, was bei großen Datenmengen (bis zu Gigabytes im wissenscha
+ftlichen Bereich) zu erheblichen Performanzeinbußen führt.
 \end_layout
 
 \begin_layout Itemize
-Implementierung einer Datenquellen Registriy mithilfe derer Datenquellen
+Implementierung einer Datenquellen Registry mithilfe derer Datenquellen
  über den Eclipse BPEL Designer (siehe [
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1080,20 +1077,17 @@ Data-Management-Aktivität
 
 \begin_layout Subsection
 Überblick
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Am Ende nochmal überarbeiten!!!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-In diesem Dokument soll die zu entwickelnde Software spezifiziert werden.
+In diesem Dokument soll die zu entwickelnde Software spezifi
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-10"
+
+\end_inset
+
+ziert werden.
  Dazu werden in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1122,10 +1116,17 @@ reference "sec:Akteure"
 
 \end_inset
 
- und 
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Anwendungsfälle-(Use-Cases)"
+
+\end_inset
+
+ und die vorläufige Benutzeroberfläche in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Benutzeroberfläche"
 
 \end_inset
 
@@ -1160,8 +1161,8 @@ reference "sec:Technologien und Werkzeuge"
 
 \end_inset
 
- die verwendeten Materialien, Werkzeuge und Technologien, die für die Erstellung
- der Software benötigt werden, vorgestellt.
+ die verwendeten Werkzeuge und Technologien, die für die Erstellung der
+ Software benötigt werden, vorgestellt.
 \end_layout
 
 \begin_layout Section
@@ -1198,22 +1199,22 @@ reference "fig:Systemumgebung"
  dargestellte Systemumgebung eingebettet werden.
  Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL-Designer Plug-In,
  einem Web-Server, wie z.B.
- dem Apache Tomcat (siehe [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:Apache-Tomcat"
+ dem Apache Tomcat (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-7"
 
 \end_inset
 
-]), auf dem der SIMPL Core und eine Workflow-Engine (z.B.
- Apache Orchestration Director Engine (ODE), siehe [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:Apache-ODE"
+), auf dem der SIMPL Core und eine Workflow-Engine (z.B.
+ Apache Orchestration Director Engine (ODE), siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
 
 \end_inset
 
-]) ausgeführt werden und den Datenquellen auf die zugegriffen wird.
+) ausgeführt werden und den Datenquellen auf die zugegriffen wird.
  SIMPL unterstützt die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1360,14 +1361,14 @@ Das Rahmenwerk wird als Teil eines großen Installationpakets ausgeliefert.
  der Dokumentationen leichter realisiert werden.
  Die Installation der einzelnen Komponenten wird dann anhand der mitgelieferten
  Installationsanleitung durchgeführt.
- Nähere Informationen liefert [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:Angebot"
+ Nähere Informationen liefert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
 
 \end_inset
 
-].
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1622,22 +1623,9 @@ Skalierbarkeit
 \end_layout
 
 \begin_layout Standard
-Die Skalierbarkeit des Systems muss eine sehr flexible Infrastruktur erlauben,
- da die Computersysteme, auf denen SIMPL später ausgeführt wird, in ihrer
- Leistung sehr weit auseinander gehen können, d.h.
- vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
- möglich sein.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Skalierbarkeit in Bezug auf die Größe der Datenmenge noch ergänzen.
-\end_layout
-
-\end_inset
-
-
+Die Skalierbarkeit des Rahmenwerks soll garantieren, dass für die Verarbeitung
+ von steigenden Datenmengen die benötigten Ressourcen höchstens in der gleichen
+ Größenordnung steigen.
 \end_layout
 
 \begin_layout Section
@@ -5199,14 +5187,14 @@ Relationale Datenbanken
 \begin_layout Standard
 Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die zur Realisierung
  einer SQL-inline Unterstützung für BPEL benötigt werden (vgl.
- [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
 
 \end_inset
 
-]).
+).
 \end_layout
 
 \begin_layout Paragraph*
@@ -5579,17 +5567,6 @@ name "sub:Umsetzung-der-Datenmanagement"
 \end_inset
 
 Umsetzung der Datenmanagement-Patterns
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-komplett überarbeiten, anhand von Abschnitt 7.1.1 (Für #Retrievel Pattern
- => Orientierung an File Retrieval Pattern in Abschnitt Dateisysteme
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5741,14 +5718,14 @@ Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
 Service Data Objects API
 \emph default
  (SDO API) abstrahiert.
- Wie in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
+ Wie in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
 
 \end_inset
 
-] beschrieben, wurde dieses Konzept bereits durch die 
+ beschrieben, wurde dieses Konzept bereits durch die 
 \emph on
 Business Integration Suite
 \emph default
@@ -5771,14 +5748,14 @@ Retrieve Set Activity
  realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
  innerhalb des BPEL-Prozesses geladen, eine etwas ausführlichere Beschreibung
- liefert [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
+ liefert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
 
 \end_inset
 
-].
+.
 \end_layout
 
 \begin_layout Itemize
@@ -6007,14 +5984,14 @@ File Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
 Service Data Objects API
 \emph default
  (SDO API) abstrahiert.
- Wie in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
+ Wie in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
 
 \end_inset
 
-] beschrieben, wurde dieses Konzept bereits durch die 
+ beschrieben, wurde dieses Konzept bereits durch die 
 \emph on
 Business Integration Suite
 \emph default
@@ -6037,14 +6014,14 @@ Retrieve Set Activity
  für mengenorientierte Daten realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
  innerhalb des BPEL-Prozesses geladen, eine etwas ausführlichere Beschreibung
- liefert [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "BPEL/SQL Paper"
+ liefert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
 
 \end_inset
 
-].
+.
 \end_layout
 
 \begin_layout Itemize
@@ -6409,6 +6386,14 @@ reference "sub:Umsetzung-der-Datenmanagement"
 \end_inset
 
  identifizierten, Aktivtäten aufgezeigt und beschrieben.
+ Dabei werden die in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+
+\end_inset
+
+ beschriebenen Notationen und Definitionen verwendet.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6437,14 +6422,14 @@ reference "lst:Query Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Query Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer Query Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -6462,7 +6447,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<queryActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<queryActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6472,144 +6457,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-		<catch faultName="QName"?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	faultVariable="BPELVariableName"?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	faultMessageType="QName"?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	faultElement="QName"?>*
-\end_layout
-
-\begin_layout Plain Layout
-
-        	activity
-\end_layout
-
-\begin_layout Plain Layout
-
-    	</catch>
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    	<catchAll>?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	activity
-\end_layout
-
-\begin_layout Plain Layout
-
-    	</catchAll>
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    	<compensationHandler>?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	activity
-\end_layout
-
-\begin_layout Plain Layout
-
-    	</compensationHandler>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -6663,14 +6511,14 @@ reference "lst:Insert Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Insert Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer Insert Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -6688,7 +6536,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<insertActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<insertActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6698,72 +6546,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -6819,14 +6602,14 @@ reference "lst:Insert Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Update Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer Update Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -6844,7 +6627,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<updateActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<updateActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6854,72 +6637,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -6974,14 +6692,14 @@ reference "lst:Delete Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Delete Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer Delete Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -6999,7 +6717,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<deleteActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<deleteActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7009,72 +6727,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7194,14 +6847,14 @@ reference "lst:Create Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Create Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer Create Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -7219,7 +6872,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<createActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<createActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7229,72 +6882,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7350,14 +6938,14 @@ reference "lst:Call Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Call Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer Call Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -7375,7 +6963,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<callActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<callActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7385,72 +6973,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7505,14 +7028,14 @@ reference "lst:RetrieveData Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer RetrieveData Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer RetrieveData Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -7530,7 +7053,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<retrieveDataActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<retrieveDataActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7540,72 +7063,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7726,14 +7184,14 @@ reference "lst:Drop Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Drop Aktivität mit der in [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "the:BPEL-2.0-Spec"
+ zeigt das BPEL-Schema einer Drop Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
-] definierten Notation.
+ definierten Notation.
  
 \end_layout
 
@@ -7751,7 +7209,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<dropActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<dropActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7761,72 +7219,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -9260,14 +8653,7 @@ key "key-1"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Angebot"
-
-\end_inset
-
-SIMPL Angebot, Version 1.2, 25.September 2009
+ SIMPL Angebot, Version 1.2, 25.September 2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9277,14 +8663,7 @@ key "key-2"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "BPEL/SQL Paper"
-
-\end_inset
-
-Vrhovnik, M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
+ Vrhovnik, M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
  Support in Workflow Products.
  In: Proc.
  of the 24th International Conference on Data Engineering (ICDE 2008), Cancún,
@@ -9298,17 +8677,20 @@ key "key-3"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:ReferencesInBPEL"
-
-\end_inset
-
-Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: Towards Reference Passing
+ Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: Towards Reference Passing
  in Web Service and Workflow-based Applications.
  In: Proceedings of the 13th IEEE Enterprise Distributed Object Conference
  (EDOC 2009)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In Kapitel 1.3 darauf referenzieren
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -9318,15 +8700,8 @@ key "key-4"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:BPEL-2.0-Spec"
-
-\end_inset
-
-Web Services Business Process Execution Language Version 2.0, http://docs.oasis-op
-en.org/wsbpel/2.0/wsbpel-v2.0.pdf, 15.10.2009
+ Web Services Business Process Execution Language Version 2.0, http://docs.oasis-o
+pen.org/wsbpel/2.0/wsbpel-v2.0.pdf, 15.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9336,14 +8711,7 @@ key "key-5"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Axis2"
-
-\end_inset
-
-Axis2, http://ws.apache.org/axis2/, 17.10.2009
+ Axis2, http://ws.apache.org/axis2/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9353,14 +8721,7 @@ key "key-6"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Apache-ODE"
-
-\end_inset
-
-Apache ODE, http://ode.apache.org/, 17.10.2009
+ Apache ODE, http://ode.apache.org/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9370,14 +8731,7 @@ key "key-7"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Apache-Tomcat"
-
-\end_inset
-
-Apache Tomcat, http://tomcat.apache.org/, 17.10.2009
+ Apache Tomcat, http://tomcat.apache.org/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9387,14 +8741,7 @@ key "key-8"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Apache Tuscany DAS"
-
-\end_inset
-
-Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, 17.10.2009
+ Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9404,14 +8751,7 @@ key "key-9"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Apache Tuscany SDO"
-
-\end_inset
-
-Apache Tuscany SDO, http://tuscany.apache.org/sdo-overview.html, 17.10.2009
+ Apache Tuscany SDO, http://tuscany.apache.org/sdo-overview.html, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9421,14 +8761,7 @@ key "key-10"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Eclipse-BPEL-Designer"
-
-\end_inset
-
-Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 17.10.2009
+ Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9438,14 +8771,7 @@ key "key-11"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:DB2"
-
-\end_inset
-
-IBM-DB2, http://www.ibm.com/db2/, 17.10.2009
+ IBM-DB2, http://www.ibm.com/db2/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9455,14 +8781,7 @@ key "key-12"
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Java"
-
-\end_inset
-
-Java 6, http://java.sun.com/, 17.10.2009
+ Java 6, http://java.sun.com/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9472,14 +8791,7 @@ key "key-13"
 
 \end_inset
 
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "the:JAX-WS"
-
-\end_inset
-
-JAX-WS, https://jax-ws.dev.java.net/, 17.10.2009
+ JAX-WS, https://jax-ws.dev.java.net/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9489,14 +8801,7 @@ key "key-14"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:TinyDB"
-
-\end_inset
-
-TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 17.10.2009
+ TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9506,14 +8811,7 @@ key "key-15"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Apache-Maven"
-
-\end_inset
-
-Apache Maven, http://maven.apache.org/, 18.10.2009
+ Apache Maven, http://maven.apache.org/, 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9523,14 +8821,7 @@ key "key-16"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Eclipse"
-
-\end_inset
-
-Eclipse, http://www.eclipse.org/, 18.10.2009
+ Eclipse, http://www.eclipse.org/, 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9540,14 +8831,7 @@ key "key-17"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Hudson"
-
-\end_inset
-
-Hudson, https://hudson.dev.java.net/, 18.10.2009
+ Hudson, https://hudson.dev.java.net/, 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9557,14 +8841,7 @@ key "key-18"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:LyX"
-
-\end_inset
-
-LyX, http://www.lyx.org/, 18.10.2009
+ LyX, http://www.lyx.org/, 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9574,14 +8851,7 @@ key "key-19"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:PDF-XChange-Viewer"
-
-\end_inset
-
-PDF-XChange Viewer, http://pdf-xchange-viewer.softonic.de/, 18.10.2009
+ PDF-XChange Viewer, http://pdf-xchange-viewer.softonic.de/, 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9591,14 +8861,7 @@ key "key-20"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "the:Subversion"
-
-\end_inset
-
-Subversion, http://subversion.tigris.org/, 18.10.2009
+ Subversion, http://subversion.tigris.org/, 18.10.2009
 \end_layout
 
 \begin_layout Standard
