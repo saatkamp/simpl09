@@ -4515,8 +4515,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurde ein Prozess, der eine DM-Aktivität enthält, deployed und es wurde
- eine Instanz dieses Prozesses erzeugt.
+Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde
+ eine Instanz des Prozesses erzeugt.
 \end_layout
 
 \end_inset
@@ -4557,57 +4557,68 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die DM-Aktivität befindet sich in einem definierten Endzustand:
+1a.
+ Die Aktivität befindet sich im Endzustand 
+\begin_inset Quotes eld
+\end_inset
+
+Terminated
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
-1a.1.
- 
+1b.
+ Die Aktivität befindet sich im Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Waiting
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
-1a.2.
- 
+2.
+ Die Aktivität befindet sich im Endzustand 
+\begin_inset Quotes eld
+\end_inset
+
+Terminated
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
-1a.3.
- 
+3.
+ Die Aktivität befindet sich im Endzustand 
+\begin_inset Quotes eld
+\end_inset
+
+Faulted
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
-2a.1.
- 
-\end_layout
+4.
+ Die Aktivität befindet sich im Endzustand 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Plain Layout
-2a.2.
- 
-\end_layout
+Terminated
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Plain Layout
-2a.3.
- 
-\end_layout
 
-\begin_layout Plain Layout
-3a.1.
- 
-\end_layout
-
-\begin_layout Plain Layout
-3a.2.
- 
-\end_layout
-
-\begin_layout Plain Layout
-4a.1.
- 
-\end_layout
-
-\begin_layout Plain Layout
-4a.2.
- 
 \end_layout
 
 \end_inset
@@ -4628,7 +4639,15 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Die DM-Aktivität wird als bereit gekennzeichnet
+ Die DM-Aktivität befindet sich im Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4638,17 +4657,35 @@ Normalablauf
 
 \begin_layout Plain Layout
 3.
- Ausführung der Data-Management Operationen
+ Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung
+ an die Datenquelle
 \end_layout
 
 \begin_layout Plain Layout
 4.
- Die Ausführung der DM-Aktivität ist beendet
+ Die Ausführung der DM-Aktivität ist beendet und sie befindet sich im Zustand
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Waiting
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 5.
- Die DM-Aktivität wird als abgeschlossen gekennzeichnet
+ Die DM-Aktivität wird als 
+\begin_inset Quotes eld
+\end_inset
+
+Complete
+\begin_inset Quotes erd
+\end_inset
+
+ gekennzeichnet
 \end_layout
 
 \end_inset
@@ -4669,53 +4706,102 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.1.
- Die übergeordnete DM-Aktivität meldet einen Fehler
+ In der Vateraktivität tritt ein Fehler auf
 \end_layout
 
 \begin_layout Plain Layout
 1a.2.
- Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+Terminate_Activity Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst
 \end_layout
 
 \begin_layout Plain Layout
-1a.3.
- Es wird ein Complete_Acitivity Event an die DM-Aktivität gesendet
+1b.1.
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+Complete_Acitivity Event
+\begin_inset Quotes erd
+\end_inset
+
+ an die DM-Aktivität gesendet
+\end_layout
+
+\begin_layout Plain Layout
+1b.2.
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+Activity_Executed Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst
 \end_layout
 
 \begin_layout Plain Layout
 2a.1.
- Die übergeordnete Aktivität meldet einen Fehler
+ In der Vateraktivität tritt ein Fehler auf
 \end_layout
 
 \begin_layout Plain Layout
 2a.2.
- Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
-\end_layout
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Plain Layout
-2a.3.
- Die DM-Aktivität erzeugt einen Fehler
+Terminate_Activity Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst
 \end_layout
 
 \begin_layout Plain Layout
 3a.1.
- Die in der DM-Aktivität angegebene Datenbank oder die angegebenen Datensätze
- konnten nicht gefunden werden
+ Währender der Durchführung der DM-Operationen tritt ein Fehler in der Datenquel
+le auf (z.B.
+ ein Syntaxfehler oder die Datenbank ist nicht erreichbar)
 \end_layout
 
 \begin_layout Plain Layout
 3a.2.
- Die DM-Aktivität wird als fehlgeschlagen gekennzeichnet
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+Activity_Faulted Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst
 \end_layout
 
 \begin_layout Plain Layout
 4a.1.
- Die übergeordnete DM-Aktivität meldet einen Fehler
+ In der Vateraktivität tritt ein Fehler auf
 \end_layout
 
 \begin_layout Plain Layout
 4a.2.
- Es wird ein Terminate_Activity Event an die DM-Aktivität geschickt
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+Terminate_Activity Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst
 \end_layout
 
 \end_inset
@@ -4752,8 +4838,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rückgängig machen einer DM-Aktivität, so dass der Zustand vor Ausführung
- der DM-Aktivität wiederhergestellt wird.
+Rückgängig machen einer DM-Aktivität, so dass der Zustand der Datenqeulle
+ vor Ausführung der DM-Aktivität wiederhergestellt wird.
  
 \end_layout
 
@@ -4774,7 +4860,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine DM-Aktivität wurde durchgeführt.
+Im Normalablauf einer DM-Aktivität tritt ein Fehler auf
 \end_layout
 
 \end_inset
@@ -4835,11 +4921,6 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Im Normalablauf einer DM-Aktivität tritt ein Fehler auf
-\end_layout
-
-\begin_layout Plain Layout
-2.
  Alle Änderungen werden zurückgesetzt
 \end_layout
 
@@ -8290,7 +8371,7 @@ reference "fig:Event-Modell-des-Auditings"
 \end_inset
 
  ist das Event Modell für die Ausführung von DM-Aktivitäten zu sehen.
- Darin enthalten sind die verschiedenen WS-BPEL Events enthalten.
+ Darin enthalten sind die verschiedenen WS-BPEL Events.
  Auf diesem Modell aufbauend wird analyisert welche Events in ODE hinzugefügt
  werden müssen.
 \end_layout
@@ -8324,7 +8405,7 @@ name "fig:Event-Modell-des-Auditings"
 
 \end_inset
 
-Event-Modell des Auditings von SIMPL
+Event-Modell für die Ausführung von DM-Aktivitäten
 \end_layout
 
 \end_inset
