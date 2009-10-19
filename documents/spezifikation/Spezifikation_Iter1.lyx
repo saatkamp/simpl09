@@ -1014,16 +1014,6 @@ Data-Management-Aktivität
 
 \begin_layout Subsection
 Überblick
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Am Ende nochmal überarbeiten!!!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1063,10 +1053,17 @@ reference "sec:Akteure"
 
 \end_inset
 
- und 
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Anwendungsfälle-(Use-Cases)"
+
+\end_inset
+
+ und die vorläufige Benutzeroberfläche in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Benutzeroberfläche"
 
 \end_inset
 
@@ -1101,8 +1098,8 @@ reference "sec:Technologien und Werkzeuge"
 
 \end_inset
 
- die verwendeten Materialien, Werkzeuge und Technologien, die für die Erstellung
- der Software benötigt werden, vorgestellt.
+ die verwendeten Werkzeuge und Technologien, die für die Erstellung der
+ Software benötigt werden, vorgestellt.
 \end_layout
 
 \begin_layout Section
@@ -6350,6 +6347,14 @@ reference "sub:Umsetzung-der-Datenmanagement"
 \end_inset
 
  identifizierten, Aktivtäten aufgezeigt und beschrieben.
+ Dabei werden die in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+
+\end_inset
+
+ beschriebenen Notationen und Definitionen verwendet.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -6403,7 +6408,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<queryActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<queryActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6413,144 +6418,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-		<catch faultName="QName"?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	faultVariable="BPELVariableName"?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	faultMessageType="QName"?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	faultElement="QName"?>*
-\end_layout
-
-\begin_layout Plain Layout
-
-        	activity
-\end_layout
-
-\begin_layout Plain Layout
-
-    	</catch>
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    	<catchAll>?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	activity
-\end_layout
-
-\begin_layout Plain Layout
-
-    	</catchAll>
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-    	<compensationHandler>?
-\end_layout
-
-\begin_layout Plain Layout
-
-        	activity
-\end_layout
-
-\begin_layout Plain Layout
-
-    	</compensationHandler>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -6629,7 +6497,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<insertActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<insertActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6639,72 +6507,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -6785,7 +6588,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<updateActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<updateActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6795,72 +6598,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -6940,7 +6678,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<deleteActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<deleteActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -6950,72 +6688,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7160,7 +6833,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<createActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<createActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7170,72 +6843,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7316,7 +6924,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<callActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<callActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7326,72 +6934,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7471,7 +7014,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<retrieveDataActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<retrieveDataActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7481,72 +7024,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
@@ -7692,7 +7170,7 @@ status open
 
 \begin_layout Plain Layout
 
-	<dropActivity name="NCName"? suppressJoinFailure="yes|no"?>
+	<dropActivity standard-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -7702,72 +7180,7 @@ status open
 
 \begin_layout Plain Layout
 
-		<targets>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<joinCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-      		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</joinCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<target linkName="NCName" />+
-\end_layout
-
-\begin_layout Plain Layout
-
-		</targets>
-\end_layout
-
-\begin_layout Plain Layout
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-		<sources>?
-\end_layout
-
-\begin_layout Plain Layout
-
-   		<source linkName="NCName">+
-\end_layout
-
-\begin_layout Plain Layout
-
-      		<transitionCondition expressionLanguage="anyURI"?>?
-\end_layout
-
-\begin_layout Plain Layout
-
-         		bool-expr
-\end_layout
-
-\begin_layout Plain Layout
-
-      		</transitionCondition>
-\end_layout
-
-\begin_layout Plain Layout
-
-   		</source>
-\end_layout
-
-\begin_layout Plain Layout
-
-		</sources>
+		standard-elements
 \end_layout
 
 \begin_layout Plain Layout
