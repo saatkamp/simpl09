@@ -8263,6 +8263,116 @@ Für das Auditing von SIMPL werden die von ODE erzeugten Daten direkt an
  festgelegten Auditing-Datenbank abgelegt.
 \end_layout
 
+\begin_layout Subsubsection
+Event Modell
+\end_layout
+
+\begin_layout Standard
+In diesem Unterabschnitt wird das Event Modell für das Auditing von SIMPL
+ aufgeführt und erläutert.
+ In Abbildung X ist das Event Modell für die Ausführung von DM-Aktivitäten
+ zu sehen.
+ Darin enthalten sind die verschiedenen WS-BPEL Events enthalten.
+ Auf diesem Modell aufbauend wird analyisert welche Events in ODE hinzugefügt
+ werden müssen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename BPEL Event Modell DM-Aktivität Ablauf 2.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aus den Events im BPEL Event Modell der Ausführung folgt, dass zwei neue
+ Event Klassen hinzugefügt werden müssen.
+ Dies sind die Event Klassen Connection_Events und DM_Events.
+ Jede dieser beiden Event Klassen verfügt über eine Anzahl von einzelnen
+ Events, die nachfolgend genauer erläutert werden.
+\end_layout
+
+\begin_layout Paragraph
+Connection_Events:
+\end_layout
+
+\begin_layout Itemize
+Connection_Failure_Event 
+\end_layout
+
+\begin_layout Itemize
+Connection_Active_Event 
+\end_layout
+
+\begin_layout Itemize
+Connection_Closed_Event 
+\end_layout
+
+\begin_layout Itemize
+Connection_TimeOut_Event
+\end_layout
+
+\begin_layout Paragraph
+DM_Events:
+\end_layout
+
+\begin_layout Itemize
+DM_Finished 
+\end_layout
+
+\begin_layout Itemize
+DM_Started 
+\end_layout
+
+\begin_layout Itemize
+DM_Failure
+\end_layout
+
+\begin_layout Standard
+Dabei sind Connection_Events für Ereignisse bei der Verbindung zu einer
+ Datenquelle zuständig.
+ Wie die Namen der Events bereits zeigen, gibt es ein Event für:
+\end_layout
+
+\begin_layout Itemize
+einen fehlgeschlagenen Verbindungsversuch
+\end_layout
+
+\begin_layout Itemize
+einen erfoglreichen Verbindungsaufbau 
+\end_layout
+
+\begin_layout Itemize
+das Beenden einer Verbindung zu einer Datenquelle 
+\end_layout
+
+\begin_layout Itemize
+einen unerwarteten Abbruch der Verbindung
+\end_layout
+
+\begin_layout Standard
+Die DM_Events sind für die Ereignisse einer DM-Aktivität zuständig.
+ Hier wird nicht getrennt, um welche Art von DM-Aktivität es sich handelt.
+ Für alle DM-Aktivitäten werden die selben Events erzeugt.
+ Diese Events enthalten jeweils Informationen über den Namen und den Typ
+ der Aktivität.
+ Auch hier zeigen bereits die Namen an welche Events es gibt:
+\end_layout
+
+\begin_layout Itemize
+die Ausführung einer DM-Aktivität wurde gestartet 
+\end_layout
+
+\begin_layout Itemize
+die Ausführung einer DM-Aktivität wurde erfolgreich beendet 
+\end_layout
+
+\begin_layout Itemize
+bei der Ausführung einer DM-Aktivität trat ein Fehler auf 
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
