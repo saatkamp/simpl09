@@ -36,7 +36,7 @@ _ode.war_ aus der _apache-ode-war-1.3.2.zip_ nach _C:\Programme\Apache\Tomcat 6.
 === Apache Axis2 ===
 _axis2.war_ aus der _axis2-1.5-war.zip_ nach _C:\Programme\Apache\Tomcat 6.0\webapps_ kopieren
 
-Verzeichnis /servicejars unter C:\Programme\Apache\Tomcat 6.0\webapps\axis2\WEB-INF anlegen. 
+Verzeichnis _/servicejars_ unter _C:\Programme\Apache\Tomcat 6.0\webapps\axis2\WEB-INF_ anlegen. 
 
 === Apache Tuscany DAS ===
 _tuscany-das-1.0-incubating-beta2-bin.zip_ nach z.B. C:\Programme\Apache\tuscany-das-1.0-incubating-beta2 entpacken.
