@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -450,21 +450,6 @@ Projektübersicht
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Zusammenfassung der Ziele, Resultate, Hauptarbeitsaktivitäten und -produkte,
- Hauptmeilensteine, benötigte Ressourcen, grober Zeitplan und Budget; Kontaktdat
-en des Kunden
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Das Projekt läuft von Mai 2009 bis Mai 2010.
  In diesem Zeitraum soll das Entwicklungsteam ein erweiterbares, generisches
  Rahmenwerk erstellen, welches den Zugriff auf nahezu beliebige Datenquellen
@@ -601,6 +586,47 @@ Fax: +49 (0)711 7816-424
 \begin_layout Standard
 \align left
 E-Mail: Peter.Reimann(@)ipvs.uni-stuttgart.de
+\end_layout
+
+\begin_layout Description
+\noindent
+
+\series bold
+Dipl.
+\series default
+-
+\series bold
+Inf.
+
+\series default
+ 
+\series bold
+Mirko Sonntag
+\end_layout
+
+\begin_layout Standard
+\noindent
+Institut für Architektur von Anwendungssystemen 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Universitätsstraße 38, 70569 Stuttgart (Zimmer 1.332)
+\end_layout
+
+\begin_layout Standard
+\noindent
+Telefon: +49 (0)711 7816-202 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Fax: +49 (0)711 7816-472
+\end_layout
+
+\begin_layout Standard
+\noindent
+E-Mail: mirko.sonntag(@)iaas.uni-stuttgart.de
 \end_layout
 
 \begin_layout Subsection
@@ -847,36 +873,8 @@ Auszuliefernde Produkte mit Terminen
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-alle an den Kunden auszuliefernde Produkte mit Auslieferungsdatum und -ort
- sowie deren Anzahl
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Evolution des Plans
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Plan für vorausgesehene und nicht vorausgesehene Aktualisierung des Projektplans
- und deren Bekanntmachung
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1223,6 +1221,94 @@ n zwischen Anforderungen, Zeitplan und Budget; Absicht zur Wiederverwendung
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Wasserstandsmeldungen
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Jede Woche
+\emph default
+ soll eine Wasserstandsmeldung an die Betreuer des Studienprojeks SIMPL
+ erfolgen in der folgende Punkte abgedeckt sind.
+\end_layout
+
+\begin_layout Itemize
+In welcher Phase befindet sich das Projekt aktuell? 
+\end_layout
+
+\begin_layout Itemize
+Welche Arbeitspakete werden aktuell bearbeitet? 
+\end_layout
+
+\begin_layout Itemize
+Welche Arbeitspakete wurden abgeschlossen? 
+\end_layout
+
+\begin_layout Itemize
+Welche Probleme sind aufgetreten und wie wurden sie gelöst? 
+\end_layout
+
+\begin_layout Itemize
+Ist ein Treffen mit den Betreuern notwendig? 
+\end_layout
+
+\begin_layout Subsubsection
+Activity Reports
+\end_layout
+
+\begin_layout Standard
+Jedes Mitglied des Teams soll 
+\emph on
+jeden Monat
+\emph default
+ einen Activity Report erstellen und den Betreuern zukommen lassen, der
+ folgende Punkte enthällt.
+\end_layout
+
+\begin_layout Itemize
+Geleisteten Stunden
+\end_layout
+
+\begin_layout Itemize
+Rolle im Projekt
+\end_layout
+
+\begin_layout Itemize
+Was habe ich im Berichtszeitraum geleistet?
+\end_layout
+
+\begin_layout Itemize
+Was steht im nächsten Berichtszeitraum an?
+\end_layout
+
+\begin_layout Itemize
+Wieso konnte ich für einen längeren Zeitraum nicht am Projekt arbeiten?
+\end_layout
+
+\begin_layout Itemize
+An welchen Projekttreffen habe ich teilgenommen?
+\end_layout
+
+\begin_layout Itemize
+Was ist im Berichtszeitraum gut gelaufen?
+\end_layout
+
+\begin_layout Itemize
+Was ist im Berichtszeitraum nicht optimal gelaufen?
+\end_layout
+
+\begin_layout Subsubsection
+Prioritäten
+\end_layout
+
+\begin_layout Standard
+Das Projekt hat eine festgelegte Maximaldauer, daher besitzen die zeitlichen
+ Anforderungen der höchsten Priorität.
+ Direkt danach folgen die Anforderungen des Kunden.
 \end_layout
 
 \begin_layout Subsection
