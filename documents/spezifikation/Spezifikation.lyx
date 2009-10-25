@@ -1118,7 +1118,7 @@ Der SIMPL Core ist ebenfalls ein durch Software realisierter Akteur.
  Er führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
  Anwendungsfälle indirekt aufgerufen werden.
  Der SIMPL Core löst dabei die Transformation der modellierten BPEL-Prozesse
- aus und sorgt für das automatische Ausflösen von Referenzen.
+ aus und sorgt für das automatische Auflösen von Referenzen.
 \end_layout
 
 \begin_layout Section
@@ -1215,7 +1215,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ProzessModelierer.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -3737,7 +3736,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename WorkflowAdmin.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -5092,7 +5090,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename DQAdmin.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -5574,7 +5571,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename ODEwfEngine.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -6060,7 +6056,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename BPELdesigner.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -7016,7 +7011,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename SIMPLcore.jpg
-	lyxscale 50
 	width 100text%
 
 \end_inset
