@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Projektplan}
-\def\docvers{0.1}
-\def\docautor{Michael Hahn, Firas Zoabi}
-\def\docdate{22. Juli 2009}
+\def\docvers{1.0}
+\def\docautor{}
+\def\docdate{26.Oktober 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet} 
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -441,8 +441,245 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Section*
+Änderungsgeschichte
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Datum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Autor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Änderungen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.
+ Juli 2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml, zoabisfs 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung des Dokuments.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+02.
+ August 2009 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml, zoabisfs, huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktualisierung des Dokuments.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+26.
+ September 2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktualisierung des Terminplans und Überarbeitung des Dokuments.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+??.
+ Oktober 2009
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Datum aktualisieren!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fertigstellung des aktuellen Dokuments.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Einleitung
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird ein kurzer Überblick des Projekts und der im Projektverla
+uf zu erstellenden Produkte vermittelt.
 \end_layout
 
 \begin_layout Subsection
@@ -489,7 +726,7 @@ reference "sub:Beschreibung-der-Phasen"
 \end_layout
 
 \begin_layout Standard
-Am Ende des Projekts soll das Rahmenwerk als Eclipse Pulg-In und mit allen
+Am Ende des Projekts soll das Rahmenwerk als Eclipse Plug-In und mit allen
  erforderlichen Tools als Installationspaket zur Verfügung stehen.
  Darüber hinaus sollen alle Erweiterungen und Anpassungen, die während des
  Projekts an bestehenden Konzepten durchgeführt wurden, in einer einheitlichen
@@ -510,7 +747,7 @@ Das Zeit-Budget des Projekts liegt bei 480h pro Teammitglied bzw.
  Projektabschnitte aufteilt zeigt Tabelle 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Verteilung-des-Zeitbudgets"
+reference "tab:Phasen-des-Projekts"
 
 \end_inset
 
@@ -518,8 +755,8 @@ reference "tab:Verteilung-des-Zeitbudgets"
 \end_layout
 
 \begin_layout Standard
-Die Kunden des Projekts sind Katharina Görlach und Peter Reimann, im folgenden
- ihre Kontaktdaten:
+Die Kunden des Projekts sind Katharina Görlach, Peter Reimann und Mirko
+ Sonntag im folgenden ihre Kontaktdaten:
 \end_layout
 
 \begin_layout Description
@@ -898,6 +1135,13 @@ Definitionen und Akronyme
 Projektorganisation
 \end_layout
 
+\begin_layout Standard
+In diesem Kapitel werden alle organisatorischen Punkte des Projekts aufgezeigt
+ und beschrieben.
+ Dazu gehören das verwendete Prozessmodell, die Organisation und die verschieden
+en Verantwortlichkeiten und Rollen des Projekts.
+\end_layout
+
 \begin_layout Subsection
 Prozessmodell
 \end_layout
@@ -910,7 +1154,7 @@ ionen durchlaufen werden, welche aus Planung, Implementierung und Test des
  entsprechenden Softwareabschnitts bestehen.
  Dieses Vorgehen bietet sich für das Projekt an, da es sich hierbei um die
  Entwicklung einer Kernkomponente handelt, welche nach und nach durch verschiede
-ne Module und Plug-In’s erweitert werden kann.
+ne Module und Plug-Ins erweitert werden kann.
  Für das Entwicklerteam, aber auch den Kunden, hat dies den Vorteil, dass
  am Ende jeder Iteration ein lauffähiger Prototyp zur Verfügung steht, an
  dem der Kunde mögliche Änderungswünsche frühzeitig äußern kann.
@@ -1094,6 +1338,11 @@ name "sub:Verantwortlichkeiten"
 \end_layout
 
 \begin_layout Standard
+In diesem Abschnitt werden die verschiedenen Verantwortlichkeiten innerhalb
+ des Projekts beschrieben.
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 \color black
@@ -1137,14 +1386,6 @@ tems, die Beschreibung der grundlegenden Komponenten und deren Zusammenspiel
  Er trifft die grundlegenden Entscheidungen über die Art und den Aufbau
  der Software-Architektur und überwacht deren Einhaltung während der Projektlauf
 zeit.
- Die Architektur soll die Einhaltung der unter Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Grobspezifikation"
-
-\end_inset
-
- genannten Softwarequalitäten sicherstellen.
 \end_layout
 
 \begin_layout Standard
@@ -1220,13 +1461,15 @@ Als Entwickler arbeiten alle Teammitglieder außer dem Projektleiter.
 Managementprozess
 \end_layout
 
-\begin_layout Subsection
-Managementziele und -prioritäten 
+\begin_layout Standard
+In diesem Kapitel werden alle für die Verwaltung des Projekts relevanten
+ Informationen aufgezeigt und beschrieben.
+ Dazu gehören die Ziele des Managements, das Risikomanagement und Maßnahmen
+ zur Projektüberwachung.
 \end_layout
 
-\begin_layout Standard
-Folgende Berichterstattung wird innerhalb des Projektes und gegenüber den
- Betreuern verlangt.
+\begin_layout Subsection
+Managementziele und -prioritäten 
 \end_layout
 
 \begin_layout Standard
@@ -1241,7 +1484,8 @@ n zwischen Anforderungen, Zeitplan und Budget; Absicht zur Wiederverwendung
 
 \end_inset
 
-
+Folgende Berichterstattung wird innerhalb des Projektes und gegenüber den
+ Betreuern verlangt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1254,7 +1498,7 @@ Wasserstandsmeldungen
 Jede Woche
 \emph default
  soll eine Wasserstandsmeldung an die Betreuer des Studienprojeks SIMPL
- erfolgen in der folgende Punkte abgedeckt sind.
+ erfolgen in der folgende Punkte abgedeckt sind:
 \end_layout
 
 \begin_layout Itemize
@@ -1287,11 +1531,11 @@ Jedes Mitglied des Teams soll
 jeden Monat
 \emph default
  einen Activity Report erstellen und den Betreuern zukommen lassen, der
- folgende Punkte enthällt.
+ folgende Punkte enthält:
 \end_layout
 
 \begin_layout Itemize
-Geleisteten Stunden
+Geleistete Stunden
 \end_layout
 
 \begin_layout Itemize
@@ -1338,8 +1582,9 @@ Prioritäten
 
 \begin_layout Standard
 Das Projekt hat eine festgelegte Maximaldauer, daher besitzen die zeitlichen
- Anforderungen der höchsten Priorität.
- Direkt danach folgen die Anforderungen des Kunden.
+ Anforderungen die höchste Priorität.
+ Direkt danach folgen die Anforderungen des Kunden an die zu entwickelnde
+ Software.
 \end_layout
 
 \begin_layout Subsection
@@ -1348,7 +1593,8 @@ Annahmen, Abhängigkeiten und Einschränkungen
 
 \begin_layout Standard
 Das Projekt unterliegt einer strengen Zeitplanung, da es im Rahmen eines
- Studienprojektes ausgeführt wird, mit einer festen Laufdauer von 12 Monaten.
+ Studienprojektes durchgeführt wird und eine feste Laufdauer von 12 Monaten
+ hat.
 \end_layout
 
 \begin_layout Standard
@@ -1886,15 +2132,6 @@ ingungen für bestimmte Tätigkeiten ausgelegt sind und so z.B.
  speziell für den Test oder die Implementierung eingerichtet sind.
  Die Referenz-Umgebung bildet die Zentrale der Konfigurationsverwaltung
  und wird durch Subversion realisiert.
- In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Entstehungsprozess-für-Software-Einheiten"
-
-\end_inset
-
- wird der Entstehungsprozess von SE aufgezeigt und welche Umgebungen dabei
- durchlaufen werden.
 \end_layout
 
 \begin_layout Standard
@@ -1927,52 +2164,6 @@ name "fig:Das-grundlegende-Modell"
 \end_inset
 
 Das grundlegende Modell der Konfigurationsverwaltung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename KV_Ablauf.jpeg
-	lyxscale 50
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Entstehungsprozess-für-Software-Einheiten"
-
-\end_inset
-
-Entstehungsprozess für Software-Einheiten
 \end_layout
 
 \end_inset
@@ -2034,7 +2225,8 @@ Technologien bzw.
 \end_layout
 
 \begin_layout Standard
-Es werden die Verchiedene Technologien in Entwicklung eingesetzt:
+Es werden die folgenden Technologien für die Entwicklung der Software eingesetzt
+:
 \end_layout
 
 \begin_layout Standard
@@ -2136,7 +2328,7 @@ IBM-DB2 ist ein Relationales-Datenbanksystem welches von IBM entwickelt
 \end_layout
 
 \begin_layout Subsubsection
-Unterstützende Werkzeuge im Projektarbeit
+Unterstützende Werkzeuge für die Projektarbeit
 \end_layout
 
 \begin_layout Standard
@@ -2264,7 +2456,7 @@ Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
 \end_layout
 
 \begin_layout Subsection
-Dokumentationsplan 
+Dokumentationsplan
 \end_layout
 
 \begin_layout Subsubsection
@@ -3419,7 +3611,7 @@ Dokumentationen
 
 \begin_layout Standard
 Dokumentationen sind als PDF zu erstellen.
- Hierfür stehen die Tools Miktex und Lyx zur Verfügung.
+ Hierfür stehen die Tools Miktex und LyX zur Verfügung.
 \end_layout
 
 \begin_layout Standard
@@ -3439,6 +3631,11 @@ ionsformate
 
 \begin_layout Section
 Arbeitspakete, Zeitplan und Budget
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel werden die verschiedenen Phasen des Projekts, die definierten
+ Arbeitspakete und Meilensteine und die Terminplanung des Projekts beschrieben.
 \end_layout
 
 \begin_layout Subsection
@@ -5210,7 +5407,7 @@ Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
 \end_layout
 
 \begin_layout Itemize
-Implementierung der IPVS-Refernzen.
+Implementierung der IAAS-Refernzen.
  Das heißt, Referenzen, die auf eien Datenquelle zeigen und anstatt der
  Daten zwischen Prozessen hin und her geschickt werden und nur dort wo die
  Daten wirklich benötigt werden, aufgelöst werden und die Daten in den Prozess
@@ -5218,7 +5415,7 @@ Implementierung der IPVS-Refernzen.
 \end_layout
 
 \begin_layout Itemize
-Implementierung der IAAS-Referenzen: Referenzen die benutzt werden um Lange
+Implementierung der IPVS-Referenzen: Referenzen die benutzt werden um Lange
  Datenquellennamen und Datenquell Strukturen in einer kurzen Referenz zu
  verpacken.
 \end_layout
@@ -5301,30 +5498,6 @@ Pläne für die Wartung und Evolution
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Änderungsgeschichte
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Version 0.1
-\series default
-, 22.
- Juli 2009: Erstellung des Dokuments.
- 
-\end_layout
-
-\begin_layout Itemize
-Version 0.2, 02.
- August 2009: Überarbeitung des Dokuments.
-\end_layout
-
-\begin_layout Itemize
-Version 0.3, 26.
- Oktober 2009: Überarbeitung des Dokuments
 \end_layout
 
 \end_body
