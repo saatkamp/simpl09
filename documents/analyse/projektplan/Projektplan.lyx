@@ -4975,7 +4975,7 @@ Iterationen:
 Es bestehen Abhängigkeiten zwischen der ersten Iteration und den beiden
  darauf folgenden.
  Keine der Iterationen kann begonnen werden, ohne das die erste Iteration
- abgeschlossen ist, da in dieser das Basisystem darstellt.
+ abgeschlossen ist, da in dieser das Basissystem darstellt.
  Iteration zwei und drei können auch unabhängig von einander erfolgen und
  die Reihenfolgte könnte vertauscht werden, da zwischen ihnen kein Zusammenhang
  besteht.
@@ -5333,7 +5333,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename Gantt_detail.png
-	lyxscale 50
 	width 100text%
 
 \end_inset
@@ -5407,21 +5406,20 @@ Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
 \end_layout
 
 \begin_layout Itemize
-Implementierung der IAAS-Refernzen.
- Das heißt, Referenzen, die auf eien Datenquelle zeigen und anstatt der
- Daten zwischen Prozessen hin und her geschickt werden und nur dort wo die
- Daten wirklich benötigt werden, aufgelöst werden und die Daten in den Prozess
- geladen.
+Implementierung der IAAS-Referenzen.
+ Das heißt, Referenzen, die auf Daten verweisen und anstatt derer zwischen
+ Prozessen hin und her geschickt werden und nur dort wo sie wirklich benötigt
+ werden, aufgelöst und in den Prozess geladen werden.
 \end_layout
 
 \begin_layout Itemize
-Implementierung der IPVS-Referenzen: Referenzen die benutzt werden um Lange
- Datenquellennamen und Datenquell Strukturen in einer kurzen Referenz zu
- verpacken.
+Implementierung der IPVS-Referenzen: Das sind BPEL-Variablen, die als Referenzen
+ auf Datenquellen und Datencontainer (Tabellen, Dateien, XML-Dokumente,
+ etc.) verwendet werden können.
 \end_layout
 
 \begin_layout Itemize
-Implementierung eines Plug-In System für die Anbindung von verschiedenen
+Implementierung eines Plug-In Systems für die Anbindung von verschiedenen
  Datenquellen.
 \end_layout
 
@@ -5435,7 +5433,7 @@ Implementierung eines Dateisystem-Adapters am Beispiel des CSV-Dateiformats.
 \end_layout
 
 \begin_layout Itemize
-Implementierung einer Datenquellenregestry mit Hilfe derer Datenquellen
+Implementierung einer Datenquellen-Registry mit Hilfe derer Datenquellen
  über den Eclipse BPEL Designer manuell durch den Benutzer oder dynamisch
  durch das SIMPL Eclipse Plug-In ausgewählt werden können.
 \end_layout
@@ -5448,7 +5446,7 @@ Unterstützung einer automatischen Auswahl von Datenquellen zur Laufzeit.
 \end_layout
 
 \begin_layout Itemize
-Einstellung der Granularität von Auditing und Monitoring.
+Einstellung der Granularität von Auditing.
 \end_layout
 
 \begin_layout Standard
