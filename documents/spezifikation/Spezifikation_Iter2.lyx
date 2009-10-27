@@ -23,16 +23,16 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
-\def\docvers{1.1}
+\def\docvers{2.0}
 \def\docautor{}
-\def\docdate{19. Oktober 2009}
+\def\docdate{27. Oktober 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
 % proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
 % reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
 % endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
-\def\docstate{bearbeitet}
+\def\docstate{neu}
 \def\qsstate{nicht QS-geprüft}
 \def\proofstate{nicht geprüft}
 \def\reviewstate{kein Review durchgeführt}
@@ -111,14 +111,15 @@ filename "Deckblatt.lyx"
 status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset include
-LatexCommand input
-filename "DokStatus.lyx"
+
+\end_layout
 
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "DokStatus.lyx"
 
 \end_inset
 
@@ -478,7 +479,7 @@ Beschreibungen, was in welchem Abschnitt (von Abschnitt 1 bis 2) erwartet
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -749,7 +750,7 @@ Abschließende Überarbeitung des Dokuments.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -758,7 +759,7 @@ Abschließende Überarbeitung des Dokuments.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -767,7 +768,7 @@ Abschließende Überarbeitung des Dokuments.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -776,11 +777,49 @@ hahnml, schneimi, rehnre
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Korrektur der Spezifikation nach dem Review mit den Kunden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27.10.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erweiterung der Spezifikation auf die 2.Iteration.
 \end_layout
 
 \end_inset
@@ -877,8 +916,9 @@ Evolution des Dokuments
 
 \begin_layout Standard
 Das Projekt SIMPL ist in drei Iterationsstufen aufgeteilt.
- Die vorliegende Spezifikation spiegelt die erste Iterationsstufe des Rahmenwerk
-s wieder und stellt dessen Grundfunktionalität dar.
+ Die vorliegende Spezifikation spiegelt die zweite Iterationsstufe des Rahmenwer
+ks wieder und stellt dessen Grundfunktionalität, sowie erste Erweiterungen
+ dieser dar.
  Die Spezifikation und damit die Beschreibung der weitergehenden Funktionalität
  wird in späteren Iterationen vervollständigt.
 \end_layout
@@ -921,6 +961,11 @@ name "sub:Basisfunktionalität"
 Folgende Funktionen bilden die Basisfunktionalität des SIMPL-Rahmenwerks
 \end_layout
 
+\begin_layout Paragraph
+1.
+ Iteration
+\end_layout
+
 \begin_layout Itemize
 Die statische Anbindung von Datenquellen: Relationale Datenbanken, XML-Datenbank
 en, Sensornetze und Dateisysteme.
@@ -935,6 +980,57 @@ Eine grundlegende Adminkonsole, die Funktionen wie das An- und Ausschalten
 \begin_layout Itemize
 Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
  für den Zugriff auf Datenquellen.
+\end_layout
+
+\begin_layout Paragraph
+2.
+ Iteration
+\end_layout
+
+\begin_layout Itemize
+Implementierung der IAAS-Referenzen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+.
+ Das heißt, Referenzen, die auf Daten verweisen und anstatt derer zwischen
+ Prozessen hin und her geschickt werden und nur dort wo sie wirklich benötigt
+ werden, aufgelöst und in den Prozess geladen werden (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Daten-Referenzen-in-BPEL"
+
+\end_inset
+
+).
+ Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe standardmäß
+ig per Value erfolgt, was bei großen Datenmengen (bis zu Gigabytes im wissenscha
+ftlichen Bereich) zu erheblichen Performanzeinbußen führt.
+\end_layout
+
+\begin_layout Itemize
+Implementierung der IPVS-Referenzen: Das sind BPEL-Variablen, die als Referenzen
+ auf Datenquellen und Datencontainer (Tabellen, Dateien, XML-Dokumente,
+ etc.) verwendet werden können (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Container-Referenzen-in-BPEL"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Implementierung eines Plug-In Systems für die Anbindung von verschiedenen
+ Datenquellen.
+\end_layout
+
+\begin_layout Itemize
+Implementierung eines Dateisystem-Adapters am Beispiel des CSV-Dateiformats.
 \end_layout
 
 \begin_layout Subsubsection
@@ -956,40 +1052,15 @@ In diesem Abschnitt geht es darum, welche Funktionalität in weiteren Iteratione
  
 \end_layout
 
-\begin_layout Itemize
-Es wird ein Plug-In System für die Anbindung von verschiedenen Datenquellen
- umgesetzt.
+\begin_layout Paragraph
+3.
+ Iteration
 \end_layout
 
 \begin_layout Itemize
-Unterstützung von Referenzen in BPEL (siehe 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-3"
-
-\end_inset
-
-), damit auf Daten auch per Referenz im Workflow zugegriffen werden kann.
- Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe standardmäß
-ig per Value erfolgt, was bei großen Datenmengen (bis zu Gigabytes im wissenscha
-ftlichen Bereich) zu erheblichen Performanzeinbußen führt.
-\end_layout
-
-\begin_layout Itemize
-Bereitstellung einer Datenquellen-Registry mit Hilfe derer Datenquellen
- über den Eclipse BPEL Designer (siehe 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-10"
-
-\end_inset
-
-) manuell durch den Benutzer oder dynamisch durch das SIMPL Eclipse Plug-In
- ausgewählt werden können.
-\end_layout
-
-\begin_layout Itemize
-Implementierung eines Dateisystem-Adapters am Beispiel des CSV-Dateiformats.
+Implementierung einer Datenquellen-Registry mit Hilfe derer Datenquellen
+ über den Eclipse BPEL Designer manuell durch den Benutzer oder dynamisch
+ durch das SIMPL Eclipse Plug-In ausgewählt werden können.
 \end_layout
 
 \begin_layout Itemize
@@ -1000,7 +1071,7 @@ Unterstützung einer automatischen Auswahl von Datenquellen zur Laufzeit.
 \end_layout
 
 \begin_layout Itemize
-Einstellung der Granularität von Auditing und Monitoring.
+Einstellung der Granularität des Auditings.
 \end_layout
 
 \begin_layout Standard
@@ -1317,7 +1388,7 @@ reference "sub:Data-Management-Aktivitäten"
 
 \begin_layout Standard
 Alle Ereignisse, die während der Laufzeit eines Prozesses auftreten (z.B.
- Zugriff auf eine Datenquelle), werden durch ein Auditing in einer vom Nutzer
+ Zugriff auf eine Datenquelle), werden durch ein Auditing in einer vom Benutzer
  definierten Datenbank gespeichert.
 \end_layout
 
@@ -1715,8 +1786,8 @@ Admin-Konsole
 \begin_layout Standard
 Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
  Möglichkeit, Einstellungen für das Rahmenwerk vorzunehmen.
- Dazu gehört beispielsweise die Angabe von globalen Einstellungen und die
- Verwaltung des Auditings (siehe Abbildung 
+ Dazu gehört die Angabe von globalen Einstellungen, die Verwaltung des Auditings
+ und der Referenzen (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Admin-Konsole"
@@ -1953,6 +2024,63 @@ Referenzen
 \end_layout
 
 \begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RefGeneral"
+
+\end_inset
+
+ wird der Unterpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+References
+\begin_inset Quotes erd
+\end_inset
+
+ der Admin-Konsole gezeigt.
+ Hier können über 
+\begin_inset Quotes eld
+\end_inset
+
+General
+\begin_inset Quotes erd
+\end_inset
+
+ allgemeine Eigenschaften in Bezug auf die Verwendung von Referenzen, wie
+ ???
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+noch überlegen und dann ergänzen.
+\end_layout
+
+\end_inset
+
+ getroffen werden.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RefManagement"
+
+\end_inset
+
+ zeigt den Verwaltungsdialog der Referenzen, der über 
+\begin_inset Quotes eld
+\end_inset
+
+Management
+\begin_inset Quotes erd
+\end_inset
+
+ aufgerufen werden kann.
+ Hier können alle vorhandenen Referenzen betrachtet, bearbeitet oder gelöscht
+ werden und auch neue Referenzen erstellt werden.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -1974,6 +2102,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RefGeneral"
+
+\end_inset
+
 Dialog für allgemeine Referenzen Einstellungen
 \end_layout
 
@@ -2009,6 +2143,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RefManagement"
+
+\end_inset
+
 Dialog für die Verwaltung von Referenzen
 \end_layout
 
@@ -2032,6 +2172,20 @@ Bezeichnungen auf der GUI-Ebene für Referenzen-Paramater ändern.
  erhalten.
  Parameter könnten z.B.: Name, Adresse der DQ, Query-Befehl, Schreib-Befehl,
  ...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beschreibung der zwei Screens (New Reference, Edit Reference) hinzufügen,
+ wenn Design klar ist!
 \end_layout
 
 \end_inset
@@ -2129,7 +2283,7 @@ PropertyView
 \begin_inset Quotes erd
 \end_inset
 
- einer Query-Aktivität gezeigt.
+ am Beispiel einer Query-Aktivität gezeigt.
  Hier kann die im Prozess ausgewählte Aktivität parametrisiert werden.
  Das bedeutet, dass die Aktivität hier mit Inhalt gefüllt wird, wie z.B.
  der Zieldatenquelle oder dem Befehl, der auf dieser ausgeführt werden soll.
@@ -2269,28 +2423,26 @@ Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
  Anwendungsfälle indirekt aufgerufen werden.
  Der Eclipse BPEL Designer sorgt für das Laden der Einstellungen der Admin-Konso
 le und das Speichern dieser nach Änderungen.
+ Weiterhin führt er die Transformation (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Transformation-des-Modells"
+
+\end_inset
+
+) der modellierten BPEL-Prozesse aus, um diese in standard-konformen BPEL-Code
+ umzuwandeln.
 \end_layout
 
 \begin_layout Subsection
 SIMPL Core
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-neu, ÜBERARBEITEN
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Der SIMPL Core ist ebenfalls ein durch Software realisierter Akteur.
  Er führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
  Anwendungsfälle indirekt aufgerufen werden.
- Der SIMPL Core löst dabei die Transformation der modellierten BPEL-Prozesse
- aus und sorgt für das automatische Auflösen von Referenzen.
+ Der SIMPL Core sorgt für das automatische Auflösen von Referenzen.
 \end_layout
 
 \begin_layout Section
@@ -2301,16 +2453,6 @@ name "sec:Anwendungsfälle-(Use-Cases)"
 \end_inset
 
 Anwendungsfälle (Use-Cases)
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-verändert, ÜBERARBEITEN
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3138,16 +3280,6 @@ Sonderfälle
 
 \begin_layout Subsection
 Anwendungsfälle des Workflow-Administrators
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-verändert, ÜBERARBEITEN
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4664,7 +4796,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das RRS ist angebunden und erreichbar.
+Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
 \end_layout
 
 \end_inset
@@ -4684,8 +4816,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die neue Referenz wurde korrekt in das RRS eingefügt und kann nun verwendet
- werden.
+Die neue Referenz wurde korrekt in das RRS eingefügt, wird in der Referenzen-Tab
+elle angezeigt und kann nun bei der Modellierung verwendet werden.
 \end_layout
 
 \end_inset
@@ -4705,9 +4837,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Referenz wurd nicht in das RRS eingefügt und es wird ein entsprechender
- Fehlerdialog angezeigt, der den Benutzer über die aufgetretenen Fehler
- informiert.
+Die Referenz wurde nicht in das RRS eingefügt, wird nicht in der Referenzen-Tabe
+lle angezeigt und es wird eine entsprechende Fehlermeldung angezeigt, die
+ den Benutzer über die aufgetretenen Fehler informiert.
 \end_layout
 
 \end_inset
@@ -4728,17 +4860,38 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Erstellung einer neuer Referenz
+ Auswahl des Unterpunkts 
+\begin_inset Quotes eld
+\end_inset
+
+References
+\begin_inset Quotes erd
+\end_inset
+
+->
+\begin_inset Quotes erd
+\end_inset
+
+Management
+\begin_inset Quotes erd
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Eingeben aller benötigten Parameter
+ Klick auf den Button [New] zur Erstellung einer neuen Referenz
 \end_layout
 
 \begin_layout Plain Layout
 3.
- Referenz einfügen
+ Angabe aller benötigten Parameter
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Klick auf [Save], um die neue Referenz einzufügen
 \end_layout
 
 \end_inset
@@ -4758,8 +4911,9 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
- Fehler beim Einfügen der Referenz in das RRS
+4a.
+ Fehler beim Einfügen der Referenz in das RRS, da z.B.
+ das RRS nicht erreichbar ist.
 \end_layout
 
 \end_inset
@@ -4816,7 +4970,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das RRS ist angebunden und erreichbar.
+Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
 \end_layout
 
 \end_inset
@@ -4836,8 +4990,9 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert und
- die Referenz wurde aktualisiert.
+Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert, die
+ Referenz wurde aktualisiert und die aktualisierten Werte werden in der
+ Referenzen-Tabelle angezeigt.
 \end_layout
 
 \end_inset
@@ -4857,9 +5012,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die lokal veränderte Referenz bleibt im RRS unverändert und es wird ein
- entsprechender Fehlerdialog angezeigt, der den Benutzer über die aufgetretenen
- Fehler informiert.
+Die bearbeitete Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert
+ und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer
+ über die aufgetretenen Fehler informiert.
 \end_layout
 
 \end_inset
@@ -4880,17 +5035,44 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Die zu bearbeitende Referenz auswählen
+ Auswahl des Unterpunkts 
+\begin_inset Quotes eld
+\end_inset
+
+References
+\begin_inset Quotes erd
+\end_inset
+
+->
+\begin_inset Quotes erd
+\end_inset
+
+Management
+\begin_inset Quotes erd
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Werte der Referenz ändern
+ Auswahl der zu bearbeitenden Referenz mit einem linken Mausklick auf eine
+ Zeile der Referenzen-Tabelle
 \end_layout
 
 \begin_layout Plain Layout
 3.
- Änderungen im RRS speichern
+ Klick auf Button [Open], um die Referenz zu öffen
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Bearbeiten der Werte der Referenz
+\end_layout
+
+\begin_layout Plain Layout
+5.
+ Klick auf den Button [Save], um die Änderungen im RRS zu speichern
 \end_layout
 
 \end_inset
@@ -4910,8 +5092,9 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
- Beim Speichern der Änderungen tritt ein Fehler auf
+5a.
+ Beim Speichern der Änderungen tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist.
 \end_layout
 
 \end_inset
@@ -4968,7 +5151,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das RRS ist angebunden und erreichbar.
+Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
 \end_layout
 
 \end_inset
@@ -4988,8 +5171,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS entfernt
- und kann nun nicht mehr verwendet werden.
+Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS und
+ der Referenzen-Tabelle entfernt und kann nun nicht mehr verwendet werden.
 \end_layout
 
 \end_inset
@@ -5009,9 +5192,9 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die zu löschende Referenz bleibt im RRS unverändert und es wird ein entsprechend
-er Fehlerdialog angezeigt, der den Benutzer über die aufgetretenen Fehler
- informiert.
+Die zu löschende Referenz bleibt im RRS und in der Referenzen-Tabelle unveränder
+t und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer
+ über die aufgetretenen Fehler informiert.
 \end_layout
 
 \end_inset
@@ -5032,12 +5215,34 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Die zu entfernende Referenz auswählen
+ Auswahl des Unterpunkts 
+\begin_inset Quotes eld
+\end_inset
+
+References
+\begin_inset Quotes erd
+\end_inset
+
+->
+\begin_inset Quotes erd
+\end_inset
+
+Management
+\begin_inset Quotes erd
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Referenz aus RRS löschen
+ Auswahl der zu löschenden Referenz mit einem linken Mausklick auf eine
+ Zeile der Referenzen-Tabelle
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Klick auf Button [Delete], um die Referenz zu löschen
 \end_layout
 
 \end_inset
@@ -5057,8 +5262,9 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-2a.
- Beim Löschen der Referenz tritt ein Fehler auf
+3a.
+ Beim Löschen der Referenz tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist.
 \end_layout
 
 \end_inset
@@ -5648,6 +5854,10 @@ reference "fig:UseCaseDiaBPELDesigner"
 Admin-Konsole laden
 \end_layout
 
+\begin_layout Itemize
+BPEL-Datei transformieren
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -5658,7 +5868,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename BPELdesigner_iter1.jpg
+	filename BPELdesigner_iter2.jpg
 	width 100text%
 
 \end_inset
@@ -5852,85 +6062,6 @@ Sonderfälle
 
 \end_layout
 
-\begin_layout Subsection
-Anwendungsfälle des SIMPL Core
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-neu, ÜBERARBEITEN
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der SIMPL Core kann folgende Anwendungsfälle (siehe Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:UseCaseDiaSIMPLCore"
-
-\end_inset
-
-) ausführen:
-\end_layout
-
-\begin_layout Itemize
-BPEL-Datei transformieren
-\end_layout
-
-\begin_layout Itemize
-Neues Datenquellen-Plug-In in RRS einfügen
-\end_layout
-
-\begin_layout Itemize
-Referenz auflösen/dereferenzieren
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename SIMPLcore.jpg
-	lyxscale 50
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:UseCaseDiaSIMPLCore"
-
-\end_inset
-
-Anwendungsfall-Diagramm für die Prozess-Modelierer
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 BPEL-Datei transformieren
 \end_layout
@@ -5997,10 +6128,8 @@ Nachbedingung
 
 \begin_layout Plain Layout
 Es wurde ein korrekter standard-konformer BPEL-Prozess, der die gleiche
- Kern-Funktionalität wie der originale Prozess besitzt und zur Verwendung
- von Referenzen um entsprechende Aktivitäten oder Events erweitert wurde,
- erzeugt.
- 
+ Funktionalität wie der originale Prozess besitzt und zur Verwendung von
+ Referenzen um entsprechende Aktivitäten oder Events erweitert wurde, erzeugt.
 \end_layout
 
 \end_inset
@@ -6051,7 +6180,7 @@ Normalablauf
  Events für Referenzen (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Endpoint-References"
+reference "sub:Transformation-des-Modells"
 
 \end_inset
 
@@ -6094,137 +6223,70 @@ Sonderfälle
 
 \end_layout
 
-\begin_layout Subsubsection
-Neues Datenquellen-Plug-In in RRS einfügen
+\begin_layout Subsection
+Anwendungsfälle des SIMPL Core
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+neu, ÜBERARBEITEN
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
+Der SIMPL Core kann folgende Anwendungsfälle (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UseCaseDiaSIMPLCore"
 
 \end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-
+) ausführen:
 \end_layout
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
+\begin_layout Itemize
+Referenz auflösen/dereferenzieren
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SIMPLcore_iter2.jpg
+	width 100text%
+
+\end_inset
+
 
 \end_layout
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
+\begin_layout Plain Layout
+\begin_inset Caption
 
 \begin_layout Plain Layout
-Nachbedingung
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaSIMPLCore"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Prozess-Modelierer
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
 
 \end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
 
 \end_inset
 
@@ -6275,9 +6337,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die angegebene Referenz muss existieren und das RRS muss angebunden und
- erreichbar sein.
- Ebenso muss die Quelle des referenzierten Werts erreichbar sein.
+Die angegebene Referenz muss existieren und das RRS muss angebunden sein.
+ Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.
 \end_layout
 
 \end_inset
@@ -6317,7 +6378,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wird ein entsprechender Fehler geworfen, der Informationen über das zugrundel
+iegende Problem liefert.
 \end_layout
 
 \end_inset
@@ -6358,7 +6420,9 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ Beim Abfragen des Werts tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist
 \end_layout
 
 \end_inset
@@ -6398,21 +6462,11 @@ In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Referenzen-in-BPEL"
+name "sub:Daten-Referenzen-in-BPEL"
 
 \end_inset
 
-Referenzen in BPEL 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Anpassen an neue Ideen (siehe auch RRS-Abbildung)
-\end_layout
-
-\end_inset
-
-
+Daten-Referenzen in BPEL (IAAS-Referenzen)
 \end_layout
 
 \begin_layout Standard
@@ -6444,7 +6498,7 @@ t und an die Anforderungen dieses Projekts angepasst.
 
 \begin_layout Standard
 \noindent
-In BPEL werden Daten immer in Variblen gespeichert und die Werte (
+In BPEL werden Daten immer in Variablen gespeichert und die Werte (
 \emph on
 by value
 \emph default
@@ -6520,13 +6574,9 @@ reference "fig:RRS"
 
  zeigt die Architektur des Reference Resolution Systems (RRS).
  Am unteren Ende der Abbildung werden die verschiedenen möglichen Nutzer
- des Systems gezeigt: Workflows oder Web-Services, die eingangs nur die
- Rechte haben, um den Wert einer Referenz auszulesen und ein menschlicher
- Nutzer, der z.B.
- ein Administrator ist und damit die Rechte besitzt Referenzen im System
- anzulegen, zu aktualisieren und zu löschen.
- Er kann auch anderen Nutzern wie Workflows und Web-Services Rechte erteilen,
- damit diese auch Referenzen anlegen, aktualisieren oder löschen können.
+ des Systems gezeigt: Workflows, Web-Services und der SIMPL Core, die den
+ Wert einer Referenz auslesen oder Referenzen im System anlegen, aktualisieren
+ und löschen können.
 \end_layout
 
 \begin_layout Standard
@@ -6571,8 +6621,12 @@ Die Architektur des Reference Resolution Systems (RRS).
 \end_layout
 
 \begin_layout Standard
-Für jeden der verschiedenen Nutzer wird eine entsprechende Web-Service Schnittst
-elle bereitgestellt:
+Auch wenn auf eine Trennung von Nutzern nach Zugriffsrechten (Benutzer vs.
+ Administrator) aus Gründen der Flexibilität (ermöglicht automatische Erstellung
+ von neuen Referenzen zur Prozesslaufzeit) verzichtet wird, so werden doch
+ zwei entsprechende Web-Service Schnittstellen bereitgestellt.
+ Dadurch ist eine spätere Erweiterung um Zugriffsrechte leicht realisierbar.
+ Im folgenden werden diese zwei Schnittstellen kurz beschrieben:
 \end_layout
 
 \begin_layout Itemize
@@ -6643,7 +6697,7 @@ Die Hauptkomponente ist allerdings das Reference Resolution System selbst.
  Queries und Informationen, sowie aus einem ausführenden Service mit dem
  Queries auf den Datenquellen ausgeführt werden können.
  Anhand einer gegebenen Referenz wird dazu der passende Adapter gesucht,
- ausgewählt und für das Auflösen der Referenzen in Werte verwendet.
+ ausgewählt und für das Auflösen von Referenzen verwendet.
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6720,11 +6774,11 @@ key "key-4"
 \end_inset
 
  beschrieben.
- Das Ziel bei der Definition der Referenzen ist diese so flexibel und erweiterba
-r wie möglich zu realisieren und zu versuchen die vollständige Abgeschlossenheit
- der EPR's zu erreichen.
+ Das Ziel bei der Definition der Referenzen ist, diese so flexibel und erweiterb
+ar wie möglich zu realisieren und zu versuchen die vollständige Abgeschlossenhei
+t der EPR's zu erreichen.
  Vollständige Abgeschlossenheit bedeutet dabei, dass alle für die Auflösung
- einer Referenz benötigten Informationen in der EPR hinterlegt sind.
+ einer Referenz benötigten Informationen in der EPR selbst hinterlegt sind.
  Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6930,8 +6984,8 @@ Uniform Resource Identifier
  Beide Möglichkeiten haben Vorteile: Die direkte Angabe erlaubt es den Query
  in der EPR wärend der Laufzeit zu ändern.
  Mit der Verwendung von gespeicherten Queries wird dafür sichergestellt,
- dass alle den gleichen Query ausführen und niemand ungewollte Queries ausführen
- kann.
+ dass immer der gleiche Query ausgeführt wird und so niemand ungewollte
+ Queries ausführen kann.
  
 \family typewriter
 PortType
@@ -7047,7 +7101,7 @@ Alternativen zur Realisierung von Referenzen in BPEL
 \begin_layout Standard
 Für beide Konzepte muss ein entsprechendes Modellierungswerkzeug erweitert
  werden, danach unterscheiden sich dann die Konzepte.
- Die erste Variante besteht darin den erweiterten BPEL-Quellcode unverändert
+ Die erste Variante besteht darin, den erweiterten BPEL-Quellcode unverändert
  auf einer erweiterten Workflow-Engine auszuführen, dass hat natürlich den
  entscheidenen Nachteil, dass nur noch eine entsprechend erweiterte Workflow-Eng
 ine diese Prozesse ausführen kann.
@@ -7064,7 +7118,7 @@ Erweiterung des Modellierungswerkzeugs
 \end_layout
 
 \begin_layout Standard
-Wie schon gesagt, muss auf jeden Fall das Modellierungswerkzeug erweitert
+Wie bereits erwähnt, muss auf jeden Fall das Modellierungswerkzeug erweitert
  werden, um BPEL Prozesse mit Referenzen modellieren zu können.
  Zur Modellierung von solchen 
 \family typewriter
@@ -7179,13 +7233,19 @@ key "key-3"
 \end_layout
 
 \begin_layout Subsubsection*
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Transformation-des-Modells"
+
+\end_inset
+
 Transformation des Modells
 \end_layout
 
 \begin_layout Standard
 Die Integration eines Modelltransformation-Zwischenschritts vor dem Deployment
- des Prozesses erlaubt uns ein virtuelles Referenz-Handling für Prozesse
- zu realisieren ohne dabei die den Prozess ausführende Engine zu modifizieren.
+ des Prozesses erlaubt uns, ein virtuelles Referenz-Handling für Prozesse
+ zu realisieren, ohne dabei die den Prozess ausführende Engine zu modifizieren.
  Die Grundidee ist dabei die Sprache BPEL nur im Modellierungswerkzeug,
  in dem wir zwischen normalen Variablen und Referenzen unterscheiden, zu
  erweitern.
@@ -7430,6 +7490,29 @@ external
 <eventHandlers>
 \family default
  Element eingefügt.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Container-Referenzen-in-BPEL"
+
+\end_inset
+
+Container-Referenzen in BPEL (IPVS-Referenzen)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+noch ausarbeiten
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -10774,38 +10857,6 @@ In der Entwicklung von SIMPL werden die folgenden Technologien zum Einsatz
  kommen:
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
-\end_layout
-
-\begin_layout Plain Layout
-über jeden folgender Technologien bzw.
- Werkzeuge eine kleinen Text 
-\end_layout
-
-\begin_layout Plain Layout
--was die sind 
-\end_layout
-
-\begin_layout Plain Layout
--und wichtig auch wofür sie in unsere Projekt gebraucht sind 
-\end_layout
-
-\begin_layout Plain Layout
--und warum die und nicht andere.
- Vorteil ,Nachteil.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection*
 Apache Axis2 
 \begin_inset CommandInset citation
@@ -11001,20 +11052,6 @@ Es werden folgende Werkzeuge eingesetzt, um den Entwicklungsvorgang und
  die Dokumentation zu unterstützen:
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
- unterstützen , wie beim Dokumenten Erzeugen oder SVN-Tool
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection*
 Apache Maven 
 \begin_inset CommandInset citation
@@ -11114,23 +11151,6 @@ Subversion ist eine Software zur Versionskontrolle und eine Weiterentwicklung
  Es wird genutzt um mehreren Nutzern den gleichzeitigen Zugriff und ein
  gleichzeitiges Bearbeiten von verschiedenen Dateien und Dokumenten zu ermöglich
 en.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
- Notationen, Techniken und Methoden, um das System und andere auszuliefernde
- Produkte zu spezifizieren, entwerfen, konstruieren, testen, integrieren,
- dokumentieren, modifizieren oder pflegen; technische Standards, Richtlinien,
- Zertifizierungskriterien
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -11363,7 +11383,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="23" columns="2">
+<lyxtabular version="3" rows="24" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="6cm">
@@ -11462,6 +11482,26 @@ DM
 
 \begin_layout Plain Layout
 Data Management
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EPR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Endpoint Reference
 \end_layout
 
 \end_inset

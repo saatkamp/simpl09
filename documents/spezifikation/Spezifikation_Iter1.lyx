@@ -33,10 +33,10 @@
 % reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
 % endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
 \def\docstate{bearbeitet}
-\def\qsstate{nicht QS-geprüft}
-\def\proofstate{nicht geprüft}
-\def\reviewstate{kein Review durchgeführt}
-\def\endstate{-}
+\def\qsstate{negativ QS-geprüft}
+\def\proofstate{negativ geprüft}
+\def\reviewstate{akzeptiert mit Änderungen}
+\def\endstate{freigegeben}
 
 % Definierter Grauton für die Tabellenfärbung
 \definecolor{lightgray}{rgb}{0.7,0.7,0.7}
