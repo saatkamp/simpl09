@@ -534,7 +534,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.2
 \end_layout
 
 \end_inset
@@ -543,7 +543,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+30.10.2009
 \end_layout
 
 \end_inset
@@ -552,7 +552,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+schneimi
 \end_layout
 
 \end_inset
@@ -561,7 +561,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Anforderungen
 \end_layout
 
 \end_inset
@@ -764,28 +764,181 @@ Das SIMPL Rahmenwerk
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk soll dem Benutzer eine generische und erweiterbare
- Umgebung bieten, die eine einfache Modellierung von BPEL-Prozessen mit
- Zugriff auf Datenquellen ermöglicht.
- Der Schwerpunkt liegt dabei auf wissenschaftlichen Prozessen, bei denen
- überwiegend mit großen Datenmengen gearbeitet wird.
- Bei den Datenquellen kann es sich um Datenbanken, Sensornetze
+ Umgebung bieten, die eine einfache Modellierung von BPEL-Geschäftsprozessen
+ mit Zugriff auf beliebige Datenquellen ermöglicht.
+ Bei den Datenquellen kann es sich beispielsweise um Datenbanken, Sensornetze
+ oder Dateisysteme handeln.
+ Die Modellierung der Prozesse findet in Eclipse mit dem Eclipse BPEL Designer
+ Plug-In statt, das für diesen Zweck um zusätzliche Aktivitäten, für den
+ Zugriff auf Datenquellen, erweitert wird.
+ Die Ausführung der Prozesse erfolgt durch die Apache ODE Workflow Engine,
+ bei der das bestehende Event-Modell und das Auditing der Prozessdaten für
+ diese Aktivitäten angepasst werden.
 \end_layout
 
 \begin_layout Subsection
 Anforderungen
 \end_layout
 
+\begin_layout Subsubsection*
+Einfache Modellierung
+\end_layout
+
 \begin_layout Standard
+Bei der Modellierung von Prozessen wiederholen sich in der Regeln häufig
+ längere Statements in Anfragesprachen wie z.B SQL und XQuery.
+ Damit diese vom Prozess-Modellierer nicht wiederholt angegeben werden müssen,
+ soll es die Möglichkeit geben diese in BPEL-Variablen zu hinterlegen, die
+ anschließend als Referenz in anderen Statements verwendet werden können.
+\end_layout
+
+\begin_layout Subsubsection*
+Große Datenmengen
+\end_layout
+
+\begin_layout Standard
+Der Schwerpunkt des Rahmenwerks liegt bei der Modellierung von wissenschaftliche
+n Prozessen, bei denen überwiegend mit großen Datenmengen gearbeitet wird.
+ Damit diese Datenmengen nicht innerhalb des Prozess gehalten werden müssen,
+ wird ein Reference Resolution System (RRS) realisiert, das es ermöglicht
+ Daten zu referenzieren, die nur bei Bedarf aufgelöst werden und somit sehr
+ schnell weitergegeben werden können.
+\end_layout
+
+\begin_layout Subsubsection*
+Auditing von Prozessen
+\end_layout
+
+\begin_layout Standard
+Bei dem Auditing von Prozessen handelt es sich um das Protokollieren von
+ Daten, die in Prozessen anfallen und ein Monitoring der Prozesse ermöglichen.
+ Die Erfassung der Daten muss auf die zusätzlichen Aktivitäten angepasst
+ werden und dem Benutzer die Möglichkeit gegeben werden, die Granularität
+ der Daten zu bestimmen.
+ Zusätzlich soll das interne Auditing von Apache ODE, auf eine frei wählbare
+ Datenbank umgeleitet werden können.
+\end_layout
+
+\begin_layout Subsubsection*
+Late Binding von Datenquellen
+\end_layout
+
+\begin_layout Standard
+Da bei der Modellierung nicht immer unmittelbar feststeht, auf welche Datenquell
+e zugegriffen werden soll, beispielsweise beim Ablegen von Daten, soll ein
+ Late Binding von Datenquellen unterstützt werden.
+ Damit kann durch die Formulierung von Anforderungen an die Datenquelle
+ und das Wählen einer Auswahlstrategie durch den Prozess-Modellierer, eine
+ passende Datenquelle zur Laufzeit bestimmt werden.
+\end_layout
+
+\begin_layout Subsubsection*
+Authentifizierung und Autorisierung
+\end_layout
+
+\begin_layout Standard
+Datenquellen erfordern in der Regel eine Authentifizierung und Autorisierung
+ des Benutzers bei einem Zugriff.
+ Das Rahmenwerk soll dem Prozess-Modellierer diesen Vorgang vereinfachen,
+ so dass die dafür benötigten Informationen wie z.B.
+ Name und Passwort nicht bei jedem wiederholten Zugriff erneut angegeben
+ werden müssen.
+\end_layout
+
+\begin_layout Subsubsection*
+Registry
+\end_layout
+
+\begin_layout Standard
+Für die Verwaltung der für den Prozess-Modellierer zur Verfügung stehenden
+ Datenquellen, soll eine UDDI-Registry bereitgestellt werden, in der die
+ Datenquellen vom Workflow-Administrator zentral definiert werden können.
+ Dort werden auch die entsprechenden Eigenschaften der Datenquellen hinterlegt,
+ die für das Late Binding benötigt werden.
+\end_layout
+
+\begin_layout Subsubsection*
+Admin-Konsole
+\end_layout
+
+\begin_layout Standard
+Für alle wichtigen Einstellungen des Rahmenwerks soll eine Admin-Konsole
+ bereitgestellt werden, über die der Workflow-Administrator die Einstellungen
+ treffen kann.
+ Dies betrifft vor allem auch alle Einstellungen die zur Laufzeit getätigt
+ werden können, wie z.B.
+ das Einbinden einer zusätzlicher Datenquelle.
+\end_layout
+
+\begin_layout Subsubsection*
+Erweiterbarkeit
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Große Datenmengen, Erweiterbarkeit (Verweis auf Kapitel 5), ...
+Datenquellen
+\end_layout
+
+\begin_layout Plain Layout
+Anfragesprachen
+\end_layout
+
+\begin_layout Plain Layout
+DM-Aktivitäten
+\end_layout
+
+\begin_layout Plain Layout
+DQ-Events
+\end_layout
+
+\begin_layout Plain Layout
+Authentifizierungs- und Autorisierungs-Verfahren
+\end_layout
+
+\begin_layout Plain Layout
+Registry
+\end_layout
+
+\begin_layout Plain Layout
+Admin-Konsole
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Das Rahmenwerk stellt folgende Anforderungen an die Erweiterbarkeit und
+ soll entsprechende Schnittstellen bieten:
+\end_layout
+
+\begin_layout Itemize
+Weitere Typen von Datenquellen
+\end_layout
+
+\begin_layout Itemize
+Unterstützung weiterer Anfragesprachen
+\end_layout
+
+\begin_layout Itemize
+Einbindung weiterer Aktivitäten für den Zugriff auf Datenquellen
+\end_layout
+
+\begin_layout Itemize
+Erweiterung um neue Events für das Auditing
+\end_layout
+
+\begin_layout Itemize
+Unterstützung weiterer Authentifizierungs- und Autorisierungsverfahren
+\end_layout
+
+\begin_layout Itemize
+Unterstützung weiterer Registry-Typen
+\end_layout
+
+\begin_layout Itemize
+Austauschbare GUI der Admin-Konsole
 \end_layout
 
 \begin_layout Subsection
@@ -816,13 +969,17 @@ Offenes Rahmenwerk
 Entwurfsrichtung (Inside-Out?)
 \end_layout
 
+\begin_layout Plain Layout
+SSO Konzept
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Subsection
-Überblick über den Entwurf
+Überblick über den Grobentwurf
 \end_layout
 
 \begin_layout Itemize
@@ -900,47 +1057,6 @@ Apache ODE Management API
 
 \begin_layout Plain Layout
 SIMPL Core Schnittstellen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Erweiterbarkeit
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Datenquellen
-\end_layout
-
-\begin_layout Plain Layout
-Anfragesprachen
-\end_layout
-
-\begin_layout Plain Layout
-DM-Aktivitäten
-\end_layout
-
-\begin_layout Plain Layout
-DQ-Events
-\end_layout
-
-\begin_layout Plain Layout
-Authentifizierungs- und Autorisierungs-Verfahren
-\end_layout
-
-\begin_layout Plain Layout
-Registry
-\end_layout
-
-\begin_layout Plain Layout
-Admin-Konsole
 \end_layout
 
 \end_inset
