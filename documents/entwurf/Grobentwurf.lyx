@@ -53,7 +53,16 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -523,7 +532,7 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erstellung des Dokuments.
+Erstellung des Dokuments
 \end_layout
 
 \end_inset
@@ -534,7 +543,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.2
+
 \end_layout
 
 \end_inset
@@ -543,7 +552,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-30.10.2009
+
 \end_layout
 
 \end_inset
@@ -552,7 +561,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-schneimi
+
 \end_layout
 
 \end_inset
@@ -561,7 +570,7 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Anforderungen
+
 \end_layout
 
 \end_inset
@@ -780,7 +789,11 @@ Das SIMPL Rahmenwerk soll dem Benutzer eine generische und erweiterbare
 Anforderungen
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
+In diesem Abschnitt werden die Anforderungen des SIMPL Rahmenwerks beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
 Einfache Modellierung
 \end_layout
 
@@ -792,7 +805,7 @@ Bei der Modellierung von Prozessen wiederholen sich in der Regeln häufig
  anschließend als Referenz in anderen Statements verwendet werden können.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Große Datenmengen
 \end_layout
 
@@ -805,7 +818,7 @@ n Prozessen, bei denen überwiegend mit großen Datenmengen gearbeitet wird.
  schnell weitergegeben werden können.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Auditing von Prozessen
 \end_layout
 
@@ -819,7 +832,7 @@ Bei dem Auditing von Prozessen handelt es sich um das Protokollieren von
  Datenbank umgeleitet werden können.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Late Binding von Datenquellen
 \end_layout
 
@@ -832,7 +845,7 @@ e zugegriffen werden soll, beispielsweise beim Ablegen von Daten, soll ein
  passende Datenquelle zur Laufzeit bestimmt werden.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Authentifizierung und Autorisierung
 \end_layout
 
@@ -845,7 +858,7 @@ Datenquellen erfordern in der Regel eine Authentifizierung und Autorisierung
  werden müssen.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Registry
 \end_layout
 
@@ -857,7 +870,7 @@ Für die Verwaltung der für den Prozess-Modellierer zur Verfügung stehenden
  die für das Late Binding benötigt werden.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Admin-Konsole
 \end_layout
 
@@ -870,7 +883,7 @@ Für alle wichtigen Einstellungen des Rahmenwerks soll eine Admin-Konsole
  das Einbinden einer zusätzlicher Datenquelle.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Erweiterbarkeit
 \begin_inset Note Note
 status collapsed
@@ -943,34 +956,20 @@ Austauschbare GUI der Admin-Konsole
 
 \begin_layout Subsection
 Entwurfsprinzipien
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Modularer Aufbau
+[Plugin Architekturmuster]
 \end_layout
 
 \begin_layout Plain Layout
-Plugin Architekturmuster
+[Adapter (DAS)]
 \end_layout
 
 \begin_layout Plain Layout
-Adapter (DAS)
-\end_layout
-
-\begin_layout Plain Layout
-Offenes Rahmenwerk
-\end_layout
-
-\begin_layout Plain Layout
-Entwurfsrichtung (Inside-Out?)
-\end_layout
-
-\begin_layout Plain Layout
-SSO Konzept
+Generalisierung: bel.
+ Datenquellen, Standard BPEL, SIMPL Core mit anderen Web Containern ?
 \end_layout
 
 \end_inset
@@ -978,31 +977,153 @@ SSO Konzept
 
 \end_layout
 
+\begin_layout Standard
+In diesem Abschnitt werden die Prinzipien beschrieben, die bei dem Entwurf
+ angewendet werden.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+, Kapitel 17)
+\end_layout
+
+\begin_layout Subsubsection
+Offenes Rahmenwerk
+\end_layout
+
+\begin_layout Standard
+Bei dem SIMPL Rahmenwerk handelt es sich größtenteils um ein offenes Rahmenwerk.
+ Daher können viele Erweiterungen nicht ohne technisches Verständnis und
+ Wissen über die Mechanismen und Abläufe des Rahmenwerks realisiert werden.
+ Die Erweiterungsmöglichkeiten werden daher ausführlich dokumentiert und
+ Beispiele erstellt, anhand denen eigene Erweiterungen umgesetzt werden
+ können.
+ Bereiche des Rahmenwerks bei denen im Laufe des Projekts ausreichend Erfahrung
+ gesammelt wurde, werden wenn möglich in geschlossener Form für die Entwicklung
+ bereitgestellt.
+\end_layout
+
+\begin_layout Subsubsection
+Modularisierung
+\end_layout
+
+\begin_layout Standard
+Durch die Modularisierung werden die Komponenten in einfache und leicht
+ verständliche Teile gegliedert.
+ Die Realisierungsdetails eines Moduls werden nach dem Prinzip des Information
+ Hiding versteckt und die Dienste nur über eine Schnittstelle angeboten.
+ Ziel ist es, später Module ändern oder austauschen zu können, möglichst
+ ohne dabei die Schnittstellen ändern zu müssen und damit Auswirkungen auf
+ andere Module zu verursachen.
+\end_layout
+
+\begin_layout Subsubsection
+Kopplung und Zusammenhalt
+\end_layout
+
+\begin_layout Standard
+Bei dem Entwurf der Module wird darauf geachtet, dass die Kopplung zu anderen
+ Modulen möglichst gering bleibt und der Zusammenhalt innerhalb des Moduls
+ möglichst hoch wird.
+ Durch dieses Vorgehen wird eine hohe Lokalität und damit gute Wartbarkeit
+ erreicht, da sich Fehler die bei Änderungen entstehen, nicht im System
+ fortpflanzen können.
+\end_layout
+
+\begin_layout Subsubsection
+Entwicklungsrichtung
+\end_layout
+
+\begin_layout Standard
+Bei der Entwicklung wird Top-down vorgegangen.
+ Dabei wird die Aufgabe des Rahmenwerks rekursiv bis zur elementaren Ebene
+ (der Programmiersprache) in Teilaufgaben zerlegt und damit schrittweise
+ verfeinert.
+\end_layout
+
+\begin_layout Subsubsection
+Single Sign On
+\end_layout
+
+\begin_layout Standard
+Der Single Sign On (SSO) ist ein Konzept der Authentifizierung, bei dem
+ sich der Benutzer nur einmal erfolgreich bei einem System authentifizieren
+ muss, und auch bei weiteren Zugriffen, evtl.
+ auch auf andere Komponenten eines Systems, kein erneuter Authentifizierungsvorg
+ang benötigt wird.
+ Für das SIMPL Rahmenwerk betrifft das den Zugriff auf Datenquellen, wobei
+ verschiedene, von den Datenquellen geforderten, Authentifzierungsverfahren
+ unterstützt werden müssen.
+ Bei der Modellierung soll der Prozess-Modellierer zudem dahingehend unterstützt
+ werden, dass er Authentifizierungsinformationen nicht zu jeder Aktivität,
+ einer bestimmten Datenquelle, redundant angeben muss.
+\end_layout
+
 \begin_layout Subsection
 Überblick über den Grobentwurf
 \end_layout
 
 \begin_layout Itemize
-Kapitel 2
+Kapitel 2 
+\begin_inset Quotes eld
+\end_inset
+
+Architektur
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Architektur des Rahmenwerks.
+ Das Rahmenwerk wird in überschaubare Komponenten gegliedert, die jeweils
+ genau definierte Funktionen erfüllen.
 \end_layout
 
 \begin_layout Itemize
-Kapitel 3
+Kapitel 3 
+\begin_inset Quotes eld
+\end_inset
+
+Komponenten
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die im Kapitel 
+\begin_inset Quotes eld
+\end_inset
+
+Architektur
+\begin_inset Quotes erd
+\end_inset
+
+ beschriebenen Komponenten im Detail.
+ Dabei werden Schnittstellen, Protokolle und Verhalten definiert.
 \end_layout
 
 \begin_layout Itemize
-Kapitel 4
-\end_layout
+Kapitel 4 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Itemize
-Kapitel 5
+Schnittstellen
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die in Kapitel 
+\begin_inset Quotes eld
+\end_inset
+
+Komponenten
+\begin_inset Quotes erd
+\end_inset
+
+ definierten Schnittstellen im Detail und beschreibt wie diese genutzt werden.
 \end_layout
 
 \begin_layout Section
 Architektur
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -1017,6 +1138,16 @@ Eclipse, ODE, SIMPL Core und ihre Beziehungen zueinander, mit Abbildungen
 
 \begin_layout Section
 Komponenten
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Komponenten Abbildung
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1031,17 +1162,43 @@ Apache ODE
 SIMPL Core
 \end_layout
 
+\begin_layout Standard
+Der SIMPL Core besteht aus verschiedenen Web Services, die jeweils fest
+ definierte Aufgaben innerhalb des SIMPL Rahmenwerks haben.
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Security Service
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Reference Service
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Strategy Service
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Transformation Service
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Administration Service
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Datasource Service 
+\end_layout
+
 \begin_layout Subsection
 Registry
 \end_layout
 
 \begin_layout Section
 Schnittstellen
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Dauerhafte Datenspeicherung
@@ -1058,6 +1215,220 @@ Apache ODE Management API
 \begin_layout Plain Layout
 SIMPL Core Schnittstellen
 \end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eigentlich werden die Komponentenschnittstellen schon in Kapitel 3 beschrieben,
+ aber die internen Schnittstellen von SIMPL sind im Grunde  gleichzeitig
+ die externen.
+ Vielleicht in Kapitel 3 einfach nur nennen und dann hier näher beschreiben.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size larger
+Abkürzungsverzeichnis
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="2">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BPEL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orchestration Director Engine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GUI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Graphical User Interface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reference Resolution System
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SIMPL 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SimTech: Information Management, Processes and Languages
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Structured Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Single Sign On
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UDDI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Universal Description, Discovery and Integration
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XQuery
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -1081,7 +1452,7 @@ Entwurfsvorlage
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-1"
+key "key-2"
 
 \end_inset
 
