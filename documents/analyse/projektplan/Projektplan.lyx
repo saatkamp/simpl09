@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -76,7 +76,7 @@
 \bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
+\paragraph_separation skip
 \defskip medskip
 \quotes_language english
 \papercolumns 1
@@ -631,7 +631,7 @@ Aktualisierung des Terminplans und Überarbeitung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-??.
+31.
  Oktober 2009
 \begin_inset Note Note
 status open
@@ -1111,6 +1111,7 @@ Auszuliefernde Produkte mit Terminen
 \end_layout
 
 \begin_layout Standard
+\noindent
 \begin_inset Note Note
 status open
 
@@ -1343,6 +1344,7 @@ In diesem Abschnitt werden die verschiedenen Verantwortlichkeiten innerhalb
 \end_layout
 
 \begin_layout Standard
+\noindent
 
 \series bold
 \color black
@@ -1474,7 +1476,7 @@ Managementziele und -prioritäten
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Beispiele: Häufigkeit und Mechanismen der Berichterstattung; relative Prioritäte
@@ -1484,86 +1486,8 @@ n zwischen Anforderungen, Zeitplan und Budget; Absicht zur Wiederverwendung
 
 \end_inset
 
-Folgende Berichterstattung wird innerhalb des Projektes und gegenüber den
- Betreuern verlangt.
-\end_layout
-
-\begin_layout Subsubsection
-Wasserstandsmeldungen
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Jede Woche
-\emph default
- soll eine Wasserstandsmeldung an die Betreuer des Studienprojeks SIMPL
- erfolgen in der folgende Punkte abgedeckt sind:
-\end_layout
-
-\begin_layout Itemize
-In welcher Phase befindet sich das Projekt aktuell? 
-\end_layout
-
-\begin_layout Itemize
-Welche Arbeitspakete werden aktuell bearbeitet? 
-\end_layout
-
-\begin_layout Itemize
-Welche Arbeitspakete wurden abgeschlossen? 
-\end_layout
-
-\begin_layout Itemize
-Welche Probleme sind aufgetreten und wie wurden sie gelöst? 
-\end_layout
-
-\begin_layout Itemize
-Ist ein Treffen mit den Betreuern notwendig? 
-\end_layout
-
-\begin_layout Subsubsection
-Activity Reports
-\end_layout
-
-\begin_layout Standard
-Jedes Mitglied des Teams soll 
-\emph on
-jeden Monat
-\emph default
- einen Activity Report erstellen und den Betreuern zukommen lassen, der
- folgende Punkte enthält:
-\end_layout
-
-\begin_layout Itemize
-Geleistete Stunden
-\end_layout
-
-\begin_layout Itemize
-Rolle im Projekt
-\end_layout
-
-\begin_layout Itemize
-Was habe ich im Berichtszeitraum geleistet?
-\end_layout
-
-\begin_layout Itemize
-Was steht im nächsten Berichtszeitraum an?
-\end_layout
-
-\begin_layout Itemize
-Wieso konnte ich für einen längeren Zeitraum nicht am Projekt arbeiten?
-\end_layout
-
-\begin_layout Itemize
-An welchen Projekttreffen habe ich teilgenommen?
-\end_layout
-
-\begin_layout Itemize
-Was ist im Berichtszeitraum gut gelaufen?
-\end_layout
-
-\begin_layout Itemize
-Was ist im Berichtszeitraum nicht optimal gelaufen?
+In diesem Abschnitt werden die projektinterne Berichtserstattung und die
+ Prioritäten innerhalb des Projektes näher erleutert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1574,6 +1498,16 @@ Zeiterfassung
 Jedes Mitglied des Teams muss seine Aufwände erfassen und am Ende des Monats
  dem Projektleiter zukommen lassen, der die Aufwände in einer zentralen
  Datei erfasst und verwaltet.
+\end_layout
+
+\begin_layout Subsubsection
+Wöchentlicher Bericht
+\end_layout
+
+\begin_layout Standard
+Jedes Mitglied soll in den wöchentlichen Treffen einen kurzen Bericht darüber
+ abgeben was er in dieser Woche gemacht hat und was er in der kommenden
+ Woche zu erledigen gedenkt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2171,13 +2105,87 @@ Das grundlegende Modell der Konfigurationsverwaltung
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Wasserstandsmeldungen
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Jede Woche
+\emph default
+ soll eine Wasserstandsmeldung an die Betreuer des Studienprojeks SIMPL
+ erfolgen in der folgende Punkte abgedeckt sind:
+\end_layout
+
+\begin_layout Itemize
+In welcher Phase befindet sich das Projekt aktuell? 
+\end_layout
+
+\begin_layout Itemize
+Welche Arbeitspakete werden aktuell bearbeitet? 
+\end_layout
+
+\begin_layout Itemize
+Welche Arbeitspakete wurden abgeschlossen? 
+\end_layout
+
+\begin_layout Itemize
+Welche Probleme sind aufgetreten und wie wurden sie gelöst? 
+\end_layout
+
+\begin_layout Itemize
+Ist ein Treffen mit den Betreuern notwendig? 
+\end_layout
+
+\begin_layout Subsubsection
+Activity Reports
+\end_layout
+
+\begin_layout Standard
+Jedes Mitglied des Teams soll 
+\emph on
+jeden Monat
+\emph default
+ einen Activity Report erstellen und den Betreuern zukommen lassen, der
+ folgende Punkte enthält:
+\end_layout
+
+\begin_layout Itemize
+Geleistete Stunden
+\end_layout
+
+\begin_layout Itemize
+Rolle im Projekt
+\end_layout
+
+\begin_layout Itemize
+Was habe ich im Berichtszeitraum geleistet?
+\end_layout
+
+\begin_layout Itemize
+Was steht im nächsten Berichtszeitraum an?
+\end_layout
+
+\begin_layout Itemize
+Wieso konnte ich für einen längeren Zeitraum nicht am Projekt arbeiten?
+\end_layout
+
+\begin_layout Itemize
+An welchen Projekttreffen habe ich teilgenommen?
+\end_layout
+
+\begin_layout Itemize
+Was ist im Berichtszeitraum gut gelaufen?
+\end_layout
+
+\begin_layout Itemize
+Was ist im Berichtszeitraum nicht optimal gelaufen?
 \end_layout
 
 \begin_layout Subsection
@@ -2194,9 +2202,6 @@ reference "sub:Verantwortlichkeiten"
 \end_inset
 
  nachgelesen werden.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -2215,8 +2220,19 @@ Anzahl und Typen der notwendigen Mitarbeiter; erforderliche Fähigkeiten,
 Technische Prozesse
 \end_layout
 
+\begin_layout Standard
+In diesem Abschnitt geht es um die Technischen Prozesse des Projektes.
+ Darunter fallen die eingesetzten Technologien, Tools und natürlich auch
+ Planung der Dokumentation und Meilensteine.
+\end_layout
+
 \begin_layout Subsection
 Methoden, Werkzeuge und Techniken
+\end_layout
+
+\begin_layout Standard
+Im folgenden Abschnitt werden die eingesestzten Technologien und Tools näher
+ beschrieben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2263,10 +2279,9 @@ hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
 
 \begin_layout Description
 Hudson 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://hudson.dev.java.net/"
-target "https://hudson.dev.java.net/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
 
 \end_inset
 
@@ -2281,10 +2296,9 @@ Hudson ist speziell darauf ausgelegt Software kontinuierlich zu integrieren
 
 \begin_layout Description
 ApacheODE 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://ode.apache.org"
-target "http://ode.apache.org"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
 
 \end_inset
 
@@ -2293,10 +2307,9 @@ target "http://ode.apache.org"
 
 \begin_layout Description
 Eclipse-Bpel-Designer 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://www.eclipse.org/bpel"
-target "http://www.eclipse.org/bpel"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
 
 \end_inset
 
@@ -2312,9 +2325,9 @@ Der Eclipse BPEL-Designer ermöglicht es, über ein grafisches Interface,
 
 \begin_layout Description
 IBM-DB2 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://www-01.ibm.com/software/data/db2/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
 
 \end_inset
 
@@ -2347,9 +2360,9 @@ unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
 
 \begin_layout Description
 Subversion 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://subversion.tigris.org/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-5"
 
 \end_inset
 
@@ -2364,9 +2377,9 @@ Subversion ist ein Programm zur Versionskontrolle, welches sich durch einfache
 
 \begin_layout Description
 Maven 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://maven.apache.org/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
 
 \end_inset
 
@@ -2375,9 +2388,9 @@ target "http://maven.apache.org/"
 
 \begin_layout Description
 Lyx 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://www.lyx.org/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-7"
 
 \end_inset
 
@@ -2391,10 +2404,9 @@ Lyx ist Editor für Latex der teilweise WYSIWYG Eigenschaften mitliefert.
 
 \begin_layout Description
 LaTeX 
-\begin_inset CommandInset href
-LatexCommand href
-name "http://miktex.org/"
-target "http://miktex.org/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-8"
 
 \end_inset
 
@@ -2408,9 +2420,9 @@ Latex ist eine Designsprache, mit der sich hochwertige Aussehende Dokumente
 
 \begin_layout Description
 Eclipse-Subversion 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://subclipse.tigris.org/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-9"
 
 \end_inset
 
@@ -2424,9 +2436,9 @@ Wird während der Implementierung in Eclipse eingesetzt um den Quellcode
 
 \begin_layout Description
 TortoiseSVN 
-\begin_inset CommandInset href
-LatexCommand href
-target "http://tortoisesvn.tigris.org/"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-10"
 
 \end_inset
 
@@ -2457,6 +2469,12 @@ Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
 
 \begin_layout Subsection
 Dokumentationsplan
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt befasst sich mit den Dokumenten die beim Erreichen eines
+ Meilensteins vorliegen müssen und mit der Organisation und Durchführung
+ von Reviews.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2490,7 +2508,7 @@ unterstrichen
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="16" columns="4">
+<lyxtabular version="3" rows="25" columns="4">
 <features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="middle" width="2.5cm">
 <column alignment="left" valignment="middle" width="3cm">
@@ -2734,7 +2752,7 @@ Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
 \begin_layout Plain Layout
 
 \bar under
-Spezifikation
+Spezifikation erste Iteration
 \end_layout
 
 \end_inset
@@ -2788,7 +2806,7 @@ externen Review
 \begin_layout Plain Layout
 
 \bar under
-Grobentwurf
+Grobentwurf gesamtes System
 \end_layout
 
 \end_inset
@@ -2835,7 +2853,7 @@ Der Kunde akzeptiert den Grobentwurf.
 \begin_layout Plain Layout
 
 \bar under
-Feinentwurf
+Feinentwurf erste Iteration
 \end_layout
 
 \end_inset
@@ -2869,7 +2887,7 @@ Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
 
 \begin_layout Plain Layout
 15.
- Dezember 2009
+ November 2009
 \end_layout
 
 \end_inset
@@ -2890,7 +2908,7 @@ implemen-
 \begin_inset Newline newline
 \end_inset
 
-tierung
+tierung erste Iteration
 \end_layout
 
 \end_inset
@@ -2908,7 +2926,8 @@ Quellcode der Module (Java)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle spezifizierten Use-Cases sind innerhalb der Module implementiert.
+Alle spezifizierten Use-Cases der ersten Iteration sind innerhalb der Module
+ implementiert.
 \end_layout
 
 \end_inset
@@ -2917,8 +2936,8 @@ Alle spezifizierten Use-Cases sind innerhalb der Module implementiert.
 \begin_inset Text
 
 \begin_layout Plain Layout
-25.
- Februar 2010
+13.
+ Dezember 2009
 \end_layout
 
 \end_inset
@@ -2931,7 +2950,7 @@ Alle spezifizierten Use-Cases sind innerhalb der Module implementiert.
 \begin_layout Plain Layout
 
 \shape italic
-Erweiterungen
+Erweiterungen erste Iteration
 \end_layout
 
 \end_inset
@@ -2949,7 +2968,7 @@ Quellcode der Erweiterungen von Apache ODE und Eclipse BPEL Designer (Java)
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle spezifizierten Erweiterungen sind implementiert.
+Alle spezifizierten Erweiterungen der ersten Iteration sind implementiert.
 \end_layout
 
 \end_inset
@@ -2958,8 +2977,8 @@ Alle spezifizierten Erweiterungen sind implementiert.
 \begin_inset Text
 
 \begin_layout Plain Layout
-25.
- Februar 2010
+13.
+ Dezember 2009
 \end_layout
 
 \end_inset
@@ -2972,7 +2991,7 @@ Alle spezifizierten Erweiterungen sind implementiert.
 \begin_layout Plain Layout
 
 \shape italic
-Modultest
+Modultest erste Iteration
 \end_layout
 
 \end_inset
@@ -3001,8 +3020,457 @@ Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.
- März 2010
+13.
+ Dezember 2009
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Sollte vor integration Laufen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+Integration und Systemtest erste Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testfälle und Testprotokoll (PDF und LaTeX), Korrigierter Quellcode (Java)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle aus der Spezifikation erstellten Testfälle wurden ausgeführt, deren
+ Verlauf protokolliert und der Code anhand der Ergebnisse korrigiert.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20.
+ Dezember 2009
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+wird man mit BPEl files machen.
+ Installations Bundles.evnt in phase reinschreiben..
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Spezifikation zweite Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung der Spezifikation (PDF und LaTeX) und Prototyp des erweiterten
+ Eclipse BPEL-Designers
+\end_layout
+
+\begin_layout Plain Layout
+(interne Dokumente)
+\shape italic
+ Reviewprotokoll
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Kunde akzeptiert die Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.
+ Dezember 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Feinentwurf zweite Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung Feinentwurf (PDF und LaTeX)
+\end_layout
+
+\begin_layout Plain Layout
+(interne Dokumente)
+\shape italic
+ Reviewprotokoll
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20.
+ Dezember 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Modul-
+\begin_inset Newline newline
+\end_inset
+
+implemen-
+\begin_inset Newline newline
+\end_inset
+
+tierung zweite Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quellcode der Module (Java)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle spezifizierten Use-Cases der zweiten Iteration sind innerhalb der Module
+ implementiert.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.
+ Januar 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Modultest zweite Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testfälle und Testprotokoll (PDF und LaTeX), Korrigierter Quellcode (Java)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
+ und der Code anhand der Ergebnisse korrigiert.
+ Weiterhin muss eine Code-Überdeckung von 95% erreicht worden sein.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.
+ Januar 2010
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Sollte vor integration Laufen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Spezifikation dritte Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung der Spezifikation (PDF und LaTeX) und Prototyp des erweiterten
+ Eclipse BPEL-Designers
+\end_layout
+
+\begin_layout Plain Layout
+(interne Dokumente)
+\shape italic
+ Reviewprotokoll
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Kunde akzeptiert die Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.
+ Januar 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\bar under
+Feinentwurf dritte Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kundenfassung Feinentwurf (PDF und LaTeX)
+\end_layout
+
+\begin_layout Plain Layout
+(interne Dokumente)
+\shape italic
+ Reviewprotokoll
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.
+ Januar 2009
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Modul-
+\begin_inset Newline newline
+\end_inset
+
+implemen-
+\begin_inset Newline newline
+\end_inset
+
+tierung dritte Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quellcode der Module (Java)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle spezifizierten Use-Cases der zweiten Iteration sind innerhalb der Module
+ implementiert.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.
+ Februar 2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Modultest dritte Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testfälle und Testprotokoll (PDF und LaTeX), Korrigierter Quellcode (Java)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
+ und der Code anhand der Ergebnisse korrigiert.
+ Weiterhin muss eine Code-Überdeckung von 95% erreicht worden sein.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.
+ Februar 2010
 \begin_inset Note Note
 status collapsed
 
@@ -3261,6 +3729,16 @@ Reviews
 \end_layout
 
 \begin_layout Standard
+Hier werden die Reviewtermine aufgelistet und der genaue Ablauf der Reviews
+ beschrieben.
+\end_layout
+
+\begin_layout Standard
+Anmerkung: Review der Spezifikation der zweiten und dritten Iteration werden
+ gegebenenfalls durch einen Walkthrough ersetzt.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 placement h
 wide false
@@ -3290,7 +3768,7 @@ Interne und externe Reviewtermine
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
+<lyxtabular version="3" rows="7" columns="4">
 <features>
 <column alignment="center" valignment="top" width="3.5cm">
 <column alignment="center" valignment="top" width="2cm">
@@ -3347,7 +3825,7 @@ Ende des Reviewzeitraums
 \begin_inset Text
 
 \begin_layout Plain Layout
-Spezifikation
+Spezifikation erste Iteration
 \end_layout
 
 \end_inset
@@ -3387,7 +3865,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-Spezifikation
+Spezifikation erste Iteration
 \end_layout
 
 \end_inset
@@ -3427,6 +3905,86 @@ extern
 \begin_inset Text
 
 \begin_layout Plain Layout
+Spezifikation zweite Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.12.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.12.09
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation dritte Iteration 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.01.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.01.10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 Grobentwurf
 \end_layout
 
@@ -3447,7 +4005,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-03.11.09
+06.11.09
 \end_layout
 
 \end_inset
@@ -3691,10 +4249,11 @@ Spezifikation
 \end_layout
 
 \begin_layout Standard
-In dieser Phase wird die zu entwickelnde Software genau spezifiziert, d.h.
+In dieser Phase werde die zu entwickelnde Softwareeinheiten genau spezifiziert,
+ d.h.
  in einem Dokument, der Spezifikation, werden alle funktionalen und nichtfunktio
-nalen Anforderungen an die Software und ihre Schnittstellen präzise, vollständig
- und überprüfbar definiert.
+nalen Anforderungen an die Softwareeinheit und ihre Schnittstellen präzise,
+ vollständig und überprüfbar definiert.
  Ebenso werden spätere Abläufe im Umgang mit der Software und ihren Funktionen
  beschrieben.
  Die Spezifikation dient darüber hinaus als Referenz für viele nachfolgende
@@ -3710,8 +4269,8 @@ Entwurf
 \end_layout
 
 \begin_layout Standard
-In der Entwurfsphase wird die Architektur der Software festgelegt und in
- verschiedenen Granularitäten in den Dokumenten Grob-Entwurf (Architektur
+In der Entwurfsphase wird die Architektur der Softwareeinheit festgelegt
+ und in verschiedenen Granularitäten in den Dokumenten Grob-Entwurf (Architektur
  des Gesamtsystems) und Fein-Entwurf (Architektur der einzelnen Module)
  festgehalten.
 \end_layout
@@ -3723,7 +4282,7 @@ Codierung
 \begin_layout Standard
 In der Codierungsphase werden die Anforderungen aus der Spezifikation mit
  der Architektur des Entwurfs umgesetzt.
- Am Ende dieser Phase existiert eine ausführbare Software.
+ Am Ende dieser Phase existiert eine ausführbare Softwareeinheit.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3734,8 +4293,8 @@ Test
 Die Testphase dient dazu die Software gegen die Spezifikation zu prüfen,
  d.h.
  alle Anforderungen aus der Spezifikation werden mit geeigneten Testfällen
- überprüft und die Software entsprechend korrigiert, falls sie nicht die
- gewünschten Ergebnisse liefert.
+ überprüft und die Softwareeinheit entsprechend korrigiert, falls sie nicht
+ die gewünschten Ergebnisse liefert.
  Dazu wird eine Reihe von Testfällen definiert und deren Ausführung in einem
  Testprotokoll aufgezeichnet.
  Diese zwei Dokumente sind auch für den Kunden wichtig, da sie als Referenz
@@ -3747,7 +4306,7 @@ Abnahmetest
 \end_layout
 
 \begin_layout Standard
-Am Ende der Testphase erfolgt die Abnahme des Projekts und aller genannten
+Am Ende der Testphase erfolgt die Abnahme der Software und aller genannten
  Dokumente (siehe Tabelle 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3800,7 +4359,7 @@ Die im vorigen Abschnitt definierten Phasen werden nun in Arbeitspakete
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="26" columns="4">
+<lyxtabular version="3" rows="32" columns="4">
 <features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="top" width="2.6cm">
 <column alignment="left" valignment="top" width="2.5cm">
@@ -4120,7 +4679,7 @@ Berichte als Grundlage für Spezifikation und Implementierung bzw.
 \begin_layout Plain Layout
 
 \shape italic
-spez#erstell
+spezIter1#erstell
 \end_layout
 
 \end_inset
@@ -4160,7 +4719,7 @@ Spezifikationsdokument
 \begin_layout Plain Layout
 
 \shape italic
-spez#rev1
+spezIter1#rev1
 \end_layout
 
 \end_inset
@@ -4200,7 +4759,7 @@ Reviewprotokoll
 \begin_layout Plain Layout
 
 \shape italic
-spez#kor1
+spezIter1#kor1
 \end_layout
 
 \end_inset
@@ -4240,7 +4799,7 @@ Korrigiertes Spezifikationsdokument
 \begin_layout Plain Layout
 
 \shape italic
-spez#rev2
+spezIter1#rev2
 \end_layout
 
 \end_inset
@@ -4280,7 +4839,7 @@ Reviewprotokoll
 \begin_layout Plain Layout
 
 \shape italic
-spez#kor2
+spezIter1#kor2
 \end_layout
 
 \end_inset
@@ -4440,7 +4999,7 @@ Grobentwurf
 \begin_layout Plain Layout
 
 \shape italic
-feinEntw#erstell
+feinEntwIter1#erstell
 \end_layout
 
 \end_inset
@@ -4449,7 +5008,7 @@ feinEntw#erstell
 \begin_inset Text
 
 \begin_layout Plain Layout
-Feinentwurf erstellen
+Feinentwurf erste Iteration erstellen
 \end_layout
 
 \end_inset
@@ -4480,7 +5039,7 @@ Dokument des Feinentwurf
 \begin_layout Plain Layout
 
 \shape italic
-code#
+codeIter1#erstell
 \end_layout
 
 \end_inset
@@ -4489,7 +5048,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Implementierung
 \end_layout
 
 \end_inset
@@ -4498,7 +5057,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Implementierung der Usecases
 \end_layout
 
 \end_inset
@@ -4507,7 +5066,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Code
 \end_layout
 
 \end_inset
@@ -4520,7 +5079,7 @@ code#
 \begin_layout Plain Layout
 
 \shape italic
-code#
+spezIter2#erstell
 \end_layout
 
 \end_inset
@@ -4529,7 +5088,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Spezifikation erstellen
 \end_layout
 
 \end_inset
@@ -4538,7 +5097,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Erstellung der Spezifikation
 \end_layout
 
 \end_inset
@@ -4547,7 +5106,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Spezifikationsdokument
 \end_layout
 
 \end_inset
@@ -4560,7 +5119,7 @@ code#
 \begin_layout Plain Layout
 
 \shape italic
-code#
+spezIter2#rev
 \end_layout
 
 \end_inset
@@ -4569,7 +5128,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.Review der Spezifikation
 \end_layout
 
 \end_inset
@@ -4578,7 +5137,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Interner Review der Spezifikation
 \end_layout
 
 \end_inset
@@ -4587,7 +5146,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Reviewprotokoll
 \end_layout
 
 \end_inset
@@ -4600,7 +5159,7 @@ code#
 \begin_layout Plain Layout
 
 \shape italic
-code#
+feinEntwIter2#erstell
 \end_layout
 
 \end_inset
@@ -4609,7 +5168,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Feinentwurf erste Iteration erstellen
 \end_layout
 
 \end_inset
@@ -4618,7 +5177,7 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Erstellen des Feinentwurfes
 \end_layout
 
 \end_inset
@@ -4627,7 +5186,207 @@ code#
 \begin_inset Text
 
 \begin_layout Plain Layout
+Dokument des Feinentwurf
+\end_layout
 
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+codeIter2#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implementierung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implementierung der Usecases
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Code
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spezIter3#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikationsdokument
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+spezIter3#rev
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.Review der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interner Review der Spezifikation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reviewprotokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+feinEntwIter3#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Feinentwurf erste Iteration erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellen des Feinentwurfes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dokument des Feinentwurf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+codeIter3#erstell
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implementierung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implementierung der Usecases
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Code
 \end_layout
 
 \end_inset
@@ -4769,7 +5528,7 @@ test#mod
 \begin_inset Text
 
 \begin_layout Plain Layout
-Modultest
+Modultest (durchgeführt wärend jeder Iteration)
 \end_layout
 
 \end_inset
@@ -4830,6 +5589,47 @@ Planung und Durchführung des Integrationstests mit anschließender Korrektur
 
 \begin_layout Plain Layout
 Testprotokoll
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+test#sysIter1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Systemtest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Planung und Durchführung des Systemtests nach der ersten Iteration, mit
+ anschließender Korrektur der entdeckten Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Testpotokoll
 \end_layout
 
 \end_inset
@@ -4967,6 +5767,11 @@ Durchführung möglicher Erweiterungen und/oder Anpassungen
 Abhängigkeiten
 \end_layout
 
+\begin_layout Standard
+Hier werden die Abhängigkeiten zwischen den Arbeitspaketen und zu externen
+ Elementen genauer beschrieben.
+\end_layout
+
 \begin_layout Description
 Iterationen:
 \end_layout
@@ -4997,6 +5802,10 @@ Abhängigkeiten zwischen Arbeitspaketen und zu externen Elementen; Reihenfolge
 
 \begin_layout Subsection
 Zuteilung des Budgets und der Ressourcen auf Projektfunktionen und Aktivitäten
+\end_layout
+
+\begin_layout Standard
+Dieser Abschnitt enthällt die berechneten Aufwände für die einzelnen Phasen.
 \end_layout
 
 \begin_layout Standard
@@ -5147,7 +5956,7 @@ Spezifikation
 \begin_inset Text
 
 \begin_layout Plain Layout
-07.08.2009-15.10.2009
+07.08.2009-17.01.2010
 \end_layout
 
 \end_inset
@@ -5176,7 +5985,7 @@ Entwurf
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.10.2009-15.12.2009
+15.10.2009-24.01.2010
 \end_layout
 
 \end_inset
@@ -5319,8 +6128,20 @@ Puffer
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Zeitplan
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt befindet sich die Abbildungen der Gantt-Diagramme des
+ Projektverlaufes und der Iterationen.
 \end_layout
 
 \begin_layout Standard
@@ -5358,16 +6179,53 @@ Gantt-Diagramm des Projektverlaufs
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Iterationen
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+In diesem Abschnitt werden die Iterationen und die zu implementierenden
+ Softwareeinheiten näher beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Grafik der iterationen mit einstellen.
+\begin_inset Graphics
+	filename iteration.png
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Gantt-Diagramm der Iterationen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -5406,6 +6264,10 @@ Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
  Iteration
 \end_layout
 
+\begin_layout Standard
+Implementierung der weitergehenden Funktionalität des SIMPL-Rahmenwerks.
+\end_layout
+
 \begin_layout Itemize
 Implementierung der IAAS-Referenzen.
  Das heißt, Referenzen, die auf Daten verweisen und anstatt derer zwischen
@@ -5433,6 +6295,10 @@ Implementierung eines Dateisystem-Adapters am Beispiel des CSV-Dateiformats.
  Iteration
 \end_layout
 
+\begin_layout Standard
+Implementierung der verbleibenden Funktionalität des SIMPL-Rahmenwerks.
+\end_layout
+
 \begin_layout Itemize
 Implementierung einer Datenquellen-Registry mit Hilfe derer Datenquellen
  über den Eclipse BPEL Designer manuell durch den Benutzer oder dynamisch
@@ -5448,6 +6314,190 @@ Unterstützung einer automatischen Auswahl von Datenquellen zur Laufzeit.
 
 \begin_layout Itemize
 Einstellung der Granularität von Auditing.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1"
+key "key-1"
+
+\end_inset
+
+Hudson, 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://hudson.dev.java.net/"
+target "https://hudson.dev.java.net/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2"
+key "key-2"
+
+\end_inset
+
+Apache Ode, 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://hudson.dev.java.net/"
+target "https://hudson.dev.java.net/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "3"
+key "key-3"
+
+\end_inset
+
+Eclipse BPEL-Designer
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.eclipse.org/bpel"
+target "http://www.eclipse.org/bpel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "4"
+key "key-4"
+
+\end_inset
+
+IM-DB2
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www-01.ibm.com/software/data/db2/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "5"
+key "key-5"
+
+\end_inset
+
+Subversion 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://subversion.tigris.org/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "6"
+key "key-6"
+
+\end_inset
+
+ Maven 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://maven.apache.org/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "7"
+key "key-7"
+
+\end_inset
+
+Lyx 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "8"
+key "key-8"
+
+\end_inset
+
+LaTex 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://miktex.org/"
+target "http://miktex.org/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "9"
+key "key-9"
+
+\end_inset
+
+Eclipse-Subversion 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://subclipse.tigris.org/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "10"
+key "key-10"
+
+\end_inset
+
+TortoiseSVN 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://tortoisesvn.tigris.org/"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
