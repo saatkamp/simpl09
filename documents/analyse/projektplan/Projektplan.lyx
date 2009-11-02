@@ -714,7 +714,7 @@ Das Projekt läuft von Mai 2009 bis Mai 2010.
 \begin_layout Standard
 Das Projekt besteht aus den folgenden Hauptmeilensteinen/Phasen: Analyse,
  Einarbeitung, Spezifikation, Entwurf, Implementierung und Test.
- Eine detailiertere Beschreibung der einzelnen Phasen findet sich in Abschnitt
+ Eine detailliertere Beschreibung der einzelnen Phasen findet sich in Abschnitt
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1257,9 +1257,9 @@ interne Managementstruktur (z.B.
 
 \begin_layout Standard
 Die Kommunikation innerhalb des Projekts wird durch die Verwendung einer
- Mailing-Liste sowie wöchentlichen Treffen des gesammten Teams gesichert.
+ Mailing-Liste sowie wöchentlichen Treffen des gesamten Teams gesichert.
  Dadurch ist das ganze Team immer über die aktuellen Arbeiten und Fortschritte
- jedes Teammitglieds informiert und die gewonnenen Erkentnisse oder getroffenen
+ jedes Teammitglieds informiert und die gewonnenen Erkenntnisse oder getroffenen
  Entscheidungen sind allen bekannt und für jeden nachvollziehbar.
 \end_layout
 
@@ -1269,8 +1269,8 @@ Organisationsgrenzen und -schnittstellen
 
 \begin_layout Standard
 Der Projektleiter bildet die alleinige Schnittstelle des Projektteams nach
- Aussen, d.h.
- die gesammte Kommunikation mit den Kunden und Betreuern erfolgt über den
+ Außen, d.h.
+ die gesamte Kommunikation mit den Kunden und Betreuern erfolgt über den
  Projektleiter (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1499,8 +1499,8 @@ n zwischen Anforderungen, Zeitplan und Budget; Absicht zur Wiederverwendung
 
 \end_inset
 
-In diesem Abschnitt werden die projektinterne Berichtserstattung und die
- Prioritäten innerhalb des Projektes näher erleutert.
+In diesem Abschnitt werden die projektinterne Berichterstattung und die
+ Prioritäten innerhalb des Projektes näher erläutert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1540,7 +1540,7 @@ Annahmen, Abhängigkeiten und Einschränkungen
 
 \begin_layout Standard
 Das Projekt unterliegt einer strengen Zeitplanung, da es im Rahmen eines
- Studienprojektes durchgeführt wird und eine feste Laufdauer von 12 Monaten
+ Studienprojekts durchgeführt wird und eine feste Laufdauer von 12 Monaten
  hat.
 \end_layout
 
@@ -1962,6 +1962,13 @@ Projektüberwachung
 \end_layout
 
 \begin_layout Standard
+In diesem Abschnitt werden verschiedene Methoden zur Überwachung des Projekts
+ und seiner Fortschritte beschrieben.
+ Dazu gehören beispielsweise Qualitätssicherungsmaßnahmen, Wasserstandsmeldungen
+ und Activity Reports.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -1990,7 +1997,7 @@ Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
  Anschließend wird die SE (Software-Einheit) falls sie Fehler enthält (positive
  QS-Prüfung) mit entsprechenden Kommentaren zurück an die Verfasser geschickt.
  Eine formal korrekte (negativ QS-geprüfte) SE wird an den Projektleiter
- weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesammten
+ weitergeleitet, der abschließend den Inhalt und die Korrektheit der gesamten
  SE prüft.
  Der Projektleiter leitet positiv geprüfte SE mit entsprechenden Kommentaren
  ebenfalls zurück an die Verfasser, der dann die entsprechenden Korrekturen
@@ -2003,7 +2010,7 @@ Um die Qualität der erstellten Dokumente gewährleisten zu können wird jedes
  Fehler oder Mängel enthält das eine Korrektur sich nicht lohnt, so kann
  er die SE verwerfen, d.h.
  die Verfasser erhalten eine Nachricht und müssen die SE neu verfassen.
- Eine detailierte Beschreibung des gesamten Ablaufs des QS-Prozesses zeigt
+ Eine detaillierte Beschreibung des gesamten Ablaufs des QS-Prozesses zeigt
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2121,6 +2128,445 @@ Das grundlegende Modell der Konfigurationsverwaltung
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Reviews
+\end_layout
+
+\begin_layout Standard
+Hier werden die Reviewtermine aufgelistet und der genaue Ablauf der Reviews
+ beschrieben.
+\end_layout
+
+\begin_layout Standard
+Anmerkung: Review der Spezifikation der zweiten und dritten Iteration werden
+ gegebenenfalls durch einen Walkthrough ersetzt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Interne und externe Reviewtermine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features>
+<column alignment="center" valignment="top" width="3.5cm">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="4cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Dokument
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Art des Reviews
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Begin des Reviewzeitraums (Versenden der Einladungen)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ende des Reviewzeitraums
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation erste Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.09.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23.09.09
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation erste Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+extern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.09.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+07.10.09
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation zweite Iteration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.12.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.12.09
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spezifikation dritte Iteration 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.01.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.01.10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Grobentwurf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+06.11.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+08.11.09
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Handbuch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+intern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25.03.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29.03.10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Reviews werden in Gruppen von 5-6 Personen abgehalten.
+ Dabei gilt folgende Rollenverteilung:
+\end_layout
+
+\begin_layout Description
+Moderator Der Moderator leitet und organisiert das Review.
+ Bei Unklarheiten in Reviewpunkten führt er eine Einigung herbei.
+\end_layout
+
+\begin_layout Description
+Aktuar Der Aktuar protokolliert die angesprochenen Befunde und deren zugeordnete
+ Fehlerkategorie.
+ Er selbst nimmt nicht an Diskussionen und Wertungen der Fehler teil.
+\end_layout
+
+\begin_layout Description
+Gutachter Drei bis vier Gutachter untersuchen das Dokument nach vorher festgeleg
+ten Gesichtspunkten und ordnen ihren Befunden einer der folgenden Fehlerkategori
+en zu: Gut, Nebenfehler, Hauptfehler oder kritischer Fehler.
+ Gut bedeutet, dass ein Abschnitt in Ordnung ist und keine Fehler oder Mängel
+ aufweist.
+ Ein Nebenfehler liegt vor, wenn die Nutzbarkeit des Dokuments durch diesen
+ kaum beeinträchtigt wird und eine Korrektur bei Gelegenheit durchgeführt
+ werden kann und nicht dringend erforderlich ist.
+ Bei einem Hauptfehler ist die Nutzbarkeit des Dokuments bereits erheblich
+ beeinträchtigt und der Fehler sollte vor Freigabe des Dokuments behoben
+ worden sein.
+ Ein kritischer Fehler liegt vor, falls das Dokument für den vorhergesehenen
+ Zweck unbrauchbar ist.
+ Kritische Fehler müssen unbedingt vor der Freigabe des Dokuments behoben
+ worden sein.
+\end_layout
+
+\begin_layout Standard
+Spätestens drei Tage bei internen Reviews bzw.
+ 1 Woche bei externen Reviews vor Beginn des Reviews schickt der Moderator
+ Einladungen, mit dem zu begutachtenden Dokument an die Gutachter des Reviews.
+ Bei externen Reviews nehmen die Kunden als Gutachter am Review teil.
+ Die Gutachter untersuchen dann bis zum Review-Termin das Dokument anhand
+ der vom Moderator festgelegten Kriterien.
+ Am Review-Termin treffen sich alle Teilnehmer und der Moderator eröffnet
+ und leitet das Review.
+ Nun werden die Gutachter der Reihe nach nach ihren Befunden befragt und
+ diese unter den Gutachtern diskutiert.
+ Der Aktuar notiert alle genannten Befunde und deren Fehlerkategorien.
+ Am Ende des Reviews gibt jeder Gutachter eine Empfehlung über den Annahmestatus
+ des Dokuments ab.
+ 
+\end_layout
+
+\begin_layout Standard
+Dabei gibt es folgende drei Möglichkeiten: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Akzeptieren ohne Änderungen
+\emph default
+, falls das Dokument so freigegeben werden kann,
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Akzeptieren mit Änderungen
+\emph default
+, wenn das Dokument im Kern in Ordnung ist und nach der Korrektur freigegeben
+ werden kann und
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Nicht akzeptieren
+\emph default
+, falls das Dokument so viele bzw.
+ schwere Fehler enthält, dass nach der Korrektur ein erneutes Review notwendig
+ ist.
+\end_layout
+
+\begin_layout Standard
+Sollte das Review nach Ablauf von zwei Stunden nicht beendet sein, so vertagt
+ der Moderator das Review frühestens auf den nächsten Tag.
+ Am Ende des Reviews unterschreiben alle Beteiligten das Reviewprotokoll.
+ Der Aktuar schickt das Reviewprotokoll an den Projektleiter, der es an
+ die entsprechenden Entwickler weiterleitet, damit diese die nötigen Korrekturen
+ durchführen können.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2244,7 +2690,7 @@ Methoden, Werkzeuge und Techniken
 \end_layout
 
 \begin_layout Standard
-Im folgenden Abschnitt werden die eingesestzten Technologien und Tools näher
+Im folgenden Abschnitt werden die eingesetzten Technologien und Tools näher
  beschrieben.
 \end_layout
 
@@ -2366,6 +2812,11 @@ Unterstützende Werkzeuge für die Projektarbeit
 \end_layout
 
 \begin_layout Standard
+Folgende Werkzeuge sollen von den Entwicklern während des Projekts verwendet
+ werden und diese bei ihrer Arbeit unterstützen.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -2445,7 +2896,7 @@ key "key-8"
 
 \begin_layout Standard
 Latex ist eine Designsprache, mit der sich hochwertige Aussehende Dokumente
- erstellen lassen, die im Normalfall als Pdf exportiert werden.
+ erstellen lassen, die im Normalfall als PDF exportiert werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3856,452 +4307,6 @@ Der Kunde akzeptiert die Software.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Reviews
-\end_layout
-
-\begin_layout Standard
-Hier werden die Reviewtermine aufgelistet und der genaue Ablauf der Reviews
- beschrieben.
-\end_layout
-
-\begin_layout Standard
-Anmerkung: Review der Spezifikation der zweiten und dritten Iteration werden
- gegebenenfalls durch einen Walkthrough ersetzt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Interne und externe Reviewtermine
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
-<features>
-<column alignment="center" valignment="top" width="3.5cm">
-<column alignment="center" valignment="top" width="2cm">
-<column alignment="center" valignment="top" width="4cm">
-<column alignment="center" valignment="top" width="4cm">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Dokument
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Art des Reviews
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Begin des Reviewzeitraums (Versenden der Einladungen)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Ende des Reviewzeitraums
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Spezifikation erste Iteration
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\emph on
-intern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-18.09.09
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-23.09.09
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Spezifikation erste Iteration
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-extern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-28.09.09
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-07.10.09
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Spezifikation zweite Iteration
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\emph on
-intern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-11.12.09
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-13.12.09
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Spezifikation dritte Iteration 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\emph on
-intern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-15.01.10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-17.01.10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Grobentwurf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\emph on
-intern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-06.11.09
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-08.11.09
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Handbuch
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\emph on
-intern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-25.03.10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-29.03.10
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Die Reviews werden in Gruppen von 5-6 Personen abgehalten.
- Dabei gilt folgende Rollenverteilung:
-\end_layout
-
-\begin_layout Description
-Moderator Der Moderator leitet und organisiert das Review.
- Bei Unklarheiten in Reviewpunkten führt er eine Einigung herbei.
-\end_layout
-
-\begin_layout Description
-Aktuar Der Aktuar protokolliert die angesprochenen Befunde und deren zugeordnete
- Fehlerkategorie.
- Er selbst nimmt nicht an Diskussionen und Wertungen der Fehler teil.
-\end_layout
-
-\begin_layout Description
-Gutachter Drei bis vier Gutachter untersuchen das Dokument nach vorher festgeleg
-ten Gesichtspunkten und ordnen ihren Befunden einer der folgenden Fehlerkategori
-en zu: Gut, Nebenfehler, Hauptfehler oder kritischer Fehler.
- Gut bedeutet, dass ein Abschnitt in Ordnung ist und keine Fehler oder Mängel
- aufweist.
- Ein Nebenfehler liegt vor, wenn die Nutzbarkeit des Dokuments durch diesen
- kaum beeinträchtigt wird und eine Korrektur bei Gelegenheit durchgeführt
- werden kann und nicht dringend erforderlich ist.
- Bei einem Hauptfehler ist die Nutzbarkeit des Dokuments bereits erheblich
- beeinträchtigt und der Fehler sollte vor Freigabe des Dokuments behoben
- worden sein.
- Ein kritischer Fehler liegt vor, falls das Dokument für den vorhergesehenen
- Zweck unbrauchbar ist.
- Kritische Fehler müssen unbedingt vor der Freigabe des Dokuments behoben
- worden sein.
-\end_layout
-
-\begin_layout Standard
-Spätestens drei Tage bei internen Reviews bzw.
- 1 Woche bei externen Reviews vor Beginn des Reviews schickt der Moderator
- Einladungen, mit dem zu begutachtenden Dokument an die Gutachter des Reviews.
- Bei externen Reviews nehmen die Kunden als Gutachter am Review teil.
- Die Gutachter untersuchen dann bis zum Review-Termin das Dokument anhand
- der vom Moderator festgelegten Kriterien.
- Am Review-Termin treffen sich alle Teilnehmer und der Moderator eröffnet
- und leitet das Review.
- Nun werden die Gutachter der Reihe nach nach ihren Befunden befragt und
- diese unter den Gutachtern diskutiert.
- Der Aktuar notiert alle genannten Befunde und deren Fehlerkategorien.
- Am Ende des Reviews gibt jeder Gutachter eine Empfehlung über den Annahmestatus
- des Dokuments ab.
- 
-\end_layout
-
-\begin_layout Standard
-Dabei gibt es folgende drei Möglichkeiten: 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Akzeptieren ohne Änderungen
-\emph default
-, falls das Dokument so freigegeben werden kann,
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Akzeptieren mit Änderungen
-\emph default
-, wenn das Dokument im Kern in Ordnung ist und nach der Korrektur freigegeben
- werden kann und
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Nicht akzeptieren
-\emph default
-, falls das Dokument so viele bzw.
- schwere Fehler enthält, dass nach der Korrektur ein erneutes Review notwendig
- ist.
-\end_layout
-
-\begin_layout Standard
-Sollte das Review nach Ablauf von zwei Stunden nicht beendet sein, so vertagt
- der Moderator das Review frühestens auf den nächsten Tag.
- Am Ende des Reviews unterschreiben alle Beteiligten das Reviewprotokoll.
- Der Aktuar schickt das Reviewprotokoll an den Projektleiter, der es an
- die entsprechenden Entwickler weiterleitet, damit diese die nötigen Korrekturen
- durchführen können.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5970,7 +5975,17 @@ Zuteilung des Budgets und der Ressourcen auf Projektfunktionen und Aktivitäten
 \end_layout
 
 \begin_layout Standard
-Dieser Abschnitt enthällt die berechneten Aufwände für die einzelnen Phasen.
+Dieser Abschnitt enthält die berechneten Aufwände der einzelnen Projekt-Phasen.
+ Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Phasen-des-Projekts"
+
+\end_inset
+
+ zeigt die Zeiträume der einzelnen Phasen und die Aufwände bzw.
+ das zeitliche Budget, das diesen zugeteilt ist.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -6293,13 +6308,20 @@ Puffer
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Zeitplan
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt befindet sich die Abbildungen der Gantt-Diagramme des
- Projektverlaufes und der Iterationen.
+In diesem Abschnitt befindet sich die detaillierte zeitliche Planung des
+ gesamten Projekts, sowie der einzelnen Iterationen.
 \end_layout
 
 \begin_layout Standard
@@ -6313,7 +6335,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Gantt_detail.png
-	width 100text%
+	width 80text%
 
 \end_inset
 
@@ -6324,6 +6346,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Gantt-Diagramm-des-Projektverlaufs"
+
+\end_inset
+
 Gantt-Diagramm des Projektverlaufs
 \end_layout
 
@@ -6337,13 +6365,40 @@ Gantt-Diagramm des Projektverlaufs
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Gantt-Diagramm-des-Projektverlaufs"
+
+\end_inset
+
+ zeigt den Verlauf des Projekts ohne die einzelnen Iterationen, welche innerhalb
+ der Implementierungsphase stattfinden.
+ Die detaillierte Beschreibung der Implementierungsphase mitsamt Iterationen
+ werden im nächsten Abschnitt erläutert.
+\end_layout
+
+\begin_layout Subsubsection*
 Iterationen
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt werden die Iterationen und die zu implementierenden
- Softwareeinheiten näher beschrieben.
+In der Implementierungsphase werden die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Gantt-Diagramm-der-Iterationen"
+
+\end_inset
+
+ dargestellten drei Iterationen durchlaufen.
+ Jede der drei Iterationen gliedert sich dabei standardmäßig in Feinentwurf,
+ Implementierung und Modultest.
+ Ein iterationsinterner Systemtest ist nur nach der 1.Iteration vorgesehen,
+ da hier das Basissystem implementiert wird, auf dem alle weiteren Iterationen
+ aufbauen.
+ Nachfolgend werden die zu realisierenden Funktionaliäten der einzelnen
+ Iterationen beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -6367,6 +6422,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Gantt-Diagramm-der-Iterationen"
+
+\end_inset
+
 Gantt-Diagramm der Iterationen
 \end_layout
 
