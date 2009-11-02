@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -22,7 +22,7 @@
 \def\doctitel{Projektplan}
 \def\docvers{1.0}
 \def\docautor{}
-\def\docdate{26.Oktober 2009}
+\def\docdate{31.Oktober 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet} 
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -755,77 +755,89 @@ reference "tab:Phasen-des-Projekts"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
 Die Kunden des Projekts sind Katharina Görlach, Peter Reimann und Mirko
  Sonntag im folgenden ihre Kontaktdaten:
 \end_layout
 
-\begin_layout Description
-\align left
+\begin_layout Standard
+\paragraph_spacing double
+\noindent
 
 \series bold
 Dipl.-Inf.
  Katharina Görlach
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-\align left
+
+\series default
 Institut für Architektur von Anwendungssystemen 
 \end_layout
 
 \begin_layout Standard
-\align left
 Universitätsstraße 38, 70569 Stuttgart (Zimmer 1.328)
 \end_layout
 
 \begin_layout Standard
-\align left
 Telefon: +49 (0)711 7816-333 
 \end_layout
 
 \begin_layout Standard
-\align left
 Fax: +49 (0)711 7816-472 
 \end_layout
 
 \begin_layout Standard
-\align left
 E-Mail: katharina.goerlach(@)iaas.uni-stuttgart.de
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Description
-\align left
-Dipl.-Inf.
- 
-\series bold
-Peter Reimann
+
 \end_layout
 
 \begin_layout Standard
-\align left
+\paragraph_spacing double
+\noindent
+
+\series bold
+Dipl.-Inf.
+ Peter
+\series default
+ 
+\series bold
+Reimann
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
 Institut für Parallele und Verteilte Systeme
 \end_layout
 
 \begin_layout Standard
-\align left
 Universitätsstraße 38, 70569 Stuttgart (Zimmer 2.467)
 \end_layout
 
 \begin_layout Standard
-\align left
 Telefon: +49 (0)711 7816-445 
 \end_layout
 
 \begin_layout Standard
-\align left
 Fax: +49 (0)711 7816-424
 \end_layout
 
 \begin_layout Standard
-\align left
 E-Mail: Peter.Reimann(@)ipvs.uni-stuttgart.de
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
-\begin_layout Description
+\begin_layout Standard
+\paragraph_spacing double
 \noindent
 
 \series bold
@@ -839,30 +851,27 @@ Inf.
  
 \series bold
 Mirko Sonntag
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-\noindent
+
+\series default
 Institut für Architektur von Anwendungssystemen 
 \end_layout
 
 \begin_layout Standard
-\noindent
 Universitätsstraße 38, 70569 Stuttgart (Zimmer 1.332)
 \end_layout
 
 \begin_layout Standard
-\noindent
 Telefon: +49 (0)711 7816-202 
 \end_layout
 
 \begin_layout Standard
-\noindent
 Fax: +49 (0)711 7816-472
 \end_layout
 
 \begin_layout Standard
-\noindent
 E-Mail: mirko.sonntag(@)iaas.uni-stuttgart.de
 \end_layout
 
@@ -1416,9 +1425,13 @@ ur auf Software- sowie auch auf Hardware-Ebene.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace medskip
+\begin_inset Newpage pagebreak
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 \color black
@@ -2277,7 +2290,7 @@ hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
 
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 Hudson 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2289,13 +2302,12 @@ key "key-1"
 \end_layout
 
 \begin_layout Standard
-Hudson ist speziell darauf ausgelegt Software kontinuierlich zu integrieren
- und zu testen.
- In unserem Projekt werden wir vor allem die kontinuierlichen Tests verwenden.
+Hudson ist ein webbasiertes System zur kontinuierlichen Integration von
+ Softwareprojekten.
 \end_layout
 
-\begin_layout Description
-ApacheODE 
+\begin_layout Subsubsection*
+Apache ODE 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2"
@@ -2305,8 +2317,16 @@ key "key-2"
 
 \end_layout
 
-\begin_layout Description
-Eclipse-Bpel-Designer 
+\begin_layout Standard
+Apache ODE ist eine BPEL-Workflow-Engine.
+ Es wird sowohl WS-BPEL 2.0 als auch BPEL4WS 1.1 unterstützt, und die Ausführung
+ von Prozessen in SOA ist möglich.
+ Zudem ist ein Deployment von Prozessen zur Laufzeit (Hot Deployment) möglich,
+ als auch die Analyse und Validierung von Prozessen.
+\end_layout
+
+\begin_layout Subsubsection*
+Eclipse BPEL Designer
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-3"
@@ -2317,13 +2337,15 @@ key "key-3"
 \end_layout
 
 \begin_layout Standard
-Der Eclipse BPEL-Designer ermöglicht es, über ein grafisches Interface,
- mithilfe von Bausteinen, BPEL Prozesse zu modelieren und mit hilfe von
- Apache Tomcat und Apache Ode zu Deployn und auszuführen.
- Die Software ist vom Kunden vorgegeben.
+Der Eclipse BPEL Designer ist ein Eclipse Plugin für die Modellierung von
+ BPEL-Prozessen.
+ Er verfügt über eine leicht verständliche GUI und über eine Syntaxsprüfung
+ für BPEL-Prozesse.
+ Zudem bietet der Eclipse BPEL Designer, in Kombination mit Apache ODE,
+ eine Schritt für Schritt Ausführung von Prozessen.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 IBM-DB2 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2335,9 +2357,8 @@ key "key-4"
 \end_layout
 
 \begin_layout Standard
-IBM-DB2 ist ein Relationales-Datenbanksystem welches von IBM entwickelt
- und vertrieben wird.
- Die verwendung ist vom Kunden gewünscht.
+Die IBM-DB2 ist ein Hybriddatenserver mit dem sowohl die Verwaltung von
+ XML-Daten als auch von relationalen Daten möglich ist.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2358,7 +2379,7 @@ unter untersützende Werkzeuge gemeint ist, die uns bei der Projektarbeit
 
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 Subversion 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2370,13 +2391,15 @@ key "key-5"
 \end_layout
 
 \begin_layout Standard
-Subversion ist ein Programm zur Versionskontrolle, welches sich durch einfache
- und sichere handhabung auszeichnet, vor allem im Bereich von Dokumenten
- zusammenführung und Strukturierung der Repositories.
+Subversion ist eine Software zur Versionskontrolle und eine Weiterentwicklung
+ von CVS.
+ Es wird genutzt um mehreren Nutzern den gleichzeitigen Zugriff und ein
+ gleichzeitiges Bearbeiten von verschiedenen Dateien und Dokumenten zu ermöglich
+en.
 \end_layout
 
-\begin_layout Description
-Maven 
+\begin_layout Subsubsection*
+Apache Maven 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-6"
@@ -2386,7 +2409,14 @@ key "key-6"
 
 \end_layout
 
-\begin_layout Description
+\begin_layout Standard
+Maven ist ein Projekt-Management-Tool zur standardisierten Erstellung und
+ Verwaltung von Java-Programmen.
+ Mit Maven ist es möglich viele Schritte, die die Entwickler normalerweise
+ von Hand erledigen müssen, zu automatisieren.
+\end_layout
+
+\begin_layout Subsubsection*
 Lyx 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2398,11 +2428,11 @@ key "key-7"
 \end_layout
 
 \begin_layout Standard
-Lyx ist Editor für Latex der teilweise WYSIWYG Eigenschaften mitliefert.
- Mit ihm lassen sich ohne großen Aufwand, einfache Latex Dokumente erstellen.
+LyX ist ein Textverarbeitungsprogramm, mit dem es möglich ist, auf einfache
+ Art und Weise LaTeX-Dokumente zu erstellen.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 LaTeX 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2418,7 +2448,7 @@ Latex ist eine Designsprache, mit der sich hochwertige Aussehende Dokumente
  erstellen lassen, die im Normalfall als Pdf exportiert werden.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 Eclipse-Subversion 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2434,7 +2464,7 @@ Wird während der Implementierung in Eclipse eingesetzt um den Quellcode
  der Anwendung komfortabel direkt in das Repository übertragen zu können.
 \end_layout
 
-\begin_layout Description
+\begin_layout Subsubsection*
 TortoiseSVN 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2446,8 +2476,8 @@ key "key-10"
 \end_layout
 
 \begin_layout Standard
-Eine Grafische oberfläche die in Windows eingebunden wird, um SVN Repositories
- über die Grafische Oberfläche von Windows verwalten zu können.
+Eine grafische Oberfläche, die in Windows eingebunden wird, um SVN Repositories
+ über die grafische Oberfläche von Windows verwalten zu können.
 \end_layout
 
 \begin_layout Standard
@@ -2752,7 +2782,15 @@ Alle im Review entdeckten Fehler und Mängel müssen beseitigt sein.
 \begin_layout Plain Layout
 
 \bar under
-Spezifikation erste Iteration
+Spezifikation
+\begin_inset Newline newline
+\end_inset
+
+erste 
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -2806,7 +2844,15 @@ externen Review
 \begin_layout Plain Layout
 
 \bar under
-Grobentwurf gesamtes System
+Grobentwurf
+\begin_inset Newline newline
+\end_inset
+
+gesamtes
+\begin_inset Newline newline
+\end_inset
+
+System
 \end_layout
 
 \end_inset
@@ -2853,7 +2899,15 @@ Der Kunde akzeptiert den Grobentwurf.
 \begin_layout Plain Layout
 
 \bar under
-Feinentwurf erste Iteration
+Feinentwurf
+\begin_inset Newline newline
+\end_inset
+
+erste
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -2950,7 +3004,15 @@ Alle spezifizierten Use-Cases der ersten Iteration sind innerhalb der Module
 \begin_layout Plain Layout
 
 \shape italic
-Erweiterungen erste Iteration
+Erweiterungen
+\begin_inset Newline newline
+\end_inset
+
+erste
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -2991,7 +3053,15 @@ Alle spezifizierten Erweiterungen der ersten Iteration sind implementiert.
 \begin_layout Plain Layout
 
 \shape italic
-Modultest erste Iteration
+Modultest
+\begin_inset Newline newline
+\end_inset
+
+erste
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3044,7 +3114,23 @@ Sollte vor integration Laufen
 \begin_layout Plain Layout
 
 \emph on
-Integration und Systemtest erste Iteration
+Integration
+\begin_inset Newline newline
+\end_inset
+
+und
+\begin_inset Newline newline
+\end_inset
+
+Systemtest
+\begin_inset Newline newline
+\end_inset
+
+erste
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3097,7 +3183,15 @@ wird man mit BPEl files machen.
 \begin_layout Plain Layout
 
 \bar under
-Spezifikation zweite Iteration
+Spezifikation
+\begin_inset Newline newline
+\end_inset
+
+zweite
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3145,7 +3239,15 @@ Der Kunde akzeptiert die Spezifikation
 \begin_layout Plain Layout
 
 \bar under
-Feinentwurf zweite Iteration
+Feinentwurf 
+\begin_inset Newline newline
+\end_inset
+
+zweite 
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3242,7 +3344,15 @@ Alle spezifizierten Use-Cases der zweiten Iteration sind innerhalb der Module
 \begin_layout Plain Layout
 
 \shape italic
-Modultest zweite Iteration
+Modultest 
+\begin_inset Newline newline
+\end_inset
+
+zweite 
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3295,7 +3405,15 @@ Sollte vor integration Laufen
 \begin_layout Plain Layout
 
 \bar under
-Spezifikation dritte Iteration
+Spezifikation 
+\begin_inset Newline newline
+\end_inset
+
+dritte 
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3343,7 +3461,15 @@ Der Kunde akzeptiert die Spezifikation
 \begin_layout Plain Layout
 
 \bar under
-Feinentwurf dritte Iteration
+Feinentwurf 
+\begin_inset Newline newline
+\end_inset
+
+dritte 
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3440,7 +3566,15 @@ Alle spezifizierten Use-Cases der zweiten Iteration sind innerhalb der Module
 \begin_layout Plain Layout
 
 \shape italic
-Modultest dritte Iteration
+Modultest 
+\begin_inset Newline newline
+\end_inset
+
+dritte 
+\begin_inset Newline newline
+\end_inset
+
+Iteration
 \end_layout
 
 \end_inset
@@ -3719,6 +3853,13 @@ Der Kunde akzeptiert die Software.
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -4999,7 +5140,11 @@ Grobentwurf
 \begin_layout Plain Layout
 
 \shape italic
-feinEntwIter1#erstell
+feinEntwIter1#
+\begin_inset Newline newline
+\end_inset
+
+erstell
 \end_layout
 
 \end_inset
@@ -5039,7 +5184,11 @@ Dokument des Feinentwurf
 \begin_layout Plain Layout
 
 \shape italic
-codeIter1#erstell
+codeIter1#
+\begin_inset Newline newline
+\end_inset
+
+erstell
 \end_layout
 
 \end_inset
@@ -5079,7 +5228,11 @@ Code
 \begin_layout Plain Layout
 
 \shape italic
-spezIter2#erstell
+spezIter2#
+\begin_inset Newline newline
+\end_inset
+
+erstell
 \end_layout
 
 \end_inset
@@ -5159,7 +5312,11 @@ Reviewprotokoll
 \begin_layout Plain Layout
 
 \shape italic
-feinEntwIter2#erstell
+feinEntwIter2#
+\begin_inset Newline newline
+\end_inset
+
+erstell
 \end_layout
 
 \end_inset
@@ -5319,7 +5476,11 @@ Reviewprotokoll
 \begin_layout Plain Layout
 
 \shape italic
-feinEntwIter3#erstell
+feinEntwIter3#
+\begin_inset Newline newline
+\end_inset
+
+erstell
 \end_layout
 
 \end_inset
@@ -5359,7 +5520,11 @@ Dokument des Feinentwurf
 \begin_layout Plain Layout
 
 \shape italic
-codeIter3#erstell
+codeIter3#
+\begin_inset Newline newline
+\end_inset
+
+erstell
 \end_layout
 
 \end_inset
@@ -6128,13 +6293,6 @@ Puffer
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Zeitplan
 \end_layout
@@ -6174,13 +6332,6 @@ Gantt-Diagramm des Projektverlaufs
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
