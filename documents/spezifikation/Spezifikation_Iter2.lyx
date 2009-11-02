@@ -879,8 +879,8 @@ Einsatzbereich und Ziele
 \end_layout
 
 \begin_layout Standard
-Das Entwicklungsteam soll ein erweiterbares und generisches Rahmenwerk für
- die Modellierung und Ausführung von Workflows erstellen, welches den Zugriff
+Das Entwicklungsteam soll ein erweiterbares Rahmenwerk für die Modellierung
+ und Ausführung von Workflows erstellen, welches den generischen Zugriff
  auf nahezu beliebige Datenquellen ermöglichen soll.
  Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
  und Dateisysteme handeln.
