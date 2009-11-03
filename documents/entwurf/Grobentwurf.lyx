@@ -954,22 +954,36 @@ Unterstützung weiterer Registry-Typen
 Austauschbare GUI der Admin-Konsole
 \end_layout
 
+\begin_layout Subsubsection
+Verwendbarkeit
+\end_layout
+
+\begin_layout Standard
+b
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+bel.
+ Datenquellen, Standard BPEL, SIMPL Core mit anderen Web Containern ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Entwurfsprinzipien
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-[Plugin Architekturmuster]
+Plugin: mächtiger als Adapter (intern)
 \end_layout
 
 \begin_layout Plain Layout
-[Adapter (DAS)]
-\end_layout
-
-\begin_layout Plain Layout
-Generalisierung: bel.
- Datenquellen, Standard BPEL, SIMPL Core mit anderen Web Containern ?
+Adapter : vorhandene funktioalität erweitert (auch extern)
 \end_layout
 
 \end_inset
@@ -1165,6 +1179,7 @@ SIMPL Core
 \begin_layout Standard
 Der SIMPL Core besteht aus verschiedenen Web Services, die jeweils fest
  definierte Aufgaben innerhalb des SIMPL Rahmenwerks haben.
+ Die Web Services werden dabei mit Apache Axis2 bereitgestellt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1191,6 +1206,10 @@ SIMPL Administration Service
 SIMPL Datasource Service 
 \end_layout
 
+\begin_layout Subsubsection
+SIMPL Registry Service
+\end_layout
+
 \begin_layout Subsection
 Registry
 \end_layout
@@ -1198,7 +1217,7 @@ Registry
 \begin_layout Section
 Schnittstellen
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Dauerhafte Datenspeicherung
@@ -1214,19 +1233,6 @@ Apache ODE Management API
 
 \begin_layout Plain Layout
 SIMPL Core Schnittstellen
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Eigentlich werden die Komponentenschnittstellen schon in Kapitel 3 beschrieben,
- aber die internen Schnittstellen von SIMPL sind im Grunde  gleichzeitig
- die externen.
- Vielleicht in Kapitel 3 einfach nur nennen und dann hier näher beschreiben.
 \end_layout
 
 \end_inset
