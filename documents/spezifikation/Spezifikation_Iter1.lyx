@@ -57,11 +57,12 @@
 \font_tt_scale 100
 
 \graphics default
+\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref true
 \pdf_bookmarks true
-\pdf_bookmarksnumbered false
+\pdf_bookmarksnumbered true
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
@@ -478,7 +479,7 @@ Beschreibungen, was in welchem Abschnitt (von Abschnitt 1 bis 2) erwartet
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -749,7 +750,7 @@ Abschließende Überarbeitung des Dokuments.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -758,7 +759,7 @@ Abschließende Überarbeitung des Dokuments.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -767,7 +768,7 @@ Abschließende Überarbeitung des Dokuments.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -776,11 +777,49 @@ hahnml, schneimi, rehnre
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Korrektur der Spezifikation nach dem Review mit den Kunden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur der 1.Iteration der Spezifikation.
 \end_layout
 
 \end_inset
@@ -793,12 +832,19 @@ Korrektur der Spezifikation nach dem Review mit den Kunden.
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Einleitung
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird der Zweck dieses Dokuments, sowie der Einsatzbereich
+In diesem Kapitel wird der Zweck dieses Dokuments sowie der Einsatzbereich
  und die Ziele der zu entwickelnden Software beschrieben.
  Weiterhin werden die in diesem Dokument verwendeten Definitionen erläutert
  und ein Überblick über das restliche Dokument gegeben.
@@ -846,22 +892,24 @@ Das Entwicklungsteam soll ein erweiterbares und generisches Rahmenwerk für
  Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
  und Dateisysteme handeln.
  Der Schwerpunkt soll klar auf wissenschaftlichen Workflows liegen, in denen
- es möglich sein muss große heterogene Datenmengen verarbeiten zu können.
- Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
- Business Process Execution Language (BPEL)-Prozess eingebunden werden können.
- Dafür werden bereits vorhandene Konzepte evaluiert, wie z.B.
- die Sprache BPEL (siehe 
+ es möglich sein muss, große heterogene Datenmengen verarbeiten zu können.
+ Als Modellierungs- und Ausführungssprache für die hier betrachteten Workflows
+ dient die Business Process Execution Langauge (BPEL, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-4"
 
 \end_inset
 
-), und falls nötig erweitert und angepasst.
+).
+ Über das Rahmenwerk sollen beliebige Datenmanagement-Funktionen in einen
+ BPEL-Prozess eingebunden werden können.
+ Dafür werden bereits vorhandene Konzepte evaluiert, wie z.B.
+ die Sprache BPEL, und falls nötig erweitert und angepasst.
  Für eine möglichst hohe Flexibilität soll ein dynamischer Ansatz gewählt
  werden, so dass auch erst zur Laufzeit des Systems die Datenquellen festgelegt
  werden können.
- Nichtsdestotrotz sollte auch die Möglichkeit bestehen, die Datenquellen
+ Nichtsdestoweniger sollte auch die Möglichkeit bestehen, die Datenquellen
  statisch anbinden zu können.
  Eine Anforderung des Kunden ist, dass eine vorhandene BPEL-Workflow-Engine
  sowie ein vorhandenes Modellierungstool um diese gewünschten Funktionen
@@ -877,8 +925,9 @@ Evolution des Dokuments
 
 \begin_layout Standard
 Das Projekt SIMPL ist in drei Iterationsstufen aufgeteilt.
- Die vorliegende Spezifikation spiegelt die erste Iterationsstufe des Rahmenwerk
-s wieder und stellt dessen Grundfunktionalität dar.
+ Die vorliegende Spezifikation beschreibt die Anforderungen, die in der
+ ersten Iterationsstufe des Rahmenwerks umgesetzt werden sollen und stellt
+ dessen Grundfunktionalität dar.
  Die Spezifikation und damit die Beschreibung der weitergehenden Funktionalität
  wird in späteren Iterationen vervollständigt.
 \end_layout
@@ -887,23 +936,24 @@ s wieder und stellt dessen Grundfunktionalität dar.
 Darüber hinaus wird in weiterführenden Kundengesprächen über die Präferenzordnun
 g von optionalen Implementierungen diskutiert, welche in den entsprechenden
  Iterationen umgesetzt werden sollen.
- In den folgenden Abschnitten (
+ Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Basisfunktionalität"
 
 \end_inset
 
- und 
+ nennt die Basisfunktionalitäten des Rahmenwerks, die in der ersten Iteration
+ umgesetzt werden.
+ Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Ausblick"
 
 \end_inset
 
-) sind detaillierte Informationen enthalten, in welche Aufgabenbereiche
- sich die Basisfunktionalität gliedert und welche Funktionen in späteren
- Iterationen geplant sind.
+) liefert einen Ausblick auf die Funktionalitäten, die in den weiteren Iteration
+en umgesetzt werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -918,7 +968,7 @@ name "sub:Basisfunktionalität"
 \end_layout
 
 \begin_layout Standard
-Folgende Funktionen bilden die Basisfunktionalität des SIMPL-Rahmenwerks
+Folgende Funktionen bilden die Basisfunktionalität des SIMPL-Rahmenwerks:
 \end_layout
 
 \begin_layout Itemize
@@ -927,7 +977,7 @@ en, Sensornetze und Dateisysteme.
 \end_layout
 
 \begin_layout Itemize
-Eine grundlegende Adminkonsole, die Funktionen wie das An- und Ausschalten
+Eine grundlegende Admin-Konsole, die Funktionen wie das An- und Ausschalten
  des Auditings und die Eingabe globaler Einstellungen für das Rahmenwerk
  bereitstellt.
 \end_layout
@@ -952,8 +1002,7 @@ name "sub:Ausblick"
 In diesem Abschnitt geht es darum, welche Funktionalität in weiteren Iterationen
  hinzugefügt wird.
  Die folgende Liste enthält die Punkte, die auf jeden Fall in einer der
- folgenden Iterationen umgesetzt werden.
- 
+ folgenden Iterationen umgesetzt werden:
 \end_layout
 
 \begin_layout Itemize
@@ -970,13 +1019,14 @@ key "key-3"
 \end_inset
 
 ), damit auf Daten auch per Referenz im Workflow zugegriffen werden kann.
- Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe standardmäß
-ig per Value erfolgt, was bei großen Datenmengen (bis zu Gigabytes im wissenscha
-ftlichen Bereich) zu erheblichen Performanzeinbußen führt.
+ Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe zwischen
+ Workflow und Web Service standardmäßig per Wert erfolgt, was bei großen
+ Datenmengen (bis zu Gigabytes oder gar Terabytes im wissenschaftlichen
+ Bereich) zu erheblichen Performanzeinbußen führt.
 \end_layout
 
 \begin_layout Itemize
-Bereitstellung einer Datenquellen-Registry mit Hilfe derer Datenquellen
+Bereitstellung einer Datenquellen-Registry, mit Hilfe derer Datenquellen
  über den Eclipse BPEL Designer (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -984,8 +1034,8 @@ key "key-10"
 
 \end_inset
 
-) manuell durch den Benutzer oder dynamisch durch das SIMPL Eclipse Plug-In
- ausgewählt werden können.
+) manuell durch den Benutzer oder dynamisch durch das SIMPL Rahmenwerk ausgewähl
+t werden können.
 \end_layout
 
 \begin_layout Itemize
@@ -1050,10 +1100,10 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 
 \end_inset
 
- beschriebenen Aktivitäten wird in diesem Dokument mit dem Sammelbegriff
+ beschriebenen BPEL-Aktivitäten wird in diesem Dokument mit dem Sammelbegriff
  Data-Management-Aktivität verwiesen.
  Wird also von einer Data-Management-Aktivität gesprochen, ist indirekt
- eine dieser Aktivitäten gemeint.
+ eine oder mehrere dieser Aktivitäten gemeint.
  Über die Definition und Verwendung dieses Sammelbegriffs soll lediglich
  die Allgemeingültigkeit der getroffenen Aussagen, für jede der in Abschnitt
  
@@ -1064,15 +1114,8 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 \end_inset
 
  beschriebenen Aktivitäten, erreicht werden.
- Nachfolgend wird weiterhin für den Begriff 
-\begin_inset Quotes eld
-\end_inset
-
-Data-Management-Aktivität
-\begin_inset Quotes erd
-\end_inset
-
- die Abkürzung DM-Aktivität in diesem Dokument verwendet.
+ Nachfolgend wird weiterhin für den Begriff Data-Management-Aktivität die
+ Abkürzung DM-Aktivität verwendet.
 \end_layout
 
 \begin_layout Subsection
@@ -1134,7 +1177,7 @@ reference "sec:Benutzeroberfläche"
  Dabei werden durch die nichtfunktionalen Anforderungen qualitative (Robustheit,
  Portabilität, usw.) und quantitative (Mengengerüst) Anforderungen an die
  Software spezifiziert.
- Die Anwendungfälle in Kapitel 
+ Die Anwendungsfälle in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Anwendungsfälle-(Use-Cases)"
@@ -1142,9 +1185,16 @@ reference "sec:Anwendungsfälle-(Use-Cases)"
 \end_inset
 
  beschreiben die funktionalen Anforderungen.
- Es werden also konkret die Funktionen, die z.T.
- schon in der Übersicht der Kernfunktionalität weiter oben aufgeführt sind,
- die die Software enthalten soll, beschrieben.
+ Es werden also konkret die Funktionen, die die Software enthalten soll
+ und z.T.
+ schon in der Übersicht der Kernfunktionalität in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Basisfunktionalität"
+
+\end_inset
+
+ aufgeführt sind, beschrieben.
  Im Anschluss folgen in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1163,6 +1213,13 @@ reference "sec:Technologien und Werkzeuge"
 
  die verwendeten Werkzeuge und Technologien, die für die Erstellung der
  Software benötigt werden, vorgestellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1184,12 +1241,18 @@ Dieses Kapitel liefert allgemeine Informationen über die zu entwickelnde
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Einbettung-Systemumgebung"
+
+\end_inset
+
 Einbettung in die Systemumgebung
 \end_layout
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk, bestehend aus dem SIMPL Core und dem SIMPL Eclipse
- Plug-In soll in die in Abbildung 
+ Plug-In, soll in die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Systemumgebung"
@@ -1198,7 +1261,7 @@ reference "fig:Systemumgebung"
 
  dargestellte Systemumgebung eingebettet werden.
  Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL-Designer Plug-In,
- einem Web-Server, wie z.B.
+ einem Web Server, wie z.B.
  dem Apache Tomcat (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1206,30 +1269,45 @@ key "key-7"
 
 \end_inset
 
-), auf dem der SIMPL Core und eine Workflow-Engine (z.B.
- Apache Orchestration Director Engine (ODE), siehe 
+) und den Datenquellen, auf die zugegriffen wird.
+ Der SIMPL Core und eine Workflow-Engine (Apache Orchestration Director
+ Engine (ODE), siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-6"
 
 \end_inset
 
-) ausgeführt werden und den Datenquellen auf die zugegriffen wird.
- SIMPL unterstützt die in Abbildung 
+) werden auf dem Web Server ausgeführt.
+ SIMPL unterstützt relationale Datenbanken (MySQL, IBM DB2), XML-Datenbanken
+ (IBM DB2), Dateisysteme, Sensornetz-Datenbanken (TinyDB) und kann um weitere
+ Datenquellen ergänzt werden.
+ Eine Sensornetz-Datenbank (TinyDB) speichert die Daten von meist kabellos
+ vernetzten Sensoren und liefert so eine zentrale und einheitliche Zugriffsmögli
+chkeit auf Sensordaten.
+ Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Systemumgebung"
 
 \end_inset
 
- dargestellten Datenquellen und kann um weitere Datenquellen ergänzt werden.
- Der SIMPL Core läuft als Web-Service auf dem Web-Server und liefert die
- Funktionalität, die während der Laufzeit von Prozessen mit Data-Management-Akti
-vitäten benötigt werden.
+ zeigt die von SIMPL unterstützten Datenquellen.
+ Der SIMPL Core läuft als Web Service auf dem Web Server und liefert die
+ Funktionalität, die während der Laufzeit von Prozessen mit DM-Aktivitäten
+ benötigt wird.
+ Durch den SIMPL Core werden weitgehend alle Funktionalitäten, die für den
+ Zugriff auf Datenquellen benötigt werden, geliefert.
+ Dadurch ergibt sich die Möglichkeit in der Workflow-Engine so wenig wie
+ nötig implementieren zu müssen.
+ Dieser Umstand erhöht die Portabilität und die Erweiterbarkeit des Rahmenwerks
+ beträchtlich.
  Das SIMPL Eclipse Plug-In erweitert die grafische Oberfläche von Eclipse
- und des BPEL-Designer Plug-Ins und liefert die benötigte Funktionaliät
- um Prozesse mit Data-Management-Aktivitäten zu modellieren und Einstellungen
- für das Rahmenwerk vorzunehmen.
+ um Einstellungen für das SIMPL Rahmenwerk vornehmen zu können.
+ Das SIMPL DM Plug-In erweitert das Eclipse BPEL-Designer Plug-In um Prozesse
+ mit DM-Aktivitäten modellieren zu können.
+ Die DM-Aktivitäten werden in der Workflow-Engine implementiert und in diese
+ als Plug-In eingebunden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
 \end_layout
@@ -1294,18 +1372,16 @@ ebung integriert sein.
 \end_layout
 
 \begin_layout Standard
-Die vorhandenen BPEL-Aktivitäten des Eclipse BPEL Designer werden dazu um
- neue Aktivitäten für die Verwaltung von Daten (Data-Management-Aktivitäten)
- erweitert.
+Die vorhandenen BPEL-Aktivitäten des Eclipse BPEL Designers werden dazu
+ um neue Aktivitäten für die Verwaltung von Daten erweitert (DM-Aktivitäten).
  Mit deren Hilfe wird die Anbindung von Datenquellen in BPEL-Prozessen vereinfac
 ht.
  In der ersten Iteration werden die Datenquellen über ihre physikalische
  Adresse angebunden.
  In einer späteren Iteration wird eine Datenquellen-Registry bereitgestellt.
- Diese ermöglicht die Realisierung einer grafischen Auswahlmöglichkeit für
- Datenquellen im Eclipse BPEL Designer.
- Eine nähere Beschreibung der Data-Management-Aktivitäten wird in Abschnitt
- 
+ Diese ermöglicht die Realisierung einer grafischen oder automatischen Auswahlmö
+glichkeit für Datenquellen.
+ Eine nähere Beschreibung der DM-Aktivitäten wird in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Data-Management-Aktivitäten"
@@ -1350,10 +1426,10 @@ Distributionsform und Installation
 Das Rahmenwerk wird als Teil eines großen Installationpakets ausgeliefert.
  Dieses Installationspaket besteht aus allen Programmen, die für die Verwendung
  des Rahmenwerks benötigt werden.
- Dazu gehöhrt ein Modellierungstool (Eclipse BPEL Designer), ein Web-Server
+ Dazu gehöhrt ein Modellierungstool (Eclipse BPEL Designer), ein Web Server
  (Apache Tomcat), der eine Workflow-Engine ausführen kann, eine Workflow-Engine
  (Apache ODE) und natürlich das Rahmenwerk selbst.
- Mithilfe des Installationspakets ist es möglich viele Einstellungen bereits
+ Mithilfe des Installationspakets ist es möglich, viele Einstellungen bereits
  vorzudefinieren und dem Benutzer die Installation zu erleichern.
  Das Installationspaket wird dabei als RAR-Archiv zusammen mit allen wichtigen
  Dokumenten auf einer CD/DVD ausgeliefert.
@@ -1395,7 +1471,12 @@ Einschränkungen
 
 \begin_layout Standard
 Für die Erstellung und Verwendung des SIMPL Rahmenwerks gelten die folgenden
- Einschränkungen.
+ Einschränkungen
+\end_layout
+
+\begin_layout Itemize
+Als Workflow-Modellierungssprache dient die Business Process Execution Language
+ (BPEL).
 \end_layout
 
 \begin_layout Itemize
@@ -1405,17 +1486,20 @@ Die Modellierung von BPEL-Prozessen ist an das Modellierungswerkzeug Eclipse
 \end_layout
 
 \begin_layout Itemize
-Das Auditing der Prozessausführung wird nur für die Workflow-Engine Apache
- ODE bereitgestellt.
-\end_layout
-
-\begin_layout Itemize
-Als Workflow-Modellierungssprache dient die Business Process Execution Language
- (BPEL).
+Die Ausführung von BPEL-Prozessen ist an die Workflow-Engine Apache ODE
+ gebunden.
+ Das Auditing einer Prozessausführung wird nur für Apache ODE bereitgestellt.
 \end_layout
 
 \begin_layout Itemize
 Als Programmiersprache für das SIMPL Rahmenwerk kommt Java zum Einsatz.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1441,7 +1525,7 @@ Mengengerüst
 
 \begin_layout Standard
 Das Mengengerüst beinhaltet alle quantifizierbaren Anforderungen an das
- Rahmenwerk.
+ Rahmenwerk:
 \end_layout
 
 \begin_layout Itemize
@@ -1461,12 +1545,12 @@ Benutzbarkeit
 
 \begin_layout Standard
 Die Benutzbarkeit soll sich vor allem an Nutzer mit wenig Kenntnissen im
- Umgang mit Workflows und BPEL richten und die dafür größtmöglichste Transparenz
+ Umgang mit Workflows und BPEL richten und die dafür größtmögliche Transparenz
  liefern.
- Dass bedeutet, dass die interne Prozesslogik der Software bestmöglich vom
- Benutzer abgeschirmt wird.
- Dadurch erhält der Benutzer eine möglichst einfache und schnell verständliche
- Schnittstelle zur Software.
+ Dass bedeutet, dass die interne Prozesslogik der Software bestmöglichst
+ vom Benutzer abgeschirmt wird.
+ Dadurch erhält der Benutzer eine einfache und schnell verständliche Schnittstel
+le zur Software.
 \end_layout
 
 \begin_layout Subsection
@@ -1490,6 +1574,19 @@ in der nächsten Iteration nochmal überarbeiten: Wiederherstellbarkeit/Fortsetz
  von Prozessen nach Neustart
 \end_layout
 
+\begin_layout Plain Layout
+Peter Reimann: 
+\begin_inset Quotes eld
+\end_inset
+
+Ist auch eine Recovery möglich? Vielleicht diese Möglichkeit noch zusätzlich
+ zu dem "Neustarten" schreiben.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -1503,8 +1600,8 @@ Unter Robustheit ist hier zu verstehen, dass selbst wenn es zu ungünstigen
  der Ausfall des Servers oder Probleme bei der Verbindung mit Datenquellen.
  Dazu sollen Prozesse fehlerfrei ausgeführt werden und entsprechend korrekte
  Ergebnisse liefern oder das Rahmenwerk sicher beendet werden können.
- Nach dem Neustart des Rahmenwerks müssen auch die Prozesse neu gestartet
- werden.
+ Nach dem Neustart des Rahmenwerks müssen auch die Prozesse, die zum Zeitpunkt
+ des Fehlers ausgeführt wurden, neu gestartet werden.
 \end_layout
 
 \begin_layout Standard
@@ -1524,7 +1621,7 @@ Sicherheit
 \begin_layout Standard
 Da das Rahmenwerk nur lokal ausgeführt wird und alle lokalen Benutzer momentan
  die gleichen Rechte besitzen, wird vorerst auf Authentifizierungs- und
- Autorisierungsmaßnahmen innerhalb des Rahmenwerks verzichtet.
+ Autorisierungsmaßnahmen für den Zugriff auf das Rahmenwerk verzichtet.
  Um eine spätere Realisierung zu vereinfachen, werden bereits jetzt die
  Rollen Prozess-Modellierer und Workflow-Administrator (siehe Kapitel 
 \begin_inset CommandInset ref
@@ -1579,7 +1676,7 @@ Portabilität
 Die Portabilität des SIMPL Eclipse Plug-Ins ist durch die Integration in
  Eclipse gewährleistet.
  Der SIMPL Core wird dahingehend implementiert, dass er in allen Java unterstütz
-enden Web-Containern 
+enden Web Containern 
 \begin_inset Note Note
 status open
 
@@ -1603,6 +1700,24 @@ Die Erweiterbarkeit des Systems ist eine zentrale Anforderung, da es über
  Datenformaten ergänzt werden soll.
  Um die Erweiterbarkeit des Systems zu gewährleisten, werden ein modularer
  Aufbau zugrunde gelegt und entsprechende Schnittstellen geschaffen.
+ Beispiele für den modularen Aufbau des Rahmenwerks sind:
+\end_layout
+
+\begin_layout Itemize
+Die Aufteilung des Rahmenwerks in SIMPL-Core, erweiterter Workflow-Engine
+ und erweitertes Eclipse Plug-In (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einbettung-Systemumgebung"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Der SIMPL-Core an sich wird modular aufgebaut sein, damit er selbst erweitert
+ werden kann.
 \end_layout
 
 \begin_layout Subsection
@@ -1614,8 +1729,8 @@ Durch eine qualitativ hochwertige Dokumentation und ein strukturiertes,
  geplantes und sauberes Entwicklungsvorgehen soll eine hohe Wartbarkeit
  erreicht werden.
  Dazu werden alle Dokumente entsprechend gepflegt und laufend aktualisiert.
- Weiterhin werden nach jedem Wartungsintervall Tests durchgeführt und deren
- Ergebnisse protokolliert.
+ Weiterhin werden nach jedem Entwicklungsintervall Tests durchgeführt und
+ deren Ergebnisse protokolliert.
 \end_layout
 
 \begin_layout Subsection
@@ -1623,9 +1738,21 @@ Skalierbarkeit
 \end_layout
 
 \begin_layout Standard
-Die Skalierbarkeit des Rahmenwerks soll garantieren, dass für die Verarbeitung
- von steigenden Datenmengen die benötigten Ressourcen höchstens in der gleichen
- Größenordnung steigen.
+Die Skalierbarkeit des Systems muss eine sehr flexible Infrastruktur erlauben,
+ da die Computersysteme, auf denen SIMPL später ausgeführt wird, in ihrer
+ Leistung sehr weit auseinander gehen können, d.h.
+ vom normalen Desktop-Computer bis zum Supercomputer kann und soll alles
+ möglich sein.
+ Weiterhin soll die Skalierbarkeit des Rahmenwerks garantieren, dass für
+ die Verarbeitung von größer werdenden Datenmengen die benötigten Ressourcen
+ höchstens in der gleichen Größenordnung steigen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1649,9 +1776,9 @@ reference "fig:SIMPL-Menü"
 \end_inset
 
  zeigt den erweiterten Eclipse BPEL Designer.
- In der Palette befinden sich die SIMPL Data-Management-Aktivitäten, die
- wie bereits vorhandene Aktivitäten zur Modellierung von Prozessen verwendet
- werden können.
+ In der Palette befinden sich die SIMPL DM-Aktivitäten, die wie bereits
+ vorhandene Aktivitäten zur Modellierung von Prozessen verwendet werden
+ können.
  Für SIMPL wird ein Menü bereitgestellt, über das alle wichtigen Einstellungen
  und Informationen des SIMPL Rahmenwerks vorgenommen bzw.
  angezeigt werden können.
@@ -1685,7 +1812,7 @@ name "fig:SIMPL-Menü"
 
 \end_inset
 
-SIMPL Menü und Eclipse BPEL Designer mit einigen Data-Management-Aktivitäten
+SIMPL Menü und Eclipse BPEL Designer mit einigen DM-Aktivitäten
 \end_layout
 
 \end_inset
@@ -1726,12 +1853,12 @@ Folgende Schaltflächen stehen durchgängig zur Verfügung:
 \end_layout
 
 \begin_layout Itemize
-[Reset]: Zurücksetzen aller durchgeführten Änderungen auf den letzten Speicherst
-and
+[Save]: Speichern aller durchgeführten Änderungen
 \end_layout
 
 \begin_layout Itemize
-[Save]: Speichern aller durchgeführten Änderungen
+[Reset]: Zurücksetzen aller durchgeführten Änderungen auf den letzten Speicherst
+and
 \end_layout
 
 \begin_layout Itemize
@@ -1958,7 +2085,14 @@ PropertyView
 \begin_inset Quotes erd
 \end_inset
 
- einer Query-Aktivität gezeigt.
+ am Beispiel einer Query-Aktivität (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Resultierende-BPEL-Aktivitäten"
+
+\end_inset
+
+) gezeigt.
  Hier kann die im Prozess ausgewählte Aktivität parametrisiert werden.
  Das bedeutet, dass die Aktivität hier mit Inhalt gefüllt wird, wie z.B.
  der Zieldatenquelle oder dem Befehl, der auf dieser ausgeführt werden soll.
@@ -2015,8 +2149,7 @@ name "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
 
 \end_inset
 
-Eigenschaftsfenster einer Data-Management-Aktivität am Beispiel einer Query
- Activity
+Eigenschaftsfenster einer DM-Aktivität am Beispiel einer Query Activity
 \end_layout
 
 \end_inset
@@ -2024,6 +2157,13 @@ Eigenschaftsfenster einer Data-Management-Aktivität am Beispiel einer Query
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -2056,7 +2196,8 @@ Ein Prozess-Modellierer besitzt Fachwissen (z.B.
  Dazu kann er beispielsweise BPEL-Aktivitäten erstellen, bearbeiten und
  auch löschen.
  Hat der Prozess-Modellierer den BPEL-Prozess fertig modelliert, kann er
- diesen im Anschluss auf einer Workflow-Engine deployen und ausführen lassen.
+ diesen im Anschluss auf einer Workflow-Engine deployen und danach ausführen
+ lassen.
 \end_layout
 
 \begin_layout Subsection
@@ -2064,11 +2205,11 @@ Workflow-Administrator
 \end_layout
 
 \begin_layout Standard
-Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers,
- d.h.
+Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers.
+ D.h.
  er kann alle Anwendungsfälle des Prozess-Modellierers und noch weitere
  administrative Anwendungsfälle ausführen.
- Seine Kentnisse liegen im technischen Bereich, wie z.B.
+ Seine Kenntnisse liegen eher im technischen Bereich, wie z.B.
  bei der Konfiguration des Rahmenwerks.
  Er kann beispielsweise über die Admin-Konsole während der Prozesslaufzeit
  das Auditing an- und abschalten.
@@ -2083,8 +2224,7 @@ ODE Workflow-Engine
 Die ODE Workflow-Engine ist ein durch Software realisierter Akteur.
  Sie führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
  Anwendungsfälle indirekt aufgerufen werden.
- Durch die Erweiterungen kann sie Data-Management-Aktivitäten ausführen
- und kompensieren.
+ Durch die Erweiterungen kann sie DM-Aktivitäten ausführen und kompensieren.
 \end_layout
 
 \begin_layout Subsection
@@ -2100,6 +2240,13 @@ Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
 le und das Speichern dieser nach Änderungen.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -2108,12 +2255,27 @@ name "sec:Anwendungsfälle-(Use-Cases)"
 \end_inset
 
 Anwendungsfälle (Use-Cases)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NOCH NICHT ÜBERARBEITET
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Dieses Kapitel beschreibt die funktionalen Anforderungen an die Software.
- Dazu werden alle Anwendungsfälle eines jeden Akteurs beschrieben und deren
- Zusammenhänge in entsprechenden Diagrammen graphisch dargestellt.
+ Dazu werden alle Anwendungsfälle eines jeden Akteurs, die durch das SIMPL
+ Rahmenwerk neu hinzukommen, beschrieben und deren Zusammenhänge in entsprechend
+en Diagrammen graphisch dargestellt.
+ D.h.
+ das bereits durch vorhandene Software (z.B.
+ Eclipse BPEL-Designer) realisierte Anwendungsfälle nicht aufgeführt und
+ beschrieben werden.
 \end_layout
 
 \begin_layout Subsection
@@ -2186,7 +2348,8 @@ Anwendungsfälle des Prozess-Modellierers
 \end_layout
 
 \begin_layout Standard
-Ein Prozess-Modellierer kann folgende Anwendungsfälle (siehe Abbildung 
+Ein Prozess-Modellierer kann folgende neue Anwendungsfälle (siehe Abbildung
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:UseCaseDiaProzessModell"
@@ -2954,22 +3117,6 @@ Admin-Konsole öffnen
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole zurücksetzen
-\end_layout
-
-\begin_layout Itemize
-Admin-Konsole speichern
-\end_layout
-
-\begin_layout Itemize
-Admin-Konsole schließen
-\end_layout
-
-\begin_layout Itemize
-Admin-Konsole Defaults laden
-\end_layout
-
-\begin_layout Itemize
 Auditing aktivieren
 \end_layout
 
@@ -2979,6 +3126,26 @@ Auditing deaktivieren
 
 \begin_layout Itemize
 Auditing-Datenbank festlegen
+\end_layout
+
+\begin_layout Itemize
+Globale Einstellungen festlegen
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole speichern
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole zurücksetzen
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole Defaults laden
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole schließen
 \end_layout
 
 \begin_layout Standard
@@ -5187,6 +5354,765 @@ Sonderfälle
 
 \end_layout
 
+\begin_layout Subsection
+Komponenten und ihre Anwendungsfälle
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden in Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Komponenten-Anwendungsfälle"
+
+\end_inset
+
+ alle Anwendungsfälle den verschiedenen Komponenten des SIMPL Rahmenwerks,
+ in denen die entsprechende Funktionalität umgesetzt ist, zugeordnet.
+ Die mit 
+\begin_inset Quotes eld
+\end_inset
+
+x
+\begin_inset Quotes erd
+\end_inset
+
+ markierte Komponente führt dabei den Anwendungsfall aus.
+ Es ist allerdings durchaus möglich, dass Anwendungsfälle durch mehrere
+ Komponenten ausgeführt werden.
+ Zum Beispiel wird das Auditing in der Admin-Konsole (SIMPL Eclipse Plug-In)
+ aktiviert, die Ausführung des Auditings wird allerdings durch den SIMPL
+ Core realisiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Komponenten-Anwendungsfälle"
+
+\end_inset
+
+Komponenten und ihre Anwendungsfälle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="17" columns="4">
+<features firstHeadBottomDL="true" headBottomDL="true">
+<column alignment="left" valignment="middle" width="6cm">
+<column alignment="center" valignment="middle" width="3cm">
+<column alignment="center" valignment="middle" width="3cm">
+<column alignment="center" valignment="middle" width="3cm">
+<row endhead="true" endfirsthead="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Anwendungsfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SIMPL Core
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SIMPL Eclipse
+\begin_inset Newline newline
+\end_inset
+
+Plug-In
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SIMPL DM
+\begin_inset Newline newline
+\end_inset
+
+Plug-In
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data-Management-Aktivität erstellen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data-Management-Aktivität bearbeiten
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data-Management-Aktivität löschen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prozess ausführen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole öffnen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auditing aktivieren
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auditing deaktivieren
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auditing-Datenbank festlegen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Globale Einstellungen festlegen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole speichern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole zurücksetzen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole Defaults laden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole schließen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data-Management-Aktivität ausführen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data-Management-Aktivität kompensieren 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+nach Absprache anpassen (kompensieren vs.
+ rückgängig machen)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole laden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -5201,9 +6127,9 @@ Konzepte und Realisierungen
 In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  deren Realisierung erläutert.
  Dazu zählt z.B.
- die Beschreibung und Definition der benötigten Data-Management-Aktivitäten,
- die zur Realisierung einer generischen Unterstützung von verschiedenen
- Abfragesprachen, wie z.B.
+ die Beschreibung und Definition der benötigten DM-Aktivitäten, die zur
+ Realisierung einer generischen Unterstützung von verschiedenen Abfragesprachen,
+ wie z.B.
  SQL oder XQuery, für BPEL benötigt werden.
  Ebenso werden die Realisierung des Datenquellen-Auditings und das dafür
  zugrunde liegende Event-Modell beschrieben.
@@ -8158,13 +9084,6 @@ x
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -8503,6 +9422,13 @@ die Ausführung einer DM-Aktivität wurde erfolgreich beendet
 bei der Ausführung einer DM-Aktivität trat ein Fehler auf 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -8607,7 +9533,7 @@ key "key-7"
 
 \begin_layout Standard
 Apache Tomcat ist ein Web Container für Web Services, der aber auch einen
- kompletten Webserver beinhaltet.
+ kompletten Web Server beinhaltet.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -8710,7 +9636,7 @@ key "key-13"
 \end_layout
 
 \begin_layout Standard
-JAX-WS ist eine Java API zur Erstellung von Webservices, die für das Deployment
+JAX-WS ist eine Java API zur Erstellung von Web Services, die für das Deployment
  Java Annotationen verwendet.
 \end_layout
 
@@ -8731,16 +9657,16 @@ TinyDB ist ein Datenbanksystem für Sensornetze und bietet eine SQL-ähnliche
 \end_layout
 
 \begin_layout Subsubsection*
-Webservices
+Web Services
 \end_layout
 
 \begin_layout Standard
-Webservices sind abgeschlossene Software-Einheiten, die sich selbst beschreiben
+Web Services sind abgeschlossene Software-Einheiten, die sich selbst beschreiben
  und die ihre Dienste über ein Netzwerk, wie beispielsweise das Internet,
  bereitstellen.
  Damit werden verteilte Anwendungen möglich, die flexibel auf sich ändernde
  Anforderungen angepasst werden können.
- Die Schnittstellen von Webservices werden mit WSDL beschrieben und können
+ Die Schnittstellen von Web Services werden mit WSDL beschrieben und können
  damit unabhängig von Betriebssystem, Plattform und Programmiersprache verwendet
  werden.
 \end_layout
@@ -8879,6 +9805,29 @@ Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
  Produkte zu spezifizieren, entwerfen, konstruieren, testen, integrieren,
  dokumentieren, modifizieren oder pflegen; technische Standards, Richtlinien,
  Zertifizierungskriterien
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Literaturverzeichnis}
 \end_layout
 
 \end_inset
@@ -9105,6 +10054,28 @@ key "key-20"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 
 \series bold
 \size larger
@@ -9586,7 +10557,91 @@ XML Query Language
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Verzeichnis der Listings}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlistoflistings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Tabellenverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
 
 \end_inset
 
