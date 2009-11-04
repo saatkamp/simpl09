@@ -448,7 +448,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="8" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -543,7 +543,7 @@ Erstellung des Dokuments
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.2
 \end_layout
 
 \end_inset
@@ -552,7 +552,7 @@ Erstellung des Dokuments
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+30.10.2009
 \end_layout
 
 \end_inset
@@ -561,7 +561,7 @@ Erstellung des Dokuments
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+schneimi
 \end_layout
 
 \end_inset
@@ -570,7 +570,45 @@ Erstellung des Dokuments
 \begin_inset Text
 
 \begin_layout Plain Layout
+Kapitel 1
+\end_layout
 
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+04.11.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 2, Kapitel 3 SIMPL Core
 \end_layout
 
 \end_inset
@@ -768,6 +806,12 @@ Der Grobentwurf beschreibt das Rahmenwerk auf Komponentenebene und bildet
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Das-SIMPL-Rahmenwerk"
+
+\end_inset
+
 Das SIMPL Rahmenwerk
 \end_layout
 
@@ -783,6 +827,11 @@ Das SIMPL Rahmenwerk soll dem Benutzer eine generische und erweiterbare
  Die Ausführung der Prozesse erfolgt durch die Apache ODE Workflow Engine,
  bei der das bestehende Event-Modell und das Auditing der Prozessdaten für
  diese Aktivitäten angepasst werden.
+ Dienste, die für die Ausführung der Aktivitäten von der Workflow Engine
+ benötigt werden, werden in Form von Web Services bereitgestellt.
+ Die Aktivitäten werden im Folgenden Verlauf des Dokuments als Data-Management-A
+ktivitäten bzw.
+ DM-Aktivitäten bezeichnet.
 \end_layout
 
 \begin_layout Subsection
@@ -794,18 +843,33 @@ In diesem Abschnitt werden die Anforderungen des SIMPL Rahmenwerks beschrieben.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Einfache-Modellierung"
+
+\end_inset
+
 Einfache Modellierung
 \end_layout
 
 \begin_layout Standard
 Bei der Modellierung von Prozessen wiederholen sich in der Regeln häufig
- längere Statements in Anfragesprachen wie z.B SQL und XQuery.
- Damit diese vom Prozess-Modellierer nicht wiederholt angegeben werden müssen,
- soll es die Möglichkeit geben diese in BPEL-Variablen zu hinterlegen, die
- anschließend als Referenz in anderen Statements verwendet werden können.
+ längere Statements in Anfragesprachen wie z.B SQL und XQuery oder auch längere
+ Namen von Datenquellen oder Datencontainern (Tabellen, Dateien, XML-Dokumente,
+ etc).
+ Damit diese vom Prozess-Modellierer nicht jedesmal vollständig angegeben
+ werden müssen, soll es die Möglichkeit geben diese in BPEL-Variablen zu
+ hinterlegen, die anschließend als Referenzen in anderen Statements verwendet
+ werden können.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Große-Datenmengen"
+
+\end_inset
+
 Große Datenmengen
 \end_layout
 
@@ -819,6 +883,12 @@ n Prozessen, bei denen überwiegend mit großen Datenmengen gearbeitet wird.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Auditing-von-Prozessen"
+
+\end_inset
+
 Auditing von Prozessen
 \end_layout
 
@@ -833,6 +903,12 @@ Bei dem Auditing von Prozessen handelt es sich um das Protokollieren von
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Late-Binding-von"
+
+\end_inset
+
 Late Binding von Datenquellen
 \end_layout
 
@@ -846,6 +922,12 @@ e zugegriffen werden soll, beispielsweise beim Ablegen von Daten, soll ein
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Authentifizierung-und-Autorisierung"
+
+\end_inset
+
 Authentifizierung und Autorisierung
 \end_layout
 
@@ -859,6 +941,12 @@ Datenquellen erfordern in der Regel eine Authentifizierung und Autorisierung
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Registry"
+
+\end_inset
+
 Registry
 \end_layout
 
@@ -871,59 +959,45 @@ Für die Verwaltung der für den Prozess-Modellierer zur Verfügung stehenden
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Admin-Konsole"
+
+\end_inset
+
 Admin-Konsole
 \end_layout
 
 \begin_layout Standard
 Für alle wichtigen Einstellungen des Rahmenwerks soll eine Admin-Konsole
- bereitgestellt werden, über die der Workflow-Administrator die Einstellungen
+ bereitgestellt werden, über die der Workflow-Administrator Einstellungen
  treffen kann.
- Dies betrifft vor allem auch alle Einstellungen die zur Laufzeit getätigt
+ Dies betrifft vor allem alle Einstellungen die auch zur Laufzeit getätigt
  werden können, wie z.B.
  das Einbinden einer zusätzlicher Datenquelle.
 \end_layout
 
 \begin_layout Subsubsection
-Erweiterbarkeit
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Datenquellen
-\end_layout
-
-\begin_layout Plain Layout
-Anfragesprachen
-\end_layout
-
-\begin_layout Plain Layout
-DM-Aktivitäten
-\end_layout
-
-\begin_layout Plain Layout
-DQ-Events
-\end_layout
-
-\begin_layout Plain Layout
-Authentifizierungs- und Autorisierungs-Verfahren
-\end_layout
-
-\begin_layout Plain Layout
-Registry
-\end_layout
-
-\begin_layout Plain Layout
-Admin-Konsole
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Erweiterbarkeit"
 
 \end_inset
 
-
+Erweiterbarkeit
 \end_layout
 
 \begin_layout Standard
 Das Rahmenwerk stellt folgende Anforderungen an die Erweiterbarkeit und
- soll entsprechende Schnittstellen bieten:
+ soll dafür entsprechende 
+\begin_inset Quotes eld
+\end_inset
+
+Hot Spots
+\begin_inset Quotes erd
+\end_inset
+
+ bereitstellen:
 \end_layout
 
 \begin_layout Itemize
@@ -947,7 +1021,7 @@ Unterstützung weiterer Authentifizierungs- und Autorisierungsverfahren
 \end_layout
 
 \begin_layout Itemize
-Unterstützung weiterer Registry-Typen
+Unterstützung weiterer Registries
 \end_layout
 
 \begin_layout Itemize
@@ -955,40 +1029,26 @@ Austauschbare GUI der Admin-Konsole
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Verwendbarkeit"
+
+\end_inset
+
 Verwendbarkeit
 \end_layout
 
 \begin_layout Standard
-b
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-bel.
- Datenquellen, Standard BPEL, SIMPL Core mit anderen Web Containern ?
-\end_layout
-
-\end_inset
-
-
+Die Aktivitäten, die für SIMPL entwickelt werden, sollen auf beliebigen
+ anderen BPEL Worflow-Engines ausgeführt werden können.
+ Dazu muss der von den Aktivitäten bei der Modellierung erzeugte, erweiterte
+ Code, in Standard-BPEL transformiert werden.
+ Eine zusätzliche Anforderung ist, dass die von SIMPL bereitgestellten Web
+ Services, auf verschiedenen Web Containern lauffähig sein müssen.
 \end_layout
 
 \begin_layout Subsection
 Entwurfsprinzipien
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Plugin: mächtiger als Adapter (intern)
-\end_layout
-
-\begin_layout Plain Layout
-Adapter : vorhandene funktioalität erweitert (auch extern)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1060,6 +1120,41 @@ Bei der Entwicklung wird Top-down vorgegangen.
 \end_layout
 
 \begin_layout Subsubsection
+Plug-In
+\end_layout
+
+\begin_layout Standard
+Plug-Ins sind externe Softwareeinheiten, durch die das Rahmenwerk um zusätzliche
+ Funktionalität erweitert werden kann.
+ Das Rahmenwerk bietet dafür entsprechende 
+\begin_inset Quotes eld
+\end_inset
+
+Hot Spots
+\begin_inset Quotes erd
+\end_inset
+
+ an, an denen die Plug-Ins angeschlossen werden können.
+\end_layout
+
+\begin_layout Subsubsection
+Adapter
+\end_layout
+
+\begin_layout Standard
+Adapter bzw.
+ Konnektoren sind interne Verbindungsstücke, die dort entwickelt werden,
+ wo Komponenten angebunden werden sollen, deren Schnittstellen nicht zu
+ vorhandenen Schnittstellen des Rahmenwerks passen.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Single-Sign-On"
+
+\end_inset
+
 Single Sign On
 \end_layout
 
@@ -1071,10 +1166,19 @@ Der Single Sign On (SSO) ist ein Konzept der Authentifizierung, bei dem
 ang benötigt wird.
  Für das SIMPL Rahmenwerk betrifft das den Zugriff auf Datenquellen, wobei
  verschiedene, von den Datenquellen geforderten, Authentifzierungsverfahren
- unterstützt werden müssen.
+ unterstützt werden sollen.
  Bei der Modellierung soll der Prozess-Modellierer zudem dahingehend unterstützt
  werden, dass er Authentifizierungsinformationen nicht zu jeder Aktivität,
- einer bestimmten Datenquelle, redundant angeben muss.
+ einer bestimmten Datenquelle, wiederholt angeben muss.
+ Mit diesem Konzept soll die Anforderung an die Authentifizierung in Abschnitt
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Authentifizierung-und-Autorisierung"
+
+\end_inset
+
+ realisiert werden.
 \end_layout
 
 \begin_layout Subsection
@@ -1082,7 +1186,14 @@ ang benötigt wird.
 \end_layout
 
 \begin_layout Itemize
-Kapitel 2 
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Architektur"
+
+\end_inset
+
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1096,7 +1207,14 @@ Architektur
 \end_layout
 
 \begin_layout Itemize
-Kapitel 3 
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Komponenten"
+
+\end_inset
+
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1117,7 +1235,14 @@ Architektur
 \end_layout
 
 \begin_layout Itemize
-Kapitel 4 
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Schnittstellen"
+
+\end_inset
+
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1137,12 +1262,116 @@ Komponenten
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Architektur"
+
+\end_inset
+
 Architektur
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Übersicht-über-das"
+
+\end_inset
+
+ zeigt eine Übersicht des SIMPL Rahmenwerks.
+ Die übergeordneten Komponenten und ihr Zusammenspiel werden im Folgenden
+ kurz beschrieben und die für SIMPL entscheidenden Komponenten anschließend
+ in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Komponenten"
+
+\end_inset
+
+ näher beleuchtet.
+\end_layout
+
+\begin_layout Subsection
+Apache Tomcat
+\end_layout
+
+\begin_layout Standard
+Apache Tomcat ist die Laufzeitumgebung für Apache ODE, sowie den SIMPL Core.
+ Apache ODE ist für die Ausführung der Prozesse nach der Modellierung zuständig
+ und benötigt, wie bereits in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Das-SIMPL-Rahmenwerk"
+
+\end_inset
+
+ erwähnt, bestimmte Dienste für die Ausführung der zusätzlichen DM-Aktivitäten.
+ Diese Dienste werden von dem SIMPL Core, in Form von verschiedenen nach
+ Aufgaben eingeteilten Web Services, bereitgestellt.
+\end_layout
+
+\begin_layout Subsection
+Eclipse
+\end_layout
+
+\begin_layout Standard
+Die Entwicklungsumgebung Eclipse bildet, mit den entsprechenden Plug-Ins,
+ die GUI für den Prozess-Modellierer, als auch den Workflow-Administrator.
+ Mit dem Eclipse BPEL Designer Plug-In kann der Prozess-Modellierer bereits
+ BPEL Prozesse erstellen und auf dem Apache ODE zum Einsatz bringen (deployen).
+ Das SIMPL Eclipse Plug-In erweitert nun zum Einen die bestehenden Aktivitäten
+ des Eclipse BPEL Designer Plug-Ins um die DM-Aktivitäten und bietet zum
+ Anderen die GUI mit den Einstellungen für den Workflow-Administrator
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Eclipse, ODE, SIMPL Core und ihre Beziehungen zueinander, mit Abbildungen
+workflow admin gui später beschrieben (Menü usw.)
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SIMPL_Rahmenwerk.jpg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Übersicht-über-das"
+
+\end_inset
+
+Übersicht über das SIMPL Rahmenwerk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1151,12 +1380,63 @@ Eclipse, ODE, SIMPL Core und ihre Beziehungen zueinander, mit Abbildungen
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Komponenten"
+
+\end_inset
+
 Komponenten
-\begin_inset Note Note
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Komponenten-Diagramm"
+
+\end_inset
+
+ werden die für das SIMPL Rahmenwerk wichtigen Komponenten und ihre Schnittstell
+en gezeigt, die in den folgenden Abschnitten näher beschrieben werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Komponenten Abbildung
+\align center
+\begin_inset Graphics
+	filename SIMPL_Component_Diagram.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Komponenten-Diagramm"
+
+\end_inset
+
+Komponenten-Diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1166,10 +1446,37 @@ Komponenten Abbildung
 
 \begin_layout Subsection
 Eclipse IDE
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei Schnittst
+ellen nur die Pfeile raus!)
+\end_layout
+
+\begin_layout Plain Layout
+Eclipse greift zur Modellierung auf den Registry Service zu (Auflisten der
+ Datenquellen zB)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Apache ODE
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei Schnittst
+ellen nur die Pfeile raus!)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1179,43 +1486,262 @@ SIMPL Core
 \begin_layout Standard
 Der SIMPL Core besteht aus verschiedenen Web Services, die jeweils fest
  definierte Aufgaben innerhalb des SIMPL Rahmenwerks haben.
- Die Web Services werden dabei mit Apache Axis2 bereitgestellt.
+ Die Web Services werden dabei innerhalb einer Apache Axis2 Installation
+ bereitgestellt und mit der Java API JAX-WS erstellt, damit ein Einsatz
+ auch mit anderen Web Containern, als Apache Tomcat, gewährleistet ist.
+ Jeder Web Service bietet nach Außen eine WSDL-Schnittstelle, die gemeinsam
+ das SIMPL API bilden, mit dem über das Übertragungsprotokoll SOAP kommuniziert
+ werden kann.
+ Wie diese Kommunikation im Detail aussieht ist dann Thema von Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Schnittstellen"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
 SIMPL Security Service
 \end_layout
 
+\begin_layout Standard
+Der SIMPL Security Service ist zuständig für alle Aufgaben der Authentifizierung
+ und Autorisierung gegenüber Datenquellen, diese betreffen hauptsächlich
+ die dafür eingesetzten XML-Standards SAML und XACML mit denen Authentifizierung
+s- und Autorisierunginformationen formuliert und weitergegeben werden können.
+ Mit diesem Service soll außerdem das Konzept des SSO (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Single-Sign-On"
+
+\end_inset
+
+) realisiert werden.
+\end_layout
+
 \begin_layout Subsubsection
 SIMPL Reference Service
+\end_layout
+
+\begin_layout Standard
+Der SIMPL Reference Service wird der Anforderung in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Große-Datenmengen"
+
+\end_inset
+
+ gerecht, große Datenmengen in BPEL referenzieren zu können.
+ Über diesen Service lassen sich Referenzen erstellen, ändern, löschen und
+ natürlich auflösen, um bei Bedarf die referenzierten Daten in einen Prozess
+ zu holen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In Kapitel 4 erwähnen dass die Referenzen nicht hingeschickt werden, sondern
+ nur Informationen die für die Auflösung benötigt werden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 SIMPL Strategy Service
 \end_layout
 
+\begin_layout Standard
+Mit dem SIMPL Strategy Service wird das Late Binding (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Late-Binding-von"
+
+\end_inset
+
+) ermöglicht, dort stehen verschiedene Auswahlstrategien bzw.
+ -algorithmen zur Verfügung um mit den im Prozess formulierten Anforderungen
+ eine passende Datenquelle ausfindig zu machen.
+ Um die vorhandenen Datenquellen abzurufen und zu vergleichen, wird der
+ SIMPL Registry Service verwendet.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Kapitel 4: WS-Policy für Anforderungen nennen! (als Objekt)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 SIMPL Transformation Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In Eclipse Kapitel muss stehen wann dieser Service benutzt wird.
+ (vor Deployment)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit die mit DM-Aktivitäten modellierten Prozesse auch auf anderen Workflow
+ Engines ausgeführt werden können (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verwendbarkeit"
+
+\end_inset
+
+), wird der SIMPL Tranformation Service bereitgestellt, mit dem der erweiterte
+ BPEL Code in Standard-BPEL-Code transformiert werden kann.
 \end_layout
 
 \begin_layout Subsubsection
 SIMPL Administration Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+beeinflusst ODE Engine, Auditing findet hier statt!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Admin-Konsole"
+
+\end_inset
+
+ geforderte Admin-Konsole wird durch den SIMPL Administration Service ermöglicht.
+ Darüber können alle Einstellungen des Rahmenwerks verwaltet werden.
+ Für Einstellungen mit denen zur Laufzeit Einfluß auf die Ausführung von
+ Prozessen genommen werden kann, wie z.B.
+ das Auditing betreffend, werden die vorhandenen Schnittstellen von Apache
+ ODE verwendet.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Hier ein Verweis auf diese Schnittstellen wenn das Kapitel 4 steht!
+\end_layout
+
+\end_inset
+
+ Die in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterbarkeit"
+
+\end_inset
+
+ geforderte austauschbare GUI, wird durch die unabhängige WSDL-Schnittstelle
+ erreicht.
 \end_layout
 
 \begin_layout Subsubsection
-SIMPL Datasource Service 
+SIMPL Datasource Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SDO gehört zu Kapitel 4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der SIMPL Datasource Service ist für alle Aufgaben, die den Zugriff auf
+ Datenquellen betreffen, zuständig.
+ Dort werden auch entsprechende Adapter implementiert, die den Zugriff auf
+ verschiedene Datenquellen ermöglichen und die Erweiterbarkeit, in Hinsicht
+ Typen von Datenquellen und Anfragesprachen, garantieren.
+ (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterbarkeit"
+
+\end_inset
+
+).
+ Desweiteren werden Plug-In Möglichkeiten für andere Erweiterungen geschaffen,
+ wie z.B die Unterstützung verschiedener Dateitypen bei Dateisystemen.
 \end_layout
 
 \begin_layout Subsubsection
 SIMPL Registry Service
 \end_layout
 
+\begin_layout Standard
+Über den SIMPL Registry Service kann auf die Registry des Rahmenwerks zugegriffe
+n werden, in der die vorhandenen Datenquellen mit ihren Eigenschaften zentral
+ verwaltet werden.
+ (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Registry"
+
+\end_inset
+
+)
+\end_layout
+
 \begin_layout Subsection
 Registry
 \end_layout
 
+\begin_layout Standard
+Das SIMPL Rahmenwerk stellt mit Apache jUDDI bereits eine UDDI-Registry
+ zur Verfügung.
+ Da als Erweiterung unterschiedliche Registries geplant sind (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterbarkeit"
+
+\end_inset
+
+), sollen Zugriffe nicht direkt, sondern nur über den SIMPL Registry Service
+ erfolgen.
+\end_layout
+
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Schnittstellen"
+
+\end_inset
+
 Schnittstellen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+evtl.
+ Abbildung mit Kommunikationswegen, Protokollen und Objekten
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
@@ -1240,7 +1766,35 @@ SIMPL Core Schnittstellen
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Knauß, Markus (März 2008): 
+\shape italic
+Entwurfsvorlage
+\shape default
+, http://www.iste.uni-stuttgart.de/se/.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-2"
+
+\end_inset
+
+Ludewig, Jochen; Lichter, Horst (2007): 
+\shape italic
+Software Engineering: Grundlagen, Menschen, Prozesse und Techniken
+\shape default
+, punkt.verlag GmbH.
+\end_layout
+
+\begin_layout Section*
 
 \series bold
 \size larger
@@ -1250,10 +1804,30 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="14" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+API
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Application Programming Interface
+\end_layout
+
+\end_inset
+</cell>
+</row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1279,7 +1853,7 @@ Business Process Execution Language
 \begin_inset Text
 
 \begin_layout Plain Layout
-ODE
+DM
 \end_layout
 
 \end_inset
@@ -1288,7 +1862,7 @@ ODE
 \begin_inset Text
 
 \begin_layout Plain Layout
-Orchestration Director Engine
+Data-Management
 \end_layout
 
 \end_inset
@@ -1309,6 +1883,46 @@ GUI
 
 \begin_layout Plain Layout
 Graphical User Interface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JAX-WS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Java API for XML - Web Services
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orchestration Director Engine
 \end_layout
 
 \end_inset
@@ -1349,6 +1963,27 @@ SIMPL
 
 \begin_layout Plain Layout
 SimTech: Information Management, Processes and Languages
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SOAP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ehem.
+ Simple Object Access Protocol
 \end_layout
 
 \end_inset
@@ -1415,6 +2050,26 @@ Universal Description, Discovery and Integration
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WSDL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Web Service Description Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1441,32 +2096,12 @@ XML Query Language
 
 \end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-1"
+\begin_layout Standard
+\begin_inset FloatList figure
 
 \end_inset
 
-Knauß, Markus (März 2008): 
-\shape italic
-Entwurfsvorlage
-\shape default
-, http://www.iste.uni-stuttgart.de/se/.
-\end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-2"
-
-\end_inset
-
-Ludewig, Jochen; Lichter, Horst (2007): 
-\shape italic
-Software Engineering: Grundlagen, Menschen, Prozesse und Techniken
-\shape default
-, punkt.verlag GmbH.
 \end_layout
 
 \end_body
