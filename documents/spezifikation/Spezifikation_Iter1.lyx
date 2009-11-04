@@ -972,8 +972,8 @@ Folgende Funktionen bilden die Basisfunktionalität des SIMPL-Rahmenwerks:
 \end_layout
 
 \begin_layout Itemize
-Die statische Anbindung von Datenquellen: Relationale Datenbanken, XML-Datenbank
-en, Sensornetze und Dateisysteme.
+Die statische Anbindung von Datenquellen: Relationale Datenbanken, eXtensible
+ Markup Language (XML)-Datenbanken, Sensornetze und Dateisysteme.
 \end_layout
 
 \begin_layout Itemize
@@ -1260,7 +1260,7 @@ reference "fig:Systemumgebung"
 \end_inset
 
  dargestellte Systemumgebung eingebettet werden.
- Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL-Designer Plug-In,
+ Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL Designer Plug-In,
  einem Web Server, wie z.B.
  dem Apache Tomcat (siehe 
 \begin_inset CommandInset citation
@@ -1304,7 +1304,7 @@ reference "fig:Systemumgebung"
  beträchtlich.
  Das SIMPL Eclipse Plug-In erweitert die grafische Oberfläche von Eclipse
  um Einstellungen für das SIMPL Rahmenwerk vornehmen zu können.
- Das SIMPL DM Plug-In erweitert das Eclipse BPEL-Designer Plug-In um Prozesse
+ Das SIMPL DM Plug-In erweitert das Eclipse BPEL Designer Plug-In um Prozesse
  mit DM-Aktivitäten modellieren zu können.
  Die DM-Aktivitäten werden in der Workflow-Engine implementiert und in diese
  als Plug-In eingebunden.
@@ -1566,6 +1566,16 @@ Die Verfügbarkeit des Rahmenwerks soll mindestens so hoch sein, dass sie
 
 \begin_layout Subsection
 Robustheit
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NOCH NICHT ÜBERARBEITET => DISKUTIEREN
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status open
 
@@ -2218,6 +2228,16 @@ Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers.
 
 \begin_layout Subsection
 ODE Workflow-Engine
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NOCH NICHT ÜBERARBEITET => DISKUTIEREN
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2259,7 +2279,7 @@ Anwendungsfälle (Use-Cases)
 status open
 
 \begin_layout Plain Layout
-NOCH NICHT ÜBERARBEITET
+Wenn alle Use-Cases fertig überarbeitet wurden, alle Diagramme aktualisieren!
 \end_layout
 
 \end_inset
@@ -2274,7 +2294,7 @@ Dieses Kapitel beschreibt die funktionalen Anforderungen an die Software.
 en Diagrammen graphisch dargestellt.
  D.h.
  das bereits durch vorhandene Software (z.B.
- Eclipse BPEL-Designer) realisierte Anwendungsfälle nicht aufgeführt und
+ Eclipse BPEL Designer) realisierte Anwendungsfälle nicht aufgeführt und
  beschrieben werden.
 \end_layout
 
@@ -2528,20 +2548,21 @@ Normalablauf
 
 \begin_layout Plain Layout
 1a.
- Selektion einer DM-Aktivität, durch Auswahl mit der linken Maustaste, aus
- der Palette und anschließend Selektion der Stelle des Prozesses an der
- die ausgewählte DM-Aktivität eingefügt werden soll
+ Selektion einer DM-Aktivität aus der BPEL Designer Palette durch Auswahl
+ mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses,
+ an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken
+ Maustaste.
 \end_layout
 
 \begin_layout Plain Layout
 1b.
  (alternativ) Drag&Drop einer DM-Aktivität aus der Palette an die gewünschte
- Stelle im Prozess
+ Stelle im Prozess.
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Eingabe eines Aktivitätsnamens durch den Benutzer
+ Eingabe eines Aktivitätsnamens durch den Benutzer.
 \end_layout
 
 \end_inset
@@ -2562,7 +2583,7 @@ Sonderfälle
 
 \begin_layout Plain Layout
 2a.
- Der angezeigte Namensvorschlag wird vom Benutzer bestätigt
+ Der angezeigte Namensvorschlag wird vom Benutzer bestätigt.
 \end_layout
 
 \end_inset
@@ -2619,16 +2640,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet, die
- zu bearbeitende DM-Aktivität ist ausgewählt und der 
-\begin_inset Quotes eld
-\end_inset
-
-Properties-View
-\begin_inset Quotes erd
-\end_inset
-
- von Eclipse wird angezeigt.
+Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet.
 \end_layout
 
 \end_inset
@@ -2699,12 +2711,12 @@ Normalablauf
 \begin_layout Plain Layout
 1.
  Selektierung einer DM-Aktivität, durch Auswahl mit der linken Maustaste,
- aus dem Prozess
+ aus dem Prozess.
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Eigenschaften der DM-Aktivität werden innerhalb der 
+ Öffnen der 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2712,12 +2724,12 @@ Properties-View
 \begin_inset Quotes erd
 \end_inset
 
- angezeigt
+ der DM-Aktivität um ihre Eigenschaften anzuzeigen.
 \end_layout
 
 \begin_layout Plain Layout
 3.
- Änderung der Eigenschaften
+ Änderung der Eigenschaften der DM-Aktivität.
 \end_layout
 
 \end_inset
@@ -2752,6 +2764,26 @@ keine
 
 \begin_layout Subsubsection
 Data-Management-Aktivität löschen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Peter Reimann: 
+\begin_inset Quotes eld
+\end_inset
+
+Was passiert, wenn Links auf die Aktivität gezeigt haben? Werden die Links
+ auch gelöscht? Ihr könnt dabei gern das Standardverhalten vom Eclipse BPEL
+ Designer referenzieren.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2774,7 +2806,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Löschen der ausgewählten DM-Aktivität.
+Löschen einer DM-Aktivität.
 \end_layout
 
 \end_inset
@@ -2856,13 +2888,30 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Selektierung einer DM-Aktivität, durch Auswahl mit der linken Maustaste,
- aus dem Prozess
+ Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl mit der linken
+ Maustaste.
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Löschen der DM-Aktivität
+ Löschen der DM-Aktivität durch drücken der 
+\begin_inset Quotes eld
+\end_inset
+
+entf
+\begin_inset Quotes erd
+\end_inset
+
+-Taste oder über den Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ des Kontextmenüs, das durch einen rechten Mausklick auf die DM-Aktivität
+ geöffnet werden kann.
 \end_layout
 
 \end_inset
@@ -2896,7 +2945,25 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
+Prozess auf ODE-Server deployen 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Noch überarbeiten, abstimmen mit 
+\begin_inset Quotes eld
+\end_inset
+
 Prozess ausführen
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3014,7 +3081,7 @@ Normalablauf
 \begin_layout Plain Layout
 1.
  Erstellung eines ODE Deployment-Deskriptors über File->New->Other->BPEL2.0->Apac
-he ODE Deployment Descriptor
+he ODE Deployment Descriptor.
 \end_layout
 
 \begin_layout Plain Layout
@@ -3052,7 +3119,7 @@ Start
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -3073,17 +3140,254 @@ Sonderfälle
 
 \begin_layout Plain Layout
 3a.
- ODE-Server startet nicht
+ ODE-Server startet nicht.
 \end_layout
 
 \begin_layout Plain Layout
 3b.
- Beim Starten des Prozesses tritt ein Fehler auf
+ Beim Starten des Prozesses tritt ein Fehler auf.
 \end_layout
 
 \begin_layout Plain Layout
 3c.
- Während der Ausführung des Prozesses tritt ein Fehler auf
+ Während der Ausführung des Prozesses tritt ein Fehler auf.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Prozess ausführen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Peter Reimann: 
+\begin_inset Quotes eld
+\end_inset
+
+Ihr beschreibt hier im Normalablauf nur den Use Case "Prozess auf ODE-Server
+ deployen".
+ Wenn man den hier beschriebenen Normalablauf durchführt, wird noch keine
+ Prozessinstanz gestartet.
+ Dies passiert erst, wenn man eine Instanz mit einer entsprechenden Nachricht
+ anstößt (deswegen ist am Anfang eines Prozessmodells auch immer ein receive).
+\end_layout
+
+\begin_layout Plain Layout
+Außerdem müssen die beiden Use Cases "Prozess auf ODE-Server deployen" und
+ "Prozessinstanz starten" voneinander getrennt sein.
+ Man kann einen Prozess, nachdem er deployt wurde, auch mehrmals starten
+ (das gibt dann jeweils eine neue Prozessinstanz).
+\end_layout
+
+\begin_layout Plain Layout
+Falls ihr nicht wisst, was der Unterschied zwischen "Prozess deployen" und
+ "Prozessinstanz ausführen/starten" ist, fragt noch mal bei euren Betreuern
+ nach.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ausführen des Prozesses auf der Apache ODE Workflow-Engine.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engin
+e korrekt in Eclipse eingebunden und die Server-View wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert, der
+ Prozess wurde erfolgreich deployed und wird ausgeführt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3a.
+ Der Prozess wurde nicht gestartet.
+\end_layout
+
+\begin_layout Plain Layout
+3b.
+ Der Prozess wurde nicht gestartet.
+\end_layout
+
+\begin_layout Plain Layout
+3c.
+ Der Prozess wurde beendet und es wird eine Fehlermeldung angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Erstellung eines ODE Deployment-Deskriptors über File->New->Other->BPEL2.0->Apac
+he ODE Deployment Descriptor.
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+\end_layout
+
+\begin_layout Itemize
+Rechter Mausklick auf den ODE-Server
+\end_layout
+
+\begin_layout Itemize
+Auswahl des Menüpunkts 
+\begin_inset Quotes eld
+\end_inset
+
+Add and Remove
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hinzufügen der BPEL Prozess-Datei
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Starten des ODE-Servers über rechten Mausklick und 
+\begin_inset Quotes eld
+\end_inset
+
+Start
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3a.
+ ODE-Server startet nicht.
+\end_layout
+
+\begin_layout Plain Layout
+3b.
+ Beim Starten des Prozesses tritt ein Fehler auf.
+\end_layout
+
+\begin_layout Plain Layout
+3c.
+ Während der Ausführung des Prozesses tritt ein Fehler auf.
 \end_layout
 
 \end_inset
@@ -3098,6 +3402,16 @@ Sonderfälle
 
 \begin_layout Subsection
 Anwendungsfälle des Workflow-Administrators
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Kompletten Abschnitt/Kommentare im Team besprechen und NOCH ÜBERARBEITEN
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3133,15 +3447,15 @@ Globale Einstellungen festlegen
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole speichern
+Einstellungen der Admin-Konsole speichern
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole zurücksetzen
+Einstellungen der Admin-Konsole zurücksetzen
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole Defaults laden
+Default-Einstellungen der Admin-Konsole laden
 \end_layout
 
 \begin_layout Itemize
@@ -3294,618 +3608,12 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Klick auf das SIMPL Menü in der Menüleiste
+ Klick auf das SIMPL Menü in der Menüleiste.
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Klick auf den Menüeintrag [Admin Console]
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Admin-Konsole zurücksetzen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Zurücksetzen des Inhalts der Admin-Konsole.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt und es wurde mindestens ein Wert geändert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole wurden auf die zuletzt gespeicherten
- Einstellungen zurückgesetzt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Klick auf den Button [Reset]
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Ausführung des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-Admin-Konsole laden
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Admin-Konsole speichern
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Speicherung des Inhalts der Admin-Konsole in eine Datenbank.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Alle Werte der Admin-Konsole wurden korrekt gespeichert und alle veralteten
- Werte mit Neuen überschrieben.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1a.
- Alle geänderten Werte der Admin-Konsole bleiben unverändert.
- Es wird eine entsprechende Fehlermeldung angezeigt und ein erneuter Speicherver
-such kann durchgeführt werden.
- Die Werte bleiben dabei solange erhalten, bis die Admin-Konsole geschlossen
- wird.
-\end_layout
-
-\begin_layout Plain Layout
-1b.&1c.
- Der Benutzer erhält eine Fehlermeldung, die ihn über den entsprechenden
- Fehler informiert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Klick auf den Button [Save]
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1a.
- Beim Speichern der Werte tritt ein Fehler auf
-\end_layout
-
-\begin_layout Plain Layout
-1b.
- Vom Benutzer wurde keine Auditing-Datenbank zum Speichern der Auditing-Daten
- festgelegt.
-\end_layout
-
-\begin_layout Plain Layout
-1c.
- Die angegebene Auditing-Datenbank kann nicht verwendet werden, da sie z.B.
- nicht erreichbar ist oder die Authentifizierung fehlgeschlagen ist
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Admin-Konsole schließen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Schließen der Admin-Konsole.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Änderungen
- wurden verworfen.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Klick auf den Button [Close]
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Admin-Konsole Defaults laden
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Laden der Standardwerte in der Admin-Konsole.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole wurden auf die gespeicherten Standardwer
-te zurückgesetzt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-keine
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Klick auf den Button [Default]
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Ausführung des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-Admin-Konsole laden
-\begin_inset Quotes erd
-\end_inset
-
-.
+ Klick auf den Menüeintrag [Admin Console].
 \end_layout
 
 \end_inset
@@ -4051,7 +3759,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Setzen der Auditing-Checkbox
+ Setzen der Auditing-Checkbox.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4064,7 +3772,7 @@ Admin-Konsole speichern
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -4210,7 +3918,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Zurücksetzen der Auditing-Checkbox
+ Zurücksetzen der Auditing-Checkbox.
 \end_layout
 
 \end_inset
@@ -4357,7 +4065,8 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Angabe einer Datenbank-URL (optional Auswahl über Datenbank-Registry)
+ Angabe der Datenbank-Adresse über einen Unified Resource Locator (URL)
+ (optional Auswahl über Datenbank-Registry).
 \end_layout
 
 \begin_layout Plain Layout
@@ -4370,7 +4079,7 @@ Admin-Konsole speichern
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -4516,7 +4225,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Eingabe/Änderung der Werte
+ Eingabe/Änderung der Werte.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4529,7 +4238,626 @@ Admin-Konsole speichern
 \begin_inset Quotes erd
 \end_inset
 
+.
+\end_layout
 
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Einstellungen der Admin-Konsole speichern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speicherung des Inhalts der Admin-Konsole in eine Datenbank.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle Werte der Admin-Konsole wurden korrekt gespeichert und alle veralteten
+ Werte mit Neuen überschrieben.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Alle geänderten Werte der Admin-Konsole bleiben unverändert.
+ Es wird eine entsprechende Fehlermeldung angezeigt und ein erneuter Speicherver
+such kann durchgeführt werden.
+ Die Werte bleiben dabei solange erhalten, bis die Admin-Konsole geschlossen
+ wird.
+\end_layout
+
+\begin_layout Plain Layout
+1b.&1c.
+ Der Benutzer erhält eine Fehlermeldung, die ihn über den entsprechenden
+ Fehler informiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick auf den Button [Save].
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Beim Speichern der Werte tritt ein Fehler auf.
+\end_layout
+
+\begin_layout Plain Layout
+1b.
+ Vom Benutzer wurde keine Auditing-Datenbank zum Speichern der Auditing-Daten
+ festgelegt.
+\end_layout
+
+\begin_layout Plain Layout
+1c.
+ Die angegebene Auditing-Datenbank kann nicht verwendet werden, da sie z.B.
+ nicht erreichbar ist oder die Authentifizierung fehlgeschlagen ist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Einstellungen der Admin-Konsole zurücksetzen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zurücksetzen des Inhalts der Admin-Konsole.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole wird angezeigt und es wurde mindestens ein Wert geändert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle geänderten Werte der Admin-Konsole wurden auf die zuletzt gespeicherten
+ Einstellungen zurückgesetzt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick auf den Button [Reset].
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Default-Einstellungen der Admin-Konsole laden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Laden der Standardwerte in der Admin-Konsole.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle geänderten Werte der Admin-Konsole wurden auf die gespeicherten Standardwer
+te zurückgesetzt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick auf den Button [Default].
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Admin-Konsole schließen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Schließen der Admin-Konsole.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Änderungen
+ wurden verworfen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick auf den Button [Close].
 \end_layout
 
 \end_inset
@@ -4563,13 +4891,12 @@ keine
 \end_layout
 
 \begin_layout Subsection
-Anwendungsfälle der ODE Workflow-Engine 
+Anwendungsfälle der ODE Workflow-Engine
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-muss noch überarbeitet werden...
- (Freitag)
+Kompletten Abschnitt/Kommentare im Team besprechen und NOCH ÜBERARBEITEN
 \end_layout
 
 \end_inset
@@ -4733,7 +5060,7 @@ Terminated
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4746,7 +5073,7 @@ Waiting
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4759,7 +5086,7 @@ Terminated
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4772,7 +5099,7 @@ Faulted
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4785,7 +5112,7 @@ Terminated
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -4814,18 +5141,18 @@ Ready
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Die Ausführung der DM-Aktivität wird gestartet
+ Die Ausführung der DM-Aktivität wird gestartet.
 \end_layout
 
 \begin_layout Plain Layout
 3.
  Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung
- an die Datenquelle
+ an die Datenquelle.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4839,7 +5166,7 @@ Waiting
 \begin_inset Quotes erd
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4852,7 +5179,7 @@ Complete
 \begin_inset Quotes erd
 \end_inset
 
- gekennzeichnet
+ gekennzeichnet.
 \end_layout
 
 \end_inset
@@ -4873,7 +5200,7 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.1.
- In der Vateraktivität tritt ein Fehler auf
+ In der Vateraktivität tritt ein Fehler auf.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4886,7 +5213,7 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst
+ ausgelöst.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4899,7 +5226,7 @@ Complete_Acitivity Event
 \begin_inset Quotes erd
 \end_inset
 
- an die DM-Aktivität gesendet
+ an die DM-Aktivität gesendet.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4912,12 +5239,12 @@ Activity_Executed Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst
+ ausgelöst.
 \end_layout
 
 \begin_layout Plain Layout
 2a.1.
- In der Vateraktivität tritt ein Fehler auf
+ In der Vateraktivität tritt ein Fehler auf.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4930,14 +5257,14 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst
+ ausgelöst.
 \end_layout
 
 \begin_layout Plain Layout
 3a.1.
  Währender der Durchführung der DM-Operationen tritt ein Fehler in der Datenquel
 le auf (z.B.
- ein Syntaxfehler oder die Datenbank ist nicht erreichbar)
+ ein Syntaxfehler oder die Datenbank ist nicht erreichbar).
 \end_layout
 
 \begin_layout Plain Layout
@@ -4950,12 +5277,12 @@ Activity_Faulted Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst
+ ausgelöst.
 \end_layout
 
 \begin_layout Plain Layout
 4a.1.
- In der Vateraktivität tritt ein Fehler auf
+ In der Vateraktivität tritt ein Fehler auf.
 \end_layout
 
 \begin_layout Plain Layout
@@ -4968,7 +5295,7 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst
+ ausgelöst.
 \end_layout
 
 \end_inset
@@ -5097,7 +5424,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Alle Änderungen werden zurückgesetzt
+ Alle Änderungen werden zurückgesetzt.
 \end_layout
 
 \end_inset
@@ -5132,6 +5459,16 @@ keine
 
 \begin_layout Subsection
 Anwendungsfälle des Eclipse BPEL Designers
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Kompletten Abschnitt/Kommentare im Team besprechen und NOCH ÜBERARBEITEN
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5148,6 +5485,14 @@ reference "fig:UseCaseDiaBPELDesigner"
 
 \begin_layout Itemize
 Admin-Konsole laden
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole speichern
+\end_layout
+
+\begin_layout Itemize
+Admin-Konsole Defaults laden
 \end_layout
 
 \begin_layout Standard
@@ -5235,7 +5580,23 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eclipse mit dem SIMPL Eclipse Plug-In ist geöffnet.
+Einer der Anwendungsfälle 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole öffnen
+\begin_inset Quotes erd
+\end_inset
+
+ oder 
+\begin_inset Quotes eld
+\end_inset
+
+Einstellungen der Admin-Konsole zurücksetzen
+\begin_inset Quotes erd
+\end_inset
+
+ wurde ausgeführt.
 \end_layout
 
 \end_inset
@@ -5255,8 +5616,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle Werte der Datei mit den Einstellungen der Admin-Konsole wurden geladen
- und können im Fenster 
+Alle Werte der Datenquelle mit den Einstellungen der Admin-Konsole wurden
+ geladen und werden im Fenster 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5264,7 +5625,7 @@ Admin Console
 \begin_inset Quotes erd
 \end_inset
 
- und dessen Unterfenstern angezeigt werden.
+ und dessen Unterfenstern angezeigt.
 \end_layout
 
 \end_inset
@@ -5314,12 +5675,12 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Laden der Werte aus einer Datenquelle
+ Laden der Werte aus einer Datenquelle.
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Füllen der Felder der Admin-Konsole
+ Füllen der Felder der Admin-Konsole.
 \end_layout
 
 \end_inset
@@ -5341,7 +5702,297 @@ Sonderfälle
 \begin_layout Plain Layout
 1a.
  Beim Laden der Werte tritt ein Fehler auf und die Standardwerte werden
- geladen
+ geladen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Admin-Konsole Defaults laden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Laden der Default-Werte der Admin-Konsole.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
+
+Default-Einstellungen der Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+ wurde ausgeführt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Admin-Konsole speichern
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
+
+Einstellungen der Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+ wurde ausgeführt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -5356,6 +6007,16 @@ Sonderfälle
 
 \begin_layout Subsection
 Komponenten und ihre Anwendungsfälle
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Am Schluss nochmal überprüfen!!!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5415,7 +6076,7 @@ Komponenten und ihre Anwendungsfälle
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="17" columns="4">
+<lyxtabular version="3" rows="20" columns="4">
 <features firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="middle" width="6cm">
 <column alignment="center" valignment="middle" width="3cm">
@@ -5594,6 +6255,44 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
+Prozess auf ODE-Server deployen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 Prozess ausführen
 \end_layout
 
@@ -5822,7 +6521,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole speichern
+Einstellungen der Admin-Konsole speichern
 \end_layout
 
 \end_inset
@@ -5860,7 +6559,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole zurücksetzen
+Einstellungen der Admin-Konsole zurücksetzen
 \end_layout
 
 \end_inset
@@ -5898,7 +6597,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole Defaults laden
+Default-Einstellungen der Admin-Konsole laden
 \end_layout
 
 \end_inset
@@ -6057,11 +6756,87 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Admin-Konsole laden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole Default-Werte laden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin-Konsole speichern
 \end_layout
 
 \end_inset
@@ -6130,7 +6905,8 @@ In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  die Beschreibung und Definition der benötigten DM-Aktivitäten, die zur
  Realisierung einer generischen Unterstützung von verschiedenen Abfragesprachen,
  wie z.B.
- SQL oder XQuery, für BPEL benötigt werden.
+ der Structured Query Language (SQL) oder der XML Query Language (XQuery),
+ für BPEL benötigt werden.
  Ebenso werden die Realisierung des Datenquellen-Auditings und das dafür
  zugrunde liegende Event-Modell beschrieben.
 \end_layout
@@ -6143,6 +6919,16 @@ name "sub:Data-Management-Aktivitäten"
 \end_inset
 
 Data-Management-Aktivitäten
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+KOMPLETT ÜBERARBEITEN
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6167,7 +6953,7 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
 \end_inset
 
  neue benötigte BPEL-Aktivitäten abstrahiert, die dann später die entsprechenden
- Funktionen ausführen werden.
+ Funktionen beinhalten und diese an die Datenquellen zur Ausführung schicken.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6178,6 +6964,16 @@ name "sub:Datenmanagement-Patterns"
 \end_inset
 
 Datenmanagement-Patterns
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+KOMPLETT UMSTRUKTURIEREN
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6219,11 +7015,10 @@ Set IUD Pattern
 \end_layout
 
 \begin_layout Standard
-Das Set IUD Pattern beschreibt die Möglichkeit auf mengenorientierten Daten
- außerhalb des Prozesses verschiedene Datenmanipulations-Operationen ausführen
- zu können.
- Zu diesen Operationen zählen das mengenorientierte Einfügen (insert), Aktualisi
-eren (update) und Löschen (delete) von Daten.
+Das Set IUD Pattern beschreibt die Möglichkeit, auf mengenorientierten Daten,
+ verschiedene Datenmanipulations-Operationen ausführen zu können.
+ Zu diesen Operationen zählen das mengen- und tupelorientierte Einfügen
+ (insert), Aktualisieren (update) und Löschen (delete) von Daten.
 \end_layout
 
 \begin_layout Paragraph*
@@ -6231,10 +7026,10 @@ Data Setup Pattern
 \end_layout
 
 \begin_layout Standard
-Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
- Language (DDL) Befehle auf einem relationalen Datenbanksystem auszuführen,
- um so während der Prozessausführung die Datenquelle zu konfigurieren oder
- neue Container (Tabellen, Schema, usw.) zu erstellen.
+Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
+ (DDL) Befehle auf einem relationalen Datenbanksystem auszuführen, um so
+ während der Prozessausführung die Datenquelle zu konfigurieren oder neue
+ Container (Tabellen, Schema, usw.) zu erstellen, zu ändern oder zu verwerfen.
 \end_layout
 
 \begin_layout Paragraph*
@@ -6265,8 +7060,8 @@ Set Access Pattern
 \end_layout
 
 \begin_layout Standard
-Das Set Access Pattern beschreibt die Notwendigkeit, auf den erzeugten Datencach
-e sequentiell und direkt (random) zugreifen zu können.
+Das Set Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
+ erzeugten Datencache sequentiell und direkt (wahlfrei) zugreifen zu können.
 \end_layout
 
 \begin_layout Paragraph*
@@ -6275,7 +7070,8 @@ Tuple IUD Pattern
 
 \begin_layout Standard
 Das Tuple IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencach
-e Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden können.
+e mengenorientierte Daten eingefügt, aktualisiert und wieder aus diesem
+ gelöscht werden können.
 \end_layout
 
 \begin_layout Paragraph*
@@ -6304,7 +7100,7 @@ Query Pattern
 Das Query Pattern beschreibt die Notwendigkeit, mithilfe von XQuery-Befehlen
  externe Daten anfordern zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
- zwischengespeichert oder direkt im BPEL-Prozess gehalten werden.
+ gespeichert oder direkt im BPEL-Prozess gehalten werden.
 \end_layout
 
 \begin_layout Paragraph*
@@ -6312,9 +7108,8 @@ Tree IUD Pattern
 \end_layout
 
 \begin_layout Standard
-Das Tree IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
-Operationen auf Knoten von baumartigen Daten außerhalb des Prozesses ausführen
- zu können.
+Das Tree IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
+-Operationen auf Knoten von baumartigen externen Daten ausführen zu können.
  Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Knoten.
 \end_layout
 
@@ -6323,9 +7118,8 @@ Node IUD Pattern
 \end_layout
 
 \begin_layout Standard
-Das Node IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
-Operationen in Knoten von baumartigen Daten außerhalb des Prozesses ausführen
- zu können.
+Das Node IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
+-Operationen in Knoten von baumartigen externen Daten ausführen zu können.
  Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Werten
  innerhalb von Knoten.
 \end_layout
@@ -6719,9 +7513,9 @@ Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
  und in einer entsprechenden BPEL-Variable ablegt werden können.
  Dazu müssen neue Variablentypen bereitgestellt werden, die den Strukturen
  der zu haltenden Daten entsprechen, also mengenartige Daten halten können.
- Die Daten werden dazu über die 
+ Die Daten werden dazu über das 
 \emph on
-Service Data Objects API
+Service Data Objects Application Programming Interface
 \emph default
  (SDO API) abstrahiert.
  Wie in 
@@ -6796,8 +7590,11 @@ n werden sollen.
  Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
  Pattern beschriebenen Methoden und ebenso SQL-Befehle um die Daten aus
  dem Prozesscache auf die Datenbank zu übertragen.
- Die SDO API und die DAS API liefern dafür bereits einige Methoden, die
- verwendet werden können.
+ Die SDO API und die 
+\emph on
+Data Access Service
+\emph default
+ (DAS) API liefern dafür bereits einige Methoden, die verwendet werden können.
  
 \begin_inset Note Note
 status collapsed
@@ -7061,11 +7858,8 @@ n werden sollen.
  Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
  Pattern beschriebenen Methoden um die Daten aus dem Prozesscache auf die
  Datenquelle zu übertragen.
- Die SDO API und die 
-\emph on
-Data Access Services API
-\emph default
- (DAS API) liefern dafür bereits einige Methoden die verwendet werden können.
+ Die SDO API und die DAS API liefern dafür bereits einige Methoden die verwendet
+ werden können.
  Die Umsetzung dieses Patterns wird erst in einer späteren Iteration realisiert,
  da zuerst Erkentnisse im Bereich der Datenbanken gesammelt werden und mit
  diesen dann ein Ansatz für Dateisysteme erarbeitet wird.
@@ -9101,12 +9895,11 @@ Dieser Abschnitt behandelt die Authentifizierung und Autorisierung bei dem
  d.h.
  es findet keine Autorisierung und Authentifizierung der Benutzer innerhalb
  eines Prozesses statt.
- Das Rahmenwerk bietet dem Benutzer lediglich die Möglichkeit benötigte
- Authentifizierung- und Autorisierungsinformationen bereitzustellen und
- ggf.
- Zwischenzuspeichern.
+ Das Rahmenwerk bietet dem Benutzer lediglich die Möglichkeit, benötigte
+ Authentifizierungs- und Autorisierungsinformationen anzugeben und ggf.
+ zwischenzuspeichern.
  Ziel des Rahmenwerks ist es, eine Vielzahl an Authentifizierungs- und Autorisie
-rung-Verfahren zu unterstützen und für weitere Verfahren erweiterbar zu
+rungsverfahren zu unterstützen und für weitere Verfahren erweiterbar zu
  sein.
 \end_layout
 
@@ -9126,14 +9919,8 @@ Bei der Authentifizierung wird vor dem eigentlichen Zugriff zunächst ein
  Unabhängig von der Realisierung, soll das für den Benutzer auch bedeuten,
  dass die Authentifizierungsinformationen nicht in jeder DM-Aktivität zu
  einer Datenquelle redundant angegeben werden müssen.
-\end_layout
-
-\begin_layout Subsubsection*
-Benutzername und Passwort
-\end_layout
-
-\begin_layout Standard
-Benutzername und Passwort können in der ersten Iteration zunächst nur in
+ Vorerst wird nur ein Verfahren mit Benutzername und Passwort realisiert.
+ Benutzername und Passwort können in der ersten Iteration zunächst nur in
  den Globalen Einstellungen (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -9142,10 +9929,42 @@ reference "sub:Globale-Einstellungen"
 \end_inset
 
 ) für alle Datenquellen festgelegt werden.
+ In einer weiteren Iterationsstufe wird die separate Angabe dieser Daten
+ für jede Datenquelle möglich sein.
 \end_layout
 
 \begin_layout Subsubsection
 Autorisierung
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Kommentare nochmal anschauen und mit schneimi besprechen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Peter Reimann: 
+\begin_inset Quotes eld
+\end_inset
+
+was ist denn die "Operation eines Zugriffs"? Bitte beschreibt das etwas
+ genauer.
+ Vielleicht meint ihr auch einfach nur einen Zugriff?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -9183,6 +10002,17 @@ Sollen wir wenn es geht Autorisierunginformationen abrufen und die Autorisierung
 
 \begin_layout Subsection
 Auditing
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Inhaltliche Kommentare mit René besprechen und entsprechende Änderungen
+ durchführen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -9205,16 +10035,17 @@ Management API
 \end_layout
 
 \begin_layout Standard
-Die Management API der ODE Engine macht es möglich zahlreiche Informationen
+Die Management API der ODE Engine macht es möglich, zahlreiche Informationen
  abzurufen.
- So ist es beispielsweies möglich, zu überprüfen, welche Prozesse gerade
- eingesetzt werden und welche Prozessinstanzen ausgeführt werden oder beendet
- sind.
+ So ist es beispielsweise möglich, zu überprüfen, welche Prozessmodelle
+ gerade eingesetzt werden und welche Prozessinstanzen ausgeführt werden
+ oder beendet sind.
  Dies ist besonders für das Monitoring wichtig, da es hierdurch möglich
- ist spezifische Informationen zu einem bestimmten Prozess oder einer bestimmten
- Instanz abzurufen.
- Dies kann zum Beispiel das Erstellungsdatum sein, eine Liste der Events,
- die für diesen Prozess oder diese Instanz generiert wurden und vieles mehr.
+ ist, spezifische Informationen zu einem bestimmten Prozess oder einer bestimmte
+n Instanz abzurufen.
+ Dies kann zum Beispiel das Erstellungsdatum des Prozesses oder der Instanz
+ sein, eine Liste der Events, die für diesen Prozess oder diese Instanz
+ generiert wurden, und vieles mehr.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -9223,13 +10054,12 @@ Events
 
 \begin_layout Standard
 Events sind Ereignisse, die auftreten, wenn bestimmte Aktionen innerhalb
- der ODE Engine durchgeführt werden.
- Zum Beispiel das Aktivieren eines Prozesses oder das Erzeugen einer neuen
- Prozessinstanz.
+ der ODE Engine durchgeführt werden, z.B.
+ das Aktivieren eines Prozesses oder das Erzeugen einer neuen Prozessinstanz.
  Diese Events machen es möglich, zu verfolgen, was innerhalb der ODE Engine
- passiert und produzieren detailierte Informationen über die Prozessausführung.
- Sie können mit Hilfe der Management API abgefragt werden oder man nutzt
- Event Listener.
+ passiert, und produzieren detailierte Informationen über die Prozessausführung.
+ Sie können mit Hilfe der Management API oder durch die Nutzung von Event
+ Listenern abgefragt werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -9237,8 +10067,8 @@ Event Listener
 \end_layout
 
 \begin_layout Standard
-Event Listener sind bestimmte Konstrukte, die es ermöglichen bei Auftreten
- bestimmter Events eine direkte Rückmeldung zu geben oder auf verschiedene
+Event Listener sind bestimmte Konstrukte, die es ermöglichen, bei Auftreten
+ bestimmter Events eine direkte Rückmeldung zu geben, oder auf verschiedene
  Events zu reagieren und event-spezifische Aktionen durchzuführen.
 \end_layout
 
@@ -9258,8 +10088,8 @@ reference "fig:Auditing-Einstellungen"
 \end_inset
 
 ).
- Es ist möglich das Auditing zu aktivieren oder zu deaktivieren.
- Weiterhin ist möglich die Datenbank für das Speichern der Auditing Daten
+ Es ist möglich, das Auditing zu aktivieren oder zu deaktivieren.
+ Weiterhin ist es möglich, die Datenbank für das Speichern der Auditing-Daten
  festzulegen.
  Das Auditing ist standardmäßig aktiviert, kann allerdings über die Adminkonsole
  deaktiviert und auch erneut aktiviert werden.
@@ -9278,8 +10108,8 @@ Event Modell
 \end_layout
 
 \begin_layout Standard
-In diesem Unterabschnitt wird das Event Modell für das Auditing von SIMPL
- aufgeführt und erläutert.
+In diesem Abschnitt wird das Event Modell für das Auditing von SIMPL aufgeführt
+ und erläutert.
  In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -9289,12 +10119,11 @@ reference "fig:Event-Modell-des-Auditings"
 
  ist das Event Modell für die Ausführung von DM-Aktivitäten zu sehen.
  Darin enthalten sind die verschiedenen WS-BPEL Events.
- Auf diesem Modell aufbauend wird analyisert welche Events in ODE hinzugefügt
+ Auf diesem Modell aufbauend wird analyisert, welche Events in ODE hinzugefügt
  werden müssen.
 \end_layout
 
 \begin_layout Standard
-\align center
 \begin_inset Float figure
 wide false
 sideways false
@@ -9332,10 +10161,6 @@ Event-Modell für die Ausführung von DM-Aktivitäten
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Aus den Events im BPEL Event Modell der Ausführung folgt, dass zwei neue
  Event Klassen hinzugefügt werden müssen.
  Dies sind die Event Klassen Connection_Events und DM_Events.
@@ -9453,38 +10278,6 @@ In der Entwicklung von SIMPL werden die folgenden Technologien zum Einsatz
  kommen:
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-hier gehts es um die Technologien ,die direkt auf den entwicklung sich beziehen
-\end_layout
-
-\begin_layout Plain Layout
-über jeden folgender Technologien bzw.
- Werkzeuge eine kleinen Text 
-\end_layout
-
-\begin_layout Plain Layout
--was die sind 
-\end_layout
-
-\begin_layout Plain Layout
--und wichtig auch wofür sie in unsere Projekt gebraucht sind 
-\end_layout
-
-\begin_layout Plain Layout
--und warum die und nicht andere.
- Vorteil ,Nachteil.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection*
 Apache Axis2 
 \begin_inset CommandInset citation
@@ -9497,8 +10290,8 @@ key "key-5"
 \end_layout
 
 \begin_layout Standard
-Axis2 ist eine SOAP-Engine zur Konstruktion von darauf basierenden Web Services
- und Client-Anwendungen.
+Axis2 ist eine Simple Object Access Protocol (SOAP)-Engine zur Konstruktion
+ von darauf basierenden Web Services und Client-Anwendungen.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -9514,10 +10307,10 @@ key "key-6"
 
 \begin_layout Standard
 Apache ODE ist eine BPEL-Workflow-Engine.
- Es wird sowohl WS-BPEL 2.0 als auch BPEL4WS 1.1 unterstützt, und die Ausführung
- von Prozessen in SOA ist möglich.
+ Es wird sowohl WS-BPEL 2.0 als auch BPEL4WS 1.1 unterstützt, um Prozesse
+ in einer SOA auszuführen.
  Zudem ist ein Deployment von Prozessen zur Laufzeit (Hot Deployment) möglich,
- als auch die Analyse und Validierung von Prozessen.
+ sowie die Analyse und Validierung von Prozessen.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -9532,8 +10325,8 @@ key "key-7"
 \end_layout
 
 \begin_layout Standard
-Apache Tomcat ist ein Web Container für Web Services, der aber auch einen
- kompletten Web Server beinhaltet.
+Apache Tomcat ist ein Web Container, der aber auch einen kompletten Web
+ Server beinhaltet.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -9604,7 +10397,7 @@ key "key-11"
 \end_layout
 
 \begin_layout Standard
-Die IBM-DB2 ist ein Hybriddatenserver mit dem sowohl die Verwaltung von
+Die IBM-DB2 ist ein Hybriddatenserver, mit dem sowohl die Verwaltung von
  XML-Daten als auch von relationalen Daten möglich ist.
 \end_layout
 
@@ -9620,7 +10413,7 @@ key "key-12"
 \end_layout
 
 \begin_layout Standard
-Java ist eine objektorientierte Programmiersprache der Firma Sun Microsystems,
+Java ist eine objektorientierte Programmiersprache von Sun Microsystems,
  mit der sich plattformunabhängige Programme entwickeln lassen.
 \end_layout
 
@@ -9661,14 +10454,20 @@ Web Services
 \end_layout
 
 \begin_layout Standard
-Web Services sind abgeschlossene Software-Einheiten, die sich selbst beschreiben
+Web Services sind eigenständige Software-Einheiten, die sich selbst beschreiben
  und die ihre Dienste über ein Netzwerk, wie beispielsweise das Internet,
  bereitstellen.
  Damit werden verteilte Anwendungen möglich, die flexibel auf sich ändernde
  Anforderungen angepasst werden können.
- Die Schnittstellen von Web Services werden mit WSDL beschrieben und können
- damit unabhängig von Betriebssystem, Plattform und Programmiersprache verwendet
- werden.
+ Die Schnittstellen von Web Services werden mit WSDL (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-21"
+
+\end_inset
+
+) beschrieben und können damit unabhängig von Betriebssystem, Plattform
+ und Programmiersprache verwendet werden.
 \end_layout
 
 \begin_layout Subsection
@@ -9708,7 +10507,7 @@ key "key-15"
 \begin_layout Standard
 Maven ist ein Projekt-Management-Tool zur standardisierten Erstellung und
  Verwaltung von Java-Programmen.
- Mit Maven ist es möglich viele Schritte, die die Entwickler normalerweise
+ Mit Maven ist es möglich, viele Schritte, die die Entwickler normalerweise
  von Hand erledigen müssen, zu automatisieren.
 \end_layout
 
@@ -9724,7 +10523,8 @@ key "key-16"
 \end_layout
 
 \begin_layout Standard
-Eclipse ist eine IDE für Java und auch andere Programmiersprachen.
+Eclipse ist eine Integrated Development Environment (IDE) für Java und auch
+ andere Programmiersprachen.
  Für SIMPL wird Eclipse in der Version 3.5 (Galileo) verwendet.
 \end_layout
 
@@ -9790,26 +10590,9 @@ key "key-20"
 \begin_layout Standard
 Subversion ist eine Software zur Versionskontrolle und eine Weiterentwicklung
  von CVS.
- Es wird genutzt um mehreren Nutzern den gleichzeitigen Zugriff und ein
- gleichzeitiges Bearbeiten von verschiedenen Dateien und Dokumenten zu ermöglich
-en.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Entwicklungsplattform, Entwicklungsmethode, Programmiersprache sowie andere
- Notationen, Techniken und Methoden, um das System und andere auszuliefernde
- Produkte zu spezifizieren, entwerfen, konstruieren, testen, integrieren,
- dokumentieren, modifizieren oder pflegen; technische Standards, Richtlinien,
- Zertifizierungskriterien
-\end_layout
-
-\end_inset
-
-
+ Es wird genutzt, um mehreren Nutzern den gleichzeitigen Zugriff auf und
+ ein gleichzeitiges Bearbeiten von verschiedenen Dateien und Dokumenten
+ zu ermöglichen.
 \end_layout
 
 \begin_layout Standard
@@ -9870,16 +10653,6 @@ key "key-3"
  in Web Service and Workflow-based Applications.
  In: Proceedings of the 13th IEEE Enterprise Distributed Object Conference
  (EDOC 2009)
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In Kapitel 1.3 darauf referenzieren
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -9889,8 +10662,12 @@ key "key-4"
 
 \end_inset
 
- Web Services Business Process Execution Language Version 2.0, http://docs.oasis-o
-pen.org/wsbpel/2.0/wsbpel-v2.0.pdf, 15.10.2009
+ Jordan, D.; Evdemon, J.: Web Services Business Process Execution Language
+ Version 2.0, OASIS Standard.
+ Organization for the Advancement of Structured Information Standards (OASIS),
+ 11.April 2007.
+ http://docs.oasis-open.org/ wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf, zuletzt zugegriffen
+ am 04.11.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9900,7 +10677,7 @@ key "key-5"
 
 \end_inset
 
- Axis2, http://ws.apache.org/axis2/, 17.10.2009
+ Axis2, http://ws.apache.org/axis2/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9910,7 +10687,7 @@ key "key-6"
 
 \end_inset
 
- Apache ODE, http://ode.apache.org/, 17.10.2009
+ Apache ODE, http://ode.apache.org/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9920,7 +10697,7 @@ key "key-7"
 
 \end_inset
 
- Apache Tomcat, http://tomcat.apache.org/, 17.10.2009
+ Apache Tomcat, http://tomcat.apache.org/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9930,7 +10707,8 @@ key "key-8"
 
 \end_inset
 
- Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, 17.10.2009
+ Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, zuletzt zugegriff
+en am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9940,7 +10718,8 @@ key "key-9"
 
 \end_inset
 
- Apache Tuscany SDO, http://tuscany.apache.org/sdo-overview.html, 17.10.2009
+ Apache Tuscany SDO, http://tuscany.apache.org/sdo-overview.html, zuletzt zugegriff
+en am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9950,7 +10729,8 @@ key "key-10"
 
 \end_inset
 
- Eclipse BPEL Designer, http://www.eclipse.org/bpel/, 17.10.2009
+ Eclipse BPEL Designer, http://www.eclipse.org/bpel/, zuletzt zugegriffen
+ am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9960,7 +10740,7 @@ key "key-11"
 
 \end_inset
 
- IBM-DB2, http://www.ibm.com/db2/, 17.10.2009
+ IBM-DB2, http://www.ibm.com/db2/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9970,7 +10750,7 @@ key "key-12"
 
 \end_inset
 
- Java 6, http://java.sun.com/, 17.10.2009
+ Java 6, http://java.sun.com/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9980,7 +10760,7 @@ key "key-13"
 
 \end_inset
 
- JAX-WS, https://jax-ws.dev.java.net/, 17.10.2009
+ JAX-WS, https://jax-ws.dev.java.net/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -9990,7 +10770,7 @@ key "key-14"
 
 \end_inset
 
- TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, 17.10.2009
+ TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -10000,7 +10780,7 @@ key "key-15"
 
 \end_inset
 
- Apache Maven, http://maven.apache.org/, 18.10.2009
+ Apache Maven, http://maven.apache.org/, zuletzt zugegriffen am 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -10010,7 +10790,7 @@ key "key-16"
 
 \end_inset
 
- Eclipse, http://www.eclipse.org/, 18.10.2009
+ Eclipse, http://www.eclipse.org/, zuletzt zugegriffen am 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -10020,7 +10800,7 @@ key "key-17"
 
 \end_inset
 
- Hudson, https://hudson.dev.java.net/, 18.10.2009
+ Hudson, https://hudson.dev.java.net/, zuletzt zugegriffen am 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -10030,7 +10810,7 @@ key "key-18"
 
 \end_inset
 
- LyX, http://www.lyx.org/, 18.10.2009
+ LyX, http://www.lyx.org/, zuletzt zugegriffen am 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -10040,7 +10820,8 @@ key "key-19"
 
 \end_inset
 
- PDF-XChange Viewer, http://pdf-xchange-viewer.softonic.de/, 18.10.2009
+ PDF-XChange Viewer, http://pdf-xchange-viewer.softonic.de/, zuletzt zugegriffen
+ am 18.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -10050,7 +10831,17 @@ key "key-20"
 
 \end_inset
 
- Subversion, http://subversion.tigris.org/, 18.10.2009
+ Subversion, http://subversion.tigris.org/, zuletzt zugegriffen am 18.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-21"
+
+\end_inset
+
+WSDL, http://www.w3.org/standards/techs/wsdl, zuletzt zugegriffen am 04.11.2009
 \end_layout
 
 \begin_layout Standard
@@ -10065,6 +10856,7 @@ key "key-20"
 status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 addcontentsline{toc}{section}{Abkürzungsverzeichnis}
@@ -10143,7 +10935,7 @@ DAS
 \begin_inset Text
 
 \begin_layout Plain Layout
-Data Access Service(s)
+Data Access Service
 \end_layout
 
 \end_inset
@@ -10283,7 +11075,7 @@ RDB
 \begin_inset Text
 
 \begin_layout Plain Layout
-Relational Data Base
+Relational Database
 \end_layout
 
 \end_inset
@@ -10323,7 +11115,7 @@ SDO
 \begin_inset Text
 
 \begin_layout Plain Layout
-Service Data Object(s)
+Service Data Object
 \end_layout
 
 \end_inset
