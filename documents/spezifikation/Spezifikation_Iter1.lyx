@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -6983,6 +6983,8 @@ In diesem Abschnitt werden alle Datenmanagement-Patterns, die zur Realisierung
 \end_layout
 
 \begin_layout Subsubsection*
+
+\size larger
 Relationale Datenbanken
 \end_layout
 
@@ -7084,6 +7086,8 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 \end_layout
 
 \begin_layout Subsubsection*
+
+\size larger
 XML-Datenbanken
 \end_layout
 
@@ -7187,6 +7191,8 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 \end_layout
 
 \begin_layout Subsubsection*
+
+\size larger
 Dateisysteme
 \end_layout
 
@@ -7287,6 +7293,8 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 \end_layout
 
 \begin_layout Subsubsection*
+
+\size larger
 Sensornetze
 \end_layout
 
@@ -8587,11 +8595,11 @@ Dateisysteme
 
 \begin_deeper
 \begin_layout Itemize
-MKDIR FOLDER
+MKDIR folder
 \end_layout
 
 \begin_layout Itemize
-MKFILE FILE
+MKFILE file
 \end_layout
 
 \end_deeper
@@ -8713,6 +8721,162 @@ name "lst:Create Aktivität"
 \end_inset
 
 Schema einer Create Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+
+\series bold
+Drop Aktivität
+\end_layout
+
+\begin_layout Standard
+Diese Aktivität ermöglicht es, Zuordnungseinheiten auf beliebigen Datenquellen
+ zu verwerfen.
+ Dazu werden die folgenden Befehle unterstützt:
+\end_layout
+
+\begin_layout Itemize
+Dateisysteme
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RMDIR folder
+\end_layout
+
+\begin_layout Itemize
+RM file
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Datenbanken:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DROP TABLE
+\end_layout
+
+\begin_layout Itemize
+DROP SCHEMA
+\end_layout
+
+\begin_layout Itemize
+DROP VIEW
+\end_layout
+
+\begin_layout Itemize
+optional:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DROP DOMAIN
+\end_layout
+
+\begin_layout Itemize
+DROP INDEX 
+\end_layout
+
+\begin_layout Itemize
+DROP TRIGGER
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Sensornetze:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DROP ALL
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Drop Aktivität"
+
+\end_inset
+
+ zeigt das BPEL-Schema einer Drop Aktivität mit der in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+
+\end_inset
+
+ definierten Notation.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<dropActivity standard-attributes>
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+		standard-elements
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	</dropActivity> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Drop Aktivität"
+
+\end_inset
+
+Schema einer Drop Aktivität
 \end_layout
 
 \end_inset
@@ -8894,162 +9058,6 @@ name "lst:RetrieveData Aktivität"
 \end_inset
 
 Schema einer RetrieveData Aktivität
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-
-\series bold
-Drop Aktivität
-\end_layout
-
-\begin_layout Standard
-Diese Aktivität ermöglicht es Zuordnungseinheiten auf beliebigen Datenquellen
- zu löschen.
- Dazu werden die folgenden Befehle unterstützt:
-\end_layout
-
-\begin_layout Itemize
-Dateisysteme
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-RMDIR FOLDER
-\end_layout
-
-\begin_layout Itemize
-RM FILE
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Datenbanken
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-DROP TABLE
-\end_layout
-
-\begin_layout Itemize
-DROP SCHEMA
-\end_layout
-
-\begin_layout Itemize
-DROP VIEW
-\end_layout
-
-\begin_layout Itemize
-optional:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-DROP DOMAIN
-\end_layout
-
-\begin_layout Itemize
-DROP INDEX 
-\end_layout
-
-\begin_layout Itemize
-DROP TRIGGER
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Itemize
-Sensornetze
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-DROP ALL
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Listing 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lst:Drop Aktivität"
-
-\end_inset
-
- zeigt das BPEL-Schema einer Drop Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
- 
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset listings
-lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-<extensionActivity>
-\end_layout
-
-\begin_layout Plain Layout
-
-	<dropActivity standard-attributes>
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\end_layout
-
-\begin_layout Plain Layout
-
-		standard-elements
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-	</dropActivity> 
-\end_layout
-
-\begin_layout Plain Layout
-
-</extensionActivity>
-\end_layout
-
-\begin_layout Plain Layout
-
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "lst:Drop Aktivität"
-
-\end_inset
-
-Schema einer Drop Aktivität
 \end_layout
 
 \end_inset
