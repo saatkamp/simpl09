@@ -895,7 +895,7 @@ Auditing von Prozessen
 \begin_layout Standard
 Bei dem Auditing von Prozessen handelt es sich um das Protokollieren von
  Daten, die in Prozessen anfallen und ein Monitoring der Prozesse ermöglichen.
- Die Erfassung der Daten muss auf die zusätzlichen Aktivitäten angepasst
+ Die Erfassung der Daten muss auf die zusätzlichen DM-Aktivitäten angepasst
  werden und dem Benutzer die Möglichkeit gegeben werden, die Granularität
  der Daten zu bestimmen.
  Zusätzlich soll das interne Auditing von Apache ODE, auf eine frei wählbare
@@ -952,8 +952,8 @@ Registry
 
 \begin_layout Standard
 Für die Verwaltung der für den Prozess-Modellierer zur Verfügung stehenden
- Datenquellen, soll eine UDDI-Registry bereitgestellt werden, in der die
- Datenquellen vom Workflow-Administrator zentral definiert werden können.
+ Datenquellen, soll eine Registry bereitgestellt werden, in der die Datenquellen
+ vom Workflow-Administrator zentral definiert werden können.
  Dort werden auch die entsprechenden Eigenschaften der Datenquellen hinterlegt,
  die für das Late Binding benötigt werden.
 \end_layout
@@ -1009,11 +1009,31 @@ Unterstützung weiterer Anfragesprachen
 \end_layout
 
 \begin_layout Itemize
-Einbindung weiterer Aktivitäten für den Zugriff auf Datenquellen
+Erweiterung um neue DM-Aktivitäten
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Muss in Eclipse Kapitel vorkommen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 Erweiterung um neue Events für das Auditing
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Muss in ODE Kapitel vorkommen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1168,7 +1188,7 @@ ang benötigt wird.
  verschiedene, von den Datenquellen geforderten, Authentifzierungsverfahren
  unterstützt werden sollen.
  Bei der Modellierung soll der Prozess-Modellierer zudem dahingehend unterstützt
- werden, dass er Authentifizierungsinformationen nicht zu jeder Aktivität,
+ werden, dass er Authentifizierungsinformationen nicht zu jeder DM-Aktivität,
  einer bestimmten Datenquelle, wiederholt angeben muss.
  Mit diesem Konzept soll die Anforderung an die Authentifizierung in Abschnitt
  
@@ -1275,7 +1295,7 @@ Architektur
 Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Übersicht-über-das"
+reference "fig:Architektur-des-SIMPL"
 
 \end_inset
 
@@ -1344,7 +1364,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename SIMPL_Rahmenwerk.jpg
+	filename SIMPL_Architektur.jpg
 	width 80text%
 
 \end_inset
@@ -1358,11 +1378,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Übersicht-über-das"
+name "fig:Architektur-des-SIMPL"
 
 \end_inset
 
-Übersicht über das SIMPL Rahmenwerk
+Architektur des SIMPL Rahmenwerks
 \end_layout
 
 \end_inset
@@ -1410,7 +1430,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename SIMPL_Component_Diagram.jpg
+	filename SIMPL_Komponenten.jpg
 
 \end_inset
 
@@ -1450,13 +1470,28 @@ Eclipse IDE
 status open
 
 \begin_layout Plain Layout
-Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei Schnittst
-ellen nur die Pfeile raus!)
+- Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
+ Schnittstellen nur die Pfeile raus!)
 \end_layout
 
 \begin_layout Plain Layout
-Eclipse greift zur Modellierung auf den Registry Service zu (Auflisten der
- Datenquellen zB)
+- Eclipse greift zur Modellierung auf den SIMPL Registry Service zu (z.B.
+ Auflisten der Datenquellen)
+\end_layout
+
+\begin_layout Plain Layout
+- Erweiterung der Anfragesprachen (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterbarkeit"
+
+\end_inset
+
+) wird durch entsprechende GUI-Schnittstellen ermöglicht
+\end_layout
+
+\begin_layout Plain Layout
+- SIMPL Transformation Service wird in Eclipse vor dem Deployment verwendet.
 \end_layout
 
 \end_inset
@@ -1470,8 +1505,12 @@ Apache ODE
 status open
 
 \begin_layout Plain Layout
-Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei Schnittst
-ellen nur die Pfeile raus!)
+- Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
+ Schnittstellen nur die Pfeile raus!)
+\end_layout
+
+\begin_layout Plain Layout
+- 
 \end_layout
 
 \end_inset
@@ -1484,14 +1523,25 @@ SIMPL Core
 \end_layout
 
 \begin_layout Standard
-Der SIMPL Core besteht aus verschiedenen Web Services, die jeweils fest
- definierte Aufgaben innerhalb des SIMPL Rahmenwerks haben.
+Der SIMPL Core, dargestellt in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core"
+
+\end_inset
+
+, besteht aus mehreren Web Services, die jeweils fest definierte Aufgaben
+ innerhalb des SIMPL Rahmenwerks haben.
  Die Web Services werden dabei innerhalb einer Apache Axis2 Installation
  bereitgestellt und mit der Java API JAX-WS erstellt, damit ein Einsatz
  auch mit anderen Web Containern, als Apache Tomcat, gewährleistet ist.
- Jeder Web Service bietet nach Außen eine WSDL-Schnittstelle, die gemeinsam
- das SIMPL API bilden, mit dem über das Übertragungsprotokoll SOAP kommuniziert
- werden kann.
+ 
+\end_layout
+
+\begin_layout Standard
+Jeder Web Service bietet nach Außen eine WSDL-Schnittstelle, die gemeinsam
+ das SIMPL API bilden.
+ Als Übertragungsprotokoll zur Kommunikation wird SOAP verwendet.
  Wie diese Kommunikation im Detail aussieht ist dann Thema von Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1500,6 +1550,49 @@ reference "sec:Schnittstellen"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SIMPL_Core.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Core"
+
+\end_inset
+
+SIMPL Core
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1581,17 +1674,6 @@ Kapitel 4: WS-Policy für Anforderungen nennen! (als Objekt)
 
 \begin_layout Subsubsection
 SIMPL Transformation Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In Eclipse Kapitel muss stehen wann dieser Service benutzt wird.
- (vor Deployment)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1675,7 +1757,7 @@ Der SIMPL Datasource Service ist für alle Aufgaben, die den Zugriff auf
  Dort werden auch entsprechende Adapter implementiert, die den Zugriff auf
  verschiedene Datenquellen ermöglichen und die Erweiterbarkeit, in Hinsicht
  Typen von Datenquellen und Anfragesprachen, garantieren.
- (siehe Anforderung 
+ (siehe Anforderungen 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Erweiterbarkeit"
@@ -1705,22 +1787,36 @@ reference "sub:Registry"
 )
 \end_layout
 
+\begin_layout Subsubsection
+SIMPL Storage Service
+\end_layout
+
+\begin_layout Standard
+Der SIMPL Storage Service bildet den zentralen Speicherort von Daten des
+ SIMPL Rahmenwerks, dort laufen alle Einstellungen, Daten und Informationen
+ zusammen und werden persistent über den SIMPL Datasource Service in einer
+ Datenquelle gespeichert.
+ Beispielsweise werden dort die Referenzen abgelegt, die über den SIMPL
+ Registry Service hinzugefügt werden.
+\end_layout
+
 \begin_layout Subsection
 Registry
 \end_layout
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk stellt mit Apache jUDDI bereits eine UDDI-Registry
- zur Verfügung.
- Da als Erweiterung unterschiedliche Registries geplant sind (siehe 
+ zur Verfügung, die von dem SIMPL Registry Service genutzt wird.
+ Über die WSDL Schnittstelle des SIMPL Registry Service kann aber auch jede
+ andere Implementierung einer Registry realisiert werden (siehe Anforderungen
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Erweiterbarkeit"
 
 \end_inset
 
-), sollen Zugriffe nicht direkt, sondern nur über den SIMPL Registry Service
- erfolgen.
+).
 \end_layout
 
 \begin_layout Section
