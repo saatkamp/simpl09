@@ -42,7 +42,7 @@ public interface ModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://localhost/";
+	String eNS_URI = "http://www.example.org/DMextension";
 
 	/**
 	 * The package namespace name.

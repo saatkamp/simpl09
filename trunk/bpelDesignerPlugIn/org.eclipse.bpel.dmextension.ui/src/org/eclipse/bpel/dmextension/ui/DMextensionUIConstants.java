@@ -27,4 +27,46 @@ public class DMextensionUIConstants {
 	public static final String ICON_WRITEBACK_16 = "obj16/writebackactivity.gif"; 
 	public static final String ICON_WRITEBACK_32 = "obj20/writebackactivity.png";
 	
+	// Property-View constants for the building of statements
+	private static final String[] dataSourceTypes = new String[]{"file system", "database", "sensor net"};
+	
+	private static final String[] fileSystemStatements = new String[]{"GET", "PUT", "RM", "MKDIR", "MKFILE"}; 
+	private static final String[] dataSourceStatements = new String[]{"SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "CALL"};
+	private static final String[] sensorNetStatements = new String[]{"SELECT", "CREATE BUFFER", "DROP ALL"};
+	
+	public static String[] getStatements(String dataSourceType){
+		String[] statements = new String[]{""};
+		if (dataSourceType.contentEquals("file system")) {
+			statements = fileSystemStatements;
+		}else {
+			if (dataSourceType.contentEquals("data source")) {
+				statements = dataSourceStatements;
+			}else {
+				if (dataSourceType.contentEquals("sensor net")) {
+					statements = sensorNetStatements;
+				}
+			}
+		}
+		return statements;
+	}
+	
+	public static String[] getStatements(int index){
+		String[] statements = new String[]{""};
+		if (index==0) {
+			statements = fileSystemStatements;
+		}else {
+			if (index==1) {
+				statements = dataSourceStatements;
+			}else {
+				if (index==2) {
+					statements = sensorNetStatements;
+				}
+			}
+		}
+		return statements;
+	}
+	
+	public static String[] getDataSourceTypes(){
+		return dataSourceTypes;
+	}
 }
