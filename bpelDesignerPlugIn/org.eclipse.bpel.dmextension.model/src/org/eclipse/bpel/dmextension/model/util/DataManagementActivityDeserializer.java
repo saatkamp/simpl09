@@ -11,6 +11,7 @@ import org.eclipse.bpel.dmextension.model.DataManagementActivity;
 import org.eclipse.bpel.dmextension.model.DeleteActivity;
 import org.eclipse.bpel.dmextension.model.InsertActivity;
 import org.eclipse.bpel.dmextension.model.ModelFactory;
+import org.eclipse.bpel.dmextension.model.ModelPackage;
 import org.eclipse.bpel.dmextension.model.RetrieveSetActivity;
 import org.eclipse.bpel.dmextension.model.SelectActivity;
 import org.eclipse.bpel.dmextension.model.UpdateActivity;
@@ -41,6 +42,17 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 					.createDataManagementActivity();
 			// attach the DOM node to our new activity
 			activity.setElement(dataManagementActivityElement);
+			
+			// handle the DataManagement attributes
+			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_Kind().getName();
+			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_Statement().getName();
+			if (((Element) node).getAttribute(attKind) != null) {
+				activity.setKind(((Element) node).getAttribute(attKind));
+			}
+			if (((Element) node).getAttribute(attStatement) != null) {
+				activity.setStatement(((Element) node).getAttribute(attStatement));
+			}
+			
 			return activity;
 		}
 

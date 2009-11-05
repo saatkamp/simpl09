@@ -13,6 +13,10 @@ import org.eclipse.bpel.model.ExtensionActivity;
  * A representation of the model object '<em><b>Data Management Activity</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Allows to interact with datasources directly out of the process.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
