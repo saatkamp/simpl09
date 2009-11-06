@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -6984,8 +6984,12 @@ In diesem Abschnitt werden alle Datenmanagement-Patterns, die zur Realisierung
 
 \begin_layout Subsubsection*
 
+\size large
+Relationale
 \size larger
-Relationale Datenbanken
+ 
+\size large
+Datenbanken
 \end_layout
 
 \begin_layout Standard
@@ -7087,7 +7091,7 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 
 \begin_layout Subsubsection*
 
-\size larger
+\size large
 XML-Datenbanken
 \end_layout
 
@@ -7114,17 +7118,18 @@ Tree IUD Pattern
 \begin_layout Standard
 Das Tree IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
 -Operationen auf Knoten von baumartigen externen Daten ausführen zu können.
- Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Knoten.
+ Zu diesen Operationen zählen das Einfügen, Ersetzen, Umbenennen und Löschen
+ von Knoten.
 \end_layout
 
 \begin_layout Paragraph*
-Node IUD Pattern
+Node Value IUD Pattern
 \end_layout
 
 \begin_layout Standard
 Das Node IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
 -Operationen in Knoten von baumartigen externen Daten ausführen zu können.
- Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Werten
+ Zu diesen Operationen zählen das Einfügen, Ersetzen und Löschen von Werten
  innerhalb von Knoten.
 \end_layout
 
@@ -7133,10 +7138,10 @@ Data Setup Pattern
 \end_layout
 
 \begin_layout Standard
-Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
- Language (DDL) Befehle auf einem XML-Datenbanksystem auszuführen, um so
- während der Prozessausführung die Datenquelle zu konfigurieren oder neue
- Container (Tabellen, Schema, usw.) zu erstellen.
+Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
+ (DDL) Befehle auf einem XML-Datenbanksystem auszuführen, um so während
+ der Prozessausführung die Datenquelle zu konfigurieren oder neue Container
+ (XML-Dokumente, usw.) zu erstellen, zu ändern oder zu verwerfen.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7167,8 +7172,16 @@ Tree Access Pattern
 \end_layout
 
 \begin_layout Standard
-Das Tree Access Pattern beschreibt die Notwendigkeit, auf den erzeugten
- Datencache sequentiell und direkt (random) zugreifen zu können.
+Das Tree Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
+ erzeugten Datencache sequentiell und direkt (wahlfrei) zugreifen zu können.
+ Der sequentielle Zugriff wird dabei durch entsprechende Funktionen realisiert,
+ die die Kindknoten oder den Vaterknoten des ausgewählten Knoten liefern.
+ Über den Wurzelknoten als Startpunkt kann so der ganze Baum sequentiell
+ in beiden Richtungen (Wurzel -> Blatt vs.
+ Blatt ->Wurzel) durchlaufen werden.
+ Der direkte Zugriff wird realisiert, in dem beispielsweise der Name des
+ Knoten angegeben wird, dieser im Baum gesucht und zurückgegeben wird, falls
+ ein entsprechender Knoten existiert.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7192,7 +7205,7 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 
 \begin_layout Subsubsection*
 
-\size larger
+\size large
 Dateisysteme
 \end_layout
 
@@ -7206,10 +7219,10 @@ Query Pattern
 \end_layout
 
 \begin_layout Standard
-Das Query Pattern beschreibt die Notwendigkeit externe Daten anfordern zu
- können.
+Das Query Pattern beschreibt die Notwendigkeit, externe Daten aus Dateien
+ anfordern zu können.
  Die aus den Abfragen resultierenden Daten können dabei auf der Datenquelle
- zwischengespeichert oder direkt im BPEL-Prozess gehalten werden.
+ gespeichert oder direkt im BPEL-Prozess gehalten werden.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7217,8 +7230,8 @@ File IUD Pattern
 \end_layout
 
 \begin_layout Standard
-Das File IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
-Operationen auf Dateien eines Dateisystems ausführen zu können.
+Das File IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
+-Operationen auf Dateien eines Dateisystems ausführen zu können.
  Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Dateien.
 \end_layout
 
@@ -7227,8 +7240,8 @@ Data IUD Pattern
 \end_layout
 
 \begin_layout Standard
-Das Data IUD Pattern beschreibt die Möglichkeit verschiedene Datenmanipulations-
-Operationen innerhalb von Dateien eines Dateisystems ausführen zu können.
+Das Data IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
+-Operationen innerhalb von Dateien eines Dateisystems ausführen zu können.
  Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Dateiinhal
 ten.
 \end_layout
@@ -7238,10 +7251,10 @@ Data Setup Pattern
 \end_layout
 
 \begin_layout Standard
-Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
- Language (DDL) Befehle auf einem Dateisystem auszuführen, um so während
- der Prozessausführung die Datenquelle zu konfigurieren oder neue Container
- (Ordner, Dateien, usw.) zu erstellen.
+Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
+ (DDL) Befehle auf einem Dateisystem auszuführen, um so während der Prozessausfü
+hrung die Datenquelle zu konfigurieren oder neue Container (Ordner, Dateien,
+ usw.) zu erstellen, zu ändern oder zu verwerfen.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7260,7 +7273,7 @@ File Retrieval Pattern
 
 \begin_layout Standard
 Das File Retrieval Pattern liefert eine Datenstruktur, in die man, aus einem
- Dateisystem, abgefragte Dateien innerhalb des BPEL-Prozesses ablegen kann.
+ Dateisystem, abgefragte Daten innerhalb des BPEL-Prozesses ablegen kann.
  Diese Datenstruktur verhält sich dabei wie ein Cache im BPEL-Prozess, der
  keine Verbindung zur originalen Datenquelle besitzt.
 \end_layout
@@ -7271,7 +7284,8 @@ File Access Pattern
 
 \begin_layout Standard
 Das File Access Pattern beschreibt die Notwendigkeit, auf den erzeugten
- Datencache sequentiell zugreifen zu können.
+ Datencache in geeigneter Weise (z.B.
+ sequentiell oder wahlfrei) zugreifen zu können.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7294,13 +7308,22 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 
 \begin_layout Subsubsection*
 
-\size larger
+\size large
 Sensornetze
 \end_layout
 
 \begin_layout Standard
 Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die für die Unterstüt
 zung von Sensornetzen in BPEL benötigt werden.
+ Die nachfolgenden Beschreibungen stützen sich dabei auf die TinyDB 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-14"
+
+\end_inset
+
+, die eine Schnittstelle für das Abfragen von Sensordaten mit einer SQL-ähnliche
+n Sprache bereitstellt.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7311,8 +7334,7 @@ Query Pattern
 Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
  externe Daten anfordern zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
- in Buffer-Tabellen zwischengespeichert oder direkt im BPEL-Prozess gehalten
- werden.
+ in Buffer-Tabellen gespeichert oder direkt im BPEL-Prozess gehalten werden.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7320,10 +7342,10 @@ Data Setup Pattern
 \end_layout
 
 \begin_layout Standard
-Das Data Setup Pattern liefert die Möglichkeit, benötigte Data Definition
- Language (DDL) Befehle auf dem Sensornetz-Datenbanksystem auszuführen,
- um so während der Prozessausführung die Datenquelle zu konfigurieren oder
- neue Container (Buffer-Tabellen) zu erstellen.
+Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
+ (DDL) Befehle auf dem Sensornetz-Datenbanksystem auszuführen, um so während
+ der Prozessausführung die Datenquelle zu konfigurieren oder neue Container
+ (Buffer-Tabellen) zu erstellen, zu ändern oder zu verwerfen.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7354,8 +7376,8 @@ Set Access Pattern
 \end_layout
 
 \begin_layout Standard
-Das Set Access Pattern beschreibt die Notwendigkeit, auf den erzeugten Datencach
-e sequentiell und direkt (random) zugreifen zu können.
+Das Set Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
+ erzeugten Datencache sequentiell und direkt (wahlfrei) zugreifen zu können.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7364,7 +7386,25 @@ Tuple IUD Pattern
 
 \begin_layout Standard
 Das Tuple IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencach
-e Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden können.
+e mengenorientierte Daten eingefügt, aktualisiert und wieder aus diesem
+ gelöscht werden können.
+\end_layout
+
+\begin_layout Paragraph*
+Set IUD & Synchronization Pattern
+\end_layout
+
+\begin_layout Standard
+Im Gegensatz zu anderen SQL-Datenbanken gibt es für die TinyDB diese beiden
+ Patterns nicht.
+ Das liegt daran, dass in die TinyDB nur interne Daten, die aus dem Sensornetz
+ selbst kommen, eingefügt werden können.
+ Dadurch können externe Daten weder eingefügt, aktualisiert oder gelöscht
+ werden.
+ Da das Synchronization Pattern auch Daten in die Datenbank einfügt bzw.
+ Daten dort aktualisiert, gibt es dieses Pattern ebenfalls nicht für die
+ TinyDB.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -7455,6 +7495,8 @@ Data Setup Pattern: Realisierung durch SQL-CREATE SCHEMA, SQL-CREATE TABLE,
  SQL-CREATE VIEW und weitere SQL-CREATE Befehle.
  Weiterhin sollte auch das Löschen dieser Objekte möglich sein, dies wird
  durch SQL-DROP realisiert.
+ Momentan noch optional ist die Bearbeitung entsprechender Objekte über
+ SQL-ALTER Befehle.
 \end_layout
 
 \begin_deeper
@@ -7468,9 +7510,15 @@ CREATE SCHEMA internal AUTHORIZATION admin
 \end_layout
 
 \begin_layout Itemize
-CREATE TABLE tdept (deptno CHAR(3) NOT NULL, deptname VARCHAR(36) NOT NULL,
- mgrno CHAR(6), admrdept CHAR(3) NOT NULL, PRIMARY KEY(deptno)) IN internal
- 
+CREATE TABLE tdept (deptno CHAR(3) NOT NULL, deptname VARCHAR(36) 
+\begin_inset Newline newline
+\end_inset
+
+NOT NULL, mgrno CHAR(6), admrdept CHAR(3) NOT NULL, 
+\begin_inset Newline newline
+\end_inset
+
+PRIMARY KEY(deptno)) IN internal 
 \end_layout
 
 \begin_layout Itemize
@@ -7516,11 +7564,12 @@ CALL parts_on_hand (?,?,?)
 \begin_layout Itemize
 Set Retrieval Pattern: Realisierung durch die Definition und Bereitstellung
  einer entsprechenden BPEL-Aktivität.
- Diese Aktivität liefert dann die Möglichkeit, dass durch einen SQL-SELECT
- Befehl abgefragte Daten (siehe Query Pattern) in den BPEL-Prozess geladen
- und in einer entsprechenden BPEL-Variable ablegt werden können.
+ Diese Aktivität liefert die Möglichkeit, dass durch einen SQL-SELECT Befehl
+ abgefragte Daten (siehe Query Pattern) in den BPEL-Prozess geladen und
+ in einer entsprechenden BPEL-Variable ablegt werden können.
  Dazu müssen neue Variablentypen bereitgestellt werden, die den Strukturen
- der zu haltenden Daten entsprechen, also mengenartige Daten halten können.
+ der zu haltenden Daten entsprechen, also mengenorientierte Daten halten
+ können.
  Die Daten werden dazu über das 
 \emph on
 Service Data Objects Application Programming Interface
@@ -7555,8 +7604,8 @@ Retrieve Set Activity
 \emph default
  realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
- innerhalb des BPEL-Prozesses geladen, eine etwas ausführlichere Beschreibung
- liefert 
+ innerhalb des BPEL-Prozesses geladen.
+ Eine etwas ausführlichere Beschreibung diese Ansatzes liefert 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2"
@@ -7568,17 +7617,13 @@ key "key-2"
 
 \begin_layout Itemize
 Set Access Pattern: Um das Set Access Pattern zu realisieren, müssen im
- Projektverlauf Methoden, die eine sequentielle und direkte Bearbeitung
- des durch eine RetrieveData Aktivität erzeugten Datencaches, bereitgestellt
- werden.
- D.h.
- konkret, dass es möglich sein muss, mit den definierten Variablen und deren
- Typen innerhalb von BPEL zu arbeiten.
+ Projektverlauf Methoden in BPEL bereitgestellt werden, die einen sequentiellen
+ und direkten Zugriff auf den durch eine RetrieveData Aktivität erzeugten
+ Datencache ermöglichen.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
- Es muss weiterhin möglich sein, dass entsprechende Variablen auch in BPEL-Aktiv
-itäten, wie z.B.
- einer ForEach Activity, verwendet werden können.
+ Weiterhin soll bei einem sequentiellen Zugriff auch mit einer ForEach-Aktivität
+ über die mengenorientierten Daten iteriert werden können.
 \end_layout
 
 \begin_layout Itemize
@@ -7596,7 +7641,7 @@ Synchronization Pattern: Um die Daten aus dem Prozesscache zurück auf die
  erstellt werden, durch die der Benutzer angibt, dass die Daten zurückgeschriebe
 n werden sollen.
  Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
- Pattern beschriebenen Methoden und ebenso SQL-Befehle um die Daten aus
+ Pattern beschriebenen Methoden und ebenso SQL-Befehle, um die Daten aus
  dem Prozesscache auf die Datenbank zu übertragen.
  Die SDO API und die 
 \emph on
@@ -7634,7 +7679,7 @@ reference "sub:Datenmanagement-Patterns"
 \end_layout
 
 \begin_layout Itemize
-Query Pattern: Realisierung durch entsprechende FLWOR-XQuery-Befehle.
+Query Pattern: Realisierung durch entsprechende FLWOR-Befehle.
 \end_layout
 
 \begin_layout Itemize
@@ -7643,12 +7688,28 @@ Beispiel:
 
 \begin_deeper
 \begin_layout Itemize
-FOR $d IN $doc/books/book RETURN {$d/title/text}
+FOR $d IN fn:doc(
+\begin_inset Quotes eld
+\end_inset
+
+department.xml
+\begin_inset Quotes erd
+\end_inset
+
+)/employees/employee RETURN $d/name
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Tree IUD Pattern: Realisierung durch entsprechende XQuery-Befehle.
+Tree IUD Pattern: Realisierung durch entsprechende Befehle der XQuery Update
+ Facility (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-22"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_deeper
@@ -7658,29 +7719,35 @@ Beispiele:
 
 \begin_deeper
 \begin_layout Itemize
-INSERT NODE <year>2005</year> AFTER fn:doc("bib.xml")/books/book[1]/publisher
-\end_layout
-
-\begin_layout Itemize
-REPLACE NODE fn:doc("bib.xml")/books/book[1]/publisher WITH 
+INSERT NODE <phone>123456</phone> AFTER 
 \begin_inset Newline newline
 \end_inset
 
-fn:doc("bib.xml")/books/book[2]/publisher 
+fn:doc("department.xml")/employees/employee[1]/name
 \end_layout
 
 \begin_layout Itemize
-RENAME NODE fn:doc("bib.xml")/books/book[1]/author[1] AS "principal-author"
+REPLACE NODE fn:doc("department.xml")/employees/employee[1]/phone WITH 
+\begin_inset Newline newline
+\end_inset
+
+fn:doc("department2.xml")/employees/employee[20]/phone 
 \end_layout
 
 \begin_layout Itemize
-DELETE NODE fn:doc("bib.xml")/books/book[1]/author[last()]
+RENAME NODE fn:doc("department.xml")/employees/employee[1]/phone[2] AS "privatePh
+one"
+\end_layout
+
+\begin_layout Itemize
+DELETE NODE fn:doc("department.xml")/employees/employee[1]/phone[last()]
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Node IUD Pattern: Realisierung durch entsprechende XQuery-Befehle.
+Node IUD Pattern: Realisierung durch entsprechende Befehle der XQuery Update
+ Facility.
 \end_layout
 
 \begin_deeper
@@ -7690,11 +7757,11 @@ Beispiel:
 
 \begin_deeper
 \begin_layout Itemize
-REPLACE VALUE OF NODE fn:doc("bib.xml")/books/book[1]/price WITH 
+REPLACE VALUE OF NODE fn:doc("department.xml")/expectedSales/total WITH 
 \begin_inset Newline newline
 \end_inset
 
-fn:doc("bib.xml")/books/book[1]/price * 1.1
+fn:doc("department.xml")/expectedSales/total + 50000
 \end_layout
 
 \end_deeper
@@ -7749,12 +7816,13 @@ Query Pattern: Realisierung durch einen GET-Befehl, der intern java.io Methoden
  Eine Möglichkeit wäre z.B.
  einen Filter-Dialog zur Angabe von Suchparametern über die GUI bereitzustellen,
  der es ermöglicht Dateiinhalte zu suchen und zurückzugeben.
+ Das Abfragen von Dateiinhalten wird in einer der weiteren Iteration realisiert.
 \end_layout
 
 \begin_layout Itemize
-File IUD Pattern: Realisierung durch einen entsprechenden PUT- und REMOVE-Befehl
- (RM), die intern java.io Methoden verwenden, um Inhalt in Dateien zu schreiben
- und aus ihnen zu löschen.
+File IUD Pattern: Realisierung durch einen entsprechenden PUT- bzw.
+ REMOVE-Befehl (RM), die intern java.io Methoden verwenden, um Inhalte in
+ Dateien zu schreiben und aus ihnen zu löschen.
  Ein Update wird bei Dateien intern durch das Löschen des alten Wertes und
  anschließendem Einfügen des neuen Wertes ausgeführt.
  Dafür muss noch ein Konzept erarbeitet werden, wie entsprechende Informationen
@@ -7776,8 +7844,7 @@ efehle, wie MKDIR und MKFILE zur Erzeugung von Ordnern und Dateien.
 \end_layout
 
 \begin_layout Itemize
-Stored Procedure Pattern: Wird nur eventuell in einer späteren Iteration
- umgesetzt.
+Stored Procedure Pattern: Wird optional in einer späteren Iteration umgesetzt.
  Eine Realisierung wäre z.B.
  über den Aufruf von auf dem Dateisystem hinterlegten Batch-Dateien denkbar.
 \end_layout
@@ -7824,8 +7891,8 @@ Retrieve Set Activity
 \emph default
  für mengenorientierte Daten realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
- innerhalb des BPEL-Prozesses geladen, eine etwas ausführlichere Beschreibung
- liefert 
+ innerhalb des BPEL-Prozesses geladen.
+ Eine etwas ausführlichere Beschreibung liefert 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2"
@@ -7837,22 +7904,28 @@ key "key-2"
 
 \begin_layout Itemize
 File Access Pattern: Um das File Access Pattern zu realisieren, müssen im
- Projektverlauf Methoden, die eine sequentielle Bearbeitung des durch eine
- RetrieveData Aktivität erzeugten Datencaches, bereitgestellt werden.
- D.h.
- konkret, dass es möglich sein muss, mit den definierten Variablen und deren
- Typen innerhalb von BPEL zu arbeiten.
+ Projektverlauf Methoden, die in einer geeigneter Weise (z.B.
+ sequentiell oder wahlfrei) den Zugriff auf den durch das File Retrieval
+ Pattern erzeugten Datencaches ermöglichen, bereitgestellt werden.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
- Es muss weiterhin möglich sein, dass entsprechende Variablen auch in BPEL-Aktiv
-itäten, wie z.B.
- einer ForEach Activity, verwendet werden können.
+ 
 \end_layout
 
 \begin_layout Itemize
-Data IUD Pattern: Erweitert die File Access Pattern Methoden um die Möglichkeite
-n Werte innerhalb des Datencaches des BPEL-Prozesses zu aktualisieren, einzufüge
-n und zu löschen.
+Data IUD Pattern
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Doppelte Namensvergabe, nochmal bei allen Patterns überprüfen!!!
+\end_layout
+
+\end_inset
+
+: Erweitert die File Access Pattern Methoden um die Möglichkeiten, Werte
+ innerhalb des Datencaches des BPEL-Prozesses zu aktualisieren, einzufügen
+ und zu löschen.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
  
@@ -7863,14 +7936,14 @@ Synchronization Pattern: Um die Daten aus dem Prozesscache zurück auf die
  originale Datenquelle zu übertragen, muss ebenfalls eine neue BPEL-Aktivität
  erstellt werden, durch die der Benutzer angibt, dass die Daten zurückgeschriebe
 n werden sollen.
- Diese Aktivität nutzt dann intern die im Set IUD Pattern und Set Access
- Pattern beschriebenen Methoden um die Daten aus dem Prozesscache auf die
+ Diese Aktivität nutzt dann intern die im File IUD Pattern und File Access
+ Pattern beschriebenen Methoden, um die Daten aus dem Prozesscache auf die
  Datenquelle zu übertragen.
- Die SDO API und die DAS API liefern dafür bereits einige Methoden die verwendet
- werden können.
+ Die SDO API und die DAS API liefern dafür bereits einige Methoden, die
+ verwendet werden können.
  Die Umsetzung dieses Patterns wird erst in einer späteren Iteration realisiert,
- da zuerst Erkentnisse im Bereich der Datenbanken gesammelt werden und mit
- diesen dann ein Ansatz für Dateisysteme erarbeitet wird.
+ da zuerst Erkentnisse im Bereich der relationalen Datenbanken gesammelt
+ werden und mit diesen dann ein Ansatz für Dateisysteme erarbeitet wird.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7910,9 +7983,9 @@ Query Pattern: Realisierung durch ein entsprechendes SQL-SELECT der Sensornetz-D
 atenbank.
  Weiterhin besteht die Möglichkeit, sensornetzintern in einem Buffer Werte
  zwischenzuspeichern.
- Realisiert wird dies durch im Arbeitsspeicher von Sensoren (siehe Data
- Setup Pattern) erstellte Tabellen, die mit momentanen Sensorwerten gefüllt
- werden können, um später die Daten zeitversetzt abrufen zu können.
+ Realisiert wird dies durch im Arbeitsspeicher von Sensoren erstellte Tabellen
+ (siehe Data Setup Pattern), die mit momentanen Sensorwerten gefüllt werden
+ können, um später die Daten zeitversetzt abrufen zu können.
  Die gewünschten Werte werden dabei mit einem entsprechenden SQL-SELECT
  Befehl in den Buffer geschrieben.
 \end_layout
@@ -7929,7 +8002,7 @@ SELECT select-list [FROM sensors] WHERE where-clause [GROUP BY gb-list [HAVING
 \end_layout
 
 \begin_layout Itemize
-Werte einfügen in Buffer-Tabelle: SELECT field1, field2, ...
+Werte in Buffer-Tabelle einfügen: SELECT field1, field2, ...
  FROM sensors SAMPLE PERIOD x INTO name
 \end_layout
 
@@ -7945,8 +8018,11 @@ SELECT temp FROM sensors WHERE temp > thresh TRIGGER ACTION SetSnd(512)
 \end_layout
 
 \begin_layout Itemize
-SELECT field1, field2 SAMPLE PERIOD 100 FROM name (SELECT auf Buffer-Tabelle
- 
+SELECT field1, field2 FROM sensors SAMPLE PERIOD 100 INTO name 
+\begin_inset Newline newline
+\end_inset
+
+(Einfügen von Werten, über SELECT, in die Buffer-Tabelle 
 \emph on
 name
 \emph default
@@ -7964,8 +8040,8 @@ Data Setup Pattern: Es können Tabellen im Arbeitsspeicher der Sensoren erstellt
 
 \begin_deeper
 \begin_layout Itemize
-Eine Buffer-Tabelle erstellen: CREATE BUFFER name SIZE x ( field1 type,
- field2 type, ...
+Eine Buffer-Tabelle erstellen: CREATE BUFFER name SIZE x ( field1 type1,
+ field2 type2, ...
  )
 \end_layout
 
@@ -7979,11 +8055,16 @@ Bemerkungen:
 x
 \series default
 \emph on
- ist die Anzahl der Zeilen, 
+ ist die Anzahl der maximal möglichen Zeilen, 
 \series bold
-type
+type1
 \series default
- ist ein Datentyp aus der Menge {uint8, uint16, uint16, int8, int16, int32}
+,
+\series bold
+ type2
+\series default
+, usw.
+ sind Datentypen aus der Menge {uint8, uint16, uint16, int8, int16, int32}
  und 
 \series bold
 field1
@@ -8080,51 +8161,91 @@ reference "sub:Umsetzung-der-Datenmanagement"
  auch, welche Attribute welchen Typs für die einzelnen Aktivitäten benötigt
  werden.
  Generell gilt, dass alle Aktivitäten mindestens die vier Variablen 
+\series bold
 \emph on
-type
+dsType
+\series default
 \emph default
 , 
+\series bold
 \emph on
-kind
+dsKind
+\series default
 \emph default
 , 
+\series bold
 \emph on
 dsAddress
+\series default
 \emph default
  und
 \emph on
- statement
+ 
+\series bold
+dsStatement
+\series default
 \emph default
  vom Typ String besitzen.
  Die Variable 
+\series bold
 \emph on
-type
+dsType
+\series default
 \emph default
  dient zur Angabe des Datenquellentyps, für den die Aktivität ausgeführt
  wird, also ob es sich um ein Dateisystem, eine Datenbank oder ein Sensornetz
  handelt.
  Die Variable 
+\series bold
 \emph on
-kind
+dsKind
+\series default
 \emph default
- dient zur Angabe der Datenquellenart, d.h.
+ dient zur Angabe der genaueren Datenquellenart, d.h.
  um was für ein Dateisystem, was für eine Datenbank oder welche Art von
  Sensornetz es sich handelt.
  Diese Informationen sind wichtig, um intern den richtigen SQL-Dialekt bzw.
  Befehlssatz für die entsprechende Datenquelle auszuwählen.
  Die Variable 
+\series bold
 \emph on
 dsAddress
+\series default
 \emph default
  dient zur Angabe der Datenquellenadresse und die Variable 
+\series bold
 \emph on
-statement 
+dsStatement
+\series default
+ 
 \emph default
 zur Haltung des entsprechenden Systemaufrufs bzw.
  SQL- oder XQuery-Befehls, der ausgeführt werden soll.
  Da jede der definierten Aktivitäten diese vier Variablen besitzt, werden
- diese nachfolgend nicht mehr angegeben und nur falls benötigt weitere aktivität
-sspezifische Variablen beschrieben.
+ diese nachfolgend als 
+\series bold
+\emph on
+simpl-attributes 
+\series default
+\emph default
+(vgl.
+ standard-attributes in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+
+\end_inset
+
+) in den Listings angegeben und nur falls benötigt weitere aktivitätsspezifische
+ Variablen beschrieben.
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:simpl-attributes"
+
+\end_inset
+
+ führt die vier Datenmanagement-Variablen nocheinmal auf.
  Weiterhin werden die verschiedenen Ausprägungen der einzelnen Aktivitäten
  im Hinblick auf die zugrundeliegende Datenquelle aufgezeigt, so dass am
  Ende ein vollständiger Überblick aller definierten Aktivitäten und ihrer
@@ -8153,9 +8274,9 @@ reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
 
 ).
  Dadurch soll eine einfachere Handhabung realisiert werden, damit der Benutzer
- schnellstmöglich ohne detaillierte Kenntnisse der Abfragesprache alle zur
- Verfügung gestellten Daten- und Datenquellenbefehle für alle unterstützten
- Datenquellen ausführen kann.
+ schnellstmöglich und ohne detaillierte Kenntnisse der Abfragesprache alle
+ zur Verfügung gestellten Daten- und Datenquellenbefehle für alle unterstützten
+ Datenquellen modellieren kann.
  Trotz der Einschränkungen, die ohne Zweifel durch die grafische Erstellung
  der Befehle bestehen, steht dem Benutzer der volle Sprachumfang der jeweiligen
  Datenquellensprache bzw.
@@ -8176,6 +8297,8 @@ Resulting statement
 \end_inset
 
 -Textfeld genutzt werden.
+ So weit es möglich ist, wird allerdings versucht, den vollen Sprachumfang
+ bereits durch die grafische Modellierung der Befehle abzudecken.
 \end_layout
 
 \begin_layout Standard
@@ -8202,8 +8325,59 @@ key "key-4"
 \end_inset
 
  beschriebenen Notationen und Definitionen verwendet.
- Die Schemata der DM-Aktivitäten werden im Verlauf der 1.Iteration vervollständig
-t.
+ Die Schemata der DM-Aktivitäten werden im Verlauf der 1.
+ Iteration vervollständigt.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+dsType="xsd:string"
+\end_layout
+
+\begin_layout Plain Layout
+
+dsKind="xsd:string"
+\end_layout
+
+\begin_layout Plain Layout
+
+dsAdress="anyURI"
+\end_layout
+
+\begin_layout Plain Layout
+
+dsStatement="xsd:string"
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:simpl-attributes"
+
+\end_inset
+
+Listing der simpl-attributes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -8212,7 +8386,7 @@ Query Aktivität
 
 \begin_layout Standard
 Diese Aktivität ermöglicht es, aus jeder beliebigen Datenquelle Daten zu
- lesen.
+ lesen und diese auf der Datenquelle zu speichern.
  Weitere spezifische Attribute werden dafür nicht benötigt.
  Die Query Aktivität ist für alle Datenquellen gleich strukturiert, und
  nur die entsprechenden Query-Befehle unterscheiden sich je nach Datenquelle.
@@ -8232,15 +8406,7 @@ reference "lst:Query Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Query Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
- 
+ zeigt das BPEL-Schema einer Query Aktivität.
 \end_layout
 
 \begin_layout Standard
@@ -8252,12 +8418,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<queryActivity standard-attributes>
+	<simpl:queryActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8276,12 +8442,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</queryActivity> 
+	</simpl:queryActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8321,15 +8487,7 @@ reference "lst:Insert Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Insert Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
- 
+ zeigt das BPEL-Schema einer Insert Aktivität.
 \end_layout
 
 \begin_layout Standard
@@ -8341,12 +8499,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<insertActivity standard-attributes>
+	<simpl:insertActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8365,12 +8523,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</insertActivity> 
+	</simpl:insertActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8402,8 +8560,8 @@ Update Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es, auf einer Datenquelle hinterlegte Daten durch
- aktuellere externe Daten zu ersetzen.
+Diese Aktivität ermöglicht es, auf einer Datenquelle hinterlegte Daten zu
+ aktualisieren.
  Diese Aktivität kann nicht auf Sensornetze angewendet werden.
  Listing 
 \begin_inset CommandInset ref
@@ -8412,14 +8570,7 @@ reference "lst:Insert Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Update Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
+ zeigt das BPEL-Schema einer Update Aktivität.
  
 \end_layout
 
@@ -8432,12 +8583,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<updateActivity standard-attributes>
+	<simpl:updateActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8456,12 +8607,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</updateActivity> 
+	</simpl:updateActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8502,14 +8653,7 @@ reference "lst:Delete Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Delete Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
+ zeigt das BPEL-Schema einer Delete Aktivität.
  
 \end_layout
 
@@ -8522,12 +8666,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<deleteActivity standard-attributes>
+	<simpl:deleteActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8546,12 +8690,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</deleteActivity> 
+	</simpl:deleteActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8590,7 +8734,7 @@ Diese Aktivität ermöglicht es, Zuordnungseinheiten (Dateien, Ordner, Tabellen,
 \end_layout
 
 \begin_layout Itemize
-Dateisysteme
+Dateisysteme:
 \end_layout
 
 \begin_deeper
@@ -8604,7 +8748,7 @@ MKFILE file
 
 \end_deeper
 \begin_layout Itemize
-Datenbanken
+Datenbanken:
 \end_layout
 
 \begin_deeper
@@ -8640,7 +8784,7 @@ CREATE TRIGGER
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Sensornetze
+Sensornetze:
 \end_layout
 
 \begin_deeper
@@ -8650,21 +8794,16 @@ CREATE BUFFER
 
 \end_deeper
 \begin_layout Standard
-Listing 
+Diese Aktivität wird für XQuery-Datenbanken nicht realisiert.
+ Ebenso werden in dieser Iterationsstufe keine weiteren Befehle umgesetzt.
+ Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lst:Create Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Create Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
+ zeigt das BPEL-Schema einer Create Aktivität.
  
 \end_layout
 
@@ -8677,12 +8816,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<createActivity standard-attributes>
+	<simpl:createActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8701,12 +8840,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</createActivity> 
+	</simpl:createActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8746,7 +8885,7 @@ Diese Aktivität ermöglicht es, Zuordnungseinheiten auf beliebigen Datenquellen
 \end_layout
 
 \begin_layout Itemize
-Dateisysteme
+Dateisysteme:
 \end_layout
 
 \begin_deeper
@@ -8806,21 +8945,16 @@ DROP ALL
 
 \end_deeper
 \begin_layout Standard
-Listing 
+Diese Aktivität wird für XQuery-Datenbanken nicht realisiert.
+ Ebenso werden in dieser Iterationsstufe keine weiteren Befehle umgesetzt.
+ Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lst:Drop Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Drop Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
+ zeigt das BPEL-Schema einer Drop Aktivität.
  
 \end_layout
 
@@ -8833,12 +8967,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<dropActivity standard-attributes>
+	<simpl:dropActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8857,12 +8991,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</dropActivity> 
+	</simpl:dropActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8894,9 +9028,10 @@ Call Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität ermöglicht es auf der Datenquelle hinterlegte Prozeduren
+Diese Aktivität ermöglicht es, auf der Datenquelle hinterlegte Prozeduren
  auszuführen.
- Diese Aktivität kann vorerst nur für Datenbanken verwendet werden.
+ Diese Aktivität kann vorerst nur für relationale Datenbanken verwendet
+ werden.
  Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8904,14 +9039,7 @@ reference "lst:Call Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer Call Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
+ zeigt das BPEL-Schema einer Call Aktivität.
  
 \end_layout
 
@@ -8924,12 +9052,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<callActivity standard-attributes>
+	<simpl:callActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8948,12 +9076,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</callActivity> 
+	</simpl:callActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -8994,14 +9122,7 @@ reference "lst:RetrieveData Aktivität"
 
 \end_inset
 
- zeigt das BPEL-Schema einer RetrieveData Aktivität mit der in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- definierten Notation.
+ zeigt das BPEL-Schema einer RetrieveData Aktivität.
  
 \end_layout
 
@@ -9014,12 +9135,12 @@ status open
 
 \begin_layout Plain Layout
 
-<extensionActivity>
+<bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
 
-	<retrieveDataActivity standard-attributes>
+	<simpl:retrieveDataActivity standard-attributes simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -9038,12 +9159,12 @@ status open
 
 \begin_layout Plain Layout
 
-	</retrieveDataActivity> 
+	</simpl:retrieveDataActivity> 
 \end_layout
 
 \begin_layout Plain Layout
 
-</extensionActivity>
+</bpel:extensionActivity>
 \end_layout
 
 \begin_layout Plain Layout
@@ -9110,7 +9231,8 @@ Move Aktivität
 WriteBack Aktivität:
 \series default
  Diese Aktivität ermöglicht es, Daten aus dem BPEL-Prozess auf die originale
- Datenquelle zurückzuschreiben.
+ Datenquelle zurückzuschreiben, nachdem die Daten zuvor über eine RetrieveData
+ Aktivität in den Prozessspeicher geladen wurden.
  Diese Aktivität existiert nicht für Sensornetze.
 \end_layout
 
@@ -9123,8 +9245,8 @@ Alter Aktivität:
 , Schemata, usw.) nachträglich gezielt zu verändern und an veränderte Anforderung
 en anzupassen.
  Es ist z.B.
- möglich in eine Tabelle neue Spalten einzufügen, bestehende Spalten neu
- zu benennen oder zu löschen.
+ möglich, in eine Tabelle neue Spalten einzufügen, bestehende Spalten neu
+ zu benennen oder zu verwerfen.
 \end_layout
 
 \begin_layout Standard
@@ -9156,9 +9278,16 @@ x
 
  steht für die teilweise Verwendbarkeit (z.B.
  in einer Move Aktivität können Sensornetze nur als Quelle nicht als Ziel
- angegeben werden) bzw.
- dass eventuell erst in einer späteren Iterationen diese Aktivität auf eine
- Datenquelle angewendet werden kann.
+ angegeben werden) und 
+\begin_inset Quotes eld
+\end_inset
+
+o
+\begin_inset Quotes erd
+\end_inset
+
+ steht dafür, dass diese Aktivität erst in einer späteren Iterationen auf
+ eine Datenquelle angewendet werden kann.
  Ein 
 \begin_inset Quotes eld
 \end_inset
@@ -9205,7 +9334,7 @@ e Datenquellen
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="14" columns="5">
+<lyxtabular version="3" rows="12" columns="5">
 <features>
 <column alignment="center" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="2cm">
@@ -9338,7 +9467,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9385,7 +9514,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9432,7 +9561,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9470,7 +9599,54 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
+o
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Drop Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+o
 \end_layout
 
 \end_inset
@@ -9517,7 +9693,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9526,7 +9702,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9535,14 +9711,14 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+-
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -9551,53 +9727,6 @@ RetrieveData Aktivität
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-(x)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-(x)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Drop Aktivität
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -9611,7 +9740,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9620,7 +9749,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9630,100 +9759,6 @@ x
 
 \begin_layout Plain Layout
 x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Import Aktivität
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Export Aktivität
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
 \end_layout
 
 \end_inset
@@ -9837,7 +9872,7 @@ Alter Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9846,7 +9881,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+o
 \end_layout
 
 \end_inset
@@ -9855,7 +9890,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+o
 \end_layout
 
 \end_inset
@@ -10850,6 +10885,17 @@ key "key-21"
 \end_inset
 
 WSDL, http://www.w3.org/standards/techs/wsdl, zuletzt zugegriffen am 04.11.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-22"
+
+\end_inset
+
+XQuery Update Facility, http://www.w3.org/standards/techs/xquery, zuletzt
+ zugegriffen am 06.11.2009
 \end_layout
 
 \begin_layout Standard
