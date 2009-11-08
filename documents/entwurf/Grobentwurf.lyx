@@ -938,22 +938,16 @@ Datenquellen erfordern in der Regel eine Authentifizierung und Autorisierung
  so dass die dafür benötigten Informationen wie z.B.
  Name und Passwort nicht bei jedem wiederholten Zugriff erneut angegeben
  werden müssen.
- Dazu soll das Konzept des Single Sign On angeboten bzw.
+ Dazu soll das Konzept des Single Sign On (SSO) angeboten bzw.
  unterstützt werden.
- 
-\end_layout
+ (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
 
-\begin_layout Standard
-Der Single Sign On (SSO) ist ein Konzept der Authentifizierung, bei dem
- sich der Benutzer nur einmal erfolgreich bei einem System authentifizieren
- muss, und auch bei weiteren Zugriffen, evtl.
- auch auf andere Komponenten des Systems, kein erneuter Authentifizierungsvorgan
-g benötigt wird.
- Das SIMPL Rahmenwerk soll dabei verschiedene Authentifzierungsverfahren
- unterstützten.
- Bei der Modellierung soll der Prozess-Modellierer zudem dahingehend unterstützt
- werden, dass er Authentifizierungsinformationen nicht zu jeder DM-Aktivität,
- einer bestimmten Datenquelle, wiederholt angeben muss.
+\end_inset
+
+, Kapitel 7.2.1)
 \end_layout
 
 \begin_layout Subsubsection
@@ -1225,7 +1219,7 @@ Architektur
 \begin_inset Quotes erd
 \end_inset
 
- beschriebenen Komponenten im Detail.
+ genannten Komponenten im Detail.
  Dabei werden Schnittstellen, Protokolle und Verhalten definiert.
 \end_layout
 
@@ -1253,7 +1247,7 @@ Komponenten
 \begin_inset Quotes erd
 \end_inset
 
- definierten Schnittstellen und beschreibt wie diese genutzt werden.
+ definierten Schnittstellen und ihre Verwendung.
 \end_layout
 
 \begin_layout Section
@@ -1404,6 +1398,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Komponenten.png
+	width 80text%
 
 \end_inset
 
@@ -1420,7 +1415,7 @@ name "fig:Komponenten"
 
 \end_inset
 
-Komponenten
+Komponenten des SIMPL Rahmenwerks
 \end_layout
 
 \end_inset
@@ -1440,7 +1435,7 @@ Komponenten
 \begin_layout Subsection
 Eclipse
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 - Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
@@ -1472,8 +1467,19 @@ reference "sub:Erweiterbarkeit"
 \end_layout
 
 \begin_layout Plain Layout
-- Erweiterung um neue DM-Aktivitäten, wird wie erreicht? (zB.
- GUI modularer Aufbau,...)
+- Erweiterung um neue DM-Aktivitäten und Anfragesprachen, wird bei der GUI
+ wie erreicht? (zB.
+ modularer Aufbau,...)
+\end_layout
+
+\begin_layout Plain Layout
+- IPVS-Referenzen werden evtl.
+ im Deployment Descriptor erstellt und beim Deployment aufgelöst
+\end_layout
+
+\begin_layout Plain Layout
+- SIMPL Eclipse Plugin teilt sich auf in SIMPL DM-Activity Extension, SIMPL
+ Administration Plug-In (Namen sind noch nicht festgelegt!)
 \end_layout
 
 \end_inset
@@ -1484,7 +1490,7 @@ reference "sub:Erweiterbarkeit"
 \begin_layout Subsection
 Apache ODE
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 - Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
@@ -1496,6 +1502,33 @@ status collapsed
  Event Klasse spezialisieren,...)
 \end_layout
 
+\begin_layout Plain Layout
+-
+\begin_inset space \space{}
+\end_inset
+
+BPEL Variablen für SDO Objekte?
+\end_layout
+
+\begin_layout Plain Layout
+-Beschreibung von ManagementAPI muss in Apache ODE Kapitel
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+Das ManagementAPI von Apache ODE bietet Funktionen auf Prozess- und auf
+ Instanzenebene, darüber können z.B.
+ Prozesse gestartet und beendet werden und Informationen zu einzelnen Instanzen
+ abgerufen werden.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -1503,6 +1536,16 @@ status collapsed
 
 \begin_layout Subsection
 SIMPL Core
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abschnitte in gleiche Reihenfolge wie das Schaubild bringen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1519,7 +1562,7 @@ reference "fig:SIMPL-Core"
  haben.
  Die Web Services werden dabei innerhalb einer Apache Axis2 Installation
  bereitgestellt und mit der Java API JAX-WS erstellt, damit ein Einsatz
- auch mit anderen Web Containern, außer Apache Tomcat, gewährleistet ist.
+ auch mit anderen Web Containern, außer Apache Tomcat, gewährleistet ist
  (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1527,13 +1570,11 @@ reference "sub:Verwendbarkeit"
 
 \end_inset
 
-) 
-\end_layout
-
-\begin_layout Standard
-Jeder Web Service bietet nach Außen eine WSDL-Schnittstelle und als Übertragungs
-protokoll zur Kommunikation wird SOAP verwendet.
- Wie diese Kommunikation im Detail aussieht ist dann Thema von Kapitel 
+).
+ Jeder dieser Web Services bietet nach Außen eine Schnittstelle.
+ In den folgenden Abschnitten werden zunächst die Web Services und ihre
+ Aufgaben näher beschrieben, die Schnittstellen und ihre Verwendung sind
+ dann Thema von Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Schnittstellen"
@@ -1541,8 +1582,6 @@ reference "sec:Schnittstellen"
 \end_inset
 
 .
- Im den folgenden Abschnitten werden die Web Services und ihre Aufgaben
- näher beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -1555,6 +1594,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename SIMPLCore.png
+	width 80text%
 
 \end_inset
 
@@ -1571,7 +1611,7 @@ name "fig:SIMPL-Core"
 
 \end_inset
 
-SIMPL Core
+Der SIMPL Core
 \end_layout
 
 \end_inset
@@ -1589,6 +1629,77 @@ SIMPL Core
 \end_layout
 
 \begin_layout Subsubsection
+Strategy Service
+\end_layout
+
+\begin_layout Standard
+Mit dem Strategy Service wird das Late Binding (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Late-Binding-von"
+
+\end_inset
+
+) ermöglicht, dort stehen verschiedene Auswahlstrategien bzw.
+ -algorithmen zur Verfügung, um mit den im Prozess formulierten Anforderungen
+ eine passende Datenquelle ausfindig zu machen.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Datasource Service
+\end_layout
+
+\begin_layout Standard
+Der Datasource Service ist für alle Aufgaben zuständig, die den Zugriff
+ auf die Datenquellen betreffen.
+ Dort werden entsprechende Adapter (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Adapter"
+
+\end_inset
+
+) in Form von Direct Access Services (DAS) implementiert, die den Zugriff
+ auf verschiedene Typen von Datenquellen ermöglichen und die Erweiterbarkeit
+ für weitere Typen und Anfragesprachen (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterbarkeit"
+
+\end_inset
+
+) garantieren.
+ Des weiteren werden Plug-In-Schnittstellen (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Plug-In"
+
+\end_inset
+
+) für zusätzliche funktionale Erweiterungen geschaffen, wie z.B die Unterstützung
+ verschiedener Dateitypen bei Dateisystemen.
+\end_layout
+
+\begin_layout Subsubsection
+Reference Service
+\end_layout
+
+\begin_layout Standard
+Der Reference Service erfüllt die Anforderung, große Datenmengen in BPEL
+ referenzieren zu können (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Große-Datenmengen"
+
+\end_inset
+
+).
+ Über diesen Service lassen sich die Referenzen verwalten und auflösen,
+ um die referenzierten Daten bei Bedarf in einen Prozess zu holen.
+\end_layout
+
+\begin_layout Subsubsection
 Security Service
 \end_layout
 
@@ -1598,8 +1709,8 @@ Der Security Service ist zuständig für Aufgaben, die die Authentifizierung
  Mit diesem Service können Authentifizierungs- und Autorisierungsinformationen
  verarbeitet und ggf.
  transformiert werden.
- Die Informationen können außerdem über den Storage Service zwischengespeichert
- werden um das Konzept des SSO (siehe 
+ Die Informationen können außerdem zwischengespeichert werden um das Konzept
+ des SSO (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Authentifizierung-und-Autorisierung"
@@ -1610,40 +1721,32 @@ reference "sub:Authentifizierung-und-Autorisierung"
 \end_layout
 
 \begin_layout Subsubsection
-Reference Service
+Administration Service
 \end_layout
 
 \begin_layout Standard
-Der Reference Service erfüllt die Anforderung in Abschnitt 
+Über den Administration Service werden alle Einstellungen des Rahmenwerks
+ verwaltet und die Funktionalität für die Admin-Konsole (siehe Anforderung
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Große-Datenmengen"
+reference "sub:Admin-Konsole"
 
 \end_inset
 
-, große Datenmengen in BPEL referenzieren zu können.
- Über diesen Service lassen sich die Referenzen verwalten und natürlich
- auflösen, um die referenzierten Daten bei Bedarf in einen Prozess zu holen.
-\end_layout
-
-\begin_layout Subsubsection
-Strategy Service
-\end_layout
-
-\begin_layout Standard
-Mit dem Strategy Service wird das Late Binding (siehe 
+) bereitgestellt.
+ Für Einstellungen, mit denen zur Laufzeit Einfluss auf Apache ODE genommen
+ wird, wie z.B.
+ die Granularität des Auditing, werden die vorhandenen Schnittstellen von
+ Apache ODE verwendet und, falls nötig, neue Schnittstellen geschaffen.
+ Die geforderte austauschbare GUI (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Late-Binding-von"
+reference "sub:Erweiterbarkeit"
 
 \end_inset
 
-) ermöglicht, dort stehen verschiedene Auswahlstrategien bzw.
- -algorithmen zur Verfügung, um mit den im Prozess formulierten Anforderungen
- eine passende Datenquelle ausfindig zu machen.
- Um die vorhandenen Datenquellen abzurufen und die Anforderungen mit den
- Eigenschaften der Datenquellen zu vergleichen, wird der Registry Service
- in Anspruch genommen.
+), wird durch die unabhängige WSDL-Schnittstelle erreicht.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1664,67 +1767,15 @@ reference "sub:Verwendbarkeit"
 \end_layout
 
 \begin_layout Subsubsection
-Administration Service
+Storage Service
 \end_layout
 
 \begin_layout Standard
-Über den Administration Service werden alle Einstellungen des Rahmenwerks
- verwaltet und die Funktionalität für die Admin-Konsole (siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Admin-Konsole"
-
-\end_inset
-
-) bereitgestellt.
- Für Einstellungen, mit denen zur Laufzeit Einfluss auf Apache ODE genommen
- wird, wie z.B.
- die Granularität des Auditing, werden die vorhandenen Schnittstellen von
- Apache ODE verwendet und, falls nötig, neue Schnittstellen geschaffen.
- Die in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Erweiterbarkeit"
-
-\end_inset
-
- geforderte austauschbare GUI, wird durch die unabhängige WSDL-Schnittstelle
- erreicht.
-\end_layout
-
-\begin_layout Subsubsection
-Datasource Service
-\end_layout
-
-\begin_layout Standard
-Der Datasource Service ist für alle Aufgaben zuständig, die den Zugriff
- auf die Datenquellen betreffen.
- Dort werden entsprechende Adapter (siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Adapter"
-
-\end_inset
-
-) in Form von Direct Access Services (DAS) implementiert, die den Zugriff
- auf verschiedene Typen von Datenquellen ermöglichen und die Erweiterbarkeit
- für weitere Typen und Anfragesprachen (siehe Anforderungen 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Erweiterbarkeit"
-
-\end_inset
-
-) garantieren.
- Des weiteren werden Plug-In-Schnittstellen (siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Plug-In"
-
-\end_inset
-
-) für zusätzliche funktionale Erweiterungen geschaffen, wie z.B die Unterstützung
- verschiedener Dateitypen bei Dateisystemen.
+Der Storage Service bildet den zentralen Speicherort von Daten des SIMPL
+ Rahmenwerks, dort laufen alle Einstellungen, Daten und Informationen zusammen
+ und werden persistent in einer Datenquelle gespeichert.
+ Beispielsweise werden dort die Referenzen gespeichert, die über den Reference
+ Service hinzugefügt werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1735,7 +1786,7 @@ Registry Service
 Über den Registry Service kann auf die Registry des Rahmenwerks zugegriffen
  werden, in der die vorhandenen Datenquellen mit ihren Eigenschaften zentral
  verwaltet werden.
- (siehe 
+ (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Registry"
@@ -1745,28 +1796,15 @@ reference "sub:Registry"
 )
 \end_layout
 
-\begin_layout Subsubsection
-Storage Service
-\end_layout
-
-\begin_layout Standard
-Der Storage Service bildet den zentralen Speicherort von Daten des SIMPL
- Rahmenwerks, dort laufen alle Einstellungen, Daten und Informationen zusammen
- und werden persistent über den Datasource Service in einer Datenquelle
- gespeichert.
- Beispielsweise werden dort die Referenzen gespeichert, die über den Reference
- Service hinzugefügt werden.
-\end_layout
-
 \begin_layout Subsection
 Apache jUDDI
 \end_layout
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk stellt mit Apache jUDDI bereits eine UDDI-Registry
- zur Verfügung, die von dem Registry Service genutzt wird.
+ zur Verfügung, die mit den Registry Service genutzt werden kann.
  Über die WSDL Schnittstelle des Registry Service kann aber auch jede andere
- Implementierung einer Registry realisiert werden (siehe Anforderungen 
+ Implementierung einer Registry realisiert werden (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Erweiterbarkeit"
@@ -1799,6 +1837,8 @@ reference "fig:Schnittstellen"
 
  zeigt dazu die Schnittstellen in einer Übersicht, die in den folgenden
  Abschnitten näher beschrieben werden.
+ Bei allen Schnittstellen handelt es sich um WSDL-Schnittstellen, die an
+ das Übertragungsprotokoll SOAP gebunden sind.
 \end_layout
 
 \begin_layout Standard
@@ -1828,7 +1868,7 @@ name "fig:Schnittstellen"
 
 \end_inset
 
-Schnittstellen
+Schnittstellen des SIMPL Rahmenwerks
 \end_layout
 
 \end_inset
@@ -1850,17 +1890,26 @@ Apache ODE
 \end_layout
 
 \begin_layout Standard
-Folgende Schnittstellen werden von Apache ODE, in einem Prozess mit DM-Aktivität
-en, zur Laufzeit verwendet.
+Hier werden die bestehenden Schnittstellen von Apache ODE und ihre Verwendung
+ von den Komponenten beschrieben.
 \end_layout
 
 \begin_layout Subsubsection
-DatasourceService
+ManagementAPI
+\end_layout
+
+\begin_layout Standard
+Der Administration Service verwendet die ManagementAPI-Schnittstelle für
+ die Einstellungen des Rahmenwerks, die zur Laufzeit gemacht werden.
+\end_layout
+
+\begin_layout Subsubsection
+DeploymentService
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-SDO
+wird die wirklich von Eclipse benutzt?
 \end_layout
 
 \end_inset
@@ -1868,12 +1917,74 @@ SDO
 
 \end_layout
 
+\begin_layout Standard
+Die DeploymentService-Schnittstelle wird von Eclipse für das Deployment
+ vom Prozessen verwendet.
+\end_layout
+
+\begin_layout Subsection
+Apache jUDDI
+\end_layout
+
+\begin_layout Standard
+Apache jUDDI wird vom Rahmenwerk nur über den Registry Service angesprochen.
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core
+\end_layout
+
+\begin_layout Standard
+Hier werden die Schnittstellen vom SIMPL Core und ihre Verwendung von den
+ Komponenten beschrieben.
+ Alle internen Abhängigkeiten des SIMPL Core werden ebenfalls über diese
+ Schnittstellen realisiert.
+\end_layout
+
+\begin_layout Subsubsection
+DatasourceService
+\end_layout
+
+\begin_layout Standard
+Die DatasourceService-Schnittstelle wird von Apache ODE bei dem Zugriff
+ auf Datenquellen und für das Speichern der Auditing-Daten verwendet, intern
+ wird die Schnittstelle vom Storage Service für die Datenhaltung genutzt.
+ Sie bietet Funktionen zum Abrufen von Daten von Datenquellen und Senden
+ von Befehlen in unterstützten Anfragesprachen.
+ Die Daten werden dabei als Service Data Object (SDO) übertragen.
+\end_layout
+
 \begin_layout Subsubsection
 StrategyService
 \end_layout
 
+\begin_layout Standard
+Die StrategyService-Schnittstelle wird von Apache ODE für das Late Binding
+ genutzt und bietet Funktionen für die verschiedenen Auswahlstrategien.
+ Die Anforderungen an die Datenquellen werden dabei als WS-Policy-Objekte
+ übertragen.
+\end_layout
+
 \begin_layout Subsubsection
 ReferenceService
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Referenzen hinzufügen direkt aus Eclipse oder über AdminService?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die ReferenceService-Schnittstelle wird bei der Modellierung in Eclipse
+ zur Verwaltung von Referenzen genutzt und von Apache ODE zur Auflösung
+ der Referenzen zur Laufzeit verwendet.
+ Sie bietet Funktionen zur Verwaltung und Auflösung von Referenzen, wobei
+ die Daten der aufgelösten Referenzen als SDO zurückgeliefert werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1882,7 +1993,8 @@ SecurityService
 status open
 
 \begin_layout Plain Layout
-SAML, XACML
+Wird von wem genutzt? Auch von Apache ODE direkt? (im Schaubild mal drin
+ gelassen)
 \end_layout
 
 \end_inset
@@ -1890,26 +2002,60 @@ SAML, XACML
 
 \end_layout
 
-\begin_layout Subsection
-Eclipse
-\end_layout
-
 \begin_layout Standard
-Während der Modellierung in Eclipse, werden folgende Schnittstellen des
- SIMPL Core bzw.
- von Apache ODE verwendet.
+Die SecurityService-Schnittstelle bietet Funktionen für die Verwaltung und
+ Transformation von Authentifizierungs- und Autorisierungsinformationen.
+ Sie wird vom Datasource Service benötigt um entsprechende Informationen
+ für einen Zugriff auf eine Datenquelle abzurufen.
+ Die Informationen werden dabei unter anderem in der Security Assertion
+ Markup Language (SAML) und der eXtensible Access Control Markup Language
+ (XACML) übertragen.
 \end_layout
 
 \begin_layout Subsubsection
 AdministrationService
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+wirklich SDO? Kann somit evtl.
+ direkt gespeichert werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die AdministrationService-Schnittstelle bietet Funktionen mit denen Einstellunge
+n zur Prozess-Laufzeit gemacht werden können und bietet außerdem Funktionen
+ für die Verwaltung der Einstellungen der Admin-Konsole.
+ Die Einstellungen der Admin-Konsole werden dabei als SDO übertragen.
 \end_layout
 
 \begin_layout Subsubsection
 TransformationService
 \end_layout
 
+\begin_layout Standard
+Die TransformationService-Schnittstelle bietet eine Funktion zur Umwandlung
+ von, mit DM-Aktivitäten, erweitertem BPEL-Code in Standard-BPEL-Code.
+ Dazu werden die enstprechenden BPEL-Dateien übergeben und transformiert
+ zurückgeliefert.
+\end_layout
+
 \begin_layout Subsubsection
 StorageService
+\end_layout
+
+\begin_layout Standard
+Die StorageService-Schnittstelle bietet Funktionen zur Verwaltung von Daten
+ innerhalb des Rahmenwerks und wird vom Reference Service, Administration
+ Service und SecurityService verwendet.
+ Zusätzlich bietet sie dem Administration Service die Möglichkeit eine Datenquel
+le für die Speicherung festzulegen.
+ Alle Daten werden als SDO übertragen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1918,7 +2064,7 @@ RegistryService
 status open
 
 \begin_layout Plain Layout
-WS-Policy
+Datenquellen hinzufügen direkt aus Eclipse oder über AdminService?
 \end_layout
 
 \end_inset
@@ -1926,19 +2072,13 @@ WS-Policy
 
 \end_layout
 
-\begin_layout Subsection
-SIMPL Core
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Abhängigkeiten der Schnittstellen innerhalb vom SIMPL Core beschreiben,
- und Registry nicht vergessen
-\end_layout
-
-\end_inset
-
-
+\begin_layout Standard
+Die RegistryService-Schnittstelle bietet Funktionen für die Verwaltung von
+ Datenquellen und ihrer Eigenschaften.
+ Der StrategyService bekommt dadurch Zugriff auf die vorhanden Datenquellen,
+ die von Eclipse, ebenfalls über die Schnittstelle verwaltet werden.
+ Die Datenquellen werden dabei als WSDL-Objekte und ihre Eigenschaften als
+ WS-Policy-Objekte übertragen.
 \end_layout
 
 \begin_layout Bibliography
@@ -2231,8 +2371,7 @@ SOAP
 \begin_inset Text
 
 \begin_layout Plain Layout
-ehem.
- Simple Object Access Protocol
+Simple Object Access Protocol
 \end_layout
 
 \end_inset
