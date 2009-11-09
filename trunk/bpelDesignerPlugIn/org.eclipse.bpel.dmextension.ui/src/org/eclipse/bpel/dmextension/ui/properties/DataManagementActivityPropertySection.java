@@ -1,11 +1,10 @@
 package org.eclipse.bpel.dmextension.ui.properties;
 
-import java.util.Observable;
-import java.util.Observer;
-
 import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
@@ -17,7 +16,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-public class DataManagementActivityPropertySection extends BPELPropertySection implements Observer{
+public class DataManagementActivityPropertySection extends BPELPropertySection{
 
 	private Label typeLabel = null;
 	private CCombo typeCombo = null;
@@ -37,11 +36,6 @@ public class DataManagementActivityPropertySection extends BPELPropertySection i
 	
 	private DataClass data;
 	
-	public DataManagementActivityPropertySection(){
-		data = DataClass.getInstance();
-		data.addObserver(this);
-		System.out.println("asdasd");
-	}
 
 	
 	/**
@@ -190,6 +184,8 @@ public class DataManagementActivityPropertySection extends BPELPropertySection i
 					statementLabel.setVisible(false);
 					statementText.setVisible(false);
 				}
+				//Zur Aktualisierung des Statements, muss wieder entfernt werden.
+				processStatement();
 			}});
 		Label filler1 = new Label(parentComposite, SWT.NONE);
 		statementLabel = new Label(parentComposite, SWT.NONE);
@@ -348,6 +344,7 @@ public class DataManagementActivityPropertySection extends BPELPropertySection i
 				// TODO Auto-generated method stub
 				if (microCombo.getItem(microCombo.getSelectionIndex()).contains("Multi column")){
 					multiColumnButton.setVisible(true);
+					DataClass.getInstance().setMultiColumn("");
 				}else {
 					multiColumnButton.setVisible(false);
 				}
@@ -379,19 +376,6 @@ public class DataManagementActivityPropertySection extends BPELPropertySection i
 		String statement = "";
 		DataClass.getInstance().processStatement();
 		statement = DataClass.getInstance().getStatement();
-//		if (macroCombo.getSelectionIndex()!=-1 && macroCombo.getItem(macroCombo.getSelectionIndex()).contains("Use SELECT")){
-//			if (microCombo.getSelectionIndex()!=-1 && microCombo.getItem(microCombo.getSelectionIndex()).contains("Multi column")){
-//				statement = "SELECT" + " " + multiColumn + " " + "FROM" + " " + preSelect;
-//			}else {
-//				statement = "SELECT" + " " + microCombo.getText() + " " + "FROM" + " " + preSelect;
-//			}
-//		}else {
-//			if (microCombo.getSelectionIndex()!=-1 && microCombo.getItem(microCombo.getSelectionIndex()).contains("Multi column")){
-//				statement = "SELECT" + " " + multiColumn + " " + "FROM" + " " + macroCombo.getText();
-//			}else {
-//				statement = "SELECT" + " " + microCombo.getText() + " " + "FROM" + " " + macroCombo.getText();
-//			}
-//		}
 		statementText.setText(statement);
 	}
 	
@@ -410,10 +394,10 @@ public class DataManagementActivityPropertySection extends BPELPropertySection i
 		@Override
 		public void widgetSelected(SelectionEvent arg0) {
 			// TODO Auto-generated method stub
-			if (macroCombo.getSelectionIndex()!=-1){
+			if (macroCombo.getSelectionIndex()!=-1 && !(macroCombo.getItem(macroCombo.getSelectionIndex())).contains("Use SELECT")){
 				DataClass.getInstance().setMacroSource(macroCombo.getItem(macroCombo.getSelectionIndex()));
 			}
-			if (microCombo.getSelectionIndex()!=-1){
+			if (microCombo.getSelectionIndex()!=-1 && !(microCombo.getItem(microCombo.getSelectionIndex())).contains("Multi column")){
 				DataClass.getInstance().setMicroSource(microCombo.getItem(microCombo.getSelectionIndex()));
 			}
 			processStatement();
@@ -421,12 +405,4 @@ public class DataManagementActivityPropertySection extends BPELPropertySection i
 	};  //  @jve:decl-index=0:
 	private Button preSelectButton = null;
 	private Button multiColumnButton = null;
-
-	@Override
-	public void update(Observable object, Object arg) {
-		// TODO Auto-generated method stub
-		if ((object == data) && "statement".equals(arg)){
-			processStatement();
-		}
-	}
 }
