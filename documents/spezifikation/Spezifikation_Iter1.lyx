@@ -3616,6 +3616,19 @@ Normalablauf
  Klick auf den Menüeintrag [Admin Console].
 \end_layout
 
+\begin_layout Plain Layout
+3.
+ Ausführung des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -3698,7 +3711,7 @@ Auditing
 \begin_inset Quotes erd
 \end_inset
 
- wird angezeigt und das Auditing ist nicht aktiv.
+ wird angezeigt und das Auditing-Häkchen ist nicht gesetzt.
 \end_layout
 
 \end_inset
@@ -3718,7 +3731,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das Auditing ist aktiv.
+Das Auditing-Häkchen ist gesetzt.
 \end_layout
 
 \end_inset
@@ -3759,20 +3772,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Setzen der Auditing-Checkbox.
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Ausführung des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-Admin-Konsole speichern
-\begin_inset Quotes erd
-\end_inset
-
-.
+ Setzen des Auditing-Häkchens.
 \end_layout
 
 \end_inset
@@ -3857,7 +3857,7 @@ Auditing
 \begin_inset Quotes erd
 \end_inset
 
- wird angezeigt und das Auditing ist aktiv.
+ wird angezeigt und das Auditing-Häkchen ist gesetzt.
 \end_layout
 
 \end_inset
@@ -3877,7 +3877,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das Auditing ist deaktiviert.
+Das Auditing-Häkchen ist nicht gesetzt.
 \end_layout
 
 \end_inset
@@ -3918,7 +3918,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Zurücksetzen der Auditing-Checkbox.
+ Zurücksetzen des Auditing-Häkchens.
 \end_layout
 
 \end_inset
@@ -3952,7 +3952,7 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
-Auditing-Datenbank festlegen
+Auditing-Datenbank festlegen/ändern
 \end_layout
 
 \begin_layout Standard
@@ -3975,7 +3975,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Festlegung einer Datenbank für das Auditing.
+Festlegung/Änderung einer Datenbank für das Auditing.
 \end_layout
 
 \end_inset
@@ -4023,8 +4023,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Datenbank für das Auditing wurde festgelegt, gespeichert und kann verwendet
- werden.
+Die festgelegte/geänderte Datenbank für das Auditing wird in der Admin-Konsole
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -4069,19 +4069,6 @@ Normalablauf
  (optional Auswahl über Datenbank-Registry).
 \end_layout
 
-\begin_layout Plain Layout
-2.
- Ausführung des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-Admin-Konsole speichern
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
 \end_inset
 </cell>
 </row>
@@ -4113,7 +4100,7 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
-Globale Einstellungen festlegen
+Globale Einstellungen festlegen/ändern
 \end_layout
 
 \begin_layout Standard
@@ -4136,7 +4123,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Festlegung der globalen Einstellungen.
+Festlegung/Ändern der globalen Einstellungen.
 \end_layout
 
 \end_inset
@@ -4184,7 +4171,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die globalen Einstellungen wurden festgelegt und gespeichert.
+Die festgelegten/geänderten globalen Einstellungen werden in der Admin-Konsole
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -4226,19 +4214,6 @@ Normalablauf
 \begin_layout Plain Layout
 1.
  Eingabe/Änderung der Werte.
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Ausführung des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-Admin-Konsole speichern
-\begin_inset Quotes erd
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -4295,7 +4270,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Speicherung des Inhalts der Admin-Konsole in eine Datenbank.
+Festlegung der in der Admin-Konsole getätigten/geänderten Einstellungen
+ und deren Speicherung in einer dafür vorgesehenen Datenquelle.
 \end_layout
 
 \end_inset
@@ -4315,7 +4291,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Admin-Konsole wird angezeigt.
+Die Admin-Konsole wird angezeigt und es wurde mindestens ein Wert geändert.
 \end_layout
 
 \end_inset
@@ -4336,7 +4312,7 @@ Nachbedingung
 
 \begin_layout Plain Layout
 Alle Werte der Admin-Konsole wurden korrekt gespeichert und alle veralteten
- Werte mit Neuen überschrieben.
+ Werte mit den Neuen überschrieben.
 \end_layout
 
 \end_inset
@@ -4356,18 +4332,10 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-1a.
- Alle geänderten Werte der Admin-Konsole bleiben unverändert.
- Es wird eine entsprechende Fehlermeldung angezeigt und ein erneuter Speicherver
-such kann durchgeführt werden.
- Die Werte bleiben dabei solange erhalten, bis die Admin-Konsole geschlossen
- wird.
-\end_layout
-
-\begin_layout Plain Layout
-1b.&1c.
+1a.&1b.
  Der Benutzer erhält eine Fehlermeldung, die ihn über den entsprechenden
  Fehler informiert.
+ Die geänderten Werte werden verworfen.
 \end_layout
 
 \end_inset
@@ -4422,17 +4390,13 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.
- Beim Speichern der Werte tritt ein Fehler auf.
+ Das Auditing ist aktiviert und vom Benutzer wurde keine Auditing-Datenbank
+ zum Speichern der Auditing-Daten festgelegt.
 \end_layout
 
 \begin_layout Plain Layout
 1b.
- Vom Benutzer wurde keine Auditing-Datenbank zum Speichern der Auditing-Daten
- festgelegt.
-\end_layout
-
-\begin_layout Plain Layout
-1c.
+ Das Auditing ist aktiviert und eine Auditing-Datenbank angegeben.
  Die angegebene Auditing-Datenbank kann nicht verwendet werden, da sie z.B.
  nicht erreichbar ist oder die Authentifizierung fehlgeschlagen ist.
 \end_layout
@@ -4471,7 +4435,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Zurücksetzen des Inhalts der Admin-Konsole.
+Zurücksetzen des Inhalts der Admin-Konsole auf die zuletzt gespeicherten
+ Werte.
 \end_layout
 
 \end_inset
@@ -4663,8 +4628,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle geänderten Werte der Admin-Konsole wurden auf die gespeicherten Standardwer
-te zurückgesetzt.
+Alle Werte der Admin-Konsole wurden auf die gespeicherten Standardwerte
+ zurückgesetzt.
 \end_layout
 
 \end_inset
@@ -4714,7 +4679,7 @@ Normalablauf
 \begin_inset Quotes eld
 \end_inset
 
-Admin-Konsole laden
+Admin-Konsole Defaults laden
 \begin_inset Quotes erd
 \end_inset
 
@@ -5952,7 +5917,12 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ Alle geänderten Werte der Admin-Konsole bleiben unverändert.
+ Es wird eine entsprechende Fehlermeldung angezeigt und ein erneuter Speicherver
+such kann durchgeführt werden.
+ Die Werte bleiben dabei solange im Arbeitsspeicher erhalten, bis die Admin-Kons
+ole geschlossen wird.
 \end_layout
 
 \end_inset
@@ -5992,7 +5962,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ Beim Speichern der Werte tritt ein Fehler auf.
 \end_layout
 
 \end_inset
