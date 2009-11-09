@@ -1465,7 +1465,7 @@ Komponenten des SIMPL Rahmenwerks
 \begin_layout Subsection
 Eclipse
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 - Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
@@ -1515,6 +1515,292 @@ reference "sub:Erweiterbarkeit"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Die Enwicklungsumgebung Eclipse besteht im Rahmen des SIMPL Projektes aus
+ der Eclipse Basis IDE sowie dem SIMPL Eclipse Plugin.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../../../Desktop/SIMPL/Eclipse Komponenten.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Eclipse Komponenten"
+
+\end_inset
+
+Eclipse Komponenten-Diagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse BPEL Designer Plugin
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../../../Desktop/SIMPL/Eclipse BPEL Designer Komponenten.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Eclipse BPEL Designer Plugin Komponenten"
+
+\end_inset
+
+Eclipse BPEL Designer Plugin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das BPEL Designer Plugin besteht aus folgenden Komponenten :
+\end_layout
+
+\begin_layout Subsubsection*
+BPEL Modell
+\end_layout
+
+\begin_layout Standard
+Ein Eclipse Modelling Framework (EMF) das die WS-BPEL 2.0 repräsentiert.
+ Hier wird gemäß den BPEL Konventionen Java-Code erzeugt.
+\end_layout
+
+\begin_layout Subsubsection*
+BPEL Designer GUI
+\end_layout
+
+\begin_layout Standard
+Ein GEF-basierender ( Graphical Editing Framework )Editor als grafisches
+ Hilfsmittel um BPEL-Prozesse zu erstellen.
+\end_layout
+
+\begin_layout Subsubsection*
+BPEL Runtime Framework 
+\end_layout
+
+\begin_layout Standard
+Ein erweiterbares Rahmenwerk welches das Deployment und die Ausführung von
+ BPEL-Prozessen in eine BPEL Engine erlaubt.
+ Für das SIMPL Rahmenwerk wird das Apache ODE Deployment und Runtime Modell
+ verwendet.
+\end_layout
+
+\begin_layout Subsubsection*
+BPEL Validator
+\end_layout
+
+\begin_layout Standard
+Der BPEL Validator arbeitet auf Grundlage des EMF-Modells und erzeugt bei
+ Verletzung der WS-BPEL 2.0 Spezifikation Warnungen bzw.
+ Fehler.
+ Die Erweiterung der BPEL-Möglichkeiten im Rahmen von SIMPL erfolgt in den
+ Extensions-Points und somit wird die Erweiterung WS-BPEL 2.0 konform sein
+ und vom Validator nicht beanstandet.
+\end_layout
+
+\begin_layout Subsubsection*
+BPEL Debug Framework
+\end_layout
+
+\begin_layout Standard
+Das Debug Framework erlaubt dem Benutzer das schrittweise Ausführen eines
+ Prozesses.
+ Dabei wird auch das Setzen von Breakpoints erlaubt.
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Eclipse Plugin
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../../../Desktop/SIMPL/Eclipse SIMPL Plugin Komponenten.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL Eclipse Plugin Komponenten"
+
+\end_inset
+
+SIMPL Eclipse Plugin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Eclipse Plug-In besteht aus der SIMPLE Eclipse GUI sowie den SIMPL-DM-
+Aktivitäten.
+\end_layout
+
+\begin_layout Subsubsection*
+SIMPLE Eclipse GUI
+\end_layout
+
+\begin_layout Standard
+Die SIMPLE Eclipse GUI ermöglicht das einfache Ansprechen aller relevanten
+ Funktionen des Rahmenwerkes über eine grafische Benutzeroberfläche.
+ Diese Oberfläche wird durch Standard-Widget-Toolkit ( SWT ) realisiert
+ und erfolgt nach dem Model-Viewer-Konzept ( MVC).
+ Durch die MVC Architektur wird die Präsentation der Funktionen vom Modell
+ getrennt und ermöglich so in späteren Entwicklungen das einfache Austauschen
+ der Oberfläche (View).
+\end_layout
+
+\begin_layout Subsubsection*
+Darzustellende Funktionen / Informationen in der GUI :
+\end_layout
+
+\begin_layout Paragraph*
+Admin Konsole
+\end_layout
+
+\begin_layout Standard
+Die Admin Konsole ermöglicht den Zugriff auf Folgende Funktionen / Optionen
+ :
+\end_layout
+
+\begin_layout Itemize
+Monitoring ( Aktivieren / Deaktivieren )
+\end_layout
+
+\begin_layout Itemize
+Globale Eigenschaften ( Authentifizierung.
+ Anmeldename und Passwort)
+\end_layout
+
+\begin_layout Itemize
+Referenzen ( Eingabe des RRS Adresse sowie Auflistung der Referenzen mit
+ der Möglichkeit zum Öffenen, Löschen oder Erstellen derselben )
+\end_layout
+
+\begin_layout Itemize
+Datenquellen ( Eingabe der Datenquellen-Registry, Anzeigen der Datenquellen
+ sowie Festlegung der Attribute )
+\end_layout
+
+\begin_layout Itemize
+Strategien ( Auswahl der Strategie.
+ First Find / Best Find / Matching Find )
+\end_layout
+
+\begin_layout Itemize
+Auditing ( Festlegung der Auditing Datenquelle sowie Aktivierung und Deaktivieru
+ng)
+\end_layout
+
+\begin_layout Paragraph*
+Monitoring
+\end_layout
+
+\begin_layout Standard
+Festlegung der Granularität.
+\end_layout
+
+\begin_layout Paragraph*
+Settings
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was kommt hier rein was nicht in der Admin Konsole steht ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Help
+\end_layout
+
+\begin_layout Standard
+Hilfestellungen zur Bedienbarkeit und Funktionen.
+\end_layout
+
+\begin_layout Subsection*
+SIMPL Data-Management-Aktivitäten
+\end_layout
+
+\begin_layout Standard
+Die Simpl-DM-Aktivitäten werden durch das SIMPL-DM-Plugin bereitgestellt.
 \end_layout
 
 \begin_layout Subsection
