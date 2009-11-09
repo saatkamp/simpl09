@@ -1453,10 +1453,6 @@ Komponenten des SIMPL Rahmenwerks
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1465,17 +1461,7 @@ Komponenten des SIMPL Rahmenwerks
 \begin_layout Subsection
 Eclipse
 \begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-- Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
- Schnittstellen nur die Pfeile raus!)
-\end_layout
-
-\begin_layout Plain Layout
-- Eclipse greift zur Modellierung auf den SIMPL Registry Service zu (z.B.
- Auflisten der Datenquellen)
-\end_layout
+status open
 
 \begin_layout Plain Layout
 - Erweiterung der Anfragesprachen (
@@ -1489,14 +1475,6 @@ reference "sub:Erweiterbarkeit"
 \end_layout
 
 \begin_layout Plain Layout
-- SIMPL Transformation Service wird in Eclipse vor dem Deployment verwendet.
-\end_layout
-
-\begin_layout Plain Layout
-- Admin GUI Komponenten nennen (Menü usw.)
-\end_layout
-
-\begin_layout Plain Layout
 - Erweiterung um neue DM-Aktivitäten und Anfragesprachen, wird bei der GUI
  wie erreicht? (zB.
  modularer Aufbau,...)
@@ -1505,11 +1483,6 @@ reference "sub:Erweiterbarkeit"
 \begin_layout Plain Layout
 - IPVS-Referenzen werden evtl.
  im Deployment Descriptor erstellt und beim Deployment aufgelöst
-\end_layout
-
-\begin_layout Plain Layout
-- SIMPL Eclipse Plug-In teilt sich auf in SIMPL DM-Activity Extension, SIMPL
- Administration Plug-In (Namen sind noch nicht festgelegt!)
 \end_layout
 
 \end_inset
@@ -1531,7 +1504,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../../../../../Desktop/SIMPL/Eclipse Komponenten.png
+	filename Eclipse Komponenten.png
 
 \end_inset
 
@@ -1573,7 +1546,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../../../../../Desktop/SIMPL/Eclipse BPEL Designer Komponenten.png
+	filename Eclipse BPEL Designer Komponenten.png
 
 \end_inset
 
@@ -1614,6 +1587,10 @@ BPEL Modell
 \begin_layout Standard
 Ein Eclipse Modelling Framework (EMF) das die WS-BPEL 2.0 repräsentiert.
  Hier wird gemäß den BPEL Konventionen Java-Code erzeugt.
+ Die Erweiterung der BPEL Funktionalitäten erfolgt durch entsprechend interpreti
+erte Inhalte in den BPEL definierten extension points.
+ Bei der Modellierung erfolgt bereits ein Zugriff auf den SIMPL Registry
+ Service um die verfügbaren Datenquellen in das Modell einbinden zu können.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1632,8 +1609,16 @@ BPEL Runtime Framework
 \begin_layout Standard
 Ein erweiterbares Rahmenwerk welches das Deployment und die Ausführung von
  BPEL-Prozessen in eine BPEL Engine erlaubt.
- Für das SIMPL Rahmenwerk wird das Apache ODE Deployment und Runtime Modell
+ Für das SIMPL Rahmenwerk wird das Apache ODE Deployment- und Runtime Modell
  verwendet.
+ Vor dem Deployment wird das erstellte Prozessmodell den SIMPL Transformation
+ Service gesendet.
+ Dieser erstellt zum einen Standard-BPEL-Code der direkt an die Worflow
+ Engine gesendet wird.
+ Zum anderen wird SIMPL Code erstellt der vom SIMPL RRS aufgelößt und an
+ die BPEL Engine gesendet wird.
+ Durch diesen Ansatz wird die Ausführung des SIMPL Codes auf anderen Engines
+ ermöglicht.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1671,7 +1656,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../../../../../../Desktop/SIMPL/Eclipse SIMPL Plugin Komponenten.png
+	filename Eclipse SIMPL Plugin Komponenten.png
 
 \end_inset
 
@@ -1775,16 +1760,8 @@ Settings
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Was kommt hier rein was nicht in der Admin Konsole steht ?
-\end_layout
-
-\end_inset
-
-
+Hier können Einstellungen getroffen werden die nicht systemkritisch sind
+ und somit von jedem Benutzer verändert werden können.
 \end_layout
 
 \begin_layout Paragraph*
@@ -1800,7 +1777,8 @@ SIMPL Data-Management-Aktivitäten
 \end_layout
 
 \begin_layout Standard
-Die Simpl-DM-Aktivitäten werden durch das SIMPL-DM-Plugin bereitgestellt.
+Die Simpl-DM-Aktivitäten werden durch das SIMPL-DM-Plugin bereitgestellt
+ und bei der Modellierung im BPEL Designer verwendet werden.
 \end_layout
 
 \begin_layout Subsection
