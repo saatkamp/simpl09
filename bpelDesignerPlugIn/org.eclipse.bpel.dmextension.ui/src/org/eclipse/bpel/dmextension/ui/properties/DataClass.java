@@ -3,7 +3,7 @@ package org.eclipse.bpel.dmextension.ui.properties;
 import java.util.Observable;
 
 //Nur zu Vorführungszwecken
-public class DataClass extends Observable{
+public class DataClass{
 	
 	private static DataClass instance = null;
 	private String dsAdress = "";
@@ -34,8 +34,6 @@ public class DataClass extends Observable{
 
 	public void setDsAdress(String dsAdress) {
 		this.dsAdress = dsAdress;
-		setChanged();
-		notifyObservers("dsAdress");
 	}
 
 
@@ -50,8 +48,6 @@ public class DataClass extends Observable{
 
 	public void setDsType(String dsType) {
 		this.dsType = dsType;
-		setChanged();
-		notifyObservers("dsType");
 	}
 
 
@@ -66,8 +62,6 @@ public class DataClass extends Observable{
 
 	public void setDsKind(String dsKind) {
 		this.dsKind = dsKind;
-		setChanged();
-		notifyObservers("dsKind");
 	}
 
 
@@ -82,8 +76,6 @@ public class DataClass extends Observable{
 
 	public void setStatement(String statement) {
 		this.statement = statement;
-		setChanged();
-		notifyObservers("statement");
 	}
 
 
@@ -148,13 +140,17 @@ public class DataClass extends Observable{
 	 */
 	public void processStatement(){
 		String statement = "";
-		if (multiColumn.isEmpty() && !innerSelect.isEmpty()){
-			statement = "SELECT" + " " + microSource + " " + "FROM" + " " + " " + innerSelect;
-		}else {
-			if (!multiColumn.isEmpty() && innerSelect.isEmpty()){
-				statement = "SELECT" + " " + multiColumn + " " + "FROM" + " " + " " + macroSource;
-			}else {
-				statement = "SELECT" + " " + microSource + " " + "FROM" + " " + " " + macroSource;
+		if (multiColumn.isEmpty()){
+			if (innerSelect.isEmpty()){
+				statement = "SELECT" + " " + microSource + " " + "FROM" + " " + macroSource;
+			}else{
+				statement = "SELECT" + " " + microSource + " " + "FROM" + " " + innerSelect;
+			}
+		}else{
+			if (innerSelect.isEmpty()){
+				statement = "SELECT" + " " + multiColumn + " " + "FROM" + " " + macroSource;
+			}else{
+				statement = "SELECT" + " " + multiColumn + " " + "FROM" + " " + innerSelect;
 			}
 		}
 		setStatement(statement);
