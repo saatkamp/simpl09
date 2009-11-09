@@ -1785,8 +1785,9 @@ Transformation Service
 \end_layout
 
 \begin_layout Standard
-Damit modellierte Prozesse, die DM-Aktivitäten enthalten, auch auf anderen
- Workflow Engines ausgeführt werden können (siehe Anforderung 
+Damit modellierte Prozesse, die DM-Aktivitäten mit Referenzen enthalten,
+ auch auf anderen Workflow Engines ausgeführt werden können (siehe Anforderung
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Verwendbarkeit"
@@ -1794,7 +1795,7 @@ reference "sub:Verwendbarkeit"
 \end_inset
 
 ), wird der Transformation Service bereitgestellt, mit dem der erweiterte
- BPEL Code mit Referenzen in Standard-BPEL-Code transformiert werden kann.
+ BPEL Code in Standard-BPEL-Code transformiert werden kann.
 \end_layout
 
 \begin_layout Subsubsection
