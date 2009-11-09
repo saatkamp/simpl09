@@ -55,7 +55,7 @@
 \spacing single
 \use_hyperref true
 \pdf_bookmarks true
-\pdf_bookmarksnumbered false
+\pdf_bookmarksnumbered true
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
@@ -773,6 +773,13 @@ Kapitel 4
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Einleitung
 \end_layout
@@ -813,6 +820,16 @@ name "sub:Das-SIMPL-Rahmenwerk"
 \end_inset
 
 Das SIMPL Rahmenwerk
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+generisch
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1248,6 +1265,10 @@ Komponenten
 \end_inset
 
  definierten Schnittstellen und ihre Verwendung.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1283,6 +1304,7 @@ reference "sec:Komponenten"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1366,6 +1388,13 @@ key "key-3"
 , Kapitel 4).
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -1390,6 +1419,7 @@ reference "fig:Komponenten"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1478,7 +1508,7 @@ reference "sub:Erweiterbarkeit"
 \end_layout
 
 \begin_layout Plain Layout
-- SIMPL Eclipse Plugin teilt sich auf in SIMPL DM-Activity Extension, SIMPL
+- SIMPL Eclipse Plug-In teilt sich auf in SIMPL DM-Activity Extension, SIMPL
  Administration Plug-In (Namen sind noch nicht festgelegt!)
 \end_layout
 
@@ -1586,6 +1616,7 @@ reference "sec:Schnittstellen"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1763,7 +1794,7 @@ reference "sub:Verwendbarkeit"
 \end_inset
 
 ), wird der Transformation Service bereitgestellt, mit dem der erweiterte
- BPEL Code in Standard-BPEL-Code transformiert werden kann.
+ BPEL Code mit Referenzen in Standard-BPEL-Code transformiert werden kann.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1814,6 +1845,13 @@ reference "sub:Erweiterbarkeit"
 ).
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -1843,6 +1881,7 @@ reference "fig:Schnittstellen"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1909,7 +1948,7 @@ DeploymentService
 status open
 
 \begin_layout Plain Layout
-wird die wirklich von Eclipse benutzt?
+wird die wirklich von Eclipse benutzt? 
 \end_layout
 
 \end_inset
@@ -1927,7 +1966,7 @@ Apache jUDDI
 \end_layout
 
 \begin_layout Standard
-Apache jUDDI wird vom Rahmenwerk nur über den Registry Service angesprochen.
+Auf Apache jUDDI wird vom Rahmenwerk nur über den Registry Service benutzt.
 \end_layout
 
 \begin_layout Subsection
@@ -2081,6 +2120,29 @@ Die RegistryService-Schnittstelle bietet Funktionen für die Verwaltung von
  WS-Policy-Objekte übertragen.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Literaturverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
@@ -2121,6 +2183,26 @@ Stupro-A SIMPL:
 Spezifikation
 \shape default
  (2009), http://code.google.com/p/simpl09/.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
@@ -2518,6 +2600,29 @@ XML Query Language
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\end_layout
 
 \end_inset
 
