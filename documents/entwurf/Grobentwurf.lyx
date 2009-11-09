@@ -657,7 +657,7 @@ Kapitel 4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.5
 \end_layout
 
 \end_inset
@@ -666,7 +666,7 @@ Kapitel 4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+09.11.2009
 \end_layout
 
 \end_inset
@@ -675,7 +675,7 @@ Kapitel 4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+rehnre
 \end_layout
 
 \end_inset
@@ -684,7 +684,7 @@ Kapitel 4
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Kapitel 3.2
 \end_layout
 
 \end_inset
@@ -1520,7 +1520,7 @@ reference "sub:Erweiterbarkeit"
 \begin_layout Subsection
 Apache ODE
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 - Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
@@ -1562,6 +1562,151 @@ Das ManagementAPI von Apache ODE bietet Funktionen auf Prozess- und auf
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Hier wird der Aufbau und die einzelnen Bestandteile von ODE die für das
+ SIMPL Rahmenwerk von Bedeutung sind und ggf.
+ erweitert werden müssen, erläutert.
+ Im folgenden Schaubild werden diese Bestandteile dargestellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ApacheODE.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Aufbau von Apache ODE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Extension Activities
+\end_layout
+
+\begin_layout Standard
+Extension Acitivities für die Apache ODE Workflow Engine werden als Java
+ Klassen erstellt.
+ Diese Klassen enthalten die Implementierung der neuen Aktivitäten.
+ Um diese Activitäten der ODE Engine hinzuzufügen, ist es notwendig diese
+ als jar-Dateien in den Classpath zu kopieren.
+ Anschließend ist es nur noch notwendig die Extension in der ODE Engine
+ zu registieren.
+\end_layout
+
+\begin_layout Subsubsection
+Event System
+\end_layout
+
+\begin_layout Standard
+Es existieren bereits fünf Event-Typen innerhalb von Apache ODE.
+ Dies sind:
+\end_layout
+
+\begin_layout Itemize
+Instance life cycle events 
+\end_layout
+
+\begin_layout Itemize
+Activity life cycle events 
+\end_layout
+
+\begin_layout Itemize
+Scope handling 
+\end_layout
+
+\begin_layout Itemize
+Data handling 
+\end_layout
+
+\begin_layout Itemize
+Correlation events
+\end_layout
+
+\begin_layout Standard
+Für das Auditing von SIMPL ist es notwendig das eine Reihe von eigenen Events
+ erstellt wird.
+ Dies geschieht durch Erstellung neuer Event-Klassen die von den bestehenden
+ Event Klassen abgeleitet werden und anschließend innerhalb der Engine eingebund
+en werden.
+\end_layout
+
+\begin_layout Subsubsection
+Management API
+\end_layout
+
+\begin_layout Standard
+Die Management API von Apache ODE bietet Funktionen auf Prozess- und auf
+ Instanzebene an, dadurch können z.B.
+ Prozesse gestartet oder beendet werden und Informationen zu den einzelnen
+ Instanzen abgerufen werden.
+\end_layout
+
+\begin_layout Standard
+Die Management API unterteilt sich in Instanz Management und Prozess Management.
+ Beide bieten verschiedene Funktionen an um mit Instanzen oder Prozessen
+ zu arbeiten.
+ Es besteht auf der einen Seite die Möglichkeit verschiedene Informationen
+ über die Prozesse und Instanzen zu erhalten, zum Beispiel eine Liste der
+ verschiedene Prozesse oder Informationen über einen einzelnen Prozess,
+ auf der anderen Seite ist es aber auch möglich direkt mit den Prozessen
+ und Instanzen zu interagieren, so ist es beispielsweise möglich eine Prozessins
+tanz anzuhalten oder direkt zu beenden.
+\end_layout
+
+\begin_layout Subsubsection
+Auditing Datenbank
+\end_layout
+
+\begin_layout Standard
+Apache ODE verfügt bereits über eine interne Derby-Datenbank.
+ Es ist allerdings möglich die Auditing Daten mit Hilfe eines DAOs auf eine
+ andere Datenbank umzubiegen.
+ Dies soll über den SIMPL Core realisiert werden, um die Anbindung einer
+ beliebigen Datenbank zu ermöglichen.
+\end_layout
+
+\begin_layout Subsubsection
+Deployment Service
+\end_layout
+
+\begin_layout Standard
+Der Deployment Service bietet verschiedene Funktionen für das Deployment
+ von Prozessen an.
+\end_layout
+
+\begin_layout Subsubsection
+BPEL Runtime
+\end_layout
+
+\begin_layout Standard
+Die BPEL Runtime ist für die eingentliche Ausführung der Prozesse zuständig.
+ Bei Ausführung der DM-Aktivitäten wird auf den SIMPL Core zugegriffen um
+ die entsprechenden DM-Operationen durchzuführen.
 \end_layout
 
 \begin_layout Subsection
@@ -1642,7 +1787,7 @@ name "fig:SIMPL-Core"
 
 \end_inset
 
-Der SIMPL Core
+Aufbau der SIMPL Core
 \end_layout
 
 \end_inset
