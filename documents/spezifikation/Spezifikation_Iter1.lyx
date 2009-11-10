@@ -6959,7 +6959,165 @@ KOMPLETT UMSTRUKTURIEREN
 In diesem Abschnitt werden alle Datenmanagement-Patterns, die zur Realisierung
  einer generischen Unterstützung von verschiedenen Abfragesprachen, aufgeführt
  und beschrieben.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Klassenhierarchie-der-Datenmanagement-Patterns"
+
+\end_inset
+
+ zeigt die Klassenhierarchie der verschiedenen Datenmanagement-Patterns.
+ Die nachfolgenden Beschreibungen orientieren sich an dieser Hierarchie
+ und erläutern sie gleichzeitig etwas detaillierter.
+ Die Klassenhierarchie wird dabei von oben nach unten durchlaufen (0.Ebene
+ bis 3.Ebene).
 \end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename DM-Patterns.jpg
+	lyxscale 80
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Klassenhierarchie-der-Datenmanagement-Patterns"
+
+\end_inset
+
+Klassenhierarchie der Datenmanagement-Patterns
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Datenmanagement-Patterns gliedern sich, hinsichtlich des Speicherorts
+ der von ihnen zu verarbeitenden Daten, in zwei grundlegende Klassen:
+\end_layout
+
+\begin_layout Itemize
+Zum einen die Klasse 
+\series bold
+Data Source Patterns
+\series default
+, die Daten extern, d.h.
+ auf einer Datenquelle, verarbeiten und
+\end_layout
+
+\begin_layout Itemize
+zum anderen die Klasse
+\series bold
+ Process Cache Patterns
+\series default
+, die Daten intern, d.h.
+ im Cache bzw.
+ Prozessspeicher eines BPEL-Prozesses verarbeiten.
+\end_layout
+
+\begin_layout Standard
+Daraus folgt direkt der weitere Aufbau der Klassenhierarchie, denn alle
+ Unterklassen der Klasse 
+\series bold
+Data Source Patterns
+\series default
+ erfüllen ebenso deren grundlegende Eigenschaft.
+ D.h.
+ dass auch alle Unterklassen Daten nur extern verarbeiten können.
+ Etwas konkreter bedeutet dies, dass Daten nur auf Datenquellen beispielsweise
+ eingefügt, gelöscht, aktualisiert oder abgefragt werden können.
+ Genau dasselbe gilt für die Unterklassen der Klasse 
+\series bold
+Process Cache Patterns
+\series default
+ mit dem Unterschied, dass diese eben nur Daten in bzw.
+ aus dem Prozessspeicher einfügen, abfragen, löschen, usw.
+ können.
+\end_layout
+
+\begin_layout Standard
+In der nächsten Ebene (2.Ebene) der Klassenhierarchie werden die Klassen
+ dann bereits anhand der benötigten Funktionalitäten weiter verfeinert (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+).
+ Dazu gehören beispielsweise die Möglichkeiten Daten abzufragen (
+\series bold
+Query Patterns
+\series default
+), neue Datenstrukturen zu erstellen, zu ändern und zu verwerfen (
+\series bold
+Data Setup Patterns
+\series default
+) oder auch Funktionalitäten um Daten in den Prozessspeicher zu laden (
+\series bold
+Data Retrieval Patterns
+\series default
+).
+\end_layout
+
+\begin_layout Standard
+Die unterste Ebene (3.Ebene) stellt dann, die letztendlich durch BPEL-Aktivitäten
+ umzusetzenden Klassen dar, da diese die Klassen aus der 2.Ebene noch an
+ datenquellen-spezifische Eigenschaften, wie z.B.
+ verschiedene Datenstrukturen, anpassen.
+ Die nachfolgenden Beschreibungen orientieren sich an den neun datenquellen-unab
+hängigen Klassen der 2.Ebene und erläutern die verschiedenen Ausprägungen
+ dieser Klassen, in der 3.Ebene, im Bezug auf ihre Eignung für unterschiedliche
+ Datenquellentypen.
+\end_layout
+
+\begin_layout Paragraph*
+Query Pattern
+\end_layout
+
+\begin_layout Standard
+Das Query Pattern beschreibt die Notwendigkeit, mithilfe von entsprechenden
+ Befehlen, wie z.B.
+ SQL-Befehlen, XQuery-Befehlen oder Systemaufrufen bei Dateisystemen, externe
+ Daten anfordern zu können.
+ Die aus den Queries resultierenden Daten werden dabei auf der Datenquelle
+ zwischengespeichert.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size large
+\begin_inset Note Note
+status open
 
 \begin_layout Subsubsection*
 
@@ -6971,7 +7129,7 @@ Relationale
 Datenbanken
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die zur Realisierung
  einer SQL-inline Unterstützung für BPEL benötigt werden (vgl.
  
@@ -6988,7 +7146,7 @@ key "key-2"
 Query Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
  externe Daten anfordern zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
@@ -6999,7 +7157,7 @@ Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
 Set IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Set IUD Pattern beschreibt die Möglichkeit, auf mengenorientierten Daten,
  verschiedene Datenmanipulations-Operationen ausführen zu können.
  Zu diesen Operationen zählen das mengen- und tupelorientierte Einfügen
@@ -7010,7 +7168,7 @@ Das Set IUD Pattern beschreibt die Möglichkeit, auf mengenorientierten Daten,
 Data Setup Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
  (DDL) Befehle auf einem relationalen Datenbanksystem auszuführen, um so
  während der Prozessausführung die Datenquelle zu konfigurieren oder neue
@@ -7021,7 +7179,7 @@ Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
 Stored Procedure Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
  wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
  Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
@@ -7031,7 +7189,7 @@ Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
 Set Retrieval Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
  Das Set Retrieval Pattern liefert dafür eine mengenorientierte Datenstruktur,
  in die man die angefragten externen Daten innerhalb des BPEL-Prozesses
@@ -7044,7 +7202,7 @@ Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
 Set Access Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Set Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
  erzeugten Datencache sequentiell und direkt (wahlfrei) zugreifen zu können.
 \end_layout
@@ -7053,7 +7211,7 @@ Das Set Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
 Tuple IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Tuple IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencach
 e mengenorientierte Daten eingefügt, aktualisiert und wieder aus diesem
  gelöscht werden können.
@@ -7063,7 +7221,7 @@ e mengenorientierte Daten eingefügt, aktualisiert und wieder aus diesem
 Synchronization Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Synchronization Pattern realisiert die Synchronisation eines lokalen
  Datencaches mit der originalen Datenquelle.
 \end_layout
@@ -7074,7 +7232,7 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 XML-Datenbanken
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die zur Realisierung
  einer XQuery-inline Unterstützung für BPEL benötigt werden.
 \end_layout
@@ -7083,7 +7241,7 @@ Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die zur Realisierung
 Query Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Query Pattern beschreibt die Notwendigkeit, mithilfe von XQuery-Befehlen
  externe Daten anfordern zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
@@ -7094,7 +7252,7 @@ Das Query Pattern beschreibt die Notwendigkeit, mithilfe von XQuery-Befehlen
 Tree IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Tree IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
 -Operationen auf Knoten von baumartigen externen Daten ausführen zu können.
  Zu diesen Operationen zählen das Einfügen, Ersetzen, Umbenennen und Löschen
@@ -7105,7 +7263,7 @@ Das Tree IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulation
 Node Value IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Node IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
 -Operationen in Knoten von baumartigen externen Daten ausführen zu können.
  Zu diesen Operationen zählen das Einfügen, Ersetzen und Löschen von Werten
@@ -7116,7 +7274,7 @@ Das Node IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulation
 Data Setup Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
  (DDL) Befehle auf einem XML-Datenbanksystem auszuführen, um so während
  der Prozessausführung die Datenquelle zu konfigurieren oder neue Container
@@ -7127,7 +7285,7 @@ Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
 Stored Procedure Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
  wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
  Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
@@ -7137,7 +7295,7 @@ Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
 Tree Retrieval Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
  Das Tree Retrieval Pattern liefert dafür eine baumartige Datenstruktur,
  in die man die angefragten externen Daten innerhalb des BPEL-Prozesses
@@ -7150,7 +7308,7 @@ Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
 Tree Access Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Tree Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
  erzeugten Datencache sequentiell und direkt (wahlfrei) zugreifen zu können.
  Der sequentielle Zugriff wird dabei durch entsprechende Funktionen realisiert,
@@ -7167,7 +7325,7 @@ Das Tree Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
 Node IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Node IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencache
  baumartige Daten eingefügt, aktualisiert und wieder aus diesem gelöscht
  werden können.
@@ -7177,7 +7335,7 @@ Das Node IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencache
 Synchronization Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Synchronization Pattern realisiert die Synchronisation eines lokalen
  Datencaches mit der originalen Datenquelle.
 \end_layout
@@ -7188,7 +7346,7 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 Dateisysteme
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die für die Unterstüt
 zung von Dateisystemen in BPEL benötigt werden.
 \end_layout
@@ -7197,7 +7355,7 @@ zung von Dateisystemen in BPEL benötigt werden.
 Query Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Query Pattern beschreibt die Notwendigkeit, externe Daten aus Dateien
  anfordern zu können.
  Die aus den Abfragen resultierenden Daten können dabei auf der Datenquelle
@@ -7208,7 +7366,7 @@ Das Query Pattern beschreibt die Notwendigkeit, externe Daten aus Dateien
 File IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das File IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
 -Operationen auf Dateien eines Dateisystems ausführen zu können.
  Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Dateien.
@@ -7218,7 +7376,7 @@ Das File IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulation
 Data IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Data IUD Pattern beschreibt die Möglichkeit, verschiedene Datenmanipulations
 -Operationen innerhalb von Dateien eines Dateisystems ausführen zu können.
  Zu diesen Operationen zählen das Einfügen , Ersetzen und Löschen von Dateiinhal
@@ -7229,7 +7387,7 @@ ten.
 Data Setup Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
  (DDL) Befehle auf einem Dateisystem auszuführen, um so während der Prozessausfü
 hrung die Datenquelle zu konfigurieren oder neue Container (Ordner, Dateien,
@@ -7240,7 +7398,7 @@ hrung die Datenquelle zu konfigurieren oder neue Container (Ordner, Dateien,
 Stored Procedure Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
  wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
  Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
@@ -7250,7 +7408,7 @@ Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
 File Retrieval Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das File Retrieval Pattern liefert eine Datenstruktur, in die man, aus einem
  Dateisystem, abgefragte Daten innerhalb des BPEL-Prozesses ablegen kann.
  Diese Datenstruktur verhält sich dabei wie ein Cache im BPEL-Prozess, der
@@ -7261,7 +7419,7 @@ Das File Retrieval Pattern liefert eine Datenstruktur, in die man, aus einem
 File Access Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das File Access Pattern beschreibt die Notwendigkeit, auf den erzeugten
  Datencache in geeigneter Weise (z.B.
  sequentiell oder wahlfrei) zugreifen zu können.
@@ -7271,7 +7429,7 @@ Das File Access Pattern beschreibt die Notwendigkeit, auf den erzeugten
 Data IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Data IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencache
  Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden können.
 \end_layout
@@ -7280,7 +7438,7 @@ Das Data IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencache
 Synchronization Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Synchronization Pattern realisiert die Synchronisation eines lokalen
  Datencaches mit der originalen Datenquelle.
 \end_layout
@@ -7291,7 +7449,7 @@ Das Synchronization Pattern realisiert die Synchronisation eines lokalen
 Sensornetze
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dieser Abschnitt beschreibt alle Datenmanagement-Patterns, die für die Unterstüt
 zung von Sensornetzen in BPEL benötigt werden.
  Die nachfolgenden Beschreibungen stützen sich dabei auf die TinyDB 
@@ -7309,7 +7467,7 @@ n Sprache bereitstellt.
 Query Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
  externe Daten anfordern zu können.
  Die aus den Queries resultierenden Daten können dabei auf der Datenquelle
@@ -7320,7 +7478,7 @@ Das Query Pattern beschreibt die Notwendigkeit, mithilfe von SQL-Befehlen
 Data Setup Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
  (DDL) Befehle auf dem Sensornetz-Datenbanksystem auszuführen, um so während
  der Prozessausführung die Datenquelle zu konfigurieren oder neue Container
@@ -7331,7 +7489,7 @@ Das Data Setup Pattern liefert die Möglichkeit, Data Definition Language
 Stored Procedure Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
  wird, ist es für die Verarbeitung von externen Daten unbedingt erforderlich,
  Stored Procedures auch aus einem Prozess heraus aufrufen zu können.
@@ -7341,7 +7499,7 @@ Da die komplexe Verarbeitung von Daten meist durch Stored Procedures realisiert
 Set Retrieval Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
  Das Set Retrieval Pattern liefert dafür eine mengenorientierte Datenstruktur,
  in die man die angefragten externen Daten innerhalb des BPEL-Prozesses
@@ -7354,7 +7512,7 @@ Manchmal ist es nötig, Daten innerhalb des BPEL-Prozesses zu verarbeiten.
 Set Access Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Set Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
  erzeugten Datencache sequentiell und direkt (wahlfrei) zugreifen zu können.
 \end_layout
@@ -7363,7 +7521,7 @@ Das Set Access Pattern beschreibt die Notwendigkeit, auf den im BPEL-Prozess
 Tuple IUD Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Das Tuple IUD Pattern beschreibt die Notwendigkeit, dass auch in einen Datencach
 e mengenorientierte Daten eingefügt, aktualisiert und wieder aus diesem
  gelöscht werden können.
@@ -7373,7 +7531,7 @@ e mengenorientierte Daten eingefügt, aktualisiert und wieder aus diesem
 Set IUD & Synchronization Pattern
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Im Gegensatz zu anderen SQL-Datenbanken gibt es für die TinyDB diese beiden
  Patterns nicht.
  Das liegt daran, dass in die TinyDB nur interne Daten, die aus dem Sensornetz
@@ -7384,6 +7542,11 @@ Im Gegensatz zu anderen SQL-Datenbanken gibt es für die TinyDB diese beiden
  Daten dort aktualisiert, gibt es dieses Pattern ebenfalls nicht für die
  TinyDB.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
