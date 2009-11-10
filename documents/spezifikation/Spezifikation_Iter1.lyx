@@ -2228,23 +2228,13 @@ Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers.
 
 \begin_layout Subsection
 ODE Workflow-Engine
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-NOCH NICHT ÜBERARBEITET => DISKUTIEREN
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Die ODE Workflow-Engine ist ein durch Software realisierter Akteur.
  Sie führt interne Anwendungsfälle aus, die von einem Benutzer durch andere
  Anwendungsfälle indirekt aufgerufen werden.
- Durch die Erweiterungen kann sie DM-Aktivitäten ausführen und kompensieren.
+ Durch die Erweiterungen kann sie DM-Aktivitäten ausführen und zurücksetzen.
 \end_layout
 
 \begin_layout Subsection
@@ -2392,7 +2382,11 @@ Data-Management-Aktivität löschen
 \end_layout
 
 \begin_layout Itemize
-Prozess ausführen
+Prozess auf ODE-Server deployen
+\end_layout
+
+\begin_layout Itemize
+Prozessinstanz starten
 \end_layout
 
 \begin_layout Standard
@@ -2945,25 +2939,7 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
-Prozess auf ODE-Server deployen 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Noch überarbeiten, abstimmen mit 
-\begin_inset Quotes eld
-\end_inset
-
-Prozess ausführen
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+Prozess auf ODE-Server deployen
 \end_layout
 
 \begin_layout Standard
@@ -2986,7 +2962,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausführen des Prozesses auf der Apache ODE Workflow-Engine.
+Deployen eines Prozesses auf der Apache ODE Workflow-Engine.
 \end_layout
 
 \end_inset
@@ -3027,8 +3003,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert, der
- Prozess wurde erfolgreich deployed und wird ausgeführt.
+Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und
+ der Prozess wurde erfolgreich deployed.
 \end_layout
 
 \end_inset
@@ -3049,17 +3025,12 @@ Nachbedingung im Sonderfall
 
 \begin_layout Plain Layout
 3a.
- Der Prozess wurde nicht gestartet.
+ Der ODE-Server ist nicht gestartet und der Prozess wurde nicht deployed.
 \end_layout
 
 \begin_layout Plain Layout
 3b.
- Der Prozess wurde nicht gestartet.
-\end_layout
-
-\begin_layout Plain Layout
-3c.
- Der Prozess wurde beendet und es wird eine Fehlermeldung angezeigt.
+ Der ODE-Server ist gestartet und der Prozess wurde nicht deployed.
 \end_layout
 
 \end_inset
@@ -3111,7 +3082,7 @@ Hinzufügen der BPEL Prozess-Datei
 
 \begin_layout Plain Layout
 3.
- Starten des ODE-Servers über rechten Mausklick und 
+ Starten des ODE-Servers über rechten Mausklick und klicken auf 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3140,17 +3111,12 @@ Sonderfälle
 
 \begin_layout Plain Layout
 3a.
- ODE-Server startet nicht.
+ ODE-Server startet nicht aufgrund eines Fehlers.
 \end_layout
 
 \begin_layout Plain Layout
 3b.
- Beim Starten des Prozesses tritt ein Fehler auf.
-\end_layout
-
-\begin_layout Plain Layout
-3c.
- Während der Ausführung des Prozesses tritt ein Fehler auf.
+ Beim Deployen des Prozesses tritt ein Fehler auf.
 \end_layout
 
 \end_inset
@@ -3164,7 +3130,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Prozess ausführen
+Prozessinstanz starten
 \begin_inset Note Note
 status open
 
@@ -3223,7 +3189,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausführen des Prozesses auf der Apache ODE Workflow-Engine.
+Start einer Prozessinstanz eines zuvor erfolgreich deployten Prozessmodells
+ auf der Apache ODE Workflow-Engine.
 \end_layout
 
 \end_inset
@@ -3243,8 +3210,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engin
-e korrekt in Eclipse eingebunden und die Server-View wird angezeigt.
+Ein Prozessmodell 
 \end_layout
 
 \end_inset
@@ -3264,8 +3230,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert, der
- Prozess wurde erfolgreich deployed und wird ausgeführt.
+
 \end_layout
 
 \end_inset
@@ -3285,18 +3250,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
- Der Prozess wurde nicht gestartet.
-\end_layout
 
-\begin_layout Plain Layout
-3b.
- Der Prozess wurde nicht gestartet.
-\end_layout
-
-\begin_layout Plain Layout
-3c.
- Der Prozess wurde beendet und es wird eine Fehlermeldung angezeigt.
 \end_layout
 
 \end_inset
@@ -3316,47 +3270,7 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.
- Erstellung eines ODE Deployment-Deskriptors über File->New->Other->BPEL2.0->Apac
-he ODE Deployment Descriptor.
-\end_layout
 
-\begin_layout Plain Layout
-2.
- Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
-\end_layout
-
-\begin_layout Itemize
-Rechter Mausklick auf den ODE-Server
-\end_layout
-
-\begin_layout Itemize
-Auswahl des Menüpunkts 
-\begin_inset Quotes eld
-\end_inset
-
-Add and Remove
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Hinzufügen der BPEL Prozess-Datei
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Starten des ODE-Servers über rechten Mausklick und 
-\begin_inset Quotes eld
-\end_inset
-
-Start
-\begin_inset Quotes erd
-\end_inset
-
-.
 \end_layout
 
 \end_inset
@@ -3376,18 +3290,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
- ODE-Server startet nicht.
-\end_layout
 
-\begin_layout Plain Layout
-3b.
- Beim Starten des Prozesses tritt ein Fehler auf.
-\end_layout
-
-\begin_layout Plain Layout
-3c.
- Während der Ausführung des Prozesses tritt ein Fehler auf.
 \end_layout
 
 \end_inset
@@ -3439,11 +3342,11 @@ Auditing deaktivieren
 \end_layout
 
 \begin_layout Itemize
-Auditing-Datenbank festlegen
+Auditing-Datenbank festlegen/ändern
 \end_layout
 
 \begin_layout Itemize
-Globale Einstellungen festlegen
+Globale Einstellungen festlegen/ändern
 \end_layout
 
 \begin_layout Itemize
@@ -4335,7 +4238,8 @@ Nachbedingung im Sonderfall
 1a.&1b.
  Der Benutzer erhält eine Fehlermeldung, die ihn über den entsprechenden
  Fehler informiert.
- Die geänderten Werte werden verworfen.
+ Falls Werte geändert wurden, werden die Änderungen verworfen und so die
+ Werte auf den letzten Speicherstand zurückgesetzt.
 \end_layout
 
 \end_inset
@@ -4780,8 +4684,24 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Änderungen
- wurden verworfen.
+1a.
+ Die Admin-Konsole wurde geschlossen
+\end_layout
+
+\begin_layout Plain Layout
+4b1.
+ Die Admin-Konsole wurde geschlossen und alle Änderungen wurden gespeichert.
+\end_layout
+
+\begin_layout Plain Layout
+3b2.
+ Die Admin-Konsole wurde geschlossen und alle Änderungen wurden verworfen.
+\end_layout
+
+\begin_layout Plain Layout
+3b3.
+ Die Admin-Konsole wird weiterhin angezeigt und alle geänderten Werte bleiben
+ erhalten.
 \end_layout
 
 \end_inset
@@ -4821,8 +4741,51 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.
+1a.
+ Es wurden keine Änderungen in der Admin-Konsole seit dem letzten Speichervorgan
+g durchgeführt.
  Klick auf den Button [Close].
+\end_layout
+
+\begin_layout Plain Layout
+1b.
+ Es wurde mindestens ein Wert in der Admin-Konsole seit dem letzten Speichervorg
+ang geändert.
+ Klick auf den Button [Close].
+\end_layout
+
+\begin_layout Plain Layout
+2b.
+ Es öffnet sich ein Dialog mit einer Sicherheitsabfrage, ob der Benutzer
+ die durchgeführten Änderungen speichern möchte.
+\end_layout
+
+\begin_layout Plain Layout
+3b1.
+ Klick auf den Button [Yes] des Dialogfensters.
+\end_layout
+
+\begin_layout Plain Layout
+3b2.
+ Klick auf den Button [No] des Dialogfensters.
+\end_layout
+
+\begin_layout Plain Layout
+3b3.
+ Klick auf den Button [Cancel] des Dialogfensters.
+\end_layout
+
+\begin_layout Plain Layout
+4b1.
+ Der Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
 \end_layout
 
 \end_inset
@@ -4886,7 +4849,7 @@ Data-Management-Aktivität ausführen
 \end_layout
 
 \begin_layout Itemize
-Data-Management-Aktivität kompensieren
+Data-Management-Aktivität zurücksetzen
 \end_layout
 
 \begin_layout Standard
@@ -4974,8 +4937,9 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde
- eine Instanz des Prozesses erzeugt.
+Es wurde ein Prozess, der mindestens eine DM-Aktivität enthält, deployed
+ und es wurde eine Instanz des Prozesses erzeugt.
+ Eine DM-Aktivität wurde über den Kontrollfluss des Prozesses erreicht.
 \end_layout
 
 \end_inset
@@ -5042,7 +5006,7 @@ Waiting
 \end_layout
 
 \begin_layout Plain Layout
-2.
+2a.
  Die Aktivität befindet sich im Endzustand 
 \begin_inset Quotes eld
 \end_inset
@@ -5055,7 +5019,7 @@ Terminated
 \end_layout
 
 \begin_layout Plain Layout
-3.
+3a.
  Die Aktivität befindet sich im Endzustand 
 \begin_inset Quotes eld
 \end_inset
@@ -5068,7 +5032,7 @@ Faulted
 \end_layout
 
 \begin_layout Plain Layout
-4.
+4a.
  Die Aktivität befindet sich im Endzustand 
 \begin_inset Quotes eld
 \end_inset
@@ -5122,16 +5086,9 @@ Ready
 
 \begin_layout Plain Layout
 4.
- Die Ausführung der DM-Aktivität ist beendet und sie befindet sich im Zustand
- 
-\begin_inset Quotes eld
-\end_inset
-
-Waiting
-\begin_inset Quotes erd
-\end_inset
-
-.
+ Die DM-Operation wurde in der Datenquelle erfolgreich ausgeführt, und die
+ Ausführung der DM-Aktivität ist damit beendet.
+ Die DM-Aktivität befindet sich im Zustand "Waiting".
 \end_layout
 
 \begin_layout Plain Layout
@@ -5274,7 +5231,7 @@ Terminate_Activity Event
 \end_layout
 
 \begin_layout Subsubsection
-Data-Management-Aktivität kompensieren
+Data-Management-Aktivität zurücksetzen
 \end_layout
 
 \begin_layout Standard
@@ -5297,8 +5254,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rückgängig machen einer DM-Aktivität, so dass der Zustand der Datenqeulle
- vor Ausführung der DM-Aktivität wiederhergestellt wird.
+Rückgängig machen einer laufenden DM-Aktivität, so dass der Zustand der
+ Datenquelle vor Ausführung der DM-Aktivität wiederhergestellt wird.
  
 \end_layout
 
@@ -5389,7 +5346,7 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Alle Änderungen werden zurückgesetzt.
+ Alle Änderungen in der Datenquelle werden zurückgesetzt.
 \end_layout
 
 \end_inset
@@ -5453,11 +5410,11 @@ Admin-Konsole laden
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole speichern
+Admin-Konsole Defaults laden
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole Defaults laden
+Admin-Konsole speichern
 \end_layout
 
 \begin_layout Standard
@@ -5610,8 +5567,14 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wird eine entsprechende Fehlermeldung angezeigt, die hinterlegten Standard-Ei
-nstellungen wurden geladen und werden im Fenster 
+3b.
+ Die in der Admin-Konsole hinterlegten Werte bleiben unverändert.
+\end_layout
+
+\begin_layout Plain Layout
+4a.
+ Die hinterlegten Default-Einstellungen wurden geladen und werden im Fenster
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5640,12 +5603,12 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Laden der Werte aus einer Datenquelle.
+ Laden aller zuletzt gespeicherten Werte aus einer Datenquelle.
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Füllen der Felder der Admin-Konsole.
+ Füllen der Felder der Admin-Konsole mit den geladenen Werten.
 \end_layout
 
 \end_inset
@@ -5666,8 +5629,38 @@ Sonderfälle
 
 \begin_layout Plain Layout
 1a.
- Beim Laden der Werte tritt ein Fehler auf und die Standardwerte werden
- geladen.
+ Beim Laden der Werte tritt ein Fehler auf, da z.B.
+ die Datenquelle nicht erreichbar ist.
+\end_layout
+
+\begin_layout Plain Layout
+2a.
+ Es wird eine entsprechende Fehlermeldung angezeigt und der Benutzer wird
+ über ein Dialogfenster gefragt, ob er die Default-Einstellungen laden möchte
+ oder nicht.
+\end_layout
+
+\begin_layout Plain Layout
+3a.
+ Klick auf den Button [Yes].
+\end_layout
+
+\begin_layout Plain Layout
+3b.
+ Klick auf den Button [No].
+\end_layout
+
+\begin_layout Plain Layout
+4a.
+ Der Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole Defaults laden
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
 \end_layout
 
 \end_inset
@@ -5732,6 +5725,14 @@ Default-Einstellungen der Admin-Konsole laden
 \begin_inset Quotes erd
 \end_inset
 
+ oder 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
  wurde ausgeführt.
 \end_layout
 
@@ -5752,7 +5753,16 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Alle Werte der Datenquelle mit den Default-Einstellungen der Admin-Konsole
+ wurden geladen und werden im Fenster 
+\begin_inset Quotes eld
+\end_inset
 
+Admin Console
+\begin_inset Quotes erd
+\end_inset
+
+ und dessen Unterfenstern angezeigt.
 \end_layout
 
 \end_inset
@@ -5772,6 +5782,16 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
+keine
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Im Fehlerfall im Source-Code hinterlegte Werte laden?
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -5792,7 +5812,13 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Laden aller Default-Werte aus einer Datenquelle.
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Füllen der Felder der Admin-Konsole mit den geladenen Werten.
 \end_layout
 
 \end_inset
@@ -5812,7 +5838,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+keine
 \end_layout
 
 \end_inset
@@ -5849,7 +5875,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle Einstellungen der Admin-Konsole werden in einer Datenquelle persistent
+ gespeichert.
 \end_layout
 
 \end_inset
@@ -5897,7 +5924,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Alle Werte der Admin-Konsole wurden korrekt auf einer Datenquelle persistent
+ gespeichert.
 \end_layout
 
 \end_inset
@@ -5942,7 +5970,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Speichern der Werte auf einer Datenquelle.
 \end_layout
 
 \end_inset
@@ -5978,16 +6007,6 @@ Sonderfälle
 
 \begin_layout Subsection
 Komponenten und ihre Anwendungsfälle
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Am Schluss nochmal überprüfen!!!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6260,25 +6279,16 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Prozess ausführen
+Prozessinstanz starten
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6287,7 +6297,16 @@ x
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6311,7 +6330,7 @@ Admin-Konsole öffnen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -6349,7 +6368,7 @@ Auditing aktivieren
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+
 \end_layout
 
 \end_inset
@@ -6387,44 +6406,6 @@ Auditing deaktivieren
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Auditing-Datenbank festlegen
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6454,7 +6435,45 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Globale Einstellungen festlegen
+Auditing-Datenbank festlegen/ändern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Globale Einstellungen festlegen/ändern
 \end_layout
 
 \end_inset
@@ -6602,7 +6621,7 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6611,16 +6630,7 @@ Admin-Konsole schließen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6629,7 +6639,16 @@ x
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6678,27 +6697,16 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Data-Management-Aktivität kompensieren 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-nach Absprache anpassen (kompensieren vs.
- rückgängig machen)
-\end_layout
-
-\end_inset
-
-
+Data-Management-Aktivität zurücksetzen
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6707,7 +6715,7 @@ x
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6716,7 +6724,7 @@ x
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -6769,7 +6777,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole Default-Werte laden
+Admin-Konsole Defaults laden
 \end_layout
 
 \end_inset
