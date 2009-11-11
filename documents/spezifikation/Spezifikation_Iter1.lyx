@@ -1302,25 +1302,18 @@ reference "fig:Systemumgebung"
  nötig implementieren zu müssen.
  Dieser Umstand erhöht die Portabilität und die Erweiterbarkeit des Rahmenwerks
  beträchtlich.
- Das SIMPL Eclipse Plug-In erweitert die grafische Oberfläche von Eclipse
- um Einstellungen für das SIMPL Rahmenwerk vornehmen zu können.
+ Das SIMPL Eclipse Plug-In besteht selbst aus zwei einzelnen Plug-Ins, dem
+ SIMPL GUI Plug-In und dem SIMPL DM Plug-In.
+ Das SIMPL GUI Plug-In erweitert die grafische Oberfläche von Eclipse um
+ Einstellungen für das SIMPL Rahmenwerk vornehmen zu können.
  Das SIMPL DM Plug-In erweitert das Eclipse BPEL Designer Plug-In um Prozesse
  mit DM-Aktivitäten modellieren zu können.
+ Durch diese Trennung ist es möglich auch nur eines der beiden Plug-Ins
+ in Eclipse einzubinden.
  Die DM-Aktivitäten werden in der Workflow-Engine implementiert und in diese
  als Plug-In eingebunden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Die zwei Plug-Ins heißen nun: SIMPL GUI Plug-In und SIMPL DM Plug-In überall
- ändern! Diagramm nicht vergessen
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1335,7 +1328,6 @@ status open
 \align center
 \begin_inset Graphics
 	filename Systemumgebung.jpeg
-	lyxscale 80
 	width 70text%
 
 \end_inset
@@ -1697,17 +1689,7 @@ Portabilität
 Die Portabilität des SIMPL Eclipse Plug-Ins ist durch die Integration in
  Eclipse gewährleistet.
  Der SIMPL Core wird dahingehend implementiert, dass er in allen Java unterstütz
-enden Web Containern 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Web-Container noch beschreiben (Begriffslexikon ?)
-\end_layout
-
-\end_inset
-
-lauffähig ist.
+enden Web Containern lauffähig ist.
 \end_layout
 
 \begin_layout Subsection
@@ -2276,16 +2258,6 @@ name "sec:Anwendungsfälle-(Use-Cases)"
 \end_inset
 
 Anwendungsfälle (Use-Cases)
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Wenn alle Use-Cases fertig überarbeitet wurden, alle Diagramme aktualisieren!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3142,42 +3114,6 @@ Sonderfälle
 
 \begin_layout Subsubsection
 Prozessinstanz starten
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Peter Reimann: 
-\begin_inset Quotes eld
-\end_inset
-
-Ihr beschreibt hier im Normalablauf nur den Use Case "Prozess auf ODE-Server
- deployen".
- Wenn man den hier beschriebenen Normalablauf durchführt, wird noch keine
- Prozessinstanz gestartet.
- Dies passiert erst, wenn man eine Instanz mit einer entsprechenden Nachricht
- anstößt (deswegen ist am Anfang eines Prozessmodells auch immer ein receive).
-\end_layout
-
-\begin_layout Plain Layout
-Außerdem müssen die beiden Use Cases "Prozess auf ODE-Server deployen" und
- "Prozessinstanz starten" voneinander getrennt sein.
- Man kann einen Prozess, nachdem er deployt wurde, auch mehrmals starten
- (das gibt dann jeweils eine neue Prozessinstanz).
-\end_layout
-
-\begin_layout Plain Layout
-Falls ihr nicht wisst, was der Unterschied zwischen "Prozess deployen" und
- "Prozessinstanz ausführen/starten" ist, fragt noch mal bei euren Betreuern
- nach.
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6041,7 +5977,7 @@ x
  markierte Komponente führt dabei den Anwendungsfall aus.
  Es ist allerdings durchaus möglich, dass Anwendungsfälle durch mehrere
  Komponenten ausgeführt werden.
- Zum Beispiel wird das Auditing in der Admin-Konsole (SIMPL Eclipse Plug-In)
+ Zum Beispiel wird das Auditing in der Admin-Konsole (SIMPL GUI Plug-In)
  aktiviert, die Ausführung des Auditings wird allerdings durch den SIMPL
  Core realisiert.
 \end_layout
@@ -6112,7 +6048,7 @@ SIMPL Core
 \begin_layout Plain Layout
 
 \series bold
-SIMPL Eclipse
+SIMPL GUI
 \begin_inset Newline newline
 \end_inset
 
@@ -6968,8 +6904,8 @@ KOMPLETT UMSTRUKTURIEREN
 
 \begin_layout Standard
 In diesem Abschnitt werden alle Datenmanagement-Patterns, die zur Realisierung
- einer generischen Unterstützung von verschiedenen Abfragesprachen, aufgeführt
- und beschrieben.
+ einer generischen Anbindung von verschiedenen Datenquellen benötigt werden,
+ aufgeführt und beschrieben.
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7036,7 +6972,7 @@ Die Datenmanagement-Patterns gliedern sich, hinsichtlich des Speicherorts
 \end_layout
 
 \begin_layout Itemize
-Zum einen die Klasse 
+Zum einen in die 
 \series bold
 Data Source Patterns
 \series default
@@ -7045,9 +6981,9 @@ Data Source Patterns
 \end_layout
 
 \begin_layout Itemize
-zum anderen die Klasse
+zum anderen in die 
 \series bold
- Process Cache Patterns
+Process Cache Patterns
 \series default
 , die Daten intern, d.h.
  im Cache bzw.
@@ -7121,7 +7057,7 @@ Das Query Pattern beschreibt die Notwendigkeit, mithilfe von entsprechenden
  SQL-Befehlen, XQuery-Befehlen oder Systemaufrufen bei Dateisystemen, externe
  Daten anfordern zu können.
  Die aus den Queries resultierenden Daten werden dabei auf der Datenquelle
- zwischengespeichert.
+ gespeichert.
 \end_layout
 
 \begin_layout Standard
