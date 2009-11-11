@@ -1310,6 +1310,17 @@ reference "fig:Systemumgebung"
  als Plug-In eingebunden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die zwei Plug-Ins heißen nun: SIMPL GUI Plug-In und SIMPL DM Plug-In überall
+ ändern! Diagramm nicht vergessen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7113,7 +7124,7 @@ Das Query Pattern beschreibt die Notwendigkeit, mithilfe von entsprechenden
  zwischengespeichert.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \size large
 \begin_inset Note Note
