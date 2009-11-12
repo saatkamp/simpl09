@@ -11092,7 +11092,12 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:queryActivity standard-attributes simpl-attributes>
+	<simpl:queryActivity standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -11174,7 +11179,12 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:insertActivity standard-attributes simpl-attributes>
+	<simpl:insertActivity standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -11258,7 +11268,12 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:updateActivity standard-attributes simpl-attributes>
+	<simpl:updateActivity standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -11342,7 +11357,12 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:deleteActivity standard-attributes simpl-attributes>
+	<simpl:deleteActivity standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -11493,7 +11513,12 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:createActivity standard-attributes simpl-attributes>
+	<simpl:createActivity standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -11644,7 +11669,12 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:dropActivity standard-attributes simpl-attributes>
+	<simpl:dropActivity standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -11729,7 +11759,12 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:callActivity standard-attributes simpl-attributes>
+	<simpl:callActivity standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -11812,7 +11847,17 @@ status open
 
 \begin_layout Plain Layout
 
-	<simpl:retrieveDataActivity standard-attributes simpl-attributes>
+	<simpl:retrieveDataActivity 
+\end_layout
+
+\begin_layout Plain Layout
+
+			standard-attributes 
+\end_layout
+
+\begin_layout Plain Layout
+
+			simpl-attributes>
 \end_layout
 
 \begin_layout Plain Layout
@@ -12014,10 +12059,10 @@ e Datenquellen
 <lyxtabular version="3" rows="12" columns="5">
 <features>
 <column alignment="center" valignment="top" width="3cm">
-<column alignment="center" valignment="top" width="2cm">
-<column alignment="center" valignment="top" width="2cm">
-<column alignment="center" valignment="top" width="3cm">
-<column alignment="center" valignment="top" width="4cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="1.5cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<column alignment="center" valignment="top" width="3.5cm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
