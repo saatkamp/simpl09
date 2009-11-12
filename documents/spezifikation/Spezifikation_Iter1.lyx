@@ -12700,53 +12700,16 @@ reference "sub:Globale-Einstellungen"
 
 \begin_layout Subsubsection
 Autorisierung
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Kommentare nochmal anschauen und mit schneimi besprechen
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Peter Reimann: 
-\begin_inset Quotes eld
-\end_inset
-
-was ist denn die "Operation eines Zugriffs"? Bitte beschreibt das etwas
- genauer.
- Vielleicht meint ihr auch einfach nur einen Zugriff?
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Eine Autorisierung findet meist nach einer erfolgreichen Authentifizierung
- statt und überprüft, ob die Operation eines Zugriffs berechtigt ist.
+ statt und überprüft, ob der Zugriff bzw.
+ die Operation die ausgeführt werden soll, berechtigt ist.
  Dazu werden Zugriffsrechte überprüft, die als Regeln formuliert auf Seite
  der Datenquellen verwaltet werden.
- In der ersten Iteration wird lediglich die Autorisierung über den Benutzernamen
- unterstützt.
-\end_layout
-
-\begin_layout Subsubsection*
-Benutzername
-\end_layout
-
-\begin_layout Standard
-Wird durch die Authentifizierung durch Benutzername und Passwort unterstützt.
+ In der ersten Iteration wird lediglich die Autorisierung über Benutzername
+ und Passwort unterstützt.
 \end_layout
 
 \begin_layout Standard
