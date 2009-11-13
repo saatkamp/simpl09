@@ -23,7 +23,7 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
-\def\docvers{1.2}
+\def\docvers{1.3}
 \def\docautor{}
 \def\docdate{13. November 2009}
 
