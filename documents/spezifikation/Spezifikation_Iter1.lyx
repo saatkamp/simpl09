@@ -12812,17 +12812,6 @@ Sollen wir wenn es geht Autorisierunginformationen abrufen und die Autorisierung
 
 \begin_layout Subsection
 Auditing
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Inhaltliche Kommentare mit René besprechen und entsprechende Änderungen
- durchführen
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13007,6 +12996,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ODE Event Modell Steinmetz.JPG
 	scale 65
