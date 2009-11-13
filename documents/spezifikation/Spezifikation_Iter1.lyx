@@ -1573,31 +1573,8 @@ Robustheit
 status open
 
 \begin_layout Plain Layout
-NOCH NICHT ÜBERARBEITET => DISKUTIEREN
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 in der nächsten Iteration nochmal überarbeiten: Wiederherstellbarkeit/Fortsetzen
  von Prozessen nach Neustart
-\end_layout
-
-\begin_layout Plain Layout
-Peter Reimann: 
-\begin_inset Quotes eld
-\end_inset
-
-Ist auch eine Recovery möglich? Vielleicht diese Möglichkeit noch zusätzlich
- zu dem "Neustarten" schreiben.
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -1613,8 +1590,9 @@ Unter Robustheit ist hier zu verstehen, dass selbst wenn es zu ungünstigen
  der Ausfall des Servers oder Probleme bei der Verbindung mit Datenquellen.
  Dazu sollen Prozesse fehlerfrei ausgeführt werden und entsprechend korrekte
  Ergebnisse liefern oder das Rahmenwerk sicher beendet werden können.
- Nach dem Neustart des Rahmenwerks müssen auch die Prozesse, die zum Zeitpunkt
- des Fehlers ausgeführt wurden, neu gestartet werden.
+ Nach dem Neustart des Rahmenwerks müssen evtl.
+ auch die Prozesse, die zum Zeitpunkt des Fehlers ausgeführt wurden, neu
+ gestartet werden, falls kein Recovery möglich ist.
 \end_layout
 
 \begin_layout Standard
@@ -1653,32 +1631,6 @@ reference "sub:Authentifizierung-und-Autorisierung"
 \end_inset
 
  beschrieben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Die Sicherheit im System wird durch das Authentifizierungs und Autorisierungsver
-fahren Benutzername & Passwort geleistet.
-\end_layout
-
-\begin_layout Plain Layout
-Die Verbindung zwischen Client auf der DatenBanken erfolgt über vom Admin
- vordefinierte bzw.
- vorgegebene Username und passwört (Einlogdaten).
- 
-\end_layout
-
-\begin_layout Plain Layout
-Der Administratot und alle anedere Verwaltung-Aktuere, die andere , haben
- eigene von der normale Benutzern unabängige Passwort.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1938,27 +1890,6 @@ Global Settings
  der Admin-Konsole gezeigt.
  Hier können Standardwerte für die Authentifizierung bei Datenquellen angegeben
  werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-In folgeneden Dialog kann der Benutzer über den Unterbaumpunkt 
-\begin_inset Quotes eld
-\end_inset
-
-Global settings-Authentication Data
-\begin_inset Quotes erd
-\end_inset
-
- die Zugangsdaten angeben.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2741,26 +2672,6 @@ keine
 
 \begin_layout Subsubsection
 Data-Management-Aktivität löschen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Peter Reimann: 
-\begin_inset Quotes eld
-\end_inset
-
-Was passiert, wenn Links auf die Aktivität gezeigt haben? Werden die Links
- auch gelöscht? Ihr könnt dabei gern das Standardverhalten vom Eclipse BPEL
- Designer referenzieren.
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2824,6 +2735,8 @@ Nachbedingung
 
 \begin_layout Plain Layout
 Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess
+ gelöscht.
+ Alle ausgehenden und eingehenden Links der DM-Aktivität wurden ebenfalls
  gelöscht.
 \end_layout
 
@@ -3113,7 +3026,17 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Prozessinstanz starten
+Prozessinstanz starten 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Noch ausarbeiten
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3136,8 +3059,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Start einer Prozessinstanz eines zuvor erfolgreich deployten Prozessmodells
- auf der Apache ODE Workflow-Engine.
+Start einer Prozessinstanz eines Prozessmodells auf der Apache ODE Workflow-Engi
+ne.
 \end_layout
 
 \end_inset
@@ -3157,7 +3080,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Prozessmodell 
+Das Prozessmodell wurde erfolgreich auf Apache ODE Workflow-Engine deployt.
 \end_layout
 
 \end_inset
@@ -3217,7 +3140,9 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Instanzierung des Prozessmodells und Start der Prozessinstanz durch eine
+ entsprechende SOAP-Nachricht.
 \end_layout
 
 \end_inset
@@ -5064,6 +4989,11 @@ Complete
  gekennzeichnet.
 \end_layout
 
+\begin_layout Plain Layout
+7.
+ Die nächste Aktivität im Kontrollfluss wird initialisiert.
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -5410,16 +5340,6 @@ keine
 
 \begin_layout Subsection
 Anwendungsfälle des Eclipse BPEL Designers
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Kompletten Abschnitt/Kommentare im Team besprechen und NOCH ÜBERARBEITEN
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5811,17 +5731,15 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-keine
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Im Fehlerfall im Source-Code hinterlegte Werte laden?
-\end_layout
-
+Im Quellcode hinterlegte Default-Werte werden geladen und im Fenster 
+\begin_inset Quotes eld
 \end_inset
 
+Admin Console
+\begin_inset Quotes erd
+\end_inset
 
+ und dessen Unterfenstern angezeigt.
 \end_layout
 
 \end_inset
@@ -5867,7 +5785,9 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-keine
+1a.
+ Beim Laden der Werte tritt ein Fehler auf, da z.B.
+ die Datenquelle nicht erreichbar ist.
 \end_layout
 
 \end_inset
