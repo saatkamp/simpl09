@@ -13773,6 +13773,19 @@ XQuery Update Facility, http://www.w3.org/standards/techs/xquery, zuletzt
  zugegriffen am 06.11.2009
 \end_layout
 
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-23"
+
+\end_inset
+
+Steinmetz, T.: Ein Event-Modell für WS-BPEL 2.0 und dessen Realisierung in
+ Apache ODE.
+ Institut für Architektur von Anwendungssystemen, Universität Stuttgart.
+ 02.08.2009
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
