@@ -5040,6 +5040,19 @@ Ready
 
 \begin_layout Plain Layout
 5.
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+Complete_Activity
+\begin_inset Quotes erd
+\end_inset
+
+ Event an die DM-Aktivität geschickt.
+\end_layout
+
+\begin_layout Plain Layout
+6.
  Die DM-Aktivität wird als 
 \begin_inset Quotes eld
 \end_inset
@@ -5082,7 +5095,20 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst.
+ ausgelöst und die Aktivität wird beendet.
+\end_layout
+
+\begin_layout Plain Layout
+1a.3.
+ Der Use Case 
+\begin_inset Quotes eld
+\end_inset
+
+Data-Management-Aktivität zurücksetzen
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
 \end_layout
 
 \begin_layout Plain Layout
@@ -5096,6 +5122,23 @@ Complete_Acitivity Event
 \end_inset
 
  an die DM-Aktivität gesendet.
+ Dieses Event wird geschickt wenn die Aktivität im Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+ blockiert wurde, allerdings kein 
+\begin_inset Quotes eld
+\end_inset
+
+Start_Activity
+\begin_inset Quotes erd
+\end_inset
+
+ Event gesendet wurde.
 \end_layout
 
 \begin_layout Plain Layout
@@ -5126,7 +5169,20 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst.
+ ausgelöst und die Aktivität wird beendet.
+\end_layout
+
+\begin_layout Plain Layout
+2a.3.
+ Der Use Case 
+\begin_inset Quotes eld
+\end_inset
+
+Data-Management-Aktivität zurücksetzen
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
 \end_layout
 
 \begin_layout Plain Layout
@@ -5150,6 +5206,19 @@ Activity_Faulted Event
 \end_layout
 
 \begin_layout Plain Layout
+3a.3.
+ Der Use Case 
+\begin_inset Quotes eld
+\end_inset
+
+Data-Management-Aktivität zurücksetzen
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
+\end_layout
+
+\begin_layout Plain Layout
 4a.1.
  In der Vateraktivität tritt ein Fehler auf.
 \end_layout
@@ -5165,6 +5234,19 @@ Terminate_Activity Event
 \end_inset
 
  ausgelöst.
+\end_layout
+
+\begin_layout Plain Layout
+4a.3.
+ Der Use Case 
+\begin_inset Quotes eld
+\end_inset
+
+Data-Management-Aktivität zurücksetzen
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
 \end_layout
 
 \end_inset
@@ -5224,7 +5306,7 @@ Vorbedingung
 
 \begin_layout Plain Layout
 Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle
- des Anwendungsfalls 
+ 1a.1, 2a.1, 3a.1 und 4a.1 des Anwendungsfalls 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12849,6 +12931,117 @@ reference "fig:Event-Modell-des-Auditings"
  Darin enthalten sind die verschiedenen WS-BPEL Events.
  Auf diesem Modell aufbauend wird analyisert, welche Events in ODE hinzugefügt
  werden müssen.
+ Das Modell baut auf dem Modell in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+ auf.
+ Und beschreibt die Besonderheiten die während der Ausführung (im Zustand
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Executing
+\begin_inset Quotes erd
+\end_inset
+
+ in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+) auftreten.
+ Die Zustände 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Waiting
+\begin_inset Quotes erd
+\end_inset
+
+ wurden im Event Modell der Ausführung einer DM-Aktivität mit Rot gekennzeichnet
+, um ersichtlich zu machen, dass dieses Event Modell nur ein Ausschnitt
+ aus dem Modell in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+ ist und die Ausführung vor 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+ und nach 
+\begin_inset Quotes eld
+\end_inset
+
+Waiting
+\begin_inset Quotes erd
+\end_inset
+
+ der in diesem Modell gleicht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ODE Event Modell Steinmetz.JPG
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-Event-Modell"
+
+\end_inset
+
+BPEL Event Modell für die Ausführung allgemeiner Aktivitäten in WS-BPEL
+ 2.0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12900,32 +13093,77 @@ Aus den Events im BPEL Event Modell der Ausführung folgt, dass zwei neue
 Connection_Events
 \end_layout
 
+\begin_layout Standard
+Diese Events werden erzeugt, um verschiedene Ereignisse bei der Verbindung
+ zu einer Datenquelle zu erfassen.
+\end_layout
+
 \begin_layout Itemize
 Connection_Failure_Event 
+\end_layout
+
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn ein Verbindungsversuch fehlschlägt.
 \end_layout
 
 \begin_layout Itemize
 Connection_Active_Event 
 \end_layout
 
-\begin_layout Itemize
-Connection_Closed_Event 
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn erfolgreich eine Verbindung aufgebaut wurde.
 \end_layout
 
 \begin_layout Itemize
-Connection_TimeOut_Event
+Connection_Closed_Event
+\end_layout
+
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn die Verbindung zu einer Datenquelle beendet
+ wurde.
+\end_layout
+
+\begin_layout Itemize
+Connection_Lost_Event
+\end_layout
+
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn es zu einen unerwarteten Abbruch der Verbindung
+ kommt.
+ Beispielsweise wenn es zu einem Timeout der Verbindung kommt.
 \end_layout
 
 \begin_layout Paragraph
 DM_Events
 \end_layout
 
+\begin_layout Standard
+Die DM_Events sind für die Ereignisse einer DM-Aktivität zuständig.
+ Hier wird nicht unterschieden, um welche Art von DM-Aktivität es sich handelt.
+ Für alle DM-Aktivitäten werden dieselben Events erzeugt.
+ Diese Events enthalten jeweils Informationen über den Namen und den Typ
+ der Aktivität.
+ Diese speziellen Events werden zusätzlich zu den normalen Activity_Events
+ erzeugt, um dem Nutzer die Möglichkeit zu bieten sich nur die Events der
+ DM-Aktivitäten und nicht aller Aktivitäten anzeigen zu lassen.
+\end_layout
+
 \begin_layout Itemize
 DM_Finished 
 \end_layout
 
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität erfolgreich
+ beendet wurde.
+\end_layout
+
 \begin_layout Itemize
 DM_Started 
+\end_layout
+
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität gestartet
+ wurde.
 \end_layout
 
 \begin_layout Itemize
@@ -12933,46 +13171,8 @@ DM_Failure
 \end_layout
 
 \begin_layout Standard
-Dabei sind Connection_Events für Ereignisse bei der Verbindung zu einer
- Datenquelle zuständig.
- Wie die Namen der Events bereits zeigen, gibt es ein Event für:
-\end_layout
-
-\begin_layout Itemize
-einen fehlgeschlagenen Verbindungsversuch
-\end_layout
-
-\begin_layout Itemize
-einen erfoglreichen Verbindungsaufbau 
-\end_layout
-
-\begin_layout Itemize
-das Beenden einer Verbindung zu einer Datenquelle 
-\end_layout
-
-\begin_layout Itemize
-einen unerwarteten Abbruch der Verbindung
-\end_layout
-
-\begin_layout Standard
-Die DM_Events sind für die Ereignisse einer DM-Aktivität zuständig.
- Hier wird nicht getrennt, um welche Art von DM-Aktivität es sich handelt.
- Für alle DM-Aktivitäten werden die selben Events erzeugt.
- Diese Events enthalten jeweils Informationen über den Namen und den Typ
- der Aktivität.
- Auch hier zeigen bereits die Namen an welche Events es gibt:
-\end_layout
-
-\begin_layout Itemize
-die Ausführung einer DM-Aktivität wurde gestartet 
-\end_layout
-
-\begin_layout Itemize
-die Ausführung einer DM-Aktivität wurde erfolgreich beendet 
-\end_layout
-
-\begin_layout Itemize
-bei der Ausführung einer DM-Aktivität trat ein Fehler auf 
+Dieses Event wird erzeugt, wenn bei der Ausführung einer DM-Aktivität ein
+ Fehler auftrat.
 \end_layout
 
 \begin_layout Standard
