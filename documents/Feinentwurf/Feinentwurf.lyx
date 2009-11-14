@@ -19,10 +19,10 @@
 % docvers = Versionsnr.
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
-\def\doctitel{Dokumententitel}
+\def\doctitel{Feinentwurf}
 \def\docvers{1.0}
-\def\docautor{Max Mustermann}
-\def\docdate{12. Juli 2009}
+\def\docautor{}
+\def\docdate{12. November 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -419,6 +419,21 @@ status collapsed
 
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ich werde am Montag alle dazu gehörige Kapiteln bzw.
+ Abschnitte und unterabschnitte bereitstellen anhand den Buch von Ludewig
+ ,weil ich keins zuhause besitze.
+\end_layout
 
 \end_inset
 
