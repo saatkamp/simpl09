@@ -741,5 +741,146 @@ Erstellung des Dokuments.
 
 \end_layout
 
+\begin_layout Section
+Einleitung
+\end_layout
+
+\begin_layout Subsection
+Zweck dieses Dokument
+\end_layout
+
+\begin_layout Subsection
+Gliederung
+\end_layout
+
+\begin_layout Subsection
+Der Feinentwurf im Rahmen des Projektes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+in diesen Unterabschnitt gehts darum, was ist der Feinentwurf im allgemeines
+ und was ist seine Position im gansen Projekt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Systemarchitektur
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Schnittstellen.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Schnittstellen des SIMPL Rahmenwerk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+über die Schittstellen des SIMPL Rahmenwerk im Allgemeinen und die einzelne
+ Unterabschnitte sind einzeln anhand die Abbildung 1 gegliedert.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+SIMP Core
+\end_layout
+
+\begin_layout Subsubsection
+Strategy Service
+\end_layout
+
+\begin_layout Subsubsection
+Datasource Service
+\end_layout
+
+\begin_layout Subsubsection
+Security Service
+\end_layout
+
+\begin_layout Subsubsection
+Reference Service
+\end_layout
+
+\begin_layout Subsubsection
+Administration Service
+\end_layout
+
+\begin_layout Subsubsection
+Transformation Service
+\end_layout
+
+\begin_layout Subsubsection
+Storage Service
+\end_layout
+
+\begin_layout Subsubsection
+Registry Service
+\end_layout
+
+\begin_layout Subsection
+Apache ODE
+\end_layout
+
+\begin_layout Subsubsection
+BPEL Runtime
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse und GUI
+\end_layout
+
+\begin_layout Subsection
+Apache jUDDI
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \end_body
 \end_document
