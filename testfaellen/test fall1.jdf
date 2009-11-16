@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tests SYSTEM "project.dtd">
 <tests product="TestDataManager" team="05" version="1.0">
-<sequence created="15.11.2009" creator="tuxi23" name="Project" number="0">
+<sequence created="16.11.2009" creator="tuxi23" name="Project" number="0">
 <description>This is the root node of the project. It contains all test sequences and test cases.</description>
 <pre/>
 <sequence created="04.11.2009" creator="tuxi23" name="Unit Test" number="1">
@@ -31,7 +31,7 @@
 </testcase>
 <testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="5" priority="C" title="Test fuer die Bearbeitung einer DM-Aktivitaet">
 <description>test die Bearbeitung einer DM-Aktivitaet</description>
-<pre>1Tester hat einen vorhandenen BPEL-Prozess geoeffnet, und DM-Aktivitaet wurde eingefuegt.
+<pre>Tester hat einen vorhandenen BPEL-Prozess geoeffnet, und DM-Aktivitaet wurde eingefuegt.
 2.die zu bearbeitende DM-Aktivitaet ist ausgewaehlt, und Projekts-View wird angezeigt</pre>
 <actions>Tester select eine DM-Aktivitaet durch Auswahl mit linken Maustaste aus dem Prozess Eigenschaft der DM-Aktivitaet in Properties-View von Eclipse wird angezeigt.   </actions>
 <post>Aenderung ist uebernommen.</post>
