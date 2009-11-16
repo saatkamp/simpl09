@@ -923,6 +923,16 @@ Sicherheit
 \end_layout
 
 \begin_layout Standard
+Die Sicherheit vom System soll von Anwendungs- und Ausfallssicherheit aufgebaut
+ werden.Bei Anwendungssicherheit soll das System die Benutzungsrecht von
+ Manipulation der Daten klare einteilen.durch eine klare Hierachie von Benutzern
+ einzuteilen.Bei Ausfallssicherheit soll das System garantieren, Wenn es
+ ungünstige Situation eintritt, die läufene Prozess kann richtige bendet
+ werden, und die Zwischenergebniss kann sicher bewährt und nächst Mal wieder
+ benutzt werden 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -978,6 +988,13 @@ Wartbarkeit
 \end_layout
 
 \begin_layout Standard
+Die Wartbarkeit des Systems bedeutet, dass das System bei der Anwendung
+ nach geändert Anforderungen leicht angepasst, auch in den Praxis die auftritten
+ Fehlern gut korrigiert werden kann.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -1006,6 +1023,14 @@ Die Skalierbarkeit des Systems muss eine sehr flexible Infrastruktur erlauben,
 
 \begin_layout Subsection
 Ausfallsicherheit
+\end_layout
+
+\begin_layout Standard
+Die Ausfallsicherheit des Systems bedeutet, Bei den ungeplanten Ausfallen
+ des Systems sollen die laufende Prozess und die zwischen ergebniss richtig
+ beeinhalten werden.
+ Das hisst, bei dem Wiederstarten des Systems kann die Status vor dem Ausfall
+ wiederherstellt werden.
 \end_layout
 
 \begin_layout Standard
