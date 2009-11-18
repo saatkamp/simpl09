@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -237,6 +237,35 @@ Identifizierte Aufgaben für die kommende Woche
 
 \begin_layout Itemize
 neue aufgaben
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Zu klärende Fragen
+\end_layout
+
+\begin_layout BeginFrame
+Zu klärende Fragen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fragen die wärend der Woche aufgekommen sind und klärung/erklärung benötigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Frage 1
 \end_layout
 
 \begin_layout EndFrame
