@@ -20,7 +20,7 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Feinentwurf}
-\def\docvers{1.0}
+\def\docvers{0.1}
 \def\docautor{}
 \def\docdate{12. November 2009}
 
@@ -51,9 +51,19 @@
 \font_tt_scale 100
 
 \graphics default
+\float_placement H
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -426,6 +436,13 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -435,13 +452,6 @@ Ich werde am Montag alle dazu gehörige Kapiteln bzw.
  ,weil ich keins zuhause besitze.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -783,8 +793,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename Schnittstellen.png
+	filename diagramme/Schnittstellen.png
+	width 80text%
 
 \end_inset
 
@@ -836,6 +848,46 @@ Strategy Service
 
 \begin_layout Subsubsection
 Datasource Service
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/DataSourceService.pdf
+	width 100text%
+	BoundingBox 0bp 250bp 595bp 842bp
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Klassendiagramm des DataSource Service.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
