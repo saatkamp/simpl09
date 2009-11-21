@@ -795,7 +795,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/Schnittstellen.png
+	filename diagramme/iteration1/Schnittstellen.png
 	width 80text%
 
 \end_inset
@@ -842,6 +842,41 @@ status open
 SIMP Core
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL Core.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Übersicht über den SIMPL Core und seine Schnittstellen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Strategy Service
 \end_layout
@@ -855,14 +890,13 @@ Datasource Service
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/DataSourceService.pdf
+	filename diagramme/iteration1/DataSourceService.png
 	width 100text%
-	BoundingBox 0bp 250bp 595bp 842bp
 
 \end_inset
 
@@ -900,6 +934,41 @@ Reference Service
 
 \begin_layout Subsubsection
 Administration Service
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/AdministrationService.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Klassendiagramm des Administration Service
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
