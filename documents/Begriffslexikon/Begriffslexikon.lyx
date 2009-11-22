@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -622,7 +622,7 @@ Die Begriffe
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="84" columns="3">
+<lyxtabular version="3" rows="85" columns="3">
 <features islongtable="true" headTopDL="true">
 <column alignment="left" valignment="top" width="1.7in">
 <column alignment="left" valignment="top" width="1.3in">
@@ -1181,6 +1181,35 @@ Datenquelle
 Ein System zur Datenhaltung, von dem Daten verschiedenster Art abgerufen
  und ggf.
  auch geändert und gelöscht werden können.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Datenquellen-Administrator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eine Person zur Verwaltung von Datenquellen in einer Datenquellen-Registry.
 \end_layout
 
 \end_inset
