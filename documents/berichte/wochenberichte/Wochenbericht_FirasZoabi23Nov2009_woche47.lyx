@@ -266,6 +266,10 @@ DM Aktivitäten-Klassendiagramm
 
 \end_layout
 
+\begin_layout EndFrame
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -294,10 +298,6 @@ Klassen der XML Parser in GUI-Objekte
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -307,7 +307,7 @@ Klassen der XML Parser in GUI-Objekte
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -331,16 +331,8 @@ XML Datei
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
-
-\end_layout
-
-\begin_layout EndFrame
 
 \end_layout
 
