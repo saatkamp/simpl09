@@ -1,0 +1,285 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wochenbericht
+\end_layout
+
+\begin_layout Author
+René Rehn
+\end_layout
+
+\begin_layout Institute
+Studienprojekt A: SIMPL
+\end_layout
+
+\begin_layout Date
+23.
+ November 2009
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename SIMPL.pdf
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Outline
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout BeginFrame
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Enumerate
+Erstellung einer Zusammenfassung über ODE (für das Team)
+\end_layout
+
+\begin_layout Enumerate
+Evaluieren und Erstellen von Extension Activities
+\end_layout
+
+\begin_layout Enumerate
+Evaluieren der Anbindung verschiedener Datenbanken in ODE
+\end_layout
+
+\begin_layout Enumerate
+Erstellen von UML-Diagrammen für verschiedene ODE Sachen
+\end_layout
+
+\begin_layout Enumerate
+ODE Event-System erarbeiten
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Subsection
+Übersicht
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Übersicht
+\end_layout
+
+\begin_layout Enumerate
+Erstellen einer Zusammenfassung über ODE
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Benötigte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Investierte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout Enumerate
+etwa 6h
+\end_layout
+
+\begin_layout Enumerate
+etwa 2h
+\end_layout
+
+\begin_layout Enumerate
+etwa 2h
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout Itemize
+...
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Neues für SIMPL
+\end_layout
+
+\begin_layout BeginFrame
+Neues für SIMPL
+\end_layout
+
+\begin_layout Standard
+\align center
+Diagramme, Screenshots, usw.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout BeginFrame
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout Itemize
+ODE Homepage und Javadoc 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ode.apache.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout BeginFrame
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout Itemize
+Aufgaben 2 - 5
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Zu klärende Fragen
+\end_layout
+
+\begin_layout BeginFrame
+Zu klärende Fragen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fragen die wärend der Woche aufgekommen sind und klärung/erklärung benötigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
