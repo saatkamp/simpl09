@@ -1,0 +1,405 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wochenbericht
+\end_layout
+
+\begin_layout Author
+Daniel Brüderle
+\end_layout
+
+\begin_layout Institute
+Studienprojekt A: SIMPL
+\end_layout
+
+\begin_layout Date
+23.
+ November 2009
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename SIMPL.pdf
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Outline
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout BeginFrame
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Enumerate
+Erstellung Klassendiagramm DM-Aktivities.
+ Inhalt Property Fenster.
+ Ablaufdiagramm DM-Aktivities.
+\end_layout
+
+\begin_layout Enumerate
+Evaluierung von Extension Points Anbindung / Lösungsmöglichkeiten Erweiterbarkei
+t
+\end_layout
+
+\begin_layout Enumerate
+Finden einer Lösung zur grafischen Modellierung und autom.
+ Code-Generierung.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Subsection
+Übersicht
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Übersicht
+\end_layout
+
+\begin_layout Enumerate
+Klassendiagramm erstellt.
+ Optionale Aktivitäten teilweise.
+ Abstraktion der Klassen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Finden von 
+\begin_inset Quotes eld
+\end_inset
+
+Best Practise
+\begin_inset Quotes erd
+\end_inset
+
+ Lösungsmöglichkeiten durch andere Diplomarbeiten zum Thema Erweiterung
+ BPEL.
+\end_layout
+
+\begin_layout Enumerate
+Fund von Omondo zur Modellierung und Code-Generierung.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Benötigte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Investierte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout Enumerate
+4 Stunden
+\end_layout
+
+\begin_layout Enumerate
+3 Stunden
+\end_layout
+
+\begin_layout Enumerate
+1 Stunden
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout Itemize
+1.
+ Omondo ( www.uml2.org ) lässt sich theoretisch in Eclipse einbinden und ermöglich
+t die Modellierung und dazugehörige Codeg-Generierung.
+\end_layout
+
+\begin_layout Itemize
+2.
+ Es besteht die Möglichkeit die Properties der Aktivitäten durch POP-UP
+ Fenster darstellen und auswählen zu können.
+ Muss noch genauer evaluiert werden ob dies für uns einach machbar ist.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Neues für SIMPL
+\end_layout
+
+\begin_layout BeginFrame
+Neues für SIMPL
+\end_layout
+
+\begin_layout Standard
+Möglichkeit Darstellung der Funktionen per Pop-Up ( noch zu testen)
+\end_layout
+
+\begin_layout Standard
+<extension point="org.eclipse.ui.popupMenus"> 
+\end_layout
+
+\begin_layout Standard
+<viewerContribution id="extractFragment.bpel.ui.menu.extract" targetID="org.eclipse.bp
+el.editor.contextmenu"> <action id="extractFragment.bpel.ui.menu.extract" label="Extra
+ct Fragment" menubarPath="extractFragment.bpel.ui.menu.style1" class="fragmentextrac
+tion.bpel.ui.FragmentExtractAction"> </action> 
+\end_layout
+
+\begin_layout Standard
+</viewerContribution> 
+\end_layout
+
+\begin_layout Standard
+</extension>
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename C:/Dokumente und Einstellungen/Daniel/Desktop/SVN/simpl09/documents/Feinentwurf/vpp_projekte/iteration1/dm_classes.jpg
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout BeginFrame
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout Itemize
+BPEL 2.0 Spez.: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://docs.oasis-open.org/ws-caf/ws-context/v1.0/OS/wsctx.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+SWT Tutorials: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.java2s.com/Tutorial/Java/0280__SWT/Catalog0280__SWT.htm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+OMONDO Eclipse UML Studio 
+\begin_inset CommandInset href
+LatexCommand href
+name "Omondo UML Studio"
+target "http://www.uml2.org/index.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Diplomarbeit Nr.
+ 2908 Extraction of BPEL Process Fragments in Eclipse BPEL Designer
+\end_layout
+
+\begin_layout Itemize
+Diplomarbeit Nr.
+ 2748 Konzeption und Implementierung einer Erweiterung des BPEL Standards
+ zur Modellierung und Ausführung kontextbezogener Workflows
+\end_layout
+
+\begin_layout Itemize
+Einführung in den Extension-Points Mechanismus von Eclipse, Manfred Henning,
+ Sebastian Seeberger
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout BeginFrame
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout Standard
+1.
+ Einarbeitung in Datenbankgrundlagen
+\end_layout
+
+\begin_layout Standard
+2.
+ 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Zu klärende Fragen
+\end_layout
+
+\begin_layout BeginFrame
+Zu klärende Fragen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fragen die wärend der Woche aufgekommen sind und klärung/erklärung benötigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Kann jemand OMONDO herunterladen ?
+\end_layout
+
+\begin_layout Enumerate
+Tree IUD Pattern: Das Tree IUD Pattern beschreibt die Möglichkeit, verschiedene
+ Datenmanipulations- Operationen auf Knoten, Sequenzen von Knoten oder auch
+ Teilbäumen von baumartigen externen Daten ausführen zu können.
+ Zu diesen Operationen zählen das Einfügen, Ersetzen, Umbenennen und Löschen
+ von Knoten, Sequenzen von Knoten und Teilbäumen.
+ • Node Content IUD Pattern: Das Node Content IUD Pattern beschreibt die
+ Möglichkeit, verschiedene Datenmanipulations-Operationen in Knoten von
+ baumartigen externen Daten ausführen zu können.
+ Zu diesen Operationen zählen das Einfügen, Ersetzen und Löschen von Werten
+ und Attributwerten innerhalb von Knoten.
+\end_layout
+
+\begin_layout Enumerate
+Warum diese zwei Klassen ? Kann nicht Tree IUD alles machen ??
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
