@@ -71,7 +71,7 @@ Studienprojekt A: SIMPL
 
 \begin_layout TitleGraphic
 \begin_inset Graphics
-	filename SIMPL.pdf
+	filename ../SIMPL.pdf
 	scale 20
 
 \end_inset
@@ -134,7 +134,7 @@ etwurf bzw.
 
 \begin_layout Enumerate
 Übertragung der Klassendiagramm in Eclipse mit hilfe eines Eclipse plugIn
- damit man die Klassen daraus generieren kann.
+ damit man die Klassen daraus generieren kann.gw
 \end_layout
 
 \begin_layout EndFrame
@@ -230,15 +230,100 @@ Diagramme, Screenshots, usw.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename dm_classes.jpg
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
+DM Aktivitäten-Klassendiagramm
+\end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Klasse_XMLParser.jpg
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Klassen der XML Parser in GUI-Objekte
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename XMLtestDatei.jpg
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+XML Datei
 \end_layout
 
 \end_inset
