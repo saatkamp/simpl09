@@ -274,11 +274,11 @@ DM Aktivitäten-Klassendiagramm
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Klasse_XMLParser.jpg
+	filename Klassen_XMLParser.jpg
 	width 5cm
 
 \end_inset
@@ -307,7 +307,7 @@ Klassen der XML Parser in GUI-Objekte
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
