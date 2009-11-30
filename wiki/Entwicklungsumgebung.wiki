@@ -62,6 +62,7 @@ Name und Update-URL des Plugins eintragen, die erscheinenden Punkte auswählen u
  * Mylyn: http://download.eclipse.org/tools/mylyn/update/incubator, Nur "Mylyn Connector: Web Templates (Advanced)" auswählen.
  * Quantum: http://quantum.sourceforge.net/update-site
  * Visual Editor: http://download.eclipse.org/tools/ve/updates/1.4/, Nur "Visual Editor" auswählen.
+ * SOAP UI: http://www.soapui.org/eclipse/update
  
 === 2.3 Tools ===
 Help -> Install New Software -> Work with: Galileo - http://download.eclipse.org/releases/galileo
