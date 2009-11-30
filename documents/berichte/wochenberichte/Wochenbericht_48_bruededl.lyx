@@ -1,0 +1,342 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wochenbericht
+\end_layout
+
+\begin_layout Author
+Daniel Brüderle
+\end_layout
+
+\begin_layout Institute
+Studienprojekt A: SIMPL
+\end_layout
+
+\begin_layout Date
+30.
+ November 2009
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename SIMPL.pdf
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Outline
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout BeginFrame
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Enumerate
+Benutzung von Extension Points zur Erweiterung der SIMPL GUI und SIMPL CORE
+\end_layout
+
+\begin_layout Enumerate
+Einarbeitung SWT
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Subsection
+Übersicht
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Übersicht
+\end_layout
+
+\begin_layout Enumerate
+Benutzung von Extension Points zur Erweiterung der SIMPL GUI und SIMPL CORE
+ - 70%
+\end_layout
+
+\begin_layout Enumerate
+Einarbeitung SWT - 0%
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Benötigte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Investierte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout Enumerate
+Benutzung von Extension Points zur Erweiterung der SIMPL GUI und SIMPL CORE
+ - 9h
+\end_layout
+
+\begin_layout Enumerate
+Einarbeitung SWT - 0 h
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout Itemize
+Extension Points sind mächtige Möglichkeiten.
+ Es wird im Gegensatz zur Vererbung eine Nutzung in beide Richtungen erlaubt.
+\end_layout
+
+\begin_layout Itemize
+Es gibt eine Registrierung an der sich Instanzen vormerken lassen können
+ um ein Plug-In zu ergänzen.
+ Die Registrierung nennt man Extension Point, eine Registrierung Erweiterung
+ bzw.
+ Extension.
+\end_layout
+
+\begin_layout Itemize
+Wenn in einer Klasse eine Extension Point erreicht wird, wird in der Registrieru
+ng geprüft ob eine Extension angemeldet ist.
+ Wenn ja, dann wird sie ausgeführt.
+\end_layout
+
+\begin_layout Itemize
+Für die Ausführung von Funktionalitäten benötigt man eine Zugriffsvereinbarung.
+ Dies ist i.d.R.
+ ein Interface.
+\end_layout
+
+\begin_layout Itemize
+Plug-In läßt sich beliebig erweitern ohne es zu verändern.
+\end_layout
+
+\begin_layout Itemize
+Umgang mit Extension Points jedoch von komplexer Natur.
+ Es sind viele Regeln zu beachten und der Programmcode kann schnell unübersichtl
+ich werden.
+\end_layout
+
+\begin_layout Itemize
+Wichtigste Regeln : - Diversity : Bei nur einer Extension, ist ein Extension
+ Point unnötig.
+ Nur bei mehreren sinnvoll.
+\end_layout
+
+\begin_layout Itemize
+Good Fences : Eigenen Programmcode schützen vor 
+\begin_inset Quotes eld
+\end_inset
+
+bösen
+\begin_inset Quotes erd
+\end_inset
+
+ Erweiterungen.
+\end_layout
+
+\begin_layout Itemize
+Erweiterung der Gui Einträge wäre über Collector-Klasse möglich.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Neues für SIMPL
+\end_layout
+
+\begin_layout BeginFrame
+Neues für SIMPL
+\end_layout
+
+\begin_layout Standard
+\align center
+Diagramme, Screenshots, usw.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout BeginFrame
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout Itemize
+Einführung in den Extension Point Mechanismus von Eclipse, Java Spektrum
+ 1/2008, Manfred Henning, Sebastian Seeberger
+\end_layout
+
+\begin_layout Itemize
+Sams Teach Yourself Java 6 
+\end_layout
+
+\begin_layout Itemize
+Working XML : Define and load Extension Points von Benoit Marchal (bmarchal@pine
+applesoft.com), Consultant, Pineapplesoft.
+ File lokal vorhanden.
+ Quelle www.ibm.com
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout BeginFrame
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout Itemize
+Erstellung einer funtionsfähigen Erweiterung für SIMPL GUI & CORE
+\end_layout
+
+\begin_layout Itemize
+Einbinding von SWT
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Zu klärende Fragen
+\end_layout
+
+\begin_layout BeginFrame
+Zu klärende Fragen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fragen die wärend der Woche aufgekommen sind und klärung/erklärung benötigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+kleine Fragen zu Java.
+ Werden noch aufgezeigt.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
