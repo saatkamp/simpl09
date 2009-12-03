@@ -874,22 +874,23 @@ Das SIMPL Rahmenwerk
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk soll dem Benutzer eine erweiterbare Umgebung bieten,
- die eine einfache Modellierung von Simulationsworkflows, auf Basis von
- BPEL, mit generischem Zugriff auf beliebige Datenquellen ermöglicht.
+ die eine einfache Modellierung von Simulationsworkflows auf Basis von BPEL
+ mit generischem Zugriff auf beliebige Datenquellen ermöglicht.
  Bei den Datenquellen kann es sich beispielsweise um Datenbanken, Sensornetze
  oder Dateisysteme handeln.
  Die Modellierung der Prozesse findet in Eclipse mit dem Eclipse BPEL Designer
  Plug-In statt, das für diesen Zweck um zusätzliche Aktivitäten für den
- Zugriff auf Datenquellen und die Definition von Datamangementoperationen
+ Zugriff auf Datenquellen und die Definition von Datamangement-Operationen
  innerhalb des Prozesses erweitert wird.
  Diese Aktivitäten werden im folgenden Verlauf des Dokuments als Data-Management
 -Aktivitäten bzw.
  DM-Aktivitäten bezeichnet.
  Die Ausführung der Prozesse erfolgt durch die Apache ODE Workflow Engine,
- bei der das bestehende Event-Modell und das Auditing der Prozessdaten für
- die DM-Aktivitäten angepasst werden.
- Dienste, die für die Ausführung der DM-Aktivitäten von der Workflow Engine
- benötigt werden, werden in Form von Web Services bereitgestellt.
+ die für diese Aktivitäten erweitert werden muss.
+ Zusätzlich werden das bestehende Event-Modell und das Auditing der Prozessdaten
+ für die DM-Aktivitäten angepasst.
+ Die Dienste, die für die Ausführung der DM-Aktivitäten von der Workflow
+ Engine benötigt werden, werden in Form von Web Services bereitgestellt.
 \end_layout
 
 \begin_layout Subsection
@@ -1348,11 +1349,13 @@ reference "fig:Architektur-des-SIMPL"
 \end_inset
 
  zeigt die Architektur des SIMPL Rahmenwerks.
- Bei den farblich gekennzeichneten Komponenten, handelt es sich um Komponenten,
- die für das Rahmenwerk neu erstellt werden.
- Die übergeordneten Komponenten, Apache Tomcat und Eclipse, sowie ihr Zusammensp
-iel, werden in den folgenden Abschnitten kurz beschrieben.
- Auf die einzelnen elementaren Komponenten wird dann in Kapitel 
+ Bei den blau gekennzeichneten Komponenten handelt es sich um Komponenten,
+ die für das Rahmenwerk neu erstellt werden und realisiert werden müssen.
+ Die orange gekennzeichneten Komponenten bestehen bereits bzw.
+ werden unterstützt.
+ Das Zusammenspiel der Komponenten wird in den folgenden Abschnitten beschrieben
+, auf die Komponenten selbst und ihre Erweiterungen wird dann in Kapitel
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Komponenten"
@@ -1373,7 +1376,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Architektur.png
-	width 80text%
+	width 100text%
 
 \end_inset
 
@@ -1408,8 +1411,8 @@ Apache Tomcat
 \end_layout
 
 \begin_layout Standard
-Apache Tomcat ist die Laufzeitumgebung für Apache ODE, den SIMPL Core und
- die Registry Apache jUDDI.
+Der Web Container Apache Tomcat ist die Laufzeitumgebung für Apache ODE
+ und den SIMPL Core.
  Apache ODE ist für die Ausführung der Prozesse nach der Modellierung zuständig
  und benötigt, wie bereits in Kapitel 
 \begin_inset CommandInset ref
@@ -1419,10 +1422,15 @@ reference "sub:Das-SIMPL-Rahmenwerk"
 \end_inset
 
  erwähnt, bestimmte Dienste für die Ausführung der zusätzlichen DM-Aktivitäten
- in Prozessen.
- Diese Dienste werden von dem SIMPL Core bereitgestellt, der sich aus verschiede
-nen, nach Aufgaben eingeteilten, Web Services zusammensetzt.
- Mit der Registry Apache jUDDI werden die dem Rahmenwerk zur Verfügung stehenden
+ in den Prozessen.
+ Diese Dienste werden vom SIMPL Core bereitgestellt, der sich aus verschiedenen,
+ nach Aufgaben eingeteilten, Web Services zusammensetzt.
+ Zusätzlich werden für die Umsetzung des RSS, weitere Dienste bereitgestellt,
+ die den SIMPL Core ergänzen.
+\end_layout
+
+\begin_layout Standard
+Mit der Registry Apache jUDDI werden die dem Rahmenwerk zur Verfügung stehenden
  Datenquellen von Datenquellen-Administratoren zentral bereitgestellt.
 \end_layout
 
