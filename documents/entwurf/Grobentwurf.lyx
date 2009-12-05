@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="4">
+<lyxtabular version="3" rows="10" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -776,7 +776,7 @@ Korrektur nach internem Review
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -785,11 +785,49 @@ Korrektur nach internem Review
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 20.11.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Überarbeitung nach Kundenreview
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+05.12.2009
 \end_layout
 
 \end_inset
@@ -807,7 +845,7 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Überarbeitung nach Kundenreview
+Neue Schaubilder und Beschreibungen
 \end_layout
 
 \end_inset
@@ -891,6 +929,10 @@ Das SIMPL Rahmenwerk soll dem Benutzer eine erweiterbare Umgebung bieten,
  für die DM-Aktivitäten angepasst.
  Die Dienste, die für die Ausführung der DM-Aktivitäten von der Workflow
  Engine benötigt werden, werden in Form von Web Services bereitgestellt.
+ Durch ein weiteres Plug-In für Eclipse sollen außerdem Referenzvariablen
+ bei der Modellierung von Prozessen unterstützt werden und diese durch eine
+ entsprechende Modelltransformation auch auf anderen Workflow Engines einsetzbar
+ bleiben.
 \end_layout
 
 \begin_layout Subsection
@@ -923,6 +965,9 @@ Neben der vereinfachten Modellierung der DM-Aktivitäten, gibt es eine weitere
  hinterlegen.
  Diese BPEL-Variablen können anschließend als Referenzen in anderen Befehlen
  verwendet werden.
+ Durch die Modularisierung der Befehle sind insbesondere komplexe und geschachte
+lte Datenbankmanagementoperationen einfacher zu modellieren und die Komplexität
+ wird reduziert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -967,7 +1012,7 @@ en, wie z.B.
  werden, und der Benutzer soll außerdem die Möglichkeit bekommen, die Granularit
 ät der Protokollierung zu bestimmen.
  Zusätzlich soll die interne Datenspeicherung auf eine beliebige externe
- Datenbank umgeleitet werden können.
+ Datenquelle umgeleitet werden können.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1112,7 +1157,7 @@ Unterstützung weiterer Registries für Datenquellen
 \end_layout
 
 \begin_layout Itemize
-Anbindung zusätzlicher Graphical User Interfaces (GUI) für die Admin-Konsole
+Erweiterung um zusätzliche Unterpunkte für die Admin-Konsole
 \end_layout
 
 \begin_layout Subsubsection
@@ -1126,10 +1171,10 @@ Verwendbarkeit
 \end_layout
 
 \begin_layout Standard
-Die Aktivitäten, die für SIMPL entwickelt werden, sollen auf beliebigen
- anderen BPEL Workflow-Engines ausführbar sein.
- Dazu muss der, von den Aktivitäten bei der Modellierung erzeugte, erweiterte
- BPEL-Code in standard-konformen BPEL-Code transformiert werden.
+Die Aktivitäten, die für SIMPL entwickelt werden, sollen auch auf anderen
+ BPEL Workflow-Engines ausführbar sein.
+ Dazu müssen die bei der Modellierung verwendeten Referenzen in standard-konform
+en BPEL-Code transformiert werden.
  Eine zusätzliche Anforderung ist, dass die von SIMPL bereitgestellten Web
  Services auf verschiedenen Web Containern lauffähig sein müssen.
 \end_layout
@@ -1295,8 +1340,7 @@ Architektur
 \begin_inset Quotes erd
 \end_inset
 
- genannten Komponenten im Detail.
- Dabei werden Schnittstellen, Protokolle und Verhalten definiert.
+ genannten Komponenten und definiert ihre Schnittstellen.
 \end_layout
 
 \begin_layout Itemize
@@ -1323,7 +1367,7 @@ Komponenten
 \begin_inset Quotes erd
 \end_inset
 
- definierten Schnittstellen und ihre Verwendung.
+ definierten Schnittstellen, eingesetzten Protokolle und die Datenübertragung.
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1349,10 +1393,6 @@ reference "fig:Architektur-des-SIMPL"
 \end_inset
 
  zeigt die Architektur des SIMPL Rahmenwerks.
- Bei den blau gekennzeichneten Komponenten handelt es sich um Komponenten,
- die für das Rahmenwerk neu erstellt werden und realisiert werden müssen.
- Die orange gekennzeichneten Komponenten bestehen bereits bzw.
- werden unterstützt.
  Das Zusammenspiel der Komponenten wird in den folgenden Abschnitten beschrieben
 , auf die Komponenten selbst und ihre Erweiterungen wird dann in Kapitel
  
@@ -1376,7 +1416,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Architektur.png
-	width 100text%
+	width 90text%
 
 \end_inset
 
@@ -1422,16 +1462,12 @@ reference "sub:Das-SIMPL-Rahmenwerk"
 \end_inset
 
  erwähnt, bestimmte Dienste für die Ausführung der zusätzlichen DM-Aktivitäten
- in den Prozessen.
- Diese Dienste werden vom SIMPL Core bereitgestellt, der sich aus verschiedenen,
- nach Aufgaben eingeteilten, Web Services zusammensetzt.
+ in den Prozessen wie z.B.
+ das Ausführen eines Befehls auf einer Datenquelle.
+ Diese Dienste werden vom SIMPL Core bereitgestellt, der sich nach Aufgaben
+ eingeteilten Web Services zusammensetzt.
  Zusätzlich werden für die Umsetzung des RSS, weitere Dienste bereitgestellt,
  die den SIMPL Core ergänzen.
-\end_layout
-
-\begin_layout Standard
-Mit der Registry Apache jUDDI werden die dem Rahmenwerk zur Verfügung stehenden
- Datenquellen von Datenquellen-Administratoren zentral bereitgestellt.
 \end_layout
 
 \begin_layout Subsection
@@ -1484,19 +1520,8 @@ reference "fig:Komponenten"
 
  werden die für das SIMPL Rahmenwerk wichtigen Komponenten und Abhängigkeiten
  gezeigt, die in den folgenden Abschnitten näher beschrieben werden.
- Die Pfeile und ihre Richtung symbolisieren lediglich die Zugriffe zwischen
- den Komponenten und nicht den dadurch entstehenden Datenfluß.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Pfeilbeschriftungen nochmal überdenken und ggf.
- entfernen, wird ja dann unten beschrieben!
-\end_layout
-
-\end_inset
-
-
+ Die Richtung der Pfeile beschreibt die Zugriffsrichtung, die Beschriftung
+ der Pfeile den Kontext in dem die Zugriffe stattfinden.
 \end_layout
 
 \begin_layout Standard
@@ -1510,7 +1535,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename Komponenten.png
-	width 80text%
+	width 60text%
 
 \end_inset
 
@@ -1573,9 +1598,20 @@ reference "sub:Erweiterbarkeit"
 \end_layout
 
 \begin_layout Standard
-Die Enwicklungsumgebung Eclipse besteht im Rahmen des SIMPL Projektes aus
- der Eclipse Basis IDE sowie dem SIMPL Eclipse Plug-In.
- 
+Die Enwicklungsumgebung Eclipse in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Eclipse-mit-SIMPL"
+
+\end_inset
+
+ besteht im Rahmen des SIMPL Projekts aus der Eclipse Basis IDE und dem
+ SIMPL Eclipse Plug-In.
+ Das SIMPL Eclipse Plug-In setzt sich aus verschiedenen Plug-Ins zusammen,
+ die über bestehende Extension Points realisiert werden und ggf.
+ selbst Extension Points anbieten.
+ In den folgenden Abschnitten werden die Plug-Ins hinsichtlich ihrer Aufgaben,
+ der Realisierung und ihrer Beziehungen näher beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -1588,8 +1624,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Eclipse Komponenten.png
-	width 80text%
+	filename Eclipse.png
+	width 90text%
 
 \end_inset
 
@@ -1602,11 +1638,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Eclipse Komponenten"
+name "fig:Eclipse-mit-SIMPL"
 
 \end_inset
 
-Eclipse Komponenten-Diagramm
+Eclipse mit SIMPL Erweiterungen
 \end_layout
 
 \end_inset
@@ -1621,47 +1657,6 @@ Eclipse Komponenten-Diagramm
 
 \begin_layout Subsubsection
 Eclipse BPEL Designer Plug-In
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename Eclipse BPEL Designer Komponenten.png
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Eclipse BPEL Designer Plugin Komponenten"
-
-\end_inset
-
-Eclipse BPEL Designer Plug-In
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1751,52 +1746,11 @@ Das Debug Framework erlaubt dem Benutzer das schrittweise Ausführen eines
 \end_layout
 
 \begin_layout Subsubsection
-SIMPL Eclipse Plug-In
+SIMPL Core Plug-In
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename Eclipse SIMPL Plugin Komponenten.png
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:SIMPL Eclipse Plugin Komponenten"
-
-\end_inset
-
-SIMPL Eclipse Plug-In
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das SIMPL Eclipse Plug-In besteht aus dem SIMPL GUI Plug-In sowie dem SIMPL
+Das SIMPL Core Plug-In besteht aus dem SIMPL GUI Plug-In sowie dem SIMPL
  DM Plug-In.
 \end_layout
 
@@ -1931,6 +1885,16 @@ Hier wird der Aufbau und die einzelnen Bestandteile von ODE, die für das
  SIMPL Rahmenwerk von Bedeutung sind und ggf.
  erweitert werden müssen, erläutert.
  Im folgenden Schaubild werden diese Bestandteile dargestellt.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Bild ist nicht verlinkt
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1944,6 +1908,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ApacheODE.png
+	width 90text%
 
 \end_inset
 
@@ -1954,7 +1919,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Aufbau von Apache ODE
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Apache-ODE-mit"
+
+\end_inset
+
+Apache ODE mit SIMPL Erweiterungen
 \end_layout
 
 \end_inset
@@ -2090,21 +2061,27 @@ SIMPL Core
 \end_layout
 
 \begin_layout Standard
-Der SIMPL Core stellt Funktionalität zur Verfügung, die während der Modellierung
- und der Ausführung von Prozessen benötigt werden.
- Er besteht aus mehreren Web Services (siehe Abbildung 
+Der SIMPL Core in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL-Core"
 
 \end_inset
 
-), die jeweils fest definierte Aufgaben innerhalb des SIMPL Rahmenwerks
- haben.
- Die Web Services werden dabei innerhalb einer Apache Axis2 Installation
- bereitgestellt und mit der Java API JAX-WS erstellt, damit ein Einsatz
- auch mit anderen Web Containern außer Apache Tomcat gewährleistet ist (siehe
- Anforderung 
+ stellt die Funktionalität zur Verfügung, die während der Modellierung und
+ der Ausführung von Prozessen benötigt wird.
+ Er bietet nach Außen mehrere Web Services zu Verfügung, die jeweils bestimmte
+ Aufgaben innerhalb des SIMPL Rahmenwerks haben.
+ Der SIMPL Core wird als JAR-Datei im Classpath von Apache ODE hinterlegt,
+ dadurch wird eine schnelle direkte Kommunikation zwischen dem SIMPL Core
+ und Apache ODE ermöglicht.
+ Desweiteren kann der SIMPL Core als Singleton betrieben werden und es können
+ damit z.B.
+ Verbindungen zu Datenquellen für Folgezugriffe aufrecht gehalten werden.
+ Die Web Services des SIMPL Cores werden dabei innerhalb der Axis2 Installation
+ von Apache ODE bereitgestellt und zusätzlich mit der Java API JAX-WS annotiert,
+ damit ein Einsatz auch mit anderen Web Containern außer Apache Tomcat gewährlei
+stet ist (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Verwendbarkeit"
@@ -2112,8 +2089,12 @@ reference "sub:Verwendbarkeit"
 \end_inset
 
 ).
- In den folgenden Abschnitten werden zunächst die Web Services und ihre
- Aufgaben näher beschrieben.
+ 
+\end_layout
+
+\begin_layout Standard
+In den folgenden Abschnitten werden zunächst die Web Services und ihre Aufgaben
+ näher beschrieben.
  Die Schnittstellen und ihre Verwendung werden in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2135,7 +2116,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename SIMPLCore.png
-	width 80text%
+	width 90text%
 
 \end_inset
 
@@ -2152,7 +2133,7 @@ name "fig:SIMPL-Core"
 
 \end_inset
 
-Aufbau des SIMPL Core
+SIMPL Core
 \end_layout
 
 \end_inset
@@ -2174,18 +2155,45 @@ Strategy Service
 \end_layout
 
 \begin_layout Standard
-Mit dem Strategy Service wird das Late Binding (siehe Anforderung 
+Der Strategy Service wird vom DatasourceService für das Late Binding (siehe
+ Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Late-Binding-von"
 
 \end_inset
 
-) ermöglicht.
+) verwendet.
  Dort stehen verschiedene Auswahlstrategien bzw.
- -algorithmen zur Verfügung, um mit den im Prozess formulierten Anforderungen
+ -algorithmen zur Verfügung, um mit im Prozess formulierten Anforderungen
  eine passende Datenquelle ausfindig zu machen.
- 
+ Die Datenquellen zur Auswahl werden von der Registry (Apache jUDDI) bereitgeste
+llt.
+ In einer späteren Iteration werden die Strategien 
+\begin_inset Quotes eld
+\end_inset
+
+Erster Fund
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Bester Fund
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Passender Fund
+\begin_inset Quotes erd
+\end_inset
+
+ realisiert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2224,35 +2232,47 @@ reference "sub:Plug-In"
 \end_layout
 
 \begin_layout Subsubsection
-Reference Service
+Security Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was macht der Service konkret? "verarbeiten", "transformieren", "zwischenspeiche
+rn" - das sagt mir nichts über seine Funktionalität aus.
+ WIE soll denn SSO realisiert werden? Meldet der Service sich bei den Datenquell
+en an? Wie macht er das? usw.
 \end_layout
 
-\begin_layout Standard
-Der Reference Service erfüllt die Anforderung, große Datenmengen in BPEL
- referenzieren zu können (siehe Anforderung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Große-Datenmengen"
+\begin_layout Plain Layout
+Ihr solltet in dem Zusammenhang auch über die Verwaltung der Connections
+ nachdenken, z.B.
+ über einen connection pool o.ä.
+ Es ist an dieser Stelle nicht klar, ob das hier der Security Service macht,
+ ob das der Data Source Service macht (oder ein anderer), ob man dafür einen
+ neuen Service braucht, oder ob das der Container, in dem der SIMPL Core
+ deployed ist, machen soll.
+\end_layout
+
+\begin_layout Plain Layout
+Tomcat oder ein Service Bus sollten dafür auch entsprechende Funktionalitäten
+ bieten.
+ Sprecht da am besten mal mit Michael Reiter drüber.
+ Auf jeden Fall sollte so etwas in den Grobentwurf.
+\end_layout
 
 \end_inset
 
-).
- Über diesen Service lassen sich die Referenzen verwalten und auflösen,
- um die referenzierten Daten bei Bedarf in einen Prozess zu holen.
-\end_layout
 
-\begin_layout Subsubsection
-Security Service
 \end_layout
 
 \begin_layout Standard
-Der Security Service ist zuständig für Aufgaben, die die Authentifizierung
- und Autorisierung gegenüber Datenquellen betreffen.
+Der Security Service ist zuständig für die Verwaltung von Daten zur Authentifizi
+erung und Autorisierung gegenüber Datenquellen.
  Mit diesem Service können Authentifizierungs- und Autorisierungsinformationen
  verarbeitet und ggf.
- in benötigte Formate transformiert werden.
- Die Informationen können außerdem zwischengespeichert werden, um das Konzept
- des SSO (siehe Anforderung 
+ in andere benötigte Formate transformiert werden..
+ Die Informationen können außerdem über den Storage Service zwischengespeichert
+ werden, um das Konzept des SSO (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Authentifizierung-und-Autorisierung"
@@ -2267,9 +2287,8 @@ Administration Service
 \end_layout
 
 \begin_layout Standard
-Über den Administration Service werden alle Einstellungen des Rahmenwerks
- verwaltet und die Funktionalität für die Admin-Konsole (siehe Anforderung
- 
+Über den Administration Service wird die Funktionalität für die Admin-Konsole
+ (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Admin-Konsole"
@@ -2279,7 +2298,7 @@ reference "sub:Admin-Konsole"
 ) bereitgestellt.
  Für Einstellungen, mit denen zur Laufzeit Einfluss auf Apache ODE genommen
  wird, wie z.B.
- die Granularität des Auditing, werden die vorhandenen Schnittstellen von
+ die Granularität des Auditings, werden die vorhandenen Schnittstellen von
  Apache ODE verwendet und, falls nötig, neue Schnittstellen geschaffen.
  Die geforderte austauschbare GUI (siehe Anforderung 
 \begin_inset CommandInset ref
@@ -2292,52 +2311,111 @@ reference "sub:Erweiterbarkeit"
 \end_layout
 
 \begin_layout Subsubsection
-Transformation Service
+Storage Service
 \end_layout
 
 \begin_layout Standard
-Damit modellierte Prozesse, die DM-Aktivitäten enthalten, auch auf anderen
- Workflow Engines ausgeführt werden können (siehe Anforderung 
+Der Storage Service verwaltet in einer embedded Datenbank alle Daten die
+ innerhalb des Rahmenwerks gespeichert werden müssen.
+ Damit werden beispielsweise vom Administration Service die Einstellungen
+ des SIMPL Rahmenwerks aus der Admin-Konsole gespeichert und können später
+ wieder abgerufen werden.
+ Auch andere Services können diesen Dienst zur Verwaltung von Daten benutzen,
+ wie z.B.
+ der Security Service zur Verwaltung von Authentifizierungs- und Autorisierungsi
+nformationen.
+\end_layout
+
+\begin_layout Subsection
+RRS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename RRS.png
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Reference-Resolution-System"
+
+\end_inset
+
+Reference Resolution System (RRS)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+RRS Service
+\end_layout
+
+\begin_layout Standard
+Der Reference Service erfüllt die Anforderung, große Datenmengen in BPEL
+ referenzieren zu können (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Große-Datenmengen"
+
+\end_inset
+
+).
+ Über diesen Service lassen sich Referenzen auflösen und die referenzierten
+ Daten bei Bedarf in einen Prozess holen.
+ Die Referenzen werden über den Datasource Service des SIMPL Core aufgelöst.
+\end_layout
+
+\begin_layout Subsubsection
+RRS Transformation Service
+\end_layout
+
+\begin_layout Standard
+Damit modellierte Prozesse auch auf anderen Workflow Engines ausgeführt
+ werden können (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Verwendbarkeit"
 
 \end_inset
 
-), wird der Transformation Service bereitgestellt, mit dem der erweiterte
- BPEL-Code in standard-konformen BPEL-Code transformiert werden kann.
+), wird der Transformation Service bereitgestellt, mit dem der um Referenzen
+ erweiterte BPEL Code in standard-konformen BPEL-Code transformiert werden
+ kann.
+ Die Transformation geschieht vor dem Deployment in Eclipse.
 \end_layout
 
 \begin_layout Subsubsection
-Storage Service
+RRS Admin Service
 \end_layout
 
 \begin_layout Standard
-Der Storage Service bildet den zentralen Speicherdienst für Daten des SIMPL
- Rahmenwerks.
- Dort laufen alle Einstellungen, Daten und Informationen zusammen und werden
- persistent in einer Datenquelle verwaltet.
- Durch diesen Service werden beispielsweise die Einstellungen des SIMPL
- Rahmenwerks aus der Admin-Konsole gespeichert und können später wieder
- abgerufen werden.
-\end_layout
-
-\begin_layout Subsubsection
-Registry Service
-\end_layout
-
-\begin_layout Standard
-Über den Registry Service kann auf die Registry des Rahmenwerks zugegriffen
- werden, in der die vorhandenen Datenquellen mit ihren Eigenschaften zentral
- verwaltet werden.
- (siehe Anforderung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Registry"
-
-\end_inset
-
-)
+Über den RRS Admin Service können Referenzen verwaltet werden.
+ Die Verwaltung geschieht dabei über den Storage Service vom SIMPL Core.
 \end_layout
 
 \begin_layout Subsection
@@ -2346,9 +2424,9 @@ Apache jUDDI
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk stellt mit Apache jUDDI bereits eine UDDI-Registry
- zur Verfügung, die mit dem Registry Service genutzt werden kann.
- Über die WSDL-Schnittstelle des Registry Service kann aber auch jede andere
- Implementierung, oder Anbindung einer anderen Registry, realisiert werden
+ zur Verfügung, in der Datenquellen verwaltet werden können.
+ Durch den UDDI Standard können auch beliebige andere UDDI-Registries angebunden
+ werden.
  (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2356,7 +2434,7 @@ reference "sub:Erweiterbarkeit"
 
 \end_inset
 
-).
+)
 \end_layout
 
 \begin_layout Standard
