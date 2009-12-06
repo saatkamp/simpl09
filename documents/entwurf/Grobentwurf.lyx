@@ -896,8 +896,11 @@ Der Grobentwurf beschreibt das Rahmenwerk auf Komponentenebene und bildet
  Damit soll gezeigt werden, dass das resultierende System funktionieren
  kann und den Anforderungen gerecht wird.
  Damit die in späteren Iterationen dazukommenden Funktionalitäten schon
- beim Feinentwurf berücksichtigt werden, wird das Gesamtsystem beschrieben
- und inhaltlich nicht zwischen den einzelnen Iterationen unterschieden.
+ beim Feinentwurf berücksichtigt werden, wird soweit es möglich ist das
+ Gesamtsystem beschrieben und inhaltlich nicht zwischen den einzelnen Iteratione
+n unterschieden.
+ Teile die erst in späteren Iterationen spezifiziert werden können, werden
+ explizit kenntlich gemacht.
 \end_layout
 
 \begin_layout Subsection
@@ -1367,7 +1370,8 @@ Komponenten
 \begin_inset Quotes erd
 \end_inset
 
- definierten Schnittstellen, eingesetzten Protokolle und die Datenübertragung.
+ definierten Schnittstellen, eingesetzten Protokolle und die übertragenen
+ Daten.
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1447,6 +1451,35 @@ Architektur des SIMPL Rahmenwerks
 \end_layout
 
 \begin_layout Subsection
+Eclipse
+\end_layout
+
+\begin_layout Standard
+Die Entwicklungsumgebung Eclipse bildet mit den entsprechenden Plug-Ins
+ sowohl die GUI für den Prozess-Modellierer, als auch den Workflow-Administrator.
+ Mit dem Eclipse BPEL Designer Plug-In kann der Prozess-Modellierer bereits
+ BPEL Prozesse erstellen und auf Apache ODE zum Einsatz bringen (deployen).
+ Das SIMPL Eclipse Plug-In erweitert mit dem BPEL-DM Plug-In die bestehenden
+ Aktivitäten des Eclipse BPEL Designer Plug-Ins um die DM-Aktivitäten.
+ Die GUI für den Workflow-Administrator wird vom SIMPL Core Plug-In in Form
+ einer Admin-Konsole bereitgestellt.
+ (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-5"
+
+\end_inset
+
+, Kapitel 4).
+ Mit dem RRS Plug-In wird die Verbindung zum Reference Resolution System
+ (RRS) geschaffen.
+ Dadurch können Referenzen verwaltet werden und falls Referenzen bei der
+ Modellierung verwendet wurden, eine Modelltransformation vor dem Deployment
+ durchgeführt werden, damit die Prozesse auch auf anderen Workflow Engines
+ zum Einsatz kommen können.
+\end_layout
+
+\begin_layout Subsection
 Apache Tomcat
 \end_layout
 
@@ -1464,33 +1497,25 @@ reference "sub:Das-SIMPL-Rahmenwerk"
  erwähnt, bestimmte Dienste für die Ausführung der zusätzlichen DM-Aktivitäten
  in den Prozessen wie z.B.
  das Ausführen eines Befehls auf einer Datenquelle.
- Diese Dienste werden vom SIMPL Core bereitgestellt, der sich nach Aufgaben
+ Diese Dienste werden vom SIMPL Core bereitgestellt, der sich aus nach Aufgaben
  eingeteilten Web Services zusammensetzt.
- Zusätzlich werden für die Umsetzung des RSS, weitere Dienste bereitgestellt,
- die den SIMPL Core ergänzen.
+ Zusätzlich werden für die Umsetzung des Reference Resolution Systems (RRS)
+ weitere Dienste bereitgestellt, die den SIMPL Core ergänzen.
+ Das RRS verwaltet die Referenzen über den SIMPL Core, der seinerseits das
+ RRS für das Late Binding benötigt.
+ Das Auditing von Apache ODE wird über den SIMPL Core auf einer beliebigen
+ externen Datenquelle ermöglicht.
 \end_layout
 
 \begin_layout Subsection
-Eclipse
+UDDI Registry
 \end_layout
 
 \begin_layout Standard
-Die Entwicklungsumgebung Eclipse bildet, mit den entsprechenden Plug-Ins
- die GUI für den Prozess-Modellierer als auch den Workflow-Administrator.
- Mit dem Eclipse BPEL Designer Plug-In kann der Prozess-Modellierer bereits
- BPEL Prozesse erstellen und auf Apache ODE zum Einsatz bringen (deployen).
- Das SIMPL Eclipse Plug-In erweitert zum Einen die bestehenden Aktivitäten
- des Eclipse BPEL Designer Plug-Ins um die DM-Aktivitäten.
- Zum Anderen bietet es die GUI mit den Einstellungen für den Workflow-Administra
-tor, wie z.B.
- die Admin-Konsole (siehe 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-5"
-
-\end_inset
-
-, Kapitel 4).
+Eine UDDI Registry ermöglicht eine zentrale Verwaltung von Datenquellen,
+ die zur Modellierung bereitgestellt werden.
+ Dort können auch Eigenschaften und Anforderungen zu Datenquellen abgelegt
+ werden, die für das Late Binding benötigt werden.
 \end_layout
 
 \begin_layout Standard
@@ -1507,7 +1532,7 @@ name "sec:Komponenten"
 
 \end_inset
 
-Komponenten
+Komponenten und Schnittstellen
 \end_layout
 
 \begin_layout Standard
@@ -1568,7 +1593,7 @@ Komponenten des SIMPL Rahmenwerks
 \begin_layout Subsection
 Eclipse
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 - Erweiterung der Anfragesprachen (
@@ -1610,8 +1635,7 @@ reference "fig:Eclipse-mit-SIMPL"
  Das SIMPL Eclipse Plug-In setzt sich aus verschiedenen Plug-Ins zusammen,
  die über bestehende Extension Points realisiert werden und ggf.
  selbst Extension Points anbieten.
- In den folgenden Abschnitten werden die Plug-Ins hinsichtlich ihrer Aufgaben,
- der Realisierung und ihrer Beziehungen näher beschrieben.
+ In den folgenden Abschnitten werden die Plug-Ins näher beschrieben.
 \end_layout
 
 \begin_layout Standard
@@ -1656,191 +1680,82 @@ Eclipse mit SIMPL Erweiterungen
 \end_layout
 
 \begin_layout Subsubsection
-Eclipse BPEL Designer Plug-In
+Eclipse Extension Points
 \end_layout
 
-\begin_layout Standard
-Das BPEL Designer Plug-In besteht aus folgenden Komponenten:
+\begin_layout Paragraph
+Menu 
 \end_layout
 
-\begin_layout Subsubsection*
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:BPEL-Modell"
+\begin_layout Paragraph
+View
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse BPEL Designer Plug-In Extension Points
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Erwähnen, dass es auch noch mehr Extension Points gibt
+\end_layout
 
 \end_inset
 
-BPEL Modell
+
 \end_layout
 
-\begin_layout Standard
-Die WS-BPEL 2.0 Spezifikation 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-3"
+\begin_layout Paragraph
+UIObjectFactory
+\end_layout
+
+\begin_layout Paragraph
+PaletteAdditions
+\end_layout
+
+\begin_layout Paragraph
+PropertySections
+\end_layout
+
+\begin_layout Subsubsection
+BPEL-DM Plug-In
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eigene Extension Points?
+\end_layout
 
 \end_inset
 
- wird durch ein entsprechendes Eclipse Modelling Framework (EMF) Modell
- repräsentiert.
- Aus diesem Modell kann gemäß der BPEL Konventionen Java-Code erzeugt werden.
- Das BPEL Modell kann über entsprechende Erweiterungspunkte (Extension Points)
- erweitert werden.
-\end_layout
 
-\begin_layout Subsubsection*
-BPEL Designer GUI
-\end_layout
-
-\begin_layout Standard
-Die BPEL Designer Oberfläche besteht aus einem, über das Graphical Editing
- Framework (GEF) realisierten, Editor für die grafische und textuelle Modellieru
-ng von BPEL-Prozessen.
-\end_layout
-
-\begin_layout Subsubsection*
-BPEL Runtime Framework 
-\end_layout
-
-\begin_layout Standard
-Das BPEL Runtime Framework ist ein erweiterbares Rahmenwerk, welches das
- Deployment und die Ausführung von BPEL-Prozessen in Apache ODE ermöglicht.
- Für das SIMPL Rahmenwerk wird das Apache ODE Deployment- und Runtime Modell
- verwendet.
- Vor dem Deployment wird das erstellte Prozessmodell über den SIMPL Core
- in ein BPEL standard-konformes Prozessmodell transformiert und steht anschließe
-nd für das Deployment zur Verfügung.
- Durch diesen Ansatz wird die Ausführung von erweiterten Prozessmodellen
- auf anderen BPEL Workflow-Engines ermöglicht.
- (siehe Anforderung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Verwendbarkeit"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Subsubsection*
-BPEL Validator
-\end_layout
-
-\begin_layout Standard
-Der BPEL Validator arbeitet auf Grundlage des EMF-Modells und erzeugt bei
- Verletzung der WS-BPEL 2.0 Spezifikation Warnungen bzw.
- Fehler.
- Die Erweiterung der BPEL-Möglichkeiten im Rahmen von SIMPL erfolgt über
- Extensions-Points, somit ist die Erweiterung WS-BPEL 2.0 konform und wird
- vom Validator nicht beanstandet.
-\end_layout
-
-\begin_layout Subsubsection*
-BPEL Debug Framework
-\end_layout
-
-\begin_layout Standard
-Das Debug Framework erlaubt dem Benutzer das schrittweise Ausführen eines
- Prozesses.
- Dabei wird auch das Setzen von Breakpoints erlaubt.
 \end_layout
 
 \begin_layout Subsubsection
 SIMPL Core Plug-In
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eigene Extension Points?
 \end_layout
 
-\begin_layout Standard
-Das SIMPL Core Plug-In besteht aus dem SIMPL GUI Plug-In sowie dem SIMPL
- DM Plug-In.
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsubsection*
-SIMPL GUI Plug-In
-\end_layout
-
-\begin_layout Standard
-Die SIMPL Eclipse GUI ermöglicht das einfache Ansprechen aller relevanten
- Funktionen des Rahmenwerkes über eine grafische Benutzeroberfläche.
- Diese Oberfläche wird mit dem Standard-Widget-Toolkit (SWT) realisiert
- und erfolgt nach dem Model-View-Controller (MVC) Konzept.
- Durch die MVC-Architektur wird die Präsentation der Funktionen vom Modell
- getrennt und ermöglicht so, in späteren Entwicklungen, das einfache Austauschen
- der Oberfläche (View).
- Für Informationen und administrative Einstellungen, muss das Plug-In bei
- der Modellierung auf den SIMPL Core zurückgreifen.
-\end_layout
-
-\begin_layout Subsubsection*
-Darzustellende Informationen in der GUI :
-\end_layout
-
-\begin_layout Paragraph*
-Admin Konsole
-\end_layout
-
-\begin_layout Standard
-Die Admin Konsole ermöglicht den Zugriff auf folgende Einstellungen:
-\end_layout
-
-\begin_layout Itemize
-Globale Eigenschaften (Authentifizierung.
- Anmeldename und Passwort)
-\end_layout
-
-\begin_layout Itemize
-Referenzen (Eingabe des RRS Adresse sowie Auflistung der Referenzen mit
- der Möglichkeit zum Öffenen, Löschen oder Erstellen derselben)
-\end_layout
-
-\begin_layout Itemize
-Datenquellen (Eingabe der Datenquellen-Registry, Anzeigen der Datenquellen
- sowie Festlegung der Attribute)
-\end_layout
-
-\begin_layout Itemize
-Strategien (Auswahl der Strategie wie z.B.
- First Find, Best Find oder Matching Find)
-\end_layout
-
-\begin_layout Itemize
-Auditing (Festlegung der Auditing Datenbank sowie Aktivierung und Deaktivierung)
-\end_layout
-
-\begin_layout Paragraph*
-Settings
-\end_layout
-
-\begin_layout Standard
-Hier können Einstellungen getroffen werden, die nicht systemkritisch sind
- und somit von jedem Benutzer verändert werden können.
-\end_layout
-
-\begin_layout Paragraph*
-Help
-\end_layout
-
-\begin_layout Standard
-Hilfestellungen zur Bedienbarkeit und Funktionen.
-\end_layout
-
-\begin_layout Subsection*
-SIMPL DM Plug-In
-\end_layout
-
-\begin_layout Standard
-Die DM-Aktivitäten werden durch das SIMPL DM Plug-In bereitgestellt und
- bei der Modellierung im BPEL Designer verwendet.
- 
+\begin_layout Subsubsection
+RRS Plug-In
 \end_layout
 
 \begin_layout Subsection
 Apache ODE
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-- Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden (bei
- Schnittstellen nur die Pfeile raus!)
+- Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden
 \end_layout
 
 \begin_layout Plain Layout
@@ -1881,20 +1796,18 @@ Das ManagementAPI von Apache ODE bietet Funktionen auf Prozess- und auf
 \end_layout
 
 \begin_layout Standard
-Hier wird der Aufbau und die einzelnen Bestandteile von ODE, die für das
- SIMPL Rahmenwerk von Bedeutung sind und ggf.
+Hier wird der Aufbau und die einzelnen Komponenten von Apache ODE, die für
+ das SIMPL Rahmenwerk von Bedeutung sind und ggf.
  erweitert werden müssen, erläutert.
- Im folgenden Schaubild werden diese Bestandteile dargestellt.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Bild ist nicht verlinkt
-\end_layout
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Apache-ODE-mit"
 
 \end_inset
 
-
+ zeigt die Komponenten und ihre Erweiterungen, die in den folgenden Abschnitten
+ beschrieben werden.
 \end_layout
 
 \begin_layout Standard
@@ -1939,121 +1852,55 @@ Apache ODE mit SIMPL Erweiterungen
 \end_layout
 
 \begin_layout Subsubsection
-Extension Activities
+Schnittstellen
 \end_layout
 
-\begin_layout Standard
-Apache ODE unterstützt Extension Activities, um die elementaren Aktivitäten
- von BPEL zu erweitern.
- Die Extension Acitivities für die Apache ODE Workflow Engine werden als
- Java Klassen erstellt.
- Diese Klassen enthalten die Implementierung der neuen Aktivitäten.
- Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig diese
- als jar-Dateien in den Classpath zu kopieren.
- Anschließend ist es nur noch notwendig die Extension in der ODE Engine
- zu registieren.
+\begin_layout Paragraph
+ProcessManagement
+\end_layout
+
+\begin_layout Paragraph
+Instancemanagement
+\end_layout
+
+\begin_layout Paragraph
+DeploymentService
 \end_layout
 
 \begin_layout Subsubsection
+Komponenten
+\end_layout
+
+\begin_layout Paragraph
+Plug-In Architektur
+\end_layout
+
+\begin_layout Paragraph
 Event System
 \end_layout
 
-\begin_layout Standard
-Es existieren bereits fünf Event-Typen innerhalb von Apache ODE.
- Dies sind:
+\begin_layout Paragraph
+Data Access Objects (DAO)
 \end_layout
 
-\begin_layout Itemize
-Instance life cycle events 
-\end_layout
-
-\begin_layout Itemize
-Activity life cycle events 
-\end_layout
-
-\begin_layout Itemize
-Scope handling 
-\end_layout
-
-\begin_layout Itemize
-Data handling 
-\end_layout
-
-\begin_layout Itemize
-Correlation events
-\end_layout
-
-\begin_layout Standard
-Für das Auditing von SIMPL ist es notwendig, dass eine Reihe von eigenen
- Events erstellt wird.
- Dies geschieht durch Erstellung neuer Event-Klassen, die von den bestehenden
- Event Klassen abgeleitet und anschließend innerhalb der Engine eingebunden
- werden.
+\begin_layout Paragraph
+Embedded Auditing Datenbank
 \end_layout
 
 \begin_layout Subsubsection
-Management API
+Erweiterungen
 \end_layout
 
-\begin_layout Standard
-Die Management API von Apache ODE bietet Funktionen auf Prozess- und auf
- Instanzebene an.
- Dadurch können z.B.
- Prozesse gestartet oder beendet werden und Informationen zu den einzelnen
- Instanzen abgerufen werden.
+\begin_layout Paragraph
+SIMPL DM Extension Aktivitäten
 \end_layout
 
-\begin_layout Standard
-Die Management API unterteilt sich in Instanz-Management und Prozess-Management.
- Beide bieten verschiedene Funktionen für Instanzen bzw.
- Prozessen an.
- Es besteht auf der einen Seite die Möglichkeit verschiedene Informationen
- über die Prozesse und Instanzen zu erhalten, zum Beispiel eine Liste der
- verschiedene Prozesse oder Informationen über einen einzelnen Prozess,
- auf der anderen Seite ist es aber auch möglich direkt mit den Prozessen
- und Instanzen zu interagieren, dadurch ist es beispielsweise möglich eine
- Prozessinstanz anzuhalten oder direkt zu beenden.
+\begin_layout Paragraph
+SIMPL Events
 \end_layout
 
-\begin_layout Subsubsection
-Auditing Datenbank
-\end_layout
-
-\begin_layout Standard
-Apache ODE verfügt bereits über eine interne Apache Derby Datenbank.
- Es ist allerdings möglich die Auditing Daten mit Hilfe eines Data Access
- Objects (DAO) auf eine andere Datenbank umzuleiten.
- Dies soll über den SIMPL Core realisiert werden, um die Anbindung einer
- beliebigen Datenbank zu ermöglichen.
- (siehe Anforderung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Auditing-von-Prozessen"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Subsubsection
-Deployment Service
-\end_layout
-
-\begin_layout Standard
-Der Deployment Service bietet verschiedene Funktionen für das Deployment
- von Prozessen an.
- Dazu gehören neben einer Deploy- und Undeploy-Funktion, unter Anderem auch
- das Auflisten von deployten Prozessen.
-\end_layout
-
-\begin_layout Subsubsection
-BPEL Runtime
-\end_layout
-
-\begin_layout Standard
-Die BPEL Runtime ist für die eigentliche Ausführung der Prozesse zuständig.
- Bei Ausführung der DM-Aktivitäten wird auf den SIMPL Core zugegriffen,
- um die entsprechenden DM-Operationen durchzuführen.
+\begin_layout Paragraph
+SIMPL DAO
 \end_layout
 
 \begin_layout Subsection
@@ -2061,17 +1908,17 @@ SIMPL Core
 \end_layout
 
 \begin_layout Standard
-Der SIMPL Core in Abbildung 
+Der SIMPL Core, dargestellt in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL-Core"
 
 \end_inset
 
- stellt die Funktionalität zur Verfügung, die während der Modellierung und
- der Ausführung von Prozessen benötigt wird.
- Er bietet nach Außen mehrere Web Services zu Verfügung, die jeweils bestimmte
- Aufgaben innerhalb des SIMPL Rahmenwerks haben.
+, stellt die Funktionalität zur Verfügung, die während der Modellierung
+ und der Ausführung von Prozessen benötigt wird.
+ Er bietet nach Außen verschiedene Web Services zu Verfügung, die jeweils
+ bestimmte Aufgaben innerhalb des SIMPL Rahmenwerks haben.
  Der SIMPL Core wird als JAR-Datei im Classpath von Apache ODE hinterlegt,
  dadurch wird eine schnelle direkte Kommunikation zwischen dem SIMPL Core
  und Apache ODE ermöglicht.
@@ -2080,8 +1927,8 @@ reference "fig:SIMPL-Core"
  Verbindungen zu Datenquellen für Folgezugriffe aufrecht gehalten werden.
  Die Web Services des SIMPL Cores werden dabei innerhalb der Axis2 Installation
  von Apache ODE bereitgestellt und zusätzlich mit der Java API JAX-WS annotiert,
- damit ein Einsatz auch mit anderen Web Containern außer Apache Tomcat gewährlei
-stet ist (siehe Anforderung 
+ damit ein Einsatz auch mit anderen Web Containern außer Apache Tomcat möglich
+ ist (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Verwendbarkeit"
@@ -2093,8 +1940,8 @@ reference "sub:Verwendbarkeit"
 \end_layout
 
 \begin_layout Standard
-In den folgenden Abschnitten werden zunächst die Web Services und ihre Aufgaben
- näher beschrieben.
+In den folgenden Abschnitten werden zunächst die Web Services des SIMPL
+ Core und ihre Aufgaben näher beschrieben.
  Die Schnittstellen und ihre Verwendung werden in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2167,8 +2014,8 @@ reference "sub:Late-Binding-von"
  Dort stehen verschiedene Auswahlstrategien bzw.
  -algorithmen zur Verfügung, um mit im Prozess formulierten Anforderungen
  eine passende Datenquelle ausfindig zu machen.
- Die Datenquellen zur Auswahl werden von der Registry (Apache jUDDI) bereitgeste
-llt.
+ Die Datenquellen zur Auswahl werden von der UDDI Registry (Apache jUDDI)
+ bereitgestellt.
  In einer späteren Iteration werden die Strategien 
 \begin_inset Quotes eld
 \end_inset
@@ -2234,7 +2081,7 @@ reference "sub:Plug-In"
 \begin_layout Subsubsection
 Security Service
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Was macht der Service konkret? "verarbeiten", "transformieren", "zwischenspeiche
@@ -2266,13 +2113,14 @@ Tomcat oder ein Service Bus sollten dafür auch entsprechende Funktionalitäten
 \end_layout
 
 \begin_layout Standard
-Der Security Service ist zuständig für die Verwaltung von Daten zur Authentifizi
-erung und Autorisierung gegenüber Datenquellen.
- Mit diesem Service können Authentifizierungs- und Autorisierungsinformationen
- verarbeitet und ggf.
- in andere benötigte Formate transformiert werden..
- Die Informationen können außerdem über den Storage Service zwischengespeichert
- werden, um das Konzept des SSO (siehe Anforderung 
+Der Security Service ist zuständig für die Verwaltung von Informationen
+ zur Authentifizierung und Autorisierung gegenüber Datenquellen.
+ Mit diesem Service können ggf.
+ auch Authentifizierungs- und Autorisierungsinformationen in andere Formate
+ transformiert werden, wie beispielsweise Benutzername und Passwort nach
+ SAML.
+ Die Informationen werden über den Storage Service verwaltet um das Konzept
+ des SSO (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Authentifizierung-und-Autorisierung"
@@ -2280,6 +2128,8 @@ reference "sub:Authentifizierung-und-Autorisierung"
 \end_inset
 
 ) zu realisieren.
+ Die genaue Rolle des Security Service wird erst in einer späteren Iteration
+ spezifiziert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2327,7 +2177,28 @@ nformationen.
 \end_layout
 
 \begin_layout Subsection
-RRS
+Reference Resolution System (RRS)
+\end_layout
+
+\begin_layout Standard
+Das RRS erfüllt die Anforderung, große Datenmengen in BPEL referenzieren
+ zu können (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Große-Datenmengen"
+
+\end_inset
+
+).
+ Wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Reference-Resolution-System"
+
+\end_inset
+
+ zu sehen ist, besteht es aus drei Web Services, die in den folgenden Abschnitte
+n beschrieben werden.
 \end_layout
 
 \begin_layout Standard
@@ -2376,18 +2247,19 @@ RRS Service
 \end_layout
 
 \begin_layout Standard
-Der Reference Service erfüllt die Anforderung, große Datenmengen in BPEL
- referenzieren zu können (siehe Anforderung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Große-Datenmengen"
-
-\end_inset
-
-).
- Über diesen Service lassen sich Referenzen auflösen und die referenzierten
+Über den RRS Service lassen sich Referenzen auflösen und die referenzierten
  Daten bei Bedarf in einen Prozess holen.
  Die Referenzen werden über den Datasource Service des SIMPL Core aufgelöst.
+\end_layout
+
+\begin_layout Subsubsection
+RRS Admin Service
+\end_layout
+
+\begin_layout Standard
+Mit dem RRS Admin Service können Referenzen über das Eclipse RRS Plug-In
+ verwaltet werden.
+ Die Verwaltung geschieht dabei über den Storage Service vom SIMPL Core.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2406,16 +2278,8 @@ reference "sub:Verwendbarkeit"
 ), wird der Transformation Service bereitgestellt, mit dem der um Referenzen
  erweiterte BPEL Code in standard-konformen BPEL-Code transformiert werden
  kann.
- Die Transformation geschieht vor dem Deployment in Eclipse.
-\end_layout
-
-\begin_layout Subsubsection
-RRS Admin Service
-\end_layout
-
-\begin_layout Standard
-Über den RRS Admin Service können Referenzen verwaltet werden.
- Die Verwaltung geschieht dabei über den Storage Service vom SIMPL Core.
+ Die Transformation wird über das RRS-Plug-In vor dem Deployment mit dem
+ Eclipse BPEL Designer Plug-In durchgeführt.
 \end_layout
 
 \begin_layout Subsection
@@ -2424,7 +2288,10 @@ Apache jUDDI
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk stellt mit Apache jUDDI bereits eine UDDI-Registry
- zur Verfügung, in der Datenquellen verwaltet werden können.
+ zur Verfügung, in der Datenquellen von Datenquellen-Administratoren verwaltet
+ werden können.
+ Das BPEL-DM Plug-In kann über die Registry Datenquellen für den Modellierer
+ zur Verfügung stellen.
  Durch den UDDI Standard können auch beliebige andere UDDI-Registries angebunden
  werden.
  (siehe Anforderung 
@@ -2518,54 +2385,12 @@ Schnittstellen des SIMPL Rahmenwerks
 \end_layout
 
 \begin_layout Subsection
-Apache ODE
-\end_layout
-
-\begin_layout Standard
-Hier werden die bestehenden Schnittstellen von Apache ODE und ihre Verwendung
- von den Komponenten beschrieben.
-\end_layout
-
-\begin_layout Subsubsection
-ManagementAPI
-\end_layout
-
-\begin_layout Standard
-Der Administration Service verwendet die ManagementAPI-Schnittstelle für
- die Einstellungen des Rahmenwerks, die zur Laufzeit gemacht werden.
-\end_layout
-
-\begin_layout Subsubsection
-DeploymentService
-\end_layout
-
-\begin_layout Standard
-Die DeploymentService-Schnittstelle wird von Eclipse für das Deployment
- von Prozessen verwendet.
-\end_layout
-
-\begin_layout Subsection
-Apache jUDDI
-\end_layout
-
-\begin_layout Standard
-Auf die Apache jUDDI Registry wird nur durch den Registry Service über die
- UDDI-Schnittstelle zugegriffen.
- Für Eclipse stehen Funktionen für das Auslesen zur Verfügung, während die
- Datenquellen-Administratoren darüber hinaus auch die Möglichkeit haben,
- Registrierung von Datenquellen und ihren Eigenschaften hinzuzufügen, zu
- ändern und zu löschen.
-\end_layout
-
-\begin_layout Subsection
 SIMPL Core
 \end_layout
 
 \begin_layout Standard
-Hier werden die Schnittstellen des SIMPL Cores und ihre Verwendung von den
- Komponenten beschrieben.
- Alle internen Abhängigkeiten des SIMPL Cores werden ebenfalls über diese
- Schnittstellen realisiert.
+Hier werden die Schnittstellen des SIMPL Rahmenwerks und ihre Verwendung
+ von den Komponenten beschrieben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2574,8 +2399,8 @@ DatasourceService
 
 \begin_layout Standard
 Die DatasourceService-Schnittstelle wird von Apache ODE beim Zugriff auf
- Datenquellen und für das Speichern der Auditing-Daten verwendet.
- Sie bietet Funktionen zum Abrufen von Daten von Datenquellen und Senden
+ Datenquellen und das Speichern der Auditing-Daten verwendet.
+ Sie bietet Funktionen zum Abrufen der Daten von Datenquellen und Senden
  von Befehlen in unterstützten Anfragesprachen.
  Die Daten werden dabei als Service Data Object (SDO) 
 \begin_inset CommandInset citation
@@ -2585,8 +2410,6 @@ key "key-4"
 \end_inset
 
  übertragen.
- Intern wird die Schnittstelle vom Storage Service für die Datenhaltung
- genutzt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2750,6 +2573,7 @@ Entwurfsvorlage
 \shape default
 .
  Institut für Softwaretechnologie, März 2008.
+ http://www.iste.uni-stuttgart.de/se/, Abruf: 06.12.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -2784,7 +2608,9 @@ Alves, Alexandre; Arkin, Assaf; Askary, Sid; Barreto, Charlton; Bloch, Ben;
 Web Services Business Process Execution Language Version 2.0
 \emph default
 .
- Version: 11 April 2007.
+ Organization for the Advancement of Structured Information Standards OASIS,
+ 11.
+ April 2007.
  http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf, Abruf: 11.11.2009
 \end_layout
 
