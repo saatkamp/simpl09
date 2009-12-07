@@ -1814,7 +1814,7 @@ Eclipse bietet über Extension Points die Möglichkeit die IDE zu erweitern.
 \begin_inset Quotes eld
 \end_inset
 
-Menu View
+Menu
 \begin_inset Quotes erd
 \end_inset
 
@@ -1840,45 +1840,13 @@ Das Menu stellt die Auswahlmöglicheiten als Drop-Down Liste dar, die auf
 \begin_inset Quotes eld
 \end_inset
 
-Menü
+Menu
 \begin_inset Quotes erd
 \end_inset
 
- wird im Rahmen von SIMPL dazu verwendet, um im SIMPL-Menü zusätzliche Einträge
- hinzufügen zu können.
- Dieses SIMPL-Menu beinhaltet die Menüpunkte wie 
-\begin_inset Quotes eld
-\end_inset
-
-Admin-Console
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Settings
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Auditing
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Help
-\begin_inset Quotes erd
-\end_inset
-
-, die auf entsprechende Fenster verlinken.
+ wird im Rahmen von SIMPL dazu verwendet, um ein SIMPL-Menü in Eclipse und
+ später auch zusätzliche Einträge bereitstellen zu können.
+ 
 \end_layout
 
 \begin_layout Paragraph
@@ -1886,11 +1854,22 @@ View
 \end_layout
 
 \begin_layout Standard
-Die View im Eclipse ist eine Art Fenster im Framework, die Funktionen etc.
- für das gesammte Plug-In erfüllt.
- Im Rahmen der SIMPL-Plug-In wird eine View verwendet um die Referenzen
- für das RRS-Plug-In einzustellen bzw.
- verwalten.
+Die View ist eine Art Fenster zur Darstellung und Eingabe von Daten innerhalb
+ von Eclipse, wie z.B.
+ ein 
+\begin_inset Quotes eld
+\end_inset
+
+ErrorLog
+\begin_inset Quotes erd
+\end_inset
+
+, der alle Fehler und Probleme von Eclipse Projekten anzeigt oder eine Propertie
+sView in der z.B.
+ BPEL-Aktivitäten näher spezifiziert werden.
+ Im Rahmen von SIMPL wird z.B.
+ eine View verwendet, um die Referenzen für das RRS Plug-In anzuzeigen bzw.
+ zu verwalten.
  
 \end_layout
 
@@ -1911,7 +1890,7 @@ Erwähnen, dass es auch noch mehr Extension Points gibt
 \begin_layout Standard
 Es wird auf die unten genannten drei Extension Points eingegangen, weil
  nur diese vom BPEL Designer benutzt werden.
- Es gibt auch noch weitere Extension Points in BPEL Designer Plug-In, diese
+ Es gibt auch noch weitere Extension Points im BPEL Designer Plug-In, diese
  sind jedoch nicht von Relevanz für SIMPL.
 \end_layout
 
@@ -1920,8 +1899,11 @@ UIObjectFactory
 \end_layout
 
 \begin_layout Standard
-Dieser Extension Point ermöglicht das Erzeugen von Instanzen die dann grafisch
- auf der Modellierungsfläche abgelegt und logisch integriert werden.
+Dieser Extension Point ermöglicht das Anbinden neuer UIObjectFactories,
+ mit deren Hilfe Instanzen von BPEL Extension Activities erzeugt werden
+ können.
+ Die so erzeugten Instanzen stehen dann in der BPEL Designer Palette zur
+ Verfügung und können zur Modellierung von BPEL-Prozessen verwendet werden.
 \end_layout
 
 \begin_layout Paragraph
@@ -1929,12 +1911,12 @@ PaletteAdditions
 \end_layout
 
 \begin_layout Standard
-Die Palette ist im BPEL Editor eine Auswahl der zur Verfügung stehenden
- Möglichkeiten.
- Durch diesen Extension Point wird das Hinzufügen einer neuen Möglichkeit
- bzw.
- Aktivität ermöglicht.
- Hier wird bei der Modellierung die Aktivität ausgewählt.
+Die Palette ist ein Auswahlfenster aller zur Verfügung stehenden BPEL-Konstrukte
+, dies sind z.B.
+ Standard BPEL-Aktivitäten oder eigene Extension Activities.
+ Durch diesen Extension Point können eigene Extension Activities in die
+ Palette eingefügt und so zur Modellierung von Prozessen genutzt werden.
+ 
 \end_layout
 
 \begin_layout Paragraph
@@ -1942,21 +1924,31 @@ PropertySections
 \end_layout
 
 \begin_layout Standard
-Diese Extension Point ermöglicht das Erweitern von Property-Fenstern, die
- die BPEL Aktivitäten verwalten indem Variablen, Eigenschaften oder Referenzen
- etc.
- eingestellt werden.
+Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern, über
+ die, in das Prozessmodell eingefügte, BPEL-Aktivitäten ausformuliert und
+ mit Werten gefüllt werden können.
+ 
 \end_layout
 
 \begin_layout Subsubsection
 BPEL-DM Plug-In
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eigene Extension Points?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Das BPEL-DM Plug-In beinhaltet die Datenmanagement Aktivitäten, die den
- Aktivitäten des BPEL Designer Plug-In erweitert.
- Die Erweiterung der Aktivitäten geschieht in den drei Extension Points
- :
+Das BPEL-DM Plug-In beinhaltet die Data-Management-Aktiviäten, die die Standard
+ BPEL-Aktivitäten des BPEL Designer Plug-Ins erweitern.
+ Die Erweiterung der Aktivitäten geschieht über folgende drei Extension
+ Points:
 \end_layout
 
 \begin_layout Itemize
@@ -1972,41 +1964,71 @@ PropertySections
 \end_layout
 
 \begin_layout Standard
-Für die jeweilige DM-Aktivitäten existierten die 
-\begin_inset Quotes eld
-\end_inset
-
-Properties
-\begin_inset Quotes erd
-\end_inset
-
- Fenster, die wiederum erweiterbar sind.
- Die Erweiterbarkeit der 
-\begin_inset Quotes eld
-\end_inset
-
-Properties
-\begin_inset Quotes erd
-\end_inset
-
- Fenster jeder DM-Aktivität wird durch XML-Dateien gewährleistet.
- Die Erweiterbarkeit in diesem Sinn betrifft speziell neue Abfragesprachen
- und die dafür benötigten GUI Elemente.
+Weiterhin werden durch das BPEL-DM Plug-In PropertySections für alle Data-Manage
+ment-Aktivitäten bereitgestellt, die Zugriff auf einen Editor zur graphischen
+ Modellierung von Datenquellenbefehlen bieten.
 \end_layout
 
 \begin_layout Subsubsection
 SIMPL Core Plug-In
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Eigene Extension Points?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-SIMPL Core Plug-In erweitert die IDE bzw.
- Eclipse Arbeitsumgebung um das SIMPL Menu und die dabei verlinkten Funktionsber
-eiche von SIMPL Core wie z.B.
- die Admin Konsole.
- Dieser besteht aus dem Menü und den darauf verlinkten Klassen.Das SIMPL
- Core Plug-In verfügt über den Extension Point ACItem (Admin Consol Item)
- und mit Hilfe des AC Plug-Ins (Admin Consol Plug-In) kann die Admin-Konsole
- um weitere Baum-Menüpunkte und die dazugehörige Admin Konsole Inhalte erweitert.
+Das SIMPL Core Plug-In erweitert die Eclipse IDE um das SIMPL-Menü und die
+ SIMPL-Hilfe.
+ Das SIMPL-Menü beinhaltet die Menüpunkte 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Console
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Help
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+About
+\begin_inset Quotes erd
+\end_inset
+
+, die auf entsprechende Fenster verlinken.
+ Das SIMPL Core Plug-In stellt den Extension Point 
+\begin_inset Quotes eld
+\end_inset
+
+Admin Console Item
+\begin_inset Quotes erd
+\end_inset
+
+ (ACItem) bereit, mit Hilfe dessen die Admin-Konsole um weitere Elemente
+ erweitert werden kann.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2015,9 +2037,9 @@ RRS Plug-In
 
 \begin_layout Standard
 Das RRS Plug-In wird über den View-Extension-Point in Eclipse angebunden.
- Hier wird eine GUI für die Einstellungen des RRS angeboten.
- Diese Einstellungen werden hier nur erfasst und dann an den RRS-Service
- weitergeleitet.
+ Es wird eine GUI-Schnittstelle für den RRS Administration Service angeboten.
+ So können über Eclipse mit dem RRS Plug-In alle Referenzen des angebundenen
+ RRS verwaltet werden.
 \end_layout
 
 \begin_layout Subsection
