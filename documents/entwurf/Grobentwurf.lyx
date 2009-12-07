@@ -1694,12 +1694,92 @@ Eclipse mit SIMPL Erweiterungen
 Eclipse Extension Points
 \end_layout
 
+\begin_layout Standard
+Eclipse bietet über Extension Points die Möglichkeit die IDE zu erweitern.
+ Für das SIMPL Projekt nutzen wir den 
+\begin_inset Quotes eld
+\end_inset
+
+Menu View
+\begin_inset Quotes erd
+\end_inset
+
+ - und 
+\begin_inset Quotes eld
+\end_inset
+
+View
+\begin_inset Quotes erd
+\end_inset
+
+ Extension Point, den Eclipse zur Verfügung stellt.
+\end_layout
+
 \begin_layout Paragraph
 Menu 
 \end_layout
 
+\begin_layout Standard
+Das Menu stellt die Auswahlmöglicheiten als Drop-Down Liste dar, die auf
+ die verschiedene Funktionsbereiche des Plug-In referenziert.
+ 
+\end_layout
+
+\begin_layout Standard
+Das Menu Extensoin Point wird im Rahmen der SIMPL dazu verwendet, um SIMPL-Menu
+ zusätsliche Einträge hinzüfügen zu können.
+\end_layout
+
+\begin_layout Standard
+Dieses SIMPL-Menu beinhaltet die Menupunkte wie 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Consol
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Auditing
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Help
+\begin_inset Quotes erd
+\end_inset
+
+, die auf ensprechende Fenster verlinken.
+\end_layout
+
 \begin_layout Paragraph
 View
+\end_layout
+
+\begin_layout Standard
+Das View im Eclipse ist eine Art Fenster im Framwork, die Funktionen etc.
+ für den gesammten Plug-In erfüllt.
+\end_layout
+
+\begin_layout Standard
+Im Rahmen der SIMPL-Plug-In wird eine View verwendet um die Referenzen für
+ das RRS-Plug-In einzustellen bzw.
+ verwalten.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1716,16 +1796,47 @@ Erwähnen, dass es auch noch mehr Extension Points gibt
 
 \end_layout
 
+\begin_layout Standard
+Es wird an der unten drei Extension Points eingegangen, weil im Rahmen von
+ SIMPL werden nur folgender drei Extnsion Points benutzt.
+ 
+\end_layout
+
+\begin_layout Standard
+Es gibt auch noch weitere Extension Points in BPEL Designer Plug-In.
+\end_layout
+
 \begin_layout Paragraph
 UIObjectFactory
+\end_layout
+
+\begin_layout Standard
+Dieser Extension Point ermöglicht das Erzeugen von Instanzen die dann grafisch
+ auf der Modellierungsfläche abgelegt und logisch integriert werden.
 \end_layout
 
 \begin_layout Paragraph
 PaletteAdditions
 \end_layout
 
+\begin_layout Standard
+Die Palette ist im BPEL Editor eine Auswahl der zur Verfügung stehenden
+ Möglichkeiten.
+ Durch diesen Extension Point wird das Hinzufügen einer neuen Möglichkeit
+ bzw.
+ Aktivität ermöglicht.
+ Hier wird bei der Modellierung die Aktivität ausgewählt.
+\end_layout
+
 \begin_layout Paragraph
 PropertySections
+\end_layout
+
+\begin_layout Standard
+Diese Extension Point ermöglicht das erweitern von Property-Fenstern, die
+ die BPEL Aktivitäten verwalten indem Variablen, Eigenschaften oder Referenzen
+ etc.
+ eingestellt werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1740,6 +1851,53 @@ Eigene Extension Points?
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Im Rahmen der BPEL-DM Plug-In beinhaltet die Daten Aktivitäten, die den
+ Aktivitäten vom BPEL Designer Plug-In erweitert.
+\end_layout
+
+\begin_layout Standard
+Die Erweiterung der Aktivitäten geschieht in der drei Extinsion Points :
+\end_layout
+
+\begin_layout Itemize
+UIObjectFactory
+\end_layout
+
+\begin_layout Itemize
+PaletteAdditions
+\end_layout
+
+\begin_layout Itemize
+PropertySections
+\end_layout
+
+\begin_layout Standard
+Für die jeweilige DM-Aktivitäten existiert die 
+\begin_inset Quotes eld
+\end_inset
+
+Properties
+\begin_inset Quotes erd
+\end_inset
+
+ Fenster, die wieder erweiterbar ist.
+\end_layout
+
+\begin_layout Standard
+Die Erweiterbarkeit der 
+\begin_inset Quotes eld
+\end_inset
+
+Properties
+\begin_inset Quotes erd
+\end_inset
+
+ Fenster jeder DM-Aktivität wird durch XML-Dateien geleistet.
+ Die Erweiterbarkeit in diesem Sinn betrifft speziel neue Abfragesprachen
+ und dafür benötigte GUI Elemente.
 \end_layout
 
 \begin_layout Subsubsection
