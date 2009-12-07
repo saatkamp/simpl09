@@ -1807,18 +1807,19 @@ Das ManagementAPI von Apache ODE bietet Funktionen auf Prozess- und auf
 \end_layout
 
 \begin_layout Standard
-Hier wird der Aufbau und die einzelnen Komponenten von Apache ODE, die für
- das SIMPL Rahmenwerk von Bedeutung sind und ggf.
- erweitert werden müssen, erläutert.
- Abbildung 
+Hier wird der Aufbau und die einzelnen Bestandteile von ODE, die für das
+ SIMPL Rahmenwerk von Bedeutung sind erläutert.
+ Zunächst wird kurz Beschreibung über den derzeitigen Zustand von ODE geboten
+ und im Anschluss folgt eine Beschreibung der Erweiterungen, die notwendig
+ sind.
+ In 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Apache-ODE-mit"
 
 \end_inset
 
- zeigt die Komponenten und ihre Erweiterungen, die in den folgenden Abschnitten
- beschrieben werden.
+ werden alle wichtigen Bestandteile dargestellt.
 \end_layout
 
 \begin_layout Standard
@@ -1826,7 +1827,7 @@ reference "fig:Apache-ODE-mit"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1866,16 +1867,50 @@ Apache ODE mit SIMPL Erweiterungen
 Schnittstellen
 \end_layout
 
-\begin_layout Paragraph
-ProcessManagement
+\begin_layout Standard
+In diesem Teil folgt eine kurze Beschreibung der Schnittstellen über die,
+ die ODE Engine verfügt.
+ Diese werden hier nur aufgelistet, da sie voraussichtlich nicht verwendet.
 \end_layout
 
 \begin_layout Paragraph
-Instancemanagement
+Management API (ProcessManagement und InstanceManagement)
+\end_layout
+
+\begin_layout Standard
+Die Management API von Apache ODE bietet Funktionen auf Prozess- und auf
+ Instanzebene an.
+ Dadurch können z.B.
+ bestimmte Nachrichten an Prozesse geschickt werden um deren Ausführung
+ zu starten oder zu beendden und es können Informationen zu den einzelnen
+ Instanzen abgerufen werden.
+\end_layout
+
+\begin_layout Standard
+Die Management API unterteilt sich in Instanz-Management und Prozess-Management.
+ Beide bieten verschiedene Funktionen für Instanzen bzw.
+ Prozesse an.
+ Es besteht auf der einen Seite die Möglichkeit, verschiedene Informationen
+ über die Prozesse und Instanzen zu erhalten, zum Beispiel eine Liste der
+ verschiedene Prozessmodelle oder Informationen über ein einzelnes Prozessmodell
+, auf der anderen Seite ist es aber auch möglich, direkt mit Prozessinstanzen
+ zu interagieren.
+ Dadurch ist es beispielsweise möglich, eine Prozessinstanz anzuhalten,
+ oder direkt zu terminieren.
 \end_layout
 
 \begin_layout Paragraph
 DeploymentService
+\end_layout
+
+\begin_layout Standard
+Der Deployment Service bietet verschiedene Funktionen für das Deployment
+ von Prozessen an.
+ Dazu gehören neben einer Deploy- und Undeploy-Funktion unter Anderem auch
+ das Auflisten von deployten Prozessen.
+ In den nächsten Iterationen kommen noch weitere Punkte die das Deployment
+ betreffen hinzu.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1886,16 +1921,84 @@ Komponenten
 Plug-In Architektur
 \end_layout
 
+\begin_layout Standard
+ODE verfügt über eine Plug-In-Architektur mit der es möglich ist Extension
+ Activities zu erstellen.
+ Dazu wird ein spezielles Interface zur Verfügung gestellt.
+ Dabei handelt es sich um 'AbstractSyncExtensionOperation', bei synchronen
+ Aktivitäten und bei asynchronen Aktivitäten um 'AbstractAsyncExtensionOperation
+'.
+ Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig, diese
+ als jar-Dateien in den Classpath zu kopieren.
+ Anschließend ist es nur noch notwendig, die Extension in der ODE Engine
+ zu registieren.
+ Dies geschieht über die axis2-properties Datei.
+\end_layout
+
 \begin_layout Paragraph
 Event System
+\end_layout
+
+\begin_layout Standard
+Innerhalb des ODE Event Systems existieren bereits 5 Event-Typen.
+ Dies sind:
+\end_layout
+
+\begin_layout Itemize
+Instance life cycle events 
+\end_layout
+
+\begin_layout Itemize
+Activity life cycle events 
+\end_layout
+
+\begin_layout Itemize
+Scope handling 
+\end_layout
+
+\begin_layout Itemize
+Data handling 
+\end_layout
+
+\begin_layout Itemize
+Correlation events
+\end_layout
+
+\begin_layout Standard
+Diese Events sind in einer Hierarchie organisiert.
+ 
 \end_layout
 
 \begin_layout Paragraph
 Data Access Objects (DAO)
 \end_layout
 
+\begin_layout Standard
+Das DAO ist für die persistente Datenhaltung aller Daten die innerhalb von
+ ODE erzeugt werden zuständig.
+ Weiterhin werden mit Hilfe des DAOs die Auditing Daten in der Embedded
+ Auditing Datenbank gespeichert.
+ Das DAO bietet außerdem verschiedene Einstellungen für die Auditing Datenbank
+ an.
+ So ist es mit Hilfe des DAOs wie bereits oben erläutert möglich das Auditing
+ auf eine externe Datenbank umzuleiten.
+ Es existiert zum Beispiel die Möglichkeit eine MySQL Datenbank zu nutzen.
+\end_layout
+
 \begin_layout Paragraph
 Embedded Auditing Datenbank
+\end_layout
+
+\begin_layout Standard
+Die Auditingdaten die ODE erzeugt, werden momentan in einer Embedded Datenbank
+ gespeichert.
+ Dies ist eine Apache Derby Datenbank die sowohl Hibernate als auch JPA
+ unterstützt.
+ Welche Art der Datenbank genutzt wird, kann durch ein entsprechendes DAO
+ eingestellt werden.
+ Es ist weiterhin möglich statt der embedded Datenbank eine externe Datenbank
+ zu nutzen in dem dies in einem DAO und der axis2-properties-Datei eingestellt
+ wird.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1903,15 +2006,89 @@ Erweiterungen
 \end_layout
 
 \begin_layout Paragraph
-SIMPL DM Extension Aktivitäten
+SIMPL DM Extension Activities
+\end_layout
+
+\begin_layout Standard
+Extension Acitivities für die Apache ODE Workflow Engine werden als Java
+ Klassen erstellt, welche die Implementierung der neuen Aktivitäten enthalten.
+ Weiterhin ist es notwendig die unter Plug-in Architektur genannten Interfaces
+ zu implementieren.
+ Bei der Ausführung der DM-Aktivitäten wird der SIMPL Core genutzt um die
+ Datenmanagement-Operationen zu realisieren.
 \end_layout
 
 \begin_layout Paragraph
 SIMPL Events
 \end_layout
 
+\begin_layout Standard
+Für das Auditing der DM-Aktivitäten ist es notwendig, dass eine Reihe von
+ eigenen Events erstellt wird.
+ Dies geschieht durch Erstellung neuer Event-Klassen, die von den bestehenden
+ Event Klassen abgeleitet und anschließend innerhalb der Engine eingebunden
+ werden.
+ Diese neuen Events werden unterteilt in DM-Events und Connection-Events.
+ DM-Events sind hierbei für das Auditing der DM-Aktivitäten zuständig, während
+ Connection-Events Rückmeldung über die Verbindung zu einer Datenquelle
+ liefern.
+ Die einzelnen Events sind:
+\end_layout
+
+\begin_layout Subparagraph*
+DM-Events:
+\end_layout
+
+\begin_layout Itemize
+DMStarted
+\end_layout
+
+\begin_layout Itemize
+DMFailure
+\end_layout
+
+\begin_layout Itemize
+DMEnd
+\end_layout
+
+\begin_layout Subparagraph
+Connection-Events:
+\end_layout
+
+\begin_layout Itemize
+ConnectionStarted
+\end_layout
+
+\begin_layout Itemize
+ConnectionLost
+\end_layout
+
+\begin_layout Itemize
+ConnectionEnd
+\end_layout
+
+\begin_layout Standard
+Bei der Implementierung werden DM-Events und Connection-Events jeweils als
+ ein neuer Event-Typ implementiert und die einzelnen spezifischen Events
+ werden von diesen abgeleitet.
+ Dies bietet die Möglichkeit die Granularitätseinstellungen innerhalb des
+ Deployment-Deskriptors ebenfalls um diese Typen zu erweitern.
+ Die Events werden direkt in den Extension Activities eingebunden und werden
+ hier auch geworfen.
+ Es ist nicht vorgesehen diese Events an einer anderen Stelle in ODE zu
+ nutzen.
+\end_layout
+
 \begin_layout Paragraph
 SIMPL DAO
+\end_layout
+
+\begin_layout Standard
+Das SIMPL DAO ermöglicht es die Auditing Daten auf eine externe Datenquelle
+ umzuleiten.
+ Dies wird durch eine entsprechende Implementierung erreicht und über den
+ SIMPL Core gesteuert.
+ 
 \end_layout
 
 \begin_layout Subsection
