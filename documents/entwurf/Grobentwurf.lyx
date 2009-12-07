@@ -2023,7 +2023,7 @@ reference "fig:Apache-ODE-mit"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2064,13 +2064,13 @@ Schnittstellen
 \end_layout
 
 \begin_layout Standard
-In diesem Teil folgt eine kurze Beschreibung der Schnittstellen über die,
+In diesem Teil folgt eine kurze Beschreibung der Schnittstellen über die
  die ODE Engine verfügt.
- Diese werden hier nur aufgelistet, da sie voraussichtlich nicht verwendet.
+ Diese werden hier nur aufgelistet, aber voraussichtlich nicht verwendet.
 \end_layout
 
 \begin_layout Paragraph
-Management API (ProcessManagement und InstanceManagement)
+ProcessManagement und InstanceManagement (Management API)
 \end_layout
 
 \begin_layout Standard
@@ -2078,7 +2078,7 @@ Die Management API von Apache ODE bietet Funktionen auf Prozess- und auf
  Instanzebene an.
  Dadurch können z.B.
  bestimmte Nachrichten an Prozesse geschickt werden um deren Ausführung
- zu starten oder zu beendden und es können Informationen zu den einzelnen
+ zu starten oder zu beenden und es können Informationen zu den einzelnen
  Instanzen abgerufen werden.
 \end_layout
 
@@ -2104,8 +2104,8 @@ Der Deployment Service bietet verschiedene Funktionen für das Deployment
  von Prozessen an.
  Dazu gehören neben einer Deploy- und Undeploy-Funktion unter Anderem auch
  das Auflisten von deployten Prozessen.
- In den nächsten Iterationen kommen noch weitere Punkte die das Deployment
- betreffen hinzu.
+ In den nächsten Iterationen kommen noch weitere Punkte hinzu, die das Deploymen
+t betreffen.
  
 \end_layout
 
@@ -2113,22 +2113,41 @@ Der Deployment Service bietet verschiedene Funktionen für das Deployment
 Komponenten
 \end_layout
 
+\begin_layout Standard
+bla
+\end_layout
+
 \begin_layout Paragraph
 Plug-In Architektur
 \end_layout
 
 \begin_layout Standard
-ODE verfügt über eine Plug-In-Architektur mit der es möglich ist Extension
- Activities zu erstellen.
- Dazu wird ein spezielles Interface zur Verfügung gestellt.
- Dabei handelt es sich um 'AbstractSyncExtensionOperation', bei synchronen
- Aktivitäten und bei asynchronen Aktivitäten um 'AbstractAsyncExtensionOperation
-'.
- Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig, diese
+ODE verfügt über eine Plug-In-Architektur mit der es unter anderem möglich
+ ist Extension Activities zu erstellen, die die Standardaktivitäten von
+ BPEL erweitern.
+ Dazu werden spezielle Interfaces zur Verfügung gestellt.
+ Dabei handelt es sich um 
+\begin_inset Quotes eld
+\end_inset
+
+AbstractSyncExtensionOperation
+\begin_inset Quotes erd
+\end_inset
+
+, bei synchronen Aktivitäten und um 
+\begin_inset Quotes eld
+\end_inset
+
+AbstractAsyncExtensionOperation
+\begin_inset Quotes erd
+\end_inset
+
+ bei asynchronen Aktivitäten.
+ Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig diese
  als jar-Dateien in den Classpath zu kopieren.
- Anschließend ist es nur noch notwendig, die Extension in der ODE Engine
+ Anschließend ist es nur noch notwendig die Extension in der ODE Engine
  zu registieren.
- Dies geschieht über die axis2-properties Datei.
+ Dies geschieht in der ode-axis2.PROPERTIES Datei.
 \end_layout
 
 \begin_layout Paragraph
@@ -2137,36 +2156,35 @@ Event System
 
 \begin_layout Standard
 Innerhalb des ODE Event Systems existieren bereits 5 Event-Typen.
- Dies sind:
+ Diese sind:
 \end_layout
 
 \begin_layout Itemize
-Instance life cycle events 
+Instance Life Cycle Events
 \end_layout
 
 \begin_layout Itemize
-Activity life cycle events 
+Activity Life Cycle Events
 \end_layout
 
 \begin_layout Itemize
-Scope handling 
+Scope Handling Events
 \end_layout
 
 \begin_layout Itemize
-Data handling 
+Data Handling Events
 \end_layout
 
 \begin_layout Itemize
-Correlation events
+Correlation Events
 \end_layout
 
 \begin_layout Standard
 Diese Events sind in einer Hierarchie organisiert.
- 
 \end_layout
 
 \begin_layout Paragraph
-Data Access Objects (DAO)
+Data Access Object (DAO)
 \end_layout
 
 \begin_layout Standard
@@ -2201,6 +2219,10 @@ Die Auditingdaten die ODE erzeugt, werden momentan in einer Embedded Datenbank
 Erweiterungen
 \end_layout
 
+\begin_layout Standard
+bla
+\end_layout
+
 \begin_layout Paragraph
 SIMPL DM Extension Activities
 \end_layout
@@ -2225,13 +2247,13 @@ Für das Auditing der DM-Aktivitäten ist es notwendig, dass eine Reihe von
  Event Klassen abgeleitet und anschließend innerhalb der Engine eingebunden
  werden.
  Diese neuen Events werden unterteilt in DM-Events und Connection-Events.
- DM-Events sind hierbei für das Auditing der DM-Aktivitäten zuständig, während
+ DM-Events betreffen hierbei die Ausführung der DM-Aktivitäten, während
  Connection-Events Rückmeldung über die Verbindung zu einer Datenquelle
  liefern.
  Die einzelnen Events sind:
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subparagraph
 DM-Events:
 \end_layout
 
@@ -2270,7 +2292,7 @@ Bei der Implementierung werden DM-Events und Connection-Events jeweils als
  Dies bietet die Möglichkeit die Granularitätseinstellungen innerhalb des
  Deployment-Deskriptors ebenfalls um diese Typen zu erweitern.
  Die Events werden direkt in den Extension Activities eingebunden und werden
- hier auch geworfen.
+ hier auch ausgelöst.
  Es ist nicht vorgesehen diese Events an einer anderen Stelle in ODE zu
  nutzen.
 \end_layout
@@ -2284,7 +2306,6 @@ Das SIMPL DAO ermöglicht es die Auditing Daten auf eine externe Datenquelle
  umzuleiten.
  Dies wird durch eine entsprechende Implementierung erreicht und über den
  SIMPL Core gesteuert.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -2635,12 +2656,12 @@ Reference Resolution System (RRS)
 \end_layout
 
 \begin_layout Subsubsection
-RRS Service
+RRS Retrieval Service
 \end_layout
 
 \begin_layout Standard
-Über den RRS Service lassen sich Referenzen auflösen und die referenzierten
- Daten bei Bedarf in einen Prozess holen.
+Über den RRS Retrieval Service lassen sich Referenzen auflösen und die referenzi
+erten Daten bei Bedarf in einen Prozess holen.
  Die Referenzen werden mit dem Datasource Service des SIMPL Core aufgelöst.
 \end_layout
 
