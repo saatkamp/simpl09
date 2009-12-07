@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Grobentwurf}
-\def\docvers{1.0}
+\def\docvers{1.5}
 \def\docautor{Michael Schneidt}
-\def\docdate{11. November 2009}
+\def\docdate{07. Dezember 2009}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="4">
+<lyxtabular version="3" rows="13" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -852,11 +852,87 @@ Neue Schaubilder und Beschreibungen
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 1.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+07.12.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+zoabi,bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.1 überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+07.12.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rehnre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.2 überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.5
 \end_layout
 
 \end_inset
@@ -874,7 +950,7 @@ Neue Schaubilder und Beschreibungen
 \begin_inset Text
 
 \begin_layout Plain Layout
-zoabi,bruededl
+schneimi
 \end_layout
 
 \end_inset
@@ -883,7 +959,7 @@ zoabi,bruededl
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 3.1
+Kapitel 4 überarbeitet
 \end_layout
 
 \end_inset
@@ -1874,16 +1950,6 @@ Diese Extension Point ermöglicht das Erweitern von Property-Fenstern, die
 
 \begin_layout Subsubsection
 BPEL-DM Plug-In
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Eigene Extension Points?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1930,16 +1996,6 @@ Properties
 
 \begin_layout Subsubsection
 SIMPL Core Plug-In
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Eigene Extension Points?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1967,7 +2023,7 @@ Das RRS Plug-In wird über den View-Extension-Point in Eclipse angebunden.
 \begin_layout Subsection
 Apache ODE
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 - Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden
@@ -2031,13 +2087,13 @@ reference "fig:Apache-ODE-mit"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename ApacheODE.png
-	width 90text%
+	width 80text%
 
 \end_inset
 
@@ -2072,13 +2128,13 @@ Schnittstellen
 \end_layout
 
 \begin_layout Standard
-In diesem Teil folgt eine kurze Beschreibung der Schnittstellen über die,
+In diesem Teil folgt eine kurze Beschreibung der Schnittstellen über die
  die ODE Engine verfügt.
- Diese werden hier nur aufgelistet, da sie voraussichtlich nicht verwendet.
+ Diese werden hier nur aufgelistet, aber voraussichtlich nicht verwendet.
 \end_layout
 
 \begin_layout Paragraph
-Management API (ProcessManagement und InstanceManagement)
+ProcessManagement und InstanceManagement (Management API)
 \end_layout
 
 \begin_layout Standard
@@ -2086,7 +2142,7 @@ Die Management API von Apache ODE bietet Funktionen auf Prozess- und auf
  Instanzebene an.
  Dadurch können z.B.
  bestimmte Nachrichten an Prozesse geschickt werden um deren Ausführung
- zu starten oder zu beendden und es können Informationen zu den einzelnen
+ zu starten oder zu beenden und es können Informationen zu den einzelnen
  Instanzen abgerufen werden.
 \end_layout
 
@@ -2112,8 +2168,8 @@ Der Deployment Service bietet verschiedene Funktionen für das Deployment
  von Prozessen an.
  Dazu gehören neben einer Deploy- und Undeploy-Funktion unter Anderem auch
  das Auflisten von deployten Prozessen.
- In den nächsten Iterationen kommen noch weitere Punkte die das Deployment
- betreffen hinzu.
+ In den nächsten Iterationen kommen noch weitere Punkte hinzu, die das Deploymen
+t betreffen.
  
 \end_layout
 
@@ -2121,22 +2177,41 @@ Der Deployment Service bietet verschiedene Funktionen für das Deployment
 Komponenten
 \end_layout
 
+\begin_layout Standard
+Hier werden die relevanten Komponenten von Apache ODE beschrieben.
+\end_layout
+
 \begin_layout Paragraph
 Plug-In Architektur
 \end_layout
 
 \begin_layout Standard
-ODE verfügt über eine Plug-In-Architektur mit der es möglich ist Extension
- Activities zu erstellen.
- Dazu wird ein spezielles Interface zur Verfügung gestellt.
- Dabei handelt es sich um 'AbstractSyncExtensionOperation', bei synchronen
- Aktivitäten und bei asynchronen Aktivitäten um 'AbstractAsyncExtensionOperation
-'.
- Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig, diese
+ODE verfügt über eine Plug-In-Architektur mit der es unter anderem möglich
+ ist Extension Activities zu erstellen, die die Standardaktivitäten von
+ BPEL erweitern.
+ Dazu werden spezielle Interfaces zur Verfügung gestellt.
+ Dabei handelt es sich um 
+\begin_inset Quotes eld
+\end_inset
+
+AbstractSyncExtensionOperation
+\begin_inset Quotes erd
+\end_inset
+
+, bei synchronen Aktivitäten und um 
+\begin_inset Quotes eld
+\end_inset
+
+AbstractAsyncExtensionOperation
+\begin_inset Quotes erd
+\end_inset
+
+ bei asynchronen Aktivitäten.
+ Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig diese
  als jar-Dateien in den Classpath zu kopieren.
- Anschließend ist es nur noch notwendig, die Extension in der ODE Engine
+ Anschließend ist es nur noch notwendig die Extension in der ODE Engine
  zu registieren.
- Dies geschieht über die axis2-properties Datei.
+ Dies geschieht in der ode-axis2.PROPERTIES Datei.
 \end_layout
 
 \begin_layout Paragraph
@@ -2145,36 +2220,35 @@ Event System
 
 \begin_layout Standard
 Innerhalb des ODE Event Systems existieren bereits 5 Event-Typen.
- Dies sind:
+ Diese sind:
 \end_layout
 
 \begin_layout Itemize
-Instance life cycle events 
+Instance Life Cycle Events
 \end_layout
 
 \begin_layout Itemize
-Activity life cycle events 
+Activity Life Cycle Events
 \end_layout
 
 \begin_layout Itemize
-Scope handling 
+Scope Handling Events
 \end_layout
 
 \begin_layout Itemize
-Data handling 
+Data Handling Events
 \end_layout
 
 \begin_layout Itemize
-Correlation events
+Correlation Events
 \end_layout
 
 \begin_layout Standard
 Diese Events sind in einer Hierarchie organisiert.
- 
 \end_layout
 
 \begin_layout Paragraph
-Data Access Objects (DAO)
+Data Access Object (DAO)
 \end_layout
 
 \begin_layout Standard
@@ -2209,6 +2283,11 @@ Die Auditingdaten die ODE erzeugt, werden momentan in einer Embedded Datenbank
 Erweiterungen
 \end_layout
 
+\begin_layout Standard
+In den folgenden Abschnitten wird beschrieben welche Erweiterungen für Apache
+ ODE benötigt werden und wie diese realisiert werden.
+\end_layout
+
 \begin_layout Paragraph
 SIMPL DM Extension Activities
 \end_layout
@@ -2233,13 +2312,13 @@ Für das Auditing der DM-Aktivitäten ist es notwendig, dass eine Reihe von
  Event Klassen abgeleitet und anschließend innerhalb der Engine eingebunden
  werden.
  Diese neuen Events werden unterteilt in DM-Events und Connection-Events.
- DM-Events sind hierbei für das Auditing der DM-Aktivitäten zuständig, während
+ DM-Events betreffen hierbei die Ausführung der DM-Aktivitäten, während
  Connection-Events Rückmeldung über die Verbindung zu einer Datenquelle
  liefern.
  Die einzelnen Events sind:
 \end_layout
 
-\begin_layout Subparagraph*
+\begin_layout Subparagraph
 DM-Events:
 \end_layout
 
@@ -2278,7 +2357,7 @@ Bei der Implementierung werden DM-Events und Connection-Events jeweils als
  Dies bietet die Möglichkeit die Granularitätseinstellungen innerhalb des
  Deployment-Deskriptors ebenfalls um diese Typen zu erweitern.
  Die Events werden direkt in den Extension Activities eingebunden und werden
- hier auch geworfen.
+ hier auch ausgelöst.
  Es ist nicht vorgesehen diese Events an einer anderen Stelle in ODE zu
  nutzen.
 \end_layout
@@ -2288,11 +2367,18 @@ SIMPL DAO
 \end_layout
 
 \begin_layout Standard
-Das SIMPL DAO ermöglicht es die Auditing Daten auf eine externe Datenquelle
- umzuleiten.
- Dies wird durch eine entsprechende Implementierung erreicht und über den
- SIMPL Core gesteuert.
- 
+Das SIMPL DAO implementiert die Schnittstellen des 
+\begin_inset Quotes eld
+\end_inset
+
+org.apache.ode.bpel.dao
+\begin_inset Quotes erd
+\end_inset
+
+-Pakets, womit die persistente Datenspeicherung von Apache ODE auf den SIMPL
+ Core umgeleitet werden kann.
+ Mit Hilfe des SIMPL Cores können die Daten auf beliebigen Datenquellen
+ gespeichert werden.
 \end_layout
 
 \begin_layout Subsection
@@ -2503,7 +2589,7 @@ reference "sub:Authentifizierung-und-Autorisierung"
 
 \end_inset
 
-) zu realisieren.
+) zu realisieren, bei dem diese Informationen wiederverwendet werden.
  Die genaue Rolle des Security Service wird erst in einer späteren Iteration
  spezifiziert.
 \end_layout
@@ -2722,66 +2808,20 @@ Schnittstellen
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird die Kommunikation der Komponenten über die Schnittstellen
- beschrieben und interne und externe Abhängigkeiten, sowie eingesetzte Protokoll
-e und übertragene Objekte, erläutert.
- Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Schnittstellen"
-
-\end_inset
-
- zeigt dazu die Schnittstellen in einer Übersicht, die in den folgenden
- Abschnitten näher beschrieben werden.
+In diesem Kapitel werden die Schnittstellen der Komponenten beschrieben,
+ sowie eingesetzte Protokolle und übertragene Objekte erläutert.
  Bei allen Schnittstellen handelt es sich um WSDL-Schnittstellen mit denen
  über ein Übertragungsprotokoll wie z.B.
  HTTP SOAP-Nachrichten ausgetauscht werden können.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename Schnittstellen.png
-	width 100text%
+ Die UDDI Schnittstelle der Registry Apache jUDDI wird direkt genutzt und
+ bietet entsprechende Funktionen, die in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-7"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Schnittstellen"
-
-\end_inset
-
-Schnittstellen des SIMPL Rahmenwerks
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+ spezifiziert sind.
 \end_layout
 
 \begin_layout Subsection
@@ -2789,17 +2829,45 @@ SIMPL Core
 \end_layout
 
 \begin_layout Standard
-Hier werden die Schnittstellen des SIMPL Rahmenwerks und ihre Verwendung
- von den Komponenten beschrieben.
+Hier werden die externen und wichtige interne Schnittstellen des SIMPL Rahmenwer
+ks beschrieben.
+ (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsubsection
-DatasourceService
+AdministrationService (extern)
 \end_layout
 
 \begin_layout Standard
-Die DatasourceService-Schnittstelle wird von Apache ODE beim Zugriff auf
- Datenquellen und das Speichern der Auditing-Daten verwendet.
+Die AdministrationService-Schnittstelle bietet Funktionen für das Speichern,
+ Löschen und Laden von Einstellungen der Admin-Konsole.
+ Die Einstellungen werden dabei als SDO übertragen.
+\end_layout
+
+\begin_layout Subsubsection
+StorageService (intern und extern)
+\end_layout
+
+\begin_layout Standard
+Die StorageService-Schnittstelle bietet Funktionen zur Verwaltung von Daten
+ innerhalb des Rahmenwerks.
+ Die Daten werden als SDO übertragen.
+\end_layout
+
+\begin_layout Subsubsection
+DatasourceService (extern)
+\end_layout
+
+\begin_layout Standard
+Die DatasourceService-Schnittstelle wird extern von Apache ODE für den Zugriff
+ auf Datenquellen und das Speichern der Auditing-Daten verwendet.
  Sie bietet Funktionen zum Abrufen der Daten von Datenquellen und Senden
  von Befehlen in unterstützten Anfragesprachen.
  Die Daten werden dabei als Service Data Object (SDO) 
@@ -2813,7 +2881,7 @@ key "key-4"
 \end_layout
 
 \begin_layout Subsubsection
-StrategyService
+StrategyService (intern)
 \end_layout
 
 \begin_layout Standard
@@ -2828,21 +2896,25 @@ reference "sub:Strategy-Service"
 
 ).
  Die nichtfunktionalen Anforderungen an die Datenquellen werden dabei als
- WS-Policy-Objekte übertragen, andere funktionale Eigenschaften im XML-Format.
+ WS-Policy-Objekte übertragen, andere funktionale Eigenschaften als XML-Struktur.
+\end_layout
+
+\begin_layout Subsubsection
+SecurityService (intern)
+\end_layout
+
+\begin_layout Standard
+Die SecurityService-Schnittstelle bietet Funktionen für die Verwaltung von
+ Authentifizierungs- und Autorisierungsinformationen.
+ Sie wird vom Datasource Service benötigt um entsprechende Informationen
+ für einen Zugriff auf eine Datenquelle abzurufen.
+ Die Informationen werden dabei hauptsächlich in der Security Assertion
+ Markup Language (SAML) und der eXtensible Access Control Markup Language
+ (XACML) übertragen.
 \end_layout
 
 \begin_layout Subsubsection
 ReferenceService
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-RRS Implementierung beschreiben, siehe Paper.....Literaturverweis nicht vergessen...
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2853,86 +2925,67 @@ Die ReferenceService-Schnittstelle wird bei der Modellierung in Eclipse
  die Daten der aufgelösten Referenzen als SDO zurückgeliefert werden.
 \end_layout
 
-\begin_layout Subsubsection
-SecurityService
+\begin_layout Subsection
+RRS
 \end_layout
 
 \begin_layout Standard
-Die SecurityService-Schnittstelle bietet Funktionen für die Verwaltung und
- Transformation von Authentifizierungs- und Autorisierungsinformationen.
- Sie wird vom Datasource Service benötigt um entsprechende Informationen
- für einen Zugriff auf eine Datenquelle abzurufen.
- Die Informationen werden dabei unter anderem in der Security Assertion
- Markup Language (SAML) und der eXtensible Access Control Markup Language
- (XACML) übertragen.
-\end_layout
-
-\begin_layout Subsubsection
-AdministrationService
-\end_layout
-
-\begin_layout Standard
-Die AdministrationService-Schnittstelle bietet Funktionen, mit denen Einstellung
-en zur Prozesslaufzeit gemacht werden können.
- Weiterhin werden Funktionen für die Verwaltung der Einstellungen der Admin-Kons
-ole angeboten.
- Die Einstellungen der Admin-Konsole werden dabei als SDO übertragen.
-\end_layout
-
-\begin_layout Subsubsection
-TransformationService
-\end_layout
-
-\begin_layout Standard
-Die TransformationService-Schnittstelle bietet eine Funktion zur Umwandlung,
- des durch die DM-Aktivitäten erweiterten BPEL-Code, in standard-konformen
- BPEL-Code.
- Dazu werden die entsprechenden BPEL-Dateien übergeben und entsprechend
- transformierte Kopien der Prozessmodelle zurückgeliefert.
-\end_layout
-
-\begin_layout Subsubsection
-StorageService
-\end_layout
-
-\begin_layout Standard
-Die StorageService-Schnittstelle bietet Funktionen zur Verwaltung von Daten
- innerhalb des Rahmenwerks und wird vom Reference Service, Administration
- Service und SecurityService verwendet.
- Zusätzlich bietet sie dem Administration Service die Möglichkeit, eine
- Datenquelle für die Speicherung festzulegen.
- Alle Daten werden als SDO übertragen.
-\end_layout
-
-\begin_layout Subsubsection
-RegistryService
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Datenquellen hinzufügen direkt aus Eclipse oder über AdminService?
-\end_layout
+In den folgenden Abschnitten werden die Schnittstellen des RRS beschrieben.
+ (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Reference-Resolution-System"
 
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Schnittstelle muss allgemein gehalten werden, nicht WSDL/WS-Policy
-\end_layout
+) Die nachfolgenden Beschreibungen beziehen sich auf Quelle 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
 
 \end_inset
 
+ und werden hier nicht im Detail erläutert.
+\end_layout
 
+\begin_layout Subsubsection
+RRSRetrievalService
 \end_layout
 
 \begin_layout Standard
-Die RegistryService-Schnittstelle bietet Funktionen für die Verwaltung von
- Datenquellen und ihren Eigenschaften in der angebundenen Registry.
- Der StrategyService, sowie Eclipse, bekommen dadurch Zugriff auf die vorhanden
- Datenquelle, die über diese Schnittstelle abgerufen werden.
+Die RRSRetrievalService-Schnittstelle bietet eine Funktion, mit der Referenzen
+ aufgelöst werden können.
+ Dazu wird eine Endpoint Reference (EPR) übergeben und der damit verbundene
+ Wert aus einer Datenquelle ausgelesen und als SDO zurückgeliefert.
+\end_layout
+
+\begin_layout Subsubsection
+RRSAdministrationService
+\end_layout
+
+\begin_layout Standard
+Diese Schnittstelle bietet Funktionen zum Speichern, Löschen und Ändern
+ von Referenzen in Form von EPRs.
+\end_layout
+
+\begin_layout Subsubsection
+RRSTransformationService
+\end_layout
+
+\begin_layout Standard
+Die RRSTransformationService-Schnittstelle bietet eine Funktion zur Umwandlung
+ des durch Referenzen erweiterten BPEL-Codes in standard-konformen BPEL-Code.
+ Dazu werden die entsprechenden BPEL-Dateien übergeben und transformierte
+ Kopien der Prozessmodelle zurückgeliefert.
+ Während der Transformation wird das Prozessmodell entsprechend den Beschreibung
+en in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
+
+\end_inset
+
+ erweitert.
 \end_layout
 
 \begin_layout Standard
@@ -3054,6 +3107,41 @@ Spezifikation v1.1
  
 \shape default
 Stupro-A SIMPL (2009).
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-6"
+
+\end_inset
+
+ Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: 
+\emph on
+Towards Reference Passing in Web Service and Workflow-based Applications
+\emph default
+.
+ In: Proceedings of the 13th IEEE Enterprise Distributed Object Conference
+ (EDOC 2009)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-7"
+
+\end_inset
+
+Clement, Luc; Hately, Andrew; von Riegen, Claus; Rogers, Tony: 
+\emph on
+UDDI Version 3 Specification- OASIS Standard
+\emph default
+.
+ Organization for the Advancement of Structured Information Standards OASIS,
+ 19.
+ Oktober 2004.
+ http://www.oasis-open.org/committees/uddi-spec/doc/tcspecs.htm#uddiv3, Abruf:
+ 07.12.2009
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -3086,7 +3174,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="2">
+<lyxtabular version="3" rows="22" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="10cm">
@@ -3185,6 +3273,26 @@ DM
 
 \begin_layout Plain Layout
 Data-Management
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EPR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Endpoint Reference
 \end_layout
 
 \end_inset
