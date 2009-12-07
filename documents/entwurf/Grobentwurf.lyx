@@ -1397,9 +1397,9 @@ reference "fig:Architektur-des-SIMPL"
 \end_inset
 
  zeigt die Architektur des SIMPL Rahmenwerks.
- Das Zusammenspiel der Komponenten wird in den folgenden Abschnitten beschrieben
-, auf die Komponenten selbst und ihre Erweiterungen wird dann in Kapitel
- 
+ Das Zusammenspiel der übergeordneten Komponenten wird in den folgenden
+ Abschnitten beschrieben, auf die Komponenten selbst und ihre Erweiterungen
+ wird dann in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Komponenten"
@@ -1532,7 +1532,7 @@ name "sec:Komponenten"
 
 \end_inset
 
-Komponenten und Schnittstellen
+Komponenten
 \end_layout
 
 \begin_layout Standard
@@ -1543,10 +1543,21 @@ reference "fig:Komponenten"
 
 \end_inset
 
- werden die für das SIMPL Rahmenwerk wichtigen Komponenten und Abhängigkeiten
- gezeigt, die in den folgenden Abschnitten näher beschrieben werden.
- Die Richtung der Pfeile beschreibt die Zugriffsrichtung, die Beschriftung
- der Pfeile den Kontext in dem die Zugriffe stattfinden.
+ werden die für das SIMPL Rahmenwerk relevanten Komponenten und ihre Abhängigkei
+ten gezeigt, die in den folgenden Abschnitten näher beschrieben werden.
+ Die Richtung der Pfeile beschreibt die Richtung in der die Zugriffe stattfinden.
+ Der SIMPL Core greift für das Late Binding auf Apache jUDDI zu um eine
+ passende Datenquelle zu finden.
+ Für Einstellungen zur Laufzeit muss vom SIMPL Core direkt auf Apache ODE
+ zugegriffen werden.
+ Apache ODE verwendet den SIMPL Core für die Ausführung der DM-Aktivitäten
+ und verwendet dabei den RRS Service um Referenzen aufzulösen.
+ Eclipse bietet die Möglichkeit den SIMPL Core über eine GUI zu administrieren,
+ die Einstellungen werden im SIMPL Core gespeichert.
+ Beim Deployment eines modellierten Prozesses, wird über den RRS eine Modelltran
+formation durchgeführt und der Prozess in Apache ODE deployt.
+ Die Referenzen des RRS werden ebenfalls über eine GUI in Eclipse verwaltet
+ und vom RRS über den SIMPL Core gespeichert.
 \end_layout
 
 \begin_layout Standard
@@ -1752,7 +1763,7 @@ RRS Plug-In
 \begin_layout Subsection
 Apache ODE
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 - Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden
@@ -1998,49 +2009,32 @@ SIMPL Core
 \end_layout
 
 \begin_layout Subsubsection
-Strategy Service
+Administration Service
 \end_layout
 
 \begin_layout Standard
-Der Strategy Service wird vom DatasourceService für das Late Binding (siehe
- Anforderung 
+Über den Administration Service wird die Funktionalität für die Admin-Konsole
+ (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Late-Binding-von"
+reference "sub:Admin-Konsole"
 
 \end_inset
 
-) verwendet.
- Dort stehen verschiedene Auswahlstrategien bzw.
- -algorithmen zur Verfügung, um mit im Prozess formulierten Anforderungen
- eine passende Datenquelle ausfindig zu machen.
- Die Datenquellen zur Auswahl werden von der UDDI Registry (Apache jUDDI)
- bereitgestellt.
- In einer späteren Iteration werden die Strategien 
-\begin_inset Quotes eld
+) in Eclipse bereitgestellt.
+ Die Einstellungen der Admin-Konsole werden über den Storage Service verwaltet.
+ Für Einstellungen, mit denen zur Laufzeit Einfluss auf Apache ODE genommen
+ wird, wie z.B.
+ die Granularität des Auditings, werden die vorhandenen Schnittstellen von
+ Apache ODE verwendet und, falls nötig, neue Schnittstellen geschaffen.
+ Die geforderte austauschbare GUI (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterbarkeit"
+
 \end_inset
 
-Erster Fund
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Bester Fund
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Passender Fund
-\begin_inset Quotes erd
-\end_inset
-
- realisiert.
+), wird durch die WSDL-Schnittstelle erreicht.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2076,6 +2070,7 @@ reference "sub:Plug-In"
 
 ) für zusätzliche funktionale Erweiterungen geschaffen, wie z.B die Unterstützung
  verschiedener Dateitypen bei Dateisystemen.
+ Referenzen werden vom RRS Service über den Datasource Service aufgelöst.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2133,31 +2128,55 @@ reference "sub:Authentifizierung-und-Autorisierung"
 \end_layout
 
 \begin_layout Subsubsection
-Administration Service
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Strategy-Service"
+
+\end_inset
+
+Strategy Service
 \end_layout
 
 \begin_layout Standard
-Über den Administration Service wird die Funktionalität für die Admin-Konsole
- (siehe Anforderung 
+Der Strategy Service wird vom DatasourceService für das Late Binding (siehe
+ Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Admin-Konsole"
+reference "sub:Late-Binding-von"
 
 \end_inset
 
-) bereitgestellt.
- Für Einstellungen, mit denen zur Laufzeit Einfluss auf Apache ODE genommen
- wird, wie z.B.
- die Granularität des Auditings, werden die vorhandenen Schnittstellen von
- Apache ODE verwendet und, falls nötig, neue Schnittstellen geschaffen.
- Die geforderte austauschbare GUI (siehe Anforderung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Erweiterbarkeit"
-
+) verwendet.
+ Dort stehen verschiedene Auswahlstrategien bzw.
+ -algorithmen zur Verfügung, um mit im Prozess formulierten Anforderungen
+ eine passende Datenquelle ausfindig zu machen.
+ Die Datenquellen zur Auswahl werden von der UDDI Registry (Apache jUDDI)
+ bereitgestellt.
+ In einer späteren Iteration werden die Strategien 
+\begin_inset Quotes eld
 \end_inset
 
-), wird durch die WSDL-Schnittstelle erreicht.
+Erster Fund
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Bester Fund
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Passender Fund
+\begin_inset Quotes erd
+\end_inset
+
+ realisiert, die erst in einer späteren Iteration näher spezifiziert werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2249,16 +2268,16 @@ RRS Service
 \begin_layout Standard
 Über den RRS Service lassen sich Referenzen auflösen und die referenzierten
  Daten bei Bedarf in einen Prozess holen.
- Die Referenzen werden über den Datasource Service des SIMPL Core aufgelöst.
+ Die Referenzen werden mit dem Datasource Service des SIMPL Core aufgelöst.
 \end_layout
 
 \begin_layout Subsubsection
-RRS Admin Service
+RRS Administration Service
 \end_layout
 
 \begin_layout Standard
-Mit dem RRS Admin Service können Referenzen über das Eclipse RRS Plug-In
- verwaltet werden.
+Mit dem RRS Administration Service können Referenzen über das Eclipse RRS
+ Plug-In verwaltet werden.
  Die Verwaltung geschieht dabei über den Storage Service vom SIMPL Core.
 \end_layout
 
@@ -2417,20 +2436,18 @@ StrategyService
 \end_layout
 
 \begin_layout Standard
-Die StrategyService-Schnittstelle wird von Apache ODE für das Late Binding
- genutzt und bietet Funktionen für die verschiedenen Auswahlstrategien.
- Die Anforderungen an die Datenquellen werden dabei als WS-Policy-Objekte
- übertragen.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-wie werden die funktionalen Anforderungen übertragen?
-\end_layout
+Die StrategyService-Schnittstelle wird vom Datasource Service für das Late
+ Binding genutzt und bietet Funktionen für die verschiedenen Auswahlstrategien
+ (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Strategy-Service"
 
 \end_inset
 
-
+).
+ Die nichtfunktionalen Anforderungen an die Datenquellen werden dabei als
+ WS-Policy-Objekte übertragen, andere funktionale Eigenschaften im XML-Format.
 \end_layout
 
 \begin_layout Subsubsection
