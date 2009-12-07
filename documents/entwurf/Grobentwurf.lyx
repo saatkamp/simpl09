@@ -1866,7 +1866,7 @@ PropertySections
 \end_layout
 
 \begin_layout Standard
-Diese Extension Point ermöglicht das erweitern von Property-Fenstern, die
+Diese Extension Point ermöglicht das Erweitern von Property-Fenstern, die
  die BPEL Aktivitäten verwalten indem Variablen, Eigenschaften oder Referenzen
  etc.
  eingestellt werden.
@@ -1887,12 +1887,10 @@ Eigene Extension Points?
 \end_layout
 
 \begin_layout Standard
-Im Rahmen der BPEL-DM Plug-In beinhaltet die Daten Aktivitäten, die den
- Aktivitäten vom BPEL Designer Plug-In erweitert.
-\end_layout
-
-\begin_layout Standard
-Die Erweiterung der Aktivitäten geschieht in der drei Extinsion Points :
+Das BPEL-DM Plug-In beinhaltet die Datenmanagement Aktivitäten, die den
+ Aktivitäten des BPEL Designer Plug-In erweitert.
+ Die Erweiterung der Aktivitäten geschieht in den drei Extension Points
+ :
 \end_layout
 
 \begin_layout Itemize
@@ -1908,7 +1906,7 @@ PropertySections
 \end_layout
 
 \begin_layout Standard
-Für die jeweilige DM-Aktivitäten existiert die 
+Für die jeweilige DM-Aktivitäten existierten die 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1916,11 +1914,8 @@ Properties
 \begin_inset Quotes erd
 \end_inset
 
- Fenster, die wieder erweiterbar ist.
-\end_layout
-
-\begin_layout Standard
-Die Erweiterbarkeit der 
+ Fenster, die wiederum erweiterbar sind.
+ Die Erweiterbarkeit der 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1928,9 +1923,9 @@ Properties
 \begin_inset Quotes erd
 \end_inset
 
- Fenster jeder DM-Aktivität wird durch XML-Dateien geleistet.
- Die Erweiterbarkeit in diesem Sinn betrifft speziel neue Abfragesprachen
- und dafür benötigte GUI Elemente.
+ Fenster jeder DM-Aktivität wird durch XML-Dateien gewährleistet.
+ Die Erweiterbarkeit in diesem Sinn betrifft speziell neue Abfragesprachen
+ und die dafür benötigten GUI Elemente.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1948,18 +1943,14 @@ Eigene Extension Points?
 \end_layout
 
 \begin_layout Standard
-SIMPL Core Plug-In erweitert der IDE bzw.
- Eclipse Arbeitsumgebung um den SIMPL Menu und dabei verlinkten Funktionsbereich
-e von SIMPL Core wie z.B.
+SIMPL Core Plug-In erweitert die IDE bzw.
+ Eclipse Arbeitsumgebung um das SIMPL Menu und die dabei verlinkten Funktionsber
+eiche von SIMPL Core wie z.B.
  die Admin Konsole.
- Dieser besteht aus der Menu und die darauf verlinkten Klassen.
-\end_layout
-
-\begin_layout Standard
-SIMPL Core Plug-In verfügt über den Extension Point ACItem (Admin Consol
- Item) und mit hilfe des AC Plug-Ins (Admin Consol Plug-In) kann der Admin
- Konsole um weitere Baum-Menupunkte und die dazugehörige Admin Konsole Inhalte
- erweitert.
+ Dieser besteht aus dem Menü und den darauf verlinkten Klassen.Das SIMPL
+ Core Plug-In verfügt über den Extension Point ACItem (Admin Consol Item)
+ und mit Hilfe des AC Plug-Ins (Admin Consol Plug-In) kann die Admin-Konsole
+ um weitere Baum-Menüpunkte und die dazugehörige Admin Konsole Inhalte erweitert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1969,6 +1960,8 @@ RRS Plug-In
 \begin_layout Standard
 Das RRS Plug-In wird über den View-Extension-Point in Eclipse angebunden.
  Hier wird eine GUI für die Einstellungen des RRS angeboten.
+ Diese Einstellungen werden hier nur erfasst und dann an den RRS-Service
+ weitergeleitet.
 \end_layout
 
 \begin_layout Subsection
