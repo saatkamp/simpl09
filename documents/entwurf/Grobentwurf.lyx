@@ -171,7 +171,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -1945,6 +1945,21 @@ Eigene Extension Points?
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+SIMPL Core Plug-In erweitert der IDE bzw.
+ Eclipse Arbeitsumgebung um den SIMPL Menu und dabei verlinkten Funktionsbereich
+e von SIMPL Core wie z.B.
+ die Admin Konsole.
+ Dieser besteht aus der Menu und die darauf verlinkten Klassen.
+\end_layout
+
+\begin_layout Standard
+SIMPL Core Plug-In verfügt über den Extension Point ACItem (Admin Consol
+ Item) und mit hilfe des AC Plug-Ins (Admin Consol Plug-In) kann der Admin
+ Konsole um weitere Baum-Menupunkte und die dazugehörige Admin Konsole Inhalte
+ erweitert.
 \end_layout
 
 \begin_layout Subsubsection
