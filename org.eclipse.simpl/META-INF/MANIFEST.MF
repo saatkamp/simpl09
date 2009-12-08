@@ -8,4 +8,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.simpl.extensions;uses:="org.eclipse.swt.events"
+Export-Package: org.eclipse.simpl,
+ org.eclipse.simpl.auditing,
+ org.eclipse.simpl.extensions;uses:="org.eclipse.swt.widgets",
+ org.eclipse.simpl.handlers,
+ org.eclipse.simpl.settings,
+ org.eclipse.simpl.ui
