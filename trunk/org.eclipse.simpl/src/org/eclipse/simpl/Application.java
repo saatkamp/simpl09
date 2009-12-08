@@ -104,7 +104,7 @@ public class Application {
 			if (e.getAttribute("composite") != null
 					&& e.getAttribute("label").contains(treeItem)) {
 				System.out.println("Knoten_Name: " + e.getName());
-				System.out.println("Atrribut_Composite: "
+				System.out.println("Attribut_Composite: "
 						+ e.getAttribute("composite"));
 				try {
 					final Object o = e.createExecutableExtension("composite");

@@ -64,12 +64,14 @@ public class AdminConsoleUI {
 			oldComposite.dispose();
 		}
 
-		compositeClass = Application.getInstance().getCompositeClass(treeItem);
-		compositeClass.createComposite(composite);
-		oldComposite = compositeClass.getComposite();
+		if (Application.getInstance().getCompositeClass(treeItem)!=null){
+			compositeClass = Application.getInstance().getCompositeClass(treeItem);
+			compositeClass.createComposite(composite);
+			oldComposite = compositeClass.getComposite();
 
-		composite.layout();
-		sShell.layout();
+			composite.layout();
+			sShell.layout();
+		}
 	}
 
 	/**
@@ -114,7 +116,7 @@ public class AdminConsoleUI {
 		sShell.setText("SIMPL Admin Console");
 		sShell.setImage(new Image(Display.getCurrent(), getClass()
 				.getResourceAsStream("/icons/logo.png")));
-		sShell.setBounds(new Rectangle(44, 58, 600, 600));
+		sShell.setBounds(new Rectangle(200, 100, 900, 500));
 		sShell.setLayout(gridLayout);
 		tree = new Tree(sShell, SWT.SINGLE | SWT.BORDER);
 		tree.setLayoutData(gridData);
@@ -184,7 +186,9 @@ public class AdminConsoleUI {
 				TreeItem parentItem = sItem.getParentItem();
 
 				// TODO Auswahl muss noch besser abgesichert werden. Am besten
-				// man betrachtet das Elternelement mit!
+				// man betrachtet das Elternelement mit! Hier ist allerdings auch noch
+				// zu denken, dass das Elternelement auch eine Composite haben kann und
+				// das auch Elemente ohne Elternelement eine Composite haben (wie z.B. Auditing)
 				if (parentItem != null && sItem != null) {
 					System.out.println(parentItem.getText() + " -> "
 							+ sItem.getText() + " was selected");
