@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.eclipse.simpl.core.adminConsoleItem" name="AdminConsoleItem" schema="schema/org.eclipse.simpl.core.adminConsoleItem.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="SIMPL Category"
+            id="org.eclipse.simpl.commands.category">
+      </category>
+      <command
+            name="Admin Console"
+            categoryId="org.eclipse.simpl.commands.category"
+            id="org.eclipse.simpl.commands.adminCCommand">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="org.eclipse.simpl.commands.adminCCommand"
+            class="org.eclipse.simpl.core.handlers.SimplHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="org.eclipse.simpl.menus.simplMenu"
+               label="SIMPL"
+               mnemonic="M">
+            <command
+                  commandId="org.eclipse.simpl.commands.adminCCommand"
+                  icon="icons/logo.png"
+                  id="org.eclipse.simpl.menus.adminCCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.simpl.core.adminConsoleItem">
+      <adminConsoleItem
+            label="Global Settings"
+            position="1">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.settings.AuthentificationComposite"
+               label="Authentification Data">
+         </adminConsoleItem>
+      </adminConsoleItem>
+      <adminConsoleItem
+            label="Auditing"
+            position="2">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.auditing.AuditingGeneralComposite"
+               label="General">
+         </adminConsoleItem>
+      </adminConsoleItem>
+   </extension>
+
+</plugin>
