@@ -10,7 +10,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Label;
 
-import org.eclipse.simpl.extensions.IAdminConsoleComposite;
+import org.eclipse.simpl.core.extensions.IAdminConsoleComposite;
 import org.eclipse.swt.widgets.Composite;
 
 public class ReferenceComposite implements IAdminConsoleComposite {
