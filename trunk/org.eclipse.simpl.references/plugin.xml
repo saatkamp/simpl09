@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.simpl.adminConsole.adminConsoleItem">
+         point="org.eclipse.simpl.core.adminConsoleItem">
       <adminConsoleItem
             label="References"
             position="3">
