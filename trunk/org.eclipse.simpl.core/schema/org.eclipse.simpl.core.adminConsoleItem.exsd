@@ -82,7 +82,7 @@
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.simpl.core.extensions.IAdminConsoleComposite"/>
+                  <meta.attribute kind="java" basedOn="org.eclipse.simpl.core.extensions.AAdminConsoleComposite:"/>
                </appinfo>
             </annotation>
          </attribute>

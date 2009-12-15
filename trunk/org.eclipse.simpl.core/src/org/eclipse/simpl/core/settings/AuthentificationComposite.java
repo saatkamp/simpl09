@@ -2,7 +2,7 @@ package org.eclipse.simpl.core.settings;
 
 import java.util.List;
 
-import org.eclipse.simpl.core.extensions.IAdminConsoleComposite;
+import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
@@ -10,9 +10,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Text;
 
-public class AuthentificationComposite implements IAdminConsoleComposite {
+public class AuthentificationComposite extends AAdminConsoleComposite {
 
-	private Composite composite = null;
 	private Label userLabel = null;
 	private Label passwordLabel = null;
 	private Text userText = null;
@@ -67,18 +66,6 @@ public class AuthentificationComposite implements IAdminConsoleComposite {
 	public void saveProperties(List<String> properties) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public Composite getComposite() {
-		// TODO Auto-generated method stub
-		return this.composite;
-	}
-
-	@Override
-	public void setComposite(Composite composite) {
-		// TODO Auto-generated method stub
-		this.composite = composite;
 	}
 
 }
