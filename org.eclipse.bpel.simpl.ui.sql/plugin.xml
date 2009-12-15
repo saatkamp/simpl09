@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.bpel.simpl.ui.queryLanguage">
+      <queryLanguages
+            language="SQL">
+         <queryLanguage
+               class="org.eclipse.bpel.simpl.ui.sql.editor.SelectEditor"
+               name="Select">
+            <activity
+                  type="org.eclipse.bpel.simpl.model.QueryActivity">
+            </activity>
+         </queryLanguage>
+         <queryLanguage
+               class="org.eclipse.bpel.simpl.ui.sql.editor.InsertEditor"
+               name="Insert">
+            <activity
+                  type="org.eclipse.bpel.simpl.model.InsertActivity">
+            </activity>
+         </queryLanguage>
+      </queryLanguages>
+   </extension>
+
+</plugin>
