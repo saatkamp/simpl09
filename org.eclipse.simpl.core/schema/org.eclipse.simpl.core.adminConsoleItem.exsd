@@ -6,7 +6,7 @@
          <meta.schema plugin="org.eclipse.simpl.core" id="org.eclipse.simpl.core.adminConsole.adminConsoleItem" name="AdminConsoleadminConsoleItem"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         This extension point can be used to add additional content to the SIMPL Admin-Console. In fact that means, that a new treeItem will be inserted and a corresponding composite shown if the treeItem will be selected. So it is possible to extend the Admin-Console with new settings or the management of later SIMPL plug-ins over this extension point.
       </documentation>
    </annotation>
 
@@ -48,6 +48,11 @@
    </element>
 
    <element name="adminConsoleItem">
+      <annotation>
+         <documentation>
+            New content for the SIMPL Admin-Console.
+         </documentation>
+      </annotation>
       <complexType>
          <sequence minOccurs="0" maxOccurs="1">
             <element ref="adminConsoleItem" minOccurs="0" maxOccurs="unbounded"/>
@@ -72,14 +77,14 @@
          <attribute name="position" type="string">
             <annotation>
                <documentation>
-                  
+                  The position of this element in the tree of the SIMPL Admin-Console. Only values in the range of the existing tree element positions are possible. For example if there are 3 elements in the tree already, positions between 1 and 4 are possible values.
                </documentation>
             </annotation>
          </attribute>
          <attribute name="composite" type="string">
             <annotation>
                <documentation>
-                  
+                  The composite which will be shown if the corresponding treeItem was selected. The specified class must extend &lt;tt&gt;org.eclipse.simpl.core.extensions.AAdminConsoleItem&lt;/tt&gt;.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn="org.eclipse.simpl.core.extensions.AAdminConsoleComposite:"/>
@@ -94,7 +99,7 @@
          <meta.section type="since"/>
       </appinfo>
       <documentation>
-         [Enter the first release in which this extension point appears.]
+         org.eclipse.simpl.core_1.0.0
       </documentation>
    </annotation>
 
@@ -103,7 +108,19 @@
          <meta.section type="examples"/>
       </appinfo>
       <documentation>
-         [Enter extension point usage example here.]
+         Example for adding settings for the auditing of SIMPL to the Admin-Console.
+&lt;p&gt;
+
+&lt;pre&gt;
+&lt;extension point=&quot;org.eclipse.simpl.core.adminConsoleItem&quot;&gt;
+  &lt;adminConsoleItem label=&quot;Auditing&quot; position=&quot;2&quot;&gt;
+    &lt;adminConsoleItem
+        composite=&quot;org.eclipse.simpl.core.auditing.AuditingGeneralComposite&quot;
+        label=&quot;General&quot;&gt;
+    &lt;/adminConsoleItem&gt;
+  &lt;/adminConsoleItem&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
       </documentation>
    </annotation>
 
@@ -112,7 +129,8 @@
          <meta.section type="apiinfo"/>
       </appinfo>
       <documentation>
-         [Enter API information here.]
+         The value of the attribute class must represent a fully qualified name of a class
+which extends &lt;tt&gt;org.eclipse.simpl.core.extensions.AAdminConsoleItem&lt;/tt&gt;.
       </documentation>
    </annotation>
 
@@ -125,5 +143,13 @@
       </documentation>
    </annotation>
 
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         SIMPL
+      </documentation>
+   </annotation>
 
 </schema>
