@@ -14,6 +14,12 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * A BPELPropertySection for SIMPL Data-Management-Activities.
+ * 
+ * @author hahnml
+ *
+ */
 public class DMActivityPropertySection extends BPELPropertySection{
 
 	private Label typeLabel = null;
@@ -43,6 +49,11 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		createWidgets(parent);
 	}
 
+	/**
+	 * Creates the property section.
+	 * 
+	 * @param composite to put the content in.
+	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
 		GridData gridData61 = new GridData();
@@ -209,8 +220,6 @@ public class DMActivityPropertySection extends BPELPropertySection{
 						break;
 				}
 			}});
-		//Listener für die Änderung des Statement Textfelds registrieren
-		typeCombo.addSelectionListener(statementChangeListener);
 		typeCombo.setEditable(false);
 	}
 
@@ -230,6 +239,9 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		
 	}
 	
+	/**
+	 * Opens a statement editor shell.
+	 */
 	private void openStatementEditor(){
 		//dynamisch machen, language resultiert aus Datenquellenauswahl und die Aktivität
 		// muss irgendwie festgestellt werden
@@ -244,23 +256,4 @@ public class DMActivityPropertySection extends BPELPropertySection{
 	public String getStatement(){
 		return statementText.getText();
 	}
-	
-	/**
-	 * This variable is used to register the same SelectionListener on 
-	 * all combo boxes. The listener itself is used to detect changes for the
-	 * resulting statement and for updating it. 
-	 */
-	private SelectionListener statementChangeListener = new SelectionListener(){
-		
-		@Override
-		public void widgetDefaultSelected(SelectionEvent arg0) {
-			// TODO Auto-generated method stub	
-		}
-
-		@Override
-		public void widgetSelected(SelectionEvent arg0) {
-			// TODO Auto-generated method stub
-
-		}
-	};
 }
