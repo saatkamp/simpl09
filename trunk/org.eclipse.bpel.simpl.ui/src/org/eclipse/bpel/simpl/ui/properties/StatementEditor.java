@@ -14,6 +14,12 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Button;
 
+/**
+ * 
+ * 
+ * @author hahnml
+ *
+ */
 public class StatementEditor {
 
 	private Shell sShell = null;  //  @jve:decl-index=0:visual-constraint="10,10"
