@@ -54,3 +54,11 @@ Wer viel Speicher hat, kann Eclipse noch mit folgenden Einstellungen beschleunig
 -XX:PermSize=128M
 -XX:MaxPermSize=128M
 }}}
+
+=== Author ===
+Bei der Erstellung von Kommentaren wird standardmäßig der Windows Benutzername als @author verwendet. In der eclipse.ini kann man diesen beliebig anpassen.
+
+*C:\eclipse\eclipse.ini*
+{{{
+-Duser.name=Max Mustermann <max.mustermann@muster.de>
+}}}
