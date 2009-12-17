@@ -1,0 +1,13 @@
+/AbstractEditModelCommand.java/1.2/Thu Aug  9 01:57:02 2007//
+/EditModel.java/1.4/Sun May  4 11:05:38 2008//
+/EditModelClient.java/1.4/Sun May  4 11:05:38 2008//
+/EditModelCommandStack.java/1.2/Fri Jun 22 21:56:44 2007//
+/IEditModelCommand.java/1.1/Tue Nov 29 18:50:34 2005//
+/IEditModelListener.java/1.2/Fri Jun  8 23:10:12 2007//
+/IResourceSetProvider.java/1.1/Fri Jun  8 23:10:12 2007/-kk/
+/PlaceHolderCommand.java/1.2/Sun May  4 11:05:38 2008//
+/ResourceInfo.java/1.2/Fri Jun  8 23:10:12 2007//
+/ResourceListener.java/1.2/Fri Jun  8 23:10:12 2007//
+/SynchronizationHandler.java/1.1/Tue Nov 29 18:50:34 2005//
+/SynchronizationManager.java/1.1/Tue Nov 29 18:50:34 2005//
+/readme.txt/1.1/Tue Nov 29 18:50:34 2005//
