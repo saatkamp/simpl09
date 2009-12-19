@@ -1,5 +1,7 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
+import java.util.LinkedHashMap;
+
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
 import org.eclipse.swt.layout.GridLayout;
@@ -41,6 +43,9 @@ public class StatementEditor {
 			compositeClass = Application.getInstance().getEditorClass(language, activity);
 			if (compositeClass != null){
 				compositeClass.createComposite(composite);
+				//TODO: Kann vereinfacht werden, wenn im Modell direkt die HashMap hinterlegt wird.
+				compositeClass.setStatement(
+						Application.getInstance().deserializeStatement(parent.getStatement()));
 			}
 		}
 		//TODO: Laden des hinterlegten Statements noch implementieren!
@@ -104,6 +109,7 @@ public class StatementEditor {
 				// TODO Auto-generated method stub
 				//Hier muss das echte Statement übergeben werden
 				parentClass.setStatement(Application.getInstance().serializeStatement(compositeClass.getStatement()));
+				parentClass.saveStatementToModel(Application.getInstance().serializeStatement(compositeClass.getStatement()));
 				sShell.close();
 			}});
 		
