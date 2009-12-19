@@ -1,7 +1,8 @@
 package org.eclipse.simpl.core.globalsettings.ui;
 
-import java.util.List;
+import java.util.LinkedHashMap;
 
+import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.layout.GridLayout;
@@ -51,21 +52,34 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 	}
 
 	@Override
-	public List<String> loadDefaultProperties() {
+	public void saveSettings(String parentItem, String item, String settingName) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<String> loadProperties() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void saveProperties(List<String> properties) {
-		// TODO Auto-generated method stub
+		//Settings-Liste erstellen und mit Werte füllen zum Speichern
+		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 		
+		//Werte aus den GUI-Elementen in die HashMap einfügen
+		settings.put("user", userText.getText());
+		//TODO: Passwort bitte nicht für immer als Klartext speichern ;)
+		settings.put("password", passwordText.getText());
+		
+		//Über den SIMPL Core in einer embedded DerbyDB speichern
+		SIMPLCommunication.getConnection().save(parentItem, item, settingName, settings);
 	}
+	
+	@Override
+	public void loadSettings(String parentItem,
+			String item, String settingName) {
+		// TODO Auto-generated method stub
+		//Settings-Liste erstellen und mit geladenen Werten füllen
+		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
+		//Über den SIMPL Core aus einer embedded DerbyDB laden
+		settings = SIMPLCommunication.getConnection().load(parentItem, item, settingName);
+	
+		//Geladene Werte in GUI-Elementen setzen
+		userText.setText(settings.get("user"));
+		passwordText.setText(settings.get("password"));
+	}
+
+	
 
 }

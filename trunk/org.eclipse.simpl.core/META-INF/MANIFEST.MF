@@ -9,8 +9,6 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.simpl.core,
- org.eclipse.simpl.core.auditing,
  org.eclipse.simpl.core.extensions;uses:="org.eclipse.swt.widgets",
  org.eclipse.simpl.core.handlers,
- org.eclipse.simpl.core.settings,
  org.eclipse.simpl.core.ui
