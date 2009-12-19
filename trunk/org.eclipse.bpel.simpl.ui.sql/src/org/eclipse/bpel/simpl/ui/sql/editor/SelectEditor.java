@@ -1,9 +1,11 @@
 package org.eclipse.bpel.simpl.ui.sql.editor;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -54,11 +56,19 @@ public class SelectEditor extends AStatementEditor {
 		passwordText.setEchoChar('*');
 		passwordText.setLayoutData(gridData4);
 		
-		HashMap<String, String> statem = new HashMap<String, String>();
+		final LinkedHashMap<String, String> statem = new LinkedHashMap<String, String>();
 		statem.put("SELECT", "(column1, column2, ...)");
 		statem.put("FROM", "table");
 		statem.put("WHERE", "value1='value'");
 		setStatement(statem);
+		
+		userText.addModifyListener(new ModifyListener(){
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				setStatement(statem);
+			}});
 	}
 
 }

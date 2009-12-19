@@ -1,6 +1,9 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
+import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.ui.properties.BPELPropertySection;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionListener;
@@ -33,6 +36,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 	private CCombo kindCombo = null;
 	private Button openEditorButton = null;
 	private Composite parentComposite = null;
+	private String activity = null;
 
 	
 	/**
@@ -46,6 +50,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 
 	@Override
 	protected void createClient(Composite parent) {
+		this.activity = getBPELEditor().getSelection().toString();
 		createWidgets(parent);
 	}
 
@@ -170,6 +175,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		statementText.setVisible(false);
 		statementText.setLayoutData(gridData1);
 		statementText.setEditable(false);
+		statementText.setText(loadStatementFromModel(this.activity));
 		
 		//TODO: Statement-Wert aus Modell lesen und in Textfeld schreiben
 		
@@ -246,7 +252,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		//dynamisch machen, language resultiert aus Datenquellenauswahl und die Aktivität
 		// muss irgendwie festgestellt werden
 		System.out.println("OBJECT: " + getBPELEditor().getSelection().toString());
-		new StatementEditor(this, "SQL", getBPELEditor().getSelection().toString());
+		new StatementEditor(this, "SQL", this.activity);
 	}
 	
 	public void setStatement(String statement){
@@ -256,4 +262,37 @@ public class DMActivityPropertySection extends BPELPropertySection{
 	public String getStatement(){
 		return statementText.getText();
 	}
+	
+	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
+	//ganze sache vereinfachen. Im Moment bleibt es hier aber wegen dem Modell beim String-Type
+	public String loadStatementFromModel(String activity){
+		String statem = "";
+		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
+		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
+			System.out.println("ATTRIBUT: " + eAttrib.getName());
+			System.out.println("WERT: " + eAttrib.getDefaultValue());
+			if (eAttrib.getName().contains("dsStatement")){
+				statem = (String) eAttrib.getDefaultValue();
+			}
+		}
+		return statem;
+	}
+	
+	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
+	//ganze sache vereinfachen. Im Moment bleibt es hier aber wegen dem Modell beim String-Type
+	public void saveStatementToModel(String activity){
+		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
+		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
+			if (eAttrib.getName().contains("dsStatement")){
+				eAttrib.setDefaultValue(getStatement());
+			}
+			System.out.println("ATTRIBUT: " + eAttrib.getName());
+			System.out.println("WERT: " + eAttrib.getDefaultValue());
+		}
+	}
+	
+//	@Override
+//	protected void basicSetInput(EObject newInput) {
+//		
+//	}
 }

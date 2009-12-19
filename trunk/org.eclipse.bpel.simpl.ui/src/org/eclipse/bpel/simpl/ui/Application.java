@@ -2,17 +2,20 @@ package org.eclipse.bpel.simpl.ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
+import org.eclipse.bpel.ui.BPELEditor;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 
 /**
- * This class is used to capture the management of extension
- * contributions to the extension point.
+ * This class is used to capture the management of extension contributions to
+ * the extension point.
  * 
  * @author hahnml
  * 
@@ -55,8 +58,8 @@ public class Application {
 	}
 
 	/**
-	 * Initializes the Application, which means that the list of languageExtensions
-	 * will be initialized.
+	 * Initializes the Application, which means that the list of
+	 * languageExtensions will be initialized.
 	 */
 	public void initApplication() {
 		IConfigurationElement[] config = Platform.getExtensionRegistry()
@@ -71,8 +74,10 @@ public class Application {
 	 * Returns the class of a {@link AStatementEditor} implementation which is
 	 * accessible over the extension point.
 	 * 
-	 * @param language of the editor.
-	 * @param activity on which the editor is based on.
+	 * @param language
+	 *            of the editor.
+	 * @param activity
+	 *            on which the editor is based on.
 	 * @return The corresponding statement editor class.
 	 */
 	public IStatementEditor getEditorClass(String language, String activity) {
@@ -110,12 +115,14 @@ public class Application {
 
 	// TODO: Testen, ob so alle Fälle abgedeckt sind.
 	/**
-	 * This method is used to serialize a statement from a HashMap to a String representation.
+	 * This method is used to serialize a statement from a HashMap to a String
+	 * representation.
 	 * 
-	 * @param statement as HashMap to serialize.
+	 * @param statement
+	 *            as HashMap to serialize.
 	 * @return The serialized String representation of the statement HashMap.
 	 */
-	public String serializeStatement(HashMap<String, String> statement) {
+	public String serializeStatement(LinkedHashMap<String, String> statement) {
 		StringBuilder statem = new StringBuilder();
 		for (String part : statement.keySet()) {
 			statem.append(part);
@@ -132,18 +139,22 @@ public class Application {
 	// bzw.
 	// mit der Erkennung von Schlüsselwörtern.
 	/**
-	 * This method is used to deserialize a statement from a String to a HashMap representation.
+	 * This method is used to deserialize a statement from a String to a HashMap
+	 * representation.
 	 * 
-	 * @param statement as String to deserialize.
+	 * @param statement
+	 *            as String to deserialize.
 	 * @return The deserialized HashMap representation of the statement String.
 	 */
-	public HashMap<String, String> deserializeStatement(String statement) {
-		HashMap<String, String> statem = new HashMap<String, String>();
+	public LinkedHashMap<String, String> deserializeStatement(String statement) {
+		LinkedHashMap<String, String> statem = new LinkedHashMap<String, String>();
 		String[] parts = statement.split(" ");
-		int i = 0;
-		while (i < parts.length) {
-			statem.put(parts[i], parts[i + 1]);
-			i = i + 2;
+		if (parts.length > 1) {
+			int i = 0;
+			while (i < parts.length) {
+				statem.put(parts[i], parts[i + 1]);
+				i = i + 2;
+			}
 		}
 		return statem;
 	}
