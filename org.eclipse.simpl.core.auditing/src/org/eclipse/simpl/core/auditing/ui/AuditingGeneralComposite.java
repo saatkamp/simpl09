@@ -99,8 +99,10 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		//Geladene Werte in GUI-Elementen setzen
 		if (settings.get("mode").contains("on")){
 			auditingCheckBox.setSelection(true);
+			auditingCheckBox.setText("active");
 		}else {
 			auditingCheckBox.setSelection(false);
+			auditingCheckBox.setText("inactive");
 		}
 		auditingDBtext.setText(settings.get("auditingDsAddress"));
 	}
