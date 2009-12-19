@@ -12,3 +12,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.simpl.core.auditing;uses:="org.eclipse.ui.plugin,org.osgi.framework",
  org.eclipse.simpl.core.auditing.ui;uses:="org.eclipse.swt.widgets,org.eclipse.simpl.core.extensions"
+Bundle-Vendor: SIMPL
