@@ -1,7 +1,6 @@
 package org.eclipse.simpl.core.extensions;
 
-import java.util.List;
-
+import java.util.LinkedHashMap;
 import org.eclipse.swt.widgets.Composite;
 
 public interface IAdminConsoleComposite {
@@ -12,9 +11,8 @@ public interface IAdminConsoleComposite {
 	
 	public void createComposite(Composite composite);
 	
-	public void saveProperties(List<String> properties);
+	public void saveSettings(String parentItem, String item, String settingName);
 	
-	public List<String> loadProperties();
-	
-	public List<String> loadDefaultProperties();
+	public void loadSettings(String parentItem, String item,
+			String settingName);
 }

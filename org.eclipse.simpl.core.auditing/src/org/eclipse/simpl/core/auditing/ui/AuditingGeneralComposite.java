@@ -1,7 +1,7 @@
 package org.eclipse.simpl.core.auditing.ui;
 
-import java.util.List;
-
+import java.util.LinkedHashMap;
+import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -67,22 +67,42 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		
 	}
 
-	@Override
-	public List<String> loadDefaultProperties() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public List<String> loadProperties() {
+	public void saveSettings(String parentItem, String item, String settingName) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void saveProperties(List<String> properties) {
-		// TODO Auto-generated method stub
+		//Settings-Liste erstellen und mit Werte füllen zum Speichern
+		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 		
+		//Werte aus den GUI-Elementen in die HashMap einfügen
+		if (auditingCheckBox.getSelection()){
+			settings.put("mode", "on");
+		}else{
+			settings.put("mode", "off");
+		}
+		settings.put("auditingDsAddress", auditingDBtext.getText());
+		
+		//Über den SIMPL Core in einer embedded DerbyDB speichern
+		SIMPLCommunication.getConnection().save(parentItem, item, settingName, settings);
+	}
+
+
+	@Override
+	public void loadSettings(String parentItem,
+			String item, String settingName) {
+		// TODO Auto-generated method stub
+		//Settings-Liste erstellen und mit geladenen Werten füllen
+		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
+		//Über den SIMPL Core aus einer embedded DerbyDB laden
+		settings = SIMPLCommunication.getConnection().load(parentItem, item, settingName);
+		
+		//Geladene Werte in GUI-Elementen setzen
+		if (settings.get("mode").contains("on")){
+			auditingCheckBox.setSelection(true);
+		}else {
+			auditingCheckBox.setSelection(false);
+		}
+		auditingDBtext.setText(settings.get("auditingDsAddress"));
 	}
 
 }
