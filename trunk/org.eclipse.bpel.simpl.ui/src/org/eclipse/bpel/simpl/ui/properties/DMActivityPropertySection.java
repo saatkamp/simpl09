@@ -1,6 +1,8 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.simpl.ui.Application;
+import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -37,6 +39,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 	private Button openEditorButton = null;
 	private Composite parentComposite = null;
 	private String activity = null;
+	private StatementHashMap statement = null;
 
 	
 	/**
@@ -131,6 +134,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 				// TODO Auto-generated method stub
+				widgetSelected(arg0);
 			}
 
 			@Override
@@ -151,6 +155,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 				// TODO Auto-generated method stub
+				widgetSelected(arg0);
 			}
 
 			@Override
@@ -175,7 +180,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		statementText.setVisible(false);
 		statementText.setLayoutData(gridData1);
 		statementText.setEditable(false);
-		statementText.setText(loadStatementFromModel(this.activity));
+		statementText.setText(loadStatementFromModel(this.activity).toString());
 		
 		//TODO: Statement-Wert aus Modell lesen und in Textfeld schreiben
 		
@@ -200,7 +205,8 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		typeCombo.addSelectionListener(new SelectionListener(){
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub	
+				// TODO Auto-generated method stub
+				widgetSelected(arg0);
 			}
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
@@ -255,17 +261,18 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		new StatementEditor(this, "SQL", this.activity);
 	}
 	
-	public void setStatement(String statement){
-		statementText.setText(statement);
+	public void setStatement(StatementHashMap statement){
+		statementText.setText(statement.toString());
+		this.statement = statement;
 	}
 	
-	public String getStatement(){
-		return statementText.getText();
+	public StatementHashMap getStatement(){
+		return this.statement;
 	}
 	
 	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
 	//ganze sache vereinfachen. Im Moment bleibt es hier aber wegen dem Modell beim String-Type
-	public String loadStatementFromModel(String activity){
+	public StatementHashMap loadStatementFromModel(String activity){
 		String statem = "";
 		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
 		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
@@ -275,7 +282,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 				statem = (String) eAttrib.getDefaultValue();
 			}
 		}
-		return statem;
+		return Application.getInstance().deserializeStatement(statem);
 	}
 	
 	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
@@ -284,7 +291,7 @@ public class DMActivityPropertySection extends BPELPropertySection{
 		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
 		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
 			if (eAttrib.getName().contains("dsStatement")){
-				eAttrib.setDefaultValue(getStatement());
+				eAttrib.setDefaultValue(getStatement().toString());
 			}
 			System.out.println("ATTRIBUT: " + eAttrib.getName());
 			System.out.println("WERT: " + eAttrib.getDefaultValue());

@@ -15,5 +15,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.bpel.simpl.ui.extensions
+Export-Package: org.eclipse.bpel.simpl.ui,
+ org.eclipse.bpel.simpl.ui.extensions
 Bundle-Vendor: SIMPL

@@ -1,7 +1,6 @@
 package org.eclipse.bpel.simpl.ui.sql.editor;
 
-import java.util.LinkedHashMap;
-
+import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -56,7 +55,7 @@ public class SelectEditor extends AStatementEditor {
 		passwordText.setEchoChar('*');
 		passwordText.setLayoutData(gridData4);
 		
-		final LinkedHashMap<String, String> statem = new LinkedHashMap<String, String>();
+		final StatementHashMap statem = new StatementHashMap();
 		statem.put("SELECT", "(column1, column2, ...)");
 		statem.put("FROM", "table");
 		statem.put("WHERE", "value1='value'");

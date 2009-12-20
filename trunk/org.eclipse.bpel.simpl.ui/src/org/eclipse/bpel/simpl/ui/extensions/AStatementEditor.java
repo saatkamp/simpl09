@@ -2,6 +2,7 @@ package org.eclipse.bpel.simpl.ui.extensions;
 
 import java.util.LinkedHashMap;
 
+import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -17,7 +18,7 @@ public abstract class AStatementEditor implements IStatementEditor {
 	 */
 	private Composite composite = null;
 	
-	private LinkedHashMap<String, String> statement = null;
+	private StatementHashMap statement = null;
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#getComposite()
@@ -41,7 +42,7 @@ public abstract class AStatementEditor implements IStatementEditor {
 	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#getStatement()
 	 */
 	@Override
-	public LinkedHashMap<String, String> getStatement() {
+	public StatementHashMap getStatement() {
 		return this.statement;
 	}
 
@@ -49,7 +50,7 @@ public abstract class AStatementEditor implements IStatementEditor {
 	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#setStatement(java.util.HashMap)
 	 */
 	@Override
-	public void setStatement(LinkedHashMap<String, String> statement) {
+	public void setStatement(StatementHashMap statement) {
 		this.statement = statement;
 	}
 
