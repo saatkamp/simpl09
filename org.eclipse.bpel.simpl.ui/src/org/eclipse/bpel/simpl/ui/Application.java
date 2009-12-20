@@ -1,15 +1,11 @@
 package org.eclipse.bpel.simpl.ui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
-import org.eclipse.bpel.ui.BPELEditor;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 
@@ -113,26 +109,26 @@ public class Application {
 		return editorClass;
 	}
 
-	// TODO: Testen, ob so alle Fälle abgedeckt sind.
-	/**
-	 * This method is used to serialize a statement from a HashMap to a String
-	 * representation.
-	 * 
-	 * @param statement
-	 *            as HashMap to serialize.
-	 * @return The serialized String representation of the statement HashMap.
-	 */
-	public String serializeStatement(LinkedHashMap<String, String> statement) {
-		StringBuilder statem = new StringBuilder();
-		for (String part : statement.keySet()) {
-			statem.append(part);
-			statem.append(" ");
-			statem.append(statement.get(part));
-			statem.append(" ");
-		}
-		statem.deleteCharAt(statem.length() - 1);
-		return statem.toString();
-	}
+//	// TODO: Testen, ob so alle Fälle abgedeckt sind.
+//	/**
+//	 * This method is used to serialize a statement from a HashMap to a String
+//	 * representation.
+//	 * 
+//	 * @param statement
+//	 *            as HashMap to serialize.
+//	 * @return The serialized String representation of the statement HashMap.
+//	 */
+//	public String serializeStatement(LinkedHashMap<String, String> statement) {
+//		StringBuilder statem = new StringBuilder();
+//		for (String part : statement.keySet()) {
+//			statem.append(part);
+//			statem.append(" ");
+//			statem.append(statement.get(part));
+//			statem.append(" ");
+//		}
+//		statem.deleteCharAt(statem.length() - 1);
+//		return statem.toString();
+//	}
 
 	// TODO: Überarbeiten, wird so nicht funktionieren!
 	// Hier muss wahrscheinlich mit der Syntax der Sprache gearbeitet werden
@@ -146,8 +142,8 @@ public class Application {
 	 *            as String to deserialize.
 	 * @return The deserialized HashMap representation of the statement String.
 	 */
-	public LinkedHashMap<String, String> deserializeStatement(String statement) {
-		LinkedHashMap<String, String> statem = new LinkedHashMap<String, String>();
+	public StatementHashMap deserializeStatement(String statement) {
+		StatementHashMap statem = new StatementHashMap();
 		String[] parts = statement.split(" ");
 		if (parts.length > 1) {
 			int i = 0;

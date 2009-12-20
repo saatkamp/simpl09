@@ -2,6 +2,7 @@ package org.eclipse.bpel.simpl.ui.extensions;
 
 import java.util.LinkedHashMap;
 
+import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -38,11 +39,11 @@ public interface IStatementEditor {
 	/**
 	 * @return the statement as HashMap.
 	 */
-	public LinkedHashMap<String, String> getStatement();
+	public StatementHashMap getStatement();
 
 	/**
 	 * @param statement
 	 */
-	public void setStatement(LinkedHashMap<String, String> statement);
+	public void setStatement(StatementHashMap statement);
 
 }
