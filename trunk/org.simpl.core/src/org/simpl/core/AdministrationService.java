@@ -114,7 +114,7 @@ public class AdministrationService {
 		//Einfügen der Einstellungen als Spalten
 		for (String name : settings.keySet()){
 			createTableStatement.append(name);
-			createTableStatement.append(" VARCHAR(50), ");
+			createTableStatement.append(" VARCHAR(255), ");
 		}
 		
 		//ID als primaryKey setzen
