@@ -1,7 +1,6 @@
 package org.simpl.core.test;
 
 import org.simpl.core.datasource.ConnectionException;
-import org.simpl.core.datasource.DataException;
 import org.simpl.core.datasource.RDBDatasourceService;
 
 import commonj.sdo.DataObject;
@@ -45,9 +44,6 @@ public class DatasourceServiceTest {
 			}
 			
 		} catch (ConnectionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (DataException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

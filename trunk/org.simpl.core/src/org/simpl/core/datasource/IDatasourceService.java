@@ -35,31 +35,35 @@ public interface IDatasourceService {
 	
 	
 	/**
-	 * This method is used to query data out of a datasource.
+	 * This method is used to query data from a datasource.
 	 * 
-	 * @param dsAddress
-	 * @param statement
-	 * @return
-	 * @throws ConnectionException 
+	 * @param dsAddress of the datasource to connect to.
+	 * @param statement to execute.
+	 * @return The queried data.
+	 * @throws ConnectionException if any connection problem occurs.
 	 */
 	public DataObject queryData(String dsAddress, String statement) throws ConnectionException;
 	
 	/**
-	 * Supports all DML-Statements like INSERT, UPDATE and DELETE.
+	 * Supports all Data Manipulation Language (DML)-Statements 
+	 * like INSERT, UPDATE and DELETE.
 	 * 
-	 * @param dsAddress
-	 * @param statement
-	 * @param data
-	 * @return
+	 * @param dsAddress of the datasource to connect to.
+	 * @param statement DML-Statement to execute.
+	 * @param data which is used in the manipulation statement, e.g. the result
+	 * of a query as input of an insert statement.
+	 * @return If the manipulation of the data was successfully.
+	 * @throws ConnectionException 
 	 */
-	public boolean manipulateData(String dsAddress, String statement, DataObject data);
+	public boolean manipulateData(String dsAddress, String statement, DataObject data) throws ConnectionException;
 	
 	/**
-	 * Supports all DDL-Statements like CREATE, DROP and ALTER.
+	 * Supports all Data Definition Language (DDL)-Statements 
+	 * like CREATE, DROP and ALTER.
 	 * 
-	 * @param dsAddress
-	 * @param statement
-	 * @return
+	 * @param dsAddress of the datasource to connect to.
+	 * @param statement DDL-Statement to execute.
+	 * @return If the data definition was successfully.
 	 * @throws ConnectionException 
 	 */
 	public boolean defineData(String dsAddress, String statement) throws ConnectionException;
