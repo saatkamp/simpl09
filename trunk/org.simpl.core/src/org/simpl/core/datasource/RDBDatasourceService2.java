@@ -11,62 +11,15 @@ import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
 import commonj.sdo.DataObject;
 
-public class RDBDatasourceService implements DatasourceService {
+public class RDBDatasourceService2 implements IDatasourceService {
 
-	static Logger logger = Logger.getLogger(RDBDatasourceService.class);
+	static Logger logger = Logger.getLogger(RDBDatasourceService2.class);
 	
-	public RDBDatasourceService(){
+	public RDBDatasourceService2(){
 		// Set up a simple configuration that logs on the console.
 		PropertyConfigurator.configure("log4j.properties");
 	}
 	
-
-	@Override
-	public boolean closeConnection(Connection connection) throws ConnectionException {
-		// TODO Auto-generated method stub
-		boolean success = false;
-		
-		try {
-			connection.close();
-			success = true;
-			if (logger.isDebugEnabled()){
-				logger.debug("boolean closeConnection() executed successfully.");
-			}
-			logger.info("Connection closed.");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			if (logger.isDebugEnabled()){
-				logger.error("boolean closeConnection() executed with failures.", e);
-			}
-		}
-		return success;
-	}
-
-	@Override
-	public DataObject executeStatement(String dsAddress, String statement)
-			throws ConnectionException, DataException {
-		if (logger.isDebugEnabled()){
-			logger.debug("DataObject executeStatement("+ dsAddress +", "+statement+") executed.");
-		}
-		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
-		Command readCustomers = das.createCommand(statement);
-		DataObject root = readCustomers.executeQuery();
-		
-		logger.info("Statement '"+statement+"' executed on "+dsAddress+".");
-		return root;
-	}
-
-	@Override
-	public DataObject executeStatement(String dsAddress, String statement, DataObject data)
-			throws ConnectionException, DataException {
-		if (logger.isDebugEnabled()){
-			logger.debug("DataObject executeStatement("+ dsAddress +", "+statement+", "+data+") executed.");
-		}
-		
-		logger.info("Statement '"+statement+"' executed on "+dsAddress+" with DataObject"+data+".");
-		return null;
-	}
-
 	@Override
 	public Connection openConnection(String dsAddress) throws ConnectionException {
 		// TODO Umändern in DataSource Connection
@@ -97,10 +50,31 @@ public class RDBDatasourceService implements DatasourceService {
 		}
 		return connect;
 	}
+	
+	@Override
+	public boolean closeConnection(Connection connection) throws ConnectionException {
+		// TODO Auto-generated method stub
+		boolean success = false;
+		
+		try {
+			connection.close();
+			success = true;
+			if (logger.isDebugEnabled()){
+				logger.debug("boolean closeConnection() executed successfully.");
+			}
+			logger.info("Connection closed.");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			if (logger.isDebugEnabled()){
+				logger.error("boolean closeConnection() executed with failures.", e);
+			}
+		}
+		return success;
+	}
+
 
 	@Override
-	public boolean sendStatement(String dsAddress, String statement) throws ConnectionException,
-			DataException {
+	public boolean defineData(String dsAddress, String statement) throws ConnectionException {
 		if (logger.isDebugEnabled()){
 			logger.debug("boolean sendStatement("+ dsAddress+", "+ statement+") executed.");
 		}
@@ -119,14 +93,25 @@ public class RDBDatasourceService implements DatasourceService {
 		return success;
 	}
 
+
 	@Override
-	public boolean sendStatement(String dsAddress, String statement, DataObject data)
-			throws ConnectionException, DataException {
-		if (logger.isDebugEnabled()){
-			logger.debug("boolean sendStatement("+ dsAddress +", "+statement+", "+data+") executed.");
-		}
-		
-		logger.info("Statement '"+statement+"' send to "+dsAddress+" with DataObject"+data+".");
+	public boolean manipulateData(String dsAddress, String statement,
+			DataObject data) {
+		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public DataObject queryData(String dsAddress, String statement) throws ConnectionException {
+		if (logger.isDebugEnabled()){
+			logger.debug("DataObject executeStatement("+ dsAddress +", "+statement+") executed.");
+		}
+		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
+		Command readCustomers = das.createCommand(statement);
+		DataObject root = readCustomers.executeQuery();
+		
+		logger.info("Statement '"+statement+"' executed on "+dsAddress+".");
+		return root;
 	}
 }

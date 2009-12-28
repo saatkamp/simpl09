@@ -27,10 +27,11 @@ public interface DatasourceService {
 	/**
 	 * Closes an open connection to a given data source.
 	 * 
+	 * @param connection to close.
 	 * @return If the connection is closed.
 	 * @throws ConnectionException if any connection problem occurs.
 	 */
-	public boolean closeConnection() throws ConnectionException;
+	public boolean closeConnection(Connection connection) throws ConnectionException;
 
 	/**
 	 * Sends a statement to a connected data source.
