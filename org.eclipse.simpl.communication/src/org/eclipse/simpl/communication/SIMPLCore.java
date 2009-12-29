@@ -18,39 +18,43 @@ public class SIMPLCore {
 
 	public boolean save(String schema, String table, String settingName,
 			LinkedHashMap<String, String> settings) {
-		// Code der Operation
-
-		// STUB
-		System.out.println("Schema: " + schema);
-		System.out.println("Tabelle: " + table);
-		System.out.println("Name der Einstellungen: " + settingName);
-		for (String key : settings.keySet()) {
-			System.out.println(key + " : " + settings.get(key));
-		}
-		// STUB
-
-		return true;// Hier wird dann in einem boolean zurückgegeben, ob das
-					// Speichern der Einstellungen geklappt hat.
+		//Weiterleiten an AdministrationService
+		return AdministrationService.getInstance().saveSettings(schema, table, settingName, settings);
+//		// Code der Operation
+//
+//		// STUB
+//		System.out.println("Schema: " + schema);
+//		System.out.println("Tabelle: " + table);
+//		System.out.println("Name der Einstellungen: " + settingName);
+//		for (String key : settings.keySet()) {
+//			System.out.println(key + " : " + settings.get(key));
+//		}
+//		// STUB
+//
+//		return true;// Hier wird dann in einem boolean zurückgegeben, ob das
+//					// Speichern der Einstellungen geklappt hat.
 	}
 
 	public LinkedHashMap<String, String> load(String schema, String table,
 			String settingName) {
-		// Code der Operation
-
-		// STUB
-		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-		if (schema.contains("Global Settings")){
-			// Global Settings
-			settings.put("user", "admin");
-			settings.put("password", "12345");
-		}else {
-			// Auditing
-			settings.put("mode", "off");
-			settings.put("auditingDsAddress", "http://localhost:8080/myDB");
-		}
-		// STUB
-
-		return settings;// Einstellungen als HashMap
+		//Weiterleiten an AdministrationService
+		return AdministrationService.getInstance().loadSettings(schema, table, settingName);
+//		// Code der Operation
+//
+//		// STUB
+//		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
+//		if (schema.contains("Global Settings")){
+//			// Global Settings
+//			settings.put("user", "admin");
+//			settings.put("password", "12345");
+//		}else {
+//			// Auditing
+//			settings.put("mode", "off");
+//			settings.put("auditingDsAddress", "http://localhost:8080/myDB");
+//		}
+//		// STUB
+//
+//		return settings;// Einstellungen als HashMap
 	}
 
 	public boolean saveAll(List<String> schema, List<String> table, String settingName,
