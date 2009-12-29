@@ -1,7 +1,5 @@
 package org.eclipse.simpl.core.ui;
 
-import java.util.LinkedHashMap;
-
 import org.eclipse.simpl.core.Application;
 import org.eclipse.simpl.core.Tuple;
 import org.eclipse.simpl.core.extensions.IAdminConsoleComposite;
