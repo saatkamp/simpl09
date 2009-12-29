@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.eclipse.simpl.core;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.eclipse.simpl.core.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.simpl.communication;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.simpl.core,
