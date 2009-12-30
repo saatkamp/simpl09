@@ -3,7 +3,9 @@ package org.eclipse.bpel.simpl.ui.properties;
 import java.util.List;
 
 import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.StatementHashMap;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionListener;
@@ -47,6 +49,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	@Override
 	protected void createClient(Composite parent) {
 		createWidgets(parent);
+		setStatement(loadStatementFromModel());
 	}
 
 	/**
@@ -201,7 +204,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 		// TODO Statement aus SourceCode laden falls vorhanden
 		// TODO Statement-Wert aus ?Modell? lesen und in Textfeld schreiben
-		statementText.setText(loadStatementFromModel(null).toString());
+		statementText.setText(loadStatementFromModel().toString());
 
 	}
 
@@ -286,5 +289,33 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 	public StatementHashMap getStatement() {
 		return this.statement;
+	}
+	
+	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
+	//ganze sache vereinfachen. Im Moment bleibt es hier aber wegen dem Modell beim String-Type
+	public StatementHashMap loadStatementFromModel(){
+		String statem = "";
+		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
+		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
+			System.out.println("ATTRIBUT: " + eAttrib.getName());
+			System.out.println("WERT: " + eAttrib.getDefaultValue());
+			if (eAttrib.getName().contains("dsStatement")){
+				statem = (String) eAttrib.getDefaultValue();
+			}
+		}
+		return Application.getInstance().deserializeStatement(statem);
+	}
+	
+	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
+	//ganze sache vereinfachen. Im Moment bleibt es hier aber wegen dem Modell beim String-Type
+	public void saveStatementToModel(){
+		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
+		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
+			if (eAttrib.getName().contains("dsStatement")){
+				eAttrib.setDefaultValue("SELECT * FROM TAB");
+			}
+			System.out.println("ATTRIBUT: " + eAttrib.getName());
+			System.out.println("WERT: " + eAttrib.getDefaultValue());
+		}
 	}
 }
