@@ -29,7 +29,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Button openEditorButton = null;
 	private Composite parentComposite = null;
 	private StatementHashMap statement = null;
-	
+
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -47,7 +47,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	/**
 	 * Creates the property section.
 	 * 
-	 * @param composite to put the content in.
+	 * @param composite
+	 *            to put the content in.
 	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
@@ -93,18 +94,21 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 4;
 		parentComposite.setLayout(gridLayout);
-		parentComposite.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		parentComposite.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		parentComposite.setSize(new Point(582, 294));
 		typeLabel = new Label(composite, SWT.NONE);
 		typeLabel.setText("Type of data source:");
-		typeLabel.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		typeLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		typeLabel.setLayoutData(gridData51);
 		createTypeCombo();
 		Label filler2 = new Label(composite, SWT.NONE);
 		Label filler5 = new Label(composite, SWT.NONE);
 		kindLabel = new Label(composite, SWT.NONE);
 		kindLabel.setText("Subtype of data source:");
-		kindLabel.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		kindLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		createKindCombo();
 		dataSourceAddressLabel = new Label(composite, SWT.NONE);
 		dataSourceAddressText = new Text(composite, SWT.BORDER);
@@ -112,11 +116,12 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		Label filler4 = new Label(composite, SWT.NONE);
 		dataSourceAddressLabel.setText("Address of the data source:");
 		dataSourceAddressLabel.setLayoutData(gridData31);
-		dataSourceAddressLabel.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		dataSourceAddressLabel.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
 		openEditorButton.setLayoutData(gridData21);
-		openEditorButton.addSelectionListener(new SelectionListener(){
+		openEditorButton.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -127,18 +132,20 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println(ModelPackage.eINSTANCE.getQueryActivity().getInstanceClassName());
-				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity().getInstanceClassName());
-			}});
-		
+				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
+						.getInstanceClassName());
+			}
+		});
+
 		Label filler3 = new Label(composite, SWT.NONE);
 		Label filler41 = new Label(composite, SWT.NONE);
 		showStatementCheckBox = new Button(composite, SWT.CHECK);
 		showStatementCheckBox.setText("Show resulting statement");
-		showStatementCheckBox.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		showStatementCheckBox.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
 		showStatementCheckBox.setLayoutData(gridData11);
 		Label filler6 = new Label(composite, SWT.NONE);
-		showStatementCheckBox.addSelectionListener(new SelectionListener(){
+		showStatementCheckBox.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -149,34 +156,38 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				// TODO Auto-generated method stub
-				if (showStatementCheckBox.getSelection()){
+				if (showStatementCheckBox.getSelection()) {
 					statementLabel.setVisible(true);
 					statementText.setVisible(true);
-				}else {
+				} else {
 					statementLabel.setVisible(false);
 					statementText.setVisible(false);
 				}
-			}});
+			}
+		});
 		Label filler1 = new Label(composite, SWT.NONE);
 		statementLabel = new Label(composite, SWT.NONE);
 		statementLabel.setText("Resulting statement:");
 		statementLabel.setVisible(false);
 		statementLabel.setLayoutData(gridData);
-		statementLabel.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		statementLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		statementText = new Text(composite, SWT.BORDER);
-		statementText.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		statementText.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		statementText.setVisible(false);
 		statementText.setLayoutData(gridData1);
 		statementText.setEditable(false);
+
+		// TODO Statement aus SourceCode laden falls vorhanden
+		// TODO Statement-Wert aus ?Modell? lesen und in Textfeld schreiben
 		statementText.setText(loadStatementFromModel(null).toString());
-		
-		//TODO: Statement-Wert aus Modell lesen und in Textfeld schreiben
-		
+
 	}
 
 	/**
-	 * This method initializes typeCombo	
-	 *
+	 * This method initializes typeCombo
+	 * 
 	 */
 	private void createTypeCombo() {
 		GridData gridData2 = new GridData();
@@ -184,66 +195,65 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		gridData2.verticalAlignment = GridData.CENTER;
 		typeCombo = new CCombo(parentComposite, SWT.BORDER);
 		typeCombo.setToolTipText("Choose the type of data source");
-		typeCombo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		typeCombo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		typeCombo.setLayoutData(gridData2);
-		// In globale Konstanten-Klasse Werte definieren und dann hier referenzieren.
-		//Besser wäre die Typen direkt aus dem SIMPL Core anzufragen !!!
-		typeCombo.setItems(Constants.getDataSourceTypes());
+
+		// TODO Werte aus dem SIMPL Core über den SIMPL Core Client abfragen
+		// TODO Besser einmal bei der Initialisierung des gesamten Plug-Ins die
+		// Werte in die Constants
+		// Klasse laden und von dort zur Laufzeit auslesen (bessere Performance)
+		typeCombo.setItems(Constants.getDataSourceTypes()
+				.toArray(new String[0]));
 		// Listener für die automatische Änderung des Dialog-Inhalts anlegen
-		typeCombo.addSelectionListener(new SelectionListener(){
+		typeCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 				// TODO Auto-generated method stub
 				widgetSelected(arg0);
 			}
+
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
-				// Abfrage, ob "file system" ausgewählt wurde
-				
-				switch (typeCombo.getSelectionIndex()){
-					case 0: //Dateisysteme
-						//Ändern der Labels
-						kindCombo.setItems(Constants.getFileSystemKinds());
-						
-						break;
-					case 1: //Datenbanken
-						//Ändern der Labels
-						kindCombo.setItems(Constants.getDatabasekinds());
-			
-						break;
-					case 2: //Sensornetze
-						kindCombo.setItems(Constants.getSensornetkinds());
-				
-						break;
-					default:
-						break;
-				}
-			}});
+				kindCombo.setItems(Constants.getDataSourceSubTypes(
+						typeCombo.getItem(typeCombo.getSelectionIndex()))
+						.toArray(new String[0]));
+			}
+		});
 		typeCombo.setEditable(false);
 	}
 
 	/**
-	 * This method initializes kindCombo	
-	 *
+	 * This method initializes kindCombo
+	 * 
 	 */
 	private void createKindCombo() {
 		GridData gridData6 = new GridData();
 		gridData6.horizontalAlignment = GridData.FILL;
 		gridData6.verticalAlignment = GridData.CENTER;
 		kindCombo = new CCombo(parentComposite, SWT.BORDER);
-		kindCombo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		kindCombo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		kindCombo.setToolTipText("Choose the subtype of data source");
 		kindCombo.setEditable(false);
 		kindCombo.setLayoutData(gridData6);
+
+		/*
+		 * TODO Hier muss noch ein SelectionListener hinzugefügt werden, der je
+		 * nach Auswahl des DQ-Subtypes nachschaut ob mehr als eine
+		 * Abfragespracheverwendet werden kann und falls ja muss eine neue
+		 * ComboBox zur Auswahl dieser Abfragesprache angezeigt werden.Die
+		 * Abfragesprache, die so ausgewählt wird und implizit feststeht falls
+		 * es nur eine gibt muss dann an den Statementeditor übergeben werden
+		 */
 	}
-	
-	public void setStatement(StatementHashMap statement){
+
+	public void setStatement(StatementHashMap statement) {
 		statementText.setText(statement.toString());
 		this.statement = statement;
 	}
-	
-	public StatementHashMap getStatement(){
+
+	public StatementHashMap getStatement() {
 		return this.statement;
 	}
 }

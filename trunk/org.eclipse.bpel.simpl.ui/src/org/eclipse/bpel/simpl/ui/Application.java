@@ -64,6 +64,7 @@ public class Application {
 			languageExtensions.add(e);
 			System.out.println("Element: " + e.getName());
 		}
+		org.eclipse.bpel.simpl.ui.properties.Constants.init();
 	}
 
 	/**
@@ -83,13 +84,7 @@ public class Application {
 			for (IConfigurationElement e : languageExtensions) {
 				if (e.getAttribute("language").contains(language)) {
 					for (IConfigurationElement sub : e.getChildren()) {
-						// TODO: Besser lösen!!! So darf das nicht bleiben!
 						if ((sub.getChildren("activity"))[0].getAttribute("type").contains(activity)){
-//						(activity.contains((sub.getChildren("activity"))[0]
-//								.getAttribute("type").substring(
-//										(sub.getChildren("activity"))[0]
-//												.getAttribute("type")
-//												.lastIndexOf(".")))) {
 							element = sub;
 							break;
 						}
