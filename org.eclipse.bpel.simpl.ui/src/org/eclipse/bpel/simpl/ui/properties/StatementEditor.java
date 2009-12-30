@@ -3,6 +3,7 @@ package org.eclipse.bpel.simpl.ui.properties;
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
+import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.SelectionEvent;

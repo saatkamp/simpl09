@@ -84,12 +84,12 @@ public class Application {
 				if (e.getAttribute("language").contains(language)) {
 					for (IConfigurationElement sub : e.getChildren()) {
 						// TODO: Besser lösen!!! So darf das nicht bleiben!
-						if (activity.contains((sub.getChildren("activity"))[0]
-								.getAttribute("type").substring(
-										(sub.getChildren("activity"))[0]
-												.getAttribute("type")
-												.lastIndexOf(".")))) {
-							// (sub.getChildren("activity"))[0].getAttribute("type").contains(activity)){
+						if ((sub.getChildren("activity"))[0].getAttribute("type").contains(activity)){
+//						(activity.contains((sub.getChildren("activity"))[0]
+//								.getAttribute("type").substring(
+//										(sub.getChildren("activity"))[0]
+//												.getAttribute("type")
+//												.lastIndexOf(".")))) {
 							element = sub;
 							break;
 						}
