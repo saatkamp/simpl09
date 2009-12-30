@@ -49,7 +49,7 @@ public class StatementEditor {
 		// Create colors for style ranges in statement styledTextField
 		blue = Display.getDefault().getSystemColor(SWT.COLOR_BLUE);
 
-		if (parent != null && !language.isEmpty() && !activity.isEmpty()) {
+		if (parent != null && language!=null && activity!=null) {
 			this.parentClass = parent;
 			compositeClass = Application.getInstance().getEditorClass(language,
 					activity);
@@ -133,7 +133,7 @@ public class StatementEditor {
 				// Hier muss das echte Statement übergeben werden
 				if (compositeClass.getStatement() != null) {
 					parentClass.setStatement(compositeClass.getStatement());
-					parentClass.saveStatementToModel(activity);
+					parentClass.saveStatementToModel();
 				}
 				sShell.close();
 			}
