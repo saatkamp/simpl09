@@ -253,9 +253,10 @@ public abstract class DMActivityPropertySection extends BPELPropertySection{
 	/**
 	 * Opens a statement editor shell.
 	 */
-	public void openStatementEditor(String eClass){
+	public void openStatementEditor(String eClass, String language){
 		//TODO Auswahl der Sprache muss noch dynamisch erledigt werden
-		new StatementEditor(this, "SQL", eClass);
+		System.out.println("StatementEditor: " + eClass + " : " + language);
+		new StatementEditor(this, language, eClass);
 	}
 	
 	public void setStatement(StatementHashMap statement){
