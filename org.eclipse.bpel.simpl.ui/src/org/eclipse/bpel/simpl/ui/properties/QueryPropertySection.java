@@ -1,5 +1,7 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
+import java.util.List;
+
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.swt.SWT;
@@ -27,8 +29,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Label kindLabel = null;
 	private CCombo kindCombo = null;
 	private Button openEditorButton = null;
+	private Label languageLabel = null;
+	private CCombo languageCombo = null;
 	private Composite parentComposite = null;
 	private StatementHashMap statement = null;
+	private String language = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -52,22 +57,17 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
-		GridData gridData61 = new GridData();
-		gridData61.widthHint = 150;
-		GridData gridData5 = new GridData();
-		gridData5.widthHint = 150;
+		GridData gridData4 = new GridData();
+		gridData4.horizontalAlignment = GridData.FILL;
+		gridData4.verticalAlignment = GridData.CENTER;
+		GridData gridData21 = new GridData();
+		gridData21.horizontalAlignment = GridData.FILL;
+		gridData21.verticalAlignment = GridData.CENTER;
 		GridData gridData51 = new GridData();
 		gridData51.horizontalAlignment = GridData.FILL;
 		gridData51.verticalAlignment = GridData.CENTER;
-		GridData gridData41 = new GridData();
-		gridData41.horizontalAlignment = GridData.FILL;
-		gridData41.verticalAlignment = GridData.CENTER;
 		GridData gridData31 = new GridData();
 		gridData31.grabExcessHorizontalSpace = true;
-		GridData gridData21 = new GridData();
-		gridData21.grabExcessHorizontalSpace = true;
-		gridData21.verticalAlignment = GridData.CENTER;
-		gridData21.horizontalAlignment = GridData.FILL;
 		GridData gridData12 = new GridData();
 		gridData12.grabExcessHorizontalSpace = true;
 		gridData12.verticalAlignment = GridData.CENTER;
@@ -113,11 +113,35 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		dataSourceAddressLabel = new Label(composite, SWT.NONE);
 		dataSourceAddressText = new Text(composite, SWT.BORDER);
 		dataSourceAddressText.setLayoutData(gridData12);
-		Label filler4 = new Label(composite, SWT.NONE);
 		dataSourceAddressLabel.setText("Address of the data source:");
 		dataSourceAddressLabel.setLayoutData(gridData31);
 		dataSourceAddressLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
+		languageLabel = new Label(composite, SWT.NONE);
+		languageCombo = new CCombo(composite, SWT.BORDER);
+		languageCombo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		languageCombo.setVisible(false);
+		languageCombo.setLayoutData(gridData4);
+		languageCombo.addSelectionListener(new SelectionListener(){
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				language = languageCombo.getItem(languageCombo.getSelectionIndex());
+			}
+		});
+		
+		Label filler411 = new Label(composite, SWT.NONE);
+		Label filler42 = new Label(composite, SWT.NONE);
+		languageLabel.setText("Query language:");
+		languageLabel.setVisible(false);
+		languageLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		Label filler43 = new Label(composite, SWT.NONE);
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
 		openEditorButton.setLayoutData(gridData21);
@@ -125,15 +149,13 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
 				widgetSelected(arg0);
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
 				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
-						.getInstanceClassName());
+						.getInstanceClassName(), language);
 			}
 		});
 
@@ -149,13 +171,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
 				widgetSelected(arg0);
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
 				if (showStatementCheckBox.getSelection()) {
 					statementLabel.setVisible(true);
 					statementText.setVisible(true);
@@ -199,17 +219,13 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				SWT.COLOR_WHITE));
 		typeCombo.setLayoutData(gridData2);
 
-		// TODO Werte aus dem SIMPL Core über den SIMPL Core Client abfragen
-		// TODO Besser einmal bei der Initialisierung des gesamten Plug-Ins die
-		// Werte in die Constants
-		// Klasse laden und von dort zur Laufzeit auslesen (bessere Performance)
+		// Aktualisieren der typeCombo-Daten
 		typeCombo.setItems(Constants.getDataSourceTypes()
 				.toArray(new String[0]));
-		// Listener für die automatische Änderung des Dialog-Inhalts anlegen
+		// Aktualisieren der KindCombo-Daten
 		typeCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
-				// TODO Auto-generated method stub
 				widgetSelected(arg0);
 			}
 
@@ -238,14 +254,29 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		kindCombo.setEditable(false);
 		kindCombo.setLayoutData(gridData6);
 
-		/*
-		 * TODO Hier muss noch ein SelectionListener hinzugefügt werden, der je
-		 * nach Auswahl des DQ-Subtypes nachschaut ob mehr als eine
-		 * Abfragespracheverwendet werden kann und falls ja muss eine neue
-		 * ComboBox zur Auswahl dieser Abfragesprache angezeigt werden.Die
-		 * Abfragesprache, die so ausgewählt wird und implizit feststeht falls
-		 * es nur eine gibt muss dann an den Statementeditor übergeben werden
-		 */
+		kindCombo.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				List<String> languages = Constants
+						.getDatasourceLanguages(kindCombo.getItem(kindCombo
+								.getSelectionIndex()));
+
+				if (languages.size()>1) {
+					languageCombo.setVisible(true);
+					languageLabel.setVisible(true);
+					languageCombo.setItems(languages.toArray(new String[0]));
+				} else {
+					languageCombo.setVisible(false);
+					languageLabel.setVisible(false);
+					language = languages.get(0);
+				}
+			}
+		});
 	}
 
 	public void setStatement(StatementHashMap statement) {
