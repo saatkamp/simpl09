@@ -1,120 +1,85 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.eclipse.simpl.communication.SIMPLCommunication;
+import org.eclipse.simpl.communication.SIMPLCore;
 
 public class Constants {
 
 	/**
-	 * This variable holds all types of data sources, which can be choosed during the modeling process.
+	 * This variable holds all types of data sources, which can be choosed
+	 * during the modeling process and will be supported by the SIMPL Core.
 	 */
-	private static final String[] dataSourceTypes = new String[]{"file system", "database", "sensor net"};
-	
+	private static List<String> dataSourceTypes = new ArrayList<String>();
+
 	/**
-	 * This variable holds all kinds of file systems, which can be choosed during the modeling process.
+	 * This variable holds all subtypes of data source types, which can be
+	 * choosed during the modeling process and will be supported by the SIMPL
+	 * Core.
 	 */
-	private static final String[] fileSystemKinds = new String[]{"local", "external"};
-	
+	private static HashMap<String, List<String>> dataSourceSubTypes = new HashMap<String, List<String>>();
+
 	/**
-	 * This variable holds all kinds of data bases, which can be choosed during the modeling process.
+	 * This variable holds all languages of the different data source subtypes,
+	 * which can be choosed during the modeling process and will be supported by
+	 * the data sources and the SIMPL Core.
 	 */
-	private static final String[] dataBaseKinds = new String[]{"DB2", "MySQL"};
-	
-	/**
-	 * This variable holds all kinds of sensor nets, which can be choosed during the modeling process.
-	 */
-	private static final String[] sensorNetKinds = new String[]{"TinyDB", "???"};
-	
-	/**
-	 * This variable holds all statements of a file systems, which can be used to work with.
-	 */
-	private static final String[] fileSystemStatements = new String[]{"GET", "PUT", "RM", "MKDIR", "MKFILE"}; 
-	
-	/**
-	 * This variable holds all statements of a data source, which can be used to work with.
-	 */
-	private static final String[] dataSourceStatements = new String[]{"SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "CALL"};
-	
-	/**
-	 * This variable holds all statements of a sensor net, which can be used to work with.
-	 */
-	private static final String[] sensorNetStatements = new String[]{"SELECT", "CREATE BUFFER", "DROP ALL"};
-	
-	/**
-	 * Returns a list of statements of a given type of data source.
-	 * 
-	 * @param dataSourceType The type of a data source (file system, data base or sensor net)
-	 * @return A list of statements which can be used for the specific data source.
-	 */
-	public static String[] getStatements(String dataSourceType){
-		String[] statements = new String[]{""};
-		if (dataSourceType.contentEquals("file system")) {
-			statements = fileSystemStatements;
-		}else {
-			if (dataSourceType.contentEquals("data source")) {
-				statements = dataSourceStatements;
-			}else {
-				if (dataSourceType.contentEquals("sensor net")) {
-					statements = sensorNetStatements;
-				}
+	private static HashMap<String, List<String>> dataSourceSubTypeLanguages = new HashMap<String, List<String>>();
+
+	public static void init() {
+		// Holen uns eine Verbindung zum SIMPL Core.
+		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+
+		// Laden alle Datenquellentypen aus dem SIMPL Core.
+		dataSourceTypes = simplCore.getDatasourceTypes();
+
+		// Laden die Subtypen aller Datenquellentypen aus dem SIMPL Core.
+		for (String typeName : dataSourceTypes) {
+			dataSourceSubTypes.put(typeName, simplCore
+					.getDatasourceSubTypes(typeName));
+		}
+
+		// Laden alle Abfragesprachen der Subtypen aus dem SIMPL Core.
+		for (String datasource : dataSourceTypes) {
+			for (String subTypeName : getDataSourceSubTypes(datasource)) {
+				dataSourceSubTypeLanguages.put(subTypeName, simplCore
+						.getDatasourceLanguages(subTypeName));
 			}
 		}
-		return statements;
 	}
-	
-	/**
-	 * Returns a list of statements of a given type of data source.
-	 * 
-	 * @param index of the data source type (file system=0, data base=1 and sensor net=2)
-	 * @return A list of statements which can be used for the specific data source.
-	 */
-	public static String[] getStatements(int index){
-		String[] statements = new String[]{""};
-		if (index==0) {
-			statements = fileSystemStatements;
-		}else {
-			if (index==1) {
-				statements = dataSourceStatements;
-			}else {
-				if (index==2) {
-					statements = sensorNetStatements;
-				}
-			}
-		}
-		return statements;
-	}
-	
+
 	/**
 	 * Returns the list of the data source types.
 	 * 
 	 * @return A list with all supported data source types.
 	 */
-	public static String[] getDataSourceTypes(){
+	public static List<String> getDataSourceTypes() {
 		return dataSourceTypes;
-	}
-	
-	/**
-	 * Returns a list with all supported kinds of file systems.
-	 * 
-	 * @return A list of the supported kinds of file systems.
-	 */
-	public static String[] getFileSystemKinds(){
-		return fileSystemKinds;
-	}
-	
-	/**
-	 * Returns a list with all supported kinds of data bases.
-	 * 
-	 * @return A list of the supported kinds of data bases.
-	 */
-	public static String[] getDatabasekinds() {
-		return dataBaseKinds;
 	}
 
 	/**
-	 * Returns a list with all supported kinds of sensor nets.
+	 * Returns the list of all data source sub types.
 	 * 
-	 * @return A list of the supported kinds of sensor nets.
+	 * @param datasource to get sub types of
+	 * @return A list with all supported data source sub types of the
+	 * given data source type.
 	 */
-	public static String[] getSensornetkinds() {
-		return sensorNetKinds;
-	}	
+	public static List<String> getDataSourceSubTypes(String datasource) {
+		return dataSourceSubTypes.get(datasource);
+	}
+
+	/**
+	 * Returns the list of all query languages the given data source
+	 * sub type supports.
+	 * 
+	 * @param datasourceSubType to get query languages off.
+	 * @return A list of all query languages the given data source
+	 * sub type supports.
+	 */
+	public static List<String> getDatasourceLanguages(String datasourceSubType) {
+		return dataSourceSubTypeLanguages.get(datasourceSubType);
+	}
 }
