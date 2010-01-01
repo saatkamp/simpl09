@@ -15,7 +15,25 @@ import java.util.List;
  * 
  */
 public class SIMPLCore {
+	
+	private LinkedHashMap<String, String> auditingSettings = new LinkedHashMap<String, String>();
 
+	private LinkedHashMap<String, String> globalSettings = new LinkedHashMap<String, String>();
+	
+	private LinkedHashMap<String, String> auditingDefaultSettings = new LinkedHashMap<String, String>();
+
+	private LinkedHashMap<String, String> globalDefaultSettings = new LinkedHashMap<String, String>();
+	
+	public SIMPLCore() {
+		// Global Settings
+		globalDefaultSettings.put("username", "admin");
+		globalDefaultSettings.put("password", "12345");
+		
+		// Auditing
+		auditingDefaultSettings.put("mode", "off");
+		auditingDefaultSettings.put("auditingDsAddress", "http://localhost:8080/myDB");
+	}
+	
 	public boolean save(String schema, String table, String settingName,
 			LinkedHashMap<String, String> settings) {
 //		//Weiterleiten an AdministrationService
@@ -29,6 +47,20 @@ public class SIMPLCore {
 		for (String key : settings.keySet()) {
 			System.out.println(key + " : " + settings.get(key));
 		}
+		if (schema.contains("Auditing")){
+			if (settingName.contains("lastSaved")){
+				auditingSettings = settings;
+			}else{
+				auditingDefaultSettings = settings;
+			}
+		}else{
+			if (settingName.contains("lastSaved")){
+				globalSettings = settings;
+			}else{
+				globalDefaultSettings = settings;
+			}
+		}
+		
 		// STUB
 
 		return true;// Hier wird dann in einem boolean zurückgegeben, ob das
@@ -43,63 +75,67 @@ public class SIMPLCore {
 
 		// STUB
 		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-		if (schema.contains("Global Settings")){
-			// Global Settings
-			settings.put("user", "admin");
-			settings.put("password", "12345");
-		}else {
-			// Auditing
-			settings.put("mode", "off");
-			settings.put("auditingDsAddress", "http://localhost:8080/myDB");
-		}
-		// STUB
-
-		return settings;// Einstellungen als HashMap
-	}
-
-	public boolean saveAll(List<String> schema, List<String> table, String settingName,
-			List<LinkedHashMap<String, String>> settings) {
-		// Code der Operation
-
-		// STUB
-		for (LinkedHashMap<String, String> map : settings) {
-			System.out.println("-------------------------------");
-			System.out.println("Schema: " + schema);
-			System.out.println("Tabelle: " + table);
-			System.out.println("Name der Einstellungen: " + settingName);
-			for (String key : map.keySet()) {
-				System.out.println(key + " : " + map.get(key));
+		if (schema.contains("Auditing")){
+			if (settingName.contains("lastSaved") && !auditingSettings.isEmpty()){
+				settings = auditingSettings;
+			}else{
+				settings = auditingDefaultSettings;
 			}
-			System.out.println("-------------------------------");
+		}else{
+			if (settingName.contains("lastSaved") && !globalSettings.isEmpty()){
+				settings = globalSettings;
+			}else{
+				settings = globalDefaultSettings;
+			}
 		}
-
-		// STUB
-
-		return true;// Hier wird dann in einem boolean zurückgegeben, ob das
-					// Speichern der Einstellungen geklappt hat.
-	}
-
-	public List<LinkedHashMap<String, String>> loadAll(List<String> schema,
-			List<String> table, String settingName) {
-		// Code der Operation
-
-		// STUB
-		List<LinkedHashMap<String, String>> settings = new ArrayList<LinkedHashMap<String, String>>();
-		LinkedHashMap<String, String> globalSettings = new LinkedHashMap<String, String>();
-		LinkedHashMap<String, String> auditingSettings = new LinkedHashMap<String, String>();
-		// Global Settings
-		globalSettings.put("user", "admin");
-		globalSettings.put("password", "12345");
-		// Auditing
-		auditingSettings.put("mode", "off");
-		auditingSettings.put("auditingDsAddress", "http://localhost:8080/myDB");
-		//Zur Liste hinzufügen
-		settings.add(globalSettings);
-		settings.add(auditingSettings);
 		// STUB
 
 		return settings;// Einstellungen als HashMap
 	}
+
+//	public boolean saveAll(List<String> schema, List<String> table, String settingName,
+//			List<LinkedHashMap<String, String>> settings) {
+//		// Code der Operation
+//
+//		// STUB
+//		for (LinkedHashMap<String, String> map : settings) {
+//			System.out.println("-------------------------------");
+//			System.out.println("Schema: " + schema);
+//			System.out.println("Tabelle: " + table);
+//			System.out.println("Name der Einstellungen: " + settingName);
+//			for (String key : map.keySet()) {
+//				System.out.println(key + " : " + map.get(key));
+//			}
+//			System.out.println("-------------------------------");
+//		}
+//
+//		// STUB
+//
+//		return true;// Hier wird dann in einem boolean zurückgegeben, ob das
+//					// Speichern der Einstellungen geklappt hat.
+//	}
+//
+//	public List<LinkedHashMap<String, String>> loadAll(List<String> schema,
+//			List<String> table, String settingName) {
+//		// Code der Operation
+//
+//		// STUB
+//		List<LinkedHashMap<String, String>> settings = new ArrayList<LinkedHashMap<String, String>>();
+//		LinkedHashMap<String, String> globalSettings = new LinkedHashMap<String, String>();
+//		LinkedHashMap<String, String> auditingSettings = new LinkedHashMap<String, String>();
+//		// Global Settings
+//		globalSettings.put("user", "admin");
+//		globalSettings.put("password", "12345");
+//		// Auditing
+//		auditingSettings.put("mode", "off");
+//		auditingSettings.put("auditingDsAddress", "http://localhost:8080/myDB");
+//		//Zur Liste hinzufügen
+//		settings.add(globalSettings);
+//		settings.add(auditingSettings);
+//		// STUB
+//
+//		return settings;// Einstellungen als HashMap
+//	}
 
 	public List<String> getDatasourceTypes() {
 		List<String> dsTypes = new ArrayList<String>();

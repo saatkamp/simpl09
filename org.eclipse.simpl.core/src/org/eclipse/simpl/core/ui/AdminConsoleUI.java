@@ -53,7 +53,6 @@ public class AdminConsoleUI {
 		composite = new Composite(sShell, SWT.BORDER);
 		composite.setLayout(gridLayout1);
 		composite.setLayoutData(gridData1);
-
 	}
 
 	/**
@@ -61,18 +60,24 @@ public class AdminConsoleUI {
 	 * 
 	 */
 	private void showComposite(TreeItem treeItem) {
+		// Eingaben buffern in Composite-Klasse
+		if (compositeClass != null) {
+			compositeClass.saveSettingsToBuffer();
+			System.out.println(compositeClass.getClass().getSimpleName());
+		}
+		
 		if (oldComposite != null) {
 			oldComposite.dispose();
 		}
 
-		if (Application.getInstance().getCompositeClass(treeItem.getText())!=null){
-			compositeClass = Application.getInstance().getCompositeClass(treeItem.getText());
+		if (Application.getInstance().getCompositeClass(treeItem.getText()) != null) {
+			compositeClass = Application.getInstance().getCompositeClass(
+					treeItem.getText());
 			compositeClass.createComposite(composite);
 			oldComposite = compositeClass.getComposite();
-			
-			//Werte des Composites laden
-			compositeClass.loadSettings(treeItem.getParentItem().getText(), 
-					treeItem.getText(), "lastSaved");
+
+			// Werte des Composites laden
+			compositeClass.loadSettingsFromBuffer();
 
 			composite.layout();
 			sShell.layout();
@@ -135,7 +140,7 @@ public class AdminConsoleUI {
 		defaultButton = new Button(sShell, SWT.NONE);
 		defaultButton.setText("Default");
 		defaultButton.setLayoutData(gridData4);
-		defaultButton.addSelectionListener(new SelectionListener(){
+		defaultButton.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -146,15 +151,20 @@ public class AdminConsoleUI {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				//Werte des Composites laden
-				compositeClass.loadSettings(selectedTreeItem.getParentItem().getText(), 
-						selectedTreeItem.getText(), "default");
-			}});
-		
+				// Werte des Composites laden
+				if (compositeClass != null && selectedTreeItem != null) {
+					//TODO Muss auch noch anderst geregelt werden
+					compositeClass.loadSettings(selectedTreeItem
+							.getParentItem().getText(), selectedTreeItem
+							.getText(), "default");
+				}
+			}
+		});
+
 		resetButton = new Button(sShell, SWT.NONE);
 		resetButton.setText("Reset");
 		resetButton.setLayoutData(gridData2);
-		resetButton.addSelectionListener(new SelectionListener(){
+		resetButton.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -165,16 +175,21 @@ public class AdminConsoleUI {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				//Werte des Composites laden
-				compositeClass.loadSettings(selectedTreeItem.getParentItem().getText(), 
-						selectedTreeItem.getText(), "lastSaved");
-			}});
-		
+				// Werte des Composites laden
+				if (compositeClass != null && selectedTreeItem != null) {
+					//TODO Muss auch noch anderst geregelt werden
+					compositeClass.loadSettings(selectedTreeItem
+							.getParentItem().getText(), selectedTreeItem
+							.getText(), "lastSaved");
+				}
+			}
+		});
+
 		Label filler2 = new Label(sShell, SWT.NONE);
 		saveButton = new Button(sShell, SWT.NONE);
 		saveButton.setText("Save");
 		saveButton.setLayoutData(gridData3);
-		saveButton.addSelectionListener(new SelectionListener(){
+		saveButton.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -185,11 +200,15 @@ public class AdminConsoleUI {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				//Werte des Composites speichern
-				compositeClass.saveSettings(selectedTreeItem.getParentItem().getText(), 
-						selectedTreeItem.getText(), "lastSaved");
-			}});
-		
+				// Werte des Composites speichern
+				if (compositeClass != null && selectedTreeItem != null) {
+					compositeClass.saveSettings(selectedTreeItem
+							.getParentItem().getText(), selectedTreeItem
+							.getText(), "lastSaved");
+				}
+			}
+		});
+
 		closeButton = new Button(sShell, SWT.NONE);
 		closeButton.setText("Close");
 		closeButton.setLayoutData(gridData11);
@@ -239,12 +258,16 @@ public class AdminConsoleUI {
 				TreeItem parentItem = sItem.getParentItem();
 
 				// TODO Auswahl muss noch besser abgesichert werden. Am besten
-				// man betrachtet das Elternelement mit! Hier ist allerdings auch noch
-				// zu denken, dass das Elternelement auch eine Composite haben kann und
-				// das auch Elemente ohne Elternelement eine Composite haben (wie z.B. Auditing)
+				// man betrachtet das Elternelement mit! Hier ist allerdings
+				// auch noch
+				// zu denken, dass das Elternelement auch eine Composite haben
+				// kann und
+				// das auch Elemente ohne Elternelement eine Composite haben
+				// (wie z.B. Auditing)
 				if (parentItem != null && sItem != null) {
 					System.out.println(parentItem.getText() + " -> "
 							+ sItem.getText() + " was selected");
+
 					showComposite(sItem);
 					selectedTreeItem = sItem;
 				}

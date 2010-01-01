@@ -30,8 +30,7 @@ public class DatasourceServiceTest2 {
 
 			// Drop Test
 			System.out.println("Tabelle Tab gelöscht: "
-					+ rdbService.manipulateData("simplDB", "DROP TABLE TAB",
-							null));
+					+ rdbService.defineData("simplDB", "DROP TABLE TAB"));
 			// System.out.println("SCHEMA Test gelöscht: " +
 			// rdbService.manipulateData("simplDB", "DROP SCHEMA TEST RESTRICT",
 			// null));
