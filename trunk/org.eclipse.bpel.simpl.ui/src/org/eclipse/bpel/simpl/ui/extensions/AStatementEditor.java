@@ -18,7 +18,7 @@ public abstract class AStatementEditor implements IStatementEditor {
 	 */
 	private Composite composite = null;
 	
-	private StatementHashMap statement = null;
+	private String statement = null;
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#getComposite()
@@ -42,7 +42,7 @@ public abstract class AStatementEditor implements IStatementEditor {
 	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#getStatement()
 	 */
 	@Override
-	public StatementHashMap getStatement() {
+	public String getStatement() {
 		return this.statement;
 	}
 
@@ -50,7 +50,7 @@ public abstract class AStatementEditor implements IStatementEditor {
 	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#setStatement(java.util.HashMap)
 	 */
 	@Override
-	public void setStatement(StatementHashMap statement) {
+	public void setStatement(String statement) {
 		this.statement = statement;
 	}
 

@@ -17,7 +17,7 @@ public class InsertEditor extends AStatementEditor {
 		statem.put("INSERT", "(column1, column2, ...)");
 		statem.put("INTO", "table");
 		statem.put("VALUES", "(value1, value2, ...)");
-		setStatement(statem);
+		setStatement(statem.toString());
 	}
 
 }

@@ -3,8 +3,6 @@ package org.eclipse.bpel.simpl.ui.properties;
 import java.util.List;
 
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.ui.Application;
-import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -34,7 +32,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Label languageLabel = null;
 	private CCombo languageCombo = null;
 	private Composite parentComposite = null;
-	private StatementHashMap statement = null;
 	private String language = null;
 
 	/**
@@ -281,19 +278,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			}
 		});
 	}
-
-	public void setStatement(StatementHashMap statement) {
-		statementText.setText(statement.toString());
-		this.statement = statement;
-	}
-
-	public StatementHashMap getStatement() {
-		return this.statement;
-	}
 	
-	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
-	//ganze sache vereinfachen. Im Moment bleibt es hier aber wegen dem Modell beim String-Type
-	public StatementHashMap loadStatementFromModel(){
+	//TODO Überarbeiten
+	public String loadStatementFromModel(){
 		String statem = "";
 		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
 		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
@@ -303,11 +290,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				statem = (String) eAttrib.getDefaultValue();
 			}
 		}
-		return Application.getInstance().deserializeStatement(statem);
+		return statem;
 	}
 	
-	//TODO: Im Modell können auch HashMaps gespeichert werden, dies würde die
-	//ganze sache vereinfachen. Im Moment bleibt es hier aber wegen dem Modell beim String-Type
+	//TODO Überarbeiten
 	public void saveStatementToModel(){
 		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
 		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
@@ -317,5 +303,18 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			System.out.println("ATTRIBUT: " + eAttrib.getName());
 			System.out.println("WERT: " + eAttrib.getDefaultValue());
 		}
+	}
+
+	@Override
+	public String getStatement() {
+		// TODO Auto-generated method stub
+		return this.statement;
+	}
+
+	@Override
+	public void setStatement(String statement) {
+		// TODO Auto-generated method stub
+		this.statement = statement;
+		statementText.setText(statement);
 	}
 }
