@@ -77,9 +77,9 @@ public class Application {
 	 *            on which the editor is based on.
 	 * @return The corresponding statement editor class.
 	 */
-	public IStatementEditor getEditorClass(String language, String activity) {
+	public AStatementEditor getEditorClass(String language, String activity) {
 		IConfigurationElement element = null;
-		IStatementEditor editorClass = null;
+		AStatementEditor editorClass = null;
 		try {
 			for (IConfigurationElement e : languageExtensions) {
 				if (e.getAttribute("language").contains(language)) {
@@ -93,8 +93,8 @@ public class Application {
 			}
 
 			final Object o = element.createExecutableExtension("class");
-			if (o instanceof IStatementEditor) {
-				editorClass = (((IStatementEditor) o));
+			if (o instanceof AStatementEditor) {
+				editorClass = (((AStatementEditor) o));
 				System.out.println("Target: " + element.getAttribute("class"));
 				;
 			}

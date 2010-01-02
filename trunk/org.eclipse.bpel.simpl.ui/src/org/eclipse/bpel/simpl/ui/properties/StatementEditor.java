@@ -1,7 +1,7 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.ui.Application;
-import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
+import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -26,7 +26,7 @@ public class StatementEditor {
 	private Composite composite = null;
 	private Button okButton = null;
 	private Button closeButton = null;
-	private IStatementEditor compositeClass = null;
+	private AStatementEditor compositeClass = null;
 	private DMActivityPropertySection parentClass = null;
 
 	public StatementEditor() {
@@ -43,9 +43,11 @@ public class StatementEditor {
 			compositeClass = Application.getInstance().getEditorClass(language,
 					activity);
 			if (compositeClass != null) {
-				compositeClass.createComposite(composite);
 				//TODO Statement in StatementEditor übergeben
 				compositeClass.setStatement(parentClass.getStatement());
+				System.out.println("DMProperty-Statement: " + parentClass.getStatement());
+				System.out.println("DMCompos-Statement: " + compositeClass.getStatement());
+				compositeClass.createComposite(composite);
 			}
 		}
 		sShell.open();
