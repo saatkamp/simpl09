@@ -1,14 +1,10 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.ui.Application;
-import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
-import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Display;
@@ -30,12 +26,8 @@ public class StatementEditor {
 	private Composite composite = null;
 	private Button okButton = null;
 	private Button closeButton = null;
-	private StyledText statementText = null;
 	private IStatementEditor compositeClass = null;
 	private DMActivityPropertySection parentClass = null;
-	private String activity = null;
-
-	private Color blue;
 
 	public StatementEditor() {
 		createSShell();
@@ -46,25 +38,16 @@ public class StatementEditor {
 			String activity) {
 		createSShell();
 
-		// Create colors for style ranges in statement styledTextField
-		blue = Display.getDefault().getSystemColor(SWT.COLOR_BLUE);
-
 		if (parent != null && language!=null && activity!=null) {
 			this.parentClass = parent;
 			compositeClass = Application.getInstance().getEditorClass(language,
 					activity);
 			if (compositeClass != null) {
 				compositeClass.createComposite(composite);
-				// TODO: Kann vereinfacht werden, wenn im Modell direkt die
-				// HashMap hinterlegt wird.
-				compositeClass.setStatement(parent.getStatement());
-				if (parent.getStatement() != null) {
-					setStatementText(parent.getStatement());
-				}
+				//TODO Statement in StatementEditor übergeben
+				compositeClass.setStatement(parentClass.getStatement());
 			}
 		}
-		this.activity = activity;
-
 		sShell.open();
 	}
 
@@ -90,12 +73,6 @@ public class StatementEditor {
 	 * This method initializes sShell
 	 */
 	private void createSShell() {
-		GridData gridData3 = new GridData();
-		gridData3.horizontalAlignment = GridData.FILL;
-		gridData3.grabExcessHorizontalSpace = true;
-		gridData3.horizontalSpan = 3;
-		gridData3.heightHint = 100;
-		gridData3.verticalAlignment = GridData.FILL;
 		GridData gridData2 = new GridData();
 		gridData2.horizontalAlignment = GridData.END;
 		gridData2.grabExcessHorizontalSpace = true;
@@ -113,8 +90,6 @@ public class StatementEditor {
 		createComposite();
 		sShell.setLayout(gridLayout1);
 		sShell.setBounds(new Rectangle(200, 100, 700, 500));
-		statementText = new StyledText(sShell, SWT.BORDER | SWT.V_SCROLL);
-		statementText.setLayoutData(gridData3);
 		Label filler1 = new Label(sShell, SWT.NONE);
 		okButton = new Button(sShell, SWT.NONE);
 		okButton.setText("OK");
@@ -157,9 +132,4 @@ public class StatementEditor {
 			}
 		});
 	}
-
-	public void setStatementText(StatementHashMap statement) {
-		statementText.setText(statement.toString());
-	}
-
 }

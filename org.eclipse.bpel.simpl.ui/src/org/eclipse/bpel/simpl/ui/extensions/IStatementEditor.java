@@ -35,13 +35,13 @@ public interface IStatementEditor {
 	public void createComposite(Composite composite);
 
 	/**
-	 * @return the statement as HashMap.
+	 * @return the statement as String.
 	 */
-	public StatementHashMap getStatement();
+	public String getStatement();
 
 	/**
 	 * @param statement
 	 */
-	public void setStatement(StatementHashMap statement);
+	public void setStatement(String statement);
 
 }

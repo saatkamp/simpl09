@@ -12,7 +12,13 @@ public class CreatePropertySection extends DMActivityPropertySection {
 	}
 
 	@Override
-	public StatementHashMap loadStatementFromModel() {
+	public String getStatement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String loadStatementFromModel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -22,5 +28,13 @@ public class CreatePropertySection extends DMActivityPropertySection {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void setStatement(String statement) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
