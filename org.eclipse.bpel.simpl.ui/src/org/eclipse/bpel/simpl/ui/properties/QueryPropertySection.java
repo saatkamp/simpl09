@@ -199,10 +199,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		statementText.setLayoutData(gridData1);
 		statementText.setEditable(false);
 
-		// TODO Statement aus SourceCode laden falls vorhanden
-		// TODO Statement-Wert aus ?Modell? lesen und in Textfeld schreiben
-		statementText.setText(loadStatementFromModel().toString());
-
+//		// TODO Statement aus SourceCode laden falls vorhanden
+//		// TODO Statement-Wert aus ?Modell? lesen und in Textfeld schreiben
+//		statementText.setText(loadStatementFromModel());
 	}
 
 	/**
@@ -284,8 +283,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		String statem = "";
 		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
 		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
-			System.out.println("ATTRIBUT: " + eAttrib.getName());
-			System.out.println("WERT: " + eAttrib.getDefaultValue());
+			System.out.println("lATTRIBUT: " + eAttrib.getName());
+			System.out.println("lWERT: " + eAttrib.getDefaultValue());
 			if (eAttrib.getName().contains("dsStatement")){
 				statem = (String) eAttrib.getDefaultValue();
 			}
@@ -298,10 +297,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		//TODO: Der BPEL-Designer benutzt nicht das ModelPackage, also muss es anderst gehen!
 		for (EAttribute eAttrib : ModelPackage.eINSTANCE.getQueryActivity().getEAllAttributes()){
 			if (eAttrib.getName().contains("dsStatement")){
-				eAttrib.setDefaultValue("SELECT * FROM TAB");
+				eAttrib.setDefaultValue(getStatement());
 			}
-			System.out.println("ATTRIBUT: " + eAttrib.getName());
-			System.out.println("WERT: " + eAttrib.getDefaultValue());
+			System.out.println("sATTRIBUT: " + eAttrib.getName());
+			System.out.println("sWERT: " + eAttrib.getDefaultValue());
 		}
 	}
 
