@@ -756,7 +756,7 @@ Einleitung
 \end_layout
 
 \begin_layout Subsection
-Zweck dieses Dokument
+Zweck dieses Dokuments
 \end_layout
 
 \begin_layout Subsection
@@ -765,9 +765,6 @@ Gliederung
 
 \begin_layout Subsection
 Der Feinentwurf im Rahmen des Projektes
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -782,205 +779,27 @@ in diesen Unterabschnitt gehts darum, was ist der Feinentwurf im allgemeines
 \end_layout
 
 \begin_layout Section
-Systemarchitektur
+Architektur
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/Schnittstellen.png
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Schnittstellen des SIMPL Rahmenwerk
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-über die Schittstellen des SIMPL Rahmenwerk im Allgemeinen und die einzelne
- Unterabschnitte sind einzeln anhand die Abbildung 1 gegliedert.
-\end_layout
-
-\end_inset
-
-
+\begin_layout Section
+Komponenten
 \end_layout
 
 \begin_layout Subsection
-SIMP Core
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/SIMPL Core.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Übersicht über den SIMPL Core und seine Schnittstellen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Strategy Service
+SIMPL Core
 \end_layout
 
 \begin_layout Subsubsection
 Datasource Service
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/DataSourceService.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Klassendiagramm des DataSource Service.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Security Service
-\end_layout
-
-\begin_layout Subsubsection
-Reference Service
-\end_layout
-
 \begin_layout Subsubsection
 Administration Service
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/AdministrationService.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Klassendiagramm des Administration Service
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Transformation Service
-\end_layout
-
 \begin_layout Subsubsection
 Storage Service
-\end_layout
-
-\begin_layout Subsubsection
-Registry Service
 \end_layout
 
 \begin_layout Subsection
@@ -988,19 +807,23 @@ Apache ODE
 \end_layout
 
 \begin_layout Subsubsection
-BPEL Runtime
+SIMPL DM Extension Activity
 \end_layout
 
 \begin_layout Subsubsection
-Eclipse und GUI
+SIMPL DAO
 \end_layout
 
 \begin_layout Subsection
-Apache jUDDI
+Eclipse
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
+BPEL DM Plug-In
+\end_layout
 
+\begin_layout Subsubsection
+SIMPL Core Plug-In
 \end_layout
 
 \end_body
