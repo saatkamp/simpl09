@@ -40,7 +40,7 @@ public class StatementEditor {
 
 		if (parent != null && language!=null && activity!=null) {
 			this.parentClass = parent;
-			compositeClass = Application.getInstance().getEditorClass(activity,language);
+			compositeClass = Application.getInstance().getEditorClass(language, activity);
 			if (compositeClass != null) {
 				//TODO Statement in StatementEditor übergeben
 				compositeClass.setStatement(parentClass.getStatement());
