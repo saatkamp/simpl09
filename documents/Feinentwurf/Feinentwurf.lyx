@@ -22,7 +22,7 @@
 \def\doctitel{Feinentwurf}
 \def\docvers{0.1}
 \def\docautor{}
-\def\docdate{12. November 2009}
+\def\docdate{11. Januar 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -442,21 +442,6 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ich werde am Montag alle dazu gehörige Kapiteln bzw.
- Abschnitte und unterabschnitte bereitstellen anhand den Buch von Ludewig
- ,weil ich keins zuhause besitze.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Änderungsgeschichte
 \end_layout
@@ -559,7 +544,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.2
 \end_layout
 
 \end_inset
@@ -568,7 +553,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+04.01.2010
 \end_layout
 
 \end_inset
@@ -577,7 +562,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+schneimi
 \end_layout
 
 \end_inset
@@ -586,7 +571,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Überarbeitung der Struktur
 \end_layout
 
 \end_inset
@@ -597,7 +582,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.3
 \end_layout
 
 \end_inset
@@ -606,7 +591,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+09.01.2010
 \end_layout
 
 \end_inset
@@ -615,7 +600,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+schneimi
 \end_layout
 
 \end_inset
@@ -624,7 +609,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+SIMPL Core Beschreibung
 \end_layout
 
 \end_inset
@@ -755,22 +740,138 @@ Erstellung des Dokuments.
 Einleitung
 \end_layout
 
+\begin_layout Standard
+Dieses Kapitel erklärt den Zweck des Dokuments, den Zusammenhang zu anderen
+ Dokumenten und gibt dem Leser einen Überblick über den Aufbau des Dokuments.
+\end_layout
+
 \begin_layout Subsection
 Zweck dieses Dokuments
+\end_layout
+
+\begin_layout Standard
+Der Feinentwurf beschreibt Details der Implementierung der Komponneten,
+ die im Grobentwurf 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ in Kapitel 3 vorgestellt wurden.
+ Die Komponenten werden ausführlich beschrieben und ihre Funktionalität
+ durch statische und dynamische UML-Diagramme visualisiert.
+ Der Feinentwurf bezieht sich im Gegensatz zum Grobentwurf nur auf die aktuelle
+ Iteration und wird mit folgenden Iterationen vervollständigt.
+ Grobentwurf und Feinentwurf bilden zusammen den Gesamtentwurf des SIMPL
+ Rahmenwerks.
 \end_layout
 
 \begin_layout Subsection
 Gliederung
 \end_layout
 
+\begin_layout Standard
+Der Feinentwurf gliedert sich in die folgenden Kapitel.
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Komponenten"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Komponenten
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Realisierung der einzelnen Komponenten mit ihren Schnittstellen.
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Kommunikation"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Kommunikation
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Kommunikation im SIMPL Rahmenwerk über diese Schnittstellen.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Komponenten"
+
+\end_inset
+
+Komponenten
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Realisierung der einzelnen Komponenten im Detail
+ beschrieben.
+\end_layout
+
 \begin_layout Subsection
-Der Feinentwurf im Rahmen des Projektes
-\begin_inset Note Note
+SIMPL Core
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core-Klassendiagramm"
+
+\end_inset
+
+ zeigt den Aufbau des SIMPL Cores, der in den folgenden Abschnitten beschrieben
+ wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-in diesen Unterabschnitt gehts darum, was ist der Feinentwurf im allgemeines
- und was ist seine Position im gansen Projekt.
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPLCore_Class_Diagram.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Core-Klassendiagramm"
+
+\end_inset
+
+SIMPL Core Klassendiagramm
 \end_layout
 
 \end_inset
@@ -778,28 +879,349 @@ in diesen Unterabschnitt gehts darum, was ist der Feinentwurf im allgemeines
 
 \end_layout
 
-\begin_layout Section
-Architektur
-\end_layout
+\end_inset
 
-\begin_layout Section
-Komponenten
-\end_layout
 
-\begin_layout Subsection
-SIMPL Core
 \end_layout
 
 \begin_layout Subsubsection
+Paketstruktur
+\end_layout
+
+\begin_layout Standard
+Der SIMPL Core besitzt folgende Paketstruktur, die sich in einen Kernbereich,
+ sowie Bereiche für die Dienste (Services) und Web Services aufteilt.
+\end_layout
+
+\begin_layout Paragraph
+org.simpl.core
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich zentrale Klassen des SIMPL Cores, die auf die Dienste
+ des SIMPL Core zurückgreiffen, wie z.B.
+ die SIMPLCore-Klasse, die in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPLCore"
+
+\end_inset
+
+ näher beschrieben wird.
+\end_layout
+
+\begin_layout Paragraph
+org.simpl.administration
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Administration Service
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.3.1).
+\end_layout
+
+\begin_layout Paragraph
+org.simpl.storage
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Storage Service (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.3.5).
+\end_layout
+
+\begin_layout Paragraph
+org.simpl.datasource
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Datasource Service
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.3.5).
+\end_layout
+
+\begin_layout Paragraph
+org.simpl.datasource.plugins
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die Plug-Ins für den Datasource Service, die für die
+ verschiedenen Datenquellentypen entwickelt werden.
+ Falls sich die einzelnen Plug-Ins auf mehrere Klassen verteilen, werden
+ diese zusätzlich auf eigene Unterpakete verteilt.
+ Das Plug-In-System wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+ näher beschrieben.
+\end_layout
+
+\begin_layout Paragraph
+org.simpl.webservices
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die Web Services des SIMPL Core, die den Zugriff von
+ Außen auf den SIMPL Core ermöglichen.
+ Alle Klassen werden mit JAX-WS-Annotationen versehen und können als Webservices
+ in Apache ODE deployt werden.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPLCore"
+
+\end_inset
+
+SIMPLCore
+\end_layout
+
+\begin_layout Standard
+Die SIMPLCore-Klasse bildet den zentralen Zugriffspunkt auf alle Dienste
+ des SIMPL Cores für den Zugriff auf Klassenebene.
+ Damit die Instanzen der Dienste nur einmal existieren und nicht bei jedem
+ Zugriff erneut erstellt werden, ist die Klasse als Singleton (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.3) ausgelegt.
+ Diese Klasse wird von den Apache ODE Extension Activities (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-DM-Extension"
+
+\end_inset
+
+) benutzt um DM-Aktivitäten auszuführen.
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Core Services
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beschreibung der Dienste
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden die Dienste des SIMPL Cores beschrieben.
+\end_layout
+
+\begin_layout Paragraph
+Administration Service
+\end_layout
+
+\begin_layout Paragraph
+Storage Service
+\end_layout
+
+\begin_layout Paragraph
 Datasource Service
 \end_layout
 
 \begin_layout Subsubsection
-Administration Service
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+Datasource Plug-Ins
+\end_layout
+
+\begin_layout Standard
+Die Unterstützung verschiedener Typen von Datenquellen wird durch Datasource
+ Plug-Ins realisiert um eine Erweiterungsmöglichkeit zu garantieren.
+ Dies wird durch die Bereitstellung einer abstrakten Klasse erreicht, von
+ der sich die Plug-Ins ableiten lassen.
+ Mit der Reflection API von Java ist es möglich, die Plug-Ins zur Laufzeit
+ zu erkennen und zu verwenden, ohne dass bestehender Code angepasst werden
+ muss.
+\end_layout
+
+\begin_layout Paragraph*
+DatasourceService (interface)
+\end_layout
+
+\begin_layout Standard
+Das DatasourceService-Interface schreibt alle Funktionen vor, die von den
+ DatasourceServices (Plug-Ins) implementiert werden müssen.
+\end_layout
+
+\begin_layout Paragraph*
+DatasourceServicePlugin (abstract class)
+\end_layout
+
+\begin_layout Standard
+Bei der DatasourceServicePlugin-Klasse handelt es sich um eine abstrakte
+ Klasse, die an das DatasourceService-Interface gebunden ist und damit das
+ Grundgerüst für einen Datasource Service bildet.
+ Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen das
+ DatasourceService-Interface zu implementieren.
+\end_layout
+
+\begin_layout Paragraph*
+DatasourceServiceProvider
+\end_layout
+
+\begin_layout Standard
+Über den DatasourceServiceProvider kann die Instanz eines DatasourceService
+ angefordert werden.
+ Dies geschieht über eine eindeutige Typkennzeichnung (z.B.
+ RDB, XML, ...), mit der die entsprechende Instanz der Klasse über die Class.forName
+-Methode der Java Reflection API erzeugt und ausgeliefert wird.
 \end_layout
 
 \begin_layout Subsubsection
-Storage Service
+Web Services
+\end_layout
+
+\begin_layout Standard
+Die Web Services werden mit den JAX-WS annotierten Klassen wie folgt bereitgeste
+llt.
+ Zunächst wird mit Hilfe des Befehls wsgen.exe (..
+\backslash
+Java
+\backslash
+jdk1.6.0_14
+\backslash
+bin
+\backslash
+wsgen.exe), eine WSDL-Datei zu einer Klasse erzeugt.
+ Die WSDL-Datei wird anschließend zusammen mit der kompilierten Klasse als
+ JAR-Datei in Apache ODE hinterlegt (..
+\backslash
+Tomcat 6.0
+\backslash
+webapps
+\backslash
+ode
+\backslash
+WEB-INF
+\backslash
+servicejars) und wird dann beim Start von Apache Tomcat von Apache ODE als
+ Web Service bereitgestellt.
+\end_layout
+
+\begin_layout Paragraph
+Datasource Web Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beschreibung der Funktionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Datasource Web Service...
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Datenquellentyp als Parameter fehlt noch, oder? Später mit JNDI, Registry
+ usw.
+ wird er evtl nicht mehr benötigt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+public DataObject queryData(String dsAddress, String statement)
+\end_layout
+
+\begin_layout Subparagraph
+public boolean defineData(String dsAddress, String statement)
+\end_layout
+
+\begin_layout Subparagraph
+public boolean manipulateData(String dsAddress, String statement, DataObject
+ data)
+\end_layout
+
+\begin_layout Paragraph
+Administration Web Service
+\end_layout
+
+\begin_layout Standard
+Der Administration Web Service...
+\end_layout
+
+\begin_layout Subparagraph
+public boolean saveSettings(String schema, String table, String settingName,
+ LinkedHashMap<String, String> settings)
+\end_layout
+
+\begin_layout Subparagraph
+public LinkedHashMap<String, String> loadSettings(String schema, String
+ table, String settingName)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceTypes()
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceSubTypes(String datasourceType)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceLanguages(String datasourceSubType)
+\end_layout
+
+\begin_layout Paragraph
+Storage Web Service
+\end_layout
+
+\begin_layout Standard
+Der Storage Web Service...
+\end_layout
+
+\begin_layout Subparagraph
+public boolean save(String serviceNS, String serviceName, List<LinkedHashMap<Str
+ing, String>> data)
+\end_layout
+
+\begin_layout Subparagraph
+public List<LinkedHashMap<String, String>> load(String serviceNS, String
+ serviceName)
 \end_layout
 
 \begin_layout Subsection
@@ -807,7 +1229,13 @@ Apache ODE
 \end_layout
 
 \begin_layout Subsubsection
-SIMPL DM Extension Activity
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-DM-Extension"
+
+\end_inset
+
+SIMPL DM Extension Activities
 \end_layout
 
 \begin_layout Subsubsection
@@ -824,6 +1252,371 @@ BPEL DM Plug-In
 
 \begin_layout Subsubsection
 SIMPL Core Plug-In
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Core Client
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+wsimport, extra Plug-In für Eclipse,...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Kommunikation"
+
+\end_inset
+
+Kommunikation
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Kommunikation im SIMPL Rahmenwerk beschrieben
+ und wichtige Abläufe deutlich gemacht.
+\end_layout
+
+\begin_layout Subsection
+SIMPL Rahmenwerk
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Kommunikation-im-SIMPL"
+
+\end_inset
+
+ wird die Kommunikation zwischen den Komponenten beschrieben und die entsprechen
+den Funktionsaufrufe gezeigt.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beschreibung der Abbildung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPLRahmenwerkKommunikation.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Kommunikation-im-SIMPL"
+
+\end_inset
+
+Kommunikation im SIMPL Rahmenwerk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Speicherung von Einstellungen über die Adminkonsole
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beschreibung der Abbildung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Speicherung-von-Einstellungen"
+
+\end_inset
+
+ zeigt den Ablauf bei der Speicherung von Einstellungen der Adminkonsole
+ und das Zusammenspiel der beteiligten Komponenten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/AdminConsoleSequence.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Speicherung-von-Einstellungen"
+
+\end_inset
+
+Speicherung von Einstellungen über die Adminkonsole
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Literaturverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+
+\shape italic
+Grobentwurf v1.5
+\shape default
+.
+
+\shape italic
+ 
+\shape default
+Stupro-A SIMPL (2009)
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\series bold
+\size larger
+Abkürzungsverzeichnis
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UML
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unified Modeling Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
 \end_layout
 
 \end_body
