@@ -24,14 +24,6 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	private String dMode = "inactive";
 	private String dAuditingDBAddress = "";
 
-	// LastSaved-Einstellungen
-	private String lMode = "";
-	private String lAuditingDBAddress = "";
-
-	// Buffer für Einstellungen
-	private String bMode = "";
-	private String bAuditingDBAddress = "";
-
 	@Override
 	public void createComposite(Composite composite) {
 		// TODO Auto-generated method stub
@@ -81,23 +73,19 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	@Override
 	public void saveSettings(String parentItem, String item, String settingName) {
 		// Überprüfen, ob mindestens ein Wert geändert wurde
-		if (haveSettingsChanged()) {
-			// Settings-Liste erstellen und mit Werte füllen zum Speichern
-			LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
-			// Werte aus den GUI-Elementen in die HashMap einfügen
-			if (auditingCheckBox.getSelection()) {
-				settings.put("mode", auditingCheckBox.getText());
-			}
-			settings.put("auditingDsAddress", auditingDBtext.getText());
+		// Settings-Liste erstellen und mit Werte füllen zum Speichern
+		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
-			// Über den SIMPL Core in einer embedded DerbyDB speichern
-			SIMPLCommunication.getConnection().save(parentItem, item,
-					settingName, settings);
-			
-			this.lMode = auditingCheckBox.getText();
-			this.lAuditingDBAddress = auditingDBtext.getText();
+		// Werte aus den GUI-Elementen in die HashMap einfügen
+		if (auditingCheckBox.getSelection()) {
+			settings.put("mode", auditingCheckBox.getText());
 		}
+		settings.put("auditingDsAddress", auditingDBtext.getText());
+
+		// Über den SIMPL Core in einer embedded DerbyDB speichern
+		SIMPLCommunication.getConnection().save(parentItem, item, settingName,
+				settings);
 
 	}
 
@@ -130,41 +118,5 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			}
 			auditingDBtext.setText(settings.get("auditingDsAddress"));
 		}
-		this.lMode = auditingCheckBox.getText();
-		this.lAuditingDBAddress = auditingDBtext.getText();
-		this.bMode = auditingCheckBox.getText();
-		this.bAuditingDBAddress = auditingDBtext.getText();
-	}
-
-	@Override
-	public boolean haveSettingsChanged() {
-		boolean changed = false;
-		// Überprüfen, ob Auditing-Modus oder Auditing-DB geändert wurden
-		if (!this.bMode.equals(this.lMode)
-				|| !this.bAuditingDBAddress.equals(this.lAuditingDBAddress)) {
-			changed = true;
-		}
-		return changed;
-	}
-
-	@Override
-	public void loadSettingsFromBuffer() {
-		// Werte in GUI-Elementen setzen
-		if (this.bMode.equals("active")) {
-			auditingCheckBox.setSelection(true);
-			auditingCheckBox.setText("active");
-		} else {
-			auditingCheckBox.setSelection(false);
-			auditingCheckBox.setText("inactive");
-		}
-		auditingDBtext.setText(this.bAuditingDBAddress);
-		System.out.println("LOAD FROM BUFFER: " + this.bMode + " | " + this.bAuditingDBAddress);
-	}
-
-	@Override
-	public void saveSettingsToBuffer() {
-		this.bMode = auditingCheckBox.getText();
-		this.bAuditingDBAddress = auditingDBtext.getText();
-		System.out.println("SAVE TO BUFFER: " + this.bMode + " | " + this.bAuditingDBAddress);
 	}
 }

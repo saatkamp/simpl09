@@ -2,6 +2,7 @@ package org.eclipse.simpl.core.ui;
 
 import org.eclipse.simpl.core.Application;
 import org.eclipse.simpl.core.Tuple;
+import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.simpl.core.extensions.IAdminConsoleComposite;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Event;
@@ -30,7 +31,7 @@ public class AdminConsoleUI {
 	private Button resetButton = null;
 	private Button closeButton = null;
 	private Composite composite = null;
-	private IAdminConsoleComposite compositeClass = null;
+	private AAdminConsoleComposite compositeClass = null;
 	private Composite oldComposite = null;
 	private TreeItem selectedTreeItem = null;
 
@@ -60,11 +61,7 @@ public class AdminConsoleUI {
 	 * 
 	 */
 	private void showComposite(TreeItem treeItem) {
-		// Eingaben buffern in Composite-Klasse
-		if (compositeClass != null) {
-			compositeClass.saveSettingsToBuffer();
-			System.out.println(compositeClass.getClass().getSimpleName());
-		}
+		//TODO Eingaben buffern irgendwo
 		
 		if (oldComposite != null) {
 			oldComposite.dispose();
@@ -76,9 +73,12 @@ public class AdminConsoleUI {
 			compositeClass.createComposite(composite);
 			oldComposite = compositeClass.getComposite();
 
-			// Werte des Composites laden
-			compositeClass.loadSettingsFromBuffer();
-
+			if (compositeClass!=null && selectedTreeItem!=null){
+				// Werte des Composites laden
+				compositeClass.loadSettings(selectedTreeItem
+						.getParentItem().getText(), selectedTreeItem
+						.getText(), "lastSaved");
+			}
 			composite.layout();
 			sShell.layout();
 		}
@@ -268,8 +268,8 @@ public class AdminConsoleUI {
 					System.out.println(parentItem.getText() + " -> "
 							+ sItem.getText() + " was selected");
 
-					showComposite(sItem);
 					selectedTreeItem = sItem;
+					showComposite(sItem);
 				}
 
 				// if (father != null && father.getText().contains("Auditing")

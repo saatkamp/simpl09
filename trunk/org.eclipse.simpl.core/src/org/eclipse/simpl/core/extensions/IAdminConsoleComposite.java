@@ -9,14 +9,9 @@ public interface IAdminConsoleComposite {
 	public void setComposite(Composite composite);
 
 	public void createComposite(Composite composite);
-	
-	public void saveSettingsToBuffer();
-	
-	public void loadSettingsFromBuffer();
 
 	public void saveSettings(String parentItem, String item, String settingName);
 
 	public void loadSettings(String parentItem, String item, String settingName);
-	
-	public boolean haveSettingsChanged();
+
 }
