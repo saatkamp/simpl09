@@ -14,4 +14,9 @@ public interface IAdminConsoleComposite {
 
 	public void loadSettings(String parentItem, String item, String settingName);
 
+	public boolean haveSettingsChanged();
+
+	public void loadSettingsFromBuffer(String settingName);
+	
+	public void saveSettingsToBuffer(String settingName);
 }

@@ -52,9 +52,28 @@ public class Application {
 			nodes.addAll(childs);
 			childs.clear();
 		}
-		
-		//Einmaliges Laden aller zur Verfügung stehenden CompositeClasses
-		
+
+		// Einmaliges Laden aller zur Verfügung stehenden CompositeClasses
+		// Alle Admin-Konsolen Punkte laden
+		//TODO Hier am besten gleich Einstellungen initial laden und so in den Klassen hinterlegen
+		LinkedHashMap<String, AAdminConsoleComposite> classes = new LinkedHashMap<String, AAdminConsoleComposite>();
+		List<Tuple> treeItems = Application.getInstance().getTreeItems();
+		List<String> treeSubItems = null;
+		AAdminConsoleComposite compClass = null;
+		for (Tuple treeIt : treeItems) {
+			// Alle Admin-Konsolen Unterpunkte eines Punktes laden
+			treeSubItems = Application.getInstance().getTreeSubItems(
+					treeIt.getName());
+			for (String subItem : treeSubItems) {
+				// Alle Composite-Klassen, die zur Verfügung stehen werden zu
+				// Beginn instanziert.
+				compClass = getCompClass(subItem);
+				//Initiales Laden der zuletzt gespeicherten Werte
+				compClass.loadSettings(treeIt.getName(), subItem, "lastSaved");
+				classes.put(subItem, compClass);
+			}
+		}
+		this.compositeClasses = classes;
 	}
 
 	public List<Tuple> getTreeItems() {
@@ -99,7 +118,7 @@ public class Application {
 		return treeSubItems;
 	}
 
-	public AAdminConsoleComposite getCompositeClass(String treeItem) {
+	private AAdminConsoleComposite getCompClass(String treeItem) {
 		AAdminConsoleComposite compositeClass = null;
 
 		for (IConfigurationElement e : nodes) {
@@ -125,6 +144,10 @@ public class Application {
 		}
 		return compositeClass;
 	}
+	
+	public AAdminConsoleComposite getCompositeClass(String treeItem) {
+		return this.compositeClasses.get(treeItem);
+	}
 
 	public List<Tuple> sortTupleList(List<Tuple> list) {
 		boolean unsorted = true;
@@ -134,10 +157,11 @@ public class Application {
 		while (unsorted) {
 			unsorted = false;
 			for (int i = 0; i < tupleList.size() - 1; i++)
-				if (tupleList.get(i).getValue() > tupleList.get(i + 1).getValue()) {
+				if (tupleList.get(i).getValue() > tupleList.get(i + 1)
+						.getValue()) {
 					temp = tupleList.get(i);
-					tupleList.set(i, tupleList.get(i+1));
-					tupleList.set(i+1, temp);
+					tupleList.set(i, tupleList.get(i + 1));
+					tupleList.set(i + 1, temp);
 					unsorted = true;
 				}
 		}
