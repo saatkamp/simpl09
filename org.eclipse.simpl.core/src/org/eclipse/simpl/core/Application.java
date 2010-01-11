@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.simpl.core.extensions.IAdminConsoleComposite;
 
 public class Application {
@@ -94,8 +95,8 @@ public class Application {
 		return treeSubItems;
 	}
 
-	public IAdminConsoleComposite getCompositeClass(String treeItem) {
-		IAdminConsoleComposite compositeClass = null;
+	public AAdminConsoleComposite getCompositeClass(String treeItem) {
+		AAdminConsoleComposite compositeClass = null;
 
 		for (IConfigurationElement e : nodes) {
 			// 
@@ -106,8 +107,8 @@ public class Application {
 						+ e.getAttribute("composite"));
 				try {
 					final Object o = e.createExecutableExtension("composite");
-					if (o instanceof IAdminConsoleComposite) {
-						compositeClass = (((IAdminConsoleComposite) o));
+					if (o instanceof AAdminConsoleComposite) {
+						compositeClass = (((AAdminConsoleComposite) o));
 						System.out.println("Target: "
 								+ e.getAttribute("composite"));
 						;
