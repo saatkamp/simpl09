@@ -3,7 +3,6 @@ package org.eclipse.simpl.core.ui;
 import org.eclipse.simpl.core.Application;
 import org.eclipse.simpl.core.Tuple;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
-import org.eclipse.simpl.core.extensions.IAdminConsoleComposite;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -73,12 +72,13 @@ public class AdminConsoleUI {
 			compositeClass.createComposite(composite);
 			oldComposite = compositeClass.getComposite();
 
-			if (compositeClass!=null && selectedTreeItem!=null){
-				// Werte des Composites laden
-				compositeClass.loadSettings(selectedTreeItem
-						.getParentItem().getText(), selectedTreeItem
-						.getText(), "lastSaved");
-			}
+//			if (compositeClass!=null && selectedTreeItem!=null){
+//				// Werte des Composites laden
+//				compositeClass.loadSettings(selectedTreeItem
+//						.getParentItem().getText(), selectedTreeItem
+//						.getText(), "lastSaved");
+//			}
+			
 			composite.layout();
 			sShell.layout();
 		}

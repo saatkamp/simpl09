@@ -13,6 +13,10 @@ import org.eclipse.swt.widgets.Text;
 
 public class AuthentificationComposite extends AAdminConsoleComposite {
 
+	//Global hinterlegte Keys der Einstellungen
+	private final String USER = "username";
+	private final String PASSWORD = "password";
+	
 	private Label userLabel = null;
 	private Label passwordLabel = null;
 	private Text userText = null;
@@ -21,6 +25,14 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 	// Default-Einstellungen
 	private String dUser = null;
 	private String dPassword = null;
+
+	// Buffer-Einstellungen
+	private String bUser = null;
+	private String bPassword = null;
+
+	// LastSaved-Einstellungen
+	private String lUser = null;
+	private String lPassword = null;
 
 	@Override
 	public void createComposite(Composite composite) {
@@ -58,18 +70,24 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 	@Override
 	public void saveSettings(String parentItem, String item, String settingName) {
 		// Überprüfen, ob mindestens ein Wert geändert wurde
-		// Settings-Liste erstellen und mit Werte füllen zum Speichern
-		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
+		if (haveSettingsChanged()) {
 
-		// Werte aus den GUI-Elementen in die HashMap einfügen
-		settings.put("username", userText.getText());
+			// Settings-Liste erstellen und mit Werte füllen zum Speichern
+			LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
-		// TODO: Passwort bitte nicht für immer als Klartext speichern ;)
-		settings.put("password", passwordText.getText());
+			// Werte aus den GUI-Elementen in die HashMap einfügen
+			settings.put(this.USER, userText.getText());
 
-		// Über den SIMPL Core in einer embedded DerbyDB speichern
-		SIMPLCommunication.getConnection().save(parentItem, item, settingName,
-				settings);
+			// TODO: Passwort bitte nicht für immer als Klartext speichern ;)
+			settings.put(this.PASSWORD, passwordText.getText());
+
+			// Über den SIMPL Core in einer embedded DerbyDB speichern
+			SIMPLCommunication.getConnection().save(parentItem, item,
+					settingName, settings);
+
+			this.lUser = userText.getText();
+			this.lPassword = passwordText.getText();
+		}
 	}
 
 	@Override
@@ -79,15 +97,54 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 		// Über den SIMPL Core aus einer embedded DerbyDB laden
 		settings = SIMPLCommunication.getConnection().load(parentItem, item,
 				settingName);
-		if (settings.isEmpty()) {
-			// Defaults aus Code laden
-			userText.setText(this.dUser);
-			passwordText.setText(this.dPassword);
-		} else {
-			// Geladene Werte in GUI-Elementen setzen
-			userText.setText(settings.get("username"));
-			passwordText.setText(settings.get("password"));
+		//Überprüfen, ob das Composite schon erzeugt wurde
+		if (getComposite() != null) {
+			if (settings.isEmpty()) {
+				// Defaults aus Code laden
+				userText.setText(this.dUser);
+				passwordText.setText(this.dPassword);
+			} else {
+				// Geladene Werte in GUI-Elementen setzen
+				userText.setText(settings.get(this.USER));
+				passwordText.setText(settings.get(this.PASSWORD));
+			}
+			this.lUser = userText.getText();
+			this.lPassword = passwordText.getText();
+			this.bUser = userText.getText();
+			this.bPassword = passwordText.getText();
+		}else {
+			this.lUser = settings.get(this.USER);
+			this.lPassword = settings.get(this.PASSWORD);
+			this.bUser = this.lUser;
+			this.bPassword = this.lPassword;
 		}
+	}
+
+	@Override
+	public boolean haveSettingsChanged() {
+		boolean changed = false;
+		// Überprüfen, ob Auditing-Modus oder Auditing-DB geändert wurden
+		if (!this.bUser.equals(this.lUser)
+				|| !this.bPassword.equals(this.lPassword)) {
+			changed = true;
+		}
+		return changed;
+	}
+
+	@Override
+	public void loadSettingsFromBuffer(String settingName) {
+		userText.setText(this.bUser);
+		passwordText.setText(this.bPassword);
+		System.out.println("LOAD FROM BUFFER: " + this.bUser + " | "
+				+ this.bPassword);
+	}
+
+	@Override
+	public void saveSettingsToBuffer(String settingName) {
+		this.bUser = userText.getText();
+		this.bPassword = passwordText.getText();
+		System.out.println("SAVE TO BUFFER: " + this.bUser + " | "
+				+ this.bPassword);
 	}
 
 }
