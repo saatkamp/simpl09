@@ -1245,7 +1245,7 @@ Das Simpl Dao besteht aus der Implementierung der Interfaces aus dem Packet
  können nur schreibend, jedoch nicht lesend erfolgen.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 ActivityRecoveryDao
 \end_layout
 
@@ -1261,7 +1261,7 @@ recovery
  Status einnimmt.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 BpelDAOConnectionFactory
 \end_layout
 
@@ -1270,7 +1270,7 @@ Die Factory verwaltet und erstellt die DaoConnection zu den angegebenen
  Datenquellen (standartmäßig der internen Derby Datenbank)
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 BpelDAOConnection
 \end_layout
 
@@ -1280,7 +1280,7 @@ Stellt die Implementierung der Connection dar.
  austausch erstellt und verwaltet.
 \end_layout
 
-\begin_layout Paragraph*
+\begin_layout Subsubsection*
 CorrelationSetDAO
 \end_layout
 
@@ -1288,7 +1288,7 @@ CorrelationSetDAO
 Dieses DAO representiert ein BPEL correlation set.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 FaultDAO
 \end_layout
 
@@ -1297,7 +1297,7 @@ Wird benutzt um auf Informationen über einen Fehler zuzugreifen, der wärend
  einer Prozessausführung aufgetreten ist.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 MessageDAO
 \end_layout
 
@@ -1305,7 +1305,7 @@ MessageDAO
 Representiert eine Nachricht in der Datenbank.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 MessageExchangeDAO
 \end_layout
 
@@ -1313,7 +1313,7 @@ MessageExchangeDAO
 DAO für den Nachrichten austausch.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 MessageRouteDAO
 \end_layout
 
@@ -1322,7 +1322,7 @@ Das DAO representiert einen Nachrichten Anfrager, wie zum beispiel ein Pick
  oder ein recive.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 PartnerLinkDAO
 \end_layout
 
@@ -1332,7 +1332,7 @@ Das DAO representiert einen Partnerlink.
  und die Endpointreferenz.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 ProcessDAO
 \end_layout
 
@@ -1341,7 +1341,7 @@ Das DAO representiert einen laufenden Prozess.
  Es enthällt die Prozess-Id, den Prozess-Typ, sowie die Prozessinstanzen.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 ProcessInstanceDAO
 \end_layout
 
@@ -1351,7 +1351,7 @@ Dieses DAO representiert eine Prozess-Instanz und enthällt alle Daten die
  Dazu zählen Events, Scopes, sowie wartende pick und recive Aktivitäten.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 ScopeDAO
 \end_layout
 
@@ -1360,7 +1360,7 @@ Dieses DAO representiert eine Scope-Instanz.
  Es enthällt eine ansammlung von Correlation-Sets und XML-Variablen.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 XmlDataDAO
 \end_layout
 
