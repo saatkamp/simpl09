@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1227,6 +1227,269 @@ name "sub:SIMPL-DM-Extension"
 \end_inset
 
 SIMPL DM Extension Activities
+\end_layout
+
+\begin_layout Standard
+Die SIMPL DM Extension Activities (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-DM-Extension"
+
+\end_inset
+
+) haben als Hauptklasse die Klasse SIMPLActivity, welche verschiedene Funktional
+itäten für alle weiteren Events anbietet.
+ Die Extension Activities nutzen zur Auführung der verschiedenen Datamanagement-
+Operationen den Datasource-Service des SIMPLCore.Die Implementierung der
+ Extension Activities wird folgendermaßen umgesetzt: 
+\end_layout
+
+\begin_layout Standard
+Zunächst muss eine neue Aktivität von der Klasse „AbstractSyncExtensionOperation
+“ abgeleitet werden und die dadurch vererbten Methoden müssen implementiert
+ werden.
+ Die Methode „runsync“ ist hierbei für die eigentliche Ausführung der neuen
+ Aktivität verantwortlich.
+ Dafür ist die Nutzung der beiden Parameter „context“ und „element“ notwendig.
+ Mit 
+\begin_inset Quotes eld
+\end_inset
+
+context
+\begin_inset Quotes erd
+\end_inset
+
+ hat man die Möglichkeit auf BPEL-Variablen und weitere Konstrukte die im
+ Prozess vorhanden sind zuzugreifen.
+ Der Inhalt des BPEL-Prozess-Dokkuments wird in Nodes geparst um ein objektbasie
+rtes Modell des BPEL Prozesses zu erzeugen.
+ Mit „element“ ist es möglich auf die verschiedenen Eigenschaften dieser
+ Nodes zuzugreifen und mit ihnen zu arbeiten.
+ 
+\end_layout
+
+\begin_layout Standard
+Weiterhin ist es notwendig ein eigenes ExtensionBundle zu implementieren.
+ Dies wird erreicht durch das ableiten einer neuen Klassen von „AbstractExtensio
+nBundle“.
+ In dieser Klasse müssen nun in der Methode „registerExtensionActivity“
+ alle Klassen die für die Extension Activity von Bedeutung sind mit Hilfe
+ von „registerExtensionOperation“ bei ODE registriert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL-EA.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-DM-Extension"
+
+\end_inset
+
+SIMPL DM Extension Activities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Event System
+\end_layout
+
+\begin_layout Standard
+Für die SIMPL Extension Activities wird eine Reihe von neuen Events eingeführt.
+ Die Eventhierarchie ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Event-System"
+
+\end_inset
+
+ zu sehen.
+ Die neuen Events unterteilen sich in DMEvents und ConnectionEvents, welche
+ beide als Hauptklasse die Klasse SIMPLEvent haben.
+ SIPMPLEvent ist wiederum von Scope Event abgeleitet.
+ Die neuen Events werden dadurch als Scope Events in die bestehende Event
+ Hierarchie von ODE eingegliedert.
+ Dies erlaubt es uns diese direkt innerhalb der Extension Acitvities zu
+ nutzen und aufzurufen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL-Events.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Event-System"
+
+\end_inset
+
+SIMPL Event System
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Ausführung einer SIMPL DM Extension Activity
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ausführung-einer-SIMPL"
+
+\end_inset
+
+ wird die Ausführung einer Query-Activity, mit den während der Ausführung
+ auftretenden Events, aufgezeigt.
+ Hierbei ist zu erwähnen, dass die Query-Activity folgendermaßen durchgeführt
+ wird:
+\end_layout
+
+\begin_layout Enumerate
+Mit Hilfe der queryData-Methode werden die Daten aus der aktuellen Datenquelle
+ gelesen und als DataObject zurückgegeben
+\end_layout
+
+\begin_layout Enumerate
+Mit Hilfe der defineData-Methode wird eine neue Tabelle in der aktuellen
+ Datenbank erzeugt
+\end_layout
+
+\begin_layout Enumerate
+Mit Hilfe der manipulateData-Methode wird das unter 1.
+ erzeugte DataObject in der in 2.
+ erzeugten Tabelle abgespeichert
+\end_layout
+
+\begin_layout Standard
+Die Events 
+\begin_inset Quotes eld
+\end_inset
+
+DMStarted
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+DMEnd
+\begin_inset Quotes erd
+\end_inset
+
+ werden zu Beginn bzw.
+ am Ende der Ausführung erzeugt.
+ Das Event 
+\begin_inset Quotes eld
+\end_inset
+
+DMFailure
+\begin_inset Quotes erd
+\end_inset
+
+ wird erzeugt falls die Rückmeldungsvariable 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ auf false gesetzt wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL-EA-Events-Sequenz-Diagramm.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ausführung-einer-SIMPL"
+
+\end_inset
+
+Ausführung einer SIMPL DM Extension Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
