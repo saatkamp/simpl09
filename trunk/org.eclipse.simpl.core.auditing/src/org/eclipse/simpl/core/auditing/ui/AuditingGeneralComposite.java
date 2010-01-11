@@ -17,10 +17,10 @@ import org.eclipse.swt.widgets.Text;
 
 public class AuditingGeneralComposite extends AAdminConsoleComposite {
 
-	//Global hinterlegte Keys der Einstellungen
+	// Global hinterlegte Keys der Einstellungen
 	private final String MODE = "mode";
-	private final String AUDITING_DS_ADDRESS = "auditingDsAddress";	
-	
+	private final String AUDITING_DS_ADDRESS = "auditingDsAddress";
+
 	private Label auditingLabel = null;
 	private Button auditingCheckBox = null;
 	private Label auditingDBlabel = null;
@@ -63,6 +63,11 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		auditingLabel.setText("Activate or deactivate the Auditing:");
 		auditingCheckBox = new Button(comp, SWT.CHECK);
 		auditingCheckBox.setText(this.bMode);
+		if (this.bMode.contains("active")) {
+			auditingCheckBox.setSelection(true);
+		} else {
+			auditingCheckBox.setSelection(false);
+		}
 		Label filler3 = new Label(comp, SWT.NONE);
 		auditingDBlabel = new Label(comp, SWT.NONE);
 		auditingDBlabel.setText("Address of the Auditing database: ");
@@ -98,22 +103,16 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	public void saveSettings(String parentItem, String item, String settingName) {
 		// Überprüfen, ob mindestens ein Wert geändert wurde
 		if (haveSettingsChanged()) {
-
 			// Settings-Liste erstellen und mit Werte füllen zum Speichern
 			LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
-			// Werte aus den GUI-Elementen in die HashMap einfügen
-			if (auditingCheckBox.getSelection()) {
-				settings.put(this.MODE, auditingCheckBox.getText());
-			}
-			settings.put(this.AUDITING_DS_ADDRESS, auditingDBtext.getText());
+			// Werte aus den Buffervariablen einfügen
+			settings.put(this.MODE, this.bMode);
+			settings.put(this.AUDITING_DS_ADDRESS, this.bAuditingDSAddress);
 
 			// Über den SIMPL Core in einer embedded DerbyDB speichern
 			SIMPLCommunication.getConnection().save(parentItem, item,
 					settingName, settings);
-
-			this.lMode = auditingCheckBox.getText();
-			this.lAuditingDSAddress = auditingDBtext.getText();
 		}
 	}
 
@@ -152,7 +151,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			this.lAuditingDSAddress = auditingDBtext.getText();
 			this.bMode = auditingCheckBox.getText();
 			this.bAuditingDSAddress = auditingDBtext.getText();
-		}else {
+		} else {
 			this.lMode = settings.get(this.MODE);
 			this.lAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
 			this.bMode = this.lMode;
@@ -187,10 +186,14 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	}
 
 	@Override
-	public void saveSettingsToBuffer(String settingName) {
-		this.bMode = auditingCheckBox.getText();
-		this.bAuditingDSAddress = auditingDBtext.getText();
-		System.out.println("SAVE TO BUFFER: " + this.bMode + " | "
-				+ this.bAuditingDSAddress);
+	public String getConsoleItem() {
+		// TODO Auto-generated method stub
+		return "General";
+	}
+
+	@Override
+	public String getParentConsoleItem() {
+		// TODO Auto-generated method stub
+		return "Auditing";
 	}
 }

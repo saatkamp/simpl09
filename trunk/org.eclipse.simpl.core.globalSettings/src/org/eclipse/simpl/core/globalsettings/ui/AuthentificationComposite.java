@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
@@ -13,10 +15,10 @@ import org.eclipse.swt.widgets.Text;
 
 public class AuthentificationComposite extends AAdminConsoleComposite {
 
-	//Global hinterlegte Keys der Einstellungen
+	// Global hinterlegte Keys der Einstellungen
 	private final String USER = "username";
 	private final String PASSWORD = "password";
-	
+
 	private Label userLabel = null;
 	private Label passwordLabel = null;
 	private Text userText = null;
@@ -59,12 +61,31 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 		userLabel.setLayoutData(gridData);
 		userText = new Text(comp, SWT.BORDER);
 		userText.setLayoutData(gridData3);
+		userText.setText(this.bUser);
+		userText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				bUser = userText.getText();
+			}
+		});
+
 		passwordLabel = new Label(comp, SWT.NONE);
 		passwordLabel.setText("Password:");
 		passwordLabel.setLayoutData(gridData1);
 		passwordText = new Text(comp, SWT.BORDER);
 		passwordText.setEchoChar('*');
 		passwordText.setLayoutData(gridData4);
+		passwordText.setText(this.bPassword);
+		passwordText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				bPassword = passwordText.getText();
+			}
+		});
 	}
 
 	@Override
@@ -72,21 +93,21 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 		// Überprüfen, ob mindestens ein Wert geändert wurde
 		if (haveSettingsChanged()) {
 
-			// Settings-Liste erstellen und mit Werte füllen zum Speichern
-			LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
+			if (getComposite() != null) {
+				// Settings-Liste erstellen und mit Werte füllen zum Speichern
+				LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
-			// Werte aus den GUI-Elementen in die HashMap einfügen
-			settings.put(this.USER, userText.getText());
+				// Werte aus den Buffervariablen in die HashMap einfügen
+				settings.put(this.USER, this.bUser);
 
-			// TODO: Passwort bitte nicht für immer als Klartext speichern ;)
-			settings.put(this.PASSWORD, passwordText.getText());
+				// TODO: Passwort bitte nicht für immer als Klartext speichern
+				// ;)
+				settings.put(this.PASSWORD, this.bPassword);
 
-			// Über den SIMPL Core in einer embedded DerbyDB speichern
-			SIMPLCommunication.getConnection().save(parentItem, item,
-					settingName, settings);
-
-			this.lUser = userText.getText();
-			this.lPassword = passwordText.getText();
+				// Über den SIMPL Core in einer embedded DerbyDB speichern
+				SIMPLCommunication.getConnection().save(parentItem, item,
+						settingName, settings);
+			}
 		}
 	}
 
@@ -97,7 +118,7 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 		// Über den SIMPL Core aus einer embedded DerbyDB laden
 		settings = SIMPLCommunication.getConnection().load(parentItem, item,
 				settingName);
-		//Überprüfen, ob das Composite schon erzeugt wurde
+		// Überprüfen, ob das Composite schon erzeugt wurde
 		if (getComposite() != null) {
 			if (settings.isEmpty()) {
 				// Defaults aus Code laden
@@ -112,7 +133,7 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 			this.lPassword = passwordText.getText();
 			this.bUser = userText.getText();
 			this.bPassword = passwordText.getText();
-		}else {
+		} else {
 			this.lUser = settings.get(this.USER);
 			this.lPassword = settings.get(this.PASSWORD);
 			this.bUser = this.lUser;
@@ -140,11 +161,15 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 	}
 
 	@Override
-	public void saveSettingsToBuffer(String settingName) {
-		this.bUser = userText.getText();
-		this.bPassword = passwordText.getText();
-		System.out.println("SAVE TO BUFFER: " + this.bUser + " | "
-				+ this.bPassword);
+	public String getConsoleItem() {
+		// TODO Auto-generated method stub
+		return "AuthentificationData";
+	}
+
+	@Override
+	public String getParentConsoleItem() {
+		// TODO Auto-generated method stub
+		return "GlobalSettings";
 	}
 
 }

@@ -55,7 +55,8 @@ public class Application {
 
 		// Einmaliges Laden aller zur Verfügung stehenden CompositeClasses
 		// Alle Admin-Konsolen Punkte laden
-		//TODO Hier am besten gleich Einstellungen initial laden und so in den Klassen hinterlegen
+		// TODO Hier am besten gleich Einstellungen initial laden und so in den
+		// Klassen hinterlegen
 		LinkedHashMap<String, AAdminConsoleComposite> classes = new LinkedHashMap<String, AAdminConsoleComposite>();
 		List<Tuple> treeItems = Application.getInstance().getTreeItems();
 		List<String> treeSubItems = null;
@@ -68,7 +69,7 @@ public class Application {
 				// Alle Composite-Klassen, die zur Verfügung stehen werden zu
 				// Beginn instanziert.
 				compClass = getCompClass(subItem);
-				//Initiales Laden der zuletzt gespeicherten Werte
+				// Initiales Laden der zuletzt gespeicherten Werte
 				compClass.loadSettings(treeIt.getName(), subItem, "lastSaved");
 				classes.put(subItem, compClass);
 			}
@@ -144,9 +145,13 @@ public class Application {
 		}
 		return compositeClass;
 	}
-	
+
 	public AAdminConsoleComposite getCompositeClass(String treeItem) {
 		return this.compositeClasses.get(treeItem);
+	}
+
+	public LinkedHashMap<String, AAdminConsoleComposite> getCompositeClasses() {
+		return this.compositeClasses;
 	}
 
 	public List<Tuple> sortTupleList(List<Tuple> list) {

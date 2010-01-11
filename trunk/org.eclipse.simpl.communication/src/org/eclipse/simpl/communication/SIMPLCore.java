@@ -30,7 +30,7 @@ public class SIMPLCore {
 		globalDefaultSettings.put("password", "12345");
 		
 		// Auditing
-		auditingDefaultSettings.put("mode", "off");
+		auditingDefaultSettings.put("mode", "inactive");
 		auditingDefaultSettings.put("auditingDsAddress", "http://localhost:8080/myDB");
 	}
 	

@@ -1,5 +1,7 @@
 package org.eclipse.simpl.core.ui;
 
+import java.util.LinkedHashMap;
+
 import org.eclipse.simpl.core.Application;
 import org.eclipse.simpl.core.Tuple;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
@@ -72,12 +74,10 @@ public class AdminConsoleUI {
 			compositeClass.createComposite(composite);
 			oldComposite = compositeClass.getComposite();
 
-//			if (compositeClass!=null && selectedTreeItem!=null){
-//				// Werte des Composites laden
-//				compositeClass.loadSettings(selectedTreeItem
-//						.getParentItem().getText(), selectedTreeItem
-//						.getText(), "lastSaved");
-//			}
+			if (compositeClass!=null && selectedTreeItem!=null){
+				// Werte des Composites laden
+				compositeClass.loadSettingsFromBuffer("lastSaved");
+			}
 			
 			composite.layout();
 			sShell.layout();
@@ -177,10 +177,7 @@ public class AdminConsoleUI {
 				// TODO Auto-generated method stub
 				// Werte des Composites laden
 				if (compositeClass != null && selectedTreeItem != null) {
-					//TODO Muss auch noch anderst geregelt werden
-					compositeClass.loadSettings(selectedTreeItem
-							.getParentItem().getText(), selectedTreeItem
-							.getText(), "lastSaved");
+					compositeClass.loadSettingsFromBuffer("lastSaved");
 				}
 			}
 		});
@@ -201,11 +198,7 @@ public class AdminConsoleUI {
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
 				// Werte des Composites speichern
-				if (compositeClass != null && selectedTreeItem != null) {
-					compositeClass.saveSettings(selectedTreeItem
-							.getParentItem().getText(), selectedTreeItem
-							.getText(), "lastSaved");
-				}
+				saveAllSettings();
 			}
 		});
 
@@ -287,5 +280,14 @@ public class AdminConsoleUI {
 			}
 		});
 
+	}
+	
+	public void saveAllSettings() {
+		LinkedHashMap<String, AAdminConsoleComposite> compClasses = Application.getInstance().getCompositeClasses();
+		for (String key : compClasses.keySet()) {
+			AAdminConsoleComposite compClass = compClasses.get(key);
+			compClass.saveSettings(compClass.getParentConsoleItem(), compClass.getConsoleItem(),
+					"lastSaved");
+		}
 	}
 }
