@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1240,6 +1240,142 @@ SIMPL DM Extension Activities
 
 \begin_layout Subsubsection
 SIMPL DAO
+\end_layout
+
+\begin_layout Standard
+Das Simpl Dao besteht aus der Implementierung der Interfaces aus dem Packet
+ org.apache.ode.bpel.dao die in den folgenden unterpunkten beschrieben werden.
+ Das Simpl-Dao übernimmt alle Eigenschaften der Ode internen Jpa-Implementierung
+ und erweitert diese um die Eigenschaft, Daten per SDO an den SIMPL-Core
+ senden zu können.
+ Das heißt, die Dao Daten werden auch weiterhin in der internen Apache Derby
+ Datenbank gespeichert und von dort gelesen.
+ Datentransfers an den Simpl-Core und damit verbundene beliebige Datenquellen,
+ können nur schreibend, jedoch nicht lesend erfolgen.
+\end_layout
+
+\begin_layout Paragraph
+ActivityRecoveryDao
+\end_layout
+
+\begin_layout Standard
+Wird ausgeführt, wenn eine Aktivität den 
+\begin_inset Quotes eld
+\end_inset
+
+recovery
+\begin_inset Quotes erd
+\end_inset
+
+ Status einnimmt.
+\end_layout
+
+\begin_layout Paragraph
+BpelDAOConnectionFactory
+\end_layout
+
+\begin_layout Standard
+Die Factory verwaltet und erstellt die DaoConnection zu den angegebenen
+ Datenquellen (standartmäßig der internen Derby Datenbank)
+\end_layout
+
+\begin_layout Paragraph
+BpelDAOConnection
+\end_layout
+
+\begin_layout Standard
+Stellt die Implementierung der Connection dar.
+ Hier werden unter anderem BPEL Events in das Dao eingefügt und der Nachrichten
+ austausch erstellt und verwaltet.
+\end_layout
+
+\begin_layout Paragraph*
+CorrelationSetDAO
+\end_layout
+
+\begin_layout Standard
+Dieses DAO representiert ein BPEL correlation set.
+\end_layout
+
+\begin_layout Paragraph
+FaultDAO
+\end_layout
+
+\begin_layout Standard
+Wird benutzt um auf Informationen über einen Fehler zuzugreifen, der wärend
+ einer Prozessausführung aufgetreten ist.
+\end_layout
+
+\begin_layout Paragraph
+MessageDAO
+\end_layout
+
+\begin_layout Standard
+Representiert eine Nachricht in der Datenbank.
+\end_layout
+
+\begin_layout Paragraph
+MessageExchangeDAO
+\end_layout
+
+\begin_layout Standard
+DAO für den Nachrichten austausch.
+\end_layout
+
+\begin_layout Paragraph
+MessageRouteDAO
+\end_layout
+
+\begin_layout Standard
+Das DAO representiert einen Nachrichten Anfrager, wie zum beispiel ein Pick
+ oder ein recive.
+\end_layout
+
+\begin_layout Paragraph
+PartnerLinkDAO
+\end_layout
+
+\begin_layout Standard
+Das DAO representiert einen Partnerlink.
+ Es enthällt informationen über die eigene Rolle die Rolle des Partners
+ und die Endpointreferenz.
+\end_layout
+
+\begin_layout Paragraph
+ProcessDAO
+\end_layout
+
+\begin_layout Standard
+Das DAO representiert einen laufenden Prozess.
+ Es enthällt die Prozess-Id, den Prozess-Typ, sowie die Prozessinstanzen.
+\end_layout
+
+\begin_layout Paragraph
+ProcessInstanceDAO
+\end_layout
+
+\begin_layout Standard
+Dieses DAO representiert eine Prozess-Instanz und enthällt alle Daten die
+ einer Instanz zugehörig sind.
+ Dazu zählen Events, Scopes, sowie wartende pick und recive Aktivitäten.
+\end_layout
+
+\begin_layout Paragraph
+ScopeDAO
+\end_layout
+
+\begin_layout Standard
+Dieses DAO representiert eine Scope-Instanz.
+ Es enthällt eine ansammlung von Correlation-Sets und XML-Variablen.
+\end_layout
+
+\begin_layout Paragraph
+XmlDataDAO
+\end_layout
+
+\begin_layout Standard
+Das DAO representiert XML-Daten.
+ Es wird dazu benutzt BPEL-Variablen zu modelieren.
 \end_layout
 
 \begin_layout Subsection
