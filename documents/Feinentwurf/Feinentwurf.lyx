@@ -102,16 +102,6 @@ filename "Deckblatt.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "DokStatus.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -1129,8 +1119,8 @@ ode
 \backslash
 WEB-INF
 \backslash
-servicejars) und wird dann beim Start von Apache Tomcat von Apache ODE als
- Web Service bereitgestellt.
+servicejars) und wird damit beim Start von Apache Tomcat von Apache ODE
+ als Web Service bereitgestellt.
 \end_layout
 
 \begin_layout Paragraph
@@ -1155,7 +1145,8 @@ status open
 \begin_layout Plain Layout
 Datenquellentyp als Parameter fehlt noch, oder? Später mit JNDI, Registry
  usw.
- wird er evtl nicht mehr benötigt.
+ wird er evtl.
+ nicht mehr benötigt.
 \end_layout
 
 \end_inset
