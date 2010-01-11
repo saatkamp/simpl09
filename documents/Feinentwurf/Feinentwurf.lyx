@@ -740,7 +740,7 @@ Zweck dieses Dokuments
 \end_layout
 
 \begin_layout Standard
-Der Feinentwurf beschreibt Details der Implementierung der Komponneten,
+Der Feinentwurf beschreibt Details der Implementierung der Komponenten,
  die im Grobentwurf 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -752,7 +752,7 @@ key "key-1"
  Die Komponenten werden ausführlich beschrieben und ihre Funktionalität
  durch statische und dynamische UML-Diagramme visualisiert.
  Der Feinentwurf bezieht sich im Gegensatz zum Grobentwurf nur auf die aktuelle
- Iteration und wird mit folgenden Iterationen vervollständigt.
+ Iteration und wird mit den folgenden Iterationen vervollständigt.
  Grobentwurf und Feinentwurf bilden zusammen den Gesamtentwurf des SIMPL
  Rahmenwerks.
 \end_layout
@@ -777,11 +777,74 @@ reference "sec:Komponenten"
 \begin_inset Quotes eld
 \end_inset
 
-Komponenten
+SIMPL Core
 \begin_inset Quotes erd
 \end_inset
 
- beschreibt die Realisierung der einzelnen Komponenten mit ihren Schnittstellen.
+ beschreibt die Implementierung des SIMPL Cores und seinen Web Services.
+ (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.1)
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Komponenten"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Apache ODE
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Implementierung der DM-Aktivitäten und das externe Auditing.
+ (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.2)
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Komponenten"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Eclipse Plug-Ins
+\begin_inset Quotes erd
+\end_inset
+
+beschreibt die Implementierung der Plug-Ins, die für das SIMPL Rahmenwerk
+ realisiert werden.
+ (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.3)
 \end_layout
 
 \begin_layout Itemize
@@ -800,7 +863,8 @@ Kommunikation
 \begin_inset Quotes erd
 \end_inset
 
- beschreibt die Kommunikation im SIMPL Rahmenwerk über diese Schnittstellen.
+ beschreibt die Kommunikation der Komponenten im SIMPL Rahmenwerk auf Funktionse
+bene.
 \end_layout
 
 \begin_layout Section
@@ -810,15 +874,6 @@ name "sec:Komponenten"
 
 \end_inset
 
-Komponenten
-\end_layout
-
-\begin_layout Standard
-In diesem Kapitel wird die Realisierung der einzelnen Komponenten im Detail
- beschrieben.
-\end_layout
-
-\begin_layout Subsection
 SIMPL Core
 \end_layout
 
@@ -874,7 +929,7 @@ SIMPL Core Klassendiagramm
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Paketstruktur
 \end_layout
 
@@ -883,7 +938,7 @@ Der SIMPL Core besitzt folgende Paketstruktur, die sich in einen Kernbereich,
  sowie Bereiche für die Dienste (Services) und Web Services aufteilt.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 org.simpl.core
 \end_layout
 
@@ -900,7 +955,7 @@ reference "sub:SIMPLCore"
  näher beschrieben wird.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 org.simpl.administration
 \end_layout
 
@@ -916,7 +971,7 @@ key "key-1"
  3.3.1).
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 org.simpl.storage
 \end_layout
 
@@ -931,7 +986,7 @@ key "key-1"
  3.3.5).
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 org.simpl.datasource
 \end_layout
 
@@ -947,7 +1002,7 @@ key "key-1"
  3.3.5).
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 org.simpl.datasource.plugins
 \end_layout
 
@@ -966,7 +1021,7 @@ reference "sub:Datasource-Plug-Ins"
  näher beschrieben.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 org.simpl.webservices
 \end_layout
 
@@ -977,39 +1032,7 @@ Hier befinden sich die Web Services des SIMPL Core, die den Zugriff von
  in Apache ODE deployt werden.
 \end_layout
 
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:SIMPLCore"
-
-\end_inset
-
-SIMPLCore
-\end_layout
-
-\begin_layout Standard
-Die SIMPLCore-Klasse bildet den zentralen Zugriffspunkt auf alle Dienste
- des SIMPL Cores für den Zugriff auf Klassenebene.
- Damit die Instanzen der Dienste nur einmal existieren und nicht bei jedem
- Zugriff erneut erstellt werden, ist die Klasse als Singleton (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-1"
-
-\end_inset
-
- Kapitel 3.3) ausgelegt.
- Diese Klasse wird von den Apache ODE Extension Activities (siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:SIMPL-DM-Extension"
-
-\end_inset
-
-) benutzt um DM-Aktivitäten auszuführen.
-\end_layout
-
-\begin_layout Subsubsection
+\begin_layout Subsection
 SIMPL Core Services
 \begin_inset Note Note
 status open
@@ -1039,7 +1062,40 @@ Storage Service
 Datasource Service
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPLCore"
+
+\end_inset
+
+SIMPLCore
+\end_layout
+
+\begin_layout Standard
+Die SIMPLCore-Klasse bildet den zentralen Zugriffspunkt auf alle Dienste
+ des SIMPL Cores für den Zugriff auf Klassenebene.
+ Damit die Instanzen der Dienste nur einmal existieren und nicht bei jedem
+ Zugriff erneut erstellt werden, ist die Klasse als Singleton (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.3) ausgelegt.
+ Diese Klasse wird von den Apache ODE Extension Activities (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-DM-Extension"
+
+\end_inset
+
+) benutzt um DM-Aktivitäten auszuführen, aber auch innerhalb des SIMPL Cores,
+ dort wo sich Dienste gegenseitig verwenden.
+\end_layout
+
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Datasource-Plug-Ins"
@@ -1092,7 +1148,7 @@ DatasourceServiceProvider
 -Methode der Java Reflection API erzeugt und ausgeliefert wird.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Web Services
 \end_layout
 
@@ -1147,6 +1203,7 @@ Datenquellentyp als Parameter fehlt noch, oder? Später mit JNDI, Registry
  usw.
  wird er evtl.
  nicht mehr benötigt.
+ Typ und Subtyp werden zusammengelegt
 \end_layout
 
 \end_inset
@@ -1155,7 +1212,7 @@ Datenquellentyp als Parameter fehlt noch, oder? Später mit JNDI, Registry
 \end_layout
 
 \begin_layout Subparagraph
-public DataObject queryData(String dsAddress, String statement)
+public DataObject queryData(String dsAddress, String statement, String dsType)
 \end_layout
 
 \begin_layout Subparagraph
@@ -1165,6 +1222,22 @@ public boolean defineData(String dsAddress, String statement)
 \begin_layout Subparagraph
 public boolean manipulateData(String dsAddress, String statement, DataObject
  data)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceTypes()
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceSubTypes(String datasourceType)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceLanguages(String datasourceSubType)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceMetaData(String dsAddress, String dsType)
 \end_layout
 
 \begin_layout Paragraph
@@ -1185,18 +1258,6 @@ public LinkedHashMap<String, String> loadSettings(String schema, String
  table, String settingName)
 \end_layout
 
-\begin_layout Subparagraph
-public List<String> getDatasourceTypes()
-\end_layout
-
-\begin_layout Subparagraph
-public List<String> getDatasourceSubTypes(String datasourceType)
-\end_layout
-
-\begin_layout Subparagraph
-public List<String> getDatasourceLanguages(String datasourceSubType)
-\end_layout
-
 \begin_layout Paragraph
 Storage Web Service
 \end_layout
@@ -1215,11 +1276,21 @@ public List<LinkedHashMap<String, String>> load(String serviceNS, String
  serviceName)
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Apache ODE
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Verweise auf den Grobentwurf fehlen noch.
 \end_layout
 
-\begin_layout Subsubsection
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:SIMPL-DM-Extension"
@@ -1317,7 +1388,7 @@ SIMPL DM Extension Activities
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 SIMPL Event System
 \end_layout
 
@@ -1380,7 +1451,7 @@ SIMPL Event System
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Ausführung einer SIMPL DM Extension Activity
 \end_layout
 
@@ -1492,8 +1563,19 @@ Ausführung einer SIMPL DM Extension Activity
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 SIMPL DAO
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Rechtschreibung! Sinn und Zweck des DAO als Einleitung fehlt noch.
+ (am besten mit Verweis auf Grobentwurf)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1632,30 +1714,30 @@ Das DAO representiert XML-Daten.
  Es wird dazu benutzt BPEL-Variablen zu modelieren.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Eclipse
-\end_layout
-
-\begin_layout Subsubsection
-BPEL DM Plug-In
-\end_layout
-
-\begin_layout Subsubsection
-SIMPL Core Plug-In
-\end_layout
-
-\begin_layout Subsubsection
-SIMPL Core Client
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-wsimport, extra Plug-In für Eclipse,...
+Verweise auf den Grobentwurf nicht vergessen.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+BPEL DM Plug-In
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core Plug-In
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core Client
 \end_layout
 
 \begin_layout Section
@@ -1744,7 +1826,7 @@ Kommunikation im SIMPL Rahmenwerk
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Speicherung von Einstellungen über die Adminkonsole
 \begin_inset Note Note
 status open
