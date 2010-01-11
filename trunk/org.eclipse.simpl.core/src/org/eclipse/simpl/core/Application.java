@@ -1,18 +1,19 @@
 package org.eclipse.simpl.core;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
-import org.eclipse.simpl.core.extensions.IAdminConsoleComposite;
 
 public class Application {
 
 	private static Application instance = null;
 
 	private List<IConfigurationElement> nodes = new ArrayList<IConfigurationElement>();
+	private LinkedHashMap<String, AAdminConsoleComposite> compositeClasses = new LinkedHashMap<String, AAdminConsoleComposite>();
 
 	// This must be the ID from your extension point
 	private static final String AC_ITEM_ID = "org.eclipse.simpl.core.adminConsoleItem";
@@ -51,6 +52,9 @@ public class Application {
 			nodes.addAll(childs);
 			childs.clear();
 		}
+		
+		//Einmaliges Laden aller zur Verfügung stehenden CompositeClasses
+		
 	}
 
 	public List<Tuple> getTreeItems() {
