@@ -1121,47 +1121,47 @@ reference "fig:Sequenzdiagramm-des-AdministrationServices"
 \end_inset
 
  zeigt die Verwendung und die Funktionalität des AdministrationService.
+ Über die getInstance()-Methode erhält man eine Instanz des AdministrationServic
+es mit der man dessen Funktionen aufrufen kann.
+ Mit der loadSettings()-Methode können Einstellungen aus der Datenbank geladen
+ werden, dafür wird intern eine einfache Datenbankabfrage genutzt.
+ Zur Identifizierung verschiedener Einstellungen, wie z.B.
+ Standard-Einstellungen und zuletzt gespeicherten Einstellungen, besitzt
+ jede Einstellung eine eindeutige Id.
+ So kann später die Admin-Konsole um das Laden und Speichern von benutzerspezifi
+schen Preset-Einstellungen ergänzt werden.
  
 \end_layout
 
 \begin_layout Standard
-Wenn die Admin-Konsole das Administration Service benutzen moechte, um die
- Einstellungen der Admin-Konsole zu verwalten, muss zuerst ein Administration
- Service Objekt erstellen, und durch die getInstance() Methode ein Administratio
-n Service Instance zu erhalten, dann kann die Methoden saveSettings() und
- loadSettings() mit Administration Service benutzt werden, um die Funktionen
- zu realisieren.
-\end_layout
-
-\begin_layout Standard
-Wenn die Admin-Konsole irgendeine Einstellung durch den Administration Service
- speichern moechte, muss die schemaname, tablename, und settingName als
- String Data die settings als List<LinkedHashMap<String, String>> durch
- Parameter eingeben.
- Nachdem die Methode saveSettings() terminiert, gibt eine boolean value
- zurueck, um die Status des Verhaltens zu reporten.
- Wenn die Admin-Konsole eine Einstellung aufrufen moechte, muss die schema,
- table und settingName als String Data durch Parameter der Methode loadSettings(
-) eingeben.
- Und eine List<LinkedHashMap<String, String>> Objekt wird zurueckgegeben.
- Wenn die Methoden saveSettings() und loadSettings() ueber den Administration
- Service die Einstellungen speichern und laden moechte, muss die zuerst
- durch die Private Methode getConnection() eine Connection mit der Datenbank
- herstellen, spaeter haengen die beiden Methode von Private Methode getStatement
-() ab, um die gewuenschte Datenbankopration zu erhalten.
- Nachdem die Methode fertig verhaltet, wird die Methode die Operationsatz
- von Datenbank als eine String Objekt zurueckgeben.
- Wobei die Schema und Table sowie settingName als String Data settings als
- List<LinkedHashMap<String, String>> durch Parametern eingegeben werden.
- Hier ist die erste Element von LinkedHashMap<> Objekt als Primarykey gestellt.
- Es gibt noch Methoden createSchemaIfItDoesntExistYet() und createTableIfItDoesn
-tExistYet(), saveSettings() und loadSettings() benutzen die Beiden, um zu
- bestaetigen, ob es die Schema oder Table in der Datenbank vorhandenen ist,
- wenn nein, dann herstellen, wenn ja, dann benutzt die vorhandenen Schema
- und Table.
- Es gibt auch die Methode settingsAlreadyExist(), der ist zustaendig fuer
- Methode getStatement(), dafuer kann getStatement() wissen, soll Operation
- fuer „updaten“ oder „insert“ sein.
+Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole,
+ da hier immer Ober- und Unterpunkte zusammengehören, wurde auf der Datenbank
+ diese Beziehungen durch die Strukturierung mit Schemata und Tabellen umgesetzt.
+ So gibt es für jeden Oberpunkt, wie z.B.
+ 
+\emph on
+Auditing
+\emph default
+ ein gleichnamiges Schema und für jeden Unterpunkt eines Oberpunktes, wie
+ z.B.
+ 
+\emph on
+General
+\emph default
+ eine gleichnamige Tabelle im Schema des Oberpunkts.
+ Daraus ergibt sich der genaue Pfad einer, in der Datenbank gespeicherten,
+ Einstellung aus der Auswahl in der Admin-Konsole.
+ Mit der saveSettings()-Methode können Einstellungen in einer entsprechenden
+ Tabelle eines Schemas gespeichert werden.
+ Dazu wird zuerst überprüft, ob das zu den Einstellungen gehörige Schema
+ bereits existiert oder noch erzeugt werden muss und anschließend, ob die
+ Tabelle bereits existiert oder noch erzeugt werden muss.
+ Die Tabelle wird dabei direkt aus den übergebenen Einstellungen automatisch
+ erzeugt, indem die Einstellungsnamen als Spaltennamen verwendet werden.
+ Wenn nun Schema und Tabelle vorhanden sind wird überprüft, ob die zu speichernd
+e Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss
+ oder ob die Einstellung neu angelegt, also eine neue Zeile eingefügt werden
+ muss.
 \end_layout
 
 \begin_layout Subsubsection*
