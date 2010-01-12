@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1880,13 +1880,27 @@ Rechtschreibung! Sinn und Zweck des DAO als Einleitung fehlt noch.
 Das SIMPL Data Access Object (DAO) besteht aus der Implementierung der Interface
 s aus dem Packet org.apache.ode.bpel.dao die in den folgenden Unterpunkten beschrieb
 en werden.
- Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
+ Das DAO wird dafür verwendet, wichtige Daten der Prozessausführung aufzuzeichne
+n und persistent zu speichern.
+ (Siehe hierfür 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.2.2)
+\end_layout
+
+\begin_layout Standard
+Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
  API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
  per Service Data Object (SDO) an den SIMPL Core senden zu können.
  Das heißt, die DAO Daten werden auch weiterhin in der internen Apache Derby
  Datenbank gespeichert und von dort gelesen.
  Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
  können nur schreibend, jedoch nicht lesend erfolgen.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
