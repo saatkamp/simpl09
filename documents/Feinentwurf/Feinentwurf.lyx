@@ -769,7 +769,7 @@ Der Feinentwurf gliedert sich in die folgenden Kapitel.
 Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Komponenten"
+reference "sec:SIMPLCore"
 
 \end_inset
 
@@ -796,7 +796,7 @@ key "key-1"
 Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Komponenten"
+reference "sec:Apache-ODE"
 
 \end_inset
 
@@ -823,7 +823,7 @@ key "key-1"
 Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Komponenten"
+reference "sec:Eclipse"
 
 \end_inset
 
@@ -835,7 +835,7 @@ Eclipse Plug-Ins
 \begin_inset Quotes erd
 \end_inset
 
-beschreibt die Implementierung der Plug-Ins, die für das SIMPL Rahmenwerk
+ beschreibt die Implementierung der Plug-Ins, die für das SIMPL Rahmenwerk
  realisiert werden.
  (siehe
 \begin_inset CommandInset citation
@@ -870,7 +870,7 @@ bene.
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Komponenten"
+name "sec:SIMPLCore"
 
 \end_inset
 
@@ -1050,15 +1050,176 @@ Beschreibung der Dienste
 In diesem Abschnitt werden die Dienste des SIMPL Cores beschrieben.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection*
 Administration Service
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Standard
+Der AdministrationService ist für die Verwaltung der Einstellungen der Admin-Kon
+sole des SIMPL Core Eclipse Plug-Ins zuständig.
+ Die Einstellungen der Admin-Konsole werden dabei direkt über das SIMPL
+ Core Client Plug-In an den AdministrationService geschickt oder von diesem
+ angefordert.
+ Die auf diese Weise zentral im SIMPL Core hinterlegten Einstellungen können
+ dann bei Bedarf direkt von Services, die diese Informationen benötigen,
+ ausgelesen werden.
+ Zur persistenten Speicherung der Einstellungen und weiterer Daten wird
+ eine eingebettete Apache Derby (Embedded Derby) Datenbank verwendet, die
+ vom gesamten SIMPL Core genutzt wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/AdmininistrationServiceSequence.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequenzdiagramm-des-AdministrationServices"
+
+\end_inset
+
+Sequenzdiagramm des AdministrationServices
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequenzdiagramm-des-AdministrationServices"
+
+\end_inset
+
+ zeigt die Verwendung und die Funktionalität des AdministrationService.
+ 
+\end_layout
+
+\begin_layout Standard
+Wenn die Admin-Konsole das Administration Service benutzen moechte, um die
+ Einstellungen der Admin-Konsole zu verwalten, muss zuerst ein Administration
+ Service Objekt erstellen, und durch die getInstance() Methode ein Administratio
+n Service Instance zu erhalten, dann kann die Methoden saveSettings() und
+ loadSettings() mit Administration Service benutzt werden, um die Funktionen
+ zu realisieren.
+\end_layout
+
+\begin_layout Standard
+Wenn die Admin-Konsole irgendeine Einstellung durch den Administration Service
+ speichern moechte, muss die schemaname, tablename, und settingName als
+ String Data die settings als List<LinkedHashMap<String, String>> durch
+ Parameter eingeben.
+ Nachdem die Methode saveSettings() terminiert, gibt eine boolean value
+ zurueck, um die Status des Verhaltens zu reporten.
+ Wenn die Admin-Konsole eine Einstellung aufrufen moechte, muss die schema,
+ table und settingName als String Data durch Parameter der Methode loadSettings(
+) eingeben.
+ Und eine List<LinkedHashMap<String, String>> Objekt wird zurueckgegeben.
+ Wenn die Methoden saveSettings() und loadSettings() ueber den Administration
+ Service die Einstellungen speichern und laden moechte, muss die zuerst
+ durch die Private Methode getConnection() eine Connection mit der Datenbank
+ herstellen, spaeter haengen die beiden Methode von Private Methode getStatement
+() ab, um die gewuenschte Datenbankopration zu erhalten.
+ Nachdem die Methode fertig verhaltet, wird die Methode die Operationsatz
+ von Datenbank als eine String Objekt zurueckgeben.
+ Wobei die Schema und Table sowie settingName als String Data settings als
+ List<LinkedHashMap<String, String>> durch Parametern eingegeben werden.
+ Hier ist die erste Element von LinkedHashMap<> Objekt als Primarykey gestellt.
+ Es gibt noch Methoden createSchemaIfItDoesntExistYet() und createTableIfItDoesn
+tExistYet(), saveSettings() und loadSettings() benutzen die Beiden, um zu
+ bestaetigen, ob es die Schema oder Table in der Datenbank vorhandenen ist,
+ wenn nein, dann herstellen, wenn ja, dann benutzt die vorhandenen Schema
+ und Table.
+ Es gibt auch die Methode settingsAlreadyExist(), der ist zustaendig fuer
+ Methode getStatement(), dafuer kann getStatement() wissen, soll Operation
+ fuer „updaten“ oder „insert“ sein.
+\end_layout
+
+\begin_layout Subsubsection*
 Storage Service
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Standard
+Der Storage Sevice ist für Daten eines beliebigen Services des SIMPL Cores
+ zustaendig.
+ Der Storage Service verwaltet in einer embedded Datenbank alle Daten, die
+ von dem Service des SIMPL Core geleitet.
+ Und das Service des SIMPL Core kann später die Daten wieder auslesen.
+\end_layout
+
+\begin_layout Standard
+Das Storage Service verhaltet aenliche wie Administration Service, ein beliebige
+r Service des SIMPL Core benutzt die Methoden save() und load() der Storage
+ Service Objekt, um die Data zu speichern und wieder auszulesen, muessen
+ zuerst durch Methode getInstance() eine Instance erhalten.
+\end_layout
+
+\begin_layout Standard
+Das Storage Service speichert die Data durch die Parametern serviceNS, serviceNa
+me, und data als Referenzen, wobei serviceNS als schemaname serviceName
+ als tablename mit String Data sind.
+ Data ist die Dateien, was man speichern moechte, durch eine List<LinkedHashMap<
+String, String>> Objekt zu organisieren.
+ Nachdem das Service verhaltet, wird die eine boolean Value zurueckgeben,
+ um mitzuteilen, ob der Verhalten richtig durchgefuehrt wird.
+\end_layout
+
+\begin_layout Standard
+Wenn das andere Service die Data durch die Storage Service auslesen moechte,
+ braucht nur die serviceNS und die serviceName als String Data als die Parameter
+n von der Methode load() eingeben.
+ Nachdem das Service durchgefuehrt wird, die Data, die man gewuenscht werden,
+ werden als eine List<LinkedHashMap<String, String>> Objekte zurueckgegeben.
+ Wenn die Methoden saveSettings() und loadSettings() ueber den Storage Service
+ die Data speichern und laden moechte, muss die zuerst durch die Private
+ Methode getConnection() eine Connection mit der Datenbank herstellen, spaeter
+ haengen die beiden Methode von Private Methode getStatement() ab, um die
+ gewuenschte Datenbankopration zu erhalten.
+ Nachdem die Methode fertig verhaltet, wird die Methode die Operationsatz
+ von Datenbank als eine String Objekt zurueckgeben.
+ Wobei die Schema und Table sowie settingName als String Data settings als
+ List<LinkedHashMap<String, String>> durch Parametern eingegeben werden.
+ Hier ist die erste Element von LinkedHashMap<> Objekt als Primarykey gestellt.
+ Es gibt noch Methoden createSchemaIfItDoesntExistYet() und createTableIfItDoesn
+tExistYet(), saveSettings() und loadSettings() benutzen die Beiden, um zu
+ bestaetigen, ob es die Schema oder Table in der Datenbank vorhandenen ist,
+ wenn nein, dann herstellen, wenn ja, dann benutzt die vorhandenen Schema
+ und Table.
+ Es gibt auch die Methode settingsAlreadyExist(), der ist zustaendig fuer
+ Methode getStatement(), dafuer kann getStatement() wissen, soll Operation
+ fuer „updaten“ oder „insert“ sein.
+\end_layout
+
+\begin_layout Subsubsection*
 Datasource Service
 \end_layout
 
@@ -1277,6 +1438,12 @@ public List<LinkedHashMap<String, String>> load(String serviceNS, String
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Apache-ODE"
+
+\end_inset
+
 Apache ODE
 \begin_inset Note Note
 status open
@@ -1715,6 +1882,12 @@ Das DAO representiert XML-Daten.
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Eclipse"
+
+\end_inset
+
 Eclipse
 \begin_inset Note Note
 status open
@@ -1827,7 +2000,7 @@ Kommunikation im SIMPL Rahmenwerk
 \end_layout
 
 \begin_layout Subsection
-Speicherung von Einstellungen über die Adminkonsole
+Speicherung von Einstellungen über die Admin-Konsole
 \begin_inset Note Note
 status open
 
