@@ -887,6 +887,11 @@ reference "fig:SIMPL-Core-Klassendiagramm"
 
  zeigt den Aufbau des SIMPL Cores, der in den folgenden Abschnitten beschrieben
  wird.
+ Als Services werden allgemein die Dienste des SIMPL Cores bezeichnet, manche
+ dieser Dienste werden nach Außen über Web Services verfügbar gemacht und
+ werden, wenn diese explizit gemeint sind, auch als solche bezeichnet wie
+ z.B.
+ Administration Web Service.
 \end_layout
 
 \begin_layout Standard
@@ -1034,16 +1039,6 @@ Hier befinden sich die Web Services des SIMPL Core, die den Zugriff von
 
 \begin_layout Subsection
 SIMPL Core Services
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Beschreibung der Dienste
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1057,12 +1052,11 @@ Administration Service
 \begin_layout Standard
 Der Administration Service ist für die Verwaltung der Einstellungen der
  Admin-Konsole des SIMPL Core Eclipse Plug-Ins zuständig.
- Die Einstellungen der Admin-Konsole werden dabei direkt über das SIMPL
- Core Client Plug-In an den Administration Service geschickt oder von diesem
- angefordert.
+ Die Einstellungen der Admin-Konsole werden dabei über das SIMPL Core Client
+ Plug-In an den Administration Service übermittelt oder angefordert.
  Die auf diese Weise zentral im SIMPL Core hinterlegten Einstellungen können
- dann bei Bedarf direkt von Services, die diese Informationen benötigen,
- ausgelesen werden.
+ dann bei Bedarf direkt von anderen SIMPL Core Diensten, die diese Informationen
+ benötigen, ausgelesen werden.
  Zur persistenten Speicherung der Einstellungen und weiterer Daten wird
  eine eingebettete Apache Derby (Embedded Derby) Datenbank verwendet, die
  vom gesamten SIMPL Core genutzt wird.
@@ -1103,10 +1097,6 @@ Sequenzdiagramm des Administration Services
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1121,8 +1111,6 @@ reference "fig:Sequenzdiagramm-des-AdministrationServices"
 \end_inset
 
  zeigt die Verwendung und die Funktionalität des Administration Service.
- Über die getInstance()-Methode erhält man eine Instanz des Administration
- Services mit der man dessen Funktionen aufrufen kann.
  Mit der loadSettings()-Methode können Einstellungen aus der Datenbank geladen
  werden, dafür wird intern eine einfache Datenbankabfrage genutzt.
  Die Einstellungen werden dabei als HashMap zurückgeliefert und auch so
@@ -1249,8 +1237,6 @@ reference "fig:Sequenzdiagramm-des-StorageServices"
 \end_inset
 
  zeigt die Verwendung und die Funktionalität des Storage Services.
- Über die getInstance()-Methode erhält man eine Instanz des Storage Services
- mit der man dessen Funktionen aufrufen kann.
  Mit der load()-Methode können wieder Daten aus der Datenbank geladen werden
  und die save()-Methode speichert alle Daten eines Services nach der selben
  Vorgehensweise wie die saveSettings()-Methode des Administration Services.
@@ -1258,6 +1244,24 @@ reference "fig:Sequenzdiagramm-des-StorageServices"
 
 \begin_layout Subsubsection*
 Datasource Service
+\end_layout
+
+\begin_layout Standard
+Den Datasource Service gibt es in verschiedenen Ausprägungen, die zu den
+ verschiedenen Typen von Datenquellen über ein Plug-In System bereitgestellt
+ werden.
+ Die Instanz eines Datasource Service kann nur über den Datasource Service
+ Provider angefordert werden, der für die Verwaltung der Plug-Ins zuständig
+ ist.
+ Eine genaue Beschreibung des Plug-In Systems folgt in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+.
+ Folgende Funktionen werden vom Datasource Service bereitgestellt.
 \end_layout
 
 \begin_layout Subsection
@@ -1375,6 +1379,17 @@ WEB-INF
 \backslash
 servicejars) und wird damit beim Start von Apache Tomcat von Apache ODE
  als Web Service bereitgestellt.
+\end_layout
+
+\begin_layout Standard
+Komplexe Objekte wie z.B.
+ HashMaps, die intern von den SIMPL Core Diensten zur Ausführung benötigt
+ werden, werden als String serialisiert an die Web Services übergeben und
+ in der Form auch als Rückgabeparameter empfangen.
+ Bei der Deserialisierung, werden diese Objekte wiederhergestellt und können
+ als solche verwendet werden.
+ Eine Ausnahme bilden die SDO Objekte, die bereits über eine XML Darstellung
+ verfügen und in dieser direkt übermittelt werden können.
 \end_layout
 
 \begin_layout Paragraph
@@ -2021,77 +2036,6 @@ name "fig:Kommunikation-im-SIMPL"
 \end_inset
 
 Kommunikation im SIMPL Rahmenwerk
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Speicherung von Einstellungen über die Admin-Konsole
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Beschreibung der Abbildung
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Speicherung-von-Einstellungen"
-
-\end_inset
-
- zeigt den Ablauf bei der Speicherung von Einstellungen der Admin-Konsole
- und das Zusammenspiel der beteiligten Komponenten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/AdminConsoleSequence.png
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Speicherung-von-Einstellungen"
-
-\end_inset
-
-Speicherung von Einstellungen über die Admin-Konsole
 \end_layout
 
 \end_inset
