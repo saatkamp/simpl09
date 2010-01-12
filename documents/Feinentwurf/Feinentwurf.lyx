@@ -2154,24 +2154,9 @@ BPEL DM Plug-In
 
 \begin_layout Standard
 Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
- Designer Plug-Ins um die DM-Aktivitäten erweitert.
- Dieses Plugin besteht aus dem dem Paket 
-\begin_inset Quotes eld
-\end_inset
-
-DM Activities
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-StatementEditors & DMPropertiesSections
-\begin_inset Quotes erd
-\end_inset
-
-.
+ Designer Plug-Ins um die DM-Aktivitäten ergänzt.
+ Im folgenden Diagramm sind die Komponenten und Klassen des kompletten Plug-Ins
+ dargestellt :
 \end_layout
 
 \begin_layout Standard
@@ -2183,25 +2168,114 @@ StatementEditors & DMPropertiesSections
 
 \end_layout
 
-\begin_layout Standard
-Im folgenden werden die Klassen und die wichtigsten Funktionen näher erläutert
- :
+\begin_layout Subsubsection
+BPEL DM Plug-In User-Interface
 \end_layout
 
 \begin_layout Standard
-..
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In UI.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-..
+Das Paket org.eclipse.bpel.simpl.ui ist für die Darstellung des zugrundeliegenden
+ Datenmodells zuständig.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.adapters
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.extensions
 \end_layout
 
 \begin_layout Standard
-..
+Die Klasse beinhaltet ein Interface für die Statement Editoren für Erweiterungen.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.factories
 \end_layout
 
 \begin_layout Standard
-..
+Die beiden Klassen erzeugen die Adapter Objekte und normale Objekte.
+ Die Anbindung erfolgt über den Extension Point org.eclipse.bpel.ui.uiObjectFactorie
+s.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.palette
+\end_layout
+
+\begin_layout Standard
+Beinhaltet die grafische Palette der Aktivitäten für den BPEL Designer..
+ Anbindung erfolgt über den Extension Point org.eclipse.bpel.common.ui.paletteAdditio
+ns.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.properties
+\end_layout
+
+\begin_layout Standard
+Beinhaltet die Anzeige der Eigenschaften der jeweiligen DM Aktivitäten.
+ Anbindung erfolgt über den Extension Point org.eclipse.ui.views.properties.tabbed.pro
+pertySections.
+\end_layout
+
+\begin_layout Subsubsection
+BPEL DM Plug-In Modell
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In Model.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Paket org.eclipse.bpel.simpl.model beinhaltet das Datenmodell.
+ An oberster Stelle steht die DataManagementActivity-Klasse ( Interface)
+ welche mit den Variablen dsType, dsKind, dsAddress und dsStatement die
+ gemeinsame Schnittmenge der Aktivitäten bildet.
+ Diese werden an die Kindklassen wie z.B.
+ QueryActivity ( Interface) vererbt und um schnittstellenspezifische Eigenschaft
+en erweitert.
+ Die konkrete Realisierung erfolgt dann im Paket org.eclipse.bpel.simpl.model
+ z.B.
+ in der Klasse QueryActivityImpl.
+ Im Paket org.eclipse.bpel.simpl.model.util befinden sich Zubehörklassen wie
+ Serializer und Deserializer.
+\end_layout
+
+\begin_layout Subsubsection
+BPEL DM Plug-In Extension Modell
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In Extensions.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Paket org.eclipse.bpel.simpl.ui.sql steht beispielhaft für eine Erweiterung
+ um um eine Benutzeroberfläche für die Anfragesprache SQL.
+ Enthalten ist ein Aktivator sowie die Auswahlmöglichkeiten für den Statement
+ Editor org.eclipse.bpel.simpl.ui.extensions.AStatementEditor.
+ Jede Erweiterung kann am Extension Point org.eclipse.bpel.simpl.ui.queryLanguage
+ angeschlossen werden.
 \end_layout
 
 \begin_layout Subsection
