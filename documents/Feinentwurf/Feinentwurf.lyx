@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1588,6 +1588,15 @@ Verweise auf den Grobentwurf fehlen noch.
 
 \end_layout
 
+\begin_layout Standard
+In diesem Kapitel wird auf die Erweiterungen die an Apache ODE vorgenommen
+ werden eingegangen.
+ Dies beinhaltet die SIMPL DM Extension Activities, das SIMPL Event System,
+ sowie das SIMPL DAO.
+ Es wird auf die verschiedenen Funktionalitäten als auch auf deren Implementieru
+ng eingegangen.
+\end_layout
+
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -1607,10 +1616,11 @@ reference "fig:SIMPL-DM-Extension"
 \end_inset
 
 ) haben als Hauptklasse die Klasse SIMPLActivity, welche verschiedene Funktional
-itäten für alle weiteren Events anbietet.
+itäten für alle weiteren Extension Activities anbietet.
  Die Extension Activities nutzen zur Ausführung der verschiedenen Data-Managemen
-t-Operationen den Datasource Service des SIMPL Cores.Die Implementierung
- der Extension Activities wird folgendermaßen umgesetzt: 
+t-Operationen den Datasource Service des SIMPL Cores.
+ Die Implementierung der Extension Activities wird folgendermaßen umgesetzt:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1639,8 +1649,10 @@ tes Modell des BPEL Prozesses zu erzeugen.
 
 \begin_layout Standard
 Weiterhin ist es notwendig ein eigenes ExtensionBundle zu implementieren.
- Dies wird erreicht durch das ableiten einer neuen Klassen von „AbstractExtensio
-nBundle“.
+ Das ExtensionBundle ist notwendig, damit ODE weiß aus welchen Extension
+ Activities besteht und sie zur Laufzeit ausgeführt werden können.
+ Die Implementierung wird erreicht durch das Ableiten einer neuen Klassen
+ von „AbstractExtensionBundle“.
  In dieser Klasse müssen nun in der Methode „registerExtensionActivity“
  alle Klassen die für die Extension Activity von Bedeutung sind mit Hilfe
  von „registerExtensionOperation“ bei ODE registriert werden.
@@ -1692,7 +1704,7 @@ SIMPL Event System
 
 \begin_layout Standard
 Für die SIMPL Extension Activities wird eine Reihe von neuen Events eingeführt.
- Die Eventhierarchie ist in Abbildung 
+ Die Klassenhierarchie der Events ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL-Event-System"
@@ -1702,11 +1714,14 @@ reference "fig:SIMPL-Event-System"
  zu sehen.
  Die neuen Events unterteilen sich in DMEvents und ConnectionEvents, welche
  beide als Hauptklasse die Klasse SIMPLEvent haben.
- SIPMPLEvent ist wiederum von Scope Event abgeleitet.
+ SIMPLEvent ist wiederum von Scope Event abgeleitet.
+ DMEvents sind dabei für alle Ereignisse die während der Ausführung einer
+ DM-Aktivität zuständig, während ConnectionEvents Rückmeldung über den Status
+ der Verbindung geben.
  Die neuen Events werden dadurch als Scope Events in die bestehende Event
  Hierarchie von ODE eingegliedert.
- Dies erlaubt es uns diese direkt innerhalb der Extension Acitvities zu
- nutzen und aufzurufen.
+ Dies erlaubt es uns diese direkt innerhalb der ExtensionAcitvities zu nutzen
+ und aufzurufen.
 \end_layout
 
 \begin_layout Standard
