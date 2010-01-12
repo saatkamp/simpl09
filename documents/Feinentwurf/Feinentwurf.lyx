@@ -2053,8 +2053,10 @@ Eclipse
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration1/EclipseStruktur.png
+	width 100text%
 
 \end_inset
 
@@ -2175,8 +2177,10 @@ Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Overview.png
+	width 100text%
 
 \end_inset
 
@@ -2188,8 +2192,10 @@ BPEL DM Plug-In User-Interface
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In UI.png
+	width 100text%
 
 \end_inset
 
@@ -2248,8 +2254,10 @@ BPEL DM Plug-In Modell
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Model.png
+	width 100text%
 
 \end_inset
 
@@ -2276,8 +2284,10 @@ BPEL DM Plug-In Extension Modell
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Extensions.png
+	width 100text%
 
 \end_inset
 
