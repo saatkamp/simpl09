@@ -523,7 +523,7 @@ zoabifs
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erstellung des Dokuments.
+Erstellung des Dokuments
 \end_layout
 
 \end_inset
@@ -885,12 +885,13 @@ reference "fig:SIMPL-Core-Klassendiagramm"
 
 \end_inset
 
- zeigt den Aufbau des SIMPL Cores, der in den folgenden Abschnitten beschrieben
- wird.
- Als Services werden allgemein die Dienste des SIMPL Cores bezeichnet, manche
- dieser Dienste werden nach Außen über Web Services verfügbar gemacht und
- werden, wenn diese explizit gemeint sind, auch als solche bezeichnet wie
- z.B.
+ zeigt den Aufbau des SIMPL Cores mit Paketstruktur, Klassen und Interfaces,
+ sowie deren Zusammenhänge über Verbindungspfeile, die in den folgenden
+ Abschnitten beschrieben werden.
+ Als Services werden dabei allgemein die Dienste des SIMPL Cores bezeichnet.
+ Manche dieser Dienste werden nach Außen über Web Services verfügbar gemacht
+ und werden, wenn diese explizit gemeint sind, auch als solche bezeichnet
+ wie z.B.
  Administration Web Service.
 \end_layout
 
@@ -1042,7 +1043,8 @@ SIMPL Core Services
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt werden die Dienste des SIMPL Cores beschrieben.
+In diesem Abschnitt werden die Dienste des SIMPL Cores und ihre Funktionsweise
+ beschrieben.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1215,7 +1217,7 @@ name "fig:Sequenzdiagramm-des-StorageServices"
 
 \end_inset
 
-Sequenzdiagramm des StorageServices
+Sequenzdiagramm des Storage Services
 \end_layout
 
 \end_inset
@@ -1261,7 +1263,59 @@ reference "sub:Datasource-Plug-Ins"
 \end_inset
 
 .
- Folgende Funktionen werden vom Datasource Service bereitgestellt.
+ Folgende privaten (private) und öffentlichen (public) Funktionen werden
+ von einem Datasource Service realisiert:
+\end_layout
+
+\begin_layout Paragraph
+private openConnection()
+\end_layout
+
+\begin_layout Standard
+Öffnet eine Verbindung zu einer Datenquelle und liefert ein Verbindungsobjekt
+ über das mit der Datenquelle kommuniziert werden kann.
+ 
+\end_layout
+
+\begin_layout Paragraph
+private closeConnection()
+\end_layout
+
+\begin_layout Standard
+Schließt die Verbindung zu einer Datenquelle und bestätigt den Verbindungsabbau
+ mit einem Rückgabewert.
+\end_layout
+
+\begin_layout Paragraph
+public queryData()
+\end_layout
+
+\begin_layout Standard
+Ermöglicht die Anforderung von Daten von einer Datenquelle durch ein Statement
+ der entsprechenden Anfragesprache.
+ Die Rückgabe der Daten erfolgt als SDO.
+\end_layout
+
+\begin_layout Paragraph
+public defineData()
+\end_layout
+
+\begin_layout Standard
+Wird verwendet um Datenstrukturen über ein Statement zu definieren wie z.B.
+ das Erstellen von Tabellen in einer Datenbank und liefert eine Bestätigung
+ als Rückgabewert.
+\end_layout
+
+\begin_layout Paragraph
+public manipulateData()
+\end_layout
+
+\begin_layout Standard
+Wird verwendet um bestehende Daten zu manipulieren bzw.
+ zu aktualisieren.
+ Die Funktion erhält Daten in Form eines SDO und ein Statement mit dem die
+ Verwendung der Daten beschrieben wird.
+ Der Erfolg der Operation wird mit einem Rückgabewert bestätigt.
 \end_layout
 
 \begin_layout Subsection
@@ -1294,7 +1348,7 @@ reference "sub:SIMPL-DM-Extension"
 \end_inset
 
 ) benutzt um DM-Aktivitäten auszuführen, aber auch innerhalb des SIMPL Cores,
- dort wo sich Dienste gegenseitig verwenden.
+ wenn sich Dienste gegenseitig verwenden.
 \end_layout
 
 \begin_layout Subsection
@@ -1343,8 +1397,8 @@ DatasourceServiceProvider
 \end_layout
 
 \begin_layout Standard
-Über den DatasourceServiceProvider kann die Instanz eines DatasourceService
- angefordert werden.
+Über den DatasourceServiceProvider kann mit der Methode getInstance() die
+ Instanz eines DatasourceService angefordert werden.
  Dies geschieht über eine eindeutige Typkennzeichnung (z.B.
  RDB, XML, ...), mit der die entsprechende Instanz der Klasse über die Class.forName
 -Methode der Java Reflection API erzeugt und ausgeliefert wird.
@@ -1386,55 +1440,28 @@ Komplexe Objekte wie z.B.
  HashMaps, die intern von den SIMPL Core Diensten zur Ausführung benötigt
  werden, werden als String serialisiert an die Web Services übergeben und
  in der Form auch als Rückgabeparameter empfangen.
- Bei der Deserialisierung, werden diese Objekte wiederhergestellt und können
+ Bei der Deserialisierung, werden die Objekte wiederhergestellt und können
  als solche verwendet werden.
  Eine Ausnahme bilden die SDO Objekte, die bereits über eine XML Darstellung
  verfügen und in dieser direkt übermittelt werden können.
 \end_layout
 
 \begin_layout Paragraph
-Datasource Web Service
+Datasource Web Service (WSDatasource)
 \begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Beschreibung der Funktionen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Datasource Web Service...
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Datenquellentyp als Parameter fehlt noch, oder? Später mit JNDI, Registry
- usw.
- wird er evtl.
- nicht mehr benötigt.
- Typ und Subtyp werden zusammengelegt
-\end_layout
-
-\end_inset
-
-
-\end_layout
+status collapsed
 
 \begin_layout Subparagraph
 public DataObject queryData(String dsAddress, String statement, String dsType)
 \end_layout
 
 \begin_layout Subparagraph
-public boolean defineData(String dsAddress, String statement)
+public boolean defineData(String dsAddress, String statement, String dsType)
 \end_layout
 
 \begin_layout Subparagraph
 public boolean manipulateData(String dsAddress, String statement, DataObject
- data)
+ data, String dsType)
 \end_layout
 
 \begin_layout Subparagraph
@@ -1453,13 +1480,36 @@ public List<String> getDatasourceLanguages(String datasourceSubType)
 public List<String> getDatasourceMetaData(String dsAddress, String dsType)
 \end_layout
 
-\begin_layout Paragraph
-Administration Web Service
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Der Administration Web Service...
+Der Datasource Web Service bietet eine Schnittstelle zu allen Ausprägungen
+ des Datasource Service im SIMPL Core.
+ Die Funktionen des Datasource Web Service, entsprechen den öffentlichen
+ Funktionen der Datasource Services, erhalten aber als zusätzlichen Parameter
+ die eindeutige Typkennzeichung (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+ DatasourceServiceProvider) der angeforderten Datenquelle, über die bei
+ einem Zugriff intern der entsprechende Datasource Service angesprochen
+ werden kann.
+ Zusätzlich besitzt der Datasource Web Service eine Funktion um Metadaten
+ von einer Datenquelle anzufordern, die beispielsweise von Eclipse zur Auswahl
+ in der GUI benötigt werden, wie z.B.
+ die existierenden Tabellen in einer Datenbank.
 \end_layout
+
+\begin_layout Paragraph
+Administration Web Service (WSAdministration)
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subparagraph
 public boolean saveSettings(String schema, String table, String settingName,
@@ -1471,13 +1521,22 @@ public LinkedHashMap<String, String> loadSettings(String schema, String
  table, String settingName)
 \end_layout
 
-\begin_layout Paragraph
-Storage Web Service
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Der Storage Web Service...
+Der Administration Web Service ist die direkte Schnittstelle des Administration
+ Service nach Außen und besitzt daher die gleichen Funktionen wie dieser,
+ mit dem Unterschied, dass komplexe Parameter, aus oben genannten Gründen,
+ als String-Parameter gehandhabt werden.
 \end_layout
+
+\begin_layout Paragraph
+Storage Web Service (WSStorage)
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Subparagraph
 public boolean save(String serviceNS, String serviceName, List<LinkedHashMap<Str
@@ -1487,6 +1546,19 @@ ing, String>> data)
 \begin_layout Subparagraph
 public List<LinkedHashMap<String, String>> load(String serviceNS, String
  serviceName)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Storage Web Service bietet anderen Diensten von Außen die Möglichkeit
+ Einstellungen zu speichern und zu laden.
+ Für den Storage Web Service gilt das gleich wie für den Administration
+ Service, nur dass dieser die direkte Schnittstelle zum Storage Service
+ darstellt.
 \end_layout
 
 \begin_layout Section
@@ -1964,6 +2036,24 @@ SIMPL Core Plug-In
 
 \begin_layout Subsection
 SIMPL Core Client
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(..
+\backslash
+Java
+\backslash
+jdk1.6.0_14
+\backslash
+bin
+\backslash
+wsgen.exe)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
