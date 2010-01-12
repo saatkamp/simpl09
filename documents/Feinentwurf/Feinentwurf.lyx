@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2035,28 +2035,360 @@ name "sec:Eclipse"
 \end_inset
 
 Eclipse
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Verweise auf den Grobentwurf nicht vergessen.
 \end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename diagramme/iteration1/EclipseStruktur.png
 
 \end_inset
 
 
 \end_layout
 
+\begin_layout Standard
+Hier wird nur auf die SIMPL relevanten Komponenten von Eclipse eingegangen.
+ Dies sind nur die Extension Points die für die Einbindung in das Framework
+ und die grafische Darstellung verantwortlich sind.
+ Im folgenden werden diese näher erläutert :
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Menu View
+\begin_inset Quotes erd
+\end_inset
+
+ stellt die Auswahlmöglicheiten als Drop-Down Liste dar, die auf die verschieden
+e Funktionsbereiche des Plug-Ins referenziert.
+ Der Extension Point “Menu” wird im Rahmen von SIMPL dazu verwendet, um
+ ein SIMPL-Menü in Eclipse und später auch zusätzliche Einträge bereitstellen
+ zu können.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+View
+\begin_inset Quotes erd
+\end_inset
+
+ .
+ Die View ist eine Art Fenster zur Darstellung und Eingabe von Daten innerhalb
+ von Eclipse, wie z.B.
+ ein “ErrorLog”, der alle Fehler und Probleme von Eclipse Projekten anzeigt
+ oder eine PropertiesView in der z.B.
+ BPEL-Aktivitäten näher speziﬁziert werden.
+ Im Rahmen von SIMPL wird z.B.
+ eine View verwendet, um die Referenzen für das RRS Plug-In anzuzeigen bzw.
+ zu verwalten.
+\end_layout
+
+\begin_layout Subsection
+Eclipse BPEL Designer
+\end_layout
+
+\begin_layout Standard
+Mit dem Eclipse BPEL Designer Plug- In kann der Prozess-Modellierer bereits
+ BPEL Prozesse erstellen und auf Apache ODE zum Einsatz bringen.
+ Da der BPEL Designer bereits vorhanden ist, wird bei der Beschreibung im
+ Rahmen des Feinentwurfes nur auf die relevanten Extension-Points eingegangen.
+\end_layout
+
+\begin_layout Standard
+Extension Points
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+UIObject Factory
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Dieser Extension Point ermöglicht das Anbinden neuer UIObjectFactories,
+ mit deren Hilfe Instanzen von BPEL Extension Activities erzeugt werden
+ können.
+ Die so erzeugten Instanzen stehen dann in der BPEL Designer Palette zur
+ Verfügung und können zur Modellierung von BPEL-Prozessen verwendet werden.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+PaletteAdditions
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Die Palette ist ein Auswahlfenster aller zur Verfügung stehenden BPEL-Konstrukt
+e, dies sind z.B.
+ Standard BPEL-Aktivitäten oder eigene Extension Activities.
+ Durch diesen Extension Point können eigene Extension Activities in die
+ Palette eingefügt und so zur Modellierung von Prozes- sen genutzt werden.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+PropertySections
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern,
+ über die, in das Prozessmodell eingefügte, BPEL-Aktivitäten ausformuliert
+ und mit Werten gefüllt werden können.
+\end_layout
+
 \begin_layout Subsection
 BPEL DM Plug-In
+\end_layout
+
+\begin_layout Standard
+Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
+ Designer Plug-Ins um die DM-Aktivitäten erweitert.
+ Dieses Plugin besteht aus dem dem Paket 
+\begin_inset Quotes eld
+\end_inset
+
+DM Activities
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+StatementEditors & DMPropertiesSections
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In Overview.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im folgenden werden die Klassen und die wichtigsten Funktionen näher erläutert
+ :
+\end_layout
+
+\begin_layout Standard
+..
+\end_layout
+
+\begin_layout Standard
+..
+\end_layout
+
+\begin_layout Standard
+..
+\end_layout
+
+\begin_layout Standard
+..
 \end_layout
 
 \begin_layout Subsection
 SIMPL Core Plug-In
 \end_layout
 
+\begin_layout Standard
+Das SIMPL Core Plug-In besteht aus dem Paket Admin-Konsole und SIMPL Core
+ Client.
+ Jede Kommunikation des SIMPL Core Plug-In mit dem SIMPL Core wird durch
+ SIMPL Core Client realisiert.
+\end_layout
+
+\begin_layout Subsubsection*
+Admin-Konsole
+\end_layout
+
+\begin_layout Standard
+Durch diese grafischen Benutzeroberfläche wird SIMPL verwaltet.
+ Die Admin-Konsole besteht nur aus Extension Points um eine größtmögliche
+ Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
+ Das bedeutet die Einträge die bereits bei der Auslieferung von SIMPL in
+ der Admin-Konsole vorhanden sind, wurden auch durch Extension Points realisert
+ und können gegebenfalls leicht ausgetauscht werden.
+ Weitere Einträge können am Extension Points ACItem hinzugefügt werden.
+ Bei der Auslieferung sind die Funktionen Auditing und Global Settings bereits
+ durch Extension Points eingebunden.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Pakete, Klassen und wichtige Methoden
+\end_layout
+
+\begin_layout Description
+org.eclipse.simpl.core.globalSettings 
+\end_layout
+
+\begin_layout Standard
+Beinhaltet die 
+\begin_inset Quotes eld
+\end_inset
+
+Activator
+\begin_inset Quotes erd
+\end_inset
+
+-Klasse mit den Methoden :
+\end_layout
+
+\begin_layout Standard
+stop(BundleContext context)
+\end_layout
+
+\begin_layout Standard
+start(BundleContext context)
+\end_layout
+
+\begin_layout Standard
+Activator getDefault()
+\end_layout
+
+\begin_layout Standard
+Activator()
+\end_layout
+
+\begin_layout Description
+org.eclipse.simpl.core.globalSettings.ui
+\end_layout
+
+\begin_layout Standard
+Beinhaltet die Klasse 
+\begin_inset Quotes eld
+\end_inset
+
+AuthentificationComposite
+\begin_inset Quotes erd
+\end_inset
+
+ mit den Methoden :
+\end_layout
+
+\begin_layout Standard
+saveSettingsToBuffer()
+\end_layout
+
+\begin_layout Standard
+saveSettings(String parentItem, String item, String settingName)
+\end_layout
+
+\begin_layout Standard
+loadSettingsFromBuffer()
+\end_layout
+
+\begin_layout Standard
+loadSettings(String parentItem, String item, String settingName)
+\end_layout
+
+\begin_layout Standard
+haveSettingsChanged()
+\end_layout
+
+\begin_layout Standard
+createComposite(Composite composite)
+\end_layout
+
+\begin_layout Description
+org.eclipse.simpl.core.auditing
+\end_layout
+
+\begin_layout Standard
+Beinhaltet die Klasse 
+\begin_inset Quotes eld
+\end_inset
+
+Activator
+\begin_inset Quotes erd
+\end_inset
+
+ mit den Methoden :
+\end_layout
+
+\begin_layout Standard
+Activator getDefault()
+\end_layout
+
+\begin_layout Standard
+Activator()
+\end_layout
+
+\begin_layout Standard
+start(BundleContext context)
+\end_layout
+
+\begin_layout Standard
+stop(BundleContext context)
+\end_layout
+
+\begin_layout Description
+org.eclipse.simpl.core.auditing.ui
+\end_layout
+
+\begin_layout Standard
+Beinhaltet die Klasse 
+\begin_inset Quotes eld
+\end_inset
+
+AuditingGeneralComposite
+\begin_inset Quotes erd
+\end_inset
+
+ mit den Methoden :
+\end_layout
+
+\begin_layout Standard
+loadSettings(String parentItem, String item, String settingName)
+\end_layout
+
+\begin_layout Standard
+loadSettingsFromBuffer()
+\end_layout
+
+\begin_layout Standard
+saveSettings(String parentItem, String item, String settingName)
+\end_layout
+
+\begin_layout Standard
+saveSettingsToBuffer()
+\end_layout
+
 \begin_layout Subsection
-SIMPL Core Client Plug-In
+RRS Plug-In
+\end_layout
+
+\begin_layout Standard
+Mit dem RRS Plug-In wird die Verbindung zum Reference Resolution System
+ (RRS) geschaﬀen.
+ Dadurch können Referenzen verwaltet werden und falls Referenzen bei der
+ Modellierung verwendet wurden, eine Modelltransformation vor dem Deployment
+ durchgeführt werden.
+ Dazu benutzt das Plug-In den RRSAdministrationService und den RRSTransformation
+Service.
+ Die Verwaltung geschieht dabei über den Storage Service vom SIMPL Core.
+ Weitere Details werden in der nächsten Iteration folgen.
+\end_layout
+
+\begin_layout Subsection
 \begin_inset Note Note
 status open
 
