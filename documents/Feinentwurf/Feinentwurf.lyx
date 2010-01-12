@@ -944,7 +944,7 @@ org.simpl.core
 
 \begin_layout Standard
 Hier befinden sich zentrale Klassen des SIMPL Cores, die auf die Dienste
- des SIMPL Core zurückgreiffen, wie z.B.
+ des SIMPL Core zurückgreifen, wie z.B.
  die SIMPLCore-Klasse, die in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1144,7 +1144,7 @@ Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole,
 \emph on
 Auditing
 \emph default
- ein gleichnamiges Schema und für jeden Unterpunkt eines Oberpunktes, wie
+ ein gleichnamiges Schema und für jeden Unterpunkt eines Oberpunkts, wie
  z.B.
  
 \emph on
@@ -1514,9 +1514,9 @@ reference "fig:SIMPL-DM-Extension"
 
 ) haben als Hauptklasse die Klasse SIMPLActivity, welche verschiedene Funktional
 itäten für alle weiteren Events anbietet.
- Die Extension Activities nutzen zur Auführung der verschiedenen Datamanagement-
-Operationen den Datasource-Service des SIMPLCore.Die Implementierung der
- Extension Activities wird folgendermaßen umgesetzt: 
+ Die Extension Activities nutzen zur Ausführung der verschiedenen Data-Managemen
+t-Operationen den Datasource Service des SIMPL Cores.Die Implementierung
+ der Extension Activities wird folgendermaßen umgesetzt: 
 \end_layout
 
 \begin_layout Standard
@@ -1536,8 +1536,8 @@ context
 
  hat man die Möglichkeit auf BPEL-Variablen und weitere Konstrukte die im
  Prozess vorhanden sind zuzugreifen.
- Der Inhalt des BPEL-Prozess-Dokkuments wird in Nodes geparst um ein objektbasie
-rtes Modell des BPEL Prozesses zu erzeugen.
+ Der Inhalt des BPEL-Prozess-Dokuments wird in Nodes geparst um ein objektbasier
+tes Modell des BPEL Prozesses zu erzeugen.
  Mit „element“ ist es möglich auf die verschiedenen Eigenschaften dieser
  Nodes zuzugreifen und mit ihnen zu arbeiten.
  
@@ -1783,19 +1783,20 @@ Rechtschreibung! Sinn und Zweck des DAO als Einleitung fehlt noch.
 \end_layout
 
 \begin_layout Standard
-Das Simpl Dao besteht aus der Implementierung der Interfaces aus dem Packet
- org.apache.ode.bpel.dao die in den folgenden unterpunkten beschrieben werden.
- Das Simpl-Dao übernimmt alle Eigenschaften der Ode internen Jpa-Implementierung
- und erweitert diese um die Eigenschaft, Daten per SDO an den SIMPL-Core
- senden zu können.
- Das heißt, die Dao Daten werden auch weiterhin in der internen Apache Derby
+Das SIMPL Data Access Object (DAO) besteht aus der Implementierung der Interface
+s aus dem Packet org.apache.ode.bpel.dao die in den folgenden Unterpunkten beschrieb
+en werden.
+ Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
+ API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
+ per Service Data Object (SDO) an den SIMPL Core senden zu können.
+ Das heißt, die DAO Daten werden auch weiterhin in der internen Apache Derby
  Datenbank gespeichert und von dort gelesen.
- Datentransfers an den Simpl-Core und damit verbundene beliebige Datenquellen,
+ Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
  können nur schreibend, jedoch nicht lesend erfolgen.
 \end_layout
 
 \begin_layout Subsubsection*
-ActivityRecoveryDao
+ActivityRecoveryDAO
 \end_layout
 
 \begin_layout Standard
@@ -1815,8 +1816,8 @@ BpelDAOConnectionFactory
 \end_layout
 
 \begin_layout Standard
-Die Factory verwaltet und erstellt die DaoConnection zu den angegebenen
- Datenquellen (standartmäßig der internen Derby Datenbank)
+Die Factory verwaltet und erstellt die DAOConnection zu den angegebenen
+ Datenquellen (standardmäßig zu der internen Derby Datenbank).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1824,9 +1825,9 @@ BpelDAOConnection
 \end_layout
 
 \begin_layout Standard
-Stellt die Implementierung der Connection dar.
- Hier werden unter anderem BPEL Events in das Dao eingefügt und der Nachrichten
- austausch erstellt und verwaltet.
+Die BpelDAOConnection stellt die Implementierung der Connection dar.
+ Hier werden unter anderem BPEL Events in das DAO eingefügt und der Nachrichtena
+ustausch erstellt und verwaltet.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1834,7 +1835,7 @@ CorrelationSetDAO
 \end_layout
 
 \begin_layout Standard
-Dieses DAO representiert ein BPEL correlation set.
+Dieses DAO repräsentiert ein BPEL Correlation Set.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1842,7 +1843,7 @@ FaultDAO
 \end_layout
 
 \begin_layout Standard
-Wird benutzt um auf Informationen über einen Fehler zuzugreifen, der wärend
+Wird benutzt um auf Informationen über einen Fehler zuzugreifen, der während
  einer Prozessausführung aufgetreten ist.
 \end_layout
 
@@ -1851,7 +1852,7 @@ MessageDAO
 \end_layout
 
 \begin_layout Standard
-Representiert eine Nachricht in der Datenbank.
+Repräsentiert eine Nachricht in der Datenbank.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1859,7 +1860,7 @@ MessageExchangeDAO
 \end_layout
 
 \begin_layout Standard
-DAO für den Nachrichten austausch.
+DAO für den Nachrichtenaustausch.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1867,8 +1868,8 @@ MessageRouteDAO
 \end_layout
 
 \begin_layout Standard
-Das DAO representiert einen Nachrichten Anfrager, wie zum beispiel ein Pick
- oder ein recive.
+Das DAO repräsentiert einen Nachrichten Anfrager, wie zum Beispiel ein Pick
+ oder ein Receive.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1876,9 +1877,9 @@ PartnerLinkDAO
 \end_layout
 
 \begin_layout Standard
-Das DAO representiert einen Partnerlink.
- Es enthällt informationen über die eigene Rolle die Rolle des Partners
- und die Endpointreferenz.
+Das DAO repräsentiert einen Partnerlink.
+ Es enthält Informationen über die eigene Rolle, die Rolle des Partners
+ und die Endpoint-Referenz.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1886,8 +1887,8 @@ ProcessDAO
 \end_layout
 
 \begin_layout Standard
-Das DAO representiert einen laufenden Prozess.
- Es enthällt die Prozess-Id, den Prozess-Typ, sowie die Prozessinstanzen.
+Das DAO repräsentiert einen laufenden Prozess.
+ Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1895,9 +1896,9 @@ ProcessInstanceDAO
 \end_layout
 
 \begin_layout Standard
-Dieses DAO representiert eine Prozess-Instanz und enthällt alle Daten die
+Dieses DAO repräsentiert eine Prozess-Instanz und enthält alle Daten die
  einer Instanz zugehörig sind.
- Dazu zählen Events, Scopes, sowie wartende pick und recive Aktivitäten.
+ Dazu zählen Events, Scopes, sowie wartende Pick- und Receive-Aktivitäten.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1905,8 +1906,8 @@ ScopeDAO
 \end_layout
 
 \begin_layout Standard
-Dieses DAO representiert eine Scope-Instanz.
- Es enthällt eine ansammlung von Correlation-Sets und XML-Variablen.
+Dieses DAO repräsentiert eine Scope-Instanz.
+ Es enthält eine Ansammlung von Correlation-Sets und XML-Variablen.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1914,8 +1915,8 @@ XmlDataDAO
 \end_layout
 
 \begin_layout Standard
-Das DAO representiert XML-Daten.
- Es wird dazu benutzt BPEL-Variablen zu modelieren.
+Dieses DAO repräsentiert XML-Daten.
+ Es wird dazu benutzt BPEL-Variablen zu modellieren.
 \end_layout
 
 \begin_layout Section
@@ -2058,7 +2059,7 @@ reference "fig:Speicherung-von-Einstellungen"
 
 \end_inset
 
- zeigt den Ablauf bei der Speicherung von Einstellungen der Adminkonsole
+ zeigt den Ablauf bei der Speicherung von Einstellungen der Admin-Konsole
  und das Zusammenspiel der beteiligten Komponenten.
 \end_layout
 
@@ -2090,7 +2091,7 @@ name "fig:Speicherung-von-Einstellungen"
 
 \end_inset
 
-Speicherung von Einstellungen über die Adminkonsole
+Speicherung von Einstellungen über die Admin-Konsole
 \end_layout
 
 \end_inset
