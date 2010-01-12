@@ -1047,7 +1047,7 @@ In diesem Abschnitt werden die Dienste des SIMPL Cores und ihre Funktionsweise
  beschrieben.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Administration Service
 \end_layout
 
@@ -1156,7 +1156,7 @@ e Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss
  muss.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Storage Service
 \end_layout
 
@@ -1244,7 +1244,13 @@ reference "fig:Sequenzdiagramm-des-StorageServices"
  Vorgehensweise wie die saveSettings()-Methode des Administration Services.
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datasource-Service"
+
+\end_inset
+
 Datasource Service
 \end_layout
 
@@ -2036,7 +2042,7 @@ SIMPL Core Plug-In
 \end_layout
 
 \begin_layout Subsection
-SIMPL Core Client
+SIMPL Core Client Plug-In
 \begin_inset Note Note
 status open
 
@@ -2084,18 +2090,31 @@ reference "fig:Kommunikation-im-SIMPL"
 
 \end_inset
 
- wird die Kommunikation zwischen den Komponenten beschrieben und die entsprechen
-den Funktionsaufrufe gezeigt.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Beschreibung der Abbildung
-\end_layout
+ wird die Kommunikation zwischen den Komponenten mit entsprechenden Funktionsauf
+rufen gezeigt.
+ Über das SIMPL Core Client Plug-In wird die Kommunikation der anderen SIMPL
+ Eclipse Plug-Ins zum SIMPL Core hergestellt.
+ Über die Web Services des SIMPL Cores werden Metdaten zu Datenquellen angeforde
+rt (getDatasourceMetaData) und Einstellungen gespeichert (saveSettings)
+ und geladen (loadSettings).
+ Dazu werden von den Web Services die Dienste des SIMPL Cores verwendet
+ und die Anfragen entsprechend weitergeleitet.
+ Apache ODE kann die Dienste des SIMPL Cores direkt ansprechen, da sich
+ der SIMPL Core im Classpath von Apache ODE befindet.
+ Dort werden die DM-Aktivitäten (DM-Activities) über den DatasourceService
+ ausgeführt, wozu die drei Methoden manipulateData, defineData und queryData
+ zur Verfügung stehen, die in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Service"
 
 \end_inset
 
-
+ beschrieben wurden.
+ Für das SIMPL Auditing benötigen die SIMPL DAO's ebenfalls Zugriff auf
+ den DatasourceService, um die Auditing Daten zu speichern (saveData).
+ Die Auditing Daten entstehen bei der Ausführung der DM-Aktivitäten und
+ lösen eine Speicherung über die SIMPL DAOs aus.
 \end_layout
 
 \begin_layout Standard
