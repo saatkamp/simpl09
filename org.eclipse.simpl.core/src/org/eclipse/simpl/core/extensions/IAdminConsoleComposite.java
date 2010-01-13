@@ -12,7 +12,7 @@ public interface IAdminConsoleComposite {
 
 	public void saveSettings(String parentItem, String item, String settingName);
 
-	public void loadSettings(String parentItem, String item, String settingName);
+	public void loadSettings(String parentItem, String item);
 
 	public boolean haveSettingsChanged();
 

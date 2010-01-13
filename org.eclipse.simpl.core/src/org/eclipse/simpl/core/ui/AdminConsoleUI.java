@@ -62,7 +62,6 @@ public class AdminConsoleUI {
 	 * 
 	 */
 	private void showComposite(TreeItem treeItem) {
-		//TODO Eingaben buffern irgendwo
 		
 		if (oldComposite != null) {
 			oldComposite.dispose();
@@ -75,8 +74,8 @@ public class AdminConsoleUI {
 			oldComposite = compositeClass.getComposite();
 
 			if (compositeClass!=null && selectedTreeItem!=null){
-				// Werte des Composites laden
-				compositeClass.loadSettingsFromBuffer("lastSaved");
+				// Buffer-Werte des Composites laden
+				compositeClass.loadSettingsFromBuffer("buffer");
 			}
 			
 			composite.layout();
@@ -153,10 +152,7 @@ public class AdminConsoleUI {
 				// TODO Auto-generated method stub
 				// Werte des Composites laden
 				if (compositeClass != null && selectedTreeItem != null) {
-					//TODO Muss auch noch anderst geregelt werden
-					compositeClass.loadSettings(selectedTreeItem
-							.getParentItem().getText(), selectedTreeItem
-							.getText(), "default");
+					compositeClass.loadSettingsFromBuffer("default");
 				}
 			}
 		});
