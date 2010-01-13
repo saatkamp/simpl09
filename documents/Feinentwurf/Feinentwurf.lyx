@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1904,18 +1904,27 @@ key "key-1"
 
 \end_inset
 
- 3.2.2)
+ 3.2.2).
+ 
 \end_layout
 
 \begin_layout Standard
 Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
  API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
  per Service Data Object (SDO) an den SIMPL Core senden zu können.
- Das heißt, die DAO Daten werden auch weiterhin in der internen Apache Derby
+ Von dort aus können die Daten, wie zum Beispiel Informationen über ausgeführte
+ Prozesse(Name, Id, Typ), in beliebigen Datenquellen gespeichert werden.
+ Die Übertragung der Daten findet dabei direkt in den setter Methoden der
+ DAOs statt.
+ Die DAO Daten werden trozdem auch weiterhin in der internen Apache Derby
  Datenbank gespeichert und von dort gelesen.
  Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
  können nur schreibend, jedoch nicht lesend erfolgen.
  
+\end_layout
+
+\begin_layout Subsubsection
+DAO's
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1923,7 +1932,7 @@ ActivityRecoveryDAO
 \end_layout
 
 \begin_layout Standard
-Wird ausgeführt, wenn eine Aktivität den 
+Das ActivityRecoveryDao wird ausgeführt, wenn eine Aktivität den 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1948,9 +1957,10 @@ BpelDAOConnection
 \end_layout
 
 \begin_layout Standard
-Die BpelDAOConnection stellt die Implementierung der Connection dar.
- Hier werden unter anderem BPEL Events in das DAO eingefügt und der Nachrichtena
-ustausch erstellt und verwaltet.
+Die BpelDAOConnection stellt eine Verbindung zu den DAO's her.
+ Hier werden zum Beispiel BPEL Events in das DAO eingefügt, Prozesse erstellt
+ und Prozessinstanzen verwaltet, über die auf die Restlichen DAO's zugegriffen
+ werden kann.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1958,7 +1968,10 @@ CorrelationSetDAO
 \end_layout
 
 \begin_layout Standard
-Dieses DAO repräsentiert ein BPEL Correlation Set.
+Das CorrelationSetDAO wird ausgeführt, wenn in BPEL ein Correlation Set
+ erstellt wird.
+ Correlation Sets ermöglichen die Kommunikation einer Prozessinstanz mit
+ seinen Partnern.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1966,8 +1979,9 @@ FaultDAO
 \end_layout
 
 \begin_layout Standard
-Wird benutzt um auf Informationen über einen Fehler zuzugreifen, der während
- einer Prozessausführung aufgetreten ist.
+Das FaultDao wird erstellt wenn ein Fehler in der Proessausführung passiert.
+ Über dieses Dao kann auf die Informationen bezüglich des Fehlers, zum Beispiel
+ der Name und der Grund für den fehler, zugegriffen werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1983,7 +1997,7 @@ MessageExchangeDAO
 \end_layout
 
 \begin_layout Standard
-DAO für den Nachrichtenaustausch.
+Das MessageExchangeDAO ist für den Austausch von Nachrichten zuständig..
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1991,8 +2005,8 @@ MessageRouteDAO
 \end_layout
 
 \begin_layout Standard
-Das DAO repräsentiert einen Nachrichten Anfrager, wie zum Beispiel ein Pick
- oder ein Receive.
+Das MessageRouteDAO repräsentiert einen Nachrichten Anfrager, wie zum Beispiel
+ ein Pick oder ein Receive.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2000,7 +2014,7 @@ PartnerLinkDAO
 \end_layout
 
 \begin_layout Standard
-Das DAO repräsentiert einen Partnerlink.
+Das PartnerLinkDAO repräsentiert einen Partnerlink.
  Es enthält Informationen über die eigene Rolle, die Rolle des Partners
  und die Endpoint-Referenz.
 \end_layout
@@ -2010,7 +2024,7 @@ ProcessDAO
 \end_layout
 
 \begin_layout Standard
-Das DAO repräsentiert einen laufenden Prozess.
+Das ProcessDAO repräsentiert einen laufenden Prozess.
  Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen.
 \end_layout
 
@@ -2019,8 +2033,8 @@ ProcessInstanceDAO
 \end_layout
 
 \begin_layout Standard
-Dieses DAO repräsentiert eine Prozess-Instanz und enthält alle Daten die
- einer Instanz zugehörig sind.
+Das ProcessInstanceDAO repräsentiert eine Prozess-Instanz und enthält alle
+ Daten die einer Instanz zugehörig sind.
  Dazu zählen Events, Scopes, sowie wartende Pick- und Receive-Aktivitäten.
 \end_layout
 
@@ -2029,7 +2043,7 @@ ScopeDAO
 \end_layout
 
 \begin_layout Standard
-Dieses DAO repräsentiert eine Scope-Instanz.
+Das ScopeDAO repräsentiert eine Scope-Instanz.
  Es enthält eine Ansammlung von Correlation-Sets und XML-Variablen.
 \end_layout
 
@@ -2038,8 +2052,39 @@ XmlDataDAO
 \end_layout
 
 \begin_layout Standard
-Dieses DAO repräsentiert XML-Daten.
- Es wird dazu benutzt BPEL-Variablen zu modellieren.
+Das XmlDataDAO representiert XML-Daten und wird dazu benutzt Bpel-Variablen
+ zu modelieren.
+\end_layout
+
+\begin_layout Subsubsection
+DAO Java Persistence API (JPA)
+\end_layout
+
+\begin_layout Standard
+Das Dao-Jpa ist eine Dao Implementierung, die auf dem Apache Open JPA basiert.
+ Dieses stellt Funktionalitäten zur persistenten Speicherung auf relationalen
+ Datenspeichern zur Verfügung.
+ Über annotierte Variablen können somit die Dao Daten komfortabel in der
+ ODE internen Derby Datenbank gespeichert werden.
+\end_layout
+
+\begin_layout Subsubsection
+DAO Lebenszyklus
+\end_layout
+
+\begin_layout Standard
+Beim starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
+ BPEL-Server gestartet.
+ Sofort wird die in OdeServer Klasse enthaltene init Methode aufgerufen.
+ Diese ruft wiederrum die initDao Methode auf.
+ Dort wird die DaoConnectionFactory geladen, welche zuvor in der OdeConfigProper
+ties definiert oder aus der Axis2.properties geladen wurde.
+ Über die ConnectionFactory werden DaoConnections erstellt und bereitgestellt,
+ mit deren Hilfe direkt auf die DAOs zugegriffen werden kann.
+ Dies geschieht an den Stellen in Ode, wo die den DAOs entsprechenden BPEL
+ Konstukte ausgewertet werden.
+ So wird auf die ProcessDao zum Beispiel aus der ODEProcess Klasse aufgerufen,
+ um die Prozessdaten persistent zu speichern.
 \end_layout
 
 \begin_layout Section
