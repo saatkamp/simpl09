@@ -1,6 +1,5 @@
 package org.eclipse.bpel.simpl.ui.extensions;
 
-import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.swt.widgets.Composite;
 
 /**

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.bpel.simpl.ui.Application;
-import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
@@ -33,13 +32,6 @@ public class Application {
 	 * Holds the id of the extension point which have to be managed.
 	 */
 	private static final String QUERY_LANGUAGE_ID = "org.eclipse.bpel.simpl.ui.queryLanguage";
-
-	// private static final String[] fileSystemStatements = new String[]{"GET",
-	// "PUT", "RM", "MKDIR", "MKFILE"};
-	// private static final String[] dataSourceStatements = new
-	// String[]{"SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "CALL"};
-	// private static final String[] sensorNetStatements = new
-	// String[]{"SELECT", "CREATE BUFFER", "DROP ALL"};
 
 	/**
 	 * Provides the single instance of the Application.
@@ -102,51 +94,5 @@ public class Application {
 			System.out.println(ex.getMessage());
 		}
 		return editorClass;
-	}
-
-//	// TODO: Testen, ob so alle Fälle abgedeckt sind.
-//	/**
-//	 * This method is used to serialize a statement from a HashMap to a String
-//	 * representation.
-//	 * 
-//	 * @param statement
-//	 *            as HashMap to serialize.
-//	 * @return The serialized String representation of the statement HashMap.
-//	 */
-//	public String serializeStatement(LinkedHashMap<String, String> statement) {
-//		StringBuilder statem = new StringBuilder();
-//		for (String part : statement.keySet()) {
-//			statem.append(part);
-//			statem.append(" ");
-//			statem.append(statement.get(part));
-//			statem.append(" ");
-//		}
-//		statem.deleteCharAt(statem.length() - 1);
-//		return statem.toString();
-//	}
-
-	// TODO: Überarbeiten, wird so nicht funktionieren!
-	// Hier muss wahrscheinlich mit der Syntax der Sprache gearbeitet werden
-	// bzw.
-	// mit der Erkennung von Schlüsselwörtern.
-	/**
-	 * This method is used to deserialize a statement from a String to a HashMap
-	 * representation.
-	 * 
-	 * @param statement
-	 *            as String to deserialize.
-	 * @return The deserialized HashMap representation of the statement String.
-	 */
-	public StatementHashMap deserializeStatement(String statement) {
-		StatementHashMap statem = new StatementHashMap();
-		String[] parts = statement.split(" ");
-		if (parts.length > 1) {
-			int i = 0;
-			while (i < parts.length) {
-				statem.put(parts[i], parts[i + 1]);
-				i = i + 2;
-			}
-		}
-		return statem;
 	}
 }
