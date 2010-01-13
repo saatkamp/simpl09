@@ -5,7 +5,6 @@ package org.eclipse.bpel.simpl.ui.properties;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 
 import java.util.List;
-import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionListener;

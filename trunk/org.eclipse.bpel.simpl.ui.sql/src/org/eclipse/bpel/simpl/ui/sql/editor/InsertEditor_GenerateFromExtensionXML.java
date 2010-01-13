@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import org.eclipse.bpel.simpl.ui.StatementHashMap;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -69,7 +68,7 @@ public class InsertEditor_GenerateFromExtensionXML extends AStatementEditor {
 		//setDataSourceType(dataSourceType);
 		fatherComp=composite;
 		// TODO Auto-generated method stub
-		StatementHashMap statem = new StatementHashMap();
+//		StatementHashMap statem = new StatementHashMap();
 		
 //		statem.put("INSERT", "(column1, column2, ...)");
 //		statem.put("INTO", "table");
