@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -22,7 +22,7 @@
 \def\doctitel{Feinentwurf}
 \def\docvers{0.1}
 \def\docautor{}
-\def\docdate{11. Januar 2010}
+\def\docdate{13. Januar 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -439,7 +439,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
+<lyxtabular version="3" rows="10" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -561,7 +561,7 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Überarbeitung der Struktur
+Überarbeitung der Struktur, Kapitel 1
 \end_layout
 
 \end_inset
@@ -599,7 +599,7 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-SIMPL Core Beschreibung
+Kapitel 2
 \end_layout
 
 \end_inset
@@ -610,7 +610,7 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.4
 \end_layout
 
 \end_inset
@@ -619,7 +619,7 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+12.02.2010
 \end_layout
 
 \end_inset
@@ -628,7 +628,7 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+schneimi
 \end_layout
 
 \end_inset
@@ -637,7 +637,7 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Kapitel 5
 \end_layout
 
 \end_inset
@@ -648,7 +648,7 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.5
 \end_layout
 
 \end_inset
@@ -657,7 +657,7 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+12.01.2010
 \end_layout
 
 \end_inset
@@ -666,7 +666,7 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+rehnre
 \end_layout
 
 \end_inset
@@ -675,7 +675,121 @@ SIMPL Core Beschreibung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Kapitel 3.1, 3.2, 3.3
+\end_layout
 
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diagramme überarbeitet
 \end_layout
 
 \end_inset
@@ -2533,11 +2647,15 @@ Service.
 \end_layout
 
 \begin_layout Subsection
-\begin_inset Note Note
-status open
+SIMPL Core Client Plug-In
+\end_layout
 
-\begin_layout Plain Layout
-(..
+\begin_layout Standard
+Das SIMPL Core Client Plug-In stellt die Verbindung zu den SIMPL Core Web
+ Services her und bietet den anderen Eclipse Plug-Ins somit die Möglichkeit
+ diese zu verwenden.
+ Die Funktionalität für den Zugriff auf die Web Services wird mit Hilfe
+ des Befehls wsimport (..
 \backslash
 Java
 \backslash
@@ -2545,12 +2663,8 @@ jdk1.6.0_14
 \backslash
 bin
 \backslash
-wimport.exe)
-\end_layout
-
-\end_inset
-
-
+wimport.exe) über die WSDL-Schnittstellen generiert und wird um die Serialisierun
+g und Deserialisierung der komplexen Parameter erweitert.
 \end_layout
 
 \begin_layout Section
@@ -2564,8 +2678,8 @@ Kommunikation
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird die Kommunikation im SIMPL Rahmenwerk beschrieben
- und wichtige Abläufe deutlich gemacht.
+In diesem Kapitel wird die Kommunikation zwischen den Komponenten des SIMPL
+ Rahmenwerks beschrieben und wichtige Abläufe deutlich gemacht.
 \end_layout
 
 \begin_layout Subsection
@@ -2585,26 +2699,27 @@ rufen gezeigt.
  Über das SIMPL Core Client Plug-In wird die Kommunikation der anderen SIMPL
  Eclipse Plug-Ins zum SIMPL Core hergestellt.
  Über die Web Services des SIMPL Cores werden Metdaten zu Datenquellen angeforde
-rt (getDatasourceMetaData) und Einstellungen gespeichert (saveSettings)
- und geladen (loadSettings).
+rt (11, 21: getDatasourceMetaData) und Einstellungen gespeichert (1: saveSetting
+s) und geladen (1: loadSettings).
  Dazu werden von den Web Services die Dienste des SIMPL Cores verwendet
  und die Anfragen entsprechend weitergeleitet.
  Apache ODE kann die Dienste des SIMPL Cores direkt ansprechen, da sich
  der SIMPL Core im Classpath von Apache ODE befindet.
  Dort werden die DM-Aktivitäten (DM-Activities) über den DatasourceService
  ausgeführt, wozu die drei Methoden manipulateData, defineData und queryData
- zur Verfügung stehen, die in Kapitel 
+ (19, 18, 14) zur Verfügung stehen, die in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Datasource-Service"
 
 \end_inset
 
- beschrieben wurden.
- Für das SIMPL Auditing benötigen die SIMPL DAO's ebenfalls Zugriff auf
- den DatasourceService, um die Auditing Daten zu speichern (saveData).
- Die Auditing Daten entstehen bei der Ausführung der DM-Aktivitäten und
- lösen eine Speicherung über die SIMPL DAOs aus.
+ bereits beschrieben wurden.
+ Für das SIMPL Auditing benötigen die SIMPL DAOs ebenfalls Zugriff auf den
+ DatasourceService, um die Auditing Daten zu speicher.
+ Die Auditing Daten entstehen unter anderem bei der Ausführung der DM-Aktivitäte
+n (13: auditing) und lösen eine Speicherung über die SIMPL DAOs aus (16:
+ saveData).
 \end_layout
 
 \begin_layout Standard
