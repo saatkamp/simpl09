@@ -2042,6 +2042,26 @@ DAO's
 \end_layout
 
 \begin_layout Subsubsection*
+BpelDAOConnectionFactory
+\end_layout
+
+\begin_layout Standard
+Die Factory verwaltet und erstellt die DAOConnection zu den ang-egebenen
+ Datenquellen (standardmäßig zu der internen Derby Datenbank).
+\end_layout
+
+\begin_layout Subsubsection*
+BpelDAOConnection
+\end_layout
+
+\begin_layout Standard
+Die BpelDAOConnection stellt eine Verbindung zu den DAO's her.
+ Hier werden zum Beispiel BPEL Events in das DAO eingefügt, Prozesse erstellt
+ und Prozessinstanzen verwaltet, über die auf die Restlichen DAO's zugegriffen
+ werden kann.
+\end_layout
+
+\begin_layout Subsubsection*
 ActivityRecoveryDAO
 \end_layout
 
@@ -2055,26 +2075,6 @@ recovery
 \end_inset
 
  Status einnimmt.
-\end_layout
-
-\begin_layout Subsubsection*
-BpelDAOConnectionFactory
-\end_layout
-
-\begin_layout Standard
-Die Factory verwaltet und erstellt die DAOConnection zu den angegebenen
- Datenquellen (standardmäßig zu der internen Derby Datenbank).
-\end_layout
-
-\begin_layout Subsubsection*
-BpelDAOConnection
-\end_layout
-
-\begin_layout Standard
-Die BpelDAOConnection stellt eine Verbindung zu den DAO's her.
- Hier werden zum Beispiel BPEL Events in das DAO eingefügt, Prozesse erstellt
- und Prozessinstanzen verwaltet, über die auf die Restlichen DAO's zugegriffen
- werden kann.
 \end_layout
 
 \begin_layout Subsubsection*
