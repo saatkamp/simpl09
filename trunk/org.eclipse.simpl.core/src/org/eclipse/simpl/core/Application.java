@@ -69,8 +69,8 @@ public class Application {
 				// Alle Composite-Klassen, die zur Verfügung stehen werden zu
 				// Beginn instanziert.
 				compClass = getCompClass(subItem);
-				// Initiales Laden der zuletzt gespeicherten Werte
-				compClass.loadSettings(treeIt.getName(), subItem, "lastSaved");
+				// Initiales Laden aller gespeicherten Werte
+				compClass.loadSettings(treeIt.getName(), subItem);
 				classes.put(subItem, compClass);
 			}
 		}

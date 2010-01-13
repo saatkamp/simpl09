@@ -25,16 +25,16 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 	private Text passwordText = null;
 
 	// Default-Einstellungen
-	private String dUser = null;
-	private String dPassword = null;
+	private String dUser = "";
+	private String dPassword = "";
 
 	// Buffer-Einstellungen
-	private String bUser = null;
-	private String bPassword = null;
+	private String bUser = "";
+	private String bPassword = "";
 
 	// LastSaved-Einstellungen
-	private String lUser = null;
-	private String lPassword = null;
+	private String lUser = "";
+	private String lPassword = "";
 
 	@Override
 	public void createComposite(Composite composite) {
@@ -92,7 +92,6 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 	public void saveSettings(String parentItem, String item, String settingName) {
 		// Überprüfen, ob mindestens ein Wert geändert wurde
 		if (haveSettingsChanged()) {
-
 			if (getComposite() != null) {
 				// Settings-Liste erstellen und mit Werte füllen zum Speichern
 				LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
@@ -107,38 +106,32 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 				// Über den SIMPL Core in einer embedded DerbyDB speichern
 				SIMPLCommunication.getConnection().save(parentItem, item,
 						settingName, settings);
+				
+				//Last-Saved Werte aktualisieren
+				this.lPassword = this.bPassword;
+				this.lUser = this.bUser;
 			}
 		}
 	}
 
 	@Override
-	public void loadSettings(String parentItem, String item, String settingName) {
-		// Settings-Liste erstellen und mit geladenen Werten füllen
+	public void loadSettings(String parentItem, String item) {
+		// Settings-Liste erstellen
 		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-		// Über den SIMPL Core aus einer embedded DerbyDB laden
+
+		// LastSaved-Einstellungen aus SIMPL Core DB laden
 		settings = SIMPLCommunication.getConnection().load(parentItem, item,
-				settingName);
-		// Überprüfen, ob das Composite schon erzeugt wurde
-		if (getComposite() != null) {
-			if (settings.isEmpty()) {
-				// Defaults aus Code laden
-				userText.setText(this.dUser);
-				passwordText.setText(this.dPassword);
-			} else {
-				// Geladene Werte in GUI-Elementen setzen
-				userText.setText(settings.get(this.USER));
-				passwordText.setText(settings.get(this.PASSWORD));
-			}
-			this.lUser = userText.getText();
-			this.lPassword = passwordText.getText();
-			this.bUser = userText.getText();
-			this.bPassword = passwordText.getText();
-		} else {
-			this.lUser = settings.get(this.USER);
-			this.lPassword = settings.get(this.PASSWORD);
-			this.bUser = this.lUser;
-			this.bPassword = this.lPassword;
-		}
+				"lastSaved");
+		this.lUser = settings.get(this.USER);
+		this.lPassword = settings.get(this.PASSWORD);
+		this.bUser = this.lUser;
+		this.bPassword = this.lPassword;
+
+		// Default-Einstellungen aus SIMPL Core DB laden
+		settings = SIMPLCommunication.getConnection().load(parentItem, item,
+				"default");
+		this.dUser = settings.get(this.USER);
+		this.dPassword = settings.get(this.PASSWORD);
 	}
 
 	@Override
@@ -154,10 +147,34 @@ public class AuthentificationComposite extends AAdminConsoleComposite {
 
 	@Override
 	public void loadSettingsFromBuffer(String settingName) {
-		userText.setText(this.bUser);
-		passwordText.setText(this.bPassword);
-		System.out.println("LOAD FROM BUFFER: " + this.bUser + " | "
-				+ this.bPassword);
+		if (settingName.equals("default")) {
+			// Default-Werte in GUI-Elementen setzen
+			userText.setText(this.dUser);
+			passwordText.setText(this.dPassword);
+			System.out.println("LOAD FROM Default: " + this.dUser + " | "
+					+ this.dPassword);
+			//Buffer-Werte aktualisieren
+			this.bPassword = this.dPassword;
+			this.bUser = this.dUser;
+		} else {
+			if (settingName.equals("lastSaved")) {
+				// Last-Saved Werte in GUI-Elementen setzen
+				userText.setText(this.lUser);
+				passwordText.setText(this.lPassword);
+				System.out.println("LOAD FROM LastSaved: " + this.lUser + " | "
+						+ this.lPassword);
+				//Buffer-Werte aktualisieren
+				this.bPassword = this.lPassword;
+				this.bUser = this.lUser;
+			} else {
+				// Buffer-Werte in GUI-Elementen setzen
+				userText.setText(this.bUser);
+				passwordText.setText(this.bPassword);
+				System.out.println("LOAD FROM BUFFER: " + this.bUser + " | "
+						+ this.bPassword);
+			}
+		}
+
 	}
 
 	@Override
