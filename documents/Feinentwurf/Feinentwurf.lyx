@@ -1188,7 +1188,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/iteration1/AdmininistrationServiceSequence.png
+	filename diagramme/iteration1/AdminServiceSequence.png
 	width 80text%
 
 \end_inset
