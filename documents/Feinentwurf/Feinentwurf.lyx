@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -153,7 +153,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -2213,116 +2213,12 @@ Eclipse
 \end_layout
 
 \begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/EclipseStruktur.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Hier wird nur auf die SIMPL relevanten Komponenten von Eclipse eingegangen.
- Dies sind nur die Extension Points die für die Einbindung in das Framework
- und die grafische Darstellung verantwortlich sind.
- Im folgenden werden diese näher erläutert :
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Menu View
-\begin_inset Quotes erd
-\end_inset
-
- stellt die Auswahlmöglicheiten als Drop-Down Liste dar, die auf die verschieden
-e Funktionsbereiche des Plug-Ins referenziert.
- Der Extension Point “Menu” wird im Rahmen von SIMPL dazu verwendet, um
- ein SIMPL-Menü in Eclipse und später auch zusätzliche Einträge bereitstellen
- zu können.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-View
-\begin_inset Quotes erd
-\end_inset
-
- .
- Die View ist eine Art Fenster zur Darstellung und Eingabe von Daten innerhalb
- von Eclipse, wie z.B.
- ein “ErrorLog”, der alle Fehler und Probleme von Eclipse Projekten anzeigt
- oder eine PropertiesView in der z.B.
- BPEL-Aktivitäten näher speziﬁziert werden.
- Im Rahmen von SIMPL wird z.B.
- eine View verwendet, um die Referenzen für das RRS Plug-In anzuzeigen bzw.
- zu verwalten.
-\end_layout
-
-\begin_layout Subsection
-Eclipse BPEL Designer
-\end_layout
-
-\begin_layout Standard
-Mit dem Eclipse BPEL Designer Plug- In kann der Prozess-Modellierer bereits
- BPEL Prozesse erstellen und auf Apache ODE zum Einsatz bringen.
- Da der BPEL Designer bereits vorhanden ist, wird bei der Beschreibung im
- Rahmen des Feinentwurfes nur auf die relevanten Extension-Points eingegangen.
-\end_layout
-
-\begin_layout Standard
-Extension Points
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-UIObject Factory
-\begin_inset Quotes erd
-\end_inset
-
-.
- Dieser Extension Point ermöglicht das Anbinden neuer UIObjectFactories,
- mit deren Hilfe Instanzen von BPEL Extension Activities erzeugt werden
- können.
- Die so erzeugten Instanzen stehen dann in der BPEL Designer Palette zur
- Verfügung und können zur Modellierung von BPEL-Prozessen verwendet werden.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-PaletteAdditions
-\begin_inset Quotes erd
-\end_inset
-
-.
- Die Palette ist ein Auswahlfenster aller zur Verfügung stehenden BPEL-Konstrukt
-e, dies sind z.B.
- Standard BPEL-Aktivitäten oder eigene Extension Activities.
- Durch diesen Extension Point können eigene Extension Activities in die
- Palette eingefügt und so zur Modellierung von Prozes- sen genutzt werden.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-PropertySections
-\begin_inset Quotes erd
-\end_inset
-
-.
- Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern,
- über die, in das Prozessmodell eingefügte, BPEL-Aktivitäten ausformuliert
- und mit Werten gefüllt werden können.
+Das SIMPL Rahmenwerk besteht aus der vorhandenen Eclipse IDE, dem Eclipse
+ BPEL Designer Plug-In sowie die drei zu erstellenden Plug-Ins BPEL-DM Plug-In,
+ SIMPL Core Plug-In und SIMPL Communications.
+ Im Rahmen des Feinentwurfes wird die Anbindung an die vorhandenen Komponenten
+ sowie die zu erstellenden Komponenten näher erläutert.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -2332,11 +2228,22 @@ BPEL DM Plug-In
 \begin_layout Standard
 Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
  Designer Plug-Ins um die DM-Aktivitäten ergänzt.
- Im folgenden Diagramm sind die Komponenten und Klassen des kompletten Plug-Ins
- dargestellt :
-\end_layout
+ Das Plug- In läßt sich grob in die Pakete User-Interface, Modell und Erweiterun
+g gruppieren.
+ Das User-Interface Paket (org.eclipse.bpel.ui) sorgt für die grafische Darstellung
+ in Eclipse und repräsentiert somit das zugrundeliegende Datenmodell.
+ Dieses befindet sich im Paket org.eclipse.bpel.simpl.model.
+ Für die Darstellung von Erweiterungen wird beispielhaft ein SQL Plug-In
+ (Paketorg.eclipse.bpel.simpl.ui.sql) verwendet.
+ Im folgenden Diagramm sind die Pakete und Klassen des kompletten Plug-Ins
+ dargestellt um eine leichten Überblick zu ermöglichen.
+ Diese Pakete und Klassen werden in den folgenden Unterkapitel näher erläutert.
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Overview.png
@@ -2347,15 +2254,66 @@ Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In"
+
+\end_inset
+
+BPEL DM Plug-In
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 BPEL DM Plug-In User-Interface
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename diagramme/iteration1/BPEL-DM Plug-In UI.png
-	width 100text%
+	filename C:/Users/Daniel/Desktop/SVN/simpl09/documents/Feinentwurf/diagramme/iteration1/BPEL-DM Plug-In UI.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In UI"
+
+\end_inset
+
+BPEL DM Plug-In User-Interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -2363,12 +2321,24 @@ BPEL DM Plug-In User-Interface
 \end_layout
 
 \begin_layout Standard
-Das Paket org.eclipse.bpel.simpl.ui ist für die Darstellung des zugrundeliegenden
- Datenmodells zuständig.
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In UI"
+
+\end_inset
+
+ zeigt den Aufbau der Darstellung des Datenmodells.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
 org.eclipse.bpel.simpl.adapters
+\end_layout
+
+\begin_layout Standard
+Die Paket mit den verschiedenen Adapter-Klassen ist die Verbindung zu den
+ Aktivitäten von BPEL.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2376,7 +2346,8 @@ org.eclipse.bpel.simpl.extensions
 \end_layout
 
 \begin_layout Standard
-Die Klasse beinhaltet ein Interface für die Statement Editoren für Erweiterungen.
+Die Paket beinhaltet ein Interface für die Statement Editoren für Erweiterungen.
+ Das Interface I
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2413,11 +2384,45 @@ pertySections.
 BPEL DM Plug-In Modell
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Model.png
 	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In Modell"
+
+\end_inset
+
+BPEL DM Plug-In Modell
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -2445,9 +2450,39 @@ BPEL DM Plug-In Extension Modell
 
 \begin_layout Standard
 \align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Extensions.png
 	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In Extension Modell"
+
+\end_inset
+
+BPEL DM Plug-In Extension Modell 
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
