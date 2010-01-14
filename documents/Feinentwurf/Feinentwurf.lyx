@@ -1019,7 +1019,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/SIMPLCore_Class_Diagram.png
-	width 80text%
+	width 100text%
 
 \end_inset
 
@@ -2733,7 +2733,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/SIMPLRahmenwerkKommunikation.png
-	width 80text%
+	width 100text%
 
 \end_inset
 
