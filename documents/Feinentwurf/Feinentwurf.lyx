@@ -950,8 +950,8 @@ Eclipse Plug-Ins
 \begin_inset Quotes erd
 \end_inset
 
- beschreibt die Implementierung der Plug-Ins, die für das SIMPL Rahmenwerk
- realisiert werden.
+ beschreibt die Implementierung der Eclipse Plug-Ins, die für das SIMPL
+ Rahmenwerk realisiert werden.
  (siehe
 \begin_inset CommandInset citation
 LatexCommand cite
