@@ -865,8 +865,8 @@ key "key-1"
  in Kapitel 3 vorgestellt wurden.
  Die Komponenten werden ausführlich beschrieben und ihre Funktionalität
  durch statische und dynamische UML-Diagramme visualisiert.
- Der Feinentwurf bezieht sich im Gegensatz zum Grobentwurf nur auf die aktuelle
- Iteration und wird mit den folgenden Iterationen vervollständigt.
+ Der Feinentwurf bezieht sich im Gegensatz zum Grobentwurf aktuell nur auf
+ die erste Iteration und wird mit der zweiten Iteration vervollständigt.
  Grobentwurf und Feinentwurf bilden zusammen den Gesamtentwurf des SIMPL
  Rahmenwerks.
 \end_layout
@@ -922,7 +922,8 @@ Apache ODE
 \begin_inset Quotes erd
 \end_inset
 
- beschreibt die Implementierung der DM-Aktivitäten und das externe Auditing.
+ beschreibt die Implementierung der Datamanagement-Aktivitäten (DM-Aktivitäten)
+ und das externe Auditing.
  (siehe
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1446,7 +1447,7 @@ name "sub:SIMPLCore"
 
 \end_inset
 
-SIMPLCore
+Die SIMPLCore Klasse
 \end_layout
 
 \begin_layout Standard
@@ -1567,7 +1568,7 @@ Komplexe Objekte wie z.B.
  verfügen und in dieser direkt übermittelt werden können.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Datasource Web Service (WSDatasource)
 \begin_inset Note Note
 status collapsed
@@ -1627,7 +1628,7 @@ reference "sub:Datasource-Plug-Ins"
  die existierenden Tabellen in einer Datenbank.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Administration Web Service (WSAdministration)
 \begin_inset Note Note
 status collapsed
@@ -1654,7 +1655,7 @@ Der Administration Web Service ist die direkte Schnittstelle des Administration
  als String-Parameter gehandhabt werden.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Storage Web Service (WSStorage)
 \begin_inset Note Note
 status collapsed
