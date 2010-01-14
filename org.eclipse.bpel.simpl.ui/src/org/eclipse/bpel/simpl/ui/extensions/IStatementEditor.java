@@ -43,4 +43,6 @@ public interface IStatementEditor {
 	 */
 	public void setStatement(String statement);
 
+	//void createComposite(Composite composite, String dataSourceType);
+
 }
