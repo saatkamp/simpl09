@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -800,7 +800,7 @@ Diagramme überarbeitet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.9
 \end_layout
 
 \end_inset
@@ -809,7 +809,7 @@ Diagramme überarbeitet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+15.02.2010
 \end_layout
 
 \end_inset
@@ -818,7 +818,7 @@ Diagramme überarbeitet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+bruededl
 \end_layout
 
 \end_inset
@@ -827,7 +827,7 @@ Diagramme überarbeitet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Kapitel 4 überarbeitet
 \end_layout
 
 \end_inset
@@ -2215,8 +2215,8 @@ Eclipse
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk besteht aus der vorhandenen Eclipse IDE, dem Eclipse
- BPEL Designer Plug-In sowie die drei zu erstellenden Plug-Ins BPEL-DM Plug-In,
- SIMPL Core Plug-In und SIMPL Communications.
+ BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins BPEL-DM Plug-In,
+ SIMPL Core Plug-In und SIMPL Communications Plug-In.
  Im Rahmen des Feinentwurfes wird die Anbindung an die vorhandenen Komponenten
  sowie die zu erstellenden Komponenten näher erläutert.
  
@@ -2349,8 +2349,13 @@ org.eclipse.bpel.simpl.extensions
 \end_layout
 
 \begin_layout Standard
-Die Paket beinhaltet ein Interface für die Statement Editoren für Erweiterungen.
- Das Interface I
+Das Interface IStatementeEditor vererbt an die abstrakte Klasse AStatementEditor
+ und diese gibt die Rahmenbedingungen für die Einbindung von Statement-Editoren
+ für neue Anfragsprachen vor.
+ Dabei handelt es sich um Composites die den Inhalt des Fensters beinhalten
+ und Statements die den eigentlichen Befehl beinhalten.
+ Die Anbindung von StatementEditor-Implementierungene erfolgt dabei über
+ den Extension Point org.eclipse.bpel.simpl.ui.queryLanguage.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2358,7 +2363,11 @@ org.eclipse.bpel.simpl.factories
 \end_layout
 
 \begin_layout Standard
-Die beiden Klassen erzeugen die Adapter Objekte und normale Objekte.
+Die beiden Klassen erzeugen Objekte für die grafische Plazierung in der
+ Modellierungsumgebung.
+ Die Klasse DataManagementUIOObjectFactory erzeugt die Objekte der jeweiligen
+ Aktivität und die Klasse DataManagementUIAdapterFactory die zugehörigen
+ Adapter für Eclipse.
  Die Anbindung erfolgt über den Extension Point org.eclipse.bpel.ui.uiObjectFactorie
 s.
 \end_layout
@@ -2368,7 +2377,9 @@ org.eclipse.bpel.simpl.palette
 \end_layout
 
 \begin_layout Standard
-Beinhaltet die grafische Palette der Aktivitäten für den BPEL Designer..
+Beinhaltet die grafische Palette der Aktivitäten für den BPEL Designer.
+ Hier werden die verfügbaren Aktivitäten des BPEL Designers und von SIMPL
+ dargestellt und können ausgewählt und auf dem Arbeitsplatz verwendet werden.
  Anbindung erfolgt über den Extension Point org.eclipse.bpel.common.ui.paletteAdditio
 ns.
 \end_layout
@@ -2381,10 +2392,38 @@ org.eclipse.bpel.simpl.properties
 Beinhaltet die Anzeige der Eigenschaften der jeweiligen DM Aktivitäten.
  Anbindung erfolgt über den Extension Point org.eclipse.ui.views.properties.tabbed.pro
 pertySections.
+ Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
+s ausgewählt werden.
+ Zu den Optionen gehört primär die Angabe der Datenquellenart, wie Datenbank,
+ Sensornetz oder ein Filesystem.
+ Je nach gewählter Art kann dann unter 
+\begin_inset Quotes eld
+\end_inset
+
+Subtype
+\begin_inset Quotes erd
+\end_inset
+
+ die Auswahl verfeinert werden und es kann z.B.
+ beim Filesystem NTFS oder FAT3 gewählt werden.
+ Bei einer Datenbank kann zwischen DB2 und MySQL gewählt werden, beim Sensornetz
+ TinyDB wird unterstützt.
+ Bei jeder Auswahl muß dann die Datenquelle ausgewählt werden.
+ Der resultierende Befehl ( resulting Statement) kann dann angezeigt werden
+ und im Statement Editor bearbeitet werden.
+ Bei der Auswahl der DM Aktivitäten werden Optionen die nicht möglich sind,
+ nicht zur Auswahl freigegeben.
+ Es ist beispielhaft nicht möglich bei einer Insert-DM-Aktivität ein Sensornetz
+ auszuwählen.
 \end_layout
 
 \begin_layout Subsubsection
 BPEL DM Plug-In Modell
+\end_layout
+
+\begin_layout Standard
+Das BPEL DM Plug-In Modell stellt die Pakete und Klassen der Datenstruktur
+ bei den SIMPL DM Aktivitäten dar.
 \end_layout
 
 \begin_layout Standard
@@ -2433,10 +2472,17 @@ BPEL DM Plug-In Modell
 \end_layout
 
 \begin_layout Standard
-Das Paket org.eclipse.bpel.simpl.model beinhaltet das Datenmodell.
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In Modell"
+
+\end_inset
+
+stellt das SIMPL Datenmodell dar.
  An oberster Stelle steht die DataManagementActivity-Klasse ( Interface)
  welche mit den Variablen dsType, dsKind, dsAddress und dsStatement die
- gemeinsame Schnittmenge der Aktivitäten bildet.
+ gemeinsame Schnittmenge der Aktivitätenvariablen bildet.
  Diese werden an die Kindklassen wie z.B.
  QueryActivity ( Interface) vererbt und um schnittstellenspezifische Eigenschaft
 en erweitert.
@@ -2445,6 +2491,7 @@ en erweitert.
  in der Klasse QueryActivityImpl.
  Im Paket org.eclipse.bpel.simpl.model.util befinden sich Zubehörklassen wie
  Serializer und Deserializer.
+ Diese übernehmen die die Erstellung von BPEL Files sowie deren auslesen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2493,10 +2540,18 @@ BPEL DM Plug-In Extension Modell
 \end_layout
 
 \begin_layout Standard
-Das Paket org.eclipse.bpel.simpl.ui.sql steht beispielhaft für eine Erweiterung
- um um eine Benutzeroberfläche für die Anfragesprache SQL.
- Enthalten ist ein Aktivator sowie die Auswahlmöglichkeiten für den Statement
- Editor org.eclipse.bpel.simpl.ui.extensions.AStatementEditor.
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In Extension Modell"
+
+\end_inset
+
+des Paket org.eclipse.bpel.simpl.ui.sql.editor steht beispielhaft für eine Erweiterung
+ des Statementeditor um die Anfragesprache SQL.
+ Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse org.eclipse.b
+pel.simpl.ui.extensions.AStatementEditor und realisieren die elemtaren Aktivitäten
+ wie Select und Insert.
  Jede Erweiterung kann am Extension Point org.eclipse.bpel.simpl.ui.queryLanguage
  angeschlossen werden.
 \end_layout
@@ -2506,183 +2561,132 @@ SIMPL Core Plug-In
 \end_layout
 
 \begin_layout Standard
-Das SIMPL Core Plug-In besteht aus dem Paket Admin-Konsole und SIMPL Core
- Client.
- Jede Kommunikation des SIMPL Core Plug-In mit dem SIMPL Core wird durch
- SIMPL Core Client realisiert.
-\end_layout
-
-\begin_layout Subsubsection*
-Admin-Konsole
+Das SIMPL Core Plug-In kümmert sich um die Integration von SIMPL in die
+ Eclipse Menüleiste und erzeugt die Admin-Konsole zur Verwaltung der Einstellung
+en.
+ In der Admin-Konsole kann in der 1.
+ Iteration das Auditing de- und aktiviert werden, die Auditing Datenbank
+ festgelegt werden und ermöglicht eine Authentifizierung durch Benutzername
+ und Passwort.
 \end_layout
 
 \begin_layout Standard
-Durch diese grafischen Benutzeroberfläche wird SIMPL verwaltet.
- Die Admin-Konsole besteht nur aus Extension Points um eine größtmögliche
- Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL_Core_PlugIn.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Core-Plug-In "
+
+\end_inset
+
+SIMPL Core Plug-In Klassendiagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core-Plug-In "
+
+\end_inset
+
+zeigt das Klassendiagramm des SIMPL Core Plug-In.
+ Durch diese grafischen Benutzeroberfläche wird SIMPL verwaltet.
+ Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen um eine
+ größtmögliche Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
  Das bedeutet die Einträge die bereits bei der Auslieferung von SIMPL in
  der Admin-Konsole vorhanden sind, wurden auch durch Extension Points realisert
  und können gegebenfalls leicht ausgetauscht werden.
  Weitere Einträge können am Extension Points ACItem hinzugefügt werden.
  Bei der Auslieferung sind die Funktionen Auditing und Global Settings bereits
  durch Extension Points eingebunden.
- 
-\end_layout
-
-\begin_layout Subsubsection*
-Pakete, Klassen und wichtige Methoden
-\end_layout
-
-\begin_layout Description
-org.eclipse.simpl.core.globalSettings 
-\end_layout
-
-\begin_layout Standard
-Beinhaltet die 
+ Die Einträge in der Admin-Konsole werden in einer Baumstruktur gehalten
+ ( TreeItems, Klasse Application) und werden auf der linken Seite in der
+ Admin-Konsole angezeigt.
+ Aus Performance Gründen wird die Kommunikation zum SIMPL Core auf ein Minimum
+ reduziert und Einstellungen werden so lange wie möglich lokal in einem
+ Buffer gehalten.
+ Die Buttons der Admin-Konsole bieten die Möglichkeiten 
 \begin_inset Quotes eld
 \end_inset
 
-Activator
+Default
 \begin_inset Quotes erd
 \end_inset
 
--Klasse mit den Methoden :
-\end_layout
+,
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Standard
-stop(BundleContext context)
-\end_layout
+Reset
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Standard
-start(BundleContext context)
-\end_layout
-
-\begin_layout Standard
-Activator getDefault()
-\end_layout
-
-\begin_layout Standard
-Activator()
-\end_layout
-
-\begin_layout Description
-org.eclipse.simpl.core.globalSettings.ui
-\end_layout
-
-\begin_layout Standard
-Beinhaltet die Klasse 
+, 
 \begin_inset Quotes eld
 \end_inset
 
-AuthentificationComposite
+Save
 \begin_inset Quotes erd
 \end_inset
 
- mit den Methoden :
-\end_layout
-
-\begin_layout Standard
-saveSettingsToBuffer()
-\end_layout
-
-\begin_layout Standard
-saveSettings(String parentItem, String item, String settingName)
-\end_layout
-
-\begin_layout Standard
-loadSettingsFromBuffer()
-\end_layout
-
-\begin_layout Standard
-loadSettings(String parentItem, String item, String settingName)
-\end_layout
-
-\begin_layout Standard
-haveSettingsChanged()
-\end_layout
-
-\begin_layout Standard
-createComposite(Composite composite)
-\end_layout
-
-\begin_layout Description
-org.eclipse.simpl.core.auditing
-\end_layout
-
-\begin_layout Standard
-Beinhaltet die Klasse 
+ und 
 \begin_inset Quotes eld
 \end_inset
 
-Activator
+Close
 \begin_inset Quotes erd
 \end_inset
 
- mit den Methoden :
-\end_layout
-
-\begin_layout Standard
-Activator getDefault()
-\end_layout
-
-\begin_layout Standard
-Activator()
-\end_layout
-
-\begin_layout Standard
-start(BundleContext context)
-\end_layout
-
-\begin_layout Standard
-stop(BundleContext context)
-\end_layout
-
-\begin_layout Description
-org.eclipse.simpl.core.auditing.ui
-\end_layout
-
-\begin_layout Standard
-Beinhaltet die Klasse 
+.
+ Es erfolgt zum Beispiel bei 
 \begin_inset Quotes eld
 \end_inset
 
-AuditingGeneralComposite
+Save
 \begin_inset Quotes erd
 \end_inset
 
- mit den Methoden :
-\end_layout
+ ein Zugriff auf den SIMPL Core, aber bei 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
-loadSettings(String parentItem, String item, String settingName)
-\end_layout
+Default
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Standard
-loadSettingsFromBuffer()
-\end_layout
-
-\begin_layout Standard
-saveSettings(String parentItem, String item, String settingName)
-\end_layout
-
-\begin_layout Standard
-saveSettingsToBuffer()
-\end_layout
-
-\begin_layout Subsection
-RRS Plug-In
-\end_layout
-
-\begin_layout Standard
-Mit dem RRS Plug-In wird die Verbindung zum Reference Resolution System
- (RRS) geschaﬀen.
- Dadurch können Referenzen verwaltet werden und falls Referenzen bei der
- Modellierung verwendet wurden, eine Modelltransformation vor dem Deployment
- durchgeführt werden.
- Dazu benutzt das Plug-In den RRSAdministrationService und den RRSTransformation
-Service.
- Die Verwaltung geschieht dabei über den Storage Service vom SIMPL Core.
- Weitere Details werden in der nächsten Iteration folgen.
+ wir auf den Buffer zugegriffen da die Daten schon von beim Starten von
+ SIMPL in den Buffer geladen wurden.
 \end_layout
 
 \begin_layout Subsection
