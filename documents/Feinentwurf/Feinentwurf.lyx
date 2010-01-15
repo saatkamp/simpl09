@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Feinentwurf}
-\def\docvers{0.1}
+\def\docvers{1.0}
 \def\docautor{}
-\def\docdate{13. Januar 2010}
+\def\docdate{15. Januar 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -751,7 +751,7 @@ bruededl
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 4
+Beschreibung Kapitel 4
 \end_layout
 
 \end_inset
@@ -789,7 +789,11 @@ hahnml
 \begin_inset Text
 
 \begin_layout Plain Layout
-Diagramme überarbeitet
+Diagramme Kapitel 4 und 5
+\end_layout
+
+\begin_layout Plain Layout
+Beschreibung Kapitel 2.2.1, 2.2.2
 \end_layout
 
 \end_inset
@@ -1012,6 +1016,7 @@ reference "fig:SIMPL-Core-Klassendiagramm"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1181,6 +1186,7 @@ Der Administration Service ist für die Verwaltung der Einstellungen der
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1189,7 +1195,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/AdminServiceSequence.png
-	width 80text%
+	width 100text%
 
 \end_inset
 
@@ -1307,6 +1313,7 @@ Security
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1315,7 +1322,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/StorageServiceSequence.png
-	width 80text%
+	width 100text%
 
 \end_inset
 
@@ -1776,6 +1783,7 @@ Weiterhin ist es notwendig ein eigenes ExtensionBundle zu implementieren.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1842,6 +1850,7 @@ reference "fig:SIMPL-Event-System"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -1954,6 +1963,7 @@ success
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2240,6 +2250,7 @@ g gruppieren.
  dargestellt um eine leichten Überblick zu ermöglichen.
  Diese Pakete und Klassen werden in den folgenden Unterkapitel näher erläutert.
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2285,6 +2296,7 @@ BPEL DM Plug-In User-Interface
 \begin_layout Standard
 \align center
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2429,6 +2441,7 @@ Das BPEL DM Plug-In Modell stellt die Pakete und Klassen der Datenstruktur
 \begin_layout Standard
 \align center
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2501,6 +2514,7 @@ BPEL DM Plug-In Extension Modell
 \begin_layout Standard
 \align center
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -2572,13 +2586,16 @@ en.
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration1/SIMPL_Core_PlugIn.png
+	width 100text%
 
 \end_inset
 
