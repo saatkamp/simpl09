@@ -18,19 +18,20 @@ import org.eclipse.swt.widgets.Listener;
 
 public class SelectEditor extends AStatementEditor {
 
+	
+	public SelectEditor() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	private Composite comp = null;
 	private Composite compos = null;
 	private StyledText statementText = null;
 	private List listOfTabells=null;
 	private Font keyWordFont = new Font(comp.getDisplay(), "Courier New", 16, SWT.NORMAL);
 	private String createdStatment=null;
-	public SelectEditor() {
-		// TODO Auto-generated constructor stub
-	}
 	
-	
-	@Override
 	public void createComposite(Composite composite) {
+		System.out.print("checkpoint");
 		GridData gridData1 = new GridData();
 		gridData1.horizontalAlignment = GridData.FILL;
 		gridData1.grabExcessHorizontalSpace = true;
@@ -52,9 +53,6 @@ public class SelectEditor extends AStatementEditor {
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
 		comp.setLayoutData(gridData);
-		
-		
-		
 		statementText = new StyledText(comp, SWT.BORDER);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
@@ -65,21 +63,13 @@ public class SelectEditor extends AStatementEditor {
 				setStatement(statementText.getText());
 			}});
 		
-		if(statementText.getText().length()>0){
-			EditTheUIFromStatment(); //parse the statment in UI-Elemente
-		}
-		else{
-			BuildUIElements(); 
-		}
-			
-		
-		
 		setComposite(comp);
 		
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 		}
 	}
+
 
 	/**
 	 * for creating the UI in the Editor
