@@ -1,10 +1,17 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
-import org.eclipse.bpel.simpl.model.ModelPackage;
-
 import java.util.List;
+
+import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
@@ -33,6 +40,8 @@ public class InsertPropertySection extends DMActivityPropertySection {
 	private Composite parentComposite = null;
 	private String language = null;
 
+	private InsertActivity activity;
+	
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -44,8 +53,20 @@ public class InsertPropertySection extends DMActivityPropertySection {
 
 	@Override
 	protected void createClient(Composite parent) {
+		//Setzen die im Editor ausgewählte Aktivität als Input.
+		setInput(getPart(), getBPELEditor().getSelection());
+		//Laden der Aktivität
+		this.activity = getModel();
+		
 		createWidgets(parent);
-		setStatement(loadStatementFromModel());
+		
+		//Setzen das Statement
+		setStatement(activity.getDsStatement());
+		//Setzen die Datenquellenadresse
+		dataSourceAddressText.setText(activity.getDsAddress());
+		
+		//Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
+		//geladen und in den ComboBoxes selektiert.
 	}
 
 	/**
@@ -112,6 +133,14 @@ public class InsertPropertySection extends DMActivityPropertySection {
 		dataSourceAddressLabel = new Label(composite, SWT.NONE);
 		dataSourceAddressText = new Text(composite, SWT.BORDER);
 		dataSourceAddressText.setLayoutData(gridData12);
+		//Änderungen im Modell speichern
+		dataSourceAddressText.addModifyListener(new ModifyListener(){
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				getCommandFramework().execute(
+						new SetDsAddressCommand(getModel(), dataSourceAddressText.getText()));
+			}});
 		dataSourceAddressLabel.setText("Address of the data source:");
 		dataSourceAddressLabel.setLayoutData(gridData31);
 		dataSourceAddressLabel.setBackground(Display.getCurrent()
@@ -153,7 +182,7 @@ public class InsertPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(ModelPackage.eINSTANCE.getInsertActivity()
+				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
 						.getInstanceClassName(), language);
 			}
 		});
@@ -197,10 +226,6 @@ public class InsertPropertySection extends DMActivityPropertySection {
 		statementText.setVisible(false);
 		statementText.setLayoutData(gridData1);
 		statementText.setEditable(false);
-
-//		// TODO Statement aus SourceCode laden falls vorhanden
-//		// TODO Statement-Wert aus ?Modell? lesen und in Textfeld schreiben
-//		statementText.setText(loadStatementFromModel());
 	}
 
 	/**
@@ -217,7 +242,7 @@ public class InsertPropertySection extends DMActivityPropertySection {
 				SWT.COLOR_WHITE));
 		typeCombo.setLayoutData(gridData2);
 
-		// Aktualisieren der typeCombo-Daten
+		// Initialisieren der typeCombo-Daten
 		typeCombo.setItems(Constants.getDataSourceTypes()
 				.toArray(new String[0]));
 		// Aktualisieren der KindCombo-Daten
@@ -232,9 +257,15 @@ public class InsertPropertySection extends DMActivityPropertySection {
 				kindCombo.setItems(Constants.getDataSourceSubTypes(
 						typeCombo.getItem(typeCombo.getSelectionIndex()))
 						.toArray(new String[0]));
+				//Speichern Auswahl in Modell
+				getCommandFramework().execute(
+						new SetDsTypeCommand(getModel(), typeCombo.getItem(typeCombo.getSelectionIndex())));
 			}
 		});
 		typeCombo.setEditable(false);
+	
+		//Wert aus Modell selektieren
+		typeCombo.select(typeCombo.indexOf(this.activity.getDsType()));
 	}
 
 	/**
@@ -251,7 +282,14 @@ public class InsertPropertySection extends DMActivityPropertySection {
 		kindCombo.setToolTipText("Choose the subtype of data source");
 		kindCombo.setEditable(false);
 		kindCombo.setLayoutData(gridData6);
-
+		
+		// Initilisieren der kindCombo-Daten
+		if (typeCombo.getSelectionIndex()>0){
+			kindCombo.setItems(Constants.getDataSourceSubTypes(
+					typeCombo.getItem(typeCombo.getSelectionIndex()))
+					.toArray(new String[0]));
+		}
+		
 		kindCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -273,12 +311,17 @@ public class InsertPropertySection extends DMActivityPropertySection {
 					languageLabel.setVisible(false);
 					language = languages.get(0);
 				}
+				//Speichern Auswahl in Modell
+				getCommandFramework().execute(
+						new SetDsKindCommand(getModel(), kindCombo.getItem(kindCombo
+								.getSelectionIndex())));
 			}
 		});
+		
+		//Wert aus Modell selektieren
+		kindCombo.select(kindCombo.indexOf(this.activity.getDsKind()));
 	}
 	
-	
-
 	@Override
 	public String getStatement() {
 		// TODO Auto-generated method stub
@@ -292,18 +335,9 @@ public class InsertPropertySection extends DMActivityPropertySection {
 		statementText.setText(statement);
 	}
 
-	
-	@Override
-	public String loadStatementFromModel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public void saveStatementToModel() {
-		// TODO Auto-generated method stub
-		
+		getCommandFramework().execute(
+				new SetDsStatementCommand(getModel(), this.statement));
 	}
-
-
 }

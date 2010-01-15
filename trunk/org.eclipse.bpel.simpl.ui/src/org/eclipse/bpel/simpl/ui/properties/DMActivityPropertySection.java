@@ -24,8 +24,6 @@ public abstract class DMActivityPropertySection extends BPELPropertySection{
 	
 	public abstract String getStatement();
 	
-	public abstract String loadStatementFromModel();
-	
 	public abstract void saveStatementToModel();
 
 }
