@@ -31,9 +31,10 @@ public class SelectEditor extends AStatementEditor {
 	private List listOfTabells=null;
 	private Font keyWordFont = new Font(comp.getDisplay(), "Courier New", 16, SWT.NORMAL);
 	private String createdStatment=null;
+	private int counter=0;
 	
 	List  listOfTables=new List(comp,SWT.NONE);
-	List  listOfColoms=new List(comp,SWT.NONE);
+	List  listOfColumn=new List(comp,SWT.NONE);
 	
 	public void createComposite(Composite composite) {
 		System.out.print("checkpoint");
@@ -101,7 +102,7 @@ public class SelectEditor extends AStatementEditor {
 		        	  //AddEneterisToStatmentString("\r"+","+listOfTables.getItem(selectedItems[loopIndex]));  
 		          //}
 		    	  LoadColumsAccordingToTable(listOfTables.getItem(listOfTables.getSelectionIndex()));
-		    	  AddEneterisToStatmentString("\r"+listOfTables.getItem(listOfTables.getSelectionIndex()));
+		    	  AddEneterisToStatmentString("\r	"+listOfTables.getItem(listOfTables.getSelectionIndex()));
 		          
 		        }
 
@@ -113,7 +114,7 @@ public class SelectEditor extends AStatementEditor {
 		    	  	
 		        //}
 		    	  LoadColumsAccordingToTable(listOfTables.getItem(listOfTables.getSelectionIndex()));
-		    	  AddEneterisToStatmentString("\r"+listOfTables.getItem(listOfTables.getSelectionIndex()));
+		    	  AddEneterisToStatmentString("\r	"+listOfTables.getItem(listOfTables.getSelectionIndex()));
 		        }
 		    });
 		    
@@ -123,21 +124,29 @@ public class SelectEditor extends AStatementEditor {
 	 * 
 	 */
 	private void CreatListOfColoms(){
-		listOfColoms.addSelectionListener(new SelectionListener() {
+		
+		listOfColumn.addSelectionListener(new SelectionListener() {
 		      public void widgetSelected(SelectionEvent event) {
-		          int[] selectedItems = listOfColoms.getSelectionIndices();
-		          for (int loopIndex = 1; loopIndex < selectedItems.length; loopIndex++){
-		        	  AddEneterisToStatmentString("\r"+","+listOfColoms.getItem(selectedItems[loopIndex]));  
-		          }
+		    	  counter++;
+		    	  if(counter>1){ //every second column title should have "," before it. 
+		    		  AddEneterisToStatmentString(","+listOfColumn.getItem(listOfTables.getSelectionIndex()));
+		    	  }
+		    	  else{ //the first colom Titel shold be written in new line
+		    		  AddEneterisToStatmentString("\r"+listOfColumn.getItem(listOfTables.getSelectionIndex()));
+
+		    	  }
 		          
 		        }
 
 		      public void widgetDefaultSelected(SelectionEvent event) {
-		          int[] selectedItems = listOfColoms.getSelectionIndices();
-		          AddEneterisToStatmentString("\r"+listOfColoms.getItem(selectedItems[0])); 
-		          for (int loopIndex = 1; loopIndex < selectedItems.length; loopIndex++)
-		        	  AddEneterisToStatmentString("\r"+","+listOfColoms.getItem(selectedItems[loopIndex]));  
+		          counter++;
+		    	  if(counter>1){ //every second column title should have "," before it. 
+		    		  AddEneterisToStatmentString(","+listOfColumn.getItem(listOfTables.getSelectionIndex()));
+		    	  }
+		    	  else{ //the first colom Titel shold be written in new line
+		    		  AddEneterisToStatmentString("\r"+listOfColumn.getItem(listOfTables.getSelectionIndex()));
 
+		    	  }
 		        }
 		    });
 	}
@@ -215,7 +224,7 @@ public class SelectEditor extends AStatementEditor {
 	private void LoadColumsAccordingToTable(String tableName){
 		ArrayList<String> dSourceColomsOfTable =new ArrayList<String>()/*=Data Source coloms*/; //TODO: get Coloms of table tableName from Source
 		for(int i=0;i<dSourceColomsOfTable.size();i++){
-			listOfColoms.add(dSourceColomsOfTable.get(i));
+			listOfColumn.add(dSourceColomsOfTable.get(i));
 		}
 		
 	}
