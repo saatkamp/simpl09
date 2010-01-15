@@ -182,7 +182,7 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
+				openStatementEditor(ModelPackage.eINSTANCE.getUpdateActivity()
 						.getInstanceClassName(), language);
 			}
 		});
