@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2356,7 +2356,7 @@ org.eclipse.bpel.simpl.adapters
 \end_layout
 
 \begin_layout Standard
-Die Paket mit den verschiedenen Adapter-Klassen ist die Verbindung zu den
+Das Paket mit den verschiedenen Adapter-Klassen ist die Verbindung zu den
  Aktivitäten von BPEL.
 \end_layout
 
@@ -2370,7 +2370,7 @@ Das Interface IStatementeEditor vererbt an die abstrakte Klasse AStatementEditor
  für neue Anfragsprachen vor.
  Dabei handelt es sich um Composites die den Inhalt des Fensters beinhalten
  und Statements die den eigentlichen Befehl beinhalten.
- Die Anbindung von StatementEditor-Implementierungene erfolgt dabei über
+ Die Anbindung von StatementEditor-Implementierungen erfolgt dabei über
  den Extension Point org.eclipse.bpel.simpl.ui.queryLanguage.
 \end_layout
 
@@ -2423,7 +2423,7 @@ Subtype
  die Auswahl verfeinert werden und es kann z.B.
  beim Filesystem NTFS oder FAT3 gewählt werden.
  Bei einer Datenbank kann zwischen DB2 und MySQL gewählt werden, beim Sensornetz
- TinyDB wird unterstützt.
+ wird TinyDB unterstützt.
  Bei jeder Auswahl muß dann die Datenquelle ausgewählt werden.
  Der resultierende Befehl ( resulting Statement) kann dann angezeigt werden
  und im Statement Editor bearbeitet werden.
@@ -2458,10 +2458,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2621,10 +2617,6 @@ SIMPL Core Plug-In Klassendiagramm
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
