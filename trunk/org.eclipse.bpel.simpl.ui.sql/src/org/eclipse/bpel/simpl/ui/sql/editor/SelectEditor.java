@@ -1,5 +1,7 @@
 package org.eclipse.bpel.simpl.ui.sql.editor;
 
+import java.util.ArrayList;
+
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -29,6 +31,9 @@ public class SelectEditor extends AStatementEditor {
 	private List listOfTabells=null;
 	private Font keyWordFont = new Font(comp.getDisplay(), "Courier New", 16, SWT.NORMAL);
 	private String createdStatment=null;
+	
+	List  listOfTables=new List(comp,SWT.NONE);
+	List  listOfColoms=new List(comp,SWT.NONE);
 	
 	public void createComposite(Composite composite) {
 		System.out.print("checkpoint");
@@ -78,6 +83,7 @@ public class SelectEditor extends AStatementEditor {
 		// TODO Auto-generated method stub
 		CreatButtons();
 		CreatListOfTables();
+		LoadTablesIntoList();
 		
 	}
 
@@ -86,26 +92,57 @@ public class SelectEditor extends AStatementEditor {
 	 */
 	private void CreatListOfTables() {
 		// TODO Auto-generated method stub
-		final List  listOfTables=new List(comp,SWT.NONE);
+		
 		listOfTables.addSelectionListener(new SelectionListener() {
 		      public void widgetSelected(SelectionEvent event) {
-		          int[] selectedItems = listOfTables.getSelectionIndices();
+		          //int[] selectedItems = listOfTables.getSelectionIndices();
+		          //for (int loopIndex = 1; loopIndex < selectedItems.length; loopIndex++){
+		        	  
+		        	  //AddEneterisToStatmentString("\r"+","+listOfTables.getItem(selectedItems[loopIndex]));  
+		          //}
+		    	  LoadColumsAccordingToTable(listOfTables.getItem(listOfTables.getSelectionIndex()));
+		    	  AddEneterisToStatmentString("\r"+listOfTables.getItem(listOfTables.getSelectionIndex()));
+		          
+		        }
+
+		      public void widgetDefaultSelected(SelectionEvent event) {
+		          //int[] selectedItems = listOfTables.getSelectionIndices();
+		          //AddEneterisToStatmentString("\r"+listOfTables.getItem(selectedItems[0])); 
+		          //for (int loopIndex = 1; loopIndex < selectedItems.length; loopIndex++)
+		        	  //AddEneterisToStatmentString("\r"+","+listOfTables.getItem(selectedItems[loopIndex]));  
+		    	  	
+		        //}
+		    	  LoadColumsAccordingToTable(listOfTables.getItem(listOfTables.getSelectionIndex()));
+		    	  AddEneterisToStatmentString("\r"+listOfTables.getItem(listOfTables.getSelectionIndex()));
+		        }
+		    });
+		    
+	}
+	
+	/**
+	 * 
+	 */
+	private void CreatListOfColoms(){
+		listOfColoms.addSelectionListener(new SelectionListener() {
+		      public void widgetSelected(SelectionEvent event) {
+		          int[] selectedItems = listOfColoms.getSelectionIndices();
 		          for (int loopIndex = 1; loopIndex < selectedItems.length; loopIndex++){
-		        	  AddEneterisToStatmentString("\r"+","+listOfTables.getItem(selectedItems[loopIndex]));  
+		        	  AddEneterisToStatmentString("\r"+","+listOfColoms.getItem(selectedItems[loopIndex]));  
 		          }
 		          
 		        }
 
 		      public void widgetDefaultSelected(SelectionEvent event) {
-		          int[] selectedItems = listOfTables.getSelectionIndices();
-		          AddEneterisToStatmentString("\r"+listOfTables.getItem(selectedItems[0])); 
+		          int[] selectedItems = listOfColoms.getSelectionIndices();
+		          AddEneterisToStatmentString("\r"+listOfColoms.getItem(selectedItems[0])); 
 		          for (int loopIndex = 1; loopIndex < selectedItems.length; loopIndex++)
-		        	  AddEneterisToStatmentString("\r"+","+listOfTables.getItem(selectedItems[loopIndex]));  
+		        	  AddEneterisToStatmentString("\r"+","+listOfColoms.getItem(selectedItems[loopIndex]));  
 
 		        }
 		    });
-		    
 	}
+	
+	
 	
 	private void AddEneterisToStatmentString(String entery){
 		createdStatment=createdStatment+entery;
@@ -157,6 +194,29 @@ public class SelectEditor extends AStatementEditor {
 	 */
 	private void EditTheUIFromStatment() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * load the tables from DataSource
+	 */
+	private void LoadTablesIntoList(){
+		ArrayList<String> dSourceTables =new ArrayList<String>()/*=Data Source Tables*/; //TODO: get tables from DSource
+		for(int i=0;i<dSourceTables.size();i++){
+			listOfTables.add(dSourceTables.get(i));
+		}
+	}
+	
+	/**
+	 * Load the coloms titels of the selected Table
+	 * in the coloms List 
+	 * @param tableName 
+	 */
+	private void LoadColumsAccordingToTable(String tableName){
+		ArrayList<String> dSourceColomsOfTable =new ArrayList<String>()/*=Data Source coloms*/; //TODO: get Coloms of table tableName from Source
+		for(int i=0;i<dSourceColomsOfTable.size();i++){
+			listOfColoms.add(dSourceColomsOfTable.get(i));
+		}
 		
 	}
 
