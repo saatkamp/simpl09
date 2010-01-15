@@ -18,7 +18,7 @@ public interface IStatementEditor {
 	public Composite getComposite();
 
 	/**
-	 * 
+	 * Sets the composite of a StatementEditor implementation.
 	 * 
 	 * @param composite
 	 */
@@ -42,7 +42,5 @@ public interface IStatementEditor {
 	 * @param statement
 	 */
 	public void setStatement(String statement);
-
-	//void createComposite(Composite composite, String dataSourceType);
 
 }
