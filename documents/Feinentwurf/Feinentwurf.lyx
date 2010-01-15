@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2230,7 +2230,7 @@ Eclipse
 \begin_layout Standard
 Das SIMPL Rahmenwerk besteht aus der vorhandenen Eclipse IDE, dem Eclipse
  BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins BPEL-DM Plug-In,
- SIMPL Core Plug-In und SIMPL Communications Plug-In.
+ SIMPL Core Plug-In und SIMPL Core Client Plug-In.
  Im Rahmen des Feinentwurfes wird die Anbindung an die vorhandenen Komponenten
  sowie die zu erstellenden Komponenten näher erläutert.
  
@@ -2243,16 +2243,16 @@ BPEL DM Plug-In
 \begin_layout Standard
 Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
  Designer Plug-Ins um die DM-Aktivitäten ergänzt.
- Das Plug- In läßt sich grob in die Pakete User-Interface, Modell und Erweiterun
-g gruppieren.
+ Das Plug-In läßt sich grob in die Pakete User-Interface, Modell und Erweiterung
+ gruppieren.
  Das User-Interface Paket (org.eclipse.bpel.ui) sorgt für die grafische Darstellung
  in Eclipse und repräsentiert somit das zugrundeliegende Datenmodell.
  Dieses befindet sich im Paket org.eclipse.bpel.simpl.model.
  Für die Darstellung von Erweiterungen wird beispielhaft ein SQL Plug-In
  (Paketorg.eclipse.bpel.simpl.ui.sql) verwendet.
- Im folgenden Diagramm sind die Pakete und Klassen des kompletten Plug-Ins
- dargestellt um eine leichten Überblick zu ermöglichen.
- Diese Pakete und Klassen werden in den folgenden Unterkapitel näher erläutert.
+ Im folgenden Diagramm sind die Pakete und Klassen des aller Plug-Ins dargestell
+t, um einen leichten Überblick zu ermöglichen.
+ Diese Pakete und Klassen werden in den folgenden Unterkapiteln näher erläutert.
 \begin_inset Float figure
 placement H
 wide false
@@ -2295,6 +2295,16 @@ BPEL DM Plug-In
 
 \begin_layout Subsubsection
 BPEL DM Plug-In User-Interface
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Einleitungstext fehlt noch!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2379,8 +2389,8 @@ org.eclipse.bpel.simpl.factories
 \end_layout
 
 \begin_layout Standard
-Die beiden Klassen erzeugen Objekte für die grafische Plazierung in der
- Modellierungsumgebung.
+Die beiden Klassen in diesem Paket erzeugen Objekte für die grafische Plazierung
+ in der Modellierungsumgebung.
  Die Klasse DataManagementUIOObjectFactory erzeugt die Objekte der jeweiligen
  Aktivität und die Klasse DataManagementUIAdapterFactory die zugehörigen
  Adapter für Eclipse.
@@ -2393,9 +2403,11 @@ org.eclipse.bpel.simpl.palette
 \end_layout
 
 \begin_layout Standard
-Beinhaltet die grafische Palette der Aktivitäten für den BPEL Designer.
- Hier werden die verfügbaren Aktivitäten des BPEL Designers und von SIMPL
- dargestellt und können ausgewählt und auf dem Arbeitsplatz verwendet werden.
+Dieses Paket beinhaltet die grafische Palette der Aktivitäten für den BPEL
+ Designer.
+ Hier werden die verfügbaren Aktivitäten des BPEL Designers und die SIMPL
+ DM-Aktivitäten dargestellt, können ausgewählt und auf dem Arbeitsplatz
+ verwendet werden.
  Anbindung erfolgt über den Extension Point org.eclipse.bpel.common.ui.paletteAdditio
 ns.
 \end_layout
@@ -2405,12 +2417,12 @@ org.eclipse.bpel.simpl.properties
 \end_layout
 
 \begin_layout Standard
-Beinhaltet die Anzeige der Eigenschaften der jeweiligen DM Aktivitäten.
- Anbindung erfolgt über den Extension Point org.eclipse.ui.views.properties.tabbed.pro
-pertySections.
+Beinhaltet die Anzeige der Eigenschaften der jeweiligen DM-Aktivitäten.
+ Die Anbindung erfolgt über den Extension Point org.eclipse.ui.views.properties.tabbe
+d.propertySections.
  Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
 s ausgewählt werden.
- Zu den Optionen gehört primär die Angabe der Datenquellenart, wie Datenbank,
+ Zu den Optionen gehört primär die Angabe des Datenquellentyps, wie Datenbank,
  Sensornetz oder ein Filesystem.
  Je nach gewählter Art kann dann unter 
 \begin_inset Quotes eld
@@ -2423,11 +2435,11 @@ Subtype
  die Auswahl verfeinert werden und es kann z.B.
  beim Filesystem NTFS oder FAT3 gewählt werden.
  Bei einer Datenbank kann zwischen DB2 und MySQL gewählt werden, beim Sensornetz
- wird TinyDB unterstützt.
+ wird nur TinyDB unterstützt.
  Bei jeder Auswahl muß dann die Datenquelle ausgewählt werden.
- Der resultierende Befehl ( resulting Statement) kann dann angezeigt werden
+ Der resultierende Befehl (resulting Statement) kann dann angezeigt werden
  und im Statement Editor bearbeitet werden.
- Bei der Auswahl der DM Aktivitäten werden Optionen die nicht möglich sind,
+ Bei der Auswahl der DM-Aktivitäten werden Optionen die nicht möglich sind,
  nicht zur Auswahl freigegeben.
  Es ist beispielhaft nicht möglich bei einer Insert-DM-Aktivität ein Sensornetz
  auszuwählen.
@@ -2439,7 +2451,7 @@ BPEL DM Plug-In Modell
 
 \begin_layout Standard
 Das BPEL DM Plug-In Modell stellt die Pakete und Klassen der Datenstruktur
- bei den SIMPL DM Aktivitäten dar.
+ bei den SIMPL DM-Aktivitäten dar.
 \end_layout
 
 \begin_layout Standard
@@ -2493,22 +2505,39 @@ reference "fig:BPEL-DM-Plug-In Modell"
 \end_inset
 
 stellt das SIMPL Datenmodell dar.
- An oberster Stelle steht die DataManagementActivity-Klasse ( Interface)
+ An oberster Stelle steht die DataManagementActivity-Klasse (Interface)
  welche mit den Variablen dsType, dsKind, dsAddress und dsStatement die
  gemeinsame Schnittmenge der Aktivitätenvariablen bildet.
  Diese werden an die Kindklassen wie z.B.
- QueryActivity ( Interface) vererbt und um schnittstellenspezifische Eigenschaft
-en erweitert.
+ QueryActivity (Interface) vererbt und um schnittstellenspezifische Eigenschafte
+n erweitert.
  Die konkrete Realisierung erfolgt dann im Paket org.eclipse.bpel.simpl.model
  z.B.
  in der Klasse QueryActivityImpl.
  Im Paket org.eclipse.bpel.simpl.model.util befinden sich Zubehörklassen wie
  Serializer und Deserializer.
- Diese übernehmen die die Erstellung von BPEL Files sowie deren auslesen.
+ Diese übernehmen die Erstellung von BPEL Files, sowie deren Auslesen.
 \end_layout
 
 \begin_layout Subsubsection
 BPEL DM Plug-In Extension Modell
+\end_layout
+
+\begin_layout Standard
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In Extension Modell"
+
+\end_inset
+
+des Paket org.eclipse.bpel.simpl.ui.sql.editor steht beispielhaft für eine Erweiterung
+ des Statementeditor um die Anfragesprache SQL.
+ Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse org.eclipse.b
+pel.simpl.ui.extensions.AStatementEditor und realisieren die elementaren Aktivitäten
+ wie Select und Insert.
+ Jede Erweiterung kann am Extension Point org.eclipse.bpel.simpl.ui.queryLanguage
+ angeschlossen werden.
 \end_layout
 
 \begin_layout Standard
@@ -2553,23 +2582,6 @@ BPEL DM Plug-In Extension Modell
 
 \end_layout
 
-\begin_layout Standard
-Die Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-DM-Plug-In Extension Modell"
-
-\end_inset
-
-des Paket org.eclipse.bpel.simpl.ui.sql.editor steht beispielhaft für eine Erweiterung
- des Statementeditor um die Anfragesprache SQL.
- Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse org.eclipse.b
-pel.simpl.ui.extensions.AStatementEditor und realisieren die elemtaren Aktivitäten
- wie Select und Insert.
- Jede Erweiterung kann am Extension Point org.eclipse.bpel.simpl.ui.queryLanguage
- angeschlossen werden.
-\end_layout
-
 \begin_layout Subsection
 SIMPL Core Plug-In
 \end_layout
@@ -2579,8 +2591,8 @@ Das SIMPL Core Plug-In kümmert sich um die Integration von SIMPL in die
  Eclipse Menüleiste und erzeugt die Admin-Konsole zur Verwaltung der Einstellung
 en.
  In der Admin-Konsole kann in der 1.
- Iteration das Auditing de- und aktiviert werden, die Auditing Datenbank
- festgelegt werden und ermöglicht eine Authentifizierung durch Benutzername
+ Iteration das Auditing aktiviert und deaktiviert werden, die Auditing Datenbank
+ kann festgelegt werden und ermöglicht eine Authentifizierung durch Benutzername
  und Passwort.
 \end_layout
 
@@ -2634,12 +2646,12 @@ reference "fig:SIMPL-Core-Plug-In "
 \end_inset
 
 zeigt das Klassendiagramm des SIMPL Core Plug-In.
- Durch diese grafischen Benutzeroberfläche wird SIMPL verwaltet.
+ Durch diese grafische Benutzeroberfläche wird SIMPL verwaltet.
  Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen um eine
  größtmögliche Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
  Das bedeutet die Einträge die bereits bei der Auslieferung von SIMPL in
- der Admin-Konsole vorhanden sind, wurden auch durch Extension Points realisert
- und können gegebenfalls leicht ausgetauscht werden.
+ der Admin-Konsole vorhanden sind, wurden auch durch Extension Points realisiert
+ und können gegebenenfalls leicht ausgetauscht werden.
  Weitere Einträge können am Extension Points ACItem hinzugefügt werden.
  Bei der Auslieferung sind die Funktionen Auditing und Global Settings bereits
  durch Extension Points eingebunden.
@@ -2698,8 +2710,8 @@ Default
 \begin_inset Quotes erd
 \end_inset
 
- wir auf den Buffer zugegriffen da die Daten schon von beim Starten von
- SIMPL in den Buffer geladen wurden.
+ wir auf den Buffer zugegriffen da die Daten schon von beim Starten des
+ Plug-Ins in den Buffer geladen wurden.
 \end_layout
 
 \begin_layout Subsection
@@ -2708,7 +2720,7 @@ SIMPL Core Client Plug-In
 
 \begin_layout Standard
 Das SIMPL Core Client Plug-In stellt die Verbindung zu den SIMPL Core Web
- Services her und bietet den anderen Eclipse Plug-Ins somit die Möglichkeit
+ Services her und bietet den anderen Eclipse Plug-Ins damit die Möglichkeit
  diese zu verwenden.
  Die Funktionalität für den Zugriff auf die Web Services wird mit Hilfe
  des Befehls wsimport (..
