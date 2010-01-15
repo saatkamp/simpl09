@@ -1776,7 +1776,8 @@ tes Modell des BPEL Prozesses zu erzeugen.
 \begin_layout Standard
 Weiterhin ist es notwendig ein eigenes ExtensionBundle zu implementieren.
  Das ExtensionBundle ist notwendig, damit ODE weiß aus welchen Extension
- Activities besteht und sie zur Laufzeit ausgeführt werden können.
+ Activities die Erweiterung besteht und um sie zur Laufzeit ausgeführen
+ zu können.
  Die Implementierung wird erreicht durch das Ableiten einer neuen Klassen
  von „AbstractExtensionBundle“.
  In dieser Klasse müssen nun in der Methode „registerExtensionActivity“
@@ -1912,7 +1913,7 @@ reference "fig:Ausführung-einer-SIMPL"
 
 \begin_layout Enumerate
 Mit Hilfe der queryData-Methode werden die Daten aus der aktuellen Datenquelle
- gelesen und als DataObject zurückgegeben
+ gelesen und als SDO (DataObject) zurückgegeben
 \end_layout
 
 \begin_layout Enumerate
@@ -1922,7 +1923,7 @@ Mit Hilfe der defineData-Methode wird eine neue Tabelle in der aktuellen
 
 \begin_layout Enumerate
 Mit Hilfe der manipulateData-Methode wird das unter 1.
- erzeugte DataObject in der in 2.
+ erzeugte SDO (DataObject) in der in 2.
  erzeugten Tabelle abgespeichert
 \end_layout
 
@@ -2042,9 +2043,9 @@ Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
  API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
  per Service Data Object (SDO) an den SIMPL Core senden zu können.
  Von dort aus können die Daten, wie zum Beispiel Informationen über ausgeführte
- Prozesse(Name, Id, Typ), in beliebigen Datenquellen gespeichert werden.
- Die Übertragung der Daten findet dabei direkt in den setter Methoden der
- DAOs statt.
+ Prozesse (Name, Id, Typ), in beliebigen Datenquellen gespeichert werden.
+ Die Übertragung der Daten findet dabei direkt in den set-Methoden der DAOs
+ statt.
  Die DAO Daten werden trozdem auch weiterhin in der internen Apache Derby
  Datenbank gespeichert und von dort gelesen.
  Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
@@ -2053,7 +2054,7 @@ Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
 \end_layout
 
 \begin_layout Subsubsection
-DAO's
+DAOs
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2061,8 +2062,8 @@ BpelDAOConnectionFactory
 \end_layout
 
 \begin_layout Standard
-Die Factory verwaltet und erstellt die DAOConnection zu den ang-egebenen
- Datenquellen (standardmäßig zu der internen Derby Datenbank).
+Die Factory verwaltet und erstellt die DAOConnection zu den angegebenen
+ Datenquellen (standardmäßig zu der internen Apache Derby Datenbank).
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2070,9 +2071,9 @@ BpelDAOConnection
 \end_layout
 
 \begin_layout Standard
-Die BpelDAOConnection stellt eine Verbindung zu den DAO's her.
+Die BpelDAOConnection stellt eine Verbindung zu den DAOs her.
  Hier werden zum Beispiel BPEL Events in das DAO eingefügt, Prozesse erstellt
- und Prozessinstanzen verwaltet, über die auf die Restlichen DAO's zugegriffen
+ und Prozessinstanzen verwaltet, über die auf die restlichen DAO's zugegriffen
  werden kann.
 \end_layout
 
@@ -2081,7 +2082,7 @@ ActivityRecoveryDAO
 \end_layout
 
 \begin_layout Standard
-Das ActivityRecoveryDao wird ausgeführt, wenn eine Aktivität den 
+Das ActivityRecoveryDAO wird ausgeführt, wenn eine Aktivität den 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2108,9 +2109,9 @@ FaultDAO
 \end_layout
 
 \begin_layout Standard
-Das FaultDao wird erstellt wenn ein Fehler in der Proessausführung passiert.
- Über dieses Dao kann auf die Informationen bezüglich des Fehlers, zum Beispiel
- der Name und der Grund für den fehler, zugegriffen werden.
+Das FaultDAO wird erstellt, wenn ein Fehler in der Proessausführung passiert.
+ Über dieses DAO kann auf die Informationen bezüglich des Fehlers, zum Beispiel
+ der Name und der Grund für den Fehler, zugegriffen werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2126,7 +2127,7 @@ MessageExchangeDAO
 \end_layout
 
 \begin_layout Standard
-Das MessageExchangeDAO ist für den Austausch von Nachrichten zuständig..
+Das MessageExchangeDAO ist für den Austausch von Nachrichten zuständig.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2134,7 +2135,7 @@ MessageRouteDAO
 \end_layout
 
 \begin_layout Standard
-Das MessageRouteDAO repräsentiert einen Nachrichten Anfrager, wie zum Beispiel
+Das MessageRouteDAO repräsentiert ein Nachrichten Anfrager, wie zum Beispiel
  ein Pick oder ein Receive.
 \end_layout
 
@@ -2143,7 +2144,7 @@ PartnerLinkDAO
 \end_layout
 
 \begin_layout Standard
-Das PartnerLinkDAO repräsentiert einen Partnerlink.
+Das PartnerLinkDAO repräsentiert ein Partnerlink.
  Es enthält Informationen über die eigene Rolle, die Rolle des Partners
  und die Endpoint-Referenz.
 \end_layout
@@ -2153,7 +2154,7 @@ ProcessDAO
 \end_layout
 
 \begin_layout Standard
-Das ProcessDAO repräsentiert einen laufenden Prozess.
+Das ProcessDAO repräsentiert ein laufenden Prozess.
  Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen.
 \end_layout
 
@@ -2163,7 +2164,7 @@ ProcessInstanceDAO
 
 \begin_layout Standard
 Das ProcessInstanceDAO repräsentiert eine Prozess-Instanz und enthält alle
- Daten die einer Instanz zugehörig sind.
+ Daten, die einer Instanz zugehörig sind.
  Dazu zählen Events, Scopes, sowie wartende Pick- und Receive-Aktivitäten.
 \end_layout
 
@@ -2181,7 +2182,7 @@ XmlDataDAO
 \end_layout
 
 \begin_layout Standard
-Das XmlDataDAO representiert XML-Daten und wird dazu benutzt Bpel-Variablen
+Das XmlDataDAO repräsentiert XML-Daten und wird dazu benutzt BPEL-Variablen
  zu modelieren.
 \end_layout
 
@@ -2190,10 +2191,10 @@ DAO Java Persistence API (JPA)
 \end_layout
 
 \begin_layout Standard
-Das Dao-Jpa ist eine Dao Implementierung, die auf dem Apache Open JPA basiert.
+Das DAO-Jpa ist eine DAO Implementierung, die auf Apache Open JPA basiert.
  Dieses stellt Funktionalitäten zur persistenten Speicherung auf relationalen
  Datenspeichern zur Verfügung.
- Über annotierte Variablen können somit die Dao Daten komfortabel in der
+ Über annotierte Variablen können somit die DAO Daten komfortabel in der
  ODE internen Derby Datenbank gespeichert werden.
 \end_layout
 
@@ -2204,15 +2205,15 @@ DAO Lebenszyklus
 \begin_layout Standard
 Beim starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
  BPEL-Server gestartet.
- Sofort wird die in OdeServer Klasse enthaltene init Methode aufgerufen.
- Diese ruft wiederrum die initDao Methode auf.
+ Sofort wird die in OdeServer Klasse enthaltene init-Methode aufgerufen.
+ Diese ruft wiederum die initDao-Methode auf.
  Dort wird die DaoConnectionFactory geladen, welche zuvor in der OdeConfigProper
 ties definiert oder aus der Axis2.properties geladen wurde.
  Über die ConnectionFactory werden DaoConnections erstellt und bereitgestellt,
  mit deren Hilfe direkt auf die DAOs zugegriffen werden kann.
- Dies geschieht an den Stellen in Ode, wo die den DAOs entsprechenden BPEL
- Konstukte ausgewertet werden.
- So wird auf die ProcessDao zum Beispiel aus der ODEProcess Klasse aufgerufen,
+ Dies geschieht an den Stellen in ODE, wo die den DAOs entsprechenden BPEL
+ Konstrukte ausgewertet werden.
+ So wird auf die ProcessDAO zum Beispiel aus der ODEProcess Klasse aufgerufen,
  um die Prozessdaten persistent zu speichern.
 \end_layout
 
