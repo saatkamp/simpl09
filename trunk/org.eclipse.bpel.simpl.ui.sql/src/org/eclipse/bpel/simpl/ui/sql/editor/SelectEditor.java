@@ -2,6 +2,8 @@ package org.eclipse.bpel.simpl.ui.sql.editor;
 
 import java.util.ArrayList;
 
+import javax.print.attribute.TextSyntax;
+
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -32,7 +34,17 @@ public class SelectEditor extends AStatementEditor {
 	private Font keyWordFont = new Font(comp.getDisplay(), "Courier New", 16, SWT.NORMAL);
 	private String createdStatment=null;
 	private int counter=0;
+	ArrayList<String> dSourceTables;
 	
+	public ArrayList<String> getdSourceTables() {
+		return dSourceTables;
+	}
+
+
+	public void setdSourceTables(ArrayList<String> dSourceTables) {
+		this.dSourceTables = dSourceTables;
+	}
+
 	List  listOfTables=new List(comp,SWT.NONE);
 	List  listOfColumn=new List(comp,SWT.NONE);
 	
@@ -197,20 +209,12 @@ public class SelectEditor extends AStatementEditor {
 		
 	}
 
-	/**
-	 * for changing the UI according to the loaded Statment.
-	 * it like parsing the text from the loaded statment
-	 */
-	private void EditTheUIFromStatment() {
-		// TODO Auto-generated method stub
-		
-	}
-	
+
 	/**
 	 * load the tables from DataSource
 	 */
 	private void LoadTablesIntoList(){
-		ArrayList<String> dSourceTables =new ArrayList<String>()/*=Data Source Tables*/; //TODO: get tables from DSource
+		dSourceTables =new ArrayList<String>()/*=Data Source Tables*/; //TODO: get tables from DSource
 		for(int i=0;i<dSourceTables.size();i++){
 			listOfTables.add(dSourceTables.get(i));
 		}
@@ -227,6 +231,32 @@ public class SelectEditor extends AStatementEditor {
 			listOfColumn.add(dSourceColomsOfTable.get(i));
 		}
 		
+	}
+	
+	//parsing the statment 
+	
+	/**
+	 * for changing the UI according to the loaded Statment.
+	 * it like parsing the text from the loaded statment
+	 */
+	private void EditTheUIFromStatment() {
+		// TODO Auto-generated method stub
+		//dSourceTables
+		String cleandStatment=removeAllSpaces(getStatement());
+		String[] wordsOfStatment =cleandStatment.split("\r");
+		//TODO: ....
+		
+	}
+	
+	/**
+	 * removes all spaces from statment
+	 * @param statement
+	 * @return
+	 */
+	private String removeAllSpaces(String statement) {
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 
 }
