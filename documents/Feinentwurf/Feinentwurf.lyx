@@ -1060,8 +1060,9 @@ Paketstruktur
 \end_layout
 
 \begin_layout Standard
-Der SIMPL Core besitzt folgende Paketstruktur, die sich in einen Kernbereich,
- sowie Bereiche für die Dienste (Services) und Web Services aufteilt.
+Der SIMPL Core besitzt folgende Paketstruktur, die sich in einen Kernbereich
+ (org.simpl.core), sowie Bereiche für die Dienste (Services) und Web Services
+ aufteilt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1070,7 +1071,7 @@ org.simpl.core
 
 \begin_layout Standard
 Hier befinden sich zentrale Klassen des SIMPL Cores, die auf die Dienste
- des SIMPL Core zurückgreifen, wie z.B.
+ des SIMPL Cores zurückgreifen, wie z.B.
  die SIMPLCore-Klasse, die in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1135,8 +1136,8 @@ org.simpl.datasource.plugins
 \begin_layout Standard
 Hier befinden sich die Plug-Ins für den Datasource Service, die für die
  verschiedenen Datenquellentypen entwickelt werden.
- Falls sich die einzelnen Plug-Ins auf mehrere Klassen verteilen, werden
- diese zusätzlich auf eigene Unterpakete verteilt.
+ Falls sich die einzelnen Plug-Ins auf mehrere Klassen verteilen, können
+ diese zusätzlich auf eigene Unterpakete verteilt werden.
  Das Plug-In-System wird in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1238,7 +1239,7 @@ reference "fig:Sequenzdiagramm-des-AdministrationServices"
  werden, dafür wird intern eine einfache Datenbankabfrage genutzt.
  Die Einstellungen werden dabei als HashMap zurückgeliefert und auch so
  beim Speichern übergeben, damit sowohl die Bezeichnung der Einstellung
- wie auch ihr Wert zu jeder Zeit verfügbar ist.
+ wie auch ihr Wert zu jeder Zeit verfügbar sind.
  Zur Identifizierung verschiedener Einstellungen, wie z.B.
  Standard-Einstellungen und zuletzt gespeicherten Einstellungen, besitzt
  jede Einstellung eine eindeutige Id.
@@ -1247,8 +1248,8 @@ schen Preset-Einstellungen ergänzt werden.
 \end_layout
 
 \begin_layout Standard
-Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole,
- da hier immer Ober- und Unterpunkte zusammengehören, wurde auf der Datenbank
+Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole.
+ Da hier immer Ober- und Unterpunkte zusammengehören, wurde auf der Datenbank
  diese Beziehungen durch die Strukturierung mit Schemata und Tabellen umgesetzt.
  So gibt es für jeden Oberpunkt, wie z.B.
  
@@ -1262,17 +1263,18 @@ Auditing
 General
 \emph default
  eine gleichnamige Tabelle im Schema des Oberpunkts.
- Daraus ergibt sich der genaue Pfad einer, in der Datenbank gespeicherten,
- Einstellung aus der Auswahl in der Admin-Konsole.
+ Daraus ergibt sich der genaue Pfad, einer in der Datenbank gespeicherten
+ Einstellung, aus der Auswahl in der Admin-Konsole.
  Mit der saveSettings()-Methode können Einstellungen in einer entsprechenden
  Tabelle eines Schemas gespeichert werden.
  Dazu wird zuerst überprüft, ob das zu den Einstellungen gehörige Schema
- bereits existiert oder noch erzeugt werden muss und anschließend, ob die
- Tabelle bereits existiert oder noch erzeugt werden muss.
+ bereits existiert (createSchemaIfItDoesntExistYet()) oder noch erzeugt
+ werden muss und anschließend, ob die Tabelle bereits existiert (createTableIfIt
+DoesntExistYet()) oder noch erzeugt werden muss.
  Die Tabelle wird dabei direkt aus den übergebenen Einstellungen automatisch
  erzeugt, indem die Einstellungsnamen als Spaltennamen verwendet werden.
  Wenn nun Schema und Tabelle vorhanden sind wird überprüft, ob die zu speichernd
-e Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss
+e Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss,
  oder ob die Einstellung neu angelegt, also eine neue Zeile eingefügt werden
  muss.
 \end_layout
@@ -1302,8 +1304,8 @@ Security
  Klassennamen der Services erzeugt werden.
  Die Zugehörigkeit eines Services wird dabei in seiner Implementierung als
  Konstante hinterlegt und kann so einfach zur Laufzeit genutzt werden.
- Daraus ergibt sich wieder ein eindeutiger Pfad zu den, in der Datenbank
- gespeicherten, Daten eines jeden SIMPL Core Services.
+ Daraus ergibt sich wieder ein eindeutiger Pfad zu den in der Datenbank
+ gespeicherten Daten eines jeden SIMPL Core Services.
  Die Daten werden auch wie im Administration Service wieder als HashMaps
  verarbeitet, um sowohl die Bezeichnung wie auch den Wert immer verfügbar
  zu haben.
@@ -1361,7 +1363,7 @@ reference "fig:Sequenzdiagramm-des-StorageServices"
 \end_inset
 
  zeigt die Verwendung und die Funktionalität des Storage Services.
- Mit der load()-Methode können wieder Daten aus der Datenbank geladen werden
+ Mit der load()-Methode können Daten wieder aus der Datenbank geladen werden
  und die save()-Methode speichert alle Daten eines Services nach der selben
  Vorgehensweise wie die saveSettings()-Methode des Administration Services.
 \end_layout
@@ -1477,8 +1479,8 @@ reference "sub:SIMPL-DM-Extension"
 
 \end_inset
 
-) benutzt um DM-Aktivitäten auszuführen, aber auch innerhalb des SIMPL Cores,
- wenn sich Dienste gegenseitig verwenden.
+) benutzt um DM-Aktivitäten auszuführen, sowie innerhalb des SIMPL Cores
+ wenn Dienste sich gegenseitig verwenden.
 \end_layout
 
 \begin_layout Subsection
@@ -1499,6 +1501,7 @@ Die Unterstützung verschiedener Typen von Datenquellen wird durch Datasource
  Mit der Reflection API von Java ist es möglich, die Plug-Ins zur Laufzeit
  zu erkennen und zu verwenden, ohne dass bestehender Code angepasst werden
  muss.
+ Die Plug-Ins werden als JAR-Dateien im Classpath abgelegt.
 \end_layout
 
 \begin_layout Paragraph*
