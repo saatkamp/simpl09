@@ -2263,6 +2263,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Overview.png
+	lyxscale 60
 	width 100text%
 
 \end_inset
@@ -2295,16 +2296,22 @@ BPEL DM Plug-In
 
 \begin_layout Subsubsection
 BPEL DM Plug-In User-Interface
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Einleitungstext fehlt noch!
 \end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In UI"
 
 \end_inset
 
-
+ zeigt den Aufbau der grafischen Benutzerschnittstelle (User Interface)
+ des BPEL-DM Plug-Ins.
+ Der Aufbau orientiert sich dabei an der Architektur des Eclipse BPEL Designer
+ Plug-Ins und dessen Extension Points.
+ Nachfolgend werden nun alle Pakete und die wichtigsten Klassen des BPEL-DM
+ Plug-Ins beschrieben und deren Zweck näher erläutert.
 \end_layout
 
 \begin_layout Standard
@@ -2319,6 +2326,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In UI.png
+	lyxscale 80
 	width 100text%
 
 \end_inset
@@ -2347,18 +2355,6 @@ BPEL DM Plug-In User-Interface
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Die Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-DM-Plug-In UI"
-
-\end_inset
-
- zeigt den Aufbau der Darstellung des Datenmodells.
- 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2433,15 +2429,23 @@ Subtype
 \end_inset
 
  die Auswahl verfeinert werden und es kann z.B.
- beim Filesystem NTFS oder FAT3 gewählt werden.
+ beim Filesystem NTFS oder EXT3 gewählt werden.
  Bei einer Datenbank kann zwischen DB2 und MySQL gewählt werden, beim Sensornetz
  wird nur TinyDB unterstützt.
- Bei jeder Auswahl muß dann die Datenquelle ausgewählt werden.
- Der resultierende Befehl (resulting Statement) kann dann angezeigt werden
- und im Statement Editor bearbeitet werden.
+ Weiterhin kann hier die Datenquellenadresse angegeben werden.
+ Der in der Aktivität hinterlegte Abfragebefehl, wird im 
+\begin_inset Quotes eld
+\end_inset
+
+Resulting Statement
+\begin_inset Quotes erd
+\end_inset
+
+-Textfeld angezeigt und kann im Statement-Editor bearbeitet oder auch neu
+ modelliert werden.
  Bei der Auswahl der DM-Aktivitäten werden Optionen die nicht möglich sind,
  nicht zur Auswahl freigegeben.
- Es ist beispielhaft nicht möglich bei einer Insert-DM-Aktivität ein Sensornetz
+ Es ist beispielsweise nicht möglich bei einer Insert-Aktivität ein Sensornetz
  auszuwählen.
 \end_layout
 
@@ -2466,6 +2470,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Model.png
+	lyxscale 80
 	width 100text%
 
 \end_inset
@@ -2722,6 +2727,9 @@ SIMPL Core Client Plug-In
 Das SIMPL Core Client Plug-In stellt die Verbindung zu den SIMPL Core Web
  Services her und bietet den anderen Eclipse Plug-Ins damit die Möglichkeit
  diese zu verwenden.
+ Da sowohl das BPEL-DM Plug-In wie auch das SIMPL Core Plug-In mit dem SIMPL
+ Core kommunizieren, wird der SIMPL Core Client als eigenständiges Plug-In
+ realisiert.
  Die Funktionalität für den Zugriff auf die Web Services wird mit Hilfe
  des Befehls wsimport (..
 \backslash
