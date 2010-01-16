@@ -254,8 +254,8 @@ public class SelectEditor extends AStatementEditor {
 	 * @return
 	 */
 	private String removeAllSpaces(String statement) {
-		// TODO Auto-generated method stub
 		
+		//statement. //TODO: 
 		return null;
 	}
 
