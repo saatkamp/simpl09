@@ -25,7 +25,7 @@ public class TestService {
 }
 }}}
 
-_!TestService.java_ auswählen -> External Tools -> _WSDL generate_ 
+_!TestService.java_ auswählen -> External Tools -> _wsgen_ 
 {{{
 Please input a value: TestService
 }}}
@@ -56,3 +56,8 @@ Rechter Mausklick auf deploy.jardesc -> Create JAR
 Tomcat Server neustarten falls ein bestehender Webservice aktualisiert wurde. Neue Services können Hot-deployt werden.
 
 http://localhost:8080/axis2/services/listServices
+
+=== Webservice Client erzeugen ===
+_!TestService.wsdl_ auswählen -> External Tools -> _wsimport_ 
+-> Projekt aktualisieren (F5)
+-> Der Client befindet sich in der localhost/_8080/TestService_Service.java

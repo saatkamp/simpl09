@@ -63,6 +63,8 @@ Name und Update-URL des Plugins eintragen, die erscheinenden Punkte auswählen u
  * Quantum: http://quantum.sourceforge.net/update-site
  * Visual Editor: http://download.eclipse.org/tools/ve/updates/1.4/, Nur "Visual Editor" auswählen.
  * SOAP UI: http://www.soapui.org/eclipse/update
+ * Eclipse SDK: http://download.eclipse.org/eclipse/updates/3.5, "Eclipse Platform SDK" auswählen
+ * Eclipse EMF: http://download.eclipse.org/modeling/emf/updates/releases/, "EMF SDK 2.5.0 (EMF + XSD)" auswählen
  
 === 2.3 Tools ===
 Help -> Install New Software -> Work with: Galileo - http://download.eclipse.org/releases/galileo
@@ -87,10 +89,17 @@ Tomcat's home directory: C:\Programme\Apache\Tomcat 6.0
 ==== Apache Axis2 ====
 External Tools Configuration -> New Program
 {{{
-Name: WSDL generate
+Name: wsgen
 Location: C:\Programme\Java\jdk1.6.0_15\bin\wsgen.exe
 Working Directory: ${project_loc}
 Arguments: -cp "${project_loc}\bin" ${java_type_name} -wsdl -servicename {http://localhost:8080}${string_prompt} -r ${project_loc}
+}}}
+
+{{{
+Name: wsimport
+Location: C:\Programme\Java\jdk1.6.0_15\bin\wsimport.exe
+Working Directory: ${project_loc}
+Arguments: -keep ${selected_resource_loc}
 }}}
 
 ==== Apache Tuscany ====
