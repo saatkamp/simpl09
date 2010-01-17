@@ -1,5 +1,5 @@
 
-package localhost._8080;
+package org.simpl.core.webservices.client;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -7,7 +7,6 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import org.simpl.core.webservices.ObjectFactory;
 
 
 /**
@@ -30,8 +29,29 @@ public interface DatasourceService {
      * @param dsAddress
      * @param dsType
      * @return
+     *     returns java.lang.String
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "queryData")
+    @WebResult(partName = "return")
+    public String queryData(
+        @WebParam(name = "dsAddress", partName = "dsAddress")
+        String dsAddress,
+        @WebParam(name = "statement", partName = "statement")
+        String statement,
+        @WebParam(name = "dsType", partName = "dsType")
+        String dsType)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
+     * @param statement
+     * @param dsAddress
+     * @param dsType
+     * @return
      *     returns boolean
-     * @throws ConnectionException
+     * @throws ConnectionException_Exception
      */
     @WebMethod(action = "defineData")
     @WebResult(partName = "return")
@@ -42,7 +62,7 @@ public interface DatasourceService {
         String statement,
         @WebParam(name = "dsType", partName = "dsType")
         String dsType)
-        throws ConnectionException
+        throws ConnectionException_Exception
     ;
 
     /**
@@ -53,7 +73,7 @@ public interface DatasourceService {
      * @param dsType
      * @return
      *     returns boolean
-     * @throws ConnectionException
+     * @throws ConnectionException_Exception
      */
     @WebMethod(action = "manipulateData")
     @WebResult(partName = "return")
@@ -66,28 +86,7 @@ public interface DatasourceService {
         String data,
         @WebParam(name = "dsType", partName = "dsType")
         String dsType)
-        throws ConnectionException
-    ;
-
-    /**
-     * 
-     * @param statement
-     * @param dsAddress
-     * @param dsType
-     * @return
-     *     returns java.lang.String
-     * @throws ConnectionException
-     */
-    @WebMethod(action = "queryData")
-    @WebResult(partName = "return")
-    public String queryData(
-        @WebParam(name = "dsAddress", partName = "dsAddress")
-        String dsAddress,
-        @WebParam(name = "statement", partName = "statement")
-        String statement,
-        @WebParam(name = "dsType", partName = "dsType")
-        String dsType)
-        throws ConnectionException
+        throws ConnectionException_Exception
     ;
 
 }

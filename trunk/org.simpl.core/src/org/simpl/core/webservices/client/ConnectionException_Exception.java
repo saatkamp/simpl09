@@ -1,5 +1,5 @@
 
-package localhost._8080;
+package org.simpl.core.webservices.client;
 
 import javax.xml.ws.WebFault;
 
@@ -10,8 +10,9 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.1
  * 
  */
+@SuppressWarnings("serial")
 @WebFault(name = "ConnectionException", targetNamespace = "http://webservices.core.simpl.org/")
-public class ConnectionException
+public class ConnectionException_Exception
     extends Exception
 {
 
@@ -19,14 +20,14 @@ public class ConnectionException
      * Java type that goes as soapenv:Fault detail element.
      * 
      */
-    private org.simpl.core.webservices.ConnectionException faultInfo;
+    private ConnectionException faultInfo;
 
     /**
      * 
      * @param message
      * @param faultInfo
      */
-    public ConnectionException(String message, org.simpl.core.webservices.ConnectionException faultInfo) {
+    public ConnectionException_Exception(String message, ConnectionException faultInfo) {
         super(message);
         this.faultInfo = faultInfo;
     }
@@ -37,7 +38,7 @@ public class ConnectionException
      * @param faultInfo
      * @param cause
      */
-    public ConnectionException(String message, org.simpl.core.webservices.ConnectionException faultInfo, Throwable cause) {
+    public ConnectionException_Exception(String message, ConnectionException faultInfo, Throwable cause) {
         super(message, cause);
         this.faultInfo = faultInfo;
     }
@@ -45,9 +46,9 @@ public class ConnectionException
     /**
      * 
      * @return
-     *     returns fault bean: org.simpl.core.webservices.ConnectionException
+     *     returns fault bean: org.simpl.core.webservices.client.ConnectionException
      */
-    public org.simpl.core.webservices.ConnectionException getFaultInfo() {
+    public ConnectionException getFaultInfo() {
         return faultInfo;
     }
 

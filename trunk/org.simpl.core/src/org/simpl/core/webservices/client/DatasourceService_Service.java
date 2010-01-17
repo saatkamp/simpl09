@@ -1,5 +1,5 @@
 
-package localhost._8080;
+package org.simpl.core.webservices.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,22 +17,22 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "DatasourceService", targetNamespace = "http://localhost:8080", wsdlLocation = "file:/C:/eclipse/workspace/SIMPLCore/DatasourceService.wsdl")
+@WebServiceClient(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl")
 public class DatasourceService_Service
     extends Service
 {
 
     private final static URL DATASOURCESERVICE_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(localhost._8080.DatasourceService_Service.class.getName());
+    private final static Logger logger = Logger.getLogger(org.simpl.core.webservices.client.DatasourceService_Service.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = localhost._8080.DatasourceService_Service.class.getResource(".");
-            url = new URL(baseUrl, "file:/C:/eclipse/workspace/SIMPLCore/DatasourceService.wsdl");
+            baseUrl = org.simpl.core.webservices.client.DatasourceService_Service.class.getResource(".");
+            url = new URL(baseUrl, "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'file:/C:/eclipse/workspace/SIMPLCore/DatasourceService.wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         DATASOURCESERVICE_WSDL_LOCATION = url;
@@ -43,7 +43,7 @@ public class DatasourceService_Service
     }
 
     public DatasourceService_Service() {
-        super(DATASOURCESERVICE_WSDL_LOCATION, new QName("http://localhost:8080", "DatasourceService"));
+        super(DATASOURCESERVICE_WSDL_LOCATION, new QName("http://webservices.core.simpl.org/", "DatasourceService"));
     }
 
     /**
@@ -53,7 +53,7 @@ public class DatasourceService_Service
      */
     @WebEndpoint(name = "DatasourceServicePort")
     public DatasourceService getDatasourceServicePort() {
-        return super.getPort(new QName("http://localhost:8080", "DatasourceServicePort"), DatasourceService.class);
+        return super.getPort(new QName("http://webservices.core.simpl.org/", "DatasourceServicePort"), DatasourceService.class);
     }
 
     /**
@@ -65,7 +65,7 @@ public class DatasourceService_Service
      */
     @WebEndpoint(name = "DatasourceServicePort")
     public DatasourceService getDatasourceServicePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://localhost:8080", "DatasourceServicePort"), DatasourceService.class, features);
+        return super.getPort(new QName("http://webservices.core.simpl.org/", "DatasourceServicePort"), DatasourceService.class, features);
     }
 
 }

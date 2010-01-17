@@ -1,14 +1,11 @@
 
-package localhost._8080;
+package org.simpl.core.webservices.client;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import org.simpl.core.webservices.LinkedHashMap;
-import org.simpl.core.webservices.ObjectFactory;
 
 
 /**
@@ -19,17 +16,14 @@ import org.simpl.core.webservices.ObjectFactory;
  */
 @WebService(name = "AdministrationService", targetNamespace = "http://webservices.core.simpl.org/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-@XmlSeeAlso({
-    ObjectFactory.class
-})
 public interface AdministrationService {
 
 
     /**
      * 
      * @param schema
-     * @param arg3
      * @param settingName
+     * @param settings
      * @param table
      * @return
      *     returns boolean
@@ -43,8 +37,8 @@ public interface AdministrationService {
         String table,
         @WebParam(name = "settingName", partName = "settingName")
         String settingName,
-        @WebParam(name = "arg3", partName = "arg3")
-        String arg3);
+        @WebParam(name = "settings", partName = "settings")
+        String settings);
 
     /**
      * 
@@ -52,11 +46,11 @@ public interface AdministrationService {
      * @param settingName
      * @param table
      * @return
-     *     returns org.simpl.core.webservices.LinkedHashMap
+     *     returns java.lang.String
      */
     @WebMethod(action = "loadSettings")
     @WebResult(partName = "return")
-    public LinkedHashMap loadSettings(
+    public String loadSettings(
         @WebParam(name = "schema", partName = "schema")
         String schema,
         @WebParam(name = "table", partName = "table")
