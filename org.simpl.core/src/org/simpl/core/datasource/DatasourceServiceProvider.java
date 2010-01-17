@@ -9,7 +9,7 @@ public class DatasourceServiceProvider {
 
     try {
       datasource = (DatasourceService) Class.forName(
-          "org.simpl.core.datasource." + dsType + "Datasource").newInstance();
+          "org.simpl.core.datasource.plugins." + dsType.toLowerCase() + "." + dsType + "DatasourceService").newInstance();
     } catch (Exception e) {
       e.printStackTrace();
     }

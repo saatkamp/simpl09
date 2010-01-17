@@ -10,7 +10,7 @@ import javax.jws.soap.SOAPBinding;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.webservices.helpers.Parameter;
 
-@WebService(name = "AdministrationService", targetNamespace = "", wsdlLocation = "AdministrationService.wsdl")
+@WebService(name = "AdministrationService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Administration {
   @WebMethod(action = "saveSettings")
@@ -19,7 +19,7 @@ public class Administration {
       @WebParam(name = "schema", targetNamespace = "") String schema,
       @WebParam(name = "table", targetNamespace = "") String table,
       @WebParam(name = "settingName", targetNamespace = "") String settingName,
-      String settings) {
+      @WebParam(name = "settings", targetNamespace = "") String settings) {
     boolean success = false;
     LinkedHashMap<String, String> settingsHashMap = null;
 
@@ -31,7 +31,7 @@ public class Administration {
   }
 
   @WebMethod(action = "loadSettings")
-  public LinkedHashMap<String, String> loadSettings(
+  public String loadSettings(
       @WebParam(name = "schema", targetNamespace = "") String schema,
       @WebParam(name = "table", targetNamespace = "") String table,
       @WebParam(name = "settingName", targetNamespace = "") String settingName) {
@@ -39,6 +39,6 @@ public class Administration {
 
     settings = SIMPLCore.administrationService.loadSettings(schema, table, settingName);
 
-    return settings;
+    return Parameter.serialize(settings);
   }
 }

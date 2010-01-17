@@ -1,5 +1,5 @@
 
-package localhost._8080;
+package org.simpl.core.webservices.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,22 +17,22 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "AdministrationService", targetNamespace = "http://localhost:8080", wsdlLocation = "file:/C:/eclipse/workspace/SIMPLCore/AdministrationService.wsdl")
+@WebServiceClient(name = "AdministrationService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl")
 public class AdministrationService_Service
     extends Service
 {
 
     private final static URL ADMINISTRATIONSERVICE_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(localhost._8080.AdministrationService_Service.class.getName());
+    private final static Logger logger = Logger.getLogger(org.simpl.core.webservices.client.AdministrationService_Service.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = localhost._8080.AdministrationService_Service.class.getResource(".");
-            url = new URL(baseUrl, "file:/C:/eclipse/workspace/SIMPLCore/AdministrationService.wsdl");
+            baseUrl = org.simpl.core.webservices.client.AdministrationService_Service.class.getResource(".");
+            url = new URL(baseUrl, "http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'file:/C:/eclipse/workspace/SIMPLCore/AdministrationService.wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         ADMINISTRATIONSERVICE_WSDL_LOCATION = url;
@@ -43,7 +43,7 @@ public class AdministrationService_Service
     }
 
     public AdministrationService_Service() {
-        super(ADMINISTRATIONSERVICE_WSDL_LOCATION, new QName("http://localhost:8080", "AdministrationService"));
+        super(ADMINISTRATIONSERVICE_WSDL_LOCATION, new QName("http://webservices.core.simpl.org/", "AdministrationService"));
     }
 
     /**
@@ -53,7 +53,7 @@ public class AdministrationService_Service
      */
     @WebEndpoint(name = "AdministrationServicePort")
     public AdministrationService getAdministrationServicePort() {
-        return super.getPort(new QName("http://localhost:8080", "AdministrationServicePort"), AdministrationService.class);
+        return super.getPort(new QName("http://webservices.core.simpl.org/", "AdministrationServicePort"), AdministrationService.class);
     }
 
     /**
@@ -65,7 +65,7 @@ public class AdministrationService_Service
      */
     @WebEndpoint(name = "AdministrationServicePort")
     public AdministrationService getAdministrationServicePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://localhost:8080", "AdministrationServicePort"), AdministrationService.class, features);
+        return super.getPort(new QName("http://webservices.core.simpl.org/", "AdministrationServicePort"), AdministrationService.class, features);
     }
 
 }

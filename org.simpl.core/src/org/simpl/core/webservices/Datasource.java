@@ -11,9 +11,25 @@ import org.simpl.core.webservices.helpers.Parameter;
 
 import commonj.sdo.DataObject;
 
-@WebService(name = "DatasourceService", targetNamespace = "", wsdlLocation = "DatasourceService.wsdl")
+@WebService(name = "DatasourceService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Datasource {
+  @WebMethod(action = "queryData")
+  public String queryData(
+      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
+      @WebParam(name = "statement", targetNamespace = "") String statement,
+      @WebParam(name = "dsType", targetNamespace = "") String dsType)
+      throws ConnectionException {
+    DataObject dataObject = null;
+    String data = null;
+
+    dataObject = SIMPLCore.datasourceServiceProvider.getInstance(dsType).queryData(
+        dsAddress, statement);
+    data = Parameter.serialize(dataObject);
+
+    return data;
+  }
+
   @WebMethod(action = "defineData")
   public boolean defineData(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
@@ -43,22 +59,6 @@ public class Datasource {
         dsAddress, statement, dataObject);
 
     return success;
-  }
-
-  @WebMethod(action = "queryData")
-  public String queryData(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType)
-      throws ConnectionException {
-    DataObject dataObject = null;
-    String data = null;
-
-    dataObject = SIMPLCore.datasourceServiceProvider.getInstance(dsType).queryData(
-        dsAddress, statement);
-    data = Parameter.serialize(dataObject);
-
-    return data;
   }
 
   /*

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/simpl-core.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.core/simpl-core.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/org.simpl.core/log4j.properties"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource.plugins.xmldb"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource.plugins.fs"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource.plugins.sndb"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core{SIMPLCore.java"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource.plugins.rdb"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.storage"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.administration"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource.exceptions"/>
+    </selectedElements>
+</jardesc>
