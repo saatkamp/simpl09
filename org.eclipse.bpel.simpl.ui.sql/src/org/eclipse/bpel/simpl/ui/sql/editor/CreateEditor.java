@@ -17,6 +17,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * Es fehlt noch die rückwärtz Parsen der Statement .
+ */
 public class CreateEditor extends AStatementEditor {
 
 	private Composite comp = null;
