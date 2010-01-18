@@ -18,24 +18,29 @@
  */
 package org.apache.ode.dao.simpl;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.sql.DataSource;
-import javax.transaction.RollbackException;
-import javax.transaction.Synchronization;
-import javax.transaction.SystemException;
-import javax.transaction.TransactionManager;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.dao.BpelDAOConnection;
 import org.apache.ode.bpel.dao.BpelDAOConnectionFactoryJDBC;
 import org.apache.openjpa.ee.ManagedRuntime;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.sql.DataSource;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.InvalidTransactionException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.Synchronization;
+import javax.transaction.SystemException;
+import javax.transaction.Transaction;
+import javax.transaction.TransactionManager;
+import javax.transaction.xa.XAResource;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * @author Matthieu Riou <mriou at apache dot org>
@@ -53,8 +58,7 @@ public class BPELDAOConnectionFactoryImpl implements BpelDAOConnectionFactoryJDB
     public BPELDAOConnectionFactoryImpl() {
     }
 
-    @SuppressWarnings("unchecked")
-	public BpelDAOConnection getConnection() {
+    public BpelDAOConnection getConnection() {
         try {
             _tm.getTransaction().registerSynchronization(new Synchronization() {
                 // OpenJPA allows cross-transaction entity managers, which we don't want
@@ -82,8 +86,7 @@ public class BPELDAOConnectionFactoryImpl implements BpelDAOConnectionFactoryJDB
         }
     }
 
-    @SuppressWarnings("unchecked")
-	public void init(Properties properties) {
+    public void init(Properties properties) {
         HashMap<String, Object> propMap = new HashMap<String,Object>();
 
 //        propMap.put("openjpa.Log", "DefaultLevel=TRACE");

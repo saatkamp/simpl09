@@ -19,10 +19,9 @@
 
 package org.apache.ode.dao.simpl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.ode.bpel.common.CorrelationKey;
+import org.apache.ode.bpel.dao.CorrelationSetDAO;
+import org.apache.ode.bpel.dao.ScopeDAO;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -36,10 +35,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.namespace.QName;
-
-import org.apache.ode.bpel.common.CorrelationKey;
-import org.apache.ode.bpel.dao.CorrelationSetDAO;
-import org.apache.ode.bpel.dao.ScopeDAO;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Table(name="ODE_CORRELATION_SET")

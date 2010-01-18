@@ -18,12 +18,11 @@
  */
 package org.apache.ode.dao.simpl;
 
-import java.util.List;
+import org.apache.openjpa.persistence.OpenJPAPersistence;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import org.apache.openjpa.persistence.OpenJPAPersistence;
+import java.util.List;
 
 /**
  * @author Matthieu Riou <mriou at apache dot org>

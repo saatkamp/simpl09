@@ -19,6 +19,10 @@
 
 package org.apache.ode.dao.simpl;
 
+import org.apache.ode.bpel.common.CorrelationKey;
+import org.apache.ode.bpel.dao.MessageRouteDAO;
+import org.apache.ode.bpel.dao.ProcessInstanceDAO;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,10 +33,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.apache.ode.bpel.common.CorrelationKey;
-import org.apache.ode.bpel.dao.MessageRouteDAO;
-import org.apache.ode.bpel.dao.ProcessInstanceDAO;
 
 @Entity
 @Table(name="ODE_MESSAGE_ROUTE")

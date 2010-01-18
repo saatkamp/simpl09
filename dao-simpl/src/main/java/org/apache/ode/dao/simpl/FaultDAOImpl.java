@@ -19,6 +19,10 @@
 
 package org.apache.ode.dao.simpl;
 
+import org.apache.ode.bpel.dao.FaultDAO;
+import org.apache.ode.utils.DOMUtils;
+import org.w3c.dom.Element;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,10 +32,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.xml.namespace.QName;
-
-import org.apache.ode.bpel.dao.FaultDAO;
-import org.apache.ode.utils.DOMUtils;
-import org.w3c.dom.Element;
 
 
 @Entity

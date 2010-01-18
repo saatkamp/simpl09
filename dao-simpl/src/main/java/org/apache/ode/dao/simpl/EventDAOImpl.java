@@ -19,7 +19,7 @@
 
 package org.apache.ode.dao.simpl;
 
-import java.sql.Timestamp;
+import org.apache.ode.bpel.evt.BpelEvent;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -32,8 +32,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.apache.ode.bpel.evt.BpelEvent;
+import java.sql.Timestamp;
 
 /**
  * @author Matthieu Riou <mriou at apache dot org>
