@@ -23,8 +23,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.graphics.Rectangle;
 
+@SuppressWarnings("unused")
 public class AdminConsoleUI {
-
 	private Shell sShell = null;
 	private Tree tree = null;
 	private Button defaultButton = null;
@@ -178,7 +178,7 @@ public class AdminConsoleUI {
 			}
 		});
 
-		Label filler2 = new Label(sShell, SWT.NONE);
+    Label filler2 = new Label(sShell, SWT.NONE);
 		saveButton = new Button(sShell, SWT.NONE);
 		saveButton.setText("Save");
 		saveButton.setLayoutData(gridData3);
@@ -195,6 +195,7 @@ public class AdminConsoleUI {
 				// TODO Auto-generated method stub
 				// Werte des Composites speichern
 				saveAllSettings();
+				sShell.close();
 			}
 		});
 
@@ -280,6 +281,7 @@ public class AdminConsoleUI {
 	
 	public void saveAllSettings() {
 		LinkedHashMap<String, AAdminConsoleComposite> compClasses = Application.getInstance().getCompositeClasses();
+		
 		for (String key : compClasses.keySet()) {
 			AAdminConsoleComposite compClass = compClasses.get(key);
 			compClass.saveSettings(compClass.getParentConsoleItem(), compClass.getConsoleItem(),

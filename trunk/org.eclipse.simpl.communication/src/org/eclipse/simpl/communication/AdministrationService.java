@@ -149,7 +149,7 @@ public class AdministrationService {
 	private void createSchemaIfItDoesntExistYet(Connection connection,
 			String schema) throws Exception {
 		ResultSet resultSet = connection.getMetaData().getSchemas();
-		int columnCnt = resultSet.getMetaData().getColumnCount();
+		//int columnCnt = resultSet.getMetaData().getColumnCount();
 		boolean shouldCreateSchema = true;
 		while (resultSet.next() && shouldCreateSchema) {
 			if (resultSet.getString("TABLE_SCHEM").equalsIgnoreCase(schema)) {
@@ -175,7 +175,7 @@ public class AdministrationService {
 			String schema, String table, String cStatement) throws Exception {
 		ResultSet resultSet = connection.getMetaData().getTables("%", "%", "%",
 				new String[] { "TABLE" });
-		int columnCnt = resultSet.getMetaData().getColumnCount();
+		//int columnCnt = resultSet.getMetaData().getColumnCount();
 		boolean shouldCreateTable = true;
 		while (resultSet.next() && shouldCreateTable) {
 			if (resultSet.getString("TABLE_SCHEM").equalsIgnoreCase(schema) && 

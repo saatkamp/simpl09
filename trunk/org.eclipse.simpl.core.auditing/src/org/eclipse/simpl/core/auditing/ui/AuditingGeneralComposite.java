@@ -15,11 +15,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+@SuppressWarnings("unused")
 public class AuditingGeneralComposite extends AAdminConsoleComposite {
-
 	// Global hinterlegte Keys der Einstellungen
-	private final String MODE = "mode";
-	private final String AUDITING_DS_ADDRESS = "auditingDsAddress";
+	private final String MODE = "MODE";
+	private final String AUDITING_DS_ADDRESS = "AUDITING_DS_ADDRESS";
 
 	private Label auditingLabel = null;
 	private Button auditingCheckBox = null;
@@ -128,16 +128,22 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		// LastSaved-Einstellungen aus SIMPL Core DB laden
 		settings = SIMPLCommunication.getConnection().load(parentItem, item,
 				"lastSaved");
-		this.lMode = settings.get(this.MODE);
-		this.lAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
-		this.bMode = this.lMode;
-		this.bAuditingDSAddress = this.lAuditingDSAddress;
-
+		
+		if (!settings.isEmpty()) {
+  		this.lMode = settings.get(this.MODE);
+  		this.lAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
+  		this.bMode = this.lMode;
+  		this.bAuditingDSAddress = this.lAuditingDSAddress;
+		}
+		
 		// Default-Einstellungen aus SIMPL Core DB laden
 		settings = SIMPLCommunication.getConnection().load(parentItem, item,
 				"default");
-		this.dMode = settings.get(this.MODE);
-		this.dAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
+		
+		if (!settings.isEmpty()) {
+  		this.dMode = settings.get(this.MODE);
+  		this.dAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
+		}
 	}
 
 	@Override
