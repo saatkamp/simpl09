@@ -64,6 +64,9 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 		setStatement(activity.getDsStatement());
 		//Setzen die Datenquellenadresse
 		dataSourceAddressText.setText(activity.getDsAddress());
+		// Setzen die Sprache
+		language = (Constants.getDatasourceLanguages(kindCombo
+				.getItem(kindCombo.getSelectionIndex()))).get(0);
 		
 		//Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
 		//geladen und in den ComboBoxes selektiert.
