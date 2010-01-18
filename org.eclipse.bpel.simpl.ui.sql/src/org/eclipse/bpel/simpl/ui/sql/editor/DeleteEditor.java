@@ -30,11 +30,12 @@ public class DeleteEditor extends AStatementEditor {
 	
 	private Composite comp = null;
 	private Composite compos = null;
-	private Composite buttonsCompo=null;
+	
 	private StyledText statementText = null;
 	List tablsList;
-	ArrayList<Button> buttonList=new ArrayList<Button>();
 	
+	ArrayList<Button> buttonList=new ArrayList<Button>();
+	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
 	
 	public DeleteEditor() {
@@ -64,13 +65,13 @@ public class DeleteEditor extends AStatementEditor {
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
 		
-		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = 6;
 		
-		//parser.parseXmlFile(xmlFilePath);
-		//buttonsCompo=new Composite(compos, SWT.NONE);
-		//buttonsCompo.setLayoutData(gridLayout);
-		//creatButtonsOfKeyWords(compos,parser.parseDocument());
+		GridLayout gridLayoutA = new GridLayout();
+		gridLayoutA.numColumns = 6;
+		parser.parseXmlFile(xmlFilePath);
+		buttonsCompo=new Composite(compos, SWT.NONE);
+		buttonsCompo.setLayout(gridLayoutA);
+		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		
 		comp.setLayoutData(gridData);
@@ -212,15 +213,15 @@ public class DeleteEditor extends AStatementEditor {
 	 * 
 	 * @param listOfMainKeyWords
 	 */
-	public void creatButtonsOfKeyWords(Composite buttonsComposite,final ArrayList<KeyWord> listOfMainKeyWords){
+	public void creatButtonsOfKeyWords(final ArrayList<KeyWord> listOfMainKeyWords){
 		//System.out.print("\n in creatButtonsOfKeyWords()");
 		
 		for(int i=0;i<listOfMainKeyWords.size();i++)
 		{
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
-				creatButtonsOfKeyWords(buttonsComposite,listOfMainKeyWords.get(i).getListOfSubKeyWords());
+				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
-			final Button keyWordAsButton=new Button(buttonsComposite, SWT.NONE);
+			final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
 			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
 			keyWordAsButton.setSize(20, 10);
 			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
