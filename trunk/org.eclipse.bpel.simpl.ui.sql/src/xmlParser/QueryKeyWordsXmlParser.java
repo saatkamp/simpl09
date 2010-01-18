@@ -7,8 +7,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.w3c.dom.Document;
@@ -22,6 +25,7 @@ public class QueryKeyWordsXmlParser {
 
 	//TODO: hier kommen die funktionen zum parsen der xml elemente
 	//von der quaryKeyWords xml file.
+	ArrayList<Button> buttonList=new ArrayList<Button>();
 	
 	Composite myComp;
 	public Composite getMyComp() {
@@ -154,6 +158,76 @@ public class QueryKeyWordsXmlParser {
 			
 		}
 		return listOfKeyWords;
+	}
+	
+	/**
+	 * For creating the buttons out of the xml file ,wich contains
+	 * the key words of the quary language. And after creating they
+	 * will be added into the composite.
+	 * 
+	 * in this function we creat the buttons for the parsed KeyWords.
+	 * 
+	 * @param listOfMainKeyWords
+	 */
+	public void creatButtonsOfKeyWords(Composite buttonsComposite,final ArrayList<KeyWord> listOfMainKeyWords){
+		//System.out.print("\n in creatButtonsOfKeyWords()");
+		
+		for(int i=0;i<listOfMainKeyWords.size();i++)
+		{
+			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
+				creatButtonsOfKeyWords(buttonsComposite,listOfMainKeyWords.get(i).getListOfSubKeyWords());
+			}
+			final Button keyWordAsButton=new Button(myComp, SWT.NONE);
+			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
+			keyWordAsButton.setSize(20, 10);
+			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
+				keyWordAsButton.setEnabled(false);
+			}
+			//else isInsertKeyWord=false;
+			
+			final KeyWord tmpKeyWord=listOfMainKeyWords.get(i);
+			keyWordAsButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
+					widgetSelected(e);
+				}
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					// TODO hier muss der statement befehle in der textBox eingetragen werden.
+					
+					/*
+					 * in the following for statement all the buttons are only
+					 * then enabled if the father button (according to the Logik in the parsed xmlFile)
+					 */
+					keyWordAsButton.setEnabled(false);
+					
+					for(int x=0;x<buttonList.size();x++){
+						//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
+						buttonList.get(x).setEnabled(false);
+						for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
+							//
+							if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
+								buttonList.get(x).setEnabled(true);
+							}
+							
+						}
+						
+						
+					}
+					
+					//TODO: hier muss der befehle in der textBox eingefügt werden
+					
+//					fatherComp.getShell().getData("StyledText")
+//					s.setStatementText("sdfsdf");
+				}
+			});
+			
+			buttonList.add(keyWordAsButton);
+
+		}
+		
 	}
 	
 }
