@@ -105,7 +105,7 @@ public class BPELDAOConnectionFactoryImpl implements BpelDAOConnectionFactoryJDB
             for (Map.Entry me : properties.entrySet())
                 propMap.put((String)me.getKey(),me.getValue());
 
-        _emf = Persistence.createEntityManagerFactory("ode-dao", propMap);
+        _emf = Persistence.createEntityManagerFactory("simpl-dao", propMap);
     }
 
     public void setTransactionManager(TransactionManager tm) {
