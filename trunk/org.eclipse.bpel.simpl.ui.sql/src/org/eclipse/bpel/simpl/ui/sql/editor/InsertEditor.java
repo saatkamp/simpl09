@@ -7,7 +7,6 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
 public class InsertEditor extends AStatementEditor {
@@ -24,9 +23,7 @@ public class InsertEditor extends AStatementEditor {
 	@Override
 	public void createComposite(Composite composite) {
 		GridData gridData1 = new GridData();
-		//gridData1.horizontalAlignment = GridData.FILL;
-		//gridData1.horizontalAlignment = GridData.BEGINNING;
-		gridData1.verticalAlignment = GridData.CENTER;
+		gridData1.horizontalAlignment = GridData.FILL;
 		gridData1.grabExcessHorizontalSpace = true;
 		gridData1.grabExcessVerticalSpace = true;
 		gridData1.verticalAlignment = GridData.FILL;
@@ -37,10 +34,6 @@ public class InsertEditor extends AStatementEditor {
 		gridData.verticalAlignment = GridData.FILL;
 		comp = new Composite(composite, SWT.NONE);
 		comp.setLayout(new GridLayout());
-		Button button =new Button(comp, SWT.NONE);
-		button.setText("fffff");
-		button.setLayoutData(gridData1);
-		
 		GridData gridData2 = new GridData();
 		gridData2.horizontalAlignment = GridData.FILL;
 		gridData2.grabExcessHorizontalSpace = true;
@@ -52,7 +45,6 @@ public class InsertEditor extends AStatementEditor {
 		comp.setLayoutData(gridData);
 		statementText = new StyledText(comp, SWT.BORDER);
 		statementText.setLayoutData(gridData1);
-		//statementText.setSize(100, 50);
 		statementText.addModifyListener(new ModifyListener(){
 
 			@Override

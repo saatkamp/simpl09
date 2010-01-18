@@ -5,8 +5,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
 public class CreateEditor extends AStatementEditor {
@@ -58,6 +61,51 @@ public class CreateEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 		}
+		
+		CreateCREATEEditorUI(compos);
+	}
+
+	private void CreateCREATEEditorUI(Composite composite) {
+		GridData gridData2 = new GridData();
+		gridData2.horizontalAlignment = GridData.FILL;
+		gridData2.grabExcessVerticalSpace = true;
+		gridData2.grabExcessHorizontalSpace = true;
+		gridData2.verticalAlignment = GridData.CENTER;
+		GridData gridData1 = new GridData();
+		gridData1.horizontalAlignment = GridData.BEGINNING;
+		gridData1.grabExcessVerticalSpace = true;
+		gridData1.grabExcessHorizontalSpace = true;
+		gridData1.verticalAlignment = GridData.CENTER;
+		GridData gridData = new GridData();
+		gridData.horizontalAlignment = GridData.BEGINNING;
+		gridData.grabExcessVerticalSpace = true;
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.verticalAlignment = GridData.CENTER;
+		
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 6;
+		composite.setLayout(gridLayout);
+		
+		Composite columnCompo=new Composite(composite, SWT.BORDER);
+		columnCompo.setLayoutData(gridData1);
+		
+		Button creatButton=new Button(composite, SWT.BORDER);
+		creatButton.setText("CREATE");
+		creatButton.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+				
+			}
+		});
 	}
 
 }
