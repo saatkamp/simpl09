@@ -20,7 +20,9 @@
 package org.apache.ode.dao.simpl;
 
 
-import java.util.Date;
+import org.apache.ode.bpel.dao.ActivityRecoveryDAO;
+import org.apache.ode.utils.DOMUtils;
+import org.w3c.dom.Element;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,18 +35,14 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.apache.ode.bpel.dao.ActivityRecoveryDAO;
-import org.apache.ode.utils.DOMUtils;
-import org.w3c.dom.Element;
+import java.util.Date;
 
 
 @Entity
 @Table(name="ODE_ACTIVITY_RECOVERY")
 public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
 
-    @SuppressWarnings("unused")
-	@Id @Column(name="ID")
+    @Id @Column(name="ID")
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long _id;
 
@@ -64,6 +62,7 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
     private int _retries;
 
     // _instances is unused because this is a one-way relationship at the database level
+    @SuppressWarnings("unused")
     @ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="INSTANCE_ID")
     private ProcessInstanceDAOImpl _instance;
 

@@ -20,6 +20,10 @@
 package org.apache.ode.dao.simpl;
 
 
+import org.apache.ode.bpel.dao.PartnerLinkDAO;
+import org.apache.ode.utils.DOMUtils;
+import org.w3c.dom.Element;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,10 +37,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.namespace.QName;
-
-import org.apache.ode.bpel.dao.PartnerLinkDAO;
-import org.apache.ode.utils.DOMUtils;
-import org.w3c.dom.Element;
 
 @Entity
 @Table(name="ODE_PARTNER_LINK")

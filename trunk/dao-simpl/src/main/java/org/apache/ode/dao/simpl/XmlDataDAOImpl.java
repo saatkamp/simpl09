@@ -19,8 +19,13 @@
 
 package org.apache.ode.dao.simpl;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import org.apache.ode.bpel.dao.ScopeDAO;
+import org.apache.ode.bpel.dao.XmlDataDAO;
+import org.apache.ode.utils.DOMUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.Text;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -35,14 +40,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import org.apache.ode.bpel.dao.ScopeDAO;
-import org.apache.ode.bpel.dao.XmlDataDAO;
-import org.apache.ode.utils.DOMUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author Matthieu Riou <mriou at apache dot org>
