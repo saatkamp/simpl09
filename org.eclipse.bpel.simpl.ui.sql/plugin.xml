@@ -40,7 +40,7 @@
          </queryLanguage>
          <queryLanguage
                class="org.eclipse.bpel.simpl.ui.sql.editor.CreatEditor"
-               name="Call"
+               name="Creat"
                queryStatmentsLogikXmlFile="dddddd">
             <activity
                   type="org.eclipse.bpel.simpl.model.CreateActivity">
@@ -48,7 +48,7 @@
          </queryLanguage>
          <queryLanguage
                class="org.eclipse.bpel.simpl.ui.sql.editor.DropEditor"
-               name="Call"
+               name="Drop"
                queryStatmentsLogikXmlFile="dddddd">
             <activity
                   type="org.eclipse.bpel.simpl.model.DropActivity">
@@ -56,22 +56,22 @@
          </queryLanguage>
          <queryLanguage
                class="org.eclipse.bpel.simpl.ui.sql.editor.UpdateEditor"
-               name="Call"
+               name="Update"
                queryStatmentsLogikXmlFile="dddddd">
             <activity
                   type="org.eclipse.bpel.simpl.model.UpdateActivity">
             </activity>
          </queryLanguage>
-         
-         
          <queryLanguage
-               class="org.eclipse.bpel.simpl.ui.sql.editor.InsertEditor_GenerateFromExtensionXML"
+               class="org.eclipse.bpel.simpl.ui.sql.editor.InsertEditor"
                name="Insert"
                queryStatmentsLogikXmlFile="E:\Studium_Dateien\StuproA\workspace\org.eclipse.bpel.simpl.ui.sql\src\xmlParser\testXMLFile.xml">
             <activity
                   type="org.eclipse.bpel.simpl.model.InsertActivity">
             </activity>
          </queryLanguage>
+         
+         
       </queryLanguages>
    </extension>
 

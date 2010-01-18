@@ -137,7 +137,6 @@ public class InsertEditor_GenerateFromExtensionXML extends AStatementEditor {
 							//TODO: dann ist das die insert aktivität
 //							//und es sollen die befehle von der xml datei geparrst werden !!!
 //							//--> queryStatmentsLogikXmlFile
-							System.out.print(elem.getAttribute("queryStatmentsLogikXmlFile"));
 							parser.parseXmlFile(elem.getAttribute("queryStatmentsLogikXmlFile"));
 							//System.out.print("\n"+parser.parseDocument().get(0).getListOfSubKeyWords().get(0).getMainKeyWord());
 							//creatButtonsOfKeyWords(parser.parseDocument());

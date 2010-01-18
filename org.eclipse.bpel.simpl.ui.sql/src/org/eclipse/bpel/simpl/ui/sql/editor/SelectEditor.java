@@ -35,7 +35,8 @@ public class SelectEditor extends AStatementEditor {
 	private String createdStatment=null;
 	private int counter=0;
 	ArrayList<String> dSourceTables;
-	
+	private String[] theKeyWords = new String[]{"SELECT", "FROM", "WHERE"};//TODO: welche KeyWods bzw. befehle 
+																		   //sind noch denkbar für jeden StatmentEditor
 	public ArrayList<String> getdSourceTables() {
 		return dSourceTables;
 	}
@@ -45,8 +46,8 @@ public class SelectEditor extends AStatementEditor {
 		this.dSourceTables = dSourceTables;
 	}
 
-	List  listOfTables=new List(comp,SWT.NONE);
-	List  listOfColumn=new List(comp,SWT.NONE);
+	List  listOfTables;
+	List  listOfColumn;
 	
 	public void createComposite(Composite composite) {
 		System.out.print("checkpoint");
@@ -67,10 +68,12 @@ public class SelectEditor extends AStatementEditor {
 		gridData2.grabExcessHorizontalSpace = true;
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
+		
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
 		comp.setLayoutData(gridData);
+		
 		statementText = new StyledText(comp, SWT.BORDER);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
@@ -86,25 +89,39 @@ public class SelectEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 		}
+		
+		BuildUIElements(compos);
 	}
 
 
 	/**
 	 * for creating the UI in the Editor
 	 */
-	private void BuildUIElements() {
+	private void BuildUIElements(Composite composite) {
 		// TODO Auto-generated method stub
-		CreatButtons();
-		CreatListOfTables();
+		CreatButtons(composite);
+		CreatListOfTables(composite);
+		CreatListOfColoms(composite);
+		
 		LoadTablesIntoList();
 		
 	}
 
 	/**
-	 * creating the List of tables names and Spalten Names .
+	 * creating the List of tables names and Column Names .
 	 */
-	private void CreatListOfTables() {
+	private void CreatListOfTables(Composite composite) {
 		// TODO Auto-generated method stub
+		GridData gridData2 = new GridData();
+		gridData2.horizontalAlignment = GridData.FILL;
+		gridData2.grabExcessVerticalSpace = true;
+		gridData2.grabExcessHorizontalSpace = true;
+		gridData2.verticalAlignment = GridData.CENTER;
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 3;
+		
+		listOfTables=new List(composite,SWT.BORDER);
+		listOfTables.setLayoutData(gridData2);
 		
 		listOfTables.addSelectionListener(new SelectionListener() {
 		      public void widgetSelected(SelectionEvent event) {
@@ -133,9 +150,17 @@ public class SelectEditor extends AStatementEditor {
 	}
 	
 	/**
-	 * 
+	 * creates the List widget for the columns of a Table
 	 */
-	private void CreatListOfColoms(){
+	private void CreatListOfColoms(Composite composite){
+		GridData gridData1 = new GridData();
+		gridData1.horizontalAlignment = GridData.FILL;
+		gridData1.grabExcessVerticalSpace = true;
+		gridData1.grabExcessHorizontalSpace = true;
+		gridData1.verticalAlignment = GridData.CENTER;
+		
+		listOfColumn=new List(composite,SWT.BORDER);
+		listOfColumn.setLayoutData(gridData1);
 		
 		listOfColumn.addSelectionListener(new SelectionListener() {
 		      public void widgetSelected(SelectionEvent event) {
@@ -171,11 +196,11 @@ public class SelectEditor extends AStatementEditor {
 	}
 
 	/**
-	 * 
+	 * creat the buttons for the KeyWords
 	 */
-	private void CreatButtons() {
+	private void CreatButtons(Composite composite) {
 		// TODO Auto-generated method stub
-		Button selectButton =new Button(comp, SWT.NONE);
+		Button selectButton =new Button(compos, SWT.NONE);
 		selectButton.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -192,7 +217,7 @@ public class SelectEditor extends AStatementEditor {
 			}
 		});
 		
-		Button fromButton =new Button(comp, SWT.NONE);
+		Button fromButton =new Button(compos, SWT.NONE);
 		fromButton.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -233,30 +258,125 @@ public class SelectEditor extends AStatementEditor {
 		
 	}
 	
-	//parsing the statment 
+	//parsing the statement 
 	
 	/**
-	 * for changing the UI according to the loaded Statment.
-	 * it like parsing the text from the loaded statment
+	 * for changing the UI according to the loaded Statement.
+	 * it like parsing the text from the loaded statement
 	 */
 	private void EditTheUIFromStatment() {
 		// TODO Auto-generated method stub
 		//dSourceTables
+		String[] tempColumesNames;
 		String cleandStatment=removeAllSpaces(getStatement());
 		String[] wordsOfStatment =cleandStatment.split("\r");
+		String arrayAsString="";
+		for(int i=0;i<wordsOfStatment.length;i++){
+			//if(wordsOfStatment[i].equals("INSERT INTO"))
+			if(IsSringTableName(wordsOfStatment[i])){
+				
+			}
+			else{
+				if(!(IsStringKeyWord(wordsOfStatment[i]))){
+			
+					tempColumesNames=ParseStringIntoColumsNames(wordsOfStatment[i]);
+					//ArrayList<Integer> indicesOfSelection=new ArrayList<Integer>();
+					for(int j=0;j<tempColumesNames.length;j++){
+						arrayAsString=ConvertArrayToString(listOfColumn.getItems());
+						if(arrayAsString.contains(tempColumesNames[j])){
+							//indicesOfSelection.add(j);
+							listOfColumn.select(j);
+							
+						}
+					}
+					//listOfColumn.select(indicesOfSelection.toArray());
+				}
+			}
+		}
 		//TODO: ....
 		
 	}
 	
 	/**
+	 * splits the string/sentence into the "," separated Columns names.
+	 * @param string
+	 * @return arrayOfColums
+	 */
+	private String[] ParseStringIntoColumsNames(String string) {
+		
+		String[] arrayOfColums=string.split(",");
+		return arrayOfColums;
+	}
+
+
+	/**
+	 * this function is for checking if the string is one of
+	 * the used KeyWords  
+	 * @param string
+	 * @return 
+	 */
+	private boolean IsStringKeyWord(String string) {
+		if(ConvertArrayToString(theKeyWords).contains(string)) return true;
+		return false;
+	}
+
+
+	/**
+	 * Convert an array of words into one String, wich the words
+	 * are separaed with " "
+	 * @param items
+	 * @return resultString
+	 */
+	private String ConvertArrayToString(String[] items) {
+		String resultString="";
+		for(int i=0;i<items.length;i++){
+			resultString=resultString+" "+items[i];
+		}
+		
+		return resultString;
+	}
+
+
+	/**
+	 * for checking if the string is one of the data source 
+	 * Tables.
+	 * @param string
+	 * @return boolean
+	 */
+	private boolean IsSringTableName(String string) {
+		//TODO: üerprüfen 
+		
+		for(int i=0;i<dSourceTables.size();i++){
+			if(dSourceTables.get(i).equals(string)) return true;
+		}
+		
+		return false;
+	}
+
+
+	/**
 	 * removes all spaces from statment
 	 * @param statement
-	 * @return
+	 * @return statmentAsOneString
 	 */
 	private String removeAllSpaces(String statement) {
+		String[] wordsOfCentence = null;
+		String statmentAsOneString = "";
+		if(statement.contains(" ")){
+			wordsOfCentence=statement.split(" ");
+		}
+		for(int i=0;i<wordsOfCentence.length;i++){
+			statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+		}
 		
-		//statement. //TODO: 
-		return null;
+		while(statmentAsOneString.contains(" ")){
+			wordsOfCentence=statement.split(" ");
+			for(int i=0;i<wordsOfCentence.length;i++){
+				statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+			}
+		}
+		
+		return statmentAsOneString;
 	}
 
 }
