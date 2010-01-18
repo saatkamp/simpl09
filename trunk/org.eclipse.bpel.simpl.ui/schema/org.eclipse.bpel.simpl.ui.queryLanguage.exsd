@@ -102,13 +102,6 @@ For example in case of relational databases MySQL has perhaps a different interp
                </appinfo>
             </annotation>
          </attribute>
-         <attribute name="queryStatmentsLogikXmlFile" type="string" use="required">
-            <annotation>
-               <documentation>
-                  The queryStatmentsLogikXmlFile is the XmlFile wich contains all of possible Statmet KeyWords with the allowed Logik. Thats mean that throw this Logik we can know wich key Words in wich order should be used.
-               </documentation>
-            </annotation>
-         </attribute>
       </complexType>
    </element>
 

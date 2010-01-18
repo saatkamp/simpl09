@@ -9,14 +9,14 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-public class CreatEditor extends AStatementEditor {
+public class CreateEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
 	private StyledText statementText = null;
 	
 	
-	public CreatEditor() {
+	public CreateEditor() {
 		// TODO Auto-generated constructor stub
 	}
 	
