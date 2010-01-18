@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Tuscany SDO"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Log4J"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Tuscany DAS"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Apache DERBY"/>
+	<classpathentry kind="lib" path="libs/common-2.2.3.jar"/>
+	<classpathentry kind="lib" path="libs/ecore-2.2.3.jar"/>
+	<classpathentry kind="lib" path="libs/ecore-change-2.2.3.jar"/>
+	<classpathentry kind="lib" path="libs/ecore-xmi-2.2.3.jar"/>
+	<classpathentry kind="lib" path="libs/jaxws-tools.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="libs/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/tuscany-das-rdb-1.0-incubating-beta2.jar"/>
+	<classpathentry kind="lib" path="libs/tuscany-sdo-api-r2.1-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="libs/tuscany-sdo-impl-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="libs/tuscany-sdo-lib-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="libs/wstx-asl-3.2.0.jar"/>
+	<classpathentry kind="lib" path="libs/xsd-2.2.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
