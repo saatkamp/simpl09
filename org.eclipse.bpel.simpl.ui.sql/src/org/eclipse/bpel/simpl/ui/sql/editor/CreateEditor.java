@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Text;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
+import xmlParser.XMLUtils;
 
 /**
  * Es fehlt noch die rückwärtz Parsen der Statement .
@@ -33,7 +34,7 @@ public class CreateEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreibencreatecr
-	private String xmlFilePath="E:\\Studium_Dateien\\StuproA\\Workspace2\\org.eclipse.bpel.simpl.ui.sql\\src\\xmlParser\\CreateDMActivityXMLFile.xml";
+	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/CreateDMActivityXMLFile.xml");
 	//gerade nicht in gebrauch
 	
 	Text textColumnName;

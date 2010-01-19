@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
+import xmlParser.XMLUtils;
 
 public class SelectEditor extends AStatementEditor {
 
@@ -31,7 +32,7 @@ public class SelectEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath="E:\\Studium_Dateien\\StuproA\\Workspace2\\org.eclipse.bpel.simpl.ui.sql\\src\\xmlParser\\SelectDMActivityXMLFile.xml";
+	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/SelectDMActivityXMLFile.xml");
 	//gerade nicht in gebrauch
 	
 	public SelectEditor() {

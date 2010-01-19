@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.List;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
+import xmlParser.XMLUtils;
 
 public class DeleteEditor extends AStatementEditor {
 
@@ -25,7 +26,7 @@ public class DeleteEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath="E:\\Studium_Dateien\\StuproA\\Workspace2\\org.eclipse.bpel.simpl.ui.sql\\src\\xmlParser\\DeleteDMActivityXMLFile.xml";
+	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/DeleteDMActivityXMLFile.xml");
 	//gerade nicht in gebrauch
 	
 	private Composite comp = null;
