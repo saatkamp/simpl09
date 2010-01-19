@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
+import xmlParser.XMLUtils;
 
 public class InsertEditor extends AStatementEditor {
 
@@ -31,7 +32,7 @@ public class InsertEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath="E:\\Studium_Dateien\\StuproA\\Workspace2\\org.eclipse.bpel.simpl.ui.sql\\src\\xmlParser\\InsertDMActivityXMLFile.xml";
+	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/InsertDMActivityXMLFile.xml");
 	//gerade nicht in gebrauch
 	
 	public InsertEditor() {
