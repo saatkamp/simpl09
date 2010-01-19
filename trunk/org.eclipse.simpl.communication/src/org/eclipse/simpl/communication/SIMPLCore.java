@@ -1,11 +1,12 @@
 package org.eclipse.simpl.communication;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.eclipse.simpl.communication.client.AdministrationService;
 import org.eclipse.simpl.communication.client.AdministrationService_Service;
+import org.eclipse.simpl.communication.client.DatasourceService;
+import org.eclipse.simpl.communication.client.DatasourceService_Service;
 import org.eclipse.simpl.communication.client.Parameter;
 
 /**
@@ -18,9 +19,12 @@ import org.eclipse.simpl.communication.client.Parameter;
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  * 
  */
+@SuppressWarnings("unchecked")
 public class SIMPLCore {
   AdministrationService administrationService = new AdministrationService_Service()
       .getAdministrationServicePort();
+  DatasourceService datasourceService = new DatasourceService_Service()
+      .getDatasourceServicePort();
 
   public boolean save(String schema, String table, String settingName,
       LinkedHashMap<String, String> settings) {
@@ -32,7 +36,6 @@ public class SIMPLCore {
     return success;
   }
 
-  @SuppressWarnings("unchecked")
   public LinkedHashMap<String, String> load(String schema, String table,
       String settingName) {
     LinkedHashMap<String, String> settings = null;
@@ -43,6 +46,27 @@ public class SIMPLCore {
     return settings;
   }
 
+  public List<String> getDatasourceTypes() {
+    List<String> dsTypes = (List<String>) Parameter.deserialize(datasourceService
+        .getDatasourceTypes());
+
+    return dsTypes;
+  }
+
+  public List<String> getDatasourceSubTypes(String dsType) {
+    List<String> dsSubTypes = (List<String>) Parameter.deserialize(datasourceService
+        .getDatasourceSubtypes(dsType));
+
+    return dsSubTypes;
+  }
+
+  public List<String> getDatasourceLanguages(String dsSubtype) {
+    List<String> dsSubTypeLanguages = (List<String>) Parameter
+        .deserialize(datasourceService.getDatasourceLanguages(dsSubtype));
+
+    return dsSubTypeLanguages;
+  }
+  
   // public boolean saveAll(List<String> schema, List<String> table, String settingName,
   // List<LinkedHashMap<String, String>> settings) {
   // // Code der Operation
@@ -87,65 +111,4 @@ public class SIMPLCore {
   //
   // return settings;// Einstellungen als HashMap
   // }
-
-  public List<String> getDatasourceTypes() {
-    List<String> dsTypes = new ArrayList<String>();
-
-    // STUB
-    dsTypes.add("filesystem");
-    dsTypes.add("database");
-    dsTypes.add("sensornet");
-    // STUB
-
-    return dsTypes;
-  }
-
-  public List<String> getDatasourceSubTypes(String datasourceType) {
-    List<String> dsSubTypes = new ArrayList<String>();
-
-    // STUB
-    if (datasourceType.contains("filesystem")) {
-      dsSubTypes.add("ext3");
-      dsSubTypes.add("ntfs");
-      dsSubTypes.add("fat32");
-    } else {
-      if (datasourceType.contains("database")) {
-        dsSubTypes.add("DB2");
-        dsSubTypes.add("MySQL");
-      } else {
-        if (datasourceType.contains("sensornet")) {
-          dsSubTypes.add("TinyDB");
-        }
-      }
-    }
-    // STUB
-
-    return dsSubTypes;
-  }
-
-  public List<String> getDatasourceLanguages(String datasourceSubType) {
-    List<String> dsSubTypeLanguages = new ArrayList<String>();
-
-    // STUB
-    if (datasourceSubType.contains("DB2")) {
-      dsSubTypeLanguages.add("XQuery");
-      dsSubTypeLanguages.add("SQL");
-    } else {
-      if (datasourceSubType.contains("ext3") || datasourceSubType.contains("ntfs")
-          || datasourceSubType.contains("fat32")) {
-        dsSubTypeLanguages.add("OSCall");
-      } else {
-        if (datasourceSubType.contains("TinyDB")) {
-          dsSubTypeLanguages.add("TinySQL");
-        } else {
-          if (datasourceSubType.contains("MySQL")) {
-            dsSubTypeLanguages.add("SQL");
-          }
-        }
-      }
-    }
-    // STUB
-
-    return dsSubTypeLanguages;
-  }
 }
