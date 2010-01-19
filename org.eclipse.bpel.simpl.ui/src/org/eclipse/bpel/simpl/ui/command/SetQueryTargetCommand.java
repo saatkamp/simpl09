@@ -13,7 +13,7 @@ public class SetQueryTargetCommand extends SetCommand {
 	@Override
 	public Object get() {
 		if (fTarget instanceof QueryActivity){
-			return ((QueryActivity) fTarget).getDsAddress();
+			return ((QueryActivity) fTarget).getQueryTarget();
 		}
 		
 		throw new IllegalArgumentException("This model object has no variable to get");
@@ -22,7 +22,7 @@ public class SetQueryTargetCommand extends SetCommand {
 	@Override
 	public void set(Object o) {
 		if (fTarget instanceof QueryActivity) {
-			((QueryActivity) fTarget).setDsAddress((String) o);
+			((QueryActivity) fTarget).setQueryTarget((String) o);
 		} else {
 			throw new IllegalArgumentException(
 					"This model object has no variable to get");

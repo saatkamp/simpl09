@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+@SuppressWarnings("unused")
 public class QueryPropertySection extends DMActivityPropertySection {
 
 	private Label typeLabel = null;
@@ -177,13 +178,12 @@ public class QueryPropertySection extends DMActivityPropertySection {
 						.getSelectionIndex());
 			}
 		});
-		
+
 		queryTargetLabel = new Label(composite, SWT.NONE);
 		queryTargetLabel.setText("Target to insert the query result:");
-		queryTargetLabel.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		queryTargetLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 
-		Label filler411 = new Label(composite, SWT.NONE);
-		Label filler42 = new Label(composite, SWT.NONE);
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(false);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
@@ -194,9 +194,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
 				getCommandFramework().execute(
-						new SetQueryTargetCommand(getModel(),
-								queryTargetText.getText()));
+						new SetQueryTargetCommand(getModel(), queryTargetText
+								.getText()));
+
 			}
 		});
 		Label filler43 = new Label(composite, SWT.NONE);
