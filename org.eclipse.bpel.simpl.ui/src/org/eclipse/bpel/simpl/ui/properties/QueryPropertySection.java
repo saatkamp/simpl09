@@ -194,11 +194,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
-				// TODO Auto-generated method stub
+				//FIXME: Die Änderung wird zwar ins Modell übertragen, aber nicht
+				//im BPEL Designer Source-View durchgeführt bzw. angezeigt!
 				getCommandFramework().execute(
 						new SetQueryTargetCommand(getModel(), queryTargetText
 								.getText()));
-
 			}
 		});
 		Label filler43 = new Label(composite, SWT.NONE);

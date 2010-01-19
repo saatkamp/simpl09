@@ -1,6 +1,5 @@
 package org.eclipse.bpel.simpl.ui.command;
 
-import org.eclipse.bpel.model.Invoke;
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DeleteActivity;
