@@ -74,6 +74,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 						((QueryActivity) activity).getDsAddress());
 			}
 			
+			if (((QueryActivity) activity).getQueryTarget() != null) {
+				String attName = ModelPackage.eINSTANCE.getQueryActivity_QueryTarget().getName();
+				activityElement.setAttribute(attName,
+						((QueryActivity) activity).getQueryTarget());
+			}
+			
 			// insert the DOM element into the DOM tree
 			parentNode.appendChild(activityElement);
 		}

@@ -8,6 +8,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
+import org.eclipse.bpel.simpl.ui.command.SetQueryTargetCommand;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -38,6 +39,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Label languageLabel = null;
 	private CCombo languageCombo = null;
 	private Composite parentComposite = null;
+	private Label queryTargetLabel = null;
+	private Text queryTargetText = null;
 	private String language = null;
 
 	private QueryActivity activity;
@@ -64,6 +67,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		setStatement(activity.getDsStatement());
 		// Setzen die Datenquellenadresse
 		dataSourceAddressText.setText(activity.getDsAddress());
+		// Setzen die Zieleinheit des Queries.
+		queryTargetText.setText(activity.getQueryTarget());
 		// Setzen die Sprache
 		language = (Constants.getDatasourceLanguages(kindCombo
 				.getItem(kindCombo.getSelectionIndex()))).get(0);
@@ -80,6 +85,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
+		GridData gridData13 = new GridData();
+		gridData13.horizontalAlignment = GridData.FILL;
+		gridData13.grabExcessHorizontalSpace = true;
+		gridData13.verticalAlignment = GridData.CENTER;
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;
 		gridData4.verticalAlignment = GridData.CENTER;
@@ -90,7 +99,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		gridData51.horizontalAlignment = GridData.FILL;
 		gridData51.verticalAlignment = GridData.CENTER;
 		GridData gridData31 = new GridData();
-		gridData31.grabExcessHorizontalSpace = true;
+		gridData31.grabExcessHorizontalSpace = false;
 		GridData gridData12 = new GridData();
 		gridData12.grabExcessHorizontalSpace = true;
 		gridData12.verticalAlignment = GridData.CENTER;
@@ -168,6 +177,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 						.getSelectionIndex());
 			}
 		});
+		
+		queryTargetLabel = new Label(composite, SWT.NONE);
+		queryTargetLabel.setText("Target to insert the query result:");
+		queryTargetLabel.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 
 		Label filler411 = new Label(composite, SWT.NONE);
 		Label filler42 = new Label(composite, SWT.NONE);
@@ -175,6 +188,17 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		languageLabel.setVisible(false);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
+		queryTargetText = new Text(composite, SWT.BORDER);
+		queryTargetText.setLayoutData(gridData13);
+		queryTargetText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				getCommandFramework().execute(
+						new SetQueryTargetCommand(getModel(),
+								queryTargetText.getText()));
+			}
+		});
 		Label filler43 = new Label(composite, SWT.NONE);
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");

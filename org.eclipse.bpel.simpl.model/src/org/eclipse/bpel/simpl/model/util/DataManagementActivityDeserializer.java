@@ -56,6 +56,7 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
 			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
 			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
+			String attQueryTarget = ModelPackage.eINSTANCE.getQueryActivity_QueryTarget().getName();
 			
 			if (((Element) node).getAttribute(attStatement) != null) {
 				activity.setDsStatement(((Element) node).getAttribute(attStatement));
@@ -68,6 +69,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attQueryTarget) != null) {
+				activity.setQueryTarget(((Element) node).getAttribute(attQueryTarget));
 			}
 			
 			return activity;
