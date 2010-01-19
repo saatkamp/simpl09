@@ -27,6 +27,7 @@ public interface DatasourceService {
      * 
      * @param statement
      * @param dsAddress
+     * @param dsSubtype
      * @param dsType
      * @return
      *     returns java.lang.String
@@ -40,7 +41,9 @@ public interface DatasourceService {
         @WebParam(name = "statement", partName = "statement")
         String statement,
         @WebParam(name = "dsType", partName = "dsType")
-        String dsType)
+        String dsType,
+        @WebParam(name = "dsSubtype", partName = "dsSubtype")
+        String dsSubtype)
         throws ConnectionException_Exception
     ;
 
@@ -48,6 +51,7 @@ public interface DatasourceService {
      * 
      * @param statement
      * @param dsAddress
+     * @param dsSubtype
      * @param dsType
      * @return
      *     returns boolean
@@ -61,7 +65,9 @@ public interface DatasourceService {
         @WebParam(name = "statement", partName = "statement")
         String statement,
         @WebParam(name = "dsType", partName = "dsType")
-        String dsType)
+        String dsType,
+        @WebParam(name = "dsSubtype", partName = "dsSubtype")
+        String dsSubtype)
         throws ConnectionException_Exception
     ;
 
@@ -69,6 +75,7 @@ public interface DatasourceService {
      * 
      * @param statement
      * @param dsAddress
+     * @param dsSubtype
      * @param data
      * @param dsType
      * @return
@@ -85,8 +92,43 @@ public interface DatasourceService {
         @WebParam(name = "data", partName = "data")
         String data,
         @WebParam(name = "dsType", partName = "dsType")
-        String dsType)
+        String dsType,
+        @WebParam(name = "dsSubtype", partName = "dsSubtype")
+        String dsSubtype)
         throws ConnectionException_Exception
     ;
+
+    /**
+     * 
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "getDatasourceTypes")
+    @WebResult(partName = "return")
+    public String getDatasourceTypes();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "getDatasourceSubtypes")
+    @WebResult(partName = "return")
+    public String getDatasourceSubtypes(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "getDatasourceLanguages")
+    @WebResult(partName = "return")
+    public String getDatasourceLanguages(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
 
 }
