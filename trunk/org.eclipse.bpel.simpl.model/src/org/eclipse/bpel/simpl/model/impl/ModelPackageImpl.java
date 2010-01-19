@@ -303,6 +303,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getQueryActivity_QueryTarget() {
+		return (EAttribute)queryActivityEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInsertActivity() {
 		return insertActivityEClass;
 	}
@@ -396,6 +406,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT);
 
 		queryActivityEClass = createEClass(QUERY_ACTIVITY);
+		createEAttribute(queryActivityEClass, QUERY_ACTIVITY__QUERY_TARGET);
 
 		insertActivityEClass = createEClass(INSERT_ACTIVITY);
 
@@ -461,6 +472,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getDataManagementActivity_DsStatement(), ecorePackage.getEString(), "dsStatement", "statement", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryActivityEClass, QueryActivity.class, "QueryActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQueryActivity_QueryTarget(), ecorePackage.getEString(), "queryTarget", "target", 0, 1, QueryActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(insertActivityEClass, InsertActivity.class, "InsertActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -306,13 +306,22 @@ public interface ModelPackage extends EPackage {
 	int QUERY_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Query Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_ACTIVITY__QUERY_TARGET = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Query Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+	int QUERY_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.InsertActivityImpl <em>Insert Activity</em>}' class.
@@ -1269,6 +1278,17 @@ public interface ModelPackage extends EPackage {
 	EClass getQueryActivity();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.QueryActivity#getQueryTarget <em>Query Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Query Target</em>'.
+	 * @see org.eclipse.bpel.simpl.model.QueryActivity#getQueryTarget()
+	 * @see #getQueryActivity()
+	 * @generated
+	 */
+	EAttribute getQueryActivity_QueryTarget();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.InsertActivity <em>Insert Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1411,6 +1431,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass QUERY_ACTIVITY = eINSTANCE.getQueryActivity();
+
+		/**
+		 * The meta object literal for the '<em><b>Query Target</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY_ACTIVITY__QUERY_TARGET = eINSTANCE.getQueryActivity_QueryTarget();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.InsertActivityImpl <em>Insert Activity</em>}' class.

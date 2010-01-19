@@ -20,6 +20,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Allows to query data on a data source. The queried data will be stored on the data source."/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryTarget" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="target"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InsertActivity" eSuperTypes="#//DataManagementActivity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
