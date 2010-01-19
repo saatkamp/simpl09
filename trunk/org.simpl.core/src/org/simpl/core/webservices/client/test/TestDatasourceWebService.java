@@ -24,6 +24,7 @@ public class TestDatasourceWebService {
     DatasourceService_Service datasourceService = new DatasourceService_Service();
     DatasourceService datasourceServicePort = datasourceService.getDatasourceServicePort();
     
-    System.out.println(Parameter.deserialize(datasourceServicePort.queryData("simplDB", "SELECT * FROM test.tabelle1", "RDB")));
+    System.out.println(Parameter.deserialize(datasourceServicePort.getDatasourceTypes()));
+    System.out.println(Parameter.deserialize(datasourceServicePort.queryData("simplDB", "SELECT * FROM test.tabelle1", "database", "Derby")));
   }
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -26,6 +27,14 @@ public class RDBDatasourceService extends DatasourceServicePlugin {
   static Logger logger = Logger.getLogger(RDBDatasourceService.class);
 
   public RDBDatasourceService() {
+    this.datasourceType = "database";
+    this.datasourceSubtypes.add("DB2");
+    this.datasourceSubtypes.add("MySQL");
+    this.datasourceSubtypes.add("Derby");
+    this.datasourceLanguages.put("DB2", Arrays.asList(new String[] {"SQL"}));
+    this.datasourceLanguages.put("MySQL", Arrays.asList(new String[] {"SQL"}));
+    this.datasourceLanguages.put("Derby", Arrays.asList(new String[] {"SQL"}));
+    
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }

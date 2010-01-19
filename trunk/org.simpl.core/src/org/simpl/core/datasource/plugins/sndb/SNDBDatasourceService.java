@@ -1,6 +1,7 @@
 package org.simpl.core.datasource.plugins.sndb;
 
 import java.sql.Connection;
+import java.util.Arrays;
 
 import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
@@ -8,6 +9,15 @@ import org.simpl.core.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 public class SNDBDatasourceService extends DatasourceServicePlugin {
+  /**
+   * 
+   */
+  public SNDBDatasourceService() {
+    this.datasourceType = "sensornet";
+    this.datasourceSubtypes.add("TinyDB");
+    this.datasourceLanguages.put("TinyDB", Arrays.asList(new String[] {"TinySQL"}));
+  }
+  
   /*
    * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#closeConnection(java.sql.Connection)

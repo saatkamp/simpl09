@@ -1,6 +1,7 @@
 package org.simpl.core.datasource.plugins.xmldb;
 
 import java.sql.Connection;
+import java.util.Arrays;
 
 import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
@@ -8,6 +9,15 @@ import org.simpl.core.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 public class XMLDBDatasourceService extends DatasourceServicePlugin {
+  /**
+   * 
+   */
+  public XMLDBDatasourceService() {
+    this.datasourceType = "database";
+    this.datasourceSubtypes.add("DB2");
+    this.datasourceLanguages.put("DB2", Arrays.asList(new String[] {"XQuery", "SQL"}));
+  }
+  
   /*
    * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#closeConnection(java.sql.Connection)

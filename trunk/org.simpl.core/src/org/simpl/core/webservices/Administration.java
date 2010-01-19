@@ -24,7 +24,7 @@ public class Administration {
     LinkedHashMap<String, String> settingsHashMap = null;
 
     settingsHashMap = (LinkedHashMap<String, String>) Parameter.deserialize(settings);
-    success = SIMPLCore.administrationService.saveSettings(schema, table, settingName,
+    success = SIMPLCore.getInstance().administrationService().saveSettings(schema, table, settingName,
         settingsHashMap);
 
     return success;
@@ -37,7 +37,7 @@ public class Administration {
       @WebParam(name = "settingName", targetNamespace = "") String settingName) {
     LinkedHashMap<String, String> settings = null;
 
-    settings = SIMPLCore.administrationService.loadSettings(schema, table, settingName);
+    settings = SIMPLCore.getInstance().administrationService().loadSettings(schema, table, settingName);
 
     return Parameter.serialize(settings);
   }
