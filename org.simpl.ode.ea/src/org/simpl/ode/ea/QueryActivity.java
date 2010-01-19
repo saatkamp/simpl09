@@ -21,8 +21,11 @@ public class QueryActivity extends SimplActivity {
 		DatasourceService datasourceService = SIMPLCore.datasourceServiceProvider
 				.getInstance("RDB");
 
-		Statement = getStatement(context, element);
+		dsStatement = getStatement(context, element);
 		dsAddress = getdsAddress(context, element);
+		
+		String queryTarget = element.getAttribute("queryTarget").toString();
+		
 		DataObject data = null;
 		boolean success = false;
 
@@ -38,7 +41,7 @@ public class QueryActivity extends SimplActivity {
 
 			success = datasourceService.manipulateData(dsAddress, "INSERT INTO TAB VALUES ('20', 'Wollo ist doff')", null);
 			
-			data = datasourceService.queryData(dsAddress, Statement);
+			data = datasourceService.queryData(dsAddress, dsStatement);
 			
 			printDataObject(context, data, 0);
 

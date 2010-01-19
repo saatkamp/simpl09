@@ -22,9 +22,9 @@ public class SimplActivity extends AbstractSyncExtensionOperation {
 
 	protected String getStatement(ExtensionContext context, Element element)
 			throws FaultException {
-		String Statement = null;
-		Statement = element.getAttribute("dsStatement").toString();
-		return Statement;
+		String statement = null;
+		statement = element.getAttribute("dsStatement").toString();
+		return statement;
 	}
 
 	protected String getdsAddress(ExtensionContext context, Element element)
@@ -40,11 +40,11 @@ public class SimplActivity extends AbstractSyncExtensionOperation {
 		return data;
 	}
 	
-	protected String Statement;
+	protected String dsStatement;
 	protected String dsAddress;
 	
 	
-	//Diese beiden Methoden sind nur zu Testzwecken.
+//Diese beiden Methoden sind nur zu Testzwecken.
 	public static void printDataObject(ExtensionContext context, DataObject dataObject, int indent) {
 		// For each Property
 		List properties = dataObject.getInstanceProperties();
