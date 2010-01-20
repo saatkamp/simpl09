@@ -18,30 +18,30 @@ public class QueryActivity extends SimplActivity {
 			throws FaultException {
 		// TODO Auto-generated method stub
 
-		DatasourceService datasourceService = SIMPLCore.datasourceServiceProvider
-				.getInstance("RDB");
-
-		dsStatement = getStatement(context, element);
-		dsAddress = getdsAddress(context, element);
+		//Laden alle Attributwerte aus der Aktivität.
+		loadSIMPLAttributes(context, element);
 		
+		//Laden das Query-spezifische Attribut "queryTarget"
 		String queryTarget = element.getAttribute("queryTarget").toString();
 		
+		DatasourceService datasourceService = SIMPLCore.getInstance().datasourceService(getDsType(), getDsSubType());
+
 		DataObject data = null;
 		boolean success = false;
 
 		try {
 			
 			
-			success = datasourceService.defineData(dsAddress, "CREATE TABLE TAB (ID VARCHAR(20) NOT NULL, MODE VARCHAR(50))");
+			success = datasourceService.defineData(getDsAddress(), "CREATE TABLE TAB (ID VARCHAR(20) NOT NULL, MODE VARCHAR(50))");
 
 			if (success == false) {
 				ScopeEvent DMFailure = new DMFailure("Wollo is doff");
 				context.getInternalInstance().sendEvent(DMFailure);
 			}
 
-			success = datasourceService.manipulateData(dsAddress, "INSERT INTO TAB VALUES ('20', 'Wollo ist doff')", null);
+			success = datasourceService.manipulateData(getDsAddress(), "INSERT INTO TAB VALUES ('20', 'Wollo ist doff')", null);
 			
-			data = datasourceService.queryData(dsAddress, dsStatement);
+			data = datasourceService.queryData(getDsAddress(), getDsStatement());
 			
 			printDataObject(context, data, 0);
 
