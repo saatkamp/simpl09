@@ -16,6 +16,13 @@ public class SimplExtensionBundle extends AbstractExtensionBundle {
 	public void registerExtensionActivities() {
 		// TODO Auto-generated method stub
 		super.registerExtensionOperation("queryActivity", QueryActivity.class);
+		super.registerExtensionOperation("callActivity", CallActivity.class);
+		super.registerExtensionOperation("deleteActivity", DeleteActivity.class);
+		super.registerExtensionOperation("dropActivity", DropActivity.class);
+		super.registerExtensionOperation("insertActivity", InsertActivity.class);
+		super.registerExtensionOperation("createActivity", CreateActivity.class);
+		super.registerExtensionOperation("updateActivity", UpdateActivity.class);
+		
 		
 	}
 
