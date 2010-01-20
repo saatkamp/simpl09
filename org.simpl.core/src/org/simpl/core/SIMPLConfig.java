@@ -24,8 +24,10 @@ import javax.xml.stream.XMLStreamReader;
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLConfig {
-  private static final String CONFIG_FILE = System.getProperty("user.dir")
+  private static final String CONFIG_FILE1 = System.getProperty("user.dir")
       + "\\webapps\\ode\\WEB-INF\\conf\\simpl-core-config.xml";
+  private static final String CONFIG_FILE2 = System.getProperty("user.dir")
+      + "\\..\\webapps\\ode\\WEB-INF\\conf\\simpl-core-config.xml";
   List<String> datasourceServicePlugins = new ArrayList<String>();
 
   public SIMPLConfig() {
@@ -34,13 +36,17 @@ public class SIMPLConfig {
     XMLStreamReader parser = null;
 
     try {
-      in = new FileInputStream(CONFIG_FILE);
+      in = new FileInputStream(CONFIG_FILE1);
     } catch (FileNotFoundException e) {
       try { 
-        in = new FileInputStream("simpl-core-config.xml");
+        in = new FileInputStream(CONFIG_FILE2);
       } catch (FileNotFoundException e1) {
-        // TODO Auto-generated catch block
-        e1.printStackTrace();
+        try {
+          in = new FileInputStream("simpl-core-config.xml");
+        } catch (FileNotFoundException e2) {
+          // TODO Auto-generated catch block
+          e2.printStackTrace();
+        }
       }
     }
 
