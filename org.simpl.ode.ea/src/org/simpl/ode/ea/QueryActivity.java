@@ -11,8 +11,6 @@ import org.simpl.ode.evt.DMFailure;
 import org.simpl.ode.evt.DMStarted;
 import org.w3c.dom.Element;
 
-import commonj.sdo.DataObject;
-
 public class QueryActivity extends SimplActivity {
 
 	protected void runSync(ExtensionContext context, Element element)
@@ -31,41 +29,18 @@ public class QueryActivity extends SimplActivity {
 		DatasourceService datasourceService = SIMPLCore.getInstance()
 				.datasourceService(getDsType(), getDsSubType());
 
-		DataObject data = null;
-		boolean success = false;
-
 		try {
-
-			success = datasourceService
-					.defineData(getDsAddress(),
-							"CREATE TABLE TAB (ID VARCHAR(20) NOT NULL, MODE VARCHAR(50))");
-
+			boolean success = datasourceService.depositData(getDsAddress(),
+					getDsStatement(), queryTarget);
+			
 			if (success == false) {
-				ScopeEvent DMFailure = new DMFailure("Wollo is doff");
-				context.getInternalInstance().sendEvent(DMFailure);
-			}
-
-			success = datasourceService.manipulateData(getDsAddress(),
-					"INSERT INTO TAB VALUES ('20', 'Wollo ist doff')", null);
-
-			if (success == false) {
-				ScopeEvent DMFailure = new DMFailure("Wollo is doff");
-				context.getInternalInstance().sendEvent(DMFailure);
-			}
-
-			data = datasourceService
-					.queryData(getDsAddress(), getDsStatement());
-
-			printDataObject(context, data, 0);
-
-			if (data == null) {
 				ScopeEvent DMFailure = new DMFailure("Wollo is doff");
 				context.getInternalInstance().sendEvent(DMFailure);
 			} else {
 				ScopeEvent DMEnd = new DMEnd();
 				context.getInternalInstance().sendEvent(DMEnd);
 			}
-
+			
 		} catch (ConnectionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
