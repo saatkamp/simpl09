@@ -15,70 +15,89 @@ import commonj.sdo.DataObject;
 @WebService(name = "DatasourceService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Datasource {
-  DatasourceServiceProvider datasourceServiceProvider = new DatasourceServiceProvider();
+	DatasourceServiceProvider datasourceServiceProvider = new DatasourceServiceProvider();
 
-  @WebMethod(action = "queryData")
-  public String queryData(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
-      throws ConnectionException {
-    DataObject dataObject = null;
-    String data = null;
+	@WebMethod(action = "queryData")
+	public String queryData(
+			@WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
+			@WebParam(name = "statement", targetNamespace = "") String statement,
+			@WebParam(name = "dsType", targetNamespace = "") String dsType,
+			@WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+			throws ConnectionException {
+		DataObject dataObject = null;
+		String data = null;
 
-    dataObject = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype).queryData(
-        dsAddress, statement);
-    data = Parameter.serialize(dataObject);
+		dataObject = SIMPLCore.getInstance().datasourceService(dsType,
+				dsSubtype).queryData(dsAddress, statement);
+		data = Parameter.serialize(dataObject);
 
-    return data;
-  }
+		return data;
+	}
 
-  @WebMethod(action = "defineData")
-  public boolean defineData(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
-      throws ConnectionException {
-    boolean success = false;
+	@WebMethod(action = "depositData")
+	public boolean depositData(
+			@WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
+			@WebParam(name = "statement", targetNamespace = "") String statement,
+			@WebParam(name = "dsType", targetNamespace = "") String dsType,
+			@WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype,
+			@WebParam(name = "target", targetNamespace = "") String target)
+			throws ConnectionException {
+		boolean success = false;
 
-    success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype).defineData(
-        dsAddress, statement);
+		success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)
+				.depositData(dsAddress, statement, target);
 
-    return success;
-  }
+		return success;
+	}
 
-  @WebMethod(action = "manipulateData")
-  public boolean manipulateData(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "data", targetNamespace = "") String data,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
-      throws ConnectionException {
-    boolean success = false;
-    DataObject dataObject = null;
+	@WebMethod(action = "defineData")
+	public boolean defineData(
+			@WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
+			@WebParam(name = "statement", targetNamespace = "") String statement,
+			@WebParam(name = "dsType", targetNamespace = "") String dsType,
+			@WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+			throws ConnectionException {
+		boolean success = false;
 
-    dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype).manipulateData(
-        dsAddress, statement, dataObject);
+		success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)
+				.defineData(dsAddress, statement);
 
-    return success;
-  }
+		return success;
+	}
 
-  @WebMethod(action = "getDatasourceTypes")
-  public String getDatasourceTypes() {
-    return Parameter.serialize(SIMPLCore.getInstance().getDatasourceTypes());
-  }
+	@WebMethod(action = "manipulateData")
+	public boolean manipulateData(
+			@WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
+			@WebParam(name = "statement", targetNamespace = "") String statement,
+			@WebParam(name = "data", targetNamespace = "") String data,
+			@WebParam(name = "dsType", targetNamespace = "") String dsType,
+			@WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+			throws ConnectionException {
+		boolean success = false;
+		DataObject dataObject = null;
 
-  @WebMethod(action = "getDatasourceSubtypes")
-  public String getDatasourceSubtypes(String dsType) {
-    return Parameter.serialize(SIMPLCore.getInstance().getDatasourceSubtypes(dsType));
-  }
+		dataObject = (DataObject) Parameter.deserialize(data);
+		success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)
+				.manipulateData(dsAddress, statement, dataObject);
 
-  @WebMethod(action = "getDatasourceLanguages")
-  public String getDatasourceLanguages(String dsSubtype) {
-    return Parameter.serialize(SIMPLCore.getInstance().getDatasourceLanguages(dsSubtype));
-  }
+		return success;
+	}
+
+	@WebMethod(action = "getDatasourceTypes")
+	public String getDatasourceTypes() {
+		return Parameter
+				.serialize(SIMPLCore.getInstance().getDatasourceTypes());
+	}
+
+	@WebMethod(action = "getDatasourceSubtypes")
+	public String getDatasourceSubtypes(String dsType) {
+		return Parameter.serialize(SIMPLCore.getInstance()
+				.getDatasourceSubtypes(dsType));
+	}
+
+	@WebMethod(action = "getDatasourceLanguages")
+	public String getDatasourceLanguages(String dsSubtype) {
+		return Parameter.serialize(SIMPLCore.getInstance()
+				.getDatasourceLanguages(dsSubtype));
+	}
 }
