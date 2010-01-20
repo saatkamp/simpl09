@@ -21,6 +21,9 @@ public interface DatasourceService {
 
   public DataObject queryData(String dsAddress, String statement)
       throws ConnectionException;
+  
+  public boolean depositData(String dsAddress, String statement, String target)
+  throws ConnectionException;
 
   public boolean defineData(String dsAddress, String statement)
       throws ConnectionException;

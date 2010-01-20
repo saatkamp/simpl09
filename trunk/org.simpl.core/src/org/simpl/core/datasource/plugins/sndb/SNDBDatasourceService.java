@@ -73,4 +73,11 @@ public class SNDBDatasourceService extends DatasourceServicePlugin {
     // TODO Auto-generated method stub
     return null;
   }
+
+@Override
+public boolean depositData(String dsAddress, String statement, String target)
+		throws ConnectionException {
+	// TODO Auto-generated method stub
+	return false;
+}
 }
