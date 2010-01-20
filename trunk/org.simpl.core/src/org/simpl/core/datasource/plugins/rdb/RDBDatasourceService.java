@@ -223,6 +223,7 @@ public class RDBDatasourceService extends DatasourceServicePlugin {
 			conn.commit();
 			createState.close();
 			insertState.close();
+			closeConnection(conn);
 			
 			success = true;
 		} catch (Throwable e) {
