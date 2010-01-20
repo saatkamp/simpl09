@@ -24,6 +24,8 @@ import org.apache.ode.bpel.dao.ActivityRecoveryDAO;
 import org.apache.ode.utils.DOMUtils;
 import org.w3c.dom.Element;
 
+import commonj.sdo.DataObject;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -65,6 +67,9 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
     @SuppressWarnings("unused")
     @ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="INSTANCE_ID")
     private ProcessInstanceDAOImpl _instance;
+    
+    //ActivityRecoverySDO activitySDO = new ActivityRecoverySDO();
+    //DataObject dataObject = null;
 
 	
     public ActivityRecoveryDAOImpl() {}
@@ -75,6 +80,7 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
 		_activityId = activityId;
 		_reason = reason;
 		_dateTime = dateTime;
+		//this.dataObject = this.activitySDO.getSDO(this._id);
 
         if (data != null) _details = DOMUtils.domToString(data);
 		
@@ -132,5 +138,6 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
 
     public void setInstance(ProcessInstanceDAOImpl instance) {
         _instance = instance;
+        
     }
 }
