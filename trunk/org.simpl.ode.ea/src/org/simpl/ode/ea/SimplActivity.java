@@ -19,33 +19,45 @@ public class SimplActivity extends AbstractSyncExtensionOperation {
 		// TODO Auto-generated method stub
 
 	}
+	
+	private String dsStatement;
+	private String dsAddress;
+	private String dsType;
+	private String dsSubType;
 
-	protected String getStatement(ExtensionContext context, Element element)
+	protected void loadSIMPLAttributes(ExtensionContext context, Element element)
 			throws FaultException {
-		String statement = null;
-		statement = element.getAttribute("dsStatement").toString();
-		return statement;
+		this.dsStatement = element.getAttribute("dsStatement").toString();
+		this.dsAddress = element.getAttribute("dsAddress").toString();
+		this.dsType = element.getAttribute("dsType").toString();
+		this.dsSubType = element.getAttribute("dsKind").toString();
 	}
 
-	protected String getdsAddress(ExtensionContext context, Element element)
-			throws FaultException {
-		String dsAddress = null;
-		dsAddress = element.getAttribute("dsAddress").toString();
+	protected DataObject getDataObject(String dsAddress, String Statement) {
+		DataObject data = null;
+
+		return data;
+	}
+
+	public String getDsStatement() {
+		return dsStatement;
+	}
+
+	public String getDsAddress() {
 		return dsAddress;
 	}
 
-	protected DataObject getDataObject(String dsAddress, String Statement){
-		DataObject data = null;
-		
-		return data;
+	public String getDsType() {
+		return dsType;
 	}
-	
-	protected String dsStatement;
-	protected String dsAddress;
-	
-	
-//Diese beiden Methoden sind nur zu Testzwecken.
-	public static void printDataObject(ExtensionContext context, DataObject dataObject, int indent) {
+
+	public String getDsSubType() {
+		return dsSubType;
+	}
+
+	// Diese beiden Methoden sind nur zu Testzwecken.
+	public static void printDataObject(ExtensionContext context,
+			DataObject dataObject, int indent) {
 		// For each Property
 		List properties = dataObject.getInstanceProperties();
 		for (int p = 0, size = properties.size(); p < size; p++) {
@@ -65,7 +77,8 @@ public class SimplActivity extends AbstractSyncExtensionOperation {
 		}
 	}
 
-	public static void printValue(ExtensionContext context, Object value, Property property, int indent) {
+	public static void printValue(ExtensionContext context, Object value,
+			Property property, int indent) {
 		// Get the name of the property
 		String propertyName = property.getName();
 		// Construct a string for the proper indentation
@@ -77,13 +90,13 @@ public class SimplActivity extends AbstractSyncExtensionOperation {
 			// with printDataObject
 			Type type = property.getType();
 			String typeName = type.getName();
-			context.printToConsole((margin + propertyName + " (" + typeName + "):"));
+			context
+					.printToConsole((margin + propertyName + " (" + typeName + "):"));
 			printDataObject(context, (DataObject) value, indent + 1);
 		} else {
 			// For non-containment properties, just print the value
 			context.printToConsole(margin + propertyName + ": " + value);
 		}
 	}
-
 
 }
