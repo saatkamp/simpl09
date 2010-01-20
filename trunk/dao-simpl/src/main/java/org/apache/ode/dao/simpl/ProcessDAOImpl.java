@@ -24,6 +24,8 @@ import org.apache.ode.bpel.dao.CorrelatorDAO;
 import org.apache.ode.bpel.dao.ProcessDAO;
 import org.apache.ode.bpel.dao.ProcessInstanceDAO;
 
+//import commonj.sdo.DataObject;
+
 import javax.persistence.*;
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
@@ -63,6 +65,9 @@ public class ProcessDAOImpl extends OpenJPADAO implements ProcessDAO {
 
 	@OneToMany(targetEntity=CorrelatorDAOImpl.class,mappedBy="_process",fetch=FetchType.LAZY,cascade={CascadeType.ALL})
     private Collection<CorrelatorDAOImpl> _correlators = new ArrayList<CorrelatorDAOImpl>();
+	
+	//ProcessSDO processSDO = new ProcessSDO();
+	//DataObject dataObject = null;
 
 	public ProcessDAOImpl() {}
 	public ProcessDAOImpl(QName pid, QName type, String guid, long version) {
@@ -70,6 +75,7 @@ public class ProcessDAOImpl extends OpenJPADAO implements ProcessDAO {
 		_processType = type.toString();
 		_guid = guid;
         _version = version;
+       //this.dataObject = processSDO.getSDO(this._id);
     }
 	
 	public CorrelatorDAO addCorrelator(String correlator) {
