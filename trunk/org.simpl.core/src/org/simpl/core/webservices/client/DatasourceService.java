@@ -52,6 +52,33 @@ public interface DatasourceService {
      * @param statement
      * @param dsAddress
      * @param dsSubtype
+     * @param target
+     * @param dsType
+     * @return
+     *     returns boolean
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "depositData")
+    @WebResult(partName = "return")
+    public boolean depositData(
+        @WebParam(name = "dsAddress", partName = "dsAddress")
+        String dsAddress,
+        @WebParam(name = "statement", partName = "statement")
+        String statement,
+        @WebParam(name = "dsType", partName = "dsType")
+        String dsType,
+        @WebParam(name = "dsSubtype", partName = "dsSubtype")
+        String dsSubtype,
+        @WebParam(name = "target", partName = "target")
+        String target)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
+     * @param statement
+     * @param dsAddress
+     * @param dsSubtype
      * @param dsType
      * @return
      *     returns boolean
