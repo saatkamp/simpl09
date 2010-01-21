@@ -9,10 +9,12 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
@@ -106,9 +108,12 @@ public class UpdateEditor extends AStatementEditor {
 			}
 			final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
 			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
-			keyWordAsButton.setSize(20, 10);
+			//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+			
+			keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+
 			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
-				keyWordAsButton.setEnabled(false);
+				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 			}
 			//else isInsertKeyWord=false;
 			
@@ -128,15 +133,15 @@ public class UpdateEditor extends AStatementEditor {
 					 * in the following for statement all the buttons are only
 					 * then enabled if the father button (according to the Logik in the parsed xmlFile)
 					 */
-					keyWordAsButton.setEnabled(false);
+					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 					
 					for(int x=0;x<buttonList.size();x++){
 						//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-						buttonList.get(x).setEnabled(false);
+						buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 						for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 							//
 							if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-								buttonList.get(x).setEnabled(true);
+								buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 							}
 							
 						}
@@ -144,7 +149,7 @@ public class UpdateEditor extends AStatementEditor {
 						
 					}
 					
-					statementText.setText(statementText.getText()+"\r"+keyWordAsButton.getText());
+					statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
 					
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
@@ -156,5 +161,6 @@ public class UpdateEditor extends AStatementEditor {
 		}
 		
 	}
+
 
 }

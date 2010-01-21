@@ -15,6 +15,16 @@ public class KeyWord /*extends Button*/{
 		// TODO Auto-generated constructor stub
 	}
 	
+	String textOfKEyWord="";
+	
+	public String getTextOfKEyWord() {
+		return textOfKEyWord;
+	}
+	public void setTextOfKEyWord(String textOfKEyWord) {
+		this.textOfKEyWord = textOfKEyWord;
+	}
+	
+
 	boolean isTheMajorKey=false;
 	public boolean isTheMajorKey() {
 		return isTheMajorKey;

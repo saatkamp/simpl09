@@ -25,7 +25,7 @@ public class QueryKeyWordsXmlParser {
 
 	//TODO: hier kommen die funktionen zum parsen der xml elemente
 	//von der quaryKeyWords xml file.
-	ArrayList<Button> buttonList=new ArrayList<Button>();
+	ArrayList<EditorButton> buttonList=new ArrayList<EditorButton>();
 	
 	Composite myComp;
 	public Composite getMyComp() {
@@ -100,6 +100,8 @@ public class QueryKeyWordsXmlParser {
 						
 						
 						keyWord.setMainKeyWord(mainKeyWordElement.getAttribute("value"));
+						keyWord.setTextOfKEyWord(mainKeyWordElement.getAttribute("text"));
+						
 						keyWord.setTheMajorKey(true);
 						
 						if(mainKeyWordElement.hasChildNodes()){
@@ -140,6 +142,7 @@ public class QueryKeyWordsXmlParser {
 					if(subKeyWordElement.getTagName()=="KeyWord"){
 	
 						keyWord.setMainKeyWord(subKeyWordElement.getAttribute("value"));
+						keyWord.setTextOfKEyWord(subKeyWordElement.getAttribute("text"));
 						
 						if(subKeyWordElement.hasChildNodes()){
 							keyWord.setListOfSubKeyWords(parseSubKeyWord(subKeyWordElement));
@@ -177,8 +180,10 @@ public class QueryKeyWordsXmlParser {
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
 				creatButtonsOfKeyWords(buttonsComposite,listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
-			final Button keyWordAsButton=new Button(myComp, SWT.NONE);
+			final EditorButton keyWordAsButton=new EditorButton(myComp, SWT.NONE);
 			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
+			keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+			
 			keyWordAsButton.setSize(20, 10);
 			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
 				keyWordAsButton.setEnabled(false);

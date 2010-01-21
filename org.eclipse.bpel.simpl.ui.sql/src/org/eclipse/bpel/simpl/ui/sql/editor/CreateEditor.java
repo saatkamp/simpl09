@@ -9,11 +9,13 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -37,7 +39,7 @@ public class CreateEditor extends AStatementEditor {
 	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/CreateDMActivityXMLFile.xml");
 	//gerade nicht in gebrauch
 	
-	Text textColumnName;
+	Text textColumnName,textTableName;
 	Combo comboColumnType;
 	Button addColumnToStatement;
 	ArrayList<String> listOfTheColumns=new ArrayList<String>();
@@ -69,6 +71,8 @@ public class CreateEditor extends AStatementEditor {
 		gridData2.grabExcessHorizontalSpace = true;
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
+		GridLayout gridLayoutB = new GridLayout();
+		gridData2.horizontalAlignment = 1;
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
@@ -79,6 +83,7 @@ public class CreateEditor extends AStatementEditor {
 		buttonsCompo=new Composite(compos, SWT.NONE);
 		buttonsCompo.setLayout(gridLayoutA);
 		creatButtonsOfKeyWords(parser.parseDocument());
+		buttonsCompo.setVisible(false);
 		
 		comp.setLayoutData(gridData);
 		statementText = new StyledText(comp, SWT.BORDER);
@@ -118,12 +123,17 @@ public class CreateEditor extends AStatementEditor {
 		gridData.verticalAlignment = GridData.CENTER;
 		
 		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = 6;
+		gridLayout.numColumns = 2;
+		
 		composite.setLayout(gridLayout);
 		
 		GridLayout gridLayout2 = new GridLayout();
 		gridLayout2.numColumns = 3;
 		composite.setLayout(gridLayout);
+		
+		
+		
+		//*************************************
 		final Composite columnCompo=new Composite(composite, SWT.BORDER);
 		columnCompo.setLayout(gridLayout2);
 		//columnCompo.setLayoutData(gridData1);
@@ -136,18 +146,21 @@ public class CreateEditor extends AStatementEditor {
 		comboColumnType.add("CHAR");
 		comboColumnType.add("String");
 		comboColumnType.add("BOOLEAN");
+		
+		//Text textColumnName;
 		textColumnName=new Text(columnCompo, SWT.NONE);
-		
-		
-		final Button addColumn =new Button(composite, SWT.BORDER);
+
+		final Button addColumn =new Button(columnCompo, SWT.BORDER);
 		addColumn.setText("Add New Column");
 		addColumn.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
-				listOfTheColumns.add(textColumnName.getText()+" "+comboColumnType.getText()+",");
-				statementText.setText(statementText.getText()+"\r		"+textColumnName.getText()+" "+comboColumnType.getText()+",");
+				if((textColumnName.getText().length()>0)&&(statementText.getText().length()>0)){
+					listOfTheColumns.add(textColumnName.getText()+" "+comboColumnType.getText()+",");
+					statementText.setText(statementText.getText()+"\r			"+textColumnName.getText()+" "+comboColumnType.getText()+",");
+				}
 //				textColumnName=new Text(columnCompo, SWT.NONE);
 //				comboColumnType=new Combo(columnCompo, SWT.NONE);
 //				comboColumnType.setItems(defaultCombo.getItems());
@@ -172,9 +185,10 @@ public class CreateEditor extends AStatementEditor {
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				listOfTheColumns.add(textColumnName.getText()+" "+comboColumnType.getText()+",");
-				statementText.setText(statementText.getText()+"\r		"+textColumnName.getText()+" "+comboColumnType.getText()+",");
-
+				if((textColumnName.getText().length()>0)&&(statementText.getText().length()>0)){
+					listOfTheColumns.add(textColumnName.getText()+" "+comboColumnType.getText()+",");
+					statementText.setText(statementText.getText()+"\r			"+textColumnName.getText()+" "+comboColumnType.getText()+",");
+				}
 //				textColumnName=new Text(columnCompo, SWT.NONE);
 //				comboColumnType=new Combo(columnCompo, SWT.NONE);
 //				comboColumnType.setItems(defaultCombo.getItems());
@@ -199,28 +213,67 @@ public class CreateEditor extends AStatementEditor {
 				
 			}
 		});
-		addColumn.setEnabled(false);
+		columnCompo.setVisible(false);
+		//***********************************
 		
+		
+		//************************************
+		final Composite tableNameComposite=new Composite(composite, SWT.BORDER);
+		tableNameComposite.setLayout(gridLayout2);
+		Label tableName =new Label(tableNameComposite, SWT.BORDER);
+		textTableName=new Text(tableNameComposite, SWT.BORDER);
+		final Button addTable =new Button(tableNameComposite, SWT.BORDER);
+		addTable.setText("Add Name of handeld Element:");
+		addTable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(textTableName.getText().length()>0){
+					statementText.setText(statementText.getText()+"\r		"+textTableName.getText()+"(");
+					columnCompo.setVisible(true);
+					buttonsCompo.setVisible(true);
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(textTableName.getText().length()>0){
+					statementText.setText(statementText.getText()+"\r		"+textTableName.getText()+"(");
+					columnCompo.setVisible(true);
+					buttonsCompo.setVisible(true);
+				}
+				
+			}
+		});
+		tableNameComposite.setVisible(false);
+		
+		//************************************
+		
+		//*************************************
 		final Button creatButton=new Button(composite, SWT.BORDER);
 		creatButton.setText("CREATE");
 		creatButton.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				statementText.setText("CREATE TABLE  :COMMENT.type the table name hier___ \r	(");
-				addColumn.setEnabled(true);
-				creatButton.setEnabled(false);
+				statementText.setText("CREATE SCHEMA  \r");
+				creatButton.setVisible(false);
+				tableNameComposite.setVisible(true);
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				
-				statementText.setText("CREATE TABLE  :COMMENT.type the table name hier___ \r	(");
-				addColumn.setEnabled(true);
+				statementText.setText("CREATE SCHEMA  \r	(");
+				tableNameComposite.setEnabled(true);
 				creatButton.setEnabled(false);
 			}
 		});
-		
+		//**************************************
 		
 	}
 
@@ -241,11 +294,14 @@ public class CreateEditor extends AStatementEditor {
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
 				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
-			final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
+			final Button keyWordAsButton=new Button(buttonsCompo, SWT.BORDER);
 			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
-			keyWordAsButton.setSize(20, 10);
+			//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+			
+			keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+
 			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
-				keyWordAsButton.setEnabled(false);
+				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 			}
 			//else isInsertKeyWord=false;
 			
@@ -265,15 +321,15 @@ public class CreateEditor extends AStatementEditor {
 					 * in the following for statement all the buttons are only
 					 * then enabled if the father button (according to the Logik in the parsed xmlFile)
 					 */
-					keyWordAsButton.setEnabled(false);
+					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 					
 					for(int x=0;x<buttonList.size();x++){
 						//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-						buttonList.get(x).setEnabled(false);
+						buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 						for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 							//
 							if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-								buttonList.get(x).setEnabled(true);
+								buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 							}
 							
 						}
@@ -281,7 +337,7 @@ public class CreateEditor extends AStatementEditor {
 						
 					}
 					
-					statementText.setText(statementText.getText()+"\r"+keyWordAsButton.getText());
+					statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
 					
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
@@ -293,4 +349,5 @@ public class CreateEditor extends AStatementEditor {
 		}
 		
 	}
+
 }
