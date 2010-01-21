@@ -18,7 +18,6 @@ import org.eclipse.swt.widgets.Display;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
-import xmlParser.XMLUtils;
 
 public class RetrieveDataEditor extends AStatementEditor {
 
@@ -34,7 +33,7 @@ public class RetrieveDataEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/RetrieveDataDMActivityXMLFile.xml");
+	private String xmlFilePath="/keywords/RetrieveDataDMActivityXMLFile.xml";
 	//gerade nicht in gebrauch
 	
 	public RetrieveDataEditor() {

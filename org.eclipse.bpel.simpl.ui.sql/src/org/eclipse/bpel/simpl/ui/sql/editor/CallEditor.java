@@ -18,10 +18,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import xmlParser.EditorButton;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
-import xmlParser.XMLUtils;
 
 public class CallEditor extends AStatementEditor {
 
@@ -37,7 +35,7 @@ public class CallEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/CallDMActivityXMLFile.xml");
+	private String xmlFilePath="/keywords/CallDMActivityXMLFile.xml";
 	//gerade nicht in gebrauch
 	
 	public CallEditor() {

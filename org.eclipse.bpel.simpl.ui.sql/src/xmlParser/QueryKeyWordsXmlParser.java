@@ -60,13 +60,12 @@ public class QueryKeyWordsXmlParser {
 			System.out.print("\n in parseXmlFile()");
 			//Using factory get an instance of document builder
 			DocumentBuilder db = dbf.newDocumentBuilder();
-
+			
 			//parse using builder to get DOM representation of the XML file
-			dom = db.parse(fileName);
-
-
+			dom = db.parse(getClass().getResourceAsStream(fileName));
+			
 		}catch(Exception e) {
-			e.getMessage();
+			e.printStackTrace();
 		}
 	}
 	
