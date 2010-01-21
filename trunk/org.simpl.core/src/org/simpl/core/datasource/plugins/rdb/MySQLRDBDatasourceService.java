@@ -18,24 +18,20 @@ import commonj.sdo.DataObject;
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for
- * relational databases.
+ * supporting the MySQL relational database.
  * </p>
  * 
+ * dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example //localhost:3306/simplDB.
+ *  
  * @author hahnml
  */
-public class RDBDatasourceService extends DatasourceServicePlugin {
-	static Logger logger = Logger.getLogger(RDBDatasourceService.class);
+public class MySQLRDBDatasourceService extends DatasourceServicePlugin {
+	static Logger logger = Logger.getLogger(MySQLRDBDatasourceService.class);
 
-	public RDBDatasourceService() {
+	public MySQLRDBDatasourceService() {
 		this.datasourceType = "database";
-		this.datasourceSubtypes.add("DB2");
 		this.datasourceSubtypes.add("MySQL");
-		this.datasourceSubtypes.add("Derby");
-		this.datasourceLanguages.put("DB2", Arrays
-				.asList(new String[] { "SQL" }));
 		this.datasourceLanguages.put("MySQL", Arrays
-				.asList(new String[] { "SQL" }));
-		this.datasourceLanguages.put("Derby", Arrays
 				.asList(new String[] { "SQL" }));
 
 		// Set up a simple configuration that logs on the console.
@@ -53,11 +49,13 @@ public class RDBDatasourceService extends DatasourceServicePlugin {
 		}
 		Connection connect = null;
 		try {
-			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 			StringBuilder uri = new StringBuilder();
-			uri.append("jdbc:derby:");
+			uri.append("jdbc:mysql:");
 			uri.append(dsAddress);
-			uri.append(";create=true");
+			//TODO Hier müssen noch die im SIMPL Core hinterlegten Authentification-Informationen geladen werden
+			uri.append(", test");
+			uri.append(", test");
 			try {
 				connect = DriverManager.getConnection(uri.toString());
 				connect.setAutoCommit(false);
