@@ -9,12 +9,15 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Text;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
@@ -39,6 +42,7 @@ public class DeleteEditor extends AStatementEditor {
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
 	
+	Text textTableName;
 	public DeleteEditor() {
 		// TODO Auto-generated constructor stub
 	}
@@ -64,7 +68,9 @@ public class DeleteEditor extends AStatementEditor {
 		gridData2.verticalAlignment = GridData.FILL;
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
-		compos.setLayoutData(gridData2);
+		GridLayout gridLayoutB = new GridLayout();
+		gridLayoutB.numColumns = 2;
+		compos.setLayout(gridLayoutB);
 		
 		
 		GridLayout gridLayoutA = new GridLayout();
@@ -119,7 +125,7 @@ public class DeleteEditor extends AStatementEditor {
 		composite.setLayout(gridLayout);
 		
 
-		
+		//****************************************************
 		final Label tableNameLabel=new Label(composite, SWT.NONE);
 		tableNameLabel.setText("Select the Table: ");
 		//tableNameLabel.setLayoutData(gridData1);
@@ -128,9 +134,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		tablsList = new List(composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 		tablsList.setBounds(40, 20, 320, 100);
-		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList.add("Item Number " + loopIndex);
-		}
+		
 		loadTheTablesIntoList();
 		//tablsList.setLayoutData(gridData1);
 		tablsList.addSelectionListener(new SelectionListener() {
@@ -149,8 +153,43 @@ public class DeleteEditor extends AStatementEditor {
 
 			}
 		});
+		//************************************************
 		
+		//************************************
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		final Composite tableNameComposite=new Composite(composite, SWT.BORDER);
+		tableNameComposite.setLayout(gridLayout2);
+		Label tableName =new Label(tableNameComposite, SWT.BORDER);
+		textTableName=new Text(tableNameComposite, SWT.BORDER);
+		final Button addTable =new Button(tableNameComposite, SWT.BORDER);
+		addTable.setText("Add Name of handeld Element:");
+		addTable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+				buttonsCompo.setVisible(true);
+				if(textTableName.getText().length()>0){
+					statementText.setText(statementText.getText()+"\r		"+textTableName.getText());
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+				buttonsCompo.setVisible(true);
+				if(textTableName.getText().length()>0){
+					statementText.setText(statementText.getText()+"\r		"+textTableName.getText());
+				}
+				
+			}
+		});
+		tableNameComposite.setVisible(false);
 		
+		//************************************
 		
 		
 		final Button deleteButton =new Button(composite, SWT.BORDER);
@@ -170,7 +209,7 @@ public class DeleteEditor extends AStatementEditor {
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.setText("DELETE FROM\r	:COMMENT.hier comes the table name or WHERE, SELECT...");
+				statementText.setText("DELETE FROM\r	");
 				
 				tableNameLabel.setEnabled(true);
 				tablsList.setEnabled(true);
@@ -197,6 +236,14 @@ public class DeleteEditor extends AStatementEditor {
 	 * into the List
 	 */
 	private void loadTheTablesIntoList() {
+		tablsList.removeAll();
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			tablsList.add("Item Number " + loopIndex);
+		}
+		//*************
+		
 		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
 		if(tabelsNames!=null){
 			for(int i=0;i<tabelsNames.size();i++){
@@ -224,9 +271,12 @@ public class DeleteEditor extends AStatementEditor {
 			}
 			final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
 			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
-			keyWordAsButton.setSize(20, 10);
+			//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+			
+			keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+
 			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
-				keyWordAsButton.setEnabled(false);
+				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 			}
 			//else isInsertKeyWord=false;
 			
@@ -246,15 +296,14 @@ public class DeleteEditor extends AStatementEditor {
 					 * in the following for statement all the buttons are only
 					 * then enabled if the father button (according to the Logik in the parsed xmlFile)
 					 */
-					keyWordAsButton.setEnabled(false);
-					
+					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 					for(int x=0;x<buttonList.size();x++){
 						//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-						buttonList.get(x).setEnabled(false);
+						buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 						for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 							//
 							if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-								buttonList.get(x).setEnabled(true);
+								buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 							}
 							
 						}
@@ -262,7 +311,7 @@ public class DeleteEditor extends AStatementEditor {
 						
 					}
 					
-					statementText.setText(statementText.getText()+"\r"+keyWordAsButton.getText());
+					statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
 					
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
