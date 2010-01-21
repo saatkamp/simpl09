@@ -4,17 +4,12 @@ import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.ExtendedModifyEvent;
-import org.eclipse.swt.custom.ExtendedModifyListener;
-import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -26,7 +21,6 @@ import org.eclipse.swt.widgets.Text;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
-import xmlParser.XMLUtils;
 
 public class DropEditor extends AStatementEditor {
 
@@ -47,7 +41,7 @@ public class DropEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/DropDMActivityXMLFile.xml");
+	private String xmlFilePath="/keywords/DropDMActivityXMLFile.xml";
 	//gerade nicht in gebrauch
 	
 	public DropEditor() {

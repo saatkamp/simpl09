@@ -1,6 +1,5 @@
 package org.eclipse.bpel.simpl.ui.sql.editor;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
@@ -20,7 +19,6 @@ import org.eclipse.swt.widgets.List;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
-import xmlParser.XMLUtils;
 
 public class InsertEditor extends AStatementEditor {
 
@@ -37,7 +35,7 @@ public class InsertEditor extends AStatementEditor {
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath=XMLUtils.getURLFromPath("keywords/InsertDMActivityXMLFile.xml");
+	private String xmlFilePath="/keywords/InsertDMActivityXMLFile.xml";
 	//gerade nicht in gebrauch
 	
 	public InsertEditor() {

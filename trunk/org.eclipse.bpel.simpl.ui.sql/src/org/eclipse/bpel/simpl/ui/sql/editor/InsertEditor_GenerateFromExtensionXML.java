@@ -1,13 +1,10 @@
 
 package org.eclipse.bpel.simpl.ui.sql.editor;
 
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
-import org.eclipse.bpel.simpl.ui.extensions.IStatementEditor;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
@@ -17,8 +14,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-import org.w3c.dom.Element;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
