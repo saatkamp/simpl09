@@ -2,17 +2,17 @@ package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * 
@@ -38,14 +38,17 @@ public class StatementEditor {
 			String activity) {
 		createSShell();
 
-		if (parent != null && language!=null && activity!=null) {
+		if (parent != null && language != null && activity != null) {
 			this.parentClass = parent;
-			compositeClass = Application.getInstance().getEditorClass(language, activity);
+			compositeClass = Application.getInstance().getEditorClass(language,
+					activity);
 			if (compositeClass != null) {
-				//TODO Statement in StatementEditor übergeben
+				// TODO Statement in StatementEditor übergeben
 				compositeClass.setStatement(parentClass.getStatement());
-				System.out.println("DMProperty-Statement: " + parentClass.getStatement());
-				System.out.println("DMCompos-Statement: " + compositeClass.getStatement());
+				System.out.println("DMProperty-Statement: "
+						+ parentClass.getStatement());
+				System.out.println("DMCompos-Statement: "
+						+ compositeClass.getStatement());
 				compositeClass.createComposite(composite);
 			}
 		}

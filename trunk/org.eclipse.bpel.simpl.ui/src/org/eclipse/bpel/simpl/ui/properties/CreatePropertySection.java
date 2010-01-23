@@ -2,8 +2,8 @@ package org.eclipse.bpel.simpl.ui.properties;
 
 import java.util.List;
 
-import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.CreateActivity;
+import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
@@ -12,8 +12,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+@SuppressWarnings("unused")
 public class CreatePropertySection extends DMActivityPropertySection {
 
 	private Label typeLabel = null;
@@ -41,7 +42,7 @@ public class CreatePropertySection extends DMActivityPropertySection {
 	private String language = null;
 
 	private CreateActivity activity;
-	
+
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -53,23 +54,27 @@ public class CreatePropertySection extends DMActivityPropertySection {
 
 	@Override
 	protected void createClient(Composite parent) {
-		//Setzen die im Editor ausgewählte Aktivität als Input.
+		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
-		//Laden der Aktivität
+		// Laden der Aktivität
 		this.activity = getModel();
-		
+
 		createWidgets(parent);
-		
-		//Setzen das Statement
+
+		// Setzen das Statement
 		setStatement(activity.getDsStatement());
-		//Setzen die Datenquellenadresse
+		// Setzen die Datenquellenadresse
 		dataSourceAddressText.setText(activity.getDsAddress());
 		// Setzen die Sprache
 		language = (Constants.getDatasourceLanguages(kindCombo
 				.getItem(kindCombo.getSelectionIndex()))).get(0);
-		
-		//Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
-		//geladen und in den ComboBoxes selektiert.
+		languageCombo.setItems(Constants.getDatasourceLanguages(
+				kindCombo.getItem(kindCombo.getSelectionIndex())).toArray(
+				new String[0]));
+		languageCombo.select(languageCombo.indexOf(language));
+
+		// Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
+		// geladen und in den ComboBoxes selektiert.
 	}
 
 	/**
@@ -136,14 +141,16 @@ public class CreatePropertySection extends DMActivityPropertySection {
 		dataSourceAddressLabel = new Label(composite, SWT.NONE);
 		dataSourceAddressText = new Text(composite, SWT.BORDER);
 		dataSourceAddressText.setLayoutData(gridData12);
-		//Änderungen im Modell speichern
-		dataSourceAddressText.addModifyListener(new ModifyListener(){
+		// Änderungen im Modell speichern
+		dataSourceAddressText.addModifyListener(new ModifyListener() {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
 				getCommandFramework().execute(
-						new SetDsAddressCommand(getModel(), dataSourceAddressText.getText()));
-			}});
+						new SetDsAddressCommand(getModel(),
+								dataSourceAddressText.getText()));
+			}
+		});
 		dataSourceAddressLabel.setText("Address of the data source:");
 		dataSourceAddressLabel.setLayoutData(gridData31);
 		dataSourceAddressLabel.setBackground(Display.getCurrent()
@@ -152,9 +159,9 @@ public class CreatePropertySection extends DMActivityPropertySection {
 		languageCombo = new CCombo(composite, SWT.BORDER);
 		languageCombo.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		languageCombo.setVisible(false);
+		languageCombo.setVisible(true);
 		languageCombo.setLayoutData(gridData4);
-		languageCombo.addSelectionListener(new SelectionListener(){
+		languageCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
 				widgetSelected(arg0);
@@ -162,14 +169,15 @@ public class CreatePropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				language = languageCombo.getItem(languageCombo.getSelectionIndex());
+				language = languageCombo.getItem(languageCombo
+						.getSelectionIndex());
 			}
 		});
-		
+
 		Label filler411 = new Label(composite, SWT.NONE);
 		Label filler42 = new Label(composite, SWT.NONE);
 		languageLabel.setText("Query language:");
-		languageLabel.setVisible(false);
+		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		Label filler43 = new Label(composite, SWT.NONE);
@@ -260,14 +268,15 @@ public class CreatePropertySection extends DMActivityPropertySection {
 				kindCombo.setItems(Constants.getDataSourceSubTypes(
 						typeCombo.getItem(typeCombo.getSelectionIndex()))
 						.toArray(new String[0]));
-				//Speichern Auswahl in Modell
+				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsTypeCommand(getModel(), typeCombo.getItem(typeCombo.getSelectionIndex())));
+						new SetDsTypeCommand(getModel(), typeCombo
+								.getItem(typeCombo.getSelectionIndex())));
 			}
 		});
 		typeCombo.setEditable(false);
-	
-		//Wert aus Modell selektieren
+
+		// Wert aus Modell selektieren
 		typeCombo.select(typeCombo.indexOf(this.activity.getDsType()));
 	}
 
@@ -285,14 +294,12 @@ public class CreatePropertySection extends DMActivityPropertySection {
 		kindCombo.setToolTipText("Choose the subtype of data source");
 		kindCombo.setEditable(false);
 		kindCombo.setLayoutData(gridData6);
-		
+
 		// Initilisieren der kindCombo-Daten
-		if (typeCombo.getSelectionIndex()>0){
-			kindCombo.setItems(Constants.getDataSourceSubTypes(
-					typeCombo.getItem(typeCombo.getSelectionIndex()))
-					.toArray(new String[0]));
-		}
-		
+		kindCombo.setItems(Constants
+				.getDataSourceSubTypes(activity.getDsType()).toArray(
+						new String[0]));
+
 		kindCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -305,26 +312,19 @@ public class CreatePropertySection extends DMActivityPropertySection {
 						.getDatasourceLanguages(kindCombo.getItem(kindCombo
 								.getSelectionIndex()));
 
-				if (languages.size()>1) {
-					languageCombo.setVisible(true);
-					languageLabel.setVisible(true);
-					languageCombo.setItems(languages.toArray(new String[0]));
-				} else {
-					languageCombo.setVisible(false);
-					languageLabel.setVisible(false);
-					language = languages.get(0);
-				}
-				//Speichern Auswahl in Modell
+				languageCombo.setItems(languages.toArray(new String[0]));
+
+				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsKindCommand(getModel(), kindCombo.getItem(kindCombo
-								.getSelectionIndex())));
+						new SetDsKindCommand(getModel(), kindCombo
+								.getItem(kindCombo.getSelectionIndex())));
 			}
 		});
-		
-		//Wert aus Modell selektieren
+
+		// Wert aus Modell selektieren
 		kindCombo.select(kindCombo.indexOf(this.activity.getDsKind()));
 	}
-	
+
 	@Override
 	public String getStatement() {
 		// TODO Auto-generated method stub
