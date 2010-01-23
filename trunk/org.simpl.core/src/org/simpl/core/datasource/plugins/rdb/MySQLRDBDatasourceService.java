@@ -186,39 +186,24 @@ public class MySQLRDBDatasourceService extends DatasourceServicePlugin {
 					+ ") executed.");
 		}
 		
-		//Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl genutzt.
-		//Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
+		//Beispiel: CREATE TABLE TAB SELECT n FROM foo;
 		//Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den gequerieten Daten.
 		StringBuilder createTableStatement = new StringBuilder();
 		createTableStatement.append("CREATE TABLE");
 		createTableStatement.append(" ");
 		createTableStatement.append(target);
-		createTableStatement.append(" AS ");
-		createTableStatement.append(statement);
 		createTableStatement.append(" ");
-		createTableStatement.append("WITH NO DATA");
-		
-		StringBuilder insertStatement = new StringBuilder();
-		insertStatement.append("INSERT INTO");
-		insertStatement.append(" ");
-		insertStatement.append(target);
-		insertStatement.append(" ");
-		insertStatement.append(statement);
+		createTableStatement.append(statement);
 		
 		Connection conn = openConnection(dsAddress);
 		try {
 			Statement createState = conn.createStatement();
-			Statement insertState = conn.createStatement();
 
 			//Neue Tabelle aus dem Query erzeugen
 			createState.execute(createTableStatement.toString());
 			
-			//Query-Daten in die neue Tabelle einfügen
-			insertState.execute(insertStatement.toString());
-			
 			conn.commit();
 			createState.close();
-			insertState.close();
 			closeConnection(conn);
 			
 			success = true;
@@ -226,7 +211,7 @@ public class MySQLRDBDatasourceService extends DatasourceServicePlugin {
 			logger.error("exception executing the statement: " + createTableStatement.toString(), e);
 		}
 		
-		logger.info("Statement '" + createTableStatement.toString() + "' " + "& '" + insertStatement.toString() + "'" + "executed on " + dsAddress);
+		logger.info("Statement '" + createTableStatement.toString() + "' " + "executed on " + dsAddress);
 		
 		return success;
 	}

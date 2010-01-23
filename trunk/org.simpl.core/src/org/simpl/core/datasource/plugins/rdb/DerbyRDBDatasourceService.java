@@ -187,6 +187,7 @@ public class DerbyRDBDatasourceService extends DatasourceServicePlugin {
 					+ ") executed.");
 		}
 		
+		//TODO Nochmal überprüfen, ob das für Client-Server Derby auch gilt
 		//Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl genutzt.
 		//Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
 		//Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den gequerieten Daten.
