@@ -186,17 +186,16 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
 					+ ") executed.");
 		}
 		
-		//Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl genutzt.
-		//Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
+		//Beispiel: CREATE TABLE TAB AS (SELECT * FROM T1 WITH NO DATA);
 		//Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den gequerieten Daten.
 		StringBuilder createTableStatement = new StringBuilder();
 		createTableStatement.append("CREATE TABLE");
 		createTableStatement.append(" ");
 		createTableStatement.append(target);
-		createTableStatement.append(" AS ");
+		createTableStatement.append(" AS (");
 		createTableStatement.append(statement);
 		createTableStatement.append(" ");
-		createTableStatement.append("WITH NO DATA");
+		createTableStatement.append(") WITH NO DATA");
 		
 		StringBuilder insertStatement = new StringBuilder();
 		insertStatement.append("INSERT INTO");
