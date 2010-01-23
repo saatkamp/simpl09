@@ -5,6 +5,7 @@ import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -91,6 +92,7 @@ public class StatementEditor {
 		gridLayout1.numColumns = 3;
 		sShell = new Shell(Display.getDefault());
 		sShell.setText("Statement Editor");
+		sShell.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/database.png")));
 		createComposite();
 		sShell.setLayout(gridLayout1);
 		sShell.setBounds(new Rectangle(200, 100, 700, 500));
