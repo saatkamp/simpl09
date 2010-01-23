@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
- <MainKeyWord value="CREATE">
- 	<KeyWord value="TABLE" text="		TABLE ">
+ <MainKeyWord value="CREATE" text="CREATE ">
+ 	<KeyWord value="TABLE" text="TABLE ">
 
  	</KeyWord>
- 	<KeyWord value="VIEW" text="		VIEW ">
+ 	<KeyWord value="VIEW" text="VIEW ">
  		
  	</KeyWord>
- 	<KeyWord value="INDEX" text="		INDEX ">
+ 	<KeyWord value="INDEX" text="INDEX ">
  		
  	</KeyWord>
  </MainKeyWord>	
