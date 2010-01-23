@@ -36,7 +36,7 @@ public class DeleteEditor extends AStatementEditor {
 	
 	private StyledText statementText = null;
 	List tablsList;
-	
+	Composite tableNameComposite=null;
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
@@ -67,9 +67,9 @@ public class DeleteEditor extends AStatementEditor {
 		gridData2.verticalAlignment = GridData.FILL;
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
-		GridLayout gridLayoutB = new GridLayout();
-		gridLayoutB.numColumns = 2;
-		compos.setLayout(gridLayoutB);
+//		GridLayout gridLayoutB = new GridLayout();
+//		gridLayoutB.numColumns = 2;
+		compos.setLayoutData(gridData);
 		
 		
 		GridLayout gridLayoutA = new GridLayout();
@@ -81,7 +81,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER);
+		statementText = new StyledText(comp, SWT.BORDER| SWT.V_SCROLL);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -95,7 +95,17 @@ public class DeleteEditor extends AStatementEditor {
 		
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
+			if(statementText.getText().length()>8){
+//				columsListCompo.setEnabled(true);
+//				tableNameComposite.setEnabled(true);
+//				buttonsCompo.setEnabled(true);
+//				columnCompo.setEnabled(true);
+				
+			}
+			else{statementText.setText("DELETE");}
 		}
+		else {statementText.setText("DELETE ");}
+		
 		
 		
 		CreateDELETEUIComponent(compos);
@@ -131,25 +141,26 @@ public class DeleteEditor extends AStatementEditor {
 		
 		
 		
-		tablsList = new List(composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
-		tablsList.setBounds(40, 20, 320, 100);
+		tablsList = new List(composite, SWT.BORDER | SWT.V_SCROLL);
+		tablsList.setBounds(40, 20, 420, 100);
 		
+		parseStatment();
 		loadTheTablesIntoList();
 		//tablsList.setLayoutData(gridData1);
 		tablsList.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
-				statementText.setText(statementText.getText()+"\r	"+tablsList.getItem(tablsList.getSelectionIndex()));
-				
+				String kommaString=" ";
+				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				kommaString="\r			,";
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
-				statementText.setText(statementText.getText()+"\r	"+tablsList.getItem(tablsList.getSelectionIndex()));
-
+				String kommaString=" ";
+				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				kommaString="\r			,";
 			}
 		});
 		//************************************************
@@ -157,7 +168,7 @@ public class DeleteEditor extends AStatementEditor {
 		//************************************
 		GridLayout gridLayout2 = new GridLayout();
 		gridLayout2.numColumns = 3;
-		final Composite tableNameComposite=new Composite(composite, SWT.BORDER);
+		tableNameComposite=new Composite(composite, SWT.BORDER);
 		tableNameComposite.setLayout(gridLayout2);
 		Label tableName =new Label(tableNameComposite, SWT.BORDER);
 		textTableName=new Text(tableNameComposite, SWT.BORDER);
@@ -168,68 +179,140 @@ public class DeleteEditor extends AStatementEditor {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				
-				buttonsCompo.setVisible(true);
+				String kommaString=" ";
+				buttonsCompo.setEnabled(true);
 				if(textTableName.getText().length()>0){
-					statementText.setText(statementText.getText()+"\r		"+textTableName.getText());
+					statementText.setText(statementText.getText()+kommaString+textTableName.getText());
+					kommaString="\r			,";
 				}
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				
-				buttonsCompo.setVisible(true);
+				String kommaString=" ";
+				buttonsCompo.setEnabled(true);
 				if(textTableName.getText().length()>0){
-					statementText.setText(statementText.getText()+"\r		"+textTableName.getText());
+					statementText.setText(statementText.getText()+kommaString+textTableName.getText());
+					kommaString="\r			,";
 				}
 				
 			}
 		});
-		tableNameComposite.setVisible(false);
+		//tableNameComposite.setEnabled(false);
 		
 		//************************************
 		
 		
-		final Button deleteButton =new Button(composite, SWT.BORDER);
-		deleteButton.setText("DELETE FROM");
-		deleteButton.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				
-				statementText.setText("DELETE FROM\r	:COMMENT.hier comes the table name or WHERE, SELECT...");
-				
-				tableNameLabel.setEnabled(true);
-				tablsList.setEnabled(true);
-				deleteButton.setEnabled(false);
-				tableNameLabel.setEnabled(true);
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.setText("DELETE FROM\r	");
-				
-				tableNameLabel.setEnabled(true);
-				tablsList.setEnabled(true);
-				tableNameLabel.setEnabled(true);
-				deleteButton.setEnabled(false);
-			}
-		});
+//		final Button deleteButton =new Button(composite, SWT.BORDER);
+//		deleteButton.setText("DELETE");
+//		deleteButton.addSelectionListener(new SelectionListener() {
+//			
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				
+//				statementText.setText("DELETE FROM\r	:COMMENT.hier comes the table name or WHERE, SELECT...");
+//				
+//				tableNameLabel.setEnabled(true);
+//				tablsList.setEnabled(true);
+//				deleteButton.setEnabled(false);
+//				tableNameLabel.setEnabled(true);
+//			}
+//			
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//				statementText.setText("DELETE FROM\r	");
+//				
+//				tableNameLabel.setEnabled(true);
+//				tablsList.setEnabled(true);
+//				tableNameLabel.setEnabled(true);
+//				deleteButton.setEnabled(false);
+//			}
+//		});
 		
 		if(statementText.getText().length()==0){
-			tableNameLabel.setEnabled(false);
-			tablsList.setEnabled(false);
+			//tableNameLabel.setEnabled(false);
+			//tablsList.setEnabled(false);
 		}
 		else{ //if the statment not Empty 
-			tableNameLabel.setEnabled(false);
-			tablsList.setEnabled(false);
+			//tableNameLabel.setEnabled(false);
+			//tablsList.setEnabled(false);
 			
 			//tablsList.setSelection(GetTablesFromStatement());
 		}
 		
 	}
 
+	/**
+	 * 
+	 */
+	private void parseStatment() {
+		
+		
+		String[] statmentWords=removeAllSpaces(statementText.getText());
+		if(statmentWords.length>2){
+			//String[] tempArray= new String[1];
+			if(IsSringTableName(statmentWords[2])>=0){
+				//tempArray[0]=statmentWords[2];
+				tablsList.setSelection(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
+				textTableName.setText("asdasdfsdf");
+			}
+		}
+		
+		
+		
+		//tablsList
+		
+	}
+
+	/**
+	 * removes all spaces from statment
+	 * @param statement
+	 * @return statmentAsOneString
+	 */
+	private String[] removeAllSpaces(String statement) {
+		String[] wordsOfCentence = null;
+		String statmentAsOneString = "";
+		
+		if(statement!=null){
+			if(statement.contains(" ")){
+				wordsOfCentence=statement.split(" ");
+			}
+			if(wordsOfCentence!=null){
+				for(int i=0;i<wordsOfCentence.length;i++){
+					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+				}
+			}
+			
+			
+			while(statmentAsOneString.contains(" ")){
+				wordsOfCentence=statement.split(" ");
+				for(int i=0;i<wordsOfCentence.length;i++){
+					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+					
+				}
+				
+			}
+		}
+		return wordsOfCentence;
+	}
+
+	/**
+	 * for checking if the string is one of the data source 
+	 * Tables.
+	 * @param string
+	 * @return boolean
+	 */
+	private int IsSringTableName(String string) {
+		//TODO: üerprüfen 
+		
+		for(int i=0;i<tablsList.getItemCount();i++){
+			if(tablsList.getItem(i).equals(string)) return i;
+		}
+		
+		return -1;
+	}
+	
 	/**
 	 * loading the tables names of data source 
 	 * into the List
@@ -239,7 +322,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList.add("Item Number " + loopIndex);
+			tablsList.add("testTable" + loopIndex);
 		}
 		//*************
 		
@@ -310,8 +393,16 @@ public class DeleteEditor extends AStatementEditor {
 						
 					}
 					
-					statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-					
+					statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+					if(tmpKeyWord.getTextOfKEyWord().equals("DELETE")){
+						
+						//tableNameLabel.setEnabled(true);
+						tablsList.setEnabled(true);
+						tableNameComposite.setEnabled(true);
+						statementText.setText("DELETE ");
+						
+						
+					}
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
 				}
