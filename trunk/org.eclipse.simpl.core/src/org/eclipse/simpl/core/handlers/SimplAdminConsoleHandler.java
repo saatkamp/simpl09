@@ -9,11 +9,11 @@ import org.eclipse.simpl.core.ui.AdminConsoleUI;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class SimplHandler extends AbstractHandler {
+public class SimplAdminConsoleHandler extends AbstractHandler {
 	/**
 	 * The constructor.
 	 */
-	public SimplHandler() {
+	public SimplAdminConsoleHandler() {
 	}
 
 	/**
@@ -21,7 +21,6 @@ public class SimplHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		//IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		new AdminConsoleUI();
 		return null;
 	}
