@@ -26,6 +26,9 @@ public class CallEditor extends AStatementEditor {
 	private Composite comp = null;
 	private Composite compos = null;
 	private StyledText statementText = null;
+	Label proceLabel;
+	Button addToStatement;
+	Text proceText;
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
@@ -71,7 +74,7 @@ public class CallEditor extends AStatementEditor {
 		parser.parseXmlFile(xmlFilePath);
 		buttonsCompo=new Composite(compos, SWT.NONE);
 		buttonsCompo.setLayout(gridLayoutA);
-		buttonsCompo.setVisible(false);
+		//buttonsCompo.setVisible(false);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		statementText = new StyledText(comp, SWT.BORDER);
@@ -88,7 +91,17 @@ public class CallEditor extends AStatementEditor {
 		
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
+			if(statementText.getText().length()>8){
+//				columsListCompo.setEnabled(true);
+//				tableNameComposite.setEnabled(true);
+//				buttonsCompo.setEnabled(true);
+//				columnCompo.setEnabled(true);
+				
+			}
+			else{statementText.setText("");}
 		}
+		else {statementText.setText("CALL ");}
+		
 		CreateCallUIElements(compos);
 	}
 
@@ -117,25 +130,41 @@ public class CallEditor extends AStatementEditor {
 //		gridLayout.numColumns = 3;
 		
 		
-		final Label proceLabel=new Label(composite, SWT.BORDER);
+		proceLabel=new Label(composite, SWT.BORDER);
 		
 		proceLabel.setText("Procedure: ");
 		proceLabel.setLayoutData(gridData1);
-		final Text proceText =new Text(composite, SWT.BORDER);
+		proceText =new Text(composite, SWT.BORDER);
 		proceText.setSize(100, 70);
 		proceText.setLayoutData(gridData1);
-		final Button addToStatement =new Button(composite, SWT.BORDER);
+		
+		if(statementText.getText().length()>5){
+			String cleandStatment=removeAllSpaces(statementText.getText());
+			String[] wordsOfStatment =cleandStatment.split("\r");
+			if(wordsOfStatment[0].contains("(")){
+//				String[] firstLineWords=wordsOfStatment[0].split(" ");
+//				String[] procedureName=firstLineWords[1].split("(");
+//				proceText.setText(firstLineWords[0]);
+			}
+			else{ 
+				proceText.setText("");
+				
+			}
+			
+		}
+		
+		addToStatement =new Button(composite, SWT.BORDER);
 		addToStatement.setText("Add to Statment");
 		addToStatement.addSelectionListener(new SelectionListener(){
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-			    statementText.setText(statementText.getText()+"\r	"+proceText.getText()+"(? ,? , ?, ...)");				
+			    statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");				
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				statementText.setText(statementText.getText()+"\r	"+proceText.getText()+"(? ,? , ?, ...)");
+				statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");
 				
 			}
 	
@@ -143,39 +172,73 @@ public class CallEditor extends AStatementEditor {
 		
 		addToStatement.setLayoutData(gridData);
 		
-		proceLabel.setVisible(false);
-		proceText.setVisible(false);
-		addToStatement.setVisible(false);
+		proceLabel.setEnabled(false);
+		proceText.setEnabled(false);
+		addToStatement.setEnabled(false);
 		
-		final Button callButton =new Button(composite, SWT.BORDER);
-		callButton.setText("CALL");
-		callButton.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				
-				statementText.setText("CALL");
-				proceLabel.setVisible(true);
-				proceText.setVisible(true);
-				addToStatement.setVisible(true);
-				buttonsCompo.setVisible(true);
-				callButton.setVisible(false);
-				
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.setText("CALL\r");
-				proceLabel.setVisible(true);
-				proceText.setVisible(true);
-				addToStatement.setVisible(true);
-				buttonsCompo.setVisible(true);
-				
-				callButton.setVisible(false);
-			}
-		});
+//		final Button callButton =new Button(composite, SWT.BORDER);
+//		callButton.setText("CALL");
+//		callButton.addSelectionListener(new SelectionListener() {
+//			
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				
+//				statementText.setText("CALL");
+//				proceLabel.setVisible(true);
+//				proceText.setVisible(true);
+//				addToStatement.setVisible(true);
+//				buttonsCompo.setVisible(true);
+//				callButton.setVisible(false);
+//				
+//			}
+//			
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//				statementText.setText("CALL\r");
+//				proceLabel.setVisible(true);
+//				proceText.setVisible(true);
+//				addToStatement.setVisible(true);
+//				buttonsCompo.setVisible(true);
+//				
+//				callButton.setVisible(false);
+//			}
+//		});
 	}
 	
+	
+	
+	/**
+	 * removes all spaces from statment
+	 * @param statement
+	 * @return statmentAsOneString
+	 */
+	private String removeAllSpaces(String statement) {
+		String[] wordsOfCentence = null;
+		String statmentAsOneString = "";
+		
+		if(statement!=null){
+			if(statement.contains(" ")){
+				wordsOfCentence=statement.split(" ");
+			}
+			if(wordsOfCentence!=null){
+				for(int i=0;i<wordsOfCentence.length;i++){
+					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+				}
+			}
+			
+			
+			while(statmentAsOneString.contains(" ")){
+				wordsOfCentence=statement.split(" ");
+				for(int i=0;i<wordsOfCentence.length;i++){
+					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+					
+				}
+				
+			}
+		}
+		return statmentAsOneString;
+	}
+
 	/**
 	 * For creating the buttons out of the xml file ,wich contains
 	 * the key words of the quary language. And after creating they
@@ -236,7 +299,12 @@ public class CallEditor extends AStatementEditor {
 					}
 					
 					statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-					
+					if(tmpKeyWord.getMainKeyWord().equals("CALL")){
+						proceLabel.setVisible(true);
+						proceText.setVisible(true);
+						addToStatement.setVisible(true);
+						buttonsCompo.setVisible(true);
+					}
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
 				}
