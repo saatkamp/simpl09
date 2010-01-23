@@ -32,6 +32,10 @@ public class DropEditor extends AStatementEditor {
 	private Text dropText = null;
 	private String[] statement = new String[]{"", "", ""};
 	List tablsList;
+	private Composite tableNameComposite=null;
+	private Text textSchemaName=null;
+	private Label labelSchemaName=null;
+	
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
@@ -83,7 +87,7 @@ public class DropEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER);
+		statementText = new StyledText(comp, SWT.BORDER| SWT.V_SCROLL);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -98,7 +102,12 @@ public class DropEditor extends AStatementEditor {
 		
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
+			if(statementText.getText().length()>8){
+
+			}
+			else{statementText.setText("DROP ");}
 		}
+		else {statementText.setText("DROP ");}
 		
 		//Erzeugen des Composite inhalts zur grafischen Modellierung
 		createButtonComposite(compos);
@@ -126,11 +135,12 @@ public class DropEditor extends AStatementEditor {
 		
 		
 		
-		dropList = new List(composite, SWT.BORDER);
-		dropList.setLayoutData(gridData1);
-		dropList.setItems(new String[]{"SCHEMA", "TABLE"});
-		dropList.setEnabled(false);
-		
+//		dropList = new List(composite, SWT.BORDER);
+//		dropList.setLayoutData(gridData1);
+//		dropList.setItems(new String[]{"SCHEMA", "TABLE"});
+//		dropList.setEnabled(false);
+		Label tableLabel=new Label(composite, SWT.NONE);
+		tableLabel.setText("Type or Select the Schema/Table Name:");
 		dropText = new Text(composite, SWT.BORDER);
 		dropText.setLayoutData(gridData2);
 		dropText.setEnabled(false);
@@ -146,20 +156,61 @@ public class DropEditor extends AStatementEditor {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
-				statementText.setText(statementText.getText()+"\r	"+tablsList.getItem(tablsList.getSelectionIndex()));
-				
+				String kommaString=" ";
+				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				kommaString=",";
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
-				statementText.setText(statementText.getText()+"\r	"+tablsList.getItem(tablsList.getSelectionIndex()));
-
+				String kommaString=" ";
+				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				kommaString=",";	
 			}
 		});
 		//**************************************************************
 		
+		
+		//************************************
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		tableNameComposite=new Composite(composite, SWT.BORDER);
+		tableNameComposite.setLayout(gridLayout2);
+		tableNameComposite.setEnabled(false);
+		
+		labelSchemaName =new Label(tableNameComposite, SWT.BORDER);
+		labelSchemaName.setText("The handeld Schema/Table:");
+		textSchemaName=new Text(tableNameComposite, SWT.BORDER);
+		final Button insertSchemaName =new Button(tableNameComposite, SWT.BORDER);
+		insertSchemaName.setText("Insert in Statement");
+		insertSchemaName.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				String kommaString=" ";
+				buttonsCompo.setEnabled(true);
+				if(textSchemaName.getText().length()>0){
+					statementText.setText(statementText.getText()+kommaString+textSchemaName.getText());
+					kommaString="\r			,";
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				String kommaString=" ";
+				buttonsCompo.setEnabled(true);
+				if(textSchemaName.getText().length()>0){
+					statementText.setText(statementText.getText()+kommaString+textSchemaName.getText());
+					kommaString="\r			,";
+				}
+				
+			}
+		});
+		tableNameComposite.setEnabled(false);
+		
+		//************************************
 		
 		
 		//Da createButtonComposite bei der Erstellung des Statement-Editors
@@ -170,67 +221,138 @@ public class DropEditor extends AStatementEditor {
 		//es bei jedem Leerzeichen. Das ganze speichern wir als Array.
 		//Ergebnis ist z.B. statement = {DROP, TABLE, tabelle1}
 		//*****************
-		final Button dropButton=new Button(composite, SWT.BORDER);
-		dropButton.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				statementText.setText("DROP	");
-				tablsList.setEnabled(true);
-				dropText.setEnabled(true);
-				dropList.setEnabled(true);
-				dropButton.setEnabled(false);
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				statementText.setText("DROP	");
-				tablsList.setEnabled(true);
-				dropText.setEnabled(true);
-				dropList.setEnabled(true);
-				dropButton.setEnabled(false);
-			}
-		});
+//		final Button dropButton=new Button(composite, SWT.BORDER);
+//		dropButton.addSelectionListener(new SelectionListener() {
+//			
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				// TODO Auto-generated method stub
+//				statementText.setText("DROP	");
+//				tablsList.setEnabled(true);
+//				dropText.setEnabled(true);
+//				dropList.setEnabled(true);
+//				dropButton.setEnabled(false);
+//			}
+//			
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//				// TODO Auto-generated method stub
+//				statementText.setText("DROP	");
+//				tablsList.setEnabled(true);
+//				dropText.setEnabled(true);
+//				dropList.setEnabled(true);
+//				dropButton.setEnabled(false);
+//			}
+//		});
 		//*****************
 		
 		statement = statementText.getText().split(" ");
 		
 		
-		if (statement.length > 1){
-			dropList.select(dropList.indexOf(statement[1]));
-			if (statement.length > 2){
-				dropText.setText(statement[2]);
+//		if (statement.length > 1){
+//			dropList.select(dropList.indexOf(statement[1]));
+//			if (statement.length > 2){
+//				dropText.setText(statement[2]);
+//			}
+//		}
+		
+		
+		
+		//Nun müssen wir noch die serialisierung (grafisch -> text) umsetzen
+//		dropList.addSelectionListener(new SelectionListener(){
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//				widgetSelected(e);
+//			}
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				statement[1] = dropList.getItem(dropList.getSelectionIndex());
+//				//Aktualisieren das Statement im Textfeld
+//				statementText.setText("DROP " + statement[1] + " " + statement[2]);
+//			}});
+//		
+//		dropText.addModifyListener(new ModifyListener(){
+//
+//			@Override
+//			public void modifyText(ModifyEvent e) {
+//				statement[2] = dropText.getText();
+//				//Aktualisieren das Statement im Textfeld
+//				statementText.setText("DROP " + statement[1] + " " + statement[2]);
+//			}});
+	}
+	
+	/**
+	 * 
+	 */
+	private void parseStatment() {
+		
+		
+		String[] statmentWords=removeAllSpaces(statementText.getText());
+		if(statmentWords.length>2){
+			//String[] tempArray= new String[1];
+			if(IsSringTableName(statmentWords[2])>=0){
+				//tempArray[0]=statmentWords[2];
+				tablsList.setSelection(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
+				textSchemaName.setText(statmentWords[2]);
 			}
 		}
 		
 		
 		
-		//Nun müssen wir noch die serialisierung (grafisch -> text) umsetzen
-		dropList.addSelectionListener(new SelectionListener(){
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				widgetSelected(e);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				statement[1] = dropList.getItem(dropList.getSelectionIndex());
-				//Aktualisieren das Statement im Textfeld
-				statementText.setText("DROP " + statement[1] + " " + statement[2]);
-			}});
+		//tablsList
 		
-		dropText.addModifyListener(new ModifyListener(){
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				statement[2] = dropText.getText();
-				//Aktualisieren das Statement im Textfeld
-				statementText.setText("DROP " + statement[1] + " " + statement[2]);
-			}});
 	}
+
+	/**
+	 * removes all spaces from statment
+	 * @param statement
+	 * @return statmentAsOneString
+	 */
+	private String[] removeAllSpaces(String statement) {
+		String[] wordsOfCentence = null;
+		String statmentAsOneString = "";
+		
+		if(statement!=null){
+			if(statement.contains(" ")){
+				wordsOfCentence=statement.split(" ");
+			}
+			if(wordsOfCentence!=null){
+				for(int i=0;i<wordsOfCentence.length;i++){
+					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+				}
+			}
+			
+			
+			while(statmentAsOneString.contains(" ")){
+				wordsOfCentence=statement.split(" ");
+				for(int i=0;i<wordsOfCentence.length;i++){
+					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+					
+				}
+				
+			}
+		}
+		return wordsOfCentence;
+	}
+
+	/**
+	 * for checking if the string is one of the data source 
+	 * Tables.
+	 * @param string
+	 * @return boolean
+	 */
+	private int IsSringTableName(String string) {
+		//TODO: üerprüfen 
+		
+		for(int i=0;i<tablsList.getItemCount();i++){
+			if(tablsList.getItem(i).equals(string)) return i;
+		}
+		
+		return -1;
+	}
+	
 	
 	/**
 	 * loading the tables names of data source 
@@ -319,7 +441,15 @@ public class DropEditor extends AStatementEditor {
 					}
 					
 					statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
-					
+					if(tmpKeyWord.getTextOfKEyWord().equals("DROP")){
+						
+						tablsList.setEnabled(true);
+						dropText.setEnabled(true);
+						dropList.setEnabled(true);
+						tableNameComposite.setEnabled(true);
+						statementText.setText("DROP ");
+
+					}
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
 				}
