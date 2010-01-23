@@ -53,11 +53,9 @@ public class MySQLRDBDatasourceService extends DatasourceServicePlugin {
 			StringBuilder uri = new StringBuilder();
 			uri.append("jdbc:mysql:");
 			uri.append(dsAddress);
-			//TODO Hier müssen noch die im SIMPL Core hinterlegten Authentification-Informationen geladen werden
-			uri.append(", test");
-			uri.append(", test");
 			try {
-				connect = DriverManager.getConnection(uri.toString());
+				//TODO Hier müssen noch die im SIMPL Core hinterlegten Authentification-Informationen geladen werden
+				connect = DriverManager.getConnection(uri.toString(), "test", "test");
 				connect.setAutoCommit(false);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

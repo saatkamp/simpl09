@@ -21,7 +21,7 @@ import commonj.sdo.DataObject;
  * supporting the IBM DB2 relational database.
  * </p>
  * 
- * dsAddress = //server:port/database or //server/database, for example //localhost:5021/simplDB.  
+ * dsAddress = //server:port/database or //server/database, for example //localhost:50000/testdb.  
  * 
  * @author hahnml
  */
@@ -49,15 +49,13 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
 		}
 		Connection connect = null;
 		try {
-			Class.forName("COM.ibm.db2.jdbc.app.DB2Driver");
+			Class.forName("com.ibm.db2.jcc.DB2Driver");
 			StringBuilder uri = new StringBuilder();
 			uri.append("jdbc:db2:");
 			uri.append(dsAddress);
-			//TODO Hier müssen noch die im SIMPL Core hinterlegten Authentification-Informationen geladen werden
-			uri.append(", test");
-			uri.append(", test");
 			try {
-				connect = DriverManager.getConnection(uri.toString());
+				//TODO Hier müssen noch die im SIMPL Core hinterlegten Authentification-Informationen geladen werden
+				connect = DriverManager.getConnection(uri.toString(), "test", "test");
 				connect.setAutoCommit(false);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
