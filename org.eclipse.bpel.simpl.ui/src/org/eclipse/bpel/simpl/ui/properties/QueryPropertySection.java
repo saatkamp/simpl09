@@ -13,8 +13,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -73,6 +73,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		// Setzen die Sprache
 		language = (Constants.getDatasourceLanguages(kindCombo
 				.getItem(kindCombo.getSelectionIndex()))).get(0);
+		languageCombo.setItems(Constants.getDatasourceLanguages(
+				kindCombo.getItem(kindCombo.getSelectionIndex())).toArray(
+				new String[0]));
+		languageCombo.select(languageCombo.indexOf(language));
 
 		// Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
 		// geladen und in den ComboBoxes selektiert.
@@ -164,7 +168,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		languageCombo = new CCombo(composite, SWT.BORDER);
 		languageCombo.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		languageCombo.setVisible(false);
+		languageCombo.setVisible(true);
 		languageCombo.setLayoutData(gridData4);
 		languageCombo.addSelectionListener(new SelectionListener() {
 			@Override
@@ -185,7 +189,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				SWT.COLOR_WHITE));
 
 		languageLabel.setText("Query language:");
-		languageLabel.setVisible(false);
+		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		queryTargetText = new Text(composite, SWT.BORDER);
@@ -194,8 +198,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
-				//FIXME: Die Änderung wird zwar ins Modell übertragen, aber nicht
-				//im BPEL Designer Source-View durchgeführt bzw. angezeigt!
+				// FIXME: Die Änderung wird zwar ins Modell übertragen, aber
+				// nicht
+				// im BPEL Designer Source-View durchgeführt bzw. angezeigt!
 				getCommandFramework().execute(
 						new SetQueryTargetCommand(getModel(), queryTargetText
 								.getText()));
@@ -317,11 +322,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		kindCombo.setLayoutData(gridData6);
 
 		// Initilisieren der kindCombo-Daten
-		if (typeCombo.getSelectionIndex() > 0) {
-			kindCombo.setItems(Constants.getDataSourceSubTypes(
-					typeCombo.getItem(typeCombo.getSelectionIndex())).toArray(
-					new String[0]));
-		}
+		kindCombo.setItems(Constants
+				.getDataSourceSubTypes(activity.getDsType()).toArray(
+						new String[0]));
 
 		kindCombo.addSelectionListener(new SelectionListener() {
 			@Override
@@ -335,15 +338,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 						.getDatasourceLanguages(kindCombo.getItem(kindCombo
 								.getSelectionIndex()));
 
-				if (languages.size() > 1) {
-					languageCombo.setVisible(true);
-					languageLabel.setVisible(true);
-					languageCombo.setItems(languages.toArray(new String[0]));
-				} else {
-					languageCombo.setVisible(false);
-					languageLabel.setVisible(false);
-					language = languages.get(0);
-				}
+				languageCombo.setItems(languages.toArray(new String[0]));
+
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
 						new SetDsKindCommand(getModel(), kindCombo

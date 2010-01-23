@@ -63,21 +63,23 @@ public class Constants {
 	/**
 	 * Returns the list of all data source sub types.
 	 * 
-	 * @param datasource to get sub types of
-	 * @return A list with all supported data source sub types of the
-	 * given data source type.
+	 * @param datasource
+	 *            to get sub types of
+	 * @return A list with all supported data source sub types of the given data
+	 *         source type.
 	 */
 	public static List<String> getDataSourceSubTypes(String datasource) {
 		return dataSourceSubTypes.get(datasource);
 	}
 
 	/**
-	 * Returns the list of all query languages the given data source
-	 * sub type supports.
+	 * Returns the list of all query languages the given data source sub type
+	 * supports.
 	 * 
-	 * @param datasourceSubType to get query languages off.
-	 * @return A list of all query languages the given data source
-	 * sub type supports.
+	 * @param datasourceSubType
+	 *            to get query languages off.
+	 * @return A list of all query languages the given data source sub type
+	 *         supports.
 	 */
 	public static List<String> getDatasourceLanguages(String datasourceSubType) {
 		return dataSourceSubTypeLanguages.get(datasourceSubType);
