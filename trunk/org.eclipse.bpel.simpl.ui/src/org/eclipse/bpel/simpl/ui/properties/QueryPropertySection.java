@@ -71,12 +71,22 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		// Setzen die Zieleinheit des Queries.
 		queryTargetText.setText(activity.getQueryTarget());
 		// Setzen die Sprache
-		language = (Constants.getDatasourceLanguages(kindCombo
-				.getItem(kindCombo.getSelectionIndex()))).get(0);
-		languageCombo.setItems(Constants.getDatasourceLanguages(
-				kindCombo.getItem(kindCombo.getSelectionIndex())).toArray(
-				new String[0]));
-		languageCombo.select(languageCombo.indexOf(language));
+		if (kindCombo.getSelectionIndex() > 0) {
+			// TODO Hier wird im Moment die erste Sprache als default
+			// ausgewählt.
+			// Wahrscheinlich muss die Sprache auch mit in der Aktivität
+			// hinterlegt werden...
+
+			if (language == null) {
+				language = (Constants.getDatasourceLanguages(activity
+						.getDsKind())).get(0);
+			}
+
+			languageCombo.setItems(Constants.getDatasourceLanguages(
+					activity.getDsKind()).toArray(new String[0]));
+
+			languageCombo.select(languageCombo.indexOf(language));
+		}
 
 		// Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
 		// geladen und in den ComboBoxes selektiert.
@@ -322,9 +332,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		kindCombo.setLayoutData(gridData6);
 
 		// Initilisieren der kindCombo-Daten
-		kindCombo.setItems(Constants
-				.getDataSourceSubTypes(activity.getDsType()).toArray(
-						new String[0]));
+		if (Constants.getDataSourceSubTypes(activity.getDsType()) != null) {
+			kindCombo.setItems(Constants.getDataSourceSubTypes(
+					activity.getDsType()).toArray(new String[0]));
+		}
 
 		kindCombo.addSelectionListener(new SelectionListener() {
 			@Override
@@ -339,6 +350,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 								.getSelectionIndex()));
 
 				languageCombo.setItems(languages.toArray(new String[0]));
+
+				if (languages.size() == 1) {
+					languageCombo.select(0);
+					language = languages.get(0);
+				}
 
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
