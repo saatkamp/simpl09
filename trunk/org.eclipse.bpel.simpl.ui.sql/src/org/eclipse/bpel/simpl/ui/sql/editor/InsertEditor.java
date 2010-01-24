@@ -15,7 +15,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Text;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
@@ -25,7 +28,9 @@ public class InsertEditor extends AStatementEditor {
 	private Composite comp = null;
 	private Composite compos = null;
 	private StyledText statementText = null;
-	
+	Text textTableName=null;
+	Composite tableNameComposite=null;
+	Text valuesText=null;
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
@@ -88,6 +93,8 @@ public class InsertEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 		}
+		
+		creatINSERT_UIElements(compos);
 	}
 	
 	
@@ -100,8 +107,55 @@ public class InsertEditor extends AStatementEditor {
 		
 		Button insertButton;
 		
+		
+		
+		//********************************
+		GridLayout gridLayoutx = new GridLayout();
+		gridLayoutx.numColumns = 3;
+		tableNameComposite=new Composite(composite, SWT.BORDER);
+		tableNameComposite.setLayout(gridLayoutx);
+		if(statementText.getText().length()<8){
+			tableNameComposite.setEnabled(false);
+		}
+		
+		Label tableName =new Label(tableNameComposite, SWT.NONE);
+		tableName.setText("Type the name of the Table: ");
+		textTableName=new Text(tableNameComposite, SWT.BORDER);
+		final Button addTable =new Button(tableNameComposite, SWT.BORDER);
+		addTable.setText("Add Name of handeld Element:");
+		addTable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(textTableName.getText().length()>0){
+					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+					//columnCompo.setEnabled(true);
+					//buttonsCompo.setEnabled(true);
+					//columsListCompo.setEnabled(true);
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(textTableName.getText().length()>0){
+					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+					//columnCompo.setEnabled(true);
+					//buttonsCompo.setEnabled(true);
+					//columsListCompo.setEnabled(true);
+				}
+				
+			}
+		});
+		
+		
+		//************************************
+		
 		//*************************************************
-		tablsList = new List(composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+		tablsList = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 		tablsList.setBounds(40, 20, 320, 100);
 		tablsList.setEnabled(false);
 		loadTheTablesIntoList();
@@ -111,19 +165,101 @@ public class InsertEditor extends AStatementEditor {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
-				statementText.setText(statementText.getText()+"\r	"+tablsList.getItem(tablsList.getSelectionIndex()));
+				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
 				
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				
-				statementText.setText(statementText.getText()+"\r	"+tablsList.getItem(tablsList.getSelectionIndex()));
+				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
 
 			}
 		});
 		//**************************************************************
 		
+		
+		//***********************************************************
+		Composite valuesCompo=new Composite(composite, SWT.BORDER);
+		GridLayout gridLayoutY=new GridLayout();
+		gridLayoutY.numColumns=1;
+		valuesCompo.setLayout(gridLayoutY);
+		Label valuesLabel=new Label(valuesCompo, SWT.NONE);
+		valuesLabel.setText("The Values for Inserting: ");
+		valuesText=new Text(valuesCompo, SWT.NONE|SWT.V_SCROLL);
+		valuesText.setSize(250, 100);
+		Button addValues=new Button(valuesCompo, SWT.NONE);
+		addValues.setText("Add Values to Statement");
+		valuesText.setText(getParsedVlauesFromStatement());
+		addValues.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				statementText.setText(statementText.getText()+" "+valuesText.getText());
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				statementText.setText(statementText.getText()+" "+valuesText.getText());
+
+			}
+		});
+		//***********************************************************
+	}
+	
+
+	/**
+	 * its for parsing the statement and getting the Values of it
+	 * 
+	 * @return
+	 */
+	private String getParsedVlauesFromStatement() {
+		String valuesString="";
+		if(statementText.getText().length()>0){
+			String cleandStatment=removeAllSpaces(statementText.getText());
+			String[] wordsOfStatment =cleandStatment.split("\r");
+			
+			if(wordsOfStatment.length>1){
+			 valuesString=wordsOfStatment[1].substring(7,wordsOfStatment[1].length()-1);
+			}
+			else{ valuesString="";}
+		}
+		
+		return valuesString;
+	}
+
+	/**
+	 * removes all spaces from statment
+	 * @param statement
+	 * @return statmentAsOneString
+	 */
+	private String removeAllSpaces(String statement) {
+		String[] wordsOfCentence = null;
+		String statmentAsOneString = "";
+		
+		if(statement!=null){
+			if(statement.contains(" ")){
+				wordsOfCentence=statement.split(" ");
+			}
+			if(wordsOfCentence!=null){
+				for(int i=0;i<wordsOfCentence.length;i++){
+					statmentAsOneString=statmentAsOneString+wordsOfCentence[i]+" ";
+				}
+			}
+			
+			
+//			while(statmentAsOneString.contains(" ")){
+//				wordsOfCentence=statement.split(" ");
+//				for(int i=0;i<wordsOfCentence.length;i++){
+//					statmentAsOneString=statmentAsOneString+" "+wordsOfCentence[i];
+//					
+//				}
+//				
+//			}
+		}
+		return statmentAsOneString;
 	}
 	
 	/**
@@ -213,8 +349,14 @@ public class InsertEditor extends AStatementEditor {
 						
 						
 					}
-					
-					statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+					if(tmpKeyWord.getMainKeyWord().equals("INSERT")){
+						statementText.setText(tmpKeyWord.getTextOfKEyWord());
+						tableNameComposite.setEnabled(true);
+						tablsList.setEnabled(true);
+
+					}
+					else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+					}
 					
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
