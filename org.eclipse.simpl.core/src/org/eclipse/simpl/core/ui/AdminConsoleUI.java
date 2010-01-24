@@ -124,7 +124,7 @@ public class AdminConsoleUI {
 		sShell = new Shell(Display.getDefault());
 		sShell.setText("SIMPL Admin Console");
 		sShell.setImage(new Image(Display.getCurrent(), getClass()
-				.getResourceAsStream("/icons/logo.png")));
+				.getResourceAsStream("/icons/SIMPL-logo-small.png")));
 		sShell.setBounds(new Rectangle(200, 100, 900, 500));
 		sShell.setLayout(gridLayout);
 		tree = new Tree(sShell, SWT.SINGLE | SWT.BORDER);

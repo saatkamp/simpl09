@@ -37,13 +37,13 @@ public class AboutWindow {
 		sShell = new Shell();
 		sShell.setText("About SIMPL");
 		sShell.setLocation(new Point(400, 100));
-		sShell.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/logo.png")));
+		sShell.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/SIMPL-logo-small.png")));
 		sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 		sShell.setLayout(gridLayout);
 		sShell.setSize(new Point(423, 293));
 		simplIconLabel = new Label(sShell, SWT.NONE);
 		simplIconLabel.setText("");
-		simplIconLabel.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/logo.png")));
+		simplIconLabel.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/SIMPL-logo-big.png")));
 		simplHeaderlabel = new Label(sShell, SWT.NONE);
 		simplHeaderlabel.setText("SIMPL Framework for Eclipse");
 		simplHeaderlabel.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
