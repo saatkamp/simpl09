@@ -81,7 +81,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER| SWT.V_SCROLL);
+		statementText = new StyledText(comp, SWT.BORDER| SWT.V_SCROLL| SWT.H_SCROLL);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -141,7 +141,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		
 		
-		tablsList = new List(composite, SWT.BORDER | SWT.V_SCROLL);
+		tablsList = new List(composite, SWT.BORDER | SWT.V_SCROLL| SWT.H_SCROLL);
 		tablsList.setBounds(40, 20, 420, 100);
 		
 		parseStatment();
@@ -255,7 +255,7 @@ public class DeleteEditor extends AStatementEditor {
 			if(IsSringTableName(statmentWords[2])>=0){
 				//tempArray[0]=statmentWords[2];
 				tablsList.setSelection(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
-				textTableName.setText("asdasdfsdf");
+				textTableName.setText(statmentWords[2]);
 			}
 		}
 		
@@ -322,7 +322,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList.add("testTable" + loopIndex);
+			tablsList.add("Table" + loopIndex);
 		}
 		//*************
 		
