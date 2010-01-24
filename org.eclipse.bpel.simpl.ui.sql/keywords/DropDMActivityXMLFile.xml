@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
- <MainKeyWord value="DROP">
- 	<KeyWord value="PROCEDURE" text="		PROCEDURE">
+ <MainKeyWord value="DROP" text="DROP">
+ 	<KeyWord value="SCHEMA" text=" SCHEMA">
  		
  	</KeyWord>
- 	<KeyWord value="VIEW" text="		VIEW">
+ 	
+ 	<KeyWord value="TABLE" text=" TABLE">
  		
  	</KeyWord>
- 	<KeyWord value="TABLE" text="		TABLE">
- 		
- 	</KeyWord>
- 	<KeyWord value="ALIAS" text="		ALIAS">
- 		
- 	</KeyWord>
+ 	
  	
  </MainKeyWord>	
 </root>
