@@ -93,7 +93,15 @@ public class InsertEditor extends AStatementEditor {
 		
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
+			if(statementText.getText().length()>8){
+				tableNameComposite.setEnabled(true);
+				tablsList.setEnabled(true);
+				valuesCompo.setEnabled(true);
+
+			}
+			else{statementText.setText("INSERT INTO ");}
 		}
+		else {statementText.setText("INSERT INTO ");}
 		
 		creatINSERT_UIElements(compos);
 	}

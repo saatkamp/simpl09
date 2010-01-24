@@ -334,6 +334,8 @@ public class DeleteEditor extends AStatementEditor {
 		}
 		
 	}
+	
+	
 	/**
 	 * For creating the buttons out of the xml file ,wich contains
 	 * the key words of the quary language. And after creating they
