@@ -31,6 +31,7 @@ public class InsertEditor extends AStatementEditor {
 	Text textTableName=null;
 	Composite tableNameComposite=null;
 	Text valuesText=null;
+	Composite valuesCompo=null;
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
@@ -113,6 +114,7 @@ public class InsertEditor extends AStatementEditor {
 		GridLayout gridLayoutx = new GridLayout();
 		gridLayoutx.numColumns = 3;
 		tableNameComposite=new Composite(composite, SWT.BORDER);
+		tableNameComposite.setEnabled(false);
 		tableNameComposite.setLayout(gridLayoutx);
 		if(statementText.getText().length()<8){
 			tableNameComposite.setEnabled(false);
@@ -122,7 +124,7 @@ public class InsertEditor extends AStatementEditor {
 		tableName.setText("Type the name of the Table: ");
 		textTableName=new Text(tableNameComposite, SWT.BORDER);
 		final Button addTable =new Button(tableNameComposite, SWT.BORDER);
-		addTable.setText("Add Name of handeld Element:");
+		addTable.setText("Add to Statement");
 		addTable.addSelectionListener(new SelectionListener() {
 			
 			@Override
@@ -165,14 +167,14 @@ public class InsertEditor extends AStatementEditor {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
-				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex())+"\r	VALUES ");
 				
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				
-				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex())+"\r	VALUES ");
 
 			}
 		});
@@ -180,7 +182,8 @@ public class InsertEditor extends AStatementEditor {
 		
 		
 		//***********************************************************
-		Composite valuesCompo=new Composite(composite, SWT.BORDER);
+		valuesCompo=new Composite(composite, SWT.BORDER);
+		valuesCompo.setEnabled(false);
 		GridLayout gridLayoutY=new GridLayout();
 		gridLayoutY.numColumns=1;
 		valuesCompo.setLayout(gridLayoutY);
@@ -353,6 +356,7 @@ public class InsertEditor extends AStatementEditor {
 						statementText.setText(tmpKeyWord.getTextOfKEyWord());
 						tableNameComposite.setEnabled(true);
 						tablsList.setEnabled(true);
+						valuesCompo.setEnabled(true);
 
 					}
 					else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
