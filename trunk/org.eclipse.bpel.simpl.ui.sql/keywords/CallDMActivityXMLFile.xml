@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
- <MainKeyWord value="CALL" text="CALL :COMMET.the Procedure name (?, ?, ?)">
+ <MainKeyWord value="CALL" text="CALL ">
  	
- 	<KeyWord value="IN" text="	IN">
+ 	<KeyWord value="IN" text=" IN">
  	</KeyWord>
- 	<KeyWord value="OUT" text="	OUT">
+ 	<KeyWord value="OUT" text=" OUT">
  	</KeyWord>
- 	<KeyWord value="INOUT" text="	INOUT">
+ 	<KeyWord value="INOUT" text=" INOUT">
  	</KeyWord>
  </MainKeyWord>	
 </root>
