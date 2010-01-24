@@ -15,6 +15,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.List;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
@@ -28,7 +29,13 @@ public class SelectEditor extends AStatementEditor {
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
-
+    List listOfColumn;
+    ArrayList<String> dSourceTables;
+	private String[] theKeyWords = new String[]{"SELECT", "FROM", "WHERE"};//TODO: welche KeyWods bzw. befehle 
+																		   //sind noch denkbar für jeden StatmentEditor
+	public ArrayList<String> getdSourceTables() {
+		return dSourceTables;
+	}
 	/*
 	 * The XML file wich contais the statment KeyWords
 	 */
@@ -86,7 +93,152 @@ public class SelectEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 		}
+		CreatSELECTUIElemente(compos);
 	}
+	
+	/**
+	 * 
+	 * @param composite
+	 */
+	private void CreatSELECTUIElemente(Composite composite){
+		listOfColumn=new List(composite, SWT.NONE);
+	}
+	
+	/**
+	 * Load the coloms titels of the selected Table
+	 * in the coloms List 
+	 * @param tableName 
+	 */
+	private void LoadColumsAccordingToTable(String tableName){
+		ArrayList<String> dSourceColomsOfTable =new ArrayList<String>()/*=Data Source coloms*/; //TODO: get Coloms of table tableName from Source
+		for(int i=0;i<dSourceColomsOfTable.size();i++){
+			listOfColumn.add(dSourceColomsOfTable.get(i));
+		}
+		
+	}
+	
+	//parsing the statement 
+	
+	/**
+	 * for changing the UI according to the loaded Statement.
+	 * it like parsing the text from the loaded statement
+	 */
+	private void EditTheUIFromStatment() {
+		// TODO Auto-generated method stub
+		//dSourceTables
+		String[] tempColumesNames;
+		String cleandStatment=removeAllSpaces(getStatement());
+		String[] wordsOfStatment =cleandStatment.split("\r");
+		String arrayAsString="";
+		for(int i=0;i<wordsOfStatment.length;i++){
+			//if(wordsOfStatment[i].equals("INSERT INTO"))
+			if(IsSringTableName(wordsOfStatment[i])){
+				
+			}
+			else{
+				if(!(IsStringKeyWord(wordsOfStatment[i]))){
+			
+					tempColumesNames=ParseStringIntoColumsNames(wordsOfStatment[i]);
+					//ArrayList<Integer> indicesOfSelection=new ArrayList<Integer>();
+					for(int j=0;j<tempColumesNames.length;j++){
+						arrayAsString=ConvertArrayToString(listOfColumn.getItems());
+						if(arrayAsString.contains(tempColumesNames[j])){
+							//indicesOfSelection.add(j);
+							listOfColumn.select(j);
+							
+						}
+					}
+					//listOfColumn.select(indicesOfSelection.toArray());
+				}
+			}
+		}
+		//TODO: ....
+		
+	}
+	
+	/**
+	 * splits the string/sentence into the "," separated Columns names.
+	 * @param string
+	 * @return arrayOfColums
+	 */
+	private String[] ParseStringIntoColumsNames(String string) {
+		
+		String[] arrayOfColums=string.split(",");
+		return arrayOfColums;
+	}
+
+
+	/**
+	 * this function is for checking if the string is one of
+	 * the used KeyWords  
+	 * @param string
+	 * @return 
+	 */
+	private boolean IsStringKeyWord(String string) {
+		if(ConvertArrayToString(theKeyWords).contains(string)) return true;
+		return false;
+	}
+
+
+	/**
+	 * Convert an array of words into one String, wich the words
+	 * are separaed with " "
+	 * @param items
+	 * @return resultString
+	 */
+	private String ConvertArrayToString(String[] items) {
+		String resultString="";
+		for(int i=0;i<items.length;i++){
+			resultString=resultString+" "+items[i];
+		}
+		
+		return resultString;
+	}
+
+
+	/**
+	 * for checking if the string is one of the data source 
+	 * Tables.
+	 * @param string
+	 * @return boolean
+	 */
+	private boolean IsSringTableName(String string) {
+		//TODO: üerprüfen 
+		
+		for(int i=0;i<dSourceTables.size();i++){
+			if(dSourceTables.get(i).equals(string)) return true;
+		}
+		
+		return false;
+	}
+
+
+	/**
+	 * removes all spaces from statment
+	 * @param statement
+	 * @return statmentAsOneString
+	 */
+	private String removeAllSpaces(String statement) {
+		String[] wordsOfCentence = null;
+		String statmentAsOneString = "";
+		if(statement.contains(" ")){
+			wordsOfCentence=statement.split(" ");
+		}
+		for(int i=0;i<wordsOfCentence.length;i++){
+			statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+		}
+		
+		while(statmentAsOneString.contains(" ")){
+			wordsOfCentence=statement.split(" ");
+			for(int i=0;i<wordsOfCentence.length;i++){
+				statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+			}
+		}
+		
+		return statmentAsOneString;
+	}
+
+	
 	/**
 	 * For creating the buttons out of the xml file ,wich contains
 	 * the key words of the quary language. And after creating they

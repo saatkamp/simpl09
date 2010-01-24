@@ -115,11 +115,7 @@ public class CreateEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 			if(statementText.getText().length()>8){
-//				columsListCompo.setEnabled(true);
-//				tableNameComposite.setEnabled(true);
-//				buttonsCompo.setEnabled(true);
-//				columnCompo.setEnabled(true);
-				
+				tableNameComposite.setEnabled(true);
 			}
 			else{statementText.setText("CREATE ");}
 		}
@@ -335,6 +331,7 @@ public class CreateEditor extends AStatementEditor {
 			}
 		});
 		
+		//********************************
 		tableNameComposite=new Composite(composite, SWT.BORDER);
 		tableNameComposite.setLayout(gridLayout2);
 		if(statementText.getText().length()<8){
@@ -372,8 +369,7 @@ public class CreateEditor extends AStatementEditor {
 				
 			}
 		});
-		
-		
+
 		//************************************
 		
 		//*************************************

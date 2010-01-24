@@ -77,7 +77,7 @@ public class CallEditor extends AStatementEditor {
 		//buttonsCompo.setVisible(false);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
-		statementText = new StyledText(comp, SWT.BORDER);
+		statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -300,10 +300,11 @@ public class CallEditor extends AStatementEditor {
 					
 					statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
 					if(tmpKeyWord.getMainKeyWord().equals("CALL")){
-						proceLabel.setVisible(true);
-						proceText.setVisible(true);
-						addToStatement.setVisible(true);
-						buttonsCompo.setVisible(true);
+						proceLabel.setEnabled(true);
+						proceText.setEnabled(true);
+						addToStatement.setEnabled(true);
+						buttonsCompo.setEnabled(true);
+						statementText.setText("CALL ");
 					}
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
