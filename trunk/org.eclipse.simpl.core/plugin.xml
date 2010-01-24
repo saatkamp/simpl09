@@ -51,7 +51,7 @@
                mnemonic="M">
             <command
                   commandId="org.eclipse.simpl.commands.adminCCommand"
-                  icon="icons/logo.png"
+                  icon="icons/SIMPL-logo-small.png"
                   id="org.eclipse.simpl.menus.adminCCommand"
                   mnemonic="C">
             </command>
