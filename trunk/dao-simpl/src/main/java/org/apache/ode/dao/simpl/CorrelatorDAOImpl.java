@@ -61,12 +61,11 @@ public class CorrelatorDAOImpl extends OpenJPADAO implements CorrelatorDAO {
     CorrelatorSDO correlatorSDO = new CorrelatorSDO();
     
     public CorrelatorDAOImpl(){
-    	dataObject = correlatorSDO.getSDO(_correlatorId);
     }
     public CorrelatorDAOImpl(String correlatorKey, ProcessDAOImpl process) {
-    	this();
         _correlatorKey = correlatorKey;
         _process = process;
+    	dataObject = correlatorSDO.getSDO(_correlatorId);
         dataObject.setString("correlatorKey", correlatorKey);
     }
 

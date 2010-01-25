@@ -56,13 +56,13 @@ public class MexProperty {
     MexPropertySDO mexPropertySDO = new MexPropertySDO();
 
     public MexProperty() {
-    	dataObject = mexPropertySDO.getSDO(_id);
     }
     public MexProperty(String propertyKey, String propertyValue, MessageExchangeDAOImpl mex) {
-    	this();
         this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
         this._mex = mex;
+    	dataObject = mexPropertySDO.getSDO(_id);
+
         dataObject.setString("propertyKey", propertyKey);
         dataObject.setString("propertyValue", propertyValue);
     }

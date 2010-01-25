@@ -85,14 +85,15 @@ public class ScopeDAOImpl extends OpenJPADAO implements ScopeDAO {
 	ScopeSDO scopeSDO = new ScopeSDO();
 
 	public ScopeDAOImpl() {
-		dataObject = scopeSDO.getSDO(_scopeInstanceId);
+		
 	}
+	
 	public ScopeDAOImpl(ScopeDAOImpl parentScope, String name, int scopeModelId, ProcessInstanceDAOImpl pi) {
-		this();
 		_parentScope = parentScope;
 		_name = name;
 		_modelId = scopeModelId;
 		_processInstance = pi;
+		dataObject = scopeSDO.getSDO(_scopeInstanceId);
 		dataObject.setString("partentScope", parentScope.toString());
 		dataObject.setString("name", name);
 		dataObject.setInt("modelId", scopeModelId);

@@ -61,11 +61,11 @@ public class MessageDAOImpl implements MessageDAO {
     MessageSDO messageSDO = new MessageSDO();
 
     public MessageDAOImpl() {
-    	dataObject = messageSDO.getSDO(_id);
     }
     public MessageDAOImpl(QName type, MessageExchangeDAOImpl me) {
-    	this();
         _type = type.toString();
+    	dataObject = messageSDO.getSDO(_id);
+
         dataObject.setString("type", type.toString());
     }
 

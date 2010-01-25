@@ -14,7 +14,7 @@ public abstract class AbstractSDO {
 	
 	public DataObject getSDO (Long id) {
 		DataObject object = null;
-		if (id.equals(this.id)) {
+		if ((id != null) && id.equals(this.id)) {
 			object = this.dataObject;
 		} else
 		{

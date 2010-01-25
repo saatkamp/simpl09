@@ -69,7 +69,6 @@ public class EventDAOImpl {
     EventSDO eventSDO = new EventSDO();
     
     public EventDAOImpl () {
-    	dataObject = eventSDO.getSDO(_id);
     }
     
 
@@ -97,7 +96,8 @@ public class EventDAOImpl {
 
     public void setId(Long id) {
         _id = id;
-        dataObject.setLong("id", id);
+    	dataObject = eventSDO.getSDO(_id);
+        
     }
 
     public ProcessInstanceDAOImpl getInstance() {
@@ -134,12 +134,14 @@ public class EventDAOImpl {
         dataObject.setString("type", type);
     }
 
-    public Long getScopeId() {
-        return _scopeId;
+    public Long getScopeId()
+    {
+    	return _scopeId;
     }
 
     public void setScopeId(Long scopeId) {
         _scopeId = scopeId;
+    	
         dataObject.setLong("scopeId", scopeId);
     }
 }

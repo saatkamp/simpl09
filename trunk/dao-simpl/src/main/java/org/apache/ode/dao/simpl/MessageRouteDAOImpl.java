@@ -60,16 +60,17 @@ public class MessageRouteDAOImpl implements MessageRouteDAO {
     MessageRouteSDO messageRouteSDO = new MessageRouteSDO();
 
     public MessageRouteDAOImpl() {
-    	dataObject = messageRouteSDO.getSDO(_id);
     }
 	public MessageRouteDAOImpl(CorrelationKey key, String groupId, int index,
                                ProcessInstanceDAOImpl processInst, CorrelatorDAOImpl correlator) {
-		this();
 		_correlationKey = key.toCanonicalString();
 		_groupId = groupId;
 		_index = index;
 		_processInst = processInst;
         _correlator = correlator;
+    	
+        dataObject = messageRouteSDO.getSDO(_id);
+
         dataObject.setString("correlationKey", _correlationKey);
         dataObject.setInt("index", _index);
         

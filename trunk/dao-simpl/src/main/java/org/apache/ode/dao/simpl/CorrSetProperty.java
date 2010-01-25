@@ -54,12 +54,12 @@ public class CorrSetProperty {
     CorrSetPropertySDO corrSetProperty = new CorrSetPropertySDO();
 
     public CorrSetProperty() {
-    	dataObject = corrSetProperty.getSDO(_id);
     }
     public CorrSetProperty(String propertyKey, String propertyValue) {
-    	this();
-        this.propertyKey = propertyKey;
+    	this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
+    	dataObject = corrSetProperty.getSDO(_id);
+
         dataObject.setString("propertyKey", propertyKey);
         dataObject.setString("propertyValue", propertyValue);
     }

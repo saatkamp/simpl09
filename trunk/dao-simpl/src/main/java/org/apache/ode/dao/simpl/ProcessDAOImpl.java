@@ -65,9 +65,10 @@ public class ProcessDAOImpl extends OpenJPADAO implements ProcessDAO {
 
 	@OneToMany(targetEntity=CorrelatorDAOImpl.class,mappedBy="_process",fetch=FetchType.LAZY,cascade={CascadeType.ALL})
     private Collection<CorrelatorDAOImpl> _correlators = new ArrayList<CorrelatorDAOImpl>();
-	
-	ProcessSDO processSDO = new ProcessSDO();
-	DataObject dataObject;
+	@Transient
+	private ProcessSDO processSDO = new ProcessSDO();
+	@Transient
+	private DataObject dataObject;
 	
 	public ProcessDAOImpl() {}
 	public ProcessDAOImpl(QName pid, QName type, String guid, long version) {

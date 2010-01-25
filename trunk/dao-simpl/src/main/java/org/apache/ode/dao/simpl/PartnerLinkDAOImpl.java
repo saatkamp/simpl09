@@ -78,14 +78,14 @@ public class PartnerLinkDAOImpl implements PartnerLinkDAO {
     PartnerLinkSDO partnerLinkSDO;
 
     public PartnerLinkDAOImpl() {
-    	dataObject = partnerLinkSDO.getSDO(_id);
     }
 	public PartnerLinkDAOImpl(int modelId, String name, String myRole, String partnerRole) {
-		this();
 		_partnerLinkModelId = modelId;
 		_partnerLinkName = name;
 		_myRoleName = myRole;
 		_partnerRoleName = partnerRole;
+    	dataObject = partnerLinkSDO.getSDO(_id);
+
 		dataObject.setInt("partnerLinkModelId", modelId);
 		dataObject.setString("partnerLinkName", name);
 		dataObject.setString("myRole", myRole);

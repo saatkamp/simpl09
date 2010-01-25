@@ -55,12 +55,13 @@ public class XmlDataProperty {
     XmlDataPropertySDO xmlDataPropertySDO = new XmlDataPropertySDO();
 
     public XmlDataProperty() {
-    	dataObject = xmlDataPropertySDO.getSDO(_id);
     }
     public XmlDataProperty(String propertyKey, String propertyValue, XmlDataDAOImpl xmlData) {
         this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
         this._xmlData = xmlData;
+    	dataObject = xmlDataPropertySDO.getSDO(_id);
+
         dataObject.setString("propertyKey", propertyKey);
         dataObject.setString("propertyValue", propertyValue);
     }

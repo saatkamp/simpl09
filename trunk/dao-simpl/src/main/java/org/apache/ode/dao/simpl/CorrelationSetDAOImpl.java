@@ -64,12 +64,12 @@ public class CorrelationSetDAOImpl implements CorrelationSetDAO {
     CorrelationSetSDO correlationSet = new CorrelationSetSDO();
 
     public CorrelationSetDAOImpl() {
-    	dataObject = correlationSet.getSDO(_correlationSetId);
+    	
     }
 	public CorrelationSetDAOImpl(ScopeDAOImpl scope, String name) {
-		this();
 		_name = name;
 		_scope = scope;
+		dataObject = correlationSet.getSDO(_correlationSetId);
 		dataObject.setString("name", name);
 		
 	}
