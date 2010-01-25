@@ -250,12 +250,14 @@ public class DeleteEditor extends AStatementEditor {
 		
 		
 		String[] statmentWords=removeAllSpaces(statementText.getText());
-		if(statmentWords.length>2){
-			//String[] tempArray= new String[1];
-			if(IsSringTableName(statmentWords[2])>=0){
-				//tempArray[0]=statmentWords[2];
-				tablsList.setSelection(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
-				textTableName.setText(statmentWords[2]);
+		if(statmentWords!=null){
+			if(statmentWords.length>2){
+				//String[] tempArray= new String[1];
+				if(IsSringTableName(statmentWords[2])>=0){
+					//tempArray[0]=statmentWords[2];
+					tablsList.setSelection(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
+					textTableName.setText(statmentWords[2]);
+				}
 			}
 		}
 		

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
- <MainKeyWord value="UPDATE" text="UPDATE ">
+ <MainKeyWord value="UPDATE" text="SELECT ">
  	<KeyWord value="SET" text="	SET ">
  		
  	</KeyWord>

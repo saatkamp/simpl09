@@ -139,38 +139,6 @@ public class DropEditor extends AStatementEditor {
 //		dropList.setLayoutData(gridData1);
 //		dropList.setItems(new String[]{"SCHEMA", "TABLE"});
 //		dropList.setEnabled(false);
-		Label tableLabel=new Label(composite, SWT.NONE);
-		tableLabel.setText("Type or Select the Schema/Table Name:");
-		dropText = new Text(composite, SWT.BORDER);
-		dropText.setLayoutData(gridData2);
-		dropText.setEnabled(false);
-		
-		
-		//*************************************************
-		tablsList = new List(composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
-		tablsList.setBounds(40, 20, 320, 100);
-		tablsList.setEnabled(false);
-		loadTheTablesIntoList();
-		
-		tablsList.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				String kommaString=" ";
-				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
-				kommaString=",";
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				String kommaString=" ";
-				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
-				kommaString=",";	
-			}
-		});
-		//**************************************************************
-		
-		
 		//************************************
 		GridLayout gridLayout2 = new GridLayout();
 		gridLayout2.numColumns = 3;
@@ -211,6 +179,34 @@ public class DropEditor extends AStatementEditor {
 		tableNameComposite.setEnabled(false);
 		
 		//************************************
+		
+		
+		//*************************************************
+		tablsList = new List(composite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+		tablsList.setBounds(40, 20, 320, 100);
+		tablsList.setEnabled(false);
+		loadTheTablesIntoList();
+		
+		tablsList.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				String kommaString=" ";
+				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				kommaString=",";
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				String kommaString=" ";
+				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				kommaString=",";	
+			}
+		});
+		//**************************************************************
+		
+		
+		
 		
 		
 		//Da createButtonComposite bei der Erstellung des Statement-Editors
@@ -294,7 +290,9 @@ public class DropEditor extends AStatementEditor {
 			//String[] tempArray= new String[1];
 			if(IsSringTableName(statmentWords[2])>=0){
 				//tempArray[0]=statmentWords[2];
-				tablsList.setSelection(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
+				if(tablsList.getItemCount()>=0){
+					tablsList.select(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
+				}
 				textSchemaName.setText(statmentWords[2]);
 			}
 		}
@@ -441,7 +439,7 @@ public class DropEditor extends AStatementEditor {
 					}
 					
 					statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
-					if(tmpKeyWord.getTextOfKEyWord().equals("DROP")){
+					if(tmpKeyWord.getMainKeyWord().equals("DROP")){
 						
 						tablsList.setEnabled(true);
 						dropText.setEnabled(true);
