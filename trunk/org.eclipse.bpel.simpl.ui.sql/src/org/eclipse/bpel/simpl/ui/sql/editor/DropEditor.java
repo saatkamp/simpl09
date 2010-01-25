@@ -438,7 +438,7 @@ public class DropEditor extends AStatementEditor {
 						
 					}
 					
-					statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+					
 					if(tmpKeyWord.getMainKeyWord().equals("DROP")){
 						
 						tablsList.setEnabled(true);
@@ -448,6 +448,7 @@ public class DropEditor extends AStatementEditor {
 						statementText.setText("DROP ");
 
 					}
+					else statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
 				}
