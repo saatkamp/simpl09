@@ -4,7 +4,7 @@
  	<KeyWord value="TABLE" text="TABLE ">
 
  	</KeyWord>
- 	<KeyWord value="VIEW" text="VIEW ">
+ 	<KeyWord value="SCHEMA" text="SCHEMA ">
  		
  	</KeyWord>
  	<KeyWord value="INDEX" text="INDEX ">
