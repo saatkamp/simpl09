@@ -147,4 +147,36 @@
     	<attribute name="propValue" type="string"></attribute>
     	<attribute name="xmlDataId" type="string"></attribute>
     </complexType>
+
+    <element name="abstractSDO" type="tns:AbstractSDO"></element>
+
+    <element name="correlationSetSDO" type="tns:CorrelationSetSDO"></element>
+
+    <element name="correlatorSDO" type="tns:CorrelatorSDO"></element>
+
+    <element name="corrSetPropertySDO" type="tns:CorrSetPropertySDO"></element>
+
+    <element name="eventSDO" type="tns:EventSDO"></element>
+
+    <element name="faultSDO" type="tns:FaulSDO"></element>
+
+    <element name="messageExchangeSDO" type="tns:MessageExchangeSDO"></element>
+
+    <element name="messageRouteSDO" type="tns:MessageRouteSDO"></element>
+
+    <element name="messageSDO" type="tns:MessageSDO"></element>
+
+    <element name="mexPropertySDO" type="tns:MexPropertySDO"></element>
+
+    <element name="partnerLinkSDO" type="tns:PartnerLinkSDO"></element>
+
+    <element name="processInstanceSDO" type="tns:ProcessInstanceSDO"></element>
+
+    <element name="processSDO" type="tns:ProcessSDO"></element>
+
+    <element name="scopeSDO" type="tns:ScopeSDO"></element>
+
+    <element name="xmlDataProperty" type="tns:XMLDataProperty"></element>
+    
+    <element name="xmlDataSDO" type="tns:XMLDataSDO"></element>
 </schema>
