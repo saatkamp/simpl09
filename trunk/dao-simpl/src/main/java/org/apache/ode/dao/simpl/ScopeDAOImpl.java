@@ -27,6 +27,8 @@ import org.apache.ode.bpel.dao.ScopeStateEnum;
 import org.apache.ode.bpel.dao.XmlDataDAO;
 import org.apache.ode.bpel.evt.BpelEvent;
 
+import commonj.sdo.DataObject;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -77,13 +79,23 @@ public class ScopeDAOImpl extends OpenJPADAO implements ScopeDAO {
 	private Collection<XmlDataDAO> _variables = new ArrayList<XmlDataDAO>();
 	@ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="PROCESS_INSTANCE_ID")
 	private ProcessInstanceDAOImpl _processInstance;
+	
+	DataObject dataObject;
+	
+	ScopeSDO scopeSDO = new ScopeSDO();
 
-	public ScopeDAOImpl() {}
+	public ScopeDAOImpl() {
+		dataObject = scopeSDO.getSDO(_scopeInstanceId);
+	}
 	public ScopeDAOImpl(ScopeDAOImpl parentScope, String name, int scopeModelId, ProcessInstanceDAOImpl pi) {
+		this();
 		_parentScope = parentScope;
 		_name = name;
 		_modelId = scopeModelId;
 		_processInstance = pi;
+		dataObject.setString("partentScope", parentScope.toString());
+		dataObject.setString("name", name);
+		dataObject.setInt("modelId", scopeModelId);
     }
 	
 	public PartnerLinkDAO createPartnerLink(int plinkModelId, String pLinkName,
@@ -189,6 +201,7 @@ public class ScopeDAOImpl extends OpenJPADAO implements ScopeDAO {
 
 	public void setState(ScopeStateEnum state) {
 		_scopeState = state.toString();
+		dataObject.setString("state", _scopeState);
 	}
 
 }

@@ -3,7 +3,8 @@ package org.apache.ode.dao.simpl;
 import java.sql.Date;
 
 import commonj.sdo.DataObject;
-import commonj.sdo.helper.DataFactory;
+
+
 
 public abstract class AbstractSDO {
 

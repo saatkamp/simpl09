@@ -10,11 +10,7 @@
     	<attribute name="details" type="string"></attribute>
     	<attribute name="actions" type="string"></attribute>
     	<attribute name="retries" type="int"></attribute>
-    </complexType>
-
-
-
-    
+    </complexType>    
 
     <complexType name="CorrelationSetSDO">
     	<attribute name="corelationSetId" type="long"></attribute>
@@ -60,7 +56,7 @@
     </complexType>
 
     <complexType name="MessageExchangeSDO">
-    	<attribute name="id" type="long"></attribute>
+    	<attribute name="id" type="string"></attribute>
     	<attribute name="callee" type="string"></attribute>
     	<attribute name="channel" type="string"></attribute>
     	<attribute name="correlationID" type="string"></attribute>

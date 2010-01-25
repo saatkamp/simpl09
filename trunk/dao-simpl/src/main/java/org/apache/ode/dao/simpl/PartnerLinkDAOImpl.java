@@ -24,6 +24,8 @@ import org.apache.ode.bpel.dao.PartnerLinkDAO;
 import org.apache.ode.utils.DOMUtils;
 import org.w3c.dom.Element;
 
+import commonj.sdo.DataObject;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -70,13 +72,24 @@ public class PartnerLinkDAOImpl implements PartnerLinkDAO {
 
     @ManyToOne(fetch= FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="SCOPE_ID")
     private ScopeDAOImpl _scope;
+    
+    DataObject dataObject;
+    
+    PartnerLinkSDO partnerLinkSDO;
 
-    public PartnerLinkDAOImpl() {}
+    public PartnerLinkDAOImpl() {
+    	dataObject = partnerLinkSDO.getSDO(_id);
+    }
 	public PartnerLinkDAOImpl(int modelId, String name, String myRole, String partnerRole) {
+		this();
 		_partnerLinkModelId = modelId;
 		_partnerLinkName = name;
 		_myRoleName = myRole;
 		_partnerRoleName = partnerRole;
+		dataObject.setInt("partnerLinkModelId", modelId);
+		dataObject.setString("partnerLinkName", name);
+		dataObject.setString("myRole", myRole);
+		dataObject.setString("partnerRoleName", partnerRole);
 	}
 
 	public Element getMyEPR() {
@@ -133,27 +146,35 @@ public class PartnerLinkDAOImpl implements PartnerLinkDAO {
 	public void setMyEPR(Element val) {
 		_myEPRElement = val;
 		_myEPR = DOMUtils.domToString(val);
+		
+		dataObject.setString("myEPRElement", val.toString());
+		dataObject.setString("myEPR", _myEPR);
 
 	}
 
 	public void setMyRoleServiceName(QName svcName) {
 		_myRoleServiceName = svcName.toString();
+		dataObject.setString("myRoleServiceName", _myRoleServiceName);
 
 	}
 
 	public void setMySessionId(String sessionId) {
 		_mySessionId = sessionId;
+		dataObject.setString("mySessionId", sessionId);
 
 	}
 
 	public void setPartnerEPR(Element val) {
 		_partnerEPRElement = val;
 		_partnerEPR = DOMUtils.domToString(val);
+		dataObject.setString("partnerEPRElement", val.toString());
+		dataObject.setString("partnerEPR", _partnerEPR);
 
 	}
 
 	public void setPartnerSessionId(String session) {
 		_partnerSessionId = session;
+		dataObject.setString("partnerSessionId", session);
 
 	}
 

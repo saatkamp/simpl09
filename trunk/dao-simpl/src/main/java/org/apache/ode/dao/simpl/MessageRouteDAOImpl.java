@@ -23,6 +23,8 @@ import org.apache.ode.bpel.common.CorrelationKey;
 import org.apache.ode.bpel.dao.MessageRouteDAO;
 import org.apache.ode.bpel.dao.ProcessInstanceDAO;
 
+import commonj.sdo.DataObject;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -52,15 +54,25 @@ public class MessageRouteDAOImpl implements MessageRouteDAO {
     private ProcessInstanceDAOImpl _processInst;
     @ManyToOne(fetch= FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="CORR_ID")
     private CorrelatorDAOImpl _correlator;
+    
+    DataObject dataObject;
+    
+    MessageRouteSDO messageRouteSDO = new MessageRouteSDO();
 
-    public MessageRouteDAOImpl() {}
+    public MessageRouteDAOImpl() {
+    	dataObject = messageRouteSDO.getSDO(_id);
+    }
 	public MessageRouteDAOImpl(CorrelationKey key, String groupId, int index,
                                ProcessInstanceDAOImpl processInst, CorrelatorDAOImpl correlator) {
+		this();
 		_correlationKey = key.toCanonicalString();
 		_groupId = groupId;
 		_index = index;
 		_processInst = processInst;
         _correlator = correlator;
+        dataObject.setString("correlationKey", _correlationKey);
+        dataObject.setInt("index", _index);
+        
     }
 	
 	public CorrelationKey getCorrelationKey() {

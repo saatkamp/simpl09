@@ -54,6 +54,8 @@ import org.apache.ode.bpel.iapi.MessageExchange.Status;
 import org.apache.ode.utils.DOMUtils;
 import org.w3c.dom.Element;
 
+import commonj.sdo.DataObject;
+
 @Entity
 @Table(name="ODE_MESSAGE_EXCHANGE")
 public class MessageExchangeDAOImpl implements MessageExchangeDAO {
@@ -127,13 +129,25 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
     
     @Basic @Column(name="PIPED_PID")
     private String _pipedPid;
+    
+    DataObject dataObject;
+    
+    MessageExchangeSDO messageExchangeSDO = new MessageExchangeSDO();
 
-    public MessageExchangeDAOImpl() {}
+    public MessageExchangeDAOImpl() {
+    	dataObject = messageExchangeSDO.getSDO(_id);
+    }
     
 	public MessageExchangeDAOImpl(String mexId, char direction){
+		this();
 		_direction = direction;
 		_id = mexId;
         _createTime = new Date();
+        
+        dataObject.set("direction", direction);
+        dataObject.setString("id", _id);
+        dataObject.setDate("date", _createTime);
+        
 	}
 	
 	public MessageDAO createMessage(QName type) {
@@ -250,31 +264,40 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
 	public void setCallee(QName callee) {
 		_callee = callee.toString();
+		dataObject.setString("calle", callee.toString());
 	}
 
 	public void setChannel(String channel) {
 		_channel = channel;
+		dataObject.setString("channel", channel);
 	}
 
 	public void setPartnersKey(String correlationId) {
 		_correlationId = correlationId;
+		dataObject.setString("correlationId", correlationId);
 	}
 
 	public void setCorrelationStatus(String cstatus) {
 		_correlationStatus = cstatus;
+		dataObject.setString("correlationStatus", cstatus);
 	}
 
 	public void setEPR(Element epr) {
 		_eprElement = epr;
 		_epr = DOMUtils.domToString(epr);
+		
+		dataObject.setString("epr", epr.toString());
+		dataObject.setString("epr", _epr);
 	}
 
 	public void setFault(QName faultType) {
 		_fault = faultType == null ? null : faultType.toString();
+		dataObject.setString("fault", _fault);
 	}
 
 	public void setFaultExplanation(String explanation) {
 		_faultExplanation = explanation;
+		dataObject.setString("faultExplanation", explanation);
 	}
 
 	public void setInstance(ProcessInstanceDAO dao) {
@@ -283,6 +306,7 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
 	public void setOperation(String opname) {
 		_operation = opname;
+		dataObject.setString("operation", opname);
 	}
 
 	public void setPartnerLink(PartnerLinkDAO plinkDAO) {
@@ -291,14 +315,17 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
 	public void setPartnerLinkModelId(int modelId) {
 		_partnerLinkModelId = modelId;
+		dataObject.setInt("partnerLinkMode", modelId);
 	}
 
 	public void setPattern(MessageExchangePattern pattern) {
 		_pattern = pattern == null ? null : pattern.toString();
+		dataObject.setString("pattern", _pattern);
 	}
 
 	public void setPortType(QName porttype) {
 		_portType = porttype.toString();
+		dataObject.setString("portType", _portType);
 	}
 
 	public void setProcess(ProcessDAO process) {
@@ -319,6 +346,7 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
 	public void setStatus(Status status) {
 		_status = status == null ?  null : status.toString();
+		dataObject.setString("status", _status);
 	}
 
     public String getPipedMessageExchangeId() {
@@ -327,6 +355,7 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
     public void setPipedMessageExchangeId(String pipedMessageExchangeId) {
         _pipedMessageExchangeId = pipedMessageExchangeId;
+        dataObject.setString("pipedMessageExchangeId", _pipedMessageExchangeId);
     }
 
     public void addCorrelationKey(CorrelationKey correlationKey) {
@@ -374,6 +403,7 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
     public void setFailureType(FailureType failureType) {
         _failureType = failureType == null ? null :failureType.toString();
+        dataObject.setString("failureType", _failureType);
     }
     
     public FailureType getFailureType() {
@@ -382,10 +412,12 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
     public void setInvocationStyle(InvocationStyle invocationStyle) {
         _istyle = invocationStyle == null ? null : invocationStyle.toString();
+        dataObject.setString("invocationStyle", _istyle);
     }
 
     public void setTimeout(long timeout) {
         _timeout = timeout;
+        dataObject.setLong("timeout", _timeout);
     }
 
     public AckType getAckType() {
@@ -394,6 +426,7 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
     public void setAckType(AckType ackType) {
         _ackType = ackType == null ? null :ackType.toString();
+        dataObject.setString("ackType", _ackType);
     }
 
     public QName getPipedPID() {
@@ -402,5 +435,6 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
 
     public void setPipedPID(QName pipedPid) {
         _pipedPid = pipedPid == null ? null : pipedPid.toString();
+        dataObject.setString("pipedPid", _pipedPid);
     }
 }

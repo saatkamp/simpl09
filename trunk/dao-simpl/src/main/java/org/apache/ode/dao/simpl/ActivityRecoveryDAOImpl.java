@@ -68,8 +68,8 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
     @ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="INSTANCE_ID")
     private ProcessInstanceDAOImpl _instance;
     
-    //ActivityRecoverySDO activitySDO = new ActivityRecoverySDO();
-    //DataObject dataObject = null;
+    ActivityRecoverySDO activitySDO = new ActivityRecoverySDO();
+    DataObject dataObject;
 
 	
     public ActivityRecoveryDAOImpl() {}
@@ -80,16 +80,23 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
 		_activityId = activityId;
 		_reason = reason;
 		_dateTime = dateTime;
-		//this.dataObject = this.activitySDO.getSDO(this._id);
+		this.dataObject = this.activitySDO.getSDO(this._id);
+		dataObject.setString("channel", channel);
+		dataObject.setLong("activityID", activityId);
+		dataObject.setString("reason", reason);
+		dataObject.setDate("dateTime", dateTime);
+		
 
         if (data != null) _details = DOMUtils.domToString(data);
-		
+		dataObject.setString("details", _details);
         String alist = actions[0];
         for (int i = 1; i < actions.length; ++i)
             alist += " " + actions[i];
 		_actions = alist;
+		dataObject.setString("actions",alist);
 		
 		_retries = retries;		
+		dataObject.setInt("retries", retries);
 	}
 	
 	public String getActions() {

@@ -7,8 +7,8 @@ public class ProcessSDO extends AbstractSDO {
 
 	@Override
 	public DataObject createDataObject(Long id) {
-		DataObject object = DataFactory.INSTANCE.create(ProcessSDO.class);
-		object.setLong("id", id);
+		DataObject object = DataFactory.INSTANCE.create("http://www.example.org/simpl-dao","ProcessSDO");
+		object.set("id", id);
 		
 		return object;
 	}

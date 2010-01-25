@@ -24,7 +24,7 @@ import org.apache.ode.bpel.dao.CorrelatorDAO;
 import org.apache.ode.bpel.dao.ProcessDAO;
 import org.apache.ode.bpel.dao.ProcessInstanceDAO;
 
-//import commonj.sdo.DataObject;
+import commonj.sdo.DataObject;
 
 import javax.persistence.*;
 import javax.xml.namespace.QName;
@@ -66,16 +66,20 @@ public class ProcessDAOImpl extends OpenJPADAO implements ProcessDAO {
 	@OneToMany(targetEntity=CorrelatorDAOImpl.class,mappedBy="_process",fetch=FetchType.LAZY,cascade={CascadeType.ALL})
     private Collection<CorrelatorDAOImpl> _correlators = new ArrayList<CorrelatorDAOImpl>();
 	
-	//ProcessSDO processSDO = new ProcessSDO();
-	//DataObject dataObject = null;
-
+	ProcessSDO processSDO = new ProcessSDO();
+	DataObject dataObject;
+	
 	public ProcessDAOImpl() {}
 	public ProcessDAOImpl(QName pid, QName type, String guid, long version) {
         _processId = pid.toString();
 		_processType = type.toString();
 		_guid = guid;
         _version = version;
-       //this.dataObject = processSDO.getSDO(this._id);
+       this.dataObject = processSDO.getSDO(this._id);
+       dataObject.setString("processID", pid.toString());
+       dataObject.setString("preocessType", type.toString());
+       dataObject.setString("guid", guid);
+       dataObject.setLong("version", version);
     }
 	
 	public CorrelatorDAO addCorrelator(String correlator) {
@@ -98,6 +102,7 @@ public class ProcessDAOImpl extends OpenJPADAO implements ProcessDAO {
 		ProcessInstanceDAOImpl inst = new ProcessInstanceDAOImpl((CorrelatorDAOImpl)instantiatingCorrelator, this);
 		getEM().persist(inst);
 		_numInstances++;
+		dataObject.setInt("numInstances", _numInstances);
 		return inst;
 	}
 
