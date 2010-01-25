@@ -11,8 +11,6 @@ import org.simpl.ode.evt.DMFailure;
 import org.simpl.ode.evt.DMStarted;
 import org.w3c.dom.Element;
 
-import commonj.sdo.DataObject;
-
 public class CallActivity extends SimplActivity {
 
 	protected void runSync(ExtensionContext context, Element element)

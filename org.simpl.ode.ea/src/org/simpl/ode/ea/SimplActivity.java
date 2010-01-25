@@ -56,16 +56,17 @@ public class SimplActivity extends AbstractSyncExtensionOperation {
 	}
 
 	// Diese beiden Methoden sind nur zu Testzwecken.
-	public static void printDataObject(ExtensionContext context,
+	@SuppressWarnings("unchecked")
+  public static void printDataObject(ExtensionContext context,
 			DataObject dataObject, int indent) {
 		// For each Property
-		List properties = dataObject.getInstanceProperties();
+		List<DataObject> properties = (List<DataObject>)dataObject.getInstanceProperties();
 		for (int p = 0, size = properties.size(); p < size; p++) {
 			if (dataObject.isSet(p)) {
 				Property property = (Property) properties.get(p);
 				if (property.isMany()) {
 					// For many-valued properties, process a list of values
-					List values = dataObject.getList(p);
+					List<DataObject> values = (List<DataObject>)dataObject.getList(p);
 					for (int v = 0, count = values.size(); v < count; v++) {
 						printValue(context, values.get(v), property, indent);
 					}
