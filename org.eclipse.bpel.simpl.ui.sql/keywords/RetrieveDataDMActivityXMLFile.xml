@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
- <MainKeyWord value="Insert">
- 	<KeyWord value="In">
- 		<KeyWord value="In x">
- 			<KeyWord value="In xx">
- 			</KeyWord>
+ <MainKeyWord value="SELECT" text="SELECT ">
+ 	<KeyWord value="FROM">
+ 		<KeyWord value="WHERE" text="WHERE ">
+ 		
  		</KeyWord>
- 	</KeyWord>
- 	<KeyWord value="where">
- 		<KeyWord value="where x">
- 		</KeyWord>
- 		<KeyWord value="where y">
- 		</KeyWord>
- 		<KeyWord value="where z">
- 		</KeyWord>
- 	</KeyWord>
- 	<KeyWord value="Z">
- 		<KeyWord value="Zz">
- 		</KeyWord>
- 		<KeyWord value="Zz2">
- 		</KeyWord>
- 	</KeyWord>
+	</KeyWord>
  </MainKeyWord>	
 </root>

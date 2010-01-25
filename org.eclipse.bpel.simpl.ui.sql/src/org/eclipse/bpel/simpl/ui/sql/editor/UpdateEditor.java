@@ -128,7 +128,7 @@ public class UpdateEditor extends AStatementEditor {
 		resultSETStatementCompo.setEnabled(false);
 		resultSelectedTableColumns=new Text(resultSETStatementCompo, SWT.NONE|SWT.H_SCROLL);
 		resultSelectedTableColumns.setSize(300, 100);
-		resultSelectedTableColumns.setText(parseStatment());
+		
 		GridLayout layout2=new GridLayout();
 //		layout2.numColumns=2;
 //		resultSETStatementCompo.setLayout(layout2);
@@ -158,6 +158,7 @@ public class UpdateEditor extends AStatementEditor {
 		listOfTabels=new List(listsComposite, SWT.NONE|SWT.V_SCROLL);
 		listOfColumns=new List(listsComposite, SWT.NONE|SWT.V_SCROLL|SWT.MULTI);
 		loadTablesFromDS();
+		resultSelectedTableColumns.setText(parseStatment());
 		
 		Button insertTableAndColumns=new Button(listsComposite, SWT.NONE);
 		insertTableAndColumns.setText("Create SET statment part");
@@ -180,7 +181,7 @@ public class UpdateEditor extends AStatementEditor {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				statementText.setText(statementText.getText()+listOfTabels.getItem(listOfTabels.getSelectionIndex())+"\r	SET"+
+				statementText.setText(statementText.getText()+listOfTabels.getItem(listOfTabels.getSelectionIndex())+"\r	SET "+
 						getSelectedColumns());
 			}
 			
@@ -188,7 +189,7 @@ public class UpdateEditor extends AStatementEditor {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.setText(statementText.getText()+listOfTabels.getItem(listOfTabels.getSelectionIndex())+"\r	SET"+
+				statementText.setText(statementText.getText()+listOfTabels.getItem(listOfTabels.getSelectionIndex())+"\r	SET "+
 						getSelectedColumns());
 			}
 		});
@@ -205,13 +206,30 @@ public class UpdateEditor extends AStatementEditor {
 		if(statementText.getText().length()>0){
 			String cleandStatment=removeAllSpaces(statementText.getText());
 			String[] wordsOfStatment =cleandStatment.split("\r");
+			String[] firstLine;
+			String selectedTableName="";
 			
 			if((wordsOfStatment.length>1)){
+				
+				if(wordsOfStatment[0].contains("UPDATE")){
+					firstLine=wordsOfStatment[0].split(" ");
+					selectedTableName=firstLine[1];
+				}
 				for(int i=0;i<wordsOfStatment.length;i++){
 					if((wordsOfStatment[i].contains("SET"))){
-						valuesString=valuesString+wordsOfStatment[i].substring(4,wordsOfStatment[i].length()-1);
+						valuesString=valuesString+wordsOfStatment[i].substring(5,wordsOfStatment[i].length()-1);
 						
+						if(listOfTabels.getItemCount()>0){
+							listOfTabels.select(listOfTabels.indexOf(selectedTableName));
+							if(listOfTabels.isSelected(listOfTabels.indexOf(selectedTableName))){
+								loadColumnsOfTable();
+							}
+						}
+						
+						System.out.print("**"+valuesString+"**");
+						selectTheTableAndColumnsInList(selectedTableName,valuesString);
 					}
+					
 				}
 			}
 			else{ valuesString="";}
@@ -220,6 +238,25 @@ public class UpdateEditor extends AStatementEditor {
 		return valuesString;
 	}
 	
+	/**
+	 * selecting the parsed elements from statement into the Lists
+	 * @param valuesString
+	 */
+	private void selectTheTableAndColumnsInList(String selectedTable,String valuesString) {
+		
+		String[] partsOfString= valuesString.split(",");
+		String[] tmpPartsOfString;
+		if(listOfTabels.getItemCount()>0){
+			listOfTabels.select(listOfTabels.indexOf(selectedTable));
+		}
+		if(listOfColumns.getItemCount()>0){	
+			for(int i=0;i<partsOfString.length;i++){
+				tmpPartsOfString=partsOfString[i].split("=");
+				listOfColumns.select(listOfColumns.indexOf(tmpPartsOfString[0]));
+			}
+		}
+	}
+
 	/**
 	 * removes all spaces from statment
 	 * @param statement
@@ -256,6 +293,7 @@ public class UpdateEditor extends AStatementEditor {
 	 * load the columns of the selected table.
 	 */
 	private void loadColumnsOfTable() {
+		
 		
 		String tableName=listOfTabels.getItem(listOfTabels.getSelectionIndex());
 		listOfColumns.removeAll();

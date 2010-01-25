@@ -15,36 +15,57 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
 
-public class InsertEditor extends AStatementEditor {
+public class SelectAndRetrieveDataEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
 	private StyledText statementText = null;
-	Text textTableName=null;
-	Composite tableNameComposite=null;
-	Text valuesText=null;
-	Composite valuesCompo=null;
+	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
-
-	List tablsList;
+	private Composite resultSETStatementCompo=null;
+	private List listOfTabels=null,listOfColumns=null;
+	private Text resultSelectedTableColumns=null;
+	Composite listsComposite=null;
+	
+	/**
+	 * UPDATE table_name
+		SET column1=value, column2=value2,...
+		WHERE some_column=some_value
+	 */
 	/*
 	 * The XML file wich contais the statment KeyWords
 	 */
 	//TODO: den kompleten echten dateipfaden hier rein schreiben
-	private String xmlFilePath="/keywords/InsertDMActivityXMLFile.xml";
-	//gerade nicht in gebrauch
+	private String xmlFilePath=null;	
+	public String getXmlFilePath() {
+		return xmlFilePath;
+	}
+	public void setXmlFilePath(String xmlFilePath) {
+		this.xmlFilePath = xmlFilePath;
+	}
 	
-	public InsertEditor() {
+	
+	private String mainStatmentKeyWord="";
+	public String getMainStatmentKeyWord() {
+		return mainStatmentKeyWord;
+	}
+
+	public void setMainStatmentKeyWord(String tmpMainStatmentKeyWord) {
+		mainStatmentKeyWord = tmpMainStatmentKeyWord;
+	}
+	
+
+	
+
+	public SelectAndRetrieveDataEditor() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -73,7 +94,7 @@ public class InsertEditor extends AStatementEditor {
 
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
-		parser.parseXmlFile(xmlFilePath);
+		parser.parseXmlFile(getXmlFilePath());
 		buttonsCompo=new Composite(compos, SWT.NONE);
 		buttonsCompo.setLayout(gridLayoutA);
 		creatButtonsOfKeyWords(parser.parseDocument());
@@ -94,151 +115,180 @@ public class InsertEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 			if(statementText.getText().length()>8){
-				//tableNameComposite.setEnabled(true);
-				//tablsList.setEnabled(true);
-				//valuesCompo.setEnabled(true);
-
+				//resultSETStatementCompo.setEnabled(true);
+				//listsComposite.setEnabled(true);
 			}
-			else{statementText.setText("INSERT INTO ");}
+			else{statementText.setText("SELECT ");}
 		}
-		else {statementText.setText("INSERT INTO ");}
+		else {statementText.setText("SELECT ");}
 		
-		creatINSERT_UIElements(compos);
+		createEditorElements(compos);
+		
 	}
 	
-	
-	
 	/**
-	 * 
+	 * creating the ui Elemente of this Editor
 	 * @param composite
 	 */
-	private void creatINSERT_UIElements(Composite composite){
+	private void createEditorElements(Composite composite) {
 		
-		Button insertButton;
+		GridData gridData1 = new GridData();
+		gridData1.horizontalAlignment = GridData.FILL;
+		gridData1.grabExcessHorizontalSpace = true;
+		gridData1.grabExcessVerticalSpace = true;
+		//gridData1.verticalAlignment = GridData.FILL;
 		
+		listsComposite=new Composite(composite, SWT.BORDER|SWT.H_SCROLL);
+		listsComposite.setSize(300, 250);
 		
+		//***************************************************
+		resultSETStatementCompo=new Composite(composite, SWT.NONE);
+		resultSETStatementCompo.setEnabled(false);
+		resultSelectedTableColumns=new Text(resultSETStatementCompo, SWT.NONE|SWT.H_SCROLL);
+		resultSelectedTableColumns.setSize(300, 70);
 		
-		//********************************
-		GridLayout gridLayoutx = new GridLayout();
-		gridLayoutx.numColumns = 3;
-		tableNameComposite=new Composite(composite, SWT.BORDER);
-		tableNameComposite.setEnabled(false);
-		tableNameComposite.setLayout(gridLayoutx);
-		if(statementText.getText().length()<8){
-			tableNameComposite.setEnabled(false);
-		}
-		
-		Label tableName =new Label(tableNameComposite, SWT.NONE);
-		tableName.setText("Type the name of the Table: ");
-		textTableName=new Text(tableNameComposite, SWT.BORDER);
-		final Button addTable =new Button(tableNameComposite, SWT.BORDER);
-		addTable.setText("Add to Statement");
-		addTable.addSelectionListener(new SelectionListener() {
+		GridLayout layout2=new GridLayout();
+//		layout2.numColumns=2;
+//		resultSETStatementCompo.setLayout(layout2);
+		Button insertSETInStatment=new Button(composite, SWT.NONE);
+		insertSETInStatment.setText("Add SET part to Statement");
+		insertSETInStatment.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				
-				if(textTableName.getText().length()>0){
-					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
-					//columnCompo.setEnabled(true);
-					//buttonsCompo.setEnabled(true);
-					//columsListCompo.setEnabled(true);
-				}
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				
-				if(textTableName.getText().length()>0){
-					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
-					//columnCompo.setEnabled(true);
-					//buttonsCompo.setEnabled(true);
-					//columsListCompo.setEnabled(true);
-				}
-				
-			}
-		});
-		
-		
-		//************************************
-		
-		//*************************************************
-		tablsList = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
-		tablsList.setBounds(40, 20, 320, 100);
-		tablsList.setEnabled(false);
-		loadTheTablesIntoList();
-		
-		tablsList.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				
-				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex())+"\r	VALUES ");
+				statementText.setText(statementText.getText()+resultSelectedTableColumns.getText());
 				
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
-				statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex())+"\r	VALUES ");
+				statementText.setText(statementText.getText()+resultSelectedTableColumns.getText());
 
+				
 			}
 		});
-		//**************************************************************
+		//**********************************************
+		GridLayout layout=new GridLayout();
+		layout.numColumns=2;
+		listsComposite.setLayout(layout);
+		listsComposite.setLayoutData(gridData1);
 		
 		
-		//***********************************************************
-		valuesCompo=new Composite(composite, SWT.BORDER);
-		valuesCompo.setEnabled(false);
-		GridLayout gridLayoutY=new GridLayout();
-		gridLayoutY.numColumns=1;
-		valuesCompo.setLayout(gridLayoutY);
-		Label valuesLabel=new Label(valuesCompo, SWT.NONE);
-		valuesLabel.setText("The Values for Inserting: ");
-		valuesText=new Text(valuesCompo, SWT.NONE|SWT.V_SCROLL);
-		valuesText.setSize(250, 100);
-		Button addValues=new Button(valuesCompo, SWT.NONE);
-		addValues.setText("Add Values to Statement");
-		valuesText.setText(getParsedVlauesFromStatement());
-		addValues.addSelectionListener(new SelectionListener() {
+		listOfColumns=new List(listsComposite, SWT.NONE|SWT.V_SCROLL|SWT.MULTI);
+		listOfTabels=new List(listsComposite, SWT.NONE|SWT.V_SCROLL);
+		loadTablesFromDS();
+		resultSelectedTableColumns.setText(parseStatment());
+		
+		Button insertTableAndColumns=new Button(listsComposite, SWT.NONE);
+		insertTableAndColumns.setText("Create SET statment part");
+		listOfTabels.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				statementText.setText(statementText.getText()+" "+valuesText.getText());
+				loadColumnsOfTable();
 			}
 			
+			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				statementText.setText(statementText.getText()+" "+valuesText.getText());
-
+				loadColumnsOfTable();
 			}
 		});
-		//***********************************************************
+		
+		insertTableAndColumns.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				statementText.setText(statementText.getText()+listOfTabels.getItem(listOfTabels.getSelectionIndex())+" "+
+						getSelectedColumns()+" FROM");
+			}
+			
+			
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				statementText.setText(statementText.getText()+listOfTabels.getItem(listOfTabels.getSelectionIndex())+" "+
+						getSelectedColumns()+" FROM");
+			}
+		});
+		
+		
 	}
 	
-
 	/**
-	 * its for parsing the statement and getting the Values of it
-	 * 
+	 * parsing the statment and getting the SET part with the data.
 	 * @return
 	 */
-	private String getParsedVlauesFromStatement() {
+	private String parseStatment() {
 		String valuesString="";
 		if(statementText.getText().length()>0){
 			String cleandStatment=removeAllSpaces(statementText.getText());
-			String[] wordsOfStatment =cleandStatment.split("\r");
+			String[] wordsOfStatment =cleandStatment.split(" ");
+			String[] theFROMLine;
+			String selectedTableName="",columnsOfStatement="";
+			int indexOfSELECTStatement=0,indexFROMStatment=0;
 			
-			if(wordsOfStatment.length>1){
-			 valuesString=wordsOfStatment[1].substring(7,wordsOfStatment[1].length()-1);
+			
+			if((wordsOfStatment.length>1)){
+				
+				
+				for(int i=0;i<wordsOfStatment.length;i++){
+					
+					if(wordsOfStatment[i].contains("SELECT")){
+						indexOfSELECTStatement=i;
+					}
+					if(wordsOfStatment[i].contains("FROM")){
+						indexFROMStatment=i;
+					}
+				}
+				
+				if(wordsOfStatment.length>indexFROMStatment+1){
+					selectedTableName=wordsOfStatment[indexFROMStatment+1];
+//					if(listOfTabels.getItemCount()>0){
+//						listOfTabels.select(listOfTabels.indexOf(selectedTableName));
+//						if(listOfTabels.isSelected(listOfTabels.indexOf(selectedTableName))){
+//							loadColumnsOfTable();
+//						}
+//					}
+				}
+				
+				if(wordsOfStatment.length>indexOfSELECTStatement+1){
+					columnsOfStatement=wordsOfStatment[indexOfSELECTStatement+1];
+					System.out.print("**"+columnsOfStatement+"**");
+					selectTheTableAndColumnsInList(selectedTableName,columnsOfStatement);
+				}
 			}
 			else{ valuesString="";}
 		}
 		
 		return valuesString;
+	}
+	
+	private String searchForTableNameInStatement(String[] theFROMLine) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	/**
+	 * selecting the parsed elements from statement into the Lists
+	 * @param columns
+	 */
+	private void selectTheTableAndColumnsInList(String selectedTable,String columns) {
+		
+		String[] partsOfString= columns.split(",");
+		String[] tmpPartsOfString;
+		if(listOfTabels.getItemCount()>0){
+			listOfTabels.select(listOfTabels.indexOf(selectedTable));
+			if(listOfTabels.isSelected(listOfTabels.indexOf(selectedTable))){
+				loadColumnsOfTable();
+			}
+		}
+		if(listOfColumns.getItemCount()>0){	
+			for(int i=0;i<partsOfString.length;i++){
+				//tmpPartsOfString=partsOfString[i].split(",");
+				listOfColumns.select(listOfColumns.indexOf(partsOfString[i]));
+			}
+		}
 	}
 
 	/**
@@ -272,31 +322,71 @@ public class InsertEditor extends AStatementEditor {
 		}
 		return statmentAsOneString;
 	}
-	
+
 	/**
-	 * loading the tables names of data source 
-	 * into the List
+	 * load the columns of the selected table.
 	 */
-	private void loadTheTablesIntoList() {
+	private void loadColumnsOfTable() {
 		
-		tablsList.removeAll();
+		
+		String tableName=listOfTabels.getItem(listOfTabels.getSelectionIndex());
+		listOfColumns.removeAll();
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList.add("Item Number " + loopIndex);
+			listOfColumns.add(tableName+"_Column" + loopIndex);
+		}
+		//*************
+		
+		ArrayList<String> columnsNames=null;//TODO: Column namen laden
+		if(columnsNames!=null){
+			for(int i=0;i<columnsNames.size();i++){
+				listOfColumns.add(columnsNames.get(i));
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private String getSelectedColumns() {
+		String selectedColumnsStatement="";
+		if(listOfColumns.getSelection().length>0){
+			for(int i=0;i<listOfColumns.getSelection().length-1;i++)
+			{
+				selectedColumnsStatement=selectedColumnsStatement+
+					listOfColumns.getSelection()[i]+",";
+			}
+			selectedColumnsStatement=selectedColumnsStatement+
+			listOfColumns.getSelection()[listOfColumns.getSelection().length-1];
+		}
+			return selectedColumnsStatement;
+	}
+
+	/**
+	 * loading the tables from data source
+	 * @return
+	 */
+	private void loadTablesFromDS() {
+		
+		listOfTabels.removeAll();
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			listOfTabels.add("Table" + loopIndex);
 		}
 		//*************
 		
 		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
 		if(tabelsNames!=null){
 			for(int i=0;i<tabelsNames.size();i++){
-				tablsList.add(tabelsNames.get(i));
+				listOfTabels.add(tabelsNames.get(i));
 			}
 		}
-		
-		
-	}
 	
+	}
+
 	/**
 	 * For creating the buttons out of the xml file ,wich contains
 	 * the key words of the quary language. And after creating they
@@ -315,7 +405,6 @@ public class InsertEditor extends AStatementEditor {
 				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
 			final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
-	
 			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
 			//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
 			
@@ -342,33 +431,28 @@ public class InsertEditor extends AStatementEditor {
 					 * in the following for statement all the buttons are only
 					 * then enabled if the father button (according to the Logik in the parsed xmlFile)
 					 */
-					
 					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-
 					
 					for(int x=0;x<buttonList.size();x++){
 						//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-						keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+						buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 						for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 							//
 							if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
 								buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-
 							}
 							
 						}
 						
 						
 					}
-					if(tmpKeyWord.getMainKeyWord().equals("INSERT")){
+					
+					if(tmpKeyWord.getMainKeyWord().equals(mainStatmentKeyWord)){
 						statementText.setText(tmpKeyWord.getTextOfKEyWord());
-						tableNameComposite.setEnabled(true);
-						tablsList.setEnabled(true);
-						valuesCompo.setEnabled(true);
-
+						resultSETStatementCompo.setEnabled(true);
+						listsComposite.setEnabled(true);	
 					}
-					else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-					}
+					else statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
 					
 //					fatherComp.getShell().getData("StyledText")
 //					s.setStatementText("sdfsdf");
