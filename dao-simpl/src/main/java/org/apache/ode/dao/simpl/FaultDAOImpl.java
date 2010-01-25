@@ -59,16 +59,17 @@ public class FaultDAOImpl implements FaultDAO {
 	FaulSDO faulSDO = new FaulSDO();
 
 	public FaultDAOImpl() {
-		dataObject = faulSDO.getSDO(_id);
+		
 	}
 	public FaultDAOImpl(QName faultName, String explanation, int faultLineNo,
 			int activityId, Element faultMessage) {
-		this();
+		
 		_name = faultName.toString();
 		_explanation = explanation;
 		_lineNo = faultLineNo;
 		_activityId = activityId;
 		_data = (faultMessage == null)?null:DOMUtils.domToString(faultMessage);
+		dataObject = faulSDO.getSDO(_id);
 		dataObject.setString("name", faultName.toString());
 		dataObject.setString("explanation", explanation);
 		dataObject.setInt("activityID", activityId);

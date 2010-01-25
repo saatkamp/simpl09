@@ -51,6 +51,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Query;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -99,18 +100,18 @@ public class ProcessInstanceDAOImpl extends OpenJPADAO implements ProcessInstanc
 	private ProcessDAOImpl _process;
 	@ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="INSTANTIATING_CORRELATOR_ID")
 	private CorrelatorDAOImpl _instantiatingCorrelator;
-	
-	DataObject dataObject;
-	
-	ProcessInstanceSDO processInstanceSDO = new ProcessInstanceSDO();
+	@Transient
+	private DataObject dataObject;
+	@Transient
+	private ProcessInstanceSDO processInstanceSDO = new ProcessInstanceSDO();
 	
 	public ProcessInstanceDAOImpl() {
-		dataObject = processInstanceSDO.getSDO(_instanceId);
 	}
 	public ProcessInstanceDAOImpl(CorrelatorDAOImpl correlator, ProcessDAOImpl process) {
-		this();
 		_instantiatingCorrelator = correlator;
 		_process = process;
+		dataObject = processInstanceSDO.getSDO(_instanceId);
+
 	}
 	
 	public void createActivityRecovery(String channel, long activityId,

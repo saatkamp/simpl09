@@ -75,12 +75,12 @@ public class XmlDataDAOImpl implements XmlDataDAO {
 	XmlDataSDO xmlDataSDO = new XmlDataSDO();
 	
 	public XmlDataDAOImpl() {
-		dataObject = xmlDataSDO.getSDO(_id);
 	}
 	public XmlDataDAOImpl(ScopeDAOImpl scope, String name){
-		this();
 		_scope = scope;
 		_name = name;
+		dataObject = xmlDataSDO.getSDO(_id);
+
 		dataObject.setString("name", name);
 	}
 

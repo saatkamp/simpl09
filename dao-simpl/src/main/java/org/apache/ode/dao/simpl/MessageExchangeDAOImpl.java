@@ -135,14 +135,14 @@ public class MessageExchangeDAOImpl implements MessageExchangeDAO {
     MessageExchangeSDO messageExchangeSDO = new MessageExchangeSDO();
 
     public MessageExchangeDAOImpl() {
-    	dataObject = messageExchangeSDO.getSDO(_id);
     }
     
 	public MessageExchangeDAOImpl(String mexId, char direction){
-		this();
 		_direction = direction;
 		_id = mexId;
         _createTime = new Date();
+    	dataObject = messageExchangeSDO.getSDO(_id);
+
         
         dataObject.set("direction", direction);
         dataObject.setString("id", _id);
