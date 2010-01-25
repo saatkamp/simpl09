@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="C:/Programme/Apache/Tomcat 6.0/webapps/ode/WEB-INF/lib/simplea.jar"/>
-    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.ode.ea/SimplEA.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <jar path="C:/Programme/Apache/Tomcat 6.0/webapps/ode/WEB-INF/lib/simpl-ode-ea.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.ode.ea/simpl-ode-ea.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
     <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
@@ -12,8 +12,6 @@
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
         <javaElement handleIdentifier="=org.simpl.ode.ea/src"/>
-        <file path="/org.simpl.ode.ea/.classpath"/>
-        <file path="/org.simpl.ode.ea/.project"/>
         <javaElement handleIdentifier="=org.simpl.ode.evt/src"/>
     </selectedElements>
 </jardesc>
