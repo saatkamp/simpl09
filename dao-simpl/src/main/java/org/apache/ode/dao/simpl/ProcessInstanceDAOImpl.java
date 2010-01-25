@@ -33,6 +33,8 @@ import org.apache.ode.bpel.dao.XmlDataDAO;
 import org.apache.ode.bpel.evt.ProcessInstanceEvent;
 import org.w3c.dom.Element;
 
+import commonj.sdo.DataObject;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -98,8 +100,15 @@ public class ProcessInstanceDAOImpl extends OpenJPADAO implements ProcessInstanc
 	@ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="INSTANTIATING_CORRELATOR_ID")
 	private CorrelatorDAOImpl _instantiatingCorrelator;
 	
-	public ProcessInstanceDAOImpl() {}
+	DataObject dataObject;
+	
+	ProcessInstanceSDO processInstanceSDO = new ProcessInstanceSDO();
+	
+	public ProcessInstanceDAOImpl() {
+		dataObject = processInstanceSDO.getSDO(_instanceId);
+	}
 	public ProcessInstanceDAOImpl(CorrelatorDAOImpl correlator, ProcessDAOImpl process) {
+		this();
 		_instantiatingCorrelator = correlator;
 		_process = process;
 	}
@@ -273,24 +282,31 @@ public class ProcessInstanceDAOImpl extends OpenJPADAO implements ProcessInstanc
 
 	public void setFault(FaultDAO fault) {
 		_fault = (FaultDAOImpl)fault;
+		dataObject.setString("fault", _fault.toString());
 	}
 
 	public void setFault(QName faultName, String explanation, int faultLineNo,
 			int activityId, Element faultMessage) {
 		_fault = new FaultDAOImpl(faultName,explanation,faultLineNo,activityId,faultMessage);
+		dataObject.setString("fault", _fault.toString());
+
 	}
 
 	public void setLastActiveTime(Date dt) {
 		_lastActive = dt;
+		dataObject.setDate("lastActive", dt);
 	}
 
 	public void setState(short state) {
 		_previousState = _state;
 		_state = state;
+		dataObject.setShort("previousState", _state);
+		dataObject.setShort("state", state);
 	}
 	
 	void removeRoutes(String routeGroupId) {
 		_process.removeRoutes(routeGroupId, this);
+		dataObject.setString("routeGroupId", routeGroupId);
 	}
 
     public BpelDAOConnection getConnection() {
@@ -301,5 +317,6 @@ public class ProcessInstanceDAOImpl extends OpenJPADAO implements ProcessInstanc
     }
     public void setExecutionStateCounter(int stateCounter) {
         _execStateCounter = stateCounter;
+        dataObject.setInt("stateCounter", stateCounter);
     }
 }

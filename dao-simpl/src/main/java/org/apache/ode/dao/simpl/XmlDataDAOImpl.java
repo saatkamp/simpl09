@@ -27,6 +27,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
+import commonj.sdo.DataObject;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -68,10 +70,18 @@ public class XmlDataDAOImpl implements XmlDataDAO {
 	@ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="SCOPE_ID")
 	private ScopeDAOImpl _scope;
 	
-	public XmlDataDAOImpl() {}
+	DataObject dataObject;
+	
+	XmlDataSDO xmlDataSDO = new XmlDataSDO();
+	
+	public XmlDataDAOImpl() {
+		dataObject = xmlDataSDO.getSDO(_id);
+	}
 	public XmlDataDAOImpl(ScopeDAOImpl scope, String name){
+		this();
 		_scope = scope;
 		_name = name;
+		dataObject.setString("name", name);
 	}
 
 	public Node get() {
@@ -126,14 +136,18 @@ public class XmlDataDAOImpl implements XmlDataDAO {
 		if ( val instanceof Element ) {
 			_isSimpleType = false;
 			_data = DOMUtils.domToString(val);
+			dataObject.setString("data", _data);
 		} else if (_node != null) {
 			_isSimpleType = true;
 			_data = _node.getNodeValue();
+			dataObject.setString("data", _data);
+
 		}
 	}
 
 	public void setProperty(String pname, String pvalue) {
         _props.add(new XmlDataProperty(pname, pvalue, this));
+        //TODO schauen wie Properties in String umgewandelt werden
 	}
 
 }

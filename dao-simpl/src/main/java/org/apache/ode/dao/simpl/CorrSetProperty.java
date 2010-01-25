@@ -29,6 +29,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import commonj.sdo.DataObject;
+
 /**
  * @author Matthieu Riou <mriou at apache dot org>
  */
@@ -46,12 +48,20 @@ public class CorrSetProperty {
 
     @ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="CORRSET_ID")
     private CorrelationSetDAOImpl _corrSet;
+    
+    DataObject dataObject;
+    
+    CorrSetPropertySDO corrSetProperty = new CorrSetPropertySDO();
 
     public CorrSetProperty() {
+    	dataObject = corrSetProperty.getSDO(_id);
     }
     public CorrSetProperty(String propertyKey, String propertyValue) {
+    	this();
         this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
+        dataObject.setString("propertyKey", propertyKey);
+        dataObject.setString("propertyValue", propertyValue);
     }
 
     public String getPropertyKey() {
@@ -60,6 +70,8 @@ public class CorrSetProperty {
 
     public void setPropertyKey(String propertyKey) {
         this.propertyKey = propertyKey;
+        dataObject.setString("propertyKey", propertyKey);
+
     }
 
     public String getPropertyValue() {
@@ -68,6 +80,8 @@ public class CorrSetProperty {
 
     public void setPropertyValue(String propertyValue) {
         this.propertyValue = propertyValue;
+        dataObject.setString("propertyValue", propertyValue);
+
     }
 
     public CorrelationSetDAOImpl getCorrSet() {
