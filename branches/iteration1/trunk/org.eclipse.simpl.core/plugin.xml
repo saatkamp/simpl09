@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.eclipse.simpl.core.adminConsoleItem" name="AdminConsoleItem" schema="schema/org.eclipse.simpl.core.adminConsoleItem.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="SIMPL Category"
+            id="org.eclipse.simpl.commands.category">
+      </category>
+      <command
+            name="Admin Console"
+            categoryId="org.eclipse.simpl.commands.category"
+            id="org.eclipse.simpl.commands.adminCCommand">
+      </command>
+      <command
+            categoryId="org.eclipse.simpl.commands.category"
+            id="org.eclipse.simpl.command.settingsCommand"
+            name="Settings">
+      </command>
+      <command
+            categoryId="org.eclipse.simpl.commands.category"
+            id="org.eclipse.simpl.command.helpCommand"
+            name="Help">
+      </command>
+      <command
+            categoryId="org.eclipse.simpl.commands.category"
+            id="org.eclipse.simpl.commands.aboutCommand"
+            name="About">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.simpl.core.handlers.SimplAdminConsoleHandler"
+            commandId="org.eclipse.simpl.commands.adminCCommand">">
+      </handler>
+      <handler
+            class="org.eclipse.simpl.core.handlers.SimplAboutHandler"
+            commandId="org.eclipse.simpl.commands.aboutCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="org.eclipse.simpl.menus.simplMenu"
+               label="SIMPL"
+               mnemonic="M">
+            <command
+                  commandId="org.eclipse.simpl.commands.adminCCommand"
+                  icon="icons/SIMPL-logo-small.png"
+                  id="org.eclipse.simpl.menus.adminCCommand"
+                  mnemonic="C">
+            </command>
+            <command
+                  commandId="org.eclipse.simpl.command.settingsCommand"
+                  id="org.eclipse.simpl.menus.settingsCommand"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="org.eclipse.simpl.command.helpCommand"
+                  id="org.eclipse.simpl.menus.helpCommand"
+                  mnemonic="H">
+            </command>
+            <command
+                  commandId="org.eclipse.simpl.commands.aboutCommand"
+                  id="org.eclipse.simpl.menus.aboutCommand"
+                  mnemonic="A">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

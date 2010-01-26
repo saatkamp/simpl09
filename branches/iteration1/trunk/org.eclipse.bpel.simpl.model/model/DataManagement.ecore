@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model"
+    nsURI="http://www.example.org/simpl" nsPrefix="simpl">
+  <eClassifiers xsi:type="ecore:EClass" name="DataManagementActivity" eSuperTypes="../../org.eclipse.bpel.model/src/model/bpel.ecore#//ExtensionActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to interact with datasources directly out of the process."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dsAddress" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dsType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dsKind" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="subtype"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dsStatement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="statement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to query data on a data source. The queried data will be stored on the data source."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryTarget" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InsertActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to insert data on a data source."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UpdateActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to update data on a data source."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeleteActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to delete data on a data source."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to create container (tables, files, schema, etc.) on data sources."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DropActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to drop containers (tables, files, schema, etc.) on data sources."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to call stored procedure on a database."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RetrieveDataActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to load data into the process space to work with it."/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

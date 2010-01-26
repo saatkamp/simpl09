@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <MainKeyWord value="SELECT" text="SELECT ">
+ 	<KeyWord value="FROM" text="FROM ">
+ 		<KeyWord value="WHERE" text="WHERE ">
+ 		
+ 		</KeyWord>
+	</KeyWord>
+ </MainKeyWord>	
+</root>

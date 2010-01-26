@@ -1,0 +1,486 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wochenbericht
+\end_layout
+
+\begin_layout Author
+Firas Zoabi
+\end_layout
+
+\begin_layout Institute
+Studienprojekt A: SIMPL
+\end_layout
+
+\begin_layout Date
+30.
+ November 2009
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename SIMPL.pdf
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Outline
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout BeginFrame
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Enumerate
+Den Konzept für die Entwicklung der GUI für die zwei Plug-Ins Verfassen:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Properties Fenster der DM-Aktivitäten
+\end_layout
+
+\begin_layout Enumerate
+Die SIMPL Plug-In mit seiner Menu und die Admin Konsole
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Den Konzept für die Erweiterungen der Plug-Ins erstellen.
+\end_layout
+
+\begin_layout Enumerate
+Die Erkenntnisse im Feinentwurf Dokument mit Daniel editieren.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Subsection
+Übersicht
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Übersicht
+\end_layout
+
+\begin_layout Standard
+1.
+ Importieren über CVS die BPEL ProjekteKlassen.
+ 
+\end_layout
+
+\begin_layout Standard
+2.
+ Entwerfen des GUI für DM-Aktivitäten Proporties.
+\end_layout
+
+\begin_layout Standard
+3.
+ Notierung grob der Konzept,wie das vorgehen sein wird.
+ 
+\end_layout
+
+\begin_layout Standard
+4.
+ Besprechung mit M&M bezüglich den Feinentwurf/Konzept und Mit M.Hahn über
+ PropertiesUI der ExtensionPoints von 
+\end_layout
+
+\begin_layout Standard
+Aktivitäten.
+ 
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Benötigte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Investierte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout Enumerate
+3.5 stunden 23.Nov
+\end_layout
+
+\begin_layout Enumerate
+4 stunden 23.Nov
+\end_layout
+
+\begin_layout Enumerate
+2 stunden 26.Nov
+\end_layout
+
+\begin_layout Enumerate
+2.75 stunden 26.Nov
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout Itemize
+Extenstion Möglichkeiten für das Properties fenster der Aktivitäten wird
+ mit XML vordefeniertes datei.
+ (XML-BaumStruktur)
+\end_layout
+
+\begin_layout Itemize
+Die Erweiterbarkeit der Admin Console bzw.
+ Erweiterung der Tree-Menu und eines neues Fenster Inhalt, wird über das
+ Parsen von XML-Dateien.
+\end_layout
+
+\begin_layout Itemize
+Die Erweiterung der Simpl Menu-punkte geschiehen über extensions-points.
+ (siehe Abbildung unten)
+\end_layout
+
+\begin_layout Itemize
+Noch offen ist der Extinsion Points der Admin Konsole ????
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Neues für SIMPL
+\end_layout
+
+\begin_layout BeginFrame
+Neues für SIMPL
+\end_layout
+
+\begin_layout Standard
+\align center
+Diagramme, Screenshots, usw.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename wochenberichte/extensionPoints_SimplMenu.jpg
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Extension Points für SIMPL Menu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Erweiterbarkeit der SIMPL Plug-In Menu funktioniert dadurch das der
+ Anwender seiner neue Klasse in ExtensionsClasses Verzeichnis rein kopiert
+ und dieser in der plugin.xml datei der SIMPL Plug-In eine Neue Menu Punkt
+ erstellt und dieser auf der seiner neuer Klasse referenziert.
+ (siehe Abbildung 2)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename wochenberichte/ErweiterungDerSimplMenu.jpg
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Neue Extension Klasse hinzufügen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename wochenberichte/DMAktvititaetenProjekt_Struck.jpg
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+DM-Aktivitäten Properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Rahmen der BPEL Designer Plug-In soll in der Eclipse plugins verzeichnis
+ Beispielweisse der DM -Erweiterungen XML datei und dieses XML datei wird
+ geparsst und die Erweiterungen in der Propertie fenstern beim Start der
+ Plug-In anbringen.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout BeginFrame
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout Itemize
+BPEL 2.0 Spez.: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://docs.oasis-open.org/ws-caf/ws-context/v1.0/OS/wsctx.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+SWT Tutorials: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.java2s.com/Tutorial/Java/0280__SWT/Catalog0280__SWT.htm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+SIMPL - Spezifikation
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout BeginFrame
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout Itemize
+Die Klassen erzeugen für SImpl- GUI und der DM aktivitäten.
+\end_layout
+
+\begin_layout Itemize
+eines Stabiles GUI ,da die jetzige grob für die Grobentwurf entwickelt wurde.
+\end_layout
+
+\begin_layout Section
+Zu klärende Fragen
+\end_layout
+
+\begin_layout BeginFrame
+Zu klärende Fragen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fragen die wärend der Woche aufgekommen sind und klärung/erklärung benötigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Es im Team deskutiert werden, wie es möglich das Simpl- GUI sowie das GUI
+ für die DM-Aktivitäten zu erweitern ? (PlugIn ,XML ,JAR ...).
+ EIn Vorschlag von mir wäre das entwicklung eines Tooles der den GUIs Erweitert
+ .
+ !!!
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

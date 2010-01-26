@@ -1,0 +1,621 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\def\doctitel{2.Kundengespräch} 
+\def\docvers{1.0}
+\def\docautor{Wolfgang Hüttig, Daniel Brüderle, Michael Schneidt, René Rehn, Firas Zoabi, Tu Xi, Michael Hahn}
+\def\docdate{10. Juli 2009}
+\end_preamble
+\use_default_options false
+\language ngerman
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Deckblatt.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für alle anderen Seiten
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+fancy
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\headrulewidth}{0mm}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+SIMPL © 2009 $IMPL
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+/ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "LastPage"
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Ab hier beginnt das Dokument
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Vertrieb
+\end_layout
+
+\begin_layout Itemize
+Folgefrage: Für welche Datenquellen soll der Zugriff in der Demo gezeigt
+ werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: IBM DB2, OpenSourceDB's: eine RDB und eine XMLDB, evtl.
+ TinyDB (falls öffentlich zugänglich).
+ Ebenso Vorstellung der Monitoring-DB-Anbindung mit einer der oben genannten.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Anbindung versch.
+ Datenquellen
+\end_layout
+
+\begin_layout Itemize
+Folgefrage: Sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines
+ Prozess möglich sein und wie werden diese dann angegeben und die Queries
+ referenziert?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Ja, soll möglich sein.
+ Jede Aktivität hat seine eigene Datenquellen-Referenz.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Folgefrage: Welche Formate werden beim export in lokale Dateien benötigt
+ bzw.
+ sind sinnvoll?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: XML als Standard (siehe IBM Ansatz: RDB-Tabelle <->XML).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sollen auch Datenbanken aus einem Prozess heraus erstellt werden können?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Nein, Datenbanken existieren bereits.
+ Schema-Definition soll möglich sein und das Erstellen, Ändern und Löschen
+ von Tabellen innerhalb der Schemas.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Wie wird das Datenbankmanagement realisiert und von wem (Wer setzt Zugriffsrecht
+e auf der DB)?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Zugriffsrechte werden in DB gesetzt und sind bereits vorhanden.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Authentifizierung und Autorisierung der Zugriffe
+\end_layout
+
+\begin_layout Itemize
+Wie soll die Angabe von Authentifizierungs- und Authorisierungseinstellungen
+ über den Eclipse BPEL Designer realisisert werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Angaben sollen extra abgefragt und als Nachricht an die DB geschickt
+ werden.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Monitoring der Prozessausführung
+\end_layout
+
+\begin_layout Itemize
+Muss das vorhandene Monitoring von BPEL und Apache ODE erweitert werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Erweiterung um das Monitoring unserer Funktionalitäten und die Möglichkeit
+ eine variable DB als Monitoring-DB anzugeben.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Sonstige Fragen
+\end_layout
+
+\begin_layout Itemize
+Folgefrage: Welche Schritte werden bei der Prozessmodellierung ausgeführt,
+ die die Funktionalität des Rahmenwerks nutzen, z.B.
+ 1.Einfügen einer SQL-Activity, 2.Datenquelle angeben, 3.Query eingeben, 4.Sicherhei
+tsaspekte einstellen, ...?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Test von Queries als Feature (falls zeitlich machbar)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Folgefrage: Wird das Rahmenwerk direkt in Eclipse als Plug-In ausgeführt
+ oder soll das Rahmenwerk unabhängig von Eclipse sein und zusätzlich ein
+ Eclipse Plug-In erstellt werden?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Eclipse Plug-In.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Auf welcher Infrastruktur läuft das System später?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: keine bestimmte, ODE läuft überall lokal, DB's verteilt.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Ist-Analyse
+\end_layout
+
+\begin_layout Itemize
+Wie werden im Moment Workflows und BPEL genutzt?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: kein BPEL Einsatz in Scientific Workflows, Realisierung über Web-Services.
+ Kepler, ...
+ definieren eigene Sprachen für Scientific Workflows.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Nichtfunktionale Anforderungen
+\end_layout
+
+\begin_layout Itemize
+Wie hoch muss die Skalierbarkeit des Systems sein?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: keine bestimmte Infrastruktur => von schlechten PC's bis zu Supercomputern
+ alles möglich
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Änderungsgeschichte
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Version 0.1
+\series default
+, 06.
+ Juli 2009: Erstellung des Dokuments.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Version 0.2
+\series default
+, 08.
+ Juli 2009: Erweiterung und Überarbeitung des Fragenkatalogs.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Version 1.0
+\series default
+, 10.
+ Juli 2009: Ergebnisse des 2.Kundengesprächs wurden eingetragen.
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,393 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wochenbericht
+\end_layout
+
+\begin_layout Author
+René Rehn
+\end_layout
+
+\begin_layout Institute
+Studienprojekt A: SIMPL
+\end_layout
+
+\begin_layout Date
+23.
+ November 2009
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename SIMPL.pdf
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Outline
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout BeginFrame
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Enumerate
+Erstellung einer Zusammenfassung über ODE (für das Team)
+\end_layout
+
+\begin_layout Enumerate
+Evaluieren und Erstellen von Extension Activities
+\end_layout
+
+\begin_layout Enumerate
+Erstellen von UML-Diagrammen für verschiedene ODE Sachen
+\end_layout
+
+\begin_layout Enumerate
+ODE Event-System erarbeiten
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Subsection
+Übersicht
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Übersicht
+\end_layout
+
+\begin_layout Standard
+1.
+ Evaluieren und Erstellen von Extension Activities (nicht fertig)
+\end_layout
+
+\begin_layout Standard
+2.
+ ODE Event System erarbeiten (nicht fertig)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Benötigte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Investierte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout Enumerate
+etwa 5,5h
+\end_layout
+
+\begin_layout Enumerate
+etwa 1,5h
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout Itemize
+Anscheinend ist es möglich neue Event Typen zu erstellen, allerdings ist
+ ein Praxistest notwendig um dies zu testen
+\end_layout
+
+\begin_layout Itemize
+neue Event Klassen werden alls 'abstracte' Klassen, als Ableitung von BPEL
+ Event erstellt und bieten Grundfunktionalitäten für die einzelnen Events
+ an
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Neues für SIMPL
+\end_layout
+
+\begin_layout BeginFrame
+Neues für SIMPL
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename EventSystem.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Event System Klassenhierarchie
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Klassen ConnectionEvent und DM werden abstrakt implementiert und bieten
+ Grundfunktionalitäten für die jeweiligen einzelnen Events an.
+\end_layout
+
+\begin_layout Standard
+Der Typ der neuen Events ist 
+\begin_inset Quotes eld
+\end_inset
+
+connection
+\begin_inset Quotes erd
+\end_inset
+
+ oder 
+\begin_inset Quotes eld
+\end_inset
+
+datamanagement
+\begin_inset Quotes erd
+\end_inset
+
+ und wird der Enum Liste der Klasse BpelEvent hinzugefügt.
+ Ob dies funktioniert muss in dieser Woche noch getestet werden, sollte
+ dies nicht möglich sein, werden die Events einfach von der Klasse ActivityEvent
+ abgeleitet (dies ist ohne Probleme möglich).
+\end_layout
+
+\begin_layout Standard
+Die hier gezeigte Implementierung bietet den Vorteil, dass wir die Granularität
+ neben den derzeitigen 5 Typen auf die neuen 2 Typen erweitern könnten und
+ dann nur DM oder Connection Events darstellen könnten.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout BeginFrame
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout Itemize
+ODE Homepage und Javadoc 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ode.apache.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ODE Quellcode
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout BeginFrame
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout Itemize
+eine Extension Activity erstellen und zum Laufen bekommen (mit Hilfe des
+ Teams, da ich hier allein nicht weiterkomme)
+\end_layout
+
+\begin_layout Itemize
+ODE Beta 2 Quellcode in Eclipse einbinden und neue Events erstellen und
+ zu testen
+\end_layout
+
+\begin_layout Itemize
+Neue Events in Extension Activity werfen
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Zu klärende Fragen
+\end_layout
+
+\begin_layout BeginFrame
+Zu klärende Fragen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fragen die wärend der Woche aufgekommen sind und klärung/erklärung benötigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Welche Methoden, bzw.
+ Attribute sollen unsere eigenen Events haben
+\end_layout
+
+\begin_layout Itemize
+Wie funktionieren Extension Activities, welche Klassen sind notwendig um
+ diese auszuführen und zu testen
+\end_layout
+
+\begin_layout Itemize
+Reicht es aus einen extension-Tag im BPEL Prozess hinzuzufügen oder muss
+ die Activität tatsächlich vom Prozess 
+\begin_inset Quotes eld
+\end_inset
+
+genutzt
+\begin_inset Quotes erd
+\end_inset
+
+ werden
+\end_layout
+
+\begin_layout Itemize
+Welche Attribute und Gestalt haben unsere Extension Activities
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

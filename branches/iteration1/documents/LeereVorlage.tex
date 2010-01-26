@@ -1,0 +1,61 @@
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+\usepackage{graphicx}
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Dokumententitel}
+\def\docvers{1.0}
+\def\docautor{Max Mustermann}
+\def\docdate{12. Juli 2009}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\input{Deckblatt}
+
+\input{DokStatus}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0mm}
+\lhead{{\small }}
+\chead{{\small }}
+\rhead{{\small }}
+\lfoot{{\small SIMPL © 2009 \$IMPL}}
+\cfoot{{\small }}
+\rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents
+
+\newpage{}
+
+\section{Änderungsgeschichte}
+\begin{itemize}
+\item \textbf{Version 0.1}, 22. Juni 2009: Erstellung des Dokuments.
+\end{itemize}
+
+\end{document}

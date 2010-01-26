@@ -1,0 +1,3239 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Feinentwurf}
+\def\docvers{1.0}
+\def\docautor{}
+\def\docdate{15. Januar 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+\end_preamble
+\use_default_options false
+\language ngerman
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Deckblatt.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für alle anderen Seiten
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+fancy
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\headrulewidth}{0mm}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+SIMPL © 2009 $IMPL
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+/ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "LastPage"
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Ab hier beginnt das Dokument
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Änderungsgeschichte
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="4">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Datum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Autor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Änderungen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.11.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+zoabifs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung des Dokuments
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+04.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Überarbeitung der Struktur, Kapitel 1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+09.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.02.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung Kapitel 5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rehnre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.1, 3.2, 3.3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung Kapitel 4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diagramme Kapitel 4 und 5
+\end_layout
+
+\begin_layout Plain Layout
+Beschreibung Kapitel 2.2.1, 2.2.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 4 überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi, hahnml, huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abschließende Korrekturen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Einleitung
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel erklärt den Zweck des Dokuments, den Zusammenhang zu anderen
+ Dokumenten und gibt dem Leser einen Überblick über den Aufbau des Dokuments.
+\end_layout
+
+\begin_layout Subsection
+Zweck dieses Dokuments
+\end_layout
+
+\begin_layout Standard
+Der Feinentwurf beschreibt Details der Implementierung der Komponenten,
+ die im Grobentwurf 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ in Kapitel 3 vorgestellt wurden.
+ Die Komponenten werden ausführlich beschrieben und ihre Funktionalität
+ durch statische und dynamische UML-Diagramme visualisiert.
+ Der Feinentwurf bezieht sich im Gegensatz zum Grobentwurf aktuell nur auf
+ die erste Iteration und wird mit der zweiten Iteration vervollständigt.
+ Grobentwurf und Feinentwurf bilden zusammen den Gesamtentwurf des SIMPL
+ Rahmenwerks.
+\end_layout
+
+\begin_layout Subsection
+Gliederung
+\end_layout
+
+\begin_layout Standard
+Der Feinentwurf gliedert sich in die folgenden Kapitel.
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:SIMPLCore"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+SIMPL Core
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Implementierung des SIMPL Cores und seinen Web Services.
+ (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.1)
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Apache-ODE"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Apache ODE
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Implementierung der Datamanagement-Aktivitäten (DM-Aktivitäten)
+ und das externe Auditing.
+ (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.2)
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Eclipse"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Eclipse Plug-Ins
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Implementierung der Eclipse Plug-Ins, die für das SIMPL
+ Rahmenwerk realisiert werden.
+ (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.3)
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Kommunikation"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Kommunikation
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Kommunikation der Komponenten im SIMPL Rahmenwerk auf Funktionse
+bene.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:SIMPLCore"
+
+\end_inset
+
+SIMPL Core
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core-Klassendiagramm"
+
+\end_inset
+
+ zeigt den Aufbau des SIMPL Cores mit Paketstruktur, Klassen und Interfaces,
+ sowie deren Zusammenhänge über Verbindungspfeile, die in den folgenden
+ Abschnitten beschrieben werden.
+ Als Services werden dabei allgemein die Dienste des SIMPL Cores bezeichnet.
+ Manche dieser Dienste werden nach Außen über Web Services verfügbar gemacht
+ und werden, wenn diese explizit gemeint sind, auch als solche bezeichnet
+ wie z.B.
+ Administration Web Service.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPLCore_Class_Diagram.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Core-Klassendiagramm"
+
+\end_inset
+
+SIMPL Core Klassendiagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Paketstruktur
+\end_layout
+
+\begin_layout Standard
+Der SIMPL Core besitzt folgende Paketstruktur, die sich in einen Kernbereich
+ (org.simpl.core), sowie Bereiche für die Dienste (Services) und Web Services
+ aufteilt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.core
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich zentrale Klassen des SIMPL Cores, die auf die Dienste
+ des SIMPL Cores zurückgreifen, wie z.B.
+ die SIMPLCore-Klasse, die in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPLCore"
+
+\end_inset
+
+ näher beschrieben wird.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.administration
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Administration Service
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.3.1).
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.storage
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Storage Service (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.3.5).
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.datasource
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Datasource Service
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.3.5).
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.datasource.plugins
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die Plug-Ins für den Datasource Service, die für die
+ verschiedenen Datenquellentypen entwickelt werden.
+ Falls sich die einzelnen Plug-Ins auf mehrere Klassen verteilen, können
+ diese zusätzlich auf eigene Unterpakete verteilt werden.
+ Das Plug-In-System wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+ näher beschrieben.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.webservices
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die Web Services des SIMPL Core, die den Zugriff von
+ Außen auf den SIMPL Core ermöglichen.
+ Alle Klassen werden mit JAX-WS-Annotationen versehen und können als Webservices
+ in Apache ODE deployt werden.
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core Services
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden die Dienste des SIMPL Cores und ihre Funktionsweise
+ beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+Administration Service
+\end_layout
+
+\begin_layout Standard
+Der Administration Service ist für die Verwaltung der Einstellungen der
+ Admin-Konsole des SIMPL Core Eclipse Plug-Ins zuständig.
+ Die Einstellungen der Admin-Konsole werden dabei über das SIMPL Core Client
+ Plug-In an den Administration Service übermittelt oder angefordert.
+ Die auf diese Weise zentral im SIMPL Core hinterlegten Einstellungen können
+ dann bei Bedarf direkt von anderen SIMPL Core Diensten, die diese Informationen
+ benötigen, ausgelesen werden.
+ Zur persistenten Speicherung der Einstellungen und weiterer Daten wird
+ eine eigene eingebettete Apache Derby (Embedded Derby) Datenbank verwendet,
+ die vom gesamten SIMPL Core genutzt wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/AdminServiceSequence.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequenzdiagramm-des-AdministrationServices"
+
+\end_inset
+
+Sequenzdiagramm des Administration Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequenzdiagramm-des-AdministrationServices"
+
+\end_inset
+
+ zeigt die Verwendung und die Funktionalität des Administration Service.
+ Mit der loadSettings()-Methode können Einstellungen aus der Datenbank geladen
+ werden, dafür wird intern eine einfache Datenbankabfrage genutzt.
+ Die Einstellungen werden dabei als HashMap zurückgeliefert und auch so
+ beim Speichern übergeben, damit sowohl die Bezeichnung der Einstellung
+ wie auch ihr Wert zu jeder Zeit verfügbar sind.
+ Zur Identifizierung verschiedener Einstellungen, wie z.B.
+ Standard-Einstellungen und zuletzt gespeicherten Einstellungen, besitzt
+ jede Einstellung eine eindeutige Id.
+ So kann später die Admin-Konsole um das Laden und Speichern von benutzerspezifi
+schen Preset-Einstellungen ergänzt werden.
+\end_layout
+
+\begin_layout Standard
+Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole.
+ Da hier immer Ober- und Unterpunkte zusammengehören, wurde auf der Datenbank
+ diese Beziehungen durch die Strukturierung mit Schemata und Tabellen umgesetzt.
+ So gibt es für jeden Oberpunkt, wie z.B.
+ 
+\emph on
+Auditing
+\emph default
+ ein gleichnamiges Schema und für jeden Unterpunkt eines Oberpunkts, wie
+ z.B.
+ 
+\emph on
+General
+\emph default
+ eine gleichnamige Tabelle im Schema des Oberpunkts.
+ Daraus ergibt sich der genaue Pfad, einer in der Datenbank gespeicherten
+ Einstellung, aus der Auswahl in der Admin-Konsole.
+ Mit der saveSettings()-Methode können Einstellungen in einer entsprechenden
+ Tabelle eines Schemas gespeichert werden.
+ Dazu wird zuerst überprüft, ob das zu den Einstellungen gehörige Schema
+ bereits existiert (createSchemaIfItDoesntExistYet()) oder noch erzeugt
+ werden muss und anschließend, ob die Tabelle bereits existiert (createTableIfIt
+DoesntExistYet()) oder noch erzeugt werden muss.
+ Die Tabelle wird dabei direkt aus den übergebenen Einstellungen automatisch
+ erzeugt, indem die Einstellungsnamen als Spaltennamen verwendet werden.
+ Wenn nun Schema und Tabelle vorhanden sind wird überprüft, ob die zu speichernd
+e Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss,
+ oder ob die Einstellung neu angelegt, also eine neue Zeile eingefügt werden
+ muss.
+\end_layout
+
+\begin_layout Subsubsection
+Storage Service
+\end_layout
+
+\begin_layout Standard
+Der Storage Service ist für die Verwaltung von Daten aller SIMPL Core Services
+ zuständig.
+ Dafür nutzt er ebenfalls die eingebettete Apache Derby Datenbank.
+ Seine Architektur und Funktionalität ist der des Administration Services
+ sehr ähnlich, mit dem Unterschied, dass die Struktur der zu speichernden
+ Daten und ihre Quelle sich zur Laufzeit ständig ändern können.
+ Auch der Storage Service nutzt das Prinzip die Daten nach ihrer Herkunft
+ mit Schemata und Tabellen zu strukturieren.
+ Da hier aber keine natürliche Struktur wie beim Administration Service
+ vorliegt, wird eine entsprechende Gliederung durch die Zugehörigkeit der
+ Services erzeugt.
+ So werden alle Daten von Services, die etwas mit Sicherheit zu tun haben
+ unter dem Schema 
+\emph on
+Security
+\emph default
+ in entsprechende Tabellen gespeichert, wobei die Tabellennamen aus den
+ Klassennamen der Services erzeugt werden.
+ Die Zugehörigkeit eines Services wird dabei in seiner Implementierung als
+ Konstante hinterlegt und kann so einfach zur Laufzeit genutzt werden.
+ Daraus ergibt sich wieder ein eindeutiger Pfad zu den in der Datenbank
+ gespeicherten Daten eines jeden SIMPL Core Services.
+ Die Daten werden auch wie im Administration Service wieder als HashMaps
+ verarbeitet, um sowohl die Bezeichnung wie auch den Wert immer verfügbar
+ zu haben.
+ Im Storage Service wird allerdings immer der erste in der HashMap hinterlegte
+ Wert als Id der zugehörigen Datenbanktabelle interpretiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/StorageServiceSequence.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequenzdiagramm-des-StorageServices"
+
+\end_inset
+
+Sequenzdiagramm des Storage Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequenzdiagramm-des-StorageServices"
+
+\end_inset
+
+ zeigt die Verwendung und die Funktionalität des Storage Services.
+ Mit der load()-Methode können Daten wieder aus der Datenbank geladen werden
+ und die save()-Methode speichert alle Daten eines Services nach der selben
+ Vorgehensweise wie die saveSettings()-Methode des Administration Services.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datasource-Service"
+
+\end_inset
+
+Datasource Service
+\end_layout
+
+\begin_layout Standard
+Der Datasource Service stellt die Verbindung zu den verschiedenen Datenquellen
+ her.
+ Dazu gibt es gibt ihn in verschiedenen Ausprägungen, die zu den verschiedenen
+ Typen von Datenquellen über ein Plug-In System bereitgestellt werden.
+ Die Instanz eines Datasource Service kann nur über den Datasource Service
+ Provider (DatasourceServiceProvider) angefordert werden, der für die Verwaltung
+ der Plug-Ins zuständig ist.
+ Eine genaue Beschreibung des Plug-In Systems folgt in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+.
+ Folgende privaten (private) und öffentlichen (public) Funktionen werden
+ von einem Datasource Service realisiert:
+\end_layout
+
+\begin_layout Paragraph
+private openConnection()
+\end_layout
+
+\begin_layout Standard
+Öffnet eine Verbindung zu einer Datenquelle und liefert ein Verbindungsobjekt
+ über das mit der Datenquelle kommuniziert werden kann.
+ 
+\end_layout
+
+\begin_layout Paragraph
+private closeConnection()
+\end_layout
+
+\begin_layout Standard
+Schließt die Verbindung zu einer Datenquelle und bestätigt den Verbindungsabbau
+ mit einem Rückgabewert.
+\end_layout
+
+\begin_layout Paragraph
+public queryData()
+\end_layout
+
+\begin_layout Standard
+Ermöglicht die Anforderung von Daten von einer Datenquelle durch ein Statement
+ der entsprechenden Anfragesprache wie z.B.
+ ein SELECT-Statement in der Anfragesprache SQL.
+ Die Rückgabe der Daten erfolgt als SDO.
+\end_layout
+
+\begin_layout Paragraph
+public defineData()
+\end_layout
+
+\begin_layout Standard
+Wird verwendet um Datenstrukturen über ein Statement zu definieren wie z.B.
+ das Erstellen von Tabellen in einer Datenbank und liefert eine Bestätigung
+ als Rückgabewert.
+\end_layout
+
+\begin_layout Paragraph
+public manipulateData()
+\end_layout
+
+\begin_layout Standard
+Wird verwendet um bestehende Daten zu manipulieren bzw.
+ zu aktualisieren.
+ Die Funktion erhält Daten in Form eines SDO und ein Statement mit dem die
+ Verwendung der Daten beschrieben wird.
+ Der Erfolg der Operation wird mit einem Rückgabewert bestätigt.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPLCore"
+
+\end_inset
+
+Die SIMPLCore Klasse
+\end_layout
+
+\begin_layout Standard
+Die SIMPLCore-Klasse bildet den zentralen Zugriffspunkt auf alle Dienste
+ des SIMPL Cores für den Zugriff auf Klassenebene.
+ Damit die Instanzen der Dienste nur einmal existieren und nicht bei jedem
+ Zugriff erneut erstellt werden, ist die Klasse als Singleton (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.3) ausgelegt.
+ Diese Klasse wird von den Apache ODE Extension Activities (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-DM-Extension"
+
+\end_inset
+
+) benutzt um DM-Aktivitäten auszuführen, sowie innerhalb des SIMPL Cores
+ wenn Dienste sich gegenseitig verwenden.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+Datasource Plug-Ins
+\end_layout
+
+\begin_layout Standard
+Die Unterstützung verschiedener Typen von Datenquellen wird durch Datasource
+ Plug-Ins realisiert um eine Erweiterungsmöglichkeit zu garantieren.
+ Dies wird durch die Bereitstellung einer abstrakten Klasse erreicht, von
+ der sich die Plug-Ins ableiten lassen.
+ Mit der Reflection API von Java ist es möglich, die Plug-Ins zur Laufzeit
+ zu erkennen und zu verwenden, ohne dass bestehender Code angepasst werden
+ muss.
+ Die Plug-Ins werden als JAR-Dateien im Classpath abgelegt.
+\end_layout
+
+\begin_layout Paragraph*
+DatasourceService (interface)
+\end_layout
+
+\begin_layout Standard
+Das DatasourceService-Interface schreibt alle Funktionen vor, die von den
+ DatasourceServices (Plug-Ins) implementiert werden müssen.
+\end_layout
+
+\begin_layout Paragraph*
+DatasourceServicePlugin (abstract class)
+\end_layout
+
+\begin_layout Standard
+Bei der DatasourceServicePlugin-Klasse handelt es sich um eine abstrakte
+ Klasse, die an das DatasourceService-Interface gebunden ist und damit das
+ Grundgerüst für einen Datasource Service bildet.
+ Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen das
+ DatasourceService-Interface zu implementieren.
+\end_layout
+
+\begin_layout Paragraph*
+DatasourceServiceProvider
+\end_layout
+
+\begin_layout Standard
+Über den DatasourceServiceProvider kann mit der Methode getInstance() die
+ Instanz eines DatasourceService angefordert werden.
+ Dies geschieht über eine eindeutige Typkennzeichnung (z.B.
+ RDB, XML, ...), mit der die entsprechende Instanz der Klasse über die Class.forName
+-Methode der Java Reflection API erzeugt und ausgeliefert wird.
+\end_layout
+
+\begin_layout Subsection
+Web Services
+\end_layout
+
+\begin_layout Standard
+Die Web Services werden mit den JAX-WS annotierten Klassen wie folgt bereitgeste
+llt.
+ Zunächst wird mit Hilfe des Befehls wsgen.exe (..
+\backslash
+Java
+\backslash
+jdk1.6.0_14
+\backslash
+bin
+\backslash
+wsgen.exe), eine WSDL-Datei zu einer Klasse erzeugt.
+ Die WSDL-Datei wird anschließend zusammen mit der kompilierten Klasse als
+ JAR-Datei in Apache ODE hinterlegt (..
+\backslash
+Tomcat 6.0
+\backslash
+webapps
+\backslash
+ode
+\backslash
+WEB-INF
+\backslash
+servicejars) und wird damit beim Start von Apache Tomcat von Apache ODE
+ als Web Service bereitgestellt.
+\end_layout
+
+\begin_layout Standard
+Komplexe Objekte wie z.B.
+ HashMaps, die intern von den SIMPL Core Diensten zur Ausführung benötigt
+ werden, werden als String serialisiert an die Web Services übergeben und
+ in der Form auch als Rückgabeparameter empfangen.
+ Bei der Deserialisierung, werden die Objekte wiederhergestellt und können
+ als solche verwendet werden.
+ Eine Ausnahme bilden die SDO Objekte, die bereits über eine XML Darstellung
+ verfügen und in dieser direkt übermittelt werden können.
+\end_layout
+
+\begin_layout Subsubsection
+Datasource Web Service (WSDatasource)
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subparagraph
+public DataObject queryData(String dsAddress, String statement, String dsType)
+\end_layout
+
+\begin_layout Subparagraph
+public boolean defineData(String dsAddress, String statement, String dsType)
+\end_layout
+
+\begin_layout Subparagraph
+public boolean manipulateData(String dsAddress, String statement, DataObject
+ data, String dsType)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceTypes()
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceSubTypes(String datasourceType)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceLanguages(String datasourceSubType)
+\end_layout
+
+\begin_layout Subparagraph
+public List<String> getDatasourceMetaData(String dsAddress, String dsType)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Datasource Web Service bietet eine Schnittstelle zu allen Ausprägungen
+ des Datasource Service im SIMPL Core.
+ Die Funktionen des Datasource Web Service, entsprechen den öffentlichen
+ Funktionen der Datasource Services, erhalten aber als zusätzlichen Parameter
+ die eindeutige Typkennzeichung (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Plug-Ins"
+
+\end_inset
+
+ DatasourceServiceProvider) der angeforderten Datenquelle, über die bei
+ einem Zugriff intern der entsprechende Datasource Service angesprochen
+ werden kann.
+ Zusätzlich besitzt der Datasource Web Service eine Funktion um Metadaten
+ von einer Datenquelle anzufordern, die beispielsweise von Eclipse zur Auswahl
+ in der GUI benötigt werden, wie z.B.
+ die existierenden Tabellen in einer Datenbank.
+\end_layout
+
+\begin_layout Subsubsection
+Administration Web Service (WSAdministration)
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subparagraph
+public boolean saveSettings(String schema, String table, String settingName,
+ LinkedHashMap<String, String> settings)
+\end_layout
+
+\begin_layout Subparagraph
+public LinkedHashMap<String, String> loadSettings(String schema, String
+ table, String settingName)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Administration Web Service ist die direkte Schnittstelle des Administration
+ Service nach Außen und besitzt daher die gleichen Funktionen wie dieser,
+ mit dem Unterschied, dass komplexe Parameter, aus oben genannten Gründen,
+ als String-Parameter gehandhabt werden.
+\end_layout
+
+\begin_layout Subsubsection
+Storage Web Service (WSStorage)
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subparagraph
+public boolean save(String serviceNS, String serviceName, List<LinkedHashMap<Str
+ing, String>> data)
+\end_layout
+
+\begin_layout Subparagraph
+public List<LinkedHashMap<String, String>> load(String serviceNS, String
+ serviceName)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Storage Web Service bietet anderen Diensten von Außen die Möglichkeit
+ Einstellungen zu speichern und zu laden.
+ Für den Storage Web Service gilt das gleich wie für den Administration
+ Service, nur dass dieser die direkte Schnittstelle zum Storage Service
+ darstellt.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Apache-ODE"
+
+\end_inset
+
+Apache ODE
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Verweise auf den Grobentwurf fehlen noch.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird auf die Erweiterungen die an Apache ODE vorgenommen
+ werden eingegangen.
+ Dies beinhaltet die SIMPL DM Extension Activities, das SIMPL Event System,
+ sowie das SIMPL DAO.
+ Es wird auf die verschiedenen Funktionalitäten als auch auf deren Implementieru
+ng eingegangen.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-DM-Extension"
+
+\end_inset
+
+SIMPL DM Extension Activities
+\end_layout
+
+\begin_layout Standard
+Die SIMPL DM Extension Activities (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-DM-Extension"
+
+\end_inset
+
+) haben als Hauptklasse die Klasse SIMPLActivity, welche verschiedene Funktional
+itäten für alle weiteren Extension Activities anbietet.
+ Die Extension Activities nutzen zur Ausführung der verschiedenen Data-Managemen
+t-Operationen den Datasource Service des SIMPL Cores.
+ Die Implementierung der Extension Activities wird folgendermaßen umgesetzt:
+ 
+\end_layout
+
+\begin_layout Standard
+Zunächst muss eine neue Aktivität von der Klasse „AbstractSyncExtensionOperation
+“ abgeleitet werden und die dadurch vererbten Methoden müssen implementiert
+ werden.
+ Die Methode „runsync“ ist hierbei für die eigentliche Ausführung der neuen
+ Aktivität verantwortlich.
+ Dafür ist die Nutzung der beiden Parameter „context“ und „element“ notwendig.
+ Mit 
+\begin_inset Quotes eld
+\end_inset
+
+context
+\begin_inset Quotes erd
+\end_inset
+
+ hat man die Möglichkeit auf BPEL-Variablen und weitere Konstrukte die im
+ Prozess vorhanden sind zuzugreifen.
+ Der Inhalt des BPEL-Prozess-Dokuments wird in Nodes geparst um ein objektbasier
+tes Modell des BPEL Prozesses zu erzeugen.
+ Mit „element“ ist es möglich auf die verschiedenen Eigenschaften dieser
+ Nodes zuzugreifen und mit ihnen zu arbeiten.
+ 
+\end_layout
+
+\begin_layout Standard
+Weiterhin ist es notwendig ein eigenes ExtensionBundle zu implementieren.
+ Das ExtensionBundle ist notwendig, damit ODE weiß aus welchen Extension
+ Activities die Erweiterung besteht und um sie zur Laufzeit ausgeführen
+ zu können.
+ Die Implementierung wird erreicht durch das Ableiten einer neuen Klassen
+ von „AbstractExtensionBundle“.
+ In dieser Klasse müssen nun in der Methode „registerExtensionActivity“
+ alle Klassen die für die Extension Activity von Bedeutung sind mit Hilfe
+ von „registerExtensionOperation“ bei ODE registriert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL-EA.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-DM-Extension"
+
+\end_inset
+
+SIMPL DM Extension Activities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+SIMPL Event System
+\end_layout
+
+\begin_layout Standard
+Für die SIMPL Extension Activities wird eine Reihe von neuen Events eingeführt.
+ Die Klassenhierarchie der Events ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Event-System"
+
+\end_inset
+
+ zu sehen.
+ Die neuen Events unterteilen sich in DMEvents und ConnectionEvents, welche
+ beide als Hauptklasse die Klasse SIMPLEvent haben.
+ SIMPLEvent ist wiederum von Scope Event abgeleitet.
+ DMEvents sind dabei für alle Ereignisse die während der Ausführung einer
+ DM-Aktivität zuständig, während ConnectionEvents Rückmeldung über den Status
+ der Verbindung geben.
+ Die neuen Events werden dadurch als Scope Events in die bestehende Event
+ Hierarchie von ODE eingegliedert.
+ Dies erlaubt es uns diese direkt innerhalb der ExtensionAcitvities zu nutzen
+ und aufzurufen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL-Events.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Event-System"
+
+\end_inset
+
+SIMPL Event System
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ausführung einer SIMPL DM Extension Activity
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ausführung-einer-SIMPL"
+
+\end_inset
+
+ wird die Ausführung einer Query-Activity, mit den während der Ausführung
+ auftretenden Events, aufgezeigt.
+ Hierbei ist zu erwähnen, dass die Query-Activity folgendermaßen durchgeführt
+ wird:
+\end_layout
+
+\begin_layout Enumerate
+Mit Hilfe der queryData-Methode werden die Daten aus der aktuellen Datenquelle
+ gelesen und als SDO (DataObject) zurückgegeben
+\end_layout
+
+\begin_layout Enumerate
+Mit Hilfe der defineData-Methode wird eine neue Tabelle in der aktuellen
+ Datenbank erzeugt
+\end_layout
+
+\begin_layout Enumerate
+Mit Hilfe der manipulateData-Methode wird das unter 1.
+ erzeugte SDO (DataObject) in der in 2.
+ erzeugten Tabelle abgespeichert
+\end_layout
+
+\begin_layout Standard
+Die Events 
+\begin_inset Quotes eld
+\end_inset
+
+DMStarted
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+DMEnd
+\begin_inset Quotes erd
+\end_inset
+
+ werden zu Beginn bzw.
+ am Ende der Ausführung erzeugt.
+ Das Event 
+\begin_inset Quotes eld
+\end_inset
+
+DMFailure
+\begin_inset Quotes erd
+\end_inset
+
+ wird erzeugt falls die Rückmeldungsvariable 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ auf false gesetzt wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL-EA-Events-Sequenz-Diagramm.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ausführung-einer-SIMPL"
+
+\end_inset
+
+Ausführung einer SIMPL DM Extension Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+SIMPL DAO
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Rechtschreibung! Sinn und Zweck des DAO als Einleitung fehlt noch.
+ (am besten mit Verweis auf Grobentwurf)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Data Access Object (DAO) besteht aus der Implementierung der Interface
+s aus dem Packet org.apache.ode.bpel.dao die in den folgenden Unterpunkten beschrieb
+en werden.
+ Das DAO wird dafür verwendet, wichtige Daten der Prozessausführung aufzuzeichne
+n und persistent zu speichern.
+ (Siehe hierfür 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.2.2).
+ 
+\end_layout
+
+\begin_layout Standard
+Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
+ API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
+ per Service Data Object (SDO) an den SIMPL Core senden zu können.
+ Von dort aus können die Daten, wie zum Beispiel Informationen über ausgeführte
+ Prozesse (Name, Id, Typ), in beliebigen Datenquellen gespeichert werden.
+ Die Übertragung der Daten findet dabei direkt in den set-Methoden der DAOs
+ statt.
+ Die DAO Daten werden trozdem auch weiterhin in der internen Apache Derby
+ Datenbank gespeichert und von dort gelesen.
+ Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
+ können nur schreibend, jedoch nicht lesend erfolgen.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+DAOs
+\end_layout
+
+\begin_layout Subsubsection*
+BpelDAOConnectionFactory
+\end_layout
+
+\begin_layout Standard
+Die Factory verwaltet und erstellt die DAOConnection zu den angegebenen
+ Datenquellen (standardmäßig zu der internen Apache Derby Datenbank).
+\end_layout
+
+\begin_layout Subsubsection*
+BpelDAOConnection
+\end_layout
+
+\begin_layout Standard
+Die BpelDAOConnection stellt eine Verbindung zu den DAOs her.
+ Hier werden zum Beispiel BPEL Events in das DAO eingefügt, Prozesse erstellt
+ und Prozessinstanzen verwaltet, über die auf die restlichen DAO's zugegriffen
+ werden kann.
+\end_layout
+
+\begin_layout Subsubsection*
+ActivityRecoveryDAO
+\end_layout
+
+\begin_layout Standard
+Das ActivityRecoveryDAO wird ausgeführt, wenn eine Aktivität den 
+\begin_inset Quotes eld
+\end_inset
+
+recovery
+\begin_inset Quotes erd
+\end_inset
+
+ Status einnimmt.
+\end_layout
+
+\begin_layout Subsubsection*
+CorrelationSetDAO
+\end_layout
+
+\begin_layout Standard
+Das CorrelationSetDAO wird ausgeführt, wenn in BPEL ein Correlation Set
+ erstellt wird.
+ Correlation Sets ermöglichen die Kommunikation einer Prozessinstanz mit
+ seinen Partnern.
+\end_layout
+
+\begin_layout Subsubsection*
+FaultDAO
+\end_layout
+
+\begin_layout Standard
+Das FaultDAO wird erstellt, wenn ein Fehler in der Proessausführung passiert.
+ Über dieses DAO kann auf die Informationen bezüglich des Fehlers, zum Beispiel
+ der Name und der Grund für den Fehler, zugegriffen werden.
+\end_layout
+
+\begin_layout Subsubsection*
+MessageDAO
+\end_layout
+
+\begin_layout Standard
+Repräsentiert eine Nachricht in der Datenbank.
+\end_layout
+
+\begin_layout Subsubsection*
+MessageExchangeDAO
+\end_layout
+
+\begin_layout Standard
+Das MessageExchangeDAO ist für den Austausch von Nachrichten zuständig.
+\end_layout
+
+\begin_layout Subsubsection*
+MessageRouteDAO
+\end_layout
+
+\begin_layout Standard
+Das MessageRouteDAO repräsentiert ein Nachrichten Anfrager, wie zum Beispiel
+ ein Pick oder ein Receive.
+\end_layout
+
+\begin_layout Subsubsection*
+PartnerLinkDAO
+\end_layout
+
+\begin_layout Standard
+Das PartnerLinkDAO repräsentiert ein Partnerlink.
+ Es enthält Informationen über die eigene Rolle, die Rolle des Partners
+ und die Endpoint-Referenz.
+\end_layout
+
+\begin_layout Subsubsection*
+ProcessDAO
+\end_layout
+
+\begin_layout Standard
+Das ProcessDAO repräsentiert ein laufenden Prozess.
+ Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen.
+\end_layout
+
+\begin_layout Subsubsection*
+ProcessInstanceDAO
+\end_layout
+
+\begin_layout Standard
+Das ProcessInstanceDAO repräsentiert eine Prozess-Instanz und enthält alle
+ Daten, die einer Instanz zugehörig sind.
+ Dazu zählen Events, Scopes, sowie wartende Pick- und Receive-Aktivitäten.
+\end_layout
+
+\begin_layout Subsubsection*
+ScopeDAO
+\end_layout
+
+\begin_layout Standard
+Das ScopeDAO repräsentiert eine Scope-Instanz.
+ Es enthält eine Ansammlung von Correlation-Sets und XML-Variablen.
+\end_layout
+
+\begin_layout Subsubsection*
+XmlDataDAO
+\end_layout
+
+\begin_layout Standard
+Das XmlDataDAO repräsentiert XML-Daten und wird dazu benutzt BPEL-Variablen
+ zu modelieren.
+\end_layout
+
+\begin_layout Subsubsection
+DAO Java Persistence API (JPA)
+\end_layout
+
+\begin_layout Standard
+Das DAO-Jpa ist eine DAO Implementierung, die auf Apache Open JPA basiert.
+ Dieses stellt Funktionalitäten zur persistenten Speicherung auf relationalen
+ Datenspeichern zur Verfügung.
+ Über annotierte Variablen können somit die DAO Daten komfortabel in der
+ ODE internen Derby Datenbank gespeichert werden.
+\end_layout
+
+\begin_layout Subsubsection
+DAO Lebenszyklus
+\end_layout
+
+\begin_layout Standard
+Beim starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
+ BPEL-Server gestartet.
+ Sofort wird die in OdeServer Klasse enthaltene init-Methode aufgerufen.
+ Diese ruft wiederum die initDao-Methode auf.
+ Dort wird die DaoConnectionFactory geladen, welche zuvor in der OdeConfigProper
+ties definiert oder aus der Axis2.properties geladen wurde.
+ Über die ConnectionFactory werden DaoConnections erstellt und bereitgestellt,
+ mit deren Hilfe direkt auf die DAOs zugegriffen werden kann.
+ Dies geschieht an den Stellen in ODE, wo die den DAOs entsprechenden BPEL
+ Konstrukte ausgewertet werden.
+ So wird auf die ProcessDAO zum Beispiel aus der ODEProcess Klasse aufgerufen,
+ um die Prozessdaten persistent zu speichern.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Eclipse"
+
+\end_inset
+
+Eclipse
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Rahmenwerk besteht aus der vorhandenen Eclipse IDE, dem Eclipse
+ BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins BPEL-DM Plug-In,
+ SIMPL Core Plug-In und SIMPL Core Client Plug-In.
+ Im Rahmen des Feinentwurfes wird die Anbindung an die vorhandenen Komponenten
+ sowie die zu erstellenden Komponenten näher erläutert.
+ 
+\end_layout
+
+\begin_layout Subsection
+BPEL DM Plug-In
+\end_layout
+
+\begin_layout Standard
+Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
+ Designer Plug-Ins um die DM-Aktivitäten ergänzt.
+ Das Plug-In läßt sich grob in die Pakete User-Interface, Modell und Erweiterung
+ gruppieren.
+ Das User-Interface Paket (org.eclipse.bpel.ui) sorgt für die grafische Darstellung
+ in Eclipse und repräsentiert somit das zugrundeliegende Datenmodell.
+ Dieses befindet sich im Paket org.eclipse.bpel.simpl.model.
+ Für die Darstellung von Erweiterungen wird beispielhaft ein SQL Plug-In
+ (Paketorg.eclipse.bpel.simpl.ui.sql) verwendet.
+ Im folgenden Diagramm sind die Pakete und Klassen des aller Plug-Ins dargestell
+t, um einen leichten Überblick zu ermöglichen.
+ Diese Pakete und Klassen werden in den folgenden Unterkapiteln näher erläutert.
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In Overview.png
+	lyxscale 60
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In"
+
+\end_inset
+
+BPEL DM Plug-In
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+BPEL DM Plug-In User-Interface
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In UI"
+
+\end_inset
+
+ zeigt den Aufbau der grafischen Benutzerschnittstelle (User Interface)
+ des BPEL-DM Plug-Ins.
+ Der Aufbau orientiert sich dabei an der Architektur des Eclipse BPEL Designer
+ Plug-Ins und dessen Extension Points.
+ Nachfolgend werden nun alle Pakete und die wichtigsten Klassen des BPEL-DM
+ Plug-Ins beschrieben und deren Zweck näher erläutert.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In UI.png
+	lyxscale 80
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In UI"
+
+\end_inset
+
+BPEL DM Plug-In User-Interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.adapters
+\end_layout
+
+\begin_layout Standard
+Das Paket mit den verschiedenen Adapter-Klassen ist die Verbindung zu den
+ Aktivitäten von BPEL.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.extensions
+\end_layout
+
+\begin_layout Standard
+Das Interface IStatementeEditor vererbt an die abstrakte Klasse AStatementEditor
+ und diese gibt die Rahmenbedingungen für die Einbindung von Statement-Editoren
+ für neue Anfragsprachen vor.
+ Dabei handelt es sich um Composites die den Inhalt des Fensters beinhalten
+ und Statements die den eigentlichen Befehl beinhalten.
+ Die Anbindung von StatementEditor-Implementierungen erfolgt dabei über
+ den Extension Point org.eclipse.bpel.simpl.ui.queryLanguage.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.factories
+\end_layout
+
+\begin_layout Standard
+Die beiden Klassen in diesem Paket erzeugen Objekte für die grafische Plazierung
+ in der Modellierungsumgebung.
+ Die Klasse DataManagementUIOObjectFactory erzeugt die Objekte der jeweiligen
+ Aktivität und die Klasse DataManagementUIAdapterFactory die zugehörigen
+ Adapter für Eclipse.
+ Die Anbindung erfolgt über den Extension Point org.eclipse.bpel.ui.uiObjectFactorie
+s.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.palette
+\end_layout
+
+\begin_layout Standard
+Dieses Paket beinhaltet die grafische Palette der Aktivitäten für den BPEL
+ Designer.
+ Hier werden die verfügbaren Aktivitäten des BPEL Designers und die SIMPL
+ DM-Aktivitäten dargestellt, können ausgewählt und auf dem Arbeitsplatz
+ verwendet werden.
+ Anbindung erfolgt über den Extension Point org.eclipse.bpel.common.ui.paletteAdditio
+ns.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.simpl.properties
+\end_layout
+
+\begin_layout Standard
+Beinhaltet die Anzeige der Eigenschaften der jeweiligen DM-Aktivitäten.
+ Die Anbindung erfolgt über den Extension Point org.eclipse.ui.views.properties.tabbe
+d.propertySections.
+ Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
+s ausgewählt werden.
+ Zu den Optionen gehört primär die Angabe des Datenquellentyps, wie Datenbank,
+ Sensornetz oder ein Filesystem.
+ Je nach gewählter Art kann dann unter 
+\begin_inset Quotes eld
+\end_inset
+
+Subtype
+\begin_inset Quotes erd
+\end_inset
+
+ die Auswahl verfeinert werden und es kann z.B.
+ beim Filesystem NTFS oder EXT3 gewählt werden.
+ Bei einer Datenbank kann zwischen DB2 und MySQL gewählt werden, beim Sensornetz
+ wird nur TinyDB unterstützt.
+ Weiterhin kann hier die Datenquellenadresse angegeben werden.
+ Der in der Aktivität hinterlegte Abfragebefehl, wird im 
+\begin_inset Quotes eld
+\end_inset
+
+Resulting Statement
+\begin_inset Quotes erd
+\end_inset
+
+-Textfeld angezeigt und kann im Statement-Editor bearbeitet oder auch neu
+ modelliert werden.
+ Bei der Auswahl der DM-Aktivitäten werden Optionen die nicht möglich sind,
+ nicht zur Auswahl freigegeben.
+ Es ist beispielsweise nicht möglich bei einer Insert-Aktivität ein Sensornetz
+ auszuwählen.
+\end_layout
+
+\begin_layout Subsubsection
+BPEL DM Plug-In Modell
+\end_layout
+
+\begin_layout Standard
+Das BPEL DM Plug-In Modell stellt die Pakete und Klassen der Datenstruktur
+ bei den SIMPL DM-Aktivitäten dar.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In Model.png
+	lyxscale 80
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In Modell"
+
+\end_inset
+
+BPEL DM Plug-In Modell
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In Modell"
+
+\end_inset
+
+stellt das SIMPL Datenmodell dar.
+ An oberster Stelle steht die DataManagementActivity-Klasse (Interface)
+ welche mit den Variablen dsType, dsKind, dsAddress und dsStatement die
+ gemeinsame Schnittmenge der Aktivitätenvariablen bildet.
+ Diese werden an die Kindklassen wie z.B.
+ QueryActivity (Interface) vererbt und um schnittstellenspezifische Eigenschafte
+n erweitert.
+ Die konkrete Realisierung erfolgt dann im Paket org.eclipse.bpel.simpl.model
+ z.B.
+ in der Klasse QueryActivityImpl.
+ Im Paket org.eclipse.bpel.simpl.model.util befinden sich Zubehörklassen wie
+ Serializer und Deserializer.
+ Diese übernehmen die Erstellung von BPEL Files, sowie deren Auslesen.
+\end_layout
+
+\begin_layout Subsubsection
+BPEL DM Plug-In Extension Modell
+\end_layout
+
+\begin_layout Standard
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In Extension Modell"
+
+\end_inset
+
+des Paket org.eclipse.bpel.simpl.ui.sql.editor steht beispielhaft für eine Erweiterung
+ des Statementeditor um die Anfragesprache SQL.
+ Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse org.eclipse.b
+pel.simpl.ui.extensions.AStatementEditor und realisieren die elementaren Aktivitäten
+ wie Select und Insert.
+ Jede Erweiterung kann am Extension Point org.eclipse.bpel.simpl.ui.queryLanguage
+ angeschlossen werden.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DM Plug-In Extensions.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In Extension Modell"
+
+\end_inset
+
+BPEL DM Plug-In Extension Modell 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core Plug-In
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Core Plug-In kümmert sich um die Integration von SIMPL in die
+ Eclipse Menüleiste und erzeugt die Admin-Konsole zur Verwaltung der Einstellung
+en.
+ In der Admin-Konsole kann in der 1.
+ Iteration das Auditing aktiviert und deaktiviert werden, die Auditing Datenbank
+ kann festgelegt werden und ermöglicht eine Authentifizierung durch Benutzername
+ und Passwort.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPL_Core_PlugIn.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Core-Plug-In "
+
+\end_inset
+
+SIMPL Core Plug-In Klassendiagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core-Plug-In "
+
+\end_inset
+
+zeigt das Klassendiagramm des SIMPL Core Plug-In.
+ Durch diese grafische Benutzeroberfläche wird SIMPL verwaltet.
+ Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen um eine
+ größtmögliche Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
+ Das bedeutet die Einträge die bereits bei der Auslieferung von SIMPL in
+ der Admin-Konsole vorhanden sind, wurden auch durch Extension Points realisiert
+ und können gegebenenfalls leicht ausgetauscht werden.
+ Weitere Einträge können am Extension Points ACItem hinzugefügt werden.
+ Bei der Auslieferung sind die Funktionen Auditing und Global Settings bereits
+ durch Extension Points eingebunden.
+ Die Einträge in der Admin-Konsole werden in einer Baumstruktur gehalten
+ ( TreeItems, Klasse Application) und werden auf der linken Seite in der
+ Admin-Konsole angezeigt.
+ Aus Performance Gründen wird die Kommunikation zum SIMPL Core auf ein Minimum
+ reduziert und Einstellungen werden so lange wie möglich lokal in einem
+ Buffer gehalten.
+ Die Buttons der Admin-Konsole bieten die Möglichkeiten 
+\begin_inset Quotes eld
+\end_inset
+
+Default
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+Reset
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Close
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Es erfolgt zum Beispiel bei 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ ein Zugriff auf den SIMPL Core, aber bei 
+\begin_inset Quotes eld
+\end_inset
+
+Default
+\begin_inset Quotes erd
+\end_inset
+
+ wir auf den Buffer zugegriffen da die Daten schon von beim Starten des
+ Plug-Ins in den Buffer geladen wurden.
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core Client Plug-In
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Core Client Plug-In stellt die Verbindung zu den SIMPL Core Web
+ Services her und bietet den anderen Eclipse Plug-Ins damit die Möglichkeit
+ diese zu verwenden.
+ Da sowohl das BPEL-DM Plug-In wie auch das SIMPL Core Plug-In mit dem SIMPL
+ Core kommunizieren, wird der SIMPL Core Client als eigenständiges Plug-In
+ realisiert.
+ Die Funktionalität für den Zugriff auf die Web Services wird mit Hilfe
+ des Befehls wsimport (..
+\backslash
+Java
+\backslash
+jdk1.6.0_14
+\backslash
+bin
+\backslash
+wimport.exe) über die WSDL-Schnittstellen generiert und wird um die Serialisierun
+g und Deserialisierung der komplexen Parameter erweitert.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Kommunikation"
+
+\end_inset
+
+Kommunikation
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Kommunikation zwischen den Komponenten des SIMPL
+ Rahmenwerks beschrieben und wichtige Abläufe deutlich gemacht.
+\end_layout
+
+\begin_layout Subsection
+SIMPL Rahmenwerk
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Kommunikation-im-SIMPL"
+
+\end_inset
+
+ wird die Kommunikation zwischen den Komponenten mit entsprechenden Funktionsauf
+rufen gezeigt.
+ Über das SIMPL Core Client Plug-In wird die Kommunikation der anderen SIMPL
+ Eclipse Plug-Ins zum SIMPL Core hergestellt.
+ Über die Web Services des SIMPL Cores werden Metdaten zu Datenquellen angeforde
+rt (11, 21: getDatasourceMetaData) und Einstellungen gespeichert (1: saveSetting
+s) und geladen (1: loadSettings).
+ Dazu werden von den Web Services die Dienste des SIMPL Cores verwendet
+ und die Anfragen entsprechend weitergeleitet.
+ Apache ODE kann die Dienste des SIMPL Cores direkt ansprechen, da sich
+ der SIMPL Core im Classpath von Apache ODE befindet.
+ Dort werden die DM-Aktivitäten (DM-Activities) über den DatasourceService
+ ausgeführt, wozu die drei Methoden manipulateData, defineData und queryData
+ (19, 18, 14) zur Verfügung stehen, die in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Service"
+
+\end_inset
+
+ bereits beschrieben wurden.
+ Für das SIMPL Auditing benötigen die SIMPL DAOs ebenfalls Zugriff auf den
+ DatasourceService, um die Auditing Daten zu speicher.
+ Die Auditing Daten entstehen unter anderem bei der Ausführung der DM-Aktivitäte
+n (13: auditing) und lösen eine Speicherung über die SIMPL DAOs aus (16:
+ saveData).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/SIMPLRahmenwerkKommunikation.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Kommunikation-im-SIMPL"
+
+\end_inset
+
+Kommunikation im SIMPL Rahmenwerk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Literaturverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+
+\shape italic
+Grobentwurf v1.5
+\shape default
+.
+
+\shape italic
+ 
+\shape default
+Stupro-A SIMPL (2009)
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\series bold
+\size larger
+Abkürzungsverzeichnis
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="2">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="10cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+API
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Application Programming Interface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BPEL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DAO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Access Object
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data-Management
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GUI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Graphical User Interface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JAX-WS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Java API for XML - Web Services
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orchestration Director Engine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SDO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Service Data Object
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SIMPL 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SimTech: Information Management, Processes and Languages
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Structured Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UML
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unified Modeling Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Web Service
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

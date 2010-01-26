@@ -1,0 +1,449 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\use_default_options true
+\language ngerman
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wochenbericht
+\end_layout
+
+\begin_layout Author
+Wolfgang Hüttig
+\end_layout
+
+\begin_layout Institute
+Studienprojekt A: SIMPL
+\end_layout
+
+\begin_layout Date
+22.
+ November 2009
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename ../Documents/uni/stupro/svn/documents/berichte/wochenberichte/SIMPL.pdf
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Outline
+\end_layout
+
+\begin_layout BeginFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout BeginFrame
+Geplante Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Enumerate
+Einarbeitung in Atomic Scopes
+\end_layout
+
+\begin_layout Enumerate
+Einarbeitung in Externe Variabelen
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout Subsection
+Übersicht
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Übersicht
+\end_layout
+
+\begin_layout Enumerate
+Einarbeitung in Scopes/Atomic Scopes
+\end_layout
+
+\begin_layout Enumerate
+Einareitung in Externe Variablen
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Benötigte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout BeginFrame
+Erledigte Aufgaben und Tätigkeiten
+\end_layout
+
+\begin_layout FrameSubtitle
+Investierte Arbeitszeit/Aufwände
+\end_layout
+
+\begin_layout Enumerate
+4 Stunden
+\end_layout
+
+\begin_layout Enumerate
+30 Minuten
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout Subsection
+Scopes Allgemein
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout FrameSubtitle
+Scopes Allgemein
+\end_layout
+
+\begin_layout Itemize
+Definiert Lokale Umgebungen mit eigenen Variablen, Partnerlinks, Eventhandler,
+ Compensation Handlern und Fault Handlern.
+\end_layout
+
+\begin_layout Itemize
+Wichtig: Unterschied Compensation Handler, Fault Handler 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compensation Handler: Kompensation eines erfolgreich ausgeführeten Scope.
+ (z.B durch übergeordneten Scope)
+\end_layout
+
+\begin_layout Itemize
+Fault Handler: Rückgängig machen der Änderungen(rollback)
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Atomic Scopes
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout FrameSubtitle
+Atomic Scopes
+\end_layout
+
+\begin_layout Itemize
+Stellt 
+\begin_inset Quotes eld
+\end_inset
+
+all or nothing
+\begin_inset Quotes erd
+\end_inset
+
+ Funktionalität zur Verfügung, für alle Änderungen die innerhalb der Aktivität
+ vollzogen werden.
+\end_layout
+
+\begin_layout Itemize
+Ihnen wird nicht erlaubt auf events von ausserhalb zu warten, ausser events,
+ die den Scope anstoßen.
+\end_layout
+
+\begin_layout Itemize
+Werden Primär für Webservice Interaktionen benutzt.
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Externe Variablen
+\end_layout
+
+\begin_layout BeginFrame
+Gewonnene Erkenntnisse
+\end_layout
+
+\begin_layout FrameSubtitle
+Externe Variablen
+\end_layout
+
+\begin_layout Standard
+Deklaration:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+<scope>    
+\end_layout
+
+\begin_layout Plain Layout
+
+	<variables xmlns:xvar=" http://ode.apache.org/externalVariables">
+\end_layout
+
+\begin_layout Plain Layout
+
+	     <variable name="ext-var-name" element="ext-var-type" xvar:id="ext-var-id">
+         				<xvar:key-map key="key-id">*
+\end_layout
+
+\begin_layout Plain Layout
+
+		            <expression>key-expression</expression>         
+\end_layout
+
+\begin_layout Plain Layout
+
+				</xvar:key-map>      
+\end_layout
+
+\begin_layout Plain Layout
+
+			</variable>     
+\end_layout
+
+\begin_layout Plain Layout
+
+	</variables> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</scope> 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Itemize
+Es ist möglich mittels JDBC eine Externe Variable auf eine Zeile einer Datenbank
+ zu Mappen
+\end_layout
+
+\begin_layout Section
+Neues für SIMPL
+\end_layout
+
+\begin_layout BeginFrame
+Neues für SIMPL
+\end_layout
+
+\begin_layout Standard
+\align center
+Diagramme, Screenshots, usw.
+\end_layout
+
+\begin_layout Standard
+Leider Nichts
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout BeginFrame
+Verwendete Quellen/Literatur
+\end_layout
+
+\begin_layout Itemize
+BPEL 2.0 Spez.: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://docs.oasis-open.org/ws-caf/ws-context/v1.0/OS/wsctx.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Apache Ode Atomic Scopes: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ode.apache.org/atomic-scopes-extension-for-bpel.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Apache Ode Externe Variablen: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ode.apache.org/external-variables.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout BeginFrame
+Identifizierte Aufgaben für die kommende Woche
+\end_layout
+
+\begin_layout Itemize
+Weitere Einarbeitung in Ode
+\end_layout
+
+\begin_layout Itemize
+Mit Rene über Aufgabenverteilung Diskutieren
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Zu klärende Fragen
+\end_layout
+
+\begin_layout BeginFrame
+Zu klärende Fragen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fragen die wärend der Woche aufgekommen sind und klärung/erklärung benötigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Wofür werden Atomic Scopes in BPEL verwendet? Webservice interaktion?
+\end_layout
+
+\begin_layout Enumerate
+Wie fügt man vernünftig Programm Listings in Lyx ein? (Gibt bei mir fehler)
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document
