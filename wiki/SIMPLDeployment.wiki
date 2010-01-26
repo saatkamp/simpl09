@@ -1,0 +1,117 @@
+#summary Deployment des SIMPL Rahmenwerks
+= Deployment =
+Hier werden die Schritte erklärt, die für das Deployment des SIMPL Rahmenwerks notwendig sind.
+
+== Dateien ==
+Die Dateien des SIMPL Rahmenwerks werden im [http://code.google.com/p/simpl09/source/browse/ SVN Repository] bereitgestellt.
+
+==== deployment\simpl-tomcat.zip ====
+Enthält den SIMPL Core und seine Web Services, sowie die SIMPL Extension Activities für Apache ODE, Konfigurationsdateien und weitere abhängige Libraries.
+
+{{{
+deployment\simpl-tomcat\install.txt
+deployment\simpl-tomcat\log4j.properties
+deployment\simpl-tomcat\webapps\ode\WEB-INF\conf\axis2.xml
+deployment\simpl-tomcat\webapps\ode\WEB-INF\conf\ode-axis2.properties
+deployment\simpl-tomcat\webapps\ode\WEB-INF\conf\simpl-core-config.xml
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\common-2.2.3.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\ecore-2.2.3.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\ecore-change-2.2.3.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\ecore-xmi-2.2.3.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\simpl-core-plugins.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\simpl-core.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\simpl-ode-ea.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\stax-api-1.0.1.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\tools.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\tuscany-das-rdb-1.0-incubating-beta2.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\tuscany-sdo-api-r2.1-1.0-incubating.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\tuscany-sdo-impl-1.0-incubating.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\tuscany-sdo-lib-1.0-incubating.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\wstx-asl-3.2.0.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\lib\xsd-2.2.3.jar
+deployment\simpl-tomcat\webapps\ode\WEB-INF\servicejars\simpl-core-web-services.jar
+}}}
+
+==== deployment\simpl-eclipse.zip ====
+Enthält alle SIMPL Eclipse Plug-Ins.
+
+{{{
+deployment\simpl-eclipse\install.txt
+deployment\simpl-eclipse\plugins\org.eclipse.bpel.simpl.model_1.0.0.jar
+deployment\simpl-eclipse\plugins\org.eclipse.bpel.simpl.ui.sql_1.0.0.jar
+deployment\simpl-eclipse\plugins\org.eclipse.bpel.simpl.ui_1.0.0.jar
+deployment\simpl-eclipse\plugins\org.eclipse.simpl.communication_1.0.0.jar
+deployment\simpl-eclipse\plugins\org.eclipse.simpl.core.auditing_1.0.0.jar
+deployment\simpl-eclipse\plugins\org.eclipse.simpl.core.globalSettings_1.0.0.jar
+deployment\simpl-eclipse\plugins\org.eclipse.simpl.core_1.0.0.jar
+}}}
+
+----
+
+== Eclipse ==
+=== 1. Eclipse installieren ===
+http://www.eclipse.org/
+
+=== 2. Eclipse BPEL Designer Plug-In Abhängigkeiten hinzufügen ===
+Folgende Update Sites müssen nur hinzugefügt, aber nicht installiert werden.  
+
+(Help -> Install New Software -> Add -> OK)
+
+EMF: http://www.eclipse.org/modeling/emf/updates/
+
+GEF: http://www.eclipse.org/gef/updates/
+
+Datatools: http://download.eclipse.org/datatools/updates/
+
+Webtools: http://download.eclipse.org/webtools/updates/
+
+=== 3. Eclipse BPEL Designer Plug-In installieren ===
+(Help -> Install New Software -> Add -> OK -> Next)
+
+BPEL Designer: http://download.eclipse.org/technology/bpel/update-site/
+
+-> Eclipse schließen.
+
+=== 4. SIMPL Eclipse Plug-Ins deployen ===
+_deployment\simpl-eclipse.zip_ nach _\eclipse\_ entpacken.
+
+-> Eclipse erst nach der Apache Tomcat Installation wieder starten.
+
+----
+
+== Apache Tomcat ==
+=== 1. Apache Tomcat installieren (5.5 oder 6.x) ===
+http://tomcat.apache.org/
+
+-> Apache Tomcat starten.
+
+=== 2. Apache ODE deployen ===
+http://www.apache.org/dyn/closer.cgi/ode/apache-ode-war-2.0-beta2.zip
+
+-> _ode.war_ aus der zip-Datei nach _\Tomcat x.x\webapps_ kopieren.
+
+-> Kurz warten bis die ode.war entpackt ist.
+
+-> Prüfen ob Apache ODE verfügbar ist: http://localhost:8080/ode/
+
+-> Apache Tomcat beenden.
+
+=== 3. SIMPL Core und SIMPL Extension Activities deployen ===
+-> _deployment\simpl-tomcat.zip_ nach _\Tomcat x.x\_ entpacken.
+
+-> Apache Tomcat starten.
+
+-> Prüfen ob die SIMPL Core Services aktiviert sind: http://localhost:8080/ode/services/listServices
+
+----
+
+== Probleme und Lösungen ==
+
+1. Die SIMPL Web Services stehen zwar bereit, die WSDLs können aber nicht generiert und benutzt werden.
+  * Für die Generierung wird die _tools.jar_ aus dem Java Development Toolkit (JDK) benötigt. Diese wird aus dem JDK 1.6.0_14 in der _simpl-tomcat.zip_ mitgeliefert. Je nachdem welche Version des Java Runtime Environment (JRE) auf dem Betriebssystem installiert ist, kann es unter Umständen nötig sein die _tools.jar_ aus der entsprechend anderen Version des JDK zu verwenden. Diese muss unter _/Tomcat x.x/webapps/ode/WEB-INF/lib/_ die bereits vorhandene _tools.jar_ ersetzen.
+
+2. Der BPEL Eclipse Designer kann nicht geöffnet werden, ein Fehler wird angezeigt
+ * Apache Tomcat ist nicht gestartet
+ * Die _simpl-tomcat.zip_ wurde nicht deployt
+ * Die _simpl-eclipse.zip_ wurde nicht deployt
+ * Es besteht Problem Nr. 1
