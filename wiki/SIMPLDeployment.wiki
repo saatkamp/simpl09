@@ -53,7 +53,7 @@ deployment\simpl-eclipse\plugins\org.eclipse.simpl.core_1.0.0.jar
 http://www.eclipse.org/
 
 === 2. Eclipse BPEL Designer Plug-In Abhängigkeiten hinzufügen ===
-Folgende Update Sites müssen nur hinzugefügt, aber nicht installiert werden.  
+Folgende Update Sites müssen nur hinzugefügt werden, eine Installation von Komponenten ist nicht notwendig.  
 
 (Help -> Install New Software -> Add -> OK)
 
