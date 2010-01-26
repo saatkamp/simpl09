@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.simpl.core.adminConsoleItem">
+      <adminConsoleItem
+            label="References"
+            position="3">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.references.ui.ReferenceComposite"
+               label="Management">
+         </adminConsoleItem>
+      </adminConsoleItem>
+   </extension>
+
+</plugin>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/simpl-dao" targetNamespace="http://www.example.org/simpl-dao">
+
+    <complexType name="AbstractSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="activityID" type="long"></attribute>
+    	<attribute name="channel" type="string"></attribute>
+    	<attribute name="reason" type="string"></attribute>
+    	<attribute name="dateTime" type="string"></attribute>
+    	<attribute name="details" type="string"></attribute>
+    	<attribute name="actions" type="string"></attribute>
+    	<attribute name="retries" type="int"></attribute>
+    </complexType>    
+
+    <complexType name="CorrelationSetSDO">
+    	<attribute name="corelationSetId" type="long"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="correlationKey" type="string"></attribute>
+    </complexType>
+
+    <complexType name="CorrelatorSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="correlatorKey" type="string"></attribute>
+    </complexType>
+
+    <complexType name="CorrSetPropertySDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="propertyKey" type="string"></attribute>
+    	<attribute name="propertyValue" type="string"></attribute>
+    </complexType>
+
+    <complexType name="EventSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="tstamp" type="string"></attribute>
+    	<attribute name="type" type="string"></attribute>
+    	<attribute name="detail" type="string"></attribute>
+    	<attribute name="scopeID" type="long"></attribute>
+    </complexType>
+
+    <complexType name="FaulSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="explanation" type="string"></attribute>
+    	<attribute name="data" type="string"></attribute>
+    	<attribute name="lineNo" type="int"></attribute>
+    	<attribute name="activityId" type="int"></attribute>
+    </complexType>
+
+    <complexType name="MessageSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="type" type="string"></attribute>
+    	<attribute name="data" type="string"></attribute>
+    	<attribute name="header" type="string"></attribute>
+    	<attribute name="element" type="string"></attribute>
+    	<attribute name="headerElement" type="string"></attribute>
+    </complexType>
+
+    <complexType name="MessageExchangeSDO">
+    	<attribute name="id" type="string"></attribute>
+    	<attribute name="callee" type="string"></attribute>
+    	<attribute name="channel" type="string"></attribute>
+    	<attribute name="correlationID" type="string"></attribute>
+    	<attribute name="createTime" type="string"></attribute>
+    	<attribute name="direction" type="string"></attribute>
+    	<attribute name="eprElement" type="string"></attribute>
+    	<attribute name="epr" type="string"></attribute>
+    	<attribute name="fault" type="string"></attribute>
+    	<attribute name="faultExplanation" type="string"></attribute>
+    	<attribute name="operation" type="string"></attribute>
+    	<attribute name="partnerLinkModelId" type="int"></attribute>
+    	<attribute name="pattern" type="string"></attribute>
+    	<attribute name="portType" type="string"></attribute>
+    	<attribute name="propagateTransactionFlag" type="boolean"></attribute>
+    	<attribute name="correlationKeys" type="string"></attribute>
+    	<attribute name="pipedMesageExangeId" type="string"></attribute>
+    	<attribute name="ackType" type="string"></attribute>
+    </complexType>
+
+    <complexType name="MessageRouteSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="groupId" type="string"></attribute>
+    	<attribute name="index" type="int"></attribute>
+    	<attribute name="correlationKey" type="string"></attribute>
+    </complexType>
+
+    <complexType name="MexPropertySDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="propertyKey" type="string"></attribute>
+    	<attribute name="propertyValue" type="string"></attribute>
+    </complexType>
+
+    <complexType name="PartnerLinkSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="myEPR" type="string"></attribute>
+    	<attribute name="myEPRElement" type="string"></attribute>
+    	<attribute name="myRoleName" type="string"></attribute>
+    	<attribute name="myRoleServiceName" type="string"></attribute>
+    	<attribute name="mySessionId" type="string"></attribute>
+    	<attribute name="partnerEPR" type="string"></attribute>
+    	<attribute name="partnerEPRElement" type="string"></attribute>
+    	<attribute name="partnerLinkModelId" type="int"></attribute>
+    	<attribute name="partnerLinkName" type="string"></attribute>
+    	<attribute name="partnerLinkRoleName" type="string"></attribute>
+    	<attribute name="partnerLinkSessionId" type="string"></attribute>
+    </complexType>
+
+    <complexType name="ProcessSDO">
+    	<attribute name="id" type="int"></attribute>
+    	<attribute name="processId" type="string"></attribute>
+    	<attribute name="numInstances" type="int"></attribute>
+    	<attribute name="processType" type="string"></attribute>
+    	<attribute name="guid" type="string"></attribute>
+    	<attribute name="version" type="long"></attribute>
+    </complexType>
+
+    <complexType name="ProcessInstanceSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="lastRecovery" type="date"></attribute>
+    	<attribute name="lastActive" type="date"></attribute>
+    	<attribute name="state" type="int"></attribute>
+    	<attribute name="previousState" type="int"></attribute>
+    	<attribute name="executionState" type="string"></attribute>
+    	<attribute name="dateCreated" type="date"></attribute>
+    	<attribute name="sequence" type="long"></attribute>
+    	<attribute name="execStateCounter" type="string"></attribute>
+    </complexType>
+
+    <complexType name="ScopeSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="modelId" type="int"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="scopeState" type="string"></attribute>
+    	<attribute name="parentScopeId" type="long"></attribute>
+    </complexType>
+
+    <complexType name="XMLDataSDO">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="data" type="string"></attribute>
+    	<attribute name="node" type="string"></attribute>
+    	<attribute name="isSimpleType" type="boolean"></attribute>
+    	<attribute name="name" type="string"></attribute>
+    </complexType>
+
+    <complexType name="XMLDataProperty">
+    	<attribute name="id" type="long"></attribute>
+    	<attribute name="propKey" type="string"></attribute>
+    	<attribute name="propValue" type="string"></attribute>
+    	<attribute name="xmlDataId" type="string"></attribute>
+    </complexType>
+
+    <element name="abstractSDO" type="tns:AbstractSDO"></element>
+
+    <element name="correlationSetSDO" type="tns:CorrelationSetSDO"></element>
+
+    <element name="correlatorSDO" type="tns:CorrelatorSDO"></element>
+
+    <element name="corrSetPropertySDO" type="tns:CorrSetPropertySDO"></element>
+
+    <element name="eventSDO" type="tns:EventSDO"></element>
+
+    <element name="faultSDO" type="tns:FaulSDO"></element>
+
+    <element name="messageExchangeSDO" type="tns:MessageExchangeSDO"></element>
+
+    <element name="messageRouteSDO" type="tns:MessageRouteSDO"></element>
+
+    <element name="messageSDO" type="tns:MessageSDO"></element>
+
+    <element name="mexPropertySDO" type="tns:MexPropertySDO"></element>
+
+    <element name="partnerLinkSDO" type="tns:PartnerLinkSDO"></element>
+
+    <element name="processInstanceSDO" type="tns:ProcessInstanceSDO"></element>
+
+    <element name="processSDO" type="tns:ProcessSDO"></element>
+
+    <element name="scopeSDO" type="tns:ScopeSDO"></element>
+
+    <element name="xmlDataProperty" type="tns:XMLDataProperty"></element>
+    
+    <element name="xmlDataSDO" type="tns:XMLDataSDO"></element>
+</schema>
