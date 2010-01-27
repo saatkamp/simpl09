@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="SIMPL Framework for Eclipse" url="http://simpl09.googlecode.com/svn/tags/updates">
+      SIMPL Framework for Eclipse
+   </description>
+   <feature url="features/org.eclipse.simpl.core.feature_1.0.0.jar" id="org.eclipse.simpl.core.feature" version="1.0.0">
+      <category name="SIMPL Core Plug-Ins"/>
+   </feature>
+   <feature url="features/org.eclipse.bpel.simpl.feature_1.0.0.jar" id="org.eclipse.bpel.simpl.feature" version="1.0.0">
+      <category name="BPEL-DM Plug-Ins"/>
+   </feature>
+   <feature url="features/org.eclipse.simpl.communication.feature_1.0.0.jar" id="org.eclipse.simpl.communication.feature" version="1.0.0">
+      <category name="SIMPL Core Communication Plug-In"/>
+   </feature>
+   <category-def name="SIMPL Core Plug-Ins" label="SIMPL Core Plug-Ins for Eclipse">
+      <description>
+         Administration functionality for the SIMPL Core.
+      </description>
+   </category-def>
+   <category-def name="BPEL-DM Plug-Ins" label="BPEL-DM Plug-Ins for Eclipse">
+      <description>
+         Extends the Eclipse BPEL Designer Plug-In with Data-Management-Activities.
+      </description>
+   </category-def>
+   <category-def name="SIMPL Core Communication Plug-In" label="SIMPL Core Communication Plug-In for Eclipse">
+      <description>
+         Allows Eclipse to communicate with the SIMPL Core over Web-Services.
+      </description>
+   </category-def>
+</site>
