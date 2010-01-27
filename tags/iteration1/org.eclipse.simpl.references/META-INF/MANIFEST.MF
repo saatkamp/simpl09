@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Extension
+Bundle-SymbolicName: org.eclipse.simpl.references;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.simpl.references.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.simpl.core;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.simpl.references,
+ org.eclipse.simpl.references.ui
+Import-Package: org.eclipse.swt,
+ org.eclipse.swt.layout,
+ org.eclipse.swt.widgets

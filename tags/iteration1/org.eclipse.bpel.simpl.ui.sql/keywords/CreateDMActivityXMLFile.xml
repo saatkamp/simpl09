@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <MainKeyWord value="CREATE" text="CREATE ">
+ 	<KeyWord value="TABLE" text="TABLE ">
+
+ 	</KeyWord>
+ 	<KeyWord value="SCHEMA" text="SCHEMA ">
+ 		
+ 	</KeyWord>
+ 	<KeyWord value="INDEX" text="INDEX ">
+ 		
+ 	</KeyWord>
+ </MainKeyWord>	
+</root>
