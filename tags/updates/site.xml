@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="SIMPL Framework for Eclipse" url="http://example.org/simpl/updates">
+      SIMPL Framework for Eclipse
+   </description>
+   <feature url="features/org.eclipse.simpl.feature_1.0.0.jar" id="org.eclipse.simpl.feature" version="1.0.0" os="win32" ws="win32" nl="en">
+      <category name="SIMPL Framework for Eclipse"/>
+   </feature>
+   <category-def name="SIMPL Framework for Eclipse" label="SIMPL Framework for Eclipse"/>
+</site>
