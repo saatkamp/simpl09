@@ -1,1 +1,0 @@
-http://www.vogella.de/articles/EclipsePlugIn/article.html#introduction
