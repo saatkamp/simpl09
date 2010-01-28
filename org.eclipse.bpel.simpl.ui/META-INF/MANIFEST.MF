@@ -18,5 +18,6 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.bpel.simpl.ui,
- org.eclipse.bpel.simpl.ui.extensions
+ org.eclipse.bpel.simpl.ui.extensions,
+ org.eclipse.bpel.simpl.ui.properties
 Bundle-Vendor: SIMPL

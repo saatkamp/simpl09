@@ -29,6 +29,11 @@
             id="org.eclipse.simpl.commands.aboutCommand"
             name="About">
       </command>
+      <command
+            categoryId="org.eclipse.simpl.commands.category"
+            id="org.eclipse.simpl.commands.reloadDataCommand"
+            name="Reload Plug-In Data">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -39,6 +44,10 @@
       <handler
             class="org.eclipse.simpl.core.handlers.SimplAboutHandler"
             commandId="org.eclipse.simpl.commands.aboutCommand">
+      </handler>
+      <handler
+            class="org.eclipse.simpl.core.handlers.SimplReloadDataHandler"
+            commandId="org.eclipse.simpl.commands.reloadDataCommand">
       </handler>
    </extension>
    <extension
@@ -69,6 +78,15 @@
                   commandId="org.eclipse.simpl.commands.aboutCommand"
                   id="org.eclipse.simpl.menus.aboutCommand"
                   mnemonic="A">
+            </command>
+            <separator
+                  name="org.eclipse.simpl.core.separator"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="org.eclipse.simpl.commands.reloadDataCommand"
+                  id="org.eclipse.simpl.commands.reloadDataCommand"
+                  mnemonic="R">
             </command>
          </menu>
       </menuContribution>
