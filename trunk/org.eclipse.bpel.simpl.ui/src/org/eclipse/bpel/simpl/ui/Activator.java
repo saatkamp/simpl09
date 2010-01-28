@@ -11,9 +11,11 @@ import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -42,7 +44,14 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		BPELUtil.registerAdapterFactory(ModelPackage.eINSTANCE, new DataManagementUIAdapterFactory());
-		Application.getInstance().initApplication();
+		
+		try {
+			Application.getInstance().initApplication();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			MessageDialog.openError(Display.getCurrent().getActiveShell(), "SIMPL Core Connection Exception", "The SIMPL Core isn't available. Please check if your Apache Tomcat Server is running.");
+		}
 	}
 
 	/*
