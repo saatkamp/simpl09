@@ -2,6 +2,7 @@ package org.eclipse.simpl.core.ui;
 
 import java.util.LinkedHashMap;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.simpl.core.Application;
 import org.eclipse.simpl.core.Tuple;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
@@ -62,7 +63,7 @@ public class AdminConsoleUI {
 	 * 
 	 */
 	private void showComposite(TreeItem treeItem) {
-		
+
 		if (oldComposite != null) {
 			oldComposite.dispose();
 		}
@@ -73,11 +74,11 @@ public class AdminConsoleUI {
 			compositeClass.createComposite(composite);
 			oldComposite = compositeClass.getComposite();
 
-			if (compositeClass!=null && selectedTreeItem!=null){
+			if (compositeClass != null && selectedTreeItem != null) {
 				// Buffer-Werte des Composites laden
 				compositeClass.loadSettingsFromBuffer("buffer");
 			}
-			
+
 			composite.layout();
 			sShell.layout();
 		}
@@ -178,7 +179,7 @@ public class AdminConsoleUI {
 			}
 		});
 
-    Label filler2 = new Label(sShell, SWT.NONE);
+		Label filler2 = new Label(sShell, SWT.NONE);
 		saveButton = new Button(sShell, SWT.NONE);
 		saveButton.setText("Save");
 		saveButton.setLayoutData(gridData3);
@@ -206,7 +207,26 @@ public class AdminConsoleUI {
 
 			@Override
 			public void handleEvent(Event evt) {
-				sShell.close();
+				if (Application.getInstance().haveSettingsChanged()) {
+					MessageDialog message = new MessageDialog(Display
+							.getCurrent().getActiveShell(), "SIMPL", null,
+							"Values have been changed. Save changes?",
+							MessageDialog.QUESTION, new String[]{"Yes","No","Cancel"}, 0);
+					
+					int buttonPressed = message.open();
+					
+					//FIXME: Es werden hier die Buffer-Werte über das Schließen des Fensters hinaus gesichert.
+					//		 Das heisst die Werte werden nicht verworfen, wie gewünscht!
+					
+					//Hier prüfen wir auf den Index der im Konstruktor übergebenen Buttons.
+					//Yes = 0, No = 1, Cancel = 2;
+					if (buttonPressed == 0) {
+						saveAllSettings();
+					}
+					if (buttonPressed == 0 || buttonPressed == 1){
+						sShell.close();
+					}
+				}
 			}
 		});
 	}
@@ -278,14 +298,15 @@ public class AdminConsoleUI {
 		});
 
 	}
-	
+
 	public void saveAllSettings() {
-		LinkedHashMap<String, AAdminConsoleComposite> compClasses = Application.getInstance().getCompositeClasses();
-		
+		LinkedHashMap<String, AAdminConsoleComposite> compClasses = Application
+				.getInstance().getCompositeClasses();
+
 		for (String key : compClasses.keySet()) {
 			AAdminConsoleComposite compClass = compClasses.get(key);
-			compClass.saveSettings(compClass.getParentConsoleItem(), compClass.getConsoleItem(),
-					"lastSaved");
+			compClass.saveSettings(compClass.getParentConsoleItem(), compClass
+					.getConsoleItem(), "lastSaved");
 		}
 	}
 }
