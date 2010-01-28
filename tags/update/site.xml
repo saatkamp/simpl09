@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/SIMPL_BPEL_DM Plug_In_1.0.0.201001281458.jar" id="SIMPL_BPEL_DM Plug_In" version="1.0.0.201001281458"/>
-   <feature url="features/SIMPL_Core_Plug_In_1.0.0.201001281458.jar" id="SIMPL_Core_Plug_In" version="1.0.0.201001281458"/>
-   <feature url="features/SIMPL_Core_Communication_Plug_In_1.0.0.201001281458.jar" id="SIMPL_Core_Communication_Plug_In" version="1.0.0.201001281458"/>
+   <feature url="features/SIMPL_BPEL_DM Plug_In_1.0.0.201001281502.jar" id="SIMPL_BPEL_DM Plug_In" version="1.0.0.201001281502"/>
+   <feature url="features/SIMPL_Core_Plug_In_1.0.0.201001281502.jar" id="SIMPL_Core_Plug_In" version="1.0.0.201001281502"/>
+   <feature url="features/SIMPL_Core_Communication_Plug_In_1.0.0.201001281502.jar" id="SIMPL_Core_Communication_Plug_In" version="1.0.0.201001281502"/>
 </site>
