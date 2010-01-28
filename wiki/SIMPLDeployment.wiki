@@ -74,6 +74,8 @@ BPEL Designer: http://download.eclipse.org/technology/bpel/update-site/
 
 === 4. SIMPL Eclipse Plug-Ins deployen ===
 _deployment\simpl-eclipse.zip_ nach _\eclipse\_ entpacken.
+ oder
+Eclipse update site: http://simpl09.googlecode.com/svn/tags/updates/
 
 -> Eclipse erst nach der Apache Tomcat Installation wieder starten.
 
