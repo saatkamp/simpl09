@@ -155,6 +155,18 @@ public class Application {
 		}
 		return changed;
 	}
+	
+	public void resetCompositeValues(){
+		for (AAdminConsoleComposite compositeClass : this.compositeClasses.values()){
+			compositeClass.loadSettingsFromBuffer("lastSaved");
+		}
+	}
+	
+	public void defaultCompositeValues(){
+		for (AAdminConsoleComposite compositeClass : this.compositeClasses.values()){
+			compositeClass.loadSettingsFromBuffer("default");
+		}
+	}
 
 	public AAdminConsoleComposite getCompositeClass(String treeItem) {
 		return this.compositeClasses.get(treeItem);

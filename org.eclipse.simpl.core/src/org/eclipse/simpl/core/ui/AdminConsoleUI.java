@@ -151,10 +151,8 @@ public class AdminConsoleUI {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				// Werte des Composites laden
-				if (compositeClass != null && selectedTreeItem != null) {
-					compositeClass.loadSettingsFromBuffer("default");
-				}
+				// Alle Werte in allen Composites auf die Defaults setzen
+				Application.getInstance().defaultCompositeValues();
 			}
 		});
 
@@ -172,10 +170,8 @@ public class AdminConsoleUI {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				// Werte des Composites laden
-				if (compositeClass != null && selectedTreeItem != null) {
-					compositeClass.loadSettingsFromBuffer("lastSaved");
-				}
+				// Alle Werte aller Composites zurücksetzen
+				Application.getInstance().resetCompositeValues();
 			}
 		});
 
@@ -215,17 +211,18 @@ public class AdminConsoleUI {
 					
 					int buttonPressed = message.open();
 					
-					//FIXME: Es werden hier die Buffer-Werte über das Schließen des Fensters hinaus gesichert.
-					//		 Das heisst die Werte werden nicht verworfen, wie gewünscht!
-					
 					//Hier prüfen wir auf den Index der im Konstruktor übergebenen Buttons.
 					//Yes = 0, No = 1, Cancel = 2;
 					if (buttonPressed == 0) {
 						saveAllSettings();
-					}
-					if (buttonPressed == 0 || buttonPressed == 1){
 						sShell.close();
 					}
+					if (buttonPressed == 1){
+						Application.getInstance().resetCompositeValues();
+						sShell.close();
+					}
+				}else {
+					sShell.close();
 				}
 			}
 		});
