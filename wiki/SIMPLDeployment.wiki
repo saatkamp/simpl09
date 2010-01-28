@@ -61,9 +61,9 @@ EMF: http://www.eclipse.org/modeling/emf/updates/
 
 GEF: http://www.eclipse.org/gef/updates/
 
-Datatools: http://download.eclipse.org/datatools/updates/
+DTP: http://download.eclipse.org/datatools/updates/
 
-Webtools: http://download.eclipse.org/webtools/updates/
+WTP: http://download.eclipse.org/webtools/updates/
 
 === 3. Eclipse BPEL Designer Plug-In installieren ===
 (Help -> Install New Software -> Add -> OK -> Next)
@@ -75,7 +75,7 @@ BPEL Designer: http://download.eclipse.org/technology/bpel/update-site/
 === 4. SIMPL Eclipse Plug-Ins deployen ===
 _deployment\simpl-eclipse.zip_ nach _\eclipse\_ entpacken.
  oder
-Eclipse update site: http://simpl09.googlecode.com/svn/tags/updates/
+Eclipse update site: http://simpl09.googlecode.com/svn/update/
 
 -> Eclipse erst nach der Apache Tomcat Installation wieder starten.
 
