@@ -145,6 +145,16 @@ public class Application {
 		}
 		return compositeClass;
 	}
+	
+	public boolean haveSettingsChanged(){
+		boolean changed = false;
+		for (AAdminConsoleComposite compositeClass : this.compositeClasses.values()){
+			if (compositeClass.haveSettingsChanged()){
+				changed = true;
+			}
+		}
+		return changed;
+	}
 
 	public AAdminConsoleComposite getCompositeClass(String treeItem) {
 		return this.compositeClasses.get(treeItem);
