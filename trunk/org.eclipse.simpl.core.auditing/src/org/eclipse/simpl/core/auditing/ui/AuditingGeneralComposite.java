@@ -113,8 +113,8 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			// Über den SIMPL Core in einer embedded DerbyDB speichern
 			SIMPLCommunication.getConnection().save(parentItem, item,
 					settingName, settings);
-			
-			//Last-Saved Werte aktualisieren
+
+			// Last-Saved Werte aktualisieren
 			this.lAuditingDSAddress = this.bAuditingDSAddress;
 			this.lMode = this.bMode;
 		}
@@ -128,21 +128,21 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		// LastSaved-Einstellungen aus SIMPL Core DB laden
 		settings = SIMPLCommunication.getConnection().load(parentItem, item,
 				"lastSaved");
-		
+
 		if (!settings.isEmpty()) {
-  		this.lMode = settings.get(this.MODE);
-  		this.lAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
-  		this.bMode = this.lMode;
-  		this.bAuditingDSAddress = this.lAuditingDSAddress;
+			this.lMode = settings.get(this.MODE);
+			this.lAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
+			this.bMode = this.lMode;
+			this.bAuditingDSAddress = this.lAuditingDSAddress;
 		}
-		
+
 		// Default-Einstellungen aus SIMPL Core DB laden
 		settings = SIMPLCommunication.getConnection().load(parentItem, item,
 				"default");
-		
+
 		if (!settings.isEmpty()) {
-  		this.dMode = settings.get(this.MODE);
-  		this.dAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
+			this.dMode = settings.get(this.MODE);
+			this.dAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
 		}
 	}
 
@@ -160,48 +160,55 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	@Override
 	public void loadSettingsFromBuffer(String settingName) {
 		if (settingName.equals("default")) {
-			// Default-Werte in GUI-Elementen setzen
-			if (this.dMode.equals("active")) {
-				auditingCheckBox.setSelection(true);
-				auditingCheckBox.setText("active");
-			} else {
-				auditingCheckBox.setSelection(false);
-				auditingCheckBox.setText("inactive");
+			if (!getComposite().isDisposed()) {
+
+				// Default-Werte in GUI-Elementen setzen
+				if (this.dMode.equals("active")) {
+					auditingCheckBox.setSelection(true);
+					auditingCheckBox.setText("active");
+				} else {
+					auditingCheckBox.setSelection(false);
+					auditingCheckBox.setText("inactive");
+				}
+				auditingDBtext.setText(this.dAuditingDSAddress);
+				System.out.println("LOAD FROM Default: " + this.dMode + " | "
+						+ this.dAuditingDSAddress);
 			}
-			auditingDBtext.setText(this.dAuditingDSAddress);
-			System.out.println("LOAD FROM Default: " + this.dMode + " | "
-					+ this.dAuditingDSAddress);
-			//Buffer-Werte aktualisieren
+			// Buffer-Werte aktualisieren
 			this.bAuditingDSAddress = this.dAuditingDSAddress;
 			this.bMode = this.dMode;
 		} else {
 			if (settingName.equals("lastSaved")) {
-				// Last-Saved Werte in GUI-Elementen setzen
-				if (this.lMode.equals("active")) {
-					auditingCheckBox.setSelection(true);
-					auditingCheckBox.setText("active");
-				} else {
-					auditingCheckBox.setSelection(false);
-					auditingCheckBox.setText("inactive");
+				if (!getComposite().isDisposed()) {
+					// Last-Saved Werte in GUI-Elementen setzen
+					if (this.lMode.equals("active")) {
+						auditingCheckBox.setSelection(true);
+						auditingCheckBox.setText("active");
+					} else {
+						auditingCheckBox.setSelection(false);
+						auditingCheckBox.setText("inactive");
+					}
+					auditingDBtext.setText(this.lAuditingDSAddress);
+					System.out.println("LOAD FROM LastSaved: " + this.lMode
+							+ " | " + this.lAuditingDSAddress);
 				}
-				auditingDBtext.setText(this.lAuditingDSAddress);
-				System.out.println("LOAD FROM LastSaved: " + this.lMode + " | "
-						+ this.lAuditingDSAddress);
-				//Buffer-Werte aktualisieren
+				// Buffer-Werte aktualisieren
 				this.bAuditingDSAddress = this.lAuditingDSAddress;
 				this.bMode = this.lMode;
 			} else {
-				// Buffer-Werte in GUI-Elementen setzen
-				if (this.bMode.equals("active")) {
-					auditingCheckBox.setSelection(true);
-					auditingCheckBox.setText("active");
-				} else {
-					auditingCheckBox.setSelection(false);
-					auditingCheckBox.setText("inactive");
+				if (!getComposite().isDisposed()) {
+					// Buffer-Werte in GUI-Elementen setzen
+					if (this.bMode.equals("active")) {
+						auditingCheckBox.setSelection(true);
+						auditingCheckBox.setText("active");
+					} else {
+						auditingCheckBox.setSelection(false);
+						auditingCheckBox.setText("inactive");
+					}
+					auditingDBtext.setText(this.bAuditingDSAddress);
+					System.out.println("LOAD FROM BUFFER: " + this.bMode
+							+ " | " + this.bAuditingDSAddress);
 				}
-				auditingDBtext.setText(this.bAuditingDSAddress);
-				System.out.println("LOAD FROM BUFFER: " + this.bMode + " | "
-						+ this.bAuditingDSAddress);
 			}
 		}
 	}
