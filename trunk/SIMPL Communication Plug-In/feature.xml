@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.simpl.communication.feature"
+      label="SIMPL Communication Plug-In"
+      version="1.0.0"
+      provider-name="SIMPL">
+
+   <description>
+      This feature integrates the SIMPL Core Communication Plug-In
+into Eclipse, which allows Eclipse to communicate with the SIMPL
+Core over Web-Service communication.
+   </description>
+
+   <copyright>
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="SIMPL Site" url="http://simpl09.googlecode.com/svn/update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.simpl.communication"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
