@@ -7576,6 +7576,10 @@ reference "fig:Klassenhierarchie-der-Datenmanagement-Patterns"
  zeigt die oberen Ebenen (0.
  Ebene bis 2.Ebene) der Klassenhierarchie der verschiedenen Datenmanagement-Patte
 rns.
+ Diese Hierarchie kann bei Bedarf beliebig um weitere Patternklassen oder
+ Patterns ergänzt werden.
+ Vorerst werden allerdings nur die Patterns und Patternklassen beschrieben,
+ die auch umgesetzt werden.
  Die nachfolgenden Beschreibungen orientieren sich an dieser Hierarchie
  und erläutern sie gleichzeitig etwas detaillerter.
  Darüber hinaus werden nachfolgend weitere Pattern-Klassen und Patterns
@@ -7873,8 +7877,8 @@ name "fig:Data-IUD-Patterns"
 \end_layout
 
 \begin_layout Standard
-Die Data IUD Patterns beschreiben die Möglichkeit, auf Daten verschiedene
- Datenmanipulations-Operationen ausführen zu können.
+Die Data IUD Patternklasse (Data IUD Patterns) beschreiben die Möglichkeit,
+ auf Daten verschiedene Datenmanipulations-Operationen ausführen zu können.
  Die Daten und somit auch die möglichen Datenmanipulations-Operationen untersche
 iden sich nach der zugrundeliegenden Datenquelle und Datenstruktur.
  Diese Patterns können für relationale Datenbanksysteme, XML-Datenbanksysteme
@@ -7899,8 +7903,8 @@ reference "fig:Data-IUD-Patterns"
 
 \end_inset
 
- zeigt die Data IUD Pattern-Klasse, die sich in folgende fünf operationsspezifis
-che Unterklassen gliedert:
+ zeigt die Data IUD Patternklasse, die sich in folgende fünf operationsspezifisc
+he Unterklassen gliedert:
 \end_layout
 
 \begin_layout Itemize
@@ -7945,7 +7949,7 @@ Data Rename Patterns
 \end_layout
 
 \begin_layout Standard
-Alle fünf Klassen werden durch die in Abbildung 
+Alle fünf Patternklassen werden durch die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Data-IUD-Patterns"
@@ -8055,14 +8059,83 @@ name "fig:Data-Setup-Patterns"
 \end_layout
 
 \begin_layout Standard
-Da hier ebenfalls ein Pattern auf alle Datenquellentypen angewendet werden
- kann, gibt es hier ebenfalls nur eine Ausprägung, das Data Setup Pattern.
- Dieses Pattern liefert die Möglichkeit, Data Definition Language (DDL)
+Diese Patternklasse liefert die Möglichkeit, Data Definition Language (DDL)
  Befehle auf relationalen Datenbanksystemen, XML-Datenbanksystemen, Dateisysteme
 n und Sensornetz-Datenbanksystemen auszuführen.
  So können während der Prozessausführung die Datenquellen konfiguriert oder
  neue Container (Tabellen, Schema, XML-Dokumente, Ordner, Dateien, Buffer-Tabell
 en, usw.) erstellt, geändert oder verworfen werden.
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Data-IUD-Patterns"
+
+\end_inset
+
+ zeigt die Data Setup Patternklasse (Data Setup Patterns), die sich in folgende
+ drei operationsspezifische Unterklassen gliedert:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Data Setup Create Patterns
+\series default
+: Für das Erstellen neuer Container.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Data Setup Alter Patterns
+\series default
+: Für das Ändern bereits vorhandener Container.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Data Setup Drop Patterns
+\series default
+: Für das Verwerfen vorhandener Container.
+\end_layout
+
+\begin_layout Standard
+Alle drei Patternklassen werden durch die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Data-IUD-Patterns"
+
+\end_inset
+
+ gezeigten Patterns umgesetzt, die sich aufgrund der beteiligten Datenstrukturen
+/Datenmodelle unterscheiden.
+ Im folgenden werden diese Patterns zusammengefasst beschrieben, d.
+ h.
+ es folgt eine Beschreibung für jedes Datenmodell.
+\end_layout
+
+\begin_layout Itemize
+(Create/Alter/Drop) Set Container Pattern:
+\end_layout
+
+\begin_layout Itemize
+(Create/Alter/Drop) Tree Container Pattern:
+\end_layout
+
+\begin_layout Itemize
+(Create/Alter/Drop) File Directory Pattern:
+\end_layout
+
+\begin_layout Itemize
+(Create/Alter/Drop) File Pattern:
+\end_layout
+
+\begin_layout Itemize
+(Create/Drop) Sensor Buffer Container Pattern:
 \end_layout
 
 \begin_layout Paragraph*
