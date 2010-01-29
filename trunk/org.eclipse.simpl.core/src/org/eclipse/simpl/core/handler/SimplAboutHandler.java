@@ -1,4 +1,4 @@
-package org.eclipse.simpl.core.handlers;
+package org.eclipse.simpl.core.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

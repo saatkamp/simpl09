@@ -7,47 +7,42 @@
          point="org.eclipse.ui.commands">
       <category
             name="SIMPL Category"
-            id="org.eclipse.simpl.commands.category">
+            id="org.eclipse.simpl.core.category">
       </category>
       <command
             name="Admin Console"
-            categoryId="org.eclipse.simpl.commands.category"
-            id="org.eclipse.simpl.commands.adminCCommand">
+            categoryId="org.eclipse.simpl.core.category"
+            id="org.eclipse.simpl.core.adminCCommand">
       </command>
       <command
-            categoryId="org.eclipse.simpl.commands.category"
-            id="org.eclipse.simpl.command.settingsCommand"
-            name="Settings">
-      </command>
-      <command
-            categoryId="org.eclipse.simpl.commands.category"
-            id="org.eclipse.simpl.command.helpCommand"
+            categoryId="org.eclipse.simpl.core.category"
+            id="org.eclipse.simpl.core.helpCommand"
             name="Help">
       </command>
       <command
-            categoryId="org.eclipse.simpl.commands.category"
-            id="org.eclipse.simpl.commands.aboutCommand"
+            categoryId="org.eclipse.simpl.core.category"
+            id="org.eclipse.simpl.core.aboutCommand"
             name="About">
       </command>
       <command
-            categoryId="org.eclipse.simpl.commands.category"
-            id="org.eclipse.simpl.commands.reloadDataCommand"
+            categoryId="org.eclipse.simpl.core.category"
+            id="org.eclipse.simpl.core.reloadDataCommand"
             name="Reload Plug-In Data">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="org.eclipse.simpl.core.handlers.SimplAdminConsoleHandler"
-            commandId="org.eclipse.simpl.commands.adminCCommand">">
+            class="org.eclipse.simpl.core.handler.SimplAdminConsoleHandler"
+            commandId="org.eclipse.simpl.core.adminCCommand">">
       </handler>
       <handler
-            class="org.eclipse.simpl.core.handlers.SimplAboutHandler"
-            commandId="org.eclipse.simpl.commands.aboutCommand">
+            class="org.eclipse.simpl.core.handler.SimplAboutHandler"
+            commandId="org.eclipse.simpl.core.aboutCommand">
       </handler>
       <handler
-            class="org.eclipse.simpl.core.handlers.SimplReloadDataHandler"
-            commandId="org.eclipse.simpl.commands.reloadDataCommand">
+            class="org.eclipse.simpl.core.handler.SimplReloadDataHandler"
+            commandId="org.eclipse.simpl.core.reloadDataCommand">
       </handler>
    </extension>
    <extension
@@ -55,28 +50,23 @@
       <menuContribution
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               id="org.eclipse.simpl.menus.simplMenu"
+               id="org.eclipse.simpl.core.simplMenu"
                label="SIMPL"
                mnemonic="M">
             <command
-                  commandId="org.eclipse.simpl.commands.adminCCommand"
+                  commandId="org.eclipse.simpl.core.adminCCommand"
                   icon="icons/SIMPL-logo-small.png"
-                  id="org.eclipse.simpl.menus.adminCCommand"
+                  id="org.eclipse.simpl.core.adminCCommand"
                   mnemonic="C">
             </command>
             <command
-                  commandId="org.eclipse.simpl.command.settingsCommand"
-                  id="org.eclipse.simpl.menus.settingsCommand"
-                  mnemonic="S">
-            </command>
-            <command
-                  commandId="org.eclipse.simpl.command.helpCommand"
-                  id="org.eclipse.simpl.menus.helpCommand"
+                  commandId="org.eclipse.simpl.core.helpCommand"
+                  id="org.eclipse.simpl.core.helpCommand"
                   mnemonic="H">
             </command>
             <command
-                  commandId="org.eclipse.simpl.commands.aboutCommand"
-                  id="org.eclipse.simpl.menus.aboutCommand"
+                  commandId="org.eclipse.simpl.core.aboutCommand"
+                  id="org.eclipse.simpl.core.aboutCommand"
                   mnemonic="A">
             </command>
             <separator
@@ -84,8 +74,8 @@
                   visible="true">
             </separator>
             <command
-                  commandId="org.eclipse.simpl.commands.reloadDataCommand"
-                  id="org.eclipse.simpl.commands.reloadDataCommand"
+                  commandId="org.eclipse.simpl.core.reloadDataCommand"
+                  id="org.eclipse.simpl.core.reloadDataCommand"
                   mnemonic="R">
             </command>
          </menu>
