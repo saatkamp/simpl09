@@ -7737,7 +7737,7 @@ Data Transport Patterns
 
 \begin_layout Standard
 Alle weiteren Ebenen (ab der 3.Ebene) verfeinern die Klassenhierarchie noch
- mehr oder liefern die letztendlich durch BPEL-Aktivitäten umzusetzenden
+ weiter oder liefern die letztendlich durch BPEL-Aktivitäten umzusetzenden
  Patterns.
  Die nachfolgenden Beschreibungen orientieren sich an den sieben Klassen
  der 2.Ebene und erläutern die verschiedenen Ausprägungen (Patterns) bzw.
@@ -7776,7 +7776,7 @@ name "fig:QueryPatterns"
 
 \end_inset
 
-Übersicht über die Query Pattern-Klasse und deren Patterns
+Übersicht über die Query Patterns-Klasse und deren Patterns
 \end_layout
 
 \end_inset
@@ -7814,7 +7814,8 @@ reference "fig:QueryPatterns"
 
 \begin_layout Itemize
 Set Query Pattern: Für die Anfrage von relationalen (mengenorientierten)
- Daten mittels SQL-Befehlen aus einer relationalen Datenbank.
+ Daten mittels SQL-Befehlen aus einer relationalen Datenbank oder mittels
+ SQL-ähnlichen Befehlen aus einer Sensornetz-Datenbank (TinyDB).
 \end_layout
 
 \begin_layout Itemize
@@ -7824,7 +7825,7 @@ n aus einer XML-Datenbank.
 
 \begin_layout Itemize
 File Query Pattern: Für die Anfrage von verschiedenartig strukturierten
- Daten mittels Systemaufrufen aus einem Dateisystem.
+ oder strukturlosen Daten mittels Systemaufrufen aus einem Dateisystem.
 \end_layout
 
 \begin_layout Paragraph*
@@ -7859,7 +7860,7 @@ name "fig:Data-IUD-Patterns"
 
 \end_inset
 
-Übersicht über die Data IUD Pattern-Klasse und deren Patterns
+Übersicht über die Data IUD Patterns-Klasse und deren Patterns
 \end_layout
 
 \end_inset
@@ -7877,15 +7878,15 @@ name "fig:Data-IUD-Patterns"
 \end_layout
 
 \begin_layout Standard
-Die Data IUD Patternklasse (Data IUD Patterns) beschreiben die Möglichkeit,
- auf Daten verschiedene Datenmanipulations-Operationen ausführen zu können.
+Die Klasse Data IUD Patterns beschreibt die Möglichkeit, auf Daten verschiedene
+ Datenmanipulations-Operationen ausführen zu können.
  Die Daten und somit auch die möglichen Datenmanipulations-Operationen untersche
 iden sich nach der zugrundeliegenden Datenquelle und Datenstruktur.
- Diese Patterns können für relationale Datenbanksysteme, XML-Datenbanksysteme
- und Dateisysteme verwendet werden.
+ Die Patterns dieser Klasse können für relationale Datenbanksysteme, XML-Datenba
+nksysteme und Dateisysteme verwendet werden.
  Die Sensornetzdatenbank TinyDB unterstützt das Manipulieren von Daten nicht
  und dadurch sind die Data IUD Patterns nicht für die TinyDB verwendbar
- (siehe Abschnitt 
+ (Beispiele siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Sensornetze"
@@ -7965,8 +7966,9 @@ reference "fig:Data-IUD-Patterns"
 
 \begin_layout Itemize
 Set (Insert/Update/Delete/Replace) Pattern: Diese Patterns beschreiben die
- Möglichkeit, auf mengenorientierten externen Daten verschiedene Datenmanipulati
-ons-Operationen ausführen zu können.
+ Möglichkeit, auf mengenorientierten externen Daten in einem relationalen
+ Datenbanksystem verschiedene Datenmanipulations-Operationen ausführen zu
+ können.
  Zu diesen Operationen zählen das mengen- und tupelorientierte Einfügen
  (Set Insert Pattern), Aktualisieren (Set Update Pattern), Löschen (Set
  Delete Pattern) und Ersetzen (Set Replace Pattern) von Daten.
@@ -7980,12 +7982,9 @@ ons-Operationen ausführen zu können.
 
 \begin_layout Itemize
 Tree (Insert/Delete/Replace/Rename) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipul-
-\begin_inset Newline newline
-\end_inset
-
-ations-Operationen auf Knoten, Sequenzen von Knoten oder auch Teilbäumen
- von baumartigen externen Daten ausführen zu können.
+ die Möglichkeit, verschiedene Datenmanipulations-Operationen auf Knoten,
+ Sequenzen von Knoten oder auch Teilbäumen von baumartigen externen Daten
+ in einem XML-Datenbanksystem ausführen zu können.
  Zu diesen Operationen zählen das Einfügen (Tree Insert Pattern), Ersetzen
  (Tree Replace Pattern), Umbenennen (Tree Rename Pattern) und Löschen (Tree
  Delete Pattern) von Knoten, Sequenzen von Knoten und Teilbäumen.
@@ -7994,7 +7993,8 @@ ations-Operationen auf Knoten, Sequenzen von Knoten oder auch Teilbäumen
 \begin_layout Itemize
 Node Content (Insert/Delete/Replace) Pattern: Diese Patterns beschreiben
  die Möglichkeit, verschiedene Datenmanipulations-Operationen in Knoten
- von baumartigen externen Daten ausführen zu können.
+ von baumartigen externen Daten in einem XML-Datenbanksystem ausführen zu
+ können.
  Zu diesen Operationen zählen das Einfügen (Node Content Insert Pattern),
  Ersetzen (Node Content Replace Pattern) und Löschen (Node Content Delete
  Pattern) von Werten und Attributwerten innerhalb von Knoten.
@@ -8041,7 +8041,7 @@ name "fig:Data-Setup-Patterns"
 
 \end_inset
 
-Übersicht über die Data Setup Pattern-Klasse und deren Patterns
+Übersicht über die Data Setup Patterns-Klasse und deren Patterns
 \end_layout
 
 \end_inset
@@ -8059,9 +8059,9 @@ name "fig:Data-Setup-Patterns"
 \end_layout
 
 \begin_layout Standard
-Diese Patternklasse liefert die Möglichkeit, Data Definition Language (DDL)
- Befehle auf relationalen Datenbanksystemen, XML-Datenbanksystemen, Dateisysteme
-n und Sensornetz-Datenbanksystemen auszuführen.
+Die Klasse Data Setup Patterns liefert die Möglichkeit, Data Definition
+ Language (DDL) Befehle auf relationalen Datenbanksystemen, XML-Datenbanksysteme
+n, Dateisystemen und Sensornetz-Datenbanksystemen auszuführen.
  So können während der Prozessausführung die Datenquellen konfiguriert oder
  neue Container (Tabellen, Schema, XML-Dokumente, Ordner, Dateien, Buffer-Tabell
 en, usw.) erstellt, geändert oder verworfen werden.
@@ -8071,7 +8071,7 @@ en, usw.) erstellt, geändert oder verworfen werden.
 Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Data-IUD-Patterns"
+reference "fig:Data-Setup-Patterns"
 
 \end_inset
 
@@ -8107,7 +8107,7 @@ Data Setup Drop Patterns
 Alle drei Patternklassen werden durch die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Data-IUD-Patterns"
+reference "fig:Data-Setup-Patterns"
 
 \end_inset
 
@@ -8119,23 +8119,45 @@ reference "fig:Data-IUD-Patterns"
 \end_layout
 
 \begin_layout Itemize
-(Create/Alter/Drop) Set Container Pattern:
+(Create/Alter/Drop) Set Container Pattern: Diese Patterns beschreiben die
+ Möglichkeit neue Relationen in einem relationalen Datenbanksystem zu Erzeugen
+ (Create Set Container Pattern), vorhandene Relationen zu Bearbeiten (Alter
+ Set Container Pattern) oder zu Löschen (Drop Set Container Pattern).
 \end_layout
 
 \begin_layout Itemize
-(Create/Alter/Drop) Tree Container Pattern:
+(Create/Alter/Drop) Tree Container Pattern: Diese Patterns beschreiben die
+ Möglichkeit neue XML-Dokumente in einem XML-Datenbanksystem zu Erzeugen
+ (Create Tree Container Pattern), vorhandene XML-Dokumente zu Bearbeiten
+ (Alter Tree Container Pattern) oder zu Löschen (Drop Tree Container Pattern).
 \end_layout
 
 \begin_layout Itemize
-(Create/Alter/Drop) File Directory Pattern:
+(Create/Alter/Drop) File Directory Pattern: Diese Patterns beschreiben die
+ Möglichkeit neue Ordner in einem Dateisystem zu Erzeugen (Create File Directory
+ Pattern), vorhandene Ordner zu Bearbeiten (Alter File Directory Pattern)
+ oder zu Löschen (Drop File Directory Pattern).
 \end_layout
 
 \begin_layout Itemize
-(Create/Alter/Drop) File Pattern:
+(Create/Alter/Drop) File Pattern: Diese Patterns beschreiben die Möglichkeit
+ neue Dateien in einem Dateisystem zu Erzeugen (Create File Pattern), vorhandene
+ Dateien zu Bearbeiten (Alter File Pattern) oder zu Löschen (Drop File Pattern).
 \end_layout
 
 \begin_layout Itemize
-(Create/Drop) Sensor Buffer Container Pattern:
+(Create/Drop) Sensor Buffer Container Pattern: Diese Patterns beschreiben
+ die Möglichkeit neue Buffer-Tabellen in einem Sensornetz-Datenbanksystem
+ zu Erzeugen (Create Sensor Buffer Container Pattern) oder vorhandene Buffer-Tab
+ellen zu Löschen (Drop Sensor Buffer Container Pattern) (Beispiele siehe
+ Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Sensornetze"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Paragraph*
@@ -8170,7 +8192,7 @@ name "fig:Stored-Procedure-Patterns"
 
 \end_inset
 
-Übersicht über die Stored Procedure Pattern-Klasse und deren Patterns
+Übersicht über die Stored Procedure Patterns-Klasse und deren Patterns
 \end_layout
 
 \end_inset
@@ -8188,14 +8210,26 @@ name "fig:Stored-Procedure-Patterns"
 \end_layout
 
 \begin_layout Standard
-Die Stored Procedure Patterns haben ebenfalls nur eine Ausprägung, das Stored
- Procedure Pattern.
- Dieses Pattern kann für relationale und XML-Datenbanksysteme verwendet
- werden.
- Das Stored Procedure Pattern wird benötigt, da die komplexe Verarbeitung
- von Daten meist durch Stored Procedures realisiert wird und es so für die
- Verarbeitung von externen Daten unbedingt erforderlich ist, dass Stored
- Procedures auch aus einem Prozess heraus aufgerufen werden können.
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Stored-Procedure-Patterns"
+
+\end_inset
+
+ zeigt die Klasse Stored Procedure Patterns, die im Moment nur eine Ausprägung
+ hat, das Stored Procedure Pattern.
+ Trotzdem wurde für die Verarbeitung von Stored Procedures eine extra Klasse
+ eingeführt, so dass man in Zukunft weitere Patterns dieser Klasse hinzufügen
+ kann, wenn dafür Bedarf besteht.
+ Das Stored Procedure Pattern kann für relationale und XML-Datenbanksysteme
+ verwendet werden.
+ Es wird benötigt, da die komplexe Verarbeitung von Daten meist durch Stored
+ Procedures realisiert wird, und es so für die Verarbeitung von externen
+ Daten unbedingt erforderlich ist, dass Stored Procedures auch aus einem
+ Prozess heraus aufgerufen werden können.
+ Dateisysteme und Sensornetze mit einer TinyDB unterstützen dieses Pattern
+ nicht, da es dort keinen vergleichbaren Ansatz zu Stored Procedures gibt.
 \end_layout
 
 \begin_layout Paragraph*
@@ -8224,7 +8258,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Übersicht über die Data Transport Pattern-Klasse und deren Patterns
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Data-Transport-Patterns"
+
+\end_inset
+
+Übersicht über die Data Transport Patterns-Klasse und deren Unterklassen
 \end_layout
 
 \end_inset
@@ -8238,113 +8278,50 @@ status open
 \end_layout
 
 \begin_layout Standard
-Die Data Move Patterns können für alle Datenquellentypen verwendet werden,
- um Daten zwischen zwei Datenquellen oder auch zwischen einer Datenquelle
- und einem Cache (Prozessspeicher) zu verschieben.
- Mit 
-\begin_inset Quotes eld
-\end_inset
-
-verschieben
-\begin_inset Quotes erd
-\end_inset
-
- wird hier die Erzeugung einer identischen Kopie an einem anderen Ort gemeint.
+Die Klasse Data Transport Patterns liefert die Möglichkeit Daten zwischen
+ zwei Datenquellen oder auch zwischen einer Datenquelle und einem Cache
+ (Prozessspeicher) zu verschieben oder zu kopieren.
 \end_layout
 
 \begin_layout Standard
-Die Data Move Patterns gliedern sich in folgende drei Klassen: 
-\end_layout
-
-\begin_layout Itemize
-Move Pattern: Dieses Pattern liefert die Möglichkeit, Daten zwischen zwei
- Datenquellen zu verschieben.
- So können beispielsweise Daten aus einem Dateisystem in ein relationales
- Datenbanksystem verschoben werden.
-\end_layout
-
-\begin_layout Itemize
-Import Pattern: Dieses Pattern liefert die Möglichkeit, Daten (z.B.
- Simulationsparameter) aus dem lokalen Dateisystem des Benutzers in einen
- Prozess einzubinden (zu importieren) und in diesem zu verwenden.
-\end_layout
-
-\begin_layout Itemize
-Export Pattern: Dieses Pattern ermöglicht es, Daten eines Prozesses (z.B.
- Simulationsergebnisse) lokal in das Dateisystem des Benutzer-Rechners zu
- exportieren.
-\end_layout
-
-\begin_layout Paragraph*
-Data Retrieval to Process Cache Patterns
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename iteration1/DataRetrievaltoProcessCachePatterns.png
-	width 80text%
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Data-Transport-Patterns"
 
 \end_inset
 
-
+ zeigt die Data Transport Patternklasse (Data Transport Patterns), die sich
+ in folgende zwei logische Unterklassen gliedert:
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption
+\begin_layout Itemize
 
-\begin_layout Plain Layout
-Übersicht über die Data Retrieval to Process Cache Pattern-Klasse und deren
- Patterns
+\series bold
+Process Cache Data Transport Patterns
+\series default
+: Für das Kopieren von externen Daten in den Prozessspeicher (Data Retrieval
+ to Process Cache Patterns) und das Kopieren von internen Daten aus dem
+ Prozessspeicher auf eine externe Datenquelle (Process Cache WriteBack Patterns).
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-
-\end_layout
-
-\end_inset
-
-
+\series bold
+External Data Transport Patterns
+\series default
+: Für das externe Kopieren oder Verschieben von externen Daten in derselben
+ Datenstruktur, wie z.B.
+ das Kopieren von relationalen Daten in eine relationale Datenbank (Similar
+ Data Transport Patterns) und für das externe Kopieren oder Verschieben
+ von externen Daten aus einer Datenstruktur in eine Andere, wie z.B.
+ das Kopieren von relationalen Daten in eine XML-Datenbank (Diverse Data
+ Transport Patterns).
 \end_layout
 
 \begin_layout Standard
-Die Data Retrieval Patterns können für alle Datenquellentypen verwendet
- werden.
- Sie dienen dazu externe Daten in einen BPEL-Prozess zu laden, um diese
- dort verarbeiten zu können.
- Die verschiedenen Ausprägungen der Data Retrieval Patterns liefern dafür
- eine entsprechende Datenstrukturen, in die man die angefragten externen
- Daten innerhalb des BPEL-Prozesses ablegen kann.
- Diese Datenstrukturen verhalten sich dabei wie Caches im BPEL-Prozess,
- die keine Verbindung zur originalen Datenquelle besitzen.
-\end_layout
-
-\begin_layout Standard
-Die Data Retrieval Patterns gliedern sich in folgende drei Klassen: 
-\end_layout
-
-\begin_layout Itemize
-Set Retrieval Pattern: Das Set Retrieval Pattern liefert eine mengenorientierte
- Datenstruktur, um externe Daten im Cache abzulegen.
-\end_layout
-
-\begin_layout Itemize
-Tree Retrieval Pattern: Das Tree Retrieval Pattern liefert eine baumartige
- Datenstruktur, um externe Daten im Cache abzulegen.
-\end_layout
-
-\begin_layout Itemize
-File Retrieval Pattern: Das File Retrieval Pattern liefert eine Datenstruktur,
- in die man, aus einem Dateisystem, abgefragte Daten innerhalb des BPEL-Prozesse
-s ablegen kann.
+Diese beiden Unterklassen gliedern sich in weitere vier Unterklassen, die
+ im folgenden in extra Abschnitten näher beschrieben werden.
 \end_layout
 
 \begin_layout Paragraph*
@@ -8373,7 +8350,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Übersicht über die Process Cache WriteBack Pattern-Klasse und deren Patterns
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Process-Cache-WriteBack-Patterns"
+
+\end_inset
+
+Übersicht über die Process Cache WriteBack Patterns-Klasse und deren Patterns
 \end_layout
 
 \end_inset
@@ -8387,31 +8370,381 @@ status open
 \end_layout
 
 \begin_layout Standard
-Die Cache WriteBack Patterns realisieren die Synchronisation bzw.
+Die Klasse Process Cache WriteBack Patterns realisiert die Synchronisation
+ bzw.
  das Zurückschreiben eines lokalen Datencaches auf die originale Datenquelle.
 \end_layout
 
 \begin_layout Standard
-Die Cache WriteBack Patterns gliedern sich in folgende drei Klassen: 
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Process-Cache-WriteBack-Patterns"
+
+\end_inset
+
+ zeigt die Process Cache WriteBack Patterns, die sich in folgende drei Patterns
+ gliedern: 
 \end_layout
 
 \begin_layout Itemize
-Cache Set WriteBack Pattern: Realisiert das Zurückschreiben von mengenorientiert
+Set Cache WriteBack Pattern: Realisiert das Zurückschreiben von mengenorientiert
 en Daten.
- Dieses Pattern ist ebenfalls nicht für die TinyDB verwendbar, da das Cache
- Set WriteBack Pattern ebenso, wie das Set IUD Pattern, Daten in die Datenbank
- einfügt bzw.
- Daten dort aktualisiert.
+ Dieses Pattern ist ebenfalls nicht für die TinyDB verwendbar, da bei TinyDB
+ keine Datenmanipulation möglich ist.
 \end_layout
 
 \begin_layout Itemize
-Cache Tree WriteBack Pattern: Realisiert das Zurückschreiben von baumartigen
+Tree Cache WriteBack Pattern: Realisiert das Zurückschreiben von baumartigen
  Daten
 \end_layout
 
 \begin_layout Itemize
-Cache File WriteBack.
+File Cache WriteBack.
  Pattern: Realisiert das Zurückschreiben von Dateien.
+\end_layout
+
+\begin_layout Paragraph*
+Data Retrieval to Process Cache Patterns
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename iteration1/DataRetrievaltoProcessCachePatterns.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Data-Retrieval-2PC-Patterns"
+
+\end_inset
+
+Übersicht über die Data Retrieval to Process Cache Patterns-Klasse und deren
+ Patterns
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Klasse Data Retrieval to Process Cache Patterns kann für alle Datenquellenty
+pen verwendet werden.
+ Sie dient dazu, externe Daten in einen BPEL-Prozess zu laden, um diese
+ dort verarbeiten zu können.
+ Die verschiedenen Ausprägungen der Data Retrieval to Process Cache Patterns
+ aus Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Data-Retrieval-2PC-Patterns"
+
+\end_inset
+
+ liefern dafür entsprechende Datenstrukturen, in die man die angefragten
+ externen Daten innerhalb des BPEL-Prozesses ablegen kann.
+ Diese Datenstrukturen verhalten sich dabei wie Caches im BPEL-Prozess,
+ die keine Verbindung zur originalen Datenquelle besitzen.
+\end_layout
+
+\begin_layout Standard
+Die Data Retrieval to Process Cache Patterns gliedern sich in folgende drei
+ Patterns: 
+\end_layout
+
+\begin_layout Itemize
+Set Retrieval 2PC Pattern: Das Set Retrieval 2PC Pattern liefert eine mengenorie
+ntierte Datenstruktur, um externe mengenorientierte Daten im Prozessspeicher
+ abzulegen.
+ Es ist für relationale Datenbanken und Sensornetze mit TinyDB anwendbar.
+\end_layout
+
+\begin_layout Itemize
+Tree Retrieval 2PC Pattern: Das Tree Retrieval 2PC Pattern ist für XML-Datenbank
+en anwendbar und liefert eine baumartige Datenstruktur, um externe baumartige
+ Daten im Prozessspeicher abzulegen.
+\end_layout
+
+\begin_layout Itemize
+File Retrieval 2PC Pattern: Das File Retrieval 2PC Pattern ist für Dateisysteme
+ anwendbar und liefert eine Datenstruktur, in die man aus einem Dateisystem
+ abgefragte Daten innerhalb des BPEL-Prozesses ablegen kann.
+\end_layout
+
+\begin_layout Paragraph*
+Similar Data Transport Patterns
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename iteration1/SimilarDataTransportPatterns.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Similar-Data-Transport-Patterns"
+
+\end_inset
+
+Übersicht über die Similar Data Transport Patterns-Klasse und deren Patterns
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Klasse Similar Data Transport Patterns kann für alle Datenquellentypen
+ verwendet werden.
+ Sie dient dazu externe Daten von externen Datenquellen auf andere externe
+ Datenquellen zu verschieben oder zu kopieren, wobei die Datenstruktur der
+ zu verschiebenden/kopierenden Daten unverändert bleibt.
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Similar-Data-Transport-Patterns"
+
+\end_inset
+
+ zeigt die Similar Data Transport Patterns, die sich in folgende zwei Klassen
+ gliedern: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Similar Data Move Patterns
+\series default
+: Für das Verschieben von externen Daten auf externen Datenquellen, wobei
+ die Datenstruktur unverändert bleibt.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Similar Data Copy Patterns
+\series default
+: Für das Kopieren von externen Daten auf externen Datenquellen, wobei die
+ Datenstruktur unverändert bleibt.
+\end_layout
+
+\begin_layout Standard
+Beide Patternklassen werden durch die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Similar-Data-Transport-Patterns"
+
+\end_inset
+
+ gezeigten Patterns umgesetzt, die sich aufgrund der beteiligten Datenstrukturen
+/Datenmodelle unterscheiden.
+ Im folgenden werden diese Patterns zusammengefasst beschrieben, d.
+ h.
+ es folgt eine Beschreibung für jedes Datenmodell.
+\end_layout
+
+\begin_layout Itemize
+(Move/Copy) Set2Set Pattern: Liefert die Möglichkeit externe mengenorientierte
+ Daten von einer externen Datenquelle auf eine andere externe Datenquelle
+ zu Kopieren oder zu Verschieben.
+ Die Datenstruktur der Daten bleibt dabei unverändert mengenorientiert.
+ Dieses Pattern ist für relationale Datenbanken anwendbar.
+\end_layout
+
+\begin_layout Itemize
+(Move/Copy) Tree2Tree Pattern: Liefert die Möglichkeit externe baumorientierte
+ Daten von einer externen Datenquelle auf eine andere externe Datenquelle
+ zu Kopieren oder zu Verschieben.
+ Die Datenstruktur der Daten bleibt dabei unverändert baumorientiert.
+ Dieses Pattern ist für XML-Datenbanken anwendbar.
+\end_layout
+
+\begin_layout Itemize
+(Move/Copy) File2File Pattern: Liefert die Möglichkeit externe Daten aus
+ Dateien von einer externen Datenquelle auf eine andere externe Datenquelle
+ zu Kopieren oder zu Verschieben.
+ Die Datenstruktur der Daten bleibt dabei unverändert.
+ Dieses Pattern ist für Dateisysteme anwendbar.
+\end_layout
+
+\begin_layout Paragraph*
+Diverse Data Transport Patterns
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename iteration1/DiverseDataTransportPatterns.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diverse-Data-Transport-Patterns"
+
+\end_inset
+
+Übersicht über die Diverse Data Transport Patterns-Klasse und deren Patterns
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Klasse Diverse Data Transport Patterns kann für alle Datenquellentypen
+ verwendet werden.
+ Sie dient dazu externe Daten von externen Datenquellen auf andere externe
+ Datenquellen zu verschieben oder zu kopieren, wobei sich die Datenstruktur
+ der zu verschiebenden/kopierenden Daten ändert, d.h.
+ die Daten werden in eine andere Datenstruktur überführt.
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diverse-Data-Transport-Patterns"
+
+\end_inset
+
+ zeigt die Diverse Data Transport Patterns, die sich in folgende zwei Klassen
+ gliedern: 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Diverse Data Move Patterns
+\series default
+: Für das Verschieben von externen Daten auf externen Datenquellen mit verändert
+er Datenstruktur.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Diverse Data Copy Patterns
+\series default
+: Für das Kopieren von externen Daten auf externen Datenquellen mit veränderter
+ Datenstruktur.
+\end_layout
+
+\begin_layout Standard
+Beide Patternklassen werden durch die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diverse-Data-Transport-Patterns"
+
+\end_inset
+
+ gezeigten Patterns umgesetzt, die sich aufgrund der beteiligten Datenstrukturen
+/Datenmodelle unterscheiden.
+ Im folgenden werden nur drei dieser Patterns beschrieben, da bei den verbleiben
+den drei Patterns jeweils nur eine umgekehrte Datenmodell-Transformation
+ durchgeführt wird.
+\end_layout
+
+\begin_layout Itemize
+(Move/Copy) Set2Tree Pattern: Liefert die Möglichkeit externe mengenorientierte
+ Daten aus einer relationalen Datenbank oder einer Sensornetz-Datenbank
+ auf eine XML-Datenbank als baumartige Daten zu Kopieren oder zu Verschieben.
+ Dieses Pattern ist für relationale, Sensortnetz und XML-Datenbanken anwendbar,
+ wobei die relationalen bzw.
+ Sensornetz-Datenbanken nur als Quelle und die XML-Datenbanken nur als Ziel
+ der Kopier- bzw.
+ Verschiebe-Operation verwendet werden können.
+\end_layout
+
+\begin_layout Itemize
+(Move/Copy) File2Set Pattern: Liefert die Möglichkeit externe Daten aus
+ Dateisystemen auf eine relationale Datenbank als relationale Daten zu Kopieren
+ oder zu Verschieben.
+ Dieses Pattern ist für Dateisysteme und relationale Datenbanken anwendbar,
+ wobei die Dateisysteme nur als Quelle und die relationalen Datenbanken
+ nur als Ziel der Kopier- bzw.
+ Verschiebe-Operation verwendet werden können.
+ Die Sensornetz-Datenbank TinyDB kann hier nicht als Ziel angegeben werden,
+ da auf ihr keine Datenmanipulation möglich ist.
+\end_layout
+
+\begin_layout Itemize
+(Move/Copy) File2Tree Pattern: Liefert die Möglichkeit externe Daten aus
+ Dateisystemen auf eine XML-Datenbank als baumartige Daten zu Kopieren oder
+ zu Verschieben.
+ Dieses Pattern ist für Dateisysteme und XML-Datenbanken anwendbar, wobei
+ die Dateisysteme nur als Quelle und die XML-Datenbanken nur als Ziel der
+ Kopier- bzw.
+ Verschiebe-Operation verwendet werden können.
 \end_layout
 
 \begin_layout Paragraph*
@@ -8440,7 +8773,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Übersicht über die Cache Access Pattern-Klasse und deren Unterklassen
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Cache-Access-Patterns"
+
+\end_inset
+
+Übersicht über die Cache Access Patterns-Klasse und deren Unterklassen
 \end_layout
 
 \end_inset
@@ -8454,40 +8793,138 @@ status open
 \end_layout
 
 \begin_layout Standard
-Die Cache Access Patterns beschreiben die Notwendigkeit, auf den im BPEL-Prozess
- erzeugten Datencache in geeigneter Weise zugreifen zu können.
+Die Klasse Cache Access Patterns beschreibt die Notwendigkeit, auf den im
+ BPEL-Prozess erzeugten Datencache in geeigneter Weise zugreifen zu können.
+ Die weiteren Unterklassen unterscheiden sich durch die zugrundeliegende
+ Datenstruktur der Daten im Prozessspeicher.
+ Die einzelnen Patterns dieser Klassen liefern verschiedene Zugriffsmöglichkeite
+n auf die Daten im Prozessspeicher.
+ Da diese Zugriffsmöglichkeiten je nach Datenstruktur variieren, wird auf
+ diese in den nachfolgenden Beschreibungen näher eingegangen.
 \end_layout
 
 \begin_layout Standard
-Die Cache Access Patterns gliedern sich in folgende drei Klassen: 
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Cache-Access-Patterns"
+
+\end_inset
+
+ zeigt die Cache Access Patterns, die sich in folgende drei Klassen gliedern:
 \end_layout
 
 \begin_layout Itemize
-Cache Set Access Pattern: Das Cache Set Access Pattern liefert die Möglichkeit,
- auf den im BPEL-Prozess erzeugten Datencache sequentiell und direkt (wahlfrei)
+
+\series bold
+Set Cache Access Patterns
+\series default
+: Die Cache Set Access Patterns liefern die Möglichkeit, auf den im BPEL-Prozess
+ erzeugten mengenorientierten Datencache sequentiell und direkt (wahlfrei)
  zugreifen zu können.
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Cache Tree Access Pattern: Das Cache Tree Access Pattern liefert die Möglichkeit
-, auf den erzeugten Datencache sequentiell und direkt (wahlfrei) zugreifen
- zu können.
- Der sequentielle Zugriff wird dabei durch entsprechende Funktionen realisiert,
- die die Kindknoten oder den Vaterknoten des ausgewählten Knoten liefern.
- Über den Wurzelknoten als Startpunkt kann so der ganze Baum sequentiell
+Set Cache Sequential Access Pattern: Liefert den sequentiellen Zugriff auf
+ die mengenorientierte Datenstruktur, d.h.
+ die Relation wird von ihrem ersten Element bis zu ihrem Letzten schrittweise
+ durchlaufen, wobei in einem Schritt immer nur das vorherige oder das nächste
+ Element der Relation erreicht werden kann.
+\end_layout
+
+\begin_layout Itemize
+Set Cache Direct Access Pattern: Liefert den direkten (wahlfreien) Zugriff
+ auf die mengenorientierte Datenstruktur, d.h.
+ jedes beliebige Element der Relation kann direkt z.B.
+ über einen Index ausgewählt werden.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Tree Cache Access Patterns
+\series default
+: Die Tree Cache Access Patterns liefern die Möglichkeit, auf den erzeugten
+ baumorientierten Datencache hierarchisch, sequentiell und direkt (wahlfrei)
+ zugreifen zu können.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tree Cache Hierarchical Access Pattern: Liefert den hierarchischen Zugriff,
+ der durch entsprechende Funktionen realisiert wird, die die Kindknoten
+ oder den Vaterknoten des ausgewählten Knoten liefern.
+ Über den Wurzelknoten als Startpunkt kann so der ganze Baum hierarchisch
  in beiden Richtungen (Wurzel -> Blatt vs.
  Blatt ->Wurzel) durchlaufen werden.
- Der direkte Zugriff wird realisiert, in dem beispielsweise der Name des
- Knoten angegeben wird, dieser im Baum gesucht und zurückgegeben wird, falls
- ein entsprechender Knoten existiert.
 \end_layout
 
 \begin_layout Itemize
-Cache File Access Pattern: Das Cache File Access Pattern liefert die Möglichkeit
-, auf den erzeugten Datencache in geeigneter Weise (z.B.
- sequentiell oder wahlfrei) zugreifen zu können.
+Tree Cache Sequential Access Pattern: Liefert den sequentiellen Zugriff,
+ der durch entsprechende Funktionen realisiert wird, die die Geschwisterknoten
+ oder den Kind- bzw.
+ Vaterknoten des ausgewählten Knoten liefern.
+ Über den Wurzelknoten als Startpunkt kann jede Ebene des ganzen Baums sequentie
+ll in beiden Richtungen (Wurzel -> Blatt vs.
+ Blatt ->Wurzel) durchlaufen werden.
 \end_layout
 
+\begin_layout Itemize
+Tree Cache Direct Access Pattern: Liefert den direkten Zugriff beispielsweise
+ durch die Angabe eines XPath-Ausdrucks (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-24"
+
+\end_inset
+
+) mit dem der entsprechende Knoten im Baum gesucht und zurückgegeben wird,
+ falls ein solcher Knoten existiert.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+File Cache Access Patterns
+\series default
+: Die File Cache Access Patterns liefern die Möglichkeit, auf Dateiinhalte
+ eines erzeugten Datencache in geeigneter Weise (z.B.
+ sequentiell oder wahlfrei) zugreifen zu können.
+ Die Klasse kann durch weitere dateiformatspezifische Unterklassen verfeinert
+ werden.
+ Im Moment wird nur das Dateiformat Comma Seperated Values (CSV) näher betrachte
+t und beschrieben.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CSV File Cache Access Patterns: Die CSV File Cache Access Patterns liefern
+ die Möglichkeit, auf den erzeugten CSV-Datencache sequentiell und direkt
+ (wahlfrei) zugreifen zu können.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CSV File Cache Sequential Access Patterns: Liefert den sequentiellen Zugriff
+ auf die CSV-Daten, d.h.
+ die Daten werden von der ersten Zeile bis zu der Letzten zeilenweise durchlaufe
+n, wobei in einem Schritt immer nur die vorherige oder die nachfolgende
+ Zeile erreichbar ist.
+\end_layout
+
+\begin_layout Itemize
+CSV File Cache Direct Access Patterns: Liefert den direkten (wahlfreien)
+ Zugriff auf die CSV-Daten, d.h.
+ jede beliebige Zeile der Daten kann direkt z.B.
+ über einen Index ausgewählt werden.
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Paragraph*
 Cache IUD Patterns
 \end_layout
@@ -8514,7 +8951,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Übersicht über die Cache IUD Pattern-Klasse und deren Patterns
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Cache-IUD-Patterns"
+
+\end_inset
+
+Übersicht über die Cache IUD Patterns-Klasse und deren Patterns
 \end_layout
 
 \end_inset
@@ -8528,29 +8971,117 @@ status open
 \end_layout
 
 \begin_layout Standard
-Die Cache IUD Patterns beschreiben die Notwendigkeit, dass in einen Datencache
- auch Daten eingefügt, aktualisiert und wieder aus diesem gelöscht werden
- können.
+Die Klasse Cache IUD Patterns beschreibt die Notwendigkeit, dass in einen
+ Datencache auch Daten eingefügt, aktualisiert, umbenannt, ersetzt und wieder
+ aus diesem gelöscht werden können.
 \end_layout
 
 \begin_layout Standard
-Die Cache IUD Patterns gliedern sich in folgende drei Klassen: 
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Cache-IUD-Patterns"
+
+\end_inset
+
+ zeigt die Cache IUD Patternklasse, die sich in folgende fünf operationsspezifis
+che Unterklassen gliedert:
 \end_layout
 
 \begin_layout Itemize
-Cache Set IUD Pattern: Das Cache Set IUD Pattern liefert die Möglichkeit,
- dass mengenorientierte Daten in einen Datencache eingefügt, aktualisiert
- und aus diesem gelöscht werden können.
+
+\series bold
+Cache Insert Patterns
+\series default
+ für das Einfügen neuer Daten in den Prozessspeicher.
 \end_layout
 
 \begin_layout Itemize
-Cache Tree IUD Pattern: Das Cache Tree IUD Pattern liefert die selbe Funktionali
-tät, wie das Cache Set IUD Pattern, allerdings für baumartige Daten.
+
+\series bold
+Cache Update Patterns
+\series default
+ für das Aktualisieren vorhandener Daten im Prozessspeicher durch beispielweise
+ Aktualisierungsroutinen.
 \end_layout
 
 \begin_layout Itemize
-Cache File IUD Pattern: Das Cache File IUD Pattern liefert die selbe Funktionali
-tät, wie das Cache Set IUD Pattern, allerdings für Dateien.
+
+\series bold
+Cache Delete Patterns
+\series default
+ für das Löschen vorhandener Daten im Prozessspeicher.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cache Replace Patterns
+\series default
+ für das Ersetzen vorhandener Daten im Prozessspeicher durch neue Daten.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cache Rename Patterns
+\series default
+ für das Umbenennen vorhandener Daten im Prozessspeicher.
+\end_layout
+
+\begin_layout Standard
+Alle fünf Patternklassen werden durch die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Cache-IUD-Patterns"
+
+\end_inset
+
+ gezeigten Patterns umgesetzt, die sich aufgrund der beteiligten Datenstrukturen
+/Datenmodelle unterscheiden.
+ Im folgenden werden diese Patterns zusammengefasst beschrieben, d.
+ h.
+ es folgt eine Beschreibung für jedes Datenmodell.
+\end_layout
+
+\begin_layout Itemize
+Set Cache (Insert/Update/Delete/Replace) Pattern: Diese Patterns beschreiben
+ die Möglichkeit, auf mengenorientierten internen Daten im Prozessspeicher
+ verschiedene Datenmanipulations-Operationen ausführen zu können.
+ Zu diesen Operationen zählen das mengen- und tupelorientierte Einfügen
+ (Set Cache Insert Pattern), Aktualisieren (Set Cache Update Pattern), Löschen
+ (Set Cache Delete Pattern) und Ersetzen (Set Cache Replace Pattern) von
+ Daten.
+\end_layout
+
+\begin_layout Itemize
+Tree Cache (Insert/Delete/Replace/Rename) Pattern: Diese Patterns beschreiben
+ die Möglichkeit, verschiedene Datenmanipulations-Operationen auf Knoten,
+ Sequenzen von Knoten oder auch Teilbäumen von baumartigen internen Daten
+ im Prozessspeicher ausführen zu können.
+ Zu diesen Operationen zählen das Einfügen (Tree Cache Insert Pattern),
+ Ersetzen (Tree Cache Replace Pattern), Umbenennen (Tree Cache Rename Pattern)
+ und Löschen (Tree Cache Delete Pattern) von Knoten, Sequenzen von Knoten
+ und Teilbäumen.
+\end_layout
+
+\begin_layout Itemize
+Node Content Cache (Insert/Delete/Replace) Pattern: Diese Patterns beschreiben
+ die Möglichkeit, verschiedene Datenmanipulations-Operationen in Knoten
+ von baumartigen internen Daten im Prozessspeicher ausführen zu können.
+ Zu diesen Operationen zählen das Einfügen (Node Content Cache Insert Pattern),
+ Ersetzen (Node Content Cache Replace Pattern) und Löschen (Node Content
+ Cache Delete Pattern) von Werten und Attributwerten innerhalb von Knoten.
+\end_layout
+
+\begin_layout Itemize
+File Content Cache (Insert/Delete/Replace) Pattern: Diese Patterns beschreiben
+ die Möglichkeit, verschiedene Datenmanipulations-Operationen innerhalb
+ von Daten, die aus Dateien ausgelesen wurden, im Prozessspeicher ausführen
+ zu können.
+ Zu diesen Operationen zählen das Einfügen (File Content Cache Insert Pattern),
+ Ersetzen (File Content Cache Replace Pattern) und Löschen (File Content
+ Cache Delete Pattern) von Dateiinhalten.
 \end_layout
 
 \begin_layout Standard
@@ -8562,7 +9093,7 @@ reference "tab:Übersicht-der-Datenmanagement-Patterns"
 \end_inset
 
  zeigt eine Übersicht aller Datenmanagement-Patterns, die für den Umgang
- mit verschiedenen Datenquellentypen benötigt werden und welche Patterns
+ mit verschiedenen Datenquellentypen benötigt werden, und welche Patterns
  für welche Datenquellentypen verwendet werden können (durch 
 \begin_inset Quotes eld
 \end_inset
@@ -8677,7 +9208,7 @@ Cache
 \begin_inset Text
 
 \begin_layout Plain Layout
-Query Pattern
+
 \end_layout
 
 \end_inset
@@ -8686,63 +9217,7 @@ Query Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Set IUD Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
 \end_layout
 
 \end_inset
@@ -8789,25 +9264,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Tree IUD Pattern
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
 \end_layout
 
 \end_inset
@@ -8826,44 +9283,6 @@ x
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Node Content IUD Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
 \end_layout
 
 \end_inset
@@ -8901,856 +9320,16 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-File Content IUD Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Data Setup Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Stored Procedure Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Move Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Import Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Export Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Set Retrieval Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Tree Retrieval Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-File Retrieval Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cache Set Access Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cache Tree Access Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cache File Access Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cache Set IUD Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cache Tree IUD Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Cache File IUD Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cache Set WriteBack Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-x
 \end_layout
 
 \end_inset
@@ -9797,7 +9376,16 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cache Tree WriteBack Pattern 
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -9815,7 +9403,950 @@ Cache Tree WriteBack Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -9853,15 +10384,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cache File WriteBack Pattern 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -9880,7 +10402,16 @@ Cache File WriteBack Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -9908,10 +10439,6 @@ x
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -14955,6 +15482,16 @@ nik, Diplomarbeit Nr.
  2729, 02.August 2008.
 \end_layout
 
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-24"
+
+\end_inset
+
+XPath, http://www.w3.org/standards/techs/xpath, zuletzt zugegriffen am 30.01.2010
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -14988,7 +15525,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="23" columns="2">
+<lyxtabular version="3" rows="24" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="6cm">
@@ -15427,6 +15964,26 @@ XML
 
 \begin_layout Plain Layout
 Extensible Markup Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XPath
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML Path Language
 \end_layout
 
 \end_inset
