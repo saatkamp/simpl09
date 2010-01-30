@@ -7574,8 +7574,11 @@ reference "fig:Klassenhierarchie-der-Datenmanagement-Patterns"
 \end_inset
 
  zeigt die oberen Ebenen (0.
- Ebene bis 2.Ebene) der Klassenhierarchie der verschiedenen Datenmanagement-Patte
-rns.
+ Ebene bis 2.Ebene) der Klassenhierarchie der verschiedenen Datenman-
+\begin_inset Newline newline
+\end_inset
+
+agement-Patterns.
  Diese Hierarchie kann bei Bedarf beliebig um weitere Patternklassen oder
  Patterns ergänzt werden.
  Vorerst werden allerdings nur die Patterns und Patternklassen beschrieben,
@@ -7982,7 +7985,7 @@ Set (Insert/Update/Delete/Replace) Pattern: Diese Patterns beschreiben die
 
 \begin_layout Itemize
 Tree (Insert/Delete/Replace/Rename) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipulations-Operationen auf Knoten,
+ die Möglichkeit, verschiedene Datenmanipulations -Operationen auf Knoten,
  Sequenzen von Knoten oder auch Teilbäumen von baumartigen externen Daten
  in einem XML-Datenbanksystem ausführen zu können.
  Zu diesen Operationen zählen das Einfügen (Tree Insert Pattern), Ersetzen
@@ -8175,7 +8178,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename iteration1/StoredProcedurePatterns.png
-	width 80text%
+	scale 60
 
 \end_inset
 
@@ -8339,7 +8342,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename iteration1/ProcessCacheWriteBackPatterns.png
-	width 80text%
+	scale 60
 
 \end_inset
 
@@ -8419,7 +8422,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename iteration1/DataRetrievaltoProcessCachePatterns.png
-	width 80text%
+	scale 60
 
 \end_inset
 
@@ -8508,7 +8511,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename iteration1/SimilarDataTransportPatterns.png
-	width 80text%
+	width 60text%
 
 \end_inset
 
@@ -8630,7 +8633,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename iteration1/DiverseDataTransportPatterns.png
-	width 80text%
+	width 60text%
 
 \end_inset
 
@@ -8762,7 +8765,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename iteration1/CacheAccessPatterns.png
-	width 80text%
+	width 100text%
 
 \end_inset
 
@@ -8940,7 +8943,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename iteration1/CacheIUDPatterns.png
-	width 80text%
+	width 100text%
 
 \end_inset
 
