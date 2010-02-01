@@ -575,7 +575,7 @@ zoabifs
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.3
+1.0
 \end_layout
 
 \end_inset
@@ -663,7 +663,7 @@ Die Begriffe
 <features islongtable="true" headTopDL="true">
 <column alignment="left" valignment="top" width="1.7in">
 <column alignment="left" valignment="top" width="1.3in">
-<column alignment="left" valignment="middle" width="3in">
+<column alignment="left" valignment="middle" width="3.1in">
 <row endhead="true" newpage="true">
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -745,7 +745,7 @@ Administrator
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Rolle im SIMPL Team.
+Eine Rolle im SIMPL-Team.
  Er verwaltet den Server und ist zuständig für den Einsatz der Entwicklungswerkz
 euge und die Softwareinfrastuktur.
 \end_layout
@@ -844,7 +844,7 @@ ODE, Apache ODE Engine, Engine
 \begin_inset Text
 
 \begin_layout Plain Layout
-Laufzeitsystem für BPEL Prozesse.
+Laufzeitsystem für BPEL-Prozesse.
 \end_layout
 
 \end_inset
