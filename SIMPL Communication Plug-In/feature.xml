@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.simpl.communication.feature"
       label="SIMPL Communication Plug-In"
-      version="1.0.0"
+      version="1.0.1"
       provider-name="SIMPL">
 
    <description>
@@ -29,6 +29,13 @@ Core over Web-Service communication.
 
    <plugin
          id="org.eclipse.simpl.communication"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.simpl.settings"
          download-size="0"
          install-size="0"
          version="0.0.0"
