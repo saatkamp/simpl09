@@ -106,10 +106,6 @@ public class BPELDAOConnectionFactoryImpl implements BpelDAOConnectionFactoryJDB
                 propMap.put((String)me.getKey(),me.getValue());
 
         _emf = Persistence.createEntityManagerFactory("simpl-dao", propMap);
-        
-        
-        //Simpl: Loads xsd file for sdo types for use in DAO's,
-        XsdTypeLoader.defineSIMPLTypes();
     }
 
     public void setTransactionManager(TransactionManager tm) {

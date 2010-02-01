@@ -30,8 +30,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import commonj.sdo.DataObject;
-
 /**
  * @author Matthieu Riou <mriou at apache dot org>
  */
@@ -49,10 +47,6 @@ public class XmlDataProperty {
     @ManyToOne(fetch= FetchType.LAZY,cascade={CascadeType.PERSIST})
     @Column(name="XML_DATA_ID")
     private XmlDataDAOImpl _xmlData;
-    
-    DataObject dataObject;
-    
-    XmlDataPropertySDO xmlDataPropertySDO = new XmlDataPropertySDO();
 
     public XmlDataProperty() {
     }
@@ -60,10 +54,6 @@ public class XmlDataProperty {
         this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
         this._xmlData = xmlData;
-    	dataObject = xmlDataPropertySDO.getSDO(_id);
-
-        dataObject.setString("propertyKey", propertyKey);
-        dataObject.setString("propertyValue", propertyValue);
     }
 
     public String getPropertyKey() {
@@ -72,19 +62,14 @@ public class XmlDataProperty {
 
     public void setPropertyKey(String propertyKey) {
         this.propertyKey = propertyKey;
-        dataObject.setString("propertyKey", propertyKey);
-
     }
 
     public String getPropertyValue() {
         return propertyValue;
-        
-
     }
 
     public void setPropertyValue(String propertyValue) {
         this.propertyValue = propertyValue;
-        dataObject.setString("propertyValue", propertyValue);
     }
 
 }

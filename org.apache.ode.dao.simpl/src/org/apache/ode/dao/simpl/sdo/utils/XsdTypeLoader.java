@@ -1,4 +1,4 @@
-package org.apache.ode.dao.simpl;
+package org.apache.ode.dao.simpl.sdo.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

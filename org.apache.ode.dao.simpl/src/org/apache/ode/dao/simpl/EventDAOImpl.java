@@ -21,8 +21,6 @@ package org.apache.ode.dao.simpl;
 
 import org.apache.ode.bpel.evt.BpelEvent;
 
-import commonj.sdo.DataObject;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -63,14 +61,6 @@ public class EventDAOImpl {
     private ProcessInstanceDAOImpl _instance;
     @Lob  @Column(name="DATA")
     private BpelEvent _event;
-    
-    DataObject dataObject;
-    
-    EventSDO eventSDO = new EventSDO();
-    
-    public EventDAOImpl () {
-    }
-    
 
     public BpelEvent getEvent() {
         return _event;
@@ -78,7 +68,6 @@ public class EventDAOImpl {
 
     public void setEvent(BpelEvent event) {
         _event = event;
-        
     }
 
     public String getDetail() {
@@ -87,7 +76,6 @@ public class EventDAOImpl {
 
     public void setDetail(String detail) {
         _detail = detail;
-        dataObject.setString("details", detail);
     }
 
     public Long getId() {
@@ -96,8 +84,6 @@ public class EventDAOImpl {
 
     public void setId(Long id) {
         _id = id;
-    	dataObject = eventSDO.getSDO(_id);
-        
     }
 
     public ProcessInstanceDAOImpl getInstance() {
@@ -122,7 +108,6 @@ public class EventDAOImpl {
 
     public void setTstamp(Timestamp tstamp) {
         _tstamp = tstamp;
-        dataObject.setString("tstamp", tstamp.toString());
     }
 
     public String getType() {
@@ -131,17 +116,13 @@ public class EventDAOImpl {
 
     public void setType(String type) {
         _type = type;
-        dataObject.setString("type", type);
     }
 
-    public Long getScopeId()
-    {
-    	return _scopeId;
+    public Long getScopeId() {
+        return _scopeId;
     }
 
     public void setScopeId(Long scopeId) {
         _scopeId = scopeId;
-    	
-        dataObject.setLong("scopeId", scopeId);
     }
 }

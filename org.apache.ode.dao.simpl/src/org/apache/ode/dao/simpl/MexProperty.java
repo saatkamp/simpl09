@@ -29,9 +29,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.xml.crypto.Data;
-
-import commonj.sdo.DataObject;
 
 /**
  * @author Matthieu Riou <mriou at apache dot org>
@@ -50,10 +47,6 @@ public class MexProperty {
     @ManyToOne(fetch= FetchType.LAZY,cascade={CascadeType.PERSIST})
     @Column(name="MEX_ID")
     private MessageExchangeDAOImpl _mex;
-    
-    DataObject dataObject;
-    
-    MexPropertySDO mexPropertySDO = new MexPropertySDO();
 
     public MexProperty() {
     }
@@ -61,10 +54,6 @@ public class MexProperty {
         this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
         this._mex = mex;
-    	dataObject = mexPropertySDO.getSDO(_id);
-
-        dataObject.setString("propertyKey", propertyKey);
-        dataObject.setString("propertyValue", propertyValue);
     }
 
     public String getPropertyKey() {
@@ -73,16 +62,13 @@ public class MexProperty {
 
     public void setPropertyKey(String propertyKey) {
         this.propertyKey = propertyKey;
-        dataObject.setString("propertyKey", propertyKey);
     }
 
     public String getPropertyValue() {
         return propertyValue;
-
     }
 
     public void setPropertyValue(String propertyValue) {
         this.propertyValue = propertyValue;
-        dataObject.setString("propertyValue", propertyValue);
     }
 }
