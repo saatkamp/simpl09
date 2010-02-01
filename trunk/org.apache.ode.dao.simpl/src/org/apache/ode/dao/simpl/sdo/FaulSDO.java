@@ -1,13 +1,14 @@
-package org.apache.ode.dao.simpl;
+package org.apache.ode.dao.simpl.sdo;
+
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
 
-public class CorrelationSetSDO extends AbstractSDO {
+public class FaulSDO extends AbstractSDO {
 
 	@Override
 	public DataObject createDataObject(Long id) {
-		DataObject object = DataFactory.INSTANCE.create("http://www.example.org/simpl-dao", "CorrelationSetSDO");
+		DataObject object = DataFactory.INSTANCE.create("http://www.example.org/simpl-dao", "FaultSDO");
 		object.setLong("id", id);
 		
 		return object;

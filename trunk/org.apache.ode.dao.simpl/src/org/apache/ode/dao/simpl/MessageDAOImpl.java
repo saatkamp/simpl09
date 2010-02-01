@@ -35,8 +35,6 @@ import org.apache.ode.bpel.dao.MessageDAO;
 import org.apache.ode.utils.DOMUtils;
 import org.w3c.dom.Element;
 
-import commonj.sdo.DataObject;
-
 
 @Entity
 @Table(name="ODE_MESSAGE")
@@ -55,18 +53,12 @@ public class MessageDAOImpl implements MessageDAO {
     private Element _element;
     @Transient
     private Element _headerElement;
-    
-    DataObject dataObject;
-    
-    MessageSDO messageSDO = new MessageSDO();
 
     public MessageDAOImpl() {
+
     }
     public MessageDAOImpl(QName type, MessageExchangeDAOImpl me) {
         _type = type.toString();
-    	dataObject = messageSDO.getSDO(_id);
-
-        dataObject.setString("type", type.toString());
     }
 
     public Element getData() {
@@ -89,13 +81,10 @@ public class MessageDAOImpl implements MessageDAO {
         if (value == null) return;
         _data = DOMUtils.domToString(value);
         _element = value;
-        dataObject.setString("data", DOMUtils.domToString(value));
-        dataObject.setString("element", value.toString());
     }
 
     public void setType(QName type) {
         _type = type.toString();
-        dataObject.setString("type", type.toString());
     }
 
     public Element getHeader() {
@@ -113,8 +102,6 @@ public class MessageDAOImpl implements MessageDAO {
         if (value == null) return;
         _header = DOMUtils.domToString(value);
         _headerElement = value;
-        dataObject.setString("header", DOMUtils.domToString(value));
-        dataObject.setString("headerElement", value.toString());
     }
 
 }

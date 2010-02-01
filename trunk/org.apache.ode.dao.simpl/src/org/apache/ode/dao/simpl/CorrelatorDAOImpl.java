@@ -25,8 +25,6 @@ import org.apache.ode.bpel.dao.MessageExchangeDAO;
 import org.apache.ode.bpel.dao.MessageRouteDAO;
 import org.apache.ode.bpel.dao.ProcessInstanceDAO;
 
-import commonj.sdo.DataObject;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -56,17 +54,10 @@ public class CorrelatorDAOImpl extends OpenJPADAO implements CorrelatorDAO {
     @ManyToOne(fetch= FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="PROC_ID")
     private ProcessDAOImpl _process;
 
-    DataObject dataObject;
-    
-    CorrelatorSDO correlatorSDO = new CorrelatorSDO();
-    
-    public CorrelatorDAOImpl(){
-    }
+    public CorrelatorDAOImpl(){}
     public CorrelatorDAOImpl(String correlatorKey, ProcessDAOImpl process) {
         _correlatorKey = correlatorKey;
         _process = process;
-    	dataObject = correlatorSDO.getSDO(_correlatorId);
-        dataObject.setString("correlatorKey", correlatorKey);
     }
 
     public void addRoute(String routeGroupId, ProcessInstanceDAO target, int index, CorrelationKey correlationKey) {

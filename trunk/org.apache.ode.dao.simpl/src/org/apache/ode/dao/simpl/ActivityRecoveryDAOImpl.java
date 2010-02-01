@@ -1,3 +1,5 @@
+package org.apache.ode.dao.simpl;
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,14 +19,9 @@
  * under the License.
  */
 
-package org.apache.ode.dao.simpl;
 
 
-import org.apache.ode.bpel.dao.ActivityRecoveryDAO;
-import org.apache.ode.utils.DOMUtils;
-import org.w3c.dom.Element;
-
-import commonj.sdo.DataObject;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -37,7 +34,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.Date;
+
+import org.apache.ode.bpel.dao.ActivityRecoveryDAO;
+import org.apache.ode.utils.DOMUtils;
+import org.w3c.dom.Element;
 
 
 @Entity
@@ -67,9 +67,6 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
     @SuppressWarnings("unused")
     @ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="INSTANCE_ID")
     private ProcessInstanceDAOImpl _instance;
-    
-    ActivityRecoverySDO activitySDO = new ActivityRecoverySDO();
-    DataObject dataObject;
 
 	
     public ActivityRecoveryDAOImpl() {}
@@ -80,23 +77,15 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
 		_activityId = activityId;
 		_reason = reason;
 		_dateTime = dateTime;
-		this.dataObject = this.activitySDO.getSDO(this._id);
-		dataObject.setString("channel", channel);
-		dataObject.setLong("activityID", activityId);
-		dataObject.setString("reason", reason);
-		dataObject.setDate("dateTime", dateTime);
-		
 
         if (data != null) _details = DOMUtils.domToString(data);
-		dataObject.setString("details", _details);
+		
         String alist = actions[0];
         for (int i = 1; i < actions.length; ++i)
             alist += " " + actions[i];
 		_actions = alist;
-		dataObject.setString("actions",alist);
 		
 		_retries = retries;		
-		dataObject.setInt("retries", retries);
 	}
 	
 	public String getActions() {
@@ -145,6 +134,5 @@ public class ActivityRecoveryDAOImpl implements ActivityRecoveryDAO {
 
     public void setInstance(ProcessInstanceDAOImpl instance) {
         _instance = instance;
-        
     }
 }

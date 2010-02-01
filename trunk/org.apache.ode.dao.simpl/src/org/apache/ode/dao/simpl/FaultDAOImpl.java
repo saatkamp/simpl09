@@ -23,8 +23,6 @@ import org.apache.ode.bpel.dao.FaultDAO;
 import org.apache.ode.utils.DOMUtils;
 import org.w3c.dom.Element;
 
-import commonj.sdo.DataObject;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,27 +51,15 @@ public class FaultDAOImpl implements FaultDAO {
     private int _lineNo;
 	@Basic @Column(name="ACTIVITY_ID")
     private int _activityId;
-	
-	DataObject dataObject;
-	
-	FaulSDO faulSDO = new FaulSDO();
 
-	public FaultDAOImpl() {
-		
-	}
+	public FaultDAOImpl() {}
 	public FaultDAOImpl(QName faultName, String explanation, int faultLineNo,
 			int activityId, Element faultMessage) {
-		
 		_name = faultName.toString();
 		_explanation = explanation;
 		_lineNo = faultLineNo;
 		_activityId = activityId;
 		_data = (faultMessage == null)?null:DOMUtils.domToString(faultMessage);
-		dataObject = faulSDO.getSDO(_id);
-		dataObject.setString("name", faultName.toString());
-		dataObject.setString("explanation", explanation);
-		dataObject.setInt("activityID", activityId);
-		dataObject.setString("data", _data);
 	}
 	
 	public int getActivityId() {

@@ -23,8 +23,6 @@ import org.apache.ode.bpel.common.CorrelationKey;
 import org.apache.ode.bpel.dao.CorrelationSetDAO;
 import org.apache.ode.bpel.dao.ScopeDAO;
 
-import commonj.sdo.DataObject;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -58,20 +56,11 @@ public class CorrelationSetDAOImpl implements CorrelationSetDAO {
     private Collection<CorrSetProperty> _props = new ArrayList<CorrSetProperty>();
     @ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="SCOPE_ID")
     private ScopeDAOImpl _scope;
-    
-    DataObject dataObject = null;
-    
-    CorrelationSetSDO correlationSet = new CorrelationSetSDO();
 
-    public CorrelationSetDAOImpl() {
-    	
-    }
+    public CorrelationSetDAOImpl() {}
 	public CorrelationSetDAOImpl(ScopeDAOImpl scope, String name) {
 		_name = name;
 		_scope = scope;
-		dataObject = correlationSet.getSDO(_correlationSetId);
-		dataObject.setString("name", name);
-		
 	}
 	
 	public Long getCorrelationSetId() {

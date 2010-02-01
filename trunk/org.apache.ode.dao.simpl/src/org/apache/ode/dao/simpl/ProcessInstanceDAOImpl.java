@@ -33,8 +33,6 @@ import org.apache.ode.bpel.dao.XmlDataDAO;
 import org.apache.ode.bpel.evt.ProcessInstanceEvent;
 import org.w3c.dom.Element;
 
-import commonj.sdo.DataObject;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,7 +49,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Query;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -100,18 +97,11 @@ public class ProcessInstanceDAOImpl extends OpenJPADAO implements ProcessInstanc
 	private ProcessDAOImpl _process;
 	@ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST}) @Column(name="INSTANTIATING_CORRELATOR_ID")
 	private CorrelatorDAOImpl _instantiatingCorrelator;
-	@Transient
-	private DataObject dataObject;
-	@Transient
-	private ProcessInstanceSDO processInstanceSDO = new ProcessInstanceSDO();
 	
-	public ProcessInstanceDAOImpl() {
-	}
+	public ProcessInstanceDAOImpl() {}
 	public ProcessInstanceDAOImpl(CorrelatorDAOImpl correlator, ProcessDAOImpl process) {
 		_instantiatingCorrelator = correlator;
 		_process = process;
-		dataObject = processInstanceSDO.getSDO(_instanceId);
-
 	}
 	
 	public void createActivityRecovery(String channel, long activityId,
@@ -283,31 +273,24 @@ public class ProcessInstanceDAOImpl extends OpenJPADAO implements ProcessInstanc
 
 	public void setFault(FaultDAO fault) {
 		_fault = (FaultDAOImpl)fault;
-		dataObject.setString("fault", _fault.toString());
 	}
 
 	public void setFault(QName faultName, String explanation, int faultLineNo,
 			int activityId, Element faultMessage) {
 		_fault = new FaultDAOImpl(faultName,explanation,faultLineNo,activityId,faultMessage);
-		dataObject.setString("fault", _fault.toString());
-
 	}
 
 	public void setLastActiveTime(Date dt) {
 		_lastActive = dt;
-		dataObject.setDate("lastActive", dt);
 	}
 
 	public void setState(short state) {
 		_previousState = _state;
 		_state = state;
-		dataObject.setShort("previousState", _state);
-		dataObject.setShort("state", state);
 	}
 	
 	void removeRoutes(String routeGroupId) {
 		_process.removeRoutes(routeGroupId, this);
-		dataObject.setString("routeGroupId", routeGroupId);
 	}
 
     public BpelDAOConnection getConnection() {
@@ -318,6 +301,5 @@ public class ProcessInstanceDAOImpl extends OpenJPADAO implements ProcessInstanc
     }
     public void setExecutionStateCounter(int stateCounter) {
         _execStateCounter = stateCounter;
-        dataObject.setInt("stateCounter", stateCounter);
     }
 }

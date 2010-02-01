@@ -1,4 +1,4 @@
-package org.apache.ode.dao.simpl;
+package org.apache.ode.dao.simpl.sdo;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
