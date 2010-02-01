@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.simpl.core.feature"
       label="SIMPL Core Plug-Ins"
-      version="1.0.0"
+      version="1.0.1"
       provider-name="SIMPL">
 
    <description>
