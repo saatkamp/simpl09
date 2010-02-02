@@ -3642,6 +3642,12 @@ Anwendungsfall-Diagramm für den Workflow-Administrator
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Admin-Konsole-öffnen"
+
+\end_inset
+
 Admin-Konsole öffnen
 \end_layout
 
@@ -3770,7 +3776,7 @@ reference "sub:Admin-Konsole-laden"
 
 \end_inset
 
- Admin-Konsole laden
+ SIMPL Admin-Konsole laden
 \begin_inset Quotes erd
 \end_inset
 
@@ -4424,6 +4430,12 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Einstellungen-der-Admin-Konsole-speichern"
+
+\end_inset
+
 Einstellungen der Admin-Konsole speichern
 \end_layout
 
@@ -4553,7 +4565,7 @@ reference "sub:Admin-Konsole-speichern"
 
 \end_inset
 
- Admin-Konsole speichern
+ SIMPL Admin-Konsole speichern
 \begin_inset Quotes erd
 \end_inset
 
@@ -4601,6 +4613,12 @@ nk zum Speichern der Auditing-Daten festgelegt.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Einstellungen-der-Admin-Konsole-zurücksetzen"
+
+\end_inset
+
 Einstellungen der Admin-Konsole zurücksetzen
 \end_layout
 
@@ -4724,7 +4742,7 @@ reference "sub:Admin-Konsole-laden"
 
 \end_inset
 
- Admin-Konsole laden
+ SIMPL Admin-Konsole laden
 \begin_inset Quotes erd
 \end_inset
 
@@ -4762,6 +4780,12 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Default-Einstellungen-der-Admin-Konsole-laden"
+
+\end_inset
+
 Default-Einstellungen der Admin-Konsole laden
 \end_layout
 
@@ -4883,7 +4907,7 @@ reference "sub:Admin-Konsole-Defaults-laden"
 
 \end_inset
 
- Admin-Konsole Defaults laden
+ SIMPL Admin-Konsole Defaults laden
 \begin_inset Quotes erd
 \end_inset
 
@@ -4921,6 +4945,12 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Admin-Konsole-schließen"
+
+\end_inset
+
 Admin-Konsole schließen
 \end_layout
 
@@ -5041,7 +5071,7 @@ reference "sub:Admin-Konsole-speichern"
 
 \end_inset
 
- Admin-Konsole speichern
+ SIMPL Admin-Konsole speichern
 \begin_inset Quotes erd
 \end_inset
 
@@ -5836,15 +5866,15 @@ Falls es geändert wird, müssen die Diagramme entsprechend angepasst werden!
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole laden
+SIMPL Admin-Konsole laden
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole Defaults laden
+SIMPL Admin-Konsole Defaults laden
 \end_layout
 
 \begin_layout Itemize
-Admin-Konsole speichern
+SIMPL Admin-Konsole speichern
 \end_layout
 
 \begin_layout Standard
@@ -5895,7 +5925,7 @@ name "sub:Admin-Konsole-laden"
 
 \end_inset
 
-Admin-Konsole laden
+SIMPL Admin-Konsole laden
 \end_layout
 
 \begin_layout Standard
@@ -5942,7 +5972,14 @@ Einer der Anwendungsfälle
 \begin_inset Quotes eld
 \end_inset
 
-Admin-Konsole öffnen
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Admin-Konsole-öffnen"
+
+\end_inset
+
+ Admin-Konsole öffnen
 \begin_inset Quotes erd
 \end_inset
 
@@ -5950,7 +5987,14 @@ Admin-Konsole öffnen
 \begin_inset Quotes eld
 \end_inset
 
-Einstellungen der Admin-Konsole zurücksetzen
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einstellungen-der-Admin-Konsole-zurücksetzen"
+
+\end_inset
+
+ Einstellungen der Admin-Konsole zurücksetzen
 \begin_inset Quotes erd
 \end_inset
 
@@ -6015,7 +6059,7 @@ reference "sub:Admin-Konsole-Defaults-laden"
 
 \end_inset
 
- Admin-Konsole Defaults laden
+ SIMPL Admin-Konsole Defaults laden
 \begin_inset Quotes erd
 \end_inset
 
@@ -6035,6 +6079,26 @@ Admin Console
 \begin_layout Plain Layout
 3b.
  Die in der Admin-Konsole angezeigten Werte bleiben unverändert.
+ Falls zuvor keine Werte angezeigt wurden, bleiben die Felder der Admin-Konsole
+ leer.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Bei 3b stellt sich noch die Frage, was angezeigt wird, wenn die Admin-Konsole
+ gerade erst geöffnet wird.
+ Dann gab es ja zuvor keine angezeigten Werte.
+ Gleiches gilt auch bei einer entsprechenden Fallunterscheidung im Use Case
+ 6.5.2 (siehe dortige Anmerkung am Rand).
+ Vielleicht hilft euch hier der Prototyp weiter.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6102,6 +6166,27 @@ Sonderfälle
  Klick auf den Button [No].
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ich bin mir inzwischen nicht ganz sicher, ob das hier so Sinn macht.
+ Wenn z.B.
+ die Datenquelle nicht erreichbar ist, wird man auch die Default-Werte nicht
+ aus ihr lesen können.
+ Vielleicht sollte man nach der Abfrage eher die im Quellcode hinterlegten
+ Default-Werte laden als die in der Datenquelle gespeicherten (Die Frage
+ ist natürlich, wo diese Werte wieder gespeichert sind :-( ).
+ Ihr könnt es aber auch mal prototypisch umsetzen.
+ Dann seht ihr vielleicht besser, was sinnvoll ist und was nicht.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -6119,7 +6204,7 @@ name "sub:Admin-Konsole-Defaults-laden"
 
 \end_inset
 
-Admin-Konsole Defaults laden
+SIMPL Admin-Konsole Defaults laden
 \end_layout
 
 \begin_layout Standard
@@ -6169,7 +6254,7 @@ Der Anwendungsfäll
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Admin-Konsole-Defaults-laden"
+reference "sub:Default-Einstellungen-der-Admin-Konsole-laden"
 
 \end_inset
 
@@ -6179,7 +6264,7 @@ reference "sub:Admin-Konsole-Defaults-laden"
 
  oder der Sonderfall 
 \emph on
-a
+3a
 \emph default
  des Anwendungsfalls 
 \begin_inset Quotes eld
@@ -6192,7 +6277,7 @@ reference "sub:Admin-Konsole-laden"
 
 \end_inset
 
- Admin-Konsole laden
+ SIMPL Admin-Konsole laden
 \begin_inset Quotes erd
 \end_inset
 
@@ -6304,6 +6389,22 @@ Sonderfälle
  die SIMPL DB nicht erreichbar ist.
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Bei den Sonderfällen solltet ihr auch noch die Auswahlmöglichkeit aus Use
+ Case 6.5.1 einbauen.
+ Schließlich will man nicht immer die im Quellcode hinterlegten Standardwerte
+ laden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -6321,7 +6422,7 @@ name "sub:Admin-Konsole-speichern"
 
 \end_inset
 
-Admin-Konsole speichern
+SIMPL Admin-Konsole speichern
 \end_layout
 
 \begin_layout Standard
@@ -6368,7 +6469,33 @@ Der Anwendungsfall
 \begin_inset Quotes eld
 \end_inset
 
-Einstellungen der Admin-Konsole speichern
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Einstellungen-der-Admin-Konsole-speichern"
+
+\end_inset
+
+ Einstellungen der Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+ oder der Sonderfall 
+\emph on
+3b1
+\emph default
+ des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Admin-Konsole-schließen"
+
+\end_inset
+
+ Admin-Konsole schließen
 \begin_inset Quotes erd
 \end_inset
 
@@ -6392,7 +6519,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Alle Werte der Admin-Konsole wurden korrekt auf der SIMPL DB.
+Alle Werte der Admin-Konsole wurden korrekt auf der SIMPL DB gespeichert.
 \end_layout
 
 \end_inset
@@ -7521,7 +7648,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole laden
+SIMPL Admin-Konsole laden
 \end_layout
 
 \end_inset
@@ -7577,7 +7704,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole Defaults laden
+SIMPL Admin-Konsole Defaults laden
 \end_layout
 
 \end_inset
@@ -7633,7 +7760,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Admin-Konsole speichern
+SIMPL Admin-Konsole speichern
 \end_layout
 
 \end_inset
@@ -20697,6 +20824,15 @@ status open
 
 \backslash
 addcontentsline{toc}{section}{Verzeichnis der Listings}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+lstlistlistingname}{Verzeichnis der Listings}
 \end_layout
 
 \begin_layout Plain Layout
