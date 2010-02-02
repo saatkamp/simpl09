@@ -2499,7 +2499,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Overview_iter1.jpg
+	filename iteration1/Overview_iter1.jpg
 	lyxscale 50
 	width 100text%
 
@@ -2581,7 +2581,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProzessModelierer_iter1.jpg
+	filename iteration1/ProzessModelierer_iter1.jpg
 	width 100text%
 
 \end_inset
@@ -3610,7 +3610,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename WorkflowAdmin_iter1.jpg
+	filename iteration1/WorkflowAdmin_iter1.jpg
 	width 100text%
 
 \end_inset
@@ -5183,7 +5183,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ODEwfEngine_iter1.jpg
+	filename iteration1/ODEwfEngine_iter1.jpg
 	width 100text%
 
 \end_inset
@@ -5887,7 +5887,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename BPELdesigner_iter1.jpg
+	filename iteration1/BPELdesigner_iter1.jpg
 	width 100text%
 
 \end_inset

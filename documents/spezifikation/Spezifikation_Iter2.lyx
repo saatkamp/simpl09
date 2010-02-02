@@ -2608,7 +2608,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Overview_iter1.jpg
+	filename iteration2/Overview_iter2.jpg
 	lyxscale 50
 	width 100text%
 
@@ -2690,7 +2690,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProzessModelierer_iter1.jpg
+	filename iteration1/ProzessModelierer_iter1.jpg
 	width 100text%
 
 \end_inset
@@ -3626,7 +3626,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename WorkflowAdmin_iter1.jpg
+	filename iteration2/WorkflowAdmin_iter2.jpg
 	width 100text%
 
 \end_inset
@@ -5649,7 +5649,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ODEwfEngine_iter1.jpg
+	filename iteration1/ODEwfEngine_iter1.jpg
 	width 100text%
 
 \end_inset
@@ -6295,7 +6295,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename BPELdesigner_iter1.jpg
+	filename iteration2/BPELdesigner_iter2.jpg
 	width 100text%
 
 \end_inset
@@ -7073,7 +7073,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename SIMPLcore_iter2.jpg
+	filename iteration2/SIMPLcore_iter2.jpg
 	width 80text%
 
 \end_inset
@@ -8282,7 +8282,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename RRSdiagramm.jpg
+	filename iteration2/RRSdiagramm.jpg
 	width 50text%
 
 \end_inset
@@ -8760,7 +8760,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ReferenzUmsetzungDiagramm.jpg
+	filename iteration2/ReferenzUmsetzungDiagramm.jpg
 	width 100text%
 
 \end_inset
@@ -9295,7 +9295,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename DM-Patterns.jpg
+	filename iteration1/DM-Patterns.png
 	lyxscale 80
 	width 100text%
 
