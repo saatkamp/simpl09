@@ -1442,7 +1442,7 @@ glichkeit für Datenquellen.
  Eine nähere Beschreibung der DM-Aktivitäten wird in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Data-Management-Aktivitäten"
+reference "sub:Data-Management-Aktivitäten-GUI"
 
 \end_inset
 
@@ -1547,6 +1547,12 @@ Die Modellierung von BPEL-Prozessen ist an das Modellierungswerkzeug Eclipse
 Die Ausführung von BPEL-Prozessen ist an die Workflow-Engine Apache ODE
  gebunden.
  Das Auditing einer Prozessausführung wird nur für Apache ODE bereitgestellt.
+\end_layout
+
+\begin_layout Itemize
+Die SIMPL Eclipse Plug-Ins sind nur voll funktionsfähig, falls der SIMPL
+ Core erreichbar ist, d.h.
+ das ein Apache Tomcat Server mit angebundenem SIMPL Core gestartet wurde.
 \end_layout
 
 \begin_layout Itemize
@@ -1703,7 +1709,7 @@ Die Erweiterbarkeit des Systems ist eine zentrale Anforderung, da es über
 \end_layout
 
 \begin_layout Itemize
-Die Aufteilung des Rahmenwerks in SIMPL-Core, erweiterter Workflow-Engine
+Die Aufteilung des Rahmenwerks in SIMPL Core, erweiterter Workflow-Engine
  und erweitertes Eclipse Plug-In (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1715,7 +1721,7 @@ reference "sub:Einbettung-Systemumgebung"
 \end_layout
 
 \begin_layout Itemize
-Der SIMPL-Core an sich wird modular aufgebaut sein, damit er selbst erweitert
+Der SIMPL Core an sich wird modular aufgebaut sein, damit er selbst erweitert
  werden kann.
 \end_layout
 
@@ -1761,11 +1767,11 @@ name "sec:Benutzeroberfläche"
 
 \end_inset
 
-Benutzeroberfläche des SIMPL Eclipse Plug-Ins
+Benutzeroberfläche der SIMPL Eclipse Plug-Ins
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird die grafische Benutzeroberfläche des SIMPL Eclipse
+In diesem Kapitel wird die grafische Benutzeroberfläche der SIMPL Eclipse
  Plug-Ins beschrieben.
  Abbildung 
 \begin_inset CommandInset ref
@@ -1774,12 +1780,12 @@ reference "fig:SIMPL-Menü"
 
 \end_inset
 
- zeigt den erweiterten Eclipse BPEL Designer.
+ zeigt den erweiterten Eclipse BPEL Designer und das SIMPL Menü.
  In der Palette befinden sich die SIMPL DM-Aktivitäten, die wie bereits
  vorhandene Aktivitäten zur Modellierung von Prozessen verwendet werden
  können.
- Für SIMPL wird ein Menü bereitgestellt, über das alle wichtigen Einstellungen
- und Informationen des SIMPL Rahmenwerks vorgenommen bzw.
+ Weiterhin wird das SIMPL Menü bereitgestellt, über das alle wichtigen Einstellu
+ngen und Informationen des SIMPL Rahmenwerks vorgenommen bzw.
  angezeigt werden können.
 \end_layout
 
@@ -1830,7 +1836,7 @@ Admin-Konsole
 
 \begin_layout Standard
 Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
- Möglichkeit, Einstellungen für das Rahmenwerk vorzunehmen.
+ Möglichkeit, Einstellungen für den SIMPL Core vorzunehmen.
  Dazu gehört beispielsweise die Angabe von globalen Einstellungen und die
  Verwaltung des Auditings (siehe Abbildung 
 \begin_inset CommandInset ref
@@ -2044,6 +2050,221 @@ Dialog für die Einstellungen des Auditings
 \end_layout
 
 \begin_layout Subsection
+Einstellungen der SIMPL Eclipse Plug-Ins
+\end_layout
+
+\begin_layout Standard
+Die Einstellungen können über das SIMPL Menü mit dem Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+ geöffnet werden und bieten die Möglichkeit, Einstellungen für die SIMPL
+ Eclipse Plug-Ins vorzunehmen.
+ Dazu gehört beispielsweise die Angabe der Adresse des SIMPL Cores (siehe
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Settings"
+
+\end_inset
+
+).
+ Die Einstellungen werden im weiteren Projektverlauf erweitert/vervollständigt
+ und entsprechend in der Spezifikation nachgetragen.
+\end_layout
+
+\begin_layout Standard
+Das Layout und die Funktionalität der Einstellungen sind mit der Admin-Konsole
+ identisch, es stehen hier ebenfalls folgende Schaltflächen durchgängig
+ zur Verfügung:
+\end_layout
+
+\begin_layout Itemize
+[Default]: Laden der Standard-Einstellungen
+\end_layout
+
+\begin_layout Itemize
+[Save]: Speichern aller durchgeführten Änderungen
+\end_layout
+
+\begin_layout Itemize
+[Reset]: Zurücksetzen aller durchgeführten Änderungen auf den letzten Speicherst
+and
+\end_layout
+
+\begin_layout Itemize
+[Close]: Schließen der Admin-Konsole und Verwerfen aller Änderungen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ProtoTyp_Screenshots/Iter1Screens/SIMPL_Settings.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Settings"
+
+\end_inset
+
+Admin-Konsole
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Hilfe
+\end_layout
+
+\begin_layout Standard
+Der Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Help
+\begin_inset Quotes erd
+\end_inset
+
+ leitet den Benutzer auf die Eclipse Hilfe weiter.
+ Dort stehen dem Benutzer über die Punkte 
+\begin_inset Quotes eld
+\end_inset
+
+BPEL-DM Plug-In
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+SIMPL Core Plug-In
+\begin_inset Quotes erd
+\end_inset
+
+ die entsprechenden Hilfe-Dokumente der SIMPL Eclipse Plug-Ins zur Verfügung.
+ Eine genauere Beschreibung wird nachgeliefert, sobald die Umsetzung der
+ Hilfe und deren Inhalt konkret feststeht.
+\end_layout
+
+\begin_layout Subsection
+About
+\end_layout
+
+\begin_layout Standard
+Der Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+About
+\begin_inset Quotes erd
+\end_inset
+
+ öffnet das SIMPL About-Fenster, in dem beispielsweise Informationen über
+ den Versionsstand, Mitwirkende oder Lizenzbedingungen des SIMPL Rahmenwerks
+ aufgeführt sind.
+ Auch hier wird eine genauere Beschreibung nachgeliefert, sobald der konkrete
+ Inhalt dieses Fenster feststeht.
+\end_layout
+
+\begin_layout Subsection
+Nachträgliches Laden der Plug-In Daten
+\end_layout
+
+\begin_layout Standard
+Über den Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Reload Plug-In Data
+\begin_inset Quotes erd
+\end_inset
+
+ in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Menü"
+
+\end_inset
+
+ des SIMPL Menüs, können alle Daten des SIMPL Cores nachträglich abgerufen
+ werden, dies ist aus folgenden Gründen nötig:
+\end_layout
+
+\begin_layout Itemize
+Das BPEL-DM Plug-In ruft eine Liste von unterstützten Datenquellentypen,
+ deren Subtypen und den von diesen unterstützten Abfragesprachen ab.
+ Diese Informationen werden dann in den Eigenschaftsfenstern (siehe Abschnitt
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Data-Management-Aktivitäten-GUI"
+
+\end_inset
+
+) der DM-Aktivitäten angezeigt und können dort ausgewählt werden.
+\end_layout
+
+\begin_layout Itemize
+Das SIMPL Core Plug-In ruft die Einstellungen des SIMPL Cores ab, um diese
+ in der Admin-Konsole anzeigen zu können.
+\end_layout
+
+\begin_layout Standard
+Die Abfrage der entsprechenden Informationen geschieht bei der Initialisierung
+ der Plug-Ins, d.h.
+ beim Start von Eclipse.
+ Ist zu diesem Zeitpunkt nun kein Apache Tomcat Server mit angebundenem
+ SIMPL Core gestartet, können die Informationen nicht abgerufen werden und
+ die beiden Plug-Ins sind nicht voll funktionsfähig.
+ Um nun Eclipse nicht neustarten zu müssen, gibt es den Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Reload Plug-In Data
+\begin_inset Quotes erd
+\end_inset
+
+, mit dem die benötigten Informationen nachträglich vom SIMPL Core abgefragt
+ werden können.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Data-Management-Aktivitäten-GUI"
+
+\end_inset
+
 Data-Management-Aktivitäten
 \end_layout
 
