@@ -74,6 +74,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 						((QueryActivity) activity).getDsAddress());
 			}
 			
+			if (((QueryActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((QueryActivity) activity).getDsLanguage());
+			}
+			
 			if (((QueryActivity) activity).getQueryTarget() != null) {
 				String attName = ModelPackage.eINSTANCE.getQueryActivity_QueryTarget().getName();
 				activityElement.setAttribute(attName,
@@ -119,6 +125,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				activityElement.setAttribute(attName,
 						((InsertActivity) activity).getDsAddress());
 			}
+			
+			if (((InsertActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((InsertActivity) activity).getDsLanguage());
+			}
 
 			// insert the DOM element into the DOM tree
 			parentNode.appendChild(activityElement);
@@ -158,6 +170,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
 				activityElement.setAttribute(attName,
 						((UpdateActivity) activity).getDsAddress());
+			}
+			
+			if (((UpdateActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((UpdateActivity) activity).getDsLanguage());
 			}
 
 			// insert the DOM element into the DOM tree
@@ -199,6 +217,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				activityElement.setAttribute(attName,
 						((DeleteActivity) activity).getDsAddress());
 			}
+			
+			if (((DeleteActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((DeleteActivity) activity).getDsLanguage());
+			}
 
 			// insert the DOM element into the DOM tree
 			parentNode.appendChild(activityElement);
@@ -238,6 +262,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
 				activityElement.setAttribute(attName,
 						((CreateActivity) activity).getDsAddress());
+			}
+			
+			if (((CreateActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((CreateActivity) activity).getDsLanguage());
 			}
 
 			// insert the DOM element into the DOM tree
@@ -279,6 +309,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				activityElement.setAttribute(attName,
 						((DropActivity) activity).getDsAddress());
 			}
+			
+			if (((DropActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((DropActivity) activity).getDsLanguage());
+			}
 
 			// insert the DOM element into the DOM tree
 			parentNode.appendChild(activityElement);
@@ -319,6 +355,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				activityElement.setAttribute(attName,
 						((CallActivity) activity).getDsAddress());
 			}
+			
+			if (((CallActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((CallActivity) activity).getDsLanguage());
+			}
 
 			// insert the DOM element into the DOM tree
 			parentNode.appendChild(activityElement);
@@ -358,6 +400,12 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
 				activityElement.setAttribute(attName,
 						((RetrieveDataActivity) activity).getDsAddress());
+			}
+			
+			if (((RetrieveDataActivity) activity).getDsLanguage() != null) {
+				String attName = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+				activityElement.setAttribute(attName,
+						((RetrieveDataActivity) activity).getDsLanguage());
 			}
 			
 			if (((RetrieveDataActivity) activity).getDataVariable() != null) {

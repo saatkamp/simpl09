@@ -24,6 +24,7 @@ import org.eclipse.bpel.model.ExtensionActivity;
  *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>Ds Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +59,33 @@ public interface DataManagementActivity extends ExtensionActivity {
 	 * @generated
 	 */
 	void setDsStatement(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ds Language</b></em>' attribute.
+	 * The default value is <code>"language"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ds Language</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ds Language</em>' attribute.
+	 * @see #setDsLanguage(String)
+	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsLanguage()
+	 * @model default="language"
+	 * @generated
+	 */
+	String getDsLanguage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ds Language</em>' attribute.
+	 * @see #getDsLanguage()
+	 * @generated
+	 */
+	void setDsLanguage(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Ds Kind</b></em>' attribute.

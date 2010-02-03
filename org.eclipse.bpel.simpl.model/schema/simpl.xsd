@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:simpl="http://www.example.org/simpl"
+	elementFormDefault="qualified"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/simpl" xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+
+	<xsd:import schemaLocation="http://docs.oasis-open.org/wsbpel/2.0/OS/process/executable/ws-bpel_executable.xsd" namespace="http://docs.oasis-open.org/wsbpel/2.0/process/executable"></xsd:import>
+	<xsd:element name="queryActivity" type="simpl:QueryActivityType" />
+
+	<xsd:complexType name="DataManagementActivityType">
+		<xsd:attribute name="name" type="xsd:string" use="optional" />
+		<xsd:attribute name="dsType" type="xsd:string" use="optional" />
+		<xsd:attribute name="dsKind" type="xsd:string" use="optional" />
+		<xsd:attribute name="dsLanguage" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="dsStatement" type="xsd:string"
+			use="optional" />
+		<xsd:attribute name="dsAddress" type="xsd:string"
+			use="optional" />
+	</xsd:complexType>
+
+
+	<xsd:complexType name="QueryActivityType">
+		<xsd:complexContent>
+			<xsd:extension base="simpl:DataManagementActivityType">
+				<xsd:sequence>
+					<xsd:element name="queryTarget" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="RetrieveDataActivityType">
+		<xsd:complexContent>
+			<xsd:extension base="simpl:DataManagementActivityType">
+				<xsd:sequence>
+					<xsd:element name="dataVariable"
+						type="bpel:tVariable">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="insertActivity"
+		type="simpl:DataManagementActivityType">
+	</xsd:element>
+
+	<xsd:element name="updateActivity"
+		type="simpl:DataManagementActivityType">
+	</xsd:element>
+	
+    <xsd:element name="deleteActivity"
+    	type="simpl:DataManagementActivityType">
+    </xsd:element>
+    
+    <xsd:element name="createActivity"
+    	type="simpl:DataManagementActivityType">
+    </xsd:element>
+    
+    <xsd:element name="dropActivity"
+    	type="simpl:DataManagementActivityType">
+    </xsd:element>
+    
+    <xsd:element name="callActivity"
+    	type="simpl:DataManagementActivityType">
+    </xsd:element>
+    
+    <xsd:element name="retrieveDataActivity"
+    	type="simpl:RetrieveDataActivityType">
+    </xsd:element>
+</xsd:schema>

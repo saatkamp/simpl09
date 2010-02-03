@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsType <em>Ds Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsKind <em>Ds Kind</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsStatement <em>Ds Statement</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsLanguage <em>Ds Language</em>}</li>
  * </ul>
  * </p>
  *
@@ -116,6 +117,26 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	protected String dsStatement = DS_STATEMENT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getDsLanguage() <em>Ds Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDsLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DS_LANGUAGE_EDEFAULT = "language";
+
+	/**
+	 * The cached value of the '{@link #getDsLanguage() <em>Ds Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDsLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String dsLanguage = DS_LANGUAGE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,6 +179,27 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 		dsStatement = newDsStatement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT, oldDsStatement, dsStatement));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDsLanguage() {
+		return dsLanguage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDsLanguage(String newDsLanguage) {
+		String oldDsLanguage = dsLanguage;
+		dsLanguage = newDsLanguage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE, oldDsLanguage, dsLanguage));
 	}
 
 	/**
@@ -254,6 +296,8 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 				return getDsKind();
 			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
 				return getDsStatement();
+			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+				return getDsLanguage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -277,6 +321,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 				return;
 			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
 				setDsStatement((String)newValue);
+				return;
+			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+				setDsLanguage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -302,6 +349,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
 				setDsStatement(DS_STATEMENT_EDEFAULT);
 				return;
+			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+				setDsLanguage(DS_LANGUAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -322,6 +372,8 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 				return DS_KIND_EDEFAULT == null ? dsKind != null : !DS_KIND_EDEFAULT.equals(dsKind);
 			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
 				return DS_STATEMENT_EDEFAULT == null ? dsStatement != null : !DS_STATEMENT_EDEFAULT.equals(dsStatement);
+			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+				return DS_LANGUAGE_EDEFAULT == null ? dsLanguage != null : !DS_LANGUAGE_EDEFAULT.equals(dsLanguage);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -344,6 +396,8 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 		result.append(dsKind);
 		result.append(", dsStatement: ");
 		result.append(dsStatement);
+		result.append(", dsLanguage: ");
+		result.append(dsLanguage);
 		result.append(')');
 		return result.toString();
 	}
