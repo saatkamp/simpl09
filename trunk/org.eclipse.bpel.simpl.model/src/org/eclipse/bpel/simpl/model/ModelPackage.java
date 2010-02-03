@@ -11,6 +11,7 @@ import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -1204,13 +1205,22 @@ public interface ModelPackage extends EPackage {
 	int RETRIEVE_DATA_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Data Variable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Retrieve Data Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RETRIEVE_DATA_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+	int RETRIEVE_DATA_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
 
 
 	/**
@@ -1357,6 +1367,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRetrieveDataActivity();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable <em>Data Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Data Variable</em>'.
+	 * @see org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable()
+	 * @see #getRetrieveDataActivity()
+	 * @generated
+	 */
+	EReference getRetrieveDataActivity_DataVariable();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1509,6 +1530,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RETRIEVE_DATA_ACTIVITY = eINSTANCE.getRetrieveDataActivity();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Variable</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE = eINSTANCE.getRetrieveDataActivity_DataVariable();
 
 	}
 
