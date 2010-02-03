@@ -39,6 +39,12 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 	public Activity unmarshall(QName elementType, Node node, Process process, Map nsMap,
 			ExtensionRegistry extReg, URI uri, BPELReader bpelReader) {
 
+		String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
+		String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
+		String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
+		String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
+		String attLanguage = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage().getName();
+		
 		/*
 		 * QueryActivity
 		 */
@@ -52,10 +58,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(queryActivityElement);
 			
 			// handle the QueryActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
 			String attQueryTarget = ModelPackage.eINSTANCE.getQueryActivity_QueryTarget().getName();
 			
 			if (((Element) node).getAttribute(attStatement) != null) {
@@ -69,6 +71,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			if (((Element) node).getAttribute(attQueryTarget) != null) {
 				activity.setQueryTarget(((Element) node).getAttribute(attQueryTarget));
@@ -90,11 +95,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(insertActivityElement);
 			
 			// handle the InsertActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
-			
 			if (((Element) node).getAttribute(attStatement) != null) {
 				activity.setDsStatement(((Element) node).getAttribute(attStatement));
 			}
@@ -106,6 +106,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			
 			return activity;
@@ -124,11 +127,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(updateActivityElement);
 			
 			// handle the UpdateActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
-			
 			if (((Element) node).getAttribute(attStatement) != null) {
 				activity.setDsStatement(((Element) node).getAttribute(attStatement));
 			}
@@ -140,6 +138,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			
 			return activity;
@@ -158,11 +159,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(deleteActivityElement);
 			
 			// handle the DeleteActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
-			
 			if (((Element) node).getAttribute(attStatement) != null) {
 				activity.setDsStatement(((Element) node).getAttribute(attStatement));
 			}
@@ -174,6 +170,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			
 			return activity;
@@ -192,11 +191,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(createActivityElement);
 			
 			// handle the CreateActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
-			
 			if (((Element) node).getAttribute(attStatement) != null) {
 				activity.setDsStatement(((Element) node).getAttribute(attStatement));
 			}
@@ -208,6 +202,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			
 			return activity;
@@ -226,11 +223,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(dropActivityElement);
 			
 			// handle the DropActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
-			
 			if (((Element) node).getAttribute(attStatement) != null) {
 				activity.setDsStatement(((Element) node).getAttribute(attStatement));
 			}
@@ -242,6 +234,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			
 			return activity;
@@ -260,11 +255,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(callActivityElement);
 			
 			// handle the CallActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
-			
 			if (((Element) node).getAttribute(attStatement) != null) {
 				activity.setDsStatement(((Element) node).getAttribute(attStatement));
 			}
@@ -276,6 +266,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			
 			return activity;
@@ -294,10 +287,6 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			activity.setElement(retrieveDataActivityElement);
 			
 			// handle the RetrieveDataActivity attributes
-			String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement().getName();
-			String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-			String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-			String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress().getName();
 			String attDataVariable = ModelPackage.eINSTANCE.getRetrieveDataActivity_DataVariable().getName();
 			
 			if (((Element) node).getAttribute(attStatement) != null) {
@@ -311,6 +300,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 			}
 			if (((Element) node).getAttribute(attAddress) != null) {
 				activity.setDsAddress(((Element) node).getAttribute(attAddress));
+			}
+			if (((Element) node).getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
 			}
 			if (((Element) node).getAttribute(attDataVariable) != null) {
 				activity.setDataVariable(BPELReader.getVariable(activity, attDataVariable));

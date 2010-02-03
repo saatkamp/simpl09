@@ -180,13 +180,22 @@ public interface ModelPackage extends EPackage {
 	int DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Data Management Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 4;
+	int DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.QueryActivityImpl <em>Query Activity</em>}' class.
@@ -305,6 +314,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUERY_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
 	/**
 	 * The feature id for the '<em><b>Query Target</b></em>' attribute.
@@ -443,6 +461,15 @@ public interface ModelPackage extends EPackage {
 	int INSERT_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERT_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+
+	/**
 	 * The number of structural features of the '<em>Insert Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -568,6 +595,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int UPDATE_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPDATE_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
 	/**
 	 * The number of structural features of the '<em>Update Activity</em>' class.
@@ -697,6 +733,15 @@ public interface ModelPackage extends EPackage {
 	int DELETE_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+
+	/**
 	 * The number of structural features of the '<em>Delete Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -822,6 +867,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int CREATE_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
 	/**
 	 * The number of structural features of the '<em>Create Activity</em>' class.
@@ -951,6 +1005,15 @@ public interface ModelPackage extends EPackage {
 	int DROP_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DROP_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+
+	/**
 	 * The number of structural features of the '<em>Drop Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1076,6 +1139,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
 	/**
 	 * The number of structural features of the '<em>Call Activity</em>' class.
@@ -1205,6 +1277,15 @@ public interface ModelPackage extends EPackage {
 	int RETRIEVE_DATA_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
 	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRIEVE_DATA_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+
+	/**
 	 * The feature id for the '<em><b>Data Variable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1243,6 +1324,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataManagementActivity_DsStatement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ds Language</em>'.
+	 * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage()
+	 * @see #getDataManagementActivity()
+	 * @generated
+	 */
+	EAttribute getDataManagementActivity_DsLanguage();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}'.
@@ -1418,6 +1510,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT = eINSTANCE.getDataManagementActivity_DsStatement();
+
+		/**
+		 * The meta object literal for the '<em><b>Ds Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE = eINSTANCE.getDataManagementActivity_DsLanguage();
 
 		/**
 		 * The meta object literal for the '<em><b>Ds Kind</b></em>' attribute feature.

@@ -268,6 +268,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDataManagementActivity_DsLanguage() {
+		return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(4);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getDataManagementActivity_DsKind() {
 		return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(2);
 	}
@@ -415,6 +425,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_TYPE);
 		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_KIND);
 		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT);
+		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE);
 
 		queryActivityEClass = createEClass(QUERY_ACTIVITY);
 		createEAttribute(queryActivityEClass, QUERY_ACTIVITY__QUERY_TARGET);
@@ -482,6 +493,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getDataManagementActivity_DsType(), ecorePackage.getEString(), "dsType", "type", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataManagementActivity_DsKind(), ecorePackage.getEString(), "dsKind", "subtype", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataManagementActivity_DsStatement(), ecorePackage.getEString(), "dsStatement", "statement", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataManagementActivity_DsLanguage(), ecorePackage.getEString(), "dsLanguage", "language", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryActivityEClass, QueryActivity.class, "QueryActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQueryActivity_QueryTarget(), ecorePackage.getEString(), "queryTarget", "target", 0, 1, QueryActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
