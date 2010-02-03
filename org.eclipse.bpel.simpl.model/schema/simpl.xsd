@@ -22,9 +22,8 @@
 	<xsd:complexType name="QueryActivityType">
 		<xsd:complexContent>
 			<xsd:extension base="simpl:DataManagementActivityType">
-				<xsd:sequence>
-					<xsd:element name="queryTarget" type="xsd:string"></xsd:element>
-				</xsd:sequence>
+
+				<xsd:attribute name="queryTarget" type="xsd:string"></xsd:attribute>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -32,11 +31,8 @@
 	<xsd:complexType name="RetrieveDataActivityType">
 		<xsd:complexContent>
 			<xsd:extension base="simpl:DataManagementActivityType">
-				<xsd:sequence>
-					<xsd:element name="dataVariable"
-						type="bpel:tVariable">
-					</xsd:element>
-				</xsd:sequence>
+
+				<xsd:attribute name="dataVariable" type="bpel:BPELVariableName" use="optional"></xsd:attribute>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
