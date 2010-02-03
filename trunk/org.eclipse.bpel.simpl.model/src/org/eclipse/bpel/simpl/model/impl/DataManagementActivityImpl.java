@@ -193,10 +193,15 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @customized
 	 */
 	public void setDsLanguage(String newDsLanguage) {
 		String oldDsLanguage = dsLanguage;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+					.getDataManagementActivity_DsLanguage().getName(),
+					newDsLanguage);
+		}
 		dsLanguage = newDsLanguage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE, oldDsLanguage, dsLanguage));

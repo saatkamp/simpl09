@@ -21,8 +21,6 @@ public class SetQueryTargetCommand extends SetCommand {
 
 	@Override
 	public void set(Object o) {
-		//FIXME: Die Änderung wird zwar ins Modell übertragen, aber nicht
-		//im BPEL Designer Source-View durchgeführt bzw. angezeigt!
 		if (fTarget instanceof QueryActivity) {
 			((QueryActivity) fTarget).setQueryTarget((String) o);
 		} else {
