@@ -7,6 +7,7 @@
 package org.eclipse.bpel.simpl.model.impl;
 
 import org.eclipse.bpel.model.Variable;
+import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 
@@ -91,6 +92,11 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	 */
 	public void setDataVariable(Variable newDataVariable) {
 		Variable oldDataVariable = dataVariable;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+					.getRetrieveDataActivity_DataVariable().getName(),
+					newDataVariable.getName());
+		}
 		dataVariable = newDataVariable;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE, oldDataVariable, dataVariable));

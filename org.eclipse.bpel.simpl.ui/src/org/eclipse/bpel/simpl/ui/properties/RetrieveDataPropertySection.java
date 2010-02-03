@@ -6,6 +6,7 @@ import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.swt.SWT;
@@ -39,7 +40,6 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 	private Label languageLabel = null;
 	private CCombo languageCombo = null;
 	private Composite parentComposite = null;
-	private String language = null;
 
 	private RetrieveDataActivity activity;
 
@@ -67,20 +67,13 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 		dataSourceAddressText.setText(activity.getDsAddress());
 		// Setzen die Sprache
 		if (kindCombo.getSelectionIndex() > 0) {
-			// TODO Hier wird im Moment die erste Sprache als default
-			// ausgewählt.
-			// Wahrscheinlich muss die Sprache auch mit in der Aktivität
-			// hinterlegt werden...
-
-			if (language == null) {
-				language = (Constants.getDatasourceLanguages(activity
-						.getDsKind())).get(0);
-			}
-
+			// Fragen alle unterstützten Sprachen des Subtypes beim SIMPL
+			// Core ab und selektieren die in der Aktivität hinterlegte Sprache.
 			languageCombo.setItems(Constants.getDatasourceLanguages(
 					activity.getDsKind()).toArray(new String[0]));
 
-			languageCombo.select(languageCombo.indexOf(language));
+			languageCombo.select(languageCombo
+					.indexOf(activity.getDsLanguage()));
 		}
 
 		// Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
@@ -105,7 +98,7 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 		gridData51.horizontalAlignment = GridData.FILL;
 		gridData51.verticalAlignment = GridData.CENTER;
 		GridData gridData31 = new GridData();
-		gridData31.grabExcessHorizontalSpace = true;
+		gridData31.grabExcessHorizontalSpace = false;
 		GridData gridData12 = new GridData();
 		gridData12.grabExcessHorizontalSpace = true;
 		gridData12.verticalAlignment = GridData.CENTER;
@@ -179,8 +172,10 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				language = languageCombo.getItem(languageCombo
-						.getSelectionIndex());
+				// Auswahl im Modell speichern
+				getCommandFramework().execute(
+						new SetDsLanguageCommand(getModel(), languageCombo
+								.getItem(languageCombo.getSelectionIndex())));
 			}
 		});
 
@@ -205,7 +200,7 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 			public void widgetSelected(SelectionEvent arg0) {
 				openStatementEditor(ModelPackage.eINSTANCE
 						.getRetrieveDataActivity().getInstanceClassName(),
-						language);
+						activity.getDsLanguage());
 			}
 		});
 
@@ -328,7 +323,10 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 
 				if (languages.size() == 1) {
 					languageCombo.select(0);
-					language = languages.get(0);
+					// Änderung im Modell speichern
+					getCommandFramework().execute(
+							new SetDsLanguageCommand(getModel(), languages
+									.get(0)));
 				}
 
 				// Speichern Auswahl in Modell

@@ -6,6 +6,7 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
+import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
 
@@ -81,6 +82,11 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 */
 	public void setQueryTarget(String newQueryTarget) {
 		String oldQueryTarget = queryTarget;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+					.getQueryActivity_QueryTarget().getName(),
+					newQueryTarget);
+		}
 		queryTarget = newQueryTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.QUERY_ACTIVITY__QUERY_TARGET, oldQueryTarget, queryTarget));

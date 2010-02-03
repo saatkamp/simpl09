@@ -6,6 +6,7 @@ import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetQueryTargetCommand;
@@ -42,7 +43,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Composite parentComposite = null;
 	private Label queryTargetLabel = null;
 	private Text queryTargetText = null;
-	private String language = null;
 
 	private QueryActivity activity;
 
@@ -72,20 +72,13 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		queryTargetText.setText(activity.getQueryTarget());
 		// Setzen die Sprache
 		if (kindCombo.getSelectionIndex() > 0) {
-			// TODO Hier wird im Moment die erste Sprache als default
-			// ausgewählt.
-			// Wahrscheinlich muss die Sprache auch mit in der Aktivität
-			// hinterlegt werden...
-
-			if (language == null) {
-				language = (Constants.getDatasourceLanguages(activity
-						.getDsKind())).get(0);
-			}
-
+			// Fragen alle unterstützten Sprachen des Subtypes beim SIMPL
+			// Core ab und selektieren die in der Aktivität hinterlegte Sprache.
 			languageCombo.setItems(Constants.getDatasourceLanguages(
 					activity.getDsKind()).toArray(new String[0]));
 
-			languageCombo.select(languageCombo.indexOf(language));
+			languageCombo.select(languageCombo
+					.indexOf(activity.getDsLanguage()));
 		}
 
 		// Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
@@ -188,8 +181,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				language = languageCombo.getItem(languageCombo
-						.getSelectionIndex());
+				// Auswahl im Modell speichern
+				getCommandFramework().execute(
+						new SetDsLanguageCommand(getModel(), languageCombo
+								.getItem(languageCombo.getSelectionIndex())));
 			}
 		});
 
@@ -230,7 +225,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
-						.getInstanceClassName(), language);
+						.getInstanceClassName(), activity.getDsLanguage());
 			}
 		});
 
@@ -353,7 +348,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 				if (languages.size() == 1) {
 					languageCombo.select(0);
-					language = languages.get(0);
+					// Änderung im Modell speichern
+					getCommandFramework().execute(
+							new SetDsLanguageCommand(getModel(), languages
+									.get(0)));
 				}
 
 				// Speichern Auswahl in Modell
