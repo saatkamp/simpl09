@@ -30,12 +30,12 @@
    <extension
          point="org.eclipse.simpl.settings.settingsItem">
       <settingsItem
-            id="Test"
-            label="Test">
+            id="SIMPL Core"
+            label="SIMPL Core">
          <settingsItem
                composite="org.eclipse.simpl.settings.ui.test.TestComposite"
-               id="Subtest"
-               label="Subtest">
+               id="Address"
+               label="Address">
          </settingsItem>
       </settingsItem>
    </extension>

@@ -123,7 +123,7 @@ public class SettingsUI {
 		gridData.widthHint = 120;
 		gridData.verticalAlignment = GridData.FILL;
 		sShell = new Shell(Display.getDefault());
-		sShell.setText("SIMPL Admin Console");
+		sShell.setText("SIMPL Settings");
 		sShell.setImage(new Image(Display.getCurrent(), getClass()
 				.getResourceAsStream("/icons/SIMPL-logo-small.png")));
 		sShell.setBounds(new Rectangle(200, 100, 900, 500));
