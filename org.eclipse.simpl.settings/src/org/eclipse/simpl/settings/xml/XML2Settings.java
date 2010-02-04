@@ -1,61 +1,97 @@
 package org.eclipse.simpl.settings.xml;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
-import org.jdom.output.Format;
-import org.jdom.output.XMLOutputter;
 
 public class XML2Settings {
 
-	public static void main(String[] args) {
-		if (args.length != 6) {
-			System.err.println("Attention:");
-			System.err.println("jdom.jar must be added to classpath.");
-			System.err.println("Usage:");
-			System.err.println("java ExampleJdomAddWrite <XmlFile> <NewFile>"
-					+ " <ParentElem> <Child> <FindText> <New>");
-			System.err.println("Example:");
-			System.err.println("java -classpath .;jdom.jar ExampleJdomAddWrite"
-					+ " MyXmlFile.xml NewXmlFile.xml Button Title"
-					+ " \"Mein dritter Button\" \"Mein neuer Button\"");
-			System.exit(1);
-		}
-		try {
-			// ---- Read XML file ----
-			SAXBuilder builder = new SAXBuilder();
-			Document doc = builder.build(new File(args[0]));
-			// ---- Modify XML data ----
-			Element root = doc.getRootElement();
-			List listParentElements = root.getChildren(args[2]); // <ParentElem>
-			for (int i = 0; i < listParentElements.size(); i++) {
-				// Find searched element with given text:
-				Element elMain = (Element) (listParentElements.get(i));
-				if (null == elMain)
-					continue;
-				Element elChild = elMain.getChild(args[3]); // <Child>
-				if (null == elChild)
-					continue;
-				String s = elChild.getTextTrim();
-				if (null == s || !s.equals(args[4]))
-					continue; // <FindText>
-				// Add new element at correct position:
-				Element elNew = new Element(args[2]); // <ParentElem>
-				elNew.addContent((new Element(args[3])).addContent(args[5]));
-				listParentElements.add(i, elNew); // <New>
-				// ---- Write XML file ----
-				XMLOutputter outp = new XMLOutputter();
-				outp.setFormat(Format.getPrettyFormat());
-				outp.output(doc, new FileOutputStream(new File(args[1])));
-				break; // <NewFile>
+	private final static String FILENAME = "simpl-settings.xml";
+	private final static String FILEPATH = System.getProperty("user.dir")
+			+ System.getProperty("file.separator") + FILENAME;
+
+	public static List<LinkedHashMap<String, String>> loadSettings() {
+		List<LinkedHashMap<String, String>> listOfSettings = new ArrayList<LinkedHashMap<String, String>>();
+
+		if (settingsFileExists()) {
+
+			try {
+				// Erzeugen eines JDOM-Dokuments anhand der Datei
+				// simpl-settings.xml
+				SAXBuilder builder = new SAXBuilder();
+				Document doc = builder.build(FILEPATH);
+				// Lesen des Wurzelelements des JDOM-Dokuments doc
+				Element settings = doc.getRootElement();
+
+				// Erzeugen eine Liste aller Einstellungs-Einträge
+				List allEntryElements = settings.getChildren("settingsEntry");
+				// Arbeiten alle settingsEntry's durch
+				for (Object settingsEntry : allEntryElements) {
+					if (settingsEntry instanceof Element) {
+						Element setEntry = (Element) settingsEntry;
+						Element setSubEntry = setEntry
+								.getChild("settingsSubEntry");
+
+						// Erzeugen eine neue HashMap für das aktuell
+						// gelesene settingsSubEntry-Objekt
+						LinkedHashMap<String, String> setting = new LinkedHashMap<String, String>();
+
+						// Tragen den Namen des settingsEntry's ein.
+						setting.put("settingsEntry", setEntry
+								.getAttributeValue("name"));
+						// Tragen den Namen des settingsSubEntry's ein.
+						setting.put("settingsSubEntry", setSubEntry
+								.getAttributeValue("name"));
+
+						// Erzeugen eine Liste aller Einstellungen des
+						// Unter-Einstellungs-Eintrags
+						List allSubEntrySettingElements = setSubEntry
+								.getChildren("setting");
+						// Arbeiten alle settingsSubEntry's durch
+						for (Object subEntrySetting : allSubEntrySettingElements) {
+							if (subEntrySetting instanceof Element) {
+								Element subEntrySet = (Element) subEntrySetting;
+								// Fügen jedes setting-Objekt eines
+								// settingSubEntry's in die HashMap ein.
+								setting.put(subEntrySet
+										.getAttributeValue("name"), subEntrySet
+										.getAttributeValue("value"));
+							}
+						}
+
+						listOfSettings.add(setting);
+					}
+				}
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
 			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
+
+			printSettings(listOfSettings);
+
 		}
+		return listOfSettings;
+	}
+
+	private static void printSettings(
+			List<LinkedHashMap<String, String>> listOfSettings) {
+		for (LinkedHashMap<String, String> setting : listOfSettings) {
+			for (String key : setting.keySet()) {
+				System.out.println("KEY: " + key + " ## " + "VALUE: "
+						+ setting.get(key));
+			}
+			System.out.println("-------------------------------------");
+		}
+	}
+
+	private static boolean settingsFileExists() {
+		File settings = new File(FILEPATH);
+		return settings.exists();
 	}
 
 }
