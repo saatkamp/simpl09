@@ -2,13 +2,16 @@ package org.eclipse.bpel.simpl.ui.properties;
 
 import java.util.List;
 
+import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.ui.command.SetDataVariableCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
+import org.eclipse.bpel.ui.util.ModelHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -40,6 +43,8 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 	private Label languageLabel = null;
 	private CCombo languageCombo = null;
 	private Composite parentComposite = null;
+	private Label dataVariableLabel = null;
+	private Text dataVariableText = null;
 
 	private RetrieveDataActivity activity;
 
@@ -65,6 +70,10 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 		setStatement(activity.getDsStatement());
 		// Setzen die Datenquellenadresse
 		dataSourceAddressText.setText(activity.getDsAddress());
+		// Setzen die Zieleinheit des Queries.
+		if (activity.getDataVariable()!=null){
+			dataVariableText.setText(activity.getDataVariable().getName());
+		}
 		// Setzen die Sprache
 		if (kindCombo.getSelectionIndex() > 0) {
 			// Fragen alle unterstützten Sprachen des Subtypes beim SIMPL
@@ -88,6 +97,10 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
+		GridData gridData13 = new GridData();
+		gridData13.horizontalAlignment = GridData.FILL;
+		gridData13.grabExcessHorizontalSpace = true;
+		gridData13.verticalAlignment = GridData.CENTER;
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;
 		gridData4.verticalAlignment = GridData.CENTER;
@@ -179,12 +192,32 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 			}
 		});
 
-		Label filler411 = new Label(composite, SWT.NONE);
-		Label filler42 = new Label(composite, SWT.NONE);
+		dataVariableLabel = new Label(composite, SWT.NONE);
+		dataVariableLabel
+				.setText("Target variable to insert the query result:");
+		dataVariableLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
+		dataVariableText = new Text(composite, SWT.BORDER);
+		dataVariableText.setLayoutData(gridData13);
+		dataVariableText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				Variable variable = (Variable) ModelHelper
+				.findElementByName(ModelHelper.getContainingScope(getInput()),
+						dataVariableText.getText(), Variable.class);
+				
+				if (variable != null){
+					getCommandFramework().execute(
+							new SetDataVariableCommand(getModel(), variable));
+				}
+			}
+		});
 		Label filler43 = new Label(composite, SWT.NONE);
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
