@@ -519,69 +519,72 @@ public class InsertEditor extends AStatementEditor {
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
 				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
-			final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
+			
+			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("INSERT"))){
+
+				final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
+				keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
+				//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+
+				keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
 	
-			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
-			//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
-			
-			keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
-
-			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
-				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-			}
-			//else isInsertKeyWord=false;
-			
-			final KeyWord tmpKeyWord=listOfMainKeyWords.get(i);
-			keyWordAsButton.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-					// TODO Auto-generated method stub
-					widgetSelected(e);
-				}
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					// TODO hier muss der statement befehle in der textBox eingetragen werden.
-					
-					/*
-					 * in the following for statement all the buttons are only
-					 * then enabled if the father button (according to the Logik in the parsed xmlFile)
-					 */
-					
-					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-
-					
-					for(int x=0;x<buttonList.size();x++){
-						//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-						keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-						for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
-							//
-							if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-								buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-
+//				if(!listOfMainKeyWords.get(i).isTheMajorKey()){
+//					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//				}
+				//else isInsertKeyWord=false;
+				
+				final KeyWord tmpKeyWord=listOfMainKeyWords.get(i);
+				keyWordAsButton.addSelectionListener(new SelectionListener() {
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+						// TODO Auto-generated method stub
+						widgetSelected(e);
+					}
+	
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						// TODO hier muss der statement befehle in der textBox eingetragen werden.
+						
+						/*
+						 * in the following for statement all the buttons are only
+						 * then enabled if the father button (according to the Logik in the parsed xmlFile)
+						 */
+						
+						keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+	
+						
+						for(int x=0;x<buttonList.size();x++){
+							//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
+							keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
+								//
+								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
+									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+	
+								}
+								
 							}
 							
+							
+						}
+						if(tmpKeyWord.getMainKeyWord().equals("INSERT")){
+							statementText.setText(tmpKeyWord.getTextOfKEyWord());
+							tableNameComposite.setEnabled(true);
+							tablsList.setEnabled(true);
+							valuesCompo.setEnabled(true);
+	
+						}
+						else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
 						}
 						
-						
+	//					fatherComp.getShell().getData("StyledText")
+	//					s.setStatementText("sdfsdf");
 					}
-					if(tmpKeyWord.getMainKeyWord().equals("INSERT")){
-						statementText.setText(tmpKeyWord.getTextOfKEyWord());
-						tableNameComposite.setEnabled(true);
-						tablsList.setEnabled(true);
-						valuesCompo.setEnabled(true);
-
-					}
-					else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-					}
-					
-//					fatherComp.getShell().getData("StyledText")
-//					s.setStatementText("sdfsdf");
-				}
-			});
-			
-			buttonList.add(keyWordAsButton);
-
+				});
+				
+				buttonList.add(keyWordAsButton);
+			}
 		}
 		
 	}

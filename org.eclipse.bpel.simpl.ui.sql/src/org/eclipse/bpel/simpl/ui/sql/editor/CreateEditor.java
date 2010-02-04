@@ -85,6 +85,7 @@ public class CreateEditor extends AStatementEditor {
 		gridData2.grabExcessHorizontalSpace = true;
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
+		
 		GridLayout gridLayoutB = new GridLayout();
 		gridLayoutB.numColumns=1;
 		
@@ -94,10 +95,11 @@ public class CreateEditor extends AStatementEditor {
 		compos.setLayoutData(gridData1);
 		
 		GridLayout gridLayoutA = new GridLayout();
-		gridLayoutA.numColumns = 1;
+		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(xmlFilePath);
 		buttonsCompo=new Composite(compos, SWT.NONE);
 		buttonsCompo.setLayout(gridLayoutA);
+		//buttonsCompo.setLayoutData(gridData1);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		//buttonsCompo.setEnabled(false);
 		
@@ -143,14 +145,11 @@ public class CreateEditor extends AStatementEditor {
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.verticalAlignment = GridData.CENTER;
 		
-		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = 2;
 		
-		composite.setLayout(gridLayout);
 		
 		GridLayout gridLayout2 = new GridLayout();
 		gridLayout2.numColumns = 5;
-		composite.setLayout(gridLayout2);
+		//composite.setLayout(gridLayout2);
 		
 //		final Button creatButton=new Button(composite, SWT.BORDER);
 //		creatButton.setText("CREATE");
@@ -168,7 +167,7 @@ public class CreateEditor extends AStatementEditor {
 		
 		
 		
-		tableNameComposite=new Composite(composite, SWT.BORDER);
+		tableNameComposite=new Composite(composite, SWT.BACKGROUND);
 		tableNameComposite.setLayout(gridLayout2);
 		if(statementText.getText().length()<8){
 			tableNameComposite.setEnabled(false);
@@ -245,10 +244,10 @@ public class CreateEditor extends AStatementEditor {
 		
 		
 		//Text textColumnName;
-		textColumnName=new Text(columnCompo, SWT.NONE);
+		textColumnName=new Text(columnCompo, SWT.BORDER);
 
 		
-		final Button addColumn =new Button(columnCompo, SWT.BORDER);
+		final Button addColumn =new Button(columnCompo, SWT.NONE);
 		addColumn.setText("Add New Column");
 		addColumn.addSelectionListener(new SelectionListener() {
 			
@@ -412,6 +411,10 @@ public class CreateEditor extends AStatementEditor {
 //		});
 		//**************************************
 		
+		//statementText.setText("CREATE ");
+		tableNameComposite.setEnabled(true);
+		columnCompo.setEnabled(true);
+		columsListCompo.setEnabled(true);
 	}
 
 	/**
@@ -645,64 +648,69 @@ public class CreateEditor extends AStatementEditor {
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
 				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
-			final Button keyWordAsButton=new Button(buttonsCompo, SWT.BORDER);
-			keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
-			//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
 			
-			keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
-
-			if(!listOfMainKeyWords.get(i).isTheMajorKey()){
-				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-			}
-			//else isInsertKeyWord=false;
-			
-			final KeyWord tmpKeyWord=listOfMainKeyWords.get(i);
-			keyWordAsButton.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-					// TODO Auto-generated method stub
-					widgetSelected(e);
-				}
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					// TODO hier muss der statement befehle in der textBox eingetragen werden.
-					
-					/*
-					 * in the following for statement all the buttons are only
-					 * then enabled if the father button (according to the Logik in the parsed xmlFile)
-					 */
-					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-					
-					for(int x=0;x<buttonList.size();x++){
-						//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-						buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-						for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
-							//
-							if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-								buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("CREATE"))){
+				
+			    final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
+			    keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+			    keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
+				//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+				
+				keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+	
+//				if(!listOfMainKeyWords.get(i).isTheMajorKey()){
+//					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//				}
+				//else isInsertKeyWord=false;
+				
+				final KeyWord tmpKeyWord=listOfMainKeyWords.get(i);
+				keyWordAsButton.addSelectionListener(new SelectionListener() {
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+						// TODO Auto-generated method stub
+						widgetSelected(e);
+					}
+	
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						// TODO hier muss der statement befehle in der textBox eingetragen werden.
+						
+						/*
+						 * in the following for statement all the buttons are only
+						 * then enabled if the father button (according to the Logik in the parsed xmlFile)
+						 */
+						keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+						
+						for(int x=0;x<buttonList.size();x++){
+							//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
+							buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
+								//
+								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
+									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+								}
+								
 							}
+							
 							
 						}
 						
-						
+						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+//						if(tmpKeyWord.getMainKeyWord().equals("CREATE")){
+//							
+//							statementText.setText("CREATE ");
+//							tableNameComposite.setEnabled(true);
+//							columnCompo.setEnabled(true);
+//							columsListCompo.setEnabled(true);
+//						}
+	//					fatherComp.getShell().getData("StyledText")
+	//					s.setStatementText("sdfsdf");
 					}
-					
-					statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
-					if(tmpKeyWord.getMainKeyWord().equals("CREATE")){
-						
-						statementText.setText("CREATE ");
-						tableNameComposite.setEnabled(true);
-						columnCompo.setEnabled(true);
-						columsListCompo.setEnabled(true);
-					}
-//					fatherComp.getShell().getData("StyledText")
-//					s.setStatementText("sdfsdf");
-				}
-			});
+				});
+				
+				buttonList.add(keyWordAsButton);
+			}
 			
-			buttonList.add(keyWordAsButton);
-
 		}
 		
 	}
