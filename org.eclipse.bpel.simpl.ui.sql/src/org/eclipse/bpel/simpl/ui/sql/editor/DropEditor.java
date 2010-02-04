@@ -103,7 +103,9 @@ public class DropEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 			if(statementText.getText().length()>8){
-
+				if(statementText.getText().equals("statement")){
+					statementText.setText("DROP ");
+				}
 			}
 			else{statementText.setText("DROP ");}
 		}
@@ -146,10 +148,10 @@ public class DropEditor extends AStatementEditor {
 		tableNameComposite.setLayout(gridLayout2);
 		tableNameComposite.setEnabled(false);
 		
-		labelSchemaName =new Label(tableNameComposite, SWT.BORDER);
+		labelSchemaName =new Label(tableNameComposite, SWT.NONE);
 		labelSchemaName.setText("The handeld Schema/Table:");
 		textSchemaName=new Text(tableNameComposite, SWT.BORDER);
-		final Button insertSchemaName =new Button(tableNameComposite, SWT.BORDER);
+		final Button insertSchemaName =new Button(tableNameComposite, SWT.NONE);
 		insertSchemaName.setText("Insert in Statement");
 		insertSchemaName.addSelectionListener(new SelectionListener() {
 			

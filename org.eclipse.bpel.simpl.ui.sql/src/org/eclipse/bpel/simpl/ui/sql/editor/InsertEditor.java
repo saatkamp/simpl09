@@ -96,6 +96,9 @@ public class InsertEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 			if(statementText.getText().length()>8){
+				if(statementText.getText().equals("statement")){
+					statementText.setText("INSERT INTO ");
+				}
 				//tableNameComposite.setEnabled(true);
 				//tablsList.setEnabled(true);
 				//valuesCompo.setEnabled(true);
@@ -133,7 +136,7 @@ public class InsertEditor extends AStatementEditor {
 		Label tableName =new Label(tableNameComposite, SWT.NONE);
 		tableName.setText("Type the name of the Table: ");
 		textTableName=new Text(tableNameComposite, SWT.BORDER);
-		final Button addTable =new Button(tableNameComposite, SWT.BORDER);
+		final Button addTable =new Button(tableNameComposite, SWT.NONE);
 		addTable.setText("Add to Statement");
 		addTable.addSelectionListener(new SelectionListener() {
 			
@@ -313,6 +316,10 @@ public class InsertEditor extends AStatementEditor {
 			}
 		});
 		//***********************************************************
+		
+		tableNameComposite.setEnabled(true);
+		tablsList.setEnabled(true);
+		valuesCompo.setEnabled(true);
 	}
 	
 	
@@ -433,14 +440,15 @@ public class InsertEditor extends AStatementEditor {
 	 */
 	private String getParsedVlauesFromStatement() {
 		String valuesString="";
-		if(statementText.getText().length()>0){
+		if((statementText.getText().length()>0)&&(statementText.getText()!=null)){
 			String cleandStatment=removeAllSpaces(statementText.getText());
 			String[] wordsOfStatment =cleandStatment.split("\r");
-			
-			if(wordsOfStatment[1].length()>7){
-			 valuesString=wordsOfStatment[1].substring(7,wordsOfStatment[1].length()-1);
+			if(wordsOfStatment.length>1){
+				if(wordsOfStatment[1].length()>7){
+				 valuesString=wordsOfStatment[1].substring(7,wordsOfStatment[1].length()-1);
+				}
+				else{ valuesString="";}
 			}
-			else{ valuesString="";}
 		}
 		
 		return valuesString;
@@ -568,15 +576,21 @@ public class InsertEditor extends AStatementEditor {
 							
 							
 						}
-						if(tmpKeyWord.getMainKeyWord().equals("INSERT")){
-							statementText.setText(tmpKeyWord.getTextOfKEyWord());
-							tableNameComposite.setEnabled(true);
-							tablsList.setEnabled(true);
-							valuesCompo.setEnabled(true);
-	
-						}
-						else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-						}
+						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+
+						tableNameComposite.setEnabled(true);
+						tablsList.setEnabled(true);
+						valuesCompo.setEnabled(true);
+//
+//						if(tmpKeyWord.getMainKeyWord().equals("INSERT")){
+//							statementText.setText(tmpKeyWord.getTextOfKEyWord());
+//							tableNameComposite.setEnabled(true);
+//							tablsList.setEnabled(true);
+//							valuesCompo.setEnabled(true);
+//	
+//						}
+//						else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+//						}
 						
 	//					fatherComp.getShell().getData("StyledText")
 	//					s.setStatementText("sdfsdf");
