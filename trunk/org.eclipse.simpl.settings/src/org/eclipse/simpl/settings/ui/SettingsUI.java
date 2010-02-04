@@ -191,7 +191,7 @@ public class SettingsUI {
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
 				// Werte des Composites speichern
-				saveAllSettings();
+				Application.getInstance().saveAllSettings();
 				sShell.close();
 			}
 		});
@@ -214,7 +214,7 @@ public class SettingsUI {
 					//Hier prüfen wir auf den Index der im Konstruktor übergebenen Buttons.
 					//Yes = 0, No = 1, Cancel = 2;
 					if (buttonPressed == 0) {
-						saveAllSettings();
+						Application.getInstance().saveAllSettings();
 						sShell.close();
 					}
 					if (buttonPressed == 1){
@@ -294,16 +294,5 @@ public class SettingsUI {
 			}
 		});
 
-	}
-
-	public void saveAllSettings() {
-		LinkedHashMap<String, ASettingsComposite> compClasses = Application
-				.getInstance().getCompositeClasses();
-
-		for (String key : compClasses.keySet()) {
-			ASettingsComposite compClass = compClasses.get(key);
-			compClass.saveSettings(compClass.getParentConsoleItem(), compClass
-					.getConsoleItem(), "lastSaved");
-		}
 	}
 }

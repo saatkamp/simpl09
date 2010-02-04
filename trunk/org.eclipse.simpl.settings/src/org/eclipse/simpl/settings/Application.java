@@ -7,6 +7,8 @@ import java.util.List;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.simpl.settings.extensions.ASettingsComposite;
+import org.eclipse.simpl.settings.xml.Settings2XML;
+import org.eclipse.simpl.settings.xml.XML2Settings;
 
 public class Application {
 
@@ -14,6 +16,7 @@ public class Application {
 
 	private List<IConfigurationElement> nodes = new ArrayList<IConfigurationElement>();
 	private LinkedHashMap<String, ASettingsComposite> compositeClasses = new LinkedHashMap<String, ASettingsComposite>();
+	private List<LinkedHashMap<String, String>> settings = new ArrayList<LinkedHashMap<String, String>>();
 
 	// This must be the ID from your extension point
 	private static final String SETTINGS_ITEM_ID = "org.eclipse.simpl.settings.settingsItem";
@@ -43,8 +46,7 @@ public class Application {
 		// Liste nodes.
 		while (!iter.isEmpty()) {
 			for (IConfigurationElement e : iter) {
-				for (IConfigurationElement sub : e
-						.getChildren("settingsItem")) {
+				for (IConfigurationElement sub : e.getChildren("settingsItem")) {
 					childs.add(sub);
 				}
 			}
@@ -53,10 +55,11 @@ public class Application {
 			childs.clear();
 		}
 
+		// Laden aller Settings aus der simpl-settings.xml
+		this.settings = XML2Settings.loadSettings();
+
 		// Einmaliges Laden aller zur Verfügung stehenden CompositeClasses
 		// Alle Admin-Konsolen Punkte laden
-		// TODO Hier am besten gleich Einstellungen initial laden und so in den
-		// Klassen hinterlegen
 		LinkedHashMap<String, ASettingsComposite> classes = new LinkedHashMap<String, ASettingsComposite>();
 		List<Tuple> treeItems = Application.getInstance().getTreeItems();
 		List<String> treeSubItems = null;
@@ -70,11 +73,34 @@ public class Application {
 				// Beginn instanziert.
 				compClass = getCompClass(subItem);
 				// Initiales Laden aller gespeicherten Werte
-				compClass.loadSettings(treeIt.getName(), subItem);
+				compClass.setSettings(Application.getInstance().getSettings(
+						compClass.getParentSettingItem(),
+						compClass.getSettingItem()));
 				classes.put(subItem, compClass);
 			}
 		}
 		this.compositeClasses = classes;
+	}
+
+	private LinkedHashMap<String, String> getSettings(String parentSettingItem,
+			String settingItem) {
+		int index = -1;
+		LinkedHashMap<String, String> correspondingSet = new LinkedHashMap<String, String>();
+		
+		for (LinkedHashMap<String, String> setting : this.settings) {
+			if (setting.get("settingsEntry").equals(parentSettingItem)
+					&& setting.get("settingsSubEntry").equals(settingItem)) {
+				index = settings.indexOf(setting);
+				break;
+			} else {
+				continue;
+			}
+		}
+		if (index > 0){
+			correspondingSet = this.settings.get(index);
+		}
+		
+		return correspondingSet;
 	}
 
 	public List<Tuple> getTreeItems() {
@@ -145,35 +171,31 @@ public class Application {
 		}
 		return compositeClass;
 	}
-	
-	public boolean haveSettingsChanged(){
+
+	public boolean haveSettingsChanged() {
 		boolean changed = false;
-		for (ASettingsComposite compositeClass : this.compositeClasses.values()){
-			if (compositeClass.haveSettingsChanged()){
+		for (ASettingsComposite compositeClass : this.compositeClasses.values()) {
+			if (compositeClass.haveSettingsChanged()) {
 				changed = true;
 			}
 		}
 		return changed;
 	}
-	
-	public void resetCompositeValues(){
-		for (ASettingsComposite compositeClass : this.compositeClasses.values()){
+
+	public void resetCompositeValues() {
+		for (ASettingsComposite compositeClass : this.compositeClasses.values()) {
 			compositeClass.loadSettingsFromBuffer("lastSaved");
 		}
 	}
-	
-	public void defaultCompositeValues(){
-		for (ASettingsComposite compositeClass : this.compositeClasses.values()){
+
+	public void defaultCompositeValues() {
+		for (ASettingsComposite compositeClass : this.compositeClasses.values()) {
 			compositeClass.loadSettingsFromBuffer("default");
 		}
 	}
 
 	public ASettingsComposite getCompositeClass(String treeItem) {
 		return this.compositeClasses.get(treeItem);
-	}
-
-	public LinkedHashMap<String, ASettingsComposite> getCompositeClasses() {
-		return this.compositeClasses;
 	}
 
 	public List<Tuple> sortTupleList(List<Tuple> list) {
@@ -193,6 +215,15 @@ public class Application {
 				}
 		}
 		return tupleList;
+	}
+
+	public void saveAllSettings() {
+		List<LinkedHashMap<String, String>> listOfSettings = new ArrayList<LinkedHashMap<String, String>>();
+		for (String key : compositeClasses.keySet()){
+			ASettingsComposite compClass = compositeClasses.get(key);
+			listOfSettings.add(compClass.getSettings());
+		}
+		Settings2XML.saveSettings(listOfSettings);
 	}
 
 }

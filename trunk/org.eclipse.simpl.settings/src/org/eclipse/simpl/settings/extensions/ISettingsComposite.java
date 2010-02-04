@@ -1,5 +1,7 @@
 package org.eclipse.simpl.settings.extensions;
 
+import java.util.LinkedHashMap;
+
 import org.eclipse.swt.widgets.Composite;
 
 public interface ISettingsComposite {
@@ -9,16 +11,16 @@ public interface ISettingsComposite {
 	public void setComposite(Composite composite);
 
 	public void createComposite(Composite composite);
-
-	public void saveSettings(String parentItem, String item, String settingName);
-
-	public void loadSettings(String parentItem, String item);
+	
+	public LinkedHashMap<String, String> getSettings();
+	
+	public void setSettings(LinkedHashMap<String, String> settings);
 
 	public boolean haveSettingsChanged();
 
 	public void loadSettingsFromBuffer(String settingName);
 	
-	public String getParentConsoleItem();
+	public String getParentSettingItem();
 	
-	public String getConsoleItem();
+	public String getSettingItem();
 }

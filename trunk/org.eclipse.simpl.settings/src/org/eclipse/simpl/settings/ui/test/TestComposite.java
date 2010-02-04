@@ -59,40 +59,37 @@ public class TestComposite extends ASettingsComposite {
 	}
 
 	@Override
-	public void saveSettings(String parentItem, String item, String settingName) {
+	public LinkedHashMap<String, String> getSettings() {
+		// Settings-Liste erstellen und mit Werte füllen zum Speichern
+		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
+		//Zugehörigkeit des Composites einfügen (Ober- und Unterpunkt der Settings)
+		settings.put("settingsEntry", getParentSettingItem());
+		settings.put("settingsSubEntry", getSettingItem());
+		
 		// Überprüfen, ob mindestens ein Wert geändert wurde
 		if (haveSettingsChanged()) {
-			// Settings-Liste erstellen und mit Werte füllen zum Speichern
-			LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-
 			// Werte aus den Buffervariablen einfügen
 			settings.put(this.SIMPL_CORE_ADDRESS, this.bSimplCoreAddress);
-
-			//TODO: Speichern
 
 			// Last-Saved Werte aktualisieren
 			this.lSimplCoreAddress = this.bSimplCoreAddress;
 		}
+		return settings;
 	}
 
 	@Override
-	public void loadSettings(String parentItem, String item) {
-		// Settings-Liste erstellen
-		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-
-		//TODO: Laden
-		settings.put(this.SIMPL_CORE_ADDRESS, "");
-
+	public void setSettings(LinkedHashMap<String, String> settings){
 		if (!settings.isEmpty()) {
 			this.lSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
 			this.bSimplCoreAddress = this.lSimplCoreAddress;
 		}
-
-		//TODO: Defaults-Laden
-
-		if (!settings.isEmpty()) {
-			this.dSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
-		}
+//
+//		//TODO: Defaults-Laden
+//
+//		if (!settings.isEmpty()) {
+//			this.dSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
+//		}
+//		
 	}
 
 	@Override
@@ -136,14 +133,12 @@ public class TestComposite extends ASettingsComposite {
 	}
 
 	@Override
-	public String getConsoleItem() {
-		// TODO Auto-generated method stub
+	public String getParentSettingItem() {
 		return "SIMPL Core";
 	}
 
 	@Override
-	public String getParentConsoleItem() {
-		// TODO Auto-generated method stub
+	public String getSettingItem() {
 		return "Address";
 	}
 }
