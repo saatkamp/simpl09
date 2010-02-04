@@ -65,11 +65,14 @@ public class DeleteEditor extends AStatementEditor {
 		gridData2.grabExcessHorizontalSpace = true;
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
+		
+		GridLayout gridLayoutB = new GridLayout();
+		gridLayoutB.numColumns=1;
+		
+		
 		compos = new Composite(comp, SWT.NONE);
-		compos.setLayout(new GridLayout());
-//		GridLayout gridLayoutB = new GridLayout();
-//		gridLayoutB.numColumns = 2;
-		compos.setLayoutData(gridData);
+		compos.setLayout(gridLayoutB);
+		compos.setLayoutData(gridData1);
 		
 		
 		GridLayout gridLayoutA = new GridLayout();
@@ -82,7 +85,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		comp.setLayoutData(gridData);
 		statementText = new StyledText(comp, SWT.BORDER| SWT.V_SCROLL| SWT.H_SCROLL);
-		statementText.setLayoutData(gridData1);
+		statementText.setLayoutData(gridData2);
 		statementText.addModifyListener(new ModifyListener(){
 
 			@Override
@@ -96,10 +99,9 @@ public class DeleteEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 			if(statementText.getText().length()>8){
-//				columsListCompo.setEnabled(true);
-//				tableNameComposite.setEnabled(true);
-//				buttonsCompo.setEnabled(true);
-//				columnCompo.setEnabled(true);
+				if(statementText.getText().equals("statement")){
+					statementText.setText("DELETE ");
+				}
 				
 			}
 			else{statementText.setText("DELETE ");}
@@ -241,6 +243,8 @@ public class DeleteEditor extends AStatementEditor {
 			//tablsList.setSelection(GetTablesFromStatement());
 		}
 		
+		tablsList.setEnabled(true);
+		tableNameComposite.setEnabled(true);
 	}
 
 	/**
@@ -400,7 +404,7 @@ public class DeleteEditor extends AStatementEditor {
 							
 						}
 						
-						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+						statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
 						tablsList.setEnabled(true);
 						tableNameComposite.setEnabled(true);
 						

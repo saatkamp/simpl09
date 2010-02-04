@@ -119,7 +119,9 @@ public class CreateEditor extends AStatementEditor {
 		if (getStatement()!=null){
 			statementText.setText(getStatement());
 			if(statementText.getText().length()>8){
-				//tableNameComposite.setEnabled(true);
+				if(statementText.getText().equals("statement")){
+					statementText.setText("CREATE ");
+				}
 			}
 			else{statementText.setText("CREATE ");}
 		}
