@@ -95,7 +95,8 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 		if (!isReconciling) {
 			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
 					.getRetrieveDataActivity_DataVariable().getName(),
-					newDataVariable.getName());
+					newDataVariable == null ? null : newDataVariable
+							.getName());
 		}
 		dataVariable = newDataVariable;
 		if (eNotificationRequired())
