@@ -66,12 +66,8 @@ public class DeleteEditor extends AStatementEditor {
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
 		
-		GridLayout gridLayoutB = new GridLayout();
-		gridLayoutB.numColumns=1;
-		
-		
 		compos = new Composite(comp, SWT.NONE);
-		compos.setLayout(gridLayoutB);
+		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData1);
 		
 		
@@ -131,19 +127,24 @@ public class DeleteEditor extends AStatementEditor {
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.verticalAlignment = GridData.CENTER;
 		
-		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = 6;
-		composite.setLayout(gridLayout);
+//		GridLayout gridLayout = new GridLayout();
+//		gridLayout.numColumns = 6;
+//		composite.setLayout(gridLayout);
 		
 
 		//****************************************************
-		final Label tableNameLabel=new Label(composite, SWT.NONE);
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		tableNameComposite=new Composite(composite, SWT.NONE);
+		tableNameComposite.setLayout(gridLayout2);
+		
+		final Label tableNameLabel=new Label(tableNameComposite, SWT.NONE);
 		tableNameLabel.setText("Select the Table: ");
 		//tableNameLabel.setLayoutData(gridData1);
 		
 		
 		
-		tablsList = new List(composite, SWT.BORDER | SWT.V_SCROLL| SWT.H_SCROLL);
+		tablsList = new List(tableNameComposite, SWT.BORDER | SWT.V_SCROLL| SWT.H_SCROLL);
 		tablsList.setBounds(40, 20, 420, 100);
 		
 		parseStatment();
@@ -168,13 +169,10 @@ public class DeleteEditor extends AStatementEditor {
 		//************************************************
 		
 		//************************************
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
-		tableNameComposite=new Composite(composite, SWT.BORDER);
-		tableNameComposite.setLayout(gridLayout2);
+		
 		Label tableName =new Label(tableNameComposite, SWT.BORDER);
 		textTableName=new Text(tableNameComposite, SWT.BORDER);
-		final Button addTable =new Button(tableNameComposite, SWT.BORDER);
+		final Button addTable =new Button(tableNameComposite, SWT.NONE);
 		addTable.setText("Add Name of handeld Element:");
 		addTable.addSelectionListener(new SelectionListener() {
 			
@@ -245,21 +243,41 @@ public class DeleteEditor extends AStatementEditor {
 		
 		tablsList.setEnabled(true);
 		tableNameComposite.setEnabled(true);
+		
+		loadTheTablesIntoList();
+		parseStatment();
 	}
 
+	/**
+	 * Removing all extra / unnasecerely Spaces in the String .
+	 * @param theString
+	 * @return cleanedString
+	 */
+	private String RemoveAllUnnasacerelySpaces(String theString){
+		String cleanedString=theString;
+		if((cleanedString!=null)&&(cleanedString.length()>1)){
+			for(int i=0;i<cleanedString.length();i++){
+				cleanedString=cleanedString.replace("  ", " ");
+			}
+			
+		}
+		return cleanedString;
+	}
+	
+	
 	/**
 	 * 
 	 */
 	private void parseStatment() {
 		
-		
-		String[] statmentWords=removeAllSpaces(statementText.getText());
+		String cleanedString=RemoveAllUnnasacerelySpaces(statementText.getText());
+		String[] statmentWords=removeAllSpaces(cleanedString);
 		if(statmentWords!=null){
 			if(statmentWords.length>2){
 				//String[] tempArray= new String[1];
 				if(IsSringTableName(statmentWords[2])>=0){
 					//tempArray[0]=statmentWords[2];
-					tablsList.setSelection(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
+					tablsList.select(IsSringTableName(statmentWords[2]));//(index)select(tempArray);//select(IsSringTableName(statmentWords[2]));
 					textTableName.setText(statmentWords[2]);
 				}
 			}
