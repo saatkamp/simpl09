@@ -49,7 +49,7 @@ public class TestComposite extends ASettingsComposite {
 		simplCoreText.setLayoutData(gridData6);
 		simplCoreText.setText(this.bSimplCoreAddress);
 		simplCoreText.addModifyListener(new ModifyListener() {
-
+			
 			@Override
 			public void modifyText(ModifyEvent e) {
 				// TODO Auto-generated method stub
@@ -62,35 +62,33 @@ public class TestComposite extends ASettingsComposite {
 	public LinkedHashMap<String, String> getSettings() {
 		// Settings-Liste erstellen und mit Werte füllen zum Speichern
 		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-		//Zugehörigkeit des Composites einfügen (Ober- und Unterpunkt der Settings)
+		// Zugehörigkeit des Composites einfügen (Ober- und Unterpunkt der
+		// Settings)
 		settings.put("settingsEntry", getParentSettingItem());
 		settings.put("settingsSubEntry", getSettingItem());
-		
-		// Überprüfen, ob mindestens ein Wert geändert wurde
-		if (haveSettingsChanged()) {
-			// Werte aus den Buffervariablen einfügen
-			settings.put(this.SIMPL_CORE_ADDRESS, this.bSimplCoreAddress);
 
-			// Last-Saved Werte aktualisieren
-			this.lSimplCoreAddress = this.bSimplCoreAddress;
-		}
+		// Werte aus den Buffervariablen einfügen
+		settings.put(this.SIMPL_CORE_ADDRESS, this.bSimplCoreAddress);
+
+		// Last-Saved Werte aktualisieren
+		this.lSimplCoreAddress = this.bSimplCoreAddress;
+
 		return settings;
 	}
 
 	@Override
-	public void setSettings(LinkedHashMap<String, String> settings, String settingsName){
+	public void setSettings(LinkedHashMap<String, String> settings,
+			String settingsName) {
 		if (!settings.isEmpty()) {
-			if (settingsName.equals("lastSaved")){
-				//Last-Saved laden
+			if (settingsName.equals("lastSaved")) {
+				// Last-Saved laden
 				this.lSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
 				this.bSimplCoreAddress = this.lSimplCoreAddress;
-			}else {
-				//Defaults laden
+			} else {
+				// Defaults laden
 				this.dSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
 			}
-			
-			
-			
+
 		}
 	}
 
@@ -120,7 +118,8 @@ public class TestComposite extends ASettingsComposite {
 				if (!getComposite().isDisposed()) {
 					// Last-Saved Werte in GUI-Elementen setzen
 					simplCoreText.setText(this.lSimplCoreAddress);
-					System.out.println("LOAD FROM LastSaved: " + this.lSimplCoreAddress);
+					System.out.println("LOAD FROM LastSaved: "
+							+ this.lSimplCoreAddress);
 				}
 				// Buffer-Werte aktualisieren
 				this.bSimplCoreAddress = this.lSimplCoreAddress;
@@ -128,7 +127,8 @@ public class TestComposite extends ASettingsComposite {
 				if (!getComposite().isDisposed()) {
 					// Buffer-Werte in GUI-Elementen setzen
 					simplCoreText.setText(this.bSimplCoreAddress);
-					System.out.println("LOAD FROM BUFFER: " + this.bSimplCoreAddress);
+					System.out.println("LOAD FROM BUFFER: "
+							+ this.bSimplCoreAddress);
 				}
 			}
 		}
