@@ -95,7 +95,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(getXmlFilePath());
-		buttonsCompo=new Composite(compos, SWT.NONE);
+		buttonsCompo=new Composite(compos, SWT.RIGHT_TO_LEFT);
 		buttonsCompo.setLayout(gridLayoutA);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
@@ -227,7 +227,15 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		if(statementText.getText().length()>0){
 			String cleanedString=RemoveAllUnnasacerelySpaces(statementText.getText());
 			String cleandStatment=removeAllSpaces(cleanedString);
-			String[] wordsOfStatment=cleandStatment.split(" ");
+			String[] wordsOfStatment;
+			if(cleandStatment.contains("\r")){
+				String[] linesOfcleandStatment=cleandStatment.split("\r");
+				wordsOfStatment=linesOfcleandStatment[0].split(" ");
+			}
+			else{
+				wordsOfStatment=cleandStatment.split(" ");
+			}
+			
 			String[] theFROMLine;
 			String selectedTableName="",columnsOfStatement="";
 			int indexOfSELECTStatement=0,indexFROMStatment=0;
