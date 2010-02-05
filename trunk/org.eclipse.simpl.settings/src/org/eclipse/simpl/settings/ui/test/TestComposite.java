@@ -78,18 +78,20 @@ public class TestComposite extends ASettingsComposite {
 	}
 
 	@Override
-	public void setSettings(LinkedHashMap<String, String> settings){
+	public void setSettings(LinkedHashMap<String, String> settings, String settingsName){
 		if (!settings.isEmpty()) {
-			this.lSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
-			this.bSimplCoreAddress = this.lSimplCoreAddress;
+			if (settingsName.equals("lastSaved")){
+				//Last-Saved laden
+				this.lSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
+				this.bSimplCoreAddress = this.lSimplCoreAddress;
+			}else {
+				//Defaults laden
+				this.dSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
+			}
+			
+			
+			
 		}
-//
-//		//TODO: Defaults-Laden
-//
-//		if (!settings.isEmpty()) {
-//			this.dSimplCoreAddress = settings.get(this.SIMPL_CORE_ADDRESS);
-//		}
-//		
 	}
 
 	@Override
