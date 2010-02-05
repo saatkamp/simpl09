@@ -1,4 +1,4 @@
-package org.eclipse.simpl.settings.ui.test;
+package org.eclipse.simpl.settings.ui.extensions;
 
 import java.util.LinkedHashMap;
 
@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-public class TestComposite extends ASettingsComposite {
+public class SIMPLCoreAddressComposite extends ASettingsComposite {
 	// Global hinterlegte Keys der Einstellungen
 	private final String SIMPL_CORE_ADDRESS = "SIMPL_CORE_ADDRESS";
 
@@ -40,7 +40,7 @@ public class TestComposite extends ASettingsComposite {
 
 		GridData gridData6 = new GridData();
 		gridData6.horizontalAlignment = GridData.FILL;
-		gridData6.grabExcessHorizontalSpace = true;
+		gridData6.grabExcessHorizontalSpace = false;
 		gridData6.verticalAlignment = GridData.CENTER;
 		Label filler3 = new Label(comp, SWT.NONE);
 		simplCoreLabel = new Label(comp, SWT.NONE);
