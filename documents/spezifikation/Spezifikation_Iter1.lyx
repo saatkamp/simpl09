@@ -19295,13 +19295,24 @@ Events
 \end_layout
 
 \begin_layout Standard
-Events sind Ereignisse, die auftreten, wenn bestimmte Aktionen innerhalb
- der ODE Engine durchgeführt werden, z.B.
- das Aktivieren eines Prozesses oder das Erzeugen einer neuen Prozessinstanz.
- Diese Events machen es möglich, zu verfolgen, was innerhalb der ODE Engine
- passiert, und produzieren detailierte Informationen über die Prozessausführung.
- Sie können mit Hilfe der Management API oder durch die Nutzung von Event
- Listenern abgefragt werden.
+Events sind Ereignisse, die von der ODE Engine erzeugt werden um Rückmeldung
+ über bestimmte Aktionen die innerhlab der Engine auftreten zu geben.
+ Bei diesen Ereignissen handelt es sich zum Beispiel um das Aktivieren eines
+ Prozesses oder das Erzeugen einer neuen Prozessinstanz.
+ Die Events sind in folgende fünf Gruppen eingeteilt: Instance lifecycle
+ Events, Activity lifecycle Events, Scope Handling, Data Handling, Correlation
+ Events.
+ Diese Events machen es möglich zu verfolgen, was innerhalb der ODE Engine
+ passiert und produzieren detailierte Informationen über die Prozessausführung.
+ Sie können mit Hilfe der Management API oder durch die Nutzung von sogenannten
+ Event Listenern abgefragt werden.
+ 
+\end_layout
+
+\begin_layout Standard
+Die Events werden momentan in der internen ODE Derby Datenbank gespeichert.
+ Im Rahmen des SIMPL Auditing ist es geplannt diese in einer externen Datenbank
+ zu speichern.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -19309,9 +19320,12 @@ Event Listener
 \end_layout
 
 \begin_layout Standard
-Event Listener sind bestimmte Konstrukte, die es ermöglichen, bei Auftreten
+Event Listener sind bestimmte Konstrukte, die es ermöglichen, bei dem Auftreten
  bestimmter Events eine direkte Rückmeldung zu geben, oder auf verschiedene
  Events zu reagieren und event-spezifische Aktionen durchzuführen.
+ Diese Event Listener werden momentan zum Beispiel dazu benutzt um die verschied
+enen event-spezifischen Informationen an das entsprechende Event DAO weiterzulei
+ten wo diese persistent gespeichert werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -19350,44 +19364,81 @@ Event Modell
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt wird das Event Modell für das Auditing von SIMPL aufgeführt
- und erläutert.
- In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Event-Modell-des-Auditings"
-
-\end_inset
-
- ist das Event Modell für die Ausführung von DM-Aktivitäten zu sehen.
- Darin enthalten sind die verschiedenen WS-BPEL Events.
- Auf diesem Modell aufbauend wird analyisert, welche Events in ODE hinzugefügt
- werden müssen.
- Das Modell baut auf dem Modell in Abbildung 
+In diesem Abschnitt wird das Event Modell für das Auditing von SIMPL aufgeführt.
+ Das SIMPL Event-Modell nutzt als Grundlage das Modell in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BPEL-Event-Modell"
 
 \end_inset
 
- auf und beschreibt die Besonderheiten, die während der Ausführung (im Zustand
- 
+ welches ein Event Modell für die Ausführung von allgemeinen Aktivitäten
+ ist.
+ Da es sich dabei jedoch um ein WS-BPEL 2.0 Event-Modell handelt sind einige
+ Anpassungen und Änderungen notwendig.
+ Der Grund dafür ist, dass die in diesem Modell vorkommenden Events nicht
+ mit den Events in ODE identisch sind.
+\end_layout
+
+\begin_layout Standard
+Die verschiedenen Schritte der Aktivitätsausführung die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+ aufgeführt sind (Inactive, Ready, Executing etc.) können bis auf eine Ausnahme
+ für das SIMPL Event-Modell genutzt werden.
+ Der Grund dafür ist, dass der Ablauf der Ausführung in ODE dem in diesem
+ Modell gleicht, d.
+ h.
+ es werden die selben Zustände durchlaufen.
+\end_layout
+
+\begin_layout Standard
+Die SIMPL Events werden nur während der direkten Ausführung der Aktivität
+ genutzt (d.h.
+ im Zustand "Executing" in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+).
+ Es genügt daher, das Event Modell darauf zu beschränken was im Zustand
+ "Executing" passiert, da is in allen anderen Zuständen keinen neuen Events
+ gibt.
+\end_layout
+
+\begin_layout Standard
+In ODE selbst gibt es für Aktivitäten nur die fünf Events: Activity enabled,
+ Activity execution started, Activity execution ended, Activity failure
+ und Activity recovery.
+ Da es in ODE keine Entsprechung der Events Complete Activity oder Activity_Comp
+leted (Übergang vom Zustand 
 \begin_inset Quotes eld
 \end_inset
 
-Executing
+Waiting
 \begin_inset Quotes erd
 \end_inset
 
- in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-Event-Modell"
-
+ zu 
+\begin_inset Quotes eld
 \end_inset
 
-) auftreten.
- Die Zustände 
+Complete
+\begin_inset Quotes erd
+\end_inset
+
+) gibt, sondern nur das Event Activity execution ended, geht ODE vom Zustand
+ Execution direkt zum Zustand Complete über.
+\end_layout
+
+\begin_layout Standard
+Das SIMPL-Event-Modell wurde daher so aufgebaut, das die Zustände 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19399,20 +19450,29 @@ Ready
 \begin_inset Quotes eld
 \end_inset
 
-Waiting
+Complete
 \begin_inset Quotes erd
 \end_inset
 
- wurden im Event Modell der Ausführung einer DM-Aktivität mit Rot gekennzeichnet
-, um ersichtlich zu machen, dass dieses Event Modell nur ein Ausschnitt
- aus dem Modell in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-Event-Modell"
-
+, sowie 
+\begin_inset Quotes eld
 \end_inset
 
- ist und die Ausführung vor 
+Faulted
+\begin_inset Quotes erd
+\end_inset
+
+ übernommen wurden.
+ Der Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Executing
+\begin_inset Quotes erd
+\end_inset
+
+ wird nicht expliziet dargestellt, statt dessen werden die einzelnen Vorgänge
+ die zwischen 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19420,15 +19480,47 @@ Ready
 \begin_inset Quotes erd
 \end_inset
 
- und nach 
+ und 
 \begin_inset Quotes eld
 \end_inset
 
-Waiting
+Complete
 \begin_inset Quotes erd
 \end_inset
 
- der in diesem Modell gleicht.
+ auftreten näher veranschaulicht.
+ Der Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+ stellt daher den Anfangszustand des SIMPL-Event-Modells da und der Zustand
+ "Complete" den Endzustand.
+\end_layout
+
+\begin_layout Standard
+Zur Vereinfachung wurden im SIMPL-Event-Modell nur die SIMPL-Events aufgeführt
+ und keine der bestehenden ODE-Events.
+ Das darauß resultierende Event Modell ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Event-Modell-des-Auditings"
+
+\end_inset
+
+ zu sehen.
+ Dabei ist zu beachten, dass die Zustände die aus dem Modell in Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+ übernommen wurden in Rot dargestellt sind.
 \end_layout
 
 \begin_layout Standard
@@ -19485,7 +19577,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename BPEL Event Modell DM-Aktivität Ablauf 2.jpg
+	filename BPEL Event Modell DM-Aktivität Ablauf 3.jpg
 	lyxscale 50
 	width 100text%
 
@@ -19514,11 +19606,14 @@ Event-Modell für die Ausführung von DM-Aktivitäten
 
 \end_inset
 
-Aus den Events im BPEL Event Modell der Ausführung folgt, dass zwei neue
- Event Klassen hinzugefügt werden müssen.
+Wie im SIMPL-Event-Modell zu sehen ist gibt es zwei neue Event Klassen.
  Dies sind die Event Klassen Connection_Events und DM_Events.
  Jede dieser beiden Event Klassen verfügt über eine Anzahl von einzelnen
  Events, die nachfolgend genauer erläutert werden.
+ Es soll zukünftig, im Rahmen der Granularität möglich sein, dass diese
+ neuen Event Klassen neben den bestehenden fünf Event Klassen, bei der Erstellun
+g eines Deployment Deskriptors aktiviert oder deaktiviert werden können.
+ Es ist nicht vorgesehen dies im Rahm es Projekts umzusetzen.
 \end_layout
 
 \begin_layout Paragraph
@@ -19528,43 +19623,51 @@ Connection_Events
 \begin_layout Standard
 Diese Events werden erzeugt, um verschiedene Ereignisse bei der Verbindung
  zu einer Datenquelle zu erfassen.
+ Sie enthalten Informationen darüber zu welcher Datenbank eine Verbindung
+ aufgebaut wurde (Typ der Datenbank und ihre Adresse) und wann die Verbindung
+ aufgebaut, bzw.
+ beendet wurde.
+ Diese Events sind notwendig um festzuhalten wann auf eine bestimmte Datenbank
+ zugegriffen wurde und dies eventuell in einem Monitoringtool darzustellen
+ (z.B.
+ Anzahl der Verbindungen zu einer bestimmte Datenbank in den letzten 24
+ Stunden).
+ 
 \end_layout
 
 \begin_layout Itemize
-Connection_Failure_Event 
+ConnectionStarted
 \end_layout
 
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn ein Verbindungsversuch fehlschlägt.
-\end_layout
-
-\begin_layout Itemize
-Connection_Active_Event 
-\end_layout
-
+\begin_deeper
 \begin_layout Standard
 Dieses Event wird erzeugt, wenn erfolgreich eine Verbindung aufgebaut wurde.
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-Connection_Closed_Event
+ConnectionEnd
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 Dieses Event wird erzeugt, wenn die Verbindung zu einer Datenquelle beendet
  wurde.
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-Connection_Lost_Event
+ConnectionLost
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 Dieses Event wird erzeugt, wenn es zu einen unerwarteten Abbruch der Verbindung
  kommt.
  Beispielsweise wenn es zu einem Timeout der Verbindung kommt.
 \end_layout
 
+\end_deeper
 \begin_layout Paragraph
 DM_Events
 \end_layout
@@ -19573,40 +19676,50 @@ DM_Events
 Die DM_Events sind für die Ereignisse einer DM-Aktivität zuständig.
  Hier wird nicht unterschieden, um welche Art von DM-Aktivität es sich handelt.
  Für alle DM-Aktivitäten werden dieselben Events erzeugt.
- Diese Events enthalten jeweils Informationen über den Namen und den Typ
- der Aktivität.
+ Diese Events enthalten alle relevanten Informationen zu den Aktivitäten
+ (z.B.
+ Name der Aktivität, die Art der Datenbank auf der die DM-Operation durchgeführt
+ wird, das zu übergebende Statement etc.).
  Diese speziellen Events werden zusätzlich zu den normalen Activity_Events
- erzeugt, um dem Nutzer die Möglichkeit zu bieten sich nur die Events der
- DM-Aktivitäten und nicht aller Aktivitäten anzeigen zu lassen.
+ erzeugt.
+ Der Grund dafür diese Events zusätzlich zu erzeugen liegt darin, das wie
+ bereits erwähnt die Möglichkeit bestehen soll, im Rahmen des Auditing nur
+ die SIMPL-Events zu erzeugen.
 \end_layout
 
 \begin_layout Itemize
-DM_Finished 
+DMStarted 
 \end_layout
 
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität erfolgreich
- beendet wurde.
-\end_layout
-
-\begin_layout Itemize
-DM_Started 
-\end_layout
-
+\begin_deeper
 \begin_layout Standard
 Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität gestartet
  wurde.
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-DM_Failure
+DMEnd
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität erfolgreich
+ beendet wurde.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+DMFailure
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 Dieses Event wird erzeugt, wenn bei der Ausführung einer DM-Aktivität ein
  Fehler auftrat.
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
