@@ -11,33 +11,15 @@ import org.jdom.output.XMLOutputter;
 
 public class Settings2XML {
 
-	private final static String FILENAME = "simpl-settings.xml";
+	private final static String FILENAME = "simpl-settings";
 	private final static String FILEPATH = System.getProperty("user.dir")
-			+ System.getProperty("file.separator") + FILENAME;
+			+ System.getProperty("file.separator");
+	private final static String FILETYPE = ".xml";
 
 	public static boolean saveSettings(
-			List<LinkedHashMap<String, String>> listOfSettings) {
+			List<LinkedHashMap<String, String>> listOfSettings, String settingsName) {
 		
 		boolean saved = false;
-
-		// List<LinkedHashMap<String, String>> listOfSettings = new
-		// ArrayList<LinkedHashMap<String, String>>();
-		// // Test
-		// // Settings-Liste erstellen und mit Werten füllen zum Speichern
-		// LinkedHashMap<String, String> settings = new LinkedHashMap<String,
-		// String>();
-		// settings.put("settingsEntry", "SIMPL Core");
-		// settings.put("settingsSubEntry", "Address");
-		// settings.put("simplCoreAddress", "http://localhost:8080/simpl");
-		// LinkedHashMap<String, String> setti = new LinkedHashMap<String,
-		// String>();
-		// setti.put("settingsEntry", "SIMPL Coreas");
-		// setti.put("settingsSubEntry", "xyzasdasd");
-		// setti.put("asdasdasdasd", "asdasdasd");
-		// setti.put("asdasdasasrterdasd", "asdaertersdasd");
-		// setti.put("eqweqweqw", "asdasdeteteetasd");
-		// listOfSettings.add(settings);
-		// listOfSettings.add(setti);
 
 		try {
 			Document doc = new Document(new Element("settings"));
@@ -74,7 +56,7 @@ public class Settings2XML {
 			}
 
 			XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());
-			out.output(doc, new FileOutputStream(FILEPATH));
+			out.output(doc, new FileOutputStream(FILEPATH+FILENAME+"-"+settingsName+FILETYPE));
 			
 			saved = true;
 		} catch (Exception ex) {

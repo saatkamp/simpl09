@@ -14,7 +14,7 @@ public interface ISettingsComposite {
 	
 	public LinkedHashMap<String, String> getSettings();
 	
-	public void setSettings(LinkedHashMap<String, String> settings);
+	public void setSettings(LinkedHashMap<String, String> settings, String settingsName);
 
 	public boolean haveSettingsChanged();
 

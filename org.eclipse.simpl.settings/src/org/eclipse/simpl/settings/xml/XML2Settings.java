@@ -11,20 +11,21 @@ import org.jdom.input.SAXBuilder;
 
 public class XML2Settings {
 
-	private final static String FILENAME = "simpl-settings.xml";
+	private final static String FILENAME = "simpl-settings";
 	private final static String FILEPATH = System.getProperty("user.dir")
-			+ System.getProperty("file.separator") + FILENAME;
+			+ System.getProperty("file.separator");
+	private final static String FILETYPE = ".xml";
 
-	public static List<LinkedHashMap<String, String>> loadSettings() {
+	public static List<LinkedHashMap<String, String>> loadSettings(String settingsName) {
 		List<LinkedHashMap<String, String>> listOfSettings = new ArrayList<LinkedHashMap<String, String>>();
 
-		if (settingsFileExists()) {
+		if (settingsFileExists(settingsName)) {
 
 			try {
 				// Erzeugen eines JDOM-Dokuments anhand der Datei
 				// simpl-settings.xml
 				SAXBuilder builder = new SAXBuilder();
-				Document doc = builder.build(FILEPATH);
+				Document doc = builder.build(FILEPATH+FILENAME+"-"+settingsName+FILETYPE);
 				// Lesen des Wurzelelements des JDOM-Dokuments doc
 				Element settings = doc.getRootElement();
 
@@ -89,8 +90,8 @@ public class XML2Settings {
 		}
 	}
 
-	private static boolean settingsFileExists() {
-		File settings = new File(FILEPATH);
+	private static boolean settingsFileExists(String settingsName) {
+		File settings = new File(FILEPATH+FILENAME+"-"+settingsName+FILETYPE);
 		return settings.exists();
 	}
 
