@@ -16,8 +16,12 @@ public class XML2Settings {
 			+ System.getProperty("file.separator");
 	private final static String FILETYPE = ".xml";
 
-	public static List<LinkedHashMap<String, String>> loadSettings(String settingsName) {
+	public static List<LinkedHashMap<String, String>> loadSettings(
+			String settingsName) {
 		List<LinkedHashMap<String, String>> listOfSettings = new ArrayList<LinkedHashMap<String, String>>();
+
+		System.out.println("FULL_FILEPATH: " + FILEPATH + FILENAME + "-"
+				+ settingsName + FILETYPE);
 
 		if (settingsFileExists(settingsName)) {
 
@@ -25,7 +29,8 @@ public class XML2Settings {
 				// Erzeugen eines JDOM-Dokuments anhand der Datei
 				// simpl-settings.xml
 				SAXBuilder builder = new SAXBuilder();
-				Document doc = builder.build(FILEPATH+FILENAME+"-"+settingsName+FILETYPE);
+				Document doc = builder.build(FILEPATH + FILENAME + "-"
+						+ settingsName + FILETYPE);
 				// Lesen des Wurzelelements des JDOM-Dokuments doc
 				Element settings = doc.getRootElement();
 
@@ -73,14 +78,23 @@ public class XML2Settings {
 				ex.printStackTrace();
 			}
 
-			printSettings(listOfSettings);
+			printSettings("XML2Settings", listOfSettings);
 
 		}
 		return listOfSettings;
 	}
 
-	private static void printSettings(
+
+
+	private static boolean settingsFileExists(String settingsName) {
+		File settings = new File(FILEPATH + FILENAME + "-" + settingsName
+				+ FILETYPE);
+		return settings.exists();
+	}
+
+	public static void printSettings(String name, 
 			List<LinkedHashMap<String, String>> listOfSettings) {
+		System.out.println("NAME: "+ name);
 		for (LinkedHashMap<String, String> setting : listOfSettings) {
 			for (String key : setting.keySet()) {
 				System.out.println("KEY: " + key + " ## " + "VALUE: "
@@ -89,10 +103,13 @@ public class XML2Settings {
 			System.out.println("-------------------------------------");
 		}
 	}
-
-	private static boolean settingsFileExists(String settingsName) {
-		File settings = new File(FILEPATH+FILENAME+"-"+settingsName+FILETYPE);
-		return settings.exists();
+	
+	public static void printSetting(String name, LinkedHashMap<String, String> setting) {
+		System.out.println("NAME: "+ name);
+		for (String key : setting.keySet()) {
+			System.out.println("KEY: " + key + " ## " + "VALUE: "
+					+ setting.get(key));
+			System.out.println("-------------------------------------");
+		}
 	}
-
 }

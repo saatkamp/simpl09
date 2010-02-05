@@ -100,6 +100,7 @@ public class Application {
 				bufferSettings = this.defaultSettings;
 			}
 		}
+				
 		int index = -1;
 		LinkedHashMap<String, String> correspondingSet = new LinkedHashMap<String, String>();
 		
@@ -112,10 +113,10 @@ public class Application {
 				continue;
 			}
 		}
-		if (index > 0){
+		if (index >= 0){
 			correspondingSet = bufferSettings.get(index);
 		}
-		
+				
 		return correspondingSet;
 	}
 
@@ -237,12 +238,14 @@ public class Application {
 	 * Speichert alle lastSaved-Settings
 	 */
 	public void saveAllSettings() {
-		List<LinkedHashMap<String, String>> listOfSettings = new ArrayList<LinkedHashMap<String, String>>();
-		for (String key : compositeClasses.keySet()){
-			ASettingsComposite compClass = compositeClasses.get(key);
-			listOfSettings.add(compClass.getSettings());
+		if (haveSettingsChanged()){
+			List<LinkedHashMap<String, String>> listOfSettings = new ArrayList<LinkedHashMap<String, String>>();
+			for (String key : compositeClasses.keySet()){
+				ASettingsComposite compClass = compositeClasses.get(key);
+				listOfSettings.add(compClass.getSettings());
+			}
+			Settings2XML.saveSettings(listOfSettings, "lastSaved");
 		}
-		Settings2XML.saveSettings(listOfSettings, "lastSaved");
 	}
 
 }
