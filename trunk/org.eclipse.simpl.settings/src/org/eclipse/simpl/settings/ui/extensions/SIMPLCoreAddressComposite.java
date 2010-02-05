@@ -40,9 +40,8 @@ public class SIMPLCoreAddressComposite extends ASettingsComposite {
 
 		GridData gridData6 = new GridData();
 		gridData6.horizontalAlignment = GridData.FILL;
-		gridData6.grabExcessHorizontalSpace = false;
+		gridData6.grabExcessHorizontalSpace = true;
 		gridData6.verticalAlignment = GridData.CENTER;
-		Label filler3 = new Label(comp, SWT.NONE);
 		simplCoreLabel = new Label(comp, SWT.NONE);
 		simplCoreLabel.setText("Address of the SIMPL Core: ");
 		simplCoreText = new Text(comp, SWT.BORDER);

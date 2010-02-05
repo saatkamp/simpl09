@@ -33,7 +33,7 @@
             id="SIMPL Core"
             label="SIMPL Core">
          <settingsItem
-               composite="org.eclipse.simpl.settings.ui.test.TestComposite"
+               composite="org.eclipse.simpl.settings.ui.extensions.SIMPLCoreAddressComposite"
                id="Address"
                label="Address">
          </settingsItem>
