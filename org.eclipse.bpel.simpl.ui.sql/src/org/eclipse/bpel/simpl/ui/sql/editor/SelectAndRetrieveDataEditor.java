@@ -225,8 +225,9 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	private String parseStatment() {
 		String valuesString="";
 		if(statementText.getText().length()>0){
-			String cleandStatment=removeAllSpaces(statementText.getText());
-			String[] wordsOfStatment =cleandStatment.split(" ");
+			String cleanedString=RemoveAllUnnasacerelySpaces(statementText.getText());
+			String cleandStatment=removeAllSpaces(cleanedString);
+			String[] wordsOfStatment=cleandStatment.split(" ");
 			String[] theFROMLine;
 			String selectedTableName="",columnsOfStatement="";
 			int indexOfSELECTStatement=0,indexFROMStatment=0;
@@ -237,10 +238,10 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				
 				for(int i=0;i<wordsOfStatment.length;i++){
 					
-					if(wordsOfStatment[i].contains("SELECT")){
+					if(wordsOfStatment[i].contains("SELECT")&&(indexOfSELECTStatement==0)){
 						indexOfSELECTStatement=i;
 					}
-					if(wordsOfStatment[i].contains("FROM")){
+					if(wordsOfStatment[i].contains("FROM")&&(indexFROMStatment==0)){
 						indexFROMStatment=i;
 					}
 				}
@@ -277,7 +278,8 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	 */
 	private void selectTheTableAndColumnsInList(String selectedTable,String columns) {
 		
-		String[] partsOfString= columns.split(",");
+		String cleanedString=removeAllSpaces(columns);
+		String[] partsOfString= cleanedString.split(",");
 		String[] tmpPartsOfString;
 		if(listOfTabels.getItemCount()>0){
 			listOfTabels.select(listOfTabels.indexOf(selectedTable));
@@ -294,17 +296,39 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	}
 
 	/**
+	 * Removing all extra / unnasecerely Spaces in the String .
+	 * @param theString
+	 * @return cleanedString
+	 */
+	private String RemoveAllUnnasacerelySpaces(String theString){
+		String cleanedString=theString;
+		if((cleanedString!=null)&&(cleanedString.length()>1)){
+			for(int i=0;i<cleanedString.length();i++){
+				cleanedString=cleanedString.replace("  ", " ");
+			}
+			
+		}
+		return cleanedString;
+	}
+	
+	
+	/**
 	 * removes all spaces from statment
 	 * @param statement
 	 * @return statmentAsOneString
 	 */
 	private String removeAllSpaces(String statement) {
+		
+		String cleanedString=RemoveAllUnnasacerelySpaces(statement);
 		String[] wordsOfCentence = null;
 		String statmentAsOneString = "";
 		
-		if(statement!=null){
-			if(statement.contains(" ")){
-				wordsOfCentence=statement.split(" ");
+		if(cleanedString!=null){
+			if(cleanedString.contains(" ")){
+				wordsOfCentence=cleanedString.split(" ");
+			}
+			else{
+				statmentAsOneString=cleanedString;
 			}
 			if(wordsOfCentence!=null){
 				for(int i=0;i<wordsOfCentence.length;i++){

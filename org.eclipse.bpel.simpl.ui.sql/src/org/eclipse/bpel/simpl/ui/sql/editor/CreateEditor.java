@@ -598,6 +598,24 @@ public class CreateEditor extends AStatementEditor {
 		return false;
 	}
 
+	
+	/**
+	 * Removing all extra / unnasecerely Spaces in the String .
+	 * @param theString
+	 * @return cleanedString
+	 */
+	private String RemoveAllUnnasacerelySpaces(String theString){
+		String cleanedString=theString;
+		if((cleanedString!=null)&&(cleanedString.length()>1)){
+			for(int i=0;i<cleanedString.length();i++){
+				cleanedString=cleanedString.replace("  ", " ");
+			}
+			
+		}
+		return cleanedString;
+	}
+	
+	
 
 	/**
 	 * removes all spaces from statment
@@ -605,12 +623,14 @@ public class CreateEditor extends AStatementEditor {
 	 * @return statmentAsOneString
 	 */
 	private String removeAllSpaces(String statement) {
+		
+		String  cleanedString=RemoveAllUnnasacerelySpaces(statement);
 		String[] wordsOfCentence = null;
 		String statmentAsOneString = "";
 		
-		if(statement!=null){
-			if(statement.contains(" ")){
-				wordsOfCentence=statement.split(" ");
+		if(cleanedString!=null){
+			if(cleanedString.contains(" ")){
+				wordsOfCentence=cleanedString.split(" ");
 			}
 			if(wordsOfCentence!=null){
 				for(int i=0;i<wordsOfCentence.length;i++){
@@ -620,7 +640,7 @@ public class CreateEditor extends AStatementEditor {
 			
 			
 			while(statmentAsOneString.contains(" ")){
-				wordsOfCentence=statement.split(" ");
+				wordsOfCentence=cleanedString.split(" ");
 				for(int i=0;i<wordsOfCentence.length;i++){
 					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
 					
