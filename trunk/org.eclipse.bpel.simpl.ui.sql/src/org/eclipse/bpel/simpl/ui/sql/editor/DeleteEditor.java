@@ -74,7 +74,7 @@ public class DeleteEditor extends AStatementEditor {
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(xmlFilePath);
-		buttonsCompo=new Composite(compos, SWT.NONE);
+		buttonsCompo=new Composite(compos, SWT.RIGHT_TO_LEFT);
 		buttonsCompo.setLayout(gridLayoutA);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		

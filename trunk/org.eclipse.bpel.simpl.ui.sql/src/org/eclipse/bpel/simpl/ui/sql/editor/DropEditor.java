@@ -82,7 +82,7 @@ public class DropEditor extends AStatementEditor {
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(xmlFilePath);
-		buttonsCompo=new Composite(compos, SWT.NONE);
+		buttonsCompo=new Composite(compos, SWT.RIGHT_TO_LEFT);
 		buttonsCompo.setLayout(gridLayoutA);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
@@ -304,6 +304,23 @@ public class DropEditor extends AStatementEditor {
 		//tablsList
 		
 	}
+	
+	/**
+	 * Removing all extra / unnasecerely Spaces in the String .
+	 * @param theString
+	 * @return cleanedString
+	 */
+	private String RemoveAllUnnasacerelySpaces(String theString){
+		String cleanedString=theString;
+		if((cleanedString!=null)&&(cleanedString.length()>1)){
+			for(int i=0;i<cleanedString.length();i++){
+				cleanedString=cleanedString.replace("  ", " ");
+			}
+			
+		}
+		return cleanedString;
+	}
+	
 
 	/**
 	 * removes all spaces from statment
@@ -311,12 +328,13 @@ public class DropEditor extends AStatementEditor {
 	 * @return statmentAsOneString
 	 */
 	private String[] removeAllSpaces(String statement) {
+		String cleanedString=RemoveAllUnnasacerelySpaces(statement);
 		String[] wordsOfCentence = null;
 		String statmentAsOneString = "";
 		
-		if(statement!=null){
-			if(statement.contains(" ")){
-				wordsOfCentence=statement.split(" ");
+		if(cleanedString!=null){
+			if(cleanedString.contains(" ")){
+				wordsOfCentence=cleanedString.split(" ");
 			}
 			if(wordsOfCentence!=null){
 				for(int i=0;i<wordsOfCentence.length;i++){
@@ -326,7 +344,7 @@ public class DropEditor extends AStatementEditor {
 			
 			
 			while(statmentAsOneString.contains(" ")){
-				wordsOfCentence=statement.split(" ");
+				wordsOfCentence=cleanedString.split(" ");
 				for(int i=0;i<wordsOfCentence.length;i++){
 					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
 					
