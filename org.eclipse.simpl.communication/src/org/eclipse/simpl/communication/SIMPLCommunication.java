@@ -1,5 +1,6 @@
 package org.eclipse.simpl.communication;
 
+
 /**
  * Die ganze Klasse ist nur ein Stub für die echte Kommunikationsschnittstelle.
  * D.h. diese Klasse simuliert die Funktionalität, die zur Kommunikation mit dem
@@ -18,5 +19,4 @@ public class SIMPLCommunication {
 		}
 		return simplCore;
 	}
-
 }

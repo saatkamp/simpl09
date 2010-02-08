@@ -8,8 +8,13 @@ public class BPELDMReloadDataHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		//Laden die Daten des BPEL-DM Plug-Ins neu
-		org.eclipse.bpel.simpl.ui.properties.Constants.init();
+		try {
+			//Laden die Daten des BPEL-DM Plug-Ins neu
+			org.eclipse.bpel.simpl.ui.properties.Constants.init();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return null;
 	}
