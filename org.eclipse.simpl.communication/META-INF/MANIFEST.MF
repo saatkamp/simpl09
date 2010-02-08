@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Communication Plug-In for the SIMPL Core
 Bundle-SymbolicName: org.eclipse.simpl.communication;singleton:=true
-Bundle-Version: 1.0.1
+Bundle-Version: 0.1.0
 Bundle-Activator: org.eclipse.simpl.communication.Activator
 Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
