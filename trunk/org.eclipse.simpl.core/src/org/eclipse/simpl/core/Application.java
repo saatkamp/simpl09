@@ -1,5 +1,7 @@
 package org.eclipse.simpl.core;
 
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,6 +17,8 @@ public class Application {
 	private List<IConfigurationElement> nodes = new ArrayList<IConfigurationElement>();
 	private LinkedHashMap<String, AAdminConsoleComposite> compositeClasses = new LinkedHashMap<String, AAdminConsoleComposite>();
 
+	private boolean dataLoaded = false;
+	
 	// This must be the ID from your extension point
 	private static final String AC_ITEM_ID = "org.eclipse.simpl.core.adminConsoleItem";
 
@@ -145,25 +149,28 @@ public class Application {
 		}
 		return compositeClass;
 	}
-	
-	public boolean haveSettingsChanged(){
+
+	public boolean haveSettingsChanged() {
 		boolean changed = false;
-		for (AAdminConsoleComposite compositeClass : this.compositeClasses.values()){
-			if (compositeClass.haveSettingsChanged()){
+		for (AAdminConsoleComposite compositeClass : this.compositeClasses
+				.values()) {
+			if (compositeClass.haveSettingsChanged()) {
 				changed = true;
 			}
 		}
 		return changed;
 	}
-	
-	public void resetCompositeValues(){
-		for (AAdminConsoleComposite compositeClass : this.compositeClasses.values()){
+
+	public void resetCompositeValues() {
+		for (AAdminConsoleComposite compositeClass : this.compositeClasses
+				.values()) {
 			compositeClass.loadSettingsFromBuffer("lastSaved");
 		}
 	}
-	
-	public void defaultCompositeValues(){
-		for (AAdminConsoleComposite compositeClass : this.compositeClasses.values()){
+
+	public void defaultCompositeValues() {
+		for (AAdminConsoleComposite compositeClass : this.compositeClasses
+				.values()) {
 			compositeClass.loadSettingsFromBuffer("default");
 		}
 	}
@@ -195,4 +202,27 @@ public class Application {
 		return tupleList;
 	}
 
+	public boolean isSIMPLCoreAvailable() {
+		boolean isAvailable = false;
+		URL url;
+		try {
+			url = new URL(
+					"http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
+			URLConnection connection = url.openConnection();
+			connection.connect();
+			isAvailable = true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return isAvailable;
+	}
+
+	public void setDataLoaded(boolean dataLoaded) {
+		this.dataLoaded = dataLoaded;
+	}
+
+	public boolean isDataLoaded() {
+		return dataLoaded;
+	}
 }

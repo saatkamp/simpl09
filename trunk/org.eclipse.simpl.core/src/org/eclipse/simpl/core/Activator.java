@@ -2,6 +2,7 @@ package org.eclipse.simpl.core;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -31,12 +32,9 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		
-		try {
+		if (Application.getInstance().isSIMPLCoreAvailable()){
 			Application.getInstance().initApplication();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			MessageDialog.openError(Display.getCurrent().getActiveShell(), "SIMPL Core Connection Exception", "The SIMPL Core isn't available. Please check if your Apache Tomcat Server is running.");
+			Application.getInstance().setDataLoaded(true);
 		}
 	}
 
