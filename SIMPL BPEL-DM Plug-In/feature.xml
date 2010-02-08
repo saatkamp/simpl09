@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.bpel.simpl.feature"
       label="SIMPL BPEL-DM Plug-In"
-      version="1.0.1"
+      version="0.1.0"
       provider-name="SIMPL">
 
    <description>
@@ -34,10 +34,10 @@ into the Eclipse BPEL Designer Plug-In.
       <import plugin="org.eclipse.bpel.ui" version="0.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gef" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.bpel.simpl.model" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.bpel.simpl.model" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.5.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.views.properties.tabbed" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.simpl.communication" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.simpl.communication" version="0.1.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
