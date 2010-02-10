@@ -434,16 +434,16 @@ public class CreateEditor extends AStatementEditor {
 		if((wordsOfStatment!=null)&&(wordsOfStatment.length>0)){
 			for(int i=1;i<wordsOfStatment.length;i++){
 				if(cleandStatment.contains(")")){
-					while(!(wordsOfStatment[i].contains(")"))){
+					//while(!(wordsOfStatment[i].contains(")"))){
 						if(!(wordsOfStatment[i].contains(")"))	) parsedColumns.add(wordsOfStatment[i]);
-					}
+					//}
 				}
 				else{
 					if(!(wordsOfStatment[i].contains(")"))	) parsedColumns.add(wordsOfStatment[i]);
 				}
-				if(cleandStatment.contains(",")){
-					wordsOfStatment[i]=wordsOfStatment[i].substring(1);
-				}
+//				if(cleandStatment.contains(",")){
+//					wordsOfStatment[i]=wordsOfStatment[i].substring(1);
+//				}
 			}
 	
 			if(wordsOfStatment.length>1){
