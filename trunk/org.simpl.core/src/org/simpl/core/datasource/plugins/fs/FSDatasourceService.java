@@ -1,7 +1,6 @@
 package org.simpl.core.datasource.plugins.fs;
 
 import java.sql.Connection;
-import java.util.Arrays;
 
 import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
@@ -9,20 +8,18 @@ import org.simpl.core.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 public class FSDatasourceService extends DatasourceServicePlugin {
-  /**
-   * 
-   */
   public FSDatasourceService() {
-    this.datasourceType = "filesystem";
-    this.datasourceSubtypes.add("EXT3");
-    this.datasourceSubtypes.add("NTFS");
-    this.datasourceSubtypes.add("FAT32");
-    this.datasourceLanguages.put("EXT3", Arrays.asList(new String[] {"OSCall"}));
-    this.datasourceLanguages.put("NTFS", Arrays.asList(new String[] {"OSCall"}));
-    this.datasourceLanguages.put("FAT32", Arrays.asList(new String[] {"OSCall"}));
+    this.setDatasourceType("filesystem");
+    this.addDatasourceSubtype("EXT3");
+    this.addDatasourceSubtype("FAT32");
+    this.addDatasourceSubtype("NTFS");
+    this.addDatasourceLanguage("EXT3", "OSCall");
+    this.addDatasourceLanguage("FAT32", "OSCall");
+    this.addDatasourceLanguage("NTFS", "OSCall");
   }
-  
-  /* (non-Javadoc)
+
+  /*
+   * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#closeConnection(java.sql.Connection)
    */
   @Override
@@ -31,8 +28,10 @@ public class FSDatasourceService extends DatasourceServicePlugin {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#defineData(java.lang.String, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#defineData(java.lang.String,
+   * java.lang.String)
    */
   @Override
   public boolean defineData(String dsAddress, String statement)
@@ -41,8 +40,10 @@ public class FSDatasourceService extends DatasourceServicePlugin {
     return false;
   }
 
-  /* (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#manipulateData(java.lang.String, java.lang.String, commonj.sdo.DataObject)
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#manipulateData(java.lang.String,
+   * java.lang.String, commonj.sdo.DataObject)
    */
   @Override
   public boolean manipulateData(String dsAddress, String statement, DataObject data)
@@ -51,7 +52,8 @@ public class FSDatasourceService extends DatasourceServicePlugin {
     return false;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#openConnection(java.lang.String)
    */
   @Override
@@ -60,8 +62,10 @@ public class FSDatasourceService extends DatasourceServicePlugin {
     return null;
   }
 
-  /* (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#queryData(java.lang.String, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#queryData(java.lang.String,
+   * java.lang.String)
    */
   @Override
   public DataObject queryData(String dsAddress, String statement)
@@ -70,10 +74,20 @@ public class FSDatasourceService extends DatasourceServicePlugin {
     return null;
   }
 
-@Override
-public boolean depositData(String dsAddress, String statement, String target)
-		throws ConnectionException {
-	// TODO Auto-generated method stub
-	return false;
-}
+  @Override
+  public boolean depositData(String dsAddress, String statement, String target)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
+   */
+  @Override
+  public DataObject getMetaData(String dsAddress) throws ConnectionException {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

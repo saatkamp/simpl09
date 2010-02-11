@@ -1,7 +1,6 @@
 package org.simpl.core.datasource.plugins.sndb;
 
 import java.sql.Connection;
-import java.util.Arrays;
 
 import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
@@ -9,15 +8,12 @@ import org.simpl.core.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 public class SNDBDatasourceService extends DatasourceServicePlugin {
-  /**
-   * 
-   */
   public SNDBDatasourceService() {
-    this.datasourceType = "sensornet";
-    this.datasourceSubtypes.add("TinyDB");
-    this.datasourceLanguages.put("TinyDB", Arrays.asList(new String[] {"TinySQL"}));
+    this.setDatasourceType("sensornet");
+    this.addDatasourceSubtype("TinyDB");
+    this.addDatasourceLanguage("TinyDB", "TinySQL");
   }
-  
+
   /*
    * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#closeConnection(java.sql.Connection)
@@ -74,10 +70,20 @@ public class SNDBDatasourceService extends DatasourceServicePlugin {
     return null;
   }
 
-@Override
-public boolean depositData(String dsAddress, String statement, String target)
-		throws ConnectionException {
-	// TODO Auto-generated method stub
-	return false;
-}
+  @Override
+  public boolean depositData(String dsAddress, String statement, String target)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
+   */
+  @Override
+  public DataObject getMetaData(String dsAddress) throws ConnectionException {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

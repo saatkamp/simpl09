@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -29,10 +28,9 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
 	static Logger logger = Logger.getLogger(DB2RDBDatasourceService.class);
 
 	public DB2RDBDatasourceService() {
-		this.datasourceType = "database";
-		this.datasourceSubtypes.add("DB2");
-		this.datasourceLanguages.put("DB2", Arrays
-				.asList(new String[] { "SQL" }));
+    this.setDatasourceType("database");
+    this.addDatasourceSubtype("DB2");
+    this.addDatasourceLanguage("DB2", "SQL");
 
 		// Set up a simple configuration that logs on the console.
 		PropertyConfigurator.configure("log4j.properties");
@@ -229,4 +227,13 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
 		
 		return success;
 	}
+
+  /* (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
+   */
+  @Override
+  public DataObject getMetaData(String dsAddress) throws ConnectionException {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }
