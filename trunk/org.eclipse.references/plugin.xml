@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.eclipse.references.category"
+            name="Reference Resolution System">
+      </category>
+      <view
+            category="org.eclipse.references.category"
+            class="org.eclipse.references.ReferenceShowView"
+            icon="icons/SIMPL-logo-small.png"
+            id="org.eclipse.references.referenceShowView"
+            name="Show References View"
+            restorable="true">
+      </view>
+      <view
+            category="org.eclipse.references.category"
+            class="org.eclipse.references.ReferenceManagementView"
+            icon="icons/SIMPL-logo-small.png"
+            id="org.eclipse.references.referenceManagementView"
+            name="Reference Management View"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>
