@@ -12,5 +12,8 @@
    <feature url="features/org.eclipse.simpl.core.feature_0.1.0.jar" id="org.eclipse.simpl.core.feature" version="0.1.0">
       <category name="SIMPL Eclipse Plug-Ins"/>
    </feature>
+   <feature url="features/org.eclipse.bpel.simpl.feature_0.1.1.jar" id="org.eclipse.bpel.simpl.feature" version="0.1.1">
+      <category name="SIMPL Eclipse Plug-Ins"/>
+   </feature>
    <category-def name="SIMPL Eclipse Plug-Ins" label="SIMPL Plug-Ins for Eclipse"/>
 </site>
