@@ -30,4 +30,6 @@ public interface DatasourceService {
 
   public boolean manipulateData(String dsAddress, String statement, DataObject data)
       throws ConnectionException;
+
+  public DataObject getMetaData(String dsAddress) throws ConnectionException;
 }

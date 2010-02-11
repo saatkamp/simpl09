@@ -1,7 +1,6 @@
 package org.simpl.core.datasource.plugins.xmldb;
 
 import java.sql.Connection;
-import java.util.Arrays;
 
 import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
@@ -9,15 +8,12 @@ import org.simpl.core.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 public class XMLDBDatasourceService extends DatasourceServicePlugin {
-  /**
-   * 
-   */
   public XMLDBDatasourceService() {
-    this.datasourceType = "database";
-    this.datasourceSubtypes.add("DB2");
-    this.datasourceLanguages.put("DB2", Arrays.asList(new String[] {"XQuery", "SQL"}));
+    this.setDatasourceType("database");
+    this.addDatasourceSubtype("DB2");
+    this.addDatasourceLanguage("DB2", "XQuery");
   }
-  
+
   /*
    * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#closeConnection(java.sql.Connection)
@@ -74,10 +70,20 @@ public class XMLDBDatasourceService extends DatasourceServicePlugin {
     return null;
   }
 
-@Override
-public boolean depositData(String dsAddress, String statement, String target)
-		throws ConnectionException {
-	// TODO Auto-generated method stub
-	return false;
-}
+  @Override
+  public boolean depositData(String dsAddress, String statement, String target)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
+   */
+  @Override
+  public DataObject getMetaData(String dsAddress) throws ConnectionException {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

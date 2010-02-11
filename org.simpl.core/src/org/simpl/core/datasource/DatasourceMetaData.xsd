@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:this="http:///org.simpl.core/src/org/simpl/core/datasource/metadata/dbMetaData.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http:///org.simpl.core/src/org/simpl/core/datasource/metadata/dbMetaData.xsd">
+    <xsd:complexType name="tColumn">
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    
+    <xsd:complexType name="tTable">
+    	<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+    		<xsd:element name="column" type="this:tColumn"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="tSchema">
+    	<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+    		<xsd:element name="table" type="this:tTable"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="tDatabaseMetaData">
+    	<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+    		<xsd:element name="schema" type="this:tSchema"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="database" type="this:tDatabaseMetaData"></xsd:element>
+
+    <xsd:complexType name="tFilesystemMetaData">
+    	<xsd:sequence>
+            <xsd:element name="line" type="this:tLine"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="tLine">
+    	<xsd:restriction base="xsd:string"></xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:element name="filesystem" type="this:tFilesystemMetaData"></xsd:element>
+
+
+
+</xsd:schema>
