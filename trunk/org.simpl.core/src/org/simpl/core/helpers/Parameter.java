@@ -1,4 +1,4 @@
-package org.simpl.core.webservices.helpers;
+package org.simpl.core.helpers;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -12,7 +12,8 @@ import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 /**
- * <b>Purpose:</b> Helper for the transmission of objects as web service parameters.<br>
+ * <b>Purpose:</b> Helper for the transmission of complex objects as web service
+ * parameters.<br>
  * <b>Description:</b> Offers functions to serialize and deserialize objects. <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>

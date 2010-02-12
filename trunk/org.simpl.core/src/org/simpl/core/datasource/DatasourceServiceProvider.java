@@ -8,8 +8,10 @@ import java.util.List;
 import org.simpl.core.SIMPLCore;
 
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
+ * <b>Purpose:</b> Provides access to the datasource services that are loaded from
+ * plugins.<br>
+ * <b>Description:</b> Instances of datasource services are retrieved by type and subtype
+ * of a datasource, using the getInstance() method. <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -17,7 +19,7 @@ import org.simpl.core.SIMPLCore;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DatasourceServiceProvider implements DatasourceInfo {
+public class DatasourceServiceProvider {
   /**
    * Maps the datasource service types to a list of supporting datasource service plugin
    * instances.
@@ -95,20 +97,21 @@ public class DatasourceServiceProvider implements DatasourceInfo {
     }
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceInfo#getDatasourceTypes()
+  /**
+   * Returns all datasource types loaded from the plugins.
+   * 
+   * @return
    */
-  @Override
   public List<String> getDatasourceTypes() {
     return new ArrayList<String>(datasourceServices.keySet());
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceInfo#getDatasourceSubtypes(java.lang.String)
+  /**
+   * Returns the datasource subtypes of a given datasource type.
+   * 
+   * @param dsType
+   * @return
    */
-  @Override
   public List<String> getDatasourceSubtypes(String dsType) {
     List<String> datasourceSubtypes = new ArrayList<String>();
 
@@ -123,12 +126,12 @@ public class DatasourceServiceProvider implements DatasourceInfo {
     return datasourceSubtypes;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.datasource.DatasourceInfo#getDatasourceLanguages(java.lang.String)
+  /**
+   * Returns all datasource languages of a given datasource subtype.
+   * 
+   * @param dsSubtype
+   * @return
    */
-  @Override
   public List<String> getDatasourceLanguages(String dsSubtype) {
     List<String> datasourceLanguages = new ArrayList<String>();
 

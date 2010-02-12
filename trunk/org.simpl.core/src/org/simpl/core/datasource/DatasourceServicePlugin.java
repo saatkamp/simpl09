@@ -7,47 +7,117 @@ import java.util.HashMap;
 import java.util.List;
 
 import commonj.sdo.DataObject;
-import commonj.sdo.Property;
-import commonj.sdo.Type;
 import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
+/**
+ * <b>Purpose:</b> This abstract class is used to realize datasource service plugins and
+ * thus be able to support a multiplicity of different datasources. <br>
+ * <b>Description:</b> A datasource plugin can support just one type of datasource but
+ * several subtypes and languages, that must be defined in the plugin's constructor with
+ * the available set, get and add methods.<br>
+ * The meta data structure of a datasource is made available as a service data object
+ * (SDO) to offer an independant and extensible data format for exchange. The structure of
+ * the SDO is created out of a XML schema file that defines the data types and can be
+ * created for each plugin. If no schema file is created, the standard schema file is used
+ * as default.<br>
+ * <b>Copyright:</b> <br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author hahnml
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
+ */
 public abstract class DatasourceServicePlugin implements DatasourceService {
-  protected String datasourceType = "default"; // Database, Filesystem, ...
-  protected String datasourceMetaDataType = "default";
-  protected List<String> datasourceSubtypes = new ArrayList<String>(); // DB2, MySQL, ...
-  protected HashMap<String, List<String>> datasourceLanguages = new HashMap<String, List<String>>(); // SQL,
+  /**
+   * Name of the standard meta data schema file.
+   */
+  private static final String DATASOURCE_META_DATA_SCHEMA_FILE = "DatasourceMetaData.xsd";
 
-  // XQuery,
-  // ...
+  /**
+   * Type of the supported datasource (database, filesystem, ...)
+   */
+  private String datasourceType = "database";
 
-  protected String getDatasourceType() {
-    return datasourceType;
+  /**
+   * XML schema type of the datasource meta data. (declared in DEFAULT_META_DATA_SCHEMA)
+   */
+  private String datasourceMetaDataType = "tDatabaseMetaData";
+
+  /**
+   * Subtypes of the supported datasource. (DB2, MySQL, ...)
+   */
+  private List<String> datasourceSubtypes = new ArrayList<String>();
+
+  /**
+   * Languages supported by the datasource subtypes. (SQL, XQuery, ...)
+   */
+  private HashMap<String, List<String>> datasourceLanguages = new HashMap<String, List<String>>();
+
+  /**
+   * Returns the supported datasource type.
+   * 
+   * @return
+   */
+  public String getDatasourceType() {
+    return this.datasourceType;
   }
 
-  protected List<String> getDatasourceSubtypes() {
-    return datasourceSubtypes;
+  /**
+   * Returns the supported datasource subtypes.
+   * 
+   * @return
+   */
+  public List<String> getDatasourceSubtypes() {
+    return this.datasourceSubtypes;
   }
 
-  protected HashMap<String, List<String>> getDatasourceLanguages() {
-    return datasourceLanguages;
+  /**
+   * Returns the supported languages of the subtypes.
+   * 
+   * @return
+   */
+  public HashMap<String, List<String>> getDatasourceLanguages() {
+    return this.datasourceLanguages;
   }
 
-  protected void setDatasourceType(String dsType) {
+  /**
+   * Sets the supported datasource type.
+   * 
+   * @param dsType
+   */
+  public void setDatasourceType(String dsType) {
     this.datasourceType = dsType;
   }
 
-  protected void setDatasourceMetaDataType(String dsMetaDataType) {
+  /**
+   * Sets the element type for the meta data beeing used by the plugin. The types are
+   * defined in the datasource meta data schema file.
+   * 
+   * @param dsMetaDataType
+   */
+  public void setDatasourceMetaDataType(String dsMetaDataType) {
     this.datasourceMetaDataType = dsMetaDataType;
   }
 
-  protected void addDatasourceSubtype(String dsSubtype) {
+  /**
+   * Sets the supported datasource subtypes.
+   * 
+   * @param dsSubtype
+   */
+  public void addDatasourceSubtype(String dsSubtype) {
     if (!this.datasourceSubtypes.contains(dsSubtype)) {
       this.datasourceSubtypes.add(dsSubtype);
     }
   }
 
-  protected void addDatasourceLanguage(String dsSubtype, String dsLanguage) {
+  /**
+   * Sets the supported language of a subtype.
+   * 
+   * @param dsSubtype
+   * @param dsLanguage
+   */
+  public void addDatasourceLanguage(String dsSubtype, String dsLanguage) {
     List<String> languages = null;
 
     if (datasourceLanguages.containsKey(dsSubtype)) {
@@ -62,65 +132,41 @@ public abstract class DatasourceServicePlugin implements DatasourceService {
     }
   }
 
-  protected DataObject createDatasourceMetaDataObject() {
-    DataObject sdo = null;
-    InputStream is = getClass().getResourceAsStream(
-        "/org/simpl/core/datasource/DatasourceMetaData.xsd");
+  /**
+   * Creates an empty meta data object (SDO) from the meta data schema.
+   * 
+   * @return
+   */
+  public DataObject createDatasourceMetaDataObject() {
+    DataObject metaDataObject = null;
+    InputStream inputStream = null;
 
-    XSDHelper.INSTANCE.define(is, null);
+    // Load the local schema file
+    inputStream = getClass().getResourceAsStream(DATASOURCE_META_DATA_SCHEMA_FILE);
+
+    // Load the default schema file
+    if (inputStream == null) {
+      inputStream = getClass().getResourceAsStream(
+          "/org/simpl/core/datasource/" + DATASOURCE_META_DATA_SCHEMA_FILE);
+    }
+
+    if (inputStream == null) {
+      System.out.println("The file '" + DATASOURCE_META_DATA_SCHEMA_FILE
+          + "' could not be found.");
+    }
+
+    XSDHelper.INSTANCE.define(inputStream, null);
 
     try {
-      is.close();
+      inputStream.close();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
+    
+    metaDataObject = DataFactory.INSTANCE.create(
+        "http://org.simpl.core/src/org/simpl/core/datasource/"
+            + DATASOURCE_META_DATA_SCHEMA_FILE, this.datasourceMetaDataType);
 
-    sdo = DataFactory.INSTANCE.create(
-        "http:///org.simpl.core/src/org/simpl/core/datasource/metadata/dbMetaData.xsd",
-        this.datasourceMetaDataType);
-
-    return sdo;
-  }
-
-  @SuppressWarnings("unchecked")
-  protected void printDataObject(DataObject dataObject, int indent) {
-    // For each Property
-    List properties = dataObject.getInstanceProperties();
-    for (int p = 0, size = properties.size(); p < size; p++) {
-      if (dataObject.isSet(p)) {
-        Property property = (Property) properties.get(p);
-        if (property.isMany()) {
-          // For many-valued properties, process a list of values
-          List values = dataObject.getList(p);
-          for (int v = 0, count = values.size(); v < count; v++) {
-            printValue(values.get(v), property, indent);
-          }
-        } else {
-          // For single-valued properties, print out the value
-          printValue(dataObject.get(p), property, indent);
-        }
-      }
-    }
-  }
-
-  private void printValue(Object value, Property property, int indent) {
-    // Get the name of the property
-    String propertyName = property.getName();
-    // Construct a string for the proper indentation
-    String margin = "";
-    for (int i = 0; i < indent; i++)
-      margin += "\t";
-    if (value != null && property.isContainment()) {
-      // For containment properties, display the value
-      // with printDataObject
-      Type type = property.getType();
-      String typeName = type.getName();
-      System.out.println(margin + propertyName + " (" + typeName + "):");
-      printDataObject((DataObject) value, indent + 1);
-    } else {
-      // For non-containment properties, just print the value
-      System.out.println(margin + propertyName + ": " + value);
-    }
+    return metaDataObject;
   }
 }

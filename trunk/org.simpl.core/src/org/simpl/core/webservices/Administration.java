@@ -8,7 +8,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.webservices.helpers.Parameter;
+import org.simpl.core.helpers.Parameter;
 
 @WebService(name = "AdministrationService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
@@ -24,8 +24,8 @@ public class Administration {
     LinkedHashMap<String, String> settingsHashMap = null;
 
     settingsHashMap = (LinkedHashMap<String, String>) Parameter.deserialize(settings);
-    success = SIMPLCore.getInstance().administrationService().saveSettings(schema, table, settingName,
-        settingsHashMap);
+    success = SIMPLCore.getInstance().administrationService().saveSettings(schema, table,
+        settingName, settingsHashMap);
 
     return success;
   }
@@ -37,7 +37,8 @@ public class Administration {
       @WebParam(name = "settingName", targetNamespace = "") String settingName) {
     LinkedHashMap<String, String> settings = null;
 
-    settings = SIMPLCore.getInstance().administrationService().loadSettings(schema, table, settingName);
+    settings = SIMPLCore.getInstance().administrationService().loadSettings(schema,
+        table, settingName);
 
     return Parameter.serialize(settings);
   }

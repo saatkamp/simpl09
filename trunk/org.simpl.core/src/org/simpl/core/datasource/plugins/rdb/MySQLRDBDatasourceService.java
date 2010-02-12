@@ -29,7 +29,8 @@ public class MySQLRDBDatasourceService extends DatasourceServicePlugin {
   static Logger logger = Logger.getLogger(MySQLRDBDatasourceService.class);
 
   public MySQLRDBDatasourceService() {
-    this.setDatasourceType("database");
+    this.setDatasourceType("Database");
+    this.setDatasourceMetaDataType("tDatabaseMetaData");
     this.addDatasourceSubtype("MySQL");
     this.addDatasourceLanguage("MySQL", "SQL");
 
