@@ -38,7 +38,7 @@ public class SIMPLConfig {
     try {
       in = new FileInputStream(CONFIG_FILE1);
     } catch (FileNotFoundException e) {
-      try { 
+      try {
         in = new FileInputStream(CONFIG_FILE2);
       } catch (FileNotFoundException e1) {
         try {

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.simpl.core.administration.AdministrationService;
 import org.simpl.core.administration.AdministrationServiceImpl;
-import org.simpl.core.datasource.DatasourceInfo;
 import org.simpl.core.datasource.DatasourceService;
 import org.simpl.core.datasource.DatasourceServiceProvider;
 import org.simpl.core.storage.StorageService;
@@ -20,7 +19,7 @@ import org.simpl.core.storage.StorageServiceImpl;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class SIMPLCore implements DatasourceInfo {
+public class SIMPLCore {
   private static SIMPLCore instance = null;
   private static SIMPLConfig config = new SIMPLConfig();
   private static AdministrationService administrationService = new AdministrationServiceImpl();
@@ -86,30 +85,31 @@ public class SIMPLCore implements DatasourceInfo {
     return config;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceInfo#getDatasourceTypes()
+  /**
+   * Returns all datasource types supported by the simpl core.
+   * 
+   * @return
    */
-  @Override
   public List<String> getDatasourceTypes() {
     return datasourceServiceProvider.getDatasourceTypes();
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceInfo#getDatasourceSubtypes(java.lang.String)
+  /**
+   * Returns all datasource subtypes of a given datasource type.
+   * 
+   * @param dsType
+   * @return
    */
-  @Override
   public List<String> getDatasourceSubtypes(String dsType) {
     return datasourceServiceProvider.getDatasourceSubtypes(dsType);
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.datasource.DatasourceInfo#getDatasourceLanguages(java.lang.String)
+  /**
+   * Returns all datasource languages of a given datasource subtype.
+   * 
+   * @param dsSubtype
+   * @return
    */
-  @Override
   public List<String> getDatasourceLanguages(String dsSubtype) {
     return datasourceServiceProvider.getDatasourceLanguages(dsSubtype);
   }

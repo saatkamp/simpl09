@@ -10,6 +10,7 @@ import commonj.sdo.DataObject;
 public class FSDatasourceService extends DatasourceServicePlugin {
   public FSDatasourceService() {
     this.setDatasourceType("filesystem");
+    this.setDatasourceMetaDataType("tFilesystemMetaData");
     this.addDatasourceSubtype("EXT3");
     this.addDatasourceSubtype("FAT32");
     this.addDatasourceSubtype("NTFS");

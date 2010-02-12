@@ -30,7 +30,7 @@ public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
   static Logger logger = Logger.getLogger(EmbDerbyRDBDatasourceService.class);
 
   public EmbDerbyRDBDatasourceService() {
-    this.setDatasourceType("database");
+    this.setDatasourceType("Database");
     this.setDatasourceMetaDataType("tDatabaseMetaData");
     this.addDatasourceSubtype("EmbeddedDerby");
     this.addDatasourceLanguage("EmbeddedDerby", "SQL");
@@ -226,6 +226,7 @@ public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
     return success;
   }
 
+  @Override
   public DataObject getMetaData(String dsAddress) throws ConnectionException {
     Connection conn = openConnection(dsAddress);
     DataObject metaDataObject = this.createDatasourceMetaDataObject().getRootObject();
@@ -236,7 +237,7 @@ public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
     try {
       DatabaseMetaData dbMetaData = conn.getMetaData();
       ResultSet schemas = dbMetaData.getSchemas();
-      
+
       while (schemas.next()) {
         schemaObject = metaDataObject.createDataObject("schema");
         schemaObject.setString("name", schemas.getString(1));
@@ -259,7 +260,7 @@ public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
+
     return metaDataObject;
   }
 }
