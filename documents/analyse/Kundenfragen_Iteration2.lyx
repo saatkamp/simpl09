@@ -753,6 +753,11 @@ In diesem Kapitel befinden sich alle allgemeinen Fragen, die keinem konkreten
  Teil des SIMPL Rahmenwerks zuzuordnen sind.
 \end_layout
 
+\begin_layout Itemize
+Welchen Namespace sollte für das SIMPL Rahmenwerk verwendet werden (vor
+ allem für die DM-Aktivitäten)?
+\end_layout
+
 \begin_layout Section
 Eclipse Plug-Ins
 \end_layout
@@ -763,6 +768,11 @@ In diesem Kapitel befinden sich alle Fragen zu verschiedenen Eclipse Plug-Ins.
 
 \begin_layout Subsection
 Eclipse BPEL Designer
+\end_layout
+
+\begin_layout Itemize
+Was sollte alles im Deployment-Deskriptor einstellbar sein (ausser dem Auditing)
+?
 \end_layout
 
 \begin_layout Subsection
@@ -801,12 +811,44 @@ RRS Plug-In
 DS-Registry Plug-In
 \end_layout
 
+\begin_layout Itemize
+Sollen die Policies extern modellierbar sein (beispielsweise durch einen
+ Eclipse Editor) und dann als Datei an die Aktivität angebunden oder direkt
+ in der Aktivität über eine entsprechende GUI modelliert werden?
+\end_layout
+
+\begin_layout Subsection
+SIMPL Settings Plug-In
+\end_layout
+
+\begin_layout Itemize
+Welche Parameter der SIMPL Eclipse Plug-Ins sollten über Einstellungen im
+ SIMPL Settings-Menüpunkt konfigurierbar sein?
+\end_layout
+
 \begin_layout Section
 Reference Resolution System
 \end_layout
 
 \begin_layout Standard
 In diesem Kapitel befinden sich alle Fragen zum RRS.
+\end_layout
+
+\begin_layout Itemize
+Welche Aktualisierungskonstanten sollten auf jeden Fall umgesetzt werden,
+ bzw.
+ haben die höchste Priorität (onInstantiation, fresh, periodic, external
+ oder ganz andere)?
+\end_layout
+
+\begin_layout Itemize
+Momentan soll der Transformator in das RRS eingebettet werden.
+ Ein zu transformierender BPEL-Prozess wird dann per WebService an den Transform
+ator übermittelt und eine transformierte Kopie des BPEL-Prozesses zurück
+ an Eclipse geschickt.
+ Die zurückgelieferte Kopie kann dann ganz normal deployd werden.
+ Ist dies so in Ordnung oder muss der Transformator in die Modellierungsumgebung
+ integriert sein?
 \end_layout
 
 \begin_layout Section
@@ -817,6 +859,10 @@ Datenquellen-Registry
 In diesem Kapitel befinden sich alle Fragen zur Datenquellen-Registry.
 \end_layout
 
+\begin_layout Itemize
+Wie sollen die Datenquellen mit einer UDDI-Registry verwaltet werden?
+\end_layout
+
 \begin_layout Section
 Apache ODE
 \end_layout
@@ -825,8 +871,19 @@ Apache ODE
 In diesem Kapitel befinden sich alle Fragen zu Apache ODE.
 \end_layout
 
+\begin_layout Itemize
+Wie lassen sich BPEL-Variablen in ODE lesen und schreiben?
+\end_layout
+
 \begin_layout Subsection
 Auditing
+\end_layout
+
+\begin_layout Itemize
+Es kam die Idee auf das komplette Auditing in einem, dem Prozessmodell entsprech
+end strukturierten, SDO zu kapseln und so über den SIMPL Core zu speichern.
+ Ist dieser Ansatz so sinnvoll oder sollen die Daten so wie in den bestehenden
+ Datenbanken (JPA und Hibernate) organisiert sein?
 \end_layout
 
 \begin_layout Subsection
