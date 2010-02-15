@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -773,6 +773,11 @@ Eclipse BPEL Designer
 \begin_layout Itemize
 Was sollte alles im Deployment-Deskriptor einstellbar sein (ausser dem Auditing)
 ?
+\end_layout
+
+\begin_layout Itemize
+Welche Tiefe soll der SIMPL Validator haben ? Wird eine Semantikprüfung
+ gefordert ? Reicht eine Verfizierung gegen das XSD-SIMPL Schema ?
 \end_layout
 
 \begin_layout Subsection
