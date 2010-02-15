@@ -1,8 +1,5 @@
 package org.apache.ode.dao.simpl.sdo.utils;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-
 import org.apache.ode.dao.simpl.sdo.AbstractSDO;
 import org.apache.ode.dao.simpl.sdo.ActivityRecoverySDO;
 import org.apache.ode.dao.simpl.sdo.CorrelationSetSDO;
@@ -13,8 +10,6 @@ import org.apache.ode.dao.simpl.sdo.PartnerLinkSDO;
 import org.apache.ode.dao.simpl.sdo.ProcessInstanceSDO;
 import org.apache.ode.dao.simpl.sdo.ProcessSDO;
 import org.apache.ode.dao.simpl.sdo.ScopeSDO;
-
-import commonj.sdo.DataObject;
 
 public class SdoMemory {
 	
