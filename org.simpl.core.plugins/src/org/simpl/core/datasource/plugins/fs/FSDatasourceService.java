@@ -1,18 +1,22 @@
-package org.simpl.core.plugins.datasource.xmldb;
+package org.simpl.core.datasource.plugins.fs;
 
 import java.sql.Connection;
 
-import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
+import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
 
 import commonj.sdo.DataObject;
 
-public class XMLDBDatasourceService extends DatasourceServicePlugin {
-  public XMLDBDatasourceService() {
-    this.setDatasourceType("Database");
-    this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("DB2");
-    this.addDatasourceLanguage("DB2", "XQuery");
+public class FSDatasourceService extends DatasourceServicePlugin {
+  public FSDatasourceService() {
+    this.setDatasourceType("filesystem");
+    this.setDatasourceMetaDataType("tFilesystemMetaData");
+    this.addDatasourceSubtype("EXT3");
+    this.addDatasourceSubtype("FAT32");
+    this.addDatasourceSubtype("NTFS");
+    this.addDatasourceLanguage("EXT3", "OSCall");
+    this.addDatasourceLanguage("FAT32", "OSCall");
+    this.addDatasourceLanguage("NTFS", "OSCall");
   }
 
   /*
@@ -40,7 +44,7 @@ public class XMLDBDatasourceService extends DatasourceServicePlugin {
   /*
    * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#manipulateData(java.lang.String,
-   * java.lang.String, org.apache.tuscany.sdo.model.DataObject)
+   * java.lang.String, commonj.sdo.DataObject)
    */
   @Override
   public boolean manipulateData(String dsAddress, String statement, DataObject data)

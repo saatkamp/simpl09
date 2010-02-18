@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
 
 /**
  * <b>Purpose:</b> Provides access to the datasource services that are loaded from

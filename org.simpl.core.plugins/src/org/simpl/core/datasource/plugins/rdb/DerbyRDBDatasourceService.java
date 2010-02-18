@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.datasource.rdb;
+package org.simpl.core.datasource.plugins.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,8 +11,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
+import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
 
 import commonj.sdo.DataObject;
 

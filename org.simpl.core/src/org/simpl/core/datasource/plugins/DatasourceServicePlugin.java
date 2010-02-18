@@ -1,10 +1,12 @@
-package org.simpl.core.datasource;
+package org.simpl.core.datasource.plugins;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.simpl.core.datasource.DatasourceService;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
