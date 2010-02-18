@@ -1,9 +1,9 @@
-package org.simpl.core.plugins.datasource.sndb;
+package org.simpl.core.datasource.plugins.sndb;
 
 import java.sql.Connection;
 
-import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
+import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
 
 import commonj.sdo.DataObject;
 

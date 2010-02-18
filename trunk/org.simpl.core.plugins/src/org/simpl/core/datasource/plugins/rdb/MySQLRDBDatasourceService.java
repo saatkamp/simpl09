@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.datasource.rdb;
+package org.simpl.core.datasource.plugins.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,30 +11,30 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.datasource.DatasourceServicePlugin;
 import org.simpl.core.datasource.exceptions.ConnectionException;
+import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
 
 import commonj.sdo.DataObject;
 
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for supporting the
- * IBM DB2 relational database.
+ * MySQL relational database.
  * </p>
  * 
- * dsAddress = //server:port/database or //server/database, for example
- * //localhost:50000/testdb.
+ * dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
+ * //localhost:3306/simplDB.
  * 
  * @author hahnml
  */
-public class DB2RDBDatasourceService extends DatasourceServicePlugin {
-  static Logger logger = Logger.getLogger(DB2RDBDatasourceService.class);
+public class MySQLRDBDatasourceService extends DatasourceServicePlugin {
+  static Logger logger = Logger.getLogger(MySQLRDBDatasourceService.class);
 
-  public DB2RDBDatasourceService() {
+  public MySQLRDBDatasourceService() {
     this.setDatasourceType("Database");
     this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("DB2");
-    this.addDatasourceLanguage("DB2", "SQL");
+    this.addDatasourceSubtype("MySQL");
+    this.addDatasourceLanguage("MySQL", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -49,9 +49,9 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
     }
     Connection connect = null;
     try {
-      Class.forName("com.ibm.db2.jcc.DB2Driver");
+      Class.forName("com.mysql.jdbc.Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:db2:");
+      uri.append("jdbc:mysql:");
       uri.append(dsAddress);
       try {
         // TODO Hier müssen noch die im SIMPL Core hinterlegten
@@ -180,38 +180,24 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
           + ") executed.");
     }
 
-    // Beispiel: CREATE TABLE TAB AS (SELECT * FROM T1 WITH NO DATA);
+    // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" AS (");
-    createTableStatement.append(statement);
     createTableStatement.append(" ");
-    createTableStatement.append(") WITH NO DATA");
-
-    StringBuilder insertStatement = new StringBuilder();
-    insertStatement.append("INSERT INTO");
-    insertStatement.append(" ");
-    insertStatement.append(target);
-    insertStatement.append(" ");
-    insertStatement.append(statement);
+    createTableStatement.append(statement);
 
     Connection conn = openConnection(dsAddress);
     try {
       Statement createState = conn.createStatement();
-      Statement insertState = conn.createStatement();
 
       // Neue Tabelle aus dem Query erzeugen
       createState.execute(createTableStatement.toString());
 
-      // Query-Daten in die neue Tabelle einfügen
-      insertState.execute(insertStatement.toString());
-
       conn.commit();
       createState.close();
-      insertState.close();
       closeConnection(conn);
 
       success = true;
@@ -220,8 +206,8 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
-        + insertStatement.toString() + "'" + "executed on " + dsAddress);
+    logger.info("Statement '" + createTableStatement.toString() + "' " + "executed on "
+        + dsAddress);
 
     return success;
   }
