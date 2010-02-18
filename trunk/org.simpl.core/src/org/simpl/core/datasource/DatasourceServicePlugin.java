@@ -12,9 +12,9 @@ import commonj.sdo.helper.XSDHelper;
 
 /**
  * <b>Purpose:</b> This abstract class is used to realize datasource service plugins and
- * thus be able to support a multiplicity of different datasources. <br>
+ * thus be able to support various datasources. <br>
  * <b>Description:</b> A datasource plugin can support just one type of datasource but
- * several subtypes and languages, that must be defined in the plugin's constructor with
+ * several subtypes and languages that must be defined in the plugin's constructor with
  * the available set, get and add methods.<br>
  * The meta data structure of a datasource is made available as a service data object
  * (SDO) to offer an independant and extensible data format for exchange. The structure of
