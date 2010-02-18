@@ -19,7 +19,7 @@ import javax.xml.stream.XMLStreamReader;
  * 
  * TODO: DTD erstellen und überprüfen ob das Format stimmt
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de><br>
+ * @author schneimi<br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */

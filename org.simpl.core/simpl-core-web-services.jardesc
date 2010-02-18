@@ -11,7 +11,9 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.webservices.helpers{Parameter.java"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.helpers{Parameter.java"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.webservices"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datasource.exceptions"/>
     </selectedElements>
 </jardesc>

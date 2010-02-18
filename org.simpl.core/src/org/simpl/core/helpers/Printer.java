@@ -12,13 +12,19 @@ import commonj.sdo.Type;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de><br>
+ * @author schneimi<br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class Printer {
+  public static void printDataObject(DataObject dataObject) {
+    int indent = 1;
+
+    printDataObjectWithIndent(dataObject, indent);
+  }
+
   @SuppressWarnings("unchecked")
-  public static void printDataObject(DataObject dataObject, int indent) {
+  private static void printDataObjectWithIndent(DataObject dataObject, int indent) {
     // For each Property
     List properties = dataObject.getInstanceProperties();
     for (int p = 0, size = properties.size(); p < size; p++) {
@@ -51,7 +57,7 @@ public class Printer {
       Type type = property.getType();
       String typeName = type.getName();
       System.out.println(margin + propertyName + " (" + typeName + "):");
-      printDataObject((DataObject) value, indent + 1);
+      printDataObjectWithIndent((DataObject) value, indent + 1);
     } else {
       // For non-containment properties, just print the value
       System.out.println(margin + propertyName + ": " + value);

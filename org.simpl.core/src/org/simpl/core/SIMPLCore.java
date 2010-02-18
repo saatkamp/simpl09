@@ -15,7 +15,7 @@ import org.simpl.core.storage.StorageServiceImpl;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de><br>
+ * @author schneimi<br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
