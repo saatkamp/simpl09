@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/simpl-core.jar"/>
+	<classpathentry kind="lib" path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/tuscany-sdo-lib-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/tuscany-das-rdb-1.0-incubating-beta2.jar"/>
+	<classpathentry kind="lib" path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/tuscany-sdo-api-r2.1-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/tuscany-sdo-impl-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
