@@ -198,7 +198,7 @@ public class DropEditor extends AStatementEditor {
 		
 		
 		
-		final Button insertTableName =new Button(tableNameComposite, SWT.NONE);
+		final Button insertTableName =new Button(composite, SWT.NONE);
 		insertTableName.setText("Insert Tablename into Statement");
 		insertTableName.addSelectionListener(new SelectionListener() {
 			
@@ -206,8 +206,10 @@ public class DropEditor extends AStatementEditor {
 			public void widgetSelected(SelectionEvent e) {
 				if(tablsList.getSelection().length>0){
 					String kommaString=" ";
-					statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
-					kommaString=",";
+					for(int i=0;i<tablsList.getSelectionCount();i++){
+						statementText.setText(statementText.getText()+kommaString+tablsList.getSelection()[i]);
+						kommaString=",";
+					}
 					tablsList.setEnabled(false);
 					tableNameComposite.setEnabled(false);
 					buttonsCompo.setVisible(true);
@@ -220,8 +222,11 @@ public class DropEditor extends AStatementEditor {
 			public void widgetDefaultSelected(SelectionEvent e) {
 				if(tablsList.getSelection().length>0){
 					String kommaString=" ";
-					statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
-					kommaString=",";
+					for(int i=0;i<tablsList.getSelectionCount();i++){
+						statementText.setText(statementText.getText()+kommaString+tablsList.getSelection()[i]);
+						kommaString=",";
+					}
+					
 					tablsList.setEnabled(false);
 					tableNameComposite.setEnabled(false);
 					buttonsCompo.setVisible(true);
