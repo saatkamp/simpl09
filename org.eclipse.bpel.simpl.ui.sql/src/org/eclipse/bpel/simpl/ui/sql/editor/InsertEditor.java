@@ -39,6 +39,9 @@ public class InsertEditor extends AStatementEditor {
 	List columnList=null;
 	List tablsList,valuesList;
 	String tmpString2;
+	
+	String[] arrayOfParsedColumns;
+	String[] arrayOfParsedValues;
 	/*
 	 * The XML file wich contais the statment KeyWords
 	 */
@@ -212,11 +215,9 @@ public class InsertEditor extends AStatementEditor {
 		columnList.setLayoutData(gridDatax);
 		//columnList.setSize(230, 150);
 		
-		String[] tempArrayOfColumns=parseColumnsFromStatment();
-		if(tempArrayOfColumns!=null){
-			loadTheColumnsIntoList(tempArrayOfColumns);
-		}
-		else{columnList.removeAll();}
+		
+		
+		
 		
 //		columnList.addSelectionListener(new SelectionListener() {
 //			
@@ -377,6 +378,15 @@ public class InsertEditor extends AStatementEditor {
 		});
 		
 		//**************************************************************
+		//parsing the colums and values from the statement into the lists.
+		parseColumnsFromStatment();
+		if(arrayOfParsedColumns!=null){
+			loadTheColumnsIntoList(arrayOfParsedColumns);
+		}else{columnList.removeAll();}
+		
+		if(arrayOfParsedValues!=null){
+			loadTheValuesIntoList(arrayOfParsedValues);
+		}else{valuesList.removeAll();}
 		
 		tableNameComposite.setEnabled(true);
 		tablsList.setEnabled(true);
@@ -384,67 +394,100 @@ public class InsertEditor extends AStatementEditor {
 	}
 	
 	
+	
+
 	/**
 	 * 
 	 * @return
 	 */
-	private String[] parseColumnsFromStatment() {
+	private void parseColumnsFromStatment() {
 		// TODO Auto-generated method stub
 		ArrayList<String> parsedColumns=new ArrayList<String>();
+		ArrayList<String> parsedValues=new ArrayList<String>();
 		
 		
 		String cleandStatment=removeAllSpaces(statementText.getText());
 		String[] wordsOfStatment =cleandStatment.split("\r");
 		
 		if((wordsOfStatment!=null)&&(wordsOfStatment.length>0)){
-			for(int i=1;i<wordsOfStatment.length;i++){
-				if(cleandStatment.contains(")")){
+			//
+				//if(cleandStatment.contains(")")){
 					//while(!(wordsOfStatment[i].contains(")"))){
-						if(!(wordsOfStatment[i].contains(")"))	) parsedColumns.add(wordsOfStatment[i]);
-					//}
+						if((wordsOfStatment[0].contains("("))){
+							String[] wordsOfFirstLine =wordsOfStatment[0].split(" ");
+							String tmpString = "";
+							for(int i=5;i<wordsOfFirstLine.length;i++){
+								if(i==wordsOfFirstLine.length-1) tmpString=tmpString+wordsOfFirstLine[i].substring(0,wordsOfFirstLine[i].length()-1);
+								else tmpString=tmpString+wordsOfFirstLine[i];
+							}
+							String[] colums=tmpString.split(",");
+							for(int i=0;i<colums.length;i++){
+								parsedColumns.add(colums[i]);
+							}
+							
+							
+						}
+						if((wordsOfStatment[1].contains(" ("))){
+							String[] wordsOfSecondLine =wordsOfStatment[1].split(" ");
+							String tmpString = "";
+							for(int i=2;i<wordsOfSecondLine.length;i++){
+								if(!wordsOfSecondLine[i].equals(" ")){
+									if(i==wordsOfSecondLine.length-1) tmpString=tmpString+wordsOfSecondLine[i].substring(0,wordsOfSecondLine[i].length()-1);
+									else tmpString=tmpString+wordsOfSecondLine[i];
+								}
+								
+							}
+							String[] values=tmpString.split(",");
+							for(int i=0;i<values.length;i++){
+								parsedValues.add(values[i]);
+							}
+							
+							
+							
+							
+						}	
 				}
-				else{
-					if(!(wordsOfStatment[i].contains(")"))	) parsedColumns.add(wordsOfStatment[i]);
-				}
-				
-					if(cleandStatment.contains(",")){
-						if(wordsOfStatment[i].length()>1)
-						wordsOfStatment[i]=wordsOfStatment[i].substring(1);
-					}
-				
+			//converting the List to arrays.
+			arrayOfParsedColumns=new String[parsedColumns.size()];
+			arrayOfParsedValues=new String[parsedValues.size()];
+			for(int i=0;i<arrayOfParsedColumns.length;i++){
+				arrayOfParsedColumns[i]=parsedColumns.get(i);
 			}
-	
+			for(int i=0;i<arrayOfParsedValues.length;i++){
+				arrayOfParsedValues[i]=parsedValues.get(i);
+			}
+			
 			if(wordsOfStatment.length>1){
 				if(wordsOfStatment[wordsOfStatment.length-1].contains(")")) parsedColumns.add(wordsOfStatment[wordsOfStatment.length-1]);
 			}
-			String[] wordsOfStatment2=new String[parsedColumns.size()];
-			for(int i=0;i<wordsOfStatment2.length;i++){
-				wordsOfStatment2[i]=parsedColumns.get(i);
-				if(wordsOfStatment2[i].contains(",")){
-					wordsOfStatment2[i]=wordsOfStatment2[i].substring(1);
-				}
-			}
-			
-			
-			if((wordsOfStatment2.length>1)&&(wordsOfStatment2!=null)){
-				//hier i remove the "("  ")" from the columns lines.
-				if(wordsOfStatment2[wordsOfStatment2.length-1].contains(")")){
-					wordsOfStatment2[wordsOfStatment2.length-1]=wordsOfStatment2[wordsOfStatment2.length-1].
-						substring(wordsOfStatment2[wordsOfStatment2.length-1].length()-2,
-											wordsOfStatment2[wordsOfStatment2.length-1].length()-1);
-				}
-			
-			
-			if(wordsOfStatment2[0].contains("("))
-				wordsOfStatment2[0]=wordsOfStatment2[0].substring(1);
-			
-			}
-			
+//			String[] wordsOfStatment2=new String[parsedColumns.size()];
+//			for(int i=0;i<wordsOfStatment2.length;i++){
+//				wordsOfStatment2[i]=parsedColumns.get(i);
+//				if(wordsOfStatment2[i].contains(",")){
+//					wordsOfStatment2[i]=wordsOfStatment2[i].substring(1);
+//				}
+//			}
+//			
+//			
+//			if((wordsOfStatment2.length>1)&&(wordsOfStatment2!=null)){
+//				//hier i remove the "("  ")" from the columns lines.
+//				if(wordsOfStatment2[wordsOfStatment2.length-1].contains(")")){
+//					wordsOfStatment2[wordsOfStatment2.length-1]=wordsOfStatment2[wordsOfStatment2.length-1].
+//						substring(wordsOfStatment2[wordsOfStatment2.length-1].length()-2,
+//											wordsOfStatment2[wordsOfStatment2.length-1].length()-1);
+//				}
+//			
+//			
+//			if(wordsOfStatment2[0].contains("("))
+//				wordsOfStatment2[0]=wordsOfStatment2[0].substring(1);
+//			
+//			}
+//			
+//		
+//			return wordsOfStatment2;
+		//}	
 		
-			return wordsOfStatment2;
-		}	
 		
-		return null;
 	}
 	
 	/**
@@ -475,23 +518,25 @@ public class InsertEditor extends AStatementEditor {
 	 * into the List
 	 */
 	private void loadTheColumnsIntoList(String[] parsedColums) {
-		
 		columnList.removeAll();
-		
-//		//zum testen***
-//		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-//			columnList.add("Item Number " + loopIndex);
-//		}
-//		//*************
-		
-		
 		if(parsedColums!=null){
 			for(int i=0;i<parsedColums.length;i++){
 				columnList.add(parsedColums[i]);
 			}
 		}
-		
-		
+	}
+	
+	/**
+	 * loading the values  of data source 
+	 * into the values List
+	 */
+	private void loadTheValuesIntoList(String[] parsedValues) {
+		valuesList.removeAll();
+		if(parsedValues!=null){
+			for(int i=0;i<parsedValues.length;i++){
+				valuesList.add(parsedValues[i]);
+			}
+		}
 	}
 
 	/**
