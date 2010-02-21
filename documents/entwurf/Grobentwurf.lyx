@@ -20,7 +20,7 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Grobentwurf}
-\def\docvers{1.5}
+\def\docvers{1.6}
 \def\docautor{Michael Schneidt}
 \def\docdate{07. Dezember 2009}
 
@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="4">
+<lyxtabular version="3" rows="14" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -928,7 +928,7 @@ Kapitel 3.2 überarbeitet
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -937,11 +937,49 @@ Kapitel 3.2 überarbeitet
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 07.12.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 4 überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.02.2009
 \end_layout
 
 \end_inset
@@ -959,7 +997,7 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 4 überarbeitet
+Kapitel 1, 2, 3.3, 3.4, 4 überarbeitet (091207-Grobentwurf-comments_PR_MS.pdf)
 \end_layout
 
 \end_inset
@@ -1005,15 +1043,15 @@ Zweck des Dokuments
 \begin_layout Standard
 Der Grobentwurf beschreibt das Rahmenwerk auf Komponentenebene und bildet
  die Grundlage für den späteren Feinentwurf.
- Es werden alle wichtigen Komponenten und ihre Schnittstellen identifiziert,
+ Es werden alle wichtigen Komponenten und ihre Schnittstellen identifiziert
  sowie ihr Zusammenspiel beschrieben.
  Damit soll gezeigt werden, dass das resultierende System funktionieren
  kann und den Anforderungen gerecht wird.
  Damit die in späteren Iterationen dazukommenden Funktionalitäten schon
- beim Feinentwurf berücksichtigt werden, wird soweit es möglich ist das
+ beim Feinentwurf berücksichtigt werden, wird, soweit es möglich ist, das
  Gesamtsystem beschrieben und inhaltlich nicht zwischen den einzelnen Iteratione
 n unterschieden.
- Teile die erst in späteren Iterationen spezifiziert werden können, werden
+ Die Teile, die erst in späteren Iterationen entworfen werden können, werden
  explizit kenntlich gemacht.
 \end_layout
 
@@ -1035,9 +1073,9 @@ Das SIMPL Rahmenwerk soll dem Benutzer eine erweiterbare Umgebung bieten,
  oder Dateisysteme handeln.
  Die Modellierung der Prozesse findet in Eclipse mit dem Eclipse BPEL Designer
  Plug-In statt, das für diesen Zweck um zusätzliche Aktivitäten für den
- Zugriff auf Datenquellen und die Definition von Datamangement-Operationen
+ Zugriff auf Datenquellen und die Definition von Datenmangementoperationen
  innerhalb des Prozesses erweitert wird.
- Diese Aktivitäten werden im folgenden Verlauf des Dokuments als Data-Management
+ Diese Aktivitäten werden im folgenden Verlauf des Dokuments als Datenmanagement
 -Aktivitäten bzw.
  DM-Aktivitäten bezeichnet.
  Die Ausführung der Prozesse erfolgt durch die Apache ODE Workflow Engine,
@@ -1046,10 +1084,16 @@ Das SIMPL Rahmenwerk soll dem Benutzer eine erweiterbare Umgebung bieten,
  für die DM-Aktivitäten angepasst.
  Die Dienste, die für die Ausführung der DM-Aktivitäten von der Workflow
  Engine benötigt werden, werden in Form von Web Services bereitgestellt.
- Durch ein weiteres Plug-In für Eclipse sollen außerdem Referenzvariablen
- bei der Modellierung von Prozessen unterstützt werden und diese durch eine
- entsprechende Modelltransformation auch auf anderen Workflow Engines einsetzbar
- bleiben.
+ Durch ein weiteres Plug-In für das SIMPL Rahmenwerk sollen außerdem Referenzvar
+iablen bei der Modellierung von Prozessen unterstützt werden und diese durch
+ eine entsprechende Modelltransformation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
+
+\end_inset
+
+ auch auf anderen Workflow Engines einsetzbar bleiben.
 \end_layout
 
 \begin_layout Subsection
@@ -1071,8 +1115,14 @@ Einfache Modellierung
 \end_layout
 
 \begin_layout Standard
-Neben der vereinfachten Modellierung der DM-Aktivitäten, gibt es eine weitere
- Anforderung.
+Neben der vereinfachten Modellierung der DM-Aktivitäten (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-5"
+
+\end_inset
+
+ Kapitel 4.6), gibt es eine weitere Anforderung.
  Während der Modellierung von Prozessen wiederholen sich in der Regel häufig
  längere Befehle (Statements) oder Befehlsteile in Anfragesprachen wie SQL
  oder XQuery und auch längere Namen von Datenquellen oder Datencontainern
@@ -1082,9 +1132,9 @@ Neben der vereinfachten Modellierung der DM-Aktivitäten, gibt es eine weitere
  hinterlegen.
  Diese BPEL-Variablen können anschließend als Referenzen in anderen Befehlen
  verwendet werden.
- Durch die Modularisierung der Befehle sind insbesondere komplexe und geschachte
-lte Datenbankmanagementoperationen einfacher zu modellieren und die Komplexität
- wird reduziert.
+ Durch solch eine Modularisierung der Befehle sind insbesondere komplexe
+ und geschachtelte Datenmanagementoperationen einfacher zu modellieren,
+ und die Komplexität wird reduziert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1104,7 +1154,13 @@ Der Schwerpunkt des Rahmenwerks liegt in der Modellierung von wissenschaftlichen
  wird ein Reference Resolution System (RRS) realisiert.
  Damit wird es möglich, Daten zu referenzieren, sie per Referenz sehr schnell
  weiterzugeben und nur bei Bedarf aufzulösen und in den Prozess zu laden.
- Weiterhin können auch innerhalb der DM-Aktivitäten Datenquellen bzw.
+ 
+\end_layout
+
+\begin_layout Standard
+Weiterhin kann es einen weiteren Typ von Referenzen innerhalb der DM-Aktivitäten
+ geben.
+ In diesem Kontext können Datenquellen bzw.
  Datencontainer per Referenz angeben werden.
 \end_layout
 
@@ -1169,15 +1225,14 @@ Datenquellen erfordern in der Regel eine Authentifizierung und Autorisierung
  Benutzername und Passwort nicht bei jedem Zugriff erneut angegeben werden
  müssen.
  Dazu soll das Konzept des Single Sign On (SSO) angeboten bzw.
- unterstützt werden.
- (siehe 
+ unterstützt werden (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-5"
 
 \end_inset
 
-, Kapitel 7.2.1)
+, Kapitel 7.2.1).
 \end_layout
 
 \begin_layout Subsubsection
@@ -1192,7 +1247,7 @@ Registry
 
 \begin_layout Standard
 Für die Verwaltung der für den Prozess-Modellierer zur Verfügung stehenden
- Datenquellen, ist eine zentrale Registry vorgesehen, in der die Datenquellen
+ Datenquellen ist eine zentrale Registry vorgesehen, in der die Datenquellen
  von Datenquellen-Administratoren definiert werden können.
  Dort werden auch die entsprechenden Eigenschaften der Datenquellen hinterlegt,
  die für das Late Binding benötigt werden.
@@ -1212,7 +1267,7 @@ Admin-Konsole
 Für alle wichtigen Einstellungen des Rahmenwerks soll eine Admin-Konsole
  bereitgestellt werden, über die der Workflow-Administrator Einstellungen
  treffen kann.
- Dies betrifft vor allem alle Einstellungen die auch zur Laufzeit getätigt
+ Dies betrifft vor allem alle Einstellungen, die auch zur Laufzeit getätigt
  werden können, wie z.B.
  das Aktualisieren von Referenzen.
 \end_layout
@@ -1228,41 +1283,24 @@ Erweiterbarkeit
 \end_layout
 
 \begin_layout Standard
-Das Rahmenwerk stellt folgende Anforderungen an die Erweiterbarkeit und
- soll dafür entsprechende Zugriffspunkte bereitstellen:
+Für das gesamte SIMPL Rahmenwerk und insbesondere die DM-Aktivitäten, werden
+ folgende Anforderungen an die Erweiterbarkeit gestellt, die über die Bereitstel
+lung entsprechender Zugriffspunkte gewährleistet werden sollen:
+\end_layout
+
+\begin_layout Paragraph
+SIMPL Rahmenwerk
 \end_layout
 
 \begin_layout Itemize
-Anbindung weiterer Datenquellentypen und damit weiterer Konzepte für den
- Zugriff, sowie Anfragesprachen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-noch querverweisen, muss klar werden dass das über Plug-Ins realisiert wird
-\end_layout
-
-\end_inset
-
-
+Anbindung weiterer Konzepte wie z.B.
+ das RRS
 \end_layout
 
 \begin_layout Itemize
-Erweiterung der Funktionalität des Rahmenwerks durch Integration neuer Dienste
+Erweiterung der Funktionalität des Rahmenwerks durch Integration neuer Dienste,
  die ggf.
- nur bereits vorhandenen Dienste benutzen
-\end_layout
-
-\begin_layout Itemize
-Unterstützung weiterer Anfragesprachen
-\end_layout
-
-\begin_layout Itemize
-Erweiterung um neue DM-Aktivitätstypen
-\end_layout
-
-\begin_layout Itemize
-Erweiterung um neue Events für das Auditing
+ bereits vorhandenen Dienste benutzen
 \end_layout
 
 \begin_layout Itemize
@@ -1277,6 +1315,23 @@ Unterstützung weiterer Registries für Datenquellen
 Erweiterung um zusätzliche Unterpunkte für die Admin-Konsole
 \end_layout
 
+\begin_layout Paragraph
+DM-Aktivitäten
+\end_layout
+
+\begin_layout Itemize
+Anbindung weiterer Datenquellentypen bzw.
+ Anfragesprachen
+\end_layout
+
+\begin_layout Itemize
+Erweiterung/Anpassung der DM-Aktivitätstypen
+\end_layout
+
+\begin_layout Itemize
+Erweiterung um neue Events für das Auditing
+\end_layout
+
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -1288,8 +1343,14 @@ Verwendbarkeit
 \end_layout
 
 \begin_layout Standard
-Die Aktivitäten, die für SIMPL entwickelt werden, sollen auch auf anderen
- BPEL Workflow-Engines ausführbar sein.
+DM-Aktivitäten mit Referenzen (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Große-Datenmengen"
+
+\end_inset
+
+) sollen auch auf anderen BPEL Workflow-Engines ausführbar sein.
  Dazu müssen die bei der Modellierung verwendeten Referenzen in standard-konform
 en BPEL-Code transformiert werden.
  Eine zusätzliche Anforderung ist, dass die von SIMPL bereitgestellten Web
@@ -1302,8 +1363,7 @@ Entwurfsprinzipien
 
 \begin_layout Standard
 In diesem Abschnitt werden die Prinzipien beschrieben, die für den Entwurf
- angewendet werden.
- (vgl.
+ angewendet werden (vgl.
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1311,7 +1371,7 @@ key "key-2"
 
 \end_inset
 
-, Kapitel 17)
+, Kapitel 17).
 \end_layout
 
 \begin_layout Subsubsection
@@ -1399,7 +1459,7 @@ Adapter
 \begin_layout Standard
 Adapter bzw.
  Konnektoren sind interne Verbindungsstücke.
- Sie werden dort entwickelt wo Komponenten angebunden werden sollen, deren
+ Sie werden dort entwickelt, wo Komponenten angebunden werden sollen, deren
  Schnittstellen nicht zu den vorhandenen Schnittstellen des Rahmenwerks
  passen.
 \end_layout
@@ -1511,9 +1571,15 @@ reference "fig:Architektur-des-SIMPL"
 \end_inset
 
  zeigt die Architektur des SIMPL Rahmenwerks.
- Das Zusammenspiel der übergeordneten Komponenten wird in den folgenden
- Abschnitten beschrieben, auf die Komponenten selbst und ihre Erweiterungen
- wird dann in Kapitel 
+ Es zeigt die vorhanden Komponenten, Komponenten die realisiert werden und
+ externe Komponenten, die eingebunden bzw.
+ unterstützt werden.
+ Die eingezeichneten Pfeile beschreiben den Datenfluß zwischen den Komponenten,
+ machen aber keine Aussage über die Abhängigkeit, bzw.
+ welche Komponente dabei auf welche zugreift.
+ Das Zusammenspiel der Komponenten wird in den folgenden Abschnitten näher
+ beschrieben, auf die Komponenten selbst und ihre Erweiterungen wird in
+ Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Komponenten"
@@ -1565,19 +1631,24 @@ Architektur des SIMPL Rahmenwerks
 \end_layout
 
 \begin_layout Subsection
+Übersicht
+\end_layout
+
+\begin_layout Subsection
 Eclipse
 \end_layout
 
 \begin_layout Standard
 Die Entwicklungsumgebung Eclipse bildet mit den entsprechenden Plug-Ins
- sowohl die GUI für den Prozess-Modellierer, als auch den Workflow-Administrator.
+ sowohl die GUI für den Prozess-Modellierer als auch für den Workflow-Administra
+tor.
  Mit dem Eclipse BPEL Designer Plug-In kann der Prozess-Modellierer bereits
  BPEL Prozesse erstellen und auf Apache ODE zum Einsatz bringen (deployen).
  Das SIMPL Eclipse Plug-In erweitert mit dem BPEL-DM Plug-In die bestehenden
- Aktivitäten des Eclipse BPEL Designer Plug-Ins um die DM-Aktivitäten.
- Die GUI für den Workflow-Administrator wird vom SIMPL Core Plug-In in Form
- einer Admin-Konsole bereitgestellt.
- (siehe 
+ Aktivitäten des Eclipse BPEL Designer Plug-Ins um die DM-Aktivitäten über
+ einen vorhandenen Extension Point.
+ Das SIMPL Core Plug-In stellt das Eclipse-Menü und die GUI der Admin-Konsole
+ für den Workflow-Administrator zur Verfügung (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-5"
@@ -1585,12 +1656,41 @@ key "key-5"
 \end_inset
 
 , Kapitel 4).
- Mit dem RRS Plug-In wird die Verbindung zum Reference Resolution System
- (RRS) geschaffen.
- Dadurch können Referenzen verwaltet werden und falls Referenzen bei der
- Modellierung verwendet wurden, eine Modelltransformation vor dem Deployment
- durchgeführt werden, damit die Prozesse auch auf anderen Workflow Engines
- zum Einsatz kommen können.
+ Beide Plug-Ins nutzen das SIMPL Communication Plug-In um die Verbindung
+ zu den SIMPL Core Web Services (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-Core"
+
+\end_inset
+
+) herzustellen.
+\end_layout
+
+\begin_layout Standard
+Mit dem RRS Plug-In wird die Modellierung von Referenzvariablen im Eclipse
+ BPEL Designer ermöglicht und der Kontakt zum RRS Transformation Service
+ hergestellt.
+ Damit können die zur Verfügung stehenden Datenquellen zur Modellierung
+ abgerufen werden und ggf.
+ vor dem Deployment eine Modelltransformation durchgeführt werden (siehe
+ Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Verwendbarkeit"
+
+\end_inset
+
+).
+ Eine UDDI Datenquellenregistry (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Registry"
+
+\end_inset
+
+) kann über das UDDI Plug-In integriert werden und stellt die verwendbaren
+ Datenquellen für die Modellierung im Eclipse BPEL Designer zur Verfügung.
 \end_layout
 
 \begin_layout Subsection
@@ -1598,27 +1698,58 @@ Apache Tomcat
 \end_layout
 
 \begin_layout Standard
-Der Web Container Apache Tomcat ist die Laufzeitumgebung für Apache ODE
- und den SIMPL Core.
- Apache ODE ist für die Ausführung der Prozesse nach der Modellierung zuständig
- und benötigt, wie bereits in Kapitel 
+Der Web Container Apache Tomcat ist die Laufzeitumgebung für Apache ODE,
+ den SIMPL Core und das RRS, die aber grundsätzlich auch in unterschiedlichen
+ Laufzeitumgebungen installiert sein können.
+ Apache ODE ist für die Ausführung der Prozesse nach der Prozessmodellierung
+ zuständig und wird über einen vorhandenen Extension Point für die zusätzliche
+ Ausführung von DM-Aktivitäten um die SIMPL DM Extension Activities erweitert.
+ Diese neuen Extension Activities können über den SIMPL Core mit den angefordert
+en Datenquellen kommunizieren und z.B.
+ Daten abrufen.
+ Wie bereits in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Das-SIMPL-Rahmenwerk"
 
 \end_inset
 
- erwähnt, bestimmte Dienste für die Ausführung der zusätzlichen DM-Aktivitäten
- in den Prozessen wie z.B.
- das Ausführen eines Befehls auf einer Datenquelle.
- Diese Dienste werden vom SIMPL Core bereitgestellt, der sich aus nach Aufgaben
- eingeteilten Web Services zusammensetzt.
- Zusätzlich werden für die Umsetzung des Reference Resolution Systems (RRS)
- weitere Dienste bereitgestellt, die den SIMPL Core ergänzen.
- Das RRS verwaltet die Referenzen über den SIMPL Core, der seinerseits das
- RRS für das Late Binding benötigt.
- Das Auditing von Apache ODE wird über den SIMPL Core auf einer beliebigen
- externen Datenquelle ermöglicht.
+ erwähnt, werden dazu bestimmte Dienste benötigt, die vom SIMPL Core bereitgeste
+llt werden, der sich aus nach Aufgaben eingeteilten Web Services zusammensetzt
+ (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-Core"
+
+\end_inset
+
+).
+ Zusätzlich werden vom RRS weitere Dienste bereitgestellt, die z.B.
+ für die Auflösung der Referenzen zur Laufzeit (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RRS-Retrieval-Service"
+
+\end_inset
+
+) von der Workflow Engine genutzt werden.
+ 
+\end_layout
+
+\begin_layout Standard
+Das Auditing auf einer externen Datenquelle (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Auditing-von-Prozessen"
+
+\end_inset
+
+) wird über eine Data Access Object (DAO)-Erweiterung in der Workflow Engine
+ realisiert, die alle relevanten anfallenden Daten von der Workflow Engine
+ an den SIMPL Core weiterleitet, über den diese in einer Auditing Datenquelle
+ (Apache ODE Auditing) gespeichert werden können.
+ Einstellungen zur Laufzeit, wie das Ein- und Ausschalten des Auditing,
+ werden über den SIMPL Core an Apache ODE vorgenommen.
 \end_layout
 
 \begin_layout Subsection
@@ -1626,10 +1757,40 @@ UDDI Registry
 \end_layout
 
 \begin_layout Standard
-Eine UDDI Registry ermöglicht eine zentrale Verwaltung von Datenquellen,
- die zur Modellierung bereitgestellt werden.
- Dort können auch Eigenschaften und Anforderungen zu Datenquellen abgelegt
- werden, die für das Late Binding benötigt werden.
+Eine UDDI Registry ermöglicht die zentrale Verwaltung von Datenquellen und
+ werden über das UDDI Plug-In im Eclipse BPEL Designer bereitgestellt.
+ In der Registry werden auch die Eigenschaften der Datenquellen erfasst,
+ die z.B.
+ für das Late Binding (siehe Anforderung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Late-Binding-von"
+
+\end_inset
+
+) benötigt werden oder über die der Prozess-Modellierer eine geeignete Datenquel
+le identifizieren kann.
+ Das SIMPL Rahmenwerk wird mit Apache jUDDI als Registry ausgeliefert, unterstüt
+zt aber auch andere UDDI-Registries, die Version 3 der UDDI API Spezifikation
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-7"
+
+\end_inset
+
+ unterstützen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Benötigt man zur Modellierung von Referenzen die UDDI Registry? Dann noch
+ Pfeil von UDDI Plug-In zum RRS Plug-In und Beschreibung dazu
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1659,19 +1820,23 @@ reference "fig:Komponenten"
 
  werden die für das SIMPL Rahmenwerk relevanten Komponenten und ihre Abhängigkei
 ten gezeigt, die in den folgenden Abschnitten näher beschrieben werden.
- Die Richtung der Pfeile beschreibt die Richtung in der die Zugriffe stattfinden.
- Der SIMPL Core greift für das Late Binding auf Apache jUDDI zu um eine
- passende Datenquelle zu finden.
- Für Einstellungen zur Laufzeit muss vom SIMPL Core direkt auf Apache ODE
- zugegriffen werden.
+ Die Richtung der Pfeile beschreibt die Richtung, in der die Zugriffe stattfinde
+n.
+ Der SIMPL Core greift für das Late Binding auf die Registry Apache jUDDI
+ zu, um eine passende Datenquelle zu finden.
+ Für Einstellungen zur Laufzeit, wie z.B.
+ das An- und Ausschalten des Auditing, muss vom SIMPL Core direkt auf Apache
+ ODE zugegriffen werden.
  Apache ODE verwendet den SIMPL Core für die Ausführung der DM-Aktivitäten
- und verwendet dabei den RRS Service um Referenzen aufzulösen.
- Eclipse bietet die Möglichkeit den SIMPL Core über eine GUI zu administrieren,
- die Einstellungen werden im SIMPL Core gespeichert.
- Beim Deployment eines modellierten Prozesses, wird über den RRS eine Modelltran
-formation durchgeführt und der Prozess in Apache ODE deployt.
+ und verwendet den RRS um Referenzen aufzulösen.
+ Eclipse bietet die Möglichkeit, den SIMPL Core über eine GUI zu administrieren,
+ Einstellungen werden im SIMPL Core gespeichert.
+ Vor dem Deployment eines modellierten Prozesses, wird zunächst eine Modelltrans
+formation durchgeführt und der Prozess anschließend in Apache ODE deployt.
  Die Referenzen des RRS werden ebenfalls über eine GUI in Eclipse verwaltet
- und vom RRS über den SIMPL Core gespeichert.
+ und vom RRS gespeichert.
+ Datenquellen, die bei der Prozessmodellierung zur Auswahl stehen, werden
+ über die Registry Apache jUDDI abgerufen.
 \end_layout
 
 \begin_layout Standard
@@ -1945,7 +2110,7 @@ Eigene Extension Points?
 \end_layout
 
 \begin_layout Standard
-Das BPEL-DM Plug-In beinhaltet die Data-Management-Aktiviäten, die die Standard
+Das BPEL-DM Plug-In beinhaltet die Datenmanagement-Aktiviäten, die die Standard
  BPEL-Aktivitäten des BPEL Designer Plug-Ins erweitern.
  Die Erweiterung der Aktivitäten geschieht über folgende drei Extension
  Points:
@@ -1964,7 +2129,7 @@ PropertySections
 \end_layout
 
 \begin_layout Standard
-Weiterhin werden durch das BPEL-DM Plug-In PropertySections für alle Data-Manage
+Weiterhin werden durch das BPEL-DM Plug-In PropertySections für alle Datenmanage
 ment-Aktivitäten bereitgestellt, die Zugriff auf einen Editor zur graphischen
  Modellierung von Datenquellenbefehlen bieten.
 \end_layout
@@ -2415,15 +2580,16 @@ reference "fig:SIMPL-Core"
 
 \end_inset
 
-, stellt die Funktionalität zur Verfügung, die während der Modellierung
- und der Ausführung von Prozessen benötigt wird.
- Er bietet nach Außen verschiedene Web Services zu Verfügung, die jeweils
- bestimmte Aufgaben innerhalb des SIMPL Rahmenwerks haben.
+, stellt die Funktionalität zur Verfügung, die während der Prozessmodellierung
+ mit DM-Aktivitäten und der Ausführung über die Extension Activities, benötigt
+ wird.
+ Er bietet nach außen verschiedene Web Services, die jeweils bestimmte Aufgaben
+ innerhalb des SIMPL Rahmenwerks übernehmen.
  Der SIMPL Core wird als JAR-Datei im Classpath von Apache ODE hinterlegt,
  dadurch wird eine schnelle direkte Kommunikation zwischen dem SIMPL Core
  und Apache ODE ermöglicht.
- Desweiteren kann der SIMPL Core als Singleton betrieben werden und es können
- damit z.B.
+ Des Weiteren kann der SIMPL Core als Singleton betrieben werden, und es
+ können damit z.B.
  Verbindungen zu Datenquellen für Folgezugriffe aufrecht gehalten werden.
  Die Web Services des SIMPL Cores werden dabei innerhalb der Axis2 Installation
  von Apache ODE bereitgestellt und zusätzlich mit der Java API JAX-WS annotiert,
@@ -2440,8 +2606,8 @@ reference "sub:Verwendbarkeit"
 \end_layout
 
 \begin_layout Standard
-In den folgenden Abschnitten werden zunächst die Web Services des SIMPL
- Core und ihre Aufgaben näher beschrieben.
+In den folgenden Abschnitten werden zunächst die Services des SIMPL Cores
+ und ihre Aufgaben näher beschrieben.
  Die Schnittstellen und ihre Verwendung werden in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2511,7 +2677,8 @@ reference "sub:Admin-Konsole"
 \end_inset
 
 ) in Eclipse bereitgestellt.
- Die Einstellungen der Admin-Konsole werden über den Storage Service verwaltet.
+ Die Einstellungsinformationen der Admin-Konsole werden über den Storage
+ Service verwaltet.
  Für Einstellungen, mit denen zur Laufzeit Einfluss auf Apache ODE genommen
  wird, wie z.B.
  die Granularität des Auditings, werden die vorhandenen Schnittstellen von
@@ -2523,7 +2690,8 @@ reference "sub:Erweiterbarkeit"
 
 \end_inset
 
-), wird durch die WSDL-Schnittstelle erreicht.
+) wird durch die WSDL-Schnittstelle erreicht, durch die eine lose Kopplung
+ zwischen Administration Service und der GUI geschaffen wird.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2532,7 +2700,8 @@ Datasource Service
 
 \begin_layout Standard
 Der Datasource Service ist für alle Aufgaben zuständig, die den Zugriff
- auf die Datenquellen betreffen.
+ auf die Datenquellen betreffen und bietet eine WSDL-Schnittstelle, die
+ von Apache ODE zur Ausführung der DM-Aktivitäten verwendet wird.
  Dort werden entsprechende Adapter (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2560,12 +2729,25 @@ reference "sub:Plug-In"
 ) für zusätzliche funktionale Erweiterungen geschaffen, wie z.B die Unterstützung
  verschiedener Dateitypen bei Dateisystemen.
  Referenzen werden vom RRS Service über den Datasource Service aufgelöst.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was passiert denn, wenn externe Daten in den Prozessspeicher geladen werden
+ (Retrieve Activity)? Die müssen imho ja irgendwie in die interne Datenbank
+ von ODE kommen, damit ODE dann über seine DAOs darauf zugreifen kann.
+ Wie funktioniert das mit dem Data Source Service?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 Security Service
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Was macht der Service konkret? "verarbeiten", "transformieren", "zwischenspeiche
@@ -2594,6 +2776,24 @@ Tomcat oder ein Service Bus sollten dafür auch entsprechende Funktionalitäten
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Hier fehlt die Verbindung zwischen dem Data Source Service und dem Security
+ Service.
+ Wie genau spielen die zusammen? Insbesonder: wer von beiden führt die Authentif
+izierung und Autorisierung sowie das SSO gegenüber den Datenquellen durch?
+\end_layout
+
+\begin_layout Plain Layout
+Wo werden außerdem die Informationen festgelegt? Braucht man da noch eine
+ zusätzliche externe Schnittstelle?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2603,8 +2803,8 @@ Der Security Service ist zuständig für die Verwaltung von Informationen
  auch Authentifizierungs- und Autorisierungsinformationen in andere Formate
  transformiert werden, wie beispielsweise Benutzername und Passwort nach
  SAML.
- Die Informationen werden über den Storage Service verwaltet um das Konzept
- des SSO (siehe Anforderung 
+ Die Informationen werden über den Storage Service persistent gespeichert
+ um das Konzept des SSO (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Authentifizierung-und-Autorisierung"
@@ -2612,8 +2812,19 @@ reference "sub:Authentifizierung-und-Autorisierung"
 \end_inset
 
 ) zu realisieren, bei dem diese Informationen wiederverwendet werden.
- Die genaue Rolle des Security Service wird erst in einer späteren Iteration
- spezifiziert.
+ Die genaue Rolle des Security Service wird erst in dieser Iteration entworfen.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Sollte mal jemand entwerfen...
+ Feinentwurf?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2665,11 +2876,35 @@ Passender Fund
 \begin_inset Quotes erd
 \end_inset
 
- realisiert, die erst in einer späteren Iteration näher spezifiziert werden.
+ realisiert, die erst in dieser Iteration entworfen werden.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Sollte auch mal jemand entwerfen...
+ Feinentwurf?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 Storage Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ihr müsst hier und an anderen entsprechenden Stellen in Kapitel 3.3 noch
+ begründen, warum man diesen separaten Storage Service braucht.
+ Schließlich könnte man die Datenhaltung auch über die anderen Services
+ realisieren.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2682,10 +2917,23 @@ Der Storage Service verwaltet in einer embedded Datenbank alle Daten die
  wie z.B.
  der Security Service zur Verwaltung von Authentifizierungs- und Autorisierungsi
 nformationen.
+ Die embedded Datenbank garantiert, gegenüber einer externen Lösung, einen
+ schnellen Zugriff auf relevante Daten.
 \end_layout
 
 \begin_layout Subsection
 Reference Resolution System (RRS)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Da muss noch irgendeine Komponente rein, die die Adapter realisiert.
+ (Kopie vom SIMPL Core Datasource Service)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2705,7 +2953,7 @@ reference "fig:Reference-Resolution-System"
 
 \end_inset
 
- zu sehen ist, besteht es aus drei Web Services, die in den folgenden Abschnitte
+ zu sehen ist, besteht es aus zwei Web Services, die in den folgenden Abschnitte
 n beschrieben werden.
 \end_layout
 
@@ -2751,13 +2999,19 @@ Reference Resolution System (RRS)
 \end_layout
 
 \begin_layout Subsubsection
-RRS Service
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RRS-Retrieval-Service"
+
+\end_inset
+
+RRS Retrieval Service
 \end_layout
 
 \begin_layout Standard
 Über den RRS Service lassen sich Referenzen auflösen und die referenzierten
  Daten bei Bedarf in einen Prozess holen.
- Die Referenzen werden mit dem Datasource Service des SIMPL Core aufgelöst.
+ Die Referenzen werden mit dem Datasource Service des SIMPL Cores aufgelöst.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2767,27 +3021,9 @@ RRS Administration Service
 \begin_layout Standard
 Mit dem RRS Administration Service können Referenzen über das Eclipse RRS
  Plug-In verwaltet werden.
- Die Verwaltung geschieht dabei über den Storage Service vom SIMPL Core.
-\end_layout
-
-\begin_layout Subsubsection
-RRS Transformation Service
-\end_layout
-
-\begin_layout Standard
-Damit modellierte Prozesse auch auf anderen Workflow Engines ausgeführt
- werden können (siehe Anforderung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Verwendbarkeit"
-
-\end_inset
-
-), wird der Transformation Service bereitgestellt, mit dem der um Referenzen
- erweiterte BPEL Code in standard-konformen BPEL-Code transformiert werden
- kann.
- Die Transformation wird über das RRS-Plug-In vor dem Deployment mit dem
- Eclipse BPEL Designer Plug-In durchgeführt.
+ Die Verwaltung der Referenzen geschieht dabei vorerst über eine eingebettete
+ Datenbank, es ist allerdings später auch eine externe Verwaltung durch
+ die Verwendung der entsprechenden Datenquellen-Adapter denkbar.
 \end_layout
 
 \begin_layout Subsection
@@ -2798,18 +3034,17 @@ Apache jUDDI
 Das SIMPL Rahmenwerk stellt mit Apache jUDDI bereits eine UDDI-Registry
  zur Verfügung, in der Datenquellen von Datenquellen-Administratoren verwaltet
  werden können.
- Das BPEL-DM Plug-In kann über die Registry Datenquellen für den Modellierer
+ Das UDDI Plug-In kann über die Registry Datenquellen für den Prozeß-Modellierer
  zur Verfügung stellen.
- Durch den UDDI Standard können auch beliebige andere UDDI-Registries angebunden
- werden.
- (siehe Anforderung 
+ Durch den UDDI-Standard können auch beliebige andere UDDI-Registries angebunden
+ werden (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Erweiterbarkeit"
 
 \end_inset
 
-)
+).
 \end_layout
 
 \begin_layout Standard
@@ -2830,9 +3065,9 @@ Schnittstellen
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel werden die Schnittstellen der Komponenten beschrieben,
+In diesem Kapitel werden die Schnittstellen der Komponenten beschrieben
  sowie eingesetzte Protokolle und übertragene Objekte erläutert.
- Bei allen Schnittstellen handelt es sich um WSDL-Schnittstellen mit denen
+ Bei allen Schnittstellen handelt es sich um WSDL-Schnittstellen, mit denen
  über ein Übertragungsprotokoll wie z.B.
  HTTP SOAP-Nachrichten ausgetauscht werden können.
  Die UDDI Schnittstelle der Registry Apache jUDDI wird direkt genutzt und
@@ -2847,20 +3082,25 @@ key "key-7"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-Core"
+
+\end_inset
+
 SIMPL Core
 \end_layout
 
 \begin_layout Standard
 Hier werden die externen und wichtige interne Schnittstellen des SIMPL Rahmenwer
-ks beschrieben.
- (siehe 
+ks beschrieben (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL-Core"
 
 \end_inset
 
-)
+).
 \end_layout
 
 \begin_layout Subsubsection
@@ -2870,7 +3110,8 @@ AdministrationService (extern)
 \begin_layout Standard
 Die AdministrationService-Schnittstelle bietet Funktionen für das Speichern,
  Löschen und Laden von Einstellungen der Admin-Konsole.
- Die Einstellungen werden dabei als SDO übertragen.
+ Die Einstellungen werden dabei als Listen bzw.
+ HashMaps übertragen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2880,19 +3121,7 @@ StorageService (intern und extern)
 \begin_layout Standard
 Die StorageService-Schnittstelle bietet Funktionen zur Verwaltung von Daten
  innerhalb des Rahmenwerks.
- Die Daten werden als SDO übertragen.
-\end_layout
-
-\begin_layout Subsubsection
-DatasourceService (extern)
-\end_layout
-
-\begin_layout Standard
-Die DatasourceService-Schnittstelle wird extern von Apache ODE für den Zugriff
- auf Datenquellen und das Speichern der Auditing-Daten verwendet.
- Sie bietet Funktionen zum Abrufen der Daten von Datenquellen und Senden
- von Befehlen in unterstützten Anfragesprachen.
- Die Daten werden dabei als Service Data Object (SDO) 
+ Die Daten werden als Service Data Object (SDO) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-4"
@@ -2903,13 +3132,25 @@ key "key-4"
 \end_layout
 
 \begin_layout Subsubsection
+DatasourceService (extern)
+\end_layout
+
+\begin_layout Standard
+Die DatasourceService-Schnittstelle wird von Apache ODE für den Zugriff
+ auf Datenquellen und die Speicherung der Auditing-Daten verwendet.
+ Sie bietet Funktionen zum Abrufen der Daten von Datenquellen und Senden
+ von Befehlen in unterstützten Anfragesprachen.
+ Die Daten werden dabei als SDO übertragen.
+\end_layout
+
+\begin_layout Subsubsection
 StrategyService (intern)
 \end_layout
 
 \begin_layout Standard
 Die StrategyService-Schnittstelle wird vom Datasource Service für das Late
  Binding genutzt und bietet Funktionen für die verschiedenen Auswahlstrategien
- (siehe 
+ (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Strategy-Service"
@@ -2918,7 +3159,8 @@ reference "sub:Strategy-Service"
 
 ).
  Die nichtfunktionalen Anforderungen an die Datenquellen werden dabei als
- WS-Policy-Objekte übertragen, andere funktionale Eigenschaften als XML-Struktur.
+ WS-Policy-Objekte übertragen, andere funktionale Eigenschaften als proprietäre
+ XML-Struktur.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2928,23 +3170,11 @@ SecurityService (intern)
 \begin_layout Standard
 Die SecurityService-Schnittstelle bietet Funktionen für die Verwaltung von
  Authentifizierungs- und Autorisierungsinformationen.
- Sie wird vom Datasource Service benötigt um entsprechende Informationen
+ Sie wird vom Datasource Service benötigt, um entsprechende Informationen
  für einen Zugriff auf eine Datenquelle abzurufen.
  Die Informationen werden dabei hauptsächlich in der Security Assertion
  Markup Language (SAML) und der eXtensible Access Control Markup Language
  (XACML) übertragen.
-\end_layout
-
-\begin_layout Subsubsection
-ReferenceService
-\end_layout
-
-\begin_layout Standard
-Die ReferenceService-Schnittstelle wird bei der Modellierung in Eclipse
- zur Verwaltung von Referenzen genutzt und von Apache ODE zur Auflösung
- der Referenzen zur Laufzeit verwendet.
- Sie bietet Funktionen zur Verwaltung und Auflösung von Referenzen, wobei
- die Daten der aufgelösten Referenzen als SDO zurückgeliefert werden.
 \end_layout
 
 \begin_layout Subsection
@@ -2952,7 +3182,7 @@ RRS
 \end_layout
 
 \begin_layout Standard
-In den folgenden Abschnitten werden die Schnittstellen des RRS beschrieben.
+In den folgenden Abschnitten werden die Schnittstellen des RRS beschrieben
  (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2960,7 +3190,8 @@ reference "fig:Reference-Resolution-System"
 
 \end_inset
 
-) Die nachfolgenden Beschreibungen beziehen sich auf Quelle 
+).
+ Die nachfolgenden Beschreibungen beziehen sich auf 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-6"
@@ -2988,26 +3219,6 @@ RRSAdministrationService
 \begin_layout Standard
 Diese Schnittstelle bietet Funktionen zum Speichern, Löschen und Ändern
  von Referenzen in Form von EPRs.
-\end_layout
-
-\begin_layout Subsubsection
-RRSTransformationService
-\end_layout
-
-\begin_layout Standard
-Die RRSTransformationService-Schnittstelle bietet eine Funktion zur Umwandlung
- des durch Referenzen erweiterten BPEL-Codes in standard-konformen BPEL-Code.
- Dazu werden die entsprechenden BPEL-Dateien übergeben und transformierte
- Kopien der Prozessmodelle zurückgeliefert.
- Während der Transformation wird das Prozessmodell entsprechend den Beschreibung
-en in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-6"
-
-\end_inset
-
- erweitert.
 \end_layout
 
 \begin_layout Standard
@@ -3294,7 +3505,7 @@ DM
 \begin_inset Text
 
 \begin_layout Plain Layout
-Data-Management
+Datenmanagement
 \end_layout
 
 \end_inset
