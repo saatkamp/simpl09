@@ -149,7 +149,7 @@ public abstract class DatasourceServicePlugin implements DatasourceService {
     // Load the default schema file
     if (inputStream == null) {
       inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/datasource/" + DATASOURCE_META_DATA_SCHEMA_FILE);
+          "/org/simpl/core/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
     }
 
     if (inputStream == null) {
@@ -166,7 +166,7 @@ public abstract class DatasourceServicePlugin implements DatasourceService {
     }
     
     metaDataObject = DataFactory.INSTANCE.create(
-        "http://org.simpl.core/src/org/simpl/core/datasource/"
+        "http://org.simpl.core/src/org/simpl/core/datasource/metadata/"
             + DATASOURCE_META_DATA_SCHEMA_FILE, this.datasourceMetaDataType);
 
     return metaDataObject;
