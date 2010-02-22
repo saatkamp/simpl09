@@ -2255,12 +2255,12 @@ Das ManagementAPI von Apache ODE bietet Funktionen auf Prozess- und auf
 \end_layout
 
 \begin_layout Standard
-Hier wird der Aufbau und die einzelnen Bestandteile von ODE, die für das
- SIMPL Rahmenwerk von Bedeutung sind erläutert.
- Zunächst wird kurz Beschreibung über den derzeitigen Zustand von ODE geboten
- und im Anschluss folgt eine Beschreibung der Erweiterungen, die notwendig
- sind.
- In 
+Hier werden der Aufbau und die einzelnen Bestandteile von ODE, die für das
+ SIMPL Rahmenwerk von Bedeutung sind, erläutert.
+ Zunächst wird eine kurz Beschreibung über den derzeitigen Zustand von ODE
+ geboten.
+ Im Anschluss folgt eine Beschreibung der Erweiterungen, die notwendig sind.
+ In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Apache-ODE-mit"
@@ -2316,7 +2316,7 @@ Schnittstellen
 \end_layout
 
 \begin_layout Standard
-In diesem Teil folgt eine kurze Beschreibung der Schnittstellen über die
+In diesem Teil folgt eine kurze Beschreibung der Schnittstellen, über die
  die ODE Engine verfügt.
  Diese werden hier nur aufgelistet, aber voraussichtlich nicht verwendet.
 \end_layout
@@ -2326,22 +2326,23 @@ ProcessManagement und InstanceManagement (Management API)
 \end_layout
 
 \begin_layout Standard
-Die Management API von Apache ODE bietet Funktionen auf Prozess- und auf
- Instanzebene an.
+Die Management API von Apache ODE bietet Funktionen auf Prozessmodell und
+ auf Prozessinstanzebene an.
  Dadurch können z.B.
- bestimmte Nachrichten an Prozesse geschickt werden um deren Ausführung
+ bestimmte Nachrichten an Prozessemodelle geschickt werden um deren Ausführung
  zu starten oder zu beenden und es können Informationen zu den einzelnen
- Instanzen abgerufen werden.
+ Prozessinstanzen abgerufen werden.
 \end_layout
 
 \begin_layout Standard
 Die Management API unterteilt sich in Instanz-Management und Prozess-Management.
- Beide bieten verschiedene Funktionen für Instanzen bzw.
- Prozesse an.
+ Beide bieten verschiedene Funktionen für Prozessinstanzen bzw.
+ Prozessemodelle an.
  Es besteht auf der einen Seite die Möglichkeit, verschiedene Informationen
- über die Prozesse und Instanzen zu erhalten, zum Beispiel eine Liste der
- verschiedene Prozessmodelle oder Informationen über ein einzelnes Prozessmodell
-, auf der anderen Seite ist es aber auch möglich, direkt mit Prozessinstanzen
+ über die Prozessemodelle und Prozessinstanzen zu erhalten, zum Beispiel
+ eine Liste der verschiedene Prozessmodelle oder Informationen über ein
+ einzelnes Prozessmodell.
+ Auf der anderen Seite ist es auch möglich, direkt mit Prozessinstanzen
  zu interagieren.
  Dadurch ist es beispielsweise möglich, eine Prozessinstanz anzuhalten,
  oder direkt zu terminieren.
@@ -2354,8 +2355,7 @@ DeploymentService
 \begin_layout Standard
 Der Deployment Service bietet verschiedene Funktionen für das Deployment
  von Prozessen an.
- Dazu gehören neben einer Deploy- und Undeploy-Funktion unter Anderem auch
- das Auflisten von deployten Prozessen.
+ Dazu gehören Deploy- und Undeploy-Funktionen.
  In den nächsten Iterationen kommen noch weitere Punkte hinzu, die das Deploymen
 t betreffen.
  
@@ -2366,7 +2366,7 @@ Komponenten
 \end_layout
 
 \begin_layout Standard
-Hier werden die relevanten Komponenten von Apache ODE beschrieben.
+Hier werden die bereits vorhandenen Komponenten von Apache ODE beschrieben.
 \end_layout
 
 \begin_layout Paragraph
@@ -2374,8 +2374,8 @@ Plug-In Architektur
 \end_layout
 
 \begin_layout Standard
-ODE verfügt über eine Plug-In-Architektur mit der es unter anderem möglich
- ist Extension Activities zu erstellen, die die Standardaktivitäten von
+ODE verfügt über eine Plug-In-Architektur, mit der es unter anderem möglich
+ ist, Extension Activities zu erstellen, die die Standardaktivitäten von
  BPEL erweitern.
  Dazu werden spezielle Interfaces zur Verfügung gestellt.
  Dabei handelt es sich um 
@@ -2386,7 +2386,7 @@ AbstractSyncExtensionOperation
 \begin_inset Quotes erd
 \end_inset
 
-, bei synchronen Aktivitäten und um 
+ bei synchronen Aktivitäten und um 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2395,8 +2395,12 @@ AbstractAsyncExtensionOperation
 \end_inset
 
  bei asynchronen Aktivitäten.
- Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig diese
- als jar-Dateien in den Classpath zu kopieren.
+ Um diese Aktivitäten der ODE Engine hinzuzufügen, ist es notwendig, diese
+ als jar-Dateien in den Classpath von ODE zu kopieren (ode
+\backslash
+WEB-INF
+\backslash
+lib).
  Anschließend ist es nur noch notwendig die Extension in der ODE Engine
  zu registieren.
  Dies geschieht in der ode-axis2.PROPERTIES Datei.
@@ -2407,32 +2411,143 @@ Event System
 \end_layout
 
 \begin_layout Standard
-Innerhalb des ODE Event Systems existieren bereits 5 Event-Typen.
- Diese sind:
+Innerhalb des ODE Event Systems existieren bereits 5 Event-Typen:
 \end_layout
 
 \begin_layout Itemize
 Instance Life Cycle Events
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Diese Events sind für alle Ereignisse die während der Ausführung einer Prozessin
+stanz auftreten können zuständig.
+ Beispielsweise das Starten der Ausführung oder das Terminieren einer Prozessins
+tanz
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Activity Life Cycle Events
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Diese Events sind für alle Ereignisse die während der Ausführung von Aktivitäten
+ auftreten können zuständig.
+ Beispielsweise das Starten der Ausführung einer Aktivität oder Rückmeldungen
+ über das Fehlschlagen einer Aktivität.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Scope Handling Events
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Diese Events sind für alle Ereignisse die während der Ausführung von Scopes
+ auftreten können zuständig.
+ Beispielsweise das Registrieren von Compensation Handlern für eine Scope
+ und Rückmeldungen über das Fehler in einem Scope.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Data Handling Events
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Diese Events sind für alle Ereignisse die beim Umgang mit Daten auftreten
+ können.
+ Dies betrifft beispielsweise das Lesen und Modifizieren von Variablen.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Correlation Events
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Diese Events sind für Ereignisse Correlations betreffend zuständig.
+ Hier gibt es nur die Events 
+\begin_inset Quotes eld
+\end_inset
+
+Correlation match
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Correlation no match
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 Diese Events sind in einer Hierarchie organisiert.
+ Diese ensteht durch die Vererbungsverhältnisse unter den Events.
+ Dabei haben alle verschiedenen Events die Klasse 
+\begin_inset Quotes eld
+\end_inset
+
+BPEL-Event
+\begin_inset Quotes erd
+\end_inset
+
+ als Oberklasse.
+ Anschließend ist die weitere Hierarchie durch die von den einzelnen Events
+ betroffenen Konstrukten begründet.
+ Das bedeutet, dass 
+\begin_inset Quotes eld
+\end_inset
+
+ActivityEvent
+\begin_inset Quotes erd
+\end_inset
+
+ eine Unterklasse von 
+\begin_inset Quotes eld
+\end_inset
+
+ScopeEvent
+\begin_inset Quotes erd
+\end_inset
+
+ ist.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Scope Event
+\begin_inset Quotes erd
+\end_inset
+
+ wiederum ist eine Unterklasse von 
+\begin_inset Quotes eld
+\end_inset
+
+ProcessInstanzEvent
+\begin_inset Quotes erd
+\end_inset
+
+, welche eine direkte Unterklasse von 
+\begin_inset Quotes eld
+\end_inset
+
+BPELEvent
+\begin_inset Quotes erd
+\end_inset
+
+ sind.
 \end_layout
 
 \begin_layout Paragraph
@@ -2472,21 +2587,37 @@ Erweiterungen
 \end_layout
 
 \begin_layout Standard
-In den folgenden Abschnitten wird beschrieben welche Erweiterungen für Apache
- ODE benötigt werden und wie diese realisiert werden.
+In den folgenden Abschnitten wird beschrieben, welche Erweiterungen für
+ Apache ODE benötigt werden und wie diese realisiert werden.
 \end_layout
 
 \begin_layout Paragraph
-SIMPL DM Extension Activities
+BPEL-DM Extension Activities
+\end_layout
+
+\begin_layout Standard
+Diese Extension Activities sind für die Ausführung der unterschiedlichen
+ DM-Aktivitäten durch Apache ODE zuständig.
+ Sie werden über den Extension Point 
+\begin_inset Quotes eld
+\end_inset
+
+Extension Activity
+\begin_inset Quotes erd
+\end_inset
+
+ realisiert.
+ 
 \end_layout
 
 \begin_layout Standard
 Extension Acitivities für die Apache ODE Workflow Engine werden als Java
  Klassen erstellt, welche die Implementierung der neuen Aktivitäten enthalten.
- Weiterhin ist es notwendig die unter Plug-in Architektur genannten Interfaces
+ Weiterhin ist es notwendig, die unter Plug-in Architektur genannten Interfaces
  zu implementieren.
- Bei der Ausführung der DM-Aktivitäten wird der SIMPL Core genutzt um die
- Datenmanagement-Operationen zu realisieren.
+ Bei der Ausführung der DM-Aktivitäten wird der SIMPL Core genutzt, um die
+ Datenmanagement-Operationen zur Verarbeitung an die jeweilige Datenquelle
+ zu schicken.
 \end_layout
 
 \begin_layout Paragraph
@@ -2542,11 +2673,11 @@ ConnectionEnd
 Bei der Implementierung werden DM-Events und Connection-Events jeweils als
  ein neuer Event-Typ implementiert und die einzelnen spezifischen Events
  werden von diesen abgeleitet.
- Dies bietet die Möglichkeit die Granularitätseinstellungen innerhalb des
+ Dies bietet die Möglichkeit, die Granularitätseinstellungen innerhalb des
  Deployment-Deskriptors ebenfalls um diese Typen zu erweitern.
  Die Events werden direkt in den Extension Activities eingebunden und werden
  hier auch ausgelöst.
- Es ist nicht vorgesehen diese Events an einer anderen Stelle in ODE zu
+ Es ist nicht vorgesehen, diese Events an einer anderen Stelle in ODE zu
  nutzen.
 \end_layout
 
