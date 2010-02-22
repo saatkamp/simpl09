@@ -20,7 +20,7 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Grobentwurf}
-\def\docvers{1.6}
+\def\docvers{1.9}
 \def\docautor{Michael Schneidt}
 \def\docdate{07. Dezember 2009}
 
@@ -1757,10 +1757,6 @@ Architektur des SIMPL Rahmenwerks
 \end_layout
 
 \begin_layout Subsection
-Übersicht
-\end_layout
-
-\begin_layout Subsection
 Eclipse
 \end_layout
 
@@ -1817,6 +1813,8 @@ reference "sub:Registry"
 
 ) kann über das UDDI Plug-In integriert werden und stellt die verwendbaren
  Datenquellen für die Modellierung im Eclipse BPEL Designer zur Verfügung.
+ Des Weiteren ermöglicht es die Verwendung von Datenquellen bei der Referenzmode
+llierung mit dem RRS Plug-In.
 \end_layout
 
 \begin_layout Subsection
@@ -1907,7 +1905,7 @@ key "key-7"
 
  unterstützen.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Benötigt man zur Modellierung von Referenzen die UDDI Registry? Dann noch
@@ -2040,7 +2038,8 @@ reference "sub:Erweiterbarkeit"
 \end_layout
 
 \begin_layout Standard
-Die relvanten Komponenten der Enwicklungsumgebung Eclipse in Abbildung 
+Die relevanten Komponenten der Enwicklungsumgebung Eclipse in Abbildung
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Eclipse-mit-SIMPL"
@@ -3091,19 +3090,9 @@ reference "sub:Authentifizierung-und-Autorisierung"
 \end_inset
 
 ) zu realisieren, bei dem diese Informationen wiederverwendet werden.
- Die genaue Rolle des Security Service wird erst in dieser Iteration entworfen.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Sollte mal jemand entwerfen...
- Feinentwurf?
-\end_layout
-
-\end_inset
-
-
+ Des Weiteren werden dort offene Verbindungen zu Datenquellen verwaltet,
+ damit diese ggf.
+ wiederaufgenommen werden können und nicht erneut hergestellt werden müssen.
 \end_layout
 
 \begin_layout Subsubsection
