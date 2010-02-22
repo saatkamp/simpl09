@@ -433,13 +433,17 @@ public class CreateEditor extends AStatementEditor {
 		
 		if((wordsOfStatment!=null)&&(wordsOfStatment.length>0)){
 			for(int i=1;i<wordsOfStatment.length;i++){
-				if(cleandStatment.contains(")")){
-					//while(!(wordsOfStatment[i].contains(")"))){
+				try {
+					if(cleandStatment.contains(")")){
+						//while(!(wordsOfStatment[i].contains(")"))){
+							if(!(wordsOfStatment[i].contains(")"))	) parsedColumns.add(wordsOfStatment[i]);
+						//}
+					}
+					else{
 						if(!(wordsOfStatment[i].contains(")"))	) parsedColumns.add(wordsOfStatment[i]);
-					//}
-				}
-				else{
-					if(!(wordsOfStatment[i].contains(")"))	) parsedColumns.add(wordsOfStatment[i]);
+					}
+				} catch (Exception e) {
+					System.out.print("ERROR: "+e.getMessage());
 				}
 //				if(cleandStatment.contains(",")){
 //					wordsOfStatment[i]=wordsOfStatment[i].substring(1);
@@ -451,9 +455,13 @@ public class CreateEditor extends AStatementEditor {
 			}
 			String[] wordsOfStatment2=new String[parsedColumns.size()];
 			for(int i=0;i<wordsOfStatment2.length;i++){
-				wordsOfStatment2[i]=parsedColumns.get(i);
-				if(wordsOfStatment2[i].contains(",")){
-					wordsOfStatment2[i]=wordsOfStatment2[i].substring(1);
+				try {
+					wordsOfStatment2[i]=parsedColumns.get(i);
+					if(wordsOfStatment2[i].contains(",")){
+						wordsOfStatment2[i]=wordsOfStatment2[i].substring(1);
+					}
+				} catch (Exception e) {
+					System.out.print("ERROR: "+e.getMessage());
 				}
 			}
 			
@@ -461,9 +469,14 @@ public class CreateEditor extends AStatementEditor {
 			if((wordsOfStatment2.length>1)&&(wordsOfStatment2!=null)){
 				//hier i remove the "("  ")" from the columns lines.
 				if(wordsOfStatment2[wordsOfStatment2.length-1].contains(")")){
-					wordsOfStatment2[wordsOfStatment2.length-1]=wordsOfStatment2[wordsOfStatment2.length-1].
-						substring(wordsOfStatment2[wordsOfStatment2.length-1].length()-2,
-											wordsOfStatment2[wordsOfStatment2.length-1].length()-1);
+					try {
+						wordsOfStatment2[wordsOfStatment2.length-1]=wordsOfStatment2[wordsOfStatment2.length-1].
+							substring(wordsOfStatment2[wordsOfStatment2.length-1].length()-2,
+												wordsOfStatment2[wordsOfStatment2.length-1].length()-1);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.out.print("ERROR: "+e.getMessage());
+					}
 				}
 			
 			
@@ -512,7 +525,7 @@ public class CreateEditor extends AStatementEditor {
 	private void EditTheUIFromStatment() {
 		// TODO Auto-generated method stub
 		//dSourceTables
-		String[] tempColumesNames;
+		String[] tempColumesNames = null;
 		String cleandStatment=removeAllSpaces(statementText.getText());
 		String[] wordsOfStatment =cleandStatment.split("\r");
 		String arrayAsString="";
@@ -524,14 +537,23 @@ public class CreateEditor extends AStatementEditor {
 			else{
 				if(!(IsStringKeyWord(wordsOfStatment[i]))){
 			
-					tempColumesNames=ParseStringIntoColumsNames(wordsOfStatment[i]);
+					try {
+						tempColumesNames=ParseStringIntoColumsNames(wordsOfStatment[i]);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.out.print("ERROR: "+e.getMessage());
+					}
 					//ArrayList<Integer> indicesOfSelection=new ArrayList<Integer>();
 					for(int j=0;j<tempColumesNames.length;j++){
-						arrayAsString=ConvertArrayToString(listOfColumn.getItems());
-						if(arrayAsString.contains(tempColumesNames[j])){
-							//indicesOfSelection.add(j);
-							listOfColumn.select(j);
-							
+						try {
+							arrayAsString=ConvertArrayToString(listOfColumn.getItems());
+							if(arrayAsString.contains(tempColumesNames[j])){
+								//indicesOfSelection.add(j);
+								listOfColumn.select(j);
+								
+							}
+						} catch (Exception e) {
+							System.out.print("ERROR: "+e.getMessage());
 						}
 					}
 					//listOfColumn.select(indicesOfSelection.toArray());
@@ -668,7 +690,11 @@ public class CreateEditor extends AStatementEditor {
 		for(int i=0;i<listOfMainKeyWords.size();i++)
 		{
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
-				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
+				try {
+					creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
+				} catch (Exception e) {
+					System.out.print("ERROR: "+e.getMessage());
+				}
 			}
 			
 			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("CREATE"))){

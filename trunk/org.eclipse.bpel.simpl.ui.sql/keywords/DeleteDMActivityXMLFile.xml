@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
- <MainKeyWord value="DELETE" text="DELETE ">
+ <MainKeyWord value="DELETE" text="DELETE FROM">
  	<KeyWord value="FROM" text="FROM ">
  
  	</KeyWord>

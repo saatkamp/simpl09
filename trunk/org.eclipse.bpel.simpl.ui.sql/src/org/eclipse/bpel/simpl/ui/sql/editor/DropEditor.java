@@ -474,8 +474,13 @@ public class DropEditor extends AStatementEditor {
 							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 								//
 								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-									keyWordAsButton.setEnabled(true);
+									try {
+										buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+										keyWordAsButton.setEnabled(true);
+									} catch (Exception e1) {
+										// TODO Auto-generated catch block
+										System.out.print("ERROR:"+e1.getMessage());
+									}
 								}
 								
 							}
@@ -498,7 +503,12 @@ public class DropEditor extends AStatementEditor {
 	//
 	//					}
 	//					else 
-							statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+							try {
+								statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+							} catch (Exception e1) {
+								// TODO Auto-generated catch block
+								System.out.print("ERROR:"+e1.getMessage());
+							}
 	//					fatherComp.getShell().getData("StyledText")
 	//					s.setStatementText("sdfsdf");
 					}
@@ -519,9 +529,13 @@ public class DropEditor extends AStatementEditor {
 							buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 								//
-								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-									keyWordAsButton.setEnabled(true);
+								try {
+									if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
+										buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+										keyWordAsButton.setEnabled(true);
+									}
+								} catch (Exception e1) {
+									System.out.print("ERROR:"+e1.getMessage());
 								}
 								
 							}
@@ -544,7 +558,12 @@ public class DropEditor extends AStatementEditor {
 	//
 	//					}
 	//					else 
-							statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+							try {
+								statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+							} catch (Exception e1) {
+								// TODO Auto-generated catch block
+								System.out.print("ERROR:"+e1.getMessage());
+							}
 	//					fatherComp.getShell().getData("StyledText")
 	//					s.setStatementText("sdfsdf");
 							

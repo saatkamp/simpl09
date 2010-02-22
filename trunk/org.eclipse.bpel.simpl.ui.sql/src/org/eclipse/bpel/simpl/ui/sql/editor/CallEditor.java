@@ -77,31 +77,39 @@ public class CallEditor extends AStatementEditor {
 		//buttonsCompo.setVisible(false);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
-		statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
-		statementText.setLayoutData(gridData1);
-		statementText.addModifyListener(new ModifyListener(){
+		try {
+			statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
+			statementText.setLayoutData(gridData1);
+			statementText.addModifyListener(new ModifyListener(){
 
-			@Override
-			public void modifyText(ModifyEvent e) {
-				// TODO Auto-generated method stub
-				setStatement(statementText.getText());
-			}});
-		
-		setComposite(comp);
-		
-		if (getStatement()!=null){
-			statementText.setText(getStatement());
-			if(statementText.getText().length()>8){
-				if(statementText.getText().equals("statement")){
-					statementText.setText("CALL ");
-				}
-				
-			}
-			else{statementText.setText("CALL ");}
+				@Override
+				public void modifyText(ModifyEvent e) {
+					// TODO Auto-generated method stub
+					setStatement(statementText.getText());
+				}});
+			
+			setComposite(comp);
+		} catch (Exception e) {
+			System.out.print("ERROR: "+e.getMessage());
 		}
-		else {statementText.setText("CALL ");}
 		
-		CreateCallUIElements(compos);
+		try {
+			if (getStatement()!=null){
+				statementText.setText(getStatement());
+				if(statementText.getText().length()>8){
+					if(statementText.getText().equals("statement")){
+						statementText.setText("CALL ");
+					}
+					
+				}
+				else{statementText.setText("CALL ");}
+			}
+			else {statementText.setText("CALL ");}
+			
+			CreateCallUIElements(compos);
+		} catch (Exception e) {
+			System.out.print("ERROR: "+e.getMessage());
+		}
 	}
 
 	/**
@@ -137,47 +145,48 @@ public class CallEditor extends AStatementEditor {
 		proceText.setSize(100, 70);
 		proceText.setLayoutData(gridData1);
 		
-		if(statementText.getText().length()>5){
-			String cleandStatment=removeAllSpaces(statementText.getText());
-			String[] wordsOfStatment =cleandStatment.split("\r");
-			if(wordsOfStatment[0].contains("(")){
+		try {
+			if(statementText.getText().length()>5){
+				String cleandStatment=removeAllSpaces(statementText.getText());
+				String[] wordsOfStatment =cleandStatment.split("\r");
+				if(wordsOfStatment[0].contains("(")){
 //				String[] firstLineWords=wordsOfStatment[0].split(" ");
 //				String[] procedureName=firstLineWords[1].split("(");
 //				proceText.setText(firstLineWords[0]);
-			}
-			else{ 
-				proceText.setText("");
+				}
+				else{ 
+					proceText.setText("");
+					
+				}
 				
 			}
 			
-		}
-		
-		addToStatement =new Button(composite, SWT.BORDER);
-		addToStatement.setText("Add to Statment");
-		addToStatement.addSelectionListener(new SelectionListener(){
+			addToStatement =new Button(composite, SWT.BORDER);
+			addToStatement.setText("Add to Statment");
+			addToStatement.addSelectionListener(new SelectionListener(){
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			    statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");				
-			}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+				    statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");				
+				}
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");
-				
-			}
-	
-		});
-		
-		addToStatement.setLayoutData(gridData);
-		
-		proceLabel.setEnabled(false);
-		proceText.setEnabled(false);
-		addToStatement.setEnabled(false);
-		
-		
-		
-		
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");
+					
+				}
+
+			});
+			
+			addToStatement.setLayoutData(gridData);
+			
+			proceLabel.setEnabled(false);
+			proceText.setEnabled(false);
+			addToStatement.setEnabled(false);
+			
+			
+			
+			
 //		final Button callButton =new Button(composite, SWT.BORDER);
 //		callButton.setText("CALL");
 //		callButton.addSelectionListener(new SelectionListener() {
@@ -205,11 +214,15 @@ public class CallEditor extends AStatementEditor {
 //				callButton.setVisible(false);
 //			}
 //		});
-		
-		proceLabel.setEnabled(true);
-		proceText.setEnabled(true);
-		addToStatement.setEnabled(true);
-		buttonsCompo.setEnabled(true);
+			
+			proceLabel.setEnabled(true);
+			proceText.setEnabled(true);
+			addToStatement.setEnabled(true);
+			buttonsCompo.setEnabled(true);
+		} 
+		catch (Exception e) {
+			System.out.print("ERROR: "+e.getMessage());
+		}
 	}
 	
 	
@@ -241,13 +254,17 @@ public class CallEditor extends AStatementEditor {
 		String statmentAsOneString = "";
 		
 		if(cleanedString!=null){
-			if(cleanedString.contains(" ")){
-				wordsOfCentence=cleanedString.split(" ");
-			}
-			if(wordsOfCentence!=null){
-				for(int i=0;i<wordsOfCentence.length;i++){
-					statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+			try {
+				if(cleanedString.contains(" ")){
+					wordsOfCentence=cleanedString.split(" ");
 				}
+				if(wordsOfCentence!=null){
+					for(int i=0;i<wordsOfCentence.length;i++){
+						statmentAsOneString=statmentAsOneString+wordsOfCentence[i];
+					}
+				}
+			} catch (Exception e) {
+				System.out.print("ERROR: "+e.getMessage());
 			}
 			
 			
@@ -278,15 +295,23 @@ public class CallEditor extends AStatementEditor {
 		for(int i=0;i<listOfMainKeyWords.size();i++)
 		{
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
-				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
+				try {
+					creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
+				} catch (Exception e) {
+					System.out.print("ERROR: "+e.getMessage());
+				}
 			}
 			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("CALL"))){	
 				final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
-				keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
-				//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
-				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-				
-				keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+				try {
+					keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
+					//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+					
+					keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+				} catch (Exception e1) {
+					System.out.print("ERROR: "+e1.getMessage());
+				}
 //				if(!listOfMainKeyWords.get(i).isTheMajorKey()){
 //					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 //				}
@@ -316,7 +341,12 @@ public class CallEditor extends AStatementEditor {
 							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 								//
 								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+									try {
+										buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+									} catch (Exception e1) {
+										// TODO Auto-generated catch block
+										System.out.print("ERROR: "+e1.getMessage());
+									}
 								}
 								
 							}

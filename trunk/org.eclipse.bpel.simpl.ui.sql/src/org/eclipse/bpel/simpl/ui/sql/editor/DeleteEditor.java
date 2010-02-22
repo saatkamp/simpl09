@@ -407,7 +407,11 @@ public class DeleteEditor extends AStatementEditor {
 						 * in the following for statement all the buttons are only
 						 * then enabled if the father button (according to the Logik in the parsed xmlFile)
 						 */
-						keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+						try {
+							keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
 						for(int x=0;x<buttonList.size();x++){
 							//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
 							buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
@@ -422,9 +426,13 @@ public class DeleteEditor extends AStatementEditor {
 							
 						}
 						
-						statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
-						tablsList.setEnabled(true);
-						tableNameComposite.setEnabled(true);
+						try {
+							statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+							tablsList.setEnabled(true);
+							tableNameComposite.setEnabled(true);
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
 						
 //						if(tmpKeyWord.getTextOfKEyWord().equals("DELETE")){
 //							
