@@ -1820,8 +1820,9 @@ reference "fig:Komponenten"
 
  werden die für das SIMPL Rahmenwerk relevanten Komponenten und ihre Abhängigkei
 ten gezeigt, die in den folgenden Abschnitten näher beschrieben werden.
- Die Richtung der Pfeile beschreibt die Richtung, in der die Zugriffe stattfinde
-n.
+ Die Richtung der Pfeile zu den Komponenten beschreibt die Richtung, in
+ der die Zugriffe stattfinden, der Datenfluß dabei wird durch gestrichelten
+ Pfeile verdeutlicht.
  Der SIMPL Core greift für das Late Binding auf die Registry Apache jUDDI
  zu, um eine passende Datenquelle zu finden.
  Für Einstellungen zur Laufzeit, wie z.B.
@@ -1830,7 +1831,7 @@ n.
  Apache ODE verwendet den SIMPL Core für die Ausführung der DM-Aktivitäten
  und verwendet das RRS um Referenzen aufzulösen.
  Eclipse bietet die Möglichkeit, den SIMPL Core über eine GUI zu administrieren,
- Einstellungen werden im SIMPL Core gespeichert.
+ Einstellungen werden im SIMPL Core gespeichert und von dort geladen.
  Vor dem Deployment eines modellierten Prozesses, wird zunächst eine Modelltrans
 formation durchgeführt und der Prozess anschließend in Apache ODE deployt.
  Die Referenzen des RRS werden ebenfalls über eine GUI in Eclipse verwaltet
