@@ -3185,8 +3185,9 @@ Der Storage Service verwaltet in einer embedded Datenbank alle Daten die
  wie z.B.
  der Security Service zur Verwaltung von Authentifizierungs- und Autorisierungsi
 nformationen.
- Die embedded Datenbank garantiert, gegenüber einer externen Lösung, einen
- schnellen Zugriff auf relevante Daten.
+ Durch den Storage Service bleibt die Datenhaltung dienstunabhängig und
+ der SIMPL Core kann einfach um weitere Dienste erweitert werden, die ebenfalls
+ eine Datenhaltung benötigen, da diese nicht implementiert werden müssen.
 \end_layout
 
 \begin_layout Subsection
