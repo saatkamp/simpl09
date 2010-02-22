@@ -1,8 +1,9 @@
 package org.simpl.core.storage;
 
-import org.eclipse.emf.ecore.EObject;
 import org.simpl.core.datasource.exceptions.ConnectionException;
 import org.simpl.core.datasource.exceptions.DataException;
+
+import commonj.sdo.DataObject;
 
 public class StorageServiceImpl implements StorageService {
   /*
@@ -10,7 +11,7 @@ public class StorageServiceImpl implements StorageService {
    * @see org.simpl.core.administration.AdministrationService#loadACDefaultSettings()
    */
   @Override
-  public EObject loadACDefaultSettings() throws ConnectionException, DataException {
+  public DataObject loadACDefaultSettings() throws ConnectionException, DataException {
     // TODO Auto-generated method stub
     return null;
   }
@@ -20,7 +21,7 @@ public class StorageServiceImpl implements StorageService {
    * @see org.simpl.core.administration.AdministrationService#loadACSettings()
    */
   @Override
-  public EObject loadACSettings() throws ConnectionException, DataException {
+  public DataObject loadACSettings() throws ConnectionException, DataException {
     // TODO Auto-generated method stub
     return null;
   }
@@ -32,7 +33,7 @@ public class StorageServiceImpl implements StorageService {
    * .String)
    */
   @Override
-  public EObject loadServiceSettings(String serviceName) throws ConnectionException,
+  public DataObject loadServiceSettings(String serviceName) throws ConnectionException,
       DataException {
     // TODO Auto-generated method stub
     return null;
@@ -41,11 +42,10 @@ public class StorageServiceImpl implements StorageService {
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.administration.AdministrationService#saveACSettings(org.eclipse.emf
-   * .ecore.EObject)
+   * org.simpl.core.administration.AdministrationService#saveACSettings(commonj.sdo.DataObject)
    */
   @Override
-  public boolean saveACSettings(EObject settings) throws ConnectionException,
+  public boolean saveACSettings(DataObject settings) throws ConnectionException,
       DataException {
     // TODO Auto-generated method stub
     return false;
@@ -55,10 +55,10 @@ public class StorageServiceImpl implements StorageService {
    * (non-Javadoc)
    * @see
    * org.simpl.core.administration.AdministrationService#saveServiceSettings(java.lang
-   * .String, org.eclipse.emf.ecore.EObject)
+   * .String, commonj.sdo.DataObject)
    */
   @Override
-  public boolean saveServiceSettings(String serviceName, EObject settings)
+  public boolean saveServiceSettings(String serviceName, DataObject settings)
       throws ConnectionException, DataException {
     // TODO Auto-generated method stub
     return false;

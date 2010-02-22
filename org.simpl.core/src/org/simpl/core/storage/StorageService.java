@@ -1,8 +1,9 @@
 package org.simpl.core.storage;
 
-import org.eclipse.emf.ecore.EObject;
 import org.simpl.core.datasource.exceptions.ConnectionException;
 import org.simpl.core.datasource.exceptions.DataException;
+
+import commonj.sdo.DataObject;
 
 public interface StorageService {
   /**
@@ -16,7 +17,7 @@ public interface StorageService {
    * @throws DataException
    *           if storing fails.
    */
-  public boolean saveACSettings(EObject settings) throws ConnectionException,
+  public boolean saveACSettings(DataObject settings) throws ConnectionException,
       DataException;
 
   /**
@@ -29,7 +30,7 @@ public interface StorageService {
    * @throws DataException
    *           if loading fails.
    */
-  public EObject loadACSettings() throws ConnectionException, DataException;
+  public DataObject loadACSettings() throws ConnectionException, DataException;
 
   /**
    * Loads the default settings of the admin console.
@@ -40,7 +41,7 @@ public interface StorageService {
    * @throws DataException
    *           if loading fails.
    */
-  public EObject loadACDefaultSettings() throws ConnectionException, DataException;
+  public DataObject loadACDefaultSettings() throws ConnectionException, DataException;
 
   /**
    * Stores any type of settings from a service of the SIMPL Core.
@@ -55,7 +56,7 @@ public interface StorageService {
    * @throws DataException
    *           if storing fails.
    */
-  public boolean saveServiceSettings(String serviceName, EObject settings)
+  public boolean saveServiceSettings(String serviceName, DataObject settings)
       throws ConnectionException, DataException;
 
   /**
@@ -69,6 +70,6 @@ public interface StorageService {
    * @throws DataException
    *           if loading fails.
    */
-  public EObject loadServiceSettings(String serviceName) throws ConnectionException,
+  public DataObject loadServiceSettings(String serviceName) throws ConnectionException,
       DataException;
 }
