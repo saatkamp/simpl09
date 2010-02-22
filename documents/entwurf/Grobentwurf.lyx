@@ -1741,7 +1741,7 @@ Der Web Container Apache Tomcat ist die Laufzeitumgebung für Apache ODE,
  Laufzeitumgebungen installiert sein können.
  Apache ODE ist für die Ausführung der Prozesse nach der Prozessmodellierung
  zuständig und wird über einen vorhandenen Extension Point für die zusätzliche
- Ausführung von DM-Aktivitäten um die SIMPL DM Extension Activities erweitert.
+ Ausführung von DM-Aktivitäten um die BPEL-DM Extension Activities erweitert.
  Diese neuen Extension Activities können über den SIMPL Core mit den angefordert
 en Datenquellen kommunizieren und z.B.
  Daten abrufen.
@@ -3144,8 +3144,8 @@ reference "fig:Reference-Resolution-System"
 
 \end_inset
 
- zu sehen ist, besteht es aus zwei Web Services, die in den folgenden Abschnitte
-n beschrieben werden.
+ zu sehen ist, besteht es aus zwei Web Services und internen Datenquellen-Adapte
+rn (Datasource Adapter), die in den folgenden Abschnitten beschrieben werden.
 \end_layout
 
 \begin_layout Standard
@@ -3206,12 +3206,22 @@ RRS Retrieval Service
 \end_layout
 
 \begin_layout Subsubsection
+Datasource Adapter
+\end_layout
+
+\begin_layout Standard
+Das RRS bietet über Datasource Adapter eine erweiterbare Möglichkeit verschieden
+ste Datenquellen anzubinden und darüber auch Referenzen und referenzierte
+ Daten zu verwalten.
+\end_layout
+
+\begin_layout Subsubsection
 RRS Management Service
 \end_layout
 
 \begin_layout Standard
-Mit dem RRS Management Service können Referenzen über das Eclipse RRS Plug-In
- verwaltet werden.
+Mit dem RRS Management Service können Referenzen z.B.
+ über das Eclipse RRS Plug-In verwaltet werden.
  Die Verwaltung der Referenzen geschieht dabei vorerst über eine eingebettete
  Datenbank, es ist allerdings später auch eine externe Verwaltung durch
  die Verwendung der entsprechenden Datenquellen-Adapter denkbar.
