@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -178,7 +178,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -1174,7 +1174,7 @@ Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
  für den Zugriff auf Datenquellen.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -6098,41 +6098,27 @@ Ready
 
 \begin_layout Plain Layout
 3.
+ Die Verbindung zur Datenquelle auf der die DM-Operationen durchgeführt
+ werden wird aufgebaut.
+\end_layout
+
+\begin_layout Plain Layout
+4.
  Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung
  an die Datenquelle.
 \end_layout
 
 \begin_layout Plain Layout
-4.
+5.
  Die DM-Operation wurde in der Datenquelle erfolgreich ausgeführt, und die
  Ausführung der DM-Aktivität ist damit beendet.
- Die DM-Aktivität befindet sich im Zustand "Waiting".
-\end_layout
-
-\begin_layout Plain Layout
-5.
- Es wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-Complete_Activity Event
-\begin_inset Quotes erd
-\end_inset
-
- an die DM-Aktivität geschickt.
+ Die DM-Aktivität befindet sich im Zustand "Complete".
 \end_layout
 
 \begin_layout Plain Layout
 6.
- Die DM-Aktivität wird als 
-\begin_inset Quotes eld
-\end_inset
-
-Complete
-\begin_inset Quotes erd
-\end_inset
-
- gekennzeichnet.
+ Die Verbindung zur Datenquelle wird nach erfolgreicher Ausführung der DM-Operat
+ion geschlossen.
 \end_layout
 
 \begin_layout Plain Layout
@@ -6171,7 +6157,8 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst und die Aktivität wird beendet.
+ von der Vateraktivität an die entsprechende DM-Aktivität gesendet und die
+ Aktivität wird beendet.
 \end_layout
 
 \begin_layout Plain Layout
@@ -6195,49 +6182,6 @@ reference "sub:Data-Management-Aktivität-zurücksetzen"
 \end_layout
 
 \begin_layout Plain Layout
-1b.1.
- Es wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-Complete_Acitivity Event
-\begin_inset Quotes erd
-\end_inset
-
- an die DM-Aktivität gesendet.
- Dieses Event wird geschickt, wenn die Aktivität im Zustand 
-\begin_inset Quotes eld
-\end_inset
-
-Ready
-\begin_inset Quotes erd
-\end_inset
-
- blockiert wurde, allerdings kein 
-\begin_inset Quotes eld
-\end_inset
-
-Start_Activity
-\begin_inset Quotes erd
-\end_inset
-
- Event gesendet wurde.
-\end_layout
-
-\begin_layout Plain Layout
-1b.2.
- Es wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-Activity_Executed Event
-\begin_inset Quotes erd
-\end_inset
-
- ausgelöst.
-\end_layout
-
-\begin_layout Plain Layout
 2a.1.
  In der Vateraktivität tritt ein Fehler auf.
 \end_layout
@@ -6252,7 +6196,8 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst und die Aktivität wird beendet.
+ von der Vateraktivität an die entsprechende DM-Aktivität gesendet und die
+ Aktivität wird beendet.
 \end_layout
 
 \begin_layout Plain Layout
@@ -6276,27 +6221,41 @@ reference "sub:Data-Management-Aktivität-zurücksetzen"
 \end_layout
 
 \begin_layout Plain Layout
-3a.1.
+3.
+ Die Verbindung zur Datenquelle konnte nicht aufgebaut werden.
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+ConnectionLost Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst
+\end_layout
+
+\begin_layout Plain Layout
+4a.1.
  Während der Durchführung der DM-Operationen tritt ein Fehler in der Datenquelle
  auf (z.B.
  ein Syntaxfehler, oder die Datenbank ist nicht erreichbar).
 \end_layout
 
 \begin_layout Plain Layout
-3a.2.
+4a.2.
  Es wird ein 
 \begin_inset Quotes eld
 \end_inset
 
-Activity_Faulted Event
+DMFailure
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst.
+ Event ausgelöst.
 \end_layout
 
 \begin_layout Plain Layout
-3a.3.
+4a.3.
  Der Use Case 
 \begin_inset Quotes eld
 \end_inset
@@ -6316,12 +6275,35 @@ reference "sub:Data-Management-Aktivität-zurücksetzen"
 \end_layout
 
 \begin_layout Plain Layout
-4a.1.
+4b.1 Während der Durchführung der DM-Operation tritt ein Verbindungsabbruch
+ zur Datenquelle auf.
+ Es wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+ConnectionLost Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst.
+ Zusätzlich wird ein 
+\begin_inset Quotes eld
+\end_inset
+
+DMFailure Event
+\begin_inset Quotes erd
+\end_inset
+
+ ausgelöst.
+\end_layout
+
+\begin_layout Plain Layout
+5a.1.
  In der Vateraktivität tritt ein Fehler auf.
 \end_layout
 
 \begin_layout Plain Layout
-4a.2.
+5a.2.
  Es wird ein 
 \begin_inset Quotes eld
 \end_inset
@@ -6330,11 +6312,12 @@ Terminate_Activity Event
 \begin_inset Quotes erd
 \end_inset
 
- ausgelöst.
+ von der Vateraktivität an die entsprechende DM-Aktivität gesendet und die
+ Aktivität wird beendet.
 \end_layout
 
 \begin_layout Plain Layout
-4a.3.
+5a.3.
  Der Use Case 
 \begin_inset Quotes eld
 \end_inset
