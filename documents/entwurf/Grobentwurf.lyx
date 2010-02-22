@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -457,12 +457,12 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="15" columns="4">
+<lyxtabular version="3" rows="17" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="left" valignment="top" width="3cm">
-<column alignment="left" valignment="top" width="6cm">
+<column alignment="left" valignment="top" width="8cm">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -997,7 +997,91 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 1, 2, 3.3, 3.4, 4 überarbeitet (091207-Grobentwurf-comments_PR_MS.pdf)
+Kapitel 1, 2, 3.0, 3.3, 3.4, 4 überarbeitet (091207-Grobentwurf-comments_PR_MS.pdf)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.02.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.1 überarbeitet
+\end_layout
+
+\begin_layout Plain Layout
+(091207-Grobentwurf-comments_PR_MS.pdf)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.02.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rehnre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.2 überarbeitet
+\end_layout
+
+\begin_layout Plain Layout
+(091207-Grobentwurf-comments_PR_MS.pdf)
 \end_layout
 
 \end_inset
@@ -1008,7 +1092,7 @@ Kapitel 1, 2, 3.3, 3.4, 4 überarbeitet (091207-Grobentwurf-comments_PR_MS.pdf)
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.7
+1.9
 \end_layout
 
 \end_inset
@@ -1026,7 +1110,7 @@ Kapitel 1, 2, 3.3, 3.4, 4 überarbeitet (091207-Grobentwurf-comments_PR_MS.pdf)
 \begin_inset Text
 
 \begin_layout Plain Layout
-bruededl
+huettiwg
 \end_layout
 
 \end_inset
@@ -1035,7 +1119,11 @@ bruededl
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 3.1 überarbeitet
+Kapitel 3.2.2 und 3.2.3 überarbeitet
+\end_layout
+
+\begin_layout Plain Layout
+(091207-Grobentwurf-comments_PR_MS.pdf)
 \end_layout
 
 \end_inset
@@ -3114,17 +3202,6 @@ nformationen.
 
 \begin_layout Subsection
 Reference Resolution System (RRS)
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Da muss noch irgendeine Komponente rein, die die Adapter realisiert.
- (Kopie vom SIMPL Core Datasource Service)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3201,8 +3278,8 @@ RRS Retrieval Service
 
 \begin_layout Standard
 Über den RRS Service lassen sich Referenzen auflösen und die referenzierten
- Daten bei Bedarf in einen Prozess holen.
- Die Referenzen werden mit dem Datasource Service des SIMPL Cores aufgelöst.
+ Daten bei Bedarf von der Workflow Engine in einen Prozess holen.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -3211,8 +3288,8 @@ Datasource Adapter
 
 \begin_layout Standard
 Das RRS bietet über Datasource Adapter eine erweiterbare Möglichkeit verschieden
-ste Datenquellen anzubinden und darüber auch Referenzen und referenzierte
- Daten zu verwalten.
+ste Datenquellen anzubinden und darüber auch mit dem RRS Retrieval Service
+ und RRS Management Service Referenzen und referenzierte Daten zu verwalten.
 \end_layout
 
 \begin_layout Subsubsection
