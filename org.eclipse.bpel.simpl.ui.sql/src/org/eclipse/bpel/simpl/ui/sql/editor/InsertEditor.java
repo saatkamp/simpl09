@@ -147,11 +147,15 @@ public class InsertEditor extends AStatementEditor {
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
 				
-				if(textTableName.getText().length()>0){
-					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
-					//columnCompo.setEnabled(true);
-					//buttonsCompo.setEnabled(true);
-					//columsListCompo.setEnabled(true);
+				try {
+					if(textTableName.getText().length()>0){
+						statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+						//columnCompo.setEnabled(true);
+						//buttonsCompo.setEnabled(true);
+						//columsListCompo.setEnabled(true);
+					}
+				} catch (Exception e1) {
+					System.out.print("ERROR: "+e1.getMessage());
 				}
 			}
 			
@@ -184,24 +188,40 @@ public class InsertEditor extends AStatementEditor {
 		tablsList.setBounds(40, 20, 320, 100);
 		tablsList.setLayoutData(gridData);
 		tablsList.setEnabled(false);
-		loadTheTablesIntoList();
+		try {
+			loadTheTablesIntoList();
+		} catch (Exception e2) {
+			System.out.print("ERROR: "+e2.getMessage());
+		}
 		
-		tablsList.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
+		try {
+			tablsList.addSelectionListener(new SelectionListener() {
 				
-				//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
-				loadColumnsOfTable();
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					
+					//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+					try {
+						loadColumnsOfTable();
+					} catch (Exception e1) {
+						System.out.print("ERROR: "+e1.getMessage());
+					}
+				}
 				
-				//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
-				loadColumnsOfTable();
-			}
-		});
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+					//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+					try {
+						loadColumnsOfTable();
+					} catch (Exception e1) {
+						System.out.print("ERROR: "+e1.getMessage());
+					}
+				}
+			});
+		} catch (Exception e1) {
+			System.out.print("ERROR: "+e1.getMessage());
+		}
 		//**************************************************************
 		
 		//************************************************************
@@ -352,7 +372,12 @@ public class InsertEditor extends AStatementEditor {
 				statementText.setText(statementText.getText()+"	VALUES (");
 				statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
 				for(int i=1;i<valuesList.getItems().length;i++){
-					statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
+					try {
+						statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						System.out.print("ERROR:"+e1.getMessage());
+					}
 			
 				}
 				statementText.setText(statementText.getText()+")\r");
@@ -363,7 +388,6 @@ public class InsertEditor extends AStatementEditor {
 		Button deleteFromColumnList =new Button(actionsCompo, SWT.NONE);
 		deleteFromColumnList.setText("Remove from List");
 		deleteFromColumnList.addSelectionListener(new SelectionListener() {
-			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
@@ -379,13 +403,26 @@ public class InsertEditor extends AStatementEditor {
 		
 		//**************************************************************
 		//parsing the colums and values from the statement into the lists.
-		parseColumnsFromStatment();
+		try {
+			parseColumnsFromStatment();
+		} catch (Exception e1) {
+			System.out.print("ERROR:"+e1.getMessage());
+		}
 		if(arrayOfParsedColumns!=null){
-			loadTheColumnsIntoList(arrayOfParsedColumns);
+			try {
+				loadTheColumnsIntoList(arrayOfParsedColumns);
+			} catch (Exception e1) {
+				System.out.print("ERROR:"+e1.getMessage());
+			}
 		}else{columnList.removeAll();}
 		
 		if(arrayOfParsedValues!=null){
-			loadTheValuesIntoList(arrayOfParsedValues);
+			try {
+				loadTheValuesIntoList(arrayOfParsedValues);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				System.out.print("ERROR:"+e1.getMessage());
+			}
 		}else{valuesList.removeAll();}
 		
 		tableNameComposite.setEnabled(true);
@@ -406,8 +443,13 @@ public class InsertEditor extends AStatementEditor {
 		ArrayList<String> parsedValues=new ArrayList<String>();
 		
 		
-		String cleandStatment=removeAllSpaces(statementText.getText());
-		String[] wordsOfStatment =cleandStatment.split("\r");
+		String[] wordsOfStatment = null;
+		try {
+			String cleandStatment=removeAllSpaces(statementText.getText());
+			wordsOfStatment = cleandStatment.split("\r");
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
+		}
 		
 		if((wordsOfStatment!=null)&&(wordsOfStatment.length>0)){
 			//
@@ -417,19 +459,32 @@ public class InsertEditor extends AStatementEditor {
 							String[] wordsOfFirstLine =wordsOfStatment[0].split(" ");
 							String tmpString = "";
 							for(int i=5;i<wordsOfFirstLine.length;i++){
-								if(i==wordsOfFirstLine.length-1) tmpString=tmpString+wordsOfFirstLine[i].substring(0,wordsOfFirstLine[i].length()-1);
-								else tmpString=tmpString+wordsOfFirstLine[i];
+								try {
+									if(i==wordsOfFirstLine.length-1) tmpString=tmpString+wordsOfFirstLine[i].substring(0,wordsOfFirstLine[i].length()-1);
+									else tmpString=tmpString+wordsOfFirstLine[i];
+								} catch (Exception e) {
+									System.out.print("ERROR:"+e.getMessage());
+								}
 							}
 							String[] colums=tmpString.split(",");
 							for(int i=0;i<colums.length;i++){
-								parsedColumns.add(colums[i]);
+								try {
+									parsedColumns.add(colums[i]);
+								} catch (Exception e) {
+									System.out.print("ERROR:"+e.getMessage());
+								}
 							}
 							
 							
 						}
 						if(wordsOfStatment.length>2){
 							if((wordsOfStatment[1].contains(" ("))){
-								String[] wordsOfSecondLine =wordsOfStatment[1].split(" ");
+								String[] wordsOfSecondLine = null;
+								try {
+									wordsOfSecondLine = wordsOfStatment[1].split(" ");
+								} catch (Exception e) {
+									System.out.print("ERROR:"+e.getMessage());
+								}
 								String tmpString = "";
 								for(int i=2;i<wordsOfSecondLine.length;i++){
 									if(!wordsOfSecondLine[i].equals(" ")){
@@ -438,9 +493,18 @@ public class InsertEditor extends AStatementEditor {
 									}
 									
 								}
-								String[] values=tmpString.split(",");
+								String[] values = null;
+								try {
+									values = tmpString.split(",");
+								} catch (Exception e) {
+									System.out.print("ERROR:"+e.getMessage());
+								}
 								for(int i=0;i<values.length;i++){
-									parsedValues.add(values[i]);
+									try {
+										parsedValues.add(values[i]);
+									} catch (Exception e) {
+										System.out.print("ERROR:"+e.getMessage());
+									}
 								}
 
 							}	
@@ -450,10 +514,18 @@ public class InsertEditor extends AStatementEditor {
 			arrayOfParsedColumns=new String[parsedColumns.size()];
 			arrayOfParsedValues=new String[parsedValues.size()];
 			for(int i=0;i<arrayOfParsedColumns.length;i++){
-				arrayOfParsedColumns[i]=parsedColumns.get(i);
+				try {
+					arrayOfParsedColumns[i]=parsedColumns.get(i);
+				} catch (Exception e) {
+					System.out.print("ERROR:"+e.getMessage());
+				}
 			}
 			for(int i=0;i<arrayOfParsedValues.length;i++){
-				arrayOfParsedValues[i]=parsedValues.get(i);
+				try {
+					arrayOfParsedValues[i]=parsedValues.get(i);
+				} catch (Exception e) {
+					System.out.print("ERROR:"+e.getMessage());
+				}
 			}
 			
 			if(wordsOfStatment.length>1){
@@ -495,19 +567,32 @@ public class InsertEditor extends AStatementEditor {
 	private void loadColumnsOfTable() {
 		
 		
-		String tableName=tablsList.getItem(tablsList.getSelectionIndex());
-		columnList.removeAll();
+		String tableName = null;
+		try {
+			tableName = tablsList.getItem(tablsList.getSelectionIndex());
+			columnList.removeAll();
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
+		}
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			columnList.add(tableName+"_Column" + loopIndex);
+			try {
+				columnList.add(tableName+"_Column" + loopIndex);
+			} catch (Exception e) {
+				System.out.print("ERROR:"+e.getMessage());
+			}
 		}
 		//*************
 		
 		ArrayList<String> columnsNames=null;//TODO: Column namen laden
 		if(columnsNames!=null){
 			for(int i=0;i<columnsNames.size();i++){
-				columnList.add(columnsNames.get(i));
+				try {
+					columnList.add(columnsNames.get(i));
+				} catch (Exception e) {
+					System.out.print("ERROR:"+e.getMessage());
+				}
 			}
 		}
 	}
@@ -545,15 +630,19 @@ public class InsertEditor extends AStatementEditor {
 	 */
 	private String getParsedVlauesFromStatement() {
 		String valuesString="";
-		if((statementText.getText().length()>0)&&(statementText.getText()!=null)){
-			String cleandStatment=removeAllSpaces(statementText.getText());
-			String[] wordsOfStatment =cleandStatment.split("\r");
-			if(wordsOfStatment.length>1){
-				if(wordsOfStatment[1].length()>7){
-				 valuesString=wordsOfStatment[1].substring(7,wordsOfStatment[1].length()-1);
+		try {
+			if((statementText.getText().length()>0)&&(statementText.getText()!=null)){
+				String cleandStatment=removeAllSpaces(statementText.getText());
+				String[] wordsOfStatment =cleandStatment.split("\r");
+				if(wordsOfStatment.length>1){
+					if(wordsOfStatment[1].length()>7){
+					 valuesString=wordsOfStatment[1].substring(7,wordsOfStatment[1].length()-1);
+					}
+					else{ valuesString="";}
 				}
-				else{ valuesString="";}
 			}
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
 		}
 		
 		return valuesString;
@@ -630,7 +719,11 @@ public class InsertEditor extends AStatementEditor {
 		for(int i=0;i<listOfMainKeyWords.size();i++)
 		{
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
-				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
+				try {
+					creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
+				} catch (Exception e) {
+					System.out.print("ERROR:"+e.getMessage());
+				}
 			}
 			
 			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("INSERT"))){
@@ -638,9 +731,17 @@ public class InsertEditor extends AStatementEditor {
 				final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
 				keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
 				//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
-				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+				try {
+					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+				} catch (Exception e1) {
+					System.out.print("ERROR:"+e1.getMessage());
+				}
 
-				keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+				try {
+					keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
+				} catch (Exception e1) {
+					System.out.print("ERROR:"+e1.getMessage());
+				}
 	
 //				if(!listOfMainKeyWords.get(i).isTheMajorKey()){
 //					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));

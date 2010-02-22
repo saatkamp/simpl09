@@ -98,18 +98,22 @@ public class UpdateEditor extends AStatementEditor {
 		
 		setComposite(comp);
 		
-		if (getStatement()!=null){
-			statementText.setText(getStatement());
-			if(statementText.getText().length()>8){
-				if(statementText.getText().equals("statement")){
-					statementText.setText("UPDATE ");
+		try {
+			if (getStatement()!=null){
+				statementText.setText(getStatement());
+				if(statementText.getText().length()>8){
+					if(statementText.getText().equals("statement")){
+						statementText.setText("UPDATE ");
+					}
 				}
+				else{statementText.setText("UPDATE ");}
 			}
-			else{statementText.setText("UPDATE ");}
+			else {statementText.setText("UPDATE ");}
+			
+			createUPDATEEditorElements(compos);
+		} catch (Exception e1) {
+			System.out.print("ERROR:"+e1.getMessage());
 		}
-		else {statementText.setText("UPDATE ");}
-		
-		createUPDATEEditorElements(compos);
 		
 	}
 	
@@ -167,27 +171,9 @@ public class UpdateEditor extends AStatementEditor {
 		listOfColumns=new List(listsComposite, SWT.BORDER|SWT.V_SCROLL|SWT.MULTI);
 		loadTablesFromDS();
 		resultSelectedTableColumns.setText(parseStatment());
-		
-		Button insertTableAndColumns=new Button(listsComposite, SWT.NONE);
-		insertTableAndColumns.setText("Create SET statment part");
-		listOfTabels.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				loadColumnsOfTable();
-			}
-			
-			
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				loadColumnsOfTable();
-			}
-		});
-		
 		//***********************************************************
 		valuesCompo=new Composite(listsComposite, SWT.BORDER);
-		valuesCompo.setEnabled(false);
+		//valuesCompo.setEnabled(false);
 		GridLayout gridLayoutY=new GridLayout();
 		gridLayoutY.numColumns=1;
 		valuesCompo.setLayout(gridLayoutY);
@@ -222,6 +208,25 @@ public class UpdateEditor extends AStatementEditor {
 		valuesList.setLayoutData(gridDatax2);
 		valuesList.setSize(170, 150);
 		//***********************************************************
+		
+		Button insertTableAndColumns=new Button(listsComposite, SWT.NONE);
+		insertTableAndColumns.setText("Create SET statment part");
+		listOfTabels.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				loadColumnsOfTable();
+			}
+			
+			
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				loadColumnsOfTable();
+			}
+		});
+		
+		
 		
 		insertTableAndColumns.addSelectionListener(new SelectionListener() {
 			
