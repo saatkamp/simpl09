@@ -427,25 +427,24 @@ public class InsertEditor extends AStatementEditor {
 							
 							
 						}
-						if((wordsOfStatment[1].contains(" ("))){
-							String[] wordsOfSecondLine =wordsOfStatment[1].split(" ");
-							String tmpString = "";
-							for(int i=2;i<wordsOfSecondLine.length;i++){
-								if(!wordsOfSecondLine[i].equals(" ")){
-									if(i==wordsOfSecondLine.length-1) tmpString=tmpString+wordsOfSecondLine[i].substring(0,wordsOfSecondLine[i].length()-1);
-									else tmpString=tmpString+wordsOfSecondLine[i];
+						if(wordsOfStatment.length>2){
+							if((wordsOfStatment[1].contains(" ("))){
+								String[] wordsOfSecondLine =wordsOfStatment[1].split(" ");
+								String tmpString = "";
+								for(int i=2;i<wordsOfSecondLine.length;i++){
+									if(!wordsOfSecondLine[i].equals(" ")){
+										if(i==wordsOfSecondLine.length-1) tmpString=tmpString+wordsOfSecondLine[i].substring(0,wordsOfSecondLine[i].length()-1);
+										else tmpString=tmpString+wordsOfSecondLine[i];
+									}
+									
 								}
-								
-							}
-							String[] values=tmpString.split(",");
-							for(int i=0;i<values.length;i++){
-								parsedValues.add(values[i]);
-							}
-							
-							
-							
-							
-						}	
+								String[] values=tmpString.split(",");
+								for(int i=0;i<values.length;i++){
+									parsedValues.add(values[i]);
+								}
+
+							}	
+						}
 				}
 			//converting the List to arrays.
 			arrayOfParsedColumns=new String[parsedColumns.size()];
