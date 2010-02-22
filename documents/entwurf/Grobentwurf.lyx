@@ -2728,7 +2728,6 @@ reference "sub:Plug-In"
 
 ) für zusätzliche funktionale Erweiterungen geschaffen, wie z.B die Unterstützung
  verschiedener Dateitypen bei Dateisystemen.
- Referenzen werden vom RRS Service über den Datasource Service aufgelöst.
 \begin_inset Note Note
 status open
 
