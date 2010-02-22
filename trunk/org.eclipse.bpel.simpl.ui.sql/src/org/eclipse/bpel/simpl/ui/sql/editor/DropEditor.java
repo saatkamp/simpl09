@@ -529,10 +529,10 @@ public class DropEditor extends AStatementEditor {
 							
 						}
 						
-						buttonsCompo.setEnabled(false);
+						
 						tablsList.setEnabled(true);
 						//dropText.setEnabled(true);
-						dropList.setEnabled(true);
+						//dropList.setEnabled(true);
 						tableNameComposite.setEnabled(true);
 	//					if(tmpKeyWord.getMainKeyWord().equals("DROP")){
 	//						
@@ -544,9 +544,11 @@ public class DropEditor extends AStatementEditor {
 	//
 	//					}
 	//					else 
-							statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+							statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
 	//					fatherComp.getShell().getData("StyledText")
 	//					s.setStatementText("sdfsdf");
+							
+							buttonsCompo.setEnabled(false);
 					}
 				});
 				

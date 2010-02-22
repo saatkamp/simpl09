@@ -15,6 +15,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
@@ -35,6 +36,9 @@ public class UpdateEditor extends AStatementEditor {
 	private Text resultSelectedTableColumns=null;
 	Composite listsComposite=null;
 	
+	private Text valuesText=null;
+	private List valuesList=null;
+	Composite valuesCompo=null;
 	/**
 	 * UPDATE table_name
 		SET column1=value, column2=value2,...
@@ -121,14 +125,14 @@ public class UpdateEditor extends AStatementEditor {
 		gridData1.grabExcessVerticalSpace = true;
 		//gridData1.verticalAlignment = GridData.FILL;
 		
-		listsComposite=new Composite(composite, SWT.BORDER|SWT.H_SCROLL);
+		listsComposite=new Composite(composite, SWT.BORDER);
 		listsComposite.setSize(300, 250);
 		
 		//***************************************************
 		resultSETStatementCompo=new Composite(composite, SWT.NONE);
 		resultSETStatementCompo.setEnabled(false);
 		resultSelectedTableColumns=new Text(resultSETStatementCompo, SWT.NONE|SWT.H_SCROLL);
-		resultSelectedTableColumns.setSize(300, 100);
+		resultSelectedTableColumns.setSize(300, 50);
 		
 		GridLayout layout2=new GridLayout();
 //		layout2.numColumns=2;
@@ -150,14 +154,17 @@ public class UpdateEditor extends AStatementEditor {
 				
 			}
 		});
+		
+		
+		
 		//**********************************************
 		GridLayout layout=new GridLayout();
-		layout.numColumns=2;
+		layout.numColumns=3;
 		listsComposite.setLayout(layout);
 		listsComposite.setLayoutData(gridData1);
 		
-		listOfTabels=new List(listsComposite, SWT.NONE|SWT.V_SCROLL);
-		listOfColumns=new List(listsComposite, SWT.NONE|SWT.V_SCROLL|SWT.MULTI);
+		listOfTabels=new List(listsComposite, SWT.BORDER|SWT.V_SCROLL);
+		listOfColumns=new List(listsComposite, SWT.BORDER|SWT.V_SCROLL|SWT.MULTI);
 		loadTablesFromDS();
 		resultSelectedTableColumns.setText(parseStatment());
 		
@@ -178,6 +185,44 @@ public class UpdateEditor extends AStatementEditor {
 			}
 		});
 		
+		//***********************************************************
+		valuesCompo=new Composite(listsComposite, SWT.BORDER);
+		valuesCompo.setEnabled(false);
+		GridLayout gridLayoutY=new GridLayout();
+		gridLayoutY.numColumns=1;
+		valuesCompo.setLayout(gridLayoutY);
+		Label valuesLabel=new Label(valuesCompo, SWT.NONE);
+		valuesLabel.setText("The Values for Inserting: ");
+		valuesText=new Text(valuesCompo, SWT.BORDER);
+		valuesText.setSize(250, 50);
+		Button addValuesIntoList=new Button(valuesCompo, SWT.NONE);
+		addValuesIntoList.setText("Add Values to Statement");
+		//valuesText.setText(getParsedVlauesFromStatement()); 
+		addValuesIntoList.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				valuesList.add(valuesText.getText());
+				valuesText.setText("");
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				valuesList.add(valuesText.getText());
+				valuesText.setText("");
+			}
+		});
+		valuesList=new List(valuesCompo, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+		valuesList.setBounds(40, 20, 420, 200);
+		GridData gridDatax2 = new GridData();
+		gridDatax2.horizontalAlignment = GridData.FILL;
+		gridDatax2.grabExcessHorizontalSpace = true;
+		gridDatax2.grabExcessVerticalSpace = true;
+		gridDatax2.verticalAlignment = GridData.FILL;
+		valuesList.setLayoutData(gridDatax2);
+		valuesList.setSize(170, 150);
+		//***********************************************************
+		
 		insertTableAndColumns.addSelectionListener(new SelectionListener() {
 			
 			@Override
@@ -194,6 +239,12 @@ public class UpdateEditor extends AStatementEditor {
 						getSelectedColumns());
 			}
 		});
+		
+		//***********************************************************
+		
+		
+		
+		
 		
 		resultSETStatementCompo.setEnabled(true);
 		listsComposite.setEnabled(true);
@@ -344,14 +395,19 @@ public class UpdateEditor extends AStatementEditor {
 	 */
 	private String getSelectedColumns() {
 		String selectedColumnsStatement="";
+		String value=null;
 		if(listOfColumns.getSelection().length>0){
 			for(int i=0;i<listOfColumns.getSelection().length-1;i++)
 			{
+				if(valuesList.getItem(i)!=null) value=valuesList.getItem(i); 
+				else value="=X,";
 				selectedColumnsStatement=selectedColumnsStatement+
-					listOfColumns.getSelection()[i]+"=X,";
+					listOfColumns.getSelection()[i]+value;
 			}
+			if(valuesList.getItem(listOfColumns.getSelection().length-1)!=null) value=valuesList.getItem(listOfColumns.getSelection().length-1); 
+			else value=value;
 			selectedColumnsStatement=selectedColumnsStatement+
-			listOfColumns.getSelection()[listOfColumns.getSelection().length-1]+"=X";
+			listOfColumns.getSelection()[listOfColumns.getSelection().length-1]+value;
 		}
 			return selectedColumnsStatement;
 	}

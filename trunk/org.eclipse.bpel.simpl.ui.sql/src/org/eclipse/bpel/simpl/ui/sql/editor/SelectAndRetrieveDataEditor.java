@@ -139,7 +139,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		gridData1.grabExcessVerticalSpace = true;
 		//gridData1.verticalAlignment = GridData.FILL;
 		
-		listsComposite=new Composite(composite, SWT.BORDER|SWT.H_SCROLL);
+		listsComposite=new Composite(composite, SWT.BORDER);
 		listsComposite.setSize(300, 250);
 		
 		//***************************************************
@@ -175,8 +175,9 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		listsComposite.setLayoutData(gridData1);
 		
 		
-		listOfColumns=new List(listsComposite, SWT.NONE|SWT.V_SCROLL|SWT.MULTI);
+		
 		listOfTabels=new List(listsComposite, SWT.NONE|SWT.V_SCROLL);
+		listOfColumns=new List(listsComposite, SWT.NONE|SWT.V_SCROLL|SWT.MULTI);
 		loadTablesFromDS();
 		resultSelectedTableColumns.setText(parseStatment());
 		

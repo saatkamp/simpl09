@@ -96,13 +96,13 @@ public class DeleteEditor extends AStatementEditor {
 			statementText.setText(getStatement());
 			if(statementText.getText().length()>8){
 				if(statementText.getText().equals("statement")){
-					statementText.setText("DELETE ");
+					statementText.setText("DELETE FROM ");
 				}
 				
 			}
-			else{statementText.setText("DELETE ");}
+			else{statementText.setText("DELETE FROM ");}
 		}
-		else {statementText.setText("DELETE ");}
+		else {statementText.setText("DELETE FROM ");}
 		
 		
 		
