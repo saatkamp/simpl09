@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<simplCoreConfig name="SIMPLCoreConfig">
+	<datasourceServicePlugin name="org.simpl.core.datasource.plugins.rdb.DB2RDBDatasourceService" />
+	<datasourceServicePlugin name="org.simpl.core.datasource.plugins.rdb.DerbyRDBDatasourceService" />
+	<datasourceServicePlugin name="org.simpl.core.datasource.plugins.rdb.EmbDerbyRDBDatasourceService" />
+	<datasourceServicePlugin name="org.simpl.core.datasource.plugins.rdb.MySQLRDBDatasourceService" />
+</simplCoreConfig>

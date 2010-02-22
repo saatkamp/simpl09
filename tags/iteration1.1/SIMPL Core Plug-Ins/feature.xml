@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.simpl.core.feature"
+      label="SIMPL Core Plug-Ins"
+      version="0.1.1"
+      provider-name="SIMPL">
+
+   <description>
+      This feature integrates the SIMPL Core Administration into Eclipse.
+   </description>
+
+   <url>
+      <update label="SIMPL Site" url="http://simpl09.googlecode.com/svn/update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.simpl.communication" version="0.1.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.simpl.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.simpl.core.auditing"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.simpl.core.globalSettings"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.bpel.simpl.feature"
+      label="SIMPL BPEL-DM Plug-In"
+      version="0.1.3"
+      provider-name="SIMPL">
+
+   <description>
+      This feature integrates the SIMPL BPEL Data-Management-Activities
+into the Eclipse BPEL Designer Plug-In.
+   </description>
+
+   <copyright>
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license>
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <update label="SIMPL Site" url="http://simpl09.googlecode.com/svn/update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.bpel.model"/>
+      <import plugin="org.eclipse.wst.wsdl"/>
+      <import plugin="org.eclipse.xsd"/>
+      <import plugin="javax.wsdl" version="1.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.bpel.common.ui" version="0.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.bpel.ui" version="0.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gef" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.bpel.simpl.model" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.simpl.communication" version="0.1.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.bpel.simpl.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.bpel.simpl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.bpel.simpl.ui.sql"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

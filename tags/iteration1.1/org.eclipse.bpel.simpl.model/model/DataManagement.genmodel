@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.bpel.simpl.model/src"
+    editorDirectory="/org.eclipse.bpel.simpl.model.editor/src" modelPluginID="org.eclipse.bpel.simpl.model"
+    modelName="DataManagement" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" editPluginID="org.eclipse.bpel.simpl.model.edit" editorPluginID="org.eclipse.bpel.simpl.model.editor"
+    usedGenPackages="../../org.eclipse.bpel.model/src/model/bpel.genmodel#//model ../../org.eclipse.bpel.model/src/model/bpel.genmodel#//partnerlinktype ../../org.eclipse.bpel.model/src/model/bpel.genmodel#//messageproperties platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.genmodel#//wsdl platform:/plugin/org.eclipse.xsd/model/XSD.genmodel#//xsd">
+  <foreignModel>DataManagement.ecore</foreignModel>
+  <genPackages prefix="Model" basePackage="org.eclipse.bpel.simpl" disposableProviderFactory="true"
+      ecorePackage="DataManagement.ecore#/">
+    <genClasses image="false" ecoreClass="DataManagement.ecore#//DataManagementActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsStatement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsKind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="DataManagement.ecore#//QueryActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//InsertActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//UpdateActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//DeleteActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//CreateActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//DropActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//CallActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//RetrieveDataActivity"/>
+  </genPackages>
+</genmodel:GenModel>

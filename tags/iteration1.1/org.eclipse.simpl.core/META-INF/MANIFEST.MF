@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SIMPL Core Plug-In
+Bundle-SymbolicName: org.eclipse.simpl.core;singleton:=true
+Bundle-Version: 0.1.1
+Bundle-Activator: org.eclipse.simpl.core.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.simpl.communication;bundle-version="0.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.simpl.core,
+ org.eclipse.simpl.core.extensions;uses:="org.eclipse.swt.widgets",
+ org.eclipse.simpl.core.handler,
+ org.eclipse.simpl.core.ui
+Bundle-Vendor: SIMPL
