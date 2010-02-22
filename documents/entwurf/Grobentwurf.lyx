@@ -1828,7 +1828,7 @@ n.
  das An- und Ausschalten des Auditing, muss vom SIMPL Core direkt auf Apache
  ODE zugegriffen werden.
  Apache ODE verwendet den SIMPL Core für die Ausführung der DM-Aktivitäten
- und verwendet den RRS um Referenzen aufzulösen.
+ und verwendet das RRS um Referenzen aufzulösen.
  Eclipse bietet die Möglichkeit, den SIMPL Core über eine GUI zu administrieren,
  Einstellungen werden im SIMPL Core gespeichert.
  Vor dem Deployment eines modellierten Prozesses, wird zunächst eine Modelltrans
@@ -2202,7 +2202,7 @@ RRS Plug-In
 
 \begin_layout Standard
 Das RRS Plug-In wird über den View-Extension-Point in Eclipse angebunden.
- Es wird eine GUI-Schnittstelle für den RRS Administration Service angeboten.
+ Es wird eine GUI-Schnittstelle für den RRS Management Service angeboten.
  So können über Eclipse mit dem RRS Plug-In alle Referenzen des angebundenen
  RRS verwaltet werden.
 \end_layout
@@ -3015,12 +3015,12 @@ RRS Retrieval Service
 \end_layout
 
 \begin_layout Subsubsection
-RRS Administration Service
+RRS Management Service
 \end_layout
 
 \begin_layout Standard
-Mit dem RRS Administration Service können Referenzen über das Eclipse RRS
- Plug-In verwaltet werden.
+Mit dem RRS Management Service können Referenzen über das Eclipse RRS Plug-In
+ verwaltet werden.
  Die Verwaltung der Referenzen geschieht dabei vorerst über eine eingebettete
  Datenbank, es ist allerdings später auch eine externe Verwaltung durch
  die Verwendung der entsprechenden Datenquellen-Adapter denkbar.
@@ -3213,7 +3213,7 @@ Die RRSRetrievalService-Schnittstelle bietet eine Funktion, mit der Referenzen
 \end_layout
 
 \begin_layout Subsubsection
-RRSAdministrationService
+RRSManagementService
 \end_layout
 
 \begin_layout Standard
