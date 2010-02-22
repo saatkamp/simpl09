@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="14" columns="4">
+<lyxtabular version="3" rows="15" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -966,7 +966,7 @@ Kapitel 4 überarbeitet
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -975,7 +975,7 @@ Kapitel 4 überarbeitet
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -984,7 +984,7 @@ Kapitel 4 überarbeitet
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -993,11 +993,49 @@ schneimi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Kapitel 1, 2, 3.3, 3.4, 4 überarbeitet (091207-Grobentwurf-comments_PR_MS.pdf)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.02.2009
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 3.1 überarbeitet
 \end_layout
 
 \end_inset
@@ -1914,7 +1952,7 @@ reference "sub:Erweiterbarkeit"
 \end_layout
 
 \begin_layout Standard
-Die Enwicklungsumgebung Eclipse in Abbildung 
+Die relvanten Komponenten der Enwicklungsumgebung Eclipse in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Eclipse-mit-SIMPL"
@@ -1975,7 +2013,7 @@ Eclipse Extension Points
 \end_layout
 
 \begin_layout Standard
-Eclipse bietet über Extension Points die Möglichkeit die IDE zu erweitern.
+Eclipse bietet über Extension Points die Möglichkeit, die IDE zu erweitern.
  Für das SIMPL Projekt nutzen wir den 
 \begin_inset Quotes eld
 \end_inset
@@ -2001,7 +2039,7 @@ Menu
 
 \begin_layout Standard
 Das Menu stellt die Auswahlmöglicheiten als Drop-Down Liste dar, die auf
- die verschiedene Funktionsbereiche des Plug-Ins referenziert.
+ die verschiedenen Funktionsbereiche des Plug-Ins verweist.
  Der Extension Point 
 \begin_inset Quotes eld
 \end_inset
@@ -2030,9 +2068,17 @@ ErrorLog
 \begin_inset Quotes erd
 \end_inset
 
-, der alle Fehler und Probleme von Eclipse Projekten anzeigt oder eine Propertie
-sView in der z.B.
- BPEL-Aktivitäten näher spezifiziert werden.
+, der alle Fehler und Probleme von Eclipse Projekten anzeigt, oder eine
+ 
+\begin_inset Quotes eld
+\end_inset
+
+PropertiesView
+\begin_inset Quotes erd
+\end_inset
+
+ in der z.B.
+ BPEL-Aktivitäten näher spezifiziert werden können.
  Im Rahmen von SIMPL wird z.B.
  eine View verwendet, um die Referenzen für das RRS Plug-In anzuzeigen bzw.
  zu verwalten.
@@ -2041,23 +2087,13 @@ sView in der z.B.
 
 \begin_layout Subsubsection
 Eclipse BPEL Designer Plug-In Extension Points
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Erwähnen, dass es auch noch mehr Extension Points gibt
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Es wird auf die unten genannten drei Extension Points eingegangen, weil
  nur diese vom BPEL Designer benutzt werden.
  Es gibt auch noch weitere Extension Points im BPEL Designer Plug-In, diese
- sind jedoch nicht von Relevanz für SIMPL.
+ sind jedoch nicht für SIMPL relevant.
 \end_layout
 
 \begin_layout Paragraph
@@ -2068,8 +2104,8 @@ UIObjectFactory
 Dieser Extension Point ermöglicht das Anbinden neuer UIObjectFactories,
  mit deren Hilfe Instanzen von BPEL Extension Activities erzeugt werden
  können.
- Die so erzeugten Instanzen stehen dann in der BPEL Designer Palette zur
- Verfügung und können zur Modellierung von BPEL-Prozessen verwendet werden.
+ Bei der Auswahl einer Aktivität in der BPEL Designer Palette wird ein neues
+ Objekt durch die UIObjectFactory erzeugt.
 \end_layout
 
 \begin_layout Paragraph
@@ -2080,9 +2116,8 @@ PaletteAdditions
 Die Palette ist ein Auswahlfenster aller zur Verfügung stehenden BPEL-Konstrukte
 , dies sind z.B.
  Standard BPEL-Aktivitäten oder eigene Extension Activities.
- Durch diesen Extension Point können eigene Extension Activities in die
- Palette eingefügt und so zur Modellierung von Prozessen genutzt werden.
- 
+ Durch diesen Extension Point können neue Items und Kategorien der Benutzerschni
+ttstelle hinzugefügt werden.
 \end_layout
 
 \begin_layout Paragraph
@@ -2090,7 +2125,7 @@ PropertySections
 \end_layout
 
 \begin_layout Standard
-Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern, über
+Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern über
  die, in das Prozessmodell eingefügte, BPEL-Aktivitäten ausformuliert und
  mit Werten gefüllt werden können.
  
@@ -2098,16 +2133,6 @@ Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern, über
 
 \begin_layout Subsubsection
 BPEL-DM Plug-In
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Eigene Extension Points?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2118,15 +2143,16 @@ Das BPEL-DM Plug-In beinhaltet die Datenmanagement-Aktiviäten, die die Standard
 \end_layout
 
 \begin_layout Itemize
-UIObjectFactory
+UIObjectFactory ( Erzeugt neue Objekte für die Modellierung)
 \end_layout
 
 \begin_layout Itemize
-PaletteAdditions
+PaletteAdditions ( Ermöglicht grafische Auswahlmöglichkeit in der Palette.
 \end_layout
 
 \begin_layout Itemize
-PropertySections
+PropertySections ( Ermöglicht Erzeugung und Konfiguration von Werten der
+ Aktivitäten )
 \end_layout
 
 \begin_layout Standard
@@ -2137,16 +2163,6 @@ ment-Aktivitäten bereitgestellt, die Zugriff auf einen Editor zur graphischen
 
 \begin_layout Subsubsection
 SIMPL Core Plug-In
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Eigene Extension Points?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2185,6 +2201,36 @@ About
 \end_inset
 
 , die auf entsprechende Fenster verlinken.
+ Die 
+\begin_inset Quotes eld
+\end_inset
+
+Admin-Console
+\begin_inset Quotes erd
+\end_inset
+
+ bietet den Zugriff auf die globale Eigenschaften ,Referenzen, Datenquellen
+ und Strategien.
+ Unter 
+\begin_inset Quotes eld
+\end_inset
+
+Settings
+\begin_inset Quotes erd
+\end_inset
+
+ werden allgemeine Einstellungen für die Eclipse Plug-Ins von SIMPL eingestellt
+ die nicht systemkritisch sind, wie zum Beispiel die Adresse des SIMPL Core
+ oder Schriftgrößen .Die SIMPL-
+\begin_inset Quotes erd
+\end_inset
+
+Help
+\begin_inset Quotes erd
+\end_inset
+
+stellt weiterführende Informationen zur Bedienbarkeit und Funktionalität
+ dar.
  Das SIMPL Core Plug-In stellt den Extension Point 
 \begin_inset Quotes eld
 \end_inset
@@ -2195,6 +2241,9 @@ Admin Console Item
 
  (ACItem) bereit, mit Hilfe dessen die Admin-Konsole um weitere Elemente
  erweitert werden kann.
+ Jeder Eintrag in der Konsole wird als Plug-In realisiert welches über den
+ Extension-Point ACItem angebunden werden.
+ Alle Einträge des Menüs werden durch Plug-Ins integriert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2202,10 +2251,21 @@ RRS Plug-In
 \end_layout
 
 \begin_layout Standard
-Das RRS Plug-In wird über den View-Extension-Point in Eclipse angebunden.
+Das RRS Plug-In wird über den 
+\begin_inset Quotes eld
+\end_inset
+
+View
+\begin_inset Quotes erd
+\end_inset
+
+-Extension-Point in Eclipse angebunden.
  Es wird eine GUI-Schnittstelle für den RRS Management Service angeboten.
+ Nähere Informationen dazu finden sich im Kapitel 3.4.
  So können über Eclipse mit dem RRS Plug-In alle Referenzen des angebundenen
  RRS verwaltet werden.
+ Hier kann auch die Adresse eingestellt werden wenn mehrere RRS vorhanden
+ sind und eines ausgewählt werden sollte.
 \end_layout
 
 \begin_layout Subsection
