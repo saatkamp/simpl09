@@ -20,7 +20,7 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Fragen an die Kunden zur 2.Iteration}
-\def\docvers{0.2}
+\def\docvers{0.3}
 \def\docautor{hahnml}
 \def\docdate{25. Februar 2010}
 
@@ -590,7 +590,7 @@ Einfügen weiterer Fragen.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.3
 \end_layout
 
 \end_inset
@@ -599,7 +599,7 @@ Einfügen weiterer Fragen.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+25.02.2010
 \end_layout
 
 \end_inset
@@ -608,7 +608,7 @@ Einfügen weiterer Fragen.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+hahnml
 \end_layout
 
 \end_inset
@@ -617,7 +617,7 @@ Einfügen weiterer Fragen.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Antworten der Kunden eingefügt.
 \end_layout
 
 \end_inset
@@ -754,8 +754,23 @@ In diesem Kapitel befinden sich alle allgemeinen Fragen, die keinem konkreten
 \end_layout
 
 \begin_layout Itemize
-Welchen Namespace sollte für das SIMPL Rahmenwerk verwendet werden (vor
- allem für die DM-Aktivitäten)?
+Welche Namespace sollte für das SIMPL Rahmenwerk verwendet werden (vor allem
+ für die DM-Aktivitäten)?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A: Irgendwas mit SIMPL (simpl.uni-stuttgart.de)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CSV-Trennzeichen muss im Modellierungswerkzeug einstellbar sein
+\end_layout
+
+\begin_layout Itemize
+Mit Michael Reiter reden, welche Use-Cases als Test (Abschlusspräsentation)
+ durchgeführt werden müssen
 \end_layout
 
 \begin_layout Section
@@ -775,6 +790,21 @@ Was sollte alles im Deployment-Deskriptor einstellbar sein (ausser dem Auditing)
 ?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Datenquellenreferenzen sollten irgendwann noch einstellbar sein
+\end_layout
+
+\begin_layout Itemize
+A: Username & Password sollte auch noch irgendwann einstellbar sein
+\end_layout
+
+\begin_layout Itemize
+A: Liste aller Prozess-Aktivitäten denen dann eine Strategie zugeordnet
+ werden kann und auch Policies
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 SIMPL Validator:
 \end_layout
@@ -784,20 +814,38 @@ SIMPL Validator:
 Welche Tiefe soll der SIMPL Validator haben ? 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Wird eine Semantikprüfung gefordert ? 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Nein, Syntax reicht.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Reicht eine Verfizierung gegen das SIMPL XSD-Schema ?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: JA
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Subsection
 BPEL-DM Plug-In
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -834,6 +882,12 @@ Kann beim Einfügen einer RetrieveData-Aktivität gleich eine entsprechende
  werden oder soll der Prozess-Modellierer dies selber durchführen?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: So wie bei BPEL sonst...
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Wie soll mit durch Create-Aktivitäten erzeugten Containern während der Modellier
 ungszeit umgegangen werden, da diese ja erst zur Laufzeit erzeugt werden
@@ -841,24 +895,9 @@ ungszeit umgegangen werden, da diese ja erst zur Laufzeit erzeugt werden
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
 \begin_layout Itemize
-mögliche Lösung: Soll es am Modellierer liegen diese in nachfolgenden Aktivitäte
-n per Hand anzugeben?
-\end_layout
-
-\begin_layout Itemize
-alternative Lösung: Oder sollen wir dafür sorgen, dass die entsprechenden
- Container zur Auswahl stehen? (evtl.
- sehr kompliziert)
-\end_layout
-
-\end_inset
-
-
+A: Create erstellt eine BPEL-Variable (IPVS-Referenz auf Container), die
+ dann in der nächsten Aktivität verwendet werden kann
 \end_layout
 
 \end_deeper
@@ -870,6 +909,12 @@ RRS Plug-In
 Wie sollten die EPR modelliert werden (GUI)?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Erstmal so einfach wie möglich realisieren.
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 DS-Registry Plug-In
 \end_layout
@@ -880,10 +925,12 @@ Sollen die Policies extern modellierbar sein (beispielsweise durch einen
  in der Aktivität über eine entsprechende GUI modelliert werden?
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-asd
+A: Extern modellieren und als Datei anbinden
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 SIMPL Settings Plug-In
 \end_layout
@@ -909,6 +956,12 @@ Welche Aktualisierungskonstanten sollten auf jeden Fall umgesetzt werden,
  oder andere)?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: external und periodic erstmal nicht so wichtig
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Ein zu transformierender BPEL-Prozess wird per WebService an den Transformator
  übermittelt und eine transformierte Kopie des BPEL-Prozesses zurück an
@@ -917,11 +970,25 @@ Ein zu transformierender BPEL-Prozess wird per WebService an den Transformator
  Ist dies so in Ordnung?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Transformieren und anschließend sofort deployen besser.
+ Anderer Fall eher optional
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Ist ein SIMPL Core Adapter für das RRS denkbar oder soll jede Art von Datenquell
 e immer ihren eigenen Adapter haben?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Mehrere Adapter müssen anschließbar sein, ansonsten kann mit dem SIMPL
+ Adapter gemacht werden.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Datenquellen-Registry
 \end_layout
@@ -934,16 +1001,40 @@ In diesem Kapitel befinden sich alle Fragen zur Datenquellen-Registry.
 Wie sollen die Datenquellen mit einer UDDI-Registry verwaltet werden?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Dummy Web-Service der die Datenquelleninformation zurückliefert.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Welche nichtfunktionalen Anforderungen sind wichtig für die Datenquellen
  (ws-policy) und sollen unterstützt werden?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Typ der Datenquelle (RDB, ...), Subtyp der Datenquelle (MySQL, DB2)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Muss ein Web-Interface für die Verwaltung der Datenquellen-Registry erstellt
  werden oder würde die Realisierung als Eclipse Plug-In vorerst ausreichen?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Eclipse Plug-In zum Anzeigen der Datenquellen und Web-Interface für die
+ Verwaltung
+\end_layout
+
+\begin_layout Itemize
+A: Es müssen auch Authetifizierungsinformationen in der Registry hinterlegt
+ werden können
+\end_layout
+
+\end_deeper
 \begin_layout Section
 SIMPL Core
 \end_layout
@@ -968,11 +1059,23 @@ Benutzername & Passwort
  vorerst zur Authentifizierung aus?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: JA
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Sollten die Authentifizierungsinformationen sicher gespeichert und übertragen
  werden?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: Sicherheit ist keine wichtige Anforderung
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Apache ODE
 \end_layout
@@ -1025,5 +1128,11 @@ Es kam die Idee auf, das komplette Auditing in einem, dem Prozessmodell
  Datenbanken (JPA und Hibernate) organisiert sein?
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+A: So wie es am einfachsten ist realisieren.
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
