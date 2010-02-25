@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.simpl.communication.client.AdministrationService;
 import org.eclipse.simpl.communication.client.AdministrationService_Service;
+import org.eclipse.simpl.communication.client.ConnectionException_Exception;
 import org.eclipse.simpl.communication.client.DatasourceService;
 import org.eclipse.simpl.communication.client.DatasourceService_Service;
 import org.eclipse.simpl.communication.client.Parameter;
@@ -46,6 +47,13 @@ public class SIMPLCore {
     return settings;
   }
 
+  public List<String> getMetaData(String dsAddress, String dsType, String dsSubtype) throws ConnectionException_Exception {
+    List<String> dsTypes = (List<String>) Parameter.deserialize(datasourceService
+        .getMetaData(dsAddress, dsType, dsSubtype));
+
+    return dsTypes;
+  }
+  
   public List<String> getDatasourceTypes() {
     List<String> dsTypes = (List<String>) Parameter.deserialize(datasourceService
         .getDatasourceTypes());
