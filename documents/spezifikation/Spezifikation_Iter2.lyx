@@ -178,7 +178,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -1174,28 +1174,6 @@ Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
  für den Zugriff auf Datenquellen.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Subsubsection
-Ausblick 
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Ausblick"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-In diesem Abschnitt geht es darum, welche Funktionalität in weiteren Iterationen
- hinzugefügt wird.
- Die folgende Liste enthält die Punkte, die auf jeden Fall in einer der
- folgenden Iterationen umgesetzt werden:
-\end_layout
-
 \begin_layout Itemize
 Anbindung von Dateisystemen am Beispiel des CSV-Dateiformats.
 \end_layout
@@ -1235,7 +1213,18 @@ Unterstützung einer automatischen Auswahl von Datenquellen zur Laufzeit.
  erfüllt, ausgewählt wird.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Subsubsection
+Ausblick 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ausblick"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Im Folgenden wird beschrieben, was von uns (unter Absprache mit dem Kunden)
  als optionale Anforderungen definiert wurden.
  Diese werden umgesetzt, wenn der zeitliche Rahmen des Projekts es zulässt:
@@ -1249,11 +1238,6 @@ Einstellung der Granularität des Auditings.
 Implementierung eines Monitorings, welches das bestehende Auditing nutzt,
  um dessen Daten in definierten Abständen auszulesen und dem Benutzer zur
  Beobachtung und Überwachung von BPEL-Prozessen anzuzeigen.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -2485,6 +2469,24 @@ Eigenschaftsfenster einer DM-Aktivität am Beispiel einer Query Activity
 
 \begin_layout Section
 Benutzeroberfläche des RRS Eclipse Plug-Ins
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Benutzeroberfläche des Datenquellen-Registry Plug-Ins
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -9302,6 +9304,16 @@ name "sub:Reference-Resolution-System"
 \end_inset
 
 Reference Resolution System
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Text an geänderte Grafik anpassen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
