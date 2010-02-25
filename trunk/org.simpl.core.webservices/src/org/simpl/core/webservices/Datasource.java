@@ -1,5 +1,8 @@
 package org.simpl.core.webservices;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -11,6 +14,7 @@ import org.simpl.core.datasource.exceptions.ConnectionException;
 import org.simpl.core.helpers.Parameter;
 
 import commonj.sdo.DataObject;
+import commonj.sdo.helper.XMLHelper;
 
 @WebService(name = "DatasourceService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
@@ -91,10 +95,19 @@ public class Datasource {
       throws ConnectionException {
     DataObject dataObject = null;
     String metaData = null;
-
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        
     dataObject = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)
         .getMetaData(dsAddress);
-    metaData = Parameter.serialize(dataObject);
+    
+    try {
+      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", outputStream);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    metaData = new String(outputStream.toByteArray());
 
     return metaData;
   }
