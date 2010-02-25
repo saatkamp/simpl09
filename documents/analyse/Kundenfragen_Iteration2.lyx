@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Fragen an die Kunden zur 2.Iteration}
-\def\docvers{0.1}
+\def\docvers{0.2}
 \def\docautor{hahnml}
-\def\docdate{12. Februar 2010}
+\def\docdate{25. Februar 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -552,7 +552,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.2
 \end_layout
 
 \end_inset
@@ -561,7 +561,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+25.02.2010
 \end_layout
 
 \end_inset
@@ -570,7 +570,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+hahnml
 \end_layout
 
 \end_inset
@@ -579,7 +579,7 @@ Erstellung des Dokuments.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Einfügen weiterer Fragen.
 \end_layout
 
 \end_inset
@@ -776,12 +776,33 @@ Was sollte alles im Deployment-Deskriptor einstellbar sein (ausser dem Auditing)
 \end_layout
 
 \begin_layout Itemize
-Welche Tiefe soll der SIMPL Validator haben ? Wird eine Semantikprüfung
- gefordert ? Reicht eine Verfizierung gegen das XSD-SIMPL Schema ?
+SIMPL Validator:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Welche Tiefe soll der SIMPL Validator haben ? 
+\end_layout
+
+\begin_layout Itemize
+Wird eine Semantikprüfung gefordert ? 
+\end_layout
+
+\begin_layout Itemize
+Reicht eine Verfizierung gegen das SIMPL XSD-Schema ?
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 BPEL-DM Plug-In
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Eher den BPEL-Spezialisten fragen:
 \end_layout
 
 \begin_layout Itemize
@@ -798,18 +819,55 @@ Reicht es bei der Modellierung einer solchen Variable den SDO-Namespace
 
 \end_deeper
 \begin_layout Itemize
+Werden alle Daten, die in den Prozess geladen werden, immer in BPEL-Variablen
+ gehalten oder gibt es noch andere Möglichkeiten?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 Kann beim Einfügen einer RetrieveData-Aktivität gleich eine entsprechende
  SDO-Variable im Prozess hinzugefügt und diese an die Aktivität gebunden
  werden oder soll der Prozess-Modellierer dies selber durchführen?
 \end_layout
 
 \begin_layout Itemize
-Werden alle Daten, die in den Prozess geladen werden, immer in BPEL-Variablen
- gehalten oder gibt es noch andere Möglichkeiten?
+Wie soll mit durch Create-Aktivitäten erzeugten Containern während der Modellier
+ungszeit umgegangen werden, da diese ja erst zur Laufzeit erzeugt werden
+ und so nicht zur Modellierungszeit zur Auswahl stehen?
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+mögliche Lösung: Soll es am Modellierer liegen diese in nachfolgenden Aktivitäte
+n per Hand anzugeben?
+\end_layout
+
+\begin_layout Itemize
+alternative Lösung: Oder sollen wir dafür sorgen, dass die entsprechenden
+ Container zur Auswahl stehen? (evtl.
+ sehr kompliziert)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 RRS Plug-In
+\end_layout
+
+\begin_layout Itemize
+Wie sollten die EPR modelliert werden (GUI)?
 \end_layout
 
 \begin_layout Subsection
@@ -822,13 +880,18 @@ Sollen die Policies extern modellierbar sein (beispielsweise durch einen
  in der Aktivität über eine entsprechende GUI modelliert werden?
 \end_layout
 
+\begin_layout Itemize
+asd
+\end_layout
+
 \begin_layout Subsection
 SIMPL Settings Plug-In
 \end_layout
 
 \begin_layout Itemize
 Welche Parameter der SIMPL Eclipse Plug-Ins sollten über Einstellungen im
- SIMPL Settings-Menüpunkt konfigurierbar sein?
+ SIMPL Settings-Menüpunkt konfigurierbar sein? (z.B.: Adresse des RRS, Adresse
+ der DQ-Registry, Adresse des SIMPL Core, usw.)
 \end_layout
 
 \begin_layout Section
@@ -843,17 +906,20 @@ In diesem Kapitel befinden sich alle Fragen zum RRS.
 Welche Aktualisierungskonstanten sollten auf jeden Fall umgesetzt werden,
  bzw.
  haben die höchste Priorität (onInstantiation, fresh, periodic, external
- oder ganz andere)?
+ oder andere)?
 \end_layout
 
 \begin_layout Itemize
-Momentan soll der Transformator in das RRS eingebettet werden.
- Ein zu transformierender BPEL-Prozess wird dann per WebService an den Transform
-ator übermittelt und eine transformierte Kopie des BPEL-Prozesses zurück
- an Eclipse geschickt.
+Ein zu transformierender BPEL-Prozess wird per WebService an den Transformator
+ übermittelt und eine transformierte Kopie des BPEL-Prozesses zurück an
+ Eclipse geschickt.
  Die zurückgelieferte Kopie kann dann ganz normal deployd werden.
- Ist dies so in Ordnung oder muss der Transformator in die Modellierungsumgebung
- integriert sein?
+ Ist dies so in Ordnung?
+\end_layout
+
+\begin_layout Itemize
+Ist ein SIMPL Core Adapter für das RRS denkbar oder soll jede Art von Datenquell
+e immer ihren eigenen Adapter haben?
 \end_layout
 
 \begin_layout Section
@@ -873,6 +939,40 @@ Welche nichtfunktionalen Anforderungen sind wichtig für die Datenquellen
  (ws-policy) und sollen unterstützt werden?
 \end_layout
 
+\begin_layout Itemize
+Muss ein Web-Interface für die Verwaltung der Datenquellen-Registry erstellt
+ werden oder würde die Realisierung als Eclipse Plug-In vorerst ausreichen?
+\end_layout
+
+\begin_layout Section
+SIMPL Core
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel befinden sich alle Fragen zum SIMPL Core.
+\end_layout
+
+\begin_layout Subsection
+Authentifizierung
+\end_layout
+
+\begin_layout Itemize
+Reichen 
+\begin_inset Quotes eld
+\end_inset
+
+Benutzername & Passwort
+\begin_inset Quotes erd
+\end_inset
+
+ vorerst zur Authentifizierung aus?
+\end_layout
+
+\begin_layout Itemize
+Sollten die Authentifizierungsinformationen sicher gespeichert und übertragen
+ werden?
+\end_layout
+
 \begin_layout Section
 Apache ODE
 \end_layout
@@ -881,8 +981,36 @@ Apache ODE
 In diesem Kapitel befinden sich alle Fragen zu Apache ODE.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Eher den ODE-Spezialisten fragen:
+\end_layout
+
 \begin_layout Itemize
 Wie lassen sich BPEL-Variablen in ODE lesen und schreiben?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Peter Reimann: 
+\begin_inset Quotes eld
+\end_inset
+
+Was passiert denn, wenn externe Daten in den Prozessspeicher geladen werden
+ (Retrieve Activity)? Die müssen imho ja irgendwie in die interne Datenbank
+ von ODE kommen, damit ODE dann über seine DAOs darauf zugreifen kann.
+ Wie funktioniert das mit dem Data Source Service?
+\begin_inset Quotes erd
+\end_inset
+
+ => Was ist damit genau gemeint?
 \end_layout
 
 \begin_layout Subsection
@@ -890,14 +1018,11 @@ Auditing
 \end_layout
 
 \begin_layout Itemize
-Es kam die Idee auf das komplette Auditing in einem, dem Prozessmodell entsprech
-end strukturierten, SDO zu kapseln und so über den SIMPL Core zu speichern.
+Es kam die Idee auf, das komplette Auditing in einem, dem Prozessmodell
+ entsprechend strukturierten, SDO zu kapseln und so über den SIMPL Core
+ zu speichern.
  Ist dieser Ansatz so sinnvoll oder sollen die Daten so wie in den bestehenden
  Datenbanken (JPA und Hibernate) organisiert sein?
-\end_layout
-
-\begin_layout Subsection
-Events
 \end_layout
 
 \end_body
