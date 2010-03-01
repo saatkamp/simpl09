@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -11849,12 +11849,16 @@ Container-Referenzen in BPEL (IPVS-Referenzen)
 status open
 
 \begin_layout Plain Layout
-noch ausarbeiten
+noch ausarbeiten 
 \end_layout
 
 \end_inset
 
- Wollo ist doff!!!!11111elf
+ Die Container-Referenzen in BPEL dienen dazu direkte Verweise auf z.B.
+ Tabellen oder Spalten die sich in einer Datenquelle befinden zu ermöglichen.
+ Sie werden als normale BPEL-Variablen vom Type String erzeugt.
+ In diesem String sind alle relevanten Informationen die für den Zugriff
+ auf die jeweilg Daten-Container notwendig sind enthalten.
 \end_layout
 
 \begin_layout Subsection
