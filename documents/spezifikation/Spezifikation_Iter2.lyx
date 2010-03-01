@@ -2207,8 +2207,9 @@ Settings
 
  geöffnet werden und bieten die Möglichkeit, Einstellungen für die SIMPL
  Eclipse Plug-Ins vorzunehmen.
- Dazu gehört beispielsweise die Angabe der Adresse des SIMPL Cores (siehe
- Abbildung 
+ Dazu gehört beispielsweise die Angabe der Adresse des SIMPL Cores, der
+ UDDI Registry und die Adressen der zur Verfügung stehenden RRS (siehe Abbildung
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Settings"
@@ -2253,7 +2254,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/Iter1Screens/SIMPL_Settings.JPG
+	filename ProtoTyp_Screenshots/Iter2Screens/SIMPL_Settings.JPG
 	width 80text%
 
 \end_inset
@@ -2271,7 +2272,7 @@ name "fig:Settings"
 
 \end_inset
 
-Admin-Konsole
+SIMPL Settings Fenster
 \end_layout
 
 \end_inset
@@ -2504,6 +2505,21 @@ Eigenschaftsfenster einer DM-Aktivität am Beispiel einer Query Activity
 
 \end_layout
 
+\begin_layout Subsection
+ODE Deployment-Deskriptor
+\end_layout
+
+\begin_layout Standard
+Über den ODE Deployment-Deskriptor sollen in Zukunft Einstellungen für DM-Aktivi
+täten von BPEL-Prozessen, wie z.B.
+ Referenzen auf Datenquellen, Authentifizierungsinformationen für referenzierte
+ Datenquellen und die Zuordnung von Late-Binding Strategien und Policies,
+ spezifiziert werden.
+ Eine detailliertere Beschreibung der Verwendung und Funktionalität des
+ erweiterten ODE Deployment-Deskriptors wird im Laufe der Iteration nachgeliefer
+t.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -2513,6 +2529,65 @@ Eigenschaftsfenster einer DM-Aktivität am Beispiel einer Query Activity
 
 \begin_layout Section
 Benutzeroberfläche des RRS Eclipse Plug-Ins
+\end_layout
+
+\begin_layout Standard
+Das RRS Eclipse Plug-In wird als Eclipse View in Eclipse integriert.
+ Über diese View können alle in den SIMPL Settings hinterlegten RRSs verwaltet
+ werden.
+ Zur Verwaltung zählt das Anlegen, Bearbeiten und Löschen von Referenzen
+ eines RRSs.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-View"
+
+\end_inset
+
+ zeigt die View des RRS Eclipse Plug-Ins.
+ Die verschiedenen Verwaltungsfunktionen können über das Kontextmenü oder
+ über die Toolbar der View erreicht werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename iteration2/RRSView.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-View"
+
+\end_inset
+
+Datenquellen-Registry View
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
