@@ -5848,194 +5848,6 @@ Normalablauf
 
 \end_layout
 
-\begin_layout Subsubsection
-Neue Referenz in RRS einfügen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-RRS Use-Cases noch überarbeiten, nur reinkopiert!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Referenz in Reference Resolution System (RRS) einfügen.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die neue Referenz wurde korrekt in das RRS eingefügt, wird in der Referenzen-Tab
-elle angezeigt und kann nun bei der Modellierung verwendet werden.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Referenz wurde nicht in das RRS eingefügt, wird nicht in der Referenzen-Tabe
-lle angezeigt und es wird eine entsprechende Fehlermeldung angezeigt, die
- den Benutzer über die aufgetretenen Fehler informiert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Auswahl des Unterpunkts 
-\begin_inset Quotes eld
-\end_inset
-
-References
-\begin_inset Quotes erd
-\end_inset
-
-->
-\begin_inset Quotes erd
-\end_inset
-
-Management
-\begin_inset Quotes erd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Klick auf den Button [New] zur Erstellung einer neuen Referenz
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Angabe aller benötigten Parameter
-\end_layout
-
-\begin_layout Plain Layout
-4.
- Klick auf [Save], um die neue Referenz einzufügen
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4a.
- Fehler beim Einfügen der Referenz in das RRS, da z.B.
- das RRS nicht erreichbar ist.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Referenz aus RRS bearbeiten
-\end_layout
-
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
@@ -6076,7 +5888,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
+Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu bearbeitende
+ Referenz ist ausgewählt.
 \end_layout
 
 \end_inset
@@ -6141,44 +5954,34 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl des Unterpunkts 
-\begin_inset Quotes eld
-\end_inset
-
-References
-\begin_inset Quotes erd
-\end_inset
-
-->
-\begin_inset Quotes erd
-\end_inset
-
-Management
-\begin_inset Quotes erd
-\end_inset
-
- 
+ Klick des [Edit] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punkt
+es des Kontext-Menüs
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Auswahl der zu bearbeitenden Referenz mit einem linken Mausklick auf eine
- Zeile der Referenzen-Tabelle
+ Angabe der neuen Parameter der Referenz in dem entsprechenden Pop-up Fenster
 \end_layout
 
 \begin_layout Plain Layout
 3.
- Klick auf Button [Open], um die Referenz zu öffen
-\end_layout
+ Klick auf [Save], um die aktualisierten Werte der Referenz zu speichern
+ und der Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Plain Layout
-4.
- Bearbeiten der Werte der Referenz
-\end_layout
 
-\begin_layout Plain Layout
-5.
- Klick auf den Button [Save], um die Änderungen im RRS zu speichern
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Referenz-speichern"
+
+\end_inset
+
+ Referenz speichern
+\begin_inset Quotes erd
+\end_inset
+
+ wird angestoßen 
 \end_layout
 
 \end_inset
@@ -6198,7 +6001,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-5a.
+3a.
  Beim Speichern der Änderungen tritt ein Fehler auf, da z.B.
  das RRS nicht erreichbar ist.
 \end_layout
@@ -6214,6 +6017,12 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Referenz-aus-RRS löschen"
+
+\end_inset
+
 Referenz aus RRS löschen
 \end_layout
 
@@ -6257,7 +6066,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
+Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu löschende Referenz
+ wurde ausgewählt.
 \end_layout
 
 \end_inset
@@ -6321,34 +6131,23 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl des Unterpunkts 
+ Klick des [Delete] Buttons der Toolbar oder Auswahl des entsprechenden
+ Menü-Punktes des Kontext-Menüs und der Anwendungsfall 
 \begin_inset Quotes eld
 \end_inset
 
-References
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Referenz-löschen"
+
+\end_inset
+
+ Referenz löschen
 \begin_inset Quotes erd
 \end_inset
 
-->
-\begin_inset Quotes erd
-\end_inset
-
-Management
-\begin_inset Quotes erd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Auswahl der zu löschenden Referenz mit einem linken Mausklick auf eine
- Zeile der Referenzen-Tabelle
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Klick auf Button [Delete], um die Referenz zu löschen
+ wird angestoßen.
 \end_layout
 
 \end_inset
@@ -6368,7 +6167,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
+1a.
  Beim Löschen der Referenz tritt ein Fehler auf, da z.B.
  das RRS nicht erreichbar ist.
 \end_layout
@@ -8479,6 +8278,10 @@ Referenz speichern
 Referenz laden
 \end_layout
 
+\begin_layout Itemize
+Referenz löschen
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -8564,7 +8367,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die angegebene Referenz muss existieren und das RRS muss angebunden sein.
+Die angegebene Referenz muss existieren und das RRS muss erreichbar sein.
  Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.
 \end_layout
 
@@ -8663,7 +8466,13 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Referenz speichern
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Referenz-speichern"
+
+\end_inset
+
+ Referenz speichern
 \end_layout
 
 \begin_layout Standard
@@ -8686,7 +8495,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Referenz soll im RRS gespeichert werden.
 \end_layout
 
 \end_inset
@@ -8706,7 +8515,37 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Einer der beiden Anwendungsfälle 
+\begin_inset Quotes eld
+\end_inset
 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Neue-Referenz-in RRS einfügen"
+
+\end_inset
+
+ Neue Referenz in RRS einfügen
+\begin_inset Quotes erd
+\end_inset
+
+ oder 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Referenz-aus-RRS bearbeiten"
+
+\end_inset
+
+ Referenz aus RRS bearbeiten
+\begin_inset Quotes erd
+\end_inset
+
+ wurde erfolgreich ausgeführt.
 \end_layout
 
 \end_inset
@@ -8726,7 +8565,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Referenz wurde korrekt gespeichert.
 \end_layout
 
 \end_inset
@@ -8746,7 +8585,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wird ein Fehler geworfen, der Informationen über das zugrundeliegende
+ Problem liefert.
 \end_layout
 
 \end_inset
@@ -8766,7 +8606,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Die Referenz wird im RRS gespeichert
 \end_layout
 
 \end_inset
@@ -8786,7 +8627,9 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1a.
+ Beim Speichern der Referenz tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist
 \end_layout
 
 \end_inset
@@ -8823,7 +8666,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Referenz soll aus dem RRS geladen werden.
 \end_layout
 
 \end_inset
@@ -8843,7 +8686,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Der RRS View wurde im Eclipse geöffnet.
 \end_layout
 
 \end_inset
@@ -8863,7 +8706,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Die Referenz wurde erfolgreich geladen und wird nun im RRS View angezeigt.
 \end_layout
 
 \end_inset
@@ -8883,7 +8726,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Es wird ein Fehler geworfen, der Informationen über das zugrundeliegende
+ Problem liefert.
 \end_layout
 
 \end_inset
@@ -8903,7 +8747,8 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.
+ Die Referenz wird aus dem RRS geladen
 \end_layout
 
 \end_inset
@@ -8923,7 +8768,171 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
+1a.
+ Beim Laden der Referenz tritt ein Fehler auf, da z.B.
+ das RRS nicht erreicchbar ist
+\end_layout
 
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Referenz-löschen"
+
+\end_inset
+
+ Referenz löschen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Referenz soll aus dem RRS entfernt werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Referenz-aus-RRS löschen"
+
+\end_inset
+
+ Referenz aus RRS löschen
+\begin_inset Quotes erd
+\end_inset
+
+ wurde erfolgreich ausgeführt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Referenz wurde erfolgreich aus dem RRS entfernt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es wird ein Fehler geworfen, der Informationen über das zugrundeliegende
+ Problem liefert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Die Referenz wird aus dem RRS entfernt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Beim Entfernen der Referenz tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist
 \end_layout
 
 \end_inset
@@ -10887,9 +10896,8 @@ reference "fig:RRS"
 
  zeigt die Architektur des Reference Resolution Systems (RRS).
  Am unteren Ende der Abbildung werden die verschiedenen möglichen Nutzer
- des Systems gezeigt: Workflows, Web-Services und der SIMPL Core, die den
- Wert einer Referenz auslesen oder Referenzen im System anlegen, aktualisieren
- und löschen können.
+ des Systems gezeigt: Workflows und Web-Services, die den Wert einer Referenz
+ auslesen oder Referenzen im System anlegen, aktualisieren und löschen können.
 \end_layout
 
 \begin_layout Standard
@@ -11004,13 +11012,16 @@ delete
 
 \begin_layout Standard
 Die Hauptkomponente ist allerdings das Reference Resolution System selbst.
- Es verbindet beide Web-Service Schnittstellen und hält eine Menge von Adaptern
- für die Integration verschiedenster Datenquellen bereit.
+ Es verbindet beide Web-Service Schnittstellen und bietet die Möglichkeit
+ eine Menge von Adaptern für die Integration verschiedenster Datenquellen
+ anzubinden.
  Jeder dieser Adapter besteht dabei aus einem Lookup-Service für gespeicherte
  Queries und Informationen, sowie aus einem ausführenden Service mit dem
  Queries auf den Datenquellen ausgeführt werden können.
  Anhand einer gegebenen Referenz wird dazu der passende Adapter gesucht,
  ausgewählt und für das Auflösen von Referenzen verwendet.
+ Im Rahmen des Projektes wird nur ein SIMPL Adapter angeboten, der die Verbindun
+g zu allen Datenquellen ermöglicht die vom SIMPL Core unterstützt werden.
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11695,6 +11706,24 @@ referenceType
 \family default
  dem Modellierer eine von verschiedenen Aktualisierungsoptionen für die
  Werte der Referenzen auszuwählen.
+ Im Rahmen des Projektes werden dabei nur die beiden Aktualisierungsoptionen
+ 
+\emph on
+fresh
+\emph default
+ und 
+\emph on
+onInstantiation
+\emph default
+ umgesetzt, 
+\emph on
+periodic
+\emph default
+ und 
+\emph on
+external
+\emph default
+ sind optional.
  Abhängig von der Auswahl des Modellierers müssen die Dereferenzierungsaktivität
 en an der entsprechenden Position im Prozess folgendermaßen eingefügt werden:
 \end_layout
@@ -11748,7 +11777,7 @@ So frisch wie nur möglich - der Wert wird jedesmal abgefragt, wenn auf die
 \begin_layout Itemize
 
 \emph on
-periodic
+periodic(optional)
 \emph default
 : Im Attribut 
 \family typewriter
@@ -11777,7 +11806,7 @@ period
 \begin_layout Itemize
 
 \emph on
-external
+external(optional)
 \emph default
 : Ein externer Event im Bereich der Web-Service Orchestrierung ist typischerweis
 e eine Nachricht, die an die Prozessinstanz geschickt wird (oder ein Signal,
@@ -11825,7 +11854,7 @@ noch ausarbeiten
 
 \end_inset
 
-
+ Wollo ist doff!!!!11111elf
 \end_layout
 
 \begin_layout Subsection
