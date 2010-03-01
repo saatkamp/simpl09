@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2677,6 +2677,7 @@ Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
  Anwendungsfälle indirekt aufgerufen werden.
  Der Eclipse BPEL Designer sorgt für das Laden der Einstellungen der Admin-Konso
 le und das Speichern dieser nach Änderungen.
+ Weiterhin 
 \end_layout
 
 \begin_layout Subsection
@@ -2691,6 +2692,18 @@ ter Akteur.
  Das RRS sorgt für das automatische Auflösen von Referenzen zur Laufzeit
  von Prozessinstanzen und realisiert die Verwaltung (Erstellen, Bearbeiten
  und Löschen) von Referenzen.
+\end_layout
+
+\begin_layout Subsection
+Datenquellen-Administrator
+\end_layout
+
+\begin_layout Standard
+Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese über
+ die Datenquellen-Registry anderen Nutzern zu Verfügung.
+ Dazu kann er Datenquellen in der Datenquellen-Registry registrieren, die
+ Eigenschaften bereits registrierter Datenquellen bearbeiten und registrierte
+ Datenquellen auch wieder aus der Datenquellen-Registry löschen.
 \end_layout
 
 \begin_layout Standard
@@ -3371,23 +3384,7 @@ keine
 \end_layout
 
 \begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Prozess-auf-ODE-Server-deployen"
-
-\end_inset
-
-Prozess auf ODE-Server deployen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Hier gibt es noch zwei Kommentare...
-\end_layout
-
-\end_inset
-
-
+ODE Deployment-Deskriptor erstellen
 \end_layout
 
 \begin_layout Standard
@@ -3410,7 +3407,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Deployen eines Prozesses auf der Apache ODE Workflow-Engine.
+
 \end_layout
 
 \end_inset
@@ -3430,8 +3427,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engin
-e korrekt in Eclipse eingebunden und die Server-View wird angezeigt.
+
 \end_layout
 
 \end_inset
@@ -3451,8 +3447,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und
- der Prozess wurde erfolgreich deployed.
+
 \end_layout
 
 \end_inset
@@ -3472,13 +3467,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
- Der ODE-Server ist nicht gestartet und der Prozess wurde nicht deployed.
-\end_layout
 
-\begin_layout Plain Layout
-3b.
- Der ODE-Server ist gestartet, aber der Prozess wurde nicht deployed.
 \end_layout
 
 \end_inset
@@ -3523,8 +3512,431 @@ t Descriptor korrekt erstellt wurde bzw.
 
 \end_layout
 
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
 \begin_layout Plain Layout
-2.
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+ODE Deployment-Deskriptor bearbeiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+ODE Deployment-Deskriptor löschen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Prozess-auf-ODE-Server-deployen"
+
+\end_inset
+
+Prozess auf ODE-Server deployen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Deployen eines Prozesses auf der Apache ODE Workflow-Engine.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engin
+e korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein
+ ODE Deployment-Descriktor wurde korrekt erstellt bzw.
+ ist bereits vorhanden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und
+ der Prozess wurde erfolgreich deployed.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2a.
+ Der ODE-Server ist nicht gestartet und der Prozess wurde nicht deployed.
+\end_layout
+
+\begin_layout Plain Layout
+2b.
+ Der ODE-Server ist gestartet, aber der Prozess wurde nicht deployed.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
  Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
 \end_layout
 
@@ -3550,10 +3962,10 @@ Hinzufügen der BPEL Prozess-Datei
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-zu 2.: Das kann im Prinzip auch in umgekehrter Reihenfolge machen, also erst
+zu 1.: Das kann im Prinzip auch in umgekehrter Reihenfolge machen, also erst
  ODE-Server starten und dann den Prozess beim laufenden Betrieb deployen.
  Ihr könnt euch mal überlegen, ob ihr das als alternativen Ablauf rein schreiben
  wollt.
@@ -3566,7 +3978,7 @@ zu 2.: Das kann im Prinzip auch in umgekehrter Reihenfolge machen, also erst
 \end_layout
 
 \begin_layout Plain Layout
-3.
+2.
  Starten des ODE-Servers über rechten Mausklick und klicken auf 
 \begin_inset Quotes eld
 \end_inset
@@ -3595,12 +4007,12 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
+2a.
  ODE-Server startet nicht aufgrund eines Fehlers.
 \end_layout
 
 \begin_layout Plain Layout
-3b.
+2b.
  Beim Deployen des Prozesses tritt ein Fehler auf.
 \end_layout
 
@@ -6664,6 +7076,10 @@ SIMPL Admin-Konsole Defaults laden
 SIMPL Admin-Konsole speichern
 \end_layout
 
+\begin_layout Itemize
+BPEL-Datei transformieren
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -7388,6 +7804,469 @@ Sonderfälle
 
 \end_layout
 
+\begin_layout Subsubsection
+Datenquellen abrufen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abrufen aller verfügbaren Datenquellen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Datenquellen-Registry ist erreichbar.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eine Liste mit allen verfügbaren Datenquellen steht zur Verfügung.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Mit Datenquellen-Registry verbinden
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Verfügbare Datenquellen abfragen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle per Strategie auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auswahl einer Datenquelle per Strategie.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Benutzer hat Eigenschaften angegeben anhand derer die Liste der verfügbaren
+ Datenquellen gefiltert wurde und eine korrekte und vollständige Datenquellenlis
+te steht zur Verfügung.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eine der ausgewählten Strategie entsprechende Datenquelle wurde ausgewählt
+ und kann nun im Prozess verwendet werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es wurde eine Datenquelle nach der Standard-Strategie (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Strategien"
+
+\end_inset
+
+) aus der Liste ausgewählt und kann nun im Prozess verwendet werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Filterung der Datenquellenliste
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Lesen der ausgewählten Strategie aus den globalen Einstellungen
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Auswahl einer Datenquelle aus der Liste anhand der gegebenen Strategie
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2a.
+ Beim Lesen der ausgewählten Strategie tritt ein Fehler auf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+BPEL-Datei transformieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Umwandlung einer BPEL-Datei in Standard-BPEL-Quellcode.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das Reference Resolution
+ System (RRS) muss angebunden und erreichbar sein.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es wurde ein korrekter standard-konformer BPEL-Prozess, der die gleiche
+ Funktionalität wie der originale Prozess besitzt und zur Verwendung von
+ Referenzen um entsprechende Aktivitäten oder Events erweitert wurde, erzeugt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es wurde kein neuer BPEL-Prozess erzeugt, der originale BPEL-Prozess ist
+ unverändert und es wird eine entsprechende Fehlermeldung ausgegeben.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Auslesen des originalen Prozesses
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder
+ Events für Referenzen (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Transformation-des-Modells"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Generierung des neuen BPEL-standard-konformen erweiterten Prozesses
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3a.
+ Bei der Generierung tritt ein Fehler auf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Anwendungsfälle des RRS
 \begin_inset Note Note
@@ -7423,10 +8302,6 @@ Referenz speichern
 
 \begin_layout Itemize
 Referenz laden
-\end_layout
-
-\begin_layout Itemize
-BPEL-Datei transformieren
 \end_layout
 
 \begin_layout Standard
@@ -7886,8 +8761,53 @@ Sonderfälle
 
 \end_layout
 
+\begin_layout Subsection
+Anwendungsfälle der Datenquellen-Administratoren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename DQAdmin.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UseCaseDiaDQAdmin"
+
+\end_inset
+
+Anwendungsfall-Diagramm für die Datenquellen-Administratoren
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
-BPEL-Datei transformieren
+Datenquelle registrieren
 \end_layout
 
 \begin_layout Standard
@@ -7910,7 +8830,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Umwandlung einer BPEL-Datei in Standard-BPEL-Quellcode.
+Registrierung einer Datenquelle in der Datenquellen-Registry.
 \end_layout
 
 \end_inset
@@ -7930,8 +8850,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das Reference Resolution
- System (RRS) muss angebunden und erreichbar sein.
+Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
+ Rechte.
 \end_layout
 
 \end_inset
@@ -7951,9 +8871,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurde ein korrekter standard-konformer BPEL-Prozess, der die gleiche
- Funktionalität wie der originale Prozess besitzt und zur Verwendung von
- Referenzen um entsprechende Aktivitäten oder Events erweitert wurde, erzeugt.
+Eine neue Datenquelle wurde anhand der Benutzerangaben in der Datenquellen-Regis
+try korrekt registriert und kann nun in Workflows verwendet werden.
 \end_layout
 
 \end_inset
@@ -7973,8 +8892,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Es wurde kein neuer BPEL-Prozess erzeugt, der originale BPEL-Prozess ist
- unverändert und es wird eine entsprechende Fehlermeldung ausgegeben.
+
 \end_layout
 
 \end_inset
@@ -7995,25 +8913,12 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auslesen des originalen Prozesses
+ Anlegen eines neuen Datenquellenobjekts
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder
- Events für Referenzen (siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Transformation-des-Modells"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Generierung des neuen BPEL-standard-konformen erweiterten Prozesses
+ Registrierung des Datenquellenobjekts in der Datenquellen-Registry
 \end_layout
 
 \end_inset
@@ -8033,8 +8938,298 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-3a.
- Bei der Generierung tritt ein Fehler auf
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle entfernen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entfernen einer vorhandenen Datenquelle aus der Datenquellen-Registry
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
+ Rechte.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig aus
+ der Datenquellen-Registry entfernt und kann nun nicht mehr verwendet werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Auswahl der Datenquelle
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Entfernen der Datenquelle aus der Datenquellen-Registry
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle bearbeiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entfernen einer vorhandenen Datenquelle aus der Datenquellen-Registry
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
+ Rechte.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig anhand
+ der vom Benutzer durchgeführten Änderungen (Änderung der Eigenschaften,
+ der Adresse, usw.) aktualisiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Auswahl der Datenquelle
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Bearbeiten der Werte der Datenquelle
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
