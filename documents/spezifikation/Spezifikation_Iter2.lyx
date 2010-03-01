@@ -464,7 +464,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="4">
+<lyxtabular version="3" rows="14" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -998,11 +998,49 @@ Erweiterung der Spezifikation auf die 2.Iteration.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 2.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+01.03.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Use-Case-Diagramme und einige Use Cases überarbeitet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.2
 \end_layout
 
 \end_inset
@@ -1020,7 +1058,7 @@ Erweiterung der Spezifikation auf die 2.Iteration.
 \begin_inset Text
 
 \begin_layout Plain Layout
-schneimi
+schneimi, huettiwg, rehnre, hahnml
 \end_layout
 
 \end_inset
@@ -1029,7 +1067,7 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Use-Case-Diagramme und einige Use Cases überarbeitet
+Abschließende Bearbeitung der Spezifikation.
 \end_layout
 
 \end_inset
@@ -1910,6 +1948,15 @@ name "sec:Benutzeroberfläche"
 
 \end_inset
 
+Benutzeroberflächen von SIMPL
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel werden alle Benutzeroberflächen, die durch SIMPL bereitgestell
+t werden, beschrieben.
+\end_layout
+
+\begin_layout Subsection
 Benutzeroberfläche der SIMPL Eclipse Plug-Ins
 \end_layout
 
@@ -1973,7 +2020,7 @@ SIMPL Menü und Eclipse BPEL Designer mit einigen DM-Aktivitäten
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Admin-Konsole
 \end_layout
 
@@ -2054,7 +2101,7 @@ Admin-Konsole
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsubsection*
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Globale-Einstellungen"
@@ -2126,7 +2173,7 @@ Dialog der globalen Eigenschaften
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsubsection*
 Auditing
 \end_layout
 
@@ -2192,7 +2239,7 @@ Dialog für die Einstellungen des Auditings
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Einstellungen der SIMPL Eclipse Plug-Ins
 \end_layout
 
@@ -2285,7 +2332,7 @@ SIMPL Settings Fenster
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Hilfe
 \end_layout
 
@@ -2320,7 +2367,7 @@ SIMPL Core Plug-In
  Hilfe und deren Inhalt konkret feststeht.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 About
 \end_layout
 
@@ -2340,7 +2387,7 @@ About
  Inhalt dieses Fenster feststeht.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Nachträgliches Laden der Plug-In Daten
 \end_layout
 
@@ -2402,7 +2449,7 @@ Reload Plug-In Data
  werden können.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Data-Management-Aktivitäten-GUI"
@@ -2505,7 +2552,7 @@ Eigenschaftsfenster einer DM-Aktivität am Beispiel einer Query Activity
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 ODE Deployment-Deskriptor
 \end_layout
 
@@ -2520,14 +2567,7 @@ täten von BPEL-Prozessen, wie z.B.
 t.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
+\begin_layout Subsection
 Benutzeroberfläche des RRS Eclipse Plug-Ins
 \end_layout
 
@@ -2590,33 +2630,31 @@ Datenquellen-Registry View
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Benutzeroberfläche des Datenquellen-Registry Plug-Ins
-\end_layout
-
 \begin_layout Subsection
-Datenquellen-Registry-View
+Benutzeroberfläche der Datenquellen-Registry
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Benutzeroberfläche des Eclipse Datenquellen-Registry
+ Plug-Ins und des Datenquellen-Registry Web Interfaces beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellen-Registry Plug-In
 \end_layout
 
 \begin_layout Standard
 Das Datenquellen Plug-In wird, wie, beispielsweise die Properties, in eine
  Eclipse View integriert.
- Die Datenquellen Informationen werden aus der Datenquellen-Registry gelesen
- und in einer Tabelle in der View angezeigt.(siehe Abildung 
+ Die Datenquellen-Informationen werden aus der Datenquellen-Registry gelesen
+ und in einer Tabelle in der View angezeigt (siehe Abildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Datenquellen-Registry-View"
 
 \end_inset
 
-)
+).
 \end_layout
 
 \begin_layout Standard
@@ -2660,22 +2698,22 @@ Datenquellen-Registry View
 
 \end_layout
 
+\begin_layout Subsubsection
+Datenquellen-Registry Web Interface
+\end_layout
+
 \begin_layout Standard
-\begin_inset Newpage pagebreak
+Das Web Interface soll dem Datenquellen-Administrator dabei helfen, die
+ Datenquellen-Registry zu verwalten.
+ Es gibt ihm die Möglichkeit, einfach über die grafische Oberfläche, neue
+ Datenquellen anzulegen (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-Webinterface"
+
 \end_inset
 
-
-\end_layout
-
-\begin_layout Section
-jUDDI Web Interface
-\end_layout
-
-\begin_layout Standard
-Das Web Interface soll es dem Datenquellen-Administrator dabei helfen die
- Datenquellen-Registry zu verwalten.
- Es gibt ihm die Möglichkeit, einfach über die Grafische Oberfläche, neue
- Datenquellen anzulegen.
+).
  Dafür gibt er den Namen der Datenquelle und deren Adresse an und wählt
  jeweils aus einem Drop-Down-Menü den Typ und den Subtyp der Datenquelle
  aus.
@@ -2683,12 +2721,21 @@ Das Web Interface soll es dem Datenquellen-Administrator dabei helfen die
 \begin_inset Quotes eld
 \end_inset
 
-Add Policy File
+Add Policy
 \begin_inset Quotes erd
 \end_inset
 
--Buttons, kann für die Datenquelle eine Policy Datei hinzugefügt, die extern
- modeliert wurde.
+-Buttons, kann für die Datenquelle eine Policy-Datei, die extern modeliert
+ und über das Textfeld ausgewählt wurde, hinzugefügt werden.
+ Mit dem 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+-Button werden alle durchgeführten Änderungen gespeichert.
 \end_layout
 
 \begin_layout Standard
@@ -2698,6 +2745,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename iteration2/webinterface.png
 	width 80text%
@@ -2711,7 +2759,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-jUDDI Webinterface
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Datenquellen-Registry-Webinterface"
+
+\end_inset
+
+Datenquellen-Registry Webinterface
 \end_layout
 
 \end_inset
@@ -2723,6 +2777,13 @@ jUDDI Webinterface
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -6138,6 +6199,184 @@ Normalablauf
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Neue Referenz in RRS einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Referenz in Reference Resolution System (RRS) einfügen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die neue Referenz wurde korrekt in das RRS eingefügt, wird in der Referenzen-Tab
+elle angezeigt und kann nun bei der Modellierung verwendet werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Referenz wurde nicht in das RRS eingefügt, wird nicht in der Referenzen-Tabe
+lle angezeigt und es wird eine entsprechende Fehlermeldung angezeigt, die
+ den Benutzer über die aufgetretenen Fehler informiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Auswahl des Unterpunkts 
+\begin_inset Quotes eld
+\end_inset
+
+References
+\begin_inset Quotes erd
+\end_inset
+
+->
+\begin_inset Quotes erd
+\end_inset
+
+Management
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Klick auf den Button [New] zur Erstellung einer neuen Referenz
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Angabe aller benötigten Parameter
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Klick auf [Save], um die neue Referenz einzufügen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4a.
+ Fehler beim Einfügen der Referenz in das RRS, da z.B.
+ das RRS nicht erreichbar ist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS bearbeiten
 \end_layout
 
 \begin_layout Standard
@@ -24874,7 +25113,8 @@ o
 \end_inset
 
 
-\end_layout
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 Transaktionen 
@@ -24883,6 +25123,15 @@ status open
 
 \begin_layout Plain Layout
 Einige Sätze zur Umsetzung und Unterstützung eines Transaktionskonzepts.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
