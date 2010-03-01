@@ -2601,6 +2601,10 @@ Datenquellen-Registry View
 Benutzeroberfläche des Datenquellen-Registry Plug-Ins
 \end_layout
 
+\begin_layout Subsection
+Datenquellen-Registry-View
+\end_layout
+
 \begin_layout Standard
 Das Datenquellen Plug-In wird, wie, beispielsweise die Properties, in eine
  Eclipse View integriert.
@@ -2675,51 +2679,48 @@ Das Web Interface soll es dem Datenquellen-Administrator dabei helfen die
  Dafür gibt er den Namen der Datenquelle und deren Adresse an und wählt
  jeweils aus einem Drop-Down-Menü den Typ und den Subtyp der Datenquelle
  aus.
- Durch mehrfaches drücken des Buttons 
+ Durch das Drücken des 
 \begin_inset Quotes eld
 \end_inset
 
-Datenquellen-Eigenschaft hinzufügen
+Add Policy File
 \begin_inset Quotes erd
 \end_inset
 
-, kann man vordefinierte WS-Policy per Drop-Down-Menü auswählen und diese
- mit Werten füllen.
- (z.B.
- Verfügbarkeit in %).
-\end_layout
-
-\begin_layout Subsection
-Vordefinierte WS-Policy
+-Buttons, kann für die Datenquelle eine Policy Datei hinzugefügt, die extern
+ modeliert wurde.
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt werden die verfügbaren, vordefinierten WS-Policy näher
- beschrieben.
-\end_layout
-
-\begin_layout Itemize
-Maximale Antwortzeit (in ms)
-\end_layout
-
-\begin_layout Itemize
-Verfügbarkeit (in %)
-\end_layout
-
-\begin_layout Itemize
-Datendurchsatz (in megabyte/s)
-\end_layout
-
-\begin_layout Itemize
-Rechenleistung (in float operations per second: flops)
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-noch weitere hinzufügen
+\begin_inset Graphics
+	filename iteration2/webinterface.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+jUDDI Webinterface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -24888,6 +24889,10 @@ Einige Sätze zur Umsetzung und Unterstützung eines Transaktionskonzepts.
 
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -25447,6 +25452,687 @@ Dieses Event wird erzeugt, wenn bei der Ausführung einer DM-Aktivität ein
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+Datenquellen Policies
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden die Verschiedenen Policies beschrieben, mit denen
+ die nichtfunktionalen Anforderungen der Datenquellen modeliert werden können.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Policy Beschreibungen
+\end_layout
+
+\begin_layout Standard
+Die Beschreibungen der Policies gliedert sich in die Bereiche:
+\end_layout
+
+\begin_layout Itemize
+Allgemeine Policies: Policies die für alle Datenquellen gelten können,
+\end_layout
+
+\begin_layout Itemize
+Datenbanken Policies: Policies die Speziell für Datenbanken,
+\end_layout
+
+\begin_layout Itemize
+Filesystem Policies: Policies für Filesysteme.
+\end_layout
+
+\begin_layout Standard
+In den Policy Dateien wird nicht unterschiede, welche Policies zu welchen
+ Datenquellen gehören.
+ Die Trennung erfolgt nur zur besseren Lesbarkeit.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Allgemeine Policies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features>
+<column alignment="center" valignment="top" width="25text%">
+<column alignment="center" valignment="top" width="60text%">
+<column alignment="center" valignment="top" width="15text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenschaft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschriebung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einheit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+responsTime
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die maximale Zeit die ein Server zum Antworten brauchen darf.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ms
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+availability
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Verfügbarkeit beschrieben als maximale Downtime des Servers.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hours/year
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+throughput
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximaler Datendurchsatz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+megabyte/ sekunde
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+transaction
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Werden Transaktionen von der Datenquelle unterstützt?
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+boolean
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Datenbank Policies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features>
+<column alignment="center" valignment="top" width="25text%">
+<column alignment="center" valignment="top" width="60text%">
+<column alignment="center" valignment="top" width="15text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenschaft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einheit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maxQueryLength
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die maximale Länge eines Befehls der Anfragtesprache
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zeichen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maxConcurrentTransaction
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die maximale Anzahl an Verbindungen, die gleichzeitig (konkurrierend) auf
+ Daten der Datenbank zugreifen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anzahl
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maxColumSize
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximale Spaltenzahl innerhalb der Tabelle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anzahl
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dbVersion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Version der Datenbank
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Versionsnummer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dateisystem Policies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="center" valignment="top" width="25text%">
+<column alignment="center" valignment="top" width="60text%">
+<column alignment="center" valignment="top" width="15text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenschaft
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Einheit
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maxFilenameLength
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die maximale Länge eines Dateinamens
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Länge
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maxPathLength
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die maximale Länge eines Dateipfades
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Länge
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maxFileSize
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die maximale Größe einer Datei
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Megabyte
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Policy Defenition
+\end_layout
+
+\begin_layout Standard
+Folgende Simpl Policy Elemente stehen zur verfügung und werden nachfolgend
+ SimplPolicy-Elements genannt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<responsTime value = xsd:integer />
+\end_layout
+
+\begin_layout Plain Layout
+
+<availability value = xsd:integer />
+\end_layout
+
+\begin_layout Plain Layout
+
+<throughput value = xsd:integer />
+\end_layout
+
+\begin_layout Plain Layout
+
+<transaction value = xsd:boolean />
+\end_layout
+
+\begin_layout Plain Layout
+
+<maxQueryLength value = xsd:integer />
+\end_layout
+
+\begin_layout Plain Layout
+
+<maxConcurrentTransaction value = xsd:integer />
+\end_layout
+
+\begin_layout Plain Layout
+
+<maxColumnSize value = xsd:integer />
+\end_layout
+
+\begin_layout Plain Layout
+
+<dbVersion value = "xsd:String" />
+\end_layout
+
+\begin_layout Plain Layout
+
+<maxFilenameLength value = xsd:integer>
+\end_layout
+
+\begin_layout Plain Layout
+
+<maxPathLength value = xsd:integer>
+\end_layout
+
+\begin_layout Plain Layout
+
+<maxFileSize value = xsd:integer>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Definition:
+\end_layout
+
+\begin_layout Standard
+Folgend ist die Struktur einer Simpl Policy Datei aufgezeigt
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<wsp:Policy
+\end_layout
+
+\begin_layout Plain Layout
+
+	 xmlns:simplp="http://www.example.org/simpl/policy"
+\end_layout
+
+\begin_layout Plain Layout
+
+	 xmlns:wsp="http://www.w3.org/ns/ws-policy" >
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	SimplPolicy-Elements
+\end_layout
+
+\begin_layout Plain Layout
+
+</wsp:Policy> 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
