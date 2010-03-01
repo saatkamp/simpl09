@@ -6225,7 +6225,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Referenz in Reference Resolution System (RRS) einfügen.
+Eine neue Referenz soll ins RRS eingefügt werden.
 \end_layout
 
 \end_inset
@@ -6245,7 +6245,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Das RRS ist angebunden und die Admin-Konsole wird angezeigt.
+Der RRS-View ist geöffnet und das RRS ist erreichbar.
 \end_layout
 
 \end_inset
@@ -6265,8 +6265,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die neue Referenz wurde korrekt in das RRS eingefügt, wird in der Referenzen-Tab
-elle angezeigt und kann nun bei der Modellierung verwendet werden.
+Die neue Referenz wurde korrekt im RRS gespeichert und wird im RRS-View
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -6286,9 +6286,8 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Referenz wurde nicht in das RRS eingefügt, wird nicht in der Referenzen-Tabe
-lle angezeigt und es wird eine entsprechende Fehlermeldung angezeigt, die
- den Benutzer über die aufgetretenen Fehler informiert.
+Es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über
+ die aufgetretenen Fehler informiert.
 \end_layout
 
 \end_inset
@@ -6309,38 +6308,34 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl des Unterpunkts 
-\begin_inset Quotes eld
-\end_inset
-
-References
-\begin_inset Quotes erd
-\end_inset
-
-->
-\begin_inset Quotes erd
-\end_inset
-
-Management
-\begin_inset Quotes erd
-\end_inset
-
- 
+ Klick des [New] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punkte
+s des Kontext-Menüs
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Klick auf den Button [New] zur Erstellung einer neuen Referenz
+ Angabe aller Parameter der Referenz in dem entsprechenden Pop-up Fenster
 \end_layout
 
 \begin_layout Plain Layout
 3.
- Angabe aller benötigten Parameter
-\end_layout
+ Klick auf [Save], um die Werte der neue Referenz zu speichern und der Anwendung
+sfall 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Plain Layout
-4.
- Klick auf [Save], um die neue Referenz einzufügen
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Referenz-speichern"
+
+\end_inset
+
+ Referenz speichern
+\begin_inset Quotes erd
+\end_inset
+
+ wird angestoßen 
 \end_layout
 
 \end_inset
@@ -6360,8 +6355,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-4a.
- Fehler beim Einfügen der Referenz in das RRS, da z.B.
+3a.
+ Beim Speichern der neue Referenz tritt ein Fehler auf, da z.B.
  das RRS nicht erreichbar ist.
 \end_layout
 
@@ -13783,11 +13778,23 @@ noch ausarbeiten
 \end_inset
 
  Die Container-Referenzen in BPEL dienen dazu direkte Verweise auf z.B.
- Tabellen oder Spalten die sich in einer Datenquelle befinden zu ermöglichen.
- Sie werden als normale BPEL-Variablen erzeugt.
- Diese Variablen können im Deployment Deskriptor mit einem Namen versehen
- werden.
+ Tabellen, Spalten oder andere Daten-Container die sich in einer Datenquelle
+ befinden zu ermöglichen.
+ In diesem Fall werden sie als normale BPEL-Variablen erzeugt.
+ Da allerdings auch die Möglichkeit bestehen soll, dass sie auf Daten verweisen,
+ ist es notwendig für diesen Fall einen neuen Variablen-Typen, der Daten
+ enthalten kann, zu erzeugen.
  
+\end_layout
+
+\begin_layout Standard
+Die BPEL-Variablen können anschließend im Deployment Deskriptor mit einem
+ Namen versehen werden.
+ Dafür wird die Möglichkeit geboten, eine Variable aus einer Liste aller
+ im Prozess vorhandenen Variablen auszuwählen, und diese mit einem festen
+ Namen zu versehen.
+ Anschließend steht dieser Name als Referenz für die Modelierung des Prozesses
+ zur Verfügung.
 \end_layout
 
 \begin_layout Subsection
