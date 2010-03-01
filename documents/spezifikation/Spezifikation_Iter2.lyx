@@ -2838,6 +2838,18 @@ Data-Management-Aktivität löschen
 \end_layout
 
 \begin_layout Itemize
+ODE Deployment-Deskriptor erstellen
+\end_layout
+
+\begin_layout Itemize
+ODE Deployment-Deskriptor bearbeiten
+\end_layout
+
+\begin_layout Itemize
+ODE Deployment-Deskriptor löschen
+\end_layout
+
+\begin_layout Itemize
 Prozess auf ODE-Server deployen
 \end_layout
 
@@ -4270,7 +4282,7 @@ Admin-Konsole schließen
 \end_layout
 
 \begin_layout Itemize
-Referenz in RRS einfügen
+Neue Referenz in RRS einfügen
 \end_layout
 
 \begin_layout Itemize
@@ -7047,21 +7059,6 @@ reference "fig:UseCaseDiaBPELDesigner"
 \end_inset
 
 ) ausführen:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Hier soll noch überall SIMPL davor stehen: SIMPL Admin-Konsole laden, SIMPL
- Admin-Konsole speichern, ...
-\end_layout
-
-\begin_layout Plain Layout
-Falls es geändert wird, müssen die Diagramme entsprechend angepasst werden!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -7074,6 +7071,14 @@ SIMPL Admin-Konsole Defaults laden
 
 \begin_layout Itemize
 SIMPL Admin-Konsole speichern
+\end_layout
+
+\begin_layout Itemize
+Datenquellen aus UDDI-Registry abrufen
+\end_layout
+
+\begin_layout Itemize
+Datenquelle per Strategie auswählen
 \end_layout
 
 \begin_layout Itemize
@@ -7805,7 +7810,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Datenquellen abrufen
+Datenquellen aus UDDI-Registry abrufen
 \end_layout
 
 \begin_layout Standard
@@ -8766,6 +8771,30 @@ Anwendungsfälle der Datenquellen-Administratoren
 \end_layout
 
 \begin_layout Standard
+Ein Datenquellen-Administrator kann folgende Anwendungsfälle (siehe Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UseCaseDiaDQAdmin"
+
+\end_inset
+
+) ausführen:
+\end_layout
+
+\begin_layout Itemize
+Datenquelle in UDDI-Registry registrieren
+\end_layout
+
+\begin_layout Itemize
+Datenquelle aus UDDI-Registry entfernen
+\end_layout
+
+\begin_layout Itemize
+Datenquelle aus UDDI-Registry bearbeiten
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -8807,7 +8836,7 @@ Anwendungsfall-Diagramm für die Datenquellen-Administratoren
 \end_layout
 
 \begin_layout Subsubsection
-Datenquelle registrieren
+Datenquelle in UDDI-Registry registrieren
 \end_layout
 
 \begin_layout Standard
@@ -8952,7 +8981,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Datenquelle entfernen
+Datenquelle aus UDDI-Registry entfernen
 \end_layout
 
 \begin_layout Standard
@@ -9097,7 +9126,7 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-Datenquelle bearbeiten
+Datenquelle aus UDDI-Registry bearbeiten
 \end_layout
 
 \begin_layout Standard
