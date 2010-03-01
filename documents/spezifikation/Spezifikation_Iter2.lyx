@@ -23,9 +23,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Spezifikation}
-\def\docvers{2.0}
+\def\docvers{2.2}
 \def\docautor{}
-\def\docdate{07. Februar 2010}
+\def\docdate{01. März 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -6787,8 +6787,8 @@ Data-Management-Aktivität ausführen
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
+<column alignment="left" valignment="top" width="2cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="13.5cm">
 <row>
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -6857,7 +6857,15 @@ Die DM-Aktivität und die darin enthaltene Datenmanagementoperation wurden
 \begin_inset Text
 
 \begin_layout Plain Layout
-Nachbedingung im Sonderfall
+Nachbedingung
+\begin_inset Newline newline
+\end_inset
+
+im
+\begin_inset Newline newline
+\end_inset
+
+Sonderfall
 \end_layout
 
 \end_inset
@@ -9875,7 +9883,7 @@ Komponenten und ihre Anwendungsfälle
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="37" columns="8">
+<lyxtabular version="3" rows="23" columns="8">
 <features firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="middle" width="4cm">
 <column alignment="center" valignment="middle" width="1.2cm">
@@ -11540,7 +11548,7 @@ x / -
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11549,7 +11557,7 @@ Referenz löschen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11558,7 +11566,7 @@ Referenz löschen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11567,7 +11575,7 @@ Referenz löschen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11576,7 +11584,7 @@ Referenz löschen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11585,7 +11593,7 @@ Referenz löschen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11594,7 +11602,7 @@ Referenz löschen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11603,11 +11611,140 @@ x / -
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="15" columns="8">
+<features firstHeadBottomDL="true" headBottomDL="true">
+<column alignment="left" valignment="middle" width="4cm">
+<column alignment="center" valignment="middle" width="1.2cm">
+<column alignment="center" valignment="middle" width="1.2cm">
+<column alignment="center" valignment="middle" width="1.2cm">
+<column alignment="center" valignment="middle" width="1.7cm">
+<column alignment="center" valignment="middle" width="1.5cm">
+<column alignment="center" valignment="middle" width="1.5cm">
+<column alignment="center" valignment="middle" width="1.4cm">
+<row endhead="true" endfirsthead="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Anwendungsfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SIMPL Core
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SIMPL Core
+\begin_inset Newline newline
+\end_inset
+
+Plug-In
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+BPEL-DM
+\begin_inset Newline newline
+\end_inset
+
+Plug-In
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+SIMPL Extension- Activity Plug-In
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Eclipse BPEL Designer Plug-In
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+RRS / Eclipse RRS Plug-In
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+UDDI Webinterface / UDDI Eclipse Plug-In
 \end_layout
 
 \end_inset
@@ -12656,6 +12793,10 @@ x / -
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -13380,6 +13521,13 @@ reference "lst:<referenceVariable>-Schema"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -25714,13 +25862,14 @@ Datenquellen Policies
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt werden die Verschiedenen Policies beschrieben, mit denen
- die nichtfunktionalen Anforderungen der Datenquellen modeliert werden können.
+In diesem Abschnitt werden die verschiedenen Policies beschrieben, mit denen
+ die nichtfunktionalen Anforderungen der Datenquellen modelliert werden
+ können.
  
 \end_layout
 
 \begin_layout Subsubsection
-Policy Beschreibungen
+Policy-Beschreibungen
 \end_layout
 
 \begin_layout Standard
@@ -25728,19 +25877,19 @@ Die Beschreibungen der Policies gliedert sich in die Bereiche:
 \end_layout
 
 \begin_layout Itemize
-Allgemeine Policies: Policies die für alle Datenquellen gelten können,
+allgemeine Policies, die für alle Datenquellen gelten,
 \end_layout
 
 \begin_layout Itemize
-Datenbanken Policies: Policies die Speziell für Datenbanken,
+Datenbank Policies, die speziell für Datenbanken gelten und
 \end_layout
 
 \begin_layout Itemize
-Filesystem Policies: Policies für Filesysteme.
+Filesystem Policies, die für Filesysteme gelten.
 \end_layout
 
 \begin_layout Standard
-In den Policy Dateien wird nicht unterschiede, welche Policies zu welchen
+In den Policy-Dateien wird nicht unterschieden, welche Policies zu welchen
  Datenquellen gehören.
  Die Trennung erfolgt nur zur besseren Lesbarkeit.
 \end_layout
@@ -26272,8 +26421,8 @@ Policy Defenition
 \end_layout
 
 \begin_layout Standard
-Folgende Simpl Policy Elemente stehen zur verfügung und werden nachfolgend
- SimplPolicy-Elements genannt.
+Folgende SIMPL Policy-Elemente stehen zur Verfügung und werden nachfolgend
+ SIMPLPolicy-Elements genannt.
 \end_layout
 
 \begin_layout Standard
@@ -26336,6 +26485,26 @@ status open
 <maxFileSize value = xsd:integer>
 \end_layout
 
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+SIMPL Policy-Elemente
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -26346,7 +26515,7 @@ Definition:
 \end_layout
 
 \begin_layout Standard
-Folgend ist die Struktur einer Simpl Policy Datei aufgezeigt
+Folgend ist die Struktur einer SIMPL Policy-Datei aufgezeigt
 \end_layout
 
 \begin_layout Standard
@@ -26377,12 +26546,25 @@ status open
 
 \begin_layout Plain Layout
 
-	SimplPolicy-Elements
+	SIMPLPolicy-Elements
 \end_layout
 
 \begin_layout Plain Layout
 
-</wsp:Policy> 
+</wsp:Policy>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Listing einer SIMPL Policy-Datei
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
