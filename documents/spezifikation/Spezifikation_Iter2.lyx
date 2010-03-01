@@ -13538,16 +13538,17 @@ Container-Referenzen in BPEL (IPVS-Referenzen)
 status open
 
 \begin_layout Plain Layout
-noch ausarbeiten 
+noch ausarbeiten
 \end_layout
 
 \end_inset
 
  Die Container-Referenzen in BPEL dienen dazu direkte Verweise auf z.B.
  Tabellen oder Spalten die sich in einer Datenquelle befinden zu ermöglichen.
- Sie werden als normale BPEL-Variablen vom Type String erzeugt.
- In diesem String sind alle relevanten Informationen die für den Zugriff
- auf die jeweilg Daten-Container notwendig sind enthalten.
+ Sie werden als normale BPEL-Variablen erzeugt.
+ Diese Variablen können im Deployment Deskriptor mit einem Namen versehen
+ werden.
+ 
 \end_layout
 
 \begin_layout Subsection
