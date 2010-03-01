@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2483,7 +2483,126 @@ Benutzeroberfläche des Datenquellen-Registry Plug-Ins
 \end_layout
 
 \begin_layout Standard
+Das Datenquellen Plug-In wird, wie, beispielsweise die Properties, in eine
+ Eclipse View integriert.
+ Die Datenquellen Informationen werden aus der Datenquellen-Registry gelesen
+ und in einer Tabelle in der View angezeigt.(siehe Abildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UDDI_Data_Source_Browser.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+Datenquellen-Registry View
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+jUDDI Web Interface
+\end_layout
+
+\begin_layout Standard
+Das Web Interface soll es dem Datenquellen-Administrator dabei helfen die
+ Datenquellen-Registry zu verwalten.
+ Es gibt ihm die Möglichkeit, einfach über die Grafische Oberfläche, neue
+ Datenquellen anzulegen.
+ Dafür gibt er den Namen der Datenquelle und deren Adresse an und wählt
+ jeweils aus einem Drop-Down-Menü den Typ und den Subtyp der Datenquelle
+ aus.
+ Durch mehrfaches drücken des Buttons 
+\begin_inset Quotes eld
+\end_inset
+
+Datenquellen-Eigenschaft hinzufügen
+\begin_inset Quotes erd
+\end_inset
+
+, kann man vordefinierte WS-Policy per Drop-Down-Menü auswählen und diese
+ mit Werten füllen.
+ (z.B.
+ Verfügbarkeit in %).
+\end_layout
+
+\begin_layout Subsection
+Vordefinierte WS-Policy
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden die verfügbaren, vordefinierten WS-Policy näher
+ beschrieben.
+\end_layout
+
+\begin_layout Itemize
+Maximale Antwortzeit (in ms)
+\end_layout
+
+\begin_layout Itemize
+Verfügbarkeit (in %)
+\end_layout
+
+\begin_layout Itemize
+Datendurchsatz (in megabyte/s)
+\end_layout
+
+\begin_layout Itemize
+Rechenleistung (in float operations per second: flops)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+noch weitere hinzufügen
+\end_layout
+
 \end_inset
 
 
@@ -2672,10 +2791,6 @@ Anwendungsfall-Diagramm des gesamten Softwaresystems
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2750,10 +2865,6 @@ Anwendungsfall-Diagramm für den Prozess-Modellierer
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -22388,6 +22499,24 @@ key "key-21"
  und Programmiersprache verwendet werden.
 \end_layout
 
+\begin_layout Subsubsection*
+jUDDI
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-26"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+jUDDI ist eine UDDI Registry und wird dazu benutzt, Datenquellen und Datenquelli
+nformationen zu speichern.
+ Darüber hinaus ist es möglich, nichtfunktionale Anforderungen als WS-Policy
+ zu definieren 
+\end_layout
+
 \begin_layout Subsection
 Werkzeuge
 \end_layout
@@ -22825,6 +22954,17 @@ Web Service Addressing 1.0 - Core
 , W3C Recommendation.
  World Wide Web Consortium (W3C), 09.Mai 2006.
  http://www.w3.org/TR/ws-addr-core/, zuletzt zugegriffen am 06.02.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "26"
+key "key-26"
+
+\end_inset
+
+jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.09
 \end_layout
 
 \begin_layout Standard
