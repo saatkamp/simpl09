@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1213,6 +1213,10 @@ Unterstützung einer automatischen Auswahl von Datenquellen zur Laufzeit.
  erfüllt, ausgewählt wird.
 \end_layout
 
+\begin_layout Itemize
+Validation von der SIMPL-DM-Aktivitäten
+\end_layout
+
 \begin_layout Subsubsection
 Ausblick 
 \begin_inset CommandInset label
@@ -1468,6 +1472,8 @@ ine implementiert und in diese als Plug-In (SIMPL Extension-Activity Plug-In)
  eingebunden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
+ Die Validation der SIMPL Extensions wird hierbei durch den Eclipse BPEL-Designe
+r erledigt.
 \end_layout
 
 \begin_layout Standard
@@ -2677,7 +2683,7 @@ Der Eclipse BPEL Designer ist ebenfalls ein durch Software realisierter
  Anwendungsfälle indirekt aufgerufen werden.
  Der Eclipse BPEL Designer sorgt für das Laden der Einstellungen der Admin-Konso
 le und das Speichern dieser nach Änderungen.
- Weiterhin 
+ Weiterhin ist er für das Validieren von SIMPL Extensions zuständig.
 \end_layout
 
 \begin_layout Subsection
@@ -7085,6 +7091,10 @@ Datenquelle per Strategie auswählen
 BPEL-Datei transformieren
 \end_layout
 
+\begin_layout Itemize
+SIMPL Extensions validieren
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -7797,6 +7807,166 @@ Sonderfälle
 1a.
  Beim Speichern der Werte tritt ein Fehler auf, da z.B.
  die SIMPL DB nicht erreichbar ist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-Extensions-validieren"
+
+\end_inset
+
+SIMPL Extensions validieren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Validierung der SIMPL Erweiterung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Es wurde ein BPEL Prozess erstellt der mind.
+ eine SIMPL Extension enthält.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Alle nicht schema-konformen Einträge werden erkannt und in der Problem-View
+ angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Validate
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgeführt.
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Fehler und Warnungen werden, falls vorhanden, in der Problem-View angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -9343,7 +9513,7 @@ Komponenten und ihre Anwendungsfälle
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="6">
+<lyxtabular version="3" rows="21" columns="6">
 <features firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="middle" width="4cm">
 <column alignment="center" valignment="middle" width="1.5cm">
@@ -10436,7 +10606,7 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10445,7 +10615,7 @@ SIMPL Admin-Konsole speichern
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10454,11 +10624,67 @@ x
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SIMPL Extensions validieren
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -10485,7 +10711,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
