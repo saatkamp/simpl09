@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1183,43 +1183,24 @@ Evolution des Dokuments
 \end_layout
 
 \begin_layout Standard
-Das Projekt SIMPL ist in zwei Iterationsstufen aufgeteilt.
- Die vorliegende Spezifikation beschreibt die Anforderungen, die in der
- ersten Iterationsstufe des Rahmenwerks umgesetzt werden sollen und stellt
- dessen Grundfunktionalität dar.
- Die Spezifikation und damit die Beschreibung der weitergehenden Funktionalität
- wird in späteren Iterationen vervollständigt.
+Die vorliegende Spezifikation beschreibt die Anforderungen, die im SIMPL-Rahmenw
+erk umgesetzt werden, sowie einiger optionaler Komponenten, die später noch
+ hinzukommen können.
+ 
 \end_layout
 
 \begin_layout Standard
-Darüber hinaus wird in weiterführenden Kundengesprächen über die Präferenzordnun
-g von optionalen Implementierungen diskutiert, welche in den entsprechenden
- Iterationen umgesetzt werden sollen.
- Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Basisfunktionalität"
-
-\end_inset
-
- nennt die Basisfunktionalitäten des Rahmenwerks, die in der ersten Iteration
- umgesetzt werden.
- Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Ausblick"
-
-\end_inset
-
- liefert einen Ausblick auf die Funktionalitäten, die in den weiteren Iteratione
-n umgesetzt werden sollen.
+Der Abschnitt Funktionalität beschreibt, welche Anforderungen bereits umgesetzt
+ wurden.
+ Im Abschnitt Ausblick wird beschrieben, welche Komponenten wärend der zweiten
+ Iteration noch umgesetzt werden.
 \end_layout
 
 \begin_layout Subsubsection
-Basisfunktionalität 
+Funktionalität 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Basisfunktionalität"
+name "sub:Funktionalität"
 
 \end_inset
 
@@ -1227,7 +1208,7 @@ name "sub:Basisfunktionalität"
 \end_layout
 
 \begin_layout Standard
-Folgende Funktionen bilden die Basisfunktionalität des SIMPL-Rahmenwerks:
+Folgende Funktionen bilden die momentane Funktionalität des SIMPL-Rahmenwerks:
 \end_layout
 
 \begin_layout Itemize
@@ -1240,14 +1221,22 @@ Die statische Anbindung von Datenquellen, wobei vorerst nur relationale
 \end_layout
 
 \begin_layout Itemize
-Eine grundlegende Admin-Konsole, die Funktionen wie das An- und Ausschalten
- des Auditings und die Eingabe globaler Einstellungen für das Rahmenwerk
- bereitstellt.
+Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
+ für den Zugriff auf Datenquellen.
 \end_layout
 
 \begin_layout Itemize
-Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
- für den Zugriff auf Datenquellen.
+Bereitstellung von Query-Editoren für die verschiedenen DM-Aktivitäten.
+\end_layout
+
+\begin_layout Itemize
+Umsetzung einer grundlegenden Admin-Konsole, in der das Auditing aktiviert
+ werden kann, sowie Benutzername und Passwort, für die spätere Authentifizierung
+ an Datenquellen.
+\end_layout
+
+\begin_layout Subsubsection
+Ausblick
 \end_layout
 
 \begin_layout Itemize
@@ -1294,7 +1283,7 @@ Validation von der SIMPL-DM-Aktivitäten
 \end_layout
 
 \begin_layout Subsubsection
-Ausblick 
+Optionale Komponenten 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Ausblick"
