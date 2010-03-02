@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -13339,7 +13339,11 @@ Die verschiedenen Bestandteile einer EPR werden dabei für folgende Zwecke
 Address
 \family default
  Teil verweist auf den Endpunkt des RRS, das die Werte der Referenzen verwaltet.
- In den 
+ 
+\end_layout
+
+\begin_layout Standard
+In den 
 \family typewriter
 ReferenceProperties
 \family default
@@ -19934,7 +19938,7 @@ t
 \begin_inset Quotes erd
 \end_inset
 
- die Umsetzung in einer späteren Iterationsstufe und ein 
+ die Umsetzung in dieser Iterationsstufe und ein 
 \begin_inset Quotes eld
 \end_inset
 
@@ -24649,8 +24653,8 @@ x
 \begin_inset Quotes erd
 \end_inset
 
- dafür, dass diese Aktivität erst in einer späteren Iterationen auf eine
- Datenquelle angewendet werden kann und ein 
+ dafür, dass diese Aktivität erst in dieser Iteration auf eine Datenquelle
+ angewendet werden kann und ein 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26416,62 +26420,63 @@ Folgende SIMPL Policy-Elemente stehen zur Verfügung und werden nachfolgend
 
 \begin_layout Standard
 \begin_inset listings
+lstparams "captionpos=b,frame=single,xleftmargin=2cm,xrightmargin=2cm"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-<responsTime value = xsd:integer />
+<responsTime value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<availability value = xsd:integer />
+<availability value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<throughput value = xsd:integer />
+<throughput value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<transaction value = xsd:boolean />
+<transaction value = "xsd:boolean"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxQueryLength value = xsd:integer />
+<maxQueryLength value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxConcurrentTransaction value = xsd:integer />
+<maxConcurrentTransaction value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxColumnSize value = xsd:integer />
+<maxColumnSize value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<dbVersion value = "xsd:String" />
+<dbVersion value = "xsd:String"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxFilenameLength value = xsd:integer>
+<maxFilenameLength value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxPathLength value = xsd:integer>
+<maxPathLength value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxFileSize value = xsd:integer>
+<maxFileSize value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
@@ -26509,7 +26514,7 @@ Folgend ist die Struktur einer SIMPL Policy-Datei aufgezeigt
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "showstringspaces=false,tabsize=2"
+lstparams "captionpos=b,frame=single,showstringspaces=false,tabsize=2,xleftmargin=2cm,xrightmargin=2cm"
 inline false
 status open
 
@@ -26520,12 +26525,12 @@ status open
 
 \begin_layout Plain Layout
 
-	 xmlns:simplp="http://www.example.org/simpl/policy"
+	xmlns:simplp="http://www.example.org/simpl/policy"
 \end_layout
 
 \begin_layout Plain Layout
 
-	 xmlns:wsp="http://www.w3.org/ns/ws-policy" >
+	xmlns:wsp="http://www.w3.org/ns/ws-policy">
 \end_layout
 
 \begin_layout Plain Layout
