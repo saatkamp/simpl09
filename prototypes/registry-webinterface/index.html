@@ -1,0 +1,33 @@
+<script type="text/javascript">
+function showInfo(element) {
+  window.frames[0].document.getElementById('name').value = element.value;
+  document.getElementById('form').src='form.html';
+}
+</script>
+
+<table width="800">
+<tr>
+  <td>
+    <select size="10">
+      <option onclick="showInfo(this);">bla1</option>
+      <option onclick="showInfo(this);">bla2</option>
+      <option onclick="showInfo(this);">bla3</option>
+      <option onclick="showInfo(this);">bla4</option>
+      <option onclick="showInfo(this);">bla5</option>
+      <option onclick="showInfo(this);">bla6</option>
+      <option onclick="showInfo(this);">bla7</option>
+      <option onclick="showInfo(this);">bla8</option>
+      <option onclick="showInfo(this);">bla9</option>
+      <option onclick="showInfo(this);">bla10</option>
+      <option onclick="showInfo(this);">bla11</option>
+      <option onclick="showInfo(this);">Wollo ist doff</option>
+    </select>
+    <br/>
+    <input type="button" value="new" onclick="document.getElementById('form').src='new.html';"/>
+  </td>
+  
+  <td>
+    <iframe id="form" width="100%" height="100%" frameborder="0" src="form.html" ></iframe>
+  </td>
+</tr>
+</table>
