@@ -1,12 +1,12 @@
-<project name="ode-dao">
-	<path id="enhance.cp">
+<project name="simpl-dao">
+	<path id="simpl-dao.cp">
 	        <pathelement location="${basedir}${file.separator}${build.dir}"/>
 
 	        <fileset dir="${basedir}${file.separator}jpa_lib">
 	            <include name="**/*.jar"/>
 	        </fileset>
 	</path>
-	<property name="cp" refid="enhance.cp"/>
+	<property name="cp" refid="simpl-dao.cp"/>
 	
 	<target name="openjpa.libs.check" unless="openjpa.libs">
 		<fail message="Please set -Dopenjpa.libs in your builder configuration!" />
@@ -15,13 +15,13 @@
 		<fail message="Please set -Dbuild.dir in your builder configuration!" />
 	</target>
 		
-	<target name="enhance" depends="openjpa.libs.check, build.dir.check">
+	<target name="simpl-dao" depends="openjpa.libs.check, build.dir.check">
 		<echo message="${cp}"/>
 		<taskdef name="openjpac" classname="org.apache.openjpa.ant.PCEnhancerTask">
-			<classpath refid="enhance.cp"/>
+			<classpath refid="simpl-dao.cp"/>
 		</taskdef>
 		<openjpac>
-			<classpath refid="enhance.cp"/>
+			<classpath refid="simpl-dao.cp"/>
 		</openjpac>
 	</target>
 </project>
