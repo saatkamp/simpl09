@@ -1,0 +1,1 @@
+Just put the .wiki files to this folder's root and start the wiki2lyx.bat.

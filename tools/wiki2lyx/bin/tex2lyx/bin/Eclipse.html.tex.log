@@ -1,0 +1,26 @@
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=pdflatex 2009.11.20)  4 MAR 2010 17:19
+entering extended mode
+**Eclipse.html.tex.lyx Eclipse.html.tex.lyx.pdf
+(Eclipse.html.tex.lyx
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2008-06-18, ngerman-x-2008-06-18, french, loaded.
+! You can't use `macro parameter character #' in vertical mode.
+l.1 #
+     LyX file created by tex2lyx 1.6.3
+? 
+! Emergency stop.
+l.1 #
+     LyX file created by tex2lyx 1.6.3
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 7 strings out of 95304
+ 135 string characters out of 1183559
+ 45021 words of memory out of 1500000
+ 3306 multiletter control sequences out of 110000
+ 3640 words of font info for 14 fonts, out of 3000000 for 5000
+ 14 hyphenation exceptions out of 8191
+ 5i,0n,1p,83b,8s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

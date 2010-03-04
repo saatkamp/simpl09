@@ -1,0 +1,397 @@
+configure: TeX engine needs windows-style paths in latex files
+checking for DVI to DTL converter...
++checking for "dv2dt"...   no
+checking for a Latex2e program...
++checking for "latex"...   yes
+checking for a DVI postprocessing program...
++checking for "pplatex"...   no
+checking for pLaTeX, the Japanese LaTeX...
++checking for "platex"...   yes
+checking for a Tgif viewer and editor...
++checking for "tgif"...   no
+checking for a FIG viewer and editor...
++checking for "xfig"...   no
++checking for "jfig3-itext.jar"...   no
++checking for "jfig3.jar"...   no
+checking for a Dia viewer and editor...
++checking for "dia"...   no
+checking for a Grace viewer and editor...
++checking for "xmgrace"...   no
+checking for a FEN viewer and editor...
++checking for "xboard"...   no
+checking for a raster image viewer...
++checking for "xv"...   no
++checking for "kview"...   no
++checking for "gimp-remote"...   no
++checking for "gimp"...   no
+checking for a raster image editor...
++checking for "gimp-remote"...   no
++checking for "gimp"...   no
+checking for a text editor...
++checking for "sensible-editor"...   no
++checking for "xemacs"...   no
++checking for "gvim"...   no
++checking for "kedit"...   no
++checking for "kwrite"...   no
++checking for "kate"...   no
++checking for "nedit"...   no
++checking for "gedit"...   no
++checking for "notepad"...   no
+checking for a BibTeX editor...
++checking for "sensible-editor"...   no
++checking for "jabref"...   no
++checking for "JabRef"...   no
++checking for "pybliographic"...   no
++checking for "bibdesk"...   no
++checking for "gbib"...   no
++checking for "kbib"...   no
++checking for "kbibtex"...   no
++checking for "sixpack"...   no
++checking for "bibedit"...   no
++checking for "tkbibtexxemacs"...   no
++checking for "gvim"...   no
++checking for "kedit"...   no
++checking for "kwrite"...   no
++checking for "kate"...   no
++checking for "nedit"...   no
++checking for "gedit"...   no
++checking for "notepad"...   no
+checking for a Postscript previewer...
++checking for "kghostview"...   no
++checking for "okular"...   no
++checking for "evince"...   no
++checking for "gv"...   no
++checking for "ghostview"...   no
+checking for a PDF previewer...
++checking for "kpdf"...   no
++checking for "okular"...   no
++checking for "evince"...   no
++checking for "kghostview"...   no
++checking for "xpdf"...   no
++checking for "acrobat"...   no
++checking for "acroread"...   no
++checking for "gv"...   no
++checking for "ghostview"...   no
+checking for a DVI previewer...
++checking for "xdvi"...   no
++checking for "kdvi"...   no
++checking for "okular"...   no
+checking for an HTML previewer...
++checking for "firefox"...   no
++checking for "mozilla"...   no
++checking for "netscape"...   no
+checking for Noteedit...
++checking for "noteedit"...   no
+checking for an OpenDocument viewer...
++checking for "swriter"...   no
++checking for "oowriter"...   no
+checking for the pdflatex program...
++checking for "pdflatex"...   yes
+checking for a LaTeX/Noweb -> LyX converter...
++checking for "tex2lyx"...   no
++checking for "tex2lyx"...   no
+checking for a Noweb -> LaTeX converter...
++checking for "noweave"...   no
+checking for an HTML -> LaTeX converter...
++checking for "html2latex"...   no
++checking for "gnuhtml2latex"...   no
++checking for "htmltolatex"...   no
++checking for "java"...   no
+checking for an MS Word -> LaTeX converter...
++checking for "wvCleanLatex"...   no
+checking for a LyX -> HTML converter...
++checking for "elyxer.py"...   no
+checking for a LaTeX -> HTML converter...
++checking for "htlatex"...   yes
+checking for a LaTeX -> MS Word converter...
++checking for "htlatex"...   yes
+checking for an OpenOffice.org -> LaTeX converter...
++checking for "w2l"...   no
+checking for an OpenDocument -> LaTeX converter...
++checking for "w2l"...   no
+checking for a LaTeX -> Open Document converter...
++checking for "oolatex"...   yes
+checking for a LaTeX -> RTF converter...
++checking for "latex2rtf"...   no
++checking for "latex2rt"...   no
+checking for a RTF -> HTML converter...
++checking for "unrtf"...   no
+checking for a PS to PDF converter...
++checking for "ps2pdf13"...   yes
+checking for a PS to TXT converter...
++checking for "pstotext"...   no
+checking for a PS to TXT converter...
++checking for "ps2ascii"...   yes
+checking for a PS to EPS converter...
++checking for "ps2eps"...   no
+checking for a PDF to PS converter...
++checking for "pdf2ps"...   yes
+checking for a PDF to EPS converter...
++checking for "pdftops"...   no
+checking for a DVI to TXT converter...
++checking for "catdvi"...   no
+checking for a DVI to PS converter...
++checking for "dvips"...   yes
+checking for a DVI to PDF converter...
++checking for "dvipdfmx"...   yes
+checking for dvipng...
++checking for "dvipng"...   yes
+checking for a fax program...
++checking for "kdeprintfax"...   no
++checking for "ksendfax"...   no
+checking for a FIG -> EPS/PPM converter...
++checking for "fig2dev"...   no
+checking for a TIFF -> PS converter...
++checking for "tiff2ps"...   no
+checking for a TGIF -> EPS/PPM converter...
++checking for "tgif"...   no
+checking for a WMF -> EPS converter...
++checking for "metafile2eps"...   no
++checking for "wmf2eps"...   no
+checking for an EMF -> EPS converter...
++checking for "metafile2eps"...   no
++checking for "wmf2eps"...   no
+checking for an EPS -> PDF converter...
++checking for "epstopdf"...   yes
+checking for a Grace -> Image converter...
++checking for "gracebat"...   no
+checking for a Dot -> PDF converter...
++checking for "dot"...   no
+checking for a Dia -> PNG converter...
++checking for "dia"...   no
+checking for a Dia -> EPS converter...
++checking for "dia"...   no
+checking for a LilyPond -> EPS/PDF/PNG converter...
++checking for "lilypond"...   no
+checking for a Noteedit -> LilyPond converter...
++checking for "noteedit"...   no
+checking for SGML-tools 2.x (DocBook), db2x scripts or xsltproc...
++checking for "sgmltools"...   no
++checking for "db2dvi"...   no
++checking for "xsltproc"...   no
+Checking whether TeX allows spaces in file names...  yes
+checking for a *roff formatter...
++checking for "groff"...   no
++checking for "nroff"...   no
+checking for ChkTeX...
++checking for "chktex"...   no
+checking for BibTeX...
++checking for "jbibtex"...   no
++checking for "bibtex"...   yes
+checking for an index processor...
++checking for "texindy"...   no
++checking for "makeindex"...   yes
+checking for a nomenclature processor...
++checking for "makeindex"...   yes
+checking for a spellchecker...
++checking for "ispell"...   no
+checking for a spool command...
++checking for "lp"...   no
++checking for "lpr"...   no
+checking LaTeX configuration...   default values
++checking list of textclasses... 
+	done
+	auto
++Inspecting your LaTeX configuration.
++checking for LaTeX version... 2005/12/01
++checking for available hyphenation patterns... english, dumylang, nohyphenatio
++checking for default encoding (this may take a long time)
++  checking for ec fonts... yes
++  checking for ec support in LaTeX format... yes
++  default encoding will be set to T1
++checking for document class IEEEtran [IEEEtran]...
++checking for document class aapaper [aa]... no
++checking for document class aastex [aastex]...
++checking for document class aa [aa]... no
++checking for document class achemso [achemso]...
++checking for document class acmsiggraph [acmsiggraph]... no
++checking for docbook  class agu-dtd...  no
++checking for document class agums [aguplus,agums.sty]...
++checking for document class amsart [amsart]... yes
++checking for document class amsbook [amsbook]... yes
++checking for document class apa [apa,apacite.sty]...
++checking for document class arab-article [arabart]...
++checking for document class armenian-article [article]... yes
++checking for document class article-beamer [article]... yes
++checking for document class article [article]... yes
++checking for document class beamer [beamer,pgf.sty,xcolor.sty]... no
++checking for document class book [book]... yes
++checking for document class broadway [broadway]... yes
++checking for document class chess [article,lyxskak.sty]... yes
++checking for document class cl2emult [cl2emult]... no
++checking for document class dinbrief [dinbrief]... no
++checking for docbook  class docbook-book...  no
++checking for docbook  class docbook-chapter...  no
++checking for docbook  class docbook-section...  no
++checking for docbook  class docbook...  no
++checking for document class dtk [dtk]... no
++checking for document class egs [egs]... no
++checking for document class elsarticle [elsarticle]... no
++checking for document class elsart [elsart,amssymb.sty]... no
++checking for document class entcs [entcs]... no
++checking for document class europecv [europecv]... no
++checking for document class extarticle [extarticle]... no
++checking for document class extbook [extbook]... no
++checking for document class extletter [extletter]... no
++checking for document class extreport [extreport]... no
++checking for document class foils [foils]... no
++checking for document class g-brief-de [g-brief]... no
++checking for document class g-brief-en [g-brief]... no
++checking for document class g-brief2 [g-brief2]... no
++checking for document class heb-article [article]... yes
++checking for document class heb-letter [letter]... yes
++checking for document class hollywood [hollywood]... yes
++checking for document class ijmpc [ws-ijmpc]... no
++checking for document class ijmpd [ws-ijmpd]... no
++checking for document class iopart [iopart]... no
++checking for document class isprs [isprs]... no
++checking for document class jarticle [jarticle]... no
++checking for document class jbook [jbook]... no
++checking for document class jgrga [aguplus,jgrga.sty]... no
++checking for document class jreport [jreport]... no
++checking for document class jsarticle [jsarticle]... no
++checking for document class jsbook [jsbook]... no
++checking for document class jss [jss]... no
++checking for document class kluwer [kluwer]... no
++checking for document class latex8 [article,latex8.sty,times.sty]... no
++checking for document class letter [letter]... yes
++checking for document class literate-article [article,noweb.sty]... no
++checking for document class literate-book [book,noweb.sty]... no
++checking for document class literate-report [report,noweb.sty]... no
++checking for document class llncs [llncs]... no
++checking for document class ltugboat [ltugboat]... no
++checking for document class memoir [memoir]... no
++checking for document class moderncv [moderncv]... no
++checking for document class mwart [mwart]... no
++checking for document class mwbk [mwbk]... no
++checking for document class mwrep [mwrep]... no
++checking for document class paper [paper]... no
++checking for document class powerdot [powerdot,enumitem.sty,pstricks.sty,xkeyv
++checking for document class recipebook [scrbook]... no
++checking for document class report [report]... yes
++checking for document class revtex4 [revtex4]... no
++checking for document class revtex [revtex]... yes
++checking for document class scrartcl [scrartcl]... no
++checking for document class scrarticle-beamer [scrartcl]... no
++checking for document class scrbook [scrbook]... no
++checking for document class scrlettr [scrlettr]... no
++checking for document class scrlttr2 [scrlttr2]... no
++checking for document class scrreprt [scrreprt]... no
++checking for document class seminar [seminar]... no
++checking for document class siamltex [siamltex]... no
++checking for document class sigplanconf [sigplanconf]... no
++checking for document class simplecv [simplecv]... no
++checking for document class singlecol [singlecol, natbib.sty]... no
++checking for document class slides [slides]... yes
++checking for document class spie [spie]... no
++checking for document class svglobal3 [svjour3,svglov3.clo]... no
++checking for document class svglobal [svjour,svglobal.clo]... no
++checking for document class svjog [svjour,svjog.clo]... no
++checking for document class svprobth [svjour,svprobth.clo]... no
++checking for document class tarticle [tarticle]... no
++checking for document class tbook [tbook]... no
++checking for document class treport [treport]... no
++checking for package accents [accents]... no
++checking for package algorithm [algorithm]... no
++checking for package amstext [amstext]... yes
++checking for package array [array]... yes
++checking for package babel [babel]... yes
++checking for package bibtopic [bibtopic]... no
++checking for package bm [bm]... yes
++checking for package booktabs [booktabs]... no
++checking for package braille [braille]... no
++checking for package CJKutf8 [CJKutf8]... no
++checking for package color [color]... yes
++checking for package covington [covington]... no
++checking for package csquotes [csquotes]... no
++checking for package dvipost [dvipost]... yes
++checking for package endnotes [endnotes]... yes
++checking for package enumitem [enumitem]... no
++checking for package esint [esint]... no
++checking for package ifsym [ifsym]... no
++checking for package ifthen [ifthen]... yes
++checking for package fancybox [fancybox]... no
++checking for package fancyhdr [fancyhdr]... no
++checking for package framed [framed]... yes
++checking for package geometry [geometry]... yes
++checking for package graphicx [graphicx]... yes
++checking for package hyperref [hyperref]... yes
++checking for package japanese [japanese.ldf]... no
++checking for package jurabib [jurabib]... no
++checking for package latex8 [latex8]... no
++checking for package listings [listings]... no
++checking for package longtable [longtable]... yes
++checking for package natbib [natbib]... no
++checking for package nicefrac [nicefrac]... no
++checking for package nomencl [nomencl]... no
++checking for package pdfcolmk [pdfcolmk]... yes
++checking for package pdfpages [pdfpages]... no
++checking for package prettyref [prettyref]... no
++checking for package preview [preview]... no
++checking for package rotating [rotating]... no
++checking for package rotfloat [rotfloat]... no
++checking for package setspace [setspace]... no
++checking for package slashed [slashed]... yes
++checking for package soul [soul]... no
++checking for package subfig [subfig]... no
++checking for package textcomp [textcomp]... yes
++checking for package ulem [ulem]... yes
++checking for package units [units]... no
++checking for package url [url]... yes
++checking for package varioref [varioref]... yes
++checking for package wrapfig [wrapfig]... no
++checking for package xargs [xargs]... no
++checking for package xcolor [xcolor]... no
++checking for package psnfss [times.sty]... yes
++checking for package avant [avant]... yes
++checking for package bookman [bookman]... yes
++checking for package chancery [chancery]... yes
++checking for package charter [charter]... yes
++checking for package courier [courier]... yes
++checking for package helvet [helvet]... yes
++checking for package mathpazo [mathpazo]... yes
++checking for package mathpple [mathpple]... yes
++checking for package mathptm [mathptm]... yes
++checking for package mathptmx [mathptmx]... yes
++checking for package newcent [newcent]... yes
++checking for package pifont [pifont]... yes
++checking for package utopia [utopia]... yes
++checking for package ae [ae]... yes
++checking for package bera [bera]... no
++checking for package ccfonts [ccfonts]... no
++checking for package cmbright [cmbright]... no
++checking for package eco [eco]... no
++checking for package fourier [fourier]... no
++checking for package lmodern [lmodern]... yes
++checking for package luximono [luximono]... no
++checking for package tipa [tipa]... no
++Inspection done.
++Read the file doc/LaTeXConfig.lyx for more information.
++checking list of modules... 
+layouts\braille.module
+layouts\endnotes.module
+layouts\foottoend.module
+layouts\hanging.module
+layouts\linguistics.module
+layouts\logicalmkup.module
+layouts\minimalistic.module
+layouts\theorems-ams-extended.module
+layouts\theorems-ams.module
+layouts\theorems-chap.module
+layouts\theorems-sec.module
+layouts\theorems-starred.module
+layouts\theorems-std.module
+C:\LyX16\Resources\layouts\braille.module
+C:\LyX16\Resources\layouts\endnotes.module
+C:\LyX16\Resources\layouts\foottoend.module
+C:\LyX16\Resources\layouts\hanging.module
+C:\LyX16\Resources\layouts\linguistics.module
+C:\LyX16\Resources\layouts\logicalmkup.module
+C:\LyX16\Resources\layouts\minimalistic.module
+C:\LyX16\Resources\layouts\theorems-ams-extended.module
+C:\LyX16\Resources\layouts\theorems-ams.module
+C:\LyX16\Resources\layouts\theorems-chap.module
+C:\LyX16\Resources\layouts\theorems-sec.module
+C:\LyX16\Resources\layouts\theorems-starred.module
+C:\LyX16\Resources\layouts\theorems-std.module
+	done
