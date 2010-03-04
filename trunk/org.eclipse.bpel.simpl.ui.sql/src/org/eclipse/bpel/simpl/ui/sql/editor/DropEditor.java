@@ -37,6 +37,7 @@ public class DropEditor extends AStatementEditor {
 	private Label labelSchemaName=null;
 	
 	
+	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
