@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -30,6 +31,10 @@ public class CallEditor extends AStatementEditor {
 	Button addToStatement;
 	Text proceText;
 	
+	StyleRange style_Parameter = new StyleRange();
+	
+	Display display;
+	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
@@ -47,6 +52,7 @@ public class CallEditor extends AStatementEditor {
 	
 	@Override
 	public void createComposite(Composite composite) {
+		display=composite.getDisplay();
 		GridData gridData1 = new GridData();
 		gridData1.horizontalAlignment = GridData.FILL;
 		gridData1.grabExcessHorizontalSpace = true;
@@ -94,17 +100,35 @@ public class CallEditor extends AStatementEditor {
 		}
 		
 		try {
+			StyleRange style_KeyWord = new StyleRange();
 			if (getStatement()!=null){
 				statementText.setText(getStatement());
 				if(statementText.getText().length()>8){
 					if(statementText.getText().equals("statement")){
+						style_KeyWord.start = statementText.getText().length();
 						statementText.setText("CALL ");
+						style_KeyWord.length= statementText.getText().length()-style_KeyWord.start;
+						style_KeyWord.foreground  = composite.getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
+						statementText.setStyleRange(style_KeyWord);
+						
 					}
 					
 				}
-				else{statementText.setText("CALL ");}
+				else{
+					style_KeyWord.start = statementText.getText().length();
+					statementText.setText("CALL ");
+					style_KeyWord.length= statementText.getText().length()-style_KeyWord.start;
+					style_KeyWord.foreground  = composite.getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
+					statementText.setStyleRange(style_KeyWord);
+				}
 			}
-			else {statementText.setText("CALL ");}
+			else {
+				style_KeyWord.start = statementText.getText().length();
+				statementText.setText("CALL ");
+				style_KeyWord.length= statementText.getText().length()-style_KeyWord.start;
+				style_KeyWord.foreground  = composite.getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
+				statementText.setStyleRange(style_KeyWord);
+			}
 			
 			CreateCallUIElements(compos);
 		} catch (Exception e) {
@@ -167,13 +191,23 @@ public class CallEditor extends AStatementEditor {
 
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-				    statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");				
-				}
+					
+					StyleRange style_Variable = new StyleRange();
+					style_Variable.start = statementText.getText().length();
+					statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");				
+					style_Variable.length= statementText.getText().length()-style_Variable.start;
+					style_Variable.foreground  = display.getSystemColor(SWT.COLOR_RED);
+					statementText.setStyleRange(style_Variable);
+									}
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");
-					
+					StyleRange style_Variable = new StyleRange();
+					style_Variable.start = statementText.getText().length();
+					statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");				
+					style_Variable.length= statementText.getText().length()-style_Variable.start;
+					style_Variable.foreground  = display.getSystemColor(SWT.COLOR_RED);
+					statementText.setStyleRange(style_Variable);					
 				}
 
 			});
@@ -353,8 +387,13 @@ public class CallEditor extends AStatementEditor {
 							
 							
 						}
-						
+//						
+//						style_KeyWord.start = statementText.getText().length();
 						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+//						style_KeyWord.length= statementText.getText().length()-style_KeyWord.start;
+//						style_KeyWord.foreground  = display.getSystemColor(SWT.COLOR_BLUE);
+//						statementText.setStyleRange(style_KeyWord);
+						
 						proceLabel.setEnabled(true);
 						proceText.setEnabled(true);
 						addToStatement.setEnabled(true);
