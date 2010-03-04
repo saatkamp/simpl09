@@ -1,8 +1,8 @@
-<project name="jpa_enhance_builder">
+<project name="ode-dao">
 	<path id="enhance.cp">
 	        <pathelement location="${basedir}${file.separator}${build.dir}"/>
 
-	        <fileset dir="${basedir}${file.separator}${openjpa.libs}">
+	        <fileset dir="${basedir}${file.separator}jpa_lib">
 	            <include name="**/*.jar"/>
 	        </fileset>
 	</path>
