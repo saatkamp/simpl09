@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.LineStyleEvent;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -19,6 +20,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
 
@@ -26,7 +28,7 @@ public class UpdateEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
-	private StyledText statementText = null;
+	private LiveEditStyleText statementText = null;
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
@@ -86,7 +88,7 @@ public class UpdateEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER);
+		statementText=new LiveEditStyleText(comp);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 

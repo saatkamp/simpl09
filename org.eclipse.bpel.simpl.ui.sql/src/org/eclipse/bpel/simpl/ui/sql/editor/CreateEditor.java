@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
 
@@ -31,7 +32,7 @@ public class CreateEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
-	private StyledText statementText = null;
+	private LiveEditStyleText statementText = null;
 	List columnList;
 	
 	private Composite tableNameComposite=null;
@@ -97,6 +98,7 @@ public class CreateEditor extends AStatementEditor {
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(xmlFilePath);
+		
 		buttonsCompo=new Composite(compos, SWT.RIGHT_TO_LEFT);
 		buttonsCompo.setLayout(gridLayoutA);
 		//buttonsCompo.setLayoutData(gridData1);
@@ -104,7 +106,7 @@ public class CreateEditor extends AStatementEditor {
 		//buttonsCompo.setEnabled(false);
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER|SWT.V_SCROLL| SWT.H_SCROLL);
+		statementText=new LiveEditStyleText(comp);
 		statementText.setLayoutData(gridData2);
 		statementText.addModifyListener(new ModifyListener(){
 

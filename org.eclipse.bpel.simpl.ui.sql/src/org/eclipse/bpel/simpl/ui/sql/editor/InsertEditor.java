@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
 
@@ -27,7 +28,7 @@ public class InsertEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
-	private StyledText statementText = null;
+	private LiveEditStyleText statementText = null;
 	Text textTableName=null;
 	Composite tableNameComposite=null;
 	Text valuesText=null;
@@ -84,7 +85,7 @@ public class InsertEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER | SWT.V_SCROLL);
+		statementText=new LiveEditStyleText(comp);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
