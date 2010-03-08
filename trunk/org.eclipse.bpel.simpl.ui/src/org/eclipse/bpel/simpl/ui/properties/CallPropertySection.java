@@ -11,6 +11,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -24,19 +25,28 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
+
 @SuppressWarnings("unused")
 public class CallPropertySection extends DMActivityPropertySection {
 
 	private Label typeLabel = null;
 	private CCombo typeCombo = null;
 	private Label statementLabel = null;
-	private Text statementText = null;
+	
+	
 	private Button showStatementCheckBox = null;
 	private Label dataSourceAddressLabel = null;
 	private Text dataSourceAddressText = null;
 	private Label kindLabel = null;
 	private CCombo kindCombo = null;
-	private Button openEditorButton = null;
+	
+	private LiveEditStyleText statementText = null;
+	
+	private Button insertBpelVariable = null;
+	private Button insertTable = null;
+	private Button Save = null;
+	
 	private Label languageLabel = null;
 	private CCombo languageCombo = null;
 	private Composite parentComposite = null;
@@ -186,10 +196,10 @@ public class CallPropertySection extends DMActivityPropertySection {
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		Label filler43 = new Label(composite, SWT.NONE);
-		openEditorButton = new Button(composite, SWT.NONE);
-		openEditorButton.setText("Open Editor");
-		openEditorButton.setLayoutData(gridData21);
-		openEditorButton.addSelectionListener(new SelectionListener() {
+		insertBpelVariable = new Button(composite, SWT.NONE);
+		insertBpelVariable.setText("Open Editor");
+		insertBpelVariable.setLayoutData(gridData21);
+		insertBpelVariable.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -205,45 +215,109 @@ public class CallPropertySection extends DMActivityPropertySection {
 
 		Label filler3 = new Label(composite, SWT.NONE);
 		Label filler41 = new Label(composite, SWT.NONE);
-		showStatementCheckBox = new Button(composite, SWT.CHECK);
-		showStatementCheckBox.setText("Show resulting statement");
-		showStatementCheckBox.setBackground(Display.getCurrent()
-				.getSystemColor(SWT.COLOR_WHITE));
-		showStatementCheckBox.setLayoutData(gridData11);
-		Label filler6 = new Label(composite, SWT.NONE);
-		showStatementCheckBox.addSelectionListener(new SelectionListener() {
-
+//		showStatementCheckBox = new Button(composite, SWT.CHECK);
+//		showStatementCheckBox.setText("Show resulting statement");
+//		showStatementCheckBox.setBackground(Display.getCurrent()
+//				.getSystemColor(SWT.COLOR_WHITE));
+//		showStatementCheckBox.setLayoutData(gridData11);
+//		Label filler6 = new Label(composite, SWT.NONE);
+		
+		
+//		showStatementCheckBox.addSelectionListener(new SelectionListener() {
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent arg0) {
+//				widgetSelected(arg0);
+//			}
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent arg0) {
+//				if (showStatementCheckBox.getSelection()) {
+//					statementLabel.setVisible(true);
+//					statementText.setVisible(true);
+//				} else {
+//					statementLabel.setVisible(false);
+//					statementText.setVisible(false);
+//				}
+//			}
+//		});
+//		Label filler1 = new Label(composite, SWT.NONE);
+//		statementLabel = new Label(composite, SWT.NONE);
+//		statementLabel.setText("Resulting statement:");
+//		statementLabel.setVisible(false);
+//		statementLabel.setLayoutData(gridData);
+//		statementLabel.setBackground(Display.getCurrent().getSystemColor(
+//				SWT.COLOR_WHITE));
+		
+		
+		
+		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
+		Composite statementCompo=new Composite(composite, SWT.NONE);
+		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		GridData gridData13 = new GridData();
+		gridData13.horizontalSpan = 3;
+		
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+		
+		GridData gridData15 = new GridData();
+		gridData15.horizontalSpan = 4;
+		gridData15.horizontalAlignment = GridData.FILL;
+		gridData15.verticalAlignment = GridData.FILL;
+		gridData15.grabExcessVerticalSpace = true;
+		gridData15.grabExcessHorizontalSpace = true;
+		
+		GridData gridData24 = new GridData();
+		gridData24.horizontalAlignment = GridData.BEGINNING;
+		gridData24.verticalAlignment = GridData.CENTER;
+		
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		statementCompo.setLayout(gridLayout2);
+		statementCompo.setLayoutData(gridData14);
+		//statementCompo.setSize(new Point(150,70));
+		insertBpelVariable = new Button(statementCompo, SWT.NONE);
+		insertBpelVariable.setText("Insert Variable");
+		insertTable = new Button(statementCompo, SWT.NONE);
+		Save = new Button(statementCompo, SWT.NONE);
+		Save.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		Save.setText("Save");
+		Save.addSelectionListener(new SelectionListener() {
+			
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				widgetSelected(arg0);
+			public void widgetSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				
 			}
-
+			
 			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				if (showStatementCheckBox.getSelection()) {
-					statementLabel.setVisible(true);
-					statementText.setVisible(true);
-				} else {
-					statementLabel.setVisible(false);
-					statementText.setVisible(false);
-				}
+			public void widgetDefaultSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				
 			}
 		});
-		Label filler1 = new Label(composite, SWT.NONE);
-		statementLabel = new Label(composite, SWT.NONE);
-		statementLabel.setText("Resulting statement:");
-		statementLabel.setVisible(false);
-		statementLabel.setLayoutData(gridData);
-		statementLabel.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		statementText = new Text(composite, SWT.BORDER);
+
+		insertTable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		insertTable.setText("Insert Table");
+		
+		//insertBpelVariable.setLayoutData(gridData24);
+		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		statementText = new LiveEditStyleText(statementCompo);
+		statementText.setLayoutData(gridData15);
+		
+		
 		statementText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		statementText.setVisible(false);
-		statementText.setLayoutData(gridData1);
-		statementText.setEditable(false);
+		//statementText.setVisible(false);
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++
+		
 	}
-
+	
+	
 	/**
 	 * This method initializes typeCombo
 	 * 
