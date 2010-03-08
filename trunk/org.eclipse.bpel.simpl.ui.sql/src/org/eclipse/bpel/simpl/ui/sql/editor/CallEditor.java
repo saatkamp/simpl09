@@ -19,14 +19,17 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
+import org.eclipse.bpel.simpl.ui.*;
 
 public class CallEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
-	private StyledText statementText = null;
+	//private StyledText statementText = null;
+	private LiveEditStyleText statementText=null;
 	Label proceLabel;
 	Button addToStatement;
 	Text proceText;
@@ -84,7 +87,8 @@ public class CallEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		try {
-			statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
+			//statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
+			statementText=new LiveEditStyleText(comp);
 			statementText.setLayoutData(gridData1);
 			statementText.addModifyListener(new ModifyListener(){
 

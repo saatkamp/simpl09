@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
 
@@ -34,7 +35,7 @@ public class DeleteEditor extends AStatementEditor {
 	private Composite comp = null;
 	private Composite compos = null;
 	
-	private StyledText statementText = null;
+	private LiveEditStyleText statementText = null;
 	List tablsList;
 	Composite tableNameComposite=null;
 	ArrayList<Button> buttonList=new ArrayList<Button>();
@@ -80,7 +81,7 @@ public class DeleteEditor extends AStatementEditor {
 		
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER| SWT.V_SCROLL| SWT.H_SCROLL);
+		statementText=new LiveEditStyleText(comp);
 		statementText.setLayoutData(gridData2);
 		statementText.addModifyListener(new ModifyListener(){
 

@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
 
@@ -26,7 +27,7 @@ public class DropEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
-	private StyledText statementText = null;
+	private LiveEditStyleText statementText = null;
 	private Label dropLabel = null;
 	private List dropList = null;
 	private Text dropText = null;
@@ -88,7 +89,7 @@ public class DropEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER| SWT.V_SCROLL| SWT.H_SCROLL);
+		statementText=new LiveEditStyleText(comp);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 

@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
 import xmlParser.QueryKeyWordsXmlParser;
 
@@ -25,7 +26,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 
 	private Composite comp = null;
 	private Composite compos = null;
-	private StyledText statementText = null;
+	private LiveEditStyleText statementText = null;
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
@@ -100,7 +101,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText = new StyledText(comp, SWT.BORDER);
+		statementText=new LiveEditStyleText(comp);
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
