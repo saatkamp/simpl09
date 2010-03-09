@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Example QueryLanguage Plug-In
 Bundle-SymbolicName: org.eclipse.bpel.simpl.ui.sql;singleton:=true
-Bundle-Version: 0.1.3
+Bundle-Version: 0.1.4
 Bundle-Activator: org.eclipse.bpel.simpl.ui.sql.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
