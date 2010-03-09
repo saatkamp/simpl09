@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.bpel.simpl.feature"
       label="SIMPL BPEL-DM Plug-In"
-      version="0.1.3"
+      version="0.1.4"
       provider-name="SIMPL">
 
    <description>
