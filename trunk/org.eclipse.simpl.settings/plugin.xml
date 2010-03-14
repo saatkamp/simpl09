@@ -34,8 +34,25 @@
             label="SIMPL Core">
          <settingsItem
                composite="org.eclipse.simpl.settings.ui.extensions.SIMPLCoreAddressComposite"
-               id="Address"
-               label="Address">
+               id="SIMPL Core Address"
+               label="SIMPL Core Address">
+         </settingsItem>
+      </settingsItem>
+      <settingsItem
+            id="RRS "
+            label="RRS ">
+         <settingsItem
+               composite="org.eclipse.simpl.settings.ui.extensions.RRSAddressComposite"
+               id="RRS Address"
+               label="RRS Address">
+         </settingsItem>
+      </settingsItem>
+      <settingsItem
+            label="UDDI Registry">
+         <settingsItem
+               composite="org.eclipse.simpl.settings.ui.extensions.UDDIRegistryComposite"
+               id="UDDI Registry Address"
+               label="UDDI Registry Address">
          </settingsItem>
       </settingsItem>
    </extension>
