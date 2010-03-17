@@ -11,6 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.core.datasource.plugins/src"/>
+        <javaElement handleIdentifier="=org.simpl.core.datasource.plugins/src&lt;org.simpl.core.datasource.plugins.sndb"/>
+        <javaElement handleIdentifier="=org.simpl.core.datasource.plugins/src&lt;org.simpl.core.datasource.plugins.xmldb"/>
+        <javaElement handleIdentifier="=org.simpl.core.datasource.plugins/src&lt;org.simpl.core.datasource.plugins.rdb"/>
     </selectedElements>
 </jardesc>

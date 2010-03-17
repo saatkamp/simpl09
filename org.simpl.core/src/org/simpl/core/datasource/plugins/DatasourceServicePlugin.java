@@ -27,12 +27,13 @@ import commonj.sdo.helper.XSDHelper;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author hahnml
- * @version $Id$<br>
+ * @version $Id: DatasourceServicePlugin.java 904 2010-02-22 11:23:43Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public abstract class DatasourceServicePlugin implements DatasourceService {
   /**
-   * Name of the standard meta data schema file.
+   * Name of the meta data schema file.
    */
   private static final String DATASOURCE_META_DATA_SCHEMA_FILE = "DatasourceMetaData.xsd";
 
@@ -157,6 +158,7 @@ public abstract class DatasourceServicePlugin implements DatasourceService {
           + "' could not be found.");
     }
 
+
     XSDHelper.INSTANCE.define(inputStream, null);
 
     try {
@@ -164,11 +166,36 @@ public abstract class DatasourceServicePlugin implements DatasourceService {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
+
     metaDataObject = DataFactory.INSTANCE.create(
-        "http://org.simpl.core/src/org/simpl/core/datasource/metadata/"
-            + DATASOURCE_META_DATA_SCHEMA_FILE, this.datasourceMetaDataType);
+        "http://org.simpl.core/datasource/metadata/DatasourceMetaData",
+        this.datasourceMetaDataType);
 
     return metaDataObject;
+  }
+  
+  /**
+   * Returns the meta data schema file as InputStream.
+   *  
+   * @return
+   */
+  public InputStream getDatasourceMetaDataSchema() {
+    InputStream inputStream = null;
+
+    // Load the schema from jar file
+    inputStream = getClass().getResourceAsStream(DATASOURCE_META_DATA_SCHEMA_FILE);
+
+    // Load the local schema file
+    if (inputStream == null) {
+      inputStream = getClass().getResourceAsStream(
+          "/org/simpl/core/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
+    }
+
+    if (inputStream == null) {
+      System.out.println("The file '" + DATASOURCE_META_DATA_SCHEMA_FILE
+          + "' could not be found.");
+    }
+    
+    return inputStream;
   }
 }
