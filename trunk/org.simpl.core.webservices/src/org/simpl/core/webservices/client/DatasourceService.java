@@ -148,6 +148,27 @@ public interface DatasourceService {
 
     /**
      * 
+     * @param dsAddress
+     * @param dsSubtype
+     * @param dsType
+     * @return
+     *     returns java.lang.String
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "getMetaDataSchema")
+    @WebResult(partName = "return")
+    public String getMetaDataSchema(
+        @WebParam(name = "dsAddress", partName = "dsAddress")
+        String dsAddress,
+        @WebParam(name = "dsType", partName = "dsType")
+        String dsType,
+        @WebParam(name = "dsSubtype", partName = "dsSubtype")
+        String dsSubtype)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns java.lang.String
      */

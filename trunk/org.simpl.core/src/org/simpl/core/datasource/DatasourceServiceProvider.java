@@ -35,7 +35,7 @@ public class DatasourceServiceProvider {
   }
 
   /**
-   * Returns the datasource service instance that suppots the given datasource type and
+   * Returns the DatasourceService instance that supports the given datasource type and
    * subtype.
    * 
    * @param dsType
@@ -67,7 +67,7 @@ public class DatasourceServiceProvider {
    * languages.
    */
   private void loadDatasourcePlugins() {
-    List<String> plugins = SIMPLCore.getInstance().config().getDataSourceServicePlugins();
+    List<String> plugins = SIMPLCore.getInstance().config().getDatasourceServicePlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DatasourceServicePlugin datasourceServiceInstance;
     String datasourceType = null;

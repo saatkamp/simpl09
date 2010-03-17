@@ -2,15 +2,19 @@ package org.simpl.core.webservices;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
+import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.datasource.DatasourceServiceProvider;
 import org.simpl.core.datasource.exceptions.ConnectionException;
+import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
 import org.simpl.core.helpers.Parameter;
 
 import commonj.sdo.DataObject;
@@ -96,22 +100,47 @@ public class Datasource {
     DataObject dataObject = null;
     String metaData = null;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        
+
     dataObject = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)
         .getMetaData(dsAddress);
-    
+
     try {
       XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", outputStream);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
+
     metaData = new String(outputStream.toByteArray());
 
     return metaData;
   }
 
+  @WebMethod(action = "getMetaDataSchema")
+  public String getMetaDataSchema(
+      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
+      @WebParam(name = "dsType", targetNamespace = "") String dsType,
+      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+      throws ConnectionException {
+    InputStream inputStream = null;
+    String metaDataSchema = "";
+    StringWriter writer = new StringWriter();    
+    
+    inputStream = ((DatasourceServicePlugin)SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)).getDatasourceMetaDataSchema();
+    
+    // convert inputStream to String
+    try {
+      IOUtils.copy(inputStream, writer);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    metaDataSchema = writer.toString();
+    
+    return metaDataSchema;
+  }
+  
   @WebMethod(action = "getDatasourceTypes")
   public String getDatasourceTypes() {
     return Parameter.serialize(SIMPLCore.getInstance().getDatasourceTypes());
