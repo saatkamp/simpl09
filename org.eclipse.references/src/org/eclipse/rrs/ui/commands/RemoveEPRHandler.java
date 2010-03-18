@@ -36,6 +36,14 @@ public class RemoveEPRHandler extends AbstractHandler implements IHandler {
 				references.remove(reference);
 			}
 			view.getViewer().refresh();
+		
+//			for (EPR reference : references){
+//				System.out.println("Name: " + reference.getReferenceParameters().getReferenceName());
+//				System.out.println("Address: " + reference.getAddress().getUri());
+//				System.out.println("Adapter: " + reference.getReferenceProperties().getResolutionSystem().getAdapterURI());
+//				System.out.println("Statement: " + reference.getReferenceParameters().getStatement());
+//				System.out.println("--------------------------------------------");
+//			}
 		}
 		return null;
 	}

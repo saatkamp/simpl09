@@ -12,6 +12,8 @@ import org.eclipse.rrs.model.reference.ReferenceProperties;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -39,7 +41,7 @@ public class AddReferenceDialog extends TitleAreaDialog {
 	@Override
 	protected Control createContents(Composite parent) {
 		Control contents = super.createContents(parent);
-		setTitle("Add a new Reference");
+		setTitle("Add a new reference");
 		setMessage("Please enter the data of the new reference",
 				IMessageProvider.INFORMATION);
 		return contents;
@@ -47,9 +49,17 @@ public class AddReferenceDialog extends TitleAreaDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
+		parent.getShell().setImage(new Image(parent.getDisplay(), getClass()
+				.getResourceAsStream("/icons/add.gif")));
+		
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 2;
 		parent.setLayout(layout);
+		
+		GridData gridData = new GridData();
+ 		gridData.horizontalAlignment = GridData.FILL;
+ 		gridData.grabExcessHorizontalSpace = true;
+		
 		Label label1 = new Label(parent, SWT.NONE);
 		label1.setText("Name");
 		name = new Text(parent, SWT.BORDER);
@@ -63,15 +73,20 @@ public class AddReferenceDialog extends TitleAreaDialog {
 		label4.setText("Statement");
 		statement = new Text(parent, SWT.BORDER);
 		
+		name.setLayoutData(gridData);
+ 		address.setLayoutData(gridData);
+ 		adapter.setLayoutData(gridData);
+ 		statement.setLayoutData(gridData);
+
 		return parent;
 	}
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
 		((GridLayout) parent.getLayout()).numColumns++;
-
+	
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText("OK");
+		button.setText("ADD");
 		button.setFont(JFaceResources.getDialogFont());
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -79,11 +94,13 @@ public class AddReferenceDialog extends TitleAreaDialog {
 					/*
 					 * Saving the values in the EPR
 					 */
-					//Create a new EPR
+					// Create a new EPR
 					ReferenceFactory factory = ReferenceFactory.eINSTANCE;
 					reference = factory.createEPR();
-					ReferenceParameters parameters = factory.createReferenceParameters();
-					ReferenceProperties properties = factory.createReferenceProperties();
+					ReferenceParameters parameters = factory
+							.createReferenceParameters();
+					ReferenceProperties properties = factory
+							.createReferenceProperties();
 					RRSAdapter adapt = factory.createRRSAdapter();
 					adapt.setAdapterURI(adapter.getText());
 					properties.setResolutionSystem(adapt);
@@ -102,5 +119,10 @@ public class AddReferenceDialog extends TitleAreaDialog {
 			}
 		});
 	}
-}
+	
+	@Override
+	public boolean isHelpAvailable() {
+		return false;
+	}
 
+}
