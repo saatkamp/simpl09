@@ -10,7 +10,7 @@
       <view
             category="org.eclipse.references.category"
             class="org.eclipse.rrs.ui.view.ReferenceManagementView"
-            icon="icons/SIMPL-logo-small.png"
+            icon="icons/reference.png"
             id="org.eclipse.references.referenceManagementView"
             name="Reference Management View"
             restorable="true">

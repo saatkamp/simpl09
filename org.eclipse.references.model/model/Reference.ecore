@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model"
-    nsURI="http://simpl.uni-stuttgart.de/reference/model" nsPrefix="rrs">
-  <eClassifiers xsi:type="ecore:EClass" name="EndPointReference">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="reference"
+    nsURI="http://simpl.uni-stuttgart.de/rrs/model" nsPrefix="rrs">
+  <eClassifiers xsi:type="ecore:EClass" name="EPR">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="address" lowerBound="1"
         eType="#//Address" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referenceProperties" lowerBound="1"
         eType="#//ReferenceProperties" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="referenceParameters" lowerBound="1"
         eType="#//ReferenceParameters" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="portType" lowerBound="1"
-        eType="#//PortType" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceName" lowerBound="1"
-        eType="#//ServiceName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portType" eType="#//PortType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceName" eType="#//ServiceName"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="policy" eType="#//Policy"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Address"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ReferenceProperties"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ReferenceParameters"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PortType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PortType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Address">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceProperties">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resolutionSystem" lowerBound="1"
+        eType="#//RRSAdapter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceParameters">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceName">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="portName" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//NCName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PortName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Policy"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RRSAdapter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adapterURI" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

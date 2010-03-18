@@ -1,11 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: References
+Bundle-Name: RRS Reference Eclipse Plug-In
 Bundle-SymbolicName: org.eclipse.rrs.ui;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Activator: org.eclipse.rrs.ui.Activator
 Bundle-Vendor: SIMPL
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.rrs.model;bundle-version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
