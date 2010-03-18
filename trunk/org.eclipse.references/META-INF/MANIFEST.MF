@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: References
-Bundle-SymbolicName: org.eclipse.references;singleton:=true
+Bundle-SymbolicName: org.eclipse.references.ui;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Activator: org.eclipse.references.Activator
 Bundle-Vendor: SIMPL

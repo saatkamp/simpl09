@@ -9,15 +9,7 @@
       </category>
       <view
             category="org.eclipse.references.category"
-            class="org.eclipse.references.ReferenceShowView"
-            icon="icons/SIMPL-logo-small.png"
-            id="org.eclipse.references.referenceShowView"
-            name="Show References View"
-            restorable="true">
-      </view>
-      <view
-            category="org.eclipse.references.category"
-            class="org.eclipse.references.ReferenceManagementView"
+            class="org.eclipse.references.view.ReferenceManagementView"
             icon="icons/SIMPL-logo-small.png"
             id="org.eclipse.references.referenceManagementView"
             name="Reference Management View"

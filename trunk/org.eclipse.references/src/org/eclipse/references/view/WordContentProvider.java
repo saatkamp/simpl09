@@ -1,4 +1,4 @@
-package org.eclipse.references;
+package org.eclipse.references.view;
 
 import java.util.List;
 import org.eclipse.jface.viewers.*;
