@@ -1,4 +1,4 @@
-package org.eclipse.references.view;
+package org.eclipse.rrs.ui.view;
 
 import java.io.*;
 import java.util.*;

@@ -1,15 +1,15 @@
-package org.eclipse.references.view;
+package org.eclipse.rrs.ui.view;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.*;
 
-public class WordActionDelegate implements IViewActionDelegate {
+public class BlueActionDelegate implements IViewActionDelegate {
 
 	/**
-	 * Constructor for WordActionDelegate
+	 * Constructor for BlueActionDelegate
 	 */
-	public WordActionDelegate() {
+	public BlueActionDelegate() {
 		super();
 	}
 
@@ -23,7 +23,7 @@ public class WordActionDelegate implements IViewActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		System.out.println("Word Action Called");
+		System.out.println("Blue Action Called");
 	}
 
 	/**
