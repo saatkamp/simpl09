@@ -1,4 +1,4 @@
-package org.eclipse.references.view;
+package org.eclipse.rrs.ui.view;
 
 import java.io.File;
 import java.net.*;
@@ -9,7 +9,7 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.*;
 import org.eclipse.jface.window.Window;
-import org.eclipse.references.Activator;
+import org.eclipse.rrs.ui.Activator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;

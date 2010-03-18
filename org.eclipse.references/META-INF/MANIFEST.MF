@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: References
-Bundle-SymbolicName: org.eclipse.references.ui;singleton:=true
+Bundle-SymbolicName: org.eclipse.rrs.ui;singleton:=true
 Bundle-Version: 0.1.0
-Bundle-Activator: org.eclipse.references.Activator
+Bundle-Activator: org.eclipse.rrs.ui.Activator
 Bundle-Vendor: SIMPL
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime

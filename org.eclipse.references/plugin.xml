@@ -9,7 +9,7 @@
       </category>
       <view
             category="org.eclipse.references.category"
-            class="org.eclipse.references.view.ReferenceManagementView"
+            class="org.eclipse.rrs.ui.view.ReferenceManagementView"
             icon="icons/SIMPL-logo-small.png"
             id="org.eclipse.references.referenceManagementView"
             name="Reference Management View"

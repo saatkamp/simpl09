@@ -1,4 +1,4 @@
-package org.eclipse.references.view;
+package org.eclipse.rrs.ui.view;
 
 import org.eclipse.ui.IActionFilter;
 
