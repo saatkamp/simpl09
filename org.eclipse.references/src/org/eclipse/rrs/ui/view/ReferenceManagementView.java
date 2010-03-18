@@ -16,6 +16,8 @@ import org.eclipse.ui.part.ViewPart;
  */
 public class ReferenceManagementView extends ViewPart {
 
+	public static final String ID = "org.eclipse.references.referenceManagementView";
+	
 	/**
 	 * Constructor
 	 */
@@ -26,24 +28,27 @@ public class ReferenceManagementView extends ViewPart {
 	private TableViewer viewer;
 
 	public void createPartControl(Composite parent) {
-		createViewer(parent);
-		// Get the content for the viewer, setInput will call getElements in the
-		// contentProvider
-		viewer.setInput(ModelProvider.getInstance().getReferences());
-	}
-
-	private void createViewer(Composite parent) {
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION);
 		createColumns(viewer);
 		viewer.setContentProvider(new ReferenceContentProvider());
 		viewer.setLabelProvider(new ReferenceLabelProvider());
+		// Get the content for the viewer, setInput will call getElements in the
+		// contentProvider
+		viewer.setInput(ModelProvider.getInstance().getReferences());
+		// Make the selection available
+		getSite().setSelectionProvider(viewer);
+
+	}
+
+	public TableViewer getViewer() {
+		return viewer;
 	}
 
 	// This will create the columns for the table
 	private void createColumns(TableViewer viewer) {
 
-		String[] titles = { "Name", "Address", "Ádapter", "Statement" };
+		String[] titles = { "Name", "RRS-Address", "Ádapter", "Statement" };
 		int[] bounds = { 150, 200, 100, 300 };
 
 		for (int i = 0; i < titles.length; i++) {
