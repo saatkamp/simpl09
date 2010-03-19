@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: RRS Reference Model
-Bundle-SymbolicName: org.eclipse.rrs.model;singleton:=true
+Bundle-Name: SIMPL RRS Model Eclipse Plug-In
+Bundle-SymbolicName: org.eclipse.simpl.rrs.model;singleton:=true
 Bundle-Version: 0.0.1
 Bundle-ClassPath: .
 Bundle-Vendor: SIMPL
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.rrs.model,
- org.eclipse.rrs.model.reference,
- org.eclipse.rrs.model.reference.impl,
- org.eclipse.rrs.model.reference.util
+Export-Package: org.eclipse.simpl.rrs.model,
+ org.eclipse.simpl.rrs.model.reference,
+ org.eclipse.simpl.rrs.model.reference.impl,
+ org.eclipse.simpl.rrs.model.reference.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport

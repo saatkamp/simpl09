@@ -9,7 +9,7 @@
       </category>
       <view
             category="org.eclipse.references.category"
-            class="org.eclipse.rrs.ui.view.ReferenceManagementView"
+            class="org.eclipse.simpl.rrs.ui.view.ReferenceManagementView"
             icon="icons/reference.png"
             id="org.eclipse.references.referenceManagementView"
             name="Reference Management View"
@@ -19,17 +19,17 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.eclipse.rrs.ui.commands.AddEPRHandler"
+            defaultHandler="org.eclipse.simpl.rrs.ui.commands.AddEPRHandler"
             id="org.eclipse.rrs.ui.commands.AddEPR"
             name="Add Reference">
       </command>
       <command
-            defaultHandler="org.eclipse.rrs.ui.commands.RemoveEPRHandler"
+            defaultHandler="org.eclipse.simpl.rrs.ui.commands.RemoveEPRHandler"
             id="org.eclipse.rrs.ui.commands.RemoveEPR"
             name="Remove Reference">
       </command>
       <command
-            defaultHandler="org.eclipse.rrs.ui.commands.EditEPRHandler"
+            defaultHandler="org.eclipse.simpl.rrs.ui.commands.EditEPRHandler"
             id="org.eclipse.rrs.ui.commands.EditEPR"
             name="Edit Reference">
       </command>
