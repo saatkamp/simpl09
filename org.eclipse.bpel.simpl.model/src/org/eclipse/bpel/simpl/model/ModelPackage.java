@@ -10,6 +10,7 @@ import org.eclipse.bpel.model.BPELPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -1305,6 +1306,153 @@ public interface ModelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.ReferenceVariableImpl <em>Reference Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.simpl.model.impl.ReferenceVariableImpl
+	 * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getReferenceVariable()
+	 * @generated
+	 */
+	int REFERENCE_VARIABLE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__DOCUMENTATION_ELEMENT = BPELPackage.VARIABLE__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__ELEMENT = BPELPackage.VARIABLE__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__EEXTENSIBILITY_ELEMENTS = BPELPackage.VARIABLE__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__DOCUMENTATION = BPELPackage.VARIABLE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__NAME = BPELPackage.VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Message Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__MESSAGE_TYPE = BPELPackage.VARIABLE__MESSAGE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>XSD Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__XSD_ELEMENT = BPELPackage.VARIABLE__XSD_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__TYPE = BPELPackage.VARIABLE__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>From</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__FROM = BPELPackage.VARIABLE__FROM;
+
+	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__VALUE_TYPE = BPELPackage.VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Reference Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__REFERENCE_TYPE = BPELPackage.VARIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Period</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__PERIOD = BPELPackage.VARIABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>External</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE__EXTERNAL = BPELPackage.VARIABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Reference Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_VARIABLE_FEATURE_COUNT = BPELPackage.VARIABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.simpl.model.ReferenceType <em>Reference Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.simpl.model.ReferenceType
+	 * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getReferenceType()
+	 * @generated
+	 */
+	int REFERENCE_TYPE = 10;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataManagementActivity <em>Data Management Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1470,6 +1618,70 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRetrieveDataActivity_DataVariable();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.ReferenceVariable <em>Reference Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reference Variable</em>'.
+	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable
+	 * @generated
+	 */
+	EClass getReferenceVariable();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value Type</em>'.
+	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType()
+	 * @see #getReferenceVariable()
+	 * @generated
+	 */
+	EReference getReferenceVariable_ValueType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getReferenceType <em>Reference Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reference Type</em>'.
+	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getReferenceType()
+	 * @see #getReferenceVariable()
+	 * @generated
+	 */
+	EAttribute getReferenceVariable_ReferenceType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getPeriod <em>Period</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Period</em>'.
+	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getPeriod()
+	 * @see #getReferenceVariable()
+	 * @generated
+	 */
+	EAttribute getReferenceVariable_Period();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal <em>External</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>External</em>'.
+	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal()
+	 * @see #getReferenceVariable()
+	 * @generated
+	 */
+	EReference getReferenceVariable_External();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.bpel.simpl.model.ReferenceType <em>Reference Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Reference Type</em>'.
+	 * @see org.eclipse.bpel.simpl.model.ReferenceType
+	 * @generated
+	 */
+	EEnum getReferenceType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1638,6 +1850,58 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE = eINSTANCE.getRetrieveDataActivity_DataVariable();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.ReferenceVariableImpl <em>Reference Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.simpl.model.impl.ReferenceVariableImpl
+		 * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getReferenceVariable()
+		 * @generated
+		 */
+		EClass REFERENCE_VARIABLE = eINSTANCE.getReferenceVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REFERENCE_VARIABLE__VALUE_TYPE = eINSTANCE.getReferenceVariable_ValueType();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE_VARIABLE__REFERENCE_TYPE = eINSTANCE.getReferenceVariable_ReferenceType();
+
+		/**
+		 * The meta object literal for the '<em><b>Period</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE_VARIABLE__PERIOD = eINSTANCE.getReferenceVariable_Period();
+
+		/**
+		 * The meta object literal for the '<em><b>External</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REFERENCE_VARIABLE__EXTERNAL = eINSTANCE.getReferenceVariable_External();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.ReferenceType <em>Reference Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.simpl.model.ReferenceType
+		 * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getReferenceType()
+		 * @generated
+		 */
+		EEnum REFERENCE_TYPE = eINSTANCE.getReferenceType();
 
 	}
 

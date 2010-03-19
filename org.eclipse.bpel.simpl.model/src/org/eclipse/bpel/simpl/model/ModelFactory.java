@@ -107,6 +107,15 @@ public interface ModelFactory extends EFactory {
 	RetrieveDataActivity createRetrieveDataActivity();
 
 	/**
+	 * Returns a new object of class '<em>Reference Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reference Variable</em>'.
+	 * @generated
+	 */
+	ReferenceVariable createReferenceVariable();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

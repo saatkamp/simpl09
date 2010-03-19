@@ -14,6 +14,7 @@ import javax.wsdl.extensions.ElementExtensible;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
 
+import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.simpl.model.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -221,6 +222,18 @@ public class ModelSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ModelPackage.REFERENCE_VARIABLE: {
+				ReferenceVariable referenceVariable = (ReferenceVariable)theEObject;
+				T result = caseReferenceVariable(referenceVariable);
+				if (result == null) result = caseVariable(referenceVariable);
+				if (result == null) result = caseBPEL_ExtensibleElement(referenceVariable);
+				if (result == null) result = caseExtensibleElement(referenceVariable);
+				if (result == null) result = caseWSDLElement(referenceVariable);
+				if (result == null) result = caseIElementExtensible(referenceVariable);
+				if (result == null) result = caseIAttributeExtensible(referenceVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -361,6 +374,21 @@ public class ModelSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reference Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reference Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferenceVariable(ReferenceVariable object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -462,6 +490,21 @@ public class ModelSwitch<T> {
 	 * @generated
 	 */
 	public T caseExtensionActivity(ExtensionActivity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariable(Variable object) {
 		return null;
 	}
 
