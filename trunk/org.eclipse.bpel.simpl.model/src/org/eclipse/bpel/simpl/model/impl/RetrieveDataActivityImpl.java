@@ -88,7 +88,7 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @customized
 	 */
 	public void setDataVariable(Variable newDataVariable) {
 		Variable oldDataVariable = dataVariable;

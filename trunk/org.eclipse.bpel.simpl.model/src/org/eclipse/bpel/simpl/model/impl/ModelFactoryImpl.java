@@ -9,6 +9,7 @@ package org.eclipse.bpel.simpl.model.impl;
 import org.eclipse.bpel.simpl.model.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -69,8 +70,39 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.DROP_ACTIVITY: return createDropActivity();
 			case ModelPackage.CALL_ACTIVITY: return createCallActivity();
 			case ModelPackage.RETRIEVE_DATA_ACTIVITY: return createRetrieveDataActivity();
+			case ModelPackage.REFERENCE_VARIABLE: return createReferenceVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case ModelPackage.REFERENCE_TYPE:
+				return createReferenceTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case ModelPackage.REFERENCE_TYPE:
+				return convertReferenceTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -162,6 +194,36 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public RetrieveDataActivity createRetrieveDataActivity() {
 		RetrieveDataActivityImpl retrieveDataActivity = new RetrieveDataActivityImpl();
 		return retrieveDataActivity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReferenceVariable createReferenceVariable() {
+		ReferenceVariableImpl referenceVariable = new ReferenceVariableImpl();
+		return referenceVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReferenceType createReferenceTypeFromString(EDataType eDataType, String initialValue) {
+		ReferenceType result = ReferenceType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertReferenceTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
