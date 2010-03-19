@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_WebO8TNGEd--BO0e05Hklg" type="EcoreTools" name="DataSource" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_YSqMsDNGEd--BO0e05Hklg" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_YS9HoDNGEd--BO0e05Hklg" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_YS9HoTNGEd--BO0e05Hklg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ZWm9ADNGEd--BO0e05Hklg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="DataSource.ecore#//DataSource/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ZWm9ATNGEd--BO0e05Hklg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_aDKhADNGEd--BO0e05Hklg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="DataSource.ecore#//DataSource/address"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_aDKhATNGEd--BO0e05Hklg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_an93MDNGEd--BO0e05Hklg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="DataSource.ecore#//DataSource/type"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_an93MTNGEd--BO0e05Hklg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_bdw2wDNGEd--BO0e05Hklg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="DataSource.ecore#//DataSource/subtype"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_bdw2wTNGEd--BO0e05Hklg"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_YS9HojNGEd--BO0e05Hklg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YS9HozNGEd--BO0e05Hklg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YS9HpDNGEd--BO0e05Hklg"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_YS9HpTNGEd--BO0e05Hklg" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_YS9HpjNGEd--BO0e05Hklg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YTG4oDNGEd--BO0e05Hklg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YTG4oTNGEd--BO0e05Hklg"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_YSqMsTNGEd--BO0e05Hklg" fontColor="4210752" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="DataSource.ecore#//DataSource"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YSqMsjNGEd--BO0e05Hklg" x="218" y="161"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_WebO8jNGEd--BO0e05Hklg"/>
+  <element xmi:type="ecore:EPackage" href="DataSource.ecore#/"/>
+</notation:Diagram>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SIMPL UDDI Eclipse Plug-In
+Bundle-SymbolicName: org.eclipse.simpl.uddi;singleton:=true
+Bundle-Version: 0.0.1
+Bundle-Activator: org.eclipse.simpl.uddi.Activator
+Bundle-Vendor: SIMPL
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;bundle-version="2.5.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.5.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.emf.ecore
