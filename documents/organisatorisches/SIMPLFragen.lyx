@@ -1,0 +1,696 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{SIMPL Fragen}
+\def\docvers{1.0}
+\def\docautor{Max Mustermann}
+\def\docdate{22. März 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+\end_preamble
+\use_default_options false
+\language ngerman
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Deckblatt.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "DokStatus.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für alle anderen Seiten
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+fancy
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\headrulewidth}{0mm}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+SIMPL © 2009 $IMPL
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+/ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "LastPage"
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Ab hier beginnt das Dokument
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Projektbeschreibung
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Rahmenwerk soll dem Benutzer eine erweiterbare Umgebung bieten,
+ die eine einfache Modellierung von Simulationsworkflows auf Basis von BPEL
+ mit generischem Zugriff auf beliebige Datenquellen ermöglicht.
+ Bei den Datenquellen kann es sich beispielsweise um Datenbanken, Sensornetze
+ oder Dateisysteme handeln.
+ Die Modellierung der Prozesse findet in Eclipse mit dem Eclipse BPEL Designer
+ Plug-In statt, der für diesen Zweck um zusätzliche Aktivitäten für den
+ Zugriff auf Datenquellen und die Definition von Datenmanagementoperationen
+ innerhalb des Prozesses erweitert wird.
+ Diese Aktivitäten werden im folgenden Verlauf des Dokuments als Datenmanagement
+-Aktivitäten bzw.
+ DM-Aktivitäten bezeichnet.
+ Die Ausführung der Prozesse erfolgt durch die Apache ODE Workflow Engine,
+ die für diese Aktivitäten erweitert werden muss.
+ Zusätzlich werden das bestehende Event-Modell und das Auditing der Prozessdaten
+ für die DM-Aktivitäten angepasst.
+ Die Dienste, die für die Ausführung der DM-Aktivitäten von der Workflow
+ Engine benötigt werden, werden in Form von Web Services bereitgestellt.
+ Durch ein weiteres Plug-In für das SIMPL Rahmenwerk sollen außerdem Referenzvar
+iablen bei der Modellierung von Prozessen unterstützt werden und diese durch
+ eine entsprechende Modelltransformation auch auf anderen Workflow Engines
+ einsetzbar bleiben.
+ Für die Verwaltung des SIMPL-Rahmenwerks und zur Änderung von Einstellungen
+ auch während der Laufzeit von Prozessen wird eine Admin-Konsole in Eclipe
+ integriert.
+ Über diese kann zum Beispiel das Auditing an und ausgeschaltet und eine
+ Datenbank zur Speicherung der Auditinginformationen angegeben werden.
+\end_layout
+
+\begin_layout Section
+Architektur
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagramm-der-SIMPL"
+
+\end_inset
+
+ zeigt die SIMPL Architektur.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C:/Dokumente und Einstellungen/Administrator/Eigene Dateien/StuProA/simpl09/documents/entwurf/Architektur.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagramm-der-SIMPL"
+
+\end_inset
+
+Diagramm der SIMPL Architektur
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Eclipse
+\end_layout
+
+\begin_layout Standard
+Die Entwicklungsumgebung Eclipse bildet mit den entsprechenden Plug-Ins
+ sowohl die GUI für den Prozess-Modellierer als auch für den Workflow-Administra
+tor.
+ Mit dem Eclipse BPEL Designer Plug-In kann der Prozess-Modellierer bereits
+ BPEL Prozesse erstellen und auf Apache ODE zum Einsatz bringen (deployen).
+ Das SIMPL Eclipse Plug-In erweitert mit dem BPEL-DM Plug-In die bestehenden
+ Aktivitäten des Eclipse BPEL Designer Plug-Ins um die DM-Aktivitäten über
+ einen vorhandenen Extension Point.
+ Das SIMPL Core Plug-In stellt das Eclipse-Menü und die GUI der Admin-Konsole
+ für den Workflow-Administrator zur Verfügung.
+ Beide Plug-Ins nutzen das SIMPL Communication Plug-In um die Verbindung
+ zu den SIMPL Core Web Services herzustellen.
+\end_layout
+
+\begin_layout Standard
+Mit dem RRS Plug-In wird die Modellierung von Referenzvariablen im Eclipse
+ BPEL Designer ermöglicht und der Kontakt zum RRS Transformation Service
+ hergestellt.
+ Damit können die zur Verfügung stehenden Datenquellen zur Modellierung
+ abgerufen werden und ggf.
+ vor dem Deployment eine Modelltransformation durchgeführt werden.
+ Eine UDDI Datenquellenregistry kann über das UDDI Plug-In integriert werden
+ und stellt die verwendbaren Datenquellen für die Modellierung im Eclipse
+ BPEL Designer zur Verfügung.
+ Des Weiteren ermöglicht es die Verwendung von Datenquellen bei der Referenzmode
+llierung mit dem RRS Plug-In.
+\end_layout
+
+\begin_layout Subsection
+Apache Tomcat
+\end_layout
+
+\begin_layout Standard
+Der Web Container Apache Tomcat ist die Laufzeitumgebung für Apache ODE,
+ den SIMPL Core und das RRS, die aber grundsätzlich auch in unterschiedlichen
+ Laufzeitumgebungen installiert sein können.
+ Apache ODE ist für die Ausführung der Prozesse nach der Prozessmodellierung
+ zuständig und wird über einen vorhandenen Extension Point für die zusätzliche
+ Ausführung von DM-Aktivitäten um die BPEL-DM Extension Activities erweitert.
+ Diese neuen Extension Activities können über den SIMPL Core mit den angefordert
+en Datenquellen kommunizieren und z.B.
+ Daten abrufen.
+ Dazu werden bestimmte Dienste benötigt, die vom SIMPL Core bereitgestellt
+ werden, der sich aus nach Aufgaben eingeteilten Web Services zusammensetzt.
+ Zusätzlich werden vom RRS weitere Dienste bereitgestellt, die z.B.
+ für die Auflösung der Referenzen zur Laufzeit von der Workflow Engine genutzt
+ werden.
+ 
+\end_layout
+
+\begin_layout Standard
+Das Auditing auf einer externen Datenquelle wird über eine Data Access Object
+ (DAO)-Erweiterung in der Workflow Engine realisiert, die alle relevanten
+ anfallenden Daten von der Workflow Engine an den SIMPL Core weiterleitet,
+ über den diese in einer Auditing Datenquelle (Apache ODE Auditing) gespeichert
+ werden können.
+ Einstellungen zur Laufzeit, wie das Ein- und Ausschalten des Auditing,
+ werden über den SIMPL Core an Apache ODE vorgenommen.
+\end_layout
+
+\begin_layout Section
+Fragen
+\end_layout
+
+\begin_layout Itemize
+Können Service Data Objects (SDO) in die in BPEL vorhandenen 
+\emph on
+Variable
+\emph default
+s abgelegt werden, indem als Type 
+\emph on
+sdo:DataObject
+\emph default
+ hinterlegt wird oder muss dafür ein neuer Variablentyp definiert werden?
+\end_layout
+
+\begin_layout Itemize
+Für die Umsetzung der Referenzen muss ja eine Spezialisierung der Klasse
+ 
+\emph on
+Variable
+\emph default
+ (
+\emph on
+ReferenceVariable
+\emph default
+) in den BPEL Designer integriert werden, welche Klassen müssen dafür erweitert
+ oder implementiert werden?
+\end_layout
+
+\begin_layout Itemize
+An welchen Stellen muss der BPEL Designer angepasst werden (GUI / Logik),
+ um mit Spezialisierungen der Klasse 
+\emph on
+Variable
+\emph default
+ umgehen (ReferenceVariables anlegen, deren Eigenschaften bearbeiten und
+ diese wieder löschen) zu können?
+\end_layout
+
+\begin_layout Itemize
+Für die Angabe von Einstellungen einzelner Eigenschaften (Auditing, Late-Binding
+, ...) eines durch SIMPL erweiterten BPEL-Prozessmodells soll der Deployment-Deskri
+ptor erweitert werden.
+ Eine zentrale Idee ist z.B.
+ dass das Auditing im Deployment-Deskriptor eines jeden Prozessmodells aktiviert
+ bzw.
+ deaktiviert werden kann oder das eine WS-Policy Datei, die nichtfunktionale
+ Anforderungen an eine Datenquelle beinhaltet, für das Late-Binding von
+ Datenquellen an eine DM-Aktivität angebunden werden kann.
+ Wie lässt sich dafür der Deployment-Deskriptor erweitern?
+\end_layout
+
+\begin_layout Itemize
+Wie kann man in ODE auf BPEL-Variablen zugreifen und deren Daten lesen bzw.
+ Daten in diese schreiben? (Hier liegt der Fokus vorallem darauf SDOs in
+ Variablen zu hinterlegen bzw.
+ aus diesen zu lesen)
+\end_layout
+
+\begin_layout Itemize
+Wie und wo können die im Deployment-Deskriptor hinterlegten Einstellungen
+ in ODE abgerufen werden?
+\end_layout
+
+\begin_layout Section
+Was wir bereits haben...
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Eclipse.JPG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Weiterführende Informationen/SIMPL-Quellen
+\end_layout
+
+\begin_layout Standard
+Unter folgender URL stehen alle SIMPL Dokumente und der gesammte Quellcode
+ zur Verfügung: 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://code.google.com/p/simpl09/"
+target "http://code.google.com/p/simpl09/"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
