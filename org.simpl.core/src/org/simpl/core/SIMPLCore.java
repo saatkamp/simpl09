@@ -2,15 +2,16 @@ package org.simpl.core;
 
 import java.util.List;
 
-import org.simpl.core.administration.AdministrationService;
-import org.simpl.core.administration.AdministrationServiceImpl;
-import org.simpl.core.datasource.DatasourceService;
-import org.simpl.core.datasource.DatasourceServiceProvider;
-import org.simpl.core.storage.StorageService;
-import org.simpl.core.storage.StorageServiceImpl;
+import org.simpl.core.services.administration.AdministrationService;
+import org.simpl.core.services.administration.AdministrationServiceImpl;
+import org.simpl.core.services.datasource.DataFormatProvider;
+import org.simpl.core.services.datasource.DatasourceService;
+import org.simpl.core.services.datasource.DatasourceServiceProvider;
+import org.simpl.core.services.storage.StorageService;
+import org.simpl.core.services.storage.StorageServiceImpl;
 
 /**
- * <b>Purpose: Provides access to all services of the SIMPLCore.</b> <br>
+ * <b>Purpose: Provides access to all services and info of the SIMPLCore.</b> <br>
  * <b>Description: This class implements the singleton pattern.</b> <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
@@ -23,8 +24,9 @@ public class SIMPLCore {
   private static SIMPLCore instance = null;
   private static SIMPLConfig config = new SIMPLConfig();
   private static AdministrationService administrationService = new AdministrationServiceImpl();
-  private static DatasourceServiceProvider datasourceServiceProvider = new DatasourceServiceProvider();
   private static StorageService storageService = new StorageServiceImpl();
+  private static DatasourceServiceProvider datasourceServiceProvider = new DatasourceServiceProvider();
+  private static DataFormatProvider dataFormatProvider = new DataFormatProvider();
 
   /**
    * Private constructor for singleton.
@@ -112,5 +114,14 @@ public class SIMPLCore {
    */
   public List<String> getDatasourceLanguages(String dsSubtype) {
     return datasourceServiceProvider.getDatasourceLanguages(dsSubtype);
+  }
+  
+  /**
+   * Returns all datasource types supported by the simpl core.
+   * 
+   * @return
+   */
+  public List<String> getDataFormatTypes() {
+    return dataFormatProvider.getDataFormatTypes();
   }
 }

@@ -1,4 +1,4 @@
-package org.simpl.core.administration;
+package org.simpl.core.services.administration;
 
 import java.util.LinkedHashMap;
 

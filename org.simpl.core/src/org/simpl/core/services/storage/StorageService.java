@@ -1,7 +1,7 @@
-package org.simpl.core.storage;
+package org.simpl.core.services.storage;
 
-import org.simpl.core.datasource.exceptions.ConnectionException;
-import org.simpl.core.datasource.exceptions.DataException;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
+import org.simpl.core.services.datasource.exceptions.DataException;
 
 import commonj.sdo.DataObject;
 
