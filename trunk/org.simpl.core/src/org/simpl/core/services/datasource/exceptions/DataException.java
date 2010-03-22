@@ -1,4 +1,4 @@
-package org.simpl.core.datasource.exceptions;
+package org.simpl.core.services.datasource.exceptions;
 
 /**
  * This exception is thrown whenever an error during processing a statement or processing

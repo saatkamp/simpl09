@@ -17,18 +17,18 @@ import javax.xml.stream.XMLStreamReader;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * TODO: DTD erstellen und überprüfen ob das Format stimmt
- * 
  * @author schneimi<br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLConfig {
-  private static final String CONFIG_FILE1 = System.getProperty("user.dir")
-      + "\\webapps\\ode\\WEB-INF\\conf\\simpl-core-config.xml";
-  private static final String CONFIG_FILE2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\ode\\WEB-INF\\conf\\simpl-core-config.xml";
-  List<String> datasourceServicePlugins = new ArrayList<String>();
+  private static final String CONFIG_FILE_NAME = "simpl-core-config.xml";
+  private static final String CONFIG_FILE_1 = System.getProperty("user.dir")
+      + "\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
+  private static final String CONFIG_FILE_2 = System.getProperty("user.dir")
+      + "\\..\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
+  List<String> dataSourcePlugins = new ArrayList<String>();
+  List<String> dataFormatPlugins = new ArrayList<String>();
 
   public SIMPLConfig() {
     InputStream in = null;
@@ -36,13 +36,13 @@ public class SIMPLConfig {
     XMLStreamReader parser = null;
 
     try {
-      in = new FileInputStream(CONFIG_FILE1);
+      in = new FileInputStream(CONFIG_FILE_1);
     } catch (FileNotFoundException e) {
       try {
-        in = new FileInputStream(CONFIG_FILE2);
+        in = new FileInputStream(CONFIG_FILE_2);
       } catch (FileNotFoundException e1) {
         try {
-          in = new FileInputStream("simpl-core-config.xml");
+          in = new FileInputStream(CONFIG_FILE_NAME);
         } catch (FileNotFoundException e2) {
           // TODO Auto-generated catch block
           e2.printStackTrace();
@@ -65,7 +65,15 @@ public class SIMPLConfig {
           if (parser.getLocalName().equals("datasourceServicePlugin")) {
             for (int i = 0; i < parser.getAttributeCount(); i++) {
               if (parser.getAttributeLocalName(i).equals("name")) {
-                datasourceServicePlugins.add(parser.getAttributeValue(i));
+                dataSourcePlugins.add(parser.getAttributeValue(i));
+              }
+            }
+          }
+          
+          if (parser.getLocalName().equals("dataFormatPlugin")) {
+            for (int i = 0; i < parser.getAttributeCount(); i++) {
+              if (parser.getAttributeLocalName(i).equals("name")) {
+                dataFormatPlugins.add(parser.getAttributeValue(i));
               }
             }
           }
@@ -87,11 +95,21 @@ public class SIMPLConfig {
 
   /**
    * Returns a list of registered DatasourceServicePlugins. The list contains full
-   * qualified names of DataSourceServicePlugin classes.
+   * qualified names of DatasourceServicePlugin classes.
    * 
    * @return List of DatasourceServicePlugins
    */
-  public List<String> getDataSourceServicePlugins() {
-    return datasourceServicePlugins;
+  public List<String> getDatasourceServicePlugins() {
+    return dataSourcePlugins;
+  }
+  
+  /**
+   * Returns a list of registered DataFormatPlugins. The list contains full
+   * qualified names of DatasourceServicePlugin classes.
+   * 
+   * @return List of DatasourceServicePlugins
+   */
+  public List<String> getDataFormatPlugins() {
+    return dataFormatPlugins;
   }
 }

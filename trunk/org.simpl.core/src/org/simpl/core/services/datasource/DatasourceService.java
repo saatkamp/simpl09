@@ -1,8 +1,8 @@
-package org.simpl.core.datasource;
+package org.simpl.core.services.datasource;
 
 import java.sql.Connection;
 
-import org.simpl.core.datasource.exceptions.ConnectionException;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 

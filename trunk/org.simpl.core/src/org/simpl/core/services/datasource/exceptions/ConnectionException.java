@@ -1,4 +1,4 @@
-package org.simpl.core.datasource.exceptions;
+package org.simpl.core.services.datasource.exceptions;
 
 /**
  * This exception is thrown whenever an error during a connection to a data source occurs.
