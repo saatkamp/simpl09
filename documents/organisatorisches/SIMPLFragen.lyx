@@ -469,7 +469,7 @@ iablen bei der Modellierung von Prozessen unterstützt werden und diese durch
  eine entsprechende Modelltransformation auch auf anderen Workflow Engines
  einsetzbar bleiben.
  Für die Verwaltung des SIMPL-Rahmenwerks und zur Änderung von Einstellungen
- auch während der Laufzeit von Prozessen wird eine Admin-Konsole in Eclipe
+ auch während der Laufzeit von Prozessen wird eine Admin-Konsole in Eclipse
  integriert.
  Über diese kann zum Beispiel das Auditing an und ausgeschaltet und eine
  Datenbank zur Speicherung der Auditinginformationen angegeben werden.
@@ -622,7 +622,8 @@ Variable
 ReferenceVariable
 \emph default
 ) in den BPEL Designer integriert werden, welche Klassen müssen dafür erweitert
- oder implementiert werden?
+ bzw.
+ implementiert werden?
 \end_layout
 
 \begin_layout Itemize
