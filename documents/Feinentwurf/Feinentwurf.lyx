@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1029,6 +1029,13 @@ Kommunikation
 bene.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
@@ -1050,10 +1057,10 @@ reference "fig:SIMPL-Core-Klassendiagramm"
  zeigt den Aufbau des SIMPL Cores mit Paketstruktur, Klassen und Interfaces,
  sowie deren Zusammenhänge über Verbindungspfeile, die in den folgenden
  Abschnitten beschrieben werden.
- Als Services werden dabei allgemein die Dienste des SIMPL Cores bezeichnet.
- Manche dieser Dienste werden nach Außen über Web Services verfügbar gemacht
- und werden, wenn diese explizit gemeint sind, auch als solche bezeichnet
- wie z.B.
+ Einige der SIMPL Core Dienste werden, falls sie außerhalb des SIMPL Cores
+ aufrufbar sein müssen, nach Außen über Web Services verfügbar gemacht.
+ Falls im Nachfolgenden nicht die Dienste selbst, sondern die Web Services
+ dieser gemeint sind, werden diese auch als solche bezeichnet, wie z.B.
  Administration Web Service.
 \end_layout
 
@@ -1104,8 +1111,8 @@ Paketstruktur
 
 \begin_layout Standard
 Der SIMPL Core besitzt folgende Paketstruktur, die sich in einen Kernbereich
- (org.simpl.core), sowie Bereiche für die Dienste (Services) und Web Services
- aufteilt.
+ (org.simpl.core), sowie Bereiche für die Dienste (Storage-Dienst, Administration-
+Dienst und Datasource-Dienst) und Web Services aufteilt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1126,54 +1133,60 @@ reference "sub:SIMPLCore"
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.administration
+org.simpl.core.administration
 \end_layout
 
 \begin_layout Standard
 Hier befinden sich alle Klassen zur Realisierung des Administration Service
- (
+ (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
 
 \end_inset
 
- 3.3.1).
+, Kapitel 3.3.1).
+ Dieser Dienst wird benötigt, um alle Einstellungen des SIMPL Cores zu verwalten.
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.storage
+org.simpl.core.storage
 \end_layout
 
 \begin_layout Standard
-Hier befinden sich alle Klassen zur Realisierung des Storage Service (
+Hier befinden sich alle Klassen zur Realisierung des Storage Service (siehe
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
 
 \end_inset
 
- 3.3.5).
+, Kapitel 3.3.5).
+ Dieser Dienst wird benötigt, um das Speichern und Laden von Einstellungen
+ und Metadaten des SIMPL Rahmenwerks zu realisieren.
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.datasource
+org.simpl.core.datasource
 \end_layout
 
 \begin_layout Standard
 Hier befinden sich alle Klassen zur Realisierung des Datasource Service
- (
+ (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
 
 \end_inset
 
- 3.3.5).
+, Kapitel 3.3.2).
+ Dieser Dienst wird benötigt, um Datenquellen anzubinden und Abfragen an
+ diese zu senden.
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.datasource.plugins
+org.simpl.core.datasource.plugins
 \end_layout
 
 \begin_layout Standard
@@ -1192,14 +1205,14 @@ reference "sub:Datasource-Plug-Ins"
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.webservices
+org.simpl.core.webservices
 \end_layout
 
 \begin_layout Standard
-Hier befinden sich die Web Services des SIMPL Core, die den Zugriff von
+Hier befinden sich die Web Services des SIMPL Cores, die den Zugriff von
  Außen auf den SIMPL Core ermöglichen.
- Alle Klassen werden mit JAX-WS-Annotationen versehen und können als Webservices
- in Apache ODE deployt werden.
+ Alle Klassen werden mit JAX-WS-Annotationen versehen und als Webservices
+ über den Axis2 Integration Layer von ODE zur Verfügung gestellt.
 \end_layout
 
 \begin_layout Subsection
@@ -1219,7 +1232,7 @@ Administration Service
 Der Administration Service ist für die Verwaltung der Einstellungen der
  Admin-Konsole des SIMPL Core Eclipse Plug-Ins zuständig.
  Die Einstellungen der Admin-Konsole werden dabei über das SIMPL Core Client
- Plug-In an den Administration Service übermittelt oder angefordert.
+ Plug-In an den Administration Service übermittelt oder von ihm angefordert.
  Die auf diese Weise zentral im SIMPL Core hinterlegten Einstellungen können
  dann bei Bedarf direkt von anderen SIMPL Core Diensten, die diese Informationen
  benötigen, ausgelesen werden.
@@ -1735,6 +1748,13 @@ Der Storage Web Service bietet anderen Diensten von Außen die Möglichkeit
  Für den Storage Web Service gilt das gleich wie für den Administration
  Service, nur dass dieser die direkte Schnittstelle zum Storage Service
  darstellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2253,6 +2273,13 @@ ProcessDAO
 ODEProcess
 \emph default
  Klasse zugegriffen, um die Prozessdaten persistent zu speichern.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2779,6 +2806,13 @@ bin
 \backslash
 wimport.exe) über die WSDL-Schnittstellen generiert und wird um die Serialisierun
 g und Deserialisierung der komplexen Parameter erweitert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
