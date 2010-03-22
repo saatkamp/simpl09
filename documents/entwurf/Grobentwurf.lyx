@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2702,15 +2702,27 @@ Data Access Object (DAO)
 \end_layout
 
 \begin_layout Standard
-Das DAO ist für die persistente Datenhaltung aller Daten die innerhalb von
- ODE erzeugt werden zuständig.
- Weiterhin werden mit Hilfe des DAOs die Auditing Daten in der Embedded
- Auditing Datenbank gespeichert.
- Das DAO bietet außerdem verschiedene Einstellungen für die Auditing Datenbank
+Das DAO ist für die persistente Datenhaltung aller Daten, die innerhalb
+ von ODE erzeugt werden, zuständig.
+ Weiterhin werden mit Hilfe des DAOs die Auditing-Daten in der Embedded
+ Auditing-Datenbank gespeichert.
+ Das DAO bietet außerdem verschiedene Einstellungen für die Auditing-Datenbank
  an.
- So ist es mit Hilfe des DAOs wie bereits oben erläutert möglich das Auditing
- auf eine externe Datenbank umzuleiten.
+ So ist es mit Hilfe des DAOs, wie bereits oben erläutert, möglich die Auditing-
+Daten auf eine externe Datenbank umzuleiten.
  Es existiert zum Beispiel die Möglichkeit eine MySQL Datenbank zu nutzen.
+ Dies ist jedoch nur über die ODE-Config-Dateien möglich und wird erst nach
+ dem Neustart von Tomcat übernommen.
+ Mit dem SIMPL DAO ist es möglich die Auditing-Daten, auch wärend der Laufzeit
+ des Prozesses auf eine andere Datenbank umzuleiten.
+ Näheres zum SIMPL DAO siehe (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:SIMPL-DAO"
+
+\end_inset
+
+) .
 \end_layout
 
 \begin_layout Paragraph
@@ -2718,15 +2730,10 @@ Embedded Auditing Datenbank
 \end_layout
 
 \begin_layout Standard
-Die Auditingdaten die ODE erzeugt, werden momentan in einer Embedded Datenbank
- gespeichert.
- Dies ist eine Apache Derby Datenbank die sowohl Hibernate als auch JPA
- unterstützt.
- Welche Art der Datenbank genutzt wird, kann durch ein entsprechendes DAO
- eingestellt werden.
- Es ist weiterhin möglich statt der embedded Datenbank eine externe Datenbank
- zu nutzen in dem dies in einem DAO und der axis2-properties-Datei eingestellt
- wird.
+Die Embedded Auditing Datenbank, ist eine Apache Derby Datenbank und wird
+ als Standard bei Apache-Ode mitgeliefert.
+ Die Auditingdaten, die ODE erzeugt, werden dort standardmäßig gespeichert.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2830,21 +2837,23 @@ Bei der Implementierung werden DM-Events und Connection-Events jeweils als
 
 \begin_layout Paragraph
 SIMPL DAO
+\begin_inset CommandInset label
+LatexCommand label
+name "par:SIMPL-DAO"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Das SIMPL DAO implementiert die Schnittstellen des 
-\begin_inset Quotes eld
-\end_inset
-
-org.apache.ode.bpel.dao
-\begin_inset Quotes erd
-\end_inset
-
--Pakets, womit die persistente Datenspeicherung von Apache ODE auf den SIMPL
- Core umgeleitet werden kann.
- Mit Hilfe des SIMPL Cores können die Daten auf beliebigen Datenquellen
- gespeichert werden.
+Das SIMPL DAO nutzt die JPA-DAO Implementierung von Apache ODE und erweitert
+ diese, um die Möglichkeit Auditing-Daten über SDOs an den SIMPL Core zu
+ senden, über den diese in beliebigen Datenbanken gespeichert werden können.
+ Die ursprüngliche JPA-DAO Funktionalität wird dadurch nicht beeinflusst.
+ Der Vorteil dieser Methode ist, dass die Auditing-Daten unabhängig vom
+ JPA-DAO, in einer eigenen und übersichtlicheren Struktur angeordnet werden
+ können.
 \end_layout
 
 \begin_layout Subsection

@@ -882,6 +882,13 @@ Abschließende Korrekturen
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Einleitung
 \end_layout
@@ -918,7 +925,7 @@ Gliederung
 \end_layout
 
 \begin_layout Standard
-Der Feinentwurf gliedert sich in die folgenden Kapitel.
+Der Feinentwurf gliedert sich in die folgenden Kapitel:
 \end_layout
 
 \begin_layout Itemize
@@ -937,7 +944,7 @@ SIMPL Core
 \begin_inset Quotes erd
 \end_inset
 
- beschreibt die Implementierung des SIMPL Cores und seinen Web Services.
+ beschreibt die Implementierung des SIMPL Cores und seinen Web Services
  (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -945,7 +952,7 @@ key "key-1"
 
 \end_inset
 
- Kapitel 3.1)
+ Kapitel 3.1).
 \end_layout
 
 \begin_layout Itemize
@@ -965,15 +972,14 @@ Apache ODE
 \end_inset
 
  beschreibt die Implementierung der Datamanagement-Aktivitäten (DM-Aktivitäten)
- und das externe Auditing.
- (siehe
+ und das externe Auditing (siehe
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
 
 \end_inset
 
- Kapitel 3.2)
+ Kapitel 3.2).
 \end_layout
 
 \begin_layout Itemize
@@ -993,15 +999,14 @@ Eclipse Plug-Ins
 \end_inset
 
  beschreibt die Implementierung der Eclipse Plug-Ins, die für das SIMPL
- Rahmenwerk realisiert werden.
- (siehe
+ Rahmenwerk realisiert werden (siehe
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
 
 \end_inset
 
- Kapitel 3.3)
+ Kapitel 3.3).
 \end_layout
 
 \begin_layout Itemize
@@ -2045,13 +2050,12 @@ Ausführung einer SIMPL DM Extension Activity
 \end_layout
 
 \begin_layout Subsection
-SIMPL DAO
+SIMPL DAO 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Rechtschreibung! Sinn und Zweck des DAO als Einleitung fehlt noch.
- (am besten mit Verweis auf Grobentwurf)
+Einige Dinge in Iter 2 zu ändern
 \end_layout
 
 \end_inset
@@ -2061,11 +2065,13 @@ Rechtschreibung! Sinn und Zweck des DAO als Einleitung fehlt noch.
 
 \begin_layout Standard
 Das SIMPL Data Access Object (DAO) besteht aus der Implementierung der Interface
-s aus dem Packet org.apache.ode.bpel.dao die in den folgenden Unterpunkten beschrieb
-en werden.
+s aus dem Packet 
+\emph on
+org.apache.ode.bpel.dao
+\emph default
+ die in den folgenden Unterpunkten beschrieben werden.
  Das DAO wird dafür verwendet, wichtige Daten der Prozessausführung aufzuzeichne
-n und persistent zu speichern.
- (Siehe hierfür 
+n und persistent zu speichern (Siehe hierfür 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
@@ -2095,24 +2101,9 @@ Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
 DAOs
 \end_layout
 
-\begin_layout Subsubsection*
-BpelDAOConnectionFactory
-\end_layout
-
 \begin_layout Standard
-Die Factory verwaltet und erstellt die DAOConnection zu den angegebenen
- Datenquellen (standardmäßig zu der internen Apache Derby Datenbank).
-\end_layout
-
-\begin_layout Subsubsection*
-BpelDAOConnection
-\end_layout
-
-\begin_layout Standard
-Die BpelDAOConnection stellt eine Verbindung zu den DAOs her.
- Hier werden zum Beispiel BPEL Events in das DAO eingefügt, Prozesse erstellt
- und Prozessinstanzen verwaltet, über die auf die restlichen DAO's zugegriffen
- werden kann.
+In diesem Abschnitt werden die verschiedenen DAOs beschrieben, welche vom
+ SIMPL Auditing unterstützt werden und die Daten, welche gespeichert werden.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2153,38 +2144,13 @@ Das FaultDAO wird erstellt, wenn ein Fehler in der Proessausführung passiert.
 \end_layout
 
 \begin_layout Subsubsection*
-MessageDAO
-\end_layout
-
-\begin_layout Standard
-Repräsentiert eine Nachricht in der Datenbank.
-\end_layout
-
-\begin_layout Subsubsection*
-MessageExchangeDAO
-\end_layout
-
-\begin_layout Standard
-Das MessageExchangeDAO ist für den Austausch von Nachrichten zuständig.
-\end_layout
-
-\begin_layout Subsubsection*
-MessageRouteDAO
-\end_layout
-
-\begin_layout Standard
-Das MessageRouteDAO repräsentiert ein Nachrichten Anfrager, wie zum Beispiel
- ein Pick oder ein Receive.
-\end_layout
-
-\begin_layout Subsubsection*
 PartnerLinkDAO
 \end_layout
 
 \begin_layout Standard
 Das PartnerLinkDAO repräsentiert ein Partnerlink.
  Es enthält Informationen über die eigene Rolle, die Rolle des Partners
- und die Endpoint-Referenz.
+ und die im Partner Link hinterlegte Endpunkt-Referenz.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2192,7 +2158,7 @@ ProcessDAO
 \end_layout
 
 \begin_layout Standard
-Das ProcessDAO repräsentiert ein laufenden Prozess.
+Das ProcessDAO repräsentiert ein Prozessmodell.
  Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen.
 \end_layout
 
@@ -2229,7 +2195,7 @@ DAO Java Persistence API (JPA)
 \end_layout
 
 \begin_layout Standard
-Das DAO-Jpa ist eine DAO Implementierung, die auf Apache Open JPA basiert.
+Das DAO-JPA ist eine DAO Implementierung, die auf Apache Open JPA basiert.
  Dieses stellt Funktionalitäten zur persistenten Speicherung auf relationalen
  Datenspeichern zur Verfügung.
  Über annotierte Variablen können somit die DAO Daten komfortabel in der
@@ -2241,18 +2207,52 @@ DAO Lebenszyklus
 \end_layout
 
 \begin_layout Standard
-Beim starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
+Beim Starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
  BPEL-Server gestartet.
- Sofort wird die in OdeServer Klasse enthaltene init-Methode aufgerufen.
+ Sofort wird die in 
+\emph on
+OdeServer
+\emph default
+ Klasse enthaltene 
+\emph on
+init
+\emph default
+-Methode aufgerufen.
  Diese ruft wiederum die initDao-Methode auf.
- Dort wird die DaoConnectionFactory geladen, welche zuvor in der OdeConfigProper
-ties definiert oder aus der Axis2.properties geladen wurde.
- Über die ConnectionFactory werden DaoConnections erstellt und bereitgestellt,
- mit deren Hilfe direkt auf die DAOs zugegriffen werden kann.
+ Dort wird die 
+\emph on
+DaoConnectionFactory
+\emph default
+ geladen, welche zuvor in der 
+\emph on
+OdeConfigProperties
+\emph default
+ definiert oder aus der 
+\emph on
+Axis2.properties
+\emph default
+ geladen wurde.
+ Über die 
+\emph on
+ConnectionFactory
+\emph default
+ werden 
+\emph on
+DaoConnections
+\emph default
+ erstellt und bereitgestellt, mit deren Hilfe direkt auf die DAOs zugegriffen
+ werden kann.
  Dies geschieht an den Stellen in ODE, wo die den DAOs entsprechenden BPEL
  Konstrukte ausgewertet werden.
- So wird auf die ProcessDAO zum Beispiel aus der ODEProcess Klasse aufgerufen,
- um die Prozessdaten persistent zu speichern.
+ So wird auf die 
+\emph on
+ProcessDAO
+\emph default
+ zum Beispiel aus der 
+\emph on
+ODEProcess
+\emph default
+ Klasse zugegriffen, um die Prozessdaten persistent zu speichern.
 \end_layout
 
 \begin_layout Section
@@ -2266,9 +2266,9 @@ Eclipse
 \end_layout
 
 \begin_layout Standard
-Das SIMPL Rahmenwerk besteht aus der vorhandenen Eclipse IDE, dem Eclipse
- BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins BPEL-DM Plug-In,
- SIMPL Core Plug-In und SIMPL Core Client Plug-In.
+Das SIMPL Rahmenwerk besteht aus der bereits vorhandenen Eclipse IDE, dem
+ Eclipse BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins BPEL-DM
+ Plug-In, SIMPL Core Plug-In und SIMPL Core Client Plug-In.
  Im Rahmen des Feinentwurfes wird die Anbindung an die vorhandenen Komponenten
  sowie die zu erstellenden Komponenten näher erläutert.
  
