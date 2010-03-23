@@ -51,7 +51,6 @@
 \font_tt_scale 100
 
 \graphics default
-\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -2352,7 +2351,14 @@ BPEL DM Plug-In
 \begin_layout Standard
 Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
  Designer Plug-Ins um die DM-Aktivitäten ergänzt.
- Das Plug-In lässt sich grob in die Pakete User-Interface und Modell gruppieren.
+ Das Plug-In gliedert sich in die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In"
+
+\end_inset
+
+ dargestellten Pakete.
  Das User-Interface Paket (
 \emph on
 org.eclipse.bpel.simpl.ui
@@ -2372,11 +2378,9 @@ n können weitere Plug-Ins über einen Extension-Point an das BPEL-DM Plug-In
 org.eclipse.bpel.simpl.ui.sql
 \emph default
 ) für die grafische Modellierung von SQL-Abfragen umgesetzt.
- Im folgenden Diagramm sind die Pakete und Klassen aller Plug-Ins dargestellt,
- um einen Überblick zu ermöglichen.
- Diese Pakete und Klassen werden in den folgenden Unterkapiteln näher erläutert.
+ Die verschiedenen Pakete und deren Klassen werden in den folgenden Unterkapitel
+n näher erläutert.
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2403,7 +2407,7 @@ name "fig:BPEL-DM-Plug-In"
 
 \end_inset
 
-BPEL DM Plug-In
+BPEL DM Plug-In Paketstruktur
 \end_layout
 
 \end_inset
@@ -2439,7 +2443,6 @@ reference "fig:BPEL-DM-Plug-In UI"
 \begin_layout Standard
 \align center
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2480,12 +2483,49 @@ BPEL DM Plug-In User-Interface
 \end_layout
 
 \begin_layout Subsubsection*
+org.eclipse.bpel.simpl.ui
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält die Klassen 
+\emph on
+Application
+\emph default
+ und 
+\emph on
+DataManagementUIConstants
+\emph default
+.
+ Die Klasse 
+\emph on
+Application
+\emph default
+ enthält verschiedene Methoden, die die Verwaltung der angebunden Plug-Ins
+ des 
+\emph on
+queryLanguage
+\emph default
+ Extension-Points erleichtern.
+ Die Klasse 
+\emph on
+DataManagementUIConstants
+\emph default
+ enthält alle Bildpfade der Icons der DM-Aktivitäten und stellt diese zur
+ Verfügung.
+\end_layout
+
+\begin_layout Subsubsection*
 org.eclipse.bpel.simpl.adapters
 \end_layout
 
 \begin_layout Standard
-Das Paket mit den verschiedenen Adapter-Klassen ist die Verbindung zu den
- Aktivitäten von BPEL.
+Dieses Paket enthält eine Adapter-Klasse für jede DM-Aktivität.
+ Die Adapter-Klassen verknüpfen das Modell und die grafische Repräsentation
+ (UI) einer DM-Aktivität und erben von der abstrakten Klasse 
+\emph on
+org.eclipse.bpel.ui.adapters.ActivityAdapter
+\emph default
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2493,13 +2533,50 @@ org.eclipse.bpel.simpl.extensions
 \end_layout
 
 \begin_layout Standard
-Das Interface IStatementeEditor vererbt an die abstrakte Klasse AStatementEditor
+Das Interface 
+\emph on
+IStatementeEditor
+\emph default
+ vererbt an die abstrakte Klasse 
+\emph on
+AStatementEditor
+\emph default
 , und diese gibt die Rahmenbedingungen für die Einbindung von Statement-Editoren
- für neue Anfragsprachen vor.
- Dabei handelt es sich um Composites, die den Inhalt des Fensters beinhalten,
- und Statements, die den eigentlichen Befehl beinhalten.
+ für neue Anfragesprachen vor.
+ Eine StatementEditor-Implementierung enthält immer ein Composite, in dem
+ die grafischen Elemente positioniert sind und die Logik zur grafischen
+ Modellierung eines Befehls, über die zur Verfügung gestellten Elemente.
+ Weiterhin müssen die Methoden 
+\emph on
+getComposite()
+\emph default
+, 
+\emph on
+setComposite()
+\emph default
+ und 
+\emph on
+createComposite()
+\emph default
+ zur Verwaltung und Erzeugung des Composites, aus der Vaterklasse heraus,
+ bereitgestellt werden.
+ Um den modellierten Abfragebefehl aus der StatementEditor-Implementierung
+ auszulesen bzw.
+ einen gespeicherten Befehl zu übergeben, werden noch die 
+\emph on
+getStatement()
+\emph default
+ und 
+\emph on
+setStatement()
+\emph default
+-Methoden benötigt.
  Die Anbindung von StatementEditor-Implementierungen erfolgt dabei über
- den Extension Point org.eclipse.bpel.simpl.ui.queryLanguage.
+ den Extension Point 
+\noun on
+org.eclipse.bpel.simpl.ui.queryLanguage
+\noun default
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2508,12 +2585,40 @@ org.eclipse.bpel.simpl.factories
 
 \begin_layout Standard
 Die beiden Klassen in diesem Paket erzeugen Objekte für die grafische Platzierun
-g in der Modellierungsumgebung.
- Die Klasse DataManagementUIOObjectFactory erzeugt die Objekte der jeweiligen
- Aktivität und die Klasse DataManagementUIAdapterFactory die zugehörigen
- Adapter für Eclipse.
- Die Anbindung erfolgt über den Extension Point org.eclipse.bpel.ui.uiObjectFactorie
-s.
+g von DM-Aktivitäten in der Modellierungsumgebung.
+ Die Klasse 
+\emph on
+DataManagementUIObjectFactory
+\emph default
+ erzeugt Objekte für die grafische Repräsentation der jeweiligen Aktivität
+ und die Klasse 
+\emph on
+DataManagementUIAdapterFactory
+\emph default
+ die zugehörigen Adapter, die für die Verknüpfung der oben genannten Objekte
+ entsprechenden Modellinstanzen der Aktivitäten benötigt werden.
+ Die Klasse 
+\emph on
+DataManagementUIObjectFactory
+\emph default
+ erweitert dafür die abstrakte Klasse 
+\emph on
+org.eclipse.bpel.ui.factories.AbstractUIObjectFactory 
+\emph default
+und wird über den vorhandenen Extension-Point 
+\noun on
+org.eclipse.bpel.ui.uiObjectFactories
+\noun default
+ an den BPEL Designer angebunden.
+ Die Klasse 
+\emph on
+DataManagementUIAdapterFactory
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.bpel.simpl.model.util.ModelAdapterFactory
+\emph default
+ des BPEL-DM Modells.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2521,13 +2626,24 @@ org.eclipse.bpel.simpl.palette
 \end_layout
 
 \begin_layout Standard
-Dieses Paket beinhaltet die grafische Palette der Aktivitäten für den BPEL
- Designer.
- Hier werden die verfügbaren Aktivitäten des BPEL Designers und die BPEL-DM-Akti
-vitäten dargestellt, können ausgewählt und auf dem Arbeitsplatz verwendet
- werden.
- Die Anbindung erfolgt über den Extension Point org.eclipse.bpel.common.ui.paletteAdd
-itions.
+Dieses Paket erweitert die grafische Palette der Aktivitäten des BPEL Designers.
+ In der Palette werden alle verfügbaren Aktivitäten des BPEL Designers und
+ durch die Erweiterung auch die BPEL-DM-Aktivitäten dargestellt.
+ Mithilfe der Palette können die Aktivitäten ausgewählt und in den Editor
+ zur Prozessmodellierung eingefügt werden.
+ Die Klasse 
+\emph on
+DataManagementPaletteProvider
+\emph default
+ implementiert dafür die Schnittstelle 
+\emph on
+org.eclipse.bpel.common.ui.palette.IPaletteProvider
+\emph default
+ und wird über den vorhandenen BPEL Designer Extension-Point 
+\noun on
+org.eclipse.bpel.common.ui.paletteAdditions
+\noun default
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2536,8 +2652,12 @@ org.eclipse.bpel.simpl.properties
 
 \begin_layout Standard
 Das Paket beinhaltet die Anzeige der Eigenschaften der jeweiligen DM-Aktivitäten.
- Die Anbindung erfolgt über den Extension Point org.eclipse.ui.views.properties.tabbe
-d.propertySections.
+ Die Anbindung erfolgt über den vorhandenen BPEL Designer Extension-Point
+ 
+\noun on
+org.eclipse.ui.views.properties.tabbed.propertySections
+\noun default
+.
  Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
 s ausgewählt werden.
  Zu den Optionen gehört primär die Angabe des Datenquellentyps, wie Datenbank,
@@ -2580,14 +2700,13 @@ BPEL-DM Plug-In Modell
 \end_layout
 
 \begin_layout Standard
-Das BPEL-DM Plug-In Modell stellt die Pakete und Klassen der Datenstruktur
- bei den BPEL-DM-Aktivitäten dar.
+Das BPEL-DM Plug-In Modell stellt die Pakete und Klassen des (EMF-) Modells
+ der BPEL-DM-Aktivitäten dar.
 \end_layout
 
 \begin_layout Standard
-\align center
+\align block
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2628,19 +2747,24 @@ BPEL-DM Plug-In Modell
 \end_layout
 
 \begin_layout Standard
-Die Abbildung 
+Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BPEL-DM-Plug-In Modell"
 
 \end_inset
 
- stellt das BPEL-DM Datenmodell dar.
+ zeigt alle Pakete und Klassen, die das BPEL-DM Modell ergeben.
  An oberster Stelle steht die 
 \emph on
 DataManagementActivity
 \emph default
--Klasse (Interface), welche mit den Variablen 
+-Klasse (Interface), die die Klasse 
+\emph on
+org.eclipse.bpel.model.ExtensionActivity
+\emph default
+ erweitert.
+ Sie enthält die Variablen 
 \emph on
 dsType
 \emph default
@@ -2654,9 +2778,9 @@ dsAddress
 \emph default
  und 
 \emph on
-dsStatement
+dsStatement,
 \emph default
- die gemeinsame Schnittmenge der Aktivitätenvariablen bildet.
+ die die gemeinsame Schnittmenge der Aktivitätenvariablen bilden.
  Diese werden an die Kindklassen wie z.B.
  
 \emph on
@@ -2674,12 +2798,96 @@ org.eclipse.bpel.simpl.model.impl
 QueryActivityImpl
 \emph default
 .
- Im Paket 
+ Die Klassen 
+\emph on
+ModelFactory
+\emph default
+ (Interface) und 
+\emph on
+ModelPackage
+\emph default
+ (Interface) erben von den Klassen 
+\emph on
+org.eclipse.emf.ecore.EFactory
+\emph default
+ und 
+\emph on
+org.eclipse.emf.ecore.EPackage
+\emph default
+ und werden benötigt, um Objekte des Modells zu erzeugen (Factory), wie
+ z.B.
+ ein QueryActivity-Objekt und um Objekte des Modells zu verwalten (Package),
+ wie z.B.
+ das Auslesen der Variablenwerte eines QueryActivity-Objekts.
+\end_layout
+
+\begin_layout Standard
+\align block
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/BPEL-DMPlugInModellUtil.png
+	lyxscale 80
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-DM-Plug-In Modell-Util"
+
+\end_inset
+
+BPEL-DM Plug-In Modell
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Paket 
 \emph on
 org.eclipse.bpel.simpl.model.util
 \emph default
- befinden sich Zubehörklassen wie Serializer und Deserializer.
- Letztgenannte übernehmen die Erstellung von BPEL Files, sowie deren Auslesen.
+ (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-DM-Plug-In Modell-Util"
+
+\end_inset
+
+) befinden sich Zubehörklassen wie Serializer und Deserializer.
+ Letztgenannte übernehmen das Lesen bzw.
+ Schreiben der DM-Aktivitäten aus bzw.
+ in BPEL-Files.
+ Serializer werden dafür von der Klasse 
+\emph on
+org.eclipse.bpel.model.extensions.BPELActivitySerializer
+\emph default
+ und Deserializer von der Klasse
+\emph on
+ org.eclipse.bpel.model.extensions.BPELActivityDerserializer
+\emph default
+ abgeleitet.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2716,7 +2924,6 @@ org.eclipse.bpel.simpl.ui.queryLanguage
 \begin_layout Standard
 \align center
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2725,7 +2932,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename diagramme/iteration1/BPEL-DM Plug-In Extensions.png
-	width 100text%
+	width 80text%
 
 \end_inset
 
@@ -2770,7 +2977,6 @@ ame und Passwort) für Datenquellen hinterlegt, das Auditing aktiviert und
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2810,24 +3016,33 @@ SIMPL Core Plug-In Klassendiagramm
 \end_layout
 
 \begin_layout Standard
-Die Abbildung 
+Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL-Core-Plug-In "
 
 \end_inset
 
- zeigt das Klassendiagramm des SIMPL Core Plug-In.
- Durch diese grafische Benutzeroberfläche wird SIMPL verwaltet.
+ zeigt das Klassendiagramm des SIMPL Core Plug-Ins.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Durch diese grafische Benutzeroberfläche wird SIMPL verwaltet.
  Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen, um eine
  größtmögliche Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
  Das bedeutet, die Einträge, die bereits bei der Auslieferung von SIMPL
  in der Admin-Konsole vorhanden sind, wurden auch durch entsprechende Plug-Ins,
- die an diese Extension Points angebunden sind, realisiert und können gegebenenf
+ die an diese Extension-Points angebunden sind, realisiert und können gegebenenf
 alls leicht ausgetauscht werden.
- Weitere Einträge können am Extension Points ACItem hinzugefügt werden.
+ Weitere Einträge können über den Extension-Point 
+\noun on
+org.eclipse.simpl.core.adminConsoleItem
+\noun default
+ hinzugefügt werden.
  Bei der Auslieferung sind die Funktionen Auditing und Global Settings bereits
- durch Extension Points eingebunden.
+ durch Plug-Ins eingebunden.
  Die Einträge in der Admin-Konsole werden in einer Baumstruktur gehalten
  ( TreeItems, Klasse Application) und werden auf der linken Seite in der
  Admin-Konsole angezeigt.
@@ -2885,6 +3100,11 @@ Default
 
  wird auf den Buffer zugegriffen, da die Daten schon beim Starten des Plug-Ins
  in den Buffer geladen wurden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
