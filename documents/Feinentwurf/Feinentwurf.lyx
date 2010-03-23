@@ -1216,6 +1216,39 @@ Hier befinden sich die Web Services des SIMPL Cores, die den Zugriff von
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPLCore"
+
+\end_inset
+
+Die SIMPLCore Klasse
+\end_layout
+
+\begin_layout Standard
+Die SIMPLCore-Klasse bildet den zentralen Zugriffspunkt auf alle Dienste
+ des SIMPL Cores für den Zugriff auf Klassenebene.
+ Damit die Instanzen der Dienste nur einmal existieren und nicht bei jedem
+ Zugriff erneut erstellt werden, ist die Klasse als Singleton (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ Kapitel 3.3) ausgelegt.
+ Diese Klasse wird von den Apache ODE Extension Activities (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:BPEL-DM-Extension"
+
+\end_inset
+
+) benutzt, um DM-Aktivitäten auszuführen, sowie innerhalb des SIMPL Cores,
+ wenn Dienste sich gegenseitig verwenden.
+\end_layout
+
+\begin_layout Subsection
 SIMPL Core Services
 \end_layout
 
@@ -1231,8 +1264,15 @@ Administration Service
 \begin_layout Standard
 Der Administration Service ist für die Verwaltung der Einstellungen der
  Admin-Konsole des SIMPL Core Eclipse Plug-Ins zuständig.
- Die Einstellungen der Admin-Konsole werden dabei über das SIMPL Core Client
- Plug-In an den Administration Service übermittelt oder von ihm angefordert.
+ Die Einstellungen der Admin-Konsole werden dabei über das SIMPL Core Communicat
+ion Plug-In (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+, Kapitel 2.1) an den Administration Service übermittelt oder von ihm angefordert.
  Die auf diese Weise zentral im SIMPL Core hinterlegten Einstellungen können
  dann bei Bedarf direkt von anderen SIMPL Core Diensten, die diese Informationen
  benötigen, ausgelesen werden.
@@ -1269,7 +1309,7 @@ name "fig:Sequenzdiagramm-des-AdministrationServices"
 
 \end_inset
 
-Sequenzdiagramm des Administration Services
+Sequenzdiagramm eines Lade- und Speichervorgangs der SIMPL Core Einstellungen
 \end_layout
 
 \end_inset
@@ -1292,11 +1332,12 @@ reference "fig:Sequenzdiagramm-des-AdministrationServices"
 
  zeigt die Verwendung und die Funktionalität des Administration Service.
  Mit der loadSettings()-Methode können Einstellungen aus der Datenbank geladen
- werden, dafür wird intern eine einfache Datenbankabfrage genutzt.
+ werden.
+ Dafür wird intern eine einfache Datenbankabfrage genutzt.
  Die Einstellungen werden dabei als HashMap zurückgeliefert und auch so
  beim Speichern übergeben, damit sowohl die Bezeichnung der Einstellung
  wie auch ihr Wert zu jeder Zeit verfügbar sind.
- Zur Identifizierung verschiedener Einstellungen, wie z.B.
+ Zur Identifizierung verschiedener Einstellungsprofile, wie z.B.
  Standard-Einstellungen und zuletzt gespeicherten Einstellungen, besitzt
  jede Einstellung eine eindeutige Id.
  So kann später die Admin-Konsole um das Laden und Speichern von benutzerspezifi
@@ -1305,8 +1346,9 @@ schen Preset-Einstellungen ergänzt werden.
 
 \begin_layout Standard
 Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole.
- Da hier immer Ober- und Unterpunkte zusammengehören, wurde auf der Datenbank
- diese Beziehungen durch die Strukturierung mit Schemata und Tabellen umgesetzt.
+ Da in der Admin-Konsole immer Ober- und Unterpunkte zusammengehören, wurden
+ auf der Datenbank diese Beziehungen durch die Strukturierung mit Schemata
+ und Tabellen umgesetzt.
  So gibt es für jeden Oberpunkt, wie z.B.
  
 \emph on
@@ -1319,20 +1361,34 @@ Auditing
 General
 \emph default
  eine gleichnamige Tabelle im Schema des Oberpunkts.
- Daraus ergibt sich der genaue Pfad, einer in der Datenbank gespeicherten
- Einstellung, aus der Auswahl in der Admin-Konsole.
+ Daraus ergibt sich der genaue Pfad einer in der Datenbank gespeicherten
+ Einstellung aus der Auswahl in der Admin-Konsole.
  Mit der saveSettings()-Methode können Einstellungen in einer entsprechenden
  Tabelle eines Schemas gespeichert werden.
  Dazu wird zuerst überprüft, ob das zu den Einstellungen gehörige Schema
  bereits existiert (createSchemaIfItDoesntExistYet()) oder noch erzeugt
- werden muss und anschließend, ob die Tabelle bereits existiert (createTableIfIt
-DoesntExistYet()) oder noch erzeugt werden muss.
+ werden muss, und anschließend, ob die Tabelle bereits existiert (createTableIfI
+tDoesntExistYet()) oder noch erzeugt werden muss.
  Die Tabelle wird dabei direkt aus den übergebenen Einstellungen automatisch
  erzeugt, indem die Einstellungsnamen als Spaltennamen verwendet werden.
- Wenn nun Schema und Tabelle vorhanden sind wird überprüft, ob die zu speichernd
-e Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss,
+ Wenn nun Schema und Tabelle vorhanden sind, wird überprüft, ob die zu speichern
+de Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss,
  oder ob die Einstellung neu angelegt, also eine neue Zeile eingefügt werden
  muss.
+ Dazu wird die executeUpdate()-Methode verwendet, die eventuell vorhandene
+ Einstellungsprofile abfragt und anhand des Abfrageergebnisses (Einstellungsprof
+il existiert vs.
+ Einstellungsprofil existiert nicht) das Einstellungsprofil über entsprechende
+ Datenbankbefehle aktualisiert oder erstellt.
+ Der AdministrationService gibt anschließend eine Statusmeldung (success?)
+ an den SIMPL Core zurück, ob der ausgeführte Speichervorgang erfolgreich
+ war.
+ Dieses generische Vorgehen ist erforderlich, um die Erweiterung der Admin-Konso
+le durch weitere Eigenschaften möglichst einfach zu halten.
+ Ein Entwickler muss nur die vorhandenen Schnittstellen der Admin-Konsole
+ implementieren, seine Implementierung an den entsprechenden Extension-Point
+ anbinden und braucht sich nicht um das Laden und Speichern seiner Einstellungen
+ zu kümmern.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1346,13 +1402,14 @@ Der Storage Service ist für die Verwaltung von Daten aller SIMPL Core Services
  Seine Architektur und Funktionalität ist der des Administration Services
  sehr ähnlich, mit dem Unterschied, dass die Struktur der zu speichernden
  Daten und ihre Quelle sich zur Laufzeit ständig ändern können.
- Auch der Storage Service nutzt das Prinzip die Daten nach ihrer Herkunft
+ Auch der Storage Service nutzt das Prinzip, die Daten nach ihrer Herkunft
  mit Schemata und Tabellen zu strukturieren.
  Da hier aber keine natürliche Struktur wie beim Administration Service
  vorliegt, wird eine entsprechende Gliederung durch die Zugehörigkeit der
  Services erzeugt.
- So werden alle Daten von Services, die etwas mit Sicherheit zu tun haben
- unter dem Schema 
+ So werden z.B.
+ alle Daten von Services, die etwas mit Sicherheit zu tun haben, unter dem
+ Schema 
 \emph on
 Security
 \emph default
@@ -1362,9 +1419,8 @@ Security
  Konstante hinterlegt und kann so einfach zur Laufzeit genutzt werden.
  Daraus ergibt sich wieder ein eindeutiger Pfad zu den in der Datenbank
  gespeicherten Daten eines jeden SIMPL Core Services.
- Die Daten werden auch wie im Administration Service wieder als HashMaps
- verarbeitet, um sowohl die Bezeichnung wie auch den Wert immer verfügbar
- zu haben.
+ Die Daten werden auch wie im Administration Service als HashMaps verarbeitet,
+ um sowohl die Bezeichnung als auch den Wert immer verfügbar zu haben.
  Im Storage Service wird allerdings immer der erste in der HashMap hinterlegte
  Wert als Id der zugehörigen Datenbanktabelle interpretiert.
 \end_layout
@@ -1397,7 +1453,8 @@ name "fig:Sequenzdiagramm-des-StorageServices"
 
 \end_inset
 
-Sequenzdiagramm des Storage Services
+Sequenzdiagramm eines Lade- und Speichervorgangs von Einstellungen eines
+ SIMPL Services
 \end_layout
 
 \end_inset
@@ -1419,9 +1476,9 @@ reference "fig:Sequenzdiagramm-des-StorageServices"
 \end_inset
 
  zeigt die Verwendung und die Funktionalität des Storage Services.
- Mit der load()-Methode können Daten wieder aus der Datenbank geladen werden
- und die save()-Methode speichert alle Daten eines Services nach der selben
- Vorgehensweise wie die saveSettings()-Methode des Administration Services.
+ Mit der load()-Methode können Daten wieder aus der Datenbank geladen werden,
+ und die save()-Methode speichert alle Daten eines Services analog zur Vorgehens
+weise der saveSettings()-Methode des Administration Services.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1435,9 +1492,13 @@ Datasource Service
 \end_layout
 
 \begin_layout Standard
-Der Datasource Service stellt die Verbindung zu den verschiedenen Datenquellen
- her.
- Dazu gibt es gibt ihn in verschiedenen Ausprägungen, die zu den verschiedenen
+Der Datasource Service realisiert die Schnittstelle für den Zugriff auf
+ die verschiedenen Datenquellen.
+ Dazu wird die abstrakte 
+\emph on
+DatasourceService
+\emph default
+-Klasse in verschiedenen Ausprägungen abgeleitet, die zu den verschiedenen
  Typen von Datenquellen über ein Plug-In System bereitgestellt werden.
  Die Instanz eines Datasource Service kann nur über den Datasource Service
  Provider (DatasourceServiceProvider) angefordert werden, der für die Verwaltung
@@ -1509,39 +1570,6 @@ Wird verwendet um bestehende Daten zu manipulieren bzw.
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:SIMPLCore"
-
-\end_inset
-
-Die SIMPLCore Klasse
-\end_layout
-
-\begin_layout Standard
-Die SIMPLCore-Klasse bildet den zentralen Zugriffspunkt auf alle Dienste
- des SIMPL Cores für den Zugriff auf Klassenebene.
- Damit die Instanzen der Dienste nur einmal existieren und nicht bei jedem
- Zugriff erneut erstellt werden, ist die Klasse als Singleton (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-1"
-
-\end_inset
-
- Kapitel 3.3) ausgelegt.
- Diese Klasse wird von den Apache ODE Extension Activities (siehe 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:SIMPL-DM-Extension"
-
-\end_inset
-
-) benutzt um DM-Aktivitäten auszuführen, sowie innerhalb des SIMPL Cores
- wenn Dienste sich gegenseitig verwenden.
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
 name "sub:Datasource-Plug-Ins"
 
 \end_inset
@@ -1551,7 +1579,7 @@ Datasource Plug-Ins
 
 \begin_layout Standard
 Die Unterstützung verschiedener Typen von Datenquellen wird durch Datasource
- Plug-Ins realisiert um eine Erweiterungsmöglichkeit zu garantieren.
+ Plug-Ins realisiert, um eine Erweiterungsmöglichkeit zu garantieren.
  Dies wird durch die Bereitstellung einer abstrakten Klasse erreicht, von
  der sich die Plug-Ins ableiten lassen.
  Mit der Reflection API von Java ist es möglich, die Plug-Ins zur Laufzeit
@@ -1566,7 +1594,7 @@ DatasourceService (interface)
 
 \begin_layout Standard
 Das DatasourceService-Interface schreibt alle Funktionen vor, die von den
- DatasourceServices (Plug-Ins) implementiert werden müssen.
+ Datasource Services (Plug-Ins) implementiert werden müssen.
 \end_layout
 
 \begin_layout Paragraph*
@@ -1577,7 +1605,7 @@ DatasourceServicePlugin (abstract class)
 Bei der DatasourceServicePlugin-Klasse handelt es sich um eine abstrakte
  Klasse, die an das DatasourceService-Interface gebunden ist und damit das
  Grundgerüst für einen Datasource Service bildet.
- Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen das
+ Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen, das
  DatasourceService-Interface zu implementieren.
 \end_layout
 
@@ -1594,6 +1622,12 @@ DatasourceServiceProvider
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Web-Services"
+
+\end_inset
+
 Web Services
 \end_layout
 
@@ -1608,7 +1642,7 @@ jdk1.6.0_14
 \backslash
 bin
 \backslash
-wsgen.exe), eine WSDL-Datei zu einer Klasse erzeugt.
+wsgen.exe) eine WSDL-Datei zu einer Klasse erzeugt.
  Die WSDL-Datei wird anschließend zusammen mit der kompilierten Klasse als
  JAR-Datei in Apache ODE hinterlegt (..
 \backslash
@@ -1628,8 +1662,8 @@ servicejars) und wird damit beim Start von Apache Tomcat von Apache ODE
 Komplexe Objekte wie z.B.
  HashMaps, die intern von den SIMPL Core Diensten zur Ausführung benötigt
  werden, werden als String serialisiert an die Web Services übergeben und
- in der Form auch als Rückgabeparameter empfangen.
- Bei der Deserialisierung, werden die Objekte wiederhergestellt und können
+ in dieser Form auch als Rückgabeparameter empfangen.
+ Bei der Deserialisierung werden die Objekte wiederhergestellt und können
  als solche verwendet werden.
  Eine Ausnahme bilden die SDO Objekte, die bereits über eine XML Darstellung
  verfügen und in dieser direkt übermittelt werden können.
@@ -1677,7 +1711,7 @@ public List<String> getDatasourceMetaData(String dsAddress, String dsType)
 \begin_layout Standard
 Der Datasource Web Service bietet eine Schnittstelle zu allen Ausprägungen
  des Datasource Service im SIMPL Core.
- Die Funktionen des Datasource Web Service, entsprechen den öffentlichen
+ Die Funktionen des Datasource Web Service entsprechen den öffentlichen
  Funktionen der Datasource Services, erhalten aber als zusätzlichen Parameter
  die eindeutige Typkennzeichung (siehe 
 \begin_inset CommandInset ref
@@ -1689,7 +1723,7 @@ reference "sub:Datasource-Plug-Ins"
  DatasourceServiceProvider) der angeforderten Datenquelle, über die bei
  einem Zugriff intern der entsprechende Datasource Service angesprochen
  werden kann.
- Zusätzlich besitzt der Datasource Web Service eine Funktion um Metadaten
+ Zusätzlich besitzt der Datasource Web Service eine Funktion, um Metadaten
  von einer Datenquelle anzufordern, die beispielsweise von Eclipse zur Auswahl
  in der GUI benötigt werden, wie z.B.
  die existierenden Tabellen in einer Datenbank.
@@ -1717,9 +1751,16 @@ public LinkedHashMap<String, String> loadSettings(String schema, String
 
 \begin_layout Standard
 Der Administration Web Service ist die direkte Schnittstelle des Administration
- Service nach Außen und besitzt daher die gleichen Funktionen wie dieser,
- mit dem Unterschied, dass komplexe Parameter, aus oben genannten Gründen,
- als String-Parameter gehandhabt werden.
+ Service nach außen und besitzt daher die gleichen Funktionen wie dieser,
+ mit dem Unterschied, dass komplexe Parameter als String-Parameter gehandhabt
+ werden (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Web-Services"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsubsection
@@ -1743,9 +1784,9 @@ public List<LinkedHashMap<String, String>> load(String serviceNS, String
 \end_layout
 
 \begin_layout Standard
-Der Storage Web Service bietet anderen Diensten von Außen die Möglichkeit
+Der Storage Web Service bietet anderen Diensten von außen die Möglichkeit,
  Einstellungen zu speichern und zu laden.
- Für den Storage Web Service gilt das gleich wie für den Administration
+ Für den Storage Web Service gilt das Gleiche wie für den Administration
  Service, nur dass dieser die direkte Schnittstelle zum Storage Service
  darstellt.
 \end_layout
@@ -1778,29 +1819,29 @@ Verweise auf den Grobentwurf fehlen noch.
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird auf die Erweiterungen die an Apache ODE vorgenommen
- werden eingegangen.
- Dies beinhaltet die SIMPL DM Extension Activities, das SIMPL Event System,
+In diesem Kapitel wird auf die Erweiterungen, die an Apache ODE vorgenommen
+ werden, eingegangen.
+ Dies beinhaltet die BPEL-DM Extension Activities, das SIMPL Event System
  sowie das SIMPL DAO.
- Es wird auf die verschiedenen Funktionalitäten als auch auf deren Implementieru
-ng eingegangen.
+ Es wird auf die verschiedenen Funktionalitäten als auch auf deren Umsetzung
+ eingegangen.
 \end_layout
 
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:SIMPL-DM-Extension"
+name "sub:BPEL-DM-Extension"
 
 \end_inset
 
-SIMPL DM Extension Activities
+BPEL-DM Extension Activities
 \end_layout
 
 \begin_layout Standard
-Die SIMPL DM Extension Activities (siehe Abbildung 
+Die BPEL-DM Extension Activities (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:SIMPL-DM-Extension"
+reference "fig:BPEL-DM-Extension"
 
 \end_inset
 
@@ -1808,8 +1849,7 @@ reference "fig:SIMPL-DM-Extension"
 itäten für alle weiteren Extension Activities anbietet.
  Die Extension Activities nutzen zur Ausführung der verschiedenen Data-Managemen
 t-Operationen den Datasource Service des SIMPL Cores.
- Die Implementierung der Extension Activities wird folgendermaßen umgesetzt:
- 
+ Die Implementierung der Extension Activities wird wie folgt umgesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -1827,24 +1867,24 @@ context
 \begin_inset Quotes erd
 \end_inset
 
- hat man die Möglichkeit auf BPEL-Variablen und weitere Konstrukte die im
- Prozess vorhanden sind zuzugreifen.
- Der Inhalt des BPEL-Prozess-Dokuments wird in Nodes geparst um ein objektbasier
-tes Modell des BPEL Prozesses zu erzeugen.
- Mit „element“ ist es möglich auf die verschiedenen Eigenschaften dieser
- Nodes zuzugreifen und mit ihnen zu arbeiten.
+ hat man die Möglichkeit, auf BPEL-Variablen und weitere Konstrukte, die
+ im Prozess vorhanden sind, zuzugreifen.
+ Der Inhalt des BPEL-Prozess-Dokuments wird als DOM-Baum geparst, um ein
+ objektbasiertes Modell des BPEL Prozesses zu erzeugen.
+ Mit „element“ ist es möglich, auf die verschiedenen Eigenschaften der einzelnen
+ Knoten des Baumes zuzugreifen und mit ihnen zu arbeiten.
  
 \end_layout
 
 \begin_layout Standard
-Weiterhin ist es notwendig ein eigenes ExtensionBundle zu implementieren.
- Das ExtensionBundle ist notwendig, damit ODE weiß aus welchen Extension
- Activities die Erweiterung besteht und um sie zur Laufzeit ausgeführen
- zu können.
+Weiterhin ist es notwendig, ein eigenes ExtensionBundle zu implementieren.
+ Das ExtensionBundle ist notwendig, damit ODE weiß, aus welchen Extension
+ Activities die Erweiterung besteht, und um sie zur Laufzeit ausführen zu
+ können.
  Die Implementierung wird erreicht durch das Ableiten einer neuen Klassen
  von „AbstractExtensionBundle“.
  In dieser Klasse müssen nun in der Methode „registerExtensionActivity“
- alle Klassen die für die Extension Activity von Bedeutung sind mit Hilfe
+ alle Klassen, die für die Extension Activity von Bedeutung sind, mit Hilfe
  von „registerExtensionOperation“ bei ODE registriert werden.
 \end_layout
 
@@ -1872,11 +1912,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:SIMPL-DM-Extension"
+name "fig:BPEL-DM-Extension"
 
 \end_inset
 
-SIMPL DM Extension Activities
+BPEL-DM Extension Activities
 \end_layout
 
 \end_inset
@@ -1906,13 +1946,13 @@ reference "fig:SIMPL-Event-System"
  Die neuen Events unterteilen sich in DMEvents und ConnectionEvents, welche
  beide als Hauptklasse die Klasse SIMPLEvent haben.
  SIMPLEvent ist wiederum von Scope Event abgeleitet.
- DMEvents sind dabei für alle Ereignisse die während der Ausführung einer
- DM-Aktivität zuständig, während ConnectionEvents Rückmeldung über den Status
- der Verbindung geben.
- Die neuen Events werden dadurch als Scope Events in die bestehende Event
- Hierarchie von ODE eingegliedert.
- Dies erlaubt es uns diese direkt innerhalb der ExtensionAcitvities zu nutzen
- und aufzurufen.
+ DMEvents stehen dabei für alle Ereignisse, die während der Ausführung einer
+ DM-Aktivität auftreten können, während ConnectionEvents Rückmeldung über
+ den Status der Verbindung zu einer Datenquelle geben.
+ Die neuen Events werden als Scope Events in die bestehende Event Hierarchie
+ von ODE eingegliedert.
+ Dies erlaubt es uns, diese direkt innerhalb der ExtensionAcitvities zu
+ nutzen und aufzurufen.
 \end_layout
 
 \begin_layout Standard
@@ -1957,7 +1997,7 @@ SIMPL Event System
 \end_layout
 
 \begin_layout Subsection
-Ausführung einer SIMPL DM Extension Activity
+Ausführung einer BPEL-DM Extension Activity
 \end_layout
 
 \begin_layout Standard
@@ -2017,7 +2057,7 @@ DMFailure
 \begin_inset Quotes erd
 \end_inset
 
- wird erzeugt falls die Rückmeldungsvariable 
+ wird erzeugt, falls die Rückmeldungsvariable 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2056,7 +2096,7 @@ name "fig:Ausführung-einer-SIMPL"
 
 \end_inset
 
-Ausführung einer SIMPL DM Extension Activity
+Ausführung einer BPEL-DM Extension Activity
 \end_layout
 
 \end_inset
@@ -2089,7 +2129,7 @@ s aus dem Packet
 \emph on
 org.apache.ode.bpel.dao
 \emph default
- die in den folgenden Unterpunkten beschrieben werden.
+, die in den folgenden Unterpunkten beschrieben werden.
  Das DAO wird dafür verwendet, wichtige Daten der Prozessausführung aufzuzeichne
 n und persistent zu speichern (Siehe hierfür 
 \begin_inset CommandInset citation
@@ -2110,7 +2150,7 @@ Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
  Prozesse (Name, Id, Typ), in beliebigen Datenquellen gespeichert werden.
  Die Übertragung der Daten findet dabei direkt in den set-Methoden der DAOs
  statt.
- Die DAO Daten werden trozdem auch weiterhin in der internen Apache Derby
+ Die DAO Daten werden trotzdem auch weiterhin in der internen Apache Derby
  Datenbank gespeichert und von dort gelesen.
  Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
  können nur schreibend, jedoch nicht lesend erfolgen.
@@ -2168,9 +2208,9 @@ PartnerLinkDAO
 \end_layout
 
 \begin_layout Standard
-Das PartnerLinkDAO repräsentiert ein Partnerlink.
+Das PartnerLinkDAO repräsentiert einen PartnerLink.
  Es enthält Informationen über die eigene Rolle, die Rolle des Partners
- und die im Partner Link hinterlegte Endpunkt-Referenz.
+ und die im PartnerLink hinterlegte Endpunkt-Referenz.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2179,7 +2219,8 @@ ProcessDAO
 
 \begin_layout Standard
 Das ProcessDAO repräsentiert ein Prozessmodell.
- Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen.
+ Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen dieses
+ Modells.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2189,7 +2230,7 @@ ProcessInstanceDAO
 \begin_layout Standard
 Das ProcessInstanceDAO repräsentiert eine Prozess-Instanz und enthält alle
  Daten, die einer Instanz zugehörig sind.
- Dazu zählen Events, Scopes, sowie wartende Pick- und Receive-Aktivitäten.
+ Dazu zählen Events, Scopes sowie wartende Pick- und Receive-Aktivitäten.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2206,8 +2247,8 @@ XmlDataDAO
 \end_layout
 
 \begin_layout Standard
-Das XmlDataDAO repräsentiert XML-Daten und wird dazu benutzt BPEL-Variablen
- zu modelieren.
+Das XmlDataDAO repräsentiert XML-Daten und wird dazu benutzt Inhalte von
+ BPEL-Variablen zu speichern.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2229,16 +2270,20 @@ DAO Lebenszyklus
 \begin_layout Standard
 Beim Starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
  BPEL-Server gestartet.
- Sofort wird die in 
+ Sofort wird die in der 
 \emph on
 OdeServer
 \emph default
- Klasse enthaltene 
+-Klasse enthaltene 
 \emph on
 init
 \emph default
 -Methode aufgerufen.
- Diese ruft wiederum die initDao-Methode auf.
+ Diese ruft wiederum die 
+\emph on
+initDao
+\emph default
+-Methode auf.
  Dort wird die 
 \emph on
 DaoConnectionFactory
@@ -2256,7 +2301,7 @@ Axis2.properties
 \emph on
 ConnectionFactory
 \emph default
- werden 
+-Klasse werden 
 \emph on
 DaoConnections
 \emph default
@@ -2272,7 +2317,7 @@ ProcessDAO
 \emph on
 ODEProcess
 \emph default
- Klasse zugegriffen, um die Prozessdaten persistent zu speichern.
+-Klasse zugegriffen, um die Prozessdaten persistent zu speichern.
 \end_layout
 
 \begin_layout Standard
@@ -2293,12 +2338,11 @@ Eclipse
 \end_layout
 
 \begin_layout Standard
-Das SIMPL Rahmenwerk besteht aus der bereits vorhandenen Eclipse IDE, dem
- Eclipse BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins BPEL-DM
- Plug-In, SIMPL Core Plug-In und SIMPL Core Client Plug-In.
- Im Rahmen des Feinentwurfes wird die Anbindung an die vorhandenen Komponenten
+Das SIMPL Rahmenwerk besteht aus der bereits vorhandenen Eclipse IDE und
+ dem Eclipse BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins
+ BPEL-DM Plug-In, SIMPL Core Plug-In und SIMPL Core Client Plug-In.
+ Im Rahmen des Feinentwurfes werden die Anbindung an die vorhandenen Komponenten
  sowie die zu erstellenden Komponenten näher erläutert.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -2308,15 +2352,28 @@ BPEL DM Plug-In
 \begin_layout Standard
 Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse BPEL
  Designer Plug-Ins um die DM-Aktivitäten ergänzt.
- Das Plug-In läßt sich grob in die Pakete User-Interface, Modell und Erweiterung
- gruppieren.
- Das User-Interface Paket (org.eclipse.bpel.ui) sorgt für die grafische Darstellung
- in Eclipse und repräsentiert somit das zugrundeliegende Datenmodell.
- Dieses befindet sich im Paket org.eclipse.bpel.simpl.model.
- Für die Darstellung von Erweiterungen wird beispielhaft ein SQL Plug-In
- (Paketorg.eclipse.bpel.simpl.ui.sql) verwendet.
- Im folgenden Diagramm sind die Pakete und Klassen des aller Plug-Ins dargestell
-t, um einen leichten Überblick zu ermöglichen.
+ Das Plug-In lässt sich grob in die Pakete User-Interface und Modell gruppieren.
+ Das User-Interface Paket (
+\emph on
+org.eclipse.bpel.simpl.ui
+\emph default
+) sorgt für die grafische Darstellung der DM-Aktivitäten und deren Einbindung
+ in den Eclipse BPEL Designer.
+ Das zugrundeliegende Modell der DM-Aktivitäten befindet sich im Paket 
+\emph on
+org.eclipse.bpel.simpl.model
+\emph default
+.
+ Für die grafische Modellierung von Abfragebefehlen für verschiedene Datenquelle
+n können weitere Plug-Ins über einen Extension-Point an das BPEL-DM Plug-In
+ angebunden werden.
+ Im Rahmen des Projekts wird ein Beispiel Plug-In (
+\emph on
+org.eclipse.bpel.simpl.ui.sql
+\emph default
+) für die grafische Modellierung von SQL-Abfragen umgesetzt.
+ Im folgenden Diagramm sind die Pakete und Klassen aller Plug-Ins dargestellt,
+ um einen Überblick zu ermöglichen.
  Diese Pakete und Klassen werden in den folgenden Unterkapiteln näher erläutert.
 \begin_inset Float figure
 placement H
@@ -2437,10 +2494,10 @@ org.eclipse.bpel.simpl.extensions
 
 \begin_layout Standard
 Das Interface IStatementeEditor vererbt an die abstrakte Klasse AStatementEditor
- und diese gibt die Rahmenbedingungen für die Einbindung von Statement-Editoren
+, und diese gibt die Rahmenbedingungen für die Einbindung von Statement-Editoren
  für neue Anfragsprachen vor.
- Dabei handelt es sich um Composites die den Inhalt des Fensters beinhalten
- und Statements die den eigentlichen Befehl beinhalten.
+ Dabei handelt es sich um Composites, die den Inhalt des Fensters beinhalten,
+ und Statements, die den eigentlichen Befehl beinhalten.
  Die Anbindung von StatementEditor-Implementierungen erfolgt dabei über
  den Extension Point org.eclipse.bpel.simpl.ui.queryLanguage.
 \end_layout
@@ -2450,8 +2507,8 @@ org.eclipse.bpel.simpl.factories
 \end_layout
 
 \begin_layout Standard
-Die beiden Klassen in diesem Paket erzeugen Objekte für die grafische Plazierung
- in der Modellierungsumgebung.
+Die beiden Klassen in diesem Paket erzeugen Objekte für die grafische Platzierun
+g in der Modellierungsumgebung.
  Die Klasse DataManagementUIOObjectFactory erzeugt die Objekte der jeweiligen
  Aktivität und die Klasse DataManagementUIAdapterFactory die zugehörigen
  Adapter für Eclipse.
@@ -2466,11 +2523,11 @@ org.eclipse.bpel.simpl.palette
 \begin_layout Standard
 Dieses Paket beinhaltet die grafische Palette der Aktivitäten für den BPEL
  Designer.
- Hier werden die verfügbaren Aktivitäten des BPEL Designers und die SIMPL
- DM-Aktivitäten dargestellt, können ausgewählt und auf dem Arbeitsplatz
- verwendet werden.
- Anbindung erfolgt über den Extension Point org.eclipse.bpel.common.ui.paletteAdditio
-ns.
+ Hier werden die verfügbaren Aktivitäten des BPEL Designers und die BPEL-DM-Akti
+vitäten dargestellt, können ausgewählt und auf dem Arbeitsplatz verwendet
+ werden.
+ Die Anbindung erfolgt über den Extension Point org.eclipse.bpel.common.ui.paletteAdd
+itions.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2478,7 +2535,7 @@ org.eclipse.bpel.simpl.properties
 \end_layout
 
 \begin_layout Standard
-Beinhaltet die Anzeige der Eigenschaften der jeweiligen DM-Aktivitäten.
+Das Paket beinhaltet die Anzeige der Eigenschaften der jeweiligen DM-Aktivitäten.
  Die Anbindung erfolgt über den Extension Point org.eclipse.ui.views.properties.tabbe
 d.propertySections.
  Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
@@ -2493,12 +2550,16 @@ Subtype
 \begin_inset Quotes erd
 \end_inset
 
- die Auswahl verfeinert werden und es kann z.B.
+ die Auswahl verfeinert werden.
+ So kann z.B.
  beim Filesystem NTFS oder EXT3 gewählt werden.
- Bei einer Datenbank kann zwischen DB2 und MySQL gewählt werden, beim Sensornetz
- wird nur TinyDB unterstützt.
- Weiterhin kann hier die Datenquellenadresse angegeben werden.
- Der in der Aktivität hinterlegte Abfragebefehl, wird im 
+ Bei einer Datenbank kann z.B.
+ zwischen DB2 und MySQL gewählt werden, beim Sensornetz wird momentan nur
+ TinyDB unterstützt.
+ Weiterhin kann hier die Datenquellenadresse angegeben werden, also die
+ Adresse, wohin der in der Aktivität definierte DM-Befehl zur Verarbeitung
+ geschickt wird.
+ Der in der Aktivität hinterlegte DM-Befehl wird im 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2508,19 +2569,19 @@ Resulting Statement
 
 -Textfeld angezeigt und kann im Statement-Editor bearbeitet oder auch neu
  modelliert werden.
- Bei der Auswahl der DM-Aktivitäten werden Optionen die nicht möglich sind,
+ Bei den einzelnen DM-Aktivitäten werden Optionen, die nicht möglich sind,
  nicht zur Auswahl freigegeben.
- Es ist beispielsweise nicht möglich bei einer Insert-Aktivität ein Sensornetz
+ Es ist beispielsweise nicht möglich, bei einer Insert-Aktivität ein Sensornetz
  auszuwählen.
 \end_layout
 
 \begin_layout Subsubsection
-BPEL DM Plug-In Modell
+BPEL-DM Plug-In Modell
 \end_layout
 
 \begin_layout Standard
-Das BPEL DM Plug-In Modell stellt die Pakete und Klassen der Datenstruktur
- bei den SIMPL DM-Aktivitäten dar.
+Das BPEL-DM Plug-In Modell stellt die Pakete und Klassen der Datenstruktur
+ bei den BPEL-DM-Aktivitäten dar.
 \end_layout
 
 \begin_layout Standard
@@ -2553,7 +2614,7 @@ name "fig:BPEL-DM-Plug-In Modell"
 
 \end_inset
 
-BPEL DM Plug-In Modell
+BPEL-DM Plug-In Modell
 \end_layout
 
 \end_inset
@@ -2574,23 +2635,55 @@ reference "fig:BPEL-DM-Plug-In Modell"
 
 \end_inset
 
-stellt das SIMPL Datenmodell dar.
- An oberster Stelle steht die DataManagementActivity-Klasse (Interface)
- welche mit den Variablen dsType, dsKind, dsAddress und dsStatement die
- gemeinsame Schnittmenge der Aktivitätenvariablen bildet.
+ stellt das BPEL-DM Datenmodell dar.
+ An oberster Stelle steht die 
+\emph on
+DataManagementActivity
+\emph default
+-Klasse (Interface), welche mit den Variablen 
+\emph on
+dsType
+\emph default
+, 
+\emph on
+dsKind
+\emph default
+, 
+\emph on
+dsAddress
+\emph default
+ und 
+\emph on
+dsStatement
+\emph default
+ die gemeinsame Schnittmenge der Aktivitätenvariablen bildet.
  Diese werden an die Kindklassen wie z.B.
- QueryActivity (Interface) vererbt und um schnittstellenspezifische Eigenschafte
-n erweitert.
- Die konkrete Realisierung erfolgt dann im Paket org.eclipse.bpel.simpl.model
+ 
+\emph on
+QueryActivity
+\emph default
+ (Interface) vererbt und können somit bei Bedarf um schnittstellenspezifische
+ Eigenschaften erweitert werden.
+ Die konkrete Realisierung dieser Interfaces erfolgt dann im Paket 
+\emph on
+org.eclipse.bpel.simpl.model.impl
+\emph default
  z.B.
- in der Klasse QueryActivityImpl.
- Im Paket org.eclipse.bpel.simpl.model.util befinden sich Zubehörklassen wie
- Serializer und Deserializer.
- Diese übernehmen die Erstellung von BPEL Files, sowie deren Auslesen.
+ in der Klasse 
+\emph on
+QueryActivityImpl
+\emph default
+.
+ Im Paket 
+\emph on
+org.eclipse.bpel.simpl.model.util
+\emph default
+ befinden sich Zubehörklassen wie Serializer und Deserializer.
+ Letztgenannte übernehmen die Erstellung von BPEL Files, sowie deren Auslesen.
 \end_layout
 
 \begin_layout Subsubsection
-BPEL DM Plug-In Extension Modell
+BPEL-DM Plug-In Extension Modell
 \end_layout
 
 \begin_layout Standard
@@ -2601,12 +2694,22 @@ reference "fig:BPEL-DM-Plug-In Extension Modell"
 
 \end_inset
 
-des Paket org.eclipse.bpel.simpl.ui.sql.editor steht beispielhaft für eine Erweiterung
- des Statementeditor um die Anfragesprache SQL.
- Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse org.eclipse.b
-pel.simpl.ui.extensions.AStatementEditor und realisieren die elementaren Aktivitäten
+ des Pakets 
+\emph on
+org.eclipse.bpel.simpl.ui.sql.editor
+\emph default
+ steht beispielhaft für eine Erweiterung des Statementeditors um die Anfragespra
+che SQL.
+ Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse 
+\emph on
+org.eclipse.bpel.simpl.ui.extensions.AStatementEditor
+\emph default
+ und realisieren die grafische Modellierung von elementaren SQL-Anfragen
  wie Select und Insert.
- Jede Erweiterung kann am Extension Point org.eclipse.bpel.simpl.ui.queryLanguage
+ Jede Erweiterung kann am Extension Point 
+\emph on
+org.eclipse.bpel.simpl.ui.queryLanguage
+\emph default
  angeschlossen werden.
 \end_layout
 
@@ -2639,7 +2742,7 @@ name "fig:BPEL-DM-Plug-In Extension Modell"
 
 \end_inset
 
-BPEL DM Plug-In Extension Modell 
+BPEL-DM Plug-In Extension Modell 
 \end_layout
 
 \end_inset
@@ -2660,10 +2763,9 @@ SIMPL Core Plug-In
 Das SIMPL Core Plug-In kümmert sich um die Integration von SIMPL in die
  Eclipse Menüleiste und erzeugt die Admin-Konsole zur Verwaltung der Einstellung
 en.
- In der Admin-Konsole kann in der 1.
- Iteration das Auditing aktiviert und deaktiviert werden, die Auditing Datenbank
- kann festgelegt werden und ermöglicht eine Authentifizierung durch Benutzername
- und Passwort.
+ In der Admin-Konsole können momentan Authentifizierungsinformationen (Benutzern
+ame und Passwort) für Datenquellen hinterlegt, das Auditing aktiviert und
+ deaktiviert und die Auditing Datenbank festgelegt werden.
 \end_layout
 
 \begin_layout Standard
@@ -2715,13 +2817,14 @@ reference "fig:SIMPL-Core-Plug-In "
 
 \end_inset
 
-zeigt das Klassendiagramm des SIMPL Core Plug-In.
+ zeigt das Klassendiagramm des SIMPL Core Plug-In.
  Durch diese grafische Benutzeroberfläche wird SIMPL verwaltet.
- Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen um eine
+ Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen, um eine
  größtmögliche Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
- Das bedeutet die Einträge die bereits bei der Auslieferung von SIMPL in
- der Admin-Konsole vorhanden sind, wurden auch durch Extension Points realisiert
- und können gegebenenfalls leicht ausgetauscht werden.
+ Das bedeutet, die Einträge, die bereits bei der Auslieferung von SIMPL
+ in der Admin-Konsole vorhanden sind, wurden auch durch entsprechende Plug-Ins,
+ die an diese Extension Points angebunden sind, realisiert und können gegebenenf
+alls leicht ausgetauscht werden.
  Weitere Einträge können am Extension Points ACItem hinzugefügt werden.
  Bei der Auslieferung sind die Funktionen Auditing und Global Settings bereits
  durch Extension Points eingebunden.
@@ -2739,7 +2842,7 @@ Default
 \begin_inset Quotes erd
 \end_inset
 
-,
+, 
 \begin_inset Quotes erd
 \end_inset
 
@@ -2780,8 +2883,8 @@ Default
 \begin_inset Quotes erd
 \end_inset
 
- wir auf den Buffer zugegriffen da die Daten schon von beim Starten des
- Plug-Ins in den Buffer geladen wurden.
+ wird auf den Buffer zugegriffen, da die Daten schon beim Starten des Plug-Ins
+ in den Buffer geladen wurden.
 \end_layout
 
 \begin_layout Subsection
@@ -2790,9 +2893,9 @@ SIMPL Core Client Plug-In
 
 \begin_layout Standard
 Das SIMPL Core Client Plug-In stellt die Verbindung zu den SIMPL Core Web
- Services her und bietet den anderen Eclipse Plug-Ins damit die Möglichkeit
+ Services her und bietet den anderen Eclipse Plug-Ins damit die Möglichkeit,
  diese zu verwenden.
- Da sowohl das BPEL-DM Plug-In wie auch das SIMPL Core Plug-In mit dem SIMPL
+ Da sowohl das BPEL-DM Plug-In als auch das SIMPL Core Plug-In mit dem SIMPL
  Core kommunizieren, wird der SIMPL Core Client als eigenständiges Plug-In
  realisiert.
  Die Funktionalität für den Zugriff auf die Web Services wird mit Hilfe
@@ -2826,8 +2929,8 @@ Kommunikation
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird die Kommunikation zwischen den Komponenten des SIMPL
- Rahmenwerks beschrieben und wichtige Abläufe deutlich gemacht.
+In diesem Kapitel werden die Kommunikation zwischen den Komponenten des
+ SIMPL Rahmenwerks beschrieben und wichtige Abläufe deutlich gemacht.
 \end_layout
 
 \begin_layout Subsection
@@ -2846,9 +2949,9 @@ reference "fig:Kommunikation-im-SIMPL"
 rufen gezeigt.
  Über das SIMPL Core Client Plug-In wird die Kommunikation der anderen SIMPL
  Eclipse Plug-Ins zum SIMPL Core hergestellt.
- Über die Web Services des SIMPL Cores werden Metdaten zu Datenquellen angeforde
-rt (11, 21: getDatasourceMetaData) und Einstellungen gespeichert (1: saveSetting
-s) und geladen (1: loadSettings).
+ Über die Web Services des SIMPL Cores werden Metadaten zu Datenquellen
+ angefordert (11, 21: getDatasourceMetaData) und Einstellungen gespeichert
+ (2: saveSettings) und geladen (1: loadSettings).
  Dazu werden von den Web Services die Dienste des SIMPL Cores verwendet
  und die Anfragen entsprechend weitergeleitet.
  Apache ODE kann die Dienste des SIMPL Cores direkt ansprechen, da sich
@@ -2864,7 +2967,7 @@ reference "sub:Datasource-Service"
 
  bereits beschrieben wurden.
  Für das SIMPL Auditing benötigen die SIMPL DAOs ebenfalls Zugriff auf den
- DatasourceService, um die Auditing Daten zu speicher.
+ DatasourceService, um die Auditing Daten zu speichern.
  Die Auditing Daten entstehen unter anderem bei der Ausführung der DM-Aktivitäte
 n (13: auditing) und lösen eine Speicherung über die SIMPL DAOs aus (16:
  saveData).
