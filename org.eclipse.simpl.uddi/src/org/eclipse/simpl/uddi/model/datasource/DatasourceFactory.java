@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.ui.model.datasource;
+package org.eclipse.simpl.uddi.model.datasource;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage
+ * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage
  * @generated
  */
 public interface DatasourceFactory extends EFactory {
@@ -23,7 +23,7 @@ public interface DatasourceFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	DatasourceFactory eINSTANCE = org.eclipse.simpl.ui.model.datasource.impl.DatasourceFactoryImpl.init();
+	DatasourceFactory eINSTANCE = org.eclipse.simpl.uddi.model.datasource.impl.DatasourceFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Data Source</em>'.

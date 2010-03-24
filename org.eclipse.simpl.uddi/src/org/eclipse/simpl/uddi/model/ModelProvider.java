@@ -3,8 +3,8 @@ package org.eclipse.simpl.uddi.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.simpl.ui.model.datasource.DataSource;
-import org.eclipse.simpl.ui.model.datasource.DatasourceFactory;
+import org.eclipse.simpl.uddi.model.datasource.DataSource;
+import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 
 public class ModelProvider {
 	private static ModelProvider content;

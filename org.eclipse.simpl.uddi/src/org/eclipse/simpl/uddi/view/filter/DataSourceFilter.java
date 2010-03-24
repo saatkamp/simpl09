@@ -2,7 +2,7 @@ package org.eclipse.simpl.uddi.view.filter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.simpl.ui.model.datasource.DataSource;
+import org.eclipse.simpl.uddi.model.datasource.DataSource;
 
 public class DataSourceFilter extends ViewerFilter {
 

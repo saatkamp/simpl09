@@ -2,7 +2,7 @@ package org.eclipse.simpl.uddi.view.sorter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.eclipse.simpl.ui.model.datasource.DataSource;
+import org.eclipse.simpl.uddi.model.datasource.DataSource;
 
 public class TableSorter extends ViewerSorter {
 	private int propertyIndex;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.simpl.ui.model.datasource.DataSource;
+import org.eclipse.simpl.uddi.model.datasource.DataSource;
 
 public class UDDIContentProvider implements IStructuredContentProvider {
 

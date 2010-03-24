@@ -5,7 +5,7 @@
     modelPluginID="org.eclipse.simpl.uddi" modelName="DataSource" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="6.0" copyrightFields="false">
   <foreignModel>DataSource.ecore</foreignModel>
-  <genPackages prefix="Datasource" basePackage="org.eclipse.simpl.ui.model" disposableProviderFactory="true"
+  <genPackages prefix="Datasource" basePackage="org.eclipse.simpl.uddi.model" disposableProviderFactory="true"
       ecorePackage="DataSource.ecore#/">
     <genClasses ecoreClass="DataSource.ecore#//DataSource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataSource.ecore#//DataSource/name"/>
