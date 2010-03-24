@@ -1,4 +1,4 @@
-package org.simpl.core.datasource.plugins.rdb;
+package org.simpl.core.plugins.datasource.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,31 +11,30 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.datasource.exceptions.ConnectionException;
-import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
+import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for supporting the
- * Apache Derby relational database in embedded mode.
+ * MySQL relational database.
  * </p>
  * 
- * dsAddress = Full path to embedded Derby database, for example: C:\databases\myDB.
+ * dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
+ * //localhost:3306/simplDB.
  * 
  * @author hahnml
  */
-public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
-  static Logger logger = Logger.getLogger(EmbDerbyRDBDatasourceService.class);
+public class MySQLRDBDatasource extends DataSourcePlugin {
+  static Logger logger = Logger.getLogger(MySQLRDBDatasource.class);
 
-  public EmbDerbyRDBDatasourceService() {
+  public MySQLRDBDatasource() {
     this.setDatasourceType("Database");
     this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("EmbeddedDerby");
-    this.addDatasourceLanguage("EmbeddedDerby", "SQL");
-    this.addDatasourceLanguage("FAT32", "OSCall");
-    this.addDatasourceLanguage("NTFS", "OSCall");
+    this.addDatasourceSubtype("MySQL");
+    this.addDatasourceLanguage("MySQL", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -44,18 +43,20 @@ public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
   @Override
   public Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
+    // Testweise wird hier nur eine embedded Derby Datenbank verwendet
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
     Connection connect = null;
     try {
-      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+      Class.forName("com.mysql.jdbc.Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:derby:");
+      uri.append("jdbc:mysql:");
       uri.append(dsAddress);
-      uri.append(";create=true");
       try {
-        connect = DriverManager.getConnection(uri.toString());
+        // TODO Hier müssen noch die im SIMPL Core hinterlegten
+        // Authentification-Informationen geladen werden
+        connect = DriverManager.getConnection(uri.toString(), "test", "test");
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
@@ -179,39 +180,24 @@ public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
           + ") executed.");
     }
 
-    // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl genutzt.
-    // Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
+    // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" AS ");
-    createTableStatement.append(statement);
     createTableStatement.append(" ");
-    createTableStatement.append("WITH NO DATA");
-
-    StringBuilder insertStatement = new StringBuilder();
-    insertStatement.append("INSERT INTO");
-    insertStatement.append(" ");
-    insertStatement.append(target);
-    insertStatement.append(" ");
-    insertStatement.append(statement);
+    createTableStatement.append(statement);
 
     Connection conn = openConnection(dsAddress);
     try {
       Statement createState = conn.createStatement();
-      Statement insertState = conn.createStatement();
 
       // Neue Tabelle aus dem Query erzeugen
       createState.execute(createTableStatement.toString());
 
-      // Query-Daten in die neue Tabelle einfügen
-      insertState.execute(insertStatement.toString());
-
       conn.commit();
       createState.close();
-      insertState.close();
       closeConnection(conn);
 
       success = true;
@@ -220,12 +206,16 @@ public class EmbDerbyRDBDatasourceService extends DatasourceServicePlugin {
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
-        + insertStatement.toString() + "'" + "executed on " + dsAddress);
+    logger.info("Statement '" + createTableStatement.toString() + "' " + "executed on "
+        + dsAddress);
 
     return success;
   }
 
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
+   */
   @Override
   public DataObject getMetaData(String dsAddress) throws ConnectionException {
     Connection conn = openConnection(dsAddress);

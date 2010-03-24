@@ -1,14 +1,14 @@
-package org.simpl.core.datasource.plugins.xmldb;
+package org.simpl.core.plugins.datasource.xmldb;
 
 import java.sql.Connection;
 
-import org.simpl.core.datasource.exceptions.ConnectionException;
-import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
+import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 
-public class XMLDBDatasourceService extends DatasourceServicePlugin {
-  public XMLDBDatasourceService() {
+public class XMLDBDatasource extends DataSourcePlugin {
+  public XMLDBDatasource() {
     this.setDatasourceType("Database");
     this.setDatasourceMetaDataType("tDatabaseMetaData");
     this.addDatasourceSubtype("DB2");

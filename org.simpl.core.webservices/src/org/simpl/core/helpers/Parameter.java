@@ -19,7 +19,8 @@ import sun.misc.BASE64Encoder;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: Parameter.java 879 2010-02-12 12:58:42Z michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
  */
 public class Parameter {
   /**

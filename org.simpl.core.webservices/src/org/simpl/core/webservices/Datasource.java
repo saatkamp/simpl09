@@ -12,14 +12,21 @@ import javax.jws.soap.SOAPBinding;
 
 import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.datasource.DatasourceServiceProvider;
-import org.simpl.core.datasource.exceptions.ConnectionException;
-import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
 import org.simpl.core.helpers.Parameter;
+import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.services.datasource.DatasourceServiceProvider;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.XMLHelper;
 
+/**
+ * Web Service of the datasource service.
+ * 
+ * @author Michael Schneidt <michael.schneidt@arcor.de>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
+ */
 @WebService(name = "DatasourceService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Datasource {
@@ -126,7 +133,7 @@ public class Datasource {
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();    
     
-    inputStream = ((DatasourceServicePlugin)SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)).getDatasourceMetaDataSchema();
+    inputStream = ((DataSourcePlugin)SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)).getDatasourceMetaDataSchema();
     
     // convert inputStream to String
     try {
@@ -154,5 +161,10 @@ public class Datasource {
   @WebMethod(action = "getDatasourceLanguages")
   public String getDatasourceLanguages(String dsSubtype) {
     return Parameter.serialize(SIMPLCore.getInstance().getDatasourceLanguages(dsSubtype));
+  }
+  
+  @WebMethod(action = "getDataFormatTypes")
+  public String getDataFormatTypes() {
+    return Parameter.serialize(SIMPLCore.getInstance().getDataFormatTypes());
   }
 }
