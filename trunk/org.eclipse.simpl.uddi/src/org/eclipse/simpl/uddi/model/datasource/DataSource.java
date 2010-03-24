@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.ui.model.datasource;
+package org.eclipse.simpl.uddi.model.datasource;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,14 +16,14 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.DataSource#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.DataSource#getAddress <em>Address</em>}</li>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.DataSource#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.DataSource#getSubtype <em>Subtype</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getAddress <em>Address</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getSubtype <em>Subtype</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage#getDataSource()
+ * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage#getDataSource()
  * @model
  * @generated
  */
@@ -38,14 +38,14 @@ public interface DataSource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage#getDataSource_Name()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage#getDataSource_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -64,14 +64,14 @@ public interface DataSource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Address</em>' attribute.
 	 * @see #setAddress(String)
-	 * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage#getDataSource_Address()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage#getDataSource_Address()
 	 * @model
 	 * @generated
 	 */
 	String getAddress();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getAddress <em>Address</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getAddress <em>Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Address</em>' attribute.
@@ -90,14 +90,14 @@ public interface DataSource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
-	 * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage#getDataSource_Type()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage#getDataSource_Type()
 	 * @model
 	 * @generated
 	 */
 	String getType();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
@@ -116,14 +116,14 @@ public interface DataSource extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subtype</em>' attribute.
 	 * @see #setSubtype(String)
-	 * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage#getDataSource_Subtype()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage#getDataSource_Subtype()
 	 * @model
 	 * @generated
 	 */
 	String getSubtype();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getSubtype <em>Subtype</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getSubtype <em>Subtype</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Subtype</em>' attribute.

@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.ui.model.datasource.impl;
+package org.eclipse.simpl.uddi.model.datasource.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.simpl.ui.model.datasource.DataSource;
-import org.eclipse.simpl.ui.model.datasource.DatasourcePackage;
+import org.eclipse.simpl.uddi.model.datasource.DataSource;
+import org.eclipse.simpl.uddi.model.datasource.DatasourcePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,10 +23,10 @@ import org.eclipse.simpl.ui.model.datasource.DatasourcePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl#getAddress <em>Address</em>}</li>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl#getSubtype <em>Subtype</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getAddress <em>Address</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getSubtype <em>Subtype</em>}</li>
  * </ul>
  * </p>
  *

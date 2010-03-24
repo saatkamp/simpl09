@@ -4,14 +4,14 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.ui.model.datasource.util;
+package org.eclipse.simpl.uddi.model.datasource.util;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.simpl.ui.model.datasource.*;
+import org.eclipse.simpl.uddi.model.datasource.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +23,7 @@ import org.eclipse.simpl.ui.model.datasource.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage
+ * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage
  * @generated
  */
 public class DatasourceSwitch<T> {

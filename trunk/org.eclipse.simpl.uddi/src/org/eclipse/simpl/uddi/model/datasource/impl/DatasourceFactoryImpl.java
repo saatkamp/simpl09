@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.ui.model.datasource.impl;
+package org.eclipse.simpl.uddi.model.datasource.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.eclipse.simpl.ui.model.datasource.*;
+import org.eclipse.simpl.uddi.model.datasource.*;
 
 /**
  * <!-- begin-user-doc -->

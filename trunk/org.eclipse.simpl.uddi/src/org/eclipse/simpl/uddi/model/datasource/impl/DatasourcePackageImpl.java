@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.ui.model.datasource.impl;
+package org.eclipse.simpl.uddi.model.datasource.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.eclipse.simpl.ui.model.datasource.DataSource;
-import org.eclipse.simpl.ui.model.datasource.DatasourceFactory;
-import org.eclipse.simpl.ui.model.datasource.DatasourcePackage;
+import org.eclipse.simpl.uddi.model.datasource.DataSource;
+import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
+import org.eclipse.simpl.uddi.model.datasource.DatasourcePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ public class DatasourcePackageImpl extends EPackageImpl implements DatasourcePac
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.eclipse.simpl.ui.model.datasource.DatasourcePackage#eNS_URI
+	 * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

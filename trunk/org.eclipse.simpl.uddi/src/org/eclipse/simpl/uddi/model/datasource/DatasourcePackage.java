@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.ui.model.datasource;
+package org.eclipse.simpl.uddi.model.datasource;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.eclipse.simpl.ui.model.datasource.DatasourceFactory
+ * @see org.eclipse.simpl.uddi.model.datasource.DatasourceFactory
  * @model kind="package"
  * @generated
  */
@@ -56,14 +56,14 @@ public interface DatasourcePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	DatasourcePackage eINSTANCE = org.eclipse.simpl.ui.model.datasource.impl.DatasourcePackageImpl.init();
+	DatasourcePackage eINSTANCE = org.eclipse.simpl.uddi.model.datasource.impl.DatasourcePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl <em>Data Source</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl <em>Data Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl
-	 * @see org.eclipse.simpl.ui.model.datasource.impl.DatasourcePackageImpl#getDataSource()
+	 * @see org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl
+	 * @see org.eclipse.simpl.uddi.model.datasource.impl.DatasourcePackageImpl#getDataSource()
 	 * @generated
 	 */
 	int DATA_SOURCE = 0;
@@ -115,54 +115,54 @@ public interface DatasourcePackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.simpl.ui.model.datasource.DataSource <em>Data Source</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.simpl.uddi.model.datasource.DataSource <em>Data Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Data Source</em>'.
-	 * @see org.eclipse.simpl.ui.model.datasource.DataSource
+	 * @see org.eclipse.simpl.uddi.model.datasource.DataSource
 	 * @generated
 	 */
 	EClass getDataSource();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.simpl.ui.model.datasource.DataSource#getName()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DataSource#getName()
 	 * @see #getDataSource()
 	 * @generated
 	 */
 	EAttribute getDataSource_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getAddress <em>Address</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getAddress <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Address</em>'.
-	 * @see org.eclipse.simpl.ui.model.datasource.DataSource#getAddress()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DataSource#getAddress()
 	 * @see #getDataSource()
 	 * @generated
 	 */
 	EAttribute getDataSource_Address();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see org.eclipse.simpl.ui.model.datasource.DataSource#getType()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DataSource#getType()
 	 * @see #getDataSource()
 	 * @generated
 	 */
 	EAttribute getDataSource_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.ui.model.datasource.DataSource#getSubtype <em>Subtype</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getSubtype <em>Subtype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Subtype</em>'.
-	 * @see org.eclipse.simpl.ui.model.datasource.DataSource#getSubtype()
+	 * @see org.eclipse.simpl.uddi.model.datasource.DataSource#getSubtype()
 	 * @see #getDataSource()
 	 * @generated
 	 */
@@ -191,11 +191,11 @@ public interface DatasourcePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl <em>Data Source</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl <em>Data Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.simpl.ui.model.datasource.impl.DataSourceImpl
-		 * @see org.eclipse.simpl.ui.model.datasource.impl.DatasourcePackageImpl#getDataSource()
+		 * @see org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl
+		 * @see org.eclipse.simpl.uddi.model.datasource.impl.DatasourcePackageImpl#getDataSource()
 		 * @generated
 		 */
 		EClass DATA_SOURCE = eINSTANCE.getDataSource();
