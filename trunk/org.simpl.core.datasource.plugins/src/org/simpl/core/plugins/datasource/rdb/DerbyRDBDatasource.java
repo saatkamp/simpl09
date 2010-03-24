@@ -1,4 +1,4 @@
-package org.simpl.core.datasource.plugins.rdb;
+package org.simpl.core.plugins.datasource.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,8 +11,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.datasource.exceptions.ConnectionException;
-import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
+import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 
@@ -26,10 +26,10 @@ import commonj.sdo.DataObject;
  * 
  * @author hahnml
  */
-public class DerbyRDBDatasourceService extends DatasourceServicePlugin {
-  static Logger logger = Logger.getLogger(DerbyRDBDatasourceService.class);
+public class DerbyRDBDatasource extends DataSourcePlugin {
+  static Logger logger = Logger.getLogger(DerbyRDBDatasource.class);
 
-  public DerbyRDBDatasourceService() {
+  public DerbyRDBDatasource() {
     this.setDatasourceType("Database");
     this.setDatasourceMetaDataType("tDatabaseMetaData");
     this.addDatasourceSubtype("Derby");

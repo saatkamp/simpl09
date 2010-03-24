@@ -1,22 +1,18 @@
-package org.simpl.core.datasource.plugins.fs;
+package org.simpl.core.plugins.datasource.sndb;
 
 import java.sql.Connection;
 
-import org.simpl.core.datasource.exceptions.ConnectionException;
-import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
+import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 
-public class FSDatasourceService extends DatasourceServicePlugin {
-  public FSDatasourceService() {
-    this.setDatasourceType("filesystem");
-    this.setDatasourceMetaDataType("tFilesystemMetaData");
-    this.addDatasourceSubtype("EXT3");
-    this.addDatasourceSubtype("FAT32");
-    this.addDatasourceSubtype("NTFS");
-    this.addDatasourceLanguage("EXT3", "OSCall");
-    this.addDatasourceLanguage("FAT32", "OSCall");
-    this.addDatasourceLanguage("NTFS", "OSCall");
+public class SNDBDatasource extends DataSourcePlugin {
+  public SNDBDatasource() {
+    this.setDatasourceType("Sensornet");
+    this.setDatasourceMetaDataType("tDatabaseMetaData");
+    this.addDatasourceSubtype("TinyDB");
+    this.addDatasourceLanguage("TinyDB", "TinySQL");
   }
 
   /*
@@ -44,7 +40,7 @@ public class FSDatasourceService extends DatasourceServicePlugin {
   /*
    * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#manipulateData(java.lang.String,
-   * java.lang.String, commonj.sdo.DataObject)
+   * java.lang.String, org.apache.tuscany.sdo.model.DataObject)
    */
   @Override
   public boolean manipulateData(String dsAddress, String statement, DataObject data)

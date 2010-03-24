@@ -1,4 +1,4 @@
-package org.simpl.core.datasource.plugins.rdb;
+package org.simpl.core.plugins.datasource.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,30 +11,31 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.datasource.exceptions.ConnectionException;
-import org.simpl.core.datasource.plugins.DatasourceServicePlugin;
+import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for supporting the
- * IBM DB2 relational database.
+ * Apache Derby relational database in embedded mode.
  * </p>
  * 
- * dsAddress = //server:port/database or //server/database, for example
- * //localhost:50000/testdb.
+ * dsAddress = Full path to embedded Derby database, for example: C:\databases\myDB.
  * 
  * @author hahnml
  */
-public class DB2RDBDatasourceService extends DatasourceServicePlugin {
-  static Logger logger = Logger.getLogger(DB2RDBDatasourceService.class);
+public class EmbDerbyRDBDatasource extends DataSourcePlugin {
+  static Logger logger = Logger.getLogger(EmbDerbyRDBDatasource.class);
 
-  public DB2RDBDatasourceService() {
+  public EmbDerbyRDBDatasource() {
     this.setDatasourceType("Database");
     this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("DB2");
-    this.addDatasourceLanguage("DB2", "SQL");
+    this.addDatasourceSubtype("EmbeddedDerby");
+    this.addDatasourceLanguage("EmbeddedDerby", "SQL");
+    this.addDatasourceLanguage("FAT32", "OSCall");
+    this.addDatasourceLanguage("NTFS", "OSCall");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -43,20 +44,18 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
   @Override
   public Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
-    // Testweise wird hier nur eine embedded Derby Datenbank verwendet
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
     Connection connect = null;
     try {
-      Class.forName("com.ibm.db2.jcc.DB2Driver");
+      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:db2:");
+      uri.append("jdbc:derby:");
       uri.append(dsAddress);
+      uri.append(";create=true");
       try {
-        // TODO Hier müssen noch die im SIMPL Core hinterlegten
-        // Authentification-Informationen geladen werden
-        connect = DriverManager.getConnection(uri.toString(), "test", "test");
+        connect = DriverManager.getConnection(uri.toString());
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
@@ -180,16 +179,17 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
           + ") executed.");
     }
 
-    // Beispiel: CREATE TABLE TAB AS (SELECT * FROM T1 WITH NO DATA);
+    // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl genutzt.
+    // Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" AS (");
+    createTableStatement.append(" AS ");
     createTableStatement.append(statement);
     createTableStatement.append(" ");
-    createTableStatement.append(") WITH NO DATA");
+    createTableStatement.append("WITH NO DATA");
 
     StringBuilder insertStatement = new StringBuilder();
     insertStatement.append("INSERT INTO");
@@ -226,10 +226,6 @@ public class DB2RDBDatasourceService extends DatasourceServicePlugin {
     return success;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
-   */
   @Override
   public DataObject getMetaData(String dsAddress) throws ConnectionException {
     Connection conn = openConnection(dsAddress);

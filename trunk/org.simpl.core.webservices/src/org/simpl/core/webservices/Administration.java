@@ -10,6 +10,13 @@ import javax.jws.soap.SOAPBinding;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
 
+/**
+ * Web Service of the administration service.
+ * 
+ * @author Michael Schneidt <michael.schneidt@arcor.de>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
+ */
 @WebService(name = "AdministrationService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Administration {
