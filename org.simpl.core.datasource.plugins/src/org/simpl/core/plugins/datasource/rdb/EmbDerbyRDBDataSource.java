@@ -26,16 +26,16 @@ import commonj.sdo.DataObject;
  * 
  * @author hahnml
  */
-public class EmbDerbyRDBDatasource extends DataSourcePlugin {
-  static Logger logger = Logger.getLogger(EmbDerbyRDBDatasource.class);
+public class EmbDerbyRDBDataSource extends DataSourcePlugin {
+  static Logger logger = Logger.getLogger(EmbDerbyRDBDataSource.class);
 
-  public EmbDerbyRDBDatasource() {
-    this.setDatasourceType("Database");
-    this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("EmbeddedDerby");
-    this.addDatasourceLanguage("EmbeddedDerby", "SQL");
-    this.addDatasourceLanguage("FAT32", "OSCall");
-    this.addDatasourceLanguage("NTFS", "OSCall");
+  public EmbDerbyRDBDataSource() {
+    this.setType("Database");
+    this.setMetaDataType("tDatabaseMetaData");
+    this.addSubtype("EmbeddedDerby");
+    this.addLanguage("EmbeddedDerby", "SQL");
+    this.addLanguage("FAT32", "OSCall");
+    this.addLanguage("NTFS", "OSCall");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -165,7 +165,7 @@ public class EmbDerbyRDBDatasource extends DataSourcePlugin {
     }
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     das.applyChanges(data);
-    logger.info("DataObject " + data + "was send back to datasource " + dsAddress);
+    logger.info("DataObject " + data + "was send back to data source " + dsAddress);
     return false;
   }
 
@@ -229,7 +229,7 @@ public class EmbDerbyRDBDatasource extends DataSourcePlugin {
   @Override
   public DataObject getMetaData(String dsAddress) throws ConnectionException {
     Connection conn = openConnection(dsAddress);
-    DataObject metaDataObject = this.createDatasourceMetaDataObject().getRootObject();
+    DataObject metaDataObject = this.createMetaDataObject().getRootObject();
     DataObject schemaObject = null;
     DataObject tableObject = null;
     DataObject columnObject = null;

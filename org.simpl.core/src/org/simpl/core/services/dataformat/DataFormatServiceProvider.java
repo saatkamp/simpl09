@@ -1,4 +1,4 @@
-package org.simpl.core.services.datasource;
+package org.simpl.core.services.dataformat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ import org.simpl.core.plugins.DataFormatPlugin;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DataFormatProvider {
+public class DataFormatServiceProvider {
   /**
    * Maps the data format to a list of supporting data format plugin instances.
    */
@@ -29,27 +29,30 @@ public class DataFormatProvider {
   /**
    * Initialize all data format plugins.
    */
-  public DataFormatProvider() {
-    loadDataFormatPlugins();
+  public DataFormatServiceProvider() {
+    loadPlugins();
   }
 
   /**
-   * Returns the DataFormat instance that supports the given extension.
+   * Returns the DataFormat instance that supports the given data format type and subtype.
    * 
-   * @param dType
+   * @param dfType
+   * @param dfSubtype
    * @return
    */
-  public DataFormat getInstance(String dType) {
+  public DataFormatService getInstance(String dfType, String dfSubtype) {
     DataFormatPlugin dataFormatInstance = null;
-    List<DataFormatPlugin> dataFormatPlugins = this.dataFormats.get(dType);
-    String dataFormatType = null;
+    List<DataFormatPlugin> dataFormatPlugins = this.dataFormats.get(dfType);
+    List<String> dataFormatPluginSubtypes = null;
 
-    // search for a plugin that supports the given type
+    // search for a plugin that supports the given subtype
     for (DataFormatPlugin dataFormatPluginInstance : dataFormatPlugins) {
-      dataFormatType = dataFormatPluginInstance.getType();
+      dataFormatPluginSubtypes = dataFormatPluginInstance.getSubtypes();
 
-      if (dataFormatType.equals(dType)) {
-        dataFormatInstance = dataFormatPluginInstance;
+      for (String subtype : dataFormatPluginSubtypes) {
+        if (subtype.equals(dfSubtype)) {
+          dataFormatInstance = dataFormatPluginInstance;
+        }
       }
     }
 
@@ -57,10 +60,10 @@ public class DataFormatProvider {
   }
 
   /**
-   * Loads instances of all plugins and retrievs the information about types, subtypes and
-   * languages.
+   * Loads instances of the data format plugins and retrieves information about types,
+   * subtypes and languages.
    */
-  private void loadDataFormatPlugins() {
+  private void loadPlugins() {
     List<String> plugins = SIMPLCore.getInstance().config().getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataFormatPlugin dataFormatInstance;
@@ -93,11 +96,11 @@ public class DataFormatProvider {
   }
 
   /**
-   * Returns all datasource types loaded from the plugins.
+   * Returns all data source types loaded from the plugins.
    * 
    * @return
    */
-  public List<String> getDataFormatTypes() {
+  public List<String> getTypes() {
     return new ArrayList<String>(dataFormats.keySet());
   }
 }

@@ -9,10 +9,10 @@ import commonj.sdo.DataObject;
 
 public class XMLDBDatasource extends DataSourcePlugin {
   public XMLDBDatasource() {
-    this.setDatasourceType("Database");
-    this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("DB2");
-    this.addDatasourceLanguage("DB2", "XQuery");
+    this.setType("Database");
+    this.setMetaDataType("tDatabaseMetaData");
+    this.addSubtype("DB2");
+    this.addLanguage("DB2", "XQuery");
   }
 
   /*

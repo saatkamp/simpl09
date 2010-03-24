@@ -29,14 +29,14 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DB2RDBDatasource extends DataSourcePlugin {
-  static Logger logger = Logger.getLogger(DB2RDBDatasource.class);
+public class DB2RDBDataSource extends DataSourcePlugin {
+  static Logger logger = Logger.getLogger(DB2RDBDataSource.class);
 
-  public DB2RDBDatasource() {
-    this.setDatasourceType("Database");
-    this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("DB2");
-    this.addDatasourceLanguage("DB2", "SQL");
+  public DB2RDBDataSource() {
+    this.setType("Database");
+    this.setMetaDataType("tDatabaseMetaData");
+    this.addSubtype("DB2");
+    this.addLanguage("DB2", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -168,7 +168,7 @@ public class DB2RDBDatasource extends DataSourcePlugin {
     }
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     das.applyChanges(data);
-    logger.info("DataObject " + data + "was send back to datasource " + dsAddress);
+    logger.info("DataObject " + data + "was send back to data source " + dsAddress);
     return false;
   }
 
@@ -235,7 +235,7 @@ public class DB2RDBDatasource extends DataSourcePlugin {
   @Override
   public DataObject getMetaData(String dsAddress) throws ConnectionException {
     Connection conn = openConnection(dsAddress);
-    DataObject metaDataObject = this.createDatasourceMetaDataObject().getRootObject();
+    DataObject metaDataObject = this.createMetaDataObject().getRootObject();
     DataObject schemaObject = null;
     DataObject tableObject = null;
     DataObject columnObject = null;

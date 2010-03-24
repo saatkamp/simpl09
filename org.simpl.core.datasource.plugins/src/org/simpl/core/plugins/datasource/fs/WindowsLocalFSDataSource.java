@@ -17,12 +17,12 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class WindowsLocalFSDatasource extends DataSourcePlugin {
-  public WindowsLocalFSDatasource() {
-    this.setDatasourceType("Local Filesystem");
-    this.setDatasourceMetaDataType("tFilesystemMetaData");
-    this.addDatasourceSubtype("Windows");
-    this.addDatasourceLanguage("Windows", "Shell Command");
+public class WindowsLocalFSDataSource extends DataSourcePlugin {
+  public WindowsLocalFSDataSource() {
+    this.setType("Local Filesystem");
+    this.setMetaDataType("tFilesystemMetaData");
+    this.addSubtype("Windows");
+    this.addLanguage("Windows", "Shell Command");
   }
 
   /*

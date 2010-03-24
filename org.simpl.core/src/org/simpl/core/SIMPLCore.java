@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.simpl.core.services.administration.AdministrationService;
 import org.simpl.core.services.administration.AdministrationServiceImpl;
-import org.simpl.core.services.datasource.DataFormatProvider;
-import org.simpl.core.services.datasource.DatasourceService;
-import org.simpl.core.services.datasource.DatasourceServiceProvider;
+import org.simpl.core.services.dataformat.DataFormatServiceProvider;
+import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.services.datasource.DataSourceServiceProvider;
 import org.simpl.core.services.storage.StorageService;
 import org.simpl.core.services.storage.StorageServiceImpl;
 
@@ -25,8 +25,8 @@ public class SIMPLCore {
   private static SIMPLConfig config = new SIMPLConfig();
   private static AdministrationService administrationService = new AdministrationServiceImpl();
   private static StorageService storageService = new StorageServiceImpl();
-  private static DatasourceServiceProvider datasourceServiceProvider = new DatasourceServiceProvider();
-  private static DataFormatProvider dataFormatProvider = new DataFormatProvider();
+  private static DataSourceServiceProvider dataSourceServiceProvider = new DataSourceServiceProvider();
+  private static DataFormatServiceProvider dataFormatServiceProvider = new DataFormatServiceProvider();
 
   /**
    * Private constructor for singleton.
@@ -59,14 +59,14 @@ public class SIMPLCore {
   }
 
   /**
-   * Returns the instance of a datasource service dependent on the given type and subtype.
+   * Returns the instance of a data source service dependent on the given type and subtype.
    * 
    * @param dsType
    * @param dsSubtype
    * @return
    */
-  public DatasourceService datasourceService(String dsType, String dsSubtype) {
-    return datasourceServiceProvider.getInstance(dsType, dsSubtype);
+  public DataSourceService dataSourceService(String dsType, String dsSubtype) {
+    return dataSourceServiceProvider.getInstance(dsType, dsSubtype);
   }
 
   /**
@@ -88,40 +88,40 @@ public class SIMPLCore {
   }
 
   /**
-   * Returns all datasource types supported by the simpl core.
+   * Returns all data source types supported by the simpl core.
    * 
    * @return
    */
-  public List<String> getDatasourceTypes() {
-    return datasourceServiceProvider.getDatasourceTypes();
+  public List<String> getDataSourceTypes() {
+    return dataSourceServiceProvider.getTypes();
   }
 
   /**
-   * Returns all datasource subtypes of a given datasource type.
+   * Returns all data source subtypes of a given data source type.
    * 
    * @param dsType
    * @return
    */
-  public List<String> getDatasourceSubtypes(String dsType) {
-    return datasourceServiceProvider.getDatasourceSubtypes(dsType);
+  public List<String> getDataSourceSubtypes(String dsType) {
+    return dataSourceServiceProvider.getSubtypes(dsType);
   }
 
   /**
-   * Returns all datasource languages of a given datasource subtype.
+   * Returns all data source languages of a given data source subtype.
    * 
    * @param dsSubtype
    * @return
    */
-  public List<String> getDatasourceLanguages(String dsSubtype) {
-    return datasourceServiceProvider.getDatasourceLanguages(dsSubtype);
+  public List<String> getDataSourceLanguages(String dsSubtype) {
+    return dataSourceServiceProvider.getLanguages(dsSubtype);
   }
   
   /**
-   * Returns all datasource types supported by the simpl core.
+   * Returns all data source types supported by the simpl core.
    * 
    * @return
    */
   public List<String> getDataFormatTypes() {
-    return dataFormatProvider.getDataFormatTypes();
+    return dataFormatServiceProvider.getTypes();
   }
 }

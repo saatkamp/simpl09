@@ -62,7 +62,7 @@ public class SIMPLConfig {
 
           break;
         case XMLStreamConstants.START_ELEMENT:
-          if (parser.getLocalName().equals("datasourceServicePlugin")) {
+          if (parser.getLocalName().equals("dataSourcePlugin")) {
             for (int i = 0; i < parser.getAttributeCount(); i++) {
               if (parser.getAttributeLocalName(i).equals("name")) {
                 dataSourcePlugins.add(parser.getAttributeValue(i));
@@ -94,20 +94,20 @@ public class SIMPLConfig {
   }
 
   /**
-   * Returns a list of registered DatasourceServicePlugins. The list contains full
-   * qualified names of DatasourceServicePlugin classes.
+   * Returns a list of registered DataSourcePlugins. The list contains full
+   * qualified names of DataSourcePlugin classes.
    * 
-   * @return List of DatasourceServicePlugins
+   * @return List of DataSourcePlugins
    */
-  public List<String> getDatasourceServicePlugins() {
+  public List<String> getDataSourcePlugins() {
     return dataSourcePlugins;
   }
   
   /**
    * Returns a list of registered DataFormatPlugins. The list contains full
-   * qualified names of DatasourceServicePlugin classes.
+   * qualified names of DataFormatPlugin classes.
    * 
-   * @return List of DatasourceServicePlugins
+   * @return List of DataFormatPlugins
    */
   public List<String> getDataFormatPlugins() {
     return dataFormatPlugins;
