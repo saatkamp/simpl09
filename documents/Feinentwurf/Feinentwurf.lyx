@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="4">
+<lyxtabular version="3" rows="12" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -522,7 +522,7 @@ zoabifs
 \begin_inset Text
 
 \begin_layout Plain Layout
-Erstellung des Dokuments
+Erstellung des Dokuments.
 \end_layout
 
 \end_inset
@@ -560,7 +560,14 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Überarbeitung der Struktur, Kapitel 1
+Überarbeitung der Struktur, Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Einleitung"
+
+\end_inset
+
+ hinzugefügt.
 \end_layout
 
 \end_inset
@@ -598,7 +605,14 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 2
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:SIMPLCore"
+
+\end_inset
+
+ hinzugefügt.
 \end_layout
 
 \end_inset
@@ -636,7 +650,14 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Beschreibung Kapitel 5
+Beschreibung von Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Kommunikation"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -674,7 +695,28 @@ rehnre
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 3.1, 3.2, 3.3
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:BPEL-DM-Extension"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-Event-System"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Ausführung-einer-BPEL-DM"
+
+\end_inset
+
+ hunzugefügt.
 \end_layout
 
 \end_inset
@@ -712,7 +754,14 @@ huettiwg
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 3.4
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-DAO"
+
+\end_inset
+
+ hinzugefügt.
 \end_layout
 
 \end_inset
@@ -750,7 +799,14 @@ bruededl
 \begin_inset Text
 
 \begin_layout Plain Layout
-Beschreibung Kapitel 4
+Beschreibung von Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Eclipse"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -788,11 +844,39 @@ hahnml
 \begin_inset Text
 
 \begin_layout Plain Layout
-Diagramme Kapitel 4 und 5
+Diagramme in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Eclipse"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Kommunikation"
+
+\end_inset
+
+ eingefügt.
 \end_layout
 
 \begin_layout Plain Layout
-Beschreibung Kapitel 2.2.1, 2.2.2
+Beschreibung der Abschnitte 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Administration-Service"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Storage-Service"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -830,7 +914,52 @@ bruededl
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 4 überarbeitet
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Eclipse"
+
+\end_inset
+
+ überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.01.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi, hahnml, huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abschließende Korrekturen durchgeführt.
 \end_layout
 
 \end_inset
@@ -841,7 +970,7 @@ Kapitel 4 überarbeitet
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.0
+1.1
 \end_layout
 
 \end_inset
@@ -850,7 +979,7 @@ Kapitel 4 überarbeitet
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.01.2010
+24.03.2010
 \end_layout
 
 \end_inset
@@ -859,7 +988,7 @@ Kapitel 4 überarbeitet
 \begin_inset Text
 
 \begin_layout Plain Layout
-schneimi, hahnml, huettiwg
+hahnml
 \end_layout
 
 \end_inset
@@ -868,7 +997,14 @@ schneimi, hahnml, huettiwg
 \begin_inset Text
 
 \begin_layout Plain Layout
-Abschließende Korrekturen
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Eclipse"
+
+\end_inset
+
+ überarbeitet.
 \end_layout
 
 \end_inset
@@ -889,6 +1025,12 @@ Abschließende Korrekturen
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Einleitung"
+
+\end_inset
+
 Einleitung
 \end_layout
 
@@ -1257,6 +1399,12 @@ In diesem Abschnitt werden die Dienste des SIMPL Cores und ihre Funktionsweise
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Administration-Service"
+
+\end_inset
+
 Administration Service
 \end_layout
 
@@ -1391,6 +1539,12 @@ le durch weitere Eigenschaften möglichst einfach zu halten.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Storage-Service"
+
+\end_inset
+
 Storage Service
 \end_layout
 
@@ -1929,6 +2083,12 @@ BPEL-DM Extension Activities
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-Event-System"
+
+\end_inset
+
 SIMPL Event System
 \end_layout
 
@@ -1996,6 +2156,12 @@ SIMPL Event System
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ausführung-einer-BPEL-DM"
+
+\end_inset
+
 Ausführung einer BPEL-DM Extension Activity
 \end_layout
 
@@ -2109,6 +2275,12 @@ Ausführung einer BPEL-DM Extension Activity
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-DAO"
+
+\end_inset
+
 SIMPL DAO 
 \begin_inset Note Note
 status open
@@ -2967,12 +3139,21 @@ SIMPL Core Plug-In
 \end_layout
 
 \begin_layout Standard
-Das SIMPL Core Plug-In kümmert sich um die Integration von SIMPL in die
- Eclipse Menüleiste und erzeugt die Admin-Konsole zur Verwaltung der Einstellung
-en.
+Das SIMPL Core Plug-In kümmert sich um die Integration des SIMPL Menüs in
+ die Eclipse Menüleiste und liefert die Admin-Konsole zur Verwaltung der
+ Einstellungen des SIMPL Cores.
  In der Admin-Konsole können momentan Authentifizierungsinformationen (Benutzern
 ame und Passwort) für Datenquellen hinterlegt, das Auditing aktiviert und
  deaktiviert und die Auditing Datenbank festgelegt werden.
+ Nähere Informationen und einige Bilder des SIMPL Menüs und der Admin-Konsole
+ liefert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+ (Kapitel 4.1).
 \end_layout
 
 \begin_layout Standard
@@ -3024,13 +3205,161 @@ reference "fig:SIMPL-Core-Plug-In "
 \end_inset
 
  zeigt das Klassendiagramm des SIMPL Core Plug-Ins.
+ Die zentrale Klasse dieses Plug-Ins ist die Klasse 
+\emph on
+AdminConsoleUI
+\emph default
+, die die Admin-Konsole erzeugt und deren Funktionalität liefert.
+ Die Methode 
+\emph on
+createComposite()
+\emph default
+ erzeugt dafür die Composites der Admin-Konsolen Plug-Ins und mit 
+\emph on
+showComposite()
+\emph default
+ werden diese, entsprechend der Auswahl im Baum der Admin-Konsole, angezeigt.
+ Die Methode 
+\emph on
+createSShell() 
+\emph default
+erzeugt die Admin-Konsole selbst und 
+\emph on
+fillTree()
+\emph default
+ füllt den Baum mit den entsprechenden Einträgen der Plug-Ins beim Öffnen
+ der Admin-Konsole.
+ Ebenso wichtig ist die Klasse 
+\emph on
+IAdminConsoleComposite
+\emph default
+, die die Schnittstelle der Admin-Konsolen Plug-In Composites definiert.
+ Diese Klasse muss von jedem Plug-In implementiert werden.
+ Die 
+\emph on
+getComposite()
+\emph default
+ und 
+\emph on
+setComposite()
+\emph default
+-Methoden werden dazu benötigt, die Plug-In Composites aus dem SIMPL Core
+ Plug-In heraus zu verwalten.
+ Die Methode 
+\emph on
+createComposite()
+\emph default
+ wird benötigt, um das entsprechende Composite des Plug-Ins aus der Klasse
  
-\begin_inset Note Note
-status open
+\emph on
+AdminConsoleUI
+\emph default
+ heraus zu erstellen.
+ Die übrigen Methoden der Klasse werden dazu benötigt, die Einstellungen
+ der Admin-Konsolen Plug-Ins über den SIMPL Core zu laden (
+\emph on
+loadSettings()
+\emph default
+), über den SIMPL Core zu speichern (
+\emph on
+saveSettings()
+\emph default
+), zu überprüfen ob sich die Einstellungen seit dem letzten Speichern geändert
+ haben (
+\emph on
+haveSettingsChanged()
+\emph default
+) und um Einstellungen aus einem lokalen Buffer zu laden (
+\emph on
+loadSettingsFromBuffer()
+\emph default
+).
+ Der lokale Buffer wird benötigt, um geänderte Einstellungen, die noch nicht
+ gespeichert wurden, aber durch einen Wechsel des Einstellungspunktes der
+ Admin-Konsole verloren gehen würden, zu sichern.
+ Der Buffer wird dadurch realisiert, dass die Einstellungen in den entsprechende
+n Composite-Klassen in Variablen hinterlegt werden und alle Composite-Klassen
+ zentral in der Klasse 
+\emph on
+Application
+\emph default
+ verwaltet werden.
+ 
+\end_layout
 
-\begin_layout Plain Layout
-Durch diese grafische Benutzeroberfläche wird SIMPL verwaltet.
- Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen, um eine
+\begin_layout Standard
+Die Klasse 
+\emph on
+Application
+\emph default
+ enthält nützliche Methoden zur Verwaltung der Admin-Konsolen Plug-Ins und
+ dient gleichzeitig als lokaler Buffer für die Composite-Klassen der Plug-Ins.
+ Sie ist als Singleton realisiert und kann über die 
+\emph on
+getInstance()
+\emph default
+-Methode verwendet werden.
+ Die Methode 
+\emph on
+initApplication()
+\emph default
+ sorgt dafür, dass beim Laden des SIMPL Core Plug-Ins alle angebundenen
+ Plug-In Composites erstellt werden und mit den im SIMPL Core hinterlegten
+ Einstellungen gefüllt werden.
+ Durch diesen Umstand muss nur einmal ein Ladevorgang auf dem SIMPL Core
+ ausgeführt werden, da die Einstellungen dann im lokalen Buffer liegen und
+ von dort gelesen werden können.
+ Das Speichern der Einstellungen hingegen erfolgt direkt und erfordert,
+ sofern sich Werte geändert haben, jedesmal eine Verbindung mit dem SIMPL
+ Core.
+ Die beiden Methoden 
+\emph on
+getTreeItems()
+\emph default
+ und 
+\emph on
+getTreeSubItems()
+\emph default
+ werden benötigt, um den Baum der Admin-Konsole aus den angebundenen Plug-Ins
+ zu erstellen.
+ Dazu wird auch die Klasse 
+\emph on
+Tuple
+\emph default
+ benötigt, die es ermöglicht jeden Eintrag in den Admin-Konsolen Baum mit
+ einem Index zu versehen, so dass ein Plug-In Entwickler direkt darauf Einfluss
+ nehmen kann, an welcher Stelle sein neuer Eintrag im Baum positioniert
+ ist.
+ Die Methode 
+\emph on
+sortTuple()
+\emph default
+ der Klasse 
+\emph on
+Application
+\emph default
+ sorgt dann dafür, dass die verschiedenen Plug-Ins bzw.
+ deren Einträge für die Admin-Konsole nach den angegebenen Indizes sortiert
+ wird.
+ Sollte hier ein Index doppelt vergeben sein, so entscheidet sich die Reihenfolg
+e durch die Initialisierungsfolge der einzelnen Plug-Ins durch Eclipse.
+ Die Klasse 
+\emph on
+SimplHandler
+\emph default
+ sorgt dafür, dass falls der SIMPL Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Admin Console
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt wird, die Admin-Konsole geöffnet wird.
+\end_layout
+
+\begin_layout Standard
+Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen, um eine
  größtmögliche Flexibilität hinsichtlich der späteren Nutzung zu erreichen.
  Das bedeutet, die Einträge, die bereits bei der Auslieferung von SIMPL
  in der Admin-Konsole vorhanden sind, wurden auch durch entsprechende Plug-Ins,
@@ -3041,74 +3370,29 @@ alls leicht ausgetauscht werden.
 org.eclipse.simpl.core.adminConsoleItem
 \noun default
  hinzugefügt werden.
- Bei der Auslieferung sind die Funktionen Auditing und Global Settings bereits
- durch Plug-Ins eingebunden.
- Die Einträge in der Admin-Konsole werden in einer Baumstruktur gehalten
- ( TreeItems, Klasse Application) und werden auf der linken Seite in der
- Admin-Konsole angezeigt.
- Aus Performance Gründen wird die Kommunikation zum SIMPL Core auf ein Minimum
- reduziert und Einstellungen werden so lange wie möglich lokal in einem
- Buffer gehalten.
- Die Buttons der Admin-Konsole bieten die Möglichkeiten 
-\begin_inset Quotes eld
-\end_inset
-
-Default
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes erd
-\end_inset
-
-Reset
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Save
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Close
-\begin_inset Quotes erd
-\end_inset
-
-.
- Es erfolgt zum Beispiel bei 
-\begin_inset Quotes eld
-\end_inset
-
-Save
-\begin_inset Quotes erd
-\end_inset
-
- ein Zugriff auf den SIMPL Core, aber bei 
-\begin_inset Quotes eld
-\end_inset
-
-Default
-\begin_inset Quotes erd
-\end_inset
-
- wird auf den Buffer zugegriffen, da die Daten schon beim Starten des Plug-Ins
- in den Buffer geladen wurden.
-\end_layout
-
-\end_inset
-
-
+ Bei der Auslieferung sind die Funktionen Auditing (
+\emph on
+org.eclipse.simpl.core.auditing
+\emph default
+) und Global Settings (
+\emph on
+org.eclipse.simpl.core.globalSettings
+\emph default
+) bereits durch Plug-Ins eingebunden.
 \end_layout
 
 \begin_layout Subsection
 SIMPL Core Client Plug-In
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Muss noch überarbeitet werden
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3151,10 +3435,6 @@ Kommunikation
 \begin_layout Standard
 In diesem Kapitel werden die Kommunikation zwischen den Komponenten des
  SIMPL Rahmenwerks beschrieben und wichtige Abläufe deutlich gemacht.
-\end_layout
-
-\begin_layout Subsection
-SIMPL Rahmenwerk
 \end_layout
 
 \begin_layout Standard
@@ -3264,6 +3544,7 @@ addcontentsline{toc}{section}{Literaturverzeichnis}
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+label "SIMPLGrobE"
 key "key-1"
 
 \end_inset
@@ -3278,6 +3559,22 @@ Grobentwurf v1.5
  
 \shape default
 Stupro-A SIMPL (2009)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "SIMPLSpez"
+key "key-2"
+
+\end_inset
+
+
+\emph on
+Spezifikation v2.3
+\emph default
+.
+ Stupro-A SIMPL (2009) 
 \begin_inset Newpage pagebreak
 \end_inset
 
