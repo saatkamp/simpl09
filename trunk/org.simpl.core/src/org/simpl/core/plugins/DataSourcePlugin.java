@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.simpl.core.services.datasource.DatasourceService;
+import org.simpl.core.services.datasource.DataSourceService;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b> This abstract class is used to realize datasource service plugins and
- * thus be able to support various datasources. <br>
- * <b>Description:</b> A datasource plugin can support just one type of datasource but
+ * <b>Purpose:</b> This abstract class is used to realize data source service plugins and
+ * thus be able to support various data sources. <br>
+ * <b>Description:</b> A data source plugin can support just one type of data source but
  * several subtypes and languages that must be defined in the plugin's constructor with
  * the available set, get and add methods.<br>
- * The meta data structure of a datasource is made available as a service data object
+ * The meta data structure of a data source is made available as a service data object
  * (SDO) to offer an independant and extensible data format for exchange. The structure of
  * the SDO is created out of a XML schema file that defines the data types and can be
  * created for each plugin. If no schema file is created, the standard schema file is used
@@ -31,48 +31,48 @@ import commonj.sdo.helper.XSDHelper;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataSourcePlugin implements DatasourceService {
+public abstract class DataSourcePlugin implements DataSourceService {
   /**
    * Name of the meta data schema file.
    */
-  private static final String DATASOURCE_META_DATA_SCHEMA_FILE = "DatasourceMetaData.xsd";
+  private static final String DATASOURCE_META_DATA_SCHEMA_FILE = "DataSourceMetaData.xsd";
 
   /**
-   * Type of the supported datasource (database, filesystem, ...)
+   * Type of the supported data source (database, filesystem, ...)
    */
-  private String datasourceType = "database";
+  private String dataSourceType = "database";
 
   /**
-   * XML schema type of the datasource meta data. (declared in DEFAULT_META_DATA_SCHEMA)
+   * XML schema type of the data source meta data. (declared in DEFAULT_META_DATA_SCHEMA)
    */
-  private String datasourceMetaDataType = "tDatabaseMetaData";
+  private String dataSourceMetaDataType = "tDatabaseMetaData";
 
   /**
-   * Subtypes of the supported datasource. (DB2, MySQL, ...)
+   * Subtypes of the supported data source. (DB2, MySQL, ...)
    */
-  private List<String> datasourceSubtypes = new ArrayList<String>();
+  private List<String> dataSourceSubtypes = new ArrayList<String>();
 
   /**
-   * Languages supported by the datasource subtypes. (SQL, XQuery, ...)
+   * Languages supported by the data source subtypes. (SQL, XQuery, ...)
    */
-  private HashMap<String, List<String>> datasourceLanguages = new HashMap<String, List<String>>();
+  private HashMap<String, List<String>> dataSourceLanguages = new HashMap<String, List<String>>();
 
   /**
-   * Returns the supported datasource type.
+   * Returns the supported data source type.
    * 
    * @return
    */
-  public String getDatasourceType() {
-    return this.datasourceType;
+  public String getType() {
+    return this.dataSourceType;
   }
 
   /**
-   * Returns the supported datasource subtypes.
+   * Returns the supported data source subtypes.
    * 
    * @return
    */
-  public List<String> getDatasourceSubtypes() {
-    return this.datasourceSubtypes;
+  public List<String> getSubtypes() {
+    return this.dataSourceSubtypes;
   }
 
   /**
@@ -80,37 +80,37 @@ public abstract class DataSourcePlugin implements DatasourceService {
    * 
    * @return
    */
-  public HashMap<String, List<String>> getDatasourceLanguages() {
-    return this.datasourceLanguages;
+  public HashMap<String, List<String>> getLanguages() {
+    return this.dataSourceLanguages;
   }
 
   /**
-   * Sets the supported datasource type.
+   * Sets the supported data source type.
    * 
    * @param dsType
    */
-  public void setDatasourceType(String dsType) {
-    this.datasourceType = dsType;
+  public void setType(String dsType) {
+    this.dataSourceType = dsType;
   }
 
   /**
    * Sets the element type for the meta data beeing used by the plugin. The types are
-   * defined in the datasource meta data schema file.
+   * defined in the data source meta data schema file.
    * 
    * @param dsMetaDataType
    */
-  public void setDatasourceMetaDataType(String dsMetaDataType) {
-    this.datasourceMetaDataType = dsMetaDataType;
+  public void setMetaDataType(String dsMetaDataType) {
+    this.dataSourceMetaDataType = dsMetaDataType;
   }
 
   /**
-   * Sets the supported datasource subtypes.
+   * Sets the supported data source subtypes.
    * 
    * @param dsSubtype
    */
-  public void addDatasourceSubtype(String dsSubtype) {
-    if (!this.datasourceSubtypes.contains(dsSubtype)) {
-      this.datasourceSubtypes.add(dsSubtype);
+  public void addSubtype(String dsSubtype) {
+    if (!this.dataSourceSubtypes.contains(dsSubtype)) {
+      this.dataSourceSubtypes.add(dsSubtype);
     }
   }
 
@@ -120,18 +120,18 @@ public abstract class DataSourcePlugin implements DatasourceService {
    * @param dsSubtype
    * @param dsLanguage
    */
-  public void addDatasourceLanguage(String dsSubtype, String dsLanguage) {
+  public void addLanguage(String dsSubtype, String dsLanguage) {
     List<String> languages = null;
 
-    if (datasourceLanguages.containsKey(dsSubtype)) {
-      languages = datasourceLanguages.get(dsSubtype);
+    if (dataSourceLanguages.containsKey(dsSubtype)) {
+      languages = dataSourceLanguages.get(dsSubtype);
     } else {
       languages = new ArrayList<String>();
     }
 
     if (!languages.contains(dsLanguage)) {
       languages.add(dsLanguage);
-      this.datasourceLanguages.put(dsSubtype, languages);
+      this.dataSourceLanguages.put(dsSubtype, languages);
     }
   }
 
@@ -140,17 +140,17 @@ public abstract class DataSourcePlugin implements DatasourceService {
    * 
    * @return
    */
-  public DataObject createDatasourceMetaDataObject() {
+  public DataObject createMetaDataObject() {
     DataObject metaDataObject = null;
     InputStream inputStream = null;
 
     // Load the local schema file
     inputStream = getClass().getResourceAsStream(DATASOURCE_META_DATA_SCHEMA_FILE);
-
+    
     // Load the default schema file
     if (inputStream == null) {
       inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
+          "/org/simpl/core/services/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
     }
 
     if (inputStream == null) {
@@ -168,8 +168,8 @@ public abstract class DataSourcePlugin implements DatasourceService {
     }
 
     metaDataObject = DataFactory.INSTANCE.create(
-        "http://org.simpl.core/datasource/metadata/DatasourceMetaData",
-        this.datasourceMetaDataType);
+        "http://org.simpl.core/services/datasource/metadata/DataSourceMetaData",
+        this.dataSourceMetaDataType);
 
     return metaDataObject;
   }
@@ -179,7 +179,7 @@ public abstract class DataSourcePlugin implements DatasourceService {
    *  
    * @return
    */
-  public InputStream getDatasourceMetaDataSchema() {
+  public InputStream getMetaDataSchema() {
     InputStream inputStream = null;
 
     // Load the schema from jar file
@@ -188,7 +188,7 @@ public abstract class DataSourcePlugin implements DatasourceService {
     // Load the local schema file
     if (inputStream == null) {
       inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
+          "/org/simpl/core/services/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
     }
 
     if (inputStream == null) {

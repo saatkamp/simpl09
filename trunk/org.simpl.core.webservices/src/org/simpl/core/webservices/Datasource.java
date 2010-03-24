@@ -14,14 +14,13 @@ import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
 import org.simpl.core.plugins.DataSourcePlugin;
-import org.simpl.core.services.datasource.DatasourceServiceProvider;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.XMLHelper;
 
 /**
- * Web Service of the datasource service.
+ * Web Service of the data source service.
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de>
  * @version $Id$<br>
@@ -30,8 +29,6 @@ import commonj.sdo.helper.XMLHelper;
 @WebService(name = "DatasourceService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Datasource {
-  DatasourceServiceProvider datasourceServiceProvider = new DatasourceServiceProvider();
-
   @WebMethod(action = "queryData")
   public String queryData(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
@@ -42,7 +39,7 @@ public class Datasource {
     DataObject dataObject = null;
     String data = null;
 
-    dataObject = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype).queryData(
+    dataObject = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype).queryData(
         dsAddress, statement);
     data = Parameter.serialize(dataObject);
 
@@ -59,7 +56,7 @@ public class Datasource {
       throws ConnectionException {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype).depositData(
+    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype).depositData(
         dsAddress, statement, target);
 
     return success;
@@ -74,7 +71,7 @@ public class Datasource {
       throws ConnectionException {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype).defineData(
+    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype).defineData(
         dsAddress, statement);
 
     return success;
@@ -92,7 +89,7 @@ public class Datasource {
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)
+    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
         .manipulateData(dsAddress, statement, dataObject);
 
     return success;
@@ -108,7 +105,7 @@ public class Datasource {
     String metaData = null;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-    dataObject = SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)
+    dataObject = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
         .getMetaData(dsAddress);
 
     try {
@@ -133,7 +130,7 @@ public class Datasource {
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();    
     
-    inputStream = ((DataSourcePlugin)SIMPLCore.getInstance().datasourceService(dsType, dsSubtype)).getDatasourceMetaDataSchema();
+    inputStream = ((DataSourcePlugin)SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)).getMetaDataSchema();
     
     // convert inputStream to String
     try {
@@ -148,19 +145,19 @@ public class Datasource {
     return metaDataSchema;
   }
   
-  @WebMethod(action = "getDatasourceTypes")
-  public String getDatasourceTypes() {
-    return Parameter.serialize(SIMPLCore.getInstance().getDatasourceTypes());
+  @WebMethod(action = "getDataSourceTypes")
+  public String getDataSourceTypes() {
+    return Parameter.serialize(SIMPLCore.getInstance().getDataSourceTypes());
   }
 
-  @WebMethod(action = "getDatasourceSubtypes")
-  public String getDatasourceSubtypes(String dsType) {
-    return Parameter.serialize(SIMPLCore.getInstance().getDatasourceSubtypes(dsType));
+  @WebMethod(action = "getDataSourceSubtypes")
+  public String getDataSourceSubtypes(String dsType) {
+    return Parameter.serialize(SIMPLCore.getInstance().getDataSourceSubtypes(dsType));
   }
 
-  @WebMethod(action = "getDatasourceLanguages")
-  public String getDatasourceLanguages(String dsSubtype) {
-    return Parameter.serialize(SIMPLCore.getInstance().getDatasourceLanguages(dsSubtype));
+  @WebMethod(action = "getDataSourceLanguages")
+  public String getDataSourceLanguages(String dsSubtype) {
+    return Parameter.serialize(SIMPLCore.getInstance().getDataSourceLanguages(dsSubtype));
   }
   
   @WebMethod(action = "getDataFormatTypes")

@@ -9,10 +9,10 @@ import commonj.sdo.DataObject;
 
 public class SNDBDatasource extends DataSourcePlugin {
   public SNDBDatasource() {
-    this.setDatasourceType("Sensornet");
-    this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("TinyDB");
-    this.addDatasourceLanguage("TinyDB", "TinySQL");
+    this.setType("Sensornet");
+    this.setMetaDataType("tDatabaseMetaData");
+    this.addSubtype("TinyDB");
+    this.addLanguage("TinyDB", "TinySQL");
   }
 
   /*

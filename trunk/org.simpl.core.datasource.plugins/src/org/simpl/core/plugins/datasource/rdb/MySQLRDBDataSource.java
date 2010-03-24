@@ -19,21 +19,22 @@ import commonj.sdo.DataObject;
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for supporting the
- * Apache Derby relational database in Client-Server mode.
+ * MySQL relational database.
  * </p>
  * 
- * dsAddress = Full path to embedded Derby database, for example: C:\databases\myDB.
+ * dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
+ * //localhost:3306/simplDB.
  * 
  * @author hahnml
  */
-public class DerbyRDBDatasource extends DataSourcePlugin {
-  static Logger logger = Logger.getLogger(DerbyRDBDatasource.class);
+public class MySQLRDBDataSource extends DataSourcePlugin {
+  static Logger logger = Logger.getLogger(MySQLRDBDataSource.class);
 
-  public DerbyRDBDatasource() {
-    this.setDatasourceType("Database");
-    this.setDatasourceMetaDataType("tDatabaseMetaData");
-    this.addDatasourceSubtype("Derby");
-    this.addDatasourceLanguage("Derby", "SQL");
+  public MySQLRDBDataSource() {
+    this.setType("Database");
+    this.setMetaDataType("tDatabaseMetaData");
+    this.addSubtype("MySQL");
+    this.addLanguage("MySQL", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -48,10 +49,9 @@ public class DerbyRDBDatasource extends DataSourcePlugin {
     }
     Connection connect = null;
     try {
-      Class.forName("org.apache.derby.jdbc.ClientDriver");
+      Class.forName("com.mysql.jdbc.Driver");
       StringBuilder uri = new StringBuilder();
-      // jdbc:derby:sampleDB", "dba", "password");
-      uri.append("jdbc:derby:");
+      uri.append("jdbc:mysql:");
       uri.append(dsAddress);
       try {
         // TODO Hier müssen noch die im SIMPL Core hinterlegten
@@ -166,7 +166,7 @@ public class DerbyRDBDatasource extends DataSourcePlugin {
     }
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     das.applyChanges(data);
-    logger.info("DataObject " + data + "was send back to datasource " + dsAddress);
+    logger.info("DataObject " + data + "was send back to data source " + dsAddress);
     return false;
   }
 
@@ -180,40 +180,24 @@ public class DerbyRDBDatasource extends DataSourcePlugin {
           + ") executed.");
     }
 
-    // TODO Nochmal überprüfen, ob das für Client-Server Derby auch gilt
-    // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl genutzt.
-    // Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
+    // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" AS ");
-    createTableStatement.append(statement);
     createTableStatement.append(" ");
-    createTableStatement.append("WITH NO DATA");
-
-    StringBuilder insertStatement = new StringBuilder();
-    insertStatement.append("INSERT INTO");
-    insertStatement.append(" ");
-    insertStatement.append(target);
-    insertStatement.append(" ");
-    insertStatement.append(statement);
+    createTableStatement.append(statement);
 
     Connection conn = openConnection(dsAddress);
     try {
       Statement createState = conn.createStatement();
-      Statement insertState = conn.createStatement();
 
       // Neue Tabelle aus dem Query erzeugen
       createState.execute(createTableStatement.toString());
 
-      // Query-Daten in die neue Tabelle einfügen
-      insertState.execute(insertStatement.toString());
-
       conn.commit();
       createState.close();
-      insertState.close();
       closeConnection(conn);
 
       success = true;
@@ -222,8 +206,8 @@ public class DerbyRDBDatasource extends DataSourcePlugin {
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
-        + insertStatement.toString() + "'" + "executed on " + dsAddress);
+    logger.info("Statement '" + createTableStatement.toString() + "' " + "executed on "
+        + dsAddress);
 
     return success;
   }
@@ -235,7 +219,7 @@ public class DerbyRDBDatasource extends DataSourcePlugin {
   @Override
   public DataObject getMetaData(String dsAddress) throws ConnectionException {
     Connection conn = openConnection(dsAddress);
-    DataObject metaDataObject = this.createDatasourceMetaDataObject().getRootObject();
+    DataObject metaDataObject = this.createMetaDataObject().getRootObject();
     DataObject schemaObject = null;
     DataObject tableObject = null;
     DataObject columnObject = null;

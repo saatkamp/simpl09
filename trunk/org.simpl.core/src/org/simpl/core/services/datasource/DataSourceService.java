@@ -7,8 +7,8 @@ import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b> Defines the methods that a datasource service must implement to work
- * with the underlying datasource. <br>
+ * <b>Purpose:</b> Defines the methods that a data source service must implement to work
+ * with the underlying data source. <br>
  * <b>Description:</b> TODO: Beschreibung, auch von allen Funktionen.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
@@ -17,7 +17,7 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public interface DatasourceService {
+public interface DataSourceService {
   public Connection openConnection(String dsAddress) throws ConnectionException;
 
   public boolean closeConnection(Connection connection) throws ConnectionException;
