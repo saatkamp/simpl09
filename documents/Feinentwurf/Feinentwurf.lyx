@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2316,9 +2316,14 @@ key "key-1"
 \begin_layout Standard
 Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
  API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
- per Service Data Object (SDO) an den SIMPL Core senden zu können.
- Von dort aus können die Daten, wie zum Beispiel Informationen über ausgeführte
- Prozesse (Name, Id, Typ), in beliebigen Datenquellen gespeichert werden.
+ per Service Data Object (SDO) an den SIMPL Core senden zu können, so dass
+ die Auditing Daten über den SIMPL Core einfach in beliebigen Datenquellen
+ gespeichert werden können.
+ Das SIMPL DAO bietet den Vorteil, dass Daten gefiltert in der Datenquelle
+ gespeichert werden können und somit nur relevante Daten über die Prozessausführ
+ung in die Datenbank geschrieben werden.
+ Darüber hinaus kann die Stuktur der zu speichernden Daten beliebig verändert
+ werden, zum Beispiel um die Lesbarkeit der Daten zu erhöhen.
  Die Übertragung der Daten findet dabei direkt in den set-Methoden der DAOs
  statt.
  Die DAO Daten werden trotzdem auch weiterhin in der internen Apache Derby
@@ -2478,8 +2483,8 @@ DaoConnections
 \emph default
  erstellt und bereitgestellt, mit deren Hilfe direkt auf die DAOs zugegriffen
  werden kann.
- Dies geschieht an den Stellen in ODE, wo die den DAOs entsprechenden BPEL
- Konstrukte ausgewertet werden.
+ Der Zugriff erfolgt an den Stellen in ODE, wo die den DAOs entsprechenden
+ BPEL Konstrukte ausgewertet werden.
  So wird auf die 
 \emph on
 ProcessDAO
