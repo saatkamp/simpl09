@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="12" columns="4">
+<lyxtabular version="3" rows="13" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -966,11 +966,56 @@ Abschließende Korrekturen durchgeführt.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 1.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.03.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Eclipse"
+
+\end_inset
+
+ überarbeitet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2
 \end_layout
 
 \end_inset
@@ -988,7 +1033,7 @@ Abschließende Korrekturen durchgeführt.
 \begin_inset Text
 
 \begin_layout Plain Layout
-hahnml
+huettiwg
 \end_layout
 
 \end_inset
@@ -1000,7 +1045,7 @@ hahnml
 Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Eclipse"
+reference "sub:SIMPL-DAO"
 
 \end_inset
 
@@ -2296,7 +2341,7 @@ Einige Dinge in Iter 2 zu ändern
 
 \begin_layout Standard
 Das SIMPL Data Access Object (DAO) besteht aus der Implementierung der Interface
-s aus dem Packet 
+s aus dem Paket 
 \emph on
 org.apache.ode.bpel.dao
 \emph default
