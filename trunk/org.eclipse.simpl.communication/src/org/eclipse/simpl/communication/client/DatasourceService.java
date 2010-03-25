@@ -172,9 +172,9 @@ public interface DatasourceService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "getDatasourceTypes")
+    @WebMethod(action = "getDataSourceTypes")
     @WebResult(partName = "return")
-    public String getDatasourceTypes();
+    public String getDataSourceTypes();
 
     /**
      * 
@@ -182,9 +182,9 @@ public interface DatasourceService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "getDatasourceSubtypes")
+    @WebMethod(action = "getDataSourceSubtypes")
     @WebResult(partName = "return")
-    public String getDatasourceSubtypes(
+    public String getDataSourceSubtypes(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -194,9 +194,30 @@ public interface DatasourceService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "getDatasourceLanguages")
+    @WebMethod(action = "getDataSourceLanguages")
     @WebResult(partName = "return")
-    public String getDatasourceLanguages(
+    public String getDataSourceLanguages(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "getDataFormatTypes")
+    @WebResult(partName = "return")
+    public String getDataFormatTypes();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "getDataFormatSubtypes")
+    @WebResult(partName = "return")
+    public String getDataFormatSubtypes(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 

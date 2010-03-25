@@ -41,7 +41,7 @@ public class DataFormatServiceProvider {
    * @return
    */
   public DataFormatService getInstance(String dfType, String dfSubtype) {
-    DataFormatPlugin dataFormatInstance = null;
+    DataFormatPlugin dataFormatServiceInstance = null;
     List<DataFormatPlugin> dataFormatPlugins = this.dataFormats.get(dfType);
     List<String> dataFormatPluginSubtypes = null;
 
@@ -51,36 +51,36 @@ public class DataFormatServiceProvider {
 
       for (String subtype : dataFormatPluginSubtypes) {
         if (subtype.equals(dfSubtype)) {
-          dataFormatInstance = dataFormatPluginInstance;
+          dataFormatServiceInstance = dataFormatPluginInstance;
         }
       }
     }
 
-    return dataFormatInstance;
+    return dataFormatServiceInstance;
   }
 
   /**
-   * Loads instances of the data format plugins and retrieves information about types,
-   * subtypes and languages.
+   * Loads instances of the data format plugins and retrieves information about their
+   * supported types and subtypes
    */
   private void loadPlugins() {
     List<String> plugins = SIMPLCore.getInstance().config().getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
-    DataFormatPlugin dataFormatInstance;
-    String dataFormatExtension = null;
+    DataFormatPlugin dataFormatServiceInstance;
+    String dataFormatType = null;
 
     while (pluginIterator.hasNext()) {
       try {
-        dataFormatInstance = (DataFormatPlugin) Class.forName(
+        dataFormatServiceInstance = (DataFormatPlugin) Class.forName(
             (String) pluginIterator.next()).newInstance();
-        // dataFormatExtension = dataFormatInstance.getExtension("");
+        dataFormatType = dataFormatServiceInstance.getType();
 
-        if (dataFormats.containsKey(dataFormatExtension)) {
-          dataFormats.get(dataFormatExtension).add(dataFormatInstance);
+        if (dataFormats.containsKey(dataFormatType)) {
+          dataFormats.get(dataFormatType).add(dataFormatServiceInstance);
         } else {
           List<DataFormatPlugin> dataFormatPluginList = new ArrayList<DataFormatPlugin>();
-          dataFormatPluginList.add(dataFormatInstance);
-          dataFormats.put(dataFormatExtension, dataFormatPluginList);
+          dataFormatPluginList.add(dataFormatServiceInstance);
+          dataFormats.put(dataFormatType, dataFormatPluginList);
         }
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
@@ -102,5 +102,25 @@ public class DataFormatServiceProvider {
    */
   public List<String> getTypes() {
     return new ArrayList<String>(dataFormats.keySet());
+  }
+
+  /**
+   * Returns the data format subtypes of a given data format type.
+   * 
+   * @param dsType
+   * @return
+   */
+  public List<String> getSubtypes(String dfType) {
+    List<String> dataFormatSubtypes = new ArrayList<String>();
+
+    for (DataFormatPlugin dataFormatPlugin : dataFormats.get(dfType)) {
+      for (String dataFormatSubtype : dataFormatPlugin.getSubtypes()) {
+        if (!dataFormatSubtypes.contains(dataFormatSubtype)) {
+          dataFormatSubtypes.add(dataFormatSubtype);
+        }
+      }
+    }
+
+    return dataFormatSubtypes;
   }
 }

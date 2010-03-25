@@ -38,27 +38,27 @@ public abstract class DataSourcePlugin implements DataSourceService {
   private static final String DATASOURCE_META_DATA_SCHEMA_FILE = "DataSourceMetaData.xsd";
 
   /**
-   * Type of the supported data source (database, filesystem, ...)
+   * Type of the supporting data source (database, filesystem, ...).
    */
-  private String dataSourceType = "database";
+  private String dataSourceType = "Database";
 
   /**
-   * XML schema type of the data source meta data. (declared in DEFAULT_META_DATA_SCHEMA)
+   * XML schema type of the data source meta data (declared in DEFAULT_META_DATA_SCHEMA).
    */
   private String dataSourceMetaDataType = "tDatabaseMetaData";
 
   /**
-   * Subtypes of the supported data source. (DB2, MySQL, ...)
+   * Subtypes of the supporting data source (DB2, MySQL, ...).
    */
   private List<String> dataSourceSubtypes = new ArrayList<String>();
 
   /**
-   * Languages supported by the data source subtypes. (SQL, XQuery, ...)
+   * Languages supporting by the data source subtypes (SQL, XQuery, ...).
    */
   private HashMap<String, List<String>> dataSourceLanguages = new HashMap<String, List<String>>();
 
   /**
-   * Returns the supported data source type.
+   * Returns the supporting data source type.
    * 
    * @return
    */
@@ -67,7 +67,7 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
-   * Returns the supported data source subtypes.
+   * Returns the supporting data source subtypes.
    * 
    * @return
    */
@@ -76,7 +76,7 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
-   * Returns the supported languages of the subtypes.
+   * Returns the supporting languages of the subtypes.
    * 
    * @return
    */
@@ -85,7 +85,7 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
-   * Sets the supported data source type.
+   * Sets the supporting data source type.
    * 
    * @param dsType
    */
@@ -104,7 +104,7 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
-   * Sets the supported data source subtypes.
+   * Adds a supported data source subtype.
    * 
    * @param dsSubtype
    */
@@ -115,7 +115,7 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
-   * Sets the supported language of a subtype.
+   * Adds a supported language of a subtype.
    * 
    * @param dsSubtype
    * @param dsLanguage

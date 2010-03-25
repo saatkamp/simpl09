@@ -1,20 +1,15 @@
 package org.simpl.core.helpers;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 /**
  * <b>Purpose:</b> Helper for the transmission of complex objects as web service
  * parameters.<br>
- * <b>Description:</b> Offers functions to serialize and deserialize objects. <br>
+ * <b>Description:</b> Offers functions to serialize and deserialize objects to and from
+ * xml. <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -31,21 +26,13 @@ public class Parameter {
    */
   public static String serialize(Object object) {
     ByteArrayOutputStream byteArrayOuputStream = new ByteArrayOutputStream();
-    ObjectOutputStream objectOutputStream = null;
     String serialized = null;
 
-    try {
-      objectOutputStream = new ObjectOutputStream(new BufferedOutputStream(
-          byteArrayOuputStream));
+    XMLEncoder encoder = new XMLEncoder(byteArrayOuputStream);
+    encoder.writeObject(object);
+    encoder.close();
 
-      objectOutputStream.writeObject(object);
-      objectOutputStream.close();
-
-      serialized = new BASE64Encoder().encode(byteArrayOuputStream.toByteArray());
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    serialized = new String(byteArrayOuputStream.toByteArray());
 
     return serialized;
   }
@@ -57,23 +44,12 @@ public class Parameter {
    * @return deserialized java object
    */
   public static Object deserialize(String data) {
-    ByteArrayInputStream byteArrayInputStream = null;
-    ObjectInputStream objectInputStream = null;
+    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data.getBytes());
     Object deserialized = null;
 
-    try {
-      byteArrayInputStream = new ByteArrayInputStream(new BASE64Decoder()
-          .decodeBuffer(data));
-      objectInputStream = new ObjectInputStream(new BufferedInputStream(
-          byteArrayInputStream));
-      deserialized = objectInputStream.readObject();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    XMLDecoder decoder = new XMLDecoder(byteArrayInputStream);
+    deserialized = decoder.readObject();
+    decoder.close();
 
     return deserialized;
   }

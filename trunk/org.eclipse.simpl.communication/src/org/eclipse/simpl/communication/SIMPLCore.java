@@ -55,21 +55,21 @@ public class SIMPLCore {
   
   public List<String> getDatasourceTypes() {
     List<String> dsTypes = (List<String>) Parameter.deserialize(datasourceService
-        .getDatasourceTypes());
+        .getDataSourceTypes());
 
     return dsTypes;
   }
 
   public List<String> getDatasourceSubTypes(String dsType) {
     List<String> dsSubTypes = (List<String>) Parameter.deserialize(datasourceService
-        .getDatasourceSubtypes(dsType));
+        .getDataSourceSubtypes(dsType));
 
     return dsSubTypes;
   }
 
   public List<String> getDatasourceLanguages(String dsSubtype) {
     List<String> dsSubTypeLanguages = (List<String>) Parameter
-        .deserialize(datasourceService.getDatasourceLanguages(dsSubtype));
+        .deserialize(datasourceService.getDataSourceLanguages(dsSubtype));
 
     return dsSubTypeLanguages;
   }

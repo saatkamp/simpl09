@@ -26,7 +26,7 @@ public class DataSourceServiceProvider {
    * Maps the data source service types to a list of supporting data source plugin
    * instances.
    */
-  private HashMap<String, List<DataSourcePlugin>> dataSourceServices = new HashMap<String, List<DataSourcePlugin>>();
+  private HashMap<String, List<DataSourcePlugin>> dataSources = new HashMap<String, List<DataSourcePlugin>>();
 
   /**
    * Initialize all data source service plugins.
@@ -45,7 +45,7 @@ public class DataSourceServiceProvider {
    */
   public DataSourceService getInstance(String dsType, String dsSubtype) {
     DataSourcePlugin dataSourceServiceInstance = null;
-    List<DataSourcePlugin> dataSourcePlugins = this.dataSourceServices.get(dsType);
+    List<DataSourcePlugin> dataSourcePlugins = this.dataSources.get(dsType);
     List<String> dataSourcePluginSubtypes = null;
 
     // search for a plugin that supports the given subtype
@@ -63,8 +63,8 @@ public class DataSourceServiceProvider {
   }
 
   /**
-   * Loads instances of the data source plugins and retrieves information about types,
-   * subtypes and languages.
+   * Loads instances of the data source plugins and retrieves information about their
+   * supported types, subtypes and languages.
    */
   private void loadPlugins() {
     List<String> plugins = SIMPLCore.getInstance().config().getDataSourcePlugins();
@@ -78,12 +78,12 @@ public class DataSourceServiceProvider {
             (String) pluginIterator.next()).newInstance();
         dataSourceType = dataSourceServiceInstance.getType();
 
-        if (dataSourceServices.containsKey(dataSourceType)) {
-          dataSourceServices.get(dataSourceType).add(dataSourceServiceInstance);
+        if (dataSources.containsKey(dataSourceType)) {
+          dataSources.get(dataSourceType).add(dataSourceServiceInstance);
         } else {
           List<DataSourcePlugin> dataSourceServicePluginList = new ArrayList<DataSourcePlugin>();
           dataSourceServicePluginList.add(dataSourceServiceInstance);
-          dataSourceServices.put(dataSourceType, dataSourceServicePluginList);
+          dataSources.put(dataSourceType, dataSourceServicePluginList);
         }
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
@@ -104,7 +104,7 @@ public class DataSourceServiceProvider {
    * @return
    */
   public List<String> getTypes() {
-    return new ArrayList<String>(dataSourceServices.keySet());
+    return new ArrayList<String>(dataSources.keySet());
   }
 
   /**
@@ -116,7 +116,7 @@ public class DataSourceServiceProvider {
   public List<String> getSubtypes(String dsType) {
     List<String> dataSourceSubtypes = new ArrayList<String>();
 
-    for (DataSourcePlugin dataSourceServicePlugin : dataSourceServices.get(dsType)) {
+    for (DataSourcePlugin dataSourceServicePlugin : dataSources.get(dsType)) {
       for (String dataSourceSubtype : dataSourceServicePlugin.getSubtypes()) {
         if (!dataSourceSubtypes.contains(dataSourceSubtype)) {
           dataSourceSubtypes.add(dataSourceSubtype);
@@ -136,8 +136,8 @@ public class DataSourceServiceProvider {
   public List<String> getLanguages(String dsSubtype) {
     List<String> dataSourceLanguages = new ArrayList<String>();
 
-    for (String dataSourceType : dataSourceServices.keySet()) {
-      for (DataSourcePlugin dataSourceServicePlugin : dataSourceServices
+    for (String dataSourceType : dataSources.keySet()) {
+      for (DataSourcePlugin dataSourceServicePlugin : dataSources
           .get(dataSourceType)) {
         if (dataSourceServicePlugin.getLanguages().containsKey(dsSubtype)) {
           for (String language : dataSourceServicePlugin.getLanguages().get(dsSubtype)) {

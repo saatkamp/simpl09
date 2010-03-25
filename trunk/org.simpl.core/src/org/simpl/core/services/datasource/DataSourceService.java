@@ -12,7 +12,7 @@ import commonj.sdo.DataObject;
  * <b>Description:</b> TODO: Beschreibung, auch von allen Funktionen.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
- * 
+ * TODO: Funktionskommentare
  * @author hahnml
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
