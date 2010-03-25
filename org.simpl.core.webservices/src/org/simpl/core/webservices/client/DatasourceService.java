@@ -209,4 +209,16 @@ public interface DatasourceService {
     @WebResult(partName = "return")
     public String getDataFormatTypes();
 
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "getDataFormatSubtypes")
+    @WebResult(partName = "return")
+    public String getDataFormatSubtypes(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
 }

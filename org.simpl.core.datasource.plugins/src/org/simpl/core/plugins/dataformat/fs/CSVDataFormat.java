@@ -1,7 +1,5 @@
 package org.simpl.core.plugins.dataformat.fs;
 
-import java.io.File;
-
 import org.simpl.core.plugins.DataFormatPlugin;
 
 import commonj.sdo.DataObject;
@@ -19,14 +17,17 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class CSVDataFormat extends DataFormatPlugin {
+  public CSVDataFormat() {
+    this.setType("CSV");
+    this.addSubtype("Standard");
+  }
 
   /* (non-Javadoc)
-   * @see org.simpl.core.services.dataformat.DataFormatService#SDO(java.io.File)
+   * @see org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang.Object)
    */
   @Override
-  public DataObject SDO(File arg0) {
+  public <File> DataObject toSDO(File file) {
     // TODO Auto-generated method stub
     return null;
   }
-
 }

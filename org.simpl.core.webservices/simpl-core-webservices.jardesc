@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="C:/Tomcat 6.0/webapps/ode/WEB-INF/servicejars/simpl-core-web-services.jar"/>
-    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.core.webservices/simpl-core-web-services.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <jar path="C:/Tomcat 6.0/webapps/ode/WEB-INF/servicejars/simpl-core-webservices.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.core.webservices/simpl-core-webservices.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
     <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">

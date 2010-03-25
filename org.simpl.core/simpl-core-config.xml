@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<simplCoreConfig name="SIMPLCoreConfig">
-	<dataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.DB2RDBDataSource" />
-	<dataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.DerbyRDBDataSource" />
-	<dataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.EmbDerbyRDBDataSource" />
-	<dataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSource" />
-	<dataSourcePlugin name="org.simpl.core.plugins.datasource.fs.WindowsLocalFSDataSource" />
-	<dataFormatPlugin name="org.simpl.core.plugins.dataformat.fs.CSVDataFormat" />
-</simplCoreConfig>
+<SimplCoreConfig name="SIMPLCoreConfig">
+	<DataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.DB2RDBDataSource" />
+	<DataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.DerbyRDBDataSource" />
+	<DataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.EmbDerbyRDBDataSource" />
+	<DataSourcePlugin name="org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSource" />
+	<DataSourcePlugin name="org.simpl.core.plugins.datasource.fs.WindowsLocalFSDataSource" />
+	<DataFormatPlugin name="org.simpl.core.plugins.dataformat.fs.CSVDataFormat" />
+</SimplCoreConfig>

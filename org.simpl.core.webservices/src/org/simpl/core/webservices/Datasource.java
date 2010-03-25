@@ -164,4 +164,9 @@ public class Datasource {
   public String getDataFormatTypes() {
     return Parameter.serialize(SIMPLCore.getInstance().getDataFormatTypes());
   }
+  
+  @WebMethod(action = "getDataFormatSubtypes")
+  public String getDataFormatSubtypes(String dfType) {
+    return Parameter.serialize(SIMPLCore.getInstance().getDataFormatSubtypes(dfType));
+  }
 }

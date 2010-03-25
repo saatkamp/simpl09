@@ -18,35 +18,39 @@ import commonj.sdo.helper.XSDHelper;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi
- * @version $Id$<br>
+ * @version $Id: DataFormatPlugin.java 1006 2010-03-24 17:52:54Z michael.schneidt@arcor.de
+ *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public abstract class DataFormatPlugin implements DataFormatService {
   /**
-   * Name of the data schema file.
+   * Name of the data format schema file.
    */
   private static final String DATA_FORMAT_SCHEMA_FILE = "DataFormat.xsd";
 
   /**
-   * Type of the supported data format. (CSV, XML, ...)
+   * Type of the supporting data format (CSV, XML, ...).
    */
-  private String dataFormatType = "default";
+  private String dataFormatType = "Default";
 
   /**
-   * Subtypes of the supported data format. (Headline, ...)
+   * Subtypes of the supporting data format (CSVWithHeadline, XMLForSimulation, ..). TODO: bessere Beispiele finden
    */
   private List<String> dataFormatSubtypes = new ArrayList<String>();
 
   /**
-   * Creates an empty meta data object (SDO) from the data format schema.
-   * 
-   * @return
+   * DataObject created from the data format schema file.
    */
-  public DataObject create() {
+  private DataObject data = null;
+  
+  /**
+   * Creates an empty meta data object (SDO) from the data format schema.
+   */
+  public DataFormatPlugin() {
     DataObject dataObject = null;
     InputStream inputStream = null;
 
-    // Load the schema file
+    // load the schema file
     inputStream = getClass().getResourceAsStream(DATA_FORMAT_SCHEMA_FILE);
 
     if (inputStream == null) {
@@ -66,24 +70,56 @@ public abstract class DataFormatPlugin implements DataFormatService {
         "http://org.simpl.core/src/org/simpl/core/plugins/dataformat/"
             + DATA_FORMAT_SCHEMA_FILE, this.dataFormatType);
 
-    return dataObject;
+    this.setData(dataObject);
   }
 
   /**
-   * Returns the supported data format type.
+   * Sets the supporting data format type.
    * 
-   * @return
+   * @param dfType
+   */
+  public void setType(String dfType) {
+    this.dataFormatType = dfType;
+  }
+
+  /**
+   * Returns the supporting data format subtypes.
+   * 
+   * @return list of data format subtypes
+   */
+  public List<String> getSubtypes() {
+    return this.dataFormatSubtypes;
+  }
+  
+  /**
+   * Adds a supporting data format subtype.
+   * 
+   * @param dfSubtype
+   */
+  public void addSubtype(String dfSubtype) {
+    if (!this.dataFormatSubtypes.contains(dfSubtype)) {
+      this.dataFormatSubtypes.add(dfSubtype);
+    }
+  }
+
+  /**
+   * @return the supporting data format type.
    */
   public String getType() {
     return this.dataFormatType;
   }
 
   /**
-   * Returns the supported data format subtypes.
-   * 
-   * @return
+   * @param data the data to set
    */
-  public List<String> getSubtypes() {
-    return this.dataFormatSubtypes;
+  public void setData(DataObject data) {
+    this.data = data;
+  }
+
+  /**
+   * @return the data
+   */
+  public DataObject getData() {
+    return data;
   }
 }

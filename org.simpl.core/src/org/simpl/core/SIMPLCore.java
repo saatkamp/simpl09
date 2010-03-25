@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.simpl.core.services.administration.AdministrationService;
 import org.simpl.core.services.administration.AdministrationServiceImpl;
+import org.simpl.core.services.dataformat.DataFormatService;
 import org.simpl.core.services.dataformat.DataFormatServiceProvider;
 import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.DataSourceServiceProvider;
@@ -50,7 +51,7 @@ public class SIMPLCore {
   }
 
   /**
-   * Returns the instance of the administration service
+   * Returns the instance of the administration service.
    * 
    * @return
    */
@@ -59,7 +60,7 @@ public class SIMPLCore {
   }
 
   /**
-   * Returns the instance of a data source service dependent on the given type and subtype.
+   * Returns the instance of a data source service by the given type and subtype.
    * 
    * @param dsType
    * @param dsSubtype
@@ -68,7 +69,18 @@ public class SIMPLCore {
   public DataSourceService dataSourceService(String dsType, String dsSubtype) {
     return dataSourceServiceProvider.getInstance(dsType, dsSubtype);
   }
-
+  
+  /**
+   * Returns the instance of a data format service by the given type and subtype.
+   * 
+   * @param dfType
+   * @param dfSubtype
+   * @return
+   */
+  public DataFormatService dataFormatService(String dfType, String dfSubtype) {
+    return dataFormatServiceProvider.getInstance(dfType, dfSubtype);
+  }
+  
   /**
    * Returns the instance of the storage service.
    * 
@@ -123,5 +135,15 @@ public class SIMPLCore {
    */
   public List<String> getDataFormatTypes() {
     return dataFormatServiceProvider.getTypes();
+  }
+  
+  /**
+   * Returns all data format subtypes of a given data format type.
+   * 
+   * @param dsType
+   * @return
+   */
+  public List<String> getDataFormatSubtypes(String dfType) {
+    return dataFormatServiceProvider.getSubtypes(dfType);
   }
 }

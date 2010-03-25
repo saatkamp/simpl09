@@ -12,8 +12,12 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
+ * <b>Purpose:</b> Reads the SIMPLCore configuration from the config file and provides
+ * functions to access the configuration settings. This includes information about all
+ * registered plugins.<br>
+ * <b>Description:</b> Searches for the config file in the current work directory and in
+ * the Apache ODE <i>conf</i> directory whose relative location depends on the execution
+ * path of Apache Tomcat.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -62,15 +66,15 @@ public class SIMPLConfig {
 
           break;
         case XMLStreamConstants.START_ELEMENT:
-          if (parser.getLocalName().equals("dataSourcePlugin")) {
+          if (parser.getLocalName().equals("DataSourcePlugin")) {
             for (int i = 0; i < parser.getAttributeCount(); i++) {
               if (parser.getAttributeLocalName(i).equals("name")) {
                 dataSourcePlugins.add(parser.getAttributeValue(i));
               }
             }
           }
-          
-          if (parser.getLocalName().equals("dataFormatPlugin")) {
+
+          if (parser.getLocalName().equals("DataFormatPlugin")) {
             for (int i = 0; i < parser.getAttributeCount(); i++) {
               if (parser.getAttributeLocalName(i).equals("name")) {
                 dataFormatPlugins.add(parser.getAttributeValue(i));
@@ -94,18 +98,18 @@ public class SIMPLConfig {
   }
 
   /**
-   * Returns a list of registered DataSourcePlugins. The list contains full
-   * qualified names of DataSourcePlugin classes.
+   * Returns a list of registered DataSourcePlugins. The list contains full qualified
+   * names of DataSourcePlugin classes.
    * 
    * @return List of DataSourcePlugins
    */
   public List<String> getDataSourcePlugins() {
     return dataSourcePlugins;
   }
-  
+
   /**
-   * Returns a list of registered DataFormatPlugins. The list contains full
-   * qualified names of DataFormatPlugin classes.
+   * Returns a list of registered DataFormatPlugins. The list contains full qualified
+   * names of DataFormatPlugin classes.
    * 
    * @return List of DataFormatPlugins
    */
