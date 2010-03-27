@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="4">
+<lyxtabular version="3" rows="16" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1011,7 +1011,7 @@ reference "sec:Eclipse"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1020,7 +1020,7 @@ reference "sec:Eclipse"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1029,7 +1029,7 @@ reference "sec:Eclipse"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1038,7 +1038,7 @@ huettiwg
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1050,6 +1050,134 @@ reference "sub:SIMPL-DAO"
 \end_inset
 
  überarbeitet.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27.03.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abschnitte 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RRS-Eclipse-Plug-In"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:UDDI-Eclipse-Plug-In"
+
+\end_inset
+
+ eingefügt.
 \end_layout
 
 \end_inset
@@ -2562,11 +2690,19 @@ Eclipse
 Das SIMPL Rahmenwerk besteht aus der bereits vorhandenen Eclipse IDE und
  dem Eclipse BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins
  BPEL-DM Plug-In, SIMPL Core Plug-In und SIMPL Core Client Plug-In.
+ Dazu kommen noch Eclipse Plug-Ins für das Reference Resolution System (RRS)
+ und eine UDDI-Registry.
  Im Rahmen des Feinentwurfes werden die Anbindung an die vorhandenen Komponenten
  sowie die zu erstellenden Komponenten näher erläutert.
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:BPEL-DM-Plug-In"
+
+\end_inset
+
 BPEL DM Plug-In
 \end_layout
 
@@ -2643,7 +2779,7 @@ BPEL DM Plug-In Paketstruktur
 \end_layout
 
 \begin_layout Subsubsection
-BPEL DM Plug-In User-Interface
+BPEL DM Plug-In User Interface
 \end_layout
 
 \begin_layout Standard
@@ -2691,7 +2827,7 @@ name "fig:BPEL-DM-Plug-In UI"
 
 \end_inset
 
-BPEL DM Plug-In User-Interface
+BPEL DM Plug-In User Interface
 \end_layout
 
 \end_inset
@@ -3072,7 +3208,7 @@ name "fig:BPEL-DM-Plug-In Modell-Util"
 
 \end_inset
 
-BPEL-DM Plug-In Modell
+Utility-Paket des BPEL-DM Plug-In Modells
 \end_layout
 
 \end_inset
@@ -3113,7 +3249,7 @@ org.eclipse.bpel.model.extensions.BPELActivitySerializer
 \end_layout
 
 \begin_layout Subsubsection
-BPEL-DM Plug-In Extension Modell
+BPEL-DM Plug-In Abfragesprachen-Erweiterung
 \end_layout
 
 \begin_layout Standard
@@ -3128,13 +3264,13 @@ reference "fig:BPEL-DM-Plug-In Extension Modell"
 \emph on
 org.eclipse.bpel.simpl.ui.sql.editor
 \emph default
- steht beispielhaft für eine Erweiterung des Statementeditors um die Anfragespra
+ steht beispielhaft für eine Erweiterung des Statementeditors um die Abfragespra
 che SQL.
  Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse 
 \emph on
 org.eclipse.bpel.simpl.ui.extensions.AStatementEditor
 \emph default
- und realisieren die grafische Modellierung von elementaren SQL-Anfragen
+ und realisieren die grafische Modellierung von elementaren SQL-Abfragen
  wie Select und Insert.
  Jede Erweiterung kann am Extension Point 
 \emph on
@@ -3171,7 +3307,7 @@ name "fig:BPEL-DM-Plug-In Extension Modell"
 
 \end_inset
 
-BPEL-DM Plug-In Extension Modell 
+Klassendiagramm der BPEL-DM Plug-In SQL-Erweiterung
 \end_layout
 
 \end_inset
@@ -3463,6 +3599,667 @@ bin
 \backslash
 wimport.exe) über die WSDL-Schnittstellen generiert und wird um die Serialisierun
 g und Deserialisierung der komplexen Parameter erweitert.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RRS-Eclipse-Plug-In"
+
+\end_inset
+
+RRS Eclipse Plug-In
+\end_layout
+
+\begin_layout Standard
+Das RRS Eclipse Plug-In besteht zum Einen aus einem Modell der Endpunkt-Referenz
+en (EPR) und zum Anderen aus einem Eclipse View, in dem EPRs mehrerer RRS
+ verwaltet werden können.
+ In den folgenden zwei Abschnitten wird zuerst das den EPRs zugrundeliegende
+ Modell bzw.
+ dessen Implementierung näher erläutert und anschließend die Umsetzung deren
+ Verwaltung über eine Eclipse View beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+RRS Eclipse Plug-In Modell
+\end_layout
+
+\begin_layout Standard
+Um den Implementierungsaufwand gering und die Erweiterbarkeit bzw.
+ Änderbarkeit des EPR-Datenmodells möglichst hoch und einfach zu halten,
+ wurde auch für dieses Eclipse Plug-In ein EMF-Modell zur Modellierung der
+ EPRs erstellt (vgl.
+ Beschreibung des BPEL-DM Plug-Ins in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:BPEL-DM-Plug-In"
+
+\end_inset
+
+).
+ Dadurch ist es möglich Änderungen im EMF-Modell durchzuführen und die Implement
+ierung des Modells automatisch neu zu generieren.
+ Die momentane Struktur des EPR-Modells zeigt Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-Plug-In-Model"
+
+\end_inset
+
+.
+ Im Folgenden wird auf die einzelnen Pakete bzw.
+ deren Klassen näher eingegangen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/RRSPlugInModel.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-Plug-In-Model"
+
+\end_inset
+
+Klassendiagramm des Modells des RRS Eclipse Plug-Ins
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.model
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+ModelProvider
+\emph default
+ hält alle EPRs, die in der RRS View angezeigt werden.
+ Sie ist der globale Zugriffpunkt für die vorhandenen EPRs und den in diesen
+ enthaltenen Daten.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.model.reference
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält alle Klassen des EPR-(EMF-)Modells.
+ Das Modell beruht dabei auf der, in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+ Kapitel 7.1.2, vorgegebenen Struktur einer EPR.
+ Die Klassen 
+\emph on
+ReferenceFactory
+\emph default
+ (Interface) und 
+\emph on
+ReferencePackage
+\emph default
+ (Interface) erben von den Klassen 
+\emph on
+org.eclipse.emf.ecore.EFactory
+\emph default
+ und 
+\emph on
+org.eclipse.emf.ecore.EPackage
+\emph default
+ und werden benötigt, um Objekte des Modells zu erzeugen (Factory), wie
+ z.B.
+ ein 
+\emph on
+EPR
+\emph default
+-Objekt und um Objekte des Modells zu verwalten (Package), wie z.B.
+ das Auslesen der Adresse eines 
+\emph on
+EPR
+\emph default
+-Objekts.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.model.reference.impl
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enhält die Implementierungen der verschiedenen Modell-Klassen
+ des Pakets 
+\emph on
+org.eclipse.simpl.rrs.model.reference.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.model.reference.util
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält durch EMF automatisch generierte Zubehörklassen, die
+ dazu verwendet werden können, Modellobjekte zu (de)serialisieren.
+ Dazu werden mit der Klasse 
+\emph on
+ReferenceResourceFactoryImpl
+\emph default
+, die von der Klasse 
+\emph on
+org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl
+\emph default
+ erbt, Objekte der Klasse 
+\emph on
+ReferenceResourceImpl
+\emph default
+, die von der Klasse 
+\emph on
+org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
+\emph default
+ erbt, erzeugt.
+ Die so erzeugten Objekte der Klasse 
+\emph on
+ReferenceResourceImpl
+\emph default
+ können dann, über die Klasse 
+\emph on
+ReferenceFactory
+\emph default
+ erstellte, EPRs aufnehmen und diese im XML-Format serialisieren.
+ Ebenso können so in XML hinterlegte EPRs wieder in Objekte der Klasse 
+\emph on
+EPR
+\emph default
+ deserialisiert werden.
+ Mithilfe dieser Klassen können die in den EPRs enthaltenen Daten relativ
+ einfach aus XML in Modell-Objekte und umgekehrt überführt werden.
+ Dies hat den entscheidenden Vorteil, dass in Eclipse die Modellklassen
+ verwendet werden können und für den Transport bzw.
+ das Laden und Speichern der EPRs eine XML-Repräsentation ohne explizite
+ Implementierung erstellt werden kann.
+\end_layout
+
+\begin_layout Subsubsection
+RRS Eclipse Plug-In User Interface
+\end_layout
+
+\begin_layout Standard
+Diese Komponente des RRS Eclipse Plug-Ins sorgt dafür, dass in Eclipse ein
+ neuer View bereitgestellt wird, mit dessen Hilfe EPRs aus verschiedenen
+ RRS angezeigt und verwaltet werden können.
+ Zur Verwaltung gehört das Anlegen von neuen EPRs sowie das Bearbeiten und
+ Löschen vorhandener EPRs.
+ Die grundlegende Struktur der Implementierung des User Interfaces zeigt
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-Plug-In-UI"
+
+\end_inset
+
+.
+ Im Folgenden wird auf die einzelnen Pakete bzw.
+ deren Klassen näher eingegangen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/RRSPlugInUI.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-Plug-In-UI"
+
+\end_inset
+
+Klassendiagramm des User Interfaces des RRS Eclipse Plug-Ins
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.ui.dialogs
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält die beiden Klassen 
+\emph on
+AddReferenceDialog
+\emph default
+ und 
+\emph on
+EditReferenceDialog
+\emph default
+, die die Klasse 
+\emph on
+org.eclipse.jface.dialogs.TitleAreaDialog
+\emph default
+ erweitern.
+ Die Klasse 
+\emph on
+AddReferenceDialog
+\emph default
+ wird dazu verwendet, einen Dialog für das Anlegen neuer EPRs bereitszustellen.
+ Die Klasse 
+\emph on
+EditReferenceDialog
+\emph default
+ stellt dazu analog einen Dialog für das Editieren von EPRs bereit.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.ui.commands
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält drei Klassen, die die Schnittstelle 
+\emph on
+org.eclipse.core.commands.IHandler
+\emph default
+ implementieren.
+ Diese werden dazu benötigt, um auf entsprechende Commands zu reagieren,
+ die mit Toolbar- bzw.
+ Menüeinträgen des RRS View verknüpft sind und bei der Auswahl eines solchen
+ Eintrags angestoßen werden.
+ Die Klasse 
+\emph on
+AddEPRHandler
+\emph default
+ sorgt dafür, dass bei der Auswahl des Add-Menüeintrags der AddEPR-Dialog
+ geöffnet wird.
+ Die Klasse 
+\emph on
+EditEPRHandler
+\emph default
+ sorgt entsprechend dafür, dass bei der Auswahl des Edit-Menüeintrags der
+ EditEPR-Dialog geöffnet wird.
+ Die Klasse 
+\emph on
+RemoveEPRHandler
+\emph default
+ sorgt dafür, dass alle in der View ausgewählten EPRs gelöscht werden.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.ui.view
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält alle Klassen, die für Einbindung der RRS View in Eclipse
+ benötigt werden.
+ Die Klasse 
+\emph on
+ReferenceManagementView
+\emph default
+ erweitert dafür die Klasse 
+\emph on
+org.eclipse.ui.part.ViewPart
+\emph default
+ und sorgt somit für die Darstellung des RRS Views und die Visualisierung
+ aller EPRs eines RRS in einer Tabelle innerhalb des Views.
+ Die Klasse 
+\emph on
+ReferenceContentProvider
+\emph default
+ implementiert die Schnittstelle 
+\emph on
+org.eclipse.jface.viewers.IStructuredContentProvider
+\emph default
+ und sorgt dafür, dass die EPRs, aus dem Modell, der View zugänglich gemacht
+ werden.
+ Die Klasse 
+\emph on
+ReferenceLabelProvider
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.viewers.LabelProvider
+\emph default
+ und sorgt dafür, dass die einzelnen Daten der EPRs in der View entsprechend
+ angezeigt werden, d.h.
+ in dieser Klasse wird definiert, wie die über den 
+\emph on
+ReferenceContentProvider
+\emph default
+ bereitgestellten EPR-Objekte ausgelesen werden sollen und welche Daten
+ überhaupt in der View angezeigt werden sollen.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.ui.view.filter
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+ReferenceFilter
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.viewers.ViewerFilter
+\emph default
+ und liefert die Möglichkeit die in der View angezeigten EPRs zu filtern,
+ d.h.
+ die EPRs nach entsprechenden Zeichenfolgen zu durchsuchen und nur solche
+ anzuzeigen, die die Zeichenfolge enthalten.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.ui.view.sorter
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+TableSorter
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.viewers.ViewerSorter
+\emph default
+ und liefert die Möglichkeit die im View angezeigten EPRs zu sortieren,
+ d.h.
+ die EPRs können nach jeder beliebigen Spalte des RRS Views auf- oder absteigend
+ sortiert werden.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UDDI-Eclipse-Plug-In"
+
+\end_inset
+
+UDDI Eclipse Plug-In
+\end_layout
+
+\begin_layout Standard
+Das UDDI Eclipse Plug-In ist analog zum RRS Eclipse Plug-In aufgebaut, mit
+ der Einschränkung, dass es nur für die Betrachtung von UDDI-Einträgen verwendet
+ werden kann und eine Verwaltung dieser nicht über das Plug-In in Eclipse
+ realisiert wird.
+ Für die Verwaltung wird ein spezielles Web Interface bereitgestellt, dass
+ in Kapitel XYZ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Referenz noch einfügen, sobald das Kapitel vorhanden ist
+\end_layout
+
+\end_inset
+
+ näher beschrieben wird.
+\end_layout
+
+\begin_layout Standard
+Die in der UDDI-Registry hinterlegten Datenquellen werden für die Darstellung
+ im UDDI Browser View, der durch dieses Plug-In bereitgestellt wird, über
+ eine entsprechende EMF-Modell Implementierung repräsentiert.
+ Die grundlegende Struktur der Implementierung des gesamten Plug-Ins zeigt
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:UDDI-Plug-In"
+
+\end_inset
+
+.
+ Im Folgenden wird auf die einzelnen Pakete bzw.
+ deren Klassen näher eingegangen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/UDDIEclipsePlugIn.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:UDDI-Plug-In"
+
+\end_inset
+
+UDDI Eclipse Plug-In Klassendiagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.uddi.model
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+ModelProvider
+\emph default
+ hält alle Datenquellen (DataSource-Objekte), die in der UDDI View angezeigt
+ werden.
+ Sie ist der globale Zugriffpunkt für die vorhandenen Datenquellen.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.uddi.model.datasource
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält alle Klassen des Datenquellen-(EMF-)Modells.
+ Das Modell beruht dabei auf der Modellierung einer Datenquelle anhand vordefini
+erter Eigenschaften, wie z.B.
+ dem Datenquellentyp (Dateisystem, RDB, usw.) oder Abfragesprache (SQL, XQuery,
+ usw.).
+ Die Klassen 
+\emph on
+DatasourceFactory
+\emph default
+ (Interface) und 
+\emph on
+DatasourcePackage
+\emph default
+ (Interface) erben von den Klassen 
+\emph on
+org.eclipse.emf.ecore.EFactory
+\emph default
+ und 
+\emph on
+org.eclipse.emf.ecore.EPackage
+\emph default
+ und werden benötigt, um Objekte des Modells zu erzeugen (Factory), wie
+ z.B.
+ ein 
+\emph on
+DataSource
+\emph default
+-Objekt und um Objekte des Modells zu verwalten (Package), wie z.B.
+ das Auslesen des Typs eines 
+\emph on
+DataSource
+\emph default
+-Objekts.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.uddi.model.datasource.impl
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enhält die Implementierungen der verschiedenen Modell-Klassen
+ des Pakets 
+\emph on
+org.eclipse.simpl.uddi.model.datasource.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.uddi.model.datasource.util
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält durch EMF automatisch generierte Standardklassen, die
+ für die Verwendung des Modells benötigt werden.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.uddi.view
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält alle Klassen, die für Einbindung der UDDI View in Eclipse
+ benötigt werden.
+ Die Klasse 
+\emph on
+UDDIBrowserView
+\emph default
+ erweitert dafür die Klasse 
+\emph on
+org.eclipse.ui.part.ViewPart
+\emph default
+ und sorgt somit für die Darstellung des UDDI Views und die Visualisierung
+ aller hinterlegter Datenquellen einer UDDI-Registry in einer Tabelle innerhalb
+ des Views.
+ Die Klasse 
+\emph on
+UDDIContentProvider
+\emph default
+ implementiert die Schnittstelle 
+\emph on
+org.eclipse.jface.viewers.IStructuredContentProvider
+\emph default
+ und sorgt dafür, dass die Datenquellen, aus dem Modell, der View zugänglich
+ gemacht werden.
+ Die Klasse 
+\emph on
+UDDILabelProvider
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.viewers.LabelProvider
+\emph default
+ und sorgt dafür, dass die einzelnen Informationen der Datenquellen in der
+ View entsprechend angezeigt werden, d.h.
+ in dieser Klasse wird definiert, wie die über den 
+\emph on
+UDDIContentProvider
+\emph default
+ bereitgestellten DataSource-Objekte ausgelesen werden sollen und welche
+ Daten überhaupt in der View angezeigt werden sollen.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.uddi.view.filter
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+DataSourceFilter
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.viewers.ViewerFilter
+\emph default
+ und liefert die Möglichkeit die in der View angezeigten Datenquellen zu
+ filtern, d.h.
+ die Informationen der Datenquellen nach entsprechenden Zeichenfolgen zu
+ durchsuchen und nur solche Datenquellen anzuzeigen, deren Informationen
+ die Zeichenfolge enthalten.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.uddi.view.sorter
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+TableSorter
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.viewers.ViewerSorter
+\emph default
+ und liefert die Möglichkeit die im View angezeigten Datenquellen zu sortieren,
+ d.h.
+ die Datenquellen können nach jeder beliebigen Spalte des UDDI Views auf-
+ oder absteigend sortiert werden.
 \end_layout
 
 \begin_layout Standard
