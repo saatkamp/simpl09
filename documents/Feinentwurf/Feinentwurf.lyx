@@ -3091,23 +3091,91 @@ reference "fig:BPEL-DM-Plug-In"
 
  dargestellten Pakete.
  Das User-Interface Paket (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.simpl.ui
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+simpl.
+\emph default
+""
+\emph on
+\lang ngerman
+ui
+\end_layout
+
+\end_inset
+
 ) sorgt für die grafische Darstellung der DM-Aktivitäten und deren Einbindung
  in den Eclipse BPEL Designer.
  Das zugrundeliegende Modell der DM-Aktivitäten befindet sich im Paket 
-\emph on
-org.eclipse.bpel.simpl.model
-\emph default
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""eclipse.""bpel.""simpl.""model
+\end_layout
+
+\end_inset
+
 .
  Für die grafische Modellierung von Abfragebefehlen für verschiedene Datenquelle
 n können weitere Plug-Ins über einen Extension-Point an das BPEL-DM Plug-In
  angebunden werden.
  Im Rahmen des Projekts wird ein Beispiel Plug-In (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.simpl.ui.sql
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+simpl.
+\emph default
+""
+\emph on
+\lang ngerman
+ui.
+\emph default
+""
+\emph on
+\lang ngerman
+sql
+\end_layout
+
+\end_inset
+
 ) für die grafische Modellierung von SQL-Abfragen umgesetzt.
  Die verschiedenen Pakete und deren Klassen werden in den folgenden Unterkapitel
 n näher erläutert.
@@ -3252,10 +3320,47 @@ org.eclipse.bpel.simpl.adapters
 \begin_layout Standard
 Dieses Paket enthält eine Adapter-Klasse für jede DM-Aktivität.
  Die Adapter-Klassen verknüpfen das Modell und die grafische Repräsentation
- (UI) einer DM-Aktivität und erben von der abstrakten Klasse 
+ (UI) einer DM-Aktivität und erben von der abstrakten Klasse
 \emph on
-org.eclipse.bpel.ui.adapters.ActivityAdapter
+ 
 \emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+org.
+\emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+ui.
+\emph default
+""
+\emph on
+\lang ngerman
+adapters.
+\emph default
+""
+\emph on
+\lang ngerman
+ActivityAdapter
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -3305,7 +3410,44 @@ setStatement()
  Die Anbindung von StatementEditor-Implementierungen erfolgt dabei über
  den Extension Point 
 \noun on
-org.eclipse.bpel.simpl.ui.queryLanguage
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\noun on
+org.
+\noun default
+""
+\noun on
+\lang ngerman
+eclipse.
+\noun default
+""
+\noun on
+\lang ngerman
+bpel.
+\noun default
+""
+\noun on
+\lang ngerman
+simpl.
+\noun default
+""
+\noun on
+\lang ngerman
+ui.
+\noun default
+""
+\noun on
+\lang ngerman
+queryLanguage
+\end_layout
+
+\end_inset
+
+
 \noun default
 .
 \end_layout
@@ -3333,12 +3475,77 @@ DataManagementUIAdapterFactory
 DataManagementUIObjectFactory
 \emph default
  erweitert dafür die abstrakte Klasse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.ui.factories.AbstractUIObjectFactory 
+org.
 \emph default
-und wird über den vorhandenen Extension-Point 
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+ui.
+\emph default
+""
+\emph on
+\lang ngerman
+factories.
+\emph default
+""
+\emph on
+\lang ngerman
+AbstractUIObjectFactory
+\end_layout
+
+\end_inset
+
+ und wird über den vorhandenen Extension-Point 
 \noun on
-org.eclipse.bpel.ui.uiObjectFactories
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\noun on
+org.
+\noun default
+""
+\noun on
+\lang ngerman
+eclipse.
+\noun default
+""
+\noun on
+\lang ngerman
+bpel.
+\noun default
+""
+\noun on
+\lang ngerman
+ui.
+\noun default
+""
+\noun on
+\lang ngerman
+uiObjectFactories
+\end_layout
+
+\end_inset
+
+
 \noun default
  an den BPEL Designer angebunden.
  Die Klasse 
@@ -3346,9 +3553,47 @@ org.eclipse.bpel.ui.uiObjectFactories
 DataManagementUIAdapterFactory
 \emph default
  erweitert die Klasse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.simpl.model.util.ModelAdapterFactory
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+simpl.
+\emph default
+""
+\emph on
+\lang ngerman
+model.
+\emph default
+""
+\emph on
+\lang ngerman
+util.
+\emph default
+""
+\emph on
+\lang ngerman
+ModelAdapterFactory
+\end_layout
+
+\end_inset
+
  des BPEL-DM Modells.
 \end_layout
 
@@ -3367,13 +3612,84 @@ Dieses Paket erweitert die grafische Palette der Aktivitäten des BPEL Designers
 DataManagementPaletteProvider
 \emph default
  implementiert dafür die Schnittstelle 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.common.ui.palette.IPaletteProvider
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+common.
+\emph default
+""
+\emph on
+\lang ngerman
+ui.
+\emph default
+""
+\emph on
+\lang ngerman
+palette.
+\emph default
+""
+\emph on
+\lang ngerman
+IPaletteProvider
+\end_layout
+
+\end_inset
+
  und wird über den vorhandenen BPEL Designer Extension-Point 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \noun on
-org.eclipse.bpel.common.ui.paletteAdditions
+org.
 \noun default
+""
+\noun on
+\lang ngerman
+eclipse.
+\noun default
+""
+\noun on
+\lang ngerman
+bpel.
+\noun default
+""
+\noun on
+\lang ngerman
+common.
+\noun default
+""
+\noun on
+\lang ngerman
+ui.
+\noun default
+""
+\noun on
+\lang ngerman
+paletteAdditions
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -3385,9 +3701,47 @@ org.eclipse.bpel.simpl.properties
 Das Paket beinhaltet die Anzeige der Eigenschaften der jeweiligen DM-Aktivitäten.
  Die Anbindung erfolgt über den vorhandenen BPEL Designer Extension-Point
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \noun on
-org.eclipse.ui.views.properties.tabbed.propertySections
+org.
 \noun default
+""
+\noun on
+\lang ngerman
+eclipse.
+\noun default
+""
+\noun on
+\lang ngerman
+ui.
+\noun default
+""
+\noun on
+\lang ngerman
+views.
+\noun default
+""
+\noun on
+\lang ngerman
+properties.
+\noun default
+""
+\noun on
+\lang ngerman
+tabbed.
+\noun default
+""
+\noun on
+\lang ngerman
+propertySections
+\end_layout
+
+\end_inset
+
 .
  Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
 s ausgewählt werden.
@@ -3491,9 +3845,37 @@ reference "fig:BPEL-DM-Plug-In Modell"
 DataManagementActivity
 \emph default
 -Klasse (Interface), die die Klasse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.model.ExtensionActivity
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+model.
+\emph default
+""
+\emph on
+\lang ngerman
+ExtensionActivity
+\end_layout
+
+\end_inset
+
  erweitert.
  Sie enthält die Variablen 
 \emph on
@@ -3520,9 +3902,42 @@ QueryActivity
  (Interface) vererbt und können somit bei Bedarf um schnittstellenspezifische
  Eigenschaften erweitert werden.
  Die konkrete Realisierung dieser Interfaces erfolgt dann im Paket 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.simpl.model.impl
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+simpl.
+\emph default
+""
+\emph on
+\lang ngerman
+model.
+\emph default
+""
+\emph on
+\lang ngerman
+impl
+\end_layout
+
+\end_inset
+
  z.B.
  in der Klasse 
 \emph on
@@ -3611,13 +4026,83 @@ reference "fig:BPEL-DM-Plug-In Modell-Util"
  Schreiben der DM-Aktivitäten aus bzw.
  in BPEL-Files.
  Serializer werden dafür von der Klasse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.model.extensions.BPELActivitySerializer
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+model.
+\emph default
+""
+\emph on
+\lang ngerman
+extensions.
+\emph default
+""
+\emph on
+\lang ngerman
+BPELActivitySerializer
+\end_layout
+
+\end_inset
+
  und Deserializer von der Klasse
 \emph on
- org.eclipse.bpel.model.extensions.BPELActivityDerserializer
+ 
 \emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+org.
+\emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+model.
+\emph default
+""
+\emph on
+\lang ngerman
+extensions.
+\emph default
+""
+\emph on
+\lang ngerman
+BPELActivityDerserializer
+\end_layout
+
+\end_inset
+
  abgeleitet.
 \end_layout
 
@@ -3640,9 +4125,47 @@ org.eclipse.bpel.simpl.ui.sql.editor
  steht beispielhaft für eine Erweiterung des Statementeditors um die Abfragespra
 che SQL.
  Die einzelnen Klassen dieses Pakets erben von der abstrakten Klasse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.bpel.simpl.ui.extensions.AStatementEditor
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+bpel.
+\emph default
+""
+\emph on
+\lang ngerman
+simpl.
+\emph default
+""
+\emph on
+\lang ngerman
+ui.
+\emph default
+""
+\emph on
+\lang ngerman
+extensions.
+\emph default
+""
+\emph on
+\lang ngerman
+AStatementEditor
+\end_layout
+
+\end_inset
+
  und realisieren die grafische Modellierung von elementaren SQL-Abfragen
  wie Select und Insert.
  Jede Erweiterung kann am Extension Point 
@@ -3926,7 +4449,39 @@ Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen, um eine
 alls leicht ausgetauscht werden.
  Weitere Einträge können über den Extension-Point 
 \noun on
-org.eclipse.simpl.core.adminConsoleItem
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\noun on
+org.
+\noun default
+""
+\noun on
+\lang ngerman
+eclipse.
+\noun default
+""
+\noun on
+\lang ngerman
+simpl.
+\noun default
+""
+\noun on
+\lang ngerman
+core.
+\noun default
+""
+\noun on
+\lang ngerman
+adminConsoleItem
+\end_layout
+
+\end_inset
+
+
 \noun default
  hinzugefügt werden.
  Bei der Auslieferung sind die Funktionen Auditing (
@@ -4000,9 +4555,21 @@ RRS Eclipse Plug-In Modell
 
 \begin_layout Standard
 Um den Implementierungsaufwand gering und die Erweiterbarkeit bzw.
- Änderbarkeit des EPR-Datenmodells möglichst hoch und einfach zu halten,
- wurde auch für dieses Eclipse Plug-In ein EMF-Modell zur Modellierung der
- EPRs erstellt (vgl.
+ Änderbarkeit des 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+EPR-
+""
+\lang ngerman
+Datenmodells
+\end_layout
+
+\end_inset
+
+ möglichst hoch und einfach zu halten, wurde auch für dieses Eclipse Plug-In
+ ein EMF-Modell zur Modellierung der EPRs erstellt (vgl.
  Beschreibung des BPEL-DM Plug-Ins in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4130,8 +4697,45 @@ org.eclipse.simpl.rrs.model.reference.impl
 \begin_layout Standard
 Dieses Paket enhält die Implementierungen der verschiedenen Modell-Klassen
  des Pakets 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.simpl.rrs.model.reference.
+org.
+\emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+simpl.
+\emph default
+""
+\emph on
+\lang ngerman
+rrs.
+\emph default
+""
+\emph on
+\lang ngerman
+model.
+\emph default
+""
+\emph on
+\lang ngerman
+reference
+\end_layout
+
+\end_inset
+
+
+\emph on
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4146,17 +4750,93 @@ Dieses Paket enthält durch EMF automatisch generierte Zubehörklassen, die
 ReferenceResourceFactoryImpl
 \emph default
 , die von der Klasse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+emf.
+\emph default
+""
+\emph on
+\lang ngerman
+ecore.
+\emph default
+""
+\emph on
+\lang ngerman
+resource.
+\emph default
+""
+\emph on
+\lang ngerman
+impl.
+\emph default
+""
+\emph on
+\lang ngerman
+ResourceFactoryImpl
+\end_layout
+
+\end_inset
+
  erbt, Objekte der Klasse 
 \emph on
 ReferenceResourceImpl
 \emph default
 , die von der Klasse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+emf.
+\emph default
+""
+\emph on
+\lang ngerman
+ecore.
+\emph default
+""
+\emph on
+\lang ngerman
+xmi.
+\emph default
+""
+\emph on
+\lang ngerman
+impl.
+\emph default
+""
+\emph on
+\lang ngerman
+XMLResourceImpl
+\end_layout
+
+\end_inset
+
  erbt, erzeugt.
  Die so erzeugten Objekte der Klasse 
 \emph on
@@ -4329,9 +5009,37 @@ org.eclipse.ui.part.ViewPart
 ReferenceContentProvider
 \emph default
  implementiert die Schnittstelle 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.jface.viewers.IStructuredContentProvider
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+jface.
+\emph default
+""
+\emph on
+\lang ngerman
+viewers.
+\emph default
+""
+\emph on
+\lang ngerman
+IStructuredContentProvider
+\end_layout
+
+\end_inset
+
  und sorgt dafür, dass die EPRs, aus dem Modell, der View zugänglich gemacht
  werden.
  Die Klasse 
@@ -4536,9 +5244,49 @@ org.eclipse.simpl.uddi.model.datasource.impl
 
 \begin_layout Standard
 Dieses Paket enhält die Implementierungen der verschiedenen Modell-Klassen
- des Pakets 
+ des Pakets
+ 
+\lang ngerman
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.simpl.uddi.model.datasource.
+org.
+\emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+simpl.
+\emph default
+""
+\emph on
+\lang ngerman
+uddi.
+\emph default
+""
+\emph on
+\lang ngerman
+model.
+\emph default
+""
+\emph on
+\lang ngerman
+datasource
+\end_layout
+
+\end_inset
+
+
+\emph on
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4573,9 +5321,37 @@ org.eclipse.ui.part.ViewPart
 UDDIContentProvider
 \emph default
  implementiert die Schnittstelle 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 \emph on
-org.eclipse.jface.viewers.IStructuredContentProvider
+org.
 \emph default
+""
+\emph on
+\lang ngerman
+eclipse.
+\emph default
+""
+\emph on
+\lang ngerman
+jface.
+\emph default
+""
+\emph on
+\lang ngerman
+viewers.
+\emph default
+""
+\emph on
+\lang ngerman
+IStructuredContentProvider
+\end_layout
+
+\end_inset
+
  und sorgt dafür, dass die Datenquellen, aus dem Modell, der View zugänglich
  gemacht werden.
  Die Klasse 
