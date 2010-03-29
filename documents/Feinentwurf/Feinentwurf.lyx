@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="16" columns="4">
+<lyxtabular version="3" rows="17" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1132,7 +1132,7 @@ reference "sub:SIMPL-DAO"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1141,7 +1141,7 @@ reference "sub:SIMPL-DAO"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1150,7 +1150,7 @@ reference "sub:SIMPL-DAO"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1159,7 +1159,7 @@ hahnml
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1178,6 +1178,51 @@ reference "sub:UDDI-Eclipse-Plug-In"
 \end_inset
 
  eingefügt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29.03.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:SIMPLCore"
+
+\end_inset
+
+ überarbeitet.
 \end_layout
 
 \end_inset
@@ -1371,6 +1416,10 @@ reference "fig:SIMPL-Core-Klassendiagramm"
  zeigt den Aufbau des SIMPL Cores mit Paketstruktur, Klassen und Interfaces,
  sowie deren Zusammenhänge über Verbindungspfeile, die in den folgenden
  Abschnitten beschrieben werden.
+ In der Abbildung wird aus Gründen der Übersichtlichkeit auf die Darstellung
+ der Interface- und Web Service-Methoden, sowie allgemein Getter- und Setter-Met
+hoden verzichtet, die aber in den folgenden Abschnitten genannt und beschrieben
+ werden.
  Einige der SIMPL Core Dienste werden, falls sie außerhalb des SIMPL Cores
  aufrufbar sein müssen, nach Außen über Web Services verfügbar gemacht.
  Falls im Nachfolgenden nicht die Dienste selbst, sondern die Web Services
@@ -1388,7 +1437,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/iteration1/SIMPLCore_Class_Diagram.png
+	filename diagramme/iteration2/SIMPLCore_Class_Diagram.png
 	width 100text%
 
 \end_inset
@@ -1424,9 +1473,13 @@ Paketstruktur
 \end_layout
 
 \begin_layout Standard
-Der SIMPL Core besitzt folgende Paketstruktur, die sich in einen Kernbereich
- (org.simpl.core), sowie Bereiche für die Dienste (Storage-Dienst, Administration-
-Dienst und Datasource-Dienst) und Web Services aufteilt.
+Der SIMPL Core besitzt folgende Paketstruktur, die sich ausgehend vom Kernbereic
+h 
+\emph on
+org.simpl.core
+\emph default
+, in Bereiche für die Dienste, Web Services, Plug-Ins sowie Hilfsklassen
+ aufteilt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1434,20 +1487,45 @@ org.simpl.core
 \end_layout
 
 \begin_layout Standard
-Hier befinden sich zentrale Klassen des SIMPL Cores, die auf die Dienste
- des SIMPL Cores zurückgreifen, wie z.B.
- die SIMPLCore-Klasse, die in Kapitel 
+Hier befinden sich zentrale Klassen des SIMPL Cores, dazu gehört die 
+\emph on
+SIMPLCore
+\emph default
+-Klasse, die den Zugriff auf die verschiedenen Dienste ermöglicht, sowie
+ die 
+\emph on
+SIMPLConfig
+\emph default
+-Klasse, die für das Einlesen der Konfigurationsdatei des SIMPL Cores zuständig
+ ist.
+ Die Klassen werden in den folgenden Abschnitten 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:SIMPLCore"
 
 \end_inset
 
- näher beschrieben wird.
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPLCore"
+
+\end_inset
+
+ näher beschrieben.
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.core.administration
+org.simpl.core.services
+\end_layout
+
+\begin_layout Standard
+In diesem Paket befinden sich keine Klassen oder Interfaces, es dient lediglich
+ zur Gliederung der verschiedenen Dienste des SIMPL Cores.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.core.services.administration
 \end_layout
 
 \begin_layout Standard
@@ -1464,7 +1542,7 @@ key "key-1"
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.core.storage
+org.simpl.core.services.storage
 \end_layout
 
 \begin_layout Standard
@@ -1482,7 +1560,7 @@ key "key-1"
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.core.datasource
+org.simpl.core.services.datasource
 \end_layout
 
 \begin_layout Standard
@@ -1500,7 +1578,16 @@ key "key-1"
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.core.datasource.plugins
+org.simpl.core.plugins
+\end_layout
+
+\begin_layout Standard
+In diesem Paket befinden sich keine Klassen oder Interfaces, es dient lediglich
+ zur Gliederung der verschiedenen Plugins des SIMPL Cores.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.core.plugins.datasource
 \end_layout
 
 \begin_layout Standard
@@ -1511,7 +1598,27 @@ Hier befinden sich die Plug-Ins für den Datasource Service, die für die
  Das Plug-In-System wird in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datasource-Plug-Ins"
+reference "sub:Plug-In-System"
+
+\end_inset
+
+ näher beschrieben.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.core.plugins.dataformat
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die Plug-Ins für den Dataformat Service, die für die
+ Unterstützung verschiedener Datenformate, speziell für Filesysteme entwickelt
+ werden.
+ Falls sich die einzelnen Plug-Ins auf mehrere Klassen verteilen, können
+ diese zusätzlich auf eigene Unterpakete verteilt werden.
+ Das Plug-In-System wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Plug-In-System"
 
 \end_inset
 
@@ -1524,9 +1631,17 @@ org.simpl.core.webservices
 
 \begin_layout Standard
 Hier befinden sich die Web Services des SIMPL Cores, die den Zugriff von
- Außen auf den SIMPL Core ermöglichen.
+ Außen auf Dienste des SIMPL Cores ermöglichen.
  Alle Klassen werden mit JAX-WS-Annotationen versehen und als Webservices
  über den Axis2 Integration Layer von ODE zur Verfügung gestellt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.core.helpers
+\end_layout
+
+\begin_layout Standard
+In diesem Paket befinden sich Hilfsklassen, die den Entwickler unterstützen.
 \end_layout
 
 \begin_layout Subsection
@@ -1560,6 +1675,111 @@ reference "sub:BPEL-DM-Extension"
 
 ) benutzt, um DM-Aktivitäten auszuführen, sowie innerhalb des SIMPL Cores,
  wenn Dienste sich gegenseitig verwenden.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPLConfig"
+
+\end_inset
+
+Die SIMPLConfig Klasse
+\end_layout
+
+\begin_layout Standard
+Die installierten Plugins und ggf.
+ später weitere Einstellungen des SIMPL Cores, werden über eine Konfigurationsda
+tei registriert, die in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Die-simpl-core-config.xml-Datei"
+
+\end_inset
+
+ näher beschrieben wird.
+ Das Einlesen und Abrufen der Informationen aus dieser Datei, ist über die
+ 
+\emph on
+SIMPLConfig
+\emph default
+-Klasse möglich, die dazu entsprechende Methoden bereitstellt.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Die-simpl-core-config.xml-Datei"
+
+\end_inset
+
+Die SIMPLCore-Konfigurationsdatei
+\end_layout
+
+\begin_layout Standard
+Die Konfigurationsdatei ist unter
+\emph on
+ ode/conf/simpl-core-config.xml 
+\emph default
+abgelegt und hat die folgende Struktur, die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Die-SIMPLCore-Konfigurationsdatei-simpl-core-config.xml"
+
+\end_inset
+
+ zu sehen ist.
+ Die Plug-In-Klassen müssen jeweils mit dem voll qualifizierten Namen registrier
+t werden und als jar-Dateien unter 
+\emph on
+ode/lib
+\emph default
+ abgelegt werden, damit sie erkannt werden können.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/simpl-core-config.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Die-SIMPLCore-Konfigurationsdatei-simpl-core-config.xml"
+
+\end_inset
+
+Die SIMPLCore-Konfigurationsdatei simpl-core-config.xml
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1819,70 +2039,83 @@ Datasource Service
 
 \begin_layout Standard
 Der Datasource Service realisiert die Schnittstelle für den Zugriff auf
- die verschiedenen Datenquellen.
- Dazu wird die abstrakte 
-\emph on
-DatasourceService
-\emph default
--Klasse in verschiedenen Ausprägungen abgeleitet, die zu den verschiedenen
- Typen von Datenquellen über ein Plug-In System bereitgestellt werden.
- Die Instanz eines Datasource Service kann nur über den Datasource Service
- Provider (DatasourceServiceProvider) angefordert werden, der für die Verwaltung
- der Plug-Ins zuständig ist.
+ die verschiedenen Datenquellen und wird über Plug-Ins realisiert (siehe
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataSourcePlugin"
+
+\end_inset
+
+).
  Eine genaue Beschreibung des Plug-In Systems folgt in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datasource-Plug-Ins"
+reference "sub:Plug-In-System"
 
 \end_inset
 
 .
- Folgende privaten (private) und öffentlichen (public) Funktionen werden
- von einem Datasource Service realisiert:
+ Folgende Funktionen müssen von einem Datasource Service realisiert werden:
 \end_layout
 
 \begin_layout Paragraph
-private openConnection()
+public Connection openConnection(String dsAddress)
 \end_layout
 
 \begin_layout Standard
-Öffnet eine Verbindung zu einer Datenquelle und liefert ein Verbindungsobjekt
- über das mit der Datenquelle kommuniziert werden kann.
+Öffnet eine Verbindung zu einer Datenquelle und liefert zu der Adresse einer
+ Datenquelle ein Verbindungsobjekt über das mit der Datenquelle kommuniziert
+ werden kann.
  
 \end_layout
 
 \begin_layout Paragraph
-private closeConnection()
+public boolean closeConnection(Connection connection)
 \end_layout
 
 \begin_layout Standard
 Schließt die Verbindung zu einer Datenquelle und bestätigt den Verbindungsabbau
- mit einem Rückgabewert.
+ mit einem booleschen Rückgabewert.
 \end_layout
 
 \begin_layout Paragraph
-public queryData()
+public DataObject retrieveData(String dsAddress, String statement)
 \end_layout
 
 \begin_layout Standard
-Ermöglicht die Anforderung von Daten von einer Datenquelle durch ein Statement
- der entsprechenden Anfragesprache wie z.B.
+Ermöglicht die Anforderung von Daten von einer bestimmten Datenquelle durch
+ Adresse und ein Statement der entsprechenden Anfragesprache wie z.B.
  ein SELECT-Statement in der Anfragesprache SQL.
  Die Rückgabe der Daten erfolgt als SDO.
 \end_layout
 
 \begin_layout Paragraph
-public defineData()
+public boolean depositData(String dsAddress, String statement, String target)
 \end_layout
 
 \begin_layout Standard
-Wird verwendet um Datenstrukturen über ein Statement zu definieren wie z.B.
- das Erstellen von Tabellen in einer Datenbank und liefert eine Bestätigung
- als Rückgabewert.
+Mit dieser Funktion werden über ein Statement Daten selektiert und auf der
+ Datenquelle hinterlegt.
+ Die hinterlegten Daten werden über das 
+\emph on
+target 
+\emph default
+als Tabelle referenziert und können darüber anschließend abgerufen werden.
 \end_layout
 
 \begin_layout Paragraph
-public manipulateData()
+public boolean executeStatement(String dsAddress, String statement)
+\end_layout
+
+\begin_layout Standard
+Ermöglicht die Ausführung eines Statements auf einer Datenquelle und bestätigt
+ die Ausführung mit einem booleschen Rückgabewert.
+\end_layout
+
+\begin_layout Paragraph
+public boolean writeBack(String dsAddress, String statement, DataObject
+ data)
 \end_layout
 
 \begin_layout Standard
@@ -1890,61 +2123,227 @@ Wird verwendet um bestehende Daten zu manipulieren bzw.
  zu aktualisieren.
  Die Funktion erhält Daten in Form eines SDO und ein Statement mit dem die
  Verwendung der Daten beschrieben wird.
- Der Erfolg der Operation wird mit einem Rückgabewert bestätigt.
+ Der Erfolg der Operation wird mit einem booleschen Rückgabewert bestätigt.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject getMetaData(String dsAddress)
+\end_layout
+
+\begin_layout Standard
+Liefert Metadaten zu einer Datenquelle als SDO und wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Metadaten"
+
+\end_inset
+
+ näher beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Dataformat-Service"
+
+\end_inset
+
+Dataformat Service
+\end_layout
+
+\begin_layout Standard
+Der Dataformat Service realisiert die Unterstützung beliebiger Datenformate,
+ die von den Datenquellen vorgegeben sein können.
+ Die Formate werden von den Datasource-Plug-Ins verwendet um die Rückgabe
+ der angeforderten Daten als SDO zu realisieren.
+ Folgende Funktion muss von einem Dataformat-Plug-In realisiert werden:
+\end_layout
+
+\begin_layout Paragraph
+public <T> DataObject toSDO(T data)
+\end_layout
+
+\begin_layout Standard
+Die Funktion bekommt Daten eines bestimmten Formats von einer Datenquelle
+ und stellt diese als SDO für die weitere Verarbeitung zur Verfügung.
+ Sie ist generisch ausgelegt, damit die eingehenden Daten von einem beliebigen
+ Typ sein können, der von jedem Plug-In selbst bestimmt werden kann, bei
+ lokalen Dateisystemen bietet sich z.B.
+ der Typ 
+\emph on
+File
+\emph default
+ an.
 \end_layout
 
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Datasource-Plug-Ins"
+name "sub:Plug-In-System"
 
 \end_inset
 
-Datasource Plug-Ins
+Plug-In System
 \end_layout
 
 \begin_layout Standard
-Die Unterstützung verschiedener Typen von Datenquellen wird durch Datasource
- Plug-Ins realisiert, um eine Erweiterungsmöglichkeit zu garantieren.
- Dies wird durch die Bereitstellung einer abstrakten Klasse erreicht, von
+Um eine Erweiterungsmöglichkeit des SIMPL Cores für die Unterstützung verschiede
+ner Typen von Datenquellen und Datenformaten zu garantieren, wird ein Plug-In
+ System realisiert.
+ Dies wird durch die Bereitstellung von abstrakten Klassen erreicht, von
  der sich die Plug-Ins ableiten lassen.
  Mit der Reflection API von Java ist es möglich, die Plug-Ins zur Laufzeit
- zu erkennen und zu verwenden, ohne dass bestehender Code angepasst werden
+ zu laden und zu verwenden, ohne dass bestehender Code angepasst werden
  muss.
- Die Plug-Ins werden als JAR-Dateien im Classpath abgelegt.
+ Die Plug-Ins werden als JAR-Dateien im Classpath von Apache ODE 
+\emph on
+ode/lib
+\emph default
+ abgelegt und müssen in der 
+\emph on
+simpl-core-config.xml 
+\emph default
+(siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Die-simpl-core-config.xml-Datei"
+
+\end_inset
+
+) registriert werden.
+ Für das Laden und Bereitstellen der Plug-Ins stehen Service-Provider zur
+ Verfügung, die die Plug-Ins als Dienste bereitstellen.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataSourcePlugin"
+
+\end_inset
+
+DataSourcePlugin
+\end_layout
+
+\begin_layout Standard
+Mit DataSourcePlugins können beliebige Datenquellen an den SIMPL Core angeschlos
+sen werden.
 \end_layout
 
 \begin_layout Paragraph*
-DatasourceService (interface)
+DataSourceService (Interface)
 \end_layout
 
 \begin_layout Standard
 Das DatasourceService-Interface schreibt alle Funktionen vor, die von den
- Datasource Services (Plug-Ins) implementiert werden müssen.
+ Datasource Services (Plug-Ins) implementiert werden müssen und entsprechen
+ den Funktionen in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Service"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Paragraph*
-DatasourceServicePlugin (abstract class)
+DataSourcePlugin (Abstrakte Klasse)
 \end_layout
 
 \begin_layout Standard
-Bei der DatasourceServicePlugin-Klasse handelt es sich um eine abstrakte
- Klasse, die an das DatasourceService-Interface gebunden ist und damit das
- Grundgerüst für einen Datasource Service bildet.
+Bei der DataSourcePlugin-Klasse handelt es sich um eine abstrakte Klasse,
+ die an das DataSourceService-Interface gebunden ist und damit das Grundgerüst
+ für einen Datasource Service bildet.
  Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen, das
- DatasourceService-Interface zu implementieren.
+ DataSourceService-Interface zu implementieren.
 \end_layout
 
 \begin_layout Paragraph*
-DatasourceServiceProvider
+DataSourceServiceProvider
 \end_layout
 
 \begin_layout Standard
-Über den DatasourceServiceProvider kann mit der Methode getInstance() die
- Instanz eines DatasourceService angefordert werden.
- Dies geschieht über eine eindeutige Typkennzeichnung (z.B.
- RDB, XML, ...), mit der die entsprechende Instanz der Klasse über die Class.forName
--Methode der Java Reflection API erzeugt und ausgeliefert wird.
+Über den DataSourceServiceProvider kann mit der Methode getInstance() die
+ Instanz eines Datasource Service angefordert werden.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataFormatPlugin"
+
+\end_inset
+
+DataFormatPlugin
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+DataFormatService
+\end_layout
+
+\begin_layout Standard
+Das DatasourceService-Interface schreibt alle Funktionen vor, die von den
+ Datasource Services (Plug-Ins) implementiert werden müssen und entsprechen
+ den Funktionen in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Dataformat-Service"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+DataFormatPlugin
+\end_layout
+
+\begin_layout Standard
+Bei der DataFormatPlugin-Klasse handelt es sich um eine abstrakte Klasse,
+ die an das DataFormatService-Interface gebunden ist und damit das Grundgerüst
+ für einen Dataformat Service bildet.
+ Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen, das
+ DataFormatService-Interface zu implementieren.
+\end_layout
+
+\begin_layout Paragraph*
+DataFormatServiceProvider
+\end_layout
+
+\begin_layout Standard
+Über den DataFormatServiceProvider kann mit der Methode getInstance() die
+ Instanz eines Dataformat Service angefordert werden.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Metadaten"
+
+\end_inset
+
+Metadaten
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1993,10 +2392,12 @@ Komplexe Objekte wie z.B.
  als solche verwendet werden.
  Eine Ausnahme bilden die SDO Objekte, die bereits über eine XML Darstellung
  verfügen und in dieser direkt übermittelt werden können.
+ Für diesen Vorgang stellt die Helper-Klasse Parameter entsprechende Funktionen
+ zur Verfügung.
 \end_layout
 
 \begin_layout Subsubsection
-Datasource Web Service (WSDatasource)
+Datasource Web Service (Datasource)
 \begin_inset Note Note
 status collapsed
 
@@ -2042,7 +2443,7 @@ Der Datasource Web Service bietet eine Schnittstelle zu allen Ausprägungen
  die eindeutige Typkennzeichung (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datasource-Plug-Ins"
+reference "sub:Plug-In-System"
 
 \end_inset
 
@@ -2056,7 +2457,7 @@ reference "sub:Datasource-Plug-Ins"
 \end_layout
 
 \begin_layout Subsubsection
-Administration Web Service (WSAdministration)
+Administration Web Service (Administration)
 \begin_inset Note Note
 status collapsed
 
@@ -2087,34 +2488,6 @@ reference "sub:Web-Services"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Subsubsection
-Storage Web Service (WSStorage)
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subparagraph
-public boolean save(String serviceNS, String serviceName, List<LinkedHashMap<Str
-ing, String>> data)
-\end_layout
-
-\begin_layout Subparagraph
-public List<LinkedHashMap<String, String>> load(String serviceNS, String
- serviceName)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Storage Web Service bietet anderen Diensten von außen die Möglichkeit,
- Einstellungen zu speichern und zu laden.
- Für den Storage Web Service gilt das Gleiche wie für den Administration
- Service, nur dass dieser die direkte Schnittstelle zum Storage Service
- darstellt.
 \end_layout
 
 \begin_layout Standard
