@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<rrs:EPR xmlns:rrs="http://simpl.uni-stuttgart.de/rrs/model">
+  <address uri="http://localhost:8080/rrs"/>
+  <referenceProperties>
+    <resolutionSystem adapterURI="RDB-Adapter"/>
+  </referenceProperties>
+  <referenceParameters referenceName="simulationsDaten" statement="SELECT * FROM simdaten"/>
+</rrs:EPR>
