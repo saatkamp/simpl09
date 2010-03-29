@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.plugins.DataFormatPlugin;
+import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 
 /**
  * <b>Purpose:</b> Provides access to the data formats that are loaded from plugins.<br>

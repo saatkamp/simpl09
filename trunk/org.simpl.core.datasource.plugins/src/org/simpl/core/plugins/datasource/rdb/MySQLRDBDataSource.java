@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -94,7 +94,7 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public DataObject queryData(String dsAddress, String statement)
+  public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger
@@ -109,7 +109,7 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean defineData(String dsAddress, String statement)
+  public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean defineData(" + dsAddress + ", " + statement + ") executed.");
@@ -132,7 +132,7 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean manipulateData(String dsAddress, String statement, DataObject data)
+  public boolean writeBack(String dsAddress, String statement, DataObject data)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean manipulateData(" + dsAddress + ", " + statement

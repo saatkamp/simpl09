@@ -1,6 +1,6 @@
 package org.simpl.core.plugins.dataformat.fs;
 
-import org.simpl.core.plugins.DataFormatPlugin;
+import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 
 import commonj.sdo.DataObject;
 

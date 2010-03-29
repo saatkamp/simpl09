@@ -2,7 +2,7 @@ package org.simpl.core.plugins.datasource.fs;
 
 import java.sql.Connection;
 
-import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -40,7 +40,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public boolean defineData(String arg0, String arg1) throws ConnectionException {
+  public boolean executeStatement(String arg0, String arg1) throws ConnectionException {
     // TODO Auto-generated method stub
     return false;
   }
@@ -73,7 +73,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String, commonj.sdo.DataObject)
    */
   @Override
-  public boolean manipulateData(String arg0, String arg1, DataObject arg2)
+  public boolean writeBack(String arg0, String arg1, DataObject arg2)
       throws ConnectionException {
     // TODO Auto-generated method stub
     return false;
@@ -94,7 +94,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public DataObject queryData(String arg0, String arg1) throws ConnectionException {
+  public DataObject retrieveData(String arg0, String arg1) throws ConnectionException {
     // TODO Auto-generated method stub
     return null;
   }
