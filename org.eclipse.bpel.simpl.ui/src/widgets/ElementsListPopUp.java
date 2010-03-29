@@ -3,9 +3,12 @@ package widgets;
 
 import java.util.ArrayList;
 
+import org.eclipse.bpel.model.Exit;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -20,10 +23,20 @@ public class ElementsListPopUp{
 	Text textToSearch;
 	List listToSearch;
 	ArrayList<String> arrayOfElements=new ArrayList<String>();
+	boolean windowIsOpen=false;
+	
+	public boolean isWindowOpen() {
+		return windowIsOpen;
+	}
+
+	public void setWindowIsOpen(boolean windowIsOpen) {
+		this.windowIsOpen = windowIsOpen;
+	}
+
 	private Shell theShell;// =new Shell();
-	public ElementsListPopUp()
+	public ElementsListPopUp(LiveEditStyleText statementText)
 	{
-		createSShell();
+		createSShell(statementText);
 //		theShell.setSize(new Point(282, 184));
 //		GridLayout gridLayout = new GridLayout();
 //		gridLayout.numColumns = 1;
@@ -49,7 +62,7 @@ public class ElementsListPopUp{
 	    
 	}
 	
-	private void createSShell() {
+	private void createSShell(final LiveEditStyleText statementText) {
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = false;
 		gridData1.horizontalAlignment = GridData.FILL;
@@ -88,11 +101,31 @@ public class ElementsListPopUp{
 		});	
 		
 		textToSearch.setLayoutData(gridData1);
-		listToSearch = new List(theShell, SWT.NONE);
-		listToSearch.add("asdasdasda");
+		listToSearch = new List(theShell, SWT.BORDER);
 		listToSearch.setLayoutData(gridData);
+		listToSearch.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				statementText.append(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				
+			}
+			
+			
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				statementText.append(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				
+			}
+		});
 		
 	}
+	
+//	private void setTextInStyleText(String string) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 	/**
 	 * search live for results in the list
@@ -102,7 +135,7 @@ public class ElementsListPopUp{
 		//arrayOfElements= listToSearch.getItems();
 		listToSearch.removeAll();
 		for(int i=0;i<arrayOfElements.size();i++){
-			if(arrayOfElements.get(i).contains(text)){
+			if(arrayOfElements.get(i).toLowerCase().contains(text)){
 				listToSearch.add(arrayOfElements.get(i));
 			}
 		}
@@ -111,6 +144,10 @@ public class ElementsListPopUp{
 	
 	public void openWindow(){
 		theShell.open();
+	}
+	
+	public void closeWindow(){
+		theShell.close();
 	}
 	
 	public void setText(String string) {
@@ -137,8 +174,38 @@ public class ElementsListPopUp{
 //	public void setSize(int width,int height) {
 //		theShell.setSize(width, height);
 //	}
+
+	/**
+	 * for adding the tables names from the DB
+	 */
+	public void loadTablesFromDB() {
+		// TODO Auto-generated method stub
+		arrayOfElements.add("aaaaa");
+		arrayOfElements.add("abbb");
+		arrayOfElements.add("bbbba");
+		arrayOfElements.add("aaccc");
+		arrayOfElements.add("cccbbb");
+		arrayOfElements.add("ddccbbc");
+		arrayOfElements.add("aa");
+		arrayOfElements.add("sdfsdf");
+		arrayOfElements.add("zzzzzz");
+		arrayOfElements.add("aaa");
+	}
 	
-	
+	/**
+	 * for inserting the Bpel-Variables into the List
+	 */
+	public void loadBPELVariables() {
+		arrayOfElements.add("BPEL_Variable1");
+		arrayOfElements.add("BPEL_Variable2");
+		arrayOfElements.add("BPEL_Variable3");
+		arrayOfElements.add("BPEL_Variable4");
+		arrayOfElements.add("BPEL_Variable5");
+		arrayOfElements.add("BPEL_Variable6");
+		arrayOfElements.add("BPEL_Variable7");
+		arrayOfElements.add("BPEL_Variable8");
+		
+	}
 	
 	/**
 	 * 
