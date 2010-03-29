@@ -25,13 +25,17 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.ElementsListPopUp;
 import widgets.LiveEditStyleText;
 
 @SuppressWarnings("unused")
 public class RetrieveDataPropertySection extends DMActivityPropertySection {
 
+	ElementsListPopUp tabelsPopWindowTables;
+	ElementsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private CCombo typeCombo = null;
 	private Label statementLabel = null;
@@ -105,10 +109,7 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
-		GridData gridData13 = new GridData();
-		gridData13.horizontalAlignment = GridData.FILL;
-		gridData13.grabExcessHorizontalSpace = true;
-		gridData13.verticalAlignment = GridData.CENTER;
+		
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;
 		gridData4.verticalAlignment = GridData.CENTER;
@@ -200,32 +201,13 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 			}
 		});
 
-		dataVariableLabel = new Label(composite, SWT.NONE);
-		dataVariableLabel
-				.setText("Target variable to insert the query result:");
-		dataVariableLabel.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-
+		Label filler411 = new Label(composite, SWT.NONE);
+		Label filler42 = new Label(composite, SWT.NONE);
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		dataVariableText = new Text(composite, SWT.BORDER);
-		dataVariableText.setLayoutData(gridData13);
-		dataVariableText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				Variable variable = (Variable) ModelHelper
-				.findElementByName(ModelHelper.getContainingScope(getInput()),
-						dataVariableText.getText(), Variable.class);
-				
-				if (variable != null){
-					getCommandFramework().execute(
-							new SetDataVariableCommand(getModel(), variable));
-				}
-			}
-		});
+		
 		Label filler43 = new Label(composite, SWT.NONE);
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
@@ -248,8 +230,8 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
 		Composite statementCompo=new Composite(composite, SWT.NONE);
 		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		GridData gridData132 = new GridData();
-		gridData132.horizontalSpan = 3;
+		GridData gridData13 = new GridData();
+		gridData13.horizontalSpan = 3;
 		
 		GridData gridData14 = new GridData();
 		gridData14.horizontalSpan = 4;
@@ -276,7 +258,60 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 		//statementCompo.setSize(new Point(150,70));
 		insertBpelVariable = new Button(statementCompo, SWT.NONE);
 		insertBpelVariable.setText("Insert Variable");
+		insertBpelVariable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				tabelsPopWindowBPELVariables=new ElementsListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				tabelsPopWindowBPELVariables.loadBPELVariables();
+				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
+					tabelsPopWindowBPELVariables.openWindow();
+					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
+				}
+				
+				 
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+				
+			}
+		});
+		
 		insertTable = new Button(statementCompo, SWT.NONE);
+		insertTable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				//Display tablesDisplay =new Display();
+				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
+				tabelsPopWindowTables=new ElementsListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				tabelsPopWindowTables.setText("Select Tabel");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				tabelsPopWindowTables.loadTablesFromDB();
+				if(!tabelsPopWindowTables.isWindowOpen()){
+					tabelsPopWindowTables.openWindow();
+					tabelsPopWindowTables.setWindowIsOpen(true);
+				}
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+			}
+		});
+		
 		Save = new Button(statementCompo, SWT.NONE);
 		Save.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 		Save.setText("Save");
@@ -286,12 +321,20 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 			public void widgetSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
 				
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
 				
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
 			}
 		});
 
