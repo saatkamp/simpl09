@@ -13,7 +13,7 @@ import javax.jws.soap.SOAPBinding;
 import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
-import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -29,8 +29,8 @@ import commonj.sdo.helper.XMLHelper;
 @WebService(name = "DatasourceService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Datasource {
-  @WebMethod(action = "queryData")
-  public String queryData(
+  @WebMethod(action = "retrieveData")
+  public String retrieveData(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
       @WebParam(name = "statement", targetNamespace = "") String statement,
       @WebParam(name = "dsType", targetNamespace = "") String dsType,
@@ -39,7 +39,7 @@ public class Datasource {
     DataObject dataObject = null;
     String data = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype).queryData(
+    dataObject = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype).retrieveData(
         dsAddress, statement);
     data = Parameter.serialize(dataObject);
 
@@ -62,8 +62,8 @@ public class Datasource {
     return success;
   }
 
-  @WebMethod(action = "defineData")
-  public boolean defineData(
+  @WebMethod(action = "executeStatement")
+  public boolean executeStatement(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
       @WebParam(name = "statement", targetNamespace = "") String statement,
       @WebParam(name = "dsType", targetNamespace = "") String dsType,
@@ -71,13 +71,13 @@ public class Datasource {
       throws ConnectionException {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype).defineData(
+    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype).executeStatement(
         dsAddress, statement);
 
     return success;
   }
 
-  @WebMethod(action = "manipulateData")
+  @WebMethod(action = "writeBack")
   public boolean manipulateData(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
       @WebParam(name = "statement", targetNamespace = "") String statement,
@@ -90,7 +90,7 @@ public class Datasource {
 
     dataObject = (DataObject) Parameter.deserialize(data);
     success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .manipulateData(dsAddress, statement, dataObject);
+        .writeBack(dsAddress, statement, dataObject);
 
     return success;
   }

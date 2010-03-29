@@ -22,16 +22,16 @@ public interface DataSourceService {
 
   public boolean closeConnection(Connection connection) throws ConnectionException;
 
-  public DataObject queryData(String dsAddress, String statement)
+  public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException;
 
   public boolean depositData(String dsAddress, String statement, String target)
       throws ConnectionException;
 
-  public boolean defineData(String dsAddress, String statement)
+  public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException;
 
-  public boolean manipulateData(String dsAddress, String statement, DataObject data)
+  public boolean writeBack(String dsAddress, String statement, DataObject data)
       throws ConnectionException;
 
   public DataObject getMetaData(String dsAddress) throws ConnectionException;

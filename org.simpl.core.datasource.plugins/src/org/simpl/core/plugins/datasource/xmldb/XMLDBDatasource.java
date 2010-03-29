@@ -2,7 +2,7 @@ package org.simpl.core.plugins.datasource.xmldb;
 
 import java.sql.Connection;
 
-import org.simpl.core.plugins.DataSourcePlugin;
+import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -31,7 +31,7 @@ public class XMLDBDatasource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public boolean defineData(String dsAddress, String statement)
+  public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException {
     // TODO Auto-generated method stub
     return false;
@@ -43,7 +43,7 @@ public class XMLDBDatasource extends DataSourcePlugin {
    * java.lang.String, org.apache.tuscany.sdo.model.DataObject)
    */
   @Override
-  public boolean manipulateData(String dsAddress, String statement, DataObject data)
+  public boolean writeBack(String dsAddress, String statement, DataObject data)
       throws ConnectionException {
     // TODO Auto-generated method stub
     return false;
@@ -65,7 +65,7 @@ public class XMLDBDatasource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public DataObject queryData(String dsAddress, String statement)
+  public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException {
     // TODO Auto-generated method stub
     return null;

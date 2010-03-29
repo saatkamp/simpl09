@@ -1,4 +1,4 @@
-package org.simpl.core.plugins;
+package org.simpl.core.plugins.dataformat;
 
 import java.io.IOException;
 import java.io.InputStream;
