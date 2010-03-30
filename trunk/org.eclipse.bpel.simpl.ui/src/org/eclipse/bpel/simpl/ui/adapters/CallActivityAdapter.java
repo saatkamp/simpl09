@@ -3,7 +3,7 @@ package org.eclipse.bpel.simpl.ui.adapters;
 import org.eclipse.bpel.ui.adapters.ActivityAdapter;
 
 /**
- * @author hahnml
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  * 
  */
 public class CallActivityAdapter extends ActivityAdapter {
