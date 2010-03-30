@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package widgets;
 
 import java.util.LinkedList;
@@ -19,20 +30,46 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LiveEditStyleText.
+ */
 public class LiveEditStyleText extends StyledText{
   
 
+  /** The BPE l_ variable. */
   String BPEL_VARIABLE="BPEL_VARIABLE";
+  
+  /** The KEYWORD. */
   String KEYWORD="KEYWORD";
+  
+  /** The PARAMETER. */
   String PARAMETER="PARAMETER";
+  
+  /** The TABL e_ name. */
   String TABLE_NAME="TABLE_NAME";
+  
+  /** The DEFAUL t_ text. */
   String DEFAULT_TEXT="DEFAULT_BLACK_TEXT";
   
+  /** The keyword. */
   String keyword;
+  
+  /** The keywords. */
   String[] keywords={"SELECT","INSERT","CALL","INTO","DROP","DELETE","WHERE","IN","INOUT","GROUP BY","<",">","=","LIKE","ORDER BY","AVG","MAX","MIN","SUM","COUNT","ALL","DISTINCT","UPDATE","SCHEMA","TABLE","CREATE","FROM"};
+  
+  /** The tables. */
   String[] tables={"Table1","Table2","Table3","Table4","Table5","Table6","Table7","Table8","Table9"};
+  
+  /** The list. */
   LinkedList<StyleRange> list = new LinkedList<StyleRange>();
   
+  /**
+	 * Instantiates a new live edit style text.
+	 * 
+	 * @param theComposite
+	 *            the the composite
+	 */
   public LiveEditStyleText(Composite theComposite) {
     
 	  //super(shell, SWT.MULTI | SWT.WRAP | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);

@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> This factory is used to create {@link ActivityAdapter}s for every {@link DataManagementActivity}.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui.factories;
 
 import org.eclipse.bpel.simpl.model.util.ModelAdapterFactory;
@@ -25,6 +36,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createQueryActivityAdapter()
+	 */
 	@Override
 	public Adapter createQueryActivityAdapter() {
 		if (this.queryActivityAdapter == null) {
@@ -33,6 +47,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		return this.queryActivityAdapter;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createInsertActivityAdapter()
+	 */
 	@Override
 	public Adapter createInsertActivityAdapter() {
 		if (this.insertActivityAdapter == null) {
@@ -41,6 +58,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		return this.insertActivityAdapter;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createUpdateActivityAdapter()
+	 */
 	@Override
 	public Adapter createUpdateActivityAdapter() {
 		if (this.updateActivityAdapter == null) {
@@ -49,6 +69,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		return this.updateActivityAdapter;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createDeleteActivityAdapter()
+	 */
 	@Override
 	public Adapter createDeleteActivityAdapter() {
 		if (this.deleteActivityAdapter == null) {
@@ -57,6 +80,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		return this.deleteActivityAdapter;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createCreateActivityAdapter()
+	 */
 	@Override
 	public Adapter createCreateActivityAdapter() {
 		if (this.createActivityAdapter == null) {
@@ -65,6 +91,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		return this.createActivityAdapter;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createDropActivityAdapter()
+	 */
 	@Override
 	public Adapter createDropActivityAdapter() {
 		if (this.dropActivityAdapter == null) {
@@ -73,6 +102,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		return this.dropActivityAdapter;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createCallActivityAdapter()
+	 */
 	@Override
 	public Adapter createCallActivityAdapter() {
 		if (this.callActivityAdapter == null) {
@@ -81,6 +113,9 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		return this.callActivityAdapter;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createRetrieveDataActivityAdapter()
+	 */
 	@Override
 	public Adapter createRetrieveDataActivityAdapter() {
 		if (this.retrieveDataActivityAdapter == null) {

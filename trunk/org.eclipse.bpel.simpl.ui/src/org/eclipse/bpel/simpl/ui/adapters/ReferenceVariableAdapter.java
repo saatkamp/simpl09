@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.bpel.simpl.ui.adapters;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.graphics.Image;
 
+// TODO: Auto-generated Javadoc
 /**
  * ReferenceVariable adapter.
  * 
@@ -44,6 +46,10 @@ import org.eclipse.swt.graphics.Image;
 public class ReferenceVariableAdapter extends VariableAdapter {
 
 	/**
+	 * Notify changed.
+	 * 
+	 * @param notification
+	 *            the notification
 	 * @see org.eclipse.bpel.model.adapters.AbstractAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
 	@Override
@@ -62,13 +68,18 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 		}
 	}
 
+	/** The markers. */
 	ArrayList<IMarker> fMarkers = new ArrayList<IMarker>();
 
+	/** The EMPT y_ markers. */
 	static IMarker[] EMPTY_MARKERS = {};
 
 	/**
-	 * (non-Javadoc)
+	 * (non-Javadoc).
 	 * 
+	 * @param object
+	 *            the object
+	 * @return the markers
 	 * @see org.eclipse.bpel.ui.adapters.IMarkerHolder#getMarkers(java.lang.Object)
 	 */
 
@@ -81,6 +92,11 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Gets the name.
+	 * 
+	 * @param modelObject
+	 *            the model object
+	 * @return the name
 	 * @see org.eclipse.bpel.ui.adapters.INamedElement#getName(java.lang.Object)
 	 */
 	public String getName(Object modelObject) {
@@ -88,6 +104,12 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Sets the name.
+	 * 
+	 * @param modelObject
+	 *            the model object
+	 * @param name
+	 *            the name
 	 * @see org.eclipse.bpel.ui.adapters.INamedElement#setName(java.lang.Object,
 	 *      java.lang.String)
 	 */
@@ -97,6 +119,13 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Checks if is name affected.
+	 * 
+	 * @param modelObject
+	 *            the model object
+	 * @param n
+	 *            the n
+	 * @return true, if is name affected
 	 * @see org.eclipse.bpel.ui.adapters.INamedElement#isNameAffected(java.lang.Object,
 	 *      org.eclipse.emf.common.notify.Notification)
 	 */
@@ -105,6 +134,11 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Gets the small image.
+	 * 
+	 * @param object
+	 *            the object
+	 * @return the small image
 	 * @see org.eclipse.bpel.ui.adapters.ILabeledElement#getSmallImage(java.lang.Object)
 	 */
 
@@ -114,6 +148,11 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Gets the large image.
+	 * 
+	 * @param object
+	 *            the object
+	 * @return the large image
 	 * @see org.eclipse.bpel.ui.adapters.ILabeledElement#getLargeImage(java.lang.Object)
 	 */
 	public Image getLargeImage(Object object) {
@@ -122,6 +161,11 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Gets the type label.
+	 * 
+	 * @param object
+	 *            the object
+	 * @return the type label
 	 * @see org.eclipse.bpel.ui.adapters.ILabeledElement#getTypeLabel(java.lang.Object)
 	 */
 	public String getTypeLabel(Object object) {
@@ -129,6 +173,11 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Gets the label.
+	 * 
+	 * @param object
+	 *            the object
+	 * @return the label
 	 * @see org.eclipse.bpel.ui.adapters.ILabeledElement#getLabel(java.lang.Object)
 	 */
 	public String getLabel(Object object) {
@@ -140,6 +189,13 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Creates the edit part.
+	 * 
+	 * @param context
+	 *            the context
+	 * @param model
+	 *            the model
+	 * @return the edits the part
 	 * @see org.eclipse.gef.EditPartFactory#createEditPart(org.eclipse.gef.EditPart,
 	 *      java.lang.Object)
 	 */
@@ -152,6 +208,13 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Creates the outline edit part.
+	 * 
+	 * @param context
+	 *            the context
+	 * @param model
+	 *            the model
+	 * @return the edits the part
 	 * @see org.eclipse.bpel.ui.adapters.IOutlineEditPartFactory#createOutlineEditPart(org.eclipse.gef.EditPart,
 	 *      java.lang.Object)
 	 */
@@ -163,8 +226,13 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * (non-Javadoc).
 	 * 
+	 * @param context
+	 *            the context
+	 * @param model
+	 *            the model
+	 * @return the edits the part
 	 * @see org.eclipse.bpel.ui.adapters.ITrayEditPartFactory#createTrayEditPart(org.eclipse.gef.EditPart,
 	 *      java.lang.Object)
 	 */
@@ -174,6 +242,11 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Creates the extension.
+	 * 
+	 * @param object
+	 *            the object
+	 * @return the e object
 	 * @see org.eclipse.bpel.ui.adapters.IExtensionFactory#createExtension(org.eclipse.emf.ecore.EObject)
 	 */
 	public EObject createExtension(EObject object) {
@@ -181,8 +254,9 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * (non-Javadoc).
 	 * 
+	 * @return the content
 	 * @see org.eclipse.jface.fieldassist.IContentProposal#getContent()
 	 */
 	public String getContent() {
@@ -190,8 +264,9 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
-	 * (non-Javadoc)
+	 * (non-Javadoc).
 	 * 
+	 * @return the cursor position
 	 * @see org.eclipse.jface.fieldassist.IContentProposal#getCursorPosition()
 	 */
 	public int getCursorPosition() {
@@ -199,6 +274,9 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Gets the description.
+	 * 
+	 * @return the description
 	 * @see org.eclipse.jface.fieldassist.IContentProposal#getDescription()
 	 */
 	public String getDescription() {
@@ -212,6 +290,9 @@ public class ReferenceVariableAdapter extends VariableAdapter {
 	}
 
 	/**
+	 * Gets the label.
+	 * 
+	 * @return the label
 	 * @see org.eclipse.jface.fieldassist.IContentProposal#getLabel()
 	 */
 

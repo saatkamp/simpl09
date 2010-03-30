@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package widgets;
 
 
@@ -19,21 +30,51 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ElementsListPopUp.
+ */
 public class ElementsListPopUp{
+	
+	/** The text to search. */
 	Text textToSearch;
+	
+	/** The list to search. */
 	List listToSearch;
+	
+	/** The array of elements. */
 	ArrayList<String> arrayOfElements=new ArrayList<String>();
+	
+	/** The window is open. */
 	boolean windowIsOpen=false;
 	
+	/**
+	 * Checks if is window open.
+	 * 
+	 * @return true, if is window open
+	 */
 	public boolean isWindowOpen() {
 		return windowIsOpen;
 	}
 
+	/**
+	 * Sets the window is open.
+	 * 
+	 * @param windowIsOpen
+	 *            the new window is open
+	 */
 	public void setWindowIsOpen(boolean windowIsOpen) {
 		this.windowIsOpen = windowIsOpen;
 	}
 
 	private Shell theShell;// =new Shell();
+	
+	/**
+	 * Instantiates a new elements list pop up.
+	 * 
+	 * @param statementText
+	 *            the statement text
+	 */
 	public ElementsListPopUp(LiveEditStyleText statementText)
 	{
 		createSShell(statementText);
@@ -142,20 +183,32 @@ public class ElementsListPopUp{
 	}
 	
 	
+	/**
+	 * Open window.
+	 */
 	public void openWindow(){
 		theShell.open();
 	}
 	
+	/**
+	 * Close window.
+	 */
 	public void closeWindow(){
 		theShell.close();
 	}
 	
+	/**
+	 * Sets the text.
+	 * 
+	 * @param string
+	 *            the new text
+	 */
 	public void setText(String string) {
 		theShell.setText(string);
 	}
 	
 	/**
-	 * 
+	 * Load values from db.
 	 */
 	public void loadValuesFromDB(){
 		SIMPLCore simplCore = SIMPLCommunication.getConnection();
@@ -176,8 +229,8 @@ public class ElementsListPopUp{
 //	}
 
 	/**
-	 * for adding the tables names from the DB
-	 */
+ * for adding the tables names from the DB.
+ */
 	public void loadTablesFromDB() {
 		// TODO Auto-generated method stub
 		arrayOfElements.add("aaaaa");
@@ -193,7 +246,7 @@ public class ElementsListPopUp{
 	}
 	
 	/**
-	 * for inserting the Bpel-Variables into the List
+	 * for inserting the Bpel-Variables into the List.
 	 */
 	public void loadBPELVariables() {
 		arrayOfElements.add("BPEL_Variable1");

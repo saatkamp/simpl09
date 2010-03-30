@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> This class implements the shell of the StatementEditor which is used to encapsulate the different Composites which are attached over the queryLanguage extension point.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.ui.Application;
@@ -15,12 +26,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-/**
- * 
- * 
- * @author hahnml
- * 
- */
 public class StatementEditor {
 
 	private Shell sShell = null; // @jve:decl-index=0:visual-constraint="10,10"
@@ -30,11 +35,24 @@ public class StatementEditor {
 	private AStatementEditor compositeClass = null;
 	private DMActivityPropertySection parentClass = null;
 
+	/**
+	 * Instantiates a new statement editor.
+	 */
 	public StatementEditor() {
 		createSShell();
 		sShell.open();
 	}
 
+	/**
+	 * Instantiates a new statement editor.
+	 * 
+	 * @param parent
+	 *            the parent property section
+	 * @param language
+	 *            the language of the statements
+	 * @param activity
+	 *            the activity, on which the statement editor relies
+	 */
 	public StatementEditor(DMActivityPropertySection parent, String language,
 			String activity) {
 		createSShell();
@@ -44,7 +62,6 @@ public class StatementEditor {
 			compositeClass = Application.getInstance().getEditorClass(language,
 					activity);
 			if (compositeClass != null) {
-				// TODO Statement in StatementEditor übergeben
 				compositeClass.setStatement(parentClass.getStatement());
 				System.out.println("DMProperty-Statement: "
 						+ parentClass.getStatement());
@@ -57,7 +74,7 @@ public class StatementEditor {
 	}
 
 	/**
-	 * This method initializes composite
+	 * This method initializes the composite
 	 * 
 	 */
 	private void createComposite() {
@@ -75,7 +92,7 @@ public class StatementEditor {
 	}
 
 	/**
-	 * This method initializes sShell
+	 * This method initializes the shell
 	 */
 	private void createSShell() {
 		GridData gridData2 = new GridData();
@@ -104,14 +121,11 @@ public class StatementEditor {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
 				widgetSelected(e);
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				// Hier muss das echte Statement übergeben werden
 				if (compositeClass.getStatement() != null) {
 					parentClass.setStatement(compositeClass.getStatement());
 					parentClass.saveStatementToModel();
@@ -127,13 +141,11 @@ public class StatementEditor {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
 				widgetSelected(e);
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
 				sShell.close();
 			}
 		});

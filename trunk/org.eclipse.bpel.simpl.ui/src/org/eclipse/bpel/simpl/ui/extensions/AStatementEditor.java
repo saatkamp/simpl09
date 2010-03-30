@@ -1,12 +1,21 @@
+/**
+ * <b>Purpose:</b> Abstract class which have to be implemented by every StatementEditor extension contributor.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui.extensions;
 
 import org.eclipse.swt.widgets.Composite;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author hahnml
- * 
- *         Abstract class which have to be implemented by every StatementEditor
- *         extension contributor.
+ * The Class AStatementEditor.        
  */
 public abstract class AStatementEditor implements IStatementEditor {
 

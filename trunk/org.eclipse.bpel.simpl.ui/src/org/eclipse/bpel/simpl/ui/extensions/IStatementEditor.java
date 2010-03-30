@@ -1,12 +1,21 @@
+/**
+ * <b>Purpose:</b> The interface with all methods which have to be implemented by every StatementEditor extension contributor.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui.extensions;
 
 import org.eclipse.swt.widgets.Composite;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author hahnml
- * 
- *         The interface with all methods which have to be implemented by every
- *         StatementEditor extension contributor.
+ * The Interface IStatementEditor.
  */
 public interface IStatementEditor {
 
@@ -21,6 +30,7 @@ public interface IStatementEditor {
 	 * Sets the composite of a StatementEditor implementation.
 	 * 
 	 * @param composite
+	 *            the new composite
 	 */
 	public void setComposite(Composite composite);
 
@@ -34,12 +44,17 @@ public interface IStatementEditor {
 	public void createComposite(Composite composite);
 
 	/**
+	 * Gets the statement.
+	 * 
 	 * @return the statement as String.
 	 */
 	public String getStatement();
 
 	/**
+	 * Sets the statement.
+	 * 
 	 * @param statement
+	 *            the new statement
 	 */
 	public void setStatement(String statement);
 
