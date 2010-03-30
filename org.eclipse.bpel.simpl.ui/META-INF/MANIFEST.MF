@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: BPEL-DM Plug-In UI
 Bundle-SymbolicName: org.eclipse.bpel.simpl.ui;singleton:=true
 Bundle-Version: 0.1.4
-Bundle-Activator: org.eclipse.bpel.simpl.ui.Activator
+Bundle-Activator: org.eclipse.bpel.simpl.ui.BPELDMUIPlugIn
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.bpel.common.ui;bundle-version="0.4.0",

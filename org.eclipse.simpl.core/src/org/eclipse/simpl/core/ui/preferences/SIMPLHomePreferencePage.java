@@ -1,7 +1,7 @@
 package org.eclipse.simpl.core.ui.preferences;
 
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
-import org.eclipse.simpl.core.Activator;
+import org.eclipse.simpl.core.SIMPLCorePlugIn;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -10,7 +10,7 @@ public class SIMPLHomePreferencePage extends FieldEditorPreferencePage
 
 	public SIMPLHomePreferencePage() {
 		super(GRID);
-		setPreferenceStore(Activator.getDefault().getPreferenceStore());
+		setPreferenceStore(SIMPLCorePlugIn.getDefault().getPreferenceStore());
 	}
 	
 	/**

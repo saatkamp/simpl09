@@ -2,7 +2,7 @@ package org.eclipse.bpel.simpl.ui.factories;
 
 
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.ui.Activator;
+import org.eclipse.bpel.simpl.ui.BPELDMUIPlugIn;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.ui.factories.AbstractUIObjectFactory;
 import org.eclipse.bpel.ui.factories.IExtensionUIObjectFactory;
@@ -74,7 +74,7 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	 */
 	
 	public static ImageDescriptor getSmallImageDescriptor (EClass modelObject) {
-		return Activator.getDefault().getImageDescriptor(
+		return BPELDMUIPlugIn.getDefault().getImageDescriptor(
 				OBJ16 + baseImageName(modelObject) + PNG);
 	}
 	
@@ -85,7 +85,7 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	 */
 
 	public static ImageDescriptor getLargeImageDescriptor(EClass modelObject) {
-		return Activator.getDefault().getImageDescriptor(
+		return BPELDMUIPlugIn.getDefault().getImageDescriptor(
 				OBJ20 + baseImageName(modelObject) + PNG);
 	}
 	
@@ -94,7 +94,7 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	 */
 	@Override
 	public Image getSmallImage() {
-		return Activator.getDefault().getImage(
+		return BPELDMUIPlugIn.getDefault().getImage(
 				OBJ16 + baseImageName(getModelType()) + PNG);
 	}
 
@@ -103,7 +103,7 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	 */
 	@Override
 	public Image getLargeImage() {
-		return Activator.getDefault().getImage(
+		return BPELDMUIPlugIn.getDefault().getImage(
 				OBJ20 + baseImageName(getModelType()) + PNG);
 	}
 	

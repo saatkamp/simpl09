@@ -17,7 +17,7 @@ import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.model.adapters.AbstractStatefulAdapter;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.ReferenceVariable;
-import org.eclipse.bpel.simpl.ui.Activator;
+import org.eclipse.bpel.simpl.ui.BPELDMUIPlugIn;
 import org.eclipse.bpel.simpl.ui.DataManagementUIConstants;
 import org.eclipse.bpel.simpl.ui.editparts.ReferenceVariableEditPart;
 import org.eclipse.bpel.ui.BPELUIPlugin;
@@ -109,14 +109,14 @@ public class ReferenceVariableAdapter extends VariableAdapter
 	 */
 	
 	public Image getSmallImage(Object object) {
-		return Activator.INSTANCE.getImage(DataManagementUIConstants.ICON_REFERENCE_VARIABLE_16);
+		return BPELDMUIPlugIn.INSTANCE.getImage(DataManagementUIConstants.ICON_REFERENCE_VARIABLE_16);
 	}
 	
 	/**
 	 * @see org.eclipse.bpel.ui.adapters.ILabeledElement#getLargeImage(java.lang.Object)
 	 */
 	public Image getLargeImage(Object object) {
-		return Activator.INSTANCE.getImage(DataManagementUIConstants.ICON_REFERENCE_VARIABLE_16);
+		return BPELDMUIPlugIn.INSTANCE.getImage(DataManagementUIConstants.ICON_REFERENCE_VARIABLE_16);
 	}
 	
 	/**

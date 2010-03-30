@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SIMPL RRS UI Eclipse Plug-In
 Bundle-SymbolicName: org.eclipse.simpl.rrs.ui;singleton:=true
 Bundle-Version: 0.0.1
-Bundle-Activator: org.eclipse.simpl.rrs.ui.Activator
+Bundle-Activator: org.eclipse.simpl.rrs.ui.RRSUIPlugIn
 Bundle-Vendor: SIMPL
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

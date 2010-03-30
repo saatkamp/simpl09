@@ -1,4 +1,4 @@
-package org.eclipse.simpl.rrs.ui;
+package org.eclipse.simpl.uddi;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -6,18 +6,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class UDDIPlugIn extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.references";
+	public static final String PLUGIN_ID = "org.eclipse.simpl.uddi";
 
 	// The shared instance
-	private static Activator plugin;
+	private static UDDIPlugIn plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public UDDIPlugIn() {
 	}
 
 	/*
@@ -43,7 +43,7 @@ public class Activator extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static UDDIPlugIn getDefault() {
 		return plugin;
 	}
 

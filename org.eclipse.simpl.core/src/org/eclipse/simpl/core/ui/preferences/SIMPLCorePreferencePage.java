@@ -3,7 +3,7 @@ package org.eclipse.simpl.core.ui.preferences;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.simpl.core.Activator;
+import org.eclipse.simpl.core.SIMPLCorePlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -51,9 +51,9 @@ public class SIMPLCorePreferencePage extends PreferencePage implements
 		// result.setLayoutData(data);
 
 		// WSIL directory
-		Label uddiLabel = new Label(result, SWT.NONE);
-		uddiLabel.setText("SIMPL Core Address:");
-		uddiLabel.setLayoutData(new GridData(
+		Label simplCoreLabel = new Label(result, SWT.NONE);
+		simplCoreLabel.setText("SIMPL Core Address:");
+		simplCoreLabel.setLayoutData(new GridData(
 				GridData.HORIZONTAL_ALIGN_BEGINNING));
 
 		simplCoreAddress = new Text(result, SWT.BORDER);
@@ -117,7 +117,7 @@ public class SIMPLCorePreferencePage extends PreferencePage implements
 	 * Initializes states of the controls from the preference store.
 	 */
 	private void initializeValues() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = SIMPLCorePlugIn.getDefault().getPreferenceStore();
 		
 		simplCoreAddress.setText(store.getString(SIMPL_CORE_ADDRESS_PREF));
 	}
@@ -128,7 +128,7 @@ public class SIMPLCorePreferencePage extends PreferencePage implements
 	 * Stores the values of the controls back to the preference store.
 	 */
 	private void storeValues() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = SIMPLCorePlugIn.getDefault().getPreferenceStore();
 		
 		store.setValue(SIMPL_CORE_ADDRESS_PREF , simplCoreAddress.getText());	
 	}
