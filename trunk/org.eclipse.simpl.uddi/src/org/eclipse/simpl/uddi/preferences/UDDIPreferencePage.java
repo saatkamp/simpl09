@@ -3,7 +3,7 @@ package org.eclipse.simpl.uddi.preferences;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.simpl.uddi.Activator;
+import org.eclipse.simpl.uddi.UDDIPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -117,7 +117,7 @@ public class UDDIPreferencePage extends PreferencePage implements
 	 * Initializes states of the controls from the preference store.
 	 */
 	private void initializeValues() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = UDDIPlugIn.getDefault().getPreferenceStore();
 		
 		uddiAddress.setText(store.getString(UDDI_ADDRESS_PREF));
 	}
@@ -128,7 +128,7 @@ public class UDDIPreferencePage extends PreferencePage implements
 	 * Stores the values of the controls back to the preference store.
 	 */
 	private void storeValues() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = UDDIPlugIn.getDefault().getPreferenceStore();
 		
 		store.setValue(UDDI_ADDRESS_PREF , uddiAddress.getText());	
 	}

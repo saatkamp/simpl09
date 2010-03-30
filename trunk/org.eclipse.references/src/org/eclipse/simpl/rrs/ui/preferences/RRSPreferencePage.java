@@ -3,7 +3,7 @@ package org.eclipse.simpl.rrs.ui.preferences;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.simpl.rrs.ui.Activator;
+import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -51,9 +51,9 @@ public class RRSPreferencePage extends PreferencePage implements
 		// result.setLayoutData(data);
 
 		// WSIL directory
-		Label uddiLabel = new Label(result, SWT.NONE);
-		uddiLabel.setText("RRS Address:");
-		uddiLabel.setLayoutData(new GridData(
+		Label rrsLabel = new Label(result, SWT.NONE);
+		rrsLabel.setText("RRS Address:");
+		rrsLabel.setLayoutData(new GridData(
 				GridData.HORIZONTAL_ALIGN_BEGINNING));
 
 		rrsAddress = new Text(result, SWT.BORDER);
@@ -117,7 +117,7 @@ public class RRSPreferencePage extends PreferencePage implements
 	 * Initializes states of the controls from the preference store.
 	 */
 	private void initializeValues() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = RRSUIPlugIn.getDefault().getPreferenceStore();
 		
 		rrsAddress.setText(store.getString(RRS_ADDRESS_PREF));
 	}
@@ -128,7 +128,7 @@ public class RRSPreferencePage extends PreferencePage implements
 	 * Stores the values of the controls back to the preference store.
 	 */
 	private void storeValues() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		IPreferenceStore store = RRSUIPlugIn.getDefault().getPreferenceStore();
 		
 		store.setValue(RRS_ADDRESS_PREF , rrsAddress.getText());	
 	}

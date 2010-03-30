@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SIMPL Core Plug-In
 Bundle-SymbolicName: org.eclipse.simpl.core;singleton:=true
 Bundle-Version: 0.1.1
-Bundle-Activator: org.eclipse.simpl.core.Activator
+Bundle-Activator: org.eclipse.simpl.core.SIMPLCorePlugIn
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.simpl.communication;bundle-version="0.1.0"

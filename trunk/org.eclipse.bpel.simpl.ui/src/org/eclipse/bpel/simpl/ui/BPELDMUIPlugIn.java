@@ -22,18 +22,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class BPELDMUIPlugIn extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.bpel.simpl.ui";
 
 	// The shared instance
-	public static Activator INSTANCE;
+	public static BPELDMUIPlugIn INSTANCE;
 
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public BPELDMUIPlugIn() {
 		super();
 		INSTANCE = this;
 	}
@@ -81,7 +81,7 @@ public class Activator extends AbstractUIPlugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static BPELDMUIPlugIn getDefault() {
 		return INSTANCE;
 	}
 
