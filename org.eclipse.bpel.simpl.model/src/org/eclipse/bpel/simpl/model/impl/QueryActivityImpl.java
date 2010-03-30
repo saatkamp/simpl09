@@ -9,7 +9,6 @@ package org.eclipse.bpel.simpl.model.impl;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -27,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
+@SuppressWarnings("restriction")
 public class QueryActivityImpl extends DataManagementActivityImpl implements QueryActivity {
 	/**
 	 * The default value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.

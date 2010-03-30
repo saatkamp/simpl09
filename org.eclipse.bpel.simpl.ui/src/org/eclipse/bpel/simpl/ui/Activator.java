@@ -28,12 +28,14 @@ public class Activator extends AbstractUIPlugin {
 	public static final String PLUGIN_ID = "org.eclipse.bpel.simpl.ui";
 
 	// The shared instance
-	private static Activator plugin;
+	public static Activator INSTANCE;
 
 	/**
 	 * The constructor
 	 */
 	public Activator() {
+		super();
+		INSTANCE = this;
 	}
 
 	/*
@@ -45,7 +47,7 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		plugin = this;
+		INSTANCE = this;
 		BPELUtil.registerAdapterFactory(ModelPackage.eINSTANCE,
 				new DataManagementUIAdapterFactory());
 
@@ -70,7 +72,7 @@ public class Activator extends AbstractUIPlugin {
 	 * )
 	 */
 	public void stop(BundleContext context) throws Exception {
-		plugin = null;
+		INSTANCE = null;
 		super.stop(context);
 	}
 
@@ -80,7 +82,7 @@ public class Activator extends AbstractUIPlugin {
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
-		return plugin;
+		return INSTANCE;
 	}
 
 	/**
@@ -146,7 +148,7 @@ public class Activator extends AbstractUIPlugin {
 					m == null ? "<no message>" : m, e); //$NON-NLS-1$
 		}
 		System.out.println(e.getClass().getName() + ": " + status);
-		plugin.getLog().log(status);
+		INSTANCE.getLog().log(status);
 	}
 
 	public static void log(Throwable throwable) {

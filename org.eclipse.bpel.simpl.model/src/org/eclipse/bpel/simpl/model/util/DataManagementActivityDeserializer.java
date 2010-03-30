@@ -5,20 +5,20 @@ import java.util.Map;
 import javax.wsdl.extensions.ExtensionRegistry;
 import javax.xml.namespace.QName;
 
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
-import org.eclipse.bpel.simpl.model.ModelFactory;
-import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.QueryActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.extensions.BPELActivityDeserializer;
 import org.eclipse.bpel.model.resource.BPELReader;
+import org.eclipse.bpel.simpl.model.CallActivity;
+import org.eclipse.bpel.simpl.model.CreateActivity;
+import org.eclipse.bpel.simpl.model.DeleteActivity;
+import org.eclipse.bpel.simpl.model.DropActivity;
+import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.ModelFactory;
+import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.emf.common.util.URI;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -35,6 +35,7 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.model.extensions.BPELActivityDeserializer#unmarshall(javax.xml.namespace.QName, org.w3c.dom.Node, org.eclipse.bpel.model.Process, java.util.Map, javax.wsdl.extensions.ExtensionRegistry, org.eclipse.emf.common.util.URI, org.eclipse.bpel.model.resource.BPELReader)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public Activity unmarshall(QName elementType, Node node, Process process, Map nsMap,
 			ExtensionRegistry extReg, URI uri, BPELReader bpelReader) {

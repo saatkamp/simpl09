@@ -86,7 +86,7 @@ public class AddReferenceDialog extends TitleAreaDialog {
 		((GridLayout) parent.getLayout()).numColumns++;
 	
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText("ADD");
+		button.setText("Save");
 		button.setFont(JFaceResources.getDialogFont());
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {

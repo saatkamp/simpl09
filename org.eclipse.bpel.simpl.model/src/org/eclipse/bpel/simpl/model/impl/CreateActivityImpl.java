@@ -8,7 +8,6 @@ package org.eclipse.bpel.simpl.model.impl;
 
 import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-
 import org.eclipse.emf.ecore.EClass;
 
 /**

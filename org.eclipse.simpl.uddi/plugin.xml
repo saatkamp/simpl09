@@ -16,5 +16,14 @@
             name="UDDI Registry">
       </category>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            class="org.eclipse.simpl.uddi.preferences.UDDIPreferencePage"
+            id="org.eclipse.simpl.uddi.preferences.UDDIPreferencePage"
+            name="UDDI Registry">
+      </page>
+   </extension>
 
 </plugin>

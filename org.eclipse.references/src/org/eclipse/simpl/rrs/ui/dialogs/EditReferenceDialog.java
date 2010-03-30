@@ -109,7 +109,7 @@ public class EditReferenceDialog extends TitleAreaDialog {
 		((GridLayout) parent.getLayout()).numColumns++;
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText("EDIT");
+		button.setText("Save");
 		button.setFont(JFaceResources.getDialogFont());
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {

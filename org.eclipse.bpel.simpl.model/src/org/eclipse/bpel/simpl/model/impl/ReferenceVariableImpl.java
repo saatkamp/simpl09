@@ -6,23 +6,18 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
-import org.eclipse.bpel.model.PartnerLink;
+import javax.xml.namespace.QName;
 
+import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.impl.VariableImpl;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
-
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.ReferenceType;
 import org.eclipse.bpel.simpl.model.ReferenceVariable;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.xsd.XSDTypeDefinition;
 
 /**
@@ -41,9 +36,10 @@ import org.eclipse.xsd.XSDTypeDefinition;
  *
  * @generated
  */
+@SuppressWarnings("restriction")
 public class ReferenceVariableImpl extends VariableImpl implements ReferenceVariable {
 	/**
-	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' containment reference.
+	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValueType()
@@ -93,7 +89,7 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	protected int period = PERIOD_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getExternal() <em>External</em>}' containment reference.
+	 * The cached value of the '{@link #getExternal() <em>External</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExternal()
@@ -127,6 +123,14 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	 * @generated
 	 */
 	public XSDTypeDefinition getValueType() {
+		if (valueType != null && valueType.eIsProxy()) {
+			InternalEObject oldValueType = (InternalEObject)valueType;
+			valueType = (XSDTypeDefinition)eResolveProxy(oldValueType);
+			if (valueType != oldValueType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE, oldValueType, valueType));
+			}
+		}
 		return valueType;
 	}
 
@@ -135,33 +139,25 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetValueType(XSDTypeDefinition newValueType, NotificationChain msgs) {
-		XSDTypeDefinition oldValueType = valueType;
-		valueType = newValueType;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE, oldValueType, newValueType);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public XSDTypeDefinition basicGetValueType() {
+		return valueType;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @customized
 	 */
 	public void setValueType(XSDTypeDefinition newValueType) {
-		if (newValueType != valueType) {
-			NotificationChain msgs = null;
-			if (valueType != null)
-				msgs = ((InternalEObject)valueType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE, null, msgs);
-			if (newValueType != null)
-				msgs = ((InternalEObject)newValueType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE, null, msgs);
-			msgs = basicSetValueType(newValueType, msgs);
-			if (msgs != null) msgs.dispatch();
+		XSDTypeDefinition oldValueType = valueType;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE.getReferenceVariable_ReferenceType().getName(),
+					newValueType == null ? null : new QName(newValueType
+							.getTargetNamespace(), newValueType.getName()));
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE, newValueType, newValueType));
+		valueType = newValueType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE, oldValueType, valueType));
 	}
 
 	/**
@@ -212,6 +208,14 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	 * @generated
 	 */
 	public PartnerLink getExternal() {
+		if (external != null && external.eIsProxy()) {
+			InternalEObject oldExternal = (InternalEObject)external;
+			external = (PartnerLink)eResolveProxy(oldExternal);
+			if (external != oldExternal) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.REFERENCE_VARIABLE__EXTERNAL, oldExternal, external));
+			}
+		}
 		return external;
 	}
 
@@ -220,14 +224,8 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExternal(PartnerLink newExternal, NotificationChain msgs) {
-		PartnerLink oldExternal = external;
-		external = newExternal;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModelPackage.REFERENCE_VARIABLE__EXTERNAL, oldExternal, newExternal);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public PartnerLink basicGetExternal() {
+		return external;
 	}
 
 	/**
@@ -236,33 +234,10 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	 * @generated
 	 */
 	public void setExternal(PartnerLink newExternal) {
-		if (newExternal != external) {
-			NotificationChain msgs = null;
-			if (external != null)
-				msgs = ((InternalEObject)external).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModelPackage.REFERENCE_VARIABLE__EXTERNAL, null, msgs);
-			if (newExternal != null)
-				msgs = ((InternalEObject)newExternal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModelPackage.REFERENCE_VARIABLE__EXTERNAL, null, msgs);
-			msgs = basicSetExternal(newExternal, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.REFERENCE_VARIABLE__EXTERNAL, newExternal, newExternal));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE:
-				return basicSetValueType(null, msgs);
-			case ModelPackage.REFERENCE_VARIABLE__EXTERNAL:
-				return basicSetExternal(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		PartnerLink oldExternal = external;
+		external = newExternal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.REFERENCE_VARIABLE__EXTERNAL, oldExternal, external));
 	}
 
 	/**
@@ -274,13 +249,15 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModelPackage.REFERENCE_VARIABLE__VALUE_TYPE:
-				return getValueType();
+				if (resolve) return getValueType();
+				return basicGetValueType();
 			case ModelPackage.REFERENCE_VARIABLE__REFERENCE_TYPE:
 				return getReferenceType();
 			case ModelPackage.REFERENCE_VARIABLE__PERIOD:
 				return getPeriod();
 			case ModelPackage.REFERENCE_VARIABLE__EXTERNAL:
-				return getExternal();
+				if (resolve) return getExternal();
+				return basicGetExternal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -62,13 +62,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataVariable" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceVariable" eSuperTypes="../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceType" lowerBound="1"
         eType="#//ReferenceType" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="external" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//PartnerLink"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="external" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//PartnerLink"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ReferenceType">
     <eLiterals name="onInstantiation"/>

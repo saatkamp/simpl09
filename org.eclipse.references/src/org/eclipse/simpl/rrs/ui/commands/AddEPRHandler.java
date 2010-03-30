@@ -24,6 +24,9 @@ public class AddEPRHandler extends AbstractHandler implements IHandler {
 		dialog.open();
 		if (dialog.getReference() != null) {
 			references.add(dialog.getReference());
+			
+			ModelProvider.getInstance().saveReference(dialog.getReference());
+			
 			// Updating the display in the view
 			IWorkbenchPage page = window.getActivePage();
 			ReferenceManagementView view = (ReferenceManagementView) page.findView(ReferenceManagementView.ID);

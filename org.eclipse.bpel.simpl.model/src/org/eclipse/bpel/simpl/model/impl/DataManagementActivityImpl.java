@@ -8,14 +8,10 @@ package org.eclipse.bpel.simpl.model.impl;
 
 import org.eclipse.bpel.model.impl.ExtensionActivityImpl;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
-
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -35,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
+@SuppressWarnings("restriction")
 public class DataManagementActivityImpl extends ExtensionActivityImpl implements DataManagementActivity {
 	/**
 	 * The default value of the '{@link #getDsAddress() <em>Ds Address</em>}' attribute.

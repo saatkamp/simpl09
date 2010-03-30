@@ -8,7 +8,6 @@ package org.eclipse.bpel.simpl.model;
 
 import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.Variable;
-
 import org.eclipse.xsd.XSDTypeDefinition;
 
 /**
@@ -32,26 +31,26 @@ import org.eclipse.xsd.XSDTypeDefinition;
  */
 public interface ReferenceVariable extends Variable {
 	/**
-	 * Returns the value of the '<em><b>Value Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Value Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value Type</em>' containment reference.
+	 * @return the value of the '<em>Value Type</em>' reference.
 	 * @see #setValueType(XSDTypeDefinition)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getReferenceVariable_ValueType()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	XSDTypeDefinition getValueType();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType <em>Value Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType <em>Value Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Type</em>' containment reference.
+	 * @param value the new value of the '<em>Value Type</em>' reference.
 	 * @see #getValueType()
 	 * @generated
 	 */
@@ -114,26 +113,26 @@ public interface ReferenceVariable extends Variable {
 	void setPeriod(int value);
 
 	/**
-	 * Returns the value of the '<em><b>External</b></em>' containment reference.
+	 * Returns the value of the '<em><b>External</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>External</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>External</em>' containment reference.
+	 * @return the value of the '<em>External</em>' reference.
 	 * @see #setExternal(PartnerLink)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getReferenceVariable_External()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	PartnerLink getExternal();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal <em>External</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal <em>External</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>External</em>' containment reference.
+	 * @param value the new value of the '<em>External</em>' reference.
 	 * @see #getExternal()
 	 * @generated
 	 */

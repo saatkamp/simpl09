@@ -40,6 +40,8 @@ public class EditEPRHandler extends AbstractHandler implements IHandler {
 				dialog.open();
 
 				references.add(dialog.getReference());
+				
+				ModelProvider.getInstance().saveReference(dialog.getReference());
 			} 
 			view.getViewer().refresh();
 		

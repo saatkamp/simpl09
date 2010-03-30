@@ -8,14 +8,10 @@ package org.eclipse.bpel.simpl.model.impl;
 
 import javax.xml.namespace.QName;
 
-
 import org.eclipse.bpel.model.BPELPackage;
-
 import org.eclipse.bpel.model.extensions.BPELExtensionRegistry;
 import org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage;
-
 import org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage;
-
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
@@ -32,12 +28,10 @@ import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivityDeserializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivitySerializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementConstants;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.xsd.XSDPackage;
@@ -603,10 +597,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getRetrieveDataActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, RetrieveDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(referenceVariableEClass, ReferenceVariable.class, "ReferenceVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReferenceVariable_ValueType(), theXSDPackage.getXSDTypeDefinition(), null, "valueType", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReferenceVariable_ValueType(), theXSDPackage.getXSDTypeDefinition(), null, "valueType", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReferenceVariable_ReferenceType(), this.getReferenceType(), "referenceType", "", 1, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReferenceVariable_Period(), ecorePackage.getEInt(), "period", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReferenceVariable_External(), theBPELPackage.getPartnerLink(), null, "external", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReferenceVariable_External(), theBPELPackage.getPartnerLink(), null, "external", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(referenceTypeEEnum, ReferenceType.class, "ReferenceType");
