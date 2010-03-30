@@ -25,4 +25,5 @@ public class DataManagementUIConstants {
 	public static final String ICON_RETRIEVEDATA_16 = "obj16/retrievedataactivity.png";
 	public static final String ICON_RETRIEVEDATA_32 = "obj20/retrievedataactivity.png";
 	
+	public static final String ICON_REFERENCE_VARIABLE_16 = "obj16/reference.png";
 }

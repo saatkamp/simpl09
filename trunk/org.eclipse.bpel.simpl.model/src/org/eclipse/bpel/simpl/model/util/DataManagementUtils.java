@@ -1,9 +1,9 @@
 package org.eclipse.bpel.simpl.model.util;
 
-import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.adapters.INamespaceMap;
 import org.eclipse.bpel.model.util.BPELUtils;
+import org.eclipse.bpel.simpl.model.ModelPackage;
 
 public class DataManagementUtils {
 

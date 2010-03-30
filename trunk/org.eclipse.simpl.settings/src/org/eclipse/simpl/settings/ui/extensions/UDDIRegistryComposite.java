@@ -44,7 +44,7 @@ public class UDDIRegistryComposite extends ASettingsComposite {
 		gridData6.grabExcessHorizontalSpace = true;
 		gridData6.verticalAlignment = GridData.CENTER;
 		uddiRegistryLabel = new Label(comp, SWT.NONE);
-		uddiRegistryLabel.setText("Address of the Reference Resolution System: ");
+		uddiRegistryLabel.setText("Address of the UDDI Registry: ");
 		uddiRegistryText = new Text(comp, SWT.BORDER);
 		uddiRegistryText.setLayoutData(gridData6);
 		uddiRegistryText.setText(this.bUDDIRegistryAddress);

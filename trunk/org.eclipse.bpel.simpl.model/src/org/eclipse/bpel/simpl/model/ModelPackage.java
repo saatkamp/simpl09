@@ -7,7 +7,6 @@
 package org.eclipse.bpel.simpl.model;
 
 import org.eclipse.bpel.model.BPELPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -1397,7 +1396,7 @@ public interface ModelPackage extends EPackage {
 	int REFERENCE_VARIABLE__FROM = BPELPackage.VARIABLE__FROM;
 
 	/**
-	 * The feature id for the '<em><b>Value Type</b></em>' containment reference.
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1424,7 +1423,7 @@ public interface ModelPackage extends EPackage {
 	int REFERENCE_VARIABLE__PERIOD = BPELPackage.VARIABLE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>External</b></em>' containment reference.
+	 * The feature id for the '<em><b>External</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1630,10 +1629,10 @@ public interface ModelPackage extends EPackage {
 	EClass getReferenceVariable();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType <em>Value Type</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType <em>Value Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value Type</em>'.
+	 * @return the meta object for the reference '<em>Value Type</em>'.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType()
 	 * @see #getReferenceVariable()
 	 * @generated
@@ -1663,10 +1662,10 @@ public interface ModelPackage extends EPackage {
 	EAttribute getReferenceVariable_Period();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal <em>External</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal <em>External</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>External</em>'.
+	 * @return the meta object for the reference '<em>External</em>'.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal()
 	 * @see #getReferenceVariable()
 	 * @generated
@@ -1862,7 +1861,7 @@ public interface ModelPackage extends EPackage {
 		EClass REFERENCE_VARIABLE = eINSTANCE.getReferenceVariable();
 
 		/**
-		 * The meta object literal for the '<em><b>Value Type</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1886,7 +1885,7 @@ public interface ModelPackage extends EPackage {
 		EAttribute REFERENCE_VARIABLE__PERIOD = eINSTANCE.getReferenceVariable_Period();
 
 		/**
-		 * The meta object literal for the '<em><b>External</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>External</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

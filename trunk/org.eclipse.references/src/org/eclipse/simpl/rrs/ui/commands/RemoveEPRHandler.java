@@ -34,6 +34,7 @@ public class RemoveEPRHandler extends AbstractHandler implements IHandler {
 			for (Iterator<EPR> iterator = sel.iterator(); iterator.hasNext();) {
 				EPR reference = iterator.next();
 				references.remove(reference);
+				ModelProvider.getInstance().deleteReference(reference);
 			}
 			view.getViewer().refresh();
 		

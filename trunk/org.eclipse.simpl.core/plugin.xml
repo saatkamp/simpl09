@@ -60,6 +60,16 @@
                   mnemonic="C">
             </command>
             <command
+                  commandId="org.eclipse.ui.window.preferences"
+                  id="org.eclipse.ui.window.preferences"
+                  label="Settings Pref"
+                  style="push">
+               <parameter
+                     name="preferencePageId"
+                     value="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage">
+               </parameter>
+            </command>
+            <command
                   commandId="org.eclipse.simpl.core.helpCommand"
                   id="org.eclipse.simpl.core.helpCommand"
                   mnemonic="H">
@@ -80,6 +90,26 @@
             </command>
          </menu>
       </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            class="org.eclipse.simpl.core.ui.preferences.SIMPLCorePreferencePage"
+            id="org.eclipse.simpl.core.ui.preferences.SIMPLCorePreferencePage"
+            name="SIMPL Core">
+      </page>
+      <page
+            class="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            id="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            name="SIMPL">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.simpl.core.ui.preferences.PreferenceInitializer">
+      </initializer>
    </extension>
 
 </plugin>

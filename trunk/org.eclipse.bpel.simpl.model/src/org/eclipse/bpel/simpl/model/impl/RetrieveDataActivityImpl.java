@@ -10,7 +10,6 @@ import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -29,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
+@SuppressWarnings("restriction")
 public class RetrieveDataActivityImpl extends DataManagementActivityImpl implements RetrieveDataActivity {
 	/**
 	 * The cached value of the '{@link #getDataVariable() <em>Data Variable</em>}' reference.

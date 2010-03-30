@@ -6,15 +6,24 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
-import org.eclipse.bpel.simpl.model.*;
-
+import org.eclipse.bpel.simpl.model.CallActivity;
+import org.eclipse.bpel.simpl.model.CreateActivity;
+import org.eclipse.bpel.simpl.model.DataManagementActivity;
+import org.eclipse.bpel.simpl.model.DeleteActivity;
+import org.eclipse.bpel.simpl.model.DropActivity;
+import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.ModelFactory;
+import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.ReferenceType;
+import org.eclipse.bpel.simpl.model.ReferenceVariable;
+import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
