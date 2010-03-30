@@ -72,7 +72,7 @@
 
 	<xsd:complexType name="EPR">
 		<xsd:sequence maxOccurs="1" minOccurs="1">
-			<xsd:element name="address" type="simpl:Address"
+			<xsd:element name="address" type="xsd:anyURI"
 				maxOccurs="1" minOccurs="1">
 			</xsd:element>
 			<xsd:element name="referenceProperties"
@@ -80,7 +80,7 @@
 			</xsd:element>
 
 			<xsd:element name="referenceParameters"
-				type="simpl:ReferenceParameters" maxOccurs="1" minOccurs="1">
+				type="xsd:string" maxOccurs="1" minOccurs="1">
 			</xsd:element>
 			<xsd:element name="portType" type="xsd:QName" maxOccurs="1"
 				minOccurs="0">
@@ -88,7 +88,7 @@
 			<xsd:element name="serviceName" type="simpl:ServiceName"
 				maxOccurs="1" minOccurs="0">
 			</xsd:element>
-			<xsd:element name="policy" type="simpl:Policy" maxOccurs="1" minOccurs="0"></xsd:element>
+			<xsd:element name="policy" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 
@@ -96,45 +96,25 @@
 	<xsd:complexType name="ReferenceProperties">
 
 		<xsd:choice maxOccurs="1" minOccurs="1">
-			<xsd:element name="resolutionSystem" type="simpl:ResolutionSystem" maxOccurs="1" minOccurs="1"></xsd:element>
+			<xsd:element name="resolutionSystem" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
 		</xsd:choice>
 	</xsd:complexType>
 	
 
-	<xsd:complexType name="ReferenceParameters">
-		<xsd:choice maxOccurs="1" minOccurs="1">
-			<xsd:element name="queryRef" type="xsd:anyURI"></xsd:element>
-			<xsd:element name="query" type="xsd:string"></xsd:element>
-		</xsd:choice>
-	</xsd:complexType>
 
 
 
-	<xsd:complexType name="Address">
-		<xsd:sequence maxOccurs="1" minOccurs="1">
-			<xsd:element name="uri" type="xsd:anyURI" maxOccurs="1" minOccurs="1"></xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
 
-	<xsd:complexType name="ResolutionSystem">
-		<xsd:sequence maxOccurs="1" minOccurs="1">
-			<xsd:element name="adapter" type="xsd:string"></xsd:element>
-
-		</xsd:sequence>
-	</xsd:complexType>
 
 	<xsd:complexType name="ServiceName">
-		<xsd:sequence maxOccurs="1" minOccurs="1">
-			<xsd:element name="name" type="xsd:QName"></xsd:element>
-		</xsd:sequence>
-		<xsd:attribute name="portName" type="xsd:NCName"></xsd:attribute>
+
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:QName">
+				<xsd:attribute name="portName" type="xsd:NCName"></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
 	</xsd:complexType>
 
-	<xsd:complexType name="Policy">
-		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
-			<xsd:element name="policy" type="xsd:string"></xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
 
 	<xsd:element name="epr" type="simpl:EPR"></xsd:element>
 </xsd:schema>
