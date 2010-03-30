@@ -1,3 +1,15 @@
+/**
+ * <b>Purpose:</b> This class implements the {@link BPELActivitySerializer} interface for the
+ * serialization of all SIMPL Activities.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.model.util;
 
 import java.io.File;
@@ -36,13 +48,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-/**
- * This class implements the {@link BPELActivitySerializer} interface for the
- * serialization of all SIMPL Activities.
- * 
- * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
- * 
- */
 public class DataManagementActivitySerializer implements BPELActivitySerializer {
 
 	/*

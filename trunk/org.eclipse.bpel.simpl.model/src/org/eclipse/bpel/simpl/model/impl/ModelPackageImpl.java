@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
@@ -36,6 +41,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.xsd.XSDPackage;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
@@ -147,12 +153,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * Creates, registers, and initializes the <b>Package</b> for this model,
+	 * and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link ModelPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link ModelPackage#eINSTANCE} when
+	 * that field is accessed. Clients should not invoke it directly. Instead,
+	 * they should simply access that field to obtain the package. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the model package
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -258,8 +268,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data management activity
 	 * @generated
 	 */
 	public EClass getDataManagementActivity() {
@@ -267,8 +278,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data management activity_ ds statement
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsStatement() {
@@ -276,8 +288,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data management activity_ ds language
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsLanguage() {
@@ -286,8 +299,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data management activity_ ds kind
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsKind() {
@@ -295,8 +309,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data management activity_ ds type
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsType() {
@@ -304,8 +319,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data management activity_ ds address
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsAddress() {
@@ -313,8 +329,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the query activity
 	 * @generated
 	 */
 	public EClass getQueryActivity() {
@@ -322,8 +339,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the query activity_ query target
 	 * @generated
 	 */
 	public EAttribute getQueryActivity_QueryTarget() {
@@ -332,8 +350,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the insert activity
 	 * @generated
 	 */
 	public EClass getInsertActivity() {
@@ -341,8 +360,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the update activity
 	 * @generated
 	 */
 	public EClass getUpdateActivity() {
@@ -350,8 +370,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the delete activity
 	 * @generated
 	 */
 	public EClass getDeleteActivity() {
@@ -359,8 +380,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the creates the activity
 	 * @generated
 	 */
 	public EClass getCreateActivity() {
@@ -368,8 +390,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the drop activity
 	 * @generated
 	 */
 	public EClass getDropActivity() {
@@ -377,8 +400,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the call activity
 	 * @generated
 	 */
 	public EClass getCallActivity() {
@@ -386,8 +410,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the retrieve data activity
 	 * @generated
 	 */
 	public EClass getRetrieveDataActivity() {
@@ -395,8 +420,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the retrieve data activity_ data variable
 	 * @generated
 	 */
 	public EReference getRetrieveDataActivity_DataVariable() {
@@ -405,8 +431,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference variable
 	 * @generated
 	 */
 	public EClass getReferenceVariable() {
@@ -415,8 +442,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference variable_ value type
 	 * @generated
 	 */
 	public EReference getReferenceVariable_ValueType() {
@@ -425,8 +453,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference variable_ reference type
 	 * @generated
 	 */
 	public EAttribute getReferenceVariable_ReferenceType() {
@@ -435,8 +464,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference variable_ period
 	 * @generated
 	 */
 	public EAttribute getReferenceVariable_Period() {
@@ -445,8 +475,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference variable_ external
 	 * @generated
 	 */
 	public EReference getReferenceVariable_External() {
@@ -455,8 +486,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference type
 	 * @generated
 	 */
 	public EEnum getReferenceType() {
@@ -465,8 +497,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the model factory
 	 * @generated
 	 */
 	public ModelFactory getModelFactory() {

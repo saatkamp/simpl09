@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
@@ -20,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.xsd.XSDTypeDefinition;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Reference Variable</b></em>'.
@@ -118,8 +124,9 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the value type
 	 * @generated
 	 */
 	public XSDTypeDefinition getValueType() {
@@ -135,8 +142,9 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the xSD type definition
 	 * @generated
 	 */
 	public XSDTypeDefinition basicGetValueType() {
@@ -144,8 +152,10 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newValueType
+	 *            the new value type
 	 * @customized
 	 */
 	public void setValueType(XSDTypeDefinition newValueType) {
@@ -161,8 +171,9 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference type
 	 * @generated
 	 */
 	public ReferenceType getReferenceType() {
@@ -170,8 +181,10 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newReferenceType
+	 *            the new reference type
 	 * @generated
 	 */
 	public void setReferenceType(ReferenceType newReferenceType) {
@@ -182,8 +195,9 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the period
 	 * @generated
 	 */
 	public int getPeriod() {
@@ -191,8 +205,10 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newPeriod
+	 *            the new period
 	 * @generated
 	 */
 	public void setPeriod(int newPeriod) {
@@ -203,8 +219,9 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the external
 	 * @generated
 	 */
 	public PartnerLink getExternal() {
@@ -220,8 +237,9 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the partner link
 	 * @generated
 	 */
 	public PartnerLink basicGetExternal() {
@@ -229,8 +247,10 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newExternal
+	 *            the new external
 	 * @generated
 	 */
 	public void setExternal(PartnerLink newExternal) {
@@ -241,8 +261,15 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @param resolve
+	 *            the resolve
+	 * @param coreType
+	 *            the core type
+	 * @return the object
 	 * @generated
 	 */
 	@Override
@@ -263,8 +290,12 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @param newValue
+	 *            the new value
 	 * @generated
 	 */
 	@Override
@@ -287,8 +318,10 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
 	 * @generated
 	 */
 	@Override
@@ -311,8 +344,11 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @return true, if successful
 	 * @generated
 	 */
 	@Override
@@ -331,8 +367,9 @@ public class ReferenceVariableImpl extends VariableImpl implements ReferenceVari
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the string
 	 * @generated
 	 */
 	@Override

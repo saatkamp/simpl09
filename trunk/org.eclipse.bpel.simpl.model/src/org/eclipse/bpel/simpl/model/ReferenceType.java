@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model;
 
@@ -12,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * A representation of the literals of the enumeration '<em><b>Reference Type</b></em>',
@@ -93,9 +99,12 @@ public enum ReferenceType implements Enumerator {
 	public static final List<ReferenceType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param literal
+	 *            the literal
+	 * @return the reference type
 	 * @generated
 	 */
 	public static ReferenceType get(String literal) {
@@ -109,9 +118,12 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param name
+	 *            the name
+	 * @return the by name
 	 * @generated
 	 */
 	public static ReferenceType getByName(String name) {
@@ -125,9 +137,12 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the value
+	 * @return the reference type
 	 * @generated
 	 */
 	public static ReferenceType get(int value) {
@@ -172,8 +187,9 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the value
 	 * @generated
 	 */
 	public int getValue() {
@@ -181,8 +197,9 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the name
 	 * @generated
 	 */
 	public String getName() {
@@ -190,8 +207,9 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the literal
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -199,9 +217,10 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the string
 	 * @generated
 	 */
 	@Override

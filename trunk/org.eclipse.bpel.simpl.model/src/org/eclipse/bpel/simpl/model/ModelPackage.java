@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model;
 
@@ -13,6 +18,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -1452,20 +1458,23 @@ public interface ModelPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataManagementActivity <em>Data Management Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Management Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity
+	 * <em>Data Management Activity</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.DataManagementActivity
 	 * @generated
 	 */
 	EClass getDataManagementActivity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ds Statement</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement
+	 * <em>Ds Statement</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement()
 	 * @see #getDataManagementActivity()
 	 * @generated
@@ -1473,10 +1482,11 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsStatement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ds Language</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage
+	 * <em>Ds Language</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage()
 	 * @see #getDataManagementActivity()
 	 * @generated
@@ -1484,10 +1494,11 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsLanguage();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ds Kind</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind
+	 * <em>Ds Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind()
 	 * @see #getDataManagementActivity()
 	 * @generated
@@ -1495,10 +1506,11 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsKind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>Ds Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ds Type</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType
+	 * <em>Ds Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType()
 	 * @see #getDataManagementActivity()
 	 * @generated
@@ -1506,10 +1518,11 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress <em>Ds Address</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ds Address</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress
+	 * <em>Ds Address</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress()
 	 * @see #getDataManagementActivity()
 	 * @generated
@@ -1517,20 +1530,22 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsAddress();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.QueryActivity <em>Query Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Query Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.QueryActivity
+	 * <em>Query Activity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.QueryActivity
 	 * @generated
 	 */
 	EClass getQueryActivity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.QueryActivity#getQueryTarget <em>Query Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Query Target</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.QueryActivity#getQueryTarget
+	 * <em>Query Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.QueryActivity#getQueryTarget()
 	 * @see #getQueryActivity()
 	 * @generated
@@ -1538,80 +1553,89 @@ public interface ModelPackage extends EPackage {
 	EAttribute getQueryActivity_QueryTarget();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.InsertActivity <em>Insert Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Insert Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.InsertActivity
+	 * <em>Insert Activity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.InsertActivity
 	 * @generated
 	 */
 	EClass getInsertActivity();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.UpdateActivity <em>Update Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Update Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.UpdateActivity
+	 * <em>Update Activity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.UpdateActivity
 	 * @generated
 	 */
 	EClass getUpdateActivity();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DeleteActivity <em>Delete Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Delete Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.DeleteActivity
+	 * <em>Delete Activity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.DeleteActivity
 	 * @generated
 	 */
 	EClass getDeleteActivity();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.CreateActivity <em>Create Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Create Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.CreateActivity
+	 * <em>Create Activity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.CreateActivity
 	 * @generated
 	 */
 	EClass getCreateActivity();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DropActivity <em>Drop Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Drop Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.DropActivity <em>Drop Activity</em>}
+	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.DropActivity
 	 * @generated
 	 */
 	EClass getDropActivity();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.CallActivity <em>Call Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Call Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.CallActivity <em>Call Activity</em>}
+	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.CallActivity
 	 * @generated
 	 */
 	EClass getCallActivity();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity <em>Retrieve Data Activity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Retrieve Data Activity</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.RetrieveDataActivity
+	 * <em>Retrieve Data Activity</em>}'. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.RetrieveDataActivity
 	 * @generated
 	 */
 	EClass getRetrieveDataActivity();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable <em>Data Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Data Variable</em>'.
+	 * Returns the meta object for the reference '
+	 * {@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable
+	 * <em>Data Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference ''.
 	 * @see org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable()
 	 * @see #getRetrieveDataActivity()
 	 * @generated
@@ -1619,20 +1643,23 @@ public interface ModelPackage extends EPackage {
 	EReference getRetrieveDataActivity_DataVariable();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.ReferenceVariable <em>Reference Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Reference Variable</em>'.
+	 * Returns the meta object for class '
+	 * {@link org.eclipse.bpel.simpl.model.ReferenceVariable
+	 * <em>Reference Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @return the meta object for class ''.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable
 	 * @generated
 	 */
 	EClass getReferenceVariable();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType <em>Value Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * Returns the meta object for the reference '
+	 * {@link org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType
+	 * <em>Value Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference ''.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getValueType()
 	 * @see #getReferenceVariable()
 	 * @generated
@@ -1640,10 +1667,11 @@ public interface ModelPackage extends EPackage {
 	EReference getReferenceVariable_ValueType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getReferenceType <em>Reference Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Reference Type</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.ReferenceVariable#getReferenceType
+	 * <em>Reference Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getReferenceType()
 	 * @see #getReferenceVariable()
 	 * @generated
@@ -1651,10 +1679,11 @@ public interface ModelPackage extends EPackage {
 	EAttribute getReferenceVariable_ReferenceType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getPeriod <em>Period</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Period</em>'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.bpel.simpl.model.ReferenceVariable#getPeriod
+	 * <em>Period</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the attribute ''.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getPeriod()
 	 * @see #getReferenceVariable()
 	 * @generated
@@ -1662,10 +1691,11 @@ public interface ModelPackage extends EPackage {
 	EAttribute getReferenceVariable_Period();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal <em>External</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>External</em>'.
+	 * Returns the meta object for the reference '
+	 * {@link org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal
+	 * <em>External</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for the reference ''.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable#getExternal()
 	 * @see #getReferenceVariable()
 	 * @generated
@@ -1673,10 +1703,11 @@ public interface ModelPackage extends EPackage {
 	EReference getReferenceVariable_External();
 
 	/**
-	 * Returns the meta object for enum '{@link org.eclipse.bpel.simpl.model.ReferenceType <em>Reference Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Reference Type</em>'.
+	 * Returns the meta object for enum '
+	 * {@link org.eclipse.bpel.simpl.model.ReferenceType
+	 * <em>Reference Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the meta object for enum ''.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceType
 	 * @generated
 	 */
@@ -1692,15 +1723,16 @@ public interface ModelPackage extends EPackage {
 	ModelFactory getModelFactory();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * Defines literals for the meta objects that represent
+	 * <!-- begin-user-doc --> Defines literals for the meta objects that
+	 * represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
-	 * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->.
+	 * 
 	 * @generated
 	 */
 	interface Literals {

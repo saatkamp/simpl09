@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model;
 
@@ -10,6 +15,7 @@ import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.xsd.XSDTypeDefinition;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Reference Variable</b></em>'.
@@ -30,15 +36,17 @@ import org.eclipse.xsd.XSDTypeDefinition;
  * @generated
  */
 public interface ReferenceVariable extends Variable {
+	
 	/**
-	 * Returns the value of the '<em><b>Value Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Value Type</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value Type</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Value Type</em>' containment reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value Type</em>' reference.
+	 * 
+	 * @return the value of the '' reference.
 	 * @see #setValueType(XSDTypeDefinition)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getReferenceVariable_ValueType()
 	 * @model
@@ -57,16 +65,17 @@ public interface ReferenceVariable extends Variable {
 	void setValueType(XSDTypeDefinition value);
 
 	/**
-	 * Returns the value of the '<em><b>Reference Type</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * The literals are from the enumeration {@link org.eclipse.bpel.simpl.model.ReferenceType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Reference Type</b></em>' attribute. The
+	 * default value is <code>""</code>. The literals are from the enumeration
+	 * {@link org.eclipse.bpel.simpl.model.ReferenceType}. <!-- begin-user-doc
+	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Reference Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reference Type</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceType
 	 * @see #setReferenceType(ReferenceType)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getReferenceVariable_ReferenceType()
@@ -87,14 +96,15 @@ public interface ReferenceVariable extends Variable {
 	void setReferenceType(ReferenceType value);
 
 	/**
-	 * Returns the value of the '<em><b>Period</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Period</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Period</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Period</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Period</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see #setPeriod(int)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getReferenceVariable_Period()
 	 * @model
@@ -113,14 +123,15 @@ public interface ReferenceVariable extends Variable {
 	void setPeriod(int value);
 
 	/**
-	 * Returns the value of the '<em><b>External</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>External</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>External</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>External</em>' containment reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>External</em>' reference.
+	 * 
+	 * @return the value of the '' reference.
 	 * @see #setExternal(PartnerLink)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getReferenceVariable_External()
 	 * @model
