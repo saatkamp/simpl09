@@ -1,3 +1,15 @@
+/**
+ * <b>Purpose:</b> This class implements the {@link BPELActivityDeserializer} interface for the deserialization
+ * of all SIMPL Activities. <br>
+ * <b>Description:</b> Provides the deserialization of all DataManagement activities.<br>
+ * <b>Copyright:</b> Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id:$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.model.util;
 
 import java.util.Map;
@@ -23,12 +35,11 @@ import org.eclipse.emf.common.util.URI;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+// TODO: Auto-generated Javadoc
 /**
- * This class implements the {@link BPELActivityDeserializer} interface for the deserialization
- * of all SIMPL Activities.
+ * The Class DataManagementActivityDeserializer.
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
- *
  */
 public class DataManagementActivityDeserializer implements BPELActivityDeserializer{
 
