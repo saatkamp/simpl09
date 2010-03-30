@@ -40,10 +40,6 @@ import org.w3c.dom.Node;
  * This class implements the {@link BPELActivitySerializer} interface for the
  * serialization of all SIMPL Activities.
  * 
- * @author hahnml
- * 
- */
-/**
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  * 
  */

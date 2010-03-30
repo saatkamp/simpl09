@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
  * This class implements the {@link BPELActivityDeserializer} interface for the deserialization
  * of all SIMPL Activities.
  * 
- * @author hahnml
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  *
  */
 public class DataManagementActivityDeserializer implements BPELActivityDeserializer{
