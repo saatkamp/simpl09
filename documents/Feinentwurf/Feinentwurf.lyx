@@ -1417,8 +1417,8 @@ reference "fig:SIMPL-Core-Klassendiagramm"
  sowie deren Zusammenhänge über Verbindungspfeile, die in den folgenden
  Abschnitten beschrieben werden.
  In der Abbildung wird aus Gründen der Übersichtlichkeit auf die Darstellung
- der Interface- und Web Service-Methoden, sowie allgemein Getter- und Setter-Met
-hoden verzichtet, die aber in den folgenden Abschnitten genannt und beschrieben
+ der Interface- und Web Service-Methoden, sowie Getter- und Setter-Methoden
+ verzichtet, die aber in den folgenden Abschnitten genannt und beschrieben
  werden.
  Einige der SIMPL Core Dienste werden, falls sie außerhalb des SIMPL Cores
  aufrufbar sein müssen, nach Außen über Web Services verfügbar gemacht.
@@ -1474,12 +1474,27 @@ Paketstruktur
 
 \begin_layout Standard
 Der SIMPL Core besitzt folgende Paketstruktur, die sich ausgehend vom Kernbereic
-h 
+h (
 \emph on
 org.simpl.core
 \emph default
-, in Bereiche für die Dienste, Web Services, Plug-Ins sowie Hilfsklassen
- aufteilt.
+), in Bereiche für die Dienste (
+\emph on
+services
+\emph default
+), Web Services (
+\emph on
+webservices
+\emph default
+), Plug-Ins (
+\emph on
+plugins
+\emph default
+) sowie Hilfsklassen (
+\emph on
+helpers
+\emph default
+) aufteilt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1611,8 +1626,7 @@ org.simpl.core.plugins.dataformat
 
 \begin_layout Standard
 Hier befinden sich die Plug-Ins für den Dataformat Service, die für die
- Unterstützung verschiedener Datenformate, speziell für Filesysteme entwickelt
- werden.
+ Unterstützung verschiedener Datenformate entwickelt werden.
  Falls sich die einzelnen Plug-Ins auf mehrere Klassen verteilen, können
  diese zusätzlich auf eigene Unterpakete verteilt werden.
  Das Plug-In-System wird in Kapitel 
@@ -1651,12 +1665,16 @@ name "sub:SIMPLCore"
 
 \end_inset
 
-Die SIMPLCore Klasse
+SIMPLCore Klasse
 \end_layout
 
 \begin_layout Standard
-Die SIMPLCore-Klasse bildet den zentralen Zugriffspunkt auf alle Dienste
- des SIMPL Cores für den Zugriff auf Klassenebene.
+Die Klasse
+\emph on
+ SIMPLCore
+\emph default
+ bildet den zentralen Zugriffspunkt auf alle Dienste des SIMPL Cores auf
+ Klassenebene.
  Damit die Instanzen der Dienste nur einmal existieren und nicht bei jedem
  Zugriff erneut erstellt werden, ist die Klasse als Singleton (
 \begin_inset CommandInset citation
@@ -1677,6 +1695,137 @@ reference "sub:BPEL-DM-Extension"
  wenn Dienste sich gegenseitig verwenden.
 \end_layout
 
+\begin_layout Subsubsection
+Singleton
+\end_layout
+
+\begin_layout Standard
+Das Singleton wird über einen privaten Konstruktor, sowie der Methode 
+\emph on
++getInstance() 
+\emph default
+realisiert, die, falls noch keine Instanz existiert, einmalig eine Instanz
+ erstellt und bei folgenden Anfragen auf diese zurückgreift.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Funktionen-SIMPLCore"
+
+\end_inset
+
+Funktionen
+\end_layout
+
+\begin_layout Standard
+Folgende Funktionen stehen zur Verfügung:
+\end_layout
+
+\begin_layout Paragraph*
+administrationService() 
+\end_layout
+
+\begin_layout Standard
+Liefert die Instanz des Administration Service.
+\end_layout
+
+\begin_layout Paragraph*
+dataSourceService(String dsType, String dsSubtype) 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des Datasource Service.
+\end_layout
+
+\begin_layout Paragraph*
+dataFormatService(String dfType, String dfSubtype) 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des Dataformat Service.
+\end_layout
+
+\begin_layout Paragraph*
+storageService() 
+\end_layout
+
+\begin_layout Standard
+Liefert die Instanz des Storage Service.
+\end_layout
+
+\begin_layout Paragraph*
+config() 
+\end_layout
+
+\begin_layout Standard
+Liefert die Konfiguration des SIMPL Core als Instanz von 
+\emph on
+SIMPLConfig
+\emph default
+.
+\end_layout
+
+\begin_layout Paragraph*
+getDataSourceTypes() 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Datenquellentypen, die durch 
+\emph on
+DataSourcePlugins
+\emph default
+ unterstützt werden.
+\end_layout
+
+\begin_layout Paragraph*
+getDataSourceSubtypes(String dsType) 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Untertypen eines Typs, die durch 
+\emph on
+DataSourcePlugins
+\emph default
+ unterstützt werden.
+\end_layout
+
+\begin_layout Paragraph*
+getDataSourceLanguages(String dsSubtype) 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Anfragesprachen eines Subtyps, der durch 
+\emph on
+DataSourcePlugins
+\emph default
+ unterstützt werden.
+\end_layout
+
+\begin_layout Paragraph*
+getDataFormatTypes() 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Datenformate, die durch 
+\emph on
+DataFormatPlugins
+\emph default
+ unterstützt werden.
+\end_layout
+
+\begin_layout Paragraph*
+getDataFormatSubtypes(String dfType)
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Untertypen eines Datenformats, die durch 
+\emph on
+DataFormatPlugins
+\emph default
+ unterstützt werden.
+\end_layout
+
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -1684,7 +1833,7 @@ name "sub:SIMPLConfig"
 
 \end_inset
 
-Die SIMPLConfig Klasse
+SIMPLConfig Klasse
 \end_layout
 
 \begin_layout Standard
@@ -1698,12 +1847,8 @@ reference "sub:Die-simpl-core-config.xml-Datei"
 \end_inset
 
  näher beschrieben wird.
- Das Einlesen und Abrufen der Informationen aus dieser Datei, ist über die
- 
-\emph on
-SIMPLConfig
-\emph default
--Klasse möglich, die dazu entsprechende Methoden bereitstellt.
+ Das Einlesen und Abrufen der Informationen aus dieser Datei, ist über diese
+ Klasse möglich.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1713,7 +1858,7 @@ name "sub:Die-simpl-core-config.xml-Datei"
 
 \end_inset
 
-Die SIMPLCore-Konfigurationsdatei
+Konfigurationsdatei
 \end_layout
 
 \begin_layout Standard
@@ -1729,12 +1874,15 @@ reference "fig:Die-SIMPLCore-Konfigurationsdatei-simpl-core-config.xml"
 \end_inset
 
  zu sehen ist.
- Die Plug-In-Klassen müssen jeweils mit dem voll qualifizierten Namen registrier
-t werden und als jar-Dateien unter 
+ Die Plug-In-Klassen müssen hier jeweils mit dem voll qualifizierten Namen
+ registriert werden und als jar-Dateien beliebigen Namens unter 
 \emph on
 ode/lib
 \emph default
- abgelegt werden, damit sie erkannt werden können.
+ abgelegt werden, damit sie erkannt werden.
+ Die Konfigurationsdatei wird beim Start des SIMPL Cores einmalig geladen,
+ Änderungen an der Konfigurationsdatei sind deshalb erst nach einem Neustart
+ verfügbar.
 \end_layout
 
 \begin_layout Standard
@@ -1773,13 +1921,35 @@ Die SIMPLCore-Konfigurationsdatei simpl-core-config.xml
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Funktionen
+\end_layout
+
+\begin_layout Standard
+Folgende Funktionen stehen zur Verfügung:
+\end_layout
+
+\begin_layout Paragraph*
+getDataSourcePlugins()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit voll qualifizierten Namen der registrierten DataSourcePlu
+gins.
+\end_layout
+
+\begin_layout Paragraph*
+getDataFormatPlugins()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormatPlu
+gins.
 \end_layout
 
 \begin_layout Subsection
@@ -2048,6 +2218,10 @@ reference "sub:DataSourcePlugin"
 \end_inset
 
 ).
+ Die Einteilung der Datenquellen geschieht dabei über Typ, Subtyp und Language,
+ wie z.B.
+ die relationale Datenbank (Typ: RDB) DB2 (Subtyp: DB2) mit der Anfragesprache
+ SQL (Language: SQL).
  Eine genaue Beschreibung des Plug-In Systems folgt in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2056,7 +2230,12 @@ reference "sub:Plug-In-System"
 \end_inset
 
 .
- Folgende Funktionen müssen von einem Datasource Service realisiert werden:
+ Folgende Funktionen müssen von einem Datenquellen Plug-In realisiert werden,
+ die vom Interface 
+\emph on
+DataSourceService
+\emph default
+ vorgegeben werden:
 \end_layout
 
 \begin_layout Paragraph
@@ -2084,7 +2263,7 @@ public DataObject retrieveData(String dsAddress, String statement)
 \end_layout
 
 \begin_layout Standard
-Ermöglicht die Anforderung von Daten von einer bestimmten Datenquelle durch
+Ermöglicht die Anforderung von Daten einer bestimmten Datenquelle durch
  Adresse und ein Statement der entsprechenden Anfragesprache wie z.B.
  ein SELECT-Statement in der Anfragesprache SQL.
  Die Rückgabe der Daten erfolgt als SDO.
@@ -2095,13 +2274,14 @@ public boolean depositData(String dsAddress, String statement, String target)
 \end_layout
 
 \begin_layout Standard
-Mit dieser Funktion werden über ein Statement Daten selektiert und auf der
- Datenquelle hinterlegt.
+Mit dieser Funktion werden über ein Statement Daten einer Datenquelle selektiert
+ und auf der Datenquelle selbst hinterlegt.
  Die hinterlegten Daten werden über das 
 \emph on
 target 
 \emph default
 als Tabelle referenziert und können darüber anschließend abgerufen werden.
+ Die Ausführung wird mit einem booleschen Rückgabewert bestätigt.
 \end_layout
 
 \begin_layout Paragraph
@@ -2149,14 +2329,31 @@ name "sub:Dataformat-Service"
 \end_inset
 
 Dataformat Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Im Grobentwurf nachtragen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Der Dataformat Service realisiert die Unterstützung beliebiger Datenformate,
  die von den Datenquellen vorgegeben sein können.
- Die Formate werden von den Datasource-Plug-Ins verwendet um die Rückgabe
- der angeforderten Daten als SDO zu realisieren.
- Folgende Funktion muss von einem Dataformat-Plug-In realisiert werden:
+ Die Einteilung der Formate geschieht dabei über Typ und Subtyp, wie z.B.
+ Comma Separated Values (Typ: CSV) mit Kopfzeile (Subtyp: Headline).
+ Die Formate werden von den Datenquellen Plug-Ins verwendet um die Rückgabe
+ von angeforderten Daten als SDO zu realisieren.
+ Folgende Funktion muss von einem Datenformat Plug-In realisiert werden,
+ die vom Interface 
+\emph on
+DataFormatService
+\emph default
+ vorgegeben wird:
 \end_layout
 
 \begin_layout Paragraph
@@ -2174,6 +2371,44 @@ Die Funktion bekommt Daten eines bestimmten Formats von einer Datenquelle
 File
 \emph default
  an.
+\end_layout
+
+\begin_layout Subsubsection*
+2.4.5 Strategy Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+2.4.6 Connection Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In Grobentwurf nachtragen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -2248,7 +2483,7 @@ reference "sub:Datasource-Service"
 \end_layout
 
 \begin_layout Paragraph*
-DataSourcePlugin (Abstrakte Klasse)
+DataSourcePlugin (abstrakte Klasse)
 \end_layout
 
 \begin_layout Standard
@@ -2264,8 +2499,11 @@ DataSourceServiceProvider
 \end_layout
 
 \begin_layout Standard
-Über den DataSourceServiceProvider kann mit der Methode getInstance() die
- Instanz eines Datasource Service angefordert werden.
+Über den DataSourceServiceProvider kann mit der Methode 
+\emph on
++getInstance(String dsType, String dsSubtype)
+\emph default
+ die Instanz eines Datasource Service angefordert werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2276,20 +2514,15 @@ name "sub:DataFormatPlugin"
 \end_inset
 
 DataFormatPlugin
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Mit DataFormatPlugins können beliebige Datenformate von DataSourcePlugins
+ unterstützt werden.
 \end_layout
 
 \begin_layout Paragraph*
-DataFormatService
+DataFormatService (Interface)
 \end_layout
 
 \begin_layout Standard
@@ -2306,7 +2539,7 @@ reference "sub:Dataformat-Service"
 \end_layout
 
 \begin_layout Paragraph*
-DataFormatPlugin
+DataFormatPlugin (abstrakte Klasse)
 \end_layout
 
 \begin_layout Standard
@@ -2322,8 +2555,11 @@ DataFormatServiceProvider
 \end_layout
 
 \begin_layout Standard
-Über den DataFormatServiceProvider kann mit der Methode getInstance() die
- Instanz eines Dataformat Service angefordert werden.
+Über den DataFormatServiceProvider kann mit der Methode 
+\emph on
++getInstance(String dfType, String dfSubtype) 
+\emph default
+ die Instanz eines Dataformat Service angefordert werden.
 \end_layout
 
 \begin_layout Subsection
@@ -2334,16 +2570,120 @@ name "sub:Metadaten"
 \end_inset
 
 Metadaten
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
 \end_layout
+
+\begin_layout Standard
+Für die Modellierung im Eclipse BPEL Designer werden Metadaten von Datenquellen
+ benötigt um dem Modellierer verfügbare Ressourcen, wie z.B.
+ Tabellen einer relationalen Datenbank, zur Auswahl zu stellen.
+ Da die Metadaten je nach Datenquelle unterschiedliche Struktur haben können,
+ werden diese mit dem SDO Konzept realisiert.
+ Dabei kann jedem 
+\emph on
+DataSourcePlugin 
+\emph default
+ein XML-Schema beigelegt werden (DataSourceMetaData.xsd), das die Struktur
+ der Metadaten beschreibt.
+ Über die DataSourcePlugin-Methode
+\emph on
+ +setMetaDataType(String) 
+\emph default
+wird der entsprechende Element-Typ des Schemas angegeben, über das mit der
+ Methode 
+\emph on
++createMetaDataObject()
+\emph default
+ ein leeres Metadaten-SDO mit entsprechender Struktur erstellt werden kann.
+ 
+\end_layout
+
+\begin_layout Standard
+Die eigentlichen Metadaten können damit vom Entwickler eines DataSourcePlugins
+ in der zu implementierenden Funktion 
+\emph on
+getMetaData(String dsAddress)
+\emph default
+ (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Service"
 
 \end_inset
 
+), von der Datenquelle ausgelesen und in ein entsprechendes leeres Metadaten-SDO
+ mit vorgegebener Struktur geschrieben werden.
+ Der SIMPL Core stellt bereits ein XML-Schema für Metadaten von Datenbanken
+ (tDatabaseMetaData) und Filesystemen (tFilesystemMetaData) zur Verfügung,
+ die von Datenquellen-Plug-Ins genutzt werden können.
+ 
+\end_layout
 
+\begin_layout Standard
+Metadaten die durch den Datasource Web Service angefordert werden, werden
+ serialisiert in XML geliefert und können nur mit Hilfe des entsprechenden
+ XML-Schemas wieder als Objekt deserialisiert werden.
+ Dazu stellt das 
+\emph on
+DataSourcePlugin 
+\emph default
+die Funktion 
+\emph on
++getMetaDataSchema() 
+\emph default
+zur Verfügung, die das zu Grunde liegende XML-Schema liefert.
+\end_layout
+
+\begin_layout Subsection
+Hilfsklassen
+\end_layout
+
+\begin_layout Standard
+Für den Entwickler werden folgende Hilfsklassen zur Verfügung gestellt.
+\end_layout
+
+\begin_layout Subsubsection
+Printer
+\end_layout
+
+\begin_layout Standard
+Mit 
+\emph on
+Printer
+\emph default
+ kann über die statische Methode 
+\emph on
++printDataObject(DataObject) 
+\emph default
+ein SDO auf der Konsole ausgeben werden.
+\end_layout
+
+\begin_layout Subsubsection
+Parameter
+\end_layout
+
+\begin_layout Standard
+Mit 
+\emph on
+Parameter 
+\emph default
+können über die statischen Methoden 
+\emph on
++serialize(Object object)
+\emph default
+ und 
+\emph on
++deserialize(String data) 
+\emph default
+beliebige Java Objekte zu XML serialisiert und von XML deserialisiert werden.
+ Dies geschieht mit Hilfe der Java Klassen 
+\emph on
+XMLEncoder
+\emph default
+ und 
+\emph on
+XMLDecoder
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -2397,90 +2737,52 @@ Komplexe Objekte wie z.B.
 \end_layout
 
 \begin_layout Subsubsection
-Datasource Web Service (Datasource)
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subparagraph
-public DataObject queryData(String dsAddress, String statement, String dsType)
-\end_layout
-
-\begin_layout Subparagraph
-public boolean defineData(String dsAddress, String statement, String dsType)
-\end_layout
-
-\begin_layout Subparagraph
-public boolean manipulateData(String dsAddress, String statement, DataObject
- data, String dsType)
-\end_layout
-
-\begin_layout Subparagraph
-public List<String> getDatasourceTypes()
-\end_layout
-
-\begin_layout Subparagraph
-public List<String> getDatasourceSubTypes(String datasourceType)
-\end_layout
-
-\begin_layout Subparagraph
-public List<String> getDatasourceLanguages(String datasourceSubType)
-\end_layout
-
-\begin_layout Subparagraph
-public List<String> getDatasourceMetaData(String dsAddress, String dsType)
-\end_layout
-
-\end_inset
-
-
+Datasource Web Service
 \end_layout
 
 \begin_layout Standard
-Der Datasource Web Service bietet eine Schnittstelle zu allen Ausprägungen
- des Datasource Service im SIMPL Core.
+Der Datasource Web Service 
+\emph on
+simpl.core.webservices.Datasource
+\emph default
+ bietet eine Schnittstelle nach Außen zu allen Ausprägungen des Datasource
+ Service im SIMPL Core.
  Die Funktionen des Datasource Web Service entsprechen den öffentlichen
- Funktionen der Datasource Services, erhalten aber als zusätzlichen Parameter
- die eindeutige Typkennzeichung (siehe 
+ Funktionen der Datasource Services (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Plug-In-System"
+reference "sub:Datasource-Service"
 
 \end_inset
 
- DatasourceServiceProvider) der angeforderten Datenquelle, über die bei
- einem Zugriff intern der entsprechende Datasource Service angesprochen
- werden kann.
- Zusätzlich besitzt der Datasource Web Service eine Funktion, um Metadaten
- von einer Datenquelle anzufordern, die beispielsweise von Eclipse zur Auswahl
- in der GUI benötigt werden, wie z.B.
- die existierenden Tabellen in einer Datenbank.
+).
+ Zusätzlich stehen die Funktionen des SIMPLCores zur Verfügung, die die
+ unterstützenden Datenquellen betreffen (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Funktionen-SIMPLCore"
+
+\end_inset
+
+).
+ Durch die Serialisierung und Deserialisierung besitzen alle Funktionen
+ ausschließlich String Parameter und Rückgabewerte.
 \end_layout
 
 \begin_layout Subsubsection
-Administration Web Service (Administration)
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subparagraph
-public boolean saveSettings(String schema, String table, String settingName,
- LinkedHashMap<String, String> settings)
-\end_layout
-
-\begin_layout Subparagraph
-public LinkedHashMap<String, String> loadSettings(String schema, String
- table, String settingName)
-\end_layout
-
-\end_inset
-
-
+Administration Web Service
 \end_layout
 
 \begin_layout Standard
-Der Administration Web Service ist die direkte Schnittstelle des Administration
- Service nach außen und besitzt daher die gleichen Funktionen wie dieser,
- mit dem Unterschied, dass komplexe Parameter als String-Parameter gehandhabt
- werden (siehe Abschnitt 
+Der Administration Web Service 
+\emph on
+simpl.core.webservices.Administration
+\emph default
+ ist die direkte Schnittstelle des Administration Service nach außen und
+ besitzt daher die gleichen Funktionen wie dieser, mit dem Unterschied,
+ dass komplexe Parameter und Rückgabewerte durch die Serialisierung und
+ Deserialisierung als String-Parameter gehandhabt werden (siehe Abschnitt
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Web-Services"
@@ -3096,28 +3398,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-simpl.
-\emph default
-""
-\emph on
-\lang ngerman
-ui
+org.""eclipse.""bpel.""simpl.""ui
 \end_layout
 
 \end_inset
@@ -3145,33 +3426,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-simpl.
-\emph default
-""
-\emph on
-\lang ngerman
-ui.
-\emph default
-""
-\emph on
-\lang ngerman
-sql
+org.""eclipse.""bpel.""simpl.""ui.""sql
 \end_layout
 
 \end_inset
@@ -3330,33 +3585,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-ui.
-\emph default
-""
-\emph on
-\lang ngerman
-adapters.
-\emph default
-""
-\emph on
-\lang ngerman
-ActivityAdapter
+org.""eclipse.""bpel.""ui.""adapters.""ActivityAdapter
 \end_layout
 
 \end_inset
@@ -3416,33 +3645,7 @@ status open
 
 \begin_layout Plain Layout
 
-\noun on
-org.
-\noun default
-""
-\noun on
-\lang ngerman
-eclipse.
-\noun default
-""
-\noun on
-\lang ngerman
-bpel.
-\noun default
-""
-\noun on
-\lang ngerman
-simpl.
-\noun default
-""
-\noun on
-\lang ngerman
-ui.
-\noun default
-""
-\noun on
-\lang ngerman
-queryLanguage
+org.""eclipse.""bpel.""simpl.""ui.""queryLanguage
 \end_layout
 
 \end_inset
@@ -3480,33 +3683,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-ui.
-\emph default
-""
-\emph on
-\lang ngerman
-factories.
-\emph default
-""
-\emph on
-\lang ngerman
-AbstractUIObjectFactory
+org.""eclipse.""bpel.""ui.""factories.""AbstractUIObjectFactory
 \end_layout
 
 \end_inset
@@ -3519,28 +3696,7 @@ status open
 
 \begin_layout Plain Layout
 
-\noun on
-org.
-\noun default
-""
-\noun on
-\lang ngerman
-eclipse.
-\noun default
-""
-\noun on
-\lang ngerman
-bpel.
-\noun default
-""
-\noun on
-\lang ngerman
-ui.
-\noun default
-""
-\noun on
-\lang ngerman
-uiObjectFactories
+org.""eclipse.""bpel.""ui.""uiObjectFactories
 \end_layout
 
 \end_inset
@@ -3558,38 +3714,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-simpl.
-\emph default
-""
-\emph on
-\lang ngerman
-model.
-\emph default
-""
-\emph on
-\lang ngerman
-util.
-\emph default
-""
-\emph on
-\lang ngerman
-ModelAdapterFactory
+org.""eclipse.""bpel.""simpl.""model.""util.""ModelAdapterFactory
 \end_layout
 
 \end_inset
@@ -3617,38 +3742,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-common.
-\emph default
-""
-\emph on
-\lang ngerman
-ui.
-\emph default
-""
-\emph on
-\lang ngerman
-palette.
-\emph default
-""
-\emph on
-\lang ngerman
-IPaletteProvider
+org.""eclipse.""bpel.""common.""ui.""palette.""IPaletteProvider
 \end_layout
 
 \end_inset
@@ -3659,33 +3753,7 @@ status open
 
 \begin_layout Plain Layout
 
-\noun on
-org.
-\noun default
-""
-\noun on
-\lang ngerman
-eclipse.
-\noun default
-""
-\noun on
-\lang ngerman
-bpel.
-\noun default
-""
-\noun on
-\lang ngerman
-common.
-\noun default
-""
-\noun on
-\lang ngerman
-ui.
-\noun default
-""
-\noun on
-\lang ngerman
-paletteAdditions
+org.""eclipse.""bpel.""common.""ui.""paletteAdditions
 \end_layout
 
 \end_inset
@@ -3706,38 +3774,7 @@ status open
 
 \begin_layout Plain Layout
 
-\noun on
-org.
-\noun default
-""
-\noun on
-\lang ngerman
-eclipse.
-\noun default
-""
-\noun on
-\lang ngerman
-ui.
-\noun default
-""
-\noun on
-\lang ngerman
-views.
-\noun default
-""
-\noun on
-\lang ngerman
-properties.
-\noun default
-""
-\noun on
-\lang ngerman
-tabbed.
-\noun default
-""
-\noun on
-\lang ngerman
-propertySections
+org.""eclipse.""ui.""views.""properties.""tabbed.""propertySections
 \end_layout
 
 \end_inset
@@ -3850,28 +3887,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-model.
-\emph default
-""
-\emph on
-\lang ngerman
-ExtensionActivity
+org.""eclipse.""bpel.""model.""ExtensionActivity
 \end_layout
 
 \end_inset
@@ -3907,33 +3923,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-simpl.
-\emph default
-""
-\emph on
-\lang ngerman
-model.
-\emph default
-""
-\emph on
-\lang ngerman
-impl
+org.""eclipse.""bpel.""simpl.""model.""impl
 \end_layout
 
 \end_inset
@@ -4031,33 +4021,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-model.
-\emph default
-""
-\emph on
-\lang ngerman
-extensions.
-\emph default
-""
-\emph on
-\lang ngerman
-BPELActivitySerializer
+org.""eclipse.""bpel.""model.""extensions.""BPELActivitySerializer
 \end_layout
 
 \end_inset
@@ -4072,33 +4036,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-model.
-\emph default
-""
-\emph on
-\lang ngerman
-extensions.
-\emph default
-""
-\emph on
-\lang ngerman
-BPELActivityDerserializer
+org.""eclipse.""bpel.""model.""extensions.""BPELActivityDerserializer
 \end_layout
 
 \end_inset
@@ -4130,38 +4068,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-bpel.
-\emph default
-""
-\emph on
-\lang ngerman
-simpl.
-\emph default
-""
-\emph on
-\lang ngerman
-ui.
-\emph default
-""
-\emph on
-\lang ngerman
-extensions.
-\emph default
-""
-\emph on
-\lang ngerman
-AStatementEditor
+org.""eclipse.""bpel.""simpl.""ui.""extensions.""AStatementEditor
 \end_layout
 
 \end_inset
@@ -4455,28 +4362,7 @@ status open
 
 \begin_layout Plain Layout
 
-\noun on
-org.
-\noun default
-""
-\noun on
-\lang ngerman
-eclipse.
-\noun default
-""
-\noun on
-\lang ngerman
-simpl.
-\noun default
-""
-\noun on
-\lang ngerman
-core.
-\noun default
-""
-\noun on
-\lang ngerman
-adminConsoleItem
+org.""eclipse.""simpl.""core.""adminConsoleItem
 \end_layout
 
 \end_inset
@@ -4560,10 +4446,8 @@ Um den Implementierungsaufwand gering und die Erweiterbarkeit bzw.
 status open
 
 \begin_layout Plain Layout
-EPR-
-""
-\lang ngerman
-Datenmodells
+
+EPR-""Datenmodells
 \end_layout
 
 \end_inset
@@ -4702,33 +4586,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-simpl.
-\emph default
-""
-\emph on
-\lang ngerman
-rrs.
-\emph default
-""
-\emph on
-\lang ngerman
-model.
-\emph default
-""
-\emph on
-\lang ngerman
-reference
+org.""eclipse.""simpl.""rrs.""model.""reference
 \end_layout
 
 \end_inset
@@ -4755,38 +4613,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-emf.
-\emph default
-""
-\emph on
-\lang ngerman
-ecore.
-\emph default
-""
-\emph on
-\lang ngerman
-resource.
-\emph default
-""
-\emph on
-\lang ngerman
-impl.
-\emph default
-""
-\emph on
-\lang ngerman
-ResourceFactoryImpl
+org.""eclipse.""emf.""ecore.""resource.""impl.""ResourceFactoryImpl
 \end_layout
 
 \end_inset
@@ -4801,38 +4628,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-emf.
-\emph default
-""
-\emph on
-\lang ngerman
-ecore.
-\emph default
-""
-\emph on
-\lang ngerman
-xmi.
-\emph default
-""
-\emph on
-\lang ngerman
-impl.
-\emph default
-""
-\emph on
-\lang ngerman
-XMLResourceImpl
+org.""eclipse.""emf.""ecore.""xmi.""impl.""XMLResourceImpl
 \end_layout
 
 \end_inset
@@ -5014,28 +4810,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-jface.
-\emph default
-""
-\emph on
-\lang ngerman
-viewers.
-\emph default
-""
-\emph on
-\lang ngerman
-IStructuredContentProvider
+org.""eclipse.""jface.""viewers.""IStructuredContentProvider
 \end_layout
 
 \end_inset
@@ -5244,42 +5019,13 @@ org.eclipse.simpl.uddi.model.datasource.impl
 
 \begin_layout Standard
 Dieses Paket enhält die Implementierungen der verschiedenen Modell-Klassen
- des Pakets
- 
-\lang ngerman
-
+ des Pakets 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-simpl.
-\emph default
-""
-\emph on
-\lang ngerman
-uddi.
-\emph default
-""
-\emph on
-\lang ngerman
-model.
-\emph default
-""
-\emph on
-\lang ngerman
-datasource
+org.""eclipse.""simpl.""uddi.""model.""datasource
 \end_layout
 
 \end_inset
@@ -5326,28 +5072,7 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
-org.
-\emph default
-""
-\emph on
-\lang ngerman
-eclipse.
-\emph default
-""
-\emph on
-\lang ngerman
-jface.
-\emph default
-""
-\emph on
-\lang ngerman
-viewers.
-\emph default
-""
-\emph on
-\lang ngerman
-IStructuredContentProvider
+org.""eclipse.""jface.""viewers.""IStructuredContentProvider
 \end_layout
 
 \end_inset
@@ -5603,7 +5328,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="12" columns="2">
+<lyxtabular version="3" rows="13" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="10cm">
@@ -5642,6 +5367,26 @@ BPEL
 
 \begin_layout Plain Layout
 Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comma Separated Values
 \end_layout
 
 \end_inset
