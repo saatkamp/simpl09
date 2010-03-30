@@ -1,3 +1,15 @@
+/**
+ * <b>Purpose:</b> This class is used to capture the management of extension contributions to
+ * the extension point.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui;
 
 import java.util.ArrayList;
@@ -7,14 +19,7 @@ import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 
-/**
- * This class is used to capture the management of extension contributions to
- * the extension point.
- * 
- * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
- * 
- * 
- */
+
 public class Application {
 
 	/**

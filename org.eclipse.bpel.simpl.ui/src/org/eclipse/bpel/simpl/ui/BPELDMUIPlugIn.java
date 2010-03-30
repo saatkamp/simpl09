@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> The activator class controls the plug-in life cycle.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui;
 
 import java.lang.reflect.Field;
@@ -19,19 +30,17 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-/**
- * The activator class controls the plug-in life cycle
- */
+
 public class BPELDMUIPlugIn extends AbstractUIPlugin {
 
-	// The plug-in ID
+	/** The Constant PLUGIN_ID. */
 	public static final String PLUGIN_ID = "org.eclipse.bpel.simpl.ui";
 
-	// The shared instance
+	/** The INSTANCE. */
 	public static BPELDMUIPlugIn INSTANCE;
 
 	/**
-	 * The constructor
+	 * The constructor.
 	 */
 	public BPELDMUIPlugIn() {
 		super();
@@ -77,7 +86,7 @@ public class BPELDMUIPlugIn extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the shared instance
+	 * Returns the shared instance.
 	 * 
 	 * @return the shared instance
 	 */
@@ -127,16 +136,35 @@ public class BPELDMUIPlugIn extends AbstractUIPlugin {
 
 	}
 
+	/**
+	 * Gets the image descriptor.
+	 * 
+	 * @param key
+	 *            the key
+	 * @return the image descriptor
+	 */
 	public ImageDescriptor getImageDescriptor(String key) {
 		return getImageRegistry().getDescriptor(key);
 	}
 
+	/**
+	 * Gets the image.
+	 * 
+	 * @param id
+	 *            the id
+	 * @return the image
+	 */
 	public Image getImage(String id) {
 		return getImageRegistry().get(id);
 	}
 
 	/**
 	 * Utility methods for logging exceptions.
+	 * 
+	 * @param e
+	 *            the e
+	 * @param severity
+	 *            the severity
 	 */
 	public static void log(Throwable e, int severity) {
 		IStatus status = null;
@@ -151,6 +179,12 @@ public class BPELDMUIPlugIn extends AbstractUIPlugin {
 		INSTANCE.getLog().log(status);
 	}
 
+	/**
+	 * Log.
+	 * 
+	 * @param throwable
+	 *            the throwable
+	 */
 	public static void log(Throwable throwable) {
 		log(throwable, IStatus.ERROR);
 	}

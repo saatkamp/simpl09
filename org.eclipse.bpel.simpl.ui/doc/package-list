@@ -1,6 +1,10 @@
 org.eclipse.bpel.simpl.ui
 org.eclipse.bpel.simpl.ui.adapters
+org.eclipse.bpel.simpl.ui.command
+org.eclipse.bpel.simpl.ui.editparts
 org.eclipse.bpel.simpl.ui.extensions
 org.eclipse.bpel.simpl.ui.factories
+org.eclipse.bpel.simpl.ui.handler
 org.eclipse.bpel.simpl.ui.palette
 org.eclipse.bpel.simpl.ui.properties
+widgets

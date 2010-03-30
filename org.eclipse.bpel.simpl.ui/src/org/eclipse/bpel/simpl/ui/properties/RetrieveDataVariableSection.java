@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+ */
 package org.eclipse.bpel.simpl.ui.properties;
 
 //TODO: Diese Implementierung abändern und per Extension-Point 
@@ -87,6 +88,10 @@ import org.eclipse.wst.wsdl.Part;
 import org.eclipse.wst.wsdl.util.WSDLConstants;
 import org.eclipse.xsd.XSDElementDeclaration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RetrieveDataVariableSection.
+ */
 public class RetrieveDataVariableSection extends BPELPropertySection {
 
 	/**
@@ -1042,6 +1047,9 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 				: Messages.InvokeImplDetails_Request_3_Plain;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
+	 */
 	@Override
 	public void refresh() {
 		super.refresh();

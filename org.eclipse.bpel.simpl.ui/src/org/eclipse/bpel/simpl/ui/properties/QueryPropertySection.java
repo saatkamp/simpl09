@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> Implements the property section for the {@link QueryActivity}. <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>, Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui.properties;
 
 import java.util.List;
@@ -32,7 +43,10 @@ import widgets.LiveEditStyleText;
 @SuppressWarnings("unused")
 public class QueryPropertySection extends DMActivityPropertySection {
 
+	/** The tabels pop window tables. */
 	ElementsListPopUp tabelsPopWindowTables;
+	
+	/** The tabels pop window bpel variables. */
 	ElementsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private CCombo typeCombo = null;
@@ -60,6 +74,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
+	 * @return true, if successful
 	 */
 	@Override
 	public boolean shouldUseExtraSpace() {
@@ -448,12 +463,18 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		kindCombo.select(kindCombo.indexOf(this.activity.getDsKind()));
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement()
+	 */
 	@Override
 	public String getStatement() {
 		// TODO Auto-generated method stub
 		return this.statement;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement(java.lang.String)
+	 */
 	@Override
 	public void setStatement(String statement) {
 		// TODO Auto-generated method stub
@@ -461,6 +482,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		statementText.setText(statement);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#saveStatementToModel()
+	 */
 	@Override
 	public void saveStatementToModel() {
 		getCommandFramework().execute(

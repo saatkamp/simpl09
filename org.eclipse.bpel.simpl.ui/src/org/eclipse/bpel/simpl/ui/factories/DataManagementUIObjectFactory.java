@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> This factory is used to create a graphical representation for every {@link DataManagementActivity}.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui.factories;
 
 
@@ -31,6 +42,12 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 			ModelPackage.eINSTANCE.getCallActivity(),
 			ModelPackage.eINSTANCE.getRetrieveDataActivity()};
 
+	/**
+	 * Instantiates a new data management ui object factory.
+	 * 
+	 * @param modelType
+	 *            the model type
+	 */
 	public DataManagementUIObjectFactory(EClass modelType) {
 		super();
 		this.modelType = modelType;
@@ -47,11 +64,17 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 		return modelObject.getName().toLowerCase();
 	}
 	
+	/**
+	 * Instantiates a new DataManagementUIObjectFactory.
+	 */
 	public DataManagementUIObjectFactory() {
 		super();
 	}
 
 	/**
+	 * Gets the small image descriptor.
+	 * 
+	 * @return the small image descriptor
 	 * @see org.eclipse.bpel.ui.factories.AbstractUIObjectFactory#getSmallImageDescriptor()
 	 */
 	@Override
@@ -60,6 +83,9 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	}
 	
 	/**
+	 * Gets the large image descriptor.
+	 * 
+	 * @return the large image descriptor
 	 * @see org.eclipse.bpel.ui.factories.AbstractUIObjectFactory#getLargeImageDescriptor()
 	 */
 	@Override
@@ -69,8 +95,10 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	
 	/**
 	 * Return the small image descriptor for the modelObject class passed.
+	 * 
 	 * @param modelObject
-	 * @return the small image descriptor 
+	 *            the model object
+	 * @return the small image descriptor
 	 */
 	
 	public static ImageDescriptor getSmallImageDescriptor (EClass modelObject) {
@@ -80,8 +108,10 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	
 	/**
 	 * Return the large image descriptor for the modelObject class passed.
+	 * 
 	 * @param modelObject
-	 * @return the large image descriptor 
+	 *            the model object
+	 * @return the large image descriptor
 	 */
 
 	public static ImageDescriptor getLargeImageDescriptor(EClass modelObject) {
@@ -90,6 +120,9 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	}
 	
 	/**
+	 * Gets the small image.
+	 * 
+	 * @return the small image
 	 * @see org.eclipse.bpel.ui.factories.AbstractUIObjectFactory#getSmallImage()
 	 */
 	@Override
@@ -99,6 +132,9 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	}
 
 	/**
+	 * Gets the large image.
+	 * 
+	 * @return the large image
 	 * @see org.eclipse.bpel.ui.factories.AbstractUIObjectFactory#getLargeImage()
 	 */
 	@Override
@@ -107,21 +143,33 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 				OBJ20 + baseImageName(getModelType()) + PNG);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.factories.AbstractUIObjectFactory#getModelType()
+	 */
 	@Override
 	public EClass getModelType() {
 		return this.modelType;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.factories.AbstractUIObjectFactory#getTypeLabel()
+	 */
 	@Override
 	public String getTypeLabel() {
 		return getModelType().getName();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.factories.IExtensionUIObjectFactory#getClassArray()
+	 */
 	@Override
 	public EClass[] getClassArray() {
 		return this.classArray;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.ui.factories.IExtensionUIObjectFactory#setModelType(org.eclipse.emf.ecore.EClass)
+	 */
 	@Override
 	public void setModelType(EClass modelType) {
 		this.modelType = modelType;

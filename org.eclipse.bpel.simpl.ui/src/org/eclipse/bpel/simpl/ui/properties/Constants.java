@@ -1,3 +1,14 @@
+/**
+ * <b>Purpose:</b> This class buffers all the data which is needed in this Plug-In and provided by the SIMPL Core.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
+ *
+ */
 package org.eclipse.bpel.simpl.ui.properties;
 
 import java.util.ArrayList;
@@ -10,25 +21,28 @@ import org.eclipse.simpl.communication.SIMPLCore;
 public class Constants {
 
 	/**
-	 * This variable holds all types of data sources, which can be choosed
+	 * This variable holds all types of data sources, which can be chosen
 	 * during the modeling process and will be supported by the SIMPL Core.
 	 */
 	private static List<String> dataSourceTypes = new ArrayList<String>();
 
 	/**
 	 * This variable holds all subtypes of data source types, which can be
-	 * choosed during the modeling process and will be supported by the SIMPL
+	 * chosen during the modeling process and will be supported by the SIMPL
 	 * Core.
 	 */
 	private static HashMap<String, List<String>> dataSourceSubTypes = new HashMap<String, List<String>>();
 
 	/**
 	 * This variable holds all languages of the different data source subtypes,
-	 * which can be choosed during the modeling process and will be supported by
+	 * which can be chosen during the modeling process and will be supported by
 	 * the data sources and the SIMPL Core.
 	 */
 	private static HashMap<String, List<String>> dataSourceSubTypeLanguages = new HashMap<String, List<String>>();
 
+	/**
+	 * Inits the Constants class.
+	 */
 	public static void init() {
 		// Holen uns eine Verbindung zum SIMPL Core.
 		SIMPLCore simplCore = SIMPLCommunication.getConnection();
