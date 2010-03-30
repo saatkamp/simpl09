@@ -3,17 +3,15 @@ package org.eclipse.bpel.simpl.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.simpl.communication.SIMPLCommunication;
 
 /**
  * This class is used to capture the management of extension contributions to
  * the extension point.
  * 
- * @author hahnml
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  * 
  * 
  */
