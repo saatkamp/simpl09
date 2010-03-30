@@ -1,14 +1,20 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model;
 
 import org.eclipse.bpel.model.Variable;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Retrieve Data Activity</b></em>'.
@@ -32,14 +38,15 @@ import org.eclipse.bpel.model.Variable;
 public interface RetrieveDataActivity extends DataManagementActivity {
 
 	/**
-	 * Returns the value of the '<em><b>Data Variable</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Data Variable</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Variable</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Variable</em>' reference.
+	 * 
+	 * @return the value of the '' reference.
 	 * @see #setDataVariable(Variable)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getRetrieveDataActivity_DataVariable()
 	 * @model

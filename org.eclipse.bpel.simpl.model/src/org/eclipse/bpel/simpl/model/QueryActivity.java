@@ -1,12 +1,18 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Query Activity</b></em>'.
@@ -30,15 +36,15 @@ package org.eclipse.bpel.simpl.model;
 public interface QueryActivity extends DataManagementActivity {
 
 	/**
-	 * Returns the value of the '<em><b>Query Target</b></em>' attribute.
-	 * The default value is <code>"target"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Query Target</b></em>' attribute. The
+	 * default value is <code>"target"</code>. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Query Target</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Query Target</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see #setQueryTarget(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getQueryActivity_QueryTarget()
 	 * @model default="target"

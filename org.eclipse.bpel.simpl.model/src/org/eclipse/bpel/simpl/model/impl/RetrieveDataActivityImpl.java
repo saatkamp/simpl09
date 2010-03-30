@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
@@ -15,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Retrieve Data Activity</b></em>'.
@@ -60,8 +66,9 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data variable
 	 * @generated
 	 */
 	public Variable getDataVariable() {
@@ -77,8 +84,9 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the variable
 	 * @generated
 	 */
 	public Variable basicGetDataVariable() {
@@ -86,8 +94,10 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newDataVariable
+	 *            the new data variable
 	 * @customized
 	 */
 	public void setDataVariable(Variable newDataVariable) {
@@ -104,8 +114,15 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @param resolve
+	 *            the resolve
+	 * @param coreType
+	 *            the core type
+	 * @return the object
 	 * @generated
 	 */
 	@Override
@@ -119,8 +136,12 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @param newValue
+	 *            the new value
 	 * @generated
 	 */
 	@Override
@@ -134,8 +155,10 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
 	 * @generated
 	 */
 	@Override
@@ -149,8 +172,11 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @return true, if successful
 	 * @generated
 	 */
 	@Override

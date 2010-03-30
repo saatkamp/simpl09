@@ -6,7 +6,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id:$ <br>
+ * @version $Id$ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */

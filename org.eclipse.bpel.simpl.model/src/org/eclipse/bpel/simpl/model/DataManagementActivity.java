@@ -1,13 +1,19 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model;
 
 import org.eclipse.bpel.model.ExtensionActivity;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Data Management Activity</b></em>'.
@@ -33,16 +39,17 @@ import org.eclipse.bpel.model.ExtensionActivity;
  * @generated
  */
 public interface DataManagementActivity extends ExtensionActivity {
+	
 	/**
-	 * Returns the value of the '<em><b>Ds Statement</b></em>' attribute.
-	 * The default value is <code>"statement"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ds Statement</b></em>' attribute. The
+	 * default value is <code>"statement"</code>. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ds Statement</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ds Statement</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see #setDsStatement(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsStatement()
 	 * @model default="statement"
@@ -61,15 +68,15 @@ public interface DataManagementActivity extends ExtensionActivity {
 	void setDsStatement(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Ds Language</b></em>' attribute.
-	 * The default value is <code>"language"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ds Language</b></em>' attribute. The
+	 * default value is <code>"language"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ds Language</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Ds Language</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ds Language</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see #setDsLanguage(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsLanguage()
 	 * @model default="language"
@@ -88,15 +95,15 @@ public interface DataManagementActivity extends ExtensionActivity {
 	void setDsLanguage(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Ds Kind</b></em>' attribute.
-	 * The default value is <code>"subtype"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ds Kind</b></em>' attribute. The default
+	 * value is <code>"subtype"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ds Kind</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Ds Kind</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ds Kind</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see #setDsKind(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsKind()
 	 * @model default="subtype"
@@ -115,15 +122,15 @@ public interface DataManagementActivity extends ExtensionActivity {
 	void setDsKind(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Ds Type</b></em>' attribute.
-	 * The default value is <code>"type"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ds Type</b></em>' attribute. The default
+	 * value is <code>"type"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ds Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Ds Type</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ds Type</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see #setDsType(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsType()
 	 * @model default="type"
@@ -142,15 +149,15 @@ public interface DataManagementActivity extends ExtensionActivity {
 	void setDsType(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Ds Address</b></em>' attribute.
-	 * The default value is <code>"address"</code>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Ds Address</b></em>' attribute. The
+	 * default value is <code>"address"</code>. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ds Address</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Ds Address</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ds Address</em>' attribute.
+	 * 
+	 * @return the value of the '' attribute.
 	 * @see #setDsAddress(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsAddress()
 	 * @model default="address"

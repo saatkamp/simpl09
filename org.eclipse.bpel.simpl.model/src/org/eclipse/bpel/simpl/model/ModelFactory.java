@@ -1,13 +1,19 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model;
 
 import org.eclipse.emf.ecore.EFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.
@@ -26,91 +32,91 @@ public interface ModelFactory extends EFactory {
 	ModelFactory eINSTANCE = org.eclipse.bpel.simpl.model.impl.ModelFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Data Management Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Management Activity</em>'.
+	 * Returns a new object of class '<em>Data Management Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	DataManagementActivity createDataManagementActivity();
 
 	/**
-	 * Returns a new object of class '<em>Query Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Query Activity</em>'.
+	 * Returns a new object of class '<em>Query Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	QueryActivity createQueryActivity();
 
 	/**
-	 * Returns a new object of class '<em>Insert Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Insert Activity</em>'.
+	 * Returns a new object of class '<em>Insert Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	InsertActivity createInsertActivity();
 
 	/**
-	 * Returns a new object of class '<em>Update Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Update Activity</em>'.
+	 * Returns a new object of class '<em>Update Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	UpdateActivity createUpdateActivity();
 
 	/**
-	 * Returns a new object of class '<em>Delete Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Delete Activity</em>'.
+	 * Returns a new object of class '<em>Delete Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	DeleteActivity createDeleteActivity();
 
 	/**
-	 * Returns a new object of class '<em>Create Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Create Activity</em>'.
+	 * Returns a new object of class '<em>Create Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	CreateActivity createCreateActivity();
 
 	/**
-	 * Returns a new object of class '<em>Drop Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Drop Activity</em>'.
+	 * Returns a new object of class '<em>Drop Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	DropActivity createDropActivity();
 
 	/**
-	 * Returns a new object of class '<em>Call Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Call Activity</em>'.
+	 * Returns a new object of class '<em>Call Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	CallActivity createCallActivity();
 
 	/**
-	 * Returns a new object of class '<em>Retrieve Data Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Retrieve Data Activity</em>'.
+	 * Returns a new object of class '<em>Retrieve Data Activity</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	RetrieveDataActivity createRetrieveDataActivity();
 
 	/**
-	 * Returns a new object of class '<em>Reference Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reference Variable</em>'.
+	 * Returns a new object of class '<em>Reference Variable</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class ''.
 	 * @generated
 	 */
 	ReferenceVariable createReferenceVariable();

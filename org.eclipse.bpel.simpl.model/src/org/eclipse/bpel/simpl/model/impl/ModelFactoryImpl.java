@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
@@ -26,6 +31,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
@@ -33,10 +39,12 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
+	
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @return the model factory
 	 * @generated
 	 */
 	public static ModelFactory init() {
@@ -63,8 +71,11 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param eClass
+	 *            the e class
+	 * @return the e object
 	 * @generated
 	 */
 	@Override
@@ -86,8 +97,13 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param eDataType
+	 *            the e data type
+	 * @param initialValue
+	 *            the initial value
+	 * @return the object
 	 * @generated
 	 */
 	@Override
@@ -101,8 +117,13 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param eDataType
+	 *            the e data type
+	 * @param instanceValue
+	 *            the instance value
+	 * @return the string
 	 * @generated
 	 */
 	@Override
@@ -116,8 +137,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the data management activity
 	 * @generated
 	 */
 	public DataManagementActivity createDataManagementActivity() {
@@ -126,8 +148,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the query activity
 	 * @generated
 	 */
 	public QueryActivity createQueryActivity() {
@@ -136,8 +159,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the insert activity
 	 * @generated
 	 */
 	public InsertActivity createInsertActivity() {
@@ -146,8 +170,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the update activity
 	 * @generated
 	 */
 	public UpdateActivity createUpdateActivity() {
@@ -156,8 +181,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the delete activity
 	 * @generated
 	 */
 	public DeleteActivity createDeleteActivity() {
@@ -166,8 +192,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the creates the activity
 	 * @generated
 	 */
 	public CreateActivity createCreateActivity() {
@@ -176,8 +203,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the drop activity
 	 * @generated
 	 */
 	public DropActivity createDropActivity() {
@@ -186,8 +214,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the call activity
 	 * @generated
 	 */
 	public CallActivity createCallActivity() {
@@ -196,8 +225,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the retrieve data activity
 	 * @generated
 	 */
 	public RetrieveDataActivity createRetrieveDataActivity() {
@@ -206,8 +236,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the reference variable
 	 * @generated
 	 */
 	public ReferenceVariable createReferenceVariable() {
@@ -216,8 +247,13 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param eDataType
+	 *            the e data type
+	 * @param initialValue
+	 *            the initial value
+	 * @return the reference type
 	 * @generated
 	 */
 	public ReferenceType createReferenceTypeFromString(EDataType eDataType, String initialValue) {
@@ -227,8 +263,13 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param eDataType
+	 *            the e data type
+	 * @param instanceValue
+	 *            the instance value
+	 * @return the string
 	 * @generated
 	 */
 	public String convertReferenceTypeToString(EDataType eDataType, Object instanceValue) {
@@ -236,8 +277,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the model package
 	 * @generated
 	 */
 	public ModelPackage getModelPackage() {
@@ -245,8 +287,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the package
 	 * @deprecated
 	 * @generated
 	 */

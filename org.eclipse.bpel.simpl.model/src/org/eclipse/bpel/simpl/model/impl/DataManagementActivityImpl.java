@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
@@ -14,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Data Management Activity</b></em>'.
@@ -153,8 +159,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the ds statement
 	 * @generated
 	 */
 	public String getDsStatement() {
@@ -162,8 +169,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newDsStatement
+	 *            the new ds statement
 	 * @customized
 	 */
 	public void setDsStatement(String newDsStatement) {
@@ -179,8 +188,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the ds language
 	 * @generated
 	 */
 	public String getDsLanguage() {
@@ -188,8 +198,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newDsLanguage
+	 *            the new ds language
 	 * @customized
 	 */
 	public void setDsLanguage(String newDsLanguage) {
@@ -205,8 +217,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the ds kind
 	 * @generated
 	 */
 	public String getDsKind() {
@@ -214,8 +227,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newDsKind
+	 *            the new ds kind
 	 * @customized
 	 */
 	public void setDsKind(String newDsKind) {
@@ -231,8 +246,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the ds type
 	 * @generated
 	 */
 	public String getDsType() {
@@ -240,8 +256,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newDsType
+	 *            the new ds type
 	 * @customized
 	 */
 	public void setDsType(String newDsType) {
@@ -257,8 +275,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the ds address
 	 * @generated
 	 */
 	public String getDsAddress() {
@@ -266,8 +285,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param newDsAddress
+	 *            the new ds address
 	 * @customized
 	 */
 	public void setDsAddress(String newDsAddress) {
@@ -283,8 +304,15 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @param resolve
+	 *            the resolve
+	 * @param coreType
+	 *            the core type
+	 * @return the object
 	 * @generated
 	 */
 	@Override
@@ -305,8 +333,12 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @param newValue
+	 *            the new value
 	 * @generated
 	 */
 	@Override
@@ -332,8 +364,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
 	 * @generated
 	 */
 	@Override
@@ -359,8 +393,11 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @param featureID
+	 *            the feature id
+	 * @return true, if successful
 	 * @generated
 	 */
 	@Override
@@ -381,8 +418,9 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
+	 * 
+	 * @return the string
 	 * @generated
 	 */
 	@Override

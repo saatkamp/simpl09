@@ -1,8 +1,13 @@
 /**
- * <copyright>
- * </copyright>
+ * <b>Purpose:</b> <br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ * 
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id$ <br>
+ * @link http://code.google.com/p/simpl09/
  *
- * $Id$
  */
 package org.eclipse.bpel.simpl.model.util;
 
@@ -30,6 +35,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.wst.wsdl.ExtensibleElement;
 import org.eclipse.wst.wsdl.WSDLElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
@@ -61,9 +67,12 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 	/**
 	 * Returns whether this factory is applicable for the type of the object.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> This implementation returns <code>true</code> if
+	 * the object is either the model's package or is an instance object of the
+	 * model. <!-- end-user-doc -->
+	 * 
+	 * @param object
+	 *            the object
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
@@ -165,11 +174,12 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 		};
 
 	/**
-	 * Creates an adapter for the <code>target</code>.
-	 * <!-- begin-user-doc -->
+	 * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param target the object to adapt.
-	 * @return the adapter for the <code>target</code>.
+	 * 
+	 * @param target
+	 *            the object to adapt.
+	 * @return the adapter for the .
 	 * @generated
 	 */
 	@Override
