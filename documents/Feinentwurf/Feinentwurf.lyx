@@ -2239,23 +2239,28 @@ DataSourceService
 \end_layout
 
 \begin_layout Paragraph
-public Connection openConnection(String dsAddress)
+public <T> T openConnection(String dsAddress)
 \end_layout
 
 \begin_layout Standard
 Öffnet eine Verbindung zu einer Datenquelle und liefert zu der Adresse einer
- Datenquelle ein Verbindungsobjekt über das mit der Datenquelle kommuniziert
- werden kann.
- 
+ Datenquelle ein Verbindungsobjekt, über das anschließend mit der Datenquelle
+ kommuniziert werden kann.
+ Das Verbindungsobjekt ist generisch und abhängig von der Implementierung,
+ bei JDBC Verbindungen wird beispielsweise ein 
+\emph on
+Connection
+\emph default
+-Objekt zurückgegeben.
 \end_layout
 
 \begin_layout Paragraph
-public boolean closeConnection(Connection connection)
+public <T> boolean closeConnection(T connection)
 \end_layout
 
 \begin_layout Standard
-Schließt die Verbindung zu einer Datenquelle und bestätigt den Verbindungsabbau
- mit einem booleschen Rückgabewert.
+Schließt die Verbindung zu einer Datenquelle über das Verbindungsobjekt
+ und bestätigt den Verbindungsabbau mit einem booleschen Rückgabewert.
 \end_layout
 
 \begin_layout Paragraph
@@ -2278,9 +2283,11 @@ Mit dieser Funktion werden über ein Statement Daten einer Datenquelle selektier
  und auf der Datenquelle selbst hinterlegt.
  Die hinterlegten Daten werden über das 
 \emph on
-target 
+target
 \emph default
-als Tabelle referenziert und können darüber anschließend abgerufen werden.
+ referenziert und können darüber anschließend abgerufen werden, dies kann
+ z.B.
+ der Tabellenname bei einer relationalen Datenbank sein.
  Die Ausführung wird mit einem booleschen Rückgabewert bestätigt.
 \end_layout
 
@@ -2291,18 +2298,42 @@ public boolean executeStatement(String dsAddress, String statement)
 \begin_layout Standard
 Ermöglicht die Ausführung eines Statements auf einer Datenquelle und bestätigt
  die Ausführung mit einem booleschen Rückgabewert.
+ Die Funktion wirde hauptsächlich dazu verwendet um Datenstrukturen auf
+ einer Datenquelle zu definieren, wie z.B.
+ das Erstellen von Tabellen bei einer relationalen Datenbank.
 \end_layout
 
 \begin_layout Paragraph
 public boolean writeBack(String dsAddress, String statement, DataObject
  data)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Verwendung mit Michael klären
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Wird verwendet um bestehende Daten zu manipulieren bzw.
+Wird verwendet, um bestehende Daten einer Datenquelle zu manipulieren bzw.
  zu aktualisieren.
- Die Funktion erhält Daten in Form eines SDO und ein Statement mit dem die
- Verwendung der Daten beschrieben wird.
+ Die Funktion erhält die geänderten Daten in Form eines SDO sowie ein Statement
+ mit dem die Verwendung der Daten beschrieben wird, damit kann z.B.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[TODO]
+\end_layout
+
+\end_inset
+
+.
  Der Erfolg der Operation wird mit einem booleschen Rückgabewert bestätigt.
 \end_layout
 
@@ -2311,7 +2342,8 @@ public DataObject getMetaData(String dsAddress)
 \end_layout
 
 \begin_layout Standard
-Liefert Metadaten zu einer Datenquelle als SDO und wird in Kapitel 
+Liefert Metadaten einer Datenquelle als SDO.
+ Die Umsetzung wird in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Metadaten"
@@ -2426,7 +2458,7 @@ Um eine Erweiterungsmöglichkeit des SIMPL Cores für die Unterstützung verschi
 ner Typen von Datenquellen und Datenformaten zu garantieren, wird ein Plug-In
  System realisiert.
  Dies wird durch die Bereitstellung von abstrakten Klassen erreicht, von
- der sich die Plug-Ins ableiten lassen.
+ der sich die Plug-Ins durch Vererbung ableiten lassen.
  Mit der Reflection API von Java ist es möglich, die Plug-Ins zur Laufzeit
  zu laden und zu verwenden, ohne dass bestehender Code angepasst werden
  muss.
@@ -2634,59 +2666,6 @@ zur Verfügung, die das zu Grunde liegende XML-Schema liefert.
 \end_layout
 
 \begin_layout Subsection
-Hilfsklassen
-\end_layout
-
-\begin_layout Standard
-Für den Entwickler werden folgende Hilfsklassen zur Verfügung gestellt.
-\end_layout
-
-\begin_layout Subsubsection
-Printer
-\end_layout
-
-\begin_layout Standard
-Mit 
-\emph on
-Printer
-\emph default
- kann über die statische Methode 
-\emph on
-+printDataObject(DataObject) 
-\emph default
-ein SDO auf der Konsole ausgeben werden.
-\end_layout
-
-\begin_layout Subsubsection
-Parameter
-\end_layout
-
-\begin_layout Standard
-Mit 
-\emph on
-Parameter 
-\emph default
-können über die statischen Methoden 
-\emph on
-+serialize(Object object)
-\emph default
- und 
-\emph on
-+deserialize(String data) 
-\emph default
-beliebige Java Objekte zu XML serialisiert und von XML deserialisiert werden.
- Dies geschieht mit Hilfe der Java Klassen 
-\emph on
-XMLEncoder
-\emph default
- und 
-\emph on
-XMLDecoder
-\emph default
-.
-\end_layout
-
-\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Web-Services"
@@ -2728,12 +2707,19 @@ Komplexe Objekte wie z.B.
  HashMaps, die intern von den SIMPL Core Diensten zur Ausführung benötigt
  werden, werden als String serialisiert an die Web Services übergeben und
  in dieser Form auch als Rückgabeparameter empfangen.
- Bei der Deserialisierung werden die Objekte wiederhergestellt und können
+ Bei der Deserialisierung werden die Objekte wieder hergestellt und können
  als solche verwendet werden.
  Eine Ausnahme bilden die SDO Objekte, die bereits über eine XML Darstellung
  verfügen und in dieser direkt übermittelt werden können.
- Für diesen Vorgang stellt die Helper-Klasse Parameter entsprechende Funktionen
- zur Verfügung.
+ Für diesen Vorgang stellt die Helper-Klasse Parameter (siehe Abschnitt
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Parameter"
+
+\end_inset
+
+) entsprechende Funktionen zur Verfügung.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2747,17 +2733,26 @@ simpl.core.webservices.Datasource
 \emph default
  bietet eine Schnittstelle nach Außen zu allen Ausprägungen des Datasource
  Service im SIMPL Core.
- Die Funktionen des Datasource Web Service entsprechen den öffentlichen
- Funktionen der Datasource Services (siehe Abschnitt 
+ Die Funktionen des Datasource Web Service entsprechen den Funktionen der
+ Datasource Services (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Datasource-Service"
 
 \end_inset
 
-).
- Zusätzlich stehen die Funktionen des SIMPLCores zur Verfügung, die die
- unterstützenden Datenquellen betreffen (siehe Abschnitt 
+), die über die 
+\emph on
+SIMPLCore
+\emph default
+-Funktion 
+\emph on
++dataSourceService(String dsType, String dsSubtype)
+\emph default
+ angefordert werden.
+ Zusätzlich stehen die Funktionen des SIMPLCores zur Verfügung, die Informatione
+n zu den, durch die Plug-Ins unterstützten, Datenquellen liefern (siehe
+ Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Funktionen-SIMPLCore"
@@ -2766,7 +2761,7 @@ reference "sub:Funktionen-SIMPLCore"
 
 ).
  Durch die Serialisierung und Deserialisierung besitzen alle Funktionen
- ausschließlich String Parameter und Rückgabewerte.
+ String Parameter und Rückgabewerte.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2790,6 +2785,65 @@ reference "sub:Web-Services"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Subsection
+Hilfsklassen
+\end_layout
+
+\begin_layout Standard
+Für den Entwickler werden folgende Hilfsklassen zur Verfügung gestellt.
+\end_layout
+
+\begin_layout Subsubsection
+Printer
+\end_layout
+
+\begin_layout Standard
+Mit 
+\emph on
+Printer
+\emph default
+ kann über die statische Methode 
+\emph on
++printDataObject(DataObject) 
+\emph default
+ein SDO auf der Konsole ausgeben werden.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Parameter"
+
+\end_inset
+
+Parameter
+\end_layout
+
+\begin_layout Standard
+Mit 
+\emph on
+Parameter 
+\emph default
+können über die statischen Methoden 
+\emph on
++serialize(Object object)
+\emph default
+ und 
+\emph on
++deserialize(String data) 
+\emph default
+beliebige Java Objekte zu XML serialisiert und von XML deserialisiert werden.
+ Dies geschieht mit Hilfe der Java Klassen 
+\emph on
+XMLEncoder
+\emph default
+ und 
+\emph on
+XMLDecoder
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
