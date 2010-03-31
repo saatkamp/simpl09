@@ -106,6 +106,12 @@
             name="Reload Plug-In Data">
       </command>
    </extension>
+   <extension
+         point="org.eclipse.bpel.ui.hoverHelpers">
+      <hoverHelper
+            class="org.eclipse.bpel.simpl.ui.hovers.SIMPLHoverHelper">
+      </hoverHelper>
+   </extension>
 
 </plugin>
 
