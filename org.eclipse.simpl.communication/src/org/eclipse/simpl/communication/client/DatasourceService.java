@@ -54,9 +54,9 @@ public interface DatasourceService {
      *     returns java.lang.String
      * @throws ConnectionException_Exception
      */
-    @WebMethod(action = "queryData")
+    @WebMethod(action = "retrieveData")
     @WebResult(partName = "return")
-    public String queryData(
+    public String retrieveData(
         @WebParam(name = "dsAddress", partName = "dsAddress")
         String dsAddress,
         @WebParam(name = "statement", partName = "statement")
@@ -105,9 +105,9 @@ public interface DatasourceService {
      *     returns boolean
      * @throws ConnectionException_Exception
      */
-    @WebMethod(action = "defineData")
+    @WebMethod(action = "executeStatement")
     @WebResult(partName = "return")
-    public boolean defineData(
+    public boolean executeStatement(
         @WebParam(name = "dsAddress", partName = "dsAddress")
         String dsAddress,
         @WebParam(name = "statement", partName = "statement")
@@ -130,9 +130,9 @@ public interface DatasourceService {
      *     returns boolean
      * @throws ConnectionException_Exception
      */
-    @WebMethod(action = "manipulateData")
+    @WebMethod(action = "writeBack")
     @WebResult(partName = "return")
-    public boolean manipulateData(
+    public boolean writeBack(
         @WebParam(name = "dsAddress", partName = "dsAddress")
         String dsAddress,
         @WebParam(name = "statement", partName = "statement")

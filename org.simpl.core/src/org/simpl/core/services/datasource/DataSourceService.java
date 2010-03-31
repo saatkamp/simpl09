@@ -1,7 +1,5 @@
 package org.simpl.core.services.datasource;
 
-import java.sql.Connection;
-
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -12,15 +10,15 @@ import commonj.sdo.DataObject;
  * <b>Description:</b> TODO: Beschreibung, auch von allen Funktionen.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
- * TODO: Funktionskommentare
+ * 
  * @author hahnml
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public interface DataSourceService {
-  public Connection openConnection(String dsAddress) throws ConnectionException;
+  public <T> T openConnection(String dsAddress) throws ConnectionException;
 
-  public boolean closeConnection(Connection connection) throws ConnectionException;
+  public <T> boolean closeConnection(T connection) throws ConnectionException;
 
   public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException;

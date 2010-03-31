@@ -9,7 +9,7 @@ import java.io.ByteArrayOutputStream;
  * <b>Purpose:</b> Helper for the transmission of complex objects as web service
  * parameters.<br>
  * <b>Description:</b> Offers functions to serialize and deserialize objects to and from
- * xml. <br>
+ * XML. <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -19,7 +19,7 @@ import java.io.ByteArrayOutputStream;
  */
 public class Parameter {
   /**
-   * Serializes a java object to a BASE64 encoded object string.
+   * Serializes a java object to a XML encoded object string.
    * 
    * @param object
    * @return serialized object string
@@ -38,7 +38,7 @@ public class Parameter {
   }
 
   /**
-   * Deserializes a BASE64 encoded object string to a java object.
+   * Deserializes a XML encoded object string to a java object.
    * 
    * @param data
    * @return deserialized java object

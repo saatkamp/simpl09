@@ -78,7 +78,7 @@ public class Datasource {
   }
 
   @WebMethod(action = "writeBack")
-  public boolean manipulateData(
+  public boolean writeBack(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
       @WebParam(name = "statement", targetNamespace = "") String statement,
       @WebParam(name = "data", targetNamespace = "") String data,
