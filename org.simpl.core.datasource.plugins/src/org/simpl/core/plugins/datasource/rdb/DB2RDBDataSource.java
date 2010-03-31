@@ -26,7 +26,8 @@ import commonj.sdo.DataObject;
  * //localhost:50000/testdb.
  * 
  * @author hahnml
- * @version $Id$<br>
+ * @version $Id: DB2RDBDataSource.java 1014 2010-03-29 09:16:08Z michael.schneidt@arcor.de
+ *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class DB2RDBDataSource extends DataSourcePlugin {
@@ -42,6 +43,12 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     PropertyConfigurator.configure("log4j.properties");
   }
 
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#openConnection(java.lang.String)
+   */
+  @SuppressWarnings("unchecked")
   @Override
   public Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
@@ -49,7 +56,9 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
-    Connection connect = null;
+
+    java.sql.Connection connect = null;
+
     try {
       Class.forName("com.ibm.db2.jcc.DB2Driver");
       StringBuilder uri = new StringBuilder();
@@ -58,7 +67,8 @@ public class DB2RDBDataSource extends DataSourcePlugin {
       try {
         // TODO Hier müssen noch die im SIMPL Core hinterlegten
         // Authentification-Informationen geladen werden
-        connect = DriverManager.getConnection(uri.toString(), "test", "test");
+        connect = (java.sql.Connection) DriverManager.getConnection(uri.toString(),
+            "test", "test");
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
@@ -74,13 +84,21 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     return connect;
   }
 
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#closeConnection(java.lang.Object
+   * )
+   */
+  @SuppressWarnings("hiding")
   @Override
-  public boolean closeConnection(Connection connection) throws ConnectionException {
+  public <Connection> boolean closeConnection(Connection connection)
+      throws ConnectionException {
     // TODO Auto-generated method stub
     boolean success = false;
 
     try {
-      connection.close();
+      ((java.sql.Connection) connection).close();
       success = true;
       if (logger.isDebugEnabled()) {
         logger.debug("boolean closeConnection() executed successfully.");

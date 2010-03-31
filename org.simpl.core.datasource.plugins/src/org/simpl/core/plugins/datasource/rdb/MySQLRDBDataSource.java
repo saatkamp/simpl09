@@ -40,6 +40,12 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
     PropertyConfigurator.configure("log4j.properties");
   }
 
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#openConnection(java.lang.String)
+   */
+  @SuppressWarnings("unchecked")
   @Override
   public Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
@@ -72,13 +78,20 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
     return connect;
   }
 
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#closeConnection(java.lang.Object
+   * )
+   */
+  @SuppressWarnings("hiding")
   @Override
-  public boolean closeConnection(Connection connection) throws ConnectionException {
+  public <Connection> boolean closeConnection(Connection connection) {
     // TODO Auto-generated method stub
     boolean success = false;
 
     try {
-      connection.close();
+      ((java.sql.Connection) connection).close();
       success = true;
       if (logger.isDebugEnabled()) {
         logger.debug("boolean closeConnection() executed successfully.");
