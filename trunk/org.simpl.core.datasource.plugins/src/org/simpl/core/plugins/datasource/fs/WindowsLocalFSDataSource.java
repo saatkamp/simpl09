@@ -1,7 +1,5 @@
 package org.simpl.core.plugins.datasource.fs;
 
-import java.sql.Connection;
-
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
@@ -14,7 +12,8 @@ import commonj.sdo.DataObject;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de><br>
- * @version $Id$<br>
+ * @version $Id: WindowsLocalFSDataSource.java 1014 2010-03-29 09:16:08Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class WindowsLocalFSDataSource extends DataSourcePlugin {
@@ -27,10 +26,21 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#openConnection(java.lang.String)
+   */
+  @Override
+  public <T> T openConnection(String arg0) throws ConnectionException {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  /*
+   * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#closeConnection(java.sql.Connection)
    */
   @Override
-  public boolean closeConnection(Connection arg0) throws ConnectionException {
+  public <T> boolean closeConnection(T arg0) throws ConnectionException {
     return true;
   }
 
@@ -77,15 +87,6 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       throws ConnectionException {
     // TODO Auto-generated method stub
     return false;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#openConnection(java.lang.String)
-   */
-  @Override
-  public Connection openConnection(String arg0) throws ConnectionException {
-    return null;
   }
 
   /*
