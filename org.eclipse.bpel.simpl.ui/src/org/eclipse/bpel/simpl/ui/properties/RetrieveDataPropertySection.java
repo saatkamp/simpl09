@@ -124,7 +124,10 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
-		
+		GridData gridData130 = new GridData();
+		gridData130.horizontalAlignment = GridData.FILL;
+		gridData130.grabExcessHorizontalSpace = true;
+		gridData130.verticalAlignment = GridData.CENTER;
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;
 		gridData4.verticalAlignment = GridData.CENTER;
@@ -216,13 +219,32 @@ public class RetrieveDataPropertySection extends DMActivityPropertySection {
 			}
 		});
 
-		Label filler411 = new Label(composite, SWT.NONE);
-		Label filler42 = new Label(composite, SWT.NONE);
+		dataVariableLabel = new Label(composite, SWT.NONE);
+		dataVariableLabel
+				.setText("Target variable to insert the query result:");
+		dataVariableLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		
+		dataVariableText = new Text(composite, SWT.BORDER);
+		dataVariableText.setLayoutData(gridData130);
+		dataVariableText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				Variable variable = (Variable) ModelHelper
+				.findElementByName(ModelHelper.getContainingScope(getInput()),
+						dataVariableText.getText(), Variable.class);
+				
+				if (variable != null){
+					getCommandFramework().execute(
+							new SetDataVariableCommand(getModel(), variable));
+				}
+			}
+		});
 		Label filler43 = new Label(composite, SWT.NONE);
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");

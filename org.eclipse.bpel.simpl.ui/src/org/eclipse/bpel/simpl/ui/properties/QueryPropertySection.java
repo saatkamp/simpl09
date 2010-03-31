@@ -214,13 +214,26 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			}
 		});
 
-		Label filler411 = new Label(composite, SWT.NONE);
-		Label filler42 = new Label(composite, SWT.NONE);
+		queryTargetLabel = new Label(composite, SWT.NONE);
+		queryTargetLabel.setText("Target to insert the query result:");
+		queryTargetLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		
+		queryTargetText = new Text(composite, SWT.BORDER);
+		queryTargetText.setLayoutData(gridData13);
+		queryTargetText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				getCommandFramework().execute(
+						new SetQueryTargetCommand(getModel(), queryTargetText
+								.getText()));
+			}
+		});
 		Label filler43 = new Label(composite, SWT.NONE);
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
