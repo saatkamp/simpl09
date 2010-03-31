@@ -33,8 +33,20 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 	private CallActivityAdapter callActivityAdapter;
 	private RetrieveDataActivityAdapter retrieveDataActivityAdapter;
 	
+	static private DataManagementUIAdapterFactory instance;
 	
+	/**
+	 * Get the instance of the factory.
+	 * 
+	 * @return an instance of this DataManagement UI factory
+	 */
 	
+	public static DataManagementUIAdapterFactory getInstance() {
+		if (instance == null) {
+			instance = new DataManagementUIAdapterFactory();
+		}
+		return instance;
+	}
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createQueryActivityAdapter()
