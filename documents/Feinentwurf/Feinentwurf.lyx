@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Feinentwurf}
-\def\docvers{1.0}
+\def\docvers{2.0}
 \def\docautor{}
-\def\docdate{15. Januar 2010}
+\def\docdate{01. April 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
