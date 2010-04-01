@@ -1218,11 +1218,73 @@ schneimi
 Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:SIMPLCore"
+reference "sub:Paketstruktur"
 
 \end_inset
 
- überarbeitet
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPLCore"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Service"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Plug-In-System"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Web-Services"
+
+\end_inset
+
+ überarbeitet, Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPLConfig"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Dataformat-Service"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Metadaten"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Hilfsklassen"
+
+\end_inset
+
+ hinzugefügt.
 \end_layout
 
 \end_inset
@@ -1267,14 +1329,28 @@ reference "sub:SIMPL-Core-Client"
 
 \end_inset
 
- und 
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Kommunikation"
 
 \end_inset
 
- überarbeitet
+ überarbeitet, Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Strategy-Service"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Connection-Service"
+
+\end_inset
+
+ hinzugefügt.
 \end_layout
 
 \end_inset
@@ -1593,6 +1669,12 @@ SIMPL Core Klassendiagramm
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Paketstruktur"
+
+\end_inset
+
 Paketstruktur
 \end_layout
 
@@ -1820,6 +1902,12 @@ reference "sub:BPEL-DM-Extension"
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Singleton"
+
+\end_inset
+
 Singleton
 \end_layout
 
@@ -2507,13 +2595,58 @@ File
  an.
 \end_layout
 
-\begin_layout Subsubsection*
-2.4.5 Strategy Service
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Strategy-Service"
+
+\end_inset
+
+Strategy Service
+\end_layout
+
+\begin_layout Standard
+Der Strategy Service stellt dem Datasource Service Provider die Möglichkeit
+ des Late Bindung zur Verfügung, dabei kann eine zur Modellierung noch unbekannt
+e Datenquelle über WS-Policy Anforderungen zur Laufzeit aus der im SIMPL
+ Core eingestellten Datenquellen-Registry ausgewählt werden.
+ Zu diesem Zweck implementiert der Datasource Service folgende Funktion:
+\end_layout
+
+\begin_layout Paragraph*
+public DataSourceService getDataSourceService(String wsPolicy, Strategy
+ strategy)
+\end_layout
+
+\begin_layout Standard
+Als Parameter bekommt die Funktion die Anforderungen als WS-Policy mitgeteilt
+ und kann anschließend mit der angegebenen Strategie vom Enum-Typ 
+\emph on
+Strategy,
+\emph default
+ wie z.B.
+ 
+\emph on
+FIRST_FIND
+\emph default
+, eine Datenquelle in der Datenquellenregistry ausfindig machen.
+ Mit den Informationen aus der Datenquellen-Registry kann der entsprechenden
+ Datasource Service bereitgestellt werden.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Connection-Service"
+
+\end_inset
+
+Connection Service
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-TODO
+Ersetzt Strategy Service, in Grobentwurf nachtragen
 \end_layout
 
 \end_inset
@@ -2522,39 +2655,64 @@ TODO
 \end_layout
 
 \begin_layout Standard
-Erster Fund, Bester Fund und Passender Fund
-\end_layout
-
-\begin_layout Subsubsection*
-2.4.6 Connection Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In Grobentwurf nachtragen
-\end_layout
+Der Connection Service bietet dem Datasource Service die Möglichkeit, JDBC
+ Verbindungen in einem Pool zwischenzuspeichern und bei Folgezugriffen wiederauf
+zunehmen.
+ Dadurch wird die Ausführung von Workflows mit DM-Aktivitäten beschleunigt
+ sowie ein Single Sign On erreicht, da bei Folgezugriffen keine erneute
+ Verbindung mit Authentifizierung durchgeführt werden muss.
+ Als Implementierung wird ein Connection Pool nach 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
 
 \end_inset
 
+ realisiert und ein JDBC Wrapper geschrieben, der Transparenz und Flexibilität
+ sowie Threadsicherheit des Connection Pooling gewährleistet.
+ Der Connection Service übernimmt dabei die Rolle des JDCConnectionPool
+ wie in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
 
+\end_inset
+
+ beschrieben und besitzt folgende Funktionen:
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized Connection getConnection() 
 \end_layout
 
 \begin_layout Standard
-Mit dem Connection Service werden Verbindungen zu Datenquellen aufrecht
- erhalten bzw.
- wiederhergestellt, dazu werden ggf.
- auch Authentifizierungsinformationen über den Storage Service zwischengespeiche
-rt um ein Single Sign On zu gewährleisten.
+Liefert die Verbindung zu der Datenquelle.
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized void returnConnection(JDCConnection conn) 
+\end_layout
+
+\begin_layout Standard
+Übergibt eine Verbindung zurück in den Pool bzw.
+ markiert die Verbindung als nicht mehr in Benutzung.
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized void closeConnections() 
+\end_layout
+
+\begin_layout Standard
+Schließt alle Verbindungen zu der Datenquelle.
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized void reapConnections() 
+\end_layout
+
+\begin_layout Standard
+Sorgt dafür, dass blockierte oder tote Verbindungen aus dem Pool gelöscht
+ werden, da dies nicht von allen Datenquellen unterstützt wird.
 \end_layout
 
 \begin_layout Subsection
@@ -2902,6 +3060,12 @@ reference "sub:Web-Services"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Hilfsklassen"
+
+\end_inset
+
 Hilfsklassen
 \end_layout
 
@@ -2914,9 +3078,9 @@ Printer
 \end_layout
 
 \begin_layout Standard
-Mit 
+Mit der Klasse
 \emph on
-Printer
+ Printer
 \emph default
  kann über die statische Methode 
 \emph on
@@ -2936,7 +3100,7 @@ Parameter
 \end_layout
 
 \begin_layout Standard
-Mit 
+Mit der Klasse 
 \emph on
 Parameter 
 \emph default
@@ -5782,7 +5946,23 @@ key "key-2"
 Spezifikation v2.3
 \emph default
 .
- Stupro-A SIMPL (2009) 
+ Stupro-A SIMPL (2009)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "ConnectionPooling"
+key "key-3"
+
+\end_inset
+
+
+\emph on
+Connection Pooling
+\emph default
+, http://java.sun.com/developer/onlineTraining/Programming/JDCBook/conpool.html,
+ Abruf: 01.04.2010
 \begin_inset Newpage pagebreak
 \end_inset
 
