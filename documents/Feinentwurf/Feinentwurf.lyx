@@ -2629,9 +2629,23 @@ Strategy,
 \emph on
 FIRST_FIND
 \emph default
-, eine Datenquelle in der Datenquellenregistry ausfindig machen.
- Mit den Informationen aus der Datenquellen-Registry kann der entsprechenden
+, eine Datenquelle in der Datenquellenregistry (UDDI) ausfindig machen.
+ Mit den Informationen aus der Datenquellenregistry kann der entsprechenden
  Datasource Service bereitgestellt werden.
+ Der Zugriff auf die Registry wird mit einem Client realisiert, der der
+ Apache jUDDI Registry 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+
+\end_inset
+
+ als 
+\emph on
+juddi-client-3.0.1.jar 
+\emph default
+beiliegt und mit dem auch andere UDDI v3 konformen Registries erreicht werden
+ können.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5963,6 +5977,21 @@ Connection Pooling
 \emph default
 , http://java.sun.com/developer/onlineTraining/Programming/JDCBook/conpool.html,
  Abruf: 01.04.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "ApachejUDDI"
+key "key-4"
+
+\end_inset
+
+ 
+\emph on
+Apache jUDDI
+\emph default
+, http://ws.apache.org/juddi/, Abruf: 01.04.2010
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -5995,7 +6024,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="2">
+<lyxtabular version="3" rows="14" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="10cm">
@@ -6214,6 +6243,26 @@ SQL
 
 \begin_layout Plain Layout
 Structured Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UDDI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Universal Description, Discovery and Integration
 \end_layout
 
 \end_inset
