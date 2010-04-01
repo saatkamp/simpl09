@@ -121,7 +121,6 @@ public interface DatasourceService {
 
     /**
      * 
-     * @param statement
      * @param dsAddress
      * @param dsSubtype
      * @param data
@@ -135,8 +134,6 @@ public interface DatasourceService {
     public boolean writeBack(
         @WebParam(name = "dsAddress", partName = "dsAddress")
         String dsAddress,
-        @WebParam(name = "statement", partName = "statement")
-        String statement,
         @WebParam(name = "data", partName = "data")
         String data,
         @WebParam(name = "dsType", partName = "dsType")

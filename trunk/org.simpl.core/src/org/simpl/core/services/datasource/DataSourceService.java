@@ -29,7 +29,7 @@ public interface DataSourceService {
   public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException;
 
-  public boolean writeBack(String dsAddress, String statement, DataObject data)
+  public boolean writeBack(String dsAddress, DataObject data)
       throws ConnectionException;
 
   public DataObject getMetaData(String dsAddress) throws ConnectionException;

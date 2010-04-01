@@ -46,7 +46,7 @@ public class XMLDBDatasource extends DataSourcePlugin {
    * java.lang.String, org.apache.tuscany.sdo.model.DataObject)
    */
   @Override
-  public boolean writeBack(String dsAddress, String statement, DataObject data)
+  public boolean writeBack(String dsAddress, DataObject data)
       throws ConnectionException {
     // TODO Auto-generated method stub
     return false;
