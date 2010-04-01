@@ -3749,6 +3749,13 @@ Der Reference Retrieval Service ist für zwei Funktionen zuständig.
  für das Laden der referenzierten Daten nach Auflösen einer Referenz.
 \end_layout
 
+\begin_layout Standard
+Der Reference Retrieval Service setzt dabei die get Methode um.
+ Diese Methode bekommt eine endpoint reference (EPR) als Eingabe übergeben.
+ Anschließend wird diese EPR aufgelöst und die referenzierten Daten werden
+ zurückgegeben.
+\end_layout
+
 \begin_layout Subsubsection
 Reference Management Service
 \end_layout
@@ -3756,6 +3763,34 @@ Reference Management Service
 \begin_layout Standard
 Der Reference Management Service ist für das Einfügen neuer Referenzen in
  das RRS, das Aktualisieren bestehender und das Löschen von Referenzen zuständig.
+\end_layout
+
+\begin_layout Standard
+Beim Einfügen einer neuen Referenz in das RRS wird die Methode insert ausgeführt.
+ Die Eingabe setzt sich dabei auf der einen Seite zusammen aus den Daten
+ auf die referenziert werden sollen (bzw.
+ der Ort wo sich diese befinden), der Ort an dem die Referenz gespeichert
+ werden soll und alle Informationen die notwendig sind um die Referenz aufzulöse
+n (zumm Beispiel ein SQL Statement).
+ Die Ausgabe der insert Methode ist im Normalfall eine EPR und eine Rückmeldung,
+ dass das Einfügen erfolgreich war, oder aber im Fehlerfall eine entsprechende
+ Fehlermeldung.
+\end_layout
+
+\begin_layout Standard
+Das Aktualisieren einer Referenz wird durch die update Methode umgesetzt.
+ Dabei erhält die update Methode die neuen Werte der Referenz, die Aktualisiert
+ werden.
+ Die Ausgabe ist analog zu insert eine entsprechende Rückmeldung ob die
+ Operation erfolgreich durchgeführt wurde.
+\end_layout
+
+\begin_layout Standard
+Zum Löschen einer Referenz aus dem RRS wird die Methode delete benutzt.
+ Diese Methode erhält als Eingabe eine EPR und entfernt anschließend die
+ entsprechende Referenz aus dem System.
+ Die Ausgabe der Methode ist eine entsprechende Rückmeldung ob das Löschen
+ erfolgreich war, oder ob ein Fehler aufgetreten ist.
 \end_layout
 
 \begin_layout Subsection
@@ -3775,6 +3810,18 @@ ervice des SIMPL Cores.
  Es soll möglich sein wie auch beim Datasource Service verschiedene Plug-Ins
  zu nutzen um das Lesen und Schreiben auf verschiedenen Datenquellen zu
  realisieren.
+\end_layout
+
+\begin_layout Subsection
+Der Transformation Service
+\end_layout
+
+\begin_layout Standard
+Obwohl der Transformation Service kein Bestandteil des RRS ist, wird er
+ dennoch in diesem Teil des Feinentwurfs besprochen, da seine Aufgabe direkt
+ mit dem RRS zusammenhängt.
+ Der Transformation Service hat die Aufgabe, eine EPR in standardkonformen
+ BPEL-Code umzuwandeln.
 \end_layout
 
 \begin_layout Section
