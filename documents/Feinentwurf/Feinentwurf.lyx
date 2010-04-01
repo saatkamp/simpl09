@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="18" columns="4">
+<lyxtabular version="3" rows="19" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1229,11 +1229,63 @@ reference "sec:SIMPLCore"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 2.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+01.04.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-Core-Client"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Kommunikation"
+
+\end_inset
+
+ überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.3
 \end_layout
 
 \end_inset
@@ -1251,7 +1303,7 @@ reference "sec:SIMPLCore"
 \begin_inset Text
 
 \begin_layout Plain Layout
-schneimi
+rehnre
 \end_layout
 
 \end_inset
@@ -1260,7 +1312,21 @@ schneimi
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kapitel 4.3 und 5 überarbeitet
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Apache-ODE"
+
+\end_inset
+
+ überarbeitet und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Reference-Resolution-System"
+
+\end_inset
+
+ eingefügt.
 \end_layout
 
 \end_inset
@@ -1377,6 +1443,26 @@ key "key-1"
 \end_inset
 
  Kapitel 3.2).
+\end_layout
+
+\begin_layout Itemize
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Reference-Resolution-System"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Reference Resolution System
+\begin_inset Quotes erd
+\end_inset
+
+ beschreibt die Implementierung des Referenc Resolution Systems und seiner
+ Services sowie des RRS DQ-Adapter Plug-In Systems.
 \end_layout
 
 \begin_layout Itemize
@@ -3545,6 +3631,155 @@ ODEProcess
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
+name "sec:Reference-Resolution-System"
+
+\end_inset
+
+Reference Resolution System
+\end_layout
+
+\begin_layout Standard
+Abbildung ..
+ zeigt den Aufbau des Reference Resolution System (RRS) mit Paketstruktur,
+ Klassen und Interfaces.
+ Die Zusammenhänge zwischen diesen werden durch verschiedene Verbindungspfeile
+ dargestellt und werden in den nachfolgenden Abschnitten genauer beschrieben.
+ Da einige Dienste des RRS auch von anderen Bestandteilen des Frameworks
+ genutzt werden, zum Beispiel von Apache ODE oder von Eclipse, bzw.
+ dem RRS Eclipse Plug-In, werden diese als Webservices zur Verfügung gestellt.
+ Sollten nachfolgend die Webservices direkt gemeint sein, dann werden diese
+ auch als solche bezeichent, z.B.
+ Reference Management Web Service.
+\end_layout
+
+\begin_layout Subsection
+Paketstruktur
+\end_layout
+
+\begin_layout Standard
+Das RRS besitzt folgende Paketstruktur, die sich in einen Kernbereich, die
+ Dienste und das RRS DQ-Adapter Plugin System unterteilen lässt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.rrs
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die zentralen Klassen des RRS die auf die unterschiedlichen
+ Dienste und die Datenquellen-Adapter zugreifen
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.rrs.retrieval
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Reference Retrieval
+ Service.
+ Dieser Dienst wird zum Auflösen einer Referenz und zum Laden der referenzierten
+ Daten benötigt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.rrs.management
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Reference Management
+ Service.
+ Dieser Dienst wird zur Verwaltung der Referenzen benötigt und bietet das
+ Hinzufügen neuer Referenzen (Insert), das Aktualisieren bestehender Referenzen
+ (Update) und das Löschen von Referenzen (Delete) an.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.rrs.dqadapter
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Datenquellen-Adapter
+ Plug-In Systems.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.rrs.dqadapter.plugins
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die Plug-Ins für die verschiedenen Datenquellen-Adapter.
+ Diese Adapter können für unterschiedliche Datenquellentypen entwickelt
+ werden.
+ Im Rahmen des Projektes werden allerdings nur Plug-Ins für den Zugriff
+ auf Relationale Datenbanken umgesetzt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.rrs.webservices
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die Web Services des RRS, welchen den Zugriff von Außen
+ auf das RRS ermöglichen.
+ Dies ist zum Beispiel für die Kommunikation mit Apache ODE notwendig.
+\end_layout
+
+\begin_layout Subsection
+Die RRS-Klasse
+\end_layout
+
+\begin_layout Standard
+Die RRS-Klasse bildet den zentralen Zugriffspunkt auf alle Klassen und Dienste
+ des RRS.
+ Diese Klasse stellt die einzelnen Dienste zur Verfügung und ist zuständig
+ für das RRS DQ-Adapter Plug-In System.
+\end_layout
+
+\begin_layout Subsection
+RRS Dienste
+\end_layout
+
+\begin_layout Subsubsection
+Reference Retrieval Service
+\end_layout
+
+\begin_layout Standard
+Der Reference Retrieval Service ist für zwei Funktionen zuständig.
+ Auf der einen Seite das Auflösen von Referenzen und auf der anderen Seite
+ für das Laden der referenzierten Daten nach Auflösen einer Referenz.
+\end_layout
+
+\begin_layout Subsubsection
+Reference Management Service
+\end_layout
+
+\begin_layout Standard
+Der Reference Management Service ist für das Einfügen neuer Referenzen in
+ das RRS, das Aktualisieren bestehender und das Löschen von Referenzen zuständig.
+\end_layout
+
+\begin_layout Subsection
+Das RRS DQ-Adapter Plug-In System
+\end_layout
+
+\begin_layout Standard
+Das RRS DQ-Adapter Plug-In System bietet eine Reihe von Adaptern an, die
+ für den Zugriff auf die jeweilligen Datenquellentypen zuständig sind.
+ Wie bereits zuvor erwähnt wird im Rahmen des Projektes allerdings nur ein
+ RDB-Adapter umgesetzt.
+\end_layout
+
+\begin_layout Standard
+Der Aufbau des RRS DQ-Adapter Plug-In Systems gleicht dem Aufbau des DatasourceS
+ervice des SIMPL Cores.
+ Es soll möglich sein wie auch beim Datasource Service verschiedene Plug-Ins
+ zu nutzen um das Lesen und Schreiben auf verschiedenen Datenquellen zu
+ realisieren.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Eclipse"
 
 \end_inset
@@ -4574,8 +4809,15 @@ org.eclipse.simpl.core.globalSettings
 
 \begin_layout Subsection
 SIMPL Core Client Plug-In
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-Core-Client"
+
+\end_inset
+
+
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Im Grobentwurf nachtragen, auch beschreiben warum Eclipse über die Web Services
