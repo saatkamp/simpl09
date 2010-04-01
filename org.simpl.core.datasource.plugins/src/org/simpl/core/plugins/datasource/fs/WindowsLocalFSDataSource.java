@@ -79,11 +79,10 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#manipulateData(java.lang.String,
-   * java.lang.String, commonj.sdo.DataObject)
+   * @see org.simpl.core.datasource.DatasourceService#manipulateData(java.lang.String, commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(String arg0, String arg1, DataObject arg2)
+  public boolean writeBack(String arg0, DataObject arg2)
       throws ConnectionException {
     // TODO Auto-generated method stub
     return false;

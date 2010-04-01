@@ -152,16 +152,15 @@ public class DB2RDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean writeBack(String dsAddress, String statement, DataObject data)
+  public boolean writeBack(String dsAddress, DataObject data)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean manipulateData(" + dsAddress + ", " + statement
-          + ") executed.");
+      logger.debug("boolean manipulateData(" + dsAddress + ", DataObject) executed.");
     }
 
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
-    Connection conn = openConnection(dsAddress);
+    /*Connection conn = openConnection(dsAddress);
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
@@ -173,7 +172,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     }
 
     logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
-    closeConnection(conn);
+    closeConnection(conn);*/
     return success;
   }
 

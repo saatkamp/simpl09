@@ -80,7 +80,6 @@ public class Datasource {
   @WebMethod(action = "writeBack")
   public boolean writeBack(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
       @WebParam(name = "data", targetNamespace = "") String data,
       @WebParam(name = "dsType", targetNamespace = "") String dsType,
       @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
@@ -90,7 +89,7 @@ public class Datasource {
 
     dataObject = (DataObject) Parameter.deserialize(data);
     success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .writeBack(dsAddress, statement, dataObject);
+        .writeBack(dsAddress, dataObject);
 
     return success;
   }
