@@ -3817,7 +3817,13 @@ Reference Resolution System
 \end_layout
 
 \begin_layout Standard
-Abbildung ..
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-Klassendiagramm"
+
+\end_inset
+
  zeigt den Aufbau des Reference Resolution System (RRS) mit Paketstruktur,
  Klassen und Interfaces.
  Die Zusammenhänge zwischen diesen werden durch verschiedene Verbindungspfeile
@@ -3828,6 +3834,48 @@ Abbildung ..
  Sollten nachfolgend die Webservices direkt gemeint sein, dann werden diese
  auch als solche bezeichent, z.B.
  Reference Management Web Service.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename diagramme/iteration2/RRS_Class_Diagramm.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-Klassendiagramm"
+
+\end_inset
+
+RRS Klassendiagramm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3900,6 +3948,10 @@ org.simpl.rrs.webservices
 Hier befinden sich die Web Services des RRS, welchen den Zugriff von Außen
  auf das RRS ermöglichen.
  Dies ist zum Beispiel für die Kommunikation mit Apache ODE notwendig.
+\end_layout
+
+\begin_layout Subsection
+Die endpoint reference (EPR)
 \end_layout
 
 \begin_layout Subsection
@@ -3988,6 +4040,12 @@ ervice des SIMPL Cores.
  Es soll möglich sein wie auch beim Datasource Service verschiedene Plug-Ins
  zu nutzen um das Lesen und Schreiben auf verschiedenen Datenquellen zu
  realisieren.
+\end_layout
+
+\begin_layout Standard
+Jeder Adapter verfügt dabei über einen lookup service für gespeicherte Abfragen
+ und Informationen und auf der anderen Seite über einen execution service
+ der die Abfragen auf die Datenquelle ausführt.
 \end_layout
 
 \begin_layout Subsection
