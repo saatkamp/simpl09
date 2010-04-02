@@ -4310,6 +4310,12 @@ Keyed References
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Uddi-Registry-Web"
+
+\end_inset
+
 Uddi Registry Web Interface
 \end_layout
 
@@ -5928,13 +5934,10 @@ Das UDDI Eclipse Plug-In ist analog zum RRS Eclipse Plug-In aufgebaut, mit
  werden kann und eine Verwaltung dieser nicht über das Plug-In in Eclipse
  realisiert wird.
  Für die Verwaltung wird ein spezielles Web Interface bereitgestellt, dass
- in Kapitel XYZ 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Referenz noch einfügen, sobald das Kapitel vorhanden ist
-\end_layout
+ in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Uddi-Registry-Web"
 
 \end_inset
 
