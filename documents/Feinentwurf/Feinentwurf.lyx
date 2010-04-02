@@ -3465,7 +3465,7 @@ name "sub:Ausführung-einer-BPEL-DM"
 
 \end_inset
 
-Ausführung einer BPEL-DM Extension Activity
+Ausführung der BPEL-DM Extension Activity
 \end_layout
 
 \begin_layout Standard
@@ -3483,19 +3483,156 @@ reference "fig:Ausführung-einer-SIMPL"
 \end_layout
 
 \begin_layout Enumerate
-Mit Hilfe der queryData-Methode werden die Daten aus der aktuellen Datenquelle
- gelesen und als SDO (DataObject) zurückgegeben
+Es werden das Statement, die Addresse der Datenquelle sowie das queryTarget
+ an die depositData-Methode übergeben, diese ist anschließend für die eigentlich
+e Ausführung des Statements auf der Datenquelle verantwortlich.
 \end_layout
 
 \begin_layout Enumerate
-Mit Hilfe der defineData-Methode wird eine neue Tabelle in der aktuellen
- Datenbank erzeugt
+Es wird die boolean Variable 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ zurückgegeben die angibt ob die Ausführung erfolgreich war oder nicht.
 \end_layout
 
 \begin_layout Enumerate
-Mit Hilfe der manipulateData-Methode wird das unter 1.
- erzeugte SDO (DataObject) in der in 2.
- erzeugten Tabelle abgespeichert
+Sollte 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ true sein, wird die Ausführung der Extension Acitivty fortgesetzt und entsprech
+end ein DMEnd Event erzeugt.
+ Wenn success false ist, wird ein DMFailure Event erzeugt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/Ausführung Query Activity.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ausführung-einer-SIMPL"
+
+\end_inset
+
+Ausführung einer Query Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Ausführung der weiteren Aktivitäten
+\end_layout
+
+\begin_layout Standard
+Die Aktivitäten Call, Create, Drop und Delete unterscheiden sich in der
+ Ausführung nur durch das jeweilige Statement, was für die BPEL-DM Extension-Act
+ivities keine Bedeutung hat.
+ Daher kann die Ausführung dieser vier Aktivitäten zusammengefasst werden:
+\end_layout
+
+\begin_layout Enumerate
+Es werden das Statement und die Addresse der Datenquelle an die defineData-Metho
+de übergeben, diese ist anschließend für die eigentliche Ausführung des
+ Statements auf der Datenquelle verantwortlich.
+\end_layout
+
+\begin_layout Enumerate
+Es wird die boolean Variable 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ zurückgegeben die angibt ob die Ausführung erfolgreich war oder nicht.
+\end_layout
+
+\begin_layout Enumerate
+Sollte 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ true sein, wird die Ausführung der Extension Acitivty fortgesetzt und entsprech
+end ein DMEnd Event erzeugt.
+ Wenn success false ist, wird ein DMFailure Event erzeugt.
+\end_layout
+
+\begin_layout Standard
+Analog zu den vier oben genannten Aktivitäten kann auch die Ausführung der
+ Aktivitäten Insert und Update zusammengefasst werden:
+\end_layout
+
+\begin_layout Enumerate
+Es werden das Statement und die Addresse der Datenquelle an die manipulate-Metho
+de übergeben, diese ist anschließend für die eigentliche Ausführung des
+ Statements auf der Datenquelle verantwortlich.
+\end_layout
+
+\begin_layout Enumerate
+Es wird die boolean Variable 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ zurückgegeben die angibt ob die Ausführung erfolgreich war oder nicht
+\end_layout
+
+\begin_layout Enumerate
+Sollte 
+\begin_inset Quotes eld
+\end_inset
+
+success
+\begin_inset Quotes erd
+\end_inset
+
+ true sein, wird die Ausführung der Extension Acitivty fortgesetzt und entsprech
+end ein DMEnd Event erzeugt.
+ Wenn success false ist, wird ein DMFailure Event erzeugt.
 \end_layout
 
 \begin_layout Standard
@@ -3534,47 +3671,6 @@ success
 \end_inset
 
  auf false gesetzt wurde.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/SIMPL-EA-Events-Sequenz-Diagramm.jpg
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Ausführung-einer-SIMPL"
-
-\end_inset
-
-Ausführung einer BPEL-DM Extension Activity
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
