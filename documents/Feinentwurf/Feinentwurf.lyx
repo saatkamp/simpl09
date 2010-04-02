@@ -20,7 +20,7 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Feinentwurf}
-\def\docvers{2.0}
+\def\docvers{2.3}
 \def\docautor{}
 \def\docdate{01. April 2010}
 
@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="19" columns="4">
+<lyxtabular version="3" rows="18" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1060,7 +1060,7 @@ reference "sub:SIMPL-DAO"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.3
 \end_layout
 
 \end_inset
@@ -1069,7 +1069,7 @@ reference "sub:SIMPL-DAO"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+26.03.2010
 \end_layout
 
 \end_inset
@@ -1078,7 +1078,7 @@ reference "sub:SIMPL-DAO"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+schneimi, hahnml, huettiwg, rehnre
 \end_layout
 
 \end_inset
@@ -1087,45 +1087,7 @@ reference "sub:SIMPL-DAO"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+Abschluss der Korrektur der 1.Iteration.
 \end_layout
 
 \end_inset
@@ -1444,6 +1406,10 @@ Zweck dieses Dokuments
 \begin_layout Standard
 Der Feinentwurf beschreibt Details der Implementierung der Komponenten,
  die im Grobentwurf 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-1"
@@ -3560,16 +3526,16 @@ Ausführung der weiteren Aktivitäten
 \end_layout
 
 \begin_layout Standard
-Die Aktivitäten Call, Create, Drop und Delete unterscheiden sich in der
- Ausführung nur durch das jeweilige Statement, was für die BPEL-DM Extension-Act
-ivities keine Bedeutung hat.
+Die Aktivitäten Call, Create, Drop, Delete, Insert und Update unterscheiden
+ sich in der Ausführung nur durch das jeweilige Statement, was für die BPEL-DM
+ Extension-Activities keine Bedeutung hat.
  Daher kann die Ausführung dieser vier Aktivitäten zusammengefasst werden:
 \end_layout
 
 \begin_layout Enumerate
-Es werden das Statement und die Addresse der Datenquelle an die defineData-Metho
-de übergeben, diese ist anschließend für die eigentliche Ausführung des
- Statements auf der Datenquelle verantwortlich.
+Es werden das Statement und die Addresse der Datenquelle an die executeStatement
+-Methode übergeben, diese ist anschließend für die eigentliche Ausführung
+ des Statements auf der Datenquelle verantwortlich.
 \end_layout
 
 \begin_layout Enumerate
@@ -3581,44 +3547,7 @@ success
 \begin_inset Quotes erd
 \end_inset
 
- zurückgegeben die angibt ob die Ausführung erfolgreich war oder nicht.
-\end_layout
-
-\begin_layout Enumerate
-Sollte 
-\begin_inset Quotes eld
-\end_inset
-
-success
-\begin_inset Quotes erd
-\end_inset
-
- true sein, wird die Ausführung der Extension Acitivty fortgesetzt und entsprech
-end ein DMEnd Event erzeugt.
- Wenn success false ist, wird ein DMFailure Event erzeugt.
-\end_layout
-
-\begin_layout Standard
-Analog zu den vier oben genannten Aktivitäten kann auch die Ausführung der
- Aktivitäten Insert und Update zusammengefasst werden:
-\end_layout
-
-\begin_layout Enumerate
-Es werden das Statement und die Addresse der Datenquelle an die manipulate-Metho
-de übergeben, diese ist anschließend für die eigentliche Ausführung des
- Statements auf der Datenquelle verantwortlich.
-\end_layout
-
-\begin_layout Enumerate
-Es wird die boolean Variable 
-\begin_inset Quotes eld
-\end_inset
-
-success
-\begin_inset Quotes erd
-\end_inset
-
- zurückgegeben die angibt ob die Ausführung erfolgreich war oder nicht
+ zurückgegeben, die angibt, ob die Ausführung erfolgreich war oder nicht.
 \end_layout
 
 \begin_layout Enumerate
@@ -3681,16 +3610,6 @@ name "sub:SIMPL-DAO"
 \end_inset
 
 SIMPL DAO 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Einige Dinge in Iter 2 zu ändern
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3939,8 +3858,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename diagramme/iteration2/RRS_Class_Diagramm.jpg
+	width 100text%
 
 \end_inset
 
@@ -4218,6 +4139,13 @@ key "key-2"
 
 ).
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -6193,8 +6121,36 @@ key "key-3"
 \emph on
 Connection Pooling
 \emph default
-, http://java.sun.com/developer/onlineTraining/Programming/JDCBook/conpool.html,
- Abruf: 01.04.2010
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+http://
+""
+\lang ngerman
+java.sun.com/
+""
+\lang ngerman
+developer/
+""
+\lang ngerman
+onlineTraining/
+""
+\lang ngerman
+Programming/
+""
+\lang ngerman
+JDCBook/
+""
+\lang ngerman
+conpool.html
+\end_layout
+
+\end_inset
+
+.
+ Zuletzt aufgerufen am 01.04.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -6209,7 +6165,24 @@ key "key-4"
 \emph on
 Apache jUDDI
 \emph default
-, http://ws.apache.org/juddi/, Abruf: 01.04.2010
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+http://
+""
+\lang ngerman
+ws.apache.org/
+""
+\lang ngerman
+juddi/
+\end_layout
+
+\end_inset
+
+.
+ Zuletzt aufgerufen am 01.04.2010
 \begin_inset Newpage pagebreak
 \end_inset
 
