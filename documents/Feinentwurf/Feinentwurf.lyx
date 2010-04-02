@@ -3951,10 +3951,6 @@ Hier befinden sich die Web Services des RRS, welchen den Zugriff von Außen
 \end_layout
 
 \begin_layout Subsection
-Die endpoint reference (EPR)
-\end_layout
-
-\begin_layout Subsection
 Die RRS-Klasse
 \end_layout
 
@@ -3963,10 +3959,37 @@ Die RRS-Klasse bildet den zentralen Zugriffspunkt auf alle Klassen und Dienste
  des RRS.
  Diese Klasse stellt die einzelnen Dienste zur Verfügung und ist zuständig
  für das RRS DQ-Adapter Plug-In System.
+ Die RRS Klasse wird von Apache ODE benutzt, um in den Extension Activities
+ vorkommende Referenzen aufzulösen.
 \end_layout
 
 \begin_layout Subsection
 RRS Dienste
+\end_layout
+
+\begin_layout Standard
+Wie in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+ bereits erläutert, besitzt das RRS zwei Dienste bzw.
+ Webservice Interfaces.
+ Dies ist auf der einen Seite der Reference Retrieval Service und auf der
+ anderen Seite der Reference Management Service.
+ Beide Services verfügen wie in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-Klassendiagramm"
+
+\end_inset
+
+ angegeben über einen entsprechenden Webservice.
+ Die Umsetzung der Webservices geschieht dabei analog zur Umsetzung der
+ Webservices des SIMPL-Cores, weswegen dieses hier nicht noch einmal expliziet
+ erläuertert wird.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3974,16 +3997,28 @@ Reference Retrieval Service
 \end_layout
 
 \begin_layout Standard
-Der Reference Retrieval Service ist für zwei Funktionen zuständig.
- Auf der einen Seite das Auflösen von Referenzen und auf der anderen Seite
- für das Laden der referenzierten Daten nach Auflösen einer Referenz.
+Der Reference Retrieval Service ist für Auflösen von Referenzen und auf
+ der anderen Seite für das Laden der referenzierten Daten nach Auflösen
+ einer Referenz.
 \end_layout
 
 \begin_layout Standard
-Der Reference Retrieval Service setzt dabei die get Methode um.
- Diese Methode bekommt eine endpoint reference (EPR) als Eingabe übergeben.
+Der Reference Retrieval Service setzt dabei die 
+\shape italic
+get
+\shape default
+ Methode des RRS um.
+ Diese Methode bekommt eine 
+\shape italic
+endpoint reference
+\shape default
+ (EPR) als Eingabe übergeben.
  Anschließend wird diese EPR aufgelöst und die referenzierten Daten werden
  zurückgegeben.
+ Die EPR wird dabei direkt in ihrem xsd-Format übergeben.
+ Anschließend werden innerhalb der get-Methode alle zum Auflösen der Referenz
+ und zum Laden der referenzierten Daten notwendigen Informationen ausgelesen
+ und die Daten werden zurückgegeben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3996,27 +4031,41 @@ Der Reference Management Service ist für das Einfügen neuer Referenzen in
 \end_layout
 
 \begin_layout Standard
-Beim Einfügen einer neuen Referenz in das RRS wird die Methode insert ausgeführt.
- Die Eingabe setzt sich dabei auf der einen Seite zusammen aus den Daten
- auf die referenziert werden sollen (bzw.
- der Ort wo sich diese befinden), der Ort an dem die Referenz gespeichert
- werden soll und alle Informationen die notwendig sind um die Referenz aufzulöse
-n (zumm Beispiel ein SQL Statement).
- Die Ausgabe der insert Methode ist im Normalfall eine EPR und eine Rückmeldung,
+Beim Einfügen einer neuen Referenz in das RRS wird die Methode 
+\shape italic
+insert
+\shape default
+ ausgeführt.
+ Die Eingabe setzt sich dabei auf der einen Seite aus dem Wert der Referenz
+ zusammen, bzw.
+ die Daten und der Ort an dem sie sich befinden und auf der anderen Seite
+ der Ort an dem die Referenz gespeichert werden soll und alle Informationen
+ die notwendig sind um die Referenz aufzulösen (beispielsweise alle Informatione
+n über eine RDB und ein entsprechendes SQL Statement, mit dem die Daten
+ ausgelesen werden können).
+ Die Ausgabe der insert-Methode ist im Normalfall eine EPR und eine Rückmeldung,
  dass das Einfügen erfolgreich war, oder aber im Fehlerfall eine entsprechende
  Fehlermeldung.
 \end_layout
 
 \begin_layout Standard
-Das Aktualisieren einer Referenz wird durch die update Methode umgesetzt.
+Das Aktualisieren einer Referenz wird durch die 
+\shape italic
+update
+\shape default
+ Methode umgesetzt.
  Dabei erhält die update Methode die neuen Werte der Referenz, die Aktualisiert
- werden.
- Die Ausgabe ist analog zu insert eine entsprechende Rückmeldung ob die
- Operation erfolgreich durchgeführt wurde.
+ werden soll.
+ Die Ausgabe ist analog zur insert-Methode eine entsprechende Rückmeldung
+ ob die Operation erfolgreich durchgeführt wurde.
 \end_layout
 
 \begin_layout Standard
-Zum Löschen einer Referenz aus dem RRS wird die Methode delete benutzt.
+Zum Löschen einer Referenz aus dem RRS wird die Methode 
+\shape italic
+delete
+\shape default
+ benutzt.
  Diese Methode erhält als Eingabe eine EPR und entfernt anschließend die
  entsprechende Referenz aus dem System.
  Die Ausgabe der Methode ist eine entsprechende Rückmeldung ob das Löschen
@@ -4040,12 +4089,16 @@ ervice des SIMPL Cores.
  Es soll möglich sein wie auch beim Datasource Service verschiedene Plug-Ins
  zu nutzen um das Lesen und Schreiben auf verschiedenen Datenquellen zu
  realisieren.
-\end_layout
+ Wie in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-Klassendiagramm"
 
-\begin_layout Standard
-Jeder Adapter verfügt dabei über einen lookup service für gespeicherte Abfragen
- und Informationen und auf der anderen Seite über einen execution service
- der die Abfragen auf die Datenquelle ausführt.
+\end_inset
+
+ zu sehen, gibt es einen sogenannten DQAdapterProvider, der anhand der Informati
+onen die in der EPR angegeben sind, die richtige Datenquelle auswählt und
+ eine Instanz des entsprechenden Adapters erzeugt.
 \end_layout
 
 \begin_layout Subsection
@@ -4058,6 +4111,17 @@ Obwohl der Transformation Service kein Bestandteil des RRS ist, wird er
  mit dem RRS zusammenhängt.
  Der Transformation Service hat die Aufgabe, eine EPR in standardkonformen
  BPEL-Code umzuwandeln.
+ Dies bedeutet, dass zur Modelierung des Prozesses eine <referenceVariable>
+ erzeugt wird und diese vor dem Deployment des Prozesses mit Hilfe des Transform
+ation Service in standardkonformen BPEL-Code umgewandelt wird (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Section
