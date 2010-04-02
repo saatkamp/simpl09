@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="18" columns="4">
+<lyxtabular version="3" rows="19" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1319,7 +1319,7 @@ reference "sub:Connection-Service"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1328,7 +1328,7 @@ reference "sub:Connection-Service"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1337,7 +1337,7 @@ reference "sub:Connection-Service"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1346,7 +1346,7 @@ rehnre
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1365,6 +1365,51 @@ reference "sec:Reference-Resolution-System"
 \end_inset
 
  eingefügt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+01.04.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Uddi-Registry"
+
+\end_inset
+
+ erstellt.
 \end_layout
 
 \end_inset
@@ -4151,6 +4196,194 @@ key "key-2"
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
+name "sec:Uddi-Registry"
+
+\end_inset
+
+Uddi Registry
+\end_layout
+
+\begin_layout Standard
+In diesen Abschnitt wird die verwendete UDDI Regestry jUDDI, beschrieben
+ und wie Datenquellen in ihr abgespeichert und Abgerufen werden.
+\end_layout
+
+\begin_layout Subsection
+Aufbau der Registry
+\end_layout
+
+\begin_layout Standard
+Die Registry besteht hauptsächlich aus den nachfolgend beschriebenen Basiselemen
+ten:
+\end_layout
+
+\begin_layout Subsubsection
+Business Entity
+\end_layout
+
+\begin_layout Standard
+Beschreibt ein Unternehmen und biete Kontaktinformationen, von einem Unternehmen
+, dass den Webservice anbitet.
+\end_layout
+
+\begin_layout Subsubsection
+Business Service
+\end_layout
+
+\begin_layout Standard
+Hier werden die Angebotenen Webservices näher charakterisiert.
+ Dies kann mehrer Web Servives oder auch nur mehrere Ausprägungen eines
+ Webservices beinhalten.
+\end_layout
+
+\begin_layout Subsubsection
+Binding Template
+\end_layout
+
+\begin_layout Standard
+Das Binding Template gibt detailierte technische Informationen zur nutzung
+ des Webservice an, wie zum Beispiel die Adresse (URL) über die auf einen
+ Webservice zugegriffen werden kann.
+\end_layout
+
+\begin_layout Subsubsection
+TModel
+\end_layout
+
+\begin_layout Standard
+Beim TModel handelt es sich um eine generische Komponente, mit der man detailier
+te Informationen über einen Service zusammenfassen kann.
+ Mithilfe der TModels, lassen sich Webservices auch in Kategorien einordnen.
+\end_layout
+
+\begin_layout Subsection
+Nutzung der Registry für Datenquellen
+\end_layout
+
+\begin_layout Standard
+In den folgenden Abschnitten wird erklärt, wie die verschiedenen Basiskomponente
+n von Uddi genutzt werden um eine Abspeicherung von Datenquellen zu ermöglichen.
+\end_layout
+
+\begin_layout Subsubsection
+Business Entity
+\end_layout
+
+\begin_layout Standard
+Beschreibt ein Unternehmen und biete Kontaktinformationen, des Anbieters
+ der Datenquellen.
+\end_layout
+
+\begin_layout Subsubsection
+Business Service
+\end_layout
+
+\begin_layout Standard
+Hier kann die Datenquelle kurz textuell beschrieben werden.
+\end_layout
+
+\begin_layout Subsubsection
+Binding Template
+\end_layout
+
+\begin_layout Standard
+Die Binding Tempaltes entsprechen nun den Datenquellendefinitionen.
+ Die Adresse des Webservices wird zur Adresse, über die auf die Datenquelle
+ zugegriffen werden kann.
+\end_layout
+
+\begin_layout Subsubsection
+TModel
+\end_layout
+
+\begin_layout Standard
+Mit Hilfe des TModels werden die Datenquellentypen und Subtypen modeliert
+ und können über 
+\begin_inset Quotes eld
+\end_inset
+
+Keyed References
+\begin_inset Quotes erd
+\end_inset
+
+ den Datenquellen zugewiesen werden
+\end_layout
+
+\begin_layout Subsection
+Uddi Registry Web Interface
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uddi-Webinterface"
+
+\end_inset
+
+ zeigt den Prototypen des Uddi Web Interface.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Creon/Documents/uni/stupro/svn/documents/Feinentwurf/Uddi-Webinterface.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uddi-Webinterface"
+
+\end_inset
+
+Uddi Webinterface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Auf der linken Seite, werden die bereits vorhandenen Datenquellen angezeigt.
+ Durch einen Druck auf new, können neue Datenquellen hinzugefügt werden.
+ Wird eine bereits vorhandene Datenquellen ausgewählt, so werden im rechten
+ Teil, alle wichtigen Informationen darüber angezeigt und können verändert
+ werden.
+ Durch einen druck auf delete, wird die Datenquelle komplett gelöscht.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
 name "sec:Eclipse"
 
 \end_inset
@@ -6126,25 +6359,9 @@ Connection Pooling
 status open
 
 \begin_layout Plain Layout
-http://
-""
-\lang ngerman
-java.sun.com/
-""
-\lang ngerman
-developer/
-""
-\lang ngerman
-onlineTraining/
-""
-\lang ngerman
-Programming/
-""
-\lang ngerman
-JDCBook/
-""
-\lang ngerman
-conpool.html
+
+http://""java.sun.com/""developer/""onlineTraining/""Programming/""JDCBook/""conpo
+ol.html
 \end_layout
 
 \end_inset
@@ -6170,13 +6387,8 @@ Apache jUDDI
 status open
 
 \begin_layout Plain Layout
-http://
-""
-\lang ngerman
-ws.apache.org/
-""
-\lang ngerman
-juddi/
+
+http://""ws.apache.org/""juddi/
 \end_layout
 
 \end_inset
