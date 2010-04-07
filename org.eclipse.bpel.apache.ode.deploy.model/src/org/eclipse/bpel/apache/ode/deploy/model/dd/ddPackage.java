@@ -305,13 +305,31 @@ public interface ddPackage extends EPackage {
 	int PROCESS_TYPE__MODEL = 12;
 
 	/**
+	 * The feature id for the '<em><b>Auditing Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_TYPE__AUDITING_ACTIVE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Data Sources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_TYPE__DATA_SOURCES = 14;
+
+	/**
 	 * The number of structural features of the '<em>Process Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_TYPE_FEATURE_COUNT = 13;
+	int PROCESS_TYPE_FEATURE_COUNT = 15;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.
@@ -647,6 +665,61 @@ public interface ddPackage extends EPackage {
 	int TSERVICE_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl <em>TDatasources</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTDatasources()
+	 * @generated
+	 */
+	int TDATASOURCES = 13;
+
+	/**
+	 * The feature id for the '<em><b>Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCES__ADDRESS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Data Source Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCES__DATA_SOURCE_NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCES__PASSWORD = 2;
+
+	/**
+	 * The feature id for the '<em><b>User Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCES__USER_NAME = 3;
+
+	/**
+	 * The number of structural features of the '<em>TDatasources</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCES_FEATURE_COUNT = 4;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -654,7 +727,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateType()
 	 * @generated
 	 */
-	int GENERATE_TYPE = 13;
+	int GENERATE_TYPE = 14;
 
 	/**
 	 * The meta object id for the '<em>Generate Type Object</em>' data type.
@@ -664,7 +737,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateTypeObject()
 	 * @generated
 	 */
-	int GENERATE_TYPE_OBJECT = 14;
+	int GENERATE_TYPE_OBJECT = 15;
 
 
 	/**
@@ -915,6 +988,28 @@ public interface ddPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProcessType_Model();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Auditing Active</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive()
+	 * @see #getProcessType()
+	 * @generated
+	 */
+	EAttribute getProcessType_AuditingActive();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources <em>Data Sources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Data Sources</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources()
+	 * @see #getProcessType()
+	 * @generated
+	 */
+	EReference getProcessType_DataSources();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType <em>Property Type</em>}'.
@@ -1183,6 +1278,60 @@ public interface ddPackage extends EPackage {
 	EAttribute getTService_Port();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources <em>TDatasources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TDatasources</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources
+	 * @generated
+	 */
+	EClass getTDatasources();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getAddress <em>Address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Address</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getAddress()
+	 * @see #getTDatasources()
+	 * @generated
+	 */
+	EAttribute getTDatasources_Address();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getDataSourceName <em>Data Source Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Data Source Name</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getDataSourceName()
+	 * @see #getTDatasources()
+	 * @generated
+	 */
+	EAttribute getTDatasources_DataSourceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getPassword <em>Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Password</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getPassword()
+	 * @see #getTDatasources()
+	 * @generated
+	 */
+	EAttribute getTDatasources_Password();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getUserName <em>User Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>User Name</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getUserName()
+	 * @see #getTDatasources()
+	 * @generated
+	 */
+	EAttribute getTDatasources_UserName();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1419,6 +1568,22 @@ public interface ddPackage extends EPackage {
 		EReference PROCESS_TYPE__MODEL = eINSTANCE.getProcessType_Model();
 
 		/**
+		 * The meta object literal for the '<em><b>Auditing Active</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_TYPE__AUDITING_ACTIVE = eINSTANCE.getProcessType_AuditingActive();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Sources</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_TYPE__DATA_SOURCES = eINSTANCE.getProcessType_DataSources();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1635,6 +1800,48 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TSERVICE__PORT = eINSTANCE.getTService_Port();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl <em>TDatasources</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTDatasources()
+		 * @generated
+		 */
+		EClass TDATASOURCES = eINSTANCE.getTDatasources();
+
+		/**
+		 * The meta object literal for the '<em><b>Address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TDATASOURCES__ADDRESS = eINSTANCE.getTDatasources_Address();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Source Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TDATASOURCES__DATA_SOURCE_NAME = eINSTANCE.getTDatasources_DataSourceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TDATASOURCES__PASSWORD = eINSTANCE.getTDatasources_Password();
+
+		/**
+		 * The meta object literal for the '<em><b>User Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TDATASOURCES__USER_NAME = eINSTANCE.getTDatasources_UserName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.

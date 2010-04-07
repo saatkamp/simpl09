@@ -18,6 +18,7 @@ import javax.xml.namespace.QName;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide;
@@ -57,6 +58,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#isAuditingActive <em>Auditing Active</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getDataSources <em>Data Sources</em>}</li>
  * </ul>
  * </p>
  *
@@ -289,6 +292,45 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * @ordered
 	 */
 	protected org.eclipse.bpel.model.Process model;
+
+	/**
+	 * The default value of the '{@link #isAuditingActive() <em>Auditing Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAuditingActive()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean AUDITING_ACTIVE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAuditingActive() <em>Auditing Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAuditingActive()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean auditingActive = AUDITING_ACTIVE_EDEFAULT;
+
+	/**
+	 * This is true if the Auditing Active attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean auditingActiveESet;
+
+	/**
+	 * The cached value of the '{@link #getDataSources() <em>Data Sources</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDataSources()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TDatasources> dataSources;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -696,6 +738,64 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isAuditingActive() {
+		return auditingActive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAuditingActive(boolean newAuditingActive) {
+		boolean oldAuditingActive = auditingActive;
+		auditingActive = newAuditingActive;
+		boolean oldAuditingActiveESet = auditingActiveESet;
+		auditingActiveESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__AUDITING_ACTIVE, oldAuditingActive, auditingActive, !oldAuditingActiveESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetAuditingActive() {
+		boolean oldAuditingActive = auditingActive;
+		boolean oldAuditingActiveESet = auditingActiveESet;
+		auditingActive = AUDITING_ACTIVE_EDEFAULT;
+		auditingActiveESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ddPackage.PROCESS_TYPE__AUDITING_ACTIVE, oldAuditingActive, AUDITING_ACTIVE_EDEFAULT, oldAuditingActiveESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetAuditingActive() {
+		return auditingActiveESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<TDatasources> getDataSources() {
+		if (dataSources == null) {
+			dataSources = new EObjectContainmentEList<TDatasources>(TDatasources.class, this, ddPackage.PROCESS_TYPE__DATA_SOURCES);
+		}
+		return dataSources;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -709,6 +809,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return ((InternalEList<?>)getInvoke()).basicRemove(otherEnd, msgs);
 			case ddPackage.PROCESS_TYPE__MEX_INTERCEPTORS:
 				return basicSetMexInterceptors(null, msgs);
+			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
+				return ((InternalEList<?>)getDataSources()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -722,11 +824,11 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ddPackage.PROCESS_TYPE__ACTIVE:
-				return isActive() ? Boolean.TRUE : Boolean.FALSE;
+				return isActive();
 			case ddPackage.PROCESS_TYPE__RETIRED:
-				return isRetired() ? Boolean.TRUE : Boolean.FALSE;
+				return isRetired();
 			case ddPackage.PROCESS_TYPE__IN_MEMORY:
-				return isInMemory() ? Boolean.TRUE : Boolean.FALSE;
+				return isInMemory();
 			case ddPackage.PROCESS_TYPE__PROPERTY:
 				return getProperty();
 			case ddPackage.PROCESS_TYPE__PROCESS_EVENTS:
@@ -748,6 +850,10 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__MODEL:
 				if (resolve) return getModel();
 				return basicGetModel();
+			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
+				return isAuditingActive();
+			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
+				return getDataSources();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -762,13 +868,13 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ddPackage.PROCESS_TYPE__ACTIVE:
-				setActive(((Boolean)newValue).booleanValue());
+				setActive((Boolean)newValue);
 				return;
 			case ddPackage.PROCESS_TYPE__RETIRED:
-				setRetired(((Boolean)newValue).booleanValue());
+				setRetired((Boolean)newValue);
 				return;
 			case ddPackage.PROCESS_TYPE__IN_MEMORY:
-				setInMemory(((Boolean)newValue).booleanValue());
+				setInMemory((Boolean)newValue);
 				return;
 			case ddPackage.PROCESS_TYPE__PROPERTY:
 				getProperty().clear();
@@ -802,6 +908,13 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return;
 			case ddPackage.PROCESS_TYPE__MODEL:
 				setModel((org.eclipse.bpel.model.Process)newValue);
+				return;
+			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
+				setAuditingActive((Boolean)newValue);
+				return;
+			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
+				getDataSources().clear();
+				getDataSources().addAll((Collection<? extends TDatasources>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -854,6 +967,12 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__MODEL:
 				setModel((org.eclipse.bpel.model.Process)null);
 				return;
+			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
+				unsetAuditingActive();
+				return;
+			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
+				getDataSources().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -892,6 +1011,10 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ddPackage.PROCESS_TYPE__MODEL:
 				return model != null;
+			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
+				return isSetAuditingActive();
+			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
+				return dataSources != null && !dataSources.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -920,6 +1043,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 		result.append(fileName);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", auditingActive: ");
+		if (auditingActiveESet) result.append(auditingActive); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}
