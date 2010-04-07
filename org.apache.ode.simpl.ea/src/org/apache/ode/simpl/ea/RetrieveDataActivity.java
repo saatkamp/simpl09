@@ -8,8 +8,8 @@ import org.apache.ode.simpl.events.DMEnd;
 import org.apache.ode.simpl.events.DMFailure;
 import org.apache.ode.simpl.events.DMStarted;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.datasource.DatasourceService;
-import org.simpl.core.datasource.exceptions.ConnectionException;
+import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 
@@ -36,11 +36,11 @@ public class RetrieveDataActivity extends DataManagementActivity {
 		//erhalten und dann die Daten des Queries darin ablegen!
 		Variable variable = context.getVisibleVariables().get(dataVariableName);
 		
-		DatasourceService datasourceService = SIMPLCore.getInstance()
-				.datasourceService(getDsType(), getDsSubType());
+		DataSourceService datasourceService = SIMPLCore.getInstance()
+				.dataSourceService(getDsType(), getDsSubType());
 
 		try {
-			DataObject dataObject = datasourceService.queryData(getDsAddress(), getDsStatement());
+			DataObject dataObject = datasourceService.retrieveData(getDsAddress(), getDsStatement());
 			
 			if (dataObject == null) {
 				ScopeEvent DMFailure = new DMFailure("Wollo is doff");
