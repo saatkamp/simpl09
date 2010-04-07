@@ -17,6 +17,7 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TEnableEventList;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
@@ -148,6 +149,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass tDatasourcesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum generateTypeEEnum = null;
 
 	/**
@@ -184,20 +192,10 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link ddPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -209,7 +207,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		if (isInited) return (ddPackage)EPackage.Registry.INSTANCE.getEPackage(ddPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ddPackageImpl theddPackage = (ddPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof ddPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new ddPackageImpl());
+		ddPackageImpl theddPackage = (ddPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ddPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ddPackageImpl());
 
 		isInited = true;
 
@@ -217,9 +215,6 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		BPELPackage.eINSTANCE.eClass();
 		PartnerlinktypePackage.eINSTANCE.eClass();
 		MessagepropertiesPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
-		WSDLPackage.eINSTANCE.eClass();
-		XSDPackage.eINSTANCE.eClass();
 		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -231,6 +226,9 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		// Mark meta-data to indicate it can't be changed
 		theddPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(ddPackage.eNS_URI, theddPackage);
 		return theddPackage;
 	}
 
@@ -439,6 +437,24 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 */
 	public EReference getProcessType_Model() {
 		return (EReference)processTypeEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessType_AuditingActive() {
+		return (EAttribute)processTypeEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcessType_DataSources() {
+		return (EReference)processTypeEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -671,6 +687,51 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTDatasources() {
+		return tDatasourcesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasources_Address() {
+		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasources_DataSourceName() {
+		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasources_Password() {
+		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasources_UserName() {
+		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getGenerateType() {
 		return generateTypeEEnum;
 	}
@@ -738,6 +799,8 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(processTypeEClass, PROCESS_TYPE__FILE_NAME);
 		createEAttribute(processTypeEClass, PROCESS_TYPE__NAME);
 		createEReference(processTypeEClass, PROCESS_TYPE__MODEL);
+		createEAttribute(processTypeEClass, PROCESS_TYPE__AUDITING_ACTIVE);
+		createEReference(processTypeEClass, PROCESS_TYPE__DATA_SOURCES);
 
 		propertyTypeEClass = createEClass(PROPERTY_TYPE);
 		createEAttribute(propertyTypeEClass, PROPERTY_TYPE__ANY);
@@ -772,6 +835,12 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tServiceEClass, TSERVICE__ANY);
 		createEAttribute(tServiceEClass, TSERVICE__NAME);
 		createEAttribute(tServiceEClass, TSERVICE__PORT);
+
+		tDatasourcesEClass = createEClass(TDATASOURCES);
+		createEAttribute(tDatasourcesEClass, TDATASOURCES__ADDRESS);
+		createEAttribute(tDatasourcesEClass, TDATASOURCES__DATA_SOURCE_NAME);
+		createEAttribute(tDatasourcesEClass, TDATASOURCES__PASSWORD);
+		createEAttribute(tDatasourcesEClass, TDATASOURCES__USER_NAME);
 
 		// Create enums
 		generateTypeEEnum = createEEnum(GENERATE_TYPE);
@@ -842,6 +911,8 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getProcessType_FileName(), theXMLTypePackage.getString(), "fileName", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessType_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Model(), theBPELPackage.getProcess(), null, "model", null, 0, 1, ProcessType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessType_AuditingActive(), theXMLTypePackage.getBoolean(), "auditingActive", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessType_DataSources(), this.getTDatasources(), null, "dataSources", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, PropertyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -876,6 +947,12 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTService_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTService_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTService_Port(), theXMLTypePackage.getNCName(), "port", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tDatasourcesEClass, TDatasources.class, "TDatasources", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTDatasources_Address(), theXMLTypePackage.getString(), "address", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasources_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasources_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasources_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(generateTypeEEnum, GenerateType.class, "GenerateType");
@@ -1080,6 +1157,22 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 			 "name", "name"
 		   });		
 		addAnnotation
+		  (getProcessType_AuditingActive(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "auditing",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (getProcessType_DataSources(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "dataSources",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
 		  (propertyTypeEClass, 
 		   source, 
 		   new String[] {
@@ -1264,6 +1357,41 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "port"
+		   });		
+		addAnnotation
+		  (tDatasourcesEClass, 
+		   source, 
+		   new String[] {
+			 "name", "tDatasources",
+			 "kind", "empty"
+		   });		
+		addAnnotation
+		  (getTDatasources_Address(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "address"
+		   });		
+		addAnnotation
+		  (getTDatasources_DataSourceName(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "dataSourceName"
+		   });		
+		addAnnotation
+		  (getTDatasources_Password(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "password"
+		   });		
+		addAnnotation
+		  (getTDatasources_UserName(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "userName"
 		   });
 	}
 

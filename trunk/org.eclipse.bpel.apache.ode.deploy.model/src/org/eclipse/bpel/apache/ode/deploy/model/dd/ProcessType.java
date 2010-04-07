@@ -38,6 +38,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getModel <em>Model</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources <em>Data Sources</em>}</li>
  * </ul>
  * </p>
  *
@@ -453,5 +455,76 @@ public interface ProcessType extends EObject {
 	 * @generated
 	 */
 	void setModel(org.eclipse.bpel.model.Process value);
+
+	/**
+	 * Returns the value of the '<em><b>Auditing Active</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Auditing Active</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Auditing Active</em>' attribute.
+	 * @see #isSetAuditingActive()
+	 * @see #unsetAuditingActive()
+	 * @see #setAuditingActive(boolean)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_AuditingActive()
+	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 *        extendedMetaData="kind='element' name='auditing' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	boolean isAuditingActive();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Auditing Active</em>' attribute.
+	 * @see #isSetAuditingActive()
+	 * @see #unsetAuditingActive()
+	 * @see #isAuditingActive()
+	 * @generated
+	 */
+	void setAuditingActive(boolean value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetAuditingActive()
+	 * @see #isAuditingActive()
+	 * @see #setAuditingActive(boolean)
+	 * @generated
+	 */
+	void unsetAuditingActive();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Auditing Active</em>' attribute is set.
+	 * @see #unsetAuditingActive()
+	 * @see #isAuditingActive()
+	 * @see #setAuditingActive(boolean)
+	 * @generated
+	 */
+	boolean isSetAuditingActive();
+
+	/**
+	 * Returns the value of the '<em><b>Data Sources</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Sources</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Sources</em>' containment reference list.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_DataSources()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='dataSources' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<TDatasources> getDataSources();
 
 } // ProcessType

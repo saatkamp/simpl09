@@ -148,6 +148,15 @@ public interface ddFactory extends EFactory {
 	TService createTService();
 
 	/**
+	 * Returns a new object of class '<em>TDatasources</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TDatasources</em>'.
+	 * @generated
+	 */
+	TDatasources createTDatasources();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
