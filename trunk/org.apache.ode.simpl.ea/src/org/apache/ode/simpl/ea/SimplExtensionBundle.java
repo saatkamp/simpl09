@@ -1,7 +1,6 @@
 package org.apache.ode.simpl.ea;
 
 import org.apache.ode.bpel.rtrep.common.extension.AbstractExtensionBundle;
-import org.apache.ode.simpl.ea.sdo.XsdTypeLoader;
 
 public class SimplExtensionBundle extends AbstractExtensionBundle {
 
@@ -23,9 +22,10 @@ public class SimplExtensionBundle extends AbstractExtensionBundle {
 		super.registerExtensionOperation("insertActivity", InsertActivity.class);
 		super.registerExtensionOperation("createActivity", CreateActivity.class);
 		super.registerExtensionOperation("updateActivity", UpdateActivity.class);
+//		super.registerExtensionOperation("retrieveDataActivity", RetrieveDataActivity.class);
 		
-		//Initiales Definieren der SIMPL-DM-SDO-Types
-		XsdTypeLoader.defineSIMPLTypes();
+//		//Initiales Definieren der SIMPL-DM-SDO-Types
+//		XsdTypeLoader.defineSIMPLTypes();
 	}
 
 }
