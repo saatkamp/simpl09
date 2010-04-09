@@ -495,6 +495,14 @@
                  type="org.eclipse.bpel.model.ReferenceVariable">
            </input>
         </propertySection>
+        <propertySection
+              class="org.eclipse.bpel.ui.properties.ReferenceVariableInitSection"
+              id="org.eclipse.bpel.ui.sections.ReferenceVariableInitSection"
+              tab="org.eclipse.bpel.ui.tabs.details">
+           <input
+                 type="org.eclipse.bpel.model.ReferenceVariable">
+           </input>
+        </propertySection>
      </propertySections>
 
   </extension>
