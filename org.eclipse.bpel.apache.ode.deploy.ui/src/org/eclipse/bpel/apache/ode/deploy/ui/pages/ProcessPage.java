@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide;
@@ -33,6 +35,8 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 import org.eclipse.bpel.apache.ode.deploy.ui.Activator;
 import org.eclipse.bpel.apache.ode.deploy.ui.editors.ODEDeployMultiPageEditor;
+import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.AddDataSourceDialog;
+import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.EditDataSourceDialog;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
 import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.PartnerLinks;
@@ -40,6 +44,7 @@ import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.ui.BPELUIPlugin;
 import org.eclipse.bpel.ui.IBPELUIConstants;
+import org.eclipse.bpel.ui.commands.AddToListCommand;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.bpel.ui.util.IModelVisitor;
 import org.eclipse.core.resources.IFile;
@@ -55,6 +60,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -69,8 +75,10 @@ import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ICellModifier;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.OwnerDrawLabelProvider;
@@ -81,6 +89,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
@@ -113,24 +122,45 @@ import org.eclipse.wst.wsdl.Service;
  * 
  * @author Simon Moser (IBM)
  * @author Tammo van Lessen (IAAS)
+ * 
+ * @author Michael Hahn (SIMPL) Integration of new deployment settings for SIMPL
+ *         (auditing, datasources).
  */
 public class ProcessPage extends FormPage implements IResourceChangeListener {
 	public static final int PARTNER_LINK_COLUMN = 0;
 	public static final int PORT_COLUMN = 1;
 	public static final int SERVICE_COLUMN = 2;
 	public static final int BINDING_COLUMN = 3;
-	
+
 	public static final String INSTANCE_LIFECYCLE_NAME = "instanceLifecycle"; //$NON-NLS-1$
 	public static final String ACTIVITY_LIFECYCLE_NAME = "activityLifecycle"; //$NON-NLS-1$
 	public static final String DATA_HANDLING_NAME = "dataHandling"; //$NON-NLS-1$
 	public static final String SCOPE_HANDLING_NAME = "scopeHandling"; //$NON-NLS-1$
 	public static final String CORRELATION_NAME = "correlation"; //$NON-NLS-1$
-	
-	public static final String[] PROCESS_STATUS = new String[] {"activated", "deactivated", "retired"};
+
+	public static final String[] PROCESS_STATUS = new String[] { "activated",
+			"deactivated", "retired" };
 	public static final int STATUS_ACTIVATED = 0;
 	public static final int STATUS_DEACTIVATED = 1;
 	public static final int STATUS_RETIRED = 2;
-	
+
+	public static final String[] PROCESS_AUDITING_STATUS = new String[] {
+			"activated", "deactivated" };
+	public static final int AUDITING_STATUS_ACTIVATED = 0;
+	public static final int AUDITING_STATUS_DEACTIVATED = 1;
+
+	public static final String DATASOURCE_NAME = "name";
+	public static final String DATASOURCE_ADDRESS = "address";
+	public static final String DATASOURCE_USER = "userName";
+	public static final String DATASOURCE_PW = "password";
+
+	public static final int DS_NAME_COLUMN = 0;
+	public static final int DS_ADDRESS_COLUMN = 1;
+	public static final int DS_USER_COLUMN = 2;
+	public static final int DS_PW_COLUMN = 3;
+
+
+
 	public static final Map<String, String> eventNameById = new HashMap<String, String>();
 	static {
 		eventNameById.put(INSTANCE_LIFECYCLE_NAME, "Instance life cycle");
@@ -140,55 +170,76 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		eventNameById.put(CORRELATION_NAME, "Correlation");
 	}
 
+	public static final Map<String, String> dataSourceNameById = new HashMap<String, String>();
+	static {
+		dataSourceNameById.put(DATASOURCE_NAME, "Name");
+		dataSourceNameById.put(DATASOURCE_ADDRESS, "Address");
+		dataSourceNameById.put(DATASOURCE_USER, "User name");
+		dataSourceNameById.put(DATASOURCE_PW, "Password");
+	}
+
 	protected ODEDeployMultiPageEditor editor;
 	protected ProcessType processType;
 	protected FormToolkit toolkit;
 	private EditingDomain domain;
 	private TableViewer scopeTableViewer;
 	private Form mainform;
-	
+	protected TDatasources datasources;
+
 	public ProcessPage(FormEditor editor, ProcessType pt) {
-		super(editor, "ODED" + pt.getName().toString(), pt.getName().getLocalPart()); //$NON-NLS-1$
+		super(editor,
+				"ODED" + pt.getName().toString(), pt.getName().getLocalPart()); //$NON-NLS-1$
 		this.processType = pt;
-		this.editor = (ODEDeployMultiPageEditor)editor;
-		
-		ResourcesPlugin.getWorkspace().addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
-		
+		this.editor = (ODEDeployMultiPageEditor) editor;
+
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(this,
+				IResourceChangeEvent.POST_CHANGE);
+
 		this.domain = this.editor.getEditingDomain();
+
+		if (pt.getDataSources() != null){
+			this.datasources = pt.getDataSources();
+		}else{
+			this.datasources = ddFactory.eINSTANCE.createTDatasources();
+			pt.setDataSources(datasources);
+		}
 	}
 
 	@Override
 	protected void createFormContent(IManagedForm managedForm) {
 		toolkit = managedForm.getToolkit();
 		ScrolledForm form = managedForm.getForm();
-		form.setText(MessageFormat.format("Process {0} - {1}", processType.getName().getLocalPart(), processType.getName().getNamespaceURI()));
+		form.setText(MessageFormat.format("Process {0} - {1}", processType
+				.getName().getLocalPart(), processType.getName()
+				.getNamespaceURI()));
 		toolkit.decorateFormHeading(form.getForm());
-		mainform = form.getForm(); 
+		mainform = form.getForm();
 		mainform.addMessageHyperlinkListener(new HyperlinkAdapter() {
 			@Override
 			public void linkActivated(HyperlinkEvent e) {
 				refreshModel();
 			}
-		
+
 		});
 
-		form.setImage(BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_PROCESS_32));
+		form.setImage(BPELUIPlugin.INSTANCE
+				.getImage(IBPELUIConstants.ICON_PROCESS_32));
 
 		RowLayout layout = new RowLayout();
- 		layout.wrap = false;
- 		layout.pack = true;
- 		layout.justify = false;
- 		layout.fill = true;
- 		layout.type = SWT.VERTICAL;
- 		layout.marginLeft = 5;
- 		layout.marginTop = 5;
- 		layout.marginRight = 5;
- 		layout.marginBottom = 5;
- 		layout.spacing = 5;
- 		
+		layout.wrap = false;
+		layout.pack = true;
+		layout.justify = false;
+		layout.fill = true;
+		layout.type = SWT.VERTICAL;
+		layout.marginLeft = 5;
+		layout.marginTop = 5;
+		layout.marginRight = 5;
+		layout.marginBottom = 5;
+		layout.spacing = 5;
+
 		form.getBody().setLayout(layout);
 		Dialog.applyDialogFont(form.getBody());
-		
+
 		Composite client = createSection(form.getBody(), "General", null, 1);
 
 		final Composite statusArea = new Composite(client, SWT.NONE);
@@ -207,126 +258,175 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			}
 		}
 		comboStatus.addSelectionListener(new SelectionAdapter() {
-		
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Command setActiveCommand = SetCommand.create(domain, processType, ddPackage.eINSTANCE.getProcessType_Active(), comboStatus.getSelectionIndex() == STATUS_ACTIVATED);
-				Command setRetiredCommand = SetCommand.create(domain, processType, ddPackage.eINSTANCE.getProcessType_Retired(), comboStatus.getSelectionIndex() == STATUS_RETIRED);				
+				Command setActiveCommand = SetCommand.create(domain,
+						processType, ddPackage.eINSTANCE
+								.getProcessType_Active(), comboStatus
+								.getSelectionIndex() == STATUS_ACTIVATED);
+				Command setRetiredCommand = SetCommand.create(domain,
+						processType, ddPackage.eINSTANCE
+								.getProcessType_Retired(), comboStatus
+								.getSelectionIndex() == STATUS_RETIRED);
 				CompoundCommand compoundCommand = new CompoundCommand();
 				compoundCommand.append(setActiveCommand);
-				compoundCommand.append(setRetiredCommand);					
+				compoundCommand.append(setRetiredCommand);
 				domain.getCommandStack().execute(compoundCommand);
 			}
 		});
-		
-		final Button btnRunInMemory = toolkit.createButton(client, "Run this process in memory", SWT.CHECK); 
-		btnRunInMemory.setToolTipText("Define a process as being executed only in-memory. This gives better performance, but the processes cannot be queried by using the ODE Management API.");
+
+		final Button btnRunInMemory = toolkit.createButton(client,
+				"Run this process in memory", SWT.CHECK);
+		btnRunInMemory
+				.setToolTipText("Define a process as being executed only in-memory. This gives better performance, but the processes cannot be queried by using the ODE Management API.");
 		btnRunInMemory.setSelection(processType.isInMemory());
 		btnRunInMemory.addSelectionListener(new SelectionAdapter() {
-		
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Command setInMemoryCommand = SetCommand.create(domain, processType, ddPackage.eINSTANCE.getProcessType_InMemory(), btnRunInMemory.getSelection());
+				Command setInMemoryCommand = SetCommand.create(domain,
+						processType, ddPackage.eINSTANCE
+								.getProcessType_InMemory(), btnRunInMemory
+								.getSelection());
 				domain.getCommandStack().execute(setInMemoryCommand);
 			}
-		
+
 		});
 
 		String serviceDescription = "The table contains interfaces the process provides.  Specify the service, port and binding you want to use for each PartnerLink listed";
-		createInterfaceWidget(form.getBody(), processType, managedForm, "Inbound Interfaces (Services)", serviceDescription, true);
-		String invokeDescription = "The table contains interfaces the process invokes.  Specify the service, port and binding you want to use for each PartnerLink listed";	
-		createInterfaceWidget(form.getBody(), processType, managedForm, "Outbound Interfaces (Invokes)", invokeDescription, false);		
+		createInterfaceWidget(form.getBody(), processType, managedForm,
+				"Inbound Interfaces (Services)", serviceDescription, true);
+		String invokeDescription = "The table contains interfaces the process invokes.  Specify the service, port and binding you want to use for each PartnerLink listed";
+		createInterfaceWidget(form.getBody(), processType, managedForm,
+				"Outbound Interfaces (Invokes)", invokeDescription, false);
 
 		createProcessMonitoringSection(form.getBody());
 		createScopeMonitoringSection(form.getBody());
-				
+
+		// Create SIMPL elements
+		toolkit.createLabel(statusArea, "The auditing of this process is ");
+		final Combo comboAuditingStatus = new Combo(statusArea, SWT.READ_ONLY);
+		toolkit.adapt(comboAuditingStatus);
+		comboAuditingStatus.setItems(PROCESS_AUDITING_STATUS);
+		if (processType.isAuditingActive()) {
+			comboAuditingStatus.select(AUDITING_STATUS_ACTIVATED);
+		} else {
+			comboAuditingStatus.select(AUDITING_STATUS_DEACTIVATED);
+		}
+		comboAuditingStatus.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Command setAuditingActiveCommand = SetCommand
+						.create(
+								domain,
+								processType,
+								ddPackage.eINSTANCE
+										.getProcessType_AuditingActive(),
+								comboAuditingStatus.getSelectionIndex() == AUDITING_STATUS_ACTIVATED);
+				domain.getCommandStack().execute(setAuditingActiveCommand);
+			}
+		});
+
+		String dataSourceDescription = "The table contains data sources which are used in the process."
+				+ " Specify a name, the address, the username and the password of each data source to use them in the process.";
+
+		createDataSourceSection(form.getBody(), processType, managedForm,
+				"Data source specification", dataSourceDescription);
+
 		form.reflow(true);
 	}
 
-	private void createInterfaceWidget(Composite fClient, ProcessType current, final IManagedForm managedForm, String title, String description, boolean isInbound) {
-		
+	private void createInterfaceWidget(Composite fClient, ProcessType current,
+			final IManagedForm managedForm, String title, String description,
+			boolean isInbound) {
+
 		// Set column names
-		String[] columnNames = new String[] { 
-				//"Partner Link (click on entry to open definition)",
-				"Partner Link",
-				"Associated Port",
-				"Related Service",
-				"Binding Used"
-				};
-		
-		Section section = toolkit.createSection(fClient, Section.TWISTIE | Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
-		section.setText(title); 
-		section.setDescription(description); 
+		String[] columnNames = new String[] {
+				// "Partner Link (click on entry to open definition)",
+				"Partner Link", "Associated Port", "Related Service",
+				"Binding Used" };
+
+		Section section = toolkit.createSection(fClient, Section.TWISTIE
+				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
+		section.setText(title);
+		section.setDescription(description);
 		section.marginHeight = 5;
-		
+
 		Composite client = toolkit.createComposite(section, SWT.WRAP);
 		GridLayout layout = new GridLayout();
 		layout.marginWidth = 2;
 		layout.marginHeight = 2;
 		client.setLayout(layout);
-		final Table t = toolkit.createTable(client, SWT.SINGLE | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
-		
-	    TableColumn tc1 = new TableColumn(t, SWT.CENTER);
-	    tc1.setText(columnNames[0]);
+		final Table t = toolkit.createTable(client, SWT.SINGLE | SWT.BORDER
+				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION
+				| SWT.HIDE_SELECTION);
 
-	    TableColumn tc2 = new TableColumn(t, SWT.CENTER);
-	    tc2.setText(columnNames[1]);
-	    
-	    TableColumn tc3 = new TableColumn(t, SWT.CENTER);
-	    tc3.setText(columnNames[2]);
-	    
-	    TableColumn tc4 = new TableColumn(t, SWT.CENTER);    
-	    tc4.setText(columnNames[3]);
-	    
-	    t.setHeaderVisible(true);
+		TableColumn tc1 = new TableColumn(t, SWT.CENTER);
+		tc1.setText(columnNames[0]);
+
+		TableColumn tc2 = new TableColumn(t, SWT.CENTER);
+		tc2.setText(columnNames[1]);
+
+		TableColumn tc3 = new TableColumn(t, SWT.CENTER);
+		tc3.setText(columnNames[2]);
+
+		TableColumn tc4 = new TableColumn(t, SWT.CENTER);
+		tc4.setText(columnNames[3]);
+
+		t.setHeaderVisible(true);
 		t.setLinesVisible(true);
-		
+
 		GridData gd = new GridData(GridData.FILL_BOTH);
 		t.setLayoutData(gd);
 		toolkit.paintBordersFor(client);
-		
+
 		section.setClient(client);
 		final SectionPart spart = new SectionPart(section);
 		managedForm.addPart(spart);
-		
-		
-	    URI deployDescriptorURI = current.eResource().getURI();
-	    IFile ddFile = DeployUtils.getIFileForURI(deployDescriptorURI);
-	    
+
+		URI deployDescriptorURI = current.eResource().getURI();
+		IFile ddFile = DeployUtils.getIFileForURI(deployDescriptorURI);
+
 		TableViewer viewer = new TableViewer(t);
 		viewer.setUseHashlookup(true);
 		viewer.setColumnProperties(columnNames);
 		viewer.setContentProvider(new PortTypeContentProvider(isInbound));
-		viewer.setLabelProvider(new PortTypeLabelProvider(ddFile.getProject(), current.eResource().getResourceSet()));
-		viewer.setInput(current);		
+		viewer.setLabelProvider(new PortTypeLabelProvider(ddFile.getProject(),
+				current.eResource().getResourceSet()));
+		viewer.setInput(current);
 
-	    for (int i = 0, n = t.getColumnCount(); i < n; i++) {
-		      t.getColumn(i).pack();
-		}		
-		
-	    // Create the cell editors
-	    CellEditor[] editors = new CellEditor[columnNames.length];
+		for (int i = 0, n = t.getColumnCount(); i < n; i++) {
+			t.getColumn(i).pack();
+		}
 
-	    // TODO: Column 1 : HyperLink Listener
-//		final TableEditor editor = new TableEditor(t);
-//		editor.horizontalAlignment = SWT.LEFT;
-//		editor.grabHorizontal = true;
-//		IWorkbenchPage wbPage= getEditor().getSite().getPage();
-//		InterfaceTableListener tableListener = new InterfaceTableListener(current, t, editor, toolkit, wbPage, isInbound);
-//		t.addListener(SWT.MouseDown, tableListener);
+		// Create the cell editors
+		CellEditor[] editors = new CellEditor[columnNames.length];
 
-	    // Column 2 : Associate Service (ComboBox)
-	    ServiceCellEditor sCellEditor = new ServiceCellEditor(t, ddFile.getProject(), current.eResource().getResourceSet());
-	    editors[1] = sCellEditor;
+		// TODO: Column 1 : HyperLink Listener
+		// final TableEditor editor = new TableEditor(t);
+		// editor.horizontalAlignment = SWT.LEFT;
+		// editor.grabHorizontal = true;
+		// IWorkbenchPage wbPage= getEditor().getSite().getPage();
+		// InterfaceTableListener tableListener = new
+		// InterfaceTableListener(current, t, editor, toolkit, wbPage,
+		// isInbound);
+		// t.addListener(SWT.MouseDown, tableListener);
 
-        // Assign the cell editors to the viewer 
-	    viewer.setCellEditors(editors);
-	    
-	    // Set the cell modifier for the viewer
-	    viewer.setCellModifier(new InterfaceWidgetCellModifier(viewer, columnNames));
-      
+		// Column 2 : Associate Service (ComboBox)
+		ServiceCellEditor sCellEditor = new ServiceCellEditor(t, ddFile
+				.getProject(), current.eResource().getResourceSet());
+		editors[1] = sCellEditor;
+
+		// Assign the cell editors to the viewer
+		viewer.setCellEditors(editors);
+
+		// Set the cell modifier for the viewer
+		viewer.setCellModifier(new InterfaceWidgetCellModifier(viewer,
+				columnNames));
+
 	}
-	
 
 	class InterfaceWidgetCellModifier implements ICellModifier {
 		private Viewer viewer;
@@ -336,10 +436,10 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			this.viewer = viewer;
 			this.columnNames = columnNames;
 		}
-		
+
 		public boolean canModify(Object element, String property) {
 			if (property.equals(columnNames[1])) {
-				return true; 
+				return true;
 			}
 			return false;
 		}
@@ -347,19 +447,17 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		public Object getValue(Object element, String property) {
 			if (!property.equals(columnNames[1])) {
 				return null;
-			}			
+			}
 			if (element instanceof TProvide) {
 				TProvide provide = (TProvide) element;
 				return provide.getService();
-			} 
-			else if (element instanceof TInvoke) {
+			} else if (element instanceof TInvoke) {
 				TInvoke invoke = (TInvoke) element;
 				return invoke.getService();
-			}
-			else {
+			} else {
 				return null;
 			}
-			
+
 		}
 
 		public void modify(Object element, String property, Object value) {
@@ -367,108 +465,122 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			if (!property.equals(columnNames[1])) {
 				return;
 			}
-			
+
 			Item item = (Item) element;
 			Object o = item.getData();
 			if (o instanceof TProvide) {
 				TProvide provide = (TProvide) o;
-				
+
 				TService service = provide.getService();
 				if (service == null) {
 					service = ddFactory.eINSTANCE.createTService();
 					provide.setService(service);
 				}
-				
+
 				if (value == null) {
-					Command unsetServiceCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Name(), SetCommand.UNSET_VALUE);
-					Command unsetPortCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Port(), SetCommand.UNSET_VALUE);				
+					Command unsetServiceCommand = SetCommand.create(domain,
+							service, ddPackage.eINSTANCE.getTService_Name(),
+							SetCommand.UNSET_VALUE);
+					Command unsetPortCommand = SetCommand.create(domain,
+							service, ddPackage.eINSTANCE.getTService_Port(),
+							SetCommand.UNSET_VALUE);
 					CompoundCommand compoundCommand = new CompoundCommand();
 					compoundCommand.append(unsetServiceCommand);
-					compoundCommand.append(unsetPortCommand);					
+					compoundCommand.append(unsetPortCommand);
 					domain.getCommandStack().execute(compoundCommand);
-				}
-				else {
+				} else {
 					Port port = (Port) value;
 					String portName = port.getName();
-					
-					Command setPortCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Port(), portName);
-					
+
+					Command setPortCommand = SetCommand.create(domain, service,
+							ddPackage.eINSTANCE.getTService_Port(), portName);
+
 					Service wsdlService = (Service) port.eContainer();
 					QName qname = wsdlService.getQName();
-					Command setServiceCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Name(), qname);
+					Command setServiceCommand = SetCommand.create(domain,
+							service, ddPackage.eINSTANCE.getTService_Name(),
+							qname);
 
-					
 					CompoundCommand compoundCommand = new CompoundCommand();
 					compoundCommand.append(setServiceCommand);
 					compoundCommand.append(setPortCommand);
-									
+
 					domain.getCommandStack().execute(compoundCommand);
 				}
-			}
-			else if (o instanceof TInvoke) {
+			} else if (o instanceof TInvoke) {
 				TInvoke invoke = (TInvoke) o;
-			
+
 				TService service = invoke.getService();
 				if (service == null) {
 					service = ddFactory.eINSTANCE.createTService();
 					invoke.setService(service);
-				}	
-				
+				}
+
 				if (value == null) {
-					Command unsetServiceCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Name(), SetCommand.UNSET_VALUE);
-					Command unsetPortCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Port(), SetCommand.UNSET_VALUE);				
+					Command unsetServiceCommand = SetCommand.create(domain,
+							service, ddPackage.eINSTANCE.getTService_Name(),
+							SetCommand.UNSET_VALUE);
+					Command unsetPortCommand = SetCommand.create(domain,
+							service, ddPackage.eINSTANCE.getTService_Port(),
+							SetCommand.UNSET_VALUE);
 					CompoundCommand compoundCommand = new CompoundCommand();
 					compoundCommand.append(unsetServiceCommand);
-					compoundCommand.append(unsetPortCommand);					
+					compoundCommand.append(unsetPortCommand);
 					domain.getCommandStack().execute(compoundCommand);
-				}
-				else {		
+				} else {
 					Port port = (Port) value;
 					String portName = port.getName();
-					
-					Command setPortCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Port(), portName);
-					
+
+					Command setPortCommand = SetCommand.create(domain, service,
+							ddPackage.eINSTANCE.getTService_Port(), portName);
+
 					Service wsdlService = (Service) port.eContainer();
 					QName qname = wsdlService.getQName();
-					Command setServiceCommand = SetCommand.create(domain, service, ddPackage.eINSTANCE.getTService_Name(), qname);
+					Command setServiceCommand = SetCommand.create(domain,
+							service, ddPackage.eINSTANCE.getTService_Name(),
+							qname);
 
-					
 					CompoundCommand compoundCommand = new CompoundCommand();
 					compoundCommand.append(setServiceCommand);
 					compoundCommand.append(setPortCommand);
-									
+
 					domain.getCommandStack().execute(compoundCommand);
 				}
 			}
-					
+
 			viewer.refresh();
 		}
 
 	}
-	
-	private Composite createSection(Composite parent, String title, String desc, int numColumns) {
+
+	private Composite createSection(Composite parent, String title,
+			String desc, int numColumns) {
 
 		Section section = null;
 		if (desc != null) {
-			section = toolkit.createSection(parent, Section.TWISTIE | Section.TITLE_BAR | Section.DESCRIPTION | Section.EXPANDED);
+			section = toolkit.createSection(parent, Section.TWISTIE
+					| Section.TITLE_BAR | Section.DESCRIPTION
+					| Section.EXPANDED);
 			section.setDescription(desc);
 		} else {
-			section = toolkit.createSection(parent, Section.TWISTIE | Section.TITLE_BAR | Section.EXPANDED);
+			section = toolkit.createSection(parent, Section.TWISTIE
+					| Section.TITLE_BAR | Section.EXPANDED);
 		}
 		section.setText(title);
-		
+
 		Composite client = toolkit.createComposite(section);
 		GridLayout layout = new GridLayout();
 		layout.marginWidth = layout.marginHeight = 0;
 		layout.numColumns = numColumns;
 		client.setLayout(layout);
 		section.setClient(client);
-		
+
 		return client;
 	}
 
 	private void createProcessMonitoringSection(Composite parent) {
-		final Composite client = createSection(parent, "Process-level Monitoring Events", null, 2);
+		final Composite client = createSection(parent,
+				"Process-level Monitoring Events", null, 2);
 		final Composite group = toolkit.createComposite(client);
 		group.setLayout(new RowLayout(SWT.VERTICAL));
 		GridData gd = new GridData();
@@ -477,28 +589,31 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		group.setLayoutData(gd);
 
 		final Button btnNone = toolkit.createButton(group, "None", SWT.RADIO);
-		final Button btnAll = toolkit.createButton(group, "All", SWT.RADIO); 
-		final Button btnSelected = toolkit.createButton(group, "Selected", SWT.RADIO);
+		final Button btnAll = toolkit.createButton(group, "All", SWT.RADIO);
+		final Button btnSelected = toolkit.createButton(group, "Selected",
+				SWT.RADIO);
 
 		Composite wrapper = toolkit.createComposite(client);
 		wrapper.setLayout(new RowLayout());
-		final CheckboxTableViewer ctv = CheckboxTableViewer.newCheckList(wrapper, SWT.NONE);
+		final CheckboxTableViewer ctv = CheckboxTableViewer.newCheckList(
+				wrapper, SWT.NONE);
 		wrapper.setLayoutData(gd);
 		toolkit.paintBordersFor(wrapper);
-		
+
 		ctv.setContentProvider(new ArrayContentProvider());
 		ctv.setLabelProvider(new LabelProvider() {
-		
+
 			@Override
 			public String getText(Object element) {
 				return eventNameById.get(element);
 			}
-		
-		});
-		ctv.setInput(new String[] {INSTANCE_LIFECYCLE_NAME, ACTIVITY_LIFECYCLE_NAME, 
-	    		DATA_HANDLING_NAME, SCOPE_HANDLING_NAME, CORRELATION_NAME});
 
-		//create defaulting process event settings
+		});
+		ctv.setInput(new String[] { INSTANCE_LIFECYCLE_NAME,
+				ACTIVITY_LIFECYCLE_NAME, DATA_HANDLING_NAME,
+				SCOPE_HANDLING_NAME, CORRELATION_NAME });
+
+		// create defaulting process event settings
 		if (processType.getProcessEvents() == null) {
 			TProcessEvents pe = ddFactory.eINSTANCE.createTProcessEvents();
 			pe.setGenerate(GenerateType.ALL);
@@ -520,21 +635,28 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			btnSelected.setSelection(true);
 			ctv.getControl().setEnabled(true);
 		}
-		
-		final SelectionAdapter sa = new SelectionAdapter(){
+
+		final SelectionAdapter sa = new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnAll == e.getSource()) {
 					ctv.getControl().setEnabled(false);
-					Command command = SetCommand.create(domain, processType.getProcessEvents(), ddPackage.eINSTANCE.getTProcessEvents_Generate(), GenerateType.ALL);
+					Command command = SetCommand.create(domain, processType
+							.getProcessEvents(), ddPackage.eINSTANCE
+							.getTProcessEvents_Generate(), GenerateType.ALL);
 					domain.getCommandStack().execute(command);
 				} else if (btnNone == e.getSource()) {
 					ctv.getControl().setEnabled(false);
-					Command command = SetCommand.create(domain, processType.getProcessEvents(), ddPackage.eINSTANCE.getTProcessEvents_Generate(), GenerateType.NONE);
+					Command command = SetCommand.create(domain, processType
+							.getProcessEvents(), ddPackage.eINSTANCE
+							.getTProcessEvents_Generate(), GenerateType.NONE);
 					domain.getCommandStack().execute(command);
 				} else {
 					ctv.getControl().setEnabled(true);
-					Command command = SetCommand.create(domain, processType.getProcessEvents(), ddPackage.eINSTANCE.getTProcessEvents_Generate(), SetCommand.UNSET_VALUE);
+					Command command = SetCommand.create(domain, processType
+							.getProcessEvents(), ddPackage.eINSTANCE
+							.getTProcessEvents_Generate(),
+							SetCommand.UNSET_VALUE);
 					domain.getCommandStack().execute(command);
 				}
 			}
@@ -544,105 +666,308 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		btnNone.addSelectionListener(sa);
 		btnSelected.addSelectionListener(sa);
 
-		ctv.setCheckedElements(processType.getProcessEvents().getEnableEvent().toArray());
+		ctv.setCheckedElements(processType.getProcessEvents().getEnableEvent()
+				.toArray());
 		final ISelectionChangedListener scl = new ISelectionChangedListener() {
-		
+
 			public void selectionChanged(SelectionChangedEvent event) {
-				Command command = SetCommand.create(domain, processType.getProcessEvents(), ddPackage.eINSTANCE.getTEnableEventList_EnableEvent(), Arrays.asList(ctv.getCheckedElements()));
+				Command command = SetCommand.create(domain, processType
+						.getProcessEvents(), ddPackage.eINSTANCE
+						.getTEnableEventList_EnableEvent(), Arrays.asList(ctv
+						.getCheckedElements()));
 				domain.getCommandStack().execute(command);
 			}
-		
+
 		};
-		
+
 		ctv.addSelectionChangedListener(scl);
 	}
-	
+
 	private void createScopeMonitoringSection(Composite parent) {
-		Composite client = createSection(parent, "Scope-level Monitoring Events", null, 1);
-		
-		scopeTableViewer = new TableViewer(toolkit.createTable(client, SWT.SINGLE | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | 
-				SWT.FULL_SELECTION | SWT.HIDE_SELECTION));
+		Composite client = createSection(parent,
+				"Scope-level Monitoring Events", null, 1);
+
+		scopeTableViewer = new TableViewer(toolkit.createTable(client,
+				SWT.SINGLE | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL
+						| SWT.FULL_SELECTION | SWT.HIDE_SELECTION));
 		Table table = scopeTableViewer.getTable();
-		scopeTableViewer.setContentProvider(new ScopeMonitoringEventContentProvider());
+		scopeTableViewer
+				.setContentProvider(new ScopeMonitoringEventContentProvider());
 		scopeTableViewer.setUseHashlookup(true);
-		TableViewerColumn column = new TableViewerColumn(scopeTableViewer, SWT.NONE);
+		TableViewerColumn column = new TableViewerColumn(scopeTableViewer,
+				SWT.NONE);
 		column.getColumn().setText("Scope");
 		column.setLabelProvider(new ColumnLabelProvider() {
-		
+
 			@Override
 			public String getText(Object element) {
-				return ((Scope)element).getName();
+				return ((Scope) element).getName();
 			}
 
 			@Override
 			public Image getImage(Object element) {
-				return BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_SCOPE_16);
+				return BPELUIPlugin.INSTANCE
+						.getImage(IBPELUIConstants.ICON_SCOPE_16);
 			}
 		});
-		
-		String[] columns = new String[] {INSTANCE_LIFECYCLE_NAME, ACTIVITY_LIFECYCLE_NAME, DATA_HANDLING_NAME, SCOPE_HANDLING_NAME, CORRELATION_NAME};
+
+		String[] columns = new String[] { INSTANCE_LIFECYCLE_NAME,
+				ACTIVITY_LIFECYCLE_NAME, DATA_HANDLING_NAME,
+				SCOPE_HANDLING_NAME, CORRELATION_NAME };
 		for (String columnId : columns) {
 			column = new TableViewerColumn(scopeTableViewer, SWT.NONE);
 			column.getColumn().setText(eventNameById.get(columnId));
-			column.setLabelProvider(new ScopeEventCheckboxColumnLabelProvider(columnId));
-			column.setEditingSupport(new ScopeEventEditingSupport(scopeTableViewer, columnId));
-		}		
+			column.setLabelProvider(new ScopeEventCheckboxColumnLabelProvider(
+					columnId));
+			column.setEditingSupport(new ScopeEventEditingSupport(
+					scopeTableViewer, columnId));
+		}
 
 		OwnerDrawLabelProvider.setUpOwnerDraw(scopeTableViewer);
 
 		table.setHeaderVisible(true);
-	    table.setLinesVisible(true);
+		table.setLinesVisible(true);
 
-	    scopeTableViewer.setInput(processType);
-	    
-	    for (int i = 0, n = table.getColumnCount(); i < n; i++) {
-		      table.getColumn(i).pack();
+		scopeTableViewer.setInput(processType);
+
+		for (int i = 0, n = table.getColumnCount(); i < n; i++) {
+			table.getColumn(i).pack();
 		}
 	}
-	
-	class PortTypeLabelProvider extends LabelProvider implements ITableLabelProvider {
-		
-		protected IProject bpelProject = null; 
+
+	private void createDataSourceSection(Composite fClient,
+			ProcessType current, final IManagedForm managedForm, String title,
+			String description) {
+		// Set column names
+		String[] columnNames = new String[] { "Name", "Address", "User name",
+				"Password" };
+		int[] bounds = { 100, 200, 100, 100 };
+
+		Section section = toolkit.createSection(fClient, Section.TWISTIE
+				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
+		section.setText(title);
+		section.setDescription(description);
+		section.marginHeight = 5;
+
+		Composite client = toolkit.createComposite(section, SWT.WRAP);
+		GridLayout layout = new GridLayout();
+		layout.marginWidth = 2;
+		layout.marginHeight = 2;
+		client.setLayout(layout);
+		final Table table = toolkit.createTable(client, SWT.SINGLE | SWT.BORDER
+				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION
+				| SWT.HIDE_SELECTION);
+
+		GridData gd = new GridData(GridData.FILL_BOTH);
+		table.setLayoutData(gd);
+		toolkit.paintBordersFor(client);
+
+		section.setClient(client);
+		final SectionPart spart = new SectionPart(section);
+		managedForm.addPart(spart);
+
+		final TableViewer viewer = new TableViewer(table);
+
+		for (int i = 0; i < columnNames.length; i++) {
+			final TableViewerColumn viewerColumn = new TableViewerColumn(
+					viewer, SWT.NONE);
+			final TableColumn column = viewerColumn.getColumn();
+
+			column.setText(columnNames[i]);
+			column.setWidth(bounds[i]);
+			column.setResizable(true);
+			column.setMoveable(true);
+		}
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+
+		viewer.setContentProvider(new DataSourceContentProvider());
+		viewer.setLabelProvider(new DataSourceLabelProvider());
+
+		// TODO: Es müssen noch irgendwie die Datasources aus der XML-Datei in
+		// die
+		// datasources-Liste kommen
+		viewer.setInput(this.datasources.getChildren());
+
+		Composite buttonComp = toolkit.createComposite(client, SWT.WRAP);
+		GridLayout bLayout = new GridLayout();
+		layout.marginWidth = 2;
+		layout.marginHeight = 2;
+		layout.numColumns = 3;
+		buttonComp.setLayout(bLayout);
+
+		final Button btnNew = toolkit.createButton(buttonComp, "New", SWT.PUSH);
+		btnNew.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				AddDataSourceDialog dialog = new AddDataSourceDialog(Display
+						.getDefault().getActiveShell());
+				dialog.open();
+				if (dialog.getDatasource() != null) {
+					datasources.getChildren().add(dialog.getDatasource());
+					processType.setDataSources(datasources);
+
+//					Command setNameCommand = SetCommand.create(domain,
+//							datasources, ddPackage.eINSTANCE.getTDatasource_DataSourceName(),
+//							dialog.getDatasource().getDataSourceName());
+//					
+//					Command setAddressCommand = SetCommand.create(domain,
+//							datasources, ddPackage.eINSTANCE.getTDatasource_Address(),
+//							dialog.getDatasource().getAddress());
+//					
+//					Command setUserCommand = SetCommand.create(domain,
+//							datasources, ddPackage.eINSTANCE.getTDatasource_UserName(),
+//							dialog.getDatasource().getUserName());
+//					
+//					Command setPasswordCommand = SetCommand.create(domain,
+//							datasources, ddPackage.eINSTANCE.getTDatasource_Password(),
+//							dialog.getDatasource().getPassword());
+//					
+//					CompoundCommand compoundCommand = new CompoundCommand();
+//					compoundCommand.append(setNameCommand);
+//					compoundCommand.append(setAddressCommand);
+//					compoundCommand.append(setUserCommand);
+//					compoundCommand.append(setPasswordCommand);
+//					domain.getCommandStack().execute(compoundCommand);
+					
+					Command setDataSourceCommand = SetCommand.create(domain,
+							processType, ddPackage.eINSTANCE.getTDatasources(),
+							datasources);
+					domain.getCommandStack().execute(setDataSourceCommand);
+					
+					// Updating the display in the view
+					viewer.refresh();
+				}
+			}
+		});
+		final Button btnEdit = toolkit.createButton(buttonComp, "Edit",
+				SWT.PUSH);
+		btnEdit.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				ISelection selection = viewer.getSelection();
+				if (selection != null
+						&& selection instanceof IStructuredSelection) {
+					IStructuredSelection sel = (IStructuredSelection) selection;
+
+					if (sel.size() == 1) {
+						TDatasource datasource = (TDatasource) sel
+								.getFirstElement();
+
+						datasources.getChildren().remove(datasource);
+
+						EditDataSourceDialog dialog = new EditDataSourceDialog(
+								Display.getDefault().getActiveShell(),
+								datasource);
+						dialog.open();
+
+						datasources.getChildren().add(dialog.getDatasource());
+						processType.setDataSources(datasources);
+						
+						Command setDataSourceCommand = SetCommand.create(domain,
+								processType, ddPackage.eINSTANCE.getTDatasources(),
+								datasources);
+						domain.getCommandStack().execute(setDataSourceCommand);
+					}
+					// Updating the display in the view
+					viewer.refresh();
+				}
+			}
+		});
+		final Button btnDelete = toolkit.createButton(buttonComp, "Remove",
+				SWT.PUSH);
+		btnDelete.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				ISelection selection = viewer.getSelection();
+				if (selection != null
+						&& selection instanceof IStructuredSelection) {
+					IStructuredSelection sel = (IStructuredSelection) selection;
+					for (Iterator<TDatasource> iterator = sel.iterator(); iterator
+							.hasNext();) {
+						TDatasource datasource = iterator.next();
+						datasources.getChildren().remove(datasource);
+					}
+					processType.setDataSources(datasources);
+					
+					Command setDataSourceCommand = SetCommand.create(domain,
+							processType, ddPackage.eINSTANCE.getTDatasources(),
+							datasources);
+					domain.getCommandStack().execute(setDataSourceCommand);
+					
+					viewer.refresh();
+				}
+			}
+		});
+	}
+
+	class PortTypeLabelProvider extends LabelProvider implements
+			ITableLabelProvider {
+
+		protected IProject bpelProject = null;
 		protected ResourceSet resourceSet = null;
-		
-		public PortTypeLabelProvider(IProject bpelProject, ResourceSet resourceSet){
+
+		public PortTypeLabelProvider(IProject bpelProject,
+				ResourceSet resourceSet) {
 			this.bpelProject = bpelProject;
 			this.resourceSet = resourceSet;
 		}
-		
+
 		public String getColumnText(Object obj, int index) {
-			
-			if (obj instanceof TProvide && index == PARTNER_LINK_COLUMN){
+
+			if (obj instanceof TProvide && index == PARTNER_LINK_COLUMN) {
 				TProvide current = (TProvide) obj;
 				return current.getPartnerLink();
-			}
-			else if (obj instanceof TProvide && index == SERVICE_COLUMN){
+			} else if (obj instanceof TProvide && index == SERVICE_COLUMN) {
 				TProvide current = (TProvide) obj;
-				TService service = current.getService();	
+				TService service = current.getService();
 				if (service != null) {
 					QName serviceQName = service.getName();
 					if (serviceQName != null) {
 						return serviceQName.toString();
 					}
 				}
-			}
-			else if (obj instanceof TProvide && index == PORT_COLUMN){
+			} else if (obj instanceof TProvide && index == PORT_COLUMN) {
 				TProvide current = (TProvide) obj;
-				TService service = current.getService();	
-				if (service != null) {	
+				TService service = current.getService();
+				if (service != null) {
 					String portName = service.getPort();
 					if (portName != null) {
 						return portName;
 					}
 				}
-			}
-			else if (obj instanceof TProvide && index == BINDING_COLUMN){
+			} else if (obj instanceof TProvide && index == BINDING_COLUMN) {
 				TProvide current = (TProvide) obj;
-				TService service = current.getService();	
-				if (service != null) {	
+				TService service = current.getService();
+				if (service != null) {
 					String portName = service.getPort();
 					if (portName != null) {
-						Port port = DeployUtils.findPortByName(portName, this.bpelProject, this.resourceSet);
+						Port port = DeployUtils.findPortByName(portName,
+								this.bpelProject, this.resourceSet);
 						if (port != null) {
 							Binding binding = port.getBinding();
 							QName bindingQName = binding.getQName();
@@ -652,13 +977,12 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 						}
 					}
 				}
-			}			
-			
-			if (obj instanceof TInvoke && index == PARTNER_LINK_COLUMN){
+			}
+
+			if (obj instanceof TInvoke && index == PARTNER_LINK_COLUMN) {
 				TInvoke current = (TInvoke) obj;
 				return current.getPartnerLink();
-			}
-			else if (obj instanceof TInvoke && index == SERVICE_COLUMN){
+			} else if (obj instanceof TInvoke && index == SERVICE_COLUMN) {
 				TInvoke current = (TInvoke) obj;
 				TService service = current.getService();
 				if (service != null) {
@@ -667,24 +991,23 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 						return serviceQName.toString();
 					}
 				}
-			}
-			else if (obj instanceof TInvoke && index == PORT_COLUMN){
+			} else if (obj instanceof TInvoke && index == PORT_COLUMN) {
 				TInvoke current = (TInvoke) obj;
-				TService service = current.getService();	
+				TService service = current.getService();
 				if (service != null) {
 					String portName = service.getPort();
 					if (portName != null) {
 						return portName;
 					}
 				}
-			}
-			else if (obj instanceof TInvoke && index == BINDING_COLUMN){
+			} else if (obj instanceof TInvoke && index == BINDING_COLUMN) {
 				TInvoke current = (TInvoke) obj;
-				TService service = current.getService();	
+				TService service = current.getService();
 				if (service != null) {
 					String portName = service.getPort();
 					if (portName != null) {
-						Port port = DeployUtils.findPortByName(portName, this.bpelProject, this.resourceSet);
+						Port port = DeployUtils.findPortByName(portName,
+								this.bpelProject, this.resourceSet);
 						if (port != null) {
 							Binding binding = port.getBinding();
 							QName bindingQName = binding.getQName();
@@ -695,7 +1018,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 					}
 				}
 			}
-			
+
 			return DeployUtils.NONE_STRING;
 		}
 
@@ -703,48 +1026,50 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			return null;
 		}
 	}
-	
+
 	class PortTypeContentProvider implements IStructuredContentProvider {
-		
+
 		protected boolean forInbound = false;
-		
-		public PortTypeContentProvider(boolean bForInbound){
+
+		public PortTypeContentProvider(boolean bForInbound) {
 			forInbound = bForInbound;
 		}
-		
+
 		public Object[] getElements(Object inputElement) {
-			
-			if (inputElement instanceof ProcessType){
-				ProcessType type  = (ProcessType) inputElement;
-				if (forInbound){
+
+			if (inputElement instanceof ProcessType) {
+				ProcessType type = (ProcessType) inputElement;
+				if (forInbound) {
 					EList<TProvide> provide = type.getProvide();
-					
-					if (provide.isEmpty()){
+
+					if (provide.isEmpty()) {
 						Process process = type.getModel();
 						PartnerLinks pls = process.getPartnerLinks();
 						EList<PartnerLink> plList = pls.getChildren();
-						for (Iterator<PartnerLink> iterator = plList.iterator(); iterator.hasNext();) {
+						for (Iterator<PartnerLink> iterator = plList.iterator(); iterator
+								.hasNext();) {
 							PartnerLink current = (PartnerLink) iterator.next();
-							if (current.getMyRole() != null){
-								TProvide currentProvide = ddFactory.eINSTANCE.createTProvide();
-								currentProvide.setPartnerLink(current.getName());
+							if (current.getMyRole() != null) {
+								TProvide currentProvide = ddFactory.eINSTANCE
+										.createTProvide();
+								currentProvide
+										.setPartnerLink(current.getName());
 								provide.add(currentProvide);
-							}	
+							}
 						}
 					}
-					
+
 					return provide.toArray();
-				}
-				else {
+				} else {
 					EList<TInvoke> invoke = type.getInvoke();
-					
-					if (invoke.isEmpty()){
+
+					if (invoke.isEmpty()) {
 						Process process = type.getModel();
 						PartnerLinks pls = process.getPartnerLinks();
 						if (pls != null) {
 							EList<PartnerLink> plList = pls.getChildren();
-							for (Iterator<PartnerLink> iterator = plList.iterator(); iterator
-									.hasNext();) {
+							for (Iterator<PartnerLink> iterator = plList
+									.iterator(); iterator.hasNext();) {
 								PartnerLink current = (PartnerLink) iterator
 										.next();
 								if (current.getPartnerRole() != null) {
@@ -757,47 +1082,51 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 							}
 						}
 					}
-					
+
 					return invoke.toArray();
 				}
-			}
-			else {
+			} else {
 				return new String[1];
 			}
 		}
-		
+
 		public void dispose() {
 		}
+
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 	}
 
-	class ScopeMonitoringEventContentProvider implements IStructuredContentProvider {
+	class ScopeMonitoringEventContentProvider implements
+			IStructuredContentProvider {
 
 		public Object[] getElements(Object inputElement) {
-			final List<Object> scopes = new ArrayList<Object>(); 
+			final List<Object> scopes = new ArrayList<Object>();
 
-			BPELUtil.visitModelDepthFirst(processType.getModel(), new IModelVisitor() {
-				public boolean visit(Object modelObject) {
-					if ((modelObject instanceof Scope) && 
-							(((Scope)modelObject).getName() != null)) {
-						scopes.add(modelObject);
-					}
-					return true;
-				}
-			});
+			BPELUtil.visitModelDepthFirst(processType.getModel(),
+					new IModelVisitor() {
+						public boolean visit(Object modelObject) {
+							if ((modelObject instanceof Scope)
+									&& (((Scope) modelObject).getName() != null)) {
+								scopes.add(modelObject);
+							}
+							return true;
+						}
+					});
 
 			return scopes.toArray();
 		}
 
-		public void dispose() {}
+		public void dispose() {
+		}
 
-		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {}
-		
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		}
+
 	}
 
 	protected void refreshModel() {
-		
+
 		try {
 			editor.populateModel();
 			scopeTableViewer.refresh();
@@ -806,7 +1135,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void resourceChanged(IResourceChangeEvent event) {
 
 		IResourceDeltaVisitor rdv = new IResourceDeltaVisitor() {
@@ -815,7 +1144,10 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				if ("bpel".equalsIgnoreCase(res.getFileExtension())) { //$NON-NLS-1$
 					Display.getDefault().syncExec(new Runnable() {
 						public void run() {
-							mainform.setMessage("Associated BPEL and/or WSDL has been changed, click to update!", IMessageProvider.WARNING);
+							mainform
+									.setMessage(
+											"Associated BPEL and/or WSDL has been changed, click to update!",
+											IMessageProvider.WARNING);
 						}
 					});
 				}
@@ -826,8 +1158,8 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		try {
 			event.getDelta().accept(rdv);
 		} catch (CoreException e) {
-			//ignore
-		}	
+			// ignore
+		}
 	}
 
 	@Override
@@ -840,15 +1172,16 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 
 		private String eventType;
 		private CheckboxCellEditor checkboxCellEditor;
+
 		public ScopeEventEditingSupport(TableViewer viewer, String eventType) {
 			super(viewer);
 			this.eventType = eventType;
 			this.checkboxCellEditor = new CheckboxCellEditor(viewer.getTable());
 		}
-		
+
 		@Override
 		protected boolean canEdit(Object element) {
-			String scName = ((Scope)element).getName();
+			String scName = ((Scope) element).getName();
 			return scName != null && !"".equals(scName); //$NON-NLS-1$
 		}
 
@@ -859,10 +1192,11 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 
 		@Override
 		protected Object getValue(Object element) {
-			String scName = ((Scope)element).getName();
-			for (TScopeEvents se : processType.getProcessEvents().getScopeEvents()) {
-				if (scName.equals(se.getName()) &&
-						se.getEnableEvent().contains(eventType)) {
+			String scName = ((Scope) element).getName();
+			for (TScopeEvents se : processType.getProcessEvents()
+					.getScopeEvents()) {
+				if (scName.equals(se.getName())
+						&& se.getEnableEvent().contains(eventType)) {
 					return true;
 				}
 			}
@@ -871,47 +1205,53 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 
 		@Override
 		protected void setValue(Object element, Object value) {
-			String scName = ((Scope)element).getName();
+			String scName = ((Scope) element).getName();
 			TScopeEvents match = null;
-			for (TScopeEvents se : processType.getProcessEvents().getScopeEvents()) {
+			for (TScopeEvents se : processType.getProcessEvents()
+					.getScopeEvents()) {
 				if (scName.equals(se.getName())) {
 					match = se;
 					break;
 				}
 			}
-			
+
 			if (match == null) {
 				match = ddFactory.eINSTANCE.createTScopeEvents();
 				match.setName(scName);
 				processType.getProcessEvents().getScopeEvents().add(match);
 			}
-			
-			if (((Boolean)value).booleanValue()) { 
+
+			if (((Boolean) value).booleanValue()) {
 				if (!match.getEnableEvent().contains(eventType)) {
-					Command command = AddCommand.create(domain, match, ddPackage.eINSTANCE.getTEnableEventList_EnableEvent(), eventType);
+					Command command = AddCommand.create(domain, match,
+							ddPackage.eINSTANCE
+									.getTEnableEventList_EnableEvent(),
+							eventType);
 					domain.getCommandStack().execute(command);
 				}
 			} else {
-				Command command = RemoveCommand.create(domain, match, ddPackage.eINSTANCE.getTEnableEventList_EnableEvent(), eventType);
+				Command command = RemoveCommand.create(domain, match,
+						ddPackage.eINSTANCE.getTEnableEventList_EnableEvent(),
+						eventType);
 				domain.getCommandStack().execute(command);
 			}
-			
+
 			getViewer().refresh();
 		}
 	}
-	
+
 	class ScopeEventCheckboxColumnLabelProvider extends OwnerDrawLabelProvider {
-		
+
 		private String eventType;
 
 		public ScopeEventCheckboxColumnLabelProvider(String eventType) {
 			this.eventType = eventType;
 		}
-		
+
 		protected void measure(Event event, Object element) {
 			Image img = getImage(element);
-			event.setBounds(new Rectangle(event.x, event.y, img.getBounds().width,
-					img.getBounds().height));
+			event.setBounds(new Rectangle(event.x, event.y,
+					img.getBounds().width, img.getBounds().height));
 
 		}
 
@@ -935,27 +1275,27 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			}
 		}
 
-
 		public Image getImage(Object element) {
 			if (isChecked(element)) {
-				return Activator.getDefault().getImageRegistry().get(Activator.IMG_CHECKED);
+				return Activator.getDefault().getImageRegistry().get(
+						Activator.IMG_CHECKED);
 			} else {
-				return Activator.getDefault().getImageRegistry().get(Activator.IMG_UNCHECKED);
+				return Activator.getDefault().getImageRegistry().get(
+						Activator.IMG_UNCHECKED);
 			}
 		}
 
 		public boolean isChecked(Object element) {
-			String scName = ((Scope)element).getName();
-			for (TScopeEvents se : processType.getProcessEvents().getScopeEvents()) {
-				if (se.getName().equals(scName) &&
-						se.getEnableEvent().contains(eventType)) {
+			String scName = ((Scope) element).getName();
+			for (TScopeEvents se : processType.getProcessEvents()
+					.getScopeEvents()) {
+				if (se.getName().equals(scName)
+						&& se.getEnableEvent().contains(eventType)) {
 					return true;
 				}
 			}
 			return false;
 		}
-		
+
 	}
-	
-	
 }
