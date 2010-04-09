@@ -314,13 +314,13 @@ public interface ddPackage extends EPackage {
 	int PROCESS_TYPE__AUDITING_ACTIVE = 13;
 
 	/**
-	 * The feature id for the '<em><b>Data Sources</b></em>' containment reference.
+	 * The feature id for the '<em><b>Datasources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_TYPE__DATA_SOURCES = 14;
+	int PROCESS_TYPE__DATASOURCES = 14;
 
 	/**
 	 * The number of structural features of the '<em>Process Type</em>' class.
@@ -720,34 +720,6 @@ public interface ddPackage extends EPackage {
 	int TDATASOURCE_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl <em>TDatasources</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTDatasources()
-	 * @generated
-	 */
-	int TDATASOURCES = 14;
-
-	/**
-	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TDATASOURCES__CHILDREN = 0;
-
-	/**
-	 * The number of structural features of the '<em>TDatasources</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TDATASOURCES_FEATURE_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -755,7 +727,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateType()
 	 * @generated
 	 */
-	int GENERATE_TYPE = 15;
+	int GENERATE_TYPE = 14;
 
 	/**
 	 * The meta object id for the '<em>Generate Type Object</em>' data type.
@@ -765,7 +737,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateTypeObject()
 	 * @generated
 	 */
-	int GENERATE_TYPE_OBJECT = 16;
+	int GENERATE_TYPE_OBJECT = 15;
 
 
 	/**
@@ -1029,15 +1001,15 @@ public interface ddPackage extends EPackage {
 	EAttribute getProcessType_AuditingActive();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources <em>Data Sources</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDatasources <em>Datasources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Data Sources</em>'.
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources()
+	 * @return the meta object for the containment reference list '<em>Datasources</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDatasources()
 	 * @see #getProcessType()
 	 * @generated
 	 */
-	EReference getProcessType_DataSources();
+	EReference getProcessType_Datasources();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType <em>Property Type</em>}'.
@@ -1360,27 +1332,6 @@ public interface ddPackage extends EPackage {
 	EAttribute getTDatasource_UserName();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources <em>TDatasources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>TDatasources</em>'.
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources
-	 * @generated
-	 */
-	EClass getTDatasources();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getChildren <em>Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Children</em>'.
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources#getChildren()
-	 * @see #getTDatasources()
-	 * @generated
-	 */
-	EReference getTDatasources_Children();
-
-	/**
 	 * Returns the meta object for enum '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1625,12 +1576,12 @@ public interface ddPackage extends EPackage {
 		EAttribute PROCESS_TYPE__AUDITING_ACTIVE = eINSTANCE.getProcessType_AuditingActive();
 
 		/**
-		 * The meta object literal for the '<em><b>Data Sources</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Datasources</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROCESS_TYPE__DATA_SOURCES = eINSTANCE.getProcessType_DataSources();
+		EReference PROCESS_TYPE__DATASOURCES = eINSTANCE.getProcessType_Datasources();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.
@@ -1891,24 +1842,6 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TDATASOURCE__USER_NAME = eINSTANCE.getTDatasource_UserName();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl <em>TDatasources</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourcesImpl
-		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTDatasources()
-		 * @generated
-		 */
-		EClass TDATASOURCES = eINSTANCE.getTDatasources();
-
-		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TDATASOURCES__CHILDREN = eINSTANCE.getTDatasources_Children();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.
