@@ -62,7 +62,7 @@
             <command
                   commandId="org.eclipse.ui.window.preferences"
                   id="org.eclipse.ui.window.preferences"
-                  label="Settings Pref"
+                  label="Settings"
                   style="push">
                <parameter
                      name="preferencePageId"
