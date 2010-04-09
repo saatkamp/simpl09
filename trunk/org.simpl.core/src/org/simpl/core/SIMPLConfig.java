@@ -53,7 +53,7 @@ public class SIMPLConfig {
         }
       }
     }
-
+    
     try {
       parser = factory.createXMLStreamReader(in);
 

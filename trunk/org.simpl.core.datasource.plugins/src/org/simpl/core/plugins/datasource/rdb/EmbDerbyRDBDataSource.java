@@ -12,6 +12,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
+import org.simpl.core.services.connection.JDCConnectionDriver;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -24,7 +25,9 @@ import commonj.sdo.DataObject;
  * 
  * dsAddress = Full path to embedded Derby database, for example: C:\databases\myDB.
  * 
- * @author hahnml
+ * @author hahnml<br>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
  */
 public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   static Logger logger = Logger.getLogger(EmbDerbyRDBDataSource.class);
@@ -34,13 +37,11 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     this.setMetaDataType("tDatabaseMetaData");
     this.addSubtype("EmbeddedDerby");
     this.addLanguage("EmbeddedDerby", "SQL");
-    this.addLanguage("FAT32", "OSCall");
-    this.addLanguage("NTFS", "OSCall");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
-  
+
   /*
    * (non-Javadoc)
    * @see
@@ -53,22 +54,34 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
+
     Connection connect = null;
+
     try {
-      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
       StringBuilder uri = new StringBuilder();
       uri.append("jdbc:derby:");
       uri.append(dsAddress);
       uri.append(";create=true");
+
       try {
-        connect = DriverManager.getConnection(uri.toString());
+        new JDCConnectionDriver("org.apache.derby.jdbc.EmbeddedDriver", uri.toString(),
+            "none", "none").connect(uri.toString(), null);
+
+        connect = DriverManager.getConnection("jdbc:jdc:jdcpool");
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         logger.fatal("exception during establishing connection to: " + uri.toString(), e);
+      } catch (InstantiationException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
       }
 
       logger.info("Connection opened on " + dsAddress + ".");
+
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
@@ -92,9 +105,11 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     try {
       ((java.sql.Connection) connection).close();
       success = true;
+
       if (logger.isDebugEnabled()) {
         logger.debug("boolean closeConnection() executed successfully.");
       }
+
       logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -102,6 +117,7 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
         logger.error("boolean closeConnection() executed with failures.", e);
       }
     }
+
     return success;
   }
 
@@ -112,11 +128,13 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
       logger
           .debug("DataObject queryData(" + dsAddress + ", " + statement + ") executed.");
     }
+
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     Command read = das.createCommand(statement);
     DataObject root = read.executeQuery();
 
     logger.info("Statement '" + statement + "' executed on " + dsAddress + ".");
+
     return root;
   }
 
@@ -126,8 +144,10 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean defineData(" + dsAddress + ", " + statement + ") executed.");
     }
+
     boolean success = false;
     Connection conn = openConnection(dsAddress);
+
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
@@ -140,31 +160,27 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
 
     logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
     closeConnection(conn);
+
     return success;
   }
 
   @Override
-  public boolean writeBack(String dsAddress, DataObject data)
-      throws ConnectionException {
+  public boolean writeBack(String dsAddress, DataObject data) throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean manipulateData(" + dsAddress + ", DataObject) executed.");
     }
 
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
-    /*Connection conn = openConnection(dsAddress);
-    try {
-      Statement stat = conn.createStatement();
-      stat.execute(statement);
-      conn.commit();
-      stat.close();
-      success = true;
-    } catch (Throwable e) {
-      logger.error("exception executing the statement: " + statement, e);
-    }
 
-    logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
-    closeConnection(conn);*/
+    /*
+     * Connection conn = openConnection(dsAddress); try { Statement stat =
+     * conn.createStatement(); stat.execute(statement); conn.commit(); stat.close();
+     * success = true; } catch (Throwable e) {
+     * logger.error("exception executing the statement: " + statement, e); }
+     * logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
+     * closeConnection(conn);
+     */
     return success;
   }
 
@@ -175,9 +191,11 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
       logger.debug("boolean manipulateDataWithSDO(" + dsAddress + ", " + data
           + ") executed.");
     }
+
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     das.applyChanges(data);
     logger.info("DataObject " + data + "was send back to data source " + dsAddress);
+
     return false;
   }
 
@@ -211,6 +229,7 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     insertStatement.append(statement);
 
     Connection conn = openConnection(dsAddress);
+
     try {
       Statement createState = conn.createStatement();
       Statement insertState = conn.createStatement();
