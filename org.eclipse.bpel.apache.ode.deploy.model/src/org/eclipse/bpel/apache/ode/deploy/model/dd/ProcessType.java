@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getModel <em>Model</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources <em>Data Sources</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDatasources <em>Datasources</em>}</li>
  * </ul>
  * </p>
  *
@@ -511,30 +511,19 @@ public interface ProcessType extends EObject {
 	boolean isSetAuditingActive();
 
 	/**
-	 * Returns the value of the '<em><b>Data Sources</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Datasources</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Data Sources</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Datasources</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Sources</em>' containment reference.
-	 * @see #setDataSources(TDatasources)
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_DataSources()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='dataSources' namespace='##targetNamespace'"
+	 * @return the value of the '<em>Datasources</em>' containment reference list.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_Datasources()
+	 * @model containment="true"
 	 * @generated
 	 */
-	TDatasources getDataSources();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources <em>Data Sources</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Sources</em>' containment reference.
-	 * @see #getDataSources()
-	 * @generated
-	 */
-	void setDataSources(TDatasources value);
+	EList<TDatasource> getDatasources();
 
 } // ProcessType

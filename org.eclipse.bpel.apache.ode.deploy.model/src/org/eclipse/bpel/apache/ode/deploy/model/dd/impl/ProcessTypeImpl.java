@@ -19,23 +19,17 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
-import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -60,7 +54,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getModel <em>Model</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#isAuditingActive <em>Auditing Active</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getDataSources <em>Data Sources</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getDatasources <em>Datasources</em>}</li>
  * </ul>
  * </p>
  *
@@ -324,14 +318,14 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	protected boolean auditingActiveESet;
 
 	/**
-	 * The cached value of the '{@link #getDataSources() <em>Data Sources</em>}' containment reference.
+	 * The cached value of the '{@link #getDatasources() <em>Datasources</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDataSources()
+	 * @see #getDatasources()
 	 * @generated
 	 * @ordered
 	 */
-	protected TDatasources dataSources;
+	protected EList<TDatasource> datasources;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -785,42 +779,11 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TDatasources getDataSources() {
-		return dataSources;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDataSources(TDatasources newDataSources, NotificationChain msgs) {
-		TDatasources oldDataSources = dataSources;
-		dataSources = newDataSources;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__DATA_SOURCES, oldDataSources, newDataSources);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<TDatasource> getDatasources() {
+		if (datasources == null) {
+			datasources = new EObjectContainmentEList<TDatasource>(TDatasource.class, this, ddPackage.PROCESS_TYPE__DATASOURCES);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDataSources(TDatasources newDataSources) {
-		if (newDataSources != dataSources) {
-			NotificationChain msgs = null;
-			if (dataSources != null)
-				msgs = ((InternalEObject)dataSources).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ddPackage.PROCESS_TYPE__DATA_SOURCES, null, msgs);
-			if (newDataSources != null)
-				msgs = ((InternalEObject)newDataSources).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ddPackage.PROCESS_TYPE__DATA_SOURCES, null, msgs);
-			msgs = basicSetDataSources(newDataSources, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__DATA_SOURCES, newDataSources, newDataSources));
+		return datasources;
 	}
 
 	/**
@@ -841,8 +804,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return ((InternalEList<?>)getInvoke()).basicRemove(otherEnd, msgs);
 			case ddPackage.PROCESS_TYPE__MEX_INTERCEPTORS:
 				return basicSetMexInterceptors(null, msgs);
-			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
-				return basicSetDataSources(null, msgs);
+			case ddPackage.PROCESS_TYPE__DATASOURCES:
+				return ((InternalEList<?>)getDatasources()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -884,8 +847,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return basicGetModel();
 			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
 				return isAuditingActive();
-			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
-				return getDataSources();
+			case ddPackage.PROCESS_TYPE__DATASOURCES:
+				return getDatasources();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -944,8 +907,9 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
 				setAuditingActive((Boolean)newValue);
 				return;
-			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
-				setDataSources((TDatasources)newValue);
+			case ddPackage.PROCESS_TYPE__DATASOURCES:
+				getDatasources().clear();
+				getDatasources().addAll((Collection<? extends TDatasource>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1001,8 +965,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
 				unsetAuditingActive();
 				return;
-			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
-				setDataSources((TDatasources)null);
+			case ddPackage.PROCESS_TYPE__DATASOURCES:
+				getDatasources().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -1044,8 +1008,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return model != null;
 			case ddPackage.PROCESS_TYPE__AUDITING_ACTIVE:
 				return isSetAuditingActive();
-			case ddPackage.PROCESS_TYPE__DATA_SOURCES:
-				return dataSources != null;
+			case ddPackage.PROCESS_TYPE__DATASOURCES:
+				return datasources != null && !datasources.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

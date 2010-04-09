@@ -25,7 +25,6 @@ import javax.xml.namespace.QName;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
-import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide;
@@ -44,7 +43,6 @@ import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.ui.BPELUIPlugin;
 import org.eclipse.bpel.ui.IBPELUIConstants;
-import org.eclipse.bpel.ui.commands.AddToListCommand;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.bpel.ui.util.IModelVisitor;
 import org.eclipse.core.resources.IFile;
@@ -60,7 +58,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -184,7 +181,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 	private EditingDomain domain;
 	private TableViewer scopeTableViewer;
 	private Form mainform;
-	protected TDatasources datasources;
 
 	public ProcessPage(FormEditor editor, ProcessType pt) {
 		super(editor,
@@ -196,13 +192,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				IResourceChangeEvent.POST_CHANGE);
 
 		this.domain = this.editor.getEditingDomain();
-
-		if (pt.getDataSources() != null){
-			this.datasources = pt.getDataSources();
-		}else{
-			this.datasources = ddFactory.eINSTANCE.createTDatasources();
-			pt.setDataSources(datasources);
-		}
 	}
 
 	@Override
@@ -787,7 +776,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		// TODO: Es müssen noch irgendwie die Datasources aus der XML-Datei in
 		// die
 		// datasources-Liste kommen
-		viewer.setInput(this.datasources.getChildren());
+		viewer.setInput(processType.getDatasources());
 
 		Composite buttonComp = toolkit.createComposite(client, SWT.WRAP);
 		GridLayout bLayout = new GridLayout();
@@ -812,36 +801,10 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 						.getDefault().getActiveShell());
 				dialog.open();
 				if (dialog.getDatasource() != null) {
-					datasources.getChildren().add(dialog.getDatasource());
-					processType.setDataSources(datasources);
-
-//					Command setNameCommand = SetCommand.create(domain,
-//							datasources, ddPackage.eINSTANCE.getTDatasource_DataSourceName(),
-//							dialog.getDatasource().getDataSourceName());
-//					
-//					Command setAddressCommand = SetCommand.create(domain,
-//							datasources, ddPackage.eINSTANCE.getTDatasource_Address(),
-//							dialog.getDatasource().getAddress());
-//					
-//					Command setUserCommand = SetCommand.create(domain,
-//							datasources, ddPackage.eINSTANCE.getTDatasource_UserName(),
-//							dialog.getDatasource().getUserName());
-//					
-//					Command setPasswordCommand = SetCommand.create(domain,
-//							datasources, ddPackage.eINSTANCE.getTDatasource_Password(),
-//							dialog.getDatasource().getPassword());
-//					
-//					CompoundCommand compoundCommand = new CompoundCommand();
-//					compoundCommand.append(setNameCommand);
-//					compoundCommand.append(setAddressCommand);
-//					compoundCommand.append(setUserCommand);
-//					compoundCommand.append(setPasswordCommand);
-//					domain.getCommandStack().execute(compoundCommand);
-					
-					Command setDataSourceCommand = SetCommand.create(domain,
-							processType, ddPackage.eINSTANCE.getTDatasources(),
-							datasources);
-					domain.getCommandStack().execute(setDataSourceCommand);
+					Command addDataSourceCommand = AddCommand.create(domain,
+							processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
+							dialog.getDatasource());
+					domain.getCommandStack().execute(addDataSourceCommand);
 					
 					// Updating the display in the view
 					viewer.refresh();
@@ -870,20 +833,20 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 						TDatasource datasource = (TDatasource) sel
 								.getFirstElement();
 
-						datasources.getChildren().remove(datasource);
+						Command removeDataSourceCommand = RemoveCommand.create(domain,
+								processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
+								datasource);
+						domain.getCommandStack().execute(removeDataSourceCommand);
 
 						EditDataSourceDialog dialog = new EditDataSourceDialog(
 								Display.getDefault().getActiveShell(),
 								datasource);
 						dialog.open();
 
-						datasources.getChildren().add(dialog.getDatasource());
-						processType.setDataSources(datasources);
-						
-						Command setDataSourceCommand = SetCommand.create(domain,
-								processType, ddPackage.eINSTANCE.getTDatasources(),
-								datasources);
-						domain.getCommandStack().execute(setDataSourceCommand);
+						Command addDataSourceCommand = AddCommand.create(domain,
+								processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
+								dialog.getDatasource());
+						domain.getCommandStack().execute(addDataSourceCommand);
 					}
 					// Updating the display in the view
 					viewer.refresh();
@@ -910,14 +873,12 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 					for (Iterator<TDatasource> iterator = sel.iterator(); iterator
 							.hasNext();) {
 						TDatasource datasource = iterator.next();
-						datasources.getChildren().remove(datasource);
+
+						Command removeDataSourceCommand = RemoveCommand.create(domain,
+								processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
+								datasource);
+						domain.getCommandStack().execute(removeDataSourceCommand);
 					}
-					processType.setDataSources(datasources);
-					
-					Command setDataSourceCommand = SetCommand.create(domain,
-							processType, ddPackage.eINSTANCE.getTDatasources(),
-							datasources);
-					domain.getCommandStack().execute(setDataSourceCommand);
 					
 					viewer.refresh();
 				}

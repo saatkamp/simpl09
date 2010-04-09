@@ -80,7 +80,6 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 			case ddPackage.TSCOPE_EVENTS: return createTScopeEvents();
 			case ddPackage.TSERVICE: return createTService();
 			case ddPackage.TDATASOURCE: return createTDatasource();
-			case ddPackage.TDATASOURCES: return createTDatasources();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -258,16 +257,6 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	public TDatasource createTDatasource() {
 		TDatasourceImpl tDatasource = new TDatasourceImpl();
 		return tDatasource;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TDatasources createTDatasources() {
-		TDatasourcesImpl tDatasources = new TDatasourcesImpl();
-		return tDatasources;
 	}
 
 	/**
