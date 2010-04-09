@@ -20,6 +20,9 @@ public class CSVDataFormat extends DataFormatPlugin {
   public CSVDataFormat() {
     this.setType("CSV");
     this.addSubtype("Standard");
+    this.setSchemaFile("CSVDataFormat.xsd");
+    this.setSchemaType("tCSVDataFormat");
+    this.init();
   }
 
   /* (non-Javadoc)
@@ -27,7 +30,6 @@ public class CSVDataFormat extends DataFormatPlugin {
    */
   @Override
   public <File> DataObject toSDO(File file) {
-    // TODO Auto-generated method stub
-    return null;
+    return this.getDataObject();
   }
 }

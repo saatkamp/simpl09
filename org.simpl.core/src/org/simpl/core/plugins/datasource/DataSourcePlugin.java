@@ -146,18 +146,18 @@ public abstract class DataSourcePlugin implements DataSourceService {
 
     // Load the local schema file
     inputStream = getClass().getResourceAsStream(DATASOURCE_META_DATA_SCHEMA_FILE);
-    
+
     // Load the default schema file
     if (inputStream == null) {
       inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/services/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
+          "/org/simpl/core/services/datasource/metadata/"
+              + DATASOURCE_META_DATA_SCHEMA_FILE);
     }
 
     if (inputStream == null) {
       System.out.println("The file '" + DATASOURCE_META_DATA_SCHEMA_FILE
           + "' could not be found.");
     }
-
 
     XSDHelper.INSTANCE.define(inputStream, null);
 
@@ -173,10 +173,10 @@ public abstract class DataSourcePlugin implements DataSourceService {
 
     return metaDataObject;
   }
-  
+
   /**
    * Returns the meta data schema file as InputStream.
-   *  
+   * 
    * @return
    */
   public InputStream getMetaDataSchema() {
@@ -188,14 +188,15 @@ public abstract class DataSourcePlugin implements DataSourceService {
     // Load the local schema file
     if (inputStream == null) {
       inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/services/datasource/metadata/" + DATASOURCE_META_DATA_SCHEMA_FILE);
+          "/org/simpl/core/services/datasource/metadata/"
+              + DATASOURCE_META_DATA_SCHEMA_FILE);
     }
 
     if (inputStream == null) {
       System.out.println("The file '" + DATASOURCE_META_DATA_SCHEMA_FILE
           + "' could not be found.");
     }
-    
+
     return inputStream;
   }
 }

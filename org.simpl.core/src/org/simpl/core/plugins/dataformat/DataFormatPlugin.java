@@ -13,7 +13,7 @@ import commonj.sdo.helper.XSDHelper;
 
 /**
  * <b>Purpose:</b> ... <br>
- * <b>Description:</b> ... <br>
+ * <b>Description:</b> service data object (SDO) <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -26,7 +26,7 @@ public abstract class DataFormatPlugin implements DataFormatService {
   /**
    * Name of the data format schema file.
    */
-  private static final String DATA_FORMAT_SCHEMA_FILE = "DataFormat.xsd";
+  private String dataFormatSchemaFile = "DataFormat.xsd";
 
   /**
    * Type of the supporting data format (CSV, XML, ...).
@@ -34,43 +34,34 @@ public abstract class DataFormatPlugin implements DataFormatService {
   private String dataFormatType = "Default";
 
   /**
-   * Subtypes of the supporting data format (CSVWithHeadline, XMLForSimulation, ..). TODO: bessere Beispiele finden
+   * The data format schema type defined in the data format schema file that is used to
+   * create the data object.
+   */
+  private String dataFormatSchemaType = "tDefault";
+
+  /**
+   * Subtypes of the supporting data format (CSVWithHeadline, XMLForSimulation, ..). TODO:
+   * bessere Beispiele finden
    */
   private List<String> dataFormatSubtypes = new ArrayList<String>();
 
   /**
-   * DataObject created from the data format schema file.
+   * Data object created from the data format schema file for holding the data.
    */
-  private DataObject data = null;
-  
+  private DataObject dataObject = null;
+
   /**
-   * Creates an empty meta data object (SDO) from the data format schema.
+   * Initializes the data format in creating the data object from the schema file.
    */
-  public DataFormatPlugin() {
-    DataObject dataObject = null;
-    InputStream inputStream = null;
+  public void init() {
+    this.dataObject = createDataObject();
+  }
 
-    // load the schema file
-    inputStream = getClass().getResourceAsStream(DATA_FORMAT_SCHEMA_FILE);
-
-    if (inputStream == null) {
-      System.out
-          .println("The file '" + DATA_FORMAT_SCHEMA_FILE + "' could not be found.");
-    }
-
-    XSDHelper.INSTANCE.define(inputStream, null);
-
-    try {
-      inputStream.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    dataObject = DataFactory.INSTANCE.create(
-        "http://org.simpl.core/src/org/simpl/core/plugins/dataformat/"
-            + DATA_FORMAT_SCHEMA_FILE, this.dataFormatType);
-
-    this.setData(dataObject);
+  /**
+   * @return Empty data object following the data format schema
+   */
+  public DataObject getDataObject() {
+    return this.dataObject;
   }
 
   /**
@@ -83,14 +74,30 @@ public abstract class DataFormatPlugin implements DataFormatService {
   }
 
   /**
-   * Returns the supporting data format subtypes.
+   * Sets the element type that is defined in the data format schema file.
    * 
-   * @return list of data format subtypes
+   * @param type
+   */
+  public void setSchemaType(String dfSchemaType) {
+    this.dataFormatSchemaType = dfSchemaType;
+  }
+
+  /**
+   * Sets the name/location of the data format schema file.
+   * 
+   * @param dfSchemaFile
+   */
+  public void setSchemaFile(String dfSchemaFile) {
+    this.dataFormatSchemaFile = dfSchemaFile;
+  }
+
+  /**
+   * @return List of supporting data format subtypes.
    */
   public List<String> getSubtypes() {
     return this.dataFormatSubtypes;
   }
-  
+
   /**
    * Adds a supporting data format subtype.
    * 
@@ -103,23 +110,38 @@ public abstract class DataFormatPlugin implements DataFormatService {
   }
 
   /**
-   * @return the supporting data format type.
+   * @return The supporting data format type.
    */
   public String getType() {
     return this.dataFormatType;
   }
 
   /**
-   * @param data the data to set
+   * @return Emty data object created from the data format schema.
    */
-  public void setData(DataObject data) {
-    this.data = data;
-  }
+  private DataObject createDataObject() {
+    DataObject dataObject = null;
+    InputStream inputStream = null;
 
-  /**
-   * @return the data
-   */
-  public DataObject getData() {
-    return data;
+    // load the schema file
+    inputStream = getClass().getResourceAsStream(this.dataFormatSchemaFile);
+
+    if (inputStream == null) {
+      System.out.println("The file '" + this.dataFormatSchemaFile
+          + "' could not be found.");
+    }
+
+    XSDHelper.INSTANCE.define(inputStream, null);
+
+    try {
+      inputStream.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    dataObject = DataFactory.INSTANCE.create(
+        "http://org.simpl.core/plugins/dataformat/DataFormat", this.dataFormatSchemaType);
+
+    return dataObject;
   }
 }
