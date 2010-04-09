@@ -39,6 +39,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/fileName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/auditingActive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/dataSources"/>
     </genClasses>
     <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//PropertyType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//PropertyType/any"/>
@@ -73,6 +75,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/any"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/port"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TDatasource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TDatasource/dataSourceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TDatasource/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TDatasource/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TDatasource/userName"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TDatasources">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TDatasources/children"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -17,6 +17,7 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TEnableEventList;
@@ -143,6 +144,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	private EClass tServiceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tDatasourceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -687,6 +695,51 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTDatasource() {
+		return tDatasourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasource_Address() {
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasource_DataSourceName() {
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasource_Password() {
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTDatasource_UserName() {
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTDatasources() {
 		return tDatasourcesEClass;
 	}
@@ -696,35 +749,8 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTDatasources_Address() {
-		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTDatasources_DataSourceName() {
-		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTDatasources_Password() {
-		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTDatasources_UserName() {
-		return (EAttribute)tDatasourcesEClass.getEStructuralFeatures().get(3);
+	public EReference getTDatasources_Children() {
+		return (EReference)tDatasourcesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -836,11 +862,14 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tServiceEClass, TSERVICE__NAME);
 		createEAttribute(tServiceEClass, TSERVICE__PORT);
 
+		tDatasourceEClass = createEClass(TDATASOURCE);
+		createEAttribute(tDatasourceEClass, TDATASOURCE__DATA_SOURCE_NAME);
+		createEAttribute(tDatasourceEClass, TDATASOURCE__ADDRESS);
+		createEAttribute(tDatasourceEClass, TDATASOURCE__PASSWORD);
+		createEAttribute(tDatasourceEClass, TDATASOURCE__USER_NAME);
+
 		tDatasourcesEClass = createEClass(TDATASOURCES);
-		createEAttribute(tDatasourcesEClass, TDATASOURCES__ADDRESS);
-		createEAttribute(tDatasourcesEClass, TDATASOURCES__DATA_SOURCE_NAME);
-		createEAttribute(tDatasourcesEClass, TDATASOURCES__PASSWORD);
-		createEAttribute(tDatasourcesEClass, TDATASOURCES__USER_NAME);
+		createEReference(tDatasourcesEClass, TDATASOURCES__CHILDREN);
 
 		// Create enums
 		generateTypeEEnum = createEEnum(GENERATE_TYPE);
@@ -912,7 +941,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getProcessType_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Model(), theBPELPackage.getProcess(), null, "model", null, 0, 1, ProcessType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessType_AuditingActive(), theXMLTypePackage.getBoolean(), "auditingActive", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessType_DataSources(), this.getTDatasources(), null, "dataSources", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessType_DataSources(), this.getTDatasources(), null, "dataSources", null, 1, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, PropertyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -948,11 +977,14 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTService_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTService_Port(), theXMLTypePackage.getNCName(), "port", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(tDatasourceEClass, TDatasource.class, "TDatasource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTDatasource_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Address(), theXMLTypePackage.getString(), "address", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(tDatasourcesEClass, TDatasources.class, "TDatasources", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTDatasources_Address(), theXMLTypePackage.getString(), "address", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasources_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasources_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasources_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTDatasources_Children(), this.getTDatasource(), null, "children", null, 0, -1, TDatasources.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(generateTypeEEnum, GenerateType.class, "GenerateType");
@@ -1359,35 +1391,35 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 			 "name", "port"
 		   });		
 		addAnnotation
-		  (tDatasourcesEClass, 
+		  (tDatasourceEClass, 
 		   source, 
 		   new String[] {
 			 "name", "tDatasources",
 			 "kind", "empty"
 		   });		
 		addAnnotation
-		  (getTDatasources_Address(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute",
-			 "name", "address"
-		   });		
-		addAnnotation
-		  (getTDatasources_DataSourceName(), 
+		  (getTDatasource_DataSourceName(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "dataSourceName"
 		   });		
 		addAnnotation
-		  (getTDatasources_Password(), 
+		  (getTDatasource_Address(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "address"
+		   });		
+		addAnnotation
+		  (getTDatasource_Password(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "password"
 		   });		
 		addAnnotation
-		  (getTDatasources_UserName(), 
+		  (getTDatasource_UserName(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",

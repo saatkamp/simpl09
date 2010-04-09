@@ -511,20 +511,30 @@ public interface ProcessType extends EObject {
 	boolean isSetAuditingActive();
 
 	/**
-	 * Returns the value of the '<em><b>Data Sources</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasources}.
+	 * Returns the value of the '<em><b>Data Sources</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Data Sources</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Data Sources</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Sources</em>' containment reference list.
+	 * @return the value of the '<em>Data Sources</em>' containment reference.
+	 * @see #setDataSources(TDatasources)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_DataSources()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='dataSources' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<TDatasources> getDataSources();
+	TDatasources getDataSources();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDataSources <em>Data Sources</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Data Sources</em>' containment reference.
+	 * @see #getDataSources()
+	 * @generated
+	 */
+	void setDataSources(TDatasources value);
 
 } // ProcessType
