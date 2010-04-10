@@ -40,16 +40,8 @@ public class UddiDataSource implements IUddiConfig{
 				
 				descList = new ArrayList<Description>();
 				referenceList = new ArrayList<KeyedReference>();
-	}
-
-
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+				
+				addAttribute("category", "datasource", KEYPREFIX + "category");
 	}
 
 	public ArrayList<Description> getDescList() {
@@ -80,7 +72,7 @@ public class UddiDataSource implements IUddiConfig{
 	}
 
 	public void setKey(String key) {
-		this.key = KEYPREFIX + "" + key;
+		this.key = key;
 	}
 	
 	

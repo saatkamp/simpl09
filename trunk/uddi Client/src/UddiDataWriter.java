@@ -79,6 +79,7 @@ public class UddiDataWriter implements IUddiConfig{
 		template.setAccessPoint(accessPoint);
 		template.setServiceKey(source.getServiceKey());		
 		
+		
 		CategoryBag bag = new CategoryBag();
 		bag.getKeyedReference().addAll(source.getReferenceList());
 		
