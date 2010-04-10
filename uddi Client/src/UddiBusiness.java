@@ -65,7 +65,7 @@ public class UddiBusiness implements IUddiConfig{
 	}
 
 	public void setKey(String key) {
-		this.key = KEYPREFIX + "" + key;
+		this.key = key;
 	}
 	
 	public void addName (String value, String language) {

@@ -75,7 +75,7 @@ public class UDDIService implements IUddiConfig{
 	}
 
 	public void setKey(String key) {
-		this.key = KEYPREFIX + "" + key;
+		this.key = key;
 	}
 	
 	public String getBusinessKey() {
