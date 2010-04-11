@@ -1,48 +1,30 @@
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.uddi.api_v3.*;
-import org.apache.juddi.ClassUtil;
-import org.apache.juddi.api_v3.*;
-import org.apache.juddi.v3.client.config.UDDIClientContainer;
-import org.apache.juddi.v3.client.transport.Transport;
-import org.uddi.v3_service.DispositionReportFaultMessage;
-import org.uddi.v3_service.UDDISecurityPortType;
-import org.uddi.v3_service.UDDIPublicationPortType;
-import org.apache.juddi.v3_service.JUDDIApiPortType;
+import org.uddi.api_v3.Description;
+import org.uddi.api_v3.KeyedReference;
+import org.uddi.api_v3.Name;
 
+public class UDDIService implements IUddiConfig {
 
-
-public class UDDIService implements IUddiConfig{
-	
-	
 	private ArrayList<Name> nameList = null;
-	
-	private ArrayList<Description> descList= null;
+
+	private ArrayList<Description> descList = null;
 
 	private String key = null;
-	
-	private static UDDISecurityPortType security = null;
-	
-	private static JUDDIApiPortType juddiApi = null;
-	
-	private static UDDIPublicationPortType publish = null;
-	
-	private AuthToken userAuthToken = null;
-	
+
 	private String businessKey = null;
-	
-	private ArrayList<KeyedReference> referenceList= null;
-	
+
+	private ArrayList<KeyedReference> referenceList = null;
+
 	public UDDIService(String businessKey) {
-				this.businessKey = businessKey;
-				
-				this.descList = new ArrayList<Description>();
-				this.nameList = new ArrayList<Name>();
-				this.referenceList = new ArrayList<KeyedReference>();
-				
+		this.businessKey = businessKey;
+
+		this.descList = new ArrayList<Description>();
+		this.nameList = new ArrayList<Name>();
+		this.referenceList = new ArrayList<KeyedReference>();
+
 	}
-	
+
 	public ArrayList<Name> getNameList() {
 		return this.nameList;
 	}
@@ -52,7 +34,7 @@ public class UDDIService implements IUddiConfig{
 		name.setLang(language);
 		name.setValue(value);
 		nameList.add(name);
-		
+
 	}
 
 	public ArrayList<Description> getDescList() {
@@ -62,14 +44,14 @@ public class UDDIService implements IUddiConfig{
 	public void setDescList(ArrayList<Description> descList) {
 		this.descList = descList;
 	}
-	
-	public void addDescription (String description, String language) {
+
+	public void addDescription(String description, String language) {
 		Description desc = new Description();
 		desc.setLang(language);
 		desc.setValue(description);
 		this.descList.add(desc);
 	}
-	
+
 	public String getKey() {
 		return key;
 	}
@@ -77,7 +59,7 @@ public class UDDIService implements IUddiConfig{
 	public void setKey(String key) {
 		this.key = key;
 	}
-	
+
 	public String getBusinessKey() {
 		return businessKey;
 	}
@@ -85,8 +67,6 @@ public class UDDIService implements IUddiConfig{
 	public void setBusinessKey(String businessKey) {
 		this.businessKey = businessKey;
 	}
-	
-	
 
 	public ArrayList<KeyedReference> getReferenceList() {
 		return referenceList;

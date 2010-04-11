@@ -1,25 +1,18 @@
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.juddi.ClassUtil;
 import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.Transport;
-import org.uddi.api_v3.AuthToken;
 import org.uddi.api_v3.BindingDetail;
 import org.uddi.api_v3.BindingTemplate;
 import org.uddi.api_v3.CategoryBag;
 import org.uddi.api_v3.Description;
 import org.uddi.api_v3.FindBinding;
-import org.uddi.api_v3.FindBusiness;
-import org.uddi.api_v3.FindTModel;
-import org.uddi.api_v3.GetAuthToken;
 import org.uddi.api_v3.GetBindingDetail;
 import org.uddi.api_v3.KeyedReference;
-import org.uddi.api_v3.TModel;
 import org.uddi.v3_service.DispositionReportFaultMessage;
 import org.uddi.v3_service.UDDIInquiryPortType;
-import org.uddi.v3_service.UDDISecurityPortType;
 
 public class UddiDatasourceReader implements IUddiConfig {
 
