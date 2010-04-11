@@ -1,19 +1,15 @@
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import org.apache.juddi.ClassUtil;
 import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.Transport;
-import org.apache.juddi.v3_service.JUDDIApiPortType;
 import org.uddi.api_v3.AccessPoint;
 import org.uddi.api_v3.AuthToken;
 import org.uddi.api_v3.BindingTemplate;
 import org.uddi.api_v3.BusinessEntity;
 import org.uddi.api_v3.BusinessService;
 import org.uddi.api_v3.CategoryBag;
-import org.uddi.api_v3.Description;
 import org.uddi.api_v3.GetAuthToken;
-import org.uddi.api_v3.KeyedReference;
 import org.uddi.api_v3.SaveBinding;
 import org.uddi.api_v3.SaveBusiness;
 import org.uddi.api_v3.SaveService;
@@ -26,7 +22,6 @@ public class UddiDataWriter implements IUddiConfig{
 	
 	private static UDDISecurityPortType security = null;
 	
-	private static JUDDIApiPortType juddiApi = null;
 	
 	private static UDDIPublicationPortType publish = null;
 	
@@ -45,7 +40,6 @@ public class UddiDataWriter implements IUddiConfig{
 					getConstructor(String.class).newInstance("default");
 
 				this.security = transport.getUDDISecurityService();
-				this.juddiApi = transport.getJUDDIApiService();
 				this.publish = transport.getUDDIPublishService();				
 								
 			}	
