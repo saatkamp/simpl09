@@ -36,6 +36,11 @@ public class UddiDatasourceReader implements IUddiConfig {
 		}
 	}
 
+	/**
+	 * Gets all datasources
+	 * @return
+	 * ArrayList of all datasources inside the jUDDI Registry
+	 */
 	public ArrayList<UddiDataSource> getAllDarasources() {
 
 		FindBinding findBinding = new FindBinding();
@@ -89,6 +94,13 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 	}
 
+	/**
+	 * Gets all Datasources by its TypeValue
+	 * @param type
+	 * Example: filesystem
+	 * @return
+	 * ArrayList of datasources
+	 */
 	public ArrayList<UddiDataSource> getByType(String type) {
 		FindBinding findBinding = new FindBinding();
 
@@ -141,6 +153,13 @@ public class UddiDatasourceReader implements IUddiConfig {
 		return datasources;
 	}
 	
+	/**
+	 * Gets datasources by their subtype value
+	 * @param type
+	 * The subtype value
+	 * @return
+	 * ArrayList of Datasources
+	 */
 	public ArrayList<UddiDataSource> getBySubType(String type) {
 		FindBinding findBinding = new FindBinding();
 
@@ -193,6 +212,15 @@ public class UddiDatasourceReader implements IUddiConfig {
 		return datasources;
 	}
 	
+	/**
+	 * Gets a datasource by its Key
+	 * @param key
+	 * The DatasourceKey as KEYPREFIX + key
+	 * Example:
+	 * uddi:org.apache.juddi:key
+	 * @return
+	 * The datasource
+	 */
 	public UddiDataSource getByKey(String key) {
 		GetBindingDetail getbd = new GetBindingDetail();
 		
