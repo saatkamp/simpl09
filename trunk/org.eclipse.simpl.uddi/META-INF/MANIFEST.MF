@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SIMPL UDDI Eclipse Plug-In
 Bundle-SymbolicName: org.eclipse.simpl.uddi;singleton:=true
-Bundle-Version: 0.0.1
+Bundle-Version: 0.1.0
 Bundle-Activator: org.eclipse.simpl.uddi.UDDIPlugIn
 Bundle-Vendor: SIMPL
 Require-Bundle: org.eclipse.ui,
