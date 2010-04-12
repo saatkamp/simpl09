@@ -25,17 +25,18 @@ import org.simpl.rrs.transformation.Transformer;
  */
 public class TransformerTest {
 
+	private static final String PATH = "";
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		StringBuilder string = new StringBuilder();
 		
 		BufferedReader in;
 		try {
-			in = new BufferedReader(new InputStreamReader(
-					new FileInputStream("PickProcess.bpel")));
+			in = new BufferedReader(new InputStreamReader(new FileInputStream(PATH + "PickProcess.bpel")));
 			
 			try {
 				String line;
@@ -52,11 +53,10 @@ public class TransformerTest {
 			e.printStackTrace();
 		}
 		
-
 		String response = Transformer.getTransformer().transform(string.toString());
 		
 		try {
-			OutputStream out = new FileOutputStream(new File("PickProcess_transformed.bpel"));
+			OutputStream out = new FileOutputStream(new File(PATH + "PickProcess_transformed.bpel"));
 			out.write(response.getBytes());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -66,5 +66,4 @@ public class TransformerTest {
 			e.printStackTrace();
 		}
 	}
-
 }
