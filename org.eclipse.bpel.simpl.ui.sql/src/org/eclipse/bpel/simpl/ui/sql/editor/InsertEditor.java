@@ -7,17 +7,23 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Text;
 
 import widgets.LiveEditStyleText;
@@ -40,9 +46,14 @@ public class InsertEditor extends AStatementEditor {
 	List columnList=null;
 	List tablsList,valuesList;
 	String tmpString2;
+	String TABLE_ORIENTED="values";
+	String SET_ORIENTED="select";
 	
 	String[] arrayOfParsedColumns;
 	String[] arrayOfParsedValues;
+	// Create the containing tab folder
+   TabFolder tabFolder;
+	
 	/*
 	 * The XML file wich contais the statment KeyWords
 	 */
@@ -73,10 +84,12 @@ public class InsertEditor extends AStatementEditor {
 		gridData2.grabExcessHorizontalSpace = true;
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
+		
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
-		compos.setLayoutData(gridData);
-
+		compos.setLayoutData(gridData1);
+		
+		
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(xmlFilePath);
@@ -84,9 +97,10 @@ public class InsertEditor extends AStatementEditor {
 		buttonsCompo.setLayout(gridLayoutA);
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
+		
 		comp.setLayoutData(gridData);
 		statementText=new LiveEditStyleText(comp);
-		statementText.setLayoutData(gridData1);
+		statementText.setLayoutData(gridData2);
 		statementText.addModifyListener(new ModifyListener(){
 
 			@Override
@@ -112,98 +126,85 @@ public class InsertEditor extends AStatementEditor {
 		}
 		else {statementText.setText("INSERT INTO ");}
 		
-		creatINSERT_UIElements(compos);
+		createTabTable(parser.parseDocument());
 	}
 	
 	
-	
-	/**
-	 * 
-	 * @param composite
-	 */
-	private void creatINSERT_UIElements(Composite composite){
+	  /**
+	   * Gets the control for tab one
+	   * 
+	   * @param tabFolder the parent tab folder
+	   * @return Control
+	   */
+	  private Control getTabOneControl(final TabFolder tabFolder,final String keyWordValue) {
+	    // Create a composite and add four buttons to it
+	    Composite composite = new Composite(tabFolder, SWT.NONE);
+	    composite.setLayout(new FillLayout(SWT.VERTICAL));
+	    
+	    Button insertButton;
+	    
+	    //+++++++++++++++++button ++++
+//	    final Button keyWordAsButton=new Button(composite, SWT.NONE);
+//		keyWordAsButton.setText(keyWordValue);
+//		keyWordAsButton.addSelectionListener(new SelectionListener() {
+//			
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				// TODO Auto-generated method stub
+//				statementText.setText(statementText.getText()+"\r	"+keyWordValue+" ");
+//				tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+//				for(int i=0;i<tabFolder.getItems().length;i++)
+//				{
+//					if(i!=tabFolder.getSelectionIndex()){
+//					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//					}
+//				}
+//			}
+//			
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//				// TODO Auto-generated method stub
+//				statementText.setText(statementText.getText()+"\r	"+keyWordValue+" ");
+//				tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+//				for(int i=0;i<tabFolder.getItems().length;i++)
+//				{
+//					if(i!=tabFolder.getSelectionIndex()){
+//					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//					}
+//				}	
+//			}
+//		});
+	    //++++++++++++++end of bitton part+++++++
 		
-		Button insertButton;
-		
-		
-		
-		//********************************
-		GridLayout gridLayoutx = new GridLayout();
-		gridLayoutx.numColumns = 3;
-		tableNameComposite=new Composite(composite, SWT.NONE);
-		tableNameComposite.setEnabled(false);
-		tableNameComposite.setLayout(gridLayoutx);
-		if(statementText.getText().length()<8){
-			tableNameComposite.setEnabled(false);
-		}
-		
-		Label tableName =new Label(tableNameComposite, SWT.NONE);
-		tableName.setText("Type the name of the Table: ");
-		textTableName=new Text(tableNameComposite, SWT.BORDER);
-		final Button addTable =new Button(tableNameComposite, SWT.NONE);
-		addTable.setText("Add to Statement");
-		addTable.addSelectionListener(new SelectionListener() {
+		if(keyWordValue.toLowerCase().equals("values"))
+		{
+		    GridLayout gridLayoutx = new GridLayout();
+			gridLayoutx.numColumns = 3;
+			Composite tableNameComposite = new Composite(composite, SWT.PUSH);
+			//tableNameComposite.setEnabled(false);
+			tableNameComposite.setLayout(gridLayoutx);
+	//		if(statementText.getText().length()<8){
+	//			tableNameComposite.setEnabled(false);
+	//		}
 			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				
-				try {
-					if(textTableName.getText().length()>0){
-						statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
-						//columnCompo.setEnabled(true);
-						//buttonsCompo.setEnabled(true);
-						//columsListCompo.setEnabled(true);
-					}
-				} catch (Exception e1) {
-					System.out.print("ERROR: "+e1.getMessage());
-				}
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				
-				if(textTableName.getText().length()>0){
-					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
-					//columnCompo.setEnabled(true);
-					//buttonsCompo.setEnabled(true);
-					//columsListCompo.setEnabled(true);
-				}
-				
-			}
-		});
-		//************************************
-		
-		
-		
-		
-		//*************************************************
-		GridData gridData = new GridData();
-		gridData.horizontalAlignment = GridData.FILL;
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.grabExcessVerticalSpace = true;
-		gridData.verticalAlignment = GridData.FILL;
-		
-		tablsList = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
-		tablsList.setBounds(40, 20, 320, 100);
-		tablsList.setLayoutData(gridData);
-		tablsList.setEnabled(false);
-		try {
-			loadTheTablesIntoList();
-		} catch (Exception e2) {
-			System.out.print("ERROR: "+e2.getMessage());
-		}
-		
-		try {
-			tablsList.addSelectionListener(new SelectionListener() {
+			Label tableName =new Label(tableNameComposite, SWT.NONE);
+			tableName.setText("Type the name of the Table: ");
+			textTableName = new Text(tableNameComposite, SWT.BORDER);
+			final Button addTable =new Button(tableNameComposite, SWT.NONE);
+			addTable.setText("Add to Statement");
+			addTable.addSelectionListener(new SelectionListener() {
 				
 				@Override
 				public void widgetSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
 					
-					//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
 					try {
-						loadColumnsOfTable();
+						if(textTableName.getText().length()>0){
+							statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+							//columnCompo.setEnabled(true);
+							//buttonsCompo.setEnabled(true);
+							//columsListCompo.setEnabled(true);
+						}
 					} catch (Exception e1) {
 						System.out.print("ERROR: "+e1.getMessage());
 					}
@@ -211,225 +212,616 @@ public class InsertEditor extends AStatementEditor {
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
 					
-					//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
-					try {
-						loadColumnsOfTable();
-					} catch (Exception e1) {
-						System.out.print("ERROR: "+e1.getMessage());
+					if(textTableName.getText().length()>0){
+						statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+						//columnCompo.setEnabled(true);
+						//buttonsCompo.setEnabled(true);
+						//columsListCompo.setEnabled(true);
 					}
+					
 				}
 			});
-		} catch (Exception e1) {
-			System.out.print("ERROR: "+e1.getMessage());
-		}
-		//**************************************************************
-		
-		//************************************************************
-		columnList=new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL| SWT.H_SCROLL);
-		columnList.setBounds(40, 20, 420, 200);
-		GridData gridDatax = new GridData();
-		gridDatax.horizontalAlignment = GridData.FILL;
-		gridDatax.grabExcessHorizontalSpace = true;
-		gridDatax.grabExcessVerticalSpace = true;
-		gridDatax.verticalAlignment = GridData.FILL;
-		columnList.setLayoutData(gridDatax);
-		//columnList.setSize(230, 150);
-		
-		
-		
-		
-		
-//		columnList.addSelectionListener(new SelectionListener() {
-//			
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				if(columnList.getItems().length>0) 	tmpString2="\r			,";
-//				else tmpString2="";
-//				//statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
-//				
-//			}
-//			
-//			@Override
-//			public void widgetDefaultSelected(SelectionEvent e) {
-//				if(columnList.getItems().length>0) 	tmpString2="\r			,";
-//				else tmpString2="";
-//				//statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
-//
-//			}
-//		});
-		//************************************************************
-		
-		//************************************************************
-		
-		
-		
-		//************************************************************
-		
-		//***********************************************************
-		valuesCompo=new Composite(tableNameComposite, SWT.BORDER);
-		valuesCompo.setEnabled(false);
-		GridLayout gridLayoutY=new GridLayout();
-		gridLayoutY.numColumns=1;
-		valuesCompo.setLayout(gridLayoutY);
-		Label valuesLabel=new Label(valuesCompo, SWT.NONE);
-		valuesLabel.setText("The Values for Inserting: ");
-		valuesText=new Text(valuesCompo, SWT.BORDER);
-		valuesText.setSize(250, 50);
-		Button addValuesIntoList=new Button(valuesCompo, SWT.NONE);
-		addValuesIntoList.setText("Add Values to Statement");
-		//valuesText.setText(getParsedVlauesFromStatement()); 
-		addValuesIntoList.addSelectionListener(new SelectionListener() {
+			//************************************
+			//*************************************************
+			GridData gridData1 = new GridData();
+			//gridData1.horizontalAlignment = GridData.FILL;
+			gridData1.grabExcessHorizontalSpace = true;
+			gridData1.grabExcessVerticalSpace = true;
+			gridData1.verticalAlignment = GridData.FILL;
 			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				valuesList.add(valuesText.getText());
-				valuesText.setText("");
+			tablsList = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+			tablsList.setBounds(40, 20, 320, 100);
+			tablsList.setLayoutData(gridData1);
+			tablsList.setEnabled(false);
+			try {
+				loadTheTablesIntoList();
+			} catch (Exception e2) {
+				System.out.print("ERROR: "+e2.getMessage());
 			}
 			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				valuesList.add(valuesText.getText());
-				valuesText.setText("");
-			}
-		});
-		valuesList=new List(valuesCompo, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
-		valuesList.setBounds(40, 20, 420, 200);
-		GridData gridDatax2 = new GridData();
-		gridDatax2.horizontalAlignment = GridData.FILL;
-		gridDatax2.grabExcessHorizontalSpace = true;
-		gridDatax2.grabExcessVerticalSpace = true;
-		gridDatax2.verticalAlignment = GridData.FILL;
-		valuesList.setLayoutData(gridDatax2);
-		valuesList.setSize(170, 150);
-		//***********************************************************
-		
-		
-		//***********************************************************
-		
-		//***********************************************************
-		
-		//********************************
-		actionsCompo=new Composite(tableNameComposite, SWT.NONE);
-		GridLayout gridLayoutZ = new GridLayout();
-		gridLayoutZ.numColumns = 2;
-		
-		actionsCompo.setLayout(gridLayoutZ);
-//		if(statementText.getText().length()<8){
-//			actionsCompo.setEnabled(false);
-//		}
-		
-		
-		Button insertColumsIntoStatment=new Button(actionsCompo, SWT.NONE);
-		insertColumsIntoStatment.setToolTipText("Add Columns and the values into the Statment");
-		insertColumsIntoStatment.setText("Insert to Statement");
-		insertColumsIntoStatment.addSelectionListener(new SelectionListener() {
-			
-			String tmpString="";
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				
-				if(columnList.getItems().length>0) 	tmpString=" ,";
-				else tmpString=" ";
-				
-				statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
-				statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
-				for(int i=1;i<columnList.getSelectionIndices().length;i++){
-					//if(columnList.isSelected(i)){
-						statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
-					//}
-				}
-				statementText.setText(statementText.getText()+")\r");
-
-				
-				if(valuesList.getItems().length>0) 	tmpString=" ,";
-				else tmpString=" ";
-				statementText.setText(statementText.getText()+"	VALUES (");
-				statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
-				for(int i=1;i<valuesList.getItems().length;i++){
-					statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
-			
-				}
-				statementText.setText(statementText.getText()+")\r");
-
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				
-				if(columnList.getItems().length>0) 	tmpString=" ,";
-				else tmpString=" ";
-				statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
-				statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
-				for(int i=1;i<columnList.getSelectionIndices().length;i++){
-					//if(columnList.isSelected(i)){
-						statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
-					//}
-				}
-				statementText.setText(statementText.getText()+")\r");
-
-				if(valuesList.getItems().length>0) 	tmpString=" ,";
-				else tmpString=" ";
-				statementText.setText(statementText.getText()+"	VALUES (");
-				statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
-				for(int i=1;i<valuesList.getItems().length;i++){
-					try {
-						statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						System.out.print("ERROR:"+e1.getMessage());
+			try {
+				tablsList.addSelectionListener(new SelectionListener() {
+					
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						
+						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+						try {
+							loadColumnsOfTable();
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
 					}
+					
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+						
+						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+						try {
+							loadColumnsOfTable();
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
+					}
+	
+					
+				});
+			} catch (Exception e1) {
+				System.out.print("ERROR: "+e1.getMessage());
+			}
+			//**************************************************************
 			
+			//************************************************************
+			columnList=new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL| SWT.H_SCROLL);
+			columnList.setBounds(40, 20, 420, 200);
+			GridData gridDatax = new GridData();
+			gridDatax.horizontalAlignment = GridData.FILL;
+			gridDatax.grabExcessHorizontalSpace = true;
+			gridDatax.grabExcessVerticalSpace = true;
+			gridDatax.verticalAlignment = GridData.FILL;
+			columnList.setLayoutData(gridDatax);
+			//columnList.setSize(230, 150);
+			
+			
+			
+			
+			
+	//			columnList.addSelectionListener(new SelectionListener() {
+	//				
+	//				@Override
+	//				public void widgetSelected(SelectionEvent e) {
+	//					if(columnList.getItems().length>0) 	tmpString2="\r			,";
+	//					else tmpString2="";
+	//					//statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
+	//					
+	//				}
+	//				
+	//				@Override
+	//				public void widgetDefaultSelected(SelectionEvent e) {
+	//					if(columnList.getItems().length>0) 	tmpString2="\r			,";
+	//					else tmpString2="";
+	//					//statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
+		//
+	//				}
+	//			});
+			//************************************************************
+			
+			//************************************************************
+			
+			
+			
+			//************************************************************
+			
+			//***********************************************************
+			valuesCompo=new Composite(tableNameComposite, SWT.BORDER);
+			valuesCompo.setEnabled(false);
+			GridLayout gridLayoutY=new GridLayout();
+			gridLayoutY.numColumns=1;
+			valuesCompo.setLayout(gridLayoutY);
+			Label valuesLabel=new Label(valuesCompo, SWT.NONE);
+			valuesLabel.setText("The Values for Inserting: ");
+			valuesText=new Text(valuesCompo, SWT.BORDER);
+			valuesText.setSize(250, 50);
+			Button addValuesIntoList=new Button(valuesCompo, SWT.NONE);
+			addValuesIntoList.setText("Add Values to Statement");
+			//valuesText.setText(getParsedVlauesFromStatement()); 
+			addValuesIntoList.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					valuesList.add(valuesText.getText());
+					valuesText.setText("");
 				}
-				statementText.setText(statementText.getText()+")\r");
-
-			}
-		});
-		
-		Button deleteFromColumnList =new Button(actionsCompo, SWT.NONE);
-		deleteFromColumnList.setText("Remove from List");
-		deleteFromColumnList.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				columnList.remove(columnList.getSelectionIndex());
-			}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					valuesList.add(valuesText.getText());
+					valuesText.setText("");
+				}
+			});
+			valuesList=new List(valuesCompo, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+			valuesList.setBounds(40, 20, 420, 200);
+			GridData gridDatax2 = new GridData();
+			gridDatax2.horizontalAlignment = GridData.FILL;
+			gridDatax2.grabExcessHorizontalSpace = true;
+			gridDatax2.grabExcessVerticalSpace = true;
+			gridDatax2.verticalAlignment = GridData.FILL;
+			valuesList.setLayoutData(gridDatax2);
+			valuesList.setSize(170, 150);
+			//***********************************************************
 			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				columnList.remove(columnList.getSelectionIndex());
+			
+			//***********************************************************
+			
+			//***********************************************************
+			
+			//********************************
+			actionsCompo=new Composite(tableNameComposite, SWT.NONE);
+			GridLayout gridLayoutZ = new GridLayout();
+			gridLayoutZ.numColumns = 2;
+			
+			actionsCompo.setLayout(gridLayoutZ);
+	//			if(statementText.getText().length()<8){
+	//				actionsCompo.setEnabled(false);
+	//			}
+			
+			
+			Button insertColumsIntoStatment=new Button(actionsCompo, SWT.NONE);
+			insertColumsIntoStatment.setToolTipText("Add Columns and the values into the Statment");
+			insertColumsIntoStatment.setText("Insert to Statement");
+			insertColumsIntoStatment.addSelectionListener(new SelectionListener() {
+				
+				String tmpString="";
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					
+					if(columnList.getItems().length>0) 	tmpString=" ,";
+					else tmpString=" ";
+					
+					statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
+					statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
+					for(int i=1;i<columnList.getSelectionIndices().length;i++){
+						//if(columnList.isSelected(i)){
+							statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
+						//}
+					}
+					statementText.setText(statementText.getText()+")\r");
+	
+					
+					if(valuesList.getItems().length>0) 	tmpString=" ,";
+					else tmpString=" ";
+					statementText.setText(statementText.getText()+"	VALUES (");
+					statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
+					for(int i=1;i<valuesList.getItems().length;i++){
+						statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
+				
+					}
+					statementText.setText(statementText.getText()+")\r");
+	
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+					if(columnList.getItems().length>0) 	tmpString=" ,";
+					else tmpString=" ";
+					statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
+					statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
+					for(int i=1;i<columnList.getSelectionIndices().length;i++){
+						//if(columnList.isSelected(i)){
+							statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
+						//}
+					}
+					statementText.setText(statementText.getText()+")\r");
+	
+					if(valuesList.getItems().length>0) 	tmpString=" ,";
+					else tmpString=" ";
+					statementText.setText(statementText.getText()+"	VALUES (");
+					statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
+					for(int i=1;i<valuesList.getItems().length;i++){
+						try {
+							statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							System.out.print("ERROR:"+e1.getMessage());
+						}
+				
+					}
+					statementText.setText(statementText.getText()+")\r");
+	
+				}
+			});
+			
+			Button deleteFromColumnList =new Button(actionsCompo, SWT.NONE);
+			deleteFromColumnList.setText("Remove from List");
+			deleteFromColumnList.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
+					columnList.remove(columnList.getSelectionIndex());
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
+					columnList.remove(columnList.getSelectionIndex());
+				}
+			});
+			
+			//**************************************************************
+			//parsing the colums and values from the statement into the lists.
+			try {
+				parseColumnsFromStatment();
+			} catch (Exception e1) {
+				System.out.print("ERROR:"+e1.getMessage());
 			}
-		});
+			if(arrayOfParsedColumns!=null){
+				try {
+					loadTheColumnsIntoList(arrayOfParsedColumns);
+				} catch (Exception e1) {
+					System.out.print("ERROR:"+e1.getMessage());
+				}
+			}else{columnList.removeAll();}
+			
+			if(arrayOfParsedValues!=null){
+				try {
+					loadTheColumnsIntoList(arrayOfParsedValues);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					System.out.print("ERROR:"+e1.getMessage());
+				}
+			}else{valuesList.removeAll();}
+			
+			tableNameComposite.setEnabled(true);
+			tablsList.setEnabled(true);
+			valuesCompo.setEnabled(true);
+		}//end of if values-Part
 		
-		//**************************************************************
-		//parsing the colums and values from the statement into the lists.
-		try {
-			parseColumnsFromStatment();
-		} catch (Exception e1) {
-			System.out.print("ERROR:"+e1.getMessage());
+		if(keyWordValue.toLowerCase().equals("select"))
+		{
+			
 		}
-		if(arrayOfParsedColumns!=null){
-			try {
-				loadTheColumnsIntoList(arrayOfParsedColumns);
-			} catch (Exception e1) {
-				System.out.print("ERROR:"+e1.getMessage());
-			}
-		}else{columnList.removeAll();}
 		
-		if(arrayOfParsedValues!=null){
-			try {
-				loadTheValuesIntoList(arrayOfParsedValues);
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				System.out.print("ERROR:"+e1.getMessage());
-			}
-		}else{valuesList.removeAll();}
-		
-		tableNameComposite.setEnabled(true);
-		tablsList.setEnabled(true);
-		valuesCompo.setEnabled(true);
-	}
+	    return composite;
+	  }
+	  
+	
+	/**
+	 * 
+	 * @param composite
+	 * @return 
+	 */
+//	private Composite creatInsert_UIElements(TabFolder tabFolder,String actionName){
+//		
+//		Composite composite = new Composite(tabFolder, SWT.NONE);
+//		GridData gridData = new GridData();
+//		gridData.horizontalAlignment = GridData.FILL;
+//		gridData.grabExcessHorizontalSpace = true;
+//		gridData.grabExcessVerticalSpace = true;
+//		gridData.verticalAlignment = GridData.FILL;
+//		composite.setLayout(new GridLayout());
+//		composite.setLayoutData(gridData);
+//		
+//		if(actionName.equals(TABLE_ORIENTED)){
+//			
+//			Button insertButton;
+//			
+//			
+//			//
+//			//********************************
+//			GridLayout gridLayoutx = new GridLayout();
+//			gridLayoutx.numColumns = 3;
+//			tableNameComposite=new Composite(composite, SWT.NONE);
+//			tableNameComposite.setEnabled(false);
+//			tableNameComposite.setLayout(gridLayoutx);
+//			if(statementText.getText().length()<8){
+//				tableNameComposite.setEnabled(false);
+//			}
+//			
+//			Label tableName =new Label(tableNameComposite, SWT.NONE);
+//			tableName.setText("Type the name of the Table: ");
+//			textTableName=new Text(tableNameComposite, SWT.BORDER);
+//			final Button addTable =new Button(tableNameComposite, SWT.NONE);
+//			addTable.setText("Add to Statement");
+//			addTable.addSelectionListener(new SelectionListener() {
+//				
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					// TODO Auto-generated method stub
+//					
+//					try {
+//						if(textTableName.getText().length()>0){
+//							statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+//							//columnCompo.setEnabled(true);
+//							//buttonsCompo.setEnabled(true);
+//							//columsListCompo.setEnabled(true);
+//						}
+//					} catch (Exception e1) {
+//						System.out.print("ERROR: "+e1.getMessage());
+//					}
+//				}
+//				
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//					// TODO Auto-generated method stub
+//					
+//					if(textTableName.getText().length()>0){
+//						statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+//						//columnCompo.setEnabled(true);
+//						//buttonsCompo.setEnabled(true);
+//						//columsListCompo.setEnabled(true);
+//					}
+//					
+//				}
+//			});
+//			//************************************
+//			
+//			
+//			
+//			
+//			//*************************************************
+//			GridData gridData1 = new GridData();
+//			gridData1.horizontalAlignment = GridData.FILL;
+//			gridData1.grabExcessHorizontalSpace = true;
+//			gridData1.grabExcessVerticalSpace = true;
+//			gridData1.verticalAlignment = GridData.FILL;
+//			
+//			tablsList = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+//			tablsList.setBounds(40, 20, 320, 100);
+//			tablsList.setLayoutData(gridData1);
+//			tablsList.setEnabled(false);
+//			try {
+//				loadTheTablesIntoList();
+//			} catch (Exception e2) {
+//				System.out.print("ERROR: "+e2.getMessage());
+//			}
+//			
+//			try {
+//				tablsList.addSelectionListener(new SelectionListener() {
+//					
+//					@Override
+//					public void widgetSelected(SelectionEvent e) {
+//						
+//						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+//						try {
+//							loadColumnsOfTable();
+//						} catch (Exception e1) {
+//							System.out.print("ERROR: "+e1.getMessage());
+//						}
+//					}
+//					
+//					@Override
+//					public void widgetDefaultSelected(SelectionEvent e) {
+//						
+//						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+//						try {
+//							loadColumnsOfTable();
+//						} catch (Exception e1) {
+//							System.out.print("ERROR: "+e1.getMessage());
+//						}
+//					}
+//				});
+//			} catch (Exception e1) {
+//				System.out.print("ERROR: "+e1.getMessage());
+//			}
+//			//**************************************************************
+//			
+//			//************************************************************
+//			columnList=new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL| SWT.H_SCROLL);
+//			columnList.setBounds(40, 20, 420, 200);
+//			GridData gridDatax = new GridData();
+//			gridDatax.horizontalAlignment = GridData.FILL;
+//			gridDatax.grabExcessHorizontalSpace = true;
+//			gridDatax.grabExcessVerticalSpace = true;
+//			gridDatax.verticalAlignment = GridData.FILL;
+//			columnList.setLayoutData(gridDatax);
+//			//columnList.setSize(230, 150);
+//			
+//			
+//			
+//			
+//			
+//	//		columnList.addSelectionListener(new SelectionListener() {
+//	//			
+//	//			@Override
+//	//			public void widgetSelected(SelectionEvent e) {
+//	//				if(columnList.getItems().length>0) 	tmpString2="\r			,";
+//	//				else tmpString2="";
+//	//				//statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
+//	//				
+//	//			}
+//	//			
+//	//			@Override
+//	//			public void widgetDefaultSelected(SelectionEvent e) {
+//	//				if(columnList.getItems().length>0) 	tmpString2="\r			,";
+//	//				else tmpString2="";
+//	//				//statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
+//	//
+//	//			}
+//	//		});
+//			//************************************************************
+//			
+//			//************************************************************
+//			
+//			
+//			
+//			//************************************************************
+//			
+//			//***********************************************************
+//			valuesCompo=new Composite(tableNameComposite, SWT.BORDER);
+//			valuesCompo.setEnabled(false);
+//			GridLayout gridLayoutY=new GridLayout();
+//			gridLayoutY.numColumns=1;
+//			valuesCompo.setLayout(gridLayoutY);
+//			Label valuesLabel=new Label(valuesCompo, SWT.NONE);
+//			valuesLabel.setText("The Values for Inserting: ");
+//			valuesText=new Text(valuesCompo, SWT.BORDER);
+//			valuesText.setSize(250, 50);
+//			Button addValuesIntoList=new Button(valuesCompo, SWT.NONE);
+//			addValuesIntoList.setText("Add Values to Statement");
+//			//valuesText.setText(getParsedVlauesFromStatement()); 
+//			addValuesIntoList.addSelectionListener(new SelectionListener() {
+//				
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					valuesList.add(valuesText.getText());
+//					valuesText.setText("");
+//				}
+//				
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//					valuesList.add(valuesText.getText());
+//					valuesText.setText("");
+//				}
+//			});
+//			valuesList=new List(valuesCompo, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+//			valuesList.setBounds(40, 20, 420, 200);
+//			GridData gridDatax2 = new GridData();
+//			gridDatax2.horizontalAlignment = GridData.FILL;
+//			gridDatax2.grabExcessHorizontalSpace = true;
+//			gridDatax2.grabExcessVerticalSpace = true;
+//			gridDatax2.verticalAlignment = GridData.FILL;
+//			valuesList.setLayoutData(gridDatax2);
+//			valuesList.setSize(170, 150);
+//			//***********************************************************
+//			
+//			
+//			//***********************************************************
+//			
+//			//***********************************************************
+//			
+//			//********************************
+//			actionsCompo=new Composite(tableNameComposite, SWT.NONE);
+//			GridLayout gridLayoutZ = new GridLayout();
+//			gridLayoutZ.numColumns = 2;
+//			
+//			actionsCompo.setLayout(gridLayoutZ);
+//	//		if(statementText.getText().length()<8){
+//	//			actionsCompo.setEnabled(false);
+//	//		}
+//			
+//			
+//			Button insertColumsIntoStatment=new Button(actionsCompo, SWT.NONE);
+//			insertColumsIntoStatment.setToolTipText("Add Columns and the values into the Statment");
+//			insertColumsIntoStatment.setText("Insert to Statement");
+//			insertColumsIntoStatment.addSelectionListener(new SelectionListener() {
+//				
+//				String tmpString="";
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					
+//					if(columnList.getItems().length>0) 	tmpString=" ,";
+//					else tmpString=" ";
+//					
+//					statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
+//					statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
+//					for(int i=1;i<columnList.getSelectionIndices().length;i++){
+//						//if(columnList.isSelected(i)){
+//							statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
+//						//}
+//					}
+//					statementText.setText(statementText.getText()+")\r");
+//	
+//					
+//					if(valuesList.getItems().length>0) 	tmpString=" ,";
+//					else tmpString=" ";
+//					statementText.setText(statementText.getText()+"	VALUES (");
+//					statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
+//					for(int i=1;i<valuesList.getItems().length;i++){
+//						statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
+//				
+//					}
+//					statementText.setText(statementText.getText()+")\r");
+//	
+//				}
+//				
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//					
+//					if(columnList.getItems().length>0) 	tmpString=" ,";
+//					else tmpString=" ";
+//					statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
+//					statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
+//					for(int i=1;i<columnList.getSelectionIndices().length;i++){
+//						//if(columnList.isSelected(i)){
+//							statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
+//						//}
+//					}
+//					statementText.setText(statementText.getText()+")\r");
+//	
+//					if(valuesList.getItems().length>0) 	tmpString=" ,";
+//					else tmpString=" ";
+//					statementText.setText(statementText.getText()+"	VALUES (");
+//					statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
+//					for(int i=1;i<valuesList.getItems().length;i++){
+//						try {
+//							statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
+//						} catch (Exception e1) {
+//							// TODO Auto-generated catch block
+//							System.out.print("ERROR:"+e1.getMessage());
+//						}
+//				
+//					}
+//					statementText.setText(statementText.getText()+")\r");
+//	
+//				}
+//			});
+//			
+//			Button deleteFromColumnList =new Button(actionsCompo, SWT.NONE);
+//			deleteFromColumnList.setText("Remove from List");
+//			deleteFromColumnList.addSelectionListener(new SelectionListener() {
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					// TODO Auto-generated method stub
+//					columnList.remove(columnList.getSelectionIndex());
+//				}
+//				
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//					// TODO Auto-generated method stub
+//					columnList.remove(columnList.getSelectionIndex());
+//				}
+//			});
+//			
+//			//**************************************************************
+//			//parsing the colums and values from the statement into the lists.
+//			try {
+//				parseColumnsFromStatment();
+//			} catch (Exception e1) {
+//				System.out.print("ERROR:"+e1.getMessage());
+//			}
+//			if(arrayOfParsedColumns!=null){
+//				try {
+//					loadTheColumnsIntoList(arrayOfParsedColumns);
+//				} catch (Exception e1) {
+//					System.out.print("ERROR:"+e1.getMessage());
+//				}
+//			}else{columnList.removeAll();}
+//			
+//			if(arrayOfParsedValues!=null){
+//				try {
+//					loadTheValuesIntoList(arrayOfParsedValues);
+//				} catch (Exception e1) {
+//					// TODO Auto-generated catch block
+//					System.out.print("ERROR:"+e1.getMessage());
+//				}
+//			}else{valuesList.removeAll();}
+//			
+//			tableNameComposite.setEnabled(true);
+//			tablsList.setEnabled(true);
+//			valuesCompo.setEnabled(true);
+//			
+//			
+//			
+//		}//end of if()
+//		if(actionName.equals(SET_ORIENTED)){
+//			
+//		}
+//		
+//		return composite;
+//	}
 	
 	
 	
@@ -705,6 +1097,77 @@ public class InsertEditor extends AStatementEditor {
 		
 	}
 	
+	private void createTabTable(final ArrayList<KeyWord> listOfMainKeyWords){
+		
+		
+		Label helpSympol=new Label(buttonsCompo, SWT.NONE);
+		helpSympol.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/")));
+
+		//** creating the Tab Panel +++++++++++++++++
+		/**
+		   * Creates the contents
+		   * 
+		   * @param shell the parent shell
+		   */
+		  
+			tabFolder = new TabFolder(compos, SWT.NONE);
+
+		    // Create each tab and set its text, tool tip text,
+		    // image, and control
+		   
+		   
+
+		    // Select the third tab (index is zero-based)
+		    
+
+		    // Add an event listener to write the selected tab to stdout
+		    tabFolder.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+					
+					for(int i=0;i<tabFolder.getItems().length;i++)
+					{
+						if(i!=tabFolder.getSelectionIndex()){
+						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+						}
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+					for(int i=0;i<tabFolder.getItems().length;i++)
+					{
+						if(i!=tabFolder.getSelectionIndex()){
+						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+						}
+					}
+				}
+			});
+		    for(int i=0;i<listOfMainKeyWords.get(0).getListOfSubKeyWords().size();i++)
+			{
+			    TabItem three = new TabItem(tabFolder, SWT.NONE);
+				if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("values")){
+					three.setText("Table oriented");
+				}
+				else if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("select")){
+					three.setText("SET oriented");
+				}
+				else three.setText(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord());
+
+					//three.setToolTipText("This is tab three");    
+				//if(tmpKeyWord.getMainKeyWord().equals("VALUES")){
+					//three.setControl(creatInsert_UIElements(tabFolder,TABLE_ORIENTED));
+					three.setControl(getTabOneControl(tabFolder,listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord()));
+				//}
+			}
+		 
+		
+		//+++++++++++++++++++++++++++++++++++++++++++
+	}
+	
 	/**
 	 * For creating the buttons out of the xml file ,wich contains
 	 * the key words of the quary language. And after creating they
@@ -720,29 +1183,16 @@ public class InsertEditor extends AStatementEditor {
 		for(int i=0;i<listOfMainKeyWords.size();i++)
 		{
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
-				try {
-					creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
-				} catch (Exception e) {
-					System.out.print("ERROR:"+e.getMessage());
-				}
+				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
-			
-			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("INSERT"))){
-
+			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("INSERT"))){	
 				final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
 				keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
 				//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
-				try {
-					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-				} catch (Exception e1) {
-					System.out.print("ERROR:"+e1.getMessage());
-				}
+				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 
-				try {
-					keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
-				} catch (Exception e1) {
-					System.out.print("ERROR:"+e1.getMessage());
-				}
+				
+				keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
 	
 //				if(!listOfMainKeyWords.get(i).isTheMajorKey()){
 //					keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
@@ -765,40 +1215,41 @@ public class InsertEditor extends AStatementEditor {
 						 * in the following for statement all the buttons are only
 						 * then enabled if the father button (according to the Logik in the parsed xmlFile)
 						 */
-						
-						keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-	
-						
+						try {
+							keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
 						for(int x=0;x<buttonList.size();x++){
 							//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-							keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+							buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
 							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
 								//
 								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
 									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-	
 								}
 								
 							}
 							
 							
 						}
-						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-
-						tableNameComposite.setEnabled(true);
-						tablsList.setEnabled(true);
-						valuesCompo.setEnabled(true);
-//
-//						if(tmpKeyWord.getMainKeyWord().equals("INSERT")){
-//							statementText.setText(tmpKeyWord.getTextOfKEyWord());
-//							tableNameComposite.setEnabled(true);
-//							tablsList.setEnabled(true);
-//							valuesCompo.setEnabled(true);
-//	
-//						}
-//						else{ statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-//						}
 						
+						try {
+							statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+							
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
+						
+//						if(tmpKeyWord.getTextOfKEyWord().equals("DELETE")){
+//							
+//							//tableNameLabel.setEnabled(true);
+//							tablsList.setEnabled(true);
+//							tableNameComposite.setEnabled(true);
+//							statementText.setText("DELETE ");
+//							
+//							
+//						}
 	//					fatherComp.getShell().getData("StyledText")
 	//					s.setStatementText("sdfsdf");
 					}
