@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataformat/DataFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData" xmlns:Q1="http://org.simpl.core/plugins/dataformat/DataFormat">
+<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataformat/DataFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/plugins/dataformat/DataFormat" xmlns:Q1="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData">
     <xsd:annotation>
-    	<xsd:documentation>This schema file defines the default meta data structure of some common data source types and is used by the simpl core to put meta data information into service data objects (SDO). Each datas ource service plugin can define its own meta data schema file.</xsd:documentation></xsd:annotation>
+    	<xsd:documentation></xsd:documentation></xsd:annotation>
     <xsd:complexType name="tColumn">
-    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+
+    	<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
     </xsd:complexType>
+
+
 
     
 
 
-    <xsd:complexType name="tCSVDataFormat">
-    	<xsd:sequence maxOccurs="unbounded" minOccurs="0">
-    		<xsd:element name="column" type="Q1:tColumn"></xsd:element>
+    
+
+
+
+
+
+    <xsd:complexType name="tTable">
+    	<xsd:sequence>
+    		<xsd:element name="row" type="tRow" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    		<xsd:element name="header" type="tHeader" maxOccurs="1" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	
+    </xsd:complexType>
+
+
+    <xsd:complexType name="tHeader">
+    	<xsd:sequence>
+    		<xsd:element name="column" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
     	</xsd:sequence>
     </xsd:complexType>
 
-    <xsd:element name="dataformat" type="tCSVDataFormat"></xsd:element>
 
-    
+    <xsd:element name="table" type="tTable"></xsd:element>
 
-
-
-
+    <xsd:complexType name="tRow">
+    	<xsd:sequence>
+    		<xsd:element name="column" type="tColumn" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
 </xsd:schema>

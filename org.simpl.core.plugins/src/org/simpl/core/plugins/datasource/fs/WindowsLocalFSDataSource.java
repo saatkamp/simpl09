@@ -1,5 +1,9 @@
 package org.simpl.core.plugins.datasource.fs;
 
+import java.io.File;
+
+import org.apache.log4j.PropertyConfigurator;
+import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
@@ -22,6 +26,9 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
     this.setMetaDataType("tFilesystemMetaData");
     this.addSubtype("Windows");
     this.addLanguage("Windows", "Shell Command");
+    
+    // Set up a simple configuration that logs on the console.
+    PropertyConfigurator.configure("log4j.properties");
   }
 
   /*
@@ -31,7 +38,6 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    */
   @Override
   public <T> T openConnection(String arg0) throws ConnectionException {
-    // TODO Auto-generated method stub
     return null;
   }
 
@@ -79,23 +85,23 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#manipulateData(java.lang.String, commonj.sdo.DataObject)
+   * @see org.simpl.core.datasource.DatasourceService#writeBack(java.lang.String,
+   * commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(String arg0, DataObject arg2)
-      throws ConnectionException {
+  public boolean writeBack(String arg0, DataObject arg2) throws ConnectionException {
     // TODO Auto-generated method stub
     return false;
   }
 
   /*
    * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#queryData(java.lang.String,
+   * @see org.simpl.core.datasource.DatasourceService#retrieveData(java.lang.String,
    * java.lang.String)
    */
   @Override
-  public DataObject retrieveData(String arg0, String arg1) throws ConnectionException {
-    // TODO Auto-generated method stub
-    return null;
+  public DataObject retrieveData(String dsAddress, String statement) throws ConnectionException {
+    //TODO: Statement auswerten, erstmal nur Filename
+    return SIMPLCore.getInstance().dataFormatService("CSV", "Headline").toSDO(new File(statement));
   }
 }

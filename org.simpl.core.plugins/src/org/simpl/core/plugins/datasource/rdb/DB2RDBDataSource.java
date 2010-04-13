@@ -118,7 +118,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger
-          .debug("DataObject queryData(" + dsAddress + ", " + statement + ") executed.");
+          .debug("DataObject retrieveData(" + dsAddress + ", " + statement + ") executed.");
     }
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     Command read = das.createCommand(statement);
@@ -132,7 +132,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
   public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean defineData(" + dsAddress + ", " + statement + ") executed.");
+      logger.debug("boolean executeStatement(" + dsAddress + ", " + statement + ") executed.");
     }
     boolean success = false;
     Connection conn = openConnection(dsAddress);
@@ -155,7 +155,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
   public boolean writeBack(String dsAddress, DataObject data)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean manipulateData(" + dsAddress + ", DataObject) executed.");
+      logger.debug("boolean writeBack(" + dsAddress + ", DataObject) executed.");
     }
 
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
