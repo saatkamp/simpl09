@@ -26,18 +26,18 @@ public abstract class DataFormatPlugin implements DataFormatService {
   /**
    * Name of the data format schema file.
    */
-  private String dataFormatSchemaFile = "DataFormat.xsd";
+  private String dataFormatSchemaFile = "DefaultDataFormat.xsd";
 
   /**
    * Type of the supporting data format (CSV, XML, ...).
    */
-  private String dataFormatType = "Default";
+  private String dataFormatType = "DefaultFormat";
 
   /**
    * The data format schema type defined in the data format schema file that is used to
    * create the data object.
    */
-  private String dataFormatSchemaType = "tDefault";
+  private String dataFormatSchemaType = "dataObject";
 
   /**
    * Subtypes of the supporting data format (CSVWithHeadline, XMLForSimulation, ..). TODO:
@@ -60,7 +60,7 @@ public abstract class DataFormatPlugin implements DataFormatService {
   /**
    * @return Empty data object following the data format schema
    */
-  public DataObject getDataObject() {
+  public DataObject getDataObjectFromSchema() {
     return this.dataObject;
   }
 
@@ -124,7 +124,12 @@ public abstract class DataFormatPlugin implements DataFormatService {
     InputStream inputStream = null;
 
     // load the schema file
-    inputStream = getClass().getResourceAsStream(this.dataFormatSchemaFile);
+    if (this.dataFormatSchemaFile.equals("DefaultDataFormat.xsd")) {
+      inputStream = getClass().getResourceAsStream(
+          "/org/simpl/core/plugins/dataformat/" + this.dataFormatSchemaFile);
+    } else {
+      inputStream = getClass().getResourceAsStream(this.dataFormatSchemaFile);
+    }
 
     if (inputStream == null) {
       System.out.println("The file '" + this.dataFormatSchemaFile
