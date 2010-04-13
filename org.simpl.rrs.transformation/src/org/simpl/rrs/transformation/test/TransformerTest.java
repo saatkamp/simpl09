@@ -1,6 +1,8 @@
 package org.simpl.rrs.transformation.test;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 
 import org.simpl.rrs.transformation.Transformer;
 
@@ -36,12 +39,13 @@ public class TransformerTest {
 		
 		BufferedReader in;
 		try {
-			in = new BufferedReader(new InputStreamReader(new FileInputStream(PATH + "PickProcess.bpel")));
+			in = new BufferedReader(new InputStreamReader(new FileInputStream(PATH + "asd.bpel")));
 			
 			try {
 				String line;
 				while ((line = in.readLine()) != null) {
 					string.append(line);
+					string.append("\n");
 				}
 			} finally {
 				in.close();
@@ -55,9 +59,13 @@ public class TransformerTest {
 		
 		String response = Transformer.getTransformer().transform(string.toString());
 		
+		System.out.println(response);
+		
 		try {
-			OutputStream out = new FileOutputStream(new File(PATH + "PickProcess_transformed.bpel"));
-			out.write(response.getBytes());
+			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(PATH + "asd_transformed.bpel")));
+			out.write(response);
+			out.flush();
+			out.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
