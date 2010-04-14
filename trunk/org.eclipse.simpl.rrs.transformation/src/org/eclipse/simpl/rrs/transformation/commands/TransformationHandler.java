@@ -2,7 +2,6 @@ package org.eclipse.simpl.rrs.transformation.commands;
 
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.ui.util.BPELUtil;
-import org.eclipse.bpel.ui.util.ModelHelper;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -12,6 +11,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.simpl.rrs.transformation.TransformerUtil;
 import org.eclipse.simpl.rrs.transformation.client.TransformationClient;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -80,9 +80,19 @@ public class TransformationHandler extends AbstractHandler {
 				// Datei wird auch von diesem Plug-In lokal im Workspace in einem
 				// Unterordner "Prozessname_transformed" gespeichert.
 
-				if (ModelHelper.getReferenceVariables(process) != null) {
-					TransformationClient.getClient().transform(absolutWorkspacePath + projectPath.toOSString(),
-							absolutWorkspacePath + bpelPath.toOSString());
+				if (!TransformerUtil.getReferenceVariables(absolutWorkspacePath + bpelPath.toOSString()).isEmpty()) {
+					if (TransformerUtil.areAllRefVarsFullSpecified(absolutWorkspacePath + bpelPath.toOSString())){
+						TransformationClient.getClient().transform(absolutWorkspacePath + projectPath.toOSString(),
+								absolutWorkspacePath + bpelPath.toOSString());
+					}else {
+						MessageDialog
+						.openInformation(
+								Display.getCurrent().getActiveShell(),
+								"SIMPL TransformationService: Process has reference variables with unspecified attributes",
+								"The opened process has Reference Variables which are not fully specified. " +
+								"Please check that in every Reference Variable the name, referenceType and valueType attribute is set to a value.");
+					}
+					
 					// TODO: RRS.wsdl und rrs.xsd noch in den Projektordner
 					// kopieren!
 					// transform("C:/runtime-EclipseApplication/Test",
