@@ -85,7 +85,7 @@ public class TransformationClient {
 										projectPath
 												+ System
 														.getProperty("file.separator")
-												+ "transformed"
+												+ bpelFileName + "_transformed"
 												+ System
 														.getProperty("file.separator")
 												+ bpelFileName
@@ -106,7 +106,7 @@ public class TransformationClient {
 			MessageDialog
 					.openError(
 							Display.getCurrent().getActiveShell(),
-							"SIMPL TransformationService Connection Exception",
+							"SIMPL TransformationService: Connection Exception",
 							"The TransformationService isn't available. Please check if your Apache Tomcat Server is running and the TransformationService is installed successfully.");
 		}
 	}

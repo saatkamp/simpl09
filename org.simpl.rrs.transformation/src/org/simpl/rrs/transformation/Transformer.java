@@ -231,6 +231,11 @@ public class Transformer {
 			for (String type : types) {
 				processActivityElements(parentSequence, onInstSequence, type);
 			}
+			
+			// If the prepare sequence remains empty it would be deleted
+			if (onInstSequence.getChildren().isEmpty()){
+				onInstSequence.detach();
+			}
 
 			XMLOutputter outp = new XMLOutputter();
 			outp.setFormat(Format.getPrettyFormat());

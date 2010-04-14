@@ -8,8 +8,12 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.simpl.rrs.transformation.TransformerUtil;
+import org.eclipse.simpl.rrs.transformation.client.TransformationClient;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
@@ -24,6 +28,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
  * @link http://code.google.com/p/simpl09/
  * 
  */
+@SuppressWarnings("unchecked")
 public class TransformationContextHandler extends AbstractHandler {
 
 	@Override
@@ -59,10 +64,31 @@ public class TransformationContextHandler extends AbstractHandler {
 					System.out.println("Datei-PFAD: " + absolutWorkspacePath
 							+ bpelPath.toOSString());
 
-					// Check if process has reference variables
-//					TransformationClient.getClient().transform(
-//							absolutWorkspacePath + projectPath.toOSString(),
-//							absolutWorkspacePath + bpelPath.toOSString());
+					if (!TransformerUtil.getReferenceVariables(absolutWorkspacePath + bpelPath.toOSString()).isEmpty()) {
+						if (TransformerUtil.areAllRefVarsFullSpecified(absolutWorkspacePath + bpelPath.toOSString())){
+							TransformationClient.getClient().transform(absolutWorkspacePath + projectPath.toOSString(),
+									absolutWorkspacePath + bpelPath.toOSString());
+						}else {
+							MessageDialog
+							.openInformation(
+									Display.getCurrent().getActiveShell(),
+									"SIMPL TransformationService: Process has reference variables with unspecified attributes",
+									"The opened process has Reference Variables which are not fully specified. " +
+									"Please check that in every Reference Variable the name, referenceType and valueType attribute is set to a value.");
+						}
+						
+						// TODO: RRS.wsdl und rrs.xsd noch in den Projektordner
+						// kopieren!
+						// transform("C:/runtime-EclipseApplication/Test",
+						// "C:/runtime-EclipseApplication/Test/asd.bpel");
+					} else {
+						MessageDialog
+								.openInformation(
+										Display.getCurrent().getActiveShell(),
+										"SIMPL TransformationService: Process has no reference variables",
+										"The opened process has no Reference Variables, so a transformation"
+												+ " is not necassary.");
+					}
 				}
 			}
 		}

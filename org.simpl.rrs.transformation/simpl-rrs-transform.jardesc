@@ -13,14 +13,14 @@
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
         <folder path="/org.simpl.rrs.transformation/META-INF"/>
         <javaElement handleIdentifier="=org.simpl.rrs.transformation/src&lt;org.simpl.rrs.transformation"/>
-        <file path="/org.simpl.rrs.transformation/TransformationService.wsdl"/>
         <file path="/org.simpl.rrs.transformation/TransformationServicePortType.wsdl"/>
+        <file path="/org.simpl.rrs.transformation/TransformationService.wsdl"/>
         <file path="/org.simpl.rrs.transformation/asd_transformed.bpel"/>
         <file path="/org.simpl.rrs.transformation/.project"/>
         <file path="/org.simpl.rrs.transformation/.classpath"/>
         <file path="/org.simpl.rrs.transformation/build.properties"/>
         <file path="/org.simpl.rrs.transformation/rrs-transformation-webservice.jardesc"/>
-        <file path="/org.simpl.rrs.transformation/asd2.bpel"/>
         <file path="/org.simpl.rrs.transformation/asd.bpel"/>
+        <file path="/org.simpl.rrs.transformation/asd2.bpel"/>
     </selectedElements>
 </jardesc>
