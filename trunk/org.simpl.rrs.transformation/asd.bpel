@@ -69,13 +69,19 @@
              Note: the callback location and correlation id is transparently handled 
              using WS-addressing.
              -->
-        <bpel:invoke name="Invoke" partnerLink="client" operation="onResult" portType="tns:asdCallback" inputVariable="output" outputVariable="input"></bpel:invoke>
-        <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="output"></bpel:reply>
+        <bpel:invoke name="Invoke" partnerLink="client" operation="onResult" portType="tns:asdCallback" inputVariable="ReferenceVariable" outputVariable="data"></bpel:invoke>
+        
+        <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="data"></bpel:reply>
+        
+        <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="ReferenceVariable" />
+    
+    	<bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="asd" />
+        
         <bpel:invoke name="callbackClient" 
                 partnerLink="client"
                 portType="tns:asdCallback"
                 operation="onResult" 
-                inputVariable="output"
+                inputVariable="ReferenceVariable"
                 />
     </bpel:sequence>
 </bpel:process>
