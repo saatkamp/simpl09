@@ -59,7 +59,7 @@ public class TransformerTest {
 		
 		String response = Transformer.getTransformer().transform(string.toString());
 		
-		System.out.println(response);
+//		System.out.println(response);
 		
 		try {
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(PATH + "asd_transformed.bpel")));
