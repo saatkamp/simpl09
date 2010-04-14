@@ -16,10 +16,6 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public interface DataSourceService {
-  public <T> T openConnection(String dsAddress) throws ConnectionException;
-
-  public <T> boolean closeConnection(T connection) throws ConnectionException;
-
   public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException;
 
