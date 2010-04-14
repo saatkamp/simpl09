@@ -28,7 +28,7 @@
       <menuContribution
             locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
          <command
-               commandId="org.eclipse.simpl.rrs.transformation.transform"
+               commandId="org.eclipse.simpl.rrs.transformation.transformContext"
                disabledIcon="icons/transform_disabled.gif"
                icon="icons/transform.gif"
                label="Transform BPEL Process"
@@ -57,12 +57,20 @@
             class="org.eclipse.simpl.rrs.transformation.commands.TransformationHandler"
             commandId="org.eclipse.simpl.rrs.transformation.transform">
       </handler>
+      <handler
+            class="org.eclipse.simpl.rrs.transformation.commands.TransformationContextHandler"
+            commandId="org.eclipse.simpl.rrs.transformation.transformContext">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <command
             id="org.eclipse.simpl.rrs.transformation.transform"
             name="Transform">
+      </command>
+      <command
+            id="org.eclipse.simpl.rrs.transformation.transformContext"
+            name="Transform from Context Menue">
       </command>
    </extension>
 
