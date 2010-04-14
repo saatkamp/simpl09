@@ -75,7 +75,7 @@ public class Transformer {
 	private static final String EL_REPLY = "reply";
 	private static final String EL_RECEIVE = "receive";
 	
-	private static final String EL_SCOPE = "sequence";
+	private static final String EL_SEQUENCE = "sequence";
 	
 	//ReferenceType values
 	private static final String ON_INSTANTIATION = "onInstantiation";
@@ -188,68 +188,73 @@ public class Transformer {
 			// Dereferenzierungsaktivitäten
 			// auf das RRS gesetzt werden.
 
-			for (Object obj : root.getChildren()) {
+			Element parentSequence = root.getChild(EL_SEQUENCE, BPEL_NAMESPACE);
+			//Durchlaufen der obersten Sequence
+			for (Object obj : parentSequence.getChildren()) {
 				Element element = (Element) obj;
 				if (element.getName().equals(EL_INVOKE)
 						&& element.getAttribute(AT_OUTPUT_VARIABLE) != null) {
-					// Process all invoke activities with input and output
-					// variable
-					if (refVarNames.containsKey(element
-							.getAttributeValue(AT_INPUT_VARIABLE))
-							|| refVarNames.containsKey(element
-									.getAttributeValue(AT_OUTPUT_VARIABLE))) {
-						// This activity has a referenceVariable
-						String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
-						//Check whether the input or output variable is a reference
-						if (!refVarNames.containsKey(varName)){
-							varName = element.getAttributeValue(AT_OUTPUT_VARIABLE);
-						}
-						//TODO: theoretisch könnten hier auch zwei unabhängige Referenzvariablen vorkommen,
-						//eine als inputVariable und eine andere als outputVariable
-						Element deRefInvoke = createRRSInvokeActivity(varName
-								+ "EPR", varName, refVarNames.get(varName));
-						if (getReferenceVariable(varName).getAttributeValue(AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)){
-							//onInstantiation: referenced data should be loaded constant (only one time)
-							root.getChild(EL_SCOPE).addContent(0, deRefInvoke);
-						}else {
-							//fresh: referenced data should be loaded dynamic (several times)
-							Element parent = element.getParentElement();
-							int index = parent.indexOf(element);
-							if (index != -1){
-								parent.addContent(index, deRefInvoke);
-								//Increase the counter for the name of the activity
-								refVarNames.put(varName, refVarNames.get(varName)+1);
-							}
-						}
-					}
+//					// Process all invoke activities with input and output
+//					// variable
+//					if (refVarNames.containsKey(element
+//							.getAttributeValue(AT_INPUT_VARIABLE))
+//							|| refVarNames.containsKey(element
+//									.getAttributeValue(AT_OUTPUT_VARIABLE))) {
+//						// This activity has a referenceVariable
+//						String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
+//						//Check whether the input or output variable is a reference
+//						if (!refVarNames.containsKey(varName)){
+//							varName = element.getAttributeValue(AT_OUTPUT_VARIABLE);
+//						}
+//						//TODO: theoretisch könnten hier auch zwei unabhängige Referenzvariablen vorkommen,
+//						//eine als inputVariable und eine andere als outputVariable
+//						Element deRefInvoke = createRRSInvokeActivity(varName
+//								+ "EPR", varName, refVarNames.get(varName));
+//						if (getReferenceVariable(varName).getAttributeValue(AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)){
+//							//onInstantiation: referenced data should be loaded constant (only one time)
+//							root.getChild(EL_SCOPE).addContent(0, deRefInvoke);
+//						}else {
+//							//fresh: referenced data should be loaded dynamic (several times)
+//							Element parent = element.getParentElement();
+//							int index = parent.indexOf(element);
+//							if (index != -1){
+//								parent.addContent(index, deRefInvoke);
+//								//Increase the counter for the name of the activity
+//								refVarNames.put(varName, refVarNames.get(varName)+1);
+//							}
+//						}
+//					}
 				} else if (element.getName().equals(EL_INVOKE)
 						&& element.getAttribute(AT_OUTPUT_VARIABLE) == null) {
-					// Process all invoke activities with only a input variable
-					if (refVarNames.containsKey(element
-							.getAttributeValue(AT_INPUT_VARIABLE))
-							|| refVarNames.containsKey(element
-									.getAttributeValue(AT_OUTPUT_VARIABLE))) {
-						// This activity has a referenceVariable
-						String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
-						Element deRefInvoke = createRRSInvokeActivity(varName
-								+ "EPR", varName, refVarNames.get(varName));
-						if (getReferenceVariable(varName).getAttributeValue(AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)){
-							//onInstantiation: referenced data should be loaded constant (only one time)
-							root.getChild(EL_SCOPE).addContent(0, deRefInvoke);
-						}else {
-							//fresh: referenced data should be loaded dynamic (several times)
-							Element parent = element.getParentElement();
-							int index = parent.indexOf(element);
-							if (index != -1){
-								parent.addContent(index, deRefInvoke);
-								//Increase the counter for the name of the activity
-								refVarNames.put(varName, refVarNames.get(varName)+1);
-							}
-						}
-					}
+//					// Process all invoke activities with only a input variable
+//					if (refVarNames.containsKey(element
+//							.getAttributeValue(AT_INPUT_VARIABLE))
+//							|| refVarNames.containsKey(element
+//									.getAttributeValue(AT_OUTPUT_VARIABLE))) {
+//						// This activity has a referenceVariable
+//						String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
+//						Element deRefInvoke = createRRSInvokeActivity(varName
+//								+ "EPR", varName, refVarNames.get(varName));
+//						if (getReferenceVariable(varName).getAttributeValue(AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)){
+//							//onInstantiation: referenced data should be loaded constant (only one time)
+//							root.getChild(EL_SCOPE).addContent(0, deRefInvoke);
+//						}else {
+//							//fresh: referenced data should be loaded dynamic (several times)
+//							Element parent = element.getParentElement();
+//							int index = parent.indexOf(element);
+//							if (index != -1){
+//								parent.addContent(index, deRefInvoke);
+//								//Increase the counter for the name of the activity
+//								refVarNames.put(varName, refVarNames.get(varName)+1);
+//							}
+//						}
+//					}
 				} else if (element.getName().equals(EL_RECEIVE)
 						|| element.getName().equals(EL_REPLY)) {
 					// Process all reply & receive activities
+					
+					System.out.println("REFNAMES: "+refVarNames.toString());
+					
 					if (refVarNames.containsKey(element
 							.getAttributeValue(AT_VARIABLE))) {
 						// This activity has a referenceVariable
@@ -258,11 +263,21 @@ public class Transformer {
 								+ "EPR", varName, refVarNames.get(varName));
 						if (getReferenceVariable(varName).getAttributeValue(AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)){
 							//onInstantiation: referenced data should be loaded constant (only one time)
-							root.getChild(EL_SCOPE).addContent(0, deRefInvoke);
+							root.getChild(EL_SEQUENCE).addContent(0, deRefInvoke);
 						}else {
 							//fresh: referenced data should be loaded dynamic (several times)
 							Element parent = element.getParentElement();
+							
+							System.out.println("ELEMENT: " + element.toString());
+							System.out.println();
+							System.out.println("PARENT: " + parent.toString());
+							
 							int index = parent.indexOf(element);
+							
+							System.out.println("INDEX: " + index);
+							System.out.println();
+							System.out.println("DEREF: " + deRefInvoke.toString());
+							
 							if (index != -1){
 								parent.addContent(index, deRefInvoke);
 								//Increase the counter for the name of the activity
