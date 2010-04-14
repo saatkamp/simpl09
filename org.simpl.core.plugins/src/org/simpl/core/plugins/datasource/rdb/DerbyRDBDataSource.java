@@ -39,29 +39,22 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#openConnection(java.lang.String)
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public Connection openConnection(String dsAddress) throws ConnectionException {
+  private Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
     // Testweise wird hier nur eine embedded Derby Datenbank verwendet
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
-    
+
     Connection connect = null;
-    
+
     try {
       Class.forName("org.apache.derby.jdbc.ClientDriver");
       StringBuilder uri = new StringBuilder();
       // jdbc:derby:sampleDB", "dba", "password");
       uri.append("jdbc:derby:");
       uri.append(dsAddress);
-      
+
       try {
         // TODO Hier müssen noch die im SIMPL Core hinterlegten
         // Authentification-Informationen geladen werden
@@ -73,33 +66,24 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
       }
 
       logger.info("Connection opened on " + dsAddress + ".");
-      
+
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
       logger.fatal("exception during loading the JDBC driver", e);
     }
-    
+
     return connect;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#closeConnection(java.lang.Object
-   * )
-   */
-  @SuppressWarnings("hiding")
-  @Override
-  public <Connection> boolean closeConnection(Connection connection)
-      throws ConnectionException {
+  private boolean closeConnection(Connection connection) throws ConnectionException {
     // TODO Auto-generated method stub
     boolean success = false;
 
     try {
       ((java.sql.Connection) connection).close();
       success = true;
-      
+
       if (logger.isDebugEnabled()) {
         logger.debug("boolean closeConnection() executed successfully.");
       }
@@ -110,7 +94,7 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
         logger.error("boolean closeConnection() executed with failures.", e);
       }
     }
-    
+
     return success;
   }
 
@@ -118,16 +102,16 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
   public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger
-          .debug("DataObject retrieveData(" + dsAddress + ", " + statement + ") executed.");
+      logger.debug("DataObject retrieveData(" + dsAddress + ", " + statement
+          + ") executed.");
     }
-    
+
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     Command read = das.createCommand(statement);
     DataObject root = read.executeQuery();
 
     logger.info("Statement '" + statement + "' executed on " + dsAddress + ".");
-    
+
     return root;
   }
 
@@ -135,12 +119,13 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
   public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dsAddress + ", " + statement + ") executed.");
+      logger.debug("boolean executeStatement(" + dsAddress + ", " + statement
+          + ") executed.");
     }
-    
+
     boolean success = false;
     Connection conn = openConnection(dsAddress);
-    
+
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
@@ -153,32 +138,26 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
 
     logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
     closeConnection(conn);
-    
+
     return success;
   }
 
   @Override
-  public boolean writeBack(String dsAddress, DataObject data)
-      throws ConnectionException {
+  public boolean writeBack(String dsAddress, DataObject data) throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dsAddress + ", DataObject) executed.");
     }
 
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
-    /*Connection conn = openConnection(dsAddress);
-    try {
-      Statement stat = conn.createStatement();
-      stat.execute(statement);
-      conn.commit();
-      stat.close();
-      success = true;
-    } catch (Throwable e) {
-      logger.error("exception executing the statement: " + statement, e);
-    }
-
-    logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
-    closeConnection(conn);*/
+    /*
+     * Connection conn = openConnection(dsAddress); try { Statement stat =
+     * conn.createStatement(); stat.execute(statement); conn.commit(); stat.close();
+     * success = true; } catch (Throwable e) {
+     * logger.error("exception executing the statement: " + statement, e); }
+     * logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
+     * closeConnection(conn);
+     */
     return success;
   }
 
@@ -189,11 +168,11 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
       logger.debug("boolean manipulateDataWithSDO(" + dsAddress + ", " + data
           + ") executed.");
     }
-    
+
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     das.applyChanges(data);
     logger.info("DataObject " + data + "was send back to data source " + dsAddress);
-    
+
     return false;
   }
 
@@ -228,7 +207,7 @@ public class DerbyRDBDataSource extends DataSourcePlugin {
     insertStatement.append(statement);
 
     Connection conn = openConnection(dsAddress);
-    
+
     try {
       Statement createState = conn.createStatement();
       Statement insertState = conn.createStatement();

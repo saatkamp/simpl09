@@ -40,14 +40,7 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#openConnection(java.lang.String)
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public Connection openConnection(String dsAddress) throws ConnectionException {
+  private Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
     // Testweise wird hier nur eine embedded Derby Datenbank verwendet
     if (logger.isDebugEnabled()) {
@@ -78,15 +71,7 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
     return connect;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#closeConnection(java.lang.Object
-   * )
-   */
-  @SuppressWarnings("hiding")
-  @Override
-  public <Connection> boolean closeConnection(Connection connection) {
+  private boolean closeConnection(Connection connection) {
     // TODO Auto-generated method stub
     boolean success = false;
 
@@ -110,8 +95,8 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger
-          .debug("DataObject retrieveData(" + dsAddress + ", " + statement + ") executed.");
+      logger.debug("DataObject retrieveData(" + dsAddress + ", " + statement
+          + ") executed.");
     }
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
     Command read = das.createCommand(statement);
@@ -125,7 +110,8 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dsAddress + ", " + statement + ") executed.");
+      logger.debug("boolean executeStatement(" + dsAddress + ", " + statement
+          + ") executed.");
     }
     boolean success = false;
     Connection conn = openConnection(dsAddress);
@@ -145,27 +131,21 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean writeBack(String dsAddress, DataObject data)
-      throws ConnectionException {
+  public boolean writeBack(String dsAddress, DataObject data) throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dsAddress + ", DataObject) executed.");
     }
 
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
-    /*Connection conn = openConnection(dsAddress);
-    try {
-      Statement stat = conn.createStatement();
-      stat.execute(statement);
-      conn.commit();
-      stat.close();
-      success = true;
-    } catch (Throwable e) {
-      logger.error("exception executing the statement: " + statement, e);
-    }
-
-    logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
-    closeConnection(conn);*/
+    /*
+     * Connection conn = openConnection(dsAddress); try { Statement stat =
+     * conn.createStatement(); stat.execute(statement); conn.commit(); stat.close();
+     * success = true; } catch (Throwable e) {
+     * logger.error("exception executing the statement: " + statement, e); }
+     * logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
+     * closeConnection(conn);
+     */
     return success;
   }
 

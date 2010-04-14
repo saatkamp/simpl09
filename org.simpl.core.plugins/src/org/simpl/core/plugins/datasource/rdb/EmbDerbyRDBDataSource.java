@@ -26,7 +26,8 @@ import commonj.sdo.DataObject;
  * dsAddress = Full path to embedded Derby database, for example: C:\databases\myDB.
  * 
  * @author hahnml<br>
- * @version $Id$<br>
+ * @version $Id: EmbDerbyRDBDataSource.java 1087 2010-04-13 17:12:27Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class EmbDerbyRDBDataSource extends DataSourcePlugin {
@@ -42,14 +43,7 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#openConnection(java.lang.String)
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public Connection openConnection(String dsAddress) throws ConnectionException {
+  private Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
@@ -90,15 +84,7 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     return connect;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#closeConnection(java.lang.Object
-   * )
-   */
-  @SuppressWarnings("hiding")
-  @Override
-  public <Connection> boolean closeConnection(Connection connection) {
+  private boolean closeConnection(Connection connection) {
     // TODO Auto-generated method stub
     boolean success = false;
 
@@ -125,8 +111,8 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   public DataObject retrieveData(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger
-          .debug("DataObject retrieveData(" + dsAddress + ", " + statement + ") executed.");
+      logger.debug("DataObject retrieveData(" + dsAddress + ", " + statement
+          + ") executed.");
     }
 
     DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
@@ -142,7 +128,8 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   public boolean executeStatement(String dsAddress, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dsAddress + ", " + statement + ") executed.");
+      logger.debug("boolean executeStatement(" + dsAddress + ", " + statement
+          + ") executed.");
     }
 
     boolean success = false;

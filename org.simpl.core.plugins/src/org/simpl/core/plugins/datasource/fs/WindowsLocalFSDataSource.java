@@ -1,6 +1,9 @@
 package org.simpl.core.plugins.datasource.fs;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.SIMPLCore;
@@ -21,6 +24,8 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class WindowsLocalFSDataSource extends DataSourcePlugin {
+  Runtime runtime = Runtime.getRuntime();
+  
   public WindowsLocalFSDataSource() {
     this.setType("Local Filesystem");
     this.setMetaDataType("tFilesystemMetaData");
@@ -33,32 +38,32 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#openConnection(java.lang.String)
-   */
-  @Override
-  public <T> T openConnection(String arg0) throws ConnectionException {
-    return null;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#closeConnection(java.sql.Connection)
-   */
-  @Override
-  public <T> boolean closeConnection(T arg0) throws ConnectionException {
-    return true;
-  }
-
-  /*
-   * (non-Javadoc)
    * @see org.simpl.core.datasource.DatasourceService#defineData(java.lang.String,
    * java.lang.String)
    */
   @Override
-  public boolean executeStatement(String arg0, String arg1) throws ConnectionException {
-    // TODO Auto-generated method stub
-    return false;
+  public boolean executeStatement(String arg0, String statement) throws ConnectionException {
+    Process process;
+    BufferedReader processReader;
+    String line;
+    
+    try {
+      process = runtime.exec(statement);
+      processReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      
+      while ((line = processReader.readLine()) instanceof String && processReader.ready()) {
+        // do nothing
+        System.out.println(line);
+      }
+      
+      process.destroy();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+      
+      return false;
+    }
+    return true;
   }
 
   /*
@@ -101,6 +106,26 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    */
   @Override
   public DataObject retrieveData(String dsAddress, String statement) throws ConnectionException {
+    BufferedReader processReader = null;
+    String line;
+    
+    try {
+      Process process = runtime.exec(statement);
+      processReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      
+      while ((line = processReader.readLine()) instanceof String && processReader.ready()) {
+        // do nothing
+        System.out.println(line);
+      }
+      
+      process.destroy();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+      
+      return null;
+    }
+    
     //TODO: Statement auswerten, erstmal nur Filename
     return SIMPLCore.getInstance().dataFormatService("CSV", "Headline").toSDO(new File(statement));
   }
