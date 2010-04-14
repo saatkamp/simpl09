@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "TransformationService", targetNamespace = "http://webservices.transformation.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/TransformationService.TransformationServicePort?wsdl")
+@WebServiceClient(name = "TransformationServiceService", targetNamespace = "http://webservices.transformation.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/TransformationServiceService.TransformationServicePort?wsdl")
 public class TransformationService_Service
     extends Service
 {
@@ -30,9 +30,9 @@ public class TransformationService_Service
         try {
             URL baseUrl;
             baseUrl = TransformationService_Service.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/ode/processes/TransformationService.TransformationServicePort?wsdl");
+            url = new URL(baseUrl, "http://localhost:8080/ode/processes/TransformationServiceService.TransformationServicePort?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/TransformationService.TransformationServicePort?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/TransformationServiceService.TransformationServicePort?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         TRANSFORMATIONSERVICE_WSDL_LOCATION = url;
@@ -43,7 +43,7 @@ public class TransformationService_Service
     }
 
     public TransformationService_Service() {
-        super(TRANSFORMATIONSERVICE_WSDL_LOCATION, new QName("http://webservices.transformation.rrs.simpl.org/", "TransformationService"));
+        super(TRANSFORMATIONSERVICE_WSDL_LOCATION, new QName("http://webservices.transformation.rrs.simpl.org/", "TransformationServiceService"));
     }
 
     /**

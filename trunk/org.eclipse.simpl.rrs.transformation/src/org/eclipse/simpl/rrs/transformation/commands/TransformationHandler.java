@@ -1,19 +1,17 @@
 package org.eclipse.simpl.rrs.transformation.commands;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-
+import org.eclipse.bpel.model.Process;
+import org.eclipse.bpel.ui.util.BPELUtil;
+import org.eclipse.bpel.ui.util.ModelHelper;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.simpl.rrs.transformation.TransformerPlugIn;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.simpl.rrs.transformation.client.TransformationClient;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -31,73 +29,83 @@ import org.eclipse.ui.handlers.HandlerUtil;
  * 
  */
 public class TransformationHandler extends AbstractHandler {
+	/**
+	 * Die BPEL Datei des Prozesses
+	 */
+	IFile bpelFile = null;
+
+	/**
+	 * Der Pfad zur BPEL Datei des Prozesses
+	 */
+	IPath bpelPath = null;
+
+	/**
+	 * Pfad zum Projektordner = Pfad zur BPEL Datei ohne Dateiendung
+	 */
+	IPath projectPath = null;
+
+	/**
+	 * Absoluter Workspace-Pfad. Pfad in Format "OSString" umwandeln, so dass
+	 * man mit java.io arbeiten kann.
+	 */
+	String absolutWorkspacePath = "";
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		// TODO: Hier wird die eigentlich Transformation angestoßen, d.h. es
-		// werden alle
-		// selektierten (mehrfachauswahl möglich) bzw. im Editor geöffnetete
-		// (einfachauswahl) BPEL-Dateien
-		// an den Transformator geschickt und die transformierten Dateien müssen
-		// auch von diesem Plug-In lokal im Workspace in einem Unterordner
-		// "transformed" gespeichert werden
+		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
+				.getActivePage().getSelection();
+		if (selection != null & selection instanceof IStructuredSelection) {
+			IStructuredSelection strucSelection = (IStructuredSelection) selection;
+			if (strucSelection.getFirstElement() instanceof Process) {
+				Process process = (Process) strucSelection.getFirstElement();
 
-		String projectPath = "";
-		String bpelFileName = "";
+				bpelFile = BPELUtil.getBPELFile(process);
 
-		// Check if the TransformationService is available or not
-		if (TransformationClient.getClient().isTransformerAvailable()) {
+				bpelPath = bpelFile.getFullPath();
 
-			StringBuilder string = new StringBuilder();
+				projectPath = bpelPath.removeFileExtension()
+						.removeLastSegments(1);
 
-			BufferedReader in;
-			try {
-				in = new BufferedReader(new InputStreamReader(
-						new FileInputStream(projectPath + bpelFileName+TransformerPlugIn.getDefault().BPEL_EXTENSION)));
+				absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
+						.getLocation().toOSString();
 
-				try {
-					String line;
-					while ((line = in.readLine()) != null) {
-						string.append(line);
-						string.append("\n");
-					}
-				} finally {
-					in.close();
+				System.out.println("PROJEKT-PFAD: " + absolutWorkspacePath
+						+ projectPath.toOSString());
+				System.out.println("Datei-PFAD: " + absolutWorkspacePath
+						+ bpelPath.toOSString());
+
+				// Hier wird die eigentlich Transformation angestoßen,
+				// d.h. es wird die im Editor geöffnetete BPEL-Datei
+				// an den Transformator geschickt und die transformierte
+				// Datei wird auch von diesem Plug-In lokal im Workspace in einem
+				// Unterordner "Prozessname_transformed" gespeichert.
+
+				if (ModelHelper.getReferenceVariables(process) != null) {
+					TransformationClient.getClient().transform(absolutWorkspacePath + projectPath.toOSString(),
+							absolutWorkspacePath + bpelPath.toOSString());
+					// TODO: RRS.wsdl und rrs.xsd noch in den Projektordner
+					// kopieren!
+					// transform("C:/runtime-EclipseApplication/Test",
+					// "C:/runtime-EclipseApplication/Test/asd.bpel");
+				} else {
+					MessageDialog
+							.openInformation(
+									Display.getCurrent().getActiveShell(),
+									"SIMPL TransformationService: Process has no reference variables",
+									"The opened process has no Reference Variables, so a transformation"
+											+ " is not necassary.");
 				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
+			} else {
+				MessageDialog
+						.openError(
+								Display.getCurrent().getActiveShell(),
+								"SIMPL TransformationService: Unknown source",
+								"You have to focus the BPEL Editor to transform the process. "
+										+ "Alternatively you can choose a process file (*.bpel) in the "
+										+ "Package Explorer and use the context menue to transform.");
 			}
-
-			String response = TransformationClient.getClient().transform(
-					string.toString());
-
-			try {
-				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-						new FileOutputStream(projectPath
-								+ System.getProperty("file.separator")
-								+ "transformed"
-								+ System.getProperty("file.separator")
-								+ bpelFileName + "_TF" + TransformerPlugIn.getDefault().BPEL_EXTENSION)));
-				out.write(response);
-				out.flush();
-				out.close();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			MessageDialog
-					.openError(
-							Display.getCurrent().getActiveShell(),
-							"SIMPL TransformationService Connection Exception",
-							"The TransformationService isn't available. Please check if your Apache Tomcat Server is running and the TransformationService is installed successfully.");
 		}
+
 		return null;
 	}
 
