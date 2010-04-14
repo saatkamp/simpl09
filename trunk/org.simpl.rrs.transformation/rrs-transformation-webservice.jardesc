@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Programme/Apache/Tomcat 6.0/webapps/ode/WEB-INF/servicejars/rrs-transformation-webservice.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.rrs.transformation/rrs-transformation-webservice.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <folder path="/org.simpl.rrs.transformation/META-INF"/>
+        <file path="/org.simpl.rrs.transformation/TransformationService.wsdl"/>
+        <file path="/org.simpl.rrs.transformation/TransformationServicePortType.wsdl"/>
+        <file path="/org.simpl.rrs.transformation/asd_transformed.bpel"/>
+        <file path="/org.simpl.rrs.transformation/.project"/>
+        <javaElement handleIdentifier="=org.simpl.rrs.transformation/src&lt;org.simpl.rrs.transformation.webservices"/>
+        <file path="/org.simpl.rrs.transformation/.classpath"/>
+        <file path="/org.simpl.rrs.transformation/build.properties"/>
+        <file path="/org.simpl.rrs.transformation/asd2.bpel"/>
+        <file path="/org.simpl.rrs.transformation/asd.bpel"/>
+    </selectedElements>
+</jardesc>
