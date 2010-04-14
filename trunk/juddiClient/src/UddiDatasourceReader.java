@@ -1,3 +1,4 @@
+import java.awt.event.KeyListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -6,11 +7,17 @@ import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.uddi.api_v3.BindingDetail;
 import org.uddi.api_v3.BindingTemplate;
+import org.uddi.api_v3.BusinessService;
 import org.uddi.api_v3.CategoryBag;
 import org.uddi.api_v3.Description;
 import org.uddi.api_v3.FindBinding;
+import org.uddi.api_v3.FindService;
 import org.uddi.api_v3.GetBindingDetail;
+import org.uddi.api_v3.GetServiceDetail;
 import org.uddi.api_v3.KeyedReference;
+import org.uddi.api_v3.ServiceDetail;
+import org.uddi.api_v3.ServiceInfo;
+import org.uddi.api_v3.ServiceList;
 import org.uddi.v3_service.DispositionReportFaultMessage;
 import org.uddi.v3_service.UDDIInquiryPortType;
 
@@ -38,12 +45,12 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 	/**
 	 * Gets all datasources
-	 * @return
-	 * ArrayList of all datasources inside the jUDDI Registry
+	 * 
+	 * @return ArrayList of all datasources inside the jUDDI Registry
 	 */
 	public ArrayList<UddiDataSource> getAllDarasources() {
 
-		FindBinding findBinding = new FindBinding();
+		FindService findService = new FindService();
 
 		CategoryBag bag = new CategoryBag();
 
@@ -57,30 +64,26 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 		bag.getKeyedReference().add(reference);
 
-		findBinding.setCategoryBag(bag);
+		findService.setCategoryBag(bag);
 
-		BindingDetail bd;
+		ServiceList sd;
 
 		ArrayList<UddiDataSource> datasources = new ArrayList<UddiDataSource>();
 
-		ArrayList<BindingTemplate> templateList = new ArrayList<BindingTemplate>();
+		ArrayList<ServiceInfo> serviceLists = new ArrayList<ServiceInfo>();
+
+		GetServiceDetail getServiceDetail = new GetServiceDetail();
+
+		ArrayList<String> keyList = new ArrayList<String>();
 
 		try {
-			bd = this.inquiry.findBinding(findBinding);
+			sd = this.inquiry.findService(findService);
 
-			templateList = (ArrayList<BindingTemplate>) bd.getBindingTemplate();
+			serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
+					.getServiceInfo();
 
-			for (BindingTemplate template : templateList) {
-				UddiDataSource source = new UddiDataSource(template
-						.getServiceKey());
-				source.setAddress(template.getAccessPoint().getValue());
-				source.setDescList((ArrayList<Description>) template
-						.getDescription());
-				source.setKey(template.getBindingKey());
-				source.setReferenceList((ArrayList<KeyedReference>) template
-						.getCategoryBag().getKeyedReference());
-				datasources.add(source);
-
+			for (ServiceInfo serviceInfo : serviceLists) {
+				keyList.add(serviceInfo.getServiceKey());
 			}
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
@@ -90,16 +93,50 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
+		GetServiceDetail gsd = new GetServiceDetail();
+		gsd.getServiceKey().addAll(keyList);
+
+		ArrayList<BusinessService> businessServices = new ArrayList<BusinessService>();
+
+		try {
+			ServiceDetail serviceDetail = this.inquiry.getServiceDetail(gsd);
+
+			businessServices = (ArrayList<BusinessService>) serviceDetail
+					.getBusinessService();
+
+		} catch (DispositionReportFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		for (BusinessService businessService : businessServices) {
+			UddiDataSource dataSource = new UddiDataSource(businessService
+					.getBusinessKey());
+			dataSource.setAddress(businessService.getBindingTemplates()
+					.getBindingTemplate().get(0).getAccessPoint().getValue());
+			dataSource.setDescList((ArrayList<Description>) businessService
+					.getDescription());
+			dataSource.setKey(businessService.getServiceKey());
+			dataSource.setName(businessService.getName().get(0).getValue());
+			dataSource
+					.setReferenceList((ArrayList<KeyedReference>) businessService
+							.getCategoryBag().getKeyedReference());
+			datasources.add(dataSource);
+		}
+
 		return datasources;
 
 	}
 
 	/**
 	 * Gets all Datasources by its TypeValue
+	 * 
 	 * @param type
-	 * Example: filesystem
-	 * @return
-	 * ArrayList of datasources
+	 *            Example: filesystem
+	 * @return ArrayList of datasources
 	 */
 	public ArrayList<UddiDataSource> getByType(String type) {
 		FindBinding findBinding = new FindBinding();
@@ -114,6 +151,17 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 		reference.setKeyName("type");
 
+		// /////////////////////////////////////////////////
+		// KeyedReference reference2 = new KeyedReference();
+		//
+		// reference2.setTModelKey(KEYPREFIX + "type");
+		//
+		// reference2.setKeyValue(type);
+		//
+		// reference2.setKeyName("subtype");
+		//		
+		// ////////////////////////////////////////////////
+
 		bag.getKeyedReference().add(reference);
 
 		findBinding.setCategoryBag(bag);
@@ -152,13 +200,13 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 		return datasources;
 	}
-	
+
 	/**
 	 * Gets datasources by their subtype value
+	 * 
 	 * @param type
-	 * The subtype value
-	 * @return
-	 * ArrayList of Datasources
+	 *            The subtype value
+	 * @return ArrayList of Datasources
 	 */
 	public ArrayList<UddiDataSource> getBySubType(String type) {
 		FindBinding findBinding = new FindBinding();
@@ -211,23 +259,22 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 		return datasources;
 	}
-	
+
 	/**
 	 * Gets a datasource by its Key
+	 * 
 	 * @param key
-	 * The DatasourceKey as KEYPREFIX + key
-	 * Example:
-	 * uddi:org.apache.juddi:key
-	 * @return
-	 * The datasource
+	 *            The DatasourceKey as KEYPREFIX + key Example:
+	 *            uddi:org.apache.juddi:key
+	 * @return The datasource
 	 */
 	public UddiDataSource getByKey(String key) {
 		GetBindingDetail getbd = new GetBindingDetail();
-		
+
 		BindingDetail bd = new BindingDetail();
-		
+
 		getbd.getBindingKey().add(key);
-		
+
 		try {
 			bd = inquiry.getBindingDetail(getbd);
 		} catch (DispositionReportFaultMessage e) {
@@ -237,18 +284,16 @@ public class UddiDatasourceReader implements IUddiConfig {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		BindingTemplate template = bd.getBindingTemplate().get(0);
-		
-		UddiDataSource source = new UddiDataSource(template
-				.getServiceKey());
+
+		UddiDataSource source = new UddiDataSource(template.getServiceKey());
 		source.setAddress(template.getAccessPoint().getValue());
-		source.setDescList((ArrayList<Description>) template
-				.getDescription());
+		source.setDescList((ArrayList<Description>) template.getDescription());
 		source.setKey(template.getBindingKey());
 		source.setReferenceList((ArrayList<KeyedReference>) template
 				.getCategoryBag().getKeyedReference());
-		
+
 		return source;
 
 	}
