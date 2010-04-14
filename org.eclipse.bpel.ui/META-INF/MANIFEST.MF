@@ -206,6 +206,7 @@ Export-Package: org.eclipse.bpel.ui;
    org.eclipse.swt.widgets,
    org.eclipse.wst.wsdl,
    org.eclipse.jface.dialogs",
+ org.eclipse.bpel.ui.dnd,
  org.eclipse.bpel.ui.editors;
   uses:="org.eclipse.jface.text,
    org.eclipse.ui.texteditor,
