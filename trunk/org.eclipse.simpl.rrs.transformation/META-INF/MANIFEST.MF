@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SIMPL Reference Transformation
 Bundle-SymbolicName: org.eclipse.simpl.rrs.transformation;singleton:=true
 Bundle-Version: 0.1.0
-Bundle-Activator: org.eclipse.simpl.rrs.transformation.Activator
+Bundle-Activator: org.eclipse.simpl.rrs.transformation.TransformerPlugIn
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.5.1",
