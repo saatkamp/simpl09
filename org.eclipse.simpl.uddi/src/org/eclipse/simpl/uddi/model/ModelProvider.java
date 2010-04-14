@@ -3,6 +3,8 @@ package org.eclipse.simpl.uddi.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.simpl.uddi.juddiclient.UddiDataSource;
+import org.eclipse.simpl.uddi.juddiclient.UddiDatasourceReader;
 import org.eclipse.simpl.uddi.model.datasource.DataSource;
 import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 
@@ -15,21 +17,25 @@ public class ModelProvider {
 		// Image here some uddi access to read the Datasources and to
 		// put them into the model
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
+		System.out.println("Test vor Reader");
 
-		DataSource ds1 = factory.createDataSource();
-		ds1.setName("myDB");
-		ds1.setAddress("http://localhost:3306/myDB");
-		ds1.setType("database");
-		ds1.setSubtype("MySQL");
+		UddiDatasourceReader reader = new UddiDatasourceReader();
 		
-		DataSource ds2 = factory.createDataSource();
-		ds2.setName("testDB");
-		ds2.setAddress("http://localhost:50000/testDB");
-		ds2.setType("database");
-		ds2.setSubtype("IBM DB2");
+		System.out.println("Test Nach REader");
 		
-		datasources.add(ds1);
-		datasources.add(ds2);
+		ArrayList<UddiDataSource> dsList = reader.getAllDarasources();
+		
+		System.out.println("TEST");
+		
+		for (UddiDataSource source: dsList) {
+			DataSource ds = factory.createDataSource();
+			
+			ds.setName(source.getName());
+			ds.setAddress(source.getAddress());
+			ds.setType(source.getAttributeValue("type"));
+			ds.setSubtype(source.getAttributeValue("subtype"));
+			datasources.add(ds);
+		}
 	}
 
 	public static synchronized ModelProvider getInstance() {
