@@ -87,31 +87,31 @@ public interface EPR extends EObject {
 	void setReferenceProperties(ReferenceProperties value);
 
 	/**
-	 * Returns the value of the '<em><b>Reference Parameters</b></em>' attribute.
+	 * Returns the value of the '<em><b>Reference Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reference Parameters</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reference Parameters</em>' attribute.
-	 * @see #setReferenceParameters(String)
+	 * @return the value of the '<em>Reference Parameters</em>' containment reference.
+	 * @see #setReferenceParameters(ReferenceParameters)
 	 * @see org.eclipse.simpl.rrs.model.rrs.RRSPackage#getEPR_ReferenceParameters()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='referenceParameters' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	String getReferenceParameters();
+	ReferenceParameters getReferenceParameters();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceParameters <em>Reference Parameters</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceParameters <em>Reference Parameters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference Parameters</em>' attribute.
+	 * @param value the new value of the '<em>Reference Parameters</em>' containment reference.
 	 * @see #getReferenceParameters()
 	 * @generated
 	 */
-	void setReferenceParameters(String value);
+	void setReferenceParameters(ReferenceParameters value);
 
 	/**
 	 * Returns the value of the '<em><b>Port Type</b></em>' attribute.

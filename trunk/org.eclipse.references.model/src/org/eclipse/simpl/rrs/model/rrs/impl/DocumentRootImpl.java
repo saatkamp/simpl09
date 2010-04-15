@@ -75,6 +75,16 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected EMap<String, String> xSISchemaLocation;
 
 	/**
+	 * The default value of the '{@link #getEpr() <em>Epr</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEpr()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Object EPR_EDEFAULT = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -134,8 +144,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EPR getEpr() {
-		return (EPR)getMixed().get(RRSPackage.Literals.DOCUMENT_ROOT__EPR, true);
+	public Object getEpr() {
+		return getMixed().get(RRSPackage.Literals.DOCUMENT_ROOT__EPR, true);
 	}
 
 	/**
@@ -143,16 +153,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEpr(EPR newEpr, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(RRSPackage.Literals.DOCUMENT_ROOT__EPR, newEpr, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEpr(EPR newEpr) {
+	public void setEpr(Object newEpr) {
 		((FeatureMap.Internal)getMixed()).set(RRSPackage.Literals.DOCUMENT_ROOT__EPR, newEpr);
 	}
 
@@ -170,8 +171,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 				return ((InternalEList<?>)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
 			case RRSPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
-			case RRSPackage.DOCUMENT_ROOT__EPR:
-				return basicSetEpr(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -217,7 +216,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
 				return;
 			case RRSPackage.DOCUMENT_ROOT__EPR:
-				setEpr((EPR)newValue);
+				setEpr(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -241,7 +240,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 				getXSISchemaLocation().clear();
 				return;
 			case RRSPackage.DOCUMENT_ROOT__EPR:
-				setEpr((EPR)null);
+				setEpr(EPR_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -262,7 +261,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 			case RRSPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
 			case RRSPackage.DOCUMENT_ROOT__EPR:
-				return getEpr() != null;
+				return EPR_EDEFAULT == null ? getEpr() != null : !EPR_EDEFAULT.equals(getEpr());
 		}
 		return super.eIsSet(featureID);
 	}

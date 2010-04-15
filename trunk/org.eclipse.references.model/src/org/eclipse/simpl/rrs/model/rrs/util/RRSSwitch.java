@@ -99,6 +99,12 @@ public class RRSSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RRSPackage.REFERENCE_PARAMETERS: {
+				ReferenceParameters referenceParameters = (ReferenceParameters)theEObject;
+				T result = caseReferenceParameters(referenceParameters);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case RRSPackage.REFERENCE_PROPERTIES: {
 				ReferenceProperties referenceProperties = (ReferenceProperties)theEObject;
 				T result = caseReferenceProperties(referenceProperties);
@@ -142,6 +148,21 @@ public class RRSSwitch<T> {
 	 * @generated
 	 */
 	public T caseEPR(EPR object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reference Parameters</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reference Parameters</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferenceParameters(ReferenceParameters object) {
 		return null;
 	}
 

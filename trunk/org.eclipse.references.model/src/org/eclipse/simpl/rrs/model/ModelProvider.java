@@ -10,8 +10,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.simpl.rrs.model.reference.EPR;
-import org.eclipse.simpl.rrs.model.reference.util.ReferenceResourceFactoryImpl;
+import org.eclipse.simpl.rrs.model.rrs.EPR;
+import org.eclipse.simpl.rrs.model.rrs.util.RRSResourceFactoryImpl;
 
 public class ModelProvider {
 
@@ -54,7 +54,7 @@ public class ModelProvider {
 	public void saveReference(EPR ref) {
 		URI fileURI = URI.createFileURI(RRS_FILE_PATH
 				+ ref.getReferenceParameters().getReferenceName() + ".xml");
-		Resource resource = new ReferenceResourceFactoryImpl()
+		Resource resource = new RRSResourceFactoryImpl()
 				.createResource(fileURI);
 		resource.getContents().add(ref);
 		Map<String, String> save_options = new HashMap<String, String>();
@@ -97,7 +97,7 @@ public class ModelProvider {
 
 		URI fileURI = URI.createFileURI(RRS_FILE_PATH + fileName);
 		
-		Resource resource = new ReferenceResourceFactoryImpl()
+		Resource resource = new RRSResourceFactoryImpl()
 				.createResource(fileURI);
 
 		try {
