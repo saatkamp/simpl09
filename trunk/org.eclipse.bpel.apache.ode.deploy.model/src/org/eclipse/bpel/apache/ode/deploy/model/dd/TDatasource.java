@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTDatasource()
- * @model extendedMetaData="name='tDatasources' kind='empty'"
+ * @model extendedMetaData="name='tDatasource' kind='empty'"
  * @generated
  */
 public interface TDatasource extends EObject {

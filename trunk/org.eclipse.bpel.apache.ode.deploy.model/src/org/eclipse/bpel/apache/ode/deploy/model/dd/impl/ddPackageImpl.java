@@ -17,6 +17,7 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TEnableEventList;
@@ -144,6 +145,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	private EClass tDatasourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tActivityMappingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -456,6 +464,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProcessType_ActivityMappings() {
+		return (EReference)processTypeEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertyType() {
 		return propertyTypeEClass;
 	}
@@ -726,6 +743,42 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTActivityMapping() {
+		return tActivityMappingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTActivityMapping_Activity() {
+		return (EReference)tActivityMappingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTActivityMapping_Policy() {
+		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTActivityMapping_Datasource() {
+		return (EReference)tActivityMappingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getGenerateType() {
 		return generateTypeEEnum;
 	}
@@ -795,6 +848,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEReference(processTypeEClass, PROCESS_TYPE__MODEL);
 		createEAttribute(processTypeEClass, PROCESS_TYPE__AUDITING_ACTIVE);
 		createEReference(processTypeEClass, PROCESS_TYPE__DATASOURCES);
+		createEReference(processTypeEClass, PROCESS_TYPE__ACTIVITY_MAPPINGS);
 
 		propertyTypeEClass = createEClass(PROPERTY_TYPE);
 		createEAttribute(propertyTypeEClass, PROPERTY_TYPE__ANY);
@@ -835,6 +889,11 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tDatasourceEClass, TDATASOURCE__ADDRESS);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__PASSWORD);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__USER_NAME);
+
+		tActivityMappingEClass = createEClass(TACTIVITY_MAPPING);
+		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
+		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__POLICY);
+		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__DATASOURCE);
 
 		// Create enums
 		generateTypeEEnum = createEEnum(GENERATE_TYPE);
@@ -907,6 +966,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEReference(getProcessType_Model(), theBPELPackage.getProcess(), null, "model", null, 0, 1, ProcessType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessType_AuditingActive(), theXMLTypePackage.getBoolean(), "auditingActive", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Datasources(), this.getTDatasource(), null, "datasources", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessType_ActivityMappings(), this.getTActivityMapping(), null, "activityMappings", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, PropertyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -947,6 +1007,11 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTDatasource_Address(), theXMLTypePackage.getString(), "address", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tActivityMappingEClass, TActivityMapping.class, "TActivityMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTActivityMapping_Activity(), theBPELPackage.getExtensionActivity(), null, "activity", null, 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTActivityMapping_Policy(), ecorePackage.getEString(), "policy", null, 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTActivityMapping_Datasource(), this.getTDatasource(), null, "datasource", null, 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(generateTypeEEnum, GenerateType.class, "GenerateType");
@@ -1348,7 +1413,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		  (tDatasourceEClass, 
 		   source, 
 		   new String[] {
-			 "name", "tDatasources",
+			 "name", "tDatasource",
 			 "kind", "empty"
 		   });		
 		addAnnotation

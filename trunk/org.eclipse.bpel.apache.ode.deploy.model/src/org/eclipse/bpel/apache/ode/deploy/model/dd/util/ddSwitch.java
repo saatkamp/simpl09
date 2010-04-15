@@ -178,6 +178,12 @@ public class ddSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ddPackage.TACTIVITY_MAPPING: {
+				TActivityMapping tActivityMapping = (TActivityMapping)theEObject;
+				T result = caseTActivityMapping(tActivityMapping);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -389,6 +395,21 @@ public class ddSwitch<T> {
 	 * @generated
 	 */
 	public T caseTDatasource(TDatasource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TActivity Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TActivity Mapping</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTActivityMapping(TActivityMapping object) {
 		return null;
 	}
 
