@@ -7,7 +7,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.simpl.rrs.model.ModelProvider;
-import org.eclipse.simpl.rrs.model.reference.EPR;
+import org.eclipse.simpl.rrs.model.rrs.EPR;
 import org.eclipse.simpl.rrs.ui.dialogs.AddReferenceDialog;
 import org.eclipse.simpl.rrs.ui.view.ReferenceManagementView;
 import org.eclipse.ui.IWorkbenchPage;

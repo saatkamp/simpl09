@@ -10,7 +10,7 @@ import org.eclipse.core.commands.IHandler;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.simpl.rrs.model.ModelProvider;
-import org.eclipse.simpl.rrs.model.reference.EPR;
+import org.eclipse.simpl.rrs.model.rrs.EPR;
 import org.eclipse.simpl.rrs.ui.view.ReferenceManagementView;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;

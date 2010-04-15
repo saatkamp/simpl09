@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.simpl.rrs.model.reference.EPR;
+import org.eclipse.simpl.rrs.model.rrs.EPR;
 
 public class ReferenceContentProvider implements IStructuredContentProvider {
 

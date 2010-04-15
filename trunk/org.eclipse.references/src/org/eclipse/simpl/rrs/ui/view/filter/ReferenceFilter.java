@@ -2,7 +2,7 @@ package org.eclipse.simpl.rrs.ui.view.filter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.simpl.rrs.model.reference.EPR;
+import org.eclipse.simpl.rrs.model.rrs.EPR;
 
 public class ReferenceFilter extends ViewerFilter {
 
@@ -22,10 +22,10 @@ public class ReferenceFilter extends ViewerFilter {
 		if (epr.getReferenceParameters().getReferenceName().matches(searchString)) {
 			return true;
 		}
-		if (epr.getAddress().getUri().matches(searchString)) {
+		if (epr.getAddress().matches(searchString)) {
 			return true;
 		}
-		if (epr.getReferenceProperties().getResolutionSystem().getAdapterURI().matches(searchString)) {
+		if (epr.getReferenceProperties().getResolutionSystem().matches(searchString)) {
 			return true;
 		}
 		if (epr.getReferenceParameters().getStatement().matches(searchString)) {
