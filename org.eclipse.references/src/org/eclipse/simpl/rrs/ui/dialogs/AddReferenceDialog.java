@@ -3,12 +3,10 @@ package org.eclipse.simpl.rrs.ui.dialogs;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.simpl.rrs.model.reference.Address;
-import org.eclipse.simpl.rrs.model.reference.EPR;
-import org.eclipse.simpl.rrs.model.reference.RRSAdapter;
-import org.eclipse.simpl.rrs.model.reference.ReferenceFactory;
-import org.eclipse.simpl.rrs.model.reference.ReferenceParameters;
-import org.eclipse.simpl.rrs.model.reference.ReferenceProperties;
+import org.eclipse.simpl.rrs.model.rrs.EPR;
+import org.eclipse.simpl.rrs.model.rrs.RRSFactory;
+import org.eclipse.simpl.rrs.model.rrs.ReferenceParameters;
+import org.eclipse.simpl.rrs.model.rrs.ReferenceProperties;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -95,22 +93,16 @@ public class AddReferenceDialog extends TitleAreaDialog {
 					 * Saving the values in the EPR
 					 */
 					// Create a new EPR
-					ReferenceFactory factory = ReferenceFactory.eINSTANCE;
+					RRSFactory factory = RRSFactory.eINSTANCE;
 					reference = factory.createEPR();
-					ReferenceParameters parameters = factory
-							.createReferenceParameters();
-					ReferenceProperties properties = factory
-							.createReferenceProperties();
-					RRSAdapter adapt = factory.createRRSAdapter();
-					adapt.setAdapterURI(adapter.getText());
-					properties.setResolutionSystem(adapt);
-					parameters.setReferenceName(name.getText());
-					parameters.setStatement(statement.getText());
-					Address addr = factory.createAddress();
-					addr.setUri(address.getText());
-					reference.setReferenceParameters(parameters);
-					reference.setReferenceProperties(properties);
-					reference.setAddress(addr);
+					ReferenceParameters param1 = factory.createReferenceParameters();
+					ReferenceProperties prop1 = factory.createReferenceProperties();
+					prop1.setResolutionSystem(adapter.getText());
+					param1.setReferenceName(name.getText());
+					param1.setStatement(statement.getText());
+					reference.setAddress(address.getText());
+					reference.setReferenceParameters(param1);
+					reference.setReferenceProperties(prop1);
 					close();
 
 				} else {

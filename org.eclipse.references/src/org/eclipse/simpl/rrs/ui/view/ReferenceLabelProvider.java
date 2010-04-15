@@ -2,7 +2,7 @@ package org.eclipse.simpl.rrs.ui.view;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.simpl.rrs.model.reference.EPR;
+import org.eclipse.simpl.rrs.model.rrs.EPR;
 import org.eclipse.swt.graphics.Image;
 
 public class ReferenceLabelProvider extends LabelProvider implements
@@ -36,9 +36,9 @@ public class ReferenceLabelProvider extends LabelProvider implements
 		case 0:
 			return reference.getReferenceParameters().getReferenceName();
 		case 1:
-			return reference.getAddress().getUri();
+			return reference.getAddress();
 		case 2:
-			return reference.getReferenceProperties().getResolutionSystem().getAdapterURI();
+			return reference.getReferenceProperties().getResolutionSystem();
 		case 3:
 			return reference.getReferenceParameters().getStatement();
 		default:
