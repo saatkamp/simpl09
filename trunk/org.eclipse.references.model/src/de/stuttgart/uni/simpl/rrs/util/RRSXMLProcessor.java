@@ -4,7 +4,9 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.rrs.model.reference.util;
+package de.stuttgart.uni.simpl.rrs.util;
+
+import de.stuttgart.uni.simpl.rrs.RRSPackage;
 
 import java.util.Map;
 
@@ -14,15 +16,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
-import org.eclipse.simpl.rrs.model.reference.ReferencePackage;
-
 /**
  * This class contains helper methods to serialize and deserialize XML documents
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ReferenceXMLProcessor extends XMLProcessor {
+public class RRSXMLProcessor extends XMLProcessor {
 
 	/**
 	 * Public constructor to instantiate the helper.
@@ -30,13 +30,13 @@ public class ReferenceXMLProcessor extends XMLProcessor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReferenceXMLProcessor() {
+	public RRSXMLProcessor() {
 		super((EPackage.Registry.INSTANCE));
-		ReferencePackage.eINSTANCE.eClass();
+		RRSPackage.eINSTANCE.eClass();
 	}
 	
 	/**
-	 * Register for "*" and "xml" file extensions the ReferenceResourceFactoryImpl factory.
+	 * Register for "*" and "xml" file extensions the RRSResourceFactoryImpl factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45,10 +45,10 @@ public class ReferenceXMLProcessor extends XMLProcessor {
 	protected Map<String, Resource.Factory> getRegistrations() {
 		if (registrations == null) {
 			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new ReferenceResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new ReferenceResourceFactoryImpl());
+			registrations.put(XML_EXTENSION, new RRSResourceFactoryImpl());
+			registrations.put(STAR_EXTENSION, new RRSResourceFactoryImpl());
 		}
 		return registrations;
 	}
 
-} //ReferenceXMLProcessor
+} //RRSXMLProcessor

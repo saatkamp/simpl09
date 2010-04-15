@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.rrs.model.rrs;
+package de.stuttgart.uni.simpl.rrs;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.eclipse.simpl.rrs.model.rrs.RRSFactory
+ * @see de.stuttgart.uni.simpl.rrs.RRSFactory
  * @model kind="package"
  * @generated
  */
@@ -57,14 +57,14 @@ public interface RRSPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	RRSPackage eINSTANCE = org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl.init();
+	RRSPackage eINSTANCE = de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl <em>Document Root</em>}' class.
+	 * The meta object id for the '{@link de.stuttgart.uni.simpl.rrs.impl.DocumentRootImpl <em>Document Root</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getDocumentRoot()
+	 * @see de.stuttgart.uni.simpl.rrs.impl.DocumentRootImpl
+	 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getDocumentRoot()
 	 * @generated
 	 */
 	int DOCUMENT_ROOT = 0;
@@ -115,11 +115,11 @@ public interface RRSPackage extends EPackage {
 	int DOCUMENT_ROOT_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.EPRImpl <em>EPR</em>}' class.
+	 * The meta object id for the '{@link de.stuttgart.uni.simpl.rrs.impl.EPRImpl <em>EPR</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.EPRImpl
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getEPR()
+	 * @see de.stuttgart.uni.simpl.rrs.impl.EPRImpl
+	 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getEPR()
 	 * @generated
 	 */
 	int EPR = 1;
@@ -188,11 +188,11 @@ public interface RRSPackage extends EPackage {
 	int EPR_FEATURE_COUNT = 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ReferencePropertiesImpl <em>Reference Properties</em>}' class.
+	 * The meta object id for the '{@link de.stuttgart.uni.simpl.rrs.impl.ReferencePropertiesImpl <em>Reference Properties</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.ReferencePropertiesImpl
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getReferenceProperties()
+	 * @see de.stuttgart.uni.simpl.rrs.impl.ReferencePropertiesImpl
+	 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getReferenceProperties()
 	 * @generated
 	 */
 	int REFERENCE_PROPERTIES = 2;
@@ -216,11 +216,11 @@ public interface RRSPackage extends EPackage {
 	int REFERENCE_PROPERTIES_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ServiceNameImpl <em>Service Name</em>}' class.
+	 * The meta object id for the '{@link de.stuttgart.uni.simpl.rrs.impl.ServiceNameImpl <em>Service Name</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.ServiceNameImpl
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getServiceName()
+	 * @see de.stuttgart.uni.simpl.rrs.impl.ServiceNameImpl
+	 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getServiceName()
 	 * @generated
 	 */
 	int SERVICE_NAME = 3;
@@ -254,183 +254,183 @@ public interface RRSPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot <em>Document Root</em>}'.
+	 * Returns the meta object for class '{@link de.stuttgart.uni.simpl.rrs.DocumentRoot <em>Document Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Document Root</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot
+	 * @see de.stuttgart.uni.simpl.rrs.DocumentRoot
 	 * @generated
 	 */
 	EClass getDocumentRoot();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link de.stuttgart.uni.simpl.rrs.DocumentRoot#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getMixed()
+	 * @see de.stuttgart.uni.simpl.rrs.DocumentRoot#getMixed()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EAttribute getDocumentRoot_Mixed();
 
 	/**
-	 * Returns the meta object for the map '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
+	 * Returns the meta object for the map '{@link de.stuttgart.uni.simpl.rrs.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>XMLNS Prefix Map</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXMLNSPrefixMap()
+	 * @see de.stuttgart.uni.simpl.rrs.DocumentRoot#getXMLNSPrefixMap()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_XMLNSPrefixMap();
 
 	/**
-	 * Returns the meta object for the map '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
+	 * Returns the meta object for the map '{@link de.stuttgart.uni.simpl.rrs.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>XSI Schema Location</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXSISchemaLocation()
+	 * @see de.stuttgart.uni.simpl.rrs.DocumentRoot#getXSISchemaLocation()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_XSISchemaLocation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr <em>Epr</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.stuttgart.uni.simpl.rrs.DocumentRoot#getEpr <em>Epr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Epr</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr()
+	 * @see de.stuttgart.uni.simpl.rrs.DocumentRoot#getEpr()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Epr();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.EPR <em>EPR</em>}'.
+	 * Returns the meta object for class '{@link de.stuttgart.uni.simpl.rrs.EPR <em>EPR</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>EPR</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.EPR
+	 * @see de.stuttgart.uni.simpl.rrs.EPR
 	 * @generated
 	 */
 	EClass getEPR();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getAddress <em>Address</em>}'.
+	 * Returns the meta object for the attribute '{@link de.stuttgart.uni.simpl.rrs.EPR#getAddress <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Address</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.EPR#getAddress()
+	 * @see de.stuttgart.uni.simpl.rrs.EPR#getAddress()
 	 * @see #getEPR()
 	 * @generated
 	 */
 	EAttribute getEPR_Address();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceProperties <em>Reference Properties</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.stuttgart.uni.simpl.rrs.EPR#getReferenceProperties <em>Reference Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Reference Properties</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceProperties()
+	 * @see de.stuttgart.uni.simpl.rrs.EPR#getReferenceProperties()
 	 * @see #getEPR()
 	 * @generated
 	 */
 	EReference getEPR_ReferenceProperties();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceParameters <em>Reference Parameters</em>}'.
+	 * Returns the meta object for the attribute '{@link de.stuttgart.uni.simpl.rrs.EPR#getReferenceParameters <em>Reference Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Reference Parameters</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceParameters()
+	 * @see de.stuttgart.uni.simpl.rrs.EPR#getReferenceParameters()
 	 * @see #getEPR()
 	 * @generated
 	 */
 	EAttribute getEPR_ReferenceParameters();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getPortType <em>Port Type</em>}'.
+	 * Returns the meta object for the attribute '{@link de.stuttgart.uni.simpl.rrs.EPR#getPortType <em>Port Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Port Type</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.EPR#getPortType()
+	 * @see de.stuttgart.uni.simpl.rrs.EPR#getPortType()
 	 * @see #getEPR()
 	 * @generated
 	 */
 	EAttribute getEPR_PortType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getServiceName <em>Service Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.stuttgart.uni.simpl.rrs.EPR#getServiceName <em>Service Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Service Name</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.EPR#getServiceName()
+	 * @see de.stuttgart.uni.simpl.rrs.EPR#getServiceName()
 	 * @see #getEPR()
 	 * @generated
 	 */
 	EReference getEPR_ServiceName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getPolicy <em>Policy</em>}'.
+	 * Returns the meta object for the attribute '{@link de.stuttgart.uni.simpl.rrs.EPR#getPolicy <em>Policy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Policy</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.EPR#getPolicy()
+	 * @see de.stuttgart.uni.simpl.rrs.EPR#getPolicy()
 	 * @see #getEPR()
 	 * @generated
 	 */
 	EAttribute getEPR_Policy();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.ReferenceProperties <em>Reference Properties</em>}'.
+	 * Returns the meta object for class '{@link de.stuttgart.uni.simpl.rrs.ReferenceProperties <em>Reference Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Reference Properties</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.ReferenceProperties
+	 * @see de.stuttgart.uni.simpl.rrs.ReferenceProperties
 	 * @generated
 	 */
 	EClass getReferenceProperties();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.ReferenceProperties#getResolutionSystem <em>Resolution System</em>}'.
+	 * Returns the meta object for the attribute '{@link de.stuttgart.uni.simpl.rrs.ReferenceProperties#getResolutionSystem <em>Resolution System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Resolution System</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.ReferenceProperties#getResolutionSystem()
+	 * @see de.stuttgart.uni.simpl.rrs.ReferenceProperties#getResolutionSystem()
 	 * @see #getReferenceProperties()
 	 * @generated
 	 */
 	EAttribute getReferenceProperties_ResolutionSystem();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.ServiceName <em>Service Name</em>}'.
+	 * Returns the meta object for class '{@link de.stuttgart.uni.simpl.rrs.ServiceName <em>Service Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Service Name</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.ServiceName
+	 * @see de.stuttgart.uni.simpl.rrs.ServiceName
 	 * @generated
 	 */
 	EClass getServiceName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.ServiceName#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link de.stuttgart.uni.simpl.rrs.ServiceName#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.ServiceName#getValue()
+	 * @see de.stuttgart.uni.simpl.rrs.ServiceName#getValue()
 	 * @see #getServiceName()
 	 * @generated
 	 */
 	EAttribute getServiceName_Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.ServiceName#getPortName <em>Port Name</em>}'.
+	 * Returns the meta object for the attribute '{@link de.stuttgart.uni.simpl.rrs.ServiceName#getPortName <em>Port Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Port Name</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.ServiceName#getPortName()
+	 * @see de.stuttgart.uni.simpl.rrs.ServiceName#getPortName()
 	 * @see #getServiceName()
 	 * @generated
 	 */
@@ -459,11 +459,11 @@ public interface RRSPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * The meta object literal for the '{@link de.stuttgart.uni.simpl.rrs.impl.DocumentRootImpl <em>Document Root</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getDocumentRoot()
+		 * @see de.stuttgart.uni.simpl.rrs.impl.DocumentRootImpl
+		 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getDocumentRoot()
 		 * @generated
 		 */
 		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
@@ -501,11 +501,11 @@ public interface RRSPackage extends EPackage {
 		EReference DOCUMENT_ROOT__EPR = eINSTANCE.getDocumentRoot_Epr();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.EPRImpl <em>EPR</em>}' class.
+		 * The meta object literal for the '{@link de.stuttgart.uni.simpl.rrs.impl.EPRImpl <em>EPR</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.EPRImpl
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getEPR()
+		 * @see de.stuttgart.uni.simpl.rrs.impl.EPRImpl
+		 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getEPR()
 		 * @generated
 		 */
 		EClass EPR = eINSTANCE.getEPR();
@@ -559,11 +559,11 @@ public interface RRSPackage extends EPackage {
 		EAttribute EPR__POLICY = eINSTANCE.getEPR_Policy();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ReferencePropertiesImpl <em>Reference Properties</em>}' class.
+		 * The meta object literal for the '{@link de.stuttgart.uni.simpl.rrs.impl.ReferencePropertiesImpl <em>Reference Properties</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.ReferencePropertiesImpl
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getReferenceProperties()
+		 * @see de.stuttgart.uni.simpl.rrs.impl.ReferencePropertiesImpl
+		 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getReferenceProperties()
 		 * @generated
 		 */
 		EClass REFERENCE_PROPERTIES = eINSTANCE.getReferenceProperties();
@@ -577,11 +577,11 @@ public interface RRSPackage extends EPackage {
 		EAttribute REFERENCE_PROPERTIES__RESOLUTION_SYSTEM = eINSTANCE.getReferenceProperties_ResolutionSystem();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ServiceNameImpl <em>Service Name</em>}' class.
+		 * The meta object literal for the '{@link de.stuttgart.uni.simpl.rrs.impl.ServiceNameImpl <em>Service Name</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.ServiceNameImpl
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getServiceName()
+		 * @see de.stuttgart.uni.simpl.rrs.impl.ServiceNameImpl
+		 * @see de.stuttgart.uni.simpl.rrs.impl.RRSPackageImpl#getServiceName()
 		 * @generated
 		 */
 		EClass SERVICE_NAME = eINSTANCE.getServiceName();

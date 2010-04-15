@@ -4,14 +4,14 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.rrs.model.reference.util;
+package de.stuttgart.uni.simpl.rrs.util;
+
+import de.stuttgart.uni.simpl.rrs.*;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.simpl.rrs.model.reference.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,17 +23,17 @@ import org.eclipse.simpl.rrs.model.reference.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.eclipse.simpl.rrs.model.reference.ReferencePackage
+ * @see de.stuttgart.uni.simpl.rrs.RRSPackage
  * @generated
  */
-public class ReferenceSwitch<T> {
+public class RRSSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static ReferencePackage modelPackage;
+	protected static RRSPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -41,9 +41,9 @@ public class ReferenceSwitch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReferenceSwitch() {
+	public RRSSwitch() {
 		if (modelPackage == null) {
-			modelPackage = ReferencePackage.eINSTANCE;
+			modelPackage = RRSPackage.eINSTANCE;
 		}
 	}
 
@@ -87,56 +87,47 @@ public class ReferenceSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ReferencePackage.EPR: {
+			case RRSPackage.DOCUMENT_ROOT: {
+				DocumentRoot documentRoot = (DocumentRoot)theEObject;
+				T result = caseDocumentRoot(documentRoot);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RRSPackage.EPR: {
 				EPR epr = (EPR)theEObject;
 				T result = caseEPR(epr);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ReferencePackage.PORT_TYPE: {
-				PortType portType = (PortType)theEObject;
-				T result = casePortType(portType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ReferencePackage.ADDRESS: {
-				Address address = (Address)theEObject;
-				T result = caseAddress(address);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ReferencePackage.REFERENCE_PROPERTIES: {
+			case RRSPackage.REFERENCE_PROPERTIES: {
 				ReferenceProperties referenceProperties = (ReferenceProperties)theEObject;
 				T result = caseReferenceProperties(referenceProperties);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ReferencePackage.REFERENCE_PARAMETERS: {
-				ReferenceParameters referenceParameters = (ReferenceParameters)theEObject;
-				T result = caseReferenceParameters(referenceParameters);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ReferencePackage.SERVICE_NAME: {
+			case RRSPackage.SERVICE_NAME: {
 				ServiceName serviceName = (ServiceName)theEObject;
 				T result = caseServiceName(serviceName);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ReferencePackage.POLICY: {
-				Policy policy = (Policy)theEObject;
-				T result = casePolicy(policy);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ReferencePackage.RRS_ADAPTER: {
-				RRSAdapter rrsAdapter = (RRSAdapter)theEObject;
-				T result = caseRRSAdapter(rrsAdapter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Document Root</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Document Root</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumentRoot(DocumentRoot object) {
+		return null;
 	}
 
 	/**
@@ -155,62 +146,17 @@ public class ReferenceSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Port Type</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Reference Properties</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Port Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePortType(PortType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Address</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Address</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAddress(Address object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Properties</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Properties</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Reference Properties</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseReferenceProperties(ReferenceProperties object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameters</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameters</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseReferenceParameters(ReferenceParameters object) {
 		return null;
 	}
 
@@ -230,36 +176,6 @@ public class ReferenceSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Policy</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Policy</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePolicy(Policy object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>RRS Adapter</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>RRS Adapter</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRRSAdapter(RRSAdapter object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -274,4 +190,4 @@ public class ReferenceSwitch<T> {
 		return null;
 	}
 
-} //ReferenceSwitch
+} //RRSSwitch

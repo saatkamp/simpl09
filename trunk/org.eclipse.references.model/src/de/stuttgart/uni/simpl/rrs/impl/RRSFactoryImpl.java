@@ -4,7 +4,9 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.rrs.model.rrs.impl;
+package de.stuttgart.uni.simpl.rrs.impl;
+
+import de.stuttgart.uni.simpl.rrs.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -13,8 +15,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.simpl.rrs.model.rrs.*;
 
 /**
  * <!-- begin-user-doc -->
