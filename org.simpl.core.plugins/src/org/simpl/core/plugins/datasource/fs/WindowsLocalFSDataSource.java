@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
+import org.simpl.core.services.dataformat.DataFormatService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -42,16 +43,21 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public boolean executeStatement(String arg0, String statement) throws ConnectionException {
+  public boolean executeStatement(String dir, String statement) throws ConnectionException {
     Process process;
     BufferedReader processReader;
     String line;
+    File workingDir = new File(dir);
     
     try {
-      process = runtime.exec(statement);
-      processReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      if (!workingDir.isDirectory()) {
+        workingDir = null;
+      }
       
-      while ((line = processReader.readLine()) instanceof String && processReader.ready()) {
+      process = runtime.exec(statement, new String[0], workingDir);
+      processReader = new BufferedReader(new InputStreamReader(process.getInputStream(), "cp850"));
+      
+      while ((line = processReader.readLine()) != null) {
         // do nothing
         System.out.println(line);
       }
@@ -94,9 +100,15 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(String arg0, DataObject arg2) throws ConnectionException {
-    // TODO Auto-generated method stub
-    return false;
+  public boolean writeBack(String dir, DataObject data) throws ConnectionException {
+    boolean writeBack = false;
+    DataFormatService<Object> dataFormatService = SIMPLCore.getInstance().dataFormatService("CSV", "Headline");
+    File tempFile = (File) dataFormatService.fromSDO(data);
+    
+    // move temp file to given dir
+    writeBack = tempFile.renameTo(new File(dir + File.separator + data.getString("name")));
+    
+    return writeBack;
   }
 
   /*
@@ -105,28 +117,10 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public DataObject retrieveData(String dsAddress, String statement) throws ConnectionException {
-    BufferedReader processReader = null;
-    String line;
+  public DataObject retrieveData(String dir, String statement) throws ConnectionException {
+    DataFormatService<Object> dataFormatService = SIMPLCore.getInstance().dataFormatService("CSV", "Headline");
+    DataObject dataObject = dataFormatService.toSDO(new File(dir + File.separator + statement));
     
-    try {
-      Process process = runtime.exec(statement);
-      processReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-      
-      while ((line = processReader.readLine()) instanceof String && processReader.ready()) {
-        // do nothing
-        System.out.println(line);
-      }
-      
-      process.destroy();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-      
-      return null;
-    }
-    
-    //TODO: Statement auswerten, erstmal nur Filename
-    return SIMPLCore.getInstance().dataFormatService("CSV", "Headline").toSDO(new File(statement));
+    return dataObject;
   }
 }

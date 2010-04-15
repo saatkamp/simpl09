@@ -20,6 +20,7 @@ import org.simpl.core.plugins.dataformat.DataFormatPlugin;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
+@SuppressWarnings("unchecked")
 public class DataFormatServiceProvider {
   /**
    * Maps the data format to a list of supporting data format plugin instances.
@@ -40,7 +41,7 @@ public class DataFormatServiceProvider {
    * @param dfSubtype
    * @return
    */
-  public DataFormatService getInstance(String dfType, String dfSubtype) {
+  public DataFormatService<Object> getInstance(String dfType, String dfSubtype) {
     DataFormatPlugin dataFormatServiceInstance = null;
     List<DataFormatPlugin> dataFormatPlugins = this.dataFormats.get(dfType);
     List<String> dataFormatPluginSubtypes = null;
@@ -114,7 +115,7 @@ public class DataFormatServiceProvider {
     List<String> dataFormatSubtypes = new ArrayList<String>();
 
     for (DataFormatPlugin dataFormatPlugin : dataFormats.get(dfType)) {
-      for (String dataFormatSubtype : dataFormatPlugin.getSubtypes()) {
+      for (String dataFormatSubtype : (List<String>)dataFormatPlugin.getSubtypes()) {
         if (!dataFormatSubtypes.contains(dataFormatSubtype)) {
           dataFormatSubtypes.add(dataFormatSubtype);
         }

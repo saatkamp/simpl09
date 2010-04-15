@@ -4,7 +4,7 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b> Defines the methods that a data format must implement to work with the
- * data source services. <br>
+ * data format services. <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
@@ -15,15 +15,26 @@ import commonj.sdo.DataObject;
  * @param <T>
  * @link http://code.google.com/p/simpl09/
  */
-public interface DataFormatService {
+public interface DataFormatService<T> {
   /**
-   * Creates a DataObject of the given data.
+   * Creates a DataObject of the given data in this data format.
    * 
    * @param <T>
-   *          Datatype of the data
+   *          Type of the data
    * @param data
    *          The data
    * @return
    */
-  public <T> DataObject toSDO(T data);
+  public DataObject toSDO(T data);
+
+  /**
+   * Returns the data converted to this data format from the given data object.
+   * 
+   * @param <T>
+   *          Type of the data
+   * @param data
+   *          The data
+   * @return
+   */
+  public T fromSDO(DataObject data);
 }
