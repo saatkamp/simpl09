@@ -157,6 +157,15 @@ public interface ddFactory extends EFactory {
 	TDatasource createTDatasource();
 
 	/**
+	 * Returns a new object of class '<em>TActivity Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TActivity Mapping</em>'.
+	 * @generated
+	 */
+	TActivityMapping createTActivityMapping();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

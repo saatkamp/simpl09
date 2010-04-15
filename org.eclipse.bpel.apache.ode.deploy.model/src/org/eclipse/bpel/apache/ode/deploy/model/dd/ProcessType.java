@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getModel <em>Model</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDatasources <em>Datasources</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getActivityMappings <em>Activity Mappings</em>}</li>
  * </ul>
  * </p>
  *
@@ -525,5 +526,21 @@ public interface ProcessType extends EObject {
 	 * @generated
 	 */
 	EList<TDatasource> getDatasources();
+
+	/**
+	 * Returns the value of the '<em><b>Activity Mappings</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Activity Mappings</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Activity Mappings</em>' containment reference list.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_ActivityMappings()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<TActivityMapping> getActivityMappings();
 
 } // ProcessType

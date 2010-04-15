@@ -18,6 +18,7 @@ import javax.xml.namespace.QName;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
@@ -55,6 +56,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getModel <em>Model</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#isAuditingActive <em>Auditing Active</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getDatasources <em>Datasources</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getActivityMappings <em>Activity Mappings</em>}</li>
  * </ul>
  * </p>
  *
@@ -326,6 +328,16 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * @ordered
 	 */
 	protected EList<TDatasource> datasources;
+
+	/**
+	 * The cached value of the '{@link #getActivityMappings() <em>Activity Mappings</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActivityMappings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TActivityMapping> activityMappings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -791,6 +803,18 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TActivityMapping> getActivityMappings() {
+		if (activityMappings == null) {
+			activityMappings = new EObjectContainmentEList<TActivityMapping>(TActivityMapping.class, this, ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS);
+		}
+		return activityMappings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -806,6 +830,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return basicSetMexInterceptors(null, msgs);
 			case ddPackage.PROCESS_TYPE__DATASOURCES:
 				return ((InternalEList<?>)getDatasources()).basicRemove(otherEnd, msgs);
+			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
+				return ((InternalEList<?>)getActivityMappings()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -849,6 +875,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return isAuditingActive();
 			case ddPackage.PROCESS_TYPE__DATASOURCES:
 				return getDatasources();
+			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
+				return getActivityMappings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -911,6 +939,10 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				getDatasources().clear();
 				getDatasources().addAll((Collection<? extends TDatasource>)newValue);
 				return;
+			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
+				getActivityMappings().clear();
+				getActivityMappings().addAll((Collection<? extends TActivityMapping>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -968,6 +1000,9 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__DATASOURCES:
 				getDatasources().clear();
 				return;
+			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
+				getActivityMappings().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1010,6 +1045,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return isSetAuditingActive();
 			case ddPackage.PROCESS_TYPE__DATASOURCES:
 				return datasources != null && !datasources.isEmpty();
+			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
+				return activityMappings != null && !activityMappings.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

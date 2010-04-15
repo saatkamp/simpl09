@@ -40,7 +40,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/model"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/auditingActive"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/dataSources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/datasources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/activityMappings"/>
     </genClasses>
     <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//PropertyType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//PropertyType/any"/>
@@ -82,8 +83,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TDatasource/password"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TDatasource/userName"/>
     </genClasses>
-    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TDatasources">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TDatasources/children"/>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TActivityMapping">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TActivityMapping/activity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TActivityMapping/policy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TActivityMapping/datasource"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
