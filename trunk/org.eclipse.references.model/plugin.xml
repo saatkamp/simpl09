@@ -13,14 +13,14 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://simpl.uni-stuttgart.de/rrs/model"
-            class="org.eclipse.simpl.rrs.model.reference.ReferencePackage"
+            class="org.eclipse.simpl.rrs.model.rrs.RRSPackage"
             genModel="model/Reference.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="reference"
-            class="org.eclipse.simpl.rrs.model.reference.util.ReferenceResourceFactoryImpl"/>
+            class="org.eclipse.simpl.rrs.model.rrs.util.RRSResourceFactoryImpl"/>
    </extension>
 
 </plugin>
