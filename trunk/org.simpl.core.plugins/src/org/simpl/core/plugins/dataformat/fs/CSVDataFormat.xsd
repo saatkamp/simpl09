@@ -20,10 +20,19 @@
 
     <xsd:complexType name="tTable">
     	<xsd:sequence>
-    		<xsd:element name="row" type="tRow" maxOccurs="unbounded" minOccurs="0"></xsd:element>
-    		<xsd:element name="header" type="tHeader" maxOccurs="1" minOccurs="0"></xsd:element>
+    		<xsd:element name="row" type="tRow" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="header" type="tHeader" maxOccurs="1"
+    			minOccurs="0">
+    		</xsd:element>
     	</xsd:sequence>
-    	
+
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="strictQuotes" type="xsd:boolean"></xsd:attribute>
     </xsd:complexType>
 
 

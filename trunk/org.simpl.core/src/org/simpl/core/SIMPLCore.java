@@ -77,7 +77,7 @@ public class SIMPLCore {
    * @param dfSubtype
    * @return
    */
-  public DataFormatService dataFormatService(String dfType, String dfSubtype) {
+  public DataFormatService<Object> dataFormatService(String dfType, String dfSubtype) {
     return dataFormatServiceProvider.getInstance(dfType, dfSubtype);
   }
   

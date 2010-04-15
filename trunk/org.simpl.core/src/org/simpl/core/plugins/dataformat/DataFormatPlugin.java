@@ -22,7 +22,7 @@ import commonj.sdo.helper.XSDHelper;
  *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataFormatPlugin implements DataFormatService {
+public abstract class DataFormatPlugin<T> implements DataFormatService<T> {
   /**
    * Name of the data format schema file.
    */
