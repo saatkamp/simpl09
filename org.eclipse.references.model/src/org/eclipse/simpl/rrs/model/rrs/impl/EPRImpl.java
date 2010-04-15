@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.simpl.rrs.model.rrs.EPR;
 import org.eclipse.simpl.rrs.model.rrs.RRSPackage;
+import org.eclipse.simpl.rrs.model.rrs.ReferenceParameters;
 import org.eclipse.simpl.rrs.model.rrs.ReferenceProperties;
 import org.eclipse.simpl.rrs.model.rrs.ServiceName;
 
@@ -72,24 +73,14 @@ public class EPRImpl extends EObjectImpl implements EPR {
 	protected ReferenceProperties referenceProperties;
 
 	/**
-	 * The default value of the '{@link #getReferenceParameters() <em>Reference Parameters</em>}' attribute.
+	 * The cached value of the '{@link #getReferenceParameters() <em>Reference Parameters</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getReferenceParameters()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REFERENCE_PARAMETERS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getReferenceParameters() <em>Reference Parameters</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReferenceParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected String referenceParameters = REFERENCE_PARAMETERS_EDEFAULT;
+	protected ReferenceParameters referenceParameters;
 
 	/**
 	 * The default value of the '{@link #getPortType() <em>Port Type</em>}' attribute.
@@ -229,7 +220,7 @@ public class EPRImpl extends EObjectImpl implements EPR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getReferenceParameters() {
+	public ReferenceParameters getReferenceParameters() {
 		return referenceParameters;
 	}
 
@@ -238,11 +229,33 @@ public class EPRImpl extends EObjectImpl implements EPR {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReferenceParameters(String newReferenceParameters) {
-		String oldReferenceParameters = referenceParameters;
+	public NotificationChain basicSetReferenceParameters(ReferenceParameters newReferenceParameters, NotificationChain msgs) {
+		ReferenceParameters oldReferenceParameters = referenceParameters;
 		referenceParameters = newReferenceParameters;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RRSPackage.EPR__REFERENCE_PARAMETERS, oldReferenceParameters, referenceParameters));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RRSPackage.EPR__REFERENCE_PARAMETERS, oldReferenceParameters, newReferenceParameters);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReferenceParameters(ReferenceParameters newReferenceParameters) {
+		if (newReferenceParameters != referenceParameters) {
+			NotificationChain msgs = null;
+			if (referenceParameters != null)
+				msgs = ((InternalEObject)referenceParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RRSPackage.EPR__REFERENCE_PARAMETERS, null, msgs);
+			if (newReferenceParameters != null)
+				msgs = ((InternalEObject)newReferenceParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RRSPackage.EPR__REFERENCE_PARAMETERS, null, msgs);
+			msgs = basicSetReferenceParameters(newReferenceParameters, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RRSPackage.EPR__REFERENCE_PARAMETERS, newReferenceParameters, newReferenceParameters));
 	}
 
 	/**
@@ -340,6 +353,8 @@ public class EPRImpl extends EObjectImpl implements EPR {
 		switch (featureID) {
 			case RRSPackage.EPR__REFERENCE_PROPERTIES:
 				return basicSetReferenceProperties(null, msgs);
+			case RRSPackage.EPR__REFERENCE_PARAMETERS:
+				return basicSetReferenceParameters(null, msgs);
 			case RRSPackage.EPR__SERVICE_NAME:
 				return basicSetServiceName(null, msgs);
 		}
@@ -385,7 +400,7 @@ public class EPRImpl extends EObjectImpl implements EPR {
 				setReferenceProperties((ReferenceProperties)newValue);
 				return;
 			case RRSPackage.EPR__REFERENCE_PARAMETERS:
-				setReferenceParameters((String)newValue);
+				setReferenceParameters((ReferenceParameters)newValue);
 				return;
 			case RRSPackage.EPR__PORT_TYPE:
 				setPortType((QName)newValue);
@@ -415,7 +430,7 @@ public class EPRImpl extends EObjectImpl implements EPR {
 				setReferenceProperties((ReferenceProperties)null);
 				return;
 			case RRSPackage.EPR__REFERENCE_PARAMETERS:
-				setReferenceParameters(REFERENCE_PARAMETERS_EDEFAULT);
+				setReferenceParameters((ReferenceParameters)null);
 				return;
 			case RRSPackage.EPR__PORT_TYPE:
 				setPortType(PORT_TYPE_EDEFAULT);
@@ -443,7 +458,7 @@ public class EPRImpl extends EObjectImpl implements EPR {
 			case RRSPackage.EPR__REFERENCE_PROPERTIES:
 				return referenceProperties != null;
 			case RRSPackage.EPR__REFERENCE_PARAMETERS:
-				return REFERENCE_PARAMETERS_EDEFAULT == null ? referenceParameters != null : !REFERENCE_PARAMETERS_EDEFAULT.equals(referenceParameters);
+				return referenceParameters != null;
 			case RRSPackage.EPR__PORT_TYPE:
 				return PORT_TYPE_EDEFAULT == null ? portType != null : !PORT_TYPE_EDEFAULT.equals(portType);
 			case RRSPackage.EPR__SERVICE_NAME:
@@ -466,8 +481,6 @@ public class EPRImpl extends EObjectImpl implements EPR {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (address: ");
 		result.append(address);
-		result.append(", referenceParameters: ");
-		result.append(referenceParameters);
 		result.append(", portType: ");
 		result.append(portType);
 		result.append(", policy: ");

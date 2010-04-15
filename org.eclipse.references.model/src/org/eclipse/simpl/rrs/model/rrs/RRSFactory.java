@@ -44,6 +44,15 @@ public interface RRSFactory extends EFactory {
 	EPR createEPR();
 
 	/**
+	 * Returns a new object of class '<em>Reference Parameters</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reference Parameters</em>'.
+	 * @generated
+	 */
+	ReferenceParameters createReferenceParameters();
+
+	/**
 	 * Returns a new object of class '<em>Reference Properties</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

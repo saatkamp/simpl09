@@ -80,6 +80,10 @@ public class RRSAdapterFactory extends AdapterFactoryImpl {
 				return createEPRAdapter();
 			}
 			@Override
+			public Adapter caseReferenceParameters(ReferenceParameters object) {
+				return createReferenceParametersAdapter();
+			}
+			@Override
 			public Adapter caseReferenceProperties(ReferenceProperties object) {
 				return createReferencePropertiesAdapter();
 			}
@@ -132,6 +136,20 @@ public class RRSAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEPRAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.simpl.rrs.model.rrs.ReferenceParameters <em>Reference Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.simpl.rrs.model.rrs.ReferenceParameters
+	 * @generated
+	 */
+	public Adapter createReferenceParametersAdapter() {
 		return null;
 	}
 

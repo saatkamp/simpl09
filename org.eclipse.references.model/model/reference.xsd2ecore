@@ -2,6 +2,9 @@
 <xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="rrs.xsd#/"
     outputs="rrs.ecore#/" topToBottom="true">
+  <nested inputs="bundleentry://675.fwk21021313/cache/www.w3.org/2001/MagicXMLSchema.xsd#//anySimpleType;XSDSimpleTypeDefinition=1"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
+  <nested inputs="rrs.xsd#//epr;XSDElementDeclaration" outputs="rrs.ecore#//DocumentRoot/epr"/>
   <nested inputs="bundleentry://675.fwk21021313/cache/www.w3.org/2001/XMLSchema.xsd#//anyURI;XSDSimpleTypeDefinition=25"
       outputs="http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
   <nested inputs="bundleentry://675.fwk21021313/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=9"
@@ -9,6 +12,12 @@
   <nested inputs="rrs.xsd#//ReferenceProperties;XSDComplexTypeDefinition=1" outputs="rrs.ecore#//ReferenceProperties">
     <nested inputs="rrs.xsd#//ReferenceProperties;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
         outputs="rrs.ecore#//ReferenceProperties/resolutionSystem"/>
+  </nested>
+  <nested inputs="rrs.xsd#//ReferenceParameters;XSDComplexTypeDefinition=3" outputs="rrs.ecore#//ReferenceParameters">
+    <nested inputs="rrs.xsd#//ReferenceParameters;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="rrs.ecore#//ReferenceParameters/referenceName"/>
+    <nested inputs="rrs.xsd#//ReferenceParameters;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="rrs.ecore#//ReferenceParameters/statement"/>
   </nested>
   <nested inputs="bundleentry://675.fwk21021313/cache/www.w3.org/2001/XMLSchema.xsd#//QName;XSDSimpleTypeDefinition=26"
       outputs="http://www.eclipse.org/emf/2003/XMLType#//QName"/>
@@ -32,5 +41,4 @@
     <nested inputs="rrs.xsd#//EPR;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=5"
         outputs="rrs.ecore#//EPR/policy"/>
   </nested>
-  <nested inputs="rrs.xsd#//epr;XSDElementDeclaration" outputs="rrs.ecore#//DocumentRoot/epr"/>
 </xsd2ecore:XSD2EcoreMappingRoot>

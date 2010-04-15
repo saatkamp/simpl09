@@ -62,6 +62,7 @@ public class RRSFactoryImpl extends EFactoryImpl implements RRSFactory {
 		switch (eClass.getClassifierID()) {
 			case RRSPackage.DOCUMENT_ROOT: return createDocumentRoot();
 			case RRSPackage.EPR: return createEPR();
+			case RRSPackage.REFERENCE_PARAMETERS: return createReferenceParameters();
 			case RRSPackage.REFERENCE_PROPERTIES: return createReferenceProperties();
 			case RRSPackage.SERVICE_NAME: return createServiceName();
 			default:
@@ -87,6 +88,16 @@ public class RRSFactoryImpl extends EFactoryImpl implements RRSFactory {
 	public EPR createEPR() {
 		EPRImpl epr = new EPRImpl();
 		return epr;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReferenceParameters createReferenceParameters() {
+		ReferenceParametersImpl referenceParameters = new ReferenceParametersImpl();
+		return referenceParameters;
 	}
 
 	/**

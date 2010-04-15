@@ -11,15 +11,19 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//DocumentRoot/mixed"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference rrs.ecore#//DocumentRoot/xMLNSPrefixMap"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference rrs.ecore#//DocumentRoot/xSISchemaLocation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rrs.ecore#//DocumentRoot/epr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute rrs.ecore#//DocumentRoot/epr"/>
     </genClasses>
     <genClasses ecoreClass="rrs.ecore#//EPR">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//EPR/address"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rrs.ecore#//EPR/referenceProperties"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//EPR/referenceParameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference rrs.ecore#//EPR/referenceParameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//EPR/portType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rrs.ecore#//EPR/serviceName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//EPR/policy"/>
+    </genClasses>
+    <genClasses ecoreClass="rrs.ecore#//ReferenceParameters">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ReferenceParameters/referenceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ReferenceParameters/statement"/>
     </genClasses>
     <genClasses ecoreClass="rrs.ecore#//ReferenceProperties">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ReferenceProperties/resolutionSystem"/>

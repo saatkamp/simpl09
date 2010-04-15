@@ -97,7 +97,7 @@ public interface RRSPackage extends EPackage {
 	int DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Epr</b></em>' containment reference.
+	 * The feature id for the '<em><b>Epr</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -143,7 +143,7 @@ public interface RRSPackage extends EPackage {
 	int EPR__REFERENCE_PROPERTIES = 1;
 
 	/**
-	 * The feature id for the '<em><b>Reference Parameters</b></em>' attribute.
+	 * The feature id for the '<em><b>Reference Parameters</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -188,6 +188,43 @@ public interface RRSPackage extends EPackage {
 	int EPR_FEATURE_COUNT = 6;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ReferenceParametersImpl <em>Reference Parameters</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.simpl.rrs.model.rrs.impl.ReferenceParametersImpl
+	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getReferenceParameters()
+	 * @generated
+	 */
+	int REFERENCE_PARAMETERS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_PARAMETERS__REFERENCE_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Statement</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_PARAMETERS__STATEMENT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Reference Parameters</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_PARAMETERS_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ReferencePropertiesImpl <em>Reference Properties</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,7 +232,7 @@ public interface RRSPackage extends EPackage {
 	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getReferenceProperties()
 	 * @generated
 	 */
-	int REFERENCE_PROPERTIES = 2;
+	int REFERENCE_PROPERTIES = 3;
 
 	/**
 	 * The feature id for the '<em><b>Resolution System</b></em>' attribute.
@@ -223,7 +260,7 @@ public interface RRSPackage extends EPackage {
 	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getServiceName()
 	 * @generated
 	 */
-	int SERVICE_NAME = 3;
+	int SERVICE_NAME = 4;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -297,15 +334,15 @@ public interface RRSPackage extends EPackage {
 	EReference getDocumentRoot_XSISchemaLocation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr <em>Epr</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr <em>Epr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Epr</em>'.
+	 * @return the meta object for the attribute '<em>Epr</em>'.
 	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
-	EReference getDocumentRoot_Epr();
+	EAttribute getDocumentRoot_Epr();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.EPR <em>EPR</em>}'.
@@ -340,15 +377,15 @@ public interface RRSPackage extends EPackage {
 	EReference getEPR_ReferenceProperties();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceParameters <em>Reference Parameters</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceParameters <em>Reference Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Reference Parameters</em>'.
+	 * @return the meta object for the containment reference '<em>Reference Parameters</em>'.
 	 * @see org.eclipse.simpl.rrs.model.rrs.EPR#getReferenceParameters()
 	 * @see #getEPR()
 	 * @generated
 	 */
-	EAttribute getEPR_ReferenceParameters();
+	EReference getEPR_ReferenceParameters();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.EPR#getPortType <em>Port Type</em>}'.
@@ -382,6 +419,38 @@ public interface RRSPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEPR_Policy();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.ReferenceParameters <em>Reference Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reference Parameters</em>'.
+	 * @see org.eclipse.simpl.rrs.model.rrs.ReferenceParameters
+	 * @generated
+	 */
+	EClass getReferenceParameters();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.ReferenceParameters#getReferenceName <em>Reference Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reference Name</em>'.
+	 * @see org.eclipse.simpl.rrs.model.rrs.ReferenceParameters#getReferenceName()
+	 * @see #getReferenceParameters()
+	 * @generated
+	 */
+	EAttribute getReferenceParameters_ReferenceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.ReferenceParameters#getStatement <em>Statement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Statement</em>'.
+	 * @see org.eclipse.simpl.rrs.model.rrs.ReferenceParameters#getStatement()
+	 * @see #getReferenceParameters()
+	 * @generated
+	 */
+	EAttribute getReferenceParameters_Statement();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.ReferenceProperties <em>Reference Properties</em>}'.
@@ -493,12 +562,12 @@ public interface RRSPackage extends EPackage {
 		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
 
 		/**
-		 * The meta object literal for the '<em><b>Epr</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Epr</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DOCUMENT_ROOT__EPR = eINSTANCE.getDocumentRoot_Epr();
+		EAttribute DOCUMENT_ROOT__EPR = eINSTANCE.getDocumentRoot_Epr();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.EPRImpl <em>EPR</em>}' class.
@@ -527,12 +596,12 @@ public interface RRSPackage extends EPackage {
 		EReference EPR__REFERENCE_PROPERTIES = eINSTANCE.getEPR_ReferenceProperties();
 
 		/**
-		 * The meta object literal for the '<em><b>Reference Parameters</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Reference Parameters</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EPR__REFERENCE_PARAMETERS = eINSTANCE.getEPR_ReferenceParameters();
+		EReference EPR__REFERENCE_PARAMETERS = eINSTANCE.getEPR_ReferenceParameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Port Type</b></em>' attribute feature.
@@ -557,6 +626,32 @@ public interface RRSPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EPR__POLICY = eINSTANCE.getEPR_Policy();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ReferenceParametersImpl <em>Reference Parameters</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.simpl.rrs.model.rrs.impl.ReferenceParametersImpl
+		 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getReferenceParameters()
+		 * @generated
+		 */
+		EClass REFERENCE_PARAMETERS = eINSTANCE.getReferenceParameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE_PARAMETERS__REFERENCE_NAME = eINSTANCE.getReferenceParameters_ReferenceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Statement</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE_PARAMETERS__STATEMENT = eINSTANCE.getReferenceParameters_Statement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.ReferencePropertiesImpl <em>Reference Properties</em>}' class.

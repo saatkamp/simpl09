@@ -86,30 +86,30 @@ public interface DocumentRoot extends EObject {
 	EMap<String, String> getXSISchemaLocation();
 
 	/**
-	 * Returns the value of the '<em><b>Epr</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Epr</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Epr</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Epr</em>' containment reference.
-	 * @see #setEpr(EPR)
+	 * @return the value of the '<em>Epr</em>' attribute.
+	 * @see #setEpr(Object)
 	 * @see org.eclipse.simpl.rrs.model.rrs.RRSPackage#getDocumentRoot_Epr()
-	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
+	 * @model unique="false" dataType="org.eclipse.emf.ecore.xml.type.AnySimpleType" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='epr' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EPR getEpr();
+	Object getEpr();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr <em>Epr</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr <em>Epr</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Epr</em>' containment reference.
+	 * @param value the new value of the '<em>Epr</em>' attribute.
 	 * @see #getEpr()
 	 * @generated
 	 */
-	void setEpr(EPR value);
+	void setEpr(Object value);
 
 } // DocumentRoot

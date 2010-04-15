@@ -24,7 +24,7 @@
 			</xsd:element>
 
 			<xsd:element name="referenceParameters"
-				type="xsd:string" maxOccurs="1" minOccurs="1">
+				type="rrs:ReferenceParameters" maxOccurs="1" minOccurs="1">
 			</xsd:element>
 			<xsd:element name="portType" type="xsd:QName" maxOccurs="1"
 				minOccurs="0">
@@ -60,5 +60,15 @@
 	</xsd:complexType>
 
 
-	<xsd:element name="epr" type="rrs:EPR"></xsd:element>
+	<xsd:element name="epr" type="xsd:anySimpleType"></xsd:element>
+
+	<xsd:complexType name="ReferenceParameters">
+		<xsd:sequence maxOccurs="1" minOccurs="1">
+			<xsd:element name="referenceName" type="xsd:string"
+				maxOccurs="1" minOccurs="1">
+			</xsd:element>
+
+			<xsd:element name="statement" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
 </xsd:schema>

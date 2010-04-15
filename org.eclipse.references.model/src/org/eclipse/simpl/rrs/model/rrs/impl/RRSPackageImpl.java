@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.simpl.rrs.model.rrs.DocumentRoot;
 import org.eclipse.simpl.rrs.model.rrs.RRSFactory;
 import org.eclipse.simpl.rrs.model.rrs.RRSPackage;
+import org.eclipse.simpl.rrs.model.rrs.ReferenceParameters;
 import org.eclipse.simpl.rrs.model.rrs.ReferenceProperties;
 import org.eclipse.simpl.rrs.model.rrs.ServiceName;
 
@@ -41,6 +42,13 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 	 * @generated
 	 */
 	private EClass eprEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass referenceParametersEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,8 +169,8 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDocumentRoot_Epr() {
-		return (EReference)documentRootEClass.getEStructuralFeatures().get(3);
+	public EAttribute getDocumentRoot_Epr() {
+		return (EAttribute)documentRootEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -197,8 +205,8 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEPR_ReferenceParameters() {
-		return (EAttribute)eprEClass.getEStructuralFeatures().get(2);
+	public EReference getEPR_ReferenceParameters() {
+		return (EReference)eprEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -226,6 +234,33 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 	 */
 	public EAttribute getEPR_Policy() {
 		return (EAttribute)eprEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReferenceParameters() {
+		return referenceParametersEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReferenceParameters_ReferenceName() {
+		return (EAttribute)referenceParametersEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReferenceParameters_Statement() {
+		return (EAttribute)referenceParametersEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -305,15 +340,19 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 		createEAttribute(documentRootEClass, DOCUMENT_ROOT__MIXED);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
-		createEReference(documentRootEClass, DOCUMENT_ROOT__EPR);
+		createEAttribute(documentRootEClass, DOCUMENT_ROOT__EPR);
 
 		eprEClass = createEClass(EPR);
 		createEAttribute(eprEClass, EPR__ADDRESS);
 		createEReference(eprEClass, EPR__REFERENCE_PROPERTIES);
-		createEAttribute(eprEClass, EPR__REFERENCE_PARAMETERS);
+		createEReference(eprEClass, EPR__REFERENCE_PARAMETERS);
 		createEAttribute(eprEClass, EPR__PORT_TYPE);
 		createEReference(eprEClass, EPR__SERVICE_NAME);
 		createEAttribute(eprEClass, EPR__POLICY);
+
+		referenceParametersEClass = createEClass(REFERENCE_PARAMETERS);
+		createEAttribute(referenceParametersEClass, REFERENCE_PARAMETERS__REFERENCE_NAME);
+		createEAttribute(referenceParametersEClass, REFERENCE_PARAMETERS__STATEMENT);
 
 		referencePropertiesEClass = createEClass(REFERENCE_PROPERTIES);
 		createEAttribute(referencePropertiesEClass, REFERENCE_PROPERTIES__RESOLUTION_SYSTEM);
@@ -360,15 +399,19 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 		initEAttribute(getDocumentRoot_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, null, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentRoot_XMLNSPrefixMap(), ecorePackage.getEStringToStringMapEntry(), null, "xMLNSPrefixMap", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentRoot_XSISchemaLocation(), ecorePackage.getEStringToStringMapEntry(), null, "xSISchemaLocation", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocumentRoot_Epr(), this.getEPR(), null, "epr", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDocumentRoot_Epr(), theXMLTypePackage.getAnySimpleType(), "epr", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(eprEClass, org.eclipse.simpl.rrs.model.rrs.EPR.class, "EPR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEPR_Address(), theXMLTypePackage.getAnyURI(), "address", null, 1, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEPR_ReferenceProperties(), this.getReferenceProperties(), null, "referenceProperties", null, 1, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEPR_ReferenceParameters(), theXMLTypePackage.getString(), "referenceParameters", null, 1, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEPR_ReferenceParameters(), this.getReferenceParameters(), null, "referenceParameters", null, 1, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEPR_PortType(), theXMLTypePackage.getQName(), "portType", null, 0, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEPR_ServiceName(), this.getServiceName(), null, "serviceName", null, 0, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEPR_Policy(), theXMLTypePackage.getString(), "policy", null, 0, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(referenceParametersEClass, ReferenceParameters.class, "ReferenceParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReferenceParameters_ReferenceName(), theXMLTypePackage.getString(), "referenceName", null, 1, 1, ReferenceParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReferenceParameters_Statement(), theXMLTypePackage.getString(), "statement", null, 1, 1, ReferenceParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(referencePropertiesEClass, ReferenceProperties.class, "ReferenceProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReferenceProperties_ResolutionSystem(), theXMLTypePackage.getString(), "resolutionSystem", null, 0, 1, ReferenceProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -482,6 +525,29 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "policy",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (referenceParametersEClass, 
+		   source, 
+		   new String[] {
+			 "name", "ReferenceParameters",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getReferenceParameters_ReferenceName(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "referenceName",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (getReferenceParameters_Statement(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "statement",
 			 "namespace", "##targetNamespace"
 		   });		
 		addAnnotation

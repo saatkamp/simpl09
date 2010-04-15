@@ -31,8 +31,9 @@
         <details key="name" value="xsi:schemaLocation"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="epr" upperBound="-2" eType="#//EPR"
-        volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="epr" unique="false" upperBound="-2"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"
+        volatile="true" transient="true" derived="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="epr"/>
@@ -61,8 +62,8 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceParameters" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referenceParameters" lowerBound="1"
+        eType="#//ReferenceParameters" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="referenceParameters"/>
@@ -88,6 +89,28 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="policy"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceParameters">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ReferenceParameters"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="referenceName"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="statement"/>
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
