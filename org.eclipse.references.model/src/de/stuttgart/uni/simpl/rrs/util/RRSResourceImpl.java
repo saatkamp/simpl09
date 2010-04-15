@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.rrs.model.reference.util;
+package de.stuttgart.uni.simpl.rrs.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.eclipse.simpl.rrs.model.reference.util.ReferenceResourceFactoryImpl
+ * @see de.stuttgart.uni.simpl.rrs.util.RRSResourceFactoryImpl
  * @generated
  */
-public class ReferenceResourceImpl extends XMLResourceImpl {
+public class RRSResourceImpl extends XMLResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
@@ -25,8 +25,8 @@ public class ReferenceResourceImpl extends XMLResourceImpl {
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-	public ReferenceResourceImpl(URI uri) {
+	public RRSResourceImpl(URI uri) {
 		super(uri);
 	}
 
-} //ReferenceResourceImpl
+} //RRSResourceImpl

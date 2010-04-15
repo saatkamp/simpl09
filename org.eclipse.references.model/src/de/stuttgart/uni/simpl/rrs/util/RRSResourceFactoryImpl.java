@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package org.eclipse.simpl.rrs.model.reference.util;
+package de.stuttgart.uni.simpl.rrs.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -18,17 +18,17 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.eclipse.simpl.rrs.model.reference.util.ReferenceResourceImpl
+ * @see de.stuttgart.uni.simpl.rrs.util.RRSResourceImpl
  * @generated
  */
-public class ReferenceResourceFactoryImpl extends ResourceFactoryImpl {
+public class RRSResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReferenceResourceFactoryImpl() {
+	public RRSResourceFactoryImpl() {
 		super();
 	}
 
@@ -40,7 +40,7 @@ public class ReferenceResourceFactoryImpl extends ResourceFactoryImpl {
 	 */
 	@Override
 	public Resource createResource(URI uri) {
-		XMLResource result = new ReferenceResourceImpl(uri);
+		XMLResource result = new RRSResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
@@ -53,4 +53,4 @@ public class ReferenceResourceFactoryImpl extends ResourceFactoryImpl {
 		return result;
 	}
 
-} //ReferenceResourceFactoryImpl
+} //RRSResourceFactoryImpl
