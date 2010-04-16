@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RRSConfig name="RRSConfig">
+	<RRSDQAdapterPlugin name="org.simpl.core.datasource.plugins.rdb.RDBAdapter" />
+</RRSConfig>
