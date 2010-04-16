@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl#getPolicyData <em>Policy Data</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl#getLocalPath <em>Local Path</em>}</li>
  * </ul>
  * </p>
@@ -38,24 +38,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class TPolicyImpl extends EObjectImpl implements TPolicy {
 	/**
-	 * The default value of the '{@link #getPolicy() <em>Policy</em>}' attribute.
+	 * The default value of the '{@link #getPolicyData() <em>Policy Data</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPolicy()
+	 * @see #getPolicyData()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String POLICY_EDEFAULT = null;
+	protected static final String POLICY_DATA_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPolicy() <em>Policy</em>}' attribute.
+	 * The cached value of the '{@link #getPolicyData() <em>Policy Data</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPolicy()
+	 * @see #getPolicyData()
 	 * @generated
 	 * @ordered
 	 */
-	protected String policy = POLICY_EDEFAULT;
+	protected String policyData = POLICY_DATA_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLocalPath() <em>Local Path</em>}' attribute.
@@ -101,8 +101,8 @@ public class TPolicyImpl extends EObjectImpl implements TPolicy {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPolicy() {
-		return policy;
+	public String getPolicyData() {
+		return policyData;
 	}
 
 	/**
@@ -110,11 +110,11 @@ public class TPolicyImpl extends EObjectImpl implements TPolicy {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPolicy(String newPolicy) {
-		String oldPolicy = policy;
-		policy = newPolicy;
+	public void setPolicyData(String newPolicyData) {
+		String oldPolicyData = policyData;
+		policyData = newPolicyData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TPOLICY__POLICY, oldPolicy, policy));
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TPOLICY__POLICY_DATA, oldPolicyData, policyData));
 	}
 
 	/**
@@ -146,8 +146,8 @@ public class TPolicyImpl extends EObjectImpl implements TPolicy {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ddPackage.TPOLICY__POLICY:
-				return getPolicy();
+			case ddPackage.TPOLICY__POLICY_DATA:
+				return getPolicyData();
 			case ddPackage.TPOLICY__LOCAL_PATH:
 				return getLocalPath();
 		}
@@ -162,8 +162,8 @@ public class TPolicyImpl extends EObjectImpl implements TPolicy {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ddPackage.TPOLICY__POLICY:
-				setPolicy((String)newValue);
+			case ddPackage.TPOLICY__POLICY_DATA:
+				setPolicyData((String)newValue);
 				return;
 			case ddPackage.TPOLICY__LOCAL_PATH:
 				setLocalPath((String)newValue);
@@ -180,8 +180,8 @@ public class TPolicyImpl extends EObjectImpl implements TPolicy {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ddPackage.TPOLICY__POLICY:
-				setPolicy(POLICY_EDEFAULT);
+			case ddPackage.TPOLICY__POLICY_DATA:
+				setPolicyData(POLICY_DATA_EDEFAULT);
 				return;
 			case ddPackage.TPOLICY__LOCAL_PATH:
 				setLocalPath(LOCAL_PATH_EDEFAULT);
@@ -198,8 +198,8 @@ public class TPolicyImpl extends EObjectImpl implements TPolicy {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ddPackage.TPOLICY__POLICY:
-				return POLICY_EDEFAULT == null ? policy != null : !POLICY_EDEFAULT.equals(policy);
+			case ddPackage.TPOLICY__POLICY_DATA:
+				return POLICY_DATA_EDEFAULT == null ? policyData != null : !POLICY_DATA_EDEFAULT.equals(policyData);
 			case ddPackage.TPOLICY__LOCAL_PATH:
 				return LOCAL_PATH_EDEFAULT == null ? localPath != null : !LOCAL_PATH_EDEFAULT.equals(localPath);
 		}
@@ -216,8 +216,8 @@ public class TPolicyImpl extends EObjectImpl implements TPolicy {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (policy: ");
-		result.append(policy);
+		result.append(" (policyData: ");
+		result.append(policyData);
 		result.append(", localPath: ");
 		result.append(localPath);
 		result.append(')');

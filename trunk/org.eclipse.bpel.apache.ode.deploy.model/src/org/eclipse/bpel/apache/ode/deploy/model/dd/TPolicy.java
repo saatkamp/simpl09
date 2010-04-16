@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getPolicyData <em>Policy Data</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getLocalPath <em>Local Path</em>}</li>
  * </ul>
  * </p>
@@ -33,30 +33,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface TPolicy extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Policy</b></em>' attribute.
+	 * Returns the value of the '<em><b>Policy Data</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Policy</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Policy Data</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Policy</em>' attribute.
-	 * @see #setPolicy(String)
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTPolicy_Policy()
+	 * @return the value of the '<em>Policy Data</em>' attribute.
+	 * @see #setPolicyData(String)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTPolicy_PolicyData()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getPolicy();
+	String getPolicyData();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getPolicy <em>Policy</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getPolicyData <em>Policy Data</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Policy</em>' attribute.
-	 * @see #getPolicy()
+	 * @param value the new value of the '<em>Policy Data</em>' attribute.
+	 * @see #getPolicyData()
 	 * @generated
 	 */
-	void setPolicy(String value);
+	void setPolicyData(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Local Path</b></em>' attribute.

@@ -682,6 +682,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		ctv.addSelectionChangedListener(scl);
 	}
 
+	@SuppressWarnings("deprecation")
 	private void createScopeMonitoringSection(Composite parent) {
 		Composite client = createSection(parent,
 				"Scope-level Monitoring Events", null, 1);
@@ -871,6 +872,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				widgetSelected(e);
 			}
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
@@ -1034,6 +1036,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				widgetSelected(e);
 			}
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub

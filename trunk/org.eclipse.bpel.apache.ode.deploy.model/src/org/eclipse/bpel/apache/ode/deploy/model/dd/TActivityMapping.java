@@ -12,9 +12,6 @@
  */
 package org.eclipse.bpel.apache.ode.deploy.model.dd;
 
-import org.eclipse.bpel.model.Activity;
-import org.eclipse.bpel.model.ExtensionActivity;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -26,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDatasource <em>Datasource</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDataSourceName <em>Data Source Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}</li>
  * </ul>
  * </p>
@@ -37,30 +34,58 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface TActivityMapping extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Activity</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Activity</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activity</em>' containment reference.
-	 * @see #setActivity(Activity)
+	 * @return the value of the '<em>Activity</em>' attribute.
+	 * @see #setActivity(String)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Activity()
-	 * @model containment="true"
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
 	 * @generated
 	 */
-	Activity getActivity();
+	String getActivity();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activity</em>' containment reference.
+	 * @param value the new value of the '<em>Activity</em>' attribute.
 	 * @see #getActivity()
 	 * @generated
 	 */
-	void setActivity(Activity value);
+	void setActivity(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Data Source Name</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Source Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Source Name</em>' attribute.
+	 * @see #setDataSourceName(String)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_DataSourceName()
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	String getDataSourceName();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDataSourceName <em>Data Source Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Data Source Name</em>' attribute.
+	 * @see #getDataSourceName()
+	 * @generated
+	 */
+	void setDataSourceName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Policy</b></em>' containment reference.
@@ -87,31 +112,5 @@ public interface TActivityMapping extends EObject {
 	 * @generated
 	 */
 	void setPolicy(TPolicy value);
-
-	/**
-	 * Returns the value of the '<em><b>Datasource</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Datasource</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Datasource</em>' containment reference.
-	 * @see #setDatasource(TDatasource)
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Datasource()
-	 * @model containment="true"
-	 * @generated
-	 */
-	TDatasource getDatasource();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDatasource <em>Datasource</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Datasource</em>' containment reference.
-	 * @see #getDatasource()
-	 * @generated
-	 */
-	void setDatasource(TDatasource value);
 
 } // TActivityMapping

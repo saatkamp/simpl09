@@ -31,7 +31,6 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
 import org.eclipse.bpel.model.Activity;
-import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.ui.util.ModelHelper;
@@ -200,7 +199,7 @@ public class DeployUtils {
 		for (IFile file : allFiles) {
 
 			if (file.getFileExtension().equalsIgnoreCase("wsdl")) { //$NON-NLS-1$
-			// load it
+				// load it
 				Definition currentDef = loadWSDL(file, resourceSet);
 				// stuff it in wsdlFiles
 				wsdlFiles.add(currentDef);
@@ -219,7 +218,7 @@ public class DeployUtils {
 		for (IFile file : allFiles) {
 
 			if (file.getFileExtension().equalsIgnoreCase("bpel")) { //$NON-NLS-1$
-			// load it
+				// load it
 				Process currentProcess = loadBPEL(file, resourceSet);
 				// stuff it in bpelFiles
 				bpelFiles.add(currentProcess);
@@ -330,30 +329,35 @@ public class DeployUtils {
 		// Read the policy file content
 		StringBuilder string = new StringBuilder();
 
-		BufferedReader in;
-		try {
-			in = new BufferedReader(new InputStreamReader(new FileInputStream(
-					filePath)));
+		if (filePath != null || !filePath.isEmpty()) {
 
+			BufferedReader in;
 			try {
-				String line;
-				while ((line = in.readLine()) != null) {
-					string.append(line);
-					string.append("\n");
-				}
-			} finally {
-				in.close();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+				in = new BufferedReader(new InputStreamReader(
+						new FileInputStream(filePath)));
 
-		// Set the policy file content to the policy object
-		policy.setLocalPath(filePath);
-		policy.setPolicy(string.toString());
+				try {
+					String line;
+					while ((line = in.readLine()) != null) {
+						string.append(line);
+						string.append("\n");
+					}
+				} finally {
+					in.close();
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			// Set the policy file content to the policy object
+			policy.setLocalPath(filePath);
+			policy.setPolicyData(string.toString());
+		} else {
+			policy.setLocalPath("");
+		}
 
 		return policy;
 	}
@@ -377,18 +381,19 @@ public class DeployUtils {
 		for (TreeIterator<EObject> processContent = ((EObject) process)
 				.eAllContents(); processContent.hasNext();) {
 			EObject current = processContent.next();
-			// TODO: Project dependency to the SIMPL Model to get the correct Activities
-			if (current instanceof DataManagementActivity){
-				activities.add((DataManagementActivity)current);
+			// TODO: Project dependency to the SIMPL Model to get the correct
+			// Activities
+			if (current instanceof DataManagementActivity) {
+				activities.add((DataManagementActivity) current);
 			}
 		}
 
 		return activities;
 	}
-	
-	public static String[] getDMActivityNames(Process process){
+
+	public static String[] getDMActivityNames(Process process) {
 		List<Activity> activities = getProcessDMActivities(process);
-		
+
 		List<String> activityNames = new ArrayList<String>();
 
 		for (Activity act : activities) {

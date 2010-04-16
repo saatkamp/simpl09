@@ -37,6 +37,7 @@ import org.eclipse.swt.widgets.Text;
  * @link http://code.google.com/p/simpl09/
  * 
  */
+@SuppressWarnings("unused")
 public class AddMappingDialog extends TitleAreaDialog {
 
 	private TActivityMapping mapping;
@@ -143,16 +144,16 @@ public class AddMappingDialog extends TitleAreaDialog {
 				mapping = factory.createTActivityMapping();
 
 				String activityName = availableActivities.getText();
-				// String activityName =
-				// availableActivities.getItem(availableActivities.getSelectionIndex());
-				mapping.setActivity(DeployUtils.findActivityByName(
-						activityName, processType.getModel()));
+				// mapping.setActivity(DeployUtils.findActivityByName(
+				// activityName, processType.getModel()));
+				mapping.setActivity(activityName);
 
 				String dataSourceName = dataSource.getText();
 				// String dataSourceName =
 				// dataSource.getItem(dataSource.getSelectionIndex());
-				mapping.setDatasource(DeployUtils.findDataSourceByName(
-						dataSourceName, processType));
+				// mapping.setDatasource(DeployUtils.findDataSourceByName(
+				// dataSourceName, processType));
+				mapping.setDataSourceName(dataSourceName);
 
 				mapping.setPolicy(DeployUtils.queryPolicyByPath(policyAdress
 						.getText()));
