@@ -417,11 +417,16 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TActivityMapping">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//ExtensionActivity"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Activity"
         containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="policy" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datasource" eType="#//TDatasource"
         containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="policy" eType="#//TPolicy"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TPolicy">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="policy" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

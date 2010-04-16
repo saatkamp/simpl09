@@ -10,12 +10,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-
-import org.eclipse.simpl.rrs.model.rrs.DocumentRoot;
 import org.eclipse.simpl.rrs.model.rrs.RRSFactory;
 import org.eclipse.simpl.rrs.model.rrs.RRSPackage;
 import org.eclipse.simpl.rrs.model.rrs.ReferenceParameters;
@@ -29,13 +25,6 @@ import org.eclipse.simpl.rrs.model.rrs.ServiceName;
  * @generated
  */
 public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass documentRootEClass = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -126,51 +115,6 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(RRSPackage.eNS_URI, theRRSPackage);
 		return theRRSPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDocumentRoot() {
-		return documentRootEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDocumentRoot_Mixed() {
-		return (EAttribute)documentRootEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDocumentRoot_XMLNSPrefixMap() {
-		return (EReference)documentRootEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDocumentRoot_XSISchemaLocation() {
-		return (EReference)documentRootEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDocumentRoot_Epr() {
-		return (EAttribute)documentRootEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -336,12 +280,6 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		documentRootEClass = createEClass(DOCUMENT_ROOT);
-		createEAttribute(documentRootEClass, DOCUMENT_ROOT__MIXED);
-		createEReference(documentRootEClass, DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
-		createEReference(documentRootEClass, DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
-		createEAttribute(documentRootEClass, DOCUMENT_ROOT__EPR);
-
 		eprEClass = createEClass(EPR);
 		createEAttribute(eprEClass, EPR__ADDRESS);
 		createEReference(eprEClass, EPR__REFERENCE_PROPERTIES);
@@ -395,12 +333,6 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(documentRootEClass, DocumentRoot.class, "DocumentRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDocumentRoot_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, null, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocumentRoot_XMLNSPrefixMap(), ecorePackage.getEStringToStringMapEntry(), null, "xMLNSPrefixMap", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDocumentRoot_XSISchemaLocation(), ecorePackage.getEStringToStringMapEntry(), null, "xSISchemaLocation", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDocumentRoot_Epr(), theXMLTypePackage.getAnySimpleType(), "epr", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
 		initEClass(eprEClass, org.eclipse.simpl.rrs.model.rrs.EPR.class, "EPR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEPR_Address(), theXMLTypePackage.getAnyURI(), "address", null, 1, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEPR_ReferenceProperties(), this.getReferenceProperties(), null, "referenceProperties", null, 1, 1, org.eclipse.simpl.rrs.model.rrs.EPR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -436,42 +368,6 @@ public class RRSPackageImpl extends EPackageImpl implements RRSPackage {
 	 */
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
-		addAnnotation
-		  (documentRootEClass, 
-		   source, 
-		   new String[] {
-			 "name", "",
-			 "kind", "mixed"
-		   });		
-		addAnnotation
-		  (getDocumentRoot_Mixed(), 
-		   source, 
-		   new String[] {
-			 "kind", "elementWildcard",
-			 "name", ":mixed"
-		   });		
-		addAnnotation
-		  (getDocumentRoot_XMLNSPrefixMap(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute",
-			 "name", "xmlns:prefix"
-		   });		
-		addAnnotation
-		  (getDocumentRoot_XSISchemaLocation(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute",
-			 "name", "xsi:schemaLocation"
-		   });		
-		addAnnotation
-		  (getDocumentRoot_Epr(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "epr",
-			 "namespace", "##targetNamespace"
-		   });		
 		addAnnotation
 		  (eprEClass, 
 		   source, 

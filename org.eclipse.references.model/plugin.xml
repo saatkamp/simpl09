@@ -12,7 +12,7 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://simpl.uni-stuttgart.de/rrs/model"
+            uri="http://uni-stuttgart.de/simpl/rrs"
             class="org.eclipse.simpl.rrs.model.rrs.RRSPackage"
             genModel="model/Reference.genmodel"/>
    </extension>

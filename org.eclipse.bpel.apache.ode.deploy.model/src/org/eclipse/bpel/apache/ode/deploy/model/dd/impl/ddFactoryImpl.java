@@ -81,6 +81,7 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 			case ddPackage.TSERVICE: return createTService();
 			case ddPackage.TDATASOURCE: return createTDatasource();
 			case ddPackage.TACTIVITY_MAPPING: return createTActivityMapping();
+			case ddPackage.TPOLICY: return createTPolicy();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -268,6 +269,16 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	public TActivityMapping createTActivityMapping() {
 		TActivityMappingImpl tActivityMapping = new TActivityMappingImpl();
 		return tActivityMapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TPolicy createTPolicy() {
+		TPolicyImpl tPolicy = new TPolicyImpl();
+		return tPolicy;
 	}
 
 	/**

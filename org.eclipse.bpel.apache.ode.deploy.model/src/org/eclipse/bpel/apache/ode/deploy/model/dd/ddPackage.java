@@ -748,22 +748,22 @@ public interface ddPackage extends EPackage {
 	int TACTIVITY_MAPPING__ACTIVITY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Policy</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TACTIVITY_MAPPING__POLICY = 1;
-
-	/**
 	 * The feature id for the '<em><b>Datasource</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TACTIVITY_MAPPING__DATASOURCE = 2;
+	int TACTIVITY_MAPPING__DATASOURCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TACTIVITY_MAPPING__POLICY = 2;
 
 	/**
 	 * The number of structural features of the '<em>TActivity Mapping</em>' class.
@@ -775,6 +775,43 @@ public interface ddPackage extends EPackage {
 	int TACTIVITY_MAPPING_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTPolicy()
+	 * @generated
+	 */
+	int TPOLICY = 15;
+
+	/**
+	 * The feature id for the '<em><b>Policy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPOLICY__POLICY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Local Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPOLICY__LOCAL_PATH = 1;
+
+	/**
+	 * The number of structural features of the '<em>TPolicy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPOLICY_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -782,7 +819,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateType()
 	 * @generated
 	 */
-	int GENERATE_TYPE = 15;
+	int GENERATE_TYPE = 16;
 
 	/**
 	 * The meta object id for the '<em>Generate Type Object</em>' data type.
@@ -792,7 +829,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateTypeObject()
 	 * @generated
 	 */
-	int GENERATE_TYPE_OBJECT = 16;
+	int GENERATE_TYPE_OBJECT = 17;
 
 
 	/**
@@ -1419,15 +1456,47 @@ public interface ddPackage extends EPackage {
 	EReference getTActivityMapping_Activity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Policy</em>'.
+	 * @return the meta object for the containment reference '<em>Policy</em>'.
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy()
 	 * @see #getTActivityMapping()
 	 * @generated
 	 */
-	EAttribute getTActivityMapping_Policy();
+	EReference getTActivityMapping_Policy();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy <em>TPolicy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TPolicy</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy
+	 * @generated
+	 */
+	EClass getTPolicy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getPolicy <em>Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Policy</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getPolicy()
+	 * @see #getTPolicy()
+	 * @generated
+	 */
+	EAttribute getTPolicy_Policy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getLocalPath <em>Local Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Local Path</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy#getLocalPath()
+	 * @see #getTPolicy()
+	 * @generated
+	 */
+	EAttribute getTPolicy_LocalPath();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDatasource <em>Datasource</em>}'.
@@ -1979,12 +2048,38 @@ public interface ddPackage extends EPackage {
 		EReference TACTIVITY_MAPPING__ACTIVITY = eINSTANCE.getTActivityMapping_Activity();
 
 		/**
+		 * The meta object literal for the '<em><b>Policy</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TACTIVITY_MAPPING__POLICY = eINSTANCE.getTActivityMapping_Policy();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTPolicy()
+		 * @generated
+		 */
+		EClass TPOLICY = eINSTANCE.getTPolicy();
+
+		/**
 		 * The meta object literal for the '<em><b>Policy</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TACTIVITY_MAPPING__POLICY = eINSTANCE.getTActivityMapping_Policy();
+		EAttribute TPOLICY__POLICY = eINSTANCE.getTPolicy_Policy();
+
+		/**
+		 * The meta object literal for the '<em><b>Local Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TPOLICY__LOCAL_PATH = eINSTANCE.getTPolicy_LocalPath();
 
 		/**
 		 * The meta object literal for the '<em><b>Datasource</b></em>' containment reference feature.

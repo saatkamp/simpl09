@@ -12,6 +12,7 @@
  */
 package org.eclipse.bpel.apache.ode.deploy.model.dd;
 
+import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,8 +26,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDatasource <em>Datasource</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,12 +45,12 @@ public interface TActivityMapping extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Activity</em>' containment reference.
-	 * @see #setActivity(ExtensionActivity)
+	 * @see #setActivity(Activity)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Activity()
 	 * @model containment="true"
 	 * @generated
 	 */
-	ExtensionActivity getActivity();
+	Activity getActivity();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}' containment reference.
@@ -59,33 +60,33 @@ public interface TActivityMapping extends EObject {
 	 * @see #getActivity()
 	 * @generated
 	 */
-	void setActivity(ExtensionActivity value);
+	void setActivity(Activity value);
 
 	/**
-	 * Returns the value of the '<em><b>Policy</b></em>' attribute.
+	 * Returns the value of the '<em><b>Policy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Policy</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Policy</em>' attribute.
-	 * @see #setPolicy(String)
+	 * @return the value of the '<em>Policy</em>' containment reference.
+	 * @see #setPolicy(TPolicy)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Policy()
-	 * @model required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getPolicy();
+	TPolicy getPolicy();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Policy</em>' attribute.
+	 * @param value the new value of the '<em>Policy</em>' containment reference.
 	 * @see #getPolicy()
 	 * @generated
 	 */
-	void setPolicy(String value);
+	void setPolicy(TPolicy value);
 
 	/**
 	 * Returns the value of the '<em><b>Datasource</b></em>' containment reference.

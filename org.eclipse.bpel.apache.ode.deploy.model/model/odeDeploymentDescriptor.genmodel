@@ -85,8 +85,12 @@
     </genClasses>
     <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TActivityMapping">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TActivityMapping/activity"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TActivityMapping/policy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TActivityMapping/datasource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TActivityMapping/policy"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TPolicy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TPolicy/policy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TPolicy/localPath"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

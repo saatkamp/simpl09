@@ -14,8 +14,10 @@ package org.eclipse.bpel.apache.ode.deploy.model.dd.impl;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 
+import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -35,8 +37,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getDatasource <em>Datasource</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getPolicy <em>Policy</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,27 +53,7 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * @generated
 	 * @ordered
 	 */
-	protected ExtensionActivity activity;
-
-	/**
-	 * The default value of the '{@link #getPolicy() <em>Policy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPolicy()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String POLICY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPolicy() <em>Policy</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPolicy()
-	 * @generated
-	 * @ordered
-	 */
-	protected String policy = POLICY_EDEFAULT;
+	protected Activity activity;
 
 	/**
 	 * The cached value of the '{@link #getDatasource() <em>Datasource</em>}' containment reference.
@@ -82,6 +64,16 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * @ordered
 	 */
 	protected TDatasource datasource;
+
+	/**
+	 * The cached value of the '{@link #getPolicy() <em>Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPolicy()
+	 * @generated
+	 * @ordered
+	 */
+	protected TPolicy policy;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,7 +99,7 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExtensionActivity getActivity() {
+	public Activity getActivity() {
 		return activity;
 	}
 
@@ -116,8 +108,8 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActivity(ExtensionActivity newActivity, NotificationChain msgs) {
-		ExtensionActivity oldActivity = activity;
+	public NotificationChain basicSetActivity(Activity newActivity, NotificationChain msgs) {
+		Activity oldActivity = activity;
 		activity = newActivity;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__ACTIVITY, oldActivity, newActivity);
@@ -131,7 +123,7 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setActivity(ExtensionActivity newActivity) {
+	public void setActivity(Activity newActivity) {
 		if (newActivity != activity) {
 			NotificationChain msgs = null;
 			if (activity != null)
@@ -150,7 +142,7 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPolicy() {
+	public TPolicy getPolicy() {
 		return policy;
 	}
 
@@ -159,11 +151,33 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPolicy(String newPolicy) {
-		String oldPolicy = policy;
+	public NotificationChain basicSetPolicy(TPolicy newPolicy, NotificationChain msgs) {
+		TPolicy oldPolicy = policy;
 		policy = newPolicy;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__POLICY, oldPolicy, policy));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__POLICY, oldPolicy, newPolicy);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPolicy(TPolicy newPolicy) {
+		if (newPolicy != policy) {
+			NotificationChain msgs = null;
+			if (policy != null)
+				msgs = ((InternalEObject)policy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ddPackage.TACTIVITY_MAPPING__POLICY, null, msgs);
+			if (newPolicy != null)
+				msgs = ((InternalEObject)newPolicy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ddPackage.TACTIVITY_MAPPING__POLICY, null, msgs);
+			msgs = basicSetPolicy(newPolicy, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__POLICY, newPolicy, newPolicy));
 	}
 
 	/**
@@ -221,6 +235,8 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 				return basicSetActivity(null, msgs);
 			case ddPackage.TACTIVITY_MAPPING__DATASOURCE:
 				return basicSetDatasource(null, msgs);
+			case ddPackage.TACTIVITY_MAPPING__POLICY:
+				return basicSetPolicy(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -235,10 +251,10 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		switch (featureID) {
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
 				return getActivity();
-			case ddPackage.TACTIVITY_MAPPING__POLICY:
-				return getPolicy();
 			case ddPackage.TACTIVITY_MAPPING__DATASOURCE:
 				return getDatasource();
+			case ddPackage.TACTIVITY_MAPPING__POLICY:
+				return getPolicy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -252,13 +268,13 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
-				setActivity((ExtensionActivity)newValue);
-				return;
-			case ddPackage.TACTIVITY_MAPPING__POLICY:
-				setPolicy((String)newValue);
+				setActivity((Activity)newValue);
 				return;
 			case ddPackage.TACTIVITY_MAPPING__DATASOURCE:
 				setDatasource((TDatasource)newValue);
+				return;
+			case ddPackage.TACTIVITY_MAPPING__POLICY:
+				setPolicy((TPolicy)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -273,13 +289,13 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
-				setActivity((ExtensionActivity)null);
-				return;
-			case ddPackage.TACTIVITY_MAPPING__POLICY:
-				setPolicy(POLICY_EDEFAULT);
+				setActivity((Activity)null);
 				return;
 			case ddPackage.TACTIVITY_MAPPING__DATASOURCE:
 				setDatasource((TDatasource)null);
+				return;
+			case ddPackage.TACTIVITY_MAPPING__POLICY:
+				setPolicy((TPolicy)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -295,28 +311,12 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		switch (featureID) {
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
 				return activity != null;
-			case ddPackage.TACTIVITY_MAPPING__POLICY:
-				return POLICY_EDEFAULT == null ? policy != null : !POLICY_EDEFAULT.equals(policy);
 			case ddPackage.TACTIVITY_MAPPING__DATASOURCE:
 				return datasource != null;
+			case ddPackage.TACTIVITY_MAPPING__POLICY:
+				return policy != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (policy: ");
-		result.append(policy);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TActivityMappingImpl

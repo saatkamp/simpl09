@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.simpl.rrs.model.rrs.EPR;
 import org.eclipse.simpl.rrs.model.rrs.util.RRSResourceFactoryImpl;
@@ -56,6 +58,7 @@ public class ModelProvider {
 				+ ref.getReferenceParameters().getReferenceName() + ".xml");
 		Resource resource = new RRSResourceFactoryImpl()
 				.createResource(fileURI);
+		
 		resource.getContents().add(ref);
 		Map<String, String> save_options = new HashMap<String, String>();
 		save_options.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
@@ -103,9 +106,10 @@ public class ModelProvider {
 		try {
 			resource.load(Collections.EMPTY_MAP);
 
-			if (!resource.getContents().isEmpty()) {
-				EPR root = (EPR) resource.getContents().get(0);
-				reference = root;
+			EList<EObject> contents = resource.getContents();
+			if (!contents.isEmpty() && contents.get(0) instanceof EPR) {
+				reference = (EPR) contents.get(0);
+
 			}
 		} catch (IOException exception) {
 			exception.printStackTrace();
