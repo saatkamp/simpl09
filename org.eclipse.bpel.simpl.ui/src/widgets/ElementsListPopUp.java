@@ -14,7 +14,9 @@ package widgets;
 
 import java.util.ArrayList;
 
-import org.eclipse.bpel.model.Exit;
+import org.eclipse.simpl.communication.SIMPLCommunication;
+import org.eclipse.simpl.communication.SIMPLCore;
+import org.eclipse.simpl.communication.client.ConnectionException_Exception;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -27,8 +29,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.SIMPLCore;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -211,7 +211,7 @@ public class ElementsListPopUp{
 	 * Load values from db.
 	 */
 	public void loadValuesFromDB(){
-		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+		
 		
 		arrayOfElements.add("aaaaa");
 		arrayOfElements.add("abbb");
@@ -231,8 +231,21 @@ public class ElementsListPopUp{
 	/**
  * for adding the tables names from the DB.
  */
-	public void loadTablesFromDB() {
-		// TODO Auto-generated method stub
+	public void loadTablesFromDB(String dsAddress,String dsType,String dsSubtype) {
+		
+		
+		SIMPLCore simplCore=SIMPLCommunication.getConnection();
+		try {
+			simplCore.getMetaData(dsAddress, dsType, dsSubtype);
+			//TODO: es muss noch der SDO objekt von der simplCore geholt werden .
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		ArrayList<String> tablesInDB=new ArrayList<String>();
+		
+		
 		arrayOfElements.add("aaaaa");
 		arrayOfElements.add("abbb");
 		arrayOfElements.add("bbbba");
@@ -257,6 +270,14 @@ public class ElementsListPopUp{
 		arrayOfElements.add("BPEL_Variable6");
 		arrayOfElements.add("BPEL_Variable7");
 		arrayOfElements.add("BPEL_Variable8");
+		
+	}
+	
+	public ArrayList<String> parseXMLElements(){
+		
+		
+		
+		return arrayOfElements;
 		
 	}
 	

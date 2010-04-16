@@ -227,8 +227,27 @@ public class CreateEditor extends AStatementEditor {
 			columsListCompo.setEnabled(false);
 		}
 		
+		Label tableName1 =new Label(tableNameComposite, SWT.NONE);
+		tableName1.setText("Name:");
+		Label tableName4 =new Label(tableNameComposite, SWT.NONE);
+		tableName4.setText("NON/PRIMARY KEY");
+		Label tableName2 =new Label(tableNameComposite, SWT.NONE);
+		tableName2.setText("Type:");
+		Label tableName3 =new Label(tableNameComposite, SWT.NONE);
+		tableName3.setText("NOT/NULL:");
+		
+		Label tableName5 =new Label(tableNameComposite, SWT.NONE);
+		tableName5.setText("");
+		
 		
 		Label labelColumnName,labelColumnType;
+		
+		//Text textColumnName;
+		textColumnName=new Text(columnCompo, SWT.BORDER);
+		
+		final Combo comboPrimaryKey=new Combo(columnCompo, SWT.NONE);
+		comboPrimaryKey.add("PRIMARY_KEY");
+		comboPrimaryKey.add("NON PRIMARY_KEY");
 		
 		final Combo comboColumnType=new Combo(columnCompo, SWT.NONE);
 		comboColumnType.add("INT");
@@ -242,13 +261,10 @@ public class CreateEditor extends AStatementEditor {
 		comboColumnNULL.add("NULL");
 		comboColumnNULL.add("NOT NULL");
 		
-		final Combo comboPrimaryKey=new Combo(columnCompo, SWT.NONE);
-		comboPrimaryKey.add("PRIMARY_KEY");
-		comboPrimaryKey.add("NON PRIMARY_KEY");
 		
 		
-		//Text textColumnName;
-		textColumnName=new Text(columnCompo, SWT.BORDER);
+		
+		
 
 		
 		final Button addColumn =new Button(columnCompo, SWT.NONE);
