@@ -60,7 +60,6 @@ public class RRSFactoryImpl extends EFactoryImpl implements RRSFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case RRSPackage.DOCUMENT_ROOT: return createDocumentRoot();
 			case RRSPackage.EPR: return createEPR();
 			case RRSPackage.REFERENCE_PARAMETERS: return createReferenceParameters();
 			case RRSPackage.REFERENCE_PROPERTIES: return createReferenceProperties();
@@ -68,16 +67,6 @@ public class RRSFactoryImpl extends EFactoryImpl implements RRSFactory {
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DocumentRoot createDocumentRoot() {
-		DocumentRootImpl documentRoot = new DocumentRootImpl();
-		return documentRoot;
 	}
 
 	/**

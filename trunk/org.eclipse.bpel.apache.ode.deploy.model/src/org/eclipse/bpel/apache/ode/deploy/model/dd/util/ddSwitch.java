@@ -184,6 +184,12 @@ public class ddSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ddPackage.TPOLICY: {
+				TPolicy tPolicy = (TPolicy)theEObject;
+				T result = caseTPolicy(tPolicy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -410,6 +416,21 @@ public class ddSwitch<T> {
 	 * @generated
 	 */
 	public T caseTActivityMapping(TActivityMapping object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TPolicy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TPolicy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTPolicy(TPolicy object) {
 		return null;
 	}
 

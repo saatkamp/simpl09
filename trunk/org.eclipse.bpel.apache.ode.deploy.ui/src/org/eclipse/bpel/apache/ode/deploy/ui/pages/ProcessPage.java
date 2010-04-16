@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
@@ -35,7 +36,9 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 import org.eclipse.bpel.apache.ode.deploy.ui.Activator;
 import org.eclipse.bpel.apache.ode.deploy.ui.editors.ODEDeployMultiPageEditor;
 import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.AddDataSourceDialog;
+import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.AddMappingDialog;
 import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.EditDataSourceDialog;
+import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.EditMappingDialog;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
 import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.PartnerLinks;
@@ -121,7 +124,7 @@ import org.eclipse.wst.wsdl.Service;
  * @author Tammo van Lessen (IAAS)
  * 
  * @author Michael Hahn (SIMPL) Integration of new deployment settings for SIMPL
- *         (auditing, datasources).
+ *         (auditing, datasources, activity-datasource-policy mapping).
  */
 public class ProcessPage extends FormPage implements IResourceChangeListener {
 	public static final int PARTNER_LINK_COLUMN = 0;
@@ -323,6 +326,13 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 
 		createDataSourceSection(form.getBody(), processType, managedForm,
 				"Data source specification", dataSourceDescription);
+		
+		String activityMappingDescription = "The table contains mappings between SIMPL" +
+				" DataManagement Activities and Policies to support late binding or to" +
+				" map the activities with the above specified data sources.";
+
+		createActivityMappingSection(form.getBody(), processType, managedForm,
+			"Activity-Data source mapping", activityMappingDescription);
 
 		form.reflow(true);
 	}
@@ -723,7 +733,8 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			table.getColumn(i).pack();
 		}
 	}
-
+	
+	
 	private void createDataSourceSection(Composite fClient,
 			ProcessType current, final IManagedForm managedForm, String title,
 			String description) {
@@ -773,9 +784,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		viewer.setContentProvider(new DataSourceContentProvider());
 		viewer.setLabelProvider(new DataSourceLabelProvider());
 
-		// TODO: Es müssen noch irgendwie die Datasources aus der XML-Datei in
-		// die
-		// datasources-Liste kommen
 		viewer.setInput(processType.getDatasources());
 
 		Composite buttonComp = toolkit.createComposite(client, SWT.WRAP);
@@ -878,6 +886,169 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 								processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
 								datasource);
 						domain.getCommandStack().execute(removeDataSourceCommand);
+					}
+					
+					viewer.refresh();
+				}
+			}
+		});
+	}
+	
+	
+	private void createActivityMappingSection(Composite fClient,
+			ProcessType current, final IManagedForm managedForm, String title,
+			String description) {
+		// Save the current ProcessType object in a final copy to
+		// work with it in the inner classes (SelectionListener)
+		final ProcessType pt = current;
+		
+		// Set column names
+		String[] columnNames = new String[] { "Activity", "Data Source", "Policy (local path)"};
+		int[] bounds = { 150, 175, 175};
+
+		Section section = toolkit.createSection(fClient, Section.TWISTIE
+				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
+		section.setText(title);
+		section.setDescription(description);
+		section.marginHeight = 5;
+
+		Composite client = toolkit.createComposite(section, SWT.WRAP);
+		GridLayout layout = new GridLayout();
+		layout.marginWidth = 2;
+		layout.marginHeight = 2;
+		client.setLayout(layout);
+		final Table table = toolkit.createTable(client, SWT.SINGLE | SWT.BORDER
+				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION
+				| SWT.HIDE_SELECTION);
+
+		GridData gd = new GridData(GridData.FILL_BOTH);
+		table.setLayoutData(gd);
+		toolkit.paintBordersFor(client);
+
+		section.setClient(client);
+		final SectionPart spart = new SectionPart(section);
+		managedForm.addPart(spart);
+
+		final TableViewer viewer = new TableViewer(table);
+
+		for (int i = 0; i < columnNames.length; i++) {
+			final TableViewerColumn viewerColumn = new TableViewerColumn(
+					viewer, SWT.NONE);
+			final TableColumn column = viewerColumn.getColumn();
+
+			column.setText(columnNames[i]);
+			column.setWidth(bounds[i]);
+			column.setResizable(true);
+			column.setMoveable(true);
+		}
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+
+		viewer.setContentProvider(new MappingContentProvider());
+		viewer.setLabelProvider(new MappingLabelProvider());
+
+		viewer.setInput(processType.getActivityMappings());
+
+		Composite buttonComp = toolkit.createComposite(client, SWT.WRAP);
+		GridLayout bLayout = new GridLayout();
+		layout.marginWidth = 2;
+		layout.marginHeight = 2;
+		layout.numColumns = 3;
+		buttonComp.setLayout(bLayout);
+
+		final Button btnNew = toolkit.createButton(buttonComp, "New", SWT.PUSH);
+		btnNew.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				AddMappingDialog dialog = new AddMappingDialog(Display
+						.getDefault().getActiveShell(), pt);
+				dialog.open();
+				if (dialog.getMapping() != null) {
+					Command addMappingCommand = AddCommand.create(domain,
+							processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
+							dialog.getMapping());
+					domain.getCommandStack().execute(addMappingCommand);
+					
+					// Updating the display in the view
+					viewer.refresh();
+				}
+			}
+		});
+		final Button btnEdit = toolkit.createButton(buttonComp, "Edit",
+				SWT.PUSH);
+		btnEdit.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				ISelection selection = viewer.getSelection();
+				if (selection != null
+						&& selection instanceof IStructuredSelection) {
+					IStructuredSelection sel = (IStructuredSelection) selection;
+
+					if (sel.size() == 1) {
+						TActivityMapping mapping = (TActivityMapping) sel
+								.getFirstElement();
+
+						Command removeMappingCommand = RemoveCommand.create(domain,
+								processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
+								mapping);
+						domain.getCommandStack().execute(removeMappingCommand);
+
+						EditMappingDialog dialog = new EditMappingDialog(
+								Display.getDefault().getActiveShell(),
+								pt, mapping);
+						dialog.open();
+
+						Command addMappingCommand = AddCommand.create(domain,
+								processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
+								dialog.getMapping());
+						domain.getCommandStack().execute(addMappingCommand);
+					}
+					// Updating the display in the view
+					viewer.refresh();
+				}
+			}
+		});
+		final Button btnDelete = toolkit.createButton(buttonComp, "Remove",
+				SWT.PUSH);
+		btnDelete.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				ISelection selection = viewer.getSelection();
+				if (selection != null
+						&& selection instanceof IStructuredSelection) {
+					IStructuredSelection sel = (IStructuredSelection) selection;
+					for (Iterator<TActivityMapping> iterator = sel.iterator(); iterator
+							.hasNext();) {
+						TActivityMapping mapping = iterator.next();
+
+						Command removeMappingCommand = RemoveCommand.create(domain,
+								processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
+								mapping);
+						domain.getCommandStack().execute(removeMappingCommand);
 					}
 					
 					viewer.refresh();

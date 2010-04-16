@@ -166,6 +166,15 @@ public interface ddFactory extends EFactory {
 	TActivityMapping createTActivityMapping();
 
 	/**
+	 * Returns a new object of class '<em>TPolicy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TPolicy</em>'.
+	 * @generated
+	 */
+	TPolicy createTPolicy();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

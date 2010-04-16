@@ -60,61 +60,6 @@ public interface RRSPackage extends EPackage {
 	RRSPackage eINSTANCE = org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl <em>Document Root</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl
-	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getDocumentRoot()
-	 * @generated
-	 */
-	int DOCUMENT_ROOT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT_ROOT__MIXED = 0;
-
-	/**
-	 * The feature id for the '<em><b>XMLNS Prefix Map</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT_ROOT__XMLNS_PREFIX_MAP = 1;
-
-	/**
-	 * The feature id for the '<em><b>XSI Schema Location</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = 2;
-
-	/**
-	 * The feature id for the '<em><b>Epr</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT_ROOT__EPR = 3;
-
-	/**
-	 * The number of structural features of the '<em>Document Root</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCUMENT_ROOT_FEATURE_COUNT = 4;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.EPRImpl <em>EPR</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -122,7 +67,7 @@ public interface RRSPackage extends EPackage {
 	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getEPR()
 	 * @generated
 	 */
-	int EPR = 1;
+	int EPR = 0;
 
 	/**
 	 * The feature id for the '<em><b>Address</b></em>' attribute.
@@ -195,7 +140,7 @@ public interface RRSPackage extends EPackage {
 	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getReferenceParameters()
 	 * @generated
 	 */
-	int REFERENCE_PARAMETERS = 2;
+	int REFERENCE_PARAMETERS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
@@ -232,7 +177,7 @@ public interface RRSPackage extends EPackage {
 	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getReferenceProperties()
 	 * @generated
 	 */
-	int REFERENCE_PROPERTIES = 3;
+	int REFERENCE_PROPERTIES = 2;
 
 	/**
 	 * The feature id for the '<em><b>Resolution System</b></em>' attribute.
@@ -260,7 +205,7 @@ public interface RRSPackage extends EPackage {
 	 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getServiceName()
 	 * @generated
 	 */
-	int SERVICE_NAME = 4;
+	int SERVICE_NAME = 3;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -289,60 +234,6 @@ public interface RRSPackage extends EPackage {
 	 */
 	int SERVICE_NAME_FEATURE_COUNT = 2;
 
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot <em>Document Root</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Document Root</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot
-	 * @generated
-	 */
-	EClass getDocumentRoot();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getMixed <em>Mixed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getMixed()
-	 * @see #getDocumentRoot()
-	 * @generated
-	 */
-	EAttribute getDocumentRoot_Mixed();
-
-	/**
-	 * Returns the meta object for the map '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>XMLNS Prefix Map</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXMLNSPrefixMap()
-	 * @see #getDocumentRoot()
-	 * @generated
-	 */
-	EReference getDocumentRoot_XMLNSPrefixMap();
-
-	/**
-	 * Returns the meta object for the map '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>XSI Schema Location</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getXSISchemaLocation()
-	 * @see #getDocumentRoot()
-	 * @generated
-	 */
-	EReference getDocumentRoot_XSISchemaLocation();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr <em>Epr</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Epr</em>'.
-	 * @see org.eclipse.simpl.rrs.model.rrs.DocumentRoot#getEpr()
-	 * @see #getDocumentRoot()
-	 * @generated
-	 */
-	EAttribute getDocumentRoot_Epr();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.simpl.rrs.model.rrs.EPR <em>EPR</em>}'.
@@ -527,48 +418,6 @@ public interface RRSPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
-		/**
-		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl <em>Document Root</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.DocumentRootImpl
-		 * @see org.eclipse.simpl.rrs.model.rrs.impl.RRSPackageImpl#getDocumentRoot()
-		 * @generated
-		 */
-		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
-
-		/**
-		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
-
-		/**
-		 * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
-
-		/**
-		 * The meta object literal for the '<em><b>XSI Schema Location</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
-
-		/**
-		 * The meta object literal for the '<em><b>Epr</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCUMENT_ROOT__EPR = eINSTANCE.getDocumentRoot_Epr();
-
 		/**
 		 * The meta object literal for the '{@link org.eclipse.simpl.rrs.model.rrs.impl.EPRImpl <em>EPR</em>}' class.
 		 * <!-- begin-user-doc -->
