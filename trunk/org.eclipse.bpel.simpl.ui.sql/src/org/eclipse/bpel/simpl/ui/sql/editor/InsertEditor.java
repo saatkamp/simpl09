@@ -1101,8 +1101,8 @@ public class InsertEditor extends AStatementEditor {
 		
 		
 		Label helpSympol=new Label(buttonsCompo, SWT.NONE);
-		helpSympol.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/")));
-
+		helpSympol.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/helpSymbole.png")));
+		helpSympol.setToolTipText("The orange marks for showing you\r in wich order the Keywords \r can be used");
 		//** creating the Tab Panel +++++++++++++++++
 		/**
 		   * Creates the contents
