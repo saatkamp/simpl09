@@ -58,6 +58,6 @@ Tomcat Server neustarten falls ein bestehender Webservice aktualisiert wurde. Ne
 http://localhost:8080/axis2/services/listServices
 
 === Webservice Client erzeugen ===
-_!TestService.wsdl_ auswählen -> External Tools -> _wsimport_ 
+Projekt auswählen -> External Tools -> _wsimport_ 
 -> Projekt aktualisieren (F5)
--> Der Client befindet sich in der localhost/_8080/TestService_Service.java
+-> Der Client befindet sich im Paket PACKAGE_NAME, der als Argument angegeben wurde (siehe [http://code.google.com/p/simpl09/wiki/Entwicklungsumgebung Entwicklungsumgebung]).
