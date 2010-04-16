@@ -99,7 +99,7 @@ Arguments: -cp "${project_loc}\bin" ${java_type_name} -wsdl -servicename {http:/
 Name: wsimport
 Location: C:\Programme\Java\jdk1.6.0_15\bin\wsimport.exe
 Working Directory: ${project_loc}
-Arguments: -keep ${selected_resource_loc}
+Arguments: -keep -s ${project_loc}\src -d ${project_loc}\bin -p [PACKAGE NAME] -B-XautoNameResolution [URL TO WSDL]
 }}}
 
 ==== Apache Tuscany ====
