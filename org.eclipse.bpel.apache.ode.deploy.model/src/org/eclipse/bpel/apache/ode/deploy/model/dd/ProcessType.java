@@ -459,6 +459,7 @@ public interface ProcessType extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Auditing Active</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Auditing Active</em>' attribute isn't clear,
@@ -470,7 +471,7 @@ public interface ProcessType extends EObject {
 	 * @see #unsetAuditingActive()
 	 * @see #setAuditingActive(boolean)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_AuditingActive()
-	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        extendedMetaData="kind='element' name='auditing' namespace='##targetNamespace'"
 	 * @generated
 	 */

@@ -25,9 +25,9 @@ public class MappingLabelProvider extends LabelProvider implements
 		
 		switch (columnIndex) {
 		case 0:
-			return mapping.getActivity().getName();
+			return mapping.getActivity();
 		case 1:
-			return mapping.getDatasource().getDataSourceName();
+			return mapping.getDataSourceName();
 		case 2:
 			return mapping.getPolicy().getLocalPath();
 		default:

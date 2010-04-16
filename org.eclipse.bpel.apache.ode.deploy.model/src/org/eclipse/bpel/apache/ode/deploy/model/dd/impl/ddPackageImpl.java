@@ -760,8 +760,17 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTActivityMapping_Activity() {
-		return (EReference)tActivityMappingEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTActivityMapping_Activity() {
+		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTActivityMapping_DataSourceName() {
+		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -787,7 +796,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTPolicy_Policy() {
+	public EAttribute getTPolicy_PolicyData() {
 		return (EAttribute)tPolicyEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -798,15 +807,6 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 */
 	public EAttribute getTPolicy_LocalPath() {
 		return (EAttribute)tPolicyEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTActivityMapping_Datasource() {
-		return (EReference)tActivityMappingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -926,12 +926,12 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tDatasourceEClass, TDATASOURCE__USER_NAME);
 
 		tActivityMappingEClass = createEClass(TACTIVITY_MAPPING);
-		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
-		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__DATASOURCE);
+		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
+		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__DATA_SOURCE_NAME);
 		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__POLICY);
 
 		tPolicyEClass = createEClass(TPOLICY);
-		createEAttribute(tPolicyEClass, TPOLICY__POLICY);
+		createEAttribute(tPolicyEClass, TPOLICY__POLICY_DATA);
 		createEAttribute(tPolicyEClass, TPOLICY__LOCAL_PATH);
 
 		// Create enums
@@ -1003,7 +1003,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getProcessType_FileName(), theXMLTypePackage.getString(), "fileName", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessType_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Model(), theBPELPackage.getProcess(), null, "model", null, 0, 1, ProcessType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProcessType_AuditingActive(), theXMLTypePackage.getBoolean(), "auditingActive", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessType_AuditingActive(), theXMLTypePackage.getBoolean(), "auditingActive", "false", 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Datasources(), this.getTDatasource(), null, "datasources", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_ActivityMappings(), this.getTActivityMapping(), null, "activityMappings", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1048,12 +1048,12 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTDatasource_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tActivityMappingEClass, TActivityMapping.class, "TActivityMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTActivityMapping_Activity(), theBPELPackage.getActivity(), null, "activity", null, 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTActivityMapping_Datasource(), this.getTDatasource(), null, "datasource", null, 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTActivityMapping_Activity(), theXMLTypePackage.getString(), "activity", "", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTActivityMapping_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", "", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTActivityMapping_Policy(), this.getTPolicy(), null, "policy", null, 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tPolicyEClass, TPolicy.class, "TPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTPolicy_Policy(), ecorePackage.getEString(), "policy", null, 1, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTPolicy_PolicyData(), ecorePackage.getEString(), "policyData", null, 1, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTPolicy_LocalPath(), ecorePackage.getEString(), "localPath", null, 0, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
