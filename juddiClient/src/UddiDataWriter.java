@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.juddi.ClassUtil;
 import org.apache.juddi.v3.client.config.UDDIClientContainer;
+import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
+import org.apache.juddi.v3.client.transport.TransportException;
 import org.uddi.api_v3.AccessPoint;
 import org.uddi.api_v3.AuthToken;
 import org.uddi.api_v3.BindingTemplate;
@@ -30,20 +32,15 @@ public class UddiDataWriter implements IUddiConfig {
 	private AuthToken userAuthToken = null;
 
 	public UddiDataWriter() {
+
+		Transport transport = new JAXWSTransport("default");
+
 		try {
-			String clazz = UDDIClientContainer.getUDDIClerkManager(null)
-					.getClientConfig().getUDDINode("default")
-					.getProxyTransport();
-			Class<?> transportClass = ClassUtil.forName(clazz, Transport.class);
-			if (transportClass != null) {
-				Transport transport = (Transport) transportClass
-						.getConstructor(String.class).newInstance("default");
-
-				this.security = transport.getUDDISecurityService();
-				this.publish = transport.getUDDIPublishService();
-
-			}
-		} catch (Exception e) {
+			this.security = transport
+					.getUDDISecurityService("http://localhost:8080/juddiv3/services/security?wsdl");
+			this.publish = transport.getUDDIPublishService("http://localhost:8080/juddiv3/services/publish?wsdl");
+		} catch (TransportException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -64,22 +61,23 @@ public class UddiDataWriter implements IUddiConfig {
 
 	/**
 	 * Writes the Datasource to the jUDDI Registry
+	 * 
 	 * @param source
-	 * The UddiDataSource object
+	 *            The UddiDataSource object
 	 */
 	public void writeDatasource(UddiDataSource source) {
 		BusinessService service = new BusinessService();
-		
+
 		BindingTemplate template = new BindingTemplate();
-		
+
 		service.getDescription().addAll(source.getDescList());
-		
+
 		service.setServiceKey(source.getKey());
 		service.setBusinessKey(source.getBusinessKey());
 		Name name = new Name();
 		name.setValue(source.getName());
 		service.getName().add(name);
-		template.setBindingKey(source.getKey()+"_binding");
+		template.setBindingKey(source.getKey() + "_binding");
 		AccessPoint accessPoint = new AccessPoint();
 		accessPoint.setUseType(ACCESS_POINT_TYPE);
 		accessPoint.setValue(source.getAddress());
@@ -91,17 +89,17 @@ public class UddiDataWriter implements IUddiConfig {
 		bag.getKeyedReference().addAll(source.getReferenceList());
 
 		service.setCategoryBag(bag);
-		
+
 		BindingTemplates templates = new BindingTemplates();
-		
+
 		templates.getBindingTemplate().add(template);
-		
+
 		service.setBindingTemplates(templates);
-		
+
 		SaveService saveService = new SaveService();
-		
+
 		saveService.setAuthInfo(userAuthToken.getAuthInfo());
-		
+
 		saveService.getBusinessService().add(service);
 		try {
 			this.publish.saveService(saveService);
@@ -114,46 +112,47 @@ public class UddiDataWriter implements IUddiConfig {
 		}
 	}
 
-//	/**
-//	 * Writes the Business Service to the jUDDI Registry
-//	 * @param uddiService
-//	 * The UDDIService object
-//	 */
-//	public void writeService(UDDIService uddiService) {
-//		BusinessService service = new BusinessService();
-//
-//		service.getDescription().addAll(uddiService.getDescList());
-//		service.setServiceKey(uddiService.getKey());
-//		service.setBusinessKey(uddiService.getBusinessKey());
-//		service.getName().addAll(uddiService.getNameList());
-//
-//		// Nicht alle Services haben Attribute
-//		if (!uddiService.getReferenceList().isEmpty()) {
-//			CategoryBag bag = new CategoryBag();
-//			bag.getKeyedReference().addAll(uddiService.getReferenceList());
-//
-//			service.setCategoryBag(bag);
-//		}
-//
-//		SaveService saveService = new SaveService();
-//		saveService.getBusinessService().add(service);
-//		saveService.setAuthInfo(this.userAuthToken.getAuthInfo());
-//
-//		try {
-//			this.publish.saveService(saveService);
-//		} catch (DispositionReportFaultMessage e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+	// /**
+	// * Writes the Business Service to the jUDDI Registry
+	// * @param uddiService
+	// * The UDDIService object
+	// */
+	// public void writeService(UDDIService uddiService) {
+	// BusinessService service = new BusinessService();
+	//
+	// service.getDescription().addAll(uddiService.getDescList());
+	// service.setServiceKey(uddiService.getKey());
+	// service.setBusinessKey(uddiService.getBusinessKey());
+	// service.getName().addAll(uddiService.getNameList());
+	//
+	// // Nicht alle Services haben Attribute
+	// if (!uddiService.getReferenceList().isEmpty()) {
+	// CategoryBag bag = new CategoryBag();
+	// bag.getKeyedReference().addAll(uddiService.getReferenceList());
+	//
+	// service.setCategoryBag(bag);
+	// }
+	//
+	// SaveService saveService = new SaveService();
+	// saveService.getBusinessService().add(service);
+	// saveService.setAuthInfo(this.userAuthToken.getAuthInfo());
+	//
+	// try {
+	// this.publish.saveService(saveService);
+	// } catch (DispositionReportFaultMessage e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// } catch (RemoteException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
 
 	/**
 	 * Writes a Business to the jUDDI Registry
+	 * 
 	 * @param uddiBusiness
-	 * The UddiBusiness object
+	 *            The UddiBusiness object
 	 */
 	public void writeBusiness(UddiBusiness uddiBusiness) {
 		BusinessEntity business = new BusinessEntity();
