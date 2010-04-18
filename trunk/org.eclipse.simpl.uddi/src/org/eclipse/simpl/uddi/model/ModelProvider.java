@@ -11,21 +11,18 @@ import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 public class ModelProvider {
 	private static ModelProvider content;
 	private List<DataSource> datasources;
+	
+	private UddiDatasourceReader reader = null;
 
 	private ModelProvider() {
 		datasources = new ArrayList<DataSource>();
 		// Image here some uddi access to read the Datasources and to
 		// put them into the model
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
-		System.out.println("Test vor Reader");
 
-		UddiDatasourceReader reader = new UddiDatasourceReader();
-		
-		System.out.println("Test Nach REader");
+		reader = new UddiDatasourceReader();
 		
 		ArrayList<UddiDataSource> dsList = reader.getAllDarasources();
-		
-		System.out.println("TEST");
 		
 		for (UddiDataSource source: dsList) {
 			DataSource ds = factory.createDataSource();
