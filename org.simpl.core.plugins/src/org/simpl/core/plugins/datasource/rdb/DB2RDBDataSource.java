@@ -229,7 +229,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
    * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
    */
   @Override
-  public DataObject getMetaData(String dsAddress) throws ConnectionException {
+  public DataObject getMetaData(String dsAddress, String filter) throws ConnectionException {
     Connection conn = openConnection(dsAddress);
     DataObject metaDataObject = this.createMetaDataObject().getRootObject();
     DataObject schemaObject = null;
