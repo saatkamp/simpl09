@@ -28,5 +28,5 @@ public interface DataSourceService {
   public boolean writeBack(String dsAddress, DataObject data)
       throws ConnectionException;
 
-  public DataObject getMetaData(String dsAddress) throws ConnectionException;
+  public DataObject getMetaData(String dsAddress, String filter) throws ConnectionException;
 }

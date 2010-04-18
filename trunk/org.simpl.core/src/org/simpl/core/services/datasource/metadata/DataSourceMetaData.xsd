@@ -31,17 +31,47 @@
     <xsd:element name="database" type="tDatabaseMetaData"></xsd:element>
 
     <xsd:complexType name="tFilesystemMetaData">
-    	<xsd:sequence>
-            <xsd:element name="line" type="tLine"></xsd:element>
-        </xsd:sequence>
+    	<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+    		<xsd:element name="drive" type="tDrive"></xsd:element>
+
+    		<xsd:element name="folder" type="tFolder"></xsd:element>
+    		<xsd:element name="file" type="tFile"></xsd:element>
+    		<xsd:element name="command" type="tCommand"></xsd:element>
+    	</xsd:sequence>
     </xsd:complexType>
-    
-    <xsd:simpleType name="tLine">
-    	<xsd:restriction base="xsd:string"></xsd:restriction>
-    </xsd:simpleType>
+
 
     <xsd:element name="filesystem" type="tFilesystemMetaData"></xsd:element>
 
 
 
+
+    <xsd:complexType name="tCommand">
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="description" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="tDrive">
+
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="letter" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="totalSpace" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="freeSpace" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="useableSpace" type="xsd:float"></xsd:attribute>
+    	<xsd:attribute name="writable" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="readable" type="xsd:boolean"></xsd:attribute>
+    	<xsd:attribute name="executable" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="tType"></xsd:complexType>
+
+    <xsd:complexType name="tFolder">
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="tFile">
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
 </xsd:schema>
