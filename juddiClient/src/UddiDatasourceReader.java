@@ -1,10 +1,7 @@
-import java.awt.event.KeyListener;
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import org.apache.juddi.ClassUtil;
-import org.apache.juddi.v3.client.config.Property;
-import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
@@ -70,8 +67,6 @@ public class UddiDatasourceReader implements IUddiConfig {
 		ArrayList<UddiDataSource> datasources = new ArrayList<UddiDataSource>();
 
 		ArrayList<ServiceInfo> serviceLists = new ArrayList<ServiceInfo>();
-
-		GetServiceDetail getServiceDetail = new GetServiceDetail();
 
 		ArrayList<String> keyList = new ArrayList<String>();
 

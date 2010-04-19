@@ -1,6 +1,6 @@
+
 import java.util.ArrayList;
 
-import org.uddi.api_v3.BindingTemplate;
 import org.uddi.api_v3.Description;
 import org.uddi.api_v3.KeyedReference;
 import org.uddi.api_v3.Name;
