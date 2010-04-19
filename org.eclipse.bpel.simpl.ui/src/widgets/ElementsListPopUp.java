@@ -29,6 +29,10 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -40,11 +44,12 @@ public class ElementsListPopUp{
 	Text textToSearch;
 	
 	/** The list to search. */
-	List listToSearch;
+	List listToSearch,listColumns;
 	
 	/** The array of elements. */
 	ArrayList<String> arrayOfElements=new ArrayList<String>();
 	
+	ArrayList<Table> listOfTableObjekts;
 	/** The window is open. */
 	boolean windowIsOpen=false;
 	
@@ -142,13 +147,32 @@ public class ElementsListPopUp{
 		});	
 		
 		textToSearch.setLayoutData(gridData1);
+		
 		listToSearch = new List(theShell, SWT.BORDER);
+		//listToSearch.setItems((String[]) arrayOfElements.toArray());
 		listToSearch.setLayoutData(gridData);
 		listToSearch.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				statementText.append(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				loadColumsOfTable(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				
+			}
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				statementText.append(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				loadColumsOfTable(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+			}
+		});
+		
+		listColumns = new List(theShell, SWT.BORDER);
+		listColumns.setLayoutData(gridData);
+		listColumns.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
 				
 			}
 			
@@ -156,17 +180,34 @@ public class ElementsListPopUp{
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.append(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
 				
 			}
 		});
-		
 	}
 	
 //	private void setTextInStyleText(String string) {
 //		// TODO Auto-generated method stub
 //		
 //	}
+	
+	/**
+	 * add the colums of the spezified table in the colums-liste
+	 */
+	private void loadColumsOfTable(String searchedString) {
+		Table tmpTableObjekt=null;
+		listColumns.removeAll();
+		for(int i=0;i<listOfTableObjekts.size();i++){
+			
+			tmpTableObjekt=listOfTableObjekts.get(i);
+			if(tmpTableObjekt.getTableName().equals(searchedString)){
+				listColumns.setItems((String[]) tmpTableObjekt.getListOfColumnsNames().toArray());
+			}
+			//listColumns.add(tmpTableObjekt.);
+		}
+		
+	}
+	
 	
 	/**
 	 * search live for results in the list
@@ -233,14 +274,57 @@ public class ElementsListPopUp{
  */
 	public void loadTablesFromDB(String dsAddress,String dsType,String dsSubtype) {
 		
-		
+		listOfTableObjekts=new ArrayList<Table>();
+		Table tableObjekt = null;
+		//++++++++++++++++++++++++DSO Parsing++++++++++++++++++++++++
 		SIMPLCore simplCore=SIMPLCommunication.getConnection();
 		try {
 			simplCore.getMetaData(dsAddress, dsType, dsSubtype);
 			//TODO: es muss noch der SDO objekt von der simplCore geholt werden .
-		} catch (Exception e) {
-			e.printStackTrace();
+			Element rootElementOfDSO = null;//=DSO Element;
+			NodeList nl = rootElementOfDSO.getElementsByTagName("table");
+			if(nl != null && nl.getLength() > 0) {
+			for(int i = 0 ; i < nl.getLength();i++) {
+			
+				//get the child element
+				if(nl.item(i).getNodeName()=="table"){
+					
+					Element dsoXMLElement = (Element)nl.item(i);
+					if(dsoXMLElement.getTagName()=="table"){
+						
+						tableObjekt=new Table();
+						arrayOfElements.add(dsoXMLElement.getAttribute("name"));
+						//dsoXMLElement.getAttribute("value");
+						//dsoXMLElement.getAttribute("text");
+						
+						tableObjekt.setTableName(dsoXMLElement.getAttribute("name"));
+						if(dsoXMLElement.hasChildNodes()){
+							
+							NodeList columsNodesList=dsoXMLElement.getChildNodes();
+							
+							
+							ArrayList<String> listOfColumnsNames=new ArrayList<String>();
+							Element columXMLElement; // = (Element)nl.item(i);
+							for(int j = 0 ; j < columsNodesList.getLength();j++) {
+								//get the child element
+								if(columsNodesList.item(j).getNodeName()=="column"){
+									columXMLElement = (Element)columsNodesList.item(j);
+									listOfColumnsNames.add(columXMLElement.getAttribute("name"));
+								}
+							}
+							tableObjekt.setListOfColumnsNames(listOfColumnsNames);
+						//add it to list
+						}	
+					}
+				}
+			}
+			listOfTableObjekts.add(tableObjekt);
 		}
+	}
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+		//++++++++++++++++++++end of DSO Parsing+++++++++++++++++++++++++++
 		
 		
 		ArrayList<String> tablesInDB=new ArrayList<String>();

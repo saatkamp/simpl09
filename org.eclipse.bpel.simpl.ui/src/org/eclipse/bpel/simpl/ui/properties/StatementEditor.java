@@ -26,6 +26,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+import widgets.StatementEditDialog;
+
 public class StatementEditor {
 
 	private Shell sShell = null; // @jve:decl-index=0:visual-constraint="10,10"
@@ -35,6 +37,7 @@ public class StatementEditor {
 	private AStatementEditor compositeClass = null;
 	private DMActivityPropertySection parentClass = null;
 
+	private StatementEditDialog statementEditDialogObjekt=new StatementEditDialog();
 	/**
 	 * Instantiates a new statement editor.
 	 */
@@ -110,6 +113,7 @@ public class StatementEditor {
 		sShell = new Shell(Display.getDefault());
 		sShell.setText("Statement Editor");
 		sShell.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/database.png")));
+		
 		createComposite();
 		sShell.setLayout(gridLayout1);
 		sShell.setBounds(new Rectangle(200, 100, 700, 500));
@@ -129,6 +133,7 @@ public class StatementEditor {
 				if (compositeClass.getStatement() != null) {
 					parentClass.setStatement(compositeClass.getStatement());
 					parentClass.saveStatementToModel();
+					statementEditDialogObjekt.openWindow();
 				}
 				sShell.close();
 			}

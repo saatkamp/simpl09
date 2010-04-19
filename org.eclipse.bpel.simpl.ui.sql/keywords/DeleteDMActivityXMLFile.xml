@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
  <MainKeyWord value="DELETE" text="DELETE FROM">
- 	<KeyWord value="FROM" text="FROM ">
+ 	<KeyWord value="FROM" text="\n	FROM ">
  
  	</KeyWord>
- 	<KeyWord value="WHERE" text="WHERE ">
+ 	<KeyWord value="WHERE" text="\n	WHERE ">
  		
 
  	</KeyWord>

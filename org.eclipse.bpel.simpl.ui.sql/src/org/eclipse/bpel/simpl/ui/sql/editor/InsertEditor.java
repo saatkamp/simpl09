@@ -53,7 +53,19 @@ public class InsertEditor extends AStatementEditor {
 	String[] arrayOfParsedValues;
 	// Create the containing tab folder
    TabFolder tabFolder;
+   
+    //List of statement Changes
+    ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
+    
 	
+	public ArrayList<String> getListOfStatementTextChanges() {
+		return listOfStatementTextChanges;
+	}
+
+	public void addToListOfStatementTextChanges() {
+		listOfStatementTextChanges.add(statementText.getText());
+	}
+
 	/*
 	 * The XML file wich contais the statment KeyWords
 	 */
@@ -84,7 +96,11 @@ public class InsertEditor extends AStatementEditor {
 		gridData2.grabExcessHorizontalSpace = true;
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
-		
+		GridData gridData1_1 = new GridData();
+		gridData1_1.horizontalAlignment = GridData.END;
+		gridData1_1.grabExcessHorizontalSpace = true;
+		gridData1_1.grabExcessVerticalSpace = true;
+		gridData1_1.verticalAlignment = GridData.END;
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData1);
@@ -99,8 +115,41 @@ public class InsertEditor extends AStatementEditor {
 		
 		
 		comp.setLayoutData(gridData);
-		statementText=new LiveEditStyleText(comp);
+		 
+		Composite statementCompo=new Composite(comp, SWT.NONE);
+		//TODO: hier war der versuch einen Undo Button neben statementFeld ....
+		statementCompo.setLayout(new GridLayout());
+		statementCompo.setLayoutData(gridData2);
+		
+		statementText=new LiveEditStyleText(statementCompo);
+		statementText.setEditable(false);
+		
+		//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
+		Button undoButton=new Button(statementCompo, SWT.LEFT);
+		undoButton.setLayoutData(gridData1_1);
+		undoButton.setText("UNDO");
+		undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
+		undoButton.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if(listOfStatementTextChanges.size()>=2){
+					statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+					listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				if(listOfStatementTextChanges.size()>=2){
+					statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+					listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+				}
+			}
+		});
+		//+++++++++++++++++end undoButton+++++++++++++++++++++++++
+		
 		statementText.setLayoutData(gridData2);
+		statementText.setEditable(false);
 		statementText.addModifyListener(new ModifyListener(){
 
 			@Override
@@ -116,15 +165,21 @@ public class InsertEditor extends AStatementEditor {
 			if(statementText.getText().length()>8){
 				if(statementText.getText().equals("statement")){
 					statementText.setText("INSERT INTO ");
+					
 				}
 				//tableNameComposite.setEnabled(true);
 				//tablsList.setEnabled(true);
 				//valuesCompo.setEnabled(true);
 
 			}
-			else{statementText.setText("INSERT INTO ");}
+			else{statementText.setText("INSERT INTO ");
+				
+			}
+			addToListOfStatementTextChanges();
 		}
-		else {statementText.setText("INSERT INTO ");}
+		else {statementText.setText("INSERT INTO ");
+			
+		}
 		
 		createTabTable(parser.parseDocument());
 	}
@@ -201,10 +256,12 @@ public class InsertEditor extends AStatementEditor {
 					try {
 						if(textTableName.getText().length()>0){
 							statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
+							addToListOfStatementTextChanges();
 							//columnCompo.setEnabled(true);
 							//buttonsCompo.setEnabled(true);
 							//columsListCompo.setEnabled(true);
 						}
+					
 					} catch (Exception e1) {
 						System.out.print("ERROR: "+e1.getMessage());
 					}
@@ -216,7 +273,7 @@ public class InsertEditor extends AStatementEditor {
 					
 					if(textTableName.getText().length()>0){
 						statementText.setText(statementText.getText()+"	"+textTableName.getText()+"\r	VALUES ");
-						//columnCompo.setEnabled(true);
+						addToListOfStatementTextChanges();
 						//buttonsCompo.setEnabled(true);
 						//columsListCompo.setEnabled(true);
 					}
@@ -382,24 +439,27 @@ public class InsertEditor extends AStatementEditor {
 					
 					statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
 					statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
+					addToListOfStatementTextChanges();
 					for(int i=1;i<columnList.getSelectionIndices().length;i++){
 						//if(columnList.isSelected(i)){
 							statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
+							addToListOfStatementTextChanges();
 						//}
 					}
 					statementText.setText(statementText.getText()+")\r");
-	
+					addToListOfStatementTextChanges();
 					
 					if(valuesList.getItems().length>0) 	tmpString=" ,";
 					else tmpString=" ";
 					statementText.setText(statementText.getText()+"	VALUES (");
 					statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
+					addToListOfStatementTextChanges();
 					for(int i=1;i<valuesList.getItems().length;i++){
 						statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
 				
 					}
 					statementText.setText(statementText.getText()+")\r");
-	
+					addToListOfStatementTextChanges();
 				}
 				
 				@Override
@@ -409,17 +469,21 @@ public class InsertEditor extends AStatementEditor {
 					else tmpString=" ";
 					statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
 					statementText.setText(statementText.getText()+" "+columnList.getItems()[columnList.getSelectionIndices()[0]]);
+					addToListOfStatementTextChanges();
 					for(int i=1;i<columnList.getSelectionIndices().length;i++){
 						//if(columnList.isSelected(i)){
 							statementText.setText(statementText.getText()+tmpString+columnList.getItems()[columnList.getSelectionIndices()[i]]);
 						//}
 					}
 					statementText.setText(statementText.getText()+")\r");
-	
+					addToListOfStatementTextChanges();
+					
 					if(valuesList.getItems().length>0) 	tmpString=" ,";
 					else tmpString=" ";
 					statementText.setText(statementText.getText()+"	VALUES (");
 					statementText.setText(statementText.getText()+" "+valuesList.getItems()[0]);
+					addToListOfStatementTextChanges();
+					
 					for(int i=1;i<valuesList.getItems().length;i++){
 						try {
 							statementText.setText(statementText.getText()+tmpString+valuesList.getItems()[i]);
@@ -430,7 +494,7 @@ public class InsertEditor extends AStatementEditor {
 				
 					}
 					statementText.setText(statementText.getText()+")\r");
-	
+					addToListOfStatementTextChanges();
 				}
 			});
 			
@@ -1236,20 +1300,20 @@ public class InsertEditor extends AStatementEditor {
 						
 						try {
 							statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+							addToListOfStatementTextChanges();
+							
+							if(tmpKeyWord.getMainKeyWord().equals("VALUES")){
+								tabFolder.setSelection(0);
+							}
+							if(tmpKeyWord.getMainKeyWord().equals("SELECT")){
+								tabFolder.setSelection(1);
+							}
 							
 						} catch (Exception e1) {
 							System.out.print("ERROR: "+e1.getMessage());
 						}
 						
-//						if(tmpKeyWord.getTextOfKEyWord().equals("DELETE")){
-//							
-//							//tableNameLabel.setEnabled(true);
-//							tablsList.setEnabled(true);
-//							tableNameComposite.setEnabled(true);
-//							statementText.setText("DELETE ");
-//							
-//							
-//						}
+						
 	//					fatherComp.getShell().getData("StyledText")
 	//					s.setStatementText("sdfsdf");
 					}

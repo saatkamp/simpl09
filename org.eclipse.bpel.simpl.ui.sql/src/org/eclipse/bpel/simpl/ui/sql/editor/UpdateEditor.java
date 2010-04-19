@@ -38,6 +38,18 @@ public class UpdateEditor extends AStatementEditor {
 	private Text resultSelectedTableColumns=null;
 	Composite listsComposite=null;
 	
+	//List of statement Changes
+    ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
+    
+	
+	public ArrayList<String> getListOfStatementTextChanges() {
+		return listOfStatementTextChanges;
+	}
+
+	public void addToListOfStatementTextChanges() {
+		listOfStatementTextChanges.add(statementText.getText());
+	}
+	
 	private Text valuesText=null;
 	private List valuesList=null;
 	Composite valuesCompo=null;
@@ -79,7 +91,13 @@ public class UpdateEditor extends AStatementEditor {
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
-
+		
+		GridData gridData1_1 = new GridData();
+		gridData1_1.horizontalAlignment = GridData.END;
+		gridData1_1.grabExcessHorizontalSpace = true;
+		gridData1_1.grabExcessVerticalSpace = true;
+		gridData1_1.verticalAlignment = GridData.END;
+		
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(xmlFilePath);
@@ -88,7 +106,38 @@ public class UpdateEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText=new LiveEditStyleText(comp);
+		//statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
+			Composite statementCompo=new Composite(comp, SWT.NONE);
+			
+			statementCompo.setLayout(new GridLayout());
+			statementCompo.setLayoutData(gridData2);
+			
+			statementText=new LiveEditStyleText(statementCompo);
+			statementText.setEditable(false);
+			
+			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
+			Button undoButton=new Button(statementCompo, SWT.LEFT);
+			undoButton.setLayoutData(gridData1_1);
+			undoButton.setText("UNDO");
+			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
+			undoButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+			});
+			//+++++++++++++++++end undoButton+++++++++++++++++++++++++
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -109,6 +158,7 @@ public class UpdateEditor extends AStatementEditor {
 					}
 				}
 				else{statementText.setText("UPDATE ");}
+				addToListOfStatementTextChanges();
 			}
 			else {statementText.setText("UPDATE ");}
 			
@@ -150,13 +200,13 @@ public class UpdateEditor extends AStatementEditor {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				statementText.setText(statementText.getText()+resultSelectedTableColumns.getText());
-				
+				addToListOfStatementTextChanges();
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				statementText.setText(statementText.getText()+resultSelectedTableColumns.getText());
-
+				addToListOfStatementTextChanges();
 				
 			}
 		});
@@ -505,6 +555,8 @@ public class UpdateEditor extends AStatementEditor {
 							
 						}
 						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+						addToListOfStatementTextChanges();
+						
 						resultSETStatementCompo.setEnabled(true);
 						listsComposite.setEnabled(true);
 						
