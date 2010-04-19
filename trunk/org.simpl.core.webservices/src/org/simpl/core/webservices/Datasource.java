@@ -98,14 +98,15 @@ public class Datasource {
   public String getMetaData(
       @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
       @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype,
+      @WebParam(name = "filter", targetNamespace = "") String filter)
       throws ConnectionException {
     DataObject dataObject = null;
     String metaData = null;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     dataObject = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .getMetaData(dsAddress);
+        .getMetaData(dsAddress, filter);
 
     try {
       XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", outputStream);

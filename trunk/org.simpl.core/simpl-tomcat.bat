@@ -15,8 +15,10 @@ copy "%1\webapps\ode\WEB-INF\servicejars\simpl-core-webservices.jar" %3\webapps\
 copy "%1\webapps\ode\WEB-INF\lib\simpl-core.jar" %3\webapps\ode\WEB-INF\lib
 copy "%1\webapps\ode\WEB-INF\lib\simpl-core-plugins.jar" %3\webapps\ode\WEB-INF\lib
 copy "%1\webapps\ode\WEB-INF\lib\simpl-ode-ea.jar" %3\webapps\ode\WEB-INF\lib
+copy "%1\webapps\ode\WEB-INF\lib\simpl-uddi-client.jar" %3\webapps\ode\WEB-INF\lib
 copy "%1\webapps\ode\WEB-INF\lib\tools.jar" %3\webapps\ode\WEB-INF\lib
 copy %2\org.simpl.core\lib\*.* %3\webapps\ode\WEB-INF\lib
+copy %2\org.simpl.uddi.client\lib\*.* %3\webapps\ode\WEB-INF\lib
 del %3\webapps\ode\WEB-INF\lib\log4j-1.2.15.jar
 del %3\webapps\ode\WEB-INF\lib\derby-10.4.1.3.jar
 copy %2\org.simpl.core\log4j.properties %3\
