@@ -35,12 +35,28 @@ public class DeleteEditor extends AStatementEditor {
 	private Composite comp = null;
 	private Composite compos = null;
 	
+	Label proceLabel;
+	Button addToStatement;
+	Text proceText;
+	
 	private LiveEditStyleText statementText = null;
 	List tablsList;
 	Composite tableNameComposite=null;
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
+	
+	//List of statement Changes
+    ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
+    
+	
+	public ArrayList<String> getListOfStatementTextChanges() {
+		return listOfStatementTextChanges;
+	}
+
+	public void addToListOfStatementTextChanges() {
+		listOfStatementTextChanges.add(statementText.getText());
+	}
 	
 	Text textTableName;
 	public DeleteEditor() {
@@ -71,6 +87,11 @@ public class DeleteEditor extends AStatementEditor {
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData1);
 		
+		GridData gridData1_1 = new GridData();
+		gridData1_1.horizontalAlignment = GridData.END;
+		gridData1_1.grabExcessHorizontalSpace = true;
+		gridData1_1.grabExcessVerticalSpace = true;
+		gridData1_1.verticalAlignment = GridData.END;
 		
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
@@ -81,7 +102,36 @@ public class DeleteEditor extends AStatementEditor {
 		
 		
 		comp.setLayoutData(gridData);
-		statementText=new LiveEditStyleText(comp);
+		Composite statementCompo=new Composite(comp, SWT.NONE);
+			
+			statementCompo.setLayout(new GridLayout());
+			statementCompo.setLayoutData(gridData2);
+			
+			statementText=new LiveEditStyleText(statementCompo);
+			statementText.setEditable(false);
+			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
+			Button undoButton=new Button(statementCompo, SWT.LEFT);
+			undoButton.setLayoutData(gridData1_1);
+			undoButton.setText("UNDO");
+			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
+			undoButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+			});
+			//+++++++++++++++++end undoButton+++++++++++++++++++++++++
 		statementText.setLayoutData(gridData2);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -102,6 +152,7 @@ public class DeleteEditor extends AStatementEditor {
 				
 			}
 			else{statementText.setText("DELETE FROM ");}
+			addToListOfStatementTextChanges();
 		}
 		else {statementText.setText("DELETE FROM ");}
 		
@@ -157,6 +208,7 @@ public class DeleteEditor extends AStatementEditor {
 			public void widgetSelected(SelectionEvent e) {
 				String kommaString=" ";
 				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				addToListOfStatementTextChanges();
 				kommaString="\r			,";
 			}
 			
@@ -164,6 +216,7 @@ public class DeleteEditor extends AStatementEditor {
 			public void widgetDefaultSelected(SelectionEvent e) {
 				String kommaString=" ";
 				statementText.setText(statementText.getText()+kommaString+tablsList.getItem(tablsList.getSelectionIndex()));
+				addToListOfStatementTextChanges();
 				kommaString="\r			,";
 			}
 		});
@@ -184,6 +237,7 @@ public class DeleteEditor extends AStatementEditor {
 				buttonsCompo.setEnabled(true);
 				if(textTableName.getText().length()>0){
 					statementText.setText(statementText.getText()+kommaString+textTableName.getText());
+					addToListOfStatementTextChanges();
 					kommaString="\r			,";
 				}
 			}
@@ -195,6 +249,7 @@ public class DeleteEditor extends AStatementEditor {
 				buttonsCompo.setEnabled(true);
 				if(textTableName.getText().length()>0){
 					statementText.setText(statementText.getText()+kommaString+textTableName.getText());
+					addToListOfStatementTextChanges();
 					kommaString="\r			,";
 				}
 				

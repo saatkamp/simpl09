@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Label;
 
 import widgets.LiveEditStyleText;
 import xmlParser.KeyWord;
@@ -27,6 +28,9 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	private Composite comp = null;
 	private Composite compos = null;
 	private LiveEditStyleText statementText = null;
+	Label proceLabel;
+	Button addToStatement;
+	Text proceText;
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
@@ -35,6 +39,18 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	private List listOfTabels=null,listOfColumns=null;
 	private Text resultSelectedTableColumns=null;
 	Composite listsComposite=null;
+	
+	//List of statement Changes
+    ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
+    
+	
+	public ArrayList<String> getListOfStatementTextChanges() {
+		return listOfStatementTextChanges;
+	}
+
+	public void addToListOfStatementTextChanges() {
+		listOfStatementTextChanges.add(statementText.getText());
+	}
 	
 	/**
 	 * UPDATE table_name
@@ -93,6 +109,12 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
 
+		GridData gridData1_1 = new GridData();
+		gridData1_1.horizontalAlignment = GridData.END;
+		gridData1_1.grabExcessHorizontalSpace = true;
+		gridData1_1.grabExcessVerticalSpace = true;
+		gridData1_1.verticalAlignment = GridData.END;
+		
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(getXmlFilePath());
@@ -101,8 +123,39 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText=new LiveEditStyleText(comp);
+		//statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
+			Composite statementCompo=new Composite(comp, SWT.NONE);
+			
+			statementCompo.setLayout(new GridLayout());
+			statementCompo.setLayoutData(gridData2);
+			
+			statementText=new LiveEditStyleText(statementCompo);
+			statementText.setEditable(false);
+			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
+			Button undoButton=new Button(statementCompo, SWT.LEFT);
+			undoButton.setLayoutData(gridData1_1);
+			undoButton.setText("UNDO");
+			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
+			undoButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+			});
+			//+++++++++++++++++end undoButton+++++++++++++++++++++++++
 		statementText.setLayoutData(gridData1);
+		
 		statementText.addModifyListener(new ModifyListener(){
 
 			@Override
@@ -121,6 +174,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				}
 			}
 			else{statementText.setText("SELECT ");}
+			addToListOfStatementTextChanges();
 		}
 		else {statementText.setText("SELECT ");}
 		
@@ -159,13 +213,13 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				statementText.setText(statementText.getText()+resultSelectedTableColumns.getText());
-				
+				addToListOfStatementTextChanges();
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				statementText.setText(statementText.getText()+resultSelectedTableColumns.getText());
-
+				addToListOfStatementTextChanges();
 				
 			}
 		});
@@ -205,6 +259,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			public void widgetSelected(SelectionEvent e) {
 				statementText.setText(statementText.getText()+" "+
 						getSelectedColumns()+" FROM "+listOfTabels.getItem(listOfTabels.getSelectionIndex()));
+				addToListOfStatementTextChanges();
 			}
 			
 			
@@ -213,6 +268,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			public void widgetDefaultSelected(SelectionEvent e) {
 				statementText.setText(statementText.getText()+" "+
 						getSelectedColumns()+" FROM "+listOfTabels.getItem(listOfTabels.getSelectionIndex()));
+				addToListOfStatementTextChanges();
 			}
 		});
 		
@@ -487,7 +543,8 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 							
 						}
 						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-	
+						addToListOfStatementTextChanges();
+						
 						resultSETStatementCompo.setEnabled(true);
 						listsComposite.setEnabled(true);
 						

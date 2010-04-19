@@ -36,13 +36,26 @@ public class DropEditor extends AStatementEditor {
 	private Composite tableNameComposite=null;
 	private Text textSchemaName=null;
 	private Label labelSchemaName=null;
-	
+	Label proceLabel;
+	Button addToStatement;
+	Text proceText;
 	
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
+	
+	//List of statement Changes
+    ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
+    
+	
+	public ArrayList<String> getListOfStatementTextChanges() {
+		return listOfStatementTextChanges;
+	}
 
+	public void addToListOfStatementTextChanges() {
+		listOfStatementTextChanges.add(statementText.getText());
+	}
 	/*
 	 * The XML file wich contais the statment KeyWords
 	 */
@@ -80,7 +93,13 @@ public class DropEditor extends AStatementEditor {
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
-
+		
+		GridData gridData1_1 = new GridData();
+		gridData1_1.horizontalAlignment = GridData.END;
+		gridData1_1.grabExcessHorizontalSpace = true;
+		gridData1_1.grabExcessVerticalSpace = true;
+		gridData1_1.verticalAlignment = GridData.END;
+		
 		GridLayout gridLayoutA = new GridLayout();
 		gridLayoutA.numColumns = 6;
 		parser.parseXmlFile(xmlFilePath);
@@ -89,7 +108,37 @@ public class DropEditor extends AStatementEditor {
 		creatButtonsOfKeyWords(parser.parseDocument());
 		
 		comp.setLayoutData(gridData);
-		statementText=new LiveEditStyleText(comp);
+		//statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
+			Composite statementCompo=new Composite(comp, SWT.NONE);
+			
+			statementCompo.setLayout(new GridLayout());
+			statementCompo.setLayoutData(gridData2);
+			
+			statementText=new LiveEditStyleText(statementCompo);
+			statementText.setEditable(false);
+			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
+			Button undoButton=new Button(statementCompo, SWT.LEFT);
+			undoButton.setLayoutData(gridData1_1);
+			undoButton.setText("UNDO");
+			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
+			undoButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+			});
+			//+++++++++++++++++end undoButton+++++++++++++++++++++++++
 		statementText.setLayoutData(gridData1);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -110,6 +159,7 @@ public class DropEditor extends AStatementEditor {
 				}
 			}
 			else{statementText.setText("DROP ");}
+			addToListOfStatementTextChanges();
 		}
 		else {statementText.setText("DROP ");}
 		
@@ -179,6 +229,7 @@ public class DropEditor extends AStatementEditor {
 				//buttonsCompo.setEnabled(true);
 				if(textSchemaName.getText().length()>0){
 					statementText.setText(statementText.getText()+kommaString+textSchemaName.getText());
+					addToListOfStatementTextChanges();
 					kommaString="\r			,";
 					tableNameComposite.setEnabled(false);
 					tablsList.setEnabled(false);
@@ -210,6 +261,7 @@ public class DropEditor extends AStatementEditor {
 					String kommaString=" ";
 					for(int i=0;i<tablsList.getSelectionCount();i++){
 						statementText.setText(statementText.getText()+kommaString+tablsList.getSelection()[i]);
+						addToListOfStatementTextChanges();
 						kommaString=",";
 					}
 					tablsList.setEnabled(false);
@@ -226,6 +278,7 @@ public class DropEditor extends AStatementEditor {
 					String kommaString=" ";
 					for(int i=0;i<tablsList.getSelectionCount();i++){
 						statementText.setText(statementText.getText()+kommaString+tablsList.getSelection()[i]);
+						addToListOfStatementTextChanges();
 						kommaString=",";
 					}
 					
@@ -507,6 +560,7 @@ public class DropEditor extends AStatementEditor {
 	//					else 
 							try {
 								statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+								addToListOfStatementTextChanges();
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								System.out.print("ERROR:"+e1.getMessage());
@@ -562,6 +616,7 @@ public class DropEditor extends AStatementEditor {
 	//					else 
 							try {
 								statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+								addToListOfStatementTextChanges();
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								System.out.print("ERROR:"+e1.getMessage());

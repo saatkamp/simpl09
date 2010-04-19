@@ -36,6 +36,18 @@ public class CallEditor extends AStatementEditor {
 	
 	StyleRange style_Parameter = new StyleRange();
 	
+	//List of statement Changes
+    ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
+    
+	
+	public ArrayList<String> getListOfStatementTextChanges() {
+		return listOfStatementTextChanges;
+	}
+
+	public void addToListOfStatementTextChanges() {
+		listOfStatementTextChanges.add(statementText.getText());
+	}
+	
 	Display display;
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
@@ -73,6 +85,13 @@ public class CallEditor extends AStatementEditor {
 		gridData2.grabExcessHorizontalSpace = true;
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
+		
+		GridData gridData1_1 = new GridData();
+		gridData1_1.horizontalAlignment = GridData.END;
+		gridData1_1.grabExcessHorizontalSpace = true;
+		gridData1_1.grabExcessVerticalSpace = true;
+		gridData1_1.verticalAlignment = GridData.END;
+		
 		compos = new Composite(comp, SWT.NONE);
 		compos.setLayout(new GridLayout());
 		compos.setLayoutData(gridData2);
@@ -88,14 +107,46 @@ public class CallEditor extends AStatementEditor {
 		
 		try {
 			//statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
-			statementText=new LiveEditStyleText(comp);
-			statementText.setLayoutData(gridData1);
+			Composite statementCompo=new Composite(comp, SWT.NONE);
+			
+			statementCompo.setLayout(new GridLayout());
+			statementCompo.setLayoutData(gridData2);
+			
+			statementText=new LiveEditStyleText(statementCompo);
+			
+			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
+			Button undoButton=new Button(statementCompo, SWT.LEFT);
+			undoButton.setLayoutData(gridData1_1);
+			undoButton.setText("UNDO");
+			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
+			undoButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+			});
+			//+++++++++++++++++end undoButton+++++++++++++++++++++++++
+			//TODO: Insert Editor UndoButton implementierung ist fertig . in callEditor muss
+			//noch UndoButton Implementierung getestet werden .
+			statementText.setLayoutData(gridData2);
 			statementText.addModifyListener(new ModifyListener(){
-
+     
 				@Override
 				public void modifyText(ModifyEvent e) {
 					// TODO Auto-generated method stub
 					setStatement(statementText.getText());
+					
 				}});
 			
 			setComposite(comp);
@@ -125,6 +176,7 @@ public class CallEditor extends AStatementEditor {
 					style_KeyWord.foreground  = composite.getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
 					statementText.setStyleRange(style_KeyWord);
 				}
+				addToListOfStatementTextChanges();
 			}
 			else {
 				style_KeyWord.start = statementText.getText().length();
@@ -133,6 +185,7 @@ public class CallEditor extends AStatementEditor {
 				style_KeyWord.foreground  = composite.getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
 				statementText.setStyleRange(style_KeyWord);
 			}
+			
 			
 			CreateCallUIElements(compos);
 		} catch (Exception e) {
@@ -202,6 +255,8 @@ public class CallEditor extends AStatementEditor {
 					style_Variable.length= statementText.getText().length()-style_Variable.start;
 					style_Variable.foreground  = display.getSystemColor(SWT.COLOR_RED);
 					statementText.setStyleRange(style_Variable);
+					
+					addToListOfStatementTextChanges();
 									}
 
 				@Override
@@ -211,7 +266,9 @@ public class CallEditor extends AStatementEditor {
 					statementText.setText(statementText.getText()+"	"+proceText.getText()+"(? ,? , ?, ...)");				
 					style_Variable.length= statementText.getText().length()-style_Variable.start;
 					style_Variable.foreground  = display.getSystemColor(SWT.COLOR_RED);
-					statementText.setStyleRange(style_Variable);					
+					statementText.setStyleRange(style_Variable);
+					
+					addToListOfStatementTextChanges();
 				}
 
 			});
@@ -394,6 +451,8 @@ public class CallEditor extends AStatementEditor {
 //						
 //						style_KeyWord.start = statementText.getText().length();
 						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+						addToListOfStatementTextChanges();
+						
 //						style_KeyWord.length= statementText.getText().length()-style_KeyWord.start;
 //						style_KeyWord.foreground  = display.getSystemColor(SWT.COLOR_BLUE);
 //						statementText.setStyleRange(style_KeyWord);

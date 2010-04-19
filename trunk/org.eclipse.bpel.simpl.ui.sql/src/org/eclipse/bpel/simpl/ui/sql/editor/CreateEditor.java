@@ -33,6 +33,9 @@ public class CreateEditor extends AStatementEditor {
 	private Composite comp = null;
 	private Composite compos = null;
 	private LiveEditStyleText statementText = null;
+	Label proceLabel;
+	Button addToStatement;
+	Text proceText;
 	List columnList;
 	
 	private Composite tableNameComposite=null;
@@ -61,7 +64,18 @@ public class CreateEditor extends AStatementEditor {
 	private Composite buttonsCompo=null;
 	private Composite columsListCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
+	//List of statement Changes
+    
+    ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
+    
 	
+	public ArrayList<String> getListOfStatementTextChanges() {
+		return listOfStatementTextChanges;
+	}
+
+	public void addToListOfStatementTextChanges() {
+		listOfStatementTextChanges.add(statementText.getText());
+	}
 	public CreateEditor() {
 		// TODO Auto-generated constructor stub
 	}
@@ -87,6 +101,12 @@ public class CreateEditor extends AStatementEditor {
 		gridData2.grabExcessVerticalSpace = true;
 		gridData2.verticalAlignment = GridData.FILL;
 		
+		GridData gridData1_1 = new GridData();
+		gridData1_1.horizontalAlignment = GridData.END;
+		gridData1_1.grabExcessHorizontalSpace = true;
+		gridData1_1.grabExcessVerticalSpace = true;
+		gridData1_1.verticalAlignment = GridData.END;
+		
 		GridLayout gridLayoutB = new GridLayout();
 		gridLayoutB.numColumns=1;
 		
@@ -106,7 +126,37 @@ public class CreateEditor extends AStatementEditor {
 		//buttonsCompo.setEnabled(false);
 		
 		comp.setLayoutData(gridData);
-		statementText=new LiveEditStyleText(comp);
+		//statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
+			Composite statementCompo=new Composite(comp, SWT.NONE);
+			
+			statementCompo.setLayout(new GridLayout());
+			statementCompo.setLayoutData(gridData2);
+			
+			statementText=new LiveEditStyleText(statementCompo);
+			statementText.setEditable(false);
+			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
+			Button undoButton=new Button(statementCompo, SWT.LEFT);
+			undoButton.setLayoutData(gridData1_1);
+			undoButton.setText("UNDO");
+			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
+			undoButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(listOfStatementTextChanges.size()>=2){
+						statementText.setText(listOfStatementTextChanges.get(listOfStatementTextChanges.size()-2));
+						listOfStatementTextChanges.remove(listOfStatementTextChanges.size()-1);
+					}
+				}
+			});
+			//+++++++++++++++++end undoButton+++++++++++++++++++++++++
 		statementText.setLayoutData(gridData2);
 		statementText.addModifyListener(new ModifyListener(){
 
@@ -126,6 +176,8 @@ public class CreateEditor extends AStatementEditor {
 				}
 			}
 			else{statementText.setText("CREATE ");}
+			
+			addToListOfStatementTextChanges();
 		}
 		else {statementText.setText("CREATE ");}
 		
@@ -190,6 +242,7 @@ public class CreateEditor extends AStatementEditor {
 				
 				if(textTableName.getText().length()>0){
 					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"		(\r");
+					addToListOfStatementTextChanges();
 					columnCompo.setEnabled(true);
 					//buttonsCompo.setEnabled(true);
 					columsListCompo.setEnabled(true);
@@ -202,6 +255,7 @@ public class CreateEditor extends AStatementEditor {
 				
 				if(textTableName.getText().length()>0){
 					statementText.setText(statementText.getText()+"	"+textTableName.getText()+"		(\r");
+					addToListOfStatementTextChanges();
 					columnCompo.setEnabled(true);
 					//buttonsCompo.setEnabled(true);
 					columsListCompo.setEnabled(true);
@@ -288,6 +342,7 @@ public class CreateEditor extends AStatementEditor {
 						columnList.add(comboPrimaryKey.getText()+" "+textColumnName.getText());
 						kommaString="\r			,";
 					}
+					addToListOfStatementTextChanges();
 				}
 
 			}
@@ -309,6 +364,7 @@ public class CreateEditor extends AStatementEditor {
 						columnList.add(kommaString+comboPrimaryKey.getText()+" "+textColumnName.getText());
 						kommaString="\r			,";
 					}
+					addToListOfStatementTextChanges();
 				}
 
 				
@@ -346,7 +402,7 @@ public class CreateEditor extends AStatementEditor {
 				if(columnList.getItems().length>0) 	tmpString2="\r			,";
 				else tmpString2="";
 				statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
-				
+				addToListOfStatementTextChanges();
 			}
 			
 			@Override
@@ -354,7 +410,7 @@ public class CreateEditor extends AStatementEditor {
 				if(columnList.getItems().length>0) 	tmpString2="\r			,";
 				else tmpString2="";
 				statementText.setText(statementText.getText()+tmpString2+columnList.getItem(columnList.getSelectionIndex()));
-
+				addToListOfStatementTextChanges();
 			}
 		});
 		Button insertColumsIntoStatment=new Button(columsListCompo, SWT.NONE);
@@ -371,7 +427,7 @@ public class CreateEditor extends AStatementEditor {
 				
 				for(int i=0;i<columnList.getItems().length;i++){
 					statementText.setText(statementText.getText()+ columnList.getItems()[i]+tmpString);
-			
+					addToListOfStatementTextChanges();
 				}
 			}
 			
@@ -385,7 +441,9 @@ public class CreateEditor extends AStatementEditor {
 					statementText.setText(statementText.getText()+ columnList.getItems()[i]+tmpString);
 			
 				}
+				addToListOfStatementTextChanges();
 			}
+			
 		});
 		Button deleteFromColumnList =new Button(columsListCompo, SWT.NONE);
 		deleteFromColumnList.setText("Remove from List");
@@ -762,6 +820,7 @@ public class CreateEditor extends AStatementEditor {
 						}
 						
 						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
+						addToListOfStatementTextChanges();
 //						if(tmpKeyWord.getMainKeyWord().equals("CREATE")){
 //							
 //							statementText.setText("CREATE ");

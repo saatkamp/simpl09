@@ -293,15 +293,16 @@ public class InsertPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				//Display tablesDisplay =new Display();
-				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
+			
 				tabelsPopWindowTables=new ElementsListPopUp(statementText);
-				//Display display2 = Display.getDefault();
 				tabelsPopWindowTables.setText("Select Tabel");
-				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressText.getText(),typeCombo.getItem(typeCombo.getSelectionIndex()),kindCombo.getItem(kindCombo.getSelectionIndex()));
+				
+				
+				//TODO: folgende zwei Zeilen wieder rein kommintieren
+				// die sind zuständig für übergabe die inhalten der comboboxen an tabelsPopWindowTables.loadTablesFromDB()
+				//if((dataSourceAddressText.getText()!=null)&&(typeCombo.getItem(typeCombo.getSelectionIndex())!=null)&&(kindCombo.getItem(kindCombo.getSelectionIndex())!=null))
+				//tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressText.getText(),typeCombo.getItem(typeCombo.getSelectionIndex()),kindCombo.getItem(kindCombo.getSelectionIndex()));
+				
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
 					tabelsPopWindowTables.setWindowIsOpen(true);
