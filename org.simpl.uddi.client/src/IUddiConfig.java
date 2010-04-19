@@ -1,5 +1,4 @@
 
-
 public interface IUddiConfig {
 	
 	final String KEYPREFIX = "uddi:juddi.apache.org:";
