@@ -11,40 +11,35 @@ public class ClientTest implements IUddiConfig{
 				
 		
 		UddiDataSource dataSource = new UddiDataSource(business.getKey());
-		dataSource.setAddress("http://rene.ist.doof.de");
+		dataSource.setAddress("http://datasource1.datasources.de");
 		dataSource.setName("Rene ist doof Datenbank");
 		dataSource.setKey(KEYPREFIX + "source_1");
 		dataSource.addDescription("Mysql Datenbank", "ger");
 		dataSource.addAttribute("type", "database", KEYPREFIX + "type");
 		dataSource.addAttribute("subtype", "mysql", KEYPREFIX + "subtype");
-		dataSource.addAttribute("wspolicy","http://rene.ist.immer.noch.doof.de", KEYPREFIX + "wspolicy");
+		dataSource.addAttribute("wspolicy","http://datasource1.datsources.de/policy.xml", KEYPREFIX + "wspolicy");
 		
 		UddiDataSource dataSource2 = new UddiDataSource(business.getKey());
-		dataSource2.setAddress("http://rene.ist.doof.de");
-		dataSource2.setName("Rene ist ganz ganz ganz dolle doof filesystem");
+		dataSource2.setAddress("http://datasource2.datasources.de");
+		dataSource2.setName("DataSource 1");
 		dataSource2.setKey(KEYPREFIX + "source_2");
 		dataSource2.addDescription("Filesystem Ext3", "ger");
 		dataSource2.addAttribute("type", "filesystem", KEYPREFIX + "type");
 		dataSource2.addAttribute("subtype", "ext3", KEYPREFIX + "subtype");
-		dataSource2.addAttribute("wspolicy", "http://rene.ist.immer.immer.noch.doof.de", KEYPREFIX + "wspolicy");
+		dataSource2.addAttribute("wspolicy", "http://datasource2.datsources.de/policy.xml", KEYPREFIX + "wspolicy");
 //		
-		UddiDataWriter writer = new UddiDataWriter();
-		
-		writer.writeBusiness(business);
+		UddiDataWriter.getInstance().writeBusiness(business);
 //		
 //		
-//		System.out.println(business.getKey());
-//		writer.writeDatasource(dataSource);
+		UddiDataWriter.getInstance().writeDatasource(dataSource);
 ////		
 ////		
 ////		
-//		writer.writeDatasource(dataSource2);
+		UddiDataWriter.getInstance().writeDatasource(dataSource2);
 ////		
-		UddiDatasourceReader reader = new UddiDatasourceReader();
-		
 		ArrayList<UddiDataSource> ds = new ArrayList<UddiDataSource>();	
 		
-		ds = reader.getAllDarasources();
+		ds = UddiDatasourceReader.getInstance().getAllDarasources();
 		
 		System.out.println(ds.size());
 		
