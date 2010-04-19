@@ -1,7 +1,10 @@
-
+import java.awt.event.KeyListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.apache.juddi.ClassUtil;
+import org.apache.juddi.v3.client.config.Property;
+import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
@@ -24,10 +27,8 @@ import org.uddi.v3_service.UDDIInquiryPortType;
 public class UddiDatasourceReader implements IUddiConfig {
 
 	UDDIInquiryPortType inquiry = null;
-	
-	static UddiDatasourceReader datasourceReader = null;
 
-	private UddiDatasourceReader() {
+	public UddiDatasourceReader() {
 				Transport transport = new JAXWSTransport("default");
 
 				try {
@@ -67,6 +68,8 @@ public class UddiDatasourceReader implements IUddiConfig {
 		ArrayList<UddiDataSource> datasources = new ArrayList<UddiDataSource>();
 
 		ArrayList<ServiceInfo> serviceLists = new ArrayList<ServiceInfo>();
+
+		GetServiceDetail getServiceDetail = new GetServiceDetail();
 
 		ArrayList<String> keyList = new ArrayList<String>();
 
@@ -290,13 +293,5 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 		return source;
 
-	}
-	
-	public static UddiDatasourceReader getInstance () {
-		if (datasourceReader == null) {
-			datasourceReader = new UddiDatasourceReader();
-		}
-		return datasourceReader;
-		
 	}
 }
