@@ -1,14 +1,6 @@
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-
 import org.apache.juddi.ClassUtil;
 import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.Transport;
-import org.uddi.api_v3.BusinessService;
-import org.uddi.api_v3.Description;
-import org.uddi.api_v3.GetServiceDetail;
-import org.uddi.api_v3.ServiceDetail;
-import org.uddi.v3_service.DispositionReportFaultMessage;
 import org.uddi.v3_service.UDDIInquiryPortType;
 
 
