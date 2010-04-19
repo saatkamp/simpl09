@@ -1,7 +1,11 @@
 package org.eclipse.simpl.uddi.juddiclient;
+import java.awt.event.KeyListener;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.apache.juddi.ClassUtil;
+import org.apache.juddi.v3.client.config.Property;
+import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
@@ -24,13 +28,16 @@ import org.uddi.v3_service.UDDIInquiryPortType;
 public class UddiDatasourceReader implements IUddiConfig {
 
 	UDDIInquiryPortType inquiry = null;
+	
+	static UddiDatasourceReader datasourceReader = null;
 
-	public UddiDatasourceReader() {
+	private UddiDatasourceReader() {
 				Transport transport = new JAXWSTransport("default");
 
 				try {
 					this.inquiry = transport.getUDDIInquiryService("http://localhost:8080/juddiv3/services/inquiry?wsdl");
 				} catch (TransportException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -79,7 +86,7 @@ public class UddiDatasourceReader implements IUddiConfig {
 				keyList.add(serviceInfo.getServiceKey());
 			}
 		} catch (DispositionReportFaultMessage e) {
-			
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -98,7 +105,7 @@ public class UddiDatasourceReader implements IUddiConfig {
 					.getBusinessService();
 
 		} catch (DispositionReportFaultMessage e) {
-			System.out.println("scheiﬂ Meldung");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -289,5 +296,13 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 		return source;
 
+	}
+	
+	public static UddiDatasourceReader getInstance () {
+		if (datasourceReader == null) {
+			datasourceReader = new UddiDatasourceReader();
+		}
+		return datasourceReader;
+		
 	}
 }

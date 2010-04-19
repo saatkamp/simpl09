@@ -12,7 +12,6 @@ public class ModelProvider {
 	private static ModelProvider content;
 	private List<DataSource> datasources;
 	
-	private UddiDatasourceReader reader = null;
 
 	private ModelProvider() {
 		datasources = new ArrayList<DataSource>();
@@ -20,9 +19,8 @@ public class ModelProvider {
 		// put them into the model
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
 
-		reader = new UddiDatasourceReader();
 		
-		ArrayList<UddiDataSource> dsList = reader.getAllDarasources();
+		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDarasources();
 		
 		for (UddiDataSource source: dsList) {
 			DataSource ds = factory.createDataSource();
