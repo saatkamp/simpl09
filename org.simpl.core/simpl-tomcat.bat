@@ -11,7 +11,7 @@ REM   Working Directory: ${workspace_loc:/org.simpl.core}
 REM   Arguments: C:\TOMCAT~1.0 C:\eclipse\workspace C:\SIMPL\deployment
 
 @echo on
-copy "%1\webapps\ode\WEB-INF\servicejars\simpl-core-web-services.jar" %3\webapps\ode\WEB-INF\servicejars
+copy "%1\webapps\ode\WEB-INF\servicejars\simpl-core-webservices.jar" %3\webapps\ode\WEB-INF\servicejars
 copy "%1\webapps\ode\WEB-INF\lib\simpl-core.jar" %3\webapps\ode\WEB-INF\lib
 copy "%1\webapps\ode\WEB-INF\lib\simpl-core-plugins.jar" %3\webapps\ode\WEB-INF\lib
 copy "%1\webapps\ode\WEB-INF\lib\simpl-ode-ea.jar" %3\webapps\ode\WEB-INF\lib

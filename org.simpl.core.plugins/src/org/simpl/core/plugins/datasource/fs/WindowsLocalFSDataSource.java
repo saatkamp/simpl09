@@ -33,10 +33,10 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
   Runtime runtime = Runtime.getRuntime();
 
   public WindowsLocalFSDataSource() {
-    this.setType("Local Filesystem");
+    this.setType("Filesystem");
     this.setMetaDataType("tFilesystemMetaData");
-    this.addSubtype("Windows");
-    this.addLanguage("Windows", "Shell");
+    this.addSubtype("Windows Local");
+    this.addLanguage("Windows Local", "Shell");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -89,14 +89,14 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
    */
   @Override
-  public DataObject getMetaData(String dsAddress, String filter)
+  public DataObject getMetaData(String dir, String filter)
       throws ConnectionException {
     DataObject metaDataObject = this.createMetaDataObject().getRootObject();
-
     DataObject driveObject = null;
     DataObject commandObject = null;
     DataObject folderObject = null;
     DataObject fileObject = null;
+    
     File[] driveList = File.listRoots();
     File[] fileList = null;
     File filterPath = null;
@@ -150,11 +150,11 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       driveObject.setString("type", FileSystemView.getFileSystemView()
           .getSystemTypeDescription(drive));
 
-      filterPath = new File(filter);
+      filterPath = new File(dir);
 
       // files and folders
-      if (filter != null && !filter.equals("") && filterPath.isDirectory()) {
-        fileList = new File(filter).listFiles();
+      if (dir != null && !dir.equals("") && filterPath.isDirectory()) {
+        fileList = new File(dir).listFiles();
 
         if (fileList.length > 0) {
           for (File file : fileList) {
@@ -198,11 +198,11 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public DataObject retrieveData(String dsAddress, String file)
+  public DataObject retrieveData(String dir, String file)
       throws ConnectionException {
     DataFormatService<Object> dataFormatService = SIMPLCore.getInstance()
         .dataFormatService("CSV", "Headline");
-    DataObject dataObject = dataFormatService.toSDO(new File(file));
+    DataObject dataObject = dataFormatService.toSDO(new File(dir + File.separator + file));
 
     return dataObject;
   }
@@ -228,7 +228,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       output.add(line);
       //System.out.println(line);
     }
-
+    
     process.destroy();
 
     return Arrays.copyOf(output.toArray(), output.size(), String[].class);
