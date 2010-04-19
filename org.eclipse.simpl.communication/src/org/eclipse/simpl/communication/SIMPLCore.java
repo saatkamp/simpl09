@@ -47,8 +47,8 @@ public class SIMPLCore {
     return settings;
   }
 
-  public String getMetaData(String dsAddress, String dsType, String dsSubtype) throws ConnectionException_Exception {
-    String metaData = datasourceService.getMetaData(dsAddress, dsType, dsSubtype);
+  public String getMetaData(String dsAddress, String dsType, String dsSubtype, String filter) throws ConnectionException_Exception {
+    String metaData = datasourceService.getMetaData(dsAddress, dsType, dsSubtype, filter);
 
     return metaData;
   }
