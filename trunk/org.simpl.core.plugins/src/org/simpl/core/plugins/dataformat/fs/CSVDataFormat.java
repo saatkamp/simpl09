@@ -54,10 +54,10 @@ public class CSVDataFormat extends DataFormatPlugin<File> {
       headerObject.setList("column", Arrays.asList(headLine));
       
       sdo.setString("name", file.getName());
-      sdo.setChar("separator", ',');
-      sdo.setChar("quoteChar", '\0');
-      sdo.setChar("escapeChar", '\\');
-      sdo.setBoolean("strictQuotes", false);
+      //sdo.setChar("separator", ',');
+      //sdo.setChar("quoteChar", '\0');
+      //sdo.setChar("escapeChar", '\\');
+      //sdo.setBoolean("strictQuotes", false);
       
       while ((nextLine = csvReader.readNext()) != null) {
         rowObject = sdo.createDataObject("row");
@@ -89,9 +89,9 @@ public class CSVDataFormat extends DataFormatPlugin<File> {
     CSVWriter csvWriter;
     String[] row = null;
     List<String[]> lines = new ArrayList<String[]>();
-    char separator = data.getChar("separator");
-    char quoteChar = data.getChar("quoteChar");
-    char escapeChar = data.getChar("escapeChar");
+    //char separator = data.getChar("separator");
+    //char quoteChar = data.getChar("quoteChar");
+    //char escapeChar = data.getChar("escapeChar");
     //boolean strictQuotes = data.getBoolean("strictQuotes");
     
     
@@ -100,7 +100,7 @@ public class CSVDataFormat extends DataFormatPlugin<File> {
       file.deleteOnExit();
       
       fileWriter = new FileWriter(file);
-      csvWriter = new CSVWriter(fileWriter, separator, quoteChar, escapeChar); // TODO: Konstruktor je nach vorh. Parameter verwenden
+      csvWriter = new CSVWriter(fileWriter);//, separator, quoteChar, escapeChar); // TODO: Konstruktor je nach vorh. Parameter verwenden
       
       // read header
       row = (String[])data.getDataObject("header").getList("column").toArray();
