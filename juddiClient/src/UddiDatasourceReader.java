@@ -27,8 +27,10 @@ import org.uddi.v3_service.UDDIInquiryPortType;
 public class UddiDatasourceReader implements IUddiConfig {
 
 	UDDIInquiryPortType inquiry = null;
+	
+	static UddiDatasourceReader datasourceReader = null;
 
-	public UddiDatasourceReader() {
+	private UddiDatasourceReader() {
 				Transport transport = new JAXWSTransport("default");
 
 				try {
@@ -293,5 +295,13 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 		return source;
 
+	}
+	
+	public static UddiDatasourceReader getInstance () {
+		if (datasourceReader == null) {
+			datasourceReader = new UddiDatasourceReader();
+		}
+		return datasourceReader;
+		
 	}
 }
