@@ -28,6 +28,7 @@ public interface DatasourceService {
      * @param dsAddress
      * @param dsSubtype
      * @param dsType
+     * @param filter
      * @return
      *     returns java.lang.String
      * @throws ConnectionException_Exception
@@ -40,7 +41,9 @@ public interface DatasourceService {
         @WebParam(name = "dsType", partName = "dsType")
         String dsType,
         @WebParam(name = "dsSubtype", partName = "dsSubtype")
-        String dsSubtype)
+        String dsSubtype,
+        @WebParam(name = "filter", partName = "filter")
+        String filter)
         throws ConnectionException_Exception
     ;
 
