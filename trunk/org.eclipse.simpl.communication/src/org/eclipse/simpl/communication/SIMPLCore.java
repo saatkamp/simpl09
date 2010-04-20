@@ -22,16 +22,31 @@ import org.eclipse.simpl.communication.client.Parameter;
  */
 @SuppressWarnings("unchecked")
 public class SIMPLCore {
-  AdministrationService administrationService = new AdministrationService_Service()
-      .getAdministrationServicePort();
-  DatasourceService datasourceService = new DatasourceService_Service()
-      .getDatasourceServicePort();
+  AdministrationService administrationService = null;
+  DatasourceService datasourceService = null;
+  
 
+  private DatasourceService getDatasourceService(){
+	  if (datasourceService == null){
+		  datasourceService = new DatasourceService_Service()
+	      .getDatasourceServicePort();
+	  }
+	  return datasourceService;
+  }
+  
+  private AdministrationService getAdministrationService(){
+	  if (administrationService == null){
+		  administrationService = new AdministrationService_Service()
+	      .getAdministrationServicePort();
+	  }
+	  return administrationService;
+  }
+  
   public boolean save(String schema, String table, String settingName,
       LinkedHashMap<String, String> settings) {
     boolean success = false;
 
-    success = administrationService.saveSettings(schema, table, settingName, Parameter
+    success = getAdministrationService().saveSettings(schema, table, settingName, Parameter
         .serialize(settings));
 
     return success;
@@ -42,26 +57,26 @@ public class SIMPLCore {
     LinkedHashMap<String, String> settings = null;
 
     settings = (LinkedHashMap<String, String>) Parameter
-        .deserialize(administrationService.loadSettings(schema, table, settingName));
+        .deserialize(getAdministrationService().loadSettings(schema, table, settingName));
 
     return settings;
   }
 
   public String getMetaData(String dsAddress, String dsType, String dsSubtype, String filter) throws ConnectionException_Exception {
-    String metaData = datasourceService.getMetaData(dsAddress, dsType, dsSubtype, filter);
+    String metaData = getDatasourceService().getMetaData(dsAddress, dsType, dsSubtype, filter);
 
     return metaData;
   }
   
   public List<String> getDatasourceTypes() {
-    List<String> dsTypes = (List<String>) Parameter.deserialize(datasourceService
+    List<String> dsTypes = (List<String>) Parameter.deserialize(getDatasourceService()
         .getDataSourceTypes());
 
     return dsTypes;
   }
 
   public List<String> getDatasourceSubTypes(String dsType) {
-    List<String> dsSubTypes = (List<String>) Parameter.deserialize(datasourceService
+    List<String> dsSubTypes = (List<String>) Parameter.deserialize(getDatasourceService()
         .getDataSourceSubtypes(dsType));
 
     return dsSubTypes;
@@ -69,7 +84,7 @@ public class SIMPLCore {
 
   public List<String> getDatasourceLanguages(String dsSubtype) {
     List<String> dsSubTypeLanguages = (List<String>) Parameter
-        .deserialize(datasourceService.getDataSourceLanguages(dsSubtype));
+        .deserialize(getDatasourceService().getDataSourceLanguages(dsSubtype));
 
     return dsSubTypeLanguages;
   }
