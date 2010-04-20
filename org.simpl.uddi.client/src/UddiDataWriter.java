@@ -25,8 +25,10 @@ public class UddiDataWriter implements IUddiConfig {
 	private static UDDIPublicationPortType publish = null;
 
 	private AuthToken userAuthToken = null;
+	
+	private static UddiDataWriter  dataWriter = null;
 
-	public UddiDataWriter() {
+	private UddiDataWriter() {
 
 		Transport transport = new JAXWSTransport("default");
 
@@ -176,5 +178,12 @@ public class UddiDataWriter implements IUddiConfig {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static UddiDataWriter getInstance() {
+		if (dataWriter == null) {
+			dataWriter = new UddiDataWriter();			
+		}
+		return dataWriter;
 	}
 }
