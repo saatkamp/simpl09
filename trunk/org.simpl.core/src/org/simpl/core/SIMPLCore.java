@@ -8,6 +8,9 @@ import org.simpl.core.services.dataformat.DataFormatService;
 import org.simpl.core.services.dataformat.DataFormatServiceProvider;
 import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.DataSourceServiceProvider;
+import org.simpl.core.services.strategy.Strategy;
+import org.simpl.core.services.strategy.StrategyService;
+import org.simpl.core.services.strategy.StrategyServiceImpl;
 
 /**
  * <b>Purpose: Provides access to all services and info of the SIMPLCore.</b> <br>
@@ -16,13 +19,15 @@ import org.simpl.core.services.datasource.DataSourceServiceProvider;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: SIMPLCore.java 1156 2010-04-20 13:56:37Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLCore {
   private static SIMPLCore instance = null;
   private static SIMPLConfig config = new SIMPLConfig();
   private static AdministrationService administrationService = new AdministrationServiceImpl();
+  private static StrategyService strategyService = new StrategyServiceImpl();
   private static DataSourceServiceProvider dataSourceServiceProvider = new DataSourceServiceProvider();
   private static DataFormatServiceProvider dataFormatServiceProvider = new DataFormatServiceProvider();
 
@@ -34,9 +39,7 @@ public class SIMPLCore {
   }
 
   /**
-   * Returns the instance of SIMPLCore.
-   * 
-   * @return Instance of SIMPLCore.
+   * @return The instance of SIMPLCore.
    * @throws Exception
    */
   public static synchronized SIMPLCore getInstance() {
@@ -48,49 +51,65 @@ public class SIMPLCore {
   }
 
   /**
-   * Returns the instance of the administration service.
-   * 
-   * @return
+   * @return The instance of the administration service.
    */
   public AdministrationService administrationService() {
     return administrationService;
   }
 
   /**
-   * Returns the instance of a data source service by the given type and subtype.
+   * @return The instance of the strategy service.
+   */
+  public StrategyService strategyService() {
+    return strategyService;
+  }
+
+  /**
+   * Finds a data source service that matches the given type and subtype.
    * 
    * @param dsType
    * @param dsSubtype
-   * @return
+   * @return The instance of a data source service.
    */
   public DataSourceService dataSourceService(String dsType, String dsSubtype) {
     return dataSourceServiceProvider.getInstance(dsType, dsSubtype);
   }
-  
+
   /**
-   * Returns the instance of a data format service by the given type and subtype.
+   * Finds a data source service that matches the given WS-Policy using the
+   * given strategy.
+   * 
+   * @param wsPolicy
+   * @param strategy
+   * @return The instance of a data source service.
+   */
+  public DataSourceService dataSourceService(String wsPolicy, Strategy strategy) {
+    return dataSourceServiceProvider.getInstance(wsPolicy, strategy);
+  }
+
+  /**
+   * Finds a data format service that matches the given type and subtype.
    * 
    * @param dfType
    * @param dfSubtype
-   * @return
+   * @return The instance of a data format service.
    */
-  public DataFormatService<Object> dataFormatService(String dfType, String dfSubtype) {
+  public DataFormatService<Object> dataFormatService(String dfType,
+      String dfSubtype) {
     return dataFormatServiceProvider.getInstance(dfType, dfSubtype);
   }
 
   /**
-   * Returns the SIMPL configuration.
-   * 
-   * @return
+   * @return The SIMPL configuration.
    */
   public SIMPLConfig config() {
     return config;
   }
 
   /**
-   * Returns all data source types supported by the simpl core.
+   * Returns all data source types supported by the SIMPL Core.
    * 
-   * @return
+   * @return A list of data source types.
    */
   public List<String> getDataSourceTypes() {
     return dataSourceServiceProvider.getTypes();
@@ -100,7 +119,7 @@ public class SIMPLCore {
    * Returns all data source subtypes of a given data source type.
    * 
    * @param dsType
-   * @return
+   * @return A list of data source subtypes.
    */
   public List<String> getDataSourceSubtypes(String dsType) {
     return dataSourceServiceProvider.getSubtypes(dsType);
@@ -110,26 +129,26 @@ public class SIMPLCore {
    * Returns all data source languages of a given data source subtype.
    * 
    * @param dsSubtype
-   * @return
+   * @return List of data source languages.
    */
   public List<String> getDataSourceLanguages(String dsSubtype) {
     return dataSourceServiceProvider.getLanguages(dsSubtype);
   }
-  
+
   /**
-   * Returns all data source types supported by the simpl core.
+   * Returns all data source types supported by the SIMPL Core.
    * 
-   * @return
+   * @return List of data source types.
    */
   public List<String> getDataFormatTypes() {
     return dataFormatServiceProvider.getTypes();
   }
-  
+
   /**
    * Returns all data format subtypes of a given data format type.
    * 
    * @param dsType
-   * @return
+   * @return A list of data format subtypes.
    */
   public List<String> getDataFormatSubtypes(String dfType) {
     return dataFormatServiceProvider.getSubtypes(dfType);

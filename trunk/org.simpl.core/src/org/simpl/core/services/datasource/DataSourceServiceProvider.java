@@ -7,12 +7,14 @@ import java.util.List;
 
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
+import org.simpl.core.services.strategy.Strategy;
+import org.simpl.core.services.strategy.StrategyService;
 
 /**
- * <b>Purpose:</b> Provides access to the data source services that are loaded from data
- * source plugins.<br>
- * <b>Description:</b> Instances of data source services are retrieved by type and subtype
- * of a data source, using the getInstance() method. <br>
+ * <b>Purpose:</b> Provides access to the data source services that are loaded
+ * from data source plugins.<br>
+ * <b>Description:</b> Instances of data source services are retrieved by type
+ * and subtype of a data source, using the getInstance() method. <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -23,8 +25,8 @@ import org.simpl.core.plugins.datasource.DataSourcePlugin;
  */
 public class DataSourceServiceProvider {
   /**
-   * Maps the data source service types to a list of supporting data source plugin
-   * instances.
+   * Maps the data source service types to a list of supporting data source
+   * plugin instances.
    */
   private HashMap<String, List<DataSourcePlugin>> dataSources = new HashMap<String, List<DataSourcePlugin>>();
 
@@ -36,8 +38,8 @@ public class DataSourceServiceProvider {
   }
 
   /**
-   * Returns the data source service instance that supports the given data source type and
-   * subtype.
+   * Returns the data source service instance that supports the given data
+   * source type and subtype.
    * 
    * @param dsType
    * @param dsSubtype
@@ -63,11 +65,27 @@ public class DataSourceServiceProvider {
   }
 
   /**
-   * Loads instances of the data source plugins and retrieves information about their
-   * supported types, subtypes and languages.
+   * Returns the data source service instance that matches the given wsPolicy
+   * following the given strategy.
+   * 
+   * @param wsPolicy
+   * @return
+   */
+  public DataSourceService getInstance(String wsPolicy, Strategy strategy) {
+    StrategyService strategyService = SIMPLCore.getInstance().strategyService();
+    DataSourceService dataSourceService = strategyService
+        .findDataSourceService(wsPolicy, strategy);
+
+    return dataSourceService;
+  }
+
+  /**
+   * Loads instances of the data source plugins and retrieves information about
+   * their supported types, subtypes and languages.
    */
   private void loadPlugins() {
-    List<String> plugins = SIMPLCore.getInstance().config().getDataSourcePlugins();
+    List<String> plugins = SIMPLCore.getInstance().config()
+        .getDataSourcePlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataSourcePlugin dataSourceServiceInstance;
     String dataSourceType = null;
@@ -140,7 +158,8 @@ public class DataSourceServiceProvider {
       for (DataSourcePlugin dataSourceServicePlugin : dataSources
           .get(dataSourceType)) {
         if (dataSourceServicePlugin.getLanguages().containsKey(dsSubtype)) {
-          for (String language : dataSourceServicePlugin.getLanguages().get(dsSubtype)) {
+          for (String language : dataSourceServicePlugin.getLanguages().get(
+              dsSubtype)) {
             if (!dataSourceLanguages.contains(language)) {
               dataSourceLanguages.add(language);
             }
