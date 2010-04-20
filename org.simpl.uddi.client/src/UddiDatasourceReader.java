@@ -75,15 +75,14 @@ public class UddiDatasourceReader implements IUddiConfig {
 		try {
 			sd = this.inquiry.findService(findService);
 
-			if (sd.getServiceInfos().getServiceInfo().size() > 0) {
-			serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
+			if (sd.getServiceInfos() != null) {
+				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
 
 				for (ServiceInfo serviceInfo : serviceLists) {
 					keyList.add(serviceInfo.getServiceKey());
 				}
 			}
-			
 
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
@@ -93,7 +92,7 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (sd.getServiceInfos().getServiceInfo().size() > 0 ) {
+		if (sd.getServiceInfos() != null) {
 			GetServiceDetail gsd = new GetServiceDetail();
 			gsd.getServiceKey().addAll(keyList);
 
@@ -170,15 +169,14 @@ public class UddiDatasourceReader implements IUddiConfig {
 		try {
 			sd = this.inquiry.findService(findService);
 
-			if (sd.getServiceInfos().getServiceInfo().size() > 0) {
-			serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
+			if (sd.getServiceInfos() != null) {
+				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
 
 				for (ServiceInfo serviceInfo : serviceLists) {
 					keyList.add(serviceInfo.getServiceKey());
 				}
 			}
-			
 
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
@@ -188,7 +186,7 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (sd.getServiceInfos().getServiceInfo().size() > 0 ) {
+		if (sd.getServiceInfos() != null) {
 			GetServiceDetail gsd = new GetServiceDetail();
 			gsd.getServiceKey().addAll(keyList);
 
@@ -264,15 +262,14 @@ public class UddiDatasourceReader implements IUddiConfig {
 		try {
 			sd = this.inquiry.findService(findService);
 
-			if (sd.getServiceInfos().getServiceInfo().size() > 0) {
-			serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
+			if (sd.getServiceInfos() != null) {
+				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
 
 				for (ServiceInfo serviceInfo : serviceLists) {
 					keyList.add(serviceInfo.getServiceKey());
 				}
 			}
-			
 
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
@@ -282,7 +279,7 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (sd.getServiceInfos().getServiceInfo().size() > 0 ) {
+		if (sd.getServiceInfos() != null) {
 			GetServiceDetail gsd = new GetServiceDetail();
 			gsd.getServiceKey().addAll(keyList);
 
@@ -333,13 +330,13 @@ public class UddiDatasourceReader implements IUddiConfig {
 	 */
 	public UddiDataSource getByKey(String key) {
 		GetServiceDetail getServiceDetail = new GetServiceDetail();
-		
+
 		UddiDataSource source = null;
 
 		ServiceDetail serviceDetail = new ServiceDetail();
 
 		getServiceDetail.getServiceKey().add(key);
-		
+
 		try {
 			serviceDetail = inquiry.getServiceDetail(getServiceDetail);
 		} catch (DispositionReportFaultMessage e) {
@@ -350,15 +347,18 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (serviceDetail.getBusinessService().size() > 0) {
-		BusinessService businessService = serviceDetail.getBusinessService().get(0);
+		if (serviceDetail.getBusinessService() != null) {
+			BusinessService businessService = serviceDetail
+					.getBusinessService().get(0);
 
-		source = new UddiDataSource(businessService.getBusinessKey());
-		source.setAddress(businessService.getBindingTemplates().getBindingTemplate().get(0).getAccessPoint().getValue());
-		source.setDescList((ArrayList<Description>) businessService.getDescription());
-		source.setKey(businessService.getServiceKey());
-		source.setReferenceList((ArrayList<KeyedReference>) businessService
-				.getCategoryBag().getKeyedReference());
+			source = new UddiDataSource(businessService.getBusinessKey());
+			source.setAddress(businessService.getBindingTemplates()
+					.getBindingTemplate().get(0).getAccessPoint().getValue());
+			source.setDescList((ArrayList<Description>) businessService
+					.getDescription());
+			source.setKey(businessService.getServiceKey());
+			source.setReferenceList((ArrayList<KeyedReference>) businessService
+					.getCategoryBag().getKeyedReference());
 		}
 		return source;
 
