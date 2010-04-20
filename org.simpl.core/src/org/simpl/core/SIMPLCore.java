@@ -8,8 +8,6 @@ import org.simpl.core.services.dataformat.DataFormatService;
 import org.simpl.core.services.dataformat.DataFormatServiceProvider;
 import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.DataSourceServiceProvider;
-import org.simpl.core.services.storage.StorageService;
-import org.simpl.core.services.storage.StorageServiceImpl;
 
 /**
  * <b>Purpose: Provides access to all services and info of the SIMPLCore.</b> <br>
@@ -25,7 +23,6 @@ public class SIMPLCore {
   private static SIMPLCore instance = null;
   private static SIMPLConfig config = new SIMPLConfig();
   private static AdministrationService administrationService = new AdministrationServiceImpl();
-  private static StorageService storageService = new StorageServiceImpl();
   private static DataSourceServiceProvider dataSourceServiceProvider = new DataSourceServiceProvider();
   private static DataFormatServiceProvider dataFormatServiceProvider = new DataFormatServiceProvider();
 
@@ -79,15 +76,6 @@ public class SIMPLCore {
    */
   public DataFormatService<Object> dataFormatService(String dfType, String dfSubtype) {
     return dataFormatServiceProvider.getInstance(dfType, dfSubtype);
-  }
-  
-  /**
-   * Returns the instance of the storage service.
-   * 
-   * @return
-   */
-  public StorageService storageService() {
-    return storageService;
   }
 
   /**
