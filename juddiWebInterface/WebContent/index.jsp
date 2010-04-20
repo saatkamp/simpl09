@@ -5,7 +5,8 @@
 <%@page import="java.util.ArrayList"%>
 
 <%@page import="org.simpl.uddi.client.UddiDatasourceReader"%>
-<%@page import="org.simpl.uddi.client.UddiDataSource"%><head>
+<%@page import="org.simpl.uddi.client.UddiDataSource"%>
+<%@page import="java.io.PrintWriter"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Simpl jUDDI Webinterface</title>
 </head>
@@ -26,21 +27,24 @@
 		<td>Subtype</td>
 	</tr>
 	<%
-		for (UddiDataSource source : dataSources) {
+		//if (dataSources.size() > 0) {
+			for (UddiDataSource source : dataSources) {
 	%>
 	<tr>
 		<td><%=source.getName()%></td>
 		<td><%=source.getAddress()%></td>
 		<td><%=source.getAttributeValue("type")%></td>
 		<td><%=source.getAttributeValue("subtype")%></td>
-		<td><input type="radio" name="uddi"
-			value="<%=source.getKey()%>"></input></td>
+		<td><input type="radio" name="uddi" value="<%=source.getKey()%>"></input></td>
 	</tr>
 	<%
-		}
+			}
+		//} 
 	%>
 </table>
-<input type="submit" name="edit" value="Edit" /><input type="submit"
-	name="delete" value="Delete" /></form>
+
+<input type="submit" name="edit" value="Edit" />
+<input type="submit" name="delete" value="Delete" />
+</form>
 
 </body>

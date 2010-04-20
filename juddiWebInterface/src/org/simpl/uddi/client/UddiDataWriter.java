@@ -11,6 +11,7 @@ import org.uddi.api_v3.BindingTemplates;
 import org.uddi.api_v3.BusinessEntity;
 import org.uddi.api_v3.BusinessService;
 import org.uddi.api_v3.CategoryBag;
+import org.uddi.api_v3.DeleteService;
 import org.uddi.api_v3.GetAuthToken;
 import org.uddi.api_v3.Name;
 import org.uddi.api_v3.SaveBusiness;
@@ -110,41 +111,6 @@ public class UddiDataWriter implements IUddiConfig {
 		}
 	}
 
-	// /**
-	// * Writes the Business Service to the jUDDI Registry
-	// * @param uddiService
-	// * The UDDIService object
-	// */
-	// public void writeService(UDDIService uddiService) {
-	// BusinessService service = new BusinessService();
-	//
-	// service.getDescription().addAll(uddiService.getDescList());
-	// service.setServiceKey(uddiService.getKey());
-	// service.setBusinessKey(uddiService.getBusinessKey());
-	// service.getName().addAll(uddiService.getNameList());
-	//
-	// // Nicht alle Services haben Attribute
-	// if (!uddiService.getReferenceList().isEmpty()) {
-	// CategoryBag bag = new CategoryBag();
-	// bag.getKeyedReference().addAll(uddiService.getReferenceList());
-	//
-	// service.setCategoryBag(bag);
-	// }
-	//
-	// SaveService saveService = new SaveService();
-	// saveService.getBusinessService().add(service);
-	// saveService.setAuthInfo(this.userAuthToken.getAuthInfo());
-	//
-	// try {
-	// this.publish.saveService(saveService);
-	// } catch (DispositionReportFaultMessage e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// } catch (RemoteException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// }
 
 	/**
 	 * Writes a Business to the jUDDI Registry
@@ -172,6 +138,21 @@ public class UddiDataWriter implements IUddiConfig {
 
 		try {
 		  UddiDataWriter.publish.saveBusiness(saveBusiness);
+		} catch (DispositionReportFaultMessage e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteDatasource(String key) {
+		DeleteService deleteService = new DeleteService();
+		deleteService.setAuthInfo(this.userAuthToken.getAuthInfo());
+		deleteService.getServiceKey().add(key);
+		try {
+			publish.deleteService(deleteService);
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
