@@ -28,11 +28,13 @@ public class ClientTest implements IUddiConfig{
 		dataSource2.addAttribute("subtype", "ext3", KEYPREFIX + "subtype");
 		dataSource2.addAttribute("wspolicy", "http://source2.datasources.org/wspolicy", KEYPREFIX + "wspolicy");
 
-		UddiDataWriter.getInstance().writeBusiness(business);
+		UddiDataWriter dataWriter = UddiDataWriter.getInstance();
 		
-		UddiDataWriter.getInstance().writeDatasource(dataSource);
+		dataWriter.writeBusiness(business);
 		
-		UddiDataWriter.getInstance().writeDatasource(dataSource2);
+		dataWriter.writeDatasource(dataSource);
+		
+		dataWriter.writeDatasource(dataSource2);
 
 		
 		ArrayList<UddiDataSource> ds = UddiDatasourceReader.getInstance().getAllDarasources();
