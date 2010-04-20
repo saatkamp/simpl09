@@ -4,6 +4,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.simpl.core.ui.AboutWindow;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -23,7 +24,8 @@ public class SimplAboutHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		new AboutWindow();
+		AboutWindow about = new AboutWindow(Display.getCurrent().getActiveShell());
+		about.open();
 		return null;
 	}
 
