@@ -1,10 +1,6 @@
 package org.eclipse.simpl.uddi.juddiclient;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.apache.juddi.ClassUtil;
-import org.apache.juddi.v3.client.config.UDDIClientContainer;
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
@@ -17,7 +13,6 @@ import org.uddi.api_v3.BusinessService;
 import org.uddi.api_v3.CategoryBag;
 import org.uddi.api_v3.GetAuthToken;
 import org.uddi.api_v3.Name;
-import org.uddi.api_v3.SaveBinding;
 import org.uddi.api_v3.SaveBusiness;
 import org.uddi.api_v3.SaveService;
 import org.uddi.v3_service.DispositionReportFaultMessage;
@@ -32,16 +27,16 @@ public class UddiDataWriter implements IUddiConfig {
 
 	private AuthToken userAuthToken = null;
 	
-	public static UddiDataWriter dataWriter = null;
+	private static UddiDataWriter  dataWriter = null;
 
 	private UddiDataWriter() {
 
 		Transport transport = new JAXWSTransport("default");
 
 		try {
-			this.security = transport
+		  UddiDataWriter.security = transport
 					.getUDDISecurityService("http://localhost:8080/juddiv3/services/security?wsdl");
-			this.publish = transport.getUDDIPublishService("http://localhost:8080/juddiv3/services/publish?wsdl");
+		  UddiDataWriter.publish = transport.getUDDIPublishService("http://localhost:8080/juddiv3/services/publish?wsdl");
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,7 +47,7 @@ public class UddiDataWriter implements IUddiConfig {
 		getAuthToken.setCred(USERPASSWORD);
 
 		try {
-			this.userAuthToken = this.security.getAuthToken(getAuthToken);
+			this.userAuthToken = UddiDataWriter.security.getAuthToken(getAuthToken);
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,7 +100,7 @@ public class UddiDataWriter implements IUddiConfig {
 
 		saveService.getBusinessService().add(service);
 		try {
-			this.publish.saveService(saveService);
+		  UddiDataWriter.publish.saveService(saveService);
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -176,7 +171,7 @@ public class UddiDataWriter implements IUddiConfig {
 		saveBusiness.setAuthInfo(userAuthToken.getAuthInfo());
 
 		try {
-			this.publish.saveBusiness(saveBusiness);
+		  UddiDataWriter.publish.saveBusiness(saveBusiness);
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -186,9 +181,9 @@ public class UddiDataWriter implements IUddiConfig {
 		}
 	}
 	
-	public static UddiDataWriter getInstance () {
+	public static UddiDataWriter getInstance() {
 		if (dataWriter == null) {
-			dataWriter = new UddiDataWriter();
+			dataWriter = new UddiDataWriter();			
 		}
 		return dataWriter;
 	}
