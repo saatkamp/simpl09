@@ -21,7 +21,7 @@ public class ClientTest implements IUddiConfig{
 		
 		UddiDataSource dataSource2 = new UddiDataSource(business.getKey());
 		dataSource2.setAddress("http://source2.datasources.org");
-		dataSource2.setName("Ext 3 File System");
+		dataSource2.setName("Ext 3 File System test");
 		dataSource2.setKey(KEYPREFIX + "source_2");
 		dataSource2.addDescription("Filesystem Ext3", "ger");
 		dataSource2.addAttribute("type", "filesystem", KEYPREFIX + "type");
@@ -35,7 +35,6 @@ public class ClientTest implements IUddiConfig{
 		dataWriter.writeDatasource(dataSource);
 		
 		dataWriter.writeDatasource(dataSource2);
-
 		
 		ArrayList<UddiDataSource> ds = UddiDatasourceReader.getInstance().getAllDarasources();
 		
