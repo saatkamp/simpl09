@@ -5,6 +5,7 @@ public class EPR {
 	String adapterURI = null;
 	String statement = null;
 	String adress = null;
+	String referenceName = null;
 
 	public String getAdress() {
 		return adress;
@@ -30,5 +31,11 @@ public class EPR {
 		this.statement = statement;
 	}
 
+	public String getReferenceName() {
+		return referenceName;
+	}
 	
+	public void setReferenceName(String referenceName) {
+		this.referenceName = referenceName;
+	}
 }

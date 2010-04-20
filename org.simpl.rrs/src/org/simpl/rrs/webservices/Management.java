@@ -40,7 +40,7 @@ public class Management {
 
 	  File EPR = null;
       String report = null;
-	  report = RRS.getInstance().managementService().Insert(EPR);
+	  //report = RRS.getInstance().managementService().Insert(EPR);
 
     
     return report;
@@ -56,7 +56,7 @@ public class Management {
 
 	  File EPR = null;
       String report = null;
-	  report = RRS.getInstance().managementService().Update(EPR);
+	  //report = RRS.getInstance().managementService().Update(EPR);
 
     
     return report;
