@@ -21,7 +21,7 @@ public class ModelProvider {
 		// put them into the model
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
 
-		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDarasources();
+		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDatasources();
 		
 		for (UddiDataSource source: dsList) {
 			DataSource ds = factory.createDataSource();
@@ -62,7 +62,7 @@ public class ModelProvider {
 	public void refresh(){
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
 
-		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDarasources();
+		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDatasources();
 		
 		for (UddiDataSource source: dsList) {
 			if (!insertedDataSources.contains(source.getName())){
