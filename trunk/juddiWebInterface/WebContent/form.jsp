@@ -49,7 +49,7 @@
 		key = request.getParameter("key");
 	}
 
-	if (request.getParameter("message") != null) {
+	if (request.getParameter("message") != null && !request.getParameter("message").equals("")) {
 		PrintWriter output = response.getWriter();
 		output.println(request.getParameter("message"));
 
