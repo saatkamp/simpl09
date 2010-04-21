@@ -1,4 +1,3 @@
-package org.eclipse.simpl.uddi.juddiclient;
 
 
 import java.rmi.RemoteException;
