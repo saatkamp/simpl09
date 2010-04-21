@@ -1,5 +1,6 @@
 package org.simpl.uddi.client;
 
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -359,6 +360,7 @@ public class UddiDatasourceReader implements IUddiConfig {
 			source.setKey(businessService.getServiceKey());
 			source.setReferenceList((ArrayList<KeyedReference>) businessService
 					.getCategoryBag().getKeyedReference());
+			source.setName(businessService.getName().get(0).getValue());
 		}
 		return source;
 

@@ -71,7 +71,10 @@ public class UddiDataWriter implements IUddiConfig {
 
 		service.getDescription().addAll(source.getDescList());
 
-		service.setServiceKey(source.getKey());
+		if (source.getKey() != null) {
+			service.setServiceKey(source.getKey());
+		}
+		
 		service.setBusinessKey(source.getBusinessKey());
 		Name name = new Name();
 		name.setValue(source.getName());
