@@ -141,6 +141,15 @@ public class DatasourcePackageImpl extends EPackageImpl implements DatasourcePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDataSource_Language() {
+		return (EAttribute)dataSourceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DatasourceFactory getDatasourceFactory() {
 		return (DatasourceFactory)getEFactoryInstance();
 	}
@@ -169,6 +178,7 @@ public class DatasourcePackageImpl extends EPackageImpl implements DatasourcePac
 		createEAttribute(dataSourceEClass, DATA_SOURCE__ADDRESS);
 		createEAttribute(dataSourceEClass, DATA_SOURCE__TYPE);
 		createEAttribute(dataSourceEClass, DATA_SOURCE__SUBTYPE);
+		createEAttribute(dataSourceEClass, DATA_SOURCE__LANGUAGE);
 	}
 
 	/**
@@ -206,6 +216,7 @@ public class DatasourcePackageImpl extends EPackageImpl implements DatasourcePac
 		initEAttribute(getDataSource_Address(), ecorePackage.getEString(), "address", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSource_Type(), ecorePackage.getEString(), "type", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSource_Subtype(), ecorePackage.getEString(), "subtype", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSource_Language(), ecorePackage.getEString(), "language", null, 0, 1, DataSource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

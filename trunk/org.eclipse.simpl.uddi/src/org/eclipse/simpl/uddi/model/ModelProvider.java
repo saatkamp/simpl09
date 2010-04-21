@@ -11,15 +11,16 @@ import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 public class ModelProvider {
 	private static ModelProvider content;
 	private List<DataSource> datasources;
+	private List<String> insertedDataSources;
 	
 
 	private ModelProvider() {
 		datasources = new ArrayList<DataSource>();
+		insertedDataSources = new ArrayList<String>();
 		// Image here some uddi access to read the Datasources and to
 		// put them into the model
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
 
-		
 		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDarasources();
 		
 		for (UddiDataSource source: dsList) {
@@ -29,7 +30,9 @@ public class ModelProvider {
 			ds.setAddress(source.getAddress());
 			ds.setType(source.getAttributeValue("type"));
 			ds.setSubtype(source.getAttributeValue("subtype"));
+			ds.setLanguage(source.getAttributeValue("language"));
 			datasources.add(ds);
+			insertedDataSources.add(source.getName());
 		}
 	}
 
@@ -52,7 +55,28 @@ public class ModelProvider {
 		return found;
 	}
 
-	public List<DataSource> getReferences() {
+	public List<DataSource> getDataSources() {
 		return datasources;
+	}
+	
+	public void refresh(){
+		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
+
+		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDarasources();
+		
+		for (UddiDataSource source: dsList) {
+			if (!insertedDataSources.contains(source.getName())){
+				DataSource ds = factory.createDataSource();
+				
+				ds.setName(source.getName());
+				ds.setAddress(source.getAddress());
+				ds.setType(source.getAttributeValue("type"));
+				ds.setSubtype(source.getAttributeValue("subtype"));
+				ds.setLanguage(source.getAttributeValue("language"));
+					
+				datasources.add(ds);
+				insertedDataSources.add(source.getName());
+			}	
+		}
 	}
 }

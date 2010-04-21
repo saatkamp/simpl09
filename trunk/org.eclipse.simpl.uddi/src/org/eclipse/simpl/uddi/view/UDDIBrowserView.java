@@ -45,6 +45,7 @@ public class UDDIBrowserView extends ViewPart {
 			}
 
 		});
+		
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
 		createColumns(viewer);
@@ -52,7 +53,7 @@ public class UDDIBrowserView extends ViewPart {
 		viewer.setLabelProvider(new UDDILabelProvider());
 		// Get the content for the viewer, setInput will call getElements in the
 		// contentProvider
-		viewer.setInput(ModelProvider.getInstance().getReferences());
+		viewer.setInput(ModelProvider.getInstance().getDataSources());
 		// Make the selection available
 		getSite().setSelectionProvider(viewer);
 		// Set the sorter for the table
@@ -78,8 +79,8 @@ public class UDDIBrowserView extends ViewPart {
 	// This will create the columns for the table
 	private void createColumns(final TableViewer viewer) {
 
-		String[] titles = { "Name", "Address", "Type", "Subtype" };
-		int[] bounds = { 150, 200, 100, 300 };
+		String[] titles = { "Name", "Address", "Type", "Subtype", "Language" };
+		int[] bounds = { 125, 200, 100, 250, 100};
 
 		for (int i = 0; i < titles.length; i++) {
 			final int index = i;

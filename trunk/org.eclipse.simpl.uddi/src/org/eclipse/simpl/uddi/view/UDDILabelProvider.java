@@ -20,6 +20,8 @@ public class UDDILabelProvider extends LabelProvider implements
 			return datasource.getType();
 		case 3:
 			return datasource.getSubtype();
+		case 4:
+			return datasource.getLanguage();
 		default:
 			throw new RuntimeException("Too much columns");
 		}

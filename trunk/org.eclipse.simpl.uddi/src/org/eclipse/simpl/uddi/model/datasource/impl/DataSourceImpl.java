@@ -27,6 +27,7 @@ import org.eclipse.simpl.uddi.model.datasource.DatasourcePackage;
  *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getSubtype <em>Subtype</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.impl.DataSourceImpl#getLanguage <em>Language</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,6 +113,26 @@ public class DataSourceImpl extends EObjectImpl implements DataSource {
 	 * @ordered
 	 */
 	protected String subtype = SUBTYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LANGUAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String language = LANGUAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,6 +242,27 @@ public class DataSourceImpl extends EObjectImpl implements DataSource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getLanguage() {
+		return language;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLanguage(String newLanguage) {
+		String oldLanguage = language;
+		language = newLanguage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DatasourcePackage.DATA_SOURCE__LANGUAGE, oldLanguage, language));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -232,6 +274,8 @@ public class DataSourceImpl extends EObjectImpl implements DataSource {
 				return getType();
 			case DatasourcePackage.DATA_SOURCE__SUBTYPE:
 				return getSubtype();
+			case DatasourcePackage.DATA_SOURCE__LANGUAGE:
+				return getLanguage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -255,6 +299,9 @@ public class DataSourceImpl extends EObjectImpl implements DataSource {
 				return;
 			case DatasourcePackage.DATA_SOURCE__SUBTYPE:
 				setSubtype((String)newValue);
+				return;
+			case DatasourcePackage.DATA_SOURCE__LANGUAGE:
+				setLanguage((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -280,6 +327,9 @@ public class DataSourceImpl extends EObjectImpl implements DataSource {
 			case DatasourcePackage.DATA_SOURCE__SUBTYPE:
 				setSubtype(SUBTYPE_EDEFAULT);
 				return;
+			case DatasourcePackage.DATA_SOURCE__LANGUAGE:
+				setLanguage(LANGUAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -300,6 +350,8 @@ public class DataSourceImpl extends EObjectImpl implements DataSource {
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case DatasourcePackage.DATA_SOURCE__SUBTYPE:
 				return SUBTYPE_EDEFAULT == null ? subtype != null : !SUBTYPE_EDEFAULT.equals(subtype);
+			case DatasourcePackage.DATA_SOURCE__LANGUAGE:
+				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -322,6 +374,8 @@ public class DataSourceImpl extends EObjectImpl implements DataSource {
 		result.append(type);
 		result.append(", subtype: ");
 		result.append(subtype);
+		result.append(", language: ");
+		result.append(language);
 		result.append(')');
 		return result.toString();
 	}
