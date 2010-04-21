@@ -3,11 +3,13 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataWriter;
 
 /**
@@ -40,16 +42,43 @@ public class UddiAction extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String delete = request.getParameter("delete");
 		String edit = request.getParameter("edit");
-		out.println(delete);
+		String newsource = request.getParameter("new");
+		String save = request.getParameter("save");
 		UddiDataWriter dataWriter = UddiDataWriter.getInstance();
 		
 		if (delete != null) {
 			dataWriter.deleteDatasource(request.getParameter("uddi"));
 			response.sendRedirect("index.jsp");
-		} else if (edit != null) {
-			out.println("Edit");
-		} else {
-			out.println("fuck you");
+		} else if (edit != null || newsource != null) {
+			String nextJSP = "/form.jsp";
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+			dispatcher.forward(request,response);
+
+		} else if (save != null) {
+			if (FormValidator.validateForm(request)) {
+				UddiDataSource dataSource = new UddiDataSource("uddi:juddi.apache.org:simpl");
+				dataSource.setName(request.getParameter("name"));
+				dataSource.setAddress(request.getParameter("address"));
+				dataSource.addAttribute("type", request.getParameter("type"), "uddi:juddi.apache.org:type");
+				dataSource.addAttribute("subtype", request.getParameter("subtype"), "uddi:juddi.apache.org:subtype");
+				dataSource.addAttribute("wspolicy", request.getParameter("policy"), "uddi:juddi.apache.org:wspolicy");
+				dataSource.setKey(request.getParameter("key"));
+				dataWriter.writeDatasource(dataSource);
+				request.setAttribute("Message", "Datenquelle erfolgreich hinzugefügt");
+				String nextJSP = "/index.jsp?message="+"Datasource Added";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request,response);
+				
+				//TODO gegebenfalls ändern
+			} else {
+				String nextJSP = "/form.jsp?message="+"All fields need content";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+				dispatcher.forward(request,response);
+				
+			}
+		}
+		else {
+			out.println("Unbekannte Aktion");
 		}
 
 		

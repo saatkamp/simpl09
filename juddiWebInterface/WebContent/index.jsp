@@ -17,6 +17,11 @@
 			.getInstance();
 	ArrayList<UddiDataSource> dataSources = datasourceReader
 			.getAllDarasources();
+	if (request.getParameter("message") != null) {
+		PrintWriter output = response.getWriter();
+		output.println(request.getParameter("message"));
+		
+	}
 %>
 <form action="UddiAction" method="post">
 <table border="1">
@@ -27,8 +32,7 @@
 		<td>Subtype</td>
 	</tr>
 	<%
-		//if (dataSources.size() > 0) {
-			for (UddiDataSource source : dataSources) {
+		for (UddiDataSource source : dataSources) {
 	%>
 	<tr>
 		<td><%=source.getName()%></td>
@@ -38,13 +42,16 @@
 		<td><input type="radio" name="uddi" value="<%=source.getKey()%>"></input></td>
 	</tr>
 	<%
-			}
-		//} 
+		}
 	%>
 </table>
-
-<input type="submit" name="edit" value="Edit" />
-<input type="submit" name="delete" value="Delete" />
-</form>
+<input type="submit" name="new" value="New" />
+<%
+	if (dataSources.size() > 0) {
+%> <input type="submit" name="edit"
+	value="Edit" /> <input type="submit" name="delete" value="Delete" /></form>
+<%
+	}
+%>
 
 </body>
