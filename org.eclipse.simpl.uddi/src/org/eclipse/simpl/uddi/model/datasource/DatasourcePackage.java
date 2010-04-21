@@ -105,13 +105,22 @@ public interface DatasourcePackage extends EPackage {
 	int DATA_SOURCE__SUBTYPE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SOURCE__LANGUAGE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Data Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SOURCE_FEATURE_COUNT = 4;
+	int DATA_SOURCE_FEATURE_COUNT = 5;
 
 
 	/**
@@ -167,6 +176,17 @@ public interface DatasourcePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataSource_Subtype();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getLanguage <em>Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Language</em>'.
+	 * @see org.eclipse.simpl.uddi.model.datasource.DataSource#getLanguage()
+	 * @see #getDataSource()
+	 * @generated
+	 */
+	EAttribute getDataSource_Language();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -231,6 +251,14 @@ public interface DatasourcePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SOURCE__SUBTYPE = eINSTANCE.getDataSource_Subtype();
+
+		/**
+		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SOURCE__LANGUAGE = eINSTANCE.getDataSource_Language();
 
 	}
 

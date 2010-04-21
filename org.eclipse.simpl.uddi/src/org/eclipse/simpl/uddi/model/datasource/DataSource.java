@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getSubtype <em>Subtype</em>}</li>
+ *   <li>{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getLanguage <em>Language</em>}</li>
  * </ul>
  * </p>
  *
@@ -131,5 +132,31 @@ public interface DataSource extends EObject {
 	 * @generated
 	 */
 	void setSubtype(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Language</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Language</em>' attribute.
+	 * @see #setLanguage(String)
+	 * @see org.eclipse.simpl.uddi.model.datasource.DatasourcePackage#getDataSource_Language()
+	 * @model
+	 * @generated
+	 */
+	String getLanguage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.simpl.uddi.model.datasource.DataSource#getLanguage <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Language</em>' attribute.
+	 * @see #getLanguage()
+	 * @generated
+	 */
+	void setLanguage(String value);
 
 } // DataSource
