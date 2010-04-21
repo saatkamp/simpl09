@@ -702,13 +702,22 @@ public interface ddPackage extends EPackage {
 	int TDATASOURCE__ADDRESS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Password</b></em>' attribute.
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TDATASOURCE__PASSWORD = 2;
+	int TDATASOURCE__TYPE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Subtype</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCE__SUBTYPE = 3;
 
 	/**
 	 * The feature id for the '<em><b>User Name</b></em>' attribute.
@@ -717,7 +726,16 @@ public interface ddPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TDATASOURCE__USER_NAME = 3;
+	int TDATASOURCE__USER_NAME = 4;
+
+	/**
+	 * The feature id for the '<em><b>Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCE__PASSWORD = 5;
 
 	/**
 	 * The number of structural features of the '<em>TDatasource</em>' class.
@@ -726,7 +744,7 @@ public interface ddPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TDATASOURCE_FEATURE_COUNT = 4;
+	int TDATASOURCE_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl <em>TActivity Mapping</em>}' class.
@@ -1402,6 +1420,28 @@ public interface ddPackage extends EPackage {
 	EAttribute getTDatasource_Address();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getType()
+	 * @see #getTDatasource()
+	 * @generated
+	 */
+	EAttribute getTDatasource_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getSubtype <em>Subtype</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Subtype</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getSubtype()
+	 * @see #getTDatasource()
+	 * @generated
+	 */
+	EAttribute getTDatasource_Subtype();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getDataSourceName <em>Data Source Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2004,6 +2044,22 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TDATASOURCE__ADDRESS = eINSTANCE.getTDatasource_Address();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TDATASOURCE__TYPE = eINSTANCE.getTDatasource_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Subtype</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TDATASOURCE__SUBTYPE = eINSTANCE.getTDatasource_Subtype();
 
 		/**
 		 * The meta object literal for the '<em><b>Data Source Name</b></em>' attribute feature.

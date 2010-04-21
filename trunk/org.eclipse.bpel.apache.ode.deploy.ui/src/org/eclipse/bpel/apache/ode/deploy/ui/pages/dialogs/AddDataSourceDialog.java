@@ -22,6 +22,8 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 
 	private Text name;
 	private Text address;
+	private Text type;
+	private Text subtype;
 	private Text user;
 	private Text password;
 	private TDatasource datasource;
@@ -59,20 +61,33 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 		Label label1 = new Label(parent, SWT.NONE);
 		label1.setText("Name");
 		name = new Text(parent, SWT.BORDER);
+		
 		Label label2 = new Label(parent, SWT.NONE);
 		label2.setText("Address");
 		address = new Text(parent, SWT.BORDER);
+		
 		Label label3 = new Label(parent, SWT.NONE);
-		label3.setText("User name");
-		user = new Text(parent, SWT.BORDER);
+		label3.setText("Type");
+		type = new Text(parent, SWT.BORDER);
+		
 		Label label4 = new Label(parent, SWT.NONE);
-		label4.setText("Password");
+		label4.setText("Subtype");
+		subtype = new Text(parent, SWT.BORDER);
+		
+		Label label5 = new Label(parent, SWT.NONE);
+		label5.setText("User name");
+		user = new Text(parent, SWT.BORDER);
+		
+		Label label6 = new Label(parent, SWT.NONE);
+		label6.setText("Password");
 		password = new Text(parent, SWT.BORDER);
 		
 		name.setLayoutData(gridData);
- 		address.setLayoutData(gridData);
- 		user.setLayoutData(gridData);
- 		password.setLayoutData(gridData);
+		address.setLayoutData(gridData);
+		type.setLayoutData(gridData);
+		subtype.setLayoutData(gridData);
+		user.setLayoutData(gridData);
+		password.setLayoutData(gridData);
 
 		return parent;
 	}
@@ -95,6 +110,8 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 					datasource = factory.createTDatasource();
 					datasource.setDataSourceName(name.getText());
 					datasource.setAddress(address.getText());
+					datasource.setType(type.getText());
+					datasource.setSubtype(subtype.getText());
 					datasource.setUserName(user.getText());
 					datasource.setPassword(password.getText());
 					close();

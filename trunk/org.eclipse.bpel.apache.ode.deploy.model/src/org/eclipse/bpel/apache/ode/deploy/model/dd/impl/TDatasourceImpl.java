@@ -31,8 +31,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getDataSourceName <em>Data Source Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getAddress <em>Address</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getSubtype <em>Subtype</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getUserName <em>User Name</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getPassword <em>Password</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,24 +82,44 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 	protected String address = ADDRESS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassword()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PASSWORD_EDEFAULT = null;
+	protected static final String TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPassword()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected String password = PASSWORD_EDEFAULT;
+	protected String type = TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSubtype() <em>Subtype</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubtype()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SUBTYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSubtype() <em>Subtype</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubtype()
+	 * @generated
+	 * @ordered
+	 */
+	protected String subtype = SUBTYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getUserName() <em>User Name</em>}' attribute.
@@ -118,6 +140,26 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 	 * @ordered
 	 */
 	protected String userName = USER_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String password = PASSWORD_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,6 +199,48 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 		address = newAddress;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TDATASOURCE__ADDRESS, oldAddress, address));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(String newType) {
+		String oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TDATASOURCE__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSubtype() {
+		return subtype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSubtype(String newSubtype) {
+		String oldSubtype = subtype;
+		subtype = newSubtype;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TDATASOURCE__SUBTYPE, oldSubtype, subtype));
 	}
 
 	/**
@@ -234,10 +318,14 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return getDataSourceName();
 			case ddPackage.TDATASOURCE__ADDRESS:
 				return getAddress();
-			case ddPackage.TDATASOURCE__PASSWORD:
-				return getPassword();
+			case ddPackage.TDATASOURCE__TYPE:
+				return getType();
+			case ddPackage.TDATASOURCE__SUBTYPE:
+				return getSubtype();
 			case ddPackage.TDATASOURCE__USER_NAME:
 				return getUserName();
+			case ddPackage.TDATASOURCE__PASSWORD:
+				return getPassword();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -256,11 +344,17 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 			case ddPackage.TDATASOURCE__ADDRESS:
 				setAddress((String)newValue);
 				return;
-			case ddPackage.TDATASOURCE__PASSWORD:
-				setPassword((String)newValue);
+			case ddPackage.TDATASOURCE__TYPE:
+				setType((String)newValue);
+				return;
+			case ddPackage.TDATASOURCE__SUBTYPE:
+				setSubtype((String)newValue);
 				return;
 			case ddPackage.TDATASOURCE__USER_NAME:
 				setUserName((String)newValue);
+				return;
+			case ddPackage.TDATASOURCE__PASSWORD:
+				setPassword((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -280,11 +374,17 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 			case ddPackage.TDATASOURCE__ADDRESS:
 				setAddress(ADDRESS_EDEFAULT);
 				return;
-			case ddPackage.TDATASOURCE__PASSWORD:
-				setPassword(PASSWORD_EDEFAULT);
+			case ddPackage.TDATASOURCE__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
+			case ddPackage.TDATASOURCE__SUBTYPE:
+				setSubtype(SUBTYPE_EDEFAULT);
 				return;
 			case ddPackage.TDATASOURCE__USER_NAME:
 				setUserName(USER_NAME_EDEFAULT);
+				return;
+			case ddPackage.TDATASOURCE__PASSWORD:
+				setPassword(PASSWORD_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -302,10 +402,14 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return DATA_SOURCE_NAME_EDEFAULT == null ? dataSourceName != null : !DATA_SOURCE_NAME_EDEFAULT.equals(dataSourceName);
 			case ddPackage.TDATASOURCE__ADDRESS:
 				return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
-			case ddPackage.TDATASOURCE__PASSWORD:
-				return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
+			case ddPackage.TDATASOURCE__TYPE:
+				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case ddPackage.TDATASOURCE__SUBTYPE:
+				return SUBTYPE_EDEFAULT == null ? subtype != null : !SUBTYPE_EDEFAULT.equals(subtype);
 			case ddPackage.TDATASOURCE__USER_NAME:
 				return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
+			case ddPackage.TDATASOURCE__PASSWORD:
+				return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -324,10 +428,14 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 		result.append(dataSourceName);
 		result.append(", address: ");
 		result.append(address);
-		result.append(", password: ");
-		result.append(password);
+		result.append(", type: ");
+		result.append(type);
+		result.append(", subtype: ");
+		result.append(subtype);
 		result.append(", userName: ");
 		result.append(userName);
+		result.append(", password: ");
+		result.append(password);
 		result.append(')');
 		return result.toString();
 	}
