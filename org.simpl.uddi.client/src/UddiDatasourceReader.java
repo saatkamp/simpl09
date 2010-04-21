@@ -6,14 +6,10 @@ import java.util.ArrayList;
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
-import org.uddi.api_v3.BindingDetail;
-import org.uddi.api_v3.BindingTemplate;
 import org.uddi.api_v3.BusinessService;
 import org.uddi.api_v3.CategoryBag;
 import org.uddi.api_v3.Description;
-import org.uddi.api_v3.FindBinding;
 import org.uddi.api_v3.FindService;
-import org.uddi.api_v3.GetBindingDetail;
 import org.uddi.api_v3.GetServiceDetail;
 import org.uddi.api_v3.KeyedReference;
 import org.uddi.api_v3.ServiceDetail;
@@ -46,7 +42,7 @@ public class UddiDatasourceReader implements IUddiConfig {
 	 * 
 	 * @return ArrayList of all datasources inside the jUDDI Registry
 	 */
-	public ArrayList<UddiDataSource> getAllDarasources() {
+	public ArrayList<UddiDataSource> getAllDatasources() {
 
 		FindService findService = new FindService();
 
