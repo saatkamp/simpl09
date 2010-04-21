@@ -1,3 +1,4 @@
+
 import java.rmi.RemoteException;
 
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
@@ -71,6 +72,7 @@ public class UddiDataWriter implements IUddiConfig {
 		service.getDescription().addAll(source.getDescList());
 
 		service.setServiceKey(source.getKey());
+				
 		service.setBusinessKey(source.getBusinessKey());
 		Name name = new Name();
 		name.setValue(source.getName());
@@ -81,6 +83,7 @@ public class UddiDataWriter implements IUddiConfig {
 		accessPoint.setValue(source.getAddress());
 
 		template.setAccessPoint(accessPoint);
+		
 		template.setServiceKey(source.getKey());
 
 		CategoryBag bag = new CategoryBag();
