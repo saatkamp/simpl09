@@ -55,7 +55,8 @@ public class UddiAction extends HttpServlet {
 			dispatcher.forward(request,response);
 
 		} else if (save != null) {
-			if (FormValidator.validateForm(request)) {
+			String message = FormValidator.validateForm(request);
+			if (message.equals("")) {
 				UddiDataSource dataSource = new UddiDataSource("uddi:juddi.apache.org:simpl");
 				dataSource.setName(request.getParameter("name"));
 				dataSource.setAddress(request.getParameter("address"));
@@ -71,7 +72,7 @@ public class UddiAction extends HttpServlet {
 				
 				//TODO gegebenfalls ändern
 			} else {
-				String nextJSP = "/form.jsp?message="+"All fields need content";
+				String nextJSP = "/form.jsp?message="+message;
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
 				
