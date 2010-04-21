@@ -153,4 +153,16 @@ public class UddiDataSource implements IUddiConfig {
 
 		return value;
 	}
+	
+	public String getWsPolicy() {
+		return getAttributeValue("wspolicy");
+	}
+	
+	public String getType() {
+		return getAttributeValue("type");
+	}
+	
+	public String getSubtype() {
+		return getAttributeValue("subtype");
+	}
 }

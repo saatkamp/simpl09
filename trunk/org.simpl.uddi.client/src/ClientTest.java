@@ -36,7 +36,7 @@ public class ClientTest implements IUddiConfig{
 		
 		dataWriter.writeDatasource(dataSource2);
 		
-		ArrayList<UddiDataSource> ds = UddiDatasourceReader.getInstance().getAllDarasources();
+		ArrayList<UddiDataSource> ds = UddiDatasourceReader.getInstance().getAllDatasources();
 		
 		System.out.println(ds.get(0).getBusinessKey());
 		
