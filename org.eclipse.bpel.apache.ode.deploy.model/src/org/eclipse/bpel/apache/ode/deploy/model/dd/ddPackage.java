@@ -784,13 +784,22 @@ public interface ddPackage extends EPackage {
 	int TACTIVITY_MAPPING__POLICY = 2;
 
 	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TACTIVITY_MAPPING__STRATEGY = 3;
+
+	/**
 	 * The number of structural features of the '<em>TActivity Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TACTIVITY_MAPPING_FEATURE_COUNT = 3;
+	int TACTIVITY_MAPPING_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.
@@ -840,6 +849,16 @@ public interface ddPackage extends EPackage {
 	int GENERATE_TYPE = 16;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType <em>Strategy Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getStrategyType()
+	 * @generated
+	 */
+	int STRATEGY_TYPE = 17;
+
+	/**
 	 * The meta object id for the '<em>Generate Type Object</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -847,7 +866,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateTypeObject()
 	 * @generated
 	 */
-	int GENERATE_TYPE_OBJECT = 17;
+	int GENERATE_TYPE_OBJECT = 18;
 
 
 	/**
@@ -1518,6 +1537,17 @@ public interface ddPackage extends EPackage {
 	EReference getTActivityMapping_Policy();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy <em>Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Strategy</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy()
+	 * @see #getTActivityMapping()
+	 * @generated
+	 */
+	EAttribute getTActivityMapping_Strategy();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy <em>TPolicy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1558,6 +1588,16 @@ public interface ddPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getGenerateType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType <em>Strategy Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Strategy Type</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType
+	 * @generated
+	 */
+	EEnum getStrategyType();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type Object</em>}'.
@@ -2120,6 +2160,14 @@ public interface ddPackage extends EPackage {
 		EReference TACTIVITY_MAPPING__POLICY = eINSTANCE.getTActivityMapping_Policy();
 
 		/**
+		 * The meta object literal for the '<em><b>Strategy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TACTIVITY_MAPPING__STRATEGY = eINSTANCE.getTActivityMapping_Strategy();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2154,6 +2202,16 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum GENERATE_TYPE = eINSTANCE.getGenerateType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType <em>Strategy Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getStrategyType()
+		 * @generated
+		 */
+		EEnum STRATEGY_TYPE = eINSTANCE.getStrategyType();
 
 		/**
 		 * The meta object literal for the '<em>Generate Type Object</em>' data type.

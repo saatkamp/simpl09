@@ -1,8 +1,10 @@
 package org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -47,6 +49,7 @@ public class AddMappingDialog extends TitleAreaDialog {
 	private CCombo dataSource;
 	private Text policyAdress;
 	private Button buttonSelectFile;
+	private CCombo strategy;
 
 	public TActivityMapping getMapping() {
 		return mapping;
@@ -119,10 +122,17 @@ public class AddMappingDialog extends TitleAreaDialog {
 				}
 			}
 		});
-
+		
+		Label label4 = new Label(parent, SWT.NONE);
+		label4.setText("Strategy");
+		strategy = new CCombo(parent, SWT.BORDER);
+		strategy.setItems(DeployUtils.getStrategies());
+		Label filler3 = new Label(parent, SWT.NONE);
+		
 		availableActivities.setLayoutData(gridData);
 		dataSource.setLayoutData(gridData);
 		policyAdress.setLayoutData(gridData);
+		strategy.setLayoutData(gridData);
 
 		return parent;
 	}
@@ -137,9 +147,9 @@ public class AddMappingDialog extends TitleAreaDialog {
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				/*
-				 * Saving the values in the TDatasource
+				 * Saving the values in the Activity Mapping
 				 */
-				// Create a new TDatasource
+				// Create a new Activity Mapping
 				ddFactory factory = ddFactory.eINSTANCE;
 				mapping = factory.createTActivityMapping();
 
@@ -157,6 +167,9 @@ public class AddMappingDialog extends TitleAreaDialog {
 
 				mapping.setPolicy(DeployUtils.queryPolicyByPath(policyAdress
 						.getText()));
+				
+				// TODO: Has to be changed if more than one strategy is available.
+				mapping.setStrategy(strategy.getText().equals(StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND : StrategyType.FIRST_FIND);
 				close();
 			}
 		});

@@ -1,6 +1,7 @@
 package org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
@@ -47,6 +48,7 @@ public class EditMappingDialog extends TitleAreaDialog {
 	private CCombo dataSource;
 	private Text policyAdress;
 	private Button buttonSelectFile;
+	private CCombo strategy;
 
 	public EditMappingDialog(Shell parentShell, ProcessType pt,
 			TActivityMapping mapping) {
@@ -131,10 +133,20 @@ public class EditMappingDialog extends TitleAreaDialog {
 				}
 			}
 		});
-
+		
+		Label label4 = new Label(parent, SWT.NONE);
+		label4.setText("Strategy");
+		strategy = new CCombo(parent, SWT.BORDER);
+		strategy.setItems(DeployUtils.getStrategies());
+		if (mapping.getStrategy() != null){
+			strategy.setText(mapping.getStrategy().getName());
+		}
+		Label filler3 = new Label(parent, SWT.NONE);
+		
 		availableActivities.setLayoutData(gridData);
 		dataSource.setLayoutData(gridData);
 		policyAdress.setLayoutData(gridData);
+		strategy.setLayoutData(gridData);
 
 		return parent;
 	}
@@ -149,9 +161,9 @@ public class EditMappingDialog extends TitleAreaDialog {
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 				/*
-				 * Saving the values in the TDatasource
+				 * Saving the values in the Activity Mapping
 				 */
-				// Create a new TDatasource
+				// Create a new Activity Mapping
 				ddFactory factory = ddFactory.eINSTANCE;
 				mapping = factory.createTActivityMapping();
 
@@ -169,7 +181,9 @@ public class EditMappingDialog extends TitleAreaDialog {
 
 				mapping.setPolicy(DeployUtils.queryPolicyByPath(policyAdress
 						.getText()));
-
+				
+				// TODO: Has to be changed if more than one strategy is available.
+				mapping.setStrategy(strategy.getText().equals(StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND : StrategyType.FIRST_FIND);
 				close();
 			}
 		});

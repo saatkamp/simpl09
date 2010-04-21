@@ -17,6 +17,7 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
@@ -167,6 +168,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	private EEnum generateTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum strategyTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -805,6 +813,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTActivityMapping_Strategy() {
+		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTPolicy() {
 		return tPolicyEClass;
 	}
@@ -834,6 +851,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 */
 	public EEnum getGenerateType() {
 		return generateTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getStrategyType() {
+		return strategyTypeEEnum;
 	}
 
 	/**
@@ -949,6 +975,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__DATA_SOURCE_NAME);
 		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__POLICY);
+		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__STRATEGY);
 
 		tPolicyEClass = createEClass(TPOLICY);
 		createEAttribute(tPolicyEClass, TPOLICY__POLICY_DATA);
@@ -956,6 +983,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 
 		// Create enums
 		generateTypeEEnum = createEEnum(GENERATE_TYPE);
+		strategyTypeEEnum = createEEnum(STRATEGY_TYPE);
 
 		// Create data types
 		generateTypeObjectEDataType = createEDataType(GENERATE_TYPE_OBJECT);
@@ -1073,6 +1101,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTActivityMapping_Activity(), theXMLTypePackage.getString(), "activity", "", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTActivityMapping_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", "", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTActivityMapping_Policy(), this.getTPolicy(), null, "policy", null, 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTActivityMapping_Strategy(), this.getStrategyType(), "strategy", "firstFind", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tPolicyEClass, TPolicy.class, "TPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTPolicy_PolicyData(), ecorePackage.getEString(), "policyData", null, 1, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1082,6 +1111,9 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEEnum(generateTypeEEnum, GenerateType.class, "GenerateType");
 		addEEnumLiteral(generateTypeEEnum, GenerateType.ALL);
 		addEEnumLiteral(generateTypeEEnum, GenerateType.NONE);
+
+		initEEnum(strategyTypeEEnum, StrategyType.class, "StrategyType");
+		addEEnumLiteral(strategyTypeEEnum, StrategyType.FIRST_FIND);
 
 		// Initialize data types
 		initEDataType(generateTypeObjectEDataType, GenerateType.class, "GenerateTypeObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
