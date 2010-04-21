@@ -97,6 +97,8 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 		switch (eDataType.getClassifierID()) {
 			case ddPackage.GENERATE_TYPE:
 				return createGenerateTypeFromString(eDataType, initialValue);
+			case ddPackage.STRATEGY_TYPE:
+				return createStrategyTypeFromString(eDataType, initialValue);
 			case ddPackage.GENERATE_TYPE_OBJECT:
 				return createGenerateTypeObjectFromString(eDataType, initialValue);
 			default:
@@ -114,6 +116,8 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 		switch (eDataType.getClassifierID()) {
 			case ddPackage.GENERATE_TYPE:
 				return convertGenerateTypeToString(eDataType, instanceValue);
+			case ddPackage.STRATEGY_TYPE:
+				return convertStrategyTypeToString(eDataType, instanceValue);
 			case ddPackage.GENERATE_TYPE_OBJECT:
 				return convertGenerateTypeObjectToString(eDataType, instanceValue);
 			default:
@@ -298,6 +302,26 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	 * @generated
 	 */
 	public String convertGenerateTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StrategyType createStrategyTypeFromString(EDataType eDataType, String initialValue) {
+		StrategyType result = StrategyType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStrategyTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -435,10 +435,15 @@
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="policy" eType="#//TPolicy"
         containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//StrategyType"
+        defaultValueLiteral="firstFind" unsettable="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TPolicy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="policyData" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="localPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StrategyType">
+    <eLiterals name="firstFind"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -30,6 +30,7 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
@@ -45,6 +46,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -401,5 +403,14 @@ public class DeployUtils {
 		}
 
 		return activityNames.toArray(new String[0]);
+	}
+	
+	public static String[] getStrategies(){
+		List<String> strategies = new ArrayList<String>();
+		for (EEnumLiteral literal : ddPackage.eINSTANCE.getStrategyType().getELiterals()){
+			strategies.add(literal.getName());
+		}
+		
+		return strategies.toArray(new String[0]);
 	}
 }

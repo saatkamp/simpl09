@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDataSourceName <em>Data Source Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy <em>Strategy</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,5 +113,62 @@ public interface TActivityMapping extends EObject {
 	 * @generated
 	 */
 	void setPolicy(TPolicy value);
+
+	/**
+	 * Returns the value of the '<em><b>Strategy</b></em>' attribute.
+	 * The default value is <code>"firstFind"</code>.
+	 * The literals are from the enumeration {@link org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Strategy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Strategy</em>' attribute.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType
+	 * @see #isSetStrategy()
+	 * @see #unsetStrategy()
+	 * @see #setStrategy(StrategyType)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Strategy()
+	 * @model default="firstFind" unsettable="true"
+	 * @generated
+	 */
+	StrategyType getStrategy();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy <em>Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Strategy</em>' attribute.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType
+	 * @see #isSetStrategy()
+	 * @see #unsetStrategy()
+	 * @see #getStrategy()
+	 * @generated
+	 */
+	void setStrategy(StrategyType value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy <em>Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetStrategy()
+	 * @see #getStrategy()
+	 * @see #setStrategy(StrategyType)
+	 * @generated
+	 */
+	void unsetStrategy();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy <em>Strategy</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Strategy</em>' attribute is set.
+	 * @see #unsetStrategy()
+	 * @see #getStrategy()
+	 * @see #setStrategy(StrategyType)
+	 * @generated
+	 */
+	boolean isSetStrategy();
 
 } // TActivityMapping

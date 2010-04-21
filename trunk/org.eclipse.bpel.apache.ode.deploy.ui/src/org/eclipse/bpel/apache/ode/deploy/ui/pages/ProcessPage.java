@@ -905,8 +905,8 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		final ProcessType pt = current;
 		
 		// Set column names
-		String[] columnNames = new String[] { "Activity", "Data Source", "Policy (local path)"};
-		int[] bounds = { 150, 175, 175};
+		String[] columnNames = new String[] { "Activity", "Data Source", "Policy (local path)", "Strategy"};
+		int[] bounds = { 100, 125, 175, 100};
 
 		Section section = toolkit.createSection(fClient, Section.TWISTIE
 				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);

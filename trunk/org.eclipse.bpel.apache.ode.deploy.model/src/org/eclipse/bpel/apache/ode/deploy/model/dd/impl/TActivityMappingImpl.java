@@ -12,6 +12,7 @@
  */
 package org.eclipse.bpel.apache.ode.deploy.model.dd.impl;
 
+import org.eclipse.bpel.apache.ode.deploy.model.dd.StrategyType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getDataSourceName <em>Data Source Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getStrategy <em>Strategy</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,6 +89,35 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * @ordered
 	 */
 	protected TPolicy policy;
+
+	/**
+	 * The default value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final StrategyType STRATEGY_EDEFAULT = StrategyType.FIRST_FIND;
+
+	/**
+	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStrategy()
+	 * @generated
+	 * @ordered
+	 */
+	protected StrategyType strategy = STRATEGY_EDEFAULT;
+
+	/**
+	 * This is true if the Strategy attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean strategyESet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,6 +228,52 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StrategyType getStrategy() {
+		return strategy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStrategy(StrategyType newStrategy) {
+		StrategyType oldStrategy = strategy;
+		strategy = newStrategy == null ? STRATEGY_EDEFAULT : newStrategy;
+		boolean oldStrategyESet = strategyESet;
+		strategyESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__STRATEGY, oldStrategy, strategy, !oldStrategyESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetStrategy() {
+		StrategyType oldStrategy = strategy;
+		boolean oldStrategyESet = strategyESet;
+		strategy = STRATEGY_EDEFAULT;
+		strategyESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ddPackage.TACTIVITY_MAPPING__STRATEGY, oldStrategy, STRATEGY_EDEFAULT, oldStrategyESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetStrategy() {
+		return strategyESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -220,6 +297,8 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 				return getDataSourceName();
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				return getPolicy();
+			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
+				return getStrategy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -240,6 +319,9 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 				return;
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				setPolicy((TPolicy)newValue);
+				return;
+			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
+				setStrategy((StrategyType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -262,6 +344,9 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				setPolicy((TPolicy)null);
 				return;
+			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
+				unsetStrategy();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -280,6 +365,8 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 				return DATA_SOURCE_NAME_EDEFAULT == null ? dataSourceName != null : !DATA_SOURCE_NAME_EDEFAULT.equals(dataSourceName);
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				return policy != null;
+			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
+				return isSetStrategy();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -298,6 +385,8 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		result.append(activity);
 		result.append(", dataSourceName: ");
 		result.append(dataSourceName);
+		result.append(", strategy: ");
+		if (strategyESet) result.append(strategy); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}
