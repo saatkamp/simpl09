@@ -153,7 +153,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -734,6 +734,35 @@ SIMPL Benutzerhandbuch
 Einführung, allgemeine Hinweise
 \end_layout
 
+\begin_layout Standard
+SIMPL ist ein erweiterbares und generisches Rahmenwerk für die Modellierung
+ und Ausführung von Workflows, welches den Zugriff auf nahezu beliebige
+ Datenquellen ermöglichen kann.
+ Bei den Datenquellen werden standardmäßig Sensornetze, Datenbanken und
+ Dateisysteme unterstützt.
+ Durch die Erweiterbarkeit können prinzipiell alle Datenquellen integriert
+ werden.
+ Als Modellierungs- und Ausführungssprache für die hier betrachteten Workows
+ dient die Business Process Execution Langauge (BPEL, [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:[1]-Jordan,-D.;"
+
+\end_inset
+
+]).
+ Über das Rahmenwerk können beliebige Datenmanagement-Funktionen in einen
+ BPEL-Prozess eingebunden werden.
+ Für eine möglichst hohe Flexibilität kann ein dynamischer Ansatz gewählt
+ werden, so dass auch erst zur Laufzeit des Systems die Datenquellen festgelegt
+ werden können.
+ Nichtsdestoweniger besteht auch die Möglichkeit die Datenquellen statisch
+ anbinden zu können.
+ Die Ausführung der Workflows unterliegt der angepassten Workflow Engine
+ Apache ODE und die Modellierung erfolgt durch den angepassten Eclipse BPEL
+ Designer.
+\end_layout
+
 \begin_layout Section
 Systemvoraussetzungen
 \end_layout
@@ -752,6 +781,14 @@ Installation des BPEL Designer
 
 \begin_layout Subsection
 Installation von SIMPL
+\end_layout
+
+\begin_layout Subsubsection
+Installation von XXXX
+\end_layout
+
+\begin_layout Subsubsection
+Installation von XXX
 \end_layout
 
 \begin_layout Section
@@ -776,6 +813,42 @@ Referenzverwaltung
 
 \begin_layout Section
 Komponenten, Aufbau und Funktionen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Daniel/Desktop/SVN/simpl09/documents/spezifikation/Systemumgebung.jpeg
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -992,6 +1065,22 @@ Mögliche Probleme und ihre Lösung.
 
 \begin_layout Section
 Glossar
+\end_layout
+
+\begin_layout Standard
+[
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:[1]-Jordan,-D.;"
+
+\end_inset
+
+] Jordan, D.; Evdemon, J.: Web Services Business Process Execution Language
+ Version 2.0, OA- SIS Standard.
+ Organization for the Advancement of Structured Information Standards (OASIS),
+ 11.April 2007.
+ http://docs.oasis-open.org/ wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf, zuletzt zugegrif-
+ fen am 04.11.2009
 \end_layout
 
 \begin_layout Section
