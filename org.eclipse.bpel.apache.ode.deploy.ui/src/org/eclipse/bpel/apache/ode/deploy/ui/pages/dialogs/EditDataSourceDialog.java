@@ -22,6 +22,8 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 	private Text name;
 	private Text address;
+	private Text type;
+	private Text subtype;
 	private Text user;
 	private Text password;
 	private TDatasource datasource;
@@ -73,14 +75,28 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		}
 
 		Label label3 = new Label(parent, SWT.NONE);
-		label3.setText("User name");
+		label3.setText("Type");
+		type = new Text(parent, SWT.BORDER);
+		if (this.datasource.getType() != null) {
+			type.setText(this.datasource.getType());
+		}
+		
+		Label label4 = new Label(parent, SWT.NONE);
+		label4.setText("Subtype");
+		subtype = new Text(parent, SWT.BORDER);
+		if (this.datasource.getSubtype() != null) {
+			subtype.setText(this.datasource.getSubtype());
+		}
+		
+		Label label5 = new Label(parent, SWT.NONE);
+		label5.setText("User name");
 		user = new Text(parent, SWT.BORDER);
 		if (this.datasource.getUserName() != null) {
 			user.setText(this.datasource.getUserName());
 		}
 		
-		Label label4 = new Label(parent, SWT.NONE);
-		label4.setText("Password");
+		Label label6 = new Label(parent, SWT.NONE);
+		label6.setText("Password");
 		password = new Text(parent, SWT.BORDER);
 		if (this.datasource.getPassword() != null){
 			password.setText(this.datasource.getPassword());
@@ -88,6 +104,8 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 		name.setLayoutData(gridData);
 		address.setLayoutData(gridData);
+		type.setLayoutData(gridData);
+		subtype.setLayoutData(gridData);
 		user.setLayoutData(gridData);
 		password.setLayoutData(gridData);
 
@@ -112,6 +130,8 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 					datasource = factory.createTDatasource();
 					datasource.setDataSourceName(name.getText());
 					datasource.setAddress(address.getText());
+					datasource.setType(type.getText());
+					datasource.setSubtype(subtype.getText());
 					datasource.setUserName(user.getText());
 					datasource.setPassword(password.getText());
 					close();
