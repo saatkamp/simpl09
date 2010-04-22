@@ -8,11 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.namespace.QName;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.simpl.rrs.model.rrs.EPR;
+import org.eclipse.simpl.rrs.model.rrs.RRSFactory;
+import org.eclipse.simpl.rrs.model.rrs.ReferenceParameters;
+import org.eclipse.simpl.rrs.model.rrs.ReferenceProperties;
 import org.eclipse.simpl.rrs.model.rrs.util.RRSResourceFactoryImpl;
 
 public class ModelProvider {
@@ -58,7 +63,7 @@ public class ModelProvider {
 				+ ref.getReferenceParameters().getReferenceName() + ".xml");
 		Resource resource = new RRSResourceFactoryImpl()
 				.createResource(fileURI);
-		
+
 		resource.getContents().add(ref);
 		Map<String, String> save_options = new HashMap<String, String>();
 		save_options.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
@@ -73,20 +78,18 @@ public class ModelProvider {
 	public void deleteReference(EPR ref) {
 		String fileName = ref.getReferenceParameters().getReferenceName()
 				+ ".xml";
-		
+
 		File eprFile = new File(RRS_FILE_PATH + fileName);
-		if (eprFile.exists() && eprFile.isFile()){
+		if (eprFile.exists() && eprFile.isFile()) {
 			eprFile.delete();
 		}
 	}
-
-	
 
 	private List<EPR> loadAllReferences() {
 		List<EPR> loadedRefs = new ArrayList<EPR>();
 
 		File rrsFolder = new File(RRS_FILE_PATH);
-		if (rrsFolder.exists() && rrsFolder.isDirectory()){
+		if (rrsFolder.exists() && rrsFolder.isDirectory()) {
 			String[] fileNames = rrsFolder.list();
 			for (String fileName : fileNames) {
 				loadedRefs.add(loadReference(fileName));
@@ -99,7 +102,7 @@ public class ModelProvider {
 		EPR reference = null;
 
 		URI fileURI = URI.createFileURI(RRS_FILE_PATH + fileName);
-		
+
 		Resource resource = new RRSResourceFactoryImpl()
 				.createResource(fileURI);
 
@@ -116,6 +119,40 @@ public class ModelProvider {
 		}
 
 		return reference;
+	}
+
+	/**
+	 * 
+	 */
+	public void refresh() {
+		references.clear();
+		
+		// TODO Hier müssen noch die neuen EPR's eingefügt werden!
+		RRSFactory factory = RRSFactory.eINSTANCE;
+
+		List<HashMap<String, String>> eprs = new ArrayList<HashMap<String, String>>();
+
+		// eprs = loadAllReferences();
+
+		for (HashMap<String, String> epr : eprs) {
+			EPR newEPR = factory.createEPR();
+
+			newEPR.setAddress(epr.get("address"));
+
+			ReferenceParameters param = factory.createReferenceParameters();
+			param.setReferenceName(epr.get("name"));
+			param.setStatement(epr.get("statement"));
+			newEPR.setReferenceParameters(param);
+
+			ReferenceProperties prop = factory.createReferenceProperties();
+			prop.setResolutionSystem(epr.get("adapter"));
+			newEPR.setReferenceProperties(prop);
+			newEPR.setPortType(QName.valueOf(epr.get("portType")));
+			newEPR.setPolicy(epr.get("policy"));
+
+			references.add(newEPR);
+
+		}
 	}
 
 }

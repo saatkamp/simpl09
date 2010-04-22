@@ -7,6 +7,7 @@ import org.eclipse.simpl.rrs.model.rrs.EPR;
 import org.eclipse.simpl.rrs.model.rrs.RRSFactory;
 import org.eclipse.simpl.rrs.model.rrs.ReferenceParameters;
 import org.eclipse.simpl.rrs.model.rrs.ReferenceProperties;
+import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -64,6 +65,8 @@ public class AddReferenceDialog extends TitleAreaDialog {
 		Label label2 = new Label(parent, SWT.NONE);
 		label2.setText("RRS-Address");
 		address = new Text(parent, SWT.BORDER);
+		address.setText(RRSUIPlugIn.getDefault().getPreferenceStore().getString("RRS_RET_ADDRESS"));
+		
 		Label label3 = new Label(parent, SWT.NONE);
 		label3.setText("Adapter");
 		adapter = new Text(parent, SWT.BORDER);

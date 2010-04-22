@@ -11,12 +11,10 @@ import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 public class ModelProvider {
 	private static ModelProvider content;
 	private List<DataSource> datasources;
-	private List<String> insertedDataSources;
-	
 
 	private ModelProvider() {
 		datasources = new ArrayList<DataSource>();
-		insertedDataSources = new ArrayList<String>();
+		
 		// Image here some uddi access to read the Datasources and to
 		// put them into the model
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
@@ -24,15 +22,15 @@ public class ModelProvider {
 		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDatasources();
 		
 		for (UddiDataSource source: dsList) {
+
 			DataSource ds = factory.createDataSource();
-			
+
 			ds.setName(source.getName());
 			ds.setAddress(source.getAddress());
 			ds.setType(source.getAttributeValue("type"));
 			ds.setSubtype(source.getAttributeValue("subtype"));
 			ds.setLanguage(source.getAttributeValue("language"));
 			datasources.add(ds);
-			insertedDataSources.add(source.getName());
 		}
 	}
 
@@ -43,11 +41,11 @@ public class ModelProvider {
 		content = new ModelProvider();
 		return content;
 	}
-	
-	public DataSource find(String id){
+
+	public DataSource find(String id) {
 		DataSource found = null;
-		for (DataSource ds : datasources){
-			if (ds.toString().equals(id)){
+		for (DataSource ds : datasources) {
+			if (ds.toString().equals(id)) {
 				found = ds;
 				continue;
 			}
@@ -58,25 +56,25 @@ public class ModelProvider {
 	public List<DataSource> getDataSources() {
 		return datasources;
 	}
-	
-	public void refresh(){
-		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
+
+
+	public void refresh() {
+		datasources.clear();
 
 		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDatasources();
 		
-		for (UddiDataSource source: dsList) {
-			if (!insertedDataSources.contains(source.getName())){
-				DataSource ds = factory.createDataSource();
-				
-				ds.setName(source.getName());
-				ds.setAddress(source.getAddress());
-				ds.setType(source.getAttributeValue("type"));
-				ds.setSubtype(source.getAttributeValue("subtype"));
-				ds.setLanguage(source.getAttributeValue("language"));
-					
-				datasources.add(ds);
-				insertedDataSources.add(source.getName());
-			}	
+		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
+
+		for (UddiDataSource source : dsList) {
+			DataSource ds = factory.createDataSource();
+
+			ds.setName(source.getName());
+			ds.setAddress(source.getAddress());
+			ds.setType(source.getAttributeValue("type"));
+			ds.setSubtype(source.getAttributeValue("subtype"));
+			ds.setLanguage(source.getAttributeValue("language"));
+
+			datasources.add(ds);
 		}
 	}
 }

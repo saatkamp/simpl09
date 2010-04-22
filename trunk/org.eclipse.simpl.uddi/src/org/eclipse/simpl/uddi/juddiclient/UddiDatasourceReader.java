@@ -1,12 +1,12 @@
 package org.eclipse.simpl.uddi.juddiclient;
 
-
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
+import org.eclipse.simpl.uddi.UDDIPlugIn;
 import org.uddi.api_v3.BusinessService;
 import org.uddi.api_v3.CategoryBag;
 import org.uddi.api_v3.Description;
@@ -23,14 +23,16 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 	UDDIInquiryPortType inquiry = null;
 
+	private final String UDDI_INQ_WSDL = UDDIPlugIn.getDefault()
+			.getPreferenceStore().getString("UDDI_INQ_ADDRESS");
+
 	public static UddiDatasourceReader datasourceReader = null;
 
 	private UddiDatasourceReader() {
 		Transport transport = new JAXWSTransport("default");
 
 		try {
-			this.inquiry = transport
-					.getUDDIInquiryService("http://localhost:8080/juddiv3/services/inquiry?wsdl");
+			this.inquiry = transport.getUDDIInquiryService(UDDI_INQ_WSDL);
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

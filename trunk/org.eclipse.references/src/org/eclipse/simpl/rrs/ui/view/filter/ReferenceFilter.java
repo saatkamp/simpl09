@@ -1,5 +1,7 @@
 package org.eclipse.simpl.rrs.ui.view.filter;
 
+import java.util.regex.PatternSyntaxException;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.simpl.rrs.model.rrs.EPR;
@@ -19,19 +21,22 @@ public class ReferenceFilter extends ViewerFilter {
 			return true;
 		}
 		EPR epr = (EPR) element;
-		if (epr.getReferenceParameters().getReferenceName().matches(searchString)) {
-			return true;
+		try {
+			if (epr.getReferenceParameters().getReferenceName().matches(searchString)) {
+				return true;
+			}
+			if (epr.getAddress().matches(searchString)) {
+				return true;
+			}
+			if (epr.getReferenceProperties().getResolutionSystem().matches(searchString)) {
+				return true;
+			}
+			if (epr.getReferenceParameters().getStatement().matches(searchString)) {
+				return true;
+			}
+		}catch (PatternSyntaxException e) {
+			e.printStackTrace();
 		}
-		if (epr.getAddress().matches(searchString)) {
-			return true;
-		}
-		if (epr.getReferenceProperties().getResolutionSystem().matches(searchString)) {
-			return true;
-		}
-		if (epr.getReferenceParameters().getStatement().matches(searchString)) {
-			return true;
-		}
-
 		return false;
 	}
 }

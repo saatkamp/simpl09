@@ -33,6 +33,11 @@
             id="org.eclipse.rrs.ui.commands.EditEPR"
             name="Edit Reference">
       </command>
+      <command
+            defaultHandler="org.eclipse.simpl.rrs.ui.commands.RefreshHandler"
+            id="org.eclipse.rrs.ui.commands.refreshCommand"
+            name="Refresh">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -56,6 +61,12 @@
                label="Edit EPR"
                style="push">
          </command>
+         <command
+               commandId="org.eclipse.rrs.ui.commands.refreshCommand"
+               icon="icons/action_refresh.gif"
+               label="Refresh"
+               style="push">
+         </command>
       </menuContribution>
       <menuContribution
             locationURI="toolbar:org.eclipse.references.referenceManagementView">
@@ -75,6 +86,12 @@
                commandId="org.eclipse.rrs.ui.commands.EditEPR"
                icon="icons/edit.png"
                label="Edit EPR"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipse.rrs.ui.commands.refreshCommand"
+               icon="icons/action_refresh.gif"
+               label="Refresh"
                style="push">
          </command>
       </menuContribution>
