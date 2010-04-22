@@ -42,6 +42,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ConnectionException }{@code >}}
      * 
      */

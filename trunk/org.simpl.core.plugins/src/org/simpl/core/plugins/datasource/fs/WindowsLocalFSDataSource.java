@@ -12,6 +12,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.dataformat.DataFormatService;
+import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -53,10 +54,10 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public boolean executeStatement(String dir, String statement)
+  public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
     try {
-      this.execute(statement, dir, null);
+      this.execute(statement, dataSource.getAddress(), null);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -75,12 +76,13 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String, java.lang.String)
    */
   @Override
-  public boolean depositData(String dir, String file, String targetFile)
-      throws ConnectionException {
+  public boolean depositData(DataSource dataSource, String file,
+      String targetFile) throws ConnectionException {
     String[] envp = new String[] { "cmd", "/c", "start", "copy" };
 
     try {
-      this.execute("copy " + file + " " + targetFile, dir, envp);
+      this.execute("copy " + file + " " + targetFile, dataSource.getAddress(),
+          envp);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -98,7 +100,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
    */
   @Override
-  public DataObject getMetaData(String dir, String filter)
+  public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
     DataObject metaDataObject = this.getMetaDataSDO();
     DataObject driveObject = null;
@@ -155,6 +157,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       // TODO: Crashes on Windows7
       // driveObject.setString("name",
       // FileSystemView.getFileSystemView().getSystemDisplayName(drive));
+
       driveObject.setString("letter", (drive.toString()).substring(0, 1));
       driveObject.setLong("totalSpace", drive.getTotalSpace());
       driveObject.setLong("freeSpace", drive.getFreeSpace());
@@ -166,22 +169,22 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       // TODO: Causes exception on Windows7
       // driveObject.setString("type",
       // FileSystemView.getFileSystemView().getSystemTypeDescription(drive));
+    }
 
-      filterPath = new File(dir);
+    filterPath = new File(dataSource.getAddress());
 
-      // files and folders
-      if (filterPath.isDirectory()) {
-        fileList = new File(dir).listFiles();
+    // files and folders
+    if (filterPath.isDirectory()) {
+      fileList = new File(dataSource.getAddress()).listFiles();
 
-        if (fileList.length > 0) {
-          for (File file : fileList) {
-            if (file.isDirectory()) {
-              folderObject = metaDataObject.createDataObject("folder");
-              folderObject.setString("name", file.getName());
-            } else {
-              fileObject = metaDataObject.createDataObject("file");
-              fileObject.setString("name", file.getName());
-            }
+      if (fileList.length > 0) {
+        for (File file : fileList) {
+          if (file.isDirectory()) {
+            folderObject = metaDataObject.createDataObject("folder");
+            folderObject.setString("name", file.getName());
+          } else {
+            fileObject = metaDataObject.createDataObject("file");
+            fileObject.setString("name", file.getName());
           }
         }
       }
@@ -198,7 +201,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(String dir, DataObject data)
+  public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
     boolean writeBack = false;
     DataFormatService<Object> dataFormatService = SIMPLCore.getInstance()
@@ -206,8 +209,8 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
     File tempFile = (File) dataFormatService.fromSDO(data);
 
     // move temp file to given dir
-    writeBack = tempFile.renameTo(new File(dir + File.separator
-        + data.getString("name")));
+    writeBack = tempFile.renameTo(new File(dataSource.getAddress()
+        + File.separator + data.getString("name")));
 
     return writeBack;
   }
@@ -220,14 +223,15 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public DataObject retrieveData(String dir, String file)
+  public DataObject retrieveData(DataSource dataSource, String file)
       throws ConnectionException {
     DataFormatService<Object> dataFormatService = SIMPLCore.getInstance()
         .dataFormatService("CSV");
 
-    DataObject dataObject = dataFormatService.toSDO(new File(dir
-        + File.separator + file)); 
-    
+    DataObject dataObject = dataFormatService.toSDO(new File(dataSource
+        .getAddress()
+        + File.separator + file));
+
     return dataObject;
   }
 

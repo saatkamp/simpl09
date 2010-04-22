@@ -8,7 +8,6 @@ import org.simpl.core.services.dataformat.DataFormatService;
 import org.simpl.core.services.dataformat.DataFormatServiceProvider;
 import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.DataSourceServiceProvider;
-import org.simpl.core.services.strategy.Strategy;
 import org.simpl.core.services.strategy.StrategyService;
 import org.simpl.core.services.strategy.StrategyServiceImpl;
 
@@ -65,26 +64,14 @@ public class SIMPLCore {
   }
 
   /**
-   * Finds a data source service that matches the given type and subtype.
+   * Finds a data source service that supports the given data source.
    * 
    * @param dsType
    * @param dsSubtype
    * @return The instance of a data source service.
    */
-  public DataSourceService dataSourceService(String dsType, String dsSubtype) {
-    return dataSourceServiceProvider.getInstance(dsType, dsSubtype);
-  }
-
-  /**
-   * Finds a data source service that matches the given WS-Policy using the
-   * given strategy.
-   * 
-   * @param wsPolicy
-   * @param strategy
-   * @return The instance of a data source service.
-   */
-  public DataSourceService dataSourceService(String wsPolicy, Strategy strategy) {
-    return dataSourceServiceProvider.getInstance(wsPolicy, strategy);
+  public DataSourceService dataSourceService(String dsType, String dsSubType) {
+    return dataSourceServiceProvider.getInstance(dsType, dsSubType);
   }
 
   /**

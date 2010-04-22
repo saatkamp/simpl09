@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
-import org.simpl.core.services.strategy.Strategy;
-import org.simpl.core.services.strategy.StrategyService;
 
 /**
  * <b>Purpose:</b> Provides access to the data source services that are loaded
@@ -41,13 +39,13 @@ public class DataSourceServiceProvider {
    * Returns the data source service instance that supports the given data
    * source type and subtype.
    * 
-   * @param dsType
-   * @param dsSubtype
+   * @param dataSource
    * @return
    */
   public DataSourceService getInstance(String dsType, String dsSubtype) {
     DataSourcePlugin dataSourceServiceInstance = null;
-    List<DataSourcePlugin> dataSourcePlugins = this.dataSources.get(dsType);
+    List<DataSourcePlugin> dataSourcePlugins = this.dataSources
+        .get(dsType);
     List<String> dataSourcePluginSubtypes = null;
 
     // search for a plugin that supports the given subtype
@@ -62,21 +60,6 @@ public class DataSourceServiceProvider {
     }
 
     return dataSourceServiceInstance;
-  }
-
-  /**
-   * Returns the data source service instance that matches the given wsPolicy
-   * following the given strategy.
-   * 
-   * @param wsPolicy
-   * @return
-   */
-  public DataSourceService getInstance(String wsPolicy, Strategy strategy) {
-    StrategyService strategyService = SIMPLCore.getInstance().strategyService();
-    DataSourceService dataSourceService = strategyService
-        .findDataSourceService(wsPolicy, strategy);
-
-    return dataSourceService;
   }
 
   /**
@@ -134,7 +117,8 @@ public class DataSourceServiceProvider {
   public List<String> getSubtypes(String dsType) {
     List<String> dataSourceSubtypes = new ArrayList<String>();
 
-    for (DataSourcePlugin dataSourceServicePlugin : dataSources.get(dsType)) {
+    for (DataSourcePlugin dataSourceServicePlugin : dataSources
+        .get(dsType)) {
       for (String dataSourceSubtype : dataSourceServicePlugin.getSubtypes()) {
         if (!dataSourceSubtypes.contains(dataSourceSubtype)) {
           dataSourceSubtypes.add(dataSourceSubtype);

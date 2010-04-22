@@ -9,30 +9,32 @@ import java.util.ArrayList;
 import org.apache.neethi.Policy;
 import org.apache.neethi.PolicyEngine;
 import org.apache.neethi.util.PolicyComparator;
-import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.services.datasource.DataSource;
 import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataSourceReader;
 
 /**
  * <b>Purpose:</b> The strategy service is used by a datasource service in case
- * there is given a WS-Policy instead of address, username and password.<br>
+ * there is given a WS-Policy instead of address, type and subtype.<br>
  * <b>Description:</b> The available data sources are retrieved from a UDDI
  * Registry that is responded by a UDDI client.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de><br>
- * @version $Id$<br>
+ * @version $Id: StrategyServiceImpl.java 1159 2010-04-20 18:19:11Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class StrategyServiceImpl implements StrategyService {
   @Override
-  public DataSourceService findDataSourceService(String wsPolicy,
-      Strategy strategy) {
-    DataSourceService resultDataSourceService = null;
+  public DataSource findDataSource(DataSource dataSource) {
+    DataSource resultDataSource = null;
+    boolean compareWsPolicy = dataSource.getPolicy() != null && !dataSource.getPolicy().equals("");
+    boolean compareType = dataSource.getType() != null && !dataSource.getType().equals("");
+    boolean compareSubtype = dataSource.getSubType() != null && !dataSource.getSubType().equals("");
 
-    switch (strategy) {
+    switch (dataSource.getStrategy()) {
     case FIRST_FIND:
       ArrayList<UddiDataSource> dataSources = UddiDataSourceReader
           .getInstance().getAllDatasources();
@@ -41,43 +43,71 @@ public class StrategyServiceImpl implements StrategyService {
       Policy wsPolicyObj = null;
       URL policyURL = null;
       UddiDataSource resultUddiDataSource = null;
-      String dsType = null;
-      String dsSubtype = null;
 
       // retrieve data sources and compare the policies
       for (UddiDataSource uddiDataSource : dataSources) {
-        dsPolicy = uddiDataSource.getAttributeValue("wspolicy");
+        if (dataSource.getPolicy() != null && !dataSource.getPolicy().equals("")) {
+          dsPolicy = uddiDataSource.getWsPolicy();
 
-        // check if wsPolicy contains an URL
-        try {
-          policyURL = new URL(dsPolicy);
-          dsPolicyObj = PolicyEngine.getPolicy(policyURL.openConnection()
-              .getInputStream());
-        } catch (MalformedURLException e) {
-          dsPolicyObj = PolicyEngine.getPolicy(new ByteArrayInputStream(
-              wsPolicy.getBytes()));
-        } catch (IOException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
+          // check if wsPolicy contains an URL
+          try {
+            policyURL = new URL(dsPolicy);
+            dsPolicyObj = PolicyEngine.getPolicy(policyURL.openConnection()
+                .getInputStream());
+          } catch (MalformedURLException e) {
+            dsPolicyObj = PolicyEngine.getPolicy(new ByteArrayInputStream(
+                dataSource.getPolicy().getBytes()));
+          } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
         }
 
-        // compare the policy assertions
-        if (PolicyComparator.compare(wsPolicyObj, dsPolicyObj)) {
-          resultUddiDataSource = uddiDataSource;
-          break;
+        // comparison
+        if (compareType && compareSubtype && compareWsPolicy) {
+          if (PolicyComparator.compare(wsPolicyObj, dsPolicyObj)
+              && uddiDataSource.getType().equals(dataSource.getType())
+              && uddiDataSource.getSubtype().equals(dataSource.getSubType())) {
+            resultUddiDataSource = uddiDataSource;
+            break;
+          }
+        } else if (compareType && compareSubtype) {
+          if (uddiDataSource.getType().equals(dataSource.getType())
+              && uddiDataSource.getSubtype().equals(dataSource.getSubType())) {
+            resultUddiDataSource = uddiDataSource;
+            break;
+          }
+        } else if (compareType && compareWsPolicy) {
+          if (PolicyComparator.compare(wsPolicyObj, dsPolicyObj)
+              && uddiDataSource.getType().equals(dataSource.getType())) {
+            resultUddiDataSource = uddiDataSource;
+            break;
+          }
+        } else if (compareSubtype && compareWsPolicy) {
+          if (PolicyComparator.compare(wsPolicyObj, dsPolicyObj)
+              && uddiDataSource.getSubtype().equals(dataSource.getSubType())) {
+            resultUddiDataSource = uddiDataSource;
+            break;
+          }
+        } else if (compareWsPolicy) {
+          if (PolicyComparator.compare(wsPolicyObj, dsPolicyObj)) {
+            resultUddiDataSource = uddiDataSource;
+            break;
+          }
         }
       }
 
-      dsType = resultUddiDataSource.getAttributeValue("type");
-      dsSubtype = resultUddiDataSource.getAttributeValue("subtype");
+      resultDataSource = new DataSource();
+      resultDataSource.setType(resultUddiDataSource.getType());
+      resultDataSource.setSubType(resultUddiDataSource.getSubtype());
+      resultDataSource.setPolicy(resultUddiDataSource.getWsPolicy());
+      //TODO Username, Passwort und Adresse fehlen noch in der UddIDataSource
 
-      resultDataSourceService = SIMPLCore.getInstance().dataSourceService(
-          dsType, dsSubtype);
       break;
     default:
       break;
     }
 
-    return resultDataSourceService;
+    return resultDataSource;
   }
 }

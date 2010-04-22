@@ -25,9 +25,7 @@ public interface DatasourceService {
 
     /**
      * 
-     * @param dsAddress
-     * @param dsSubtype
-     * @param dsType
+     * @param dataSource
      * @param filter
      * @return
      *     returns java.lang.String
@@ -36,12 +34,8 @@ public interface DatasourceService {
     @WebMethod(action = "getMetaData")
     @WebResult(partName = "return")
     public String getMetaData(
-        @WebParam(name = "dsAddress", partName = "dsAddress")
-        String dsAddress,
-        @WebParam(name = "dsType", partName = "dsType")
-        String dsType,
-        @WebParam(name = "dsSubtype", partName = "dsSubtype")
-        String dsSubtype,
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
         @WebParam(name = "filter", partName = "filter")
         String filter)
         throws ConnectionException_Exception
@@ -50,9 +44,7 @@ public interface DatasourceService {
     /**
      * 
      * @param statement
-     * @param dsAddress
-     * @param dsSubtype
-     * @param dsType
+     * @param dataSource
      * @return
      *     returns java.lang.String
      * @throws ConnectionException_Exception
@@ -60,24 +52,18 @@ public interface DatasourceService {
     @WebMethod(action = "retrieveData")
     @WebResult(partName = "return")
     public String retrieveData(
-        @WebParam(name = "dsAddress", partName = "dsAddress")
-        String dsAddress,
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
-        String statement,
-        @WebParam(name = "dsType", partName = "dsType")
-        String dsType,
-        @WebParam(name = "dsSubtype", partName = "dsSubtype")
-        String dsSubtype)
+        String statement)
         throws ConnectionException_Exception
     ;
 
     /**
      * 
      * @param statement
-     * @param dsAddress
-     * @param dsSubtype
+     * @param dataSource
      * @param target
-     * @param dsType
      * @return
      *     returns boolean
      * @throws ConnectionException_Exception
@@ -85,14 +71,10 @@ public interface DatasourceService {
     @WebMethod(action = "depositData")
     @WebResult(partName = "return")
     public boolean depositData(
-        @WebParam(name = "dsAddress", partName = "dsAddress")
-        String dsAddress,
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
         String statement,
-        @WebParam(name = "dsType", partName = "dsType")
-        String dsType,
-        @WebParam(name = "dsSubtype", partName = "dsSubtype")
-        String dsSubtype,
         @WebParam(name = "target", partName = "target")
         String target)
         throws ConnectionException_Exception
@@ -101,9 +83,7 @@ public interface DatasourceService {
     /**
      * 
      * @param statement
-     * @param dsAddress
-     * @param dsSubtype
-     * @param dsType
+     * @param dataSource
      * @return
      *     returns boolean
      * @throws ConnectionException_Exception
@@ -111,23 +91,17 @@ public interface DatasourceService {
     @WebMethod(action = "executeStatement")
     @WebResult(partName = "return")
     public boolean executeStatement(
-        @WebParam(name = "dsAddress", partName = "dsAddress")
-        String dsAddress,
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
-        String statement,
-        @WebParam(name = "dsType", partName = "dsType")
-        String dsType,
-        @WebParam(name = "dsSubtype", partName = "dsSubtype")
-        String dsSubtype)
+        String statement)
         throws ConnectionException_Exception
     ;
 
     /**
      * 
-     * @param dsAddress
-     * @param dsSubtype
+     * @param dataSource
      * @param data
-     * @param dsType
      * @return
      *     returns boolean
      * @throws ConnectionException_Exception
@@ -135,22 +109,16 @@ public interface DatasourceService {
     @WebMethod(action = "writeBack")
     @WebResult(partName = "return")
     public boolean writeBack(
-        @WebParam(name = "dsAddress", partName = "dsAddress")
-        String dsAddress,
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
         @WebParam(name = "data", partName = "data")
-        String data,
-        @WebParam(name = "dsType", partName = "dsType")
-        String dsType,
-        @WebParam(name = "dsSubtype", partName = "dsSubtype")
-        String dsSubtype)
+        String data)
         throws ConnectionException_Exception
     ;
 
     /**
      * 
-     * @param dsAddress
-     * @param dsSubtype
-     * @param dsType
+     * @param dataSource
      * @return
      *     returns java.lang.String
      * @throws ConnectionException_Exception
@@ -158,12 +126,8 @@ public interface DatasourceService {
     @WebMethod(action = "getMetaDataSchema")
     @WebResult(partName = "return")
     public String getMetaDataSchema(
-        @WebParam(name = "dsAddress", partName = "dsAddress")
-        String dsAddress,
-        @WebParam(name = "dsType", partName = "dsType")
-        String dsType,
-        @WebParam(name = "dsSubtype", partName = "dsSubtype")
-        String dsSubtype)
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource)
         throws ConnectionException_Exception
     ;
 
@@ -208,17 +172,5 @@ public interface DatasourceService {
     @WebMethod(action = "getDataFormatTypes")
     @WebResult(partName = "return")
     public String getDataFormatTypes();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "getDataFormatSubtypes")
-    @WebResult(partName = "return")
-    public String getDataFormatSubtypes(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
 
 }
