@@ -19,13 +19,13 @@ import org.uddi.api_v3.ServiceList;
 import org.uddi.v3_service.DispositionReportFaultMessage;
 import org.uddi.v3_service.UDDIInquiryPortType;
 
-public class UddiDatasourceReader implements IUddiConfig {
+public class UddiDataSourceReader implements IUddiConfig {
 
 	UDDIInquiryPortType inquiry = null;
 
-	public static UddiDatasourceReader datasourceReader = null;
+	public static UddiDataSourceReader datasourceReader = null;
 
-	private UddiDatasourceReader() {
+	private UddiDataSourceReader() {
 		Transport transport = new JAXWSTransport("default");
 
 		try {
@@ -362,9 +362,9 @@ public class UddiDatasourceReader implements IUddiConfig {
 
 	}
 
-	public static UddiDatasourceReader getInstance() {
+	public static UddiDataSourceReader getInstance() {
 		if (datasourceReader == null) {
-			datasourceReader = new UddiDatasourceReader();
+			datasourceReader = new UddiDataSourceReader();
 		}
 		return datasourceReader;
 	}

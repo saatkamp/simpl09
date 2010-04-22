@@ -43,7 +43,7 @@ public class ClientTest implements IUddiConfig {
 
 		dataWriter.writeDatasource(dataSource2);
 
-		ArrayList<UddiDataSource> ds = UddiDatasourceReader.getInstance()
+		ArrayList<UddiDataSource> ds = UddiDataSourceReader.getInstance()
 				.getAllDatasources();
 
 		System.out.println(ds.size());
