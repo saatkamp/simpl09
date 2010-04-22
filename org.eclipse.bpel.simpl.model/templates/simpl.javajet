@@ -69,4 +69,15 @@
             <xsd:pattern value="[^\.]+"/>
         </xsd:restriction>
     </xsd:simpleType>
+
+	<xsd:complexType name="ContainerReferenceType">
+		<xsd:attribute name="schemaName" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="tableName" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="DataSourceReferenceType">
+		<xsd:attribute name="address" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="userName" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="password" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
 </xsd:schema>

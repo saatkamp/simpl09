@@ -1,9 +1,17 @@
 package org.eclipse.simpl.rrs.transformation;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +62,6 @@ public class TransformerUtil {
 
 			doc = builder.build(inputStream);
 
-			// Start Transformation
 			Element root = doc.getRootElement();
 
 			// read referenceVariable elements
@@ -104,5 +111,72 @@ public class TransformerUtil {
 		}
 
 		return fullSpecified;
+	}
+
+	public static void downloadWSDL(String sourceURI, String projectPath,
+			String bpelFileName) {
+		URL u;
+		InputStream is = null;
+		BufferedReader buffer;
+		StringBuilder string = new StringBuilder();
+
+		File transformDir = new File(projectPath
+				+ System.getProperty("file.separator") + bpelFileName
+				+ "_transformed");
+		if (!transformDir.exists()) {
+			transformDir.mkdir();
+		}
+
+		File wsdlFileRRS = new File(projectPath
+				+ System.getProperty("file.separator") + bpelFileName
+				+ "_transformed" + System.getProperty("file.separator")
+				+ "rrs.wsdl");
+
+		// Create the rrs.wsdl file, if necassary
+		if (!wsdlFileRRS.exists()) {
+			try {
+				u = new URL(sourceURI);
+
+				is = u.openStream(); // throws an IOException
+
+				buffer = new BufferedReader(new InputStreamReader(is));
+
+				String line;
+				while ((line = buffer.readLine()) != null) {
+					string.append(line);
+					string.append("\n");
+				}
+
+			} catch (MalformedURLException mue) {
+				mue.printStackTrace();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			} finally {
+
+				try {
+					is.close();
+				} catch (IOException ioe) {
+
+				}
+			}
+
+			try {
+				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
+						new FileOutputStream(projectPath
+								+ System.getProperty("file.separator")
+								+ bpelFileName + "_transformed"
+								+ System.getProperty("file.separator")
+								+ "rrs.wsdl")));
+				out.write(string.toString());
+				out.flush();
+				out.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }
