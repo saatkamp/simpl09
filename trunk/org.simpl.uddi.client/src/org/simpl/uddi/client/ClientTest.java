@@ -1,3 +1,4 @@
+package org.simpl.uddi.client;
 import java.util.ArrayList;
 
 public class ClientTest implements IUddiConfig {

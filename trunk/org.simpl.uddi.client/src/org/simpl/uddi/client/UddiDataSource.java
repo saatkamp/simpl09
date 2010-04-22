@@ -1,3 +1,4 @@
+package org.simpl.uddi.client;
 import java.util.ArrayList;
 
 import org.uddi.api_v3.Description;

@@ -1,3 +1,4 @@
+package org.simpl.uddi.client;
 
 public interface IUddiConfig {
 	

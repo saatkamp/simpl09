@@ -1,3 +1,4 @@
+package org.simpl.uddi.client;
 
 import java.rmi.RemoteException;
 
