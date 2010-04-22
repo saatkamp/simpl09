@@ -79,25 +79,30 @@ public class Transformer {
 
 	private static final String EL_PICK = "pick";
 
+	private static final String EL_ASSIGN = "assign";
+	private static final String EL_COPY = "copy";
+	private static final String EL_FROM = "from";
+
+	// Expressions
+	private static final String EXP_VAL = "val";
+
 	// ReferenceType values
 	private static final String ON_INSTANTIATION = "onInstantiation";
+	@SuppressWarnings("unused")
 	private static final String FRESH = "fresh";
 
-	// TODO: EPR muss noch irgendwie in das BPEL Namespace File oder in ein
-	// separates, dass dann in den BPEL-Prozess integriert wird.
-	// TODO: Am besten ein eigenständiges xsd-file mit der EPR mit rrs-Präfix
 	private static final String EPR_TYPE = RRS_NAMESPACE.getPrefix() + ":"
 			+ "EPR";
 
 	// An array of all by reference influenced element types
-	String[] types = new String[] { EL_REPLY, EL_INVOKE, EL_RECEIVE };
+	String[] types = new String[] { EL_REPLY, EL_INVOKE, EL_RECEIVE, EL_ASSIGN };
 
 	// This HashMap will hold all referenceVariable names as key and later the
 	// actual number of dereferentiation activities in which this
 	// referenceVariable is
 	// solved.
 	private HashMap<String, Integer> refVarNames = new HashMap<String, Integer>();
-	
+
 	// This list holds all invoke elements from the original process
 	private List invokeElements = new ArrayList();
 
@@ -132,7 +137,7 @@ public class Transformer {
 			// Add the rrs namespace prefix to the process element
 			root.addNamespaceDeclaration(RRS_NAMESPACE);
 
-			// Set all the Imports
+			// Set all the new required Imports
 			List imports = root.getChildren(EL_IMPORT, BPEL_NAMESPACE);
 
 			// Add the rrs.wsdl to the process imports
@@ -210,9 +215,11 @@ public class Transformer {
 				instantiationElement = parentSequence.getChild(EL_PICK,
 						BPEL_NAMESPACE);
 			}
-			
-			// This is a backup of all invoke elements of the original process file
-			invokeElements.addAll(parentSequence.getChildren(EL_INVOKE, BPEL_NAMESPACE));
+
+			// This is a backup of all invoke elements of the original process
+			// file
+			invokeElements.addAll(parentSequence.getChildren(EL_INVOKE,
+					BPEL_NAMESPACE));
 
 			// Create an onInstantiation sequence for all onInstantiation
 			// dereferentiation activities
@@ -224,16 +231,13 @@ public class Transformer {
 					.indexOf(instantiationElement) + 1, onInstSequence);
 
 			// Durchlaufen der obersten Sequence
-			// TODO: Hier muss unbedingt noch geklärt werden, wie Prozesse
-			// aussehen können
-			// und welche Konstrukte und Verschachtelungen möglich sind
 
 			for (String type : types) {
 				processActivityElements(parentSequence, onInstSequence, type);
 			}
-			
+
 			// If the prepare sequence remains empty it would be deleted
-			if (onInstSequence.getChildren().isEmpty()){
+			if (onInstSequence.getChildren().isEmpty()) {
 				onInstSequence.detach();
 			}
 
@@ -303,239 +307,154 @@ public class Transformer {
 			Element element = (Element) obj;
 
 			if (type.equals(EL_INVOKE)) {
-				//Exclude the invoke elements we have created a few steps before
-				//FIXME: This is probably a BUG. When we parse the invoke elements we will also see
-				//our own inserted dereferentiation invoke elements. This should be fixed.
-				if (invokeElements.contains(element)){
+				// Exclude the invoke elements we have created a few steps
+				// before
+				// FIXME: This is probably a BUG. When we parse the invoke
+				// elements we will also see
+				// our own inserted dereferentiation invoke elements. This
+				// should be fixed.
+				if (invokeElements.contains(element)) {
 					processInvokeElement(onInstSequence, element);
 				}
-			} else if (type.equals(EL_REPLY)) {
+			} else if (type.equals(EL_REPLY) || type.equals(EL_RECEIVE)) {
 				// Process all reply activities
-				processReplyElement(onInstSequence, element);
-			} else if (type.equals(EL_RECEIVE)) {
-				processReceiveElement(onInstSequence, element);
+				processReceiveReplyElement(onInstSequence, element);
+			} else {
+				processAnyElement(onInstSequence, element);
 			}
 		}
 	}
 
-	private void processReplyElement(Element onInstSequence, Element element) {
+	private void processReceiveReplyElement(Element onInstSequence,
+			Element element) {
 		if (refVarNames.containsKey(element.getAttributeValue(AT_VARIABLE))) {
 			// This activity has a referenceVariable
 			String varName = element.getAttributeValue(AT_VARIABLE);
-			Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
-					varName, refVarNames.get(varName));
-			if (getReferenceVariable(varName).getAttributeValue(
-					AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
-				// onInstantiation: referenced data should be loaded
-				// constant (only one time)
-				if (refVarNames.get(varName) == 0) {
-					onInstSequence.addContent(deRefInvoke);
-
-					// Increase the counter for the name of the next RRS
-					// invoke activity
-					refVarNames.put(varName, refVarNames.get(varName) + 1);
-				}
-			} else {
-				// fresh: referenced data should be loaded dynamic
-				// (several times)
-				Element parent = element.getParentElement();
-
-				int index = parent.indexOf(element);
-
-				if (index != -1) {
-					parent.addContent(index, deRefInvoke);
-					// Increase the counter for the name of the next RRS
-					// invoke activity
-					refVarNames.put(varName, refVarNames.get(varName) + 1);
-				}
-			}
-		}
-	}
-
-	private void processReceiveElement(Element onInstSequence, Element element) {
-		// Check if the instantiation element is the input element. If this is
-		// true we won't do anything.
-		if (instantiationElement != element) {
-
-			if (refVarNames.containsKey(element.getAttributeValue(AT_VARIABLE))) {
-				// This activity has a referenceVariable
-				String varName = element.getAttributeValue(AT_VARIABLE);
-				Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
-						varName, refVarNames.get(varName));
-				if (getReferenceVariable(varName).getAttributeValue(
-						AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
-					// onInstantiation: referenced data should be loaded
-					// constant (only one time)
-					if (refVarNames.get(varName) == 0) {
-						onInstSequence.addContent(deRefInvoke);
-
-						// Increase the counter for the name of the next RRS
-						// invoke activity
-						refVarNames.put(varName, refVarNames.get(varName) + 1);
-					}
-				} else {
-					// fresh: referenced data should be loaded dynamic
-					// (several times)
-					Element parent = element.getParentElement();
-
-					int index = parent.indexOf(element);
-
-					if (index != -1) {
-						parent.addContent(index, deRefInvoke);
-						// Increase the counter for the name of the next RRS
-						// invoke activity
-						refVarNames.put(varName, refVarNames.get(varName) + 1);
-					}
-				}
-			}
+			element.setAttribute(AT_VARIABLE, varName + "EPR");
 		}
 	}
 
 	// TODO: Falls nur inputVariable vorhanden Eingabe an
-	// processInvokeInOnlyElement(Element, Element, Element)
+	// processInvokeInOnlyElement(Element, Element)
 	// weiterleiten
 	private void processInvokeElement(Element onInstSequence, Element element) {
-		//Check if the invoke has an in- and output variable or not
-		if (element.getAttribute(AT_OUTPUT_VARIABLE) == null){
+		// Check if the invoke has an in- and output variable or not
+		if (element.getAttribute(AT_OUTPUT_VARIABLE) == null) {
 			processInvokeInOnlyElement(onInstSequence, element);
-		}else {
-			//Check the input variable
-			if (refVarNames.containsKey(element.getAttributeValue(AT_INPUT_VARIABLE))) {
+		} else {
+			// Check the input variable
+			if (refVarNames.containsKey(element
+					.getAttributeValue(AT_INPUT_VARIABLE))) {
 				// The input variable is a referenceVariable
 				String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
-				Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
-						varName, refVarNames.get(varName));
-				if (getReferenceVariable(varName).getAttributeValue(
-						AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
-					// onInstantiation: referenced data should be loaded
-					// constant (only one time)
-					if (refVarNames.get(varName) == 0) {
-						onInstSequence.addContent(deRefInvoke);
-
-						// Increase the counter for the name of the next RRS
-						// invoke activity
-						refVarNames.put(varName, refVarNames.get(varName) + 1);
-					}
-				} else {
-					// fresh: referenced data should be loaded dynamic
-					// (several times)
-					Element parent = element.getParentElement();
-
-					int index = parent.indexOf(element);
-
-					if (index != -1) {
-						parent.addContent(index, deRefInvoke);
-						// Increase the counter for the name of the next RRS
-						// invoke activity
-						refVarNames.put(varName, refVarNames.get(varName) + 1);
-					}
-				}
+				element.setAttribute(AT_INPUT_VARIABLE, varName + "EPR");
 			}
-			
-			//Check the output variable
-			if (refVarNames.containsKey(element.getAttributeValue(AT_OUTPUT_VARIABLE))) {
+
+			// Check the output variable
+			if (refVarNames.containsKey(element
+					.getAttributeValue(AT_OUTPUT_VARIABLE))) {
 				// The output variable is a referenceVariable
 				String varName = element.getAttributeValue(AT_OUTPUT_VARIABLE);
-				Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
-						varName, refVarNames.get(varName));
-				if (getReferenceVariable(varName).getAttributeValue(
-						AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
-					// onInstantiation: referenced data should be loaded
-					// constant (only one time)
-					if (refVarNames.get(varName) == 0) {
-						onInstSequence.addContent(deRefInvoke);
-
-						// Increase the counter for the name of the next RRS
-						// invoke activity
-						refVarNames.put(varName, refVarNames.get(varName) + 1);
-					}
-				} else {
-					// fresh: referenced data should be loaded dynamic
-					// (several times)
-					Element parent = element.getParentElement();
-
-					int index = parent.indexOf(element);
-
-					if (index != -1) {
-						parent.addContent(index, deRefInvoke);
-						// Increase the counter for the name of the next RRS
-						// invoke activity
-						refVarNames.put(varName, refVarNames.get(varName) + 1);
-					}
-				}
+				element.setAttribute(AT_OUTPUT_VARIABLE, varName + "EPR");
 			}
 		}
 	}
 
 	private void processInvokeInOnlyElement(Element onInstSequence,
 			Element element) {
-		if (refVarNames.containsKey(element.getAttributeValue(AT_INPUT_VARIABLE))) {
+		if (refVarNames.containsKey(element
+				.getAttributeValue(AT_INPUT_VARIABLE))) {
 			// This activity has a referenceVariable
 			String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
-			Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
-					varName, refVarNames.get(varName));
-			if (getReferenceVariable(varName).getAttributeValue(
-					AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
-				// onInstantiation: referenced data should be loaded
-				// constant (only one time)
-				if (refVarNames.get(varName) == 0) {
-					onInstSequence.addContent(deRefInvoke);
+			element.setAttribute(AT_INPUT_VARIABLE, varName + "EPR");
+		}
+	}
 
-					// Increase the counter for the name of the next RRS
-					// invoke activity
-					refVarNames.put(varName, refVarNames.get(varName) + 1);
+	private void processAnyElement(Element onInstSequence, Element element) {
+		// We check only Assign activities at the moment
+		
+		/*
+		 * <bpel:assign validate="no" name="Assign"> <bpel:copy> <bpel:from>
+		 * <![CDATA[val($ReferenceVariable)]]> </bpel:from> <bpel:to
+		 * variable="input"></bpel:to> </bpel:copy> </bpel:assign>
+		 */
+
+		// Check the expression
+		Element from = element.getChild(EL_COPY, BPEL_NAMESPACE).getChild(
+				EL_FROM, BPEL_NAMESPACE);
+
+		String expression = from.getText().trim();
+		
+		if (expression.matches(EXP_VAL+"\\([$][a-zA-Z_0-9]+\\)")){
+			expression = expression.substring(5, expression.indexOf(")", 5));
+			if (refVarNames.containsKey(expression)){
+				//The expression contains a reference variable
+				String varName = expression;
+				Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
+						varName, refVarNames.get(varName));
+				if (getReferenceVariable(varName).getAttributeValue(
+						AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
+					// onInstantiation: referenced data should be loaded
+					// constant (only one time)
+					if (refVarNames.get(varName) == 0) {
+						onInstSequence.addContent(deRefInvoke);
+
+						// Increase the counter for the name of the next RRS
+						// invoke activity
+						refVarNames.put(varName, refVarNames.get(varName) + 1);
+					}
+				} else {
+					// fresh: referenced data should be loaded dynamic
+					// (several times)
+					Element parent = element.getParentElement();
+
+					int index = parent.indexOf(element);
+
+					if (index != -1) {
+						parent.addContent(index, deRefInvoke);
+						// Increase the counter for the name of the next RRS
+						// invoke activity
+						refVarNames.put(varName, refVarNames.get(varName) + 1);
+					}
 				}
-			} else {
-				// fresh: referenced data should be loaded dynamic
-				// (several times)
-				Element parent = element.getParentElement();
+			}
+		} else {
+			/*
+			 * <bpel:assign validate="no" name="Assign"> <bpel:copy> <bpel:from
+			 * variable="input"></bpel:from> <bpel:to
+			 * variable="input"></bpel:to> </bpel:copy> </bpel:assign>
+			 */
+			if (from.getAttributeValue(AT_VARIABLE) != null && refVarNames.containsKey(from.getAttributeValue(AT_VARIABLE))){
+				//Assign from variable is a reference variable
+				String varName = from.getAttributeValue(AT_VARIABLE);
+				Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
+						varName, refVarNames.get(varName));
+				if (getReferenceVariable(varName).getAttributeValue(
+						AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
+					// onInstantiation: referenced data should be loaded
+					// constant (only one time)
+					if (refVarNames.get(varName) == 0) {
+						onInstSequence.addContent(deRefInvoke);
 
-				int index = parent.indexOf(element);
+						// Increase the counter for the name of the next RRS
+						// invoke activity
+						refVarNames.put(varName, refVarNames.get(varName) + 1);
+					}
+				} else {
+					// fresh: referenced data should be loaded dynamic
+					// (several times)
+					Element parent = element.getParentElement();
 
-				if (index != -1) {
-					parent.addContent(index, deRefInvoke);
-					// Increase the counter for the name of the next RRS
-					// invoke activity
-					refVarNames.put(varName, refVarNames.get(varName) + 1);
+					int index = parent.indexOf(element);
+
+					if (index != -1) {
+						parent.addContent(index, deRefInvoke);
+						// Increase the counter for the name of the next RRS
+						// invoke activity
+						refVarNames.put(varName, refVarNames.get(varName) + 1);
+					}
 				}
 			}
 		}
 	}
-	
-//	/**
-//	 * This method checks if two generated dereferentiation (RRS invoke) elements
-//	 * are doing the same.
-//	 * 
-//	 * @param elm1 one invoke element
-//	 * @param elm2 another invoke element
-//	 * @return true, if the elements have the same attribute values and only the number
-//	 * in the name is different, for example:
-//	 * Element1: <bpel:invoke name="dataRefresh_0" partnerLink="RRS" operation="GET" inputVariable="dataEPR" outputVariable="data" />
-//	 * Element2: <bpel:invoke name="dataRefresh_1" partnerLink="RRS" operation="GET" inputVariable="dataEPR" outputVariable="data" />
-//	 * 
-//	 * These to elements are resolving the same reference twice, so one is not necassary
-//	 * and don't have to be generated. 
-//	 */
-//	private boolean isInvokeElementEqual(Element elm1, Element elm2){
-//		//FIXME: This is probably a BUG. When we parse the invoke elements we will also see
-//		//our own inserted dereferentiation invoke elements. This should be fixed and then this
-//		//Method won't be necassary any more.
-//		boolean equal = false;
-//		
-//		String[] split1 = elm1.getAttributeValue(AT_NAME).split("_");
-//		String name1 = split1[0];
-//		
-//		String[] split2 = elm2.getAttributeValue(AT_NAME).split("_");
-//		String name2 = split2[0];
-//		
-//		if (elm1.getAttributeValue(AT_OUTPUT_VARIABLE).equals(elm2.getAttributeValue(AT_OUTPUT_VARIABLE)) &&
-//				elm1.getAttributeValue(AT_INPUT_VARIABLE).equals(elm2.getAttributeValue(AT_INPUT_VARIABLE))&&
-//						elm1.getAttributeValue(AT_OPERATION).equals(elm2.getAttributeValue(AT_OPERATION))&&
-//								elm1.getAttributeValue(AT_PARTNER_LINK).equals(elm2.getAttributeValue(AT_PARTNER_LINK))&&
-//										name1.equals(name2)){
-//			equal = true;
-//		}
-//		
-//		return equal;
-//	}
 }
