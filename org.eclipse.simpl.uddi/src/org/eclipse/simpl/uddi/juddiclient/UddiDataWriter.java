@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
+import org.eclipse.simpl.uddi.UDDIPlugIn;
 import org.uddi.api_v3.AccessPoint;
 import org.uddi.api_v3.AuthToken;
 import org.uddi.api_v3.BindingTemplate;
@@ -20,6 +21,9 @@ import org.uddi.v3_service.UDDIPublicationPortType;
 import org.uddi.v3_service.UDDISecurityPortType;
 
 public class UddiDataWriter implements IUddiConfig {
+	
+	private final String UDDI_SEC_WSDL = UDDIPlugIn.getDefault().getPreferenceStore().getString("UDDI_SEC_ADDRESS");
+	private final String UDDI_PUB_WSDL = UDDIPlugIn.getDefault().getPreferenceStore().getString("UDDI_PUB_ADDRESS");
 
 	private static UDDISecurityPortType security = null;
 
@@ -35,8 +39,8 @@ public class UddiDataWriter implements IUddiConfig {
 
 		try {
 		  UddiDataWriter.security = transport
-					.getUDDISecurityService("http://localhost:8080/juddiv3/services/security?wsdl");
-		  UddiDataWriter.publish = transport.getUDDIPublishService("http://localhost:8080/juddiv3/services/publish?wsdl");
+					.getUDDISecurityService(UDDI_SEC_WSDL);
+		  UddiDataWriter.publish = transport.getUDDIPublishService(UDDI_PUB_WSDL);
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
