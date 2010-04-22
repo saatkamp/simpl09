@@ -211,7 +211,7 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   @Override
   public DataObject getMetaData(String dsAddress, String filter) throws ConnectionException {
     Connection conn = openConnection(dsAddress);
-    DataObject metaDataObject = this.createMetaDataObject().getRootObject();
+    DataObject metaDataObject = this.getMetaDataSDO();
     DataObject schemaObject = null;
     DataObject tableObject = null;
     DataObject columnObject = null;
