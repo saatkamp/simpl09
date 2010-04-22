@@ -1,6 +1,11 @@
 package org.eclipse.simpl.rrs.transformation.commands;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -13,6 +18,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.simpl.rrs.transformation.TransformerUtil;
 import org.eclipse.simpl.rrs.transformation.client.TransformationClient;
+import org.eclipse.simpl.rrs.transformation.jet.TemplateRrsXSD;
+import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -41,7 +48,8 @@ public class TransformationContextHandler extends AbstractHandler {
 			// Hier wird die eigentlich Transformation angestoﬂen,
 			// d.h. es werden alle im Package Explorer selektierten BPEL-Dateien
 			// an den Transformator geschickt und die transformierten
-			// Dateien werden auch von diesem Plug-In lokal im Workspace in einem
+			// Dateien werden auch von diesem Plug-In lokal im Workspace in
+			// einem
 			// Unterordner "Prozessname_transformed" gespeichert.
 			for (Iterator<Object> iterator = strucSelection.iterator(); iterator
 					.hasNext();) {
@@ -64,19 +72,84 @@ public class TransformationContextHandler extends AbstractHandler {
 					System.out.println("Datei-PFAD: " + absolutWorkspacePath
 							+ bpelPath.toOSString());
 
-					if (!TransformerUtil.getReferenceVariables(absolutWorkspacePath + bpelPath.toOSString()).isEmpty()) {
-						if (TransformerUtil.areAllRefVarsFullSpecified(absolutWorkspacePath + bpelPath.toOSString())){
-							TransformationClient.getClient().transform(absolutWorkspacePath + projectPath.toOSString(),
-									absolutWorkspacePath + bpelPath.toOSString());
-						}else {
+					List references = TransformerUtil
+							.getReferenceVariables(absolutWorkspacePath
+									+ bpelPath.toOSString());
+
+					if (!references.isEmpty()) {
+						if (TransformerUtil
+								.areAllRefVarsFullSpecified(absolutWorkspacePath
+										+ bpelPath.toOSString())) {
+							String bpelFilePath = absolutWorkspacePath
+									+ bpelPath.toOSString();
+
+							String bpelFileName = bpelFilePath
+									.substring(
+											bpelFilePath
+													.lastIndexOf(System
+															.getProperty("file.separator")) + 1,
+											bpelFilePath.lastIndexOf("."));
+
+							// Transform the process
+							TransformationClient.getClient().transform(
+									absolutWorkspacePath
+											+ projectPath.toOSString(),
+									absolutWorkspacePath
+											+ bpelPath.toOSString());
+
+							File xsdFileRRS = new File(absolutWorkspacePath
+									+ projectPath.toOSString()
+									+ System.getProperty("file.separator")
+									+ bpelFileName + "_transformed"
+									+ System.getProperty("file.separator")
+									+ "rrs.xsd");
+
+							// Create the rrs.xsd file, if necassary
+							if (!xsdFileRRS.exists()) {
+								try {
+
+									if (xsdFileRRS.createNewFile()) {
+
+										OutputStreamWriter out = new OutputStreamWriter(
+												new FileOutputStream(xsdFileRRS
+														.getAbsolutePath()),
+												"UTF-8");
+
+										TemplateRrsXSD myTemplate = new TemplateRrsXSD();
+
+										out.write(myTemplate.generate(null));
+										out.close();
+									}
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+
+							// Download the rrs.wsdl file from the RRS, if
+							// necassary
+							// TODO: If more than one RRS is used, all rrs.wsdl
+							// files have to be downloaded and stored
+							TransformerUtil.downloadWSDL(RRSUIPlugIn
+									.getDefault().getPreferenceStore()
+									.getString("RRS_RET_ADDRESS"),
+									absolutWorkspacePath
+											+ projectPath.toOSString(),
+									bpelFileName);
+
+							// Add a RRS INVOKE element to the Deployment
+							// Descriptor
+
+						} else {
 							MessageDialog
-							.openInformation(
-									Display.getCurrent().getActiveShell(),
-									"SIMPL TransformationService: Process has reference variables with unspecified attributes",
-									"The opened process has Reference Variables which are not fully specified. " +
-									"Please check that in every Reference Variable the name, referenceType and valueType attribute is set to a value.");
+									.openInformation(
+											Display.getCurrent()
+													.getActiveShell(),
+											"SIMPL TransformationService: Process has reference variables with unspecified attributes",
+											"The opened process has Reference Variables which are not fully specified. "
+													+ "Please check that in every Reference Variable the name, referenceType and valueType attribute is set to a value.");
 						}
-						
+
 						// TODO: RRS.wsdl und rrs.xsd noch in den Projektordner
 						// kopieren!
 						// transform("C:/runtime-EclipseApplication/Test",

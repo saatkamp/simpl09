@@ -76,7 +76,9 @@ public class TransformationClient {
 
 			File transformDir = new File(projectPath
 					+ System.getProperty("file.separator") + bpelFileName + "_transformed");
-			transformDir.mkdir();
+			if (!transformDir.exists()){
+				transformDir.mkdir();
+			}
 
 			try {
 				BufferedWriter out = new BufferedWriter(
