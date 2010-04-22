@@ -77,6 +77,26 @@
     
     	<bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="asd" />
         
+        <bpel:assign validate="no" name="Assign"> 
+        	<bpel:copy> 
+        		<bpel:from variable="data">
+        		</bpel:from> 
+        		<bpel:to variable="input">
+        		</bpel:to> 
+        	</bpel:copy> 
+		</bpel:assign>
+		
+		<bpel:assign validate="no" name="Assign"> 
+			<bpel:copy> 
+				<bpel:from>
+		 			<![CDATA[val($asd)]]> 
+		 		</bpel:from> 
+		 		<bpel:to
+					variable="input">
+				</bpel:to> 
+			</bpel:copy> 
+		</bpel:assign>
+        
         <bpel:invoke name="callbackClient" 
                 partnerLink="client"
                 portType="tns:asdCallback"

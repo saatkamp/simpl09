@@ -46,7 +46,7 @@
     <!-- Receive input from requestor. 
              Note: This maps to operation defined in asd.wsdl 
              -->
-    <bpel:receive name="receiveInput" partnerLink="client" portType="tns:asd" operation="initiate" variable="data" createInstance="yes" />
+    <bpel:receive name="receiveInput" partnerLink="client" portType="tns:asd" operation="initiate" variable="dataEPR" createInstance="yes" />
     <bpel:sequence name="prepare">
       <bpel:invoke name="asdRefresh_0" partnerLink="RRS" operation="GET" inputVariable="asdEPR" outputVariable="asd" />
     </bpel:sequence>
@@ -54,16 +54,24 @@
              Note: the callback location and correlation id is transparently handled 
              using WS-addressing.
              -->
-    <bpel:invoke name="ReferenceVariableRefresh_1" partnerLink="RRS" operation="GET" inputVariable="ReferenceVariableEPR" outputVariable="ReferenceVariable" />
-    <bpel:invoke name="dataRefresh_1" partnerLink="RRS" operation="GET" inputVariable="dataEPR" outputVariable="data" />
-    <bpel:invoke name="Invoke" partnerLink="client" operation="onResult" portType="tns:asdCallback" inputVariable="ReferenceVariable" outputVariable="data" />
+    <bpel:invoke name="Invoke" partnerLink="client" operation="onResult" portType="tns:asdCallback" inputVariable="ReferenceVariableEPR" outputVariable="dataEPR" />
+    <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="dataEPR" />
+    <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="ReferenceVariableEPR" />
+    <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="asdEPR" />
     <bpel:invoke name="dataRefresh_0" partnerLink="RRS" operation="GET" inputVariable="dataEPR" outputVariable="data" />
-    <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="data" />
-    <bpel:invoke name="ReferenceVariableRefresh_0" partnerLink="RRS" operation="GET" inputVariable="ReferenceVariableEPR" outputVariable="ReferenceVariable" />
-    <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="ReferenceVariable" />
-    <bpel:reply name="Reply" partnerLink="client" operation="initiate" portType="tns:asd" variable="asd" />
-    <bpel:invoke name="ReferenceVariableRefresh_2" partnerLink="RRS" operation="GET" inputVariable="ReferenceVariableEPR" outputVariable="ReferenceVariable" />
-    <bpel:invoke name="callbackClient" partnerLink="client" portType="tns:asdCallback" operation="onResult" inputVariable="ReferenceVariable" />
+    <bpel:assign validate="no" name="Assign">
+      <bpel:copy>
+        <bpel:from variable="data" />
+        <bpel:to variable="input" />
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:assign validate="no" name="Assign">
+      <bpel:copy>
+        <bpel:from><![CDATA[val($asd)]]></bpel:from>
+        <bpel:to variable="input" />
+      </bpel:copy>
+    </bpel:assign>
+    <bpel:invoke name="callbackClient" partnerLink="client" portType="tns:asdCallback" operation="onResult" inputVariable="ReferenceVariableEPR" />
   </bpel:sequence>
 </bpel:process>
 
