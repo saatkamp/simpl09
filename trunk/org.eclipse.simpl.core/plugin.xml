@@ -94,12 +94,6 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
-            class="org.eclipse.simpl.core.ui.preferences.SIMPLCorePreferencePage"
-            id="org.eclipse.simpl.core.ui.preferences.SIMPLCorePreferencePage"
-            name="SIMPL Core">
-      </page>
-      <page
             class="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
             id="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
             name="SIMPL">
