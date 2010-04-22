@@ -28,4 +28,8 @@
     		<xsd:element name="data" type="xsd:string"></xsd:element>
     	</xsd:sequence>
     </xsd:complexType>
+
+    <xsd:simpleType name="data">
+    	<xsd:restriction base="xsd:string"></xsd:restriction>
+    </xsd:simpleType>
 </xsd:schema>

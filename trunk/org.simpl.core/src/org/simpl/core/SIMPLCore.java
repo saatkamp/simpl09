@@ -88,15 +88,13 @@ public class SIMPLCore {
   }
 
   /**
-   * Finds a data format service that matches the given type and subtype.
+   * Finds a data format service that matches the given type.
    * 
    * @param dfType
-   * @param dfSubtype
    * @return The instance of a data format service.
    */
-  public DataFormatService<Object> dataFormatService(String dfType,
-      String dfSubtype) {
-    return dataFormatServiceProvider.getInstance(dfType, dfSubtype);
+  public DataFormatService<Object> dataFormatService(String dfType) {
+    return dataFormatServiceProvider.getInstance(dfType);
   }
 
   /**
@@ -142,15 +140,5 @@ public class SIMPLCore {
    */
   public List<String> getDataFormatTypes() {
     return dataFormatServiceProvider.getTypes();
-  }
-
-  /**
-   * Returns all data format subtypes of a given data format type.
-   * 
-   * @param dsType
-   * @return A list of data format subtypes.
-   */
-  public List<String> getDataFormatSubtypes(String dfType) {
-    return dataFormatServiceProvider.getSubtypes(dfType);
   }
 }
