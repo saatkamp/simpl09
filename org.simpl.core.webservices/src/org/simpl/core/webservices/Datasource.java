@@ -14,13 +14,14 @@ import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
+import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.XMLHelper;
 
 /**
- * Web Service of the data source service.
+ * Web Service to access the data source service.
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de>
  * @version $Id: Datasource.java 1140 2010-04-19 14:38:52Z
@@ -35,16 +36,15 @@ public class Datasource {
 
   @WebMethod(action = "retrieveData")
   public String retrieveData(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
+      @WebParam(name = "statement", targetNamespace = "") String statement)
       throws ConnectionException {
     DataObject dataObject = null;
     String data = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .retrieveData(dsAddress, statement);
+    dataObject = SIMPLCore.getInstance().dataSourceService(
+        dataSource.getType(), dataSource.getSubType()).retrieveData(dataSource,
+        statement);
 
     try {
       XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject",
@@ -61,64 +61,57 @@ public class Datasource {
 
   @WebMethod(action = "depositData")
   public boolean depositData(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
+      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
       @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype,
       @WebParam(name = "target", targetNamespace = "") String target)
       throws ConnectionException {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .depositData(dsAddress, statement, target);
+    success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
+        dataSource.getSubType()).depositData(dataSource, statement, target);
 
     return success;
   }
 
   @WebMethod(action = "executeStatement")
   public boolean executeStatement(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
+      @WebParam(name = "statement", targetNamespace = "") String statement)
       throws ConnectionException {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .executeStatement(dsAddress, statement);
+    success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
+        dataSource.getSubType()).executeStatement(dataSource, statement);
 
     return success;
   }
 
   @WebMethod(action = "writeBack")
   public boolean writeBack(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "data", targetNamespace = "") String data,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
+      @WebParam(name = "data", targetNamespace = "") String data)
       throws ConnectionException {
     boolean success = false;
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .writeBack(dsAddress, dataObject);
+    success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
+        dataSource.getSubType()).writeBack(dataSource, dataObject);
 
     return success;
   }
 
   @WebMethod(action = "getMetaData")
   public String getMetaData(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype,
+      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
       @WebParam(name = "filter", targetNamespace = "") String filter)
       throws ConnectionException {
     DataObject dataObject = null;
     String metaData = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService(dsType, dsSubtype)
-        .getMetaData(dsAddress, filter);
+    dataObject = SIMPLCore.getInstance().dataSourceService(
+        dataSource.getType(), dataSource.getSubType()).getMetaData(dataSource,
+        filter);
 
     try {
       XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject",
@@ -135,16 +128,15 @@ public class Datasource {
 
   @WebMethod(action = "getMetaDataSchema")
   public String getMetaDataSchema(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource)
       throws ConnectionException {
     InputStream inputStream = null;
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();
 
     inputStream = ((DataSourcePlugin) SIMPLCore.getInstance()
-        .dataSourceService(dsType, dsSubtype)).getMetaDataSchema();
+        .dataSourceService(dataSource.getType(), dataSource.getSubType()))
+        .getMetaDataSchema();
 
     // convert inputStream to String
     try {

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl")
+@WebServiceClient(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:9090/ode/processes/DatasourceService.DatasourceServicePort?wsdl")
 public class DatasourceService_Service
     extends Service
 {
@@ -30,9 +30,9 @@ public class DatasourceService_Service
         try {
             URL baseUrl;
             baseUrl = org.simpl.core.webservices.client.DatasourceService_Service.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
+            url = new URL(baseUrl, "http://localhost:9090/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:9090/ode/processes/DatasourceService.DatasourceServicePort?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         DATASOURCESERVICE_WSDL_LOCATION = url;

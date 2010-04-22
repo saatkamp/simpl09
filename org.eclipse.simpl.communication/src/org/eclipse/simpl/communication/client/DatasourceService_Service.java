@@ -19,7 +19,7 @@ import org.eclipse.simpl.communication.Activator;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl")
+@WebServiceClient(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:9090/ode/processes/DatasourceService.DatasourceServicePort?wsdl")
 public class DatasourceService_Service
     extends Service
 {

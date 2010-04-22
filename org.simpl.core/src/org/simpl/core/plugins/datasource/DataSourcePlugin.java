@@ -13,22 +13,17 @@ import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create data source plugins for
- * the SIMPL Core, to realize the access to various data sources.<br>
- * <b>Description:</b>A data source plugin supports just one type of data source
- * (e.g. database or filesystem) set with {@link #setType(String)}, but several
- * subtypes (MySQL, DB2) and languages, added with {@link #addSubtype(String)}
- * and {@link #addLanguage(String, String)}.<br>
- * The meta data structure of a data source is made available as a service data
- * object (SDO) to offer an independent and extensible data format for exchange.
- * The structure of the SDO is created out of a XML schema file that defines the
- * data types and can be created for each plugin. If no schema file is created,
- * the standard schema file of the SIMPL Core is used as default. The schema
- * file and the root element type for the SDO can be set with
- * {@link #setMetaDataSchemaFile(String)} and {@link #setMetaDataType(String)}
- * and the SDO get with {@link #getMetaDataSDO()}. To get the underlying schema,
- * that is e.g. needed to unserialize a SDO of that type,
- * {@link #getMetaDataSchema()} can be used.<br>
+ * <b>Purpose:</b>This abstract class is used to create a data source plugin for
+ * the SIMPL Core, to realize the access to a specific type of data source.<br>
+ * <b>Description:</b>A data source service plugin supports just one type of
+ * data source (e.g. database or file system), but several subtypes (MySQL, DB2)
+ * and languages.<br>
+ * The meta data of a data source is made available as a service data object
+ * (SDO) to offer an independent and extensible data format for exchange. The
+ * structure of the SDO is created from of a XML schema file, that defines all
+ * data types and can be created for each plugin individually. If no schema file
+ * is set, the standard schema file defined in the SIMPL Core is used as
+ * default.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b>SIMPL<br>
  * 
