@@ -14,128 +14,505 @@ package org.eclipse.bpel.simpl.ui.properties;
 //TODO: Diese Implementierung abändern und per Extension-Point 
 //in die RetrieveDataPropertySection einbinden.
 
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.bpel.common.ui.assist.FieldAssistAdapter;
-import org.eclipse.bpel.common.ui.details.IDetailsAreaConstants;
-import org.eclipse.bpel.common.ui.details.IOngoingChange;
-import org.eclipse.bpel.common.ui.flatui.FlatFormAttachment;
-import org.eclipse.bpel.common.ui.flatui.FlatFormData;
-import org.eclipse.bpel.common.ui.flatui.FlatFormLayout;
-import org.eclipse.bpel.model.BPELFactory;
-import org.eclipse.bpel.model.FromPart;
-import org.eclipse.bpel.model.FromParts;
-import org.eclipse.bpel.model.Invoke;
-import org.eclipse.bpel.model.OnEvent;
-import org.eclipse.bpel.model.OnMessage;
-import org.eclipse.bpel.model.Receive;
-import org.eclipse.bpel.model.Reply;
-import org.eclipse.bpel.model.ToPart;
-import org.eclipse.bpel.model.ToParts;
 import org.eclipse.bpel.model.Variable;
-import org.eclipse.bpel.ui.IBPELUIConstants;
-import org.eclipse.bpel.ui.Messages;
-import org.eclipse.bpel.ui.commands.AddFromPartCommand;
-import org.eclipse.bpel.ui.commands.AddToPartCommand;
-import org.eclipse.bpel.ui.commands.AddVariableCommand;
-import org.eclipse.bpel.ui.commands.CompoundCommand;
-import org.eclipse.bpel.ui.commands.SetVariableCommand;
-import org.eclipse.bpel.ui.commands.util.AutoUndoCommand;
+import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.ui.command.SetDataVariableCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;
 import org.eclipse.bpel.ui.details.providers.VariableContentProvider;
 import org.eclipse.bpel.ui.details.providers.VariableFilter;
-import org.eclipse.bpel.ui.properties.BPELPropertySection;
-import org.eclipse.bpel.ui.properties.ChangeTracker;
-import org.eclipse.bpel.ui.properties.InvokeImplSection;
 import org.eclipse.bpel.ui.proposal.providers.ModelContentProposalProvider;
-import org.eclipse.bpel.ui.proposal.providers.RunnableProposal;
-import org.eclipse.bpel.ui.proposal.providers.Separator;
-import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.bpel.ui.util.BatchedMultiObjectAdapter;
 import org.eclipse.bpel.ui.util.ModelHelper;
 import org.eclipse.bpel.ui.util.MultiObjectAdapter;
-import org.eclipse.bpel.ui.util.NameDialog;
-import org.eclipse.bpel.ui.util.PartMappingUtil;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.commands.Command;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener;
 import org.eclipse.jface.fieldassist.IControlContentAdapter;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Widget;
-import org.eclipse.wst.wsdl.Message;
-import org.eclipse.wst.wsdl.Operation;
-import org.eclipse.wst.wsdl.Part;
-import org.eclipse.wst.wsdl.util.WSDLConstants;
-import org.eclipse.xsd.XSDElementDeclaration;
+import org.eclipse.xsd.XSDTypeDefinition;
 
-// TODO: Auto-generated Javadoc
+import widgets.ElementsListPopUp;
+import widgets.LiveEditStyleText;
+
 /**
  * The Class RetrieveDataVariableSection.
  */
-public class RetrieveDataVariableSection extends BPELPropertySection {
-
-	/**
-	 * Selection Listener for the "Use Part Mapping" checkbox
-	 */
-	private class UsePartMappingCheckboxSelectionListener implements
-			SelectionListener {
-
-		public void widgetDefaultSelected(SelectionEvent e) {
-		}
-
-		public void widgetSelected(SelectionEvent e) {
-
-			// Null out the variable/inputVariable/outputVarable fields
-			CompoundCommand ccmd = new CompoundCommand();
-			if (ModelHelper.isMessageActivity(getModel(), ModelHelper.INCOMING)) {
-				ccmd.add(new SetVariableCommand(getModel(), null,
-						ModelHelper.INCOMING));
-			}
-			if (ModelHelper.isMessageActivity(getModel(), ModelHelper.OUTGOING)) {
-				ccmd.add(new SetVariableCommand(getModel(), null,
-						ModelHelper.OUTGOING));
-			}
-			// Null out the fromParts and toParts
-			ccmd.add(new AutoUndoCommand(getInput()) {
-				@Override
-				public void doExecute() {
-					try {
-						ModelHelper.setToParts(getInput(), null);
-					} catch (IllegalArgumentException e) {
-					}
-					try {
-						ModelHelper.setFromParts(getInput(), null);
-					} catch (IllegalArgumentException e) {
-					}
-				}
-			});
-
-			getCommandFramework().execute(ccmd);
-		}
-	}
+public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 	private VariableFilter fInputVariableFilter = new VariableFilter();
-	private VariableFilter fOutputVariableFilter = new VariableFilter();
+	
+	/** The tabels pop window tables. */
+	ElementsListPopUp tabelsPopWindowTables;
+	
+	/** The tabels pop window bpel variables. */
+	ElementsListPopUp tabelsPopWindowBPELVariables;
+	private Label typeLabel = null;
+	private CCombo typeCombo = null;
+	private Label statementLabel = null;
+	//private Text statementText = null;
+	private Label dataSourceAddressLabel = null;
+	private Text dataSourceAddressText = null;
+	private Label kindLabel = null;
+	private CCombo kindCombo = null;
+	private Button openEditorButton = null;
+	private Label languageLabel = null;
+	private CCombo languageCombo = null;
+
+	private LiveEditStyleText statementText = null;
+	
+	private Button insertBpelVariable = null;
+	private Button insertTable = null;
+	private Button Save = null;
+	
+	private RetrieveDataActivity activity;
+
+	/**
+	 * Make this section use all the vertical space it can get.
+	 * 
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean shouldUseExtraSpace() {
+		return true;
+	}
+
+	@Override
+	protected void createClient(Composite parent) {
+		// Setzen die im Editor ausgewählte Aktivität als Input.
+		setInput(getPart(), getBPELEditor().getSelection());
+		// Laden der Aktivität
+		this.activity = getModel();
+
+		createWidgets(parent);
+
+		// Setzen das Statement
+		setStatement(activity.getDsStatement());
+		// Setzen die Datenquellenadresse
+		dataSourceAddressText.setText(activity.getDsAddress());
+
+		// Setzen die Sprache
+		if (kindCombo.getSelectionIndex() > 0) {
+			// Fragen alle unterstützten Sprachen des Subtypes beim SIMPL
+			// Core ab und selektieren die in der Aktivität hinterlegte Sprache.
+			languageCombo.setItems(Constants.getDatasourceLanguages(
+					activity.getDsKind()).toArray(new String[0]));
+
+			languageCombo.select(languageCombo
+					.indexOf(activity.getDsLanguage()));
+		}
+
+		// Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
+		// geladen und in den ComboBoxes selektiert.
+	}
+
+	/**
+	 * Creates the property section.
+	 * 
+	 * @param composite
+	 *            to put the content in.
+	 */
+	private void createWidgets(Composite composite) {
+		this.parentComposite = composite;
+		GridData gridData130 = new GridData();
+		gridData130.horizontalAlignment = GridData.FILL;
+		gridData130.grabExcessHorizontalSpace = true;
+		gridData130.verticalAlignment = GridData.CENTER;
+		GridData gridData4 = new GridData();
+		gridData4.horizontalAlignment = GridData.FILL;
+		gridData4.verticalAlignment = GridData.CENTER;
+		GridData gridData21 = new GridData();
+		gridData21.horizontalAlignment = GridData.FILL;
+		gridData21.verticalAlignment = GridData.CENTER;
+		GridData gridData51 = new GridData();
+		gridData51.horizontalAlignment = GridData.FILL;
+		gridData51.verticalAlignment = GridData.CENTER;
+		GridData gridData31 = new GridData();
+		gridData31.grabExcessHorizontalSpace = false;
+		GridData gridData12 = new GridData();
+		gridData12.grabExcessHorizontalSpace = true;
+		gridData12.verticalAlignment = GridData.CENTER;
+		gridData12.horizontalAlignment = GridData.FILL;
+		GridData gridData11 = new GridData();
+		gridData11.horizontalAlignment = GridData.FILL;
+		gridData11.grabExcessHorizontalSpace = false;
+		gridData11.horizontalIndent = 1;
+		gridData11.heightHint = -1;
+		gridData11.horizontalSpan = 2;
+		gridData11.grabExcessVerticalSpace = true;
+		gridData11.verticalAlignment = GridData.CENTER;
+		GridData gridData1 = new GridData();
+		gridData1.grabExcessHorizontalSpace = false;
+		gridData1.verticalAlignment = GridData.END;
+		gridData1.horizontalSpan = 3;
+		gridData1.horizontalAlignment = GridData.FILL;
+		GridData gridData = new GridData();
+		gridData.heightHint = -1;
+		gridData.horizontalAlignment = GridData.BEGINNING;
+		gridData.verticalAlignment = GridData.END;
+		gridData.horizontalIndent = 0;
+		gridData.grabExcessVerticalSpace = true;
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 4;
+		parentComposite.setLayout(gridLayout);
+		parentComposite.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		parentComposite.setSize(new Point(582, 350));
+		typeLabel = new Label(composite, SWT.NONE);
+		typeLabel.setText("Type of data source:");
+		typeLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		typeLabel.setLayoutData(gridData51);
+		createTypeCombo();
+		Label filler2 = new Label(composite, SWT.NONE);
+		Label filler5 = new Label(composite, SWT.NONE);
+		kindLabel = new Label(composite, SWT.NONE);
+		kindLabel.setText("Subtype of data source:");
+		kindLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		createKindCombo();
+		dataSourceAddressLabel = new Label(composite, SWT.NONE);
+		dataSourceAddressText = new Text(composite, SWT.BORDER);
+		dataSourceAddressText.setLayoutData(gridData12);
+		// Änderungen im Modell speichern
+		dataSourceAddressText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				getCommandFramework().execute(
+						new SetDsAddressCommand(getModel(),
+								dataSourceAddressText.getText()));
+			}
+		});
+		dataSourceAddressLabel.setText("Address of the data source:");
+		dataSourceAddressLabel.setLayoutData(gridData31);
+		dataSourceAddressLabel.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
+		languageLabel = new Label(composite, SWT.NONE);
+		languageCombo = new CCombo(composite, SWT.BORDER);
+		languageCombo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		languageCombo.setVisible(true);
+		languageCombo.setLayoutData(gridData4);
+		languageCombo.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				// Auswahl im Modell speichern
+				getCommandFramework().execute(
+						new SetDsLanguageCommand(getModel(), languageCombo
+								.getItem(languageCombo.getSelectionIndex())));
+			}
+		});
+
+		languageLabel.setText("Query language:");
+		languageLabel.setVisible(true);
+		languageLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		
+		createInputVariableWidgets();
+		
+		Label filler43 = new Label(composite, SWT.NONE);
+		openEditorButton = new Button(composite, SWT.NONE);
+		openEditorButton.setText("Open Editor");
+		openEditorButton.setLayoutData(gridData21);
+		openEditorButton.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				openStatementEditor(ModelPackage.eINSTANCE
+						.getRetrieveDataActivity().getInstanceClassName(),
+						activity.getDsLanguage());
+			}
+		});
+
+		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
+		Composite statementCompo=new Composite(composite, SWT.NONE);
+		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		GridData gridData13 = new GridData();
+		gridData13.horizontalSpan = 3;
+		
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+		
+		GridData gridData15 = new GridData();
+		gridData15.horizontalSpan = 4;
+		gridData15.horizontalAlignment = GridData.FILL;
+		gridData15.verticalAlignment = GridData.FILL;
+		gridData15.grabExcessVerticalSpace = true;
+		gridData15.grabExcessHorizontalSpace = true;
+		
+		GridData gridData24 = new GridData();
+		gridData24.horizontalAlignment = GridData.BEGINNING;
+		gridData24.verticalAlignment = GridData.CENTER;
+		
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		statementCompo.setLayout(gridLayout2);
+		statementCompo.setLayoutData(gridData14);
+		//statementCompo.setSize(new Point(150,70));
+		insertBpelVariable = new Button(statementCompo, SWT.NONE);
+		insertBpelVariable.setText("Insert Variable");
+		insertBpelVariable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				tabelsPopWindowBPELVariables=new ElementsListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				tabelsPopWindowBPELVariables.loadBPELVariables();
+				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
+					tabelsPopWindowBPELVariables.openWindow();
+					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
+				}
+				
+				 
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+				
+			}
+		});
+		
+		insertTable = new Button(statementCompo, SWT.NONE);
+		insertTable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				//Display tablesDisplay =new Display();
+				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
+				tabelsPopWindowTables=new ElementsListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				tabelsPopWindowTables.setText("Select Tabel");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressText.getText(),typeCombo.getItem(typeCombo.getSelectionIndex()),kindCombo.getItem(kindCombo.getSelectionIndex()));
+
+				if(!tabelsPopWindowTables.isWindowOpen()){
+					tabelsPopWindowTables.openWindow();
+					tabelsPopWindowTables.setWindowIsOpen(true);
+				}
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+			}
+		});
+		
+		Save = new Button(statementCompo, SWT.NONE);
+		Save.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		Save.setText("Save");
+		Save.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+		});
+
+		insertTable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		insertTable.setText("Insert Table");
+		
+		//insertBpelVariable.setLayoutData(gridData24);
+		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		statementText = new LiveEditStyleText(statementCompo);
+		statementText.setLayoutData(gridData15);
+		
+		
+		statementText.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		//statementText.setVisible(false);
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++
+	}
+
+	/**
+	 * This method initializes typeCombo
+	 * 
+	 */
+	private void createTypeCombo() {
+		GridData gridData2 = new GridData();
+		gridData2.horizontalAlignment = GridData.FILL;
+		gridData2.verticalAlignment = GridData.CENTER;
+		typeCombo = new CCombo(parentComposite, SWT.BORDER);
+		typeCombo.setToolTipText("Choose the type of data source");
+		typeCombo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		typeCombo.setLayoutData(gridData2);
+
+		// Initialisieren der typeCombo-Daten
+		typeCombo.setItems(Constants.getDataSourceTypes()
+				.toArray(new String[0]));
+		// Aktualisieren der KindCombo-Daten
+		typeCombo.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				kindCombo.setItems(Constants.getDataSourceSubTypes(
+						typeCombo.getItem(typeCombo.getSelectionIndex()))
+						.toArray(new String[0]));
+				// Speichern Auswahl in Modell
+				getCommandFramework().execute(
+						new SetDsTypeCommand(getModel(), typeCombo
+								.getItem(typeCombo.getSelectionIndex())));
+			}
+		});
+		typeCombo.setEditable(false);
+
+		// Wert aus Modell selektieren
+		typeCombo.select(typeCombo.indexOf(this.activity.getDsType()));
+	}
+
+	/**
+	 * This method initializes kindCombo
+	 * 
+	 */
+	private void createKindCombo() {
+		GridData gridData6 = new GridData();
+		gridData6.horizontalAlignment = GridData.FILL;
+		gridData6.verticalAlignment = GridData.CENTER;
+		kindCombo = new CCombo(parentComposite, SWT.BORDER);
+		kindCombo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		kindCombo.setToolTipText("Choose the subtype of data source");
+		kindCombo.setEditable(false);
+		kindCombo.setLayoutData(gridData6);
+
+		// Initilisieren der kindCombo-Daten
+		if (Constants.getDataSourceSubTypes(activity.getDsType()) != null) {
+			kindCombo.setItems(Constants.getDataSourceSubTypes(
+					activity.getDsType()).toArray(new String[0]));
+		}
+
+		kindCombo.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				List<String> languages = Constants
+						.getDatasourceLanguages(kindCombo.getItem(kindCombo
+								.getSelectionIndex()));
+
+				languageCombo.setItems(languages.toArray(new String[0]));
+
+				if (languages.size() == 1) {
+					languageCombo.select(0);
+					// Änderung im Modell speichern
+					getCommandFramework().execute(
+							new SetDsLanguageCommand(getModel(), languages
+									.get(0)));
+				}
+
+				// Speichern Auswahl in Modell
+				getCommandFramework().execute(
+						new SetDsKindCommand(getModel(), kindCombo
+								.getItem(kindCombo.getSelectionIndex())));
+			}
+		});
+
+		// Wert aus Modell selektieren
+		kindCombo.select(kindCombo.indexOf(this.activity.getDsKind()));
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement()
+	 */
+	@Override
+	public String getStatement() {
+		// TODO Auto-generated method stub
+		return this.statement;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement(java.lang.String)
+	 */
+	@Override
+	public void setStatement(String statement) {
+		// TODO Auto-generated method stub
+		this.statement = statement;
+		statementText.setText(statement);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#saveStatementToModel()
+	 */
+	@Override
+	public void saveStatementToModel() {
+		getCommandFramework().execute(
+				new SetDsStatementCommand(getModel(), this.statement));
+	}
+	
 	private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {
 		@Override
 		public void insertControlContents(Control control, String text,
@@ -154,61 +531,19 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 		}
 	};
 	private Button inputVariableButton;
-	private Composite inputVariableComposite;
 	private Label inputVariableLabel;
 	private Text inputVariableText;
-	private Composite nonPartMappingComposite;
-	private Widget operationLabel;
-	private Button outputVariableButton;
-	private Composite outputVariableComposite;
-	private Label outputVariableLabel;
-	private Text outputVariableText;
 	private Composite parentComposite;
-	private Composite partMappingComposite;
-	private Button usePartMappingCheckbox;
 
 	@Override
 	protected void addAllAdapters() {
 		// model object
 		super.addAllAdapters();
-
-		// fromParts
-		try {
-			FromParts fromParts = ModelHelper.getFromParts(getModel());
-			if (fromParts != null) {
-				fAdapters[0].addToObject(fromParts);
-				if (fromParts.getChildren() != null) {
-					// add it to every single fromPart
-					for (FromPart fromPart : fromParts.getChildren()) {
-						fAdapters[0].addToObject(fromPart);
-					}
-				}
-			}
-		} catch (IllegalArgumentException e) {
-		}
-
-		// toParts
-		try {
-			ToParts toParts = ModelHelper.getToParts(getModel());
-			if (toParts != null) {
-				fAdapters[0].addToObject(toParts);
-				if (toParts.getChildren() != null) {
-					// add it to every single fromPart
-					for (ToPart toPart : toParts.getChildren()) {
-						fAdapters[0].addToObject(toPart);
-					}
-				}
-			}
-		} catch (IllegalArgumentException e) {
-		}
 	}
 
 	@Override
 	protected void basicSetInput(EObject newInput) {
 		super.basicSetInput(newInput);
-
-		this.usePartMappingCheckbox
-				.setSelection(shouldUsePartMapping(getModel()));
 	}
 
 	@Override
@@ -224,109 +559,37 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 
 			@Override
 			public void notify(Notification n) {
-
-				/*
-				 * This is a hack to make the QuickPicker work: If a variable is
-				 * set to our model object (either by command or by the
-				 * QuickPicker) we deselect the checkbox.
-				 */
-				if (ModelHelper.isVariableAffected(getInput(), n,
-						ModelHelper.INCOMING)
-						|| ModelHelper.isVariableAffected(getInput(), n,
-								ModelHelper.OUTGOING)) {
-					// something has happened to our variable
-					if (n.getEventType() == Notification.SET
-							&& n.getNewValue() != null) {
-						// a new variable has been set
-						usePartMappingCheckbox.setSelection(false);
-						try {
-							ModelHelper.setToParts(getInput(), null);
-						} catch (IllegalArgumentException e) {
-						}
-						try {
-							ModelHelper.setFromParts(getInput(), null);
-						} catch (IllegalArgumentException e) {
-						}
-					}
-				}
 			}
-
 		} };
 	}
 
-	@Override
-	protected void createClient(Composite parent) {
-
-		Composite composite = createFlatFormComposite(parent);
-		createWidgets(composite);
-	}
-
-	private Composite createInputVariableWidgets(Composite top, Composite parent) {
-		FlatFormData data;
-
-		final Composite composite = inputVariableComposite = createFlatFormComposite(parent);
-		data = new FlatFormData();
-		if (top == null) {
-			data.top = new FlatFormAttachment(0, IDetailsAreaConstants.VSPACE);
-		} else {
-			data.top = new FlatFormAttachment(top, IDetailsAreaConstants.VSPACE);
-		}
-		data.left = new FlatFormAttachment(0, IDetailsAreaConstants.HSPACE);
-		data.right = new FlatFormAttachment(InvokeImplSection.SPLIT_POINT,
-				-InvokeImplSection.SPLIT_POINT_OFFSET);
-		composite.setLayoutData(data);
-
-		inputVariableLabel = fWidgetFactory.createLabel(composite,
-				Messages.InvokeImplSection_7);
-		inputVariableText = fWidgetFactory.createText(composite, EMPTY_STRING);
-		inputVariableButton = fWidgetFactory.createButton(composite,
+	private void createInputVariableWidgets() {
+		Composite inputVariableComp = new Composite(parentComposite, SWT.NONE);
+		
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 3;
+		inputVariableComp.setLayout(gridLayout);
+		inputVariableComp.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		GridData gridData12 = new GridData();
+		gridData12.horizontalSpan = 2;
+		gridData12.grabExcessHorizontalSpace = true;
+		gridData12.verticalAlignment = GridData.CENTER;
+		gridData12.horizontalAlignment = GridData.FILL;
+		inputVariableComp.setLayoutData(gridData12);
+		
+		GridData gridData6 = new GridData();
+		gridData6.horizontalAlignment = GridData.FILL;
+		gridData6.verticalAlignment = GridData.CENTER;
+		gridData6.grabExcessHorizontalSpace = true;
+		
+		inputVariableLabel = fWidgetFactory.createLabel(inputVariableComp,
+				"Data variable:");
+		inputVariableText = fWidgetFactory.createText(inputVariableComp, EMPTY_STRING);
+		inputVariableButton = fWidgetFactory.createButton(inputVariableComp,
 				EMPTY_STRING, SWT.ARROW | SWT.DOWN | SWT.CENTER);
 
-		// Provide Content Assist for the variables
-		// Content assist on partnerName
-		RunnableProposal proposal = new RunnableProposal() {
-
-			@Override
-			public String getLabel() {
-				return Messages.InvokeImplSection_10;
-			}
-
-			public void run() {
-				createVariable(ModelHelper.getProcess(getInput()), null,
-						isInvoke() ? ModelHelper.OUTGOING
-								: ModelHelper.INCOMING);
-			}
-		};
-
-		RunnableProposal proposal2 = new RunnableProposal() {
-
-			@Override
-			public String getLabel() {
-				return Messages.InvokeImplSection_11;
-			}
-
-			public void run() {
-				createVariable(getInput(), null,
-						isInvoke() ? ModelHelper.OUTGOING
-								: ModelHelper.INCOMING);
-			}
-		};
-
-		RunnableProposal proposal3 = new RunnableProposal() {
-			@Override
-			public String getLabel() {
-				return Messages.InvokeImplSection_12;
-			}
-
-			public void run() {
-				int direction = isInvoke() ? ModelHelper.OUTGOING
-						: ModelHelper.INCOMING;
-				getCommandFramework().execute(
-						new SetVariableCommand(getInput(), null, direction));
-			}
-		};
-
-		VariableContentProvider provider = new VariableContentProvider();
+		VariableContentProvider provider = new VariableContentProvider(false);
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider(
 				new ModelContentProposalProvider.ValueProvider() {
@@ -335,11 +598,6 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 						return getInput();
 					}
 				}, provider, fInputVariableFilter);
-
-		proposalProvider.addProposalToEnd(new Separator());
-		proposalProvider.addProposalToEnd(proposal);
-		proposalProvider.addProposalToEnd(proposal2);
-		proposalProvider.addProposalToEnd(proposal3);
 
 		final FieldAssistAdapter contentAssist = new FieldAssistAdapter(
 				inputVariableText, fTextContentAdapter, proposalProvider, null,
@@ -350,9 +608,6 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 		contentAssist.setFilterStyle(ContentProposalAdapter.FILTER_CUMULATIVE);
 		contentAssist
 				.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-		contentAssist.addContentProposalListener(proposal);
-		contentAssist.addContentProposalListener(proposal2);
-		contentAssist.addContentProposalListener(proposal3);
 		contentAssist
 				.addContentProposalListener(new IContentProposalListener() {
 
@@ -367,7 +622,7 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 						} catch (Throwable t) {
 							return;
 						}
-						SetVariableCommand cmd = new SetVariableCommand(
+						SetDataVariableCommand cmd = new SetDataVariableCommand(
 								getInput(), variable);
 						getCommandFramework().execute(cmd);
 					}
@@ -383,619 +638,27 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 		inputVariableText.addListener(SWT.KeyDown, new Listener() {
 			public void handleEvent(Event event) {
 				if (event.keyCode == SWT.CR) {
-					findAndSetOrCreateVariable(inputVariableText.getText(),
-							isInvoke() ? ModelHelper.OUTGOING
-									: ModelHelper.INCOMING);
+					findAndSetVariable(inputVariableText.getText());
 				}
 			}
 		});
 
-		data = new FlatFormData();
-		data.right = new FlatFormAttachment(100, 0);
-		data.top = new FlatFormAttachment(inputVariableText, +2, SWT.TOP);
-		data.bottom = new FlatFormAttachment(inputVariableText, -2, SWT.BOTTOM);
-		inputVariableButton.setLayoutData(data);
-
-		data = new FlatFormData();
-		data.left = new FlatFormAttachment(0, BPELUtil.calculateLabelWidth(
-				operationLabel, STANDARD_LABEL_WIDTH_SM));
-		data.right = new FlatFormAttachment(inputVariableButton, 0);
-		inputVariableText.setLayoutData(data);
-
-		data = new FlatFormData();
-		data.left = new FlatFormAttachment(0, 0);
-		data.right = new FlatFormAttachment(inputVariableText,
-				-IDetailsAreaConstants.HSPACE);
-		data.top = new FlatFormAttachment(inputVariableText, 0, SWT.CENTER);
-		inputVariableLabel.setLayoutData(data);
-
-		return composite;
-
+		inputVariableText.setLayoutData(gridData6);
 	}
 
-	/**
-	 * The output variable widgets are only pertaining to Invoke activity, if
-	 * there is an output message on the partner link
-	 * 
-	 * @param top
-	 * @param parent
-	 * @return the output variable composite
-	 */
-
-	private Composite createOutputVariableWidgets(Composite top,
-			Composite parent) {
-		FlatFormData data;
-
-		final Composite composite = this.outputVariableComposite = createFlatFormComposite(parent);
-
-		data = new FlatFormData();
-		if (top == null) {
-			data.top = new FlatFormAttachment(0, IDetailsAreaConstants.VSPACE);
-		} else {
-			data.top = new FlatFormAttachment(top, IDetailsAreaConstants.VSPACE);
-		}
-		data.left = new FlatFormAttachment(0, IDetailsAreaConstants.HSPACE);
-		data.right = new FlatFormAttachment(InvokeImplSection.SPLIT_POINT,
-				-InvokeImplSection.SPLIT_POINT_OFFSET);
-		composite.setLayoutData(data);
-
-		outputVariableLabel = fWidgetFactory.createLabel(composite,
-				Messages.InvokeImplSection_13);
-		outputVariableText = fWidgetFactory.createText(composite, EMPTY_STRING);
-		outputVariableButton = fWidgetFactory.createButton(composite,
-				EMPTY_STRING, SWT.ARROW | SWT.DOWN | SWT.CENTER);
-
-		// Provide Content Assist for the operation
-
-		// Runnable proposal.
-		RunnableProposal proposal = new RunnableProposal() {
-
-			@Override
-			public String getLabel() {
-				return Messages.InvokeImplSection_16;
-			}
-
-			public void run() {
-				createVariable(ModelHelper.getProcess(getInput()), null,
-						isInvoke() ? ModelHelper.INCOMING
-								: ModelHelper.OUTGOING);
-			}
-		};
-
-		RunnableProposal proposal2 = new RunnableProposal() {
-			@Override
-			public String getLabel() {
-				return "Create Local Output Variable"; //$NON-NLS-1$
-			}
-
-			public void run() {
-				createVariable(getInput(), null,
-						isInvoke() ? ModelHelper.INCOMING
-								: ModelHelper.OUTGOING);
-			}
-		};
-
-		RunnableProposal proposal3 = new RunnableProposal() {
-			@Override
-			public String getLabel() {
-				return "Clear Output Variable"; //$NON-NLS-1$
-			}
-
-			public void run() {
-				getCommandFramework().execute(
-						new SetVariableCommand(getInput(), null,
-								isInvoke() ? ModelHelper.INCOMING
-										: ModelHelper.OUTGOING));
-			}
-		};
-
-		VariableContentProvider provider = new VariableContentProvider();
-		ModelContentProposalProvider proposalProvider;
-		proposalProvider = new ModelContentProposalProvider(
-				new ModelContentProposalProvider.ValueProvider() {
-					@Override
-					public Object value() {
-						return getInput();
-					}
-				}, provider, fOutputVariableFilter);
-
-		proposalProvider.addProposalToEnd(new Separator());
-		proposalProvider.addProposalToEnd(proposal);
-		proposalProvider.addProposalToEnd(proposal2);
-		proposalProvider.addProposalToEnd(proposal3);
-
-		final FieldAssistAdapter contentAssist = new FieldAssistAdapter(
-				outputVariableText, fTextContentAdapter, proposalProvider,
-				null, null, true);
-		// 
-		contentAssist.setLabelProvider(new ModelLabelProvider());
-		contentAssist.setPopupSize(new Point(300, 100));
-		contentAssist.setFilterStyle(ContentProposalAdapter.FILTER_CUMULATIVE);
-		contentAssist
-				.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-		contentAssist.addContentProposalListener(proposal);
-		contentAssist.addContentProposalListener(proposal2);
-		contentAssist.addContentProposalListener(proposal3);
-		contentAssist
-				.addContentProposalListener(new IContentProposalListener() {
-
-					public void proposalAccepted(IContentProposal chosenProposal) {
-						if (chosenProposal.getContent() == null) {
-							return;
-						}
-						Variable variable = null;
-						try {
-							variable = (Variable) ((Adapter) chosenProposal)
-									.getTarget();
-						} catch (Throwable t) {
-							return;
-						}
-						SetVariableCommand cmd = new SetVariableCommand(
-								getInput(), variable, ModelHelper.INCOMING);
-						getCommandFramework().execute(cmd);
-					}
-				});
-
-		// End of Content Assist for operation
-
-		outputVariableButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				contentAssist.openProposals();
-			}
-		});
-		outputVariableText.addListener(SWT.KeyDown, new Listener() {
-			public void handleEvent(Event event) {
-				if (event.keyCode == SWT.CR) {
-					findAndSetOrCreateVariable(outputVariableText.getText(),
-							ModelHelper.INCOMING);
-				}
-			}
-		});
-
-		data = new FlatFormData();
-		data.right = new FlatFormAttachment(100, 0);
-		data.top = new FlatFormAttachment(outputVariableText, +2, SWT.TOP);
-		data.bottom = new FlatFormAttachment(outputVariableText, -2, SWT.BOTTOM);
-		outputVariableButton.setLayoutData(data);
-
-		data = new FlatFormData();
-		data.left = new FlatFormAttachment(0, BPELUtil.calculateLabelWidth(
-				operationLabel, STANDARD_LABEL_WIDTH_SM));
-		data.right = new FlatFormAttachment(outputVariableButton, 0);
-		outputVariableText.setLayoutData(data);
-
-		data = new FlatFormData();
-		data.left = new FlatFormAttachment(0, 0);
-		data.right = new FlatFormAttachment(outputVariableText,
-				-IDetailsAreaConstants.HSPACE);
-		data.top = new FlatFormAttachment(outputVariableText, 0, SWT.CENTER);
-		outputVariableLabel.setLayoutData(data);
-
-		return composite;
-	}
-
-	private void createPartMappingRows(ILabelProvider labelProvider,
-			final EObject model, List<Part> messageParts, Group refGroup,
-			EObject fromPartsOrToParts, final boolean isFromParts) {
-
-		FlatFormData data;
-		CLabel ref = null;
-
-		for (final Part part : messageParts) {
-
-			boolean isFirst = ref == null;
-
-			// create text
-			final Text text = fWidgetFactory.createText(refGroup, EMPTY_STRING);
-			Variable var = null;
-			// get the variable from a fromPart
-			if (isFromParts) {
-				FromParts fromParts = (FromParts) fromPartsOrToParts;
-				if (fromParts != null && !fromParts.getChildren().isEmpty()) {
-					for (FromPart fromPart : fromParts.getChildren()) {
-						if (fromPart.getPart() != null
-								&& fromPart.getPart().equals(part)) {
-							var = fromPart.getToVariable();
-							break;
-						}
-					}
-				}
-			}
-			// get the variable from a toPart
-			else {
-				ToParts toParts = (ToParts) fromPartsOrToParts;
-				if (toParts != null && !toParts.getChildren().isEmpty()) {
-					for (ToPart toPart : toParts.getChildren()) {
-						if (toPart.getPart() != null
-								&& toPart.getPart().equals(part)) {
-							var = toPart.getFromVariable();
-							break;
-						}
-					}
-				}
-			}
-			if (var != null) {
-				text.setText(var.getName());
-			} else {
-				text.setText(EMPTY_STRING);
-			}
-
-			Button button = null;
-			if (model instanceof OnEvent == false) {
-				text.setEditable(false);
-
-				// create button
-				button = fWidgetFactory.createButton(refGroup, EMPTY_STRING,
-						SWT.ARROW | SWT.DOWN | SWT.CENTER);
-
-				// align button
-				data = new FlatFormData();
-				data.right = new FlatFormAttachment(100,
-						-IDetailsAreaConstants.HSPACE);
-				data.top = new FlatFormAttachment(text, +2, SWT.TOP);
-				data.bottom = new FlatFormAttachment(text, -2, SWT.BOTTOM);
-				button.setLayoutData(data);
-			}
-
-			// align text
-			data = new FlatFormData();
-			if (isFirst) {
-				data.top = new FlatFormAttachment(0,
-						IDetailsAreaConstants.VSPACE);
-			} else {
-				data.top = new FlatFormAttachment(ref,
-						IDetailsAreaConstants.VSPACE);
-			}
-			data.left = new FlatFormAttachment(0, BPELUtil.calculateLabelWidth(
-					ref, STANDARD_LABEL_WIDTH_LRG));
-			if (button == null) {
-				data.right = new FlatFormAttachment(100,
-						-IDetailsAreaConstants.HSPACE);
-			} else {
-				data.right = new FlatFormAttachment(button,
-						-IDetailsAreaConstants.HSPACE);
-			}
-			text.setLayoutData(data);
-
-			// create label
-			ref = new CLabel(refGroup, SWT.LEFT);
-			ref.setText(labelProvider.getText(part));
-			ref.setImage(labelProvider.getImage(part));
-			ref.setBackground(refGroup.getBackground());
-
-			// align label
-			data = new FlatFormData();
-			data.left = new FlatFormAttachment(0, IDetailsAreaConstants.HSPACE);
-			data.right = new FlatFormAttachment(text,
-					-IDetailsAreaConstants.HSPACE);
-			data.top = new FlatFormAttachment(text, 0, SWT.CENTER);
-			ref.setLayoutData(data);
-
-			/*
-			 * CONTENT ASSIST
-			 */
-			RunnableProposal proposal1 = new RunnableProposal() {
-
-				@Override
-				public String getLabel() {
-					return "Create global Variable";
-				}
-
-				public void run() {
-					createVariableForPartMapping(ModelHelper.getProcess(model),
-							model, part, isFromParts);
-				}
-
-			};
-
-			RunnableProposal proposal2 = new RunnableProposal() {
-
-				@Override
-				public String getLabel() {
-					return "Create local Variable";
-				}
-
-				public void run() {
-					createVariableForPartMapping(model, model, part,
-							isFromParts);
-				}
-
-			};
-
-			RunnableProposal proposal3 = new RunnableProposal() {
-
-				@Override
-				public String getLabel() {
-					return "Clear Variable";
-				}
-
-				public void run() {
-					Command cmd = null;
-					if (isFromParts) {
-						cmd = new AddFromPartCommand(model, null, part);
-					} else {
-						cmd = new AddToPartCommand(model, null, part);
-					}
-					getCommandFramework().execute(cmd);
-				}
-
-			};
-
-			VariableFilter filter = new VariableFilter();
-			if (part.getElementDeclaration() != null) {
-				filter.setType(part.getElementDeclaration());
-			} else if (part.getTypeDefinition() != null) {
-				filter.setType(part.getTypeDefinition());
-			}
-			VariableContentProvider provider = new VariableContentProvider();
-			ModelContentProposalProvider proposalProvider = new ModelContentProposalProvider(
-					new ModelContentProposalProvider.ValueProvider() {
-
-						@Override
-						public Object value() {
-							return getInput();
-						}
-
-					}, provider, filter);
-
-			proposalProvider.addProposalToEnd(new Separator());
-			proposalProvider.addProposalToEnd(proposal1);
-			proposalProvider.addProposalToEnd(proposal2);
-			proposalProvider.addProposalToEnd(proposal3);
-
-			final FieldAssistAdapter contentAssist = new FieldAssistAdapter(
-					text, fTextContentAdapter, proposalProvider, null, null,
-					true);
-			contentAssist.setLabelProvider(labelProvider);
-			contentAssist.setPopupSize(new Point(300, 100));
-			contentAssist
-					.setFilterStyle(ContentProposalAdapter.FILTER_CUMULATIVE);
-			contentAssist
-					.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-			contentAssist.addContentProposalListener(proposal1);
-			contentAssist.addContentProposalListener(proposal2);
-			contentAssist.addContentProposalListener(proposal3);
-			contentAssist
-					.addContentProposalListener(new IContentProposalListener() {
-
-						public void proposalAccepted(IContentProposal proposal) {
-							if (proposal.getContent() == null) {
-								return;
-							}
-							Variable variable = null;
-							try {
-								variable = (Variable) ((Adapter) proposal)
-										.getTarget();
-							} catch (Throwable t) {
-								return;
-							}
-
-							Command cmd = null;
-							if (isFromParts) {
-								cmd = new AddFromPartCommand(model, variable,
-										part);
-							} else {
-								cmd = new AddToPartCommand(model, variable,
-										part);
-							}
-							getCommandFramework().execute(cmd);
-						}
-
-					});
-
-			// End of Content Assist for variable
-			if (button != null) {
-				button.addListener(SWT.Selection, new Listener() {
-					public void handleEvent(Event event) {
-						contentAssist.openProposals();
-					}
-				});
-			} else if (model instanceof OnEvent) {
-				IOngoingChange change = new IOngoingChange() {
-
-					public Command createApplyCommand() {
-						OnEvent onEvent = (OnEvent) model;
-						String s = text.getText();
-						if (EMPTY_STRING.equals(s)) {
-							s = null;
-						}
-						CompoundCommand ccmd = new CompoundCommand();
-						FromParts fromParts = onEvent.getFromParts();
-						FromPart fromPart = null;
-						Variable variable = null;
-						if (fromParts != null
-								&& fromParts.getChildren() != null) {
-							for (FromPart fp : fromParts.getChildren()) {
-								if (part.equals(fp.getPart())) {
-									fromPart = fp;
-								}
-							}
-						}
-						if (s != null) {
-							if (fromPart != null) {
-								variable = fromPart.getToVariable();
-							}
-							if (variable == null) {
-								variable = BPELFactory.eINSTANCE
-										.createVariable();
-								// set the variable's type to the part's type
-								variable.setType(part.getTypeDefinition());
-								variable.setXSDElement(part
-										.getElementDeclaration());
-							}
-							variable.setName(s);
-							ccmd.add(new AddFromPartCommand(onEvent, variable,
-									part));
-						} else {
-							ccmd
-									.add(new AddFromPartCommand(onEvent, null,
-											part));
-						}
-						return ccmd;
-					}
-
-					public String getLabel() {
-						return IBPELUIConstants.CMD_SELECT_VARIABLE;
-					}
-
-					public void restoreOldState() {
-						updatePartMappingWidgets();
-					}
-
-				};
-				ChangeTracker onEventVariableTracker = new ChangeTracker(text,
-						change, getCommandFramework());
-				onEventVariableTracker.startTracking();
-			}
-		}
-	}
-
-	/**
-	 * Create an input variable, set it to the right type, and set the input
-	 * variable pon the activity.
-	 * 
-	 * @param ref
-	 *            the object on which to create the variable (Scope or Process)
-	 * @param name
-	 *            the name of the variable, or null
-	 * @param the
-	 *            direction of the variable
-	 */
-
-	private void createVariable(EObject ref, String name, int direction) {
-
-		Variable variable = BPELFactory.eINSTANCE.createVariable();
-
-		if (name == null) {
-			name = plainLabelWordFor(direction);
-		}
-
-		Message messageType = null;
-		XSDElementDeclaration elementType = null;
-
-		Object type = ModelHelper.getVariableType(getInput(), direction);
-
-		if (type != null && type instanceof Message) {
-			messageType = (Message) type;
-			if (messageType.getEParts().size() == 1) {
-				Part part = (Part) messageType.getEParts().get(0);
-				elementType = part.getElementDeclaration();
-			}
-		}
-
-		// ask for the name, we know the type.
-		NameDialog nameDialog = new NameDialog(inputVariableComposite
-				.getShell(), Messages.VariableSelectorDialog_New_Variable_4,
-				Messages.VariableSelectorDialog_Variable_Name_5, name, BPELUtil
-						.getNCNameValidator());
-
-		if (nameDialog.open() == Window.CANCEL) {
-			return;
-		}
-
-		// set name and type
-		variable.setName(nameDialog.getValue());
-
-		if (elementType != null) {
-			variable.setXSDElement(elementType);
-		} else if (messageType != null) {
-			variable.setMessageType(messageType);
-		}
-
-		// create the variable and then set the input variable to it.
-		CompoundCommand cmd = new CompoundCommand();
-		cmd.add(new AddVariableCommand(ref, variable));
-		cmd.add(new SetVariableCommand(getInput(), variable, direction));
-
-		getCommandFramework().execute(cmd);
-	}
-
-	private void createVariableForPartMapping(EObject ref, EObject model,
-			Part part, boolean isFromPart) {
-
-		Variable variable = BPELFactory.eINSTANCE.createVariable();
-
-		// set the variable's type to the part's type
-		if (part.getTypeDefinition() != null) {
-			variable.setType(part.getTypeDefinition());
-		} else if (part.getElementDeclaration() != null) {
-			variable.setXSDElement(part.getElementDeclaration());
-		}
-
-		// let the user choose a name for the variable
-		NameDialog nameDialog = new NameDialog(inputVariableComposite
-				.getShell(), Messages.VariableSelectorDialog_New_Variable_4,
-				Messages.VariableSelectorDialog_Variable_Name_5, null, BPELUtil
-						.getNCNameValidator());
-		if (nameDialog.open() == Window.CANCEL) {
-			return;
-		}
-		variable.setName(nameDialog.getValue());
-
-		CompoundCommand cmd = new CompoundCommand();
-		cmd.add(new AddVariableCommand(ref, variable));
-		if (isFromPart) {
-			cmd.add(new AddFromPartCommand(model, variable, part));
-		} else {
-			cmd.add(new AddToPartCommand(model, variable, part));
-		}
-
-		getCommandFramework().execute(cmd);
-	}
-
-	private void createWidgets(Composite composite) {
-
-		this.parentComposite = composite;
-
-		// create the widgets
-		this.usePartMappingCheckbox = fWidgetFactory.createButton(composite,
-				"Use WSDL Message Parts Mapping", SWT.CHECK);
-		this.usePartMappingCheckbox
-				.addSelectionListener(new UsePartMappingCheckboxSelectionListener());
-
-		this.nonPartMappingComposite = createFlatFormComposite(composite);
-		Composite ref = createInputVariableWidgets(null,
-				nonPartMappingComposite);
-		ref = createOutputVariableWidgets(ref, nonPartMappingComposite);
-
-		// part mapping composite
-		this.partMappingComposite = createFlatFormComposite(composite);
-
-		// layout the widgets
-		FlatFormData ffd = new FlatFormData();
-		ffd.top = new FlatFormAttachment(0, 0);
-		ffd.left = new FlatFormAttachment(0, IDetailsAreaConstants.HSPACE);
-		this.usePartMappingCheckbox.setLayoutData(ffd);
-
-		ffd = new FlatFormData();
-		ffd.top = new FlatFormAttachment(this.usePartMappingCheckbox,
-				IDetailsAreaConstants.VSPACE);
-		ffd.left = new FlatFormAttachment(0, 0);
-		ffd.right = new FlatFormAttachment(100, 0);
-		this.partMappingComposite.setLayoutData(ffd);
-
-		ffd = new FlatFormData();
-		ffd.top = new FlatFormAttachment(this.usePartMappingCheckbox,
-				IDetailsAreaConstants.VSPACE);
-		ffd.left = new FlatFormAttachment(0, 0);
-		ffd.right = new FlatFormAttachment(100, 0);
-		this.nonPartMappingComposite.setLayoutData(ffd);
-	}
-
-	private void findAndSetOrCreateVariable(String text, int direction) {
+	private void findAndSetVariable(String text) {
 
 		text = text.trim();
 		EObject model = getInput();
 
-		SetVariableCommand cmd = new SetVariableCommand(getInput(), null,
-				direction);
+		SetDataVariableCommand cmd = new SetDataVariableCommand(getInput(),
+				null);
 		if (text.length() > 0) {
 			Variable variable = (Variable) ModelHelper
 					.findElementByName(ModelHelper.getContainingScope(model),
 							text, Variable.class);
 			if (variable == null) {
 
-				createVariable(getInput(), text, direction);
 				return;
 			}
 
@@ -1005,300 +668,31 @@ public class RetrieveDataVariableSection extends BPELPropertySection {
 		getCommandFramework().execute(cmd);
 	}
 
-	/**
-	 * Answer, based on the model, whether we should display "Fault" instead of
-	 * "Response".
-	 */
-	private boolean getDisplayFault() {
-		EObject model = getModel();
-		if (model instanceof Reply) {
-			Reply reply = (Reply) model;
-			if (reply.getFaultName() != null) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private boolean isInvoke() {
-		return (getInput() instanceof Invoke);
-	}
-
-	private boolean isReply() {
-		return getInput() instanceof Reply;
-	}
-
-	private boolean isReceive() {
-		return getInput() instanceof Receive;
-	}
-
-	/**
-	 * The same as labelWordFor(), except these strings don't contain mnemonics!
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param direction
-	 * @return the label
-	 */
-	private String plainLabelWordFor(int direction) {
-		if (isInvoke()) {
-			return (direction == ModelHelper.OUTGOING || direction == ModelHelper.NOT_SPECIFIED) ? Messages.InvokeImplDetails_Request_3_Plain
-					: Messages.InvokeImplDetails_Response_4_Plain;
-		}
-		return (direction == ModelHelper.OUTGOING || direction == ModelHelper.NOT_SPECIFIED) ? Messages.InvokeImplDetails_Response_4_Plain
-				: Messages.InvokeImplDetails_Request_3_Plain;
-	}
-
-	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
 	 */
 	@Override
 	public void refresh() {
 		super.refresh();
-
-		boolean showPartMappingComposite = this.usePartMappingCheckbox
-				.getSelection();
-		updateWidgets(showPartMappingComposite);
-
-		if (showPartMappingComposite) {
-			updatePartMappingWidgets();
-		} else {
-			updateInputVariableWidgets();
-			updateOutputVariableWidgets();
-		}
-	}
-
-	private boolean shouldUsePartMapping(EObject model) {
-
-		boolean shouldUsePartMapping = false;
-
-		if (model instanceof Reply || model instanceof Invoke) {
-			shouldUsePartMapping = true;
-			if (ModelHelper.getVariable(model, ModelHelper.OUTGOING) != null) {
-				return false;
-			}
-		}
-
-		if (model instanceof Receive || model instanceof Invoke
-				|| model instanceof OnMessage || model instanceof OnEvent) {
-			shouldUsePartMapping = true;
-			if (ModelHelper.getVariable(model, ModelHelper.INCOMING) != null) {
-				return false;
-			}
-		}
-
-		return shouldUsePartMapping;
+		updateInputVariableWidgets();
 	}
 
 	private void updateInputVariableWidgets() {
-
-		inputVariableComposite.setVisible(!isReply());
-
-		if (isReply())
-			return;
-
-		if (isInvoke()) {
-			inputVariableLabel.setText(Messages.InvokeImplSection_22);
-		} else {
-			inputVariableLabel.setText(Messages.InvokeImplSection_23);
-		}
-
-		Variable inputVar = ModelHelper.getVariable(getInput(),
-				isInvoke() ? ModelHelper.OUTGOING : ModelHelper.INCOMING);
+		Variable inputVar = activity.getDataVariable();
 
 		if (inputVar != null) {
 			inputVariableText.setText(inputVar.getName());
+			
+			// Figure out the type of the variable XSDTypeDefinition.
+			fInputVariableFilter.clear();
+			Object type = inputVar.getType();
+			if (type != null && type instanceof XSDTypeDefinition) {
+				fInputVariableFilter.setType((XSDTypeDefinition) type);
+			}
 		} else {
 			inputVariableText.setText(EMPTY_STRING);
-		}
-
-		// Figure out the type of the message.
-		fInputVariableFilter.clear();
-		Object type = ModelHelper.getVariableType(getInput(),
-				isInvoke() ? ModelHelper.OUTGOING : ModelHelper.INCOMING);
-		if (type != null && type instanceof Message) {
-			fInputVariableFilter.setType((Message) type);
-		}
-	}
-
-	private void updateOutputVariableWidgets() {
-
-		outputVariableComposite.setVisible(!isReceive());
-
-		if (isReceive()) {
-			return;
-		}
-
-		if (isInvoke()) {
-			outputVariableLabel.setText(Messages.InvokeImplSection_13);
-		} else {
-			outputVariableLabel.setText(Messages.InvokeImplSection_23);
-		}
-
-		Variable outputVar = ModelHelper.getVariable(getInput(),
-				isInvoke() ? ModelHelper.INCOMING : ModelHelper.OUTGOING);
-		if (outputVar != null) {
-			outputVariableText.setText(outputVar.getName());
-		} else {
-			outputVariableText.setText(EMPTY_STRING);
-		}
-
-		// Figure out the type of the message.
-		fOutputVariableFilter.clear();
-		Object type = ModelHelper.getVariableType(getInput(),
-				isInvoke() ? ModelHelper.INCOMING : ModelHelper.OUTGOING);
-		if (type != null) {
-			if (type instanceof Message) {
-				fOutputVariableFilter.setType((Message) type);
-			}
-		}
-	}
-
-	private void updatePartMappingWidgets() {
-
-		ILabelProvider labelProvider = new ModelLabelProvider();
-
-		final EObject model = getModel();
-
-		boolean showInputs = ModelHelper.isMessageActivity(model,
-				(isInvoke() ? ModelHelper.OUTGOING : ModelHelper.INCOMING));
-		boolean showFaults = getDisplayFault();
-		boolean showOutputs = !showFaults
-				&& ModelHelper.isMessageActivity(model,
-						(isInvoke() ? ModelHelper.INCOMING
-								: ModelHelper.OUTGOING));
-
-		Operation operation = ModelHelper.getOperation(model);
-
-		if (operation != null && !operation.eIsProxy()) {
-
-			this.usePartMappingCheckbox.setEnabled(true);
-
-			List<Part> inputParts = Collections.emptyList();
-			if (showInputs) {
-				inputParts = PartMappingUtil.getPartsForPartMapping(operation,
-						WSDLConstants.INPUT, null);
-			}
-
-			List<Part> outputParts = Collections.emptyList();
-			if (showOutputs) {
-				outputParts = PartMappingUtil.getPartsForPartMapping(operation,
-						WSDLConstants.OUTPUT, null);
-			}
-
-			List<Part> faultParts = Collections.emptyList();
-			if (showFaults) {
-				String faultName = ModelHelper.getFaultName(model);
-				if (faultName != null) {
-					faultParts = PartMappingUtil.getPartsForPartMapping(
-							operation, WSDLConstants.FAULT, faultName);
-				}
-			}
-
-			Group refGroup = null;
-			// print out all input parts
-			if (inputParts.size() > 0) {
-
-				FromParts fromParts = ModelHelper.getFromParts(model);
-
-				FlatFormData data = new FlatFormData();
-				data.left = new FlatFormAttachment(0,
-						IDetailsAreaConstants.HSPACE);
-				data.right = new FlatFormAttachment(100,
-						-IDetailsAreaConstants.HSPACE);
-				if (refGroup != null) {
-					data.top = new FlatFormAttachment(refGroup,
-							IDetailsAreaConstants.VSPACE);
-				} else {
-					data.top = new FlatFormAttachment(0,
-							IDetailsAreaConstants.VSPACE);
-				}
-				refGroup = fWidgetFactory.createGroup(
-						this.partMappingComposite, "Input(s)");
-				refGroup.setLayoutData(data);
-				refGroup.setLayout(new FlatFormLayout());
-
-				createPartMappingRows(labelProvider, model, inputParts,
-						refGroup, fromParts, true);
-			}
-
-			// print out all output parts
-			if (outputParts.size() > 0) {
-
-				ToParts toParts = ModelHelper.getToParts(model);
-
-				FlatFormData data = new FlatFormData();
-				data.left = new FlatFormAttachment(0,
-						IDetailsAreaConstants.HSPACE);
-				data.right = new FlatFormAttachment(100,
-						-IDetailsAreaConstants.HSPACE);
-				if (refGroup != null) {
-					data.top = new FlatFormAttachment(refGroup,
-							IDetailsAreaConstants.VSPACE);
-				} else {
-					data.top = new FlatFormAttachment(0,
-							IDetailsAreaConstants.VSPACE);
-				}
-				refGroup = fWidgetFactory.createGroup(
-						this.partMappingComposite, "Output(s)");
-				refGroup.setLayoutData(data);
-				refGroup.setLayout(new FlatFormLayout());
-
-				createPartMappingRows(labelProvider, model, outputParts,
-						refGroup, toParts, false);
-			}
-
-			// print out all fault parts
-			if (faultParts.size() > 0) {
-
-				ToParts toParts = ModelHelper.getToParts(model);
-
-				FlatFormData data = new FlatFormData();
-				data.left = new FlatFormAttachment(0,
-						IDetailsAreaConstants.HSPACE);
-				data.right = new FlatFormAttachment(100,
-						-IDetailsAreaConstants.HSPACE);
-				if (refGroup != null) {
-					data.top = new FlatFormAttachment(refGroup,
-							IDetailsAreaConstants.VSPACE);
-				} else {
-					data.top = new FlatFormAttachment(0,
-							IDetailsAreaConstants.VSPACE);
-				}
-				refGroup = fWidgetFactory.createGroup(
-						this.partMappingComposite, "Fault(s)");
-				refGroup.setLayoutData(data);
-				refGroup.setLayout(new FlatFormLayout());
-
-				createPartMappingRows(labelProvider, model, faultParts,
-						refGroup, toParts, false);
-			}
-			this.parentComposite.layout(true);
-		} else {
-			// TODO - we have an OperationProxy. What shall we do???
-			this.usePartMappingCheckbox.setEnabled(false);
-		}
-	}
-
-	private void updateWidgets(boolean showPartMappingComposite) {
-
-		if (this.partMappingComposite != null) {
-			this.partMappingComposite.dispose();
-		}
-		this.partMappingComposite = createFlatFormComposite(this.parentComposite);
-		FlatFormData ffd = new FlatFormData();
-		ffd.top = new FlatFormAttachment(this.usePartMappingCheckbox,
-				IDetailsAreaConstants.VSPACE);
-		ffd.left = new FlatFormAttachment(0, 0);
-		ffd.right = new FlatFormAttachment(100, 0);
-		this.partMappingComposite.setLayoutData(ffd);
-
-		if (!showPartMappingComposite) {
-			this.usePartMappingCheckbox.setSelection(false);
-			this.partMappingComposite.setVisible(false);
-			this.nonPartMappingComposite.setVisible(true);
-		} else {
-			this.usePartMappingCheckbox.setSelection(true);
-			this.partMappingComposite.setVisible(true);
-			this.nonPartMappingComposite.setVisible(false);
 		}
 	}
 }
