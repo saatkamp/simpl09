@@ -26,6 +26,7 @@ import org.eclipse.bpel.model.Invoke;
 import org.eclipse.bpel.model.OnEvent;
 import org.eclipse.bpel.model.OnMessage;
 import org.eclipse.bpel.model.Receive;
+import org.eclipse.bpel.model.ReferenceVariable;
 import org.eclipse.bpel.model.Reply;
 import org.eclipse.bpel.model.ToPart;
 import org.eclipse.bpel.model.ToParts;
@@ -36,6 +37,7 @@ import org.eclipse.bpel.ui.commands.AddFromPartCommand;
 import org.eclipse.bpel.ui.commands.AddToPartCommand;
 import org.eclipse.bpel.ui.commands.AddVariableCommand;
 import org.eclipse.bpel.ui.commands.CompoundCommand;
+import org.eclipse.bpel.ui.commands.SetReferenceVariableCommand;
 import org.eclipse.bpel.ui.commands.SetVariableCommand;
 import org.eclipse.bpel.ui.commands.util.AutoUndoCommand;
 import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;
@@ -315,7 +317,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			}
 		};
 
-		VariableContentProvider provider = new VariableContentProvider();
+		VariableContentProvider provider = new VariableContentProvider(true);
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider(
 				new ModelContentProposalProvider.ValueProvider() {
@@ -349,16 +351,38 @@ public class InvokeVariableSection extends BPELPropertySection {
 						if (chosenProposal.getContent() == null) {
 							return;
 						}
-						Variable variable = null;
-						try {
-							variable = (Variable) ((Adapter) chosenProposal)
-									.getTarget();
-						} catch (Throwable t) {
-							return;
+						if (((Adapter) chosenProposal)
+								.getTarget() instanceof Variable){
+							Variable variable = null;
+							try {
+								variable = (Variable) ((Adapter) chosenProposal)
+										.getTarget();
+							} catch (Throwable t) {
+								return;
+							}
+							SetVariableCommand cmd = new SetVariableCommand(
+									getInput(), variable);
+							getCommandFramework().execute(cmd);
+						}else {
+							//TODO: This is a bad hack. A better solution is to 
+							// extend the model and handle the ReferenceVariables in 
+							// separated classes.
+							ReferenceVariable variable = null;
+							Variable var = BPELFactory.eINSTANCE.createVariable();
+							try {
+								variable = (ReferenceVariable) ((Adapter) chosenProposal)
+										.getTarget();
+								
+								// To save the referenceVariable drop the name in a new
+								// variable object
+								var.setName(variable.getName());
+							} catch (Throwable t) {
+								return;
+							}
+							SetVariableCommand cmd = new SetVariableCommand(
+									getInput(), var);
+							getCommandFramework().execute(cmd);
 						}
-						SetVariableCommand cmd = new SetVariableCommand(
-								getInput(), variable);
-						getCommandFramework().execute(cmd);
 					}
 				});
 
@@ -478,7 +502,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			}
 		};
 
-		VariableContentProvider provider = new VariableContentProvider();
+		VariableContentProvider provider = new VariableContentProvider(false);
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider(
 				new ModelContentProposalProvider.ValueProvider() {
@@ -716,7 +740,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			} else if (part.getTypeDefinition() != null) {
 				filter.setType(part.getTypeDefinition());
 			}
-			VariableContentProvider provider = new VariableContentProvider();
+			VariableContentProvider provider = new VariableContentProvider(false);
 			ModelContentProposalProvider proposalProvider = new ModelContentProposalProvider(
 					new ModelContentProposalProvider.ValueProvider() {
 
@@ -841,7 +865,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 
 	/**
 	 * Create an input variable, set it to the right type, and set the input
-	 * variable pon the activity.
+	 * variable upon the activity.
 	 * 
 	 * @param ref
 	 *            the object on which to create the variable (Scope or Process)

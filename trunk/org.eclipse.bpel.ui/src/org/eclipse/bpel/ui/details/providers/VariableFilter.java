@@ -1,6 +1,7 @@
 
 package org.eclipse.bpel.ui.details.providers;
 
+import org.eclipse.bpel.model.ReferenceVariable;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.ui.details.tree.ITreeNode;
 import org.eclipse.jface.viewers.IFilter;
@@ -127,6 +128,22 @@ public class VariableFilter extends ViewerFilter
 			}
 		
 			return false;			
+		}
+		
+		if ( ReferenceVariable.class.isInstance(toTest) ) {
+			ReferenceVariable ref = (ReferenceVariable) toTest;
+			
+			if (fTypeDefinition == null) {
+				return true;
+			}
+			
+			if (fTypeDefinition != null) {
+				if (fTypeDefinition.equals( ref.getValueType() )) {
+					return true;
+				}				
+			}
+			
+			return false;
 		}
 		
 		return true;
