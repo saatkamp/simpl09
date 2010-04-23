@@ -12,10 +12,10 @@ package org.eclipse.bpel.ui.details.providers;
 
 import java.util.List;
 
+import org.eclipse.bpel.model.ReferenceVariable;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.emf.ecore.EObject;
-
 
 /**
  * Content provider for variables.
@@ -23,13 +23,27 @@ import org.eclipse.emf.ecore.EObject;
  * Provides all the Variables visible in a given context.
  */
 
-public class VariableContentProvider extends AbstractContentProvider  {
+public class VariableContentProvider extends AbstractContentProvider {
+
+	private boolean showRefVars = false;
+	
+	public VariableContentProvider(boolean showReferenceVariables) {
+		super();
+		this.showRefVars = showReferenceVariables;
+	}
 
 	@Override
-	public void collectElements(Object input, List list)  {
-		Variable[] vars = BPELUtil.getVisibleVariables((EObject)input);
-		for (int i = 0; i< vars.length; i++) {
+	public void collectElements(Object input, List list) {
+		Variable[] vars = BPELUtil.getVisibleVariables((EObject) input);
+		ReferenceVariable[] refVars = BPELUtil
+				.getVisibleReferenceVariables((EObject) input);
+		for (int i = 0; i < vars.length; i++) {
 			list.add(vars[i]);
-		}		
+		}
+		if (this.showRefVars){
+			for (int i = 0; i < refVars.length; i++) {
+				list.add(refVars[i]);
+			}	
+		}
 	}
 }

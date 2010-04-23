@@ -1823,11 +1823,6 @@ public class BPELUtil {
 		} 
 		// recursively add less local variables first
 		addVisibleReferenceVariables(targetMap, target.eContainer(), refVariable );
-		
-		//TODO: Wie sollen SIMPL Aktivitäten hieraus referenziert werden???
-//		if (target instanceof RetrieveDataActivity) {
-//			addReferenceVariablesToMap(targetMap, ((Scope)target).getReferenceVariables(), refVariable );
-//		}
 	}
 	
 	static void addReferenceVariablesToMap(Map<String, ReferenceVariable> targetMap, ReferenceVariables vars, ReferenceVariable refVar ) {
@@ -1843,5 +1838,28 @@ public class BPELUtil {
 				targetMap.put(v.getName(),v);
 			}
 		}
+	}
+	
+	public static ReferenceVariable[] getReferenceVariables (EObject target) {
+		
+		Map<String,ReferenceVariable> name2Variable = new HashMap<String,ReferenceVariable>();
+		
+		addVisibleReferenceVariables(name2Variable, target,  target instanceof ReferenceVariable ? (ReferenceVariable) target: null );
+		
+		if (name2Variable.isEmpty()) {
+			return EMPTY_REFERENCE_VARIABLE_ARRAY;
+		}
+		
+		Collection<ReferenceVariable> variables =  name2Variable.values();		
+		if (variables.size() == 1) {			
+			return variables.toArray(EMPTY_REFERENCE_VARIABLE_ARRAY);
+		}		
+		ArrayList<ReferenceVariable> list = new ArrayList<ReferenceVariable>( variables );
+		Collections.sort(list, new Comparator<ReferenceVariable>() {
+			public int compare(ReferenceVariable o1, ReferenceVariable o2) {
+				return o1.getName().compareTo(o2.getName());
+			}				
+		});		
+		return list.toArray(EMPTY_REFERENCE_VARIABLE_ARRAY);		
 	}
 }
