@@ -19,7 +19,7 @@ import org.simpl.rrs.transformation.Transformer;
  * @link http://code.google.com/p/simpl09/
  * 
  */
-@WebService(name = "TransformationService", targetNamespace = "http://localhost:8080/ode/processes/TransformationService", wsdlLocation="TransformationService.wsdl")
+@WebService(name = "TransformationService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Transformation {
 	@WebMethod(action = "transform")

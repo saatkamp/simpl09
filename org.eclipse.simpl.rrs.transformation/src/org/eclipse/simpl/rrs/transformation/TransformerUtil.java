@@ -3,12 +3,15 @@ package org.eclipse.simpl.rrs.transformation;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,6 +23,8 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
 /**
  * <b>Purpose:</b> <br>
@@ -41,6 +46,8 @@ public class TransformerUtil {
 	private static final Namespace BPEL_NAMESPACE = Namespace.getNamespace(
 			BPEL_PRÄFIX,
 			"http://docs.oasis-open.org/wsbpel/2.0/process/executable");
+	
+	private static final Namespace PLNK_NAMESPACE = Namespace.getNamespace("plnk", "http://docs.oasis-open.org/wsbpel/2.0/plnktype");
 
 	// Element names
 	private static final String EL_REFERENCE_VARIABLE = "referenceVariable";
@@ -51,6 +58,8 @@ public class TransformerUtil {
 
 	private static final String AT_REFERENCE_TYPE = "referenceType";
 	private static final String AT_REFERENCE_VALUE_TYPE = "valueType";
+
+	private static final String AT_TARGET_NAMESPACE = "targetNamespace";
 
 	public static List getReferenceVariables(String bpelFilePath) {
 		List refVariableElements = new ArrayList();
@@ -171,6 +180,133 @@ public class TransformerUtil {
 				out.flush();
 				out.close();
 			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * @param string
+	 * @param bpelFileName
+	 * @return
+	 */
+	public static String getRRSwsdlNamespace(String projectPath,
+			String bpelFileName) {
+		File wsdlFileRRS = new File(projectPath
+				+ System.getProperty("file.separator") + bpelFileName
+				+ "_transformed" + System.getProperty("file.separator")
+				+ "rrs.wsdl");
+
+		SAXBuilder builder = new SAXBuilder();
+		Document doc;
+		try {
+			InputStream inputStream = new FileInputStream(wsdlFileRRS);
+
+			doc = builder.build(inputStream);
+
+			Element root = doc.getRootElement();
+
+			String targetNamespace = root
+					.getAttributeValue(AT_TARGET_NAMESPACE);
+
+			return targetNamespace;
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	/**
+	 * This method reads the bpel process wsdl file and adds some definitions
+	 * for the rrs partnerLink.
+	 * 
+	 * @param sourcePath
+	 * @param targetPath
+	 * @param bpelFileName
+	 */
+	public static void copyAndEditProcessWSDL(String projectPath,
+			String bpelFileName) {
+		File projectFolder = new File(projectPath);
+
+		File wsdlSourceFile = null;
+		
+		File[] files = projectFolder.listFiles(new FileFilter() {
+			public boolean accept(File f) {
+				return f.getName().toLowerCase().endsWith(".wsdl");
+			}
+		});
+		
+		for (File file : files) {
+			if (file.getName().contains(bpelFileName)) {
+				wsdlSourceFile = file;
+			}
+		}
+
+		File wsdlTargetFile = new File(projectPath
+				+ System.getProperty("file.separator") + bpelFileName
+				+ "_transformed" + System.getProperty("file.separator")
+				+ wsdlSourceFile.getName());
+
+		if (wsdlSourceFile != null){
+			SAXBuilder builder = new SAXBuilder();
+			Document doc;
+			try {
+				InputStream inputStream = new FileInputStream(wsdlSourceFile);
+
+				doc = builder.build(inputStream);
+
+				Element root = doc.getRootElement();
+				
+				//Do the work
+				//TODO: An René's Implementierung anpassen
+				
+				String rrsNamespace = getRRSwsdlNamespace(projectPath,bpelFileName);
+				
+				//Add the rrs.wsdl namespace to the process wsdl
+				root.addNamespaceDeclaration(Namespace.getNamespace("rrs", rrsNamespace));
+				
+				/*
+				 * Insert the following element to the process wsdl file
+				 * 	<plnk:partnerLinkType name="RRSRetrievalType">
+    			 *		<plnk:role name="GET" portType="rrs:RRSRetrievalService"/>
+  				 *	</plnk:partnerLinkType>
+    			 *	<import location="rrs.wsdl" namespace="http://webservices.rrs.simpl.org/"/>
+				 */
+				Element partnerLink = new Element("partnerLinkType", PLNK_NAMESPACE);
+				partnerLink.setAttribute(AT_NAME, "RRSRetrievalType");
+				Element role = new Element("role", PLNK_NAMESPACE);
+				role.setAttribute(AT_NAME, "GET");
+				role.setAttribute("portType", "rrs:RRSRetrievalService");
+				partnerLink.addContent(role);
+				
+				Element importElement = new Element("import");
+				importElement.setAttribute("location", "rrs.wsdl");
+				importElement.setAttribute("namespace", rrsNamespace);
+				
+				//Add the new element to the root object
+				root.addContent(0, importElement);
+				root.addContent(0, partnerLink);
+				
+				OutputStream outputStream = new FileOutputStream(wsdlTargetFile);
+				
+				XMLOutputter outp = new XMLOutputter();
+				outp.setFormat(Format.getPrettyFormat());
+				outp.output(doc, outputStream);
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (JDOMException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {

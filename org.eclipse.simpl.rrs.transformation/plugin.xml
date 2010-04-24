@@ -73,5 +73,14 @@
             name="Transform from Context Menue">
       </command>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            class="org.eclipse.simpl.rrs.transformation.preferences.TransformationPreferencePage"
+            id="org.eclipse.simpl.rrs.transformation.TransformationPreferencePage"
+            name="Transformation Service">
+      </page>
+   </extension>
 
 </plugin>
