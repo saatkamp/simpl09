@@ -19,26 +19,31 @@ import org.eclipse.swt.widgets.Display;
 /**
  * <b>Purpose:</b> <br>
  * <b>Description:</b> <br>
- * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Copyright:</b> Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
  * @version $Id$ <br>
  * @link http://code.google.com/p/simpl09/
- *
+ * 
  */
 public class TransformationClient {
 
 	private static TransformationClient client = null;
-	
-	public static TransformationClient getClient(){
-		if (client == null){
+
+	private final String TRANSFORMER_WSDL = TransformerPlugIn.getDefault()
+			.getPreferenceStore().getString("TRANSFORMER_ADDRESS");
+
+	public static TransformationClient getClient() {
+		if (client == null) {
 			client = new TransformationClient();
 		}
 		return client;
 	}
-	
-	public void transform(String projectPath, String bpelFilePath) {
+
+	public void transform(String projectPath, String bpelFilePath,
+			String rrsNamespaceURI) {
 		String bpelFileName = bpelFilePath.substring(bpelFilePath
 				.lastIndexOf(System.getProperty("file.separator")) + 1,
 				bpelFilePath.lastIndexOf("."));
@@ -71,12 +76,13 @@ public class TransformationClient {
 				e.printStackTrace();
 			}
 
-			String response = executeTransformation(
-					string.toString());
+			String response = executeTransformation(string.toString(),
+					rrsNamespaceURI);
 
 			File transformDir = new File(projectPath
-					+ System.getProperty("file.separator") + bpelFileName + "_transformed");
-			if (!transformDir.exists()){
+					+ System.getProperty("file.separator") + bpelFileName
+					+ "_transformed");
+			if (!transformDir.exists()) {
 				transformDir.mkdir();
 			}
 
@@ -87,7 +93,8 @@ public class TransformationClient {
 										projectPath
 												+ System
 														.getProperty("file.separator")
-												+ bpelFileName + "_transformed"
+												+ bpelFileName
+												+ "_transformed"
 												+ System
 														.getProperty("file.separator")
 												+ bpelFileName
@@ -112,13 +119,12 @@ public class TransformationClient {
 							"The TransformationService isn't available. Please check if your Apache Tomcat Server is running and the TransformationService is installed successfully.");
 		}
 	}
-	
+
 	public boolean isTransformerAvailable() {
 		boolean isAvailable = false;
 		URL url;
 		try {
-			url = new URL(
-					"http://localhost:8080/ode/processes/TransformationServiceService.TransformationServicePort?wsdl");
+			url = new URL(TRANSFORMER_WSDL);
 			URLConnection connection = url.openConnection();
 			connection.connect();
 			isAvailable = true;
@@ -128,14 +134,17 @@ public class TransformationClient {
 		}
 		return isAvailable;
 	}
-	
-	private String executeTransformation (String bpelFileContent){
-		TransformationService transformationService = new TransformationService_Service().getTransformationServicePort();
-		
+
+	private String executeTransformation(String bpelFileContent,
+			String wsdlNamespaceURI) {
+		TransformationService transformationService = new Transformation()
+				.getTransformationServicePort();
+
 		String response = "";
-		
-		response = transformationService.transform(bpelFileContent);
-		
+
+		response = transformationService.transform(bpelFileContent,
+				wsdlNamespaceURI);
+
 		return response;
 	}
 }

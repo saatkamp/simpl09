@@ -14,7 +14,7 @@ import javax.jws.soap.SOAPBinding;
  * Generated source version: 2.1
  * 
  */
-@WebService(name = "TransformationServiceService", targetNamespace = "http://webservices.transformation.rrs.simpl.org/")
+@WebService(name = "TransformationService", targetNamespace = "http://webservices.transformation.rrs.simpl.org/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface TransformationService {
 
@@ -22,6 +22,7 @@ public interface TransformationService {
     /**
      * 
      * @param bpelFileContent
+     * @param rrsWSDLNamespaceURI
      * @return
      *     returns java.lang.String
      */
@@ -29,6 +30,8 @@ public interface TransformationService {
     @WebResult(partName = "return")
     public String transform(
         @WebParam(name = "bpelFileContent", partName = "bpelFileContent")
-        String bpelFileContent);
+        String bpelFileContent,
+        @WebParam(name = "rrsWSDLNamespaceURI", partName = "rrsWSDLNamespaceURI")
+        String rrsWSDLNamespaceURI);
 
 }

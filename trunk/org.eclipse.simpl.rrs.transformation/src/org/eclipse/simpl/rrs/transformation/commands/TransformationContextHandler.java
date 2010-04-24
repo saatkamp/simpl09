@@ -90,12 +90,29 @@ public class TransformationContextHandler extends AbstractHandler {
 															.getProperty("file.separator")) + 1,
 											bpelFilePath.lastIndexOf("."));
 
+							// Download the rrs.wsdl file from the RRS, if
+							// necassary
+							// TODO: If more than one RRS is used, all rrs.wsdl
+							// files have to be downloaded and stored
+							TransformerUtil.downloadWSDL(RRSUIPlugIn
+									.getDefault().getPreferenceStore()
+									.getString("RRS_RET_ADDRESS"),
+									absolutWorkspacePath
+											+ projectPath.toOSString(),
+									bpelFileName);
+							
+							//Get the rrs wsdl namespace uri
+							String wsdlNamespace = TransformerUtil.getRRSwsdlNamespace(absolutWorkspacePath
+									+ projectPath.toOSString(),
+									bpelFileName);
+							
 							// Transform the process
 							TransformationClient.getClient().transform(
 									absolutWorkspacePath
 											+ projectPath.toOSString(),
 									absolutWorkspacePath
-											+ bpelPath.toOSString());
+											+ bpelPath.toOSString(),
+											wsdlNamespace);
 
 							File xsdFileRRS = new File(absolutWorkspacePath
 									+ projectPath.toOSString()
@@ -125,20 +142,11 @@ public class TransformationContextHandler extends AbstractHandler {
 									e.printStackTrace();
 								}
 							}
-
-							// Download the rrs.wsdl file from the RRS, if
-							// necassary
-							// TODO: If more than one RRS is used, all rrs.wsdl
-							// files have to be downloaded and stored
-							TransformerUtil.downloadWSDL(RRSUIPlugIn
-									.getDefault().getPreferenceStore()
-									.getString("RRS_RET_ADDRESS"),
-									absolutWorkspacePath
-											+ projectPath.toOSString(),
+							
+							//Copy and modify the process wsdl to the transformed directory
+							TransformerUtil.copyAndEditProcessWSDL(absolutWorkspacePath
+									+ projectPath.toOSString(),
 									bpelFileName);
-
-							// Add a RRS INVOKE element to the Deployment
-							// Descriptor
 
 						} else {
 							MessageDialog
