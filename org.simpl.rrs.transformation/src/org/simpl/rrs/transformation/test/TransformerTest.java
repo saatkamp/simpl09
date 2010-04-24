@@ -57,7 +57,7 @@ public class TransformerTest {
 			e.printStackTrace();
 		}
 		
-		String response = Transformer.getTransformer().transform(string.toString());
+		String response = Transformer.getTransformer().transform(string.toString(), "simpl");
 		
 //		System.out.println(response);
 		
