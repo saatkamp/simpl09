@@ -19,13 +19,14 @@ import org.simpl.rrs.transformation.Transformer;
  * @link http://code.google.com/p/simpl09/
  * 
  */
-@WebService(name = "TransformationService", targetNamespace = "")
+@WebService(name = "TransformationService", targetNamespace = "http://localhost:8080/ode/processes/TransformationService", wsdlLocation="TransformationService.wsdl")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public class TransformationService {
+public class Transformation {
 	@WebMethod(action = "transform")
 	public String transform(
-			@WebParam(name = "bpelFileContent", targetNamespace = "") String bpelFileContent) {
-		String response = Transformer.getTransformer().transform(bpelFileContent);
+			@WebParam(name = "bpelFileContent", targetNamespace = "") String bpelFileContent, 
+			@WebParam(name = "rrsWSDLNamespaceURI", targetNamespace = "") String rrsWSDLNamespaceURI) {
+		String response = Transformer.getTransformer().transform(bpelFileContent, rrsWSDLNamespaceURI);
 
 		return response;
 	}

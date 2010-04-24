@@ -17,33 +17,33 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "TransformationService", targetNamespace = "http://webservices.transformation.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/TransformationService.TransformationServicePort?wsdl")
-public class TransformationService_Service
+@WebServiceClient(name = "Transformation", targetNamespace = "http://webservices.transformation.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/TransformationService.Transformation?wsdl")
+public class Transformation
     extends Service
 {
 
-    private final static URL TRANSFORMATIONSERVICE_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(org.simpl.rrs.transformation.webservices.client.TransformationService_Service.class.getName());
+    private final static URL TRANSFORMATION_WSDL_LOCATION;
+    private final static Logger logger = Logger.getLogger(org.simpl.rrs.transformation.webservices.client.Transformation.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = org.simpl.rrs.transformation.webservices.client.TransformationService_Service.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/ode/processes/TransformationService.TransformationServicePort?wsdl");
+            baseUrl = Transformation.class.getResource(".");
+            url = new URL(baseUrl, "http://localhost:8080/ode/processes/TransformationService.Transformation?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/TransformationService.TransformationServicePort?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/TransformationService.Transformation?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
-        TRANSFORMATIONSERVICE_WSDL_LOCATION = url;
+        TRANSFORMATION_WSDL_LOCATION = url;
     }
 
-    public TransformationService_Service(URL wsdlLocation, QName serviceName) {
+    public Transformation(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public TransformationService_Service() {
-        super(TRANSFORMATIONSERVICE_WSDL_LOCATION, new QName("http://webservices.transformation.rrs.simpl.org/", "TransformationService"));
+    public Transformation() {
+        super(TRANSFORMATION_WSDL_LOCATION, new QName("http://webservices.transformation.rrs.simpl.org/", "Transformation"));
     }
 
     /**

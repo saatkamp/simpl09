@@ -35,8 +35,13 @@ public class Transformer {
 			BPEL_PRÄFIX,
 			"http://docs.oasis-open.org/wsbpel/2.0/process/executable");
 
-	private static final Namespace RRS_NAMESPACE = Namespace.getNamespace(
+	// The namespace of the rrs xsd
+	private static final Namespace RRS_XSD_NAMESPACE = Namespace.getNamespace(
 			"rrs", "http://uni-stuttgart.de/simpl/rrs");
+
+	// The namespace of the rrs wsdl
+	private static Namespace RRS_WSDL_NAMESPACE;
+
 	private static final String RRS_PARTNER_LINK_NAME = "RRS";
 
 	// Attribute names
@@ -59,6 +64,7 @@ public class Transformer {
 	private static final String AT_OUTPUT_VARIABLE = "outputVariable";
 	private static final String AT_PARTNER_LINK = "partnerLink";
 	private static final String AT_VARIABLE = "variable";
+	private static final String AT_PORT_TYPE = "portType";
 
 	// Element names
 	private static final String EL_REFERENCE_VARIABLE = "referenceVariable";
@@ -91,7 +97,7 @@ public class Transformer {
 	@SuppressWarnings("unused")
 	private static final String FRESH = "fresh";
 
-	private static final String EPR_TYPE = RRS_NAMESPACE.getPrefix() + ":"
+	private static final String EPR_TYPE = RRS_XSD_NAMESPACE.getPrefix() + ":"
 			+ "EPR";
 
 	// An array of all by reference influenced element types
@@ -112,6 +118,9 @@ public class Transformer {
 	// This list holds all referenceVariable elements
 	private List refVariableElements = new ArrayList();
 
+	// This boolean tells wether the RRS xsd and wsdl namespace are equal or not
+	private boolean oneRRSNamespace = true;
+
 	private static Transformer transformer = null;
 
 	public static Transformer getTransformer() {
@@ -121,7 +130,16 @@ public class Transformer {
 		return transformer;
 	}
 
-	public String transform(String input) {
+	public String transform(String input, String rrsWSDLnamespace) {
+
+		RRS_WSDL_NAMESPACE = Namespace
+				.getNamespace("rrsWSDL", rrsWSDLnamespace);
+
+		if (RRS_XSD_NAMESPACE.getURI().equals(RRS_WSDL_NAMESPACE.getURI())) {
+			oneRRSNamespace = true;
+		} else {
+			oneRRSNamespace = false;
+		}
 
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(input
 				.getBytes());
@@ -134,26 +152,33 @@ public class Transformer {
 			// Start Transformation
 			Element root = doc.getRootElement();
 
-			// Add the rrs namespace prefix to the process element
-			root.addNamespaceDeclaration(RRS_NAMESPACE);
+			if (oneRRSNamespace) {
+				// Add the rrs xsd namespace prefix to the process element
+				root.addNamespaceDeclaration(RRS_XSD_NAMESPACE);
+			} else {
+				// Add the rrs wsdl namespace prefix to the process element
+				root.addNamespaceDeclaration(RRS_WSDL_NAMESPACE);
+				// Add the rrs xsd namespace prefix to the process element
+				root.addNamespaceDeclaration(RRS_XSD_NAMESPACE);
+			}
 
 			// Set all the new required Imports
 			List imports = root.getChildren(EL_IMPORT, BPEL_NAMESPACE);
 
-			// Add the rrs.wsdl to the process imports
-			// TODO: Noch an René's Implementierung anpassen
-			Element rrsWSDLImport = new Element(EL_IMPORT, BPEL_NAMESPACE);
-			rrsWSDLImport.setAttribute(AT_IMPORT_LOCATION, "rrs.wsdl");
-			rrsWSDLImport.setAttribute(AT_IMPORT_NS, RRS_NAMESPACE.getURI());
-			rrsWSDLImport.setAttribute(AT_IMPORT_ITYPE,
-					"http://schemas.xmlsoap.org/wsdl/");
-			imports.add(0, rrsWSDLImport);
+			// // Add the rrs.wsdl to the process imports
+			// // TODO: Noch an René's Implementierung anpassen
+			// Element rrsWSDLImport = new Element(EL_IMPORT, BPEL_NAMESPACE);
+			// rrsWSDLImport.setAttribute(AT_IMPORT_LOCATION, "rrs.wsdl");
+			// rrsWSDLImport.setAttribute(AT_IMPORT_NS, RRS_NAMESPACE.getURI());
+			// rrsWSDLImport.setAttribute(AT_IMPORT_ITYPE,
+			// "http://schemas.xmlsoap.org/wsdl/");
+			// imports.add(0, rrsWSDLImport);
 
 			// Add the rrs.xsd to the process imports
 			// TODO: rrs.xsd muss im workspace des Prozesses liegen
 			Element rrsXSDImport = new Element(EL_IMPORT, BPEL_NAMESPACE);
 			rrsXSDImport.setAttribute(AT_IMPORT_LOCATION, "rrs.xsd");
-			rrsXSDImport.setAttribute(AT_IMPORT_NS, RRS_NAMESPACE.getURI());
+			rrsXSDImport.setAttribute(AT_IMPORT_NS, RRS_XSD_NAMESPACE.getURI());
 			rrsXSDImport.setAttribute(AT_IMPORT_ITYPE,
 					"http://www.w3.org/2001/XMLSchema");
 			imports.add(0, rrsXSDImport);
@@ -163,11 +188,13 @@ public class Transformer {
 					.getChildren("partnerLink", BPEL_NAMESPACE);
 			Element rrsPartnerLink = new Element(EL_PARTNER_LINK,
 					BPEL_NAMESPACE);
-			// TODO: Hier noch die richtigen Werte setzen und klären, ob das so
-			// alles geht oder noch was fehlt (PartnerLinkType?!)
+			/*
+			 * <bpel:partnerLink name="RRS" partnerLinkType="tns:RRSGetType"
+			 * partnerRole="GET"> </bpel:partnerLink>
+			 */
 			rrsPartnerLink.setAttribute(AT_NAME, RRS_PARTNER_LINK_NAME);
-			rrsPartnerLink.setAttribute(AT_PL_TYPE, "");
-			rrsPartnerLink.setAttribute(AT_PL_ROLE, "");
+			rrsPartnerLink.setAttribute(AT_PL_TYPE, "tns:RRSGetType");
+			rrsPartnerLink.setAttribute(AT_PL_ROLE, "GET");
 
 			partnerLinks.add(rrsPartnerLink);
 
@@ -268,14 +295,24 @@ public class Transformer {
 	private Element createRRSInvokeElement(String refVarName,
 			String valueVarName, int count) {
 		/*
-		 * <invoke name="refNameRefresh_1" partnerLink="RRS" operation="GET"
-		 * inputVariable="refNameEPR" outputVariable="refName"/>
+		 * <bpel:invoke name="#VarName#Refresh_#counter#" partnerLink="RRS"
+		 * operation="transform" portType="ns:TransformationService"
+		 * inputVariable="dataEPR" outputVariable="data"> </bpel:invoke>
 		 */
 		Element invoke = new Element(EL_INVOKE, BPEL_NAMESPACE);
 
+		// TODO: Hier müssen nochmal alle Attribute überprüft und an
+		// René's Implementierung angepasst werden
 		invoke.setAttribute(AT_NAME, valueVarName + "Refresh_" + count);
 		invoke.setAttribute(AT_PARTNER_LINK, RRS_PARTNER_LINK_NAME);
-		invoke.setAttribute(AT_OPERATION, "GET");
+		invoke.setAttribute(AT_OPERATION, "get");
+		if (oneRRSNamespace) {
+			invoke.setAttribute(AT_PORT_TYPE, RRS_XSD_NAMESPACE.getPrefix()
+					+ ":" + "RRSRetrievalService");
+		} else {
+			invoke.setAttribute(AT_PORT_TYPE, RRS_WSDL_NAMESPACE.getPrefix()
+					+ ":" + "RRSRetrievalService");
+		}
 		invoke.setAttribute(AT_INPUT_VARIABLE, refVarName);
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, valueVarName);
 
@@ -372,7 +409,7 @@ public class Transformer {
 
 	private void processAnyElement(Element onInstSequence, Element element) {
 		// We check only Assign activities at the moment
-		
+
 		/*
 		 * <bpel:assign validate="no" name="Assign"> <bpel:copy> <bpel:from>
 		 * <![CDATA[val($ReferenceVariable)]]> </bpel:from> <bpel:to
@@ -384,11 +421,11 @@ public class Transformer {
 				EL_FROM, BPEL_NAMESPACE);
 
 		String expression = from.getText().trim();
-		
-		if (expression.matches(EXP_VAL+"\\([$][a-zA-Z_0-9]+\\)")){
+
+		if (expression.matches(EXP_VAL + "\\([$][a-zA-Z_0-9]+\\)")) {
 			expression = expression.substring(5, expression.indexOf(")", 5));
-			if (refVarNames.containsKey(expression)){
-				//The expression contains a reference variable
+			if (refVarNames.containsKey(expression)) {
+				// The expression contains a reference variable
 				String varName = expression;
 				Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
 						varName, refVarNames.get(varName));
@@ -424,8 +461,10 @@ public class Transformer {
 			 * variable="input"></bpel:from> <bpel:to
 			 * variable="input"></bpel:to> </bpel:copy> </bpel:assign>
 			 */
-			if (from.getAttributeValue(AT_VARIABLE) != null && refVarNames.containsKey(from.getAttributeValue(AT_VARIABLE))){
-				//Assign from variable is a reference variable
+			if (from.getAttributeValue(AT_VARIABLE) != null
+					&& refVarNames.containsKey(from
+							.getAttributeValue(AT_VARIABLE))) {
+				// Assign from variable is a reference variable
 				String varName = from.getAttributeValue(AT_VARIABLE);
 				Element deRefInvoke = createRRSInvokeElement(varName + "EPR",
 						varName, refVarNames.get(varName));
