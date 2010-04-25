@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xsd:schema targetNamespace="http://org.simpl.core/plugins/dataformat/DataFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/plugins/dataformat/DataFormat" xmlns:Q1="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData">
     <xsd:annotation>
-    	<xsd:documentation></xsd:documentation></xsd:annotation>
+    	<xsd:documentation>Defines the SDO structure of a CSV file that most commonly represents a table in a database, that includes rows, columns and a header that defines the colum names.</xsd:documentation></xsd:annotation>
     <xsd:complexType name="tColumn">
 
     	<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
@@ -18,7 +18,7 @@
 
 
 
-    <xsd:complexType name="tTable">
+    <xsd:complexType name="tCSVDataFormat">
     	<xsd:sequence>
     		<xsd:element name="row" type="tRow" maxOccurs="unbounded"
     			minOccurs="0">
@@ -27,12 +27,15 @@
     			minOccurs="0">
     		</xsd:element>
     	</xsd:sequence>
-
-    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+
+        <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="filename" type="xsd:string"></xsd:attribute>
     	<xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
     	<xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
-    	<xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
+
     	<xsd:attribute name="strictQuotes" type="xsd:boolean"></xsd:attribute>
+
     </xsd:complexType>
 
 
@@ -43,11 +46,14 @@
     </xsd:complexType>
 
 
-    <xsd:element name="table" type="tTable"></xsd:element>
+    <xsd:element name="CSVDataFormat" type="tCSVDataFormat"></xsd:element>
 
     <xsd:complexType name="tRow">
     	<xsd:sequence>
     		<xsd:element name="column" type="tColumn" maxOccurs="unbounded" minOccurs="0"></xsd:element>
     	</xsd:sequence>
     </xsd:complexType>
+
+
+
 </xsd:schema>

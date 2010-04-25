@@ -17,7 +17,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Creating a SDO from standard CSV file and vice versa.<br>
+ * <b>Purpose:</b>Used to create a SDO from standard CSV file and vice versa.<br>
  * <b>Description:</b>Uses OpenCSV to read and write the CSV data. The data is
  * written to a temporary file, to be able to return it as java.io.File.<br>
  * <b>Copyright:</b> <br>
@@ -32,7 +32,7 @@ public class CSVDataFormat extends DataFormatPlugin<File> {
   public CSVDataFormat() {
     this.setType("CSV");
     this.setSchemaFile("CSVDataFormat.xsd");
-    this.setSchemaType("tTable");
+    this.setSchemaType("tCSVDataFormat");
   }
 
   /*
@@ -56,7 +56,7 @@ public class CSVDataFormat extends DataFormatPlugin<File> {
       headLine = csvReader.readNext();
       headerObject.setList("column", Arrays.asList(headLine));
 
-      sdo.setString("name", file.getName());
+      sdo.setString("filename", file.getName());
       // sdo.setChar("separator", ',');
       // sdo.setChar("quoteChar", '\0');
       // sdo.setChar("escapeChar", '\\');
