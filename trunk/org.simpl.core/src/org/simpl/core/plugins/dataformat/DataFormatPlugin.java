@@ -10,10 +10,10 @@ import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create data format plugins for
- * the SIMPL Core, that are used by a data source service to support different
- * data formats of different data sources.<br>
- * <b>Description:</b>A data format plugin is used to map outgoing data of a
+ * <b>Purpose:</b>This abstract class is used to create data format plug-ins for
+ * the SIMPL Core, that can be used by data source plug-ins to work with a
+ * defined data format.<br>
+ * <b>Description:</b>A data format plug-in is used to map outgoing data of a
  * format to a Service Data Object (SDO) and to transform incoming data as SDO
  * back to the format.<br>
  * It has a type for identification and needs a XML schema that defines the data
