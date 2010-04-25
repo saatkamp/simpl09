@@ -11,18 +11,14 @@ import commonj.sdo.helper.XSDHelper;
 
 /**
  * <b>Purpose:</b>This abstract class is used to create data format plugins for
- * the SIMPL Core, that are used by the data source service to support different
- * data formats of different data sources. A data format is used by a data
- * source service to map outgoing data to and incoming data from a Service Data
- * Object (SDO) using Apache Tuscany.<br>
- * <b>Description:</b>The type or rather name of data format is set with
- * {@link #setType(String)}. The structure of the SDO is defined by a XML-schema
- * file, that is set with {@link #setSchemaFile(String)}, and supposed to be
- * deployed in a .jar file along with the extending plugin class. In order to
- * create an empty SDO from the schema that can be filled with data, a root
- * schema type has to be set with #setSchemaType(String). All settings have to
- * be done in the plugin's constructor, the created SDO is returned by
- * {@link #getDataObject()}.<br>
+ * the SIMPL Core, that are used by a data source service to support different
+ * data formats of different data sources.<br>
+ * <b>Description:</b>A data format plugin is used to map outgoing data of a
+ * format to a Service Data Object (SDO) and to transform incoming data as SDO
+ * back to the format. It has a type for identification and needs a XML schema
+ * that defines the data format structure, that is used to create a SDO based on
+ * a schema element type. Type, schema file and schema element type must be set
+ * in the plugin's constructor.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b>SIMPL<br>
  * 
@@ -33,7 +29,7 @@ import commonj.sdo.helper.XSDHelper;
  */
 public abstract class DataFormatPlugin<T> implements DataFormatService<T> {
   /**
-   * Type of the supporting data format (CSV, XML, ...).
+   * Type of the supported data format (CSV, XML, ...).
    */
   private String type = "DefaultFormat";
 
@@ -83,7 +79,7 @@ public abstract class DataFormatPlugin<T> implements DataFormatService<T> {
   }
 
   /**
-   * Sets the supporting data format type.
+   * Sets the supported data format type.
    * 
    * @param dfType
    */
@@ -110,7 +106,7 @@ public abstract class DataFormatPlugin<T> implements DataFormatService<T> {
   }
 
   /**
-   * @return The supporting data format type.
+   * @return The supported data format type.
    */
   public String getType() {
     return this.type;

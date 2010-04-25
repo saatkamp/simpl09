@@ -16,14 +16,14 @@ import commonj.sdo.helper.XSDHelper;
  * <b>Purpose:</b>This abstract class is used to create a data source plugin for
  * the SIMPL Core, to realize the access to a specific type of data source.<br>
  * <b>Description:</b>A data source service plugin supports just one type of
- * data source (e.g. database or file system), but several subtypes (MySQL, DB2)
- * and languages.<br>
+ * data source (e.g. database, file system), but several subtypes (e.g. MySQL,
+ * DB2) and languages (e.g. SQL, XQuery).<br>
  * The meta data of a data source is made available as a service data object
- * (SDO) to offer an independent and extensible data format for exchange. The
- * structure of the SDO is created from of a XML schema file, that defines all
- * data types and can be created for each plugin individually. If no schema file
- * is set, the standard schema file defined in the SIMPL Core is used as
- * default.<br>
+ * (SDO). The SDO is created from of a XML schema file, that defines the meta
+ * data structure in a schema element type and can be set for each plugin
+ * individually. If no schema file is set, the standard meta data schema file
+ * defined in the SIMPL Core is used as default. Type, subtypes, languages, meta
+ * data schema and schema element type must be set in the plugin's constructor.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b>SIMPL<br>
  * 
@@ -34,17 +34,17 @@ import commonj.sdo.helper.XSDHelper;
  */
 public abstract class DataSourcePlugin implements DataSourceService {
   /**
-   * Type of the supporting data source (database, filesystem, ...).
+   * Type of the supported data source (database, filesystem, ...).
    */
   private String type = "Database";
 
   /**
-   * Subtypes of the supporting data source (DB2, MySQL, ...).
+   * Subtypes of the supported data source (DB2, MySQL, ...).
    */
   private List<String> subtypes = new ArrayList<String>();
 
   /**
-   * Languages supporting by the data source subtypes (SQL, XQuery, ...).
+   * Languages supported by the data source subtypes (SQL, XQuery, ...).
    */
   private HashMap<String, List<String>> languages = new HashMap<String, List<String>>();
 
@@ -57,31 +57,31 @@ public abstract class DataSourcePlugin implements DataSourceService {
    * XML schema type of the data source meta data (declared in
    * DEFAULT_META_DATA_SCHEMA).
    */
-  private String metaDataType = "tDatabaseMetaData";
+  private String metaDataSchemaType = "tDatabaseMetaData";
 
   /**
-   * @return The supporting data source type.
+   * @return The supported data source type.
    */
   public String getType() {
     return this.type;
   }
 
   /**
-   * @return List of the supporting data source subtypes.
+   * @return List of the supported data source subtypes.
    */
   public List<String> getSubtypes() {
     return this.subtypes;
   }
 
   /**
-   * @return HashMap of the supporting languages of subtypes.
+   * @return HashMap of the supported languages of subtypes.
    */
   public HashMap<String, List<String>> getLanguages() {
     return this.languages;
   }
 
   /**
-   * Sets the supporting data source type.
+   * Sets the supported data source type.
    * 
    * @param dsType
    */
@@ -131,13 +131,15 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
-   * Sets the element type for the meta data being used by the plugin. The types
-   * are defined in the data source meta data schema file.
+   * Sets the element type for the meta data being used to create the SDO. The
+   * types are defined in the data source meta data schema file.
+   * 
+   * Default available types are tDatabaseMetaData and tFilesystemMetaData.
    * 
    * @param dsMetaDataType
    */
-  public void setMetaDataType(String dsMetaDataType) {
-    this.metaDataType = dsMetaDataType;
+  public void setMetaDataSchemaType(String dsMetaDataType) {
+    this.metaDataSchemaType = dsMetaDataType;
   }
 
   /**
@@ -172,7 +174,7 @@ public abstract class DataSourcePlugin implements DataSourceService {
     metaDataObject = DataFactory.INSTANCE
         .create(
             "http://org.simpl.core/services/datasource/metadata/DataSourceMetaData",
-            this.metaDataType);
+            this.metaDataSchemaType);
 
     return metaDataObject;
   }

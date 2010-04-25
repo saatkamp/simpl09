@@ -30,9 +30,12 @@ public class StrategyServiceImpl implements StrategyService {
   @Override
   public DataSource findDataSource(DataSource dataSource) {
     DataSource resultDataSource = null;
-    boolean compareWsPolicy = dataSource.getPolicy() != null && !dataSource.getPolicy().equals("");
-    boolean compareType = dataSource.getType() != null && !dataSource.getType().equals("");
-    boolean compareSubtype = dataSource.getSubType() != null && !dataSource.getSubType().equals("");
+    boolean compareWsPolicy = dataSource.getPolicy() != null
+        && !dataSource.getPolicy().equals("");
+    boolean compareType = dataSource.getType() != null
+        && !dataSource.getType().equals("");
+    boolean compareSubtype = dataSource.getSubType() != null
+        && !dataSource.getSubType().equals("");
 
     switch (dataSource.getStrategy()) {
     case FIRST_FIND:
@@ -46,7 +49,8 @@ public class StrategyServiceImpl implements StrategyService {
 
       // retrieve data sources and compare the policies
       for (UddiDataSource uddiDataSource : dataSources) {
-        if (dataSource.getPolicy() != null && !dataSource.getPolicy().equals("")) {
+        if (dataSource.getPolicy() != null
+            && !dataSource.getPolicy().equals("")) {
           dsPolicy = uddiDataSource.getWsPolicy();
 
           // check if wsPolicy contains an URL
@@ -101,7 +105,8 @@ public class StrategyServiceImpl implements StrategyService {
       resultDataSource.setType(resultUddiDataSource.getType());
       resultDataSource.setSubType(resultUddiDataSource.getSubtype());
       resultDataSource.setPolicy(resultUddiDataSource.getWsPolicy());
-      //TODO Username, Passwort und Adresse fehlen noch in der UddIDataSource
+      resultDataSource.setAddress(resultUddiDataSource.getAddress());
+      // TODO Username, Passwort fehlen noch aus der UddIDataSource
 
       break;
     default:
