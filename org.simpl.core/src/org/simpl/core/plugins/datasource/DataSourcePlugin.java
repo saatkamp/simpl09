@@ -13,17 +13,17 @@ import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create a data source plugin for
+ * <b>Purpose:</b>This abstract class is used to create a data source plug-in for
  * the SIMPL Core, to realize the access to a specific type of data source.<br>
- * <b>Description:</b>A data source service plugin supports just one type of
+ * <b>Description:</b>A data source service plug-in supports just one type of
  * data source (e.g. database, file system), but several subtypes (e.g. MySQL,
  * DB2) and languages (e.g. SQL, XQuery).<br>
  * The meta data of a data source is made available as a service data object
  * (SDO). The SDO is created from of a XML schema file, that defines the meta
- * data structure in a schema element type and can be set for each plugin
+ * data structure in a schema element type and can be set for each plug-in
  * individually. If no schema file is set, the standard meta data schema file
  * defined in the SIMPL Core is used as default. Type, subtypes, languages, meta
- * data schema and schema element type must be set in the plugin's constructor.<br>
+ * data schema and schema element type must be set in the plug-in's constructor.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b>SIMPL<br>
  * 
@@ -34,7 +34,7 @@ import commonj.sdo.helper.XSDHelper;
  */
 public abstract class DataSourcePlugin implements DataSourceService {
   /**
-   * Type of the supported data source (database, filesystem, ...).
+   * Type of the supported data source (database, file system, ...).
    */
   private String type = "Database";
 
