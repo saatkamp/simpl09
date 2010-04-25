@@ -15,10 +15,14 @@ import commonj.sdo.helper.XSDHelper;
  * data formats of different data sources.<br>
  * <b>Description:</b>A data format plugin is used to map outgoing data of a
  * format to a Service Data Object (SDO) and to transform incoming data as SDO
- * back to the format. It has a type for identification and needs a XML schema
- * that defines the data format structure, that is used to create a SDO based on
- * a schema element type. Type, schema file and schema element type must be set
- * in the plugin's constructor.<br>
+ * back to the format.<br>
+ * It has a type for identification and needs a XML schema that defines the data
+ * format structure, that is used to create a SDO based on a root schema element
+ * type. Type, schema file and schema element type must be set in the plugin's
+ * constructor. <br>
+ * The root schema type must have an attribute called <b>type</b>, that is set
+ * automatically, for other services being able to recognize the underlying
+ * format of a passed SDO.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b>SIMPL<br>
  * 
@@ -74,6 +78,13 @@ public abstract class DataFormatPlugin<T> implements DataFormatService<T> {
 
     dataObject = DataFactory.INSTANCE.create(
         "http://org.simpl.core/plugins/dataformat/DataFormat", this.schemaType);
+
+    // write the format type to the data object if possible
+    try {
+      dataObject.setString("type", this.type);
+    } catch (IllegalArgumentException e) {
+      // type is not set, because the schema does not declare this attribute
+    }
 
     return dataObject;
   }

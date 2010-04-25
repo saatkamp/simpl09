@@ -27,11 +27,11 @@ import org.simpl.core.services.strategy.Strategy;
 @XmlType(name = "DataSource", propOrder = { "address", "policy", "strategy",
     "subType", "type" })
 public class DataSource {
-  protected String address;
-  protected String policy;
-  protected Strategy strategy;
-  protected String subType;
-  protected String type;
+  protected String address = "";
+  protected String policy = "";
+  protected Strategy strategy = null;
+  protected String subType = "";
+  protected String type = "";
 
   /**
    * Gets the value of the address property.
