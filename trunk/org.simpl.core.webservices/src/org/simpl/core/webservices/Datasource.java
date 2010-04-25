@@ -15,6 +15,7 @@ import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.DataSource;
+import org.simpl.core.services.datasource.auth.Authentication;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -28,23 +29,24 @@ import commonj.sdo.helper.XMLHelper;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-@WebService(name = "DatasourceService", targetNamespace = "")
+@WebService(name = "DatasourceService")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Datasource {
-  // Output stream to write SDO to string
+  // Output stream to write SDO to XML string
   ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
   @WebMethod(action = "retrieveData")
   public String retrieveData(
-      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
-      @WebParam(name = "statement", targetNamespace = "") String statement)
+      @WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "authentication") Authentication auth,
+      @WebParam(name = "statement") String statement)
       throws ConnectionException {
     DataObject dataObject = null;
     String data = null;
 
     dataObject = SIMPLCore.getInstance().dataSourceService(
         dataSource.getType(), dataSource.getSubType()).retrieveData(dataSource,
-        statement);
+        auth, statement);
 
     try {
       XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject",
@@ -61,57 +63,57 @@ public class Datasource {
 
   @WebMethod(action = "depositData")
   public boolean depositData(
-      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "target", targetNamespace = "") String target)
-      throws ConnectionException {
+      @WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "authentication") Authentication auth,
+      @WebParam(name = "statement") String statement,
+      @WebParam(name = "target") String target) throws ConnectionException {
     boolean success = false;
 
     success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
-        dataSource.getSubType()).depositData(dataSource, statement, target);
+        dataSource.getSubType()).depositData(dataSource, auth, statement,
+        target);
 
     return success;
   }
 
   @WebMethod(action = "executeStatement")
   public boolean executeStatement(
-      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
-      @WebParam(name = "statement", targetNamespace = "") String statement)
+      @WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "authentication") Authentication auth,
+      @WebParam(name = "statement") String statement)
       throws ConnectionException {
     boolean success = false;
 
     success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
-        dataSource.getSubType()).executeStatement(dataSource, statement);
+        dataSource.getSubType()).executeStatement(dataSource, auth, statement);
 
     return success;
   }
 
   @WebMethod(action = "writeBack")
   public boolean writeBack(
-      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
-      @WebParam(name = "data", targetNamespace = "") String data)
-      throws ConnectionException {
+      @WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "authentication") Authentication auth,
+      @WebParam(name = "data") String data) throws ConnectionException {
     boolean success = false;
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
     success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
-        dataSource.getSubType()).writeBack(dataSource, dataObject);
+        dataSource.getSubType()).writeBack(dataSource, auth, dataObject);
 
     return success;
   }
 
   @WebMethod(action = "getMetaData")
-  public String getMetaData(
-      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource,
-      @WebParam(name = "filter", targetNamespace = "") String filter)
-      throws ConnectionException {
+  public String getMetaData(@WebParam(name = "datasource") DataSource source,
+      @WebParam(name = "authentication") Authentication auth,
+      @WebParam(name = "filter") String filter) throws ConnectionException {
     DataObject dataObject = null;
     String metaData = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService(
-        dataSource.getType(), dataSource.getSubType()).getMetaData(dataSource,
-        filter);
+    dataObject = SIMPLCore.getInstance().dataSourceService(source.getType(),
+        source.getSubType()).getMetaData(source, auth, filter);
 
     try {
       XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject",
@@ -128,7 +130,7 @@ public class Datasource {
 
   @WebMethod(action = "getMetaDataSchema")
   public String getMetaDataSchema(
-      @WebParam(name = "dataSource", targetNamespace = "") DataSource dataSource)
+      @WebParam(name = "dataSource") DataSource dataSource)
       throws ConnectionException {
     InputStream inputStream = null;
     String metaDataSchema = "";

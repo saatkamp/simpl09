@@ -13,7 +13,7 @@ import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.auth.UserPasswordAuthentication;
+import org.simpl.core.services.datasource.auth.Authentication;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -37,7 +37,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
 
   public DB2RDBDataSource() {
     this.setType("Database");
-    this.setMetaDataType("tDatabaseMetaData");
+    this.setMetaDataSchemaType("tDatabaseMetaData");
     this.addSubtype("DB2");
     this.addLanguage("DB2", "SQL");
 
@@ -58,7 +58,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     try {
       Class.forName("com.ibm.db2.jcc.DB2Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:db2:");
+      uri.append("jdbc:db2://");
       uri.append(dsAddress);
 
       try {
@@ -77,6 +77,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
       // TODO Auto-generated catch block
       logger.fatal("exception during loading the JDBC driver", e);
     }
+
     return connect;
   }
 
@@ -102,17 +103,15 @@ public class DB2RDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public DataObject retrieveData(DataSource dataSource, String statement)
-      throws ConnectionException {
+  public DataObject retrieveData(DataSource dataSource, Authentication auth,
+      String statement) throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
     }
 
-    UserPasswordAuthentication auth = (UserPasswordAuthentication) dataSource
-        .getAuthentication();
-    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(),
-        auth.getUser(), auth.getPassword()));
+    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(), "",
+        ""));
     Command read = das.createCommand(statement);
     DataObject root = read.executeQuery();
 
@@ -123,16 +122,14 @@ public class DB2RDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean executeStatement(DataSource dataSource, String statement)
-      throws ConnectionException {
+  public boolean executeStatement(DataSource dataSource, Authentication auth,
+      String statement) throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
     }
 
     boolean success = false;
-    UserPasswordAuthentication auth = (UserPasswordAuthentication) dataSource
-        .getAuthentication();
     Connection conn = openConnection(dataSource.getAddress(), auth.getUser(),
         auth.getPassword());
 
@@ -153,8 +150,8 @@ public class DB2RDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean writeBack(DataSource dataSource, DataObject data)
-      throws ConnectionException {
+  public boolean writeBack(DataSource dataSource, Authentication auth,
+      DataObject data) throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
@@ -173,29 +170,9 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     return success;
   }
 
-  // Test
-  public boolean manipulateDataWithSDO(DataSource dataSource, DataObject data)
-      throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean manipulateDataWithSDO(" + dataSource.getAddress()
-          + ", " + data + ") executed.");
-    }
-
-    UserPasswordAuthentication auth = (UserPasswordAuthentication) dataSource
-        .getAuthentication();
-    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(),
-        auth.getUser(), auth.getPassword()));
-    das.applyChanges(data);
-
-    logger.info("DataObject " + data + "was send back to data source "
-        + dataSource.getAddress());
-
-    return false;
-  }
-
   @Override
-  public boolean depositData(DataSource dataSource, String statement,
-      String target) throws ConnectionException {
+  public boolean depositData(DataSource dataSource, Authentication auth,
+      String statement, String target) throws ConnectionException {
     boolean success = false;
 
     if (logger.isDebugEnabled()) {
@@ -222,8 +199,6 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     insertStatement.append(" ");
     insertStatement.append(statement);
 
-    UserPasswordAuthentication auth = (UserPasswordAuthentication) dataSource
-        .getAuthentication();
     Connection conn = openConnection(dataSource.getAddress(), auth.getUser(),
         auth.getPassword());
 
@@ -262,10 +237,8 @@ public class DB2RDBDataSource extends DataSourcePlugin {
    * org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
    */
   @Override
-  public DataObject getMetaData(DataSource dataSource, String filter)
-      throws ConnectionException {
-    UserPasswordAuthentication auth = (UserPasswordAuthentication) dataSource
-        .getAuthentication();
+  public DataObject getMetaData(DataSource dataSource, Authentication auth,
+      String filter) throws ConnectionException {
     Connection conn = openConnection(dataSource.getAddress(), auth.getUser(),
         auth.getPassword());
 

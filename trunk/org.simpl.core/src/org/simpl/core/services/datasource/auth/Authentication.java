@@ -1,17 +1,41 @@
 package org.simpl.core.services.datasource.auth;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 /**
- * <b>Purpose:</b>Provides a uniform data type for all sort of authentication
- * information.<br>
- * <b>Description:</b>All classes of authentication information must extend this
- * class.<br>
+ * <b>Purpose:</b>Authentication information to be used for authentication to a
+ * data source.<br>
+ * <b>Description:</b>Is meant to hold all sorts of authentication information
+ * which are picked by the data source services.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: UserPasswordAuthentication.java 1183 2010-04-22 20:05:13Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class Authentication {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Authentication", propOrder = { "user", "password" })
+public class Authentication {
+  private String user;
+  private String password;
 
+  public String getUser() {
+    return user;
+  }
+
+  public void setUser(String user) {
+    this.user = user;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 }

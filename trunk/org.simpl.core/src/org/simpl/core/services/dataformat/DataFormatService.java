@@ -3,8 +3,8 @@ package org.simpl.core.services.dataformat;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b> Defines the methods that a data format must implement to work with the
- * data format services. <br>
+ * <b>Purpose:</b> Defines the methods that a data format service must implement
+ * to work with the data source services. <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
