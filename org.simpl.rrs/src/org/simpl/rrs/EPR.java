@@ -2,7 +2,7 @@ package org.simpl.rrs;
 
 public class EPR {
 
-	String adapterURI = null;
+	String adapterType = null;
 	String statement = null;
 	String adress = null;
 	String referenceName = null;
@@ -15,12 +15,12 @@ public class EPR {
 		this.adress = adress;
 	}
 
-	public String getadapterURI() {
-		return adapterURI;
+	public String getadapterType() {
+		return adapterType;
 	}
 
-	public void setadapterURI(String adapterURI) {
-		this.adapterURI = adapterURI;
+	public void setadapterType(String adapterType) {
+		this.adapterType = adapterType;
 	}
 
 	public String getStatement() {

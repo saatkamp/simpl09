@@ -8,10 +8,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedHashMap;
 
+import org.simpl.rrs.EPR;
+
 public class ManagementServiceImpl implements ManagementService {
 	private static final String DATABASE_NAME = "rrsDB";
+	private static final String Reference_TABLE_NAME = "References";
 
-	private String getStatement(String type, String table, String EPRName,
+	private String getStatement(String type, String table,
 			LinkedHashMap<String, String> EPR) {
 		StringBuilder manipulationStatement = new StringBuilder();
 
@@ -41,9 +44,9 @@ public class ManagementServiceImpl implements ManagementService {
 					.deleteCharAt(manipulationStatement.length() - 2);
 
 			// Id abgleichen
-			manipulationStatement.append("WHERE ID = ");
+			manipulationStatement.append("WHERE ID = REFERENCENAME");
 			manipulationStatement.append("'");
-			manipulationStatement.append(EPRName);
+			// manipulationStatement.append(EPRName);
 			manipulationStatement.append("'");
 
 			// TODO Testausgabe entfernen
@@ -66,9 +69,6 @@ public class ManagementServiceImpl implements ManagementService {
 
 			manipulationStatement.append(" (");
 
-			// id einfügen
-			manipulationStatement.append("id, ");
-
 			// Namen aus HashMap lesen
 			for (String name : EPR.keySet()) {
 				manipulationStatement.append(name);
@@ -81,11 +81,6 @@ public class ManagementServiceImpl implements ManagementService {
 			manipulationStatement.append(" )");
 			manipulationStatement.append(" VALUES ");
 			manipulationStatement.append("(");
-
-			// id wert einfügen
-			manipulationStatement.append("'");
-			manipulationStatement.append(EPRName);
-			manipulationStatement.append("', ");
 
 			// Werte aus HashMap lesen
 			for (String name : EPR.keySet()) {
@@ -111,8 +106,8 @@ public class ManagementServiceImpl implements ManagementService {
 			manipulationStatement.append(" ");
 			manipulationStatement.append(table);
 			manipulationStatement.append(" ");
-			manipulationStatement.append("WHERE ID = ");
-			manipulationStatement.append(EPRName);
+			manipulationStatement.append("WHERE REFERENCENAME = ");
+			manipulationStatement.append(EPR.get("ReferenceName"));
 
 		}
 
@@ -120,28 +115,29 @@ public class ManagementServiceImpl implements ManagementService {
 
 	}
 
-	private void createTableIfItDoesntExistYet(Connection connection,
-			String table, String cStatement) throws SQLException {
+	private boolean DoesTableExist(Connection connection) throws SQLException {
 
+		boolean tableExists = false;
 		ResultSet resultSet = connection.getMetaData().getTables("%", "%", "%",
 				new String[] { "TABLE" });
 
-		boolean shouldCreateTable = true;
-		while (resultSet.next() && shouldCreateTable) {
-			if (resultSet.getString("TABLE_NAME").equalsIgnoreCase(table)) {
-				shouldCreateTable = false;
-			}
+		if (resultSet.getString("TABLE_NAME") == Reference_TABLE_NAME) {
+			tableExists = true;
 		}
-		resultSet.close();
-		if (shouldCreateTable) {
-			System.out.println("Creating Table " + table + " ...");
-			Statement statement = connection.createStatement();
-			String statem = cStatement;
-			// TODO Testausgabe entfernen
-			System.out.println("Create Table: " + cStatement);
-			statement.execute(statem);
-			statement.close();
-		}
+
+		return tableExists;
+	}
+
+	private void createTable(Connection connection, String table,
+			String cStatement) throws SQLException {
+
+		System.out.println("Creating Table " + table + " ...");
+		Statement statement = connection.createStatement();
+		String statem = cStatement;
+		// TODO Testausgabe entfernen
+		System.out.println("Create Table: " + cStatement);
+		statement.execute(statem);
+		statement.close();
 	}
 
 	// TODO Auto-generated method stub
@@ -160,17 +156,14 @@ public class ManagementServiceImpl implements ManagementService {
 		createTableStatement.append(" ( ");
 
 		// Spalten festlegen
-		// id einfügen
-		createTableStatement.append("ID VARCHAR (20) NOT NULL, ");
-
 		// Einfügen der Einstellungen als Spalten
 		for (String name : EPR.keySet()) {
 			createTableStatement.append(name);
 			createTableStatement.append(" VARCHAR(255), ");
 		}
 
-		// ID als primaryKey setzen
-		createTableStatement.append("PRIMARY KEY ( ID)");
+		// ReferenceName als primaryKey setzen
+		createTableStatement.append("PRIMARY KEY ( REFERENCENAME)");
 		createTableStatement.append(" )");
 
 		// Beispiel Endergebnis:
@@ -198,65 +191,21 @@ public class ManagementServiceImpl implements ManagementService {
 		return connect;
 	}
 
-	public String Delete(String table, LinkedHashMap<String, String> EPR,
-			String EPRName) {
+	public boolean Delete(String uri, String adapterType, String referenceName,
+			String statement) {
 
+		LinkedHashMap<String, String> EPR = CreateEPR(uri, adapterType,
+				referenceName, statement);
+		
 		boolean success = false;
-		String tabl = table.replace(" ", "");
 
 		Connection conn = getConnection();
 
-		Statement statement;
+		Statement statm;
 		try {
-			statement = conn.createStatement();
-			success = statement.execute(getStatement("DELETE", table, EPRName,
-					EPR));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return null;
-
-	}
-
-	public File Insert(String table, LinkedHashMap<String, String> EPR,
-			String EPRName) throws SQLException {
-		boolean success = false;
-		String tabl = table.replace(" ", "");
-
-		Connection conn = getConnection();
-
-		createTableIfItDoesntExistYet(conn, tabl, getCreateTableStatement(tabl,
-				EPR));
-
-		try {
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(getStatement("INSERT", tabl, EPRName, EPR));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
-	public boolean Update(String table, LinkedHashMap<String, String> EPR,
-			String EPRName) throws SQLException {
-		boolean success = false;
-		String tabl = table.replaceAll(" ", "");
-
-		Connection conn = getConnection();
-
-		// Kontrollieren ob die Tabelle 'References' bereits existiert, wenn
-		// nicht, erstellen.
-
-		createTableIfItDoesntExistYet(conn, tabl, getCreateTableStatement(tabl,
-				EPR));
-
-		try {
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(getStatement("UPDATE", tabl, EPRName, EPR));
+			statm = conn.createStatement();
+			success = statm.execute(getStatement("DELETE", Reference_TABLE_NAME, EPR));
+			success = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -266,8 +215,60 @@ public class ManagementServiceImpl implements ManagementService {
 
 	}
 
-	public boolean EPRAllreadyInDB(String table,
-			LinkedHashMap<String, String> EPR, String EPRName) {
+
+	public File Insert(String uri, String adapterType, String referenceName,
+			String statement) throws SQLException {
+
+		LinkedHashMap<String, String> EPR = CreateEPR(uri, adapterType,
+				referenceName, statement);
+		Connection conn = getConnection();
+
+		if (DoesTableExist(conn) == true) {
+			createTable(conn, Reference_TABLE_NAME, getCreateTableStatement(
+					Reference_TABLE_NAME, EPR));
+		}
+
+		if (EPRAllreadyExists(Reference_TABLE_NAME, EPR)) {
+			try {
+				Statement statm = conn.createStatement();
+				statm.executeUpdate(getStatement("INSERT",
+						Reference_TABLE_NAME, EPR));
+
+				// EPR xml Datei erstellen
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		return null;
+	}
+
+	public boolean Update(String uri, String adapterType, String referenceName,
+			String statement) throws SQLException {
+		boolean success = false;
+		LinkedHashMap<String, String> EPR = CreateEPR(uri, adapterType,
+				referenceName, statement);
+
+		Connection conn = getConnection();
+
+		try {
+			Statement statm = conn.createStatement();
+			statm.executeUpdate(getStatement("UPDATE", Reference_TABLE_NAME,
+					EPR));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return success;
+
+	}
+
+	public boolean EPRAllreadyExists(String table,
+			LinkedHashMap<String, String> EPR) {
 
 		boolean EPRInDB = false;
 		String tabl = table.replace(" ", "");
@@ -283,7 +284,7 @@ public class ManagementServiceImpl implements ManagementService {
 		SearchStatement.append(tabl);
 		SearchStatement.append(" ");
 		SearchStatement.append("WHERE ID = ");
-		SearchStatement.append(EPRName);
+		SearchStatement.append(EPR.get("ReferenceName"));
 
 		Statement statement;
 		try {
@@ -299,6 +300,19 @@ public class ManagementServiceImpl implements ManagementService {
 		}
 
 		return EPRInDB;
+
+	}
+	
+	private LinkedHashMap<String, String> CreateEPR(String uri,
+			String adapterType, String referenceName, String statement) {
+
+		LinkedHashMap<String, String> EPR = new LinkedHashMap<String, String>();
+		EPR.put("Address", uri);
+		EPR.put("adapterType", adapterType);
+		EPR.put("referenceName", referenceName);
+		EPR.put("Statement", statement);
+
+		return EPR;
 
 	}
 
