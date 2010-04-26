@@ -444,6 +444,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="localPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="StrategyType">
-    <eLiterals name="firstFind"/>
+    <eLiterals name="NONE" literal="NONE"/>
+    <eLiterals name="FIRST_FIND" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

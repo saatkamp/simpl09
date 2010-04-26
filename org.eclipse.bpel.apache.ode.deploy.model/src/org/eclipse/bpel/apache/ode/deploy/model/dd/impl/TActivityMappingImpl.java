@@ -98,7 +98,7 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * @generated
 	 * @ordered
 	 */
-	protected static final StrategyType STRATEGY_EDEFAULT = StrategyType.FIRST_FIND;
+	protected static final StrategyType STRATEGY_EDEFAULT = StrategyType.NONE;
 
 	/**
 	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
