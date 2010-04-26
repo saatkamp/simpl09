@@ -169,7 +169,7 @@ public class AddMappingDialog extends TitleAreaDialog {
 						.getText()));
 				
 				// TODO: Has to be changed if more than one strategy is available.
-				mapping.setStrategy(strategy.getText().equals(StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND : StrategyType.FIRST_FIND);
+				mapping.setStrategy(strategy.getText().equals(StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND : StrategyType.NONE);
 				close();
 			}
 		});

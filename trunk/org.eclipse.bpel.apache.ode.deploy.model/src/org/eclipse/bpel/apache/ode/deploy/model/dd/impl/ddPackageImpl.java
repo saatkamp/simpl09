@@ -1113,6 +1113,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		addEEnumLiteral(generateTypeEEnum, GenerateType.NONE);
 
 		initEEnum(strategyTypeEEnum, StrategyType.class, "StrategyType");
+		addEEnumLiteral(strategyTypeEEnum, StrategyType.NONE);
 		addEEnumLiteral(strategyTypeEEnum, StrategyType.FIRST_FIND);
 
 		// Initialize data types
