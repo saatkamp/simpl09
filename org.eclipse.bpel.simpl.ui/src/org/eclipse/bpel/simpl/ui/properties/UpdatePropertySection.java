@@ -20,10 +20,9 @@ import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
+import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
@@ -33,8 +32,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 
 import widgets.ElementsListPopUp;
 import widgets.LiveEditStyleText;
@@ -53,7 +50,7 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 	//private Text statementText = null;
 	private Button showStatementCheckBox = null;
 	private Label dataSourceAddressLabel = null;
-	private Text dataSourceAddressText = null;
+	private CCombo dataSourceAddressCombo = null;
 	private Label kindLabel = null;
 	private CCombo kindCombo = null;
 	private Button openEditorButton = null;
@@ -90,7 +87,7 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 		// Setzen das Statement
 		setStatement(activity.getDsStatement());
 		// Setzen die Datenquellenadresse
-		dataSourceAddressText.setText(activity.getDsAddress());
+		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Sprache
 		if (kindCombo.getSelectionIndex() > 0) {
 			// Fragen alle unterstützten Sprachen des Subtypes beim SIMPL
@@ -168,19 +165,25 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 				SWT.COLOR_WHITE));
 		createKindCombo();
 		dataSourceAddressLabel = new Label(composite, SWT.NONE);
-		dataSourceAddressText = new Text(composite, SWT.BORDER);
-		dataSourceAddressText.setLayoutData(gridData12);
+		dataSourceAddressCombo = new CCombo(composite, SWT.BORDER);
+		dataSourceAddressCombo.setLayoutData(gridData12);
 		// Änderungen im Modell speichern
-		dataSourceAddressText.addModifyListener(new ModifyListener() {
+		dataSourceAddressCombo.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
 
 			@Override
-			public void modifyText(ModifyEvent e) {
+			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
 						new SetDsAddressCommand(getModel(),
-								dataSourceAddressText.getText()));
+								dataSourceAddressCombo.getText()));
 			}
 		});
-		dataSourceAddressLabel.setText("Address of the data source:");
+		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSources(getProcess()));
+		
+		dataSourceAddressLabel.setText("Data source name:");
 		dataSourceAddressLabel.setLayoutData(gridData31);
 		dataSourceAddressLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
@@ -302,7 +305,7 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressText.getText(),typeCombo.getItem(typeCombo.getSelectionIndex()),kindCombo.getItem(kindCombo.getSelectionIndex()));
+				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeCombo.getItem(typeCombo.getSelectionIndex()),kindCombo.getItem(kindCombo.getSelectionIndex()));
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
