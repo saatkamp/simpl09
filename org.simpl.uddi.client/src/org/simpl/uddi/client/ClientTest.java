@@ -1,4 +1,5 @@
 package org.simpl.uddi.client;
+
 import java.util.ArrayList;
 
 public class ClientTest implements IUddiConfig {
@@ -8,7 +9,7 @@ public class ClientTest implements IUddiConfig {
 		business.addDescription("Business fuer SIMPL Datasources", "ger");
 		business.setKey(KEYPREFIX + "simpl");
 
-		UddiDataWriter dataWriter = UddiDataWriter.getInstance();
+		UddiDataWriter dataWriter = UddiDataWriter.getInstance("http://localhost:8080/juddiv3","root","");
 		
 		dataWriter.writeBusiness(business);
 
@@ -43,8 +44,7 @@ public class ClientTest implements IUddiConfig {
 
 		dataWriter.writeDatasource(dataSource2);
 
-		ArrayList<UddiDataSource> ds = UddiDataSourceReader.getInstance()
-				.getAllDatasources();
+		ArrayList<UddiDataSource> ds = UddiDataSourceReader.getInstance("http://localhost:8080/juddiv3/").getAllDatasources();
 
 		System.out.println(ds.size());
 		// UddiDataSource ds = reader.getByKey(KEYPREFIX + "source_1");
