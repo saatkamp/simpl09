@@ -1,6 +1,7 @@
 package org.simpl.uddi.client;
 
 
+
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -22,15 +23,18 @@ import org.uddi.v3_service.UDDIInquiryPortType;
 public class UddiDataSourceReader implements IUddiConfig {
 
 	UDDIInquiryPortType inquiry = null;
+	
+	String address = "";
 
 	public static UddiDataSourceReader datasourceReader = null;
 
-	private UddiDataSourceReader() {
+	private UddiDataSourceReader(String address) {
+		this.address = address;
 		Transport transport = new JAXWSTransport("default");
 
 		try {
 			this.inquiry = transport
-					.getUDDIInquiryService("http://localhost:8080/juddiv3/services/inquiry?wsdl");
+					.getUDDIInquiryService(this.address + "/services/inquiry?wsdl");
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,7 +76,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 		try {
 			sd = this.inquiry.findService(findService);
 
-			if (sd.getServiceInfos() != null) {
+			if (sd != null && sd.getServiceInfos() != null) {
 				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
 
@@ -361,11 +365,21 @@ public class UddiDataSourceReader implements IUddiConfig {
 		return source;
 
 	}
+	
 
-	public static UddiDataSourceReader getInstance() {
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public static UddiDataSourceReader getInstance(String addr) {
 		if (datasourceReader == null) {
-			datasourceReader = new UddiDataSourceReader();
+			datasourceReader = new UddiDataSourceReader(addr);
 		}
+
 		return datasourceReader;
 	}
 }
