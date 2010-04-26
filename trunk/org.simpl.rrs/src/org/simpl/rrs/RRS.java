@@ -1,6 +1,5 @@
 package org.simpl.rrs;
 
-import java.io.File;
 import java.util.List;
 
 import org.simpl.rrs.dsadapter.DSAdapter;
@@ -16,7 +15,7 @@ public class RRS {
 	private static RRSConfig config = null;
 	private static RetrievalService retrievalService = new RetrievalServiceImpl();
 	private static ManagementService managementService = new ManagementServiceImpl();
-	private static DSAdapterProvider dsAdapterProvider = new DSAdapterProvider();
+	//private static DSAdapterProvider dsAdapterProvider = new DSAdapterProvider();
 	
 	
 	public static RRS getInstance() {
@@ -36,20 +35,20 @@ public class RRS {
 		return managementService;
 	}
 	
-	public DSAdapter dsAdapter(String dsType, String dsSubtype) {
-		return dsAdapterProvider.getInstance(dsType, dsSubtype);
-	}
-	
-	public List<String> getDSAdapterType() {
-		return dsAdapterProvider.getTypes();
-	}
-	
-	public List<String> getDSAdapterSubtypes(String dsType) {
-		return dsAdapterProvider.getSubtypes(dsType);
-	}
-	
-	public List<String> getDSAdapterLanguages(String dsSubtype) {
-		return dsAdapterProvider.getLanguages(dsSubtype);
-	}
+//	public DSAdapter dsAdapter(String dsType, String dsSubtype) {
+//		return dsAdapterProvider.getInstance(dsType, dsSubtype);
+//	}
+//	
+//	public List<String> getDSAdapterType() {
+//		return dsAdapterProvider.getTypes();
+//	}
+//	
+//	public List<String> getDSAdapterSubtypes(String dsType) {
+//		return dsAdapterProvider.getSubtypes(dsType);
+//	}
+//	
+//	public List<String> getDSAdapterLanguages(String dsSubtype) {
+//		return dsAdapterProvider.getLanguages(dsSubtype);
+//	}
 	
 }

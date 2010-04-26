@@ -1,6 +1,7 @@
 package org.simpl.rrs.webservices;
 
 import java.io.File;
+import java.util.LinkedHashMap;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -16,15 +17,15 @@ import org.simpl.rrs.webservices.helper.Parameter;
 public class Management {
   @WebMethod(action = "Delete")
   public String Delete(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+      @WebParam(name = "uri", targetNamespace = "") String uri,
+      @WebParam(name = "adapterURI", targetNamespace = "") String adapterURI,
+      @WebParam(name = "referenceName", targetNamespace = "") String referenceName,
+      @WebParam(name = "statement", targetNamespace = "") String statement)
       throws ConnectionException {
 
 	  File EPR = null;
       String report = null;
-	  report = RRS.getInstance().managementService().Delete(EPR);
+	  //report = RRS.getInstance().managementService().Delete(String table, LinkedHashMap<String, String> EPR,String EPRName);
 
     
     return report;
@@ -32,10 +33,10 @@ public class Management {
   
   @WebMethod(action = "Insert")
   public String Insert(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+		  @WebParam(name = "uri", targetNamespace = "") String uri,
+	      @WebParam(name = "adapterURI", targetNamespace = "") String adapterURI,
+	      @WebParam(name = "referenceName", targetNamespace = "") String referenceName,
+	      @WebParam(name = "statement", targetNamespace = "") String statement)
       throws ConnectionException {
 
 	  File EPR = null;
@@ -48,10 +49,10 @@ public class Management {
   
   @WebMethod(action = "Update")
   public String Update(
-      @WebParam(name = "dsAddress", targetNamespace = "") String dsAddress,
-      @WebParam(name = "statement", targetNamespace = "") String statement,
-      @WebParam(name = "dsType", targetNamespace = "") String dsType,
-      @WebParam(name = "dsSubtype", targetNamespace = "") String dsSubtype)
+		  @WebParam(name = "uri", targetNamespace = "") String uri,
+	      @WebParam(name = "adapterURI", targetNamespace = "") String adapterURI,
+	      @WebParam(name = "referenceName", targetNamespace = "") String referenceName,
+	      @WebParam(name = "statement", targetNamespace = "") String statement)
       throws ConnectionException {
 
 	  File EPR = null;
