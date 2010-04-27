@@ -7,6 +7,7 @@ import org.apache.ode.simpl.events.DMEnd;
 import org.apache.ode.simpl.events.DMFailure;
 import org.apache.ode.simpl.events.DMStarted;
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.w3c.dom.Element;
@@ -24,21 +25,30 @@ public class CallActivity extends DataManagementActivity {
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
 
+		// Laden alle Informationen aus dem Deployment-Deskriptor.
+		loadDeployInformation(context, element);
+		
+		DataSource ds = getDataSource(getActivityName());
+
 		DataSourceService datasourceService = SIMPLCore.getInstance()
-				.dataSourceService(getDsType(), getDsSubType());
+				.dataSourceService(ds.getType(), ds.getSubType());
 
 		boolean success = false;
 
 		try {
-			success = datasourceService.executeStatement(getDsAddress(),
+			this.successfullExecution = datasourceService.executeStatement(ds,
 					getDsStatement());
 
-			if (success == false) {
-				ScopeEvent DMFailure = new DMFailure("Wollo is doff");
-				context.getInternalInstance().sendEvent(DMFailure);
-			} else {
+			if (this.successfullExecution) {
 				ScopeEvent DMEnd = new DMEnd();
 				context.getInternalInstance().sendEvent(DMEnd);
+			} else {
+				// Hier werden alle vorhandenen "wichtigen" Daten dem Event
+				// übergeben
+				//TODO: Sinnvolle Fehlermeldungen einfügen
+				ScopeEvent DMFailure = new DMFailure(getActivityName(),
+						getDsAddress(), getDsStatement(), "UNKNOWN");
+				context.getInternalInstance().sendEvent(DMFailure);
 			}
 
 		} catch (ConnectionException e) {

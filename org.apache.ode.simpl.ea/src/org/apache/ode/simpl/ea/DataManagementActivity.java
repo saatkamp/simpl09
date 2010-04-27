@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.rtrep.common.extension.AbstractSyncExtensionOperation;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
+import org.apache.ode.simpl.ea.util.DeploymentInfos;
+import org.simpl.core.services.datasource.DataSource;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;
@@ -21,6 +23,8 @@ public abstract class DataManagementActivity extends AbstractSyncExtensionOperat
 	private String activityName;
 	public boolean successfullExecution;
 	
+	private DeploymentInfos infos;
+	
 	public static final String SIMPL_SDO_NS = "http://www.example.org/simpl-activity-sdo";
 
 	public static String getSimplSdoNs() {
@@ -36,7 +40,27 @@ public abstract class DataManagementActivity extends AbstractSyncExtensionOperat
 		this.dsLanguage = element.getAttribute("dsLanguage").toString();
 		this.activityName = element.getAttribute("name").toString();
 	}
+	
+	public void loadDeployInformation(ExtensionContext context, Element element){
+		//Path to the deployment descriptor
+		String path = context.getDUDir().getPath();
+		//Process name
+		String processName = context.getOActivity().getOwner().getName();
+		
+		//Die Informationen sollen nur einmal gelesen werden
+		if (infos == null){
+			infos = new DeploymentInfos(path, processName);
+		}
+	}
 
+	public DeploymentInfos getDeployInfos() {
+		return infos;
+	}
+	
+	public DataSource getDataSource(String activityName){
+		return infos.getActivityDataSource(activityName);
+	}
+	
 	public String getActivityName() {
 		return activityName;
 	}

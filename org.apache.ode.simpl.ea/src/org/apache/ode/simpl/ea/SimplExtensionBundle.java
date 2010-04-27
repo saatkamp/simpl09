@@ -22,7 +22,7 @@ public class SimplExtensionBundle extends AbstractExtensionBundle {
 		super.registerExtensionOperation("insertActivity", InsertActivity.class);
 		super.registerExtensionOperation("createActivity", CreateActivity.class);
 		super.registerExtensionOperation("updateActivity", UpdateActivity.class);
-//		super.registerExtensionOperation("retrieveDataActivity", RetrieveDataActivity.class);
+		super.registerExtensionOperation("retrieveDataActivity", RetrieveDataActivity.class);
 		
 //		//Initiales Definieren der SIMPL-DM-SDO-Types
 //		XsdTypeLoader.defineSIMPLTypes();
