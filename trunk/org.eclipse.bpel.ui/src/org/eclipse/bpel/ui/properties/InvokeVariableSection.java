@@ -351,8 +351,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 						if (chosenProposal.getContent() == null) {
 							return;
 						}
-						if (((Adapter) chosenProposal)
-								.getTarget() instanceof Variable){
+						if (((Adapter) chosenProposal).getTarget() instanceof Variable) {
 							Variable variable = null;
 							try {
 								variable = (Variable) ((Adapter) chosenProposal)
@@ -363,17 +362,20 @@ public class InvokeVariableSection extends BPELPropertySection {
 							SetVariableCommand cmd = new SetVariableCommand(
 									getInput(), variable);
 							getCommandFramework().execute(cmd);
-						}else {
-							//TODO: This is a bad hack. A better solution is to 
-							// extend the model and handle the ReferenceVariables in 
+						} else {
+							// TODO: This is a bad hack. A better solution is to
+							// extend the model and handle the
+							// ReferenceVariables in
 							// separated classes.
 							ReferenceVariable variable = null;
-							Variable var = BPELFactory.eINSTANCE.createVariable();
+							Variable var = BPELFactory.eINSTANCE
+									.createVariable();
 							try {
 								variable = (ReferenceVariable) ((Adapter) chosenProposal)
 										.getTarget();
-								
-								// To save the referenceVariable drop the name in a new
+
+								// To save the referenceVariable drop the name
+								// in a new
 								// variable object
 								var.setName(variable.getName());
 							} catch (Throwable t) {
@@ -502,7 +504,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			}
 		};
 
-		VariableContentProvider provider = new VariableContentProvider(false);
+		VariableContentProvider provider = new VariableContentProvider(true);
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider(
 				new ModelContentProposalProvider.ValueProvider() {
@@ -536,16 +538,40 @@ public class InvokeVariableSection extends BPELPropertySection {
 						if (chosenProposal.getContent() == null) {
 							return;
 						}
-						Variable variable = null;
-						try {
-							variable = (Variable) ((Adapter) chosenProposal)
-									.getTarget();
-						} catch (Throwable t) {
-							return;
+						if (((Adapter) chosenProposal).getTarget() instanceof Variable) {
+							Variable variable = null;
+							try {
+								variable = (Variable) ((Adapter) chosenProposal)
+										.getTarget();
+							} catch (Throwable t) {
+								return;
+							}
+							SetVariableCommand cmd = new SetVariableCommand(
+									getInput(), variable, ModelHelper.INCOMING);
+							getCommandFramework().execute(cmd);
+						} else {
+							// TODO: This is a bad hack. A better solution is to
+							// extend the model and handle the
+							// ReferenceVariables in
+							// separated classes.
+							ReferenceVariable variable = null;
+							Variable var = BPELFactory.eINSTANCE
+									.createVariable();
+							try {
+								variable = (ReferenceVariable) ((Adapter) chosenProposal)
+										.getTarget();
+
+								// To save the referenceVariable drop the name
+								// in a new
+								// variable object
+								var.setName(variable.getName());
+							} catch (Throwable t) {
+								return;
+							}
+							SetVariableCommand cmd = new SetVariableCommand(
+									getInput(), var, ModelHelper.INCOMING);
+							getCommandFramework().execute(cmd);
 						}
-						SetVariableCommand cmd = new SetVariableCommand(
-								getInput(), variable, ModelHelper.INCOMING);
-						getCommandFramework().execute(cmd);
 					}
 				});
 
@@ -740,7 +766,8 @@ public class InvokeVariableSection extends BPELPropertySection {
 			} else if (part.getTypeDefinition() != null) {
 				filter.setType(part.getTypeDefinition());
 			}
-			VariableContentProvider provider = new VariableContentProvider(false);
+			VariableContentProvider provider = new VariableContentProvider(
+					false);
 			ModelContentProposalProvider proposalProvider = new ModelContentProposalProvider(
 					new ModelContentProposalProvider.ValueProvider() {
 
