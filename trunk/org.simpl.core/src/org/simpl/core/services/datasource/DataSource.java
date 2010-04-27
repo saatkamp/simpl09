@@ -27,6 +27,7 @@ import org.simpl.core.services.strategy.Strategy;
 @XmlType(name = "DataSource", propOrder = { "address", "policy", "strategy",
     "subType", "type" })
 public class DataSource {
+  protected String name = "";
   protected String address = "";
   protected String policy = "";
   protected Strategy strategy = null;
@@ -136,5 +137,26 @@ public class DataSource {
    */
   public void setType(String value) {
     this.type = value;
+  }
+  
+  /**
+   * Gets the value of the name property.
+   * 
+   * @return possible object is {@link String }
+   * 
+   */
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Sets the value of the name property.
+   * 
+   * @param value
+   *          allowed object is {@link String }
+   * 
+   */
+  public void setName(String value) {
+    this.name = value;
   }
 }
