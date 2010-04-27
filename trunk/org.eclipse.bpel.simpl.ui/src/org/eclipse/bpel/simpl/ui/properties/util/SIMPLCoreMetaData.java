@@ -9,7 +9,7 @@
  * @link http://code.google.com/p/simpl09/
  *
  */
-package org.eclipse.bpel.simpl.ui.properties;
+package org.eclipse.bpel.simpl.ui.properties.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ import java.util.List;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
 
-public class Constants {
+public class SIMPLCoreMetaData {
 
 	/**
 	 * This variable holds all types of data sources, which can be chosen

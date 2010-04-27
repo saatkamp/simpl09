@@ -24,7 +24,7 @@ public class BPELDMReloadDataHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 			//Laden die Daten des BPEL-DM Plug-Ins neu
-			org.eclipse.bpel.simpl.ui.properties.Constants.init();
+			org.eclipse.bpel.simpl.ui.properties.util.SIMPLCoreMetaData.init();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

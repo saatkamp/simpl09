@@ -8,13 +8,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.simpl.uddi.model.ModelProvider;
 import org.eclipse.simpl.uddi.model.datasource.DataSource;
-import org.eclipse.bpel.model.Process;
+import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -36,12 +37,13 @@ import org.jdom.input.SAXBuilder;
 public class PropertySectionUtils {
 
 	private static final String EL_PROCESS = "process";
+	private static final String EL_DATASOURCE = "datasources";
 
 	private static final String AT_NAME = "name";
-
-	private static final String EL_DATASOURCE = "datasources";
-	
 	private static final String AT_DATA_SOURCE_NAME = "dataSourceName";
+	private static final String AT_DATA_SOURCE_TYPE = "type";
+	private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
+	private static final String AT_DATA_SOURCE_LANG = "language";
 
 	/**
 	 * Die BPEL Datei des Prozesses
@@ -66,7 +68,70 @@ public class PropertySectionUtils {
 
 	private final static Namespace DD_NAMESPACE = Namespace.getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
 
-	private static List<String> getDeploymentDescriptorDatasources(Process process) {
+	private static final String UDDI_PREFIX = "uddi";
+
+	private static final String DD_PREFIX = "dd";
+
+	private static DataSource findDeploymentDescriptorDatasourceByName(Process process, String dsName) {
+		DataSource datasource = null;
+
+		bpelFile = BPELUtil.getBPELFile(process);
+
+		bpelPath = bpelFile.getFullPath();
+
+		projectPath = bpelPath.removeFileExtension()
+				.removeLastSegments(1);
+
+		absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
+				.getLocation().toOSString();
+		
+		File deploy = new File(absolutWorkspacePath+projectPath.toOSString()+System.getProperty("file.separator")+"deploy.xml");
+		
+		if (deploy.exists()){
+			SAXBuilder builder = new SAXBuilder();
+			Document doc;
+			try {
+				InputStream inputStream = new FileInputStream(deploy);
+
+				doc = builder.build(inputStream);
+
+				Element root = doc.getRootElement();
+
+				List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
+				
+				for (Object processObj : processes){
+					Element processElement = (Element)processObj;
+					if (processElement.getAttributeValue(AT_NAME).contains(process.getName())){
+						List datasourceElements = processElement.getChildren(EL_DATASOURCE, DD_NAMESPACE);
+						for (Object data : datasourceElements){
+							String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
+							if (name.equals(dsName)){
+								datasource = DatasourceFactory.eINSTANCE.createDataSource();
+								datasource.setName(name);
+								datasource.setType(((Element) data).getAttributeValue(AT_DATA_SOURCE_TYPE));
+								datasource.setSubtype(((Element) data).getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
+								datasource.setLanguage(((Element) data).getAttributeValue(AT_DATA_SOURCE_LANG));
+							}
+						}
+					}
+				}
+
+			} catch (JDOMException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return datasource;
+	}
+	
+	private static List<String> getDeploymentDescriptorDatasourceNames(Process process) {
 		List<String> datasources = new ArrayList<String>();
 
 		bpelFile = BPELUtil.getBPELFile(process);
@@ -99,7 +164,7 @@ public class PropertySectionUtils {
 						List datasourceElements = processElement.getChildren(EL_DATASOURCE, DD_NAMESPACE);
 						for (Object data : datasourceElements){
 							String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
-							datasources.add("dd:"+name);
+							datasources.add(DD_PREFIX+":"+name);
 						}
 					}
 				}
@@ -119,24 +184,39 @@ public class PropertySectionUtils {
 		return datasources;
 	}
 	
-	private static List<String> getUDDIDatasources(){
+	private static List<String> getUDDIDatasourceNames(){
 		List<String> dataSourceNames = new ArrayList<String>();
 		
 		List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
 		
 		for (DataSource dat : dataSources){
-			dataSourceNames.add("uddi:"+dat.getName());
+			dataSourceNames.add(UDDI_PREFIX+":"+dat.getName());
 		}
 		
 		return dataSourceNames;
 	}
 		
-	public static String[] getAllDataSources(Process process){
+	public static String[] getAllDataSourceNames(Process process){
 		List<String> datasources = new ArrayList<String>();
 		
-		datasources.addAll(getDeploymentDescriptorDatasources(process));
-		datasources.addAll(getUDDIDatasources());
+		datasources.addAll(getDeploymentDescriptorDatasourceNames(process));
+		datasources.addAll(getUDDIDatasourceNames());
 		
 		return datasources.toArray(new String[0]);
+	}
+	
+	public static DataSource findDataSourceByName(Process process, String nameWithPrefix){
+		DataSource data = null;
+		
+		String[] name = nameWithPrefix.split(":");
+		if (name[0].equals(DD_PREFIX)){
+			data = findDeploymentDescriptorDatasourceByName(process, name[1]);
+		}else {
+			if (name[0].equals(UDDI_PREFIX)){
+				data = ModelProvider.getInstance().findDataSourceByName(name[1]);
+			}
+		}
+		
+		return data;
 	}
 }
