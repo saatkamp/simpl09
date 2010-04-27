@@ -13,7 +13,6 @@ import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.dataformat.DataFormatService;
 import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.auth.Authentication;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -55,8 +54,8 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public boolean executeStatement(DataSource dataSource, Authentication auth,
-      String statement) throws ConnectionException {
+  public boolean executeStatement(DataSource dataSource, String statement)
+      throws ConnectionException {
     try {
       this.execute(statement, dataSource.getAddress(), null);
     } catch (IOException e) {
@@ -77,8 +76,8 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String, java.lang.String)
    */
   @Override
-  public boolean depositData(DataSource dataSource, Authentication auth,
-      String file, String targetFile) throws ConnectionException {
+  public boolean depositData(DataSource dataSource, String file,
+      String targetFile) throws ConnectionException {
     String[] envp = new String[] { "cmd", "/c", "start", "copy" };
 
     try {
@@ -101,8 +100,8 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
    */
   @Override
-  public DataObject getMetaData(DataSource source, Authentication auth,
-      String filter) throws ConnectionException {
+  public DataObject getMetaData(DataSource source, String filter)
+      throws ConnectionException {
     DataObject metaDataObject = this.getMetaDataSDO();
     DataObject driveObject = null;
     DataObject commandObject = null;
@@ -204,8 +203,8 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(DataSource dataSource, Authentication auth,
-      DataObject data) throws ConnectionException {
+  public boolean writeBack(DataSource dataSource, DataObject data)
+      throws ConnectionException {
     boolean writeBack = false;
     DataFormatService<Object> dataFormatService = SIMPLCore.getInstance()
         .dataFormatService("CSV");
@@ -215,7 +214,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
     if (!dataSource.getAddress().equals("")) {
       dir = dataSource.getAddress() + File.separator;
     }
-    
+
     // move temp file to given dir
     writeBack = tempFile.renameTo(new File(dir + data.getString("filename")));
 
@@ -230,8 +229,8 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
    * java.lang.String)
    */
   @Override
-  public DataObject retrieveData(DataSource dataSource, Authentication auth,
-      String file) throws ConnectionException {
+  public DataObject retrieveData(DataSource dataSource, String file)
+      throws ConnectionException {
     DataObject dataObject = null;
     File fsFile = null;
     DataFormatService<Object> dataFormatService = SIMPLCore.getInstance()

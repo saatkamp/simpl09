@@ -14,7 +14,6 @@ import org.apache.tuscany.das.rdb.DAS;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.connection.JDCConnectionDriver;
 import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.auth.Authentication;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -113,8 +112,8 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public DataObject retrieveData(DataSource dataSource, Authentication auth,
-      String statement) throws ConnectionException {
+  public DataObject retrieveData(DataSource dataSource, String statement)
+      throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
@@ -131,8 +130,8 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean executeStatement(DataSource dataSource, Authentication auth,
-      String statement) throws ConnectionException {
+  public boolean executeStatement(DataSource dataSource, String statement)
+      throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
@@ -159,8 +158,8 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean writeBack(DataSource dataSource, Authentication auth,
-      DataObject data) throws ConnectionException {
+  public boolean writeBack(DataSource dataSource, DataObject data)
+      throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
@@ -181,8 +180,8 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean depositData(DataSource dataSource, Authentication auth,
-      String statement, String target) throws ConnectionException {
+  public boolean depositData(DataSource dataSource, String statement,
+      String target) throws ConnectionException {
     boolean success = false;
 
     if (logger.isDebugEnabled()) {
@@ -242,8 +241,8 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public DataObject getMetaData(DataSource dataSource, Authentication auth,
-      String filter) throws ConnectionException {
+  public DataObject getMetaData(DataSource dataSource, String filter)
+      throws ConnectionException {
     Connection conn = openConnection(dataSource.getAddress());
     DataObject metaDataObject = this.getMetaDataSDO();
     DataObject schemaObject = null;

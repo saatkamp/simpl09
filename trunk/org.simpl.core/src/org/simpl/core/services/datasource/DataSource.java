@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.simpl.core.services.datasource.auth.Authentication;
 import org.simpl.core.services.strategy.Strategy;
 
 /**
@@ -24,139 +25,70 @@ import org.simpl.core.services.strategy.Strategy;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "DataSource")
-@XmlType(name = "DataSource", propOrder = { "address", "policy", "strategy",
-    "subType", "type" })
+@XmlType(name = "DataSource", propOrder = { "name", "address", "policy",
+    "strategy", "type", "subType", "authentication" })
 public class DataSource {
-  protected String name = "";
-  protected String address = "";
-  protected String policy = "";
-  protected Strategy strategy = null;
-  protected String subType = "";
-  protected String type = "";
+  private String name = "";
+  private String address = "";
+  private String policy = "";
+  private Strategy strategy = null;
+  private String type = "";
+  private String subType = "";
+  private Authentication authentication = new Authentication();
 
-  /**
-   * Gets the value of the address property.
-   * 
-   * @return possible object is {@link String }
-   * 
-   */
   public String getAddress() {
     return address;
   }
 
-  /**
-   * Sets the value of the address property.
-   * 
-   * @param value
-   *          allowed object is {@link String }
-   * 
-   */
   public void setAddress(String value) {
     this.address = value;
   }
 
-  /**
-   * Gets the value of the policy property.
-   * 
-   * @return possible object is {@link String }
-   * 
-   */
   public String getPolicy() {
     return policy;
   }
 
-  /**
-   * Sets the value of the policy property.
-   * 
-   * @param value
-   *          allowed object is {@link String }
-   * 
-   */
   public void setPolicy(String value) {
     this.policy = value;
   }
 
-  /**
-   * Gets the value of the strategy property.
-   * 
-   * @return possible object is {@link Strategy }
-   * 
-   */
   public Strategy getStrategy() {
     return strategy;
   }
 
-  /**
-   * Sets the value of the strategy property.
-   * 
-   * @param value
-   *          allowed object is {@link Strategy }
-   * 
-   */
   public void setStrategy(Strategy value) {
     this.strategy = value;
   }
 
-  /**
-   * Gets the value of the subType property.
-   * 
-   * @return possible object is {@link String }
-   * 
-   */
   public String getSubType() {
     return subType;
   }
 
-  /**
-   * Sets the value of the subType property.
-   * 
-   * @param value
-   *          allowed object is {@link String }
-   * 
-   */
   public void setSubType(String value) {
     this.subType = value;
   }
 
-  /**
-   * Gets the value of the type property.
-   * 
-   * @return possible object is {@link String }
-   * 
-   */
   public String getType() {
     return type;
   }
 
-  /**
-   * Sets the value of the type property.
-   * 
-   * @param value
-   *          allowed object is {@link String }
-   * 
-   */
   public void setType(String value) {
     this.type = value;
   }
-  
-  /**
-   * Gets the value of the name property.
-   * 
-   * @return possible object is {@link String }
-   * 
-   */
+
   public String getName() {
     return name;
   }
 
-  /**
-   * Sets the value of the name property.
-   * 
-   * @param value
-   *          allowed object is {@link String }
-   * 
-   */
   public void setName(String value) {
     this.name = value;
+  }
+
+  public Authentication getAuthentication() {
+    return authentication;
+  }
+
+  public void setAuthentication(Authentication authentication) {
+    this.authentication = authentication;
   }
 }

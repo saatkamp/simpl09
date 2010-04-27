@@ -24,9 +24,7 @@ import org.eclipse.simpl.communication.Activator;
 public class AdministrationService_Service
     extends Service
 {
-
-	private final static String AS_WSDL_ADDRESS = Activator.getDefault().getPreferenceStore().getString("SIMPL_CORE_AS_ADDRESS");
-	
+    private final static String AS_WSDL_ADDRESS = Activator.getDefault().getPreferenceStore().getString("SIMPL_CORE_AS_ADDRESS");
     private final static URL ADMINISTRATIONSERVICE_WSDL_LOCATION;
     private final static Logger logger = Logger.getLogger(AdministrationService_Service.class.getName());
 
@@ -37,7 +35,7 @@ public class AdministrationService_Service
             baseUrl = AdministrationService_Service.class.getResource(".");
             url = new URL(baseUrl, AS_WSDL_ADDRESS);
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: '"+ AS_WSDL_ADDRESS+"', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: '" + AS_WSDL_ADDRESS + "', retrying as a local file");
             logger.warning(e.getMessage());
         }
         ADMINISTRATIONSERVICE_WSDL_LOCATION = url;

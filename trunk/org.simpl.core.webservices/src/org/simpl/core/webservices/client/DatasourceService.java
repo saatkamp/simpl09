@@ -25,7 +25,6 @@ public interface DatasourceService {
 
     /**
      * 
-     * @param authentication
      * @param filter
      * @param datasource
      * @return
@@ -37,8 +36,6 @@ public interface DatasourceService {
     public String getMetaData(
         @WebParam(name = "datasource", partName = "datasource")
         DataSource datasource,
-        @WebParam(name = "authentication", partName = "authentication")
-        Authentication authentication,
         @WebParam(name = "filter", partName = "filter")
         String filter)
         throws ConnectionException_Exception
@@ -48,7 +45,6 @@ public interface DatasourceService {
      * 
      * @param statement
      * @param dataSource
-     * @param authentication
      * @return
      *     returns java.lang.String
      * @throws ConnectionException_Exception
@@ -58,8 +54,6 @@ public interface DatasourceService {
     public String retrieveData(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
-        @WebParam(name = "authentication", partName = "authentication")
-        Authentication authentication,
         @WebParam(name = "statement", partName = "statement")
         String statement)
         throws ConnectionException_Exception
@@ -69,7 +63,6 @@ public interface DatasourceService {
      * 
      * @param statement
      * @param dataSource
-     * @param authentication
      * @param target
      * @return
      *     returns boolean
@@ -80,8 +73,6 @@ public interface DatasourceService {
     public boolean depositData(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
-        @WebParam(name = "authentication", partName = "authentication")
-        Authentication authentication,
         @WebParam(name = "statement", partName = "statement")
         String statement,
         @WebParam(name = "target", partName = "target")
@@ -93,7 +84,6 @@ public interface DatasourceService {
      * 
      * @param statement
      * @param dataSource
-     * @param authentication
      * @return
      *     returns boolean
      * @throws ConnectionException_Exception
@@ -103,8 +93,6 @@ public interface DatasourceService {
     public boolean executeStatement(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
-        @WebParam(name = "authentication", partName = "authentication")
-        Authentication authentication,
         @WebParam(name = "statement", partName = "statement")
         String statement)
         throws ConnectionException_Exception
@@ -113,7 +101,6 @@ public interface DatasourceService {
     /**
      * 
      * @param dataSource
-     * @param authentication
      * @param data
      * @return
      *     returns boolean
@@ -124,8 +111,6 @@ public interface DatasourceService {
     public boolean writeBack(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
-        @WebParam(name = "authentication", partName = "authentication")
-        Authentication authentication,
         @WebParam(name = "data", partName = "data")
         String data)
         throws ConnectionException_Exception

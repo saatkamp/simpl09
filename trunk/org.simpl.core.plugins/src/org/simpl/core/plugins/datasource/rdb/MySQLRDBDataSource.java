@@ -13,7 +13,6 @@ import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
 import org.simpl.core.plugins.datasource.DataSourcePlugin;
 import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.auth.Authentication;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -98,15 +97,16 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public DataObject retrieveData(DataSource dataSource, Authentication auth,
-      String statement) throws ConnectionException {
+  public DataObject retrieveData(DataSource dataSource, String statement)
+      throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
     }
 
     DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(),
-        auth.getUser(), auth.getPassword()));
+        dataSource.getAuthentication().getUser(), dataSource
+            .getAuthentication().getPassword()));
     Command read = das.createCommand(statement);
     DataObject root = read.executeQuery();
 
@@ -117,16 +117,17 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean executeStatement(DataSource dataSource, Authentication auth,
-      String statement) throws ConnectionException {
+  public boolean executeStatement(DataSource dataSource, String statement)
+      throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
     }
 
     boolean success = false;
-    Connection conn = openConnection(dataSource.getAddress(), auth.getUser(),
-        auth.getPassword());
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
 
     try {
       Statement stat = conn.createStatement();
@@ -146,8 +147,8 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean writeBack(DataSource dataSource, Authentication auth,
-      DataObject data) throws ConnectionException {
+  public boolean writeBack(DataSource dataSource, DataObject data)
+      throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
@@ -167,8 +168,8 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   }
 
   @Override
-  public boolean depositData(DataSource dataSource, Authentication auth,
-      String statement, String target) throws ConnectionException {
+  public boolean depositData(DataSource dataSource, String statement,
+      String target) throws ConnectionException {
     boolean success = false;
 
     if (logger.isDebugEnabled()) {
@@ -186,8 +187,9 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
     createTableStatement.append(" ");
     createTableStatement.append(statement);
 
-    Connection conn = openConnection(dataSource.getAddress(), auth.getUser(),
-        auth.getPassword());
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
 
     try {
       Statement createState = conn.createStatement();
@@ -218,10 +220,11 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
    * org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
    */
   @Override
-  public DataObject getMetaData(DataSource dataSource, Authentication auth,
-      String filter) throws ConnectionException {
-    Connection conn = openConnection(dataSource.getAddress(), auth.getUser(),
-        auth.getPassword());
+  public DataObject getMetaData(DataSource dataSource, String filter)
+      throws ConnectionException {
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
 
     DataObject metaDataObject = this.getMetaDataSDO();
     DataObject schemaObject = null;

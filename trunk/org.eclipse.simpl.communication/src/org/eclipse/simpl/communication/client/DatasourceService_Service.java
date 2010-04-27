@@ -23,9 +23,7 @@ import org.eclipse.simpl.communication.Activator;
 public class DatasourceService_Service
     extends Service
 {
-
-	private final static String DSS_WSDL_ADDRESS = Activator.getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS");
-	
+    private final static String DSS_WSDL_ADDRESS = Activator.getDefault().getPreferenceStore().getString("SIMPL_CORE_AS_ADDRESS");
     private final static URL DATASOURCESERVICE_WSDL_LOCATION;
     private final static Logger logger = Logger.getLogger(DatasourceService_Service.class.getName());
 
@@ -36,7 +34,7 @@ public class DatasourceService_Service
             baseUrl = DatasourceService_Service.class.getResource(".");
             url = new URL(baseUrl, DSS_WSDL_ADDRESS);
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: '"+DSS_WSDL_ADDRESS+"', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: '" + DSS_WSDL_ADDRESS + "', retrying as a local file");
             logger.warning(e.getMessage());
         }
         DATASOURCESERVICE_WSDL_LOCATION = url;
