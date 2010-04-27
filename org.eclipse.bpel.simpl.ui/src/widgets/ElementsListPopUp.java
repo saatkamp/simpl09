@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
-import org.eclipse.simpl.communication.client.ConnectionException_Exception;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -279,7 +278,7 @@ public class ElementsListPopUp{
 		//++++++++++++++++++++++++DSO Parsing++++++++++++++++++++++++
 		SIMPLCore simplCore=SIMPLCommunication.getConnection();
 		try {
-			simplCore.getMetaData(dsAddress, dsType, dsSubtype);
+			simplCore.getMetaData(dsAddress, dsType, dsSubtype, "");
 			//TODO: es muss noch der SDO objekt von der simplCore geholt werden .
 			Element rootElementOfDSO = null;//=DSO Element;
 			NodeList nl = rootElementOfDSO.getElementsByTagName("table");

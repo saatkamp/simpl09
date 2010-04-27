@@ -22,6 +22,8 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetQueryTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.bpel.simpl.ui.properties.util.SIMPLCoreMetaData;
+import org.eclipse.simpl.uddi.model.datasource.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -49,17 +51,17 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	/** The tabels pop window bpel variables. */
 	ElementsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
-	private CCombo typeCombo = null;
+	private Text typeText = null;
 	private Label statementLabel = null;
 	//private Text statementText = null;
 	private Button showStatementCheckBox = null;
 	private Label dataSourceAddressLabel = null;
 	private CCombo dataSourceAddressCombo = null;
 	private Label kindLabel = null;
-	private CCombo kindCombo = null;
+	private Text kindText = null;
 	private Button openEditorButton = null;
 	private Label languageLabel = null;
-	private CCombo languageCombo = null;
+	private Text languageText = null;
 	private Composite parentComposite = null;
 	private Label queryTargetLabel = null;
 	private Text queryTargetText = null;
@@ -97,18 +99,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		// Setzen die Zieleinheit des Queries.
 		queryTargetText.setText(activity.getQueryTarget());
 		// Setzen die Sprache
-		if (kindCombo.getSelectionIndex() > 0) {
-			// Fragen alle unterstützten Sprachen des Subtypes beim SIMPL
-			// Core ab und selektieren die in der Aktivität hinterlegte Sprache.
-			languageCombo.setItems(Constants.getDatasourceLanguages(
-					activity.getDsKind()).toArray(new String[0]));
-
-			languageCombo.select(languageCombo
-					.indexOf(activity.getDsLanguage()));
-		}
-
-		// Type und Kind werden in den entsprechenden createXXXCombo()-Methoden
-		// geladen und in den ComboBoxes selektiert.
+		languageText.setText(activity.getDsLanguage());
 	}
 
 	/**
@@ -191,32 +182,32 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				getCommandFramework().execute(
 						new SetDsAddressCommand(getModel(),
 								dataSourceAddressCombo.getText()));
+				
+				DataSource data = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+				typeText.setText(data.getType());
+				kindText.setText(data.getSubtype());
+				languageText.setText(data.getLanguage());
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSources(getProcess()));
+		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
 		
 		dataSourceAddressLabel.setText("Data source name:");
 		dataSourceAddressLabel.setLayoutData(gridData31);
 		dataSourceAddressLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
 		languageLabel = new Label(composite, SWT.NONE);
-		languageCombo = new CCombo(composite, SWT.BORDER);
-		languageCombo.setBackground(Display.getCurrent().getSystemColor(
+		languageText = new Text(composite, SWT.BORDER);
+		languageText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		languageCombo.setVisible(true);
-		languageCombo.setLayoutData(gridData4);
-		languageCombo.addSelectionListener(new SelectionListener() {
+		languageText.setEditable(false);
+		languageText.setLayoutData(gridData4);
+		languageText.addModifyListener(new ModifyListener() {
+			
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				widgetSelected(arg0);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
+			public void modifyText(ModifyEvent e) {
 				// Auswahl im Modell speichern
 				getCommandFramework().execute(
-						new SetDsLanguageCommand(getModel(), languageCombo
-								.getItem(languageCombo.getSelectionIndex())));
+						new SetDsLanguageCommand(getModel(), languageText.getText()));
 			}
 		});
 
@@ -331,7 +322,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeCombo.getItem(typeCombo.getSelectionIndex()),kindCombo.getItem(kindCombo.getSelectionIndex()));
+				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeText.getText(),kindText.getText());
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
@@ -396,37 +387,27 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		GridData gridData2 = new GridData();
 		gridData2.horizontalAlignment = GridData.FILL;
 		gridData2.verticalAlignment = GridData.CENTER;
-		typeCombo = new CCombo(parentComposite, SWT.BORDER);
-		typeCombo.setToolTipText("Choose the type of data source");
-		typeCombo.setBackground(Display.getCurrent().getSystemColor(
+		typeText = new Text(parentComposite, SWT.BORDER);
+		typeText.setToolTipText("Choose the type of data source");
+		typeText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		typeCombo.setLayoutData(gridData2);
+		typeText.setLayoutData(gridData2);
 
-		// Initialisieren der typeCombo-Daten
-		typeCombo.setItems(Constants.getDataSourceTypes()
-				.toArray(new String[0]));
 		// Aktualisieren der KindCombo-Daten
-		typeCombo.addSelectionListener(new SelectionListener() {
+		typeText.addModifyListener(new ModifyListener() {
+			
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				widgetSelected(arg0);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				kindCombo.setItems(Constants.getDataSourceSubTypes(
-						typeCombo.getItem(typeCombo.getSelectionIndex()))
-						.toArray(new String[0]));
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsTypeCommand(getModel(), typeCombo
-								.getItem(typeCombo.getSelectionIndex())));
+						new SetDsTypeCommand(getModel(), typeText.getText()));
 			}
 		});
-		typeCombo.setEditable(false);
+		typeText.setEditable(false);
 
-		// Wert aus Modell selektieren
-		typeCombo.select(typeCombo.indexOf(this.activity.getDsType()));
+		// Wert aus Modell setzen
+		typeText.setText(this.activity.getDsType());
 	}
 
 	/**
@@ -437,50 +418,26 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		GridData gridData6 = new GridData();
 		gridData6.horizontalAlignment = GridData.FILL;
 		gridData6.verticalAlignment = GridData.CENTER;
-		kindCombo = new CCombo(parentComposite, SWT.BORDER);
-		kindCombo.setBackground(Display.getCurrent().getSystemColor(
+		kindText = new Text(parentComposite, SWT.BORDER);
+		kindText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		kindCombo.setToolTipText("Choose the subtype of data source");
-		kindCombo.setEditable(false);
-		kindCombo.setLayoutData(gridData6);
+		kindText.setToolTipText("Choose the subtype of data source");
+		kindText.setEditable(false);
+		kindText.setLayoutData(gridData6);
 
-		// Initilisieren der kindCombo-Daten
-		if (Constants.getDataSourceSubTypes(activity.getDsType()) != null) {
-			kindCombo.setItems(Constants.getDataSourceSubTypes(
-					activity.getDsType()).toArray(new String[0]));
-		}
-
-		kindCombo.addSelectionListener(new SelectionListener() {
+		kindText.addModifyListener(new ModifyListener() {
+			
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				widgetSelected(arg0);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				List<String> languages = Constants
-						.getDatasourceLanguages(kindCombo.getItem(kindCombo
-								.getSelectionIndex()));
-
-				languageCombo.setItems(languages.toArray(new String[0]));
-
-				if (languages.size() == 1) {
-					languageCombo.select(0);
-					// Änderung im Modell speichern
-					getCommandFramework().execute(
-							new SetDsLanguageCommand(getModel(), languages
-									.get(0)));
-				}
-
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsKindCommand(getModel(), kindCombo
-								.getItem(kindCombo.getSelectionIndex())));
+						new SetDsKindCommand(getModel(), kindText.getText()));
 			}
 		});
-
-		// Wert aus Modell selektieren
-		kindCombo.select(kindCombo.indexOf(this.activity.getDsKind()));
+				
+		// Wert aus Modell setzen
+		kindText.setText(this.activity.getDsKind());
 	}
 
 	/* (non-Javadoc)

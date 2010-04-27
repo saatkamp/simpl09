@@ -82,11 +82,6 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.RetrieveDataPropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.RetrieveDataActivityPropertySection"
-               tab="org.eclipse.bpel.ui.tabs.details">
-         </propertySection>
-         <propertySection
                class="org.eclipse.bpel.simpl.ui.properties.RetrieveDataVariableSection"
                id="org.eclipse.bpel.simpl.ui.properties.RetrieveDataActivityVariablePropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">

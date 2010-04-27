@@ -61,7 +61,7 @@ public class Application {
 			System.out.println("Element: " + e.getName());
 		}
 		
-		org.eclipse.bpel.simpl.ui.properties.Constants.init();
+		org.eclipse.bpel.simpl.ui.properties.util.SIMPLCoreMetaData.init();
 	}
 
 	/**
