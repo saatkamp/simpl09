@@ -46,7 +46,6 @@ public class AddMappingDialog extends TitleAreaDialog {
 	private ProcessType processType;
 
 	private CCombo availableActivities;
-	private CCombo dataSource;
 	private Text policyAdress;
 	private Button buttonSelectFile;
 	private CCombo strategy;
@@ -92,14 +91,7 @@ public class AddMappingDialog extends TitleAreaDialog {
 				.getModel()));
 
 		Label label2 = new Label(parent, SWT.NONE);
-		label2.setText("DataSource");
-		dataSource = new CCombo(parent, SWT.BORDER);
-		Label filler2 = new Label(parent, SWT.NONE);
-		// Load the available data sources
-		dataSource.setItems(DeployUtils.getProcessDataSourceNames(processType));
-
-		Label label3 = new Label(parent, SWT.NONE);
-		label3.setText("Policy path");
+		label2.setText("Policy path");
 		policyAdress = new Text(parent, SWT.BORDER);
 
 		buttonSelectFile = new Button(parent, SWT.PUSH);
@@ -122,15 +114,14 @@ public class AddMappingDialog extends TitleAreaDialog {
 				}
 			}
 		});
-		
+
 		Label label4 = new Label(parent, SWT.NONE);
 		label4.setText("Strategy");
 		strategy = new CCombo(parent, SWT.BORDER);
 		strategy.setItems(DeployUtils.getStrategies());
 		Label filler3 = new Label(parent, SWT.NONE);
-		
+
 		availableActivities.setLayoutData(gridData);
-		dataSource.setLayoutData(gridData);
 		policyAdress.setLayoutData(gridData);
 		strategy.setLayoutData(gridData);
 
@@ -149,28 +140,31 @@ public class AddMappingDialog extends TitleAreaDialog {
 				/*
 				 * Saving the values in the Activity Mapping
 				 */
-				// Create a new Activity Mapping
-				ddFactory factory = ddFactory.eINSTANCE;
-				mapping = factory.createTActivityMapping();
+				if (!availableActivities.getText().isEmpty() && !policyAdress.getText().isEmpty()) {
 
-				String activityName = availableActivities.getText();
-				// mapping.setActivity(DeployUtils.findActivityByName(
-				// activityName, processType.getModel()));
-				mapping.setActivity(activityName);
+					// Create a new Activity Mapping
+					ddFactory factory = ddFactory.eINSTANCE;
+					mapping = factory.createTActivityMapping();
 
-				String dataSourceName = dataSource.getText();
-				// String dataSourceName =
-				// dataSource.getItem(dataSource.getSelectionIndex());
-				// mapping.setDatasource(DeployUtils.findDataSourceByName(
-				// dataSourceName, processType));
-				mapping.setDataSourceName(dataSourceName);
+					String activityName = availableActivities.getText();
+					// mapping.setActivity(DeployUtils.findActivityByName(
+					// activityName, processType.getModel()));
+					mapping.setActivity(activityName);
 
-				mapping.setPolicy(DeployUtils.queryPolicyByPath(policyAdress
-						.getText()));
-				
-				// TODO: Has to be changed if more than one strategy is available.
-				mapping.setStrategy(strategy.getText().equals(StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND : StrategyType.NONE);
-				close();
+					mapping.setPolicy(DeployUtils
+							.queryPolicyByPath(policyAdress.getText()));
+
+					// TODO: Has to be changed if more than one strategy is
+					// available.
+					mapping
+							.setStrategy(strategy.getText().equals(
+									StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND
+									: StrategyType.FIRST_FIND);
+					close();
+
+				} else {
+					setErrorMessage("Please enter a value for every paramater of the mapping");
+				}
 			}
 		});
 	}

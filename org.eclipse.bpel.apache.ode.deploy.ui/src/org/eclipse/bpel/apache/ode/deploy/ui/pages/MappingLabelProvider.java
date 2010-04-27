@@ -27,10 +27,8 @@ public class MappingLabelProvider extends LabelProvider implements
 		case 0:
 			return mapping.getActivity();
 		case 1:
-			return mapping.getDataSourceName();
-		case 2:
 			return mapping.getPolicy().getLocalPath();
-		case 3:
+		case 2:
 			return mapping.getStrategy().getName();
 		default:
 			throw new RuntimeException("Too much columns");

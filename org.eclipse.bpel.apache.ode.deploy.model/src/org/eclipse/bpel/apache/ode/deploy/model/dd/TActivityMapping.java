@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDataSourceName <em>Data Source Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy <em>Strategy</em>}</li>
  * </ul>
@@ -46,7 +45,7 @@ public interface TActivityMapping extends EObject {
 	 * @return the value of the '<em>Activity</em>' attribute.
 	 * @see #setActivity(String)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Activity()
-	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 * @generated
 	 */
 	String getActivity();
@@ -62,33 +61,6 @@ public interface TActivityMapping extends EObject {
 	void setActivity(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Data Source Name</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Data Source Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Data Source Name</em>' attribute.
-	 * @see #setDataSourceName(String)
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_DataSourceName()
-	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String"
-	 * @generated
-	 */
-	String getDataSourceName();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getDataSourceName <em>Data Source Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Source Name</em>' attribute.
-	 * @see #getDataSourceName()
-	 * @generated
-	 */
-	void setDataSourceName(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Policy</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -99,7 +71,7 @@ public interface TActivityMapping extends EObject {
 	 * @return the value of the '<em>Policy</em>' containment reference.
 	 * @see #setPolicy(TPolicy)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Policy()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	TPolicy getPolicy();
@@ -130,7 +102,7 @@ public interface TActivityMapping extends EObject {
 	 * @see #unsetStrategy()
 	 * @see #setStrategy(StrategyType)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_Strategy()
-	 * @model default="firstFind" unsettable="true"
+	 * @model default="firstFind" unsettable="true" required="true"
 	 * @generated
 	 */
 	StrategyType getStrategy();

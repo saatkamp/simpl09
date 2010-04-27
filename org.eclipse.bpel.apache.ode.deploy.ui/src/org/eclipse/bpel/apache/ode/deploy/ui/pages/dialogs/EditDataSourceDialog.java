@@ -24,6 +24,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 	private Text address;
 	private Text type;
 	private Text subtype;
+	private Text language;
 	private Text user;
 	private Text password;
 	private TDatasource datasource;
@@ -89,23 +90,31 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		}
 		
 		Label label5 = new Label(parent, SWT.NONE);
-		label5.setText("User name");
+		label5.setText("Language");
+		language = new Text(parent, SWT.BORDER);
+		if (this.datasource.getLanguage() != null) {
+			address.setText(this.datasource.getLanguage());
+		}
+		
+		Label label6 = new Label(parent, SWT.NONE);
+		label6.setText("User name");
 		user = new Text(parent, SWT.BORDER);
 		if (this.datasource.getUserName() != null) {
 			user.setText(this.datasource.getUserName());
 		}
 		
-		Label label6 = new Label(parent, SWT.NONE);
-		label6.setText("Password");
+		Label label7 = new Label(parent, SWT.NONE);
+		label7.setText("Password");
 		password = new Text(parent, SWT.BORDER);
 		if (this.datasource.getPassword() != null){
 			password.setText(this.datasource.getPassword());
 		}
-
+		
 		name.setLayoutData(gridData);
 		address.setLayoutData(gridData);
 		type.setLayoutData(gridData);
 		subtype.setLayoutData(gridData);
+		language.setLayoutData(gridData);
 		user.setLayoutData(gridData);
 		password.setLayoutData(gridData);
 
@@ -121,7 +130,10 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		button.setFont(JFaceResources.getDialogFont());
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				if (name.getText().length() != 0) {
+				if (!name.getText().isEmpty() && !address.getText().isEmpty()
+						&& !type.getText().isEmpty()&& !subtype.getText().isEmpty()
+						&& !language.getText().isEmpty()
+						&& !user.getText().isEmpty()&& !password.getText().isEmpty()) {
 					/*
 					 * Saving the values in the TDatasource
 					 */
@@ -132,12 +144,13 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 					datasource.setAddress(address.getText());
 					datasource.setType(type.getText());
 					datasource.setSubtype(subtype.getText());
+					datasource.setLanguage(language.getText());
 					datasource.setUserName(user.getText());
 					datasource.setPassword(password.getText());
 					close();
 
 				} else {
-					setErrorMessage("Please enter at least the name of the data source");
+					setErrorMessage("Please enter a value for every paramater of the data source");
 				}
 			}
 		});

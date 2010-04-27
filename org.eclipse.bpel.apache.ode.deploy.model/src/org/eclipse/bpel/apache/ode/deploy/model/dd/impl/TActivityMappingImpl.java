@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getActivity <em>Activity</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getDataSourceName <em>Data Source Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getStrategy <em>Strategy</em>}</li>
  * </ul>
@@ -61,26 +60,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	protected String activity = ACTIVITY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDataSourceName() <em>Data Source Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDataSourceName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DATA_SOURCE_NAME_EDEFAULT = "";
-
-	/**
-	 * The cached value of the '{@link #getDataSourceName() <em>Data Source Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDataSourceName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String dataSourceName = DATA_SOURCE_NAME_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getPolicy() <em>Policy</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -98,7 +77,7 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * @generated
 	 * @ordered
 	 */
-	protected static final StrategyType STRATEGY_EDEFAULT = StrategyType.NONE;
+	protected static final StrategyType STRATEGY_EDEFAULT = StrategyType.FIRST_FIND;
 
 	/**
 	 * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' attribute.
@@ -157,27 +136,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		activity = newActivity;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__ACTIVITY, oldActivity, activity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getDataSourceName() {
-		return dataSourceName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDataSourceName(String newDataSourceName) {
-		String oldDataSourceName = dataSourceName;
-		dataSourceName = newDataSourceName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__DATA_SOURCE_NAME, oldDataSourceName, dataSourceName));
 	}
 
 	/**
@@ -293,8 +251,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		switch (featureID) {
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
 				return getActivity();
-			case ddPackage.TACTIVITY_MAPPING__DATA_SOURCE_NAME:
-				return getDataSourceName();
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				return getPolicy();
 			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
@@ -313,9 +269,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		switch (featureID) {
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
 				setActivity((String)newValue);
-				return;
-			case ddPackage.TACTIVITY_MAPPING__DATA_SOURCE_NAME:
-				setDataSourceName((String)newValue);
 				return;
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				setPolicy((TPolicy)newValue);
@@ -338,9 +291,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
 				setActivity(ACTIVITY_EDEFAULT);
 				return;
-			case ddPackage.TACTIVITY_MAPPING__DATA_SOURCE_NAME:
-				setDataSourceName(DATA_SOURCE_NAME_EDEFAULT);
-				return;
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				setPolicy((TPolicy)null);
 				return;
@@ -361,8 +311,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		switch (featureID) {
 			case ddPackage.TACTIVITY_MAPPING__ACTIVITY:
 				return ACTIVITY_EDEFAULT == null ? activity != null : !ACTIVITY_EDEFAULT.equals(activity);
-			case ddPackage.TACTIVITY_MAPPING__DATA_SOURCE_NAME:
-				return DATA_SOURCE_NAME_EDEFAULT == null ? dataSourceName != null : !DATA_SOURCE_NAME_EDEFAULT.equals(dataSourceName);
 			case ddPackage.TACTIVITY_MAPPING__POLICY:
 				return policy != null;
 			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
@@ -383,8 +331,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (activity: ");
 		result.append(activity);
-		result.append(", dataSourceName: ");
-		result.append(dataSourceName);
 		result.append(", strategy: ");
 		if (strategyESet) result.append(strategy); else result.append("<unset>");
 		result.append(')');

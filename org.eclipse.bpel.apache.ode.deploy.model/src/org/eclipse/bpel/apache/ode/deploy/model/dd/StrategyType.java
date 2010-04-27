@@ -29,14 +29,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum StrategyType implements Enumerator {
 	/**
-	 * The '<em><b>NONE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NONE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	NONE(0, "NONE", "NONE"), /**
 	 * The '<em><b>FIRST FIND</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -44,22 +36,7 @@ public enum StrategyType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FIRST_FIND(1, "FIRST_FIND", "FIRST_FIND");
-
-	/**
-	 * The '<em><b>NONE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #NONE
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NONE_VALUE = 0;
+	FIRST_FIND(0, "FIRST_FIND", "FIRST_FIND");
 
 	/**
 	 * The '<em><b>FIRST FIND</b></em>' literal value.
@@ -74,7 +51,7 @@ public enum StrategyType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FIRST_FIND_VALUE = 1;
+	public static final int FIRST_FIND_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Strategy Type</b></em>' enumerators.
@@ -84,7 +61,6 @@ public enum StrategyType implements Enumerator {
 	 */
 	private static final StrategyType[] VALUES_ARRAY =
 		new StrategyType[] {
-			NONE,
 			FIRST_FIND,
 		};
 
@@ -136,7 +112,6 @@ public enum StrategyType implements Enumerator {
 	 */
 	public static StrategyType get(int value) {
 		switch (value) {
-			case NONE_VALUE: return NONE;
 			case FIRST_FIND_VALUE: return FIRST_FIND;
 		}
 		return null;
