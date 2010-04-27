@@ -8,6 +8,7 @@ import org.apache.ode.simpl.events.DMEnd;
 import org.apache.ode.simpl.events.DMFailure;
 import org.apache.ode.simpl.events.DMStarted;
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.w3c.dom.Attr;
@@ -25,8 +26,13 @@ public class RetrieveDataActivity extends DataManagementActivity {
 		ScopeEvent DMStarted = new DMStarted();
 		context.getInternalInstance().sendEvent(DMStarted);
 
+//		context.writeVariable(variable, value);
+		
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
+		
+		// Laden alle Informationen aus dem Deployment-Deskriptor.
+		loadDeployInformation(context, element);
 
 		// Laden das RetrieveData-spezifische Attribut "dataVariable"
 		Attr dataVarAttr = element.getAttributeNode("dataVariable");
@@ -36,11 +42,14 @@ public class RetrieveDataActivity extends DataManagementActivity {
 		//erhalten und dann die Daten des Queries darin ablegen!
 		Variable variable = context.getVisibleVariables().get(dataVariableName);
 		
+		
+		DataSource ds = getDataSource(getActivityName());
+		
 		DataSourceService datasourceService = SIMPLCore.getInstance()
-				.dataSourceService(getDsType(), getDsSubType());
+				.dataSourceService(ds.getType(), ds.getSubType());
 
 		try {
-			DataObject dataObject = datasourceService.retrieveData(getDsAddress(), getDsStatement());
+			DataObject dataObject = datasourceService.retrieveData(ds, getDsStatement());
 			
 			if (dataObject == null) {
 				ScopeEvent DMFailure = new DMFailure("Wollo is doff");
