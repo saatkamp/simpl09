@@ -750,6 +750,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTDatasource_Language() {
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getTDatasource_DataSourceName() {
 		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(0);
 	}
@@ -760,7 +769,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	public EAttribute getTDatasource_Password() {
-		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -769,7 +778,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	public EAttribute getTDatasource_UserName() {
-		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -795,17 +804,8 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTActivityMapping_DataSourceName() {
-		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getTActivityMapping_Policy() {
-		return (EReference)tActivityMappingEClass.getEStructuralFeatures().get(2);
+		return (EReference)tActivityMappingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -814,7 +814,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	public EAttribute getTActivityMapping_Strategy() {
-		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -968,12 +968,12 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tDatasourceEClass, TDATASOURCE__ADDRESS);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__TYPE);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__SUBTYPE);
+		createEAttribute(tDatasourceEClass, TDATASOURCE__LANGUAGE);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__USER_NAME);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__PASSWORD);
 
 		tActivityMappingEClass = createEClass(TACTIVITY_MAPPING);
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
-		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__DATA_SOURCE_NAME);
 		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__POLICY);
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__STRATEGY);
 
@@ -1090,22 +1090,22 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTService_Port(), theXMLTypePackage.getNCName(), "port", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tDatasourceEClass, TDatasource.class, "TDatasource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTDatasource_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasource_Address(), theXMLTypePackage.getString(), "address", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasource_Type(), theXMLTypePackage.getString(), "type", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasource_Subtype(), theXMLTypePackage.getString(), "subtype", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasource_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTDatasource_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Address(), theXMLTypePackage.getString(), "address", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Type(), theXMLTypePackage.getString(), "type", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Subtype(), theXMLTypePackage.getString(), "subtype", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Language(), theXMLTypePackage.getString(), "language", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_UserName(), theXMLTypePackage.getString(), "userName", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Password(), theXMLTypePackage.getString(), "password", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tActivityMappingEClass, TActivityMapping.class, "TActivityMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTActivityMapping_Activity(), theXMLTypePackage.getString(), "activity", "", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTActivityMapping_DataSourceName(), theXMLTypePackage.getString(), "dataSourceName", "", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTActivityMapping_Policy(), this.getTPolicy(), null, "policy", null, 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTActivityMapping_Strategy(), this.getStrategyType(), "strategy", "firstFind", 0, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTActivityMapping_Activity(), theXMLTypePackage.getString(), "activity", "", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTActivityMapping_Policy(), this.getTPolicy(), null, "policy", null, 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTActivityMapping_Strategy(), this.getStrategyType(), "strategy", "firstFind", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tPolicyEClass, TPolicy.class, "TPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTPolicy_PolicyData(), ecorePackage.getEString(), "policyData", null, 1, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTPolicy_LocalPath(), ecorePackage.getEString(), "localPath", null, 0, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTPolicy_LocalPath(), ecorePackage.getEString(), "localPath", null, 1, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(generateTypeEEnum, GenerateType.class, "GenerateType");
@@ -1113,7 +1113,6 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		addEEnumLiteral(generateTypeEEnum, GenerateType.NONE);
 
 		initEEnum(strategyTypeEEnum, StrategyType.class, "StrategyType");
-		addEEnumLiteral(strategyTypeEEnum, StrategyType.NONE);
 		addEEnumLiteral(strategyTypeEEnum, StrategyType.FIRST_FIND);
 
 		// Initialize data types
@@ -1541,6 +1540,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "subtype"
+		   });		
+		addAnnotation
+		  (getTDatasource_Language(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "language"
 		   });		
 		addAnnotation
 		  (getTDatasource_UserName(), 

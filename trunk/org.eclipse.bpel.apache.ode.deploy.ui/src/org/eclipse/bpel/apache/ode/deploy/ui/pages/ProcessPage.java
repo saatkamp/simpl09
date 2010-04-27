@@ -740,9 +740,9 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			ProcessType current, final IManagedForm managedForm, String title,
 			String description) {
 		// Set column names
-		String[] columnNames = new String[] { "Name", "Address", "Type", "Subtype", "User name",
+		String[] columnNames = new String[] { "Name", "Address", "Type", "Subtype", "Language", "User name",
 				"Password" };
-		int[] bounds = { 100, 200, 50, 50, 50, 50 };
+		int[] bounds = { 75, 175, 50, 50, 50, 50, 50 };
 
 		Section section = toolkit.createSection(fClient, Section.TWISTIE
 				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
@@ -905,8 +905,8 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		final ProcessType pt = current;
 		
 		// Set column names
-		String[] columnNames = new String[] { "Activity", "Data Source", "Policy (local path)", "Strategy"};
-		int[] bounds = { 100, 125, 175, 100};
+		String[] columnNames = new String[] { "Activity", "Policy (local path)", "Strategy"};
+		int[] bounds = { 150, 250, 100};
 
 		Section section = toolkit.createSection(fClient, Section.TWISTIE
 				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);

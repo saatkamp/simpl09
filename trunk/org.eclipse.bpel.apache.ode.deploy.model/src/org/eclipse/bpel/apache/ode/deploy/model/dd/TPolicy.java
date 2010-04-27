@@ -69,7 +69,7 @@ public interface TPolicy extends EObject {
 	 * @return the value of the '<em>Local Path</em>' attribute.
 	 * @see #setLocalPath(String)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTPolicy_LocalPath()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getLocalPath();
