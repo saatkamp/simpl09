@@ -25,8 +25,8 @@ public interface DatasourceService {
 
     /**
      * 
-     * @param dataSource
      * @param filter
+     * @param datasource
      * @return
      *     returns java.lang.String
      * @throws ConnectionException_Exception
@@ -34,8 +34,8 @@ public interface DatasourceService {
     @WebMethod(action = "getMetaData")
     @WebResult(partName = "return")
     public String getMetaData(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource,
+        @WebParam(name = "datasource", partName = "datasource")
+        DataSource datasource,
         @WebParam(name = "filter", partName = "filter")
         String filter)
         throws ConnectionException_Exception

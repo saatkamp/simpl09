@@ -1,6 +1,5 @@
 package org.simpl.core.services.datasource;
 
-import org.simpl.core.services.datasource.auth.Authentication;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -18,18 +17,18 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public interface DataSourceService {
-  public DataObject retrieveData(DataSource source, Authentication auth,
-      String statement) throws ConnectionException;
+  public DataObject retrieveData(DataSource source, String statement)
+      throws ConnectionException;
 
-  public boolean depositData(DataSource source, Authentication auth,
-      String statement, String target) throws ConnectionException;
+  public boolean depositData(DataSource source, String statement, String target)
+      throws ConnectionException;
 
-  public boolean executeStatement(DataSource source, Authentication auth,
-      String statement) throws ConnectionException;
+  public boolean executeStatement(DataSource source, String statement)
+      throws ConnectionException;
 
-  public boolean writeBack(DataSource source, Authentication auth,
-      DataObject data) throws ConnectionException;
+  public boolean writeBack(DataSource source, DataObject data)
+      throws ConnectionException;
 
-  public DataObject getMetaData(DataSource source, Authentication auth,
-      String filter) throws ConnectionException;
+  public DataObject getMetaData(DataSource source, String filter)
+      throws ConnectionException;
 }
