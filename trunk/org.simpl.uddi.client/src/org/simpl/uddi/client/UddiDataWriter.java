@@ -207,6 +207,10 @@ public class UddiDataWriter implements IUddiConfig {
 	public static UddiDataWriter getInstance(String address, String username, String password) {
 		if (dataWriter == null) {
 			dataWriter = new UddiDataWriter(address, username, password);			
+		} else {
+			dataWriter.setAddress(address);
+			dataWriter.setUsername(username);
+			dataWriter.setPassword(password);
 		}
 		
 		return dataWriter;
