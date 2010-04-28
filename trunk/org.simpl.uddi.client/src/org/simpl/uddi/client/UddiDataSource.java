@@ -1,6 +1,5 @@
 package org.simpl.uddi.client;
 import java.util.ArrayList;
-import java.util.UUID;
 
 import org.uddi.api_v3.Description;
 import org.uddi.api_v3.KeyedReference;
@@ -31,8 +30,6 @@ public class UddiDataSource implements IUddiConfig {
 		this.businessKey = businessKey;
 
 		addAttribute("category", "datasource", KEYPREFIX + "category");
-		
-		serviceKey = KEYPREFIX + ""+ UUID.randomUUID().toString();
 
 	}
 	
@@ -56,7 +53,9 @@ public class UddiDataSource implements IUddiConfig {
 
 	public void setName(String name) {
 		this.name.setValue(name);
-		this.name.setLang("");
+		this.name.setLang("");		
+		
+		this.serviceKey = KEYPREFIX + "" + name.replaceAll(" ", "");
 	}
 
 	public String getBusinessKey() {
