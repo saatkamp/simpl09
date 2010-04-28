@@ -2,16 +2,19 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@page import="org.simpl.uddi.client.UddiDatasourceReader"%>
+<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%>
 <%@page import="org.simpl.uddi.client.UddiDataSource"%>
-<%@page import="java.io.PrintWriter"%><head>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="org.simpl.uddi.client.UddiWebConfig"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Simpl jUDDI Webinterface</title>
 </head>
 <body>
 <%
-	UddiDatasourceReader datasourceReader = UddiDatasourceReader
-			.getInstance();
+	UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
+
+	UddiDataSourceReader datasourceReader = UddiDataSourceReader
+			.getInstance(uddiWebConfig.getAddress());
 
 	String name = "";
 
