@@ -4,6 +4,7 @@ package org.eclipse.simpl.communication.client;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Logger;
+
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
@@ -19,13 +20,11 @@ import org.eclipse.simpl.communication.CommunicationPlugIn;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:9090/ode/processes/DatasourceService.DatasourceServicePort?wsdl")
+@WebServiceClient(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl")
 public class DatasourceService_Service
     extends Service
 {
-
-	private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn.getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS");
-	
+    private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn.getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS");
     private final static URL DATASOURCESERVICE_WSDL_LOCATION;
     private final static Logger logger = Logger.getLogger(DatasourceService_Service.class.getName());
 
@@ -34,7 +33,7 @@ public class DatasourceService_Service
         try {
             URL baseUrl;
             baseUrl = DatasourceService_Service.class.getResource(".");
-            url = new URL(baseUrl, DSS_WSDL_ADDRESS);
+            url = new URL(baseUrl, "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
         } catch (MalformedURLException e) {
             logger.warning("Failed to create URL for the wsdl Location: '"+DSS_WSDL_ADDRESS+"', retrying as a local file");
             logger.warning(e.getMessage());
