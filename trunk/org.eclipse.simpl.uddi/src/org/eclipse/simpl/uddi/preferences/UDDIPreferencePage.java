@@ -15,11 +15,7 @@ public class UDDIPreferencePage extends FieldEditorPreferencePage implements
 	}
 
 	public void createFieldEditors() {
-		addField(new StringFieldEditor("UDDI_INQ_ADDRESS", "UDDI Inquiry Service address:",
-				getFieldEditorParent()));
-		addField(new StringFieldEditor("UDDI_PUB_ADDRESS", "UDDI Publish Service address:",
-				getFieldEditorParent()));
-		addField(new StringFieldEditor("UDDI_SEC_ADDRESS", "UDDI Security Service address:",
+		addField(new StringFieldEditor("UDDI_ADDRESS", "UDDI address:",
 				getFieldEditorParent()));
 	}
 

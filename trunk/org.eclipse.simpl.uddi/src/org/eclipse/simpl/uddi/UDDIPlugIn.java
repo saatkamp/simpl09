@@ -28,7 +28,7 @@ public class UDDIPlugIn extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		
-		plugin.getPreferenceStore().setDefault("UDDI_INQ_ADDRESS", "http://localhost:8080/juddiv3/services/inquiry?wsdl");
+		plugin.getPreferenceStore().setDefault("UDDI_ADDRESS", "http://localhost:8080/juddiv3");
 	}
 
 	/*
