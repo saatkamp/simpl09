@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.simpl.bpel.feature"
       label="SIMPL BPEL-Designer"
-      version="0.2.0"
+      version="0.4.0"
       provider-name="SIMPL">
 
    <description url="http://www.example.com/description">
@@ -24,7 +24,6 @@
    <requires>
       <import plugin="org.eclipse.emf.ecore" version="2.4.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore.xmi" version="2.4.0" match="compatible"/>
-      <import plugin="javax.wsdl" version="1.4.0"/>
       <import plugin="org.eclipse.bpel.model" version="0.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.wst.wsdl" version="1.1.200" match="compatible"/>
       <import plugin="org.eclipse.xsd" version="2.4.0" match="compatible"/>
