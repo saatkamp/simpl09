@@ -167,7 +167,7 @@ public class AddMappingDialog extends TitleAreaDialog {
 					mapping
 							.setUddiAddress(UDDIPlugIn.getDefault()
 									.getPreferenceStore().getString(
-											"UDDI_INQ_ADDRESS"));
+											"UDDI_ADDRESS"));
 					close();
 
 				} else {
