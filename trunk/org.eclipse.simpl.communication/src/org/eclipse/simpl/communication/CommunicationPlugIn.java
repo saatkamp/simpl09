@@ -27,6 +27,9 @@ public class CommunicationPlugIn extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+		plugin.getPreferenceStore().setDefault("SIMPL_CORE_DSS_ADDRESS", "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
+		plugin.getPreferenceStore().setDefault("SIMPL_CORE_AS_ADDRESS", "http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl");
 	}
 
 	/*

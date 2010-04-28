@@ -29,6 +29,8 @@ public class TransformerPlugIn extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+		plugin.getPreferenceStore().setDefault("TRANSFORMER_ADDRESS", "http://localhost:8080/ode/processes/TransformationService.TransformationServicePort?wsdl");
 	}
 
 	/*
