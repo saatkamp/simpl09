@@ -32,7 +32,21 @@ public class UddiDataSource implements IUddiConfig {
 
 		addAttribute("category", "datasource", KEYPREFIX + "category");
 		
-		serviceKey = UUID.randomUUID().toString();
+		serviceKey = KEYPREFIX + ""+ UUID.randomUUID().toString();
+
+	}
+	
+	public UddiDataSource(String businessKey, String serviceKey) {
+		this.businessKey = businessKey;
+
+		descList = new ArrayList<Description>();
+		referenceList = new ArrayList<KeyedReference>();
+		this.name = new Name();
+		this.businessKey = businessKey;
+
+		addAttribute("category", "datasource", KEYPREFIX + "category");
+		
+		this.serviceKey = serviceKey;
 
 	}
 
@@ -104,19 +118,12 @@ public class UddiDataSource implements IUddiConfig {
 		return serviceKey;
 	}
 	
-	public String getKeyWithoutPrefix() {
-		return serviceKey;
-	}
-
 	/**
 	 * Sets the Datasource Key
 	 * 
 	 * @param key
 	 *            Key in form of a String without :
 	 */
-	public void setKey(String key) {
-		this.serviceKey = key;
-	}
 
 	public ArrayList<KeyedReference> getReferenceList() {
 		return referenceList;
