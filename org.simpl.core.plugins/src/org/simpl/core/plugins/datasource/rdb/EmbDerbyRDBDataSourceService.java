@@ -11,7 +11,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.plugins.datasource.DataSourcePlugin;
+import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
+import org.simpl.core.services.connection.JDCConnectionDriver;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
@@ -20,77 +21,85 @@ import commonj.sdo.DataObject;
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for
- * supporting the IBM DB2 relational database.
+ * supporting the Apache Derby relational database in embedded mode.
  * </p>
  * 
- * dsAddress = //server:port/database or //server/database, for example
- * //localhost:50000/testdb.
+ * dsAddress = Full path to embedded Derby database, for example:
+ * C:\databases\myDB.
  * 
- * @author hahnml
- * @version $Id: DB2RDBDataSource.java 1014 2010-03-29 09:16:08Z
+ * @author hahnml<br>
+ * @version $Id: EmbDerbyRDBDataSource.java 1087 2010-04-13 17:12:27Z
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DB2RDBDataSource extends DataSourcePlugin {
-  static Logger logger = Logger.getLogger(DB2RDBDataSource.class);
+public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
+  static Logger logger = Logger.getLogger(EmbDerbyRDBDataSourceService.class);
 
-  public DB2RDBDataSource() {
+  public EmbDerbyRDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
-    this.addSubtype("DB2");
-    this.addLanguage("DB2", "SQL");
+    this.addSubtype("EmbeddedDerby");
+    this.addLanguage("EmbeddedDerby", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  private Connection openConnection(String dsAddress, String user,
-      String password) throws ConnectionException {
+  private Connection openConnection(String dsAddress)
+      throws ConnectionException {
     // TODO Umändern in DataSource Connection
-    // Testweise wird hier nur eine embedded Derby Datenbank verwendet
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
 
-    java.sql.Connection connect = null;
+    Connection connect = null;
 
     try {
-      Class.forName("com.ibm.db2.jcc.DB2Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:db2://");
+      uri.append("jdbc:derby:");
       uri.append(dsAddress);
+      uri.append(";create=true");
 
       try {
-        connect = (java.sql.Connection) DriverManager.getConnection(uri
-            .toString(), user, password);
+        new JDCConnectionDriver("org.apache.derby.jdbc.EmbeddedDriver", uri
+            .toString(), "none", "none").connect(uri.toString(), null);
+
+        connect = DriverManager.getConnection("jdbc:jdc:jdcpool");
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         logger.fatal("exception during establishing connection to: "
             + uri.toString(), e);
+      } catch (InstantiationException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
       }
 
       logger.info("Connection opened on " + dsAddress + ".");
+
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
       logger.fatal("exception during loading the JDBC driver", e);
     }
-
     return connect;
   }
 
-  private boolean closeConnection(Connection connection)
-      throws ConnectionException {
+  private boolean closeConnection(Connection connection) {
     // TODO Auto-generated method stub
     boolean success = false;
 
     try {
       ((java.sql.Connection) connection).close();
       success = true;
+
       if (logger.isDebugEnabled()) {
         logger.debug("boolean closeConnection() executed successfully.");
       }
+
       logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -98,6 +107,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
         logger.error("boolean closeConnection() executed with failures.", e);
       }
     }
+
     return success;
   }
 
@@ -109,8 +119,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
           + statement + ") executed.");
     }
 
-    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(), "",
-        ""));
+    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress()));
     Command read = das.createCommand(statement);
     DataObject root = read.executeQuery();
 
@@ -129,9 +138,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     }
 
     boolean success = false;
-    Connection conn = openConnection(dataSource.getAddress(), dataSource
-        .getAuthentication().getUser(), dataSource.getAuthentication()
-        .getPassword());
+    Connection conn = openConnection(dataSource.getAddress());
 
     try {
       Statement stat = conn.createStatement();
@@ -146,6 +153,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     logger.info("Statement '" + statement + "' send to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
+
     return success;
   }
 
@@ -159,6 +167,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
 
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
+
     /*
      * Connection conn = openConnection(dsAddress); try { Statement stat =
      * conn.createStatement(); stat.execute(statement); conn.commit();
@@ -180,17 +189,19 @@ public class DB2RDBDataSource extends DataSourcePlugin {
           + statement + ") executed.");
     }
 
-    // Beispiel: CREATE TABLE TAB AS (SELECT * FROM T1 WITH NO DATA);
+    // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl
+    // genutzt.
+    // Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den
     // gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" AS (");
+    createTableStatement.append(" AS ");
     createTableStatement.append(statement);
     createTableStatement.append(" ");
-    createTableStatement.append(") WITH NO DATA");
+    createTableStatement.append("WITH NO DATA");
 
     StringBuilder insertStatement = new StringBuilder();
     insertStatement.append("INSERT INTO");
@@ -199,9 +210,7 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     insertStatement.append(" ");
     insertStatement.append(statement);
 
-    Connection conn = openConnection(dataSource.getAddress(), dataSource
-        .getAuthentication().getUser(), dataSource.getAuthentication()
-        .getPassword());
+    Connection conn = openConnection(dataSource.getAddress());
 
     try {
       Statement createState = conn.createStatement();
@@ -231,19 +240,10 @@ public class DB2RDBDataSource extends DataSourcePlugin {
     return success;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
-   */
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
-    Connection conn = openConnection(dataSource.getAddress(), dataSource
-        .getAuthentication().getUser(), dataSource.getAuthentication()
-        .getPassword());
-
+    Connection conn = openConnection(dataSource.getAddress());
     DataObject metaDataObject = this.getMetaDataSDO();
     DataObject schemaObject = null;
     DataObject tableObject = null;

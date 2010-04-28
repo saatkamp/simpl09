@@ -20,13 +20,14 @@
 
 
 
-    <xsd:element name="dataObject" type="sdo:tDataObject"></xsd:element>
+    <xsd:element name="DefaultDataFormat" type="sdo:tTuscanyDataFormat"></xsd:element>
 
     
-    <xsd:complexType name="tDataObject">
+    <xsd:complexType name="tTuscanyDataFormat">
     	<xsd:sequence maxOccurs="1" minOccurs="0">
-    		<xsd:element name="data" type="xsd:string"></xsd:element>
+    		<xsd:element name="dataObject" type="xsd:string"></xsd:element>
     	</xsd:sequence>
+    	<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
     </xsd:complexType>
 
     <xsd:simpleType name="data">

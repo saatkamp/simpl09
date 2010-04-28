@@ -8,7 +8,7 @@ import org.simpl.core.services.datasource.DataSource;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de><br>
+ * @author schneimi<br>
  * @version $Id: StrategyService.java 1159 2010-04-20 18:19:11Z
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/

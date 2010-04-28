@@ -1,4 +1,4 @@
-package org.simpl.core.services.dataformat;
+package org.simpl.core.services.dataformat.converter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,10 +9,11 @@ import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 
 /**
- * <b>Purpose:</b>Provides access to the data format services that are created
- * from data format plug-ins.<br>
- * <b>Description:</b> Instances of data format services are retrieved by the
- * data format type, using {@link #getInstance(String)}.<br>
+ * <b>Purpose:</b>Provides access to the data format converter services that are
+ * created from data format converter plug-ins.<br>
+ * <b>Description:</b> Instances of data format converter services are retrieved
+ * by the data format converter supported data source type, subtype and format
+ * using {@link #getInstance(String)}.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -22,35 +23,38 @@ import org.simpl.core.plugins.dataformat.DataFormatPlugin;
  * @link http://code.google.com/p/simpl09/
  */
 @SuppressWarnings("unchecked")
-public class DataFormatServiceProvider {
+public class DataFormatConverterProvider {
   /**
    * Maps the data format to a list of supporting data format plugin instances.
    */
-  private HashMap<String, DataFormatPlugin> dataFormats = new HashMap<String, DataFormatPlugin>();
+  private static HashMap<String, DataFormatPlugin> dataFormats = new HashMap<String, DataFormatPlugin>();
 
   /**
    * Initialize all data format plugins.
    */
-  public DataFormatServiceProvider() {
+  static {
     loadPlugins();
   }
 
   /**
-   * Returns the DataFormat instance that supports the given data format type.
+   * Returns the data format converter service instance that supports the given
+   * data source type, subtype and data format.
    * 
+   * @param dsType
+   * @param dsSubtype
    * @param dfType
-   * @param dfSubtype
    * @return
    */
-  public DataFormatService<Object> getInstance(String dfType) {
-    return this.dataFormats.get(dfType);
+  public static DataFormatConverter getInstance(String dsType,
+      String dsSubtype, String dfType) {
+    return null;
   }
 
   /**
-   * Loads instances of the data format plugins and retrieves information about
-   * their supported type.
+   * Loads instances of the data format converter plug-ins and retrieves information about
+   * their supported data source type and subtype.
    */
-  private void loadPlugins() {
+  private static void loadPlugins() {
     List<String> plugins = SIMPLCore.getInstance().config()
         .getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
