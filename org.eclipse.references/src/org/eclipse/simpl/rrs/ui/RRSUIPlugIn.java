@@ -27,6 +27,11 @@ public class RRSUIPlugIn extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+		//TODO: Noch anpassen.
+		plugin.getPreferenceStore().setDefault("RRS_RET_ADDRESS", "");
+		plugin.getPreferenceStore().setDefault("RRS_MG_ADDRESS", "");
+		plugin.getPreferenceStore().setDefault("RRS_MD_ADDRESS", "");
 	}
 
 	/*
