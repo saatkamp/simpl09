@@ -14,13 +14,17 @@
 
 <body>
 <%
-	UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
+	
+UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
+
+
+PrintWriter output = response.getWriter();
+output.println(uddiWebConfig.getAddress());
 	UddiDataSourceReader datasourceReader = UddiDataSourceReader
 			.getInstance(uddiWebConfig.getAddress());
-	ArrayList<UddiDataSource> dataSources = datasourceReader
-			.getAllDatasources();
+	ArrayList<UddiDataSource> dataSources = datasourceReader.getAllDatasources();
 	if (request.getParameter("message") != null) {
-		PrintWriter output = response.getWriter();
+		//PrintWriter output = response.getWriter();
 		output.println(request.getParameter("message"));
 		
 	}
