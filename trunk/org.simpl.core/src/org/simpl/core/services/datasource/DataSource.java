@@ -5,90 +5,119 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.simpl.core.services.datasource.auth.Authentication;
-import org.simpl.core.services.strategy.Strategy;
-
 /**
- * <b>Purpose:</b>Represents a data source with all relevant information that is
- * needed to build up a connection.<br>
- * <b>Description:</b>Type and subtype are used by the SIMPL Core to determine a
- * data source service that can respond to the data source over the address.
- * Further it holds the necessary authentication information and provides
- * information for the strategic late binding of the data source with a policy.<br>
+ * <b>Purpose:</b>Represents a data source with all relevant information that is needed to
+ * build up a connection.<br>
+ * <b>Description:</b>Type and subtype are used by the SIMPL Core to determine a data
+ * source service that can respond to the data source over the address. Further it holds
+ * the necessary authentication information and provides information for the strategic
+ * late binding of the data source with a policy.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: DataSource.java 1183 2010-04-22 20:05:13Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "DataSource")
-@XmlType(name = "DataSource", propOrder = { "name", "address", "policy",
-    "strategy", "type", "subType", "authentication" })
+@XmlType(name = "DataSource", propOrder = { "name", "address", "type", "subType",
+    "authentication", "lateBinding" })
 public class DataSource {
   private String name = "";
   private String address = "";
-  private String policy = "";
-  private Strategy strategy = null;
   private String type = "";
   private String subType = "";
   private Authentication authentication = new Authentication();
+  private LateBinding lateBinding = new LateBinding();
 
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String value) {
-    this.address = value;
-  }
-
-  public String getPolicy() {
-    return policy;
-  }
-
-  public void setPolicy(String value) {
-    this.policy = value;
-  }
-
-  public Strategy getStrategy() {
-    return strategy;
-  }
-
-  public void setStrategy(Strategy value) {
-    this.strategy = value;
-  }
-
-  public String getSubType() {
-    return subType;
-  }
-
-  public void setSubType(String value) {
-    this.subType = value;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String value) {
-    this.type = value;
-  }
-
+  /**
+   * @return the name
+   */
   public String getName() {
     return name;
   }
 
-  public void setName(String value) {
-    this.name = value;
+  /**
+   * @param name
+   *          the name to set
+   */
+  public void setName(String name) {
+    this.name = name;
   }
 
+  /**
+   * @return the address
+   */
+  public String getAddress() {
+    return address;
+  }
+
+  /**
+   * @param address
+   *          the address to set
+   */
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  /**
+   * @return the type
+   */
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * @param type
+   *          the type to set
+   */
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  /**
+   * @return the subType
+   */
+  public String getSubType() {
+    return subType;
+  }
+
+  /**
+   * @param subType
+   *          the subType to set
+   */
+  public void setSubType(String subType) {
+    this.subType = subType;
+  }
+
+  /**
+   * @return the authentication
+   */
   public Authentication getAuthentication() {
     return authentication;
   }
 
+  /**
+   * @param authentication
+   *          the authentication to set
+   */
   public void setAuthentication(Authentication authentication) {
     this.authentication = authentication;
+  }
+
+  /**
+   * @return the lateBinding
+   */
+  public LateBinding getLateBinding() {
+    return lateBinding;
+  }
+
+  /**
+   * @param lateBinding
+   *          the lateBinding to set
+   */
+  public void setLateBinding(LateBinding lateBinding) {
+    this.lateBinding = lateBinding;
   }
 }
