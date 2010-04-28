@@ -25,21 +25,33 @@ public class UddiDataSourceReader implements IUddiConfig {
 	UDDIInquiryPortType inquiry = null;
 	
 	String address = "";
+	
+	Transport transport = null;
 
 	public static UddiDataSourceReader datasourceReader = null;
 
 	private UddiDataSourceReader(String address) {
 		this.address = address;
-		Transport transport = new JAXWSTransport("default");
+		this.transport = new JAXWSTransport("default");
 
 		try {
-			inquiry = transport
+			inquiry = this.transport
 					.getUDDIInquiryService(this.address + "/services/inquiry?wsdl");
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void refresh() {
+		try {
+			inquiry = this.transport
+					.getUDDIInquiryService(this.address + "/services/inquiry?wsdl");
+		} catch (TransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -261,7 +273,10 @@ public class UddiDataSourceReader implements IUddiConfig {
 		if (datasourceReader == null) {
 			datasourceReader = new UddiDataSourceReader(addr);
 		} else {
-			datasourceReader.setAddress(addr);
+			if (!datasourceReader.getAddress().equals(addr)) {
+				datasourceReader.setAddress(addr);
+				datasourceReader.refresh();
+			}
 		}
 
 		return datasourceReader;
