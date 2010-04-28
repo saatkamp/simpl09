@@ -1,7 +1,9 @@
 package org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs;
 
+import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
+import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.SIMPLCoreMetaData;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -32,12 +34,15 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 	private Text password;
 	private TDatasource datasource;
 
+	private ProcessType processType;
+
 	public TDatasource getDatasource() {
 		return datasource;
 	}
 
-	public AddDataSourceDialog(Shell parentShell) {
+	public AddDataSourceDialog(Shell parentShell, ProcessType processType) {
 		super(parentShell);
+		this.processType = processType;
 	}
 
 	@Override
@@ -145,21 +150,25 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 						&& !language.getText().isEmpty()
 						&& !user.getText().isEmpty()
 						&& !password.getText().isEmpty()) {
-					/*
-					 * Saving the values in the TDatasource
-					 */
-					// Create a new TDatasource
-					ddFactory factory = ddFactory.eINSTANCE;
-					datasource = factory.createTDatasource();
-					datasource.setDataSourceName(name.getText());
-					datasource.setAddress(address.getText());
-					datasource.setType(type.getText());
-					datasource.setSubtype(subtype.getText());
-					datasource.setLanguage(language.getText());
-					datasource.setUserName(user.getText());
-					datasource.setPassword(password.getText());
-					close();
 
+					if (!DeployUtils.getProcessDataSourceNames(processType).contains(name)) {
+						/*
+						 * Saving the values in the TDatasource
+						 */
+						// Create a new TDatasource
+						ddFactory factory = ddFactory.eINSTANCE;
+						datasource = factory.createTDatasource();
+						datasource.setDataSourceName(name.getText());
+						datasource.setAddress(address.getText());
+						datasource.setType(type.getText());
+						datasource.setSubtype(subtype.getText());
+						datasource.setLanguage(language.getText());
+						datasource.setUserName(user.getText());
+						datasource.setPassword(password.getText());
+						close();
+					} else {
+						setErrorMessage("The specified name is allready in use, please choose another one.");
+					}
 				} else {
 					setErrorMessage("Please enter a value for every paramater of the data source");
 				}

@@ -68,6 +68,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
@@ -158,8 +159,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 	public static final int DS_ADDRESS_COLUMN = 1;
 	public static final int DS_USER_COLUMN = 2;
 	public static final int DS_PW_COLUMN = 3;
-
-
 
 	public static final Map<String, String> eventNameById = new HashMap<String, String>();
 	static {
@@ -326,13 +325,13 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 
 		createDataSourceSection(form.getBody(), processType, managedForm,
 				"Data source specification", dataSourceDescription);
-		
-		String activityMappingDescription = "The table contains mappings between SIMPL" +
-				" DataManagement Activities and Policies to support late binding or to" +
-				" map the activities with the above specified data sources.";
+
+		String activityMappingDescription = "The table contains mappings between SIMPL"
+				+ " DataManagement Activities and Policies to support late binding or to"
+				+ " map the activities with the above specified data sources.";
 
 		createActivityMappingSection(form.getBody(), processType, managedForm,
-			"Activity-Data source mapping", activityMappingDescription);
+				"Activity-Data source mapping", activityMappingDescription);
 
 		form.reflow(true);
 	}
@@ -734,14 +733,13 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			table.getColumn(i).pack();
 		}
 	}
-	
-	
+
 	private void createDataSourceSection(Composite fClient,
 			ProcessType current, final IManagedForm managedForm, String title,
 			String description) {
 		// Set column names
-		String[] columnNames = new String[] { "Name", "Address", "Type", "Subtype", "Language", "User name",
-				"Password" };
+		String[] columnNames = new String[] { "Name", "Address", "Type",
+				"Subtype", "Language", "User name", "Password" };
 		int[] bounds = { 75, 175, 50, 50, 50, 50, 50 };
 
 		Section section = toolkit.createSection(fClient, Section.TWISTIE
@@ -807,14 +805,15 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
 				AddDataSourceDialog dialog = new AddDataSourceDialog(Display
-						.getDefault().getActiveShell());
+						.getDefault().getActiveShell(), processType);
 				dialog.open();
 				if (dialog.getDatasource() != null) {
 					Command addDataSourceCommand = AddCommand.create(domain,
-							processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
-							dialog.getDatasource());
+							processType, ddPackage.eINSTANCE
+									.getProcessType_Datasources(), dialog
+									.getDatasource());
 					domain.getCommandStack().execute(addDataSourceCommand);
-					
+
 					// Updating the display in the view
 					viewer.refresh();
 				}
@@ -842,19 +841,22 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 						TDatasource datasource = (TDatasource) sel
 								.getFirstElement();
 
-						Command removeDataSourceCommand = RemoveCommand.create(domain,
-								processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
+						Command removeDataSourceCommand = RemoveCommand.create(
+								domain, processType, ddPackage.eINSTANCE
+										.getProcessType_Datasources(),
 								datasource);
-						domain.getCommandStack().execute(removeDataSourceCommand);
+						domain.getCommandStack().execute(
+								removeDataSourceCommand);
 
 						EditDataSourceDialog dialog = new EditDataSourceDialog(
 								Display.getDefault().getActiveShell(),
 								datasource);
 						dialog.open();
 
-						Command addDataSourceCommand = AddCommand.create(domain,
-								processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
-								dialog.getDatasource());
+						Command addDataSourceCommand = AddCommand.create(
+								domain, processType, ddPackage.eINSTANCE
+										.getProcessType_Datasources(), dialog
+										.getDatasource());
 						domain.getCommandStack().execute(addDataSourceCommand);
 					}
 					// Updating the display in the view
@@ -884,29 +886,31 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 							.hasNext();) {
 						TDatasource datasource = iterator.next();
 
-						Command removeDataSourceCommand = RemoveCommand.create(domain,
-								processType, ddPackage.eINSTANCE.getProcessType_Datasources(),
+						Command removeDataSourceCommand = RemoveCommand.create(
+								domain, processType, ddPackage.eINSTANCE
+										.getProcessType_Datasources(),
 								datasource);
-						domain.getCommandStack().execute(removeDataSourceCommand);
+						domain.getCommandStack().execute(
+								removeDataSourceCommand);
 					}
-					
+
 					viewer.refresh();
 				}
 			}
 		});
 	}
-	
-	
+
 	private void createActivityMappingSection(Composite fClient,
 			ProcessType current, final IManagedForm managedForm, String title,
 			String description) {
 		// Save the current ProcessType object in a final copy to
 		// work with it in the inner classes (SelectionListener)
 		final ProcessType pt = current;
-		
+
 		// Set column names
-		String[] columnNames = new String[] { "Activity", "Policy (local path)", "Strategy"};
-		int[] bounds = { 150, 250, 100};
+		String[] columnNames = new String[] { "Activity",
+				"Policy (local path)", "Strategy" };
+		int[] bounds = { 150, 250, 100 };
 
 		Section section = toolkit.createSection(fClient, Section.TWISTIE
 				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
@@ -975,10 +979,11 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				dialog.open();
 				if (dialog.getMapping() != null) {
 					Command addMappingCommand = AddCommand.create(domain,
-							processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
-							dialog.getMapping());
+							processType, ddPackage.eINSTANCE
+									.getProcessType_ActivityMappings(), dialog
+									.getMapping());
 					domain.getCommandStack().execute(addMappingCommand);
-					
+
 					// Updating the display in the view
 					viewer.refresh();
 				}
@@ -1006,18 +1011,20 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 						TActivityMapping mapping = (TActivityMapping) sel
 								.getFirstElement();
 
-						Command removeMappingCommand = RemoveCommand.create(domain,
-								processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
+						Command removeMappingCommand = RemoveCommand.create(
+								domain, processType, ddPackage.eINSTANCE
+										.getProcessType_ActivityMappings(),
 								mapping);
 						domain.getCommandStack().execute(removeMappingCommand);
 
 						EditMappingDialog dialog = new EditMappingDialog(
-								Display.getDefault().getActiveShell(),
-								pt, mapping);
+								Display.getDefault().getActiveShell(), pt,
+								mapping);
 						dialog.open();
 
 						Command addMappingCommand = AddCommand.create(domain,
-								processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
+								processType, ddPackage.eINSTANCE
+										.getProcessType_ActivityMappings(),
 								dialog.getMapping());
 						domain.getCommandStack().execute(addMappingCommand);
 					}
@@ -1048,12 +1055,13 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 							.hasNext();) {
 						TActivityMapping mapping = iterator.next();
 
-						Command removeMappingCommand = RemoveCommand.create(domain,
-								processType, ddPackage.eINSTANCE.getProcessType_ActivityMappings(),
+						Command removeMappingCommand = RemoveCommand.create(
+								domain, processType, ddPackage.eINSTANCE
+										.getProcessType_ActivityMappings(),
 								mapping);
 						domain.getCommandStack().execute(removeMappingCommand);
 					}
-					
+
 					viewer.refresh();
 				}
 			}
