@@ -46,6 +46,24 @@ public interface DatasourceService {
      * @param statement
      * @param dataSource
      * @return
+     *     returns boolean
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "executeStatement")
+    @WebResult(partName = "return")
+    public boolean executeStatement(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
+        @WebParam(name = "statement", partName = "statement")
+        String statement)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
+     * @param statement
+     * @param dataSource
+     * @return
      *     returns java.lang.String
      * @throws ConnectionException_Exception
      */
@@ -77,24 +95,6 @@ public interface DatasourceService {
         String statement,
         @WebParam(name = "target", partName = "target")
         String target)
-        throws ConnectionException_Exception
-    ;
-
-    /**
-     * 
-     * @param statement
-     * @param dataSource
-     * @return
-     *     returns boolean
-     * @throws ConnectionException_Exception
-     */
-    @WebMethod(action = "executeStatement")
-    @WebResult(partName = "return")
-    public boolean executeStatement(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource,
-        @WebParam(name = "statement", partName = "statement")
-        String statement)
         throws ConnectionException_Exception
     ;
 
@@ -146,9 +146,9 @@ public interface DatasourceService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "getDataSourceSubtypes")
+    @WebMethod(action = "getDataSourceSubTypes")
     @WebResult(partName = "return")
-    public String getDataSourceSubtypes(
+    public String getDataSourceSubTypes(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
