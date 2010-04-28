@@ -364,7 +364,7 @@ public class DeployUtils {
 		return policy;
 	}
 
-	public static String[] getProcessDataSourceNames(ProcessType processType) {
+	public static List<String> getProcessDataSourceNames(ProcessType processType) {
 		EList<TDatasource> datasources = processType.getDatasources();
 
 		List<String> dsNames = new ArrayList<String>();
@@ -373,7 +373,7 @@ public class DeployUtils {
 			dsNames.add(data.getDataSourceName());
 		}
 
-		return dsNames.toArray(new String[0]);
+		return dsNames;
 	}
 
 	public static List<Activity> getProcessDMActivities(Process process) {
