@@ -1,7 +1,5 @@
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.configuration.ConfigurationBuilder;
-
 
 public class FormValidator {
 	public static String validateForm(HttpServletRequest request) {
@@ -11,7 +9,6 @@ public class FormValidator {
 		String type = request.getParameter("type");
 		String subtype = request.getParameter("subtype");
 		String policy = request.getParameter("policy");
-		String key = request.getParameter("key");
 		
 		if (name.equals("")) {
 			message = message + "Field Name must not be empty <br>";
@@ -33,9 +30,6 @@ public class FormValidator {
 			message = message + "Field Policy must not be empty <br>";
 		}
 		
-		if (key.equals("")) {
-			message = message + "Field Key must not be empty";
-		}
 		return message;
 	}
 }

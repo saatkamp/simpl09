@@ -4,19 +4,21 @@
 
 <%@page import="java.util.ArrayList"%>
 
-<%@page import="org.simpl.uddi.client.UddiDatasourceReader"%>
 <%@page import="org.simpl.uddi.client.UddiDataSource"%>
-<%@page import="java.io.PrintWriter"%><head>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="org.simpl.uddi.client.UddiWebConfig"%>
+<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Simpl jUDDI Webinterface</title>
 </head>
 
 <body>
 <%
-	UddiDatasourceReader datasourceReader = UddiDatasourceReader
-			.getInstance();
+	UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
+	UddiDataSourceReader datasourceReader = UddiDataSourceReader
+			.getInstance(uddiWebConfig.getAddress());
 	ArrayList<UddiDataSource> dataSources = datasourceReader
-			.getAllDarasources();
+			.getAllDatasources();
 	if (request.getParameter("message") != null) {
 		PrintWriter output = response.getWriter();
 		output.println(request.getParameter("message"));
