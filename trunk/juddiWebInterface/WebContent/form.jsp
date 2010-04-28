@@ -2,10 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%>
 <%@page import="org.simpl.uddi.client.UddiDataSource"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="org.simpl.uddi.client.UddiWebConfig"%><head>
+<%@page import="org.simpl.uddi.client.UddiWebConfig"%>
+<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Simpl jUDDI Webinterface</title>
 </head>
@@ -25,8 +25,12 @@
 	String subtype = "";
 
 	String policy = "";
-
+	
+	String username = "";
+	
 	String key = "";
+	
+	String password = "";
 
 	if (request.getParameter("uddi") != null) {
 		UddiDataSource dataSource = datasourceReader.getByKey(request
@@ -39,7 +43,8 @@
 			type = dataSource.getAttributeValue("type");
 			subtype = dataSource.getAttributeValue("subtype");
 			policy = dataSource.getAttributeValue("wspolicy");
-			key = dataSource.getKey();
+			username = dataSource.getAttributeValue("username");
+			password = dataSource.getAttributeValue("password");
 		}
 	}
 	
@@ -66,12 +71,6 @@
 	</tr>
 
 	<tr>
-		<td><label>Key</label></td>
-
-		<td><input name="key" type="text" value="<%=key%>" size="100" /> (e.g.uddi:juddi.apache.org:key</td>
-	</tr>
-
-	<tr>
 		<td><label>Address</label></td>
 
 		<td><input name="address" type="text" value="<%=address%>"
@@ -90,6 +89,20 @@
 		<td><input name="subtype" type="text" value="<%=subtype%>"
 			size="100" /></td>
 	</tr>
+	
+	<tr>
+		<td><label>Username</label></td>
+
+		<td><input name="username" type="text" value="<%=username%>"
+			size="100" /></td>
+	</tr>
+	
+	<tr>
+		<td><label>Password</label></td>
+
+		<td><input name="password" type="password" value="<%=password%>"
+			size="100" /></td>
+	</tr>
 
 	<tr>
 		<td><label>Policy File</label></td>
@@ -98,6 +111,8 @@
 			size="100" /></td>
 	</tr>
 </table>
+
+<input name="key" type="hidden" value=" <%=key %>" />
 
 <input type="submit" name="save" value="save" /></form>
 
