@@ -31,7 +31,7 @@ public class QueryActivity extends DataManagementActivity {
 		// Laden das Query-spezifische Attribut "queryTarget"
 		String queryTarget = element.getAttribute("queryTarget").toString();
 
-		DataSource ds = getDataSource(getActivityName());
+		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
 		// DataSourceService datasourceService = SIMPLCore.getInstance()
 		// .dataSourceService(getDsType(), getDsSubType());

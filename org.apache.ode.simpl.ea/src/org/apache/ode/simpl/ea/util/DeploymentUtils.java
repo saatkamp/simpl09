@@ -16,8 +16,9 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
+import org.simpl.core.services.datasource.Authentication;
 import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.auth.Authentication;
+import org.simpl.core.services.datasource.LateBinding;
 import org.simpl.core.services.strategy.Strategy;
 
 /**
@@ -48,13 +49,14 @@ public class DeploymentUtils {
 	private static final String AT_DATA_SOURCE_ADDRESS = "address";
 	private static final String AT_DATA_SOURCE_TYPE = "type";
 	private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
+	private static final String AT_DATA_SOURCE_LANGUAGE = "language";
 	private static final String AT_DATA_SOURCE_USER = "userName";
 	private static final String AT_DATA_SOURCE_PASSW = "password";
 
 	private static final String AT_MAPPING_ACTIVITY = "activity";
-	private static final String AT_MAPPING_DS_NAME = "dataSourceName";
 	private static final String AT_MAPPING_POLICY_DATA = "policyData";
 	private static final String AT_MAPPING_STRATEGY = "strategy";
+	private static final String AT_MAPPING_UDDI_ADDRESS = "uddiAddress";
 
 	private final Namespace DD_NAMESPACE = Namespace
 			.getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
@@ -65,8 +67,8 @@ public class DeploymentUtils {
 	private List<DataSource> dataSourceElements = new ArrayList<DataSource>();
 
 	/**
-	 * This map holds all activity-data source mappings of the deployment
-	 * descriptor.
+	 * This map holds all activity-policy mappings for the late binding of data
+	 * source which are specified in the deployment descriptor.
 	 */
 	private Map<String, DataSource> activityMappings = new HashMap<String, DataSource>();
 
@@ -144,8 +146,6 @@ public class DeploymentUtils {
 							// exists.
 							String activity = ((Element) map)
 									.getAttributeValue(AT_MAPPING_ACTIVITY);
-							String dsName = ((Element) map)
-									.getAttributeValue(AT_MAPPING_DS_NAME);
 							String strat = ((Element) map)
 									.getAttributeValue(AT_MAPPING_STRATEGY);
 							Strategy strategy = null;
@@ -157,26 +157,17 @@ public class DeploymentUtils {
 									EL_POLICY, DD_NAMESPACE);
 							String policyData = ((Element) policy)
 									.getAttributeValue(AT_MAPPING_POLICY_DATA);
-
-							if (dsName.isEmpty()) {
-								// No dataSource is specified so we have to
-								// create a new Object
-								// which have only policy and strategy defined.
-								DataSource newDs = new DataSource();
-								newDs.setPolicy(policyData);
-								newDs.setStrategy(strategy);
-								dataSourceElements.add(newDs);
-								activityMappings.put(activity, newDs);
-							} else {
-								DataSource source = getDataSourceByName(dsName);
-								if (source != null) {
-									if (!policyData.isEmpty() && strategy != null){
-										source.setPolicy(policyData);
-										source.setStrategy(strategy);
-									}
-									activityMappings.put(activity, source);
-								}
-							}
+							
+							String uddiAddress = ((Element) map)
+							.getAttributeValue(AT_MAPPING_UDDI_ADDRESS);
+							
+							DataSource newDs = new DataSource();
+							LateBinding lateBinding = new LateBinding();
+							lateBinding.setPolicy(policyData);
+							lateBinding.setStrategy(strategy);
+							lateBinding.setUddiAddress(uddiAddress);
+							newDs.setLateBinding(lateBinding);
+							activityMappings.put(activity, newDs);
 						}
 					}
 				}
@@ -208,7 +199,7 @@ public class DeploymentUtils {
 		return data;
 	}
 
-	private DataSource getDataSourceByName(String name) {
+	public DataSource getDataSourceByName(String name) {
 		boolean found = false;
 
 		Iterator<DataSource> iterator = this.dataSourceElements.iterator();
@@ -224,5 +215,28 @@ public class DeploymentUtils {
 		}
 
 		return data;
+	}
+
+	/**
+	 * This method merges a late binding data source and a static data source. A
+	 * late binding data source has only a policy and a strategy. The static
+	 * data source has a name, address, type, subtype, language and
+	 * authentication information for a static binding of the data source.
+	 * 
+	 * @param lateBindingDs
+	 * @param staticDs
+	 * @return
+	 */
+	public DataSource merge(DataSource lateBindingDs, DataSource staticDs) {
+		DataSource result = new DataSource();
+		
+		result.setName(staticDs.getName());
+		result.setAddress(staticDs.getAddress());
+		result.setType(staticDs.getType());
+		result.setSubType(staticDs.getSubType());
+		result.setAuthentication(staticDs.getAuthentication());
+		result.setLateBinding(lateBindingDs.getLateBinding());
+		
+		return result;
 	}
 }

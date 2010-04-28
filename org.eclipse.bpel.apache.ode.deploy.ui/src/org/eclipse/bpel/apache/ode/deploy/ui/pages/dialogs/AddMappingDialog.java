@@ -6,9 +6,11 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.simpl.uddi.UDDIPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -140,7 +142,8 @@ public class AddMappingDialog extends TitleAreaDialog {
 				/*
 				 * Saving the values in the Activity Mapping
 				 */
-				if (!availableActivities.getText().isEmpty() && !policyAdress.getText().isEmpty()) {
+				if (!availableActivities.getText().isEmpty()
+						&& !policyAdress.getText().isEmpty()) {
 
 					// Create a new Activity Mapping
 					ddFactory factory = ddFactory.eINSTANCE;
@@ -160,6 +163,11 @@ public class AddMappingDialog extends TitleAreaDialog {
 							.setStrategy(strategy.getText().equals(
 									StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND
 									: StrategyType.FIRST_FIND);
+
+					mapping
+							.setUddiAddress(UDDIPlugIn.getDefault()
+									.getPreferenceStore().getString(
+											"UDDI_INQ_ADDRESS"));
 					close();
 
 				} else {

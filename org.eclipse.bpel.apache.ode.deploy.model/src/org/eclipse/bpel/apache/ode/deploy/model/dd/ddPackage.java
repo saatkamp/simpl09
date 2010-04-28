@@ -793,13 +793,22 @@ public interface ddPackage extends EPackage {
 	int TACTIVITY_MAPPING__STRATEGY = 2;
 
 	/**
+	 * The feature id for the '<em><b>Uddi Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TACTIVITY_MAPPING__UDDI_ADDRESS = 3;
+
+	/**
 	 * The number of structural features of the '<em>TActivity Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TACTIVITY_MAPPING_FEATURE_COUNT = 3;
+	int TACTIVITY_MAPPING_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.
@@ -1548,6 +1557,17 @@ public interface ddPackage extends EPackage {
 	EAttribute getTActivityMapping_Strategy();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getUddiAddress <em>Uddi Address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uddi Address</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getUddiAddress()
+	 * @see #getTActivityMapping()
+	 * @generated
+	 */
+	EAttribute getTActivityMapping_UddiAddress();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy <em>TPolicy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2166,6 +2186,14 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TACTIVITY_MAPPING__STRATEGY = eINSTANCE.getTActivityMapping_Strategy();
+
+		/**
+		 * The meta object literal for the '<em><b>Uddi Address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TACTIVITY_MAPPING__UDDI_ADDRESS = eINSTANCE.getTActivityMapping_UddiAddress();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.

@@ -19,7 +19,21 @@ public class DeploymentInfos {
 		DeploymentUtils.getInstance().readDeploymentDescriptor(path, process);
 	}
 	
-	public DataSource getActivityDataSource(String activityName){
-		return DeploymentUtils.getInstance().getDataSourceOfActivity(activityName);
+	public DataSource getActivityDataSource(String activityName, String dataSourceName){
+		DataSource data = null;
+		//If we have a activity-policy mapping, we have a
+		//late binding data source with policy.
+		//If no such mapping exists, we use the logical name
+		//which is specified in the activity address field
+		if(DeploymentUtils.getInstance().getDataSourceOfActivity(activityName) != null){
+			data = DeploymentUtils.getInstance().getDataSourceOfActivity(activityName);
+			DataSource backupDs = DeploymentUtils.getInstance().getDataSourceByName(dataSourceName);
+			if (backupDs != null){
+				data = DeploymentUtils.getInstance().merge(data, backupDs);
+			}
+		}else {
+			data = DeploymentUtils.getInstance().getDataSourceByName(dataSourceName);
+		}
+		return data; 
 	}
 }
