@@ -13,6 +13,7 @@ import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataWriter;
 import org.simpl.uddi.client.UddiWebConfig;
 
+
 /**
  * Servlet implementation class UddiAction
  */
@@ -45,6 +46,7 @@ public class UddiAction extends HttpServlet {
 		String edit = request.getParameter("edit");
 		String newsource = request.getParameter("new");
 		String save = request.getParameter("save");
+		
 		UddiWebConfig config = UddiWebConfig.getInstance();
 		UddiDataWriter dataWriter = UddiDataWriter.getInstance(config.getAddress(), config.getUsername(), config.getPassword());
 		
