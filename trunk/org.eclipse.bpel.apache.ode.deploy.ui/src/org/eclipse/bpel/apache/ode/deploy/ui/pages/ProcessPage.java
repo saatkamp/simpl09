@@ -68,7 +68,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
@@ -739,8 +738,8 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			String description) {
 		// Set column names
 		String[] columnNames = new String[] { "Name", "Address", "Type",
-				"Subtype", "Language", "User name", "Password" };
-		int[] bounds = { 75, 175, 50, 50, 50, 50, 50 };
+				"Subtype", "User name", "Password" };
+		int[] bounds = { 100, 200, 50, 50, 50, 50 };
 
 		Section section = toolkit.createSection(fClient, Section.TWISTIE
 				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);

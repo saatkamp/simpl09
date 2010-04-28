@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getSubtype <em>Subtype</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getLanguage <em>Language</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getPassword <em>Password</em>}</li>
  * </ul>
@@ -119,33 +118,6 @@ public interface TDatasource extends EObject {
 	void setSubtype(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Language</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Language</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Language</em>' attribute.
-	 * @see #setLanguage(String)
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTDatasource_Language()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        extendedMetaData="kind='attribute' name='language'"
-	 * @generated
-	 */
-	String getLanguage();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getLanguage <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Language</em>' attribute.
-	 * @see #getLanguage()
-	 * @generated
-	 */
-	void setLanguage(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Data Source Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -183,7 +155,7 @@ public interface TDatasource extends EObject {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTDatasource_Password()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='password'"
 	 * @generated
 	 */
@@ -210,7 +182,7 @@ public interface TDatasource extends EObject {
 	 * @return the value of the '<em>User Name</em>' attribute.
 	 * @see #setUserName(String)
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTDatasource_UserName()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='userName'"
 	 * @generated
 	 */
