@@ -17,18 +17,18 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public interface DataSourceService {
-  public DataObject retrieveData(DataSource source, String statement)
+  public DataObject retrieveData(DataSource dataSource, String statement)
       throws ConnectionException;
 
-  public boolean depositData(DataSource source, String statement, String target)
+  public boolean depositData(DataSource dataSource, String statement, String target)
       throws ConnectionException;
 
-  public boolean executeStatement(DataSource source, String statement)
+  public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException;
 
-  public boolean writeBack(DataSource source, DataObject data)
+  public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException;
 
-  public DataObject getMetaData(DataSource source, String filter)
+  public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException;
 }

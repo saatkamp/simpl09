@@ -3,22 +3,23 @@ package org.simpl.core.plugins.dataformat.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.simpl.core.services.dataformat.converter.DataFormatConverterService;
+import org.simpl.core.services.dataformat.converter.DataFormatConverter;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create data format converter
- * plug-ins that can be created for data sources to also understand data formats
- * from other data sources.<br>
- * <b>Description:</b><br>
+ * <b>Purpose:</b>This abstract class is used to create data format converter plug-ins
+ * that can be created for data sources to understand data formats from other data
+ * sources.<br>
+ * <b>Description:</b>A data format converter plugin can support the data format of one
+ * type of data source and several of its subtypes.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: DataFormatConverterPlugin.java 1192 2010-04-25 17:37:38Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataFormatConverterPlugin implements
-    DataFormatConverterService {
+public abstract class DataFormatConverterPlugin implements DataFormatConverter {
   /**
    * Type of the supported data source.
    */

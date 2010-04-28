@@ -13,19 +13,19 @@ import javax.jws.soap.SOAPBinding;
 import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
-import org.simpl.core.plugins.datasource.DataSourcePlugin;
+import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.DataSource;
+import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.XMLHelper;
 
 /**
- * Web Service to access the data source service.
+ * Web Service to access the SIMPL core data source service.
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de>
- * @version $Id: Datasource.java 1140 2010-04-19 14:38:52Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 @WebService(name = "DatasourceService", targetNamespace = "")
@@ -35,20 +35,16 @@ public class Datasource {
   ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
   @WebMethod(action = "retrieveData")
-  public String retrieveData(
-      @WebParam(name = "dataSource") DataSource dataSource,
-      @WebParam(name = "statement") String statement)
-      throws ConnectionException {
+  public String retrieveData(@WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "statement") String statement) throws ConnectionException {
     DataObject dataObject = null;
     String data = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService(
-        dataSource.getType(), dataSource.getSubType()).retrieveData(dataSource,
+    dataObject = SIMPLCore.getInstance().dataSourceService().retrieveData(dataSource,
         statement);
 
     try {
-      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject",
-          outputStream);
+      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", outputStream);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -60,59 +56,52 @@ public class Datasource {
   }
 
   @WebMethod(action = "depositData")
-  public boolean depositData(
-      @WebParam(name = "dataSource") DataSource dataSource,
+  public boolean depositData(@WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "statement") String statement,
       @WebParam(name = "target") String target) throws ConnectionException {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
-        dataSource.getSubType()).depositData(dataSource, statement, target);
+    success = SIMPLCore.getInstance().dataSourceService().depositData(dataSource,
+        statement, target);
 
     return success;
   }
 
   @WebMethod(action = "executeStatement")
-  public boolean executeStatement(
-      @WebParam(name = "dataSource") DataSource dataSource,
-      @WebParam(name = "statement") String statement)
-      throws ConnectionException {
+  public boolean executeStatement(@WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "statement") String statement) throws ConnectionException {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
-        dataSource.getSubType()).executeStatement(dataSource, statement);
+    success = SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
+        statement);
 
     return success;
   }
 
   @WebMethod(action = "writeBack")
-  public boolean writeBack(
-      @WebParam(name = "dataSource") DataSource dataSource,
+  public boolean writeBack(@WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "data") String data) throws ConnectionException {
     boolean success = false;
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceService(dataSource.getType(),
-        dataSource.getSubType()).writeBack(dataSource, dataObject);
+    success = SIMPLCore.getInstance().dataSourceService().writeBack(dataSource,
+        dataObject);
 
     return success;
   }
 
   @WebMethod(action = "getMetaData")
-  public String getMetaData(
-      @WebParam(name = "datasource") DataSource dataSource,
+  public String getMetaData(@WebParam(name = "datasource") DataSource dataSource,
       @WebParam(name = "filter") String filter) throws ConnectionException {
     DataObject dataObject = null;
     String metaData = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService(
-        dataSource.getType(), dataSource.getSubType()).getMetaData(dataSource,
+    dataObject = SIMPLCore.getInstance().dataSourceService().getMetaData(dataSource,
         filter);
 
     try {
-      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject",
-          outputStream);
+      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", outputStream);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -124,16 +113,14 @@ public class Datasource {
   }
 
   @WebMethod(action = "getMetaDataSchema")
-  public String getMetaDataSchema(
-      @WebParam(name = "dataSource") DataSource dataSource)
+  public String getMetaDataSchema(@WebParam(name = "dataSource") DataSource dataSource)
       throws ConnectionException {
     InputStream inputStream = null;
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();
 
-    inputStream = ((DataSourcePlugin) SIMPLCore.getInstance()
-        .dataSourceService(dataSource.getType(), dataSource.getSubType()))
-        .getMetaDataSchema();
+    inputStream = ((DataSourceServicePlugin) (DataSourceService) SIMPLCore.getInstance()
+        .dataSourceService()).getMetaDataSchemaFile();
 
     // convert inputStream to String
     try {
@@ -150,23 +137,25 @@ public class Datasource {
 
   @WebMethod(action = "getDataSourceTypes")
   public String getDataSourceTypes() {
-    return Parameter.serialize(SIMPLCore.getInstance().getDataSourceTypes());
+    return Parameter.serialize(SIMPLCore.getInstance().dataSourceService()
+        .getDataSourceTypes());
   }
 
-  @WebMethod(action = "getDataSourceSubtypes")
-  public String getDataSourceSubtypes(String dsType) {
-    return Parameter.serialize(SIMPLCore.getInstance().getDataSourceSubtypes(
-        dsType));
+  @WebMethod(action = "getDataSourceSubTypes")
+  public String getDataSourceSubTypes(String dsType) {
+    return Parameter.serialize(SIMPLCore.getInstance().dataSourceService()
+        .getDataSourceSubTypes(dsType));
   }
 
   @WebMethod(action = "getDataSourceLanguages")
   public String getDataSourceLanguages(String dsSubtype) {
-    return Parameter.serialize(SIMPLCore.getInstance().getDataSourceLanguages(
-        dsSubtype));
+    return Parameter.serialize(SIMPLCore.getInstance().dataSourceService()
+        .getDataSourceLanguages(dsSubtype));
   }
 
   @WebMethod(action = "getDataFormatTypes")
   public String getDataFormatTypes() {
-    return Parameter.serialize(SIMPLCore.getInstance().getDataFormatTypes());
+    return Parameter.serialize(SIMPLCore.getInstance().dataSourceService()
+        .getDataFormatTypes());
   }
 }

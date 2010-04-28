@@ -14,14 +14,14 @@ import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataSourceReader;
 
 /**
- * <b>Purpose:</b> The strategy service is used by a datasource service in case
- * there is given a WS-Policy instead of address, type and subtype.<br>
- * <b>Description:</b> The available data sources are retrieved from a UDDI
- * Registry that is responded by a UDDI client.<br>
+ * <b>Purpose:</b> The strategy service is used by a datasource service in case there is
+ * given a WS-Policy instead of address, type and subtype.<br>
+ * <b>Description:</b> The available data sources are retrieved from a UDDI Registry that
+ * is responded by a UDDI client.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de><br>
+ * @author schneimi<br>
  * @version $Id: StrategyServiceImpl.java 1159 2010-04-20 18:19:11Z
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
@@ -30,17 +30,18 @@ public class StrategyServiceImpl implements StrategyService {
   @Override
   public DataSource findDataSource(DataSource dataSource) {
     DataSource resultDataSource = null;
-    boolean compareWsPolicy = dataSource.getPolicy() != null
-        && !dataSource.getPolicy().equals("");
+    boolean compareWsPolicy = dataSource.getLateBinding().getPolicy() != null
+        && !dataSource.getLateBinding().getPolicy().equals("");
     boolean compareType = dataSource.getType() != null
         && !dataSource.getType().equals("");
     boolean compareSubtype = dataSource.getSubType() != null
         && !dataSource.getSubType().equals("");
 
-    switch (dataSource.getStrategy()) {
+    switch (dataSource.getLateBinding().getStrategy()) {
     case FIRST_FIND:
-      ArrayList<UddiDataSource> dataSources = UddiDataSourceReader
-          .getInstance().getAllDatasources();
+      // TODO UDDI Adresse muss irgendwo aktuell herkommen!
+      ArrayList<UddiDataSource> dataSources = UddiDataSourceReader.getInstance(
+          "localhost").getAllDatasources();
       String dsPolicy = null;
       Policy dsPolicyObj = null;
       Policy wsPolicyObj = null;
@@ -49,8 +50,8 @@ public class StrategyServiceImpl implements StrategyService {
 
       // retrieve data sources and compare the policies
       for (UddiDataSource uddiDataSource : dataSources) {
-        if (dataSource.getPolicy() != null
-            && !dataSource.getPolicy().equals("")) {
+        if (dataSource.getLateBinding().getPolicy() != null
+            && !dataSource.getLateBinding().getPolicy().equals("")) {
           dsPolicy = uddiDataSource.getWsPolicy();
 
           // check if wsPolicy contains an URL
@@ -59,8 +60,8 @@ public class StrategyServiceImpl implements StrategyService {
             dsPolicyObj = PolicyEngine.getPolicy(policyURL.openConnection()
                 .getInputStream());
           } catch (MalformedURLException e) {
-            dsPolicyObj = PolicyEngine.getPolicy(new ByteArrayInputStream(
-                dataSource.getPolicy().getBytes()));
+            dsPolicyObj = PolicyEngine.getPolicy(new ByteArrayInputStream(dataSource
+                .getLateBinding().getPolicy().getBytes()));
           } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -104,7 +105,7 @@ public class StrategyServiceImpl implements StrategyService {
       resultDataSource = new DataSource();
       resultDataSource.setType(resultUddiDataSource.getType());
       resultDataSource.setSubType(resultUddiDataSource.getSubtype());
-      resultDataSource.setPolicy(resultUddiDataSource.getWsPolicy());
+      resultDataSource.getLateBinding().setPolicy(resultUddiDataSource.getWsPolicy());
       resultDataSource.setAddress(resultUddiDataSource.getAddress());
       // TODO Username, Passwort fehlen noch aus der UddIDataSource
 

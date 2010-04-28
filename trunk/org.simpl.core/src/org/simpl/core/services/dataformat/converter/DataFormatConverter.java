@@ -3,8 +3,7 @@ package org.simpl.core.services.dataformat.converter;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Defines the methods that a data format converter service must
- * implement.<br>
+ * <b>Purpose:</b>Defines the methods that a data format converter service must implement.<br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
@@ -14,14 +13,12 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public interface DataFormatConverterService {
+public interface DataFormatConverter {
   /**
-   * Converts Service Data Object (SDO) data from one format to another.
+   * Converts the given Service Data Object (SDO) to the supported data format.
    * 
    * @param data
-   * @param fromFormat
-   * @param format
    * @return
    */
-  public DataObject convert(DataObject data, String format);
+  public DataObject convert(DataObject data);
 }

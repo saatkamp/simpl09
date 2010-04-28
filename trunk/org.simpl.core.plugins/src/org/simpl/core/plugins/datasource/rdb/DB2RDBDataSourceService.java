@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.plugins.datasource.DataSourcePlugin;
+import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
@@ -20,22 +20,25 @@ import commonj.sdo.DataObject;
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for
- * supporting the MySQL relational database.
+ * supporting the IBM DB2 relational database.
  * </p>
  * 
- * dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
- * //localhost:3306/simplDB.
+ * dsAddress = //server:port/database or //server/database, for example
+ * //localhost:50000/testdb.
  * 
  * @author hahnml
+ * @version $Id: DB2RDBDataSource.java 1014 2010-03-29 09:16:08Z
+ *          michael.schneidt@arcor.de $<br>
+ * @link http://code.google.com/p/simpl09/
  */
-public class MySQLRDBDataSource extends DataSourcePlugin {
-  static Logger logger = Logger.getLogger(MySQLRDBDataSource.class);
+public class DB2RDBDataSourceService extends DataSourceServicePlugin {
+  static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
 
-  public MySQLRDBDataSource() {
+  public DB2RDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
-    this.addSubtype("MySQL");
-    this.addLanguage("MySQL", "SQL");
+    this.addSubtype("DB2");
+    this.addLanguage("DB2", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -44,20 +47,22 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
   private Connection openConnection(String dsAddress, String user,
       String password) throws ConnectionException {
     // TODO Umändern in DataSource Connection
+    // Testweise wird hier nur eine embedded Derby Datenbank verwendet
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
 
-    Connection connect = null;
+    java.sql.Connection connect = null;
 
     try {
-      Class.forName("com.mysql.jdbc.Driver");
+      Class.forName("com.ibm.db2.jcc.DB2Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:mysql://");
+      uri.append("jdbc:db2://");
       uri.append(dsAddress);
 
       try {
-        connect = DriverManager.getConnection(uri.toString(), user, password);
+        connect = (java.sql.Connection) DriverManager.getConnection(uri
+            .toString(), user, password);
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
@@ -75,7 +80,8 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
     return connect;
   }
 
-  private boolean closeConnection(Connection connection) {
+  private boolean closeConnection(Connection connection)
+      throws ConnectionException {
     // TODO Auto-generated method stub
     boolean success = false;
 
@@ -92,7 +98,6 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
         logger.error("boolean closeConnection() executed with failures.", e);
       }
     }
-
     return success;
   }
 
@@ -104,9 +109,8 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
           + statement + ") executed.");
     }
 
-    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(),
-        dataSource.getAuthentication().getUser(), dataSource
-            .getAuthentication().getPassword()));
+    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(), "",
+        ""));
     Command read = das.createCommand(statement);
     DataObject root = read.executeQuery();
 
@@ -142,7 +146,6 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
     logger.info("Statement '" + statement + "' send to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
-
     return success;
   }
 
@@ -177,15 +180,24 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
           + statement + ") executed.");
     }
 
-    // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
+    // Beispiel: CREATE TABLE TAB AS (SELECT * FROM T1 WITH NO DATA);
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den
     // gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" ");
+    createTableStatement.append(" AS (");
     createTableStatement.append(statement);
+    createTableStatement.append(" ");
+    createTableStatement.append(") WITH NO DATA");
+
+    StringBuilder insertStatement = new StringBuilder();
+    insertStatement.append("INSERT INTO");
+    insertStatement.append(" ");
+    insertStatement.append(target);
+    insertStatement.append(" ");
+    insertStatement.append(statement);
 
     Connection conn = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication()
@@ -193,12 +205,17 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
 
     try {
       Statement createState = conn.createStatement();
+      Statement insertState = conn.createStatement();
 
       // Neue Tabelle aus dem Query erzeugen
       createState.execute(createTableStatement.toString());
 
+      // Query-Daten in die neue Tabelle einfügen
+      insertState.execute(insertStatement.toString());
+
       conn.commit();
       createState.close();
+      insertState.close();
       closeConnection(conn);
 
       success = true;
@@ -207,8 +224,9 @@ public class MySQLRDBDataSource extends DataSourcePlugin {
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' "
-        + "executed on " + dataSource.getAddress());
+    logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
+        + insertStatement.toString() + "'" + "executed on "
+        + dataSource.getAddress());
 
     return success;
   }

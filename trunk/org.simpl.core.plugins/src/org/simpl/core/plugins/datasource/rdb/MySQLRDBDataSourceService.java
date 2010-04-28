@@ -11,8 +11,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.core.plugins.datasource.DataSourcePlugin;
-import org.simpl.core.services.connection.JDCConnectionDriver;
+import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
@@ -21,32 +20,29 @@ import commonj.sdo.DataObject;
 /**
  * <p>
  * Implements all methods of the {@link IDatasourceService} interface for
- * supporting the Apache Derby relational database in embedded mode.
+ * supporting the MySQL relational database.
  * </p>
  * 
- * dsAddress = Full path to embedded Derby database, for example:
- * C:\databases\myDB.
+ * dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
+ * //localhost:3306/simplDB.
  * 
- * @author hahnml<br>
- * @version $Id: EmbDerbyRDBDataSource.java 1087 2010-04-13 17:12:27Z
- *          michael.schneidt@arcor.de $<br>
- * @link http://code.google.com/p/simpl09/
+ * @author hahnml
  */
-public class EmbDerbyRDBDataSource extends DataSourcePlugin {
-  static Logger logger = Logger.getLogger(EmbDerbyRDBDataSource.class);
+public class MySQLRDBDataSourceService extends DataSourceServicePlugin {
+  static Logger logger = Logger.getLogger(MySQLRDBDataSourceService.class);
 
-  public EmbDerbyRDBDataSource() {
+  public MySQLRDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
-    this.addSubtype("EmbeddedDerby");
-    this.addLanguage("EmbeddedDerby", "SQL");
+    this.addSubtype("MySQL");
+    this.addLanguage("MySQL", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  private Connection openConnection(String dsAddress)
-      throws ConnectionException {
+  private Connection openConnection(String dsAddress, String user,
+      String password) throws ConnectionException {
     // TODO Umändern in DataSource Connection
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
@@ -55,36 +51,27 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     Connection connect = null;
 
     try {
+      Class.forName("com.mysql.jdbc.Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:derby:");
+      uri.append("jdbc:mysql://");
       uri.append(dsAddress);
-      uri.append(";create=true");
 
       try {
-        new JDCConnectionDriver("org.apache.derby.jdbc.EmbeddedDriver", uri
-            .toString(), "none", "none").connect(uri.toString(), null);
-
-        connect = DriverManager.getConnection("jdbc:jdc:jdcpool");
+        connect = DriverManager.getConnection(uri.toString(), user, password);
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         logger.fatal("exception during establishing connection to: "
             + uri.toString(), e);
-      } catch (InstantiationException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (IllegalAccessException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
       }
 
       logger.info("Connection opened on " + dsAddress + ".");
-
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
       logger.fatal("exception during loading the JDBC driver", e);
     }
+
     return connect;
   }
 
@@ -95,11 +82,9 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     try {
       ((java.sql.Connection) connection).close();
       success = true;
-
       if (logger.isDebugEnabled()) {
         logger.debug("boolean closeConnection() executed successfully.");
       }
-
       logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -119,7 +104,9 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
           + statement + ") executed.");
     }
 
-    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress()));
+    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress(),
+        dataSource.getAuthentication().getUser(), dataSource
+            .getAuthentication().getPassword()));
     Command read = das.createCommand(statement);
     DataObject root = read.executeQuery();
 
@@ -138,7 +125,9 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
     }
 
     boolean success = false;
-    Connection conn = openConnection(dataSource.getAddress());
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
 
     try {
       Statement stat = conn.createStatement();
@@ -167,7 +156,6 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
 
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
-
     /*
      * Connection conn = openConnection(dsAddress); try { Statement stat =
      * conn.createStatement(); stat.execute(statement); conn.commit();
@@ -189,42 +177,28 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
           + statement + ") executed.");
     }
 
-    // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl
-    // genutzt.
-    // Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
+    // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den
     // gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" AS ");
-    createTableStatement.append(statement);
     createTableStatement.append(" ");
-    createTableStatement.append("WITH NO DATA");
+    createTableStatement.append(statement);
 
-    StringBuilder insertStatement = new StringBuilder();
-    insertStatement.append("INSERT INTO");
-    insertStatement.append(" ");
-    insertStatement.append(target);
-    insertStatement.append(" ");
-    insertStatement.append(statement);
-
-    Connection conn = openConnection(dataSource.getAddress());
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
 
     try {
       Statement createState = conn.createStatement();
-      Statement insertState = conn.createStatement();
 
       // Neue Tabelle aus dem Query erzeugen
       createState.execute(createTableStatement.toString());
 
-      // Query-Daten in die neue Tabelle einfügen
-      insertState.execute(insertStatement.toString());
-
       conn.commit();
       createState.close();
-      insertState.close();
       closeConnection(conn);
 
       success = true;
@@ -233,17 +207,25 @@ public class EmbDerbyRDBDataSource extends DataSourcePlugin {
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
-        + insertStatement.toString() + "'" + "executed on "
-        + dataSource.getAddress());
+    logger.info("Statement '" + createTableStatement.toString() + "' "
+        + "executed on " + dataSource.getAddress());
 
     return success;
   }
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
+   */
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
-    Connection conn = openConnection(dataSource.getAddress());
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
+
     DataObject metaDataObject = this.getMetaDataSDO();
     DataObject schemaObject = null;
     DataObject tableObject = null;

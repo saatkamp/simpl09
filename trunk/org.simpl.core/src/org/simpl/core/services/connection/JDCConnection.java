@@ -24,7 +24,7 @@ import java.util.Properties;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de>
+ * @author schneimi
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */

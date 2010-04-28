@@ -13,17 +13,17 @@ import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create a data source plug-in for
- * the SIMPL Core, to realize the access to a specific type of data source.<br>
- * <b>Description:</b>A data source service plug-in supports just one type of
- * data source (e.g. database, file system), but several subtypes (e.g. MySQL,
- * DB2) and languages (e.g. SQL, XQuery).<br>
- * The meta data of a data source is made available as a service data object
- * (SDO). The SDO is created from of a XML schema file, that defines the meta
- * data structure in a schema element type and can be set for each plug-in
- * individually. If no schema file is set, the standard meta data schema file
- * defined in the SIMPL Core is used as default. Type, subtypes, languages, meta
- * data schema and schema element type must be set in the plug-in's constructor.<br>
+ * <b>Purpose:</b>This abstract class is used to create a data source plug-in for the
+ * SIMPL Core, to realize the access to a specific type of data source.<br>
+ * <b>Description:</b>A data source service plug-in supports just one type of data source
+ * (e.g. database, file system), but several subtypes (e.g. MySQL, DB2) and languages
+ * (e.g. SQL, XQuery).<br>
+ * The meta data of a data source is made available as a service data object (SDO). The
+ * SDO is created from of a XML schema file, that defines the meta data structure in a
+ * schema element type and can be set for each plug-in individually. If no schema file is
+ * set, the standard meta data schema file defined in the SIMPL Core is used as default.
+ * Type, subtypes, languages, meta data schema and schema element type must be set in the
+ * plug-in's constructor.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b>SIMPL<br>
  * 
@@ -32,7 +32,7 @@ import commonj.sdo.helper.XSDHelper;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataSourcePlugin implements DataSourceService {
+public abstract class DataSourceServicePlugin implements DataSourceService {
   /**
    * Type of the supported data source (database, file system, ...).
    */
@@ -49,13 +49,17 @@ public abstract class DataSourcePlugin implements DataSourceService {
   private HashMap<String, List<String>> languages = new HashMap<String, List<String>>();
 
   /**
+   * The data format of this data source.
+   */
+  private String dataFormat = "Tuscany";
+
+  /**
    * Sets the name and location of the data format schema file.
    */
   private String metaDataSchemaFile = "DataSourceMetaData.xsd";
 
   /**
-   * XML schema type of the data source meta data (declared in
-   * DEFAULT_META_DATA_SCHEMA).
+   * XML schema type of the data source meta data (declared in DEFAULT_META_DATA_SCHEMA).
    */
   private String metaDataSchemaType = "tDatabaseMetaData";
 
@@ -64,20 +68,6 @@ public abstract class DataSourcePlugin implements DataSourceService {
    */
   public String getType() {
     return this.type;
-  }
-
-  /**
-   * @return List of the supported data source subtypes.
-   */
-  public List<String> getSubtypes() {
-    return this.subtypes;
-  }
-
-  /**
-   * @return HashMap of the supported languages of subtypes.
-   */
-  public HashMap<String, List<String>> getLanguages() {
-    return this.languages;
   }
 
   /**
@@ -90,6 +80,13 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
+   * @return List of the supported data source subtypes.
+   */
+  public List<String> getSubtypes() {
+    return this.subtypes;
+  }
+
+  /**
    * Adds a supported data source subtype.
    * 
    * @param dsSubtype
@@ -98,6 +95,13 @@ public abstract class DataSourcePlugin implements DataSourceService {
     if (!this.subtypes.contains(dsSubtype)) {
       this.subtypes.add(dsSubtype);
     }
+  }
+
+  /**
+   * @return HashMap of the supported languages of subtypes.
+   */
+  public HashMap<String, List<String>> getLanguages() {
+    return this.languages;
   }
 
   /**
@@ -122,6 +126,22 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
+   * @return The used data format type.
+   */
+  public String getDataFormat() {
+    return this.dataFormat;
+  }
+
+  /**
+   * Sets the data format type for the data source.
+   * 
+   * @param dataFormat
+   */
+  public void setDataFormat(String dataFormat) {
+    this.dataFormat = dataFormat;
+  }
+
+  /**
    * Sets the name/location of the data format schema file.
    * 
    * @param dfSchemaFile
@@ -131,8 +151,30 @@ public abstract class DataSourcePlugin implements DataSourceService {
   }
 
   /**
-   * Sets the element type for the meta data being used to create the SDO. The
-   * types are defined in the data source meta data schema file.
+   * @return The meta data schema file as InputStream.
+   */
+  public InputStream getMetaDataSchemaFile() {
+    InputStream inputStream = null;
+
+    // Load the schema from jar file
+    inputStream = getClass().getResourceAsStream(metaDataSchemaFile);
+
+    // Load the local schema file
+    if (inputStream == null) {
+      inputStream = getClass().getResourceAsStream(
+          "/org/simpl/core/services/datasource/metadata/" + metaDataSchemaFile);
+    }
+
+    if (inputStream == null) {
+      System.out.println("The file '" + metaDataSchemaFile + "' could not be found.");
+    }
+
+    return inputStream;
+  }
+
+  /**
+   * Sets the element type for the meta data being used to create the SDO. The types are
+   * defined in the data source meta data schema file.
    * 
    * Default available types are tDatabaseMetaData and tFilesystemMetaData.
    * 
@@ -159,8 +201,7 @@ public abstract class DataSourcePlugin implements DataSourceService {
     }
 
     if (inputStream == null) {
-      System.out.println("The file '" + metaDataSchemaFile
-          + "' could not be found.");
+      System.out.println("The file '" + metaDataSchemaFile + "' could not be found.");
     }
 
     XSDHelper.INSTANCE.define(inputStream, null);
@@ -171,34 +212,11 @@ public abstract class DataSourcePlugin implements DataSourceService {
       e.printStackTrace();
     }
 
-    metaDataObject = DataFactory.INSTANCE
-        .create(
-            "http://org.simpl.core/services/datasource/metadata/DataSourceMetaData",
-            this.metaDataSchemaType);
+    metaDataObject = DataFactory.INSTANCE.create(
+        "http://org.simpl.core/services/datasource/metadata/DataSourceMetaData",
+        this.metaDataSchemaType);
 
     return metaDataObject;
   }
 
-  /**
-   * @return The meta data schema file as InputStream.
-   */
-  public InputStream getMetaDataSchema() {
-    InputStream inputStream = null;
-
-    // Load the schema from jar file
-    inputStream = getClass().getResourceAsStream(metaDataSchemaFile);
-
-    // Load the local schema file
-    if (inputStream == null) {
-      inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/services/datasource/metadata/" + metaDataSchemaFile);
-    }
-
-    if (inputStream == null) {
-      System.out.println("The file '" + metaDataSchemaFile
-          + "' could not be found.");
-    }
-
-    return inputStream;
-  }
 }

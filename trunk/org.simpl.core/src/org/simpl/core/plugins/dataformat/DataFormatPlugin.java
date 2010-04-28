@@ -3,7 +3,7 @@ package org.simpl.core.plugins.dataformat;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.simpl.core.services.dataformat.DataFormatService;
+import org.simpl.core.services.dataformat.DataFormat;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
@@ -31,16 +31,16 @@ import commonj.sdo.helper.XSDHelper;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataFormatPlugin<T> implements DataFormatService<T> {
+public abstract class DataFormatPlugin<T> implements DataFormat<T> {
   /**
    * Type of the supported data format (CSV, XML, ...).
    */
-  private String type = "DefaultFormat";
+  private String type = "tDataFormat";
 
   /**
    * Name of the data format schema file.
    */
-  private String schemaFile = "DefaultDataFormat.xsd";
+  private String schemaFile = "TuscanyDataFormat.xsd";
 
   /**
    * The data format schema type defined in the data format schema file that is
@@ -81,7 +81,7 @@ public abstract class DataFormatPlugin<T> implements DataFormatService<T> {
 
     // write the format type to the data object if possible
     try {
-      dataObject.setString("type", this.type);
+      dataObject.setString("formatType", this.type);
     } catch (IllegalArgumentException e) {
       // type is not set, because the schema does not declare this attribute
     }

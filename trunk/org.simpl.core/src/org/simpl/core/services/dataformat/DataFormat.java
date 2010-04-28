@@ -15,7 +15,7 @@ import commonj.sdo.DataObject;
  * @param <T>
  * @link http://code.google.com/p/simpl09/
  */
-public interface DataFormatService<T> {
+public interface DataFormat<T> {
   /**
    * Creates a DataObject of the given data in this data format.
    * 

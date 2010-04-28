@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.SIMPLCore;
-import org.simpl.core.plugins.datasource.DataSourcePlugin;
-import org.simpl.core.services.dataformat.DataFormatService;
+import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
+import org.simpl.core.services.dataformat.DataFormat;
+import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
@@ -19,9 +19,8 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Provides access to a windows file system data source.<br>
- * <b>Description:</b>Statements (commands) are executed on the windows command
- * shell and existing commands used to realize the data source service
- * functions.<br>
+ * <b>Description:</b>Statements (commands) are executed on the windows command shell and
+ * existing commands used to realize the data source service functions.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -30,13 +29,13 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class WindowsLocalFSDataSource extends DataSourcePlugin {
+public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
   /**
    * Runtime to execute commands on the file system.
    */
   Runtime runtime = Runtime.getRuntime();
 
-  public WindowsLocalFSDataSource() {
+  public WindowsLocalFSDataSourceService() {
     this.setType("Filesystem");
     this.setMetaDataSchemaType("tFilesystemMetaData");
     this.addSubtype("Windows Local");
@@ -48,9 +47,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.datasource.DatasourceService#defineData(java.lang.String,
+   * @see org.simpl.core.datasource.DatasourceService#defineData(java.lang.String,
    * java.lang.String)
    */
   @Override
@@ -70,19 +67,16 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.datasource.DatasourceService#depositData(java.lang.String,
+   * @see org.simpl.core.datasource.DatasourceService#depositData(java.lang.String,
    * java.lang.String, java.lang.String)
    */
   @Override
-  public boolean depositData(DataSource dataSource, String file,
-      String targetFile) throws ConnectionException {
+  public boolean depositData(DataSource dataSource, String file, String targetFile)
+      throws ConnectionException {
     String[] envp = new String[] { "cmd", "/c", "start", "copy" };
 
     try {
-      this.execute("copy " + file + " " + targetFile, dataSource.getAddress(),
-          envp);
+      this.execute("copy " + file + " " + targetFile, dataSource.getAddress(), envp);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -95,9 +89,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
+   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
    */
   @Override
   public DataObject getMetaData(DataSource source, String filter)
@@ -124,8 +116,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       for (int i = 3; i < commands.length; i++) {
         if (commands[i].indexOf(" ") > -1) {
           commandName = commands[i].substring(0, commands[i].indexOf(" "));
-          commandDescription = commands[i].substring(commands[i].indexOf(" "))
-              .trim();
+          commandDescription = commands[i].substring(commands[i].indexOf(" ")).trim();
 
           if (commandName.equals("")) {
             commands[i - 1] += " " + commandDescription;
@@ -138,8 +129,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       for (int i = 3; i < commands.length; i++) {
         if (commands[i] != null && commands[i].matches("[A-Z]{2,}.*")) {
           commandName = commands[i].substring(0, commands[i].indexOf(" "));
-          commandDescription = commands[i].substring(commands[i].indexOf(" "))
-              .trim();
+          commandDescription = commands[i].substring(commands[i].indexOf(" ")).trim();
           commandObject = metaDataObject.createDataObject("command");
           commandObject.set("name", commandName);
           commandObject.set("description", commandDescription);
@@ -197,18 +187,15 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.datasource.DatasourceService#writeBack(java.lang.String,
+   * @see org.simpl.core.datasource.DatasourceService#writeBack(java.lang.String,
    * commonj.sdo.DataObject)
    */
   @Override
   public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
     boolean writeBack = false;
-    DataFormatService<Object> dataFormatService = SIMPLCore.getInstance()
-        .dataFormatService("CSV");
-    File tempFile = (File) dataFormatService.fromSDO(data);
+    DataFormat<Object> dataFormat = DataFormatProvider.getInstance("CSV");
+    File tempFile = (File) dataFormat.fromSDO(data);
     String dir = "";
 
     if (!dataSource.getAddress().equals("")) {
@@ -223,9 +210,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.datasource.DatasourceService#retrieveData(java.lang.String,
+   * @see org.simpl.core.datasource.DatasourceService#retrieveData(java.lang.String,
    * java.lang.String)
    */
   @Override
@@ -233,8 +218,7 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
       throws ConnectionException {
     DataObject dataObject = null;
     File fsFile = null;
-    DataFormatService<Object> dataFormatService = SIMPLCore.getInstance()
-        .dataFormatService("CSV");
+    DataFormat<Object> dataFormat = DataFormatProvider.getInstance("CSV");
 
     if (!dataSource.getAddress().equals("")) {
       fsFile = new File(dataSource.getAddress() + File.separator + file);
@@ -243,21 +227,19 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
     }
 
     if (fsFile != null) {
-      dataObject = dataFormatService.toSDO(fsFile);
+      dataObject = dataFormat.toSDO(fsFile);
     }
 
     return dataObject;
   }
 
   /**
-   * Executes a shell command in the given working directory and returns the
-   * shell output.
+   * Executes a shell command in the given working directory and returns the shell output.
    * 
    * @param command
    * @return
    */
-  private String[] execute(String command, String dir, String[] envp)
-      throws IOException {
+  private String[] execute(String command, String dir, String[] envp) throws IOException {
     Process process = null;
     BufferedReader processReader;
     String line;
@@ -265,8 +247,8 @@ public class WindowsLocalFSDataSource extends DataSourcePlugin {
     List<String> output = new ArrayList<String>();
 
     process = runtime.exec("cmd /c " + command, envp, workingDir);
-    processReader = new BufferedReader(new InputStreamReader(process
-        .getInputStream(), "cp850"));
+    processReader = new BufferedReader(new InputStreamReader(process.getInputStream(),
+        "cp850"));
 
     while ((line = processReader.readLine()) != null) {
       output.add(line);
