@@ -19,10 +19,11 @@ import org.simpl.core.services.strategy.Strategy;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LateBinding", propOrder = { "policy", "strategy" })
+@XmlType(name = "LateBinding", propOrder = { "policy", "strategy", "uddiAddress"})
 public class LateBinding {
   private String policy;
   private Strategy strategy;
+  private String uddiAddress;
 
   /**
    * @return the policy
@@ -52,5 +53,20 @@ public class LateBinding {
    */
   public void setStrategy(Strategy strategy) {
     this.strategy = strategy;
+  }
+
+  /**
+   * @return the uddiAddress
+   */
+  public String getUddiAddress() {
+    return uddiAddress;
+  }
+
+  /**
+   * @param uddiAddress
+   *          the uddiAddress to set
+   */
+  public void setUddiAddress(String uddiAddress) {
+    this.uddiAddress = uddiAddress;
   }
 }
