@@ -3,31 +3,22 @@
    <description name="SIMPL Framework for Eclipse" url="http://simpl09.googlecode.com/svn/update">
       SIMPL Framework for Eclipse
    </description>
-   <feature url="features/org.eclipse.bpel.simpl.feature_0.1.0.jar" id="org.eclipse.bpel.simpl.feature" version="0.1.0">
+   <feature url="features/org.eclipse.bpel.simpl.feature_0.2.0.jar" id="org.eclipse.bpel.simpl.feature" version="0.2.0">
       <category name="SIMPL Eclipse Plug-Ins"/>
    </feature>
-   <feature url="features/org.eclipse.simpl.communication.feature_0.1.0.jar" id="org.eclipse.simpl.communication.feature" version="0.1.0">
+   <feature url="features/org.eclipse.simpl.communication.feature_0.2.0.jar" id="org.eclipse.simpl.communication.feature" version="0.2.0">
       <category name="SIMPL Eclipse Plug-Ins"/>
    </feature>
-   <feature url="features/org.eclipse.simpl.core.feature_0.1.0.jar" id="org.eclipse.simpl.core.feature" version="0.1.0">
+   <feature url="features/org.eclipse.simpl.core.feature_0.2.0.jar" id="org.eclipse.simpl.core.feature" version="0.2.0">
       <category name="SIMPL Eclipse Plug-Ins"/>
    </feature>
-   <feature url="features/org.eclipse.bpel.simpl.feature_0.1.1.jar" id="org.eclipse.bpel.simpl.feature" version="0.1.1">
+   <feature url="features/org.eclipse.simpl.bpel.feature_0.2.0.jar" id="org.eclipse.simpl.bpel.feature" version="0.2.0">
       <category name="SIMPL Eclipse Plug-Ins"/>
    </feature>
-   <feature url="features/org.eclipse.bpel.simpl.feature_0.1.2.jar" id="org.eclipse.bpel.simpl.feature" version="0.1.2">
+   <feature url="features/org.eclipse.simpl.rrs.feature_0.2.0.jar" id="org.eclipse.simpl.rrs.feature" version="0.2.0">
       <category name="SIMPL Eclipse Plug-Ins"/>
    </feature>
-   <feature url="features/org.eclipse.simpl.communication.feature_0.1.1.jar" id="org.eclipse.simpl.communication.feature" version="0.1.1">
-      <category name="SIMPL Eclipse Plug-Ins"/>
-   </feature>
-   <feature url="features/org.eclipse.simpl.core.feature_0.1.1.jar" id="org.eclipse.simpl.core.feature" version="0.1.1">
-      <category name="SIMPL Eclipse Plug-Ins"/>
-   </feature>
-   <feature url="features/org.eclipse.bpel.simpl.feature_0.1.3.jar" id="org.eclipse.bpel.simpl.feature" version="0.1.3">
-      <category name="SIMPL Eclipse Plug-Ins"/>
-   </feature>
-   <feature url="features/org.eclipse.bpel.simpl.feature_0.1.4.jar" id="org.eclipse.bpel.simpl.feature" version="0.1.4">
+   <feature url="features/org.eclipse.simpl.uddi.feature_0.2.0.jar" id="org.eclipse.simpl.uddi.feature" version="0.2.0">
       <category name="SIMPL Eclipse Plug-Ins"/>
    </feature>
    <category-def name="SIMPL Eclipse Plug-Ins" label="SIMPL Plug-Ins for Eclipse"/>
