@@ -7,7 +7,7 @@ public class ClientTest implements IUddiConfig {
 		UddiBusiness business = new UddiBusiness();
 		business.addName("SimplBusiness", "ger");
 		business.addDescription("Business fuer SIMPL Datasources", "ger");
-		business.setKey(KEYPREFIX + "simpl");
+		business.setKey("simpl");
 
 		UddiDataWriter dataWriter = UddiDataWriter.getInstance("http://localhost:8080/juddiv3","root","");
 		
@@ -18,7 +18,7 @@ public class ClientTest implements IUddiConfig {
 			UddiDataSource dataSource = new UddiDataSource(business.getKey());
 			dataSource.setAddress("http://source1.datasources.org");
 			dataSource.setName("Mysql Datenbank"+i);
-			dataSource.setKey(KEYPREFIX + "source_1"+i);
+			dataSource.setKey("source_1"+i);
 			dataSource.addDescription("Mysql Datenbank", "ger");
 			dataSource.addAttribute("type", "database", KEYPREFIX + "type");
 			dataSource.addAttribute("subtype", "rdb", KEYPREFIX + "subtype");
@@ -31,8 +31,8 @@ public class ClientTest implements IUddiConfig {
 
 		UddiDataSource dataSource2 = new UddiDataSource(business.getKey());
 		dataSource2.setAddress("http://source2.datasources.org");
-		dataSource2.setName("Ext 3 File System rene ist doof");
-		dataSource2.setKey(KEYPREFIX + "source_2");
+		dataSource2.setName("Ext 3 File System");
+		dataSource2.setKey("source_2");
 		dataSource2.addDescription("Filesystem Ext3", "ger");
 		dataSource2.addAttribute("type", "filesystem", KEYPREFIX + "type");
 		dataSource2.addAttribute("subtype", "ext3", KEYPREFIX + "subtype");

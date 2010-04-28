@@ -114,22 +114,27 @@ public class UddiDataSourceReader implements IUddiConfig {
 				e.printStackTrace();
 			}
 
-			for (BusinessService businessService : businessServices) {
-				UddiDataSource dataSource = new UddiDataSource(businessService
-						.getBusinessKey());
-				dataSource.setAddress(businessService.getBindingTemplates()
-						.getBindingTemplate().get(0).getAccessPoint()
-						.getValue());
-				dataSource.setDescList((ArrayList<Description>) businessService
-						.getDescription());
-				dataSource.setKey(businessService.getServiceKey());
-				dataSource.setName(businessService.getName().get(0).getValue());
-				dataSource
-						.setReferenceList((ArrayList<KeyedReference>) businessService
-								.getCategoryBag().getKeyedReference());
-				datasources.add(dataSource);
-			}
+			
 
+		}
+		
+		for (BusinessService businessService : businessServices) {
+			UddiDataSource dataSource = new UddiDataSource(businessService
+					.getBusinessKey());
+			dataSource.setAddress(businessService.getBindingTemplates()
+					.getBindingTemplate().get(0).getAccessPoint()
+					.getValue());
+			dataSource.setDescList((ArrayList<Description>) businessService
+					.getDescription());
+
+			dataSource.setKey(trimKey(businessService.getServiceKey()));
+			
+			businessService.getServiceKey();
+			dataSource.setName(businessService.getName().get(0).getValue());
+			dataSource
+					.setReferenceList((ArrayList<KeyedReference>) businessService
+							.getCategoryBag().getKeyedReference());
+			datasources.add(dataSource);
 		}
 		return datasources;
 
@@ -216,7 +221,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 						.getValue());
 				dataSource.setDescList((ArrayList<Description>) businessService
 						.getDescription());
-				dataSource.setKey(businessService.getServiceKey());
+				dataSource.setKey(trimKey(businessService.getServiceKey()));
 				dataSource.setName(businessService.getName().get(0).getValue());
 				dataSource
 						.setReferenceList((ArrayList<KeyedReference>) businessService
@@ -309,7 +314,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 						.getValue());
 				dataSource.setDescList((ArrayList<Description>) businessService
 						.getDescription());
-				dataSource.setKey(businessService.getServiceKey());
+				dataSource.setKey(trimKey(businessService.getServiceKey()));
 				dataSource.setName(businessService.getName().get(0).getValue());
 				dataSource
 						.setReferenceList((ArrayList<KeyedReference>) businessService
@@ -336,7 +341,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 
 		ServiceDetail serviceDetail = new ServiceDetail();
 
-		getServiceDetail.getServiceKey().add(key);
+		getServiceDetail.getServiceKey().add(KEYPREFIX + "" +key);
 
 		try {
 			serviceDetail = inquiry.getServiceDetail(getServiceDetail);
@@ -357,7 +362,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 					.getBindingTemplate().get(0).getAccessPoint().getValue());
 			source.setDescList((ArrayList<Description>) businessService
 					.getDescription());
-			source.setKey(businessService.getServiceKey());
+			source.setKey(trimKey(businessService.getServiceKey()));
 			source.setReferenceList((ArrayList<KeyedReference>) businessService
 					.getCategoryBag().getKeyedReference());
 			source.setName(businessService.getName().get(0).getValue());
@@ -373,6 +378,12 @@ public class UddiDataSourceReader implements IUddiConfig {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String trimKey(String key) {
+		String [] keyStringList = key.split(":");
+		
+		return keyStringList[2];
 	}
 
 	public static UddiDataSourceReader getInstance(String addr) {

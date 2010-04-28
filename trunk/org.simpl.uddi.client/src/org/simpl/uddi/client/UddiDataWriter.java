@@ -85,13 +85,13 @@ public class UddiDataWriter implements IUddiConfig {
 
 		service.getDescription().addAll(source.getDescList());
 
-		service.setServiceKey(source.getKey());
+		service.setServiceKey(KEYPREFIX + "" + source.getKey());
 				
 		service.setBusinessKey(source.getBusinessKey());
 		Name name = new Name();
 		name.setValue(source.getName());
 		service.getName().add(name);
-		template.setBindingKey(source.getKey() + "_binding");
+		template.setBindingKey(source.getKey() + KEYPREFIX+ "_binding");
 		AccessPoint accessPoint = new AccessPoint();
 		accessPoint.setUseType(ACCESS_POINT_TYPE);
 		accessPoint.setValue(source.getAddress());
@@ -136,7 +136,7 @@ public class UddiDataWriter implements IUddiConfig {
 	 */
 	public void writeBusiness(UddiBusiness uddiBusiness) {
 		BusinessEntity business = new BusinessEntity();
-		business.setBusinessKey(uddiBusiness.getKey());
+		business.setBusinessKey(KEYPREFIX + uddiBusiness.getKey());
 		business.getDescription().addAll(uddiBusiness.getDescList());
 		business.getName().addAll(uddiBusiness.getNameList());
 
@@ -166,7 +166,7 @@ public class UddiDataWriter implements IUddiConfig {
 	public void deleteDatasource(String key) {
 		DeleteService deleteService = new DeleteService();
 		deleteService.setAuthInfo(this.userAuthToken.getAuthInfo());
-		deleteService.getServiceKey().add(key);
+		deleteService.getServiceKey().add(KEYPREFIX + "" + key);
 		try {
 			publish.deleteService(deleteService);
 		} catch (DispositionReportFaultMessage e) {
