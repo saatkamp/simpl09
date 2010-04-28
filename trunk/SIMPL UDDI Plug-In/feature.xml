@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.simpl.uddi.feature"
-      label="SIMPL_UDDI_Plug_In"
+      label="SIMPL UDDI Plug-In"
       version="0.2.0"
       provider-name="SIMPL">
 
