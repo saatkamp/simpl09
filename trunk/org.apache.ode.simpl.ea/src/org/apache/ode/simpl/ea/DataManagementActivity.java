@@ -52,13 +52,9 @@ public abstract class DataManagementActivity extends AbstractSyncExtensionOperat
 			infos = new DeploymentInfos(path, processName);
 		}
 	}
-
-	public DeploymentInfos getDeployInfos() {
-		return infos;
-	}
 	
-	public DataSource getDataSource(String activityName){
-		return infos.getActivityDataSource(activityName);
+	public DataSource getDataSource(String activityName, String dataSourceName){
+		return infos.getActivityDataSource(activityName, dataSourceName);
 	}
 	
 	public String getActivityName() {

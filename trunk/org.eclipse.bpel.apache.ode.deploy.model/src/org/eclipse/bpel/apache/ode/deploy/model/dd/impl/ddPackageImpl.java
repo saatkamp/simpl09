@@ -822,6 +822,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTActivityMapping_UddiAddress() {
+		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTPolicy() {
 		return tPolicyEClass;
 	}
@@ -976,6 +985,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
 		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__POLICY);
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__STRATEGY);
+		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__UDDI_ADDRESS);
 
 		tPolicyEClass = createEClass(TPOLICY);
 		createEAttribute(tPolicyEClass, TPOLICY__POLICY_DATA);
@@ -1102,6 +1112,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTActivityMapping_Activity(), theXMLTypePackage.getString(), "activity", "", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTActivityMapping_Policy(), this.getTPolicy(), null, "policy", null, 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTActivityMapping_Strategy(), this.getStrategyType(), "strategy", "firstFind", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTActivityMapping_UddiAddress(), theXMLTypePackage.getString(), "uddiAddress", "", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tPolicyEClass, TPolicy.class, "TPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTPolicy_PolicyData(), ecorePackage.getEString(), "policyData", null, 1, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

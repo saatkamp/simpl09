@@ -447,6 +447,8 @@
         eType="#//TPolicy" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" lowerBound="1"
         eType="#//StrategyType" defaultValueLiteral="firstFind" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uddiAddress" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String" defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TPolicy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="policyData" lowerBound="1"

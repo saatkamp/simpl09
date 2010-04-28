@@ -28,8 +28,8 @@ public class DeleteActivity extends DataManagementActivity {
 		// Laden alle Informationen aus dem Deployment-Deskriptor.
 		loadDeployInformation(context, element);
 		
-		DataSource ds = getDataSource(getActivityName());
-
+		DataSource ds = getDataSource(getActivityName(), getDsAddress());
+		
 		DataSourceService datasourceService = SIMPLCore.getInstance()
 				.dataSourceService(ds.getType(), ds.getSubType());
 
