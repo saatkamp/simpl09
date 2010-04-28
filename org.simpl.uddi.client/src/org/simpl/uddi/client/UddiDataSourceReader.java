@@ -260,6 +260,8 @@ public class UddiDataSourceReader implements IUddiConfig {
 	public static UddiDataSourceReader getInstance(String addr) {
 		if (datasourceReader == null) {
 			datasourceReader = new UddiDataSourceReader(addr);
+		} else {
+			datasourceReader.setAddress(addr);
 		}
 
 		return datasourceReader;
