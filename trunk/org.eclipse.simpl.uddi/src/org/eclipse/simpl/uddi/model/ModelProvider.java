@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.simpl.uddi.UDDIPlugIn;
 import org.eclipse.simpl.uddi.juddiclient.UddiDataSource;
-import org.eclipse.simpl.uddi.juddiclient.UddiDatasourceReader;
+import org.eclipse.simpl.uddi.juddiclient.UddiDataSourceReader;
 import org.eclipse.simpl.uddi.model.datasource.DataSource;
 import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 
@@ -20,7 +21,7 @@ public class ModelProvider {
 		// put them into the model
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
 
-		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDatasources();
+		ArrayList<UddiDataSource> dsList = UddiDataSourceReader.getInstance(UDDIPlugIn.getDefault().getPreferenceStore().getString("UDDI_INQ_ADDRESS")).getAllDatasources();
 		
 		for (UddiDataSource source: dsList) {
 
@@ -80,7 +81,7 @@ public class ModelProvider {
 	public void refresh() {
 		datasources.clear();
 
-		ArrayList<UddiDataSource> dsList = UddiDatasourceReader.getInstance().getAllDatasources();
+		ArrayList<UddiDataSource> dsList = UddiDataSourceReader.getInstance(UDDIPlugIn.getDefault().getPreferenceStore().getString("UDDI_INQ_ADDRESS")).getAllDatasources();
 		
 		DatasourceFactory factory = DatasourceFactory.eINSTANCE;
 

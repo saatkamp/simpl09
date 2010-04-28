@@ -18,6 +18,8 @@ public class UddiDataSource implements IUddiConfig {
 	private Name name = null;
 
 	private String businessKey = null;
+	
+	
 
 	public UddiDataSource(String businessKey) {
 		this.businessKey = businessKey;
@@ -30,6 +32,20 @@ public class UddiDataSource implements IUddiConfig {
 		addAttribute("category", "datasource", KEYPREFIX + "category");
 
 	}
+	
+	public UddiDataSource(String businessKey, String serviceKey) {
+		this.businessKey = businessKey;
+
+		descList = new ArrayList<Description>();
+		referenceList = new ArrayList<KeyedReference>();
+		this.name = new Name();
+		this.businessKey = businessKey;
+
+		addAttribute("category", "datasource", KEYPREFIX + "category");
+		
+		this.serviceKey = serviceKey;
+
+	}
 
 	public String getName() {
 		return name.getValue();
@@ -37,7 +53,9 @@ public class UddiDataSource implements IUddiConfig {
 
 	public void setName(String name) {
 		this.name.setValue(name);
-		this.name.setLang("");
+		this.name.setLang("");		
+		
+		this.serviceKey = KEYPREFIX + "" + name.replaceAll(" ", "");
 	}
 
 	public String getBusinessKey() {
@@ -98,17 +116,13 @@ public class UddiDataSource implements IUddiConfig {
 	public String getKey() {
 		return serviceKey;
 	}
-
+	
 	/**
 	 * Sets the Datasource Key
 	 * 
 	 * @param key
-	 *            Key in form of a UDDIPRÄFIX + unique key Example:
-	 *            uddi:org.apache.juddi:key
+	 *            Key in form of a String without :
 	 */
-	public void setKey(String key) {
-		this.serviceKey = key;
-	}
 
 	public ArrayList<KeyedReference> getReferenceList() {
 		return referenceList;
@@ -153,5 +167,17 @@ public class UddiDataSource implements IUddiConfig {
 		}
 
 		return value;
+	}
+	
+	public String getWsPolicy() {
+		return getAttributeValue("wspolicy");
+	}
+	
+	public String getType() {
+		return getAttributeValue("type");
+	}
+	
+	public String getSubtype() {
+		return getAttributeValue("subtype");
 	}
 }
