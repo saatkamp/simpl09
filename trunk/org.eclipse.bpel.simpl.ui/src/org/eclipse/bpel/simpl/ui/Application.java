@@ -60,8 +60,6 @@ public class Application {
 			languageExtensions.add(e);
 			System.out.println("Element: " + e.getName());
 		}
-		
-		org.eclipse.bpel.simpl.ui.properties.util.SIMPLCoreMetaData.init();
 	}
 
 	/**

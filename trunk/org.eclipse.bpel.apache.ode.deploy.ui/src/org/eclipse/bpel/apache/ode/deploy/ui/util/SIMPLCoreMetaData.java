@@ -5,11 +5,11 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: SIMPLCoreMetaData.java 1202 2010-04-27 16:31:01Z hahnml@t-online.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
-package org.eclipse.bpel.simpl.ui.properties.util;
+package org.eclipse.bpel.apache.ode.deploy.ui.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -16,20 +16,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.ui.DataManagementUIConstants;
 import org.eclipse.bpel.simpl.ui.factories.DataManagementUIAdapterFactory;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
 
 public class BPELDMUIPlugIn extends AbstractUIPlugin {
 
@@ -60,17 +56,7 @@ public class BPELDMUIPlugIn extends AbstractUIPlugin {
 		BPELUtil.registerAdapterFactory(ModelPackage.eINSTANCE,
 				new DataManagementUIAdapterFactory());
 
-		try {
-			Application.getInstance().initApplication();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			MessageDialog
-					.openError(
-							Display.getCurrent().getActiveShell(),
-							"SIMPL Core Connection Exception",
-					"The SIMPL Core isn't available. Please check if your Apache Tomcat Server is running and reload Plug-In data.");
-		}
+		Application.getInstance().initApplication();
 	}
 
 	/*

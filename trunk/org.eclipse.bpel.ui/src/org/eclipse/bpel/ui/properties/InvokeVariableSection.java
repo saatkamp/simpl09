@@ -37,7 +37,6 @@ import org.eclipse.bpel.ui.commands.AddFromPartCommand;
 import org.eclipse.bpel.ui.commands.AddToPartCommand;
 import org.eclipse.bpel.ui.commands.AddVariableCommand;
 import org.eclipse.bpel.ui.commands.CompoundCommand;
-import org.eclipse.bpel.ui.commands.SetReferenceVariableCommand;
 import org.eclipse.bpel.ui.commands.SetVariableCommand;
 import org.eclipse.bpel.ui.commands.util.AutoUndoCommand;
 import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;

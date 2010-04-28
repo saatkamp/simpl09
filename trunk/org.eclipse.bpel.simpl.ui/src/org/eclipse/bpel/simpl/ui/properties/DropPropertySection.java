@@ -11,8 +11,6 @@
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
-import java.util.List;
-
 import org.eclipse.bpel.simpl.model.DropActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
@@ -21,7 +19,6 @@ import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
-import org.eclipse.bpel.simpl.ui.properties.util.SIMPLCoreMetaData;
 import org.eclipse.simpl.uddi.model.datasource.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;

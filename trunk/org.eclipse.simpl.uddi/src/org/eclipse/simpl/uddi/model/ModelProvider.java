@@ -1,6 +1,7 @@
 package org.eclipse.simpl.uddi.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.simpl.uddi.juddiclient.UddiDataSource;
@@ -51,6 +52,24 @@ public class ModelProvider {
 			}
 		}
 		return found;
+	}
+	
+	public DataSource findDataSourceByName(String name){
+		boolean found = false;
+
+		Iterator<DataSource> iterator = this.datasources.iterator();
+		DataSource data = null;
+
+		while (!found && iterator.hasNext()) {
+			data = iterator.next();
+			if (data.getName().equals(name)) {
+				found = true;
+			} else {
+				data = null;
+			}
+		}
+
+		return data;
 	}
 
 	public List<DataSource> getDataSources() {
