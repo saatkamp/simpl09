@@ -16,8 +16,6 @@ public class UddiWebConfig {
 
 	private String username = "";
 
-	private String prefix = "";
-
 	private UddiWebConfig() {
 
 		try {
@@ -35,9 +33,6 @@ public class UddiWebConfig {
 
 			NodeList usernameNode = doc.getElementsByTagName("username");
 			this.username = ((Node) usernameNode).getNodeValue();
-
-			NodeList prefixNode = doc.getElementsByTagName("key-prefix");
-			this.prefix = ((Node) prefixNode).getNodeValue();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,14 +61,6 @@ public class UddiWebConfig {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPrefix() {
-		return prefix;
-	}
-
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
 	}
 
 	public static UddiWebConfig getInstance() {
