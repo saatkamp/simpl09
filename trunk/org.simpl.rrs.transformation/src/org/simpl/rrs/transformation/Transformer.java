@@ -105,8 +105,7 @@ public class Transformer {
 
 	// This HashMap will hold all referenceVariable names as key and later the
 	// actual number of dereferentiation activities in which this
-	// referenceVariable is
-	// solved.
+	// referenceVariable is solved.
 	private HashMap<String, Integer> refVarNames = new HashMap<String, Integer>();
 
 	// This list holds all invoke elements from the original process
