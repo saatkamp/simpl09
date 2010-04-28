@@ -2,12 +2,15 @@ package org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
+import org.eclipse.bpel.apache.ode.deploy.ui.util.SIMPLCoreMetaData;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -22,9 +25,9 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 	private Text name;
 	private Text address;
-	private Text type;
-	private Text subtype;
-	private Text language;
+	private CCombo type;
+	private CCombo subtype;
+	private CCombo language;
 	private Text user;
 	private Text password;
 	private TDatasource datasource;
@@ -77,23 +80,55 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 		Label label3 = new Label(parent, SWT.NONE);
 		label3.setText("Type");
-		type = new Text(parent, SWT.BORDER);
+		type = new CCombo(parent, SWT.BORDER);
+		type.setItems(SIMPLCoreMetaData.getDataSourceTypes().toArray(
+				new String[0]));
+		type.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
+						type.getText()).toArray(new String[0]));
+			}
+		});
 		if (this.datasource.getType() != null) {
 			type.setText(this.datasource.getType());
 		}
 		
 		Label label4 = new Label(parent, SWT.NONE);
 		label4.setText("Subtype");
-		subtype = new Text(parent, SWT.BORDER);
+		subtype = new CCombo(parent, SWT.BORDER);
+		subtype.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
+						subtype.getText()).toArray(new String[0]));
+			}
+		});
 		if (this.datasource.getSubtype() != null) {
+			subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
+					type.getText()).toArray(new String[0]));
 			subtype.setText(this.datasource.getSubtype());
 		}
 		
 		Label label5 = new Label(parent, SWT.NONE);
 		label5.setText("Language");
-		language = new Text(parent, SWT.BORDER);
+		language = new CCombo(parent, SWT.BORDER);
 		if (this.datasource.getLanguage() != null) {
-			address.setText(this.datasource.getLanguage());
+			language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
+					subtype.getText()).toArray(new String[0]));
+			language.setText(this.datasource.getLanguage());
 		}
 		
 		Label label6 = new Label(parent, SWT.NONE);
