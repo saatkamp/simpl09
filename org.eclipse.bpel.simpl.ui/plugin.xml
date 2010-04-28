@@ -92,21 +92,6 @@
       </propertySections>
    </extension>
    <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="org.eclipse.bpel.simpl.ui.handler.BPELDMReloadDataHandler"
-            commandId="org.eclipse.bpel.simpl.ui.reloadDataCommand">
-      </handler>
-   </extension>
-   <extension
-         point="org.eclipse.ui.commands">
-      <command
-            categoryId="org.eclipse.simpl.core.category"
-            id="org.eclipse.bpel.simpl.ui.reloadDataCommand"
-            name="Reload Plug-In Data">
-      </command>
-   </extension>
-   <extension
          point="org.eclipse.bpel.ui.hoverHelpers">
       <hoverHelper
             class="org.eclipse.bpel.simpl.ui.hovers.SIMPLHoverHelper">

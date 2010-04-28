@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.simpl.communication.CommunicationPlugIn;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 
 public class Application {
@@ -207,7 +208,7 @@ public class Application {
 		URL url;
 		try {
 			url = new URL(
-					"http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
+					CommunicationPlugIn.getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS"));
 			URLConnection connection = url.openConnection();
 			connection.connect();
 			isAvailable = true;

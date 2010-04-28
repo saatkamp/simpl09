@@ -6,18 +6,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class CommunicationPlugIn extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.simpl.communication";
 
 	// The shared instance
-	private static Activator plugin;
+	private static CommunicationPlugIn plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public CommunicationPlugIn() {
 	}
 
 	/*
@@ -43,7 +43,7 @@ public class Activator extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static CommunicationPlugIn getDefault() {
 		return plugin;
 	}
 

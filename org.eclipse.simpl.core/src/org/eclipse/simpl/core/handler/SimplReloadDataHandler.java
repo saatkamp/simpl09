@@ -31,7 +31,7 @@ public class SimplReloadDataHandler extends AbstractHandler {
         .getWorkbench().getService(IHandlerService.class);
 		
 		try {
-			handlerService.executeCommand("org.eclipse.bpel.simpl.ui.reloadDataCommand", null);
+			handlerService.executeCommand("org.eclipse.bpel.apache.ode.deployl.ui.reloadSIMPLDataCommand", null);
 		} catch (NotDefinedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

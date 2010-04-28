@@ -5,17 +5,17 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: BPELDMReloadDataHandler.java 1202 2010-04-27 16:31:01Z hahnml@t-online.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
-package org.eclipse.bpel.simpl.ui.handler;
+package org.eclipse.bpel.apache.ode.deploy.ui.util;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-public class BPELDMReloadDataHandler extends AbstractHandler {
+public class ReloadPlugInDataHandler extends AbstractHandler {
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
@@ -23,8 +23,8 @@ public class BPELDMReloadDataHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
-			//Laden die Daten des BPEL-DM Plug-Ins neu
-			org.eclipse.bpel.simpl.ui.properties.util.SIMPLCoreMetaData.init();
+			//Laden die Daten des SIMPL Cores neu
+			SIMPLCoreMetaData.init();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
