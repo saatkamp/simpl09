@@ -90,7 +90,9 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
-						type.getItem(type.getSelectionIndex())).toArray(new String[0]));
+						type.getItem(type.getSelectionIndex())).toArray(
+						new String[0]));
+				subtype.setText("");
 			}
 		});
 
@@ -129,7 +131,9 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 						&& !type.getText().isEmpty()
 						&& !subtype.getText().isEmpty()) {
 
-					if (!DeployUtils.getProcessDataSourceNames(processType).contains(name)) {
+					if (DeployUtils.getProcessDataSourceNames(processType) != null
+							&& !DeployUtils.getProcessDataSourceNames(
+									processType).contains(name.getText())) {
 						/*
 						 * Saving the values in the TDatasource
 						 */

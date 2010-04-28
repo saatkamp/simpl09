@@ -35,9 +35,11 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 	private ProcessType processType;
 
-	public EditDataSourceDialog(Shell parentShell, TDatasource datasource) {
+	public EditDataSourceDialog(Shell parentShell, TDatasource datasource,
+			ProcessType processType) {
 		super(parentShell);
 		this.datasource = datasource;
+		this.processType = processType;
 	}
 
 	public TDatasource getDatasource() {
@@ -96,28 +98,36 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
-						type.getItem(type.getSelectionIndex())).toArray(new String[0]));
+						type.getItem(type.getSelectionIndex())).toArray(
+						new String[0]));
+				subtype.setText("");
 			}
 		});
 		if (this.datasource.getType() != null) {
 			type.setText(this.datasource.getType());
 		}
-		
+
 		Label label4 = new Label(parent, SWT.NONE);
 		label4.setText("Subtype *");
 		subtype = new CCombo(parent, SWT.BORDER);
-
+		if (this.datasource.getSubtype() != null) {
+			subtype.setText(this.datasource.getSubtype());
+		}
+		
 		Label label5 = new Label(parent, SWT.NONE);
 		label5.setText("User name");
 		user = new Text(parent, SWT.BORDER);
-
+		if (this.datasource.getUserName() != null) {
+			user.setText(this.datasource.getUserName());
+		}
+		
 		Label label6 = new Label(parent, SWT.NONE);
 		label6.setText("Password");
 		password = new Text(parent, SWT.BORDER | SWT.PASSWORD);
-		if (this.datasource.getPassword() != null){
+		if (this.datasource.getPassword() != null) {
 			password.setText(this.datasource.getPassword());
 		}
-		
+
 		name.setLayoutData(gridData);
 		address.setLayoutData(gridData);
 		type.setLayoutData(gridData);
@@ -141,7 +151,10 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 						&& !type.getText().isEmpty()
 						&& !subtype.getText().isEmpty()) {
 
-					if (!DeployUtils.getProcessDataSourceNames(processType).contains(name)) {
+					if (DeployUtils.getProcessDataSourceNames(processType) != null
+							&& (!DeployUtils.getProcessDataSourceNames(
+									processType).contains(name.getText()) || datasource
+									.getDataSourceName().equals(name.getText()))) {
 						/*
 						 * Saving the values in the TDatasource
 						 */
