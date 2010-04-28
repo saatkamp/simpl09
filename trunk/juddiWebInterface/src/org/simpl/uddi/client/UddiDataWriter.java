@@ -1,4 +1,6 @@
 package org.simpl.uddi.client;
+
+
 import java.rmi.RemoteException;
 
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
@@ -29,23 +31,35 @@ public class UddiDataWriter implements IUddiConfig {
 	private AuthToken userAuthToken = null;
 	
 	private static UddiDataWriter  dataWriter = null;
+	
+	private String username = "";
+	
+	private String password = "";
+	
+	private String address = "";
 
-	private UddiDataWriter() {
+	private UddiDataWriter(String address, String username, String password) {
+		
+		this.address = address;
+		
+		this.username = username;
+		
+		this.password = password;
 
 		Transport transport = new JAXWSTransport("default");
 
 		try {
 		  UddiDataWriter.security = transport
-					.getUDDISecurityService("http://localhost:8080/juddiv3/services/security?wsdl");
-		  UddiDataWriter.publish = transport.getUDDIPublishService("http://localhost:8080/juddiv3/services/publish?wsdl");
+					.getUDDISecurityService(this.address + "/services/security?wsdl");
+		  UddiDataWriter.publish = transport.getUDDIPublishService(this.address + "/services/publish?wsdl");
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		GetAuthToken getAuthToken = new GetAuthToken();
-		getAuthToken.setUserID(USERNAME);
-		getAuthToken.setCred(USERPASSWORD);
+		getAuthToken.setUserID(this.username);
+		getAuthToken.setCred(this.password);
 
 		try {
 			this.userAuthToken = UddiDataWriter.security.getAuthToken(getAuthToken);
@@ -71,20 +85,19 @@ public class UddiDataWriter implements IUddiConfig {
 
 		service.getDescription().addAll(source.getDescList());
 
-		if (source.getKey() != null) {
-			service.setServiceKey(source.getKey());
-		}
-		
+		service.setServiceKey(source.getKey());
+				
 		service.setBusinessKey(source.getBusinessKey());
 		Name name = new Name();
 		name.setValue(source.getName());
 		service.getName().add(name);
-		template.setBindingKey(source.getKey() + "_binding");
+		template.setBindingKey(source.getKey()+ "_binding");
 		AccessPoint accessPoint = new AccessPoint();
 		accessPoint.setUseType(ACCESS_POINT_TYPE);
 		accessPoint.setValue(source.getAddress());
 
 		template.setAccessPoint(accessPoint);
+		
 		template.setServiceKey(source.getKey());
 
 		CategoryBag bag = new CategoryBag();
@@ -165,10 +178,37 @@ public class UddiDataWriter implements IUddiConfig {
 		}
 	}
 	
-	public static UddiDataWriter getInstance() {
+	
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public static UddiDataWriter getInstance(String address, String username, String password) {
 		if (dataWriter == null) {
-			dataWriter = new UddiDataWriter();			
+			dataWriter = new UddiDataWriter(address, username, password);			
 		}
+		
 		return dataWriter;
 	}
 }

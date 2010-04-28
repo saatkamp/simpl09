@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataWriter;
+import org.simpl.uddi.client.UddiWebConfig;
 
 /**
  * Servlet implementation class UddiAction
@@ -44,7 +45,8 @@ public class UddiAction extends HttpServlet {
 		String edit = request.getParameter("edit");
 		String newsource = request.getParameter("new");
 		String save = request.getParameter("save");
-		UddiDataWriter dataWriter = UddiDataWriter.getInstance();
+		UddiWebConfig config = UddiWebConfig.getInstance();
+		UddiDataWriter dataWriter = UddiDataWriter.getInstance(config.getAddress(), config.getUsername(), config.getPassword());
 		
 		if (delete != null) {
 			dataWriter.deleteDatasource(request.getParameter("uddi"));
@@ -57,13 +59,12 @@ public class UddiAction extends HttpServlet {
 		} else if (save != null) {
 			String message = FormValidator.validateForm(request);
 			if (message.equals("")) {
-				UddiDataSource dataSource = new UddiDataSource("uddi:juddi.apache.org:simpl");
+				UddiDataSource dataSource = new UddiDataSource("uddi:juddi.apache.org:simpl", request.getParameter("key"));
 				dataSource.setName(request.getParameter("name"));
 				dataSource.setAddress(request.getParameter("address"));
 				dataSource.addAttribute("type", request.getParameter("type"), "uddi:juddi.apache.org:type");
 				dataSource.addAttribute("subtype", request.getParameter("subtype"), "uddi:juddi.apache.org:subtype");
 				dataSource.addAttribute("wspolicy", request.getParameter("policy"), "uddi:juddi.apache.org:wspolicy");
-				dataSource.setKey(request.getParameter("key"));
 				dataWriter.writeDatasource(dataSource);
 				request.setAttribute("Message", "Datenquelle erfolgreich hinzugefügt");
 				String nextJSP = "/index.jsp?message="+"Datasource Added";
