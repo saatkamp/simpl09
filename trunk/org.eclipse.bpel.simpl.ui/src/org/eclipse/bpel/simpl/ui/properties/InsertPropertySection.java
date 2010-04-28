@@ -350,6 +350,10 @@ public class InsertPropertySection extends DMActivityPropertySection {
 				SWT.COLOR_WHITE));
 		//statementText.setVisible(false);
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++
+		
+		typeText.setEnabled(false);
+		kindText.setEnabled(false);
+		languageText.setEnabled(false);
 	}
 
 	/**

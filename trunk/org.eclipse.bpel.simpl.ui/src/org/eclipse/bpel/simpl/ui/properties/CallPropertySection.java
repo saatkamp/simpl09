@@ -19,6 +19,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.jface.action.SubToolBarManager;
 import org.eclipse.simpl.uddi.model.datasource.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -390,6 +391,9 @@ public class CallPropertySection extends DMActivityPropertySection {
 		//statementText.setVisible(false);
 		//+++++++++++++++++++++++++++++++++++++++++++++++++++++
 		
+		typeText.setEnabled(false);
+		kindText.setEnabled(false);
+		languageText.setEnabled(false);
 	}
 	
 	
