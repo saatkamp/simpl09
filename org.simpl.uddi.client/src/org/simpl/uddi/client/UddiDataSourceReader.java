@@ -33,7 +33,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 		Transport transport = new JAXWSTransport("default");
 
 		try {
-			this.inquiry = transport
+			inquiry = transport
 					.getUDDIInquiryService(this.address + "/services/inquiry?wsdl");
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
@@ -196,8 +196,10 @@ public class UddiDataSourceReader implements IUddiConfig {
 		ArrayList<UddiDataSource> datasources = new ArrayList<UddiDataSource>();
 
 		try {
-			sd = this.inquiry.findService(findService);
-
+			if (this.inquiry != null) {
+				sd = this.inquiry.findService(findService);
+			}
+			
 			if (sd != null && sd.getServiceInfos() != null) {
 				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
@@ -215,7 +217,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (sd.getServiceInfos() != null) {
+		if (sd != null && sd.getServiceInfos() != null) {
 			GetServiceDetail gsd = new GetServiceDetail();
 			gsd.getServiceKey().addAll(keyList);
 
