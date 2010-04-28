@@ -849,7 +849,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 
 						EditDataSourceDialog dialog = new EditDataSourceDialog(
 								Display.getDefault().getActiveShell(),
-								datasource);
+								datasource, processType);
 						dialog.open();
 
 						Command addDataSourceCommand = AddCommand.create(
