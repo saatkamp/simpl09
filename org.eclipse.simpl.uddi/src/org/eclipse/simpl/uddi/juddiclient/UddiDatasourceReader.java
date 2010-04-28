@@ -72,9 +72,11 @@ public class UddiDatasourceReader implements IUddiConfig {
 		ArrayList<String> keyList = new ArrayList<String>();
 
 		try {
-			sd = this.inquiry.findService(findService);
+			if (this.inquiry != null) {
+				sd = this.inquiry.findService(findService);
+			}
 
-			if (sd.getServiceInfos() != null) {
+			if (sd != null && sd.getServiceInfos() != null) {
 				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
 
@@ -91,18 +93,20 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (sd.getServiceInfos() != null) {
+		if (sd != null && sd.getServiceInfos() != null) {
 			GetServiceDetail gsd = new GetServiceDetail();
 			gsd.getServiceKey().addAll(keyList);
 
 			ArrayList<BusinessService> businessServices = new ArrayList<BusinessService>();
 
 			try {
-				ServiceDetail serviceDetail = this.inquiry
-						.getServiceDetail(gsd);
+				if (this.inquiry != null) {
+					ServiceDetail serviceDetail = this.inquiry
+							.getServiceDetail(gsd);
 
-				businessServices = (ArrayList<BusinessService>) serviceDetail
-						.getBusinessService();
+					businessServices = (ArrayList<BusinessService>) serviceDetail
+							.getBusinessService();
+				}
 
 			} catch (DispositionReportFaultMessage e) {
 				// TODO Auto-generated catch block
@@ -166,9 +170,11 @@ public class UddiDatasourceReader implements IUddiConfig {
 		ArrayList<String> keyList = new ArrayList<String>();
 
 		try {
-			sd = this.inquiry.findService(findService);
+			if (this.inquiry != null) {
+				sd = this.inquiry.findService(findService);
+			}
 
-			if (sd.getServiceInfos() != null) {
+			if (sd != null && sd.getServiceInfos() != null) {
 				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
 
@@ -185,18 +191,20 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (sd.getServiceInfos() != null) {
+		if (sd != null && sd.getServiceInfos() != null) {
 			GetServiceDetail gsd = new GetServiceDetail();
 			gsd.getServiceKey().addAll(keyList);
 
 			ArrayList<BusinessService> businessServices = new ArrayList<BusinessService>();
 
 			try {
-				ServiceDetail serviceDetail = this.inquiry
-						.getServiceDetail(gsd);
+				if (this.inquiry != null) {
+					ServiceDetail serviceDetail = this.inquiry
+							.getServiceDetail(gsd);
 
-				businessServices = (ArrayList<BusinessService>) serviceDetail
-						.getBusinessService();
+					businessServices = (ArrayList<BusinessService>) serviceDetail
+							.getBusinessService();
+				}
 
 			} catch (DispositionReportFaultMessage e) {
 				// TODO Auto-generated catch block
@@ -259,9 +267,11 @@ public class UddiDatasourceReader implements IUddiConfig {
 		ArrayList<String> keyList = new ArrayList<String>();
 
 		try {
-			sd = this.inquiry.findService(findService);
+			if (this.inquiry != null) {
+				sd = this.inquiry.findService(findService);
+			}
 
-			if (sd.getServiceInfos() != null) {
+			if (sd != null && sd.getServiceInfos() != null) {
 				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
 
@@ -278,18 +288,20 @@ public class UddiDatasourceReader implements IUddiConfig {
 			e.printStackTrace();
 		}
 
-		if (sd.getServiceInfos() != null) {
+		if (sd != null && sd.getServiceInfos() != null) {
 			GetServiceDetail gsd = new GetServiceDetail();
 			gsd.getServiceKey().addAll(keyList);
 
 			ArrayList<BusinessService> businessServices = new ArrayList<BusinessService>();
 
 			try {
-				ServiceDetail serviceDetail = this.inquiry
-						.getServiceDetail(gsd);
+				if (this.inquiry != null) {
+					ServiceDetail serviceDetail = this.inquiry
+							.getServiceDetail(gsd);
 
-				businessServices = (ArrayList<BusinessService>) serviceDetail
-						.getBusinessService();
+					businessServices = (ArrayList<BusinessService>) serviceDetail
+							.getBusinessService();
+				}
 
 			} catch (DispositionReportFaultMessage e) {
 				// TODO Auto-generated catch block
