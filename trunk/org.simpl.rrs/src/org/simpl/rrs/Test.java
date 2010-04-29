@@ -25,7 +25,9 @@ public class Test {
 		//}
 		
 		try {
-			System.out.println(RRS.getInstance().managementService().Insert("http://localhost:MyDB/", "RDB:Derby:MySQL", "test", "SELECT * FROM tabelle"));
+			RRS.getInstance().managementService().Insert("http://localhost:MyDB2/", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle");
+			RRS.getInstance().managementService().Insert("http://localhost:MyDB/", "RDB:Derby:MySQL", "test", "SELECT * FROM tabelle");
+			RRS.getInstance().managementService().Update("http://localhost:MyDB/", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle", "updated");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

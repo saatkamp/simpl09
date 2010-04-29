@@ -7,7 +7,7 @@ public interface ManagementService {
 
 	public boolean Delete(String uri, String adapterType, String referenceName, String statement);
 	
-	public boolean Update(String uri, String adapterType, String referenceName, String statement) throws SQLException;
+	public boolean Update(String uri, String adapterType, String referenceName, String statement, String newName) throws SQLException;
 	
 	public File Insert(String uri, String adapterType, String referenceName, String statement) throws SQLException;
 	
