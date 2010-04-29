@@ -3863,8 +3863,8 @@ Alle spezifizierten Use-Cases der zweiten Iteration sind innerhalb der Module
 \begin_inset Text
 
 \begin_layout Plain Layout
-05.
- April 2010
+07.
+ Mai 2010
 \end_layout
 
 \end_inset
@@ -3914,8 +3914,8 @@ Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
 \begin_inset Text
 
 \begin_layout Plain Layout
-05.
- April 2010
+07.
+ Mai 2010
 \begin_inset Note Note
 status collapsed
 
@@ -3965,8 +3965,8 @@ Module wurden erfolgreich zu einer lauffähigen Software integriert.
 \begin_inset Text
 
 \begin_layout Plain Layout
-19.
- April 2010
+21.
+ Mai 2010
 \end_layout
 
 \end_inset
@@ -4011,8 +4011,8 @@ Alle erstellten Testfälle wurden ausgeführt, deren Verlauf protokolliert
 \begin_inset Text
 
 \begin_layout Plain Layout
-04.
- Mai 2010
+21.
+ Mai.10
 \end_layout
 
 \end_inset
@@ -4053,8 +4053,8 @@ Alle aus der Spezifikation erstellten Testfälle wurden ausgeführt, deren
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.
- Mai 2010
+04.
+ Juni 10 
 \begin_inset Note Note
 status collapsed
 
@@ -4112,8 +4112,8 @@ Der Kunde hat keine Anmerkungen und alle im Review entdeckten Fehler und
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.
- Mai 2010
+04.
+ Juni 10
 \end_layout
 
 \end_inset
@@ -4155,8 +4155,8 @@ Der Kunde akzeptiert die Software.
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.
- Mai 2010
+04.
+ Juni 10
 \end_layout
 
 \end_inset
@@ -4365,7 +4365,7 @@ Die im vorigen Abschnitt definierten Phasen werden nun in Arbeitspakete
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="32" columns="4">
+<lyxtabular version="3" rows="28" columns="4">
 <features islongtable="true" firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="top" width="2.6cm">
 <column alignment="left" valignment="top" width="2.5cm">
@@ -5222,174 +5222,6 @@ Dokument des Feinentwurf
 
 \shape italic
 codeIter2#erstell
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Implementierung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Implementierung der Usecases
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Code
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-spezIter3#erstell
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Spezifikation erstellen
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Erstellung der Spezifikation
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Spezifikationsdokument
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-spezIter3#rev
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.Review der Spezifikation
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Interner Review der Spezifikation
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Reviewprotokoll
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-feinEntwIter3#
-\begin_inset Newline newline
-\end_inset
-
-erstell
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Feinentwurf erste Iteration erstellen
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Erstellen des Feinentwurfes
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dokument des Feinentwurf
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\shape italic
-codeIter3#
-\begin_inset Newline newline
-\end_inset
-
-erstell
 \end_layout
 
 \end_inset
