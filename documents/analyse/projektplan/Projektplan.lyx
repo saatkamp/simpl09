@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="4">
+<lyxtabular version="3" rows="9" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -752,7 +752,7 @@ Hinzufügen eines Alternativen Zeitplans und alternativer Meilensteine.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -761,11 +761,49 @@ Hinzufügen eines Alternativen Zeitplans und alternativer Meilensteine.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 04.03.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aktualisierung des Zeitplans
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.04.2010
 \end_layout
 
 \end_inset
@@ -1096,7 +1134,7 @@ Handbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.06.10
 \end_layout
 
 \end_inset
@@ -1116,7 +1154,7 @@ Dokumentation der Erweiterungen
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.06.10
 \end_layout
 
 \end_inset
@@ -1136,7 +1174,7 @@ Testfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.06.10
 \end_layout
 
 \end_inset
@@ -1156,7 +1194,7 @@ Testprotokolle
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.06.10
 \end_layout
 
 \end_inset
@@ -1176,7 +1214,7 @@ Installationspaket, das alle benötigten Software-Komponenten beinhaltet
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.06.10
 \end_layout
 
 \end_inset
@@ -1196,7 +1234,7 @@ Eclipse Plug-In
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.06.10
 \end_layout
 
 \end_inset
@@ -1216,7 +1254,7 @@ Quellcode
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.06.10
 \end_layout
 
 \end_inset
@@ -2544,7 +2582,8 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.05.10
+02.
+ 06.10
 \end_layout
 
 \end_inset
@@ -2553,7 +2592,7 @@ intern
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.10
+04.06.10
 \end_layout
 
 \end_inset
@@ -5886,7 +5925,7 @@ Implementierung
 \begin_inset Text
 
 \begin_layout Plain Layout
-13.11.2009-05.04.2010
+13.11.2009-07.05.2010
 \end_layout
 
 \end_inset
@@ -5915,7 +5954,7 @@ Test
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.12.2010-17.05.2010
+15.12.2010-04.06.2010
 \end_layout
 
 \end_inset
@@ -5944,7 +5983,9 @@ Abnahmetest
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.05.2010
+04.
+ 06.
+ 10
 \end_layout
 
 \end_inset
@@ -5983,54 +6024,6 @@ Zeitplan
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Zeitplan"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Dieser Abschnitt enthällt den aktuellen Verlauf des Studienprojektes.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename alternative.png
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Gantt-Diagramm-Alternative"
-
-\end_inset
-
- Gantt-dagramm des alternativen Projektverlaufes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 
