@@ -12,7 +12,7 @@ import org.simpl.rrs.EPR;
 
 public class ManagementServiceImpl implements ManagementService {
 	private static final String DATABASE_NAME = "rrsDB";
-	private static final String Reference_TABLE_NAME = "References";
+	private static final String Reference_TABLE_NAME = "ReferenceTable";
 
 	private String getStatement(String type, String table,
 			LinkedHashMap<String, String> EPR) {
@@ -44,9 +44,9 @@ public class ManagementServiceImpl implements ManagementService {
 					.deleteCharAt(manipulationStatement.length() - 2);
 
 			// Id abgleichen
-			manipulationStatement.append("WHERE ID = REFERENCENAME");
+			manipulationStatement.append("WHERE REFERENCENAME =");
 			manipulationStatement.append("'");
-			// manipulationStatement.append(EPRName);
+			manipulationStatement.append(EPR.get("referenceName"));
 			manipulationStatement.append("'");
 
 			// TODO Testausgabe entfernen
@@ -117,13 +117,18 @@ public class ManagementServiceImpl implements ManagementService {
 
 	private boolean DoesTableExist(Connection connection) throws SQLException {
 
-		boolean tableExists = false;
+		boolean tableExists = true;
 		ResultSet resultSet = connection.getMetaData().getTables("%", "%", "%",
 				new String[] { "TABLE" });
 
-		if (resultSet.getString("TABLE_NAME") == Reference_TABLE_NAME) {
-			tableExists = true;
+		if (resultSet == null) {
+			System.out.println("moar");
+			tableExists = false;
 		}
+		
+//		if (resultSet.getString("TABLE_NAME") == Reference_TABLE_NAME) {
+//			tableExists = true;
+//		}
 
 		return tableExists;
 	}
@@ -183,6 +188,12 @@ public class ManagementServiceImpl implements ManagementService {
 		uri.append(DATABASE_NAME);
 		uri.append(";create=true");
 		try {
+			try {
+				Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			connect = DriverManager.getConnection(uri.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -228,7 +239,7 @@ public class ManagementServiceImpl implements ManagementService {
 					Reference_TABLE_NAME, EPR));
 		}
 
-		if (EPRAllreadyExists(Reference_TABLE_NAME, EPR)) {
+		if (EPRAllreadyExists(Reference_TABLE_NAME, EPR) == false) {
 			try {
 				Statement statm = conn.createStatement();
 				statm.executeUpdate(getStatement("INSERT",
@@ -247,21 +258,29 @@ public class ManagementServiceImpl implements ManagementService {
 	}
 
 	public boolean Update(String uri, String adapterType, String referenceName,
-			String statement) throws SQLException {
+			String statement, String newName) throws SQLException {
 		boolean success = false;
 		LinkedHashMap<String, String> EPR = CreateEPR(uri, adapterType,
 				referenceName, statement);
 
 		Connection conn = getConnection();
 
-		try {
-			Statement statm = conn.createStatement();
-			statm.executeUpdate(getStatement("UPDATE", Reference_TABLE_NAME,
-					EPR));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			
+			if (EPRAllreadyExists(Reference_TABLE_NAME, EPR)) {
+				try {
+					EPR.remove("referenceName");
+					EPR.put("referenceName", newName);
+					Statement statm = conn.createStatement();
+					statm.executeUpdate(getStatement("UPDATE", Reference_TABLE_NAME,
+							EPR));
+
+					// EPR xml Datei erstellen
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 
 		return success;
 
@@ -278,13 +297,14 @@ public class ManagementServiceImpl implements ManagementService {
 		StringBuilder SearchStatement = new StringBuilder();
 		SearchStatement.append("SELECT");
 		SearchStatement.append(" ");
-		SearchStatement.append("ID");
+		SearchStatement.append("*");
 		SearchStatement.append(" ");
-		SearchStatement.append("FROM");
+		SearchStatement.append("FROM ");
 		SearchStatement.append(tabl);
 		SearchStatement.append(" ");
-		SearchStatement.append("WHERE ID = ");
+		SearchStatement.append("WHERE referenceName = '");
 		SearchStatement.append(EPR.get("ReferenceName"));
+		SearchStatement.append("'");
 
 		Statement statement;
 		try {
