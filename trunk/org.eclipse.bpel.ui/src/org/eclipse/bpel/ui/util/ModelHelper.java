@@ -957,7 +957,7 @@ public class ModelHelper {
 				EMPTY_VARIABLE_LIST);
 	}
     	
-	public static Variable[] getVariablesOfType (EObject context, final XSDTypeDefinition type) {
+	public static Variable[] getVariablesOfType (EObject context, final String typeName) {
 		
 		return (Variable[]) ListMap.Map(
 				// Visible variables
@@ -967,7 +967,11 @@ public class ModelHelper {
 				new ListMap.Visitor() {
 					public Object visit(Object obj) {
 						Variable v = (Variable) obj;
-						return (v.getType() == type ? v : ListMap.IGNORE);
+						if (v.getType() == null){
+							return ListMap.IGNORE;
+						}else {
+							return (v.getType().getName().equals(typeName) ? v : ListMap.IGNORE);
+						}
 					}				
 				},
 				
