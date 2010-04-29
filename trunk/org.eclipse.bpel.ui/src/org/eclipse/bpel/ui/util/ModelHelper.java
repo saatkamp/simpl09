@@ -957,7 +957,23 @@ public class ModelHelper {
 				EMPTY_VARIABLE_LIST);
 	}
     	
-	
+	public static Variable[] getVariablesOfType (EObject context, final XSDTypeDefinition type) {
+		
+		return (Variable[]) ListMap.Map(
+				// Visible variables
+				getVisibleVariables ( context ),
+				
+				// only the ones of the type requested
+				new ListMap.Visitor() {
+					public Object visit(Object obj) {
+						Variable v = (Variable) obj;
+						return (v.getType() == type ? v : ListMap.IGNORE);
+					}				
+				},
+				
+				// make sure that the return of the type passed here 
+				EMPTY_VARIABLE_LIST);
+	}
 	
 	public static Variable[] getVisibleVariables ( EObject context ) {
 					
