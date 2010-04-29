@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getSubtype <em>Subtype</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getLanguage <em>Language</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getPassword <em>Password</em>}</li>
  * </ul>
@@ -120,6 +121,26 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 	 * @ordered
 	 */
 	protected String subtype = SUBTYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LANGUAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String language = LANGUAGE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getUserName() <em>User Name</em>}' attribute.
@@ -248,6 +269,27 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getLanguage() {
+		return language;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLanguage(String newLanguage) {
+		String oldLanguage = language;
+		language = newLanguage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TDATASOURCE__LANGUAGE, oldLanguage, language));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getDataSourceName() {
 		return dataSourceName;
 	}
@@ -322,6 +364,8 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return getType();
 			case ddPackage.TDATASOURCE__SUBTYPE:
 				return getSubtype();
+			case ddPackage.TDATASOURCE__LANGUAGE:
+				return getLanguage();
 			case ddPackage.TDATASOURCE__USER_NAME:
 				return getUserName();
 			case ddPackage.TDATASOURCE__PASSWORD:
@@ -349,6 +393,9 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return;
 			case ddPackage.TDATASOURCE__SUBTYPE:
 				setSubtype((String)newValue);
+				return;
+			case ddPackage.TDATASOURCE__LANGUAGE:
+				setLanguage((String)newValue);
 				return;
 			case ddPackage.TDATASOURCE__USER_NAME:
 				setUserName((String)newValue);
@@ -380,6 +427,9 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 			case ddPackage.TDATASOURCE__SUBTYPE:
 				setSubtype(SUBTYPE_EDEFAULT);
 				return;
+			case ddPackage.TDATASOURCE__LANGUAGE:
+				setLanguage(LANGUAGE_EDEFAULT);
+				return;
 			case ddPackage.TDATASOURCE__USER_NAME:
 				setUserName(USER_NAME_EDEFAULT);
 				return;
@@ -406,6 +456,8 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 			case ddPackage.TDATASOURCE__SUBTYPE:
 				return SUBTYPE_EDEFAULT == null ? subtype != null : !SUBTYPE_EDEFAULT.equals(subtype);
+			case ddPackage.TDATASOURCE__LANGUAGE:
+				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
 			case ddPackage.TDATASOURCE__USER_NAME:
 				return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
 			case ddPackage.TDATASOURCE__PASSWORD:
@@ -432,6 +484,8 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 		result.append(type);
 		result.append(", subtype: ");
 		result.append(subtype);
+		result.append(", language: ");
+		result.append(language);
 		result.append(", userName: ");
 		result.append(userName);
 		result.append(", password: ");

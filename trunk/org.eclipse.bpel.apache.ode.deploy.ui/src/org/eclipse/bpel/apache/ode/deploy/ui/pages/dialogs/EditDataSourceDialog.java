@@ -29,6 +29,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 	private Text address;
 	private CCombo type;
 	private CCombo subtype;
+	private CCombo language;
 	private Text user;
 	private Text password;
 	private TDatasource datasource;
@@ -98,7 +99,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
-						type.getItem(type.getSelectionIndex())).toArray(
+						type.getText()).toArray(
 						new String[0]));
 				subtype.setText("");
 			}
@@ -110,21 +111,44 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		Label label4 = new Label(parent, SWT.NONE);
 		label4.setText("Subtype *");
 		subtype = new CCombo(parent, SWT.BORDER);
+		subtype.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
+						subtype.getText()).toArray(new String[0]));
+				language.setText("");
+			}
+		});
 		if (this.datasource.getSubtype() != null) {
 			subtype.setText(this.datasource.getSubtype());
 		}
 		
 		Label label5 = new Label(parent, SWT.NONE);
-		label5.setText("User name");
+		label5.setText("Language *");
+		language = new CCombo(parent, SWT.BORDER);
+		if (this.datasource.getLanguage() != null) {
+			language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
+					subtype.getText()).toArray(new String[0]));
+			language.setText(this.datasource.getLanguage());
+		}
+		
+		Label label6 = new Label(parent, SWT.NONE);
+		label6.setText("User name");
 		user = new Text(parent, SWT.BORDER);
 		if (this.datasource.getUserName() != null) {
 			user.setText(this.datasource.getUserName());
 		}
 		
-		Label label6 = new Label(parent, SWT.NONE);
-		label6.setText("Password");
-		password = new Text(parent, SWT.BORDER | SWT.PASSWORD);
-		if (this.datasource.getPassword() != null) {
+		Label label7 = new Label(parent, SWT.NONE);
+		label7.setText("Password");
+		password = new Text(parent, SWT.BORDER);
+		if (this.datasource.getPassword() != null){
 			password.setText(this.datasource.getPassword());
 		}
 
@@ -132,6 +156,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		address.setLayoutData(gridData);
 		type.setLayoutData(gridData);
 		subtype.setLayoutData(gridData);
+		language.setLayoutData(gridData);
 		user.setLayoutData(gridData);
 		password.setLayoutData(gridData);
 
@@ -149,7 +174,8 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 			public void widgetSelected(SelectionEvent e) {
 				if (!name.getText().isEmpty() && !address.getText().isEmpty()
 						&& !type.getText().isEmpty()
-						&& !subtype.getText().isEmpty()) {
+						&& !subtype.getText().isEmpty()
+						&& !language.getText().isEmpty()) {
 
 					if (DeployUtils.getProcessDataSourceNames(processType) != null
 							&& (!DeployUtils.getProcessDataSourceNames(
@@ -165,6 +191,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 						datasource.setAddress(address.getText());
 						datasource.setType(type.getText());
 						datasource.setSubtype(subtype.getText());
+						datasource.setLanguage(language.getText());
 						datasource.setUserName(user.getText());
 						datasource.setPassword(password.getText());
 						close();
@@ -172,7 +199,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 						setErrorMessage("The specified name is allready in use, please choose another one.");
 					}
 				} else {
-					setErrorMessage("Please enter a value for name, address, type and subtype.");
+					setErrorMessage("Please enter a value for name, address, type, subtype and language.");
 				}
 			}
 		});

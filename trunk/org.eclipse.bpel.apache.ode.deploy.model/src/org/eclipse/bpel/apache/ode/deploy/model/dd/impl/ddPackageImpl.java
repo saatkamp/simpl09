@@ -750,6 +750,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTDatasource_Language() {
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getTDatasource_DataSourceName() {
 		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(0);
 	}
@@ -760,7 +769,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	public EAttribute getTDatasource_Password() {
-		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -769,7 +778,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	public EAttribute getTDatasource_UserName() {
-		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -968,6 +977,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tDatasourceEClass, TDATASOURCE__ADDRESS);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__TYPE);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__SUBTYPE);
+		createEAttribute(tDatasourceEClass, TDATASOURCE__LANGUAGE);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__USER_NAME);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__PASSWORD);
 
@@ -1094,6 +1104,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTDatasource_Address(), theXMLTypePackage.getString(), "address", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_Type(), theXMLTypePackage.getString(), "type", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_Subtype(), theXMLTypePackage.getString(), "subtype", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Language(), theXMLTypePackage.getString(), "language", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1540,6 +1551,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "subtype"
+		   });		
+		addAnnotation
+		  (getTDatasource_Language(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "language"
 		   });		
 		addAnnotation
 		  (getTDatasource_UserName(), 
