@@ -34,51 +34,26 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.InsertPropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.InsertActivityPropertySection"
+               class="org.eclipse.bpel.simpl.ui.properties.DataManagementActivitySection"
+               id="org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.InsertActivity">
             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.UpdatePropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.UpdateActivityPropertySection"
-               tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.UpdateActivity">
             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.DeletePropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.DeleteActivityPropertySection"
-               tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.DeleteActivity">
             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.CreatePropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.CreateActivityPropertySection"
-               tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.CreateActivity">
             </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.DropPropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.DropActivityPropertySection"
-               tab="org.eclipse.bpel.ui.tabs.details">
-            <input
-                  type="org.eclipse.bpel.simpl.model.DropActivity">
-            </input>
-         </propertySection>
-         <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.CallPropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.CallActivityPropertySection"
-               tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.CallActivity">
+            </input>
+            <input
+                  type="org.eclipse.bpel.simpl.model.DropActivity">
             </input>
          </propertySection>
          <propertySection
