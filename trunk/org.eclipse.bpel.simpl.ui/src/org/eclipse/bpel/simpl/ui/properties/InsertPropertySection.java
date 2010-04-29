@@ -39,6 +39,7 @@ import widgets.ElementsListPopUp;
 import widgets.LiveEditStyleText;
 
 @SuppressWarnings("unused")
+@Deprecated
 public class InsertPropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
