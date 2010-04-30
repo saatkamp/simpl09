@@ -17,6 +17,7 @@ public class DSAdapterProvider {
 	}
 	
 	public DSAdapter getInstance(String dsType, String dsSubtype) {
+		System.out.println(dsType + dsSubtype);
 		DSAdapterPlugin DSAdapterInstance = null;
 		List<DSAdapterPlugin> DSAdapterPlugins = this.dsAdapters.get(dsType);
 		List<String> DSAdapterSubtypes = null;
@@ -31,7 +32,6 @@ public class DSAdapterProvider {
 				
 			}
 		}
-		
 		return DSAdapterInstance;
 		
 	}
@@ -41,12 +41,13 @@ public class DSAdapterProvider {
 		Iterator<String> pluginIterator = plugins.iterator();
 		DSAdapterPlugin DSAdapterInstance;
 		String DSAdapterType = null;
+		//System.out.println(plugins.toString());
 		
 		while (pluginIterator.hasNext()) {
 			try {
 				DSAdapterInstance = (DSAdapterPlugin) Class.forName((String) pluginIterator.next()).newInstance();
-				DSAdapterType = DSAdapterInstance.getType();
 				
+				DSAdapterType = DSAdapterInstance.getType();
 				if (dsAdapters.containsKey(DSAdapterType)) {
 					dsAdapters.get(DSAdapterType).add(DSAdapterInstance);
 				} else {

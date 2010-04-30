@@ -19,7 +19,7 @@ public class RRSConfig {
 	private static final String CONFIG_FILE_2 = System.getProperty("user.dir")
 			+ "\\..\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
 	List<String> DSAdapterPlugins = new ArrayList<String>();
-
+	
 	public RRSConfig() {
 		InputStream in = null;
 		XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -64,7 +64,6 @@ public class RRSConfig {
 							if (parser.getAttributeLocalName(i).equals("name")) {
 								DSAdapterPlugins.add(parser
 										.getAttributeValue(i));
-								System.out.println(parser.getAttributeValue(i));
 							}
 						}
 					}
@@ -85,7 +84,8 @@ public class RRSConfig {
 	}
 
 	public List<String> getDSAdapterPlugins() {
-
+		
 		return DSAdapterPlugins;
 	}
+	
 }

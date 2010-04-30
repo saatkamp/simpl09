@@ -14,7 +14,7 @@ import commonj.sdo.DataObject;
 public class MySQLRDBAdapter extends DSAdapterPlugin {
 
 	public MySQLRDBAdapter() {
-		this.setType("Database");
+		this.setType("RDB");
 		this.addSubtype("MySQL");
 		this.addLanguage("MySQL", "SQL");
 	}
