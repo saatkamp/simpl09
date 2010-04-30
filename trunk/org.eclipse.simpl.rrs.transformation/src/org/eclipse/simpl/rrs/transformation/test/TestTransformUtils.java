@@ -22,7 +22,7 @@ public class TestTransformUtils {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		TransformerUtil.downloadWSDL("http://localhost:8080/ode/processes/TransformationServiceService.TransformationServicePort?wsdl", System.getProperty("user.dir"), "test", "transform.wsdl");
+		TransformerUtil.downloadWSDL("http://localhost:8080/ode/processes/TransformationServiceService.TransformationServicePort?wsdl", System.getProperty("user.dir"), "transform.wsdl");
 	}
 
 }
