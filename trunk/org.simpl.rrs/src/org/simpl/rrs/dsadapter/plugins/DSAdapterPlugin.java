@@ -8,7 +8,7 @@ import org.simpl.rrs.dsadapter.DSAdapter;
 
 public abstract class DSAdapterPlugin implements DSAdapter {
 	
-	private String dataSourceType = "Database";
+	private String dataSourceType = "RDB";
 	
 	private List<String> dataSourceSubtypes = new ArrayList<String>();
 	

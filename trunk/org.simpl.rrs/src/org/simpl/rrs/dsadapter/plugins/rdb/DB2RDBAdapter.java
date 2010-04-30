@@ -14,7 +14,7 @@ import commonj.sdo.DataObject;
 public class DB2RDBAdapter extends DSAdapterPlugin{
 	
 	public DB2RDBAdapter() {
-		this.setType("Database");
+		this.setType("RDB");
 		this.addSubtype("DB2");
 		this.addLanguage("DB2", "SQL");
 	}

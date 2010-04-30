@@ -14,7 +14,7 @@ import commonj.sdo.DataObject;
 public class EmbDerbyRDBAdapter extends DSAdapterPlugin{
 
 	public EmbDerbyRDBAdapter() {
-	    this.setType("Database");
+	    this.setType("RDB");
 	    this.addSubtype("EmbeddedDerby");
 	    this.addLanguage("EmbeddedDerby", "SQL");
 
