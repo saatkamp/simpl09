@@ -2,7 +2,6 @@ package org.eclipse.simpl.rrs.transformation.client;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -42,11 +41,9 @@ public class TransformationClient {
 		return client;
 	}
 
-	public void transform(String projectPath, String bpelFilePath,
-			String rrsRetNamespaceURI, String rrsMetaNamespaceURI) {
-		String bpelFileName = bpelFilePath.substring(bpelFilePath
-				.lastIndexOf(System.getProperty("file.separator")) + 1,
-				bpelFilePath.lastIndexOf("."));
+	public void transform(String sourcePath, String bpelFileName,
+			String targetPath, String rrsRetNamespaceURI,
+			String rrsMetaNamespaceURI) {
 
 		System.out.println("FILENAME: " + bpelFileName);
 
@@ -58,7 +55,7 @@ public class TransformationClient {
 			BufferedReader in;
 			try {
 				in = new BufferedReader(new InputStreamReader(
-						new FileInputStream(bpelFilePath)));
+						new FileInputStream(sourcePath)));
 
 				try {
 					String line;
@@ -79,26 +76,14 @@ public class TransformationClient {
 			String response = executeTransformation(string.toString(),
 					rrsRetNamespaceURI, rrsMetaNamespaceURI);
 
-			File transformDir = new File(projectPath
-					+ System.getProperty("file.separator") + bpelFileName
-					+ "_transformed");
-			if (!transformDir.exists()) {
-				transformDir.mkdir();
-			}
-
 			try {
 				BufferedWriter out = new BufferedWriter(
 						new OutputStreamWriter(
 								new FileOutputStream(
-										projectPath
+										targetPath
 												+ System
 														.getProperty("file.separator")
 												+ bpelFileName
-												+ "_transformed"
-												+ System
-														.getProperty("file.separator")
-												+ bpelFileName
-												+ "_TF"
 												+ TransformerPlugIn
 														.getDefault().BPEL_EXTENSION)));
 				out.write(response);

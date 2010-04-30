@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.simpl.rrs.transformation.TransformerUtil;
@@ -31,6 +37,30 @@ public class TransformationCmdHelper {
 	public static void doTheWork(String absolutWorkspacePath,
 			IPath projectPath, IPath bpelPath) {
 
+		// Create a new project, if it doesn't exist
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		IWorkspaceRoot root = workspace.getRoot();
+		IProject project = root.getProject(projectPath.lastSegment() + "_TF");
+		
+		
+		// at this point, no resources have been created
+		try {
+			// project.copy(new Path(projectPath.lastSegment()+"_TF"), true,
+			// null);
+			if (!project.exists()) {
+				//Get the description of the source project
+				IProjectDescription desc = root.getProject(projectPath.lastSegment()).getDescription();
+				//Create the new project and add the original description
+				project.create(desc, IProject.BACKGROUND_REFRESH, null);
+				project.open(null);
+			}
+		} catch (CoreException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		System.out.println("PROJECT:PATH= " + project.getLocation().toOSString());
+		
 		List references = TransformerUtil
 				.getReferenceVariables(absolutWorkspacePath
 						+ bpelPath.toOSString());
@@ -47,39 +77,39 @@ public class TransformationCmdHelper {
 
 				// Download the rrsRetrieval.wsdl and rrsMetaData.wsdl file from
 				// the RRS, if necassary
-				// TODO: If in the future more than one RRS is used, all rrs***.wsdl
+				// TODO: If in the future more than one RRS is used, all
+				// rrs***.wsdl
 				// files have to be downloaded and stored
 				TransformerUtil.downloadWSDL(RRSUIPlugIn.getDefault()
 						.getPreferenceStore().getString("RRS_RET_ADDRESS"),
-						absolutWorkspacePath + projectPath.toOSString(),
-						bpelFileName, TransformerUtil.RRS_RETRIEVAL_FILE);
-				
+						project.getLocation().toOSString(),
+						TransformerUtil.RRS_RETRIEVAL_FILE);
+
 				TransformerUtil.downloadWSDL(RRSUIPlugIn.getDefault()
 						.getPreferenceStore().getString("RRS_MD_ADDRESS"),
-						absolutWorkspacePath + projectPath.toOSString(),
-						bpelFileName, TransformerUtil.RRS_META_DATA_FILE);
+						project.getLocation().toOSString(),
+						TransformerUtil.RRS_META_DATA_FILE);
 
 				// Get the rrsRetrieval.wsdl namespace uri
-				String rrsRetrievalNamespace = TransformerUtil.getRRSwsdlNamespace(
-						absolutWorkspacePath + projectPath.toOSString(),
-						bpelFileName, TransformerUtil.RRS_RETRIEVAL_FILE);
+				String rrsRetrievalNamespace = TransformerUtil
+						.getRRSwsdlNamespace(
+								project.getLocation().toOSString(),
+								TransformerUtil.RRS_RETRIEVAL_FILE);
 
 				// Get the rrsMetaData.wsdl namespace uri
-				String rrsMetaDataNamespace = TransformerUtil.getRRSwsdlNamespace(
-						absolutWorkspacePath + projectPath.toOSString(),
-						bpelFileName, TransformerUtil.RRS_META_DATA_FILE);
-				
+				String rrsMetaDataNamespace = TransformerUtil
+						.getRRSwsdlNamespace(
+								project.getLocation().toOSString(),
+								TransformerUtil.RRS_META_DATA_FILE);
+
 				// Transform the process
 				TransformationClient.getClient().transform(
-						absolutWorkspacePath + projectPath.toOSString(),
 						absolutWorkspacePath + bpelPath.toOSString(),
+						bpelFileName, project.getLocation().toOSString(),
 						rrsRetrievalNamespace, rrsMetaDataNamespace);
 
-				File xsdFileRRS = new File(absolutWorkspacePath
-						+ projectPath.toOSString()
-						+ System.getProperty("file.separator") + bpelFileName
-						+ "_transformed" + System.getProperty("file.separator")
-						+ "rrs.xsd");
+				File xsdFileRRS = new File(project.getLocation().toOSString()
+						+ System.getProperty("file.separator") + "rrs.xsd");
 
 				System.out.println(xsdFileRRS);
 
@@ -107,8 +137,11 @@ public class TransformationCmdHelper {
 				// Copy and modify the process wsdl to the transformed
 				// directory
 				TransformerUtil.copyAndEditProcessWSDL(absolutWorkspacePath
-						+ projectPath.toOSString(), bpelFileName);
+						+ projectPath.toOSString(), bpelFileName, project
+						.getLocation().toOSString());
 
+				TransformerUtil.copyAllNotTransfContent(absolutWorkspacePath
+						+ projectPath.toOSString(), project.getLocation().toOSString());
 			} else {
 				MessageDialog
 						.openInformation(

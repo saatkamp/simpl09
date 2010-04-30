@@ -7,6 +7,8 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,6 +19,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -45,11 +51,13 @@ public class TransformerUtil {
 	private static final Namespace BPEL_NAMESPACE = Namespace.getNamespace(
 			BPEL_PRÄFIX,
 			"http://docs.oasis-open.org/wsbpel/2.0/process/executable");
-	
-	private static final Namespace PLNK_NAMESPACE = Namespace.getNamespace("plnk", "http://docs.oasis-open.org/wsbpel/2.0/plnktype");
 
-	private static final Namespace WSDL_NAMESPACE = Namespace.getNamespace("http://schemas.xmlsoap.org/wsdl/");
-	
+	private static final Namespace PLNK_NAMESPACE = Namespace.getNamespace(
+			"plnk", "http://docs.oasis-open.org/wsbpel/2.0/plnktype");
+
+	private static final Namespace WSDL_NAMESPACE = Namespace
+			.getNamespace("http://schemas.xmlsoap.org/wsdl/");
+
 	// Element names
 	private static final String EL_REFERENCE_VARIABLE = "referenceVariable";
 	private static final String EL_REFERENCE_VARIABLES = "referenceVariables";
@@ -61,7 +69,7 @@ public class TransformerUtil {
 	private static final String AT_REFERENCE_VALUE_TYPE = "valueType";
 
 	private static final String AT_TARGET_NAMESPACE = "targetNamespace";
-	
+
 	public static final String RRS_RETRIEVAL_FILE = "rrsRetrieval.wsdl";
 	public static final String RRS_META_DATA_FILE = "rrsMetaData.wsdl";
 	public static final String RRS_RETRIEVAL_PREFIX = "rrsRet";
@@ -129,23 +137,21 @@ public class TransformerUtil {
 	}
 
 	public static void downloadWSDL(String sourceURI, String projectPath,
-			String bpelFileName, String targetFileName) {
+			String targetFileName) {
 		URL u;
 		InputStream is = null;
 		BufferedReader buffer;
 		StringBuilder string = new StringBuilder();
 
-		File transformDir = new File(projectPath
-				+ System.getProperty("file.separator") + bpelFileName
-				+ "_transformed");
-		if (!transformDir.exists()) {
-			transformDir.mkdir();
-		}
+		// File transformDir = new File(projectPath
+		// + System.getProperty("file.separator") + bpelFileName
+		// + "_transformed");
+		// if (!transformDir.exists()) {
+		// transformDir.mkdir();
+		// }
 
 		File wsdlFileRRS = new File(projectPath
-				+ System.getProperty("file.separator") + bpelFileName
-				+ "_transformed" + System.getProperty("file.separator")
-				+ targetFileName);
+				+ System.getProperty("file.separator") + targetFileName);
 
 		// Create the rrs.wsdl file, if necassary
 		if (!wsdlFileRRS.exists()) {
@@ -191,17 +197,10 @@ public class TransformerUtil {
 		}
 	}
 
-	/**
-	 * @param string
-	 * @param bpelFileName
-	 * @return
-	 */
 	public static String getRRSwsdlNamespace(String projectPath,
-			String bpelFileName, String targetFileName) {
+			String targetFileName) {
 		File wsdlFileRRS = new File(projectPath
-				+ System.getProperty("file.separator") + bpelFileName
-				+ "_transformed" + System.getProperty("file.separator")
-				+ targetFileName);
+				+ System.getProperty("file.separator") + targetFileName);
 
 		SAXBuilder builder = new SAXBuilder();
 		Document doc;
@@ -238,29 +237,28 @@ public class TransformerUtil {
 	 * @param bpelFileName
 	 */
 	public static void copyAndEditProcessWSDL(String projectPath,
-			String bpelFileName) {
+			String bpelFileName, String targetPath) {
 		File projectFolder = new File(projectPath);
 
 		File wsdlSourceFile = null;
-		
+
 		File[] files = projectFolder.listFiles(new FileFilter() {
 			public boolean accept(File f) {
 				return f.getName().toLowerCase().endsWith(".wsdl");
 			}
 		});
-		
+
 		for (File file : files) {
 			if (file.getName().contains(bpelFileName)) {
 				wsdlSourceFile = file;
 			}
 		}
 
-		File wsdlTargetFile = new File(projectPath
-				+ System.getProperty("file.separator") + bpelFileName
-				+ "_transformed" + System.getProperty("file.separator")
-				+ wsdlSourceFile.getName().replace(".wsdl", "_TF.wsdl"));
+		File wsdlTargetFile = new File(targetPath
+				+ System.getProperty("file.separator")
+				+ wsdlSourceFile.getName());
 
-		if (wsdlSourceFile != null){
+		if (wsdlSourceFile != null) {
 			SAXBuilder builder = new SAXBuilder();
 			Document doc;
 			try {
@@ -269,66 +267,76 @@ public class TransformerUtil {
 				doc = builder.build(inputStream);
 
 				Element root = doc.getRootElement();
-				
-				//Do the work
-				//TODO: An René's Implementierung anpassen
-				
-				String rrsRetrievalNs = getRRSwsdlNamespace(projectPath,bpelFileName, RRS_RETRIEVAL_FILE);
-				
-				//Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl) namespace to the process wsdl
-				root.addNamespaceDeclaration(Namespace.getNamespace(RRS_RETRIEVAL_PREFIX, rrsRetrievalNs));
-				
-				String rrsMetaDataNs = getRRSwsdlNamespace(projectPath,bpelFileName, RRS_META_DATA_FILE);
-				
-				//Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl) namespace to the process wsdl
-				root.addNamespaceDeclaration(Namespace.getNamespace(RRS_META_DATA_PREFIX, rrsMetaDataNs));
-				
+
+				// Do the work
+				// TODO: An René's Implementierung anpassen
+
+				String rrsRetrievalNs = getRRSwsdlNamespace(targetPath,
+						RRS_RETRIEVAL_FILE);
+
+				// Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl)
+				// namespace to the process wsdl
+				root.addNamespaceDeclaration(Namespace.getNamespace(
+						RRS_RETRIEVAL_PREFIX, rrsRetrievalNs));
+
+				String rrsMetaDataNs = getRRSwsdlNamespace(targetPath,
+						RRS_META_DATA_FILE);
+
+				// Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl)
+				// namespace to the process wsdl
+				root.addNamespaceDeclaration(Namespace.getNamespace(
+						RRS_META_DATA_PREFIX, rrsMetaDataNs));
+
 				/*
 				 * Insert the following element to the process wsdl file
-				 * 	<plnk:partnerLinkType name="RRSRetrievalType">
-    			 *		<plnk:role name="GET" portType="rrsRet:RRSRetrievalService"/>
-  				 *	</plnk:partnerLinkType>
-    			 *	<import location="rrsRetrieval.wsdl" namespace="http://webservices.rrs.simpl.org/"/>
+				 * <plnk:partnerLinkType name="RRSRetrievalType"> <plnk:role
+				 * name="GET" portType="rrsRet:RRSRetrievalService"/>
+				 * </plnk:partnerLinkType> <import location="rrsRetrieval.wsdl"
+				 * namespace="http://webservices.rrs.simpl.org/"/>
 				 */
-				Element partnerLink = new Element("partnerLinkType", PLNK_NAMESPACE);
+				Element partnerLink = new Element("partnerLinkType",
+						PLNK_NAMESPACE);
 				partnerLink.setAttribute(AT_NAME, "RRSRetrievalType");
 				Element role = new Element("role", PLNK_NAMESPACE);
 				role.setAttribute(AT_NAME, "get");
-				role.setAttribute("portType", RRS_RETRIEVAL_PREFIX+":RRSRetrievalService");
+				role.setAttribute("portType", RRS_RETRIEVAL_PREFIX
+						+ ":RRSRetrievalService");
 				partnerLink.addContent(role);
-				
+
 				Element importElement = new Element("import");
 				importElement.setAttribute("location", RRS_RETRIEVAL_FILE);
 				importElement.setAttribute("namespace", rrsRetrievalNs);
 				importElement.setNamespace(WSDL_NAMESPACE);
-				
+
 				/*
 				 * Insert the following element to the process wsdl file
-				 * 	<plnk:partnerLinkType name="RRSMetaDataType">
-    			 *		<plnk:role name="getEPR" portType="rrsMeta:RRSMetaDataService"/>
-  				 *	</plnk:partnerLinkType>
-    			 *	<import location="rrsMetaData.wsdl" namespace="http://webservices.rrs.simpl.org/"/>
+				 * <plnk:partnerLinkType name="RRSMetaDataType"> <plnk:role
+				 * name="getEPR" portType="rrsMeta:RRSMetaDataService"/>
+				 * </plnk:partnerLinkType> <import location="rrsMetaData.wsdl"
+				 * namespace="http://webservices.rrs.simpl.org/"/>
 				 */
-				Element partnerLink2 = new Element("partnerLinkType", PLNK_NAMESPACE);
+				Element partnerLink2 = new Element("partnerLinkType",
+						PLNK_NAMESPACE);
 				partnerLink2.setAttribute(AT_NAME, "RRSMetaDataType");
 				Element role2 = new Element("role", PLNK_NAMESPACE);
 				role2.setAttribute(AT_NAME, "getEPR");
-				role2.setAttribute("portType", RRS_META_DATA_PREFIX+":RRSMetaDataService");
+				role2.setAttribute("portType", RRS_META_DATA_PREFIX
+						+ ":RRSMetaDataService");
 				partnerLink2.addContent(role2);
-				
+
 				Element importElement2 = new Element("import");
 				importElement2.setAttribute("location", RRS_META_DATA_FILE);
 				importElement2.setAttribute("namespace", rrsMetaDataNs);
 				importElement2.setNamespace(WSDL_NAMESPACE);
-				
-				//Add the new elements to the root object
+
+				// Add the new elements to the root object
 				root.addContent(0, importElement2);
 				root.addContent(0, partnerLink2);
 				root.addContent(0, importElement);
 				root.addContent(0, partnerLink);
-				
+
 				OutputStream outputStream = new FileOutputStream(wsdlTargetFile);
-				
+
 				XMLOutputter outp = new XMLOutputter();
 				outp.setFormat(Format.getPrettyFormat());
 				outp.output(doc, outputStream);
@@ -342,6 +350,57 @@ public class TransformerUtil {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+	}
+
+	/**
+	 * @param string
+	 * @param osString
+	 */
+	public static void copyAllNotTransfContent(String sourceProjectPath,
+			String targetProjectPath) {
+		File sourceProject = new File(sourceProjectPath);
+
+		FileFilter filter = new FileFilter() {
+
+			@Override
+			public boolean accept(File file) {
+				boolean accept = file.getName().endsWith("bpel")
+						|| file.getName().endsWith("wsdl")
+						|| file.getName().endsWith("xsd")
+						|| file.getName().equals("deploy.xml");
+				
+				return accept;
+			}
+
+		};
+
+		for (File file : sourceProject.listFiles(filter)) {
+			File outputFile = new File(targetProjectPath
+					+ System.getProperty("file.separator") + file.getName());
+			if (!outputFile.exists()) {
+				copyFile(file, outputFile);
+			}
+		}
+
+	}
+
+	private static void copyFile(File inputFile, File outputFile) {
+		try {
+			FileReader in = new FileReader(inputFile);
+			FileWriter out = new FileWriter(outputFile);
+
+			int c;
+
+			while ((c = in.read()) != -1) {
+				out.write(c);
+			}
+
+			in.close();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
