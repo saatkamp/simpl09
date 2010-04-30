@@ -23,7 +23,7 @@ public class DerbyRDBAdapter extends DSAdapterPlugin {
 	@Override
 	public Connection openConnection(String dsAddress)
 			throws ConnectionException {
-
+		
 		Connection connect = null;
 
 		try {
@@ -34,8 +34,9 @@ public class DerbyRDBAdapter extends DSAdapterPlugin {
 			uri.append(dsAddress);
 
 			try {
-				connect = DriverManager.getConnection(uri.toString(), "test",
-						"test");
+				connect = DriverManager.getConnection(uri.toString(), "",
+						"");
+				System.out.println(connect);
 				connect.setAutoCommit(false);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

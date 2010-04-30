@@ -35,9 +35,6 @@ public class RetrievalServiceImpl implements RetrievalService {
 		dsSubtype = st.nextToken();
 		dsLanguage = st.nextToken();
 
-		System.out.println(uri + " " + statement + " "
-				+ dsType + " " + dsSubtype);
-
 		// Hier der ganze selbe Mist wie bei DatasourceService, Adapter
 		// auswählen
 		// anhand von Type und Subtype, und Daten holen...

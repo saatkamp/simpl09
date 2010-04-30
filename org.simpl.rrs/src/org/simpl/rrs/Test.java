@@ -39,7 +39,7 @@ public class Test {
 			// TODO Auto-generated catch block
 		//	e.printStackTrace();
 		//}
-		System.out.println(RRS.getInstance().getInstance().retrievalService().get("http://localhost:MyDB2/", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle"));
+		System.out.println(RRS.getInstance().getInstance().retrievalService().get("C:/eclipse/workspace/org.simpl.rrs/rrsDB", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle"));
 		
 		
 		LinkedHashMap<String, String> EPR1 = CreateEPR("http://localhost:MyDB2/", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle");
