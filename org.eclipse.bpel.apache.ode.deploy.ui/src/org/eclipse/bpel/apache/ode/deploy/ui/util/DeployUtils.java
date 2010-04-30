@@ -197,14 +197,46 @@ public class DeployUtils {
 		List<Definition> wsdlFiles = new ArrayList<Definition>();
 
 		List<IFile> allFiles = DeployUtils.getAllFilesInProject(project);
+		List<IFile> backup = allFiles;
+		List<String> transformedCopies = new ArrayList<String>();
 
+		/*
+		 * hahnml: If a _transformed folder exists, we have to use the
+		 * wsdl-files in it, instead of them in the project folder for the
+		 * transformed process.
+		 */
+		
+		// In the first round we add all transformed wsdl-files
 		for (IFile file : allFiles) {
 
 			if (file.getFileExtension().equalsIgnoreCase("wsdl")) { //$NON-NLS-1$
-				// load it
-				Definition currentDef = loadWSDL(file, resourceSet);
-				// stuff it in wsdlFiles
-				wsdlFiles.add(currentDef);
+				if (file.getName().contains("_TF")) {
+					// load it
+					Definition currentDef = loadWSDL(file, resourceSet);
+					// stuff it in wsdlFiles
+					wsdlFiles.add(currentDef);
+
+					// Save the "original" name of this transformed copy
+					transformedCopies.add(file.getName().replace("_TF", ""));
+					// Delete this file from the list
+					backup.remove(file);
+				}
+			}
+		}
+		
+		// In the second round we add all wsdl files which are not transformed,
+		// which means
+		// that there is no transformed copy in the project path
+		for (IFile file : backup) {
+
+			if (file.getFileExtension().equalsIgnoreCase("wsdl")) { //$NON-NLS-1$
+
+				if (!transformedCopies.contains(file.getName())) {
+					// load it
+					Definition currentDef = loadWSDL(file, resourceSet);
+					// stuff it in wsdlFiles
+					wsdlFiles.add(currentDef);
+				}
 			}
 		}
 
@@ -216,14 +248,45 @@ public class DeployUtils {
 		List<Process> bpelFiles = new ArrayList<Process>();
 
 		List<IFile> allFiles = DeployUtils.getAllFilesInProject(project);
+		List<IFile> backup = allFiles;
+		List<String> transformedCopies = new ArrayList<String>();
 
+		/*
+		 * hahnml: If a _transformed folder exists, we have to use the
+		 * bpel-files in it, instead of them in the project folder for the
+		 * transformed process.
+		 */
+
+		// In the first round we add all transformed processes
 		for (IFile file : allFiles) {
+			if (file.getFileExtension().equalsIgnoreCase("bpel")) {
+				if (file.getName().contains("_TF")) {
+					// load it
+					Process currentProcess = loadBPEL(file, resourceSet);
+					// stuff it in bpelFiles
+					bpelFiles.add(currentProcess);
+
+					// Save the "original" name of this transformed copy
+					transformedCopies.add(file.getName().replace("_TF", ""));
+					// Delete this file from the list
+					backup.remove(file);
+				}
+			}
+		}
+
+		// In the second round we add all processes which are not transformed,
+		// which means
+		// that there is no transformed copy in the project path
+		for (IFile file : backup) {
 
 			if (file.getFileExtension().equalsIgnoreCase("bpel")) { //$NON-NLS-1$
-				// load it
-				Process currentProcess = loadBPEL(file, resourceSet);
-				// stuff it in bpelFiles
-				bpelFiles.add(currentProcess);
+
+				if (!transformedCopies.contains(file.getName())) {
+					// load it
+					Process currentProcess = loadBPEL(file, resourceSet);
+					// stuff it in bpelFiles
+					bpelFiles.add(currentProcess);
+				}
 			}
 		}
 
@@ -404,13 +467,14 @@ public class DeployUtils {
 
 		return activityNames.toArray(new String[0]);
 	}
-	
-	public static String[] getStrategies(){
+
+	public static String[] getStrategies() {
 		List<String> strategies = new ArrayList<String>();
-		for (EEnumLiteral literal : ddPackage.eINSTANCE.getStrategyType().getELiterals()){
+		for (EEnumLiteral literal : ddPackage.eINSTANCE.getStrategyType()
+				.getELiterals()) {
 			strategies.add(literal.getName());
 		}
-		
+
 		return strategies.toArray(new String[0]);
 	}
 }

@@ -7,7 +7,6 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -49,6 +48,8 @@ public class TransformerUtil {
 	
 	private static final Namespace PLNK_NAMESPACE = Namespace.getNamespace("plnk", "http://docs.oasis-open.org/wsbpel/2.0/plnktype");
 
+	private static final Namespace WSDL_NAMESPACE = Namespace.getNamespace("http://schemas.xmlsoap.org/wsdl/");
+	
 	// Element names
 	private static final String EL_REFERENCE_VARIABLE = "referenceVariable";
 	private static final String EL_REFERENCE_VARIABLES = "referenceVariables";
@@ -257,7 +258,7 @@ public class TransformerUtil {
 		File wsdlTargetFile = new File(projectPath
 				+ System.getProperty("file.separator") + bpelFileName
 				+ "_transformed" + System.getProperty("file.separator")
-				+ wsdlSourceFile.getName());
+				+ wsdlSourceFile.getName().replace(".wsdl", "_TF.wsdl"));
 
 		if (wsdlSourceFile != null){
 			SAXBuilder builder = new SAXBuilder();
@@ -299,6 +300,7 @@ public class TransformerUtil {
 				Element importElement = new Element("import");
 				importElement.setAttribute("location", RRS_RETRIEVAL_FILE);
 				importElement.setAttribute("namespace", rrsRetrievalNs);
+				importElement.setNamespace(WSDL_NAMESPACE);
 				
 				/*
 				 * Insert the following element to the process wsdl file
@@ -317,6 +319,7 @@ public class TransformerUtil {
 				Element importElement2 = new Element("import");
 				importElement2.setAttribute("location", RRS_META_DATA_FILE);
 				importElement2.setAttribute("namespace", rrsMetaDataNs);
+				importElement2.setNamespace(WSDL_NAMESPACE);
 				
 				//Add the new elements to the root object
 				root.addContent(0, importElement2);
