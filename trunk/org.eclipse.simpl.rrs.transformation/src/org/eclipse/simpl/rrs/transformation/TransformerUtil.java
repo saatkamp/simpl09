@@ -60,6 +60,11 @@ public class TransformerUtil {
 	private static final String AT_REFERENCE_VALUE_TYPE = "valueType";
 
 	private static final String AT_TARGET_NAMESPACE = "targetNamespace";
+	
+	public static final String RRS_RETRIEVAL_FILE = "rrsRetrieval.wsdl";
+	public static final String RRS_META_DATA_FILE = "rrsMetaData.wsdl";
+	public static final String RRS_RETRIEVAL_PREFIX = "rrsRet";
+	public static final String RRS_META_DATA_PREFIX = "rrsMeta";
 
 	public static List getReferenceVariables(String bpelFilePath) {
 		List refVariableElements = new ArrayList();
@@ -123,7 +128,7 @@ public class TransformerUtil {
 	}
 
 	public static void downloadWSDL(String sourceURI, String projectPath,
-			String bpelFileName) {
+			String bpelFileName, String targetFileName) {
 		URL u;
 		InputStream is = null;
 		BufferedReader buffer;
@@ -139,7 +144,7 @@ public class TransformerUtil {
 		File wsdlFileRRS = new File(projectPath
 				+ System.getProperty("file.separator") + bpelFileName
 				+ "_transformed" + System.getProperty("file.separator")
-				+ "rrs.wsdl");
+				+ targetFileName);
 
 		// Create the rrs.wsdl file, if necassary
 		if (!wsdlFileRRS.exists()) {
@@ -171,11 +176,7 @@ public class TransformerUtil {
 
 			try {
 				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-						new FileOutputStream(projectPath
-								+ System.getProperty("file.separator")
-								+ bpelFileName + "_transformed"
-								+ System.getProperty("file.separator")
-								+ "rrs.wsdl")));
+						new FileOutputStream(wsdlFileRRS)));
 				out.write(string.toString());
 				out.flush();
 				out.close();
@@ -195,11 +196,11 @@ public class TransformerUtil {
 	 * @return
 	 */
 	public static String getRRSwsdlNamespace(String projectPath,
-			String bpelFileName) {
+			String bpelFileName, String targetFileName) {
 		File wsdlFileRRS = new File(projectPath
 				+ System.getProperty("file.separator") + bpelFileName
 				+ "_transformed" + System.getProperty("file.separator")
-				+ "rrs.wsdl");
+				+ targetFileName);
 
 		SAXBuilder builder = new SAXBuilder();
 		Document doc;
@@ -271,30 +272,55 @@ public class TransformerUtil {
 				//Do the work
 				//TODO: An René's Implementierung anpassen
 				
-				String rrsNamespace = getRRSwsdlNamespace(projectPath,bpelFileName);
+				String rrsRetrievalNs = getRRSwsdlNamespace(projectPath,bpelFileName, RRS_RETRIEVAL_FILE);
 				
-				//Add the rrs.wsdl namespace to the process wsdl
-				root.addNamespaceDeclaration(Namespace.getNamespace("rrs", rrsNamespace));
+				//Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl) namespace to the process wsdl
+				root.addNamespaceDeclaration(Namespace.getNamespace(RRS_RETRIEVAL_PREFIX, rrsRetrievalNs));
+				
+				String rrsMetaDataNs = getRRSwsdlNamespace(projectPath,bpelFileName, RRS_META_DATA_FILE);
+				
+				//Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl) namespace to the process wsdl
+				root.addNamespaceDeclaration(Namespace.getNamespace(RRS_META_DATA_PREFIX, rrsMetaDataNs));
 				
 				/*
 				 * Insert the following element to the process wsdl file
 				 * 	<plnk:partnerLinkType name="RRSRetrievalType">
-    			 *		<plnk:role name="GET" portType="rrs:RRSRetrievalService"/>
+    			 *		<plnk:role name="GET" portType="rrsRet:RRSRetrievalService"/>
   				 *	</plnk:partnerLinkType>
-    			 *	<import location="rrs.wsdl" namespace="http://webservices.rrs.simpl.org/"/>
+    			 *	<import location="rrsRetrieval.wsdl" namespace="http://webservices.rrs.simpl.org/"/>
 				 */
 				Element partnerLink = new Element("partnerLinkType", PLNK_NAMESPACE);
 				partnerLink.setAttribute(AT_NAME, "RRSRetrievalType");
 				Element role = new Element("role", PLNK_NAMESPACE);
-				role.setAttribute(AT_NAME, "GET");
-				role.setAttribute("portType", "rrs:RRSRetrievalService");
+				role.setAttribute(AT_NAME, "get");
+				role.setAttribute("portType", RRS_RETRIEVAL_PREFIX+":RRSRetrievalService");
 				partnerLink.addContent(role);
 				
 				Element importElement = new Element("import");
-				importElement.setAttribute("location", "rrs.wsdl");
-				importElement.setAttribute("namespace", rrsNamespace);
+				importElement.setAttribute("location", RRS_RETRIEVAL_FILE);
+				importElement.setAttribute("namespace", rrsRetrievalNs);
 				
-				//Add the new element to the root object
+				/*
+				 * Insert the following element to the process wsdl file
+				 * 	<plnk:partnerLinkType name="RRSMetaDataType">
+    			 *		<plnk:role name="getEPR" portType="rrsMeta:RRSMetaDataService"/>
+  				 *	</plnk:partnerLinkType>
+    			 *	<import location="rrsMetaData.wsdl" namespace="http://webservices.rrs.simpl.org/"/>
+				 */
+				Element partnerLink2 = new Element("partnerLinkType", PLNK_NAMESPACE);
+				partnerLink2.setAttribute(AT_NAME, "RRSMetaDataType");
+				Element role2 = new Element("role", PLNK_NAMESPACE);
+				role2.setAttribute(AT_NAME, "getEPR");
+				role2.setAttribute("portType", RRS_META_DATA_PREFIX+":RRSMetaDataService");
+				partnerLink2.addContent(role2);
+				
+				Element importElement2 = new Element("import");
+				importElement2.setAttribute("location", RRS_META_DATA_FILE);
+				importElement2.setAttribute("namespace", rrsMetaDataNs);
+				
+				//Add the new elements to the root object
+				root.addContent(0, importElement2);
+				root.addContent(0, partnerLink2);
 				root.addContent(0, importElement);
 				root.addContent(0, partnerLink);
 				

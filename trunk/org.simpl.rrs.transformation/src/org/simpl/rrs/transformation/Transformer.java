@@ -45,8 +45,9 @@ public class Transformer {
 	private final Namespace RRS_XSD_NAMESPACE = Namespace.getNamespace("rrs",
 			"http://uni-stuttgart.de/simpl/rrs");
 
-	// The namespace of the rrs wsdl
-	private Namespace RRS_WSDL_NAMESPACE;
+	// The namespaces of the RRS
+	private Namespace RRS_META_DATA_NAMESPACE;
+	private Namespace RRS_RETRIEVAL_NAMESPACE;
 
 	private final String RRS_RETRIEVAL_PL = "RRS_Retrieval";
 	private final String RRS_RETRIEVAL_PL_TYPE = "tns:RRSGetType";
@@ -145,16 +146,14 @@ public class Transformer {
 		return transformer;
 	}
 
-	public String transform(String input, String rrsWSDLnamespace) {
+	public String transform(String input, String rrsRetrievalNamespace,
+			String rrsMetaDataNamespace) {
 
-		RRS_WSDL_NAMESPACE = Namespace
-				.getNamespace("rrsWSDL", rrsWSDLnamespace);
+		RRS_RETRIEVAL_NAMESPACE = Namespace.getNamespace("rrsRet",
+				rrsRetrievalNamespace);
 
-		if (RRS_XSD_NAMESPACE.getURI().equals(RRS_WSDL_NAMESPACE.getURI())) {
-			oneRRSNamespace = true;
-		} else {
-			oneRRSNamespace = false;
-		}
+		RRS_META_DATA_NAMESPACE = Namespace.getNamespace("rrsMeta",
+				rrsMetaDataNamespace);
 
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(input
 				.getBytes());
@@ -167,15 +166,12 @@ public class Transformer {
 			// Start Transformation
 			Element root = doc.getRootElement();
 
-			if (oneRRSNamespace) {
-				// Add the rrs xsd namespace prefix to the process element
-				root.addNamespaceDeclaration(RRS_XSD_NAMESPACE);
-			} else {
-				// Add the rrs wsdl namespace prefix to the process element
-				root.addNamespaceDeclaration(RRS_WSDL_NAMESPACE);
-				// Add the rrs xsd namespace prefix to the process element
-				root.addNamespaceDeclaration(RRS_XSD_NAMESPACE);
-			}
+			// Add the rrs retrieval namespace prefix to the process element
+			root.addNamespaceDeclaration(RRS_RETRIEVAL_NAMESPACE);
+			// Add the rrs meta data namespace prefix to the process element
+			root.addNamespaceDeclaration(RRS_META_DATA_NAMESPACE);
+			// Add the rrs xsd namespace prefix to the process element
+			root.addNamespaceDeclaration(RRS_XSD_NAMESPACE);
 
 			// Read the prefix of the "http://www.w3.org/yyyy/XMLSchema"
 			// namespace
@@ -385,13 +381,8 @@ public class Transformer {
 		invoke.setAttribute(AT_NAME, "init_" + refVarName);
 		invoke.setAttribute(AT_PARTNER_LINK, RRS_META_DATA_PL);
 		invoke.setAttribute(AT_OPERATION, RRS_META_DATA_PL_ROLE);
-		if (oneRRSNamespace) {
-			invoke.setAttribute(AT_PORT_TYPE, RRS_XSD_NAMESPACE.getPrefix()
-					+ ":" + RRS_META_DATA_PL_PORT);
-		} else {
-			invoke.setAttribute(AT_PORT_TYPE, RRS_WSDL_NAMESPACE.getPrefix()
-					+ ":" + RRS_META_DATA_PL_PORT);
-		}
+		invoke.setAttribute(AT_PORT_TYPE, RRS_META_DATA_NAMESPACE.getPrefix()
+				+ ":" + RRS_META_DATA_PL_PORT);
 		invoke.setAttribute(AT_INPUT_VARIABLE, eprNameVarName);
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, refVarName);
 
@@ -421,13 +412,8 @@ public class Transformer {
 		invoke.setAttribute(AT_NAME, valueVarName + "Refresh_" + count);
 		invoke.setAttribute(AT_PARTNER_LINK, RRS_RETRIEVAL_PL);
 		invoke.setAttribute(AT_OPERATION, RRS_RETRIEVAL_PL_ROLE);
-		if (oneRRSNamespace) {
-			invoke.setAttribute(AT_PORT_TYPE, RRS_XSD_NAMESPACE.getPrefix()
-					+ ":" + RRS_RETRIEVAL_PL_PORT);
-		} else {
-			invoke.setAttribute(AT_PORT_TYPE, RRS_WSDL_NAMESPACE.getPrefix()
-					+ ":" + RRS_RETRIEVAL_PL_PORT);
-		}
+		invoke.setAttribute(AT_PORT_TYPE, RRS_RETRIEVAL_NAMESPACE.getPrefix()
+				+ ":" + RRS_RETRIEVAL_PL_PORT);
 		invoke.setAttribute(AT_INPUT_VARIABLE, refVarName);
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, valueVarName);
 
@@ -545,7 +531,7 @@ public class Transformer {
 				 * <bpel:to variable="input"></bpel:to> </bpel:copy>
 				 * </bpel:assign>
 				 */
-				//Get the variable name out of the expression
+				// Get the variable name out of the expression
 				expression = expression
 						.substring(5, expression.indexOf(")", 5));
 				if (refVarNames.containsKey(expression)) {

@@ -43,7 +43,7 @@ public class TransformationClient {
 	}
 
 	public void transform(String projectPath, String bpelFilePath,
-			String rrsNamespaceURI) {
+			String rrsRetNamespaceURI, String rrsMetaNamespaceURI) {
 		String bpelFileName = bpelFilePath.substring(bpelFilePath
 				.lastIndexOf(System.getProperty("file.separator")) + 1,
 				bpelFilePath.lastIndexOf("."));
@@ -77,7 +77,7 @@ public class TransformationClient {
 			}
 
 			String response = executeTransformation(string.toString(),
-					rrsNamespaceURI);
+					rrsRetNamespaceURI, rrsMetaNamespaceURI);
 
 			File transformDir = new File(projectPath
 					+ System.getProperty("file.separator") + bpelFileName
@@ -136,14 +136,14 @@ public class TransformationClient {
 	}
 
 	private String executeTransformation(String bpelFileContent,
-			String wsdlNamespaceURI) {
+			String rrsRetNamespaceURI, String rrsMetaNamespaceURI) {
 		TransformationService transformationService = new Transformation()
 				.getTransformationServicePort();
 
 		String response = "";
 
 		response = transformationService.transform(bpelFileContent,
-				wsdlNamespaceURI);
+				rrsRetNamespaceURI, rrsMetaNamespaceURI);
 
 		return response;
 	}

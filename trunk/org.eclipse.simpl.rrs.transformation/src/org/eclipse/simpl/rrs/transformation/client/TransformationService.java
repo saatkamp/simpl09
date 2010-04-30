@@ -22,7 +22,8 @@ public interface TransformationService {
     /**
      * 
      * @param bpelFileContent
-     * @param rrsWSDLNamespaceURI
+     * @param rrsRetrievalNamespaceURI
+     * @param rrsMetaNamespaceURI
      * @return
      *     returns java.lang.String
      */
@@ -31,7 +32,9 @@ public interface TransformationService {
     public String transform(
         @WebParam(name = "bpelFileContent", partName = "bpelFileContent")
         String bpelFileContent,
-        @WebParam(name = "rrsWSDLNamespaceURI", partName = "rrsWSDLNamespaceURI")
-        String rrsWSDLNamespaceURI);
+        @WebParam(name = "rrsRetNamespaceURI", partName = "rrsRetNamespaceURI")
+        String rrsRetNamespaceURI,
+        @WebParam(name = "rrsMetaNamespaceURI", partName = "rrsMetaNamespaceURI")
+        String rrsMetaNamespaceURI);
 
 }
