@@ -25,8 +25,9 @@ public class Transformation {
 	@WebMethod(action = "transform")
 	public String transform(
 			@WebParam(name = "bpelFileContent", targetNamespace = "") String bpelFileContent, 
-			@WebParam(name = "rrsWSDLNamespaceURI", targetNamespace = "") String rrsWSDLNamespaceURI) {
-		String response = Transformer.getTransformer().transform(bpelFileContent, rrsWSDLNamespaceURI);
+			@WebParam(name = "rrsRetrievalNamespaceURI", targetNamespace = "") String rrsRetNamespaceURI,
+			@WebParam(name = "rrsMetaDataNamespaceURI", targetNamespace = "") String rrsMetaNamespaceURI) {
+		String response = Transformer.getTransformer().transform(bpelFileContent, rrsRetNamespaceURI, rrsMetaNamespaceURI);
 
 		return response;
 	}

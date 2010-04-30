@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.bpel.model.Process;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -35,7 +36,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
  * @link http://code.google.com/p/simpl09/
  * 
  */
-@SuppressWarnings("unchecked")
 public class TransformationContextHandler extends AbstractHandler {
 
 	@Override
@@ -45,132 +45,30 @@ public class TransformationContextHandler extends AbstractHandler {
 		if (selection != null & selection instanceof IStructuredSelection) {
 			IStructuredSelection strucSelection = (IStructuredSelection) selection;
 
-			// Hier wird die eigentlich Transformation angestoßen,
-			// d.h. es werden alle im Package Explorer selektierten BPEL-Dateien
-			// an den Transformator geschickt und die transformierten
-			// Dateien werden auch von diesem Plug-In lokal im Workspace in
-			// einem
-			// Unterordner "Prozessname_transformed" gespeichert.
-			for (Iterator<Object> iterator = strucSelection.iterator(); iterator
-					.hasNext();) {
-				Object element = iterator.next();
+			if (strucSelection.getFirstElement() instanceof IFile) {
+				IFile bpelFile = (IFile) strucSelection.getFirstElement();
 
-				if (element instanceof IFile) {
-					IFile bpelFile = (IFile) element;
+				IPath bpelPath = bpelFile.getFullPath();
 
-					IPath bpelPath = bpelFile.getFullPath();
+				IPath projectPath = bpelPath.removeFileExtension()
+						.removeLastSegments(1);
 
-					IPath projectPath = bpelPath.removeFileExtension()
-							.removeLastSegments(1);
+				String absolutWorkspacePath = ResourcesPlugin.getWorkspace()
+						.getRoot().getLocation().toOSString();
 
-					String absolutWorkspacePath = ResourcesPlugin
-							.getWorkspace().getRoot().getLocation()
-							.toOSString();
+				System.out.println("PROJEKT-PFAD: " + absolutWorkspacePath
+						+ projectPath.toOSString());
+				System.out.println("Datei-PFAD: " + absolutWorkspacePath
+						+ bpelPath.toOSString());
 
-					System.out.println("PROJEKT-PFAD: " + absolutWorkspacePath
-							+ projectPath.toOSString());
-					System.out.println("Datei-PFAD: " + absolutWorkspacePath
-							+ bpelPath.toOSString());
-
-					List references = TransformerUtil
-							.getReferenceVariables(absolutWorkspacePath
-									+ bpelPath.toOSString());
-
-					if (!references.isEmpty()) {
-						if (TransformerUtil
-								.areAllRefVarsFullSpecified(absolutWorkspacePath
-										+ bpelPath.toOSString())) {
-							String bpelFilePath = absolutWorkspacePath
-									+ bpelPath.toOSString();
-
-							String bpelFileName = bpelFilePath
-									.substring(
-											bpelFilePath
-													.lastIndexOf(System
-															.getProperty("file.separator")) + 1,
-											bpelFilePath.lastIndexOf("."));
-
-							// Download the rrs.wsdl file from the RRS, if
-							// necassary
-							// TODO: If more than one RRS is used, all rrs.wsdl
-							// files have to be downloaded and stored
-							TransformerUtil.downloadWSDL(RRSUIPlugIn
-									.getDefault().getPreferenceStore()
-									.getString("RRS_RET_ADDRESS"),
-									absolutWorkspacePath
-											+ projectPath.toOSString(),
-									bpelFileName);
-							
-							//Get the rrs wsdl namespace uri
-							String wsdlNamespace = TransformerUtil.getRRSwsdlNamespace(absolutWorkspacePath
-									+ projectPath.toOSString(),
-									bpelFileName);
-							
-							// Transform the process
-							TransformationClient.getClient().transform(
-									absolutWorkspacePath
-											+ projectPath.toOSString(),
-									absolutWorkspacePath
-											+ bpelPath.toOSString(),
-											wsdlNamespace);
-
-							File xsdFileRRS = new File(absolutWorkspacePath
-									+ projectPath.toOSString()
-									+ System.getProperty("file.separator")
-									+ bpelFileName + "_transformed"
-									+ System.getProperty("file.separator")
-									+ "rrs.xsd");
-
-							// Create the rrs.xsd file, if necassary
-							if (!xsdFileRRS.exists()) {
-								try {
-
-									if (xsdFileRRS.createNewFile()) {
-
-										OutputStreamWriter out = new OutputStreamWriter(
-												new FileOutputStream(xsdFileRRS
-														.getAbsolutePath()),
-												"UTF-8");
-
-										TemplateRrsXSD myTemplate = new TemplateRrsXSD();
-
-										out.write(myTemplate.generate(null));
-										out.close();
-									}
-								} catch (IOException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-							}
-							
-							//Copy and modify the process wsdl to the transformed directory
-							TransformerUtil.copyAndEditProcessWSDL(absolutWorkspacePath
-									+ projectPath.toOSString(),
-									bpelFileName);
-
-						} else {
-							MessageDialog
-									.openInformation(
-											Display.getCurrent()
-													.getActiveShell(),
-											"SIMPL TransformationService: Process has reference variables with unspecified attributes",
-											"The opened process has Reference Variables which are not fully specified. "
-													+ "Please check that in every Reference Variable the name, referenceType and valueType attribute is set to a value.");
-						}
-
-						// TODO: RRS.wsdl und rrs.xsd noch in den Projektordner
-						// kopieren!
-						// transform("C:/runtime-EclipseApplication/Test",
-						// "C:/runtime-EclipseApplication/Test/asd.bpel");
-					} else {
-						MessageDialog
-								.openInformation(
-										Display.getCurrent().getActiveShell(),
-										"SIMPL TransformationService: Process has no reference variables",
-										"The opened process has no Reference Variables, so a transformation"
-												+ " is not necassary.");
-					}
-				}
+				// Hier wird die eigentlich Transformation angestoßen,
+				// d.h. es wird die im Editor geöffnetete BPEL-Datei
+				// an den Transformator geschickt und die transformierte
+				// Datei wird auch von diesem Plug-In lokal im Workspace in
+				// einem
+				// Unterordner "Prozessname_transformed" gespeichert.
+				TransformationCmdHelper.doTheWork(absolutWorkspacePath,
+						projectPath, bpelPath);
 			}
 		}
 
