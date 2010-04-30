@@ -24,10 +24,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DataSource", propOrder = { "name", "address", "type", "subType",
     "authentication", "lateBinding" })
 public class DataSource {
-  private String name = "";
-  private String address = "";
-  private String type = "";
-  private String subType = "";
+  private String name;
+  private String address;
+  private String type;
+  private String subType;
   private Authentication authentication = new Authentication();
   private LateBinding lateBinding = new LateBinding();
 

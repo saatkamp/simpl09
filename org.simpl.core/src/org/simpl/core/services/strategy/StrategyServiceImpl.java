@@ -14,10 +14,9 @@ import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataSourceReader;
 
 /**
- * <b>Purpose:</b> The strategy service is used by a datasource service in case there is
- * given a WS-Policy instead of address, type and subtype.<br>
- * <b>Description:</b> The available data sources are retrieved from a UDDI Registry that
- * is responded by a UDDI client.<br>
+ * <b>Purpose:</b>Implementation of the strategy service.<br>
+ * <b>Description:</b>Uses a UDDI client to respond to the UDDI registry that is defined
+ * in the unspecified data source information.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -30,28 +29,23 @@ public class StrategyServiceImpl implements StrategyService {
   @Override
   public DataSource findDataSource(DataSource dataSource) {
     DataSource resultDataSource = null;
-    boolean compareWsPolicy = dataSource.getLateBinding().getPolicy() != null
-        && !dataSource.getLateBinding().getPolicy().equals("");
-    boolean compareType = dataSource.getType() != null
-        && !dataSource.getType().equals("");
-    boolean compareSubtype = dataSource.getSubType() != null
-        && !dataSource.getSubType().equals("");
+    boolean compareWsPolicy = dataSource.getLateBinding().getPolicy() != null;
+    boolean compareType = dataSource.getType() != null;
+    boolean compareSubtype = dataSource.getSubType() != null;
 
     switch (dataSource.getLateBinding().getStrategy()) {
     case FIRST_FIND:
-      // TODO UDDI Adresse muss irgendwo aktuell herkommen!
       ArrayList<UddiDataSource> dataSources = UddiDataSourceReader.getInstance(
-          "localhost").getAllDatasources();
+          dataSource.getLateBinding().getUddiAddress()).getAllDatasources();
       String dsPolicy = null;
       Policy dsPolicyObj = null;
       Policy wsPolicyObj = null;
       URL policyURL = null;
       UddiDataSource resultUddiDataSource = null;
 
-      // retrieve data sources and compare the policies
+      // retrieve all data sources and compare them to the given data source
       for (UddiDataSource uddiDataSource : dataSources) {
-        if (dataSource.getLateBinding().getPolicy() != null
-            && !dataSource.getLateBinding().getPolicy().equals("")) {
+        if (compareWsPolicy) {
           dsPolicy = uddiDataSource.getWsPolicy();
 
           // check if wsPolicy contains an URL
@@ -68,7 +62,7 @@ public class StrategyServiceImpl implements StrategyService {
           }
         }
 
-        // comparison
+        // comparison cases
         if (compareType && compareSubtype && compareWsPolicy) {
           if (PolicyComparator.compare(wsPolicyObj, dsPolicyObj)
               && uddiDataSource.getType().equals(dataSource.getType())
