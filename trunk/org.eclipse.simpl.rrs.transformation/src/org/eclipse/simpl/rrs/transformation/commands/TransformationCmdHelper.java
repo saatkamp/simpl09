@@ -52,12 +52,12 @@ public class TransformationCmdHelper {
 				TransformerUtil.downloadWSDL(RRSUIPlugIn.getDefault()
 						.getPreferenceStore().getString("RRS_RET_ADDRESS"),
 						absolutWorkspacePath + projectPath.toOSString(),
-						bpelFileName, "rrsRetrieval");
+						bpelFileName, TransformerUtil.RRS_RETRIEVAL_FILE);
 				
 				TransformerUtil.downloadWSDL(RRSUIPlugIn.getDefault()
 						.getPreferenceStore().getString("RRS_MD_ADDRESS"),
 						absolutWorkspacePath + projectPath.toOSString(),
-						bpelFileName, "rrsMetaData");
+						bpelFileName, TransformerUtil.RRS_META_DATA_FILE);
 
 				// Get the rrsRetrieval.wsdl namespace uri
 				String rrsRetrievalNamespace = TransformerUtil.getRRSwsdlNamespace(
