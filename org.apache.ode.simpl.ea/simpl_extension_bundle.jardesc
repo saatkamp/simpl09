@@ -11,7 +11,12 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.apache.ode.simpl.events"/>
-        <javaElement handleIdentifier="=org.apache.ode.simpl.ea"/>
+        <javaElement handleIdentifier="=org.apache.ode.simpl.events/src"/>
+        <file path="/org.apache.ode.simpl.events/.classpath"/>
+        <file path="/org.apache.ode.simpl.ea/.project"/>
+        <file path="/org.apache.ode.simpl.events/.project"/>
+        <javaElement handleIdentifier="=org.apache.ode.simpl.ea/src"/>
+        <file path="/org.apache.ode.simpl.ea/.classpath"/>
+        <folder path="/org.apache.ode.simpl.ea/.settings"/>
     </selectedElements>
 </jardesc>

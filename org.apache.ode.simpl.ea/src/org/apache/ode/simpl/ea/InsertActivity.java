@@ -31,7 +31,7 @@ public class InsertActivity extends DataManagementActivity {
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
 		DataSourceService datasourceService = SIMPLCore.getInstance()
-				.dataSourceService(ds.getType(), ds.getSubType());
+				.dataSourceService();
 
 		try {
 			this.successfullExecution = datasourceService.executeStatement(ds,

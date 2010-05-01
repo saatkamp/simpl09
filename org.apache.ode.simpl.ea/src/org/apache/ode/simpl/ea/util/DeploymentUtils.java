@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -35,6 +37,8 @@ import org.simpl.core.services.strategy.Strategy;
  */
 public class DeploymentUtils {
 
+	static Logger logger = Logger.getLogger(DeploymentUtils.class);
+
 	private static DeploymentUtils instance = null;
 
 	private static final String EL_PROCESS = "process";
@@ -49,7 +53,6 @@ public class DeploymentUtils {
 	private static final String AT_DATA_SOURCE_ADDRESS = "address";
 	private static final String AT_DATA_SOURCE_TYPE = "type";
 	private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
-	private static final String AT_DATA_SOURCE_LANGUAGE = "language";
 	private static final String AT_DATA_SOURCE_USER = "userName";
 	private static final String AT_DATA_SOURCE_PASSW = "password";
 
@@ -75,6 +78,8 @@ public class DeploymentUtils {
 	public static DeploymentUtils getInstance() {
 		if (instance == null) {
 			instance = new DeploymentUtils();
+			// Set up a simple configuration that logs on the console.
+			PropertyConfigurator.configure("log4j.properties");
 		}
 		return instance;
 	}
@@ -88,6 +93,10 @@ public class DeploymentUtils {
 	 */
 	public void readDeploymentDescriptor(String path, String process) {
 		File deploy = new File(path);
+
+		if (logger.isDebugEnabled()) {
+			logger.debug("Path to the DD: " + path);
+		}
 
 		if (deploy.exists()) {
 			SAXBuilder builder = new SAXBuilder();
@@ -110,19 +119,38 @@ public class DeploymentUtils {
 						for (Object data : datasourceElements) {
 							// Now we query all the required information
 							// and create a new DataSource object out of them.
-							String name = ((Element) data)
-									.getAttributeValue(AT_DATA_SOURCE_NAME);
+							String name = "dd:"
+									+ ((Element) data)
+											.getAttributeValue(AT_DATA_SOURCE_NAME);
+							if (logger.isDebugEnabled()) {
+								logger.debug("Name of ds: " + name);
+							}
 							String address = ((Element) data)
 									.getAttributeValue(AT_DATA_SOURCE_ADDRESS);
+							if (logger.isDebugEnabled()) {
+								logger.debug("Address of ds: " + address);
+							}
 							String type = ((Element) data)
 									.getAttributeValue(AT_DATA_SOURCE_TYPE);
+							if (logger.isDebugEnabled()) {
+								logger.debug("Type of ds: " + type);
+							}
 							String subtype = ((Element) data)
 									.getAttributeValue(AT_DATA_SOURCE_SUBTYPE);
+							if (logger.isDebugEnabled()) {
+								logger.debug("Subtype of ds: " + subtype);
+							}
 							String username = ((Element) data)
 									.getAttributeValue(AT_DATA_SOURCE_USER);
+							if (logger.isDebugEnabled()) {
+								logger.debug("UserName of ds: " + username);
+							}
 							String password = ((Element) data)
 									.getAttributeValue(AT_DATA_SOURCE_PASSW);
-
+							if (logger.isDebugEnabled()) {
+								logger.debug("Password of ds: " + password);
+							}
+							
 							DataSource dataSource = new DataSource();
 							dataSource.setName(name);
 							dataSource.setAddress(address);
@@ -139,11 +167,9 @@ public class DeploymentUtils {
 						List mappingElements = processElement.getChildren(
 								EL_MAPPING, DD_NAMESPACE);
 						for (Object map : mappingElements) {
-							// Now we query all the required information
-							// and save them in the corresponding DataSource
-							// object
-							// or create a new one, if such an object not
-							// exists.
+							// Now we query all the required late binding
+							// information and save them in new DataSource
+							// objects.
 							String activity = ((Element) map)
 									.getAttributeValue(AT_MAPPING_ACTIVITY);
 							String strat = ((Element) map)
@@ -157,10 +183,10 @@ public class DeploymentUtils {
 									EL_POLICY, DD_NAMESPACE);
 							String policyData = ((Element) policy)
 									.getAttributeValue(AT_MAPPING_POLICY_DATA);
-							
+
 							String uddiAddress = ((Element) map)
-							.getAttributeValue(AT_MAPPING_UDDI_ADDRESS);
-							
+									.getAttributeValue(AT_MAPPING_UDDI_ADDRESS);
+
 							DataSource newDs = new DataSource();
 							LateBinding lateBinding = new LateBinding();
 							lateBinding.setPolicy(policyData);
@@ -183,6 +209,18 @@ public class DeploymentUtils {
 				e.printStackTrace();
 			}
 		}
+		//		
+		// DataSource dataSource = new DataSource();
+		// dataSource.setName("dd:myDB");
+		// dataSource.setAddress("http://localhost:3306/test");
+		// dataSource.setType("Database");
+		// dataSource.setSubType("MySQL");
+		// Authentication auth = new Authentication();
+		// auth.setUser("test");
+		// auth.setPassword("test");
+		// dataSource.setAuthentication(auth);
+		//
+		// dataSourceElements.add(dataSource);
 	}
 
 	/**
@@ -229,14 +267,14 @@ public class DeploymentUtils {
 	 */
 	public DataSource merge(DataSource lateBindingDs, DataSource staticDs) {
 		DataSource result = new DataSource();
-		
+
 		result.setName(staticDs.getName());
 		result.setAddress(staticDs.getAddress());
 		result.setType(staticDs.getType());
 		result.setSubType(staticDs.getSubType());
 		result.setAuthentication(staticDs.getAuthentication());
 		result.setLateBinding(lateBindingDs.getLateBinding());
-		
+
 		return result;
 	}
 }

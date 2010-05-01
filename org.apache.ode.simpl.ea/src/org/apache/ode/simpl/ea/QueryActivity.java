@@ -38,7 +38,7 @@ public class QueryActivity extends DataManagementActivity {
 		//TODO: Noch überlegen, ob die Werte aus der Aktivität oder aus der Datenquelle
 		//gelesen werden, eigentlich müssten beide identisch sein!
 		DataSourceService datasourceService = SIMPLCore.getInstance()
-				.dataSourceService(ds.getType(), ds.getSubType());
+				.dataSourceService();
 
 		try {
 			this.successfullExecution = datasourceService.depositData(

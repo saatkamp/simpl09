@@ -13,7 +13,8 @@ import commonj.sdo.DataObject;
 import commonj.sdo.Property;
 import commonj.sdo.Type;
 
-public abstract class DataManagementActivity extends AbstractSyncExtensionOperation {
+public abstract class DataManagementActivity extends
+		AbstractSyncExtensionOperation {
 
 	private String dsStatement;
 	private String dsAddress;
@@ -22,14 +23,8 @@ public abstract class DataManagementActivity extends AbstractSyncExtensionOperat
 	private String dsLanguage;
 	private String activityName;
 	public boolean successfullExecution;
-	
-	private DeploymentInfos infos;
-	
-	public static final String SIMPL_SDO_NS = "http://www.example.org/simpl-activity-sdo";
 
-	public static String getSimplSdoNs() {
-		return SIMPL_SDO_NS;
-	}
+	private DeploymentInfos infos;
 
 	protected void loadSIMPLAttributes(ExtensionContext context, Element element)
 			throws FaultException {
@@ -40,27 +35,27 @@ public abstract class DataManagementActivity extends AbstractSyncExtensionOperat
 		this.dsLanguage = element.getAttribute("dsLanguage").toString();
 		this.activityName = element.getAttribute("name").toString();
 	}
-	
-	public void loadDeployInformation(ExtensionContext context, Element element){
-		//Path to the deployment descriptor
-		String path = context.getDUDir().getPath();
-		//Process name
+
+	public void loadDeployInformation(ExtensionContext context, Element element) {
+		// Path to the deployment descriptor
+		String path = context.getDUDir().getPath()+"deploy.xml";
+		// Process name
 		String processName = context.getOActivity().getOwner().getName();
-		
-		//Die Informationen sollen nur einmal gelesen werden
-		if (infos == null){
+
+		// Die Informationen sollen nur einmal gelesen werden
+		if (infos == null) {
 			infos = new DeploymentInfos(path, processName);
 		}
 	}
-	
-	public DataSource getDataSource(String activityName, String dataSourceName){
+
+	public DataSource getDataSource(String activityName, String dataSourceName) {
 		return infos.getActivityDataSource(activityName, dataSourceName);
 	}
-	
+
 	public String getActivityName() {
 		return activityName;
 	}
-	
+
 	public String getDsStatement() {
 		return dsStatement;
 	}
