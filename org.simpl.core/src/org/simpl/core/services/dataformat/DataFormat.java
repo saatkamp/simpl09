@@ -3,8 +3,8 @@ package org.simpl.core.services.dataformat;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b> Defines the methods that a data format service must implement
- * to work with the data source services. <br>
+ * <b>Purpose:</b>Defines the methods that a data format service must implement to work
+ * with the data source services.<br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
@@ -37,4 +37,14 @@ public interface DataFormat<T> {
    * @return
    */
   public T fromSDO(DataObject data);
+  
+  /**
+   * @return Empty SDO created from the data format schema.
+   */
+  public DataObject getSDO();
+  
+  /**
+   * @return The supported data format type.
+   */
+  public String getType();
 }

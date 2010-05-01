@@ -1,36 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http:///org.apache.tuscany.das.rdb/das" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdo="http:///org.apache.tuscany.das.rdb/das" xsi:type="das:DataGraphRoot">
-    <xsd:annotation>
-    	<xsd:documentation></xsd:documentation></xsd:annotation>
+<xsd:schema
+	targetNamespace="http://org.simpl.core/plugins/dataformat/DataFormat"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:das="http:///org.apache.tuscany.das.rdb/das" xmlns="http://org.simpl.core/plugins/dataformat/DataFormat">
 
 
+	<xsd:annotation>
+		<xsd:documentation></xsd:documentation>
+	</xsd:annotation>
 
-    
+	<xsd:element name="TuscanyDataFormat" type="tTuscanyDataFormat"></xsd:element>
 
+	<xsd:complexType name="tTuscanyDataFormat">
 
-    
+		<xsd:sequence>
+			<xsd:element name="dataObject" type="xsd:string"></xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
 
-
-
-
-
-
-
-
-
-
-
-    <xsd:element name="DefaultDataFormat" type="sdo:tTuscanyDataFormat"></xsd:element>
-
-    
-    <xsd:complexType name="tTuscanyDataFormat">
-    	<xsd:sequence maxOccurs="1" minOccurs="0">
-    		<xsd:element name="dataObject" type="xsd:string"></xsd:element>
-    	</xsd:sequence>
-    	<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
-    </xsd:complexType>
-
-    <xsd:simpleType name="data">
-    	<xsd:restriction base="xsd:string"></xsd:restriction>
-    </xsd:simpleType>
+	</xsd:complexType>
+	
 </xsd:schema>

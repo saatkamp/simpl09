@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
+import org.simpl.core.plugins.dataformat.TuscanyDataFormat;
 
 /**
  * <b>Purpose:</b>Provides access to the data format services that are created
@@ -32,6 +33,7 @@ public class DataFormatProvider {
    * Initialize all data format plugins.
    */
   static {
+    dataFormats.put("Tuscany", new TuscanyDataFormat());
     loadPlugins();
   }
 
