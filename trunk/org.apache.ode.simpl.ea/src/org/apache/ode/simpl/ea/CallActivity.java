@@ -31,7 +31,7 @@ public class CallActivity extends DataManagementActivity {
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
 		DataSourceService datasourceService = SIMPLCore.getInstance()
-				.dataSourceService(ds.getType(), ds.getSubType());
+				.dataSourceService();
 
 		boolean success = false;
 

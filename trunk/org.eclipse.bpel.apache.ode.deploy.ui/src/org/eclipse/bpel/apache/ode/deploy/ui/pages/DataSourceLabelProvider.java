@@ -26,7 +26,7 @@ public class DataSourceLabelProvider extends LabelProvider implements
 		case 5:
 			return datasource.getUserName();
 		case 6:
-			return datasource.getPassword();
+			return datasource.getPassword().replaceAll(".", "*");
 		default:
 			throw new RuntimeException("Too much columns");
 		}

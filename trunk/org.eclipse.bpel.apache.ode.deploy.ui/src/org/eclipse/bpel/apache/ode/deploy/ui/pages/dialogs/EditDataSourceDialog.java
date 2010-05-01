@@ -147,7 +147,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		
 		Label label7 = new Label(parent, SWT.NONE);
 		label7.setText("Password");
-		password = new Text(parent, SWT.BORDER);
+		password = new Text(parent, SWT.BORDER | SWT.PASSWORD);
 		if (this.datasource.getPassword() != null){
 			password.setText(this.datasource.getPassword());
 		}
