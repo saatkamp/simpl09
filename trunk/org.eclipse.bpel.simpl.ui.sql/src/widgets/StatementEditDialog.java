@@ -31,7 +31,7 @@ public class StatementEditDialog {
 	
 	LiveEditStyleText styleTextEditor;	
 	
-	public StatementEditDialog(){
+	public StatementEditDialog(final LiveEditStyleText statementFeld){
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = true;
 		gridData1.grabExcessVerticalSpace = false;
@@ -62,6 +62,8 @@ public class StatementEditDialog {
 		Label filler1 = new Label(theShell, SWT.NONE);
 		styleTextEditor = new LiveEditStyleText(theShell);
 		styleTextEditor.setLayoutData(gridData);
+		styleTextEditor.setText(statementFeld.getText());
+		
 		Label filler = new Label(theShell, SWT.NONE);
 		buttonAbort = new Button(theShell, SWT.CENTER);
 		buttonAbort.setText("Abort");
@@ -86,12 +88,14 @@ public class StatementEditDialog {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				statementFeld.setText(styleTextEditor.getText());
 				closeWindow();
 				
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
+				statementFeld.setText(styleTextEditor.getText());
 				closeWindow();
 				
 			}
