@@ -25,8 +25,8 @@ public interface DatasourceService {
 
     /**
      * 
+     * @param dataSource
      * @param filter
-     * @param datasource
      * @return
      *     returns java.lang.String
      * @throws ConnectionException_Exception
@@ -34,8 +34,8 @@ public interface DatasourceService {
     @WebMethod(action = "getMetaData")
     @WebResult(partName = "return")
     public String getMetaData(
-        @WebParam(name = "datasource", partName = "datasource")
-        DataSource datasource,
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
         @WebParam(name = "filter", partName = "filter")
         String filter)
         throws ConnectionException_Exception
@@ -79,6 +79,45 @@ public interface DatasourceService {
 
     /**
      * 
+     * @param dataSource
+     * @param dataObject
+     * @return
+     *     returns boolean
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "writeBack")
+    @WebResult(partName = "return")
+    public boolean writeBack(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
+        @WebParam(name = "dataObject", partName = "dataObject")
+        String dataObject)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
+     * @param dataSource
+     * @param target
+     * @param dataObject
+     * @return
+     *     returns boolean
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "writeData")
+    @WebResult(partName = "return")
+    public boolean writeData(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
+        @WebParam(name = "dataObject", partName = "dataObject")
+        String dataObject,
+        @WebParam(name = "target", partName = "target")
+        String target)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
      * @param statement
      * @param dataSource
      * @param target
@@ -95,24 +134,6 @@ public interface DatasourceService {
         String statement,
         @WebParam(name = "target", partName = "target")
         String target)
-        throws ConnectionException_Exception
-    ;
-
-    /**
-     * 
-     * @param dataSource
-     * @param data
-     * @return
-     *     returns boolean
-     * @throws ConnectionException_Exception
-     */
-    @WebMethod(action = "writeBack")
-    @WebResult(partName = "return")
-    public boolean writeBack(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource,
-        @WebParam(name = "data", partName = "data")
-        String data)
         throws ConnectionException_Exception
     ;
 

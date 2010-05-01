@@ -35,6 +35,9 @@ import commonj.sdo.DataObject;
 public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
   static Logger logger = Logger.getLogger(EmbDerbyRDBDataSourceService.class);
 
+  /**
+   * Initialize the plugin.
+   */
   public EmbDerbyRDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
@@ -112,34 +115,16 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
   }
 
   @Override
-  public DataObject retrieveData(DataSource dataSource, String statement)
-      throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
-    }
-
-    DAS das = DAS.FACTORY.createDAS(openConnection(dataSource.getAddress()));
-    Command read = das.createCommand(statement);
-    DataObject root = read.executeQuery();
-
-    logger.info("Statement '" + statement + "' executed on "
-        + dataSource.getAddress() + ".");
-
-    return root;
-  }
-
-  @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
     }
-
+  
     boolean success = false;
     Connection conn = openConnection(dataSource.getAddress());
-
+  
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
@@ -149,34 +134,65 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     } catch (Throwable e) {
       logger.error("exception executing the statement: " + statement, e);
     }
-
+  
     logger.info("Statement '" + statement + "' send to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
-
+  
     return success;
+  }
+
+  @Override
+  public DataObject retrieveData(DataSource dataSource, String statement)
+      throws ConnectionException {
+    if (logger.isDebugEnabled()) {
+      logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
+          + statement + ") executed.");
+    }
+
+    Connection connection = openConnection(dataSource.getAddress());
+    DAS das = DAS.FACTORY.createDAS(connection);
+    Command read = das.createCommand(statement);
+    DataObject root = read.executeQuery();
+
+    logger.info("Statement '" + statement + "' executed on "
+        + dataSource.getAddress() + ".");
+
+    // apply data format
+    //root = this.getDataFormat().toSDO(root);
+    
+    closeConnection(connection);
+    
+    return root;
   }
 
   @Override
   public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
+    boolean success = false;
+    
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
-
-    // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
-    boolean success = false;
-
-    /*
-     * Connection conn = openConnection(dsAddress); try { Statement stat =
-     * conn.createStatement(); stat.execute(statement); conn.commit();
-     * stat.close(); success = true; } catch (Throwable e) {
-     * logger.error("exception executing the statement: " + statement, e); }
-     * logger.info("Statement '" + statement + "' send to " + dsAddress + ".");
-     * closeConnection(conn);
-     */
+  
+    Connection connection = openConnection(dataSource.getAddress());
+    DAS das = DAS.FACTORY.createDAS(connection);
+    das.applyChanges(data); //TODO: testen ob das wirklich funktioniert!
+    
+    closeConnection(connection);
+    
     return success;
+  }
+
+  /* (non-Javadoc)
+   * @see org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public boolean writeData(DataSource arg0, DataObject arg1, String arg2)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    return false;
   }
 
   @Override
@@ -279,6 +295,8 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
       e.printStackTrace();
     }
 
+    closeConnection(conn);
+    
     return metaDataObject;
   }
 }

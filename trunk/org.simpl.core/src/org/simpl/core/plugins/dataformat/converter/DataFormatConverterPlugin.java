@@ -1,16 +1,14 @@
 package org.simpl.core.plugins.dataformat.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.simpl.core.services.dataformat.DataFormat;
+import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverter;
 
 /**
  * <b>Purpose:</b>This abstract class is used to create data format converter plug-ins
  * that can be created for data sources to understand data formats from other data
  * sources.<br>
- * <b>Description:</b>A data format converter plugin can support the data format of one
- * type of data source and several of its subtypes.<br>
+ * <b>Description:</b>Converts between two formats.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -21,46 +19,42 @@ import org.simpl.core.services.dataformat.converter.DataFormatConverter;
  */
 public abstract class DataFormatConverterPlugin implements DataFormatConverter {
   /**
-   * Type of the supported data source.
+   * The data format to convert from.
    */
-  private String type = "";
+  private String fromDataFormat = "Tuscany";
 
   /**
-   * Subtypes of the supported data source.
+   * The data format to convert to.
    */
-  private List<String> subtypes = new ArrayList<String>();
+  private String toDataFormat = "CSV";
 
   /**
-   * Sets the supported data source type.
-   * 
-   * @param dsType
+   * @return the fromDataFormat
    */
-  public void setType(String dsType) {
-    this.type = dsType;
+  public DataFormat<Object> getFromDataFormat() {
+    return DataFormatProvider.getInstance(fromDataFormat);
   }
 
   /**
-   * Adds a supported subtype.
-   * 
-   * @param dsSubtype
+   * @param fromDataFormat
+   *          the fromDataFormat to set
    */
-  public void addSubtype(String dsSubtype) {
-    if (!this.subtypes.contains(dsSubtype)) {
-      this.subtypes.add(dsSubtype);
-    }
+  public void setFromDataFormat(String fromDataFormat) {
+    this.fromDataFormat = fromDataFormat;
   }
 
   /**
-   * @return The supported data source type.
+   * @return the toDataFormat
    */
-  public String getType() {
-    return this.type;
+  public DataFormat<Object> getToDataFormat() {
+    return DataFormatProvider.getInstance(toDataFormat);
   }
 
   /**
-   * @return List of the supported data source subtypes.
+   * @param toDataFormat
+   *          the toDataFormat to set
    */
-  public List<String> getSubtypes() {
-    return this.subtypes;
+  public void setToDataFormat(String toDataFormat) {
+    this.toDataFormat = toDataFormat;
   }
 }

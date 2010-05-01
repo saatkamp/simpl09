@@ -10,8 +10,6 @@ import java.util.List;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
-import org.simpl.core.services.dataformat.DataFormat;
-import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
@@ -24,7 +22,7 @@ import commonj.sdo.DataObject;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de><br>
+ * @author schneimi<br>
  * @version $Id: WindowsLocalFSDataSource.java 1014 2010-03-29 09:16:08Z
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
@@ -35,12 +33,16 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
    */
   Runtime runtime = Runtime.getRuntime();
 
+  /**
+   * Initialize the plugin.
+   */
   public WindowsLocalFSDataSourceService() {
     this.setType("Filesystem");
     this.setMetaDataSchemaType("tFilesystemMetaData");
     this.addSubtype("Windows Local");
     this.addLanguage("Windows Local", "Shell");
-
+    this.setDataFormat("CSV");
+    
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
@@ -63,6 +65,63 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
     }
 
     return true;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#retrieveData(java.lang.String,
+   * java.lang.String)
+   */
+  @Override
+  public DataObject retrieveData(DataSource dataSource, String file)
+      throws ConnectionException {
+    DataObject dataObject = null;
+    File fsFile = null;
+    
+    if (!dataSource.getAddress().equals("")) {
+      fsFile = new File(dataSource.getAddress() + File.separator + file);
+    } else {
+      fsFile = new File(file);
+    }
+  
+    // apply data format
+    if (fsFile != null) {
+      dataObject = this.getDataFormat().toSDO(fsFile);
+    }
+  
+    return dataObject;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.datasource.DatasourceService#writeBack(java.lang.String,
+   * commonj.sdo.DataObject)
+   */
+  @Override
+  public boolean writeBack(DataSource dataSource, DataObject data)
+      throws ConnectionException {
+    boolean writeBack = false;
+    File tempFile = (File) this.getDataFormat().fromSDO(data);
+    String dir = "";
+  
+    if (!dataSource.getAddress().equals("")) {
+      dir = dataSource.getAddress() + File.separator;
+    }
+  
+    // move temp file to given dir
+    writeBack = tempFile.renameTo(new File(dir + data.getString("filename")));
+  
+    return writeBack;
+  }
+
+  /* (non-Javadoc)
+   * @see org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public boolean writeData(DataSource arg0, DataObject arg1, String arg2)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    return false;
   }
 
   /*
@@ -183,54 +242,6 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
     }
 
     return metaDataObject;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#writeBack(java.lang.String,
-   * commonj.sdo.DataObject)
-   */
-  @Override
-  public boolean writeBack(DataSource dataSource, DataObject data)
-      throws ConnectionException {
-    boolean writeBack = false;
-    DataFormat<Object> dataFormat = DataFormatProvider.getInstance("CSV");
-    File tempFile = (File) dataFormat.fromSDO(data);
-    String dir = "";
-
-    if (!dataSource.getAddress().equals("")) {
-      dir = dataSource.getAddress() + File.separator;
-    }
-
-    // move temp file to given dir
-    writeBack = tempFile.renameTo(new File(dir + data.getString("filename")));
-
-    return writeBack;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#retrieveData(java.lang.String,
-   * java.lang.String)
-   */
-  @Override
-  public DataObject retrieveData(DataSource dataSource, String file)
-      throws ConnectionException {
-    DataObject dataObject = null;
-    File fsFile = null;
-    DataFormat<Object> dataFormat = DataFormatProvider.getInstance("CSV");
-
-    if (!dataSource.getAddress().equals("")) {
-      fsFile = new File(dataSource.getAddress() + File.separator + file);
-    } else {
-      fsFile = new File(file);
-    }
-
-    if (fsFile != null) {
-      dataObject = dataFormat.toSDO(fsFile);
-    }
-
-    return dataObject;
   }
 
   /**

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.simpl.core.services.dataformat.DataFormat;
+import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.datasource.DataSourceService;
 
 import commonj.sdo.DataObject;
@@ -126,14 +128,14 @@ public abstract class DataSourceServicePlugin implements DataSourceService {
   }
 
   /**
-   * @return The used data format type.
+   * @return The data format of the data source.
    */
-  public String getDataFormat() {
-    return this.dataFormat;
+  public DataFormat<Object> getDataFormat() {
+    return DataFormatProvider.getInstance(this.dataFormat);
   }
 
   /**
-   * Sets the data format type for the data source.
+   * Sets the data format type for the data source service.
    * 
    * @param dataFormat
    */
@@ -218,5 +220,4 @@ public abstract class DataSourceServicePlugin implements DataSourceService {
 
     return metaDataObject;
   }
-
 }

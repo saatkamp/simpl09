@@ -24,7 +24,7 @@ import commonj.sdo.helper.XMLHelper;
 /**
  * Web Service to access the SIMPL core data source service.
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de>
+ * @author schneimi<br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
@@ -33,6 +33,17 @@ import commonj.sdo.helper.XMLHelper;
 public class Datasource {
   // Output stream to write SDO to XML string
   ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+  @WebMethod(action = "executeStatement")
+  public boolean executeStatement(@WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "statement") String statement) throws ConnectionException {
+    boolean success = false;
+
+    success = SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
+        statement);
+
+    return success;
+  }
 
   @WebMethod(action = "retrieveData")
   public String retrieveData(@WebParam(name = "dataSource") DataSource dataSource,
@@ -55,6 +66,33 @@ public class Datasource {
     return data;
   }
 
+  @WebMethod(action = "writeBack")
+  public boolean writeBack(@WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "dataObject") String data) throws ConnectionException {
+    boolean success = false;
+    DataObject dataObject = null;
+
+    dataObject = (DataObject) Parameter.deserialize(data);
+    success = SIMPLCore.getInstance().dataSourceService().writeBack(dataSource,
+        dataObject);
+
+    return success;
+  }
+
+  @WebMethod(action = "writeData")
+  public boolean writeData(@WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "dataObject") String data, @WebParam(name = "target") String target)
+      throws ConnectionException {
+    boolean success = false;
+    DataObject dataObject = null;
+
+    dataObject = (DataObject) Parameter.deserialize(data);
+    success = SIMPLCore.getInstance().dataSourceService().writeData(dataSource,
+        dataObject, target);
+
+    return success;
+  }
+
   @WebMethod(action = "depositData")
   public boolean depositData(@WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "statement") String statement,
@@ -67,32 +105,8 @@ public class Datasource {
     return success;
   }
 
-  @WebMethod(action = "executeStatement")
-  public boolean executeStatement(@WebParam(name = "dataSource") DataSource dataSource,
-      @WebParam(name = "statement") String statement) throws ConnectionException {
-    boolean success = false;
-
-    success = SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
-        statement);
-
-    return success;
-  }
-
-  @WebMethod(action = "writeBack")
-  public boolean writeBack(@WebParam(name = "dataSource") DataSource dataSource,
-      @WebParam(name = "data") String data) throws ConnectionException {
-    boolean success = false;
-    DataObject dataObject = null;
-
-    dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceService().writeBack(dataSource,
-        dataObject);
-
-    return success;
-  }
-
   @WebMethod(action = "getMetaData")
-  public String getMetaData(@WebParam(name = "datasource") DataSource dataSource,
+  public String getMetaData(@WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "filter") String filter) throws ConnectionException {
     DataObject dataObject = null;
     String metaData = null;

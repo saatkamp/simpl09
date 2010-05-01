@@ -34,6 +34,9 @@ import commonj.sdo.DataObject;
 public class DB2RDBDataSourceService extends DataSourceServicePlugin {
   static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
 
+  /**
+   * Initialize the plugin.
+   */
   public DB2RDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
@@ -44,60 +47,32 @@ public class DB2RDBDataSourceService extends DataSourceServicePlugin {
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  private Connection openConnection(String dsAddress, String user,
-      String password) throws ConnectionException {
-    // TODO Umändern in DataSource Connection
-    // Testweise wird hier nur eine embedded Derby Datenbank verwendet
-    if (logger.isDebugEnabled()) {
-      logger.debug("Connection openConnection(" + dsAddress + ") executed.");
-    }
-
-    java.sql.Connection connect = null;
-
-    try {
-      Class.forName("com.ibm.db2.jcc.DB2Driver");
-      StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:db2://");
-      uri.append(dsAddress);
-
-      try {
-        connect = (java.sql.Connection) DriverManager.getConnection(uri
-            .toString(), user, password);
-        connect.setAutoCommit(false);
-      } catch (SQLException e) {
-        // TODO Auto-generated catch block
-        logger.fatal("exception during establishing connection to: "
-            + uri.toString(), e);
-      }
-
-      logger.info("Connection opened on " + dsAddress + ".");
-      return connect;
-    } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      logger.fatal("exception during loading the JDBC driver", e);
-    }
-
-    return connect;
-  }
-
-  private boolean closeConnection(Connection connection)
+  @Override
+  public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    // TODO Auto-generated method stub
-    boolean success = false;
-
-    try {
-      ((java.sql.Connection) connection).close();
-      success = true;
-      if (logger.isDebugEnabled()) {
-        logger.debug("boolean closeConnection() executed successfully.");
-      }
-      logger.info("Connection closed.");
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      if (logger.isDebugEnabled()) {
-        logger.error("boolean closeConnection() executed with failures.", e);
-      }
+    if (logger.isDebugEnabled()) {
+      logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
+          + statement + ") executed.");
     }
+  
+    boolean success = false;
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
+  
+    try {
+      Statement stat = conn.createStatement();
+      stat.execute(statement);
+      conn.commit();
+      success = true;
+      stat.close();
+    } catch (Throwable e) {
+      logger.error("exception executing the statement: " + statement, e);
+    }
+  
+    logger.info("Statement '" + statement + "' send to "
+        + dataSource.getAddress() + ".");
+    closeConnection(conn);
     return success;
   }
 
@@ -121,42 +96,13 @@ public class DB2RDBDataSourceService extends DataSourceServicePlugin {
   }
 
   @Override
-  public boolean executeStatement(DataSource dataSource, String statement)
-      throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
-    }
-
-    boolean success = false;
-    Connection conn = openConnection(dataSource.getAddress(), dataSource
-        .getAuthentication().getUser(), dataSource.getAuthentication()
-        .getPassword());
-
-    try {
-      Statement stat = conn.createStatement();
-      stat.execute(statement);
-      conn.commit();
-      success = true;
-      stat.close();
-    } catch (Throwable e) {
-      logger.error("exception executing the statement: " + statement, e);
-    }
-
-    logger.info("Statement '" + statement + "' send to "
-        + dataSource.getAddress() + ".");
-    closeConnection(conn);
-    return success;
-  }
-
-  @Override
   public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
-
+  
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
     /*
@@ -168,6 +114,16 @@ public class DB2RDBDataSourceService extends DataSourceServicePlugin {
      * closeConnection(conn);
      */
     return success;
+  }
+
+  /* (non-Javadoc)
+   * @see org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public boolean writeData(DataSource arg0, DataObject arg1, String arg2)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    return false;
   }
 
   @Override
@@ -280,5 +236,62 @@ public class DB2RDBDataSourceService extends DataSourceServicePlugin {
     }
 
     return metaDataObject;
+  }
+
+  private Connection openConnection(String dsAddress, String user,
+      String password) throws ConnectionException {
+    // TODO Umändern in DataSource Connection
+    // Testweise wird hier nur eine embedded Derby Datenbank verwendet
+    if (logger.isDebugEnabled()) {
+      logger.debug("Connection openConnection(" + dsAddress + ") executed.");
+    }
+  
+    java.sql.Connection connect = null;
+  
+    try {
+      Class.forName("com.ibm.db2.jcc.DB2Driver");
+      StringBuilder uri = new StringBuilder();
+      uri.append("jdbc:db2://");
+      uri.append(dsAddress);
+  
+      try {
+        connect = (java.sql.Connection) DriverManager.getConnection(uri
+            .toString(), user, password);
+        connect.setAutoCommit(false);
+      } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        logger.fatal("exception during establishing connection to: "
+            + uri.toString(), e);
+      }
+  
+      logger.info("Connection opened on " + dsAddress + ".");
+      return connect;
+    } catch (ClassNotFoundException e) {
+      // TODO Auto-generated catch block
+      logger.fatal("exception during loading the JDBC driver", e);
+    }
+  
+    return connect;
+  }
+
+  private boolean closeConnection(Connection connection)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    boolean success = false;
+  
+    try {
+      ((java.sql.Connection) connection).close();
+      success = true;
+      if (logger.isDebugEnabled()) {
+        logger.debug("boolean closeConnection() executed successfully.");
+      }
+      logger.info("Connection closed.");
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      if (logger.isDebugEnabled()) {
+        logger.error("boolean closeConnection() executed with failures.", e);
+      }
+    }
+    return success;
   }
 }

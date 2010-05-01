@@ -31,6 +31,9 @@ import commonj.sdo.DataObject;
 public class DerbyRDBDataSourceService extends DataSourceServicePlugin {
   static Logger logger = Logger.getLogger(DerbyRDBDataSourceService.class);
 
+  /**
+   * Initialize the plugin.
+   */
   public DerbyRDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
@@ -102,6 +105,36 @@ public class DerbyRDBDataSourceService extends DataSourceServicePlugin {
   }
 
   @Override
+  public boolean executeStatement(DataSource dataSource, String statement)
+      throws ConnectionException {
+    if (logger.isDebugEnabled()) {
+      logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
+          + statement + ") executed.");
+    }
+  
+    boolean success = false;
+    Connection conn = openConnection(dataSource.getAddress(), dataSource
+        .getAuthentication().getUser(), dataSource.getAuthentication()
+        .getPassword());
+  
+    try {
+      Statement stat = conn.createStatement();
+      stat.execute(statement);
+      conn.commit();
+      success = true;
+      stat.close();
+    } catch (Throwable e) {
+      logger.error("exception executing the statement: " + statement, e);
+    }
+  
+    logger.info("Statement '" + statement + "' send to "
+        + dataSource.getAddress() + ".");
+    closeConnection(conn);
+  
+    return success;
+  }
+
+  @Override
   public DataObject retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
@@ -122,43 +155,13 @@ public class DerbyRDBDataSourceService extends DataSourceServicePlugin {
   }
 
   @Override
-  public boolean executeStatement(DataSource dataSource, String statement)
-      throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
-    }
-
-    boolean success = false;
-    Connection conn = openConnection(dataSource.getAddress(), dataSource
-        .getAuthentication().getUser(), dataSource.getAuthentication()
-        .getPassword());
-
-    try {
-      Statement stat = conn.createStatement();
-      stat.execute(statement);
-      conn.commit();
-      success = true;
-      stat.close();
-    } catch (Throwable e) {
-      logger.error("exception executing the statement: " + statement, e);
-    }
-
-    logger.info("Statement '" + statement + "' send to "
-        + dataSource.getAddress() + ".");
-    closeConnection(conn);
-
-    return success;
-  }
-
-  @Override
   public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
-
+  
     // TODO Hier muss noch der Fall mit einem DataObject abgedeckt werden.
     boolean success = false;
     /*
@@ -170,6 +173,16 @@ public class DerbyRDBDataSourceService extends DataSourceServicePlugin {
      * closeConnection(conn);
      */
     return success;
+  }
+
+  /* (non-Javadoc)
+   * @see org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public boolean writeData(DataSource arg0, DataObject arg1, String arg2)
+      throws ConnectionException {
+    // TODO Auto-generated method stub
+    return false;
   }
 
   @Override

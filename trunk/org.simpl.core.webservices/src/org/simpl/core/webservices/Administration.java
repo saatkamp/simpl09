@@ -13,7 +13,7 @@ import org.simpl.core.helpers.Parameter;
 /**
  * Web Service of the administration service.
  * 
- * @author Michael Schneidt <michael.schneidt@arcor.de>
+ * @author schneimi<br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */

@@ -2,7 +2,9 @@ package org.simpl.core.services.datasource;
 
 import java.util.List;
 
+import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
+import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverter;
 import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
@@ -13,9 +15,8 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Implementation of the data source service.<br>
- * <b>Description:</b>Receives all requests to data sources and forward them to the an
- * appropriate data source service implementation that is provided by a data source
- * service plugin. <br>
+ * <b>Description:</b>Receives all requests to data sources and forward them to one of the
+ * data source service instances that are provided by data source service plugins.<br>
  * If the given data source is not fully specified and contains late binding information,
  * the strategy service is consulted to find a matching full specified data source.<br>
  * The given data on writeback is tested to match the given data source's data format and
@@ -45,8 +46,8 @@ public class DataSourceServiceImpl implements DataSourceService {
     boolean success = false;
 
     // late binding
-    if (!isFullSpecified(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    if (this.hasLateBinding(dataSource)) {
+      dataSource = this.strategyService.findDataSource(dataSource);
     }
 
     if (dataSource != null) {
@@ -54,6 +55,7 @@ public class DataSourceServiceImpl implements DataSourceService {
           dataSource.getType(), dataSource.getSubType());
       success = this.dataSourceService.depositData(dataSource, statement, target);
     }
+
     return success;
   }
 
@@ -69,8 +71,8 @@ public class DataSourceServiceImpl implements DataSourceService {
     boolean success = false;
 
     // late binding
-    if (!isFullSpecified(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    if (this.hasLateBinding(dataSource)) {
+      dataSource = this.strategyService.findDataSource(dataSource);
     }
 
     if (dataSource != null) {
@@ -79,6 +81,95 @@ public class DataSourceServiceImpl implements DataSourceService {
       success = this.dataSourceService.executeStatement(dataSource, statement);
     }
 
+    return success;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#retrieveData(org.simpl.core.
+   * services.datasource.DataSource, java.lang.String)
+   */
+  @Override
+  public DataObject retrieveData(DataSource dataSource, String statement)
+      throws ConnectionException {
+    DataObject data = null;
+  
+    // late binding
+    if (this.hasLateBinding(dataSource)) {
+      dataSource = this.strategyService.findDataSource(dataSource);
+    }
+  
+    // retrieve data
+    if (dataSource != null) {
+      this.dataSourceService = DataSourceServiceProvider.getInstance(
+          dataSource.getType(), dataSource.getSubType());
+      data = this.dataSourceService.retrieveData(dataSource, statement);
+    }
+  
+    return data;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#writeBack(org.simpl.core.services
+   * .datasource.DataSource, commonj.sdo.DataObject)
+   */
+  @Override
+  public boolean writeBack(DataSource dataSource, DataObject data)
+      throws ConnectionException {
+    boolean success = false;
+  
+    // late binding
+    if (this.hasLateBinding(dataSource)) {
+      dataSource = this.strategyService.findDataSource(dataSource);
+    }
+  
+    if (dataSource != null) {
+      success = this.dataSourceService.writeBack(dataSource, data);
+    }
+  
+    return success;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
+   * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public boolean writeData(DataSource dataSource, DataObject data, String target)
+      throws ConnectionException {
+    boolean success = false;
+  
+    // late binding
+    if (this.hasLateBinding(dataSource)) {
+      dataSource = this.strategyService.findDataSource(dataSource);
+    }
+  
+    if (dataSource != null) {
+      this.dataSourceService = DataSourceServiceProvider.getInstance(
+          dataSource.getType(), dataSource.getSubType());
+  
+      // compare this data source data format with the given data data format
+      if (isSupported(data)) {
+        // find converter and convert the data
+        this.dataFormatConverter = DataFormatConverterProvider.getInstance(
+            ((DataSourceServicePlugin) this.dataSourceService).getDataFormat().getType(),
+            data.getString("formatType"));
+  
+        if (this.dataFormatConverter != null) {
+          // TODO: success = this.dataSourceService.write(dataSource,
+          // this.dataFormatConverter
+          // .convertFrom(data));
+        }
+      } else {
+        // TODO: success = this.dataSourceService.write(dataSource, data);
+      }
+    }
+  
     return success;
   }
 
@@ -94,8 +185,8 @@ public class DataSourceServiceImpl implements DataSourceService {
     DataObject data = null;
 
     // late binding
-    if (!isFullSpecified(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    if (this.hasLateBinding(dataSource)) {
+      dataSource = this.strategyService.findDataSource(dataSource);
     }
 
     if (dataSource != null) {
@@ -107,72 +198,8 @@ public class DataSourceServiceImpl implements DataSourceService {
     return data;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#retrieveData(org.simpl.core.
-   * services.datasource.DataSource, java.lang.String)
-   */
-  @Override
-  public DataObject retrieveData(DataSource dataSource, String statement)
-      throws ConnectionException {
-    DataObject data = null;
-
-    // late binding
-    if (!isFullSpecified(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
-    }
-
-    if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
-      data = this.dataSourceService.retrieveData(dataSource, statement);
-    }
-
-    return data;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#writeBack(org.simpl.core.services
-   * .datasource.DataSource, commonj.sdo.DataObject)
-   */
-  @Override
-  public boolean writeBack(DataSource dataSource, DataObject data)
-      throws ConnectionException {
-    boolean success = false;
-
-    // late binding
-    if (!isFullSpecified(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
-    }
-
-    if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
-
-      // compare this data source data format with the given data data format
-      if (!data.getString("formatType").equals(
-          ((DataSourceServicePlugin) this.dataSourceService).getDataFormat())) {
-        // find converter and convert the data
-        dataFormatConverter = DataFormatConverterProvider.getInstance(dataSource
-            .getType(), dataSource.getSubType(), data.getString("formatType"));
-
-        if (dataFormatConverter != null) {
-          success = this.dataSourceService.writeBack(dataSource, dataFormatConverter
-              .convert(data));
-        }
-      } else {
-        success = this.dataSourceService.writeBack(dataSource, data);
-      }
-    }
-    
-    return success;
-  }
-
   /**
-   * Returns all data source types supported by the SIMPL Core.
+   * Returns all data source types that are supported by the SIMPL Core.
    * 
    * @return A list of data source types.
    */
@@ -201,28 +228,53 @@ public class DataSourceServiceImpl implements DataSourceService {
   }
 
   /**
-   * Returns all data source types supported by the SIMPL Core.
+   * Returns all data format types that are available.
    * 
-   * @return List of data source types.
+   * @return A list of data format types.
    */
   public List<String> getDataFormatTypes() {
-    return DataSourceServiceProvider.getTypes();
+    return DataFormatProvider.getTypes();
   }
 
   /**
-   * Checks if a given data source is full specified to be able to request a data source
-   * service.
+   * Returns all data format types that can be converted to and from the given data
+   * format.
+   * 
+   * @param dataFormat
+   * @return A list of data format types.
+   */
+  public List<String> getConvertDataFormats(String dataFormat) {
+    return DataFormatConverterProvider.getConvertDataFormats(dataFormat);
+  }
+
+  /**
+   * Checks if a given data source has late binding information.
    * 
    * @param dataSource
    * @return
    */
-  private boolean isFullSpecified(DataSource dataSource) {
-    boolean fullSpecified = false;
+  private boolean hasLateBinding(DataSource dataSource) {
+    boolean hasLateBinding = false;
 
-    fullSpecified = dataSource.getLateBinding().getPolicy() != null
+    hasLateBinding = dataSource != null
+        && dataSource.getLateBinding().getPolicy() != null
         && dataSource.getLateBinding().getStrategy() != null
         && dataSource.getLateBinding().getUddiAddress() != null;
 
-    return fullSpecified;
+    return hasLateBinding;
+  }
+
+  /**
+   * Checks if the given data's format is supported by the current data source service
+   * instance.
+   * 
+   * @param dataFormat
+   * @return
+   */
+  private boolean isSupported(DataObject data) {
+    boolean supported = ((DataFormatPlugin<Object>) ((DataSourceServicePlugin) this.dataSourceService)
+        .getDataFormat()).getType().equals(data.getString("formatType"));
+
+    return supported;
   }
 }
