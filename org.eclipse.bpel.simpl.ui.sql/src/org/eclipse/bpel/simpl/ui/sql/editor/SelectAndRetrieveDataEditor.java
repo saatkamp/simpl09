@@ -55,12 +55,12 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
    TabFolder tabFolder;
    String TABLE_ORIENTED="values";
 	String SET_ORIENTED="select";
-	int tableIndex=0;
-	Table tableOfColumnsAndValues;
+	int tableIndex=0,tableIndex2=0,tableIndex3=0,tableIndex4=0;
+	Table tableOfColumnsAndValues,tableOfColumnsAndValues2,tableOfColumnsAndValues3,tableOfColumnsAndValues4,tableOfColumnsAndValues5;
 	List tablsList,tablsList2,tablsList3,tablsList4,tablsList5;
 	int folderTabsIndex=0;
-	Combo comboColumnName,comboColumnName2,comboColumnName3,comboColumnName4,comboColumnName5,comboOperationName,comboDistAll,comboOperationType;
-	Text textValueForColumn;
+	Combo comboColumnName,comboColumnName2,comboColumnName3,comboColumnName4,comboColumnName5,comboOperationName,comboOperationName2,comboOperationName3,comboOperationName4,comboDistAll,comboOperationType;
+	Text textValueForColumn,textValueForColumn2,textValueForColumn3,textValueForColumn4;
 	
 	Combo pradiktCombo;
 	
@@ -152,12 +152,15 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			
 			statementCompo.setLayout(new GridLayout());
 			statementCompo.setLayoutData(gridData2);
+			GridLayout gridLayoutA2 = new GridLayout();
+			gridLayoutA2.numColumns = 1;
+			statementCompo.setLayout(gridLayoutA2);
 			
 			statementText=new LiveEditStyleText(statementCompo);
 			statementText.setEditable(false);
 			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
 			Button undoButton=new Button(statementCompo, SWT.LEFT);
-			undoButton.setLayoutData(gridData1_1);
+			//undoButton.setLayoutData(gridData1_1);
 			undoButton.setText("UNDO");
 			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
 			undoButton.addSelectionListener(new SelectionListener() {
@@ -256,6 +259,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						System.out.print(tablsList2.getItem(tablsList2.getSelectionIndex()));
 						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
 						try {
+							comboColumnName5.add("test");
 							loadColumnsOfTableIntoCombo2(tablsList2.getItem(tablsList2.getSelectionIndex()));
 						} catch (Exception e1) {
 							System.out.print("ERROR: "+e1.getMessage());
@@ -394,7 +398,21 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			titelPartOfTableCombo.setLayout(gridLayoutY4);
 			Label labelColumnName=new Label(titelPartOfTableCombo, SWT.NONE);
 			labelColumnName.setText("Column name: ");		
-			comboColumnName2=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboColumnName5=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboColumnName5.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
+					System.out.print("test: "+comboColumnName5.getText());
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					System.out.print("test: "+comboColumnName5.getText());
+					
+				}
+			});
 			
 			Label labelOperationName=new Label(titelPartOfTableCombo, SWT.NONE);
 			labelOperationName.setText("Operation: ");
@@ -611,23 +629,23 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					
-					if(textValueForColumn.getText().length()>0){
+					if(textValueForColumn2.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),textValueForColumn.getText()});
-						textValueForColumn.setText("");
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName2.getText(),comboOperationName2.getText(),textValueForColumn2.getText()});
+						textValueForColumn2.setText("");
 					}					
 				}
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					if(textValueForColumn.getText().length()>0){
+					if(textValueForColumn2.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),textValueForColumn.getText()});
-						textValueForColumn.setText("");
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName2.getText(),comboOperationName2.getText(),textValueForColumn2.getText()});
+						textValueForColumn2.setText("");
 					}		
 				}
 			});
@@ -637,9 +655,9 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			deleteFromColumnList.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
+					tableOfColumnsAndValues2.getItem(tableOfColumnsAndValues2.getSelectionIndex()).dispose();
 					tableIndex--;
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					if(tableOfColumnsAndValues2.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
@@ -647,12 +665,12 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					tableOfColumnsAndValues2.getItem(tableOfColumnsAndValues2.getSelectionIndex()).dispose();
+					if(tableOfColumnsAndValues2.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
-					tableIndex--;
+					tableIndex2--;
 				}
 			});
 			Composite titelPartOfTableCombo=new Composite(tableCompo, SWT.BOLD);
@@ -661,35 +679,35 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			titelPartOfTableCombo.setLayout(gridLayoutY4);
 			Label labelColumnName=new Label(titelPartOfTableCombo, SWT.NONE);
 			labelColumnName.setText("Column name: ");		
-			comboColumnName=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboColumnName2=new Combo(titelPartOfTableCombo, SWT.BORDER);
 			Label labelOperationName=new Label(titelPartOfTableCombo, SWT.NONE);
 			labelOperationName.setText("Operation: ");
-			comboOperationName=new Combo(titelPartOfTableCombo, SWT.BORDER);
-			comboOperationName.add("IN");
-			comboOperationName.add("LIKE");
-			comboOperationName.add("<");
-			comboOperationName.add(">");
-			comboOperationName.add("=");
-			comboOperationName.add(">=");
-			comboOperationName.add("<=");
+			comboOperationName2=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboOperationName2.add("IN");
+			comboOperationName2.add("LIKE");
+			comboOperationName2.add("<");
+			comboOperationName2.add(">");
+			comboOperationName2.add("=");
+			comboOperationName2.add(">=");
+			comboOperationName2.add("<=");
 			
 			Label labelValueOfColumn=new Label(titelPartOfTableCombo, SWT.NONE);
 			labelValueOfColumn.setText("Value: ");
-			textValueForColumn=new Text(titelPartOfTableCombo, SWT.BORDER);
+			textValueForColumn2=new Text(titelPartOfTableCombo, SWT.BORDER);
 			
-			tableOfColumnsAndValues = new Table(tableCompo, SWT.NONE);
+			tableOfColumnsAndValues2 = new Table(tableCompo, SWT.NONE);
 			
-			tableOfColumnsAndValues.setHeaderVisible(true);
-			tableOfColumnsAndValues.setItemCount(10);
-			tableOfColumnsAndValues.setLinesVisible(true);
+			tableOfColumnsAndValues2.setHeaderVisible(true);
+			tableOfColumnsAndValues2.setItemCount(10);
+			tableOfColumnsAndValues2.setLinesVisible(true);
 			
 			
 			
-			TableColumn columnName = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnName = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
 			columnName.setText("Column Name");
-			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
 			columnOperation.setText("Operation");
-			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
 			columnValues.setText("Value");
 			
 			//TableColumn columnType = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
@@ -723,11 +741,11 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				String[] tmpString=null;
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					if(tableOfColumnsAndValues.getItemCount()>10){
+					if(tableOfColumnsAndValues2.getItemCount()>10){
 						tableIndex=0;
 						//tablsList.setEnabled(true);
 						
-						TableItem[] arrayOfTableItems =tableOfColumnsAndValues.getItems();
+						TableItem[] arrayOfTableItems =tableOfColumnsAndValues2.getItems();
 						//arrayOfTableItems[0].getText(0)
 						//if(arrayOfTableItems.length>1) 	tmpString=" ,";
 						//else tmpString=" ";
@@ -779,10 +797,11 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 //						}
 						
 						
-						DeleteContentOfTable();
+						DeleteContentOfTable2();
 					}//end of if(...count>10)
 				}
 
+				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
 					
@@ -878,24 +897,24 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					
-					if(textValueForColumn.getText().length()>0){
+					//if(textValueForColumn3.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),textValueForColumn.getText()});
-						textValueForColumn.setText("");
-					}					
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues3, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName3.getText(),comboOperationName3.getText()});
+						//textValueForColumn3.setText("");
+					//}					
 				}
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					if(textValueForColumn.getText().length()>0){
+					//if(textValueForColumn3.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),textValueForColumn.getText()});
-						textValueForColumn.setText("");
-					}		
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues3, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName3.getText(),comboOperationName3.getText()});
+						//textValueForColumn3.setText("");
+					//}		
 				}
 			});
 			
@@ -904,9 +923,9 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			deleteFromColumnList.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
-					tableIndex--;
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					tableOfColumnsAndValues3.getItem(tableOfColumnsAndValues3.getSelectionIndex()).dispose();
+					tableIndex3--;
+					if(tableOfColumnsAndValues3.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
@@ -914,12 +933,12 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					tableOfColumnsAndValues3.getItem(tableOfColumnsAndValues3.getSelectionIndex()).dispose();
+					if(tableOfColumnsAndValues3.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
-					tableIndex--;
+					tableIndex3--;
 				}
 			});
 			Composite titelPartOfTableCombo=new Composite(tableCompo, SWT.BOLD);
@@ -935,22 +954,17 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			comboOperationType.add("ASC");
 			comboOperationType.add("DESC");
 			
+			tableOfColumnsAndValues3 = new Table(tableCompo, SWT.NONE);
 			
-			Label labelValueOfColumn=new Label(titelPartOfTableCombo, SWT.NONE);
-			labelValueOfColumn.setText("Value: ");
-			textValueForColumn=new Text(titelPartOfTableCombo, SWT.BORDER);
-			
-			tableOfColumnsAndValues = new Table(tableCompo, SWT.NONE);
-			
-			tableOfColumnsAndValues.setHeaderVisible(true);
-			tableOfColumnsAndValues.setItemCount(10);
-			tableOfColumnsAndValues.setLinesVisible(true);
+			tableOfColumnsAndValues3.setHeaderVisible(true);
+			tableOfColumnsAndValues3.setItemCount(10);
+			tableOfColumnsAndValues3.setLinesVisible(true);
 			
 			
 			
-			TableColumn columnName = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnName = new TableColumn(tableOfColumnsAndValues3, SWT.CENTER);
 			columnName.setText("Column Name");
-			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues3, SWT.CENTER);
 			columnOperation.setText("Operation");
 			
 			
@@ -978,11 +992,11 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				String[] tmpString=null;
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					if(tableOfColumnsAndValues.getItemCount()>10){
+					if(tableOfColumnsAndValues3.getItemCount()>10){
 						tableIndex=0;
 						//tablsList.setEnabled(true);
 						
-						TableItem[] arrayOfTableItems =tableOfColumnsAndValues.getItems();
+						TableItem[] arrayOfTableItems =tableOfColumnsAndValues3.getItems();
 						//arrayOfTableItems[0].getText(0)
 						//if(arrayOfTableItems.length>1) 	tmpString=" ,";
 						//else tmpString=" ";
@@ -993,7 +1007,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
 						if(arrayOfTableItems[0].getText(1).length()>0) {
 							
-							statementText.setText(statementText.getText()+" "+tmpString[1]+" "+arrayOfTableItems[0].getText(1));
+							statementText.setText(statementText.getText()+","+arrayOfTableItems[0].getText(1)+" "+tmpString[1]);
 						}
 						else {
 							
@@ -1020,7 +1034,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 //						}
 						
 						
-						DeleteContentOfTable();
+						DeleteContentOfTable3();
 					}//end of if(...count>10)
 				}
 
@@ -1105,14 +1119,6 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			gridLayoutY1.numColumns=1;
 			tableCompo.setLayout(gridLayoutY1);
 			
-//			valueCompo=new Composite(tableCompo, SWT.NONE);
-//			GridLayout gridLayoutY2=new GridLayout();
-//			gridLayoutY2.numColumns=3;
-//			valueCompo.setLayout(gridLayoutY2);
-//			Label labelValueToInsert =new Label(valueCompo, SWT.NONE);
-//			labelValueToInsert.setText("Type the value to Insert: ");
-//			final Text valueForSelectedColumn=new Text(valueCompo, SWT.BORDER);
-//			valueForSelectedColumn.setSize(50, 20);
 			
 			Composite buttomsCompo=new Composite(tableNameComposite, SWT.BOLD);
 			GridLayout gridLayoutY3=new GridLayout();
@@ -1126,23 +1132,23 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					
-					if(textValueForColumn.getText().length()>0){
+					if(textValueForColumn4.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName4.getText(),comboOperationName.getText(),textValueForColumn.getText()});
-						textValueForColumn.setText("");
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues4, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName4.getText(),comboOperationName4.getText(),textValueForColumn4.getText()});
+						textValueForColumn4.setText("");
 					}					
 				}
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					if(textValueForColumn.getText().length()>0){
+					if(textValueForColumn4.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName4.getText(),comboOperationName.getText(),textValueForColumn.getText()});
-						textValueForColumn.setText("");
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues4, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName4.getText(),comboOperationName4.getText(),textValueForColumn4.getText()});
+						textValueForColumn4.setText("");
 					}		
 				}
 			});
@@ -1152,9 +1158,9 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			deleteFromColumnList.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
+					tableOfColumnsAndValues4.getItem(tableOfColumnsAndValues4.getSelectionIndex()).dispose();
 					tableIndex--;
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					if(tableOfColumnsAndValues4.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
@@ -1162,8 +1168,8 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					tableOfColumnsAndValues4.getItem(tableOfColumnsAndValues4.getSelectionIndex()).dispose();
+					if(tableOfColumnsAndValues4.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
@@ -1179,32 +1185,32 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			comboColumnName4=new Combo(titelPartOfTableCombo, SWT.BORDER);
 			Label labelOperationName=new Label(titelPartOfTableCombo, SWT.NONE);
 			labelOperationName.setText("Operation: ");
-			comboOperationName=new Combo(titelPartOfTableCombo, SWT.BORDER);
-			comboOperationName.add("IN");
-			comboOperationName.add("LIKE");
-			comboOperationName.add("<");
-			comboOperationName.add(">");
-			comboOperationName.add("=");
-			comboOperationName.add(">=");
-			comboOperationName.add("<=");
+			comboOperationName4=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboOperationName4.add("IN");
+			comboOperationName4.add("LIKE");
+			comboOperationName4.add("<");
+			comboOperationName4.add(">");
+			comboOperationName4.add("=");
+			comboOperationName4.add(">=");
+			comboOperationName4.add("<=");
 			
 			Label labelValueOfColumn=new Label(titelPartOfTableCombo, SWT.NONE);
 			labelValueOfColumn.setText("Value: ");
-			textValueForColumn=new Text(titelPartOfTableCombo, SWT.BORDER);
+			textValueForColumn4=new Text(titelPartOfTableCombo, SWT.BORDER);
 			
-			tableOfColumnsAndValues = new Table(tableCompo, SWT.NONE);
+			tableOfColumnsAndValues4 = new Table(tableCompo, SWT.NONE);
 			
-			tableOfColumnsAndValues.setHeaderVisible(true);
-			tableOfColumnsAndValues.setItemCount(10);
-			tableOfColumnsAndValues.setLinesVisible(true);
+			tableOfColumnsAndValues4.setHeaderVisible(true);
+			tableOfColumnsAndValues4.setItemCount(10);
+			tableOfColumnsAndValues4.setLinesVisible(true);
 			
 			
 			
-			TableColumn columnName = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnName = new TableColumn(tableOfColumnsAndValues4, SWT.CENTER);
 			columnName.setText("Column Name");
-			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues4, SWT.CENTER);
 			columnOperation.setText("Operation");
-			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues4, SWT.CENTER);
 			columnValues.setText("Value");
 			
 			//TableColumn columnType = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
@@ -1238,11 +1244,11 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				String[] tmpString=null;
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					if(tableOfColumnsAndValues.getItemCount()>10){
+					if(tableOfColumnsAndValues4.getItemCount()>10){
 						tableIndex=0;
 						//tablsList.setEnabled(true);
 						
-						TableItem[] arrayOfTableItems =tableOfColumnsAndValues.getItems();
+						TableItem[] arrayOfTableItems =tableOfColumnsAndValues4.getItems();
 						//arrayOfTableItems[0].getText(0)
 						//if(arrayOfTableItems.length>1) 	tmpString=" ,";
 						//else tmpString=" ";
@@ -1294,7 +1300,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 //						}
 						
 						
-						DeleteContentOfTable();
+						DeleteContentOfTable4();
 					}//end of if(...count>10)
 				}
 
@@ -1391,7 +1397,42 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			}
 			
 		}
+	  /**
+	   * for deleting the content of the colums&Values Table.
+	   */
+	  private void DeleteContentOfTable2() {
+			for(int i=0;i<tableOfColumnsAndValues2.getItemCount();i++){
+				if(tableOfColumnsAndValues2.getItem(i).getText(0).length()>0){
+					tableOfColumnsAndValues2.getItem(i).dispose();
+				}
+			}
+			
+		}
+	  
+	  /**
+	   * for deleting the content of the colums&Values Table.
+	   */
+	  private void DeleteContentOfTable3() {
+			for(int i=0;i<tableOfColumnsAndValues3.getItemCount();i++){
+				if(tableOfColumnsAndValues3.getItem(i).getText(0).length()>0){
+					tableOfColumnsAndValues3.getItem(i).dispose();
+				}
+			}
+			
+		}
 	
+	  /**
+	   * for deleting the content of the colums&Values Table.
+	   */
+	  private void DeleteContentOfTable4() {
+			for(int i=0;i<tableOfColumnsAndValues4.getItemCount();i++){
+				if(tableOfColumnsAndValues4.getItem(i).getText(0).length()>0){
+					tableOfColumnsAndValues4.getItem(i).dispose();
+				}
+			}
+			
+		}
+	  
 //	/**
 //	 * creating the ui Elemente of this Editor
 //	 * @param composite
@@ -1756,7 +1797,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		//String tableName = "";
 		try {
 			//tableName = 
-			comboColumnName2.removeAll();
+			comboColumnName5.removeAll();
 		} catch (Exception e) {
 			System.out.print("ERROR:"+e.getMessage());
 		}
@@ -1764,7 +1805,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
 			try {
-				comboColumnName2.add(tableName+".Column" + loopIndex);
+				comboColumnName5.add(tableName+".Column" + loopIndex);
 			} catch (Exception e) {
 				System.out.print("ERROR:"+e.getMessage());
 			}

@@ -15,6 +15,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -47,12 +48,16 @@ public class UpdateEditor extends AStatementEditor {
 	
 	//********************************
 	Composite actionsCompo=null;
-	List tablsList,columnList=null;
+	List tablsList,tablsList2,tablsList3,columnList=null,columnList2,columnList3;
    	String TABLE_ORIENTED="values";
 	String SET_ORIENTED="select";
     int tableIndex=0; 
-    Table tableOfColumnsAndValues;
+    Table tableOfColumnsAndValues,tableOfColumnsAndValues1,tableOfColumnsAndValues2,tableOfColumnsAndValues3;
     Composite valueCompo;
+    Combo comboColumnName,comboColumnName2,comboColumnName3,comboColumnName4,comboColumnName5,comboOperationName,comboDistAll,comboOperationType;
+	Text textValueForColumn;
+	
+	Combo pradiktCombo;
    //******************************** 
     
 	//List of statement Changes
@@ -457,7 +462,36 @@ public class UpdateEditor extends AStatementEditor {
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			columnList.add(tableName+"_Column" + loopIndex);
+			columnList.add(tableName+".Column" + loopIndex);
+		}
+		//*************
+		GridData gridData11 = new GridData();
+		//gridData1.horizontalAlignment = GridData.FILL;
+		gridData11.grabExcessHorizontalSpace = true;
+		gridData11.grabExcessVerticalSpace = true;
+		gridData11.verticalAlignment = GridData.FILL;
+		columnList.setLayoutData(gridData11);
+//		
+//		ArrayList<String> columnsNames=null;//TODO: Column namen laden
+//		if(columnsNames!=null){
+//			for(int i=0;i<columnsNames.size();i++){
+//				columnList.add(columnsNames.get(i));
+//			}
+//		}
+	}
+	
+	/**
+	 * load the columns of the selected table.
+	 */
+	private void loadColumnsOfTable2() {
+		
+		
+		String tableName=tablsList2.getItem(tablsList2.getSelectionIndex());
+		columnList2.removeAll();
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			columnList2.add(tableName+".Column" + loopIndex);
 		}
 		//*************
 		GridData gridData11 = new GridData();
@@ -467,12 +501,41 @@ public class UpdateEditor extends AStatementEditor {
 		gridData11.verticalAlignment = GridData.FILL;
 		columnList.setLayoutData(gridData11);
 		
-		ArrayList<String> columnsNames=null;//TODO: Column namen laden
-		if(columnsNames!=null){
-			for(int i=0;i<columnsNames.size();i++){
-				columnList.add(columnsNames.get(i));
-			}
+//		ArrayList<String> columnsNames=null;//TODO: Column namen laden
+//		if(columnsNames!=null){
+//			for(int i=0;i<columnsNames.size();i++){
+//				columnList.add(columnsNames.get(i));
+//			}
+//		}
+	}
+	
+	/**
+	 * load the columns of the selected table.
+	 */
+	private void loadColumnsOfTable3() {
+		
+		
+		String tableName=tablsList3.getItem(tablsList3.getSelectionIndex());
+		columnList3.removeAll();
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			columnList3.add(tableName+".Column" + loopIndex);
 		}
+		//*************
+		GridData gridData11 = new GridData();
+		//gridData1.horizontalAlignment = GridData.FILL;
+		gridData11.grabExcessHorizontalSpace = true;
+		gridData11.grabExcessVerticalSpace = true;
+		gridData11.verticalAlignment = GridData.FILL;
+		columnList.setLayoutData(gridData11);
+		
+//		ArrayList<String> columnsNames=null;//TODO: Column namen laden
+//		if(columnsNames!=null){
+//			for(int i=0;i<columnsNames.size();i++){
+//				columnList.add(columnsNames.get(i));
+//			}
+//		}
 	}
 	
 	/**
@@ -567,6 +630,7 @@ public class UpdateEditor extends AStatementEditor {
 					@Override
 					public void widgetSelected(SelectionEvent e) {
 						
+						System.out.print(tablsList.getItem(tablsList.getSelectionIndex()));
 						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
 						try {
 							loadColumnsOfTable();
@@ -781,14 +845,629 @@ public class UpdateEditor extends AStatementEditor {
 			//valuesCompo.setEnabled(true);
 		}//end of if values-Part
 		
+		
+		//*************************Select*****************
 		if(keyWordValue.toLowerCase().equals("select"))
 		{
+		    GridLayout gridLayoutx = new GridLayout();
+			gridLayoutx.numColumns = 4;
+			Composite tableNameComposite = new Composite(composite, SWT.PUSH);
+			//tableNameComposite.setEnabled(false);
+			tableNameComposite.setLayout(gridLayoutx);
+	
+			//*************************************************
+			GridData gridData1 = new GridData();
+			//gridData1.horizontalAlignment = GridData.FILL;
+			gridData1.grabExcessHorizontalSpace = true;
+			gridData1.grabExcessVerticalSpace = true;
+			gridData1.verticalAlignment = GridData.FILL;
 			
-		}
+			tablsList2 = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+			tablsList2.setBounds(40, 20, 320, 100);
+			tablsList2.setLayoutData(gridData1);
+			//tablsList.setEnabled(false);
+			try {
+				loadTheTablesIntoList2();
+			} catch (Exception e2) {
+				System.out.print("ERROR: "+e2.getMessage());
+			}
+			
+			try {
+				tablsList2.addSelectionListener(new SelectionListener() {
+					
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						System.out.print(tablsList2.getItem(tablsList2.getSelectionIndex()));
+						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+						try {
+							loadColumnsOfTableIntoCombo2(tablsList2.getItem(tablsList2.getSelectionIndex()));
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
+					}
+					
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+						
+						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+						try {
+							loadColumnsOfTableIntoCombo2(tablsList2.getItem(tablsList2.getSelectionIndex()));
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
+					}
+
+					
+	
+					
+				});
+			} catch (Exception e1) {
+				System.out.print("ERROR: "+e1.getMessage());
+			}
+			//**************************************************************
+			
+			//************************************************************
+			
+			//************************************************************
+//			
+//			columnList=new List(tableNameComposite, SWT.BORDER | SWT.V_SCROLL| SWT.H_SCROLL);
+//			columnList.setBounds(40, 20, 420, 200);
+//			GridData gridDatax = new GridData();
+//			gridDatax.horizontalAlignment = GridData.FILL;
+//			gridDatax.grabExcessHorizontalSpace = true;
+//			gridDatax.grabExcessVerticalSpace = true;
+//			gridDatax.verticalAlignment = GridData.FILL;
+//			columnList.setLayoutData(gridDatax);
+//			columnList.setSize(230, 150);
+//				columnList.addSelectionListener(new SelectionListener() {
+//					
+//					@Override
+//					public void widgetSelected(SelectionEvent e) {
+//						if(columnList.getItem(columnList.getSelectionIndex()).length()>0)
+//						valueCompo.setVisible(true);
+//						
+//												
+//					}
+//					
+//					@Override
+//					public void widgetDefaultSelected(SelectionEvent e) {
+//						if(columnList.getItem(columnList.getSelectionIndex()).length()>0)
+//						valueCompo.setVisible(true);
+//					}
+//				});
+//			//************************************************************
+			
+			
+			
+			
+			//***********************************************************
+			GridData gridDatax1 = new GridData();
+			Composite tableCompo=new Composite(tableNameComposite, SWT.NONE);
+			GridLayout gridLayoutY1=new GridLayout();
+			gridLayoutY1.numColumns=1;
+			tableCompo.setLayout(gridLayoutY1);
+			
+//			valueCompo=new Composite(tableCompo, SWT.NONE);
+//			GridLayout gridLayoutY2=new GridLayout();
+//			gridLayoutY2.numColumns=3;
+//			valueCompo.setLayout(gridLayoutY2);
+//			Label labelValueToInsert =new Label(valueCompo, SWT.NONE);
+//			labelValueToInsert.setText("Type the value to Insert: ");
+//			final Text valueForSelectedColumn=new Text(valueCompo, SWT.BORDER);
+//			valueForSelectedColumn.setSize(50, 20);
+			
+			Composite buttomsCompo=new Composite(tableNameComposite, SWT.BOLD);
+			GridLayout gridLayoutY3=new GridLayout();
+			gridLayoutY3.numColumns=1;
+			buttomsCompo.setLayout(gridLayoutY3);
+			
+			Button insertItemInTable=new Button(buttomsCompo, SWT.NONE);
+			insertItemInTable.setText("Insert to table");
+			insertItemInTable.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					
+					if(textValueForColumn.getText().length()>0){
+						//tablsList.setEnabled(false);
+						//valueCompo.setVisible(false);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName2.getText(),comboOperationName.getText(),comboDistAll.getText(),textValueForColumn.getText()});
+						textValueForColumn.setText("");
+					}					
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(textValueForColumn.getText().length()>0){
+						//tablsList.setEnabled(false);
+						//valueCompo.setVisible(false);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName2.getText(),comboOperationName.getText(),comboDistAll.getText(),textValueForColumn.getText()});
+						textValueForColumn.setText("");
+					}		
+				}
+			});
+			
+			Button deleteFromColumnList =new Button(buttomsCompo, SWT.NONE);
+			deleteFromColumnList.setText("Remove from table");
+			deleteFromColumnList.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					tableOfColumnsAndValues2.getItem(tableOfColumnsAndValues2.getSelectionIndex()).dispose();
+					tableIndex--;
+					if(tableOfColumnsAndValues2.getItemCount()==10){
+						//tablsList.setEnabled(true);
+						
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					tableOfColumnsAndValues2.getItem(tableOfColumnsAndValues2.getSelectionIndex()).dispose();
+					if(tableOfColumnsAndValues2.getItemCount()==10){
+						//tablsList.setEnabled(true);
+						
+					}
+					tableIndex--;
+				}
+			});
+			Composite titelPartOfTableCombo=new Composite(tableCompo, SWT.BOLD);
+			GridLayout gridLayoutY4=new GridLayout();
+			gridLayoutY4.numColumns=8;
+			titelPartOfTableCombo.setLayout(gridLayoutY4);
+			Label labelColumnName=new Label(titelPartOfTableCombo, SWT.NONE);
+			labelColumnName.setText("Column name: ");		
+			comboColumnName2=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			
+			Label labelOperationName=new Label(titelPartOfTableCombo, SWT.NONE);
+			labelOperationName.setText("Operation: ");
+			comboOperationName=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboOperationName.add("AVG");
+			comboOperationName.add("MAX");
+			comboOperationName.add("MIN");
+			comboOperationName.add("SUM");
+			comboOperationName.add("COUNT");
+			Label labelDistAllName=new Label(titelPartOfTableCombo, SWT.NONE);
+			labelDistAllName.setText("DIST/ALL: ");
+			comboDistAll=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboDistAll.add("DISTINCT");
+			comboDistAll.add("ALL");
+			Label labelValueOfColumn=new Label(titelPartOfTableCombo, SWT.NONE);
+			labelValueOfColumn.setText("Value: ");
+			textValueForColumn=new Text(titelPartOfTableCombo, SWT.BORDER);
+			
+			tableOfColumnsAndValues2 = new Table(tableCompo, SWT.NONE);
+			
+			tableOfColumnsAndValues2.setHeaderVisible(true);
+			tableOfColumnsAndValues2.setItemCount(10);
+			tableOfColumnsAndValues2.setLinesVisible(true);
+			
+			
+			
+			TableColumn columnName = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
+			columnName.setText("Column Name");
+			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
+			columnOperation.setText("Operation");
+			TableColumn columnDisctAll = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
+			columnDisctAll.setText("DISCT/ALL");
+			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
+			columnValues.setText("Value");
+			
+			//TableColumn columnType = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			//columnType.setText("Type");
+			
+			columnName.setWidth(150);
+			columnOperation.setWidth(150);
+			columnDisctAll.setWidth(150);
+			columnValues.setWidth(150);
+			//columnType.setWidth(70);
+			//***********************************************************
+			
+			
+			
+			//********************************
+			Button insertColumsIntoStatment=new Button(buttomsCompo, SWT.NONE);
+			insertColumsIntoStatment.setToolTipText("Add Columns and the values into the Statment");
+			insertColumsIntoStatment.setText("Insert to Statement");
+			insertColumsIntoStatment.addSelectionListener(new SelectionListener() {
+				
+				String operStat="";
+				String isDistict="";
+				String[] tmpString=null;
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(tableOfColumnsAndValues2.getItemCount()>10){
+						tableIndex=0;
+						//tablsList.setEnabled(true);
+						
+						TableItem[] arrayOfTableItems =tableOfColumnsAndValues2.getItems();
+						//arrayOfTableItems[0].getText(0)
+						//if(arrayOfTableItems.length>1) 	tmpString=" ,";
+						//else tmpString=" ";
+						//statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
+						
+						statementText.setText(statementText.getText()+"\r	SELECT ");
+						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
+						if(arrayOfTableItems[0].getText(1).length()>0) {
+							
+							System.out.print(tmpString[0]);
+							operStat=arrayOfTableItems[0].getText(1)+"("+tmpString[1]+")";
+						}
+						else operStat=tmpString[1];
+						
+						statementText.setText(statementText.getText()+arrayOfTableItems[0].getText(2)+" "+operStat);
+
+						for(int i=1;i<arrayOfTableItems.length;i++){
+							if(arrayOfTableItems[i].getText(0).length()>0){	
+								tmpString=SplitTheWordInTwo(arrayOfTableItems[i].getText(0));
+								if(arrayOfTableItems[i].getText(1).length()>0){
+									
+									operStat=arrayOfTableItems[i].getText(1)+"("+tmpString[1]+")";
+								}
+								else operStat=tmpString[1];
+								
+								statementText.setText(statementText.getText()+arrayOfTableItems[i].getText(2)+" "+operStat);							}
+						}
+						addToListOfStatementTextChanges();
+						
+						statementText.setText(statementText.getText()+" FROM ");
+						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
+						statementText.setText(statementText.getText()+" "+tmpString[0]);
+						for(int i=1;i<arrayOfTableItems.length;i++){
+							if(arrayOfTableItems[i].getText(0).length()>0){
+								tmpString=SplitTheWordInTwo(arrayOfTableItems[i].getText(0));
+								statementText.setText(statementText.getText()+","+tmpString[0]);
+							}
+						}
+						
+						statementText.setText(statementText.getText()+")\r");
+						addToListOfStatementTextChanges();
+//						for(int i=0;i<arrayOfTableItems.length;i++){
+//							if(arrayOfTableItems[i].getText(0).length()>0){	
+//								statementText.setText(statementText.getText()+tmpString+arrayOfTableItems[i].getText(0).split(".")[0]);
+//							}
+//						}
+						
+						
+						DeleteContentOfTable2();
+					}//end of if(...count>10)
+				}
+				
+		
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+				}
+			});
+			tableNameComposite.setEnabled(true);
+			//tablsList.setEnabled(true);
+			//valuesCompo.setEnabled(true);
+		}//end of if select-Part
+		//************************************************
+		
+		//*******************where **********************
+		if(keyWordValue.toLowerCase().equals("where"))
+		{
+		    GridLayout gridLayoutx = new GridLayout();
+			gridLayoutx.numColumns = 4;
+			Composite tableNameComposite = new Composite(composite, SWT.PUSH);
+			//tableNameComposite.setEnabled(false);
+			tableNameComposite.setLayout(gridLayoutx);
+	
+			//*************************************************
+			GridData gridData1 = new GridData();
+			//gridData1.horizontalAlignment = GridData.FILL;
+			gridData1.grabExcessHorizontalSpace = true;
+			gridData1.grabExcessVerticalSpace = true;
+			gridData1.verticalAlignment = GridData.FILL;
+			
+			tablsList3 = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+			tablsList3.setBounds(40, 20, 320, 100);
+			tablsList3.setLayoutData(gridData1);
+			//tablsList.setEnabled(false);
+			try {
+				
+				loadTheTablesIntoList3();
+			} catch (Exception e2) {
+				System.out.print("ERROR: "+e2.getMessage());
+			}
+			
+			try {
+				tablsList3.addSelectionListener(new SelectionListener() {
+					
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						
+						System.out.print(tablsList3.getItem(tablsList3.getSelectionIndex()));
+						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+						try {
+							loadColumnsOfTableIntoCombo(tablsList3.getItem(tablsList3.getSelectionIndex()));
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
+					}
+					
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+
+						System.out.print(tablsList3.getItem(tablsList3.getSelectionIndex()));
+
+						//statementText.setText(statementText.getText()+" "+tablsList.getItem(tablsList.getSelectionIndex()));
+						try {
+							loadColumnsOfTableIntoCombo(tablsList3.getItem(tablsList3.getSelectionIndex()));
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
+						}
+					}
+
+					
+	
+					
+				});
+			} catch (Exception e1) {
+				System.out.print("ERROR: "+e1.getMessage());
+			}
+			//**************************************************************
+			
+			//************************************************************
+			
+			//************************************************************
+//			
+			
+			
+			
+			//***********************************************************
+			GridData gridDatax1 = new GridData();
+			Composite tableCompo=new Composite(tableNameComposite, SWT.NONE);
+			GridLayout gridLayoutY1=new GridLayout();
+			gridLayoutY1.numColumns=1;
+			tableCompo.setLayout(gridLayoutY1);
+			
+			
+			Composite buttomsCompo=new Composite(tableNameComposite, SWT.BOLD);
+			GridLayout gridLayoutY3=new GridLayout();
+			gridLayoutY3.numColumns=1;
+			buttomsCompo.setLayout(gridLayoutY3);
+			
+			Button insertItemInTable=new Button(buttomsCompo, SWT.NONE);
+			insertItemInTable.setText("Insert to table");
+			insertItemInTable.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					
+					if(textValueForColumn.getText().length()>0){
+						//tablsList.setEnabled(false);
+						//valueCompo.setVisible(false);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues3, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),textValueForColumn.getText()});
+						textValueForColumn.setText("");
+					}					
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					if(textValueForColumn.getText().length()>0){
+						//tablsList.setEnabled(false);
+						//valueCompo.setVisible(false);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues3, SWT.NONE,tableIndex++);
+						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),textValueForColumn.getText()});
+						textValueForColumn.setText("");
+					}		
+				}
+			});
+			
+			Button deleteFromColumnList =new Button(buttomsCompo, SWT.NONE);
+			deleteFromColumnList.setText("Remove from table");
+			deleteFromColumnList.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					tableOfColumnsAndValues3.getItem(tableOfColumnsAndValues3.getSelectionIndex()).dispose();
+					tableIndex--;
+					if(tableOfColumnsAndValues3.getItemCount()==10){
+						//tablsList.setEnabled(true);
+						
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					tableOfColumnsAndValues3.getItem(tableOfColumnsAndValues3.getSelectionIndex()).dispose();
+					if(tableOfColumnsAndValues3.getItemCount()==10){
+						//tablsList.setEnabled(true);
+						
+					}
+					tableIndex--;
+				}
+			});
+			Composite titelPartOfTableCombo=new Composite(tableCompo, SWT.BOLD);
+			GridLayout gridLayoutY4=new GridLayout();
+			gridLayoutY4.numColumns=6;
+			titelPartOfTableCombo.setLayout(gridLayoutY4);
+			Label labelColumnName=new Label(titelPartOfTableCombo, SWT.NONE);
+			labelColumnName.setText("Column name: ");		
+			comboColumnName=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			Label labelOperationName=new Label(titelPartOfTableCombo, SWT.NONE);
+			labelOperationName.setText("Operation: ");
+			comboOperationName=new Combo(titelPartOfTableCombo, SWT.BORDER);
+			comboOperationName.add("IN");
+			comboOperationName.add("LIKE");
+			comboOperationName.add("<");
+			comboOperationName.add(">");
+			comboOperationName.add("=");
+			comboOperationName.add(">=");
+			comboOperationName.add("<=");
+			
+			Label labelValueOfColumn=new Label(titelPartOfTableCombo, SWT.NONE);
+			labelValueOfColumn.setText("Value: ");
+			textValueForColumn=new Text(titelPartOfTableCombo, SWT.BORDER);
+			
+			tableOfColumnsAndValues3 = new Table(tableCompo, SWT.NONE);
+			
+			tableOfColumnsAndValues3.setHeaderVisible(true);
+			tableOfColumnsAndValues3.setItemCount(10);
+			tableOfColumnsAndValues3.setLinesVisible(true);
+			
+			
+			
+			TableColumn columnName = new TableColumn(tableOfColumnsAndValues3, SWT.CENTER);
+			columnName.setText("Column Name");
+			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues3, SWT.CENTER);
+			columnOperation.setText("Operation");
+			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues3, SWT.CENTER);
+			columnValues.setText("Value");
+			
+			//TableColumn columnType = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			//columnType.setText("Type");
+			
+			columnName.setWidth(150);
+			columnOperation.setWidth(150);
+			columnValues.setWidth(150);
+			//columnType.setWidth(70);
+			
+			Composite pradikatCompo=new Composite(tableCompo, SWT.NONE);
+			GridLayout gridLayoutY5=new GridLayout();
+			gridLayoutY5.numColumns=2;
+			pradikatCompo.setLayout(gridLayoutY5);
+			Label labelPradikat=new Label(pradikatCompo, SWT.NONE);
+			labelPradikat.setText("Pradikat: ");
+			pradiktCombo=new Combo(pradikatCompo,SWT.NONE);
+			pradiktCombo.add("OR");
+			pradiktCombo.add("AND");
+			//***********************************************************
+			
+			
+			
+			//********************************
+			Button insertColumsIntoStatment=new Button(buttomsCompo, SWT.NONE);
+			insertColumsIntoStatment.setToolTipText("Add Columns and the values into the Statment");
+			insertColumsIntoStatment.setText("Insert to Statement");
+			insertColumsIntoStatment.addSelectionListener(new SelectionListener() {
+				
+				String operStat="";
+				String[] tmpString=null;
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(tableOfColumnsAndValues3.getItemCount()>10){
+						tableIndex=0;
+						//tablsList.setEnabled(true);
+						
+						TableItem[] arrayOfTableItems =tableOfColumnsAndValues3.getItems();
+						//arrayOfTableItems[0].getText(0)
+						//if(arrayOfTableItems.length>1) 	tmpString=" ,";
+						//else tmpString=" ";
+						//statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
+						
+						statementText.setText(statementText.getText()+"\r	FROM ");
+						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
+						statementText.setText(statementText.getText()+" "+tmpString[0]);
+						for(int i=1;i<arrayOfTableItems.length;i++){
+							if(arrayOfTableItems[i].getText(0).length()>0){
+								tmpString=SplitTheWordInTwo(arrayOfTableItems[i].getText(0));
+								statementText.setText(statementText.getText()+","+tmpString[0]);
+							}
+						}
+						statementText.setText(statementText.getText()+"\r	WHERE ");
+						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
+						if(arrayOfTableItems[0].getText(1).length()>0) {
+							
+							statementText.setText(statementText.getText()+" "+tmpString[1]+" "+arrayOfTableItems[0].getText(1)+" "+arrayOfTableItems[0].getText(2));
+						}
+						else {
+							
+						}
+						
+						statementText.setText(statementText.getText()+arrayOfTableItems[0].getText(2)+" "+operStat);
+
+						for(int i=1;i<arrayOfTableItems.length;i++){
+							if(arrayOfTableItems[i].getText(1).length()>0) {
+								if(pradiktCombo.getText().length()>0) statementText.setText(statementText.getText()+pradiktCombo.getText());
+								else statementText.setText(statementText.getText()+"OR");
+								
+								tmpString=SplitTheWordInTwo(arrayOfTableItems[i].getText(0));
+								statementText.setText(statementText.getText()+" "+tmpString[1]+" "+arrayOfTableItems[i].getText(1)+" "+arrayOfTableItems[i].getText(2));
+								
+							}
+							else {
+								
+							}						}
+						addToListOfStatementTextChanges();
+						
+						
+						
+						statementText.setText(statementText.getText()+"\r");
+						addToListOfStatementTextChanges();
+//						for(int i=0;i<arrayOfTableItems.length;i++){
+//							if(arrayOfTableItems[i].getText(0).length()>0){	
+//								statementText.setText(statementText.getText()+tmpString+arrayOfTableItems[i].getText(0).split(".")[0]);
+//							}
+//						}
+						
+						
+						DeleteContentOfTable3();
+					}//end of if(...count>10)
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+				}
+			});
+			tableNameComposite.setEnabled(true);
+			tablsList.setEnabled(true);
+			//valuesCompo.setEnabled(true);
+		}//end of if where-Part
+		//**************end of where*********************
 		
 	    return composite;
 	  }
 	  
+	  
+	  /** 
+		  * splitting the word in table name and column name
+		  * @param text
+		  * @return
+		  */
+		 private String[] SplitTheWordInTwo(String text) {
+			ArrayList<String> listOfLetters=new ArrayList<String>();
+			String[] arrayOFWords=new String[2];
+			int indexOfPoint = 1;
+			for(int i=0;i<text.length()-1;i++){
+				//listOfLetters.add(text.substring(i, i));
+				if(text.substring(i, i+1).equals(".")) indexOfPoint=i; 
+			}
+			arrayOFWords[0]=text.substring(0,indexOfPoint);
+			arrayOFWords[1]=text.substring(indexOfPoint+1,text.length());
+			
+			return arrayOFWords;
+		  }
+
+	  
+	  
+	 
+	/**
+	   * for deleting the content of the colums&Values Table.
+	   */
+	  private void DeleteContentOfTable3() {
+			for(int i=0;i<tableOfColumnsAndValues3.getItemCount();i++){
+				if(tableOfColumnsAndValues3.getItem(i).getText(0).length()>0){
+					tableOfColumnsAndValues3.getItem(i).dispose();
+				}
+			}
+			
+		}
+	  /**
+	   * for deleting the content of the colums&Values Table.
+	   */
+	  private void DeleteContentOfTable2() {
+			for(int i=0;i<tableOfColumnsAndValues2.getItemCount();i++){
+				if(tableOfColumnsAndValues2.getItem(i).getText(0).length()>0){
+					tableOfColumnsAndValues2.getItem(i).dispose();
+				}
+			}
+			
+		}
 	  /**
 	   * for deleting the content of the colums&Values Table.
 	   */
@@ -801,6 +1480,125 @@ public class UpdateEditor extends AStatementEditor {
 			
 		}
 	
+	/**
+	 * for loading the colums of the table into the combo of 
+	 * colums names.
+	 */
+	private void loadColumnsOfTableIntoCombo(String tableName) {
+		//String tableName = "";
+		try {
+			//tableName = 
+			comboColumnName.removeAll();
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
+		}
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			try {
+				comboColumnName.add(tableName+".Column" + loopIndex);
+			} catch (Exception e) {
+				System.out.print("ERROR:"+e.getMessage());
+			}
+		}
+		//*************
+	}
+	
+	/**
+	 * for loading the colums of the table into the combo of 
+	 * colums names.
+	 */
+	private void loadColumnsOfTableIntoCombo3(String tableName) {
+		//String tableName = "";
+		try {
+			//tableName = 
+			comboColumnName3.removeAll();
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
+		}
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			try {
+				comboColumnName3.add(tableName+".Column" + loopIndex);
+			} catch (Exception e) {
+				System.out.print("ERROR:"+e.getMessage());
+			}
+		}
+		//*************
+	}
+	
+	/**
+	 * for loading the colums of the table into the combo of 
+	 * colums names.
+	 */
+	private void loadColumnsOfTableIntoCombo4(String tableName) {
+		//String tableName = "";
+		try {
+			//tableName = 
+			comboColumnName4.removeAll();
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
+		}
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			try {
+				comboColumnName4.add(tableName+".Column" + loopIndex);
+			} catch (Exception e) {
+				System.out.print("ERROR:"+e.getMessage());
+			}
+		}
+		//*************
+	}
+	
+	/**
+	 * for loading the colums of the table into the combo of 
+	 * colums names.
+	 */
+	private void loadColumnsOfTableIntoCombo5(String tableName) {
+		//String tableName = "";
+		try {
+			//tableName = 
+			comboColumnName5.removeAll();
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
+		}
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			try {
+				comboColumnName5.add(tableName+".Column" + loopIndex);
+			} catch (Exception e) {
+				System.out.print("ERROR:"+e.getMessage());
+			}
+		}
+		//*************
+	}
+	
+	/**
+	 * for loading the colums of the table into the combo of 
+	 * colums names.
+	 */
+	private void loadColumnsOfTableIntoCombo2(String tableName) {
+		//String tableName = "";
+		try {
+			//tableName = 
+			comboColumnName2.removeAll();
+		} catch (Exception e) {
+			System.out.print("ERROR:"+e.getMessage());
+		}
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			try {
+				comboColumnName2.add(tableName+".Column" + loopIndex);
+			} catch (Exception e) {
+				System.out.print("ERROR:"+e.getMessage());
+			}
+		}
+		//*************
+	}
 	/**
 	 * creats the tabfolder 
 	 * @param listOfMainKeyWords
@@ -951,6 +1749,9 @@ public class UpdateEditor extends AStatementEditor {
 						if(tmpKeyWord.getMainKeyWord().equals("WHERE")){
 							tabFolder.setSelection(1);
 						}
+						if(tmpKeyWord.getMainKeyWord().equals("WHERE")){
+							tabFolder.setSelection(1);
+						}
 						
 						resultSETStatementCompo.setEnabled(true);
 						listsComposite.setEnabled(true);
@@ -983,16 +1784,63 @@ public class UpdateEditor extends AStatementEditor {
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList.add("Item Number " + loopIndex);
+			tablsList.add("Table" + loopIndex);
 		}
 		//*************
 		
-		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
-		if(tabelsNames!=null){
-			for(int i=0;i<tabelsNames.size();i++){
-				tablsList.add(tabelsNames.get(i));
-			}
+//		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
+//		if(tabelsNames!=null){
+//			for(int i=0;i<tabelsNames.size();i++){
+//				tablsList3.add(tabelsNames.get(i));
+//			}
+//		}
+		
+		
+	}
+	
+	/**
+	 * loading the tables names of data source 
+	 * into the List
+	 */
+	private void loadTheTablesIntoList3() {
+		
+		tablsList3.removeAll();
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			tablsList3.add("Table" + loopIndex);
 		}
+		//*************
+		
+//		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
+//		if(tabelsNames!=null){
+//			for(int i=0;i<tabelsNames.size();i++){
+//				tablsList3.add(tabelsNames.get(i));
+//			}
+//		}
+		
+		
+	}
+	/**
+	 * loading the tables names of data source 
+	 * into the List
+	 */
+	private void loadTheTablesIntoList2() {
+		
+		tablsList2.removeAll();
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			tablsList2.add("Table" + loopIndex);
+		}
+		//*************
+		
+//		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
+//		if(tabelsNames!=null){
+//			for(int i=0;i<tabelsNames.size();i++){
+//				tablsList3.add(tabelsNames.get(i));
+//			}
+//		}
 		
 		
 	}

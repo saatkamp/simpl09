@@ -1,6 +1,7 @@
 package org.eclipse.bpel.simpl.ui.sql.editor;
 
 import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
 import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
@@ -11,14 +12,21 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
 import widgets.LiveEditStyleText;
@@ -37,7 +45,9 @@ public class CreateEditor extends AStatementEditor {
 	Button addToStatement;
 	Text proceText;
 	List columnList;
-	
+	// Create the containing tab folder
+   TabFolder tabFolder;
+   
 	private Composite tableNameComposite=null;
 	private Composite columnCompo=null;
 	 List listOfColumn;
@@ -64,8 +74,18 @@ public class CreateEditor extends AStatementEditor {
 	private Composite buttonsCompo=null;
 	private Composite columsListCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
+	
+	Label labelSchamName,labelAuthuresation;
+	Text txtSchemaName,txtAuthorisation,txtDefault,txtColumnName,txtTableNAme;
+	Combo comboType,comboTables;
+	Button chbxPrimaryK,chbxUniqe,chbxNull,chbxDefault,chbxForeignKey;
+	Table tableOfColums;
+	int tableIndex=0;
+	
+	String PRIMARY_KEY="PRIMARY-KEY",UNIQE="UNIQE",NULL="NULL",DEFAULT="DEFAULT",FOREIGN_KEY="FOREIGEN-KEY",none="";
+	
+	
 	//List of statement Changes
-    
     ArrayList<String> listOfStatementTextChanges=new ArrayList<String>();
     
 	
@@ -131,12 +151,15 @@ public class CreateEditor extends AStatementEditor {
 			
 			statementCompo.setLayout(new GridLayout());
 			statementCompo.setLayoutData(gridData2);
+			GridLayout gridLayoutA2 = new GridLayout();
+			gridLayoutA2.numColumns = 1;
+			statementCompo.setLayout(gridLayoutA2);
 			
 			statementText=new LiveEditStyleText(statementCompo);
 			statementText.setEditable(false);
 			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
 			Button undoButton=new Button(statementCompo, SWT.LEFT);
-			undoButton.setLayoutData(gridData1_1);
+			//undoButton.setLayoutData(gridData1_1);
 			undoButton.setText("UNDO");
 			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
 			undoButton.addSelectionListener(new SelectionListener() {
@@ -181,8 +204,264 @@ public class CreateEditor extends AStatementEditor {
 		}
 		else {statementText.setText("CREATE ");}
 		
-		CreateCREATEEditorUI(compos);
+		createTabTable(parser.parseDocument());
+		//CreateCREATEEditorUI(compos);
 	}
+
+	/**
+	   * Gets the control for tab one
+	   * 
+	   * @param tabFolder the parent tab folder
+	   * @return Control
+	   */
+	  private Control getTabOneControl(final TabFolder tabFolder,final String keyWordValue) {
+	    // Create a composite and add four buttons to it
+	    Composite composite = new Composite(tabFolder, SWT.NONE);
+	    //composite.setLayout(new FillLayout(SWT.VERTICAL));
+	    
+	    Button insertButton;
+	    
+	    
+		
+		if(keyWordValue.toLowerCase().equals("table"))
+		{
+			GridLayout gridLayout8 = new GridLayout();
+			gridLayout8.numColumns=1;
+			composite.setLayout(gridLayout8);
+			
+			Composite titelCompo=new Composite(composite, SWT.BOLD);
+			GridLayout gridLayout5 = new GridLayout();
+			gridLayout5.numColumns=2;
+			titelCompo.setLayout(gridLayout5);
+			
+			Composite columsCompo=new Composite(composite, SWT.NONE);
+			GridLayout gridLayout2 = new GridLayout();
+			gridLayout2.numColumns=11;
+			columsCompo.setLayout(gridLayout2);
+			
+			
+			
+			
+			Label lblTableName=new Label(titelCompo, SWT.NONE);
+			lblTableName.setText("Table name:");
+			txtTableNAme=new Text(titelCompo, SWT.BORDER);
+			
+			
+		
+			
+			
+			
+			
+			Label lblColumnName=new Label(columsCompo, SWT.NONE);
+			lblColumnName.setText("Column name: ");
+			txtColumnName=new Text(columsCompo, SWT.BORDER);
+			Label lblType=new Label(columsCompo, SWT.NONE);
+			lblType.setText("Type:");
+			comboType=new Combo(columsCompo, SWT.NONE);
+			comboType.add("INT");
+			comboType.add("BIT");
+			comboType.add("BIGINT");
+			comboType.add("DECIMAL");
+			comboType.add("FLOAT");
+			comboType.add("TIME");
+			comboType.add("DATE");
+			comboType.add("CHAR");
+			comboType.add("VARCHAR");
+			comboType.add("TEXT");
+			
+			chbxPrimaryK=new Button(columsCompo, SWT.CHECK);
+			chbxPrimaryK.setText("PRIMARY-KEY");
+			chbxPrimaryK.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					
+					if(chbxPrimaryK.getSelection()){
+						chbxUniqe.setSelection(true);
+						chbxNull.setSelection(false); 
+						
+					}
+					
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+					
+				}
+			});
+			chbxUniqe =new Button(columsCompo, SWT.CHECK);
+			chbxUniqe.setText("UNIQE");
+			chbxNull=new Button(columsCompo, SWT.CHECK);
+			chbxNull.setText("NULL");
+			chbxNull.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(chbxNull.getSelection()) {
+						chbxPrimaryK.setSelection(false);
+					}
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+				}
+			});
+			
+			Composite foreignKEyCompo=new Composite(columsCompo, SWT.BORDER);
+			GridLayout gridLayout3 = new GridLayout();
+			gridLayout3.numColumns=2;
+			foreignKEyCompo.setLayout(gridLayout3);
+			chbxForeignKey =new Button(foreignKEyCompo, SWT.CHECK);
+			chbxForeignKey.setText("FOREIGN-KEY:");
+			comboTables=new Combo(foreignKEyCompo, SWT.NONE);
+			loadTableInComboTables();
+			
+			Composite defaultCompo=new Composite(columsCompo, SWT.BORDER);
+			GridLayout gridLayout4 = new GridLayout();
+			gridLayout4.numColumns=2;
+			defaultCompo.setLayout(gridLayout4);
+			chbxDefault=new Button(defaultCompo, SWT.CHECK);
+			chbxDefault.setText("DEFAULT:");
+			txtDefault=new Text(defaultCompo, SWT.BORDER);
+			
+			
+			
+			
+			Composite columsCompoMain=new Composite(composite, SWT.PUSH);
+			GridLayout gridLayout7 = new GridLayout();
+			gridLayout7.numColumns=1;
+			columsCompoMain.setLayout(gridLayout7);
+			GridData gridData1_1 = new GridData();
+			//gridData1_1.horizontalAlignment = GridData.END;
+			gridData1_1.grabExcessHorizontalSpace = true;
+			//gridData1_1.grabExcessVerticalSpace = true;
+			//gridData1_1.verticalAlignment = GridData.END;
+			
+			columsCompoMain.setLayoutData(gridData1_1);
+			
+			tableOfColums=new Table(columsCompoMain, SWT.BORDER);
+			tableOfColums.setHeaderVisible(true);
+			tableOfColums.setItemCount(10);
+			tableOfColums.setLinesVisible(true);
+			
+			TableColumn columnName=new TableColumn(tableOfColums, SWT.NONE);
+			columnName.setText("Attribute name");
+			columnName.setWidth(150);
+			TableColumn columnType=new TableColumn(tableOfColums, SWT.NONE);
+			columnType.setText("Type");
+			columnType.setWidth(130);
+			TableColumn columnPrimaryK=new TableColumn(tableOfColums, SWT.NONE);
+			columnPrimaryK.setText("PRIMARY-KEY/NONE");
+			columnPrimaryK.setWidth(90);
+			TableColumn columnUniqe=new TableColumn(tableOfColums, SWT.NONE);
+			columnUniqe.setText("UNIQE/NONE");
+			columnUniqe.setWidth(60);
+			TableColumn columnNull=new TableColumn(tableOfColums, SWT.NONE);
+			columnNull.setText("NULL/NONE");
+			columnNull.setWidth(60);
+			TableColumn columnForeignK=new TableColumn(tableOfColums, SWT.NONE);
+			columnForeignK.setText("FOREIGN-KEY/NONE");
+			columnForeignK.setWidth(150);
+			TableColumn columnDefault=new TableColumn(tableOfColums, SWT.NONE);
+			columnDefault.setText("DEFAULT/NONE");
+			columnDefault.setWidth(170);
+			
+			
+			Composite buttonCompo=new Composite(composite, SWT.BOLD);
+			GridLayout gridLayout6 = new GridLayout();
+			gridLayout6.numColumns=2;
+			buttonCompo.setLayout(gridLayout6);
+	
+			Button insertToTable=new Button(buttonCompo, SWT.NONE);
+			insertToTable.setText("Insert to table");
+			insertToTable.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					//boolean isPrimaryKey=false;
+					if(txtColumnName.getText().length()>0){
+						TableItem newTableItem=new TableItem(tableOfColums, SWT.NONE,tableIndex++);
+						newTableItem.setText(0, txtColumnName.getText());
+						newTableItem.setText(1, comboType.getText());
+						if(chbxPrimaryK.getSelection()){
+							newTableItem.setText(2, PRIMARY_KEY);
+						}
+						else newTableItem.setText(2, none);
+						if(chbxUniqe.getSelection()) newTableItem.setText(3, UNIQE);
+						else newTableItem.setText(3, none);
+						if(chbxNull.getSelection()) newTableItem.setText(4, NULL);
+						else newTableItem.setText(4, none);
+						if(chbxForeignKey.getSelection()) newTableItem.setText(5, comboTables.getText());
+						else newTableItem.setText(5, none);
+						if(chbxDefault.getSelection()) newTableItem.setText(6, DEFAULT);
+						else newTableItem.setText(6, none);
+						txtColumnName.setText("");
+					}
+					
+					
+					
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+					
+				}
+			});
+			
+			Button insertToStatement=new Button(buttonCompo, SWT.NONE);
+			insertToStatement.setText("Create statement");
+			
+		}
+		
+		if(keyWordValue.toLowerCase().equals("schema"))
+		{
+			GridLayout gridLayout8 = new GridLayout();
+			gridLayout8.numColumns=1;
+			composite.setLayout(gridLayout8);
+			
+			Composite mainCompo=new Composite(composite, SWT.NONE);
+			GridLayout gridLayout1 = new GridLayout();
+			gridLayout1.numColumns=4;
+			mainCompo.setLayout(gridLayout1);
+			
+			labelSchamName=new Label(mainCompo, SWT.NONE);
+			labelSchamName.setText("Schema name: ");
+			txtSchemaName=new Text(mainCompo, SWT.BORDER);
+			labelAuthuresation=new Label(mainCompo, SWT.NONE);
+			labelAuthuresation.setText("Authorisation: ");
+			txtAuthorisation=new Text(mainCompo, SWT.BORDER);
+			Button creatStatement=new Button(mainCompo, SWT.NONE);
+			creatStatement.setText("Create statement");
+			creatStatement.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {					
+					statementText.setText(statementText.getText()+" SCHEMA "+txtSchemaName.getText()+" "+txtAuthorisation.getText()+"\r");		
+					addToListOfStatementTextChanges();
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			
+		}
+		
+		return composite;
+	 }
+
+	   /**
+	   * for loading the tables names in the combo
+	   */
+	  private void loadTableInComboTables() {
+		
+		
+	  }
 
 	private void CreateCREATEEditorUI(Composite composite) {
 		GridData gridData2 = new GridData();
@@ -752,6 +1031,81 @@ public class CreateEditor extends AStatementEditor {
 	
 	
 	/**
+	*
+	*
+	*/
+	private void createTabTable(final ArrayList<KeyWord> listOfMainKeyWords){
+		
+		
+		Label helpSympol=new Label(buttonsCompo, SWT.NONE);
+		helpSympol.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/helpSymbole.png")));
+		helpSympol.setToolTipText("The orange marks for showing you\r in wich order the Keywords \r can be used");
+		//** creating the Tab Panel +++++++++++++++++
+		/**
+		   * Creates the contents
+		   * 
+		   * @param shell the parent shell
+		   */
+		  
+			tabFolder = new TabFolder(compos, SWT.NONE);
+
+		    // Create each tab and set its text, tool tip text,
+		    // image, and control
+		   
+		   
+
+		    // Select the third tab (index is zero-based)
+		    
+
+		    // Add an event listener to write the selected tab to stdout
+//		    tabFolder.addSelectionListener(new SelectionListener() {
+//				
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+//					
+//					for(int i=0;i<tabFolder.getItems().length;i++)
+//					{
+//						if(i!=tabFolder.getSelectionIndex()){
+//						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//						}
+//					}
+//				}
+//				
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+//					for(int i=0;i<tabFolder.getItems().length;i++)
+//					{
+//						if(i!=tabFolder.getSelectionIndex()){
+//						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//						}
+//					}
+//				}
+//			});
+		    for(int i=0;i<buttonList.size();i++)
+			{
+			    TabItem three = new TabItem(tabFolder, SWT.NONE);
+//				if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("values")){
+//					three.setText("Table oriented");
+//				}
+//				else if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("select")){
+//					three.setText("SET oriented");
+//				}
+//				else three.setText(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord());
+
+					//three.setToolTipText("This is tab three");    
+				
+					//three.setControl(creatInsert_UIElements(tabFolder,TABLE_ORIENTED));
+					three.setControl(getTabOneControl(tabFolder,buttonList.get(i).getText()));
+				
+			}
+		 
+		
+		//+++++++++++++++++++++++++++++++++++++++++++
+	}
+	
+	/**
 	 * For creating the buttons out of the xml file ,wich contains
 	 * the key words of the quary language. And after creating they
 	 * will be added into the composite.
@@ -766,19 +1120,14 @@ public class CreateEditor extends AStatementEditor {
 		for(int i=0;i<listOfMainKeyWords.size();i++)
 		{
 			if((listOfMainKeyWords.get(i).getListOfSubKeyWords().size()>0)){
-				try {
-					creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
-				} catch (Exception e) {
-					System.out.print("ERROR: "+e.getMessage());
-				}
+				creatButtonsOfKeyWords(listOfMainKeyWords.get(i).getListOfSubKeyWords());
 			}
-			
-			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("CREATE"))){
-				
-			    final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
-			    keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-			    keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
+			if(!(listOfMainKeyWords.get(i).getMainKeyWord().equals("CREATE"))){	
+				final Button keyWordAsButton=new Button(buttonsCompo, SWT.NONE);
+				keyWordAsButton.setText(listOfMainKeyWords.get(i).getMainKeyWord());
 				//keyWordAsButton.setTextOfAction(listOfMainKeyWords.get(i).getTextOfKEyWord());
+				keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+
 				
 				keyWordAsButton.setSize(listOfMainKeyWords.get(i).getMainKeyWord().length()+20, 70);
 	
@@ -799,35 +1148,24 @@ public class CreateEditor extends AStatementEditor {
 					public void widgetSelected(SelectionEvent e) {
 						// TODO hier muss der statement befehle in der textBox eingetragen werden.
 						
-						/*
-						 * in the following for statement all the buttons are only
-						 * then enabled if the father button (according to the Logik in the parsed xmlFile)
-						 */
-						keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
 						
-						for(int x=0;x<buttonList.size();x++){
-							//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-							buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
-								//
-								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-								}
-								
+						
+						try {
+							statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
+							addToListOfStatementTextChanges();
+							
+							if(tmpKeyWord.getMainKeyWord().equals("TABLE")){
+								tabFolder.setSelection(0);
+							}
+							if(tmpKeyWord.getMainKeyWord().equals("SCHEMA")){
+								tabFolder.setSelection(1);
 							}
 							
-							
+						} catch (Exception e1) {
+							System.out.print("ERROR: "+e1.getMessage());
 						}
 						
-						statementText.setText(statementText.getText()+"\r"+tmpKeyWord.getTextOfKEyWord());
-						addToListOfStatementTextChanges();
-//						if(tmpKeyWord.getMainKeyWord().equals("CREATE")){
-//							
-//							statementText.setText("CREATE ");
-//							tableNameComposite.setEnabled(true);
-//							columnCompo.setEnabled(true);
-//							columsListCompo.setEnabled(true);
-//						}
+						
 	//					fatherComp.getShell().getData("StyledText")
 	//					s.setStatementText("sdfsdf");
 					}
@@ -835,9 +1173,9 @@ public class CreateEditor extends AStatementEditor {
 				
 				buttonList.add(keyWordAsButton);
 			}
-			
 		}
 		
 	}
+
 
 }

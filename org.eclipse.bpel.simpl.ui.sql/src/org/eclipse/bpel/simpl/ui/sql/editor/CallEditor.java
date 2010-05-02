@@ -108,15 +108,17 @@ public class CallEditor extends AStatementEditor {
 		try {
 			//statementText = new StyledText(comp, SWT.BORDER| SWT.H_SCROLL| SWT.V_SCROLL);
 			Composite statementCompo=new Composite(comp, SWT.NONE);
-			
 			statementCompo.setLayout(new GridLayout());
 			statementCompo.setLayoutData(gridData2);
+			GridLayout gridLayoutA2 = new GridLayout();
+			gridLayoutA2.numColumns = 1;
+			statementCompo.setLayout(gridLayoutA2);
 			
 			statementText=new LiveEditStyleText(statementCompo);
 			
 			//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
 			Button undoButton=new Button(statementCompo, SWT.LEFT);
-			undoButton.setLayoutData(gridData1_1);
+			//undoButton.setLayoutData(gridData1_1);
 			undoButton.setText("UNDO");
 			undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
 			undoButton.addSelectionListener(new SelectionListener() {
