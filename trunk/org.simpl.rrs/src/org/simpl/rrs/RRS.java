@@ -6,6 +6,8 @@ import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.dsadapter.DSAdapterProvider;
 import org.simpl.rrs.management.ManagementService;
 import org.simpl.rrs.management.ManagementServiceImpl;
+import org.simpl.rrs.metadata.MetadataService;
+import org.simpl.rrs.metadata.MetadataServiceImpl;
 import org.simpl.rrs.retrieval.RetrievalService;
 import org.simpl.rrs.retrieval.RetrievalServiceImpl;
 
@@ -15,6 +17,7 @@ public class RRS {
 	private static RRSConfig config = null;
 	private static RetrievalService retrievalService = new RetrievalServiceImpl();
 	private static ManagementService managementService = new ManagementServiceImpl();
+	private static MetadataService metadataService = new MetadataServiceImpl();
 	private static DSAdapterProvider dsAdapterProvider = new DSAdapterProvider();
 	
 	
@@ -34,6 +37,10 @@ public class RRS {
 	
 	public ManagementService managementService() {
 		return managementService;
+	}
+	
+	public MetadataService metadataService() {
+		return metadataService;
 	}
 	
 	public DSAdapter dsAdapter(String dsType, String dsSubtype) {

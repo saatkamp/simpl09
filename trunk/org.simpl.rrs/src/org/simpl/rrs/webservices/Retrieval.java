@@ -1,5 +1,7 @@
 package org.simpl.rrs.webservices;
 
+import java.util.LinkedHashMap;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -14,15 +16,12 @@ import org.simpl.rrs.webservices.helper.Parameter;
 public class Retrieval {
 	@WebMethod(action = "retrieveData")
 	public String retrieveData(
-			@WebParam(name = "uri", targetNamespace = "") String uri,
-			@WebParam(name = "adapterURI", targetNamespace = "") String adapterType,
-			@WebParam(name = "referenceName", targetNamespace = "") String referenceName,
-			@WebParam(name = "statement", targetNamespace = "") String statement)
+			@WebParam(name = "EPR", targetNamespace = "") LinkedHashMap<String, String> EPR)
 			throws ConnectionException {
 		Object dataObj = null;
 		String data = null;
 
-		dataObj = RRS.getInstance().retrievalService().get(uri, adapterType, referenceName, statement );
+		dataObj = RRS.getInstance().retrievalService().get(EPR);
 		data = Parameter.serialize(dataObj);
 
 		return data;
