@@ -24,7 +24,7 @@ public class EmbDerbyRDBAdapter extends DSAdapterPlugin{
 	public Connection openConnection(String dsAddress) throws ConnectionException {
 
 	    Connection connect = null;
-
+   
 	    StringBuilder uri = new StringBuilder();
 	      uri.append("jdbc:derby:");
 	      uri.append(dsAddress);

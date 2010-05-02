@@ -1,9 +1,9 @@
 package org.simpl.rrs.retrieval;
 
-import java.io.File;
+import java.util.LinkedHashMap;
 
 public interface RetrievalService {
 
-	public Object get(String uri, String adapterType, String referenceName, String statement);
+	public Object get(LinkedHashMap<String, String> EPR);
 	
 }

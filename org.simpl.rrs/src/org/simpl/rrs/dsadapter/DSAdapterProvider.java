@@ -17,7 +17,6 @@ public class DSAdapterProvider {
 	}
 	
 	public DSAdapter getInstance(String dsType, String dsSubtype) {
-		System.out.println(dsType + dsSubtype);
 		DSAdapterPlugin DSAdapterInstance = null;
 		List<DSAdapterPlugin> DSAdapterPlugins = this.dsAdapters.get(dsType);
 		List<String> DSAdapterSubtypes = null;
