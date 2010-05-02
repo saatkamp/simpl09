@@ -46,7 +46,7 @@ public class InsertEditor extends AStatementEditor {
 	ArrayList<Button> buttonList=new ArrayList<Button>();
 	private Composite buttonsCompo=null;
 	QueryKeyWordsXmlParser parser=new QueryKeyWordsXmlParser();
-	
+	Composite compoOfTabFolder;
 	List valuesList;
 	
 	String tmpString2;
@@ -59,12 +59,12 @@ public class InsertEditor extends AStatementEditor {
    TabFolder tabFolder;
     
    //********************************
-    List tablsList,columnList=null;
+    List tablsList,tablsList2,columnList=null;
     Composite actionsCompo=null;
    	String TABLE_ORIENTED="values";
 	String SET_ORIENTED="select";
     int tableIndex=0; 
-    Table tableOfColumnsAndValues;
+    Table tableOfColumnsAndValues,tableOfColumnsAndValues2;
     Composite valueCompo;
    //******************************** 
     
@@ -114,7 +114,7 @@ public class InsertEditor extends AStatementEditor {
 		GridData gridData2 = new GridData();
 		gridData2.horizontalAlignment = GridData.FILL;
 		gridData2.grabExcessHorizontalSpace = true;
-		gridData2.grabExcessVerticalSpace = true;
+		gridData2.grabExcessVerticalSpace =false;
 		gridData2.verticalAlignment = GridData.FILL;
 		GridData gridData1_1 = new GridData();
 		gridData1_1.horizontalAlignment = GridData.END;
@@ -140,13 +140,15 @@ public class InsertEditor extends AStatementEditor {
 		//TODO: hier war der versuch einen Undo Button neben statementFeld ....
 		statementCompo.setLayout(new GridLayout());
 		statementCompo.setLayoutData(gridData2);
-		
+		GridLayout gridLayoutA2 = new GridLayout();
+		gridLayoutA2.numColumns = 1;
+		statementCompo.setLayout(gridLayoutA2);
 		statementText=new LiveEditStyleText(statementCompo);
 		statementText.setEditable(false);
 		
 		//+++++++++++++undoButton++++++++++++++++++++++++++++++++++
 		Button undoButton=new Button(statementCompo, SWT.LEFT);
-		undoButton.setLayoutData(gridData1_1);
+		//undoButton.setLayoutData(gridData1_1);
 		undoButton.setText("UNDO");
 		undoButton.setToolTipText("UNDO Statement: delete last changes in the Statement.");
 		undoButton.addSelectionListener(new SelectionListener() {
@@ -238,13 +240,13 @@ public class InsertEditor extends AStatementEditor {
 			tablsList = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 			tablsList.setBounds(40, 20, 320, 100);
 			tablsList.setLayoutData(gridData1);
-			tablsList.setEnabled(false);
+			//tablsList.setEnabled(false);
 			try {
 				loadTheTablesIntoList();
 			} catch (Exception e2) {
 				System.out.print("ERROR: "+e2.getMessage());
 			}
-			
+			columnList=new List(tableNameComposite, SWT.BORDER | SWT.V_SCROLL| SWT.H_SCROLL);
 			try {
 				tablsList.addSelectionListener(new SelectionListener() {
 					
@@ -281,7 +283,7 @@ public class InsertEditor extends AStatementEditor {
 			
 			//************************************************************
 			
-			columnList=new List(tableNameComposite, SWT.BORDER | SWT.V_SCROLL| SWT.H_SCROLL);
+			
 			columnList.setBounds(40, 20, 420, 200);
 			GridData gridDatax = new GridData();
 			gridDatax.horizontalAlignment = GridData.FILL;
@@ -511,6 +513,8 @@ public class InsertEditor extends AStatementEditor {
 			//valuesCompo.setEnabled(true);
 		}//end of if values-Part
 		
+		
+		
 		//******************************************************************
 		if(keyWordValue.toLowerCase().equals("select"))
 		{
@@ -527,18 +531,18 @@ public class InsertEditor extends AStatementEditor {
 			gridData1.grabExcessVerticalSpace = true;
 			gridData1.verticalAlignment = GridData.FILL;
 			
-			tablsList = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
-			tablsList.setBounds(40, 20, 320, 100);
-			tablsList.setLayoutData(gridData1);
-			tablsList.setEnabled(false);
+			tablsList2 = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+			tablsList2.setBounds(40, 20, 320, 100);
+			tablsList2.setLayoutData(gridData1);
+			tablsList2.setEnabled(false);
 			try {
-				loadTheTablesIntoList();
+				loadTheTablesIntoList2();
 			} catch (Exception e2) {
 				System.out.print("ERROR: "+e2.getMessage());
 			}
 			
 			try {
-				tablsList.addSelectionListener(new SelectionListener() {
+				tablsList2.addSelectionListener(new SelectionListener() {
 					
 					@Override
 					public void widgetSelected(SelectionEvent e) {
@@ -551,6 +555,8 @@ public class InsertEditor extends AStatementEditor {
 						}
 					}
 					
+					
+
 					@Override
 					public void widgetDefaultSelected(SelectionEvent e) {
 						
@@ -573,34 +579,7 @@ public class InsertEditor extends AStatementEditor {
 			
 			//************************************************************
 			
-			//************************************************************
-//			
-//			columnList=new List(tableNameComposite, SWT.BORDER | SWT.V_SCROLL| SWT.H_SCROLL);
-//			columnList.setBounds(40, 20, 420, 200);
-//			GridData gridDatax = new GridData();
-//			gridDatax.horizontalAlignment = GridData.FILL;
-//			gridDatax.grabExcessHorizontalSpace = true;
-//			gridDatax.grabExcessVerticalSpace = true;
-//			gridDatax.verticalAlignment = GridData.FILL;
-//			columnList.setLayoutData(gridDatax);
-//			columnList.setSize(230, 150);
-//				columnList.addSelectionListener(new SelectionListener() {
-//					
-//					@Override
-//					public void widgetSelected(SelectionEvent e) {
-//						if(columnList.getItem(columnList.getSelectionIndex()).length()>0)
-//						valueCompo.setVisible(true);
-//						
-//												
-//					}
-//					
-//					@Override
-//					public void widgetDefaultSelected(SelectionEvent e) {
-//						if(columnList.getItem(columnList.getSelectionIndex()).length()>0)
-//						valueCompo.setVisible(true);
-//					}
-//				});
-//			//************************************************************
+			
 			
 			
 			
@@ -636,7 +615,7 @@ public class InsertEditor extends AStatementEditor {
 					if(textValueForColumn.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
 						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),comboDistAll.getText(),textValueForColumn.getText()});
 						textValueForColumn.setText("");
 					}					
@@ -647,7 +626,7 @@ public class InsertEditor extends AStatementEditor {
 					if(textValueForColumn.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
 						tableItem.setText(new String[]{comboColumnName.getText(),comboOperationName.getText(),comboDistAll.getText(),textValueForColumn.getText()});
 						textValueForColumn.setText("");
 					}		
@@ -659,9 +638,9 @@ public class InsertEditor extends AStatementEditor {
 			deleteFromColumnList.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
+					tableOfColumnsAndValues2.getItem(tableOfColumnsAndValues2.getSelectionIndex()).dispose();
 					tableIndex--;
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					if(tableOfColumnsAndValues2.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
@@ -669,8 +648,8 @@ public class InsertEditor extends AStatementEditor {
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues.getSelectionIndex()).dispose();
-					if(tableOfColumnsAndValues.getItemCount()==10){
+					tableOfColumnsAndValues.getItem(tableOfColumnsAndValues2.getSelectionIndex()).dispose();
+					if(tableOfColumnsAndValues2.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
 					}
@@ -701,21 +680,21 @@ public class InsertEditor extends AStatementEditor {
 			labelValueOfColumn.setText("Value: ");
 			textValueForColumn=new Text(titelPartOfTableCombo, SWT.BORDER);
 			
-			tableOfColumnsAndValues = new Table(tableCompo, SWT.NONE);
+			tableOfColumnsAndValues2 = new Table(tableCompo, SWT.NONE);
 			
-			tableOfColumnsAndValues.setHeaderVisible(true);
-			tableOfColumnsAndValues.setItemCount(10);
-			tableOfColumnsAndValues.setLinesVisible(true);
+			tableOfColumnsAndValues2.setHeaderVisible(true);
+			tableOfColumnsAndValues2.setItemCount(10);
+			tableOfColumnsAndValues2.setLinesVisible(true);
 			
 			
 			
-			TableColumn columnName = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnName = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
 			columnName.setText("Column Name");
-			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnOperation = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
 			columnOperation.setText("Operation");
-			TableColumn columnDisctAll = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnDisctAll = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
 			columnDisctAll.setText("DISCT/ALL");
-			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
+			TableColumn columnValues = new TableColumn(tableOfColumnsAndValues2, SWT.CENTER);
 			columnValues.setText("Value");
 			
 			//TableColumn columnType = new TableColumn(tableOfColumnsAndValues, SWT.CENTER);
@@ -741,11 +720,11 @@ public class InsertEditor extends AStatementEditor {
 				String[] tmpString=null;
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					if(tableOfColumnsAndValues.getItemCount()>10){
+					if(tableOfColumnsAndValues2.getItemCount()>10){
 						tableIndex=0;
 						//tablsList.setEnabled(true);
 						
-						TableItem[] arrayOfTableItems =tableOfColumnsAndValues.getItems();
+						TableItem[] arrayOfTableItems =tableOfColumnsAndValues2.getItems();
 						//arrayOfTableItems[0].getText(0)
 						//if(arrayOfTableItems.length>1) 	tmpString=" ,";
 						//else tmpString=" ";
@@ -810,7 +789,7 @@ public class InsertEditor extends AStatementEditor {
 				}
 			});
 			tableNameComposite.setEnabled(true);
-			tablsList.setEnabled(true);
+			tablsList2.setEnabled(true);
 			//valuesCompo.setEnabled(true);
 		}//end of if select-Part
 		
@@ -1323,7 +1302,7 @@ public class InsertEditor extends AStatementEditor {
 	private void loadColumnsOfTableIntoCombo() {
 		String tableName = "";
 		try {
-			tableName = tablsList.getItem(tablsList.getSelectionIndex());
+			tableName = tablsList2.getItem(tablsList2.getSelectionIndex());
 			comboColumnName.removeAll();
 		} catch (Exception e) {
 			System.out.print("ERROR:"+e.getMessage());
@@ -1466,20 +1445,44 @@ public class InsertEditor extends AStatementEditor {
 	 */
 	private void loadTheTablesIntoList() {
 		
-		tablsList.removeAll();
+		tablsList2.removeAll();
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList.add("Table" + loopIndex);
+			tablsList2.add("Table" + loopIndex);
 		}
 		//*************
 		
-		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
-		if(tabelsNames!=null){
-			for(int i=0;i<tabelsNames.size();i++){
-				tablsList.add(tabelsNames.get(i));
-			}
+//		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
+//		if(tabelsNames!=null){
+//			for(int i=0;i<tabelsNames.size();i++){
+//				tablsList2.add(tabelsNames.get(i));
+//			}
+//		}
+		
+		
+	}
+	
+	/**
+	 * loading the tables names of data source 
+	 * into the List
+	 */
+	private void loadTheTablesIntoList2() {
+		
+		tablsList2.removeAll();
+		
+		//zum testen***
+		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
+			tablsList2.add("Table" + loopIndex);
 		}
+		//*************
+		
+//		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
+//		if(tabelsNames!=null){
+//			for(int i=0;i<tabelsNames.size();i++){
+//				tablsList2.add(tabelsNames.get(i));
+//			}
+//		}
 		
 		
 	}
@@ -1500,9 +1503,9 @@ public class InsertEditor extends AStatementEditor {
 		   * 
 		   * @param shell the parent shell
 		   */
-		  
-			tabFolder = new TabFolder(compos, SWT.NONE);
-
+		   compoOfTabFolder=new Composite(compos, SWT.NONE);
+			tabFolder = new TabFolder(compoOfTabFolder, SWT.NONE);
+			
 		    // Create each tab and set its text, tool tip text,
 		    // image, and control
 		   
@@ -1512,47 +1515,47 @@ public class InsertEditor extends AStatementEditor {
 		    
 
 		    // Add an event listener to write the selected tab to stdout
-		    tabFolder.addSelectionListener(new SelectionListener() {
-				
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-					
-					for(int i=0;i<tabFolder.getItems().length;i++)
-					{
-						if(i!=tabFolder.getSelectionIndex()){
-						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-						}
-					}
-				}
-				
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-					for(int i=0;i<tabFolder.getItems().length;i++)
-					{
-						if(i!=tabFolder.getSelectionIndex()){
-						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-						}
-					}
-				}
-			});
-		    for(int i=0;i<listOfMainKeyWords.get(0).getListOfSubKeyWords().size();i++)
+//		    tabFolder.addSelectionListener(new SelectionListener() {
+//				
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+//					
+//					for(int i=0;i<tabFolder.getItems().length;i++)
+//					{
+//						if(i!=tabFolder.getSelectionIndex()){
+//						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//						}
+//					}
+//				}
+//				
+//				@Override
+//				public void widgetDefaultSelected(SelectionEvent e) {
+//					tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
+//					for(int i=0;i<tabFolder.getItems().length;i++)
+//					{
+//						if(i!=tabFolder.getSelectionIndex()){
+//						tabFolder.getItem(tabFolder.getSelectionIndex()).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
+//						}
+//					}
+//				}
+//			});
+		    for(int i=0;i<buttonList.size();i++)
 			{
 			    TabItem three = new TabItem(tabFolder, SWT.NONE);
-				if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("values")){
-					three.setText("Table oriented");
-				}
-				else if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("select")){
-					three.setText("SET oriented");
-				}
-				else three.setText(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord());
+//				if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("values")){
+//					three.setText("Table oriented");
+//				}
+//				else if(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord().toLowerCase().equals("select")){
+//					three.setText("SET oriented");
+//				}
+//				else three.setText(listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord());
 
 					//three.setToolTipText("This is tab three");    
-				//if(tmpKeyWord.getMainKeyWord().equals("VALUES")){
+				if(!(buttonList.get(i).getText().equals("FROM"))){
 					//three.setControl(creatInsert_UIElements(tabFolder,TABLE_ORIENTED));
-					three.setControl(getTabOneControl(tabFolder,listOfMainKeyWords.get(0).getListOfSubKeyWords().get(i).getMainKeyWord()));
-				//}
+					three.setControl(getTabOneControl(tabFolder,buttonList.get(i).getText()));
+				}
 			}
 		 
 		
@@ -1602,28 +1605,7 @@ public class InsertEditor extends AStatementEditor {
 					public void widgetSelected(SelectionEvent e) {
 						// TODO hier muss der statement befehle in der textBox eingetragen werden.
 						
-						/*
-						 * in the following for statement all the buttons are only
-						 * then enabled if the father button (according to the Logik in the parsed xmlFile)
-						 */
-						try {
-							keyWordAsButton.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-						} catch (Exception e1) {
-							System.out.print("ERROR: "+e1.getMessage());
-						}
-						for(int x=0;x<buttonList.size();x++){
-							//if(buttonList.get(x).getText().equals(e.text)){buttonList.get(x).setEnabled(false);}
-							buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconGRAY.png")));
-							for(int j=0;j<tmpKeyWord.getListOfSubKeyWords().size();j++){
-								//
-								if(tmpKeyWord.getListOfSubKeyWords().get(j).getMainKeyWord().equals(buttonList.get(x).getText())){
-									buttonList.get(x).setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/buttonIconORANGE.png")));
-								}
-								
-							}
-							
-							
-						}
+						
 						
 						try {
 							statementText.setText(statementText.getText()+tmpKeyWord.getTextOfKEyWord());
