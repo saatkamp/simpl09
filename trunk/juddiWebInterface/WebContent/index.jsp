@@ -6,20 +6,17 @@
 
 <%@page import="org.simpl.uddi.client.UddiDataSource"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="org.simpl.uddi.client.UddiWebConfig"%>
-<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%><head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%>
+
+<head>
+<%@page import="org.simpl.uddi.UddiWebConfig"%><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Simpl jUDDI Webinterface</title>
 </head>
 
 <body>
 <%
-	
 UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
-
-
 PrintWriter output = response.getWriter();
-output.println(uddiWebConfig.getAddress());
 	UddiDataSourceReader datasourceReader = UddiDataSourceReader
 			.getInstance(uddiWebConfig.getAddress());
 	ArrayList<UddiDataSource> dataSources = datasourceReader.getAllDatasources();
@@ -28,6 +25,7 @@ output.println(uddiWebConfig.getAddress());
 		output.println(request.getParameter("message"));
 		
 	}
+	output.println(uddiWebConfig.getUserdir());
 %>
 <form action="UddiAction" method="post">
 <table border="1">

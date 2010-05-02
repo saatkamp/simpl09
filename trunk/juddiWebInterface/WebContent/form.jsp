@@ -4,8 +4,8 @@
 
 <%@page import="org.simpl.uddi.client.UddiDataSource"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="org.simpl.uddi.client.UddiWebConfig"%>
-<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%><head>
+<%@page import="org.simpl.uddi.client.UddiDataSourceReader"%>
+<%@page import="org.simpl.uddi.UddiWebConfig"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Simpl jUDDI Webinterface</title>
 </head>

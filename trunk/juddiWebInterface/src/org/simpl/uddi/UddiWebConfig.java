@@ -1,3 +1,5 @@
+package org.simpl.uddi;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,11 +26,27 @@ public class UddiWebConfig {
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = null;
 		
-//			File file = new File(System.getProperty("user.dir") + "\\webapps\\juddiweb\\WEB-INF\\config.xml");
-			File file = new File("WEB-INF/config.xml");
+		File file = new File(System.getProperty("user.dir") + "\\webapps\\juddiweb\\WEB-INF\\config.xml");
+		
+//		File file = new File("config.xml");
 			
 			try {
 				doc = builder.build(new FileInputStream(file));
+				Element root = doc.getRootElement();
+				
+				Element address = root.getChild("address");
+				
+				Element username = root.getChild("username");
+				
+				Element password = root.getChild("password");
+				
+				this.address = address.getText();
+				
+				this.username = username.getText();
+				
+				this.password = password.getText();
+				
+
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -39,22 +57,8 @@ public class UddiWebConfig {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			// Start Transformation
-			Element root = doc.getRootElement();
+	}
 			
-			Element address = root.getChild("address");
-			
-			Element username = root.getChild("username");
-			
-			Element password = root.getChild("password");
-			
-			this.address = address.getText();
-			
-			this.username = username.getText();
-			
-			this.password = password.getText();
-			}
-
 	public String getAddress() {
 		return this.address;
 	}
@@ -69,7 +73,7 @@ public class UddiWebConfig {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
+	};
 
 	public String getUsername() {
 		return username;
@@ -77,6 +81,10 @@ public class UddiWebConfig {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getUserdir() {
+		return System.getProperty("user.dir");
 	}
 
 	public static UddiWebConfig getInstance() {

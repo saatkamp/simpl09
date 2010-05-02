@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.simpl.uddi.UddiWebConfig;
 import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataWriter;
-import org.simpl.uddi.client.UddiWebConfig;
-
 
 /**
  * Servlet implementation class UddiAction
@@ -73,7 +72,6 @@ public class UddiAction extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
 				
-				//TODO gegebenfalls ändern
 			} else {
 				String nextJSP = "/form.jsp?message="+message;
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
