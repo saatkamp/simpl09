@@ -2,5 +2,5 @@
 <juddi-properties>
 	<address>http://localhost:8080/juddiv3</address>
 	<username>root</username>
-	<password></password>
+	<password>test</password>
 </juddi-properties>
