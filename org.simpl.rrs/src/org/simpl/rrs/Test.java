@@ -58,7 +58,7 @@ public class Test {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		RRS.getInstance().retrievalService().get(EPR4);
+		//RRS.getInstance().retrievalService().get(EPR4);
 		RRS.getInstance().metadataService().getAllEPR();
 		RRS.getInstance().metadataService().getEPR("test2");
 //		try {

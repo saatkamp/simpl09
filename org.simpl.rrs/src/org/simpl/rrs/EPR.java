@@ -1,26 +1,71 @@
 package org.simpl.rrs;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "EPR")
+@XmlType(name = "EPR", propOrder = { "resolutionSystem", "adapterType", "statement", "address",
+    "referenceName", "portType", "portName", "rrsPolicy" })
 public class EPR {
 
+	String resolutionSystem = null;
 	String adapterType = null;
 	String statement = null;
-	String adress = null;
+	String address = null;
 	String referenceName = null;
+	String portType = null;
+	String portName = null;
+	String rrsPolicy = null;
 
-	public String getAdress() {
-		return adress;
+	public String getResolutionSystem() {
+		return resolutionSystem;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setResolutionSystem(String resolutionSystem) {
+		this.resolutionSystem = resolutionSystem;
 	}
 
-	public String getadapterType() {
+	public String getAdapterType() {
 		return adapterType;
 	}
 
-	public void setadapterType(String adapterType) {
+	public void setAdapterType(String adapterType) {
 		this.adapterType = adapterType;
+	}
+
+	public String getPortType() {
+		return portType;
+	}
+
+	public void setPortType(String portType) {
+		this.portType = portType;
+	}
+
+	public String getPortName() {
+		return portName;
+	}
+
+	public void setPortName(String portName) {
+		this.portName = portName;
+	}
+
+	public String getRrsPolicy() {
+		return rrsPolicy;
+	}
+
+	public void setRrsPolicy(String rrsPolicy) {
+		this.rrsPolicy = rrsPolicy;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String adress) {
+		this.address = adress;
 	}
 
 	public String getStatement() {

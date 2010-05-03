@@ -2,13 +2,13 @@ package org.simpl.rrs.webservices;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
+import org.simpl.rrs.EPR;
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
 import org.simpl.rrs.webservices.helper.Parameter;
@@ -19,11 +19,11 @@ public class Management {
 	@WebMethod(action = "Delete")
 	@SuppressWarnings("unchecked")
 	public boolean Delete(
-			@WebParam(name = "EPR", targetNamespace = "") LinkedHashMap<String, String> EPR)
+			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
 			throws ConnectionException {
 
 		boolean success = false;
-		success = RRS.getInstance().managementService().Delete(EPR);
+		success = RRS.getInstance().managementService().Delete(epr);
 
 		return success;
 	}
@@ -31,11 +31,11 @@ public class Management {
 	@WebMethod(action = "Insert")
 	@SuppressWarnings("unchecked")
 	public File Insert(
-			@WebParam(name = "EPR", targetNamespace = "") LinkedHashMap<String, String> EPR)
+			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
 			throws ConnectionException, SQLException {
 		
 			File XMLEPR = null;
-			XMLEPR = RRS.getInstance().managementService().Insert(EPR);
+			XMLEPR = RRS.getInstance().managementService().Insert(epr);
 
 		return XMLEPR;
 	}
@@ -43,11 +43,11 @@ public class Management {
 	@WebMethod(action = "Update")
 	@SuppressWarnings("unchecked")
 	public boolean Update(
-			@WebParam(name = "EPR", targetNamespace = "") LinkedHashMap<String, String> EPR)
+			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
 			throws ConnectionException, SQLException {
 
 		boolean success = false;
-		success = RRS.getInstance().managementService().Update(EPR);
+		success = RRS.getInstance().managementService().Update(epr);
 
 		return success;
 	}

@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedHashMap;
 
+import org.simpl.rrs.EPR;
+
 public class ManagementServiceImpl implements ManagementService {
 	private static final String DATABASE_NAME = "rrsDB";
 	private static final String Reference_TABLE_NAME = "ReferenceTable";
@@ -207,17 +209,17 @@ public class ManagementServiceImpl implements ManagementService {
 		return connect;
 	}
 
-	public boolean Delete(LinkedHashMap<String, String> EPR) {
+	public boolean Delete(EPR epr) {
 
+		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
 		boolean success = false;
-
 		Connection conn = getConnection();
 
 		Statement statm;
 		try {
 			statm = conn.createStatement();
 			success = statm.execute(getStatement("DELETE",
-					Reference_TABLE_NAME, EPR));
+					Reference_TABLE_NAME, EPRHM));
 			success = true;
 			statm.close();
 			conn.close();
@@ -230,20 +232,22 @@ public class ManagementServiceImpl implements ManagementService {
 
 	}
 
-	public File Insert(LinkedHashMap<String, String> EPR) throws SQLException {
+	public File Insert(EPR epr) throws SQLException {
 
 		Connection conn = getConnection();
-
+		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
+		
+		
 		if (DoesTableExist(conn) == false) {
 			createTable(conn, Reference_TABLE_NAME, getCreateTableStatement(
-					Reference_TABLE_NAME, EPR));
+					Reference_TABLE_NAME, EPRHM));
 		}
 
-		if (EPRAllreadyExists(Reference_TABLE_NAME, EPR, conn) == false) {
+		if (EPRAllreadyExists(Reference_TABLE_NAME, EPRHM, conn) == false) {
 			try {
 				Statement statm = conn.createStatement();
 				statm.executeUpdate(getStatement("INSERT",
-						Reference_TABLE_NAME, EPR));
+						Reference_TABLE_NAME, EPRHM));
 				statm.close();
 				conn.close();
 
@@ -259,16 +263,17 @@ public class ManagementServiceImpl implements ManagementService {
 		return null;
 	}
 
-	public boolean Update(LinkedHashMap<String, String> EPR) throws SQLException {
+	public boolean Update(EPR epr) throws SQLException {
 		boolean success = false;
 
+		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
 		Connection conn = getConnection();
 
-		if (EPRAllreadyExists(Reference_TABLE_NAME, EPR, conn) == true) {
+		if (EPRAllreadyExists(Reference_TABLE_NAME, EPRHM, conn) == true) {
 			try {
 				Statement statm = conn.createStatement();
 				statm.execute(getStatement("UPDATE",
-						Reference_TABLE_NAME, EPR));
+						Reference_TABLE_NAME, EPRHM));
 				statm.close();
 				conn.close();
 
@@ -318,6 +323,21 @@ public class ManagementServiceImpl implements ManagementService {
 
 		return EPRInDB;
 
+	}
+	
+	public LinkedHashMap<String, String> EPRtoHM(EPR epr) {
+		LinkedHashMap<String, String> HM = new LinkedHashMap<String, String>();
+		
+		HM.put("address", epr.getAddress());
+		HM.put("adapterType", epr.getAdapterType());
+		HM.put("referenceName", epr.getReferenceName());
+		HM.put("Statement", epr.getStatement());
+		HM.put("resolutionSystem", epr.getResolutionSystem());
+		HM.put("portType", epr.getPortType());
+		HM.put("portName", epr.getPortName());
+		HM.put("rrsPolicy", epr.getRrsPolicy());
+		
+		return HM;
 	}
 
 }

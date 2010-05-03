@@ -51,14 +51,10 @@ public class MetadataServiceImpl implements MetadataService {
 
 		try {
 			Statement statm = conn.createStatement();
-			rs = statm.executeQuery("SELECT * FROM "
-					+ Reference_TABLE_NAME);
-			
-			ResultSetMetaData rsmd = rs.getMetaData();
-			
-			int columnCount = rsmd.getColumnCount();
-			
-			List rows = new ArrayList();
+			rs = statm.executeQuery("SELECT * FROM " + Reference_TABLE_NAME);
+			statm.close();
+			conn.close();
+
 			while (rs.next()) {
 				HashMap<String, String> EPR = new HashMap<String, String>();
 				EPR.put("Address", rs.getString(1));
@@ -66,7 +62,7 @@ public class MetadataServiceImpl implements MetadataService {
 				EPR.put("referenceName", rs.getString(3));
 				EPR.put("Statement", rs.getString(4));
 				AllEPRs.add(EPR);
-			
+
 			}
 			System.out.println(AllEPRs.toString());
 
@@ -75,42 +71,40 @@ public class MetadataServiceImpl implements MetadataService {
 			e.printStackTrace();
 		}
 
-		return null;
+		return AllEPRs;
 	}
 
 	@Override
 	public File getEPR(String name) {
-		
+
 		Connection conn = getConnection();
 		ResultSet rs = null;
 		try {
 			Statement statm = conn.createStatement();
-			System.out.println("SELECT * FROM " + Reference_TABLE_NAME + " WHERE REFERENCENAME = '" + name + "'");
-			rs = statm.executeQuery("SELECT * FROM " + Reference_TABLE_NAME + " WHERE REFERENCENAME = '" + name + "'");
-			
-ResultSetMetaData rsmd = rs.getMetaData();
-			
-			int columnCount = rsmd.getColumnCount();
+			System.out.println("SELECT * FROM " + Reference_TABLE_NAME
+					+ " WHERE REFERENCENAME = '" + name + "'");
+			rs = statm.executeQuery("SELECT * FROM " + Reference_TABLE_NAME
+					+ " WHERE REFERENCENAME = '" + name + "'");
+			statm.close();
+			conn.close();
+
 			HashMap<String, String> EPR = new HashMap<String, String>();
-			List rows = new ArrayList();
-			
+
 			while (rs.next()) {
-				
+
 				EPR.put("Address", rs.getString(1));
 				EPR.put("adapterType", rs.getString(2));
 				EPR.put("referenceName", rs.getString(3));
 				EPR.put("Statement", rs.getString(4));
-			
+
 			}
 			System.out.println(EPR.toString());
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		return null;
 	}
 
