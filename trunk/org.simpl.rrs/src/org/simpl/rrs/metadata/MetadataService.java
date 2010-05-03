@@ -1,12 +1,12 @@
 package org.simpl.rrs.metadata;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
+
+import org.simpl.rrs.EPR;
 
 public interface MetadataService {
 	
-	List<HashMap<String, String>> getAllEPR();
+	EPR[] getAllEPR();
 	
 	File getEPR(String name);
 	

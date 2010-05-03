@@ -250,8 +250,8 @@ public class ManagementServiceImpl implements ManagementService {
 						Reference_TABLE_NAME, EPRHM));
 				statm.close();
 				conn.close();
-
-				// EPR xml Datei erstellen
+				
+				//TODO: EPR xml Datei erstellen
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

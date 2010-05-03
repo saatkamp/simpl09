@@ -10,7 +10,7 @@ import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
 import org.simpl.rrs.webservices.helper.Parameter;
 
-@WebService(name = "RetrievalService", targetNamespace = "")
+@WebService(serviceName = "RRSRetrievalService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Retrieval {
 	@WebMethod(action = "retrieveData")

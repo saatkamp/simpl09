@@ -7,8 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "EPR")
-@XmlType(name = "EPR", propOrder = { "resolutionSystem", "adapterType", "statement", "address",
-    "referenceName", "portType", "portName", "rrsPolicy" })
+@XmlType(name = "EPR")
 public class EPR {
 
 	String resolutionSystem = null;

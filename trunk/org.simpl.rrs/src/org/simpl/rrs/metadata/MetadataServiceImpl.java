@@ -4,16 +4,13 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
-import org.simpl.rrs.management.ManagementService;
-import org.simpl.rrs.management.ManagementServiceImpl;
+import org.simpl.rrs.EPR;
 
 public class MetadataServiceImpl implements MetadataService {
 
@@ -42,9 +39,9 @@ public class MetadataServiceImpl implements MetadataService {
 	}
 
 	@Override
-	public List<HashMap<String, String>> getAllEPR() {
+	public EPR[] getAllEPR() {
 
-		List<HashMap<String, String>> AllEPRs = new LinkedList<HashMap<String, String>>();
+		List<EPR> allEPRs = new ArrayList<EPR>();
 		ResultSet rs = null;
 
 		Connection conn = getConnection();
@@ -54,24 +51,30 @@ public class MetadataServiceImpl implements MetadataService {
 			rs = statm.executeQuery("SELECT * FROM " + Reference_TABLE_NAME);
 			statm.close();
 			conn.close();
-
+			
 			while (rs.next()) {
+				EPR rsEPR = new EPR();
+				rsEPR.setAddress(rs.getString(1));
+				rsEPR.setAdapterType(rs.getString(2));
+				rsEPR.setReferenceName(rs.getString(3));
+				rsEPR.setStatement(rs.getString(4));
+				// parameter füllen
+				allEPRs.add(rsEPR);
+
 				HashMap<String, String> EPR = new HashMap<String, String>();
 				EPR.put("Address", rs.getString(1));
 				EPR.put("adapterType", rs.getString(2));
 				EPR.put("referenceName", rs.getString(3));
 				EPR.put("Statement", rs.getString(4));
-				AllEPRs.add(EPR);
+				
 
 			}
-			System.out.println(AllEPRs.toString());
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return AllEPRs;
+		return allEPRs.toArray(new EPR[allEPRs.size()]);
 	}
 
 	@Override
