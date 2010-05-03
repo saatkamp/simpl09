@@ -1,6 +1,9 @@
 package org.simpl.rrs.webservices;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.jws.WebMethod;
@@ -13,13 +16,12 @@ import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
 import org.simpl.rrs.webservices.helper.Parameter;
 
-@WebService(name = "ManagementService", targetNamespace = "")
+@WebService(serviceName = "RRSManagementService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Management {
-	@WebMethod(action = "Delete")
-	@SuppressWarnings("unchecked")
-	public boolean Delete(
-			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
+	@WebMethod(action = "delete")
+	public boolean delete(
+			@WebParam(name = "epr", targetNamespace = "") EPR epr)
 			throws ConnectionException {
 
 		boolean success = false;
@@ -28,43 +30,68 @@ public class Management {
 		return success;
 	}
 
-	@WebMethod(action = "Insert")
-	@SuppressWarnings("unchecked")
-	public File Insert(
-			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
-			throws ConnectionException, SQLException {
+	@WebMethod(action = "insert")
+	public String insert(
+			@WebParam(name = "epr", targetNamespace = "") EPR epr)
+			throws ConnectionException {
 		
-			File XMLEPR = null;
-			XMLEPR = RRS.getInstance().managementService().Insert(epr);
-
-		return XMLEPR;
+			File xmlepr = null;
+			try {
+				xmlepr = RRS.getInstance().managementService().Insert(epr);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			String output = null;
+			
+			FileInputStream fis;
+			try {
+				fis = new FileInputStream(xmlepr);
+				byte[] byteInput = new byte[fis.available()];
+				output = new String(byteInput);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+			return output;
 	}
 
-	@WebMethod(action = "Update")
-	@SuppressWarnings("unchecked")
-	public boolean Update(
-			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
-			throws ConnectionException, SQLException {
+	@WebMethod(action = "update")
+	public boolean update(
+			@WebParam(name = "epr", targetNamespace = "") EPR epr)
+			throws ConnectionException {
 
 		boolean success = false;
-		success = RRS.getInstance().managementService().Update(epr);
+		try {
+			success = RRS.getInstance().managementService().Update(epr);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return success;
 	}
 
 	@WebMethod(action = "getDSAdapterTypes")
-	public String getDataSourceTypes() {
+	public String getDSAdapterTypes() {
 		return Parameter.serialize(RRS.getInstance().getDSAdapterType());
 	}
 
 	@WebMethod(action = "getDSAdapterSubtypes")
-	public String getDataSourceSubtypes(String dsType) {
+	public String getDSAdapterSubtypes(String dsType) {
 		return Parameter.serialize(RRS.getInstance().getDSAdapterSubtypes(
 				dsType));
 	}
 
 	@WebMethod(action = "getDSAdapterLanguages")
-	public String getDataSourceLanguages(String dsSubtype) {
+	public String getDSAdapterLanguages(String dsSubtype) {
 		return Parameter.serialize(RRS.getInstance().getDSAdapterLanguages(
 				dsSubtype));
 	}
