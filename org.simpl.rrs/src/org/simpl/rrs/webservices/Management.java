@@ -11,9 +11,9 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
-import org.simpl.rrs.EPR;
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
+import org.simpl.rrs.model.EPR;
 import org.simpl.rrs.webservices.helper.Parameter;
 
 @WebService(serviceName = "RRSManagementService", targetNamespace = "")

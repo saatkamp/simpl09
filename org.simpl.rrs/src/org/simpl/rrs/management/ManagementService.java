@@ -2,9 +2,8 @@ package org.simpl.rrs.management;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
 
-import org.simpl.rrs.EPR;
+import org.simpl.rrs.model.EPR;
 
 public interface ManagementService {
 

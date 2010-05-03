@@ -1,8 +1,6 @@
 package org.simpl.rrs.retrieval;
 
-import java.util.LinkedHashMap;
-
-import org.simpl.rrs.EPR;
+import org.simpl.rrs.model.EPR;
 
 public interface RetrievalService {
 

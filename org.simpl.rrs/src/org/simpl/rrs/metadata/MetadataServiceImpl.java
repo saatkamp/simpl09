@@ -1,16 +1,29 @@
 package org.simpl.rrs.metadata;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import org.simpl.rrs.EPR;
+import javax.xml.bind.JAXB;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.eclipse.emf.ecore.xmi.impl.SAXXMLHandler;
+import org.simpl.rrs.model.EPR;
+import org.simpl.rrs.model.ReferenceParameters;
+import org.simpl.rrs.model.ReferenceProperties;
+import org.simpl.rrs.model.ServiceName;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 
 public class MetadataServiceImpl implements MetadataService {
 
@@ -49,26 +62,44 @@ public class MetadataServiceImpl implements MetadataService {
 		try {
 			Statement statm = conn.createStatement();
 			rs = statm.executeQuery("SELECT * FROM " + Reference_TABLE_NAME);
-			statm.close();
-			conn.close();
 			
 			while (rs.next()) {
+				/*
+				 * "referenceName", epr.getParameters().getReferenceName()
+				 * "rrsAddress", epr.getRrsAddress(); "adapterType",
+				 * epr.getProperties().getRrsAdapter()); "statement",
+				 * epr.getParameters().getStatement() "dsAddress",
+				 * epr.getParameters().getDsAddress()) "portType",
+				 * epr.getPortType()) "serviceName",
+				 * epr.getService().getServiceName() "portName",
+				 * epr.getService().getPortName() "rrsPolicy",
+				 * epr.getRrsPolicy()
+				 */
 				EPR rsEPR = new EPR();
-				rsEPR.setAddress(rs.getString(1));
-				rsEPR.setAdapterType(rs.getString(2));
-				rsEPR.setReferenceName(rs.getString(3));
-				rsEPR.setStatement(rs.getString(4));
-				// parameter füllen
+				ReferenceProperties properties = new ReferenceProperties();
+				ReferenceParameters parameters = new ReferenceParameters();
+				ServiceName serviceName = new ServiceName();
+
+				parameters.setReferenceName(rs.getString(1));
+				rsEPR.setRrsAddress(rs.getString(2));
+				properties.setRrsAdapter(rs.getString(3));
+				parameters.setStatement(rs.getString(4));
+				parameters.setDsAddress(rs.getString(5));
+				rsEPR.setPortType(rs.getString(6));
+				serviceName.setServiceName(rs.getString(7));
+				serviceName.setPortName(rs.getString(8));
+				rsEPR.setRrsPolicy(rs.getString(9));
+
+				rsEPR.setParameters(parameters);
+				rsEPR.setProperties(properties);
+				rsEPR.setService(serviceName);
+
 				allEPRs.add(rsEPR);
-
-				HashMap<String, String> EPR = new HashMap<String, String>();
-				EPR.put("Address", rs.getString(1));
-				EPR.put("adapterType", rs.getString(2));
-				EPR.put("referenceName", rs.getString(3));
-				EPR.put("Statement", rs.getString(4));
-				
-
 			}
+			
+			rs.close();
+			statm.close();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -78,34 +109,85 @@ public class MetadataServiceImpl implements MetadataService {
 	}
 
 	@Override
-	public File getEPR(String name) {
+	public Node getEPR(String name) {
 
 		Connection conn = getConnection();
 		ResultSet rs = null;
+
+		EPR rsEPR = null;
+
 		try {
 			Statement statm = conn.createStatement();
-			System.out.println("SELECT * FROM " + Reference_TABLE_NAME
-					+ " WHERE REFERENCENAME = '" + name + "'");
 			rs = statm.executeQuery("SELECT * FROM " + Reference_TABLE_NAME
 					+ " WHERE REFERENCENAME = '" + name + "'");
-			statm.close();
-			conn.close();
-
-			HashMap<String, String> EPR = new HashMap<String, String>();
 
 			while (rs.next()) {
+				/*
+				 * "referenceName", epr.getParameters().getReferenceName()
+				 * "rrsAddress", epr.getRrsAddress(); "adapterType",
+				 * epr.getProperties().getRrsAdapter()); "statement",
+				 * epr.getParameters().getStatement() "dsAddress",
+				 * epr.getParameters().getDsAddress()) "portType",
+				 * epr.getPortType()) "serviceName",
+				 * epr.getService().getServiceName() "portName",
+				 * epr.getService().getPortName() "rrsPolicy",
+				 * epr.getRrsPolicy()
+				 */
+				rsEPR = new EPR();
+				ReferenceProperties properties = new ReferenceProperties();
+				ReferenceParameters parameters = new ReferenceParameters();
+				ServiceName serviceName = new ServiceName();
 
-				EPR.put("Address", rs.getString(1));
-				EPR.put("adapterType", rs.getString(2));
-				EPR.put("referenceName", rs.getString(3));
-				EPR.put("Statement", rs.getString(4));
+				parameters.setReferenceName(rs.getString(1));
+				rsEPR.setRrsAddress(rs.getString(2));
+				properties.setRrsAdapter(rs.getString(3));
+				parameters.setStatement(rs.getString(4));
+				parameters.setDsAddress(rs.getString(5));
+				rsEPR.setPortType(rs.getString(6));
+				serviceName.setServiceName(rs.getString(7));
+				serviceName.setPortName(rs.getString(8));
+				rsEPR.setRrsPolicy(rs.getString(9));
 
+				rsEPR.setParameters(parameters);
+				rsEPR.setProperties(properties);
+				rsEPR.setService(serviceName);
 			}
-			System.out.println(EPR.toString());
-
+			
+			rs.close();
+			statm.close();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+		if (rsEPR != null) {
+
+			try {
+				DocumentBuilderFactory factory =
+				      DocumentBuilderFactory.newInstance();
+
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				
+				Node eprNode = builder.newDocument();
+				
+				// create JAXB context and instantiate marshaller
+				JAXBContext context = JAXBContext.newInstance(EPR.class);
+				Marshaller m = context.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+				m.marshal(rsEPR, eprNode);
+				
+				//Testausgabe
+				m.marshal(rsEPR, System.out);
+				
+				return eprNode;
+			} catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParserConfigurationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 
 		return null;
