@@ -153,7 +153,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -572,7 +572,7 @@ Erstellung Struktur Benutzerhandbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.2
 \end_layout
 
 \end_inset
@@ -581,7 +581,7 @@ Erstellung Struktur Benutzerhandbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+02.05.2010
 \end_layout
 
 \end_inset
@@ -590,7 +590,7 @@ Erstellung Struktur Benutzerhandbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+bruededl
 \end_layout
 
 \end_inset
@@ -599,7 +599,7 @@ Erstellung Struktur Benutzerhandbuch
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Erstellung der Anwendungsfälle
 \end_layout
 
 \end_inset
@@ -743,14 +743,7 @@ SIMPL ist ein erweiterbares und generisches Rahmenwerk für die Modellierung
  Durch die Erweiterbarkeit können prinzipiell alle Datenquellen integriert
  werden.
  Als Modellierungs- und Ausführungssprache für die hier betrachteten Workows
- dient die Business Process Execution Langauge (BPEL, [
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:[1]-Jordan,-D.;"
-
-\end_inset
-
-]).
+ dient die Business Process Execution Langauge.
  Über das Rahmenwerk können beliebige Datenmanagement-Funktionen in einen
  BPEL-Prozess eingebunden werden.
  Für eine möglichst hohe Flexibilität kann ein dynamischer Ansatz gewählt
@@ -771,6 +764,16 @@ reference "sec:[1]-Jordan,-D.;"
 
 \begin_layout Section
 Systemvoraussetzungen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Erweitern
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -784,16 +787,16 @@ Installation
 \end_layout
 
 \begin_layout Standard
-Das Rahmenwerk wird als Teil eines groÿen Installationpakets ausgeliefert.
+Das Rahmenwerk wird als Teil eines großen Installationpakets ausgeliefert.
  Dieses Installationspaket besteht aus allen Programmen, die für die Verwendung
  des Rahmenwerks benötigt werden.
- Dazu gehöhrt ein Modellierungstool (Eclipse BPEL Designer), ein Web Server
- (Apache Tomcat), der eine Workow- Engine ausführen kann, eine Workow-Engine
- (Apache ODE) und natürlich das Rahmenwerk selbst.
- Mithilfe des Installationspakets ist es möglich, viele Einstellungen bereits
- vorzudenieren und dem Benutzer die Installation zu erleichern.
- Das Installationspaket wird dabei als RAR-Archiv zusammen mit allen wichtigen
- Dokumenten auf einer CD/DVD ausgeliefert
+ Dazu gehört das Modellierungstool Eclipse BPEL Designer, der Web Server
+ Apache Tomcat der die Workflow- Engine ausführt, die Workflow-Engine Apache
+ ODE und natürlich das Rahmenwerk selbst.
+ Durch des Installationspakets sind viele Einstellungen bereits vordefiniert
+ um dem Benutzer eine Installation zu ermöglichen.
+ Das Installationspaket ist dabei als RAR-Archiv zusammen mit allen wichtigen
+ Dokumenten auf einer CD/DVD vorhanden.
 \end_layout
 
 \begin_layout Subsection
@@ -820,8 +823,8 @@ Installation von XXX
 Funktionalität
 \end_layout
 
-\begin_layout Enumerate
-Unterstützte Datenquellen
+\begin_layout Subsection
+Unterstützte Datenquellen und Abfragesprachen
 \end_layout
 
 \begin_layout Standard
@@ -831,10 +834,6 @@ me oder Sensornetz-Datenbanken (TinyDB) ergänzt werden.
  Eine Sensornetz-Datenbank (TinyDB) speichert die Daten von meist kabellos
  vernetzten Sensoren und liefert so eine zentrale und einheitliche Zugrismöglich
 keit auf Sensordaten.
-\end_layout
-
-\begin_layout Enumerate
-Abfragesprachen
 \end_layout
 
 \begin_layout Enumerate
@@ -849,9 +848,8 @@ Referenzverwaltung
 Folgende Funktionen bilden die momentane Funktionalität des SIMPL-Rahmenwerks:
  Umsetzung eines Plug-In System für die Anbindung von verschiedenen Datenquellen.
  Die statische Anbindung von Datenquellen, wobei vorerst nur relationale
- Datenbanken unter- stützt werden sollen.
- SIMPL © 2009 $IMPL 6 / 92 Bereitstellung von generischen BPEL-Aktivitäten
- im Eclipse BPEL Designer für den Zugri auf Datenquellen.
+ Datenbanken unterstützt werden sollen.Bereitstellung von generischen BPEL-Aktivi
+täten im Eclipse BPEL Designer für den Zugriff auf Datenquellen.
  Bereitstellung von Query-Editoren für die verschiedenen DM-Aktivitäten.
  Umsetzung einer grundlegenden Admin-Konsole, in der das Auditing aktiviert
  werden kann, sowie Benutzername und Passwort, für die spätere Authentizierung
@@ -861,7 +859,7 @@ Folgende Funktionen bilden die momentane Funktionalität des SIMPL-Rahmenwerks:
 \begin_layout Enumerate
 Anbindung von Dateisystemen am Beispiel des CSV-Dateiformats.
  Unterstützung von Referenzen in BPEL (siehe [3]), damit auf Daten auch
- per Referenz im Work- ow zugegrien werden kann.
+ per Referenz im Workflow zugegriffen werden kann.
  Dies wird aus Gründen der Performanz benötigt, da die Daten- übergabe zwischen
  Workow und Web Service standardmäÿig per Wert erfolgt, was bei groÿen Datenmeng
 en (bis zu Gigabytes oder gar Terabytes im wissenschaftlichen Bereich) zu
@@ -874,15 +872,6 @@ en (bis zu Gigabytes oder gar Terabytes im wissenschaftlichen Bereich) zu
  Strategie auswählen, mit deren Hilfe eine Datenquelle, die seine Anforderungen
  erfüllt, ausgewählt wird.
  Validation von der SIMPL-DM-Aktivitäten
-\end_layout
-
-\begin_layout Enumerate
-SIMPL unterstützt relationale Datenbanken (MySQL, IBM DB2) und kann um weitere
- Datenquellen, wie XML-Datenbanken (IBM DB2 mit pureXML-Technologie), Dateisyste
-me oder Sensornetz-Datenbanken (TinyDB) ergänzt werden.
- Eine Sensornetz-Datenbank (TinyDB) speichert die Daten von meist kabellos
- vernetzten Sensoren und liefert so eine zentrale und einheitliche Zugrismöglich
-keit auf Sensordaten.
 \end_layout
 
 \begin_layout Section
@@ -1239,11 +1228,7 @@ In Abbildung 7 wird die PropertyView am Beispiel einer Query-Aktivität (siehe
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1401,6 +1386,13 @@ Benutzung von SIMPL
 Anwendungsfälle Prozess-Modellierer
 \end_layout
 
+\begin_layout Standard
+Vorab : Jede Selektion von Aktivitäten oder Eigenschaften erfolgt mit der
+ linken Maustaste.
+ Jedes dazugehörige Konextmenü wird durch die rechte Maustaste nach der
+ Selektion aufgerufen.
+\end_layout
+
 \begin_layout Subsubsection
 Data-Management-Aktivität erstellen
 \end_layout
@@ -1422,40 +1414,181 @@ Zur Erstellung einer neuen Data-Management (DM) Aktivität muß ein vorhandener
 Data-Management-Aktivität bearbeiten
 \end_layout
 
-\begin_layout Itemize
-Properties 
+\begin_layout Standard
+Wenn ein BPEL Prozess mit einer DM- Aktivität geöffnet ist, dann kann diese
+ DM-Aktivität selektiert werden und danach in der Properties-View alle Eigenscha
+ften angezeigt.
+ Die zu bearbeitenden Eigenschaften können direkt ausgewählt und geändert
+ werden.
+ Komplexere oder größere Einstellungen können mithilfe der 
+\begin_inset Quotes eld
+\end_inset
+
+Query Editioren
+\begin_inset Quotes erd
+\end_inset
+
+ vollzogen werden.
+ Diese werden im Folgenden vorgestellt :
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
 Query Editoren
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Feras noch fragen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nach der erfolgreichen Änderung in den Query Editoren werden diese in der
+ Properties-View angezeigt.
 \end_layout
 
 \begin_layout Subsubsection
 Data-Management-Aktivität löschen
 \end_layout
 
+\begin_layout Standard
+Die vorhandene DM-Aktivität im geöffneten BPEL Prozess muß selektiert werden
+ und das Kontextmenü aufgerufen werden.
+ Dort kann die Aktivität durch 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ gelöscht werden.
+ Alternativ durch drücken der ENTF / Delete -Taste.
+ Danach werden alle Links gemäß dem Standardverhalten des BPEL Designers
+ neu gesetzt.
+\end_layout
+
 \begin_layout Subsubsection
 ODE Deployment-Deskriptor erstellen
+\end_layout
+
+\begin_layout Standard
+Ein ODE Deployment-Deskriptor wird wie folgt erstellt :
+\end_layout
+
+\begin_layout Enumerate
+File->New->Other->BPEL2.0->Apache ODE Deployment-Descriptor
+\end_layout
+
+\begin_layout Enumerate
+Konguration des Deployment-Deskriptors
+\end_layout
+
+\begin_layout Enumerate
+Speicherung des Deployment-Deskriptors über File -> Save
+\end_layout
+
+\begin_layout Standard
+Nach der Erstellung ohne Fehlermeldung kann der Deskriptor deployed werden.
 \end_layout
 
 \begin_layout Subsubsection
 ODE Deployment-Deskriptor bearbeiten
 \end_layout
 
+\begin_layout Standard
+Ein vorhandener Deployment-Deskriptor kann mit einem Doppelklick mit der
+ linken Maustaste auf das File geöffnet und bearbeitet werden.
+ Nach dem Bearbeiten sind die neuen Einstellungen zu mittels Save Button
+ zu speichern, andernfalls werden die Änderungen nicht übernommen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Richtig ? Testen !
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 ODE Deployment-Deskriptor löschen
+\end_layout
+
+\begin_layout Standard
+ODE Deployment-Deskriptor auswählen und über Edit->Delete löschen.
 \end_layout
 
 \begin_layout Subsubsection
 Prozess auf ODE-Server deployen
 \end_layout
 
-\begin_layout Subsubsection
-Prozessinstanz starten
+\begin_layout Enumerate
+Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View: Rechter
+ Mausklick auf den ODE-Server 
+\end_layout
+
+\begin_layout Enumerate
+Auswahl des Menüpunkts Add and Remove.
+\end_layout
+
+\begin_layout Enumerate
+Hinzufügen der BPEL Prozess-Datei 
+\end_layout
+
+\begin_layout Enumerate
+Starten des ODE-Servers über rechten Mausklick und klicken auf Start.
 \end_layout
 
 \begin_layout Subsubsection
-Strategie für das Late-Binding
+Prozessinstanz starten 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+?? In der Spez.
+ auch nichts vorhanden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Strategie für das Late-Binding auswählen
+\end_layout
+
+\begin_layout Standard
+Ein BPEL-Prozess mit ODE Deployment-Deskriptor und ein WS-Policy-Dokument
+ mit Anforderungen an die Datenquelle müssen erstellt sein.
+ Der ODE Deployment-Deskriptor muss geöffnet sein.
+\end_layout
+
+\begin_layout Enumerate
+Auswahl einer DM-Aktivität aus der Liste mit DM-Aktivitäten.
+\end_layout
+
+\begin_layout Enumerate
+Auswahl einer Strategie über das Strategie-Dropdown-Menü.
+\end_layout
+
+\begin_layout Enumerate
+Auswahl einer WS-Policy-Datei über den Button WS-Policy Datei auswählen.
+\end_layout
+
+\begin_layout Enumerate
+Speichern des ODE Deployment-Deskriptor über das Speichern-Symbol in der
+ Symbolleiste.
 \end_layout
 
 \begin_layout Subsection
@@ -1466,48 +1599,264 @@ Anwendungsfälle des Workow-Administrators
 Admin-Konsole öffnen
 \end_layout
 
+\begin_layout Standard
+Durch einen Klick auf Admin-Konsole im Eclipse Menü unter SIMPL kann die
+ Admin-Konsole geöffnet und verwendet werden.
+\end_layout
+
 \begin_layout Subsubsection
 Auditing aktivieren 
+\end_layout
+
+\begin_layout Standard
+Admin-Konsole zuerst gem.
+ 7.2.1 öffnen und dann den Menüpunkt Auditing auswählen.
+ Durch Setzen des Häkchens bei Auditing unter General kann dieses aktiviert
+ werden.
+ Die Übernahme der Einstellung erfolgt mittels 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+-Button.
 \end_layout
 
 \begin_layout Subsubsection
 Auditing deaktivieren 
 \end_layout
 
+\begin_layout Standard
+Admin-Konsole zuerst gem.
+ 7.2.1 öffnen und dann den Menüpunkt Auditing auswählen.
+ Durch Klicken auf den Haken wird das Auditig deaktiviert und es erscheint
+ 
+\begin_inset Quotes eld
+\end_inset
+
+inactive
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Die Übernahme der Einstellung erfolgt mittels 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+-Button.
+\end_layout
+
 \begin_layout Subsubsection
 Auditing-Datenbank festlegen/ändern 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+keine Auswahl der Auditing Datenbank mittels Drop Down Menü möglich ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Admin-Konsole zuerst gem.
+ 7.2.1 öffnen und dann den Menüpunkt Auditing auswählen.
+ Hier kann die Datenbank durch Angabe des URIs festgelegt oder geändert
+ werden.
+ Die Übernahme der Einstellung erfolgt mittels 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+-Button.
 \end_layout
 
 \begin_layout Subsubsection
 Globale Einstellungen festlegen/ändern 
 \end_layout
 
+\begin_layout Standard
+Die globalen Einstellungen die das Rahmenwerk betreffen können in Eclipse
+ im Menüpunkt SIMPL unter Settings eingestellt werden.
+ Alternativ ist dies auch unter Eclipse im Menüpunkt Window unter Preferences
+ bei SIMPL möglich.
+ Hier können Einstellungen bezüglich des RRS, des SIMPLE Cores, des Transformati
+on Services und der UDDI Registry vorgenommen werden.
+ Mittels des 
+\begin_inset Quotes eld
+\end_inset
+
+APPLY
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons werden die Einstellungen übernommen und mit 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+ wird die Auswahl geschlossen.
+\end_layout
+
 \begin_layout Subsubsection
 Einstellungen der Admin-Konsole speichern 
+\end_layout
+
+\begin_layout Standard
+Durch Klick auf den Button 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ weden die Einstellungen der Admin-Konsole in der SIMPL DB
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+korrekt ?
+\end_layout
+
+\end_inset
+
+ gespeichert.
+ Das Speichern gelingt nicht wenn das Auditung aktiviert ist, aber keine
+ Auditing Datenbank festgelegt ist oder die Datenbank nicht erreichbar ist.
 \end_layout
 
 \begin_layout Subsubsection
 Einstellungen der Admin-Konsole zurücksetzen 
 \end_layout
 
+\begin_layout Standard
+Durch einen Klick auf den 
+\begin_inset Quotes eld
+\end_inset
+
+Reset
+\begin_inset Quotes erd
+\end_inset
+
+-Button werden die zuletzt vorhandenen Einstellungen wieder hergestellt.
+\end_layout
+
 \begin_layout Subsubsection
 Default-Einstellungen der Admin-Konsole laden 
+\end_layout
+
+\begin_layout Standard
+Die Standardwerte der Admin-Konsole können durch einen Klick auf 
+\begin_inset Quotes eld
+\end_inset
+
+Default
+\begin_inset Quotes erd
+\end_inset
+
+ wieder hergestellt werden.
 \end_layout
 
 \begin_layout Subsubsection
 Admin-Konsole schliessen 
 \end_layout
 
+\begin_layout Standard
+Durch einen Klick auf 
+\begin_inset Quotes eld
+\end_inset
+
+Close
+\begin_inset Quotes erd
+\end_inset
+
+ wird die Admin-Konsole geschlossen.
+ Wurden Änderungen vorgenommen die nicht gesichert wurden , dann erscheint
+ eine Sicherheitsabfrage mit der Möglichkeit die Änderungen zu sichern.
+ 
+\end_layout
+
 \begin_layout Subsubsection
-Neue Referenz in RRS einfügen 
+Neue Referenz in RRS einfügen
+\end_layout
+
+\begin_layout Standard
+Wenn das RRS erreichbar und eine View geöffnet ist, dann kann eine neue
+ Referenz eingefügt werden.
+ Zuerst muß dazu in der Toolbar oder im Kontextmenü 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ angeklickt werden.
+ In dem Pop-up Fenster können nun alle Parameter der Referenz eingestellt
+ werden.
+ Durch klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ wird die neue Referenz gesichert.
+ 
 \end_layout
 
 \begin_layout Subsubsection
 Referenz aus RRS bearbeiten 
 \end_layout
 
+\begin_layout Standard
+Eine Referenz läßt sich nur bearbeiten wenn der RRS erreichbar ist.
+ Durch Klicken auf den Edit-Button der Toolbar oder Auswahl des entsprechenden
+ Menüpunktes im Kontext-Menü kann die Referenz bearbeitet werden.
+ Im Pop-up können die Parameter verändert werden.
+ Durch klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Änderungen übernommen.
+\end_layout
+
 \begin_layout Subsubsection
 Referenz aus RRS löschen
+\end_layout
+
+\begin_layout Standard
+Eine Referenz läßt sich nur Löschen wenn der RRS erreichbar ist.
+ Nach Auswahl der zu löschenden Referenz kann über den 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ Button oder den entsprechenden Menüpunkt im Kontext-Menü die Referenz gelöscht
+ werden.
 \end_layout
 
 \begin_layout Subsection
@@ -1516,6 +1865,22 @@ Anwendungsfälle der Datenquellen-Administratoren
 
 \begin_layout Subsubsection
 Datenquelle in UDDI-Registry registrieren 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ToDo für Wollo :)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ein neues Datenquellenobjekt muß angelegt worden sein und dann kann die
+ Datenquelle in der Datenquellen-Registry registriert werden.
+ Danach ist sie in den Workflows verwendbar.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1531,13 +1896,53 @@ Sicherheit
 \end_layout
 
 \begin_layout Itemize
-Authentifizierung
+Authentifizierung 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was ist neuester Stand ?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Da das Rahmenwerk nur lokal ausgeführt wird und alle lokalen Benutzer momentan
  die gleichen Rechte besitzen, wird vorerst auf Authentizierungs- und Autorisier
-ungsmaÿnahmen für den Zugri auf das Rahmenwerk verzichtet.
+ungsmassnahmen für den Zugriff auf das Rahmenwerk verzichtet.
+ Vorerst wird nur ein Verfahren mit Benutzername und Passwort realisiert.
+ Benutzername und Passwort können in der ersten Iteration zunächst nur in
+ den Globalen Einstellungen (siehe 4.1.1) für alle Datenquellen festgelegt
+ werden.
+ In einer weiteren Iterationsstufe wird die separate Angabe dieser Daten
+ für jede Datenquelle möglich sein.
+\end_layout
+
+\begin_layout Itemize
+Autorisierung
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was ist neuester Stand ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine Autorisierung endet meist nach einer erfolgreichen Authentizierung
+ statt und überprüft, ob der Zugri bzw.
+ die Operation, die ausgeführt werden soll, berechtigt ist.
+ Dazu werden Zugrisrechte überprüft, die als Regeln formuliert auf Seite
+ der Datenquellen verwaltet werden.
+ In der ersten Iteration wird lediglich die Autorisierung über Benutzername
+ und Passwort unterstützt.
 \end_layout
 
 \begin_layout Itemize
@@ -1546,13 +1951,9 @@ Auditing
 
 \begin_layout Standard
 Alle Ereignisse, die während der Laufzeit eines Prozesses auftreten (z.B.
- Zugri auf eine Datenquelle), werden durch ein Auditing in einer vom Nutzer
+ Zugriff auf eine Datenquelle), werden durch ein Auditing in einer vom Nutzer
  denierten Datenbank gespeichert.
- 
-\end_layout
-
-\begin_layout Standard
-Für die Speicherung der Auditing-Daten kann nur eine Datenbank gleichzeitig
+ Für die Speicherung der Auditing-Daten kann nur eine Datenbank gleichzeitig
  ausgewählt sein.
 \end_layout
 
@@ -1578,6 +1979,1527 @@ Problemehilfe
 Die SIMPL Eclipse Plug-Ins sind nur voll funktionsfähig, falls der SIMPL
  Core erreichbar ist, d.h.
  das ein Apache Tomcat Server mit angebundenem SIMPL Core gestartet wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Fehlerbehandlung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="51" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bereich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ursachen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Deployment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung D.D.
+ nicht möglich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE Deploment Deskriptor Modul nicht installiert
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Deployen nicht möglich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE Server nicht gestartet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin Konsole
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speichern nicht möglich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auditing Datenbank fehlt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Datenbank nicht erreichbar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Authentifizierung fehlgeschlagen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Referenz läßt sich nicht speichern oder bearbeiten
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS Parameter ungültig
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS nicht erreichbar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
