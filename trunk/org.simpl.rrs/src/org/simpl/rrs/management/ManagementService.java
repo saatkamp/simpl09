@@ -4,13 +4,15 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 
+import org.simpl.rrs.EPR;
+
 public interface ManagementService {
 
-	public boolean Delete(LinkedHashMap<String, String> EPR);
+	public boolean Delete(EPR epr);
 	
-	public boolean Update(LinkedHashMap<String, String> EPR) throws SQLException;
+	public boolean Update(EPR epr) throws SQLException;
 	
-	public File Insert(LinkedHashMap<String, String> EPR) throws SQLException;
+	public File Insert(EPR epr) throws SQLException;
 	
 	
 	

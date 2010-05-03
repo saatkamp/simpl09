@@ -5,20 +5,23 @@ import java.util.LinkedHashMap;
 
 import java.util.StringTokenizer;
 
+import org.simpl.rrs.EPR;
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
 
 public class RetrievalServiceImpl implements RetrievalService {
 	
-	public Object get(LinkedHashMap<String, String> EPR) {
+	public Object get(EPR epr) {
 
+		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
+		
 		String dsType = null;
 		String dsSubtype = null;
 		String dsLanguage = null;
 		Object data = null;
 		
-		StringTokenizer st = new StringTokenizer(EPR.get("adapterType"), ":");
+		StringTokenizer st = new StringTokenizer(EPRHM.get("adapterType"), ":");
 		dsType = st.nextToken();
 		dsSubtype = st.nextToken();
 		dsLanguage = st.nextToken();
@@ -28,7 +31,7 @@ public class RetrievalServiceImpl implements RetrievalService {
 		// anhand von Type und Subtype, und Daten holen...
 		DSAdapter dsAdapter = RRS.getInstance().dsAdapter(dsType, dsSubtype);
 		try {
-			data = dsAdapter.retrieveData(EPR.get("Address"), EPR.get("Statement"));
+			data = dsAdapter.retrieveData(EPRHM.get("Address"), EPRHM.get("Statement"));
 					} catch (ConnectionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,6 +39,21 @@ public class RetrievalServiceImpl implements RetrievalService {
 		System.out.println(data);
 		return data;
 
+	}
+	
+	public LinkedHashMap<String, String> EPRtoHM(EPR epr) {
+		LinkedHashMap<String, String> HM = new LinkedHashMap<String, String>();
+		
+		HM.put("address", epr.getAddress());
+		HM.put("adapterType", epr.getAdapterType());
+		HM.put("referenceName", epr.getReferenceName());
+		HM.put("Statement", epr.getStatement());
+		HM.put("resolutionSystem", epr.getResolutionSystem());
+		HM.put("portType", epr.getPortType());
+		HM.put("portName", epr.getPortName());
+		HM.put("rrsPolicy", epr.getRrsPolicy());
+		
+		return HM;
 	}
 
 }
