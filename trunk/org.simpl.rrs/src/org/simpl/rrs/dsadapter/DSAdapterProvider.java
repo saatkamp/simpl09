@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.simpl.rrs.dsadapter.plugins.DSAdapterPlugin;
 import org.simpl.rrs.RRS;
+import org.simpl.rrs.dsadapter.plugins.DSAdapterPlugin;
 
 public class DSAdapterProvider {
 

@@ -1,17 +1,10 @@
 package org.simpl.rrs;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import org.simpl.rrs.model.EPR;
+import org.simpl.rrs.model.ReferenceParameters;
+import org.simpl.rrs.model.ReferenceProperties;
 
 public class Test {
 	
@@ -19,10 +12,15 @@ public class Test {
 			String adapterType, String referenceName, String statement) {
 
 		EPR epr = new EPR();
-		epr.setAddress(uri);
-		epr.setAdapterType(adapterType);
-		epr.setReferenceName(referenceName);
-		epr.setStatement(statement);
+		ReferenceParameters param = new ReferenceParameters();
+		ReferenceProperties prop = new ReferenceProperties();
+		param.setDsAddress(uri);
+		prop.setRrsAdapter(adapterType);
+		param.setReferenceName(referenceName);
+		param.setStatement(statement);
+		
+		epr.setParameters(param);
+		epr.setProperties(prop);
 
 		return epr;
 
@@ -55,7 +53,6 @@ public class Test {
 		//RRS.getInstance().retrievalService().get(EPR4);
 		RRS.getInstance().metadataService().getAllEPR();
 		RRS.getInstance().metadataService().getEPR("test2");
-
 		
 		}
 }

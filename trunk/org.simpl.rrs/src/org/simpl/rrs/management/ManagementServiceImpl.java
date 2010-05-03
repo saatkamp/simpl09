@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedHashMap;
 
-import org.simpl.rrs.EPR;
+import org.simpl.rrs.model.EPR;
 
 public class ManagementServiceImpl implements ManagementService {
 	private static final String DATABASE_NAME = "rrsDB";
@@ -236,8 +236,7 @@ public class ManagementServiceImpl implements ManagementService {
 
 		Connection conn = getConnection();
 		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
-		
-		
+
 		if (DoesTableExist(conn) == false) {
 			createTable(conn, Reference_TABLE_NAME, getCreateTableStatement(
 					Reference_TABLE_NAME, EPRHM));
@@ -250,9 +249,9 @@ public class ManagementServiceImpl implements ManagementService {
 						Reference_TABLE_NAME, EPRHM));
 				statm.close();
 				conn.close();
-				
-				//TODO: EPR xml Datei erstellen
-				
+
+				// TODO: EPR xml Datei erstellen
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -272,8 +271,8 @@ public class ManagementServiceImpl implements ManagementService {
 		if (EPRAllreadyExists(Reference_TABLE_NAME, EPRHM, conn) == true) {
 			try {
 				Statement statm = conn.createStatement();
-				statm.execute(getStatement("UPDATE",
-						Reference_TABLE_NAME, EPRHM));
+				statm.execute(getStatement("UPDATE", Reference_TABLE_NAME,
+						EPRHM));
 				statm.close();
 				conn.close();
 
@@ -324,20 +323,35 @@ public class ManagementServiceImpl implements ManagementService {
 		return EPRInDB;
 
 	}
-	
+
 	public LinkedHashMap<String, String> EPRtoHM(EPR epr) {
 		LinkedHashMap<String, String> HM = new LinkedHashMap<String, String>();
-		
-		HM.put("address", epr.getAddress());
-		HM.put("adapterType", epr.getAdapterType());
-		HM.put("referenceName", epr.getReferenceName());
-		HM.put("Statement", epr.getStatement());
-		HM.put("resolutionSystem", epr.getResolutionSystem());
-		HM.put("portType", epr.getPortType());
-		HM.put("portName", epr.getPortName());
-		HM.put("rrsPolicy", epr.getRrsPolicy());
-		
+
+		HM.put("referenceName",
+				epr.getParameters().getReferenceName() == null ? "" : epr
+						.getParameters().getReferenceName());
+		HM.put("rrsAddress", epr.getRrsAddress() == null ? "" : epr
+				.getRrsAddress());
+		HM.put("adapterType", epr.getProperties().getRrsAdapter() == null ? ""
+				: epr.getProperties().getRrsAdapter());
+		HM.put("statement", epr.getParameters().getStatement() == null ? ""
+				: epr.getParameters().getStatement());
+		HM.put("dsAddress", epr.getParameters().getDsAddress() == null ? ""
+				: epr.getParameters().getDsAddress());
+		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType());
+		if (epr.getService() != null) {
+			HM.put("serviceName",
+					epr.getService().getServiceName() == null ? "" : epr
+							.getService().getServiceName());
+			HM.put("portName", epr.getService().getPortName() == null ? ""
+					: epr.getService().getPortName());
+		} else {
+			HM.put("serviceName", "");
+			HM.put("portName", "");
+		}
+		HM.put("rrsPolicy", epr.getRrsPolicy() == null ? "" : epr
+				.getRrsPolicy());
+
 		return HM;
 	}
-
 }

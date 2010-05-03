@@ -1,13 +1,12 @@
 package org.simpl.rrs.metadata;
 
-import java.io.File;
-
-import org.simpl.rrs.EPR;
+import org.simpl.rrs.model.EPR;
+import org.w3c.dom.Node;
 
 public interface MetadataService {
 	
 	EPR[] getAllEPR();
 	
-	File getEPR(String name);
+	Node getEPR(String name);
 	
 }
