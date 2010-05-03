@@ -15,6 +15,7 @@ public class RetrievalServiceImpl implements RetrievalService {
 	public Object get(EPR epr) {
 
 		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
+		System.out.println(EPRHM.get("Address"));
 		
 		String dsType = null;
 		String dsSubtype = null;
