@@ -19,6 +19,7 @@ import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
+import commonj.sdo.helper.XMLDocument;
 import commonj.sdo.helper.XMLHelper;
 
 /**
@@ -55,7 +56,9 @@ public class Datasource {
         statement);
 
     try {
-      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", outputStream);
+      XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject, "commonj.sdo", "dataObject");
+      xmlDocument.setEncoding("UTF-8");
+      XMLHelper.INSTANCE.save(xmlDocument, outputStream, null);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -115,7 +118,9 @@ public class Datasource {
         filter);
 
     try {
-      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", outputStream);
+      XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject, "commonj.sdo", "dataObject");
+      xmlDocument.setEncoding("UTF-8");
+      XMLHelper.INSTANCE.save(xmlDocument, outputStream, null);
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
