@@ -2,8 +2,10 @@
 <xsd:schema
 	targetNamespace="http://org.simpl.core/plugins/dataformat/DataFormat"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:das="http:///org.apache.tuscany.das.rdb/das" xmlns="http://org.simpl.core/plugins/dataformat/DataFormat">
-
+	xmlns:das="http:///org.apache.tuscany.das.rdb/das" 
+	xmlns="http://org.simpl.core/plugins/dataformat/DataFormat" 
+	xmlns:sdo="commonj.sdo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<xsd:annotation>
 		<xsd:documentation></xsd:documentation>
@@ -14,10 +16,18 @@
 	<xsd:complexType name="tTuscanyDataFormat">
 
 		<xsd:sequence>
-			<xsd:element name="dataObject" type="xsd:string"></xsd:element>
+			<xsd:element name="dataObject" type="dataObject"></xsd:element>
 		</xsd:sequence>
-		<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
 
 	</xsd:complexType>
-	
+
+
+	<xsd:complexType name="dataObject">
+		<xsd:sequence>
+			<xsd:element name="DataGraphRoot" type="DataGraphRoot"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="DataGraphRoot"></xsd:complexType>
 </xsd:schema>
