@@ -36,4 +36,11 @@ public class RRSMetaData {
 
 		return response;
 	}
+	
+	@WebMethod(action = "getAvailableAdapters")
+	public String[] getAvailableAdapters() {
+		String[] response = RRS.getInstance().metadataService().getAvailableAdapters();
+
+		return response;
+	}
 }
