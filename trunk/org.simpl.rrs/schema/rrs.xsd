@@ -14,7 +14,7 @@
     <xsd:sequence>
     	<xsd:element form="qualified" name="referenceName"
     		type="xsd:string" />
-            <xsd:element name="dsAddress" type="xsd:string"></xsd:element>
+            <xsd:element form="qualified" name="dsAddress" type="xsd:string"></xsd:element>
             <xsd:element form="qualified" name="statement"
     		type="xsd:string" />
     </xsd:sequence>

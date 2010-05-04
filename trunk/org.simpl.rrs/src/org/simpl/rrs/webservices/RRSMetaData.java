@@ -7,7 +7,6 @@ import javax.jws.soap.SOAPBinding;
 
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.model.EPR;
-import org.w3c.dom.Node;
 
 /**
  * <b>Purpose:</b> <br>
@@ -24,9 +23,9 @@ import org.w3c.dom.Node;
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class RRSMetaData {
 	@WebMethod(action = "getEPR")
-	public Node getEPR(
+	public EPR getEPR(
 			@WebParam(name = "eprName", targetNamespace = "") String eprName) {
-		Node response = RRS.getInstance().metadataService().getEPR(eprName);
+		EPR response = RRS.getInstance().metadataService().getEPR(eprName);
 
 		return response;
 	}

@@ -15,12 +15,12 @@ public class Test {
 		ReferenceParameters param = new ReferenceParameters();
 		ReferenceProperties prop = new ReferenceProperties();
 		param.setDsAddress(uri);
-		prop.setRrsAdapter(adapterType);
+		prop.setResolutionSystem(adapterType);
 		param.setReferenceName(referenceName);
 		param.setStatement(statement);
 		
-		epr.setParameters(param);
-		epr.setProperties(prop);
+		epr.setReferenceParameters(param);
+		epr.setReferenceProperties(prop);
 
 		return epr;
 

@@ -7,6 +7,6 @@ public interface MetadataService {
 	
 	EPR[] getAllEPR();
 	
-	Node getEPR(String name);
+	EPR getEPR(String name);
 	
 }
