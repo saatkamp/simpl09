@@ -19,33 +19,34 @@ public class RRSConfig {
 	private static final String CONFIG_FILE_2 = System.getProperty("user.dir")
 			+ "\\..\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
 	List<String> DSAdapterPlugins = new ArrayList<String>();
-	
+
 	public RRSConfig() {
 		InputStream in = null;
 		XMLInputFactory factory = XMLInputFactory.newInstance();
 		XMLStreamReader parser = null;
 
-		// try {
-		// in = new FileInputStream(CONFIG_FILE_1);
-		// } catch (FileNotFoundException e) {
-		// try {
-		// in = new FileInputStream(CONFIG_FILE_2);
-		// } catch (FileNotFoundException e1) {
-		// try {
-		// in = new FileInputStream(CONFIG_FILE_NAME);
-		// } catch (FileNotFoundException e2) {
-		// // TODO Auto-generated catch block
-		// e2.printStackTrace();
-		// }
-		// }
-		// }
-
 		try {
-			in = new FileInputStream("C://eclipse/workspace/org.simpl.rrs/src/rrs-config.xml");
+			in = new FileInputStream(CONFIG_FILE_1);
 		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
+			try {
+				in = new FileInputStream(CONFIG_FILE_2);
+			} catch (FileNotFoundException e1) {
+				try {
+					in = new FileInputStream(CONFIG_FILE_NAME);
+				} catch (FileNotFoundException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+			}
 		}
+
+		// try {
+		// in = new
+		// FileInputStream("C://eclipse/workspace/org.simpl.rrs/src/rrs-config.xml");
+		// } catch (FileNotFoundException e) {
+		//
+		// e.printStackTrace();
+		// }
 
 		try {
 			parser = factory.createXMLStreamReader(in);
@@ -84,8 +85,8 @@ public class RRSConfig {
 	}
 
 	public List<String> getDSAdapterPlugins() {
-		
+
 		return DSAdapterPlugins;
 	}
-	
+
 }

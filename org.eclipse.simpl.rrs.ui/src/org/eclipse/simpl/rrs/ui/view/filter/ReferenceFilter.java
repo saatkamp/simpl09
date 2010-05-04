@@ -4,7 +4,8 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.simpl.rrs.model.rrs.EPR;
+
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class ReferenceFilter extends ViewerFilter {
 
@@ -29,6 +30,9 @@ public class ReferenceFilter extends ViewerFilter {
 				return true;
 			}
 			if (epr.getReferenceProperties().getResolutionSystem().matches(searchString)) {
+				return true;
+			}
+			if (epr.getReferenceParameters().getDsAddress().matches(searchString)) {
 				return true;
 			}
 			if (epr.getReferenceParameters().getStatement().matches(searchString)) {

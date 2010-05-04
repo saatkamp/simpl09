@@ -3,11 +3,10 @@ package org.eclipse.simpl.rrs.ui.dialogs;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.simpl.rrs.model.rrs.EPR;
-import org.eclipse.simpl.rrs.model.rrs.RRSFactory;
-import org.eclipse.simpl.rrs.model.rrs.ReferenceParameters;
-import org.eclipse.simpl.rrs.model.rrs.ReferenceProperties;
+import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
+import org.eclipse.simpl.rrs.ui.client.RRSClient;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -20,11 +19,17 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import de.uni_stuttgart.simpl.rrs.EPR;
+import de.uni_stuttgart.simpl.rrs.ObjectFactory;
+import de.uni_stuttgart.simpl.rrs.ReferenceParameters;
+import de.uni_stuttgart.simpl.rrs.ReferenceProperties;
+
 public class EditReferenceDialog extends TitleAreaDialog {
 
 	private Text name;
 	private Text address;
-	private Text adapter;
+	private CCombo adapter;
+	private Text dsAddress;
 	private Text statement;
 	private EPR reference;
 
@@ -61,7 +66,7 @@ public class EditReferenceDialog extends TitleAreaDialog {
 		gridData.grabExcessHorizontalSpace = true;
 
 		Label label1 = new Label(parent, SWT.NONE);
-		label1.setText("Name");
+		label1.setText("Name *");
 		name = new Text(parent, SWT.BORDER);
 		if (this.reference.getReferenceParameters() != null
 				&& this.reference.getReferenceParameters().getReferenceName() != null) {
@@ -70,16 +75,16 @@ public class EditReferenceDialog extends TitleAreaDialog {
 		}
 
 		Label label2 = new Label(parent, SWT.NONE);
-		label2.setText("RRS-Address");
+		label2.setText("RRS-Address *");
 		address = new Text(parent, SWT.BORDER);
-		if (this.reference.getAddress() != null
-				&& this.reference.getAddress() != null) {
-			address.setText(this.reference.getAddress());
-		}
+		address.setText(RRSUIPlugIn.getDefault().getPreferenceStore()
+				.getString("RRS_RET_ADDRESS"));
+		address.setEnabled(false);
 
 		Label label3 = new Label(parent, SWT.NONE);
-		label3.setText("Adapter");
-		adapter = new Text(parent, SWT.BORDER);
+		label3.setText("Adapter *");
+		adapter = new CCombo(parent, SWT.BORDER);
+		adapter.setItems(RRSClient.getClient().getAvailableRRSAdapters());
 		if (this.reference.getReferenceProperties() != null
 				&& this.reference.getReferenceProperties() != null
 				&& this.reference.getReferenceProperties().getResolutionSystem() != null) {
@@ -87,7 +92,16 @@ public class EditReferenceDialog extends TitleAreaDialog {
 		}
 		
 		Label label4 = new Label(parent, SWT.NONE);
-		label4.setText("Statement");
+		label4.setText("DS address *");
+		dsAddress = new Text(parent, SWT.BORDER);
+		if (this.reference.getReferenceParameters() != null
+				&& this.reference.getReferenceParameters().getDsAddress() != null){
+			dsAddress.setText(this.reference.getReferenceParameters().getDsAddress());
+		}
+		
+		
+		Label label5 = new Label(parent, SWT.NONE);
+		label5.setText("Statement *");
 		statement = new Text(parent, SWT.BORDER);
 		if (this.reference.getReferenceParameters() != null
 				&& this.reference.getReferenceParameters().getStatement() != null){
@@ -97,6 +111,7 @@ public class EditReferenceDialog extends TitleAreaDialog {
 		name.setLayoutData(gridData);
 		address.setLayoutData(gridData);
 		adapter.setLayoutData(gridData);
+		dsAddress.setLayoutData(gridData);
 		statement.setLayoutData(gridData);
 
 		return parent;
@@ -111,17 +126,23 @@ public class EditReferenceDialog extends TitleAreaDialog {
 		button.setFont(JFaceResources.getDialogFont());
 		button.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				if (name.getText().length() != 0) {
+				if (!name.getText().isEmpty() && !address.getText().isEmpty()
+						&& !adapter.getText().isEmpty()
+						&& !dsAddress.getText().isEmpty()
+						&& !statement.getText().isEmpty()) {
 					/*
 					 * Saving the values in the EPR
 					 */
 					// Create a new EPR
-					RRSFactory factory = RRSFactory.eINSTANCE;
+					ObjectFactory factory = new ObjectFactory();
 					reference = factory.createEPR();
-					ReferenceParameters param1 = factory.createReferenceParameters();
-					ReferenceProperties prop1 = factory.createReferenceProperties();
+					ReferenceParameters param1 = factory
+							.createReferenceParameters();
+					ReferenceProperties prop1 = factory
+							.createReferenceProperties();
 					prop1.setResolutionSystem(adapter.getText());
 					param1.setReferenceName(name.getText());
+					param1.setDsAddress(dsAddress.getText());
 					param1.setStatement(statement.getText());
 					reference.setAddress(address.getText());
 					reference.setReferenceParameters(param1);
@@ -129,7 +150,7 @@ public class EditReferenceDialog extends TitleAreaDialog {
 					close();
 
 				} else {
-					setErrorMessage("Please enter at least the name of the reference");
+					setErrorMessage("Please enter a value for every attribute of the reference");
 				}
 			}
 		});

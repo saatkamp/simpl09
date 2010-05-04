@@ -8,13 +8,14 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.simpl.rrs.model.ModelProvider;
-import org.eclipse.simpl.rrs.model.rrs.EPR;
+import org.eclipse.simpl.rrs.ui.client.ModelProvider;
 import org.eclipse.simpl.rrs.ui.dialogs.EditReferenceDialog;
 import org.eclipse.simpl.rrs.ui.view.ReferenceManagementView;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
+
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class EditEPRHandler extends AbstractHandler implements IHandler {
 
@@ -41,7 +42,7 @@ public class EditEPRHandler extends AbstractHandler implements IHandler {
 
 				references.add(dialog.getReference());
 				
-				ModelProvider.getInstance().saveReference(dialog.getReference());
+				ModelProvider.getInstance().updateReference(dialog.getReference());
 			} 
 			view.getViewer().refresh();
 		
