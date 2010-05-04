@@ -12,6 +12,7 @@ import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -81,18 +82,18 @@ public class MetadataServiceImpl implements MetadataService {
 				ServiceName serviceName = new ServiceName();
 
 				parameters.setReferenceName(rs.getString(1));
-				rsEPR.setRrsAddress(rs.getString(2));
-				properties.setRrsAdapter(rs.getString(3));
+				rsEPR.setAddress(rs.getString(2));
+				properties.setResolutionSystem(rs.getString(3));
 				parameters.setStatement(rs.getString(4));
 				parameters.setDsAddress(rs.getString(5));
-				rsEPR.setPortType(rs.getString(6));
-				serviceName.setServiceName(rs.getString(7));
+				rsEPR.setPortType(QName.valueOf(rs.getString(6)));
+				serviceName.setValue(QName.valueOf(rs.getString(7)));
 				serviceName.setPortName(rs.getString(8));
-				rsEPR.setRrsPolicy(rs.getString(9));
+				rsEPR.setPolicy(rs.getString(9));
 
-				rsEPR.setParameters(parameters);
-				rsEPR.setProperties(properties);
-				rsEPR.setService(serviceName);
+				rsEPR.setReferenceParameters(parameters);
+				rsEPR.setReferenceProperties(properties);
+				rsEPR.setServiceName(serviceName);
 
 				allEPRs.add(rsEPR);
 			}
@@ -109,7 +110,7 @@ public class MetadataServiceImpl implements MetadataService {
 	}
 
 	@Override
-	public Node getEPR(String name) {
+	public EPR getEPR(String name) {
 
 		Connection conn = getConnection();
 		ResultSet rs = null;
@@ -139,18 +140,18 @@ public class MetadataServiceImpl implements MetadataService {
 				ServiceName serviceName = new ServiceName();
 
 				parameters.setReferenceName(rs.getString(1));
-				rsEPR.setRrsAddress(rs.getString(2));
-				properties.setRrsAdapter(rs.getString(3));
+				rsEPR.setAddress(rs.getString(2));
+				properties.setResolutionSystem(rs.getString(3));
 				parameters.setStatement(rs.getString(4));
 				parameters.setDsAddress(rs.getString(5));
-				rsEPR.setPortType(rs.getString(6));
-				serviceName.setServiceName(rs.getString(7));
+				rsEPR.setPortType(QName.valueOf(rs.getString(6)));
+				serviceName.setValue(QName.valueOf(rs.getString(7)));
 				serviceName.setPortName(rs.getString(8));
-				rsEPR.setRrsPolicy(rs.getString(9));
+				rsEPR.setPolicy(rs.getString(9));
 
-				rsEPR.setParameters(parameters);
-				rsEPR.setProperties(properties);
-				rsEPR.setService(serviceName);
+				rsEPR.setReferenceParameters(parameters);
+				rsEPR.setReferenceProperties(properties);
+				rsEPR.setServiceName(serviceName);
 			}
 			
 			rs.close();
@@ -161,38 +162,39 @@ public class MetadataServiceImpl implements MetadataService {
 			e.printStackTrace();
 		}
 
-		if (rsEPR != null) {
+//		TODO: IN ODE DURCHFÜHREN, DA MAN KEINE NODES VERSCHICKEN KANN...
+//		if (rsEPR != null) {
+//
+//			try {
+//				DocumentBuilderFactory factory =
+//				      DocumentBuilderFactory.newInstance();
+//				factory.setNamespaceAware(true);
+//				DocumentBuilder builder = factory.newDocumentBuilder();
+//				
+//				Document doc = builder.newDocument();
+//				
+//				Node eprNode = doc; 
+//				 
+//				// create JAXB context and instantiate marshaller
+//				JAXBContext context = JAXBContext.newInstance(EPR.class);
+//				Marshaller m = context.createMarshaller();
+//				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//				m.marshal(rsEPR, eprNode);
+//				
+//				//Testausgabe
+//				m.marshal(rsEPR, System.out);
+//				
+//				return eprNode;
+//			} catch (JAXBException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (ParserConfigurationException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+//		}
 
-			try {
-				DocumentBuilderFactory factory =
-				      DocumentBuilderFactory.newInstance();
-				factory.setNamespaceAware(true);
-				DocumentBuilder builder = factory.newDocumentBuilder();
-				
-				Document doc = builder.newDocument();
-				
-				Node eprNode = doc; 
-				 
-				// create JAXB context and instantiate marshaller
-				JAXBContext context = JAXBContext.newInstance(EPR.class);
-				Marshaller m = context.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-				m.marshal(rsEPR, eprNode);
-				
-				//Testausgabe
-				m.marshal(rsEPR, System.out);
-				
-				return eprNode;
-			} catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ParserConfigurationException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-
-		return null;
+		return rsEPR;
 	}
 
 }

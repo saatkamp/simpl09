@@ -6,6 +6,7 @@
   </rrs:referenceProperties>
   <rrs:referenceParameters>
     <rrs:referenceName>rrs:referenceName</rrs:referenceName>
+    <rrs:dsAddress>rrs:dsAddress</rrs:dsAddress>
     <rrs:statement>rrs:statement</rrs:statement>
   </rrs:referenceParameters>
   <rrs:portType>QName</rrs:portType>

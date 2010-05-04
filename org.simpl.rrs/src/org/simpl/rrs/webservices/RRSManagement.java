@@ -18,7 +18,7 @@ import org.simpl.rrs.webservices.helper.Parameter;
 
 @WebService(serviceName = "RRSManagementService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public class Management {
+public class RRSManagement {
 	@WebMethod(action = "delete")
 	public boolean delete(
 			@WebParam(name = "epr", targetNamespace = "") EPR epr)

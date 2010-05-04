@@ -45,29 +45,29 @@ public class RetrievalServiceImpl implements RetrievalService {
 		LinkedHashMap<String, String> HM = new LinkedHashMap<String, String>();
 
 		HM.put("referenceName",
-				epr.getParameters().getReferenceName() == null ? "" : epr
-						.getParameters().getReferenceName());
-		HM.put("rrsAddress", epr.getRrsAddress() == null ? "" : epr
-				.getRrsAddress());
-		HM.put("adapterType", epr.getProperties().getRrsAdapter() == null ? ""
-				: epr.getProperties().getRrsAdapter());
-		HM.put("statement", epr.getParameters().getStatement() == null ? ""
-				: epr.getParameters().getStatement());
-		HM.put("dsAddress", epr.getParameters().getDsAddress() == null ? ""
-				: epr.getParameters().getDsAddress());
-		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType());
-		if (epr.getService() != null) {
+				epr.getReferenceParameters().getReferenceName() == null ? "" : epr
+						.getReferenceParameters().getReferenceName());
+		HM.put("address", epr.getAddress() == null ? "" : epr
+				.getAddress());
+		HM.put("adapterType", epr.getReferenceProperties().getResolutionSystem() == null ? ""
+				: epr.getReferenceProperties().getResolutionSystem());
+		HM.put("statement", epr.getReferenceParameters().getStatement() == null ? ""
+				: epr.getReferenceParameters().getStatement());
+		HM.put("dsAddress", epr.getReferenceParameters().getDsAddress() == null ? ""
+				: epr.getReferenceParameters().getDsAddress());
+		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType().toString());
+		if (epr.getServiceName() != null) {
 			HM.put("serviceName",
-					epr.getService().getServiceName() == null ? "" : epr
-							.getService().getServiceName());
-			HM.put("portName", epr.getService().getPortName() == null ? ""
-					: epr.getService().getPortName());
+					epr.getServiceName().getValue() == null ? "" : epr
+							.getServiceName().getValue().toString());
+			HM.put("portName", epr.getServiceName().getPortName() == null ? ""
+					: epr.getServiceName().getPortName());
 		} else {
 			HM.put("serviceName", "");
 			HM.put("portName", "");
 		}
-		HM.put("rrsPolicy", epr.getRrsPolicy() == null ? "" : epr
-				.getRrsPolicy());
+		HM.put("policy", epr.getPolicy() == null ? "" : epr
+				.getPolicy());
 
 		return HM;
 	}

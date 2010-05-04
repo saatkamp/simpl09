@@ -12,9 +12,9 @@ import org.simpl.rrs.webservices.helper.Parameter;
 
 @WebService(serviceName = "RRSRetrievalService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public class Retrieval {
-	@WebMethod(action = "retrieveData")
-	public String retrieveData(
+public class RRSRetrieval {
+	@WebMethod(action = "get")
+	public String get(
 			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
 			throws ConnectionException {
 		Object dataObj = null;
