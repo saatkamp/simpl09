@@ -2,8 +2,9 @@ package org.eclipse.simpl.rrs.ui.view;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.simpl.rrs.model.rrs.EPR;
 import org.eclipse.swt.graphics.Image;
+
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class ReferenceLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
@@ -40,6 +41,8 @@ public class ReferenceLabelProvider extends LabelProvider implements
 		case 2:
 			return reference.getReferenceProperties().getResolutionSystem();
 		case 3:
+			return reference.getReferenceParameters().getDsAddress();
+		case 4:
 			return reference.getReferenceParameters().getStatement();
 		default:
 			throw new RuntimeException("Too much columns");

@@ -3,7 +3,7 @@ package org.eclipse.simpl.rrs.ui.commands;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.simpl.rrs.model.ModelProvider;
+import org.eclipse.simpl.rrs.ui.client.ModelProvider;
 import org.eclipse.simpl.rrs.ui.view.ReferenceManagementView;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;

@@ -2,7 +2,8 @@ package org.eclipse.simpl.rrs.ui.view.sorter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.eclipse.simpl.rrs.model.rrs.EPR;
+
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class TableSorter extends ViewerSorter {
 	private int propertyIndex;
@@ -43,6 +44,9 @@ public class TableSorter extends ViewerSorter {
 			rc = epr1.getReferenceProperties().getResolutionSystem().compareTo(epr2.getReferenceProperties().getResolutionSystem());
 			break;
 		case 3:
+			rc = epr1.getReferenceParameters().getDsAddress().compareTo(epr2.getReferenceParameters().getDsAddress());
+			break;
+		case 4:
 			rc = epr1.getReferenceParameters().getStatement().compareTo(epr2.getReferenceParameters().getStatement());
 			break;
 		default:

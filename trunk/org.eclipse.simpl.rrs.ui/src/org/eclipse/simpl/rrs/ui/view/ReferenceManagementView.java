@@ -2,7 +2,7 @@ package org.eclipse.simpl.rrs.ui.view;
 
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.simpl.rrs.model.ModelProvider;
+import org.eclipse.simpl.rrs.ui.client.ModelProvider;
 import org.eclipse.simpl.rrs.ui.view.filter.ReferenceFilter;
 import org.eclipse.simpl.rrs.ui.view.sorter.TableSorter;
 import org.eclipse.swt.SWT;
@@ -89,8 +89,8 @@ public class ReferenceManagementView extends ViewPart {
 	// This will create the columns for the table
 	private void createColumns(final TableViewer viewer) {
 
-		String[] titles = { "Name", "RRS-Address", "Adapter", "Statement" };
-		int[] bounds = { 150, 200, 100, 300 };
+		String[] titles = { "Name", "RRS-Address", "Adapter", "Data source address", "Statement" };
+		int[] bounds = { 100, 150, 100, 150, 300 };
 
 		for (int i = 0; i < titles.length; i++) {
 			final int index = i;
