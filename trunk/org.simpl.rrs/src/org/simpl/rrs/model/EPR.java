@@ -7,19 +7,19 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "EPR")
-@XmlType(name = "EPR", propOrder = { "rrsAddress", "properties", "parameters", "portType",
-    "service", "rrsPolicy" })
+@XmlType(name = "EPR", propOrder = { "rrsAddress", "referenceProperties", "referenceParameters", "portType",
+    "serviceName", "rrsPolicy" })
 public class EPR {
 
 	private String rrsAddress = null;
 	
-	private ReferenceProperties properties = null;
+	private ReferenceProperties referenceProperties = null;
 	
-	private ReferenceParameters parameters = null;
+	private ReferenceParameters referenceParameters = null;
 	
 	private String portType = null;
 	
-	private ServiceName service = null;
+	private ServiceName serviceName = null;
 	
 	private String rrsPolicy = null;
 
@@ -32,19 +32,19 @@ public class EPR {
 	}
 
 	public ReferenceProperties getProperties() {
-		return properties;
+		return referenceProperties;
 	}
 
 	public void setProperties(ReferenceProperties properties) {
-		this.properties = properties;
+		this.referenceProperties = properties;
 	}
 
 	public ReferenceParameters getParameters() {
-		return parameters;
+		return referenceParameters;
 	}
 
 	public void setParameters(ReferenceParameters parameters) {
-		this.parameters = parameters;
+		this.referenceParameters = parameters;
 	}
 
 	public String getPortType() {
@@ -56,11 +56,11 @@ public class EPR {
 	}
 
 	public ServiceName getService() {
-		return service;
+		return serviceName;
 	}
 
 	public void setService(ServiceName service) {
-		this.service = service;
+		this.serviceName = service;
 	}
 
 	public String getRrsPolicy() {

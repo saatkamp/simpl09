@@ -166,11 +166,13 @@ public class MetadataServiceImpl implements MetadataService {
 			try {
 				DocumentBuilderFactory factory =
 				      DocumentBuilderFactory.newInstance();
-
+				factory.setNamespaceAware(true);
 				DocumentBuilder builder = factory.newDocumentBuilder();
 				
-				Node eprNode = builder.newDocument();
+				Document doc = builder.newDocument();
 				
+				Node eprNode = doc; 
+				 
 				// create JAXB context and instantiate marshaller
 				JAXBContext context = JAXBContext.newInstance(EPR.class);
 				Marshaller m = context.createMarshaller();
