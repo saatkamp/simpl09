@@ -232,37 +232,38 @@ public class ManagementServiceImpl implements ManagementService {
 
 	}
 
-	public File Insert(EPR epr) throws SQLException {
+	public boolean Insert(EPR epr) {
+		boolean success = false;
 
 		Connection conn = getConnection();
 		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
+		try {
+			if (DoesTableExist(conn) == false) {
 
-		if (DoesTableExist(conn) == false) {
-			createTable(conn, Reference_TABLE_NAME, getCreateTableStatement(
-					Reference_TABLE_NAME, EPRHM));
-		}
+				createTable(conn, Reference_TABLE_NAME,
+						getCreateTableStatement(Reference_TABLE_NAME, EPRHM));
 
-		if (EPRAllreadyExists(Reference_TABLE_NAME, EPRHM, conn) == false) {
-			try {
+			}
+
+			if (EPRAllreadyExists(Reference_TABLE_NAME, EPRHM, conn) == false) {
 				Statement statm = conn.createStatement();
 				statm.executeUpdate(getStatement("INSERT",
 						Reference_TABLE_NAME, EPRHM));
 				statm.close();
 				conn.close();
 
-				// TODO: EPR xml Datei erstellen
+				success = true;
 
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		return null;
+		return success;
 	}
 
-	public boolean Update(EPR epr) throws SQLException {
+	public boolean Update(EPR epr){
 		boolean success = false;
 
 		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
@@ -276,7 +277,7 @@ public class ManagementServiceImpl implements ManagementService {
 				statm.close();
 				conn.close();
 
-				// EPR xml Datei erstellen
+				success = true;
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -328,29 +329,30 @@ public class ManagementServiceImpl implements ManagementService {
 		LinkedHashMap<String, String> HM = new LinkedHashMap<String, String>();
 
 		HM.put("referenceName",
-				epr.getReferenceParameters().getReferenceName() == null ? "" : epr
-						.getReferenceParameters().getReferenceName());
-		HM.put("address", epr.getAddress() == null ? "" : epr
-				.getAddress());
-		HM.put("adapterType", epr.getReferenceProperties().getResolutionSystem() == null ? ""
-				: epr.getReferenceProperties().getResolutionSystem());
-		HM.put("statement", epr.getReferenceParameters().getStatement() == null ? ""
-				: epr.getReferenceParameters().getStatement());
-		HM.put("dsAddress", epr.getReferenceParameters().getDsAddress() == null ? ""
-				: epr.getReferenceParameters().getDsAddress());
-		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType().toString());
+				epr.getReferenceParameters().getReferenceName() == null ? ""
+						: epr.getReferenceParameters().getReferenceName());
+		HM.put("address", epr.getAddress() == null ? "" : epr.getAddress());
+		HM.put("adapterType", epr.getReferenceProperties()
+				.getResolutionSystem() == null ? "" : epr
+				.getReferenceProperties().getResolutionSystem());
+		HM.put("statement",
+				epr.getReferenceParameters().getStatement() == null ? "" : epr
+						.getReferenceParameters().getStatement());
+		HM.put("dsAddress",
+				epr.getReferenceParameters().getDsAddress() == null ? "" : epr
+						.getReferenceParameters().getDsAddress());
+		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType()
+				.toString());
 		if (epr.getServiceName() != null) {
-			HM.put("serviceName",
-					epr.getServiceName().getValue() == null ? "" : epr
-							.getServiceName().getValue().toString());
+			HM.put("serviceName", epr.getServiceName().getValue() == null ? ""
+					: epr.getServiceName().getValue().toString());
 			HM.put("portName", epr.getServiceName().getPortName() == null ? ""
 					: epr.getServiceName().getPortName());
 		} else {
 			HM.put("serviceName", "");
 			HM.put("portName", "");
 		}
-		HM.put("policy", epr.getPolicy() == null ? "" : epr
-				.getPolicy());
+		HM.put("policy", epr.getPolicy() == null ? "" : epr.getPolicy());
 
 		return HM;
 	}

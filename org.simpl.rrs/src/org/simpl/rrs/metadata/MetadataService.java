@@ -9,4 +9,5 @@ public interface MetadataService {
 	
 	EPR getEPR(String name);
 	
+	String[] getAvailableAdapters();
 }

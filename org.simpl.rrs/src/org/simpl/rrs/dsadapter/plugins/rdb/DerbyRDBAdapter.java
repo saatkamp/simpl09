@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
 import org.simpl.rrs.dsadapter.plugins.DSAdapterPlugin;
 
 import commonj.sdo.DataObject;
@@ -22,7 +21,7 @@ public class DerbyRDBAdapter extends DSAdapterPlugin {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Connection openConnection(String dsAddress)
-			throws ConnectionException {
+			{
 
 		Connection connect = null;
 
@@ -55,7 +54,7 @@ public class DerbyRDBAdapter extends DSAdapterPlugin {
 	@SuppressWarnings("hiding")
 	@Override
 	public <Connection> boolean closeConnection(Connection connection)
-			throws ConnectionException {
+			{
 		// TODO Auto-generated method stub
 		boolean success = false;
 
@@ -72,7 +71,7 @@ public class DerbyRDBAdapter extends DSAdapterPlugin {
 
 	@Override
 	public Object retrieveData(String dsAddress, String statement)
-			throws ConnectionException {
+			{
 		
 		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
 		Command read = das.createCommand(statement);

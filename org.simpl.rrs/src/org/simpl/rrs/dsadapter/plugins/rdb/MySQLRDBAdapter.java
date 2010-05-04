@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
-import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
 import org.simpl.rrs.dsadapter.plugins.DSAdapterPlugin;
 
 import commonj.sdo.DataObject;
@@ -20,8 +19,7 @@ public class MySQLRDBAdapter extends DSAdapterPlugin {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Connection openConnection(String dsAddress)
-			throws ConnectionException {
+	public Connection openConnection(String dsAddress) {
 
 		Connection connect = null;
 
@@ -62,14 +60,13 @@ public class MySQLRDBAdapter extends DSAdapterPlugin {
 		return success;
 	}
 
-	public Object retrieveData(String dsAddress, String statement)
-			throws ConnectionException {
-		
+	public Object retrieveData(String dsAddress, String statement) {
+
 		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
-	    Command read = das.createCommand(statement);
-	    DataObject root = read.executeQuery();
-	    
-	    return root;
-		
-		}
+		Command read = das.createCommand(statement);
+		DataObject root = read.executeQuery();
+
+		return root;
+
 	}
+}

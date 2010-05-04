@@ -18,6 +18,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.emf.ecore.xmi.impl.SAXXMLHandler;
+import org.simpl.rrs.RRS;
+import org.simpl.rrs.RRSConfig;
 import org.simpl.rrs.model.EPR;
 import org.simpl.rrs.model.ReferenceParameters;
 import org.simpl.rrs.model.ReferenceProperties;
@@ -195,6 +197,16 @@ public class MetadataServiceImpl implements MetadataService {
 //		}
 
 		return rsEPR;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.simpl.rrs.metadata.MetadataService#getAvailableAdapters()
+	 */
+	@Override
+	public String[] getAvailableAdapters() {
+		List<String> adapters = RRS.getInstance().config().getDSAdapterPlugins();
+		
+		return adapters.toArray(new String[0]);
 	}
 
 }

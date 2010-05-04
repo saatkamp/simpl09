@@ -6,17 +6,15 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 import org.simpl.rrs.RRS;
-import org.simpl.rrs.dsadapter.exceptions.ConnectionException;
 import org.simpl.rrs.model.EPR;
 import org.simpl.rrs.webservices.helper.Parameter;
 
-@WebService(serviceName = "RRSRetrievalService", targetNamespace = "")
+@WebService(name = "RRSRetrievalService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class RRSRetrieval {
 	@WebMethod(action = "get")
 	public String get(
-			@WebParam(name = "EPR", targetNamespace = "") EPR epr)
-			throws ConnectionException {
+			@WebParam(name = "EPR", targetNamespace = "") EPR epr){
 		Object dataObj = null;
 		String data = null;
 
@@ -24,22 +22,5 @@ public class RRSRetrieval {
 		data = Parameter.serialize(dataObj);
 
 		return data;
-	}
-
-	@WebMethod(action = "getDSAdapterTypes")
-	public String getDataSourceTypes() {
-		return Parameter.serialize(RRS.getInstance().getDSAdapterType());
-	}
-
-	@WebMethod(action = "getDSAdapterSubtypes")
-	public String getDataSourceSubtypes(String dsType) {
-		return Parameter.serialize(RRS.getInstance().getDSAdapterSubtypes(
-				dsType));
-	}
-
-	@WebMethod(action = "getDSAdapterLanguages")
-	public String getDataSourceLanguages(String dsSubtype) {
-		return Parameter.serialize(RRS.getInstance().getDSAdapterLanguages(
-				dsSubtype));
 	}
 }
