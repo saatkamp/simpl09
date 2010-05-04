@@ -2,7 +2,9 @@ package org.simpl.rrs.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 /**
  * <b>Purpose:</b> <br>
@@ -16,10 +18,12 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ServiceName", propOrder = { "serviceName", "portName"})
+@XmlType(name = "ServiceName")
 public class ServiceName {
-	
+
+	@XmlValue
 	private String serviceName = null;
+	@XmlAttribute
 	private String portName = null;
 	
 	public String getServiceName() {

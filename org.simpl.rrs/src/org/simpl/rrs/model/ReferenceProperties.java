@@ -16,16 +16,16 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReferenceProperties", propOrder = { "rrsAdapter"})
+@XmlType(name = "ReferenceProperties", propOrder = { "resolutionSystem"})
 public class ReferenceProperties {
 
-	private String rrsAdapter = null;
+	private String resolutionSystem = null;
 
 	public String getRrsAdapter() {
-		return rrsAdapter;
+		return resolutionSystem;
 	}
 
 	public void setRrsAdapter(String rrsAdapter) {
-		this.rrsAdapter = rrsAdapter;
+		this.resolutionSystem = rrsAdapter;
 	}
 }
