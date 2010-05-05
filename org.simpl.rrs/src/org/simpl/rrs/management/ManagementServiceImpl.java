@@ -1,6 +1,5 @@
 package org.simpl.rrs.management;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedHashMap;
 
-import org.simpl.rrs.model.EPR;
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class ManagementServiceImpl implements ManagementService {
 	private static final String DATABASE_NAME = "rrsDB";

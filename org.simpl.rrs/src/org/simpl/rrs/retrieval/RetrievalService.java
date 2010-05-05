@@ -1,6 +1,6 @@
 package org.simpl.rrs.retrieval;
 
-import org.simpl.rrs.model.EPR;
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public interface RetrievalService {
 

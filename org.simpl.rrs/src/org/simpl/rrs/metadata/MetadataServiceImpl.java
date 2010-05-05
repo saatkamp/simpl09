@@ -8,25 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXB;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
-import org.eclipse.emf.ecore.xmi.impl.SAXXMLHandler;
 import org.simpl.rrs.RRS;
-import org.simpl.rrs.RRSConfig;
-import org.simpl.rrs.model.EPR;
-import org.simpl.rrs.model.ReferenceParameters;
-import org.simpl.rrs.model.ReferenceProperties;
-import org.simpl.rrs.model.ServiceName;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.bootstrap.DOMImplementationRegistry;
+
+import de.uni_stuttgart.simpl.rrs.EPR;
+import de.uni_stuttgart.simpl.rrs.ReferenceParameters;
+import de.uni_stuttgart.simpl.rrs.ReferenceProperties;
+import de.uni_stuttgart.simpl.rrs.ServiceName;
 
 public class MetadataServiceImpl implements MetadataService {
 
