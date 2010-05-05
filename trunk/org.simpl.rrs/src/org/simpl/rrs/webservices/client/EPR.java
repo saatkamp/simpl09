@@ -4,7 +4,6 @@ package org.simpl.rrs.webservices.client;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
@@ -21,10 +20,10 @@ import javax.xml.namespace.QName;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="address" type="{http://www.w3.org/2001/XMLSchema}anyURI"/>
- *         &lt;element name="referenceProperties" type="{http://uni-stuttgart.de/simpl/rrs}ReferenceProperties"/>
- *         &lt;element name="referenceParameters" type="{http://uni-stuttgart.de/simpl/rrs}ReferenceParameters"/>
+ *         &lt;element name="referenceProperties" type="{http://webservices.rrs.simpl.org/}ReferenceProperties"/>
+ *         &lt;element name="referenceParameters" type="{http://webservices.rrs.simpl.org/}ReferenceParameters"/>
  *         &lt;element name="portType" type="{http://www.w3.org/2001/XMLSchema}QName" minOccurs="0"/>
- *         &lt;element name="serviceName" type="{http://uni-stuttgart.de/simpl/rrs}ServiceName" minOccurs="0"/>
+ *         &lt;element name="serviceName" type="{http://webservices.rrs.simpl.org/}ServiceName" minOccurs="0"/>
  *         &lt;element name="policy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -35,7 +34,6 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement()
 @XmlType(name = "EPR", propOrder = {
     "address",
     "referenceProperties",

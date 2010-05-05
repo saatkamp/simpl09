@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the de.uni_stuttgart.simpl.rrs package. 
+ * generated in the org.simpl.rrs.webservices.client package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,45 +24,13 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Epr_QNAME = new QName("http://uni-stuttgart.de/simpl/rrs", "epr");
+    private final static QName _Epr_QNAME = new QName("http://webservices.rrs.simpl.org/", "epr");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: de.uni_stuttgart.simpl.rrs
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.simpl.rrs.webservices.client
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link ReferenceParameters }
-     * 
-     */
-    public ReferenceParameters createReferenceParameters() {
-        return new ReferenceParameters();
-    }
-
-    /**
-     * Create an instance of {@link EPRArray }
-     * 
-     */
-    public EPRArray createEPRArray() {
-        return new EPRArray();
-    }
-
-    /**
-     * Create an instance of {@link EPR }
-     * 
-     */
-    public EPR createEPR() {
-        return new EPR();
-    }
-
-    /**
-     * Create an instance of {@link ServiceName }
-     * 
-     */
-    public ServiceName createServiceName() {
-        return new ServiceName();
     }
 
     /**
@@ -74,10 +42,34 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link EPR }
+     * 
+     */
+    public EPR createEPR() {
+        return new EPR();
+    }
+
+    /**
+     * Create an instance of {@link ReferenceParameters }
+     * 
+     */
+    public ReferenceParameters createReferenceParameters() {
+        return new ReferenceParameters();
+    }
+
+    /**
+     * Create an instance of {@link ServiceName }
+     * 
+     */
+    public ServiceName createServiceName() {
+        return new ServiceName();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EPR }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://uni-stuttgart.de/simpl/rrs", name = "epr")
+    @XmlElementDecl(namespace = "http://webservices.rrs.simpl.org/", name = "epr")
     public JAXBElement<EPR> createEpr(EPR value) {
         return new JAXBElement<EPR>(_Epr_QNAME, EPR.class, null, value);
     }

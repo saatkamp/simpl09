@@ -1,5 +1,5 @@
 
-package org.simpl.rrs.webservices.client;
+package org.eclipse.simpl.rrs.ui.client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for EPRArray complex type.
+ * <p>Java class for stringArray complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="EPRArray">
+ * &lt;complexType name="stringArray">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="item" type="{http://webservices.rrs.simpl.org/}EPR" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="item" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "EPRArray", propOrder = {
+@XmlType(name = "stringArray", namespace = "http://jaxb.dev.java.net/array", propOrder = {
     "item"
 })
-public class EPRArray {
+public class StringArray {
 
-    @XmlElement(nillable = true)
-    protected List<EPR> item;
+    @XmlElement(namespace = "", nillable = true)
+    protected List<String> item;
 
     /**
      * Gets the value of the item property.
@@ -55,13 +55,13 @@ public class EPRArray {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link EPR }
+     * {@link String }
      * 
      * 
      */
-    public List<EPR> getItem() {
+    public List<String> getItem() {
         if (item == null) {
-            item = new ArrayList<EPR>();
+            item = new ArrayList<String>();
         }
         return this.item;
     }

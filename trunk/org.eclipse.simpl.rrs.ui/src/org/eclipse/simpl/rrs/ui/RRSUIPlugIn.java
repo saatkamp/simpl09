@@ -29,9 +29,9 @@ public class RRSUIPlugIn extends AbstractUIPlugin {
 		plugin = this;
 		
 		//TODO: Noch anpassen.
-		plugin.getPreferenceStore().setDefault("RRS_RET_ADDRESS", "");
-		plugin.getPreferenceStore().setDefault("RRS_MG_ADDRESS", "");
-		plugin.getPreferenceStore().setDefault("RRS_MD_ADDRESS", "");
+		plugin.getPreferenceStore().setDefault("RRS_RET_ADDRESS", "http://localhost:8080/axis2/services/RRSRetrievalService.RRSRetrievalServicePort?wsdl");
+		plugin.getPreferenceStore().setDefault("RRS_MG_ADDRESS", "http://localhost:8080/axis2/services/RRSManagementService.RRSManagementServicePort?wsdl");
+		plugin.getPreferenceStore().setDefault("RRS_MD_ADDRESS", "http://localhost:8080/axis2/services/RRSMetaDataService.RRSMetaDataServicePort?wsdl");
 	}
 
 	/*

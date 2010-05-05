@@ -1,17 +1,14 @@
 
-package org.eclipse.simpl.rrs.ui.client;
+package org.simpl.rrs.webservices.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Logger;
-
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
 import javax.xml.ws.WebServiceFeature;
-
-import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
 
 
 /**
@@ -20,35 +17,33 @@ import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "RRSMetaData", targetNamespace = "http://webservices.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/ode/processes/RRSMetaDataService.RRSMetaDataServicePort?wsdl")
-public class RRSMetaData
+@WebServiceClient(name = "RRSMetaDataService", targetNamespace = "http://webservices.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/axis2/services/RRSMetaDataService.RRSMetaDataServicePort?wsdl")
+public class RRSMetaDataService_Service
     extends Service
 {
-	
-	private final static String RRS_MD_WSDL = RRSUIPlugIn.getDefault().getPreferenceStore().getString("RRS_MD_ADDRESS");
 
-    private final static URL RRSMETADATA_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(org.eclipse.simpl.rrs.ui.client.RRSMetaData.class.getName());
+    private final static URL RRSMETADATASERVICE_WSDL_LOCATION;
+    private final static Logger logger = Logger.getLogger(org.simpl.rrs.webservices.client.RRSMetaDataService_Service.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = RRSMetaData.class.getResource(".");
-            url = new URL(baseUrl, RRS_MD_WSDL);
+            baseUrl = org.simpl.rrs.webservices.client.RRSMetaDataService_Service.class.getResource(".");
+            url = new URL(baseUrl, "http://localhost:8080/axis2/services/RRSMetaDataService.RRSMetaDataServicePort?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: '"+RRS_MD_WSDL+"', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/axis2/services/RRSMetaDataService.RRSMetaDataServicePort?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
-        RRSMETADATA_WSDL_LOCATION = url;
+        RRSMETADATASERVICE_WSDL_LOCATION = url;
     }
 
-    public RRSMetaData(URL wsdlLocation, QName serviceName) {
+    public RRSMetaDataService_Service(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public RRSMetaData() {
-        super(RRSMETADATA_WSDL_LOCATION, new QName("http://webservices.rrs.simpl.org/", "RRSMetaDataService"));
+    public RRSMetaDataService_Service() {
+        super(RRSMETADATASERVICE_WSDL_LOCATION, new QName("http://webservices.rrs.simpl.org/", "RRSMetaDataService"));
     }
 
     /**

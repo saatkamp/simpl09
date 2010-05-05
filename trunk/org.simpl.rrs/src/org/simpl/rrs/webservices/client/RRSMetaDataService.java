@@ -1,5 +1,5 @@
 
-package org.eclipse.simpl.rrs.ui.client;
+package org.simpl.rrs.webservices.client;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
