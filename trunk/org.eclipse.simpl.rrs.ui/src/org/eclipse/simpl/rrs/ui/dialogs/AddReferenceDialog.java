@@ -4,7 +4,11 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
+import org.eclipse.simpl.rrs.ui.client.EPR;
+import org.eclipse.simpl.rrs.ui.client.ObjectFactory;
 import org.eclipse.simpl.rrs.ui.client.RRSClient;
+import org.eclipse.simpl.rrs.ui.client.ReferenceParameters;
+import org.eclipse.simpl.rrs.ui.client.ReferenceProperties;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -18,11 +22,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
-import de.uni_stuttgart.simpl.rrs.ObjectFactory;
-import de.uni_stuttgart.simpl.rrs.ReferenceParameters;
-import de.uni_stuttgart.simpl.rrs.ReferenceProperties;
 
 public class AddReferenceDialog extends TitleAreaDialog {
 

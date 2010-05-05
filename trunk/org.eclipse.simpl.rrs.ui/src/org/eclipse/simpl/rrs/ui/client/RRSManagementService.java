@@ -7,8 +7,6 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import de.uni_stuttgart.simpl.rrs.EPR;
-import de.uni_stuttgart.simpl.rrs.ObjectFactory;
 
 
 /**

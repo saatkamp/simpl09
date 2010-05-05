@@ -3,12 +3,9 @@ package org.eclipse.simpl.rrs.ui.client;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
 
 /**
  * <b>Purpose:</b> <br>

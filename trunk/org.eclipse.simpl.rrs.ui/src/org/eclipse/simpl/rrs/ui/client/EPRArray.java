@@ -1,5 +1,5 @@
 
-package de.uni_stuttgart.simpl.rrs;
+package org.eclipse.simpl.rrs.ui.client;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,14 +6,13 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
+import org.eclipse.simpl.rrs.ui.client.EPR;
 import org.eclipse.simpl.rrs.ui.client.ModelProvider;
 import org.eclipse.simpl.rrs.ui.dialogs.AddReferenceDialog;
 import org.eclipse.simpl.rrs.ui.view.ReferenceManagementView;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class AddEPRHandler extends AbstractHandler implements IHandler {
 
