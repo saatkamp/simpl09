@@ -1,5 +1,5 @@
 
-package de.uni_stuttgart.simpl.rrs;
+package org.simpl.rrs.webservices.client;
 
 import java.util.ArrayList;
 import java.util.List;

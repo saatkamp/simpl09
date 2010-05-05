@@ -6,9 +6,8 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 import org.simpl.rrs.RRS;
+import org.simpl.rrs.webservices.client.EPR;
 import org.simpl.rrs.webservices.helper.Parameter;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
 
 @WebService(name = "RRSRetrievalService", targetNamespace = "")
 @SOAPBinding(style = SOAPBinding.Style.RPC)

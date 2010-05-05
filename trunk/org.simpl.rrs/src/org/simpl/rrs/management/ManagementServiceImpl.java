@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedHashMap;
 
-import de.uni_stuttgart.simpl.rrs.EPR;
+import org.simpl.rrs.webservices.client.EPR;
 
 public class ManagementServiceImpl implements ManagementService {
 	private static final String DATABASE_NAME = "rrsDB";

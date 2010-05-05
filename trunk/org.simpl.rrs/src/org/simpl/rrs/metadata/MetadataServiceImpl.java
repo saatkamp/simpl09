@@ -11,11 +11,10 @@ import java.util.List;
 import javax.xml.namespace.QName;
 
 import org.simpl.rrs.RRS;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
-import de.uni_stuttgart.simpl.rrs.ReferenceParameters;
-import de.uni_stuttgart.simpl.rrs.ReferenceProperties;
-import de.uni_stuttgart.simpl.rrs.ServiceName;
+import org.simpl.rrs.webservices.client.EPR;
+import org.simpl.rrs.webservices.client.ReferenceParameters;
+import org.simpl.rrs.webservices.client.ReferenceProperties;
+import org.simpl.rrs.webservices.client.ServiceName;
 
 public class MetadataServiceImpl implements MetadataService {
 
