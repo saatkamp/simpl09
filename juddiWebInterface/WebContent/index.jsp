@@ -8,24 +8,29 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="org.simpl.uddi.client.UddiDataSourceReader"%>
 
-<head>
-<%@page import="org.simpl.uddi.UddiWebConfig"%><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<%@page import="org.simpl.uddi.client.UddiBusinessReader"%><head>
+<%@page import="org.simpl.uddi.UddiWebConfig"%><meta
+	http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Simpl jUDDI Webinterface</title>
 </head>
 
 <body>
 <%
-UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
-PrintWriter output = response.getWriter();
+	UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
+	PrintWriter output = response.getWriter();
 	UddiDataSourceReader datasourceReader = UddiDataSourceReader
 			.getInstance(uddiWebConfig.getAddress());
-	ArrayList<UddiDataSource> dataSources = datasourceReader.getAllDatasources();
+	ArrayList<UddiDataSource> dataSources = datasourceReader
+			.getAllDatasources();
 	if (request.getParameter("message") != null) {
 		//PrintWriter output = response.getWriter();
 		output.println(request.getParameter("message"));
-		
+
 	}
 	output.println(uddiWebConfig.getUserdir());
+	if (UddiBusinessReader.getInstance(uddiWebConfig.getAddress())
+			.simplBusinessExists()) {
 %>
 <form action="UddiAction" method="post">
 <table border="1">
@@ -49,13 +54,18 @@ PrintWriter output = response.getWriter();
 		}
 	%>
 </table>
-<input type="submit" name="new" value="New" />
-<%
-	if (dataSources.size() > 0) {
-%> <input type="submit" name="edit"
-	value="Edit" /> <input type="submit" name="delete" value="Delete" /></form>
+<input type="submit" name="new" value="New" /> <%
+ 	if (dataSources.size() > 0) {
+ %> <input type="submit" name="edit" value="Edit" /> <input
+	type="submit" name="delete" value="Delete" /></form>
 <%
 	}
 %>
+<%
+	} else {
+		out.println("Sie Benutzten die Datenbank das erste mal");
+	}
+%>
+
 
 </body>

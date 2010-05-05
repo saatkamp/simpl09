@@ -31,6 +31,8 @@
 	String key = "";
 	
 	String password = "";
+	
+	String language = "";
 
 	if (request.getParameter("uddi") != null) {
 		UddiDataSource dataSource = datasourceReader.getByKey(request
@@ -45,6 +47,7 @@
 			policy = dataSource.getAttributeValue("wspolicy");
 			username = dataSource.getAttributeValue("username");
 			password = dataSource.getAttributeValue("password");
+			language = dataSource.getAttributeValue("language");
 		}
 	}
 	
@@ -55,6 +58,16 @@
 		subtype = request.getParameter("subtype");
 		policy = request.getParameter("policy");
 		key = request.getParameter("key");
+		username = request.getParameter("username");
+		password = request.getParameter("password");
+		language = request.getParameter("language");
+		if (username == null || username == "null") {
+			username = "";
+		}
+		
+		if (password == null || password == "null") {
+			password = "";
+		}
 	}
 
 	if (request.getParameter("message") != null && !request.getParameter("message").equals("")) {
@@ -91,6 +104,14 @@
 	</tr>
 	
 	<tr>
+		<td><label>Language</label></td>
+
+		<td><input name="language" type="text" value="<%=language%>"
+			size="100" /></td>
+	</tr>
+	
+	
+	<tr>
 		<td><label>Username</label></td>
 
 		<td><input name="username" type="text" value="<%=username%>"
@@ -100,7 +121,7 @@
 	<tr>
 		<td><label>Password</label></td>
 
-		<td><input name="password" type="password" value="<%=password%>"
+		<td><input name="password" type="text" value="<%=password%>"
 			size="100" /></td>
 	</tr>
 
