@@ -55,7 +55,7 @@ public class UddiDataSource implements IUddiConfig {
 		this.name.setValue(name);
 		this.name.setLang("");		
 		
-		this.serviceKey = KEYPREFIX + "" + name.replaceAll(" ", "");
+		this.serviceKey = KEYPREFIX + "" + (name.replaceAll(" ", "")).toLowerCase();
 	}
 
 	public String getBusinessKey() {
@@ -179,5 +179,17 @@ public class UddiDataSource implements IUddiConfig {
 	
 	public String getSubtype() {
 		return getAttributeValue("subtype");
+	}
+	
+	public String getUsername() {
+		return getAttributeValue("username");
+	}
+	
+	public String getPassword() {
+		return getAttributeValue("password");
+	}
+	
+	public String getLanguage() {
+		return getAttributeValue("language");
 	}
 }

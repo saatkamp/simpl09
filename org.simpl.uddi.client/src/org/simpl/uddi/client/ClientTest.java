@@ -13,11 +13,11 @@ public class ClientTest implements IUddiConfig {
 		
 		dataWriter.writeBusiness(business);
 
-		for (int i = 0; i < 1000; i++) {
+		
 
 			UddiDataSource dataSource = new UddiDataSource(business.getKey());
 			dataSource.setAddress("http://source1.datasources.org");
-			dataSource.setName("Mysql Datenbank"+i);
+			dataSource.setName("Mysql Datenbank");
 			dataSource.addDescription("Mysql Datenbank", "ger");
 			dataSource.addAttribute("type", "database", KEYPREFIX + "type");
 			dataSource.addAttribute("subtype", "rdb", KEYPREFIX + "subtype");
@@ -26,7 +26,7 @@ public class ClientTest implements IUddiConfig {
 							+ "wspolicy");
 			dataWriter.writeDatasource(dataSource);
 			System.out.println(dataSource.getKey());
-		}
+		
 
 		UddiDataSource dataSource2 = new UddiDataSource(business.getKey());
 		dataSource2.setAddress("http://source2.datasources.org");

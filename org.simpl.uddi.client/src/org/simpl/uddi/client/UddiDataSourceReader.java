@@ -151,7 +151,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 
 		ServiceDetail serviceDetail = new ServiceDetail();
 
-		getServiceDetail.getServiceKey().add(KEYPREFIX + "" +key);
+		getServiceDetail.getServiceKey().add(key.toLowerCase());
 
 		try {
 			serviceDetail = inquiry.getServiceDetail(getServiceDetail);
