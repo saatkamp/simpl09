@@ -15,9 +15,9 @@ public class RRSConfig {
 
 	private static final String CONFIG_FILE_NAME = "rrs-config.xml";
 	private static final String CONFIG_FILE_1 = System.getProperty("user.dir")
-			+ "\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
+			+ "\\webapps\\axis2\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
 	private static final String CONFIG_FILE_2 = System.getProperty("user.dir")
-			+ "\\..\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
+			+ "\\..\\webapps\\axis2\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
 	List<String> DSAdapterPlugins = new ArrayList<String>();
 
 	public RRSConfig() {
