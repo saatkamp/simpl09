@@ -5,7 +5,8 @@ import java.util.StringTokenizer;
 
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.DSAdapter;
-import org.simpl.rrs.model.EPR;
+
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class RetrievalServiceImpl implements RetrievalService {
 

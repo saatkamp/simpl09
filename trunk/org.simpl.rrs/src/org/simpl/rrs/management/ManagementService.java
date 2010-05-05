@@ -1,6 +1,7 @@
 package org.simpl.rrs.management;
 
-import org.simpl.rrs.model.EPR;
+import de.uni_stuttgart.simpl.rrs.EPR;
+
 
 public interface ManagementService {
 

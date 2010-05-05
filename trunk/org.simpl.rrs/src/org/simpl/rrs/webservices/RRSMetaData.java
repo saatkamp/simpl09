@@ -6,7 +6,8 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 import org.simpl.rrs.RRS;
-import org.simpl.rrs.model.EPR;
+
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 /**
  * <b>Purpose:</b> <br>

@@ -2,9 +2,9 @@ package org.simpl.rrs;
 
 import java.sql.SQLException;
 
-import org.simpl.rrs.model.EPR;
-import org.simpl.rrs.model.ReferenceParameters;
-import org.simpl.rrs.model.ReferenceProperties;
+import de.uni_stuttgart.simpl.rrs.EPR;
+import de.uni_stuttgart.simpl.rrs.ReferenceParameters;
+import de.uni_stuttgart.simpl.rrs.ReferenceProperties;
 
 public class Test {
 	

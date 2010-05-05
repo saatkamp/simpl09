@@ -1,7 +1,6 @@
 package org.simpl.rrs.metadata;
 
-import org.simpl.rrs.model.EPR;
-import org.w3c.dom.Node;
+import de.uni_stuttgart.simpl.rrs.EPR;
 
 public interface MetadataService {
 	
