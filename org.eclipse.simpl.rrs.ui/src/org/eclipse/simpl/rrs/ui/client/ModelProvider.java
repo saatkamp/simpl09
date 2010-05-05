@@ -3,8 +3,6 @@ package org.eclipse.simpl.rrs.ui.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.uni_stuttgart.simpl.rrs.EPR;
-
 /**
  * <b>Purpose:</b> <br>
  * <b>Description:</b> <br>
@@ -24,7 +22,10 @@ public class ModelProvider {
 
 	private ModelProvider() {
 		references = new ArrayList<EPR>();
-		references = loadAllReferences();
+		
+		if (loadAllReferences() != null){
+			references = loadAllReferences();
+		}
 	}
 
 	public static synchronized ModelProvider getInstance() {

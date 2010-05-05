@@ -4,6 +4,7 @@ package org.eclipse.simpl.rrs.ui.client;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Logger;
+
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;

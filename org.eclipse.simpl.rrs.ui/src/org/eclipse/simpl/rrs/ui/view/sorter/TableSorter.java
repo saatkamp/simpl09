@@ -2,8 +2,7 @@ package org.eclipse.simpl.rrs.ui.view.sorter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
+import org.eclipse.simpl.rrs.ui.client.EPR;
 
 public class TableSorter extends ViewerSorter {
 	private int propertyIndex;

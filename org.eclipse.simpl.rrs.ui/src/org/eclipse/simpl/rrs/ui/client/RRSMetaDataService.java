@@ -9,9 +9,6 @@ import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import net.java.dev.jaxb.array.StringArray;
-import de.uni_stuttgart.simpl.rrs.EPR;
-import de.uni_stuttgart.simpl.rrs.EPRArray;
-import de.uni_stuttgart.simpl.rrs.ObjectFactory;
 
 
 /**

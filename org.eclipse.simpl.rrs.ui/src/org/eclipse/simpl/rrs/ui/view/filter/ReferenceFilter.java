@@ -4,8 +4,7 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
+import org.eclipse.simpl.rrs.ui.client.EPR;
 
 public class ReferenceFilter extends ViewerFilter {
 

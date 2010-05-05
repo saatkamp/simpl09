@@ -1,5 +1,5 @@
 
-package de.uni_stuttgart.simpl.rrs;
+package org.eclipse.simpl.rrs.ui.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

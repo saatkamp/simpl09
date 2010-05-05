@@ -2,9 +2,8 @@ package org.eclipse.simpl.rrs.ui.view;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.simpl.rrs.ui.client.EPR;
 import org.eclipse.swt.graphics.Image;
-
-import de.uni_stuttgart.simpl.rrs.EPR;
 
 public class ReferenceLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
