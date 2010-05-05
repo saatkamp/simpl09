@@ -34,25 +34,25 @@ public class RRSClient {
 		if (client == null) {
 			client = new RRSClient();
 			if (client.isRRSAvailable()) {
-				client.metaService = new RRSMetaData()
+				client.metaService = new RRSMetaDataService_Service()
 						.getRRSMetaDataServicePort();
-				client.retrievalService = new RRSRetrieval()
+				client.retrievalService = new RRSRetrievalService_Service()
 						.getRRSRetrievalServicePort();
-				client.managementService = new RRSManagement()
+				client.managementService = new RRSManagementService_Service()
 						.getRRSManagementServicePort();
 			}
 		}
 		if (client.isRRSAvailable()) {
 			if (client.metaService == null) {
-				client.metaService = new RRSMetaData()
+				client.metaService = new RRSMetaDataService_Service()
 						.getRRSMetaDataServicePort();
 			}
 			if (client.retrievalService == null) {
-				client.retrievalService = new RRSRetrieval()
+				client.retrievalService = new RRSRetrievalService_Service()
 						.getRRSRetrievalServicePort();
 			}
 			if (client.managementService == null) {
-				client.managementService = new RRSManagement()
+				client.managementService = new RRSManagementService_Service()
 						.getRRSManagementServicePort();
 			}
 		}

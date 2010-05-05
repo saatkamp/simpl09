@@ -4,7 +4,6 @@ package org.eclipse.simpl.rrs.ui.client;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Logger;
-
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
@@ -20,35 +19,36 @@ import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "RRSRetrieval", targetNamespace = "http://localhost:8080", wsdlLocation = "http://localhost:8080/ode/processes/RRSRetrievalService.RRSRetrievalServicePort?wsdl")
-public class RRSRetrieval
+@WebServiceClient(name = "RRSRetrievalService", targetNamespace = "http://webservices.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/axis2/services/RRSRetrievalService.RRSRetrievalServicePort?wsdl")
+public class RRSRetrievalService_Service
     extends Service
 {
-
-	private final static String RRS_RET_WSDL = RRSUIPlugIn.getDefault().getPreferenceStore().getString("RRS_RET_ADDRESS");
 	
-    private final static URL RRSRETRIEVAL_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(org.eclipse.simpl.rrs.ui.client.RRSRetrieval.class.getName());
+	private final static String RRS_RET_WSDL = RRSUIPlugIn.getDefault()
+	.getPreferenceStore().getString("RRS_RET_ADDRESS");
+
+    private final static URL RRSRETRIEVALSERVICE_WSDL_LOCATION;
+    private final static Logger logger = Logger.getLogger(org.eclipse.simpl.rrs.ui.client.RRSRetrievalService_Service.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = RRSRetrieval.class.getResource(".");
+            baseUrl = RRSRetrievalService_Service.class.getResource(".");
             url = new URL(baseUrl, RRS_RET_WSDL);
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: '"+ RRS_RET_WSDL + "', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: '"+ RRS_RET_WSDL+ "', retrying as a local file");
             logger.warning(e.getMessage());
         }
-        RRSRETRIEVAL_WSDL_LOCATION = url;
+        RRSRETRIEVALSERVICE_WSDL_LOCATION = url;
     }
 
-    public RRSRetrieval(URL wsdlLocation, QName serviceName) {
+    public RRSRetrievalService_Service(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public RRSRetrieval() {
-        super(RRSRETRIEVAL_WSDL_LOCATION, new QName("http://webservices.rrs.simpl.org/", "RRSRetrievalService"));
+    public RRSRetrievalService_Service() {
+        super(RRSRETRIEVALSERVICE_WSDL_LOCATION, new QName("http://webservices.rrs.simpl.org/", "RRSRetrievalService"));
     }
 
     /**
