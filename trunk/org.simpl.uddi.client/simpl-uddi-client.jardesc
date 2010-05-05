@@ -11,7 +11,6 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <file path="/org.simpl.uddi.client/simpl-uddi-client.jardesc"/>
         <folder path="/org.simpl.uddi.client/META-INF"/>
         <folder path="/org.simpl.uddi.client/lib"/>
         <file path="/org.simpl.uddi.client/.project"/>
