@@ -10,9 +10,10 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import org.jdom.output.SAXOutputter;
 
 public class UddiWebConfig {
-
+	
 	private static UddiWebConfig config = null;
 
 	private String address = "";
@@ -21,7 +22,7 @@ public class UddiWebConfig {
 
 	private String username = "";
 
-	private UddiWebConfig() {
+	private UddiWebConfig() throws FileNotFoundException{
 
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = null;
@@ -47,9 +48,6 @@ public class UddiWebConfig {
 				this.password = password.getText();
 				
 
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (JDOMException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -87,11 +85,33 @@ public class UddiWebConfig {
 		return System.getProperty("user.dir");
 	}
 
-	public static UddiWebConfig getInstance() {
+	public static UddiWebConfig getInstance() throws FileNotFoundException{
 		if (config == null) {
 			config = new UddiWebConfig();
 		}
 
 		return config;
+	}
+	
+	public void writeConfig () {
+		File file = new File(System.getProperty("user.dir") + "\\webapps\\juddiweb\\WEB-INF\\config.xml");
+		
+		Document doc = null;
+		
+		Element rootElement = new Element("juddi-properties");
+		
+		Element address = new Element("address");
+		
+		address.setText(this.address);
+		
+		Element username = new Element("username");
+		
+		username.setText(this.username);
+		
+		Element password = new Element("password");
+		
+		password.setText(this.password);
+		
+		
 	}
 }
