@@ -48,70 +48,6 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  private Connection openConnection(String dsAddress) throws ConnectionException {
-    // TODO Umändern in DataSource Connection
-    if (logger.isDebugEnabled()) {
-      logger.debug("Connection openConnection(" + dsAddress + ") executed.");
-    }
-
-    Connection connect = null;
-
-    try {
-      StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:derby:");
-      uri.append(dsAddress);
-      uri.append(";create=true");
-
-      try {
-        new JDCConnectionDriver("org.apache.derby.jdbc.EmbeddedDriver", uri.toString(),
-            "none", "none").connect(uri.toString(), null);
-
-        connect = DriverManager.getConnection("jdbc:jdc:jdcpool");
-        connect.setAutoCommit(false);
-      } catch (SQLException e) {
-        // TODO Auto-generated catch block
-        logger.fatal("exception during establishing connection to: " + uri.toString(), e);
-      } catch (InstantiationException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (IllegalAccessException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-
-      logger.info("Connection opened on " + dsAddress + ".");
-
-      return connect;
-    } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
-      logger.fatal("exception during loading the JDBC driver", e);
-    }
-    return connect;
-  }
-
-  private boolean closeConnection(Connection connection) {
-    // TODO Auto-generated method stub
-    boolean success = false;
-
-    try {
-      ((java.sql.Connection) connection).close();
-      success = true;
-
-      if (logger.isDebugEnabled()) {
-        logger.debug("boolean closeConnection() executed successfully.");
-      }
-
-      logger.info("Connection closed.");
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      if (logger.isDebugEnabled()) {
-        logger.error("boolean closeConnection() executed with failures.", e);
-      }
-    }
-
-    return success;
-  }
-
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
@@ -226,7 +162,7 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
    */
   @SuppressWarnings("unchecked")
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data)
+  public boolean writeData(DataSource dataSource, DataObject data, String target)
       throws ConnectionException {
     boolean success = true;
     List<String> statements = null;
@@ -237,32 +173,44 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     statements = (List<String>) this.getDataFormat().fromSDO(data);
 
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeBack(" + dataSource.getAddress()
+      logger.debug("boolean writeData(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
 
     statements = (List<String>) this.getDataFormat().fromSDO(data);
 
-    try {
-      connStatement = connection.createStatement();
-
-      for (String statement : statements) {
-        if (statement.startsWith("INSERT")) {
-          if (connStatement.executeUpdate(statement) != 1) {
-            success = success && false;
-          }
-          
-          logger.info("Statement '" + statement + "' " + "executed on "
-              + dataSource.getAddress() + (success ? " was successful" : " failed"));
-        }
+    if (statements != null && !statements.isEmpty()) {
+      if (target != null) {
+        // create target
+        this.createTarget(connection, target, data);
       }
 
-      connStatement.close();
-      connection.commit();
-      closeConnection(connection);
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      try {
+        connStatement = connection.createStatement();
+
+        for (String statement : statements) {
+          if (statement.startsWith("INSERT")) {
+            // replace dataObject's implizit schema.table name with target
+            if (target != null) {
+              statement = statement.replaceAll("INSERT INTO .*?\\(", "INSERT INTO "
+                  + target + " (");
+            }
+
+            if (connStatement.executeUpdate(statement) != 1) {
+              success = success && false;
+            }
+
+            logger.info("Statement '" + statement + "' " + "executed on "
+                + dataSource.getAddress() + (success ? " was successful" : " failed"));
+          }
+        }
+
+        connStatement.close();
+        connection.commit();
+      } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
     }
 
     closeConnection(connection);
@@ -371,5 +319,131 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     }
 
     return metaDataObject;
+  }
+
+  private Connection openConnection(String dsAddress) throws ConnectionException {
+    // TODO Umändern in DataSource Connection
+    if (logger.isDebugEnabled()) {
+      logger.debug("Connection openConnection(" + dsAddress + ") executed.");
+    }
+
+    Connection connect = null;
+
+    try {
+      StringBuilder uri = new StringBuilder();
+      uri.append("jdbc:derby:");
+      uri.append(dsAddress);
+      uri.append(";create=true");
+
+      try {
+        new JDCConnectionDriver("org.apache.derby.jdbc.EmbeddedDriver", uri.toString(),
+            "none", "none").connect(uri.toString(), null);
+
+        connect = DriverManager.getConnection("jdbc:jdc:jdcpool");
+        connect.setAutoCommit(false);
+      } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        logger.fatal("exception during establishing connection to: " + uri.toString(), e);
+      } catch (InstantiationException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+
+      logger.info("Connection opened on " + dsAddress + ".");
+
+      return connect;
+    } catch (ClassNotFoundException e) {
+      // TODO Auto-generated catch block
+      logger.fatal("exception during loading the JDBC driver", e);
+    }
+    return connect;
+  }
+
+  private boolean closeConnection(Connection connection) {
+    // TODO Auto-generated method stub
+    boolean success = false;
+
+    try {
+      ((java.sql.Connection) connection).close();
+      success = true;
+
+      if (logger.isDebugEnabled()) {
+        logger.debug("boolean closeConnection() executed successfully.");
+      }
+
+      logger.info("Connection closed.");
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      if (logger.isDebugEnabled()) {
+        logger.error("boolean closeConnection() executed with failures.", e);
+      }
+    }
+
+    return success;
+  }
+
+  /**
+   * Creates a target table for data to write.
+   * 
+   * @param connection
+   * @param target
+   * @param data
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  private boolean createTarget(Connection connection, String target, DataObject data) {
+    boolean created = false;
+
+    List<DataObject> tables = data.getList("table");
+    List<DataObject> columns = null;
+    List<String> primaryKeys = null;
+    String createStatement = "";
+
+    // build a create statement
+    for (DataObject table : tables) {
+      columns = (List<DataObject>) table.getList("column");
+      primaryKeys = (List<String>) table.getList("primaryKey");
+
+      createStatement = "CREATE TABLE " + target + " (";
+
+      // create table with columns
+      for (DataObject column : columns) {
+        createStatement += column.getString("name") + " " + column.getString("type")
+            + ",";
+      }
+
+      // add primary keys
+      createStatement += " PRIMARY KEY (";
+
+      for (int i = 0; i < primaryKeys.size(); i++) {
+        createStatement += primaryKeys.get(i);
+
+        if (i < primaryKeys.size() - 1) {
+          createStatement += ",";
+        }
+      }
+
+      createStatement += "))";
+    }
+
+    // execute the create statement
+    try {
+      Statement statement = connection.createStatement();
+      created = statement.execute(createStatement);
+      statement.close();
+      connection.commit();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    if (logger.isDebugEnabled()) {
+      logger.debug("createTarget executed: " + createStatement);
+    }
+
+    return created;
   }
 }

@@ -59,7 +59,7 @@ public interface DataSourceService {
    * @param target
    * @return <i>true</i> if the data was successfully written, <i>false</i> otherwise
    */
-  public boolean writeData(DataSource dataSource, DataObject data)
+  public boolean writeData(DataSource dataSource, DataObject data, String target)
       throws ConnectionException;
 
   /**

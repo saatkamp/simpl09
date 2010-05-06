@@ -13,11 +13,14 @@
 
 
 		<xsd:sequence>
-			<xsd:element name="table" type="table" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+			<xsd:element name="table" type="table" maxOccurs="unbounded"
+				minOccurs="0">
+			</xsd:element>
 		</xsd:sequence>
+		<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
 	</xsd:complexType>
 
-	
+
 
 
 	<xsd:complexType name="dataset">

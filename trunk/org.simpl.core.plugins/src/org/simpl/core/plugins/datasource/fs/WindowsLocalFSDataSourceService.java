@@ -121,12 +121,20 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
    * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data)
+  public boolean writeData(DataSource dataSource, DataObject data, String target)
       throws ConnectionException {
-    // convert file back from the csv data format
-    data = (DataObject) this.getDataFormat().fromSDO(data);
+    File tempFile = (File) this.getDataFormat().fromSDO(data);
+    File targetFile = null;
+    String dir = "";
 
-    return false;
+    if (!dataSource.getAddress().equals("")) {
+      dir = dataSource.getAddress() + File.separator;
+    }
+    
+    targetFile = new File(dir + target);
+    tempFile.renameTo(targetFile);
+
+    return targetFile.exists();
   }
 
   /*
