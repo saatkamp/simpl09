@@ -4,9 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -50,12 +48,12 @@ public class Transformer {
 	private Namespace RRS_RETRIEVAL_NAMESPACE;
 
 	private final String RRS_RETRIEVAL_PL = "RRS_Retrieval";
-	private final String RRS_RETRIEVAL_PL_TYPE = "tns:RRSGetType";
+	private final String RRS_RETRIEVAL_PL_TYPE = "tns:RRSRetrievalType";
 	private final String RRS_RETRIEVAL_PL_ROLE = "get";
 	private final String RRS_RETRIEVAL_PL_PORT = "RRSRetrievalService";
 
 	private final String RRS_META_DATA_PL = "RRS_MetaData";
-	private final String RRS_META_DATA_PL_TYPE = "tns:RRSMetaType";
+	private final String RRS_META_DATA_PL_TYPE = "tns:RRSMetaDataType";
 	private final String RRS_META_DATA_PL_ROLE = "getEPR";
 	private final String RRS_META_DATA_PL_PORT = "RRSMetaDataService";
 
@@ -72,7 +70,7 @@ public class Transformer {
 	private final String AT_IMPORT_ITYPE = "importType";
 
 	private final String AT_PL_TYPE = "partnerLinkType";
-	private final String AT_PL_ROLE = "myRole";
+	private final String AT_PL_ROLE = "partnerRole";
 
 	private final String AT_OPERATION = "operation";
 	private final String AT_INPUT_VARIABLE = "inputVariable";
