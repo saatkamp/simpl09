@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataformat/DataFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/plugins/dataformat/DataFormat" xmlns:Q1="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData">
+<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataformat/CSVDataFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/plugins/dataformat/CSVDataFormat" xmlns:Q1="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData">
     <xsd:annotation>
     	<xsd:documentation>Defines the SDO structure of a CSV file that most commonly represents a table in a database, that includes rows, columns and a header that defines the colum names.</xsd:documentation></xsd:annotation>
     <xsd:complexType name="tColumn">
