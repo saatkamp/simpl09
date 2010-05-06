@@ -88,7 +88,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
 
     return dataObject;
   }
-
+  
   /**
    * Sets the supported data format type.
    * 

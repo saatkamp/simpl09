@@ -147,7 +147,7 @@ public class DataSourceServiceImpl implements DataSourceService {
    * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data)
+  public boolean writeData(DataSource dataSource, DataObject data, String target)
       throws ConnectionException {
     boolean success = false;
   
@@ -161,7 +161,7 @@ public class DataSourceServiceImpl implements DataSourceService {
       this.dataSourceService = DataSourceServiceProvider.getInstance(
           dataSource.getType(), dataSource.getSubType());
 
-      success = this.dataSourceService.writeData(dataSource, data);
+      success = this.dataSourceService.writeData(dataSource, data, target);
       
       // compare this data source data format with the given data data format
 //      if (isSupported(data)) {

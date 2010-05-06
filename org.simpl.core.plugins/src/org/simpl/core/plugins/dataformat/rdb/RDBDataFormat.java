@@ -19,6 +19,8 @@ import commonj.sdo.DataObject;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
+ * TODO: create list of quoted column types, currently only VARCHAR is supported
+ * 
  * @author schneimi<br>
  * @version $Id: TuscanyDataFormat.java 1224 2010-04-28 14:17:34Z
  *          michael.schneidt@arcor.de $<br>
@@ -75,7 +77,11 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
           // add columns
           columnObject = tableObject.createDataObject("column");
           columnObject.set("name", resultSetMetaData.getColumnName(i));
-          columnObject.set("type", resultSetMetaData.getColumnTypeName(i));
+
+          columnObject.set("type", resultSetMetaData.getColumnTypeName(i)
+              + "("
+              + this.getColumnSize(dbMetaData, resultSetMetaData.getTableName(i),
+                  resultSetMetaData.getColumnName(i)) + ")");
           columnObject.set("value", resultSet.getObject(resultSetMetaData
               .getColumnName(i)));
         }
@@ -110,7 +116,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
       primaryKeys = table.getList("primaryKey");
 
       for (DataObject column : columns) {
-        if (column.getString("type").equals("VARCHAR")) {
+        if (column.getString("type").startsWith("VARCHAR")) {
           quote = "'";
         } else {
           quote = "";
@@ -128,10 +134,10 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
         statements.add(statement);
       }
-      
+
       // create insert statement
       statement = "INSERT INTO " + table.getString("schema") + "."
-          + table.getString("name") + "_1 " + createInsertColumnValues(columns);
+          + table.getString("name") + " " + createInsertColumnValues(columns);
       statements.add(statement);
     }
 
@@ -150,7 +156,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     String quote = "";
 
     for (DataObject column : columns) {
-      if (column.getString("type").equals("VARCHAR")) {
+      if (column.getString("type").startsWith("VARCHAR")) {
         quote = "'";
       } else {
         quote = "";
@@ -188,7 +194,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     insertColumns += " VALUES (";
 
     for (int i = 0; i < columns.size(); i++) {
-      if (columns.get(i).getString("type").equals("VARCHAR")) {
+      if (columns.get(i).getString("type").startsWith("VARCHAR")) {
         quote = "'";
       } else {
         quote = "";
@@ -204,5 +210,35 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     }
 
     return insertColumns;
+  }
+
+  /**
+   * Retrieves the size of a table's column.
+   * 
+   * @param dbMetaData
+   * @param tableName
+   * @param columnName
+   * @return
+   */
+  private int getColumnSize(DatabaseMetaData dbMetaData, String tableName,
+      String columnName) {
+    int size = 0;
+
+    ResultSet columns = null;
+
+    try {
+      columns = dbMetaData.getColumns(null, null, tableName, null);
+      
+      while (columns.next()) {
+        if (columns.getString("COLUMN_NAME").equals(columnName)) {
+          size = columns.getInt("COLUMN_SIZE");
+        }
+      }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return size;
   }
 }

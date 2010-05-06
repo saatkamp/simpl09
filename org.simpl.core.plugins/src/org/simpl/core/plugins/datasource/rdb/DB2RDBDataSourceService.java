@@ -150,7 +150,7 @@ public class DB2RDBDataSourceService extends DataSourceServicePlugin {
    */
   @SuppressWarnings("unchecked")
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data)
+  public boolean writeData(DataSource dataSource, DataObject data, String target)
       throws ConnectionException {
     boolean success = true;
     List<String> statements = null;
@@ -162,32 +162,37 @@ public class DB2RDBDataSourceService extends DataSourceServicePlugin {
     statements = (List<String>) this.getDataFormat().fromSDO(data);
 
     if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeBack(" + dataSource.getAddress()
+      logger.debug("boolean writeData(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
 
     statements = (List<String>) this.getDataFormat().fromSDO(data);
-
-    try {
-      connStatement = connection.createStatement();
-
-      for (String statement : statements) {
-        if (statement.startsWith("INSERT")) {
-          if (connStatement.executeUpdate(statement) != 1) {
-            success = success && false;
-          }
-
-          logger.info("Statement '" + statement + "' " + "executed on "
-              + dataSource.getAddress() + (success ? " was successful" : " failed"));
-        }
+    if (statements != null && !statements.isEmpty()) {
+      if (target != null) {
+        // create target        
+        this.createTarget(connection, target, data);
       }
 
-      connStatement.close();
-      connection.commit();
-      closeConnection(connection);
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      try {
+        connStatement = connection.createStatement();
+
+        for (String statement : statements) {
+          if (statement.startsWith("INSERT")) {
+            if (connStatement.executeUpdate(statement) != 1) {
+              success = success && false;
+            }
+
+            logger.info("Statement '" + statement + "' " + "executed on "
+                + dataSource.getAddress() + (success ? " was successful" : " failed"));
+          }
+        }
+
+        connStatement.close();
+        connection.commit();
+      } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
     }
 
     closeConnection(connection);
@@ -353,5 +358,67 @@ public class DB2RDBDataSourceService extends DataSourceServicePlugin {
       }
     }
     return success;
+  }
+  
+  /**
+   * Creates a target table for data to write.
+   * 
+   * @param connection
+   * @param target
+   * @param data
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  private boolean createTarget(Connection connection, String target, DataObject data) {
+    boolean created = false;
+
+    List<DataObject> tables = data.getList("table");
+    List<DataObject> columns = null;
+    List<String> primaryKeys = null;
+    String createStatement = "";
+
+    // build a create statement
+    for (DataObject table : tables) {
+      columns = (List<DataObject>) table.getList("column");
+      primaryKeys = (List<String>) table.getList("primaryKey");
+
+      createStatement = "CREATE TABLE " + target + " (";
+
+      // create table with columns
+      for (DataObject column : columns) {
+        createStatement += column.getString("name") + " " + column.getString("type")
+            + ",";
+      }
+
+      // add primary keys
+      createStatement += " PRIMARY KEY (";
+
+      for (int i = 0; i < primaryKeys.size(); i++) {
+        createStatement += primaryKeys.get(i);
+
+        if (i < primaryKeys.size() - 1) {
+          createStatement += ",";
+        }
+      }
+
+      createStatement += "))";
+    }
+
+    // execute the create statement
+    try {
+      Statement statement = connection.createStatement();
+      created = statement.execute(createStatement);
+      statement.close();
+      connection.commit();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    if (logger.isDebugEnabled()) {
+      logger.debug("createTarget executed: " + createStatement);
+    }
+
+    return created;
   }
 }

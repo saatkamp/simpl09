@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 public class RDBResult {
   private ResultSet resultSet = null;
   private DatabaseMetaData dbMetaData = null;
+  private String target = null;
 
   /**
    * @return the resultSet
@@ -47,5 +48,19 @@ public class RDBResult {
    */
   public void setDbMetaData(DatabaseMetaData dbMetaData) {
     this.dbMetaData = dbMetaData;
+  }
+
+  /**
+   * @return the target
+   */
+  public String getTarget() {
+    return target;
+  }
+
+  /**
+   * @param target the target to set
+   */
+  public void setTarget(String target) {
+    this.target = target;
   }
 }
