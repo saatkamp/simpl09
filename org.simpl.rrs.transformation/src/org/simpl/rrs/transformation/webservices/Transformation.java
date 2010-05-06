@@ -1,34 +1,53 @@
-package org.simpl.rrs.transformation.webservices;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-
-import org.simpl.rrs.transformation.Transformer;
 
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
- * <b>Copyright:</b> Licensed under the Apache License, Version 2.0.
- * http://www.apache.org/licenses/LICENSE-2.0<br>
- * <b>Company:</b> SIMPL<br>
- * 
- * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
- * @link http://code.google.com/p/simpl09/
- * 
+ * Transformation.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT)
  */
-@WebService(name = "TransformationService", targetNamespace = "")
-@SOAPBinding(style = SOAPBinding.Style.RPC)
-public class Transformation {
-	@WebMethod(action = "transform")
-	public String transform(
-			@WebParam(name = "bpelFileContent", targetNamespace = "") String bpelFileContent, 
-			@WebParam(name = "rrsRetrievalNamespaceURI", targetNamespace = "") String rrsRetNamespaceURI,
-			@WebParam(name = "rrsMetaDataNamespaceURI", targetNamespace = "") String rrsMetaNamespaceURI) {
-		String response = Transformer.getTransformer().transform(bpelFileContent, rrsRetNamespaceURI, rrsMetaNamespaceURI);
 
-		return response;
-	}
-}
+    package org.simpl.rrs.transformation.webservices;
+
+    /*
+     *  Transformation java interface
+     */
+
+    public interface Transformation {
+          
+
+        /**
+          * Auto generated method signature
+          * 
+                    * @param transform12
+                
+         */
+
+         
+                     public org.simpl.rrs.transformation.webservices.TransformResponse transform(
+
+                        org.simpl.rrs.transformation.webservices.Transform transform12)
+                        throws java.rmi.RemoteException
+             ;
+
+        
+         /**
+            * Auto generated method signature for Asynchronous Invocations
+            * 
+                * @param transform12
+            
+          */
+        public void starttransform(
+
+            org.simpl.rrs.transformation.webservices.Transform transform12,
+
+            final org.simpl.rrs.transformation.webservices.TransformationCallbackHandler callback)
+
+            throws java.rmi.RemoteException;
+
+     
+
+        
+       //
+       }
+    
