@@ -31,7 +31,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
+public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin<List<String>, RDBResult> {
   static Logger logger = Logger.getLogger(EmbDerbyRDBDataSourceService.class);
 
   /**
@@ -42,7 +42,6 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     this.setMetaDataSchemaType("tDatabaseMetaData");
     this.addSubtype("EmbeddedDerby");
     this.addLanguage("EmbeddedDerby", "SQL");
-    this.setDataFormat("RDB");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -76,7 +75,7 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
   }
 
   @Override
-  public DataObject retrieveData(DataSource dataSource, String statement)
+  public RDBResult retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
     if (logger.isDebugEnabled()) {
       logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
@@ -84,23 +83,17 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     }
 
     Connection connection = openConnection(dataSource.getAddress());
+
     Statement connStatement = null;
     ResultSet resultSet = null;
-    DataObject retrieveData = null;
     RDBResult rdbResult = new RDBResult();
 
-    try {
+    try {     
       connStatement = connection.createStatement();
       resultSet = connStatement.executeQuery(statement);
 
       rdbResult.setDbMetaData(connection.getMetaData());
       rdbResult.setResultSet(resultSet);
-
-      retrieveData = this.getDataFormat().toSDO(rdbResult);
-
-      connStatement.close();
-      connection.commit();
-      closeConnection(connection);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -109,15 +102,13 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     logger.info("Statement '" + statement + "' executed on " + dataSource.getAddress()
         + ".");
 
-    return retrieveData;
+    return rdbResult;
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public boolean writeBack(DataSource dataSource, DataObject data)
+  public boolean writeBack(DataSource dataSource, List<String> statements)
       throws ConnectionException {
     boolean success = true;
-    List<String> statements = null;
     Connection connection = openConnection(dataSource.getAddress());
     Statement connStatement;
 
@@ -125,9 +116,6 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
-
-    // to data format
-    statements = (List<String>) this.getDataFormat().fromSDO(data);
 
     try {
       connStatement = connection.createStatement();
@@ -160,31 +148,19 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
    * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
    * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
-  @SuppressWarnings("unchecked")
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data, String target)
+  public boolean writeData(DataSource dataSource, List<String> statements, String target)
       throws ConnectionException {
     boolean success = true;
-    List<String> statements = null;
     Connection connection = openConnection(dataSource.getAddress());
     Statement connStatement = null;
-
-    // from data format
-    statements = (List<String>) this.getDataFormat().fromSDO(data);
 
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeData(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
 
-    statements = (List<String>) this.getDataFormat().fromSDO(data);
-
     if (statements != null && !statements.isEmpty()) {
-      if (target != null) {
-        // create target
-        this.createTarget(connection, target, data);
-      }
-
       try {
         connStatement = connection.createStatement();
 
@@ -321,8 +297,14 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     return metaDataObject;
   }
 
+  /**
+   * Opens a connection.
+   * 
+   * @param dsAddress
+   * @return
+   * @throws ConnectionException
+   */
   private Connection openConnection(String dsAddress) throws ConnectionException {
-    // TODO Umändern in DataSource Connection
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
     }
@@ -362,8 +344,12 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     return connect;
   }
 
+  /**
+   * Closes a connection.
+   * @param connection
+   * @return
+   */
   private boolean closeConnection(Connection connection) {
-    // TODO Auto-generated method stub
     boolean success = false;
 
     try {
@@ -383,67 +369,5 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     }
 
     return success;
-  }
-
-  /**
-   * Creates a target table for data to write.
-   * 
-   * @param connection
-   * @param target
-   * @param data
-   * @return
-   */
-  @SuppressWarnings("unchecked")
-  private boolean createTarget(Connection connection, String target, DataObject data) {
-    boolean created = false;
-
-    List<DataObject> tables = data.getList("table");
-    List<DataObject> columns = null;
-    List<String> primaryKeys = null;
-    String createStatement = "";
-
-    // build a create statement
-    for (DataObject table : tables) {
-      columns = (List<DataObject>) table.getList("column");
-      primaryKeys = (List<String>) table.getList("primaryKey");
-
-      createStatement = "CREATE TABLE " + target + " (";
-
-      // create table with columns
-      for (DataObject column : columns) {
-        createStatement += column.getString("name") + " " + column.getString("type")
-            + ",";
-      }
-
-      // add primary keys
-      createStatement += " PRIMARY KEY (";
-
-      for (int i = 0; i < primaryKeys.size(); i++) {
-        createStatement += primaryKeys.get(i);
-
-        if (i < primaryKeys.size() - 1) {
-          createStatement += ",";
-        }
-      }
-
-      createStatement += "))";
-    }
-
-    // execute the create statement
-    try {
-      Statement statement = connection.createStatement();
-      created = statement.execute(createStatement);
-      statement.close();
-      connection.commit();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    
-    if (logger.isDebugEnabled()) {
-      logger.debug("createTarget executed: " + createStatement);
-    }
-
-    return created;
   }
 }

@@ -1,11 +1,11 @@
 package org.simpl.core.services.datasource;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
-import org.simpl.core.plugins.dataformat.DataFormatPlugin;
-import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
+import org.simpl.core.services.dataformat.DataFormat;
 import org.simpl.core.services.dataformat.DataFormatProvider;
-import org.simpl.core.services.dataformat.converter.DataFormatConverter;
 import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.core.services.strategy.StrategyService;
@@ -29,11 +29,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DataSourceServiceImpl implements DataSourceService {
-  private DataSourceService dataSourceService;
-  private StrategyService strategyService = new StrategyServiceImpl();
-  private DataFormatConverter dataFormatConverter;
-
+public class DataSourceServiceImpl implements DataSourceService<DataObject, DataObject> {
   /*
    * (non-Javadoc)
    * @see
@@ -44,17 +40,19 @@ public class DataSourceServiceImpl implements DataSourceService {
   public boolean depositData(DataSource dataSource, String statement, String target)
       throws ConnectionException {
     boolean success = false;
+    DataSourceService<Object, Object> dataSourceService;
+    StrategyService strategyService = new StrategyServiceImpl();
 
     // late binding
     if (this.hasLateBinding(dataSource)) {
-      dataSource = this.strategyService.findDataSource(dataSource);
+      dataSource = strategyService.findDataSource(dataSource);
     }
 
     if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
-      
-      success = this.dataSourceService.depositData(dataSource, statement, target);
+      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+          dataSource.getSubType());
+
+      success = dataSourceService.depositData(dataSource, statement, target);
     }
 
     return success;
@@ -70,17 +68,19 @@ public class DataSourceServiceImpl implements DataSourceService {
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
     boolean success = false;
+    DataSourceService<Object, Object> dataSourceService = null;
+    StrategyService strategyService = new StrategyServiceImpl();
 
     // late binding
     if (this.hasLateBinding(dataSource)) {
-      dataSource = this.strategyService.findDataSource(dataSource);
+      dataSource = strategyService.findDataSource(dataSource);
     }
 
     if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
-      
-      success = this.dataSourceService.executeStatement(dataSource, statement);
+      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+          dataSource.getSubType());
+
+      success = dataSourceService.executeStatement(dataSource, statement);
     }
 
     return success;
@@ -95,22 +95,31 @@ public class DataSourceServiceImpl implements DataSourceService {
   @Override
   public DataObject retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
-    DataObject data = null;
-  
+    DataObject retrieveData = null;
+    DataFormat<Object, Object> dataFormat = null;
+    Object data = null;
+    DataSourceService<Object, Object> dataSourceService = null;
+    StrategyService strategyService = new StrategyServiceImpl();
+
     // late binding
     if (this.hasLateBinding(dataSource)) {
-      dataSource = this.strategyService.findDataSource(dataSource);
+      dataSource = strategyService.findDataSource(dataSource);
     }
-  
+
     // retrieve data
     if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
-      
-      data =  this.dataSourceService.retrieveData(dataSource, statement);
+      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+          dataSource.getSubType());
+
+      data = dataSourceService.retrieveData(dataSource, statement);
     }
-    
-    return data;
+
+    // convert data to data format
+    // TODO: search for a data format that converts from dataSourceService T to DataObject
+    dataFormat = findDataFormatToSDO(dataSourceService);
+    retrieveData = dataFormat.toSDO(data);
+
+    return retrieveData;
   }
 
   /*
@@ -123,20 +132,30 @@ public class DataSourceServiceImpl implements DataSourceService {
   public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
     boolean success = false;
-  
+    
+    DataSourceService<Object, Object> dataSourceService = null;
+    StrategyService strategyService = new StrategyServiceImpl();
+    DataFormat<Object, Object> dataFormat = null;
+    Object writeData = null;
+    
     // late binding
     if (this.hasLateBinding(dataSource)) {
-      dataSource = this.strategyService.findDataSource(dataSource);
+      dataSource = strategyService.findDataSource(dataSource);
     }
-  
+
     // write back
     if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
-      
-      success = this.dataSourceService.writeBack(dataSource, data);
+      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+          dataSource.getSubType());
+
+      // format data
+      dataFormat = findDataFormatFromSDO(dataSourceService);
+      writeData = dataFormat.fromSDO(data);
+
+      // write data
+      success = dataSourceService.writeBack(dataSource, writeData); 
     }
-  
+
     return success;
   }
 
@@ -150,36 +169,54 @@ public class DataSourceServiceImpl implements DataSourceService {
   public boolean writeData(DataSource dataSource, DataObject data, String target)
       throws ConnectionException {
     boolean success = false;
-  
+    boolean targetCreated = false;
+
+    DataSourceService<Object, Object> dataSourceService = null;
+    DataFormat<Object, Object> dataFormat = null;
+    StrategyService strategyService = new StrategyServiceImpl();
+    Object writeData = null;
+    String createTargetStatement = null;
+
     // late binding
     if (this.hasLateBinding(dataSource)) {
-      dataSource = this.strategyService.findDataSource(dataSource);
+      dataSource = strategyService.findDataSource(dataSource);
     }
-  
-    // TODO: integrate conversion
-    if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
 
-      success = this.dataSourceService.writeData(dataSource, data, target);
+    if (dataSource != null) {
+      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+          dataSource.getSubType());
+
+      // format data
+      dataFormat = findDataFormatFromSDO(dataSourceService);
+      writeData = dataFormat.fromSDO(data);
+
+      // create target
+      createTargetStatement = dataFormat.getCreateTargetStatement(data, target);
+      targetCreated = dataSourceService.executeStatement(dataSource, createTargetStatement);
       
+      // write data
+      if (targetCreated) {
+        success = dataSourceService.writeData(dataSource, writeData, target);
+      }
+
+      // TODO: integrate conversion
       // compare this data source data format with the given data data format
-//      if (isSupported(data)) {
-//        // find converter and convert the data
-//        this.dataFormatConverter = DataFormatConverterProvider.getInstance(
-//            ((DataSourceServicePlugin) this.dataSourceService).getDataFormat().getType(),
-//            data.getString("formatType"));
-//  
-//        if (this.dataFormatConverter != null) {
-//          // TODO: success = this.dataSourceService.write(dataSource,
-//          // this.dataFormatConverter
-//          // .convertFrom(data));
-//        }
-//      } else {
-//        // TODO: success = this.dataSourceService.write(dataSource, data);
-//      }
+      // if (isSupported(data)) {
+      // // find converter and convert the data
+      // this.dataFormatConverter = DataFormatConverterProvider.getInstance(
+      // ((DataSourceServicePlugin) this.dataSourceService).getDataFormat().getType(),
+      // data.getString("formatType"));
+      //  
+      // if (this.dataFormatConverter != null) {
+      // // TODO: success = this.dataSourceService.write(dataSource,
+      // // this.dataFormatConverter
+      // // .convertFrom(data));
+      // }
+      // } else {
+      // // TODO: success = this.dataSourceService.write(dataSource, data);
+      // }
     }
-  
+
     return success;
   }
 
@@ -193,17 +230,19 @@ public class DataSourceServiceImpl implements DataSourceService {
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
     DataObject data = null;
+    DataSourceService<Object, Object> dataSourceService;
+    StrategyService strategyService = new StrategyServiceImpl();
 
     // late binding
     if (this.hasLateBinding(dataSource)) {
-      dataSource = this.strategyService.findDataSource(dataSource);
+      dataSource = strategyService.findDataSource(dataSource);
     }
 
     if (dataSource != null) {
-      this.dataSourceService = DataSourceServiceProvider.getInstance(
-          dataSource.getType(), dataSource.getSubType());
-      
-      data = this.dataSourceService.getMetaData(dataSource, filter);
+      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+          dataSource.getSubType());
+
+      data = dataSourceService.getMetaData(dataSource, filter);
     }
 
     return data;
@@ -259,6 +298,74 @@ public class DataSourceServiceImpl implements DataSourceService {
   }
 
   /**
+   * Finds a data format that converts a SDO to the incoming data type of a data source
+   * service.
+   * 
+   * @param dataSourceService
+   * @return
+   */
+  private DataFormat<Object, Object> findDataFormatToSDO(
+      DataSourceService<Object, Object> dataSourceService) {
+    DataFormat<Object, Object> dataFormat = null;
+    ParameterizedType dataSourceServicepluginType = null;
+    ParameterizedType dataFormatPluginType = null;
+    Type dataSourceServiceOutgoingType = null;
+    Type dataFormatToSDOType = null;
+
+    dataSourceServicepluginType = (ParameterizedType) dataSourceService.getClass()
+        .getGenericSuperclass();
+    dataSourceServiceOutgoingType = dataSourceServicepluginType.getActualTypeArguments()[1];
+
+    for (String type : DataFormatProvider.getTypes()) {
+      dataFormat = DataFormatProvider.getInstance(type);
+
+      dataFormatPluginType = (ParameterizedType) dataFormat.getClass()
+          .getGenericSuperclass();
+      dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[0];
+
+      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)) {
+        break;
+      }
+    }
+
+    return dataFormat;
+  }
+
+  /**
+   * Finds a data format that converts the outgoing data type of a data source service to
+   * a SDO. service.
+   * 
+   * @param dataSourceService
+   * @return
+   */
+  private DataFormat<Object, Object> findDataFormatFromSDO(
+      DataSourceService<Object, Object> dataSourceService) {
+    DataFormat<Object, Object> dataFormat = null;
+    ParameterizedType dataSourceServicepluginType = null;
+    ParameterizedType dataFormatPluginType = null;
+    Type dataSourceServiceOutgoingType = null;
+    Type dataFormatToSDOType = null;
+
+    dataSourceServicepluginType = (ParameterizedType) dataSourceService.getClass()
+        .getGenericSuperclass();
+    dataSourceServiceOutgoingType = dataSourceServicepluginType.getActualTypeArguments()[0];
+
+    for (String type : DataFormatProvider.getTypes()) {
+      dataFormat = DataFormatProvider.getInstance(type);
+
+      dataFormatPluginType = (ParameterizedType) dataFormat.getClass()
+          .getGenericSuperclass();
+      dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[1];
+
+      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)) {
+        break;
+      }
+    }
+
+    return dataFormat;
+  }
+
+  /**
    * Checks if a given data source has late binding information.
    * 
    * @param dataSource
@@ -282,10 +389,12 @@ public class DataSourceServiceImpl implements DataSourceService {
    * @param dataFormat
    * @return
    */
-  private boolean isSupported(DataObject data) {
-    boolean supported = ((DataFormatPlugin<Object, Object>) ((DataSourceServicePlugin) this.dataSourceService)
-        .getDataFormat()).getType().equals(data.getString("formatType"));
+  // private boolean isSupported(DataObject data) {
+  // boolean supported = ((DataFormatPlugin<Object, Object>) ((DataSourceServicePlugin)
+  // this.dataSourceService)
+  // .getDataFormat()).getType().equals(data.getString("formatType"));
+  //
+  // return supported;
+  // }
 
-    return supported;
-  }
 }

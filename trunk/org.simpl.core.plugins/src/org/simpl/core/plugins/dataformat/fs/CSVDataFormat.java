@@ -23,6 +23,8 @@ import commonj.sdo.DataObject;
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
+ * TODO: rename to CSVFileDataFormat
+ * 
  * @author schneimi<br>
  * @version $Id: CSVDataFormat.java 1130 2010-04-19 13:54:30Z
  *          michael.schneidt@arcor.de $<br>
@@ -144,5 +146,14 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     }
 
     return file;
+  }
+
+  /* (non-Javadoc)
+   * @see org.simpl.core.services.dataformat.DataFormat#createTarget(java.lang.Object, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public String getCreateTargetStatement(DataObject data, String target) {
+    // this function is not used on local filesystems
+    return null;
   }
 }

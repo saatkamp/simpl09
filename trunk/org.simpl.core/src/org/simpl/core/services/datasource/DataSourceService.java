@@ -15,8 +15,13 @@ import commonj.sdo.DataObject;
  * @version $Id: DataSourceService.java 1122 2010-04-18 14:48:40Z
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
+ * 
+ * @param <S>
+ *          incoming data type
+ * @param <T>
+ *          outgoing data type
  */
-public interface DataSourceService {
+public interface DataSourceService<S, T> {
   /**
    * Executes a statement on the data source.
    * 
@@ -37,7 +42,7 @@ public interface DataSourceService {
    * @return the retrieved data as SDO
    * @throws ConnectionException
    */
-  public DataObject retrieveData(DataSource dataSource, String statement)
+  public T retrieveData(DataSource dataSource, String statement)
       throws ConnectionException;
 
   /**
@@ -48,8 +53,7 @@ public interface DataSourceService {
    * @return <i>true</i> if the data was successfully written back, <i>false</i> otherwise
    * @throws ConnectionException
    */
-  public boolean writeBack(DataSource dataSource, DataObject data)
-      throws ConnectionException;
+  public boolean writeBack(DataSource dataSource, S data) throws ConnectionException;
 
   /**
    * Writes new data to the data source.
@@ -59,7 +63,7 @@ public interface DataSourceService {
    * @param target
    * @return <i>true</i> if the data was successfully written, <i>false</i> otherwise
    */
-  public boolean writeData(DataSource dataSource, DataObject data, String target)
+  public boolean writeData(DataSource dataSource, S data, String target)
       throws ConnectionException;
 
   /**

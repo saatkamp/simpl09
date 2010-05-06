@@ -2,6 +2,7 @@ package org.simpl.core.plugins.dataformat.rdb;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  * <b>Purpose: Used by RDBDataFormat to hold the resultSet and the associated database
@@ -18,6 +19,7 @@ import java.sql.ResultSet;
 public class RDBResult {
   private ResultSet resultSet = null;
   private DatabaseMetaData dbMetaData = null;
+  private Statement statement = null;
   private String target = null;
 
   /**
@@ -48,6 +50,20 @@ public class RDBResult {
    */
   public void setDbMetaData(DatabaseMetaData dbMetaData) {
     this.dbMetaData = dbMetaData;
+  }
+
+  /**
+   * @return the statement
+   */
+  public Statement getStatement() {
+    return statement;
+  }
+
+  /**
+   * @param statement the statement to set
+   */
+  public void setStatement(Statement statement) {
+    this.statement = statement;
   }
 
   /**

@@ -91,7 +91,7 @@ public class Datasource {
 
     dataObject = (DataObject) Parameter.deserialize(data);
     success = SIMPLCore.getInstance().dataSourceService().writeData(dataSource,
-        dataObject);
+        dataObject, target);
 
     return success;
   }
@@ -131,6 +131,7 @@ public class Datasource {
     return metaData;
   }
 
+  @SuppressWarnings("unchecked")
   @WebMethod(action = "getMetaDataSchema")
   public String getMetaDataSchema(@WebParam(name = "dataSource") DataSource dataSource)
       throws ConnectionException {
