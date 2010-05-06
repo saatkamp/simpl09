@@ -86,7 +86,9 @@ public class RRSClient {
 		List<EPR> loadedRefs = new ArrayList<EPR>();
 
 		if (RRSClient.getClient().isRRSAvailable()) {
-			loadedRefs = metaService.getAllEPR().getItem();
+			if (metaService.getAllEPR().getItem() != null){
+				loadedRefs = metaService.getAllEPR().getItem();
+			}
 		}
 
 		return loadedRefs;

@@ -76,8 +76,14 @@ public class MetadataServiceImpl implements MetadataService {
 				properties.setResolutionSystem(rs.getString(3));
 				parameters.setStatement(rs.getString(4));
 				parameters.setDsAddress(rs.getString(5));
-				rsEPR.setPortType(QName.valueOf(rs.getString(6)));
-				serviceName.setValue(QName.valueOf(rs.getString(7)));
+				String portType = rs.getString(6);
+				if (portType != null){
+					rsEPR.setPortType(QName.valueOf(portType));
+				}
+				String service = rs.getString(7);
+				if (service != null){
+					serviceName.setValue(QName.valueOf(service));
+				}
 				serviceName.setPortName(rs.getString(8));
 				rsEPR.setPolicy(rs.getString(9));
 
@@ -134,8 +140,14 @@ public class MetadataServiceImpl implements MetadataService {
 				properties.setResolutionSystem(rs.getString(3));
 				parameters.setStatement(rs.getString(4));
 				parameters.setDsAddress(rs.getString(5));
-				rsEPR.setPortType(QName.valueOf(rs.getString(6)));
-				serviceName.setValue(QName.valueOf(rs.getString(7)));
+				String portType = rs.getString(6);
+				if (portType != null){
+					rsEPR.setPortType(QName.valueOf(portType));
+				}
+				String service = rs.getString(7);
+				if (service != null){
+					serviceName.setValue(QName.valueOf(service));
+				}
 				serviceName.setPortName(rs.getString(8));
 				rsEPR.setPolicy(rs.getString(9));
 

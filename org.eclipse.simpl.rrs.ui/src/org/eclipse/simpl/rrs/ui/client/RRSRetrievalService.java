@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @WebService(name = "RRSRetrievalService", targetNamespace = "http://webservices.rrs.simpl.org/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 @XmlSeeAlso({
-    ObjectFactory.class
+    ObjectFactory.class, EPR.class
 })
 public interface RRSRetrievalService {
 

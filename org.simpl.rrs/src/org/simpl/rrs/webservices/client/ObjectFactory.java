@@ -24,7 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Epr_QNAME = new QName("http://webservices.rrs.simpl.org/", "epr");
+    private final static QName _Epr_QNAME = new QName("http://webservices.rrs.simpl.org/", "EPR");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.simpl.rrs.webservices.client
@@ -69,7 +69,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link EPR }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservices.rrs.simpl.org/", name = "epr")
+    @XmlElementDecl(namespace = "http://webservices.rrs.simpl.org/", name = "EPR")
     public JAXBElement<EPR> createEpr(EPR value) {
         return new JAXBElement<EPR>(_Epr_QNAME, EPR.class, null, value);
     }
