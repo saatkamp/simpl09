@@ -232,7 +232,7 @@ public class MetadataServiceImpl implements MetadataService {
 	 */
 	@Override
 	public String[] getAvailableAdapters() {
-		List<String> adapters = RRS.getInstance().config().getDSAdapterPlugins();
+		List<String> adapters = RRS.getInstance().getAvailableAdapters();
 		
 		return adapters.toArray(new String[0]);
 	}

@@ -1,5 +1,6 @@
 package org.simpl.rrs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.simpl.rrs.dsadapter.DSAdapter;
@@ -59,4 +60,17 @@ public class RRS {
 		return dsAdapterProvider.getLanguages(dsSubtype);
 	}
 	
+	public List<String> getAvailableAdapters(){
+		List<String> adapters = new ArrayList<String>();
+		
+		for (String type : dsAdapterProvider.getTypes()){
+			for (String subtype : dsAdapterProvider.getSubtypes(type)){
+				for (String language : dsAdapterProvider.getLanguages(subtype)){
+					adapters.add(type+":"+subtype+":"+language);
+				}
+			}
+		}
+		
+		return adapters;
+	}
 }
