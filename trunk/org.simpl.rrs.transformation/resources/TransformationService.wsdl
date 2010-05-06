@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions name="Transformation" targetNamespace="http://webservices.transformation.rrs.simpl.org" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservices.transformation.rrs.simpl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<definitions name="TransformationService" targetNamespace="http://webservices.transformation.rrs.simpl.org" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservices.transformation.rrs.simpl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <types>
   </types>
   <message name="transformResponse">

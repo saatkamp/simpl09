@@ -122,7 +122,7 @@ public class TransformationClient {
 
 	private String executeTransformation(String bpelFileContent,
 			String rrsRetNamespaceURI, String rrsMetaNamespaceURI) {
-		TransformationService transformationService = new Transformation()
+		TransformationService transformationService = new TransformationService_Service()
 				.getTransformationServicePort();
 
 		String response = "";
