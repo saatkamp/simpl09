@@ -1,6 +1,6 @@
 
 /**
- * TransformationStub.java
+ * TransformationServiceStub.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT)
@@ -10,12 +10,12 @@
         
 
         /*
-        *  TransformationStub java implementation
+        *  TransformationServiceStub java implementation
         */
 
         
-        public class TransformationStub extends org.apache.axis2.client.Stub
-        implements Transformation{
+        public class TransformationServiceStub extends org.apache.axis2.client.Stub
+        implements TransformationService{
         protected org.apache.axis2.description.AxisOperation[] _operations;
 
         //hashmaps to keep the fault mapping
@@ -38,7 +38,7 @@
     private void populateAxisService() throws org.apache.axis2.AxisFault {
 
      //creating the Service with a unique name
-     _service = new org.apache.axis2.description.AxisService("Transformation" + getUniqueSuffix());
+     _service = new org.apache.axis2.description.AxisService("TransformationService" + getUniqueSuffix());
      addAnonymousOperations();
 
         //creating the operations
@@ -71,7 +71,7 @@
       *Constructor that takes in a configContext
       */
 
-    public TransformationStub(org.apache.axis2.context.ConfigurationContext configurationContext,
+    public TransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext,
        java.lang.String targetEndpoint)
        throws org.apache.axis2.AxisFault {
          this(configurationContext,targetEndpoint,false);
@@ -81,7 +81,7 @@
    /**
      * Constructor that takes in a configContext  and useseperate listner
      */
-   public TransformationStub(org.apache.axis2.context.ConfigurationContext configurationContext,
+   public TransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext,
         java.lang.String targetEndpoint, boolean useSeparateListener)
         throws org.apache.axis2.AxisFault {
          //To populate AxisService
@@ -101,7 +101,7 @@
     /**
      * Default Constructor
      */
-    public TransformationStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
+    public TransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
                     this(configurationContext,"http://localhost:8080/axis2/services/TransformationService" );
                 
@@ -110,7 +110,7 @@
     /**
      * Default Constructor
      */
-    public TransformationStub() throws org.apache.axis2.AxisFault {
+    public TransformationServiceStub() throws org.apache.axis2.AxisFault {
         
                     this("http://localhost:8080/axis2/services/TransformationService" );
                 
@@ -119,7 +119,7 @@
     /**
      * Constructor taking the target endpoint
      */
-    public TransformationStub(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
+    public TransformationServiceStub(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
         this(null,targetEndpoint);
     }
 
@@ -129,7 +129,7 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see org.simpl.rrs.transformation.webservices.Transformation#transform
+                     * @see org.simpl.rrs.transformation.webservices.TransformationService#transform
                      * @param transform14
                     
                      */
@@ -248,7 +248,7 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see org.simpl.rrs.transformation.webservices.Transformation#starttransform
+                * @see org.simpl.rrs.transformation.webservices.TransformationService#starttransform
                     * @param transform14
                 
                 */
@@ -256,7 +256,7 @@
 
                  org.simpl.rrs.transformation.webservices.Transform transform14,
 
-                  final org.simpl.rrs.transformation.webservices.TransformationCallbackHandler callback)
+                  final org.simpl.rrs.transformation.webservices.TransformationServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 

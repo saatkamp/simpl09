@@ -1,6 +1,6 @@
 
 /**
- * TransformationCallbackHandler.java
+ * TransformationServiceCallbackHandler.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT)
@@ -9,10 +9,10 @@
     package org.simpl.rrs.transformation.webservices;
 
     /**
-     *  TransformationCallbackHandler Callback class, Users can extend this class and implement
+     *  TransformationServiceCallbackHandler Callback class, Users can extend this class and implement
      *  their own receiveResult and receiveError methods.
      */
-    public abstract class TransformationCallbackHandler{
+    public abstract class TransformationServiceCallbackHandler{
 
 
 
@@ -24,14 +24,14 @@
     * @param clientData Object mechanism by which the user can pass in user data
     * that will be avilable at the time this callback is called.
     */
-    public TransformationCallbackHandler(Object clientData){
+    public TransformationServiceCallbackHandler(Object clientData){
         this.clientData = clientData;
     }
 
     /**
     * Please use this constructor if you don't want to set any clientData
     */
-    public TransformationCallbackHandler(){
+    public TransformationServiceCallbackHandler(){
         this.clientData = null;
     }
 
