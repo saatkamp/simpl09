@@ -1,10 +1,12 @@
 package org.simpl.core.helpers;
 
+import java.io.IOException;
 import java.util.List;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.Property;
 import commonj.sdo.Type;
+import commonj.sdo.helper.XMLHelper;
 
 /**
  * <b>Purpose:</b> Helper to print out complex objects. <br>
@@ -21,6 +23,20 @@ public class Printer {
     int indent = 1;
 
     printDataObjectWithIndent(dataObject, indent);
+  }
+
+  /**
+   * Warning: may cause errors if used between SDO operations.
+   * 
+   * @param dataObject
+   */
+  public static void printDataObjectXML(DataObject dataObject) {
+    try {
+      XMLHelper.INSTANCE.save(dataObject, "commonj.sdo", "dataObject", System.out);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   @SuppressWarnings("unchecked")

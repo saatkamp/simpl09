@@ -34,7 +34,7 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
   Runtime runtime = Runtime.getRuntime();
 
   /**
-   * Initialize the plugin.
+   * Initialize the plug-in.
    */
   public WindowsLocalFSDataSourceService() {
     this.setType("Filesystem");
@@ -42,7 +42,7 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
     this.addSubtype("Windows Local");
     this.addLanguage("Windows Local", "Shell");
     this.setDataFormat("CSV");
-    
+
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
@@ -77,18 +77,18 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
       throws ConnectionException {
     DataObject dataObject = null;
     File fsFile = null;
-    
+
     if (!dataSource.getAddress().equals("")) {
       fsFile = new File(dataSource.getAddress() + File.separator + file);
     } else {
       fsFile = new File(file);
     }
-  
-    // apply data format
+
+    // convert file to the csv data format
     if (fsFile != null) {
       dataObject = this.getDataFormat().toSDO(fsFile);
     }
-  
+
     return dataObject;
   }
 
@@ -103,24 +103,29 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
     boolean writeBack = false;
     File tempFile = (File) this.getDataFormat().fromSDO(data);
     String dir = "";
-  
+
     if (!dataSource.getAddress().equals("")) {
       dir = dataSource.getAddress() + File.separator;
     }
-  
+
     // move temp file to given dir
     writeBack = tempFile.renameTo(new File(dir + data.getString("filename")));
-  
+
     return writeBack;
   }
 
-  /* (non-Javadoc)
-   * @see org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
+   * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public boolean writeData(DataSource arg0, DataObject arg1, String arg2)
+  public boolean writeData(DataSource dataSource, DataObject data)
       throws ConnectionException {
-    // TODO Auto-generated method stub
+    // convert file back from the csv data format
+    data = (DataObject) this.getDataFormat().fromSDO(data);
+
     return false;
   }
 

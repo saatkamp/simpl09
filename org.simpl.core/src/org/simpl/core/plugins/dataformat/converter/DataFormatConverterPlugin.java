@@ -31,7 +31,7 @@ public abstract class DataFormatConverterPlugin implements DataFormatConverter {
   /**
    * @return the fromDataFormat
    */
-  public DataFormat<Object> getFromDataFormat() {
+  public DataFormat<Object, Object> getFromDataFormat() {
     return DataFormatProvider.getInstance(fromDataFormat);
   }
 
@@ -46,7 +46,7 @@ public abstract class DataFormatConverterPlugin implements DataFormatConverter {
   /**
    * @return the toDataFormat
    */
-  public DataFormat<Object> getToDataFormat() {
+  public DataFormat<Object, Object> getToDataFormat() {
     return DataFormatProvider.getInstance(toDataFormat);
   }
 

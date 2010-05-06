@@ -6,5 +6,6 @@
 	<DataSourceServicePlugin name="org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSourceService" />
 	<DataSourceServicePlugin name="org.simpl.core.plugins.datasource.fs.WindowsLocalFSDataSourceService" />
 	<DataFormatPlugin name="org.simpl.core.plugins.dataformat.fs.CSVDataFormat" />
-	<DataFormatConverterPlugin name="org.simpl.core.plugins.dataformat.converter.TuscanyCSVDataFormatConverter" />
+	<DataFormatPlugin name="org.simpl.core.plugins.dataformat.rdb.RDBDataFormat" />
+	<DataFormatConverterPlugin name="org.simpl.core.plugins.dataformat.converter.RDBCSVDataFormatConverter" />
 </SimplCoreConfig>

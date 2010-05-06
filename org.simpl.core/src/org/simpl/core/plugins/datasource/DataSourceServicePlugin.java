@@ -130,7 +130,7 @@ public abstract class DataSourceServicePlugin implements DataSourceService {
   /**
    * @return The data format of the data source.
    */
-  public DataFormat<Object> getDataFormat() {
+  public DataFormat<Object, Object> getDataFormat() {
     return DataFormatProvider.getInstance(this.dataFormat);
   }
 

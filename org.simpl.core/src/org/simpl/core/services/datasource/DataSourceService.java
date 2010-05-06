@@ -52,14 +52,14 @@ public interface DataSourceService {
       throws ConnectionException;
 
   /**
-   * Writes new data to the data source, that is referenced by a target.
+   * Writes new data to the data source.
    * 
    * @param dataSource
    * @param data
    * @param target
    * @return <i>true</i> if the data was successfully written, <i>false</i> otherwise
    */
-  public boolean writeData(DataSource dataSource, DataObject data, String target)
+  public boolean writeData(DataSource dataSource, DataObject data)
       throws ConnectionException;
 
   /**
