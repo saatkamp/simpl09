@@ -12,12 +12,12 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class TuscanyCSVDataFormatConverter extends DataFormatConverterPlugin {
+public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
   /**
-   * Initialize the plugin.
+   * Initialize the plug-in.
    */
-  public TuscanyCSVDataFormatConverter() {
-    this.setFromDataFormat("Tuscany");
+  public RDBCSVDataFormatConverter() {
+    this.setFromDataFormat("RDB");
     this.setToDataFormat("CSV");
   }
 

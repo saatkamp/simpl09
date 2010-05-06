@@ -12,20 +12,20 @@ import commonj.sdo.DataObject;
  * @author schneimi
  * @version $Id: DataFormatService.java 1006 2010-03-24 17:52:54Z
  *          michael.schneidt@arcor.de $<br>
- * @param <T>
+ * @param <S, T>
  * @link http://code.google.com/p/simpl09/
  */
-public interface DataFormat<T> {
+public interface DataFormat<S, T> {
   /**
    * Creates a DataObject of the given data in this data format.
    * 
-   * @param <T>
+   * @param <S>
    *          Type of the data
    * @param data
    *          The data
    * @return
    */
-  public DataObject toSDO(T data);
+  public DataObject toSDO(S data);
 
   /**
    * Returns the data converted to this data format from the given data object.

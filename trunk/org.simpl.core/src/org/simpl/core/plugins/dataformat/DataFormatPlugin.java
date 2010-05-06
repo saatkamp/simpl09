@@ -31,7 +31,7 @@ import commonj.sdo.helper.XSDHelper;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataFormatPlugin<T> implements DataFormat<T> {
+public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
   /**
    * Type of the supported data format (CSV, XML, ...).
    */

@@ -28,9 +28,9 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class CSVDataFormat extends DataFormatPlugin<File> {
+public class CSVDataFormat extends DataFormatPlugin<File, File> {
   /**
-   * Initialize the plugin.
+   * Initialize the plug-in.
    */
   public CSVDataFormat() {
     this.setType("CSV");

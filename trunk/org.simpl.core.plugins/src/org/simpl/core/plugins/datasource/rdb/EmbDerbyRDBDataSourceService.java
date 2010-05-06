@@ -6,11 +6,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.apache.tuscany.das.rdb.Command;
-import org.apache.tuscany.das.rdb.DAS;
+import org.simpl.core.plugins.dataformat.rdb.RDBResult;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.connection.JDCConnectionDriver;
 import org.simpl.core.services.datasource.DataSource;
@@ -20,12 +20,11 @@ import commonj.sdo.DataObject;
 
 /**
  * <p>
- * Implements all methods of the {@link IDatasourceService} interface for
- * supporting the Apache Derby relational database in embedded mode.
+ * Implements all methods of the {@link IDatasourceService} interface for supporting the
+ * Apache Derby relational database in embedded mode.
  * </p>
  * 
- * dsAddress = Full path to embedded Derby database, for example:
- * C:\databases\myDB.
+ * dsAddress = Full path to embedded Derby database, for example: C:\databases\myDB.
  * 
  * @author hahnml<br>
  * @version $Id: EmbDerbyRDBDataSource.java 1087 2010-04-13 17:12:27Z
@@ -36,20 +35,20 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
   static Logger logger = Logger.getLogger(EmbDerbyRDBDataSourceService.class);
 
   /**
-   * Initialize the plugin.
+   * Initialize the plug-in.
    */
   public EmbDerbyRDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
     this.addSubtype("EmbeddedDerby");
     this.addLanguage("EmbeddedDerby", "SQL");
+    this.setDataFormat("RDB");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  private Connection openConnection(String dsAddress)
-      throws ConnectionException {
+  private Connection openConnection(String dsAddress) throws ConnectionException {
     // TODO Umändern in DataSource Connection
     if (logger.isDebugEnabled()) {
       logger.debug("Connection openConnection(" + dsAddress + ") executed.");
@@ -64,15 +63,14 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
       uri.append(";create=true");
 
       try {
-        new JDCConnectionDriver("org.apache.derby.jdbc.EmbeddedDriver", uri
-            .toString(), "none", "none").connect(uri.toString(), null);
+        new JDCConnectionDriver("org.apache.derby.jdbc.EmbeddedDriver", uri.toString(),
+            "none", "none").connect(uri.toString(), null);
 
         connect = DriverManager.getConnection("jdbc:jdc:jdcpool");
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
-        logger.fatal("exception during establishing connection to: "
-            + uri.toString(), e);
+        logger.fatal("exception during establishing connection to: " + uri.toString(), e);
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
@@ -121,10 +119,10 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
       logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
           + statement + ") executed.");
     }
-  
+
     boolean success = false;
     Connection conn = openConnection(dataSource.getAddress());
-  
+
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
@@ -134,11 +132,10 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     } catch (Throwable e) {
       logger.error("exception executing the statement: " + statement, e);
     }
-  
-    logger.info("Statement '" + statement + "' send to "
-        + dataSource.getAddress() + ".");
+
+    logger.info("Statement '" + statement + "' send to " + dataSource.getAddress() + ".");
     closeConnection(conn);
-  
+
     return success;
   }
 
@@ -151,58 +148,136 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     }
 
     Connection connection = openConnection(dataSource.getAddress());
-    DAS das = DAS.FACTORY.createDAS(connection);
-    Command read = das.createCommand(statement);
-    DataObject root = read.executeQuery();
+    Statement connStatement = null;
+    ResultSet resultSet = null;
+    DataObject retrieveData = null;
+    RDBResult rdbResult = new RDBResult();
 
-    logger.info("Statement '" + statement + "' executed on "
-        + dataSource.getAddress() + ".");
+    try {
+      connStatement = connection.createStatement();
+      resultSet = connStatement.executeQuery(statement);
 
-    // apply data format
-    //root = this.getDataFormat().toSDO(root);
-    
-    closeConnection(connection);
-    
-    return root;
+      rdbResult.setDbMetaData(connection.getMetaData());
+      rdbResult.setResultSet(resultSet);
+
+      retrieveData = this.getDataFormat().toSDO(rdbResult);
+
+      connStatement.close();
+      connection.commit();
+      closeConnection(connection);
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    logger.info("Statement '" + statement + "' executed on " + dataSource.getAddress()
+        + ".");
+
+    return retrieveData;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
-    boolean success = false;
-    
+    boolean success = true;
+    List<String> statements = null;
+    Connection connection = openConnection(dataSource.getAddress());
+    Statement connStatement;
+
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
-  
-    Connection connection = openConnection(dataSource.getAddress());
-    DAS das = DAS.FACTORY.createDAS(connection);
-    das.applyChanges(data); //TODO: testen ob das wirklich funktioniert!
-    
-    closeConnection(connection);
-    
+
+    // to data format
+    statements = (List<String>) this.getDataFormat().fromSDO(data);
+
+    try {
+      connStatement = connection.createStatement();
+
+      for (String statement : statements) {
+        if (statement.startsWith("UPDATE")) {
+          if (connStatement.executeUpdate(statement) != 1) {
+            success = success && false;
+          }
+
+          logger.info("Statement '" + statement + "' " + "executed on "
+              + dataSource.getAddress() + (success ? " was successful" : " failed"));
+        }
+      }
+
+      connStatement.close();
+      connection.commit();
+      closeConnection(connection);
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
     return success;
   }
 
-  /* (non-Javadoc)
-   * @see org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
+   * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
+  @SuppressWarnings("unchecked")
   @Override
-  public boolean writeData(DataSource arg0, DataObject arg1, String arg2)
+  public boolean writeData(DataSource dataSource, DataObject data)
       throws ConnectionException {
-    // TODO Auto-generated method stub
-    return false;
+    boolean success = true;
+    List<String> statements = null;
+    Connection connection = openConnection(dataSource.getAddress());
+    Statement connStatement = null;
+
+    // from data format
+    statements = (List<String>) this.getDataFormat().fromSDO(data);
+
+    if (logger.isDebugEnabled()) {
+      logger.debug("boolean writeBack(" + dataSource.getAddress()
+          + ", DataObject) executed.");
+    }
+
+    statements = (List<String>) this.getDataFormat().fromSDO(data);
+
+    try {
+      connStatement = connection.createStatement();
+
+      for (String statement : statements) {
+        if (statement.startsWith("INSERT")) {
+          if (connStatement.executeUpdate(statement) != 1) {
+            success = success && false;
+          }
+          
+          logger.info("Statement '" + statement + "' " + "executed on "
+              + dataSource.getAddress() + (success ? " was successful" : " failed"));
+        }
+      }
+
+      connStatement.close();
+      connection.commit();
+      closeConnection(connection);
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    closeConnection(connection);
+
+    return success;
   }
 
   @Override
-  public boolean depositData(DataSource dataSource, String statement,
-      String target) throws ConnectionException {
+  public boolean depositData(DataSource dataSource, String statement, String target)
+      throws ConnectionException {
     boolean success = false;
 
     if (logger.isDebugEnabled()) {
-      logger.debug("DataObject depositData(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
+      logger.debug("DataObject depositData(" + dataSource.getAddress() + ", " + statement
+          + ") executed.");
     }
 
     // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl
@@ -250,8 +325,7 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
     }
 
     logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
-        + insertStatement.toString() + "'" + "executed on "
-        + dataSource.getAddress());
+        + insertStatement.toString() + "'" + "executed on " + dataSource.getAddress());
 
     return success;
   }
@@ -259,30 +333,28 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
-    Connection conn = openConnection(dataSource.getAddress());
+    Connection connection = openConnection(dataSource.getAddress());
     DataObject metaDataObject = this.getMetaDataSDO();
     DataObject schemaObject = null;
     DataObject tableObject = null;
     DataObject columnObject = null;
 
     try {
-      DatabaseMetaData dbMetaData = conn.getMetaData();
+      DatabaseMetaData dbMetaData = connection.getMetaData();
       ResultSet schemas = dbMetaData.getSchemas();
 
       while (schemas.next()) {
         schemaObject = metaDataObject.createDataObject("schema");
         schemaObject.setString("name", schemas.getString(1));
 
-        ResultSet tables = dbMetaData.getTables(null, schemas.getString(1),
-            null, null);
+        ResultSet tables = dbMetaData.getTables(null, schemas.getString(1), null, null);
 
         while (tables.next()) {
           tableObject = schemaObject.createDataObject("table");
           tableObject.setString("name", tables.getString(3));
         }
 
-        ResultSet columns = dbMetaData.getColumns(null, schemas.getString(1),
-            null, null);
+        ResultSet columns = dbMetaData.getColumns(null, schemas.getString(1), null, null);
 
         while (columns.next()) {
           columnObject = tableObject.createDataObject("column");
@@ -290,13 +362,14 @@ public class EmbDerbyRDBDataSourceService extends DataSourceServicePlugin {
           columnObject.setString("type", columns.getString("TYPE_NAME"));
         }
       }
+
+      connection.commit();
+      closeConnection(connection);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
-    closeConnection(conn);
-    
     return metaDataObject;
   }
 }

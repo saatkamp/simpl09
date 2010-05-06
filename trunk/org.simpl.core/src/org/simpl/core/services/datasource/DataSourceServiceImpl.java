@@ -53,6 +53,7 @@ public class DataSourceServiceImpl implements DataSourceService {
     if (dataSource != null) {
       this.dataSourceService = DataSourceServiceProvider.getInstance(
           dataSource.getType(), dataSource.getSubType());
+      
       success = this.dataSourceService.depositData(dataSource, statement, target);
     }
 
@@ -78,6 +79,7 @@ public class DataSourceServiceImpl implements DataSourceService {
     if (dataSource != null) {
       this.dataSourceService = DataSourceServiceProvider.getInstance(
           dataSource.getType(), dataSource.getSubType());
+      
       success = this.dataSourceService.executeStatement(dataSource, statement);
     }
 
@@ -104,9 +106,10 @@ public class DataSourceServiceImpl implements DataSourceService {
     if (dataSource != null) {
       this.dataSourceService = DataSourceServiceProvider.getInstance(
           dataSource.getType(), dataSource.getSubType());
-      data = this.dataSourceService.retrieveData(dataSource, statement);
+      
+      data =  this.dataSourceService.retrieveData(dataSource, statement);
     }
-  
+    
     return data;
   }
 
@@ -126,7 +129,11 @@ public class DataSourceServiceImpl implements DataSourceService {
       dataSource = this.strategyService.findDataSource(dataSource);
     }
   
+    // write back
     if (dataSource != null) {
+      this.dataSourceService = DataSourceServiceProvider.getInstance(
+          dataSource.getType(), dataSource.getSubType());
+      
       success = this.dataSourceService.writeBack(dataSource, data);
     }
   
@@ -140,7 +147,7 @@ public class DataSourceServiceImpl implements DataSourceService {
    * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data, String target)
+  public boolean writeData(DataSource dataSource, DataObject data)
       throws ConnectionException {
     boolean success = false;
   
@@ -149,25 +156,28 @@ public class DataSourceServiceImpl implements DataSourceService {
       dataSource = this.strategyService.findDataSource(dataSource);
     }
   
+    // TODO: integrate conversion
     if (dataSource != null) {
       this.dataSourceService = DataSourceServiceProvider.getInstance(
           dataSource.getType(), dataSource.getSubType());
-  
+
+      success = this.dataSourceService.writeData(dataSource, data);
+      
       // compare this data source data format with the given data data format
-      if (isSupported(data)) {
-        // find converter and convert the data
-        this.dataFormatConverter = DataFormatConverterProvider.getInstance(
-            ((DataSourceServicePlugin) this.dataSourceService).getDataFormat().getType(),
-            data.getString("formatType"));
-  
-        if (this.dataFormatConverter != null) {
-          // TODO: success = this.dataSourceService.write(dataSource,
-          // this.dataFormatConverter
-          // .convertFrom(data));
-        }
-      } else {
-        // TODO: success = this.dataSourceService.write(dataSource, data);
-      }
+//      if (isSupported(data)) {
+//        // find converter and convert the data
+//        this.dataFormatConverter = DataFormatConverterProvider.getInstance(
+//            ((DataSourceServicePlugin) this.dataSourceService).getDataFormat().getType(),
+//            data.getString("formatType"));
+//  
+//        if (this.dataFormatConverter != null) {
+//          // TODO: success = this.dataSourceService.write(dataSource,
+//          // this.dataFormatConverter
+//          // .convertFrom(data));
+//        }
+//      } else {
+//        // TODO: success = this.dataSourceService.write(dataSource, data);
+//      }
     }
   
     return success;
@@ -192,6 +202,7 @@ public class DataSourceServiceImpl implements DataSourceService {
     if (dataSource != null) {
       this.dataSourceService = DataSourceServiceProvider.getInstance(
           dataSource.getType(), dataSource.getSubType());
+      
       data = this.dataSourceService.getMetaData(dataSource, filter);
     }
 
@@ -272,7 +283,7 @@ public class DataSourceServiceImpl implements DataSourceService {
    * @return
    */
   private boolean isSupported(DataObject data) {
-    boolean supported = ((DataFormatPlugin<Object>) ((DataSourceServicePlugin) this.dataSourceService)
+    boolean supported = ((DataFormatPlugin<Object, Object>) ((DataSourceServicePlugin) this.dataSourceService)
         .getDataFormat()).getType().equals(data.getString("formatType"));
 
     return supported;

@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
-import org.simpl.core.plugins.dataformat.TuscanyDataFormat;
 
 /**
  * <b>Purpose:</b>Provides access to the data format services that are created
@@ -22,18 +21,16 @@ import org.simpl.core.plugins.dataformat.TuscanyDataFormat;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-@SuppressWarnings("unchecked")
 public class DataFormatProvider {
   /**
    * Maps the data format to a list of supporting data format plugin instances.
    */
-  private static HashMap<String, DataFormatPlugin> dataFormats = new HashMap<String, DataFormatPlugin>();
+  private static HashMap<String, DataFormatPlugin<Object, Object>> dataFormats = new HashMap<String, DataFormatPlugin<Object, Object>>();
 
   /**
    * Initialize all data format plugins.
    */
   static {
-    dataFormats.put("Tuscany", new TuscanyDataFormat());
     loadPlugins();
   }
 
@@ -44,7 +41,7 @@ public class DataFormatProvider {
    * @param dfSubtype
    * @return
    */
-  public static DataFormat<Object> getInstance(String dfType) {
+  public static DataFormat<Object, Object> getInstance(String dfType) {
     return dataFormats.get(dfType);
   }
 
@@ -52,16 +49,17 @@ public class DataFormatProvider {
    * Loads instances of the data format plugins and retrieves information about
    * their supported type.
    */
+  @SuppressWarnings("unchecked")
   private static void loadPlugins() {
     List<String> plugins = SIMPLCore.getInstance().config()
         .getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
-    DataFormatPlugin dataFormatServiceInstance;
+    DataFormatPlugin<Object, Object> dataFormatServiceInstance;
     String dataFormatType = null;
 
     while (pluginIterator.hasNext()) {
       try {
-        dataFormatServiceInstance = (DataFormatPlugin) Class.forName(
+        dataFormatServiceInstance = (DataFormatPlugin<Object, Object>) Class.forName(
             (String) pluginIterator.next()).newInstance();
         dataFormatType = dataFormatServiceInstance.getType();
 
