@@ -19,14 +19,14 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getAvailableAdapters76
+                    * @param getAvailableAdapters36
                 
          */
 
          
                      public org.simpl.rrs.webservices.GetAvailableAdaptersResponse getAvailableAdapters(
 
-                        org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters76)
+                        org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters36)
                         throws java.rmi.RemoteException
              ;
 
@@ -34,12 +34,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getAvailableAdapters76
+                * @param getAvailableAdapters36
             
           */
         public void startgetAvailableAdapters(
 
-            org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters76,
+            org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters36,
 
             final org.simpl.rrs.webservices.RRSMetaDataServiceCallbackHandler callback)
 
@@ -50,14 +50,14 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getAllEPR78
+                    * @param getAllEPR38
                 
          */
 
          
                      public org.simpl.rrs.webservices.GetAllEPRResponse getAllEPR(
 
-                        org.simpl.rrs.webservices.GetAllEPR getAllEPR78)
+                        org.simpl.rrs.webservices.GetAllEPR getAllEPR38)
                         throws java.rmi.RemoteException
              ;
 
@@ -65,12 +65,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getAllEPR78
+                * @param getAllEPR38
             
           */
         public void startgetAllEPR(
 
-            org.simpl.rrs.webservices.GetAllEPR getAllEPR78,
+            org.simpl.rrs.webservices.GetAllEPR getAllEPR38,
 
             final org.simpl.rrs.webservices.RRSMetaDataServiceCallbackHandler callback)
 
@@ -81,14 +81,14 @@
         /**
           * Auto generated method signature
           * 
-                    * @param getEPR80
+                    * @param getEPR40
                 
          */
 
          
                      public org.simpl.rrs.webservices.GetEPRResponse getEPR(
 
-                        org.simpl.rrs.webservices.GetEPR getEPR80)
+                        org.simpl.rrs.webservices.GetEPR getEPR40)
                         throws java.rmi.RemoteException
              ;
 
@@ -96,12 +96,12 @@
          /**
             * Auto generated method signature for Asynchronous Invocations
             * 
-                * @param getEPR80
+                * @param getEPR40
             
           */
         public void startgetEPR(
 
-            org.simpl.rrs.webservices.GetEPR getEPR80,
+            org.simpl.rrs.webservices.GetEPR getEPR40,
 
             final org.simpl.rrs.webservices.RRSMetaDataServiceCallbackHandler callback)
 

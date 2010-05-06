@@ -37,14 +37,14 @@
                         */
 
                         
-                                    protected java.lang.String local_return ;
+                                    protected java.lang.Object local_return ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return java.lang.String
+                           * @return java.lang.Object
                            */
-                           public  java.lang.String get_return(){
+                           public  java.lang.Object get_return(){
                                return local_return;
                            }
 
@@ -54,7 +54,7 @@
                                * Auto generated setter method
                                * @param param _return
                                */
-                               public void set_return(java.lang.String param){
+                               public void set_return(java.lang.Object param){
                             
                                             this.local_return=param;
                                     
@@ -159,40 +159,42 @@
                
                    }
                
-                                    namespace = "";
-                                    if (! namespace.equals("")) {
-                                        prefix = xmlWriter.getPrefix(namespace);
+                            
+                            if (local_return!=null){
+                                if (local_return instanceof org.apache.axis2.databinding.ADBBean){
+                                    ((org.apache.axis2.databinding.ADBBean)local_return).serialize(
+                                               new javax.xml.namespace.QName("","return"),
+                                               factory,xmlWriter,true);
+                                 } else {
+                                    java.lang.String namespace2 = "";
+                                    if (! namespace2.equals("")) {
+                                        java.lang.String prefix2 = xmlWriter.getPrefix(namespace2);
 
-                                        if (prefix == null) {
-                                            prefix = generatePrefix(namespace);
+                                        if (prefix2 == null) {
+                                            prefix2 = generatePrefix(namespace2);
 
-                                            xmlWriter.writeStartElement(prefix,"return", namespace);
-                                            xmlWriter.writeNamespace(prefix, namespace);
-                                            xmlWriter.setPrefix(prefix, namespace);
+                                            xmlWriter.writeStartElement(prefix2,"return", namespace2);
+                                            xmlWriter.writeNamespace(prefix2, namespace2);
+                                            xmlWriter.setPrefix(prefix2, namespace2);
 
                                         } else {
-                                            xmlWriter.writeStartElement(namespace,"return");
+                                            xmlWriter.writeStartElement(namespace2,"return");
                                         }
 
                                     } else {
                                         xmlWriter.writeStartElement("return");
                                     }
+                                    org.apache.axis2.databinding.utils.ConverterUtil.serializeAnyType(local_return, xmlWriter);
+                                    xmlWriter.writeEndElement();
+                                 }
+                            } else {
                                 
-
-                                          if (local_return==null){
-                                              // write the nil attribute
-                                              
-                                                     throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(local_return);
-                                            
-                                          }
+                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
                                     
-                                   xmlWriter.writeEndElement();
-                             
+                            }
+
+
+                        
                     xmlWriter.writeEndElement();
                
 
@@ -355,15 +357,15 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
-                                      elementList.add(new javax.xml.namespace.QName("",
+                            elementList.add(new javax.xml.namespace.QName("",
                                                                       "return"));
-                                 
-                                        if (local_return != null){
-                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(local_return));
-                                        } else {
-                                           throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
-                                        }
-                                    
+                            
+                            
+                                    if (local_return==null){
+                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
+                                    }
+                                    elementList.add(local_return);
+                                
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -444,13 +446,11 @@
                                 
                                     if (reader.isStartElement() && new javax.xml.namespace.QName("","return").equals(reader.getName())){
                                 
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.set_return(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                              
-                                        reader.next();
-                                    
+                                     object.set_return(org.apache.axis2.databinding.utils.ConverterUtil.getAnyTypeObject(reader,
+                                                org.simpl.rrs.webservices.ExtensionMapper.class));
+                                       
+                                         reader.next();
+                                     
                               }  // End of if for expected property start element
                                 
                                 else{

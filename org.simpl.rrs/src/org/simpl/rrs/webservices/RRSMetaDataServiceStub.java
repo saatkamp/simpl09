@@ -154,7 +154,7 @@
                      * Auto generated method signature
                      * 
                      * @see org.simpl.rrs.webservices.RRSMetaDataService#getAvailableAdapters
-                     * @param getAvailableAdapters82
+                     * @param getAvailableAdapters42
                     
                      */
 
@@ -162,7 +162,7 @@
 
                             public  org.simpl.rrs.webservices.GetAvailableAdaptersResponse getAvailableAdapters(
 
-                            org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters82)
+                            org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters42)
                         
 
                     throws java.rmi.RemoteException
@@ -189,7 +189,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAvailableAdapters82,
+                                                    getAvailableAdapters42,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "getAvailableAdapters")));
                                                 
@@ -273,12 +273,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see org.simpl.rrs.webservices.RRSMetaDataService#startgetAvailableAdapters
-                    * @param getAvailableAdapters82
+                    * @param getAvailableAdapters42
                 
                 */
                 public  void startgetAvailableAdapters(
 
-                 org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters82,
+                 org.simpl.rrs.webservices.GetAvailableAdapters getAvailableAdapters42,
 
                   final org.simpl.rrs.webservices.RRSMetaDataServiceCallbackHandler callback)
 
@@ -303,7 +303,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAvailableAdapters82,
+                                                    getAvailableAdapters42,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "getAvailableAdapters")));
                                                 
@@ -419,7 +419,7 @@
                      * Auto generated method signature
                      * 
                      * @see org.simpl.rrs.webservices.RRSMetaDataService#getAllEPR
-                     * @param getAllEPR84
+                     * @param getAllEPR44
                     
                      */
 
@@ -427,7 +427,7 @@
 
                             public  org.simpl.rrs.webservices.GetAllEPRResponse getAllEPR(
 
-                            org.simpl.rrs.webservices.GetAllEPR getAllEPR84)
+                            org.simpl.rrs.webservices.GetAllEPR getAllEPR44)
                         
 
                     throws java.rmi.RemoteException
@@ -454,7 +454,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAllEPR84,
+                                                    getAllEPR44,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "getAllEPR")));
                                                 
@@ -538,12 +538,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see org.simpl.rrs.webservices.RRSMetaDataService#startgetAllEPR
-                    * @param getAllEPR84
+                    * @param getAllEPR44
                 
                 */
                 public  void startgetAllEPR(
 
-                 org.simpl.rrs.webservices.GetAllEPR getAllEPR84,
+                 org.simpl.rrs.webservices.GetAllEPR getAllEPR44,
 
                   final org.simpl.rrs.webservices.RRSMetaDataServiceCallbackHandler callback)
 
@@ -568,7 +568,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getAllEPR84,
+                                                    getAllEPR44,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "getAllEPR")));
                                                 
@@ -684,7 +684,7 @@
                      * Auto generated method signature
                      * 
                      * @see org.simpl.rrs.webservices.RRSMetaDataService#getEPR
-                     * @param getEPR86
+                     * @param getEPR46
                     
                      */
 
@@ -692,7 +692,7 @@
 
                             public  org.simpl.rrs.webservices.GetEPRResponse getEPR(
 
-                            org.simpl.rrs.webservices.GetEPR getEPR86)
+                            org.simpl.rrs.webservices.GetEPR getEPR46)
                         
 
                     throws java.rmi.RemoteException
@@ -719,7 +719,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getEPR86,
+                                                    getEPR46,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "getEPR")));
                                                 
@@ -803,12 +803,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see org.simpl.rrs.webservices.RRSMetaDataService#startgetEPR
-                    * @param getEPR86
+                    * @param getEPR46
                 
                 */
                 public  void startgetEPR(
 
-                 org.simpl.rrs.webservices.GetEPR getEPR86,
+                 org.simpl.rrs.webservices.GetEPR getEPR46,
 
                   final org.simpl.rrs.webservices.RRSMetaDataServiceCallbackHandler callback)
 
@@ -833,7 +833,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    getEPR86,
+                                                    getEPR46,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "getEPR")));
                                                 

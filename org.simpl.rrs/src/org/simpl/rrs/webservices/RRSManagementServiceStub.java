@@ -154,7 +154,7 @@
                      * Auto generated method signature
                      * 
                      * @see org.simpl.rrs.webservices.RRSManagementService#update
-                     * @param update106
+                     * @param update42
                     
                      */
 
@@ -162,7 +162,7 @@
 
                             public  org.simpl.rrs.webservices.UpdateResponse update(
 
-                            org.simpl.rrs.webservices.Update update106)
+                            org.simpl.rrs.webservices.Update update42)
                         
 
                     throws java.rmi.RemoteException
@@ -189,7 +189,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    update106,
+                                                    update42,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "update")));
                                                 
@@ -273,12 +273,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see org.simpl.rrs.webservices.RRSManagementService#startupdate
-                    * @param update106
+                    * @param update42
                 
                 */
                 public  void startupdate(
 
-                 org.simpl.rrs.webservices.Update update106,
+                 org.simpl.rrs.webservices.Update update42,
 
                   final org.simpl.rrs.webservices.RRSManagementServiceCallbackHandler callback)
 
@@ -303,7 +303,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    update106,
+                                                    update42,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "update")));
                                                 
@@ -419,7 +419,7 @@
                      * Auto generated method signature
                      * 
                      * @see org.simpl.rrs.webservices.RRSManagementService#delete
-                     * @param delete108
+                     * @param delete44
                     
                      */
 
@@ -427,7 +427,7 @@
 
                             public  org.simpl.rrs.webservices.DeleteResponse delete(
 
-                            org.simpl.rrs.webservices.Delete delete108)
+                            org.simpl.rrs.webservices.Delete delete44)
                         
 
                     throws java.rmi.RemoteException
@@ -454,7 +454,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    delete108,
+                                                    delete44,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "delete")));
                                                 
@@ -538,12 +538,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see org.simpl.rrs.webservices.RRSManagementService#startdelete
-                    * @param delete108
+                    * @param delete44
                 
                 */
                 public  void startdelete(
 
-                 org.simpl.rrs.webservices.Delete delete108,
+                 org.simpl.rrs.webservices.Delete delete44,
 
                   final org.simpl.rrs.webservices.RRSManagementServiceCallbackHandler callback)
 
@@ -568,7 +568,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    delete108,
+                                                    delete44,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "delete")));
                                                 
@@ -684,7 +684,7 @@
                      * Auto generated method signature
                      * 
                      * @see org.simpl.rrs.webservices.RRSManagementService#insert
-                     * @param insert110
+                     * @param insert46
                     
                      */
 
@@ -692,7 +692,7 @@
 
                             public  org.simpl.rrs.webservices.InsertResponse insert(
 
-                            org.simpl.rrs.webservices.Insert insert110)
+                            org.simpl.rrs.webservices.Insert insert46)
                         
 
                     throws java.rmi.RemoteException
@@ -719,7 +719,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insert110,
+                                                    insert46,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "insert")));
                                                 
@@ -803,12 +803,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see org.simpl.rrs.webservices.RRSManagementService#startinsert
-                    * @param insert110
+                    * @param insert46
                 
                 */
                 public  void startinsert(
 
-                 org.simpl.rrs.webservices.Insert insert110,
+                 org.simpl.rrs.webservices.Insert insert46,
 
                   final org.simpl.rrs.webservices.RRSManagementServiceCallbackHandler callback)
 
@@ -833,7 +833,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    insert110,
+                                                    insert46,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "insert")));
                                                 
