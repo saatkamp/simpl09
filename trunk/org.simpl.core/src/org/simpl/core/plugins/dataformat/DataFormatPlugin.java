@@ -75,9 +75,9 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
+    
     dataObject = DataFactory.INSTANCE.create(
-        "http://org.simpl.core/plugins/dataformat/DataFormat", this.schemaType);
+        "http://org.simpl.core/plugins/dataformat/" + this.getType() + "DataFormat", this.schemaType);
 
     // write the format type to the data object if possible
     try {

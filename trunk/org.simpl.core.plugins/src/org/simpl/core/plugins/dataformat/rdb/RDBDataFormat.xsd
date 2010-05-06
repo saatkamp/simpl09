@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xsd:schema
-	targetNamespace="http://org.simpl.core/plugins/dataformat/DataFormat"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:das="http:///org.apache.tuscany.das.rdb/das" 
-	xmlns="http://org.simpl.core/plugins/dataformat/DataFormat" 
-	xmlns:sdo="commonj.sdo"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	targetNamespace="http://org.simpl.core/plugins/dataformat/RDBDataFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:das="http:///org.apache.tuscany.das.rdb/das" xmlns="http://org.simpl.core/plugins/dataformat/RDBDataFormat" xmlns:sdo="commonj.sdo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<xsd:annotation>
 		<xsd:documentation></xsd:documentation>

@@ -17,8 +17,8 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
    * Initialize the plug-in.
    */
   public RDBCSVDataFormatConverter() {
-    this.setFromDataFormat("RDB");
-    this.setToDataFormat("CSV");
+    this.setToDataFormat("RDB");
+    this.setFromDataFormat("CSV");
   }
 
   /*
@@ -31,7 +31,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
   public DataObject convertFrom(DataObject dataObject) {
     DataObject fromDataObject = this.getFromDataFormat().getSDO();    
     
-    // TODO: From CSV to Tuscany
+    // TODO: From CSV to RDB
     
     return null;
   }
@@ -46,7 +46,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
   public DataObject convertTo(DataObject dataObject) {
     DataObject toDataObject = this.getToDataFormat().getSDO();
 
-    // TODO: From Tuscany to CSV
+    // TODO: From RDB to CSV
     
     return null;
   }
