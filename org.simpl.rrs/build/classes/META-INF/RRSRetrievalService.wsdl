@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="RRSService" targetNamespace="http://webservices.rrs.simpl.org/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservices.rrs.simpl.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+			<xsd:import namespace="http://webservices.rrs.simpl.org/" schemaLocation="RRSService_schema1.xsd"/>
+		</xsd:schema>
+  </types>
+  <message name="NewOperationResponse">
+    <part name="NewOperationResponse" type="xsd:string">
+    </part>
+  </message>
+  <message name="updateResponse">
+    <part name="return" type="xsd:boolean">
+    </part>
+  </message>
+  <message name="deleteResponse">
+    <part name="return" type="xsd:boolean">
+    </part>
+  </message>
+  <message name="getAvailableAdapters">
+  </message>
+  <message name="insert">
+    <part name="epr" type="tns:EPR">
+    </part>
+  </message>
+  <message name="delete">
+    <part name="epr" type="tns:EPR">
+    </part>
+  </message>
+  <message name="get">
+    <part name="EPR" type="tns:EPR">
+    </part>
+  </message>
+  <message name="getEPR">
+    <part name="eprName" type="xsd:string">
+    </part>
+  </message>
+  <message name="NewOperationRequest">
+    <part name="NewOperationRequest" type="xsd:string">
+    </part>
+  </message>
+  <message name="getEPRResponse">
+    <part name="return" type="tns:EPR">
+    </part>
+  </message>
+  <message name="update">
+    <part name="epr" type="tns:EPR">
+    </part>
+  </message>
+  <message name="getAllEPRResponse">
+    <part name="return" type="tns:EPRArray">
+    </part>
+  </message>
+  <message name="getAllEPR">
+  </message>
+  <message name="getResponse">
+    <part name="return" type="xsd:string">
+    </part>
+  </message>
+  <message name="getAvailableAdaptersResponse">
+    <part name="return" type="tns:stringArray">
+    </part>
+  </message>
+  <message name="insertResponse">
+    <part name="return" type="xsd:boolean">
+    </part>
+  </message>
+  <portType name="RRSRetrievalService">
+    <operation name="get">
+      <input message="tns:get">
+    </input>
+      <output message="tns:getResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="RRSRetrievalServicePortBinding" type="tns:RRSRetrievalService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="get">
+      <soap:operation soapAction="get"/>
+      <input>
+        <soap:body use="literal" namespace="http://webservices.rrs.simpl.org/"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservices.rrs.simpl.org/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="RRSRetrievalService">
+    <port name="RRSRetrievalServicePort" binding="tns:RRSRetrievalServicePortBinding">
+      <soap:address location="http://localhost:8080/axis2/services/RRSRetrievalService?wsdl"/>
+    </port>
+  </service>
+</definitions>
