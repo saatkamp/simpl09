@@ -11,6 +11,7 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.rdb"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.datasource.fs"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.fs"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;au.com.bytecode.opencsv"/>

@@ -34,7 +34,7 @@ import commonj.sdo.helper.XSDHelper;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataSourceServicePlugin implements DataSourceService {
+public abstract class DataSourceServicePlugin<S, T> implements DataSourceService<S, T> {
   /**
    * Type of the supported data source (database, file system, ...).
    */

@@ -59,7 +59,7 @@ public class DataFormatProvider {
 
     while (pluginIterator.hasNext()) {
       try {
-        dataFormatServiceInstance = (DataFormatPlugin<Object, Object>) Class.forName(
+        dataFormatServiceInstance = (DataFormatPlugin) Class.forName(
             (String) pluginIterator.next()).newInstance();
         dataFormatType = dataFormatServiceInstance.getType();
 

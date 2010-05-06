@@ -27,7 +27,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
+public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<File, File> {
   /**
    * Runtime to execute commands on the file system.
    */
@@ -41,7 +41,6 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
     this.setMetaDataSchemaType("tFilesystemMetaData");
     this.addSubtype("Windows Local");
     this.addLanguage("Windows Local", "Shell");
-    this.setDataFormat("CSV");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -64,6 +63,7 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
       return false;
     }
 
+    // execution is successful if no error occurs
     return true;
   }
 
@@ -73,23 +73,9 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
    * java.lang.String)
    */
   @Override
-  public DataObject retrieveData(DataSource dataSource, String file)
+  public File retrieveData(DataSource dataSource, String file)
       throws ConnectionException {
-    DataObject dataObject = null;
-    File fsFile = null;
-
-    if (!dataSource.getAddress().equals("")) {
-      fsFile = new File(dataSource.getAddress() + File.separator + file);
-    } else {
-      fsFile = new File(file);
-    }
-
-    // convert file to the csv data format
-    if (fsFile != null) {
-      dataObject = this.getDataFormat().toSDO(fsFile);
-    }
-
-    return dataObject;
+    return new File(file);
   }
 
   /*
@@ -98,20 +84,9 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
    * commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(DataSource dataSource, DataObject data)
+  public boolean writeBack(DataSource dataSource, File file)
       throws ConnectionException {
-    boolean writeBack = false;
-    File tempFile = (File) this.getDataFormat().fromSDO(data);
-    String dir = "";
-
-    if (!dataSource.getAddress().equals("")) {
-      dir = dataSource.getAddress() + File.separator;
-    }
-
-    // move temp file to given dir
-    writeBack = tempFile.renameTo(new File(dir + data.getString("filename")));
-
-    return writeBack;
+    return file.exists();
   }
 
   /*
@@ -121,18 +96,17 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin {
    * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data, String target)
+  public boolean writeData(DataSource dataSource, File dataFile, String target)
       throws ConnectionException {
-    File tempFile = (File) this.getDataFormat().fromSDO(data);
     File targetFile = null;
-    String dir = "";
-
+    String dir = null;
+    
     if (!dataSource.getAddress().equals("")) {
       dir = dataSource.getAddress() + File.separator;
     }
     
     targetFile = new File(dir + target);
-    tempFile.renameTo(targetFile);
+    dataFile.renameTo(targetFile);
 
     return targetFile.exists();
   }

@@ -144,6 +144,48 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     return statements;
   }
 
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.services.dataformat.DataFormat#createTarget()
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public String getCreateTargetStatement(DataObject data, String target) {
+    List<DataObject> tables = data.getList("table");
+    List<DataObject> columns = null;
+    List<String> primaryKeys = null;
+    String createTargetStatement = null;
+
+    // build a create statement
+    for (DataObject table : tables) {
+      columns = (List<DataObject>) table.getList("column");
+      primaryKeys = (List<String>) table.getList("primaryKey");
+
+      createTargetStatement = "CREATE TABLE " + target + " (";
+
+      // create table with columns
+      for (DataObject column : columns) {
+        createTargetStatement += column.getString("name") + " "
+            + column.getString("type") + ",";
+      }
+
+      // add primary keys
+      createTargetStatement += " PRIMARY KEY (";
+
+      for (int i = 0; i < primaryKeys.size(); i++) {
+        createTargetStatement += primaryKeys.get(i);
+
+        if (i < primaryKeys.size() - 1) {
+          createTargetStatement += ",";
+        }
+      }
+
+      createTargetStatement += "))";
+    }
+
+    return createTargetStatement;
+  }
+
   /**
    * Searches for a primary key value in the columns of a table.
    * 
@@ -228,7 +270,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
     try {
       columns = dbMetaData.getColumns(null, null, tableName, null);
-      
+
       while (columns.next()) {
         if (columns.getString("COLUMN_NAME").equals(columnName)) {
           size = columns.getInt("COLUMN_SIZE");

@@ -26,7 +26,7 @@ public class DataSourceServiceProvider {
    * Maps the data source service types to a list of supporting data source plugin
    * instances.
    */
-  private static HashMap<String, List<DataSourceServicePlugin>> dataSourceServices = new HashMap<String, List<DataSourceServicePlugin>>();
+  private static HashMap<String, List<DataSourceServicePlugin<Object, Object>>> dataSourceServices = new HashMap<String, List<DataSourceServicePlugin<Object, Object>>>();
 
   /**
    * Initialize all data source service plugins.
@@ -43,14 +43,13 @@ public class DataSourceServiceProvider {
    * @param dsSubtype
    * @return
    */
-  public static DataSourceService getInstance(String dsType, String dsSubtype) {
-    DataSourceServicePlugin dataSourceServiceInstance = null;
-    List<DataSourceServicePlugin> dataSourceServicePlugins = dataSourceServices
-        .get(dsType);
+  public static DataSourceService<Object, Object> getInstance(String dsType, String dsSubtype) {
+    DataSourceServicePlugin<Object, Object> dataSourceServiceInstance = null;
+    List<DataSourceServicePlugin<Object, Object>> dataSourceServicePlugins = dataSourceServices.get(dsType);
     List<String> dataSourcePluginSubtypes = null;
 
     // search for a plugin that supports the given subtype
-    for (DataSourceServicePlugin dataSourcePluginInstance : dataSourceServicePlugins) {
+    for (DataSourceServicePlugin<Object, Object> dataSourcePluginInstance : dataSourceServicePlugins) {
       dataSourcePluginSubtypes = dataSourcePluginInstance.getSubtypes();
 
       for (String subtype : dataSourcePluginSubtypes) {
@@ -67,22 +66,23 @@ public class DataSourceServiceProvider {
    * Loads instances of the data source plugins and retrieves information about their
    * supported types, subtypes and languages.
    */
+  @SuppressWarnings("unchecked")
   private static void loadPlugins() {
     List<String> plugins = SIMPLCore.getInstance().config().getDataSourceServicePlugins();
     Iterator<String> pluginIterator = plugins.iterator();
-    DataSourceServicePlugin dataSourceServiceInstance;
+    DataSourceServicePlugin<Object, Object> dataSourceServiceInstance;
     String dataSourceType = null;
 
     while (pluginIterator.hasNext()) {
       try {
-        dataSourceServiceInstance = (DataSourceServicePlugin) Class.forName(
+        dataSourceServiceInstance = (DataSourceServicePlugin<Object, Object>) Class.forName(
             (String) pluginIterator.next()).newInstance();
         dataSourceType = dataSourceServiceInstance.getType();
 
         if (dataSourceServices.containsKey(dataSourceType)) {
           dataSourceServices.get(dataSourceType).add(dataSourceServiceInstance);
         } else {
-          List<DataSourceServicePlugin> dataSourceServicePluginList = new ArrayList<DataSourceServicePlugin>();
+          List<DataSourceServicePlugin<Object, Object>> dataSourceServicePluginList = new ArrayList<DataSourceServicePlugin<Object, Object>>();
           dataSourceServicePluginList.add(dataSourceServiceInstance);
           dataSourceServices.put(dataSourceType, dataSourceServicePluginList);
         }
@@ -117,10 +117,10 @@ public class DataSourceServiceProvider {
   public static List<String> getSubTypes(String dsType) {
     List<String> dataSourceSubtypes = new ArrayList<String>();
 
-    for (DataSourceServicePlugin dataSourceServicePlugin : dataSourceServices.get(dsType)) {
-      for (String dataSourceSubtype : dataSourceServicePlugin.getSubtypes()) {
+    for (DataSourceServicePlugin<Object, Object> dataSourceServicePlugin : dataSourceServices.get(dsType)) {
+      for (Object dataSourceSubtype : dataSourceServicePlugin.getSubtypes()) {
         if (!dataSourceSubtypes.contains(dataSourceSubtype)) {
-          dataSourceSubtypes.add(dataSourceSubtype);
+          dataSourceSubtypes.add((String)dataSourceSubtype);
         }
       }
     }
@@ -138,7 +138,7 @@ public class DataSourceServiceProvider {
     List<String> dataSourceLanguages = new ArrayList<String>();
 
     for (String dataSourceType : dataSourceServices.keySet()) {
-      for (DataSourceServicePlugin dataSourceServicePlugin : dataSourceServices
+      for (DataSourceServicePlugin<Object, Object> dataSourceServicePlugin : dataSourceServices
           .get(dataSourceType)) {
         if (dataSourceServicePlugin.getLanguages().containsKey(dsSubtype)) {
           for (String language : dataSourceServicePlugin.getLanguages().get(dsSubtype)) {
