@@ -91,7 +91,7 @@ public class Datasource {
 
     dataObject = (DataObject) Parameter.deserialize(data);
     success = SIMPLCore.getInstance().dataSourceService().writeData(dataSource,
-        dataObject, target);
+        dataObject);
 
     return success;
   }
