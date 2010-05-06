@@ -28,12 +28,11 @@ public class RemoveEPRHandler extends AbstractHandler implements IHandler {
 				.getSelection();
 
 		if (selection != null && selection instanceof IStructuredSelection) {
-			List<EPR> references = ModelProvider.getInstance().getReferences();
 			IStructuredSelection sel = (IStructuredSelection) selection;
 
 			for (Iterator<EPR> iterator = sel.iterator(); iterator.hasNext();) {
 				EPR reference = iterator.next();
-				references.remove(reference);
+				ModelProvider.getInstance().getReferences().remove(reference);
 				ModelProvider.getInstance().deleteReference(reference);
 			}
 			view.getViewer().refresh();

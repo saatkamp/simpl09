@@ -28,18 +28,18 @@ public class EditEPRHandler extends AbstractHandler implements IHandler {
 				.getSelection();
 
 		if (selection != null && selection instanceof IStructuredSelection) {
-			List<EPR> references = ModelProvider.getInstance().getReferences();
+			
 			IStructuredSelection sel = (IStructuredSelection) selection;
 
 			if (sel.size() == 1) {
 				EPR reference = (EPR) sel.getFirstElement();
-				references.remove(reference);
+				ModelProvider.getInstance().getReferences().remove(reference);
 
 				EditReferenceDialog dialog = new EditReferenceDialog(window
 						.getShell(), reference);
 				dialog.open();
 
-				references.add(dialog.getReference());
+				ModelProvider.getInstance().getReferences().add(dialog.getReference());
 				
 				ModelProvider.getInstance().updateReference(dialog.getReference());
 			} 

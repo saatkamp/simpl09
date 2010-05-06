@@ -29,12 +29,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "stringArray", namespace = "http://jaxb.dev.java.net/array", propOrder = {
+@XmlType(name = "stringArray", propOrder = {
     "item"
 })
 public class StringArray {
 
-    @XmlElement(namespace = "", nillable = true)
+    @XmlElement(nillable = true)
     protected List<String> item;
 
     /**

@@ -90,7 +90,7 @@ public class ReferenceManagementView extends ViewPart {
 	private void createColumns(final TableViewer viewer) {
 
 		String[] titles = { "Name", "RRS-Address", "Adapter", "Data source address", "Statement" };
-		int[] bounds = { 100, 150, 100, 150, 300 };
+		int[] bounds = { 100, 150, 270, 170, 300 };
 
 		for (int i = 0; i < titles.length; i++) {
 			final int index = i;
