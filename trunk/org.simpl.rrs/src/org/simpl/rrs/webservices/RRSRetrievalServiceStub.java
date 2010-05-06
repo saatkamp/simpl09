@@ -130,7 +130,7 @@
                      * Auto generated method signature
                      * 
                      * @see org.simpl.rrs.webservices.RRSRetrievalService#get
-                     * @param get122
+                     * @param get14
                     
                      */
 
@@ -138,7 +138,7 @@
 
                             public  org.simpl.rrs.webservices.GetResponse get(
 
-                            org.simpl.rrs.webservices.Get get122)
+                            org.simpl.rrs.webservices.Get get14)
                         
 
                     throws java.rmi.RemoteException
@@ -165,7 +165,7 @@
                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    get122,
+                                                    get14,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "get")));
                                                 
@@ -249,12 +249,12 @@
                 * Auto generated method signature for Asynchronous Invocations
                 * 
                 * @see org.simpl.rrs.webservices.RRSRetrievalService#startget
-                    * @param get122
+                    * @param get14
                 
                 */
                 public  void startget(
 
-                 org.simpl.rrs.webservices.Get get122,
+                 org.simpl.rrs.webservices.Get get14,
 
                   final org.simpl.rrs.webservices.RRSRetrievalServiceCallbackHandler callback)
 
@@ -279,7 +279,7 @@
                                     
                                                     
                                                     env = toEnvelope(getFactory(_operationClient.getOptions().getSoapVersionURI()),
-                                                    get122,
+                                                    get14,
                                                     optimizeContent(new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/",
                                                     "get")));
                                                 

@@ -17,6 +17,7 @@ import java.io.ByteArrayOutputStream;
  * @version $Id: Parameter.java 1033 2010-03-31 13:41:46Z michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
+@Deprecated
 public class Parameter {
   /**
    * Serializes a java object to a XML encoded object string.

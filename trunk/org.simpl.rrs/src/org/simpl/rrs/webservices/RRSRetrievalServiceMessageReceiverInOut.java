@@ -38,20 +38,20 @@
 
             if("get".equals(methodName)){
                 
-                org.simpl.rrs.webservices.GetResponse getResponse49 = null;
+                org.simpl.rrs.webservices.GetResponse getResponse1 = null;
 	                        org.simpl.rrs.webservices.Get wrappedParam =
                                                              (org.simpl.rrs.webservices.Get)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.simpl.rrs.webservices.Get.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               getResponse49 =
+                                               getResponse1 =
                                                    
                                                    
                                                          skel.get(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), getResponse49, false);
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), getResponse1, false);
                                     
             } else {
               throw new java.lang.RuntimeException("method not found");

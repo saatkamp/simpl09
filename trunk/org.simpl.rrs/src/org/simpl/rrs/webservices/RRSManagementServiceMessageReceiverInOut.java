@@ -38,56 +38,56 @@
 
             if("update".equals(methodName)){
                 
-                org.simpl.rrs.webservices.UpdateResponse updateResponse25 = null;
+                org.simpl.rrs.webservices.UpdateResponse updateResponse1 = null;
 	                        org.simpl.rrs.webservices.Update wrappedParam =
                                                              (org.simpl.rrs.webservices.Update)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.simpl.rrs.webservices.Update.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               updateResponse25 =
+                                               updateResponse1 =
                                                    
                                                    
                                                          skel.update(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), updateResponse25, false);
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), updateResponse1, false);
                                     } else 
 
             if("delete".equals(methodName)){
                 
-                org.simpl.rrs.webservices.DeleteResponse deleteResponse27 = null;
+                org.simpl.rrs.webservices.DeleteResponse deleteResponse3 = null;
 	                        org.simpl.rrs.webservices.Delete wrappedParam =
                                                              (org.simpl.rrs.webservices.Delete)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.simpl.rrs.webservices.Delete.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               deleteResponse27 =
+                                               deleteResponse3 =
                                                    
                                                    
                                                          skel.delete(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), deleteResponse27, false);
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), deleteResponse3, false);
                                     } else 
 
             if("insert".equals(methodName)){
                 
-                org.simpl.rrs.webservices.InsertResponse insertResponse29 = null;
+                org.simpl.rrs.webservices.InsertResponse insertResponse5 = null;
 	                        org.simpl.rrs.webservices.Insert wrappedParam =
                                                              (org.simpl.rrs.webservices.Insert)fromOM(
                                     msgContext.getEnvelope().getBody().getFirstElement(),
                                     org.simpl.rrs.webservices.Insert.class,
                                     getEnvelopeNamespaces(msgContext.getEnvelope()));
                                                 
-                                               insertResponse29 =
+                                               insertResponse5 =
                                                    
                                                    
                                                          skel.insert(wrappedParam)
                                                     ;
                                             
-                                        envelope = toEnvelope(getSOAPFactory(msgContext), insertResponse29, false);
+                                        envelope = toEnvelope(getSOAPFactory(msgContext), insertResponse5, false);
                                     
             } else {
               throw new java.lang.RuntimeException("method not found");
