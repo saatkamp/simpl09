@@ -29,10 +29,9 @@ public class ModelProvider {
 	}
 
 	public static synchronized ModelProvider getInstance() {
-		if (content != null) {
-			return content;
+		if (content == null) {
+			content = new ModelProvider();
 		}
-		content = new ModelProvider();
 		return content;
 	}
 
@@ -72,7 +71,7 @@ public class ModelProvider {
      */
 	public void refresh() {
 		references.clear();
-		references = loadAllReferences();
+		references.addAll(loadAllReferences());
 	}
 
 }

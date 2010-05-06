@@ -19,12 +19,10 @@ public class AddEPRHandler extends AbstractHandler implements IHandler {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
-		List<EPR> references = ModelProvider.getInstance().getReferences();
 		AddReferenceDialog dialog = new AddReferenceDialog(window.getShell());
 		dialog.open();
 		if (dialog.getReference() != null) {
-			references.add(dialog.getReference());
-			
+			ModelProvider.getInstance().getReferences().add(dialog.getReference());
 			ModelProvider.getInstance().insertReference(dialog.getReference());
 			
 			// Updating the display in the view
