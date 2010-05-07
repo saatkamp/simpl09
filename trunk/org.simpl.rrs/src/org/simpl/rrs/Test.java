@@ -1,10 +1,16 @@
 package org.simpl.rrs;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
+import java.util.StringTokenizer;
 
+import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.webservices.EPR;
 import org.simpl.rrs.webservices.ReferenceParameters;
 import org.simpl.rrs.webservices.ReferenceProperties;
+
+import commonj.sdo.DataObject;
 
 public class Test {
 	
@@ -26,6 +32,38 @@ public class Test {
 
 	}
 	
+	public static LinkedHashMap<String, String> EPRtoHM(EPR epr) {
+		LinkedHashMap<String, String> HM = new LinkedHashMap<String, String>();
+
+		HM.put("referenceName",
+				epr.getReferenceParameters().getReferenceName() == null ? ""
+						: epr.getReferenceParameters().getReferenceName());
+		HM.put("address", epr.getAddress() == null ? "" : epr.getAddress().toString());
+		HM.put("adapterType", epr.getReferenceProperties()
+				.getResolutionSystem() == null ? "" : epr
+				.getReferenceProperties().getResolutionSystem());
+		HM.put("statement",
+				epr.getReferenceParameters().getStatement() == null ? "" : epr
+						.getReferenceParameters().getStatement());
+		HM.put("dsAddress",
+				epr.getReferenceParameters().getDsAddress() == null ? "" : epr
+						.getReferenceParameters().getDsAddress());
+		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType()
+				.toString());
+		if (epr.getServiceName() != null) {
+			HM.put("serviceName", epr.getServiceName().getQName() == null ? ""
+					: epr.getServiceName().getQName().toString());
+			HM.put("portName", epr.getServiceName().getPortName() == null ? ""
+					: epr.getServiceName().getPortName().toString());
+		} else {
+			HM.put("serviceName", "");
+			HM.put("portName", "");
+		}
+		HM.put("policy", epr.getPolicy() == null ? "" : epr.getPolicy());
+
+		return HM;
+	}
+	
 	public static void main(String argv[]) throws SQLException {
 
 		
@@ -44,16 +82,35 @@ public class Test {
 		@SuppressWarnings("unused")
 		EPR EPR4 = CreateEPR("C:/eclipse/workspace/org.simpl.rrs/rrsDB", "RDB:Derby:MySQL", "test2", "SELECT * FROM ReferenceTable");
 		
-//
+//		RRS.getInstance().metadataService().getAllEPR();
 //		RRS.getInstance().managementService().Insert(EPR1);
 //		RRS.getInstance().managementService().Insert(EPR2);
 //		RRS.getInstance().managementService().Update(EPR3);
+//		System.out.println(RRS.getInstance().metadataService().getAllEPR());
+		
+		
+		
+		LinkedHashMap<String, String> EPRHM = EPRtoHM(EPR4);
+		System.out.println(EPRHM.get("dsAddress"));
 
+		String dsType = null;
+		String dsSubtype = null;
+		@SuppressWarnings("unused")
+		String dsLanguage = null;
+
+		StringTokenizer st = new StringTokenizer(EPRHM.get("adapterType"), ":");
+		dsType = st.nextToken();
+		dsSubtype = st.nextToken();
+		dsLanguage = st.nextToken();
+
+		// Hier der ganze selbe Mist wie bei DatasourceService, Adapter
+		// auswählen
+		// anhand von Type und Subtype, und Daten holen...
 		
 		
-		RRS.getInstance().retrievalService().get(EPR4);
-		RRS.getInstance().metadataService().getAllEPR();
-		RRS.getInstance().metadataService().getEPR("test2");
+//		RRS.getInstance().retrievalService().get(EPR4);
+
+//		RRS.getInstance().metadataService().getEPR("test2");
 		
 		}
 }
