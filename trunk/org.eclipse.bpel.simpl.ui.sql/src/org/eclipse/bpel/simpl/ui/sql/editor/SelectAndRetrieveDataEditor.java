@@ -352,7 +352,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
 						TableItem tableItem=new TableItem(tableOfColumnsAndValues, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName2.getText(),comboOperationName.getText(),comboDistAll.getText(),textValueForColumn.getText()});
+						tableItem.setText(new String[]{comboColumnName5.getText(),comboOperationName.getText(),comboDistAll.getText(),textValueForColumn.getText()});
 						textValueForColumn.setText("");
 					}					
 				}
@@ -632,7 +632,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 					if(textValueForColumn2.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex2++);
 						tableItem.setText(new String[]{comboColumnName2.getText(),comboOperationName2.getText(),textValueForColumn2.getText()});
 						textValueForColumn2.setText("");
 					}					
@@ -643,7 +643,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 					if(textValueForColumn2.getText().length()>0){
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
-						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex++);
+						TableItem tableItem=new TableItem(tableOfColumnsAndValues2, SWT.NONE,tableIndex2++);
 						tableItem.setText(new String[]{comboColumnName2.getText(),comboOperationName2.getText(),textValueForColumn2.getText()});
 						textValueForColumn2.setText("");
 					}		
@@ -656,7 +656,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					tableOfColumnsAndValues2.getItem(tableOfColumnsAndValues2.getSelectionIndex()).dispose();
-					tableIndex--;
+					if(tableIndex2>0)tableIndex2--;
 					if(tableOfColumnsAndValues2.getItemCount()==10){
 						//tablsList.setEnabled(true);
 						
@@ -670,7 +670,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						//tablsList.setEnabled(true);
 						
 					}
-					tableIndex2--;
+					if(tableIndex2>0)tableIndex2--;
 				}
 			});
 			Composite titelPartOfTableCombo=new Composite(tableCompo, SWT.BOLD);
@@ -738,11 +738,11 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			insertColumsIntoStatment.addSelectionListener(new SelectionListener() {
 				
 				String operStat="";
-				String[] tmpString=null;
+				String[] tmpString=new String[2];
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					if(tableOfColumnsAndValues2.getItemCount()>10){
-						tableIndex=0;
+						tableIndex2=0;
 						//tablsList.setEnabled(true);
 						
 						TableItem[] arrayOfTableItems =tableOfColumnsAndValues2.getItems();
@@ -750,12 +750,15 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						//if(arrayOfTableItems.length>1) 	tmpString=" ,";
 						//else tmpString=" ";
 						//statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
-						
+						//tmpString[0]="test_table";
+						//tmpString[1]="test";
 						statementText.setText(statementText.getText()+"\r	FROM ");
 						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
 						statementText.setText(statementText.getText()+" "+tmpString[0]);
 						for(int i=1;i<arrayOfTableItems.length;i++){
 							if(arrayOfTableItems[i].getText(0).length()>0){
+								
+								
 								tmpString=SplitTheWordInTwo(arrayOfTableItems[i].getText(0));
 								statementText.setText(statementText.getText()+","+tmpString[0]);
 							}
@@ -901,7 +904,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
 						TableItem tableItem=new TableItem(tableOfColumnsAndValues3, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName3.getText(),comboOperationName3.getText()});
+						tableItem.setText(new String[]{comboColumnName3.getText(),comboOperationType.getText()});
 						//textValueForColumn3.setText("");
 					//}					
 				}
@@ -912,7 +915,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						//tablsList.setEnabled(false);
 						//valueCompo.setVisible(false);
 						TableItem tableItem=new TableItem(tableOfColumnsAndValues3, SWT.NONE,tableIndex++);
-						tableItem.setText(new String[]{comboColumnName3.getText(),comboOperationName3.getText()});
+						tableItem.setText(new String[]{comboColumnName3.getText(),comboOperationType.getText()});
 						//textValueForColumn3.setText("");
 					//}		
 				}
@@ -990,6 +993,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 				
 				String operStat="";
 				String[] tmpString=null;
+				ArrayList<String> listOFTablesNames=new ArrayList<String>();
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					if(tableOfColumnsAndValues3.getItemCount()>10){
@@ -1005,9 +1009,10 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						
 						statementText.setText(statementText.getText()+"\r	ORDER BY ");
 						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
+						listOFTablesNames.add(tmpString[0]);
 						if(arrayOfTableItems[0].getText(1).length()>0) {
 							
-							statementText.setText(statementText.getText()+","+arrayOfTableItems[0].getText(1)+" "+tmpString[1]);
+							statementText.setText(statementText.getText()+" "+arrayOfTableItems[0].getText(1)+" "+tmpString[1]);
 						}
 						else {
 							
@@ -1015,12 +1020,24 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						for(int i=1;i<arrayOfTableItems.length;i++){
 							if(arrayOfTableItems[i].getText(1).length()>0) {
 								tmpString=SplitTheWordInTwo(arrayOfTableItems[i].getText(0));
-								statementText.setText(statementText.getText()+" "+tmpString[1]+" "+arrayOfTableItems[i].getText(1));
+								listOFTablesNames.add(tmpString[0]);
+								statementText.setText(statementText.getText()+","+arrayOfTableItems[i].getText(1)+" "+tmpString[1]);
 								
 							}
 							else {
 								
-							}						}
+							}						
+						}
+						int listElement=1000;
+						statementText.setText(statementText.getText()+" FROM ");
+						for(int i=0;i<listOFTablesNames.size();i++){
+							//if((listOFTablesNames.get(i).length()>0)&&(listElement==1000)) listElement=i;
+								
+								if(i>0){statementText.setText(statementText.getText()+","+listOFTablesNames.get(i));}
+								else statementText.setText(statementText.getText()+listOFTablesNames.get(i));
+							
+						}
+						
 						addToListOfStatementTextChanges();
 						
 						
@@ -1032,9 +1049,15 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 //								statementText.setText(statementText.getText()+tmpString+arrayOfTableItems[i].getText(0).split(".")[0]);
 //							}
 //						}
-						
-						
+						//****************deleting all content of elements****
+						for(int i=0;i<listOFTablesNames.size();i++){
+							listOFTablesNames.remove(i);
+						}
+						comboColumnName3.removeAll();
 						DeleteContentOfTable3();
+						//****************************************************
+						
+						
 					}//end of if(...count>10)
 				}
 
@@ -1370,16 +1393,20 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		  * @return
 		  */
 		 private String[] SplitTheWordInTwo(String text) {
-			ArrayList<String> listOfLetters=new ArrayList<String>();
-			String[] arrayOFWords=new String[2];
-			int indexOfPoint = 1;
-			for(int i=0;i<text.length()-1;i++){
-				//listOfLetters.add(text.substring(i, i));
-				if(text.substring(i, i+1).equals(".")) indexOfPoint=i; 
+			 String[] arrayOFWords=new String[2];
+			 arrayOFWords[0]="";
+			 arrayOFWords[1]="";
+			 if(text.length()>1){	
+			 	ArrayList<String> listOfLetters=new ArrayList<String>();
+				
+				int indexOfPoint = 1;
+				for(int i=0;i<text.length()-1;i++){
+					//listOfLetters.add(text.substring(i, i));
+					if(text.substring(i, i+1).equals(".")) indexOfPoint=i; 
+				}
+				arrayOFWords[0]=text.substring(0,indexOfPoint);
+				arrayOFWords[1]=text.substring(indexOfPoint+1,text.length());
 			}
-			arrayOFWords[0]=text.substring(0,indexOfPoint);
-			arrayOFWords[1]=text.substring(indexOfPoint+1,text.length());
-			
 			return arrayOFWords;
 		  }
 
@@ -1416,6 +1443,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			for(int i=0;i<tableOfColumnsAndValues3.getItemCount();i++){
 				if(tableOfColumnsAndValues3.getItem(i).getText(0).length()>0){
 					tableOfColumnsAndValues3.getItem(i).dispose();
+					
 				}
 			}
 			
@@ -1701,7 +1729,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		//String tableName = "";
 		try {
 			//tableName = 
-			comboColumnName.removeAll();
+			comboColumnName2.removeAll();
 		} catch (Exception e) {
 			System.out.print("ERROR:"+e.getMessage());
 		}
@@ -1709,7 +1737,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
 			try {
-				comboColumnName.add(tableName+".Column" + loopIndex);
+				comboColumnName2.add(tableName+".Column" + loopIndex);
 			} catch (Exception e) {
 				System.out.print("ERROR:"+e.getMessage());
 			}

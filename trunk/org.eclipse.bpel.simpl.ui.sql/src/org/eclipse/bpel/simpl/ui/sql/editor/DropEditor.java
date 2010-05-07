@@ -14,6 +14,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -55,6 +56,7 @@ public class DropEditor extends AStatementEditor {
     int tableIndex=0; 
     Table tableOfColumnsAndValues;
     Composite valueCompo;
+    Combo restrictCascadeCombo,restrictCascadeCombo2;
    //******************************** 
 	
 	ArrayList<Button> buttonList=new ArrayList<Button>();
@@ -238,6 +240,12 @@ public class DropEditor extends AStatementEditor {
 			labelSchemaName =new Label(tableNameComposite, SWT.NONE);
 			labelSchemaName.setText("The handeld Schema/Table:");
 			textSchemaName=new Text(tableNameComposite, SWT.BORDER);
+			Label labelRestrictCascade =new Label(tableNameComposite, SWT.NONE);
+			labelRestrictCascade.setText("RESTRICT/CASCADE");
+			restrictCascadeCombo=new Combo(tableNameComposite, SWT.BORDER);
+			restrictCascadeCombo.add("RESTRICT");
+			restrictCascadeCombo.add("CASCADE");
+			
 			final Button insertSchemaName =new Button(tableNameComposite, SWT.NONE);
 			insertSchemaName.setText("Insert in Statement");
 			insertSchemaName.addSelectionListener(new SelectionListener() {
@@ -248,7 +256,7 @@ public class DropEditor extends AStatementEditor {
 					String kommaString=" ";
 					//buttonsCompo.setEnabled(true);
 					if(textSchemaName.getText().length()>0){
-						statementText.setText(statementText.getText()+kommaString+textSchemaName.getText());
+						statementText.setText(statementText.getText()+kommaString+textSchemaName.getText()+" "+restrictCascadeCombo.getText());
 						kommaString="\r			,";
 						tableNameComposite.setEnabled(false);
 						tablsList.setEnabled(false);
@@ -263,7 +271,7 @@ public class DropEditor extends AStatementEditor {
 					String kommaString=" ";
 					//buttonsCompo.setEnabled(true);
 					if(textSchemaName.getText().length()>0){
-						statementText.setText(statementText.getText()+kommaString+textSchemaName.getText());
+						statementText.setText(statementText.getText()+kommaString+textSchemaName.getText()+" "+restrictCascadeCombo.getText());
 						addToListOfStatementTextChanges();
 						kommaString="\r			,";
 						tableNameComposite.setEnabled(false);
@@ -284,7 +292,11 @@ public class DropEditor extends AStatementEditor {
 			tablsList2.setBounds(40, 20, 320, 100);
 			//tablsList2.setEnabled(false);
 			loadTheTablesIntoList2();
-			
+			Label labelRestrictCascade2 =new Label(tableNameComposite, SWT.NONE);
+			labelRestrictCascade2.setText("RESTRICT/CASCADE");
+			restrictCascadeCombo2=new Combo(tableNameComposite, SWT.BORDER);
+			restrictCascadeCombo2.add("RESTRICT");
+			restrictCascadeCombo2.add("CASCADE");
 			
 			
 			final Button insertTableName =new Button(composite, SWT.NONE);
@@ -296,7 +308,7 @@ public class DropEditor extends AStatementEditor {
 					if(tablsList2.getSelection().length>0){
 						String kommaString=" ";
 						for(int i=0;i<tablsList2.getSelectionCount();i++){
-							statementText.setText(statementText.getText()+kommaString+tablsList2.getSelection()[i]);
+							statementText.setText(statementText.getText()+kommaString+tablsList2.getSelection()[i]+" "+restrictCascadeCombo2.getText());
 							//addToListOfStatementTextChanges();
 							kommaString=",";
 						}
@@ -313,7 +325,7 @@ public class DropEditor extends AStatementEditor {
 					if(tablsList2.getSelection().length>0){
 						String kommaString=" ";
 						for(int i=0;i<tablsList2.getSelectionCount();i++){
-							statementText.setText(statementText.getText()+kommaString+tablsList.getSelection()[i]);
+							statementText.setText(statementText.getText()+kommaString+tablsList.getSelection()[i]+" "+restrictCascadeCombo2.getText());
 							addToListOfStatementTextChanges();
 							kommaString=",";
 						}

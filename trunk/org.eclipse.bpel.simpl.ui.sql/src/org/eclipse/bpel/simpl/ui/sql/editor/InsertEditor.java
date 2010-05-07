@@ -425,6 +425,7 @@ public class InsertEditor extends AStatementEditor {
 			insertColumsIntoStatment.setText("Insert to Statement");
 			insertColumsIntoStatment.addSelectionListener(new SelectionListener() {
 				
+				String theString[];
 				String tmpString="";
 				@Override
 				public void widgetSelected(SelectionEvent e) {
@@ -436,14 +437,15 @@ public class InsertEditor extends AStatementEditor {
 						//arrayOfTableItems[0].getText(0)
 						if(arrayOfTableItems.length>0) 	tmpString=" ,";
 						else tmpString=" ";
-						statementText.setText(statementText.getText()+ tablsList.getItem(tablsList.getSelectionIndex())+"(	");
+						statementText.setText(statementText.getText()+"\r	SELECT "+tablsList.getItem(tablsList.getSelectionIndex())+"(	");
 						if(arrayOfTableItems[0].getText(0).length()>0){
-							
-							statementText.setText(statementText.getText()+" "+arrayOfTableItems[0].getText(0));
+							theString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
+							statementText.setText(statementText.getText()+" "+theString[1]);
 							}
 						for(int i=1;i<arrayOfTableItems.length;i++){
 							if(arrayOfTableItems[i].getText(0).length()>0){	
-								statementText.setText(statementText.getText()+tmpString+arrayOfTableItems[i].getText(0));
+								theString=SplitTheWordInTwo(arrayOfTableItems[i].getText(0));
+								statementText.setText(statementText.getText()+tmpString+theString[1]);
 							}
 						}
 						statementText.setText(statementText.getText()+")\r");
@@ -734,7 +736,7 @@ public class InsertEditor extends AStatementEditor {
 						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
 						if(arrayOfTableItems[0].getText(1).length()>0) {
 							
-							System.out.print(tmpString[0]);
+							//System.out.print(tmpString[0]);
 							operStat=arrayOfTableItems[0].getText(1)+"("+tmpString[1]+")";
 						}
 						else operStat=tmpString[1];
@@ -754,7 +756,7 @@ public class InsertEditor extends AStatementEditor {
 						}
 						addToListOfStatementTextChanges();
 						
-						statementText.setText(statementText.getText()+" FROM ");
+						statementText.setText(statementText.getText()+"	FROM ");
 						tmpString=SplitTheWordInTwo(arrayOfTableItems[0].getText(0));
 						statementText.setText(statementText.getText()+" "+tmpString[0]);
 						for(int i=1;i<arrayOfTableItems.length;i++){
@@ -797,12 +799,35 @@ public class InsertEditor extends AStatementEditor {
 	    return composite;
 	  }
 	  
+	  /** 
+		  * splitting the word in table name and column name
+		  * @param text
+		  * @return
+		  */
+		 private String[] SplitTheWordInTwo(String text) {
+			 String[] arrayOFWords=new String[2];
+			 arrayOFWords[0]="";
+			 arrayOFWords[1]="";
+			 if(text.length()>1){	
+			 	ArrayList<String> listOfLetters=new ArrayList<String>();
+				
+				int indexOfPoint = 1;
+				for(int i=0;i<text.length()-1;i++){
+					//listOfLetters.add(text.substring(i, i));
+					if(text.substring(i, i+1).equals(".")) indexOfPoint=i; 
+				}
+				arrayOFWords[0]=text.substring(0,indexOfPoint);
+				arrayOFWords[1]=text.substring(indexOfPoint+1,text.length());
+			}
+			return arrayOFWords;
+		  }
+	  
 	 /** 
 	  * splitting the word in table name and column name
 	  * @param text
 	  * @return
 	  */
-	 private String[] SplitTheWordInTwo(String text) {
+	 private String[] SplitTheWordInTwo2(String text) {
 		ArrayList<String> listOfLetters=new ArrayList<String>();
 		String[] arrayOFWords=new String[2];
 		int indexOfPoint = 1;
@@ -1445,11 +1470,11 @@ public class InsertEditor extends AStatementEditor {
 	 */
 	private void loadTheTablesIntoList() {
 		
-		tablsList2.removeAll();
+		tablsList.removeAll();
 		
 		//zum testen***
 		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList2.add("Table" + loopIndex);
+			tablsList.add("Table" + loopIndex);
 		}
 		//*************
 		
@@ -1503,8 +1528,8 @@ public class InsertEditor extends AStatementEditor {
 		   * 
 		   * @param shell the parent shell
 		   */
-		   compoOfTabFolder=new Composite(compos, SWT.NONE);
-			tabFolder = new TabFolder(compoOfTabFolder, SWT.NONE);
+		   //compoOfTabFolder=new Composite(compos, SWT.NONE);
+			tabFolder = new TabFolder(compos, SWT.NONE);
 			
 		    // Create each tab and set its text, tool tip text,
 		    // image, and control
