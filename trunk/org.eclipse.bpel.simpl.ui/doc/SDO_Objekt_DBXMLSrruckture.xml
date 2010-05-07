@@ -3,7 +3,7 @@
 <soapenv:Body>
 <rpcOp:getMetaDataResponse
 xmlns:rpcOp="http://webservices.core.simpl.org/">
-<return><![CDATA[<?xml version="1.0" encoding="ASCII"?>
+<return><![CDATA[<?xml version="1.0" encoding="ASCII"?> 
 <sdo:dataObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:sdo="commonj.sdo"
 

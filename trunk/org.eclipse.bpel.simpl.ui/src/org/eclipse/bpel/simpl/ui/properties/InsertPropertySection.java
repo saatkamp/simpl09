@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import widgets.ElementsListPopUp;
+import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
 
 @SuppressWarnings("unused")
@@ -43,10 +43,10 @@ import widgets.LiveEditStyleText;
 public class InsertPropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
-	ElementsListPopUp tabelsPopWindowTables;
+	TablsListPopUp tabelsPopWindowTables;
 	
 	/** The tabels pop window bpel variables. */
-	ElementsListPopUp tabelsPopWindowBPELVariables;
+	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
@@ -261,7 +261,7 @@ public class InsertPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowBPELVariables=new ElementsListPopUp(statementText);
+				tabelsPopWindowBPELVariables=new TablsListPopUp(statementText);
 				//Display display2 = Display.getDefault();
 				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
@@ -289,7 +289,7 @@ public class InsertPropertySection extends DMActivityPropertySection {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 			
-				tabelsPopWindowTables=new ElementsListPopUp(statementText);
+				tabelsPopWindowTables=new TablsListPopUp(statementText);
 				tabelsPopWindowTables.setText("Select Tabel");
 				
 				

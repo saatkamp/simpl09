@@ -37,7 +37,8 @@ public class StatementEditor {
 	private AStatementEditor compositeClass = null;
 	private DMActivityPropertySection parentClass = null;
 
-	private StatementEditDialog statementEditDialogObjekt=new StatementEditDialog();
+	private StatementEditDialog statementEditDialogObjekt;
+	
 	/**
 	 * Instantiates a new statement editor.
 	 */
@@ -59,7 +60,8 @@ public class StatementEditor {
 	public StatementEditor(DMActivityPropertySection parent, String language,
 			String activity) {
 		createSShell();
-
+		//compositeClass = Application.getInstance().getEditorClass(language,
+		//		activity);
 		if (parent != null && language != null && activity != null) {
 			this.parentClass = parent;
 			compositeClass = Application.getInstance().getEditorClass(language,
@@ -73,6 +75,7 @@ public class StatementEditor {
 				compositeClass.createComposite(composite);
 			}
 		}
+		//compositeClass.createComposite(composite);
 		sShell.open();
 	}
 
@@ -133,6 +136,8 @@ public class StatementEditor {
 				if (compositeClass.getStatement() != null) {
 					parentClass.setStatement(compositeClass.getStatement());
 					parentClass.saveStatementToModel();
+					
+					statementEditDialogObjekt=new StatementEditDialog(compositeClass.getStatement(),parentClass);
 					statementEditDialogObjekt.openWindow();
 				}
 				sShell.close();

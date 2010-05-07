@@ -60,7 +60,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xsd.XSDTypeDefinition;
 
-import widgets.ElementsListPopUp;
+import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
 
 /**
@@ -71,10 +71,10 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	private VariableFilter fInputVariableFilter = new VariableFilter();
 	
 	/** The tabels pop window tables. */
-	ElementsListPopUp tabelsPopWindowTables;
+	TablsListPopUp tabelsPopWindowTables;
 	
 	/** The tabels pop window bpel variables. */
-	ElementsListPopUp tabelsPopWindowBPELVariables;
+	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
@@ -294,7 +294,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowBPELVariables=new ElementsListPopUp(statementText);
+				tabelsPopWindowBPELVariables=new TablsListPopUp(statementText);
 				//Display display2 = Display.getDefault();
 				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
@@ -324,7 +324,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 				// TODO Auto-generated method stub
 				//Display tablesDisplay =new Display();
 				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
-				tabelsPopWindowTables=new ElementsListPopUp(statementText);
+				tabelsPopWindowTables=new TablsListPopUp(statementText);
 				//Display display2 = Display.getDefault();
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
