@@ -105,7 +105,7 @@ public class DB2RDBDataSourceService extends
       e.printStackTrace();
     }
 
-    logger.info("Statement '" + statement + "' executed on " + dataSource.getAddress()
+    logger.info("Statement \"" + statement + "\" executed on " + dataSource.getAddress()
         + ".");
 
     return rdbResult;
@@ -134,7 +134,7 @@ public class DB2RDBDataSourceService extends
             success = success && false;
           }
 
-          logger.info("Statement '" + statement + "' " + "executed on "
+          logger.info("Statement \"" + statement + "\" " + "executed on "
               + dataSource.getAddress() + (success ? " was successful" : " failed"));
         }
       }
@@ -180,7 +180,7 @@ public class DB2RDBDataSourceService extends
               success = success && false;
             }
 
-            logger.info("Statement '" + statement + "' " + "executed on "
+            logger.info("Statement \"" + statement + "\" " + "executed on "
                 + dataSource.getAddress() + (success ? " was successful" : " failed"));
           }
         }
@@ -251,8 +251,8 @@ public class DB2RDBDataSourceService extends
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
-        + insertStatement.toString() + "'" + "executed on " + dataSource.getAddress());
+    logger.info("Statement \"" + createTableStatement.toString() + "\" " + "& \""
+        + insertStatement.toString() + "\" " + "executed on " + dataSource.getAddress());
 
     return success;
   }

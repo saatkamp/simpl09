@@ -29,10 +29,10 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
    */
   @Override
   public DataObject convertFrom(DataObject dataObject) {
-    DataObject fromDataObject = this.getFromDataFormat().getSDO();    
-    
+    DataObject fromDataObject = this.getFromDataFormat().getSDO();
+
     // TODO: From CSV to RDB
-    
+
     return null;
   }
 
@@ -47,7 +47,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
     DataObject toDataObject = this.getToDataFormat().getSDO();
 
     // TODO: From RDB to CSV
-    
+
     return null;
   }
 }

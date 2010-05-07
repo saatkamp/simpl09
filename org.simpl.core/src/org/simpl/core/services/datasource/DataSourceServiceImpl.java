@@ -44,7 +44,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     StrategyService strategyService = new StrategyServiceImpl();
 
     // late binding
-    if (this.hasLateBinding(dataSource)) {
+    if (this.hasLateBindingInformation(dataSource)) {
       dataSource = strategyService.findDataSource(dataSource);
     }
 
@@ -72,7 +72,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     StrategyService strategyService = new StrategyServiceImpl();
 
     // late binding
-    if (this.hasLateBinding(dataSource)) {
+    if (this.hasLateBindingInformation(dataSource)) {
       dataSource = strategyService.findDataSource(dataSource);
     }
 
@@ -102,7 +102,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     StrategyService strategyService = new StrategyServiceImpl();
 
     // late binding
-    if (this.hasLateBinding(dataSource)) {
+    if (this.hasLateBindingInformation(dataSource)) {
       dataSource = strategyService.findDataSource(dataSource);
     }
 
@@ -114,9 +114,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       data = dataSourceService.retrieveData(dataSource, statement);
     }
 
-    // convert data to data format
-    // TODO: search for a data format that converts from dataSourceService T to DataObject
-    dataFormat = findDataFormatToSDO(dataSourceService);
+    // convert data to SDO
+    dataFormat = findDataFormatToSDO(dataSourceService, null); // TODO: data format as parameter 
     retrieveData = dataFormat.toSDO(data);
 
     return retrieveData;
@@ -132,14 +131,14 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
     boolean success = false;
-    
+
     DataSourceService<Object, Object> dataSourceService = null;
     StrategyService strategyService = new StrategyServiceImpl();
     DataFormat<Object, Object> dataFormat = null;
     Object writeData = null;
-    
+
     // late binding
-    if (this.hasLateBinding(dataSource)) {
+    if (this.hasLateBindingInformation(dataSource)) {
       dataSource = strategyService.findDataSource(dataSource);
     }
 
@@ -149,11 +148,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
           dataSource.getSubType());
 
       // format data
-      dataFormat = findDataFormatFromSDO(dataSourceService);
+      dataFormat = findDataFormatFromSDO(dataSourceService, data.getString("formatType"));
       writeData = dataFormat.fromSDO(data);
 
       // write data
-      success = dataSourceService.writeBack(dataSource, writeData); 
+      success = dataSourceService.writeBack(dataSource, writeData);
     }
 
     return success;
@@ -178,7 +177,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     String createTargetStatement = null;
 
     // late binding
-    if (this.hasLateBinding(dataSource)) {
+    if (this.hasLateBindingInformation(dataSource)) {
       dataSource = strategyService.findDataSource(dataSource);
     }
 
@@ -187,13 +186,14 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
           dataSource.getSubType());
 
       // format data
-      dataFormat = findDataFormatFromSDO(dataSourceService);
+      dataFormat = findDataFormatFromSDO(dataSourceService, data.getString("formatType"));
       writeData = dataFormat.fromSDO(data);
 
       // create target
       createTargetStatement = dataFormat.getCreateTargetStatement(data, target);
-      targetCreated = dataSourceService.executeStatement(dataSource, createTargetStatement);
-      
+      targetCreated = dataSourceService.executeStatement(dataSource,
+          createTargetStatement);
+
       // write data
       if (targetCreated) {
         success = dataSourceService.writeData(dataSource, writeData, target);
@@ -234,7 +234,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     StrategyService strategyService = new StrategyServiceImpl();
 
     // late binding
-    if (this.hasLateBinding(dataSource)) {
+    if (this.hasLateBindingInformation(dataSource)) {
       dataSource = strategyService.findDataSource(dataSource);
     }
 
@@ -305,7 +305,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @return
    */
   private DataFormat<Object, Object> findDataFormatToSDO(
-      DataSourceService<Object, Object> dataSourceService) {
+      DataSourceService<Object, Object> dataSourceService, String formatType) {
     DataFormat<Object, Object> dataFormat = null;
     ParameterizedType dataSourceServicepluginType = null;
     ParameterizedType dataFormatPluginType = null;
@@ -323,7 +323,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
           .getGenericSuperclass();
       dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[0];
 
-      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)) {
+      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType) && formatType != null
+          && dataFormat.getType().equals(formatType)) {
         break;
       }
     }
@@ -339,7 +340,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @return
    */
   private DataFormat<Object, Object> findDataFormatFromSDO(
-      DataSourceService<Object, Object> dataSourceService) {
+      DataSourceService<Object, Object> dataSourceService, String formatType) {
     DataFormat<Object, Object> dataFormat = null;
     ParameterizedType dataSourceServicepluginType = null;
     ParameterizedType dataFormatPluginType = null;
@@ -357,7 +358,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
           .getGenericSuperclass();
       dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[1];
 
-      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)) {
+      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType) && formatType != null
+          && dataFormat.getType().equals(formatType)) {
         break;
       }
     }
@@ -371,15 +373,15 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @param dataSource
    * @return
    */
-  private boolean hasLateBinding(DataSource dataSource) {
-    boolean hasLateBinding = false;
+  private boolean hasLateBindingInformation(DataSource dataSource) {
+    boolean hasLateBindingInformation = false;
 
-    hasLateBinding = dataSource != null
+    hasLateBindingInformation = dataSource != null
         && dataSource.getLateBinding().getPolicy() != null
         && dataSource.getLateBinding().getStrategy() != null
         && dataSource.getLateBinding().getUddiAddress() != null;
 
-    return hasLateBinding;
+    return hasLateBindingInformation;
   }
 
   /**
