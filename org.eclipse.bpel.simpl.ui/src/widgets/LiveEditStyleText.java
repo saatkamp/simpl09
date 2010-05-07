@@ -46,6 +46,8 @@ public class LiveEditStyleText extends StyledText{
   /** The PARAMETER. */
   String PARAMETER="PARAMETER";
   
+  String KOMPLEX_PARAMETER="KOMPLEX-PARAMETER",SIMPLE_PARAMETER="SIMPLE-PARAMETER";
+  
   /** The TABL e_ name. */
   String TABLE_NAME="TABLE_NAME";
   
@@ -86,8 +88,9 @@ public class LiveEditStyleText extends StyledText{
         	String line = event.lineText;
         	int cursor = -1;
         	int index=0;
-        	
-        	String[] wordsOfSyleText=getText().split(" ");
+        	//String cleanedStringFromExtraSpaces=RemoveExtraSpaces(line);
+        	line=line.replaceAll("  ", " ");
+        	String[] wordsOfSyleText=line.split(" ");
         	String typedWord;
         	
 	        	for(int i=0;i<wordsOfSyleText.length;i++){
@@ -112,15 +115,25 @@ public class LiveEditStyleText extends StyledText{
 		        		
 		        		//list.add(getHighlightStyle(index, typedWord.length()));
 		        	}
-		        	else if(isEqualToParameter(typedWord)){
+		        	else if(isEqualToSimplParameter(typedWord)){
 		        		System.out.print("is a keyword");
 		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
 			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
-			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),PARAMETER));
+			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),SIMPLE_PARAMETER));
 			  	        }  
 		        		
 		        		//list.add(getHighlightStyle(index, typedWord.length()));
 		        	}
+		        	else if(isEqualToKomplexParameter(typedWord)){
+		        		System.out.print("is a keyword");
+		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
+			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
+			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),KOMPLEX_PARAMETER));
+			  	        }  
+		        		
+		        		//list.add(getHighlightStyle(index, typedWord.length()));
+		        	}
+		        	
 		        	else if(isEqualToBPLEVariable(typedWord)){
 		        		System.out.print("is a keyword");
 		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
@@ -142,6 +155,18 @@ public class LiveEditStyleText extends StyledText{
         	}
 
       
+	private String RemoveExtraSpaces(String text) {
+		for(int i=0;i<text.length();i++)
+		{
+			//if(text.contains("  ")) 
+				text.replaceAll( "  ", " ");
+			
+		}
+		System.out.print("\r**"+text+"**");
+		return text;
+	}
+
+
 	private String removeSpacesFromWord(String typedWord) {
 		while(typedWord.contains(" ")){
 			typedWord.replace(" ", "");
@@ -201,10 +226,24 @@ public class LiveEditStyleText extends StyledText{
    * @param word
    * @return boolean
    */
-  private boolean isEqualToParameter(String typedWord) {
+  private boolean isEqualToSimplParameter(String typedWord) {
 	  //char[] charsOfWord = null;
 	  //typedWord.charAt(0).getChars(0, typedWord.length()-1, charsOfWord, 0);
 	  if((typedWord.startsWith("#"))&&(typedWord.endsWith("#"))&&(typedWord.length()>1)){
+		  return true;
+	  }
+		return false;
+  }
+  
+  /**
+   * checking if the word  is a Parameter
+   * @param word
+   * @return boolean
+   */
+  private boolean isEqualToKomplexParameter(String typedWord) {
+	  //char[] charsOfWord = null;
+	  //typedWord.charAt(0).getChars(0, typedWord.length()-1, charsOfWord, 0);
+	  if((typedWord.startsWith("["))&&(typedWord.endsWith("]"))&&(typedWord.length()>1)){
 		  return true;
 	  }
 		return false;
@@ -251,6 +290,13 @@ public class LiveEditStyleText extends StyledText{
     if(typeOfWord==PARAMETER){
     	 styleRange.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     }
+    if(typeOfWord==KOMPLEX_PARAMETER){
+   	 styleRange.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+    }
+    if(typeOfWord==SIMPLE_PARAMETER){
+   	 styleRange.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
+   }
+    
     if(typeOfWord==TABLE_NAME){
    	 styleRange.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
     }

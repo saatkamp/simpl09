@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: ElementsListPopUp.java 1202 2010-04-27 16:31:01Z hahnml@t-online.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -37,7 +37,7 @@ import org.w3c.dom.NodeList;
 /**
  * The Class ElementsListPopUp.
  */
-public class ElementsListPopUp{
+public class ParametersListPopUp{
 	
 	/** The text to search. */
 	Text textToSearch;
@@ -79,7 +79,7 @@ public class ElementsListPopUp{
 	 * @param statementText
 	 *            the statement text
 	 */
-	public ElementsListPopUp(LiveEditStyleText statementText)
+	public ParametersListPopUp(LiveEditStyleText statementText)
 	{
 		createSShell(statementText);
 //		theShell.setSize(new Point(282, 184));
@@ -345,6 +345,21 @@ public class ElementsListPopUp{
 	 * for inserting the Bpel-Variables into the List.
 	 */
 	public void loadBPELVariables() {
+		/*
+		 * Hallo,
+		du kannst jetzt in den PropertySections mit 
+		 *VariableUtils.getUseableVariables(getProcess()) *eine Liste mit allen 
+		Variablennamen, die entweder einen SimpleType (string, boolean, ...) 
+		oder den ContainerReferenceType (schema+tabelle) haben, abrufen.
+		Die Namen haben dabei schon die Notation, die wir vorher besprochen 
+		haben, also alle SimpleType Variablennamen sind umgeben von # (z.B. 
+		#simpleVariable#) und alle ContainerReferenceType Variablennamen sind 
+		umgeben von [] (z.B. [containerRefType] ).
+
+		Gruﬂ,
+		Michael
+		 */
+		
 		arrayOfElements.add("BPEL_Variable1");
 		arrayOfElements.add("BPEL_Variable2");
 		arrayOfElements.add("BPEL_Variable3");

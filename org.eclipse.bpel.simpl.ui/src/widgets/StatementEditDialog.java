@@ -1,5 +1,6 @@
 package widgets;
 
+import org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -27,11 +28,13 @@ public class StatementEditDialog {
 	
 	private Label labelDialogMassege = null;
 	private Button buttonSave = null;
-	private Button buttonAbort;
+	private Button buttonSaveWithoutChanges;
 	
 	LiveEditStyleText styleTextEditor;	
 	
-	public StatementEditDialog(){
+	//private DMActivityPropertySection parentClass = null;
+	
+	public StatementEditDialog(final String statement, final DMActivityPropertySection parentClass){
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = true;
 		gridData1.grabExcessVerticalSpace = false;
@@ -44,7 +47,8 @@ public class StatementEditDialog {
 		gridLayout.numColumns = 2;
 		
 		theShell.setText("Data-Management-Activity properties");
-		theShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		theShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_TITLE_INACTIVE_FOREGROUND));
+
 		theShell.setLayout(gridLayout);
 		theShell.setSize(new Point(582, 164));
 		
@@ -54,29 +58,31 @@ public class StatementEditDialog {
 		gridData.verticalAlignment = GridData.FILL;
 		gridData.grabExcessVerticalSpace = true;
 		labelDialogMassege = new Label(theShell, SWT.NONE);
-		labelDialogMassege.setText("Do you like to edit the statement manualy before saving it ...");
+		labelDialogMassege.setText("Do you like to edit the statement manualy before save it ...");
 		labelDialogMassege.setFont(new Font(Display.getDefault(), "Tahoma", 14, SWT.NORMAL));
 		labelDialogMassege.setLayoutData(gridData1);
 		Label filler1 = new Label(theShell, SWT.NONE);
 		styleTextEditor = new LiveEditStyleText(theShell);
 		styleTextEditor.setLayoutData(gridData);
+		styleTextEditor.setText(statement);
+		
 		Label filler = new Label(theShell, SWT.NONE);
-		buttonAbort = new Button(theShell, SWT.CENTER);
-		buttonAbort.setText("Abort");
-		buttonAbort.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				closeWindow();
-				
-			}
-			
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				closeWindow();
-				
-			}
-		});
+//		buttonSaveWithoutChanges = new Button(theShell, SWT.CENTER);
+//		buttonSaveWithoutChanges.setText("Abort");
+//		buttonSaveWithoutChanges.addSelectionListener(new SelectionListener() {
+//			
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				closeWindow();
+//				
+//			}
+//			
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//				closeWindow();
+//				
+//			}
+//		});
 		
 		buttonSave = new Button(theShell, SWT.CENTER);
 		buttonSave.setText("Save Statement");
@@ -84,12 +90,23 @@ public class StatementEditDialog {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				System.out.print(styleTextEditor.getText());
+				if (styleTextEditor.getText() != null) {
+					parentClass.setStatement(styleTextEditor.getText());
+					parentClass.saveStatementToModel();
+				}
 				closeWindow();
 				
 			}
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
+				System.out.print(styleTextEditor.getText());
+				if (styleTextEditor.getText() != null) {
+					parentClass.setStatement(styleTextEditor.getText());
+					parentClass.saveStatementToModel();
+				}
+				
 				closeWindow();
 				
 			}
