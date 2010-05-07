@@ -114,7 +114,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     for (DataObject table : tables) {
       columns = table.getList("column");
       primaryKeys = table.getList("primaryKey");
-
+      
       for (DataObject column : columns) {
         if (column.getString("type").startsWith("VARCHAR")) {
           quote = "'";
@@ -183,7 +183,9 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
       createTargetStatement += "))";
 
-      createTargetStatements.add(createTargetStatement);
+      if (!createTargetStatements.contains(createTargetStatement)) {
+        createTargetStatements.add(createTargetStatement);
+      }
     }
 
     return createTargetStatements;
