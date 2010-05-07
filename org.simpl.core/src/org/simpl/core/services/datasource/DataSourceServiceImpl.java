@@ -195,7 +195,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
       // create target
       createTargetStatements = dataFormat.getCreateTargetStatements(data, target);
-
+System.out.println("targetStatements: " + createTargetStatements.size());
       if (createTargetStatements != null) {
         for (String createTargetStatement : createTargetStatements) {
           targetCreated = dataSourceService.executeStatement(dataSource,
@@ -370,8 +370,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
           .getGenericSuperclass();
       dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[1];
 
-      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType) && formatType != null
-          && dataFormat.getType().equals(formatType)) {
+      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)
+          && (formatType != null && dataFormat.getType().equals(formatType) || formatType == null)) {
         break;
       }
     }

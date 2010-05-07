@@ -12,7 +12,8 @@ import commonj.sdo.DataObject;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: RDBCSVDataFormatConverter.java 1329 2010-05-07 18:06:21Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
@@ -37,20 +38,32 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
     DataObject rdbSDO = this.getToDataFormat().getSDO();
     DataObject rdbTableObject = null;
     DataObject rdbColumnObject = null;
-  
+    List<String> rdbPrimaryKeys = new ArrayList<String>();
+
     // read data from CSV SDO
     List<DataObject> csvDataRows = csvSDO.getList("dataset");
-  
+
     // write data to RDB SDO
     for (int i = 0; i < csvDataRows.size(); i++) {
+      // add table
       rdbTableObject = rdbSDO.createDataObject("table");
       rdbTableObject.set("name", csvSDO.getString("filename").toUpperCase().replace(".",
           "_"));
       rdbTableObject.set("catalog", "");
       rdbTableObject.set("schema", "");
-  
+
+      // add primary key
+      rdbColumnObject = rdbTableObject.createDataObject("column");
+      rdbColumnObject.set("name", "ID");
+      rdbColumnObject.set("type", "INT");
+      rdbColumnObject.set("value", String.valueOf(i));
+      rdbPrimaryKeys.add("ID");
+      rdbTableObject.set("primaryKey", rdbPrimaryKeys);
+      rdbPrimaryKeys.clear();
+
+      // add columns
       List<DataObject> csvColumns = csvDataRows.get(i).getList("column");
-  
+
       for (DataObject csvColumn : csvColumns) {
         rdbColumnObject = rdbTableObject.createDataObject("column");
         rdbColumnObject.set("name", csvColumn.getString("name"));
@@ -58,7 +71,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
         rdbColumnObject.set("value", csvColumn.getString("value"));
       }
     }
-  
+
     return rdbSDO;
   }
 
@@ -77,30 +90,30 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
     DataObject csvDatasetObject = null;
     DataObject csvColumnObject = null;
     List<String> csvHeaderNames = new ArrayList<String>();
-    
+
     // read data from RDB SDO
     List<DataObject> rdbTables = rdbSDO.getList("table");
     List<DataObject> rdbColumns = null;
-    
+
     csvHeaderObject = csvSDO.createDataObject("header");
 
     for (DataObject rdbTable : rdbTables) {
       csvDatasetObject = csvSDO.createDataObject("dataset");
       rdbColumns = rdbTable.getList("column");
-      
+
       for (DataObject rdbColumn : rdbColumns) {
         csvColumnObject = csvDatasetObject.createDataObject("column");
         csvColumnObject.set("name", rdbColumn.get("name"));
         csvColumnObject.set("value", rdbColumn.get("value"));
-        
+
         if (!csvHeaderNames.contains(rdbColumn.get("name"))) {
           csvHeaderNames.add(rdbColumn.getString("name"));
         }
       }
     }
-    
+
     csvHeaderObject.setList("column", csvHeaderNames);
-    
+
     return csvSDO;
   }
 
@@ -117,38 +130,18 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
 
     try {
       if (Integer.valueOf(type) != null) {
-        sqlType = "INTEGER(10)";
+        sqlType = "INT";
+      } else if (Boolean.valueOf(type) != null) {
+        sqlType = "SMALLINT";
+      } else if (Float.valueOf(type) != null) {
+        sqlType = "FLOAT";
+      } else if (Double.valueOf(type) != null) {
+        sqlType = "DOUBLE";
+      } else if (sqlType == null) {
+        sqlType = "VARCHAR(255)";
       }
     } catch (NumberFormatException e) {
-      // type is not integer
-    }
-
-    try {
-      if (Boolean.valueOf(type) != null) {
-        sqlType = "TINYINT(1)";
-      }
-    } catch (NumberFormatException e) {
-      // type is not boolean
-    }
-
-    try {
-      if (Float.valueOf(type) != null) {
-        sqlType = "FLOAT(8)";
-      }
-    } catch (NumberFormatException e) {
-      // type is not float
-    }
-
-    try {
-      if (Double.valueOf(type) != null) {
-        sqlType = "DOUBLE(8)";
-      }
-    } catch (NumberFormatException e) {
-      // type is not double
-    }
-
-    // take VARCHAR as default
-    if (sqlType == null) {
+      // take VARCHAR as default
       sqlType = "VARCHAR(255)";
     }
 
