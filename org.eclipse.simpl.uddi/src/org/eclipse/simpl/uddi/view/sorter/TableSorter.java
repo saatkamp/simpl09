@@ -2,7 +2,7 @@ package org.eclipse.simpl.uddi.view.sorter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.eclipse.simpl.uddi.model.datasource.DataSource;
+import org.eclipse.simpl.communication.client.DataSource;
 
 public class TableSorter extends ViewerSorter {
 	private int propertyIndex;
@@ -43,7 +43,7 @@ public class TableSorter extends ViewerSorter {
 			rc = ds1.getType().compareTo(ds2.getType());
 			break;
 		case 3:
-			rc = ds1.getSubtype().compareTo(ds2.getSubtype());
+			rc = ds1.getSubType().compareTo(ds2.getSubType());
 			break;
 		default:
 			rc = 0;
