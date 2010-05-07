@@ -346,6 +346,7 @@ public class CreateEditor extends AStatementEditor {
 			tableOfColums.setItemCount(10);
 			tableOfColums.setLinesVisible(true);
 			
+			
 			TableColumn columnName=new TableColumn(tableOfColums, SWT.NONE);
 			columnName.setText("Attribute name");
 			columnName.setWidth(150);
@@ -371,7 +372,7 @@ public class CreateEditor extends AStatementEditor {
 			
 			Composite buttonCompo=new Composite(composite, SWT.BOLD);
 			GridLayout gridLayout6 = new GridLayout();
-			gridLayout6.numColumns=2;
+			gridLayout6.numColumns=3;
 			buttonCompo.setLayout(gridLayout6);
 	
 			Button insertToTable=new Button(buttonCompo, SWT.NONE);
@@ -411,8 +412,63 @@ public class CreateEditor extends AStatementEditor {
 				}
 			});
 			
+			Button deleteItemFromTable=new Button(buttonCompo, SWT.NONE);
+			deleteItemFromTable.setText("Delete selected item");
+			deleteItemFromTable.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					tableOfColums.getItem(tableOfColums.getSelectionIndex()).dispose();
+					if(tableIndex>0) tableIndex--;
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			
 			Button insertToStatement=new Button(buttonCompo, SWT.NONE);
 			insertToStatement.setText("Create statement");
+			insertToStatement.addSelectionListener(new SelectionListener() {
+				
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if(tableOfColums.getItem(0).getText(0).length()>0){
+						statementText.setText("CREATE TABLE "+txtTableNAme.getText()+" ("+tableOfColums.getItem(0).getText(0)+" "
+								+tableOfColums.getItem(0).getText(1)+" "+tableOfColums.getItem(0).getText(2)+" "+tableOfColums.getItem(0).getText(3)+
+								" "+tableOfColums.getItem(0).getText(4)+" "+tableOfColums.getItem(0).getText(5));
+					}
+					int last=0;
+					for(int i=1;i<tableOfColums.getItemCount()-1;i++){
+						if(tableOfColums.getItem(i).getText(0).length()>0){
+							statementText.setText(statementText.getText()+"\r		,"+tableOfColums.getItem(i).getText(0)+" "
+									+tableOfColums.getItem(i).getText(1)+" "+tableOfColums.getItem(i).getText(2)+" "+
+									tableOfColums.getItem(i).getText(3)+" "+tableOfColums.getItem(i).getText(4)+" "
+									+tableOfColums.getItem(i).getText(5));
+							last=i;
+						}
+						
+					}
+					last++;
+					
+					if(tableOfColums.getItem(last).getText(0).length()>0){
+						statementText.setText(statementText.getText()+"\r		"+tableOfColums.getItem(last).getText(0)+" "
+								+tableOfColums.getItem(last).getText(1)+" "+tableOfColums.getItem(last).getText(2)+" "+
+								tableOfColums.getItem(last).getText(3)+" "+tableOfColums.getItem(last).getText(4)+" "
+								+tableOfColums.getItem(last).getText(5)+")");
+					}
+					
+					addToListOfStatementTextChanges();
+				}
+				
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+					
+					
+				}
+			});
 			
 		}
 		
@@ -439,7 +495,7 @@ public class CreateEditor extends AStatementEditor {
 				
 				@Override
 				public void widgetSelected(SelectionEvent e) {					
-					statementText.setText(statementText.getText()+" SCHEMA "+txtSchemaName.getText()+" "+txtAuthorisation.getText()+"\r");		
+					statementText.setText("CREATE SCHEMA "+txtSchemaName.getText()+" "+txtAuthorisation.getText()+"\r");		
 					addToListOfStatementTextChanges();
 				}
 				
