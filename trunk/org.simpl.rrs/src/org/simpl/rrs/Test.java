@@ -44,14 +44,14 @@ public class Test {
 		@SuppressWarnings("unused")
 		EPR EPR4 = CreateEPR("C:/eclipse/workspace/org.simpl.rrs/rrsDB", "RDB:Derby:MySQL", "test2", "SELECT * FROM ReferenceTable");
 		
-
-		RRS.getInstance().managementService().Insert(EPR1);
-		RRS.getInstance().managementService().Insert(EPR2);
-		RRS.getInstance().managementService().Update(EPR3);
+//
+//		RRS.getInstance().managementService().Insert(EPR1);
+//		RRS.getInstance().managementService().Insert(EPR2);
+//		RRS.getInstance().managementService().Update(EPR3);
 
 		
 		
-		//RRS.getInstance().retrievalService().get(EPR4);
+		RRS.getInstance().retrievalService().get(EPR4);
 		RRS.getInstance().metadataService().getAllEPR();
 		RRS.getInstance().metadataService().getEPR("test2");
 		

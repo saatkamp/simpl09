@@ -1,11 +1,16 @@
 package org.simpl.rrs.retrieval;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.webservices.EPR;
+import org.simpl.rrs.webservices.helper.Parameter;
+
+import commonj.sdo.DataObject;
 
 public class RetrievalServiceImpl implements RetrievalService {
 
@@ -18,7 +23,6 @@ public class RetrievalServiceImpl implements RetrievalService {
 		String dsSubtype = null;
 		@SuppressWarnings("unused")
 		String dsLanguage = null;
-		Object data = null;
 
 		StringTokenizer st = new StringTokenizer(EPRHM.get("adapterType"), ":");
 		dsType = st.nextToken();
@@ -30,10 +34,9 @@ public class RetrievalServiceImpl implements RetrievalService {
 		// anhand von Type und Subtype, und Daten holen...
 		DSAdapter dsAdapter = RRS.getInstance().dsAdapter(dsType, dsSubtype);
 
-		data = dsAdapter.retrieveData(EPRHM.get("dsAddress"), EPRHM
+		DataObject data = dsAdapter.retrieveData(EPRHM.get("dsAddress"), EPRHM
 				.get("statement"));
-
-		System.out.println(data);
+		
 		return data;
 
 	}

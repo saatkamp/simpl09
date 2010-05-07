@@ -2,7 +2,9 @@ package org.simpl.rrs.dsadapter.plugins.rdb;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
@@ -54,8 +56,21 @@ public class EmbDerbyRDBAdapter extends DSAdapterPlugin {
 		return success;
 	}
 
-	public Object retrieveData(String dsAddress, String statement) {
+	public DataObject retrieveData(String dsAddress, String statement) {
 
+//		Connection conn = openConnection(dsAddress);
+//		Statement statm;
+//		ResultSet rs = null;
+//		try {
+//			statm = conn.createStatement();
+//			rs = statm.executeQuery(statement);
+//			System.out.println(rs);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return rs;
+		
 		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
 		Command read = das.createCommand(statement);
 		DataObject root = read.executeQuery();
