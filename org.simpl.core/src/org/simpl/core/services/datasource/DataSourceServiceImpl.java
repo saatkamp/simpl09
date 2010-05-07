@@ -174,7 +174,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataFormat<Object, Object> dataFormat = null;
     StrategyService strategyService = new StrategyServiceImpl();
     Object writeData = null;
-    String createTargetStatement = null;
+    List<String> createTargetStatements = null;
 
     // late binding
     if (this.hasLateBindingInformation(dataSource)) {
@@ -190,9 +190,12 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       writeData = dataFormat.fromSDO(data);
 
       // create target
-      createTargetStatement = dataFormat.getCreateTargetStatement(data, target);
-      targetCreated = dataSourceService.executeStatement(dataSource,
-          createTargetStatement);
+      createTargetStatements = dataFormat.getCreateTargetStatements(data, target);
+      
+      for (String createTargetStatement : createTargetStatements) {
+        targetCreated = dataSourceService.executeStatement(dataSource,
+            createTargetStatement);
+      }
 
       // write data
       if (targetCreated) {

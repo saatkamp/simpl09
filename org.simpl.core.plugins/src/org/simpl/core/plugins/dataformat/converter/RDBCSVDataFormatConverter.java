@@ -17,8 +17,8 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
    * Initialize the plug-in.
    */
   public RDBCSVDataFormatConverter() {
-    this.setToDataFormat("RDB");
     this.setFromDataFormat("CSV");
+    this.setToDataFormat("RDB");
   }
 
   /*

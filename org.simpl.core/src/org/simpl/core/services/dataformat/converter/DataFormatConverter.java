@@ -4,7 +4,7 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Defines the methods that a data format converter service must implement.<br>
- * <b>Description:</b>The data is passed as service data objects (SDO).<br>
+ * <b>Description:</b>The data is passed as service data object (SDO).<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -15,7 +15,7 @@ import commonj.sdo.DataObject;
  */
 public interface DataFormatConverter {
   /**
-   * Converts the given data to the supported data format.
+   * Converts the given data to the supported "to" data format.
    * 
    * @param data
    * @return
@@ -23,7 +23,7 @@ public interface DataFormatConverter {
   public DataObject convertTo(DataObject data);
   
   /**
-   * Converts the given SDO to the data source data format.
+   * Converts the given SDO to the supported "from" data format.
    *
    * @param data
    * @return
