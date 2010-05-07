@@ -67,7 +67,7 @@ public class MySQLRDBDataSourceService extends
       logger.error("exception executing the statement: " + statement, e);
     }
 
-    logger.info("Statement '" + statement + "' send to " + dataSource.getAddress() + ".");
+    logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress() + ".");
     closeConnection(conn);
 
     return success;
@@ -131,7 +131,7 @@ public class MySQLRDBDataSourceService extends
             success = success && false;
           }
 
-          logger.info("Statement '" + statement + "' " + "executed on "
+          logger.info("Statement \"" + statement + "\" " + "executed on "
               + dataSource.getAddress() + (success ? " was successful" : " failed"));
         }
       }
@@ -177,7 +177,7 @@ public class MySQLRDBDataSourceService extends
               success = success && false;
             }
 
-            logger.info("Statement '" + statement + "' " + "executed on "
+            logger.info("Statement \"" + statement + "\" " + "executed on "
                 + dataSource.getAddress() + (success ? " was successful" : " failed"));
           }
         }
@@ -234,7 +234,7 @@ public class MySQLRDBDataSourceService extends
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' " + "executed on "
+    logger.info("Statement \"" + createTableStatement.toString() + "\" " + "executed on "
         + dataSource.getAddress());
 
     return success;

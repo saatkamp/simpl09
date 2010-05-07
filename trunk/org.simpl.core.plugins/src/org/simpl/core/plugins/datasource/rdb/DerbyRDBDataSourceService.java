@@ -67,7 +67,7 @@ public class DerbyRDBDataSourceService extends
       logger.error("exception executing the statement: " + statement, e);
     }
 
-    logger.info("Statement '" + statement + "' send to " + dataSource.getAddress() + ".");
+    logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress() + ".");
     closeConnection(conn);
 
     return success;
@@ -102,7 +102,7 @@ public class DerbyRDBDataSourceService extends
       e.printStackTrace();
     }
 
-    logger.info("Statement '" + statement + "' executed on " + dataSource.getAddress()
+    logger.info("Statement \"" + statement + "\" executed on " + dataSource.getAddress()
         + ".");
 
     return rdbResult;
@@ -131,7 +131,7 @@ public class DerbyRDBDataSourceService extends
             success = success && false;
           }
 
-          logger.info("Statement '" + statement + "' " + "executed on "
+          logger.info("Statement \"" + statement + "\" " + "executed on "
               + dataSource.getAddress() + (success ? " was successful" : " failed"));
         }
       }
@@ -177,7 +177,7 @@ public class DerbyRDBDataSourceService extends
               success = success && false;
             }
 
-            logger.info("Statement '" + statement + "' " + "executed on "
+            logger.info("Statement \"" + statement + "\" " + "executed on "
                 + dataSource.getAddress() + (success ? " was successful" : " failed"));
           }
         }
@@ -251,8 +251,8 @@ public class DerbyRDBDataSourceService extends
           + createTableStatement.toString(), e);
     }
 
-    logger.info("Statement '" + createTableStatement.toString() + "' " + "& '"
-        + insertStatement.toString() + "'" + "executed on " + dataSource.getAddress());
+    logger.info("Statement \"" + createTableStatement.toString() + "\" " + "& \""
+        + insertStatement.toString() + "\" " + "executed on " + dataSource.getAddress());
 
     return success;
   }
