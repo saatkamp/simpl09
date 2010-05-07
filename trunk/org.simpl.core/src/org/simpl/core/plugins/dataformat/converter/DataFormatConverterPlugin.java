@@ -21,12 +21,12 @@ public abstract class DataFormatConverterPlugin implements DataFormatConverter {
   /**
    * The data format to convert from.
    */
-  private String fromDataFormat = "Tuscany";
+  private String fromDataFormat = "";
 
   /**
    * The data format to convert to.
    */
-  private String toDataFormat = "CSV";
+  private String toDataFormat = "";
 
   /**
    * @return the fromDataFormat

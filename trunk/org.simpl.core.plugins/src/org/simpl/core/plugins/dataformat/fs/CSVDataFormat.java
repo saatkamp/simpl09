@@ -152,7 +152,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
    * @see org.simpl.core.services.dataformat.DataFormat#createTarget(java.lang.Object, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public String getCreateTargetStatement(DataObject data, String target) {
+  public List<String> getCreateTargetStatements(DataObject data, String target) {
     // this function is not used on local filesystems
     return null;
   }

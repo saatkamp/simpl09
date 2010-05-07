@@ -1,5 +1,7 @@
 package org.simpl.core.services.dataformat;
 
+import java.util.List;
+
 import commonj.sdo.DataObject;
 
 /**
@@ -47,7 +49,7 @@ public interface DataFormat<S, T> {
    * 
    * @return
    */
-  public String getCreateTargetStatement(DataObject data, String target);
+  public List<String> getCreateTargetStatements(DataObject data, String target);
 
   /**
    * @return Empty SDO created from the data format schema.

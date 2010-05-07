@@ -150,12 +150,13 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
    */
   @SuppressWarnings("unchecked")
   @Override
-  public String getCreateTargetStatement(DataObject data, String target) {
+  public List<String> getCreateTargetStatements(DataObject data, String target) {
     List<DataObject> tables = data.getList("table");
     List<DataObject> columns = null;
     List<String> primaryKeys = null;
+    List<String> createTargetStatements = new ArrayList<String>();
     String createTargetStatement = null;
-
+    
     // build a create statement
     for (DataObject table : tables) {
       columns = (List<DataObject>) table.getList("column");
@@ -181,9 +182,11 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
       }
 
       createTargetStatement += "))";
+      
+      createTargetStatements.add(createTargetStatement);
     }
 
-    return createTargetStatement;
+    return createTargetStatements;
   }
 
   /**
