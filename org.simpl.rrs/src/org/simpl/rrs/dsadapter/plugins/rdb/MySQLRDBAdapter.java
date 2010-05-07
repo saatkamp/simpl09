@@ -6,7 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.tuscany.das.rdb.Command;
+import org.apache.tuscany.das.rdb.DAS;
 import org.simpl.rrs.dsadapter.plugins.DSAdapterPlugin;
+
+import commonj.sdo.DataObject;
 
 public class MySQLRDBAdapter extends DSAdapterPlugin {
 
@@ -58,25 +62,28 @@ public class MySQLRDBAdapter extends DSAdapterPlugin {
 		return success;
 	}
 
-	public Object retrieveData(String dsAddress, String statement) {
+	public DataObject retrieveData(String dsAddress, String statement) {
 
-		Connection con = openConnection(dsAddress);
-		Statement state;
-		ResultSet rs;
-		Object obj = null;
-		try {
-			state = con.createStatement();
-
-			rs = state.executeQuery(statement);
-
-			while (rs.next()) {
-				obj = rs.getObject(1);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return obj;
+//		Connection con = openConnection(dsAddress);
+//		Statement state;
+//		ResultSet rs = null;
+//		try {
+//			state = con.createStatement();
+//
+//			rs = state.executeQuery(statement);
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		return rs;
+		
+		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
+	    Command read = das.createCommand(statement);
+	    DataObject root = read.executeQuery();
+    
+	    return root;
+	    
 	}
 }

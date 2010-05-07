@@ -1,5 +1,9 @@
 package org.simpl.rrs.dsadapter;
 
+import java.sql.ResultSet;
+
+import commonj.sdo.DataObject;
+
 
 public interface DSAdapter {
 
@@ -7,6 +11,6 @@ public interface DSAdapter {
 
 	public <T> boolean closeConnection(T connection);
 	  
-	public Object retrieveData (String dsAddress, String Statement);
+	public DataObject retrieveData (String dsAddress, String Statement);
 	  
 }
