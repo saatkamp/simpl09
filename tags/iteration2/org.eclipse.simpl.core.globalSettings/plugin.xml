@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.simpl.core.adminConsoleItem">
+      <adminConsoleItem
+            label="Global Settings"
+            position="1">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.globalsettings.ui.AuthentificationComposite"
+               label="Authentification Data">
+         </adminConsoleItem>
+      </adminConsoleItem>
+   </extension>
+
+</plugin>

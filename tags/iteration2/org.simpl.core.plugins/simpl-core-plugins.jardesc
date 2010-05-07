@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/simpl-core-plugins.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.core.plugins/simpl-core-plugins.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="/org.simpl.core/SIMPL-CORE.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.rdb"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.datasource.fs"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.fs"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;au.com.bytecode.opencsv"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.converter"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.datasource.rdb"/>
+    </selectedElements>
+</jardesc>

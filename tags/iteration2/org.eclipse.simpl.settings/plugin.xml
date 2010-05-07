@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.eclipse.simpl.settings.settingsItem" name="SettingsItem" schema="schema/org.eclipse.simpl.settings.settingsItem.exsd"/>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.simpl.settings.settingsCommand"
+            name="Settings">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.simpl.settings.handler.SimplSettingsHandler"
+            commandId="org.eclipse.simpl.settings.settingsCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.simpl.core.simplMenu?after=org.eclipse.simpl.core.adminCCommand">
+         <command
+               commandId="org.eclipse.simpl.settings.settingsCommand"
+               id="org.eclipse.simpl.settings.settingsCommand"
+               mnemonic="T">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.simpl.settings.settingsItem">
+      <settingsItem
+            id="SIMPL Core"
+            label="SIMPL Core">
+         <settingsItem
+               composite="org.eclipse.simpl.settings.ui.extensions.SIMPLCoreAddressComposite"
+               id="SIMPL Core Address"
+               label="SIMPL Core Address">
+         </settingsItem>
+      </settingsItem>
+      <settingsItem
+            id="RRS "
+            label="RRS ">
+         <settingsItem
+               composite="org.eclipse.simpl.settings.ui.extensions.RRSAddressComposite"
+               id="RRS Address"
+               label="RRS Address">
+         </settingsItem>
+      </settingsItem>
+      <settingsItem
+            label="UDDI Registry">
+         <settingsItem
+               composite="org.eclipse.simpl.settings.ui.extensions.UDDIRegistryComposite"
+               id="UDDI Registry Address"
+               label="UDDI Registry Address">
+         </settingsItem>
+      </settingsItem>
+   </extension>
+
+</plugin>

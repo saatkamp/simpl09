@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="TransformationService" targetNamespace="http://webservices.transformation.rrs.simpl.org" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://webservices.transformation.rrs.simpl.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+  </types>
+  <message name="transformResponse">
+    <part name="return" type="xsd:string">
+    </part>
+  </message>
+  <message name="transform">
+    <part name="bpelFileContent" type="xsd:string">
+    </part>
+    <part name="rrsRetrievalWSDLNsURI" type="xsd:string">
+    </part>
+    <part name="rrsMetaDataWSDLNsURI" type="xsd:string">
+    </part>
+  </message>
+  <portType name="TransformationService">
+    <operation name="transform" parameterOrder="bpelFileContent rrsRetrievalWSDLNsURI rrsMetaDataWSDLNsURI">
+      <input message="tns:transform">
+    </input>
+      <output message="tns:transformResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="TransformationServicePortBinding" type="tns:TransformationService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="transform">
+      <soap:operation soapAction="transform"/>
+      <input>
+        <soap:body use="literal" namespace="http://webservices.transformation.rrs.simpl.org"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservices.transformation.rrs.simpl.org"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="TransformationService">
+    <port name="TransformationServicePort" binding="tns:TransformationServicePortBinding">
+      <soap:address location="http://localhost:8080/axis2/services/TransformationService"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://webservices.rrs.simpl.org/" xmlns:tns="http://webservices.rrs.simpl.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="epr" type="tns:EPR"/>
+
+  <xs:complexType name="EPR">
+    <xs:sequence>
+      <xs:element name="address" type="xs:anyURI"/>
+      <xs:element name="referenceProperties" type="tns:ReferenceProperties"/>
+      <xs:element name="referenceParameters" type="tns:ReferenceParameters"/>
+      <xs:element name="portType" type="xs:QName" minOccurs="0"/>
+      <xs:element name="serviceName" type="tns:ServiceName" minOccurs="0"/>
+      <xs:element name="policy" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ReferenceProperties">
+    <xs:sequence>
+      <xs:element name="resolutionSystem" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ReferenceParameters">
+    <xs:sequence>
+      <xs:element name="referenceName" type="xs:string"/>
+      <xs:element name="dsAddress" type="xs:string"/>
+      <xs:element name="statement" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ServiceName">
+    <xs:simpleContent>
+      <xs:extension base="xs:QName">
+        <xs:attribute name="portName" type="xs:NCName"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="EPRArray" final="#all">
+    <xs:sequence>
+      <xs:element name="item" type="tns:EPR" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="stringArray" final="#all">
+    <xs:sequence>
+      <xs:element name="item" type="xs:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,1 @@
+Extract the simpl-tomcat.zip to the Tomcat root directory (/Tomcat x.x/).
