@@ -34,7 +34,7 @@ UDDIInquiryPortType inquiry = null;
 		}
 	}
 	
-	public boolean simplBusinessExists () {
+	public boolean simplBusinessExsists () {
 		boolean exsists = false;
 		GetBusinessDetail getBusinessDetail = new GetBusinessDetail();
 		getBusinessDetail.getBusinessKey().add(KEYPREFIX + "simpl");
@@ -42,16 +42,19 @@ UDDIInquiryPortType inquiry = null;
 		BusinessDetail businessDetail = new BusinessDetail();
 		
 		try {
-			businessDetail = inquiry.getBusinessDetail(getBusinessDetail);
+			if (inquiry.getBusinessDetail(getBusinessDetail) != null) {
+				businessDetail = inquiry.getBusinessDetail(getBusinessDetail);
+			}
+			
 		} catch (DispositionReportFaultMessage e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+						
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+		} catch (javax.xml.ws.soap.SOAPFaultException e) {
+			businessDetail = null;
 		}
 		
-		if (businessDetail.getBusinessEntity() != null) {
+		if (businessDetail != null) {
 			exsists = true;
 		}
 		

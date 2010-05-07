@@ -1,6 +1,5 @@
 package org.simpl.uddi.client;
 
-
 import java.rmi.RemoteException;
 
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
@@ -29,40 +28,45 @@ public class UddiDataWriter implements IUddiConfig {
 	private static UDDIPublicationPortType publish = null;
 
 	private AuthToken userAuthToken = null;
-	
-	private static UddiDataWriter  dataWriter = null;
-	
+
+	private static UddiDataWriter dataWriter = null;
+
 	private String username = "";
-	
+
 	private String password = "";
-	
+
 	private String address = "";
 
+	private boolean error = false;
+
 	private UddiDataWriter(String address, String username, String password) {
-		
+
 		this.address = address;
-		
+
 		this.username = username;
-		
+
 		this.password = password;
 
 		Transport transport = new JAXWSTransport("default");
 
 		try {
-		  UddiDataWriter.security = transport
-					.getUDDISecurityService(this.address + "/services/security?wsdl");
-		  UddiDataWriter.publish = transport.getUDDIPublishService(this.address + "/services/publish?wsdl");
+			UddiDataWriter.security = transport
+					.getUDDISecurityService(this.address
+							+ "/services/security?wsdl");
+			UddiDataWriter.publish = transport
+					.getUDDIPublishService(this.address
+							+ "/services/publish?wsdl");
+			GetAuthToken getAuthToken = new GetAuthToken();
+			getAuthToken.setUserID(this.username);
+			getAuthToken.setCred(this.password);
+
+			this.userAuthToken = UddiDataWriter.security
+					.getAuthToken(getAuthToken);
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-		GetAuthToken getAuthToken = new GetAuthToken();
-		getAuthToken.setUserID(this.username);
-		getAuthToken.setCred(this.password);
-
-		try {
-			this.userAuthToken = UddiDataWriter.security.getAuthToken(getAuthToken);
+		} catch (NullPointerException e) {
+			error = true;
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -78,55 +82,61 @@ public class UddiDataWriter implements IUddiConfig {
 	 * @param source
 	 *            The UddiDataSource object
 	 */
-	public void writeDatasource(UddiDataSource source) {
-		BusinessService service = new BusinessService();
+	public boolean writeDatasource(UddiDataSource source) {
 
-		BindingTemplate template = new BindingTemplate();
-
-		service.getDescription().addAll(source.getDescList());
-
-		service.setServiceKey(source.getKey());
-				
-		service.setBusinessKey(source.getBusinessKey());
-		Name name = new Name();
-		name.setValue(source.getName());
-		service.getName().add(name);
-		template.setBindingKey(source.getKey()+ "_binding");
-		AccessPoint accessPoint = new AccessPoint();
-		accessPoint.setUseType(ACCESS_POINT_TYPE);
-		accessPoint.setValue(source.getAddress());
-
-		template.setAccessPoint(accessPoint);
-		
-		template.setServiceKey(source.getKey());
-
-		CategoryBag bag = new CategoryBag();
-		bag.getKeyedReference().addAll(source.getReferenceList());
-
-		service.setCategoryBag(bag);
-
-		BindingTemplates templates = new BindingTemplates();
-
-		templates.getBindingTemplate().add(template);
-
-		service.setBindingTemplates(templates);
-
-		SaveService saveService = new SaveService();
-
-		saveService.setAuthInfo(userAuthToken.getAuthInfo());
-
-		saveService.getBusinessService().add(service);
 		try {
-		  UddiDataWriter.publish.saveService(saveService);
+			BusinessService service = new BusinessService();
+
+			BindingTemplate template = new BindingTemplate();
+
+			service.getDescription().addAll(source.getDescList());
+
+			service.setServiceKey(source.getKey());
+
+			service.setBusinessKey(source.getBusinessKey());
+			Name name = new Name();
+			name.setValue(source.getName());
+			service.getName().add(name);
+			template.setBindingKey(source.getKey() + "_binding");
+			AccessPoint accessPoint = new AccessPoint();
+			accessPoint.setUseType(ACCESS_POINT_TYPE);
+			accessPoint.setValue(source.getAddress());
+
+			template.setAccessPoint(accessPoint);
+
+			template.setServiceKey(source.getKey());
+
+			CategoryBag bag = new CategoryBag();
+			bag.getKeyedReference().addAll(source.getReferenceList());
+
+			service.setCategoryBag(bag);
+
+			BindingTemplates templates = new BindingTemplates();
+
+			templates.getBindingTemplate().add(template);
+
+			service.setBindingTemplates(templates);
+
+			SaveService saveService = new SaveService();
+
+			saveService.setAuthInfo(userAuthToken.getAuthInfo());
+
+			saveService.getBusinessService().add(service);
+
+			UddiDataWriter.publish.saveService(saveService);
+			
+			return true;
+			
+			
 		} catch (DispositionReportFaultMessage e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
+		} catch (NullPointerException e) {
+			return false;
 		}
 	}
-
 
 	/**
 	 * Writes a Business to the jUDDI Registry
@@ -153,7 +163,7 @@ public class UddiDataWriter implements IUddiConfig {
 		saveBusiness.setAuthInfo(userAuthToken.getAuthInfo());
 
 		try {
-		  UddiDataWriter.publish.saveBusiness(saveBusiness);
+			UddiDataWriter.publish.saveBusiness(saveBusiness);
 		} catch (DispositionReportFaultMessage e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -162,7 +172,7 @@ public class UddiDataWriter implements IUddiConfig {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void deleteDatasource(String key) {
 		DeleteService deleteService = new DeleteService();
 		deleteService.setAuthInfo(this.userAuthToken.getAuthInfo());
@@ -177,9 +187,7 @@ public class UddiDataWriter implements IUddiConfig {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -204,15 +212,26 @@ public class UddiDataWriter implements IUddiConfig {
 		this.address = address;
 	}
 
-	public static UddiDataWriter getInstance(String address, String username, String password) {
+	public static UddiDataWriter getInstance(String address, String username,
+			String password) {
 		if (dataWriter == null) {
-			dataWriter = new UddiDataWriter(address, username, password);			
+			dataWriter = new UddiDataWriter(address, username, password);
+			if (dataWriter.error) {
+
+				dataWriter = null;
+			}
+
 		} else {
 			dataWriter.setAddress(address);
 			dataWriter.setUsername(username);
 			dataWriter.setPassword(password);
+
 		}
-		
+
 		return dataWriter;
+	}
+
+	public static void removeInstance() {
+		dataWriter = null;
 	}
 }
