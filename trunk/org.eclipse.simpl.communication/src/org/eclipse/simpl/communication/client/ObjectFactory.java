@@ -35,22 +35,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link ConnectionException }
-     * 
-     */
-    public ConnectionException createConnectionException() {
-        return new ConnectionException();
-    }
-
-    /**
      * Create an instance of {@link DataSource }
      * 
      */
@@ -64,6 +48,22 @@ public class ObjectFactory {
      */
     public LateBinding createLateBinding() {
         return new LateBinding();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
+     * Create an instance of {@link ConnectionException }
+     * 
+     */
+    public ConnectionException createConnectionException() {
+        return new ConnectionException();
     }
 
     /**

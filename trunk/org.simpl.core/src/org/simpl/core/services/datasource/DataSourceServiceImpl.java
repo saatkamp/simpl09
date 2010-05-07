@@ -115,7 +115,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     }
 
     // convert data to SDO
-    dataFormat = findDataFormatToSDO(dataSourceService, null); // TODO: data format as parameter 
+    dataFormat = findDataFormatToSDO(dataSourceService, dataSource.getDataFormat());
     retrieveData = dataFormat.toSDO(data);
 
     return retrieveData;
@@ -150,6 +150,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       // format data
       dataFormat = findDataFormatFromSDO(dataSourceService, data.getString("formatType"));
       writeData = dataFormat.fromSDO(data);
+
+      // TODO: conversion if no data format found
 
       // write data
       success = dataSourceService.writeBack(dataSource, writeData);
@@ -189,16 +191,21 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       dataFormat = findDataFormatFromSDO(dataSourceService, data.getString("formatType"));
       writeData = dataFormat.fromSDO(data);
 
+      // TODO: conversion if no data format is found
+
       // create target
       createTargetStatements = dataFormat.getCreateTargetStatements(data, target);
-      
-      for (String createTargetStatement : createTargetStatements) {
-        targetCreated = dataSourceService.executeStatement(dataSource,
-            createTargetStatement);
+
+      if (createTargetStatements != null) {
+        for (String createTargetStatement : createTargetStatements) {
+          targetCreated = dataSourceService.executeStatement(dataSource,
+              createTargetStatement);
+        }
       }
 
       // write data
-      if (targetCreated) {
+      if ((createTargetStatements != null && targetCreated)
+          || createTargetStatements == null) {
         success = dataSourceService.writeData(dataSource, writeData, target);
       }
 
@@ -302,7 +309,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
   /**
    * Finds a data format that converts a SDO to the incoming data type of a data source
-   * service.
+   * service. Compares the generic data types of the data source service and the data
+   * formats.
    * 
    * @param dataSourceService
    * @return
@@ -326,8 +334,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
           .getGenericSuperclass();
       dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[0];
 
-      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType) && formatType != null
-          && dataFormat.getType().equals(formatType)) {
+      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)
+          && (formatType != null && dataFormat.getType().equals(formatType) || formatType == null)) {
         break;
       }
     }
@@ -337,7 +345,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
   /**
    * Finds a data format that converts the outgoing data type of a data source service to
-   * a SDO. service.
+   * a SDO service. Compares the generic data types of the data source service and the
+   * data formats.
    * 
    * @param dataSourceService
    * @return

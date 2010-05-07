@@ -18,16 +18,15 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Used to create a SDO from standard CSV file and vice versa.<br>
- * <b>Description:</b>Uses OpenCSV to read and write the CSV data. The data is
- * written to a temporary file, to be able to return it as java.io.File.<br>
+ * <b>Description:</b>Uses OpenCSV to read and write the CSV data. The data is written to
+ * a temporary file, to be able to return it as java.io.File.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
  * TODO: rename to CSVFileDataFormat
  * 
  * @author schneimi<br>
- * @version $Id: CSVDataFormat.java 1130 2010-04-19 13:54:30Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class CSVDataFormat extends DataFormatPlugin<File, File> {
@@ -42,10 +41,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang.Object
-   * )
+   * @see org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang.Object )
    */
   public DataObject toSDO(File file) {
     CSVReader csvReader;
@@ -60,19 +56,22 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
       csvReader = new CSVReader(new FileReader(file));
       headLine = csvReader.readNext();
       headerObject.setList("column", Arrays.asList(headLine));
-
+      
       sdo.setString("filename", file.getName());
+
+      // uncommented because CSV properties cannot be recognized and used by OpenCSV
       // sdo.setChar("separator", ',');
       // sdo.setChar("quoteChar", '\0');
       // sdo.setChar("escapeChar", '\\');
       // sdo.setBoolean("strictQuotes", false);
 
       while ((nextLine = csvReader.readNext()) != null) {
-        rowObject = sdo.createDataObject("row");
+        rowObject = sdo.createDataObject("dataset");
 
-        for (String value : nextLine) {
+        for (int i = 0; i < nextLine.length; i++) {
           columnObject = rowObject.createDataObject("column");
-          columnObject.setString("value", value);
+          columnObject.setString("name", headLine[i]);
+          columnObject.setString("value", nextLine[i]);
         }
       }
     } catch (FileNotFoundException e) {
@@ -88,9 +87,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.simpl.core.services.dataformat.DataFormatService#fromSDO(commonj.sdo
+   * @see org.simpl.core.services.dataformat.DataFormatService#fromSDO(commonj.sdo
    * .DataObject)
    */
   @SuppressWarnings("unchecked")
@@ -99,41 +96,43 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     File file = null;
     FileWriter fileWriter;
     CSVWriter csvWriter;
-    String[] row = null;
+    String[] dataset = null;
     List<String[]> lines = new ArrayList<String[]>();
+
+    // uncommented because CSV properties cannot be recognized and used by OpenCSV
     // char separator = data.getChar("separator");
     // char quoteChar = data.getChar("quoteChar");
     // char escapeChar = data.getChar("escapeChar");
     // boolean strictQuotes = data.getBoolean("strictQuotes");
 
     try {
-      file = File.createTempFile("WindowsLocalFSDataSource", ".tmp");
+      file = File.createTempFile("CSVDataFormatFile", ".tmp");
       file.deleteOnExit();
 
       fileWriter = new FileWriter(file);
       csvWriter = new CSVWriter(fileWriter);
 
-      // read header
-      row = (String[]) data.getDataObject("header").getList("column").toArray();
+      // get column names for header
+      dataset = (String[]) data.getDataObject("header").getList("column").toArray();
 
       // add header
-      lines.add(row);
+      lines.add(dataset);
 
-      // read rows
-      List<DataObject> rows = data.getList("row");
-
-      for (DataObject rowObject : rows) {
-        List<DataObject> columns = rowObject.getList("column");
+      // get dataset
+      List<DataObject> datasetObjects = data.getList("dataset");
+      
+      for (DataObject datasetObject : datasetObjects) {
+        List<DataObject> columns = datasetObject.getList("column");
         List<String> values = new ArrayList<String>();
 
         for (DataObject column : columns) {
           values.add((String) column.getString("value"));
         }
 
-        row = Arrays.copyOf(values.toArray(), values.size(), String[].class);
+        dataset = Arrays.copyOf(values.toArray(), values.size(), String[].class);
 
         // add row
-        lines.add(row);
+        lines.add(dataset);
       }
 
       // write lines to temporary file
@@ -148,8 +147,10 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     return file;
   }
 
-  /* (non-Javadoc)
-   * @see org.simpl.core.services.dataformat.DataFormat#createTarget(java.lang.Object, commonj.sdo.DataObject, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * @see org.simpl.core.services.dataformat.DataFormat#createTarget(java.lang.Object,
+   * commonj.sdo.DataObject, java.lang.String)
    */
   @Override
   public List<String> getCreateTargetStatements(DataObject data, String target) {

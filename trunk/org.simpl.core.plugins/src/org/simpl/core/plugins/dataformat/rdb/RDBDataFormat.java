@@ -12,14 +12,14 @@ import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b> <br>
+ * <b>Purpose:</b>Used to create a SDO from RDB result and vice versa.<br>
  * <b>Description:</b>Converts the data from a ResultSet to a DataObject. When converting
  * back from a DataObject, SQL statements are created, that can be executed on a RDB
  * database to create or update the data.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
- * TODO: create list of quoted column types, currently only VARCHAR is supported
+ * TODO: create list of quoted column data types, currently only VARCHAR is supported
  * 
  * @author schneimi<br>
  * @version $Id: TuscanyDataFormat.java 1224 2010-04-28 14:17:34Z
@@ -156,7 +156,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     List<String> primaryKeys = null;
     List<String> createTargetStatements = new ArrayList<String>();
     String createTargetStatement = null;
-    
+
     // build a create statement
     for (DataObject table : tables) {
       columns = (List<DataObject>) table.getList("column");
@@ -182,7 +182,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
       }
 
       createTargetStatement += "))";
-      
+
       createTargetStatements.add(createTargetStatement);
     }
 
