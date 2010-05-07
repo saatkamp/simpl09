@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.simpl.core.webservices.client package. 
+ * generated in the org.eclipse.simpl.communication.client package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -25,10 +25,9 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _ConnectionException_QNAME = new QName("http://webservices.core.simpl.org/", "ConnectionException");
-    private final static QName _DataSource_QNAME = new QName("http://webservices.core.simpl.org/", "DataSource");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.simpl.core.webservices.client
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.eclipse.simpl.communication.client
      * 
      */
     public ObjectFactory() {
@@ -40,22 +39,6 @@ public class ObjectFactory {
      */
     public DataSource createDataSource() {
         return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
     }
 
     /**
@@ -73,15 +56,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "ConnectionException")
     public JAXBElement<ConnectionException> createConnectionException(ConnectionException value) {
         return new JAXBElement<ConnectionException>(_ConnectionException_QNAME, ConnectionException.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataSource }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "DataSource")
-    public JAXBElement<DataSource> createDataSource(DataSource value) {
-        return new JAXBElement<DataSource>(_DataSource_QNAME, DataSource.class, null, value);
     }
 
 }

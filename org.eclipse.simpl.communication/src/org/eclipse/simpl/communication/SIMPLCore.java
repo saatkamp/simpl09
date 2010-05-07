@@ -79,7 +79,7 @@ public class SIMPLCore {
 
   public List<String> getDatasourceSubTypes(String dsType) {
     List<String> dsSubTypes = (List<String>) Parameter.deserialize(getDatasourceService()
-        .getDataSourceSubTypes(dsType));
+        .getDataSourceSubtypes(dsType));
 
     return dsSubTypes;
   }

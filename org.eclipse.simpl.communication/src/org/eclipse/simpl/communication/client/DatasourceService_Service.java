@@ -26,14 +26,14 @@ public class DatasourceService_Service
 {
     private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn.getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS");
     private final static URL DATASOURCESERVICE_WSDL_LOCATION;
-    private final static Logger logger = Logger.getLogger(DatasourceService_Service.class.getName());
+    private final static Logger logger = Logger.getLogger(org.eclipse.simpl.communication.client.DatasourceService_Service.class.getName());
 
     static {
         URL url = null;
         try {
             URL baseUrl;
-            baseUrl = DatasourceService_Service.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl");
+            baseUrl = org.eclipse.simpl.communication.client.DatasourceService_Service.class.getResource(".");
+            url = new URL(baseUrl, DSS_WSDL_ADDRESS);
         } catch (MalformedURLException e) {
             logger.warning("Failed to create URL for the wsdl Location: '"+DSS_WSDL_ADDRESS+"', retrying as a local file");
             logger.warning(e.getMessage());
