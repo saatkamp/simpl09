@@ -2,9 +2,7 @@ package org.simpl.rrs.dsadapter.plugins.rdb;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
@@ -32,7 +30,7 @@ public class DerbyRDBAdapter extends DSAdapterPlugin {
 			Class.forName("org.apache.derby.jdbc.ClientDriver");
 			StringBuilder uri = new StringBuilder();
 			// jdbc:derby:sampleDB", "dba", "password");
-			uri.append("jdbc:derby://");
+			uri.append("jdbc:derby:");
 			uri.append(dsAddress);
 			uri.append(";create=true");
 

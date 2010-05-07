@@ -25,6 +25,22 @@ public class MetadataServiceImpl implements MetadataService {
 	private static final String DATABASE_NAME = "rrsDB";
 	private static final String Reference_TABLE_NAME = "ReferenceTable";
 
+	private boolean DoesTableExist(Connection connection) throws SQLException {
+
+		boolean tableExists = true;
+		ResultSet resultSet = connection.getMetaData().getTables("%", "%", "%",
+				new String[] { "TABLE" });
+		if (resultSet.next() == false) {
+			tableExists = false;
+		}
+
+		// if (resultSet.getString("TABLE_NAME") == Reference_TABLE_NAME) {
+		// tableExists = true;
+		// }
+
+		return tableExists;
+	}
+
 	private Connection getConnection() {
 		Connection connect = null;
 		StringBuilder uri = new StringBuilder();
@@ -53,7 +69,21 @@ public class MetadataServiceImpl implements MetadataService {
 		ResultSet rs = null;
 
 		Connection conn = getConnection();
-
+		
+		try {
+			if (DoesTableExist(conn) == false) {
+				Statement statement = conn.createStatement();
+				String statem = "CREATE TABLE ReferenceTable ( referenceName VARCHAR(255), address VARCHAR(255), adapterType VARCHAR(255), statement VARCHAR(255), dsAddress VARCHAR(255), portType VARCHAR(255), serviceName VARCHAR(255), portName VARCHAR(255), policy VARCHAR(255), PRIMARY KEY ( REFERENCENAME))";
+				// TODO Testausgabe entfernen
+				System.out.println("Create Table: " + statem);
+				statement.execute(statem);
+				statement.close();
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		try {
 			Statement statm = conn.createStatement();
 			rs = statm.executeQuery("SELECT * FROM " + Reference_TABLE_NAME);

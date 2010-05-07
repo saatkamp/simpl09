@@ -69,5 +69,7 @@
 	<classpathentry kind="lib" path="C:/Dokumente und Einstellungen/NightshadowXT/Desktop/Apache Tomcat/webapps/axis2/WEB-INF/lib/xml-resolver-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Dokumente und Einstellungen/NightshadowXT/Desktop/Apache Tomcat/webapps/axis2/WEB-INF/lib/XmlSchema-1.4.3.jar"/>
 	<classpathentry kind="lib" path="C:/Dokumente und Einstellungen/NightshadowXT/Desktop/Apache Tomcat/webapps/axis2/WEB-INF/lib/xom-1.0.jar"/>
+	<classpathentry kind="lib" path="derby.jar"/>
+	<classpathentry kind="lib" path="derbyclient.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

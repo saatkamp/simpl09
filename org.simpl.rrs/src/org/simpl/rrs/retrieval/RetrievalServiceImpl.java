@@ -1,14 +1,11 @@
 package org.simpl.rrs.retrieval;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.webservices.EPR;
-import org.simpl.rrs.webservices.helper.Parameter;
 
 import commonj.sdo.DataObject;
 
