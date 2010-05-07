@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
+import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -271,14 +272,14 @@ public class ParametersListPopUp{
 	/**
  * for adding the tables names from the DB.
  */
-	public void loadTablesFromDB(String dsAddress,String dsType,String dsSubtype) {
+	public void loadTablesFromDB(DataSource dataSource) {
 		
 		listOfTableObjekts=new ArrayList<Table>();
 		Table tableObjekt = null;
 		//++++++++++++++++++++++++DSO Parsing++++++++++++++++++++++++
 		SIMPLCore simplCore=SIMPLCommunication.getConnection();
 		try {
-			simplCore.getMetaData(dsAddress, dsType, dsSubtype, "");
+			simplCore.getMetaData(dataSource, "");
 			//TODO: es muss noch der SDO objekt von der simplCore geholt werden .
 			Element rootElementOfDSO = null;//=DSO Element;
 			NodeList nl = rootElementOfDSO.getElementsByTagName("table");

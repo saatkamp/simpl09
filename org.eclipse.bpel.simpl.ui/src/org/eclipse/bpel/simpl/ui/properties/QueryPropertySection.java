@@ -20,7 +20,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetQueryTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
-import org.eclipse.simpl.uddi.model.datasource.DataSource;
+import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -36,8 +36,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
+import widgets.TablsListPopUp;
 
 @SuppressWarnings("unused")
 public class QueryPropertySection extends DMActivityPropertySection {
@@ -69,6 +69,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Button Save = null;
 	
 	private QueryActivity activity;
+	
+	private DataSource dataSource = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -97,6 +99,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		queryTargetText.setText(activity.getQueryTarget());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
+		
+		if (dataSourceAddressCombo != null && !dataSourceAddressCombo.getText().isEmpty()){
+			dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+		}
 	}
 
 	/**
@@ -180,10 +186,10 @@ public class QueryPropertySection extends DMActivityPropertySection {
 						new SetDsAddressCommand(getModel(),
 								dataSourceAddressCombo.getText()));
 				
-				DataSource data = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
-				typeText.setText(data.getType());
-				kindText.setText(data.getSubtype());
-				languageText.setText(data.getLanguage());
+				dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+				typeText.setText(dataSource.getType());
+				kindText.setText(dataSource.getSubType());
+				languageText.setText(dataSource.getLanguage());
 			}
 		});
 		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
@@ -319,7 +325,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeText.getText(),kindText.getText());
+				tabelsPopWindowTables.loadTablesFromDB(dataSource);
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();

@@ -13,9 +13,8 @@ import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.simpl.uddi.model.ModelProvider;
-import org.eclipse.simpl.uddi.model.datasource.DataSource;
-import org.eclipse.simpl.uddi.model.datasource.DatasourceFactory;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -106,10 +105,10 @@ public class PropertySectionUtils {
 						for (Object data : datasourceElements){
 							String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
 							if (name.equals(dsName)){
-								datasource = DatasourceFactory.eINSTANCE.createDataSource();
+								datasource = new DataSource();
 								datasource.setName(name);
 								datasource.setType(((Element) data).getAttributeValue(AT_DATA_SOURCE_TYPE));
-								datasource.setSubtype(((Element) data).getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
+								datasource.setSubType(((Element) data).getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
 								datasource.setLanguage(((Element) data).getAttributeValue(AT_DATA_SOURCE_LANG));
 							}
 						}

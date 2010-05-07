@@ -12,14 +12,9 @@
 package widgets;
 
 
-import java.io.StringReader;
 import java.util.ArrayList;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.SIMPLCore;
+import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -32,10 +27,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
 
 
 
@@ -279,10 +270,10 @@ public class TablsListPopUp{
 	/**
  * for adding the tables names from the DB.
  */
-	public void loadTablesFromDB(String dsAddress,String dsType,String dsSubtype) {
+	public void loadTablesFromDB(DataSource dataSource) {
 		
 		MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
-		ArrayList<Table> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(dsAddress, dsType, dsSubtype);
+		ArrayList<Table> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(dataSource);
 		
 		for(int i=0;i<listOfTables.size();i++){
 			arrayOfElements.add(listOfTables.get(i).getTableName());
