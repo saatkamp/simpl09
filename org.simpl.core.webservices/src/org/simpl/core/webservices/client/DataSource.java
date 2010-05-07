@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="subType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="authentication" type="{http://webservices.core.simpl.org/}Authentication" minOccurs="0"/>
  *         &lt;element name="lateBinding" type="{http://webservices.core.simpl.org/}LateBinding" minOccurs="0"/>
+ *         &lt;element name="language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,7 +38,8 @@ import javax.xml.bind.annotation.XmlType;
     "type",
     "subType",
     "authentication",
-    "lateBinding"
+    "lateBinding",
+    "language"
 })
 public class DataSource {
 
@@ -47,6 +49,7 @@ public class DataSource {
     protected String subType;
     protected Authentication authentication;
     protected LateBinding lateBinding;
+    protected String language;
 
     /**
      * Gets the value of the name property.
@@ -190,6 +193,30 @@ public class DataSource {
      */
     public void setLateBinding(LateBinding value) {
         this.lateBinding = value;
+    }
+
+    /**
+     * Gets the value of the language property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLanguage() {
+        return language;
+    }
+
+    /**
+     * Sets the value of the language property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLanguage(String value) {
+        this.language = value;
     }
 
 }
