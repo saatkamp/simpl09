@@ -5,14 +5,15 @@
     <xsd:complexType name="tColumn">
 
     	<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
     </xsd:complexType>
 
 
 
-    
 
 
-    
+
+
 
 
 
@@ -20,7 +21,7 @@
 
     <xsd:complexType name="tCSVDataFormat">
     	<xsd:sequence>
-    		<xsd:element name="row" type="tRow" maxOccurs="unbounded"
+    		<xsd:element name="dataset" type="tDataset" maxOccurs="unbounded"
     			minOccurs="0">
     		</xsd:element>
     		<xsd:element name="header" type="tHeader" maxOccurs="1"
@@ -49,7 +50,7 @@
 
     <xsd:element name="CSVDataFormat" type="tCSVDataFormat"></xsd:element>
 
-    <xsd:complexType name="tRow">
+    <xsd:complexType name="tDataset">
     	<xsd:sequence>
     		<xsd:element name="column" type="tColumn" maxOccurs="unbounded" minOccurs="0"></xsd:element>
     	</xsd:sequence>

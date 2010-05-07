@@ -22,13 +22,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "DataSource")
 @XmlType(name = "DataSource", propOrder = { "name", "address", "type", "subType",
-    "authentication", "lateBinding", "language" })
+    "authentication", "lateBinding", "language", "dataFormat"})
 public class DataSource {
   private String name;
   private String address;
   private String type;
   private String subType;
   private String language;
+  private String dataFormat;
   private Authentication authentication = new Authentication();
   private LateBinding lateBinding = new LateBinding();
 
@@ -130,9 +131,25 @@ public class DataSource {
   }
 
   /**
-   * @param language the language to set
+   * @param language
+   *          the language to set
    */
   public void setLanguage(String language) {
     this.language = language;
+  }
+
+  /**
+   * @return the dataFormat
+   */
+  public String getDataFormat() {
+    return dataFormat;
+  }
+
+  /**
+   * @param dataFormat
+   *          the dataFormat to set
+   */
+  public void setDataFormat(String dataFormat) {
+    this.dataFormat = dataFormat;
   }
 }
