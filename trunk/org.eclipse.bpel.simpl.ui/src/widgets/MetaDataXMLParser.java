@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
+import org.eclipse.simpl.communication.client.DataSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -29,14 +30,14 @@ public class MetaDataXMLParser {
 	/**
 	 * for adding the tables names from the DB.
 	 */
-     public ArrayList<Table> loadTablesFromDB(String dsAddress,String dsType,String dsSubtype) {
+     public ArrayList<Table> loadTablesFromDB(DataSource dataSource) {
 			
 			
 			//++++++++++++++++++++++++DSO Parsing++++++++++++++++++++++++
 			SIMPLCore simplCore=SIMPLCommunication.getConnection();
 			try {
 				
-				 String metaDataString =simplCore.getMetaData(dsAddress, dsType, dsSubtype, "");
+				 String metaDataString =simplCore.getMetaData(dataSource, "");
 				// metaDataString
 				 try {
 				      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

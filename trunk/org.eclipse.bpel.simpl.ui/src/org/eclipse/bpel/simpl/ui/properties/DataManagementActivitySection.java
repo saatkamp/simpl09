@@ -296,7 +296,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeText.getText(),kindText.getText());
+				tabelsPopWindowTables.loadTablesFromDB();
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
