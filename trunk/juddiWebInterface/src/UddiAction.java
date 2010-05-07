@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.juddi.v3.client.transport.JAXWSTransport;
 import org.apache.juddi.v3.client.transport.Transport;
 import org.apache.juddi.v3.client.transport.TransportException;
+import org.simpl.uddi.CreateDatabase;
 import org.simpl.uddi.UddiWebConfig;
+import org.simpl.uddi.client.UddiBusinessReader;
 import org.simpl.uddi.client.UddiDataSource;
 import org.simpl.uddi.client.UddiDataWriter;
 import org.uddi.v3_service.UDDISecurityPortType;
@@ -55,7 +57,7 @@ public class UddiAction extends HttpServlet {
 		UddiDataWriter dataWriter = null;
 		
 		if (delete != null) {
-			if (request.getParameter("uddi") == null) {
+			if (request.getParameter("uddi") != null) {
 				dataWriter = UddiDataWriter.getInstance(config.getAddress(), config.getUsername(), config.getPassword());
 				dataWriter.deleteDatasource(request.getParameter("uddi"));
 				response.sendRedirect("list.jsp?message=Datenquelle Gelöscht");
@@ -66,7 +68,7 @@ public class UddiAction extends HttpServlet {
 		} else if (edit != null) {
 			String nextJSP = "";
 			if (request.getParameter("uddi") == null) {
-				nextJSP = "/index.jsp";
+				nextJSP = "/list.jsp";
 			} else {
 				nextJSP = "/form.jsp";
 			}
@@ -129,13 +131,15 @@ public class UddiAction extends HttpServlet {
 			
 			Transport transport = new JAXWSTransport("default");
 			
-			
-			
 			try {
 				UDDISecurityPortType security = transport.getUDDISecurityService(config.getAddress() + "/services/security?wsdl");
+				if (!UddiBusinessReader.getInstance(config.getAddress()).simplBusinessExsists()) {
+					CreateDatabase.create();
+				}
 				String nextJSP = "/index.jsp?message="+"Config Saved";
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
+				
 			} catch (TransportException e) {
 				String nextJSP = "/index.jsp?message="+"Uddi Registry not found";
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
