@@ -4,7 +4,7 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.simpl.uddi.model.datasource.DataSource;
+import org.eclipse.simpl.communication.client.DataSource;
 
 public class DataSourceFilter extends ViewerFilter {
 
@@ -32,7 +32,7 @@ public class DataSourceFilter extends ViewerFilter {
 			if (ds.getType().matches(searchString)) {
 				return true;
 			}
-			if (ds.getSubtype().matches(searchString)) {
+			if (ds.getSubType().matches(searchString)) {
 				return true;
 			}
 		}catch (PatternSyntaxException e) {
