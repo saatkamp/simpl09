@@ -8,8 +8,8 @@ import java.io.ByteArrayOutputStream;
 /**
  * <b>Purpose:</b> Helper for the transmission of complex objects as web service
  * parameters.<br>
- * <b>Description:</b> Offers functions to serialize and deserialize objects to and from
- * XML. <br>
+ * <b>Description:</b> Offers functions to serialize objects to XML and deserialize
+ * objects from XML. <br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
