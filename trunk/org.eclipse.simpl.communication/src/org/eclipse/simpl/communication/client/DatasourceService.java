@@ -79,6 +79,45 @@ public interface DatasourceService {
 
     /**
      * 
+     * @param dataSource
+     * @param dataObject
+     * @return
+     *     returns boolean
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "writeBack")
+    @WebResult(partName = "return")
+    public boolean writeBack(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
+        @WebParam(name = "dataObject", partName = "dataObject")
+        String dataObject)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
+     * @param dataSource
+     * @param target
+     * @param dataObject
+     * @return
+     *     returns boolean
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "writeData")
+    @WebResult(partName = "return")
+    public boolean writeData(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
+        @WebParam(name = "dataObject", partName = "dataObject")
+        String dataObject,
+        @WebParam(name = "target", partName = "target")
+        String target)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
      * @param statement
      * @param dataSource
      * @param target
@@ -95,24 +134,6 @@ public interface DatasourceService {
         String statement,
         @WebParam(name = "target", partName = "target")
         String target)
-        throws ConnectionException_Exception
-    ;
-
-    /**
-     * 
-     * @param dataSource
-     * @param data
-     * @return
-     *     returns boolean
-     * @throws ConnectionException_Exception
-     */
-    @WebMethod(action = "writeBack")
-    @WebResult(partName = "return")
-    public boolean writeBack(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource,
-        @WebParam(name = "data", partName = "data")
-        String data)
         throws ConnectionException_Exception
     ;
 
@@ -146,9 +167,9 @@ public interface DatasourceService {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "getDataSourceSubtypes")
+    @WebMethod(action = "getDataSourceSubTypes")
     @WebResult(partName = "return")
-    public String getDataSourceSubtypes(
+    public String getDataSourceSubTypes(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 

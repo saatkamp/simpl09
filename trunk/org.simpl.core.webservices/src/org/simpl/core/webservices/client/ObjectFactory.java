@@ -43,11 +43,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LateBinding }
+     * Create an instance of {@link ConnectionException }
      * 
      */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
+    public ConnectionException createConnectionException() {
+        return new ConnectionException();
     }
 
     /**
@@ -59,11 +59,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConnectionException }
+     * Create an instance of {@link LateBinding }
      * 
      */
-    public ConnectionException createConnectionException() {
-        return new ConnectionException();
+    public LateBinding createLateBinding() {
+        return new LateBinding();
     }
 
     /**

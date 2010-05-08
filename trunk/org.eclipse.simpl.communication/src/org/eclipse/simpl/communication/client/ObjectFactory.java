@@ -35,11 +35,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Authentication }
+     * Create an instance of {@link DataSource }
      * 
      */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public DataSource createDataSource() {
+        return new DataSource();
     }
 
     /**
@@ -51,11 +51,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSource }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public DataSource createDataSource() {
-        return new DataSource();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
