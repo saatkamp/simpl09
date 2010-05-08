@@ -1,18 +1,18 @@
 /**
- * <b>Purpose:</b> Implements the property section for the {@link UpdateActivity}. <br>
+ * <b>Purpose:</b> Implements the property section for the {@link DeleteActivity}. <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>, Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DeletePropertySection.java 1312 2010-05-07 09:19:30Z ferass_z2000@yahoo.com $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
+import org.eclipse.bpel.simpl.model.DeleteActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
@@ -40,7 +40,7 @@ import widgets.LiveEditStyleText;
 
 @SuppressWarnings("unused")
 @Deprecated
-public class UpdatePropertySection extends DMActivityPropertySection {
+public class DeletePropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
@@ -50,7 +50,7 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
-	//private Text statementText = null;
+	
 	private Button showStatementCheckBox = null;
 	private Label dataSourceAddressLabel = null;
 	private CCombo dataSourceAddressCombo = null;
@@ -61,9 +61,10 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 	private Text languageText = null;
 	private Composite parentComposite = null;
 
-	private UpdateActivity activity;
+	private DeleteActivity activity;
 
 	private LiveEditStyleText statementText = null;
+	
 	private Button insertBpelVariable = null;
 	private Button insertTable = null;
 	private Button Save = null;
@@ -219,12 +220,11 @@ public class UpdatePropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(ModelPackage.eINSTANCE.getUpdateActivity()
+				openStatementEditor(ModelPackage.eINSTANCE.getDeleteActivity()
 						.getInstanceClassName(), activity.getDsLanguage());
 			}
 		});
 
-		
 		
 		
 		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 

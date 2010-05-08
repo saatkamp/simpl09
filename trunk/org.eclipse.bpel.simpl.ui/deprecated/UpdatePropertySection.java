@@ -1,18 +1,18 @@
 /**
- * <b>Purpose:</b> Implements the property section for the {@link InsertActivity}. <br>
+ * <b>Purpose:</b> Implements the property section for the {@link UpdateActivity}. <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>, Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: UpdatePropertySection.java 1312 2010-05-07 09:19:30Z ferass_z2000@yahoo.com $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
-import org.eclipse.bpel.simpl.model.InsertActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
@@ -40,7 +40,7 @@ import widgets.LiveEditStyleText;
 
 @SuppressWarnings("unused")
 @Deprecated
-public class InsertPropertySection extends DMActivityPropertySection {
+public class UpdatePropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
@@ -61,7 +61,7 @@ public class InsertPropertySection extends DMActivityPropertySection {
 	private Text languageText = null;
 	private Composite parentComposite = null;
 
-	private InsertActivity activity;
+	private UpdateActivity activity;
 
 	private LiveEditStyleText statementText = null;
 	private Button insertBpelVariable = null;
@@ -199,7 +199,7 @@ public class InsertPropertySection extends DMActivityPropertySection {
 						new SetDsLanguageCommand(getModel(), languageText.getText()));
 			}
 		});
-		
+
 		Label filler411 = new Label(composite, SWT.NONE);
 		Label filler42 = new Label(composite, SWT.NONE);
 		languageLabel.setText("Query language:");
@@ -219,11 +219,12 @@ public class InsertPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(ModelPackage.eINSTANCE.getInsertActivity()
+				openStatementEditor(ModelPackage.eINSTANCE.getUpdateActivity()
 						.getInstanceClassName(), activity.getDsLanguage());
 			}
 		});
 
+		
 		
 		
 		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
@@ -288,16 +289,16 @@ public class InsertPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-			
+				// TODO Auto-generated method stub
+				//Display tablesDisplay =new Display();
+				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
 				tabelsPopWindowTables=new TablsListPopUp(statementText);
+				//Display display2 = Display.getDefault();
 				tabelsPopWindowTables.setText("Select Tabel");
-				
-				
-				//TODO: folgende zwei Zeilen wieder rein kommintieren
-				// die sind zuständig für übergabe die inhalten der comboboxen an tabelsPopWindowTables.loadTablesFromDB()
-				//if((dataSourceAddressText.getText()!=null)&&(typeCombo.getItem(typeCombo.getSelectionIndex())!=null)&&(kindCombo.getItem(kindCombo.getSelectionIndex())!=null))
-				//tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressText.getText(),typeCombo.getItem(typeCombo.getSelectionIndex()),kindCombo.getItem(kindCombo.getSelectionIndex()));
-				
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeText.getText(),kindText.getText());
+
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
 					tabelsPopWindowTables.setWindowIsOpen(true);

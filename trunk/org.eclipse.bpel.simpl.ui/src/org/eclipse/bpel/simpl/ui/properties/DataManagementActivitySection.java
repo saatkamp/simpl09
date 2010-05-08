@@ -7,7 +7,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
-import org.eclipse.simpl.uddi.model.datasource.DataSource;
+import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -65,6 +65,9 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	private Button insertTable = null;
 	private Button Save = null;
 	
+	
+	private DataSource dataSource = null;
+
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -90,6 +93,10 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
+		
+		if (dataSourceAddressCombo != null && !dataSourceAddressCombo.getText().isEmpty()){
+			dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+		}
 	}
 
 	/**
@@ -169,10 +176,10 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 						new SetDsAddressCommand(getModel(),
 								dataSourceAddressCombo.getText()));
 				
-				DataSource data = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
-				typeText.setText(data.getType());
-				kindText.setText(data.getSubtype());
-				languageText.setText(data.getLanguage());
+				dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+				typeText.setText(dataSource.getType());
+				kindText.setText(dataSource.getSubType());
+				languageText.setText(dataSource.getLanguage());
 			}
 		});
 		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
@@ -296,7 +303,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB();
+				tabelsPopWindowTables.loadTablesFromDB(dataSource);
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();

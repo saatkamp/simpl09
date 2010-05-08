@@ -1,17 +1,17 @@
 /**
- * <b>Purpose:</b> Implements the property section for the {@link CallActivity}.<br>
+ * <b>Purpose:</b> Implements the property section for the {@link DropActivity}. <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>, Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DropPropertySection.java 1312 2010-05-07 09:19:30Z ferass_z2000@yahoo.com $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
-import org.eclipse.bpel.simpl.model.CallActivity;
+import org.eclipse.bpel.simpl.model.DropActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
@@ -19,7 +19,6 @@ import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
-import org.eclipse.jface.action.SubToolBarManager;
 import org.eclipse.simpl.uddi.model.datasource.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -41,7 +40,7 @@ import widgets.LiveEditStyleText;
 
 @SuppressWarnings("unused")
 @Deprecated
-public class CallPropertySection extends DMActivityPropertySection {
+public class DropPropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
@@ -51,26 +50,24 @@ public class CallPropertySection extends DMActivityPropertySection {
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
-	
-	
+	//private Text statementText = null;
 	private Button showStatementCheckBox = null;
 	private Label dataSourceAddressLabel = null;
 	private CCombo dataSourceAddressCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
-	
-	private LiveEditStyleText statementText = null;
-	
-	private Button insertBpelVariable = null;
-	private Button insertTable = null;
-	private Button Save = null;
-	
+	private Button openEditorButton = null;
 	private Label languageLabel = null;
 	private Text languageText = null;
 	private Composite parentComposite = null;
 
-	private CallActivity activity;
-
+	private DropActivity activity;
+	
+	private LiveEditStyleText statementText = null;
+	private Button insertBpelVariable = null;
+	private Button insertTable = null;
+	private Button Save = null;
+	
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -202,7 +199,7 @@ public class CallPropertySection extends DMActivityPropertySection {
 						new SetDsLanguageCommand(getModel(), languageText.getText()));
 			}
 		});
-
+		
 		Label filler411 = new Label(composite, SWT.NONE);
 		Label filler42 = new Label(composite, SWT.NONE);
 		languageLabel.setText("Query language:");
@@ -210,10 +207,10 @@ public class CallPropertySection extends DMActivityPropertySection {
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		Label filler43 = new Label(composite, SWT.NONE);
-		insertBpelVariable = new Button(composite, SWT.NONE);
-		insertBpelVariable.setText("Open Editor");
-		insertBpelVariable.setLayoutData(gridData21);
-		insertBpelVariable.addSelectionListener(new SelectionListener() {
+		openEditorButton = new Button(composite, SWT.NONE);
+		openEditorButton.setText("Open Editor");
+		openEditorButton.setLayoutData(gridData21);
+		openEditorButton.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -222,47 +219,11 @@ public class CallPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(ModelPackage.eINSTANCE.getCallActivity()
+				openStatementEditor(ModelPackage.eINSTANCE.getDropActivity()
 						.getInstanceClassName(), activity.getDsLanguage());
 			}
 		});
 
-		Label filler3 = new Label(composite, SWT.NONE);
-		Label filler41 = new Label(composite, SWT.NONE);
-//		showStatementCheckBox = new Button(composite, SWT.CHECK);
-//		showStatementCheckBox.setText("Show resulting statement");
-//		showStatementCheckBox.setBackground(Display.getCurrent()
-//				.getSystemColor(SWT.COLOR_WHITE));
-//		showStatementCheckBox.setLayoutData(gridData11);
-//		Label filler6 = new Label(composite, SWT.NONE);
-		
-		
-//		showStatementCheckBox.addSelectionListener(new SelectionListener() {
-//
-//			@Override
-//			public void widgetDefaultSelected(SelectionEvent arg0) {
-//				widgetSelected(arg0);
-//			}
-//
-//			@Override
-//			public void widgetSelected(SelectionEvent arg0) {
-//				if (showStatementCheckBox.getSelection()) {
-//					statementLabel.setVisible(true);
-//					statementText.setVisible(true);
-//				} else {
-//					statementLabel.setVisible(false);
-//					statementText.setVisible(false);
-//				}
-//			}
-//		});
-//		Label filler1 = new Label(composite, SWT.NONE);
-//		statementLabel = new Label(composite, SWT.NONE);
-//		statementLabel.setText("Resulting statement:");
-//		statementLabel.setVisible(false);
-//		statementLabel.setLayoutData(gridData);
-//		statementLabel.setBackground(Display.getCurrent().getSystemColor(
-//				SWT.COLOR_WHITE));
-		
 		
 		
 		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
@@ -362,7 +323,6 @@ public class CallPropertySection extends DMActivityPropertySection {
 				
 				tabelsPopWindowTables.closeWindow();
 				tabelsPopWindowBPELVariables.closeWindow();
-				
 				tabelsPopWindowTables.setWindowIsOpen(false);
 				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
 			}
@@ -396,8 +356,7 @@ public class CallPropertySection extends DMActivityPropertySection {
 		kindText.setEnabled(false);
 		languageText.setEnabled(false);
 	}
-	
-	
+
 	/**
 	 * This method initializes typeCombo
 	 * 

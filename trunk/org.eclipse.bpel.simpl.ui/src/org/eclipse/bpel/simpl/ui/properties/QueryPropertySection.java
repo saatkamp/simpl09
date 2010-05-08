@@ -195,6 +195,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
 		
 		dataSourceAddressLabel.setText("Data source name:");
+		dataSourceAddressCombo.setEditable(false);
+		dataSourceAddressCombo.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
 		dataSourceAddressLabel.setLayoutData(gridData31);
 		dataSourceAddressLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
