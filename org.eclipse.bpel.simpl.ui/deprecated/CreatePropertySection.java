@@ -1,17 +1,17 @@
 /**
- * <b>Purpose:</b> Implements the property section for the {@link DeleteActivity}. <br>
+ * <b>Purpose:</b> Implements the property section for the {@link CreateActivity}. <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>, Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: CreatePropertySection.java 1312 2010-05-07 09:19:30Z ferass_z2000@yahoo.com $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
-import org.eclipse.bpel.simpl.model.DeleteActivity;
+import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
@@ -40,7 +40,7 @@ import widgets.LiveEditStyleText;
 
 @SuppressWarnings("unused")
 @Deprecated
-public class DeletePropertySection extends DMActivityPropertySection {
+public class CreatePropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
@@ -61,7 +61,7 @@ public class DeletePropertySection extends DMActivityPropertySection {
 	private Text languageText = null;
 	private Composite parentComposite = null;
 
-	private DeleteActivity activity;
+	private CreateActivity activity;
 
 	private LiveEditStyleText statementText = null;
 	
@@ -220,14 +220,16 @@ public class DeletePropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(ModelPackage.eINSTANCE.getDeleteActivity()
+				openStatementEditor(ModelPackage.eINSTANCE.getCreateActivity()
 						.getInstanceClassName(), activity.getDsLanguage());
 			}
 		});
 
+	
+	
 		
 		
-		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
+		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 	
 		Composite statementCompo=new Composite(composite, SWT.NONE);
 		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 		GridData gridData13 = new GridData();
@@ -298,7 +300,6 @@ public class DeletePropertySection extends DMActivityPropertySection {
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
 				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeText.getText(),kindText.getText());
-
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
 					tabelsPopWindowTables.setWindowIsOpen(true);
