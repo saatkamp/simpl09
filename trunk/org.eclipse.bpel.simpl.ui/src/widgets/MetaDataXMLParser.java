@@ -38,6 +38,7 @@ public class MetaDataXMLParser {
 			try {
 				
 				 String metaDataString =simplCore.getMetaData(dataSource, "");
+				 //String metaDataString =simplCore.get
 				// metaDataString
 				 try {
 				      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

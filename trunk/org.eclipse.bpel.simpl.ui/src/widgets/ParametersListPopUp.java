@@ -14,6 +14,7 @@ package widgets;
 
 import java.util.ArrayList;
 
+import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
 import org.eclipse.simpl.communication.client.DataSource;
@@ -166,24 +167,24 @@ public class ParametersListPopUp{
 			}
 		});
 		
-		listColumns = new List(theShell, SWT.BORDER);
-		listColumns.setLayoutData(gridData);
-		listColumns.addSelectionListener(new SelectionListener() {
-			
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
-				
-			}
-			
-			
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
-				
-			}
-		});
+//		listColumns = new List(theShell, SWT.BORDER);
+//		listColumns.setLayoutData(gridData);
+//		listColumns.addSelectionListener(new SelectionListener() {
+//			
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
+//				
+//			}
+//			
+//			
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
+//				
+//			}
+//		});
 	}
 	
 //	private void setTextInStyleText(String string) {
@@ -273,62 +274,12 @@ public class ParametersListPopUp{
  * for adding the tables names from the DB.
  */
 	public void loadTablesFromDB(DataSource dataSource) {
+		MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
+		ArrayList<Table> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(dataSource);
 		
-		listOfTableObjekts=new ArrayList<Table>();
-		Table tableObjekt = null;
-		//++++++++++++++++++++++++DSO Parsing++++++++++++++++++++++++
-		SIMPLCore simplCore=SIMPLCommunication.getConnection();
-		try {
-			simplCore.getMetaData(dataSource, "");
-			//TODO: es muss noch der SDO objekt von der simplCore geholt werden .
-			Element rootElementOfDSO = null;//=DSO Element;
-			NodeList nl = rootElementOfDSO.getElementsByTagName("table");
-			if(nl != null && nl.getLength() > 0) {
-			for(int i = 0 ; i < nl.getLength();i++) {
-			
-				//get the child element
-				if(nl.item(i).getNodeName()=="table"){
-					
-					Element dsoXMLElement = (Element)nl.item(i);
-					if(dsoXMLElement.getTagName()=="table"){
-						
-						tableObjekt=new Table();
-						arrayOfElements.add(dsoXMLElement.getAttribute("name"));
-						//dsoXMLElement.getAttribute("value");
-						//dsoXMLElement.getAttribute("text");
-						
-						tableObjekt.setTableName(dsoXMLElement.getAttribute("name"));
-						if(dsoXMLElement.hasChildNodes()){
-							
-							NodeList columsNodesList=dsoXMLElement.getChildNodes();
-							
-							
-							ArrayList<String> listOfColumnsNames=new ArrayList<String>();
-							Element columXMLElement; // = (Element)nl.item(i);
-							for(int j = 0 ; j < columsNodesList.getLength();j++) {
-								//get the child element
-								if(columsNodesList.item(j).getNodeName()=="column"){
-									columXMLElement = (Element)columsNodesList.item(j);
-									listOfColumnsNames.add(columXMLElement.getAttribute("name"));
-								}
-							}
-							tableObjekt.setListOfColumnsNames(listOfColumnsNames);
-						//add it to list
-						}	
-					}
-				}
-			}
-			listOfTableObjekts.add(tableObjekt);
+		for(int i=0;i<listOfTables.size();i++){
+			arrayOfElements.add(listOfTables.get(i).getTableName());
 		}
-	}
-	catch (Exception e) {
-		e.printStackTrace();
-	}
-		//++++++++++++++++++++end of DSO Parsing+++++++++++++++++++++++++++
-		
-		
-		ArrayList<String> tablesInDB=new ArrayList<String>();
-		
 		
 		arrayOfElements.add("aaaaa");
 		arrayOfElements.add("abbb");
@@ -344,8 +295,9 @@ public class ParametersListPopUp{
 	
 	/**
 	 * for inserting the Bpel-Variables into the List.
+	 * @param listOfBPELVariablesAsStrings 
 	 */
-	public void loadBPELVariables() {
+	public void loadBPELVariables(java.util.List<String> listOfBPELVariablesAsStrings) {
 		/*
 		 * Hallo,
 		du kannst jetzt in den PropertySections mit 
@@ -360,16 +312,21 @@ public class ParametersListPopUp{
 		Gruﬂ,
 		Michael
 		 */
+		for(int i=0;i<listOfBPELVariablesAsStrings.size();i++){
+			arrayOfElements.add(listOfBPELVariablesAsStrings.get(i));
+			
+		}
 		
-		arrayOfElements.add("BPEL_Variable1");
-		arrayOfElements.add("BPEL_Variable2");
-		arrayOfElements.add("BPEL_Variable3");
-		arrayOfElements.add("BPEL_Variable4");
-		arrayOfElements.add("BPEL_Variable5");
-		arrayOfElements.add("BPEL_Variable6");
-		arrayOfElements.add("BPEL_Variable7");
-		arrayOfElements.add("BPEL_Variable8");
-		
+		//******zum testen*******
+//		arrayOfElements.add("BPEL_Variable1");
+//		arrayOfElements.add("BPEL_Variable2");
+//		arrayOfElements.add("BPEL_Variable3");
+//		arrayOfElements.add("BPEL_Variable4");
+//		arrayOfElements.add("BPEL_Variable5");
+//		arrayOfElements.add("BPEL_Variable6");
+//		arrayOfElements.add("BPEL_Variable7");
+//		arrayOfElements.add("BPEL_Variable8");
+		//**********************
 	}
 	
 	public ArrayList<String> parseXMLElements(){
