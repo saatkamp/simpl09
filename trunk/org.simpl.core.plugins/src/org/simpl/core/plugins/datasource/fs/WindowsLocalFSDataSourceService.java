@@ -231,6 +231,16 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
     return metaDataObject;
   }
 
+  /* (non-Javadoc)
+   * @see org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
+      throws ConnectionException {
+    // no need to create a target on local filesystem
+    return true;
+  }
+
   /**
    * Executes a shell command in the given working directory and returns the shell output.
    * 

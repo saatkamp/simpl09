@@ -81,9 +81,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
     // execute statement
     if (!this.isDataSourceComplete(dataSource)) {
+      // get data source service instance
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
+      // execute statement
       success = dataSourceService.executeStatement(dataSource, statement);
     }
 
@@ -113,16 +115,21 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     }
 
     // retrieve data
-    if (!this.isDataSourceComplete(dataSource)) {
+    if (this.isDataSourceComplete(dataSource)) {
+      // get data source service instance
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
+      // retrieve data
       data = dataSourceService.retrieveData(dataSource, statement);
     }
 
-    // convert data to SDO
+    // format data to SDO
     dataFormat = this.findDataFormatToSDO(dataSourceService, dataSource.getDataFormat());
-    retrieveData = dataFormat.toSDO(data);
+
+    if (dataFormat != null) {
+      retrieveData = dataFormat.toSDO(data);
+    }
 
     return retrieveData;
   }
@@ -150,20 +157,24 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       dataSource = lateBindingDataSource;
     }
 
-    // write back
-    if (!this.isDataSourceComplete(dataSource)) {
+    if (this.isDataSourceComplete(dataSource)) {
+      // get data source service instance
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
-      // format data
+      // TODO: conversion if data source service doesn't support the data format
+
+      // find data format
       dataFormat = this.findDataFormatFromSDO(dataSourceService, data
           .getString("formatType"));
-      writeData = dataFormat.fromSDO(data);
 
-      // TODO: conversion if no data format found
+      if (dataFormat != null) {
+        // format data from SDO
+        writeData = dataFormat.fromSDO(data);
 
-      // write data
-      success = dataSourceService.writeBack(dataSource, writeData);
+        // write data
+        success = dataSourceService.writeBack(dataSource, writeData);
+      }
     }
 
     return success;
@@ -179,46 +190,43 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public synchronized boolean writeData(DataSource dataSource, DataObject data,
       String target) throws ConnectionException {
     boolean success = false;
-    boolean targetCreated = false;
+    boolean createdTarget = false;
 
     DataSourceService<Object, Object> dataSourceService = null;
     DataFormat<Object, Object> dataFormat = null;
-    StrategyService strategyService = new StrategyServiceImpl();
     Object writeData = null;
-    List<String> createTargetStatements = null;
+    DataSource lateBindingDataSource = null;
 
     // late binding
-    if (this.hasLateBindingInformation(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    lateBindingDataSource = findLateBindingDataSource(dataSource);
+
+    if (lateBindingDataSource != null) {
+      dataSource = lateBindingDataSource;
     }
 
-    if (dataSource != null) {
+    if (this.isDataSourceComplete(dataSource)) {
+      // get data source service instance
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
-      // format data
+      // TODO: conversion if data source service doesn't support the data format
+
+      // find data format
       dataFormat = this.findDataFormatFromSDO(dataSourceService, data
           .getString("formatType"));
-      writeData = dataFormat.fromSDO(data);
 
-      // TODO: conversion if no data format is found
+      if (dataFormat != null) {
+        // format data from SDO
+        writeData = dataFormat.fromSDO(data);
 
-      // create target
-      createTargetStatements = dataFormat.getCreateTargetStatements(data, target);
+        // create target
+        createdTarget = this.createTarget(dataSource, data, target);
 
-      if (createTargetStatements != null) {
-        for (String createTargetStatement : createTargetStatements) {
-          targetCreated = dataSourceService.executeStatement(dataSource,
-              createTargetStatement);
+        // write data
+        if (createdTarget) {
+          success = dataSourceService.writeData(dataSource, writeData, target);
         }
       }
-
-      // write data
-      if ((createTargetStatements != null && targetCreated)
-          || createTargetStatements == null) {
-        success = dataSourceService.writeData(dataSource, writeData, target);
-      }
-
       // TODO: integrate conversion
       // compare this data source data format with the given data data format
       // if (isSupported(data)) {
@@ -260,15 +268,38 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       dataSource = lateBindingDataSource;
     }
 
-    // get meta data
-    if (!this.isDataSourceComplete(dataSource)) {
+    if (this.isDataSourceComplete(dataSource)) {
+      // get data source service instance
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
+      // get meta data
       data = dataSourceService.getMetaData(dataSource, filter);
     }
 
     return data;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.
+   * services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @Override
+  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
+      throws ConnectionException {
+    boolean success = false;
+    DataSourceService<Object, Object> dataSourceService = null;
+
+    // get data source service instance
+    dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSource.getSubType());
+
+    // create target
+    success = dataSourceService.createTarget(dataSource, dataObject, target);
+
+    return success;
   }
 
   /**

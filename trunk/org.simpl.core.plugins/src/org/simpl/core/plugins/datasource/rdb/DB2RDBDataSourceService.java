@@ -43,7 +43,6 @@ public class DB2RDBDataSourceService extends
     this.setMetaDataSchemaType("tDatabaseMetaData");
     this.addSubtype("DB2");
     this.addLanguage("DB2", "SQL");
-    this.setDataFormat("RDB");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -303,6 +302,55 @@ public class DB2RDBDataSourceService extends
     return metaDataObject;
   }
 
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.
+   * services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
+      throws ConnectionException {
+    boolean createdTarget = false;
+    
+    List<DataObject> tables = dataObject.getList("table");
+    List<DataObject> columns = null;
+    List<String> primaryKeys = null;
+    String createTargetStatement = null;
+
+    // build a create statement
+    for (DataObject table : tables) {
+      columns = (List<DataObject>) table.getList("column");
+      primaryKeys = (List<String>) table.getList("primaryKey");
+
+      createTargetStatement = "CREATE TABLE " + target + " (";
+
+      // create table with columns
+      for (DataObject column : columns) {
+        createTargetStatement += column.getString("name") + " "
+            + column.getString("type") + ",";
+      }
+
+      // add primary keys
+      createTargetStatement += " PRIMARY KEY (";
+
+      for (int i = 0; i < primaryKeys.size(); i++) {
+        createTargetStatement += primaryKeys.get(i);
+
+        if (i < primaryKeys.size() - 1) {
+          createTargetStatement += ",";
+        }
+      }
+
+      createTargetStatement += "))";
+    }
+
+    createdTarget = this.executeStatement(dataSource, createTargetStatement);
+
+    return createdTarget;
+  }
+
   /**
    * Opens a connection.
    * 
@@ -361,7 +409,7 @@ public class DB2RDBDataSourceService extends
       if (logger.isDebugEnabled()) {
         logger.debug("boolean closeConnection() executed successfully.");
       }
-      
+
       logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
