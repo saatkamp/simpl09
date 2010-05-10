@@ -11,6 +11,9 @@
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
@@ -19,6 +22,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.jface.action.SubToolBarManager;
 import org.eclipse.simpl.uddi.model.datasource.DataSource;
 import org.eclipse.swt.SWT;
@@ -36,6 +40,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.ParametersListPopUp;
 import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
 
@@ -46,8 +51,11 @@ public class CallPropertySection extends DMActivityPropertySection {
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
 	
+	
 	/** The tabels pop window bpel variables. */
-	TablsListPopUp tabelsPopWindowBPELVariables;
+	TablsListPopUp tabelsPopWindow;
+	ParametersListPopUp bpelVariableWindow;
+	
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
@@ -60,6 +68,7 @@ public class CallPropertySection extends DMActivityPropertySection {
 	private Text kindText = null;
 	
 	private LiveEditStyleText statementText = null;
+	private Button openEditor = null;
 	
 	private Button insertBpelVariable = null;
 	private Button insertTable = null;
@@ -210,10 +219,10 @@ public class CallPropertySection extends DMActivityPropertySection {
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		Label filler43 = new Label(composite, SWT.NONE);
-		insertBpelVariable = new Button(composite, SWT.NONE);
-		insertBpelVariable.setText("Open Editor");
-		insertBpelVariable.setLayoutData(gridData21);
-		insertBpelVariable.addSelectionListener(new SelectionListener() {
+		openEditor = new Button(composite, SWT.NONE);
+		openEditor.setText("Open Editor");
+		openEditor.setLayoutData(gridData21);
+		openEditor.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -300,15 +309,16 @@ public class CallPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowBPELVariables=new TablsListPopUp(statementText);
+				bpelVariableWindow=new ParametersListPopUp(statementText);
 				//Display display2 = Display.getDefault();
-				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
+				bpelVariableWindow.setText("Insert BPEL-Variable");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowBPELVariables.loadBPELVariables();
-				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
-					tabelsPopWindowBPELVariables.openWindow();
-					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
+				List<String> listOfBPELVariablesAsStrings= VariableUtils.getUseableVariables(getProcess());
+				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
+				if(!bpelVariableWindow.isWindowOpen()){
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
 				}
 				
 				 
@@ -361,10 +371,10 @@ public class CallPropertySection extends DMActivityPropertySection {
 				setStatement(statementText.getText());
 				
 				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindow.closeWindow();
 				
 				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+				tabelsPopWindow.setWindowIsOpen(false);
 			}
 			
 			@Override
@@ -372,9 +382,9 @@ public class CallPropertySection extends DMActivityPropertySection {
 				setStatement(statementText.getText());
 				
 				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindow.closeWindow();
 				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+				tabelsPopWindow.setWindowIsOpen(false);
 			}
 		});
 
