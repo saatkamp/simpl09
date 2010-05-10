@@ -101,7 +101,9 @@ public class StrategyServiceImpl implements StrategyService {
       resultDataSource.setSubType(resultUddiDataSource.getSubtype());
       resultDataSource.getLateBinding().setPolicy(resultUddiDataSource.getWsPolicy());
       resultDataSource.setAddress(resultUddiDataSource.getAddress());
-      // TODO Username, Passwort fehlen noch aus der UddIDataSource
+      resultDataSource.setDataFormat(resultUddiDataSource.getDataFormat());
+      resultDataSource.getAuthentication().setUser(resultUddiDataSource.getUsername());
+      resultDataSource.getAuthentication().setPassword(resultUddiDataSource.getPassword());
 
       break;
     default:
