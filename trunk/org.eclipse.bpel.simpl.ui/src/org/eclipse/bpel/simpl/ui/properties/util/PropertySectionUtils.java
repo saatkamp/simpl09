@@ -13,6 +13,7 @@ import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.simpl.communication.client.Authentication;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.simpl.uddi.model.ModelProvider;
 import org.jdom.Document;
@@ -40,9 +41,13 @@ public class PropertySectionUtils {
 
 	private static final String AT_NAME = "name";
 	private static final String AT_DATA_SOURCE_NAME = "dataSourceName";
+	private static final String AT_DATA_SOURCE_ADDRESS = "address";
 	private static final String AT_DATA_SOURCE_TYPE = "type";
 	private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
 	private static final String AT_DATA_SOURCE_LANG = "language";
+	private static final String AT_DATA_SOURCE_USERNAME = "userName";
+	private static final String AT_DATA_SOURCE_PASSWORD = "password";
+	
 
 	/**
 	 * Die BPEL Datei des Prozesses
@@ -107,9 +112,14 @@ public class PropertySectionUtils {
 							if (name.equals(dsName)){
 								datasource = new DataSource();
 								datasource.setName(name);
+								datasource.setAddress(((Element) data).getAttributeValue(AT_DATA_SOURCE_ADDRESS));
 								datasource.setType(((Element) data).getAttributeValue(AT_DATA_SOURCE_TYPE));
 								datasource.setSubType(((Element) data).getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
 								datasource.setLanguage(((Element) data).getAttributeValue(AT_DATA_SOURCE_LANG));
+								Authentication authent = new Authentication();
+								authent.setUser(((Element) data).getAttributeValue(AT_DATA_SOURCE_USERNAME));
+								authent.setPassword(((Element) data).getAttributeValue(AT_DATA_SOURCE_PASSWORD));
+								datasource.setAuthentication(authent);
 							}
 						}
 					}
@@ -215,7 +225,6 @@ public class PropertySectionUtils {
 				data = ModelProvider.getInstance().findDataSourceByName(name[1]);
 			}
 		}
-		
 		return data;
 	}
 }
