@@ -73,14 +73,14 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataSource lateBindingDataSource = null;
 
     // late binding
-    lateBindingDataSource = lateBindDataSource(dataSource);
+    lateBindingDataSource = findLateBindingDataSource(dataSource);
 
     if (lateBindingDataSource != null) {
       dataSource = lateBindingDataSource;
     }
 
     // execute statement
-    if (!isDataSourceComplete(dataSource)) {
+    if (!this.isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -106,14 +106,14 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataSource lateBindingDataSource = null;
 
     // late binding
-    lateBindingDataSource = lateBindDataSource(dataSource);
+    lateBindingDataSource = findLateBindingDataSource(dataSource);
 
     if (lateBindingDataSource != null) {
       dataSource = lateBindingDataSource;
     }
 
     // retrieve data
-    if (!isDataSourceComplete(dataSource)) {
+    if (!this.isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -121,7 +121,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     }
 
     // convert data to SDO
-    dataFormat = findDataFormatToSDO(dataSourceService, dataSource.getDataFormat());
+    dataFormat = this.findDataFormatToSDO(dataSourceService, dataSource.getDataFormat());
     retrieveData = dataFormat.toSDO(data);
 
     return retrieveData;
@@ -144,19 +144,20 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataSource lateBindingDataSource = null;
 
     // late binding
-    lateBindingDataSource = lateBindDataSource(dataSource);
+    lateBindingDataSource = findLateBindingDataSource(dataSource);
 
     if (lateBindingDataSource != null) {
       dataSource = lateBindingDataSource;
     }
 
     // write back
-    if (!isDataSourceComplete(dataSource)) {
+    if (!this.isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
       // format data
-      dataFormat = findDataFormatFromSDO(dataSourceService, data.getString("formatType"));
+      dataFormat = this.findDataFormatFromSDO(dataSourceService, data
+          .getString("formatType"));
       writeData = dataFormat.fromSDO(data);
 
       // TODO: conversion if no data format found
@@ -196,7 +197,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
           dataSource.getSubType());
 
       // format data
-      dataFormat = findDataFormatFromSDO(dataSourceService, data.getString("formatType"));
+      dataFormat = this.findDataFormatFromSDO(dataSourceService, data
+          .getString("formatType"));
       writeData = dataFormat.fromSDO(data);
 
       // TODO: conversion if no data format is found
@@ -252,14 +254,14 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataSource lateBindingDataSource = null;
 
     // late binding
-    lateBindingDataSource = lateBindDataSource(dataSource);
+    lateBindingDataSource = findLateBindingDataSource(dataSource);
 
     if (lateBindingDataSource != null) {
       dataSource = lateBindingDataSource;
     }
 
     // get meta data
-    if (!isDataSourceComplete(dataSource)) {
+    if (!this.isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -391,6 +393,23 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
+   * Finds a new data source with the late binding information of a given data source
+   * using the strategy service.
+   * 
+   * @return Data source from registry
+   */
+  private DataSource findLateBindingDataSource(DataSource dataSource) {
+    DataSource registryDataSource = null;
+    StrategyService strategyService = SIMPLCore.getInstance().strategyService();
+
+    if (this.hasLateBindingInformation(dataSource)) {
+      registryDataSource = strategyService.findDataSource(dataSource);
+    }
+
+    return registryDataSource;
+  }
+
+  /**
    * Checks if a given data source has late binding information.
    * 
    * @param dataSource
@@ -408,27 +427,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * Returns a data source from the registry via late binding information.
-   * 
-   * @return The data source from the registry
-   */
-  private DataSource lateBindDataSource(DataSource dataSource) {
-    DataSource registryDataSource = null;
-    StrategyService strategyService = SIMPLCore.getInstance().strategyService();
-
-    if (this.hasLateBindingInformation(dataSource)) {
-      registryDataSource = strategyService.findDataSource(dataSource);
-    }
-
-    return registryDataSource;
-  }
-
-  /**
    * @param dataSource
    * @return true if data source contains all necessary information to execute an
    *         operation, false otherwise
    */
-  public boolean isDataSourceComplete(DataSource dataSource) {
+  private boolean isDataSourceComplete(DataSource dataSource) {
     boolean complete = false;
 
     complete = dataSource != null && dataSource.getAddress() != null
