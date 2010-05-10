@@ -25,6 +25,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;
 import org.eclipse.bpel.ui.details.providers.VariableContentProvider;
 import org.eclipse.bpel.ui.details.providers.VariableFilter;
@@ -60,6 +61,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xsd.XSDTypeDefinition;
 
+import widgets.ParametersListPopUp;
 import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
 
@@ -72,7 +74,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
-
+	ParametersListPopUp bpelVariableWindow;
+	
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
@@ -301,12 +304,13 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowBPELVariables = new TablsListPopUp(statementText);
+				bpelVariableWindow = new ParametersListPopUp(statementText);
 				// Display display2 = Display.getDefault();
-				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
+				bpelVariableWindow.setText("Insert BPEL-Variable");
 				// sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				// sShell.setLayout(gridLayout);
-				tabelsPopWindowBPELVariables.loadBPELVariables();
+				java.util.List<String> listOfBPELVariablesAsStrings=VariableUtils.getUseableVariables(getProcess());
+				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
 				if (!tabelsPopWindowBPELVariables.isWindowOpen()) {
 					tabelsPopWindowBPELVariables.openWindow();
 					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
