@@ -67,7 +67,8 @@ public class MySQLRDBDataSourceService extends
       logger.error("exception executing the statement: " + statement, e);
     }
 
-    logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress() + ".");
+    logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress()
+        + ".");
     closeConnection(conn);
 
     return success;
@@ -284,6 +285,55 @@ public class MySQLRDBDataSourceService extends
     }
 
     return metaDataObject;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.
+   * services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
+      throws ConnectionException {
+    boolean createdTarget = false;
+    
+    List<DataObject> tables = dataObject.getList("table");
+    List<DataObject> columns = null;
+    List<String> primaryKeys = null;
+    String createTargetStatement = null;
+
+    // build a create statement
+    for (DataObject table : tables) {
+      columns = (List<DataObject>) table.getList("column");
+      primaryKeys = (List<String>) table.getList("primaryKey");
+
+      createTargetStatement = "CREATE TABLE " + target + " (";
+
+      // create table with columns
+      for (DataObject column : columns) {
+        createTargetStatement += column.getString("name") + " "
+            + column.getString("type") + ",";
+      }
+
+      // add primary keys
+      createTargetStatement += " PRIMARY KEY (";
+
+      for (int i = 0; i < primaryKeys.size(); i++) {
+        createTargetStatement += primaryKeys.get(i);
+
+        if (i < primaryKeys.size() - 1) {
+          createTargetStatement += ",";
+        }
+      }
+
+      createTargetStatement += "))";
+    }
+
+    createdTarget = this.executeStatement(dataSource, createTargetStatement);
+
+    return createdTarget;
   }
 
   /**

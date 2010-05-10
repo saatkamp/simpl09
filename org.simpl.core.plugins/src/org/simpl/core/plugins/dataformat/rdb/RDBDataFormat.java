@@ -144,53 +144,6 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     return statements;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.services.dataformat.DataFormat#createTarget()
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<String> getCreateTargetStatements(DataObject data, String target) {
-    List<DataObject> tables = data.getList("table");
-    List<DataObject> columns = null;
-    List<String> primaryKeys = null;
-    List<String> createTargetStatements = new ArrayList<String>();
-    String createTargetStatement = null;
-
-    // build a create statement
-    for (DataObject table : tables) {
-      columns = (List<DataObject>) table.getList("column");
-      primaryKeys = (List<String>) table.getList("primaryKey");
-
-      createTargetStatement = "CREATE TABLE " + target + " (";
-
-      // create table with columns
-      for (DataObject column : columns) {
-        createTargetStatement += column.getString("name") + " "
-            + column.getString("type") + ",";
-      }
-
-      // add primary keys
-      createTargetStatement += " PRIMARY KEY (";
-
-      for (int i = 0; i < primaryKeys.size(); i++) {
-        createTargetStatement += primaryKeys.get(i);
-
-        if (i < primaryKeys.size() - 1) {
-          createTargetStatement += ",";
-        }
-      }
-
-      createTargetStatement += "))";
-
-      if (!createTargetStatements.contains(createTargetStatement)) {
-        createTargetStatements.add(createTargetStatement);
-      }
-    }
-
-    return createTargetStatements;
-  }
-
   /**
    * Searches for a primary key value in the columns of a table.
    * 
