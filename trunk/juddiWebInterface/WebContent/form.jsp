@@ -33,6 +33,8 @@
 	String password = "";
 	
 	String language = "";
+	
+	String dataformat = "";
 
 	if (request.getParameter("uddi") != null) {
 		UddiDataSource dataSource = datasourceReader.getByKey(request
@@ -48,6 +50,7 @@
 			username = dataSource.getAttributeValue("username");
 			password = dataSource.getAttributeValue("password");
 			language = dataSource.getAttributeValue("language");
+			dataformat = dataSource.getAttributeValue("dataformat");
 		}
 	}
 	
@@ -61,6 +64,7 @@
 		username = request.getParameter("username");
 		password = request.getParameter("password");
 		language = request.getParameter("language");
+		dataformat = request.getParameter("dataformat");
 		if (username == null || username == "null") {
 			username = "";
 		}
@@ -129,6 +133,13 @@
 		<td><label>Policy File</label></td>
 
 		<td><input name="policy" type="text" value="<%=policy%>"
+			size="100" /></td>
+	</tr>
+	
+	<tr>
+		<td><label>Data Format</label></td>
+
+		<td><input name="dataformat" type="text" value="<%=dataformat%>"
 			size="100" /></td>
 	</tr>
 </table>
