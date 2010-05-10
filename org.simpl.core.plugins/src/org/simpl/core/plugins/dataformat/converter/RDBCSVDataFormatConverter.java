@@ -3,6 +3,8 @@ package org.simpl.core.plugins.dataformat.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.simpl.core.plugins.dataformat.converter.DataFormatConverterPlugin;
+
 import commonj.sdo.DataObject;
 
 /**
@@ -55,7 +57,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
       // add primary key
       rdbColumnObject = rdbTableObject.createDataObject("column");
       rdbColumnObject.set("name", "ID");
-      rdbColumnObject.set("type", "INT");
+      rdbColumnObject.set("type", this.getColumnType("123"));
       rdbColumnObject.set("value", String.valueOf(i));
       rdbPrimaryKeys.add("ID");
       rdbTableObject.set("primaryKey", rdbPrimaryKeys);
@@ -131,18 +133,27 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
     try {
       if (Integer.valueOf(type) != null) {
         sqlType = "INT";
-      } else if (Boolean.valueOf(type) != null) {
-        sqlType = "SMALLINT";
-      } else if (Float.valueOf(type) != null) {
-        sqlType = "FLOAT";
-      } else if (Double.valueOf(type) != null) {
-        sqlType = "DOUBLE";
-      } else if (sqlType == null) {
-        sqlType = "VARCHAR(255)";
       }
     } catch (NumberFormatException e) {
-      // take VARCHAR as default
-      sqlType = "VARCHAR(255)";
+      try {
+        if (Boolean.valueOf(type) != null) {
+          sqlType = "SMALLINT";
+        }
+      } catch (NumberFormatException e1) {
+        try {
+          if (Float.valueOf(type) != null) {
+            sqlType = "FLOAT";
+          }
+        } catch (NumberFormatException e2) {
+          try {
+            if (Double.valueOf(type) != null) {
+              sqlType = "DOUBLE";
+            }
+          } catch (NumberFormatException e3) {
+            sqlType = "VARCHAR(255)";
+          }
+        }
+      }
     }
 
     return sqlType;
