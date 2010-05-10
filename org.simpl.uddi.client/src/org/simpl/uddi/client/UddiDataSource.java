@@ -192,4 +192,8 @@ public class UddiDataSource implements IUddiConfig {
 	public String getLanguage() {
 		return getAttributeValue("language");
 	}
+	
+	public String getDataFormat() {
+		return getAttributeValue("dataformat");
+	}
 }
