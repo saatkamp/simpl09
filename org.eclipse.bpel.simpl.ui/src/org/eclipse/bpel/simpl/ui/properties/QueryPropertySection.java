@@ -69,8 +69,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Button Save = null;
 	
 	private QueryActivity activity;
-	
-	private DataSource dataSource = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -99,10 +97,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		queryTargetText.setText(activity.getQueryTarget());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
-		
-		if (dataSourceAddressCombo != null && !dataSourceAddressCombo.getText().isEmpty()){
-			dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
-		}
 	}
 
 	/**
@@ -186,7 +180,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 						new SetDsAddressCommand(getModel(),
 								dataSourceAddressCombo.getText()));
 				
-				dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
 				typeText.setText(dataSource.getType());
 				kindText.setText(dataSource.getSubType());
 				languageText.setText(dataSource.getLanguage());
@@ -328,7 +322,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(dataSource);
+				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();

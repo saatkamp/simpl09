@@ -93,10 +93,6 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
-		
-		if (dataSourceAddressCombo != null && !dataSourceAddressCombo.getText().isEmpty()){
-			dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
-		}
 	}
 
 	/**
@@ -176,7 +172,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 						new SetDsAddressCommand(getModel(),
 								dataSourceAddressCombo.getText()));
 				
-				dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
 				typeText.setText(dataSource.getType());
 				kindText.setText(dataSource.getSubType());
 				languageText.setText(dataSource.getLanguage());
@@ -303,7 +299,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(dataSource);
+				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
