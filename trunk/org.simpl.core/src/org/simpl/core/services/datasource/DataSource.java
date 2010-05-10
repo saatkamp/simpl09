@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlType;
  * build up a connection.<br>
  * <b>Description:</b>Type and subtype are used by the SIMPL Core to determine a data
  * source service that can respond to the data source over the address. Further it holds
- * the necessary authentication information and provides information for the strategic
- * late binding of the data source with a policy.<br>
+ * the necessary authentication information, the requested data format and provides
+ * information for the strategic late binding of the data source with a policy.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "DataSource")
 @XmlType(name = "DataSource", propOrder = { "name", "address", "type", "subType",
-    "authentication", "lateBinding", "language", "dataFormat"})
+    "authentication", "lateBinding", "language", "dataFormat" })
 public class DataSource {
   private String name;
   private String address;

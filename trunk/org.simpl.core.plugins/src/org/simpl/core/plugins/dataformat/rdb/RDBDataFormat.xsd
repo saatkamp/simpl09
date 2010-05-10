@@ -35,7 +35,7 @@
 
 		<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
 		<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
-		<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="value" type="xsd:anySimpleType"></xsd:attribute>
 	</xsd:complexType>
 
 	<xsd:complexType name="table">
