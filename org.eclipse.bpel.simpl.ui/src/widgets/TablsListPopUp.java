@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Text;
 public class TablsListPopUp{
 	
 	
-	
+	ArrayList<Table> listOfTables;
 	/** The text to search. */
 	Text textToSearch;
 	
@@ -273,6 +273,7 @@ public class TablsListPopUp{
 	public void loadTablesFromDB(DataSource dataSource) {
 		
 		MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
+
 		ArrayList<Table> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(dataSource);
 		
 		for(int i=0;i<listOfTables.size();i++){
