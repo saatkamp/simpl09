@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.dataformat.DataFormat;
 import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
@@ -37,8 +38,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * .datasource.DataSource, java.lang.String, java.lang.String)
    */
   @Override
-  public boolean depositData(DataSource dataSource, String statement, String target)
-      throws ConnectionException {
+  public synchronized boolean depositData(DataSource dataSource, String statement,
+      String target) throws ConnectionException {
     boolean success = false;
     DataSourceService<Object, Object> dataSourceService;
     StrategyService strategyService = new StrategyServiceImpl();
@@ -65,18 +66,21 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * .services.datasource.DataSource, java.lang.String)
    */
   @Override
-  public boolean executeStatement(DataSource dataSource, String statement)
+  public synchronized boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
     boolean success = false;
     DataSourceService<Object, Object> dataSourceService = null;
-    StrategyService strategyService = new StrategyServiceImpl();
+    DataSource lateBindingDataSource = null;
 
     // late binding
-    if (this.hasLateBindingInformation(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    lateBindingDataSource = lateBindDataSource(dataSource);
+
+    if (lateBindingDataSource != null) {
+      dataSource = lateBindingDataSource;
     }
 
-    if (dataSource != null) {
+    // execute statement
+    if (!isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -93,21 +97,23 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * services.datasource.DataSource, java.lang.String)
    */
   @Override
-  public DataObject retrieveData(DataSource dataSource, String statement)
+  public synchronized DataObject retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
     DataObject retrieveData = null;
     DataFormat<Object, Object> dataFormat = null;
     Object data = null;
     DataSourceService<Object, Object> dataSourceService = null;
-    StrategyService strategyService = new StrategyServiceImpl();
+    DataSource lateBindingDataSource = null;
 
     // late binding
-    if (this.hasLateBindingInformation(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    lateBindingDataSource = lateBindDataSource(dataSource);
+
+    if (lateBindingDataSource != null) {
+      dataSource = lateBindingDataSource;
     }
 
     // retrieve data
-    if (dataSource != null) {
+    if (!isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -128,22 +134,24 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * .datasource.DataSource, commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(DataSource dataSource, DataObject data)
+  public synchronized boolean writeBack(DataSource dataSource, DataObject data)
       throws ConnectionException {
     boolean success = false;
 
     DataSourceService<Object, Object> dataSourceService = null;
-    StrategyService strategyService = new StrategyServiceImpl();
     DataFormat<Object, Object> dataFormat = null;
     Object writeData = null;
+    DataSource lateBindingDataSource = null;
 
     // late binding
-    if (this.hasLateBindingInformation(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    lateBindingDataSource = lateBindDataSource(dataSource);
+
+    if (lateBindingDataSource != null) {
+      dataSource = lateBindingDataSource;
     }
 
     // write back
-    if (dataSource != null) {
+    if (!isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -167,8 +175,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public boolean writeData(DataSource dataSource, DataObject data, String target)
-      throws ConnectionException {
+  public synchronized boolean writeData(DataSource dataSource, DataObject data,
+      String target) throws ConnectionException {
     boolean success = false;
     boolean targetCreated = false;
 
@@ -195,7 +203,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
       // create target
       createTargetStatements = dataFormat.getCreateTargetStatements(data, target);
-System.out.println("targetStatements: " + createTargetStatements.size());
+
       if (createTargetStatements != null) {
         for (String createTargetStatement : createTargetStatements) {
           targetCreated = dataSourceService.executeStatement(dataSource,
@@ -241,14 +249,17 @@ System.out.println("targetStatements: " + createTargetStatements.size());
       throws ConnectionException {
     DataObject data = null;
     DataSourceService<Object, Object> dataSourceService;
-    StrategyService strategyService = new StrategyServiceImpl();
+    DataSource lateBindingDataSource = null;
 
     // late binding
-    if (this.hasLateBindingInformation(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
+    lateBindingDataSource = lateBindDataSource(dataSource);
+
+    if (lateBindingDataSource != null) {
+      dataSource = lateBindingDataSource;
     }
 
-    if (dataSource != null) {
+    // get meta data
+    if (!isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -394,6 +405,36 @@ System.out.println("targetStatements: " + createTargetStatements.size());
         && dataSource.getLateBinding().getUddiAddress() != null;
 
     return hasLateBindingInformation;
+  }
+
+  /**
+   * Returns a data source from the registry via late binding information.
+   * 
+   * @return The data source from the registry
+   */
+  private DataSource lateBindDataSource(DataSource dataSource) {
+    DataSource registryDataSource = null;
+    StrategyService strategyService = SIMPLCore.getInstance().strategyService();
+
+    if (this.hasLateBindingInformation(dataSource)) {
+      registryDataSource = strategyService.findDataSource(dataSource);
+    }
+
+    return registryDataSource;
+  }
+
+  /**
+   * @param dataSource
+   * @return true if data source contains all necessary information to execute an
+   *         operation, false otherwise
+   */
+  public boolean isDataSourceComplete(DataSource dataSource) {
+    boolean complete = false;
+
+    complete = dataSource != null && dataSource.getAddress() != null
+        && dataSource.getType() != null && dataSource.getSubType() != null;
+
+    return complete;
   }
 
   /**

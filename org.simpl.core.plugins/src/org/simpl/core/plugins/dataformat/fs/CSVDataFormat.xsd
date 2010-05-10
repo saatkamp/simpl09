@@ -4,7 +4,7 @@
     	<xsd:documentation>Defines the SDO structure of a CSV file that most commonly represents a table in a database, that includes rows, columns and a header that defines the colum names.</xsd:documentation></xsd:annotation>
     <xsd:complexType name="tColumn">
 
-    	<xsd:attribute name="value" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="value" type="xsd:anySimpleType"></xsd:attribute>
     	<xsd:attribute name="name" type="xsd:string"></xsd:attribute>
     </xsd:complexType>
 
