@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.ParametersListPopUp;
 import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
 
@@ -47,6 +48,8 @@ public class DropPropertySection extends DMActivityPropertySection {
 	
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
+	ParametersListPopUp bpelVariableWindow;
+	
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
@@ -261,15 +264,15 @@ public class DropPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowBPELVariables=new TablsListPopUp(statementText);
+				bpelVariableWindow=new ParametersListPopUp(statementText);
 				//Display display2 = Display.getDefault();
-				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
+				bpelVariableWindow.setText("Insert BPEL-Variable");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowBPELVariables.loadBPELVariables();
-				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
-					tabelsPopWindowBPELVariables.openWindow();
-					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
+				bpelVariableWindow.loadBPELVariables();
+				if(!bpelVariableWindow.isWindowOpen()){
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
 				}
 				
 				 

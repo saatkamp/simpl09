@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.ParametersListPopUp;
 import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
 
@@ -45,8 +46,11 @@ public class CreatePropertySection extends DMActivityPropertySection {
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
 	
+	
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
+	ParametersListPopUp bpelVariableWindow;
+	
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
@@ -264,15 +268,15 @@ public class CreatePropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowBPELVariables=new TablsListPopUp(statementText);
+				bpelVariableWindow=new ParametersListPopUp(statementText);
 				//Display display2 = Display.getDefault();
-				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
+				bpelVariableWindow.setText("Insert BPEL-Variable");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowBPELVariables.loadBPELVariables();
-				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
-					tabelsPopWindowBPELVariables.openWindow();
-					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
+				bpelVariableWindow.loadBPELVariables();
+				if(!bpelVariableWindow.isWindowOpen()){
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
 				}
 				
 				 
@@ -340,11 +344,65 @@ public class CreatePropertySection extends DMActivityPropertySection {
 			}
 		});
 
-		insertTable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		insertTable.setText("Insert Table");
+		insertTable = new Button(statementCompo, SWT.NONE);
+		insertTable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				//Display tablesDisplay =new Display();
+				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
+				tabelsPopWindowTables=new TablsListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				tabelsPopWindowTables.setText("Select Tabel");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				tabelsPopWindowTables.loadTablesFromDB(dataSourceAddressCombo.getText(),typeText.getText(),kindText.getText());
+
+				if(!tabelsPopWindowTables.isWindowOpen()){
+					tabelsPopWindowTables.openWindow();
+					tabelsPopWindowTables.setWindowIsOpen(true);
+				}
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+			}
+		});
 		
 		//insertBpelVariable.setLayoutData(gridData24);
 		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		insertBpelVariable = new Button(statementCompo, SWT.NONE);
+		insertBpelVariable.setText("Insert Variable");
+		insertBpelVariable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				bpelVariableWindow=new ParametersListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				bpelVariableWindow.setText("Insert BPEL-Variable");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				bpelVariableWindow.loadBPELVariables();
+				if(!bpelVariableWindow.isWindowOpen()){
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
+				}
+				
+				 
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+				
+			}
+		});
+		
 		statementText = new LiveEditStyleText(statementCompo);
 		statementText.setLayoutData(gridData15);
 		
