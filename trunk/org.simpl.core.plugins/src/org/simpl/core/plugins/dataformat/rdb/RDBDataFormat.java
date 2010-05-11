@@ -110,11 +110,12 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     List<String> primaryKeys = null;
     String quote = "";
     String statement = "";
+    String tableSchema = "";
 
     for (DataObject table : tables) {
       columns = table.getList("column");
       primaryKeys = table.getList("primaryKey");
-      
+
       for (DataObject column : columns) {
         if (column.getString("type").startsWith("VARCHAR")) {
           quote = "'";
@@ -122,10 +123,15 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
           quote = "";
         }
 
+        if (table.getString("schema").equals("")) {
+          tableSchema = table.getString("name");
+        } else {
+          tableSchema = table.getString("schema") + "." + table.getString("name");
+        }
+
         // create update statement
-        statement = "UPDATE " + table.getString("schema") + "." + table.getString("name")
-            + " SET " + column.getString("name") + "=" + quote
-            + column.getString("value") + quote + " WHERE 1=1";
+        statement = "UPDATE " + tableSchema + " SET " + column.getString("name") + "="
+            + quote + column.getString("value") + quote + " WHERE 1=1";
 
         for (String primaryKey : primaryKeys) {
           statement += " AND " + primaryKey + "="

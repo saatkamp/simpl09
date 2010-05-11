@@ -30,7 +30,7 @@
     	</xsd:sequence>
 
 
-    	<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
+    	<xsd:attribute name="dataFormatType" type="xsd:string"></xsd:attribute>
         <xsd:attribute name="filename" type="xsd:string"></xsd:attribute>
     	<xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
     	<xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
