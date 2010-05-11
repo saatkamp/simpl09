@@ -310,7 +310,7 @@ public class EmbDerbyRDBDataSourceService extends
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
       throws ConnectionException {
     boolean createdTarget = false;
-    
+
     List<DataObject> tables = dataObject.getList("table");
     List<DataObject> columns = null;
     List<String> primaryKeys = null;

@@ -17,7 +17,7 @@
 				minOccurs="0">
 			</xsd:element>
 		</xsd:sequence>
-		<xsd:attribute name="formatType" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="dataFormatType" type="xsd:string"></xsd:attribute>
 	</xsd:complexType>
 
 

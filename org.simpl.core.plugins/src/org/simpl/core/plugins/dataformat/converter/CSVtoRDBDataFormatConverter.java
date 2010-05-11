@@ -3,8 +3,6 @@ package org.simpl.core.plugins.dataformat.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.simpl.core.plugins.dataformat.converter.DataFormatConverterPlugin;
-
 import commonj.sdo.DataObject;
 
 /**
@@ -18,11 +16,11 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
+public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
   /**
    * Initialize the plug-in.
    */
-  public RDBCSVDataFormatConverter() {
+  public CSVtoRDBDataFormatConverter() {
     this.setFromDataFormat("CSV");
     this.setToDataFormat("RDB");
   }
@@ -36,7 +34,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
   @SuppressWarnings("unchecked")
   @Override
   public DataObject convertTo(DataObject csvSDO) {
-    // RDB SDO data
+    // RDB SDO data holder
     DataObject rdbSDO = this.getToDataFormat().getSDO();
     DataObject rdbTableObject = null;
     DataObject rdbColumnObject = null;
@@ -86,7 +84,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
   @SuppressWarnings("unchecked")
   @Override
   public DataObject convertFrom(DataObject rdbSDO) {
-    // CSV SDO data
+    // CSV SDO data holder
     DataObject csvSDO = this.getFromDataFormat().getSDO();
     DataObject csvHeaderObject = null;
     DataObject csvDatasetObject = null;
@@ -120,7 +118,7 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
   }
 
   /**
-   * Returns a SQL data type declaration depending on string content.
+   * Returns a SQL data type declaration depending on the string content.
    * 
    * TODO: support more sql types like date, decimal, ...
    * 
@@ -128,32 +126,38 @@ public class RDBCSVDataFormatConverter extends DataFormatConverterPlugin {
    * @return
    */
   private String getColumnType(String type) {
-    String sqlType = null;
+    String sqlType = "VARCHAR(255)";
 
     try {
       if (Integer.valueOf(type) != null) {
         sqlType = "INT";
       }
     } catch (NumberFormatException e) {
-      try {
-        if (Boolean.valueOf(type) != null) {
-          sqlType = "SMALLINT";
-        }
-      } catch (NumberFormatException e1) {
-        try {
-          if (Float.valueOf(type) != null) {
-            sqlType = "FLOAT";
-          }
-        } catch (NumberFormatException e2) {
-          try {
-            if (Double.valueOf(type) != null) {
-              sqlType = "DOUBLE";
-            }
-          } catch (NumberFormatException e3) {
-            sqlType = "VARCHAR(255)";
-          }
-        }
+      // no integer
+    }
+
+    try {
+      if (Boolean.valueOf(type)) {
+        sqlType = "SMALLINT";
       }
+    } catch (NumberFormatException e) {
+      // no boolean
+    }
+
+    try {
+      if (Float.valueOf(type) != null) {
+        sqlType = "FLOAT";
+      }
+    } catch (NumberFormatException e) {
+      // no float
+    }
+
+    try {
+      if (Double.valueOf(type) != null) {
+        sqlType = "DOUBLE";
+      }
+    } catch (NumberFormatException e) {
+      // no double
     }
 
     return sqlType;
