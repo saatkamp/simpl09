@@ -83,7 +83,17 @@
 
 
 	<xsd:complexType name="ContainerReferenceType">
-		<xsd:attribute name="schemaName" type="xsd:string"></xsd:attribute>
-		<xsd:attribute name="tableName" type="xsd:string"></xsd:attribute>
+
+
+		<xsd:sequence>
+
+
+			<xsd:element name="schema" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+			<xsd:element name="table" type="xsd:string" maxOccurs="1" minOccurs="1"></xsd:element>
+		</xsd:sequence>
 	</xsd:complexType>
+
+	<xsd:element name="containerReference" type="simpl:ContainerReferenceType"></xsd:element>
+
+
 </xsd:schema>
