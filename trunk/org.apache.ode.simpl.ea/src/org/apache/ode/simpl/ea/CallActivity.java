@@ -37,7 +37,7 @@ public class CallActivity extends DataManagementActivity {
 
 		try {
 			this.successfullExecution = datasourceService.executeStatement(ds,
-					getDsStatement());
+					getDsStatement(context));
 
 			if (this.successfullExecution) {
 				ScopeEvent DMEnd = new DMEnd();
@@ -47,7 +47,7 @@ public class CallActivity extends DataManagementActivity {
 				// übergeben
 				//TODO: Sinnvolle Fehlermeldungen einfügen
 				ScopeEvent DMFailure = new DMFailure(getActivityName(),
-						getDsAddress(), getDsStatement(), "UNKNOWN");
+						getDsAddress(), getDsStatement(context), "UNKNOWN");
 				context.getInternalInstance().sendEvent(DMFailure);
 			}
 
