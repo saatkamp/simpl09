@@ -1,11 +1,8 @@
 package org.simpl.core.services.datasource;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.dataformat.DataFormat;
 import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
@@ -102,7 +99,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public synchronized DataObject retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
     DataObject retrieveData = null;
-    DataFormat<Object, Object> dataFormat = null;
+
     Object data = null;
     DataSourceService<Object, Object> dataSourceService = null;
     DataSource lateBindingDataSource = null;
@@ -125,11 +122,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     }
 
     // format data to SDO
-    dataFormat = this.findDataFormatToSDO(dataSourceService, dataSource.getDataFormat());
-
-    if (dataFormat != null) {
-      retrieveData = dataFormat.toSDO(data);
-    }
+    retrieveData = formatRetrieveData(dataSourceService, data, dataSource.getDataFormat());
 
     return retrieveData;
   }
@@ -146,7 +139,6 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     boolean success = false;
 
     DataSourceService<Object, Object> dataSourceService = null;
-    DataFormat<Object, Object> dataFormat = null;
     Object writeData = null;
     DataSource lateBindingDataSource = null;
 
@@ -162,17 +154,10 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
-      // TODO: conversion if data source service doesn't support the data format
-
-      // find data format
-      dataFormat = this.findDataFormatFromSDO(dataSourceService, data
-          .getString("formatType"));
-
-      if (dataFormat != null) {
-        // format data from SDO
-        writeData = dataFormat.fromSDO(data);
-
-        // write data
+      writeData = DataFormatProvider.getInstance(dataSource.getDataFormat()).fromSDO(data);
+      
+      // write data
+      if (writeData != null) {
         success = dataSourceService.writeBack(dataSource, writeData);
       }
     }
@@ -190,10 +175,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public synchronized boolean writeData(DataSource dataSource, DataObject data,
       String target) throws ConnectionException {
     boolean success = false;
-    boolean createdTarget = false;
 
     DataSourceService<Object, Object> dataSourceService = null;
-    DataFormat<Object, Object> dataFormat = null;
     Object writeData = null;
     DataSource lateBindingDataSource = null;
 
@@ -209,40 +192,13 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
-      // TODO: conversion if data source service doesn't support the data format
+      // format data
+      writeData = formatWriteDataAndCreateTarget(dataSourceService, data, dataSource,
+          target);
 
-      // find data format
-      dataFormat = this.findDataFormatFromSDO(dataSourceService, data
-          .getString("formatType"));
-
-      if (dataFormat != null) {
-        // format data from SDO
-        writeData = dataFormat.fromSDO(data);
-
-        // create target
-        createdTarget = this.createTarget(dataSource, data, target);
-
-        // write data
-        if (createdTarget) {
-          success = dataSourceService.writeData(dataSource, writeData, target);
-        }
+      if (writeData != null) {
+        success = dataSourceService.writeData(dataSource, writeData, target);
       }
-      // TODO: integrate conversion
-      // compare this data source data format with the given data data format
-      // if (isSupported(data)) {
-      // // find converter and convert the data
-      // this.dataFormatConverter = DataFormatConverterProvider.getInstance(
-      // ((DataSourceServicePlugin) this.dataSourceService).getDataFormat().getType(),
-      // data.getString("formatType"));
-      //  
-      // if (this.dataFormatConverter != null) {
-      // // TODO: success = this.dataSourceService.write(dataSource,
-      // // this.dataFormatConverter
-      // // .convertFrom(data));
-      // }
-      // } else {
-      // // TODO: success = this.dataSourceService.write(dataSource, data);
-      // }
     }
 
     return success;
@@ -332,95 +288,119 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * Returns all data format types that are available.
-   * 
-   * @return A list of data format types.
+   * @return List of data format types that are available for the given data source.
    */
-  public List<String> getDataFormatTypes() {
-    return DataFormatProvider.getTypes();
+  public List<String> getSupportedDataFormatTypes(DataSource dataSource) {
+    DataSourceService<Object, Object> dataSourceService = DataSourceServiceProvider
+        .getInstance(dataSource.getType(), dataSource.getSubType());
+
+    return DataFormatProvider.getSupportedDataFormatTypes(dataSourceService);
   }
 
   /**
-   * Returns all data format types that can be converted to and from the given data
-   * format.
+   * Returns a list of data format types that can be converted to from the given data
+   * source data format type.
    * 
    * @param dataFormat
    * @return A list of data format types.
    */
-  public List<String> getConvertDataFormats(String dataFormat) {
-    return DataFormatConverterProvider.getConvertDataFormats(dataFormat);
+  public List<String> getSupportedConvertDataFormatTypes(DataSource dataSource) {
+    DataSourceService<Object, Object> dataSourceService = DataSourceServiceProvider
+        .getInstance(dataSource.getType(), dataSource.getSubType());
+
+    return DataFormatConverterProvider.getSupportedConvertDataFormatTypes(
+        dataSourceService, dataSource.getDataFormat());
   }
 
   /**
-   * Finds a data format that converts a SDO to the incoming data type of a data source
-   * service. Compares the generic data types of the data source service and the data
-   * formats.
+   * Formats SDO data to a format that can be understand and written by the given data
+   * source service. If the data format is not supported by the data source service, it is
+   * looked for a data format converter that can be used to convert the given data format
+   * to a data source service supported data format and thus be able to eventually write
+   * the data even though the incoming data format was not supported. Also creates a
+   * target on the data source to be able to write the data.
    * 
    * @param dataSourceService
+   * @param data
    * @return
+   * @throws ConnectionException
    */
-  private DataFormat<Object, Object> findDataFormatToSDO(
-      DataSourceService<Object, Object> dataSourceService, String formatType) {
-    DataFormat<Object, Object> dataFormat = null;
-    ParameterizedType dataSourceServicepluginType = null;
-    ParameterizedType dataFormatPluginType = null;
-    Type dataSourceServiceOutgoingType = null;
-    Type dataFormatToSDOType = null;
+  @SuppressWarnings("unchecked")
+  private Object formatWriteDataAndCreateTarget(DataSourceService dataSourceService,
+      DataObject data, DataSource dataSource, String target) throws ConnectionException {
+    Object writeData = null;
 
-    dataSourceServicepluginType = (ParameterizedType) dataSourceService.getClass()
-        .getGenericSuperclass();
-    dataSourceServiceOutgoingType = dataSourceServicepluginType.getActualTypeArguments()[1];
+    boolean createdTarget;
+    DataObject convertedData = null;
+    String dataFormatType = data.getString("dataFormatType");
+    List<String> supportedDataFormatTypes = DataFormatProvider
+        .getSupportedDataFormatTypes(dataSourceService);
+    List<String> supportedConvertDataFormatTypes = null;
 
-    for (String type : DataFormatProvider.getTypes()) {
-      dataFormat = DataFormatProvider.getInstance(type);
+    // check if data format type is supported by the data source service
+    if (supportedDataFormatTypes.contains(dataFormatType)) {
+      // turn the SDO to the data type of the data source
+      writeData = DataFormatProvider.getInstance(dataFormatType).fromSDO(data);
+    } else {
+      supportedConvertDataFormatTypes = DataFormatConverterProvider
+          .getSupportedConvertDataFormatTypes(dataSourceService, dataFormatType);
 
-      dataFormatPluginType = (ParameterizedType) dataFormat.getClass()
-          .getGenericSuperclass();
-      dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[0];
+      // check if one of the types is supported by the data source service
+      for (String supportedConvertDataFormatType : supportedConvertDataFormatTypes) {
+        if (DataFormatProvider.getSupportedDataFormatTypes(dataSourceService).contains(
+            supportedConvertDataFormatType)) {
+          // convert from the given data format to supported data format
+          convertedData = DataFormatConverterProvider.getInstance(dataFormatType,
+              supportedConvertDataFormatType).convert(data);
 
-      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)
-          && (formatType != null && dataFormat.getType().equals(formatType) || formatType == null)) {
-        break;
+          // turn the converted SDO to the data type of the data source
+          writeData = DataFormatProvider.getInstance(supportedConvertDataFormatType)
+              .fromSDO(convertedData);
+
+          break;
+        }
       }
     }
 
-    return dataFormat;
+    // create target
+    if (writeData != null) {
+      createdTarget = dataSourceService.createTarget(dataSource, convertedData, target);
+
+      // write data
+      if (!createdTarget) {
+        writeData = null;
+      }
+    }
+
+    return writeData;
   }
 
   /**
-   * Finds a data format that converts the outgoing data type of a data source service to
-   * a SDO service. Compares the generic data types of the data source service and the
-   * data formats.
+   * Turns the retrieved data into SDO using a data format that is supported by the data
+   * source service.
    * 
    * @param dataSourceService
+   * @param data
+   * @param dataSourceFs
    * @return
    */
-  private DataFormat<Object, Object> findDataFormatFromSDO(
-      DataSourceService<Object, Object> dataSourceService, String formatType) {
-    DataFormat<Object, Object> dataFormat = null;
-    ParameterizedType dataSourceServicepluginType = null;
-    ParameterizedType dataFormatPluginType = null;
-    Type dataSourceServiceOutgoingType = null;
-    Type dataFormatToSDOType = null;
+  @SuppressWarnings("unchecked")
+  private DataObject formatRetrieveData(DataSourceService dataSourceService, Object data,
+      String dataFormatType) {
+    DataObject retrieveDataSDO = null;
+    List<String> supportedDataFormatTypes = null;
 
-    dataSourceServicepluginType = (ParameterizedType) dataSourceService.getClass()
-        .getGenericSuperclass();
-    dataSourceServiceOutgoingType = dataSourceServicepluginType.getActualTypeArguments()[0];
+    supportedDataFormatTypes = DataFormatProvider
+        .getSupportedDataFormatTypes(dataSourceService);
 
-    for (String type : DataFormatProvider.getTypes()) {
-      dataFormat = DataFormatProvider.getInstance(type);
-
-      dataFormatPluginType = (ParameterizedType) dataFormat.getClass()
-          .getGenericSuperclass();
-      dataFormatToSDOType = dataFormatPluginType.getActualTypeArguments()[1];
-
-      if (dataSourceServiceOutgoingType.equals(dataFormatToSDOType)
-          && (formatType != null && dataFormat.getType().equals(formatType) || formatType == null)) {
-        break;
+    for (String supportedDataFormatType : supportedDataFormatTypes) {
+      if (supportedDataFormatType.equals(dataFormatType)) {
+        retrieveDataSDO = DataFormatProvider.getInstance(supportedDataFormatType).toSDO(
+            data);
       }
     }
 
-    return dataFormat;
+    return retrieveDataSDO;
   }
 
   /**
@@ -466,7 +446,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     boolean complete = false;
 
     complete = dataSource != null && dataSource.getAddress() != null
-        && dataSource.getType() != null && dataSource.getSubType() != null;
+        && dataSource.getType() != null && dataSource.getSubType() != null
+        && dataSource.getDataFormat() != null;
 
     return complete;
   }

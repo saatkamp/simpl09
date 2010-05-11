@@ -21,12 +21,22 @@ public interface DataFormatConverter {
    * @return
    */
   public DataObject convertTo(DataObject data);
-  
+
   /**
    * Converts the given SDO to the supported "from" data format.
-   *
+   * 
    * @param data
    * @return
    */
   public DataObject convertFrom(DataObject data);
+
+  /**
+   * Converts automatically between the supported data formats. The given SDO's format is
+   * recognized by its dataFormatType attribute to decide wheather to use the
+   * {@link #convertTo(DataObject)} or {@link #convertFrom(DataObject)} method.
+   * 
+   * @param dataObject
+   * @return
+   */
+  public DataObject convert(DataObject dataObject);
 }
