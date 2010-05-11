@@ -68,7 +68,7 @@ public class DataSourceServiceProvider {
    */
   @SuppressWarnings("unchecked")
   private static void loadPlugins() {
-    List<String> plugins = SIMPLCore.getInstance().config().getDataSourceServicePlugins();
+    List<String> plugins = SIMPLCore.getInstance().getConfig().getDataSourceServicePlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataSourceServicePlugin<Object, Object> dataSourceServiceInstance;
     String dataSourceType = null;

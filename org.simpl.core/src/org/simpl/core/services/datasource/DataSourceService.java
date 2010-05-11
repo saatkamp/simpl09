@@ -94,7 +94,7 @@ public interface DataSourceService<S, T> {
 
   /**
    * Creates a new target (e.g. a database table) that is used to write new data as
-   * required by {@link #depositData(DataSource, String, String)} and
+   * required for {@link #depositData(DataSource, String, String)} and
    * {@link #writeData(DataSource, Object, String)}.
    * 
    * @param dataSource

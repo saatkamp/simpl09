@@ -9,17 +9,19 @@ import java.util.Set;
 
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.converter.DataFormatConverterPlugin;
+import org.simpl.core.services.datasource.DataSourceService;
 
 /**
  * <b>Purpose:</b>Provides access to the data format converter services that are created
  * from data format converter plug-ins.<br>
- * <b>Description:</b> Instances of data format converter services are retrieved by the
+ * <b>Description:</b>Instances of data format converter services are retrieved by the
  * data format converter supported data formats.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Copyright:</b><br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: DataFormatConverterProvider.java 1263 2010-05-01 22:37:34Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class DataFormatConverterProvider {
@@ -56,11 +58,60 @@ public class DataFormatConverterProvider {
   }
 
   /**
+   * Returns a list of data format types that support the given data source service and
+   * can be converted from the given data format type.
+   * 
+   * @param dataSourceService
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  public static List<String> getSupportedConvertDataFormatTypes(
+      DataSourceService dataSourceService, String dataFormatType) {
+    List<String> supportedConvertDataFormats = new ArrayList<String>();
+    DataFormatConverterPlugin dataFormatConverter = null;
+
+    HashMap<String, List<String>> dataFormatCoverterMapping = SIMPLCore.getInstance()
+        .getConfig().getDataFormatConverterMapping();
+
+    for (String dataFormatConverterClassName : dataFormatCoverterMapping.keySet()) {
+      List<String> dataSourceServiceClassNames = dataFormatCoverterMapping
+          .get(dataFormatConverterClassName);
+
+      try {
+        if (dataSourceServiceClassNames.contains(dataSourceService.getClass().getName())) {
+          dataFormatConverter = (DataFormatConverterPlugin) Class.forName(
+              dataFormatConverterClassName).newInstance();
+
+          if (dataFormatConverter.getFromDataFormat().getType().equals(dataFormatType)) {
+            supportedConvertDataFormats.add(dataFormatConverter.getToDataFormat()
+                .getType());
+          } else if (dataFormatConverter.getToDataFormat().getType().equals(
+              dataFormatType)) {
+            supportedConvertDataFormats.add(dataFormatConverter.getFromDataFormat()
+                .getType());
+          }
+        }
+      } catch (InstantiationException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
+
+    return supportedConvertDataFormats;
+  }
+
+  /**
    * Loads instances of the data format converter plug-ins and retrieves information about
    * their supported data source type and subtype.
    */
   private static void loadPlugins() {
-    List<String> plugins = SIMPLCore.getInstance().config()
+    List<String> plugins = SIMPLCore.getInstance().getConfig()
         .getDataFormatConverterPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataFormatConverterPlugin dataFormatConverterInstance;
@@ -88,27 +139,5 @@ public class DataFormatConverterProvider {
         e.printStackTrace();
       }
     }
-  }
-
-  /**
-   * Returns all data formats that can be converted between the given data format.
-   * 
-   * @return
-   */
-  public static List<String> getConvertDataFormats(String dataFormat) {
-    Set<List<String>> dataFormatPairs = dataFormatConverter.keySet();
-    List<String> dataFormats = new ArrayList<String>();
-
-    for (List<String> dataFormatPair : dataFormatPairs) {
-      if (dataFormatPair.contains(dataFormat)) {
-        for (String format : dataFormatPair) {
-          if (!format.equals(dataFormat)) {
-            dataFormats.add(format);
-          }
-        }
-      }
-    }
-
-    return dataFormats;
   }
 }

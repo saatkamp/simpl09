@@ -7,12 +7,13 @@ import java.util.List;
 
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
+import org.simpl.core.services.datasource.DataSourceService;
 
 /**
- * <b>Purpose:</b>Provides access to the data format services that are created
- * from data format plug-ins.<br>
- * <b>Description:</b> Instances of data format services are retrieved by the
- * data format type, using {@link #getInstance(String)}.<br>
+ * <b>Purpose:</b>Provides access to the data format services that are created from data
+ * format plug-ins.<br>
+ * <b>Description:</b> Instances of data format services are retrieved by the data format
+ * type, using {@link #getInstance(String)}.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -46,13 +47,56 @@ public class DataFormatProvider {
   }
 
   /**
-   * Loads instances of the data format plugins and retrieves information about
-   * their supported type.
+   * Returns all data source types loaded from the plugins.
+   * 
+   * @return
+   */
+  public static List<String> getDataFormatTypes() {
+    return new ArrayList<String>(dataFormats.keySet());
+  }
+
+  /**
+   * Returns a list of data format types that support the given data source service.
+   * 
+   * @param dataSourceService
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  public static List<String> getSupportedDataFormatTypes(
+      DataSourceService dataSourceService) {
+    List<String> dataFormats = new ArrayList<String>();
+    HashMap<String, List<String>> dataFormatMapping = SIMPLCore.getInstance().getConfig()
+        .getDataFormatMapping();
+    
+    for (String dataFormatClassName : dataFormatMapping.keySet()) {
+      if (dataFormatMapping.get(dataFormatClassName).contains(
+          dataSourceService.getClass().getName())) {
+        try {
+          dataFormats.add(((DataFormatPlugin) Class.forName(dataFormatClassName)
+              .newInstance()).getType());
+        } catch (InstantiationException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        } catch (IllegalAccessException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
+    }
+
+    return dataFormats;
+  }
+
+  /**
+   * Loads instances of the data format plugins and retrieves information about their
+   * supported type.
    */
   @SuppressWarnings("unchecked")
   private static void loadPlugins() {
-    List<String> plugins = SIMPLCore.getInstance().config()
-        .getDataFormatPlugins();
+    List<String> plugins = SIMPLCore.getInstance().getConfig().getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataFormatPlugin<Object, Object> dataFormatServiceInstance;
     String dataFormatType = null;
@@ -77,14 +121,5 @@ public class DataFormatProvider {
         e.printStackTrace();
       }
     }
-  }
-
-  /**
-   * Returns all data source types loaded from the plugins.
-   * 
-   * @return
-   */
-  public static List<String> getTypes() {
-    return new ArrayList<String>(dataFormats.keySet());
   }
 }

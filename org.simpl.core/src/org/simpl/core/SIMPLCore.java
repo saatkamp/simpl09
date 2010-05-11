@@ -66,7 +66,7 @@ public class SIMPLCore {
   /**
    * @return The SIMPL configuration.
    */
-  public SIMPLConfig config() {
+  public SIMPLConfig getConfig() {
     return config;
   }
 }

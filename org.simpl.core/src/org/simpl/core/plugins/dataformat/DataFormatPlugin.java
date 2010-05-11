@@ -35,7 +35,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
   /**
    * Type of the supported data format (CSV, XML, ...).
    */
-  private String type = "tDataFormat";
+  private String type = "";
 
   /**
    * Name of the data format schema file.
@@ -46,7 +46,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
    * The data format schema type defined in the data format schema file that is
    * used to create the data object.
    */
-  private String schemaType = "tDataObject";
+  private String schemaType = "";
 
   /**
    * @return Empty SDO created from the data format schema.
@@ -56,12 +56,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
     InputStream inputStream = null;
 
     // load the schema file
-    if (this.schemaFile.equals("DefaultDataFormat.xsd")) {
-      inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/plugins/dataformat/" + this.schemaFile);
-    } else {
-      inputStream = getClass().getResourceAsStream(this.schemaFile);
-    }
+    inputStream = getClass().getResourceAsStream(this.schemaFile);
 
     if (inputStream == null) {
       System.out.println("The file '" + this.schemaFile
@@ -79,11 +74,11 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
     dataObject = DataFactory.INSTANCE.create(
         "http://org.simpl.core/plugins/dataformat/" + this.getType() + "DataFormat", this.schemaType);
 
-    // write the format type to the data object if possible
+    // write the data format type to the data object if possible
     try {
-      dataObject.setString("formatType", this.type);
+      dataObject.setString("dataFormatType", this.type);
     } catch (IllegalArgumentException e) {
-      // type is not set, because the schema does not declare this attribute
+      // type was not set, because the schema does not declare this attribute
     }
 
     return dataObject;
