@@ -6,6 +6,7 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.rtrep.common.extension.AbstractSyncExtensionOperation;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.simpl.ea.util.DeploymentInfos;
+import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.services.datasource.DataSource;
 import org.w3c.dom.Element;
 
@@ -56,8 +57,8 @@ public abstract class DataManagementActivity extends
 		return activityName;
 	}
 
-	public String getDsStatement() {
-		return dsStatement;
+	public String getDsStatement(ExtensionContext context) {
+		return StatementUtils.processStatement(context, dsStatement);
 	}
 
 	public String getDsAddress() {

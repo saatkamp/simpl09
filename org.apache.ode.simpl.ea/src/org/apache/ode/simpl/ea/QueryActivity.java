@@ -42,7 +42,7 @@ public class QueryActivity extends DataManagementActivity {
 
 		try {
 			this.successfullExecution = datasourceService.depositData(
-					ds, getDsStatement(), queryTarget);
+					ds, getDsStatement(context), queryTarget);
 
 			if (this.successfullExecution) {
 				ScopeEvent DMEnd = new DMEnd();
@@ -51,7 +51,7 @@ public class QueryActivity extends DataManagementActivity {
 				// Hier werden alle vorhandenen "wichtigen" Daten dem Event
 				// übergeben
 				ScopeEvent DMFailure = new DMFailure(getActivityName(),
-						getDsAddress(), getDsStatement(), "UNKNOWN");
+						getDsAddress(), getDsStatement(context), "UNKNOWN");
 				context.getInternalInstance().sendEvent(DMFailure);
 			}
 
