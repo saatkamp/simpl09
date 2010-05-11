@@ -56,7 +56,8 @@ public class Datasource {
         statement);
 
     try {
-      XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject, "commonj.sdo", "dataObject");
+      XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject,
+          "commonj.sdo", "dataObject");
       xmlDocument.setEncoding("UTF-8");
       XMLHelper.INSTANCE.save(xmlDocument, outputStream, null);
     } catch (IOException e) {
@@ -118,7 +119,8 @@ public class Datasource {
         filter);
 
     try {
-      XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject, "commonj.sdo", "dataObject");
+      XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject,
+          "commonj.sdo", "dataObject");
       xmlDocument.setEncoding("UTF-8");
       XMLHelper.INSTANCE.save(xmlDocument, outputStream, null);
     } catch (IOException e) {
@@ -173,9 +175,18 @@ public class Datasource {
         .getDataSourceLanguages(dsSubtype));
   }
 
-  @WebMethod(action = "getDataFormatTypes")
-  public String getDataFormatTypes() {
+  @WebMethod(action = "getSupportedDataFormatTypes")
+  public String getSupportedDataFormatTypes(
+      @WebParam(name = "dataSource") DataSource dataSource) {
     return Parameter.serialize(SIMPLCore.getInstance().dataSourceService()
-        .getDataFormatTypes());
+        .getSupportedDataFormatTypes(dataSource));
+  }
+
+  @WebMethod(action = "getSupportedConvertDataFormatTypes")
+  public String getSupportedConvertDataFormatTypes(
+      @WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "dataFormatType") String dataFormatType) {
+    return Parameter.serialize(SIMPLCore.getInstance().dataSourceService()
+        .getSupportedConvertDataFormatTypes(dataSource));
   }
 }
