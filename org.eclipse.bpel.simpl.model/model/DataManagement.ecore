@@ -72,4 +72,12 @@
     <eLiterals name="onInstantiation"/>
     <eLiterals name="fresh" value="1"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransferActivity" eSuperTypes="#//DataManagementActivity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Allows to transfer data between two datasources."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromSource" eType="#//DataManagementActivity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toSource" eType="#//DataManagementActivity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

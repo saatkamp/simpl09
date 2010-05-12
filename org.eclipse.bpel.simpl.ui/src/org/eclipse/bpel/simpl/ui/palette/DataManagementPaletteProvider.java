@@ -69,6 +69,11 @@ public class DataManagementPaletteProvider implements IPaletteProvider{
 				"Creates a new RetrieveData Activity",
 				new DataManagementUIObjectFactory(ModelPackage.eINSTANCE
 						.getRetrieveDataActivity())));
+		
+		category.add(new BPELCreationToolEntry("Transfer Activity",
+				"Creates a new Transfer Activity",
+				new DataManagementUIObjectFactory(ModelPackage.eINSTANCE
+						.getTransferActivity())));
 
 		paletteRoot.add(category);
 	}

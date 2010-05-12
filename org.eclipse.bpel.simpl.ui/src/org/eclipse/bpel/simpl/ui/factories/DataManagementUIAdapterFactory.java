@@ -11,15 +11,18 @@
  */
 package org.eclipse.bpel.simpl.ui.factories;
 
+import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.util.ModelAdapterFactory;
 import org.eclipse.bpel.simpl.ui.adapters.CallActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.CreateActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.DeleteActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.InsertActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.RetrieveDataActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.QueryActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.UpdateActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.DropActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.InsertActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.QueryActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.RetrieveDataActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.TransferActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.UpdateActivityAdapter;
+import org.eclipse.bpel.ui.adapters.ActivityAdapter;
 import org.eclipse.emf.common.notify.Adapter;
 
 public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
@@ -32,6 +35,7 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 	private DropActivityAdapter dropActivityAdapter;
 	private CallActivityAdapter callActivityAdapter;
 	private RetrieveDataActivityAdapter retrieveDataActivityAdapter;
+	private TransferActivityAdapter transferActivityAdapter;
 	
 	static private DataManagementUIAdapterFactory instance;
 	
@@ -134,5 +138,13 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 			this.retrieveDataActivityAdapter = new RetrieveDataActivityAdapter();
 		}
 		return this.retrieveDataActivityAdapter;
+	}
+	
+	@Override
+	public Adapter createTransferActivityAdapter() {
+		if (this.transferActivityAdapter == null) {
+			this.transferActivityAdapter = new TransferActivityAdapter();
+		}
+		return this.transferActivityAdapter;
 	}
 }

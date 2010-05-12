@@ -73,4 +73,8 @@ public class DataManagementUIConstants {
 	
 	/** The Constant ICON_REFERENCE_VARIABLE_16. */
 	public static final String ICON_REFERENCE_VARIABLE_16 = "obj16/reference.png";
+	
+	public static final String ICON_TRANSFER_16 = "obj16/transferactivity.png";
+	
+	public static final String ICON_TRANSFER_20 = "obj20/transferactivity.png";
 }

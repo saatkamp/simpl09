@@ -1,5 +1,11 @@
+package org.eclipse.bpel.simpl.ui.command;
+
+import org.eclipse.bpel.simpl.model.TransferActivity;
+import org.eclipse.bpel.ui.commands.SetCommand;
+import org.eclipse.emf.ecore.EObject;
+
 /**
- * <b>Purpose:</b> Implements a new {@link SetCommand} to set the target of the query in the model of a {@link QueryActivity}.<br>
+ * <b>Purpose:</b> <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
@@ -9,17 +15,7 @@
  * @link http://code.google.com/p/simpl09/
  *
  */
-package org.eclipse.bpel.simpl.ui.command;
-
-import org.eclipse.bpel.simpl.model.QueryActivity;
-import org.eclipse.bpel.ui.commands.SetCommand;
-import org.eclipse.emf.ecore.EObject;
-
-// TODO: Auto-generated Javadoc
-/**
- * The Class SetQueryTargetCommand.
- */
-public class SetQueryTargetCommand extends SetCommand {
+public class SetTargetCommand extends SetCommand {
 
 	/**
 	 * Instantiates a new SetQueryTargetCommand.
@@ -29,7 +25,7 @@ public class SetQueryTargetCommand extends SetCommand {
 	 * @param aValue
 	 *            the value to set
 	 */
-	public SetQueryTargetCommand(EObject aTarget, Object aValue) {
+	public SetTargetCommand(EObject aTarget, Object aValue) {
 		super(aTarget, aValue);
 	}
 
@@ -38,8 +34,8 @@ public class SetQueryTargetCommand extends SetCommand {
 	 */
 	@Override
 	public Object get() {
-		if (fTarget instanceof QueryActivity){
-			return ((QueryActivity) fTarget).getQueryTarget();
+		if (fTarget instanceof TransferActivity){
+			return ((TransferActivity) fTarget).getTarget();
 		}
 		
 		throw new IllegalArgumentException("This model object has no variable to get");
@@ -50,11 +46,11 @@ public class SetQueryTargetCommand extends SetCommand {
 	 */
 	@Override
 	public void set(Object o) {
-		if (fTarget instanceof QueryActivity) {
-			((QueryActivity) fTarget).setQueryTarget((String) o);
+		if (fTarget instanceof TransferActivity) {
+			((TransferActivity) fTarget).setTarget((String) o);
 		} else {
 			throw new IllegalArgumentException(
-					"This model object has no query target to get");
+					"This model object has no target to get");
 		}
 	}
 	

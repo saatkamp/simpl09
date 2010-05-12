@@ -40,7 +40,8 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 			ModelPackage.eINSTANCE.getCreateActivity(),
 			ModelPackage.eINSTANCE.getDropActivity(),
 			ModelPackage.eINSTANCE.getCallActivity(),
-			ModelPackage.eINSTANCE.getRetrieveDataActivity()};
+			ModelPackage.eINSTANCE.getRetrieveDataActivity(),
+			ModelPackage.eINSTANCE.getTransferActivity()};
 
 	/**
 	 * Instantiates a new data management ui object factory.

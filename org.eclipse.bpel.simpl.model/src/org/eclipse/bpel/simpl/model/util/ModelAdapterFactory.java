@@ -17,6 +17,7 @@ import javax.wsdl.extensions.ElementExtensible;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.model.Variable;
+import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
@@ -70,9 +71,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc --> This implementation returns <code>true</code> if
 	 * the object is either the model's package or is an instance object of the
 	 * model. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the object
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
@@ -136,6 +134,10 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 				return createReferenceVariableAdapter();
 			}
 			@Override
+			public Adapter caseTransferActivity(TransferActivity object) {
+				return createTransferActivityAdapter();
+			}
+			@Override
 			public Adapter caseWSDLElement(WSDLElement object) {
 				return createWSDLElementAdapter();
 			}
@@ -174,12 +176,11 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 		};
 
 	/**
-	 * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
+	 * Creates an adapter for the <code>target</code>.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param target
-	 *            the object to adapt.
-	 * @return the adapter for the .
+	 * @param target the object to adapt.
+	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
 	@Override
@@ -325,6 +326,20 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReferenceVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.TransferActivity <em>Transfer Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.simpl.model.TransferActivity
+	 * @generated
+	 */
+	public Adapter createTransferActivityAdapter() {
 		return null;
 	}
 
