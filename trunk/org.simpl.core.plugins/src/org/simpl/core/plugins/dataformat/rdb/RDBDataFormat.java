@@ -16,8 +16,11 @@ import commonj.sdo.DataObject;
  * <b>Description:</b>Converts the data from a ResultSet to a DataObject. When converting
  * back from a DataObject, SQL statements are created, that can be executed on a RDB
  * database to create or update the data.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * Because the result set and data base meta data objects need a connection to be able to
+ * retrieve data from, the connection is not closed by the data source service
+ * retrieveData() method but after toSDO().<br>
+ * <b>Copyright:</b><br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * TODO: create list of quoted column data types, currently only VARCHAR is supported
  * 
@@ -88,6 +91,15 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
         tableObject = null;
       }
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    // disconnect from the data source
+    try {
+      dbMetaData.getConnection().commit();
+      dbMetaData.getConnection().close();
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
