@@ -1,5 +1,6 @@
 package org.simpl.rrs.retrieval;
 
+import java.sql.ResultSet;
 import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
 
@@ -7,11 +8,9 @@ import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.webservices.EPR;
 
-import commonj.sdo.DataObject;
-
 public class RetrievalServiceImpl implements RetrievalService {
 
-	public Object get(EPR epr) {
+	public ResultSet get(EPR epr) {
 
 		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
 		System.out.println(EPRHM.get("dsAddress"));
@@ -31,8 +30,7 @@ public class RetrievalServiceImpl implements RetrievalService {
 		// anhand von Type und Subtype, und Daten holen...
 		DSAdapter dsAdapter = RRS.getInstance().dsAdapter(dsType, dsSubtype);
 
-		DataObject data = dsAdapter.retrieveData(EPRHM.get("dsAddress"), EPRHM
-				.get("statement"));
+		ResultSet data = dsAdapter.retrieveData(epr.getReferenceParameters().getDsAddress(), epr.getReferenceParameters().getStatement());
 		
 		return data;
 
