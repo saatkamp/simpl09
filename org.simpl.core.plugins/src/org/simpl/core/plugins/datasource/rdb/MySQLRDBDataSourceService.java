@@ -94,10 +94,6 @@ public class MySQLRDBDataSourceService extends
 
       rdbResult.setDbMetaData(connection.getMetaData());
       rdbResult.setResultSet(resultSet);
-
-      connStatement.close();
-      connection.commit();
-      closeConnection(connection);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
