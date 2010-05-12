@@ -1,9 +1,11 @@
 package org.simpl.rrs.retrieval;
 
+import java.sql.ResultSet;
+
 import org.simpl.rrs.webservices.EPR;
 
 public interface RetrievalService {
 
-	public Object get(EPR epr);
+	public ResultSet get(EPR epr);
 	
 }
