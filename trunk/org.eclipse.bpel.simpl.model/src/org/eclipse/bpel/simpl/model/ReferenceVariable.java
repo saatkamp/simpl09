@@ -65,17 +65,17 @@ public interface ReferenceVariable extends Variable {
 	void setValueType(XSDTypeDefinition value);
 
 	/**
-	 * Returns the value of the '<em><b>Reference Type</b></em>' attribute. The
-	 * default value is <code>""</code>. The literals are from the enumeration
-	 * {@link org.eclipse.bpel.simpl.model.ReferenceType}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Reference Type</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * The literals are from the enumeration {@link org.eclipse.bpel.simpl.model.ReferenceType}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Reference Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '' attribute.
+	 * @return the value of the '<em>Reference Type</em>' attribute.
 	 * @see org.eclipse.bpel.simpl.model.ReferenceType
 	 * @see #setReferenceType(ReferenceType)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getReferenceVariable_ReferenceType()

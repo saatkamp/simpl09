@@ -1,14 +1,15 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
+import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
+import org.eclipse.bpel.simpl.ui.command.SetTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
-import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -25,9 +26,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-import widgets.ParametersListPopUp;
-import widgets.TablsListPopUp;
 import widgets.LiveEditStyleText;
+import widgets.TablsListPopUp;
 
 /**
  * <b>Purpose:</b> <br>
@@ -40,11 +40,10 @@ import widgets.LiveEditStyleText;
  * @link http://code.google.com/p/simpl09/
  *
  */
-public class DataManagementActivitySection extends DMActivityPropertySection {
+public class TransferActivityToPropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
-	ParametersListPopUp bpelVariableWindow;
 	
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
@@ -61,16 +60,16 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	private Label languageLabel = null;
 	private Text languageText = null;
 	private Composite parentComposite = null;
-
-	private DataManagementActivity activity;
+	private Label targetLabel = null;
+	private Text targetText = null;
 
 	private LiveEditStyleText statementText = null;
 	private Button insertBpelVariable = null;
 	private Button insertTable = null;
 	private Button Save = null;
 	
-	
-	private DataSource dataSource = null;
+	private TransferActivity transferActivity;
+	private DataManagementActivity toActivity;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -86,21 +85,20 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	protected void createClient(Composite parent) {
 		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
-		// Laden der Aktivität
-		if (getModel() instanceof TransferActivity){
-			this.activity = ((TransferActivity)getModel()).getFromSource();
-		}else {
-			this.activity = getModel();
-		}
-		
+		// Laden der Transfer-Aktivität und der enthaltenen toSource (DM)-Aktivität
+		this.transferActivity = getModel();
+		this.toActivity = transferActivity.getToSource();
+
 		createWidgets(parent);
 
 		// Setzen das Statement
-		setStatement(activity.getDsStatement());
+		setStatement(toActivity.getDsStatement());
 		// Setzen die Datenquellenadresse
-		dataSourceAddressCombo.setText(activity.getDsAddress());
+		dataSourceAddressCombo.setText(toActivity.getDsAddress());
+		// Setzen die Zieleinheit des Transfers.
+		targetText.setText(transferActivity.getTarget());
 		// Setzen die Sprache
-		languageText.setText(activity.getDsLanguage());
+		languageText.setText(toActivity.getDsLanguage());
 	}
 
 	/**
@@ -111,6 +109,10 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	 */
 	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
+		GridData gridData13 = new GridData();
+		gridData13.horizontalAlignment = GridData.FILL;
+		gridData13.grabExcessHorizontalSpace = true;
+		gridData13.verticalAlignment = GridData.CENTER;
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;
 		gridData4.verticalAlignment = GridData.CENTER;
@@ -177,7 +179,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetDsAddressCommand(getModel(),
+						new SetDsAddressCommand(toActivity,
 								dataSourceAddressCombo.getText()));
 				
 				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
@@ -207,16 +209,30 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			public void modifyText(ModifyEvent e) {
 				// Auswahl im Modell speichern
 				getCommandFramework().execute(
-						new SetDsLanguageCommand(getModel(), languageText.getText()));
+						new SetDsLanguageCommand(toActivity, languageText.getText()));
 			}
 		});
 
-		Label filler411 = new Label(composite, SWT.NONE);
-		Label filler42 = new Label(composite, SWT.NONE);
+		targetLabel = new Label(composite, SWT.NONE);
+		targetLabel.setText("Target to insert the query result:");
+		targetLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
+		targetText = new Text(composite, SWT.BORDER);
+		targetText.setLayoutData(gridData13);
+		targetText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				getCommandFramework().execute(
+						new SetTargetCommand(transferActivity, targetText
+								.getText()));
+			}
+		});
 		Label filler43 = new Label(composite, SWT.NONE);
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
@@ -230,7 +246,8 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(getModel().eClass().getName(), activity.getDsLanguage());
+				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
+						.getInstanceClassName(), toActivity.getDsLanguage());
 			}
 		});
 
@@ -240,8 +257,8 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
 		Composite statementCompo=new Composite(composite, SWT.NONE);
 		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		GridData gridData13 = new GridData();
-		gridData13.horizontalSpan = 3;
+		GridData gridData131 = new GridData();
+		gridData131.horizontalSpan = 3;
 		
 		GridData gridData14 = new GridData();
 		gridData14.horizontalSpan = 4;
@@ -272,13 +289,12 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				bpelVariableWindow=new ParametersListPopUp(statementText);
+				tabelsPopWindowBPELVariables=new TablsListPopUp(statementText);
 				//Display display2 = Display.getDefault();
-				bpelVariableWindow.setText("Insert BPEL-Variable");
+				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				java.util.List<String> listOfBPELVariablesAsStrings=VariableUtils.getUseableVariables(getProcess());
-				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
+				tabelsPopWindowBPELVariables.loadBPELVariables();
 				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
 					tabelsPopWindowBPELVariables.openWindow();
 					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
@@ -391,13 +407,13 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsTypeCommand(getModel(), typeText.getText()));
+						new SetDsTypeCommand(toActivity, typeText.getText()));
 			}
 		});
 		typeText.setEditable(false);
 
 		// Wert aus Modell setzen
-		typeText.setText(this.activity.getDsType());
+		typeText.setText(this.toActivity.getDsType());
 	}
 
 	/**
@@ -422,12 +438,12 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsKindCommand(getModel(), kindText.getText()));
+						new SetDsKindCommand(toActivity, kindText.getText()));
 			}
 		});
 				
 		// Wert aus Modell setzen
-		kindText.setText(this.activity.getDsKind());
+		kindText.setText(this.toActivity.getDsKind());
 	}
 
 	/* (non-Javadoc)
@@ -455,6 +471,6 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	@Override
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
-				new SetDsStatementCommand(getModel(), this.statement));
+				new SetDsStatementCommand(toActivity, this.statement));
 	}
 }

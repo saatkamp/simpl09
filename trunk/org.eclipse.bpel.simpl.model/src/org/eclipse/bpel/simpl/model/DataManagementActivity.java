@@ -15,31 +15,35 @@ import org.eclipse.bpel.model.ExtensionActivity;
 
 // TODO: Auto-generated Javadoc
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data Management Activity</b></em>'.
- * <!-- end-user-doc -->
- *
- * <!-- begin-model-doc -->
- * Allows to interact with datasources directly out of the process.
- * <!-- end-model-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Data Management Activity</b></em>'. <!-- end-user-doc -->
+ * 
+ * <!-- begin-model-doc --> Allows to interact with datasources directly out of
+ * the process. <!-- end-model-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress <em>Ds Address</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>Ds Type</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}</li>
+ * <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress
+ * <em>Ds Address</em>}</li>
+ * <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>
+ * Ds Type</em>}</li>
+ * <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>
+ * Ds Kind</em>}</li>
+ * <li>
+ * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement
+ * <em>Ds Statement</em>}</li>
+ * <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage
+ * <em>Ds Language</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity()
  * @model
  * @generated
  */
 public interface DataManagementActivity extends ExtensionActivity {
-	
+
 	/**
 	 * Returns the value of the '<em><b>Ds Statement</b></em>' attribute. The
 	 * default value is <code>"statement"</code>. <!-- begin-user-doc -->
@@ -49,7 +53,7 @@ public interface DataManagementActivity extends ExtensionActivity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '' attribute.
+	 * @return the value of the '<em>Ds Statement</em>' attribute.
 	 * @see #setDsStatement(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsStatement()
 	 * @model default="statement"
@@ -58,10 +62,13 @@ public interface DataManagementActivity extends ExtensionActivity {
 	String getDsStatement();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ds Statement</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement
+	 * <em>Ds Statement</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Ds Statement</em>' attribute.
 	 * @see #getDsStatement()
 	 * @generated
 	 */
@@ -76,7 +83,7 @@ public interface DataManagementActivity extends ExtensionActivity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '' attribute.
+	 * @return the value of the '<em>Ds Language</em>' attribute.
 	 * @see #setDsLanguage(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsLanguage()
 	 * @model default="language"
@@ -85,10 +92,13 @@ public interface DataManagementActivity extends ExtensionActivity {
 	String getDsLanguage();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ds Language</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage
+	 * <em>Ds Language</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Ds Language</em>' attribute.
 	 * @see #getDsLanguage()
 	 * @generated
 	 */
@@ -103,7 +113,7 @@ public interface DataManagementActivity extends ExtensionActivity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '' attribute.
+	 * @return the value of the '<em>Ds Kind</em>' attribute.
 	 * @see #setDsKind(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsKind()
 	 * @model default="subtype"
@@ -112,10 +122,13 @@ public interface DataManagementActivity extends ExtensionActivity {
 	String getDsKind();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ds Kind</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind
+	 * <em>Ds Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Ds Kind</em>' attribute.
 	 * @see #getDsKind()
 	 * @generated
 	 */
@@ -130,7 +143,7 @@ public interface DataManagementActivity extends ExtensionActivity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '' attribute.
+	 * @return the value of the '<em>Ds Type</em>' attribute.
 	 * @see #setDsType(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsType()
 	 * @model default="type"
@@ -139,10 +152,13 @@ public interface DataManagementActivity extends ExtensionActivity {
 	String getDsType();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>Ds Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ds Type</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType
+	 * <em>Ds Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Ds Type</em>' attribute.
 	 * @see #getDsType()
 	 * @generated
 	 */
@@ -157,7 +173,7 @@ public interface DataManagementActivity extends ExtensionActivity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * 
-	 * @return the value of the '' attribute.
+	 * @return the value of the '<em>Ds Address</em>' attribute.
 	 * @see #setDsAddress(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsAddress()
 	 * @model default="address"
@@ -166,10 +182,13 @@ public interface DataManagementActivity extends ExtensionActivity {
 	String getDsAddress();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress <em>Ds Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ds Address</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress
+	 * <em>Ds Address</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Ds Address</em>' attribute.
 	 * @see #getDsAddress()
 	 * @generated
 	 */

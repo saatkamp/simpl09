@@ -99,12 +99,8 @@ public enum ReferenceType implements Enumerator {
 	public static final List<ReferenceType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified
-	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param literal
-	 *            the literal
-	 * @return the reference type
+	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ReferenceType get(String literal) {
@@ -118,12 +114,8 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified
-	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param name
-	 *            the name
-	 * @return the by name
+	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ReferenceType getByName(String name) {
@@ -137,12 +129,8 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified
-	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the value
-	 * @return the reference type
+	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ReferenceType get(int value) {
@@ -217,10 +205,8 @@ public enum ReferenceType implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string
-	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the string
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

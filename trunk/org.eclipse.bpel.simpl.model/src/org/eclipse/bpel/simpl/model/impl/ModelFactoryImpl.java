@@ -11,6 +11,7 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
+import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
@@ -41,10 +42,9 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @return the model factory
 	 * @generated
 	 */
 	public static ModelFactory init() {
@@ -91,6 +91,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.CALL_ACTIVITY: return createCallActivity();
 			case ModelPackage.RETRIEVE_DATA_ACTIVITY: return createRetrieveDataActivity();
 			case ModelPackage.REFERENCE_VARIABLE: return createReferenceVariable();
+			case ModelPackage.TRANSFER_ACTIVITY: return createTransferActivity();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -244,6 +245,16 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public ReferenceVariable createReferenceVariable() {
 		ReferenceVariableImpl referenceVariable = new ReferenceVariableImpl();
 		return referenceVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransferActivity createTransferActivity() {
+		TransferActivityImpl transferActivity = new TransferActivityImpl();
+		return transferActivity;
 	}
 
 	/**

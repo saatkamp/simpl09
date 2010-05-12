@@ -122,6 +122,15 @@ public interface ModelFactory extends EFactory {
 	ReferenceVariable createReferenceVariable();
 
 	/**
+	 * Returns a new object of class '<em>Transfer Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transfer Activity</em>'.
+	 * @generated
+	 */
+	TransferActivity createTransferActivity();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

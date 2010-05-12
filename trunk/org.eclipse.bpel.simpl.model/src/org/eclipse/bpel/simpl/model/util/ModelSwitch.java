@@ -19,6 +19,7 @@ import javax.wsdl.extensions.ElementExtensible;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.model.Variable;
+import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
@@ -43,9 +44,6 @@ import org.eclipse.wst.wsdl.WSDLElement;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
- * @param <T>
- *            the generic type
  * @see org.eclipse.bpel.simpl.model.ModelPackage
  * @generated
  */
@@ -71,13 +69,10 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns
-	 * a non null result; it yields that result. <!-- begin-user-doc --> <!--
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param theEObject
-	 *            the the e object
-	 * @return the first non-null result returned by a call.
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	public T doSwitch(EObject theEObject) {
@@ -250,19 +245,31 @@ public class ModelSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ModelPackage.TRANSFER_ACTIVITY: {
+				TransferActivity transferActivity = (TransferActivity)theEObject;
+				T result = caseTransferActivity(transferActivity);
+				if (result == null) result = caseDataManagementActivity(transferActivity);
+				if (result == null) result = caseExtensionActivity(transferActivity);
+				if (result == null) result = caseActivity(transferActivity);
+				if (result == null) result = caseBPEL_ExtensibleElement(transferActivity);
+				if (result == null) result = caseExtensibleElement(transferActivity);
+				if (result == null) result = caseWSDLElement(transferActivity);
+				if (result == null) result = caseIElementExtensible(transferActivity);
+				if (result == null) result = caseIAttributeExtensible(transferActivity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Data Management Activity</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Data Management Activity</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Management Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -271,14 +278,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Query Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Query Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Query Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -287,14 +292,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Insert Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Insert Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Insert Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -303,14 +306,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Update Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Update Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Update Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -319,14 +320,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Delete Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Delete Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Delete Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -335,14 +334,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Create Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Create Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Create Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -351,14 +348,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Drop Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Drop Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Drop Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -367,14 +362,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Call Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Call Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Call Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -383,14 +376,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Retrieve Data Activity</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>Retrieve Data Activity</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Retrieve Data Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -399,14 +390,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Reference Variable</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Reference Variable</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reference Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -415,14 +404,27 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Element</em>'. <!-- begin-user-doc --> This implementation returns
+	 * Returns the result of interpreting the object as an instance of '<em>Transfer Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transfer Activity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransferActivity(TransferActivity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -431,14 +433,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>IElement Extensible</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>IElement Extensible</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IElement Extensible</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -447,14 +447,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>IAttribute Extensible</em>'. <!-- begin-user-doc --> This
+	 * Returns the result of interpreting the object as an instance of '<em>IAttribute Extensible</em>'.
+	 * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IAttribute Extensible</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -463,14 +461,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Extensible Element</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -479,14 +475,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Extensible Element</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -495,14 +489,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Activity</em>'. <!-- begin-user-doc --> This implementation returns
+	 * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -511,14 +503,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Extension Activity</em>'. <!-- begin-user-doc --> This implementation
+	 * Returns the result of interpreting the object as an instance of '<em>Extension Activity</em>'.
+	 * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extension Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -527,14 +517,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>Variable</em>'. <!-- begin-user-doc --> This implementation returns
+	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
@@ -543,14 +531,12 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '
-	 * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+	 * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch, but this is
 	 * the last case anyway. <!-- end-user-doc -->
-	 * 
-	 * @param object
-	 *            the target of the switch.
-	 * @return the result of interpreting the object as an instance of ''.
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */

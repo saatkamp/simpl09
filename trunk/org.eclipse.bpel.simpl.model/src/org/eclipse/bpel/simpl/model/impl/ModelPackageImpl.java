@@ -29,6 +29,7 @@ import org.eclipse.bpel.simpl.model.QueryActivity;
 import org.eclipse.bpel.simpl.model.ReferenceType;
 import org.eclipse.bpel.simpl.model.ReferenceVariable;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivityDeserializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivitySerializer;
@@ -118,6 +119,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass referenceVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass transferActivityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -486,6 +494,46 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTransferActivity() {
+		return transferActivityEClass;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransferActivity_FromSource() {
+		return (EReference)transferActivityEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransferActivity_ToSource() {
+		return (EReference)transferActivityEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransferActivity_Target() {
+		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the reference type
@@ -556,6 +604,11 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(referenceVariableEClass, REFERENCE_VARIABLE__PERIOD);
 		createEReference(referenceVariableEClass, REFERENCE_VARIABLE__EXTERNAL);
 
+		transferActivityEClass = createEClass(TRANSFER_ACTIVITY);
+		createEReference(transferActivityEClass, TRANSFER_ACTIVITY__FROM_SOURCE);
+		createEReference(transferActivityEClass, TRANSFER_ACTIVITY__TO_SOURCE);
+		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET);
+
 		// Create enums
 		referenceTypeEEnum = createEEnum(REFERENCE_TYPE);
 	}
@@ -602,6 +655,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		callActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		retrieveDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		referenceVariableEClass.getESuperTypes().add(theBPELPackage.getVariable());
+		transferActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataManagementActivityEClass, DataManagementActivity.class, "DataManagementActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -634,6 +688,11 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getReferenceVariable_ReferenceType(), this.getReferenceType(), "referenceType", "", 1, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReferenceVariable_Period(), ecorePackage.getEInt(), "period", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReferenceVariable_External(), theBPELPackage.getPartnerLink(), null, "external", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(transferActivityEClass, TransferActivity.class, "TransferActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTransferActivity_FromSource(), this.getDataManagementActivity(), null, "fromSource", null, 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransferActivity_ToSource(), this.getDataManagementActivity(), null, "toSource", null, 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferActivity_Target(), ecorePackage.getEString(), "target", null, 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(referenceTypeEEnum, ReferenceType.class, "ReferenceType");

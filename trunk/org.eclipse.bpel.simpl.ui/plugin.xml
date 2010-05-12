@@ -34,6 +34,7 @@
             </input>
          </propertySection>
          <propertySection
+               afterSection="org.eclipse.bpel.simpl.ui.properties.TransferActivityPropertySection"
                class="org.eclipse.bpel.simpl.ui.properties.DataManagementActivitySection"
                id="org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">
@@ -55,6 +56,9 @@
             <input
                   type="org.eclipse.bpel.simpl.model.DropActivity">
             </input>
+            <input
+                  type="org.eclipse.bpel.simpl.model.TransferActivity">
+            </input>
          </propertySection>
          <propertySection
                class="org.eclipse.bpel.simpl.ui.properties.RetrieveDataVariableSection"
@@ -62,6 +66,14 @@
                tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.RetrieveDataActivity">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.TransferActivityToPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.TransferActivityPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.TransferActivity">
             </input>
          </propertySection>
       </propertySections>

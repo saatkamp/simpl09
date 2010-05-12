@@ -36,15 +36,15 @@ package org.eclipse.bpel.simpl.model;
 public interface QueryActivity extends DataManagementActivity {
 
 	/**
-	 * Returns the value of the '<em><b>Query Target</b></em>' attribute. The
-	 * default value is <code>"target"</code>. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Query Target</b></em>' attribute.
+	 * The default value is <code>"target"</code>.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Query Target</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '' attribute.
+	 * @return the value of the '<em>Query Target</em>' attribute.
 	 * @see #setQueryTarget(String)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getQueryActivity_QueryTarget()
 	 * @model default="target"

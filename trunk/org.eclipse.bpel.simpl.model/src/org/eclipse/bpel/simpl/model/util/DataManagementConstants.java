@@ -42,6 +42,9 @@ public class DataManagementConstants {
 	/** The Constant ND_RETRIEVE_DATA_ACTIVITY. */
 	public static final String ND_RETRIEVE_DATA_ACTIVITY = "retrieveDataActivity";
 	
+	/** The Constant ND_TRANSFER_ACTIVITY. */
+	public static final String ND_TRANSFER_ACTIVITY = "transferActivity";
 
-
+	/** The Constant ND_DATA_MANAGEMENT_ACTIVITY. */
+	public static final String ND_DATA_MANAGEMENT_ACTIVITY = "dataManagementActivity";
 }
