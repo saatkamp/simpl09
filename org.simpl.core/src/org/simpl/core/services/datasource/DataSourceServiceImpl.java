@@ -154,8 +154,9 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
-      writeData = DataFormatProvider.getInstance(dataSource.getDataFormat()).fromSDO(data);
-      
+      writeData = DataFormatProvider.getInstance(dataSource.getDataFormat())
+          .fromSDO(data);
+
       // write data
       if (writeData != null) {
         success = dataSourceService.writeBack(dataSource, writeData);
@@ -345,8 +346,9 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       supportedConvertDataFormatTypes = DataFormatConverterProvider
           .getSupportedConvertDataFormatTypes(dataSourceService, dataFormatType);
 
-      // check if one of the types is supported by the data source service
+      // cycle through the types that the data format can be converted to
       for (String supportedConvertDataFormatType : supportedConvertDataFormatTypes) {
+        // check if one of the types is supported by the data source service
         if (DataFormatProvider.getSupportedDataFormatTypes(dataSourceService).contains(
             supportedConvertDataFormatType)) {
           // convert from the given data format to supported data format
@@ -364,7 +366,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
     // create target
     if (writeData != null) {
-      createdTarget = dataSourceService.createTarget(dataSource, convertedData, target);
+      if (convertedData != null) {
+        createdTarget = dataSourceService.createTarget(dataSource, convertedData, target);
+      } else {
+        createdTarget = dataSourceService.createTarget(dataSource, data, target);
+      }
 
       // write data
       if (!createdTarget) {
