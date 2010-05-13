@@ -281,16 +281,7 @@ public class ParametersListPopUp{
 			arrayOfElements.add(listOfTables.get(i).getTableName());
 		}
 		
-		arrayOfElements.add("aaaaa");
-		arrayOfElements.add("abbb");
-		arrayOfElements.add("bbbba");
-		arrayOfElements.add("aaccc");
-		arrayOfElements.add("cccbbb");
-		arrayOfElements.add("ddccbbc");
-		arrayOfElements.add("aa");
-		arrayOfElements.add("sdfsdf");
-		arrayOfElements.add("zzzzzz");
-		arrayOfElements.add("aaa");
+		
 	}
 	
 	/**
@@ -298,23 +289,10 @@ public class ParametersListPopUp{
 	 * @param listOfBPELVariablesAsStrings 
 	 */
 	public void loadBPELVariables(java.util.List<String> listOfBPELVariablesAsStrings) {
-		/*
-		 * Hallo,
-		du kannst jetzt in den PropertySections mit 
-		 *VariableUtils.getUseableVariables(getProcess()) *eine Liste mit allen 
-		Variablennamen, die entweder einen SimpleType (string, boolean, ...) 
-		oder den ContainerReferenceType (schema+tabelle) haben, abrufen.
-		Die Namen haben dabei schon die Notation, die wir vorher besprochen 
-		haben, also alle SimpleType Variablennamen sind umgeben von # (z.B. 
-		#simpleVariable#) und alle ContainerReferenceType Variablennamen sind 
-		umgeben von [] (z.B. [containerRefType] ).
-
-		Gruﬂ,
-		Michael
-		 */
+		
 		for(int i=0;i<listOfBPELVariablesAsStrings.size();i++){
 			arrayOfElements.add(listOfBPELVariablesAsStrings.get(i));
-			
+			listToSearch.add(listOfBPELVariablesAsStrings.get(i));
 		}
 		
 		//******zum testen*******
