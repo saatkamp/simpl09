@@ -1,6 +1,7 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
+import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
@@ -70,9 +71,6 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	private Button insertBpelVariable = null;
 	private Button insertTable = null;
 	private Button Save = null;
-	
-	
-	private DataSource dataSource = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -179,7 +177,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetDsAddressCommand(getModel(),
+						new SetDsAddressCommand(activity,
 								dataSourceAddressCombo.getText()));
 				
 				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
@@ -209,7 +207,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			public void modifyText(ModifyEvent e) {
 				// Auswahl im Modell speichern
 				getCommandFramework().execute(
-						new SetDsLanguageCommand(getModel(), languageText.getText()));
+						new SetDsLanguageCommand(activity, languageText.getText()));
 			}
 		});
 
@@ -232,7 +230,12 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				openStatementEditor(getModel().eClass().getName(), activity.getDsLanguage());
+				if (getModel() instanceof TransferActivity){
+					//The fromSource DataManagementActivity of the transfer activity needs a query statement editor
+					openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity().getName(), activity.getDsLanguage());
+				}else {
+					openStatementEditor(getModel().eClass().getName(), activity.getDsLanguage());
+				}
 			}
 		});
 
@@ -404,7 +407,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsTypeCommand(getModel(), typeText.getText()));
+						new SetDsTypeCommand(activity, typeText.getText()));
 			}
 		});
 		typeText.setEditable(false);
@@ -435,7 +438,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetDsKindCommand(getModel(), kindText.getText()));
+						new SetDsKindCommand(activity, kindText.getText()));
 			}
 		});
 				
@@ -468,6 +471,6 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	@Override
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
-				new SetDsStatementCommand(getModel(), this.statement));
+				new SetDsStatementCommand(activity, this.statement));
 	}
 }

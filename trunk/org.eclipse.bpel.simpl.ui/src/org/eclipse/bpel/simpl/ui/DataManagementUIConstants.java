@@ -15,7 +15,7 @@ package org.eclipse.bpel.simpl.ui;
  * The Class DataManagementUIConstants.
  */
 public class DataManagementUIConstants {
-
+	
 	// The path of the icons
 	/** The Constant ICON_PATH. */
 	public static final String ICON_PATH = "icons/";

@@ -40,8 +40,6 @@ public class SetDataVariableCommand extends SetCommand {
 	@Override
 	public Object get() {
 		if (fTarget instanceof RetrieveDataActivity) {
-			// TODO: Abklären, ob hier nur der Name (String) oder das
-			// tatsächliche Objekt (Variable) übergeben werden muss.
 			return ((RetrieveDataActivity) fTarget).getDataVariable();
 		}
 
@@ -55,8 +53,6 @@ public class SetDataVariableCommand extends SetCommand {
 	@Override
 	public void set(Object o) {
 		if (fTarget instanceof RetrieveDataActivity) {
-			// TODO: Abklären, ob hier nur der Name (String) oder das
-			// tatsächliche Objekt (Variable) übergeben werden muss.
 			((RetrieveDataActivity) fTarget).setDataVariable((Variable) o);
 		} else {
 			throw new IllegalArgumentException(

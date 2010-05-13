@@ -22,6 +22,7 @@ import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.BPELFactory;
+import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.Import;
@@ -512,7 +513,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			// insert the DOM element into the DOM tree
 			parentNode.appendChild(activityElement);
 		}
-		
+
 		/*
 		 * TransferActivity
 		 */
@@ -525,17 +526,21 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			activityElement
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
-			// handle the TransferActivity elements
-			if (((TransferActivity)activity).getFromSource() != null){
-				DataManagementActivity dmActivity = ((TransferActivity)activity).getFromSource();
-				activityElement.appendChild(dmActivity2XML(elementType, document, process, dmActivity, "fromSource"));
+			// handle child activities
+			DataManagementActivity fromChildActivity = ((TransferActivity) activity)
+					.getFromSource();
+			if (fromChildActivity != null) {
+				activityElement.appendChild(dmActivity2XML(elementType,
+						document, process, fromChildActivity, "fromSource"));
 			}
-				
-			if (((TransferActivity)activity).getToSource() != null){
-				DataManagementActivity dmActivity = ((TransferActivity)activity).getToSource();
-				activityElement.appendChild(dmActivity2XML(elementType, document, process, dmActivity, "toSource"));
+
+			DataManagementActivity toChildActivity = ((TransferActivity) activity)
+					.getToSource();
+			if (toChildActivity != null) {
+				activityElement.appendChild(dmActivity2XML(elementType,
+						document, process, toChildActivity, "toSource"));
 			}
-		
+
 			// handle the TransferActivity attributes
 			if (((TransferActivity) activity).getTarget() != null) {
 				String attName = ModelPackage.eINSTANCE
@@ -543,7 +548,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				activityElement.setAttribute(attName,
 						((TransferActivity) activity).getTarget());
 			}
-			
+
 			// insert the DOM element into the DOM tree
 			parentNode.appendChild(activityElement);
 		}
@@ -720,57 +725,48 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			process.setExtensions(processExtensions);
 		}
 	}
-	
-	protected Element dmActivity2XML(QName elementType, Document document, Process process, DataManagementActivity activity, String name) {
+
+	protected Element dmActivity2XML(QName elementType, Document document,
+			Process process, DataManagementActivity activity, String name) {
 		// create a new DOM element for our Activity
-		Element activityElement = document.createElementNS(elementType
-				.getNamespaceURI(),
+		Element activityElement = document.createElementNS(
+				ModelPackage.eINSTANCE.getNsURI(),
 				DataManagementConstants.ND_DATA_MANAGEMENT_ACTIVITY);
-		activityElement
-				.setPrefix(DataManagementUtils.addNamespace(process));
+		activityElement.setPrefix(DataManagementUtils.addNamespace(process));
 
 		// set the name to a given constant value
-		if (activity.getName() != null) {
-			String attName = ModelPackage.eINSTANCE
-					.getName();
-			activityElement.setAttribute(attName,
-					name);
-		}
-		
-		// handle the QueryActivity Attributes
+		String attActivityName = BPELPackage.eINSTANCE.getActivity_Name().getName();
+		activityElement.setAttribute(attActivityName, name);
+
+		// handle the DMActivity Attributes
 		if (activity.getDsStatement() != null) {
 			String attName = ModelPackage.eINSTANCE
 					.getDataManagementActivity_DsStatement().getName();
-			activityElement.setAttribute(attName,
-					activity.getDsStatement());
+			activityElement.setAttribute(attName, activity.getDsStatement());
 		}
 
 		if (activity.getDsKind() != null) {
 			String attName = ModelPackage.eINSTANCE
 					.getDataManagementActivity_DsKind().getName();
-			activityElement.setAttribute(attName,
-					activity.getDsKind());
+			activityElement.setAttribute(attName, activity.getDsKind());
 		}
 
 		if (activity.getDsType() != null) {
 			String attName = ModelPackage.eINSTANCE
 					.getDataManagementActivity_DsType().getName();
-			activityElement.setAttribute(attName,
-					activity.getDsType());
+			activityElement.setAttribute(attName, activity.getDsType());
 		}
 
 		if (activity.getDsAddress() != null) {
 			String attName = ModelPackage.eINSTANCE
 					.getDataManagementActivity_DsAddress().getName();
-			activityElement.setAttribute(attName,
-					activity.getDsAddress());
+			activityElement.setAttribute(attName, activity.getDsAddress());
 		}
 
 		if (activity.getDsLanguage() != null) {
 			String attName = ModelPackage.eINSTANCE
 					.getDataManagementActivity_DsLanguage().getName();
-			activityElement.setAttribute(attName,
-					activity.getDsLanguage());
+			activityElement.setAttribute(attName, activity.getDsLanguage());
 		}
 
 		return activityElement;

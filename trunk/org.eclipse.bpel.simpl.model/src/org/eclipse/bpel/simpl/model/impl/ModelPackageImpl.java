@@ -273,6 +273,19 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
 				serializer);
 
+		// TransferActivity
+		name = TransferActivity.class.getSimpleName();
+		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
+				DataManagementConstants.ND_TRANSFER_ACTIVITY), deserializer);
+		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
+				serializer);
+		
+		// DataManagementActivity
+		name = DataManagementActivity.class.getSimpleName();
+		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
+				DataManagementConstants.ND_DATA_MANAGEMENT_ACTIVITY), deserializer);
+		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
+				serializer);
 	}
 	
 	/**
@@ -655,7 +668,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		callActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		retrieveDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		referenceVariableEClass.getESuperTypes().add(theBPELPackage.getVariable());
-		transferActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
+		transferActivityEClass.getESuperTypes().add(theBPELPackage.getExtensionActivity());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataManagementActivityEClass, DataManagementActivity.class, "DataManagementActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -690,9 +703,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getReferenceVariable_External(), theBPELPackage.getPartnerLink(), null, "external", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transferActivityEClass, TransferActivity.class, "TransferActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransferActivity_FromSource(), this.getDataManagementActivity(), null, "fromSource", null, 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransferActivity_ToSource(), this.getDataManagementActivity(), null, "toSource", null, 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransferActivity_Target(), ecorePackage.getEString(), "target", null, 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransferActivity_FromSource(), this.getDataManagementActivity(), null, "fromSource", null, 1, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransferActivity_ToSource(), this.getDataManagementActivity(), null, "toSource", null, 1, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferActivity_Target(), ecorePackage.getEString(), "target", "target", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(referenceTypeEEnum, ReferenceType.class, "ReferenceType");

@@ -10,6 +10,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
@@ -42,7 +43,7 @@ import widgets.ParametersListPopUp;
  *
  */
 public class TransferActivityToPropertySection extends DMActivityPropertySection {
-
+	
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
 	ParametersListPopUp bpelVariableWindow;
@@ -64,9 +65,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 	private Composite parentComposite = null;
 	private Label targetLabel = null;
 	private Text targetText = null;
-	
-    private DataManagementActivity activity;
-	
+
 	private LiveEditStyleText statementText = null;
 	private Button insertBpelVariable = null;
 	private Button insertTable = null;
@@ -74,7 +73,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 	
 	private TransferActivity transferActivity;
 	private DataManagementActivity toActivity;
-    private DataSource dataSource = null;
+
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -90,9 +89,9 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
 		// Laden der Transfer-Aktivität und der enthaltenen toSource (DM)-Aktivität
-		this.transferActivity = getModel();
-		this.toActivity = transferActivity.getToSource();
-
+		this.transferActivity = (TransferActivity)getModel().eContainer();
+		this.toActivity = getModel();
+		
 		createWidgets(parent);
 
 		// Setzen das Statement
@@ -182,9 +181,10 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				getCommandFramework().execute(
-						new SetDsAddressCommand(toActivity,
-								dataSourceAddressCombo.getText()));
+				getCommandFramework().execute(new SetDsAddressCommand(toActivity, dataSourceAddressCombo.getText()));
+//				getCommandFramework().execute(
+//						new SetCommand(transferActivity, toActivity, ModelPackage.eINSTANCE.getTransferActivity_ToSource()));
+				
 				
 				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
 				typeText.setText(dataSource.getType());
@@ -218,7 +218,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 		});
 
 		targetLabel = new Label(composite, SWT.NONE);
-		targetLabel.setText("Target to insert the query result:");
+		targetLabel.setText("Target to insert the data:");
 		targetLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 
@@ -411,7 +411,6 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 			
 			@Override
 			public void modifyText(ModifyEvent e) {
-				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
 						new SetDsTypeCommand(toActivity, typeText.getText()));
@@ -442,7 +441,6 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 			
 			@Override
 			public void modifyText(ModifyEvent e) {
-				// TODO Auto-generated method stub
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
 						new SetDsKindCommand(toActivity, kindText.getText()));
@@ -479,5 +477,12 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
 				new SetDsStatementCommand(toActivity, this.statement));
+	}
+	
+	@SuppressWarnings("nls")
+	@Override
+	protected void basicSetInput (EObject newInput) {		
+		TransferActivity transfer = (TransferActivity)newInput;
+		super.basicSetInput(transfer.getFromSource());			
 	}
 }

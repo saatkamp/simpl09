@@ -13,6 +13,7 @@ package org.eclipse.bpel.simpl.ui.command;
 
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
+import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.DeleteActivity;
 import org.eclipse.bpel.simpl.model.DropActivity;
 import org.eclipse.bpel.simpl.model.InsertActivity;
@@ -77,7 +78,11 @@ public class SetDsKindCommand extends SetCommand {
 			return ((RetrieveDataActivity) fTarget).getDsKind();
 		}
 		
-		throw new IllegalArgumentException("This model object has no variable to get");
+		if (fTarget instanceof DataManagementActivity){
+			return ((DataManagementActivity) fTarget).getDsKind();
+		}
+		
+		throw new IllegalArgumentException("This model object has no kind to get");
 	}
 	
 	/* (non-Javadoc)
@@ -109,9 +114,12 @@ public class SetDsKindCommand extends SetCommand {
 		} else if (fTarget instanceof RetrieveDataActivity) {
 			((RetrieveDataActivity) fTarget).setDsKind((String) o);
 			
+		} else if (fTarget instanceof DataManagementActivity) {
+			((DataManagementActivity) fTarget).setDsKind((String) o);
+			
 		} else {
 			throw new IllegalArgumentException(
-					"This model object has no variable to get");
+					"This model object has no kind to set");
 		}
 	}
 	

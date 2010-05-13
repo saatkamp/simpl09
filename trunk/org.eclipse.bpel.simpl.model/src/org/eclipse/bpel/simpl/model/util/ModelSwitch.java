@@ -248,7 +248,6 @@ public class ModelSwitch<T> {
 			case ModelPackage.TRANSFER_ACTIVITY: {
 				TransferActivity transferActivity = (TransferActivity)theEObject;
 				T result = caseTransferActivity(transferActivity);
-				if (result == null) result = caseDataManagementActivity(transferActivity);
 				if (result == null) result = caseExtensionActivity(transferActivity);
 				if (result == null) result = caseActivity(transferActivity);
 				if (result == null) result = caseBPEL_ExtensibleElement(transferActivity);
