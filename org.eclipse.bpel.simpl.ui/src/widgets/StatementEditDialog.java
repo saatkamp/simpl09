@@ -62,7 +62,7 @@ public class StatementEditDialog {
 		labelDialogMassege.setFont(new Font(Display.getDefault(), "Tahoma", 14, SWT.NORMAL));
 		labelDialogMassege.setLayoutData(gridData1);
 		Label filler1 = new Label(theShell, SWT.NONE);
-		styleTextEditor = new LiveEditStyleText(theShell);
+		styleTextEditor = new LiveEditStyleText(theShell,parentClass);
 		styleTextEditor.setLayoutData(gridData);
 		styleTextEditor.setText(statement);
 		

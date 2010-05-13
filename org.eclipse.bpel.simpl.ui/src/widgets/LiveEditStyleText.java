@@ -13,6 +13,7 @@ package widgets;
 
 import java.util.LinkedList;
 
+import org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.LineStyleEvent;
 import org.eclipse.swt.custom.LineStyleListener;
@@ -72,7 +73,7 @@ public class LiveEditStyleText extends StyledText{
 	 * @param theComposite
 	 *            the the composite
 	 */
-  public LiveEditStyleText(Composite theComposite) {
+  public LiveEditStyleText(Composite theComposite,final DMActivityPropertySection objectDMPropertySection) {
     
 	  //super(shell, SWT.MULTI | SWT.WRAP | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 	  super(theComposite,SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
@@ -84,7 +85,11 @@ public class LiveEditStyleText extends StyledText{
    
     //Checking Live if the typed text a KeyWord or a Parameter etc.
     addLineStyleListener(new LineStyleListener() {
-      public void lineGetStyle(LineStyleEvent event) {
+      
+    	public void lineGetStyle(LineStyleEvent event) {
+    		
+    		
+        	
         	String line = event.lineText;
         	int cursor = -1;
         	int index=0;
@@ -152,6 +157,12 @@ public class LiveEditStyleText extends StyledText{
 		        	
 			        event.styles = list.toArray(new StyleRange[list.size()]);
 	        	}
+	        	
+	        	objectDMPropertySection.setStatement(getText());
+	        	objectDMPropertySection.saveStatementToModel();
+	        	
+	        	
+	        	
         	}
 
       

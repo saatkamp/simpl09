@@ -10,6 +10,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -28,7 +29,7 @@ import org.eclipse.swt.widgets.Text;
 
 import widgets.LiveEditStyleText;
 import widgets.TablsListPopUp;
-
+import widgets.ParametersListPopUp;
 /**
  * <b>Purpose:</b> <br>
  * <b>Description:</b> <br>
@@ -44,6 +45,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
+	ParametersListPopUp bpelVariableWindow;
 	
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
@@ -62,7 +64,9 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 	private Composite parentComposite = null;
 	private Label targetLabel = null;
 	private Text targetText = null;
-
+	
+    private DataManagementActivity activity;
+	
 	private LiveEditStyleText statementText = null;
 	private Button insertBpelVariable = null;
 	private Button insertTable = null;
@@ -70,7 +74,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 	
 	private TransferActivity transferActivity;
 	private DataManagementActivity toActivity;
-
+    private DataSource dataSource = null;
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -289,15 +293,16 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowBPELVariables=new TablsListPopUp(statementText);
+				bpelVariableWindow=new ParametersListPopUp(statementText);
 				//Display display2 = Display.getDefault();
-				tabelsPopWindowBPELVariables.setText("Insert BPEL-Variable");
+				bpelVariableWindow.setText("Insert BPEL-Variable");
 				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				//sShell.setLayout(gridLayout);
-				tabelsPopWindowBPELVariables.loadBPELVariables();
-				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
-					tabelsPopWindowBPELVariables.openWindow();
-					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
+				java.util.List<String> listOfBPELVariablesAsStrings=VariableUtils.getUseableVariables(getProcess());
+				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
+				if(!bpelVariableWindow.isWindowOpen()){
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
 				}
 				
 				 
@@ -348,6 +353,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
+				saveStatementToModel();
 				
 				tabelsPopWindowTables.closeWindow();
 				tabelsPopWindowBPELVariables.closeWindow();
@@ -358,6 +364,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
+				saveStatementToModel();
 				
 				tabelsPopWindowTables.closeWindow();
 				tabelsPopWindowBPELVariables.closeWindow();
@@ -371,7 +378,7 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 		
 		//insertBpelVariable.setLayoutData(gridData24);
 		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		statementText = new LiveEditStyleText(statementCompo);
+		statementText = new LiveEditStyleText(statementCompo,this);
 		statementText.setLayoutData(gridData15);
 		
 		

@@ -24,6 +24,8 @@ import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.custom.LineStyleEvent;
+import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -299,9 +301,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				java.util.List<String> listOfBPELVariablesAsStrings=VariableUtils.getUseableVariables(getProcess());
 				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
 				
-				if(!tabelsPopWindowBPELVariables.isWindowOpen()){
-					tabelsPopWindowBPELVariables.openWindow();
-					tabelsPopWindowBPELVariables.setWindowIsOpen(true);
+				if(!bpelVariableWindow.isWindowOpen()){
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
 				}
 				
 				 
@@ -352,7 +354,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
-				
+				saveStatementToModel();
+				 
 				tabelsPopWindowTables.closeWindow();
 				tabelsPopWindowBPELVariables.closeWindow();
 				tabelsPopWindowTables.setWindowIsOpen(false);
@@ -362,6 +365,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
+				saveStatementToModel();
 				
 				tabelsPopWindowTables.closeWindow();
 				tabelsPopWindowBPELVariables.closeWindow();
@@ -375,9 +379,17 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		
 		//insertBpelVariable.setLayoutData(gridData24);
 		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		statementText = new LiveEditStyleText(statementCompo);
+		statementText = new LiveEditStyleText(statementCompo,this);
 		statementText.setLayoutData(gridData15);
 		
+//		statementText.addModifyListener(new ModifyListener() {
+//			
+//			@Override
+//			public void modifyText(ModifyEvent e) {
+//				setStatement(statementText.getText());
+//				saveStatementToModel();
+//			}
+//		});
 		
 		statementText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));

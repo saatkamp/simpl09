@@ -153,13 +153,13 @@ public class TablsListPopUp{
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				statementText.append(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
 				loadColumsOfTable(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
 				
 			}
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.append(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
 				loadColumsOfTable(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
 			}
 		});
@@ -167,19 +167,13 @@ public class TablsListPopUp{
 		listColumns = new List(theShell, SWT.BORDER);
 		listColumns.setLayoutData(gridData);
 		listColumns.addSelectionListener(new SelectionListener() {
-			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
-				
+				statementText.append(" "+listColumns.getItems()[listColumns.getSelectionIndex()]);	
 			}
-			
-			
-
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				statementText.append(listColumns.getItems()[listColumns.getSelectionIndex()]);
-				
+				statementText.append(" "+listColumns.getItems()[listColumns.getSelectionIndex()]);		
 			}
 		});
 	}
@@ -199,7 +193,10 @@ public class TablsListPopUp{
 			
 			tmpTableObjekt=listOfTableObjekts.get(i);
 			if(tmpTableObjekt.getTableName().equals(searchedString)){
-				listColumns.setItems((String[]) tmpTableObjekt.getListOfColumnsNames().toArray());
+				for(int j=0;j<tmpTableObjekt.getListOfColumnsNames().size();j++){
+					listColumns.add(tmpTableObjekt.getListOfColumnsNames().get(j));
+					//listColumns.setItems((String[]) tmpTableObjekt.getListOfColumnsNames().toArray());
+				}
 			}
 			//listColumns.add(tmpTableObjekt.);
 		}
@@ -275,28 +272,29 @@ public class TablsListPopUp{
 		MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
 
 		ArrayList<Table> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(dataSource);
+		listOfTableObjekts=listOfTables;
 		
 		for(int i=0;i<listOfTables.size();i++){
-			arrayOfElements.add(listOfTables.get(i).getTableName());
-			
+			arrayOfElements.add(listOfTableObjekts.get(i).getTableName());
+			listToSearch.add(listOfTableObjekts.get(i).getTableName());
 		}
 		
-		arrayOfElements.add("aaaaa");
-		arrayOfElements.add("abbb");
-		arrayOfElements.add("bbbba");
-		arrayOfElements.add("aaccc");
-		arrayOfElements.add("cccbbb");
-		arrayOfElements.add("ddccbbc");
-		arrayOfElements.add("aa");
-		arrayOfElements.add("sdfsdf");
-		arrayOfElements.add("zzzzzz");
-		arrayOfElements.add("aaa");
+//		arrayOfElements.add("aaaaa");
+//		arrayOfElements.add("abbb");
+//		arrayOfElements.add("bbbba");
+//		arrayOfElements.add("aaccc");
+//		arrayOfElements.add("cccbbb");
+//		arrayOfElements.add("ddccbbc");
+//		arrayOfElements.add("aa");
+//		arrayOfElements.add("sdfsdf");
+//		arrayOfElements.add("zzzzzz");
+//		arrayOfElements.add("aaa");
 	}
 	
 	/**
 	 * for inserting the Bpel-Variables into the List.
 	 */
-	public void loadBPELVariables() {
+	public void loadBPELVariables(java.util.List<String> listOfBPELVariablesAsStrings) {
 		/*
 		 * Hallo,
 		du kannst jetzt in den PropertySections mit 
@@ -312,14 +310,14 @@ public class TablsListPopUp{
 		Michael
 		 */
 		
-		arrayOfElements.add("BPEL_Variable1");
-		arrayOfElements.add("BPEL_Variable2");
-		arrayOfElements.add("BPEL_Variable3");
-		arrayOfElements.add("BPEL_Variable4");
-		arrayOfElements.add("BPEL_Variable5");
-		arrayOfElements.add("BPEL_Variable6");
-		arrayOfElements.add("BPEL_Variable7");
-		arrayOfElements.add("BPEL_Variable8");
+//		arrayOfElements.add("BPEL_Variable1");
+//		arrayOfElements.add("BPEL_Variable2");
+//		arrayOfElements.add("BPEL_Variable3");
+//		arrayOfElements.add("BPEL_Variable4");
+//		arrayOfElements.add("BPEL_Variable5");
+//		arrayOfElements.add("BPEL_Variable6");
+//		arrayOfElements.add("BPEL_Variable7");
+//		arrayOfElements.add("BPEL_Variable8");
 		
 	}
 	
