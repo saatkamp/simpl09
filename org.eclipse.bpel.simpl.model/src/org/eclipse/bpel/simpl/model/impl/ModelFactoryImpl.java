@@ -250,10 +250,14 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @customized
 	 */
 	public TransferActivity createTransferActivity() {
 		TransferActivityImpl transferActivity = new TransferActivityImpl();
+		DataManagementActivity fromSource = new DataManagementActivityImpl();
+		DataManagementActivity toSource = new DataManagementActivityImpl();
+		transferActivity.setFromSource(fromSource);
+		transferActivity.setToSource(toSource);
 		return transferActivity;
 	}
 

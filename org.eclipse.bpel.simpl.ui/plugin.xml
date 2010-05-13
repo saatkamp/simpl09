@@ -34,9 +34,8 @@
             </input>
          </propertySection>
          <propertySection
-               afterSection="org.eclipse.bpel.simpl.ui.properties.TransferActivityPropertySection"
                class="org.eclipse.bpel.simpl.ui.properties.DataManagementActivitySection"
-               id="org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.InsertActivity">
@@ -69,6 +68,7 @@
             </input>
          </propertySection>
          <propertySection
+               afterSection="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
                class="org.eclipse.bpel.simpl.ui.properties.TransferActivityToPropertySection"
                id="org.eclipse.bpel.simpl.ui.properties.TransferActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">

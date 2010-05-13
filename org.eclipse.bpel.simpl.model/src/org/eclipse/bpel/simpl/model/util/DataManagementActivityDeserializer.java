@@ -385,6 +385,7 @@ public class DataManagementActivityDeserializer implements
 				.getLocalPart())) {
 
 			Element transferActivityElement = (Element) node;
+			
 			// create a TransferActivity model object
 			TransferActivity activity = ModelFactory.eINSTANCE
 					.createTransferActivity();
@@ -392,25 +393,25 @@ public class DataManagementActivityDeserializer implements
 			activity.setElement(transferActivityElement);
 
 			// handle the TransferActivity elements
-			Element fromSourceElement = getChildElementByLocalName(
-					transferActivityElement, "fromSource");
+			Element fromSourceElement = getChildElementByPosition(
+					transferActivityElement, DataManagementConstants.ND_DATA_MANAGEMENT_ACTIVITY, 1);
 			if (fromSourceElement != null) {
 				DataManagementActivity fromSource = ModelFactory.eINSTANCE
 						.createDataManagementActivity();
 				fromSource.setElement(fromSourceElement);
 
-				xml2DMActivity(fromSource, fromSourceElement);
+				fromSource = xml2DMActivity(fromSource, fromSourceElement);
 				activity.setFromSource(fromSource);
 			}
 
-			Element toSourceElement = getChildElementByLocalName(
-					transferActivityElement, "toSource");
+			Element toSourceElement = getChildElementByPosition(
+					transferActivityElement, DataManagementConstants.ND_DATA_MANAGEMENT_ACTIVITY, 2);
 			if (toSourceElement != null) {
 				DataManagementActivity toSource = ModelFactory.eINSTANCE
 						.createDataManagementActivity();
 				toSource.setElement(toSourceElement);
 
-				xml2DMActivity(toSource, toSourceElement);
+				toSource = xml2DMActivity(toSource, toSourceElement);
 				activity.setToSource(toSource);
 			}
 
@@ -421,7 +422,7 @@ public class DataManagementActivityDeserializer implements
 				activity.setTarget(transferActivityElement
 						.getAttribute(attTarget));
 			}
-
+		
 			return activity;
 		}
 
@@ -429,10 +430,6 @@ public class DataManagementActivityDeserializer implements
 		return null;
 	}
 
-	/**
-	 * @param toSource
-	 * @param toSourceElement
-	 */
 	private DataManagementActivity xml2DMActivity(
 			DataManagementActivity activity, Element activityElement) {
 
@@ -466,12 +463,22 @@ public class DataManagementActivityDeserializer implements
 		return activity;
 	}
 
-	public Element getChildElementByLocalName(Element parentElement,
-			String localName) {
+	/**
+	 * @param parentElement of the return element
+	 * @param localName of the searched element
+	 * @param position of the element with the local name
+	 * @return The #position element with the given local name of the parent element
+	 */
+	public Element getChildElementByPosition(Element parentElement,
+			String localName, int position) {
 		NodeList children = parentElement.getChildNodes();
+		int count = 0; 
 		for (int i = 0; i < children.getLength(); i++) {
 			Node node = children.item(i);
-			if (localName.equals(node.getLocalName())) {
+			if (localName.equals(node.getLocalName())){
+				count++;
+			}
+			if (count == position) {
 				return (Element) node;
 			}
 		}

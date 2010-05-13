@@ -38,7 +38,7 @@ public class SetTargetCommand extends SetCommand {
 			return ((TransferActivity) fTarget).getTarget();
 		}
 		
-		throw new IllegalArgumentException("This model object has no variable to get");
+		throw new IllegalArgumentException("This model object has no target to get");
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +50,7 @@ public class SetTargetCommand extends SetCommand {
 			((TransferActivity) fTarget).setTarget((String) o);
 		} else {
 			throw new IllegalArgumentException(
-					"This model object has no target to get");
+					"This model object has no target to set");
 		}
 	}
 	
