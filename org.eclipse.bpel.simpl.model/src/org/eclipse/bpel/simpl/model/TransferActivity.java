@@ -43,7 +43,7 @@ public interface TransferActivity extends ExtensionActivity {
 	 * @return the value of the '<em>From Source</em>' containment reference.
 	 * @see #setFromSource(DataManagementActivity)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_FromSource()
-	 * @model containment="true" required="true"
+	 * @model containment="true" keys="name" required="true"
 	 * @generated
 	 */
 	DataManagementActivity getFromSource();
@@ -69,7 +69,7 @@ public interface TransferActivity extends ExtensionActivity {
 	 * @return the value of the '<em>To Source</em>' containment reference.
 	 * @see #setToSource(DataManagementActivity)
 	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_ToSource()
-	 * @model containment="true" required="true"
+	 * @model containment="true" keys="name" required="true"
 	 * @generated
 	 */
 	DataManagementActivity getToSource();

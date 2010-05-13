@@ -26,8 +26,6 @@ import org.eclipse.bpel.simpl.model.InsertActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
-import org.eclipse.bpel.simpl.model.ReferenceType;
-import org.eclipse.bpel.simpl.model.ReferenceVariable;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.model.UpdateActivity;
@@ -36,11 +34,9 @@ import org.eclipse.bpel.simpl.model.util.DataManagementActivitySerializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementConstants;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.xsd.XSDPackage;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -118,21 +114,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass referenceVariableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass transferActivityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum referenceTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -277,13 +259,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		name = TransferActivity.class.getSimpleName();
 		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
 				DataManagementConstants.ND_TRANSFER_ACTIVITY), deserializer);
-		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
-				serializer);
-		
-		// DataManagementActivity
-		name = DataManagementActivity.class.getSimpleName();
-		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_DATA_MANAGEMENT_ACTIVITY), deserializer);
 		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
 				serializer);
 	}
@@ -452,61 +427,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the reference variable
-	 * @generated
-	 */
-	public EClass getReferenceVariable() {
-		return referenceVariableEClass;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the reference variable_ value type
-	 * @generated
-	 */
-	public EReference getReferenceVariable_ValueType() {
-		return (EReference)referenceVariableEClass.getEStructuralFeatures().get(0);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the reference variable_ reference type
-	 * @generated
-	 */
-	public EAttribute getReferenceVariable_ReferenceType() {
-		return (EAttribute)referenceVariableEClass.getEStructuralFeatures().get(1);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the reference variable_ period
-	 * @generated
-	 */
-	public EAttribute getReferenceVariable_Period() {
-		return (EAttribute)referenceVariableEClass.getEStructuralFeatures().get(2);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the reference variable_ external
-	 * @generated
-	 */
-	public EReference getReferenceVariable_External() {
-		return (EReference)referenceVariableEClass.getEStructuralFeatures().get(3);
-	}
-
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -543,17 +463,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EAttribute getTransferActivity_Target() {
 		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(2);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the reference type
-	 * @generated
-	 */
-	public EEnum getReferenceType() {
-		return referenceTypeEEnum;
 	}
 
 
@@ -611,19 +520,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		retrieveDataActivityEClass = createEClass(RETRIEVE_DATA_ACTIVITY);
 		createEReference(retrieveDataActivityEClass, RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE);
 
-		referenceVariableEClass = createEClass(REFERENCE_VARIABLE);
-		createEReference(referenceVariableEClass, REFERENCE_VARIABLE__VALUE_TYPE);
-		createEAttribute(referenceVariableEClass, REFERENCE_VARIABLE__REFERENCE_TYPE);
-		createEAttribute(referenceVariableEClass, REFERENCE_VARIABLE__PERIOD);
-		createEReference(referenceVariableEClass, REFERENCE_VARIABLE__EXTERNAL);
-
 		transferActivityEClass = createEClass(TRANSFER_ACTIVITY);
 		createEReference(transferActivityEClass, TRANSFER_ACTIVITY__FROM_SOURCE);
 		createEReference(transferActivityEClass, TRANSFER_ACTIVITY__TO_SOURCE);
 		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET);
-
-		// Create enums
-		referenceTypeEEnum = createEEnum(REFERENCE_TYPE);
 	}
 
 	/**
@@ -651,7 +551,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		// Obtain other dependent packages
 		BPELPackage theBPELPackage = (BPELPackage)EPackage.Registry.INSTANCE.getEPackage(BPELPackage.eNS_URI);
-		XSDPackage theXSDPackage = (XSDPackage)EPackage.Registry.INSTANCE.getEPackage(XSDPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -667,7 +566,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		dropActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		callActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		retrieveDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		referenceVariableEClass.getESuperTypes().add(theBPELPackage.getVariable());
 		transferActivityEClass.getESuperTypes().add(theBPELPackage.getExtensionActivity());
 
 		// Initialize classes and features; add operations and parameters
@@ -696,21 +594,12 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(retrieveDataActivityEClass, RetrieveDataActivity.class, "RetrieveDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRetrieveDataActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, RetrieveDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(referenceVariableEClass, ReferenceVariable.class, "ReferenceVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReferenceVariable_ValueType(), theXSDPackage.getXSDTypeDefinition(), null, "valueType", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReferenceVariable_ReferenceType(), this.getReferenceType(), "referenceType", "", 1, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReferenceVariable_Period(), ecorePackage.getEInt(), "period", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReferenceVariable_External(), theBPELPackage.getPartnerLink(), null, "external", null, 0, 1, ReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(transferActivityEClass, TransferActivity.class, "TransferActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransferActivity_FromSource(), this.getDataManagementActivity(), null, "fromSource", null, 1, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getTransferActivity_FromSource().getEKeys().add(theBPELPackage.getActivity_Name());
 		initEReference(getTransferActivity_ToSource(), this.getDataManagementActivity(), null, "toSource", null, 1, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getTransferActivity_ToSource().getEKeys().add(theBPELPackage.getActivity_Name());
 		initEAttribute(getTransferActivity_Target(), ecorePackage.getEString(), "target", "target", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize enums and add enum literals
-		initEEnum(referenceTypeEEnum, ReferenceType.class, "ReferenceType");
-		addEEnumLiteral(referenceTypeEEnum, ReferenceType.ON_INSTANTIATION);
-		addEEnumLiteral(referenceTypeEEnum, ReferenceType.FRESH);
 
 		// Create resource
 		createResource(eNS_URI);

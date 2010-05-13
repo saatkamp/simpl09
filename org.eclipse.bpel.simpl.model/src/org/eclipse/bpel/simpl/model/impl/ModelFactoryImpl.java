@@ -21,12 +21,10 @@ import org.eclipse.bpel.simpl.model.InsertActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
-import org.eclipse.bpel.simpl.model.ReferenceType;
-import org.eclipse.bpel.simpl.model.ReferenceVariable;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -90,50 +88,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.DROP_ACTIVITY: return createDropActivity();
 			case ModelPackage.CALL_ACTIVITY: return createCallActivity();
 			case ModelPackage.RETRIEVE_DATA_ACTIVITY: return createRetrieveDataActivity();
-			case ModelPackage.REFERENCE_VARIABLE: return createReferenceVariable();
 			case ModelPackage.TRANSFER_ACTIVITY: return createTransferActivity();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param eDataType
-	 *            the e data type
-	 * @param initialValue
-	 *            the initial value
-	 * @return the object
-	 * @generated
-	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case ModelPackage.REFERENCE_TYPE:
-				return createReferenceTypeFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param eDataType
-	 *            the e data type
-	 * @param instanceValue
-	 *            the instance value
-	 * @return the string
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case ModelPackage.REFERENCE_TYPE:
-				return convertReferenceTypeToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -237,58 +194,13 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the reference variable
-	 * @generated
-	 */
-	public ReferenceVariable createReferenceVariable() {
-		ReferenceVariableImpl referenceVariable = new ReferenceVariableImpl();
-		return referenceVariable;
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @customized
+	 * @generated
 	 */
 	public TransferActivity createTransferActivity() {
 		TransferActivityImpl transferActivity = new TransferActivityImpl();
-		DataManagementActivity fromSource = new DataManagementActivityImpl();
-		DataManagementActivity toSource = new DataManagementActivityImpl();
-		transferActivity.setFromSource(fromSource);
-		transferActivity.setToSource(toSource);
 		return transferActivity;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param eDataType
-	 *            the e data type
-	 * @param initialValue
-	 *            the initial value
-	 * @return the reference type
-	 * @generated
-	 */
-	public ReferenceType createReferenceTypeFromString(EDataType eDataType, String initialValue) {
-		ReferenceType result = ReferenceType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param eDataType
-	 *            the e data type
-	 * @param instanceValue
-	 *            the instance value
-	 * @return the string
-	 * @generated
-	 */
-	public String convertReferenceTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

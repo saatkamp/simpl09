@@ -16,7 +16,6 @@ import javax.wsdl.extensions.ElementExtensible;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
-import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
@@ -26,8 +25,8 @@ import org.eclipse.bpel.simpl.model.DropActivity;
 import org.eclipse.bpel.simpl.model.InsertActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
-import org.eclipse.bpel.simpl.model.ReferenceVariable;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -130,10 +129,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 				return createRetrieveDataActivityAdapter();
 			}
 			@Override
-			public Adapter caseReferenceVariable(ReferenceVariable object) {
-				return createReferenceVariableAdapter();
-			}
-			@Override
 			public Adapter caseTransferActivity(TransferActivity object) {
 				return createTransferActivityAdapter();
 			}
@@ -164,10 +159,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseExtensionActivity(ExtensionActivity object) {
 				return createExtensionActivityAdapter();
-			}
-			@Override
-			public Adapter caseVariable(Variable object) {
-				return createVariableAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -316,20 +307,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.ReferenceVariable <em>Reference Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.bpel.simpl.model.ReferenceVariable
-	 * @generated
-	 */
-	public Adapter createReferenceVariableAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.TransferActivity <em>Transfer Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -438,20 +415,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExtensionActivityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.Variable <em>Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.bpel.model.Variable
-	 * @generated
-	 */
-	public Adapter createVariableAdapter() {
 		return null;
 	}
 

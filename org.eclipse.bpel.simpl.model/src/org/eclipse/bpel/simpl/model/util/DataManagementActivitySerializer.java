@@ -35,6 +35,7 @@ import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.DeleteActivity;
 import org.eclipse.bpel.simpl.model.DropActivity;
 import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
@@ -530,15 +531,25 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			DataManagementActivity fromChildActivity = ((TransferActivity) activity)
 					.getFromSource();
 			if (fromChildActivity != null) {
-				activityElement.appendChild(dmActivity2XML(elementType,
+				activityElement.appendChild(dmActivity2XML(
 						document, process, fromChildActivity, "fromSource"));
+			}else {
+				//create a stub and serialize it
+				DataManagementActivity fromSource = ModelFactory.eINSTANCE.createDataManagementActivity();
+				activityElement.appendChild(dmActivity2XML(
+						document, process, fromSource, "fromSource"));
 			}
 
 			DataManagementActivity toChildActivity = ((TransferActivity) activity)
 					.getToSource();
 			if (toChildActivity != null) {
-				activityElement.appendChild(dmActivity2XML(elementType,
+				activityElement.appendChild(dmActivity2XML(
 						document, process, toChildActivity, "toSource"));
+			}else {
+				//create a stub and serialize it
+				DataManagementActivity toSource = ModelFactory.eINSTANCE.createDataManagementActivity();
+				activityElement.appendChild(dmActivity2XML(
+						document, process, toSource, "toSource"));
 			}
 
 			// handle the TransferActivity attributes
@@ -726,7 +737,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 		}
 	}
 
-	protected Element dmActivity2XML(QName elementType, Document document,
+	protected Element dmActivity2XML(Document document,
 			Process process, DataManagementActivity activity, String name) {
 		// create a new DOM element for our Activity
 		Element activityElement = document.createElementNS(

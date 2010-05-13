@@ -19,6 +19,7 @@ import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -42,19 +43,19 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 	 * The cached value of the '{@link #getFromSource() <em>From Source</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFromSource()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected DataManagementActivity fromSource;
+	protected DataManagementActivity fromSource = new DataManagementActivityImpl();
 
 	/**
 	 * The cached value of the '{@link #getToSource() <em>To Source</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getToSource()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected DataManagementActivity toSource;
+	protected DataManagementActivity toSource = new DataManagementActivityImpl();
 
 	/**
 	 * The default value of the '{@link #getTarget() <em>Target</em>}' attribute.
@@ -101,6 +102,7 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @customized
 	 */
 	public NotificationChain basicSetFromSource(
@@ -112,7 +114,9 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 		fromSource = newFromSource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, oldFrom, newFromSource);
+					Notification.SET,
+					ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, oldFrom,
+					newFromSource);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -131,18 +135,21 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 			NotificationChain msgs = null;
 			if (fromSource != null)
 				msgs = ((InternalEObject) fromSource).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE
+								- ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE,
+						null, msgs);
 			if (newFromSource != null)
 				msgs = ((InternalEObject) newFromSource).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE
+								- ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE,
+						null, msgs);
 			msgs = basicSetFromSource(newFromSource, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, newFromSource, newFromSource));
+					ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, newFromSource,
+					newFromSource));
 	}
 
 	/**
@@ -155,6 +162,7 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @customized
 	 */
 	public NotificationChain basicSetToSource(
@@ -166,7 +174,9 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 		toSource = newToSource;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, oldToSource, newToSource);
+					Notification.SET,
+					ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE, oldToSource,
+					newToSource);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -185,18 +195,21 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 			NotificationChain msgs = null;
 			if (toSource != null)
 				msgs = ((InternalEObject) toSource).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE
+								- ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE,
+						null, msgs);
 			if (newToSource != null)
 				msgs = ((InternalEObject) newToSource).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE
+								- ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE,
+						null, msgs);
 			msgs = basicSetToSource(newToSource, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE, newToSource, newToSource));
+					ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE, newToSource,
+					newToSource));
 	}
 
 	/**
