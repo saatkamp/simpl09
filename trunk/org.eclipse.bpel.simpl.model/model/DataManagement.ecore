@@ -61,25 +61,14 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataVariable" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReferenceVariable" eSuperTypes="../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceType" lowerBound="1"
-        eType="#//ReferenceType" defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="external" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//PartnerLink"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ReferenceType">
-    <eLiterals name="onInstantiation"/>
-    <eLiterals name="fresh" value="1"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TransferActivity" eSuperTypes="../../org.eclipse.bpel.model/src/model/bpel.ecore#//ExtensionActivity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Allows to transfer data between two datasources."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fromSource" lowerBound="1"
-        eType="#//DataManagementActivity" containment="true"/>
+        eType="#//DataManagementActivity" containment="true" eKeys="../../org.eclipse.bpel.model/src/model/bpel.ecore#//Activity/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toSource" lowerBound="1"
-        eType="#//DataManagementActivity" containment="true"/>
+        eType="#//DataManagementActivity" containment="true" eKeys="../../org.eclipse.bpel.model/src/model/bpel.ecore#//Activity/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="target"/>
   </eClassifiers>

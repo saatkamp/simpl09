@@ -499,7 +499,9 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	public void setStatement(String statement) {
 		// TODO Auto-generated method stub
 		this.statement = statement;
-		statementText.setText(statement);
+		if (statementText != null){
+			statementText.setText(statement);
+		}
 	}
 
 	/*

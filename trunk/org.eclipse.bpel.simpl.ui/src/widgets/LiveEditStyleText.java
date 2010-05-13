@@ -158,7 +158,7 @@ public class LiveEditStyleText extends StyledText{
 			        event.styles = list.toArray(new StyleRange[list.size()]);
 	        	}
 	        	
-	        	objectDMPropertySection.setStatement(getText());
+//	        	objectDMPropertySection.setStatement(getText());
 	        	objectDMPropertySection.saveStatementToModel();
 	        	
 	        	

@@ -1,6 +1,7 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
+import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
@@ -10,7 +11,6 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
@@ -29,8 +29,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import widgets.LiveEditStyleText;
-import widgets.TablsListPopUp;
 import widgets.ParametersListPopUp;
+import widgets.TablsListPopUp;
 /**
  * <b>Purpose:</b> <br>
  * <b>Description:</b> <br>
@@ -89,8 +89,8 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
 		// Laden der Transfer-Aktivität und der enthaltenen toSource (DM)-Aktivität
-		this.transferActivity = (TransferActivity)getModel().eContainer();
-		this.toActivity = getModel();
+		this.transferActivity = (TransferActivity)getModel();
+		this.toActivity = transferActivity.getToSource();
 		
 		createWidgets(parent);
 
@@ -181,11 +181,9 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				getCommandFramework().execute(new SetDsAddressCommand(toActivity, dataSourceAddressCombo.getText()));
-//				getCommandFramework().execute(
-//						new SetCommand(transferActivity, toActivity, ModelPackage.eINSTANCE.getTransferActivity_ToSource()));
-				
-				
+				getCommandFramework().execute(new SetDsAddressCommand(transferActivity.getToSource(), dataSourceAddressCombo.getText()));
+				System.out.println("TOACTIVITY: " + transferActivity.getToSource());
+				System.out.println("TRANSFERactivity: " + transferActivity);
 				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
 				typeText.setText(dataSource.getType());
 				kindText.setText(dataSource.getSubType());
@@ -467,7 +465,9 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 	public void setStatement(String statement) {
 		// TODO Auto-generated method stub
 		this.statement = statement;
-		statementText.setText(statement);
+		if (statementText != null){
+			statementText.setText(statement);
+		}
 	}
 
 	/* (non-Javadoc)
@@ -477,12 +477,5 @@ public class TransferActivityToPropertySection extends DMActivityPropertySection
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
 				new SetDsStatementCommand(toActivity, this.statement));
-	}
-	
-	@SuppressWarnings("nls")
-	@Override
-	protected void basicSetInput (EObject newInput) {		
-		TransferActivity transfer = (TransferActivity)newInput;
-		super.basicSetInput(transfer.getFromSource());			
 	}
 }

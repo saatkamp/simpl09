@@ -18,14 +18,9 @@ import javax.wsdl.extensions.ExtensionRegistry;
 import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.model.Activity;
-import org.eclipse.bpel.model.BPELFactory;
-import org.eclipse.bpel.model.Copy;
-import org.eclipse.bpel.model.From;
 import org.eclipse.bpel.model.Process;
-import org.eclipse.bpel.model.To;
 import org.eclipse.bpel.model.extensions.BPELActivityDeserializer;
 import org.eclipse.bpel.model.resource.BPELReader;
-import org.eclipse.bpel.model.util.BPELUtils;
 import org.eclipse.bpel.simpl.model.CallActivity;
 import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
@@ -398,9 +393,8 @@ public class DataManagementActivityDeserializer implements
 			if (fromSourceElement != null) {
 				DataManagementActivity fromSource = ModelFactory.eINSTANCE
 						.createDataManagementActivity();
-				fromSource.setElement(fromSourceElement);
-
 				fromSource = xml2DMActivity(fromSource, fromSourceElement);
+				fromSource.setElement(fromSourceElement);
 				activity.setFromSource(fromSource);
 			}
 
@@ -409,9 +403,8 @@ public class DataManagementActivityDeserializer implements
 			if (toSourceElement != null) {
 				DataManagementActivity toSource = ModelFactory.eINSTANCE
 						.createDataManagementActivity();
-				toSource.setElement(toSourceElement);
-
 				toSource = xml2DMActivity(toSource, toSourceElement);
+				toSource.setElement(toSourceElement);
 				activity.setToSource(toSource);
 			}
 

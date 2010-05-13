@@ -32,7 +32,6 @@ Export-Package: org.eclipse.bpel.simpl.ui;
    org.eclipse.bpel.ui.adapters,
    org.eclipse.gef",
  org.eclipse.bpel.simpl.ui.command;uses:="org.eclipse.bpel.ui.commands,org.eclipse.emf.ecore",
- org.eclipse.bpel.simpl.ui.editparts;uses:="org.eclipse.bpel.ui.editparts",
  org.eclipse.bpel.simpl.ui.extensions;uses:="org.eclipse.swt.widgets",
  org.eclipse.bpel.simpl.ui.factories;
   uses:="org.eclipse.emf.ecore,
