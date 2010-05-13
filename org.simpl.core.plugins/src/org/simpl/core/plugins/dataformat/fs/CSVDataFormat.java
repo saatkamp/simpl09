@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
+import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -30,6 +33,8 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class CSVDataFormat extends DataFormatPlugin<File, File> {
+  static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
+  
   /**
    * Initialize the plug-in.
    */
@@ -37,6 +42,9 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     this.setType("CSV");
     this.setSchemaFile("CSVDataFormat.xsd");
     this.setSchemaType("tCSVDataFormat");
+    
+    // Set up a simple configuration that logs on the console.
+    PropertyConfigurator.configure("log4j.properties");
   }
 
   /*
@@ -52,6 +60,10 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     DataObject rowObject;
     DataObject columnObject;
 
+    if (logger.isDebugEnabled()) {
+      logger.debug("Convert data from 'File' to 'DataObject'.");
+    }
+    
     try {
       csvReader = new CSVReader(new FileReader(file));
       headLine = csvReader.readNext();
@@ -105,6 +117,10 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     // char escapeChar = data.getChar("escapeChar");
     // boolean strictQuotes = data.getBoolean("strictQuotes");
 
+    if (logger.isDebugEnabled()) {
+      logger.debug("Convert data from 'DataObject' to 'File'.");
+    }
+    
     try {
       file = File.createTempFile("CSVDataFormatFile", ".tmp");
       file.deleteOnExit();

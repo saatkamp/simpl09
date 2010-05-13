@@ -3,11 +3,17 @@ package org.simpl.core.plugins.dataformat.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
+
 import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose: Converts the CSV data format to the RDB data format and vice versa.</b> <br>
- * <b>Description:</b><br>
+ * <b>Description:</b>The CSV data format does not contain information about primary keys
+ * and column types that is required by the RDB data format. The column types are
+ * specified by analyzing the string values, a new primary key is set as default.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b> SIMPL<br>
  * 
@@ -16,13 +22,18 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
+public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
+  static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
+
   /**
    * Initialize the plug-in.
    */
-  public CSVtoRDBDataFormatConverter() {
+  public DerbyCSVtoRDBDataFormatConverter() {
     this.setFromDataFormat("CSV");
     this.setToDataFormat("RDB");
+
+    // Set up a simple configuration that logs on the console.
+    PropertyConfigurator.configure("log4j.properties");
   }
 
   /*
@@ -34,6 +45,11 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
   @SuppressWarnings("unchecked")
   @Override
   public DataObject convertTo(DataObject csvSDO) {
+    if (logger.isDebugEnabled()) {
+      logger.debug("Convert 'DataObject' data format from " + this.getFromDataFormat().getType()
+          + " to " + this.getToDataFormat().getType());
+    }
+
     // RDB SDO data holder
     DataObject rdbSDO = this.getToDataFormat().getSDO();
     DataObject rdbTableObject = null;
@@ -54,10 +70,10 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
 
       // add primary key
       rdbColumnObject = rdbTableObject.createDataObject("column");
-      rdbColumnObject.set("name", "ID");
+      rdbColumnObject.set("name", "PK_ID");
       rdbColumnObject.set("type", this.getColumnType("123"));
       rdbColumnObject.set("value", String.valueOf(i));
-      rdbPrimaryKeys.add("ID");
+      rdbPrimaryKeys.add("PK_ID");
       rdbTableObject.set("primaryKey", rdbPrimaryKeys);
       rdbPrimaryKeys.clear();
 
@@ -84,6 +100,11 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
   @SuppressWarnings("unchecked")
   @Override
   public DataObject convertFrom(DataObject rdbSDO) {
+    if (logger.isDebugEnabled()) {
+      logger.debug("Convert 'DataObject' data format from " + this.getToDataFormat().getType()
+          + " to " + this.getFromDataFormat().getType());
+    }
+
     // CSV SDO data holder
     DataObject csvSDO = this.getFromDataFormat().getSDO();
     DataObject csvHeaderObject = null;
@@ -130,7 +151,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
 
     try {
       if (Integer.valueOf(type) != null) {
-        sqlType = "INT";
+        return sqlType = "INT";
       }
     } catch (NumberFormatException e) {
       // no integer
@@ -138,7 +159,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
 
     try {
       if (Boolean.valueOf(type)) {
-        sqlType = "SMALLINT";
+        return sqlType = "SMALLINT";
       }
     } catch (NumberFormatException e) {
       // no boolean
@@ -146,7 +167,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
 
     try {
       if (Float.valueOf(type) != null) {
-        sqlType = "FLOAT";
+        return sqlType = "FLOAT";
       }
     } catch (NumberFormatException e) {
       // no float
@@ -154,7 +175,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
 
     try {
       if (Double.valueOf(type) != null) {
-        sqlType = "DOUBLE";
+        return sqlType = "DOUBLE";
       }
     } catch (NumberFormatException e) {
       // no double

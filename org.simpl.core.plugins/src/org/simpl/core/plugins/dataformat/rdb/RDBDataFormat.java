@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
+import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
 
 import commonj.sdo.DataObject;
 
@@ -30,10 +33,15 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
+  static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
+  
   public RDBDataFormat() {
     this.setType("RDB");
     this.setSchemaFile("RDBDataFormat.xsd");
     this.setSchemaType("tRDBDataFormat");
+    
+    // Set up a simple configuration that logs on the console.
+    PropertyConfigurator.configure("log4j.properties");
   }
 
   /*
@@ -51,6 +59,10 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
     List<String> primaryKeyList = new ArrayList<String>();
 
+    if (logger.isDebugEnabled()) {
+      logger.debug("Convert data from 'RDBResult' to 'DataObject'.");
+    }
+    
     try {
       while (resultSet.next()) {
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
@@ -124,6 +136,10 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     String statement = "";
     String tableSchema = "";
 
+    if (logger.isDebugEnabled()) {
+      logger.debug("Convert data from 'DataObject' to 'List<String>'.");
+    }
+    
     for (DataObject table : tables) {
       columns = table.getList("column");
       primaryKeys = table.getList("primaryKey");
@@ -231,7 +247,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   }
 
   /**
-   * Retrieves the size of a table's column.
+   * Retrieves the size of a table's column from the database meta data.
    * 
    * @param dbMetaData
    * @param tableName

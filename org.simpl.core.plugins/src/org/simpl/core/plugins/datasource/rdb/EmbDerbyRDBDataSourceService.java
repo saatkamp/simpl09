@@ -110,9 +110,10 @@ public class EmbDerbyRDBDataSourceService extends
   @Override
   public boolean writeBack(DataSource dataSource, List<String> statements)
       throws ConnectionException {
-    boolean success = true;
+    boolean success = false;
+
     Connection connection = openConnection(dataSource.getAddress());
-    Statement connStatement;
+    Statement connStatement = null;
 
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
@@ -124,22 +125,24 @@ public class EmbDerbyRDBDataSourceService extends
 
       for (String statement : statements) {
         if (statement.startsWith("UPDATE")) {
-          if (connStatement.executeUpdate(statement) != 1) {
-            success = success && false;
-          }
+          connStatement.executeUpdate(statement);
 
           logger.info("Statement \"" + statement + "\" " + "executed on "
               + dataSource.getAddress() + (success ? " was successful" : " failed"));
         }
       }
 
+      // all statements executed without SQLException
+      success = true;
+
       connStatement.close();
       connection.commit();
-      closeConnection(connection);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+
+    closeConnection(connection);
 
     return success;
   }
@@ -153,7 +156,7 @@ public class EmbDerbyRDBDataSourceService extends
   @Override
   public boolean writeData(DataSource dataSource, List<String> statements, String target)
       throws ConnectionException {
-    boolean success = true;
+    boolean success = false;
     Connection connection = openConnection(dataSource.getAddress());
     Statement connStatement = null;
 
@@ -174,14 +177,15 @@ public class EmbDerbyRDBDataSourceService extends
                   + target + " (");
             }
 
-            if (connStatement.executeUpdate(statement) != 1) {
-              success = success && false;
-            }
+            connStatement.executeUpdate(statement);
 
             logger.info("Statement \"" + statement + "\" " + "executed on "
                 + dataSource.getAddress() + (success ? " was successful" : " failed"));
           }
         }
+
+        // all statements executed without SQLException
+        success = true;
 
         connStatement.close();
         connection.commit();
