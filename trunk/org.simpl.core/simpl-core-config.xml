@@ -19,10 +19,12 @@
 		className="org.simpl.core.plugins.dataformat.rdb.RDBDataFormat" />
 
 	<!--data format converter plug-ins-->
-	<DataFormatConverterPlugin id="CSVtoRDBDataFormatConverter"
-		className="org.simpl.core.plugins.dataformat.converter.CSVtoRDBDataFormatConverter" />
+	<DataFormatConverterPlugin id="DerbyCSVtoRDBDataFormatConverter"
+		className="org.simpl.core.plugins.dataformat.converter.DerbyCSVtoRDBDataFormatConverter" />
+	<DataFormatConverterPlugin id="MySQLCSVtoRDBDataFormatConverter"
+		className="org.simpl.core.plugins.dataformat.converter.MySQLCSVtoRDBDataFormatConverter" />
 
-	<!--data format mapping-->
+	<!--data format to data source service mapping-->
 	<DataFormat ref="CSVDataFormat">
 		<DataSourceService>WindowsLocalFSDataSourceService</DataSourceService>
 	</DataFormat>
@@ -34,10 +36,15 @@
 		<DataSourceService>DerbyRDBDataSourceService</DataSourceService>
 	</DataFormat>
 
-	<!--data format converter mapping-->
-	<DataFormatConverter ref="CSVtoRDBDataFormatConverter">
+	<!--data format converter to data source service mapping-->
+	<DataFormatConverter ref="DerbyCSVtoRDBDataFormatConverter">
 		<DataSourceService>EmbDerbyRDBDataSourceService</DataSourceService>
 		<DataSourceService>DerbyRDBDataSourceService</DataSourceService>
 		<DataSourceService>WindowsLocalFSDataSourceService</DataSourceService>
+	</DataFormatConverter>
+	
+	<DataFormatConverter ref="MySQLCSVtoRDBDataFormatConverter">
+		<DataSourceService>MySQLRDBDataSourceService</DataSourceService>
+		<DataSourceService>DB2RDBDataSourceService</DataSourceService>
 	</DataFormatConverter>
 </simpl:SIMPLConfig>

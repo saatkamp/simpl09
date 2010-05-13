@@ -237,7 +237,8 @@ public class SIMPLConfig {
     Element idElement = null;
 
     for (Element element : (List<Element>) root.getChildren()) {
-      if (element.getAttributeValue("id").equals(id)) {
+      if (element.getAttributeValue("id") != null
+          && element.getAttributeValue("id").equals(id)) {
         idElement = element;
         break;
       }

@@ -109,11 +109,11 @@ public class DB2RDBDataSourceService extends
   @Override
   public boolean writeBack(DataSource dataSource, List<String> statements)
       throws ConnectionException {
-    boolean success = true;
+    boolean success = false;
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
-    Statement connStatement;
+    Statement connStatement = null;
 
     if (logger.isDebugEnabled()) {
       logger.debug("boolean writeBack(" + dataSource.getAddress()
@@ -125,22 +125,24 @@ public class DB2RDBDataSourceService extends
 
       for (String statement : statements) {
         if (statement.startsWith("UPDATE")) {
-          if (connStatement.executeUpdate(statement) != 1) {
-            success = success && false;
-          }
+          connStatement.executeUpdate(statement);
 
           logger.info("Statement \"" + statement + "\" " + "executed on "
               + dataSource.getAddress() + (success ? " was successful" : " failed"));
         }
       }
 
+      // all statements executed without SQLException
+      success = true;
+
       connStatement.close();
       connection.commit();
-      closeConnection(connection);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+
+    closeConnection(connection);
 
     return success;
   }
@@ -154,7 +156,7 @@ public class DB2RDBDataSourceService extends
   @Override
   public boolean writeData(DataSource dataSource, List<String> statements, String target)
       throws ConnectionException {
-    boolean success = true;
+    boolean success = false;
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
@@ -171,14 +173,21 @@ public class DB2RDBDataSourceService extends
 
         for (String statement : statements) {
           if (statement.startsWith("INSERT")) {
-            if (connStatement.executeUpdate(statement) != 1) {
-              success = success && false;
+            // replace dataObject's implizit schema.table name with target
+            if (target != null) {
+              statement = statement.replaceAll("INSERT INTO .*?\\(", "INSERT INTO "
+                  + target + " (");
             }
+
+            connStatement.executeUpdate(statement);
 
             logger.info("Statement \"" + statement + "\" " + "executed on "
                 + dataSource.getAddress() + (success ? " was successful" : " failed"));
           }
         }
+
+        // all statements executed without SQLException
+        success = true;
 
         connStatement.close();
         connection.commit();
@@ -309,7 +318,7 @@ public class DB2RDBDataSourceService extends
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
       throws ConnectionException {
     boolean createdTarget = false;
-    
+
     List<DataObject> tables = dataObject.getList("table");
     List<DataObject> columns = null;
     List<String> primaryKeys = null;
