@@ -6,6 +6,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
+import org.simpl.core.plugins.datasource.rdb.DerbyRDBDataSourceService;
+import org.simpl.core.plugins.datasource.rdb.EmbDerbyRDBDataSourceService;
+import org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSourceService;
+import org.simpl.core.services.datasource.DataSourceService;
 
 import commonj.sdo.DataObject;
 
@@ -22,13 +26,13 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
+public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
   static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
 
   /**
    * Initialize the plug-in.
    */
-  public DerbyCSVtoRDBDataFormatConverter() {
+  public CSVtoRDBDataFormatConverter() {
     this.setFromDataFormat("CSV");
     this.setToDataFormat("RDB");
 
@@ -44,7 +48,7 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
    */
   @SuppressWarnings("unchecked")
   @Override
-  public DataObject convertTo(DataObject csvSDO) {
+  public DataObject convertTo(DataObject csvSDO, DataSourceService dataSourceService) {
     if (logger.isDebugEnabled()) {
       logger.debug("Convert 'DataObject' data format from " + this.getFromDataFormat().getType()
           + " to " + this.getToDataFormat().getType());
@@ -71,7 +75,7 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
       // add primary key
       rdbColumnObject = rdbTableObject.createDataObject("column");
       rdbColumnObject.set("name", "PK_ID");
-      rdbColumnObject.set("type", this.getColumnType("123"));
+      rdbColumnObject.set("type", this.getColumnType("123", dataSourceService));
       rdbColumnObject.set("value", String.valueOf(i));
       rdbPrimaryKeys.add("PK_ID");
       rdbTableObject.set("primaryKey", rdbPrimaryKeys);
@@ -83,7 +87,7 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
       for (DataObject csvColumn : csvColumns) {
         rdbColumnObject = rdbTableObject.createDataObject("column");
         rdbColumnObject.set("name", csvColumn.getString("name"));
-        rdbColumnObject.set("type", this.getColumnType(csvColumn.getString("value")));
+        rdbColumnObject.set("type", this.getColumnType(csvColumn.getString("value"), dataSourceService));
         rdbColumnObject.set("value", csvColumn.getString("value"));
       }
     }
@@ -99,7 +103,7 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
    */
   @SuppressWarnings("unchecked")
   @Override
-  public DataObject convertFrom(DataObject rdbSDO) {
+  public DataObject convertFrom(DataObject rdbSDO, DataSourceService dataSourceService) {
     if (logger.isDebugEnabled()) {
       logger.debug("Convert 'DataObject' data format from " + this.getToDataFormat().getType()
           + " to " + this.getFromDataFormat().getType());
@@ -144,14 +148,26 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
    * TODO: support more sql types like date, decimal, ...
    * 
    * @param type
+   * @param dataSourceService
    * @return
    */
-  private String getColumnType(String type) {
+  @SuppressWarnings("unchecked")
+  private String getColumnType(String type, DataSourceService dataSourceService) {
     String sqlType = "VARCHAR(255)";
 
     try {
       if (Integer.valueOf(type) != null) {
-        return sqlType = "INT";
+        if (dataSourceService instanceof DB2RDBDataSourceService) {
+          return sqlType = "INTEGER";
+        } else if (dataSourceService instanceof EmbDerbyRDBDataSourceService) {
+          return sqlType = "INT";
+        } else if (dataSourceService instanceof DerbyRDBDataSourceService) {
+          return sqlType = "INT";
+        } else if (dataSourceService instanceof MySQLRDBDataSourceService) {
+          return sqlType = "INT(11)";
+        } else {
+          return sqlType = "INT";
+        }
       }
     } catch (NumberFormatException e) {
       // no integer
@@ -159,7 +175,17 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
 
     try {
       if (Boolean.valueOf(type)) {
-        return sqlType = "SMALLINT";
+        if (dataSourceService instanceof DB2RDBDataSourceService) {
+          return sqlType = "SMALLINT";
+        } else if (dataSourceService instanceof EmbDerbyRDBDataSourceService) {
+          return sqlType = "SMALLINT";
+        } else if (dataSourceService instanceof DerbyRDBDataSourceService) {
+          return sqlType = "SMALLINT";
+        } else if (dataSourceService instanceof MySQLRDBDataSourceService) {
+          return sqlType = "TINYINT(1)";
+        } else {
+          return sqlType = "SMALLINT";
+        }
       }
     } catch (NumberFormatException e) {
       // no boolean
@@ -167,7 +193,17 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
 
     try {
       if (Float.valueOf(type) != null) {
-        return sqlType = "FLOAT";
+        if (dataSourceService instanceof DB2RDBDataSourceService) {
+          return sqlType = "FLOAT(23)";
+        } else if (dataSourceService instanceof EmbDerbyRDBDataSourceService) {
+          return sqlType = "FLOAT";
+        } else if (dataSourceService instanceof DerbyRDBDataSourceService) {
+          return sqlType = "FLOAT";
+        } else if (dataSourceService instanceof MySQLRDBDataSourceService) {
+          return sqlType = "FLOAT";
+        } else {
+          return sqlType = "FLOAT";
+        }
       }
     } catch (NumberFormatException e) {
       // no float
@@ -175,7 +211,17 @@ public class DerbyCSVtoRDBDataFormatConverter extends DataFormatConverterPlugin 
 
     try {
       if (Double.valueOf(type) != null) {
-        return sqlType = "DOUBLE";
+        if (dataSourceService instanceof DB2RDBDataSourceService) {
+          return sqlType = "DOUBLE";
+        } else if (dataSourceService instanceof EmbDerbyRDBDataSourceService) {
+          return sqlType = "DOUBLE";
+        } else if (dataSourceService instanceof DerbyRDBDataSourceService) {
+          return sqlType = "DOUBLE";
+        } else if (dataSourceService instanceof MySQLRDBDataSourceService) {
+          return sqlType = "DOUBLE";
+        } else {
+          return sqlType = "DOUBLE";
+        }
       }
     } catch (NumberFormatException e) {
       // no double

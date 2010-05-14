@@ -40,7 +40,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
   /**
    * Name of the data format schema file.
    */
-  private String schemaFile = "TuscanyDataFormat.xsd";
+  private String schemaFile = "";
 
   /**
    * The data format schema type defined in the data format schema file that is
