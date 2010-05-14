@@ -53,7 +53,7 @@ public abstract class DataSourceServicePlugin<S, T> implements DataSourceService
   /**
    * The data format of this data source.
    */
-  private String dataFormat = "Tuscany";
+  private String dataFormat = "";
 
   /**
    * Sets the name and location of the data format schema file.

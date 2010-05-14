@@ -3,6 +3,7 @@ package org.simpl.core.plugins.dataformat.converter;
 import org.simpl.core.services.dataformat.DataFormat;
 import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverter;
+import org.simpl.core.services.datasource.DataSourceService;
 
 import commonj.sdo.DataObject;
 
@@ -64,16 +65,18 @@ public abstract class DataFormatConverterPlugin implements DataFormatConverter {
    * (non-Javadoc)
    * @see
    * org.simpl.core.services.dataformat.converter.DataFormatConverter#convert(commonj.
-   * sdo.DataObject)
+   * sdo.DataObject, org.simpl.core.services.datasource.DataSourceService)
    */
   @Override
-  public DataObject convert(DataObject dataObject) {
+  public DataObject convert(DataObject dataObject,
+      DataSourceService<Object, Object> dataSourceService) {
     DataObject convertedSDO = null;
 
     if (dataObject.getString("dataFormatType").equals(this.getToDataFormat().getType())) {
-      convertedSDO = this.convertFrom(dataObject);
-    } else if (dataObject.getString("dataFormatType").equals(this.getFromDataFormat().getType())) {
-      convertedSDO = this.convertTo(dataObject);
+      convertedSDO = this.convertFrom(dataObject, dataSourceService);
+    } else if (dataObject.getString("dataFormatType").equals(
+        this.getFromDataFormat().getType())) {
+      convertedSDO = this.convertTo(dataObject, dataSourceService);
     }
 
     return convertedSDO;

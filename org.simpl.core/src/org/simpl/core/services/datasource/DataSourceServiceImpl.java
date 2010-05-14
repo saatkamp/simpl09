@@ -46,7 +46,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       dataSource = strategyService.findDataSource(dataSource);
     }
 
-    if (dataSource != null) {
+    if (this.isDataSourceComplete(dataSource)) {
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -353,7 +353,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
             supportedConvertDataFormatType)) {
           // convert from the given data format to supported data format
           convertedData = DataFormatConverterProvider.getInstance(dataFormatType,
-              supportedConvertDataFormatType).convert(data);
+              supportedConvertDataFormatType).convert(data, dataSourceService);
 
           // turn the converted SDO to the data type of the data source
           writeData = DataFormatProvider.getInstance(supportedConvertDataFormatType)
