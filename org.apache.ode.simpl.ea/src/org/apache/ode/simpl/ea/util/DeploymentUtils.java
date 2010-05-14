@@ -160,6 +160,9 @@ public class DeploymentUtils {
 							auth.setUser(username);
 							auth.setPassword(password);
 							dataSource.setAuthentication(auth);
+							
+							//FIXME: This is just for debugging and should be removed
+							dataSource.setDataFormat("RDB");
 
 							dataSourceElements.add(dataSource);
 						}
