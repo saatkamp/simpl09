@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -5471,54 +5471,42 @@ RRS Eclipse Plug-In
 \end_layout
 
 \begin_layout Standard
-Das RRS Eclipse Plug-In besteht zum Einen aus einem Modell der Endpunkt-Referenz
-en (EPR) und zum Anderen aus einem Eclipse View, in dem EPRs mehrerer RRS
- verwaltet werden können.
- In den folgenden zwei Abschnitten wird zuerst das den EPRs zugrundeliegende
- Modell bzw.
- dessen Implementierung näher erläutert und anschließend die Umsetzung deren
- Verwaltung über eine Eclipse View beschrieben.
+Das RRS Eclipse Plug-In besteht zum Einen aus einem Client der für die Kommunika
+tion mit einem RRS benötigt wird und zum Anderen aus einem Eclipse View,
+ in dem EPRs mehrerer RRS verwaltet werden können.
+ In den folgenden zwei Abschnitten wird zuerst der Client und das EPR-Modell
+ näher erläutert und anschließend die Umsetzung der Verwaltung der EPRs
+ über eine Eclipse View beschrieben.
 \end_layout
 
 \begin_layout Subsubsection
-RRS Eclipse Plug-In Modell
+RRS Client
 \end_layout
 
 \begin_layout Standard
-Um den Implementierungsaufwand gering und die Erweiterbarkeit bzw.
- Änderbarkeit des 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-EPR-""Datenmodells
-\end_layout
-
-\end_inset
-
- möglichst hoch und einfach zu halten, wurde auch für dieses Eclipse Plug-In
- ein EMF-Modell zur Modellierung der EPRs erstellt (vgl.
- Beschreibung des BPEL-DM Plug-Ins in Kapitel 
+Da das RRS nur über Web Services erreichbar ist, benötigt das RRS Eclipse
+ Plug-In einen entsprechenden Client, der die Kommunikation realisiert.
+ Der RRS Client besteht dabei aus den zur Kommunikation notwendigen Klassen
+ und aus den Klassen des EPR-Modells.
+ Diese Klassen werden analog der Beschreibung in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:BPEL-DM-Plug-In"
+reference "sub:SIMPL-Core-Client"
 
 \end_inset
 
-).
- Dadurch ist es möglich Änderungen im EMF-Modell durchzuführen und die Implement
-ierung des Modells automatisch neu zu generieren.
- Die momentane Struktur des EPR-Modells zeigt Abbildung 
+ über wsimport generiert.
+ Die Struktur des Clients zeigt Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:RRS-Plug-In-Model"
+reference "fig:RRS-Plug-In-Client"
 
 \end_inset
 
-.
- Im Folgenden wird auf die einzelnen Pakete bzw.
- deren Klassen näher eingegangen.
+, dabei wurden alle automatisch generierten Klassen, außer den EPR Modellklassen
+, weggelassen.
+ Im Folgenden wird auf die einzelnen Klassen näher eingegangen.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5530,7 +5518,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/iteration2/RRSPlugInModel.png
+	filename diagramme/iteration2/RRSPlugInClient.png
 	width 100text%
 
 \end_inset
@@ -5544,11 +5532,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:RRS-Plug-In-Model"
+name "fig:RRS-Plug-In-Client"
 
 \end_inset
 
-Klassendiagramm des Modells des RRS Eclipse Plug-Ins
+Klassendiagramm des RRS Clients
 \end_layout
 
 \end_inset
@@ -5559,10 +5547,6 @@ Klassendiagramm des Modells des RRS Eclipse Plug-Ins
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection*
-org.eclipse.simpl.rrs.model
 \end_layout
 
 \begin_layout Standard
@@ -5573,132 +5557,39 @@ ModelProvider
  hält alle EPRs, die in der RRS View angezeigt werden.
  Sie ist der globale Zugriffpunkt für die vorhandenen EPRs und den in diesen
  enthaltenen Daten.
-\end_layout
-
-\begin_layout Subsubsection*
-org.eclipse.simpl.rrs.model.reference
-\end_layout
-
-\begin_layout Standard
-Dieses Paket enthält alle Klassen des EPR-(EMF-)Modells.
- Das Modell beruht dabei auf der, in 
+ Die Klassen 
+\emph on
+EPR
+\emph default
+, 
+\emph on
+ReferenceParameters
+\emph default
+, 
+\emph on
+ReferenceProperties 
+\emph default
+und 
+\emph on
+ServiceName 
+\emph default
+realisieren, das den EPRs zugrundeliegende Modell.
+ Die innere Struktur der EPR-Klasse entspricht dabei genau dem EPR-Schema
+ aus Kapitel 7.1.2 in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2"
 
 \end_inset
 
- Kapitel 7.1.2, vorgegebenen Struktur einer EPR.
- Die Klassen 
-\emph on
-ReferenceFactory
-\emph default
- (Interface) und 
-\emph on
-ReferencePackage
-\emph default
- (Interface) erben von den Klassen 
-\emph on
-org.eclipse.emf.ecore.EFactory
-\emph default
- und 
-\emph on
-org.eclipse.emf.ecore.EPackage
-\emph default
- und werden benötigt, um Objekte des Modells zu erzeugen (Factory), wie
- z.B.
- ein 
-\emph on
-EPR
-\emph default
--Objekt und um Objekte des Modells zu verwalten (Package), wie z.B.
- das Auslesen der Adresse eines 
-\emph on
-EPR
-\emph default
--Objekts.
-\end_layout
-
-\begin_layout Subsubsection*
-org.eclipse.simpl.rrs.model.reference.impl
-\end_layout
-
-\begin_layout Standard
-Dieses Paket enhält die Implementierungen der verschiedenen Modell-Klassen
- des Pakets 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-org.""eclipse.""simpl.""rrs.""model.""reference
-\end_layout
-
-\end_inset
-
-
-\emph on
 .
-\end_layout
-
-\begin_layout Subsubsection*
-org.eclipse.simpl.rrs.model.reference.util
-\end_layout
-
-\begin_layout Standard
-Dieses Paket enthält durch EMF automatisch generierte Zubehörklassen, die
- dazu verwendet werden können, Modellobjekte zu (de)serialisieren.
- Dazu werden mit der Klasse 
+ Die Klasse 
 \emph on
-ReferenceResourceFactoryImpl
+RRSClient 
 \emph default
-, die von der Klasse 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-org.""eclipse.""emf.""ecore.""resource.""impl.""ResourceFactoryImpl
-\end_layout
-
-\end_inset
-
- erbt, Objekte der Klasse 
-\emph on
-ReferenceResourceImpl
-\emph default
-, die von der Klasse 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-org.""eclipse.""emf.""ecore.""xmi.""impl.""XMLResourceImpl
-\end_layout
-
-\end_inset
-
- erbt, erzeugt.
- Die so erzeugten Objekte der Klasse 
-\emph on
-ReferenceResourceImpl
-\emph default
- können dann, über die Klasse 
-\emph on
-ReferenceFactory
-\emph default
- erstellte, EPRs aufnehmen und diese im XML-Format serialisieren.
- Ebenso können so in XML hinterlegte EPRs wieder in Objekte der Klasse 
-\emph on
-EPR
-\emph default
- deserialisiert werden.
- Mithilfe dieser Klassen können die in den EPRs enthaltenen Daten relativ
- einfach aus XML in Modell-Objekte und umgekehrt überführt werden.
- Dies hat den entscheidenden Vorteil, dass in Eclipse die Modellklassen
- verwendet werden können und für den Transport bzw.
- das Laden und Speichern der EPRs eine XML-Repräsentation ohne explizite
- Implementierung erstellt werden kann.
+dient als zentraler Zugriffspunkt auf die automatisch generierten Web Service
+ Client Klassen und liefert eine gebündelte Schnittstelle zu allen benötigten
+ Methoden des RRS.
 \end_layout
 
 \begin_layout Subsubsection
