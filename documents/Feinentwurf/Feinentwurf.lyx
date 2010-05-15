@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Feinentwurf}
-\def\docvers{2.3}
+\def\docvers{2.5}
 \def\docautor{}
-\def\docdate{01. April 2010}
+\def\docdate{15. Mai 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="19" columns="4">
+<lyxtabular version="3" rows="20" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1371,7 +1371,7 @@ reference "sec:Reference-Resolution-System"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1380,7 +1380,7 @@ reference "sec:Reference-Resolution-System"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1389,7 +1389,7 @@ reference "sec:Reference-Resolution-System"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1398,7 +1398,7 @@ huettiwg
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1410,6 +1410,74 @@ reference "sec:Uddi-Registry"
 \end_inset
 
  erstellt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:BPEL-DM-Plug-In"
+
+\end_inset
+
+ bis 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RRS-Eclipse-Plug-In"
+
+\end_inset
+
+ überarbeitet.
+ Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RRS-Transformation-Service"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RRS-Transformation-Eclipse-Plug-In"
+
+\end_inset
+
+ eingefügt bzw.
+ erweitert.
 \end_layout
 
 \end_inset
@@ -4164,26 +4232,132 @@ onen die in der EPR angegeben sind, die richtige Datenquelle auswählt und
 \end_layout
 
 \begin_layout Subsection
-Der Transformation Service
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RRS-Transformation-Service"
+
+\end_inset
+
+RRS Transformation Service
 \end_layout
 
 \begin_layout Standard
-Obwohl der Transformation Service kein Bestandteil des RRS ist, wird er
- dennoch in diesem Teil des Feinentwurfs besprochen, da seine Aufgabe direkt
- mit dem RRS zusammenhängt.
- Der Transformation Service hat die Aufgabe, eine EPR in standardkonformen
- BPEL-Code umzuwandeln.
- Dies bedeutet, dass zur Modelierung des Prozesses eine <referenceVariable>
- erzeugt wird und diese vor dem Deployment des Prozesses mit Hilfe des Transform
-ation Service in standardkonformen BPEL-Code umgewandelt wird (siehe 
+Obwohl der Transformation Service kein direkter Bestandteil des RRS ist,
+ wird er dennoch in diesem Teil des Feinentwurfs besprochen, da seine Aufgabe
+ direkt mit dem RRS zusammenhängt.
+ Da eine Beschreibung des Transformationsvorgangs bereits in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2"
 
 \end_inset
 
-).
+ enthalten ist, konzentrieren wir uns hier nur auf die Beschreibung der
+ Implementierung und deren Zuordnung zur benötigten Funktionalität.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-Transformation-Service"
+
+\end_inset
+
+ zeigt die Struktur des Transformation Service.
+ Die einzelnen Klassen werden nachfolgend näher beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/RRSTransformationService.png
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-Transformation-Service"
+
+\end_inset
+
+Klassendiagramm des RRS Transformation Service
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+Transformer
+\emph default
+ enthält die gesammte Funktionalität, die zur Transformation eines BPEL-Prozessm
+odells benötigt wird.
+ Als Eingabe erhält die Klasse ein, in ein String-Objekt serialisiertes,
+ BPEL-Prozessmodell über den Transformation Web Service.
+ Dieses wird gelesen und anschließend werden die in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+ (Kapitel 7.1.3) beschrieben Schritte durchgeführt.
+ Am Ende der Transformation wird das transformierte BPEL-Prozessmodell,
+ das nun nur noch standardkonforme BPEL-Konstrukte enthält, wieder serialisiert
+ und über den Web Service an den Sender des ursprünglichen BPEL-Prozessmodells
+ zurückgeschickt.
+\end_layout
+
+\begin_layout Standard
+Das Paket
  
+\lang ngerman
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""simpl.""rrs.""transformation.""webservices
+\end_layout
+
+\end_inset
+
+ enthält die Klasse 
+\emph on
+TransformationService
+\emph default
+ (Web Service) und alle weiteren für die Realisierung des Web Services benötigte
+n Klassen.
+ Diese werden hier allerdings nicht angegeben, da sie keinerlei relevante
+ Funktionalität beinhalten und über die erstellte WSDL des TransformationService
+ automatisch generiert wurden.
+ Die Klasse 
+\emph on
+TransformationService
+\emph default
+ wird nur stellvertretend für alle weiteren Klassen genannt, da sie den
+ Übergang zwischen Web Service und Implementierung darstellt.
 \end_layout
 
 \begin_layout Standard
@@ -4338,9 +4512,20 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename C:/Users/Creon/Documents/uni/stupro/svn/documents/Feinentwurf/Uddi-Webinterface.png
+	filename Uddi-Webinterface.png
 	scale 60
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -4540,7 +4725,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/iteration1/BPEL-DM Plug-In UI.png
+	filename diagramme/iteration2/BPEL-DM Plug-In UI.png
 	lyxscale 80
 	width 100text%
 
@@ -5190,7 +5375,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/iteration1/SIMPL_Core_PlugIn.png
+	filename diagramme/iteration2/SIMPL_Core_PlugIn.png
 	width 100text%
 
 \end_inset
@@ -5415,6 +5600,27 @@ org.eclipse.simpl.core.auditing
 org.eclipse.simpl.core.globalSettings
 \emph default
 ) bereits durch Plug-Ins eingebunden.
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+SIMPLHomePreferencePage
+\emph default
+ wird über den entsprechenden Extension-Point (
+\emph on
+\noun on
+org.eclipse.ui.preferencePages
+\emph default
+\noun default
+) für Preference Pages (Einstellungsseiten) in Eclipse angebunden.
+ Die so erstellte Preference Page kann nun um weitere Sub-Preference Pages
+ ergänzt werden.
+ So kann aus jedem beliebigen anderen Plug-In eine Preference Page zur SIMPL
+ Home Preference Page hinzugefügt werden.
+ Die so erstellte Preference Page Hierarchie ist über die Eclipse Preferences
+ zugänglich und macht es möglich, dass alle relevanten Einstellungen der
+ SIMPL Eclipse Plug-Ins über die Eclipse Preferences angegeben werden können.
 \end_layout
 
 \begin_layout Subsection
@@ -5803,10 +6009,228 @@ TableSorter
 \emph on
 org.eclipse.jface.viewers.ViewerSorter
 \emph default
- und liefert die Möglichkeit die im View angezeigten EPRs zu sortieren,
+ und liefert die Möglichkeit, die im View angezeigten EPRs zu sortieren,
  d.h.
  die EPRs können nach jeder beliebigen Spalte des RRS Views auf- oder absteigend
  sortiert werden.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.ui.preferences
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+RRSPreferencePage
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.preference.FieldEditorPreferencePage
+\emph default
+ und liefert die Möglichkeit, die Addressen der drei Reference Resolution
+ System Web Services (Retrieval, Management und MetaData) über eine Preference
+ Page in den SIMPL Einstellungen anzugeben.
+ Dadurch hat man die Möglichkeit einfach ein anderes RRS anzubinden und
+ dessen Daten im Reference Management View anzuzeigen.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RRS-Transformation-Eclipse-Plug-In"
+
+\end_inset
+
+RRS Transformation Eclipse Plug-In
+\end_layout
+
+\begin_layout Standard
+Das RRS Transformation Eclipse Plug-In realisiert die Anbindung des RRS
+ Transformation Service (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RRS-Transformation-Service"
+
+\end_inset
+
+) in Eclipse.
+ Nachfolgend werden nun alle Pakete und die wichtigsten Klassen des RRS
+ Transformation Eclipse Plug-Ins beschrieben und deren Zweck näher erläutert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/RRSTransormationEclipsePlugIn.png
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-Transformation-Plug-In"
+
+\end_inset
+
+Klassendiagramm des RRS Transformation Eclipse Plug-Ins
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.transformation
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+TransformerUtil
+\emph default
+ enthält Methoden, die während der Transformation benötigt werden.
+ Dazu zählt z.B.
+ eine Methode, die die Prozess-WSDL einließt, erweitert und in das transformiert
+e Projekt kopiert (näheres dazu in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+ Kapitel 7.1.3).
+ Weiterhin werden Methoden für das Herunterladen der RRS-WSDL-Dateien bereitgest
+ellt, sowie einige Methoden, mit deren Hilfe festgestellt werden kann, ob
+ eine Transformation überhaupt notwendig ist bzw.
+ fehlerfrei durchgeführt werden kann (existieren Referenzvariablen?, sind
+ alle Referenzvariablen voll spezifiziert?, etc.).
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.transformation.preferences
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+TransformationPreferencePage
+\emph default
+ erweitert die Klasse 
+\emph on
+org.eclipse.jface.preference.FieldEditorPreferencePage
+\emph default
+ und liefert die Möglichkeit, die Addresse des Transformation Web Service
+ über eine Preference Page in den SIMPL Einstellungen anzugeben.
+ Dadurch hat man die Möglichkeit einfach einen anderen Transformator an
+ Eclipse anzubinden bzw.
+ zwischen verschiedenen Transformatoren zu wechseln.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.transformation.commands
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält zwei Handler-Klassen, die die abstrakte Klasse 
+\emph on
+org.eclipse.core.commands.AbstractHandler
+\emph default
+ erweitern.
+ Diese werden dazu benötigt, um auf entsprechende Commands zu reagieren,
+ die mit einem Toolbar- bzw.
+ Kontext-Menüeintrag in Eclipse verknüpft sind und bei der Auswahl eines
+ solchen Eintrags angestoßen werden.
+ Die Klasse 
+\emph on
+TransformationContextHandler
+\emph default
+ sorgt dafür, dass ein im Projekt-Explorer selektierter BPEL-Prozesses mithilfe
+ eines Rechtsklicks über das so geöffnete Kontextmenü transformiert werden
+ kann.
+ Die Klasse 
+\emph on
+TransformationHandler
+\emph default
+ sorgt entsprechend dafür, dass ein im BPEL-Editor geöffneter BPEL-Prozess
+ über einen Toolbar-Eintrag transformiert werden kann.
+ Da beide Handler-Klassen nahezu identische Aufgaben ausführen müssen, bevor
+ der entsprechende BPEL-Prozess tatsächlich an den Transformation Service
+ geschickt werden kann, gibt es die Klasse 
+\emph on
+TransformationCmdHelper
+\emph default
+.
+ Sie wird von den Handlern verwendet und sorgt dafür, dass alle in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+ (Kapitel 7.1.3) beschrieben Schritte (wsdl-Dateien herunterladen, Projekt
+ anlegen/aktualisieren, usw.) vor und nach der Transformation ausgeführt
+ werden.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.transformation.jet
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+TemplateRrsXSD
+\emph default
+ ist ein Java Emitter Template (JET) und beinhaltet das EPR-Schema, das
+ zur Ausführung des transformierten Prozesses in Apache ODE benötigt wird.
+ Über den Aufruf der 
+\emph on
+generate()
+\emph default
+-Methode erzeugt diese Klasse das EPR-Schema und serialisiert dieses in
+ eine Datei (rrs.xsd).
+ Der Aufruf wird bei der Transformation aus der Klasse 
+\emph on
+TransformationCmdHelper
+\emph default
+ durchgeführt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.simpl.rrs.transformation.client
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält alle RRS Transformation Service Client-Klassen.
+ Diese werden analog zum SIMPL Core Client und RRS Client automatisch generiert.
+ Auf die generierten Client-Klassen wird hier nicht weiter eingegangen.
+ Die Klasse 
+\emph on
+TransformationClient
+\emph default
+ liefert einen zentralen Zugriffspunkt auf den RRS Transformation Service
+ Client und stellt alle Methoden des Transformation Service bereit.
 \end_layout
 
 \begin_layout Subsection
@@ -6321,7 +6745,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="14" columns="2">
+<lyxtabular version="3" rows="15" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="10cm">
@@ -6460,6 +6884,26 @@ JAX-WS
 
 \begin_layout Plain Layout
 Java API for XML - Web Services
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+JET
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Java Emitter Template
 \end_layout
 
 \end_inset
