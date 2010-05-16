@@ -30,6 +30,7 @@ public class SimplExtensionBundle extends AbstractExtensionBundle {
 		super.registerExtensionOperation("createActivity", CreateActivity.class);
 		super.registerExtensionOperation("updateActivity", UpdateActivity.class);
 		super.registerExtensionOperation("retrieveDataActivity", RetrieveDataActivity.class);
+		super.registerExtensionOperation("transferActivity", TransferActivity.class);
 		
 		logger.debug("SIMPL Extension Bundle loaded successfully.");
 	}

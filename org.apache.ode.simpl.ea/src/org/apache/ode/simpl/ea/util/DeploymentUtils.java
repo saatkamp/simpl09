@@ -55,6 +55,7 @@ public class DeploymentUtils {
 	private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
 	private static final String AT_DATA_SOURCE_USER = "userName";
 	private static final String AT_DATA_SOURCE_PASSW = "password";
+	private static final String AT_DATA_SOURCE_FORMAT = "format";
 
 	private static final String AT_MAPPING_ACTIVITY = "activity";
 	private static final String AT_MAPPING_POLICY_DATA = "policyData";
@@ -150,7 +151,12 @@ public class DeploymentUtils {
 							if (logger.isDebugEnabled()) {
 								logger.debug("Password of ds: " + password);
 							}
-							
+							String format = ((Element) data)
+									.getAttributeValue(AT_DATA_SOURCE_FORMAT);
+							if (logger.isDebugEnabled()) {
+								logger.debug("Format of ds: " + format);
+							}
+
 							DataSource dataSource = new DataSource();
 							dataSource.setName(name);
 							dataSource.setAddress(address);
@@ -160,9 +166,7 @@ public class DeploymentUtils {
 							auth.setUser(username);
 							auth.setPassword(password);
 							dataSource.setAuthentication(auth);
-							
-							//FIXME: This is just for debugging and should be removed
-							dataSource.setDataFormat("RDB");
+							dataSource.setDataFormat(format);
 
 							dataSourceElements.add(dataSource);
 						}
