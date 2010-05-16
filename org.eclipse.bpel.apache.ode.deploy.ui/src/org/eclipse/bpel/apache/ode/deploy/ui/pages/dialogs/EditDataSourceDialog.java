@@ -32,6 +32,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 	private CCombo language;
 	private Text user;
 	private Text password;
+	private CCombo format;
 	private TDatasource datasource;
 
 	private ProcessType processType;
@@ -87,8 +88,10 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		Label label3 = new Label(parent, SWT.NONE);
 		label3.setText("Type *");
 		type = new CCombo(parent, SWT.BORDER);
-		type.setItems(SIMPLCoreMetaData.getDataSourceTypes().toArray(
-				new String[0]));
+		if (SIMPLCoreMetaData.getDataSourceTypes() != null) {
+			type.setItems(SIMPLCoreMetaData.getDataSourceTypes().toArray(
+					new String[0]));
+		}
 		type.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -98,9 +101,11 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
-						type.getText()).toArray(
-						new String[0]));
+				if (SIMPLCoreMetaData.getDataSourceSubTypes(type.getText()) != null) {
+					subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
+							type.getText()).toArray(new String[0]));
+				}
+
 				subtype.setText("");
 			}
 		});
@@ -120,35 +125,50 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
-						subtype.getText()).toArray(new String[0]));
+				if (SIMPLCoreMetaData.getDatasourceLanguages(subtype.getText()) != null) {
+					language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
+							subtype.getText()).toArray(new String[0]));
+				}
 				language.setText("");
 			}
 		});
 		if (this.datasource.getSubtype() != null) {
 			subtype.setText(this.datasource.getSubtype());
 		}
-		
+
 		Label label5 = new Label(parent, SWT.NONE);
 		label5.setText("Language *");
 		language = new CCombo(parent, SWT.BORDER);
 		if (this.datasource.getLanguage() != null) {
-			language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
-					subtype.getText()).toArray(new String[0]));
+			if (SIMPLCoreMetaData.getDatasourceLanguages(subtype.getText()) != null) {
+				language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
+						subtype.getText()).toArray(new String[0]));
+			}
 			language.setText(this.datasource.getLanguage());
 		}
-		
+
+		Label label8 = new Label(parent, SWT.NONE);
+		label8.setText("Format *");
+		format = new CCombo(parent, SWT.BORDER);
+		if (SIMPLCoreMetaData.getDataSourceFormats() != null) {
+			format.setItems(SIMPLCoreMetaData.getDataSourceFormats().toArray(
+					new String[0]));
+		}
+		if (this.datasource.getFormat() != null) {
+			format.setText(this.datasource.getFormat());
+		}
+
 		Label label6 = new Label(parent, SWT.NONE);
 		label6.setText("User name");
 		user = new Text(parent, SWT.BORDER);
 		if (this.datasource.getUserName() != null) {
 			user.setText(this.datasource.getUserName());
 		}
-		
+
 		Label label7 = new Label(parent, SWT.NONE);
 		label7.setText("Password");
 		password = new Text(parent, SWT.BORDER | SWT.PASSWORD);
-		if (this.datasource.getPassword() != null){
+		if (this.datasource.getPassword() != null) {
 			password.setText(this.datasource.getPassword());
 		}
 
@@ -157,6 +177,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		type.setLayoutData(gridData);
 		subtype.setLayoutData(gridData);
 		language.setLayoutData(gridData);
+		format.setLayoutData(gridData);
 		user.setLayoutData(gridData);
 		password.setLayoutData(gridData);
 
@@ -175,7 +196,8 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 				if (!name.getText().isEmpty() && !address.getText().isEmpty()
 						&& !type.getText().isEmpty()
 						&& !subtype.getText().isEmpty()
-						&& !language.getText().isEmpty()) {
+						&& !language.getText().isEmpty()
+						&& !format.getText().isEmpty()) {
 
 					if (DeployUtils.getProcessDataSourceNames(processType) != null
 							&& (!DeployUtils.getProcessDataSourceNames(
@@ -194,6 +216,7 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 						datasource.setLanguage(language.getText());
 						datasource.setUserName(user.getText());
 						datasource.setPassword(password.getText());
+						datasource.setFormat(format.getText());
 						close();
 					} else {
 						setErrorMessage("The specified name is allready in use, please choose another one.");

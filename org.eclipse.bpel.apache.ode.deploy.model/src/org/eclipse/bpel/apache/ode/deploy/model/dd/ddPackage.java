@@ -747,13 +747,22 @@ public interface ddPackage extends EPackage {
 	int TDATASOURCE__PASSWORD = 6;
 
 	/**
+	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TDATASOURCE__FORMAT = 7;
+
+	/**
 	 * The number of structural features of the '<em>TDatasource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TDATASOURCE_FEATURE_COUNT = 7;
+	int TDATASOURCE_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl <em>TActivity Mapping</em>}' class.
@@ -1503,6 +1512,17 @@ public interface ddPackage extends EPackage {
 	EAttribute getTDatasource_Password();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getFormat <em>Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Format</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getFormat()
+	 * @see #getTDatasource()
+	 * @generated
+	 */
+	EAttribute getTDatasource_Format();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getUserName <em>User Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2144,6 +2164,14 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TDATASOURCE__PASSWORD = eINSTANCE.getTDatasource_Password();
+
+		/**
+		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TDATASOURCE__FORMAT = eINSTANCE.getTDatasource_Format();
 
 		/**
 		 * The meta object literal for the '<em><b>User Name</b></em>' attribute feature.

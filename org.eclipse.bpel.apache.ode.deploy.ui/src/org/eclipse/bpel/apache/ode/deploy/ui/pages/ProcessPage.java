@@ -149,16 +149,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 	public static final int AUDITING_STATUS_ACTIVATED = 0;
 	public static final int AUDITING_STATUS_DEACTIVATED = 1;
 
-	public static final String DATASOURCE_NAME = "name";
-	public static final String DATASOURCE_ADDRESS = "address";
-	public static final String DATASOURCE_USER = "userName";
-	public static final String DATASOURCE_PW = "password";
-
-	public static final int DS_NAME_COLUMN = 0;
-	public static final int DS_ADDRESS_COLUMN = 1;
-	public static final int DS_USER_COLUMN = 2;
-	public static final int DS_PW_COLUMN = 3;
-
 	public static final Map<String, String> eventNameById = new HashMap<String, String>();
 	static {
 		eventNameById.put(INSTANCE_LIFECYCLE_NAME, "Instance life cycle");
@@ -166,14 +156,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		eventNameById.put(DATA_HANDLING_NAME, "Data handling");
 		eventNameById.put(SCOPE_HANDLING_NAME, "Scope handling");
 		eventNameById.put(CORRELATION_NAME, "Correlation");
-	}
-
-	public static final Map<String, String> dataSourceNameById = new HashMap<String, String>();
-	static {
-		dataSourceNameById.put(DATASOURCE_NAME, "Name");
-		dataSourceNameById.put(DATASOURCE_ADDRESS, "Address");
-		dataSourceNameById.put(DATASOURCE_USER, "User name");
-		dataSourceNameById.put(DATASOURCE_PW, "Password");
 	}
 
 	protected ODEDeployMultiPageEditor editor;
@@ -738,8 +720,8 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			String description) {
 		// Set column names
 		String[] columnNames = new String[] { "Name", "Address", "Type",
-				"Subtype", "Language", "User name", "Password" };
-		int[] bounds = { 75, 175, 50, 50, 50, 50, 50 };
+				"Subtype", "Language", "Data format", "User name", "Password" };
+		int[] bounds = { 75, 175, 50, 50, 50, 50, 50, 50 };
 
 		Section section = toolkit.createSection(fClient, Section.TWISTIE
 				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);

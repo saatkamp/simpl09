@@ -777,6 +777,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTDatasource_Format() {
+		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getTDatasource_UserName() {
 		return (EAttribute)tDatasourceEClass.getEStructuralFeatures().get(5);
 	}
@@ -980,6 +989,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tDatasourceEClass, TDATASOURCE__LANGUAGE);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__USER_NAME);
 		createEAttribute(tDatasourceEClass, TDATASOURCE__PASSWORD);
+		createEAttribute(tDatasourceEClass, TDATASOURCE__FORMAT);
 
 		tActivityMappingEClass = createEClass(TACTIVITY_MAPPING);
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
@@ -1107,6 +1117,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTDatasource_Language(), theXMLTypePackage.getString(), "language", null, 1, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_UserName(), theXMLTypePackage.getString(), "userName", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTDatasource_Password(), theXMLTypePackage.getString(), "password", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTDatasource_Format(), theXMLTypePackage.getString(), "format", null, 0, 1, TDatasource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tActivityMappingEClass, TActivityMapping.class, "TActivityMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTActivityMapping_Activity(), theXMLTypePackage.getString(), "activity", "", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1572,6 +1583,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "password"
+		   });		
+		addAnnotation
+		  (getTDatasource_Format(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "format"
 		   });
 	}
 

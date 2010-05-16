@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getLanguage <em>Language</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getFormat <em>Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -198,6 +199,33 @@ public interface TDatasource extends EObject {
 	 * @generated
 	 */
 	void setPassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Format</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Format</em>' attribute.
+	 * @see #setFormat(String)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTDatasource_Format()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='format'"
+	 * @generated
+	 */
+	String getFormat();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource#getFormat <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Format</em>' attribute.
+	 * @see #getFormat()
+	 * @generated
+	 */
+	void setFormat(String value);
 
 	/**
 	 * Returns the value of the '<em><b>User Name</b></em>' attribute.

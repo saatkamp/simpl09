@@ -21,8 +21,8 @@ import org.eclipse.simpl.communication.SIMPLCore;
 public class SIMPLCoreMetaData {
 
 	/**
-	 * This variable holds all types of data sources, which can be chosen
-	 * during the modeling process and will be supported by the SIMPL Core.
+	 * This variable holds all types of data sources, which can be chosen during
+	 * the modeling process and will be supported by the SIMPL Core.
 	 */
 	private static List<String> dataSourceTypes = new ArrayList<String>();
 
@@ -39,6 +39,13 @@ public class SIMPLCoreMetaData {
 	 * the data sources and the SIMPL Core.
 	 */
 	private static HashMap<String, List<String>> dataSourceSubTypeLanguages = new HashMap<String, List<String>>();
+
+	/**
+	 * This variable holds all data formats of a data source subtype, which can
+	 * be chosen during the modeling process and will be supported by the data
+	 * sources and the SIMPL Core.
+	 */
+	private static HashMap<String, List<String>> dataSourceFormats = new HashMap<String, List<String>>();
 
 	/**
 	 * Inits the Constants class.
@@ -61,6 +68,14 @@ public class SIMPLCoreMetaData {
 			for (String subTypeName : getDataSourceSubTypes(datasource)) {
 				dataSourceSubTypeLanguages.put(subTypeName, simplCore
 						.getDatasourceLanguages(subTypeName));
+			}
+		}
+
+		// Laden alle DataFormats der Subtypen aus dem SIMPL Core.
+		for (String datasource : dataSourceTypes) {
+			for (String subTypeName : getDataSourceSubTypes(datasource)) {
+				dataSourceFormats.put(subTypeName, simplCore
+						.getDataFormat(subTypeName));
 			}
 		}
 	}
@@ -97,5 +112,13 @@ public class SIMPLCoreMetaData {
 	 */
 	public static List<String> getDatasourceLanguages(String datasourceSubType) {
 		return dataSourceSubTypeLanguages.get(datasourceSubType);
+	}
+
+	/**
+	 * @return
+	 */
+	public static List<String> getDataSourceFormats() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
