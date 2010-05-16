@@ -12,127 +12,146 @@ import org.eclipse.simpl.communication.client.DatasourceService_Service;
 import org.eclipse.simpl.communication.client.Parameter;
 
 /**
- * Die ganze Klasse ist nur ein Stub für den echten SIMPL Core bzw. für den Teil den
- * unsere Eclipse Plug-Ins benötigen. D.h. diese Klasse simuliert die gesamte
- * Funktionalität des SIMPL Core, die von Eclipse aus benötigt wird. Die hier
- * implementierte Funktionalität befindet sich später im SIMPL Core (Administration- &
- * StorageService).
+ * Die ganze Klasse ist nur ein Stub für den echten SIMPL Core bzw. für den Teil
+ * den unsere Eclipse Plug-Ins benötigen. D.h. diese Klasse simuliert die
+ * gesamte Funktionalität des SIMPL Core, die von Eclipse aus benötigt wird. Die
+ * hier implementierte Funktionalität befindet sich später im SIMPL Core
+ * (Administration- & StorageService).
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  * 
  */
 @SuppressWarnings("unchecked")
 public class SIMPLCore {
-  AdministrationService administrationService = null;
-  DatasourceService datasourceService = null;
-  
+	AdministrationService administrationService = null;
+	DatasourceService datasourceService = null;
 
-  private DatasourceService getDatasourceService(){
-	  if (datasourceService == null){
-		  datasourceService = new DatasourceService_Service()
-	      .getDatasourceServicePort();
-	  }
-	  return datasourceService;
-  }
-  
-  private AdministrationService getAdministrationService(){
-	  if (administrationService == null){
-		  administrationService = new AdministrationService_Service()
-	      .getAdministrationServicePort();
-	  }
-	  return administrationService;
-  }
-  
-  public boolean save(String schema, String table, String settingName,
-      LinkedHashMap<String, String> settings) {
-    boolean success = false;
+	private DatasourceService getDatasourceService() {
+		if (datasourceService == null) {
+			datasourceService = new DatasourceService_Service()
+					.getDatasourceServicePort();
+		}
+		return datasourceService;
+	}
 
-    success = getAdministrationService().saveSettings(schema, table, settingName, Parameter
-        .serialize(settings));
+	private AdministrationService getAdministrationService() {
+		if (administrationService == null) {
+			administrationService = new AdministrationService_Service()
+					.getAdministrationServicePort();
+		}
+		return administrationService;
+	}
 
-    return success;
-  }
+	public boolean save(String schema, String table, String settingName,
+			LinkedHashMap<String, String> settings) {
+		boolean success = false;
 
-  public LinkedHashMap<String, String> load(String schema, String table,
-      String settingName) {
-    LinkedHashMap<String, String> settings = null;
+		success = getAdministrationService().saveSettings(schema, table,
+				settingName, Parameter.serialize(settings));
 
-    settings = (LinkedHashMap<String, String>) Parameter
-        .deserialize(getAdministrationService().loadSettings(schema, table, settingName));
+		return success;
+	}
 
-    return settings;
-  }
+	public LinkedHashMap<String, String> load(String schema, String table,
+			String settingName) {
+		LinkedHashMap<String, String> settings = null;
 
-  public String getMetaData(DataSource dataSource, String filter) throws ConnectionException_Exception {
-    
-    String metaData = getDatasourceService().getMetaData(dataSource, filter);
+		settings = (LinkedHashMap<String, String>) Parameter
+				.deserialize(getAdministrationService().loadSettings(schema,
+						table, settingName));
 
-    return metaData;
-  }
-  
-  public List<String> getDatasourceTypes() {
-    List<String> dsTypes = (List<String>) Parameter.deserialize(getDatasourceService()
-        .getDataSourceTypes());
+		return settings;
+	}
 
-    return dsTypes;
-  }
+	public String getMetaData(DataSource dataSource, String filter)
+			throws ConnectionException_Exception {
 
-  public List<String> getDatasourceSubTypes(String dsType) {
-    List<String> dsSubTypes = (List<String>) Parameter.deserialize(getDatasourceService()
-        .getDataSourceSubTypes(dsType));
+		String metaData = getDatasourceService()
+				.getMetaData(dataSource, filter);
 
-    return dsSubTypes;
-  }
+		return metaData;
+	}
 
-  public List<String> getDatasourceLanguages(String dsSubtype) {
-    List<String> dsSubTypeLanguages = (List<String>) Parameter
-        .deserialize(getDatasourceService().getDataSourceLanguages(dsSubtype));
+	public List<String> getDatasourceTypes() {
+		List<String> dsTypes = (List<String>) Parameter
+				.deserialize(getDatasourceService().getDataSourceTypes());
 
-    return dsSubTypeLanguages;
-  }
-  
-  // public boolean saveAll(List<String> schema, List<String> table, String settingName,
-  // List<LinkedHashMap<String, String>> settings) {
-  // // Code der Operation
-  //
-  // // STUB
-  // for (LinkedHashMap<String, String> map : settings) {
-  // System.out.println("-------------------------------");
-  // System.out.println("Schema: " + schema);
-  // System.out.println("Tabelle: " + table);
-  // System.out.println("Name der Einstellungen: " + settingName);
-  // for (String key : map.keySet()) {
-  // System.out.println(key + " : " + map.get(key));
-  // }
-  // System.out.println("-------------------------------");
-  // }
-  //
-  // // STUB
-  //
-  // return true;// Hier wird dann in einem boolean zurückgegeben, ob das
-  // // Speichern der Einstellungen geklappt hat.
-  // }
-  //
-  // public List<LinkedHashMap<String, String>> loadAll(List<String> schema,
-  // List<String> table, String settingName) {
-  // // Code der Operation
-  //
-  // // STUB
-  // List<LinkedHashMap<String, String>> settings = new ArrayList<LinkedHashMap<String,
-  // String>>();
-  // LinkedHashMap<String, String> globalSettings = new LinkedHashMap<String, String>();
-  // LinkedHashMap<String, String> auditingSettings = new LinkedHashMap<String, String>();
-  // // Global Settings
-  // globalSettings.put("user", "admin");
-  // globalSettings.put("password", "12345");
-  // // Auditing
-  // auditingSettings.put("mode", "off");
-  // auditingSettings.put("auditingDsAddress", "http://localhost:8080/myDB");
-  // //Zur Liste hinzufügen
-  // settings.add(globalSettings);
-  // settings.add(auditingSettings);
-  // // STUB
-  //
-  // return settings;// Einstellungen als HashMap
-  // }
+		return dsTypes;
+	}
+
+	public List<String> getDatasourceSubTypes(String dsType) {
+		List<String> dsSubTypes = (List<String>) Parameter
+				.deserialize(getDatasourceService().getDataSourceSubTypes(
+						dsType));
+
+		return dsSubTypes;
+	}
+
+	public List<String> getDatasourceLanguages(String dsSubtype) {
+		List<String> dsSubTypeLanguages = (List<String>) Parameter
+				.deserialize(getDatasourceService().getDataSourceLanguages(
+						dsSubtype));
+
+		return dsSubTypeLanguages;
+	}
+
+	/**
+	 * @param subTypeName
+	 * @return
+	 */
+	public List<String> getDataFormat(String subTypeName) {
+		List<String> dsSubTypeDataFormat = (List<String>) Parameter
+				.deserialize(getDatasourceService().getDataFormatTypes(/*subTypeName*/));
+
+		return dsSubTypeDataFormat;
+	}
+
+	// public boolean saveAll(List<String> schema, List<String> table, String
+	// settingName,
+	// List<LinkedHashMap<String, String>> settings) {
+	// // Code der Operation
+	//
+	// // STUB
+	// for (LinkedHashMap<String, String> map : settings) {
+	// System.out.println("-------------------------------");
+	// System.out.println("Schema: " + schema);
+	// System.out.println("Tabelle: " + table);
+	// System.out.println("Name der Einstellungen: " + settingName);
+	// for (String key : map.keySet()) {
+	// System.out.println(key + " : " + map.get(key));
+	// }
+	// System.out.println("-------------------------------");
+	// }
+	//
+	// // STUB
+	//
+	// return true;// Hier wird dann in einem boolean zurückgegeben, ob das
+	// // Speichern der Einstellungen geklappt hat.
+	// }
+	//
+	// public List<LinkedHashMap<String, String>> loadAll(List<String> schema,
+	// List<String> table, String settingName) {
+	// // Code der Operation
+	//
+	// // STUB
+	// List<LinkedHashMap<String, String>> settings = new
+	// ArrayList<LinkedHashMap<String,
+	// String>>();
+	// LinkedHashMap<String, String> globalSettings = new LinkedHashMap<String,
+	// String>();
+	// LinkedHashMap<String, String> auditingSettings = new
+	// LinkedHashMap<String, String>();
+	// // Global Settings
+	// globalSettings.put("user", "admin");
+	// globalSettings.put("password", "12345");
+	// // Auditing
+	// auditingSettings.put("mode", "off");
+	// auditingSettings.put("auditingDsAddress", "http://localhost:8080/myDB");
+	// //Zur Liste hinzufügen
+	// settings.add(globalSettings);
+	// settings.add(auditingSettings);
+	// // STUB
+	//
+	// return settings;// Einstellungen als HashMap
+	// }
 }
