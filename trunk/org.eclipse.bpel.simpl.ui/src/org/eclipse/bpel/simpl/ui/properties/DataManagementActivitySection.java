@@ -35,26 +35,27 @@ import widgets.LiveEditStyleText;
 /**
  * <b>Purpose:</b> <br>
  * <b>Description:</b> <br>
- * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Copyright:</b> Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
  * @version $Id$ <br>
  * @link http://code.google.com/p/simpl09/
- *
+ * 
  */
 public class DataManagementActivitySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	TablsListPopUp tabelsPopWindowTables;
 	ParametersListPopUp bpelVariableWindow;
-	
+
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
-	//private Text statementText = null;
+	// private Text statementText = null;
 	private Button showStatementCheckBox = null;
 	private Label dataSourceAddressLabel = null;
 	private CCombo dataSourceAddressCombo = null;
@@ -87,12 +88,9 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
 		// Laden der Aktivität
-		if (getModel() instanceof TransferActivity){
-			this.activity = ((TransferActivity)getModel()).getFromSource();
-		}else {
-			this.activity = getModel();
-		}
-		
+
+		this.activity = getModel();
+
 		createWidgets(parent);
 
 		// Setzen das Statement
@@ -179,15 +177,18 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				getCommandFramework().execute(
 						new SetDsAddressCommand(activity,
 								dataSourceAddressCombo.getText()));
-				
-				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+
+				DataSource dataSource = PropertySectionUtils
+						.findDataSourceByName(getProcess(),
+								dataSourceAddressCombo.getText());
 				typeText.setText(dataSource.getType());
 				kindText.setText(dataSource.getSubType());
 				languageText.setText(dataSource.getLanguage());
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
-		
+		dataSourceAddressCombo.setItems(PropertySectionUtils
+				.getAllDataSourceNames(getProcess()));
+
 		dataSourceAddressLabel.setText("Data source name:");
 		dataSourceAddressCombo.setEditable(false);
 		dataSourceAddressCombo.setBackground(Display.getCurrent()
@@ -202,12 +203,13 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		languageText.setEditable(false);
 		languageText.setLayoutData(gridData4);
 		languageText.addModifyListener(new ModifyListener() {
-			
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				// Auswahl im Modell speichern
 				getCommandFramework().execute(
-						new SetDsLanguageCommand(activity, languageText.getText()));
+						new SetDsLanguageCommand(activity, languageText
+								.getText()));
 			}
 		});
 
@@ -230,126 +232,131 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				if (getModel() instanceof TransferActivity){
-					//The fromSource DataManagementActivity of the transfer activity needs a query statement editor
-					openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity().getName(), activity.getDsLanguage());
-				}else {
-					openStatementEditor(getModel().eClass().getName(), activity.getDsLanguage());
+				if (getModel() instanceof TransferActivity) {
+					// The fromSource DataManagementActivity of the transfer
+					// activity needs a query statement editor
+					openStatementEditor(ModelPackage.eINSTANCE
+							.getQueryActivity().getName(), activity
+							.getDsLanguage());
+				} else {
+					openStatementEditor(getModel().eClass().getName(), activity
+							.getDsLanguage());
 				}
 			}
 		});
 
-		
-		
-		
-		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
-		Composite statementCompo=new Composite(composite, SWT.NONE);
-		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		// +++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++
+		Composite statementCompo = new Composite(composite, SWT.NONE);
+		statementCompo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		GridData gridData13 = new GridData();
 		gridData13.horizontalSpan = 3;
-		
+
 		GridData gridData14 = new GridData();
 		gridData14.horizontalSpan = 4;
 		gridData14.horizontalAlignment = GridData.FILL;
 		gridData14.verticalAlignment = GridData.FILL;
 		gridData14.grabExcessVerticalSpace = true;
 		gridData14.grabExcessHorizontalSpace = true;
-		
+
 		GridData gridData15 = new GridData();
 		gridData15.horizontalSpan = 4;
 		gridData15.horizontalAlignment = GridData.FILL;
 		gridData15.verticalAlignment = GridData.FILL;
 		gridData15.grabExcessVerticalSpace = true;
 		gridData15.grabExcessHorizontalSpace = true;
-		
+
 		GridData gridData24 = new GridData();
 		gridData24.horizontalAlignment = GridData.BEGINNING;
 		gridData24.verticalAlignment = GridData.CENTER;
-		
+
 		GridLayout gridLayout2 = new GridLayout();
 		gridLayout2.numColumns = 3;
 		statementCompo.setLayout(gridLayout2);
 		statementCompo.setLayoutData(gridData14);
-		//statementCompo.setSize(new Point(150,70));
+		// statementCompo.setSize(new Point(150,70));
 		insertBpelVariable = new Button(statementCompo, SWT.NONE);
 		insertBpelVariable.setText("Insert Variable");
 		insertBpelVariable.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				bpelVariableWindow=new ParametersListPopUp(statementText);
-				//Display display2 = Display.getDefault();
+				bpelVariableWindow = new ParametersListPopUp(statementText);
+				// Display display2 = Display.getDefault();
 				bpelVariableWindow.setText("Insert BPEL-Variable");
-				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-				//sShell.setLayout(gridLayout);
-				java.util.List<String> listOfBPELVariablesAsStrings=VariableUtils.getUseableVariables(getProcess());
-				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
-				if(!bpelVariableWindow.isWindowOpen()){
+				// sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				// sShell.setLayout(gridLayout);
+				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
+						.getUseableVariables(getProcess());
+				bpelVariableWindow
+						.loadBPELVariables(listOfBPELVariablesAsStrings);
+				if (!bpelVariableWindow.isWindowOpen()) {
 					bpelVariableWindow.openWindow();
 					bpelVariableWindow.setWindowIsOpen(true);
 				}
-				
-				 
+
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
-				
-				
+
 			}
 		});
-		
+
 		insertTable = new Button(statementCompo, SWT.NONE);
 		insertTable.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				//Display tablesDisplay =new Display();
-				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
-				tabelsPopWindowTables=new TablsListPopUp(statementText);
-				//Display display2 = Display.getDefault();
+				// Display tablesDisplay =new Display();
+				// Composite tablesComp=new
+				// Composite(tablesDisplay.getCurrent(), SWT.NONE);
+				tabelsPopWindowTables = new TablsListPopUp(statementText);
+				// Display display2 = Display.getDefault();
 				tabelsPopWindowTables.setText("Select Tabel");
-				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+				// sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				// sShell.setLayout(gridLayout);
+				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils
+						.findDataSourceByName(getProcess(),
+								dataSourceAddressCombo.getText()));
 
-				if(!tabelsPopWindowTables.isWindowOpen()){
+				if (!tabelsPopWindowTables.isWindowOpen()) {
 					tabelsPopWindowTables.openWindow();
 					tabelsPopWindowTables.setWindowIsOpen(true);
 				}
-				
+
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
-				
+
 			}
 		});
-		
+
 		Save = new Button(statementCompo, SWT.NONE);
-		Save.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		Save
+				.setBackground(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
 		Save.setText("Save");
 		Save.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
 				saveStatementToModel();
-				
+
 				tabelsPopWindowTables.closeWindow();
 				tabelsPopWindowBPELVariables.closeWindow();
 				tabelsPopWindowTables.setWindowIsOpen(false);
 				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
 				saveStatementToModel();
-				
+
 				tabelsPopWindowTables.closeWindow();
 				tabelsPopWindowBPELVariables.closeWindow();
 				tabelsPopWindowTables.setWindowIsOpen(false);
@@ -357,29 +364,30 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			}
 		});
 
-		insertTable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		insertTable.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		insertTable.setText("Insert Table");
-		
-		//insertBpelVariable.setLayoutData(gridData24);
-		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		statementText = new LiveEditStyleText(statementCompo,this);
+
+		// insertBpelVariable.setLayoutData(gridData24);
+		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		statementText = new LiveEditStyleText(statementCompo, this);
 		statementText.setLayoutData(gridData15);
-		
-		
+
 		statementText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		
-//		statementText.addModifyListener(new ModifyListener() {
-//			
-//			@Override
-//			public void modifyText(ModifyEvent e) {
-//				setStatement(statementText.getText());
-//				saveStatementToModel();
-//			}
-//		});
-		//statementText.setVisible(false);
-		//+++++++++++++++++++++++++++++++++++++++++++++++++++++
-		
+
+		// statementText.addModifyListener(new ModifyListener() {
+		//			
+		// @Override
+		// public void modifyText(ModifyEvent e) {
+		// setStatement(statementText.getText());
+		// saveStatementToModel();
+		// }
+		// });
+		// statementText.setVisible(false);
+		// +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 		typeText.setEnabled(false);
 		kindText.setEnabled(false);
 		languageText.setEnabled(false);
@@ -401,7 +409,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 		// Aktualisieren der KindCombo-Daten
 		typeText.addModifyListener(new ModifyListener() {
-			
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				// TODO Auto-generated method stub
@@ -432,7 +440,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		kindText.setLayoutData(gridData6);
 
 		kindText.addModifyListener(new ModifyListener() {
-			
+
 			@Override
 			public void modifyText(ModifyEvent e) {
 				// TODO Auto-generated method stub
@@ -441,13 +449,17 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 						new SetDsKindCommand(activity, kindText.getText()));
 			}
 		});
-				
+
 		// Wert aus Modell setzen
 		kindText.setText(this.activity.getDsKind());
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement
+	 * ()
 	 */
 	@Override
 	public String getStatement() {
@@ -455,20 +467,27 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		return this.statement;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement
+	 * (java.lang.String)
 	 */
 	@Override
 	public void setStatement(String statement) {
 		// TODO Auto-generated method stub
 		this.statement = statement;
-		if (statementText != null){
+		if (statementText != null && statement != null) {
 			statementText.setText(statement);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#saveStatementToModel()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @seeorg.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#
+	 * saveStatementToModel()
 	 */
 	@Override
 	public void saveStatementToModel() {

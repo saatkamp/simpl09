@@ -1327,7 +1327,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__DOCUMENTATION_ELEMENT = BPELPackage.EXTENSION_ACTIVITY__DOCUMENTATION_ELEMENT;
+	int TRANSFER_ACTIVITY__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -1336,7 +1336,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__ELEMENT = BPELPackage.EXTENSION_ACTIVITY__ELEMENT;
+	int TRANSFER_ACTIVITY__ELEMENT = DATA_MANAGEMENT_ACTIVITY__ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
@@ -1345,7 +1345,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__EEXTENSIBILITY_ELEMENTS = BPELPackage.EXTENSION_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
+	int TRANSFER_ACTIVITY__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
@@ -1354,7 +1354,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__DOCUMENTATION = BPELPackage.EXTENSION_ACTIVITY__DOCUMENTATION;
+	int TRANSFER_ACTIVITY__DOCUMENTATION = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1363,7 +1363,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__NAME = BPELPackage.EXTENSION_ACTIVITY__NAME;
+	int TRANSFER_ACTIVITY__NAME = DATA_MANAGEMENT_ACTIVITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
@@ -1372,7 +1372,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__SUPPRESS_JOIN_FAILURE = BPELPackage.EXTENSION_ACTIVITY__SUPPRESS_JOIN_FAILURE;
+	int TRANSFER_ACTIVITY__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_ACTIVITY__SUPPRESS_JOIN_FAILURE;
 
 	/**
 	 * The feature id for the '<em><b>Targets</b></em>' containment reference.
@@ -1381,7 +1381,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__TARGETS = BPELPackage.EXTENSION_ACTIVITY__TARGETS;
+	int TRANSFER_ACTIVITY__TARGETS = DATA_MANAGEMENT_ACTIVITY__TARGETS;
 
 	/**
 	 * The feature id for the '<em><b>Sources</b></em>' containment reference.
@@ -1390,34 +1390,97 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__SOURCES = BPELPackage.EXTENSION_ACTIVITY__SOURCES;
+	int TRANSFER_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
 	/**
-	 * The feature id for the '<em><b>From Source</b></em>' containment reference.
+	 * The feature id for the '<em><b>Ds Address</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__FROM_SOURCE = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 0;
+	int TRANSFER_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
 
 	/**
-	 * The feature id for the '<em><b>To Source</b></em>' containment reference.
+	 * The feature id for the '<em><b>Ds Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__TO_SOURCE = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 1;
+	int TRANSFER_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' attribute.
+	 * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY__TARGET = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 2;
+	int TRANSFER_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
+
+	/**
+	 * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFER_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFER_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+
+	/**
+	 * The feature id for the '<em><b>Target Ds Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFER_ACTIVITY__TARGET_DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target Ds Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFER_ACTIVITY__TARGET_DS_TYPE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Target Ds Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFER_ACTIVITY__TARGET_DS_KIND = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Target Ds Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Target Ds Container</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFER_ACTIVITY__TARGET_DS_CONTAINER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Transfer Activity</em>' class.
@@ -1426,7 +1489,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFER_ACTIVITY_FEATURE_COUNT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 3;
+	int TRANSFER_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 5;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataManagementActivity <em>Data Management Activity</em>}'.
@@ -1592,37 +1655,59 @@ public interface ModelPackage extends EPackage {
 	EClass getTransferActivity();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.simpl.model.TransferActivity#getFromSource <em>From Source</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsAddress <em>Target Ds Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>From Source</em>'.
-	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getFromSource()
+	 * @return the meta object for the attribute '<em>Target Ds Address</em>'.
+	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsAddress()
 	 * @see #getTransferActivity()
 	 * @generated
 	 */
-	EReference getTransferActivity_FromSource();
+	EAttribute getTransferActivity_TargetDsAddress();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.simpl.model.TransferActivity#getToSource <em>To Source</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsType <em>Target Ds Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>To Source</em>'.
-	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getToSource()
+	 * @return the meta object for the attribute '<em>Target Ds Type</em>'.
+	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsType()
 	 * @see #getTransferActivity()
 	 * @generated
 	 */
-	EReference getTransferActivity_ToSource();
+	EAttribute getTransferActivity_TargetDsType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsKind <em>Target Ds Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Target</em>'.
-	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getTarget()
+	 * @return the meta object for the attribute '<em>Target Ds Kind</em>'.
+	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsKind()
 	 * @see #getTransferActivity()
 	 * @generated
 	 */
-	EAttribute getTransferActivity_Target();
+	EAttribute getTransferActivity_TargetDsKind();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsLanguage <em>Target Ds Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Ds Language</em>'.
+	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsLanguage()
+	 * @see #getTransferActivity()
+	 * @generated
+	 */
+	EAttribute getTransferActivity_TargetDsLanguage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsContainer <em>Target Ds Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Ds Container</em>'.
+	 * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsContainer()
+	 * @see #getTransferActivity()
+	 * @generated
+	 */
+	EAttribute getTransferActivity_TargetDsContainer();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1804,28 +1889,44 @@ public interface ModelPackage extends EPackage {
 		EClass TRANSFER_ACTIVITY = eINSTANCE.getTransferActivity();
 
 		/**
-		 * The meta object literal for the '<em><b>From Source</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Target Ds Address</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSFER_ACTIVITY__FROM_SOURCE = eINSTANCE.getTransferActivity_FromSource();
+		EAttribute TRANSFER_ACTIVITY__TARGET_DS_ADDRESS = eINSTANCE.getTransferActivity_TargetDsAddress();
 
 		/**
-		 * The meta object literal for the '<em><b>To Source</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Target Ds Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSFER_ACTIVITY__TO_SOURCE = eINSTANCE.getTransferActivity_ToSource();
+		EAttribute TRANSFER_ACTIVITY__TARGET_DS_TYPE = eINSTANCE.getTransferActivity_TargetDsType();
 
 		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Target Ds Kind</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRANSFER_ACTIVITY__TARGET = eINSTANCE.getTransferActivity_Target();
+		EAttribute TRANSFER_ACTIVITY__TARGET_DS_KIND = eINSTANCE.getTransferActivity_TargetDsKind();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Ds Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE = eINSTANCE.getTransferActivity_TargetDsLanguage();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Ds Container</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFER_ACTIVITY__TARGET_DS_CONTAINER = eINSTANCE.getTransferActivity_TargetDsContainer();
 
 	}
 
