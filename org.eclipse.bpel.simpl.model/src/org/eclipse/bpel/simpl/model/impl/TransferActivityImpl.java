@@ -1,82 +1,139 @@
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
- * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
- * <b>Company:</b> SIMPL<br>
- * 
- * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id: $ <br>
- * @link http://code.google.com/p/simpl09/
+ * <copyright>
+ * </copyright>
  *
+ * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
-import org.eclipse.bpel.model.impl.ExtensionActivityImpl;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
-import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Transfer Activity</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Transfer Activity</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getFromSource <em>From Source</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getToSource <em>To Source</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getTargetDsAddress <em>Target Ds Address</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getTargetDsType <em>Target Ds Type</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getTargetDsKind <em>Target Ds Kind</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getTargetDsLanguage <em>Target Ds Language</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl#getTargetDsContainer <em>Target Ds Container</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TransferActivityImpl extends ExtensionActivityImpl implements
-		TransferActivity {
+public class TransferActivityImpl extends DataManagementActivityImpl implements TransferActivity {
 	/**
-	 * The cached value of the '{@link #getFromSource() <em>From Source</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getFromSource()
-	 * @customized
-	 * @ordered
-	 */
-	protected DataManagementActivity fromSource = new DataManagementActivityImpl();
-
-	/**
-	 * The cached value of the '{@link #getToSource() <em>To Source</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getToSource()
-	 * @customized
-	 * @ordered
-	 */
-	protected DataManagementActivity toSource = new DataManagementActivityImpl();
-
-	/**
-	 * The default value of the '{@link #getTarget() <em>Target</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getTarget()
+	 * The default value of the '{@link #getTargetDsAddress() <em>Target Ds Address</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TARGET_EDEFAULT = "target";
+	protected static final String TARGET_DS_ADDRESS_EDEFAULT = "address";
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getTarget()
+	 * The cached value of the '{@link #getTargetDsAddress() <em>Target Ds Address</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected String target = TARGET_EDEFAULT;
+	protected String targetDsAddress = TARGET_DS_ADDRESS_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getTargetDsType() <em>Target Ds Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TARGET_DS_TYPE_EDEFAULT = "type";
+
+	/**
+	 * The cached value of the '{@link #getTargetDsType() <em>Target Ds Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String targetDsType = TARGET_DS_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTargetDsKind() <em>Target Ds Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TARGET_DS_KIND_EDEFAULT = "kind";
+
+	/**
+	 * The cached value of the '{@link #getTargetDsKind() <em>Target Ds Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected String targetDsKind = TARGET_DS_KIND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTargetDsLanguage() <em>Target Ds Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TARGET_DS_LANGUAGE_EDEFAULT = "language";
+
+	/**
+	 * The cached value of the '{@link #getTargetDsLanguage() <em>Target Ds Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsLanguage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String targetDsLanguage = TARGET_DS_LANGUAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTargetDsContainer() <em>Target Ds Container</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsContainer()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TARGET_DS_CONTAINER_EDEFAULT = "targetDsContainer";
+
+	/**
+	 * The cached value of the '{@link #getTargetDsContainer() <em>Target Ds Container</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetDsContainer()
+	 * @generated
+	 * @ordered
+	 */
+	protected String targetDsContainer = TARGET_DS_CONTAINER_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected TransferActivityImpl() {
@@ -84,7 +141,8 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -93,242 +151,236 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataManagementActivity getFromSource() {
-		return fromSource;
+	public String getTargetDsAddress() {
+		return targetDsAddress;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @customized
 	 */
-	public NotificationChain basicSetFromSource(
-			DataManagementActivity newFromSource, NotificationChain msgs) {
-		DataManagementActivity oldFrom = fromSource;
-		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(this, oldFrom, newFromSource);
-		}
-		fromSource = newFromSource;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, oldFrom,
-					newFromSource);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @customized
-	 */
-	public void setFromSource(DataManagementActivity newFromSource) {
-		if (newFromSource != fromSource) {
-			NotificationChain msgs = null;
-			if (fromSource != null)
-				msgs = ((InternalEObject) fromSource).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE,
-						null, msgs);
-			if (newFromSource != null)
-				msgs = ((InternalEObject) newFromSource).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE,
-						null, msgs);
-			msgs = basicSetFromSource(newFromSource, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE, newFromSource,
-					newFromSource));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataManagementActivity getToSource() {
-		return toSource;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @customized
-	 */
-	public NotificationChain basicSetToSource(
-			DataManagementActivity newToSource, NotificationChain msgs) {
-		DataManagementActivity oldToSource = toSource;
-		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(this, oldToSource, newToSource);
-		}
-		toSource = newToSource;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE, oldToSource,
-					newToSource);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @customized
-	 */
-	public void setToSource(DataManagementActivity newToSource) {
-		if (newToSource != toSource) {
-			NotificationChain msgs = null;
-			if (toSource != null)
-				msgs = ((InternalEObject) toSource).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE,
-						null, msgs);
-			if (newToSource != null)
-				msgs = ((InternalEObject) newToSource).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE,
-						null, msgs);
-			msgs = basicSetToSource(newToSource, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE, newToSource,
-					newToSource));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getTarget() {
-		return target;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @customized
-	 */
-	public void setTarget(String newTarget) {
-		String oldTarget = target;
-		target = newTarget;
+	public void setTargetDsAddress(String newTargetDsAddress) {
+		String oldTargetDsAddress = targetDsAddress;
 		if (!isReconciling) {
 			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-					.getTransferActivity_Target().getName(), newTarget);
+					.getTransferActivity_TargetDsAddress().getName(),
+					newTargetDsAddress);
 		}
+		targetDsAddress = newTargetDsAddress;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ModelPackage.TRANSFER_ACTIVITY__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_ADDRESS, oldTargetDsAddress, targetDsAddress));
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE:
-				return basicSetFromSource(null, msgs);
-			case ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE:
-				return basicSetToSource(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public String getTargetDsType() {
+		return targetDsType;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @customized
+	 */
+	public void setTargetDsType(String newTargetDsType) {
+		String oldTargetDsType = targetDsType;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+					.getTransferActivity_TargetDsType().getName(),
+					newTargetDsType);
+		}
+		targetDsType = newTargetDsType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_TYPE, oldTargetDsType, targetDsType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTargetDsKind() {
+		return targetDsKind;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @customized
+	 */
+	public void setTargetDsKind(String newTargetDsKind) {
+		String oldTargetDsKind = targetDsKind;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+					.getTransferActivity_TargetDsKind().getName(),
+					newTargetDsKind);
+		}
+		targetDsKind = newTargetDsKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_KIND, oldTargetDsKind, targetDsKind));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTargetDsLanguage() {
+		return targetDsLanguage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @customized
+	 */
+	public void setTargetDsLanguage(String newTargetDsLanguage) {
+		String oldTargetDsLanguage = targetDsLanguage;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+					.getTransferActivity_TargetDsLanguage().getName(),
+					newTargetDsLanguage);
+		}
+		targetDsLanguage = newTargetDsLanguage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE, oldTargetDsLanguage, targetDsLanguage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTargetDsContainer() {
+		return targetDsContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @customized
+	 */
+	public void setTargetDsContainer(String newTargetDsContainer) {
+		String oldTargetDsContainer = targetDsContainer;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+					.getTransferActivity_TargetDsContainer().getName(),
+					newTargetDsContainer);
+		}
+		targetDsContainer = newTargetDsContainer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_CONTAINER, oldTargetDsContainer, targetDsContainer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE:
-				return getFromSource();
-			case ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE:
-				return getToSource();
-			case ModelPackage.TRANSFER_ACTIVITY__TARGET:
-				return getTarget();
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_ADDRESS:
+				return getTargetDsAddress();
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_TYPE:
+				return getTargetDsType();
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_KIND:
+				return getTargetDsKind();
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE:
+				return getTargetDsLanguage();
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_CONTAINER:
+				return getTargetDsContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE:
-				setFromSource((DataManagementActivity)newValue);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_ADDRESS:
+				setTargetDsAddress((String)newValue);
 				return;
-			case ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE:
-				setToSource((DataManagementActivity)newValue);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_TYPE:
+				setTargetDsType((String)newValue);
 				return;
-			case ModelPackage.TRANSFER_ACTIVITY__TARGET:
-				setTarget((String)newValue);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_KIND:
+				setTargetDsKind((String)newValue);
+				return;
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE:
+				setTargetDsLanguage((String)newValue);
+				return;
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_CONTAINER:
+				setTargetDsContainer((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE:
-				setFromSource((DataManagementActivity)null);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_ADDRESS:
+				setTargetDsAddress(TARGET_DS_ADDRESS_EDEFAULT);
 				return;
-			case ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE:
-				setToSource((DataManagementActivity)null);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_TYPE:
+				setTargetDsType(TARGET_DS_TYPE_EDEFAULT);
 				return;
-			case ModelPackage.TRANSFER_ACTIVITY__TARGET:
-				setTarget(TARGET_EDEFAULT);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_KIND:
+				setTargetDsKind(TARGET_DS_KIND_EDEFAULT);
+				return;
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE:
+				setTargetDsLanguage(TARGET_DS_LANGUAGE_EDEFAULT);
+				return;
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_CONTAINER:
+				setTargetDsContainer(TARGET_DS_CONTAINER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.TRANSFER_ACTIVITY__FROM_SOURCE:
-				return fromSource != null;
-			case ModelPackage.TRANSFER_ACTIVITY__TO_SOURCE:
-				return toSource != null;
-			case ModelPackage.TRANSFER_ACTIVITY__TARGET:
-				return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT.equals(target);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_ADDRESS:
+				return TARGET_DS_ADDRESS_EDEFAULT == null ? targetDsAddress != null : !TARGET_DS_ADDRESS_EDEFAULT.equals(targetDsAddress);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_TYPE:
+				return TARGET_DS_TYPE_EDEFAULT == null ? targetDsType != null : !TARGET_DS_TYPE_EDEFAULT.equals(targetDsType);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_KIND:
+				return TARGET_DS_KIND_EDEFAULT == null ? targetDsKind != null : !TARGET_DS_KIND_EDEFAULT.equals(targetDsKind);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE:
+				return TARGET_DS_LANGUAGE_EDEFAULT == null ? targetDsLanguage != null : !TARGET_DS_LANGUAGE_EDEFAULT.equals(targetDsLanguage);
+			case ModelPackage.TRANSFER_ACTIVITY__TARGET_DS_CONTAINER:
+				return TARGET_DS_CONTAINER_EDEFAULT == null ? targetDsContainer != null : !TARGET_DS_CONTAINER_EDEFAULT.equals(targetDsContainer);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -336,10 +388,18 @@ public class TransferActivityImpl extends ExtensionActivityImpl implements
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (target: ");
-		result.append(target);
+		result.append(" (targetDsAddress: ");
+		result.append(targetDsAddress);
+		result.append(", targetDsType: ");
+		result.append(targetDsType);
+		result.append(", targetDsKind: ");
+		result.append(targetDsKind);
+		result.append(", targetDsLanguage: ");
+		result.append(targetDsLanguage);
+		result.append(", targetDsContainer: ");
+		result.append(targetDsContainer);
 		result.append(')');
 		return result.toString();
 	}
 
-} // TransferActivityImpl
+} //TransferActivityImpl

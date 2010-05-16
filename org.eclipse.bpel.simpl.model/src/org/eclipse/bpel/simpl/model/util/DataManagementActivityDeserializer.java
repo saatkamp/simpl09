@@ -379,102 +379,61 @@ public class DataManagementActivityDeserializer implements
 		if (DataManagementConstants.ND_TRANSFER_ACTIVITY.equals(elementType
 				.getLocalPart())) {
 
+			String attTargetContainer = ModelPackage.eINSTANCE
+					.getDataManagementActivity_DsStatement().getName();
+			String attTargetKind = ModelPackage.eINSTANCE
+					.getDataManagementActivity_DsKind().getName();
+			String attTargetType = ModelPackage.eINSTANCE
+					.getDataManagementActivity_DsType().getName();
+			String attTargetAddress = ModelPackage.eINSTANCE
+					.getDataManagementActivity_DsAddress().getName();
+			String attTargetLanguage = ModelPackage.eINSTANCE
+					.getDataManagementActivity_DsLanguage().getName();
+
 			Element transferActivityElement = (Element) node;
-			
+
 			// create a TransferActivity model object
 			TransferActivity activity = ModelFactory.eINSTANCE
 					.createTransferActivity();
 			// attach the DOM node to our new activity
 			activity.setElement(transferActivityElement);
 
-			// handle the TransferActivity elements
-			Element fromSourceElement = getChildElementByPosition(
-					transferActivityElement, DataManagementConstants.ND_DATA_MANAGEMENT_ACTIVITY, 1);
-			if (fromSourceElement != null) {
-				DataManagementActivity fromSource = ModelFactory.eINSTANCE
-						.createDataManagementActivity();
-				fromSource = xml2DMActivity(fromSource, fromSourceElement);
-				fromSource.setElement(fromSourceElement);
-				activity.setFromSource(fromSource);
-			}
-
-			Element toSourceElement = getChildElementByPosition(
-					transferActivityElement, DataManagementConstants.ND_DATA_MANAGEMENT_ACTIVITY, 2);
-			if (toSourceElement != null) {
-				DataManagementActivity toSource = ModelFactory.eINSTANCE
-						.createDataManagementActivity();
-				toSource = xml2DMActivity(toSource, toSourceElement);
-				toSource.setElement(toSourceElement);
-				activity.setToSource(toSource);
-			}
-
 			// handle the TransferActivity attributes
-			String attTarget = ModelPackage.eINSTANCE
-					.getTransferActivity_Target().getName();
-			if (transferActivityElement.getAttribute(attTarget) != null) {
-				activity.setTarget(transferActivityElement
-						.getAttribute(attTarget));
+			if (transferActivityElement.getAttribute(attStatement) != null) {
+				activity.setDsStatement(transferActivityElement.getAttribute(attStatement));
 			}
-		
+			if (transferActivityElement.getAttribute(attKind) != null) {
+				activity.setDsKind(transferActivityElement.getAttribute(attKind));
+			}
+			if (transferActivityElement.getAttribute(attType) != null) {
+				activity.setDsType(transferActivityElement.getAttribute(attType));
+			}
+			if (transferActivityElement.getAttribute(attAddress) != null) {
+				activity.setDsAddress(transferActivityElement.getAttribute(attAddress));
+			}
+			if (transferActivityElement.getAttribute(attLanguage) != null) {
+				activity.setDsLanguage(transferActivityElement.getAttribute(attLanguage));
+			}
+			if (transferActivityElement.getAttribute(attTargetContainer) != null) {
+				activity.setTargetDsContainer(transferActivityElement.getAttribute(attTargetContainer));
+			}
+			if (transferActivityElement.getAttribute(attTargetKind) != null) {
+				activity.setTargetDsKind(transferActivityElement.getAttribute(attTargetKind));
+			}
+			if (transferActivityElement.getAttribute(attTargetType) != null) {
+				activity.setTargetDsType(transferActivityElement.getAttribute(attTargetType));
+			}
+			if (transferActivityElement.getAttribute(attTargetAddress) != null) {
+				activity.setTargetDsAddress(transferActivityElement.getAttribute(attTargetAddress));
+			}
+			if (transferActivityElement.getAttribute(attTargetLanguage) != null) {
+				activity.setTargetDsLanguage(transferActivityElement.getAttribute(attTargetLanguage));
+			}
+			
 			return activity;
 		}
 
 		System.out.println("Cannot handle this kind of element");
-		return null;
-	}
-
-	private DataManagementActivity xml2DMActivity(
-			DataManagementActivity activity, Element activityElement) {
-
-		String attStatement = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsStatement().getName();
-		String attKind = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsKind().getName();
-		String attType = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsType().getName();
-		String attAddress = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsAddress().getName();
-		String attLanguage = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsLanguage().getName();
-
-		if (activityElement.getAttribute(attStatement) != null) {
-			activity.setDsStatement(activityElement.getAttribute(attStatement));
-		}
-		if (activityElement.getAttribute(attKind) != null) {
-			activity.setDsKind(activityElement.getAttribute(attKind));
-		}
-		if (activityElement.getAttribute(attType) != null) {
-			activity.setDsType(activityElement.getAttribute(attType));
-		}
-		if (activityElement.getAttribute(attAddress) != null) {
-			activity.setDsAddress(activityElement.getAttribute(attAddress));
-		}
-		if (activityElement.getAttribute(attLanguage) != null) {
-			activity.setDsLanguage(activityElement.getAttribute(attLanguage));
-		}
-
-		return activity;
-	}
-
-	/**
-	 * @param parentElement of the return element
-	 * @param localName of the searched element
-	 * @param position of the element with the local name
-	 * @return The #position element with the given local name of the parent element
-	 */
-	public Element getChildElementByPosition(Element parentElement,
-			String localName, int position) {
-		NodeList children = parentElement.getChildNodes();
-		int count = 0; 
-		for (int i = 0; i < children.getLength(); i++) {
-			Node node = children.item(i);
-			if (localName.equals(node.getLocalName())){
-				count++;
-			}
-			if (count == position) {
-				return (Element) node;
-			}
-		}
 		return null;
 	}
 }

@@ -61,15 +61,19 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataVariable" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TransferActivity" eSuperTypes="../../org.eclipse.bpel.model/src/model/bpel.ecore#//ExtensionActivity">
+  <eClassifiers xsi:type="ecore:EClass" name="TransferActivity" eSuperTypes="#//DataManagementActivity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Allows to transfer data between two datasources."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fromSource" lowerBound="1"
-        eType="#//DataManagementActivity" containment="true" eKeys="../../org.eclipse.bpel.model/src/model/bpel.ecore#//Activity/name"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="toSource" lowerBound="1"
-        eType="#//DataManagementActivity" containment="true" eKeys="../../org.eclipse.bpel.model/src/model/bpel.ecore#//Activity/name"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="target"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDsAddress" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDsType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDsKind" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="kind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDsLanguage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="language"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDsContainer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="targetDsContainer"/>
   </eClassifiers>
 </ecore:EPackage>

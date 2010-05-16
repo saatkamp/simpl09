@@ -21,9 +21,11 @@ import org.eclipse.bpel.model.ExtensionActivity;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getFromSource <em>From Source</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getToSource <em>To Source</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsAddress <em>Target Ds Address</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsType <em>Target Ds Type</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsKind <em>Target Ds Kind</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsLanguage <em>Target Ds Language</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsContainer <em>Target Ds Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,84 +33,140 @@ import org.eclipse.bpel.model.ExtensionActivity;
  * @model
  * @generated
  */
-public interface TransferActivity extends ExtensionActivity {
+public interface TransferActivity extends DataManagementActivity {
 	/**
-	 * Returns the value of the '<em><b>From Source</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Target Ds Address</b></em>' attribute.
+	 * The default value is <code>"address"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>From Source</em>' reference isn't clear,
+	 * If the meaning of the '<em>Target Ds Address</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From Source</em>' containment reference.
-	 * @see #setFromSource(DataManagementActivity)
-	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_FromSource()
-	 * @model containment="true" keys="name" required="true"
+	 * @return the value of the '<em>Target Ds Address</em>' attribute.
+	 * @see #setTargetDsAddress(String)
+	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_TargetDsAddress()
+	 * @model default="address"
 	 * @generated
 	 */
-	DataManagementActivity getFromSource();
+	String getTargetDsAddress();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getFromSource <em>From Source</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsAddress <em>Target Ds Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>From Source</em>' containment reference.
-	 * @see #getFromSource()
+	 * @param value the new value of the '<em>Target Ds Address</em>' attribute.
+	 * @see #getTargetDsAddress()
 	 * @generated
 	 */
-	void setFromSource(DataManagementActivity value);
+	void setTargetDsAddress(String value);
 
 	/**
-	 * Returns the value of the '<em><b>To Source</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Target Ds Type</b></em>' attribute.
+	 * The default value is <code>"type"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>To Source</em>' reference isn't clear,
+	 * If the meaning of the '<em>Target Ds Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>To Source</em>' containment reference.
-	 * @see #setToSource(DataManagementActivity)
-	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_ToSource()
-	 * @model containment="true" keys="name" required="true"
+	 * @return the value of the '<em>Target Ds Type</em>' attribute.
+	 * @see #setTargetDsType(String)
+	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_TargetDsType()
+	 * @model default="type"
 	 * @generated
 	 */
-	DataManagementActivity getToSource();
+	String getTargetDsType();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getToSource <em>To Source</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsType <em>Target Ds Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>To Source</em>' containment reference.
-	 * @see #getToSource()
+	 * @param value the new value of the '<em>Target Ds Type</em>' attribute.
+	 * @see #getTargetDsType()
 	 * @generated
 	 */
-	void setToSource(DataManagementActivity value);
+	void setTargetDsType(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' attribute.
-	 * The default value is <code>"target"</code>.
+	 * Returns the value of the '<em><b>Target Ds Kind</b></em>' attribute.
+	 * The default value is <code>"kind"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Target Ds Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' attribute.
-	 * @see #setTarget(String)
-	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_Target()
-	 * @model default="target"
+	 * @return the value of the '<em>Target Ds Kind</em>' attribute.
+	 * @see #setTargetDsKind(String)
+	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_TargetDsKind()
+	 * @model default="kind"
 	 * @generated
 	 */
-	String getTarget();
+	String getTargetDsKind();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTarget <em>Target</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsKind <em>Target Ds Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' attribute.
-	 * @see #getTarget()
+	 * @param value the new value of the '<em>Target Ds Kind</em>' attribute.
+	 * @see #getTargetDsKind()
 	 * @generated
 	 */
-	void setTarget(String value);
+	void setTargetDsKind(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Target Ds Language</b></em>' attribute.
+	 * The default value is <code>"language"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Target Ds Language</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Target Ds Language</em>' attribute.
+	 * @see #setTargetDsLanguage(String)
+	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_TargetDsLanguage()
+	 * @model default="language"
+	 * @generated
+	 */
+	String getTargetDsLanguage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsLanguage <em>Target Ds Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Ds Language</em>' attribute.
+	 * @see #getTargetDsLanguage()
+	 * @generated
+	 */
+	void setTargetDsLanguage(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Target Ds Container</b></em>' attribute.
+	 * The default value is <code>"targetDsContainer"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Target Ds Container</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Target Ds Container</em>' attribute.
+	 * @see #setTargetDsContainer(String)
+	 * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferActivity_TargetDsContainer()
+	 * @model default="targetDsContainer"
+	 * @generated
+	 */
+	String getTargetDsContainer();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsContainer <em>Target Ds Container</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Target Ds Container</em>' attribute.
+	 * @see #getTargetDsContainer()
+	 * @generated
+	 */
+	void setTargetDsContainer(String value);
 
 } // TransferActivity

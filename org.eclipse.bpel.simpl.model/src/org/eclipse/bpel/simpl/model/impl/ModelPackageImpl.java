@@ -441,8 +441,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransferActivity_FromSource() {
-		return (EReference)transferActivityEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTransferActivity_TargetDsAddress() {
+		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(0);
 	}
 
 
@@ -451,8 +451,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransferActivity_ToSource() {
-		return (EReference)transferActivityEClass.getEStructuralFeatures().get(1);
+	public EAttribute getTransferActivity_TargetDsType() {
+		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(1);
 	}
 
 
@@ -461,8 +461,28 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransferActivity_Target() {
+	public EAttribute getTransferActivity_TargetDsKind() {
 		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransferActivity_TargetDsLanguage() {
+		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(3);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransferActivity_TargetDsContainer() {
+		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(4);
 	}
 
 
@@ -521,9 +541,11 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(retrieveDataActivityEClass, RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE);
 
 		transferActivityEClass = createEClass(TRANSFER_ACTIVITY);
-		createEReference(transferActivityEClass, TRANSFER_ACTIVITY__FROM_SOURCE);
-		createEReference(transferActivityEClass, TRANSFER_ACTIVITY__TO_SOURCE);
-		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET);
+		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_ADDRESS);
+		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_TYPE);
+		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_KIND);
+		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE);
+		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_CONTAINER);
 	}
 
 	/**
@@ -566,7 +588,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		dropActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		callActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 		retrieveDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		transferActivityEClass.getESuperTypes().add(theBPELPackage.getExtensionActivity());
+		transferActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataManagementActivityEClass, DataManagementActivity.class, "DataManagementActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -595,11 +617,11 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getRetrieveDataActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, RetrieveDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transferActivityEClass, TransferActivity.class, "TransferActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransferActivity_FromSource(), this.getDataManagementActivity(), null, "fromSource", null, 1, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getTransferActivity_FromSource().getEKeys().add(theBPELPackage.getActivity_Name());
-		initEReference(getTransferActivity_ToSource(), this.getDataManagementActivity(), null, "toSource", null, 1, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getTransferActivity_ToSource().getEKeys().add(theBPELPackage.getActivity_Name());
-		initEAttribute(getTransferActivity_Target(), ecorePackage.getEString(), "target", "target", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferActivity_TargetDsAddress(), ecorePackage.getEString(), "targetDsAddress", "address", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferActivity_TargetDsType(), ecorePackage.getEString(), "targetDsType", "type", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferActivity_TargetDsKind(), ecorePackage.getEString(), "targetDsKind", "kind", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferActivity_TargetDsLanguage(), ecorePackage.getEString(), "targetDsLanguage", "language", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransferActivity_TargetDsContainer(), ecorePackage.getEString(), "targetDsContainer", "targetDsContainer", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
