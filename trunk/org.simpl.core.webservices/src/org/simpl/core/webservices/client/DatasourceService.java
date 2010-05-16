@@ -187,11 +187,29 @@ public interface DatasourceService {
 
     /**
      * 
+     * @param dataSource
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "getDataFormatTypes")
+    @WebMethod(action = "getSupportedDataFormatTypes")
     @WebResult(partName = "return")
-    public String getDataFormatTypes();
+    public String getSupportedDataFormatTypes(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource);
+
+    /**
+     * 
+     * @param dataSource
+     * @param dataFormatType
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "getSupportedConvertDataFormatTypes")
+    @WebResult(partName = "return")
+    public String getSupportedConvertDataFormatTypes(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
+        @WebParam(name = "dataFormatType", partName = "dataFormatType")
+        String dataFormatType);
 
 }
