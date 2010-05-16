@@ -4,7 +4,6 @@
 	<property environment="env" />
 	<property name="axis2.home" value="${env.AXIS2_HOME}" />
 	<property name="tuscany.home" value="C:\Programme\Apache\tuscany-das-1.0-incubating-beta2\" />
-	<property name="jdom.home" value="C:\Programme\Apache_Stuff\jdom\" />
 	<property name="project.base.dir" value="." />
 	<property name="maven.class.path" value="" />
 	<property name="name" value="simpl-rrs" />
@@ -15,11 +14,6 @@
 	<property name="lib" value="${build}/lib" />
 	<property name="resources" value="${project.base.dir}/resources" />
 	<property value="" name="jars.ok" />
-	<path id="jdom.class.path">
-		<fileset dir="${jdom.home}">
-			<include name="build/*.jar" />
-		</fileset>
-	</path>
 	<path id="tuscany.class.path">
 		<fileset dir="${tuscany.home}">
 			<include name="lib/*.jar" />
@@ -55,7 +49,6 @@
 		<javac debug="on" memoryMaximumSize="512m" memoryInitialSize="256m" fork="true" destdir="${classes}" srcdir="${src}">
 			<classpath refid="axis2.class.path" />
 			<classpath refid="tuscany.class.path" />
-			<classpath refid="jdom.class.path" />
 		</javac>
 	</target>
 	<target depends="compile.src" name="compile.test" if="jars.ok">
@@ -63,7 +56,6 @@
 			<src path="${test}" />
 			<classpath refid="axis2.class.path" />
 			<classpath refid="tuscany.class.path" />
-			<classpath refid="jdom.class.path" />
 		</javac>
 	</target>
 	<target depends="pre.compile.test" name="echo.classpath.problem" unless="jars.ok">
@@ -108,7 +100,6 @@
 			<pathelement location="${lib}/${name}-test-client.jar" />
 			<path refid="axis2.class.path" />
 			<path refid="tuscany.class.path" />
-			<path refid="jdom.class.path" />
 			<pathelement location="${classes}" />
 		</path>
 		<mkdir dir="${build}/test-reports/" />

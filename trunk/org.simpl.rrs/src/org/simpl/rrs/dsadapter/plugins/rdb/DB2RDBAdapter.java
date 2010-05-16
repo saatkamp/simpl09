@@ -1,16 +1,17 @@
 package org.simpl.rrs.dsadapter.plugins.rdb;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.tuscany.das.rdb.Command;
 import org.apache.tuscany.das.rdb.DAS;
 import org.simpl.rrs.dsadapter.plugins.DSAdapterPlugin;
 
 import commonj.sdo.DataObject;
+import commonj.sdo.helper.XMLHelper;
 
 public class DB2RDBAdapter extends DSAdapterPlugin{
 	
@@ -66,26 +67,38 @@ public class DB2RDBAdapter extends DSAdapterPlugin{
 	    return success;
 	}
 	
-	public ResultSet retrieveData (String dsAddress, String statement){
+	public Object retrieveData (String dsAddress, String statement){
 		
-		Connection con = openConnection(dsAddress);
-		Statement state;
-		ResultSet rs = null;
-		try {
-			state = con.createStatement();
-
-			rs = state.executeQuery(statement);
-
-		} catch (SQLException e) {
+//		Connection con = openConnection(dsAddress);
+//		Statement state;
+//		ResultSet rs = null;
+//		try {
+//			state = con.createStatement();
+//
+//			rs = state.executeQuery(statement);
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		return rs;
+		
+		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
+	    Command read = das.createCommand(statement);
+	    DataObject root = read.executeQuery();
+	    
+ByteArrayOutputStream byteOuputStream =new ByteArrayOutputStream();
+	    
+	    try {
+			XMLHelper.INSTANCE.save(root, "commonj.sdo", "dataObject", byteOuputStream);
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		return rs;
-		
-//		DAS das = DAS.FACTORY.createDAS(openConnection(dsAddress));
-//	    Command read = das.createCommand(statement);
-//	    DataObject root = read.executeQuery();
+	    
+	    return new String(byteOuputStream.toByteArray());
+	    
 	}
 
 }

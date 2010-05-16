@@ -1,16 +1,11 @@
 package org.simpl.rrs;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
-import java.util.StringTokenizer;
 
-import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.webservices.EPR;
 import org.simpl.rrs.webservices.ReferenceParameters;
 import org.simpl.rrs.webservices.ReferenceProperties;
-
-import commonj.sdo.DataObject;
 
 public class Test {
 	
@@ -87,28 +82,8 @@ public class Test {
 //		RRS.getInstance().managementService().Insert(EPR2);
 //		RRS.getInstance().managementService().Update(EPR3);
 //		System.out.println(RRS.getInstance().metadataService().getAllEPR());
-		
-		
-		
-		LinkedHashMap<String, String> EPRHM = EPRtoHM(EPR4);
-		System.out.println(EPRHM.get("dsAddress"));
-
-		String dsType = null;
-		String dsSubtype = null;
-		@SuppressWarnings("unused")
-		String dsLanguage = null;
-
-		StringTokenizer st = new StringTokenizer(EPRHM.get("adapterType"), ":");
-		dsType = st.nextToken();
-		dsSubtype = st.nextToken();
-		dsLanguage = st.nextToken();
-
-		// Hier der ganze selbe Mist wie bei DatasourceService, Adapter
-		// auswählen
-		// anhand von Type und Subtype, und Daten holen...
-		
-		
-//		RRS.getInstance().retrievalService().get(EPR4);
+				
+		System.out.println(RRS.getInstance().retrievalService().get(EPR4));
 
 //		RRS.getInstance().metadataService().getEPR("test2");
 		
