@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getLanguage <em>Language</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TDatasourceImpl#getFormat <em>Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -181,6 +182,26 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 	 * @ordered
 	 */
 	protected String password = PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FORMAT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String format = FORMAT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -332,6 +353,27 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getFormat() {
+		return format;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFormat(String newFormat) {
+		String oldFormat = format;
+		format = newFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TDATASOURCE__FORMAT, oldFormat, format));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getUserName() {
 		return userName;
 	}
@@ -370,6 +412,8 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return getUserName();
 			case ddPackage.TDATASOURCE__PASSWORD:
 				return getPassword();
+			case ddPackage.TDATASOURCE__FORMAT:
+				return getFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -402,6 +446,9 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return;
 			case ddPackage.TDATASOURCE__PASSWORD:
 				setPassword((String)newValue);
+				return;
+			case ddPackage.TDATASOURCE__FORMAT:
+				setFormat((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -436,6 +483,9 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 			case ddPackage.TDATASOURCE__PASSWORD:
 				setPassword(PASSWORD_EDEFAULT);
 				return;
+			case ddPackage.TDATASOURCE__FORMAT:
+				setFormat(FORMAT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -462,6 +512,8 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 				return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
 			case ddPackage.TDATASOURCE__PASSWORD:
 				return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
+			case ddPackage.TDATASOURCE__FORMAT:
+				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -490,6 +542,8 @@ public class TDatasourceImpl extends EObjectImpl implements TDatasource {
 		result.append(userName);
 		result.append(", password: ");
 		result.append(password);
+		result.append(", format: ");
+		result.append(format);
 		result.append(')');
 		return result.toString();
 	}
