@@ -1842,11 +1842,11 @@ key "key-1"
 \end_layout
 
 \begin_layout Subsubsection*
-org.simpl.core.services.storage
+org.simpl.core.services.strategy
 \end_layout
 
 \begin_layout Standard
-Hier befinden sich alle Klassen zur Realisierung des Storage Service (siehe
+Hier befinden sich alle Klassen zur Realisierung des Strategy Service (siehe
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1854,9 +1854,8 @@ key "key-1"
 
 \end_inset
 
-, Kapitel 3.3.5).
- Dieser Dienst wird benötigt, um das Speichern und Laden von Einstellungen
- und Metadaten des SIMPL Rahmenwerks zu realisieren.
+, Kapitel 3.3.4).
+ Dieser Dienst wird für das Late Binding benötigt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1910,8 +1909,8 @@ org.simpl.core.plugins.dataformat
 \end_layout
 
 \begin_layout Standard
-Hier befinden sich die Plug-Ins für den Dataformat Service, die für die
- Unterstützung verschiedener Datenformate entwickelt werden.
+Hier befinden sich die DataFormat Plug-Ins, die für die Unterstützung verschiede
+ner Datenformate entwickelt werden.
  Falls sich die einzelnen Plug-Ins auf mehrere Klassen verteilen, können
  diese zusätzlich auf eigene Unterpakete verteilt werden.
  Das Plug-In-System wird in Kapitel 
@@ -1922,6 +1921,16 @@ reference "sub:Plug-In-System"
 \end_inset
 
  näher beschrieben.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.core.plugins.dataformat.converter
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich die DataFormatConverter Plug-Ins, die für die Konvertierung
+ zwischen DataFormat Plug-Ins entwickelt werden um einen Austausch von Daten
+ zwischen verschiedenen Datasource Services zu ermöglichen.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1941,6 +1950,135 @@ org.simpl.core.helpers
 
 \begin_layout Standard
 In diesem Paket befinden sich Hilfsklassen, die den Entwickler unterstützen.
+\end_layout
+
+\begin_layout Subsection
+Interfaces 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Interfaces beschreiben
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+DataSourceService<S, T>
+\end_layout
+
+\begin_layout Subsubsection
+DataFormat<S, T>
+\end_layout
+
+\begin_layout Subsubsection
+DataFormatConverter
+\end_layout
+
+\begin_layout Subsubsection
+StrategyService
+\end_layout
+
+\begin_layout Subsubsection
+AdministrationService
+\end_layout
+
+\begin_layout Subsection
+Datentypen und Enumerationen
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Beschreibung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+DataSource
+\end_layout
+
+\begin_layout Subsubsection
+Authentication
+\end_layout
+
+\begin_layout Subsubsection
+LateBinding
+\end_layout
+
+\begin_layout Subsubsection
+Strategy
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Hilfsklassen"
+
+\end_inset
+
+Hilfsklassen
+\end_layout
+
+\begin_layout Standard
+Für den Entwickler werden folgende Hilfsklassen zur Verfügung gestellt.
+\end_layout
+
+\begin_layout Subsubsection
+Printer
+\end_layout
+
+\begin_layout Standard
+Mit der Klasse
+\emph on
+ Printer
+\emph default
+ kann über die statische Methode 
+\emph on
++printDataObject(DataObject) 
+\emph default
+ein SDO auf der Konsole ausgeben werden.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Parameter"
+
+\end_inset
+
+Parameter
+\end_layout
+
+\begin_layout Standard
+Mit der Klasse 
+\emph on
+Parameter 
+\emph default
+können über die statischen Methoden 
+\emph on
++serialize(Object object)
+\emph default
+ und 
+\emph on
++deserialize(String data) 
+\emph default
+beliebige Java Objekte zu XML serialisiert und von XML deserialisiert werden.
+ Dies geschieht mit Hilfe der Java Klassen 
+\emph on
+XMLEncoder
+\emph default
+ und 
+\emph on
+XMLDecoder
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -2022,31 +2160,23 @@ Liefert die Instanz des Administration Service.
 \end_layout
 
 \begin_layout Paragraph*
-dataSourceService(String dsType, String dsSubtype) 
+dataSourceService() 
 \end_layout
 
 \begin_layout Standard
-Liefert eine Instanz des Datasource Service.
+Liefert die Instanz des Datasource Service.
 \end_layout
 
 \begin_layout Paragraph*
-dataFormatService(String dfType, String dfSubtype) 
+strategyService() 
 \end_layout
 
 \begin_layout Standard
-Liefert eine Instanz des Dataformat Service.
+Liefert die Instanz des Strategy Service.
 \end_layout
 
 \begin_layout Paragraph*
-storageService() 
-\end_layout
-
-\begin_layout Standard
-Liefert die Instanz des Storage Service.
-\end_layout
-
-\begin_layout Paragraph*
-config() 
+getConfig() 
 \end_layout
 
 \begin_layout Standard
@@ -2055,66 +2185,6 @@ Liefert die Konfiguration des SIMPL Core als Instanz von
 SIMPLConfig
 \emph default
 .
-\end_layout
-
-\begin_layout Paragraph*
-getDataSourceTypes() 
-\end_layout
-
-\begin_layout Standard
-Liefert eine Liste mit allen Datenquellentypen, die durch 
-\emph on
-DataSourcePlugins
-\emph default
- unterstützt werden.
-\end_layout
-
-\begin_layout Paragraph*
-getDataSourceSubtypes(String dsType) 
-\end_layout
-
-\begin_layout Standard
-Liefert eine Liste mit allen Untertypen eines Typs, die durch 
-\emph on
-DataSourcePlugins
-\emph default
- unterstützt werden.
-\end_layout
-
-\begin_layout Paragraph*
-getDataSourceLanguages(String dsSubtype) 
-\end_layout
-
-\begin_layout Standard
-Liefert eine Liste mit allen Anfragesprachen eines Subtyps, der durch 
-\emph on
-DataSourcePlugins
-\emph default
- unterstützt werden.
-\end_layout
-
-\begin_layout Paragraph*
-getDataFormatTypes() 
-\end_layout
-
-\begin_layout Standard
-Liefert eine Liste mit allen Datenformate, die durch 
-\emph on
-DataFormatPlugins
-\emph default
- unterstützt werden.
-\end_layout
-
-\begin_layout Paragraph*
-getDataFormatSubtypes(String dfType)
-\end_layout
-
-\begin_layout Standard
-Liefert eine Liste mit allen Untertypen eines Datenformats, die durch 
-\emph on
-DataFormatPlugins
-\emph default
- unterstützt werden.
 \end_layout
 
 \begin_layout Subsection
@@ -2130,16 +2200,9 @@ SIMPLConfig Klasse
 \begin_layout Standard
 Die installierten Plugins und ggf.
  später weitere Einstellungen des SIMPL Cores, werden über eine Konfigurationsda
-tei registriert, die in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Die-simpl-core-config.xml-Datei"
-
-\end_inset
-
- näher beschrieben wird.
- Das Einlesen und Abrufen der Informationen aus dieser Datei, ist über diese
- Klasse möglich.
+tei registriert, die in folgendem Abschnitt näher beschrieben wird.
+ Das Einlesen und Abrufen der Informationen aus dieser Datei ist über die
+ SIMPLConfig Klasse möglich.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2150,6 +2213,17 @@ name "sub:Die-simpl-core-config.xml-Datei"
 \end_inset
 
 Konfigurationsdatei
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Beschreibung überarbeiten hinsichtlich der Referenzierten Plug-In
+ Namen in tDataFormat und tDataFormatConverter
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2173,7 +2247,7 @@ ode/lib
  abgelegt werden, damit sie erkannt werden.
  Die Konfigurationsdatei wird beim Start des SIMPL Cores einmalig geladen,
  Änderungen an der Konfigurationsdatei sind deshalb erst nach einem Neustart
- verfügbar.
+ von Apache Tomcat verfügbar.
 \end_layout
 
 \begin_layout Standard
@@ -2186,7 +2260,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/iteration2/simpl-core-config.png
+	filename diagramme/iteration2/SIMPLConfigSchema.png
 	width 80text%
 
 \end_inset
@@ -2222,7 +2296,7 @@ Funktionen
 \end_layout
 
 \begin_layout Standard
-Folgende Funktionen stehen zur Verfügung:
+Folgende Funktionen stehen über die Klasse zur Verfügung:
 \end_layout
 
 \begin_layout Paragraph*
@@ -2241,6 +2315,33 @@ getDataFormatPlugins()
 \begin_layout Standard
 Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormatPlu
 gins.
+\end_layout
+
+\begin_layout Paragraph*
+getDataFormatConverterPlugins()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormatCon
+verterPlugins.
+\end_layout
+
+\begin_layout Paragraph*
+getDataFormatMapping()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Hashmap mit voll qualifizierten Namen der registrierten DataFormatP
+lugins und ihren zugewiesenen DataSourceServices.
+\end_layout
+
+\begin_layout Paragraph*
+getDataFormatConverterMapping()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Hashmap mit voll qualifizierten Namen der registrierten DataFormatC
+onverterPlugins und ihren zugewiesenen DataSourceServices.
 \end_layout
 
 \begin_layout Subsection
@@ -2395,102 +2496,6 @@ le durch weitere Eigenschaften möglichst einfach zu halten.
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Storage-Service"
-
-\end_inset
-
-Storage Service
-\end_layout
-
-\begin_layout Standard
-Der Storage Service ist für die Verwaltung von Daten aller SIMPL Core Services
- zuständig.
- Dafür nutzt er ebenfalls die eingebettete Apache Derby Datenbank.
- Seine Architektur und Funktionalität ist der des Administration Services
- sehr ähnlich, mit dem Unterschied, dass die Struktur der zu speichernden
- Daten und ihre Quelle sich zur Laufzeit ständig ändern können.
- Auch der Storage Service nutzt das Prinzip, die Daten nach ihrer Herkunft
- mit Schemata und Tabellen zu strukturieren.
- Da hier aber keine natürliche Struktur wie beim Administration Service
- vorliegt, wird eine entsprechende Gliederung durch die Zugehörigkeit der
- Services erzeugt.
- So werden z.B.
- alle Daten von Services, die etwas mit Sicherheit zu tun haben, unter dem
- Schema 
-\emph on
-Security
-\emph default
- in entsprechende Tabellen gespeichert, wobei die Tabellennamen aus den
- Klassennamen der Services erzeugt werden.
- Die Zugehörigkeit eines Services wird dabei in seiner Implementierung als
- Konstante hinterlegt und kann so einfach zur Laufzeit genutzt werden.
- Daraus ergibt sich wieder ein eindeutiger Pfad zu den in der Datenbank
- gespeicherten Daten eines jeden SIMPL Core Services.
- Die Daten werden auch wie im Administration Service als HashMaps verarbeitet,
- um sowohl die Bezeichnung als auch den Wert immer verfügbar zu haben.
- Im Storage Service wird allerdings immer der erste in der HashMap hinterlegte
- Wert als Id der zugehörigen Datenbanktabelle interpretiert.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/StorageServiceSequence.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Sequenzdiagramm-des-StorageServices"
-
-\end_inset
-
-Sequenzdiagramm eines Lade- und Speichervorgangs von Einstellungen eines
- SIMPL Services
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Sequenzdiagramm-des-StorageServices"
-
-\end_inset
-
- zeigt die Verwendung und die Funktionalität des Storage Services.
- Mit der load()-Methode können Daten wieder aus der Datenbank geladen werden,
- und die save()-Methode speichert alle Daten eines Services analog zur Vorgehens
-weise der saveSettings()-Methode des Administration Services.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
 name "sub:Datasource-Service"
 
 \end_inset
@@ -2500,7 +2505,7 @@ Datasource Service
 
 \begin_layout Standard
 Der Datasource Service realisiert die Schnittstelle für den Zugriff auf
- die verschiedenen Datenquellen und wird über Plug-Ins realisiert (siehe
+ die verschiedenen Datenquellen der über Plug-Ins realisiert wird (siehe
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2527,31 +2532,6 @@ reference "sub:Plug-In-System"
 DataSourceService
 \emph default
  vorgegeben werden:
-\end_layout
-
-\begin_layout Paragraph
-public <T> T openConnection(String dsAddress)
-\end_layout
-
-\begin_layout Standard
-Öffnet eine Verbindung zu einer Datenquelle und liefert zu der Adresse einer
- Datenquelle ein Verbindungsobjekt, über das anschließend mit der Datenquelle
- kommuniziert werden kann.
- Das Verbindungsobjekt ist generisch und abhängig von der Implementierung,
- bei JDBC Verbindungen wird beispielsweise ein 
-\emph on
-Connection
-\emph default
--Objekt zurückgegeben.
-\end_layout
-
-\begin_layout Paragraph
-public <T> boolean closeConnection(T connection)
-\end_layout
-
-\begin_layout Standard
-Schließt die Verbindung zu einer Datenquelle über das Verbindungsobjekt
- und bestätigt den Verbindungsabbau mit einem booleschen Rückgabewert.
 \end_layout
 
 \begin_layout Paragraph
@@ -2620,58 +2600,6 @@ reference "sub:Metadaten"
 \end_inset
 
  näher beschrieben.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Dataformat-Service"
-
-\end_inset
-
-Dataformat Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Im Grobentwurf nachtragen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Dataformat Service realisiert die Unterstützung beliebiger Datenformate,
- die von den Datenquellen vorgegeben sein können.
- Die Einteilung der Formate geschieht dabei über Typ und Subtyp, wie z.B.
- Comma Separated Values (Typ: CSV) mit Kopfzeile (Subtyp: Headline).
- Die Formate werden von den Datenquellen Plug-Ins verwendet um die Rückgabe
- von angeforderten Daten als SDO zu realisieren.
- Folgende Funktion muss von einem Datenformat Plug-In realisiert werden,
- die vom Interface 
-\emph on
-DataFormatService
-\emph default
- vorgegeben wird:
-\end_layout
-
-\begin_layout Paragraph
-public <T> DataObject toSDO(T data)
-\end_layout
-
-\begin_layout Standard
-Die Funktion bekommt Daten eines bestimmten Formats von einer Datenquelle
- und stellt diese als SDO für die weitere Verarbeitung zur Verfügung.
- Sie ist generisch ausgelegt, damit die eingehenden Daten von einem beliebigen
- Typ sein können, der von jedem Plug-In selbst bestimmt werden kann, bei
- lokalen Dateisystemen bietet sich z.B.
- der Typ 
-\emph on
-File
-\emph default
- an.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2959,6 +2887,20 @@ DataFormatServiceProvider
  die Instanz eines Dataformat Service angefordert werden.
 \end_layout
 
+\begin_layout Subsubsection
+DataFormatConverterPlugin
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Beschreibung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -3150,71 +3092,6 @@ reference "sub:Web-Services"
 \end_inset
 
 ).
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Hilfsklassen"
-
-\end_inset
-
-Hilfsklassen
-\end_layout
-
-\begin_layout Standard
-Für den Entwickler werden folgende Hilfsklassen zur Verfügung gestellt.
-\end_layout
-
-\begin_layout Subsubsection
-Printer
-\end_layout
-
-\begin_layout Standard
-Mit der Klasse
-\emph on
- Printer
-\emph default
- kann über die statische Methode 
-\emph on
-+printDataObject(DataObject) 
-\emph default
-ein SDO auf der Konsole ausgeben werden.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Parameter"
-
-\end_inset
-
-Parameter
-\end_layout
-
-\begin_layout Standard
-Mit der Klasse 
-\emph on
-Parameter 
-\emph default
-können über die statischen Methoden 
-\emph on
-+serialize(Object object)
-\emph default
- und 
-\emph on
-+deserialize(String data) 
-\emph default
-beliebige Java Objekte zu XML serialisiert und von XML deserialisiert werden.
- Dies geschieht mit Hilfe der Java Klassen 
-\emph on
-XMLEncoder
-\emph default
- und 
-\emph on
-XMLDecoder
-\emph default
-.
 \end_layout
 
 \begin_layout Standard
@@ -4329,10 +4206,7 @@ key "key-2"
 \end_layout
 
 \begin_layout Standard
-Das Paket
- 
-\lang ngerman
-
+Das Paket 
 \begin_inset ERT
 status open
 
