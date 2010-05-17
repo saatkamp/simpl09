@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="4">
+<lyxtabular version="3" rows="21" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1416,7 +1416,7 @@ reference "sec:Uddi-Registry"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1425,7 +1425,7 @@ reference "sec:Uddi-Registry"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1434,7 +1434,7 @@ reference "sec:Uddi-Registry"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1443,7 +1443,7 @@ hahnml
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1478,6 +1478,55 @@ reference "sub:RRS-Transformation-Eclipse-Plug-In"
 
  eingefügt bzw.
  erweitert.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rehnre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Reference-Resolution-System"
+
+\end_inset
+
+ überarbeitet und erweitert.
 \end_layout
 
 \end_inset
@@ -3850,7 +3899,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename diagramme/iteration2/RRS_Class_Diagramm.jpg
+	filename ../../../../../../Desktop/diagramme/iteration2/RRS_Class_Diagramm.jpg
 	width 100text%
 
 \end_inset
@@ -3876,10 +3925,6 @@ RRS Klassendiagramm
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -3891,7 +3936,7 @@ Paketstruktur
 
 \begin_layout Standard
 Das RRS besitzt folgende Paketstruktur, die sich in einen Kernbereich, die
- Dienste und das RRS DQ-Adapter Plugin System unterteilen lässt.
+ Dienste und das RRS DS-Adapter Plugin System unterteilen lässt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3921,9 +3966,21 @@ org.simpl.rrs.management
 \begin_layout Standard
 Hier befinden sich alle Klassen zur Realisierung des Reference Management
  Service.
- Dieser Dienst wird zur Verwaltung der Referenzen benötigt und bietet das
+ Dieser Service wird zur Verwaltung der Referenzen benötigt und bietet das
  Hinzufügen neuer Referenzen (Insert), das Aktualisieren bestehender Referenzen
  (Update) und das Löschen von Referenzen (Delete) an.
+\end_layout
+
+\begin_layout Subsubsection*
+org.simpl.rrs.metadata
+\end_layout
+
+\begin_layout Standard
+Hier befinden sich alle Klassen zur Realisierung des Reference Metadata
+ Service.
+ Dieser Service wird für den RRS Eclipse View benötigt um alle im RRS enthaltene
+n Referencen aufzulisten oder aber um die Werte einer einzelnen Reference
+ abzurufen.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3940,7 +3997,8 @@ org.simpl.rrs.dqadapter.plugins
 \end_layout
 
 \begin_layout Standard
-Hier befinden sich die Plug-Ins für die verschiedenen Datenquellen-Adapter.
+Hier befinden sich die einzelnen Plug-Ins für die verschiedenen Datenquellen-Ada
+pter.
  Diese Adapter können für unterschiedliche Datenquellentypen entwickelt
  werden.
  Im Rahmen des Projektes werden allerdings nur Plug-Ins für den Zugriff
@@ -3965,9 +4023,149 @@ Die RRS-Klasse
 Die RRS-Klasse bildet den zentralen Zugriffspunkt auf alle Klassen und Dienste
  des RRS.
  Diese Klasse stellt die einzelnen Dienste zur Verfügung und ist zuständig
- für das RRS DQ-Adapter Plug-In System.
- Die RRS Klasse wird von Apache ODE benutzt, um in den Extension Activities
- vorkommende Referenzen aufzulösen.
+ für das RRS DS-Adapter Plug-In System.
+ Beim Start des RRS werden die Dienste initialisiert, sowie eine Liste der
+ Verfügbaren Datenquellen-Adapter geladen.
+ Diese Klasse wird von Apache ODE beim Auflösen einer Referenz, vom RRS-Eclipse-
+Plugin und sowie innerhalb des RRS, wenn sich Dienste gegenseitig verwenden.
+\end_layout
+
+\begin_layout Subsubsection*
+Funktionen
+\end_layout
+
+\begin_layout Paragraph*
+retrievalService() 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des Reference Retrieval Service.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+managementService()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des Reference Management Service.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+metadataService()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des Reference Metadata Service.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+conﬁg() 
+\end_layout
+
+\begin_layout Standard
+Liefert die Konﬁguration des RRS als Instanz von RRSConﬁg.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+dsAdapter(String dsType, String dsSubtype) 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des DsAdapterProviders.
+\end_layout
+
+\begin_layout Paragraph*
+getDSAdapterType()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Datenquellentypen, die durch DS-Adapter-Plug-Ins
+ unterstützt werden.
+ 
+\end_layout
+
+\begin_layout Paragraph
+getDSAdapterSubtypes(String dsType) 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Untertypen eines Typs, die durch DS-Adapter-Plug-In
+s unterstützt werden.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+getDSAdapterLanguages(String dsSubtype) 
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit allen Anfragesprachen eines Subtyps, der durch DS-Adapter
+-Plug-Ins unterstützt wird.
+ 
+\end_layout
+
+\begin_layout Subsection
+Die EPR
+\end_layout
+
+\begin_layout Standard
+Die EPR selbst wird im RRS, sowie bei der Kommunikation durch die Webservices
+ durch ein EPR-Objekt repräsentiert.
+ Dieses EPR-Objekt enthält alle relevanten Informationen die für die jeweiligen
+ Services des RRS, oder aber in Apache ODE und dem RRS-Eclipse-Plug-In,
+ benötigt werden.
+\end_layout
+
+\begin_layout Subsection
+RRSConfig Klasse
+\end_layout
+
+\begin_layout Standard
+Die verschiedenen installierten Plug-Ins des DS-Adapter Plug-In Systems,
+ werden über ein Konfigurationsdatei registriert.
+ Das Einlesen und Abrufen der Informationen aus dieser Datei ist über diese
+ Klasse möglich.
+\end_layout
+
+\begin_layout Subsubsection
+Die RRS Konfigurationsdatei
+\end_layout
+
+\begin_layout Standard
+Die RRS Konfigurationsdatei wird analog zu der des SimplCores unter 
+\emph on
+ode/conf/rrs-conﬁg.xml 
+\emph default
+abgelegt.
+ Die Plug-In-Klassen müssen hier jeweils mit dem voll qualiﬁzierten Namen
+ registriert werden und als jar-Dateien beliebigen Namens unter ode/lib
+ abgelegt werden, damit sie erkannt werden.
+ Die Konﬁgurationsdatei wird beim Start des RRS einmalig geladen, Änderungen
+ an der Konﬁgurationsdatei sind deshalb erst nach einem Neustart verfügbar.
+ Momentan dient die RRS Konfigurationsdatei nur der Registrierung der einzelnen
+ DS-Adapter-Plug-Ins, allerdings könnten später auch weitere Einstellungen
+ des RRS hier enthalten sein, bspw.
+ der Name der RRS DB oder der Name der Tabelle in der die Referenzen abgelegt
+ werden.
+ Da die Struktur der RRS Konfigurationsdatei mit der des SimplCores identisch
+ ist, wird darauf verzichtet diese hier nocheinmal aufzuzeigen.
+\end_layout
+
+\begin_layout Subsubsection
+Funktionen
+\end_layout
+
+\begin_layout Paragraph*
+getDSAdapterPlugins()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Liste mit voll qualiﬁzierten Namen der registrierten DS-Adapter-Plu
+g-Ins.
 \end_layout
 
 \begin_layout Subsection
@@ -3982,11 +4180,11 @@ key "key-2"
 
 \end_inset
 
- bereits erläutert, besitzt das RRS zwei Dienste bzw.
+ bereits erläutert, besitzt das RRS drei Dienste bzw.
  Webservice Interfaces.
- Dies ist auf der einen Seite der Reference Retrieval Service und auf der
- anderen Seite der Reference Management Service.
- Beide Services verfügen wie in 
+ Dies sind der Reference Retrieval Service, der Reference Management Service,
+ sowie der Reference Metadata Service.
+ Alle Services verfügen wie in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:RRS-Klassendiagramm"
@@ -4015,17 +4213,41 @@ Der Reference Retrieval Service setzt dabei die
 get
 \shape default
  Methode des RRS um.
- Diese Methode bekommt eine 
-\shape italic
-endpoint reference
+ Diese Methode bekommt ein EPR-Objekt als Eingabe übergeben.
+ Mit Hilfe der get-Methode werden nun alle zum Auflösen der Referenz und
+ zum Laden der referenzierten Daten notwendigen Informationen aus dem EPR-Objekt
+ ausgelesen.
+ Die Daten selbst werden anschließend mit Hilfe eines entsprechenden DS-Adapters
+ aus der Datenquelle ausgelesen.
+ Der DS-Adapter wird dabei über das Attribut 
+\begin_inset Quotes eld
+\end_inset
+
+Adapter-Typ
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt.
+ Adapter-Typ ist folgendermaßen aufgebaut: 
+\end_layout
+
+\begin_layout Paragraph*
+
+\shape smallcaps
+\emph on
+Datenquellen-Type:Datenquellen-Subtype:Datenquellen-Anfragesprache
 \shape default
- (EPR) als Eingabe übergeben.
- Anschließend wird diese EPR aufgelöst und die referenzierten Daten werden
- zurückgegeben.
- Die EPR wird dabei direkt in ihrem xsd-Format übergeben.
- Anschließend werden innerhalb der get-Methode alle zum Auflösen der Referenz
- und zum Laden der referenzierten Daten notwendigen Informationen ausgelesen
- und die Daten werden zurückgegeben.
+\emph default
+ (z.B.
+ RDB:MySQL:SQL).
+ 
+\end_layout
+
+\begin_layout Standard
+Durch dieses Attribut kann der richtige Adapter für die jeweilige Datenquelle
+ ausgewählt werden.
+ Anschließend werden die Daten mit Hilfe des Retrieval Webservices an ODE
+ übergeben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4043,16 +4265,35 @@ Beim Einfügen einer neuen Referenz in das RRS wird die Methode
 insert
 \shape default
  ausgeführt.
- Die Eingabe setzt sich dabei auf der einen Seite aus dem Wert der Referenz
- zusammen, bzw.
- die Daten und der Ort an dem sie sich befinden und auf der anderen Seite
- der Ort an dem die Referenz gespeichert werden soll und alle Informationen
- die notwendig sind um die Referenz aufzulösen (beispielsweise alle Informatione
-n über eine RDB und ein entsprechendes SQL Statement, mit dem die Daten
- ausgelesen werden können).
- Die Ausgabe der insert-Methode ist im Normalfall eine EPR und eine Rückmeldung,
- dass das Einfügen erfolgreich war, oder aber im Fehlerfall eine entsprechende
- Fehlermeldung.
+ Die Eingabe ist auch hier ein entsprechendes EPR-Objekt, was alle Werte
+ der neuen Referenz enthält und auch alle Informationen die notwendig sind
+ um die Referenz wieder aufzulösen (beispielsweise alle Informationen über
+ eine RDB und ein entsprechendes SQL Statement, mit dem die Daten ausgelesen
+ werden können).
+ Bei der Insert-Methode wird zunächst mit Hilfe der Methode 
+\shape italic
+DoesTableExist()
+\shape default
+ überprüft ob die Tabelle 
+\begin_inset Quotes eld
+\end_inset
+
+ReferenceTable
+\begin_inset Quotes erd
+\end_inset
+
+ vorhanden ist, wenn dies nicht der Fall ist wird diese zuerst erzeugt.
+ Im nächsten Schritt wird mit Hilfe der Methode 
+\emph on
+EPRAllreadyExists
+\emph default
+ überprüft ob die Reference bereits in der Tabelle vorhanden ist.
+ Da der Name einer Referenz sets eindeutig sein muss, beschränkt sich diese
+ Überprüfung darauf, ob bereits eine Referenz mit diesem Namen vorhanden
+ ist.
+ Falls dies nicht der Fall ist wird die Referenz in die Tabelle eingefügt.
+ Die Ausgabe der insert-Methode eine Rückmeldung, darüber ob das Einfügen
+ erfolgreich war, oder aber im Fehlerfall eine entsprechende Fehlermeldung.
 \end_layout
 
 \begin_layout Standard
@@ -4061,10 +4302,15 @@ Das Aktualisieren einer Referenz wird durch die
 update
 \shape default
  Methode umgesetzt.
- Dabei erhält die update Methode die neuen Werte der Referenz, die Aktualisiert
- werden soll.
+ Dabei erhält die update Methode ein EPR-Objekt, welches die neuen Werte
+ der Referenz, die aktualisiert werden sollen, enthält.
+ Auch hier findet zunächst eine Überprüfung statt ob die Referenz im RRS
+ enthalten ist.
+ Sollte dies nicht der Fall sein, findet keine Aktualisierung statt.
  Die Ausgabe ist analog zur insert-Methode eine entsprechende Rückmeldung
- ob die Operation erfolgreich durchgeführt wurde.
+ ob die Operation erfolgreich durchgeführt wurde oder nicht.
+ Im Falle das die zu aktualisierende Referenz nicht gefunden wurde, wird
+ ebenfalls eine negative Rückmeldung gegeben.
 \end_layout
 
 \begin_layout Standard
@@ -4073,25 +4319,91 @@ Zum Löschen einer Referenz aus dem RRS wird die Methode
 delete
 \shape default
  benutzt.
- Diese Methode erhält als Eingabe eine EPR und entfernt anschließend die
- entsprechende Referenz aus dem System.
+ Diese Methode erhält als Eingabe ein EPR-Objekt und entfernt anschließend
+ die entsprechende Referenz aus dem System.
+ Hier wird analog wie bei den beiden anderen Operationen zunächst überprüft
+ ob die zu löschende Referenz in der Tabelle vorhanden ist.
+ Ist dies der Fall, wird sie gelöscht.
  Die Ausgabe der Methode ist eine entsprechende Rückmeldung ob das Löschen
  erfolgreich war, oder ob ein Fehler aufgetreten ist.
 \end_layout
 
+\begin_layout Subsubsection*
+Die RRS DB
+\end_layout
+
+\begin_layout Standard
+Die RRS DB wird als eine Embedded Derby realisiert.
+ In ihr werden alle Referenzen die dem RRS bekannt sind gespeichert.
+ Es ist dabei zu beachten, dass der Name der Datenbank, sowie der Name der
+ Tabelle eindeutig durch die Implementierung festgelegt sind.
+ Weiterhin ist zu beachten, dass eine Referenz durch ihren Namen erkannt
+ wird.
+ Daher muss der Name der Referenz eindeutig sein und es können nicht mehrere
+ Referenzen mit dem selben Namen eingefügt werden.
+\end_layout
+
+\begin_layout Subsubsection
+Reference Metadata Service
+\end_layout
+
+\begin_layout Standard
+Der Reference Metadata Service ist für das Abrufen aller Referenzen die
+ im RRS enthalten sind und für das Abrufen der Werte einer einzelnen Referenz
+ zuständig, da diese Funktionen für die Umsetzung des RRS-Eclipse Plug-Ins
+ notwendig ist.
+\end_layout
+
+\begin_layout Standard
+Zum Abrufen aller Referenzen wird die Methode 
+\shape italic
+GetAllEPR
+\shape default
+ verwendet.
+ Diese erzeugt zunächst zu jeder in der Datenbank des RRS enthaltenen Referenz
+ ein EPR Objekt und fügt diese Objekte anschließend in ein EPR Array ein,
+ welches anschließend übertragen wird.
+ Es ist hierbei anzumerken, dass diese Methode die Tabelle 
+\begin_inset Quotes eld
+\end_inset
+
+ReferenceTable
+\begin_inset Quotes erd
+\end_inset
+
+ die alle Referenzen enthält erzeugt, falls sie nicht vorhanden ist.
+ Dies ist notwendig damit es nicht zu Fehlern beim Initialisieren des RRS
+ Eclipse Plug-Ins kommt, da dabei direkt diese Methode aufgerufen wird.
+\end_layout
+
+\begin_layout Standard
+Zum Abrufen der Werte einer bestimmten Referenz wird die Methode 
+\shape italic
+getEPR
+\shape default
+ aufgerufen.
+ Diese Methode bekommt den Namen der gesuchten Referenz übergeben und gibt
+ anschließend ein EPR Objekt zurück welches alle Werte der Referenz erhält.
+\end_layout
+
+\begin_layout Standard
+Weiterhin bietet der Reference Metadata Service noch die Möglichkeit eine
+ Liste der derzeitig verfügbaren Adapter anzuzeigen.
+\end_layout
+
 \begin_layout Subsection
-Das RRS DQ-Adapter Plug-In System
+Das RRS DS-Adapter Plug-In System
 \end_layout
 
 \begin_layout Standard
-Das RRS DQ-Adapter Plug-In System bietet eine Reihe von Adaptern an, die
+Das RRS DS-Adapter Plug-In System bietet eine Reihe von Adaptern an, die
  für den Zugriff auf die jeweilligen Datenquellentypen zuständig sind.
- Wie bereits zuvor erwähnt wird im Rahmen des Projektes allerdings nur ein
- RDB-Adapter umgesetzt.
+ Wie bereits zuvor erwähnt werden im Rahmen des Projektes allerdings nur
+ Adapter für den Zugriff auf relationale Datenbanken umgesetzt.
 \end_layout
 
 \begin_layout Standard
-Der Aufbau des RRS DQ-Adapter Plug-In Systems gleicht dem Aufbau des DatasourceS
+Der Aufbau des RRS DS-Adapter Plug-In Systems gleicht dem Aufbau des DatasourceS
 ervice des SIMPL Cores.
  Es soll möglich sein wie auch beim Datasource Service verschiedene Plug-Ins
  zu nutzen um das Lesen und Schreiben auf verschiedenen Datenquellen zu
@@ -4103,9 +4415,11 @@ reference "fig:RRS-Klassendiagramm"
 
 \end_inset
 
- zu sehen, gibt es einen sogenannten DQAdapterProvider, der anhand der Informati
-onen die in der EPR angegeben sind, die richtige Datenquelle auswählt und
- eine Instanz des entsprechenden Adapters erzeugt.
+ zu sehen, gibt es einen sogenannten DSAdapterProvider, dieser wird beim
+ Start des RRS Initialisiert und erhält durch die RRSConfig alle verfügbaren
+ DS-Adapter-Plug-Ins.
+ Anhand der Informationen die in einem EPR-Objekt angegeben sind, wird eine
+ Instanz des richtigen Adapters für den Zugriff auf die Datenquelle auswählt.
 \end_layout
 
 \begin_layout Subsection
