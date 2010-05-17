@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tests SYSTEM "project.dtd">
 <tests product="TestDataManager" team="05" version="1.0">
-<sequence created="01.02.2010" creator="tuxi23" name="Project" number="0">
+<sequence created="17.05.2010" creator="tuxi23" name="Project" number="0">
 <description>This is the root node of the project. It contains all test sequences and test cases.</description>
 <pre/>
 <sequence created="04.11.2009" creator="tuxi23" name="Unit Test" number="1">
@@ -247,7 +247,9 @@
 <description>test die Oeffnung von A-K</description>
 <pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
 <actions>klick auf das SIMPL-Menue
-und klick auf [admin-console]</actions>
+und klick auf [admin-console]
+Anstoßen des Anwendungsfalls “6.5.1 SIMPL Admin-Konsole laden”
+des Eclipse BPEL Designers</actions>
 <post>admin-console wird angezeiget und kann verwendet werden</post>
 <tags/>
 </testcase>
@@ -316,7 +318,9 @@ gespeichert und alle veralteten Werte mit neuen ueberschrieben. </post>
 <description>test die Oeffnung von A-K</description>
 <pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
 <actions>klick auf das SIMPL-Menue
-und klick auf [admin-console]</actions>
+und klick auf [admin-console]
+Anstoßen des Anwendungsfalls “6.5.1 SIMPL Admin-Konsole laden”
+des Eclipse BPEL Designers.</actions>
 <post>admin-console wird angezeiget und kann verwendet werden</post>
 <tags/>
 </testcase>
@@ -386,7 +390,9 @@ Die Werten bleiben dabei solange erhalten, bis die A-K geschlossen wird. </post>
 <description>test die Oeffnung von A-K</description>
 <pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
 <actions>klick auf das SIMPL-Menue
-und klick auf [admin-console]</actions>
+und klick auf [admin-console]
+Anstoßen des Anwendungsfalls “6.5.1 SIMPL Admin-Konsole laden”
+des Eclipse BPEL Designers.</actions>
 <post>admin-console wird angezeiget und kann verwendet werden</post>
 <tags/>
 </testcase>
@@ -442,7 +448,9 @@ und klick auf [admin-console]</actions>
 <description>test die Oeffnung von A-K</description>
 <pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
 <actions>klick auf das SIMPL-Menue
-und klick auf [admin-console]</actions>
+und klick auf [admin-console]
+Anstoßen des Anwendungsfalls “6.5.1 SIMPL Admin-Konsole laden”
+des Eclipse BPEL Designers.</actions>
 <post>admin-console wird angezeiget und kann verwendet werden</post>
 <tags/>
 </testcase>
@@ -495,32 +503,38 @@ und klick auf [admin-console]</actions>
 <pre/>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="83" priority="C" title="Test Case neue Referenz in RRS einfügen">
 <description>Test die Einfügung neuer Referenz in RRS</description>
-<pre>Das RRS ist angebunden und die Admin-Konsole wird angezeigt.</pre>
-<actions>1. Auswahl des Unterpunkts “References”-&gt;”Management” 
-2. Klick auf den Button [New] 
-3. Angabe aller benötigten Parameter
-4. Klick auf [Save]</actions>
-<post>Die neue Referenz wurde korrekt in das RRS eingefügt, wird in der Referenzen-Tabelle angezeigt und kann nun bei der Modellierung verwendet werden.</post>
+<pre>Der RRS-View ist geö&#27;net und das RRS ist erreichbar.</pre>
+<actions>1. Klick des [New] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs
+2. Angabe aller Parameter der Referenz in dem entsprechenden Pop-up
+Fenster
+3. Klick auf [Save], um die Werte der neue Referenz zu speichern</actions>
+<post>Die neue Referenz wurde korrekt im RRS gespeichert und wird im
+RRS-View angezeigt.</post>
 <tags/>
 </testcase>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="84" priority="C" title="Test Case Referenz aus RRS bearbeiten">
 <description>Test die Bearbeitung einer Referenz aus RRS</description>
 <pre>Das RRS ist angebunden und die Admin-Konsole wird angezeigt.</pre>
-<actions>1. Auswahl des Unterpunkts “References”-&gt;”Management” 
-2. Auswahl der zu bearbeitenden Referenz 
-3. Klick auf Button [Open]
-4. Bearbeiten der Werte der Referenz
-5. Klick auf den Button [Save]</actions>
+<actions>1. Klick des [Edit] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs
+2. Angabe der neuen Parameter der Referenz in dem entsprechenden
+Pop-up Fenster
+3. Klick auf [Save], um die aktualisierten Werte der Referenz zu
+speichern und der Anwendungsfall &#16;6.6.2 Referenz speichern&#17; wird
+angestoÿen</actions>
 <post>Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert, die Referenz wurde aktualisiert und die aktualisierten Werte werden in der Referenzen-Tabelle angezeigt.</post>
 <tags/>
 </testcase>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="85" priority="C" title="Test Case Referenz aus RRS löschen">
 <description>Test den Löschen einer Referenz aus RRS</description>
 <pre>Das RRS ist angebunden und die Admin-Konsole wird angezeigt.</pre>
-<actions>1. Auswahl des Unterpunkts “References”-&gt;”Management” 
-2. Auswahl der zu löschenden Referenz 
-3. Klick auf Button [Delete]</actions>
-<post>Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS und der Referenzen-Tabelle entfernt und kann nun nicht mehr verwendet werden.</post>
+<actions>1. Klick des [Delete] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs und der
+Anwendungsfall &#16;6.6.4 Referenz löschen&#17; wird angestoÿen.</actions>
+<post>Die entsprechende Referenz wurde vollständig und korrekt aus dem
+RRS und der Referenzen-Tabelle entfernt und kann nun nicht mehr
+verwendet werden.</post>
 <tags/>
 </testcase>
 </sequence>
@@ -534,30 +548,39 @@ und klick auf [admin-console]</actions>
 2. Klick auf den Button [New] 
 3. Angabe aller benötigten Parameter
 4. Fehler beim Einfügen der Referenz in das RRS, da z.B. das RRS nicht erreichbar ist.
-Fehler beim Einfügen der Referenz in das RRS, da z.B. das RRS nicht erreichbar ist.</actions>
-<post>Die Referenz wurde nicht in das RRS eingefügt, wird nicht in der Referenzen-Tabelle angezeigt und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+</actions>
+<post>Es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer
+über die aufgetretenen Fehler informiert.</post>
 <tags/>
 </testcase>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="88" priority="C" title="Test Case Referenz aus RRS bearbeiten">
 <description>Test die Bearbeitung einer Referenz aus RRS</description>
 <pre>Das RRS ist angebunden und die Admin-Konsole wird angezeigt.</pre>
-<actions>1. Auswahl des Unterpunkts “References”-&gt;”Management” 
-2. Auswahl der zu bearbeitenden Referenz 
-3. Klick auf Button [Open]
-4. Bearbeiten der Werte der Referenz
-Beim Speichern der Änderungen tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist.
-5. Beim Speichern der Änderungen tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist.</actions>
-<post>Die bearbeitete Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<actions>1. Klick des [Edit] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs
+2. Angabe der neuen Parameter der Referenz in dem entsprechenden
+Pop-up Fenster
+3. Klick auf [Save], um die aktualisierten Werte der Referenz zu
+speichern und der Anwendungsfall &#16;6.6.2 Referenz speichern&#17; wird
+angestoÿen
+4.Beim Speichern der Änderungen tritt ein Fehler auf, da z.B. das
+RRS nicht erreichbar ist.</actions>
+<post>Die bearbeitete Referenz bleibt im RRS und in der Referenzen-Tabelle
+unverändert und es wird eine entsprechende Fehlermeldung angezeigt,
+die den Benutzer über die aufgetretenen Fehler informiert.</post>
 <tags/>
 </testcase>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="89" priority="C" title="Test Case Referenz aus RRS löschen">
 <description>Test den Löschen einer Referenz aus RRS</description>
 <pre>Das RRS ist angebunden und die Admin-Konsole wird angezeigt.</pre>
-<actions>1. Auswahl des Unterpunkts “References”-&gt;”Management” 
-2. Auswahl der zu löschenden Referenz 
-3. Beim Löschen der Referenz tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist.
-</actions>
-<post>Die zu löschende Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<actions>1. Klick des [Delete] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs und der
+Anwendungsfall &#16;6.6.4 Referenz löschen&#17; wird angestoÿen.
+1a. Beim Löschen der Referenz tritt ein Fehler auf, da z.B. das RRS
+nicht erreichbar ist.</actions>
+<post>Die zu löschende Referenz bleibt im RRS und in der Referenzen-Tabelle
+unverändert und es wird eine entsprechende Fehlermeldung angezeigt,
+die den Benutzer über die aufgetretenen Fehler informiert.</post>
 <tags/>
 </testcase>
 </sequence>
@@ -570,13 +593,23 @@ Beim Speichern der Änderungen tritt ein Fehler auf, da z.B. das RRS nicht errei
 <pre/>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="92" priority="C" title="Test Case DM-A ausführen">
 <description>Test die Ausführen einer DM-A</description>
-<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
-<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
-2. Die Ausführung der DM-Aktivität wird gestartet
-3. Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung an die Datenquelle
-4. Die Ausführung der DM-Aktivität ist beendet und sie befindet sich im Zustand “Waiting”
-5. Die DM-Aktivität wird als “Complete” gekennzeichnet</actions>
-<post>Die DM-Aktivität und die darin enthaltene Datenmanagementoperation wurden erfolgreich ausgeführt.</post>
+<pre>Es wurde ein Prozess, der mindestens eine DM-Aktivität enthält, deployed und es
+wurde eine Instanz des Prozesses erzeugt. Eine DM-Aktivität wurde über den
+Kontroll&#29;uss des Prozesses erreicht.</pre>
+<actions>1. Die DM-Aktivität be&#28;ndet sich im Zustand &#16;Ready&#17;.
+2. Die Ausführung der DM-Aktivität wird gestartet.
+3. Die Verbindung zur Datenquelle auf der die DM-Operationen durchgeführt werden
+wird aufgebaut.
+4. Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung an die
+Datenquelle.
+5. Die DM-Operation wurde in der Datenquelle erfolgreich ausgeführt, und die
+Ausführung der DM-Aktivität ist damit beendet. Die DM-Aktivität be&#28;ndet sich im
+Zustand "Complete".
+6. Die Verbindung zur Datenquelle wird nach erfolgreicher Ausführung der
+DM-Operation geschlossen.
+7. Die nächste(n) Aktivität(en) im Kontroll&#29;uss wird(/werden) initialisiert</actions>
+<post>Die DM-Aktivität und die darin enthaltene Datenmanagementoperation wurden
+erfolgreich ausgeführt.</post>
 <tags/>
 </testcase>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="93" priority="C" title="Test Case DM-A kompensieren">
@@ -605,51 +638,6 @@ In der Vateraktivität tritt ein Fehler auf</actions>
 <post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
 <tags/>
 </testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="97" priority="C" title="Test Case DM-A ausführen 1a2">
-<description>Test die Ausführen einer DM-A</description>
-<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
-<actions>
-Es wird ein “Terminate_Activity Event” ausgelöst</actions>
-<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="98" priority="C" title="Test Case DM-A kompensieren">
-<description>Test die Kompensierung einer DM-A</description>
-<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
-<actions>Alle Änderungen werden zurückgesetzt</actions>
-<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="99" priority="C" title="Test Case DM-A ausführen 1b1">
-<description>Test die Ausführen einer DM-A</description>
-<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
-<actions>
-Es wird ein “Complete_Acitivity Event” an die DM-Aktivität gesendet</actions>
-<post>Die Aktivität befindet sich im Zustand “Waiting”</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="100" priority="C" title="Test Case DM-A kompensieren">
-<description>Test die Kompensierung einer DM-A</description>
-<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
-<actions>Alle Änderungen werden zurückgesetzt</actions>
-<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="101" priority="C" title="Test Case DM-A ausführen 1b2">
-<description>Test die Ausführen einer DM-A</description>
-<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
-<actions>
-Es wird ein “Activity_Executed Event” ausgelöst</actions>
-<post>Die Aktivität befindet sich im Zustand “Waiting”</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="102" priority="C" title="Test Case DM-A kompensieren">
-<description>Test die Kompensierung einer DM-A</description>
-<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
-<actions>Alle Änderungen werden zurückgesetzt</actions>
-<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
-<tags/>
-</testcase>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="103" priority="C" title="Test Case DM-A ausführen 2a1">
 <description>Test die Ausführen einer DM-A</description>
 <pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
@@ -660,22 +648,6 @@ In der Vateraktivität tritt ein Fehler auf</actions>
 <tags/>
 </testcase>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="104" priority="C" title="Test Case DM-A kompensieren">
-<description>Test die Kompensierung einer DM-A</description>
-<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
-<actions>Alle Änderungen werden zurückgesetzt</actions>
-<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="105" priority="C" title="Test Case DM-A ausführen 2a2">
-<description>Test die Ausführen einer DM-A</description>
-<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
-<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
-
-Es wird ein “Terminate_Activity Event” ausgelöst</actions>
-<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="106" priority="C" title="Test Case DM-A kompensieren">
 <description>Test die Kompensierung einer DM-A</description>
 <pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
 <actions>Alle Änderungen werden zurückgesetzt</actions>
@@ -699,23 +671,6 @@ Währender der Durchführung der DM-Operationen tritt ein Fehler in der Datenque
 <post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
 <tags/>
 </testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="109" priority="C" title="Test Case DM-A ausführen 3a2">
-<description>Test die Ausführen einer DM-A</description>
-<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
-<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
-2. Die Ausführung der DM-Aktivität wird gestartet
-
-Es wird ein “Activity_Faulted Event” ausgelöst</actions>
-<post>Die Aktivität befindet sich im Endzustand “Faulted”</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="110" priority="C" title="Test Case DM-A kompensieren">
-<description>Test die Kompensierung einer DM-A</description>
-<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
-<actions>Alle Änderungen werden zurückgesetzt</actions>
-<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
-<tags/>
-</testcase>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="111" priority="C" title="Test Case DM-A ausführen 4a1">
 <description>Test die Ausführen einer DM-A</description>
 <pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
@@ -733,23 +688,6 @@ In der Vateraktivität tritt ein Fehler auf</actions>
 <post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
 <tags/>
 </testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="113" priority="C" title="Test Case DM-A ausführen 4a2">
-<description>Test die Ausführen einer DM-A</description>
-<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
-<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
-2. Die Ausführung der DM-Aktivität wird gestartet
-3. Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung an die Datenquelle
-Es wird ein “Terminate_Activity Event” ausgelöst</actions>
-<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
-<tags/>
-</testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="114" priority="C" title="Test Case DM-A kompensieren">
-<description>Test die Kompensierung einer DM-A</description>
-<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
-<actions>Alle Änderungen werden zurückgesetzt</actions>
-<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
-<tags/>
-</testcase>
 </sequence>
 </sequence>
 <sequence created="15.11.2009" creator="tuxi23" name="Test Sequence for Eclipse BPEL Designer" number="115">
@@ -760,62 +698,300 @@ Es wird ein “Terminate_Activity Event” ausgelöst</actions>
 <pre/>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="117" priority="C" title="Test Case A-K laden">
 <description>Test die Ladung der A-K</description>
-<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geöffnet.</pre>
-<actions>1. Laden der Werte aus einer Datenquelle
-2. Füllen der Felder der Admin-Konsole</actions>
-<post>Alle Werte der Datei mit den Einstellungen der Admin-Konsole wurden geladen und können im Fenster “Admin Console” und dessen Unterfenstern angezeigt werden.</post>
+<pre>Einer der Anwendungsfälle Admin-Konsole ö&#27;nen&#17;oder Einstellungen der Admin-Konsole zurücksetzen&#17; wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt gespeicherten Werte aus der SIMPL DB.
+2. Füllen der Felder der Admin-Konsole mit den geladenen Werten.</actions>
+<post>Alle Werte der SIMPL DB mit den aktuellen Einstellungen der
+Admin-Konsole wurden geladen und werden im Fenster &#16;Admin
+Console&#17; und dessen Unterfenstern angezeigt.</post>
 <tags/>
 </testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="118" priority="C" title="Test Case BPEL-Datei transformieren">
-<description>Test den Transformieren der BPEL-Datei</description>
-<pre>Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das Reference Resolution System (RRS) muss angebunden und erreichbar sein.</pre>
-<actions>1. Auslesen des originalen Prozesses
-
-2. Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder Events für Referenzen 
-3. Generierung des neuen BPEL-standard-konformen erweiterten Prozesses</actions>
-<post>Es wurde ein korrekter standard-konformer BPEL-Prozess, der die gleiche Funktionalität wie der originale Prozess besitzt und zur Verwendung von Referenzen um entsprechende Aktivitäten oder Events erweitert wurde, erzeugt.</post>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="149" priority="C" title="Test Case A-K Defaults laden">
+<description/>
+<pre>Der Anwendungsfäll Default-Einstellungen der Admin-Konsole
+laden&#17; oder der Sonderfall 3a des Anwendungsfalls &#16;SIMPL
+Admin-Konsole laden&#17; wurde ausgeführt.</pre>
+<actions>1. Laden aller Default-Werte aus der SIMPL DB.
+2. Füllen der Felder der Admin-Konsole mit den geladenen Werten.</actions>
+<post>Alle Werte der SIMPL DB mit den Default-Einstellungen der
+Admin-Konsole wurden geladen und werden im Fenster &#16;Admin
+Console&#17; und dessen Unterfenstern angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="150" priority="C" title="Test Case A-K Defaults laden 1">
+<description/>
+<pre>Der Anwendungsfäll Default-Einstellungen der Admin-Konsole
+laden&#17; oder der Sonderfall 3a des Anwendungsfalls &#16;SIMPL
+Admin-Konsole laden&#17; wurde ausgeführt.</pre>
+<actions>1. Laden aller Default-Werte aus der SIMPL DB.
+1a. Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB
+nicht erreichbar ist.</actions>
+<post>Im Quellcode hinterlegte Default-Werte werden geladen und im Fenster
+&#16;Admin Console&#17; und dessen Unterfenstern angezeigt.</post>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="119">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 2" number="119">
 <description/>
 <pre/>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="120" priority="C" title="Test Case A-K laden">
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="153" priority="C" title="Test Case A-K laden">
 <description>Test die Ladung der A-K</description>
-<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geöffnet.</pre>
-<actions>Beim Laden der Werte tritt ein Fehler auf und die Standardwerte werden geladen</actions>
-<post>Es wird eine entsprechende Fehlermeldung angezeigt, die hinterlegten Standard-Einstellungen wurden geladen und werden im Fenster “Admin Console” und dessen Unterfenstern angezeigt.</post>
+<pre>Einer der Anwendungsfälle Admin-Konsole ö&#27;nen&#17;oder Einstellungen der Admin-Konsole zurücksetzen&#17; wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt gespeicherten Werte aus der SIMPL DB.
+2. Füllen der Felder der Admin-Konsole mit den geladenen Werten.</actions>
+<post>Alle Werte der SIMPL DB mit den aktuellen Einstellungen der
+Admin-Konsole wurden geladen und werden im Fenster &#16;Admin
+Console&#17; und dessen Unterfenstern angezeigt.</post>
 <tags/>
 </testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="121" priority="C" title="Test Case BPEL-Datei transformieren">
-<description>Test den Transformieren der BPEL-Datei</description>
-<pre>Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das Reference Resolution System (RRS) muss angebunden und erreichbar sein.</pre>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="120" priority="C" title="Test Case A-K laden 1">
+<description>Test die Ladung der A-K</description>
+<pre>Einer der Anwendungsfälle Admin-Konsole ö&#27;nen&#17;oder Einstellungen der Admin-Konsole zurücksetzen&#17; wurde ausgeführt.</pre>
+<actions>1a. Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB
+nicht erreichbar ist.
+2a. Es wird eine entsprechende Fehlermeldung angezeigt und der
+Benutzer wird über ein Dialogfenster gefragt, ob er die in der SIMPL
+DB hinterlegten Default-Einstellungen laden möchte oder nicht.
+3a. Klick auf den Button [Yes].</actions>
+<post>3a. Der Anwendungsfall &#16;SIMPL Admin-Konsole Defaults laden&#17;
+wird angestoÿen. Wenn dieser Anwendungsfall erfolgreich ausgeführt
+wurde, wurden die hinterlegten Default-Einstellungen geladen und
+werden im Fenster &#16;Admin Console&#17; und dessen Unterfenstern
+angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="148" priority="C" title="Test Case A-K laden 2">
+<description/>
+<pre>Einer der Anwendungsfälle Admin-Konsole ö&#27;nen&#17;oder Einstellungen der Admin-Konsole zurücksetzen&#17; wurde ausgeführt.</pre>
+<actions>1a. Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB
+nicht erreichbar ist.
+2a. Es wird eine entsprechende Fehlermeldung angezeigt und der
+Benutzer wird über ein Dialogfenster gefragt, ob er die in der SIMPL
+DB hinterlegten Default-Einstellungen laden möchte oder nicht.
+3a. Klick auf den Button [No].</actions>
+<post>Füllen der Felder der Admin-Konsole mit den geladenen Werten.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="17.05.2010" creator="tuxi23" name="Test Sequence 3" number="147">
+<description/>
+<pre/>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="151" priority="C" title="Test Case A-K Speichern">
+<description/>
+<pre>Der Anwendungsfall &#16;6.3.6 Einstellungen der Admin-Konsole
+speichern&#17; oder der Sonderfall 3b1 des Anwendungsfalls 
+Admin-Konsole schlieÿen&#17; wurde ausgeführt.</pre>
+<actions>1. Speichern der Werte auf der SIMPL DB.</actions>
+<post>Alle Werte der Admin-Konsole wurden korrekt auf der SIMPL DB
+gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="154" priority="C" title="Test Case A-K Speichern 1">
+<description/>
+<pre>Der Anwendungsfall &#16;6.3.6 Einstellungen der Admin-Konsole
+speichern&#17; oder der Sonderfall 3b1 des Anwendungsfalls 
+Admin-Konsole schlieÿen&#17; wurde ausgeführt.</pre>
+<actions>1. Speichern der Werte auf der SIMPL DB.
+1a. Beim Speichern der Werte tritt ein Fehler auf, da z.B. die SIMPL
+DB nicht erreichbar ist.</actions>
+<post>1a. Alle geänderten Werte der Admin-Konsole werden nicht in der
+SIMPL DB gespeichert. Es wird eine entsprechende Fehlermeldung
+angezeigt und ein erneuter Speicherversuch kann durchgeführt werden.
+Die Werte werden solange in der Admin-Konsole angezeigt, bis diese
+geschlossen wird.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="17.05.2010" creator="tuxi23" name="Test Sequence 4" number="155">
+<description/>
+<pre/>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="156" priority="C" title="Test Case Extensions validieren">
+<description/>
+<pre>1. Es wurde ein BPEL Prozess erstellt der mind. eine SIMPL Extension
+enthält.</pre>
+<actions>1. &#16;Validate&#17; wird ausgeführt.
+2. Fehler und Warnungen werden, falls vorhanden, in der
+Problem-View angezeigt.</actions>
+<post>Alle nicht schema-konformen Einträge werden erkannt und in der
+Problem-View angezeigt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="17.05.2010" creator="tuxi23" name="Test Sequence 5" number="157">
+<description/>
+<pre/>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="158" priority="C" title="Test Case Datenquellen aus UDDI-Registry abrufen">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar.</pre>
+<actions>1. Mit Datenquellen-Registry verbinden
+2. Verfügbare Datenquellen abfragen</actions>
+<post>Eine Liste mit allen verfügbaren Datenquellen steht zur Verfügung.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="17.05.2010" creator="tuxi23" name="Test Sequence 6" number="160">
+<description/>
+<pre/>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="161" priority="C" title="Test Case BPEL-Datei transformieren">
+<description/>
+<pre>Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das
+Reference Resolution System (RRS) muss angebunden und erreichbar
+sein.</pre>
 <actions>1. Auslesen des originalen Prozesses
-2. Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder Events für Referenzen 
-Bei der Generierung tritt ein Fehler auf BPEL-standard-konformen erweiterten Prozesses</actions>
-<post>Es wurde kein neuer BPEL-Prozess erzeugt, der originale BPEL-Prozess ist unverändert und es wird eine entsprechende Fehlermeldung ausgegeben.</post>
+2. Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten
+oder Events für Referenzen (siehe 7.1.3)
+3. Generierung des neuen BPEL-standard-konformen erweiterten
+Prozesses</actions>
+<post>Es wurde ein korrekter standard-konformer BPEL-Prozess, der die
+gleiche Funktionalität wie der originale Prozess besitzt und zur
+Verwendung von Referenzen um entsprechende Aktivitäten oder Events
+erweitert wurde, erzeugt.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="162" priority="C" title="Test Case BPEL-Datei transformieren">
+<description/>
+<pre>Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das
+Reference Resolution System (RRS) muss angebunden und erreichbar
+sein.</pre>
+<actions>1. Auslesen des originalen Prozesses
+2. Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten
+oder Events für Referenzen (siehe 7.1.3)
+3. Generierung des neuen BPEL-standard-konformen erweiterten
+Prozesses
+3a. Bei der Generierung tritt ein Fehler auf</actions>
+<post>Es wurde kein neuer BPEL-Prozess erzeugt, der originale
+BPEL-Prozess ist unverändert und es wird eine entsprechende
+Fehlermeldung ausgegeben.</post>
 <tags/>
 </testcase>
 </sequence>
 </sequence>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence for Referenz auflösen/dereferenzieren" number="122">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence for RRS" number="122">
 <description/>
 <pre/>
 <sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="123">
 <description/>
 <pre/>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="124" priority="C" title="Test Case dereferenzieren">
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="124" priority="C" title="Test Case Referenz auflösen/dereferenzieren">
 <description>Test die Dereferenzierung</description>
-<pre>Die angegebene Referenz muss existieren und das RRS muss angebunden sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.</pre>
-<actions>Wert der Referenz wird im RRS abgefragt</actions>
+<pre>Die angegebene Referenz muss existieren und das RRS muss erreichbar
+sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar
+sein.</pre>
+<actions>1. Wert der Referenz wird im RRS abgefragt</actions>
 <post>Der korrekte Wert einer Referenz wird geliefert.</post>
 <tags/>
 </testcase>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="125" priority="C" title="Test Case dereferenzieren 1">
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="163" priority="C" title="Test Case Referenz speichern">
+<description/>
+<pre>Einer der beiden Anwendungsfälle &#16;?? Neue Referenz in RRS einfügen&#17;
+oder &#16;?? Referenz aus RRS bearbeiten&#17; wurde erfolgreich ausgeführt.</pre>
+<actions>1. Die Referenz wird im RRS gespeichert</actions>
+<post>Die Referenz wurde korrekt gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="168" priority="C" title="Test Case Referenz laden">
+<description/>
+<pre>Der RRS View wurde im Eclipse geö&#27;net.</pre>
+<actions>1. Die Referenz wird aus dem RRS geladen</actions>
+<post>Die Referenz wurde erfolgreich geladen und wird nun im RRS View
+angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="170" priority="C" title="Test Case Referenz löschen">
+<description/>
+<pre>Der Anwendungsfall &#16;6.3.12 Referenz aus RRS löschen&#17; wurde
+erfolgreich ausgeführt</pre>
+<actions>1. Die Referenz wird aus dem RRS entfernt</actions>
+<post>Die Referenz wurde erfolgreich aus dem RRS entfernt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="17.05.2010" creator="tuxi23" name="Test Sequence 2" number="164">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="166" priority="C" title="Test Case Referenz auflösen/dereferenzieren">
 <description>Test die Dereferenzierung</description>
-<pre>Die angegebene Referenz muss existieren und das RRS muss angebunden sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.</pre>
-<actions>Es wird ein entsprechender Fehler geworfen, der Informationen über das zugrundeliegende Problem liefert.</actions>
-<post>Der korrekte Wert einer Referenz wird geliefert.</post>
+<pre>Die angegebene Referenz muss existieren und das RRS muss erreichbar
+sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar
+sein.</pre>
+<actions>1. Wert der Referenz wird im RRS abgefragt
+1a. Beim Abfragen des Werts tritt ein Fehler auf, da z.B. das RRS
+nicht erreichbar ist</actions>
+<post>Es wird ein entsprechender Fehler geworfen, der Informationen über
+das zugrundeliegende Problem liefert.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="167" priority="C" title="Test Case Referenz speichern">
+<description/>
+<pre>Einer der beiden Anwendungsfälle &#16;?? Neue Referenz in RRS einfügen&#17;
+oder &#16;?? Referenz aus RRS bearbeiten&#17; wurde erfolgreich ausgeführt.</pre>
+<actions>1. Die Referenz wird im RRS gespeichert
+1a. Beim Speichern der Referenz tritt ein Fehler auf, da z.B. das RRS
+nicht erreichbar ist</actions>
+<post>Es wird ein Fehler geworfen, der Informationen über das
+zugrundeliegende Problem liefert.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="169" priority="C" title="Test Case Referenz laden">
+<description/>
+<pre>Der RRS View wurde im Eclipse geö&#27;net.</pre>
+<actions>1. Die Referenz wird aus dem RRS geladen
+1a. Beim Laden der Referenz tritt ein Fehler auf, da z.B. das RRS
+nicht erreicchbar ist</actions>
+<post>Es wird ein Fehler geworfen, der Informationen über das
+zugrundeliegende Problem liefert.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="172" priority="C" title="Test Case Referenz löschen">
+<description/>
+<pre>Der Anwendungsfall &#16;6.3.12 Referenz aus RRS löschen&#17; wurde
+erfolgreich ausgeführt</pre>
+<actions>1. Die Referenz wird aus dem RRS entfernt
+1a. Beim Entfernen der Referenz tritt ein Fehler auf, da z.B. das RRS
+nicht erreichbar ist</actions>
+<post>Es wird ein Fehler geworfen, der Informationen über das
+zugrundeliegende Problem liefert.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="17.05.2010" creator="tuxi23" name="Test Sequence for Datenquellen-Administratoren" number="175">
+<description/>
+<pre/>
+<sequence created="17.05.2010" creator="tuxi23" name="Test Sequence 1" number="177">
+<description/>
+<pre/>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="178" priority="C" title="Test Case Datenquelle in UDDI-Registry registrieren">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die
+erforderlichen Rechte.</pre>
+<actions>1. Anlegen eines neuen Datenquellenobjekts
+2. Registrierung des Datenquellenobjekts in der Datenquellen-Registry</actions>
+<post>Eine neue Datenquelle wurde anhand der Benutzerangaben in der
+Datenquellen-Registry korrekt registriert und kann nun in Work&#29;ows
+verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="179" priority="C" title="Test Case Datenquelle aus UDDI-Registry entfernen">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die
+erforderlichen Rechte.</pre>
+<actions>1. Auswahl der Datenquelle
+2. Entfernen der Datenquelle aus der Datenquellen-Registry</actions>
+<post>Die vom Benutzer ausgewählte Datenquelle wurde korrekt und
+vollständig aus der Datenquellen-Registry entfernt und kann nun nicht
+mehr verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="17.05.2010" creator="tuxi23" effort="00:00" number="180" priority="C" title="Test Case 1Datenquelle aus UDDI-Registry bearbeiten">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die
+erforderlichen Rechte.</pre>
+<actions>1. Auswahl der Datenquelle
+2. Bearbeiten der Werte der Datenquelle</actions>
+<post>Die vom Benutzer ausgewählte Datenquelle wurde korrekt und
+vollständig anhand der vom Benutzer durchgeführten Änderungen
+(Änderung der Eigenschaften, der Adresse, usw.) aktualisiert.</post>
 <tags/>
 </testcase>
 </sequence>
@@ -1036,29 +1212,47 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <tsa name="Test Sequence 1" number="116" revId="1">
 <relatedsequence>116</relatedsequence>
 </tsa>
-<tsa name="Test Sequence 1" number="119" revId="1">
+<tsa name="Test Sequence 2" number="119" revId="2">
 <relatedsequence>119</relatedsequence>
 </tsa>
+<tsa name="Test Sequence 3" number="147" revId="2">
+<relatedsequence>147</relatedsequence>
 </tsa>
-<tsa name="Test Sequence for Referenz auflösen/dereferenzieren" number="122" revId="1">
-<relatedsequence>122</relatedsequence>
-<tsa name="Test Sequence 1" number="123" revId="1">
-<relatedsequence>123</relatedsequence>
+<tsa name="Test Sequence 4" number="155" revId="2">
+<relatedsequence>155</relatedsequence>
+</tsa>
+<tsa name="Test Sequence 5" number="157" revId="2">
+<relatedsequence>157</relatedsequence>
+</tsa>
+<tsa name="Test Sequence 6" number="160" revId="2">
+<relatedsequence>160</relatedsequence>
 </tsa>
 </tsa>
-<tsa name="Test Sequence for DM-Aktivitaet" number="128" revId="2">
+<tsa name="Test Sequence for DM-Aktivitaet" number="128" revId="1">
 <relatedsequence>128</relatedsequence>
-<tsa name="Test Sequence 1" number="130" revId="2">
+<tsa name="Test Sequence 1" number="130" revId="1">
 <relatedsequence>130</relatedsequence>
 </tsa>
-<tsa name="Test Sequence 2" number="132" revId="2">
+<tsa name="Test Sequence 2" number="132" revId="1">
 <relatedsequence>132</relatedsequence>
 </tsa>
-<tsa name="Test Sequence 3" number="141" revId="2">
+<tsa name="Test Sequence 3" number="141" revId="1">
 <relatedsequence>141</relatedsequence>
 </tsa>
-<tsa name="Test Sequence 4" number="144" revId="2">
+<tsa name="Test Sequence 4" number="144" revId="1">
 <relatedsequence>144</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence for RRS" number="122" revId="2">
+<relatedsequence>122</relatedsequence>
+<tsa name="Test Sequence 2" number="164" revId="2">
+<relatedsequence>164</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence for Datenquellen-Administratoren" number="175" revId="2">
+<relatedsequence>175</relatedsequence>
+<tsa name="Test Sequence 1" number="177" revId="2">
+<relatedsequence>177</relatedsequence>
 </tsa>
 </tsa>
 </tsa>
@@ -1066,5 +1260,5 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <author active="Y" firstname="" lastname="tuxi23" uid="tuxi23">
 <extension name="standarduser" value="Y"/>
 </author>
-<extension name="maxid" value="146"/>
+<extension name="maxid" value="180"/>
 </tests>
