@@ -3690,215 +3690,101 @@ success
 \end_layout
 
 \begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:SIMPL-DAO"
-
-\end_inset
-
-SIMPL DAO 
+Auditing
 \end_layout
 
 \begin_layout Standard
-Das SIMPL Data Access Object (DAO) besteht aus der Implementierung der Interface
-s aus dem Paket 
-\emph on
-org.apache.ode.bpel.dao
-\emph default
-, die in den folgenden Unterpunkten beschrieben werden.
- Das DAO wird dafür verwendet, wichtige Daten der Prozessausführung aufzuzeichne
-n und persistent zu speichern (Siehe hierfür 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-1"
-
-\end_inset
-
- 3.2.2).
- 
-\end_layout
-
-\begin_layout Standard
-Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
- API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
- per Service Data Object (SDO) an den SIMPL Core senden zu können, so dass
- die Auditing Daten über den SIMPL Core einfach in beliebigen Datenquellen
- gespeichert werden können.
- Das SIMPL DAO bietet den Vorteil, dass Daten gefiltert in der Datenquelle
- gespeichert werden können und somit nur relevante Daten über die Prozessausführ
-ung in die Datenbank geschrieben werden.
- Darüber hinaus kann die Stuktur der zu speichernden Daten beliebig verändert
- werden, zum Beispiel um die Lesbarkeit der Daten zu erhöhen.
- Die Übertragung der Daten findet dabei direkt in den set-Methoden der DAOs
- statt.
- Die DAO Daten werden trotzdem auch weiterhin in der internen Apache Derby
- Datenbank gespeichert und von dort gelesen.
- Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
- können nur schreibend, jedoch nicht lesend erfolgen.
+Das Auditing in Simpl wird über einen Event-Listener realisiert, der in
+ der axis2.properties von Apache Ode angemeldet wird.
  
 \end_layout
 
 \begin_layout Subsubsection
-DAOs
-\end_layout
-
-\begin_layout Standard
-In diesem Abschnitt werden die verschiedenen DAOs beschrieben, welche vom
- SIMPL Auditing unterstützt werden und die Daten, welche gespeichert werden.
-\end_layout
-
-\begin_layout Subsubsection*
-ActivityRecoveryDAO
-\end_layout
-
-\begin_layout Standard
-Das ActivityRecoveryDAO wird ausgeführt, wenn eine Aktivität den 
-\begin_inset Quotes eld
-\end_inset
-
-recovery
-\begin_inset Quotes erd
-\end_inset
-
- Status einnimmt.
-\end_layout
-
-\begin_layout Subsubsection*
-CorrelationSetDAO
-\end_layout
-
-\begin_layout Standard
-Das CorrelationSetDAO wird ausgeführt, wenn in BPEL ein Correlation Set
- erstellt wird.
- Correlation Sets ermöglichen die Kommunikation einer Prozessinstanz mit
- seinen Partnern.
-\end_layout
-
-\begin_layout Subsubsection*
-FaultDAO
-\end_layout
-
-\begin_layout Standard
-Das FaultDAO wird erstellt, wenn ein Fehler in der Proessausführung passiert.
- Über dieses DAO kann auf die Informationen bezüglich des Fehlers, zum Beispiel
- der Name und der Grund für den Fehler, zugegriffen werden.
-\end_layout
-
-\begin_layout Subsubsection*
-PartnerLinkDAO
-\end_layout
-
-\begin_layout Standard
-Das PartnerLinkDAO repräsentiert einen PartnerLink.
- Es enthält Informationen über die eigene Rolle, die Rolle des Partners
- und die im PartnerLink hinterlegte Endpunkt-Referenz.
-\end_layout
-
-\begin_layout Subsubsection*
-ProcessDAO
-\end_layout
-
-\begin_layout Standard
-Das ProcessDAO repräsentiert ein Prozessmodell.
- Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen dieses
- Modells.
-\end_layout
-
-\begin_layout Subsubsection*
-ProcessInstanceDAO
-\end_layout
-
-\begin_layout Standard
-Das ProcessInstanceDAO repräsentiert eine Prozess-Instanz und enthält alle
- Daten, die einer Instanz zugehörig sind.
- Dazu zählen Events, Scopes sowie wartende Pick- und Receive-Aktivitäten.
-\end_layout
-
-\begin_layout Subsubsection*
-ScopeDAO
-\end_layout
-
-\begin_layout Standard
-Das ScopeDAO repräsentiert eine Scope-Instanz.
- Es enthält eine Ansammlung von Correlation-Sets und XML-Variablen.
-\end_layout
-
-\begin_layout Subsubsection*
-XmlDataDAO
-\end_layout
-
-\begin_layout Standard
-Das XmlDataDAO repräsentiert XML-Daten und wird dazu benutzt Inhalte von
- BPEL-Variablen zu speichern.
-\end_layout
-
-\begin_layout Subsubsection
-DAO Java Persistence API (JPA)
-\end_layout
-
-\begin_layout Standard
-Das DAO-JPA ist eine DAO Implementierung, die auf Apache Open JPA basiert.
- Dieses stellt Funktionalitäten zur persistenten Speicherung auf relationalen
- Datenspeichern zur Verfügung.
- Über annotierte Variablen können somit die DAO Daten komfortabel in der
- ODE internen Derby Datenbank gespeichert werden.
-\end_layout
-
-\begin_layout Subsubsection
-DAO Lebenszyklus
-\end_layout
-
-\begin_layout Standard
-Beim Starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
- BPEL-Server gestartet.
- Sofort wird die in der 
-\emph on
-OdeServer
-\emph default
--Klasse enthaltene 
-\emph on
-init
-\emph default
--Methode aufgerufen.
- Diese ruft wiederum die 
-\emph on
-initDao
-\emph default
--Methode auf.
- Dort wird die 
-\emph on
-DaoConnectionFactory
-\emph default
- geladen, welche zuvor in der 
-\emph on
-OdeConfigProperties
-\emph default
- definiert oder aus der 
-\emph on
 Axis2.properties
-\emph default
- geladen wurde.
- Über die 
-\emph on
-ConnectionFactory
-\emph default
--Klasse werden 
-\emph on
-DaoConnections
-\emph default
- erstellt und bereitgestellt, mit deren Hilfe direkt auf die DAOs zugegriffen
- werden kann.
- Der Zugriff erfolgt an den Stellen in ODE, wo die den DAOs entsprechenden
- BPEL Konstrukte ausgewertet werden.
- So wird auf die 
-\emph on
-ProcessDAO
-\emph default
- zum Beispiel aus der 
-\emph on
-ODEProcess
-\emph default
--Klasse zugegriffen, um die Prozessdaten persistent zu speichern.
+\end_layout
+
+\begin_layout Standard
+In dieser Datei wird der Event Listener, der das Auditing realisiert, angemeldet.
+ Folgende Zeilen müssen hinzugefügt werden.
+ 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ode-axis2.event.listeners=org.apache.ode.simpl.events.listener.SimplSdoEventListener
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+jel.topicname = org.apache.ode.events
+\end_layout
+
+\begin_layout Plain Layout
+
+jel.mqurl = tcp://localhost:61616
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Events
+\end_layout
+
+\begin_layout Standard
+Folgende Events werden von der Implementierung unterstützt und können ausgelesen
+ werden.
+\end_layout
+
+\begin_layout Standard
+Alle Eventes besitzen die Grundattribute: 
+\end_layout
+
+\begin_layout Itemize
+ActivityEvent: Liefert Namen, Id, Typ und DeklarationsId der Aktivität.
+\end_layout
+
+\begin_layout Itemize
+Activity FailureEvent: Liefert den Grund des Fehlschlages.
+\end_layout
+
+\begin_layout Itemize
+CorrelationEvent: Liefert PortType, Operation und MexID.
+\end_layout
+
+\begin_layout Itemize
+CorrelationSetWriteEvent: Liefert den Correlation Key.
+\end_layout
+
+\begin_layout Itemize
+ExpressionEvaluationEvent: Liefert eine Expression zurück.
+\end_layout
+
+\begin_layout Itemize
+ExpressionEvaluationFailedEvent: Liefert den Fehler bei der Evaluation zurück.
+\end_layout
+
+\begin_layout Itemize
+NewProcessInstanceEvent: Liefert, wenn vorhanden, die Root-Scope-Id und
+ die Scope-Deklarations-id.
+\end_layout
+
+\begin_layout Itemize
+PartnerLinkEvent: Liefert den Partner Link Name
+\end_layout
+
+\begin_layout Itemize
+ProcessCompletionEvent: Liefert einen Fehler zurück, falls dir Prozessausführung
+ nicht erfolgreich war.
+\end_layout
+
+\begin_layout Itemize
+
 \end_layout
 
 \begin_layout Standard
@@ -4689,7 +4575,7 @@ Business Service
 \end_layout
 
 \begin_layout Standard
-Hier kann die Datenquelle kurz textuell beschrieben werden.
+Hier wird der Name und die Beschreibng der Datenquelle gespeichert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4697,9 +4583,7 @@ Binding Template
 \end_layout
 
 \begin_layout Standard
-Die Binding Tempaltes entsprechen nun den Datenquellendefinitionen.
- Die Adresse des Webservices wird zur Adresse, über die auf die Datenquelle
- zugegriffen werden kann.
+In den Binding Templates, wird die Adresse der Datenquelle gespeichert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4730,14 +4614,14 @@ Uddi Registry Web Interface
 \end_layout
 
 \begin_layout Standard
-Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Uddi-Webinterface"
+\noindent
+Das Uddi Web Interface besteht aus den Komponenten: Konfiguration, Datenquellenl
+iste und Datenquelleneditor.
+ Alle drei Komponenten werden im folgenden noch einmal näher beschrieben.
+\end_layout
 
-\end_inset
-
- zeigt den Prototypen des Uddi Web Interface.
+\begin_layout Subsubsection
+Konfiguration
 \end_layout
 
 \begin_layout Standard
@@ -4749,19 +4633,9 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename Uddi-Webinterface.png
-	scale 60
-
-\end_inset
-
-
-\end_layout
+	filename bilder/indexscreen.JPG
+	scale 70
 
 \end_inset
 
@@ -4772,17 +4646,22 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+Uddi Web Interface Konfiguration
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Uddi-Webinterface"
+name "fig:Uddi-Web-Interface-config"
 
 \end_inset
 
-Uddi Webinterface
+
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -4792,13 +4671,163 @@ Uddi Webinterface
 \end_layout
 
 \begin_layout Standard
-Auf der linken Seite, werden die bereits vorhandenen Datenquellen angezeigt.
- Durch einen Druck auf new, können neue Datenquellen hinzugefügt werden.
- Wird eine bereits vorhandene Datenquellen ausgewählt, so werden im rechten
- Teil, alle wichtigen Informationen darüber angezeigt und können verändert
- werden.
- Durch einen druck auf delete, wird die Datenquelle komplett gelöscht.
- 
+\noindent
+In der Konfiguration können grundlegende Informationen, wie die Adresse
+ der Datenquellen-Registry, sowie Name und Passwort, die für die Schreibzugriffe
+ verwendet werden, hinterlegt werden können.
+ Diese Informationen werden im Web-Apps
+\backslash
+conf Verzeichniss des Web Interface gespeichert.
+ Beim Speichern der Konfiguration, wird Automatisch die Verfügbarkeit der
+ Uddi-Registry unter der angegeben Adresse überprüft.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellenliste
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bilder/datasourcelist.JPG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Uddi Web Interface Datenquellenliste
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uddi-Web-Interface-datalist"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+In der Datenquellenliste werden alle Verfügbaren Datenquellen und die grundlegen
+den Informationen angezeigt.
+ Dort können ausserdem Datenquellen neu erstellt werden oder nach Auswahl
+ einer Datenquelle diese Editiert oder Gelöscht werden.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelleneditor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename bilder/edit.JPG
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Uddi Web Interface Datenquelleneditor
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uddi-Web-Interface-editor"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Datenquelleneditor wird aufgerufen, wenn eine Datenquelle neu erstellt
+ oder editiert wird.
+ Alle wichtigen Informationen können dort über Textfelder eingegeben werden
+ und direkt in der Datenquellen-Registry gespeichert werden.
+ Die Datenquelle benötigt dabei folgende Informationen.
+\end_layout
+
+\begin_layout Itemize
+Name: Ein Name für die Datenquelle, der innerhalb der Registry eindeutig
+ sein muss.
+ Auf grundlage des Namens wird der Key, der zur internen Datenverwaltung
+ benötigt wird, generiert.
+\end_layout
+
+\begin_layout Itemize
+Addresse: Die Adresse unter der die Datenquelle aufgerufen werden kann.
+\end_layout
+
+\begin_layout Itemize
+Typ: Der Typ der Datenquelle (Database, Filesystem usw.)
+\end_layout
+
+\begin_layout Itemize
+Subtyp: Der Subtyp der Datenquelle (Rdb, ext3 usw.)
+\end_layout
+
+\begin_layout Itemize
+Policy: Der genaue Pfad zu einer Policy Datei, die die nicht funktionalen
+ Anforderungen für die Datenquelle beschreibt.
+\end_layout
+
+\begin_layout Itemize
+Username: Der Benutzername, der benötigt wird um auf die Datenquelle zuzugreifen.
+\end_layout
+
+\begin_layout Itemize
+Passwort: Das Passwort, das benötigt wird um auf die Datenquelle zuzugreifen.
 \end_layout
 
 \begin_layout Standard
