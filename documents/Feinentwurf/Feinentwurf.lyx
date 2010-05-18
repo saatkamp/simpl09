@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="4">
+<lyxtabular version="3" rows="22" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1488,7 +1488,7 @@ reference "sub:RRS-Transformation-Eclipse-Plug-In"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1497,7 +1497,7 @@ reference "sub:RRS-Transformation-Eclipse-Plug-In"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1506,7 +1506,7 @@ reference "sub:RRS-Transformation-Eclipse-Plug-In"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1515,7 +1515,7 @@ rehnre
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1527,6 +1527,79 @@ reference "sec:Reference-Resolution-System"
 \end_inset
 
  überarbeitet und erweitert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core-Klassendiagramm"
+
+\end_inset
+
+ und Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Paketstruktur"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datentypen-und-Enumerationen"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Interfaces"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Hilfsklassen"
+
+\end_inset
+
+ überarbeitet
 \end_layout
 
 \end_inset
@@ -1748,6 +1821,8 @@ reference "fig:SIMPL-Core-Klassendiagramm"
  der Interface- und Web Service-Methoden, sowie Getter- und Setter-Methoden
  verzichtet, die aber in den folgenden Abschnitten genannt und beschrieben
  werden.
+ Des Weiteren werden folgende Abkürzungen verwendet DSS für DataSourceService,
+ DF für DataFormat und DFT für DataFormatType.
  Einige der SIMPL Core Dienste werden, falls sie außerhalb des SIMPL Cores
  aufrufbar sein müssen, nach Außen über Web Services verfügbar gemacht.
  Falls im Nachfolgenden nicht die Dienste selbst, sondern die Web Services
@@ -2002,67 +2077,445 @@ In diesem Paket befinden sich Hilfsklassen, die den Entwickler unterstützen.
 \end_layout
 
 \begin_layout Subsection
-Interfaces 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Interfaces beschreiben
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datentypen-und-Enumerationen"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsubsection
-DataSourceService<S, T>
-\end_layout
-
-\begin_layout Subsubsection
-DataFormat<S, T>
-\end_layout
-
-\begin_layout Subsubsection
-DataFormatConverter
-\end_layout
-
-\begin_layout Subsubsection
-StrategyService
-\end_layout
-
-\begin_layout Subsubsection
-AdministrationService
-\end_layout
-
-\begin_layout Subsection
 Datentypen und Enumerationen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Beschreibung
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Im SIMPL Core werden bestimmte Datentypen und Enumerationen verwendet, die
+ durch entsprechende JAX-WS Annotationen ebenfalls über die Web Services
+ genutzt werden.
 \end_layout
 
 \begin_layout Subsubsection
 DataSource
 \end_layout
 
+\begin_layout Standard
+Stellt alle Eigenschaften einer Datenquelle zur Verfügung und enthält wichtige
+ Zugriffsinformsationen, die für einen Verbindungsaufbau benötigt werden.
+ Dazu gehören Authentifizierungsinformationen und Informationen für das
+ Late Binding.
+\end_layout
+
 \begin_layout Subsubsection
 Authentication
+\end_layout
+
+\begin_layout Standard
+Enthält Authentifizierungsinformationen wie Benutzername und Passwort und
+ kann ggf.
+ um weitere Informationen erweitert werden.
 \end_layout
 
 \begin_layout Subsubsection
 LateBinding
 \end_layout
 
+\begin_layout Standard
+Enthält alle Informationen für das Late Binding wie z.B.
+ WS-Policy Informationen und die Adresse der UDDI-Registry, die verwendet
+ werden soll.
+\end_layout
+
 \begin_layout Subsubsection
 Strategy
+\end_layout
+
+\begin_layout Standard
+Diese Enumeration dient der Unterscheidung der verschiedenen Late Binding
+ Strategien.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Interfaces"
+
+\end_inset
+
+Interfaces
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel beschreibt alle wichtigen Interfaces im SIMPL Core und ihre
+ Funktionen.
+\end_layout
+
+\begin_layout Subsubsection
+DataSourceService<S, T>
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+DataSourceService
+\emph default
+-Interface beschreibt die zu implementierenden Funktionen des Datasource
+ Service, sowie den 
+\emph on
+DataSourceService
+\emph default
+-Plug-Ins und bietet generische ein- und ausgehende Datentypen, die sich
+ je nach Datenquellentyp unterscheiden können und deshalb erst bei der Implement
+ierung festgelegt werden.
+ Eingabeparameter für alle Funktionen ist die Datenquelle auf der operiert
+ werden soll als 
+\emph on
+DataSource
+\emph default
+-Objekt, mit allen Angaben die für einen Verbindungsaufbau zu einer Datenquelle
+ benötigt werden.
+\end_layout
+
+\begin_layout Paragraph
+public boolean executeStatement(DataSource dataSource, String statement)
+\end_layout
+
+\begin_layout Standard
+Ermöglicht die Ausführung eines Statements auf einer Datenquelle und bestätigt
+ die Ausführung mit einem booleschen Rückgabewert.
+ Die Funktion wird hauptsächlich dazu verwendet um Datenstrukturen auf einer
+ Datenquelle zu definieren, wie z.B.
+ das Erstellen einer Tabelle auf einer relationalen Datenbank.
+\end_layout
+
+\begin_layout Paragraph
+public T retrieveData(DataSource dataSource, String statement)
+\end_layout
+
+\begin_layout Standard
+Ermöglicht die Anforderung von Daten einer bestimmten Datenquelle durch
+ Adresse und ein Statement der entsprechenden Anfragesprache wie z.B.
+ ein SELECT-Statement in der Anfragesprache SQL bei relationalen Datenbanken.
+ In welcher Form die Daten zurückgegeben werden, wird von der Implementierung
+ bestimmt.
+\end_layout
+
+\begin_layout Paragraph
+public boolean writeBack(DataSource dataSource, S data)
+\end_layout
+
+\begin_layout Standard
+Wird verwendet, um bestehende Daten einer Datenquelle zu manipulieren bzw.
+ zu aktualisieren.
+ Die Funktion erhält die geänderten Daten oder auch Anweisungen was geändert
+ werden muss und übernimmt diese für die vorhanden Daten auf der Datenquelle.
+ Der Erfolg des Zurückschreibens wird mit einem booleschen Rückgabewert
+ bestätigt.
+\end_layout
+
+\begin_layout Paragraph
+public boolean writeData(DataSource dataSource, S data, String target)
+\end_layout
+
+\begin_layout Standard
+Diese Funktion arbeitet ähnlich wie 
+\emph on
+writeBack
+\emph default
+, ist aber für das Schreiben noch nicht vorhandener Daten zuständig.
+ Damit die geschriebenen Daten wieder abgerufen werden können, wird ein
+ 
+\emph on
+target
+\emph default
+ (Ziel) benötigt, das unter Umständen zuvor angelegt werden muss, was über
+ die Funktion 
+\emph on
+createTarget 
+\emph default
+möglich ist, die weiter unten beschrieben ist.
+ Ob das Schreiben erfolgreich ausgeführt wurde, wird mit einem booleschen
+ Rückgabewert bestätigt.
+\end_layout
+
+\begin_layout Paragraph
+public boolean depositData(DataSource dataSource, String statement, String
+ target)
+\end_layout
+
+\begin_layout Standard
+Mit dieser Funktion werden über ein Statement Daten einer Datenquelle selektiert
+ und auf der Datenquelle selbst hinterlegt.
+ Die hinterlegten Daten werden über das 
+\emph on
+target
+\emph default
+ referenziert und können darüber anschließend abgerufen werden, dies kann
+ z.B.
+ der Tabellenname bei einer relationalen Datenbank sein.
+ Die Ausführung wird mit einem booleschen Rückgabewert bestätigt.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject getMetaData(DataSource dataSource, String filter)
+\end_layout
+
+\begin_layout Standard
+Liefert Metadaten einer Datenquelle als SDO.
+ Die Umsetzung wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Metadaten"
+
+\end_inset
+
+ näher beschrieben.
+\end_layout
+
+\begin_layout Paragraph
+public boolean createTarget(DataSource dataSource, DataObject dataObject,
+ String target)
+\end_layout
+
+\begin_layout Standard
+Mit 
+\emph on
+createTarget 
+\emph default
+kann ein Ziel für das Schreiben neuer Daten angelegt werden, z.B.
+ eine Tabelle bei relationalen Datenbanken.
+ Die Daten als SDO werden benötigt, da sich dort auch Metadaten befinden
+ können, die für die Erstellung eines 
+\emph on
+target
+\emph default
+ benötigt werden, z.B.
+ Datentyp und Größe einer Spalte in einer relationalen Datenbank, die unter
+ Umständen im eingehenden Datentyp (S) des Datasource Service nicht mehr
+ vorhanden sind.
+\end_layout
+
+\begin_layout Subsubsection
+DataFormat<S, T>
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+DataFormat
+\emph default
+-Interface ist die einheitliche Schnittstelle für die 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins, die verwendet werden um die ausgehenden Datentypen von Datasource
+ Service Plug-Ins zu SDO und umgekehrt die eingehenden SDO zurück zum eingehende
+n Datentyp umzuwandeln.
+ 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins können vom Datasource Service für verschiedene Datasource Service
+ Plug-Ins wiederverwendet werden, wenn es sich die gleichen ein- und ausgehenden
+ Datentypen handelt, die hier ebenfalls generisch sind und erst zur Implementier
+ung bestimmt werden.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject toSDO(S data)
+\end_layout
+
+\begin_layout Standard
+Wandelt die eingehenden Daten zu SDO.
+\end_layout
+
+\begin_layout Paragraph
+public T fromSDO(DataObject data)
+\end_layout
+
+\begin_layout Standard
+Wandelt die eingehenden SDO-Daten zurück in den ausgehenden Datentyp T.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject getSDO()
+\end_layout
+
+\begin_layout Standard
+Liefert ein leeres (ohne Daten) SDO mit der Struktur des XML-Schema, das
+ dem 
+\emph on
+DataFormat
+\emph default
+-Plug-In zu Grunde liegt.
+\end_layout
+
+\begin_layout Paragraph
+public String getType()
+\end_layout
+
+\begin_layout Standard
+Liefert den Typ des 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins, der zur Identifikation verwendet wird und im Plug-In festgelegt
+ wird.
+\end_layout
+
+\begin_layout Subsubsection
+DataFormatConverter
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+DataFormatConverter
+\emph default
+-Interface ist die einheitliche Schnittstelle für die 
+\emph on
+DataFormatConverter
+\emph default
+-Plug-Ins, die dafür verwendet werden um Daten die von einer Datenquelle
+ abgerufen wurden, auch auf eine anderen Datenquelle schreiben zu können.
+ Das Format des SDO wird durch die vom Datasource Service verwendeten 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins bestimmt und kann daher von Datenquelle zu Datenquelle variieren.
+ In einem 
+\emph on
+DataFormatConverter
+\emph default
+-Plug-In wird jeweils ein 
+\emph on
+toSDO 
+\emph default
+DataFormat-Typ und ein 
+\emph on
+fromSDO
+\emph default
+ DataFormat-Typ festgelegt.
+ Damit ein 
+\emph on
+DataFormatConverter
+\emph default
+-Plug-In vom Datasource Service für mehrere Datenquellen wiederverwendet
+ werden kann, wird den Funktionen zusätzlich die konkrete Implementierung
+ des 
+\emph on
+DataSourceService
+\emph default
+-Plug-Ins mitgegeben um spezielle Konvertierungsunterschiede zu berücksichtigen.
+ Das Plug-In besitzt folgende Funktionen um zwischen den Typen zu konvertieren.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject convertTo(DataObject data, DataSourceService<Object, Object>
+ dataSourceService)
+\end_layout
+
+\begin_layout Standard
+Wandelt das eingehende SDO im 
+\emph on
+toSDO
+\emph default
+ DataFormat-Typ in den 
+\emph on
+fromSDO
+\emph default
+ DataFormat-Typ.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject convertFrom(DataObject data, DataSourceService<Object,
+ Object> dataSourceService)
+\end_layout
+
+\begin_layout Standard
+Wandelt das eingehende SDO im 
+\emph on
+toSDO
+\emph default
+ DataFormat-Typ in den 
+\emph on
+fromSDO
+\emph default
+ DataFormat-Typ.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject convert(DataObject dataObject, DataSourceService<Object,
+ Object> dataSourceService)
+\end_layout
+
+\begin_layout Subsubsection
+StrategyService
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+StrategyService
+\emph default
+-Interface beschreibt die Funktionen, die der Strategy Service implementieren
+ muss, der für das Late Binding Datenquellen aus der UDDI-Registry zuständig
+ ist.
+\end_layout
+
+\begin_layout Paragraph
+public DataSource findDataSource(DataSource dataSource)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Verweis auf UDDI-Client von Wolfgang
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Erhält eine nicht vollständig spezifizierte Datenquelle mit Late Binding
+ Informationen (
+\emph on
+LateBinding
+\emph default
+-Objekt) und sucht über den UDDI-Client eine entsprechende Datenquelle.
+\end_layout
+
+\begin_layout Subsubsection
+AdministrationService
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+AdministrationService-Interface
+\emph default
+ beschreibt die Funktionen, die der Administration Service implementieren
+ muss.
+\end_layout
+
+\begin_layout Paragraph
+public boolean saveSettings(String schema, String table, String settingName,
+ LinkedHashMap<String, String> settings)
+\end_layout
+
+\begin_layout Standard
+Speichert die Einstellungen aus 
+\emph on
+settings
+\emph default
+ in der Embedded Datenbank.
+\end_layout
+
+\begin_layout Paragraph
+public LinkedHashMap<String, String> loadSettings(String schema, String
+ table, String settingName)
+\end_layout
+
+\begin_layout Standard
+Lädt Einstellungen aus der Embedded Datenbank.
 \end_layout
 
 \begin_layout Subsection
@@ -2088,11 +2541,15 @@ Mit der Klasse
 \emph on
  Printer
 \emph default
- kann über die statische Methode 
+ kann über die statische Methoden 
 \emph on
 +printDataObject(DataObject) 
 \emph default
-ein SDO auf der Konsole ausgeben werden.
+und 
+\emph on
++printDataObjectXML(DataObject)
+\emph default
+ ein SDO auf der Konsole ausgeben werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2550,105 +3007,21 @@ name "sub:Datasource-Service"
 \end_inset
 
 Datasource Service
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
-Der Datasource Service realisiert die Schnittstelle für den Zugriff auf
- die verschiedenen Datenquellen der über Plug-Ins realisiert wird (siehe
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:DataSourcePlugin"
+\begin_layout Plain Layout
+TODO: DataSourceServiceImpl beschreiben und die Verwendung von DataFormat,
+ DataFormatConverter und StrategyService + Sequenzdiagramme
+\end_layout
 
 \end_inset
 
-).
- Die Einteilung der Datenquellen geschieht dabei über Typ, Subtyp und Language,
- wie z.B.
- die relationale Datenbank (Typ: RDB) DB2 (Subtyp: DB2) mit der Anfragesprache
- SQL (Language: SQL).
- Eine genaue Beschreibung des Plug-In Systems folgt in Kapitel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Plug-In-System"
 
-\end_inset
-
-.
- Folgende Funktionen müssen von einem Datenquellen Plug-In realisiert werden,
- die vom Interface 
-\emph on
-DataSourceService
-\emph default
- vorgegeben werden:
-\end_layout
-
-\begin_layout Paragraph
-public DataObject retrieveData(String dsAddress, String statement)
 \end_layout
 
 \begin_layout Standard
-Ermöglicht die Anforderung von Daten einer bestimmten Datenquelle durch
- Adresse und ein Statement der entsprechenden Anfragesprache wie z.B.
- ein SELECT-Statement in der Anfragesprache SQL.
- Die Rückgabe der Daten erfolgt als SDO.
-\end_layout
-
-\begin_layout Paragraph
-public boolean depositData(String dsAddress, String statement, String target)
-\end_layout
-
-\begin_layout Standard
-Mit dieser Funktion werden über ein Statement Daten einer Datenquelle selektiert
- und auf der Datenquelle selbst hinterlegt.
- Die hinterlegten Daten werden über das 
-\emph on
-target
-\emph default
- referenziert und können darüber anschließend abgerufen werden, dies kann
- z.B.
- der Tabellenname bei einer relationalen Datenbank sein.
- Die Ausführung wird mit einem booleschen Rückgabewert bestätigt.
-\end_layout
-
-\begin_layout Paragraph
-public boolean executeStatement(String dsAddress, String statement)
-\end_layout
-
-\begin_layout Standard
-Ermöglicht die Ausführung eines Statements auf einer Datenquelle und bestätigt
- die Ausführung mit einem booleschen Rückgabewert.
- Die Funktion wirde hauptsächlich dazu verwendet um Datenstrukturen auf
- einer Datenquelle zu definieren, wie z.B.
- das Erstellen von Tabellen bei einer relationalen Datenbank.
-\end_layout
-
-\begin_layout Paragraph
-public boolean writeBack(String dsAddress, DataObject data)
-\end_layout
-
-\begin_layout Standard
-Wird verwendet, um bestehende Daten einer Datenquelle zu manipulieren bzw.
- zu aktualisieren.
- Die Funktion erhält die geänderten Daten als SDO und gleicht diese mit
- den vorhanden Daten auf der Datenquelle ab.
- Der Erfolg der Operation wird mit einem booleschen Rückgabewert bestätigt.
-\end_layout
-
-\begin_layout Paragraph
-public DataObject getMetaData(String dsAddress)
-\end_layout
-
-\begin_layout Standard
-Liefert Metadaten einer Datenquelle als SDO.
- Die Umsetzung wird in Kapitel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Metadaten"
-
-\end_inset
-
- näher beschrieben.
+...
 \end_layout
 
 \begin_layout Subsubsection
@@ -2716,7 +3089,7 @@ Connection Service
 status open
 
 \begin_layout Plain Layout
-Ersetzt Strategy Service, in Grobentwurf nachtragen
+Ersetzt Storage Service, in Grobentwurf nachtragen
 \end_layout
 
 \end_inset
@@ -2793,6 +3166,18 @@ name "sub:Plug-In-System"
 \end_inset
 
 Plug-In System
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Beschreibung der verschiedenen Plug-Ins und Verweise auf die Interfaces,
+ auch beschreiben wie genau ein Plugin funktioniert, zB bei DataFormat das
+ zu Grunde liegende XML-Schema
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
