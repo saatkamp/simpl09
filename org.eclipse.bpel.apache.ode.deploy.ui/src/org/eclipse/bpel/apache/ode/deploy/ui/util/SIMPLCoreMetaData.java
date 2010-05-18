@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
+import org.eclipse.simpl.communication.client.DataSource;
 
 public class SIMPLCoreMetaData {
 
@@ -41,13 +43,6 @@ public class SIMPLCoreMetaData {
 	private static HashMap<String, List<String>> dataSourceSubTypeLanguages = new HashMap<String, List<String>>();
 
 	/**
-	 * This variable holds all data formats of a data source subtype, which can
-	 * be chosen during the modeling process and will be supported by the data
-	 * sources and the SIMPL Core.
-	 */
-	private static HashMap<String, List<String>> dataSourceFormats = new HashMap<String, List<String>>();
-
-	/**
 	 * Inits the Constants class.
 	 */
 	public static void init() {
@@ -68,14 +63,6 @@ public class SIMPLCoreMetaData {
 			for (String subTypeName : getDataSourceSubTypes(datasource)) {
 				dataSourceSubTypeLanguages.put(subTypeName, simplCore
 						.getDatasourceLanguages(subTypeName));
-			}
-		}
-
-		// Laden alle DataFormats der Subtypen aus dem SIMPL Core.
-		for (String datasource : dataSourceTypes) {
-			for (String subTypeName : getDataSourceSubTypes(datasource)) {
-				dataSourceFormats.put(subTypeName, simplCore
-						.getDataFormat(subTypeName));
 			}
 		}
 	}
@@ -115,10 +102,26 @@ public class SIMPLCoreMetaData {
 	}
 
 	/**
-	 * @return
+	 * @return the supported data formats for a given data source.
 	 */
-	public static List<String> getDataSourceFormats() {
-		// TODO Auto-generated method stub
-		return null;
+	public static List<String> getDataSourceFormats(TDatasource dataSource) {
+		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+		
+		return simplCore.getSupportedDataFormats(tDs2ds(dataSource));
+	}
+	
+	private static DataSource tDs2ds (TDatasource data){
+		DataSource dataSource = new DataSource();
+		
+		if (data != null){
+			dataSource.setName(data.getDataSourceName());
+			dataSource.setAddress(data.getAddress());
+			dataSource.setType(data.getType());
+			dataSource.setSubType(data.getSubtype());
+			dataSource.setLanguage(data.getLanguage());
+			dataSource.setDataFormat(data.getFormat());
+		}
+		
+		return dataSource;
 	}
 }

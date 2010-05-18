@@ -99,11 +99,11 @@ public class SIMPLCore {
 	 * @param subTypeName
 	 * @return
 	 */
-	public List<String> getDataFormat(String subTypeName) {
-		List<String> dsSubTypeDataFormat = (List<String>) Parameter
-				.deserialize(getDatasourceService().getDataFormatTypes(/*subTypeName*/));
+	public List<String> getSupportedDataFormats(DataSource dataSource) {
+		List<String> dsDataFormat = (List<String>) Parameter
+				.deserialize(getDatasourceService().getSupportedDataFormatTypes(dataSource));
 
-		return dsSubTypeDataFormat;
+		return dsDataFormat;
 	}
 
 	// public boolean saveAll(List<String> schema, List<String> table, String

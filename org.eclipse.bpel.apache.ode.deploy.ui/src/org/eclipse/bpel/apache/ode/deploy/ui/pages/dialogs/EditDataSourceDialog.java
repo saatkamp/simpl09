@@ -106,7 +106,11 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 							type.getText()).toArray(new String[0]));
 				}
 
+				datasource.setType(type.getText());
+				//Clear the text and the items in the following widgets
 				subtype.setText("");
+				language.removeAll();
+				format.removeAll();
 			}
 		});
 		if (this.datasource.getType() != null) {
@@ -129,7 +133,14 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 					language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
 							subtype.getText()).toArray(new String[0]));
 				}
+
+				datasource.setSubtype(subtype.getText());
 				language.setText("");
+				format.removeAll();
+				
+				//Type & Subtype changed, so we have to query the supported data formats again
+				format.setItems(SIMPLCoreMetaData.getDataSourceFormats(
+						datasource).toArray(new String[0]));
 			}
 		});
 		if (this.datasource.getSubtype() != null) {
@@ -144,15 +155,16 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 				language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
 						subtype.getText()).toArray(new String[0]));
 			}
+			
 			language.setText(this.datasource.getLanguage());
 		}
 
 		Label label8 = new Label(parent, SWT.NONE);
 		label8.setText("Format *");
 		format = new CCombo(parent, SWT.BORDER);
-		if (SIMPLCoreMetaData.getDataSourceFormats() != null) {
-			format.setItems(SIMPLCoreMetaData.getDataSourceFormats().toArray(
-					new String[0]));
+		if (SIMPLCoreMetaData.getDataSourceFormats(this.datasource) != null) {
+			format.setItems(SIMPLCoreMetaData.getDataSourceFormats(
+					this.datasource).toArray(new String[0]));
 		}
 		if (this.datasource.getFormat() != null) {
 			format.setText(this.datasource.getFormat());
