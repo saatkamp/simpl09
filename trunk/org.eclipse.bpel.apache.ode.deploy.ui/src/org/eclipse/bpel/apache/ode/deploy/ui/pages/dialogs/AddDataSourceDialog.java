@@ -44,6 +44,9 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 	public AddDataSourceDialog(Shell parentShell, ProcessType processType) {
 		super(parentShell);
 		this.processType = processType;
+		// Create a new TDatasource
+		ddFactory factory = ddFactory.eINSTANCE;
+		this.datasource = factory.createTDatasource();
 	}
 
 	@Override
@@ -80,7 +83,7 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 		Label label3 = new Label(parent, SWT.NONE);
 		label3.setText("Type *");
 		type = new CCombo(parent, SWT.BORDER);
-		if (SIMPLCoreMetaData.getDataSourceTypes() != null){
+		if (SIMPLCoreMetaData.getDataSourceTypes() != null) {
 			type.setItems(SIMPLCoreMetaData.getDataSourceTypes().toArray(
 					new String[0]));
 		}
@@ -98,7 +101,11 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 							type.getText()).toArray(new String[0]));
 				}
 
+				datasource.setType(type.getText());
+				//Clear the text and the items in the following widgets
 				subtype.setText("");
+				language.removeAll();
+				format.removeAll();
 			}
 		});
 
@@ -118,7 +125,14 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 					language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
 							subtype.getText()).toArray(new String[0]));
 				}
+
+				datasource.setSubtype(subtype.getText());
 				language.setText("");
+				format.removeAll();
+				
+				//Type & Subtype changed, so we have to query the supported data formats again
+				format.setItems(SIMPLCoreMetaData.getDataSourceFormats(
+						datasource).toArray(new String[0]));
 			}
 		});
 
@@ -129,10 +143,6 @@ public class AddDataSourceDialog extends TitleAreaDialog {
 		Label label8 = new Label(parent, SWT.NONE);
 		label8.setText("Format *");
 		format = new CCombo(parent, SWT.BORDER);
-		if (SIMPLCoreMetaData.getDataSourceFormats() != null) {
-			format.setItems(SIMPLCoreMetaData.getDataSourceFormats().toArray(
-					new String[0]));
-		}
 
 		Label label6 = new Label(parent, SWT.NONE);
 		label6.setText("User name");
