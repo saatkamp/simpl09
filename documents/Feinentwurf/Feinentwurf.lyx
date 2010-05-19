@@ -1651,7 +1651,21 @@ reference "sub:SIMPLConfig"
 
 \end_inset
 
- überarbeitet
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Plug-In-System"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datasource-Service"
+
+\end_inset
+
+ überarbeitet und Sequenzdiagramme hinzugefügt
 \end_layout
 
 \end_inset
@@ -3190,6 +3204,16 @@ name "sub:Plug-In-System"
 \end_inset
 
 Plug-In System
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Funktionen der Plug-Ins aus dem Klassendiagramm beschreiben
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3548,10 +3572,10 @@ DataObject
 \emph default
 ) arbeitet.
  In den folgenden Sequenzdiagrammen wird dargestellt wie verschiedene Anfragen
- verarbeitet werden und welche Rolle dabei die DataSourceService Plug-Ins,
+ verarbeitet werden und welche Rollen dabei die DataSourceService Plug-Ins,
  DataFormat Plug-Ins und DataFormatConverter Plug-Ins spielen.
  Die einzelnen Schritte sind in den Sequenzdiagrammen durchnummeriert und
- werden in den Beschreibungen entsprechend referenziert.
+ werden in den Beschreibungen in Klammern entsprechend referenziert.
 \end_layout
 
 \begin_layout Paragraph*
@@ -3580,7 +3604,7 @@ DataSourceService
 \emph on
 SIMPLCore
 \emph default
--Instanz wird diese Instanz angefordert (2 + 3) und über 
+-Instanz wird diese Instanz angefordert (2 und 3) und über 
 \emph on
 retrieveData()
 \emph default
@@ -3594,33 +3618,33 @@ DataSourceService
 DataSourceServiceProvider
 \emph default
  die Instanz eines DataSourceService Plug-Ins für die gewünschte Datenquelle
- (4.1 + 4.2).
+ (4.1).
  Anschließend wird die Anfrage an die 
 \emph on
 retrieveData()
 \emph default
--Funktion des Plug-Ins weitergeleitet (4.3), das die Daten von der Datenquelle
- holt und diese zurückgibt (4.4).
+-Funktion des Plug-Ins weitergeleitet (4.2), das die Daten von der Datenquelle
+ holt und diese zurückgibt (4.3).
  Im nächsten Schritt werden die Daten über die interne Funktion 
 \emph on
 formatRetrievedData()
 \emph default
- zu einem SDO konvertiert (4.5), dazu wird über den DataFormatProvider mit
+ zu einem SDO konvertiert (4.4), dazu wird über den DataFormatProvider mit
  
 \emph on
 getSupportedDataFormatTypes()
 \emph default
- zunächst überprüft welche Datenformate für die ausgehenden Daten des DataSource
-Service Plug-Ins in Frage kommen (4.6), die als Liste zurückgeschickt werden
- (4.7).
- Wenn ein unterstütztes DataFormat Plug-In gefunden wurde, kann über den
- DataFormatProvider die Instanz des DataFormat Plug-Ins angefordert werden
- (4.8 + 4.9).
+ zunächst überprüft welche Datenformat-Typen für die ausgehenden Daten des
+ DataSourceService Plug-Ins in Frage kommen (4.5), die als Liste zurückgeschickt
+ werden (4.6).
+ Wenn ein unterstützter Datenformat-Typ gefunden wurde, kann über den DataFormat
+Provider die Instanz des entsprechenden DataFormat Plug-Ins angefordert
+ werden (4.7).
  Mit dieser Instanz ist es möglich die Daten mit der Funktion 
 \emph on
 toSDO()´
 \emph default
-in ein SDO zu konvertieren (4.10, 4.11), das abschließend an den Aufrufer
+in ein SDO zu konvertieren (4.8 und 4.9), das abschließend an den Aufrufer
  zurückgegeben wird (5).
 \end_layout
 
@@ -3724,11 +3748,10 @@ instanziiert und über die Funktion
 \emph on
 getAllDatasources() 
 \emph default
-eine Liste der der verfügbaren Datenquellen angefordert (4.6.2 + 4.6.3).
+eine Liste der der verfügbaren Datenquellen angefordert (4.6.2 und 4.6.3).
  Aus der Liste wird nun entsprechend der gewünschten Strategie, die bei
  der Anfrage angegeben wurde, eine Datenquelle ausgewählt und zurückgegeben
- (4.7).
- Der weitere Ablauf entspricht der Beschreibung in Abschnitt 
+ (4.7) von der anschließend, wie in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "par:Abruf-von-Daten"
@@ -3743,7 +3766,7 @@ Abruf von Daten einer Datenquelle
 \begin_inset Quotes erd
 \end_inset
 
- ab Schritt 4.1.
+ beschrieben (ab 4.1), die Daten abgerufen werden können.
 \end_layout
 
 \begin_layout Standard
@@ -3792,7 +3815,163 @@ Sequenzdiagramm zu Abruf von Daten mit Late Binding
 \end_layout
 
 \begin_layout Paragraph*
-Transfer von Daten aus einer Datenbank in ein Dateisystem
+Transfer von Daten aus einem Dateisystem in eine Datenbank
+\end_layout
+
+\begin_layout Standard
+Das folgende Szenario im Sequenzdiagramm in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequenzdiagramm-zu-Transfer"
+
+\end_inset
+
+, zeigt den beispielhaften Ablauf beim Schreiben von Daten in eine Datenbank,
+ die zuvor aus einem Dateisystem abgerufen wurden.
+ Dabei soll vor allem die Konvertierung der eingehenden SDO Daten durch
+ ein entsprechendes DataFormatConverter Plug-In klar werden.
+ Da der Abruf der Daten aus einer Datenquelle, sowie die Anforderung des
+ 
+\emph on
+DataSourceService
+\emph default
+ über den 
+\emph on
+SIMPLCore
+\emph default
+ bereits beschrieben wurden, wird an dieser Stelle nicht näher darauf eingegange
+n und der Abruf der Daten, sowie das Schreiben in der Abbildung direkt über
+ den 
+\emph on
+DataSourceService
+\emph default
+ dargestellt.
+\end_layout
+
+\begin_layout Standard
+Nachdem die Daten vom Dateisystem abgerufen wurden (1 und 2), werden sie
+ zum Schreiben an die Datenbank mit 
+\emph on
+writeData()
+\emph default
+ adressiert (3).
+ Zunächst wird das entsprechende 
+\emph on
+DataSourceServicePlugin
+\emph default
+ angefordert, das aber in diesem Fall das SDO Datenformat nicht verstehen
+ kann, da es von einem Dateisystem abgerufen wurde, für das ein anderes
+ 
+\emph on
+DataFormatPlugin
+\emph default
+ verwendet wurde und das SDO somit eine andere Struktur hat.
+ Über die interne Methode 
+\emph on
+formatWriteDateAndCreateTarget()
+\emph default
+ wird der Schreibvorgang abgewickelt (3.2).
+ Um zu überprüfen ob das Datenformat des eingehenden SDOs bekannt ist, wird
+ zunächst vom 
+\emph on
+DataFormatProvider
+\emph default
+ eine Liste der von der Datenbank unterstützten Datenformate angefordert
+ (3.3 und 3.4) und mit dem vorliegenden Datenformat verglichen.
+ Im Sequenzdiagramm ist der Vollständigkeit halber auch der alternative
+ Fall eingezeichnet, dass die Daten in einem unterstützten Datenformat vorliegen
+ (3.5 und 3.6).
+ In unserem Szenario ist das aber nicht der Fall, daher muss geguckt werden
+ in welche Datenformate das SDO konvertiert werden kann, und ob eines dieser
+ Datenformate von der Datenbank unterstützt wird.
+ Dazu wird mit 
+\emph on
+getSupportedConvertDataType()
+\emph default
+ vom 
+\emph on
+DataFormatProvider
+\emph default
+ eine Liste der Datenformate abgerufen, in die das Datenformat generell
+ konvertiert werden kann (3.7 und 3.8).
+ Falls eines der Datenformate für die Datenbank unterstützt wird, wird das
+ entsprechende 
+\emph on
+DataFormatConverterPlugin 
+\emph default
+angefordert (3.9) und das SDO mit 
+\emph on
+convert()
+\emph default
+ konvertiert (3.10 und 3.11).
+ Sobald das SDO in einem unterstützten Datenformat vorliegt, kann es durch
+ das entsprechende 
+\emph on
+DataFormatPlugin 
+\emph default
+(die Unterstützung wurde ja zuvor geprüft) mit der Methode 
+\emph on
+fromSDO()
+\emph default
+ zurück in den erwerteten Datentyp des Datenbank-
+\emph on
+DataSourceService
+\emph default
+ übersetzt werden (3.12 bis 3.14).
+ Nicht bei allen Datenquellen notwendig, ist die Vorbereitung der Datenquelle
+ damit Daten überhaupt geschrieben werden können.
+ In diesem Fall muss eine Tabelle erstellt werden, in die die Daten geschrieben
+ werden können was mit 
+\emph on
+createTarget()
+\emph default
+ am 
+\emph on
+DataSourceServicePlugin 
+\emph default
+erledigt wird (3.15).
+ Abschließend werden die Daten geschrieben (3.16) und der Erfolg oder Mißerfolg
+ durch einen booleschen Rückgabewert bestätigt (4).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/SIMPLCore-Transfer-Sequenzdiagramm.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequenzdiagramm-zu-Transfer"
+
+\end_inset
+
+Sequenzdiagramm zu Transfer von Daten aus einem Dateisystem in eine Datenbank
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
