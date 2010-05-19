@@ -3198,18 +3198,6 @@ name "sub:Plug-In-System"
 \end_inset
 
 Plug-In System
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Beschreibung der verschiedenen Plug-Ins und Verweise auf die Interfaces,
- auch beschreiben wie genau ein Plugin funktioniert, zB bei DataFormat das
- zu Grunde liegende XML-Schema
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3232,69 +3220,69 @@ simpl-core-config.xml
 (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Die-simpl-core-config.xml-Datei"
+reference "sub:SIMPLConfig"
 
 \end_inset
 
 ) registriert werden.
- Für das Laden und Bereitstellen der Plug-Ins stehen Service-Provider zur
- Verfügung, die die Plug-Ins als Dienste bereitstellen.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:DataSourcePlugin"
-
-\end_inset
-
-DataSourcePlugin
-\end_layout
-
-\begin_layout Standard
-Mit DataSourcePlugins können beliebige Datenquellen an den SIMPL Core angeschlos
-sen werden.
-\end_layout
-
-\begin_layout Paragraph*
-DataSourceService (Interface)
-\end_layout
-
-\begin_layout Standard
-Das DatasourceService-Interface schreibt alle Funktionen vor, die von den
- Datasource Services (Plug-Ins) implementiert werden müssen und entsprechen
- den Funktionen in Kapitel 
+ Für das Laden der Plug-Ins stehen sog.
+ Service-Provider zur Verfügung, die die Plug-Ins als Instanzen bereitstellen
+ und die dafür nötigen Informationen von der 
+\emph on
+SIMPLConfig
+\emph default
+-Klasse anfordern.
+ In den folgenden Abschnitten werden die verschiedenen Plug-Ins vorgestellt
+ und beschrieben.
+ Wie diese Plug-Ins verwendet werden und ihr Zusammenspiel wird in Kapitel
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Datasource-Service"
 
 \end_inset
 
-.
+ genauer beschrieben.
 \end_layout
 
-\begin_layout Paragraph*
-DataSourcePlugin (abstrakte Klasse)
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataSourceServicePlugin"
+
+\end_inset
+
+DataSourceService Plug-In
 \end_layout
 
 \begin_layout Standard
-Bei der DataSourcePlugin-Klasse handelt es sich um eine abstrakte Klasse,
- die an das DataSourceService-Interface gebunden ist und damit das Grundgerüst
- für einen Datasource Service bildet.
- Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen, das
- DataSourceService-Interface zu implementieren.
-\end_layout
+Über DataSourceService Plug-Ins können beliebige Datenquellen an den SIMPL
+ Core angeschlossen werden.
+ DataSourceService Plug-Ins erben von der abstrakten 
+\emph on
+DataSourceServicePlugin
+\emph default
+-Klasse und müssen damit das 
+\emph on
+DataSourceService<S, T>
+\emph default
+-Interface (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataSourceService<S,-T>"
 
-\begin_layout Paragraph*
+\end_inset
+
+) implementieren.
+ Über den 
+\emph on
 DataSourceServiceProvider
-\end_layout
-
-\begin_layout Standard
-Über den DataSourceServiceProvider kann mit der Methode 
+\emph default
+ kann über die Methode 
 \emph on
 +getInstance(String dsType, String dsSubtype)
 \emph default
- die Instanz eines Datasource Service angefordert werden.
+ die Instanz eines DataSourceService Plug-Ins angefordert werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3304,67 +3292,88 @@ name "sub:DataFormatPlugin"
 
 \end_inset
 
+DataFormat Plug-In
+\end_layout
+
+\begin_layout Standard
+Mit DataFormat Plug-Ins können die verschiedene Datenformate von Datenquellen
+ unterstützt werden, bspw.
+ verschiedene Dateitypen bei Filesystemen.
+ DataFormat Plug-Ins erben von der abstrakten 
+\emph on
 DataFormatPlugin
-\end_layout
-
-\begin_layout Standard
-Mit DataFormatPlugins können beliebige Datenformate von DataSourcePlugins
- unterstützt werden.
-\end_layout
-
-\begin_layout Paragraph*
-DataFormatService (Interface)
-\end_layout
-
-\begin_layout Standard
-Das DatasourceService-Interface schreibt alle Funktionen vor, die von den
- Datasource Services (Plug-Ins) implementiert werden müssen und entsprechen
- den Funktionen in Kapitel 
+\emph default
+-Klasse und müssen damit das 
+\emph on
+DataFormat<S, T>
+\emph default
+-Interface (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Dataformat-Service"
+reference "sub:DataFormat<S,-T>"
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Paragraph*
-DataFormatPlugin (abstrakte Klasse)
-\end_layout
-
-\begin_layout Standard
-Bei der DataFormatPlugin-Klasse handelt es sich um eine abstrakte Klasse,
- die an das DataFormatService-Interface gebunden ist und damit das Grundgerüst
- für einen Dataformat Service bildet.
- Ein Plug-In muss diese Klasse erweitern und wird dadurch gezwungen, das
- DataFormatService-Interface zu implementieren.
-\end_layout
-
-\begin_layout Paragraph*
-DataFormatServiceProvider
-\end_layout
-
-\begin_layout Standard
-Über den DataFormatServiceProvider kann mit der Methode 
+) implementieren.
+ Über den 
 \emph on
-+getInstance(String dfType, String dfSubtype) 
+DataFormatProvider
 \emph default
- die Instanz eines Dataformat Service angefordert werden.
+ kann über die Methode 
+\emph on
++getInstance(String dfType) 
+\emph default
+die Instanz eines DataFormat Plug-Ins angefordert werden.
+\end_layout
+
+\begin_layout Standard
+Ein DataFormat Plug-In wird dazu verwendet um die unterschiedlichen ein-
+ und ausgehenden Datentypen eines DataSourceService Plug-Ins von- und zu
+ einem SDO zu konvertieren.
+ Damit können DataFormat Plug-Ins für DataSourceService Plug-Ins wiederverwendet
+ werden, die die gleichen Datentypen verwenden.
 \end_layout
 
 \begin_layout Subsubsection
 DataFormatConverterPlugin
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Beschreibung
 \end_layout
+
+\begin_layout Standard
+Während DataFormat Plug-Ins für die Konvertierung zwischen SDO und Datentypen
+ eines DataSourceService Plug-Ins zuständig ist, werden DataFormatConverter
+ Plug-Ins für die Konvertierung zwischen den unterschiedlichen SDO-Datenformaten
+ verwendet.
+ Dies ermöglich bspw.
+ den Abruf von Daten aus einem Filesystem die über ein entsprechendes DataFormat
+ Plug-In zu einem SDO konvertiert werden, in eine Datenquelle zu schreiben,
+ der ein anderes DataFormat Plug-In zugewiesen ist und folglich das resultierend
+e SDO bei Lesen aus dem Filesystem ohne eine Konvertierung nicht verstehen
+ kann.
+ DataFormatConverter Plug-Ins erben von der abstrakten 
+\emph on
+DataFormatConverterPlugin
+\emph default
+-Klasse und müssen damit das 
+\emph on
+DataFormatConverter
+\emph default
+-Interface (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataFormatConverter"
 
 \end_inset
 
-
+) implementieren.
+ Über den 
+\emph on
+DataFormatConverterProvider 
+\emph default
+kann über die Methode 
+\emph on
++getInstance(String fromDF, String toDF) 
+\emph default
+die Instanz eines DataFormatConverter Plug-Ins angefordert werden.
 \end_layout
 
 \begin_layout Subsection
