@@ -2845,8 +2845,8 @@ reference "fig:XML-Schema-der-Konfigurationsdatei"
 \end_inset
 
  dargestellt ist.
- Die Plug-In-Klassen müssen in der Konfigurationsdatei jeweils mit dem voll
- qualifizierten Namen registriert und als 
+ Die Plug-In-Klassen müssen in der Konfigurationsdatei jeweils mit dem vollquali
+fizierten Namen registriert und als 
 \emph on
 jar
 \emph default
@@ -3082,19 +3082,27 @@ XML-Konfigurationsdatei
 \end_layout
 
 \begin_layout Standard
-Abbildung zeigt die XML-Konfigurationsdatei als Instanz des XML-Schema (siehe
- Kapitel 
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:XML-Konfigurationsdatei"
+
+\end_inset
+
+ zeigt die XML-Konfigurationsdatei als Instanz des XML-Schema (siehe Kapitel
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:XML-Schema"
 
 \end_inset
 
-).
- Neben 5 DataSourceService Plug-Ins werden 2 DataFormat Plug-Ins und ein
- DataFormatConverter Plug-In registriert, das zwischen den registrierten
- DataSourceFormat Plug-Ins und somit den Datenformaten der registrierten
- DataSourceService Plug-Ins konvertieren kann.
+) mit den für das Projekt entwickelten Plug-Ins.
+ Neben den DataSourceService Plug-Ins für die verschiedenen Datenbanken,
+ und das lokale Windows Dateisystem, gibt es jeweils ein entsprechenes DataForma
+t Plug-In und ein DataFormatConverter Plug-In, das zwischen den registrierten
+ DataSourceFormat Plug-Ins und somit dem Datenformat zwischen Datenbank
+ und Dateisystem konvertieren kann.
 \end_layout
 
 \begin_layout Standard
@@ -3156,8 +3164,8 @@ getDataSourceServicePlugins()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Liste mit voll qualifizierten Namen der registrierten DataSourceSer
-vice Plug-Ins.
+Liefert eine Liste mit den vollqualifizierten Namen der registrierten DataSource
+Service Plug-Ins.
 \end_layout
 
 \begin_layout Paragraph*
@@ -3165,7 +3173,7 @@ getDataFormatPlugins()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormat
+Liefert eine Liste mit den vollqualifizierten Namen der registrierten DataFormat
  Plug-Ins.
 \end_layout
 
@@ -3174,8 +3182,8 @@ getDataFormatConverterPlugins()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormatCon
-verter Plug-Ins.
+Liefert eine Liste mit den vollqualifizierten Namen der registrierten DataFormat
+Converter Plug-Ins.
 \end_layout
 
 \begin_layout Paragraph*
@@ -3183,8 +3191,8 @@ getDataFormatMapping()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Hashmap mit voll qualifizierten Namen der registrierten DataFormat
- Plug-Ins und ihren unterstützten DataSourceService Plug-Ins.
+Liefert eine Hashmap mit den vollqualifizierten Namen der registrierten
+ DataFormat Plug-Ins und ihren unterstützten DataSourceService Plug-Ins.
 \end_layout
 
 \begin_layout Paragraph*
@@ -3192,8 +3200,9 @@ getDataFormatConverterMapping()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Hashmap mit voll qualifizierten Namen der registrierten DataFormatC
-onverter Plug-Ins und ihren unterstützten DataSourceService Plug-Ins.
+Liefert eine Hashmap mit den vollqualifizierten Namen der registrierten
+ DataFormatConverter Plug-Ins und ihren unterstützten DataSourceService
+ Plug-Ins.
 \end_layout
 
 \begin_layout Subsection
@@ -3537,8 +3546,8 @@ public DataObject convert(DataObject dataObject, DataSourceService<Object,
 \end_layout
 
 \begin_layout Standard
-Konvertiert das eingehende SDO automatisch in das entsprechende andere SDO
- Format.
+Konvertiert das eingehende SDO, in einem der unterstützten Formate, automatisch
+ in das entsprechende andere SDO Format.
 \end_layout
 
 \begin_layout Paragraph*
@@ -4014,8 +4023,15 @@ DataSourceService
 SIMPLCore
 \emph default
  bereits beschrieben wurden, wird an dieser Stelle nicht näher darauf eingegange
-n und der Abruf der Daten, sowie das Schreiben in der Abbildung direkt über
- den 
+n und der Abruf der Daten mit 
+\emph on
+retrieveData()
+\emph default
+ , sowie das Schreiben mit 
+\emph on
+writeData()
+\emph default
+ in der Abbildung direkt über den 
 \emph on
 DataSourceService
 \emph default
@@ -4023,7 +4039,7 @@ DataSourceService
 \end_layout
 
 \begin_layout Standard
-Nachdem die Daten vom Dateisystem abgerufen wurden (1 und 2), werden sie
+Nachdem die Daten vom Dateisystem abgerufen wurden (1 und 2), werden diese
  zum Schreiben an die Datenbank mit 
 \emph on
 writeData()
@@ -4033,16 +4049,21 @@ writeData()
 \emph on
 DataSourceServicePlugin
 \emph default
- angefordert, das aber in diesem Fall das SDO Datenformat nicht verstehen
- kann, da es von einem Dateisystem abgerufen wurde, für das ein anderes
- 
+ angefordert, für das aber in diesem Fall kein 
 \emph on
 DataFormatPlugin
 \emph default
- verwendet wurde und das SDO somit eine andere Struktur hat.
+ zugeordnet ist, das das SDO Datenformat verstehen kann.
+ Die Daten aus dem Dateisystem liegen in dem Fall im CSV-Datenformat vor,
+ dem 
+\emph on
+DataSourceServicePlugin
+\emph default
+ für die Datenbank ist dagegen das RDB-Datenformat zugewiesen, beide Datenformat
+e basieren auf jeweils unterschiedlichen XML-Schemata.
  Über die interne Methode 
 \emph on
-formatWriteDateAndCreateTarget()
+formatDataAndCreateTarget()
 \emph default
  wird der Schreibvorgang abgewickelt (3.2).
  Um zu überprüfen ob das Datenformat des eingehenden SDOs bekannt ist, wird
@@ -4053,31 +4074,31 @@ DataFormatProvider
  eine Liste der von der Datenbank unterstützten Datenformate angefordert
  (3.3 und 3.4) und mit dem vorliegenden Datenformat verglichen.
  Im Sequenzdiagramm ist der Vollständigkeit halber auch der alternative
- Fall eingezeichnet, dass die Daten in einem unterstützten Datenformat vorliegen
- (3.5 und 3.6).
+ Fall eingezeichnet, dass die Daten bereits in einem unterstützten Datenformat
+ vorliegen (3.5 und 3.6).
  In unserem Szenario ist das aber nicht der Fall, daher muss geguckt werden
  in welche Datenformate das SDO konvertiert werden kann, und ob eines dieser
  Datenformate von der Datenbank unterstützt wird.
  Dazu wird mit 
 \emph on
-getSupportedConvertDataType()
+getSupportedConvertDataFormatTypes()
 \emph default
  vom 
 \emph on
 DataFormatProvider
 \emph default
  eine Liste der Datenformate abgerufen, in die das Datenformat generell
- konvertiert werden kann (3.7 und 3.8).
+ konvertiert werden kann (3.6 und 3.7).
  Falls eines der Datenformate für die Datenbank unterstützt wird, wird das
  entsprechende 
 \emph on
 DataFormatConverterPlugin 
 \emph default
-angefordert (3.9) und das SDO mit 
+angefordert (3.8) und das SDO mit 
 \emph on
 convert()
 \emph default
- konvertiert (3.10 und 3.11).
+ konvertiert (3.9 und 3.10).
  Sobald das SDO in einem unterstützten Datenformat vorliegt, kann es durch
  das entsprechende 
 \emph on
@@ -4087,15 +4108,15 @@ DataFormatPlugin
 \emph on
 fromSDO()
 \emph default
- zurück in den erwerteten Datentyp des Datenbank-
+ zurück in den erwarteten Datentyp des Datenbank-
 \emph on
 DataSourceService
 \emph default
- übersetzt werden (3.12 bis 3.14).
- Nicht bei allen Datenquellen notwendig, ist die Vorbereitung der Datenquelle
- damit Daten überhaupt geschrieben werden können.
- In diesem Fall muss eine Tabelle erstellt werden, in die die Daten geschrieben
- werden können was mit 
+ übersetzt werden (3.11 bis 3.13).
+ Nicht bei allen Datenquellen ist es notwendig Vorbereitungen auf der Datenquell
+e zu treffen, damit diese überhaupt geschrieben werden können.
+ In diesem Fall muss aber eine Tabelle erstellt werden, in die die Daten
+ geschrieben werden können was mit 
 \emph on
 createTarget()
 \emph default
@@ -4103,9 +4124,9 @@ createTarget()
 \emph on
 DataSourceServicePlugin 
 \emph default
-erledigt wird (3.15).
- Abschließend werden die Daten geschrieben (3.16) und der Erfolg oder Mißerfolg
- durch einen booleschen Rückgabewert bestätigt (4).
+ausgeführt wird (3.14).
+ Abschließend werden die Daten geschrieben (3.15) und der Erfolg oder Mißerfolg
+ durch einen booleschen Rückgabewert bestätigt (3.16) und zurückgegeben (4).
 \end_layout
 
 \begin_layout Standard
@@ -5379,7 +5400,7 @@ Die RRS Konfigurationsdatei wird analog zu der des SimplCores unter
 ode/conf/rrs-conﬁg.xml 
 \emph default
 abgelegt.
- Die Plug-In-Klassen müssen hier jeweils mit dem voll qualiﬁzierten Namen
+ Die Plug-In-Klassen müssen hier jeweils mit dem vollqualiﬁzierten Namen
  registriert werden und als jar-Dateien beliebigen Namens unter ode/lib
  abgelegt werden, damit sie erkannt werden.
  Die Konﬁgurationsdatei wird beim Start des RRS einmalig geladen, Änderungen
@@ -5402,8 +5423,8 @@ getDSAdapterPlugins()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Liste mit voll qualiﬁzierten Namen der registrierten DS-Adapter-Plu
-g-Ins.
+Liefert eine Liste mit vollqualiﬁzierten Namen der registrierten DS-Adapter-Plug
+-Ins.
 \end_layout
 
 \begin_layout Subsection
