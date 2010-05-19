@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="22" columns="4">
+<lyxtabular version="3" rows="23" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1533,7 +1533,7 @@ reference "sec:Reference-Resolution-System"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1542,7 +1542,7 @@ reference "sec:Reference-Resolution-System"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1551,11 +1551,84 @@ reference "sec:Reference-Resolution-System"
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Core-Klassendiagramm"
+
+\end_inset
+
+ und Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Paketstruktur"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datentypen-und-Enumerationen"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Interfaces"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Hilfsklassen"
+
+\end_inset
+
+ überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-bruededl
+2.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
 \end_layout
 
 \end_inset
@@ -1565,16 +1638,20 @@ bruededl
 
 \begin_layout Plain Layout
 Kapitel 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Eclipse"
+reference "sub:SIMPLCore-Klasse"
 
 \end_inset
 
- überarbeitet.
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPLConfig"
+
+\end_inset
+
+ überarbeitet
 \end_layout
 
 \end_inset
@@ -1796,6 +1873,8 @@ reference "fig:SIMPL-Core-Klassendiagramm"
  der Interface- und Web Service-Methoden, sowie Getter- und Setter-Methoden
  verzichtet, die aber in den folgenden Abschnitten genannt und beschrieben
  werden.
+ Des Weiteren werden folgende Abkürzungen verwendet DSS für DataSourceService,
+ DF für DataFormat und DFT für DataFormatType.
  Einige der SIMPL Core Dienste werden, falls sie außerhalb des SIMPL Cores
  aufrufbar sein müssen, nach Außen über Web Services verfügbar gemacht.
  Falls im Nachfolgenden nicht die Dienste selbst, sondern die Web Services
@@ -2050,67 +2129,445 @@ In diesem Paket befinden sich Hilfsklassen, die den Entwickler unterstützen.
 \end_layout
 
 \begin_layout Subsection
-Interfaces 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Interfaces beschreiben
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datentypen-und-Enumerationen"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsubsection
-DataSourceService<S, T>
-\end_layout
-
-\begin_layout Subsubsection
-DataFormat<S, T>
-\end_layout
-
-\begin_layout Subsubsection
-DataFormatConverter
-\end_layout
-
-\begin_layout Subsubsection
-StrategyService
-\end_layout
-
-\begin_layout Subsubsection
-AdministrationService
-\end_layout
-
-\begin_layout Subsection
 Datentypen und Enumerationen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Beschreibung
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Im SIMPL Core werden bestimmte Datentypen und Enumerationen verwendet, die
+ durch entsprechende JAX-WS Annotationen ebenfalls über die Web Services
+ genutzt werden.
 \end_layout
 
 \begin_layout Subsubsection
 DataSource
 \end_layout
 
+\begin_layout Standard
+Stellt alle Eigenschaften einer Datenquelle zur Verfügung und enthält wichtige
+ Zugriffsinformsationen, die für einen Verbindungsaufbau benötigt werden.
+ Dazu gehören Authentifizierungsinformationen und Informationen für das
+ Late Binding.
+\end_layout
+
 \begin_layout Subsubsection
 Authentication
+\end_layout
+
+\begin_layout Standard
+Enthält Authentifizierungsinformationen wie Benutzername und Passwort und
+ kann ggf.
+ um weitere Informationen erweitert werden.
 \end_layout
 
 \begin_layout Subsubsection
 LateBinding
 \end_layout
 
+\begin_layout Standard
+Enthält alle Informationen für das Late Binding wie z.B.
+ WS-Policy Informationen und die Adresse der UDDI-Registry, die verwendet
+ werden soll.
+\end_layout
+
 \begin_layout Subsubsection
 Strategy
+\end_layout
+
+\begin_layout Standard
+Diese Enumeration dient der Unterscheidung der verschiedenen Late Binding
+ Strategien.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Interfaces"
+
+\end_inset
+
+Interfaces
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel beschreibt alle wichtigen Interfaces im SIMPL Core und ihre
+ Funktionen.
+\end_layout
+
+\begin_layout Subsubsection
+DataSourceService<S, T>
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+DataSourceService
+\emph default
+-Interface beschreibt die zu implementierenden Funktionen des Datasource
+ Service, sowie den 
+\emph on
+DataSourceService
+\emph default
+-Plug-Ins und bietet generische ein- und ausgehende Datentypen, die sich
+ je nach Datenquellentyp unterscheiden können und deshalb erst bei der Implement
+ierung festgelegt werden.
+ Eingabeparameter für alle Funktionen ist die Datenquelle auf der operiert
+ werden soll als 
+\emph on
+DataSource
+\emph default
+-Objekt, mit allen Angaben die für einen Verbindungsaufbau zu einer Datenquelle
+ benötigt werden.
+\end_layout
+
+\begin_layout Paragraph
+public boolean executeStatement(DataSource dataSource, String statement)
+\end_layout
+
+\begin_layout Standard
+Ermöglicht die Ausführung eines Statements auf einer Datenquelle und bestätigt
+ die Ausführung mit einem booleschen Rückgabewert.
+ Die Funktion wird hauptsächlich dazu verwendet um Datenstrukturen auf einer
+ Datenquelle zu definieren, wie z.B.
+ das Erstellen einer Tabelle auf einer relationalen Datenbank.
+\end_layout
+
+\begin_layout Paragraph
+public T retrieveData(DataSource dataSource, String statement)
+\end_layout
+
+\begin_layout Standard
+Ermöglicht die Anforderung von Daten einer bestimmten Datenquelle durch
+ Adresse und ein Statement der entsprechenden Anfragesprache wie z.B.
+ ein SELECT-Statement in der Anfragesprache SQL bei relationalen Datenbanken.
+ In welcher Form die Daten zurückgegeben werden, wird von der Implementierung
+ bestimmt.
+\end_layout
+
+\begin_layout Paragraph
+public boolean writeBack(DataSource dataSource, S data)
+\end_layout
+
+\begin_layout Standard
+Wird verwendet, um bestehende Daten einer Datenquelle zu manipulieren bzw.
+ zu aktualisieren.
+ Die Funktion erhält die geänderten Daten oder auch Anweisungen was geändert
+ werden muss und übernimmt diese für die vorhanden Daten auf der Datenquelle.
+ Der Erfolg des Zurückschreibens wird mit einem booleschen Rückgabewert
+ bestätigt.
+\end_layout
+
+\begin_layout Paragraph
+public boolean writeData(DataSource dataSource, S data, String target)
+\end_layout
+
+\begin_layout Standard
+Diese Funktion arbeitet ähnlich wie 
+\emph on
+writeBack
+\emph default
+, ist aber für das Schreiben noch nicht vorhandener Daten zuständig.
+ Damit die geschriebenen Daten wieder abgerufen werden können, wird ein
+ 
+\emph on
+target
+\emph default
+ (Ziel) benötigt, das unter Umständen zuvor angelegt werden muss, was über
+ die Funktion 
+\emph on
+createTarget 
+\emph default
+möglich ist, die weiter unten beschrieben ist.
+ Ob das Schreiben erfolgreich ausgeführt wurde, wird mit einem booleschen
+ Rückgabewert bestätigt.
+\end_layout
+
+\begin_layout Paragraph
+public boolean depositData(DataSource dataSource, String statement, String
+ target)
+\end_layout
+
+\begin_layout Standard
+Mit dieser Funktion werden über ein Statement Daten einer Datenquelle selektiert
+ und auf der Datenquelle selbst hinterlegt.
+ Die hinterlegten Daten werden über das 
+\emph on
+target
+\emph default
+ referenziert und können darüber anschließend abgerufen werden, dies kann
+ z.B.
+ der Tabellenname bei einer relationalen Datenbank sein.
+ Die Ausführung wird mit einem booleschen Rückgabewert bestätigt.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject getMetaData(DataSource dataSource, String filter)
+\end_layout
+
+\begin_layout Standard
+Liefert Metadaten einer Datenquelle als SDO.
+ Die Umsetzung wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Metadaten"
+
+\end_inset
+
+ näher beschrieben.
+\end_layout
+
+\begin_layout Paragraph
+public boolean createTarget(DataSource dataSource, DataObject dataObject,
+ String target)
+\end_layout
+
+\begin_layout Standard
+Mit 
+\emph on
+createTarget 
+\emph default
+kann ein Ziel für das Schreiben neuer Daten angelegt werden, z.B.
+ eine Tabelle bei relationalen Datenbanken.
+ Die Daten als SDO werden benötigt, da sich dort auch Metadaten befinden
+ können, die für die Erstellung eines 
+\emph on
+target
+\emph default
+ benötigt werden, z.B.
+ Datentyp und Größe einer Spalte in einer relationalen Datenbank, die unter
+ Umständen im eingehenden Datentyp (S) des Datasource Service nicht mehr
+ vorhanden sind.
+\end_layout
+
+\begin_layout Subsubsection
+DataFormat<S, T>
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+DataFormat
+\emph default
+-Interface ist die einheitliche Schnittstelle für die 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins, die verwendet werden um die ausgehenden Datentypen von Datasource
+ Service Plug-Ins zu SDO und umgekehrt die eingehenden SDO zurück zum eingehende
+n Datentyp umzuwandeln.
+ 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins können vom Datasource Service für verschiedene Datasource Service
+ Plug-Ins wiederverwendet werden, wenn es sich die gleichen ein- und ausgehenden
+ Datentypen handelt, die hier ebenfalls generisch sind und erst zur Implementier
+ung bestimmt werden.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject toSDO(S data)
+\end_layout
+
+\begin_layout Standard
+Wandelt die eingehenden Daten zu SDO.
+\end_layout
+
+\begin_layout Paragraph
+public T fromSDO(DataObject data)
+\end_layout
+
+\begin_layout Standard
+Wandelt die eingehenden SDO-Daten zurück in den ausgehenden Datentyp T.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject getSDO()
+\end_layout
+
+\begin_layout Standard
+Liefert ein leeres (ohne Daten) SDO mit der Struktur des XML-Schema, das
+ dem 
+\emph on
+DataFormat
+\emph default
+-Plug-In zu Grunde liegt.
+\end_layout
+
+\begin_layout Paragraph
+public String getType()
+\end_layout
+
+\begin_layout Standard
+Liefert den Typ des 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins, der zur Identifikation verwendet wird und im Plug-In festgelegt
+ wird.
+\end_layout
+
+\begin_layout Subsubsection
+DataFormatConverter
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+DataFormatConverter
+\emph default
+-Interface ist die einheitliche Schnittstelle für die 
+\emph on
+DataFormatConverter
+\emph default
+-Plug-Ins, die dafür verwendet werden um Daten die von einer Datenquelle
+ abgerufen wurden, auch auf eine anderen Datenquelle schreiben zu können.
+ Das Format des SDO wird durch die vom Datasource Service verwendeten 
+\emph on
+DataFormat
+\emph default
+-Plug-Ins bestimmt und kann daher von Datenquelle zu Datenquelle variieren.
+ In einem 
+\emph on
+DataFormatConverter
+\emph default
+-Plug-In wird jeweils ein 
+\emph on
+toSDO 
+\emph default
+DataFormat-Typ und ein 
+\emph on
+fromSDO
+\emph default
+ DataFormat-Typ festgelegt.
+ Damit ein 
+\emph on
+DataFormatConverter
+\emph default
+-Plug-In vom Datasource Service für mehrere Datenquellen wiederverwendet
+ werden kann, wird den Funktionen zusätzlich die konkrete Implementierung
+ des 
+\emph on
+DataSourceService
+\emph default
+-Plug-Ins mitgegeben um spezielle Konvertierungsunterschiede zu berücksichtigen.
+ Das Plug-In besitzt folgende Funktionen um zwischen den Typen zu konvertieren.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject convertTo(DataObject data, DataSourceService<Object, Object>
+ dataSourceService)
+\end_layout
+
+\begin_layout Standard
+Wandelt das eingehende SDO im 
+\emph on
+toSDO
+\emph default
+ DataFormat-Typ in den 
+\emph on
+fromSDO
+\emph default
+ DataFormat-Typ.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject convertFrom(DataObject data, DataSourceService<Object,
+ Object> dataSourceService)
+\end_layout
+
+\begin_layout Standard
+Wandelt das eingehende SDO im 
+\emph on
+toSDO
+\emph default
+ DataFormat-Typ in den 
+\emph on
+fromSDO
+\emph default
+ DataFormat-Typ.
+\end_layout
+
+\begin_layout Paragraph
+public DataObject convert(DataObject dataObject, DataSourceService<Object,
+ Object> dataSourceService)
+\end_layout
+
+\begin_layout Subsubsection
+StrategyService
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+StrategyService
+\emph default
+-Interface beschreibt die Funktionen, die der Strategy Service implementieren
+ muss, der für das Late Binding Datenquellen aus der UDDI-Registry zuständig
+ ist.
+\end_layout
+
+\begin_layout Paragraph
+public DataSource findDataSource(DataSource dataSource)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Verweis auf UDDI-Client von Wolfgang
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Erhält eine nicht vollständig spezifizierte Datenquelle mit Late Binding
+ Informationen (
+\emph on
+LateBinding
+\emph default
+-Objekt) und sucht über den UDDI-Client eine entsprechende Datenquelle.
+\end_layout
+
+\begin_layout Subsubsection
+AdministrationService
+\end_layout
+
+\begin_layout Standard
+Das 
+\emph on
+AdministrationService-Interface
+\emph default
+ beschreibt die Funktionen, die der Administration Service implementieren
+ muss.
+\end_layout
+
+\begin_layout Paragraph
+public boolean saveSettings(String schema, String table, String settingName,
+ LinkedHashMap<String, String> settings)
+\end_layout
+
+\begin_layout Standard
+Speichert die Einstellungen aus 
+\emph on
+settings
+\emph default
+ in der Embedded Datenbank.
+\end_layout
+
+\begin_layout Paragraph
+public LinkedHashMap<String, String> loadSettings(String schema, String
+ table, String settingName)
+\end_layout
+
+\begin_layout Standard
+Lädt Einstellungen aus der Embedded Datenbank.
 \end_layout
 
 \begin_layout Subsection
@@ -2136,11 +2593,15 @@ Mit der Klasse
 \emph on
  Printer
 \emph default
- kann über die statische Methode 
+ kann über die statische Methoden 
 \emph on
 +printDataObject(DataObject) 
 \emph default
-ein SDO auf der Konsole ausgeben werden.
+und 
+\emph on
++printDataObjectXML(DataObject)
+\emph default
+ ein SDO auf der Konsole ausgeben werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2181,7 +2642,7 @@ XMLDecoder
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:SIMPLCore"
+name "sub:SIMPLCore-Klasse"
 
 \end_inset
 
@@ -2249,6 +2710,15 @@ Folgende Funktionen stehen zur Verfügung:
 \end_layout
 
 \begin_layout Paragraph*
+getInstance()
+\end_layout
+
+\begin_layout Standard
+Liefert die Instanz des SIMPL Cores, über die die folgenden Funktionen erreichba
+r sind.
+\end_layout
+
+\begin_layout Paragraph*
 administrationService() 
 \end_layout
 
@@ -2277,7 +2747,7 @@ getConfig()
 \end_layout
 
 \begin_layout Standard
-Liefert die Konfiguration des SIMPL Core als Instanz von 
+Liefert die Konfiguration des SIMPL Cores als Instanz der Klasse 
 \emph on
 SIMPLConfig
 \emph default
@@ -2297,54 +2767,89 @@ SIMPLConfig Klasse
 \begin_layout Standard
 Die installierten Plugins und ggf.
  später weitere Einstellungen des SIMPL Cores, werden über eine Konfigurationsda
-tei registriert, die in folgendem Abschnitt näher beschrieben wird.
- Das Einlesen und Abrufen der Informationen aus dieser Datei ist über die
- SIMPLConfig Klasse möglich.
+tei registriert, deren Inhalt und Verwendung in den folgendem Abschnitten
+ näher beschrieben wird.
+ Das Einlesen und Abrufen der Informationen aus dieser Datei wird über die
+ 
+\emph on
+SIMPLConfig-
+\emph default
+Klasse realisiert.
+ Die Konfigurationsdatei ist innerhalb der Apache ODE Konfiguration unter
+\emph on
+ ode/conf/simpl-core-config.xml 
+\emph default
+abgelegt und folgt dem Aufbau und der Struktur des XML-Schemas 
+\emph on
+simpl-core-config.xsd
+\emph default
+ das dem 
+\emph on
+org.simpl.core
+\emph default
+ Projekt beiliegt und in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:XML-Schema-der-Konfigurationsdatei"
+
+\end_inset
+
+ dargestellt ist.
+ Die Plug-In-Klassen müssen in der Konfigurationsdatei jeweils mit dem voll
+ qualifizierten Namen registriert und als 
+\emph on
+jar
+\emph default
+-Dateien beliebigen Namens unter 
+\emph on
+ode/lib
+\emph default
+ abgelegt werden, damit sie vom SIMPL Core erkannt werden.
+ Die Konfigurationsdatei wird beim Start des SIMPL Cores einmalig geladen,
+ Änderungen an der Konfigurationsdatei sind deshalb erst nach einem Neustart
+ von Apache Tomcat verfügbar.
 \end_layout
 
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Die-simpl-core-config.xml-Datei"
+name "sub:XML-Schema"
 
 \end_inset
 
-Konfigurationsdatei
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Beschreibung überarbeiten hinsichtlich der Referenzierten Plug-In
- Namen in tDataFormat und tDataFormatConverter
-\end_layout
-
-\end_inset
-
-
+XML-Schema
 \end_layout
 
 \begin_layout Standard
-Die Konfigurationsdatei ist unter
-\emph on
- ode/conf/simpl-core-config.xml 
-\emph default
-abgelegt und hat die folgende Struktur, die in Abbildung 
+Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Die-SIMPLCore-Konfigurationsdatei-simpl-core-config.xml"
+reference "fig:XML-Schema-der-Konfigurationsdatei"
 
 \end_inset
 
- zu sehen ist.
- Die Plug-In-Klassen müssen hier jeweils mit dem voll qualifizierten Namen
- registriert werden und als jar-Dateien beliebigen Namens unter 
+ zeigt alle Schema-Typen der XML-Konfigurationsdatei des SIMPL Cores.
+ Das Schema besitzt ein Hauptelement vom Typ 
 \emph on
-ode/lib
+tSIMPLConfig 
 \emph default
- abgelegt werden, damit sie erkannt werden.
- Die Konfigurationsdatei wird beim Start des SIMPL Cores einmalig geladen,
- Änderungen an der Konfigurationsdatei sind deshalb erst nach einem Neustart
- von Apache Tomcat verfügbar.
+an dem alle weiteren Konfigurationselemente hängen.
+ Die Plug-In Elemente werden zum Teil über IDs (Typ
+\emph on
+ ID
+\emph default
+) referenziert (Typ
+\emph on
+ IDREF
+\emph default
+) um redundante lange Klassennamen zu vermeiden.
+ Die verschiedenen Elemente und ihre Typen werden im folgenden Abschnitt
+ näher beschrieben.
+ Elemente sind in der Abbildung mit einem e-Symbol gekennzeichnet, Attribute
+ mit einem a-Symbol und eine Sequenz von Elementen durch ein Symbol mit
+ drei Punkten.
+ Die Beschriftung erfolgt in der Reihenfolge Name des Elements bzw.
+ Attributs, Multiplizität (bei einer Sequenz von Elementen) und Typ.
 \end_layout
 
 \begin_layout Standard
@@ -2371,11 +2876,206 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Die-SIMPLCore-Konfigurationsdatei-simpl-core-config.xml"
+name "fig:XML-Schema-der-Konfigurationsdatei"
 
 \end_inset
 
-Die SIMPLCore-Konfigurationsdatei simpl-core-config.xml
+XML-Schema der Konfigurationsdatei
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+SIMPLConfig
+\end_layout
+
+\begin_layout Standard
+Das Hauptelement vom Typ 
+\emph on
+tSIMPLConfig
+\emph default
+, das in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:XML-Schema-der-Konfigurationsdatei"
+
+\end_inset
+
+ nicht zu sehen ist und alle anderen Konfigurationselemente enthält.
+\end_layout
+
+\begin_layout Paragraph*
+DataSourceServicePlugin
+\end_layout
+
+\begin_layout Standard
+Ein registriertes DataSourceService Plug-In vom Typ 
+\emph on
+tDataSourceServicePlugin
+\emph default
+.
+ Über die 
+\emph on
+ID 
+\emph default
+kann das Element referenziert werden, 
+\emph on
+className
+\emph default
+ entält den voll-qualifizierten Klassennamen des Plug-Ins.
+\end_layout
+
+\begin_layout Paragraph*
+DataFormatPlugin
+\end_layout
+
+\begin_layout Standard
+Ein registriertes DataFormat Plug-In vom Typ 
+\emph on
+tDataSourceServicePlugin
+\emph default
+.
+ Über die 
+\emph on
+ID 
+\emph default
+kann das Element referenziert werden, 
+\emph on
+className
+\emph default
+ entält den voll-qualifizierten Klassennamen des Plug-Ins.
+\end_layout
+
+\begin_layout Paragraph*
+DataFormatConverterPlugin
+\end_layout
+
+\begin_layout Standard
+Ein registriertes DataFormatConverter Plug-In vom Typ 
+\emph on
+tDataSourceServicePlugin
+\emph default
+.
+ Über die 
+\emph on
+ID 
+\emph default
+kann das Element referenziert werden, 
+\emph on
+className
+\emph default
+ entält den voll-qualifizierten Klassennamen des Plug-Ins.
+\end_layout
+
+\begin_layout Paragraph*
+DataFormat
+\end_layout
+
+\begin_layout Standard
+Ein 
+\emph on
+DataFormat
+\emph default
+-Element referenziert ein 
+\emph on
+DataFormatPlugin
+\emph default
+-Element und legt fest für welche 
+\emph on
+DataSourceService
+\emph default
+ Plug-Ins ein DataFormat Plug-In verwendet werden kann.
+\end_layout
+
+\begin_layout Paragraph*
+DataFormatConverter
+\end_layout
+
+\begin_layout Standard
+Ein 
+\emph on
+DataFormatConverter
+\emph default
+-Element referenziert ein 
+\emph on
+DataFormatConverterPlugin
+\emph default
+-Element und legt fest für welche 
+\emph on
+DataSourceService
+\emph default
+ Plug-Ins ein DataFormatConverter Plug-In verwendet werden kann.
+\end_layout
+
+\begin_layout Paragraph*
+DataSourceService
+\end_layout
+
+\begin_layout Standard
+Ein referenziertes 
+\emph on
+DataSourceServicePlugin
+\emph default
+-Element.
+\end_layout
+
+\begin_layout Subsubsection
+XML-Konfigurationsdatei
+\end_layout
+
+\begin_layout Standard
+Abbildung zeigt die XML-Konfigurationsdatei als Instanz des XML-Schema (siehe
+ Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:XML-Schema"
+
+\end_inset
+
+).
+ Neben 5 DataSourceService Plug-Ins werden 2 DataFormat Plug-Ins und ein
+ DataFormatConverter Plug-In registriert, das zwischen den registrierten
+ DataSourceFormat Plug-Ins und somit den Datenformaten der registrierten
+ DataSourceService Plug-Ins konvertieren kann.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/simpl-core-config.xml.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:XML-Konfigurationsdatei"
+
+\end_inset
+
+XML-Konfigurationsdatei
 \end_layout
 
 \end_inset
@@ -2393,16 +3093,21 @@ Funktionen
 \end_layout
 
 \begin_layout Standard
-Folgende Funktionen stehen über die Klasse zur Verfügung:
+Die 
+\emph on
+SIMPLConfig
+\emph default
+-Klasse bietet folgende Funktionen um die Informationen aus der XML-Konfiguratio
+nsdatei auszulesen:
 \end_layout
 
 \begin_layout Paragraph*
-getDataSourcePlugins()
+getDataSourceServicePlugins()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Liste mit voll qualifizierten Namen der registrierten DataSourcePlu
-gins.
+Liefert eine Liste mit voll qualifizierten Namen der registrierten DataSourceSer
+vice Plug-Ins.
 \end_layout
 
 \begin_layout Paragraph*
@@ -2410,8 +3115,8 @@ getDataFormatPlugins()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormatPlu
-gins.
+Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormat
+ Plug-Ins.
 \end_layout
 
 \begin_layout Paragraph*
@@ -2420,7 +3125,7 @@ getDataFormatConverterPlugins()
 
 \begin_layout Standard
 Liefert eine Liste mit voll qualifizierten Namen der registrierten DataFormatCon
-verterPlugins.
+verter Plug-Ins.
 \end_layout
 
 \begin_layout Paragraph*
@@ -2428,8 +3133,8 @@ getDataFormatMapping()
 \end_layout
 
 \begin_layout Standard
-Liefert eine Hashmap mit voll qualifizierten Namen der registrierten DataFormatP
-lugins und ihren zugewiesenen DataSourceServices.
+Liefert eine Hashmap mit voll qualifizierten Namen der registrierten DataFormat
+ Plug-Ins und ihren unterstützten DataSourceService Plug-Ins.
 \end_layout
 
 \begin_layout Paragraph*
@@ -2438,7 +3143,7 @@ getDataFormatConverterMapping()
 
 \begin_layout Standard
 Liefert eine Hashmap mit voll qualifizierten Namen der registrierten DataFormatC
-onverterPlugins und ihren zugewiesenen DataSourceServices.
+onverter Plug-Ins und ihren unterstützten DataSourceService Plug-Ins.
 \end_layout
 
 \begin_layout Subsection
@@ -2598,105 +3303,21 @@ name "sub:Datasource-Service"
 \end_inset
 
 Datasource Service
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
-Der Datasource Service realisiert die Schnittstelle für den Zugriff auf
- die verschiedenen Datenquellen der über Plug-Ins realisiert wird (siehe
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:DataSourcePlugin"
+\begin_layout Plain Layout
+TODO: DataSourceServiceImpl beschreiben und die Verwendung von DataFormat,
+ DataFormatConverter und StrategyService + Sequenzdiagramme
+\end_layout
 
 \end_inset
 
-).
- Die Einteilung der Datenquellen geschieht dabei über Typ, Subtyp und Language,
- wie z.B.
- die relationale Datenbank (Typ: RDB) DB2 (Subtyp: DB2) mit der Anfragesprache
- SQL (Language: SQL).
- Eine genaue Beschreibung des Plug-In Systems folgt in Kapitel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Plug-In-System"
 
-\end_inset
-
-.
- Folgende Funktionen müssen von einem Datenquellen Plug-In realisiert werden,
- die vom Interface 
-\emph on
-DataSourceService
-\emph default
- vorgegeben werden:
-\end_layout
-
-\begin_layout Paragraph
-public DataObject retrieveData(String dsAddress, String statement)
 \end_layout
 
 \begin_layout Standard
-Ermöglicht die Anforderung von Daten einer bestimmten Datenquelle durch
- Adresse und ein Statement der entsprechenden Anfragesprache wie z.B.
- ein SELECT-Statement in der Anfragesprache SQL.
- Die Rückgabe der Daten erfolgt als SDO.
-\end_layout
-
-\begin_layout Paragraph
-public boolean depositData(String dsAddress, String statement, String target)
-\end_layout
-
-\begin_layout Standard
-Mit dieser Funktion werden über ein Statement Daten einer Datenquelle selektiert
- und auf der Datenquelle selbst hinterlegt.
- Die hinterlegten Daten werden über das 
-\emph on
-target
-\emph default
- referenziert und können darüber anschließend abgerufen werden, dies kann
- z.B.
- der Tabellenname bei einer relationalen Datenbank sein.
- Die Ausführung wird mit einem booleschen Rückgabewert bestätigt.
-\end_layout
-
-\begin_layout Paragraph
-public boolean executeStatement(String dsAddress, String statement)
-\end_layout
-
-\begin_layout Standard
-Ermöglicht die Ausführung eines Statements auf einer Datenquelle und bestätigt
- die Ausführung mit einem booleschen Rückgabewert.
- Die Funktion wirde hauptsächlich dazu verwendet um Datenstrukturen auf
- einer Datenquelle zu definieren, wie z.B.
- das Erstellen von Tabellen bei einer relationalen Datenbank.
-\end_layout
-
-\begin_layout Paragraph
-public boolean writeBack(String dsAddress, DataObject data)
-\end_layout
-
-\begin_layout Standard
-Wird verwendet, um bestehende Daten einer Datenquelle zu manipulieren bzw.
- zu aktualisieren.
- Die Funktion erhält die geänderten Daten als SDO und gleicht diese mit
- den vorhanden Daten auf der Datenquelle ab.
- Der Erfolg der Operation wird mit einem booleschen Rückgabewert bestätigt.
-\end_layout
-
-\begin_layout Paragraph
-public DataObject getMetaData(String dsAddress)
-\end_layout
-
-\begin_layout Standard
-Liefert Metadaten einer Datenquelle als SDO.
- Die Umsetzung wird in Kapitel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Metadaten"
-
-\end_inset
-
- näher beschrieben.
+...
 \end_layout
 
 \begin_layout Subsubsection
@@ -2764,7 +3385,7 @@ Connection Service
 status open
 
 \begin_layout Plain Layout
-Ersetzt Strategy Service, in Grobentwurf nachtragen
+Ersetzt Storage Service, in Grobentwurf nachtragen
 \end_layout
 
 \end_inset
@@ -2841,6 +3462,18 @@ name "sub:Plug-In-System"
 \end_inset
 
 Plug-In System
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Beschreibung der verschiedenen Plug-Ins und Verweise auf die Interfaces,
+ auch beschreiben wie genau ein Plugin funktioniert, zB bei DataFormat das
+ zu Grunde liegende XML-Schema
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3690,101 +4323,215 @@ success
 \end_layout
 
 \begin_layout Subsection
-Auditing
-\end_layout
-
-\begin_layout Standard
-Das Auditing in Simpl wird über einen Event-Listener realisiert, der in
- der axis2.properties von Apache Ode angemeldet wird.
- 
-\end_layout
-
-\begin_layout Subsubsection
-Axis2.properties
-\end_layout
-
-\begin_layout Standard
-In dieser Datei wird der Event Listener, der das Auditing realisiert, angemeldet.
- Folgende Zeilen müssen hinzugefügt werden.
- 
-\begin_inset listings
-inline false
-status open
-
-\begin_layout Plain Layout
-
-ode-axis2.event.listeners=org.apache.ode.simpl.events.listener.SimplSdoEventListener
- 
-\end_layout
-
-\begin_layout Plain Layout
-
-jel.topicname = org.apache.ode.events
-\end_layout
-
-\begin_layout Plain Layout
-
-jel.mqurl = tcp://localhost:61616
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-DAO"
 
 \end_inset
 
+SIMPL DAO 
+\end_layout
 
+\begin_layout Standard
+Das SIMPL Data Access Object (DAO) besteht aus der Implementierung der Interface
+s aus dem Paket 
+\emph on
+org.apache.ode.bpel.dao
+\emph default
+, die in den folgenden Unterpunkten beschrieben werden.
+ Das DAO wird dafür verwendet, wichtige Daten der Prozessausführung aufzuzeichne
+n und persistent zu speichern (Siehe hierfür 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+ 3.2.2).
+ 
+\end_layout
+
+\begin_layout Standard
+Das SIMPL DAO übernimmt alle Eigenschaften der ODE internen Java Persistence
+ API (JPA)-Implementierung und erweitert diese um die Eigenschaft, Daten
+ per Service Data Object (SDO) an den SIMPL Core senden zu können, so dass
+ die Auditing Daten über den SIMPL Core einfach in beliebigen Datenquellen
+ gespeichert werden können.
+ Das SIMPL DAO bietet den Vorteil, dass Daten gefiltert in der Datenquelle
+ gespeichert werden können und somit nur relevante Daten über die Prozessausführ
+ung in die Datenbank geschrieben werden.
+ Darüber hinaus kann die Stuktur der zu speichernden Daten beliebig verändert
+ werden, zum Beispiel um die Lesbarkeit der Daten zu erhöhen.
+ Die Übertragung der Daten findet dabei direkt in den set-Methoden der DAOs
+ statt.
+ Die DAO Daten werden trotzdem auch weiterhin in der internen Apache Derby
+ Datenbank gespeichert und von dort gelesen.
+ Datentransfers an den SIMPL Core und damit verbundene beliebige Datenquellen,
+ können nur schreibend, jedoch nicht lesend erfolgen.
+ 
 \end_layout
 
 \begin_layout Subsubsection
-Events
+DAOs
 \end_layout
 
 \begin_layout Standard
-Folgende Events werden von der Implementierung unterstützt und können ausgelesen
- werden.
+In diesem Abschnitt werden die verschiedenen DAOs beschrieben, welche vom
+ SIMPL Auditing unterstützt werden und die Daten, welche gespeichert werden.
+\end_layout
+
+\begin_layout Subsubsection*
+ActivityRecoveryDAO
 \end_layout
 
 \begin_layout Standard
-Alle Eventes besitzen die Grundattribute: 
+Das ActivityRecoveryDAO wird ausgeführt, wenn eine Aktivität den 
+\begin_inset Quotes eld
+\end_inset
+
+recovery
+\begin_inset Quotes erd
+\end_inset
+
+ Status einnimmt.
 \end_layout
 
-\begin_layout Itemize
-ActivityEvent: Liefert Namen, Id, Typ und DeklarationsId der Aktivität.
+\begin_layout Subsubsection*
+CorrelationSetDAO
 \end_layout
 
-\begin_layout Itemize
-Activity FailureEvent: Liefert den Grund des Fehlschlages.
+\begin_layout Standard
+Das CorrelationSetDAO wird ausgeführt, wenn in BPEL ein Correlation Set
+ erstellt wird.
+ Correlation Sets ermöglichen die Kommunikation einer Prozessinstanz mit
+ seinen Partnern.
 \end_layout
 
-\begin_layout Itemize
-CorrelationEvent: Liefert PortType, Operation und MexID.
+\begin_layout Subsubsection*
+FaultDAO
 \end_layout
 
-\begin_layout Itemize
-CorrelationSetWriteEvent: Liefert den Correlation Key.
+\begin_layout Standard
+Das FaultDAO wird erstellt, wenn ein Fehler in der Proessausführung passiert.
+ Über dieses DAO kann auf die Informationen bezüglich des Fehlers, zum Beispiel
+ der Name und der Grund für den Fehler, zugegriffen werden.
 \end_layout
 
-\begin_layout Itemize
-ExpressionEvaluationEvent: Liefert eine Expression zurück.
+\begin_layout Subsubsection*
+PartnerLinkDAO
 \end_layout
 
-\begin_layout Itemize
-ExpressionEvaluationFailedEvent: Liefert den Fehler bei der Evaluation zurück.
+\begin_layout Standard
+Das PartnerLinkDAO repräsentiert einen PartnerLink.
+ Es enthält Informationen über die eigene Rolle, die Rolle des Partners
+ und die im PartnerLink hinterlegte Endpunkt-Referenz.
 \end_layout
 
-\begin_layout Itemize
-NewProcessInstanceEvent: Liefert, wenn vorhanden, die Root-Scope-Id und
- die Scope-Deklarations-id.
+\begin_layout Subsubsection*
+ProcessDAO
 \end_layout
 
-\begin_layout Itemize
-PartnerLinkEvent: Liefert den Partner Link Name
+\begin_layout Standard
+Das ProcessDAO repräsentiert ein Prozessmodell.
+ Es enthält die Prozess-Id, den Prozess-Typ und die Prozessinstanzen dieses
+ Modells.
 \end_layout
 
-\begin_layout Itemize
-ProcessCompletionEvent: Liefert einen Fehler zurück, falls dir Prozessausführung
- nicht erfolgreich war.
+\begin_layout Subsubsection*
+ProcessInstanceDAO
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+Das ProcessInstanceDAO repräsentiert eine Prozess-Instanz und enthält alle
+ Daten, die einer Instanz zugehörig sind.
+ Dazu zählen Events, Scopes sowie wartende Pick- und Receive-Aktivitäten.
+\end_layout
 
+\begin_layout Subsubsection*
+ScopeDAO
+\end_layout
+
+\begin_layout Standard
+Das ScopeDAO repräsentiert eine Scope-Instanz.
+ Es enthält eine Ansammlung von Correlation-Sets und XML-Variablen.
+\end_layout
+
+\begin_layout Subsubsection*
+XmlDataDAO
+\end_layout
+
+\begin_layout Standard
+Das XmlDataDAO repräsentiert XML-Daten und wird dazu benutzt Inhalte von
+ BPEL-Variablen zu speichern.
+\end_layout
+
+\begin_layout Subsubsection
+DAO Java Persistence API (JPA)
+\end_layout
+
+\begin_layout Standard
+Das DAO-JPA ist eine DAO Implementierung, die auf Apache Open JPA basiert.
+ Dieses stellt Funktionalitäten zur persistenten Speicherung auf relationalen
+ Datenspeichern zur Verfügung.
+ Über annotierte Variablen können somit die DAO Daten komfortabel in der
+ ODE internen Derby Datenbank gespeichert werden.
+\end_layout
+
+\begin_layout Subsubsection
+DAO Lebenszyklus
+\end_layout
+
+\begin_layout Standard
+Beim Starten von Apache Tomcat wird auch ODE und somit der darin enthaltene
+ BPEL-Server gestartet.
+ Sofort wird die in der 
+\emph on
+OdeServer
+\emph default
+-Klasse enthaltene 
+\emph on
+init
+\emph default
+-Methode aufgerufen.
+ Diese ruft wiederum die 
+\emph on
+initDao
+\emph default
+-Methode auf.
+ Dort wird die 
+\emph on
+DaoConnectionFactory
+\emph default
+ geladen, welche zuvor in der 
+\emph on
+OdeConfigProperties
+\emph default
+ definiert oder aus der 
+\emph on
+Axis2.properties
+\emph default
+ geladen wurde.
+ Über die 
+\emph on
+ConnectionFactory
+\emph default
+-Klasse werden 
+\emph on
+DaoConnections
+\emph default
+ erstellt und bereitgestellt, mit deren Hilfe direkt auf die DAOs zugegriffen
+ werden kann.
+ Der Zugriff erfolgt an den Stellen in ODE, wo die den DAOs entsprechenden
+ BPEL Konstrukte ausgewertet werden.
+ So wird auf die 
+\emph on
+ProcessDAO
+\emph default
+ zum Beispiel aus der 
+\emph on
+ODEProcess
+\emph default
+-Klasse zugegriffen, um die Prozessdaten persistent zu speichern.
 \end_layout
 
 \begin_layout Standard
@@ -3833,7 +4580,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../../../Desktop/diagramme/iteration2/RRS_Class_Diagramm.jpg
+	filename ../../../Desktop/diagramme/iteration2/RRS_Class_Diagramm.jpg
 	width 100text%
 
 \end_inset
@@ -4575,7 +5322,7 @@ Business Service
 \end_layout
 
 \begin_layout Standard
-Hier wird der Name und die Beschreibng der Datenquelle gespeichert.
+Hier kann die Datenquelle kurz textuell beschrieben werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4583,7 +5330,9 @@ Binding Template
 \end_layout
 
 \begin_layout Standard
-In den Binding Templates, wird die Adresse der Datenquelle gespeichert.
+Die Binding Tempaltes entsprechen nun den Datenquellendefinitionen.
+ Die Adresse des Webservices wird zur Adresse, über die auf die Datenquelle
+ zugegriffen werden kann.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4614,14 +5363,14 @@ Uddi Registry Web Interface
 \end_layout
 
 \begin_layout Standard
-\noindent
-Das Uddi Web Interface besteht aus den Komponenten: Konfiguration, Datenquellenl
-iste und Datenquelleneditor.
- Alle drei Komponenten werden im folgenden noch einmal näher beschrieben.
-\end_layout
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uddi-Webinterface"
 
-\begin_layout Subsubsection
-Konfiguration
+\end_inset
+
+ zeigt den Prototypen des Uddi Web Interface.
 \end_layout
 
 \begin_layout Standard
@@ -4633,71 +5382,19 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Graphics
-	filename bilder/indexscreen.JPG
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Uddi Web Interface Konfiguration
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Uddi-Web-Interface-config"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-In der Konfiguration können grundlegende Informationen, wie die Adresse
- der Datenquellen-Registry, sowie Name und Passwort, die für die Schreibzugriffe
- verwendet werden, hinterlegt werden können.
- Diese Informationen werden im Web-Apps
-\backslash
-conf Verzeichniss des Web Interface gespeichert.
- Beim Speichern der Konfiguration, wird Automatisch die Verfügbarkeit der
- Uddi-Registry unter der angegeben Adresse überprüft.
-\end_layout
-
-\begin_layout Subsubsection
-Datenquellenliste
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename bilder/datasourcelist.JPG
-	scale 70
+	filename Uddi-Webinterface.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -4708,22 +5405,17 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Uddi Web Interface Datenquellenliste
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Uddi-Web-Interface-datalist"
+name "fig:Uddi-Webinterface"
 
 \end_inset
 
-
+Uddi Webinterface
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -4733,101 +5425,13 @@ name "fig:Uddi-Web-Interface-datalist"
 \end_layout
 
 \begin_layout Standard
-\noindent
-In der Datenquellenliste werden alle Verfügbaren Datenquellen und die grundlegen
-den Informationen angezeigt.
- Dort können ausserdem Datenquellen neu erstellt werden oder nach Auswahl
- einer Datenquelle diese Editiert oder Gelöscht werden.
-\end_layout
-
-\begin_layout Subsubsection
-Datenquelleneditor
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename bilder/edit.JPG
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Uddi Web Interface Datenquelleneditor
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Uddi-Web-Interface-editor"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Datenquelleneditor wird aufgerufen, wenn eine Datenquelle neu erstellt
- oder editiert wird.
- Alle wichtigen Informationen können dort über Textfelder eingegeben werden
- und direkt in der Datenquellen-Registry gespeichert werden.
- Die Datenquelle benötigt dabei folgende Informationen.
-\end_layout
-
-\begin_layout Itemize
-Name: Ein Name für die Datenquelle, der innerhalb der Registry eindeutig
- sein muss.
- Auf grundlage des Namens wird der Key, der zur internen Datenverwaltung
- benötigt wird, generiert.
-\end_layout
-
-\begin_layout Itemize
-Addresse: Die Adresse unter der die Datenquelle aufgerufen werden kann.
-\end_layout
-
-\begin_layout Itemize
-Typ: Der Typ der Datenquelle (Database, Filesystem usw.)
-\end_layout
-
-\begin_layout Itemize
-Subtyp: Der Subtyp der Datenquelle (Rdb, ext3 usw.)
-\end_layout
-
-\begin_layout Itemize
-Policy: Der genaue Pfad zu einer Policy Datei, die die nicht funktionalen
- Anforderungen für die Datenquelle beschreibt.
-\end_layout
-
-\begin_layout Itemize
-Username: Der Benutzername, der benötigt wird um auf die Datenquelle zuzugreifen.
-\end_layout
-
-\begin_layout Itemize
-Passwort: Das Passwort, das benötigt wird um auf die Datenquelle zuzugreifen.
+Auf der linken Seite, werden die bereits vorhandenen Datenquellen angezeigt.
+ Durch einen Druck auf new, können neue Datenquellen hinzugefügt werden.
+ Wird eine bereits vorhandene Datenquellen ausgewählt, so werden im rechten
+ Teil, alle wichtigen Informationen darüber angezeigt und können verändert
+ werden.
+ Durch einen druck auf delete, wird die Datenquelle komplett gelöscht.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5266,29 +5870,10 @@ org.""eclipse.""ui.""views.""properties.""tabbed.""propertySections
 \end_inset
 
 .
- Die Klasse 
-\emph on
-DMActivityPropertySection
-\emph default
- erweitert die Klasse 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-org.""eclipse.""bpel.""ui.""properties.""BPELPropertySection
-\end_layout
-
-\end_inset
-
-.
- Erstgenannte wurde erstellt um die Gemeinsamkeiten der DM-Aktivitäten zu
- bündeln und um damit den Implementierungsaufwand in den nachgelagerten
- Klassen zu verringern.
  Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
 s ausgewählt werden.
- Zu den Optionen gehört primär die Angabe des Datenquellentyps, wie Datenbank
- oder ein Filesystem.
+ Zu den Optionen gehört primär die Angabe des Datenquellentyps, wie Datenbank,
+ Sensornetz oder ein Filesystem.
  Je nach gewählter Art kann dann unter 
 \begin_inset Quotes eld
 \end_inset
@@ -5301,7 +5886,8 @@ Subtype
  So kann z.B.
  beim Filesystem NTFS oder EXT3 gewählt werden.
  Bei einer Datenbank kann z.B.
- zwischen DB2 und MySQL gewählt werden.
+ zwischen DB2 und MySQL gewählt werden, beim Sensornetz wird momentan nur
+ TinyDB unterstützt.
  Weiterhin kann hier die Datenquellenadresse angegeben werden, also die
  Adresse, wohin der in der Aktivität definierte DM-Befehl zur Verarbeitung
  geschickt wird.
@@ -5317,8 +5903,8 @@ Resulting Statement
  modelliert werden.
  Bei den einzelnen DM-Aktivitäten werden Optionen, die nicht möglich sind,
  nicht zur Auswahl freigegeben.
- Es ist beispielsweise nicht möglich, bei einer Insert-Aktivität z.B.
- ein Sensornetz auszuwählen.
+ Es ist beispielsweise nicht möglich, bei einer Insert-Aktivität ein Sensornetz
+ auszuwählen.
 \end_layout
 
 \begin_layout Subsubsection
