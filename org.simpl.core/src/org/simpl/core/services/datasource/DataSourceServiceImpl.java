@@ -122,7 +122,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     }
 
     // format data to SDO
-    retrieveData = formatRetrieveData(dataSourceService, data, dataSource.getDataFormat());
+    retrieveData = formatRetrievedData(dataSourceService, data, dataSource.getDataFormat());
 
     return retrieveData;
   }
@@ -351,7 +351,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
         // check if one of the types is supported by the data source service
         if (DataFormatProvider.getSupportedDataFormatTypes(dataSourceService).contains(
             supportedConvertDataFormatType)) {
-          // convert from the given data format to supported data format
+          // convert from the given data format to the supported data format
           convertedData = DataFormatConverterProvider.getInstance(dataFormatType,
               supportedConvertDataFormatType).convert(data, dataSourceService);
 
@@ -391,7 +391,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @return
    */
   @SuppressWarnings("unchecked")
-  private DataObject formatRetrieveData(DataSourceService dataSourceService, Object data,
+  private DataObject formatRetrievedData(DataSourceService dataSourceService, Object data,
       String dataFormatType) {
     DataObject retrieveDataSDO = null;
     List<String> supportedDataFormatTypes = null;
@@ -445,8 +445,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
   /**
    * @param dataSource
-   * @return true if data source contains all necessary information to execute an
-   *         operation, false otherwise
+   * @return <i>true</i> if data source contains all necessary information to execute an
+   *         operation, <i>false</i> otherwise
    */
   private boolean isDataSourceComplete(DataSource dataSource) {
     boolean complete = false;
