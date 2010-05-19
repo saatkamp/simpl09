@@ -2145,6 +2145,12 @@ Im SIMPL Core werden bestimmte Datentypen und Enumerationen verwendet, die
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataSource"
+
+\end_inset
+
 DataSource
 \end_layout
 
@@ -2171,11 +2177,24 @@ LateBinding
 
 \begin_layout Standard
 Enthält alle Informationen für das Late Binding wie z.B.
- WS-Policy Informationen und die Adresse der UDDI-Registry, die verwendet
- werden soll.
+ WS-Policy Informationen, die Adresse der UDDI-Registry und die Strategie
+ (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Strategy"
+
+\end_inset
+
+), die verwendet werden soll.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Strategy"
+
+\end_inset
+
 Strategy
 \end_layout
 
@@ -2499,6 +2518,12 @@ public DataObject convert(DataObject dataObject, DataSourceService<Object,
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:StrategyService"
+
+\end_inset
+
 StrategyService
 \end_layout
 
@@ -2532,7 +2557,8 @@ Erhält eine nicht vollständig spezifizierte Datenquelle mit Late Binding
 \emph on
 LateBinding
 \emph default
--Objekt) und sucht über den UDDI-Client eine entsprechende Datenquelle.
+-Objekt) und sucht über den UDDI-Client eine entsprechende Datenquelle,
+ die den Anforderungen genügt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3331,32 +3357,47 @@ Strategy Service
 \end_layout
 
 \begin_layout Standard
-Der Strategy Service stellt dem Datasource Service Provider die Möglichkeit
- des Late Bindung zur Verfügung, dabei kann eine zur Modellierung noch unbekannt
-e Datenquelle über WS-Policy Anforderungen zur Laufzeit aus der im SIMPL
- Core eingestellten Datenquellen-Registry ausgewählt werden.
- Zu diesem Zweck implementiert der Datasource Service folgende Funktion:
-\end_layout
+Der Strategy Service stellt dem Datasource Service die Möglichkeit des Late
+ Bindung zur Verfügung, dabei kann eine bei der Modellierung noch nicht
+ vollständig spezifizierte Datenquelle, über nichtfunktionale Anforderungen
+ in Form von WS-Policy Annotationen, zur Laufzeit aus einer Datenquellen-Registr
+y ausgewählt werden.
+ Zu diesem Zweck implementiert der Strategy Service die Funktion, die in
+ Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:StrategyService"
 
-\begin_layout Paragraph*
-public DataSourceService getDataSourceService(String wsPolicy, Strategy
- strategy)
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Als Parameter bekommt die Funktion die Anforderungen als WS-Policy mitgeteilt
- und kann anschließend mit der angegebenen Strategie vom Enum-Typ 
+ bereits beschrieben wurde.
+ Als Parameter bekommt die Funktion die Datenquelleninformationen inklusive
 \emph on
-Strategy,
+ 
 \emph default
- wie z.B.
+der 
+\emph on
+LateBinding
+\emph default
+-Informationen (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataSource"
+
+\end_inset
+
+) mitgeteilt und kann anschließend mit der angegebenen Strategie wie z.B.
  
 \emph on
 FIRST_FIND
 \emph default
 , eine Datenquelle in der Datenquellenregistry (UDDI) ausfindig machen.
- Mit den Informationen aus der Datenquellenregistry kann der entsprechenden
- Datasource Service bereitgestellt werden.
+ Mit den 
+\emph on
+DataSource
+\emph default
+-Informationen aus der Datenquellenregistry kann das entsprechenden Datasource
+ Service Plug-In vom Datasource Service bereitgestellt werden.
  Der Zugriff auf die Registry wird mit einem Client realisiert, der der
  Apache jUDDI Registry 
 \begin_inset CommandInset citation
@@ -3369,8 +3410,8 @@ key "key-4"
 \emph on
 juddi-client-3.0.1.jar 
 \emph default
-beiliegt und mit dem auch andere UDDI v3 konformen Registries erreicht werden
- können.
+beiliegt und mit dem auch andere UDDI v3 konformen Registries angesprochen
+ werden können.
 \end_layout
 
 \begin_layout Subsubsection
