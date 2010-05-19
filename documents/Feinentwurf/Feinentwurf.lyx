@@ -3270,7 +3270,7 @@ reference "sub:DataSourceService<S,-T>"
 \emph on
 DataSourceServiceProvider
 \emph default
- kann über die Methode 
+ kann mit der Methode 
 \emph on
 +getInstance(String dsType, String dsSubtype)
 \emph default
@@ -3290,7 +3290,7 @@ DataFormat Plug-In
 \begin_layout Standard
 Mit DataFormat Plug-Ins können die verschiedene Datenformate von Datenquellen
  unterstützt werden, bspw.
- verschiedene Dateitypen bei Filesystemen.
+ verschiedene Dateitypen bei Dateisystemen.
  DataFormat Plug-Ins erben von der abstrakten 
 \emph on
 DataFormatPlugin
@@ -3311,7 +3311,7 @@ reference "sub:DataFormat<S,-T>"
 \emph on
 DataFormatProvider
 \emph default
- kann über die Methode 
+ kann mit der Methode 
 \emph on
 +getInstance(String dfType) 
 \emph default
@@ -3335,12 +3335,11 @@ Während DataFormat Plug-Ins für die Konvertierung zwischen SDO und Datentypen
  eines DataSourceService Plug-Ins zuständig ist, werden DataFormatConverter
  Plug-Ins für die Konvertierung zwischen den unterschiedlichen SDO-Datenformaten
  verwendet.
- Dies ermöglich bspw.
- den Abruf von Daten aus einem Filesystem die über ein entsprechendes DataFormat
- Plug-In zu einem SDO konvertiert werden, in eine Datenquelle zu schreiben,
- der ein anderes DataFormat Plug-In zugewiesen ist und folglich das resultierend
-e SDO bei Lesen aus dem Filesystem ohne eine Konvertierung nicht verstehen
- kann.
+ Dies ermöglicht z.B.
+ Daten aus einem Dateisystem, die über ein entsprechendes DataFormat Plug-In
+ zu einem SDO konvertiert werden, in eine Datenquelle zu schreiben, der
+ ein anderes DataFormat Plug-In zu Grunde liegt und folglich das resultierende
+ SDO aus dem Dateisystem ohne eine Konvertierung nicht verstehen kann.
  DataFormatConverter Plug-Ins erben von der abstrakten 
 \emph on
 DataFormatConverterPlugin
@@ -3361,7 +3360,7 @@ reference "sub:DataFormatConverter"
 \emph on
 DataFormatConverterProvider 
 \emph default
-kann über die Methode 
+kann mit der Methode 
 \emph on
 +getInstance(String fromDF, String toDF) 
 \emph default
@@ -3793,17 +3792,7 @@ Sequenzdiagramm zu Abruf von Daten mit Late Binding
 \end_layout
 
 \begin_layout Paragraph*
-Schreiben von Datenbank in Filesystem 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Sequenzdiagramm writeData (RDB -> FS)
-\end_layout
-
-\end_inset
-
-
+Transfer von Daten aus einer Datenbank in ein Dateisystem
 \end_layout
 
 \begin_layout Subsubsection
@@ -4006,7 +3995,7 @@ reference "sub:Datasource-Service"
 ), von der Datenquelle ausgelesen und in ein entsprechendes leeres Metadaten-SDO
  mit vorgegebener Struktur geschrieben werden.
  Der SIMPL Core stellt bereits ein XML-Schema für Metadaten von Datenbanken
- (tDatabaseMetaData) und Filesystemen (tFilesystemMetaData) zur Verfügung,
+ (tDatabaseMetaData) und Dateisystemen (tFilesystemMetaData) zur Verfügung,
  die von Datenquellen-Plug-Ins genutzt werden können.
  
 \end_layout
