@@ -1871,15 +1871,22 @@ reference "fig:SIMPL-Core-Klassendiagramm"
  Abschnitten beschrieben werden.
  In der Abbildung wird aus Gründen der Übersichtlichkeit auf die Darstellung
  der Interface- und Web Service-Methoden, sowie Getter- und Setter-Methoden
- verzichtet, die aber in den folgenden Abschnitten genannt und beschrieben
- werden.
- Des Weiteren werden folgende Abkürzungen verwendet DSS für DataSourceService,
- DF für DataFormat und DFT für DataFormatType.
+ verzichtet, die aber in den folgenden Abschnitten weitestgehend genannt
+ und beschrieben werden.
+ Des Weiteren werden folgende Abkürzungen für Klassennamen verwendet 
+\emph on
+DSS
+\emph default
+ für DataSourceService und 
+\emph on
+DF
+\emph default
+ für DataFormat.
  Einige der SIMPL Core Dienste werden, falls sie außerhalb des SIMPL Cores
- aufrufbar sein müssen, nach Außen über Web Services verfügbar gemacht.
- Falls im Nachfolgenden nicht die Dienste selbst, sondern die Web Services
- dieser gemeint sind, werden diese auch als solche bezeichnet, wie z.B.
- Administration Web Service.
+ aufrufbar sein müssen, nach Außen über Web Services verfügbar gemacht und
+ entsprechend als solche bezeichnet, wie z.B.
+ Administration Web Service anstelle von Administration Service, wenn diese
+ gemeint sind.
 \end_layout
 
 \begin_layout Standard
@@ -1974,21 +1981,6 @@ SIMPLConfig
 \emph default
 -Klasse, die für das Einlesen der Konfigurationsdatei des SIMPL Cores zuständig
  ist.
- Die Klassen werden in den folgenden Abschnitten 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:SIMPLCore"
-
-\end_inset
-
- und 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:SIMPLCore"
-
-\end_inset
-
- näher beschrieben.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3533,17 +3525,6 @@ name "sub:Datasource-Service"
 \end_inset
 
 Datasource Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: DataSourceServiceImpl beschreiben und die Verwendung von DataFormat,
- DataFormatConverter und StrategyService + Sequenzdiagramme
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3570,15 +3551,111 @@ DataObject
  In den folgenden Sequenzdiagrammen wird dargestellt wie verschiedene Anfragen
  verarbeitet werden und welche Rolle dabei die DataSourceService Plug-Ins,
  DataFormat Plug-Ins und DataFormatConverter Plug-Ins spielen.
+ Die einzelnen Schritte sind in den Sequenzdiagrammen durchnummeriert und
+ werden in den Beschreibungen entsprechend referenziert.
 \end_layout
 
 \begin_layout Paragraph*
-Datenabruf
-\begin_inset Note Note
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Abruf-von-Daten"
+
+\end_inset
+
+Abruf von Daten einer Datenquelle
+\end_layout
+
+\begin_layout Standard
+Das Sequenzdiagramm in Abbildung zeigt den Ablauf bei Abruf von Daten von
+ einer Datenquelle.
+ Zunächst wird die 
+\emph on
+SIMPLCore
+\emph default
+-Instanz angefordert (1), wobei eine Instanz des 
+\emph on
+DataSourceService
+\emph default
+ erstellt wird (1.1).
+ Über die 
+\emph on
+SIMPLCore
+\emph default
+-Instanz wird diese Instanz angefordert (2 + 3) und über 
+\emph on
+retrieveData()
+\emph default
+ der Abruf der Daten in Auftrag gegeben (4).
+ Der 
+\emph on
+DataSourceService
+\emph default
+ holt sich zunächst über den 
+\emph on
+DataSourceServiceProvider
+\emph default
+ die Instanz eines DataSourceService Plug-Ins für die gewünschte Datenquelle
+ (4.1 + 4.2).
+ Anschließend wird die Anfrage an die 
+\emph on
+retrieveData()
+\emph default
+-Funktion des Plug-Ins weitergeleitet (4.3), das die Daten von der Datenquelle
+ holt und diese zurückgibt (4.4).
+ Im nächsten Schritt werden die Daten über die interne Funktion 
+\emph on
+formatRetrievedData()
+\emph default
+ zu einem SDO konvertiert (4.5), dazu wird über den DataFormatProvider mit
+ 
+\emph on
+getSupportedDataFormatTypes()
+\emph default
+ zunächst überprüft welche Datenformate für die ausgehenden Daten des DataSource
+Service Plug-Ins in Frage kommen (4.6), die als Liste zurückgeschickt werden
+ (4.7).
+ Wenn ein unterstütztes DataFormat Plug-In gefunden wurde, kann über den
+ DataFormatProvider die Instanz des DataFormat Plug-Ins angefordert werden
+ (4.8 + 4.9).
+ Mit dieser Instanz ist es möglich die Daten mit der Funktion 
+\emph on
+toSDO()´
+\emph default
+in ein SDO zu konvertieren (4.10, 4.11), das abschließend an den Aufrufer
+ zurückgegeben wird (5).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-TODO: Sequenzdiagramm retrieveData aus RDB
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/SIMPLCore-retrieveData-Sequenzdiagramm.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Sequenzdiagramm zu Abruf von Daten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3587,12 +3664,127 @@ TODO: Sequenzdiagramm retrieveData aus RDB
 \end_layout
 
 \begin_layout Paragraph*
-Datenabruf mit Late Binding
-\begin_inset Note Note
+Abruf von Daten einer Datenquelle mit Late Binding
+\end_layout
+
+\begin_layout Standard
+Das Sequenzdiagramm in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequenzdiagramm-zu-Abruf"
+
+\end_inset
+
+ zeigt den Ablauf bei Abruf von Daten einer Datenquelle, die über Late Binding
+ erst zur Laufzeit festgelegt wird.
+ Der Ablauf unterscheidet sich zu dem vorherigen Szenario nur darin, dass
+ zunächst eine Datenquelle bestimmt werden muss, deshalb wird in der folgenden
+ Beschreibung nur auf zusätzliche Schritte vor, während und nach der Auswahl
+ eingegangen.
+\end_layout
+
+\begin_layout Standard
+Bei der Anforderung des 
+\emph on
+SIMPLCore
+\emph default
+ (1) wird ebenfalls der 
+\emph on
+StrategyService
+\emph default
+ instanziiert (1.2), der zuvor nicht gezeigt wurde und der für das Late Binding
+ benötigt wird.
+ Nach der Anfrage beim DataSourceService (4) wird in der internen Funktion
+ 
+\emph on
+findLateBindingDataSource()
+\emph default
+ (4.1) zunächst die Instanz des 
+\emph on
+StrategyService
+\emph default
+ vom 
+\emph on
+SIMPLCore
+\emph default
+ angefordert (4.2 bis 4.5), anschließend wird der 
+\emph on
+StrategyService
+\emph default
+ über 
+\emph on
+findDataSource
+\emph default
+ (4.6) dazu aufgefordert eine Datenquelle über die UDDI-Registry ausfindig
+ zu machen.
+ Dazu wird der UDDI-Client 
+\emph on
+UddiDataSourceReader 
+\emph default
+instanziiert und über die Funktion 
+\emph on
+getAllDatasources() 
+\emph default
+eine Liste der der verfügbaren Datenquellen angefordert (4.6.2 + 4.6.3).
+ Aus der Liste wird nun entsprechend der gewünschten Strategie, die bei
+ der Anfrage angegeben wurde, eine Datenquelle ausgewählt und zurückgegeben
+ (4.7).
+ Der weitere Ablauf entspricht der Beschreibung in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Abruf-von-Daten"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Abruf von Daten einer Datenquelle
+\begin_inset Quotes erd
+\end_inset
+
+ ab Schritt 4.1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Sequenzdiagramm retrieveData mit Late Binding
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/SIMPLCore-retrieveData-LateBinding-Sequenzdiagramm.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequenzdiagramm-zu-Abruf"
+
+\end_inset
+
+Sequenzdiagramm zu Abruf von Daten mit Late Binding
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3601,7 +3793,7 @@ Sequenzdiagramm retrieveData mit Late Binding
 \end_layout
 
 \begin_layout Paragraph*
-Daten schreiben mit Konvertierung
+Schreiben von Datenbank in Filesystem 
 \begin_inset Note Note
 status open
 
@@ -4604,7 +4796,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../Desktop/diagramme/iteration2/RRS_Class_Diagramm.jpg
+	filename diagramme/iteration2/RRS_Class_Diagramm.jpg
 	width 100text%
 
 \end_inset
