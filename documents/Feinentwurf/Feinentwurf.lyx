@@ -4520,8 +4520,7 @@ Verweise auf den Grobentwurf fehlen noch.
 \begin_layout Standard
 In diesem Kapitel wird auf die Erweiterungen, die an Apache ODE vorgenommen
  werden, eingegangen.
- Dies beinhaltet die BPEL-DM Extension Activities, das SIMPL Event System
- sowie das SIMPL DAO.
+ Dies beinhaltet die BPEL-DM Extension Activities, sowie das SIMPL DAO.
  Es wird auf die verschiedenen Funktionalitäten als auch auf deren Umsetzung
  eingegangen.
 \end_layout
