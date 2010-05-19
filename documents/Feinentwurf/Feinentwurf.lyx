@@ -4063,7 +4063,7 @@ DataSourceServicePlugin
 e basieren auf jeweils unterschiedlichen XML-Schemata.
  Über die interne Methode 
 \emph on
-formatDataAndCreateTarget()
+formatWriteDataAndCreateTarget()
 \emph default
  wird der Schreibvorgang abgewickelt (3.2).
  Um zu überprüfen ob das Datenformat des eingehenden SDOs bekannt ist, wird
