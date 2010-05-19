@@ -51,11 +51,6 @@ public abstract class DataSourceServicePlugin<S, T> implements DataSourceService
   private HashMap<String, List<String>> languages = new HashMap<String, List<String>>();
 
   /**
-   * The data format of this data source.
-   */
-  private String dataFormat = "";
-
-  /**
    * Sets the name and location of the data format schema file.
    */
   private String metaDataSchemaFile = "DataSourceMetaData.xsd";
@@ -125,22 +120,6 @@ public abstract class DataSourceServicePlugin<S, T> implements DataSourceService
       languageList.add(dsLanguage);
       this.languages.put(dsSubtype, languageList);
     }
-  }
-
-  /**
-   * @return The data format of the data source.
-   */
-  public DataFormat<Object, Object> getDataFormat() {
-    return DataFormatProvider.getInstance(this.dataFormat);
-  }
-
-  /**
-   * Sets the data format type for the data source service.
-   * 
-   * @param dataFormat
-   */
-  public void setDataFormat(String dataFormat) {
-    this.dataFormat = dataFormat;
   }
 
   /**
