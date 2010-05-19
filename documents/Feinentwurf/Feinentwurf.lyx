@@ -3204,16 +3204,6 @@ name "sub:Plug-In-System"
 \end_inset
 
 Plug-In System
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: Funktionen der Plug-Ins aus dem Klassendiagramm beschreiben
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3299,6 +3289,65 @@ DataSourceServiceProvider
 +getInstance(String dsType, String dsSubtype)
 \emph default
  die Instanz eines DataSourceService Plug-Ins angefordert werden.
+ Folgende wichtige Funktionen werden von der abstrakten Plugin-Klasse bereitgest
+ellt:
+\end_layout
+
+\begin_layout Paragraph*
+public void setType(String dsType)
+\end_layout
+
+\begin_layout Standard
+Bestimmt den Typ der Datenquelle.
+\end_layout
+
+\begin_layout Paragraph*
+public void addSubtype(String dsSubtype)
+\end_layout
+
+\begin_layout Standard
+Fügt einen unterstützten Subtyp der Datenquelle hinzu.
+\end_layout
+
+\begin_layout Paragraph*
+public void addLanguage(String dsSubtype, String dsLanguage)
+\end_layout
+
+\begin_layout Standard
+Fügt eine unterstützte Sprache der Datenquelle hinzu.
+\end_layout
+
+\begin_layout Paragraph*
+public void setMetaDataSchemaFile(String dfSchemaFile)
+\end_layout
+
+\begin_layout Standard
+Legt Pfad und Dateiname des zu verwendenden Metadaten XML-Schemas fest (siehe
+ auch 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Metadaten"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Paragraph*
+public void setMetaDataSchemaType(String dsMetaDataType)
+\end_layout
+
+\begin_layout Standard
+Legt den root Schema-Typ fest von dem aus das SDO erstellt wird.
+\end_layout
+
+\begin_layout Paragraph*
+public DataObject getMetaDataSDO()
+\end_layout
+
+\begin_layout Standard
+Liefert ein leeres (ohne Dateninhalt und Struktur) SDO zurück, das aus dem
+ Metadaten-Schema erzeugt wird.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3348,9 +3397,75 @@ Ein DataFormat Plug-In wird dazu verwendet um die unterschiedlichen ein-
  einem SDO zu konvertieren.
  Damit können DataFormat Plug-Ins für DataSourceService Plug-Ins wiederverwendet
  werden, die die gleichen Datentypen verwenden.
+ Jedem 
+\emph on
+DataFormatPlugin 
+\emph default
+liegt ein XML-Schema zu Grunde das die Struktur des SDO festlegt.
+ Dadurch werden abgerufene Daten je nach Datenquelle (
+\emph on
+DataSourceServicePlugin
+\emph default
+) und verwendetem 
+\emph on
+DataFormatPlugin
+\emph default
+ in unterschiedlichen Formaten geliefert.
+ Für eine Konvertierung zwischen diesen SDO Formaten können DataFormatConverter
+ Plug-Ins entwickelt werden (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataFormatConverterPlugin"
+
+\end_inset
+
+).
+ Folgende wichtige Funktionen werden von der abstrakten Plugin-Klasse bereitgest
+ellt:
+\end_layout
+
+\begin_layout Paragraph*
+public void setType(String dfType)
+\end_layout
+
+\begin_layout Standard
+Legt den Typ des Datenformats fest.
+ Der Typ wird im Gegensatz zu DataSourceService Plug-Ins zur Identifikation
+ verwendet.
+\end_layout
+
+\begin_layout Paragraph*
+public void setSchemaFile(String dfSchemaFile)
+\end_layout
+
+\begin_layout Standard
+Legt Pfad und Dateiname des zu verwendenden XML-Schemas fest.
+\end_layout
+
+\begin_layout Paragraph*
+public void setSchemaType(String dfSchemaType)
+\end_layout
+
+\begin_layout Standard
+Legt den root Schema-Typ fest von dem aus das SDO erstellt wird.
+\end_layout
+
+\begin_layout Paragraph*
+public DataObject getSDO()
+\end_layout
+
+\begin_layout Standard
+Liefert ein leeres (ohne Dateninhalt und Struktur) SDO zurück, das aus dem
+ XML-Schema erzeugt wird.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataFormatConverterPlugin"
+
+\end_inset
+
 DataFormatConverterPlugin
 \end_layout
 
@@ -3389,6 +3504,65 @@ kann mit der Methode
 +getInstance(String fromDF, String toDF) 
 \emph default
 die Instanz eines DataFormatConverter Plug-Ins angefordert werden.
+ Folgende wichtige Funktionen werden von der abstrakten Plugin-Klasse bereitgest
+ellt:
+\end_layout
+
+\begin_layout Paragraph*
+public void setFromDataFormat(String fromDataFormat)
+\end_layout
+
+\begin_layout Standard
+Legt das Datenformat fest (Typ zur Identifikation, siehe
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataFormatPlugin"
+
+\end_inset
+
+) von dem konvertiert werden kann.
+\end_layout
+
+\begin_layout Paragraph*
+public void setToDataFormat(String toDataFormat)
+\end_layout
+
+\begin_layout Standard
+Legt das Datenformat fest zu dem konvertiert werden kann.
+\end_layout
+
+\begin_layout Paragraph*
+public DataObject convert(DataObject dataObject, DataSourceService<Object,
+ Object> dataSourceService)
+\end_layout
+
+\begin_layout Standard
+Konvertiert das eingehende SDO automatisch in das entsprechende andere SDO
+ Format.
+\end_layout
+
+\begin_layout Paragraph*
+public DataFormat<Object, Object> getFromDataFormat()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des festgelegten 
+\emph on
+fromDataFormat
+\emph default
+.
+\end_layout
+
+\begin_layout Paragraph*
+public DataFormat<Object, Object> getToDataFormat()
+\end_layout
+
+\begin_layout Standard
+Liefert eine Instanz des festgelegten 
+\emph on
+toDataFormat
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
