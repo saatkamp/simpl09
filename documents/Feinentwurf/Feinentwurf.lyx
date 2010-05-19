@@ -2219,6 +2219,12 @@ Dieses Kapitel beschreibt alle wichtigen Interfaces im SIMPL Core und ihre
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataSourceService<S,-T>"
+
+\end_inset
+
 DataSourceService<S, T>
 \end_layout
 
@@ -2364,6 +2370,12 @@ target
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataFormat<S,-T>"
+
+\end_inset
+
 DataFormat<S, T>
 \end_layout
 
@@ -2432,6 +2444,12 @@ DataFormat
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:DataFormatConverter"
+
+\end_inset
+
 DataFormatConverter
 \end_layout
 
@@ -3173,329 +3191,6 @@ onverter Plug-Ins und ihren unterstützten DataSourceService Plug-Ins.
 \end_layout
 
 \begin_layout Subsection
-SIMPL Core Services
-\end_layout
-
-\begin_layout Standard
-In diesem Abschnitt werden die Dienste des SIMPL Cores und ihre Funktionsweise
- beschrieben.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Administration-Service"
-
-\end_inset
-
-Administration Service
-\end_layout
-
-\begin_layout Standard
-Der Administration Service ist für die Verwaltung der Einstellungen der
- Admin-Konsole des SIMPL Core Eclipse Plug-Ins zuständig.
- Die Einstellungen der Admin-Konsole werden dabei über das SIMPL Core Communicat
-ion Plug-In (siehe 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-1"
-
-\end_inset
-
-, Kapitel 2.1) an den Administration Service übermittelt oder von ihm angefordert.
- Die auf diese Weise zentral im SIMPL Core hinterlegten Einstellungen können
- dann bei Bedarf direkt von anderen SIMPL Core Diensten, die diese Informationen
- benötigen, ausgelesen werden.
- Zur persistenten Speicherung der Einstellungen und weiterer Daten wird
- eine eigene eingebettete Apache Derby (Embedded Derby) Datenbank verwendet,
- die vom gesamten SIMPL Core genutzt wird.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/AdminServiceSequence.png
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Sequenzdiagramm-des-AdministrationServices"
-
-\end_inset
-
-Sequenzdiagramm eines Lade- und Speichervorgangs der SIMPL Core Einstellungen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Sequenzdiagramm-des-AdministrationServices"
-
-\end_inset
-
- zeigt die Verwendung und die Funktionalität des Administration Service.
- Mit der loadSettings()-Methode können Einstellungen aus der Datenbank geladen
- werden.
- Dafür wird intern eine einfache Datenbankabfrage genutzt.
- Die Einstellungen werden dabei als HashMap zurückgeliefert und auch so
- beim Speichern übergeben, damit sowohl die Bezeichnung der Einstellung
- wie auch ihr Wert zu jeder Zeit verfügbar sind.
- Zur Identifizierung verschiedener Einstellungsprofile, wie z.B.
- Standard-Einstellungen und zuletzt gespeicherten Einstellungen, besitzt
- jede Einstellung eine eindeutige Id.
- So kann später die Admin-Konsole um das Laden und Speichern von benutzerspezifi
-schen Preset-Einstellungen ergänzt werden.
-\end_layout
-
-\begin_layout Standard
-Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole.
- Da in der Admin-Konsole immer Ober- und Unterpunkte zusammengehören, wurden
- auf der Datenbank diese Beziehungen durch die Strukturierung mit Schemata
- und Tabellen umgesetzt.
- So gibt es für jeden Oberpunkt, wie z.B.
- 
-\emph on
-Auditing
-\emph default
- ein gleichnamiges Schema und für jeden Unterpunkt eines Oberpunkts, wie
- z.B.
- 
-\emph on
-General
-\emph default
- eine gleichnamige Tabelle im Schema des Oberpunkts.
- Daraus ergibt sich der genaue Pfad einer in der Datenbank gespeicherten
- Einstellung aus der Auswahl in der Admin-Konsole.
- Mit der saveSettings()-Methode können Einstellungen in einer entsprechenden
- Tabelle eines Schemas gespeichert werden.
- Dazu wird zuerst überprüft, ob das zu den Einstellungen gehörige Schema
- bereits existiert (createSchemaIfItDoesntExistYet()) oder noch erzeugt
- werden muss, und anschließend, ob die Tabelle bereits existiert (createTableIfI
-tDoesntExistYet()) oder noch erzeugt werden muss.
- Die Tabelle wird dabei direkt aus den übergebenen Einstellungen automatisch
- erzeugt, indem die Einstellungsnamen als Spaltennamen verwendet werden.
- Wenn nun Schema und Tabelle vorhanden sind, wird überprüft, ob die zu speichern
-de Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss,
- oder ob die Einstellung neu angelegt, also eine neue Zeile eingefügt werden
- muss.
- Dazu wird die executeUpdate()-Methode verwendet, die eventuell vorhandene
- Einstellungsprofile abfragt und anhand des Abfrageergebnisses (Einstellungsprof
-il existiert vs.
- Einstellungsprofil existiert nicht) das Einstellungsprofil über entsprechende
- Datenbankbefehle aktualisiert oder erstellt.
- Der AdministrationService gibt anschließend eine Statusmeldung (success?)
- an den SIMPL Core zurück, ob der ausgeführte Speichervorgang erfolgreich
- war.
- Dieses generische Vorgehen ist erforderlich, um die Erweiterung der Admin-Konso
-le durch weitere Eigenschaften möglichst einfach zu halten.
- Ein Entwickler muss nur die vorhandenen Schnittstellen der Admin-Konsole
- implementieren, seine Implementierung an den entsprechenden Extension-Point
- anbinden und braucht sich nicht um das Laden und Speichern seiner Einstellungen
- zu kümmern.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Datasource-Service"
-
-\end_inset
-
-Datasource Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: DataSourceServiceImpl beschreiben und die Verwendung von DataFormat,
- DataFormatConverter und StrategyService + Sequenzdiagramme
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-...
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Strategy-Service"
-
-\end_inset
-
-Strategy Service
-\end_layout
-
-\begin_layout Standard
-Der Strategy Service stellt dem Datasource Service die Möglichkeit des Late
- Bindung zur Verfügung, dabei kann eine bei der Modellierung noch nicht
- vollständig spezifizierte Datenquelle, über nichtfunktionale Anforderungen
- in Form von WS-Policy Annotationen, zur Laufzeit aus einer Datenquellen-Registr
-y ausgewählt werden.
- Zu diesem Zweck implementiert der Strategy Service die Funktion, die in
- Kapitel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:StrategyService"
-
-\end_inset
-
- bereits beschrieben wurde.
- Als Parameter bekommt die Funktion die Datenquelleninformationen inklusive
-\emph on
- 
-\emph default
-der 
-\emph on
-LateBinding
-\emph default
--Informationen (siehe Kapitel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:DataSource"
-
-\end_inset
-
-) mitgeteilt und kann anschließend mit der angegebenen Strategie wie z.B.
- 
-\emph on
-FIRST_FIND
-\emph default
-, eine Datenquelle in der Datenquellenregistry (UDDI) ausfindig machen.
- Mit den 
-\emph on
-DataSource
-\emph default
--Informationen aus der Datenquellenregistry kann das entsprechenden Datasource
- Service Plug-In vom Datasource Service bereitgestellt werden.
- Der Zugriff auf die Registry wird mit einem Client realisiert, der der
- Apache jUDDI Registry 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-4"
-
-\end_inset
-
- als 
-\emph on
-juddi-client-3.0.1.jar 
-\emph default
-beiliegt und mit dem auch andere UDDI v3 konformen Registries angesprochen
- werden können.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Connection-Service"
-
-\end_inset
-
-Connection Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ersetzt Storage Service, in Grobentwurf nachtragen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Connection Service bietet dem Datasource Service die Möglichkeit, JDBC
- Verbindungen in einem Pool zwischenzuspeichern und bei Folgezugriffen wiederauf
-zunehmen.
- Dadurch wird die Ausführung von Workflows mit DM-Aktivitäten beschleunigt
- sowie ein Single Sign On erreicht, da bei Folgezugriffen keine erneute
- Verbindung mit Authentifizierung durchgeführt werden muss.
- Als Implementierung wird ein Connection Pool nach 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-3"
-
-\end_inset
-
- realisiert und ein JDBC Wrapper geschrieben, der Transparenz und Flexibilität
- sowie Threadsicherheit des Connection Pooling gewährleistet.
- Der Connection Service übernimmt dabei die Rolle des JDCConnectionPool
- wie in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-3"
-
-\end_inset
-
- beschrieben und besitzt folgende Funktionen:
-\end_layout
-
-\begin_layout Paragraph*
-public synchronized Connection getConnection() 
-\end_layout
-
-\begin_layout Standard
-Liefert die Verbindung zu der Datenquelle.
-\end_layout
-
-\begin_layout Paragraph*
-public synchronized void returnConnection(JDCConnection conn) 
-\end_layout
-
-\begin_layout Standard
-Übergibt eine Verbindung zurück in den Pool bzw.
- markiert die Verbindung als nicht mehr in Benutzung.
-\end_layout
-
-\begin_layout Paragraph*
-public synchronized void closeConnections() 
-\end_layout
-
-\begin_layout Standard
-Schließt alle Verbindungen zu der Datenquelle.
-\end_layout
-
-\begin_layout Paragraph*
-public synchronized void reapConnections() 
-\end_layout
-
-\begin_layout Standard
-Sorgt dafür, dass blockierte oder tote Verbindungen aus dem Pool gelöscht
- werden, da dies nicht von allen Datenquellen unterstützt wird.
-\end_layout
-
-\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Plug-In-System"
@@ -3670,6 +3365,393 @@ TODO: Beschreibung
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core Services
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt werden die Dienste des SIMPL Cores und ihre Funktionsweise
+ beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Administration-Service"
+
+\end_inset
+
+Administration Service
+\end_layout
+
+\begin_layout Standard
+Der Administration Service ist für die Verwaltung der Einstellungen der
+ Admin-Konsole des SIMPL Core Eclipse Plug-Ins zuständig.
+ Die Einstellungen der Admin-Konsole werden dabei über das SIMPL Core Communicat
+ion Plug-In (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+, Kapitel 2.1) an den Administration Service übermittelt oder von ihm angefordert.
+ Die auf diese Weise zentral im SIMPL Core hinterlegten Einstellungen können
+ dann bei Bedarf direkt von anderen SIMPL Core Diensten, die diese Informationen
+ benötigen, ausgelesen werden.
+ Zur persistenten Speicherung der Einstellungen und weiterer Daten wird
+ eine eigene eingebettete Apache Derby (Embedded Derby) Datenbank verwendet,
+ die vom gesamten SIMPL Core genutzt wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration1/AdminServiceSequence.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequenzdiagramm-des-AdministrationServices"
+
+\end_inset
+
+Sequenzdiagramm eines Lade- und Speichervorgangs der SIMPL Core Einstellungen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequenzdiagramm-des-AdministrationServices"
+
+\end_inset
+
+ zeigt die Verwendung und die Funktionalität des Administration Service.
+ Mit der loadSettings()-Methode können Einstellungen aus der Datenbank geladen
+ werden.
+ Dafür wird intern eine einfache Datenbankabfrage genutzt.
+ Die Einstellungen werden dabei als HashMap zurückgeliefert und auch so
+ beim Speichern übergeben, damit sowohl die Bezeichnung der Einstellung
+ wie auch ihr Wert zu jeder Zeit verfügbar sind.
+ Zur Identifizierung verschiedener Einstellungsprofile, wie z.B.
+ Standard-Einstellungen und zuletzt gespeicherten Einstellungen, besitzt
+ jede Einstellung eine eindeutige Id.
+ So kann später die Admin-Konsole um das Laden und Speichern von benutzerspezifi
+schen Preset-Einstellungen ergänzt werden.
+\end_layout
+
+\begin_layout Standard
+Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole.
+ Da in der Admin-Konsole immer Ober- und Unterpunkte zusammengehören, wurden
+ auf der Datenbank diese Beziehungen durch die Strukturierung mit Schemata
+ und Tabellen umgesetzt.
+ So gibt es für jeden Oberpunkt, wie z.B.
+ 
+\emph on
+Auditing
+\emph default
+ ein gleichnamiges Schema und für jeden Unterpunkt eines Oberpunkts, wie
+ z.B.
+ 
+\emph on
+General
+\emph default
+ eine gleichnamige Tabelle im Schema des Oberpunkts.
+ Daraus ergibt sich der genaue Pfad einer in der Datenbank gespeicherten
+ Einstellung aus der Auswahl in der Admin-Konsole.
+ Mit der saveSettings()-Methode können Einstellungen in einer entsprechenden
+ Tabelle eines Schemas gespeichert werden.
+ Dazu wird zuerst überprüft, ob das zu den Einstellungen gehörige Schema
+ bereits existiert (createSchemaIfItDoesntExistYet()) oder noch erzeugt
+ werden muss, und anschließend, ob die Tabelle bereits existiert (createTableIfI
+tDoesntExistYet()) oder noch erzeugt werden muss.
+ Die Tabelle wird dabei direkt aus den übergebenen Einstellungen automatisch
+ erzeugt, indem die Einstellungsnamen als Spaltennamen verwendet werden.
+ Wenn nun Schema und Tabelle vorhanden sind, wird überprüft, ob die zu speichern
+de Einstellung bereits vorhanden ist und nur noch aktualisiert werden muss,
+ oder ob die Einstellung neu angelegt, also eine neue Zeile eingefügt werden
+ muss.
+ Dazu wird die executeUpdate()-Methode verwendet, die eventuell vorhandene
+ Einstellungsprofile abfragt und anhand des Abfrageergebnisses (Einstellungsprof
+il existiert vs.
+ Einstellungsprofil existiert nicht) das Einstellungsprofil über entsprechende
+ Datenbankbefehle aktualisiert oder erstellt.
+ Der AdministrationService gibt anschließend eine Statusmeldung (success?)
+ an den SIMPL Core zurück, ob der ausgeführte Speichervorgang erfolgreich
+ war.
+ Dieses generische Vorgehen ist erforderlich, um die Erweiterung der Admin-Konso
+le durch weitere Eigenschaften möglichst einfach zu halten.
+ Ein Entwickler muss nur die vorhandenen Schnittstellen der Admin-Konsole
+ implementieren, seine Implementierung an den entsprechenden Extension-Point
+ anbinden und braucht sich nicht um das Laden und Speichern seiner Einstellungen
+ zu kümmern.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datasource-Service"
+
+\end_inset
+
+Datasource Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: DataSourceServiceImpl beschreiben und die Verwendung von DataFormat,
+ DataFormatConverter und StrategyService + Sequenzdiagramme
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Datasource Service ist der zentrale Dienst für den Datenquellenzugriff
+ über den SIMPL Core.
+ Alle Datenquellenanfragen richten sich an den Datasource Service, der wie
+ die DataSourceService Plug-Ins das Interface 
+\emph on
+DataSourceService<S, T>
+\emph default
+ (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataSourceService<S,-T>"
+
+\end_inset
+
+) implementiert, als eingehende und ausgehende Datentypen aber ausschließlich
+ mit SDOs (Datentyp 
+\emph on
+DataObject
+\emph default
+) arbeitet.
+ In den folgenden Sequenzdiagrammen wird dargestellt wie verschiedene Anfragen
+ verarbeitet werden und welche Rolle dabei die DataSourceService Plug-Ins,
+ DataFormat Plug-Ins und DataFormatConverter Plug-Ins spielen.
+\end_layout
+
+\begin_layout Paragraph*
+Datenabruf
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Sequenzdiagramm retrieveData aus RDB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Datenabruf mit Late Binding
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Sequenzdiagramm retrieveData mit Late Binding
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Daten schreiben mit Konvertierung
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Sequenzdiagramm writeData (RDB -> FS)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Strategy-Service"
+
+\end_inset
+
+Strategy Service
+\end_layout
+
+\begin_layout Standard
+Der Strategy Service stellt dem Datasource Service die Möglichkeit des Late
+ Bindung zur Verfügung, dabei kann eine bei der Modellierung noch nicht
+ vollständig spezifizierte Datenquelle, über nichtfunktionale Anforderungen
+ in Form von WS-Policy Annotationen, zur Laufzeit aus einer Datenquellen-Registr
+y ausgewählt werden.
+ Zu diesem Zweck implementiert der Strategy Service die Funktion, die in
+ Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:StrategyService"
+
+\end_inset
+
+ bereits beschrieben wurde.
+ Als Parameter bekommt die Funktion die Datenquelleninformationen inklusive
+\emph on
+ 
+\emph default
+der 
+\emph on
+LateBinding
+\emph default
+-Informationen (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:DataSource"
+
+\end_inset
+
+) mitgeteilt und kann anschließend mit der angegebenen Strategie wie z.B.
+ 
+\emph on
+FIRST_FIND
+\emph default
+, eine Datenquelle in der Datenquellenregistry (UDDI) ausfindig machen.
+ Mit den 
+\emph on
+DataSource
+\emph default
+-Informationen aus der Datenquellenregistry kann das entsprechenden Datasource
+ Service Plug-In vom Datasource Service bereitgestellt werden.
+ Der Zugriff auf die Registry wird mit einem Client realisiert, der der
+ Apache jUDDI Registry 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+
+\end_inset
+
+ als 
+\emph on
+juddi-client-3.0.1.jar 
+\emph default
+beiliegt und mit dem auch andere UDDI v3 konformen Registries angesprochen
+ werden können.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Connection-Service"
+
+\end_inset
+
+Connection Service
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ersetzt Storage Service, in Grobentwurf nachtragen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Connection Service bietet dem Datasource Service die Möglichkeit, JDBC
+ Verbindungen in einem Pool zwischenzuspeichern und bei Folgezugriffen wiederauf
+zunehmen.
+ Dadurch wird die Ausführung von Workflows mit DM-Aktivitäten beschleunigt
+ sowie ein Single Sign On erreicht, da bei Folgezugriffen keine erneute
+ Verbindung mit Authentifizierung durchgeführt werden muss.
+ Als Implementierung wird ein Connection Pool nach 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+ realisiert und ein JDBC Wrapper geschrieben, der Transparenz und Flexibilität
+ sowie Threadsicherheit des Connection Pooling gewährleistet.
+ Der Connection Service übernimmt dabei die Rolle des JDCConnectionPool
+ wie in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+ beschrieben und besitzt folgende Funktionen:
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized Connection getConnection() 
+\end_layout
+
+\begin_layout Standard
+Liefert die Verbindung zu der Datenquelle.
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized void returnConnection(JDCConnection conn) 
+\end_layout
+
+\begin_layout Standard
+Übergibt eine Verbindung zurück in den Pool bzw.
+ markiert die Verbindung als nicht mehr in Benutzung.
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized void closeConnections() 
+\end_layout
+
+\begin_layout Standard
+Schließt alle Verbindungen zu der Datenquelle.
+\end_layout
+
+\begin_layout Paragraph*
+public synchronized void reapConnections() 
+\end_layout
+
+\begin_layout Standard
+Sorgt dafür, dass blockierte oder tote Verbindungen aus dem Pool gelöscht
+ werden, da dies nicht von allen Datenquellen unterstützt wird.
 \end_layout
 
 \begin_layout Subsection
