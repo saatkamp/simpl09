@@ -1791,7 +1791,7 @@ Reference Resolution System
 \end_inset
 
  beschreibt die Implementierung des Referenc Resolution Systems und seiner
- Services sowie des RRS DQ-Adapter Plug-In Systems.
+ Services sowie des RRS DS-Adapter Plug-In Systems.
 \end_layout
 
 \begin_layout Itemize
@@ -4171,114 +4171,6 @@ BPEL-DM Extension Activities
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:SIMPL-Event-System"
-
-\end_inset
-
-SIMPL Event System
-\end_layout
-
-\begin_layout Standard
-Für die SIMPL Extension Activities wird eine Reihe von neuen Events eingeführt.
- Die Klassenhierarchie der Events ist in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:SIMPL-Event-System"
-
-\end_inset
-
- zu sehen.
- Die neuen Events unterteilen sich in DMEvents und ConnectionEvents, welche
- beide als Vaterklasse die Klasse SIMPLEvent haben.
- SIMPLEvent ist wiederum von Scope Event abgeleitet.
- Die SIMPL-Events werden von Scope-Event abgeleitet, da die Methode sendEvent,
- die in den ExtensionActivitys verwendet wird, nur für ScopeEvent deklariert
- ist.
- Um die SIMPL-Events als eine neue Event-Klasse zu erstellen, wäre es notwendig
- diese Methode neu zu implementieren.
- Die ist allerdings im Rahmen des Projektes nicht vorgesehen.
- Die neuen Events werden als Scope Events in die bestehende Event Hierarchie
- von ODE eingegliedert.
- Dies erlaubt es uns, diese direkt innerhalb der ExtensionAcitvities zu
- nutzen und aufzurufen.
-\end_layout
-
-\begin_layout Standard
-Die SIMPL-Events sind unterteilt in DM-Events und Connection Events.
- Die DM-Events sind in DMFailure, DMStarted und DMEnd unterteilt.
- DMStarted und DMEnd sind dabei nur dazu da um eine Rückmeldung darüber
- zu geben, das die Ausführung eines DM-Events begonnen, bzw.
- beendet wurde.
- DMFailure wird erzeugt wenn die Ausführung eines DMEvents aus einem bestimmten
- Grund fehlschlägt.
- Um anzugeben was für ein Fehler aufgetreten ist, gibt es die Variable Failure_r
-eason in der eine Meldung, was für ein Fehler aufgetreten ist gespeichert
- wird.
- Weiterhin gibt es noch eine getter und eine setter Methode für die Variable.
-\end_layout
-
-\begin_layout Standard
-Die Connection Events sind unterteilt in ConnectionStarted ConnectionEnd
- und ConnectionLost.
- Für die Events ConnectionStarted und ConnectionEnd trifft dabei das selbe
- zu wie für DMEnd und DMStarted.
- Sie geben Rückmeldung darüber das eine Verbindung zu einer Datenquelle
- aufgebaut wurde oder beendet wurde.
- Das Event ConnectionLost gibt analog zu dem Event DMFailure Rückmeldung
- über einen Verbindungsabbruch und den Grund, der in der Variable ConLost_reason
- angegeben wird.
-\end_layout
-
-\begin_layout Standard
-Die Methode getType die in allen Events vorhanden ist, ist eine Methode
- die in allen Events von ODE enthalten ist, die dazu da ist, den Type eines
- Events zurückzugeben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename diagramme/iteration1/SIMPL-Events.jpg
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:SIMPL-Event-System"
-
-\end_inset
-
-SIMPL Event System
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
 name "sub:Ausführung-einer-BPEL-DM"
 
 \end_inset
@@ -4964,7 +4856,7 @@ abgelegt.
  des RRS hier enthalten sein, bspw.
  der Name der RRS DB oder der Name der Tabelle in der die Referenzen abgelegt
  werden.
- Da die Struktur der RRS Konfigurationsdatei mit der des SimplCores identisch
+ Da die Struktur der RRS Konfigurationsdatei ähnlich der des SimplCores
  ist, wird darauf verzichtet diese hier nocheinmal aufzuzeigen.
 \end_layout
 
