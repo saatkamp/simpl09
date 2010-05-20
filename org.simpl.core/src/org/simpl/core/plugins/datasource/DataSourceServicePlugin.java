@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.simpl.core.services.dataformat.DataFormat;
-import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.datasource.DataSourceService;
 
 import commonj.sdo.DataObject;
