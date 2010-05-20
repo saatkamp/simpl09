@@ -13,8 +13,6 @@ import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.LineStyleEvent;
-import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -28,9 +26,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import widgets.LiveEditStyleText;
 import widgets.ParametersListPopUp;
 import widgets.TablsListPopUp;
-import widgets.LiveEditStyleText;
 
 /**
  * <b>Purpose:</b> <br>
@@ -178,9 +176,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 						new SetDsAddressCommand(activity,
 								dataSourceAddressCombo.getText()));
 
-				DataSource dataSource = PropertySectionUtils
-						.findDataSourceByName(getProcess(),
-								dataSourceAddressCombo.getText());
+				DataSource dataSource = getDataSource();
 				typeText.setText(dataSource.getType());
 				kindText.setText(dataSource.getSubType());
 				languageText.setText(dataSource.getLanguage());
@@ -317,9 +313,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				tabelsPopWindowTables.setText("Select Tabel");
 				// sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 				// sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils
-						.findDataSourceByName(getProcess(),
-								dataSourceAddressCombo.getText()));
+				tabelsPopWindowTables.loadTablesFromDB(getDataSource());
 
 				if (!tabelsPopWindowTables.isWindowOpen()) {
 					tabelsPopWindowTables.openWindow();
@@ -493,5 +487,15 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
 				new SetDsStatementCommand(activity, this.statement));
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource()
+	 */
+	@Override
+	public DataSource getDataSource() {
+		return PropertySectionUtils
+		.findDataSourceByName(getProcess(),
+				dataSourceAddressCombo.getText());
 	}
 }

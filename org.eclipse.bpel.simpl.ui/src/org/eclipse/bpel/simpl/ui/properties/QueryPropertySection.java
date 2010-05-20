@@ -185,8 +185,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				getCommandFramework().execute(
 						new SetDsAddressCommand(getModel(),
 								dataSourceAddressCombo.getText()));
-				
-				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
+
+				DataSource dataSource = getDataSource();
 				typeText.setText(dataSource.getType());
 				kindText.setText(dataSource.getSubType());
 				languageText.setText(dataSource.getLanguage());
@@ -328,9 +328,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				tabelsPopWindowTables=new TablsListPopUp(statementText);
 				//Display display2 = Display.getDefault();
 				tabelsPopWindowTables.setText("Select Tabel");
-				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+				// sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				// sShell.setLayout(gridLayout);
+				tabelsPopWindowTables.loadTablesFromDB(getDataSource());
 
 				if(!tabelsPopWindowTables.isWindowOpen()){
 					tabelsPopWindowTables.openWindow();
@@ -490,5 +490,15 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
 				new SetDsStatementCommand(getModel(), this.statement));
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource()
+	 */
+	@Override
+	public DataSource getDataSource() {
+		return PropertySectionUtils
+		.findDataSourceByName(getProcess(),
+				dataSourceAddressCombo.getText());
 	}
 }

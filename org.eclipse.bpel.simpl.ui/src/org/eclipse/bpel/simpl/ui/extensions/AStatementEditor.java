@@ -11,6 +11,7 @@
  */
 package org.eclipse.bpel.simpl.ui.extensions;
 
+import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.widgets.Composite;
 
 // TODO: Auto-generated Javadoc
@@ -25,6 +26,8 @@ public abstract class AStatementEditor implements IStatementEditor {
 	private Composite composite = null;
 	
 	private String statement = null;
+	
+	private DataSource dataSource = null;
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#getComposite()
@@ -58,6 +61,22 @@ public abstract class AStatementEditor implements IStatementEditor {
 	@Override
 	public void setStatement(String statement) {
 		this.statement = statement;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#getDataSource()
+	 */
+	@Override
+	public DataSource getDataSource() {
+		return this.dataSource;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.extensions.IStatementEditor#setDataSource(org.eclipse.simpl.communication.client.DataSource)
+	 */
+	@Override
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
 
 }
