@@ -10,25 +10,22 @@ import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create data format plug-ins for
- * the SIMPL Core, that can be used by data source plug-ins to work with a
- * defined data format.<br>
- * <b>Description:</b>A data format plug-in is used to map outgoing data of a
- * format to a Service Data Object (SDO) and to transform incoming data as SDO
- * back to the format.<br>
- * It has a type for identification and needs a XML schema that defines the data
- * format structure, that is used to create a SDO based on a root schema element
- * type. Type, schema file and schema element type must be set in the plugin's
- * constructor. <br>
+ * <b>Purpose:</b>This abstract class is used to create data format plug-ins for the SIMPL
+ * Core, that can be used by data source plug-ins to work with a defined data format.<br>
+ * <b>Description:</b>A data format plug-in is used to map outgoing data of a format to a
+ * Service Data Object (SDO) and to transform incoming data as SDO back to the format.<br>
+ * It has a type for identification and needs a XML schema that defines the data format
+ * structure, that is used to create a SDO based on a root schema element type. Type,
+ * schema file and schema element type must be set in the plugin's constructor. <br>
  * The root schema type must have an attribute called <b>type</b>, that is set
- * automatically, for other services being able to recognize the underlying
- * format of a passed SDO.<br>
+ * automatically, for other services being able to recognize the underlying format of a
+ * passed SDO.<br>
  * <b>Copyright:</b> <br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi
- * @version $Id: DataFormatPlugin.java 1006 2010-03-24 17:52:54Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id: DataFormatPlugin.java 1006 2010-03-24 17:52:54Z michael.schneidt@arcor.de
+ *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
@@ -43,8 +40,8 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
   private String schemaFile = "";
 
   /**
-   * The data format schema type defined in the data format schema file that is
-   * used to create the data object.
+   * The data format schema type defined in the data format schema file that is used to
+   * create the data object.
    */
   private String schemaType = "";
 
@@ -59,8 +56,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
     inputStream = getClass().getResourceAsStream(this.schemaFile);
 
     if (inputStream == null) {
-      System.out.println("The file '" + this.schemaFile
-          + "' could not be found.");
+      System.out.println("The file '" + this.schemaFile + "' could not be found.");
     }
 
     XSDHelper.INSTANCE.define(inputStream, null);
@@ -70,9 +66,9 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
-    dataObject = DataFactory.INSTANCE.create(
-        "http://org.simpl.core/plugins/dataformat/" + this.getType() + "DataFormat", this.schemaType);
+
+    dataObject = DataFactory.INSTANCE.create("http://org.simpl.core/plugins/dataformat/"
+        + this.getType() + "DataFormat", this.schemaType);
 
     // write the data format type to the data object if possible
     try {
@@ -83,7 +79,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
 
     return dataObject;
   }
-  
+
   /**
    * Sets the supported data format type.
    * 
@@ -109,6 +105,22 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
    */
   public void setSchemaFile(String dfSchemaFile) {
     this.schemaFile = dfSchemaFile;
+  }
+
+  /**
+   * @return The schema file as InputStream
+   */
+  public InputStream getSchemaFile() {
+    InputStream inputStream = null;
+
+    // Load the schema from jar file
+    inputStream = getClass().getResourceAsStream(this.schemaFile);
+
+    if (inputStream == null) {
+      System.out.println("The file '" + schemaFile + "' could not be found.");
+    }
+
+    return inputStream;
   }
 
   /**
