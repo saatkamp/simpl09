@@ -11,6 +11,7 @@
  */
 package org.eclipse.bpel.simpl.ui.extensions;
 
+import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.widgets.Composite;
 
 // TODO: Auto-generated Javadoc
@@ -58,4 +59,17 @@ public interface IStatementEditor {
 	 */
 	public void setStatement(String statement);
 
+	/**
+	 * Sets the current selected dataSource to the composite class.
+	 * 
+	 * @param dataSource
+	 */
+	public void setDataSource(DataSource dataSource);
+	
+	/**
+	 * Returns the dataSource object.
+	 * 
+	 * @return
+	 */
+	public DataSource getDataSource();
 }

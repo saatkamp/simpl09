@@ -968,8 +968,14 @@ public class ModelHelper {
 					public Object visit(Object obj) {
 						Variable v = (Variable) obj;
 						if (v.getType() == null){
-							return ListMap.IGNORE;
+							if (v.getXSDElement() == null){
+								return ListMap.IGNORE;
+							}else {
+								//Query all variables with elements of the given type
+								return (v.getXSDElement().getType().getName().equals(typeName) ? v : ListMap.IGNORE);
+							}
 						}else {
+							//Query all variables with the given type
 							return (v.getType().getName().equals(typeName) ? v : ListMap.IGNORE);
 						}
 					}				

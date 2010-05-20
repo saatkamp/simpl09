@@ -13,6 +13,7 @@ package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.ui.properties.BPELPropertySection;
+import org.eclipse.simpl.communication.client.DataSource;
 
 public abstract class DMActivityPropertySection extends BPELPropertySection {
 
@@ -51,5 +52,7 @@ public abstract class DMActivityPropertySection extends BPELPropertySection {
 	 * Saves the statement to the model.
 	 */
 	public abstract void saveStatementToModel();
+
+	public abstract DataSource getDataSource();
 
 }

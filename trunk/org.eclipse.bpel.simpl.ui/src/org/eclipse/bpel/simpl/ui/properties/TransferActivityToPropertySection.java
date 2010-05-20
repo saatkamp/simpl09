@@ -330,4 +330,14 @@ public class TransferActivityToPropertySection extends
 		// TODO Auto-generated method stub
 
 	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource()
+	 */
+	@Override
+	public DataSource getDataSource() {
+		return PropertySectionUtils
+		.findDataSourceByName(getProcess(),
+				dataSourceAddressCombo.getText());
+	}
 }

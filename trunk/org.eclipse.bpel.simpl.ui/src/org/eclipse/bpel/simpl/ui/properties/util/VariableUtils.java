@@ -8,6 +8,7 @@ import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.ui.util.ModelHelper;
 import org.eclipse.bpel.ui.util.XSDUtils;
+import org.eclipse.xsd.XSDElementDeclaration;
 import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.XSDTypeDefinition;
 
@@ -54,6 +55,7 @@ public class VariableUtils {
 		
 		if (found){
 			XSDTypeDefinition contType = XSDUtils.getDataType(schema, "ContainerReferenceType");
+			//Query all variables with ContainerReferenceType
 			Variable[] vars = ModelHelper.getVariablesOfType(process, contType.getName());
 			for (Variable var : vars){
 				variableNames.add("["+ var.getName() +"]");
