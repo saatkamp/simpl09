@@ -5868,6 +5868,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename bilder/JUddiClient.jpg
+	scale 70
 
 \end_inset
 
@@ -5966,48 +5967,6 @@ Konfiguration
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../../../../../../../../Eigene Dateien/dokumente/uni/stupro/svn/documents/Feinentwurf/bilder/indexscreen.JPG
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Uddi Web Interface Konfiguration
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Uddi-Web-Interface-config"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 In der Konfiguration können grundlegende Informationen, wie die Adresse
  der Datenquellen-Registry, sowie Name und Passwort, die für die Schreibzugriffe
@@ -6024,48 +5983,6 @@ Datenquellenliste
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../../../../../../../../Eigene Dateien/dokumente/uni/stupro/svn/documents/Feinentwurf/bilder/datasourcelist.JPG
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Uddi Web Interface Datenquellenliste
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Uddi-Web-Interface-datalist"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 In der Datenquellenliste werden alle Verfügbaren Datenquellen und die grundlegen
 den Informationen angezeigt.
@@ -6075,48 +5992,6 @@ den Informationen angezeigt.
 
 \begin_layout Subsubsection
 Datenquelleneditor
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../../../../../../../../Eigene Dateien/dokumente/uni/stupro/svn/documents/Feinentwurf/bilder/edit.JPG
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Uddi Web Interface Datenquelleneditor
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Uddi-Web-Interface-editor"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7924,7 +7799,7 @@ ModelProvider
  Sie ist der globale Zugriffpunkt für die vorhandenen Datenquellen.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -7973,7 +7848,7 @@ DataSource
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -8004,7 +7879,7 @@ org.""eclipse.""simpl.""uddi.""model.""datasource
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
