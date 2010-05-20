@@ -75,9 +75,9 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     if (lateBindingDataSource != null) {
       dataSource = lateBindingDataSource;
     }
-
+    
     // execute statement
-    if (!this.isDataSourceComplete(dataSource)) {
+    if (this.isDataSourceComplete(dataSource)) {
       // get data source service instance
       dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
