@@ -12,6 +12,8 @@ import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.w3c.dom.Element;
 
+import commonj.sdo.DataObject;
+
 public class QueryActivity extends DataManagementActivity {
 
 	@Override
@@ -33,11 +35,7 @@ public class QueryActivity extends DataManagementActivity {
 
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
-		// DataSourceService datasourceService = SIMPLCore.getInstance()
-		// .dataSourceService(getDsType(), getDsSubType());
-		//TODO: Noch überlegen, ob die Werte aus der Aktivität oder aus der Datenquelle
-		//gelesen werden, eigentlich müssten beide identisch sein!
-		DataSourceService datasourceService = SIMPLCore.getInstance()
+		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
 				.dataSourceService();
 
 		try {
