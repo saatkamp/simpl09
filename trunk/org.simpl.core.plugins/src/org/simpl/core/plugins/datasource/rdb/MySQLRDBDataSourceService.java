@@ -56,17 +56,17 @@ public class MySQLRDBDataSourceService extends
     boolean success = false;
     Connection conn = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
-
+    
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
-      conn.commit();
-      success = true;
       stat.close();
+      conn.commit();
+      success = true;      
     } catch (Throwable e) {
       logger.error("exception executing the statement: " + statement, e);
     }
-
+    
     logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress()
         + ".");
     closeConnection(conn);
@@ -363,7 +363,7 @@ public class MySQLRDBDataSourceService extends
       StringBuilder uri = new StringBuilder();
       uri.append("jdbc:mysql://");
       uri.append(dsAddress);
-
+      
       try {
         connect = DriverManager.getConnection(uri.toString(), user, password);
         connect.setAutoCommit(false);
