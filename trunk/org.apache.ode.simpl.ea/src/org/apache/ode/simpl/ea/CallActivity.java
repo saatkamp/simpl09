@@ -12,6 +12,8 @@ import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.w3c.dom.Element;
 
+import commonj.sdo.DataObject;
+
 public class CallActivity extends DataManagementActivity {
 
 	@Override
@@ -30,10 +32,8 @@ public class CallActivity extends DataManagementActivity {
 		
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
-		DataSourceService datasourceService = SIMPLCore.getInstance()
+		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
 				.dataSourceService();
-
-		boolean success = false;
 
 		try {
 			this.successfullExecution = datasourceService.executeStatement(ds,
