@@ -122,7 +122,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     }
 
     // format data to SDO
-    retrieveData = formatRetrievedData(dataSourceService, data, dataSource.getDataFormat());
+    retrieveData = formatRetrievedData(dataSourceService, data, dataSource
+        .getDataFormat());
 
     return retrieveData;
   }
@@ -314,12 +315,13 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * Formats SDO data to a format that can be understand and written by the given data
-   * source service. If the data format is not supported by the data source service, it is
-   * looked for a data format converter that can be used to convert the given data format
-   * to a data source service supported data format and thus be able to eventually write
-   * the data even though the incoming data format was not supported. Also creates a
-   * target on the data source to be able to write the data.
+   * Formats SDO data to a format that can be understand and is writeable by the given
+   * data source service and its underlying data format. If the data format is not
+   * supported by the data source service, it is looked for a data format converter that
+   * can be used to convert the given data format to the data source service supported
+   * data format and thus be able to eventually write the data even though the incoming
+   * data format is not supported. Also creates a target on the data source to be able to
+   * write the data.
    * 
    * @param dataSourceService
    * @param data
@@ -391,8 +393,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @return
    */
   @SuppressWarnings("unchecked")
-  private DataObject formatRetrievedData(DataSourceService dataSourceService, Object data,
-      String dataFormatType) {
+  private DataObject formatRetrievedData(DataSourceService dataSourceService,
+      Object data, String dataFormatType) {
     DataObject retrieveDataSDO = null;
     List<String> supportedDataFormatTypes = null;
 
