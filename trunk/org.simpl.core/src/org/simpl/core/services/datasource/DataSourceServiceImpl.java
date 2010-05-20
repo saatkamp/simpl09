@@ -1,8 +1,11 @@
 package org.simpl.core.services.datasource;
 
+import java.io.InputStream;
 import java.util.List;
 
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.plugins.dataformat.DataFormatPlugin;
+import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
@@ -75,7 +78,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     if (lateBindingDataSource != null) {
       dataSource = lateBindingDataSource;
     }
-    
+
     // execute statement
     if (this.isDataSourceComplete(dataSource)) {
       // get data source service instance
@@ -258,6 +261,45 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     success = dataSourceService.createTarget(dataSource, dataObject, target);
 
     return success;
+  }
+
+  /**
+   * Returns the data source's meta data schema file as InputStream.
+   * 
+   * @param dataSource
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  public InputStream getMetaDataSchemaFile(DataSource dataSource) {
+    InputStream inputStream = ((DataSourceServicePlugin) DataSourceServiceProvider
+        .getInstance(dataSource.getType(), dataSource.getSubType()))
+        .getMetaDataSchemaFile();
+
+    return inputStream;
+  }
+
+  /**
+   * Returns the data source's data format schema file as InputStream.
+   * 
+   * @param dataSource
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  public InputStream getDataFormatSchemaFile(DataSource dataSource) {
+    InputStream inputStream = null;
+    DataSourceService dataSourceService = null;
+    List<String> supportedDataFormatTypes = null;
+
+    dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSource.getSubType());
+
+    supportedDataFormatTypes = DataFormatProvider
+        .getSupportedDataFormatTypes(dataSourceService);
+
+    inputStream = ((DataFormatPlugin) DataFormatProvider
+        .getInstance(supportedDataFormatTypes.get(0))).getSchemaFile();
+
+    return inputStream;
   }
 
   /**

@@ -154,6 +154,21 @@ public interface DatasourceService {
 
     /**
      * 
+     * @param dataSource
+     * @return
+     *     returns java.lang.String
+     * @throws ConnectionException_Exception
+     */
+    @WebMethod(action = "getDataFormatSchema")
+    @WebResult(partName = "return")
+    public String getDataFormatSchema(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource)
+        throws ConnectionException_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns java.lang.String
      */

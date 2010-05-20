@@ -13,9 +13,7 @@ import javax.jws.soap.SOAPBinding;
 import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
-import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -133,7 +131,6 @@ public class Datasource {
     return metaData;
   }
 
-  @SuppressWarnings("unchecked")
   @WebMethod(action = "getMetaDataSchema")
   public String getMetaDataSchema(@WebParam(name = "dataSource") DataSource dataSource)
       throws ConnectionException {
@@ -141,8 +138,8 @@ public class Datasource {
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();
 
-    inputStream = ((DataSourceServicePlugin) (DataSourceService) SIMPLCore.getInstance()
-        .dataSourceService()).getMetaDataSchemaFile();
+    inputStream = SIMPLCore.getInstance().dataSourceService().getMetadataSchemaFile(
+        dataSource);
 
     // convert inputStream to String
     try {
@@ -155,6 +152,29 @@ public class Datasource {
     metaDataSchema = writer.toString();
 
     return metaDataSchema;
+  }
+
+  @WebMethod(action = "getDataFormatSchema")
+  public String getDataFormatSchema(@WebParam(name = "dataSource") DataSource dataSource)
+      throws ConnectionException {
+    InputStream inputStream = null;
+    String dataFormatSchema = "";
+    StringWriter writer = new StringWriter();
+
+    inputStream = SIMPLCore.getInstance().dataSourceService().getDataFormatSchemaFile(
+        dataSource);
+
+    // convert inputStream to String
+    try {
+      IOUtils.copy(inputStream, writer);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    dataFormatSchema = writer.toString();
+
+    return dataFormatSchema;
   }
 
   @WebMethod(action = "getDataSourceTypes")
