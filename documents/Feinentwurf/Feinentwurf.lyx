@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -6053,12 +6053,74 @@ Eclipse
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk besteht aus der bereits vorhandenen Eclipse IDE und
- dem Eclipse BPEL Designer Plug-In sowie den drei zu erstellenden Plug-Ins
- BPEL-DM Plug-In, SIMPL Core Plug-In und SIMPL Core Client Plug-In.
+ dem erweiterten Eclipse BPEL Designer Plug-In sowie den drei zu erstellenden
+ Plug-Ins BPEL-DM Plug-In, SIMPL Core Plug-In und SIMPL Core Client Plug-In.
  Dazu kommen noch Eclipse Plug-Ins für das Reference Resolution System (RRS)
  und eine UDDI-Registry.
  Im Rahmen des Feinentwurfes werden die Anbindung an die vorhandenen Komponenten
  sowie die zu erstellenden Komponenten näher erläutert.
+\end_layout
+
+\begin_layout Subsection
+Erweitertes BPEL Designer Plug-In
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Die Beschreibung wird nachgereicht...
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Designer-Plug-In-UI"
+
+\end_inset
+
+ zeigt alle neu erstellten und erweiterten Klassen des BPEL Designer Plug-Ins.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/BPELDesignerUI.png
+	lyxscale 60
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-Designer-Plug-In-UI"
+
+\end_inset
+
+Klassendiagramm der UI des erweiterten BPEL Designer Plug-Ins
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -6124,10 +6186,13 @@ org.""eclipse.""bpel.""simpl.""ui.""sql
 ) für die grafische Modellierung von SQL-Abfragen umgesetzt.
  Die verschiedenen Pakete und deren Klassen werden in den folgenden Unterkapitel
 n näher erläutert.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
