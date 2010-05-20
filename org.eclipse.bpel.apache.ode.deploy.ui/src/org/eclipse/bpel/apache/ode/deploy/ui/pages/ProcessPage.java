@@ -788,7 +788,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				AddDataSourceDialog dialog = new AddDataSourceDialog(Display
 						.getDefault().getActiveShell(), processType);
 				dialog.open();
-				if (dialog.getDatasource() != null) {
+				if (dialog.getDatasource().getDataSourceName() != null) {
 					Command addDataSourceCommand = AddCommand.create(domain,
 							processType, ddPackage.eINSTANCE
 									.getProcessType_Datasources(), dialog
@@ -822,23 +822,25 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 						TDatasource datasource = (TDatasource) sel
 								.getFirstElement();
 
-						Command removeDataSourceCommand = RemoveCommand.create(
-								domain, processType, ddPackage.eINSTANCE
-										.getProcessType_Datasources(),
-								datasource);
-						domain.getCommandStack().execute(
-								removeDataSourceCommand);
-
 						EditDataSourceDialog dialog = new EditDataSourceDialog(
 								Display.getDefault().getActiveShell(),
 								datasource, processType);
 						dialog.open();
 
-						Command addDataSourceCommand = AddCommand.create(
-								domain, processType, ddPackage.eINSTANCE
-										.getProcessType_Datasources(), dialog
-										.getDatasource());
-						domain.getCommandStack().execute(addDataSourceCommand);
+						if (dialog.getDatasource().getDataSourceName() != null){
+							Command removeDataSourceCommand = RemoveCommand.create(
+									domain, processType, ddPackage.eINSTANCE
+											.getProcessType_Datasources(),
+									datasource);
+							domain.getCommandStack().execute(
+									removeDataSourceCommand);
+							
+							Command addDataSourceCommand = AddCommand.create(
+									domain, processType, ddPackage.eINSTANCE
+											.getProcessType_Datasources(), dialog
+											.getDatasource());
+							domain.getCommandStack().execute(addDataSourceCommand);
+						}
 					}
 					// Updating the display in the view
 					viewer.refresh();
