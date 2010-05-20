@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="23" columns="4">
+<lyxtabular version="3" rows="24" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1606,7 +1606,7 @@ reference "sub:Hilfsklassen"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1615,7 +1615,7 @@ reference "sub:Hilfsklassen"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1624,7 +1624,7 @@ reference "sub:Hilfsklassen"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1633,7 +1633,7 @@ schneimi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1666,6 +1666,58 @@ reference "sub:Datasource-Service"
 \end_inset
 
  überarbeitet und Sequenzdiagramme hinzugefügt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Simpl-Auditing"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Uddi-Registry"
+
+\end_inset
+
+hinzugefügt und überarbeitet
 \end_layout
 
 \end_inset
@@ -4902,6 +4954,13 @@ success
 
 \begin_layout Subsection
 Simpl Auditing
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Simpl-Auditing"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4948,12 +5007,27 @@ Unterstützte Events
 \end_layout
 
 \begin_layout Standard
-Folgende Events werden von der Implementierung unterstützt und können per
- Sdo an den Simpl Core gesendet werden.
+Folgende Events werden von der Implementierung unterstützt und werden per
+ Sdo an den Simpl Core gesendet, wo sie in beliebigen Datenbanken gespeichert
+ werden können.
 \end_layout
 
 \begin_layout Standard
 Alle Eventes besitzen die Grundattribute: 
+\emph on
+Name
+\emph default
+, 
+\emph on
+Type
+\emph default
+, 
+\emph on
+LineNumber
+\emph default
+, 
+\emph on
+Timestamp
 \end_layout
 
 \begin_layout Itemize
@@ -4961,32 +5035,67 @@ ActivityEvent: Liefert Name, Id, Type und DeklarationId der Aktivität.
 \end_layout
 
 \begin_layout Itemize
-Activity FailureEvent: Liefert den Grund des Fehlschlages.
+Activity FailureEvent: Liefert den 
+\emph on
+Grund des Fehlschlages
+\emph default
+.
 \end_layout
 
 \begin_layout Itemize
-CorrelationEvent: Liefert PortType, Operation und MexID.
+CorrelationEvent: Liefert 
+\emph on
+PortType
+\emph default
+, 
+\emph on
+Operation
+\emph default
+ und 
+\emph on
+MexID.
 \end_layout
 
 \begin_layout Itemize
-CorrelationSetWriteEvent: Liefert den Correlation Key.
+CorrelationSetWriteEvent: Liefert den 
+\emph on
+Correlation Key
+\emph default
+.
 \end_layout
 
 \begin_layout Itemize
-ExpressionEvaluationEvent: Liefert eine Expression zurück.
+ExpressionEvaluationEvent: Liefert eine 
+\emph on
+Expression
+\emph default
+ zurück.
 \end_layout
 
 \begin_layout Itemize
-ExpressionEvaluationFailedEvent: Liefert den Fehler bei der Evaluation zurück.
+ExpressionEvaluationFailedEvent: Liefert den 
+\emph on
+Fehler bei der Evaluation
+\emph default
+ zurück.
 \end_layout
 
 \begin_layout Itemize
-NewProcessInstanceEvent: Liefert, wenn vorhanden, die Root-Scope-Id und
- die Scope-Deklarations-id.
+NewProcessInstanceEvent: Liefert, wenn vorhanden, die 
+\emph on
+Root-Scope-Id
+\emph default
+ und die
+\emph on
+ Scope-Deklarations-id
+\emph default
+.
 \end_layout
 
 \begin_layout Itemize
-PartnerLinkEvent: Liefert den Partner Link Name
+PartnerLinkEvent: Liefert den 
+\emph on
+Partner Link Name
 \end_layout
 
 \begin_layout Itemize
