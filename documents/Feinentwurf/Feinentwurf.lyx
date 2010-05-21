@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Feinentwurf}
-\def\docvers{2.5}
+\def\docvers{3.0}
 \def\docautor{}
-\def\docdate{15. Mai 2010}
+\def\docdate{21. Mai 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -438,7 +438,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="24" columns="4">
+<lyxtabular version="3" rows="25" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -716,7 +716,7 @@ reference "sub:Ausführung-einer-BPEL-DM"
 
 \end_inset
 
- hunzugefügt.
+ hinzugefügt.
 \end_layout
 
 \end_inset
@@ -1672,7 +1672,7 @@ reference "sub:Datasource-Service"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1681,7 +1681,7 @@ reference "sub:Datasource-Service"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1690,7 +1690,7 @@ reference "sub:Datasource-Service"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1699,7 +1699,7 @@ huettiwg
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1718,6 +1718,79 @@ reference "sec:Uddi-Registry"
 \end_inset
 
 hinzugefügt und überarbeitet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Eclipse"
+
+\end_inset
+
+ überarbeitet und Abschnitte 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Eclipse-BPEL-Designer-Modell"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Eclipse-BPEL-Designer-UI"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Eclipse-BPEL-Designer-DD-Modell"
+
+\end_inset
+
+und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Eclipse-BPEL-Designer-DD-UI"
+
+\end_inset
+
+ eingefügt.
 \end_layout
 
 \end_inset
@@ -1774,8 +1847,8 @@ key "key-1"
  durch statische und dynamische UML-Diagramme visualisiert.
  Der Feinentwurf bezieht sich im Gegensatz zum Grobentwurf aktuell nur auf
  die erste Iteration und wird mit der zweiten Iteration vervollständigt.
- Grobentwurf und Feinentwurf bilden zusammen den Gesamtentwurf des SIMPL
- Rahmenwerks.
+ Grobentwurf und Feinentwurf bilden zusammen den vollständigen Entwurf des
+ SIMPL Rahmenwerks.
 \end_layout
 
 \begin_layout Subsection
@@ -1856,7 +1929,7 @@ Reference Resolution System
 \begin_inset Quotes erd
 \end_inset
 
- beschreibt die Implementierung des Referenc Resolution Systems und seiner
+ beschreibt die Implementierung des Reference Resolution Systems und seiner
  Services sowie des RRS DS-Adapter Plug-In Systems.
 \end_layout
 
@@ -2089,7 +2162,7 @@ key "key-1"
 \end_inset
 
 , Kapitel 3.3.4).
- Dieser Dienst wird für das Late Binding benötigt.
+ Dieser Dienst wird für das Late-Binding benötigt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2214,9 +2287,9 @@ DataSource
 
 \begin_layout Standard
 Stellt alle Eigenschaften einer Datenquelle zur Verfügung und enthält wichtige
- Zugriffsinformsationen, die für einen Verbindungsaufbau benötigt werden.
+ Zugriffsinformationen, die für einen Verbindungsaufbau benötigt werden.
  Dazu gehören Authentifizierungsinformationen und Informationen für das
- Late Binding.
+ Late-Binding.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2234,7 +2307,7 @@ LateBinding
 \end_layout
 
 \begin_layout Standard
-Enthält alle Informationen für das Late Binding wie z.B.
+Enthält alle Informationen für das Late-Binding wie z.B.
  WS-Policy Informationen, die Adresse der UDDI-Registry und die Strategie
  (siehe Abschnitt 
 \begin_inset CommandInset ref
@@ -2257,7 +2330,7 @@ Strategy
 \end_layout
 
 \begin_layout Standard
-Diese Enumeration dient der Unterscheidung der verschiedenen Late Binding
+Diese Enumeration dient der Unterscheidung der verschiedenen Late-Binding
  Strategien.
 \end_layout
 
@@ -2568,7 +2641,18 @@ toSDO
 \emph on
 fromSDO
 \emph default
- DataFormat-Typ.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Data"-Format
+\end_layout
+
+\end_inset
+
+-Typ.
 \end_layout
 
 \begin_layout Paragraph
@@ -2609,7 +2693,7 @@ Das
 StrategyService
 \emph default
 -Interface beschreibt die Funktionen, die der Strategy Service implementieren
- muss, der für das Late Binding Datenquellen aus der UDDI-Registry zuständig
+ muss, der für das Late-Binding Datenquellen aus der UDDI-Registry zuständig
  ist.
 \end_layout
 
@@ -2628,7 +2712,7 @@ Verweis auf UDDI-Client von Wolfgang
 \end_layout
 
 \begin_layout Standard
-Erhält eine nicht vollständig spezifizierte Datenquelle mit Late Binding
+Erhält eine nicht vollständig spezifizierte Datenquelle mit Late-Binding
  Informationen (
 \emph on
 LateBinding
@@ -3207,8 +3291,18 @@ Die
 \emph on
 SIMPLConfig
 \emph default
--Klasse bietet folgende Funktionen um die Informationen aus der XML-Konfiguratio
-nsdatei auszulesen:
+-Klasse bietet folgende Funktionen um die Informationen aus der XML-
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Konfigurations"=datei
+\end_layout
+
+\end_inset
+
+ auszulesen:
 \end_layout
 
 \begin_layout Paragraph*
@@ -3922,7 +4016,7 @@ Sequenzdiagramm zu Abruf von Daten
 \end_layout
 
 \begin_layout Paragraph*
-Abruf von Daten einer Datenquelle mit Late Binding
+Abruf von Daten einer Datenquelle mit Late-Binding
 \end_layout
 
 \begin_layout Standard
@@ -3933,7 +4027,7 @@ reference "fig:Sequenzdiagramm-zu-Abruf"
 
 \end_inset
 
- zeigt den Ablauf bei Abruf von Daten einer Datenquelle, die über Late Binding
+ zeigt den Ablauf bei Abruf von Daten einer Datenquelle, die über Late-Binding
  erst zur Laufzeit festgelegt wird.
  Der Ablauf unterscheidet sich zu dem vorherigen Szenario nur darin, dass
  zunächst eine Datenquelle bestimmt werden muss, deshalb wird in der folgenden
@@ -3950,7 +4044,7 @@ SIMPLCore
 \emph on
 StrategyService
 \emph default
- instanziiert (1.2), der zuvor nicht gezeigt wurde und der für das Late Binding
+ instanziiert (1.2), der zuvor nicht gezeigt wurde und der für das Late-Binding
  benötigt wird.
  Nach der Anfrage beim DataSourceService (4) wird in der internen Funktion
  
@@ -4032,7 +4126,7 @@ name "fig:Sequenzdiagramm-zu-Abruf"
 
 \end_inset
 
-Sequenzdiagramm zu Abruf von Daten mit Late Binding
+Sequenzdiagramm zu Abruf von Daten mit Late-Binding
 \end_layout
 
 \end_inset
@@ -4953,7 +5047,7 @@ success
 \end_layout
 
 \begin_layout Subsection
-Simpl Auditing
+SIMPL Auditing
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Simpl-Auditing"
@@ -4964,37 +5058,41 @@ name "sub:Simpl-Auditing"
 \end_layout
 
 \begin_layout Standard
-Das Auditing in Simpl wird über einen Event-Listener realisiert, der in
- der axis2.properties von Apache Ode angemeldet wird.
+Das Auditing in SIMPL wird über einen Event-Listener realisiert, der in
+ der axis2.properties von Apache ODE angemeldet wird.
  
 \end_layout
 
 \begin_layout Subsubsection
-Axis2.properties
+ode-axis2.properties
 \end_layout
 
 \begin_layout Standard
-In dieser Datei wird der Event Listener, der das Auditing realisiert, angemeldet.
- Folgende Zeilen müssen hinzugefügt werden.
- 
+In der Datei ode-axis2.properties (Pfad: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+../Tomcat/""webapps/""ode/""WEB-INF/""conf
+\end_layout
+
+\end_inset
+
+) wird der Event Listener, der das Auditing realisiert, angemeldet.
+ Folgende Zeile muss dafür in der Datei hinzugefügt werden: 
 \begin_inset listings
 inline false
 status open
 
 \begin_layout Plain Layout
 
-ode-axis2.event.listeners=org.apache.ode.simpl.events.listener.SimplSdoEventListener
- 
+ode-axis2.event.listeners = 
 \end_layout
 
 \begin_layout Plain Layout
 
-jel.topicname = org.apache.ode.events
-\end_layout
-
-\begin_layout Plain Layout
-
-jel.mqurl = tcp://localhost:61616
+		org.apache.ode.simpl.events.listener.SimplSdoEventListener
 \end_layout
 
 \end_inset
@@ -5008,7 +5106,7 @@ Unterstützte Events
 
 \begin_layout Standard
 Folgende Events werden von der Implementierung unterstützt und werden per
- Sdo an den Simpl Core gesendet, wo sie in beliebigen Datenbanken gespeichert
+ SDO an den SIMPL Core gesendet, wo sie in beliebigen Datenbanken gespeichert
  werden können.
 \end_layout
 
@@ -5518,10 +5616,7 @@ Adapter-Typ
 
  ausgewählt.
  Adapter-Typ ist folgendermaßen aufgebaut: 
-\end_layout
-
-\begin_layout Paragraph*
-
+\series bold
 \shape smallcaps
 \emph on
 Datenquellen-Type:Datenquellen-Subtype:Datenquellen-Anfragesprache
@@ -5851,11 +5946,11 @@ name "sec:Uddi-Registry"
 
 \end_inset
 
-Uddi Registry
+UDDI Registry
 \end_layout
 
 \begin_layout Standard
-In diesen Abschnitt wird die verwendete UDDI Regestry jUDDI, beschrieben
+In diesen Abschnitt wird die verwendete UDDI Registry jUDDI, beschrieben
  und wie Datenquellen in ihr abgespeichert und Abgerufen werden.
 \end_layout
 
@@ -5874,7 +5969,7 @@ Business Entity
 
 \begin_layout Standard
 Beschreibt ein Unternehmen und biete Kontaktinformationen, von einem Unternehmen
-, dass den Webservice anbitet.
+, dass den Webservice anbietet.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5882,9 +5977,9 @@ Business Service
 \end_layout
 
 \begin_layout Standard
-Hier werden die Angebotenen Webservices näher charakterisiert.
- Dies kann mehrer Web Servives oder auch nur mehrere Ausprägungen eines
- Webservices beinhalten.
+Hier werden die Angebotenen Web Services näher charakterisiert.
+ Dies kann mehrere Web Services oder auch nur mehrere Ausprägungen eines
+ Web Service beinhalten.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5892,7 +5987,7 @@ Binding Template
 \end_layout
 
 \begin_layout Standard
-Das Binding Template gibt detailierte technische Informationen zur nutzung
+Das Binding Template gibt detaillierte technische Informationen zur Nutzung
  des Webservice an, wie zum Beispiel die Adresse (URL) über die auf einen
  Webservice zugegriffen werden kann.
 \end_layout
@@ -5902,9 +5997,9 @@ TModel
 \end_layout
 
 \begin_layout Standard
-Beim TModel handelt es sich um eine generische Komponente, mit der man detailier
-te Informationen über einen Service zusammenfassen kann.
- Mithilfe der TModels, lassen sich Webservices auch in Kategorien einordnen.
+Beim TModel handelt es sich um eine generische Komponente, mit der man detaillie
+rte Informationen über einen Service zusammenfassen kann.
+ Mithilfe der TModels, lassen sich Web Services auch in Kategorien einordnen.
 \end_layout
 
 \begin_layout Subsection
@@ -5913,7 +6008,7 @@ Nutzung der Registry für Datenquellen
 
 \begin_layout Standard
 In den folgenden Abschnitten wird erklärt, wie die verschiedenen Basiskomponente
-n von Uddi genutzt werden um eine Abspeicherung von Datenquellen zu ermöglichen.
+n von UDDI genutzt werden um eine Abspeicherung von Datenquellen zu ermöglichen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5930,7 +6025,7 @@ Business Service
 \end_layout
 
 \begin_layout Standard
-Hier wird der Name und dibe Beschreibng der Datenquelle gespeichert.
+Hier wird der Name und die Beschreibung der Datenquelle gespeichert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5946,7 +6041,7 @@ TModel
 \end_layout
 
 \begin_layout Standard
-Mit Hilfe des TModels werden die Datenquellentypen und Subtypen modeliert
+Mit Hilfe des TModels werden die Datenquellentypen und Subtypen modelliert
  und können über 
 \begin_inset Quotes eld
 \end_inset
@@ -5959,12 +6054,12 @@ Keyed References
 \end_layout
 
 \begin_layout Subsection
-Simpl jUDDI Client
+SIMPL jUDDI Client
 \end_layout
 
 \begin_layout Standard
-Der Simpl jUDDI Client ermöglich den einfachen Zugriff und die Modifikation
- von Datenqullen innerhalb der Registry.
+Der SIMPL jUDDI Client ermöglicht den einfachen Zugriff und die Modifikation
+ von Datenquellen innerhalb der Registry.
 \end_layout
 
 \begin_layout Standard
@@ -5988,7 +6083,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Simpl jUDDI Client
+SIMPL jUDDI Client
 \end_layout
 
 \end_inset
@@ -6010,7 +6105,7 @@ UddiBusiness
 \end_layout
 
 \begin_layout Standard
-Die Klasse Representerit ein Business innerhalb der Uddi Registy und kann
+Die Klasse repräsentiert ein Business innerhalb der UDDI Registry und kann
  mit Hilfe des UddiDatawriters in die Registry geschrieben werden.
 \end_layout
 
@@ -6028,9 +6123,9 @@ UddiDatasource
 \end_layout
 
 \begin_layout Standard
-Die Klasse representiert eine UddiDatasource und enthällt alle wichtigen
+Die Klasse repräsentiert eine UddiDatasource und enthält alle wichtigen
  Datasource Eigenschaften sowie frei definierbarer Attribute.
- Die Datasource kann mit hilfe des UddiDatawriters in der UddiRegistry gespeiche
+ Die Datasource kann mit Hilfe des UddiDatawriters in der UddiRegistry gespeiche
 rt werden.
 \end_layout
 
@@ -6061,12 +6156,12 @@ name "sub:Uddi-Registry-Web"
 
 \end_inset
 
-Uddi Registry Web Interface
+UDDI Registry Web Interface
 \end_layout
 
 \begin_layout Standard
 \noindent
-Das Uddi Web Interface besteht aus den Komponenten: Konfiguration, Datenquellenl
+Das UDDI Web Interface besteht aus den Komponenten: Konfiguration, Datenquellenl
 iste und Datenquelleneditor.
  Alle drei Komponenten werden im folgenden noch einmal näher beschrieben.
 \end_layout
@@ -6082,9 +6177,9 @@ In der Konfiguration können grundlegende Informationen, wie die Adresse
  verwendet werden, hinterlegt werden können.
  Diese Informationen werden im Web-Apps
 \backslash
-conf Verzeichniss des Web Interface gespeichert.
+conf Verzeichniss des Web Interfaces gespeichert.
  Beim Speichern der Konfiguration, wird Automatisch die Verfügbarkeit der
- Uddi-Registry unter der angegeben Adresse überprüft.
+ UDDI-Registry unter der angegeben Adresse überprüft.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6095,7 +6190,7 @@ Datenquellenliste
 \noindent
 In der Datenquellenliste werden alle Verfügbaren Datenquellen und die grundlegen
 den Informationen angezeigt.
- Dort können ausserdem Datenquellen neu erstellt werden oder nach Auswahl
+ Dort können außerdem Datenquellen neu erstellt werden oder nach Auswahl
  einer Datenquelle diese Editiert oder Gelöscht werden.
 \end_layout
 
@@ -6114,24 +6209,24 @@ Der Datenquelleneditor wird aufgerufen, wenn eine Datenquelle neu erstellt
 \begin_layout Itemize
 Name: Ein Name für die Datenquelle, der innerhalb der Registry eindeutig
  sein muss.
- Auf grundlage des Namens wird der Key, der zur internen Datenverwaltung
+ Auf Grundlage des Namens wird der Key, der zur internen Datenverwaltung
  benötigt wird, generiert.
 \end_layout
 
 \begin_layout Itemize
-Addresse: Die Adresse unter der die Datenquelle aufgerufen werden kann.
+Address: Die Adresse unter der die Datenquelle aufgerufen werden kann.
 \end_layout
 
 \begin_layout Itemize
-Typ: Der Typ der Datenquelle (Database, Filesystem usw.)
+Type: Der Typ der Datenquelle (Database, Filesystem usw.)
 \end_layout
 
 \begin_layout Itemize
-Subtyp: Der Subtyp der Datenquelle (Rdb, ext3 usw.)
+Subtype: Der Subtyp der Datenquelle (RDB, ext3, usw.)
 \end_layout
 
 \begin_layout Itemize
-Policy: Der genaue Pfad zu einer Policy Datei, die die nicht funktionalen
+Policy: Der genaue Pfad zu einer Policy-Datei, die die nicht funktionalen
  Anforderungen für die Datenquelle beschreibt.
 \end_layout
 
@@ -6203,6 +6298,12 @@ n von Datenquellen, die für die Modellierung von DM-Aktivitäten verwendet
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Eclipse-BPEL-Designer-Modell"
+
+\end_inset
+
 Eclipse BPEL Designer Modell
 \end_layout
 
@@ -6324,9 +6425,16 @@ org.eclipse.bpel.model.impl
 \begin_layout Standard
 Dieses Paket wurde um die konkreten Implementierungen der Modellklassen
  des Pakets 
-\emph on
-org.eclipse.bpel.model
-\emph default
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""eclipse.""bpel.""model
+\end_layout
+
+\end_inset
+
  erweitert.
 \end_layout
 
@@ -6395,6 +6503,12 @@ ReconciliationHelper
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Eclipse-BPEL-Designer-UI"
+
+\end_inset
+
 Eclipse BPEL Designer UI
 \end_layout
 
@@ -6477,7 +6591,18 @@ org.eclipse.bpel.ui.commands
 
 \begin_layout Standard
 Dieses Paket enthält verschiedene Command-Klassen, die dabei helfen Eigenschafte
-n in EMF-Modellobjekten zu setzen bzw.
+n in EMF-
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Modell"=objekten
+\end_layout
+
+\end_inset
+
+ zu setzen bzw.
  neue Kindelemente hinzuzufügen.
  Die Klasse 
 \emph on
@@ -6667,11 +6792,301 @@ Klassendiagramm der UI des erweiterten BPEL Designer Plug-Ins
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Eclipse-BPEL-Designer-DD-Modell"
+
+\end_inset
+
 Eclipse BPEL Designer Deployment-Deskriptor Modell
 \end_layout
 
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Designer-Plug-In-DD-Model"
+
+\end_inset
+
+ zeigt das erweiterte Modell des Deployment-Deskriptors.
+ Es handelt sich hier auch wieder um ein EMF-Modell das für jedes Modellobjekt
+ eine Klasse bereitstellt.
+ Im folgenden werden die Modellklassen beschrieben, auf die Implementierung
+ (Klasse
+\emph on
+Impl
+\emph default
+) wird nicht näher eingegangen, da diese lediglich die Funktionalität für
+ die Modellobjekte liefern.
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+TDataSource
+\emph default
+ liefert ein Modell für Datenquellen und besitzt dafür die Attribute 
+\emph on
+name, address, type, subtype, language, dataFormat, username
+\emph default
+ und
+\emph on
+ password.
+ 
+\emph default
+Mithilfe dieser Klasse können im Deployment-Deskriptor Datenquellen hinterlegt
+ werden, die dann bei der Modellierung von Prozessen verwendet werden können
+ (näheres hierzu siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+TActivityMapping
+\emph default
+ stellt analog dazu ein Modell für das Late-Binding von Datenquellen bereit
+ und besitzt dafür die Attribute 
+\emph on
+activityName, strategy, localPath
+\emph default
+ und 
+\emph on
+policy
+\emph default
+.
+ Mithilfe dieser Klasse können dann im Deployment-Deskriptor Policy-Dateien
+ an DM-Aktivitäten angeheftet werden.
+ Das Attribut 
+\emph on
+localPath
+\emph default
+ dient lediglich dazu, dass der Modellierer sehen kann, welche Policy im
+ Moment mit einer Aktivität verknüpft ist, denn die Policy wird aus der
+ Policy-Datei gelesen und im Attribut 
+\emph on
+policy
+\emph default
+ hinterlegt.
+ Die Klasse 
+\emph on
+StrategyType 
+\emph default
+ist eine Enumeration aller verfügbaren Late-Binding Strategien.
+ Eine dieser Strategien wird ebenfalls bei der Late-Binding Modellierung
+ ausgewählt und im Attribut 
+\emph on
+strategy
+\emph default
+ des ActivityMappings hinterlegt.
+\end_layout
+
+\begin_layout Standard
+Um die beschriebenen neuen Modellelemente im Deployment-Deskriptor hinterlegen
+ zu können, muss die Klasse 
+\emph on
+ProcessType
+\emph default
+ entsprechend erweitert werden, da in dieser alle für den Prozess relevanten
+ Informationen hinterlegt sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/BPELDeploymentModel.png
+	lyxscale 60
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-Designer-Plug-In-DD-Model"
+
+\end_inset
+
+Klassendiagramm des Modells des erweiterten BPEL Designer Deployment-Deskriptors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Eclipse-BPEL-Designer-DD-UI"
+
+\end_inset
+
 Eclipse BPEL Designer Deployment-Deskriptor UI
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Designer-Plug-In-DD-UI"
+
+\end_inset
+
+ zeigt alle erweiterten und neuen Klassen der UI des Deployment-Deskriptors.
+ Diese werden nachfolgend näher erläutert.
+\end_layout
+
+\begin_layout Standard
+Das Paket 
+\emph on
+org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs
+\emph default
+ enthält vier Klassen, die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""eclipse.""jface.""dialogs.""TitleAreaDialog
+\end_layout
+
+\end_inset
+
+ erweitern und so eine Schnittstelle zur Angabe aller Eigenschaften der,
+ in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Eclipse-BPEL-Designer-DD-Modell"
+
+\end_inset
+
+ beschriebenen, Modellobjekte liefern.
+ Die Klasse 
+\emph on
+AddDataSourceDialog
+\emph default
+ liefert einen entsprechenden Dialog über den eine neue Datenquelle mit
+ allen Attributen angelegt werden kann.
+ Die Klasse 
+\emph on
+EditDataSourceDialog
+\emph default
+ liefert entsprechend die Möglichkeit bereits angelegte Datenquellen zu
+ editieren.
+ Da hier einige Werte direkt aus den im SIMPL Core angebundenen Plug-Ins
+ resultieren, werden diese Werte über die Klasse 
+\emph on
+SIMPLCoreMetaData
+\emph default
+ bereitgestellt und zur Auswahl angeboten in den Dialogen angeboten.
+ Die Klasse 
+\emph on
+ReloadPlugInDataHandler
+\emph default
+ sorgt dafür, dass falls die Daten aus dem SIMPL Core nicht beim Start von
+ Eclipse geladen wurden konnten, der Benutzer die Möglichkeit erhält über
+ das SIMPL Menü die Daten neu einzulesen ohne Eclipse neu starten zu müssen.
+\end_layout
+
+\begin_layout Standard
+Analog zu den Datenquellen-Dialogen werden durch die Klassen 
+\emph on
+AddMappingDialog 
+\emph default
+und
+\emph on
+ EditMappingDialog
+\emph default
+ Dialoge für das Erstellen und Editieren von Late-Binding Mappings (Aktivität
+ + Policy + Strategie) bereitgestellt.
+\end_layout
+
+\begin_layout Standard
+Die Integration der Datenquellen- und Late-Binding-Modellobjekte in die
+ UI des Deployment-Deskriptors wird in der Klasse 
+\emph on
+ProcessPage
+\emph default
+ realisiert, die für die Visualisierung aller Werte eines Deployment-Deskriptors
+ eines Prozesses zuständig ist.
+ Um die neuen Modellobjekte in den Deployment-Deskriptor zu integrieren,
+ werden zwei Tabellen, die die Attribute der Modellobjekte anzeigen, in
+ die ProcessPage integriert.
+ Jede dieser zwei Tabellen erhält weiterhin drei Buttons, über die ein neues
+ Element in die Tabelle eingefügt (Add###Dialog), ein vorhandenes Element
+ aus der Tabelle bearbeitet (Edit###Dialog) und ein Element aus der Tabelle
+ gelöscht werden kann.
+ Durch diese Erweiterungen lassen sich nun beliebige Datenquellen und Late-Bindi
+ng Informationen im Deployment-Deskriptor hinterlegen.
+ Diese werden dann bei der Ausführung des Prozesses ausgelesen und entsprechend
+ verarbeitet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/BPELDeploymentUI.png
+	lyxscale 60
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-Designer-Plug-In-DD-UI"
+
+\end_inset
+
+Klassendiagramm der UI des erweiterten BPEL Designer Deployment-Deskriptors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -7086,41 +7501,21 @@ org.""eclipse.""ui.""views.""properties.""tabbed.""propertySections
 \end_inset
 
 .
- Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt Propertie
-s ausgewählt werden.
- Zu den Optionen gehört primär die Angabe des Datenquellentyps, wie Datenbank,
- Sensornetz oder ein Filesystem.
- Je nach gewählter Art kann dann unter 
+ Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt 
 \begin_inset Quotes eld
 \end_inset
 
-Subtype
+Details
 \begin_inset Quotes erd
 \end_inset
 
- die Auswahl verfeinert werden.
- So kann z.B.
- beim Filesystem NTFS oder EXT3 gewählt werden.
- Bei einer Datenbank kann z.B.
- zwischen DB2 und MySQL gewählt werden, beim Sensornetz wird momentan nur
- TinyDB unterstützt.
- Weiterhin kann hier die Datenquellenadresse angegeben werden, also die
- Adresse, wohin der in der Aktivität definierte DM-Befehl zur Verarbeitung
- geschickt wird.
- Der in der Aktivität hinterlegte DM-Befehl wird im 
-\begin_inset Quotes eld
-\end_inset
-
-Resulting Statement
-\begin_inset Quotes erd
-\end_inset
-
--Textfeld angezeigt und kann im Statement-Editor bearbeitet oder auch neu
+ in der Property-View von Eclipse ausgewählt werden.
+ Zu den Eigenschaften gehört die Auswahl einer im Deployment-Desktiptor
+ oder der UDDI-Registry hinterlegten Datenquelle und die Angabe eines Befehls
+ (DM-Befehl) der auf der Datenquelle ausgeführt werden soll.
+ Der DM-Befehl kann entweder direkt von Hand in das entsprechende Textfeld
+ eingegeben werden oder kann im Statement-Editor bearbeitet oder auch neu
  modelliert werden.
- Bei den einzelnen DM-Aktivitäten werden Optionen, die nicht möglich sind,
- nicht zur Auswahl freigegeben.
- Es ist beispielsweise nicht möglich, bei einer Insert-Aktivität ein Sensornetz
- auszuwählen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -7692,13 +8087,22 @@ Die Klasse
 \emph on
 SIMPLHomePreferencePage
 \emph default
- wird über den entsprechenden Extension-Point (
-\emph on
+ wird über den entsprechenden Extension-Point 
 \noun on
-org.eclipse.ui.preferencePages
-\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""eclipse.""ui.""preferencePages
+\end_layout
+
+\end_inset
+
+
 \noun default
-) für Preference Pages (Einstellungsseiten) in Eclipse angebunden.
+ für Preference Pages (Einstellungsseiten) in Eclipse angebunden.
  Die so erstellte Preference Page kann nun um weitere Sub-Preference Pages
  ergänzt werden.
  So kann aus jedem beliebigen anderen Plug-In eine Preference Page zur SIMPL
@@ -8110,9 +8514,16 @@ Die Klasse
 RRSPreferencePage
 \emph default
  erweitert die Klasse 
-\emph on
-org.eclipse.jface.preference.FieldEditorPreferencePage
-\emph default
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""eclipse.""jface.""preference.""FieldEditorPreferencePage
+\end_layout
+
+\end_inset
+
  und liefert die Möglichkeit, die Addressen der drei Reference Resolution
  System Web Services (Retrieval, Management und MetaData) über eine Preference
  Page in den SIMPL Einstellungen anzugeben.
@@ -8222,9 +8633,16 @@ Die Klasse
 TransformationPreferencePage
 \emph default
  erweitert die Klasse 
-\emph on
-org.eclipse.jface.preference.FieldEditorPreferencePage
-\emph default
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""eclipse.""jface.""preference.""FieldEditorPreferencePage
+\end_layout
+
+\end_inset
+
  und liefert die Möglichkeit, die Addresse des Transformation Web Service
  über eine Preference Page in den SIMPL Einstellungen anzugeben.
  Dadurch hat man die Möglichkeit einfach einen anderen Transformator an
@@ -8238,9 +8656,16 @@ org.eclipse.simpl.rrs.transformation.commands
 
 \begin_layout Standard
 Dieses Paket enthält zwei Handler-Klassen, die die abstrakte Klasse 
-\emph on
-org.eclipse.core.commands.AbstractHandler
-\emph default
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+org.""eclipse.""core.""commands.""AbstractHandler
+\end_layout
+
+\end_inset
+
  erweitern.
  Diese werden dazu benötigt, um auf entsprechende Commands zu reagieren,
  die mit einem Toolbar- bzw.
