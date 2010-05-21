@@ -11,10 +11,12 @@
  */
 package org.eclipse.bpel.simpl.ui.adapters;
 
+import org.eclipse.bpel.ui.adapters.ActivityAdapter;
+
 
 /**
  * The Class UpdateActivityAdapter.
  */
-public class UpdateActivityAdapter extends DMActivityAdapter {
+public class UpdateActivityAdapter extends ActivityAdapter {
 
 }

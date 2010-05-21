@@ -11,10 +11,12 @@
  */
 package org.eclipse.bpel.simpl.ui.adapters;
 
+import org.eclipse.bpel.ui.adapters.ActivityAdapter;
+
 
 /**
  * The Class RetrieveDataActivityAdapter.
  */
-public class RetrieveDataActivityAdapter extends DMActivityAdapter {
+public class RetrieveDataActivityAdapter extends ActivityAdapter {
 
 }
