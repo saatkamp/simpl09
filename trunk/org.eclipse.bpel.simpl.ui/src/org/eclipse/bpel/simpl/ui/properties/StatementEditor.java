@@ -11,8 +11,11 @@
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
+import java.util.ArrayList;
+
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
+import org.eclipse.bpel.simpl.ui.widgets.DBTable;
 import org.eclipse.bpel.simpl.ui.widgets.StatementEditDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -27,6 +30,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+
+
+
 public class StatementEditor {
 
 	private Shell sShell = null; // @jve:decl-index=0:visual-constraint="10,10"
@@ -35,14 +41,20 @@ public class StatementEditor {
 	private Button closeButton = null;
 	private AStatementEditor compositeClass = null;
 	private DMActivityPropertySection parentClass = null;
-
+	ArrayList<DBTable> listOfDBTables=null;
+	ArrayList<DBTable> listOfTablesBTables;
 	private StatementEditDialog statementEditDialogObjekt;
 	
 	/**
 	 * Instantiates a new statement editor.
+	 * @param listOfTables 
+	 * @param eClass 
+	 * @param language 
+	 * @param dmActivityPropertySection 
 	 */
-	public StatementEditor() {
+	public StatementEditor(DMActivityPropertySection dmActivityPropertySection, String language, String eClass, ArrayList<DBTable> listOfTables) {
 		createSShell();
+		listOfTablesBTables = listOfTables;
 		sShell.open();
 	}
 
