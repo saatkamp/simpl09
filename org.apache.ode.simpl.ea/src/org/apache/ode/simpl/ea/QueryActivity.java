@@ -21,8 +21,8 @@ public class QueryActivity extends DataManagementActivity {
 			throws FaultException {
 		// TODO Auto-generated method stub
 
-		ScopeEvent DMStarted = new DMStarted();
-		context.getInternalInstance().sendEvent(DMStarted);
+//		ScopeEvent DMStarted = new DMStarted();
+//		context.getInternalInstance().sendEvent(DMStarted);
 
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
@@ -42,16 +42,16 @@ public class QueryActivity extends DataManagementActivity {
 			this.successfullExecution = datasourceService.depositData(
 					ds, getDsStatement(context), queryTarget);
 
-			if (this.successfullExecution) {
-				ScopeEvent DMEnd = new DMEnd();
-				context.getInternalInstance().sendEvent(DMEnd);
-			} else {
-				// Hier werden alle vorhandenen "wichtigen" Daten dem Event
-				// übergeben
-				ScopeEvent DMFailure = new DMFailure(getActivityName(),
-						getDsAddress(), getDsStatement(context), "UNKNOWN");
-				context.getInternalInstance().sendEvent(DMFailure);
-			}
+//			if (this.successfullExecution) {
+//				ScopeEvent DMEnd = new DMEnd();
+//				context.getInternalInstance().sendEvent(DMEnd);
+//			} else {
+//				// Hier werden alle vorhandenen "wichtigen" Daten dem Event
+//				// übergeben
+//				ScopeEvent DMFailure = new DMFailure(getActivityName(),
+//						getDsAddress(), getDsStatement(context), "UNKNOWN");
+//				context.getInternalInstance().sendEvent(DMFailure);
+//			}
 
 		} catch (ConnectionException e) {
 			// TODO Auto-generated catch block

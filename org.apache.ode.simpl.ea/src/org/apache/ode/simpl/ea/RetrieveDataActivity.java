@@ -26,8 +26,8 @@ public class RetrieveDataActivity extends DataManagementActivity {
 			throws FaultException {
 		// TODO Auto-generated method stub
 
-		ScopeEvent DMStarted = new DMStarted();
-		context.getInternalInstance().sendEvent(DMStarted);
+//		ScopeEvent DMStarted = new DMStarted();
+//		context.getInternalInstance().sendEvent(DMStarted);
 
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
@@ -49,9 +49,9 @@ public class RetrieveDataActivity extends DataManagementActivity {
 					getDsStatement(context));
 
 			if (dataObject == null) {
-				ScopeEvent DMFailure = new DMFailure(
-						"The result of the query is null");
-				context.getInternalInstance().sendEvent(DMFailure);
+//				ScopeEvent DMFailure = new DMFailure(
+//						"The result of the query is null");
+//				context.getInternalInstance().sendEvent(DMFailure);
 			} else {
 				Node value = SDOUtils.createNodeOfSDO(dataObject, element.getNamespaceURI());
 				Variable variable = context.getVisibleVariables().get(
@@ -62,8 +62,8 @@ public class RetrieveDataActivity extends DataManagementActivity {
 
 				}
 
-				ScopeEvent DMEnd = new DMEnd();
-				context.getInternalInstance().sendEvent(DMEnd);
+//				ScopeEvent DMEnd = new DMEnd();
+//				context.getInternalInstance().sendEvent(DMEnd);
 			}
 
 		} catch (ConnectionException e) {
