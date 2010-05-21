@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -6171,13 +6171,231 @@ Das SIMPL Rahmenwerk besteht aus der bereits vorhandenen Eclipse IDE und
 \end_layout
 
 \begin_layout Subsection
-Erweitertes BPEL Designer Plug-In
+Erweiterter Eclipse BPEL Designer
 \end_layout
 
 \begin_layout Standard
+Für die Verwendung von Referenzen in BPEL muss, wie in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
 
-\series bold
-Die Beschreibung wird nachgereicht...
+\end_inset
+
+ (Kapitel 7.1) beschrieben, dass vorhande Modellierungswerkzeug um die Modellieru
+ng von Referenzvariablen (reference variables) erweitert werden.
+ Dieser Abschnitt soll dafür einen Überblick aller erweiterten oder neu
+ erstellten Klassen des BPEL Designer Plug-Ins liefern und die Realisierung
+ der Modellierung von Referenzvariablen näher beschreiben.
+ Die nachfolgende Beschreibung gliedert sich dabei in zwei Teile, die Beschreibu
+ng des zugrundeliegenden Modells und der grafischen Benutzeroberfläche des
+ erweiterten Eclipse BPEL Designer Plug-Ins.
+ 
+\end_layout
+
+\begin_layout Standard
+Für die Modellierung des Late-Bindings von Datenquellen und für die Spezifikatio
+n von Datenquellen, die für die Modellierung von DM-Aktivitäten verwendet
+ werden, wird der Deployment-Deskriptor des Eclipse BPEL Designers ebenfalls
+ erweitert.
+ Die Beschreibung der dafür durchgeführten Erweiterungen, gliedert sich
+ ebenfalls wieder in Modell und UI und folgt am Ende dieses Kapitels.
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse BPEL Designer Modell
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Designer-Plug-In-Model"
+
+\end_inset
+
+ zeigt alle erweiterten und neu erstellten Klassen des Eclipse BPEL Designer
+ Modells.
+ Die verschiedenen Pakete und deren Klassen werden nachfolgend näher erläutert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename diagramme/iteration2/BPELDesignerModel.png
+	lyxscale 60
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-Designer-Plug-In-Model"
+
+\end_inset
+
+Klassendiagramm des Modells des erweiterten BPEL Designer Plug-Ins
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.model
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält alle neuen EMF-Modellklassen, die das Modell der Referenzva
+riablen bilden.
+ Die Implementierung orientiert sich dabei an den Standard BPEL-Variablen,
+ da diese eine ähnliche Struktur haben.
+ Die Klasse 
+\emph on
+ReferenceVariables 
+\emph default
+liefert das Modell für einen Container für Referenzvariablen, der in das
+ Prozess-Modell (Klasse 
+\emph on
+Process
+\emph default
+) eingefügt werden kann.
+ Die Klasse 
+\emph on
+ReferenceVariable
+\emph default
+ stellt das Modell der Referenzvariablen dar und bietet entsprechende Methoden
+ für das lesen und setzen der Werte einer Referenzvariablen (siehe hierzu
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-2"
+
+\end_inset
+
+ Kapitel 7.1).
+ Die Klasse 
+\emph on
+ReferenceType
+\emph default
+ ist eine Enumeration der verschiedenen Referenztypen (
+\emph on
+onInstantiation
+\emph default
+ und 
+\emph on
+fresh
+\emph default
+), die für die Modellierung verfügbar sind.
+ Die Klassen 
+\emph on
+BPELPackage
+\emph default
+ und 
+\emph on
+BPELFactory
+\emph default
+ wurden für die Referenzvariablen entsprechend erweitert.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.model.impl
+\end_layout
+
+\begin_layout Standard
+Dieses Paket wurde um die konkreten Implementierungen der Modellklassen
+ des Pakets 
+\emph on
+org.eclipse.bpel.model
+\emph default
+ erweitert.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.model.resource
+\end_layout
+
+\begin_layout Standard
+In diesem Paket wurden die Klassen 
+\emph on
+BPELReader
+\emph default
+ und 
+\emph on
+BPELWriter
+\emph default
+ um die Deserialiserung/Serialisierung der Referenzvariablen bzw.
+ des Referenzvariablen-Containers ergänzt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.model.util
+\end_layout
+
+\begin_layout Standard
+In diesem Paket befinden sich einige Hilfsklassen, die an verschiedenen
+ Stellen aus der UI genutzt werden.
+ Damit auch für Referenzvariablen bzw.
+ Referenzvariablen-Container solche Hilfsmethoden zur Verfügung stehen,
+ wurden die entsprechenden Klassen erweitert.
+ Die Klasse 
+\emph on
+BPELConstants
+\emph default
+ enthält beispielsweise alle Konstanten des BPEL-Modells, wie z.B.
+ Namensräume, Attributnamen oder Elementnamen und wurde um alle Referenzvariable
+n-Attributnamen und Elementnamen erweitert.
+ Die Klasse 
+\emph on
+ElementFactory
+\emph default
+ erstellt die XML-Repräsentation eines Modellobjekts und wurde um Methoden
+ zur Erstellung von XML-Elementen für 
+\emph on
+ReferenceVariable
+\emph default
+ und 
+\emph on
+ReferenceVariables
+\emph default
+ -Objekte erweitert.
+ Die Klasse 
+\emph on
+ReconciliationHelper
+\emph default
+ sorgt dafür, dass Änderungen an Modellobjekten aus der UI direkt in BPEL-Source
+code übernommen werden und die Elemente aktualisiert werden.
+ Um dies auch für Referenzvariablen zu ermöglichen, musste dafür die Klasse
+ 
+\emph on
+ReconciliationHelper
+\emph default
+ um entsprechende Methoden ergänzt werden.
+ Die übrigen Klassen wurden nur minimal oder analog geändert, weshalb hier
+ auf eine genauere Beschreibung verzichtet wird.
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse BPEL Designer UI
 \end_layout
 
 \begin_layout Standard
@@ -6188,7 +6406,223 @@ reference "fig:BPEL-Designer-Plug-In-UI"
 
 \end_inset
 
- zeigt alle neu erstellten und erweiterten Klassen des BPEL Designer Plug-Ins.
+ zeigt alle neu erstellten und erweiterten Klassen des User Interfaces des
+ BPEL Designer Plug-Ins.
+ Die verschiedenen Pakete und deren Klassen werden nachfolgend näher erläutert.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.ui
+\end_layout
+
+\begin_layout Standard
+Die BPEL Editor-Klassen (
+\emph on
+BPELEditor
+\emph default
+ und 
+\emph on
+BPELMultipageEditor
+\emph default
+) werden, um die Anbindung der neu erstellten Editparts für Referenzvariablen
+ (siehe 
+\emph on
+org.eclipse.bpel.ui.editparts
+\emph default
+) erweitert.
+ Die Klasse 
+\emph on
+IBPELUIConstants 
+\emph default
+enthält alle Konstanten der UI, wie z.B.
+ die Pfade aller Icons.
+ Sie wird um den Iconpfad für Referenzvariablen erweitert.
+ Die Klasse 
+\emph on
+ProcessContextMenuProvider
+\emph default
+ sorgt dafür, dass gewisse Aktionen (Kopieren, Einfügen, ...) über das Kontextmenü
+ erreichbar sind.
+ Da Standard-Variablen über das Kontextmenü erstellt werden können, wurde
+ die Klasse analog für Referenzvariablen erweitert.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.ui.actions.editpart
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+SetReferenceVariableAction
+\emph default
+ realisiert das Setzen einer Referenzvariablen in einem Modellobjekt, wie
+ z.B.
+ einem Invoke.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.ui.adapters
+\end_layout
+
+\begin_layout Standard
+Die Adapter-Klassen verknüpfen das Modell und die grafische Repräsentation
+ (UI) der Referenzvariablen und sind analog zu den Variablen-Adaptern implementi
+ert.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.ui.commands
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält verschiedene Command-Klassen, die dabei helfen Eigenschafte
+n in EMF-Modellobjekten zu setzen bzw.
+ neue Kindelemente hinzuzufügen.
+ Die Klasse 
+\emph on
+AddReferenceVariableCommand
+\emph default
+ wird dazu verwendet, eine neue Referenzvariable in den Referenzvariablen-Contai
+ner einzufügen.
+ Die übrigen drei Klassen (
+\emph on
+SetReferenceVariableCommand, SetReferenceVariableReferenceTypeCommand
+\emph default
+ und 
+\emph on
+SetReferenceVariableValueTypeCommand
+\emph default
+) werden genutzt, um eine Referenzvariable in einem EMF-Modellobjekt z.B.
+ einem Invoke zu setzen oder die Attribute (
+\emph on
+ValueType
+\emph default
+ und 
+\emph on
+ReferenceType
+\emph default
+) einer Referenzvariablen selbst zu setzen.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.ui.details.providers
+\end_layout
+
+\begin_layout Standard
+Die Klassen 
+\emph on
+ReferenceVariableContentProvider
+\emph default
+ und 
+\emph on
+ReferenceVariableValueTypeTreeContentProvider
+\emph default
+ werden analog zu den entsprechenden Standard-Variablen Klassen implementiert
+ und dienen dazu die Referenzvariablen bzw.
+ deren Inhalt in der UI entsprechend anzeigen zu können.
+ Die Klassen 
+\emph on
+VariableContentProvider
+\emph default
+ und 
+\emph on
+VariableFilter 
+\emph default
+müssen um Referenzvariablen erweitert werden, da Referenzvariablen auch
+ in Kommunikationsaktivitäten (Invoke, Receive, Pick und Reply) verwendet
+ werden sollen und das momentane BPEL-Modell nur Standard-Variablen dort
+ zulässt.
+ Um dieses Problem zu umgehen, wurden die beiden Klassen so erweitert, das
+ auch Referenzvariablen als Variable in den Kommunikationsaktivitäten auswählbar
+ sind.
+ Für die Zukunft sollte hier allerdings ein besseres Konzept erarbeitet
+ werden, in dem z.B.
+ das zugrundeliegende Modell entsprechend erweitert wird, womit in der UI
+ dann klarer und auch einfacher zwischen verschiedenen Variablentypen unterschie
+den werden kann.
+ Da dies aber über den Rahmen dieses Projekts hinausgeht wurde hier die
+ einfachste, wenn auch nicht beste, Lösung dieses Problems angewandt.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.ui.editparts
+\end_layout
+
+\begin_layout Standard
+Dieses Paket enthält die verschiedenen EditParts (Bestandteile des BPEL
+ Editors) des Eclipse BPEL Designers.
+ Die Klassen 
+\emph on
+ProcessOutlineEditPart
+\emph default
+ und 
+\emph on
+ProcessTrayEditPart
+\emph default
+ müssen wieder um Referenzvariablen erweitert werden, damit die Referenzvariable
+n auch in der Outline-View angezeigt werden können.
+ Die Klassen 
+\emph on
+ReferenceVariablesEditPart
+\emph default
+ und 
+\emph on
+ReferenceVariableEditPart
+\emph default
+ werden analog zu den entsprechenden Standard-Variablen Klassen implementiert
+ und realisieren die Anzeige sowie die zentrale Möglichkeit für das Hinzufügen
+ und Löschen von Referenzvariablen.
+\end_layout
+
+\begin_layout Subsubsection*
+org.eclipse.bpel.ui.properties
+\end_layout
+
+\begin_layout Standard
+Die Klassen 
+\emph on
+ReferenceVariableInitSection,
+\emph default
+ 
+\emph on
+ReferenceVariableTypeSection
+\emph default
+ und 
+\emph on
+ReferenceVariableTypeSelector
+\emph default
+ realisieren die PropertySection der Referenzvariablen.
+ Dabei stellt die Klasse 
+\emph on
+ReferenceVariableInitSection
+\emph default
+ eine UI für die Initialisierung aller Eigenschaften außer des ValueTypes
+ einer Referenzvariablen.
+ Die Klasse 
+\emph on
+ReferenceVariableTypeSection
+\emph default
+ realisiert die Initialisierung des ValueTypes einer Referenzvariablen und
+ die Klasse 
+\emph on
+ReferenceVariableTypeSelector
+\emph default
+ liefert ein Fenster, in dem der ValueType bequem aus einer Liste ausgewählt
+ werden kann.
+\end_layout
+
+\begin_layout Standard
+Die Klasse 
+\emph on
+InvokeVariableSection
+\emph default
+ realisiert die Zuweisung von Variablen in Kommunikationsaktivitäten.
+ Wie schon weiter oben beschrieben sollen dabei in Zukunft auch Referenzvariable
+n ausgewählt werden können.
+ Dafür muss diese Klasse entsprechend angepasst werden, um nicht nur Standard-Va
+riablen sondern auch Referenzvariablen in den PropertySections auswählbar
+ zu machen..
 \end_layout
 
 \begin_layout Standard
@@ -6230,6 +6664,14 @@ Klassendiagramm der UI des erweiterten BPEL Designer Plug-Ins
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse BPEL Designer Deployment-Deskriptor Modell
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse BPEL Designer Deployment-Deskriptor UI
 \end_layout
 
 \begin_layout Subsection
@@ -6767,7 +7209,7 @@ dsKind
 \emph default
 , 
 \emph on
-dsAddress
+dsAddress, dsLanguage
 \emph default
  und 
 \emph on
