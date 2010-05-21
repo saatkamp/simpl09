@@ -1,6 +1,5 @@
 package org.eclipse.bpel.simpl.ui.sql.widgets;
 
-import org.eclipse.bpel.simpl.ui.sql.widgets.LiveEditStyleText;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;

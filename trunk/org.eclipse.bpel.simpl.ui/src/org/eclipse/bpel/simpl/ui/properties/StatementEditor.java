@@ -13,6 +13,7 @@ package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
+import org.eclipse.bpel.simpl.ui.widgets.StatementEditDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -25,8 +26,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-
-import widgets.StatementEditDialog;
 
 public class StatementEditor {
 

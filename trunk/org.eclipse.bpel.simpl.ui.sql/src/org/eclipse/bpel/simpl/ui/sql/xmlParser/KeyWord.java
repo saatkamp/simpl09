@@ -2,9 +2,6 @@ package org.eclipse.bpel.simpl.ui.sql.xmlParser;
 
 import java.util.ArrayList;
 
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-
 public class KeyWord /*extends Button*/{
 
 	public KeyWord(/*Composite parent,int style*/) {

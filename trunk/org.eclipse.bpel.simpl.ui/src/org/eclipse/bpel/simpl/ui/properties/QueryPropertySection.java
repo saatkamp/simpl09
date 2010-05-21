@@ -21,11 +21,13 @@ import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetQueryTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
+import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
+import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.simpl.communication.client.DataSource;
+import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.LineStyleEvent;
-import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -38,10 +40,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import widgets.LiveEditStyleText;
-import widgets.ParametersListPopUp;
-import widgets.TablsListPopUp;
 
 @SuppressWarnings("unused")
 public class QueryPropertySection extends DMActivityPropertySection {
@@ -63,7 +61,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Label kindLabel = null;
 	private Text kindText = null;
 	private Button openEditorButton = null;
-	private Label languageLabel = null;
+	private Button openStatementTestWizardButton = null;
+
+  private Label languageLabel = null;
 	private Text languageText = null;
 	private Composite parentComposite = null;
 	private Label queryTargetLabel = null;
@@ -73,7 +73,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Button insertBpelVariable = null;
 	private Button insertTable = null;
 	private Button Save = null;
-	
 	private QueryActivity activity;
 
 	/**
@@ -238,6 +237,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			}
 		});
 		Label filler43 = new Label(composite, SWT.NONE);
+		
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
 		openEditorButton.setLayoutData(gridData21);
@@ -254,9 +254,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 						.getInstanceClassName(), activity.getDsLanguage());
 			}
 		});
-
-		
-		
 		
 		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
 		Composite statementCompo=new Composite(composite, SWT.NONE);
@@ -283,7 +280,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		gridData24.verticalAlignment = GridData.CENTER;
 		
 		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
+		gridLayout2.numColumns = 4;
 		statementCompo.setLayout(gridLayout2);
 		statementCompo.setLayoutData(gridData14);
 		//statementCompo.setSize(new Point(150,70));
@@ -373,7 +370,23 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
 			}
 		});
+		
+    openStatementTestWizardButton = new Button(statementCompo, SWT.NONE);
+    openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+    openStatementTestWizardButton.setText("Test Statement");
+    openStatementTestWizardButton.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        widgetSelected(e);
+      }
 
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        // open wizard
+        WizardLauncher.launch(activity, getProcess().getName(), getBPELFile().getLocation().toOSString());
+      }
+    });
+		
 		insertTable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 		insertTable.setText("Insert Table");
 		

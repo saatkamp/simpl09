@@ -6,7 +6,6 @@ package org.eclipse.bpel.simpl.ui.sql.widgets;
 //Rob Warner (rwarner@interspatial.com)
 //Robert Harris (rbrt_harris@yahoo.com)
 
-import org.eclipse.bpel.simpl.ui.widgets.DBTable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.custom.TableEditor;

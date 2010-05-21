@@ -3,9 +3,11 @@ package org.eclipse.bpel.simpl.ui.sql.editor;
 import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
+import org.eclipse.bpel.simpl.ui.sql.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.sql.xmlParser.KeyWord;
+import org.eclipse.bpel.simpl.ui.sql.xmlParser.QueryKeyWordsXmlParser;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -18,11 +20,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import widgets.LiveEditStyleText;
-import xmlParser.KeyWord;
-import xmlParser.QueryKeyWordsXmlParser;
-import org.eclipse.bpel.simpl.ui.*;
 
 public class CallEditor extends AStatementEditor {
 

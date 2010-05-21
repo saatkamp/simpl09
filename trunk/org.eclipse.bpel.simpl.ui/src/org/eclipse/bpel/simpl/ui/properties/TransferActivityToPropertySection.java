@@ -3,6 +3,7 @@ package org.eclipse.bpel.simpl.ui.properties;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.bpel.ui.commands.SetCommand;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
@@ -18,8 +19,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import widgets.TablsListPopUp;
 
 /**
  * <b>Purpose:</b> <br>

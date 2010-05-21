@@ -26,6 +26,9 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
+import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
+import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;
 import org.eclipse.bpel.ui.details.providers.VariableContentProvider;
 import org.eclipse.bpel.ui.details.providers.VariableFilter;
@@ -42,10 +45,9 @@ import org.eclipse.jface.fieldassist.IContentProposalListener;
 import org.eclipse.jface.fieldassist.IControlContentAdapter;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
 import org.eclipse.simpl.communication.client.DataSource;
+import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.LineStyleEvent;
-import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -62,10 +64,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xsd.XSDTypeDefinition;
-
-import widgets.ParametersListPopUp;
-import widgets.TablsListPopUp;
-import widgets.LiveEditStyleText;
 
 /**
  * The Class RetrieveDataVariableSection.
@@ -89,6 +87,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	private Label kindLabel = null;
 	private Text kindText = null;
 	private Button openEditorButton = null;
+	private Button openStatementTestWizardButton = null;
+	
 	private Label languageLabel = null;
 	private Text languageText = null;
 	private Label queryTargetLabel = null;
@@ -296,7 +296,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		gridData24.verticalAlignment = GridData.CENTER;
 
 		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
+		gridLayout2.numColumns = 4;
 		statementCompo.setLayout(gridLayout2);
 		statementCompo.setLayoutData(gridData14);
 		// statementCompo.setSize(new Point(150,70));
@@ -385,6 +385,22 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 			}
 		});
 
+    openStatementTestWizardButton = new Button(statementCompo, SWT.NONE);
+    openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+    openStatementTestWizardButton.setText("Test Statement");
+    openStatementTestWizardButton.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        widgetSelected(e);
+      }
+
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        // open wizard
+        WizardLauncher.launch(activity, getProcess().getName(), getBPELFile().getLocation().toOSString());
+      }
+    });
+		
 		insertTable.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		insertTable.setText("Insert Table");
