@@ -21,8 +21,8 @@ public class DeleteActivity extends DataManagementActivity {
 			throws FaultException {
 		// TODO Auto-generated method stub
 
-		ScopeEvent DMStarted = new DMStarted();
-		context.getInternalInstance().sendEvent(DMStarted);
+//		ScopeEvent DMStarted = new DMStarted();
+//		context.getInternalInstance().sendEvent(DMStarted);
 
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
@@ -39,17 +39,17 @@ public class DeleteActivity extends DataManagementActivity {
 			this.successfullExecution = datasourceService.executeStatement(ds,
 					getDsStatement(context));
 
-			if (this.successfullExecution) {
-				ScopeEvent DMEnd = new DMEnd();
-				context.getInternalInstance().sendEvent(DMEnd);
-			} else {
-				// Hier werden alle vorhandenen "wichtigen" Daten dem Event
-				// übergeben
-				//TODO: Sinnvolle Fehlermeldungen einfügen
-				ScopeEvent DMFailure = new DMFailure(getActivityName(),
-						getDsAddress(), getDsStatement(context), "UNKNOWN");
-				context.getInternalInstance().sendEvent(DMFailure);
-			}
+//			if (this.successfullExecution) {
+//				ScopeEvent DMEnd = new DMEnd();
+//				context.getInternalInstance().sendEvent(DMEnd);
+//			} else {
+//				// Hier werden alle vorhandenen "wichtigen" Daten dem Event
+//				// übergeben
+//				//TODO: Sinnvolle Fehlermeldungen einfügen
+//				ScopeEvent DMFailure = new DMFailure(getActivityName(),
+//						getDsAddress(), getDsStatement(context), "UNKNOWN");
+//				context.getInternalInstance().sendEvent(DMFailure);
+//			}
 
 		} catch (ConnectionException e) {
 			// TODO Auto-generated catch block

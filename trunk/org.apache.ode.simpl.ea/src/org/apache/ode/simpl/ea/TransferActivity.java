@@ -33,8 +33,8 @@ public class TransferActivity extends DataManagementActivity {
 			throws FaultException {
 		// TODO Auto-generated method stub
 
-		ScopeEvent DMStarted = new DMStarted();
-		context.getInternalInstance().sendEvent(DMStarted);
+//		ScopeEvent DMStarted = new DMStarted();
+//		context.getInternalInstance().sendEvent(DMStarted);
 
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
@@ -60,14 +60,14 @@ public class TransferActivity extends DataManagementActivity {
 					getDsStatement(context));
 
 			if (dataObject == null) {
-				ScopeEvent DMFailure = new DMFailure(
-						"The result of the query is null");
-				context.getInternalInstance().sendEvent(DMFailure);
+//				ScopeEvent DMFailure = new DMFailure(
+//						"The result of the query is null");
+//				context.getInternalInstance().sendEvent(DMFailure);
 			} else {
 				datasourceService.writeData(dsTo, dataObject, targetDsContainer);
 
-				ScopeEvent DMEnd = new DMEnd();
-				context.getInternalInstance().sendEvent(DMEnd);
+//				ScopeEvent DMEnd = new DMEnd();
+//				context.getInternalInstance().sendEvent(DMEnd);
 			}
 
 		} catch (ConnectionException e) {
