@@ -42,25 +42,6 @@ public class TransformationCmdHelper {
 		IWorkspaceRoot root = workspace.getRoot();
 		IProject project = root.getProject(projectPath.lastSegment() + "_TF");
 		
-		
-		// at this point, no resources have been created
-		try {
-			// project.copy(new Path(projectPath.lastSegment()+"_TF"), true,
-			// null);
-			if (!project.exists()) {
-				//Get the description of the source project
-				IProjectDescription desc = root.getProject(projectPath.lastSegment()).getDescription();
-				//Create the new project and add the original description
-				project.create(desc, IProject.BACKGROUND_REFRESH, null);
-				project.open(null);
-			}
-		} catch (CoreException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		System.out.println("PROJECT:PATH= " + project.getLocation().toOSString());
-		
 		List references = TransformerUtil
 				.getReferenceVariables(absolutWorkspacePath
 						+ bpelPath.toOSString());
@@ -68,6 +49,23 @@ public class TransformationCmdHelper {
 		if (!references.isEmpty()) {
 			if (TransformerUtil.areAllRefVarsFullSpecified(absolutWorkspacePath
 					+ bpelPath.toOSString())) {
+				
+				// at this point, no resources have been created
+				try {
+					// project.copy(new Path(projectPath.lastSegment()+"_TF"), true,
+					// null);
+					if (!project.exists()) {
+						//Get the description of the source project
+						IProjectDescription desc = root.getProject(projectPath.lastSegment()).getDescription();
+						//Create the new project and add the original description
+						project.create(desc, IProject.BACKGROUND_REFRESH, null);
+						project.open(null);
+					}
+				} catch (CoreException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				String bpelFilePath = absolutWorkspacePath
 						+ bpelPath.toOSString();
 
