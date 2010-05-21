@@ -1,6 +1,5 @@
 package org.eclipse.bpel.simpl.ui.sql.xmlParser;
 
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -9,11 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

@@ -10,7 +10,11 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
+import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
+import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.simpl.communication.client.DataSource;
+import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -25,10 +29,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import widgets.LiveEditStyleText;
-import widgets.ParametersListPopUp;
-import widgets.TablsListPopUp;
 
 /**
  * <b>Purpose:</b> <br>
@@ -60,6 +60,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	private Label kindLabel = null;
 	private Text kindText = null;
 	private Button openEditorButton = null;
+	private Button openStatementTestWizardButton = null;
 	private Label languageLabel = null;
 	private Text languageText = null;
 	private Composite parentComposite = null;
@@ -267,7 +268,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		gridData24.verticalAlignment = GridData.CENTER;
 
 		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
+		gridLayout2.numColumns = 4;
 		statementCompo.setLayout(gridLayout2);
 		statementCompo.setLayoutData(gridData14);
 		// statementCompo.setSize(new Point(150,70));
@@ -358,6 +359,23 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			}
 		});
 
+    openStatementTestWizardButton = new Button(statementCompo, SWT.NONE);
+    openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(
+        SWT.COLOR_WHITE));
+    openStatementTestWizardButton.setText("Test Statement");
+    openStatementTestWizardButton.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        widgetSelected(e);
+      }
+
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        // open wizard
+        WizardLauncher.launch(activity, getProcess().getName(), getBPELFile().getLocation().toOSString());
+      }
+    });
+		
 		insertTable.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		insertTable.setText("Insert Table");

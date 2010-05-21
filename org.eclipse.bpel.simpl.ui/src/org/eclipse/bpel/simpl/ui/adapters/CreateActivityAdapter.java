@@ -11,13 +11,12 @@
  */
 package org.eclipse.bpel.simpl.ui.adapters;
 
-import org.eclipse.bpel.ui.adapters.ActivityAdapter;
 
 /**
  * The Class CreateActivityAdapter.
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  */
-public class CreateActivityAdapter extends ActivityAdapter {
+public class CreateActivityAdapter extends DMActivityAdapter {
 
 }
