@@ -32,7 +32,6 @@ REM copy all files to %3
 copy "%1\webapps\ode\WEB-INF\servicejars\simpl-core-webservices.jar" "%3\webapps\ode\WEB-INF\servicejars"
 copy "%1\webapps\ode\WEB-INF\lib\simpl-core.jar" "%3\webapps\ode\WEB-INF\lib"
 copy "%1\webapps\ode\WEB-INF\lib\simpl-core-plugins.jar" "%3\webapps\ode\WEB-INF\lib"
-copy "%1\webapps\ode\WEB-INF\lib\simpl-ode-ea.jar" "%3\webapps\ode\WEB-INF\lib"
 copy "%1\webapps\ode\WEB-INF\lib\simpl-uddi-client.jar" "%3\webapps\ode\WEB-INF\lib"
 copy "%1\webapps\ode\WEB-INF\lib\simpl-ode-extension.jar" "%3\webapps\ode\WEB-INF\lib"
 copy "%1\webapps\ode\WEB-INF\lib\tools.jar" "%3\webapps\ode\WEB-INF\lib"
