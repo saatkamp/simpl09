@@ -1,10 +1,18 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
+import java.util.ArrayList;
+
+import org.eclipse.bpel.simpl.model.DataManagementActivity;
+import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
-import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.bpel.ui.commands.SetCommand;
+import org.eclipse.bpel.simpl.ui.widgets.DBTable;
+import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
+import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
+import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -19,6 +27,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 
 /**
  * <b>Purpose:</b> <br>
@@ -74,6 +83,8 @@ public class TransferActivityToPropertySection extends
 
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(transferActivity.getTargetDsAddress());
+		//dataSourceAddressCombo.setText(this.transferActivity.getToSource().getDsAddress());
+		
 		// Setzen die Zieleinheit des Transfers.
 		targetText.setText(transferActivity.getTargetDsContainer());
 		// Setzen die Sprache
@@ -224,6 +235,154 @@ public class TransferActivityToPropertySection extends
 			}
 		});
 
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
+				ArrayList<DBTable> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(
+						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+
+				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
+						.getInstanceClassName(), toActivity.getDsLanguage());
+			}
+		});
+
+		
+		
+		
+		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
+		Composite statementCompo=new Composite(composite, SWT.NONE);
+		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		GridData gridData131 = new GridData();
+		gridData131.horizontalSpan = 3;
+		
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+		
+		GridData gridData15 = new GridData();
+		gridData15.horizontalSpan = 4;
+		gridData15.horizontalAlignment = GridData.FILL;
+		gridData15.verticalAlignment = GridData.FILL;
+		gridData15.grabExcessVerticalSpace = true;
+		gridData15.grabExcessHorizontalSpace = true;
+		
+		GridData gridData24 = new GridData();
+		gridData24.horizontalAlignment = GridData.BEGINNING;
+		gridData24.verticalAlignment = GridData.CENTER;
+		
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		statementCompo.setLayout(gridLayout2);
+		statementCompo.setLayoutData(gridData14);
+		//statementCompo.setSize(new Point(150,70));
+		insertBpelVariable = new Button(statementCompo, SWT.NONE);
+		insertBpelVariable.setText("Insert Variable");
+		insertBpelVariable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				bpelVariableWindow=new ParametersListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				bpelVariableWindow.setText("Insert BPEL-Variable");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				java.util.List<String> listOfBPELVariablesAsStrings=VariableUtils.getUseableVariables(getProcess());
+				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
+				if(!bpelVariableWindow.isWindowOpen()){
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
+				}
+				
+				 
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+				
+			}
+		});
+		
+		insertTable = new Button(statementCompo, SWT.NONE);
+		insertTable.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				//Display tablesDisplay =new Display();
+				//Composite tablesComp=new Composite(tablesDisplay.getCurrent(), SWT.NONE);
+				tabelsPopWindowTables=new TablsListPopUp(statementText);
+				//Display display2 = Display.getDefault();
+				tabelsPopWindowTables.setText("Select Tabel");
+				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+				//sShell.setLayout(gridLayout);
+				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+
+				if(!tabelsPopWindowTables.isWindowOpen()){
+					tabelsPopWindowTables.openWindow();
+					tabelsPopWindowTables.setWindowIsOpen(true);
+				}
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				
+				
+			}
+		});
+		
+		Save = new Button(statementCompo, SWT.NONE);
+		Save.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		Save.setText("Save");
+		Save.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				saveStatementToModel();
+				
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				saveStatementToModel();
+				
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+		});
+
+		insertTable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		insertTable.setText("Insert Table");
+		
+		//insertBpelVariable.setLayoutData(gridData24);
+		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		statementText = new LiveEditStyleText(statementCompo,this);
+		statementText.setLayoutData(gridData15);
+		
+		
+		statementText.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		//statementText.setVisible(false);
+		//+++++++++++++++++++++++++++++++++++++++++++++++++++++
+		
 		typeText.setEnabled(false);
 		kindText.setEnabled(false);
 		languageText.setEnabled(false);

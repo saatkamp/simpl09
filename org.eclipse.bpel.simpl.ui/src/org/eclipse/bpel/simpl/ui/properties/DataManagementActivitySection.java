@@ -14,7 +14,7 @@ import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.simpl.communication.client.DataSource;
-import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
+import org.eclipse.simpl.communication.client.DatasourceService_Service;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
 
 /**
  * <b>Purpose:</b> <br>
@@ -60,7 +61,6 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	private Label kindLabel = null;
 	private Text kindText = null;
 	private Button openEditorButton = null;
-	private Button openStatementTestWizardButton = null;
 	private Label languageLabel = null;
 	private Text languageText = null;
 	private Composite parentComposite = null;
@@ -89,8 +89,18 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		// Laden der Aktivität
 
 		this.activity = getModel();
-
-		createWidgets(parent);
+		
+		if(getDataSource().getType() == "Filesystem"){
+			System.out.print("\r Filesystem");
+			createFileSystemWidgets(parent);
+			
+		}
+		else if(getDataSource().getType() == "Database"){
+			System.out.print("\r Database");
+			createDBWidgets(parent);
+		}
+		
+		
 
 		// Setzen das Statement
 		setStatement(activity.getDsStatement());
@@ -99,14 +109,180 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
 	}
-
 	/**
 	 * Creates the property section.
 	 * 
 	 * @param composite
 	 *            to put the content in.
 	 */
-	private void createWidgets(Composite composite) {
+	private void createFileSystemWidgets(Composite composite) {
+		this.parentComposite = composite;
+		GridData gridData4 = new GridData();
+		gridData4.horizontalAlignment = GridData.FILL;
+		gridData4.verticalAlignment = GridData.CENTER;
+		GridData gridData21 = new GridData();
+		gridData21.horizontalAlignment = GridData.FILL;
+		gridData21.verticalAlignment = GridData.CENTER;
+		GridData gridData51 = new GridData();
+		gridData51.horizontalAlignment = GridData.FILL;
+		gridData51.verticalAlignment = GridData.CENTER;
+		GridData gridData31 = new GridData();
+		gridData31.grabExcessHorizontalSpace = false;
+		GridData gridData12 = new GridData();
+		gridData12.grabExcessHorizontalSpace = true;
+		gridData12.verticalAlignment = GridData.CENTER;
+		gridData12.horizontalAlignment = GridData.FILL;
+		GridData gridData11 = new GridData();
+		gridData11.horizontalAlignment = GridData.FILL;
+		gridData11.grabExcessHorizontalSpace = false;
+		gridData11.horizontalIndent = 1;
+		gridData11.heightHint = -1;
+		gridData11.horizontalSpan = 2;
+		gridData11.grabExcessVerticalSpace = true;
+		gridData11.verticalAlignment = GridData.CENTER;
+		GridData gridData1 = new GridData();
+		gridData1.grabExcessHorizontalSpace = false;
+		gridData1.verticalAlignment = GridData.END;
+		gridData1.horizontalSpan = 3;
+		gridData1.horizontalAlignment = GridData.FILL;
+		GridData gridData = new GridData();
+		gridData.heightHint = -1;
+		gridData.horizontalAlignment = GridData.BEGINNING;
+		gridData.verticalAlignment = GridData.END;
+		gridData.horizontalIndent = 0;
+		gridData.grabExcessVerticalSpace = true;
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 4;
+		parentComposite.setLayout(gridLayout);
+		parentComposite.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		parentComposite.setSize(new Point(582, 294));
+		typeLabel = new Label(composite, SWT.NONE);
+		typeLabel.setText("Type of data source:");
+		typeLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		typeLabel.setLayoutData(gridData51);
+		createTypeCombo();
+		Label filler2 = new Label(composite, SWT.NONE);
+		Label filler5 = new Label(composite, SWT.NONE);
+		kindLabel = new Label(composite, SWT.NONE);
+		kindLabel.setText("Subtype of data source:");
+		kindLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		createKindCombo();
+		dataSourceAddressLabel = new Label(composite, SWT.NONE);
+		dataSourceAddressCombo = new CCombo(composite, SWT.BORDER);
+		dataSourceAddressCombo.setLayoutData(gridData12);
+		// Änderungen im Modell speichern
+		dataSourceAddressCombo.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				getCommandFramework().execute(
+						new SetDsAddressCommand(activity,
+								dataSourceAddressCombo.getText()));
+
+				DataSource dataSource = getDataSource();
+				typeText.setText(dataSource.getType());
+				kindText.setText(dataSource.getSubType());
+				languageText.setText(dataSource.getLanguage());
+			}
+		});
+		dataSourceAddressCombo.setItems(PropertySectionUtils
+				.getAllDataSourceNames(getProcess()));
+
+		dataSourceAddressLabel.setText("Data source name:");
+		dataSourceAddressCombo.setEditable(false);
+		dataSourceAddressCombo.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
+		dataSourceAddressLabel.setLayoutData(gridData31);
+		dataSourceAddressLabel.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
+		languageLabel = new Label(composite, SWT.NONE);
+		languageText = new Text(composite, SWT.BORDER);
+		languageText.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		languageText.setEditable(false);
+		languageText.setLayoutData(gridData4);
+		languageText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// Auswahl im Modell speichern
+				getCommandFramework().execute(
+						new SetDsLanguageCommand(activity, languageText
+								.getText()));
+			}
+		});
+
+		languageLabel.setText("Query language:");
+		languageLabel.setVisible(true);
+		languageLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		
+		Composite statementCompo = new Composite(composite, SWT.NONE);
+		statementCompo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+
+
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 4;
+		statementCompo.setLayout(gridLayout2);
+		statementCompo.setLayoutData(gridData14);
+		
+		Save = new Button(statementCompo, SWT.NONE);
+		Save
+				.setBackground(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
+		Save.setText("Save");
+		Save.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				saveStatementToModel();
+
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				setStatement(statementText.getText());
+				saveStatementToModel();
+
+				tabelsPopWindowTables.closeWindow();
+				tabelsPopWindowBPELVariables.closeWindow();
+				tabelsPopWindowTables.setWindowIsOpen(false);
+				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+		});
+		
+		typeText.setEnabled(false);
+		kindText.setEnabled(false);
+		languageText.setEnabled(false);
+	}
+	
+	/**
+	 * Creates the property section.
+	 * 
+	 * @param composite
+	 *            to put the content in.
+	 */
+	private void createDBWidgets(Composite composite) {
 		this.parentComposite = composite;
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;
@@ -268,7 +444,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		gridData24.verticalAlignment = GridData.CENTER;
 
 		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 4;
+		gridLayout2.numColumns = 3;
 		statementCompo.setLayout(gridLayout2);
 		statementCompo.setLayoutData(gridData14);
 		// statementCompo.setSize(new Point(150,70));
@@ -359,23 +535,6 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			}
 		});
 
-    openStatementTestWizardButton = new Button(statementCompo, SWT.NONE);
-    openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(
-        SWT.COLOR_WHITE));
-    openStatementTestWizardButton.setText("Test Statement");
-    openStatementTestWizardButton.addSelectionListener(new SelectionListener() {
-      @Override
-      public void widgetDefaultSelected(SelectionEvent e) {
-        widgetSelected(e);
-      }
-
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        // open wizard
-        WizardLauncher.launch(activity, getProcess().getName(), getBPELFile().getLocation().toOSString());
-      }
-    });
-		
 		insertTable.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		insertTable.setText("Insert Table");
