@@ -103,6 +103,7 @@ public class UddiAction extends HttpServlet {
 				dataSource.addAttribute("username", request.getParameter("username"), "uddi:juddi.apache.org:username");
 				dataSource.addAttribute("password", request.getParameter("password"), "uddi:juddi.apache.org:password");
 				dataSource.addAttribute("language", request.getParameter("language"), "uddi:juddi.apache.org:language");
+				dataSource.addAttribute("dataformat", request.getParameter("dataformat"), "uddi:juddi.apache.org:dataformat");
 				if (dataWriter.writeDatasource(dataSource) == true) {
 					String nextJSP = "/list.jsp?message="+"Datasource Added";
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
