@@ -22,6 +22,8 @@ import org.simpl.core.services.datasource.Authentication;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.LateBinding;
 import org.simpl.core.services.strategy.Strategy;
+import org.simpl.uddi.client.UddiDataSource;
+import org.simpl.uddi.client.UddiDataSourceReader;
 
 /**
  * <b>Purpose:</b> <br>
@@ -60,7 +62,10 @@ public class DeploymentUtils {
 	private static final String AT_MAPPING_ACTIVITY = "activity";
 	private static final String AT_MAPPING_POLICY_DATA = "policyData";
 	private static final String AT_MAPPING_STRATEGY = "strategy";
-	private static final String AT_MAPPING_UDDI_ADDRESS = "uddiAddress";
+
+	private static final String AT_ATTACHED_UDDI_ADDRESS = "attachedUddiAddress";
+
+	private static String PROCESS_UDDI_ADDRESS = "http://localhost:8080/juddiv3";
 
 	private final Namespace DD_NAMESPACE = Namespace
 			.getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
@@ -85,6 +90,36 @@ public class DeploymentUtils {
 		return instance;
 	}
 
+	public void init(String path, String process) {
+		readDeploymentDescriptor(path, process);
+		readUDDIDataSources();
+	}
+
+	/**
+	 * 
+	 */
+	private void readUDDIDataSources() {
+		DataSource resultDataSource;
+
+		ArrayList<UddiDataSource> dataSources = UddiDataSourceReader
+				.getInstance(PROCESS_UDDI_ADDRESS).getAllDatasources();
+
+		for (UddiDataSource uddiDataSource : dataSources) {
+
+			resultDataSource = new DataSource();
+			resultDataSource.setType(uddiDataSource.getType());
+			resultDataSource.setSubType(uddiDataSource.getSubtype());
+			resultDataSource.setAddress(uddiDataSource.getAddress());
+			resultDataSource.setDataFormat(uddiDataSource.getDataFormat());
+			resultDataSource.getAuthentication().setUser(
+					uddiDataSource.getUsername());
+			resultDataSource.getAuthentication().setPassword(
+					uddiDataSource.getPassword());
+
+			dataSourceElements.add(resultDataSource);
+		}
+	}
+
 	/**
 	 * Read the deployment descriptor at the given path and fill all maps with
 	 * the corresponding data.
@@ -92,7 +127,8 @@ public class DeploymentUtils {
 	 * @param path
 	 *            to the deployment descriptor file
 	 */
-	public void readDeploymentDescriptor(String path, String process) {
+	@SuppressWarnings("unchecked")
+	private void readDeploymentDescriptor(String path, String process) {
 		File deploy = new File(path);
 
 		if (logger.isDebugEnabled()) {
@@ -115,6 +151,11 @@ public class DeploymentUtils {
 					Element processElement = (Element) processObj;
 					if (processElement.getAttributeValue(AT_NAME).contains(
 							process)) {
+
+						// Read the attached UDDI-Registry address
+						PROCESS_UDDI_ADDRESS = ((Element) processElement)
+								.getAttributeValue(AT_ATTACHED_UDDI_ADDRESS);
+
 						List datasourceElements = processElement.getChildren(
 								EL_DATASOURCE, DD_NAMESPACE);
 						for (Object data : datasourceElements) {
@@ -191,8 +232,7 @@ public class DeploymentUtils {
 							String policyData = ((Element) policy)
 									.getAttributeValue(AT_MAPPING_POLICY_DATA);
 
-							String uddiAddress = ((Element) map)
-									.getAttributeValue(AT_MAPPING_UDDI_ADDRESS);
+							String uddiAddress = PROCESS_UDDI_ADDRESS;
 
 							DataSource newDs = new DataSource();
 							LateBinding lateBinding = new LateBinding();
@@ -216,18 +256,6 @@ public class DeploymentUtils {
 				e.printStackTrace();
 			}
 		}
-		//		
-		// DataSource dataSource = new DataSource();
-		// dataSource.setName("dd:myDB");
-		// dataSource.setAddress("http://localhost:3306/test");
-		// dataSource.setType("Database");
-		// dataSource.setSubType("MySQL");
-		// Authentication auth = new Authentication();
-		// auth.setUser("test");
-		// auth.setPassword("test");
-		// dataSource.setAuthentication(auth);
-		//
-		// dataSourceElements.add(dataSource);
 	}
 
 	/**
