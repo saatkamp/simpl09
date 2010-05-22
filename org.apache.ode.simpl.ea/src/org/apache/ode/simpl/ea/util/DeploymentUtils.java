@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.ode.simpl.ea.DataManagementActivity;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -86,13 +87,16 @@ public class DeploymentUtils {
 			instance = new DeploymentUtils();
 			// Set up a simple configuration that logs on the console.
 			PropertyConfigurator.configure("log4j.properties");
+			
+			//Initialize the created instance
+			instance.init(DataManagementActivity.getDeployDir(), DataManagementActivity.getProcessName());
 		}
 		return instance;
 	}
 
-	public void init(String path, String process) {
-		readDeploymentDescriptor(path, process);
-		readUDDIDataSources();
+	private void init(String path, String process) {
+			readDeploymentDescriptor(path, process);
+			readUDDIDataSources();
 	}
 
 	/**
@@ -107,6 +111,7 @@ public class DeploymentUtils {
 		for (UddiDataSource uddiDataSource : dataSources) {
 
 			resultDataSource = new DataSource();
+			resultDataSource.setName("uddi:"+uddiDataSource.getName());
 			resultDataSource.setType(uddiDataSource.getType());
 			resultDataSource.setSubType(uddiDataSource.getSubtype());
 			resultDataSource.setAddress(uddiDataSource.getAddress());
@@ -117,6 +122,28 @@ public class DeploymentUtils {
 					uddiDataSource.getPassword());
 
 			dataSourceElements.add(resultDataSource);
+			
+			if (logger.isDebugEnabled()) {
+				logger.debug("Name of ds: " + resultDataSource.getName());
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("Address of ds: " + resultDataSource.getAddress());
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("Type of ds: " + resultDataSource.getType());
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("Subtype of ds: " + resultDataSource.getSubType());
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("UserName of ds: " + resultDataSource.getAuthentication().getUser());
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("Password of ds: " + resultDataSource.getAuthentication().getPassword());
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("Format of ds: " + resultDataSource.getDataFormat());
+			}
 		}
 	}
 
@@ -231,6 +258,10 @@ public class DeploymentUtils {
 									EL_POLICY, DD_NAMESPACE);
 							String policyData = ((Element) policy)
 									.getAttributeValue(AT_MAPPING_POLICY_DATA);
+							
+							if (logger.isDebugEnabled()) {
+								logger.debug("Policy of ds: " + policyData);
+							}
 
 							String uddiAddress = PROCESS_UDDI_ADDRESS;
 
