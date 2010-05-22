@@ -57,6 +57,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#isAuditingActive <em>Auditing Active</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getDatasources <em>Datasources</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getActivityMappings <em>Activity Mappings</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getAttachedUddiAddress <em>Attached Uddi Address</em>}</li>
  * </ul>
  * </p>
  *
@@ -338,6 +339,26 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * @ordered
 	 */
 	protected EList<TActivityMapping> activityMappings;
+
+	/**
+	 * The default value of the '{@link #getAttachedUddiAddress() <em>Attached Uddi Address</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttachedUddiAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ATTACHED_UDDI_ADDRESS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAttachedUddiAddress() <em>Attached Uddi Address</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAttachedUddiAddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected String attachedUddiAddress = ATTACHED_UDDI_ADDRESS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -815,6 +836,27 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getAttachedUddiAddress() {
+		return attachedUddiAddress;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAttachedUddiAddress(String newAttachedUddiAddress) {
+		String oldAttachedUddiAddress = attachedUddiAddress;
+		attachedUddiAddress = newAttachedUddiAddress;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS, oldAttachedUddiAddress, attachedUddiAddress));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -877,6 +919,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return getDatasources();
 			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
 				return getActivityMappings();
+			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
+				return getAttachedUddiAddress();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -943,6 +987,9 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				getActivityMappings().clear();
 				getActivityMappings().addAll((Collection<? extends TActivityMapping>)newValue);
 				return;
+			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
+				setAttachedUddiAddress((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1003,6 +1050,9 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
 				getActivityMappings().clear();
 				return;
+			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
+				setAttachedUddiAddress(ATTACHED_UDDI_ADDRESS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1047,6 +1097,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return datasources != null && !datasources.isEmpty();
 			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
 				return activityMappings != null && !activityMappings.isEmpty();
+			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
+				return ATTACHED_UDDI_ADDRESS_EDEFAULT == null ? attachedUddiAddress != null : !ATTACHED_UDDI_ADDRESS_EDEFAULT.equals(attachedUddiAddress);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1077,6 +1129,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 		result.append(name);
 		result.append(", auditingActive: ");
 		if (auditingActiveESet) result.append(auditingActive); else result.append("<unset>");
+		result.append(", attachedUddiAddress: ");
+		result.append(attachedUddiAddress);
 		result.append(')');
 		return result.toString();
 	}

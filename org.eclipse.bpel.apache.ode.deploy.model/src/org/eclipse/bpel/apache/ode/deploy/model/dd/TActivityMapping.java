@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getStrategy <em>Strategy</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getUddiAddress <em>Uddi Address</em>}</li>
  * </ul>
  * </p>
  *
@@ -143,32 +142,5 @@ public interface TActivityMapping extends EObject {
 	 * @generated
 	 */
 	boolean isSetStrategy();
-
-	/**
-	 * Returns the value of the '<em><b>Uddi Address</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Uddi Address</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uddi Address</em>' attribute.
-	 * @see #setUddiAddress(String)
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTActivityMapping_UddiAddress()
-	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 * @generated
-	 */
-	String getUddiAddress();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getUddiAddress <em>Uddi Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Uddi Address</em>' attribute.
-	 * @see #getUddiAddress()
-	 * @generated
-	 */
-	void setUddiAddress(String value);
 
 } // TActivityMapping

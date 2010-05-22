@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getStrategy <em>Strategy</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TActivityMappingImpl#getUddiAddress <em>Uddi Address</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,26 +97,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * @ordered
 	 */
 	protected boolean strategyESet;
-
-	/**
-	 * The default value of the '{@link #getUddiAddress() <em>Uddi Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUddiAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String UDDI_ADDRESS_EDEFAULT = "";
-
-	/**
-	 * The cached value of the '{@link #getUddiAddress() <em>Uddi Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUddiAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected String uddiAddress = UDDI_ADDRESS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -253,27 +232,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUddiAddress() {
-		return uddiAddress;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUddiAddress(String newUddiAddress) {
-		String oldUddiAddress = uddiAddress;
-		uddiAddress = newUddiAddress;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TACTIVITY_MAPPING__UDDI_ADDRESS, oldUddiAddress, uddiAddress));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -297,8 +255,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 				return getPolicy();
 			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
 				return getStrategy();
-			case ddPackage.TACTIVITY_MAPPING__UDDI_ADDRESS:
-				return getUddiAddress();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,9 +275,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 				return;
 			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
 				setStrategy((StrategyType)newValue);
-				return;
-			case ddPackage.TACTIVITY_MAPPING__UDDI_ADDRESS:
-				setUddiAddress((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -344,9 +297,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
 				unsetStrategy();
 				return;
-			case ddPackage.TACTIVITY_MAPPING__UDDI_ADDRESS:
-				setUddiAddress(UDDI_ADDRESS_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -365,8 +315,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 				return policy != null;
 			case ddPackage.TACTIVITY_MAPPING__STRATEGY:
 				return isSetStrategy();
-			case ddPackage.TACTIVITY_MAPPING__UDDI_ADDRESS:
-				return UDDI_ADDRESS_EDEFAULT == null ? uddiAddress != null : !UDDI_ADDRESS_EDEFAULT.equals(uddiAddress);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -385,8 +333,6 @@ public class TActivityMappingImpl extends EObjectImpl implements TActivityMappin
 		result.append(activity);
 		result.append(", strategy: ");
 		if (strategyESet) result.append(strategy); else result.append("<unset>");
-		result.append(", uddiAddress: ");
-		result.append(uddiAddress);
 		result.append(')');
 		return result.toString();
 	}

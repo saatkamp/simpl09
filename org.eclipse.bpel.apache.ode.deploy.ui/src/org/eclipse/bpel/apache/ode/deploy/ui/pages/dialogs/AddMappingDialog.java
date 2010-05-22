@@ -164,10 +164,6 @@ public class AddMappingDialog extends TitleAreaDialog {
 									StrategyType.FIRST_FIND.getName()) ? StrategyType.FIRST_FIND
 									: StrategyType.FIRST_FIND);
 
-					mapping
-							.setUddiAddress(UDDIPlugIn.getDefault()
-									.getPreferenceStore().getString(
-											"UDDI_ADDRESS"));
 					close();
 
 				} else {

@@ -86,6 +86,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.simpl.uddi.UDDIPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -175,6 +176,11 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				IResourceChangeEvent.POST_CHANGE);
 
 		this.domain = this.editor.getEditingDomain();
+		
+		
+		this.processType.setAttachedUddiAddress(UDDIPlugIn.getDefault()
+				.getPreferenceStore().getString(
+						"UDDI_ADDRESS"));
 	}
 
 	@Override

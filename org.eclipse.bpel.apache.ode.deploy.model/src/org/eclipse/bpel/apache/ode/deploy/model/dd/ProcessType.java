@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#isAuditingActive <em>Auditing Active</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getDatasources <em>Datasources</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getActivityMappings <em>Activity Mappings</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedUddiAddress <em>Attached Uddi Address</em>}</li>
  * </ul>
  * </p>
  *
@@ -543,5 +544,33 @@ public interface ProcessType extends EObject {
 	 * @generated
 	 */
 	EList<TActivityMapping> getActivityMappings();
+
+	/**
+	 * Returns the value of the '<em><b>Attached Uddi Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 *                                 Allows you to specify a WSDL for BPEL 1.1 processes which do not support an "import" element.
+	 *                                 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Attached Uddi Address</em>' attribute.
+	 * @see #setAttachedUddiAddress(String)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_AttachedUddiAddress()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='attachedUddiAddress'"
+	 * @generated
+	 */
+	String getAttachedUddiAddress();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedUddiAddress <em>Attached Uddi Address</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Attached Uddi Address</em>' attribute.
+	 * @see #getAttachedUddiAddress()
+	 * @generated
+	 */
+	void setAttachedUddiAddress(String value);
 
 } // ProcessType
