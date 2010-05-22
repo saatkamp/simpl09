@@ -21,7 +21,7 @@ public class DeploymentInfos {
 	static Logger logger = Logger.getLogger(DeploymentInfos.class);
 
 	public DeploymentInfos(String path, String process) {
-		DeploymentUtils.getInstance().readDeploymentDescriptor(path, process);
+		DeploymentUtils.getInstance().init(path, process);
 		// Set up a simple configuration that logs on the console.
 		PropertyConfigurator.configure("log4j.properties");
 	}

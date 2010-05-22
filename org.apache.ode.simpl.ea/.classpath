@@ -6,6 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_ODE"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.apache.ode.simpl.events"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.core"/>
-	<classpathentry kind="lib" path="C:/Dokumente und Einstellungen/NightshadowXT/Desktop/Apache Tomcat/webapps/ode/WEB-INF/lib/jdom.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.uddi.client"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
