@@ -2,13 +2,9 @@ package org.apache.ode.simpl.ea;
 
 import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evar.ExternalVariableModuleException;
-import org.apache.ode.bpel.evt.ScopeEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.SDOUtils;
-import org.apache.ode.simpl.events.DMEnd;
-import org.apache.ode.simpl.events.DMFailure;
-import org.apache.ode.simpl.events.DMStarted;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
@@ -31,9 +27,6 @@ public class RetrieveDataActivity extends DataManagementActivity {
 
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
-
-		// Laden alle Informationen aus dem Deployment-Deskriptor.
-		loadDeployInformation(context, element);
 
 		// Laden das RetrieveData-spezifische Attribut "dataVariable"
 		Attr dataVarAttr = element.getAttributeNode("dataVariable");

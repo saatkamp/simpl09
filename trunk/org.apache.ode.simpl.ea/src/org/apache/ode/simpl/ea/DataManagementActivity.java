@@ -24,8 +24,9 @@ public abstract class DataManagementActivity extends
 	private String dsLanguage;
 	private String activityName;
 	public boolean successfullExecution;
-
-	private DeploymentInfos infos;
+	
+	private static String deployDir = "";
+	private static String processName = "";
 
 	protected void loadSIMPLAttributes(ExtensionContext context, Element element)
 			throws FaultException {
@@ -35,22 +36,13 @@ public abstract class DataManagementActivity extends
 		this.dsSubType = element.getAttribute("dsKind").toString();
 		this.dsLanguage = element.getAttribute("dsLanguage").toString();
 		this.activityName = element.getAttribute("name").toString();
-	}
-
-	public void loadDeployInformation(ExtensionContext context, Element element) {
-		// Path to the deployment descriptor
-		String path = context.getDUDir().getPath()+"deploy.xml";
-		// Process name
-		String processName = context.getOActivity().getOwner().getName();
-
-		// Die Informationen sollen nur einmal gelesen werden
-		if (infos == null) {
-			infos = new DeploymentInfos(path, processName);
-		}
+		
+		processName = context.getOActivity().getOwner().getName();
+		deployDir = context.getDUDir().getPath()+"deploy.xml";
 	}
 
 	public DataSource getDataSource(String activityName, String dataSourceName) {
-		return infos.getActivityDataSource(activityName, dataSourceName);
+		return DeploymentInfos.getActivityDataSource(activityName, dataSourceName);
 	}
 
 	public String getActivityName() {
@@ -75,6 +67,14 @@ public abstract class DataManagementActivity extends
 
 	public String getDsLanguage() {
 		return dsLanguage;
+	}
+
+	public static String getDeployDir() {
+		return deployDir;
+	}
+
+	public static String getProcessName() {
+		return processName;
 	}
 
 	// Diese beiden Methoden sind nur zu Testzwecken.

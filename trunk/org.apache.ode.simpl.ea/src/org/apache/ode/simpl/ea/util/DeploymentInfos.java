@@ -1,7 +1,6 @@
 package org.apache.ode.simpl.ea.util;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.services.datasource.DataSource;
 
 /**
@@ -20,13 +19,7 @@ public class DeploymentInfos {
 
 	static Logger logger = Logger.getLogger(DeploymentInfos.class);
 
-	public DeploymentInfos(String path, String process) {
-		DeploymentUtils.getInstance().init(path, process);
-		// Set up a simple configuration that logs on the console.
-		PropertyConfigurator.configure("log4j.properties");
-	}
-
-	public DataSource getActivityDataSource(String activityName,
+	public static DataSource getActivityDataSource(String activityName,
 			String dataSourceName) {
 		DataSource data = null;
 		// If we have a activity-policy mapping, we have a
@@ -47,7 +40,25 @@ public class DeploymentInfos {
 		}
 		
 		if (logger.isDebugEnabled()) {
-			logger.debug("Queried DataSource object: " + data);
+			logger.debug("Name of ds: " + data.getName());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("Address of ds: " + data.getAddress());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("Type of ds: " + data.getType());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("Subtype of ds: " + data.getSubType());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("UserName of ds: " + data.getAuthentication().getUser());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("Password of ds: " + data.getAuthentication().getPassword());
+		}
+		if (logger.isDebugEnabled()) {
+			logger.debug("Format of ds: " + data.getDataFormat());
 		}
 
 		return data;

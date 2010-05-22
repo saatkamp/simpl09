@@ -1,11 +1,7 @@
 package org.apache.ode.simpl.ea;
 
 import org.apache.ode.bpel.common.FaultException;
-import org.apache.ode.bpel.evt.ScopeEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
-import org.apache.ode.simpl.events.DMEnd;
-import org.apache.ode.simpl.events.DMFailure;
-import org.apache.ode.simpl.events.DMStarted;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
@@ -26,9 +22,6 @@ public class CreateActivity extends DataManagementActivity {
 
 		// Laden alle Attributwerte aus der Aktivität.
 		loadSIMPLAttributes(context, element);
-
-		// Laden alle Informationen aus dem Deployment-Deskriptor.
-		loadDeployInformation(context, element);
 		
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
