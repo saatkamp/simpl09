@@ -209,6 +209,15 @@
         eType="#//TDatasource" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activityMappings" upperBound="-1"
         eType="#//TActivityMapping" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attachedUddiAddress" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xD;&#xA;                                Allows you to specify a WSDL for BPEL 1.1 processes which do not support an &quot;import&quot; element.&#xD;&#xA;                                "/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="attachedUddiAddress"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -451,8 +460,6 @@
         eType="#//TPolicy" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" lowerBound="1"
         eType="#//StrategyType" defaultValueLiteral="firstFind" unsettable="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uddiAddress" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String" defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TPolicy">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="policyData" lowerBound="1"

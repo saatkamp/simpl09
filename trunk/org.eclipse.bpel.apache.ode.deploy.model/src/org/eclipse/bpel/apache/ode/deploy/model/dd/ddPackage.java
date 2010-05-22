@@ -332,13 +332,22 @@ public interface ddPackage extends EPackage {
 	int PROCESS_TYPE__ACTIVITY_MAPPINGS = 15;
 
 	/**
+	 * The feature id for the '<em><b>Attached Uddi Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_TYPE__ATTACHED_UDDI_ADDRESS = 16;
+
+	/**
 	 * The number of structural features of the '<em>Process Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_TYPE_FEATURE_COUNT = 16;
+	int PROCESS_TYPE_FEATURE_COUNT = 17;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.
@@ -802,22 +811,13 @@ public interface ddPackage extends EPackage {
 	int TACTIVITY_MAPPING__STRATEGY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Uddi Address</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TACTIVITY_MAPPING__UDDI_ADDRESS = 3;
-
-	/**
 	 * The number of structural features of the '<em>TActivity Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TACTIVITY_MAPPING_FEATURE_COUNT = 4;
+	int TACTIVITY_MAPPING_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.
@@ -1168,6 +1168,17 @@ public interface ddPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProcessType_ActivityMappings();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedUddiAddress <em>Attached Uddi Address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Attached Uddi Address</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedUddiAddress()
+	 * @see #getProcessType()
+	 * @generated
+	 */
+	EAttribute getProcessType_AttachedUddiAddress();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType <em>Property Type</em>}'.
@@ -1577,17 +1588,6 @@ public interface ddPackage extends EPackage {
 	EAttribute getTActivityMapping_Strategy();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getUddiAddress <em>Uddi Address</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uddi Address</em>'.
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping#getUddiAddress()
-	 * @see #getTActivityMapping()
-	 * @generated
-	 */
-	EAttribute getTActivityMapping_UddiAddress();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TPolicy <em>TPolicy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1888,6 +1888,14 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROCESS_TYPE__ACTIVITY_MAPPINGS = eINSTANCE.getProcessType_ActivityMappings();
+
+		/**
+		 * The meta object literal for the '<em><b>Attached Uddi Address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_TYPE__ATTACHED_UDDI_ADDRESS = eINSTANCE.getProcessType_AttachedUddiAddress();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.
@@ -2214,14 +2222,6 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TACTIVITY_MAPPING__STRATEGY = eINSTANCE.getTActivityMapping_Strategy();
-
-		/**
-		 * The meta object literal for the '<em><b>Uddi Address</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TACTIVITY_MAPPING__UDDI_ADDRESS = eINSTANCE.getTActivityMapping_UddiAddress();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TPolicyImpl <em>TPolicy</em>}' class.

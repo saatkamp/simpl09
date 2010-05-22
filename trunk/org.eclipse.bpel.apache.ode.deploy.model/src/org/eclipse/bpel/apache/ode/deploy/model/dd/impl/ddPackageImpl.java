@@ -489,6 +489,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProcessType_AttachedUddiAddress() {
+		return (EAttribute)processTypeEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertyType() {
 		return propertyTypeEClass;
 	}
@@ -831,15 +840,6 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTActivityMapping_UddiAddress() {
-		return (EAttribute)tActivityMappingEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getTPolicy() {
 		return tPolicyEClass;
 	}
@@ -946,6 +946,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(processTypeEClass, PROCESS_TYPE__AUDITING_ACTIVE);
 		createEReference(processTypeEClass, PROCESS_TYPE__DATASOURCES);
 		createEReference(processTypeEClass, PROCESS_TYPE__ACTIVITY_MAPPINGS);
+		createEAttribute(processTypeEClass, PROCESS_TYPE__ATTACHED_UDDI_ADDRESS);
 
 		propertyTypeEClass = createEClass(PROPERTY_TYPE);
 		createEAttribute(propertyTypeEClass, PROPERTY_TYPE__ANY);
@@ -995,7 +996,6 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__ACTIVITY);
 		createEReference(tActivityMappingEClass, TACTIVITY_MAPPING__POLICY);
 		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__STRATEGY);
-		createEAttribute(tActivityMappingEClass, TACTIVITY_MAPPING__UDDI_ADDRESS);
 
 		tPolicyEClass = createEClass(TPOLICY);
 		createEAttribute(tPolicyEClass, TPOLICY__POLICY_DATA);
@@ -1074,6 +1074,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getProcessType_AuditingActive(), theXMLTypePackage.getBoolean(), "auditingActive", "false", 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Datasources(), this.getTDatasource(), null, "datasources", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_ActivityMappings(), this.getTActivityMapping(), null, "activityMappings", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessType_AttachedUddiAddress(), theXMLTypePackage.getString(), "attachedUddiAddress", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, PropertyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1123,7 +1124,6 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTActivityMapping_Activity(), theXMLTypePackage.getString(), "activity", "", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTActivityMapping_Policy(), this.getTPolicy(), null, "policy", null, 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTActivityMapping_Strategy(), this.getStrategyType(), "strategy", "firstFind", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTActivityMapping_UddiAddress(), theXMLTypePackage.getString(), "uddiAddress", "", 1, 1, TActivityMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tPolicyEClass, TPolicy.class, "TPolicy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTPolicy_PolicyData(), ecorePackage.getEString(), "policyData", null, 1, 1, TPolicy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1341,6 +1341,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 			 "kind", "element",
 			 "name", "auditing",
 			 "namespace", "##targetNamespace"
+		   });			
+		addAnnotation
+		  (getProcessType_AttachedUddiAddress(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "attachedUddiAddress"
 		   });		
 		addAnnotation
 		  (propertyTypeEClass, 
