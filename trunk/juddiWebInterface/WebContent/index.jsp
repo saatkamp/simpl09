@@ -7,7 +7,7 @@
 <%@page import="java.io.FileNotFoundException"%>
 <%@page import="java.io.PrintWriter"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Simpl jUDDI Webinterface</title>
+<title>SIMPL jUDDI Web Interface</title>
 </head>
 <body>
 <%
