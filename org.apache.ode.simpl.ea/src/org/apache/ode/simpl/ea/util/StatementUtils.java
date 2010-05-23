@@ -101,7 +101,7 @@ public class StatementUtils {
 	 * @param match
 	 * @return
 	 */
-	private static CharSequence resolveVariable(ExtensionContext context,
+	public static CharSequence resolveVariable(ExtensionContext context,
 			Map<String, Variable> variables, String match) {
 		String varName = "";
 		if (match.contains("[")) {
