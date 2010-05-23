@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.rdb.RDBResult;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.DataSource;
@@ -56,24 +57,25 @@ public class MySQLRDBDataSourceService extends
     boolean success = false;
     Connection conn = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
-    
+
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
       stat.close();
       conn.commit();
-      success = true;      
+      success = true;
     } catch (Throwable e) {
       logger.error("exception executing the statement: " + statement, e);
       logger.debug("Connection will be rolled back.");
+
       try {
-		conn.rollback();
-	  } catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	  }
+        conn.rollback();
+      } catch (SQLException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+      }
     }
-    
+
     logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress()
         + ".");
     closeConnection(conn);
@@ -147,12 +149,13 @@ public class MySQLRDBDataSourceService extends
       // TODO Auto-generated catch block
       e.printStackTrace();
       logger.debug("Connection will be rolled back.");
+
       try {
-    	connection.rollback();
-	  } catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	  }
+        connection.rollback();
+      } catch (SQLException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+      }
     }
 
     closeConnection(connection);
@@ -208,12 +211,13 @@ public class MySQLRDBDataSourceService extends
         // TODO Auto-generated catch block
         e.printStackTrace();
         logger.debug("Connection will be rolled back.");
+
         try {
-      	  connection.rollback();
-  	    } catch (SQLException e1) {
-  		  // TODO Auto-generated catch block
-  		  e1.printStackTrace();
-  	    }
+          connection.rollback();
+        } catch (SQLException e1) {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
       }
     }
 
@@ -260,12 +264,13 @@ public class MySQLRDBDataSourceService extends
       logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
       logger.debug("Connection will be rolled back.");
+
       try {
-    	conn.rollback();
-	  } catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	  }
+        conn.rollback();
+      } catch (SQLException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+      }
     }
 
     logger.info("Statement \"" + createTableStatement.toString() + "\" " + "executed on "
@@ -332,39 +337,45 @@ public class MySQLRDBDataSourceService extends
       throws ConnectionException {
     boolean createdTarget = false;
 
-    List<DataObject> tables = dataObject.getList("table");
-    List<DataObject> columns = null;
-    List<String> primaryKeys = null;
-    String createTargetStatement = null;
+    // test if target already exists
+    if (SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
+        "SELECT * FROM " + target)) {
+      createdTarget = true;
+    } else {
+      List<DataObject> tables = dataObject.getList("table");
+      List<DataObject> columns = null;
+      List<String> primaryKeys = null;
+      String createTargetStatement = null;
 
-    // build a create statement
-    for (DataObject table : tables) {
-      columns = (List<DataObject>) table.getList("column");
-      primaryKeys = (List<String>) table.getList("primaryKey");
+      // build a create statement
+      for (DataObject table : tables) {
+        columns = (List<DataObject>) table.getList("column");
+        primaryKeys = (List<String>) table.getList("primaryKey");
 
-      createTargetStatement = "CREATE TABLE " + target + " (";
+        createTargetStatement = "CREATE TABLE " + target + " (";
 
-      // create table with columns
-      for (DataObject column : columns) {
-        createTargetStatement += column.getString("name") + " "
-            + column.getString("type") + ",";
-      }
-
-      // add primary keys
-      createTargetStatement += " PRIMARY KEY (";
-
-      for (int i = 0; i < primaryKeys.size(); i++) {
-        createTargetStatement += primaryKeys.get(i);
-
-        if (i < primaryKeys.size() - 1) {
-          createTargetStatement += ",";
+        // create table with columns
+        for (DataObject column : columns) {
+          createTargetStatement += column.getString("name") + " "
+              + column.getString("type") + ",";
         }
+
+        // add primary keys
+        createTargetStatement += " PRIMARY KEY (";
+
+        for (int i = 0; i < primaryKeys.size(); i++) {
+          createTargetStatement += primaryKeys.get(i);
+
+          if (i < primaryKeys.size() - 1) {
+            createTargetStatement += ",";
+          }
+        }
+
+        createTargetStatement += "))";
       }
 
-      createTargetStatement += "))";
+      createdTarget = this.executeStatement(dataSource, createTargetStatement);
     }
-
-    createdTarget = this.executeStatement(dataSource, createTargetStatement);
 
     return createdTarget;
   }
@@ -391,7 +402,7 @@ public class MySQLRDBDataSourceService extends
       StringBuilder uri = new StringBuilder();
       uri.append("jdbc:mysql://");
       uri.append(dsAddress);
-      
+
       try {
         connect = DriverManager.getConnection(uri.toString(), user, password);
         connect.setAutoCommit(false);
