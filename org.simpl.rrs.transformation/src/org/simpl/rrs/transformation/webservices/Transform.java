@@ -63,60 +63,30 @@
                             
 
                         /**
-                        * field for RrsRetrievalWSDLNsURI
+                        * field for RrsWSDLNsURI
                         */
 
                         
-                                    protected java.lang.String localRrsRetrievalWSDLNsURI ;
+                                    protected java.lang.String localRrsWSDLNsURI ;
                                 
 
                            /**
                            * Auto generated getter method
                            * @return java.lang.String
                            */
-                           public  java.lang.String getRrsRetrievalWSDLNsURI(){
-                               return localRrsRetrievalWSDLNsURI;
+                           public  java.lang.String getRrsWSDLNsURI(){
+                               return localRrsWSDLNsURI;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param RrsRetrievalWSDLNsURI
+                               * @param param RrsWSDLNsURI
                                */
-                               public void setRrsRetrievalWSDLNsURI(java.lang.String param){
+                               public void setRrsWSDLNsURI(java.lang.String param){
                             
-                                            this.localRrsRetrievalWSDLNsURI=param;
-                                    
-
-                               }
-                            
-
-                        /**
-                        * field for RrsMetaDataWSDLNsURI
-                        */
-
-                        
-                                    protected java.lang.String localRrsMetaDataWSDLNsURI ;
-                                
-
-                           /**
-                           * Auto generated getter method
-                           * @return java.lang.String
-                           */
-                           public  java.lang.String getRrsMetaDataWSDLNsURI(){
-                               return localRrsMetaDataWSDLNsURI;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param RrsMetaDataWSDLNsURI
-                               */
-                               public void setRrsMetaDataWSDLNsURI(java.lang.String param){
-                            
-                                            this.localRrsMetaDataWSDLNsURI=param;
+                                            this.localRrsWSDLNsURI=param;
                                     
 
                                }
@@ -260,62 +230,28 @@
                                         if (prefix == null) {
                                             prefix = generatePrefix(namespace);
 
-                                            xmlWriter.writeStartElement(prefix,"rrsRetrievalWSDLNsURI", namespace);
+                                            xmlWriter.writeStartElement(prefix,"rrsWSDLNsURI", namespace);
                                             xmlWriter.writeNamespace(prefix, namespace);
                                             xmlWriter.setPrefix(prefix, namespace);
 
                                         } else {
-                                            xmlWriter.writeStartElement(namespace,"rrsRetrievalWSDLNsURI");
+                                            xmlWriter.writeStartElement(namespace,"rrsWSDLNsURI");
                                         }
 
                                     } else {
-                                        xmlWriter.writeStartElement("rrsRetrievalWSDLNsURI");
+                                        xmlWriter.writeStartElement("rrsWSDLNsURI");
                                     }
                                 
 
-                                          if (localRrsRetrievalWSDLNsURI==null){
+                                          if (localRrsWSDLNsURI==null){
                                               // write the nil attribute
                                               
-                                                     throw new org.apache.axis2.databinding.ADBException("rrsRetrievalWSDLNsURI cannot be null!!");
+                                                     throw new org.apache.axis2.databinding.ADBException("rrsWSDLNsURI cannot be null!!");
                                                   
                                           }else{
 
                                         
-                                                   xmlWriter.writeCharacters(localRrsRetrievalWSDLNsURI);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             
-                                    namespace = "";
-                                    if (! namespace.equals("")) {
-                                        prefix = xmlWriter.getPrefix(namespace);
-
-                                        if (prefix == null) {
-                                            prefix = generatePrefix(namespace);
-
-                                            xmlWriter.writeStartElement(prefix,"rrsMetaDataWSDLNsURI", namespace);
-                                            xmlWriter.writeNamespace(prefix, namespace);
-                                            xmlWriter.setPrefix(prefix, namespace);
-
-                                        } else {
-                                            xmlWriter.writeStartElement(namespace,"rrsMetaDataWSDLNsURI");
-                                        }
-
-                                    } else {
-                                        xmlWriter.writeStartElement("rrsMetaDataWSDLNsURI");
-                                    }
-                                
-
-                                          if (localRrsMetaDataWSDLNsURI==null){
-                                              // write the nil attribute
-                                              
-                                                     throw new org.apache.axis2.databinding.ADBException("rrsMetaDataWSDLNsURI cannot be null!!");
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localRrsMetaDataWSDLNsURI);
+                                                   xmlWriter.writeCharacters(localRrsWSDLNsURI);
                                             
                                           }
                                     
@@ -493,21 +429,12 @@
                                         }
                                     
                                       elementList.add(new javax.xml.namespace.QName("",
-                                                                      "rrsRetrievalWSDLNsURI"));
+                                                                      "rrsWSDLNsURI"));
                                  
-                                        if (localRrsRetrievalWSDLNsURI != null){
-                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRrsRetrievalWSDLNsURI));
+                                        if (localRrsWSDLNsURI != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRrsWSDLNsURI));
                                         } else {
-                                           throw new org.apache.axis2.databinding.ADBException("rrsRetrievalWSDLNsURI cannot be null!!");
-                                        }
-                                    
-                                      elementList.add(new javax.xml.namespace.QName("",
-                                                                      "rrsMetaDataWSDLNsURI"));
-                                 
-                                        if (localRrsMetaDataWSDLNsURI != null){
-                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localRrsMetaDataWSDLNsURI));
-                                        } else {
-                                           throw new org.apache.axis2.databinding.ADBException("rrsMetaDataWSDLNsURI cannot be null!!");
+                                           throw new org.apache.axis2.databinding.ADBException("rrsWSDLNsURI cannot be null!!");
                                         }
                                     
 
@@ -607,30 +534,11 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","rrsRetrievalWSDLNsURI").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","rrsWSDLNsURI").equals(reader.getName())){
                                 
                                     java.lang.String content = reader.getElementText();
                                     
-                                              object.setRrsRetrievalWSDLNsURI(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                              
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                else{
-                                    // A start element we are not expecting indicates an invalid parameter was passed
-                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
-                                }
-                            
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","rrsMetaDataWSDLNsURI").equals(reader.getName())){
-                                
-                                    java.lang.String content = reader.getElementText();
-                                    
-                                              object.setRrsMetaDataWSDLNsURI(
+                                              object.setRrsWSDLNsURI(
                                                     org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                               
                                         reader.next();

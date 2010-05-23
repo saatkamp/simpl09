@@ -39,13 +39,12 @@ public class Transformer {
 
 	private final Namespace XML_NAMESPACE = Namespace.XML_NAMESPACE;
 
-	// The namespace of the rrs xsd
-	private final Namespace RRS_XSD_NAMESPACE = Namespace.getNamespace("rrs",
-			"http://uni-stuttgart.de/simpl/rrs");
+	// // The namespace of the rrs xsd
+	// private final Namespace RRS_XSD_NAMESPACE = Namespace.getNamespace("rrs",
+	// "http://uni-stuttgart.de/simpl/rrs");
 
 	// The namespaces of the RRS
-	private Namespace RRS_META_DATA_NAMESPACE;
-	private Namespace RRS_RETRIEVAL_NAMESPACE;
+	private Namespace RRS_NAMESPACE;
 
 	private final String RRS_RETRIEVAL_PL = "RRS_Retrieval";
 	private final String RRS_RETRIEVAL_PL_TYPE = "tns:RRSRetrievalType";
@@ -113,7 +112,8 @@ public class Transformer {
 	@SuppressWarnings("unused")
 	private final String FRESH = "fresh";
 
-	private final String EPR_TYPE = RRS_XSD_NAMESPACE.getPrefix() + ":" + "EPR";
+	// private final String EPR_TYPE = RRS_XSD_NAMESPACE.getPrefix() + ":" +
+	// "EPR";
 
 	private final// An array of all by reference influenced element types
 	String[] types = new String[] { EL_REPLY, EL_INVOKE, EL_RECEIVE, EL_ASSIGN };
@@ -132,9 +132,6 @@ public class Transformer {
 	// This list holds all referenceVariable elements
 	private List refVariableElements = new ArrayList();
 
-	// This boolean tells wether the RRS xsd and wsdl namespace are equal or not
-	private boolean oneRRSNamespace = true;
-
 	private static Transformer transformer = null;
 
 	public static Transformer getTransformer() {
@@ -144,14 +141,9 @@ public class Transformer {
 		return transformer;
 	}
 
-	public String transform(String input, String rrsRetrievalNamespace,
-			String rrsMetaDataNamespace) {
+	public String transform(String input, String rrsNamespace) {
 
-		RRS_RETRIEVAL_NAMESPACE = Namespace.getNamespace("rrsRet",
-				rrsRetrievalNamespace);
-
-		RRS_META_DATA_NAMESPACE = Namespace.getNamespace("rrsMeta",
-				rrsMetaDataNamespace);
+		RRS_NAMESPACE = Namespace.getNamespace("rrs", rrsNamespace);
 
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(input
 				.getBytes());
@@ -164,12 +156,8 @@ public class Transformer {
 			// Start Transformation
 			Element root = doc.getRootElement();
 
-			// Add the rrs retrieval namespace prefix to the process element
-			root.addNamespaceDeclaration(RRS_RETRIEVAL_NAMESPACE);
-			// Add the rrs meta data namespace prefix to the process element
-			root.addNamespaceDeclaration(RRS_META_DATA_NAMESPACE);
-			// Add the rrs xsd namespace prefix to the process element
-			root.addNamespaceDeclaration(RRS_XSD_NAMESPACE);
+			// Add the rrs namespace prefix to the process element
+			root.addNamespaceDeclaration(RRS_NAMESPACE);
 
 			// Read the prefix of the "http://www.w3.org/yyyy/XMLSchema"
 			// namespace
@@ -185,33 +173,41 @@ public class Transformer {
 			// Set all the new required Imports
 			List imports = root.getChildren(EL_IMPORT, BPEL_NAMESPACE);
 
-			// // Add the rrs.wsdl to the process imports
-			// // TODO: Noch an René's Implementierung anpassen
-			// Element rrsWSDLImport = new Element(EL_IMPORT, BPEL_NAMESPACE);
-			// rrsWSDLImport.setAttribute(AT_IMPORT_LOCATION, "rrs.wsdl");
-			// rrsWSDLImport.setAttribute(AT_IMPORT_NS, RRS_NAMESPACE.getURI());
-			// rrsWSDLImport.setAttribute(AT_IMPORT_ITYPE,
-			// "http://schemas.xmlsoap.org/wsdl/");
-			// imports.add(0, rrsWSDLImport);
+			// Add the rrs.wsdl to the process imports
+			/*
+			 * <bpel:import namespace="http://webservices.rrs.simpl.org/"
+			 * location="RRSRetrievalService.wsdl"
+			 * importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+			 * <bpel:import namespace="http://webservices.rrs.simpl.org/"
+			 * location="RRSMetaDataService.wsdl"
+			 * importType="http://schemas.xmlsoap.org/wsdl/"></bpel:import>
+			 */
+			Element rrsWSDLImport = new Element(EL_IMPORT, BPEL_NAMESPACE);
+			rrsWSDLImport.setAttribute(AT_IMPORT_LOCATION,
+					"RRSMetaDataService.wsdl");
+			rrsWSDLImport.setAttribute(AT_IMPORT_NS, RRS_NAMESPACE.getURI());
+			rrsWSDLImport.setAttribute(AT_IMPORT_ITYPE,
+					"http://schemas.xmlsoap.org/wsdl/");
+			imports.add(0, rrsWSDLImport);
 
-			// Add the rrs.xsd to the process imports
-			// TODO: rrs.xsd muss im workspace des Prozesses liegen
-			Element rrsXSDImport = new Element(EL_IMPORT, BPEL_NAMESPACE);
-			rrsXSDImport.setAttribute(AT_IMPORT_LOCATION, "rrs.xsd");
-			rrsXSDImport.setAttribute(AT_IMPORT_NS, RRS_XSD_NAMESPACE.getURI());
-			rrsXSDImport.setAttribute(AT_IMPORT_ITYPE,
-					"http://www.w3.org/2001/XMLSchema");
-			imports.add(0, rrsXSDImport);
+			rrsWSDLImport = new Element(EL_IMPORT, BPEL_NAMESPACE);
+			rrsWSDLImport.setAttribute(AT_IMPORT_LOCATION,
+					"RRSRetrievalService.wsdl");
+			rrsWSDLImport.setAttribute(AT_IMPORT_NS, RRS_NAMESPACE.getURI());
+			rrsWSDLImport.setAttribute(AT_IMPORT_ITYPE,
+					"http://schemas.xmlsoap.org/wsdl/");
+			imports.add(0, rrsWSDLImport);
 
-			// Create the RRS partnerLink
+			// Create the RRS partnerLinks
 			List partnerLinks = root.getChild(EL_PARTNER_LINKS, BPEL_NAMESPACE)
 					.getChildren("partnerLink", BPEL_NAMESPACE);
+
 			Element rrsRetrievalPL = new Element(EL_PARTNER_LINK,
 					BPEL_NAMESPACE);
 			/*
-			 * <bpel:partnerLink name="RRS_Retrieval"
-			 * partnerLinkType="tns:RRSGetType" partnerRole="get">
-			 * </bpel:partnerLink>
+			 * <bpel:partnerLink name="RRS_RET_Type"
+			 * partnerLinkType="tns:RRS_RET_Type"
+			 * partnerRole="get"></bpel:partnerLink>
 			 */
 			rrsRetrievalPL.setAttribute(AT_NAME, RRS_RETRIEVAL_PL);
 			rrsRetrievalPL.setAttribute(AT_PL_TYPE, RRS_RETRIEVAL_PL_TYPE);
@@ -222,8 +218,8 @@ public class Transformer {
 			Element rrsMetaDataPL = new Element(EL_PARTNER_LINK, BPEL_NAMESPACE);
 			/*
 			 * <bpel:partnerLink name="RRS_MetaData"
-			 * partnerLinkType="tns:RRSMetaType" partnerRole="getEPR">
-			 * </bpel:partnerLink>
+			 * partnerLinkType="tns:RRS_MD_Type"
+			 * partnerRole="getEPR"></bpel:partnerLink>
 			 */
 			rrsMetaDataPL.setAttribute(AT_NAME, RRS_META_DATA_PL);
 			rrsMetaDataPL.setAttribute(AT_PL_TYPE, RRS_META_DATA_PL_TYPE);
@@ -251,10 +247,7 @@ public class Transformer {
 
 				refVarNames.put(name, 0);
 
-				variableElements.addContent(createVariableElement(name,
-						valueType));
-				variableElements.addContent(createVariableElement(name + "EPR",
-						EPR_TYPE));
+				addAllVariables(variableElements, name, valueType);
 			}
 
 			// Detach referenceVariable elements
@@ -284,15 +277,15 @@ public class Transformer {
 			Element onInstSequence = new Element(EL_SEQUENCE, BPEL_NAMESPACE);
 			onInstSequence.setAttribute(AT_NAME, "prepare");
 
-			// Add the new sequence after the instantiation process element
-			parentSequence.addContent(parentSequence
-					.indexOf(instantiationElement) + 1, onInstSequence);
-
 			// Process the highest level sequence
 			for (String type : types) {
 				processActivityElements(parentSequence, onInstSequence, type);
 			}
 
+			// Add the new sequence after the instantiation process element
+			parentSequence.addContent(parentSequence
+					.indexOf(instantiationElement) + 1, onInstSequence);
+			
 			// Now we will insert some new Variables and Invokes to initialize
 			// the reference variables (query EPR data from the RRS).
 			addEPRInvokes(onInstSequence, variableElements);
@@ -318,37 +311,99 @@ public class Transformer {
 	}
 
 	/**
+	 * @param variableElements
+	 * @param name
+	 * @param valueType
+	 */
+	private void addAllVariables(Element variableElements, String name,
+			String valueType) {
+		/*
+		 * <bpel:variable name="data"
+		 * messageType="ns:getResponse"></bpel:variable> <bpel:variable
+		 * name="dataEPR_Name" messageType="ns:getEPR"></bpel:variable>
+		 * <bpel:variable name="dataEPR_Meta"
+		 * messageType="ns:getEPRResponse"></bpel:variable> <bpel:variable
+		 * name="dataEPR_Ret" messageType="ns:get"></bpel:variable>
+		 */
+		variableElements.addContent(createVariableElement(name, RRS_NAMESPACE
+				.getPrefix()
+				+ ":getResponse"));
+		variableElements.addContent(createVariableElement(name + "EPR_Name",
+				RRS_NAMESPACE.getPrefix() + ":getEPR"));
+		variableElements.addContent(createVariableElement(name + "EPR_Meta",
+				RRS_NAMESPACE.getPrefix() + ":getEPRResponse"));
+		variableElements.addContent(createVariableElement(name + "EPR_Ret",
+				RRS_NAMESPACE.getPrefix() + ":get"));
+	}
+
+	/**
 	 * @param parentSequence
 	 * @param variableElements
 	 * 
 	 */
 	private void addEPRInvokes(Element onInstSequence, Element variableElements) {
+		/*
+		 * <bpel:sequence name="prepare"> <bpel:assign validate="no"
+		 * name="setNames"> <bpel:copy> <bpel:from> <bpel:literal
+		 * xml:space="preserve">asd</bpel:literal> </bpel:from> <bpel:to
+		 * part="eprName" variable="dataEPR_Name"></bpel:to> </bpel:copy>
+		 * </bpel:assign> <bpel:invoke name="getEPR" partnerLink="RRS_MetaData"
+		 * operation="getEPR" portType="ns:RRSMetaDataService"
+		 * inputVariable="dataEPR_Name"
+		 * outputVariable="dataEPR_Meta"></bpel:invoke> </bpel:sequence>
+		 */
 		Element assignNameVariables = new Element(EL_ASSIGN, BPEL_NAMESPACE);
 
-		// We create a variable which holds the referenceVariable name and
-		// assign
-		// the name of the corresponding referenceVariable to the new variable.
+		assignNameVariables.setAttribute(AT_NAME, "setEPR_Names");
 		for (String varName : refVarNames.keySet()) {
-			// Create a new variable to hold the name of the referenceVariable
-			// and add it to the process variables
-			variableElements.addContent(createVariableElement(varName
-					+ "EPR_Name", SCHEMA_NS_PREFIX + ":string"));
 			// Add a new copy element to the assign, to initialize the generated
-			// name variable
+			// EPR name variable
 			assignNameVariables.addContent(createAssignCopyElement(varName,
 					varName + "EPR_Name"));
 			//
 			onInstSequence.addContent(0, createRRSMetaInvokeElement(varName
-					+ "EPR", varName + "EPR_Name"));
+					+ "EPR_Meta", varName + "EPR_Name"));
 		}
 		onInstSequence.addContent(0, assignNameVariables);
+
+		// If we want to invoke the RRSRetrievalService we have to change the
+		// message type of the EPR by
+		// copying it to another message container
+		/*
+		 * <bpel:copy> <bpel:from part="return"
+		 * variable="dataEPR_Meta"></bpel:from> <bpel:to part="EPR"
+		 * variable="dataEPR_Ret"></bpel:to> </bpel:copy>
+		 */
+		Element assignEPRMessages = new Element(EL_ASSIGN, BPEL_NAMESPACE);
+
+		assignEPRMessages.setAttribute(AT_NAME, "copyEPRs");
+		for (String varName : refVarNames.keySet()) {
+			// Add a new copy element to the assign, to copy the queried
+			// EPR to the RRSRetrieval-messagetype variable
+			Element copy = new Element(EL_COPY, BPEL_NAMESPACE);
+
+			Element from = new Element(EL_FROM, BPEL_NAMESPACE);
+			from.setAttribute("part", "return");
+			from.setAttribute(EL_VARIABLE, varName + "EPR_Meta");
+
+			Element to = new Element(EL_TO, BPEL_NAMESPACE);
+			to.setAttribute("part", "EPR");
+			to.setAttribute(EL_VARIABLE, varName + "EPR_Ret");
+
+			copy.addContent(from);
+			copy.addContent(to);
+
+			assignEPRMessages.addContent(copy);
+		}
+		onInstSequence.addContent(onInstSequence.getContentSize(),
+				assignEPRMessages);
 	}
 
 	private Element createAssignCopyElement(String value, String varName) {
 		/*
 		 * <bpel:copy> <bpel:from> <bpel:literal
-		 * xml:space="preserve">data</bpel:literal> </bpel:from> <bpel:to
-		 * variable="dataEPR_Name"></bpel:to> </bpel:copy>
+		 * xml:space="preserve">asd</bpel:literal> </bpel:from> <bpel:to
+		 * part="eprName" variable="dataEPR_Name"></bpel:to> </bpel:copy>
 		 */
 		Element copy = new Element(EL_COPY, BPEL_NAMESPACE);
 
@@ -359,6 +414,7 @@ public class Transformer {
 		from.addContent(literal);
 
 		Element to = new Element(EL_TO, BPEL_NAMESPACE);
+		to.setAttribute("part", "eprName");
 		to.setAttribute(EL_VARIABLE, varName);
 
 		copy.addContent(from);
@@ -370,17 +426,18 @@ public class Transformer {
 	private Element createRRSMetaInvokeElement(String refVarName,
 			String eprNameVarName) {
 		/*
-		 * <bpel:invoke name="init_#refVarName#" partnerLink="RRS_MetaData"
+		 * <bpel:invoke name="getEPR" partnerLink="RRS_MetaData"
 		 * operation="getEPR" portType="ns:RRSMetaDataService"
-		 * inputVariable="dataEPR_Name" outputVariable="dataEPR"> </bpel:invoke>
+		 * inputVariable="dataEPR_Name"
+		 * outputVariable="dataEPR_Meta"></bpel:invoke>
 		 */
 		Element invoke = new Element(EL_INVOKE, BPEL_NAMESPACE);
 
 		invoke.setAttribute(AT_NAME, "init_" + refVarName);
 		invoke.setAttribute(AT_PARTNER_LINK, RRS_META_DATA_PL);
 		invoke.setAttribute(AT_OPERATION, RRS_META_DATA_PL_ROLE);
-		invoke.setAttribute(AT_PORT_TYPE, RRS_META_DATA_NAMESPACE.getPrefix()
-				+ ":" + RRS_META_DATA_PL_PORT);
+		invoke.setAttribute(AT_PORT_TYPE, RRS_NAMESPACE.getPrefix() + ":"
+				+ RRS_META_DATA_PL_PORT);
 		invoke.setAttribute(AT_INPUT_VARIABLE, eprNameVarName);
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, refVarName);
 
@@ -396,23 +453,21 @@ public class Transformer {
 		return variable;
 	}
 
-	private Element createRRSRetrievalInvokeElement(String refVarName,
-			String valueVarName, int count) {
+	private Element createRRSRetrievalInvokeElement(String valueVarName,
+			int count) {
 		/*
-		 * <bpel:invoke name="#VarName#Refresh_#counter#" partnerLink="RRS"
-		 * operation="transform" portType="ns:RRSRetrievalService"
-		 * inputVariable="dataEPR" outputVariable="data"> </bpel:invoke>
+		 * <bpel:invoke name="deRefEPR" partnerLink="RRS_RET_Type"
+		 * operation="get" portType="ns:RRSRetrievalService"
+		 * inputVariable="dataEPR_Ret" outputVariable="data"></bpel:invoke>
 		 */
 		Element invoke = new Element(EL_INVOKE, BPEL_NAMESPACE);
 
-		// TODO: Hier müssen nochmal alle Attribute überprüft und an
-		// René's Implementierung angepasst werden
 		invoke.setAttribute(AT_NAME, valueVarName + "Refresh_" + count);
 		invoke.setAttribute(AT_PARTNER_LINK, RRS_RETRIEVAL_PL);
 		invoke.setAttribute(AT_OPERATION, RRS_RETRIEVAL_PL_ROLE);
-		invoke.setAttribute(AT_PORT_TYPE, RRS_RETRIEVAL_NAMESPACE.getPrefix()
-				+ ":" + RRS_RETRIEVAL_PL_PORT);
-		invoke.setAttribute(AT_INPUT_VARIABLE, refVarName);
+		invoke.setAttribute(AT_PORT_TYPE, RRS_NAMESPACE.getPrefix() + ":"
+				+ RRS_RETRIEVAL_PL_PORT);
+		invoke.setAttribute(AT_INPUT_VARIABLE, valueVarName+"EPR_Ret");
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, valueVarName);
 
 		return invoke;
@@ -467,7 +522,7 @@ public class Transformer {
 		if (refVarNames.containsKey(element.getAttributeValue(AT_VARIABLE))) {
 			// This activity has a referenceVariable
 			String varName = element.getAttributeValue(AT_VARIABLE);
-			element.setAttribute(AT_VARIABLE, varName + "EPR");
+			element.setAttribute(AT_VARIABLE, varName + "EPR_Ret");
 		}
 	}
 
@@ -484,7 +539,7 @@ public class Transformer {
 					.getAttributeValue(AT_INPUT_VARIABLE))) {
 				// The input variable is a referenceVariable
 				String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
-				element.setAttribute(AT_INPUT_VARIABLE, varName + "EPR");
+				element.setAttribute(AT_INPUT_VARIABLE, varName + "EPR_Ret");
 			}
 
 			// Check the output variable
@@ -492,7 +547,7 @@ public class Transformer {
 					.getAttributeValue(AT_OUTPUT_VARIABLE))) {
 				// The output variable is a referenceVariable
 				String varName = element.getAttributeValue(AT_OUTPUT_VARIABLE);
-				element.setAttribute(AT_OUTPUT_VARIABLE, varName + "EPR");
+				element.setAttribute(AT_OUTPUT_VARIABLE, varName + "EPR_Ret");
 			}
 		}
 	}
@@ -503,12 +558,12 @@ public class Transformer {
 				.getAttributeValue(AT_INPUT_VARIABLE))) {
 			// This activity has a referenceVariable
 			String varName = element.getAttributeValue(AT_INPUT_VARIABLE);
-			element.setAttribute(AT_INPUT_VARIABLE, varName + "EPR");
+			element.setAttribute(AT_INPUT_VARIABLE, varName + "EPR_Ret");
 		}
 	}
 
 	private void processAssignElement(Element onInstSequence, Element element) {
-		// Get all copy elements of the aasign
+		// Get all copy elements of the assign
 		List copyElements = element.getChildren(EL_COPY, BPEL_NAMESPACE);
 
 		// Process all copy elements
@@ -536,7 +591,7 @@ public class Transformer {
 					// The expression contains a reference variable
 					String varName = expression;
 					Element deRefInvoke = createRRSRetrievalInvokeElement(
-							varName + "EPR", varName, refVarNames.get(varName));
+							varName, refVarNames.get(varName));
 					if (getReferenceVariable(varName).getAttributeValue(
 							AT_REFERENCE_TYPE).equals(ON_INSTANTIATION)) {
 						// onInstantiation: referenced data should be loaded
@@ -581,7 +636,7 @@ public class Transformer {
 								.getAttributeValue(AT_VARIABLE))) {
 					// Assign from variable is a reference variable
 					String varName = from.getAttributeValue(AT_VARIABLE);
-					from.setAttribute(AT_VARIABLE, varName + "EPR");
+					from.setAttribute(AT_VARIABLE, varName + "EPR_Ret");
 				}
 				// Check the TO variable
 				if (to.getAttributeValue(AT_VARIABLE) != null
@@ -589,7 +644,7 @@ public class Transformer {
 								.getAttributeValue(AT_VARIABLE))) {
 					// Assign to variable is a reference variable
 					String varName = from.getAttributeValue(AT_VARIABLE);
-					from.setAttribute(AT_VARIABLE, varName + "EPR");
+					from.setAttribute(AT_VARIABLE, varName + "EPR_Ret");
 				}
 			}
 		}

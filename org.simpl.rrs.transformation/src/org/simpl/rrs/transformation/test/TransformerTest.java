@@ -2,14 +2,11 @@ package org.simpl.rrs.transformation.test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 import org.simpl.rrs.transformation.Transformer;
@@ -57,7 +54,7 @@ public class TransformerTest {
 			e.printStackTrace();
 		}
 		
-		String response = Transformer.getTransformer().transform(string.toString(), "simpl", "asd");
+		String response = Transformer.getTransformer().transform(string.toString(), "simpl");
 		
 //		System.out.println(response);
 		
