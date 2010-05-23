@@ -1,7 +1,11 @@
 package org.apache.ode.simpl.ea;
 
+import java.util.Map;
+
 import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
+import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
+import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
@@ -26,6 +30,19 @@ public class QueryActivity extends DataManagementActivity {
 		// Laden das Query-spezifische Attribut "queryTarget"
 		String queryTarget = element.getAttribute("queryTarget").toString();
 
+		if (queryTarget.contains("[") || queryTarget.contains("#")){
+			//queryTarget enthält eine BPEL-Variable als Referenz
+			Map<String, Variable> variables = null;
+			try {
+				variables = context.getVisibleVariables();
+			} catch (FaultException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			queryTarget = String.valueOf(StatementUtils.resolveVariable(context, variables, queryTarget));
+		}
+		
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
 		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
