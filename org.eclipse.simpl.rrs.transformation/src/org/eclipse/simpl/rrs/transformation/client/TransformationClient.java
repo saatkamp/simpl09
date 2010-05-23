@@ -42,8 +42,7 @@ public class TransformationClient {
 	}
 
 	public void transform(String sourcePath, String bpelFileName,
-			String targetPath, String rrsRetNamespaceURI,
-			String rrsMetaNamespaceURI) {
+			String targetPath, String rrsNamespaceURI) {
 
 		System.out.println("FILENAME: " + bpelFileName);
 
@@ -74,7 +73,7 @@ public class TransformationClient {
 			}
 
 			String response = executeTransformation(string.toString(),
-					rrsRetNamespaceURI, rrsMetaNamespaceURI);
+					rrsNamespaceURI);
 
 			try {
 				BufferedWriter out = new BufferedWriter(
@@ -121,14 +120,14 @@ public class TransformationClient {
 	}
 
 	private String executeTransformation(String bpelFileContent,
-			String rrsRetNamespaceURI, String rrsMetaNamespaceURI) {
+			String rrsNamespaceURI) {
 		TransformationService transformationService = new TransformationService_Service()
 				.getTransformationServicePort();
 
 		String response = "";
 
 		response = transformationService.transform(bpelFileContent,
-				rrsRetNamespaceURI, rrsMetaNamespaceURI);
+				rrsNamespaceURI);
 
 		return response;
 	}

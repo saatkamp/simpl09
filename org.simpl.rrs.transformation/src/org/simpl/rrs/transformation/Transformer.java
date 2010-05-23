@@ -30,6 +30,7 @@ import org.jdom.output.XMLOutputter;
 public class Transformer {
 
 	// Namespace identifiers
+	@SuppressWarnings("unused")
 	private String SCHEMA_NS_PREFIX = "";
 
 	private final String BPEL_PREFIX = "bpel";
@@ -62,7 +63,7 @@ public class Transformer {
 	private final String AT_REFERENCE_TYPE = "referenceType";
 	private final String AT_REFERENCE_VALUE_TYPE = "valueType";
 
-	private final String AT_VARIABLE_TYPE = "type";
+	private final String AT_VARIABLE_TYPE = "messageType";
 
 	private final String AT_IMPORT_LOCATION = "location";
 	private final String AT_IMPORT_NS = "namespace";
@@ -342,6 +343,8 @@ public class Transformer {
 	 * 
 	 */
 	private void addEPRInvokes(Element onInstSequence, Element variableElements) {
+		int count = 0;
+		
 		/*
 		 * <bpel:sequence name="prepare"> <bpel:assign validate="no"
 		 * name="setNames"> <bpel:copy> <bpel:from> <bpel:literal
@@ -360,11 +363,13 @@ public class Transformer {
 			// EPR name variable
 			assignNameVariables.addContent(createAssignCopyElement(varName,
 					varName + "EPR_Name"));
-			//
+			
 			onInstSequence.addContent(0, createRRSMetaInvokeElement(varName
 					+ "EPR_Meta", varName + "EPR_Name"));
+			count++;
 		}
 		onInstSequence.addContent(0, assignNameVariables);
+		count++;
 
 		// If we want to invoke the RRSRetrievalService we have to change the
 		// message type of the EPR by
@@ -395,7 +400,7 @@ public class Transformer {
 
 			assignEPRMessages.addContent(copy);
 		}
-		onInstSequence.addContent(onInstSequence.getContentSize(),
+		onInstSequence.addContent(count,
 				assignEPRMessages);
 	}
 

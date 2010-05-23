@@ -1,9 +1,5 @@
 package org.eclipse.simpl.rrs.transformation.commands;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
@@ -16,7 +12,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.simpl.rrs.transformation.TransformerUtil;
 import org.eclipse.simpl.rrs.transformation.client.TransformationClient;
-import org.eclipse.simpl.rrs.transformation.jet.TemplateRrsXSD;
 import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
 import org.eclipse.swt.widgets.Display;
 
@@ -78,59 +73,38 @@ public class TransformationCmdHelper {
 				// TODO: If in the future more than one RRS is used, all
 				// rrs***.wsdl
 				// files have to be downloaded and stored
-				TransformerUtil.downloadWSDL(RRSUIPlugIn.getDefault()
+				TransformerUtil.downloadFile(RRSUIPlugIn.getDefault()
 						.getPreferenceStore().getString("RRS_RET_ADDRESS"),
 						project.getLocation().toOSString(),
 						TransformerUtil.RRS_RETRIEVAL_FILE);
 
-				TransformerUtil.downloadWSDL(RRSUIPlugIn.getDefault()
+				TransformerUtil.downloadFile(RRSUIPlugIn.getDefault()
 						.getPreferenceStore().getString("RRS_MD_ADDRESS"),
 						project.getLocation().toOSString(),
 						TransformerUtil.RRS_META_DATA_FILE);
+				
+				// ../axis2/services/RRSRetrievalService?xsd=RRSService_schema1.xsd
+				String rrsXSDUri = RRSUIPlugIn.getDefault()
+				.getPreferenceStore().getString("RRS_RET_ADDRESS");
+
+				rrsXSDUri = rrsXSDUri.substring(0, rrsXSDUri.lastIndexOf("?"));
+				rrsXSDUri += "?xsd=RRSService_schema1.xsd";
+				
+				TransformerUtil.downloadFile(rrsXSDUri,
+						project.getLocation().toOSString(),
+						TransformerUtil.RRS_XSD_FILE);
 
 				// Get the rrsRetrieval.wsdl namespace uri
-				String rrsRetrievalNamespace = TransformerUtil
+				String rrsNamespace = TransformerUtil
 						.getRRSwsdlNamespace(
 								project.getLocation().toOSString(),
 								TransformerUtil.RRS_RETRIEVAL_FILE);
-
-				// Get the rrsMetaData.wsdl namespace uri
-				String rrsMetaDataNamespace = TransformerUtil
-						.getRRSwsdlNamespace(
-								project.getLocation().toOSString(),
-								TransformerUtil.RRS_META_DATA_FILE);
 
 				// Transform the process
 				TransformationClient.getClient().transform(
 						absolutWorkspacePath + bpelPath.toOSString(),
 						bpelFileName, project.getLocation().toOSString(),
-						rrsRetrievalNamespace, rrsMetaDataNamespace);
-
-				File xsdFileRRS = new File(project.getLocation().toOSString()
-						+ System.getProperty("file.separator") + "rrs.xsd");
-
-				System.out.println(xsdFileRRS);
-
-				// Create the rrs.xsd file, if necassary
-				if (!xsdFileRRS.exists()) {
-					try {
-
-						if (xsdFileRRS.createNewFile()) {
-
-							OutputStreamWriter out = new OutputStreamWriter(
-									new FileOutputStream(xsdFileRRS
-											.getAbsolutePath()), "UTF-8");
-
-							TemplateRrsXSD myTemplate = new TemplateRrsXSD();
-
-							out.write(myTemplate.generate(null));
-							out.close();
-						}
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
+						rrsNamespace);
 
 				// Copy and modify the process wsdl to the transformed
 				// directory
