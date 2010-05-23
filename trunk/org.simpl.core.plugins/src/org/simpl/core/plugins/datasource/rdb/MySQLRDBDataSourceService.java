@@ -65,6 +65,13 @@ public class MySQLRDBDataSourceService extends
       success = true;      
     } catch (Throwable e) {
       logger.error("exception executing the statement: " + statement, e);
+      logger.debug("Connection will be rolled back.");
+      try {
+		conn.rollback();
+	  } catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	  }
     }
     
     logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress()
@@ -139,6 +146,13 @@ public class MySQLRDBDataSourceService extends
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
+      logger.debug("Connection will be rolled back.");
+      try {
+    	connection.rollback();
+	  } catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	  }
     }
 
     closeConnection(connection);
@@ -193,6 +207,13 @@ public class MySQLRDBDataSourceService extends
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
+        logger.debug("Connection will be rolled back.");
+        try {
+      	  connection.rollback();
+  	    } catch (SQLException e1) {
+  		  // TODO Auto-generated catch block
+  		  e1.printStackTrace();
+  	    }
       }
     }
 
@@ -238,6 +259,13 @@ public class MySQLRDBDataSourceService extends
     } catch (Throwable e) {
       logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
+      logger.debug("Connection will be rolled back.");
+      try {
+    	conn.rollback();
+	  } catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	  }
     }
 
     logger.info("Statement \"" + createTableStatement.toString() + "\" " + "executed on "
