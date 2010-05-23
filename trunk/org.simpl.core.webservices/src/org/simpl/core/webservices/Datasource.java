@@ -138,7 +138,7 @@ public class Datasource {
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();
 
-    inputStream = SIMPLCore.getInstance().dataSourceService().getMetadataSchemaFile(
+    inputStream = SIMPLCore.getInstance().dataSourceService().getMetaDataSchemaFile(
         dataSource);
 
     // convert inputStream to String
