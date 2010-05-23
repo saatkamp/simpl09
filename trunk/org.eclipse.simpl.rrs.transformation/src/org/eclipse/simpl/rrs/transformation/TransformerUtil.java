@@ -19,10 +19,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -70,10 +66,13 @@ public class TransformerUtil {
 
 	private static final String AT_TARGET_NAMESPACE = "targetNamespace";
 
-	public static final String RRS_RETRIEVAL_FILE = "rrsRetrieval.wsdl";
-	public static final String RRS_META_DATA_FILE = "rrsMetaData.wsdl";
-	public static final String RRS_RETRIEVAL_PREFIX = "rrsRet";
-	public static final String RRS_META_DATA_PREFIX = "rrsMeta";
+	public static final String RRS_RETRIEVAL_FILE = "RRSRetrievalService.wsdl";
+	public static final String RRS_META_DATA_FILE = "RRSMetaDataService.wsdl";
+	public static final String RRS_XSD_FILE = "RRSService_schema1.xsd";
+	public static final String RRS_PREFIX = "rrs";
+	private static final Namespace XSD_NAMESPACE = Namespace.getNamespace(
+			"",
+			"http://www.w3.org/2001/XMLSchema");
 
 	public static List getReferenceVariables(String bpelFilePath) {
 		List refVariableElements = new ArrayList();
@@ -136,7 +135,7 @@ public class TransformerUtil {
 		return fullSpecified;
 	}
 
-	public static void downloadWSDL(String sourceURI, String projectPath,
+	public static void downloadFile(String sourceURI, String projectPath,
 			String targetFileName) {
 		URL u;
 		InputStream is = null;
@@ -269,43 +268,40 @@ public class TransformerUtil {
 				Element root = doc.getRootElement();
 
 				// Do the work
-				// TODO: An René's Implementierung anpassen
 
-				String rrsRetrievalNs = getRRSwsdlNamespace(targetPath,
+				String rrsNs = getRRSwsdlNamespace(targetPath,
 						RRS_RETRIEVAL_FILE);
 
 				// Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl)
 				// namespace to the process wsdl
-				root.addNamespaceDeclaration(Namespace.getNamespace(
-						RRS_RETRIEVAL_PREFIX, rrsRetrievalNs));
-
-				String rrsMetaDataNs = getRRSwsdlNamespace(targetPath,
-						RRS_META_DATA_FILE);
-
-				// Add the rrsRetrieval.wsdl (same as rrsMetaData.wsdl)
-				// namespace to the process wsdl
-				root.addNamespaceDeclaration(Namespace.getNamespace(
-						RRS_META_DATA_PREFIX, rrsMetaDataNs));
+				root.addNamespaceDeclaration(Namespace.getNamespace(RRS_PREFIX,
+						rrsNs));
 
 				/*
-				 * Insert the following element to the process wsdl file
-				 * <plnk:partnerLinkType name="RRSRetrievalType"> <plnk:role
-				 * name="GET" portType="rrsRet:RRSRetrievalService"/>
-				 * </plnk:partnerLinkType> <import location="rrsRetrieval.wsdl"
-				 * namespace="http://webservices.rrs.simpl.org/"/>
+				 * Insert the following elements to the process wsdl file
+				 * <plnk:partnerLinkType name="RRS_MD_Type"> <plnk:role
+				 * name="getEPR" portType="wsdl:RRSMetaDataService" />
+				 * </plnk:partnerLinkType> <plnk:partnerLinkType
+				 * name="RRS_RET_Type"> <plnk:role name="get"
+				 * portType="wsdl:RRSRetrievalService" />
+				 * </plnk:partnerLinkType> <import
+				 * location="RRSMetaDataService.wsdl"
+				 * namespace="http://webservices.rrs.simpl.org/" /> <import
+				 * location="RRSRetrievalService.wsdl"
+				 * namespace="http://webservices.rrs.simpl.org/" />
 				 */
 				Element partnerLink = new Element("partnerLinkType",
 						PLNK_NAMESPACE);
 				partnerLink.setAttribute(AT_NAME, "RRSRetrievalType");
 				Element role = new Element("role", PLNK_NAMESPACE);
 				role.setAttribute(AT_NAME, "get");
-				role.setAttribute("portType", RRS_RETRIEVAL_PREFIX
+				role.setAttribute("portType", RRS_PREFIX
 						+ ":RRSRetrievalService");
 				partnerLink.addContent(role);
 
 				Element importElement = new Element("import");
 				importElement.setAttribute("location", RRS_RETRIEVAL_FILE);
-				importElement.setAttribute("namespace", rrsRetrievalNs);
+				importElement.setAttribute("namespace", rrsNs);
 				importElement.setNamespace(WSDL_NAMESPACE);
 
 				/*
@@ -320,13 +316,13 @@ public class TransformerUtil {
 				partnerLink2.setAttribute(AT_NAME, "RRSMetaDataType");
 				Element role2 = new Element("role", PLNK_NAMESPACE);
 				role2.setAttribute(AT_NAME, "getEPR");
-				role2.setAttribute("portType", RRS_META_DATA_PREFIX
+				role2.setAttribute("portType", RRS_PREFIX
 						+ ":RRSMetaDataService");
 				partnerLink2.addContent(role2);
 
 				Element importElement2 = new Element("import");
 				importElement2.setAttribute("location", RRS_META_DATA_FILE);
-				importElement2.setAttribute("namespace", rrsMetaDataNs);
+				importElement2.setAttribute("namespace", rrsNs);
 				importElement2.setNamespace(WSDL_NAMESPACE);
 
 				// Add the new elements to the root object
@@ -334,6 +330,20 @@ public class TransformerUtil {
 				root.addContent(0, partnerLink2);
 				root.addContent(0, importElement);
 				root.addContent(0, partnerLink);
+
+				// Add the RRS.xsd to the import of the inner schema of the wsdl
+				/*
+				 * <import schemaLocation="RRSService_schema1.xsd"
+				 * namespace="http://webservices.rrs.simpl.org/"></import>
+				 */
+				Element types = root.getChild("types", WSDL_NAMESPACE);
+				Element schema = types.getChild("schema", XSD_NAMESPACE);
+				Element impElement = new Element("import");
+				impElement.setAttribute("schemaLocation", RRS_XSD_FILE);
+				impElement.setAttribute("namespace", rrsNs);
+				impElement.setNamespace(XSD_NAMESPACE);
+				
+				schema.addContent(0, impElement);
 
 				OutputStream outputStream = new FileOutputStream(wsdlTargetFile);
 
@@ -365,12 +375,7 @@ public class TransformerUtil {
 
 			@Override
 			public boolean accept(File file) {
-				boolean accept = file.getName().endsWith("bpel")
-						|| file.getName().endsWith("wsdl")
-						|| file.getName().endsWith("xsd")
-						|| file.getName().equals("deploy.xml");
-				
-				return accept;
+				return true;
 			}
 
 		};

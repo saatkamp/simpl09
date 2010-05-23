@@ -21,9 +21,8 @@ public interface TransformationService {
 
     /**
      * 
-     * @param rrsRetrievalWSDLNsURI
      * @param bpelFileContent
-     * @param rrsMetaDataWSDLNsURI
+     * @param rrsWSDLNsURI
      * @return
      *     returns java.lang.String
      */
@@ -32,9 +31,7 @@ public interface TransformationService {
     public String transform(
         @WebParam(name = "bpelFileContent", partName = "bpelFileContent")
         String bpelFileContent,
-        @WebParam(name = "rrsRetrievalWSDLNsURI", partName = "rrsRetrievalWSDLNsURI")
-        String rrsRetrievalWSDLNsURI,
-        @WebParam(name = "rrsMetaDataWSDLNsURI", partName = "rrsMetaDataWSDLNsURI")
-        String rrsMetaDataWSDLNsURI);
+        @WebParam(name = "rrsWSDLNsURI", partName = "rrsWSDLNsURI")
+        String rrsWSDLNsURI);
 
 }
