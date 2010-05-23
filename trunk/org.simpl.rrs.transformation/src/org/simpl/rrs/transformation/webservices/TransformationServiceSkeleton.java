@@ -24,9 +24,7 @@ public class TransformationServiceSkeleton {
 		TransformResponse response = new TransformResponse();
 
 		response.set_return(Transformer.getTransformer().transform(
-				transform.getBpelFileContent(),
-				transform.getRrsRetrievalWSDLNsURI(),
-				transform.getRrsMetaDataWSDLNsURI()));
+				transform.getBpelFileContent(), transform.getRrsWSDLNsURI()));
 
 		return response;
 	}
