@@ -111,6 +111,9 @@ public class TransformationCmdHelper {
 				TransformerUtil.copyAndEditProcessWSDL(absolutWorkspacePath
 						+ projectPath.toOSString(), bpelFileName, project
 						.getLocation().toOSString());
+				
+				TransformerUtil.modifyRRSwsdlXSDReference(project.getLocation().toOSString(), TransformerUtil.RRS_META_DATA_FILE);
+				TransformerUtil.modifyRRSwsdlXSDReference(project.getLocation().toOSString(), TransformerUtil.RRS_RETRIEVAL_FILE);
 
 				TransformerUtil.copyAllNotTransfContent(absolutWorkspacePath
 						+ projectPath.toOSString(), project.getLocation().toOSString());

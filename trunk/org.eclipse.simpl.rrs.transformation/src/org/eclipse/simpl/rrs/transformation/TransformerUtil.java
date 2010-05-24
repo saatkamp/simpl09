@@ -297,6 +297,7 @@ public class TransformerUtil {
 				role.setAttribute(AT_NAME, "get");
 				role.setAttribute("portType", RRS_PREFIX
 						+ ":RRSRetrievalService");
+				partnerLink.setText("");
 				partnerLink.addContent(role);
 
 				Element importElement = new Element("import");
@@ -318,6 +319,7 @@ public class TransformerUtil {
 				role2.setAttribute(AT_NAME, "getEPR");
 				role2.setAttribute("portType", RRS_PREFIX
 						+ ":RRSMetaDataService");
+				partnerLink2.setText("");
 				partnerLink2.addContent(role2);
 
 				Element importElement2 = new Element("import");
@@ -403,6 +405,48 @@ public class TransformerUtil {
 
 			in.close();
 			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @param osString
+	 */
+	public static void modifyRRSwsdlXSDReference(String path, String fileName) {
+		SAXBuilder builder = new SAXBuilder();
+		Document doc;
+		File wsdlFile = new File(path
+				+ System.getProperty("file.separator")
+				+ fileName);
+		try {
+			InputStream inputStream = new FileInputStream(wsdlFile);
+
+			doc = builder.build(inputStream);
+
+			Element root = doc.getRootElement();
+			
+			/*
+			 * <import schemaLocation="RRSService_schema1.xsd"
+			 * namespace="http://webservices.rrs.simpl.org/"></import>
+			 */
+			Element types = root.getChild("types", WSDL_NAMESPACE);
+			Element schema = types.getChild("schema", XSD_NAMESPACE);
+			Element impElement = schema.getChild("import", XSD_NAMESPACE);
+			impElement.setAttribute("schemaLocation", RRS_XSD_FILE);
+
+			OutputStream outputStream = new FileOutputStream(wsdlFile);
+
+			XMLOutputter outp = new XMLOutputter();
+			outp.setFormat(Format.getPrettyFormat());
+			outp.output(doc, outputStream);
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
