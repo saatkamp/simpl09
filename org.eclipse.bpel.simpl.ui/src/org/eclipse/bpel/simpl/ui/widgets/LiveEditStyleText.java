@@ -19,17 +19,8 @@ import org.eclipse.swt.custom.LineStyleEvent;
 import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -208,6 +199,112 @@ public class LiveEditStyleText extends StyledText{
 //
 //    display.dispose();
   }
+  
+  public LiveEditStyleText(Composite theComposite) {
+	    
+	  //super(shell, SWT.MULTI | SWT.WRAP | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+	  super(theComposite,SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+
+	  //shell.setLayout(new GridLayout(2, false));
+    
+   
+    
+   
+    //Checking Live if the typed text a KeyWord or a Parameter etc.
+    addLineStyleListener(new LineStyleListener() {
+      public void lineGetStyle(LineStyleEvent event) {
+        	String line = event.lineText;
+        	int cursor = -1;
+        	int index=0;
+        	
+        	String[] wordsOfSyleText=getText().split(" ");
+        	String typedWord;
+        	
+	        	for(int i=0;i<wordsOfSyleText.length;i++){
+		        	typedWord=wordsOfSyleText[i];
+		        	index=index+typedWord.length();
+		        	if(isEqualToKeyword(typedWord)){
+		        		System.out.print("is a keyword");
+		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
+			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
+			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),KEYWORD));
+			  	        }  
+		        		
+		        		//list.add(getHighlightStyle(index, typedWord.length()));
+		        	}
+		        	else if(isEqualToTableName(typedWord)){
+		        		System.out.print("is a keyword");
+		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
+		        		String tmpWord=removeSpacesFromWord(typedWord);
+		        		if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
+			  	          list.add(getHighlightStyle(event.lineOffset+cursor, tmpWord.length(),TABLE_NAME));
+			  	        }  
+		        		
+		        		//list.add(getHighlightStyle(index, typedWord.length()));
+		        	}
+		        	else if((isEqualToKomplexParameter(typedWord))||(isEqualToSimplParameter(typedWord))){
+		        		System.out.print("is a keyword");
+		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
+			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
+			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),PARAMETER));
+			  	        }  
+		        		
+		        		//list.add(getHighlightStyle(index, typedWord.length()));
+		        	}
+		        	else if(isEqualToBPLEVariable(typedWord)){
+		        		System.out.print("is a keyword");
+		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
+			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
+			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),BPEL_VARIABLE));
+			  	        }  
+		        		
+		        		//list.add(getHighlightStyle(index, typedWord.length()));
+		        	}
+		        	
+		        	else{
+		        		 if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
+				  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),DEFAULT_TEXT));
+				  	        } 
+		        	}
+		        	
+			        event.styles = list.toArray(new StyleRange[list.size()]);
+	        	}
+        	}
+
+      
+	private String removeSpacesFromWord(String typedWord) {
+		while(typedWord.contains(" ")){
+			typedWord.replace(" ", "");
+		}
+		return typedWord;
+	}
+
+	
+	      
+    });
+    
+    
+    redraw();
+    //styledText.setText("AWT, SWING \r\nSWT & JFACE");
+    
+//    shell.pack();
+//    shell.open();
+//    //textUser.forceFocus();
+//
+//    // Set up the event loop.
+//    while (!shell.isDisposed()) {
+//      if (!display.readAndDispatch()) {
+//        // If no more entries in event queue
+//        display.sleep();
+//      }
+//    }
+//
+//    display.dispose();
+  }
+  
+  
+
+  
   
   /**
    * checking if the keywords-array contains the word

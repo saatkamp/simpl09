@@ -55,3 +55,4 @@ Export-Package: org.eclipse.bpel.simpl.ui;
    org.eclipse.swt.widgets",
  org.eclipse.bpel.simpl.ui.widgets
 Bundle-Vendor: SIMPL
+Import-Package: org.eclipse.bpel.simpl.ui.sql.widgets
