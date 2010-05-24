@@ -3,7 +3,9 @@ package org.eclipse.bpel.simpl.ui.sql.editor;
 import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
-import org.eclipse.bpel.simpl.ui.sql.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.widgets.DBTable;
+import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.sql.xmlParser.KeyWord;
 import org.eclipse.bpel.simpl.ui.sql.xmlParser.QueryKeyWordsXmlParser;
 import org.eclipse.swt.SWT;
@@ -29,8 +31,12 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+
 public class SelectAndRetrieveDataEditor extends AStatementEditor {
 
+	MetaDataXMLParser metaDataXMLParser_Objekt;
+	ArrayList<DBTable> globalListOfTables;
+	
 	private Composite comp = null;
 	private Composite compos = null;
 	private LiveEditStyleText statementText = null;
@@ -203,7 +209,8 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 		else {statementText.setText("SELECT ");}
 		
 		//createEditorElements(compos);
-		
+		metaDataXMLParser_Objekt=new MetaDataXMLParser();
+		globalListOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(getDataSource());
 		createTabTable(parser.parseDocument());
 	}
 	
@@ -487,7 +494,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 						}
 						else operStat=tmpString[1];
 						
-						statementText.setText(statementText.getText()+arrayOfTableItems[0].getText(2)+" "+operStat);
+						statementText.setText(statementText.getText()+" "+arrayOfTableItems[0].getText(2)+" "+operStat);
 
 						for(int i=1;i<arrayOfTableItems.length;i++){
 							if(arrayOfTableItems[i].getText(0).length()>0){	
@@ -498,7 +505,7 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 								}
 								else operStat=tmpString[1];
 								
-								statementText.setText(statementText.getText()+arrayOfTableItems[i].getText(2)+" "+operStat);							}
+								statementText.setText(statementText.getText()+", "+arrayOfTableItems[i].getText(2)+" "+operStat);							}
 						}
 						addToListOfStatementTextChanges();
 						
@@ -1085,9 +1092,10 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			gridData1.grabExcessVerticalSpace = true;
 			gridData1.verticalAlignment = GridData.FILL;
 			
-			tablsList4 = new List(tableNameComposite, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
+			tablsList4 = new List(tableNameComposite, SWT.BORDER |SWT.H_SCROLL | SWT.V_SCROLL);
 			tablsList4.setBounds(40, 20, 320, 100);
 			tablsList4.setLayoutData(gridData1);
+			
 			//tablsList.setEnabled(false);
 			try {
 				loadTheTablesIntoList4();
@@ -1343,9 +1351,8 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	private void loadTheTablesIntoList4() {
 		tablsList4.removeAll();
 		
-		//zum testen***
-		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList4.add("Table" + loopIndex);
+		for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+			tablsList4.add(globalListOfTables.get(loopIndex).getTableName());
 		}
 	}
 
@@ -1356,9 +1363,8 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 			// TODO Auto-generated method stub
 		  tablsList3.removeAll();
 			
-			//zum testen***
-			for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-				tablsList3.add("Table" + loopIndex);
+		  for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+				tablsList3.add(globalListOfTables.get(loopIndex).getTableName());
 			}
 		
 	  }
@@ -1369,19 +1375,13 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	  private void loadTheTablesIntoList2() {
 			// TODO Auto-generated method stub
 		  tablsList2.removeAll();
-			
-			//zum testen***
-			for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-				tablsList2.add("Table" + loopIndex);
+		
+		  
+			for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+				tablsList2.add(globalListOfTables.get(loopIndex).getTableName());
 			}
 			//*************
 			
-//			ArrayList<String> tabelsNames=null;//TODO: tables namen laden
-//			if(tabelsNames!=null){
-//				for(int i=0;i<tabelsNames.size();i++){
-//					tablsList2.add(tabelsNames.get(i));
-//				}
-//			}
 	  }
 
 	/** 
@@ -1723,21 +1723,22 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	 * colums names.
 	 */
 	private void loadColumnsOfTableIntoCombo(String tableName) {
-		//String tableName = "";
+		DBTable searchedTable = null;
 		try {
+			for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+				if(globalListOfTables.get(loopIndex).getTableName().equals(tableName)){
+					searchedTable=globalListOfTables.get(loopIndex);
+				}
+			}
 			//tableName = 
 			comboColumnName2.removeAll();
+			if(searchedTable!=null){
+				for (int loopIndex = 0; loopIndex < searchedTable.getListOfColumnsNames().size(); loopIndex++) {
+					comboColumnName2.add(searchedTable.getTableName()+"."+searchedTable.getListOfColumnsNames().get(loopIndex));
+				}
+			}
 		} catch (Exception e) {
 			System.out.print("ERROR:"+e.getMessage());
-		}
-		
-		//zum testen***
-		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			try {
-				comboColumnName2.add(tableName+".Column" + loopIndex);
-			} catch (Exception e) {
-				System.out.print("ERROR:"+e.getMessage());
-			}
 		}
 		//*************
 	}
@@ -1747,23 +1748,23 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	 * colums names.
 	 */
 	private void loadColumnsOfTableIntoCombo3(String tableName) {
-		//String tableName = "";
+		DBTable searchedTable = null;
 		try {
+			for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+				if(globalListOfTables.get(loopIndex).getTableName().equals(tableName)){
+					searchedTable=globalListOfTables.get(loopIndex);
+				}
+			}
 			//tableName = 
 			comboColumnName3.removeAll();
+			if(searchedTable!=null){
+				for (int loopIndex = 0; loopIndex < searchedTable.getListOfColumnsNames().size(); loopIndex++) {
+					comboColumnName3.add(searchedTable.getTableName()+"."+searchedTable.getListOfColumnsNames().get(loopIndex));
+				}
+			}
 		} catch (Exception e) {
 			System.out.print("ERROR:"+e.getMessage());
 		}
-		
-		//zum testen***
-		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			try {
-				comboColumnName3.add(tableName+".Column" + loopIndex);
-			} catch (Exception e) {
-				System.out.print("ERROR:"+e.getMessage());
-			}
-		}
-		//*************
 	}
 	
 	/**
@@ -1771,21 +1772,22 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	 * colums names.
 	 */
 	private void loadColumnsOfTableIntoCombo4(String tableName) {
-		//String tableName = "";
+		DBTable searchedTable = null;
 		try {
+			for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+				if(globalListOfTables.get(loopIndex).getTableName().equals(tableName)){
+					searchedTable=globalListOfTables.get(loopIndex);
+				}
+			}
 			//tableName = 
 			comboColumnName4.removeAll();
+			if(searchedTable!=null){
+				for (int loopIndex = 0; loopIndex < searchedTable.getListOfColumnsNames().size(); loopIndex++) {
+					comboColumnName4.add(searchedTable.getTableName()+"."+searchedTable.getListOfColumnsNames().get(loopIndex));
+				}
+			}
 		} catch (Exception e) {
 			System.out.print("ERROR:"+e.getMessage());
-		}
-		
-		//zum testen***
-		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			try {
-				comboColumnName4.add(tableName+".Column" + loopIndex);
-			} catch (Exception e) {
-				System.out.print("ERROR:"+e.getMessage());
-			}
 		}
 		//*************
 	}
@@ -1819,22 +1821,24 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	 * colums names.
 	 */
 	private void loadColumnsOfTableIntoCombo2(String tableName) {
-		//String tableName = "";
+		 DBTable searchedTable = null;
 		try {
+			for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+				if(globalListOfTables.get(loopIndex).getTableName().equals(tableName)){
+					searchedTable=globalListOfTables.get(loopIndex);
+				}
+			}
 			//tableName = 
 			comboColumnName5.removeAll();
+			if(searchedTable!=null){
+				for (int loopIndex = 0; loopIndex < searchedTable.getListOfColumnsNames().size(); loopIndex++) {
+					comboColumnName5.add(searchedTable.getTableName()+"."+searchedTable.getListOfColumnsNames().get(loopIndex));
+				}
+			}
 		} catch (Exception e) {
 			System.out.print("ERROR:"+e.getMessage());
 		}
 		
-		//zum testen***
-		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			try {
-				comboColumnName5.add(tableName+".Column" + loopIndex);
-			} catch (Exception e) {
-				System.out.print("ERROR:"+e.getMessage());
-			}
-		}
 		//*************
 	}
 	
@@ -1886,18 +1890,8 @@ public class SelectAndRetrieveDataEditor extends AStatementEditor {
 	private void loadTheTablesIntoList() {
 		
 		tablsList.removeAll();
-		
-		//zum testen***
-		for (int loopIndex = 0; loopIndex < 9; loopIndex++) {
-			tablsList.add("Table" + loopIndex);
-		}
-		//*************
-		
-		ArrayList<String> tabelsNames=null;//TODO: tables namen laden
-		if(tabelsNames!=null){
-			for(int i=0;i<tabelsNames.size();i++){
-				tablsList.add(tabelsNames.get(i));
-			}
+		for (int loopIndex = 0; loopIndex < globalListOfTables.size(); loopIndex++) {
+			tablsList.add(globalListOfTables.get(loopIndex).getTableName());
 		}
 		
 		

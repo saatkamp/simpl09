@@ -10,7 +10,7 @@ import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 
-public class LiveEditStyleText extends StyledText{
+public class LiveEditStyleText_SE extends StyledText{
   
 
   String BPEL_VARIABLE="BPEL_VARIABLE";
@@ -24,7 +24,7 @@ public class LiveEditStyleText extends StyledText{
   String[] tables={"Table1","Table2","Table3","Table4","Table5","Table6","Table7","Table8","Table9"};
   LinkedList<StyleRange> list = new LinkedList<StyleRange>();
   
-  public LiveEditStyleText(Composite theComposite) {
+  public LiveEditStyleText_SE(Composite theComposite) {
     
 	  //super(shell, SWT.MULTI | SWT.WRAP | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 	  super(theComposite,SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
