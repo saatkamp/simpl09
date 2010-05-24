@@ -37,8 +37,8 @@ public abstract class DataManagementActivity extends
 		this.dsLanguage = element.getAttribute("dsLanguage").toString();
 		this.activityName = element.getAttribute("name").toString();
 		
-		processName = context.getOActivity().getOwner().getName();
-		deployDir = context.getDUDir().getPath()+"deploy.xml";
+		DataManagementActivity.setProcessName(context.getOActivity().getOwner().getName());
+		DataManagementActivity.setDeployDir(context.getDUDir().getPath()+"deploy.xml");
 	}
 
 	public DataSource getDataSource(String activityName, String dataSourceName) {
@@ -75,6 +75,14 @@ public abstract class DataManagementActivity extends
 
 	public static String getProcessName() {
 		return processName;
+	}
+
+	public static void setDeployDir(String deployDir) {
+		DataManagementActivity.deployDir = deployDir;
+	}
+
+	public static void setProcessName(String processName) {
+		DataManagementActivity.processName = processName;
 	}
 
 	// Diese beiden Methoden sind nur zu Testzwecken.
