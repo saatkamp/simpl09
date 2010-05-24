@@ -1,6 +1,6 @@
 
 /**
- * GetResponse.java
+ * RDBSet.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:47 EDT)
@@ -10,17 +10,16 @@
             
 
             /**
-            *  GetResponse bean class
+            *  RDBSet bean class
             */
         
-        public  class GetResponse
+        public  class RDBSet
         implements org.apache.axis2.databinding.ADBBean{
-        
-                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://webservices.rrs.simpl.org/",
-                "getResponse",
-                "ns1");
-
+        /* This type was generated from the piece of schema that had
+                name = RDBSet
+                Namespace URI = http://webservices.rrs.simpl.org/
+                Namespace Prefix = ns1
+                */
             
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
@@ -33,34 +32,86 @@
         
 
                         /**
-                        * field for _return
+                        * field for Table
+                        * This was an Array!
                         */
 
                         
-                                    protected org.simpl.rrs.webservices.RDBSet local_return ;
+                                    protected org.simpl.rrs.webservices.Table[] localTable ;
                                 
+                           /*  This tracker boolean wil be used to detect whether the user called the set method
+                          *   for this attribute. It will be used to determine whether to include this field
+                           *   in the serialized XML
+                           */
+                           protected boolean localTableTracker = false ;
+                           
 
                            /**
                            * Auto generated getter method
-                           * @return org.simpl.rrs.webservices.RDBSet
+                           * @return org.simpl.rrs.webservices.Table[]
                            */
-                           public  org.simpl.rrs.webservices.RDBSet get_return(){
-                               return local_return;
+                           public  org.simpl.rrs.webservices.Table[] getTable(){
+                               return localTable;
                            }
 
                            
                         
-                            /**
-                               * Auto generated setter method
-                               * @param param _return
-                               */
-                               public void set_return(org.simpl.rrs.webservices.RDBSet param){
-                            
-                                            this.local_return=param;
-                                    
 
-                               }
+
+                               
+                              /**
+                               * validate the array for Table
+                               */
+                              protected void validateTable(org.simpl.rrs.webservices.Table[] param){
+                             
+                              }
+
+
+                             /**
+                              * Auto generated setter method
+                              * @param param Table
+                              */
+                              public void setTable(org.simpl.rrs.webservices.Table[] param){
+                              
+                                   validateTable(param);
+
+                               
+                                          if (param != null){
+                                             //update the setting tracker
+                                             localTableTracker = true;
+                                          } else {
+                                             localTableTracker = false;
+                                                 
+                                          }
+                                      
+                                      this.localTable=param;
+                              }
+
+                               
+                             
+                             /**
+                             * Auto generated add method for the array for convenience
+                             * @param param org.simpl.rrs.webservices.Table
+                             */
+                             public void addTable(org.simpl.rrs.webservices.Table param){
+                                   if (localTable == null){
+                                   localTable = new org.simpl.rrs.webservices.Table[]{};
+                                   }
+
                             
+                                 //update the setting tracker
+                                localTableTracker = true;
+                            
+
+                               java.util.List list =
+                            org.apache.axis2.databinding.utils.ConverterUtil.toList(localTable);
+                               list.add(param);
+                               this.localTable =
+                             (org.simpl.rrs.webservices.Table[])list.toArray(
+                            new org.simpl.rrs.webservices.Table[list.size()]);
+
+                             }
+                             
 
      /**
      * isReaderMTOMAware
@@ -90,15 +141,15 @@
 
 
         
-                org.apache.axiom.om.OMDataSource dataSource =
-                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME){
+               org.apache.axiom.om.OMDataSource dataSource =
+                       new org.apache.axis2.databinding.ADBDataSource(this,parentQName){
 
                  public void serialize(org.apache.axis2.databinding.utils.writer.MTOMAwareXMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
-                       GetResponse.this.serialize(MY_QNAME,factory,xmlWriter);
+                       RDBSet.this.serialize(parentQName,factory,xmlWriter);
                  }
                };
                return new org.apache.axiom.om.impl.llom.OMSourcedElementImpl(
-               MY_QNAME,factory,dataSource);
+               parentQName,factory,dataSource);
             
        }
 
@@ -148,23 +199,35 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://webservices.rrs.simpl.org/");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":getResponse",
+                           namespacePrefix+":RDBSet",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "getResponse",
+                           "RDBSet",
                            xmlWriter);
                    }
 
                
                    }
-               
-                                            if (local_return==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
+                if (localTableTracker){
+                                       if (localTable!=null){
+                                            for (int i = 0;i < localTable.length;i++){
+                                                if (localTable[i] != null){
+                                                 localTable[i].serialize(new javax.xml.namespace.QName("","table"),
+                                                           factory,xmlWriter);
+                                                } else {
+                                                   
+                                                        // we don't have to do any thing since minOccures is zero
+                                                    
+                                                }
+
                                             }
-                                           local_return.serialize(new javax.xml.namespace.QName("","return"),
-                                               factory,xmlWriter);
+                                     } else {
                                         
+                                               throw new org.apache.axis2.databinding.ADBException("table cannot be null!!");
+                                        
+                                    }
+                                 }
                     xmlWriter.writeEndElement();
                
 
@@ -326,16 +389,28 @@
                  java.util.ArrayList elementList = new java.util.ArrayList();
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
-                
-                            elementList.add(new javax.xml.namespace.QName("",
-                                                                      "return"));
-                            
-                            
-                                    if (local_return==null){
-                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
+                 if (localTableTracker){
+                             if (localTable!=null) {
+                                 for (int i = 0;i < localTable.length;i++){
+
+                                    if (localTable[i] != null){
+                                         elementList.add(new javax.xml.namespace.QName("",
+                                                                          "table"));
+                                         elementList.add(localTable[i]);
+                                    } else {
+                                        
+                                                // nothing to do
+                                            
                                     }
-                                    elementList.add(local_return);
-                                
+
+                                 }
+                             } else {
+                                 
+                                        throw new org.apache.axis2.databinding.ADBException("table cannot be null!!");
+                                    
+                             }
+
+                        }
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -360,9 +435,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GetResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            GetResponse object =
-                new GetResponse();
+        public static RDBSet parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            RDBSet object =
+                new RDBSet();
 
             int event;
             java.lang.String nillableValue = null;
@@ -386,10 +461,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"getResponse".equals(type)){
+                            if (!"RDBSet".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GetResponse)org.simpl.rrs.webservices.ExtensionMapper.getTypeObject(
+                                return (RDBSet)org.simpl.rrs.webservices.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -411,22 +486,54 @@
                     
                     reader.next();
                 
+                        java.util.ArrayList list1 = new java.util.ArrayList();
+                    
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","return").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","table").equals(reader.getName())){
                                 
-                                                object.set_return(org.simpl.rrs.webservices.RDBSet.Factory.parse(reader));
-                                              
-                                        reader.next();
                                     
+                                    
+                                    // Process the array and step past its final element's end.
+                                    list1.add(org.simpl.rrs.webservices.Table.Factory.parse(reader));
+                                                                
+                                                        //loop until we find a start element that is not part of this array
+                                                        boolean loopDone1 = false;
+                                                        while(!loopDone1){
+                                                            // We should be at the end element, but make sure
+                                                            while (!reader.isEndElement())
+                                                                reader.next();
+                                                            // Step out of this element
+                                                            reader.next();
+                                                            // Step to next element event.
+                                                            while (!reader.isStartElement() && !reader.isEndElement())
+                                                                reader.next();
+                                                            if (reader.isEndElement()){
+                                                                //two continuous end elements means we are exiting the xml structure
+                                                                loopDone1 = true;
+                                                            } else {
+                                                                if (new javax.xml.namespace.QName("","table").equals(reader.getName())){
+                                                                    list1.add(org.simpl.rrs.webservices.Table.Factory.parse(reader));
+                                                                        
+                                                                }else{
+                                                                    loopDone1 = true;
+                                                                }
+                                                            }
+                                                        }
+                                                        // call the converter utility  to convert and set the array
+                                                        
+                                                        object.setTable((org.simpl.rrs.webservices.Table[])
+                                                            org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
+                                                                org.simpl.rrs.webservices.Table.class,
+                                                                list1));
+                                                            
                               }  // End of if for expected property start element
                                 
-                                else{
-                                    // A start element we are not expecting indicates an invalid parameter was passed
-                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
-                                }
-                              
+                                    else {
+                                        
+                                    }
+                                  
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             

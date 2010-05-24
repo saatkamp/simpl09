@@ -6,10 +6,11 @@ import java.util.StringTokenizer;
 import org.simpl.rrs.RRS;
 import org.simpl.rrs.dsadapter.DSAdapter;
 import org.simpl.rrs.webservices.EPR;
+import org.simpl.rrs.webservices.RDBSet;
 
 public class RetrievalServiceImpl implements RetrievalService {
 
-	public Object get(EPR epr) {
+	public RDBSet get(EPR epr) {
 
 		LinkedHashMap<String, String> EPRHM = EPRtoHM(epr);
 		System.out.println(EPRHM.get("dsAddress"));
@@ -29,7 +30,7 @@ public class RetrievalServiceImpl implements RetrievalService {
 		// anhand von Type und Subtype, und Daten holen...
 		DSAdapter dsAdapter = RRS.getInstance().dsAdapter(dsType, dsSubtype);
 
-		Object data = dsAdapter.retrieveData(epr.getReferenceParameters().getDsAddress(), epr.getReferenceParameters().getStatement());
+		RDBSet data = dsAdapter.retrieveData(epr.getReferenceParameters().getDsAddress(), epr.getReferenceParameters().getStatement());
 		
 		return data;
 

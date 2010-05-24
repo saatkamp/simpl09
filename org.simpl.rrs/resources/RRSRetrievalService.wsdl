@@ -10,7 +10,7 @@
     </part>
   </message>
   <message name="getResponse">
-    <part name="return" type="xsd:anyType">
+    <part name="return" type="tns:RDBSet">
     </part>
   </message>
   <portType name="RRSRetrievalService">

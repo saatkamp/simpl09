@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _RdbData_QNAME = new QName("http://webservices.rrs.simpl.org/", "rdbData");
     private final static QName _Epr_QNAME = new QName("http://webservices.rrs.simpl.org/", "epr");
 
     /**
@@ -34,19 +35,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EPR }
+     * Create an instance of {@link Column }
      * 
      */
-    public EPR createEPR() {
-        return new EPR();
-    }
-
-    /**
-     * Create an instance of {@link StringArray }
-     * 
-     */
-    public StringArray createStringArray() {
-        return new StringArray();
+    public Column createColumn() {
+        return new Column();
     }
 
     /**
@@ -58,11 +51,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RDBSet }
+     * 
+     */
+    public RDBSet createRDBSet() {
+        return new RDBSet();
+    }
+
+    /**
      * Create an instance of {@link ReferenceProperties }
      * 
      */
     public ReferenceProperties createReferenceProperties() {
         return new ReferenceProperties();
+    }
+
+    /**
+     * Create an instance of {@link EPR }
+     * 
+     */
+    public EPR createEPR() {
+        return new EPR();
+    }
+
+    /**
+     * Create an instance of {@link Table }
+     * 
+     */
+    public Table createTable() {
+        return new Table();
+    }
+
+    /**
+     * Create an instance of {@link StringArray }
+     * 
+     */
+    public StringArray createStringArray() {
+        return new StringArray();
     }
 
     /**
@@ -79,6 +104,15 @@ public class ObjectFactory {
      */
     public EPRArray createEPRArray() {
         return new EPRArray();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RDBSet }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservices.rrs.simpl.org/", name = "rdbData")
+    public JAXBElement<RDBSet> createRdbData(RDBSet value) {
+        return new JAXBElement<RDBSet>(_RdbData_QNAME, RDBSet.class, null, value);
     }
 
     /**

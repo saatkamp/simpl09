@@ -1,5 +1,7 @@
 package org.simpl.rrs.dsadapter;
 
+import org.simpl.rrs.webservices.RDBSet;
+
 
 
 
@@ -9,6 +11,6 @@ public interface DSAdapter {
 
 	public <T> boolean closeConnection(T connection);
 	  
-	public Object retrieveData (String dsAddress, String Statement);
+	public RDBSet retrieveData (String dsAddress, String Statement);
 	  
 }
