@@ -26,8 +26,11 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.w3c.dom.Element;
@@ -141,18 +144,12 @@ public class ParametersListPopUp{
 			public void modifyText(ModifyEvent e) {
 				System.out.print(textToSearch.getText());
 				searchListForResults(textToSearch.getText());
-			}
-
-		
-			
+			}		
 		});	
 		
-		textToSearch.setLayoutData(gridData1);
-		
-		listToSearch = new List(theShell, SWT.BORDER);
-		//listToSearch.setItems((String[]) arrayOfElements.toArray());
-		listToSearch.setLayoutData(gridData);
-		listToSearch.addSelectionListener(new SelectionListener() {
+		Button addToStatement=new Button(theShell, SWT.NONE);
+		addToStatement.setText("Insert to statement");
+		addToStatement.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -164,6 +161,19 @@ public class ParametersListPopUp{
 			public void widgetDefaultSelected(SelectionEvent e) {
 				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
 				//loadColumsOfTable(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+			}
+		});
+		
+		textToSearch.setLayoutData(gridData1);
+		
+		listToSearch = new List(theShell, SWT.BORDER);
+		//listToSearch.setItems((String[]) arrayOfElements.toArray());
+		listToSearch.setLayoutData(gridData);
+		listToSearch.addListener(SWT.MouseDoubleClick, new Listener() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
 			}
 		});
 		

@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: TablsListPopUp.java 1443 2010-05-21 08:46:18Z ferass_z2000@yahoo.com $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -38,16 +38,16 @@ import org.eclipse.swt.widgets.Table;
 /**
  * The Class ElementsListPopUp.
  */
-public class TablsListPopUp{
+public class FileSysListPopUp{
 	
 	
-	ArrayList<DBTable> listOfTables;
+	ArrayList<FileSystemElement> listOfFSysElements;
 	/** The text to search. */
 	Text textToSearch;
-	
+	Text infoTextBox;
 	/** The list to search. */
 	List listToSearch,listColumns;
-	
+	String typeOfElement="";
 	/** The array of elements. */
 	ArrayList<String> arrayOfElements=new ArrayList<String>();
 	
@@ -78,13 +78,20 @@ public class TablsListPopUp{
 	
 	/**
 	 * Instantiates a new elements list pop up.
+	 * @param typeOfElement 
 	 * 
 	 * @param statementText
 	 *            the statement text
 	 */
-	public TablsListPopUp(LiveEditStyleText statementText)
+	public FileSysListPopUp(String typeOfElement, LiveEditStyleText statementText)
 	{
-		createSShell(statementText);
+		this.typeOfElement=typeOfElement;
+		if(!(typeOfElement.toUpperCase().equals("DRIVE"))||!(typeOfElement.toUpperCase().equals("COMMAND"))){
+			createSShell(statementText);
+		}
+		else{
+			createDriverCommandSShell(statementText);
+		}
 //		theShell.setSize(new Point(282, 184));
 //		GridLayout gridLayout = new GridLayout();
 //		gridLayout.numColumns = 1;
@@ -110,7 +117,11 @@ public class TablsListPopUp{
 	    
 	}
 	
-	private void createSShell(final LiveEditStyleText statementText) {
+	/**
+	 * 
+	 * @param statementText
+	 */
+	private void createDriverCommandSShell(final LiveEditStyleText statementText) {
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = false;
 		gridData1.horizontalAlignment = GridData.FILL;
@@ -147,25 +158,20 @@ public class TablsListPopUp{
 		
 			
 		});	
+		
 		Button addToStatement=new Button(theShell, SWT.NONE);
 		addToStatement.setText("Insert to statement");
 		addToStatement.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
-				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);	
-				for(int i=0;i<listColumns.getSelectionCount();i++){
-					statementText.append(" "+listColumns.getSelection()[i]);	
-				}
-				
-				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);	
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);				
 			}
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
 			}
 		});
-		
 		//textToSearch.setLayoutData(gridData);
 		
 		listToSearch = new List(theShell, SWT.BORDER);
@@ -175,62 +181,140 @@ public class TablsListPopUp{
 			
 			@Override
 			public void handleEvent(Event event) {
-				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
-				
-				
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);				
 			}
 		});
+		
+		listToSearch = new List(theShell, SWT.BORDER);
+		//listToSearch.setItems((String[]) arrayOfElements.toArray());
+		listToSearch.setLayoutData(gridData);
 		listToSearch.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				loadColumsOfTable(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+			   if(typeOfElement.toUpperCase().equals("COMMAND")){
+				loadInformationCommand(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+			   }
+			   if(typeOfElement.toUpperCase().equals("DRIVE")){
+					loadInformationDrive(listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				}
 			}
+			
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {				
+			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
+
+		infoTextBox=new Text(theShell, SWT.BORDER);
+		//infoTextBox.setSize(width, height)
+		
+	}
+	
+	
+	private void createSShell(final LiveEditStyleText statementText) {
+		GridData gridData1 = new GridData();
+		gridData1.grabExcessHorizontalSpace = false;
+		gridData1.horizontalAlignment = GridData.FILL;
+		//gridData1.verticalAlignment = GridData.CENTER;
+		gridData1.grabExcessVerticalSpace = true;
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.verticalAlignment = GridData.FILL;
+		gridData.grabExcessVerticalSpace = true;
+		
+		GridData gridData23 = new GridData();
+		gridData23.horizontalAlignment = GridData.FILL;
+		gridData23.verticalAlignment = GridData.CENTER;
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 1;
+		theShell = new Shell(Display.getDefault());
+		theShell.setText("Data-Management-Activity properties");
+		//theShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+		theShell.setLayout(gridLayout);
+		theShell.setSize(new Point(320, 254));
 		
 		
 		
-		listColumns = new List(theShell, SWT.BORDER|SWT.MULTI);
-		listColumns.setLayoutData(gridData);
+		textToSearch = new Text(theShell, SWT.BORDER);
+		textToSearch.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				System.out.print(textToSearch.getText());
+				searchListForResults(textToSearch.getText());
+			}
+		});	
 		
-		listColumns.addListener(SWT.MouseDoubleClick, new Listener() {
+		Button addToStatement=new Button(theShell, SWT.NONE);
+		addToStatement.setText("Insert to statement");
+		addToStatement.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);				
+			}
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+			}
+		});
+		//textToSearch.setLayoutData(gridData);
+		
+		listToSearch = new List(theShell, SWT.BORDER);
+		//listToSearch.setItems((String[]) arrayOfElements.toArray());
+		listToSearch.setLayoutData(gridData);
+		listToSearch.addListener(SWT.MouseDoubleClick, new Listener() {
 			
 			@Override
 			public void handleEvent(Event event) {
-				statementText.append(" "+listColumns.getItems()[listColumns.getSelectionIndex()]);
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);				
 			}
 		});
-	
+		
+		
+		
+		
 	}
 	
-//	private void setTextInStyleText(String string) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-	
 	/**
-	 * add the colums of the spezified table in the colums-liste
+	 * for loading the info of a Driver
+	 * into the text box
+	 * @param string
 	 */
-	private void loadColumsOfTable(String searchedString) {
-		DBTable tmpTableObjekt=null;
-		listColumns.removeAll();
-		for(int i=0;i<listOfTableObjekts.size();i++){
+	private void loadInformationDrive(String searchedString) {
+		FileSystemElement tmpElement;
+		infoTextBox.setText("");
+		for(int i=0;i<listOfFSysElements.size();i++){
 			
-			tmpTableObjekt=listOfTableObjekts.get(i);
-			if(tmpTableObjekt.getTableName().equals(searchedString)){
-				for(int j=0;j<tmpTableObjekt.getListOfColumnsNames().size();j++){
-					listColumns.add(tmpTableObjekt.getListOfColumnsNames().get(j));
-					//listColumns.setItems((String[]) tmpTableObjekt.getListOfColumnsNames().toArray());
-				}
+			tmpElement=listOfFSysElements.get(i);
+			if(tmpElement.getDriveName().equals(searchedString)){
+				infoTextBox.setText(tmpElement.getDrive_info());
+			}
+			//listColumns.add(tmpTableObjekt.);
+		}
+		
+	}
+	/**
+	 * for loading the info of a Command
+	 * into the text box
+	 * @param string
+	 */
+	private void loadInformationCommand(String searchedString) {
+		FileSystemElement tmpElement;
+		infoTextBox.setText("");
+		for(int i=0;i<listOfFSysElements.size();i++){
+			
+			tmpElement=listOfFSysElements.get(i);
+			if(tmpElement.getCommandName().equals(searchedString)){
+				infoTextBox.setText(tmpElement.getCommandDescription());
 			}
 			//listColumns.add(tmpTableObjekt.);
 		}
 		
 	}
 	
+//	
 	
 	/**
 	 * search live for results in the list
@@ -295,16 +379,38 @@ public class TablsListPopUp{
 	/**
  * for adding the tables names from the DB.
  */
-	public void loadTablesFromDB(DataSource dataSource) {
+	public void loadDataToFSysElementList(String typeOfElement,DataSource dataSource) {
 		
 		MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
-		ArrayList<DBTable> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(dataSource);
-		listOfTableObjekts=listOfTables;
+		metaDataXMLParser_Objekt.loadFileSystemElementsFromDB(dataSource);
 		
-		for(int i=0;i<listOfTables.size();i++){
-			arrayOfElements.add(listOfTableObjekts.get(i).getTableName());
-			listToSearch.add(listOfTableObjekts.get(i).getTableName());
+		if(typeOfElement.toUpperCase().equals("COMMAND")){
+			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_command();
+			for(int i=0;i<listOfFSysElements.size();i++){
+				listToSearch.add(listOfFSysElements.get(i).getCommandName());
+			}
 		}
+		if(typeOfElement.toUpperCase().equals("FOLDER")){
+			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_folder();
+			for(int i=0;i<listOfFSysElements.size();i++){
+				listToSearch.add(listOfFSysElements.get(i).getFolderName());
+			}
+		}
+		if(typeOfElement.toUpperCase().equals("DRIVE")){
+			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_drive();
+			for(int i=0;i<listOfFSysElements.size();i++){
+				listToSearch.add(listOfFSysElements.get(i).getDriveName());
+			}
+		}
+		
+		if(typeOfElement.toUpperCase().equals("FILE")){
+			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_file();
+			for(int i=0;i<listOfFSysElements.size();i++){
+				listToSearch.add(listOfFSysElements.get(i).getFileName());
+			}
+		}
+		
+		
 		
 //		arrayOfElements.add("aaaaa");
 //		arrayOfElements.add("abbb");
