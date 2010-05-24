@@ -358,6 +358,7 @@ public class Transformer {
 		Element assignNameVariables = new Element(EL_ASSIGN, BPEL_NAMESPACE);
 
 		assignNameVariables.setAttribute(AT_NAME, "setEPR_Names");
+		assignNameVariables.setAttribute("validate", "no");
 		for (String varName : refVarNames.keySet()) {
 			// Add a new copy element to the assign, to initialize the generated
 			// EPR name variable
@@ -382,6 +383,7 @@ public class Transformer {
 		Element assignEPRMessages = new Element(EL_ASSIGN, BPEL_NAMESPACE);
 
 		assignEPRMessages.setAttribute(AT_NAME, "copyEPRs");
+		assignEPRMessages.setAttribute("validate", "no");
 		for (String varName : refVarNames.keySet()) {
 			// Add a new copy element to the assign, to copy the queried
 			// EPR to the RRSRetrieval-messagetype variable
@@ -390,10 +392,12 @@ public class Transformer {
 			Element from = new Element(EL_FROM, BPEL_NAMESPACE);
 			from.setAttribute("part", "return");
 			from.setAttribute(EL_VARIABLE, varName + "EPR_Meta");
+			from.setText("");
 
 			Element to = new Element(EL_TO, BPEL_NAMESPACE);
 			to.setAttribute("part", "EPR");
 			to.setAttribute(EL_VARIABLE, varName + "EPR_Ret");
+			to.setText("");
 
 			copy.addContent(from);
 			copy.addContent(to);
@@ -416,11 +420,13 @@ public class Transformer {
 		Element literal = new Element(EL_LITERAL, BPEL_NAMESPACE);
 		literal.setAttribute("space", "preserve", XML_NAMESPACE);
 		literal.setText(value);
+		from.setText("");
 		from.addContent(literal);
 
 		Element to = new Element(EL_TO, BPEL_NAMESPACE);
 		to.setAttribute("part", "eprName");
 		to.setAttribute(EL_VARIABLE, varName);
+		to.setText("");
 
 		copy.addContent(from);
 		copy.addContent(to);
@@ -445,6 +451,7 @@ public class Transformer {
 				+ RRS_META_DATA_PL_PORT);
 		invoke.setAttribute(AT_INPUT_VARIABLE, eprNameVarName);
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, refVarName);
+		invoke.setText("");
 
 		return invoke;
 	}
@@ -454,6 +461,7 @@ public class Transformer {
 
 		variable.setAttribute(AT_NAME, name);
 		variable.setAttribute(AT_VARIABLE_TYPE, type);
+		variable.setText("");
 
 		return variable;
 	}
@@ -474,6 +482,7 @@ public class Transformer {
 				+ RRS_RETRIEVAL_PL_PORT);
 		invoke.setAttribute(AT_INPUT_VARIABLE, valueVarName+"EPR_Ret");
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, valueVarName);
+		invoke.setText("");
 
 		return invoke;
 	}
@@ -628,6 +637,7 @@ public class Transformer {
 					// assign from-part
 					from.removeContent();
 					from.setAttribute(AT_VARIABLE, varName);
+					from.setAttribute("part", "return");
 				}
 			} else {
 				/*
