@@ -99,14 +99,22 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 		createWidgets(parent);
 
-		// Setzen das Statement
-		setStatement(activity.getDsStatement());
+		if (activity.getDsStatement() == null){
+			// Setzen das Statement
+			setStatement("");
+		}else {
+			// Setzen das Statement
+			setStatement(activity.getDsStatement());
+		}
+		
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Zieleinheit des Queries.
 		queryTargetText.setText(activity.getQueryTarget());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
+		
+		
 	}
 
 	/**
@@ -361,6 +369,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				activity.setDsStatement(statementText.getText());
 				setStatement(statementText.getText());
 				saveStatementToModel();
 				 
@@ -372,6 +381,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
+				activity.setDsStatement(statementText.getText());
 				setStatement(statementText.getText());
 				saveStatementToModel();
 				
@@ -389,6 +399,14 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 		statementText = new LiveEditStyleText(statementCompo,this);
 		statementText.setLayoutData(gridData15);
+		if (activity.getDsStatement() == null){
+			// Setzen das Statement
+			setStatement("");
+			statementText.setText("");
+		}else {
+			// Setzen das Statement
+			statementText.setText(activity.getDsStatement());
+		}
 		
 //		statementText.addModifyListener(new ModifyListener() {
 //			
