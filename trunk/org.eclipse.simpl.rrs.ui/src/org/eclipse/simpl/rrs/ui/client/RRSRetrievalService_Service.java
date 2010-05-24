@@ -19,7 +19,7 @@ import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "RRSRetrievalService", targetNamespace = "http://webservices.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/axis2/services/RRSRetrievalService.RRSRetrievalServicePort?wsdl")
+@WebServiceClient(name = "RRSRetrievalService", targetNamespace = "http://webservices.rrs.simpl.org/", wsdlLocation = "http://localhost:8080/axis2/services/RRSRetrievalService?wsdl")
 public class RRSRetrievalService_Service
     extends Service
 {

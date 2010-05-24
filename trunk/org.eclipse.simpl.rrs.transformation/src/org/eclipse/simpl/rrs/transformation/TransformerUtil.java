@@ -377,7 +377,9 @@ public class TransformerUtil {
 
 			@Override
 			public boolean accept(File file) {
-				return true;
+				boolean accept = !file.getName().endsWith("bpelex");
+				
+				return accept;
 			}
 
 		};

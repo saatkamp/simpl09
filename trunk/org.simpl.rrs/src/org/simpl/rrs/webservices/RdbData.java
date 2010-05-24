@@ -1,6 +1,6 @@
 
 /**
- * GetResponse.java
+ * RdbData.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:47 EDT)
@@ -10,15 +10,15 @@
             
 
             /**
-            *  GetResponse bean class
+            *  RdbData bean class
             */
         
-        public  class GetResponse
+        public  class RdbData
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "http://webservices.rrs.simpl.org/",
-                "getResponse",
+                "rdbData",
                 "ns1");
 
             
@@ -33,30 +33,30 @@
         
 
                         /**
-                        * field for _return
+                        * field for RdbData
                         */
 
                         
-                                    protected org.simpl.rrs.webservices.RDBSet local_return ;
+                                    protected org.simpl.rrs.webservices.RDBSet localRdbData ;
                                 
 
                            /**
                            * Auto generated getter method
                            * @return org.simpl.rrs.webservices.RDBSet
                            */
-                           public  org.simpl.rrs.webservices.RDBSet get_return(){
-                               return local_return;
+                           public  org.simpl.rrs.webservices.RDBSet getRdbData(){
+                               return localRdbData;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param _return
+                               * @param param RdbData
                                */
-                               public void set_return(org.simpl.rrs.webservices.RDBSet param){
+                               public void setRdbData(org.simpl.rrs.webservices.RDBSet param){
                             
-                                            this.local_return=param;
+                                            this.localRdbData=param;
                                     
 
                                }
@@ -94,7 +94,7 @@
                        new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME){
 
                  public void serialize(org.apache.axis2.databinding.utils.writer.MTOMAwareXMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
-                       GetResponse.this.serialize(MY_QNAME,factory,xmlWriter);
+                       RdbData.this.serialize(MY_QNAME,factory,xmlWriter);
                  }
                };
                return new org.apache.axiom.om.impl.llom.OMSourcedElementImpl(
@@ -116,57 +116,13 @@
             throws javax.xml.stream.XMLStreamException, org.apache.axis2.databinding.ADBException{
             
                 
-
-
-                java.lang.String prefix = null;
-                java.lang.String namespace = null;
+                //We can safely assume an element has only one type associated with it
                 
-
-                    prefix = parentQName.getPrefix();
-                    namespace = parentQName.getNamespaceURI();
-
-                    if ((namespace != null) && (namespace.trim().length() > 0)) {
-                        java.lang.String writerPrefix = xmlWriter.getPrefix(namespace);
-                        if (writerPrefix != null) {
-                            xmlWriter.writeStartElement(namespace, parentQName.getLocalPart());
-                        } else {
-                            if (prefix == null) {
-                                prefix = generatePrefix(namespace);
-                            }
-
-                            xmlWriter.writeStartElement(prefix, parentQName.getLocalPart(), namespace);
-                            xmlWriter.writeNamespace(prefix, namespace);
-                            xmlWriter.setPrefix(prefix, namespace);
-                        }
-                    } else {
-                        xmlWriter.writeStartElement(parentQName.getLocalPart());
-                    }
-                
-                  if (serializeType){
-               
-
-                   java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://webservices.rrs.simpl.org/");
-                   if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
-                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":getResponse",
-                           xmlWriter);
-                   } else {
-                       writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "getResponse",
-                           xmlWriter);
-                   }
-
-               
-                   }
-               
-                                            if (local_return==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
-                                            }
-                                           local_return.serialize(new javax.xml.namespace.QName("","return"),
-                                               factory,xmlWriter);
-                                        
-                    xmlWriter.writeEndElement();
-               
+                                 if (localRdbData==null){
+                                   throw new org.apache.axis2.databinding.ADBException("Property cannot be null!");
+                                 }
+                                 localRdbData.serialize(MY_QNAME,factory,xmlWriter);
+                            
 
         }
 
@@ -323,23 +279,9 @@
 
 
         
-                 java.util.ArrayList elementList = new java.util.ArrayList();
-                 java.util.ArrayList attribList = new java.util.ArrayList();
-
                 
-                            elementList.add(new javax.xml.namespace.QName("",
-                                                                      "return"));
-                            
-                            
-                                    if (local_return==null){
-                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
-                                    }
-                                    elementList.add(local_return);
-                                
-
-                return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
-            
-            
+                //We can safely assume an element has only one type associated with it
+                return localRdbData.getPullParser(MY_QNAME);
 
         }
 
@@ -360,9 +302,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GetResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            GetResponse object =
-                new GetResponse();
+        public static RdbData parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            RdbData object =
+                new RdbData();
 
             int event;
             java.lang.String nillableValue = null;
@@ -374,32 +316,6 @@
                     reader.next();
 
                 
-                if (reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","type")!=null){
-                  java.lang.String fullTypeName = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance",
-                        "type");
-                  if (fullTypeName!=null){
-                    java.lang.String nsPrefix = null;
-                    if (fullTypeName.indexOf(":") > -1){
-                        nsPrefix = fullTypeName.substring(0,fullTypeName.indexOf(":"));
-                    }
-                    nsPrefix = nsPrefix==null?"":nsPrefix;
-
-                    java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
-                    
-                            if (!"getResponse".equals(type)){
-                                //find namespace for the prefix
-                                java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GetResponse)org.simpl.rrs.webservices.ExtensionMapper.getTypeObject(
-                                     nsUri,type,reader);
-                              }
-                        
-
-                  }
-                
-
-                }
-
-                
 
                 
                 // Note all attributes that were handled. Used to differ normal attributes
@@ -407,33 +323,26 @@
                 java.util.Vector handledAttributes = new java.util.Vector();
                 
 
-                 
                     
-                    reader.next();
+                while(!reader.isEndElement()) {
+                    if (reader.isStartElement() ){
                 
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("http://webservices.rrs.simpl.org/","rdbData").equals(reader.getName())){
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","return").equals(reader.getName())){
-                                
-                                                object.set_return(org.simpl.rrs.webservices.RDBSet.Factory.parse(reader));
-                                              
-                                        reader.next();
-                                    
+                                                object.setRdbData(org.simpl.rrs.webservices.RDBSet.Factory.parse(reader));
+                                            
                               }  // End of if for expected property start element
                                 
-                                else{
-                                    // A start element we are not expecting indicates an invalid parameter was passed
-                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
-                                }
-                              
-                            while (!reader.isStartElement() && !reader.isEndElement())
+                             else{
+                                        // A start element we are not expecting indicates an invalid parameter was passed
+                                        throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
+                             }
+                          
+                             } else {
                                 reader.next();
-                            
-                                if (reader.isStartElement())
-                                // A start element we are not expecting indicates a trailing invalid property
-                                throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
-                            
+                             }  
+                           }  // end of while loop
+                        
 
 
 

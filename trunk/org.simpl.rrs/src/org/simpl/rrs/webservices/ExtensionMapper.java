@@ -70,9 +70,39 @@
               
                   if (
                   "http://webservices.rrs.simpl.org/".equals(namespaceURI) &&
+                  "RDBSet".equals(typeName)){
+                   
+                            return  org.simpl.rrs.webservices.RDBSet.Factory.parse(reader);
+                        
+
+                  }
+
+              
+                  if (
+                  "http://webservices.rrs.simpl.org/".equals(namespaceURI) &&
                   "stringArray".equals(typeName)){
                    
                             return  org.simpl.rrs.webservices.StringArray.Factory.parse(reader);
+                        
+
+                  }
+
+              
+                  if (
+                  "http://webservices.rrs.simpl.org/".equals(namespaceURI) &&
+                  "column".equals(typeName)){
+                   
+                            return  org.simpl.rrs.webservices.Column.Factory.parse(reader);
+                        
+
+                  }
+
+              
+                  if (
+                  "http://webservices.rrs.simpl.org/".equals(namespaceURI) &&
+                  "table".equals(typeName)){
+                   
+                            return  org.simpl.rrs.webservices.Table.Factory.parse(reader);
                         
 
                   }

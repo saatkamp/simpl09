@@ -23,10 +23,7 @@ public class RRSRetrievalServiceSkeleton {
 			org.simpl.rrs.webservices.Get get) {
 		GetResponse response = new GetResponse();
 
-//		ResultSet res = RRS.getInstance().retrievalService().get(get.getEPR());
-//		Document doc = JDBCUtil.toDocument(res);
-//		XMLOutputter out = new XMLOutputter();
-		Object obj = RRS.getInstance().retrievalService().get(get.getEPR());
+		RDBSet obj = RRS.getInstance().retrievalService().get(get.getEPR());
 		response.set_return(obj);
 
 		return response;

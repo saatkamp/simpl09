@@ -1,6 +1,6 @@
 
 /**
- * GetResponse.java
+ * Table.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:47 EDT)
@@ -10,17 +10,16 @@
             
 
             /**
-            *  GetResponse bean class
+            *  Table bean class
             */
         
-        public  class GetResponse
+        public  class Table
         implements org.apache.axis2.databinding.ADBBean{
-        
-                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://webservices.rrs.simpl.org/",
-                "getResponse",
-                "ns1");
-
+        /* This type was generated from the piece of schema that had
+                name = table
+                Namespace URI = http://webservices.rrs.simpl.org/
+                Namespace Prefix = ns1
+                */
             
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
@@ -33,30 +32,144 @@
         
 
                         /**
-                        * field for _return
+                        * field for Column
+                        * This was an Array!
                         */
 
                         
-                                    protected org.simpl.rrs.webservices.RDBSet local_return ;
+                                    protected org.simpl.rrs.webservices.Column[] localColumn ;
+                                
+                           /*  This tracker boolean wil be used to detect whether the user called the set method
+                          *   for this attribute. It will be used to determine whether to include this field
+                           *   in the serialized XML
+                           */
+                           protected boolean localColumnTracker = false ;
+                           
+
+                           /**
+                           * Auto generated getter method
+                           * @return org.simpl.rrs.webservices.Column[]
+                           */
+                           public  org.simpl.rrs.webservices.Column[] getColumn(){
+                               return localColumn;
+                           }
+
+                           
+                        
+
+
+                               
+                              /**
+                               * validate the array for Column
+                               */
+                              protected void validateColumn(org.simpl.rrs.webservices.Column[] param){
+                             
+                              }
+
+
+                             /**
+                              * Auto generated setter method
+                              * @param param Column
+                              */
+                              public void setColumn(org.simpl.rrs.webservices.Column[] param){
+                              
+                                   validateColumn(param);
+
+                               
+                                          if (param != null){
+                                             //update the setting tracker
+                                             localColumnTracker = true;
+                                          } else {
+                                             localColumnTracker = false;
+                                                 
+                                          }
+                                      
+                                      this.localColumn=param;
+                              }
+
+                               
+                             
+                             /**
+                             * Auto generated add method for the array for convenience
+                             * @param param org.simpl.rrs.webservices.Column
+                             */
+                             public void addColumn(org.simpl.rrs.webservices.Column param){
+                                   if (localColumn == null){
+                                   localColumn = new org.simpl.rrs.webservices.Column[]{};
+                                   }
+
+                            
+                                 //update the setting tracker
+                                localColumnTracker = true;
+                            
+
+                               java.util.List list =
+                            org.apache.axis2.databinding.utils.ConverterUtil.toList(localColumn);
+                               list.add(param);
+                               this.localColumn =
+                             (org.simpl.rrs.webservices.Column[])list.toArray(
+                            new org.simpl.rrs.webservices.Column[list.size()]);
+
+                             }
+                             
+
+                        /**
+                        * field for Name
+                        * This was an Attribute!
+                        */
+
+                        
+                                    protected java.lang.String localName ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return org.simpl.rrs.webservices.RDBSet
+                           * @return java.lang.String
                            */
-                           public  org.simpl.rrs.webservices.RDBSet get_return(){
-                               return local_return;
+                           public  java.lang.String getName(){
+                               return localName;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param _return
+                               * @param param Name
                                */
-                               public void set_return(org.simpl.rrs.webservices.RDBSet param){
+                               public void setName(java.lang.String param){
                             
-                                            this.local_return=param;
+                                            this.localName=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for Schema
+                        * This was an Attribute!
+                        */
+
+                        
+                                    protected java.lang.String localSchema ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getSchema(){
+                               return localSchema;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Schema
+                               */
+                               public void setSchema(java.lang.String param){
+                            
+                                            this.localSchema=param;
                                     
 
                                }
@@ -90,15 +203,15 @@
 
 
         
-                org.apache.axiom.om.OMDataSource dataSource =
-                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME){
+               org.apache.axiom.om.OMDataSource dataSource =
+                       new org.apache.axis2.databinding.ADBDataSource(this,parentQName){
 
                  public void serialize(org.apache.axis2.databinding.utils.writer.MTOMAwareXMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
-                       GetResponse.this.serialize(MY_QNAME,factory,xmlWriter);
+                       Table.this.serialize(parentQName,factory,xmlWriter);
                  }
                };
                return new org.apache.axiom.om.impl.llom.OMSourcedElementImpl(
-               MY_QNAME,factory,dataSource);
+               parentQName,factory,dataSource);
             
        }
 
@@ -148,23 +261,53 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://webservices.rrs.simpl.org/");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":getResponse",
+                           namespacePrefix+":table",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "getResponse",
+                           "table",
                            xmlWriter);
                    }
 
                
                    }
                
-                                            if (local_return==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
-                                            }
-                                           local_return.serialize(new javax.xml.namespace.QName("","return"),
-                                               factory,xmlWriter);
+                                            if (localName != null){
                                         
+                                                writeAttribute("",
+                                                         "name",
+                                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localName), xmlWriter);
+
+                                            
+                                      }
+                                    
+                                            if (localSchema != null){
+                                        
+                                                writeAttribute("",
+                                                         "schema",
+                                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localSchema), xmlWriter);
+
+                                            
+                                      }
+                                     if (localColumnTracker){
+                                       if (localColumn!=null){
+                                            for (int i = 0;i < localColumn.length;i++){
+                                                if (localColumn[i] != null){
+                                                 localColumn[i].serialize(new javax.xml.namespace.QName("","column"),
+                                                           factory,xmlWriter);
+                                                } else {
+                                                   
+                                                        // we don't have to do any thing since minOccures is zero
+                                                    
+                                                }
+
+                                            }
+                                     } else {
+                                        
+                                               throw new org.apache.axis2.databinding.ADBException("column cannot be null!!");
+                                        
+                                    }
+                                 }
                     xmlWriter.writeEndElement();
                
 
@@ -326,15 +469,37 @@
                  java.util.ArrayList elementList = new java.util.ArrayList();
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
-                
-                            elementList.add(new javax.xml.namespace.QName("",
-                                                                      "return"));
-                            
-                            
-                                    if (local_return==null){
-                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
+                 if (localColumnTracker){
+                             if (localColumn!=null) {
+                                 for (int i = 0;i < localColumn.length;i++){
+
+                                    if (localColumn[i] != null){
+                                         elementList.add(new javax.xml.namespace.QName("",
+                                                                          "column"));
+                                         elementList.add(localColumn[i]);
+                                    } else {
+                                        
+                                                // nothing to do
+                                            
                                     }
-                                    elementList.add(local_return);
+
+                                 }
+                             } else {
+                                 
+                                        throw new org.apache.axis2.databinding.ADBException("column cannot be null!!");
+                                    
+                             }
+
+                        }
+                            attribList.add(
+                            new javax.xml.namespace.QName("","name"));
+                            
+                                      attribList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localName));
+                                
+                            attribList.add(
+                            new javax.xml.namespace.QName("","schema"));
+                            
+                                      attribList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localSchema));
                                 
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
@@ -360,9 +525,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GetResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            GetResponse object =
-                new GetResponse();
+        public static Table parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            Table object =
+                new Table();
 
             int event;
             java.lang.String nillableValue = null;
@@ -386,10 +551,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"getResponse".equals(type)){
+                            if (!"table".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GetResponse)org.simpl.rrs.webservices.ExtensionMapper.getTypeObject(
+                                return (Table)org.simpl.rrs.webservices.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -408,25 +573,89 @@
                 
 
                  
+                    // handle attribute "name"
+                    java.lang.String tempAttribName =
+                        
+                                reader.getAttributeValue(null,"name");
+                            
+                   if (tempAttribName!=null){
+                         java.lang.String content = tempAttribName;
+                        
+                                                 object.setName(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(tempAttribName));
+                                            
+                    } else {
+                       
+                    }
+                    handledAttributes.add("name");
+                    
+                    // handle attribute "schema"
+                    java.lang.String tempAttribSchema =
+                        
+                                reader.getAttributeValue(null,"schema");
+                            
+                   if (tempAttribSchema!=null){
+                         java.lang.String content = tempAttribSchema;
+                        
+                                                 object.setSchema(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(tempAttribSchema));
+                                            
+                    } else {
+                       
+                    }
+                    handledAttributes.add("schema");
+                    
                     
                     reader.next();
                 
+                        java.util.ArrayList list1 = new java.util.ArrayList();
+                    
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","return").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","column").equals(reader.getName())){
                                 
-                                                object.set_return(org.simpl.rrs.webservices.RDBSet.Factory.parse(reader));
-                                              
-                                        reader.next();
                                     
+                                    
+                                    // Process the array and step past its final element's end.
+                                    list1.add(org.simpl.rrs.webservices.Column.Factory.parse(reader));
+                                                                
+                                                        //loop until we find a start element that is not part of this array
+                                                        boolean loopDone1 = false;
+                                                        while(!loopDone1){
+                                                            // We should be at the end element, but make sure
+                                                            while (!reader.isEndElement())
+                                                                reader.next();
+                                                            // Step out of this element
+                                                            reader.next();
+                                                            // Step to next element event.
+                                                            while (!reader.isStartElement() && !reader.isEndElement())
+                                                                reader.next();
+                                                            if (reader.isEndElement()){
+                                                                //two continuous end elements means we are exiting the xml structure
+                                                                loopDone1 = true;
+                                                            } else {
+                                                                if (new javax.xml.namespace.QName("","column").equals(reader.getName())){
+                                                                    list1.add(org.simpl.rrs.webservices.Column.Factory.parse(reader));
+                                                                        
+                                                                }else{
+                                                                    loopDone1 = true;
+                                                                }
+                                                            }
+                                                        }
+                                                        // call the converter utility  to convert and set the array
+                                                        
+                                                        object.setColumn((org.simpl.rrs.webservices.Column[])
+                                                            org.apache.axis2.databinding.utils.ConverterUtil.convertToArray(
+                                                                org.simpl.rrs.webservices.Column.class,
+                                                                list1));
+                                                            
                               }  // End of if for expected property start element
                                 
-                                else{
-                                    // A start element we are not expecting indicates an invalid parameter was passed
-                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
-                                }
-                              
+                                    else {
+                                        
+                                    }
+                                  
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             

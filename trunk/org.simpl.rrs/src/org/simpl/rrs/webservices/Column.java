@@ -1,6 +1,6 @@
 
 /**
- * GetResponse.java
+ * Column.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:47 EDT)
@@ -10,17 +10,16 @@
             
 
             /**
-            *  GetResponse bean class
+            *  Column bean class
             */
         
-        public  class GetResponse
+        public  class Column
         implements org.apache.axis2.databinding.ADBBean{
-        
-                public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
-                "http://webservices.rrs.simpl.org/",
-                "getResponse",
-                "ns1");
-
+        /* This type was generated from the piece of schema that had
+                name = column
+                Namespace URI = http://webservices.rrs.simpl.org/
+                Namespace Prefix = ns1
+                */
             
 
         private static java.lang.String generatePrefix(java.lang.String namespace) {
@@ -33,30 +32,92 @@
         
 
                         /**
-                        * field for _return
+                        * field for Value
                         */
 
                         
-                                    protected org.simpl.rrs.webservices.RDBSet local_return ;
+                                    protected java.lang.Object localValue ;
                                 
 
                            /**
                            * Auto generated getter method
-                           * @return org.simpl.rrs.webservices.RDBSet
+                           * @return java.lang.Object
                            */
-                           public  org.simpl.rrs.webservices.RDBSet get_return(){
-                               return local_return;
+                           public  java.lang.Object getValue(){
+                               return localValue;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param _return
+                               * @param param Value
                                */
-                               public void set_return(org.simpl.rrs.webservices.RDBSet param){
+                               public void setValue(java.lang.Object param){
                             
-                                            this.local_return=param;
+                                            this.localValue=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for Name
+                        * This was an Attribute!
+                        */
+
+                        
+                                    protected java.lang.String localName ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getName(){
+                               return localName;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Name
+                               */
+                               public void setName(java.lang.String param){
+                            
+                                            this.localName=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for Type
+                        * This was an Attribute!
+                        */
+
+                        
+                                    protected java.lang.String localType ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getType(){
+                               return localType;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Type
+                               */
+                               public void setType(java.lang.String param){
+                            
+                                            this.localType=param;
                                     
 
                                }
@@ -90,15 +151,15 @@
 
 
         
-                org.apache.axiom.om.OMDataSource dataSource =
-                       new org.apache.axis2.databinding.ADBDataSource(this,MY_QNAME){
+               org.apache.axiom.om.OMDataSource dataSource =
+                       new org.apache.axis2.databinding.ADBDataSource(this,parentQName){
 
                  public void serialize(org.apache.axis2.databinding.utils.writer.MTOMAwareXMLStreamWriter xmlWriter) throws javax.xml.stream.XMLStreamException {
-                       GetResponse.this.serialize(MY_QNAME,factory,xmlWriter);
+                       Column.this.serialize(parentQName,factory,xmlWriter);
                  }
                };
                return new org.apache.axiom.om.impl.llom.OMSourcedElementImpl(
-               MY_QNAME,factory,dataSource);
+               parentQName,factory,dataSource);
             
        }
 
@@ -148,23 +209,71 @@
                    java.lang.String namespacePrefix = registerPrefix(xmlWriter,"http://webservices.rrs.simpl.org/");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":getResponse",
+                           namespacePrefix+":column",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "getResponse",
+                           "column",
                            xmlWriter);
                    }
 
                
                    }
                
-                                            if (local_return==null){
-                                                 throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
-                                            }
-                                           local_return.serialize(new javax.xml.namespace.QName("","return"),
-                                               factory,xmlWriter);
+                                            if (localName != null){
                                         
+                                                writeAttribute("",
+                                                         "name",
+                                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localName), xmlWriter);
+
+                                            
+                                      }
+                                    
+                                            if (localType != null){
+                                        
+                                                writeAttribute("",
+                                                         "type",
+                                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localType), xmlWriter);
+
+                                            
+                                      }
+                                    
+                            
+                            if (localValue!=null){
+                                if (localValue instanceof org.apache.axis2.databinding.ADBBean){
+                                    ((org.apache.axis2.databinding.ADBBean)localValue).serialize(
+                                               new javax.xml.namespace.QName("","value"),
+                                               factory,xmlWriter,true);
+                                 } else {
+                                    java.lang.String namespace2 = "";
+                                    if (! namespace2.equals("")) {
+                                        java.lang.String prefix2 = xmlWriter.getPrefix(namespace2);
+
+                                        if (prefix2 == null) {
+                                            prefix2 = generatePrefix(namespace2);
+
+                                            xmlWriter.writeStartElement(prefix2,"value", namespace2);
+                                            xmlWriter.writeNamespace(prefix2, namespace2);
+                                            xmlWriter.setPrefix(prefix2, namespace2);
+
+                                        } else {
+                                            xmlWriter.writeStartElement(namespace2,"value");
+                                        }
+
+                                    } else {
+                                        xmlWriter.writeStartElement("value");
+                                    }
+                                    org.apache.axis2.databinding.utils.ConverterUtil.serializeAnyType(localValue, xmlWriter);
+                                    xmlWriter.writeEndElement();
+                                 }
+                            } else {
+                                
+                                         throw new org.apache.axis2.databinding.ADBException("value cannot be null!!");
+                                    
+                            }
+
+
+                        
                     xmlWriter.writeEndElement();
                
 
@@ -328,13 +437,23 @@
 
                 
                             elementList.add(new javax.xml.namespace.QName("",
-                                                                      "return"));
+                                                                      "value"));
                             
                             
-                                    if (local_return==null){
-                                         throw new org.apache.axis2.databinding.ADBException("return cannot be null!!");
+                                    if (localValue==null){
+                                         throw new org.apache.axis2.databinding.ADBException("value cannot be null!!");
                                     }
-                                    elementList.add(local_return);
+                                    elementList.add(localValue);
+                                
+                            attribList.add(
+                            new javax.xml.namespace.QName("","name"));
+                            
+                                      attribList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localName));
+                                
+                            attribList.add(
+                            new javax.xml.namespace.QName("","type"));
+                            
+                                      attribList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localType));
                                 
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
@@ -360,9 +479,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GetResponse parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
-            GetResponse object =
-                new GetResponse();
+        public static Column parse(javax.xml.stream.XMLStreamReader reader) throws java.lang.Exception{
+            Column object =
+                new Column();
 
             int event;
             java.lang.String nillableValue = null;
@@ -386,10 +505,10 @@
 
                     java.lang.String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"getResponse".equals(type)){
+                            if (!"column".equals(type)){
                                 //find namespace for the prefix
                                 java.lang.String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GetResponse)org.simpl.rrs.webservices.ExtensionMapper.getTypeObject(
+                                return (Column)org.simpl.rrs.webservices.ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -408,18 +527,51 @@
                 
 
                  
+                    // handle attribute "name"
+                    java.lang.String tempAttribName =
+                        
+                                reader.getAttributeValue(null,"name");
+                            
+                   if (tempAttribName!=null){
+                         java.lang.String content = tempAttribName;
+                        
+                                                 object.setName(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(tempAttribName));
+                                            
+                    } else {
+                       
+                    }
+                    handledAttributes.add("name");
+                    
+                    // handle attribute "type"
+                    java.lang.String tempAttribType =
+                        
+                                reader.getAttributeValue(null,"type");
+                            
+                   if (tempAttribType!=null){
+                         java.lang.String content = tempAttribType;
+                        
+                                                 object.setType(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(tempAttribType));
+                                            
+                    } else {
+                       
+                    }
+                    handledAttributes.add("type");
+                    
                     
                     reader.next();
                 
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","return").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","value").equals(reader.getName())){
                                 
-                                                object.set_return(org.simpl.rrs.webservices.RDBSet.Factory.parse(reader));
-                                              
-                                        reader.next();
-                                    
+                                     object.setValue(org.apache.axis2.databinding.utils.ConverterUtil.getAnyTypeObject(reader,
+                                                org.simpl.rrs.webservices.ExtensionMapper.class));
+                                       
+                                         reader.next();
+                                     
                               }  // End of if for expected property start element
                                 
                                 else{
