@@ -3,9 +3,11 @@ package org.eclipse.bpel.simpl.ui.sql.editor;
 import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.ui.extensions.AStatementEditor;
-import org.eclipse.bpel.simpl.ui.sql.widgets.LiveEditStyleText;
 import org.eclipse.bpel.simpl.ui.sql.xmlParser.KeyWord;
 import org.eclipse.bpel.simpl.ui.sql.xmlParser.QueryKeyWordsXmlParser;
+import org.eclipse.bpel.simpl.ui.widgets.DBTable;
+import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
+import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -29,8 +31,12 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+
 public class InsertEditor extends AStatementEditor {
 
+	MetaDataXMLParser metaDataXMLParser_Objekt;
+	ArrayList<DBTable> globalListOfTables;
+	
 	private Composite comp = null;
 	private Composite compos = null;
 	private LiveEditStyleText statementText = null;
@@ -197,7 +203,8 @@ public class InsertEditor extends AStatementEditor {
 		else {statementText.setText("INSERT INTO ");
 			
 		}
-		
+		metaDataXMLParser_Objekt=new MetaDataXMLParser();
+		globalListOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(getDataSource());
 		createTabTable(parser.parseDocument());
 	}
 	

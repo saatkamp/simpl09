@@ -30,9 +30,9 @@ public class StatementEditDialog {
 	private Button buttonSave = null;
 	private Button buttonAbort;
 	
-	LiveEditStyleText styleTextEditor;	
+	LiveEditStyleText_SE styleTextEditor;	
 	
-	public StatementEditDialog(final LiveEditStyleText statementFeld){
+	public StatementEditDialog(final LiveEditStyleText_SE statementFeld){
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = true;
 		gridData1.grabExcessVerticalSpace = false;
@@ -61,7 +61,7 @@ public class StatementEditDialog {
 		labelDialogMassege.setFont(new Font(Display.getDefault(), "Tahoma", 14, SWT.NORMAL));
 		labelDialogMassege.setLayoutData(gridData1);
 		Label filler1 = new Label(theShell, SWT.NONE);
-		styleTextEditor = new LiveEditStyleText(theShell);
+		styleTextEditor = new LiveEditStyleText_SE(theShell);
 		styleTextEditor.setLayoutData(gridData);
 		styleTextEditor.setText(statementFeld.getText());
 		
