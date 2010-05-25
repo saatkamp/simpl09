@@ -27,9 +27,10 @@ public class ModelProvider {
 
 			ds.setName(source.getName());
 			ds.setAddress(source.getAddress());
-			ds.setType(source.getAttributeValue("type"));
-			ds.setSubType(source.getAttributeValue("subtype"));
-			ds.setLanguage(source.getAttributeValue("language"));
+			ds.setType(source.getType());
+			ds.setSubType(source.getSubtype());
+			ds.setLanguage(source.getLanguage());
+			ds.setDataFormat(source.getDataFormat());
 			datasources.add(ds);
 		}
 	}
