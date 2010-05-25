@@ -43,6 +43,10 @@ public class ReferenceLabelProvider extends LabelProvider implements
 			return reference.getReferenceParameters().getDsAddress();
 		case 4:
 			return reference.getReferenceParameters().getStatement();
+		case 5:
+			return reference.getReferenceParameters().getUserName();
+		case 6:
+			return reference.getReferenceParameters().getPassword();
 		default:
 			throw new RuntimeException("Too much columns");
 		}

@@ -89,8 +89,8 @@ public class ReferenceManagementView extends ViewPart {
 	// This will create the columns for the table
 	private void createColumns(final TableViewer viewer) {
 
-		String[] titles = { "Name", "RRS-Address", "Adapter", "Data source address", "Statement" };
-		int[] bounds = { 100, 150, 270, 170, 300 };
+		String[] titles = { "Name", "RRS-Address", "Adapter", "Data source address", "Statement", "User name", "Password" };
+		int[] bounds = { 100, 150, 170, 170, 200, 100, 100 };
 
 		for (int i = 0; i < titles.length; i++) {
 			final int index = i;

@@ -29,6 +29,8 @@ public class AddReferenceDialog extends TitleAreaDialog {
 	private Text address;
 	private CCombo adapter;
 	private Text dsAddress;
+	private Text userName;
+	private Text password;
 	private Text statement;
 	private EPR reference;
 
@@ -86,11 +88,21 @@ public class AddReferenceDialog extends TitleAreaDialog {
 		Label label5 = new Label(parent, SWT.NONE);
 		label5.setText("Statement *");
 		statement = new Text(parent, SWT.BORDER);
+		
+		Label label6 = new Label(parent, SWT.NONE);
+		label6.setText("User");
+		userName = new Text(parent, SWT.BORDER);
+		
+		Label label7 = new Label(parent, SWT.NONE);
+		label7.setText("Password");
+		password = new Text(parent, SWT.BORDER);
 
 		name.setLayoutData(gridData);
 		address.setLayoutData(gridData);
 		adapter.setLayoutData(gridData);
 		dsAddress.setLayoutData(gridData);
+		userName.setLayoutData(gridData);
+		password.setLayoutData(gridData);
 		statement.setLayoutData(gridData);
 
 		return parent;
@@ -123,6 +135,8 @@ public class AddReferenceDialog extends TitleAreaDialog {
 					param1.setReferenceName(name.getText());
 					param1.setDsAddress(dsAddress.getText());
 					param1.setStatement(statement.getText());
+					param1.setUserName(userName.getText());
+					param1.setPassword(password.getText());
 					reference.setAddress(address.getText());
 					reference.setReferenceParameters(param1);
 					reference.setReferenceProperties(prop1);

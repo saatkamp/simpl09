@@ -29,6 +29,8 @@ public class EditReferenceDialog extends TitleAreaDialog {
 	private Text address;
 	private CCombo adapter;
 	private Text dsAddress;
+	private Text userName;
+	private Text password;
 	private Text statement;
 	private EPR reference;
 
@@ -98,7 +100,6 @@ public class EditReferenceDialog extends TitleAreaDialog {
 			dsAddress.setText(this.reference.getReferenceParameters().getDsAddress());
 		}
 		
-		
 		Label label5 = new Label(parent, SWT.NONE);
 		label5.setText("Statement *");
 		statement = new Text(parent, SWT.BORDER);
@@ -106,11 +107,29 @@ public class EditReferenceDialog extends TitleAreaDialog {
 				&& this.reference.getReferenceParameters().getStatement() != null){
 			statement.setText(this.reference.getReferenceParameters().getStatement());
 		}
+		
+		Label label6 = new Label(parent, SWT.NONE);
+		label6.setText("User");
+		userName = new Text(parent, SWT.BORDER);
+		if (this.reference.getReferenceParameters() != null
+				&& this.reference.getReferenceParameters().getUserName() != null){
+			userName.setText(this.reference.getReferenceParameters().getUserName());
+		}
+		
+		Label label7 = new Label(parent, SWT.NONE);
+		label7.setText("Password");
+		password = new Text(parent, SWT.BORDER);
+		if (this.reference.getReferenceParameters() != null
+				&& this.reference.getReferenceParameters().getPassword() != null){
+			password.setText(this.reference.getReferenceParameters().getPassword());
+		}
 
 		name.setLayoutData(gridData);
 		address.setLayoutData(gridData);
 		adapter.setLayoutData(gridData);
 		dsAddress.setLayoutData(gridData);
+		userName.setLayoutData(gridData);
+		password.setLayoutData(gridData);
 		statement.setLayoutData(gridData);
 
 		return parent;
@@ -143,6 +162,8 @@ public class EditReferenceDialog extends TitleAreaDialog {
 					param1.setReferenceName(name.getText());
 					param1.setDsAddress(dsAddress.getText());
 					param1.setStatement(statement.getText());
+					param1.setUserName(userName.getText());
+					param1.setPassword(password.getText());
 					reference.setAddress(address.getText());
 					reference.setReferenceParameters(param1);
 					reference.setReferenceProperties(prop1);

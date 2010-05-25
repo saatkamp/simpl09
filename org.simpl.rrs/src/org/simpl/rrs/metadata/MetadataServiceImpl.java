@@ -73,7 +73,7 @@ public class MetadataServiceImpl implements MetadataService {
 		try {
 			if (DoesTableExist(conn) == false) {
 				Statement statement = conn.createStatement();
-				String statem = "CREATE TABLE ReferenceTable ( referenceName VARCHAR(255), address VARCHAR(255), adapterType VARCHAR(255), statement VARCHAR(255), dsAddress VARCHAR(255), portType VARCHAR(255), serviceName VARCHAR(255), portName VARCHAR(255), policy VARCHAR(255), PRIMARY KEY ( REFERENCENAME))";
+				String statem = "CREATE TABLE ReferenceTable ( referenceName VARCHAR(255), address VARCHAR(255), adapterType VARCHAR(255), statement VARCHAR(255), dsAddress VARCHAR(255), userName VARCHAR(255), password VARCHAR(255), portType VARCHAR(255), serviceName VARCHAR(255), portName VARCHAR(255), policy VARCHAR(255), PRIMARY KEY ( REFERENCENAME))";
 				// TODO Testausgabe entfernen
 				System.out.println("Create Table: " + statem);
 				statement.execute(statem);
@@ -117,20 +117,22 @@ public class MetadataServiceImpl implements MetadataService {
 				properties.setResolutionSystem(rs.getString(3));
 				parameters.setStatement(rs.getString(4));
 				parameters.setDsAddress(rs.getString(5));
-				String portType = rs.getString(6);
+				parameters.setUserName(rs.getString(6));
+				parameters.setPassword(rs.getString(7));
+				String portType = rs.getString(8);
 				if (portType != null){
 					rsEPR.setPortType(QName.valueOf(portType));
 				}
-				String service = rs.getString(7);
+				String service = rs.getString(9);
 				if (service != null){
 					serviceName.setQName(QName.valueOf(service));
 				}
-				String portName = rs.getString(8);
+				String portName = rs.getString(10);
 				if (portName != null){
 					serviceName.setPortName(new NCName(service));
 				}
 				
-				rsEPR.setPolicy(rs.getString(9));
+				rsEPR.setPolicy(rs.getString(11));
 
 				rsEPR.setReferenceParameters(parameters);
 				rsEPR.setReferenceProperties(properties);
@@ -194,20 +196,22 @@ public class MetadataServiceImpl implements MetadataService {
 				properties.setResolutionSystem(rs.getString(3));
 				parameters.setStatement(rs.getString(4));
 				parameters.setDsAddress(rs.getString(5));
-				String portType = rs.getString(6);
+				parameters.setUserName(rs.getString(6));
+				parameters.setPassword(rs.getString(7));
+				String portType = rs.getString(8);
 				if (portType != null){
 					rsEPR.setPortType(QName.valueOf(portType));
 				}
-				String service = rs.getString(7);
+				String service = rs.getString(9);
 				if (service != null){
 					serviceName.setQName(QName.valueOf(service));
 				}
-				String portName = rs.getString(8);
+				String portName = rs.getString(10);
 				if (portName != null){
 					serviceName.setPortName(new NCName(service));
 				}
 				
-				rsEPR.setPolicy(rs.getString(9));
+				rsEPR.setPolicy(rs.getString(11));
 
 				rsEPR.setReferenceParameters(parameters);
 				rsEPR.setReferenceProperties(properties);
@@ -221,39 +225,7 @@ public class MetadataServiceImpl implements MetadataService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-//		TODO: IN ODE DURCHFÜHREN, DA MAN KEINE NODES VERSCHICKEN KANN...
-//		if (rsEPR != null) {
-//
-//			try {
-//				DocumentBuilderFactory factory =
-//				      DocumentBuilderFactory.newInstance();
-//				factory.setNamespaceAware(true);
-//				DocumentBuilder builder = factory.newDocumentBuilder();
-//				
-//				Document doc = builder.newDocument();
-//				
-//				Node eprNode = doc; 
-//				 
-//				// create JAXB context and instantiate marshaller
-//				JAXBContext context = JAXBContext.newInstance(EPR.class);
-//				Marshaller m = context.createMarshaller();
-//				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-//				m.marshal(rsEPR, eprNode);
-//				
-//				//Testausgabe
-//				m.marshal(rsEPR, System.out);
-//				
-//				return eprNode;
-//			} catch (JAXBException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (ParserConfigurationException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//		}
-
+		
 		return rsEPR;
 	}
 

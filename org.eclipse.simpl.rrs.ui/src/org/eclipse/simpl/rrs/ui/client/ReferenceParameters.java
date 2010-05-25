@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="referenceName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="dsAddress" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="statement" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="userName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,7 +34,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "ReferenceParameters", propOrder = {
     "referenceName",
     "dsAddress",
-    "statement"
+    "statement",
+    "userName",
+    "password"
 })
 public class ReferenceParameters {
 
@@ -42,6 +46,10 @@ public class ReferenceParameters {
     protected String dsAddress;
     @XmlElement(required = true)
     protected String statement;
+    @XmlElement(required = true)
+    protected String userName;
+    @XmlElement(required = true)
+    protected String password;
 
     /**
      * Gets the value of the referenceName property.
@@ -113,6 +121,54 @@ public class ReferenceParameters {
      */
     public void setStatement(String value) {
         this.statement = value;
+    }
+
+    /**
+     * Gets the value of the userName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * Sets the value of the userName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUserName(String value) {
+        this.userName = value;
+    }
+
+    /**
+     * Gets the value of the password property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets the value of the password property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPassword(String value) {
+        this.password = value;
     }
 
 }

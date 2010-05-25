@@ -340,6 +340,12 @@ public class ManagementServiceImpl implements ManagementService {
 		HM.put("dsAddress",
 				epr.getReferenceParameters().getDsAddress() == null ? "" : epr
 						.getReferenceParameters().getDsAddress());
+		HM.put("userName",
+				epr.getReferenceParameters().getUserName() == null ? "" : epr
+						.getReferenceParameters().getUserName());
+		HM.put("password",
+				epr.getReferenceParameters().getPassword() == null ? "" : epr
+						.getReferenceParameters().getPassword());
 		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType()
 				.toString());
 		if (epr.getServiceName() != null) {

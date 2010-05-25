@@ -10,12 +10,14 @@ import org.simpl.rrs.webservices.ReferenceProperties;
 public class Test {
 	
 	private static EPR CreateEPR(String uri,
-			String adapterType, String referenceName, String statement) {
+			String adapterType, String referenceName, String statement, String user, String password) {
 
 		EPR epr = new EPR();
 		ReferenceParameters param = new ReferenceParameters();
 		ReferenceProperties prop = new ReferenceProperties();
 		param.setDsAddress(uri);
+		param.setUserName(user);
+		param.setPassword(password);
 		prop.setResolutionSystem(adapterType);
 		param.setReferenceName(referenceName);
 		param.setStatement(statement);
@@ -43,6 +45,12 @@ public class Test {
 		HM.put("dsAddress",
 				epr.getReferenceParameters().getDsAddress() == null ? "" : epr
 						.getReferenceParameters().getDsAddress());
+		HM.put("userName",
+				epr.getReferenceParameters().getUserName() == null ? "" : epr
+						.getReferenceParameters().getUserName());
+		HM.put("password",
+				epr.getReferenceParameters().getPassword() == null ? "" : epr
+						.getReferenceParameters().getPassword());
 		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType()
 				.toString());
 		if (epr.getServiceName() != null) {
@@ -71,11 +79,11 @@ public class Test {
 		//	e.printStackTrace();
 		//}
 	
-		EPR EPR1 = CreateEPR("http://localhost:MyDB2/", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle");
-		EPR EPR2 = CreateEPR("http://localhost:MyDB/", "RDB:Derby:MySQL", "test", "SELECT * FROM tabelle");
-		EPR EPR3 = CreateEPR("http://localhost:MyDB22/", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle");
+		EPR EPR1 = CreateEPR("http://localhost:MyDB2/", "RDB:Derby:MySQL", "test2", "SELECT * FROM tabelle", "test", "test");
+		EPR EPR2 = CreateEPR("http://localhost:MyDB/", "RDB:Derby:MySQL", "test", "SELECT * FROM tabelle", "test", "test");
+		EPR EPR3 = CreateEPR("localhost:3306/test", "RDB:MySQL:SQL", "test2", "SELECT * FROM test", "test", "test");
 		@SuppressWarnings("unused")
-		EPR EPR4 = CreateEPR("C:/eclipse/workspace/org.simpl.rrs/rrsDB", "RDB:Derby:MySQL", "test2", "SELECT * FROM ReferenceTable");
+		EPR EPR4 = CreateEPR("C:/eclipse/workspace/org.simpl.rrs/rrsDB", "RDB:Derby:MySQL", "test2", "SELECT * FROM ReferenceTable", "test", "test");
 		
 //		RRS.getInstance().metadataService().getAllEPR();
 //		RRS.getInstance().managementService().Insert(EPR1);
@@ -83,7 +91,7 @@ public class Test {
 //		RRS.getInstance().managementService().Update(EPR3);
 //		System.out.println(RRS.getInstance().metadataService().getAllEPR());
 				
-		System.out.println(RRS.getInstance().retrievalService().get(EPR4));
+		System.out.println(RRS.getInstance().retrievalService().get(EPR3));
 
 //		RRS.getInstance().metadataService().getEPR("test2");
 		

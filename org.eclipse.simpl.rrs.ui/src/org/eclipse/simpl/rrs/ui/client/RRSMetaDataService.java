@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @WebService(name = "RRSMetaDataService", targetNamespace = "http://webservices.rrs.simpl.org/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 @XmlSeeAlso({
-    ObjectFactory.class, EPR.class
+    ObjectFactory.class
 })
 public interface RRSMetaDataService {
 
@@ -26,7 +26,7 @@ public interface RRSMetaDataService {
     /**
      * 
      * @return
-     *     returns org.simpl.rrs.webservices.client.EPRArray
+     *     returns org.eclipse.simpl.rrs.ui.client.EPRArray
      */
     @WebMethod(action = "getAllEPR")
     @WebResult(partName = "return")
@@ -36,7 +36,7 @@ public interface RRSMetaDataService {
      * 
      * @param eprName
      * @return
-     *     returns org.simpl.rrs.webservices.client.EPR
+     *     returns org.eclipse.simpl.rrs.ui.client.EPR
      */
     @WebMethod(action = "getEPR")
     @WebResult(partName = "return")
@@ -47,7 +47,7 @@ public interface RRSMetaDataService {
     /**
      * 
      * @return
-     *     returns org.simpl.rrs.webservices.client.StringArray
+     *     returns org.eclipse.simpl.rrs.ui.client.StringArray
      */
     @WebMethod(action = "getAvailableAdapters")
     @WebResult(partName = "return")

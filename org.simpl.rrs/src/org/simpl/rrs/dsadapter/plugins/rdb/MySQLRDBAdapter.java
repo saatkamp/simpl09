@@ -19,7 +19,7 @@ public class MySQLRDBAdapter extends DSAdapterPlugin {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Connection openConnection(String dsAddress) {
+	public Connection openConnection(String dsAddress, String userName, String password) {
 
 		Connection connect = null;
 
@@ -30,8 +30,7 @@ public class MySQLRDBAdapter extends DSAdapterPlugin {
 			uri.append(dsAddress);
 
 			try {
-				connect = DriverManager.getConnection(uri.toString(), "test",
-						"test");
+				connect = DriverManager.getConnection(uri.toString(), userName, password);
 				connect.setAutoCommit(false);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -60,12 +59,12 @@ public class MySQLRDBAdapter extends DSAdapterPlugin {
 		return success;
 	}
 
-	public RDBSet retrieveData(String dsAddress, String statement) {
+	public RDBSet retrieveData(String dsAddress, String statement, String userName, String password) {
 		Statement connStatement = null;
 		ResultSet resultSet = null;
 		RDBSet data = new RDBSet();
 		
-		Connection connection = openConnection(dsAddress);
+		Connection connection = openConnection(dsAddress, userName, password);
 		try {
 			connStatement = connection.createStatement();
 			resultSet = connStatement.executeQuery(statement);

@@ -27,7 +27,7 @@ public interface RRSRetrievalService {
      * 
      * @param epr
      * @return
-     *     returns org.simpl.rrs.webservices.client.RDBSet
+     *     returns org.eclipse.simpl.rrs.ui.client.RDBSet
      */
     @WebMethod(action = "get")
     @WebResult(partName = "return")
