@@ -82,6 +82,8 @@ public class DeploymentUtils {
 	 */
 	private Map<String, DataSource> activityMappings = new HashMap<String, DataSource>();
 
+	private static String lastProcess = "";
+	
 	public static DeploymentUtils getInstance() {
 		if (instance == null) {
 			instance = new DeploymentUtils();
@@ -90,8 +92,30 @@ public class DeploymentUtils {
 			
 			//Initialize the created instance
 			instance.init(DataManagementActivity.getDeployDir(), DataManagementActivity.getProcessName());
+			
+			lastProcess = DataManagementActivity.getProcessName();
 		}
+		
+		if (!lastProcess.equals(DataManagementActivity.getProcessName())){
+			//Initialize the created instance
+			instance.reInit(DataManagementActivity.getDeployDir(), DataManagementActivity.getProcessName());
+		}
+		
 		return instance;
+	}
+
+	/**
+	 * If the process changed the new deployment descriptor
+	 * has to be read
+	 * 
+	 * @param deployDir
+	 * @param processName
+	 */
+	private void reInit(String deployDir, String processName) {
+		dataSourceElements.clear();
+		activityMappings.clear();
+		
+		init(deployDir, processName);
 	}
 
 	private void init(String path, String process) {
