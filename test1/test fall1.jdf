@@ -1,0 +1,1300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tests SYSTEM "project.dtd">
+<tests product="TestDataManager" team="05" version="1.0">
+<sequence created="24.05.2010" creator="tuxi23" name="Project" number="0">
+<description>This is the root node of the project. It contains all test sequences and test cases.</description>
+<pre/>
+<sequence created="04.11.2009" creator="tuxi23" name="Unit Test" number="1">
+<description/>
+<pre/>
+</sequence>
+<sequence created="04.11.2009" creator="tuxi23" name="Integration Test" number="2">
+<description/>
+<pre/>
+</sequence>
+<sequence created="04.11.2009" creator="tuxi23" name="System Test" number="3">
+<description/>
+<pre/>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für DM-Aktivitaet " number="9">
+<description/>
+<pre/>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 1" number="6">
+<description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
+<pre/>
+<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="4" priority="C" title="Test für die Einstellung von DMA">
+<description>test die Erstellung von DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="5" priority="C" title="Test für die Bearbeitung einer DM-Aktivitaet">
+<description>test die Bearbeitung einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="8" priority="C" title="Test für den Loeschen einer DMA">
+<description>test Loeschen einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 2" number="155">
+<description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
+<pre/>
+<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="156" priority="C" title="Test für die Einstellung von DMA">
+<description>test die Erstellung von DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="157" priority="C" title="Test für die Bearbeitung einer DM-Aktivitaet">
+<description>test die Bearbeitung einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="158" priority="C" title="Test für den Loeschen einer DMA">
+<description>test Loeschen einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2b.Mausklick auf den Menüpunkt "Delete" des Kontextmenüs</actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 3" number="163">
+<description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
+<pre/>
+<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="164" priority="C" title="Test für die Einstellung von DMA">
+<description>test die Erstellung von DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="165" priority="C" title="Test für die Bearbeitung einer DM-Aktivitaet">
+<description>test die Bearbeitung einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="166" priority="C" title="Test für den Loeschen einer DMA">
+<description>test Loeschen einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1b.Öffnen des Kontextmenüs durch rechten Mausklick auf eine DM-A.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 4" number="159">
+<description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
+<pre/>
+<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="160" priority="C" title="Test für die Einstellung von DMA">
+<description>test die Erstellung von DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="161" priority="C" title="Test für die Bearbeitung einer DM-Aktivitaet">
+<description>test die Bearbeitung einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="162" priority="C" title="Test für den Loeschen einer DMA">
+<description>test Loeschen einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1b.Öffnen des Kontextmenüs durch rechten Mausklick auf eine DM-A.
+2b.Mausklick auf den Menüpunkt "Delete" des Kontextmenüs</actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 5" number="147">
+<description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
+<pre/>
+<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="148" priority="C" title="Test für die Einstellung von DMA">
+<description>test die Erstellung von DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Drag&amp;Drop einer DM-A aus der Palette an die gewünschte Stelleim Prozess.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="149" priority="C" title="Test für die Bearbeitung einer DM-Aktivitaet">
+<description>test die Bearbeitung einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="150" priority="C" title="Test für den Loeschen einer DMA">
+<description>test Loeschen einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 6" number="151">
+<description/>
+<pre/>
+<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="152" priority="C" title="Test für die Einstellung von DMA">
+<description>test die Erstellung von DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Drag&amp;Drop einer DM-A aus der Palette an die gewünschte Stelleim Prozess.
+2.Der angezeigte Namensvorschlag wird vom Benutzer bestätigt </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Eclipse BPEL Designer vorgeschlagene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="153" priority="C" title="Test für die Bearbeitung einer DM-Aktivitaet">
+<description>test die Bearbeitung einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="154" priority="C" title="Test für den Loeschen einer DMA">
+<description>test Loeschen einer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 7" number="167">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="168" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save</actions>
+<post>Der ODE Deployment-Deskriptor wurde korrekt erstellt und der BPEL Prozess kann deployt werden.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="169" priority="C" title="Test Case für die Bearbeitung von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor über Doppelklick mit der linken Maustaste auf die Datei öffnen.
+</actions>
+<post>Die Änderungen sind gespeichert und der ODE Deployment-Deskriptor ist korrekt.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="170" priority="C" title="Test Case für den Löschen von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor auswählen und über Edit-Delete löschen.</actions>
+<post>Der ODE Deployment-Deskriptor ist gelöscht.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 8" number="171">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="172" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save
+Der ODE Deployment-Deskriptor kann nicht erstellt werden</actions>
+<post>Der ODE Deployment-Deskriptor steht nicht zur Verfügung.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 9" number="175">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="176" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save</actions>
+<post>Der ODE Deployment-Deskriptor wurde korrekt erstellt und der BPEL Prozess kann deployt werden.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="177" priority="C" title="Test Case für die Bearbeitung von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor über Doppelklick mit der linken Maustaste auf die Datei öffnen.
+Der ODE Deployment-Deskriptor kann nicht gespeichert werden.</actions>
+<post>Die Änderungen an der Konfiguration sind nicht gespeichert.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 10" number="179">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="180" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save</actions>
+<post>Der ODE Deployment-Deskriptor wurde korrekt erstellt und der BPEL Prozess kann deployt werden.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="182" priority="C" title="Test Case für den Löschen von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor auswählen und über Edit-Delete löschen.
+Der ODE Deployment-Deskriptor kann nicht gelöscht werden.</actions>
+<post>Der ODE Deployment-Deskriptor ist nicht gelöscht.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 11" number="185">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="186" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".</actions>
+<post>Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und der Prozess wurde erfolgreich deployed.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="187" priority="C" title="Test Case für den Start eines Prozessinstanzes">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE Workflow-Engine deployt</pre>
+<actions>Instanzierung des Prozessmodells und Start der Prozessinstanz durch Senden einer entsprechenden SOAP-Nachricht an den Endpunkt des Prozesses.</actions>
+<post>Prozessinstanz wurde gestartet.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 12" number="188">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="189" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".
+ODE-Server startet nicht aufgrund eines Fehlers.</actions>
+<post>Der ODE-Server ist nicht gestartet und der Prozess wurde nicht deployed.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 13" number="191">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="192" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".
+Beim Deployen des Prozesses tritt ein Fehler auf.</actions>
+<post>Der ODE-Server ist nicht gestartet und der Prozess wurde nicht deployed.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 14" number="194">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="195" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".</actions>
+<post>Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und der Prozess wurde erfolgreich deployed.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="196" priority="C" title="Test Case für den Start eines Prozessinstanzes">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE Workflow-Engine deployt</pre>
+<actions>Instanzierung des Prozessmodells und Start der Prozessinstanz durch Senden einer entsprechenden SOAP-Nachricht an den Endpunkt des Prozesses.
+Fehler beim Starten der Prozessinstanz, z.B. durch eine SOAP-Nachricht mit falschem Inhalt.</actions>
+<post>Prozessinstanz wird verworfen.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 15" number="197">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="198" priority="C" title="Test Case für die Auswählung vom Late-Binding">
+<description/>
+<pre>Ein BPEL-Prozess mit ODE Deployment-Deskriptor und ein WS-Policy-Dokument mit Anforderungen an die Datenquelle müssen erstellt sein. Der ODE Deployment-Deskriptor muss geöffnet sein.</pre>
+<actions>1.Auswahl einer DM-A aus der Liste mit DM-A.
+2.Auswahl einer Strategie über das Strategie-Dropdown-Menü.
+3.Auswahl einer WS-Policy-Datei über den Button "WS-Policy-Datei auswählen".
+4.Speichern des ODE Deployment-Deskriptor über das "Speichern"-Symbol in der Symbolleiste.</actions>
+<post>Die Strategie für eine DM-A ist im ODE Deployment-Deskriptor hinterlegt.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für Workflow-Administrator" number="10">
+<description/>
+<pre/>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 1" number="45">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="46" priority="C" title="Test Case für die Öffnung von A-K">
+<description>test die Oeffnung von A-K</description>
+<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet.</pre>
+<actions>1.klick auf das SIMPL-Menü
+2.klick auf [admin-console]
+</actions>
+<post>admin-console wird angezeiget und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="68" priority="C" title="Test Case Globale Einstellungen festlegen">
+<description>Test die Festlegung der Globale Einstellungen</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
+<actions>Eingabe/Aenderung der Werte</actions>
+<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="67" priority="C" title="Test Case Auditing-Datenbank festlegen">
+<description>Test die Festlegung der Auditing-Datenbank</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
+<actions>angabe einer Datenbank-URL</actions>
+<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="69" priority="C" title="Test Case Auditing aktivieren">
+<description>Test die Aktivierung der Auditing</description>
+<pre>Die A-k ist geoeffnet,der Unterpunkt "Auditing" wird angezeiget und die Auditing ist nicht aktiv</pre>
+<actions>setzen der Auditing-Checkbox.</actions>
+<post>Das Auditing ist Aktiv.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="47" priority="C" title="Test Case save A-K">
+<description>Test die Speicherung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf Button [Save]</actions>
+<post>Alle Werte der Admin-Konsole wurden korrekt
+gespeichert und alle veralteten Werte mit neuen ueberschrieben. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="70" priority="C" title="Test Case Auditing deaktivieren">
+<description>Test die Deaktivierung der Auditing</description>
+<pre>Die A-K ist geoeffnet, der Unterpunkt wird angezeiget, Auditing ist aktiv</pre>
+<actions>zuruecksetzen der Auditing-Checkbox</actions>
+<post>Das Auditing ist deaktiviert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="49" priority="C" title="Test Case Zuruecksetzung der A-K">
+<description>Test die Zuruecksetzung der A-K</description>
+<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
+<actions>klick auf Button [reset]</actions>
+<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="66" priority="C" title="Test Case A-K Defaults Laden">
+<description>Test die A-K Defaults zu Laden</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf den Button[Default]</actions>
+<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="50" priority="C" title="Test Case Schliessen der A-K">
+<description>Test die Schliessung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget.</pre>
+<actions>klick auf Button [close]</actions>
+<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 2" number="51">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="52" priority="C" title="Test Case für die Öffnung von A-K">
+<description>test die Oeffnung von A-K</description>
+<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
+<actions>klick auf das SIMPL-Menue
+und klick auf [admin-console]</actions>
+<post>admin-console wird angezeiget und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="71" priority="C" title="Test Case Globale Einstellungen festlegen">
+<description>Test die Festlegung der Globale Einstellungen</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
+<actions>Eingabe/Aenderung der Werte</actions>
+<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="72" priority="C" title="Test Case Auditing-Datenbank festlegen">
+<description>Test die Festlegung der Auditing-Datenbank</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
+<actions>angabe einer Datenbank-URL</actions>
+<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="73" priority="C" title="Test Case Auditing aktivieren">
+<description>Test die Aktivierung der Auditing</description>
+<pre>Die A-k ist geoeffnet,der Unterpunkt "Auditing" wird angezeiget und die Auditing ist nicht aktiv</pre>
+<actions>setzen der Auditing-Checkbox.</actions>
+<post>Das Auditing ist Aktiv.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="53" priority="C" title="Test Case save A-K">
+<description>Test die Speicherung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>
+Beim Speichern der Werte tritt ein Fehler auf.</actions>
+<post>Alle geaenderten Werte der Admin-Konsole bleiben unveraendert. eine entsprechenden Fehlermeldung wird gezeiget. ein erneuter Speicherversuch kann durchgefuehrt werden.
+Die Werten bleiben dabei solange erhalten, bis die A-K geschlossen wird. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="74" priority="C" title="Test Case Auditing deaktivieren">
+<description>Test die Deaktivierung der Auditing</description>
+<pre>Die A-K ist geoeffnet, der Unterpunkt wird angezeiget, Auditing ist aktiv</pre>
+<actions>zuruecksetzen der Auditing-Checkbox</actions>
+<post>Das Auditing ist deaktiviert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="54" priority="C" title="Test Case Zuruecksetzung der A-K">
+<description>Test die Zuruecksetzung der A-K</description>
+<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
+<actions>klick auf Button [reset]</actions>
+<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="75" priority="C" title="Test Case A-K Defaults Laden">
+<description>Test die A-K Defaults zu Laden</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf den Button[Default]</actions>
+<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="55" priority="C" title="Test Case Schliessung der A-K">
+<description>Test die Schliessung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget.</pre>
+<actions>klick auf Button [close]</actions>
+<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 3" number="56">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="57" priority="C" title="Test Case für die Öffnung von A-K">
+<description>test die Oeffnung von A-K</description>
+<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
+<actions>klick auf das SIMPL-Menue
+und klick auf [admin-console]</actions>
+<post>admin-console wird angezeiget und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="76" priority="C" title="Test Case Globale Einstellungen festlegen">
+<description>Test die Festlegung der Globale Einstellungen</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
+<actions>Eingabe/Aenderung der Werte</actions>
+<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="77" priority="C" title="Test Case Auditing-Datenbank festlegen">
+<description>Test die Festlegung der Auditing-Datenbank</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
+<actions>angabe einer Datenbank-URL</actions>
+<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="58" priority="C" title="Test Case save A-K">
+<description>Test die Speicherung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget
+</pre>
+<actions>Benutzer leget keine Auditing-Datenbank zum Speichern der Auditing-Daten fest.
+</actions>
+<post>Der Benutzer erhaelt eine Fehlermeldung, die ihn ueber den entsprechenden Fehler informiert.  </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="59" priority="C" title="Test Case Zuruecksetzung der A-K">
+<description>Test die Zuruecksetzung der A-K</description>
+<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
+<actions>klick auf Button [reset]</actions>
+<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="78" priority="C" title="Test Case A-K Defaults Laden">
+<description>Test die A-K Defaults zu Laden</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf den Button[Default]</actions>
+<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="60" priority="C" title="Test Case Schliessung der A-K">
+<description>Test die Schliessung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget.</pre>
+<actions>klick auf Button [close]</actions>
+<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 4" number="61">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="62" priority="C" title="Test Case für die Öffnung von A-K">
+<description>test die Oeffnung von A-K</description>
+<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
+<actions>klick auf das SIMPL-Menue
+und klick auf [admin-console]</actions>
+<post>admin-console wird angezeiget und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="79" priority="C" title="Test Case Globale Einstellungen festlegen">
+<description>Test die Festlegung der Globale Einstellungen</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
+<actions>Eingabe/Aenderung der Werte</actions>
+<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="80" priority="C" title="Test Case Auditing-Datenbank festlegen">
+<description>Test die Festlegung der Auditing-Datenbank</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
+<actions>angabe einer Datenbank-URL</actions>
+<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="63" priority="C" title="Test Case save A-K">
+<description>Test die Speicherung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget
+</pre>
+<actions>Die Auditing-Datenbank ist nicht erreichbar oder die Authentifizierung ist fehlgeschlagen</actions>
+<post>Der Benutzer erhaelt eine Fehlermeldung, die ihn ueber den entsprechenden Fehler informiert.  </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="64" priority="C" title="Test Case Zuruecksetzung der A-K">
+<description>Test die Zuruecksetzung der A-K</description>
+<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
+<actions>klick auf Button [reset]</actions>
+<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="81" priority="C" title="Test Case A-K Defaults Laden">
+<description>Test die A-K Defaults zu Laden</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf den Button[Default]</actions>
+<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="65" priority="C" title="Test Case Schliessung der A-K">
+<description>Test die Schliessung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget.</pre>
+<actions>klick auf Button [close]</actions>
+<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 5(RRS)" number="82">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="83" priority="C" title="Test Case neue Referenz in RRS einfügen">
+<description>Test die Einfügung neuer Referenz in RRS</description>
+<pre>Der RRS-View ist geöffnet und das RRS ist erreichbar.</pre>
+<actions>1. Klick auf den Button [New] der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontex-Menüs 
+2. Angabe aller Parameter der Referenz in dem entsprechenden Pop-up Fenster.
+3. Klick auf [Save], um die Werte der neue Referenz zu speichern und derAnwendungsfall"Referenz speichern" wird angestoßen.</actions>
+<post>Die neue Referenz wurde korrekt im RRS gespeichert, wird in RRS-View angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="84" priority="C" title="Test Case Referenz aus RRS bearbeiten">
+<description>Test die Bearbeitung einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu bearbeitende Referenz ist ausgewählt.</pre>
+<actions>1.Klick des [Edit] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontext-Menüs 
+2. Angabe der neuen Parameter der Referenz in dem entsprechenden Pop-up Fenster 
+3. Klick auf [Save], um die aktualisierten Werte der Referenz zu speichern und der Anwendungsfall "Referenz speichern" wird angestoßen.
+</actions>
+<post>Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert, die Referenz wurde aktualisiert und die aktualisierten Werte werden in der Referenzen-Tabelle angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="85" priority="C" title="Test Case Referenz aus RRS löschen">
+<description>Test den Löschen einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu löschende Referenz ist ausgewählt.</pre>
+<actions>1. Klick auf Button [Delete] der Toolbar oder Auswahldes entsprechenden Menü-Punktes des Kontext-Menüs und der Anwendungsfall "Referenz löschen" wird angestoßen</actions>
+<post>Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS und der Referenzen-Tabelle entfernt und kann nun nicht mehr verwendet werden.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 6(RRS)" number="86">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="87" priority="C" title="Test Case neue Referenz in RRS einfügen">
+<description>Test die Einfügung neuer Referenz in RRS</description>
+<pre>Der RRS-View ist geöffnet und das RRS ist erreichbar.</pre>
+<actions>1. Klick auf den Button [New] der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontex-Menüs 
+2. Angabe aller Parameter der Referenz in dem entsprechenden Pop-up Fenster.
+3. Klick auf [Save], um die Werte der neue Referenz zu speichern und derAnwendungsfall"Referenz speichern" wird angestoßen.
+Beim Speichern der neue Referenz tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist</actions>
+<post>es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="88" priority="C" title="Test Case Referenz aus RRS bearbeiten">
+<description>Test die Bearbeitung einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu bearbeitende Referenz ist ausgewählt.</pre>
+<actions>1.Klick des [Edit] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontext-Menüs 
+2. Angabe der neuen Parameter der Referenz in dem entsprechenden Pop-up Fenster 
+3. Klick auf [Save], um die aktualisierten Werte der Referenz zu speichern und der Anwendungsfall "Referenz speichern" wird angestoßen.
+Beim Speichern der Änderungen tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist.</actions>
+<post>Die bearbeitete Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="89" priority="C" title="Test Case Referenz aus RRS löschen">
+<description>Test den Löschen einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu löschende Referenz ist ausgewählt.</pre>
+<actions>1. Klick auf Button [Delete] der Toolbar oder Auswahldes entsprechenden Menü-Punktes des Kontext-Menüs und der Anwendungsfall "Referenz löschen" wird angestoßen.
+Beim Löschen der Referenz tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist.
+</actions>
+<post>Die zu löschende Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für ODE Workflow-Engine" number="90">
+<description/>
+<pre/>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="91">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="92" priority="C" title="Test Case DM-A ausführen">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
+2. Die Ausführung der DM-Aktivität wird gestartet
+3. Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung an die Datenquelle
+4. Die Ausführung der DM-Aktivität ist beendet und sie befindet sich im Zustand “Waiting”
+5. Die DM-Aktivität wird als “Complete” gekennzeichnet</actions>
+<post>Die DM-Aktivität und die darin enthaltene Datenmanagementoperation wurden erfolgreich ausgeführt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="93" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 2" number="94">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="95" priority="C" title="Test Case DM-A ausführen 1a1">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>
+In der Vateraktivität tritt ein Fehler auf</actions>
+<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="96" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="97" priority="C" title="Test Case DM-A ausführen 1a2">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>
+Es wird ein “Terminate_Activity Event” ausgelöst</actions>
+<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="98" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="99" priority="C" title="Test Case DM-A ausführen 1b1">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>
+Es wird ein “Complete_Acitivity Event” an die DM-Aktivität gesendet</actions>
+<post>Die Aktivität befindet sich im Zustand “Waiting”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="100" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="101" priority="C" title="Test Case DM-A ausführen 1b2">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>
+Es wird ein “Activity_Executed Event” ausgelöst</actions>
+<post>Die Aktivität befindet sich im Zustand “Waiting”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="102" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="103" priority="C" title="Test Case DM-A ausführen 2a1">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
+
+In der Vateraktivität tritt ein Fehler auf</actions>
+<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="104" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="105" priority="C" title="Test Case DM-A ausführen 2a2">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
+
+Es wird ein “Terminate_Activity Event” ausgelöst</actions>
+<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="106" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="107" priority="C" title="Test Case DM-A ausführen 3a1">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
+2. Die Ausführung der DM-Aktivität wird gestartet
+
+Währender der Durchführung der DM-Operationen tritt ein Fehler in der Datenquelle auf (z.B. ein Syntaxfehler oder die Datenbank ist nicht erreichbar)</actions>
+<post>Die Aktivität befindet sich im Endzustand “Faulted”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="108" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="109" priority="C" title="Test Case DM-A ausführen 3a2">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
+2. Die Ausführung der DM-Aktivität wird gestartet
+
+Es wird ein “Activity_Faulted Event” ausgelöst</actions>
+<post>Die Aktivität befindet sich im Endzustand “Faulted”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="110" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="111" priority="C" title="Test Case DM-A ausführen 4a1">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
+2. Die Ausführung der DM-Aktivität wird gestartet
+3. Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung an die Datenquelle
+In der Vateraktivität tritt ein Fehler auf</actions>
+<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="112" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="113" priority="C" title="Test Case DM-A ausführen 4a2">
+<description>Test die Ausführen einer DM-A</description>
+<pre>Es wurde ein Prozess, der eine DM-Aktivität enthält, deployt und es wurde eine Instanz des Prozesses erzeugt.</pre>
+<actions>1. Die DM-Aktivität befindet sich im Zustand “Ready”
+2. Die Ausführung der DM-Aktivität wird gestartet
+3. Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung an die Datenquelle
+Es wird ein “Terminate_Activity Event” ausgelöst</actions>
+<post>Die Aktivität befindet sich im Endzustand “Terminated”</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="114" priority="C" title="Test Case DM-A kompensieren">
+<description>Test die Kompensierung einer DM-A</description>
+<pre>Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle des Anwendungsfalls “Data-Management-Aktivität ausführen”).</pre>
+<actions>Alle Änderungen werden zurückgesetzt</actions>
+<post>Der Zustand vor Ausführung der DM-Aktivität wurde erfolgreich wiederhergestellt.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Eclipse BPEL Designer" number="115">
+<description/>
+<pre/>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="116">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="117" priority="C" title="Test Case A-K laden">
+<description>Test die Ladung der A-K</description>
+<pre>Einer der Anwendungsfälle "Admin-Konsole öffnen" oder "Einstellungen der A-K zurücksetzen" wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt Werte aus der SIMPL DB. 
+2. Füllen der Felder der Admin-Konsole mit den geladenen Werten</actions>
+<post>Alle Werte der Datei mit den aktuellen Einstellungen der Admin-Konsole wurden geladen und werden im Fenster “Admin Console” und dessen Unterfenstern angezeigt werden.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="199" priority="C" title="Test Case A-K Defaults Laden">
+<description/>
+<pre>Der Anwendungsfall "Default-Einstellungen der Admin-Konsole laden" oder der Sonderfall 3a des Anwendungsfalls "SIMPL Admin-Konsole laden" wurde ausgeführt.</pre>
+<actions>1. Laden aller Default Werte aus der SIMPL DB. 
+2. Füllen der Felder der Admin-Konsole mit den geladenen Werten</actions>
+<post>Alle Werte der SIMPL DB mit den Default Einstellungen der Admin-Konsole wurden geladen und werden im Fenster “Admin Console” und dessen Unterfenstern angezeigt werden.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="118" priority="C" title="Test Case A-K Speichern">
+<description>Test den Transformieren der BPEL-Datei</description>
+<pre>Der Anwendungsfall "Einstellungen der Admin-Konsole speichern" oder der Sonderfall 3b1 des Anwendungsfalls "Admin-Konsole schließen" wurde ausgeführt.</pre>
+<actions>1.Speichern der Werte auf der SIMPL DB.</actions>
+<post>Alle Werte der Admin-Konsole wurden korrekt auf der SIMPL DB gespeichert.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 2" number="200">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="201" priority="C" title="Test Case A-K laden">
+<description>Test die Ladung der A-K</description>
+<pre>Einer der Anwendungsfälle "Admin-Konsole öffnen" oder "Einstellungen der A-K zurücksetzen" wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt Werte aus der SIMPL DB.
+1a.Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist. 
+2a. Es wird eine entsprechende Fehlermeldung angezeigt und der Benutzer wird über ein Dialogfenster gefragt, ob er die in der SIMPL DB hinterlegten Default-Einstellungen laden möchte oder nicht.
+3a. Klick auf den Button [yes].</actions>
+<post>Der Anwendungsfall "SIMPL Admin-Konsole Defaults laden" wird angestoßen. Wenn dieser Anwendungsfall rfolgreich ausgeführt wurde, wurden die hinterlegten Default-Einstellungen geladen und werden im Fenster "Admin Console" und dessen Unterfenstern angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="204" priority="C" title="Test Case A-K laden">
+<description>Test die Ladung der A-K</description>
+<pre>Einer der Anwendungsfälle "Admin-Konsole öffnen" oder "Einstellungen der A-K zurücksetzen" wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt Werte aus der SIMPL DB.
+1a.Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist. 
+2a. Es wird eine entsprechende Fehlermeldung angezeigt und der Benutzer wird über ein Dialogfenster gefragt, ob er die in der SIMPL DB hinterlegten Default-Einstellungen laden möchte oder nicht.
+3b. Klick auf den Button [no].</actions>
+<post>Die in der Admin-Konsole angezeigten Werte bleiben unverändert. Falls zuvor keine Werte angezeigt wurden, bleiben die Felder der Admin-Konsole leer.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="202" priority="C" title="Test Case A-K Defaults Laden">
+<description/>
+<pre>Der Anwendungsfall "Default-Einstellungen der Admin-Konsole laden" oder der Sonderfall 3a des Anwendungsfalls "SIMPL Admin-Konsole laden" wurde ausgeführt.</pre>
+<actions>1. Laden aller Default Werte aus der SIMPL DB. 
+1a.Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist.</actions>
+<post>Im Quellcode hinterlegte Default-Werte werden geladen und im Fenster "Admin-Konsole" und dessen Unterfenstern angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="203" priority="C" title="Test Case A-K Speichern">
+<description>Test den Transformieren der BPEL-Datei</description>
+<pre>Der Anwendungsfall "Einstellungen der Admin-Konsole speichern" oder der Sonderfall 3b1 des Anwendungsfalls "Admin-Konsole schließen" wurde ausgeführt.</pre>
+<actions>1.Speichern der Werte auf der SIMPL DB.
+Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist.</actions>
+<post>Alle geänderten Werte der Admin-Konsole werden nicht in der SIMPL DB gespeichert. Es wird eine entsprechende Fehlermeldung angezeigt und eine erneuter Speicherversuch kann durchgeführt werden. Die Werte werden solange in der Admin-Konsole angezeigt, bis diese geschlossen wird.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence 3" number="205">
+<description/>
+<pre/>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="206" priority="C" title="Test Case für die Validierung von SIMPL Extensions">
+<description/>
+<pre>Es wurde ein BPEL Prozess ertellt der mind. eine SIPL Extension enthält.</pre>
+<actions>1."Validate" wird ausgeführt.
+2.Fehler und Warnungen werden, falls vorhande, in der Problem-View angezeigt</actions>
+<post>Alle nicht schema-konformen Einträge werden erkannt und in der Problem-view angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="207" priority="C" title="Test Case für den Abrufen aus der UDDI-Registry">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar.</pre>
+<actions>1.Mit Datenquellen-Registry verbinden.
+2.Verfügbare Datenquellen abfragen</actions>
+<post>Eine Liste mit allen verfügbaren Datenquellen steht zur Verfügung.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="208" priority="C" title="Test Case für die Transformation der BPEL-Datei">
+<description/>
+<pre>Eine BPEL-Datei(BPEL-Prozess) muss vorhanden sein und das RRS muss angebunden und erreichbar sein.</pre>
+<actions>1.Auslesen des originalen Prozesses
+2.Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder Events für Referenzen.
+3.Generierung des neuen BPEL-standard-konformen erweiterten Prozesses.</actions>
+<post>Es wurde ein korrekter standard-konformer BPEL-Prozess,der die gleiche Funktionalität wie der originale Prozess besitzt und zur Verwendung von Referenzen um entsprechende Aktivitäten oder Events erweitert wurde, erzeugt.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="209" priority="C" title="Test Case für die Transformation der BPEL-Datei">
+<description/>
+<pre>Eine BPEL-Datei(BPEL-Prozess) muss vorhanden sein und das RRS muss angebunden und erreichbar sein.</pre>
+<actions>1.Auslesen des originalen Prozesses
+2.Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder Events für Referenzen.
+3.Generierung des neuen BPEL-standard-konformen erweiterten Prozesses.
+Bei der Generierung tritt ein Fehler auf</actions>
+<post>Es wurde kein neue BPEL-Prozess erzeugt, der originale Prozess ist unverändert und es wird eine entsprechende Fehlermeldung ausgegeben.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Referenz" number="122">
+<description/>
+<pre/>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="123">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="124" priority="C" title="Test Case dereferenzieren">
+<description>Test die Dereferenzierung</description>
+<pre>Die angegebene Referenz muss existieren und das RRS muss angebunden sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.</pre>
+<actions>Wert der Referenz wird im RRS abgefragt</actions>
+<post>Der korrekte Wert einer Referenz wird geliefert.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="125" priority="C" title="Test Case dereferenzieren 1">
+<description>Test die Dereferenzierung</description>
+<pre>Die angegebene Referenz muss existieren und das RRS muss angebunden sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.</pre>
+<actions>Es wird ein entsprechender Fehler geworfen, der Informationen über das zugrundeliegende Problem liefert.</actions>
+<post>Der korrekte Wert einer Referenz wird geliefert.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence 2" number="210">
+<description/>
+<pre/>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="211" priority="C" title="Test Case für Speichern einer Referenz">
+<description/>
+<pre>Einer der beiden Anwendungsfälle "Neue Referenz in RRS einfügen" oder "Referenz aus RRS bearbeiten" wurde erfolgreich ausgeführt.</pre>
+<actions>Die Referenz wird im RRS gespeichert</actions>
+<post>Die Rerenz wurde Korrekt gespeichert</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="212" priority="C" title="Test Case für Laden einer Referenz">
+<description/>
+<pre>Der RRS View wurde im Eclipse geöffnet.</pre>
+<actions>Die Referen wird aus dem RRS geladen.</actions>
+<post>Die Referenz wurde erfolgreich geladen und wird nun im RRSview angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="213" priority="C" title="Test Case für Löschen einer Referenz">
+<description/>
+<pre>Der Anwendungsfall "Referenz aus RRS löschen" wurde erfolgreich ausgeführt.</pre>
+<actions>Die Referenz wird aus dem RRS entfernt.</actions>
+<post>Die Referenz wurde erfolgreich aus dem RRS entfernt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence 3" number="214">
+<description/>
+<pre/>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="215" priority="C" title="Test Case für Speichern einer Referenz">
+<description/>
+<pre>Einer der beiden Anwendungsfälle "Neue Referenz in RRS einfügen" oder "Referenz aus RRS bearbeiten" wurde erfolgreich ausgeführt.</pre>
+<actions>Die Referenz wird im RRS gespeichert
+Beim Speichern der Referenz tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist.</actions>
+<post>Es wird ein Fehler geworfen,der Informationen über das zugrundeliegende Problem liefert.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="216" priority="C" title="Test Case für Laden einer Referenz">
+<description/>
+<pre>Der RRS View wurde im Eclipse geöffnet.</pre>
+<actions>Die Referen wird aus dem RRS geladen.
+Beim Laden der Referenz tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist.</actions>
+<post>Es wird ein Fehler geworfen,der Informationen über das zugrundeliegende Problem liefert.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="217" priority="C" title="Test Case für Löschen einer Referenz">
+<description/>
+<pre>Der Anwendungsfall "Referenz aus RRS löschen" wurde erfolgreich ausgeführt.</pre>
+<actions>Die Referenz wird aus dem RRS entfernt.
+Beim Entfernen der Referenz tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist.</actions>
+<post>Es wird ein Fehler geworfen,der Informationen über das zugrundeliegende Problem liefert.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence für DM-Aktivitaet" number="128">
+<description/>
+<pre/>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 1" number="130">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="131" priority="C" title="Test Case for die Einstellung einer DM-Aktivitaet">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet
+und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1a. Selektion einer DM-Aktivität aus der BPEL Designer Palette durch
+Auswahl mit der linken Maustaste und anschließend Selektion der
+Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt
+werden soll, mit der linken Maustaste.
+1b. (alternativ) Drag&amp;Drop einer DM-Aktivität aus der Palette an die
+gewünschte Stelle im Prozess.
+2. Eingabe eines Aktivitätsnamens durch den Benutzer.</actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den
+Prozess eingefügt, und der vom Benutzer eingegebene Name wird
+angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="135" priority="C" title="Test Case for die Bearbeitung der Eigenschaften einer vorhandenen DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+2. Öffnen der “Properties-View” der DM-Aktivität um ihre
+Eigenschaften anzuzeigen.
+3. Änderung der Eigenschaften der DM-Aktivität.</actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten
+DM-Aktivität wurden korrekt übernommen und werden in der
+“Properties-View” angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="138" priority="C" title="Test Case for Löschen einer DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1a. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+1b. Öffnen des Kontextmenüs durch rechten Mausklick auf eine
+DM-Aktivität.
+2a. Löschen der DM-Aktivität durch drücken der “entf”-Taste.
+2b. Mausklick auf den Menüpunkt “Delete” des Kontextmenüs.</actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem
+Prozess gelöscht. Alle ausgehenden und eingehenden Links werden
+entsprechend dem Standardverhalten des Eclipse BPEL Designers neu
+gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 2" number="132">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="134" priority="C" title="Test Case for die Einstellung einer DM-Aktivitaet">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet
+und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>2a. Der angezeigte Namensvorschlag wird vom Benutzer bestätigt.</actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den
+Prozess eingefügt, und der vom Eclipse BPEL Designer vorgeschlagene
+Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="137" priority="C" title="Test Case for die Bearbeitung der Eigenschaften einer vorhandenen DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+2. Öffnen der “Properties-View” der DM-Aktivität um ihre
+Eigenschaften anzuzeigen.
+3. Änderung der Eigenschaften der DM-Aktivität.</actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten
+DM-Aktivität wurden korrekt übernommen und werden in der
+“Properties-View” angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="140" priority="C" title="Test Case for Löschen einer DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1a. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+1b. Öffnen des Kontextmenüs durch rechten Mausklick auf eine
+DM-Aktivität.
+2a. Löschen der DM-Aktivität durch drücken der “entf”-Taste.
+2b. Mausklick auf den Menüpunkt “Delete” des Kontextmenüs.</actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem
+Prozess gelöscht. Alle ausgehenden und eingehenden Links werden
+entsprechend dem Standardverhalten des Eclipse BPEL Designers neu
+gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 3" number="141">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="142" priority="C" title="Test Case for Deployen eines Prozesses auf der Apache ODE Workflow-Engine">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE
+Workflow-Engine korrekt in Eclipse eingebunden und die Server-View
+wird angezeigt.</pre>
+<actions>1. Erstellung eines ODE Deployment-Deskriptors über
+File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment Descriptor.
+2. Hinzufügen des Prozesses zum ODE-Server in der Eclipse
+Server-View:
+ Rechter Mausklick auf den ODE-Server
+ Auswahl des Menüpunkts “Add and Remove”
+ Hinzufügen der BPEL Prozess-Datei
+3. Starten des ODE-Servers über rechten Mausklick und klicken auf
+“Start”.</actions>
+<post>Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine
+kopiert und der Prozess wurde erfolgreich deployed.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="143" priority="C" title="Test Case for Start einer Prozessinstanz">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE
+Workflow-Engine deployt </pre>
+<actions>Instanzierung des Prozessmodells und Start der Prozessinstanz durch
+Senden einer entsprechenden SOAP-Nachricht an den Endpunkt des
+Prozesses.</actions>
+<post>Prozessinstanz wurde gestartet.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 4" number="144">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="145" priority="C" title="Test Case for Prozess auf ODE-Server deployen">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE
+Workflow-Engine korrekt in Eclipse eingebunden und die Server-View wird angezeigt.</pre>
+<actions>3b. Beim Deployen des Prozesses tritt ein Fehler auf.</actions>
+<post>3b. Der ODE-Server ist gestartet, aber der Prozess wurde nicht deployed</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="146" priority="C" title="Test Case for Prozessinstanz starten">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE
+Workflow-Engine deployt</pre>
+<actions>1a. Fehler beim Starten der Prozessinstanz, z.B. durch eine
+SOAP-Nachricht mit falschem Inhalt.</actions>
+<post>Die Prozessinstanz wird verworfen.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für die Datenquellen-Administratoren" number="218">
+<description/>
+<pre/>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="219" priority="C" title="Test Case für in UDDI-Registrieren ">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen Rechte.</pre>
+<actions>1.Anlegen eines neuen Datenquellenobjekts
+2.Registrierung des Datenquellenobjekts in der Datenquellen-Registry.</actions>
+<post>Eine neue Daenquelle wurde anhand der Benutzerangaben in der Datenquellen-Registry korrekt registriert und kann nun in Workflows verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="220" priority="C" title="Test Case für in UDDI-Registrieren bearbeiten">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen Rechte.</pre>
+<actions>1.Auswahl der Datenquelle
+2.Bearbeiten der Werte der Datenquelle</actions>
+<post>Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig anhand der vom Benutzer durchgeführten Änderungen(Änderung der Eigenschaften, der Adresse, usw.) aktualisiert.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="221" priority="C" title="Test Case für in UDDI-Registrieren entfernen">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen Rechte.</pre>
+<actions>1.Auswahl der Datenquelle
+2.Entfernen der Werte aus der Datenquelle</actions>
+<post>Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig aus der Datenquellen-Registry entfernt und kann nun nicht mehr verwendet werden.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+</sequence>
+<tsa name="Project" number="0" revId="0">
+<relatedsequence>0</relatedsequence>
+<tsa name="Unit Test" number="1" revId="1">
+<relatedsequence>1</relatedsequence>
+</tsa>
+<tsa name="Integration Test" number="2" revId="1">
+<relatedsequence>2</relatedsequence>
+</tsa>
+<tsa name="System Test" number="3" revId="1">
+<relatedsequence>3</relatedsequence>
+<tsa name="Test Sequence für DM-Aktivitaet " number="9" revId="2">
+<relatedsequence>9</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für Workflow-Administrator" number="10" revId="2">
+<relatedsequence>10</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für ODE Workflow-Engine" number="90" revId="2">
+<relatedsequence>90</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für Eclipse BPEL Designer" number="115" revId="2">
+<relatedsequence>115</relatedsequence>
+<tsa name="Test Sequence 2" number="200" revId="2">
+<relatedsequence>200</relatedsequence>
+</tsa>
+<tsa name="Test Sequence 3" number="205" revId="2">
+<relatedsequence>205</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für Referenz" number="122" revId="2">
+<relatedsequence>122</relatedsequence>
+<tsa name="Test Sequence 2" number="210" revId="2">
+<relatedsequence>210</relatedsequence>
+</tsa>
+<tsa name="Test Sequence 3" number="214" revId="2">
+<relatedsequence>214</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für DM-Aktivitaet" number="128" revId="2">
+<relatedsequence>128</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Datenquellen-Administratoren" number="218" revId="2">
+<relatedsequence>218</relatedsequence>
+</tsa>
+</tsa>
+</tsa>
+<author active="Y" firstname="" lastname="tuxi23" uid="tuxi23">
+<extension name="standarduser" value="Y"/>
+</author>
+<extension name="maxid" value="221"/>
+</tests>
