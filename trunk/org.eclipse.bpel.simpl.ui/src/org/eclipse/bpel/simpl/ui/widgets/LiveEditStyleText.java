@@ -71,11 +71,10 @@ public class LiveEditStyleText extends StyledText{
 
 	  //shell.setLayout(new GridLayout(2, false));
     
-   
     
    
     //Checking Live if the typed text a KeyWord or a Parameter etc.
-    addLineStyleListener(new LineStyleListener() {
+    this.addLineStyleListener(new LineStyleListener() {
       
     	public void lineGetStyle(LineStyleEvent event) {
     		
@@ -181,6 +180,8 @@ public class LiveEditStyleText extends StyledText{
 	      
     });
     
+    this.setText(objectDMPropertySection.getStatement());
+	  
     
     redraw();
     //styledText.setText("AWT, SWING \r\nSWT & JFACE");

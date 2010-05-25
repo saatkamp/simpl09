@@ -180,6 +180,7 @@ public class TablsListPopUp{
 				
 			}
 		});
+		
 		listToSearch.addSelectionListener(new SelectionListener() {
 			
 			@Override
