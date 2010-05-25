@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the org.simpl.rrs.webservices.client package. 
+ * generated in the org.eclipse.simpl.rrs.ui.client package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -28,18 +28,26 @@ public class ObjectFactory {
     private final static QName _Epr_QNAME = new QName("http://webservices.rrs.simpl.org/", "epr");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.simpl.rrs.webservices.client
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.eclipse.simpl.rrs.ui.client
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link Column }
+     * Create an instance of {@link ServiceName }
      * 
      */
-    public Column createColumn() {
-        return new Column();
+    public ServiceName createServiceName() {
+        return new ServiceName();
+    }
+
+    /**
+     * Create an instance of {@link StringArray }
+     * 
+     */
+    public StringArray createStringArray() {
+        return new StringArray();
     }
 
     /**
@@ -51,11 +59,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RDBSet }
+     * Create an instance of {@link EPRArray }
      * 
      */
-    public RDBSet createRDBSet() {
-        return new RDBSet();
+    public EPRArray createEPRArray() {
+        return new EPRArray();
+    }
+
+    /**
+     * Create an instance of {@link Table }
+     * 
+     */
+    public Table createTable() {
+        return new Table();
+    }
+
+    /**
+     * Create an instance of {@link Column }
+     * 
+     */
+    public Column createColumn() {
+        return new Column();
     }
 
     /**
@@ -75,35 +99,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Table }
+     * Create an instance of {@link RDBSet }
      * 
      */
-    public Table createTable() {
-        return new Table();
-    }
-
-    /**
-     * Create an instance of {@link StringArray }
-     * 
-     */
-    public StringArray createStringArray() {
-        return new StringArray();
-    }
-
-    /**
-     * Create an instance of {@link ServiceName }
-     * 
-     */
-    public ServiceName createServiceName() {
-        return new ServiceName();
-    }
-
-    /**
-     * Create an instance of {@link EPRArray }
-     * 
-     */
-    public EPRArray createEPRArray() {
-        return new EPRArray();
+    public RDBSet createRDBSet() {
+        return new RDBSet();
     }
 
     /**

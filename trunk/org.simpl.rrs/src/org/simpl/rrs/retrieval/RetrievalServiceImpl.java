@@ -30,7 +30,7 @@ public class RetrievalServiceImpl implements RetrievalService {
 		// anhand von Type und Subtype, und Daten holen...
 		DSAdapter dsAdapter = RRS.getInstance().dsAdapter(dsType, dsSubtype);
 
-		RDBSet data = dsAdapter.retrieveData(epr.getReferenceParameters().getDsAddress(), epr.getReferenceParameters().getStatement());
+		RDBSet data = dsAdapter.retrieveData(epr.getReferenceParameters().getDsAddress(), epr.getReferenceParameters().getStatement(), epr.getReferenceParameters().getUserName(), epr.getReferenceParameters().getPassword());
 		
 		return data;
 
@@ -52,6 +52,12 @@ public class RetrievalServiceImpl implements RetrievalService {
 		HM.put("dsAddress",
 				epr.getReferenceParameters().getDsAddress() == null ? "" : epr
 						.getReferenceParameters().getDsAddress());
+		HM.put("userName",
+				epr.getReferenceParameters().getUserName() == null ? "" : epr
+						.getReferenceParameters().getUserName());
+		HM.put("password",
+				epr.getReferenceParameters().getPassword() == null ? "" : epr
+						.getReferenceParameters().getPassword());
 		HM.put("portType", epr.getPortType() == null ? "" : epr.getPortType()
 				.toString());
 		if (epr.getServiceName() != null) {

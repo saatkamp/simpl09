@@ -121,6 +121,66 @@
                                }
                             
 
+                        /**
+                        * field for UserName
+                        */
+
+                        
+                                    protected java.lang.String localUserName ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getUserName(){
+                               return localUserName;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param UserName
+                               */
+                               public void setUserName(java.lang.String param){
+                            
+                                            this.localUserName=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for Password
+                        */
+
+                        
+                                    protected java.lang.String localPassword ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  java.lang.String getPassword(){
+                               return localPassword;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param Password
+                               */
+                               public void setPassword(java.lang.String param){
+                            
+                                            this.localPassword=param;
+                                    
+
+                               }
+                            
+
      /**
      * isReaderMTOMAware
      * @return true if the reader supports MTOM
@@ -320,6 +380,74 @@
                                     
                                    xmlWriter.writeEndElement();
                              
+                                    namespace = "";
+                                    if (! namespace.equals("")) {
+                                        prefix = xmlWriter.getPrefix(namespace);
+
+                                        if (prefix == null) {
+                                            prefix = generatePrefix(namespace);
+
+                                            xmlWriter.writeStartElement(prefix,"userName", namespace);
+                                            xmlWriter.writeNamespace(prefix, namespace);
+                                            xmlWriter.setPrefix(prefix, namespace);
+
+                                        } else {
+                                            xmlWriter.writeStartElement(namespace,"userName");
+                                        }
+
+                                    } else {
+                                        xmlWriter.writeStartElement("userName");
+                                    }
+                                
+
+                                          if (localUserName==null){
+                                              // write the nil attribute
+                                              
+                                                     throw new org.apache.axis2.databinding.ADBException("userName cannot be null!!");
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localUserName);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "";
+                                    if (! namespace.equals("")) {
+                                        prefix = xmlWriter.getPrefix(namespace);
+
+                                        if (prefix == null) {
+                                            prefix = generatePrefix(namespace);
+
+                                            xmlWriter.writeStartElement(prefix,"password", namespace);
+                                            xmlWriter.writeNamespace(prefix, namespace);
+                                            xmlWriter.setPrefix(prefix, namespace);
+
+                                        } else {
+                                            xmlWriter.writeStartElement(namespace,"password");
+                                        }
+
+                                    } else {
+                                        xmlWriter.writeStartElement("password");
+                                    }
+                                
+
+                                          if (localPassword==null){
+                                              // write the nil attribute
+                                              
+                                                     throw new org.apache.axis2.databinding.ADBException("password cannot be null!!");
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localPassword);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
                     xmlWriter.writeEndElement();
                
 
@@ -509,6 +637,24 @@
                                            throw new org.apache.axis2.databinding.ADBException("statement cannot be null!!");
                                         }
                                     
+                                      elementList.add(new javax.xml.namespace.QName("",
+                                                                      "userName"));
+                                 
+                                        if (localUserName != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localUserName));
+                                        } else {
+                                           throw new org.apache.axis2.databinding.ADBException("userName cannot be null!!");
+                                        }
+                                    
+                                      elementList.add(new javax.xml.namespace.QName("",
+                                                                      "password"));
+                                 
+                                        if (localPassword != null){
+                                            elementList.add(org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localPassword));
+                                        } else {
+                                           throw new org.apache.axis2.databinding.ADBException("password cannot be null!!");
+                                        }
+                                    
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -630,6 +776,44 @@
                                     java.lang.String content = reader.getElementText();
                                     
                                               object.setStatement(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","userName").equals(reader.getName())){
+                                
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setUserName(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                              
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getLocalName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","password").equals(reader.getName())){
+                                
+                                    java.lang.String content = reader.getElementText();
+                                    
+                                              object.setPassword(
                                                     org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                               
                                         reader.next();

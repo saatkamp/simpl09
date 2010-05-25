@@ -42,7 +42,7 @@ public class RRSConfig {
 
 //		 try {
 //		 in = new
-//		 FileInputStream("C://simplWorkspace/RRS/rrs-config.xml");
+//		 FileInputStream("C://simplWorkspace/org.simpl.rrs/rrs-config.xml");
 //		 } catch (FileNotFoundException e) {
 //		
 //		 e.printStackTrace();

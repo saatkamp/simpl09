@@ -3,13 +3,10 @@ package org.simpl.rrs.retrieval.util;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.List;
 
 import org.simpl.rrs.webservices.Column;
 import org.simpl.rrs.webservices.RDBSet;
 import org.simpl.rrs.webservices.Table;
-
-import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b> <br>
@@ -24,37 +21,6 @@ import commonj.sdo.DataObject;
  * 
  */
 public class RRSRetrievalUtil {
-
-	/**
-	 * @param object
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public static RDBSet getRDBDataFormatObject(DataObject dataObject) {
-		RDBSet data = new RDBSet();
-
-		List<DataObject> tables = dataObject.getList("table");
-		List<DataObject> columns = null;
-
-		for (DataObject table : tables) {
-			columns = table.getList("column");
-			Table tab = new Table();
-
-			for (DataObject column : columns) {
-				Column col = new Column();
-				col.setName(column.getString("name"));
-				col.setType(column.getString("type"));
-				col.setValue(column.getString("value"));
-
-				tab.addColumn(col);
-			}
-			tab.setName(table.getString("name"));
-			tab.setSchema(table.getString("schema"));
-			data.addTable(tab);
-		}
-
-		return data;
-	}
 
 	/**
 	 * @param resultSet
