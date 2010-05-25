@@ -369,7 +369,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				activity.setDsStatement(statementText.getText());
+				//activity.setDsStatement(statementText.getText());
 				setStatement(statementText.getText());
 				saveStatementToModel();
 				 
@@ -381,7 +381,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				activity.setDsStatement(statementText.getText());
+				//activity.setDsStatement(statementText.getText());
 				setStatement(statementText.getText());
 				saveStatementToModel();
 				
@@ -399,13 +399,14 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
 		statementText = new LiveEditStyleText(statementCompo,this);
 		statementText.setLayoutData(gridData15);
+		
 		if (activity.getDsStatement() == null){
 			// Setzen das Statement
 			setStatement("");
 			statementText.setText("");
 		}else {
 			// Setzen das Statement
-			statementText.setText(activity.getDsStatement());
+			statementText.setText(getStatement());
 		}
 		
 //		statementText.addModifyListener(new ModifyListener() {
