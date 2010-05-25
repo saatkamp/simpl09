@@ -71,7 +71,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private Text languageText = null;
 	private Composite parentComposite = null;
 	private Label queryTargetLabel = null;
-	private Text queryTargetText = null;
+	private CCombo queryTargetCombo = null;
 
 	private LiveEditStyleText statementText = null;
 	private Button insertBpelVariable = null;
@@ -110,7 +110,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Zieleinheit des Queries.
-		queryTargetText.setText(activity.getQueryTarget());
+		queryTargetCombo.setText(activity.getQueryTarget());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
 		
@@ -238,14 +238,15 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		queryTargetText = new Text(composite, SWT.BORDER);
-		queryTargetText.setLayoutData(gridData13);
-		queryTargetText.addModifyListener(new ModifyListener() {
+		queryTargetCombo = new CCombo(composite, SWT.BORDER);
+		queryTargetCombo.setLayoutData(gridData13);
+		queryTargetCombo.setItems(VariableUtils.getUseableVariables(getProcess()).toArray(new String[0]));
+		queryTargetCombo.addModifyListener(new ModifyListener() {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
 				getCommandFramework().execute(
-						new SetQueryTargetCommand(getModel(), queryTargetText
+						new SetQueryTargetCommand(getModel(), queryTargetCombo
 								.getText()));
 			}
 		});
