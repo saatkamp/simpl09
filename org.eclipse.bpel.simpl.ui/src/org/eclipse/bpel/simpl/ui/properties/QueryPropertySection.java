@@ -406,7 +406,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			statementText.setText("");
 		}else {
 			// Setzen das Statement
-			statementText.setText(getStatement());
+			statementText.setText(activity.getDsStatement());
 		}
 		
 //		statementText.addModifyListener(new ModifyListener() {
@@ -504,9 +504,9 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	@Override
 	public void setStatement(String statement) {
 		// TODO Auto-generated method stub
-		this.statement = statement;
 		if (statementText != null && statement != null) {
 			statementText.setText(statement);
+			this.statement = statement;
 		}
 	}
 
