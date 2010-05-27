@@ -1,6 +1,6 @@
 
 /**
- * TransformationServiceMessageReceiverInOut.java
+ * RRSTransformationServiceMessageReceiverInOut.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT)
@@ -8,10 +8,10 @@
         package org.simpl.rrs.transformation.webservices;
 
         /**
-        *  TransformationServiceMessageReceiverInOut message receiver
+        *  RRSTransformationServiceMessageReceiverInOut message receiver
         */
 
-        public class TransformationServiceMessageReceiverInOut extends org.apache.axis2.receivers.AbstractInOutMessageReceiver{
+        public class RRSTransformationServiceMessageReceiverInOut extends org.apache.axis2.receivers.AbstractInOutMessageReceiver{
 
 
         public void invokeBusinessLogic(org.apache.axis2.context.MessageContext msgContext, org.apache.axis2.context.MessageContext newMsgContext)
@@ -22,7 +22,7 @@
         // get the implementation class for the Web Service
         Object obj = getTheImplementationObject(msgContext);
 
-        TransformationServiceSkeleton skel = (TransformationServiceSkeleton)obj;
+        RRSTransformationServiceSkeleton skel = (RRSTransformationServiceSkeleton)obj;
         //Out Envelop
         org.apache.axiom.soap.SOAPEnvelope envelope = null;
         //Find the axisOperation that has been set by the Dispatch phase.

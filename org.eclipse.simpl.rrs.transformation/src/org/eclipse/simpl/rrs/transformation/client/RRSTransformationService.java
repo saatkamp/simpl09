@@ -14,9 +14,9 @@ import javax.jws.soap.SOAPBinding;
  * Generated source version: 2.1
  * 
  */
-@WebService(name = "TransformationService", targetNamespace = "http://webservices.transformation.rrs.simpl.org")
+@WebService(name = "RRSTransformationService", targetNamespace = "http://webservices.transformation.rrs.simpl.org")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public interface TransformationService {
+public interface RRSTransformationService {
 
 
     /**

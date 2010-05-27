@@ -1,5 +1,6 @@
+
 /**
- * TransformationServiceSkeleton.java
+ * RRSTransformationServiceSkeleton.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT)
@@ -9,9 +10,9 @@ package org.simpl.rrs.transformation.webservices;
 import org.simpl.rrs.transformation.Transformer;
 
 /**
- * TransformationServiceSkeleton java skeleton for the axisService
+ * RRSTransformationServiceSkeleton java skeleton for the axisService
  */
-public class TransformationServiceSkeleton {
+public class RRSTransformationServiceSkeleton {
 
 	/**
 	 * Auto generated method signature

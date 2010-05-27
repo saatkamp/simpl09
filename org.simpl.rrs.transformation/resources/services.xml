@@ -2,16 +2,16 @@
 <!-- This file was auto-generated from WSDL -->
 <!-- by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT) -->
 <serviceGroup>
-    <service name="TransformationService">
+    <service name="RRSTransformationService">
         <messageReceivers>
-            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.simpl.rrs.transformation.webservices.TransformationServiceMessageReceiverInOut"/>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="org.simpl.rrs.transformation.webservices.RRSTransformationServiceMessageReceiverInOut"/>
         </messageReceivers>
-        <parameter name="ServiceClass">org.simpl.rrs.transformation.webservices.TransformationServiceSkeleton</parameter>
+        <parameter name="ServiceClass">org.simpl.rrs.transformation.webservices.RRSTransformationServiceSkeleton</parameter>
         <parameter name="useOriginalwsdl">true</parameter>
         <parameter name="modifyUserWSDLPortAddress">true</parameter>
         <operation name="transform" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://webservices.transformation.rrs.simpl.org">
             <actionMapping>transform</actionMapping>
-            <outputActionMapping>http://webservices.transformation.rrs.simpl.org/TransformationService/transformResponse</outputActionMapping>
+            <outputActionMapping>http://webservices.transformation.rrs.simpl.org/RRSTransformationService/transformResponse</outputActionMapping>
         </operation>
     </service>
 </serviceGroup>

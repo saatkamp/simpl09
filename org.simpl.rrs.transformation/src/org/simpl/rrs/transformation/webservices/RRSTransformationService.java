@@ -1,7 +1,7 @@
 
 
 /**
- * TransformationService.java
+ * RRSTransformationService.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT)
@@ -10,10 +10,10 @@
     package org.simpl.rrs.transformation.webservices;
 
     /*
-     *  TransformationService java interface
+     *  RRSTransformationService java interface
      */
 
-    public interface TransformationService {
+    public interface RRSTransformationService {
           
 
         /**
@@ -41,7 +41,7 @@
 
             org.simpl.rrs.transformation.webservices.Transform transform12,
 
-            final org.simpl.rrs.transformation.webservices.TransformationServiceCallbackHandler callback)
+            final org.simpl.rrs.transformation.webservices.RRSTransformationServiceCallbackHandler callback)
 
             throws java.rmi.RemoteException;
 
