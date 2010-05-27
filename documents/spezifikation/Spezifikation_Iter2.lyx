@@ -464,7 +464,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="15" columns="4">
+<lyxtabular version="3" rows="16" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1074,7 +1074,7 @@ Abschließende Bearbeitung der Spezifikation.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1083,7 +1083,7 @@ Abschließende Bearbeitung der Spezifikation.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1092,7 +1092,7 @@ Abschließende Bearbeitung der Spezifikation.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1101,11 +1101,49 @@ hahnml, huettiwg
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Überarbeitung der Spezifikation.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hahnml
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Korrektur der Spezifikation anhand der Kundenkommentare zur 2.Iteration.
 \end_layout
 
 \end_inset
@@ -1127,17 +1165,6 @@ hahnml, huettiwg
 
 \begin_layout Section
 Einleitung
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Komplettes Dokument nochmal überarbeiten und an neue Kapitel und Abschnitte
- anpassen.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1222,23 +1249,16 @@ Evolution des Dokuments
 
 \begin_layout Standard
 Die vorliegende Spezifikation beschreibt die Anforderungen, die im SIMPL-Rahmenw
-erk umgesetzt werden, sowie einiger optionaler Komponenten, die später noch
+erk umgesetzt werden, sowie einige mögliche Erweiterungen, die später noch
  hinzukommen können.
  
 \end_layout
 
-\begin_layout Standard
-Der Abschnitt Funktionalität beschreibt, welche Anforderungen bereits umgesetzt
- wurden.
- Im Abschnitt Ausblick wird beschrieben, welche Komponenten wärend der zweiten
- Iteration noch umgesetzt werden.
-\end_layout
-
 \begin_layout Subsubsection
-Funktionalität 
+Iteration 1
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Funktionalität"
+name "sub:Iteration-1"
 
 \end_inset
 
@@ -1246,7 +1266,8 @@ name "sub:Funktionalität"
 \end_layout
 
 \begin_layout Standard
-Folgende Funktionen bilden die momentane Funktionalität des SIMPL-Rahmenwerks:
+Folgende Funktionen bilden die Funktionalität des SIMPL-Rahmenwerks nach
+ der 1.Iteration:
 \end_layout
 
 \begin_layout Itemize
@@ -1264,17 +1285,30 @@ Bereitstellung von generischen BPEL-Aktivitäten im Eclipse BPEL Designer
 \end_layout
 
 \begin_layout Itemize
-Bereitstellung von Query-Editoren für die verschiedenen DM-Aktivitäten.
+Bereitstellung von grafischen Abfragebefehls-Editoren für die verschiedenen
+ DM-Aktivitäten.
 \end_layout
 
 \begin_layout Itemize
 Umsetzung einer grundlegenden Admin-Konsole, in der das Auditing aktiviert
- werden kann, sowie Benutzername und Passwort, für die spätere Authentifizierung
- an Datenquellen.
+ werden kann und die Zieldatenquelle und deren Authentifizierungsinformationen
+ für das Auditing festgelegt werden können.
 \end_layout
 
 \begin_layout Subsubsection
-Ausblick
+Iteration 2
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Iteration-2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Funktionalität des SIMPL-Rahmenwerks wird in der 2.Iteration um folgende
+ Funktionen erweitert:
 \end_layout
 
 \begin_layout Itemize
@@ -1316,12 +1350,8 @@ Unterstützung einer automatischen Auswahl von Datenquellen zur Laufzeit.
  erfüllt, ausgewählt wird.
 \end_layout
 
-\begin_layout Itemize
-Validation von der SIMPL-DM-Aktivitäten
-\end_layout
-
 \begin_layout Subsubsection
-Optionale Komponenten 
+Mögliche Erweiterungen 
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Ausblick"
@@ -1332,13 +1362,17 @@ name "sub:Ausblick"
 \end_layout
 
 \begin_layout Standard
-Im Folgenden wird beschrieben, was von uns (unter Absprache mit dem Kunden)
- als optionale Anforderungen definiert wurden.
- Diese werden umgesetzt, wenn der zeitliche Rahmen des Projekts es zulässt:
+Im Folgenden werden einige mögliche Erweiterungen beschrieben.
+ Auf einige dieser Erweiterungsmöglichkeiten wird in den entsprechenden
+ Kapiteln näher eingegangen.
 \end_layout
 
 \begin_layout Itemize
 Einstellung der Granularität des Auditings.
+\end_layout
+
+\begin_layout Itemize
+Validierung der DM-Aktivitäten im Eclipse BPEL Designer.
 \end_layout
 
 \begin_layout Itemize
@@ -1425,7 +1459,7 @@ reference "sec:Anwendungsfälle-(Use-Cases)"
 
 \end_inset
 
- und die vorläufige Benutzeroberfläche in Kapitel 
+ und die Benutzeroberfläche in Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Benutzeroberfläche"
@@ -1449,7 +1483,7 @@ reference "sec:Anwendungsfälle-(Use-Cases)"
  schon in der Übersicht der Kernfunktionalität in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Basisfunktionalität"
+reference "sub:Funktionen"
 
 \end_inset
 
@@ -1511,7 +1545,7 @@ Einbettung in die Systemumgebung
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk, bestehend aus dem SIMPL Core, den SIMPL Eclipse Plug-Ins
- und dem SIMPL Extension-Activity Plug-In, soll in die in Abbildung 
+ und dem BPEL-DM Plug-In, soll in die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Systemumgebung"
@@ -1537,9 +1571,10 @@ key "key-6"
 \end_inset
 
 ) werden auf dem Web Server ausgeführt.
- SIMPL unterstützt relationale Datenbanken (MySQL, IBM DB2) und kann um
- weitere Datenquellen, wie XML-Datenbanken (IBM DB2 mit pureXML-Technologie),
- Dateisysteme oder Sensornetz-Datenbanken (TinyDB) ergänzt werden.
+ SIMPL unterstützt relationale Datenbanken (MySQL, IBM DB2, Apache Derby)
+ und Dateisysteme (CSV-Dateiformat) und kann um weitere Datenquellen, wie
+ XML-Datenbanken (IBM DB2 mit pureXML-Technologie) oder Sensornetz-Datenbanken
+ (TinyDB) ergänzt werden.
  Eine Sensornetz-Datenbank (TinyDB) speichert die Daten von meist kabellos
  vernetzten Sensoren und liefert so eine zentrale und einheitliche Zugriffsmögli
 chkeit auf Sensordaten.
@@ -1547,9 +1582,9 @@ chkeit auf Sensordaten.
  die Funktionalität, die während der Laufzeit von Prozessen mit DM-Aktivitäten
  benötigt wird.
  Durch den SIMPL Core werden generell weitgehend alle Funktionalitäten,
- die von einem beliebigen Ansatz für den Zugriff auf Datenquellen von wissentsch
-aftlichen Workflows benötigt werden, geliefert.
- Dadurch ergibt sich die Möglichkeit in der Workflow-Engine so wenig wie
+ die von einem beliebigen Ansatz für den Zugriff auf Datenquellen von wissenscha
+ftlichen Workflows benötigt werden, geliefert.
+ Dadurch ergibt sich die Möglichkeit, in der Workflow-Engine so wenig wie
  nötig implementieren zu müssen.
  Diese Aufteilung ermöglicht es, entsprechende zukünftige Ansätze für den
  Datenzugriff relativ leicht umzusetzen bzw.
@@ -1568,11 +1603,10 @@ aftlichen Workflows benötigt werden, geliefert.
  für das jeweils andere Plug-In eigene Implementierungen zu nutzen.
  Das SIMPL Core Client Plug-In realisiert die Verbindung mit dem SIMPL Core
  und wird sowohl für das SIMPL Core Plug-In (Laden und Speichern von Rahmenwerks
--Einstellungen), wie auch für das BPEL-DM Plug-In (Laden aller vom SIMPL
+einstellungen), als auch für das BPEL-DM Plug-In (Laden aller vom SIMPL
  Core unterstützten Datenquellen) benötigt.
  Die Ausführungslogiken der jeweiligen DM-Aktivitäten werden in der Workflow-Eng
-ine implementiert und in diese als Plug-In (SIMPL Extension-Activity Plug-In)
- eingebunden.
+ine implementiert und in diese als Plug-In (BPEL-DM Plug-In) eingebunden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
  Die Validation der SIMPL Extensions wird hierbei durch den Eclipse BPEL-Designe
@@ -1622,6 +1656,12 @@ name "fig:Systemumgebung"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Funktionen"
+
+\end_inset
+
 Funktionen
 \end_layout
 
@@ -1642,11 +1682,12 @@ Die vorhandenen BPEL-Aktivitäten des Eclipse BPEL Designers werden dazu
  um neue Aktivitäten für die Verwaltung von Daten erweitert (DM-Aktivitäten).
  Mit deren Hilfe wird die Anbindung von Datenquellen in BPEL-Prozessen vereinfac
 ht.
- In der ersten Iteration werden die Datenquellen über ihre physikalische
- Adresse angebunden.
- In einer späteren Iteration wird eine Datenquellen-Registry bereitgestellt.
- Diese ermöglicht die Realisierung einer grafischen oder automatischen Auswahlmö
-glichkeit für Datenquellen.
+ Dabei können die Datenquellen sowohl statisch als auch dynamisch angebunden
+ werden.
+ Für die dynamische Anbindung von Datenquellen wird eine Datenquellen-Registry
+ bereitgestellt, die es ermöglicht, dass Datenquellen im Modellierungswerkzeug
+ einfach ausgewählt werden können oder automatisch zur Laufzeit angebunden
+ werden.
  Eine nähere Beschreibung der DM-Aktivitäten wird in Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1659,8 +1700,8 @@ reference "sub:Data-Management-Aktivitäten-GUI"
 
 \begin_layout Standard
 Alle Ereignisse, die während der Laufzeit eines Prozesses auftreten (z.B.
- Zugriff auf eine Datenquelle), werden durch ein Auditing in einer vom Nutzer
- definierten Datenbank gespeichert.
+ Ausführung einer DM-Aktivität), werden durch ein Auditing in einer vom
+ Nutzer definierten Datenbank gespeichert.
 \end_layout
 
 \begin_layout Standard
@@ -1760,7 +1801,7 @@ Die Ausführung von BPEL-Prozessen ist an die Workflow-Engine Apache ODE
 \begin_layout Itemize
 Die SIMPL Eclipse Plug-Ins sind nur voll funktionsfähig, falls der SIMPL
  Core erreichbar ist, d.h.
- das ein Apache Tomcat Server mit angebundenem SIMPL Core gestartet wurde.
+ dass ein Apache Tomcat Server mit angebundenem SIMPL Core gestartet wurde.
 \end_layout
 
 \begin_layout Itemize
@@ -1929,8 +1970,12 @@ reference "sub:Einbettung-Systemumgebung"
 \end_layout
 
 \begin_layout Itemize
-Der SIMPL Core an sich wird modular aufgebaut sein, damit er selbst erweitert
- werden kann.
+Das Plug-In System des SIMPL Cores, über das Plug-Ins zur Unterstützung
+ von weiteren Datenquellentypen einfach angebunden werden können.
+\end_layout
+
+\begin_layout Itemize
+Die Verwendung des Eclipse Plug-In Mechanismus für die Admin-Konsole.
 \end_layout
 
 \begin_layout Subsection
@@ -1984,6 +2029,193 @@ t werden, beschrieben.
 \end_layout
 
 \begin_layout Subsection
+Benutzeroberfläche des erweiterten Eclipse BPEL Designers
+\end_layout
+
+\begin_layout Subsubsection
+Referenzvariablen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SIMPL_BPEL_Designer.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Referenzvariablen"
+
+\end_inset
+
+Um Referenzvariablen erweiterter Eclipse BPEL Designer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+ODE Deployment-Deskriptor
+\end_layout
+
+\begin_layout Standard
+Über den ODE Deployment-Deskriptor sollen in Zukunft Einstellungen für DM-Aktivi
+täten von BPEL-Prozessen, wie z.B.
+ Referenzen auf Datenquellen, Authentifizierungsinformationen für referenzierte
+ Datenquellen und die Zuordnung von Late-Binding Strategien und Policies,
+ spezifiziert werden.
+ Eine detailliertere Beschreibung der Verwendung und Funktionalität des
+ erweiterten ODE Deployment-Deskriptors wird im Laufe der Iteration nachgeliefer
+t.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SIMPL_DeploymentDeskriptor.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-DD"
+
+\end_inset
+
+Erweiterter Deployment-Deskriptor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SIMPL_DD_AddDS.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-DD-AddDS"
+
+\end_inset
+
+Dialog für das Hinzufügen einer Datenquellen-Beschreibung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SIMPL_DD_AddAM.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-DD-AddAM"
+
+\end_inset
+
+Dialog für das Hinzufügen eines Activity Mappings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Benutzeroberfläche der SIMPL Eclipse Plug-Ins
 \end_layout
 
@@ -2016,7 +2248,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/Iter1Screens/SIMPL_Menü.JPG
+	filename finalVersion/SIMPL_Menü.JPG
 	width 80text%
 
 \end_inset
@@ -2328,7 +2560,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/Iter2Screens/SIMPL_Settings.JPG
+	filename finalVersion/SIMPL_Preferences.JPG
 	width 80text%
 
 \end_inset
@@ -2346,7 +2578,7 @@ name "fig:Settings"
 
 \end_inset
 
-SIMPL Settings Fenster
+SIMPL Preference Seiten
 \end_layout
 
 \end_inset
@@ -2412,6 +2644,47 @@ About
  aufgeführt sind.
  Auch hier wird eine genauere Beschreibung nachgeliefert, sobald der konkrete
  Inhalt dieses Fenster feststeht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SIMPL_About.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:About-Window"
+
+\end_inset
+
+SIMPL About Fenster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2548,7 +2821,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/Iter1Screens/QueryActivityPropertySection.JPG
+	filename finalVersion/SIMPL_DM_PropertySection.JPG
 	width 100text%
 
 \end_inset
@@ -2577,21 +2850,6 @@ Eigenschaftsfenster einer DM-Aktivität am Beispiel einer Query Activity
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-ODE Deployment-Deskriptor
-\end_layout
-
-\begin_layout Standard
-Über den ODE Deployment-Deskriptor sollen in Zukunft Einstellungen für DM-Aktivi
-täten von BPEL-Prozessen, wie z.B.
- Referenzen auf Datenquellen, Authentifizierungsinformationen für referenzierte
- Datenquellen und die Zuordnung von Late-Binding Strategien und Policies,
- spezifiziert werden.
- Eine detailliertere Beschreibung der Verwendung und Funktionalität des
- erweiterten ODE Deployment-Deskriptors wird im Laufe der Iteration nachgeliefer
-t.
 \end_layout
 
 \begin_layout Subsection
@@ -2626,7 +2884,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename iteration2/RRSView.png
+	filename finalVersion/RRS_View.JPG
 	width 80text%
 
 \end_inset
@@ -2694,7 +2952,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename UDDI_Data_Source_Browser.png
+	filename finalVersion/UDDI_View.JPG
 	width 80text%
 
 \end_inset
