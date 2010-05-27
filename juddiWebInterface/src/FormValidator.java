@@ -8,26 +8,26 @@ public class FormValidator {
 		String address = request.getParameter("address");
 		String type = request.getParameter("type");
 		String subtype = request.getParameter("subtype");
-		String policy = request.getParameter("policy");
+		String language = request.getParameter("language");
 		
 		if (name.equals("")) {
-			message = message + "Field Name must not be empty <br>";
+			message = message + "Field name must not be empty <br>";
 		}
 		
 		if (address.equals("")) {
-			message = message + "Field Address must not be empty <br>";
+			message = message + "Field address must not be empty <br>";
 		}
 		
 		if (type.equals("")) {
-			message = message + "Field Type must not be empty <br>";
+			message = message + "Field type must not be empty <br>";
 		}
 		
 		if (subtype.equals("")) {
 			message = message + "Field subtype must not be empty <br>";
 		}
 		
-		if (policy.equals("")) {
-			message = message + "Field Policy must not be empty <br>";
+		if (language.equals("")) {
+			message = message + "Field language must not be empty <br>";
 		}
 		
 		return message;

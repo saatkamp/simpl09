@@ -6,7 +6,7 @@
 <%@page import="org.simpl.uddi.UddiWebConfig"%>
 <%@page import="java.io.FileNotFoundException"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Simpl jUDDI Webinterface</title>
+<title>SIMPL jUDDI Web Interface: Configuration</title>
 </head>
 <body>
 <%
@@ -45,7 +45,7 @@ String password = "";
 
 
 	<tr>
-		<td><label>Username</label></td>
+		<td><label>User name</label></td>
 
 		<td><input name="username" type="text" value="<%=username%>"
 			size="100" /></td>

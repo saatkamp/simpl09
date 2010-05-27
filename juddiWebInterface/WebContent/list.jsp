@@ -14,7 +14,7 @@
 <meta
 	http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <head>
-<title>Simpl jUDDI Datasourcelist</title>
+<title>SIMPL jUDDI Web Interface: List of data sources</title>
 </head>
 <body>
 <%
@@ -33,10 +33,14 @@
 <form action="UddiAction" method="post">
 <table border="1">
 	<tr>
-		<td>Datasource Name</td>
-		<td>Adress</td>
+		<td>Datasource name</td>
+		<td>Address</td>
 		<td>Type</td>
 		<td>Subtype</td>
+		<td>Language</td>
+		<td>Data format</td>
+		<td>User name</td>
+		<td>Password</td>
 	</tr>
 	<%
 		for (UddiDataSource source : dataSources) {
@@ -46,6 +50,10 @@
 		<td><%=source.getAddress()%></td>
 		<td><%=source.getAttributeValue("type")%></td>
 		<td><%=source.getAttributeValue("subtype")%></td>
+		<td><%=source.getAttributeValue("language")%></td>
+		<td><%=source.getAttributeValue("dataformat")%></td>
+		<td><%=source.getAttributeValue("username")%></td>
+		<td><%=source.getAttributeValue("password")%></td>
 		<td><input type="radio" name="uddi" value="<%=source.getKey()%>"></input></td>
 	</tr>
 	<%
