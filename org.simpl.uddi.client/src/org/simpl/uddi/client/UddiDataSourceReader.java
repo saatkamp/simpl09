@@ -1,7 +1,5 @@
 package org.simpl.uddi.client;
 
-
-
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -23,9 +21,9 @@ import org.uddi.v3_service.UDDIInquiryPortType;
 public class UddiDataSourceReader implements IUddiConfig {
 
 	UDDIInquiryPortType inquiry = null;
-	
+
 	String address = "";
-	
+
 	Transport transport = null;
 
 	public static UddiDataSourceReader datasourceReader = null;
@@ -35,19 +33,19 @@ public class UddiDataSourceReader implements IUddiConfig {
 		this.transport = new JAXWSTransport("default");
 
 		try {
-			inquiry = this.transport
-					.getUDDIInquiryService(this.address + "/services/inquiry?wsdl");
+			inquiry = this.transport.getUDDIInquiryService(this.address
+					+ "/services/inquiry?wsdl");
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	
+
 	public void refresh() {
 		try {
-			inquiry = this.transport
-					.getUDDIInquiryService(this.address + "/services/inquiry?wsdl");
+			inquiry = this.transport.getUDDIInquiryService(this.address
+					+ "/services/inquiry?wsdl");
 		} catch (TransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,7 +103,6 @@ public class UddiDataSourceReader implements IUddiConfig {
 
 		findService.setCategoryBag(bag);
 
-		
 		return getDataSources(findService);
 	}
 
@@ -134,6 +131,17 @@ public class UddiDataSourceReader implements IUddiConfig {
 		findService.setCategoryBag(bag);
 
 		return getDataSources(findService);
+	}
+
+	/**
+	 * Gets a datasource by its name value
+	 * 
+	 * @param name
+	 *            of the searched data source
+	 * @return The data source with the given name.
+	 */
+	public UddiDataSource getByName(String name) {
+		return getByKey(IUddiConfig.KEYPREFIX + name);
 	}
 
 	/**
@@ -167,7 +175,8 @@ public class UddiDataSourceReader implements IUddiConfig {
 			BusinessService businessService = serviceDetail
 					.getBusinessService().get(0);
 
-			source = new UddiDataSource(businessService.getBusinessKey(), businessService.getServiceKey());
+			source = new UddiDataSource(businessService.getBusinessKey(),
+					businessService.getServiceKey());
 			source.setAddress(businessService.getBindingTemplates()
 					.getBindingTemplate().get(0).getAccessPoint().getValue());
 			source.setDescList((ArrayList<Description>) businessService
@@ -179,7 +188,6 @@ public class UddiDataSourceReader implements IUddiConfig {
 		return source;
 
 	}
-	
 
 	public String getAddress() {
 		return address;
@@ -188,30 +196,27 @@ public class UddiDataSourceReader implements IUddiConfig {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+
 	public String trimKey(String key) {
-		String [] keyStringList = key.split(":");
-		
+		String[] keyStringList = key.split(":");
+
 		return keyStringList[2];
 	}
-	
-	
-	
-	
+
 	private ArrayList<UddiDataSource> getDataSources(FindService findService) {
 		ArrayList<ServiceInfo> serviceLists = new ArrayList<ServiceInfo>();
 
 		ArrayList<String> keyList = new ArrayList<String>();
-		
+
 		ServiceList sd = null;
-		
+
 		ArrayList<UddiDataSource> datasources = new ArrayList<UddiDataSource>();
 
 		try {
 			if (this.inquiry != null) {
 				sd = this.inquiry.findService(findService);
 			}
-			
+
 			if (sd != null && sd.getServiceInfos() != null) {
 				serviceLists = (ArrayList<ServiceInfo>) sd.getServiceInfos()
 						.getServiceInfo();
@@ -249,7 +254,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			for (BusinessService businessService : businessServices) {
 				UddiDataSource dataSource = new UddiDataSource(businessService
 						.getBusinessKey(), businessService.getServiceKey());
@@ -265,7 +270,7 @@ public class UddiDataSourceReader implements IUddiConfig {
 				datasources.add(dataSource);
 			}
 		}
-		
+
 		return datasources;
 	}
 
