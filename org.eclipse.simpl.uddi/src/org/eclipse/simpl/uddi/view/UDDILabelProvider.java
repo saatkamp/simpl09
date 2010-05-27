@@ -22,6 +22,12 @@ public class UDDILabelProvider extends LabelProvider implements
 			return datasource.getSubType();
 		case 4:
 			return datasource.getLanguage();
+		case 5:
+			return datasource.getDataFormat();
+		case 6:
+			return datasource.getAuthentication().getUser();
+		case 7:
+			return datasource.getAuthentication().getPassword().replaceAll(".", "*");
 		default:
 			throw new RuntimeException("Too much columns");
 		}
