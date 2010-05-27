@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.simpl.communication.client.Authentication;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.simpl.uddi.UDDIPlugIn;
 import org.simpl.uddi.client.UddiDataSource;
@@ -15,9 +16,6 @@ public class ModelProvider {
 
 	private ModelProvider() {
 		datasources = new ArrayList<DataSource>();
-		
-		// Image here some uddi access to read the Datasources and to
-		// put them into the model
 
 		ArrayList<UddiDataSource> dsList = UddiDataSourceReader.getInstance(UDDIPlugIn.getDefault().getPreferenceStore().getString("UDDI_ADDRESS")).getAllDatasources();
 		
@@ -31,6 +29,11 @@ public class ModelProvider {
 			ds.setSubType(source.getSubtype());
 			ds.setLanguage(source.getLanguage());
 			ds.setDataFormat(source.getDataFormat());
+			Authentication auth = new Authentication();
+			auth.setUser(source.getUsername());
+			auth.setPassword(source.getPassword());
+			ds.setAuthentication(auth);
+
 			datasources.add(ds);
 		}
 	}
@@ -87,9 +90,14 @@ public class ModelProvider {
 
 			ds.setName(source.getName());
 			ds.setAddress(source.getAddress());
-			ds.setType(source.getAttributeValue("type"));
-			ds.setSubType(source.getAttributeValue("subtype"));
-			ds.setLanguage(source.getAttributeValue("language"));
+			ds.setType(source.getType());
+			ds.setSubType(source.getSubtype());
+			ds.setLanguage(source.getLanguage());
+			ds.setDataFormat(source.getDataFormat());
+			Authentication auth = new Authentication();
+			auth.setUser(source.getUsername());
+			auth.setPassword(source.getPassword());
+			ds.setAuthentication(auth);
 
 			datasources.add(ds);
 		}
