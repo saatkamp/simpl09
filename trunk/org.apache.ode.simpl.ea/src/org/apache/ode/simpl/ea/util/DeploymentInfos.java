@@ -22,23 +22,32 @@ public class DeploymentInfos {
 	public static DataSource getActivityDataSource(String activityName,
 			String dataSourceName) {
 		DataSource data = null;
-		// If we have a activity-policy mapping, we have a
-		// late binding data source with policy.
-		// If no such mapping exists, we use the logical name
-		// which is specified in the activity address field
-		if (DeploymentUtils.getInstance().getDataSourceOfActivity(activityName) != null) {
-			data = DeploymentUtils.getInstance().getDataSourceOfActivity(
-					activityName);
-			DataSource backupDs = DeploymentUtils.getInstance()
-					.getDataSourceByName(dataSourceName);
-			if (backupDs != null) {
-				data = DeploymentUtils.getInstance().merge(data, backupDs);
-			}
+
+		if (dataSourceName.contains("uddi:")) {
+			// Query the data source from uddi (on demand)
+			data = DeploymentUtils.getInstance().getUDDIDataSourceByName(dataSourceName);
 		} else {
-			data = DeploymentUtils.getInstance().getDataSourceByName(
-					dataSourceName);
+			// Query the data source from the deployment-descriptor
+			
+			// If we have a activity-policy mapping, we have a
+			// late binding data source with policy.
+			// If no such mapping exists, we use the logical name
+			// which is specified in the activity address field
+			if (DeploymentUtils.getInstance().getDataSourceOfActivity(
+					activityName) != null) {
+				data = DeploymentUtils.getInstance().getDataSourceOfActivity(
+						activityName);
+				DataSource backupDs = DeploymentUtils.getInstance()
+						.getDataSourceByName(dataSourceName);
+				if (backupDs != null) {
+					data = DeploymentUtils.getInstance().merge(data, backupDs);
+				}
+			} else {
+				data = DeploymentUtils.getInstance().getDataSourceByName(
+						dataSourceName);
+			}
 		}
-		
+
 		if (logger.isDebugEnabled()) {
 			logger.debug("Name of ds: " + data.getName());
 		}
@@ -52,10 +61,12 @@ public class DeploymentInfos {
 			logger.debug("Subtype of ds: " + data.getSubType());
 		}
 		if (logger.isDebugEnabled()) {
-			logger.debug("UserName of ds: " + data.getAuthentication().getUser());
+			logger.debug("UserName of ds: "
+					+ data.getAuthentication().getUser());
 		}
 		if (logger.isDebugEnabled()) {
-			logger.debug("Password of ds: " + data.getAuthentication().getPassword());
+			logger.debug("Password of ds: "
+					+ data.getAuthentication().getPassword());
 		}
 		if (logger.isDebugEnabled()) {
 			logger.debug("Format of ds: " + data.getDataFormat());
