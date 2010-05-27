@@ -77,36 +77,44 @@ public class DeploymentUtils {
 	private List<DataSource> dataSourceElements = new ArrayList<DataSource>();
 
 	/**
+	 * This map holds all yet queried data sources and their names (with "uddi:"
+	 * prefix) of the UDDI registry. So we can use them several times without
+	 * querying them again.
+	 */
+	private HashMap<String, DataSource> uddiDataSourceElements = new HashMap<String, DataSource>();
+
+	/**
 	 * This map holds all activity-policy mappings for the late binding of data
 	 * source which are specified in the deployment descriptor.
 	 */
 	private Map<String, DataSource> activityMappings = new HashMap<String, DataSource>();
 
 	private static String lastProcess = "";
-	
+
 	public static DeploymentUtils getInstance() {
 		if (instance == null) {
 			instance = new DeploymentUtils();
 			// Set up a simple configuration that logs on the console.
 			PropertyConfigurator.configure("log4j.properties");
-			
-			//Initialize the created instance
-			instance.init(DataManagementActivity.getDeployDir(), DataManagementActivity.getProcessName());
-			
+
+			// Initialize the created instance
+			instance.init(DataManagementActivity.getDeployDir(),
+					DataManagementActivity.getProcessName());
+
 			lastProcess = DataManagementActivity.getProcessName();
 		}
-		
-		if (!lastProcess.equals(DataManagementActivity.getProcessName())){
-			//Initialize the created instance
-			instance.reInit(DataManagementActivity.getDeployDir(), DataManagementActivity.getProcessName());
+
+		if (!lastProcess.equals(DataManagementActivity.getProcessName())) {
+			// Initialize the created instance
+			instance.reInit(DataManagementActivity.getDeployDir(),
+					DataManagementActivity.getProcessName());
 		}
-		
+
 		return instance;
 	}
 
 	/**
-	 * If the process changed the new deployment descriptor
-	 * has to be read
+	 * If the process changed the new deployment descriptor has to be read
 	 * 
 	 * @param deployDir
 	 * @param processName
@@ -114,28 +122,35 @@ public class DeploymentUtils {
 	private void reInit(String deployDir, String processName) {
 		dataSourceElements.clear();
 		activityMappings.clear();
-		
+
 		init(deployDir, processName);
 	}
 
 	private void init(String path, String process) {
-			readDeploymentDescriptor(path, process);
-			readUDDIDataSources();
+		readDeploymentDescriptor(path, process);
 	}
 
 	/**
-	 * 
+	 * Queries a data source from the UDDI registry just on demand. That means
+	 * that the data source is queried just before it is used from the activity.
+	 * So we will save a lot of time and performance.
 	 */
-	private void readUDDIDataSources() {
-		DataSource resultDataSource;
+	public DataSource getUDDIDataSourceByName(String dataSourceName) {
+		DataSource resultDataSource = null;
 
-		ArrayList<UddiDataSource> dataSources = UddiDataSourceReader
-				.getInstance(PROCESS_UDDI_ADDRESS).getAllDatasources();
+		if (uddiDataSourceElements.containsKey(dataSourceName)) {
 
-		for (UddiDataSource uddiDataSource : dataSources) {
+			resultDataSource = uddiDataSourceElements.get(dataSourceName);
+
+		} else {
+
+			String nameWOprefix = dataSourceName.split(":")[1];
+			
+			UddiDataSource uddiDataSource = UddiDataSourceReader.getInstance(
+					PROCESS_UDDI_ADDRESS).getByName(nameWOprefix);
 
 			resultDataSource = new DataSource();
-			resultDataSource.setName("uddi:"+uddiDataSource.getName());
+			resultDataSource.setName("uddi:" + uddiDataSource.getName());
 			resultDataSource.setType(uddiDataSource.getType());
 			resultDataSource.setSubType(uddiDataSource.getSubtype());
 			resultDataSource.setAddress(uddiDataSource.getAddress());
@@ -145,8 +160,9 @@ public class DeploymentUtils {
 			resultDataSource.getAuthentication().setPassword(
 					uddiDataSource.getPassword());
 
-			dataSourceElements.add(resultDataSource);
-			
+			// Add the queried data source to the map
+			uddiDataSourceElements.put(dataSourceName, resultDataSource);
+
 			if (logger.isDebugEnabled()) {
 				logger.debug("Name of ds: " + resultDataSource.getName());
 			}
@@ -160,15 +176,21 @@ public class DeploymentUtils {
 				logger.debug("Subtype of ds: " + resultDataSource.getSubType());
 			}
 			if (logger.isDebugEnabled()) {
-				logger.debug("UserName of ds: " + resultDataSource.getAuthentication().getUser());
+				logger.debug("UserName of ds: "
+						+ resultDataSource.getAuthentication().getUser());
 			}
 			if (logger.isDebugEnabled()) {
-				logger.debug("Password of ds: " + resultDataSource.getAuthentication().getPassword());
+				logger.debug("Password of ds: "
+						+ resultDataSource.getAuthentication().getPassword());
 			}
 			if (logger.isDebugEnabled()) {
-				logger.debug("Format of ds: " + resultDataSource.getDataFormat());
+				logger.debug("Format of ds: "
+						+ resultDataSource.getDataFormat());
+
 			}
 		}
+
+		return resultDataSource;
 	}
 
 	/**
@@ -282,7 +304,7 @@ public class DeploymentUtils {
 									EL_POLICY, DD_NAMESPACE);
 							String policyData = ((Element) policy)
 									.getAttributeValue(AT_MAPPING_POLICY_DATA);
-							
+
 							if (logger.isDebugEnabled()) {
 								logger.debug("Policy of ds: " + policyData);
 							}
