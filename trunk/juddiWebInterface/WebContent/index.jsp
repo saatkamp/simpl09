@@ -52,7 +52,7 @@ String password = "";
 
 
 	<tr>
-		<td><label>Username</label></td>
+		<td><label>User name</label></td>
 
 		<td><input name="username" type="text" value="<%=username%>"
 			size="100" /></td>
@@ -71,7 +71,7 @@ String password = "";
 <input type="submit" name="saveconfig" value="save" /></form>
 
 <% if (request.getParameter("message") == null || !request.getParameter("message").equals("Uddi Registry not found") ){ %>
-<a href="./list.jsp">Show Datasources</a>
+<a href="./list.jsp">Show data sources</a>
 <%} %>
 
 </body>

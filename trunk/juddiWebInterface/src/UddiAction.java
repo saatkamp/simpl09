@@ -60,9 +60,9 @@ public class UddiAction extends HttpServlet {
 			if (request.getParameter("uddi") != null) {
 				dataWriter = UddiDataWriter.getInstance(config.getAddress(), config.getUsername(), config.getPassword());
 				dataWriter.deleteDatasource(request.getParameter("uddi"));
-				response.sendRedirect("list.jsp?message=Datenquelle Gelöscht");
+				response.sendRedirect("list.jsp?message=Datasource deleted successfully");
 			} else {
-				response.sendRedirect("list.jsp?message=Keine Datenquelle Angegeben");
+				response.sendRedirect("list.jsp?message=No datasource selected");
 			}
 			
 		} else if (edit != null) {
@@ -83,7 +83,7 @@ public class UddiAction extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
 			} else {
-				nextJSP = "/form.jsp?message="+"Angegebene Uddi Addresse ist Falsch";
+				nextJSP = "/form.jsp?message="+"The given UDDI address is not valid";
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
 			}
@@ -105,11 +105,11 @@ public class UddiAction extends HttpServlet {
 				dataSource.addAttribute("language", request.getParameter("language"), "uddi:juddi.apache.org:language");
 				dataSource.addAttribute("dataformat", request.getParameter("dataformat"), "uddi:juddi.apache.org:dataformat");
 				if (dataWriter.writeDatasource(dataSource) == true) {
-					String nextJSP = "/list.jsp?message="+"Datasource Added";
+					String nextJSP = "/list.jsp?message="+"New datasource added successfully";
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 					dispatcher.forward(request,response);
 				} else {
-					String nextJSP = "/list.jsp?message="+"Fehler: Uddi Registry nicht gefunden";
+					String nextJSP = "/list.jsp?message="+"Error: The UDDI registry is not available";
 					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 					dispatcher.forward(request,response);
 				}
@@ -137,19 +137,19 @@ public class UddiAction extends HttpServlet {
 				if (!UddiBusinessReader.getInstance(config.getAddress()).simplBusinessExsists()) {
 					CreateDatabase.create();
 				}
-				String nextJSP = "/index.jsp?message="+"Config Saved";
+				String nextJSP = "/index.jsp?message="+"Configuration saved";
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
 				
 			} catch (TransportException e) {
-				String nextJSP = "/index.jsp?message="+"Uddi Registry not found";
+				String nextJSP = "/index.jsp?message="+"UDDI registry not found";
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
 				dispatcher.forward(request,response);
 			}
 			
 			
 		} else {
-			out.println("Unbekannte Aktion");
+			out.println("Not a valid action");
 		}
 
 		

@@ -7,7 +7,7 @@
 <%@page import="org.simpl.uddi.client.UddiDataSourceReader"%>
 <%@page import="org.simpl.uddi.UddiWebConfig"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Simpl jUDDI Webinterface</title>
+<title>SIMPL jUDDI Web Interface</title>
 </head>
 <body>
 <%
@@ -116,7 +116,7 @@
 	
 	
 	<tr>
-		<td><label>Username</label></td>
+		<td><label>User name</label></td>
 
 		<td><input name="username" type="text" value="<%=username%>"
 			size="100" /></td>
@@ -130,14 +130,14 @@
 	</tr>
 
 	<tr>
-		<td><label>Policy File</label></td>
+		<td><label>Policy file</label></td>
 
 		<td><input name="policy" type="text" value="<%=policy%>"
 			size="100" /></td>
 	</tr>
 	
 	<tr>
-		<td><label>Data Format</label></td>
+		<td><label>Data format</label></td>
 
 		<td><input name="dataformat" type="text" value="<%=dataformat%>"
 			size="100" /></td>
