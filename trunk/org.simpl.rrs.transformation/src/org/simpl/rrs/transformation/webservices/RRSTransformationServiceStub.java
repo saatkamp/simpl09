@@ -1,6 +1,6 @@
 
 /**
- * TransformationServiceStub.java
+ * RRSTransformationServiceStub.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.5  Built on : Apr 30, 2009 (06:07:24 EDT)
@@ -10,12 +10,12 @@
         
 
         /*
-        *  TransformationServiceStub java implementation
+        *  RRSTransformationServiceStub java implementation
         */
 
         
-        public class TransformationServiceStub extends org.apache.axis2.client.Stub
-        implements TransformationService{
+        public class RRSTransformationServiceStub extends org.apache.axis2.client.Stub
+        implements RRSTransformationService{
         protected org.apache.axis2.description.AxisOperation[] _operations;
 
         //hashmaps to keep the fault mapping
@@ -38,7 +38,7 @@
     private void populateAxisService() throws org.apache.axis2.AxisFault {
 
      //creating the Service with a unique name
-     _service = new org.apache.axis2.description.AxisService("TransformationService" + getUniqueSuffix());
+     _service = new org.apache.axis2.description.AxisService("RRSTransformationService" + getUniqueSuffix());
      addAnonymousOperations();
 
         //creating the operations
@@ -71,7 +71,7 @@
       *Constructor that takes in a configContext
       */
 
-    public TransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext,
+    public RRSTransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext,
        java.lang.String targetEndpoint)
        throws org.apache.axis2.AxisFault {
          this(configurationContext,targetEndpoint,false);
@@ -81,7 +81,7 @@
    /**
      * Constructor that takes in a configContext  and useseperate listner
      */
-   public TransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext,
+   public RRSTransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext,
         java.lang.String targetEndpoint, boolean useSeparateListener)
         throws org.apache.axis2.AxisFault {
          //To populate AxisService
@@ -101,25 +101,25 @@
     /**
      * Default Constructor
      */
-    public TransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
+    public RRSTransformationServiceStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
-                    this(configurationContext,"http://localhost:8080/axis2/services/TransformationService" );
+                    this(configurationContext,"http://localhost:8080/axis2/services/RRSTransformationService" );
                 
     }
 
     /**
      * Default Constructor
      */
-    public TransformationServiceStub() throws org.apache.axis2.AxisFault {
+    public RRSTransformationServiceStub() throws org.apache.axis2.AxisFault {
         
-                    this("http://localhost:8080/axis2/services/TransformationService" );
+                    this("http://localhost:8080/axis2/services/RRSTransformationService" );
                 
     }
 
     /**
      * Constructor taking the target endpoint
      */
-    public TransformationServiceStub(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
+    public RRSTransformationServiceStub(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
         this(null,targetEndpoint);
     }
 
@@ -129,7 +129,7 @@
                     /**
                      * Auto generated method signature
                      * 
-                     * @see org.simpl.rrs.transformation.webservices.TransformationService#transform
+                     * @see org.simpl.rrs.transformation.webservices.RRSTransformationService#transform
                      * @param transform14
                     
                      */
@@ -248,7 +248,7 @@
                 /**
                 * Auto generated method signature for Asynchronous Invocations
                 * 
-                * @see org.simpl.rrs.transformation.webservices.TransformationService#starttransform
+                * @see org.simpl.rrs.transformation.webservices.RRSTransformationService#starttransform
                     * @param transform14
                 
                 */
@@ -256,7 +256,7 @@
 
                  org.simpl.rrs.transformation.webservices.Transform transform14,
 
-                  final org.simpl.rrs.transformation.webservices.TransformationServiceCallbackHandler callback)
+                  final org.simpl.rrs.transformation.webservices.RRSTransformationServiceCallbackHandler callback)
 
                 throws java.rmi.RemoteException{
 
@@ -422,7 +422,7 @@
         }
         return false;
     }
-     //http://localhost:8080/axis2/services/TransformationService
+     //http://localhost:8080/axis2/services/RRSTransformationService
             private  org.apache.axiom.om.OMElement  toOM(org.simpl.rrs.transformation.webservices.Transform param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 

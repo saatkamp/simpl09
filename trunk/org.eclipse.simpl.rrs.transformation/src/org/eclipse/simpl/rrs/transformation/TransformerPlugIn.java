@@ -30,7 +30,7 @@ public class TransformerPlugIn extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		
-		plugin.getPreferenceStore().setDefault("TRANSFORMER_ADDRESS", "http://localhost:8080/axis2/services/TransformationService?wsdl");
+		plugin.getPreferenceStore().setDefault("TRANSFORMER_ADDRESS", "http://localhost:8080/axis2/services/RRSTransformationService?wsdl");
 	}
 
 	/*

@@ -121,8 +121,8 @@ public class TransformationClient {
 
 	private String executeTransformation(String bpelFileContent,
 			String rrsNamespaceURI) {
-		TransformationService transformationService = new TransformationService_Service()
-				.getTransformationServicePort();
+		RRSTransformationService transformationService = new RRSTransformationService_Service()
+				.getRRSTransformationServicePort();
 
 		String response = "";
 

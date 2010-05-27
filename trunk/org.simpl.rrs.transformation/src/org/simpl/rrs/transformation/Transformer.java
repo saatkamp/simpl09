@@ -276,7 +276,7 @@ public class Transformer {
 			// Create an onInstantiation sequence for all onInstantiation
 			// dereferentiation activities and EPR initialization
 			Element onInstSequence = new Element(EL_SEQUENCE, BPEL_NAMESPACE);
-			onInstSequence.setAttribute(AT_NAME, "prepare");
+			onInstSequence.setAttribute(AT_NAME, "prepareEPRs");
 
 			// Process the highest level sequence
 			for (String type : types) {
@@ -286,7 +286,7 @@ public class Transformer {
 			// Add the new sequence after the instantiation process element
 			parentSequence.addContent(parentSequence
 					.indexOf(instantiationElement) + 1, onInstSequence);
-			
+
 			// Now we will insert some new Variables and Invokes to initialize
 			// the reference variables (query EPR data from the RRS).
 			addEPRInvokes(onInstSequence, variableElements);
@@ -344,7 +344,7 @@ public class Transformer {
 	 */
 	private void addEPRInvokes(Element onInstSequence, Element variableElements) {
 		int count = 0;
-		
+
 		/*
 		 * <bpel:sequence name="prepare"> <bpel:assign validate="no"
 		 * name="setNames"> <bpel:copy> <bpel:from> <bpel:literal
@@ -364,7 +364,7 @@ public class Transformer {
 			// EPR name variable
 			assignNameVariables.addContent(createAssignCopyElement(varName,
 					varName + "EPR_Name"));
-			
+
 			onInstSequence.addContent(0, createRRSMetaInvokeElement(varName
 					+ "EPR_Meta", varName + "EPR_Name"));
 			count++;
@@ -404,8 +404,7 @@ public class Transformer {
 
 			assignEPRMessages.addContent(copy);
 		}
-		onInstSequence.addContent(count,
-				assignEPRMessages);
+		onInstSequence.addContent(count, assignEPRMessages);
 	}
 
 	private Element createAssignCopyElement(String value, String varName) {
@@ -480,7 +479,7 @@ public class Transformer {
 		invoke.setAttribute(AT_OPERATION, RRS_RETRIEVAL_PL_ROLE);
 		invoke.setAttribute(AT_PORT_TYPE, RRS_NAMESPACE.getPrefix() + ":"
 				+ RRS_RETRIEVAL_PL_PORT);
-		invoke.setAttribute(AT_INPUT_VARIABLE, valueVarName+"EPR_Ret");
+		invoke.setAttribute(AT_INPUT_VARIABLE, valueVarName + "EPR_Ret");
 		invoke.setAttribute(AT_OUTPUT_VARIABLE, valueVarName);
 		invoke.setText("");
 
@@ -526,7 +525,7 @@ public class Transformer {
 				processReceiveReplyElement(onInstSequence, element);
 			} else {
 				// We check only Assign activities at the moment
-				processAssignElement(onInstSequence, element);
+				processAssignElement(parentSequence, onInstSequence, element);
 			}
 		}
 	}
@@ -576,7 +575,8 @@ public class Transformer {
 		}
 	}
 
-	private void processAssignElement(Element onInstSequence, Element element) {
+	private void processAssignElement(Element parentSequence,
+			Element onInstSequence, Element element) {
 		// Get all copy elements of the assign
 		List copyElements = element.getChildren(EL_COPY, BPEL_NAMESPACE);
 
@@ -611,7 +611,9 @@ public class Transformer {
 						// onInstantiation: referenced data should be loaded
 						// constant (only one time)
 						if (refVarNames.get(varName) == 0) {
-							onInstSequence.addContent(deRefInvoke);
+							parentSequence.addContent(parentSequence
+									.indexOf(instantiationElement) + 1,
+									deRefInvoke);
 
 							// Increase the counter for the name of the next RRS
 							// invoke activity
