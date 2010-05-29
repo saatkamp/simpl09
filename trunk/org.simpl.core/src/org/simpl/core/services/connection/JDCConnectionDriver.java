@@ -8,13 +8,16 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
- * <b>Copyright:</b> <br>
+ * <b>Purpose:</b>Wrapper for JDBCConnectionDriver.<br>
+ * <b>Description:</b>http://java.sun.com/developer/onlineTraining/Programming/JDCBook/
+ * conpool.html<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi
- * @version $Id$<br>
+ * @version $Id: JDCConnectionDriver.java 1224 2010-04-28 14:17:34Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class JDCConnectionDriver implements Driver {
@@ -32,22 +35,22 @@ public class JDCConnectionDriver implements Driver {
   }
 
   public Connection connect(String url, Properties props) throws SQLException {
-    if (!url.startsWith(URL_PREFIX)) {
+    if (!url.startsWith(JDCConnectionDriver.URL_PREFIX)) {
       return null;
     }
     return pool.getConnection();
   }
 
   public boolean acceptsURL(String url) {
-    return url.startsWith(URL_PREFIX);
+    return url.startsWith(JDCConnectionDriver.URL_PREFIX);
   }
 
   public int getMajorVersion() {
-    return MAJOR_VERSION;
+    return JDCConnectionDriver.MAJOR_VERSION;
   }
 
   public int getMinorVersion() {
-    return MINOR_VERSION;
+    return JDCConnectionDriver.MINOR_VERSION;
   }
 
   public DriverPropertyInfo[] getPropertyInfo(String str, Properties props) {

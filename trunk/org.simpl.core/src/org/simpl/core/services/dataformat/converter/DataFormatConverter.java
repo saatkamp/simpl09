@@ -10,7 +10,8 @@ import commonj.sdo.DataObject;
  * source service is passed to the converter functions, it is possible to adapt the
  * conversion to specific differences that need to be taken care of, such as different
  * data types of database table columns.<br>
- * <b>Copyright:</b> <br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi

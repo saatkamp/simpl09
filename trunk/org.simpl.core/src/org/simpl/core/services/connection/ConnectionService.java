@@ -10,12 +10,14 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Purpose:</b>Realizes a connection pool for all JDBC connections.<br>
+ * <b>Description:</b>http://java.sun.com/developer/onlineTraining/Programming/JDCBook/
+ * conpool.html<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
- * @author schneimi<br>
+ * @author schneimi
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
@@ -40,7 +42,7 @@ public class ConnectionService {
     Enumeration<JDCConnection> connlist = connections.elements();
 
     while ((connlist != null) && (connlist.hasMoreElements())) {
-      JDCConnection conn = (JDCConnection) connlist.nextElement();
+      JDCConnection conn = connlist.nextElement();
 
       if ((conn.inUse()) && (stale > conn.getLastUse()) && (!conn.validate())) {
         removeConnection(conn);
@@ -52,7 +54,7 @@ public class ConnectionService {
     Enumeration<JDCConnection> connlist = connections.elements();
 
     while ((connlist != null) && (connlist.hasMoreElements())) {
-      JDCConnection conn = (JDCConnection) connlist.nextElement();
+      JDCConnection conn = connlist.nextElement();
       removeConnection(conn);
     }
   }
@@ -65,7 +67,7 @@ public class ConnectionService {
     JDCConnection c;
 
     for (int i = 0; i < connections.size(); i++) {
-      c = (JDCConnection) connections.elementAt(i);
+      c = connections.elementAt(i);
       if (c.lease()) {
         return c;
       }
@@ -92,10 +94,11 @@ class ConnectionReaper extends Thread {
     this.pool = pool;
   }
 
+  @Override
   public void run() {
     while (true) {
       try {
-        sleep(delay);
+        Thread.sleep(delay);
       } catch (InterruptedException e) {
       }
       pool.reapConnections();

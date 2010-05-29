@@ -8,7 +8,8 @@ import java.sql.ResultSet;
  * meta data.</b> <br>
  * <b>Description: The database meta data is needed zo retrieve the primary keys when
  * preparing update statments from the result set.</b> <br>
- * <b>Copyright:</b> <br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de><br>

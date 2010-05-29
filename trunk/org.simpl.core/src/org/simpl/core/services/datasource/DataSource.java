@@ -12,8 +12,9 @@ import javax.xml.bind.annotation.XmlType;
  * source service that can respond to the data source over the address. Further it holds
  * the necessary authentication information, the requested data format and provides
  * information for the strategic late binding of the data source with a policy.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>

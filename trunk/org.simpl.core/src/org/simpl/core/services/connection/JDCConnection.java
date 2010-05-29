@@ -19,10 +19,12 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Purpose:</b>Wrapper for JDBCConnection.<br>
+ * <b>Description:</b>http://java.sun.com/developer/onlineTraining/Programming/JDCBook/
+ * conpool.html<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi
  * @version $Id$<br>

@@ -5,11 +5,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <b>Purpose:</b>Authentication information to be used for authentication to a
- * data source.<br>
- * <b>Description:</b>Is meant to hold all sorts of authentication information
- * which are picked by the data source services.<br>
- * <b>Copyright:</b> <br>
+ * <b>Purpose:</b>Authentication information to be used for authentication to a data
+ * source.<br>
+ * <b>Description:</b>Is meant to hold all sorts of authentication information which are
+ * picked by the data source services.<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>

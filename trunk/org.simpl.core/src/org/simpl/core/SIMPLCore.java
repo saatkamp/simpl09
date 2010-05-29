@@ -9,8 +9,9 @@ import org.simpl.core.services.strategy.StrategyServiceImpl;
 /**
  * <b>Purpose: Provides access to all services and info of the SIMPLCore.</b> <br>
  * <b>Description: This class implements the singleton pattern.</b> <br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>
@@ -46,27 +47,27 @@ public class SIMPLCore {
    * @return The instance of the administration service.
    */
   public AdministrationService administrationService() {
-    return administrationService;
+    return SIMPLCore.administrationService;
   }
 
   /**
    * @return The instance of the strategy service.
    */
   public StrategyService strategyService() {
-    return strategyService;
+    return SIMPLCore.strategyService;
   }
 
   /**
    * @return The instance of the data source service.
    */
   public DataSourceServiceImpl dataSourceService() {
-    return dataSourceService;
+    return SIMPLCore.dataSourceService;
   }
 
   /**
    * @return The SIMPL configuration.
    */
   public SIMPLConfig getConfig() {
-    return config;
+    return SIMPLCore.config;
   }
 }

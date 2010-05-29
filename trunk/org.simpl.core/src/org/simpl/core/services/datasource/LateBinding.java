@@ -10,7 +10,8 @@ import org.simpl.core.services.strategy.Strategy;
  * <b>Purpose:</b>Late Binding information to be used for the strategy service to find a
  * data source.<br>
  * <b>Description:</b><br>
- * <b>Copyright:</b> <br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
@@ -19,7 +20,7 @@ import org.simpl.core.services.strategy.Strategy;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LateBinding", propOrder = { "policy", "strategy", "uddiAddress"})
+@XmlType(name = "LateBinding", propOrder = { "policy", "strategy", "uddiAddress" })
 public class LateBinding {
   private String policy;
   private Strategy strategy;

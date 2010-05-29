@@ -21,7 +21,11 @@ import commonj.sdo.helper.XMLDocument;
 import commonj.sdo.helper.XMLHelper;
 
 /**
- * Web Service to access the SIMPL core data source service.
+ * <b>Purpose:</b>Web Service to access the SIMPL core data source service.<br>
+ * <b>Description:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>

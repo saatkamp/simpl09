@@ -14,8 +14,9 @@ import org.simpl.core.services.datasource.DataSourceService;
  * format plug-ins.<br>
  * <b>Description:</b> Instances of data format services are retrieved by the data format
  * type, using {@link #getInstance(String)}.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id: DatasourceServiceProvider.java 892 2010-02-18 14:21:37Z
@@ -32,7 +33,7 @@ public class DataFormatProvider {
    * Initialize all data format plugins.
    */
   static {
-    loadPlugins();
+    DataFormatProvider.loadPlugins();
   }
 
   /**
@@ -42,7 +43,7 @@ public class DataFormatProvider {
    * @return
    */
   public static DataFormat<Object, Object> getInstance(String dfType) {
-    return dataFormats.get(dfType);
+    return DataFormatProvider.dataFormats.get(dfType);
   }
 
   /**
@@ -51,7 +52,7 @@ public class DataFormatProvider {
    * @return
    */
   public static List<String> getDataFormatTypes() {
-    return new ArrayList<String>(dataFormats.keySet());
+    return new ArrayList<String>(DataFormatProvider.dataFormats.keySet());
   }
 
   /**
@@ -66,7 +67,7 @@ public class DataFormatProvider {
     List<String> dataFormats = new ArrayList<String>();
     HashMap<String, List<String>> dataFormatMapping = SIMPLCore.getInstance().getConfig()
         .getDataFormatMapping();
-    
+
     for (String dataFormatClassName : dataFormatMapping.keySet()) {
       if (dataFormatMapping.get(dataFormatClassName).contains(
           dataSourceService.getClass().getName())) {
@@ -103,11 +104,11 @@ public class DataFormatProvider {
     while (pluginIterator.hasNext()) {
       try {
         dataFormatServiceInstance = (DataFormatPlugin) Class.forName(
-            (String) pluginIterator.next()).newInstance();
+            pluginIterator.next()).newInstance();
         dataFormatType = dataFormatServiceInstance.getType();
 
-        if (!dataFormats.containsKey(dataFormatType)) {
-          dataFormats.put(dataFormatType, dataFormatServiceInstance);
+        if (!DataFormatProvider.dataFormats.containsKey(dataFormatType)) {
+          DataFormatProvider.dataFormats.put(dataFormatType, dataFormatServiceInstance);
         }
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
