@@ -20,7 +20,8 @@ import commonj.sdo.helper.XSDHelper;
  * The root schema type must have an attribute called <b>type</b>, that is set
  * automatically, for other services being able to recognize the underlying format of a
  * passed SDO.<br>
- * <b>Copyright:</b> <br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi

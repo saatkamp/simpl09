@@ -22,7 +22,8 @@ import commonj.sdo.DataObject;
  * the strategy service is consulted to find a matching full specified data source.<br>
  * The given data on writeback is tested to match the given data source's data format and
  * if necessary converts the data with a data format converter.<br>
- * <b>Copyright:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>

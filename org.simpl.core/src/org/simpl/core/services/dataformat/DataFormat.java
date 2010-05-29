@@ -6,7 +6,8 @@ import commonj.sdo.DataObject;
  * <b>Purpose:</b>Defines the methods that a data format service must implement to work
  * with the data source service.<br>
  * <b>Description:</b> <br>
- * <b>Copyright:</b> <br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi

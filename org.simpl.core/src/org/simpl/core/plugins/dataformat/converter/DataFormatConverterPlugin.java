@@ -12,7 +12,8 @@ import commonj.sdo.DataObject;
  * that can be created for data source services to understand data formats from other data
  * sources.<br>
  * <b>Description:</b>Converts between two SDO data formats.<br>
- * <b>Copyright:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>

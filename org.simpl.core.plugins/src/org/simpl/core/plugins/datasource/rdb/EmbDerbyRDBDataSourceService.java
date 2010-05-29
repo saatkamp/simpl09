@@ -20,16 +20,17 @@ import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 /**
- * <p>
- * Implements all methods of the {@link IDatasourceService} interface for supporting the
- * Apache Derby relational database in embedded mode.
- * </p>
- * 
- * dsAddress = Full path to embedded Derby database, for example: C:\databases\myDB.
+ * <b>Purpose:</b>Implements all methods of the {@link IDatasourceService} interface for
+ * supporting the Apache Derby relational database in embedded mode.<br>
+ * <b>Description:</b>dsAddress = Full path to embedded Derby database, for example:
+ * C:\databases\myDB.<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author hahnml<br>
- * @version $Id: EmbDerbyRDBDataSource.java 1087 2010-04-13 17:12:27Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id: DB2RDBDataSource.java 1014 2010-03-29 09:16:08Z michael.schneidt@arcor.de
+ *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class EmbDerbyRDBDataSourceService extends
@@ -52,9 +53,9 @@ public class EmbDerbyRDBDataSourceService extends
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
+    if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+      EmbDerbyRDBDataSourceService.logger.debug("boolean executeStatement("
+          + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
     boolean success = false;
@@ -67,8 +68,9 @@ public class EmbDerbyRDBDataSourceService extends
       success = true;
       stat.close();
     } catch (Throwable e) {
-      logger.error("exception executing the statement: " + statement, e);
-      logger.debug("Connection will be rolled back.");
+      EmbDerbyRDBDataSourceService.logger.error("exception executing the statement: "
+          + statement, e);
+      EmbDerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -78,8 +80,8 @@ public class EmbDerbyRDBDataSourceService extends
       }
     }
 
-    logger.info("Statement \"" + statement + "\" send to " + dataSource.getAddress()
-        + ".");
+    EmbDerbyRDBDataSourceService.logger.info("Statement \"" + statement + "\" send to "
+        + dataSource.getAddress() + ".");
     closeConnection(conn);
 
     return success;
@@ -88,9 +90,9 @@ public class EmbDerbyRDBDataSourceService extends
   @Override
   public RDBResult retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
+    if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+      EmbDerbyRDBDataSourceService.logger.debug("DataObject retrieveData("
+          + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
     Connection connection = openConnection(dataSource.getAddress());
@@ -110,8 +112,8 @@ public class EmbDerbyRDBDataSourceService extends
       e.printStackTrace();
     }
 
-    logger.info("Statement \"" + statement + "\" executed on " + dataSource.getAddress()
-        + ".");
+    EmbDerbyRDBDataSourceService.logger.info("Statement \"" + statement
+        + "\" executed on " + dataSource.getAddress() + ".");
 
     return rdbResult;
   }
@@ -124,9 +126,9 @@ public class EmbDerbyRDBDataSourceService extends
     Connection connection = openConnection(dataSource.getAddress());
     Statement connStatement = null;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeBack(" + dataSource.getAddress()
-          + ", DataObject) executed.");
+    if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+      EmbDerbyRDBDataSourceService.logger.debug("boolean writeBack("
+          + dataSource.getAddress() + ", DataObject) executed.");
     }
 
     try {
@@ -136,8 +138,9 @@ public class EmbDerbyRDBDataSourceService extends
         if (statement.startsWith("UPDATE")) {
           connStatement.executeUpdate(statement);
 
-          logger.info("Statement \"" + statement + "\" " + "executed on "
-              + dataSource.getAddress() + (success ? " was successful" : " failed"));
+          EmbDerbyRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+              + "executed on " + dataSource.getAddress()
+              + (success ? " was successful" : " failed"));
         }
       }
 
@@ -149,7 +152,7 @@ public class EmbDerbyRDBDataSourceService extends
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      logger.debug("Connection will be rolled back.");
+      EmbDerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         connection.rollback();
@@ -177,9 +180,9 @@ public class EmbDerbyRDBDataSourceService extends
     Connection connection = openConnection(dataSource.getAddress());
     Statement connStatement = null;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeData(" + dataSource.getAddress()
-          + ", DataObject) executed.");
+    if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+      EmbDerbyRDBDataSourceService.logger.debug("boolean writeData("
+          + dataSource.getAddress() + ", DataObject) executed.");
     }
 
     if (statements != null && !statements.isEmpty()) {
@@ -196,8 +199,9 @@ public class EmbDerbyRDBDataSourceService extends
 
             connStatement.executeUpdate(statement);
 
-            logger.info("Statement \"" + statement + "\" " + "executed on "
-                + dataSource.getAddress() + (success ? " was successful" : " failed"));
+            EmbDerbyRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+                + "executed on " + dataSource.getAddress()
+                + (success ? " was successful" : " failed"));
           }
         }
 
@@ -209,7 +213,7 @@ public class EmbDerbyRDBDataSourceService extends
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-        logger.debug("Connection will be rolled back.");
+        EmbDerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
         try {
           connection.rollback();
@@ -230,9 +234,9 @@ public class EmbDerbyRDBDataSourceService extends
       throws ConnectionException {
     boolean success = false;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("DataObject depositData(" + dataSource.getAddress() + ", " + statement
-          + ") executed.");
+    if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+      EmbDerbyRDBDataSourceService.logger.debug("DataObject depositData("
+          + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
     // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl
@@ -275,9 +279,9 @@ public class EmbDerbyRDBDataSourceService extends
 
       success = true;
     } catch (Throwable e) {
-      logger.error("exception executing the statement: "
+      EmbDerbyRDBDataSourceService.logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
-      logger.debug("Connection will be rolled back.");
+      EmbDerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -287,8 +291,9 @@ public class EmbDerbyRDBDataSourceService extends
       }
     }
 
-    logger.info("Statement \"" + createTableStatement.toString() + "\" " + "& \""
-        + insertStatement.toString() + "\" " + "executed on " + dataSource.getAddress());
+    EmbDerbyRDBDataSourceService.logger.info("Statement \""
+        + createTableStatement.toString() + "\" " + "& \"" + insertStatement.toString()
+        + "\" " + "executed on " + dataSource.getAddress());
 
     return success;
   }
@@ -360,8 +365,8 @@ public class EmbDerbyRDBDataSourceService extends
 
       // build a create statement
       for (DataObject table : tables) {
-        columns = (List<DataObject>) table.getList("column");
-        primaryKeys = (List<String>) table.getList("primaryKey");
+        columns = table.getList("column");
+        primaryKeys = table.getList("primaryKey");
 
         createTargetStatement = "CREATE TABLE " + target + " (";
 
@@ -399,8 +404,9 @@ public class EmbDerbyRDBDataSourceService extends
    * @throws ConnectionException
    */
   private Connection openConnection(String dsAddress) throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("Connection openConnection(" + dsAddress + ") executed.");
+    if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+      EmbDerbyRDBDataSourceService.logger.debug("Connection openConnection(" + dsAddress
+          + ") executed.");
     }
 
     Connection connect = null;
@@ -419,7 +425,8 @@ public class EmbDerbyRDBDataSourceService extends
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
-        logger.fatal("exception during establishing connection to: " + uri.toString(), e);
+        EmbDerbyRDBDataSourceService.logger.fatal(
+            "exception during establishing connection to: " + uri.toString(), e);
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
@@ -428,12 +435,13 @@ public class EmbDerbyRDBDataSourceService extends
         e.printStackTrace();
       }
 
-      logger.info("Connection opened on " + dsAddress + ".");
+      EmbDerbyRDBDataSourceService.logger.info("Connection opened on " + dsAddress + ".");
 
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
-      logger.fatal("exception during loading the JDBC driver", e);
+      EmbDerbyRDBDataSourceService.logger.fatal(
+          "exception during loading the JDBC driver", e);
     }
     return connect;
   }
@@ -448,18 +456,20 @@ public class EmbDerbyRDBDataSourceService extends
     boolean success = false;
 
     try {
-      ((java.sql.Connection) connection).close();
+      (connection).close();
       success = true;
 
-      if (logger.isDebugEnabled()) {
-        logger.debug("boolean closeConnection() executed successfully.");
+      if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+        EmbDerbyRDBDataSourceService.logger
+            .debug("boolean closeConnection() executed successfully.");
       }
 
-      logger.info("Connection closed.");
+      EmbDerbyRDBDataSourceService.logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      if (logger.isDebugEnabled()) {
-        logger.error("boolean closeConnection() executed with failures.", e);
+      if (EmbDerbyRDBDataSourceService.logger.isDebugEnabled()) {
+        EmbDerbyRDBDataSourceService.logger.error(
+            "boolean closeConnection() executed with failures.", e);
       }
     }
 

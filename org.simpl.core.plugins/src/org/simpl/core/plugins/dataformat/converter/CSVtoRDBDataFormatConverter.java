@@ -18,8 +18,9 @@ import commonj.sdo.DataObject;
  * <b>Description:</b>The CSV data format does not contain information about primary keys
  * and column types that is required by the RDB data format. The column types are
  * specified by analyzing the string values, a new primary key is set as default.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id: RDBCSVDataFormatConverter.java 1329 2010-05-07 18:06:21Z
@@ -49,9 +50,10 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
   @SuppressWarnings("unchecked")
   @Override
   public DataObject convertTo(DataObject csvSDO, DataSourceService dataSourceService) {
-    if (logger.isDebugEnabled()) {
-      logger.debug("Convert 'DataObject' data format from " + this.getFromDataFormat().getType()
-          + " to " + this.getToDataFormat().getType());
+    if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
+      CSVtoRDBDataFormatConverter.logger.debug("Convert 'DataObject' data format from "
+          + this.getFromDataFormat().getType() + " to "
+          + this.getToDataFormat().getType());
     }
 
     // RDB SDO data holder
@@ -87,7 +89,8 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
       for (DataObject csvColumn : csvColumns) {
         rdbColumnObject = rdbTableObject.createDataObject("column");
         rdbColumnObject.set("name", csvColumn.getString("name"));
-        rdbColumnObject.set("type", this.getColumnType(csvColumn.getString("value"), dataSourceService));
+        rdbColumnObject.set("type", this.getColumnType(csvColumn.getString("value"),
+            dataSourceService));
         rdbColumnObject.set("value", csvColumn.getString("value"));
       }
     }
@@ -104,9 +107,10 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
   @SuppressWarnings("unchecked")
   @Override
   public DataObject convertFrom(DataObject rdbSDO, DataSourceService dataSourceService) {
-    if (logger.isDebugEnabled()) {
-      logger.debug("Convert 'DataObject' data format from " + this.getToDataFormat().getType()
-          + " to " + this.getFromDataFormat().getType());
+    if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
+      CSVtoRDBDataFormatConverter.logger.debug("Convert 'DataObject' data format from "
+          + this.getToDataFormat().getType() + " to "
+          + this.getFromDataFormat().getType());
     }
 
     // CSV SDO data holder

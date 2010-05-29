@@ -6,12 +6,13 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 /**
- * <b>Purpose:</b> Helper for the transmission of complex objects as web service
+ * <b>Purpose:</b>Helper for the transmission of complex objects as web service
  * parameters.<br>
- * <b>Description:</b> Offers functions to serialize objects to XML and deserialize
- * objects from XML. <br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Description:</b>Offers functions to serialize objects to XML and deserialize
+ * objects from XML.<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>

@@ -23,10 +23,9 @@ import commonj.sdo.DataObject;
  * <b>Purpose:</b>Used to create a SDO from standard CSV file and vice versa.<br>
  * <b>Description:</b>Uses OpenCSV to read and write the CSV data. The data is written to
  * a temporary file, to be able to return it as java.io.File.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
- * 
- * TODO: rename to CSVFileDataFormat
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>
@@ -34,7 +33,7 @@ import commonj.sdo.DataObject;
  */
 public class CSVDataFormat extends DataFormatPlugin<File, File> {
   static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
-  
+
   /**
    * Initialize the plug-in.
    */
@@ -42,7 +41,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     this.setType("CSV");
     this.setSchemaFile("CSVDataFormat.xsd");
     this.setSchemaType("tCSVDataFormat");
-    
+
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
@@ -60,15 +59,15 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     DataObject rowObject;
     DataObject columnObject;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("Convert data from 'File' to 'DataObject'.");
+    if (CSVDataFormat.logger.isDebugEnabled()) {
+      CSVDataFormat.logger.debug("Convert data from 'File' to 'DataObject'.");
     }
-    
+
     try {
       csvReader = new CSVReader(new FileReader(file));
       headLine = csvReader.readNext();
       headerObject.setList("column", Arrays.asList(headLine));
-      
+
       sdo.setString("filename", file.getName());
 
       // uncommented because CSV properties cannot be recognized and used by OpenCSV
@@ -117,10 +116,10 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     // char escapeChar = data.getChar("escapeChar");
     // boolean strictQuotes = data.getBoolean("strictQuotes");
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("Convert data from 'DataObject' to 'File'.");
+    if (CSVDataFormat.logger.isDebugEnabled()) {
+      CSVDataFormat.logger.debug("Convert data from 'DataObject' to 'File'.");
     }
-    
+
     try {
       file = File.createTempFile("CSVDataFormatFile", ".tmp");
       file.deleteOnExit();
@@ -136,13 +135,13 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
 
       // get dataset
       List<DataObject> datasetObjects = data.getList("dataset");
-      
+
       for (DataObject datasetObject : datasetObjects) {
         List<DataObject> columns = datasetObject.getList("column");
         List<String> values = new ArrayList<String>();
 
         for (DataObject column : columns) {
-          values.add((String) column.getString("value"));
+          values.add(column.getString("value"));
         }
 
         dataset = Arrays.copyOf(values.toArray(), values.size(), String[].class);

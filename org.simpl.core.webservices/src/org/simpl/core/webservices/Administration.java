@@ -11,7 +11,11 @@ import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
 
 /**
- * Web Service of the administration service.
+ * <b>Purpose:</b>Web Service of the administration service.<br>
+ * <b>Description:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>

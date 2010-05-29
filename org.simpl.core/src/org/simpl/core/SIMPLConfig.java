@@ -20,8 +20,9 @@ import org.jdom.input.SAXBuilder;
  * <b>Description:</b> Searches for the configuration file in the current work directory
  * and in the Apache ODE <i>conf</i> directory whose relative location depends on the
  * execution path of Apache Tomcat.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>
@@ -37,13 +38,13 @@ public class SIMPLConfig {
    * Config file location within Apache ODE.
    */
   private static final String CONFIG_FILE_LOCATION_1 = System.getProperty("user.dir")
-      + "\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
+      + "\\webapps\\ode\\WEB-INF\\conf\\" + SIMPLConfig.CONFIG_FILE_NAME;
 
   /**
    * Config file location within Apache ODE.
    */
   private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\ode\\WEB-INF\\conf\\" + CONFIG_FILE_NAME;
+      + "\\..\\webapps\\ode\\WEB-INF\\conf\\" + SIMPLConfig.CONFIG_FILE_NAME;
 
   /**
    * List of registered data source service plug-ins.
@@ -87,13 +88,13 @@ public class SIMPLConfig {
     List<Element> dataFormatConverterElements = null;
 
     try {
-      in = new FileInputStream(CONFIG_FILE_LOCATION_1);
+      in = new FileInputStream(SIMPLConfig.CONFIG_FILE_LOCATION_1);
     } catch (FileNotFoundException e) {
       try {
-        in = new FileInputStream(CONFIG_FILE_LOCATION_2);
+        in = new FileInputStream(SIMPLConfig.CONFIG_FILE_LOCATION_2);
       } catch (FileNotFoundException e1) {
         try {
-          in = new FileInputStream(CONFIG_FILE_NAME);
+          in = new FileInputStream(SIMPLConfig.CONFIG_FILE_NAME);
         } catch (FileNotFoundException e2) {
           // TODO Auto-generated catch block
           e2.printStackTrace();

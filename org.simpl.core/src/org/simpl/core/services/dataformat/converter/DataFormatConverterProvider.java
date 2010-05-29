@@ -16,7 +16,8 @@ import org.simpl.core.services.datasource.DataSourceService;
  * from data format converter plug-ins.<br>
  * <b>Description:</b>Instances of data format converter services are retrieved by the
  * data format converter supported data formats.<br>
- * <b>Copyright:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
@@ -34,7 +35,7 @@ public class DataFormatConverterProvider {
    * Initialize all data format converter plugins.
    */
   static {
-    loadPlugins();
+    DataFormatConverterProvider.loadPlugins();
   }
 
   /**
@@ -46,11 +47,11 @@ public class DataFormatConverterProvider {
    */
   public static DataFormatConverter getInstance(String fromDataFormat, String toDataFormat) {
     DataFormatConverter converter = null;
-    Set<List<String>> formats = dataFormatConverter.keySet();
+    Set<List<String>> formats = DataFormatConverterProvider.dataFormatConverter.keySet();
 
     for (List<String> list : formats) {
       if (list.contains(fromDataFormat) && list.contains(toDataFormat)) {
-        converter = dataFormatConverter.get(list);
+        converter = DataFormatConverterProvider.dataFormatConverter.get(list);
       }
     }
 
@@ -121,13 +122,13 @@ public class DataFormatConverterProvider {
     while (pluginIterator.hasNext()) {
       try {
         dataFormatConverterInstance = (DataFormatConverterPlugin) Class.forName(
-            (String) pluginIterator.next()).newInstance();
+            pluginIterator.next()).newInstance();
 
         toDataFormat = dataFormatConverterInstance.getToDataFormat().getType();
         fromDataFormat = dataFormatConverterInstance.getFromDataFormat().getType();
 
-        dataFormatConverter.put(Arrays.asList(toDataFormat, fromDataFormat),
-            dataFormatConverterInstance);
+        DataFormatConverterProvider.dataFormatConverter.put(Arrays.asList(toDataFormat,
+            fromDataFormat), dataFormatConverterInstance);
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();

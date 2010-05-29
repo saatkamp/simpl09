@@ -24,7 +24,8 @@ import commonj.sdo.helper.XSDHelper;
  * set, the standard meta data schema file defined in the SIMPL Core is used as default.
  * Type, subtypes, languages, meta data schema and schema element type must be set in the
  * plug-in's constructor.<br>
- * <b>Copyright:</b> <br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi

@@ -19,15 +19,15 @@ import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import commonj.sdo.DataObject;
 
 /**
- * <p>
- * Implements all methods of the {@link IDatasourceService} interface for supporting the
- * IBM DB2 relational database.
- * </p>
+ * <b>Purpose:</b>Implements all methods of the {@link IDatasourceService} interface for
+ * supporting the IBM DB2 relational database.<br>
+ * <b>Description:</b>dsAddress = //server:port/database or //server/database, for example
+ * //localhost:50000/testdb.<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
- * dsAddress = //server:port/database or //server/database, for example
- * //localhost:50000/testdb.
- * 
- * @author hahnml
+ * @author hahnml<br>
  * @version $Id: DB2RDBDataSource.java 1014 2010-03-29 09:16:08Z michael.schneidt@arcor.de
  *          $<br>
  * @link http://code.google.com/p/simpl09/
@@ -52,9 +52,9 @@ public class DB2RDBDataSourceService extends
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
+    if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+      DB2RDBDataSourceService.logger.debug("boolean executeStatement("
+          + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
     boolean success = false;
@@ -68,8 +68,9 @@ public class DB2RDBDataSourceService extends
       success = true;
       stat.close();
     } catch (Throwable e) {
-      logger.error("exception executing the statement: " + statement, e);
-      logger.debug("Connection will be rolled back.");
+      DB2RDBDataSourceService.logger.error("exception executing the statement: "
+          + statement, e);
+      DB2RDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -79,7 +80,8 @@ public class DB2RDBDataSourceService extends
       }
     }
 
-    logger.info("Statement '" + statement + "' send to " + dataSource.getAddress() + ".");
+    DB2RDBDataSourceService.logger.info("Statement '" + statement + "' send to "
+        + dataSource.getAddress() + ".");
     closeConnection(conn);
     return success;
   }
@@ -87,9 +89,9 @@ public class DB2RDBDataSourceService extends
   @Override
   public RDBResult retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
+    if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+      DB2RDBDataSourceService.logger.debug("DataObject retrieveData("
+          + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
@@ -109,8 +111,8 @@ public class DB2RDBDataSourceService extends
       e.printStackTrace();
     }
 
-    logger.info("Statement \"" + statement + "\" executed on " + dataSource.getAddress()
-        + ".");
+    DB2RDBDataSourceService.logger.info("Statement \"" + statement + "\" executed on "
+        + dataSource.getAddress() + ".");
 
     return rdbResult;
   }
@@ -124,8 +126,8 @@ public class DB2RDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeBack(" + dataSource.getAddress()
+    if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+      DB2RDBDataSourceService.logger.debug("boolean writeBack(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
 
@@ -136,8 +138,9 @@ public class DB2RDBDataSourceService extends
         if (statement.startsWith("UPDATE")) {
           connStatement.executeUpdate(statement);
 
-          logger.info("Statement \"" + statement + "\" " + "executed on "
-              + dataSource.getAddress() + (success ? " was successful" : " failed"));
+          DB2RDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+              + "executed on " + dataSource.getAddress()
+              + (success ? " was successful" : " failed"));
         }
       }
 
@@ -149,7 +152,7 @@ public class DB2RDBDataSourceService extends
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      logger.debug("Connection will be rolled back.");
+      DB2RDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         connection.rollback();
@@ -179,8 +182,8 @@ public class DB2RDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeData(" + dataSource.getAddress()
+    if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+      DB2RDBDataSourceService.logger.debug("boolean writeData(" + dataSource.getAddress()
           + ", DataObject) executed.");
     }
 
@@ -198,8 +201,9 @@ public class DB2RDBDataSourceService extends
 
             connStatement.executeUpdate(statement);
 
-            logger.info("Statement \"" + statement + "\" " + "executed on "
-                + dataSource.getAddress() + (success ? " was successful" : " failed"));
+            DB2RDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+                + "executed on " + dataSource.getAddress()
+                + (success ? " was successful" : " failed"));
           }
         }
 
@@ -211,7 +215,7 @@ public class DB2RDBDataSourceService extends
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-        logger.debug("Connection will be rolled back.");
+        DB2RDBDataSourceService.logger.debug("Connection will be rolled back.");
 
         try {
           connection.rollback();
@@ -232,9 +236,9 @@ public class DB2RDBDataSourceService extends
       throws ConnectionException {
     boolean success = false;
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("DataObject depositData(" + dataSource.getAddress() + ", " + statement
-          + ") executed.");
+    if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+      DB2RDBDataSourceService.logger.debug("DataObject depositData("
+          + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
     // Beispiel: CREATE TABLE TAB AS (SELECT * FROM T1 WITH NO DATA);
@@ -276,9 +280,9 @@ public class DB2RDBDataSourceService extends
 
       success = true;
     } catch (Throwable e) {
-      logger.error("exception executing the statement: "
+      DB2RDBDataSourceService.logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
-      logger.debug("Connection will be rolled back.");
+      DB2RDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -288,8 +292,9 @@ public class DB2RDBDataSourceService extends
       }
     }
 
-    logger.info("Statement \"" + createTableStatement.toString() + "\" " + "& \""
-        + insertStatement.toString() + "\" " + "executed on " + dataSource.getAddress());
+    DB2RDBDataSourceService.logger.info("Statement \"" + createTableStatement.toString()
+        + "\" " + "& \"" + insertStatement.toString() + "\" " + "executed on "
+        + dataSource.getAddress());
 
     return success;
   }
@@ -364,8 +369,8 @@ public class DB2RDBDataSourceService extends
 
       // build a create statement
       for (DataObject table : tables) {
-        columns = (List<DataObject>) table.getList("column");
-        primaryKeys = (List<String>) table.getList("primaryKey");
+        columns = table.getList("column");
+        primaryKeys = table.getList("primaryKey");
 
         createTargetStatement = "CREATE TABLE " + target + " (";
 
@@ -406,8 +411,9 @@ public class DB2RDBDataSourceService extends
    */
   private Connection openConnection(String dsAddress, String user, String password)
       throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("Connection openConnection(" + dsAddress + ") executed.");
+    if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+      DB2RDBDataSourceService.logger.debug("Connection openConnection(" + dsAddress
+          + ") executed.");
     }
 
     java.sql.Connection connect = null;
@@ -419,20 +425,20 @@ public class DB2RDBDataSourceService extends
       uri.append(dsAddress);
 
       try {
-        connect = (java.sql.Connection) DriverManager.getConnection(uri.toString(), user,
-            password);
+        connect = DriverManager.getConnection(uri.toString(), user, password);
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
-        logger.fatal("exception during establishing connection to: " + uri.toString(), e);
+        DB2RDBDataSourceService.logger.fatal(
+            "exception during establishing connection to: " + uri.toString(), e);
       }
 
-      logger.info("Connection opened on " + dsAddress + ".");
+      DB2RDBDataSourceService.logger.info("Connection opened on " + dsAddress + ".");
 
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
-      logger.fatal("exception during loading the JDBC driver", e);
+      DB2RDBDataSourceService.logger.fatal("exception during loading the JDBC driver", e);
     }
 
     return connect;
@@ -449,18 +455,20 @@ public class DB2RDBDataSourceService extends
     boolean success = false;
 
     try {
-      ((java.sql.Connection) connection).close();
+      (connection).close();
       success = true;
 
-      if (logger.isDebugEnabled()) {
-        logger.debug("boolean closeConnection() executed successfully.");
+      if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+        DB2RDBDataSourceService.logger
+            .debug("boolean closeConnection() executed successfully.");
       }
 
-      logger.info("Connection closed.");
+      DB2RDBDataSourceService.logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      if (logger.isDebugEnabled()) {
-        logger.error("boolean closeConnection() executed with failures.", e);
+      if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+        DB2RDBDataSourceService.logger.error(
+            "boolean closeConnection() executed with failures.", e);
       }
     }
     return success;

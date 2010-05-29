@@ -21,8 +21,9 @@ import commonj.sdo.DataObject;
  * <b>Purpose:</b>Provides access to a windows file system data source.<br>
  * <b>Description:</b>Statements (commands) are executed on the windows command shell and
  * existing commands used to realize the data source service functions.<br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id: WindowsLocalFSDataSource.java 1014 2010-03-29 09:16:08Z
@@ -31,7 +32,7 @@ import commonj.sdo.DataObject;
  */
 public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<File, File> {
   static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
-  
+
   /**
    * Runtime to execute commands on the file system.
    */
@@ -58,12 +59,12 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean executeStatement(" + dataSource.getAddress() + ", "
-          + statement + ") executed.");
+
+    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
+      WindowsLocalFSDataSourceService.logger.debug("boolean executeStatement("
+          + dataSource.getAddress() + ", " + statement + ") executed.");
     }
-    
+
     try {
       this.execute(statement, dataSource.getAddress(), null);
     } catch (IOException e) {
@@ -83,13 +84,12 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
    * java.lang.String)
    */
   @Override
-  public File retrieveData(DataSource dataSource, String file)
-      throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("DataObject retrieveData(" + dataSource.getAddress() + ", "
-          + file + ") executed.");
+  public File retrieveData(DataSource dataSource, String file) throws ConnectionException {
+    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
+      WindowsLocalFSDataSourceService.logger.debug("DataObject retrieveData("
+          + dataSource.getAddress() + ", " + file + ") executed.");
     }
-    
+
     return new File(file);
   }
 
@@ -99,13 +99,12 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
    * commonj.sdo.DataObject)
    */
   @Override
-  public boolean writeBack(DataSource dataSource, File file)
-      throws ConnectionException {
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeBack(" + dataSource.getAddress()
-          + ", " + file + ") executed.");
+  public boolean writeBack(DataSource dataSource, File file) throws ConnectionException {
+    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
+      WindowsLocalFSDataSourceService.logger.debug("boolean writeBack("
+          + dataSource.getAddress() + ", " + file + ") executed.");
     }
-    
+
     return file.exists();
   }
 
@@ -120,16 +119,17 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
       throws ConnectionException {
     File targetFile = null;
     String dir = null;
-    
-    if (logger.isDebugEnabled()) {
-      logger.debug("boolean writeData(" + dataSource.getAddress()
-          + ", " + dataFile.getName() + ", " + target + ") executed.");
+
+    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
+      WindowsLocalFSDataSourceService.logger.debug("boolean writeData("
+          + dataSource.getAddress() + ", " + dataFile.getName() + ", " + target
+          + ") executed.");
     }
-    
+
     if (!dataSource.getAddress().equals("")) {
       dir = dataSource.getAddress() + File.separator;
     }
-    
+
     targetFile = new File(dir + target);
     dataFile.renameTo(targetFile);
 
@@ -146,11 +146,11 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
       throws ConnectionException {
     String[] envp = new String[] { "cmd", "/c", "start", "copy" };
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("DataObject depositData(" + dataSource.getAddress() + ", " + file
-          + "," + targetFile + ") executed.");
+    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
+      WindowsLocalFSDataSourceService.logger.debug("DataObject depositData("
+          + dataSource.getAddress() + ", " + file + "," + targetFile + ") executed.");
     }
-    
+
     try {
       this.execute("copy " + file + " " + targetFile, dataSource.getAddress(), envp);
     } catch (IOException e) {
@@ -261,8 +261,11 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
     return metaDataObject;
   }
 
-  /* (non-Javadoc)
-   * @see org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.
+   * services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)

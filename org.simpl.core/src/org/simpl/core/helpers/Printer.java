@@ -9,10 +9,11 @@ import commonj.sdo.Type;
 import commonj.sdo.helper.XMLHelper;
 
 /**
- * <b>Purpose:</b> Helper to print out complex objects. <br>
- * <b>Description:</b> Offers functions to print out objects. <br>
- * <b>Copyright:</b> <br>
- * <b>Company:</b> SIMPL<br>
+ * <b>Purpose:</b>Helper to print out complex objects.<br>
+ * <b>Description:</b>Offers functions to print out objects.<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
  * @version $Id$<br>
@@ -22,7 +23,7 @@ public class Printer {
   public static void printDataObject(DataObject dataObject) {
     int indent = 1;
 
-    printDataObjectWithIndent(dataObject, indent);
+    Printer.printDataObjectWithIndent(dataObject, indent);
   }
 
   /**
@@ -50,11 +51,11 @@ public class Printer {
           // For many-valued properties, process a list of values
           List values = dataObject.getList(p);
           for (int v = 0, count = values.size(); v < count; v++) {
-            printValue(values.get(v), property, indent);
+            Printer.printValue(values.get(v), property, indent);
           }
         } else {
           // For single-valued properties, print out the value
-          printValue(dataObject.get(p), property, indent);
+          Printer.printValue(dataObject.get(p), property, indent);
         }
       }
     }
@@ -65,15 +66,16 @@ public class Printer {
     String propertyName = property.getName();
     // Construct a string for the proper indentation
     String margin = "";
-    for (int i = 0; i < indent; i++)
+    for (int i = 0; i < indent; i++) {
       margin += "\t";
+    }
     if (value != null && property.isContainment()) {
       // For containment properties, display the value
       // with printDataObject
       Type type = property.getType();
       String typeName = type.getName();
       System.out.println(margin + propertyName + " (" + typeName + "):");
-      printDataObjectWithIndent((DataObject) value, indent + 1);
+      Printer.printDataObjectWithIndent((DataObject) value, indent + 1);
     } else {
       // For non-containment properties, just print the value
       System.out.println(margin + propertyName + ": " + value);

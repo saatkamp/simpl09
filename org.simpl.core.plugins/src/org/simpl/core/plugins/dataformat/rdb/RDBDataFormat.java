@@ -22,7 +22,8 @@ import commonj.sdo.DataObject;
  * Because the result set and data base meta data objects need a connection to be able to
  * retrieve data from, the connection is not closed by the data source service
  * retrieveData() method but after toSDO().<br>
- * <b>Copyright:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * TODO: create list of quoted column data types, currently only VARCHAR is supported
@@ -34,12 +35,12 @@ import commonj.sdo.DataObject;
  */
 public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
-  
+
   public RDBDataFormat() {
     this.setType("RDB");
     this.setSchemaFile("RDBDataFormat.xsd");
     this.setSchemaType("tRDBDataFormat");
-    
+
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
@@ -59,10 +60,10 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
     List<String> primaryKeyList = new ArrayList<String>();
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("Convert data from 'RDBResult' to 'DataObject'.");
+    if (RDBDataFormat.logger.isDebugEnabled()) {
+      RDBDataFormat.logger.debug("Convert data from 'RDBResult' to 'DataObject'.");
     }
-    
+
     try {
       while (resultSet.next()) {
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
@@ -136,10 +137,10 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     String statement = "";
     String tableSchema = "";
 
-    if (logger.isDebugEnabled()) {
-      logger.debug("Convert data from 'DataObject' to 'List<String>'.");
+    if (RDBDataFormat.logger.isDebugEnabled()) {
+      RDBDataFormat.logger.debug("Convert data from 'DataObject' to 'List<String>'.");
     }
-    
+
     for (DataObject table : tables) {
       columns = table.getList("column");
       primaryKeys = table.getList("primaryKey");

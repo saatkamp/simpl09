@@ -17,7 +17,8 @@ import org.simpl.uddi.client.UddiDataSourceReader;
  * <b>Purpose:</b>Implementation of the strategy service.<br>
  * <b>Description:</b>Uses a UDDI client to respond to the UDDI registry that is defined
  * in the unspecified data source information.<br>
- * <b>Copyright:</b> <br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
@@ -103,7 +104,8 @@ public class StrategyServiceImpl implements StrategyService {
       resultDataSource.setAddress(resultUddiDataSource.getAddress());
       resultDataSource.setDataFormat(resultUddiDataSource.getDataFormat());
       resultDataSource.getAuthentication().setUser(resultUddiDataSource.getUsername());
-      resultDataSource.getAuthentication().setPassword(resultUddiDataSource.getPassword());
+      resultDataSource.getAuthentication()
+          .setPassword(resultUddiDataSource.getPassword());
 
       break;
     default:
