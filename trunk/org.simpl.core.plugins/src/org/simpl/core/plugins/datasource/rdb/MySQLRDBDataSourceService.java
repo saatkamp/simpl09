@@ -105,14 +105,22 @@ public class MySQLRDBDataSourceService extends
       connStatement = connection.createStatement();
       resultSet = connStatement.executeQuery(statement);
 
-      if (resultSet != null) {
-        rdbResult = new RDBResult();
-        rdbResult.setDbMetaData(connection.getMetaData());
-        rdbResult.setResultSet(resultSet);
-      }
+      rdbResult = new RDBResult();
+      rdbResult.setDbMetaData(connection.getMetaData());
+      rdbResult.setResultSet(resultSet);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
+    }
+
+    if (rdbResult == null) {
+      try {
+        connStatement.close();
+        connection.close();
+      } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
     }
 
     MySQLRDBDataSourceService.logger.info("Statement '" + statement + "' executed on "
