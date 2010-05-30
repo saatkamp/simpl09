@@ -126,8 +126,10 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     }
 
     // format data to SDO
-    retrieveData = formatRetrievedData(dataSourceService, data, dataSource
-        .getDataFormat());
+    if (data != null) {
+      retrieveData = formatRetrievedData(dataSourceService, data, dataSource
+          .getDataFormat());
+    }
 
     return retrieveData;
   }
