@@ -98,14 +98,17 @@ public class DB2RDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
     ResultSet resultSet = null;
-    RDBResult rdbResult = new RDBResult();
+    RDBResult rdbResult = null;
 
     try {
       connStatement = connection.createStatement();
       resultSet = connStatement.executeQuery(statement);
 
-      rdbResult.setDbMetaData(connection.getMetaData());
-      rdbResult.setResultSet(resultSet);
+      if (resultSet != null) {
+        rdbResult = new RDBResult();
+        rdbResult.setDbMetaData(connection.getMetaData());
+        rdbResult.setResultSet(resultSet);
+      }
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
