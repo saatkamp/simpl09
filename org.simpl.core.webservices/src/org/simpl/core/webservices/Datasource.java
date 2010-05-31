@@ -57,14 +57,16 @@ public class Datasource {
     dataObject = SIMPLCore.getInstance().dataSourceService().retrieveData(dataSource,
         statement);
 
-    try {
-      XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject,
-          "commonj.sdo", "dataObject");
-      xmlDocument.setEncoding("UTF-8");
-      XMLHelper.INSTANCE.save(xmlDocument, outputStream, null);
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    if (dataObject != null) {
+      try {
+        XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject,
+            "commonj.sdo", "dataObject");
+        xmlDocument.setEncoding("UTF-8");
+        XMLHelper.INSTANCE.save(xmlDocument, outputStream, null);
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
     }
 
     data = new String(outputStream.toByteArray());
