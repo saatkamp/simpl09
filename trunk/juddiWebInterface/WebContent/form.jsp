@@ -80,7 +80,7 @@
 
 	}
 %>
-<form action="UddiAction" method="post">
+<form action="UddiAction" method="post" enctype="multipart/form-data">
 <table>
 	<tr>
 		<td><label>Name</label></td>
@@ -132,7 +132,7 @@
 	<tr>
 		<td><label>Policy file</label></td>
 
-		<td><input name="policy" type="text" value="<%=policy%>"
+		<td><input name="policy" type="file"
 			size="100" /></td>
 	</tr>
 	
