@@ -65,7 +65,7 @@
 <description>Automatische Namenvorschlag bei Aktivität Erstellung</description>
 <pre>BPEL Prozess ist angelegt.</pre>
 <actions>man erstellt eine neue AKtivität aus der Aktivitäten Menu</actions>
-<post/>
+<post>eine automatische Namenvorschlag wird angezeigt. </post>
 <tags/>
 </testcase>
 </sequence>
@@ -158,7 +158,7 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deplozment-Deskriptors " number="167">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deployment-Deskriptors " number="167">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="168" priority="C" title="Test Case für die Erstellung von ODE D-D">
@@ -242,10 +242,10 @@ Der ODE Deployment-Deskriptor kann nicht gelöscht werden.</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für die Deploy und den Start eines Prozessinstanzes" number="185">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence: Deployen von eines Prozessinstanzes auf ODE-Server" number="185">
 <description/>
 <pre/>
-<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="186" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="186" priority="C" title="Test Case: Deploy von Prozess auf ODE-Server">
 <description/>
 <pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
 <actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
@@ -1251,6 +1251,49 @@ verwendet werden.</post>
 <tags/>
 </testcase>
 </sequence>
+<sequence created="01.06.2010" creator="Feras" name="Test Sequence: Data Source in Deployment Deskriptor Hinzufügen, Bearbeiten und löschen" number="232">
+<description/>
+<pre/>
+<testcase created="01.06.2010" creator="Feras" effort="00:00" number="233" priority="C" title="Test Case: Neue Data Source Erstellen">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="01.06.2010" creator="Feras" effort="00:00" number="234" priority="C" title="Test Case: Bearbeitung eines Data Source in der Tabelle.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="01.06.2010" creator="Feras" effort="00:00" number="235" priority="C" title="Test Case: Löschen eines Data Source">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="01.06.2010" creator="Feras" name="Test Sequence: Bpel-Variablen in der Bpel-Variablen Liste " number="236">
+<description/>
+<pre/>
+<testcase created="01.06.2010" creator="Feras" effort="00:00" number="237" priority="C" title="Test Case: Erstellung von neuen Bpel Variable und in der Liste auswählen">
+<description>Erstellung von neuen Variable und überprüfung ob dies  in der Fenster zur auswahl eines Bpel-Variable aus Properties-Fenster auch erscheinen</description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="01.06.2010" creator="Feras" effort="00:00" number="238" priority="C" title="Test Case: löschen von BpelVariable und überprufen">
+<description>löschen eine Variable und überprufen ob dies auch aus der Liste (ausgehend von Properties Fenster der Aktivitäten) nicht mehr auftaucht.</description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
 </sequence>
 </sequence>
 <tsa name="Project" number="0" revId="0">
@@ -1271,9 +1314,6 @@ verwendet werden.</post>
 <tsa name="Test Sequence Namenvorschlag" number="151" revId="1">
 <relatedsequence>151</relatedsequence>
 </tsa>
-<tsa name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deplozment-Deskriptors " number="167" revId="1">
-<relatedsequence>167</relatedsequence>
-</tsa>
 <tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht erstellt werden" number="171" revId="1">
 <relatedsequence>171</relatedsequence>
 </tsa>
@@ -1282,9 +1322,6 @@ verwendet werden.</post>
 </tsa>
 <tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht gelöscht werden." number="179" revId="1">
 <relatedsequence>179</relatedsequence>
-</tsa>
-<tsa name="Test Sequence für die Deploy und den Start eines Prozessinstanzes" number="185" revId="1">
-<relatedsequence>185</relatedsequence>
 </tsa>
 <tsa name="Test Sequence Fehler beim Starten der Prozessinstanz" number="194" revId="1">
 <relatedsequence>194</relatedsequence>
@@ -1303,6 +1340,12 @@ verwendet werden.</post>
 </tsa>
 <tsa name="Test Sequence: Erstellung der DM-Aktivität durch Drag &amp; Drop" number="147" revId="2">
 <relatedsequence>147</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deployment-Deskriptors " number="167" revId="2">
+<relatedsequence>167</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Deployen von eines Prozessinstanzes auf ODE-Server" number="185" revId="3">
+<relatedsequence>185</relatedsequence>
 </tsa>
 </tsa>
 <tsa name="Test Sequence für Workflow-Administrator" number="10" revId="1">
@@ -1368,6 +1411,12 @@ verwendet werden.</post>
 <tsa name="Test Sequence:  Referenz in RRS Erstellen, Bearbeiten und Löschen" number="225" revId="1">
 <relatedsequence>225</relatedsequence>
 </tsa>
+<tsa name="Test Sequence: Data Source in Deployment Deskriptor Hinzufügen, Bearbeiten und löschen" number="232" revId="4">
+<relatedsequence>232</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Bpel-Variablen in der Bpel-Variablen Liste " number="236" revId="2">
+<relatedsequence>236</relatedsequence>
+</tsa>
 </tsa>
 </tsa>
 <author active="Y" firstname="" lastname="tuxi23" uid="tuxi23">
@@ -1376,5 +1425,5 @@ verwendet werden.</post>
 <author active="Y" firstname="" lastname="Feras" uid="Feras">
 <extension name="standarduser" value="Y"/>
 </author>
-<extension name="maxid" value="230"/>
+<extension name="maxid" value="238"/>
 </tests>
