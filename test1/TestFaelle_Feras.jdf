@@ -54,11 +54,25 @@
 <post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
 <tags/>
 </testcase>
+<testcase created="01.06.2010" creator="Feras" effort="00:00" number="229" priority="C" title="Test Case: Erstellung der DM-Aktivität durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="01.06.2010" creator="Feras" effort="00:00" number="230" priority="C" title="Test Case: Automatische Namenvorschlag bei Aktivität Erstellung">
+<description>Automatische Namenvorschlag bei Aktivität Erstellung</description>
+<pre>BPEL Prozess ist angelegt.</pre>
+<actions>man erstellt eine neue AKtivität aus der Aktivitäten Menu</actions>
+<post/>
+<tags/>
+</testcase>
 </sequence>
 <sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für den Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A." number="163">
 <description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
 <pre/>
-<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="164" priority="C" title="Test für die Einstellung von DMA">
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="164" priority="C" title="Test für die Erstellung von DMA">
 <description>test die Erstellung von DM-Aktivitaet</description>
 <pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
 <actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
@@ -84,40 +98,11 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus" number="159">
-<description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
-<pre/>
-<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="160" priority="C" title="Test für die Einstellung von DMA">
-<description>test die Erstellung von DM-Aktivitaet</description>
-<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
-<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
-2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
-<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
-<tags/>
-</testcase>
-<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="161" priority="C" title="Test für die Bearbeitung einer DM-Aktivitaet">
-<description>test die Bearbeitung einer DM-Aktivitaet</description>
-<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
-<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
-2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
-3.Änderung der Eigenschaften der DM-A. </actions>
-<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
-<tags/>
-</testcase>
-<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="162" priority="C" title="Test für den Loeschen einer DMA ">
-<description>test Loeschen einer DM-Aktivitaet</description>
-<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
-<actions>1b.Öffnen des Kontextmenüs durch rechten Mausklick auf eine DM-A.
-2b.Mausklick auf den Menüpunkt "Delete" des Kontextmenüs</actions>
-<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
-<tags/>
-</testcase>
-</sequence>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence Einstellung durch Drag &amp; Drop" number="147">
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence: Erstellung der DM-Aktivität durch Drag &amp; Drop" number="147">
 <description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
 <pre/>
 <imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
-<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="148" priority="C" title="Test für die Einstellung von DMA">
+<testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="148" priority="C" title="Test für die Erstellung von DMA">
 <description>test die Erstellung von DM-Aktivitaet</description>
 <pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
 <actions>1.Drag&amp;Drop einer DM-A aus der Palette an die gewünschte Stelleim Prozess.
@@ -1226,23 +1211,43 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <pre/>
 <testcase created="01.06.2010" creator="Feras" effort="00:00" number="226" priority="C" title="Test Case : Neuen Referenz in RRS Einfügen">
 <description/>
-<pre/>
-<actions/>
-<post/>
+<pre>Der RRS-View ist geö&#27;net und das RRS ist erreichbar.</pre>
+<actions>1. Klick des [New] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs
+2. Angabe aller Parameter der Referenz in dem entsprechenden Pop-up
+Fenster
+3. Klick auf [Save], um die Werte der neue Referenz zu speichern und
+der Anwendungsfall &#16;6.6.2 Referenz speichern&#17; wird angestoÿen</actions>
+<post>Die neue Referenz wurde korrekt im RRS gespeichert und wird im
+RRS-View angezeigt.</post>
 <tags/>
 </testcase>
 <testcase created="01.06.2010" creator="Feras" effort="00:00" number="227" priority="C" title="Test Case : Bearbeitung von Referenz in RRS">
 <description/>
-<pre/>
-<actions/>
-<post/>
+<pre>Der RRS-View ist geö&#27;net, das RRS ist erreichbar und die zu
+bearbeitende Referenz ist ausgewählt.</pre>
+<actions>1. Klick des [Edit] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs
+2. Angabe der neuen Parameter der Referenz in dem entsprechenden
+Pop-up Fenster
+3. Klick auf [Save], um die aktualisierten Werte der Referenz zu
+speichern und der Anwendungsfall &#16;6.6.2 Referenz speichern&#17; wird
+angestoÿen</actions>
+<post>Die geänderten Werte der Referenz wurden korrekt im RRS
+gespeichert, die Referenz wurde aktualisiert und die aktualisierten
+Werte werden in der Referenzen-Tabelle angezeigt.</post>
 <tags/>
 </testcase>
 <testcase created="01.06.2010" creator="Feras" effort="00:00" number="228" priority="C" title="Test Case: Löschen der Referenz aus der RRS">
 <description/>
-<pre/>
-<actions/>
-<post/>
+<pre>Der RRS-View ist geö&#27;net, das RRS ist erreichbar und die zu
+löschende Referenz wurde ausgewählt.</pre>
+<actions>1. Klick des [Delete] Buttons der Toolbar oder Auswahl des
+entsprechenden Menü-Punktes des Kontext-Menüs und der
+Anwendungsfall &#16;6.6.4 Referenz löschen&#17; wird angestoÿen</actions>
+<post>Die entsprechende Referenz wurde vollständig und korrekt aus dem
+RRS und der Referenzen-Tabelle entfernt und kann nun nicht mehr
+verwendet werden.</post>
 <tags/>
 </testcase>
 </sequence>
@@ -1262,12 +1267,6 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <relatedsequence>9</relatedsequence>
 <tsa name="Test Sequence für den Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A." number="163" revId="1">
 <relatedsequence>163</relatedsequence>
-</tsa>
-<tsa name="Test Sequence öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus" number="159" revId="1">
-<relatedsequence>159</relatedsequence>
-</tsa>
-<tsa name="Test Sequence Einstellung durch Drag &amp; Drop" number="147" revId="1">
-<relatedsequence>147</relatedsequence>
 </tsa>
 <tsa name="Test Sequence Namenvorschlag" number="151" revId="1">
 <relatedsequence>151</relatedsequence>
@@ -1301,6 +1300,9 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 </tsa>
 <tsa name="Test Sequence  für den Löschen einer DMA Bearbeitung, Löschen und Erstellung der DM-Aktivitäten" number="155" revId="2">
 <relatedsequence>155</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Erstellung der DM-Aktivität durch Drag &amp; Drop" number="147" revId="2">
+<relatedsequence>147</relatedsequence>
 </tsa>
 </tsa>
 <tsa name="Test Sequence für Workflow-Administrator" number="10" revId="1">
@@ -1374,5 +1376,5 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <author active="Y" firstname="" lastname="Feras" uid="Feras">
 <extension name="standarduser" value="Y"/>
 </author>
-<extension name="maxid" value="228"/>
+<extension name="maxid" value="230"/>
 </tests>
