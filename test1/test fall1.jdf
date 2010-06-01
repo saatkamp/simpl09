@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tests SYSTEM "project.dtd">
 <tests product="TestDataManager" team="05" version="1.0">
-<sequence created="24.05.2010" creator="tuxi23" name="Project" number="0">
+<sequence created="31.05.2010" creator="tuxi23" name="Project" number="0">
 <description>This is the root node of the project. It contains all test sequences and test cases.</description>
 <pre/>
 <sequence created="04.11.2009" creator="tuxi23" name="Unit Test" number="1">
@@ -18,10 +18,9 @@
 <sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für DM-Aktivitaet " number="9">
 <description/>
 <pre/>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 1" number="6">
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence  für den Löschen einer DMA durch &quot;entf&quot;-Taste" number="6">
 <description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
 <pre/>
-<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
 <testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="4" priority="C" title="Test für die Einstellung von DMA">
 <description>test die Erstellung von DM-Aktivitaet</description>
 <pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
@@ -48,10 +47,9 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 2" number="155">
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence  für den Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs" number="155">
 <description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
 <pre/>
-<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
 <testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="156" priority="C" title="Test für die Einstellung von DMA">
 <description>test die Erstellung von DM-Aktivitaet</description>
 <pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
@@ -78,10 +76,9 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 3" number="163">
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für den Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A." number="163">
 <description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
 <pre/>
-<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
 <testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="164" priority="C" title="Test für die Einstellung von DMA">
 <description>test die Erstellung von DM-Aktivitaet</description>
 <pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
@@ -108,10 +105,9 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 4" number="159">
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus" number="159">
 <description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
 <pre/>
-<imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
 <testcase created="04.11.2009" creator="tuxi23" effort="00:00" number="160" priority="C" title="Test für die Einstellung von DMA">
 <description>test die Erstellung von DM-Aktivitaet</description>
 <pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
@@ -129,7 +125,7 @@
 <post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
 <tags/>
 </testcase>
-<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="162" priority="C" title="Test für den Loeschen einer DMA">
+<testcase created="05.11.2009" creator="tuxi23" effort="00:00" number="162" priority="C" title="Test für den Loeschen einer DMA ">
 <description>test Loeschen einer DM-Aktivitaet</description>
 <pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
 <actions>1b.Öffnen des Kontextmenüs durch rechten Mausklick auf eine DM-A.
@@ -138,7 +134,7 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 5" number="147">
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence Einstellung durch Drag &amp; Drop" number="147">
 <description>man test den vollstaendigen Verfahren von der Aufgabe einer Prozessmodellierer </description>
 <pre/>
 <imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
@@ -168,7 +164,7 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence 6" number="151">
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence Namenvorschlag" number="151">
 <description/>
 <pre/>
 <imagepre>Justus-Image-1257383657625-5182536360423104483.png</imagepre>
@@ -198,7 +194,7 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 7" number="167">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deplozment-Deskriptors " number="167">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="168" priority="C" title="Test Case für die Erstellung von ODE D-D">
@@ -226,7 +222,7 @@
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 8" number="171">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE Deployment-Deskriptor kann nicht erstellt werden" number="171">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="172" priority="C" title="Test Case für die Erstellung von ODE D-D">
@@ -240,7 +236,7 @@ Der ODE Deployment-Deskriptor kann nicht erstellt werden</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 9" number="175">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE Deployment-Deskriptor kann nicht gespeichert werden." number="175">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="176" priority="C" title="Test Case für die Erstellung von ODE D-D">
@@ -261,7 +257,7 @@ Der ODE Deployment-Deskriptor kann nicht gespeichert werden.</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 10" number="179">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE Deployment-Deskriptor kann nicht gelöscht werden." number="179">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="180" priority="C" title="Test Case für die Erstellung von ODE D-D">
@@ -282,7 +278,7 @@ Der ODE Deployment-Deskriptor kann nicht gelöscht werden.</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 11" number="185">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für die Deploy und den Start eines Prozessinstanzes" number="185">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="186" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
@@ -304,7 +300,7 @@ Der ODE Deployment-Deskriptor kann nicht gelöscht werden.</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 12" number="188">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE-Server kann nicht starten" number="188">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="189" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
@@ -320,7 +316,7 @@ ODE-Server startet nicht aufgrund eines Fehlers.</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 13" number="191">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence Fehler bei Deploy" number="191">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="192" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
@@ -336,7 +332,7 @@ Beim Deployen des Prozesses tritt ein Fehler auf.</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 14" number="194">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence Fehler beim Starten der Prozessinstanz" number="194">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="195" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
@@ -359,7 +355,7 @@ Fehler beim Starten der Prozessinstanz, z.B. durch eine SOAP-Nachricht mit falsc
 <tags/>
 </testcase>
 </sequence>
-<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence 15" number="197">
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für die Auswählung vom Late-Binding" number="197">
 <description/>
 <pre/>
 <testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="198" priority="C" title="Test Case für die Auswählung vom Late-Binding">
@@ -377,7 +373,7 @@ Fehler beim Starten der Prozessinstanz, z.B. durch eine SOAP-Nachricht mit falsc
 <sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für Workflow-Administrator" number="10">
 <description/>
 <pre/>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 1" number="45">
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für die Benutzung der Aktivität-Konsole" number="45">
 <description/>
 <pre/>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="46" priority="C" title="Test Case für die Öffnung von A-K">
@@ -447,7 +443,7 @@ gespeichert und alle veralteten Werte mit neuen ueberschrieben. </post>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 2" number="51">
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence Fehler bei Speichern" number="51">
 <description/>
 <pre/>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="52" priority="C" title="Test Case für die Öffnung von A-K">
@@ -517,7 +513,7 @@ Die Werten bleiben dabei solange erhalten, bis die A-K geschlossen wird. </post>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 3" number="56">
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für keine Auditing-Datenbank zum Speichern der Auditing-Daten" number="56">
 <description/>
 <pre/>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="57" priority="C" title="Test Case für die Öffnung von A-K">
@@ -573,7 +569,7 @@ und klick auf [admin-console]</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 4" number="61">
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für den nicht Erreichbar von Auditing-Datenbank" number="61">
 <description/>
 <pre/>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="62" priority="C" title="Test Case für die Öffnung von A-K">
@@ -628,7 +624,7 @@ und klick auf [admin-console]</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 5(RRS)" number="82">
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für die Erstellung, Bearbeitung und Löschen von RRS" number="82">
 <description/>
 <pre/>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="83" priority="C" title="Test Case neue Referenz in RRS einfügen">
@@ -658,7 +654,7 @@ und klick auf [admin-console]</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence 6(RRS)" number="86">
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für Beim Löschen der Referenz tritt ein Fehler" number="86">
 <description/>
 <pre/>
 <testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="87" priority="C" title="Test Case neue Referenz in RRS einfügen">
@@ -695,7 +691,7 @@ Beim Löschen der Referenz tritt ein Fehler auf, da z.B. das RRS nicht erreichba
 <sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für ODE Workflow-Engine" number="90">
 <description/>
 <pre/>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="91">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für die Ausführung und die Kompensierung von DM-A" number="91">
 <description/>
 <pre/>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="92" priority="C" title="Test Case DM-A ausführen">
@@ -717,7 +713,7 @@ Beim Löschen der Referenz tritt ein Fehler auf, da z.B. das RRS nicht erreichba
 <tags/>
 </testcase>
 </sequence>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 2" number="94">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für die verschiedene Fehler bei der Ausführung von DM-A" number="94">
 <description/>
 <pre/>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="95" priority="C" title="Test Case DM-A ausführen 1a1">
@@ -885,7 +881,7 @@ Es wird ein “Terminate_Activity Event” ausgelöst</actions>
 <sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Eclipse BPEL Designer" number="115">
 <description/>
 <pre/>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="116">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für den Laden, Defaults Laden und Speichern" number="116">
 <description/>
 <pre/>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="117" priority="C" title="Test Case A-K laden">
@@ -912,10 +908,10 @@ Es wird ein “Terminate_Activity Event” ausgelöst</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 2" number="200">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence ein Fehler beim Laden von wert" number="200">
 <description/>
 <pre/>
-<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="201" priority="C" title="Test Case A-K laden">
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="201" priority="C" title="Test Case A-K laden ">
 <description>Test die Ladung der A-K</description>
 <pre>Einer der Anwendungsfälle "Admin-Konsole öffnen" oder "Einstellungen der A-K zurücksetzen" wurde ausgeführt.</pre>
 <actions>1. Laden aller zuletzt Werte aus der SIMPL DB.
@@ -952,7 +948,7 @@ Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar
 <tags/>
 </testcase>
 </sequence>
-<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence 3" number="205">
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für SIMPL Extensions" number="205">
 <description/>
 <pre/>
 <testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="206" priority="C" title="Test Case für die Validierung von SIMPL Extensions">
@@ -995,7 +991,7 @@ Bei der Generierung tritt ein Fehler auf</actions>
 <sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Referenz" number="122">
 <description/>
 <pre/>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence 1" number="123">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Dereferenz" number="123">
 <description/>
 <pre/>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="124" priority="C" title="Test Case dereferenzieren">
@@ -1013,7 +1009,7 @@ Bei der Generierung tritt ein Fehler auf</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence 2" number="210">
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für die Bearbeitung von Referenz" number="210">
 <description/>
 <pre/>
 <testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="211" priority="C" title="Test Case für Speichern einer Referenz">
@@ -1038,7 +1034,7 @@ Bei der Generierung tritt ein Fehler auf</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence 3" number="214">
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence bei Bearbeitung von Referenz, fehler tritt auf." number="214">
 <description/>
 <pre/>
 <testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="215" priority="C" title="Test Case für Speichern einer Referenz">
@@ -1258,37 +1254,112 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 </tsa>
 <tsa name="System Test" number="3" revId="1">
 <relatedsequence>3</relatedsequence>
-<tsa name="Test Sequence für DM-Aktivitaet " number="9" revId="2">
+<tsa name="Test Sequence für DM-Aktivitaet " number="9" revId="1">
 <relatedsequence>9</relatedsequence>
+<tsa name="Test Sequence  für den Löschen einer DMA durch &quot;entf&quot;-Taste" number="6" revId="2">
+<relatedsequence>6</relatedsequence>
 </tsa>
-<tsa name="Test Sequence für Workflow-Administrator" number="10" revId="2">
+<tsa name="Test Sequence  für den Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs" number="155" revId="2">
+<relatedsequence>155</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für den Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A." number="163" revId="3">
+<relatedsequence>163</relatedsequence>
+</tsa>
+<tsa name="Test Sequence öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus" number="159" revId="4">
+<relatedsequence>159</relatedsequence>
+</tsa>
+<tsa name="Test Sequence Einstellung durch Drag &amp; Drop" number="147" revId="3">
+<relatedsequence>147</relatedsequence>
+</tsa>
+<tsa name="Test Sequence Namenvorschlag" number="151" revId="2">
+<relatedsequence>151</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deplozment-Deskriptors " number="167" revId="3">
+<relatedsequence>167</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht erstellt werden" number="171" revId="2">
+<relatedsequence>171</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht gespeichert werden." number="175" revId="2">
+<relatedsequence>175</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht gelöscht werden." number="179" revId="2">
+<relatedsequence>179</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Deploy und den Start eines Prozessinstanzes" number="185" revId="3">
+<relatedsequence>185</relatedsequence>
+</tsa>
+<tsa name="Test Sequence Fehler beim Starten der Prozessinstanz" number="194" revId="2">
+<relatedsequence>194</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE-Server kann nicht starten" number="188" revId="3">
+<relatedsequence>188</relatedsequence>
+</tsa>
+<tsa name="Test Sequence Fehler bei Deploy" number="191" revId="2">
+<relatedsequence>191</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Auswählung vom Late-Binding" number="197" revId="2">
+<relatedsequence>197</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für Workflow-Administrator" number="10" revId="1">
 <relatedsequence>10</relatedsequence>
+<tsa name="Test Sequence für die Benutzung der Aktivität-Konsole" number="45" revId="3">
+<relatedsequence>45</relatedsequence>
 </tsa>
-<tsa name="Test Sequence für ODE Workflow-Engine" number="90" revId="2">
+<tsa name="Test Sequence Fehler bei Speichern" number="51" revId="2">
+<relatedsequence>51</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für keine Auditing-Datenbank zum Speichern der Auditing-Daten" number="56" revId="2">
+<relatedsequence>56</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für den nicht Erreichbar von Auditing-Datenbank" number="61" revId="2">
+<relatedsequence>61</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Erstellung, Bearbeitung und Löschen von RRS" number="82" revId="2">
+<relatedsequence>82</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für Beim Löschen der Referenz tritt ein Fehler" number="86" revId="2">
+<relatedsequence>86</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für ODE Workflow-Engine" number="90" revId="1">
 <relatedsequence>90</relatedsequence>
+<tsa name="Test Sequence für die verschiedene Fehler bei der Ausführung von DM-A" number="94" revId="2">
+<relatedsequence>94</relatedsequence>
 </tsa>
-<tsa name="Test Sequence für Eclipse BPEL Designer" number="115" revId="2">
+<tsa name="Test Sequence für die Ausführung und die Kompensierung von DM-A" number="91" revId="2">
+<relatedsequence>91</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für Eclipse BPEL Designer" number="115" revId="1">
 <relatedsequence>115</relatedsequence>
-<tsa name="Test Sequence 2" number="200" revId="2">
+<tsa name="Test Sequence für den Laden, Defaults Laden und Speichern" number="116" revId="2">
+<relatedsequence>116</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ein Fehler beim Laden von wert" number="200" revId="3">
 <relatedsequence>200</relatedsequence>
 </tsa>
-<tsa name="Test Sequence 3" number="205" revId="2">
+<tsa name="Test Sequence für SIMPL Extensions" number="205" revId="2">
 <relatedsequence>205</relatedsequence>
 </tsa>
 </tsa>
-<tsa name="Test Sequence für Referenz" number="122" revId="2">
+<tsa name="Test Sequence für Referenz" number="122" revId="1">
 <relatedsequence>122</relatedsequence>
-<tsa name="Test Sequence 2" number="210" revId="2">
+<tsa name="Test Sequence für Dereferenz" number="123" revId="3">
+<relatedsequence>123</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Bearbeitung von Referenz" number="210" revId="2">
 <relatedsequence>210</relatedsequence>
 </tsa>
-<tsa name="Test Sequence 3" number="214" revId="2">
+<tsa name="Test Sequence bei Bearbeitung von Referenz, fehler tritt auf." number="214" revId="2">
 <relatedsequence>214</relatedsequence>
 </tsa>
 </tsa>
-<tsa name="Test Sequence für DM-Aktivitaet" number="128" revId="2">
+<tsa name="Test Sequence für DM-Aktivitaet" number="128" revId="1">
 <relatedsequence>128</relatedsequence>
 </tsa>
-<tsa name="Test Sequence für die Datenquellen-Administratoren" number="218" revId="2">
+<tsa name="Test Sequence für die Datenquellen-Administratoren" number="218" revId="1">
 <relatedsequence>218</relatedsequence>
 </tsa>
 </tsa>
