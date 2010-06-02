@@ -1259,117 +1259,6 @@ Die Werten bleiben dabei solange erhalten, bis die A-K geschlossen wird. </post>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für keine Auditing-Datenbank zum Speichern der Auditing-Daten" number="56">
-<description/>
-<pre/>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="57" priority="C" title="Test Case für die Öffnung von A-K">
-<description>test die Oeffnung von A-K</description>
-<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
-<actions>klick auf das SIMPL-Menue
-und klick auf [admin-console]</actions>
-<post>admin-console wird angezeiget und kann verwendet werden</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="76" priority="C" title="Test Case Globale Einstellungen festlegen">
-<description>Test die Festlegung der Globale Einstellungen</description>
-<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
-<actions>Eingabe/Aenderung der Werte</actions>
-<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="77" priority="C" title="Test Case Auditing-Datenbank festlegen">
-<description>Test die Festlegung der Auditing-Datenbank</description>
-<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
-<actions>angabe einer Datenbank-URL</actions>
-<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="58" priority="C" title="Test Case save A-K">
-<description>Test die Speicherung der A-K</description>
-<pre>Die Admin-Konsole wird angezeiget
-</pre>
-<actions>Benutzer leget keine Auditing-Datenbank zum Speichern der Auditing-Daten fest.
-</actions>
-<post>Der Benutzer erhaelt eine Fehlermeldung, die ihn ueber den entsprechenden Fehler informiert.  </post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="59" priority="C" title="Test Case Zuruecksetzung der A-K">
-<description>Test die Zuruecksetzung der A-K</description>
-<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
-<actions>klick auf Button [reset]</actions>
-<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="78" priority="C" title="Test Case A-K Defaults Laden">
-<description>Test die A-K Defaults zu Laden</description>
-<pre>Die Admin-Konsole wird angezeiget</pre>
-<actions>klick auf den Button[Default]</actions>
-<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="60" priority="C" title="Test Case Schliessung der A-K">
-<description>Test die Schliessung der A-K</description>
-<pre>Die Admin-Konsole wird angezeiget.</pre>
-<actions>klick auf Button [close]</actions>
-<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
-<tags/>
-</testcase>
-</sequence>
-<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für den nicht Erreichbar von Auditing-Datenbank" number="61">
-<description/>
-<pre/>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="62" priority="C" title="Test Case für die Öffnung von A-K">
-<description>test die Oeffnung von A-K</description>
-<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
-<actions>klick auf das SIMPL-Menue
-und klick auf [admin-console]</actions>
-<post>admin-console wird angezeiget und kann verwendet werden</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="79" priority="C" title="Test Case Globale Einstellungen festlegen">
-<description>Test die Festlegung der Globale Einstellungen</description>
-<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
-<actions>Eingabe/Aenderung der Werte</actions>
-<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="80" priority="C" title="Test Case Auditing-Datenbank festlegen">
-<description>Test die Festlegung der Auditing-Datenbank</description>
-<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
-<actions>angabe einer Datenbank-URL</actions>
-<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="63" priority="C" title="Test Case save A-K">
-<description>Test die Speicherung der A-K</description>
-<pre>Die Admin-Konsole wird angezeiget
-</pre>
-<actions>Die Auditing-Datenbank ist nicht erreichbar oder die Authentifizierung ist fehlgeschlagen</actions>
-<post>Der Benutzer erhaelt eine Fehlermeldung, die ihn ueber den entsprechenden Fehler informiert.  </post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="64" priority="C" title="Test Case Zuruecksetzung der A-K">
-<description>Test die Zuruecksetzung der A-K</description>
-<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
-<actions>klick auf Button [reset]</actions>
-<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="81" priority="C" title="Test Case A-K Defaults Laden">
-<description>Test die A-K Defaults zu Laden</description>
-<pre>Die Admin-Konsole wird angezeiget</pre>
-<actions>klick auf den Button[Default]</actions>
-<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
-<tags/>
-</testcase>
-<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="65" priority="C" title="Test Case Schliessung der A-K">
-<description>Test die Schliessung der A-K</description>
-<pre>Die Admin-Konsole wird angezeiget.</pre>
-<actions>klick auf Button [close]</actions>
-<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
-<tags/>
-</testcase>
-</sequence>
 <sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für die Erstellung, Bearbeitung und Löschen von RRS" number="82">
 <description/>
 <pre/>
@@ -1949,7 +1838,7 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <post/>
 <tags/>
 </testcase>
-<testcase created="02.06.2010" creator="feras" effort="00:00" number="400" priority="C" title="Test Case: Bearbeitung Datenquelle-Objekt in Deployment-Deskriptor">
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="400" priority="A" title="Test Case: Bearbeitung Datenquelle-Objekt in Deployment-Deskriptor">
 <description/>
 <pre/>
 <actions/>
@@ -2034,12 +1923,6 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 </tsa>
 <tsa name="Test Sequence Fehler bei Speichern" number="51" revId="1">
 <relatedsequence>51</relatedsequence>
-</tsa>
-<tsa name="Test Sequence für keine Auditing-Datenbank zum Speichern der Auditing-Daten" number="56" revId="1">
-<relatedsequence>56</relatedsequence>
-</tsa>
-<tsa name="Test Sequence für den nicht Erreichbar von Auditing-Datenbank" number="61" revId="1">
-<relatedsequence>61</relatedsequence>
 </tsa>
 <tsa name="Test Sequence für die Erstellung, Bearbeitung und Löschen von RRS" number="82" revId="1">
 <relatedsequence>82</relatedsequence>
