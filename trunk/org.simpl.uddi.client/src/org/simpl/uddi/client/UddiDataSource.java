@@ -170,7 +170,13 @@ public class UddiDataSource implements IUddiConfig {
 	}
 	
 	public String getWsPolicy() {
-		return getAttributeValue("wspolicy");
+		int anzahl = Integer.parseInt(getAttributeValue("wspolicysize"));
+		String policy = "";
+		for (int i = 0; i < anzahl; i++) {
+			policy = policy + getAttributeValue("wspolicy"+i);
+		}
+		
+		return policy;
 	}
 	
 	public String getType() {
