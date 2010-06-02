@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.simpl.rrs.model/src"
+    modelPluginID="org.eclipse.simpl.rrs.model" modelName="Reference" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>rrs.xsd</foreignModel>
+  <genPackages prefix="RRS" basePackage="org.eclipse.simpl.rrs.model" resource="XML"
+      disposableProviderFactory="true" ecorePackage="rrs.ecore#/">
+    <genClasses ecoreClass="rrs.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference rrs.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference rrs.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute rrs.ecore#//DocumentRoot/epr"/>
+    </genClasses>
+    <genClasses ecoreClass="rrs.ecore#//EPR">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//EPR/address"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rrs.ecore#//EPR/referenceProperties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference rrs.ecore#//EPR/referenceParameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//EPR/portType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rrs.ecore#//EPR/serviceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//EPR/policy"/>
+    </genClasses>
+    <genClasses ecoreClass="rrs.ecore#//ReferenceParameters">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ReferenceParameters/referenceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ReferenceParameters/statement"/>
+    </genClasses>
+    <genClasses ecoreClass="rrs.ecore#//ReferenceProperties">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ReferenceProperties/resolutionSystem"/>
+    </genClasses>
+    <genClasses ecoreClass="rrs.ecore#//ServiceName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ServiceName/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rrs.ecore#//ServiceName/portName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

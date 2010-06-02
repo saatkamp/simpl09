@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://webservices.rrs.simpl.org/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webservices.rrs.simpl.org/">
+    <xs:element name="epr" type="tns:EPR"/>
+    <xs:complexType name="EPR">
+        <xs:sequence>
+            <xs:element name="address" type="xs:anyURI"/>
+            <xs:element name="referenceProperties" type="tns:ReferenceProperties"/>
+            <xs:element name="referenceParameters" type="tns:ReferenceParameters"/>
+            <xs:element minOccurs="0" name="portType" type="xs:QName"/>
+            <xs:element minOccurs="0" name="serviceName" type="tns:ServiceName"/>
+            <xs:element minOccurs="0" name="policy" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ReferenceProperties">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="resolutionSystem" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ReferenceParameters">
+        <xs:sequence>
+            <xs:element name="referenceName" type="xs:string"/>
+            <xs:element name="dsAddress" type="xs:string"/>
+            <xs:element name="statement" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ServiceName">
+        <xs:simpleContent>
+            <xs:extension base="xs:QName">
+                <xs:attribute name="portName" type="xs:NCName"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType final="#all" name="EPRArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:EPR"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType final="#all" name="stringArray">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="rdbData" type="tns:RDBSet"/>
+    <xs:complexType name="column">
+    	<xs:sequence>
+    		<xs:element name="value" type="xs:anyType"></xs:element>
+    	</xs:sequence>
+    	<xs:attribute name="name" type="xs:string" />
+
+    	<xs:attribute name="type" type="xs:string"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="table">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="column" type="tns:column"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="schema" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="RDBSet">
+    	<xs:sequence>
+    		<xs:element name="table" type="tns:table" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+</xs:schema>

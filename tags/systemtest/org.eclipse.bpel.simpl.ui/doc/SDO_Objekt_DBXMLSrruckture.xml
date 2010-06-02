@@ -1,0 +1,182 @@
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Body>
+<rpcOp:getMetaDataResponse
+xmlns:rpcOp="http://webservices.core.simpl.org/">
+<return><![CDATA[<?xml version="1.0" encoding="ASCII"?> 
+<sdo:dataObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:sdo="commonj.sdo"
+
+xmlns:this="http://org.simpl.core/src/org/simpl/core/datasource/metadata/DatasourceMetaData.xsd"
+xsi:type="this:tDatabaseMetaData">
+<schema name="APP"/>
+<schema name="NULLID"/>
+<schema name="SQLJ"/>
+<schema name="SYS">
+<table name="SYSALIASES"/>
+<table name="SYSCHECKS"/>
+<table name="SYSCOLPERMS"/>
+<table name="SYSCOLUMNS"/>
+<table name="SYSCONGLOMERATES"/>
+<table name="SYSCONSTRAINTS"/>
+<table name="SYSDEPENDS"/>
+<table name="SYSFILES"/>
+<table name="SYSFOREIGNKEYS"/>
+<table name="SYSKEYS"/>
+<table name="SYSROLES"/>
+<table name="SYSROUTINEPERMS"/>
+<table name="SYSSCHEMAS"/>
+<table name="SYSSTATEMENTS"/>
+<table name="SYSSTATISTICS"/>
+<table name="SYSTABLEPERMS"/>
+<table name="SYSTABLES"/>
+<table name="SYSTRIGGERS"/>
+<table name="SYSVIEWS">
+<column name="ALIASID" type="CHAR"/>
+<column name="ALIAS" type="VARCHAR"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="JAVACLASSNAME" type="LONG VARCHAR"/>
+<column name="ALIASTYPE" type="CHAR"/>
+<column name="NAMESPACE" type="CHAR"/>
+<column name="SYSTEMALIAS" type="BOOLEAN"/>
+<column name="ALIASINFO" type="org.apache.derby.catalog.AliasInfo"/>
+<column name="SPECIFICNAME" type="VARCHAR"/>
+<column name="CONSTRAINTID" type="CHAR"/>
+<column name="CHECKDEFINITION" type="LONG VARCHAR"/>
+<column name="REFERENCEDCOLUMNS"
+type="org.apache.derby.catalog.ReferencedColumns"/>
+<column name="COLPERMSID" type="CHAR"/>
+<column name="GRANTEE" type="VARCHAR"/>
+<column name="GRANTOR" type="VARCHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="TYPE" type="CHAR"/>
+<column name="COLUMNS"
+type="org.apache.derby.iapi.services.io.FormatableBitSet"/>
+<column name="REFERENCEID" type="CHAR"/>
+<column name="COLUMNNAME" type="VARCHAR"/>
+<column name="COLUMNNUMBER" type="INTEGER"/>
+<column name="COLUMNDATATYPE"
+type="org.apache.derby.catalog.TypeDescriptor"/>
+<column name="COLUMNDEFAULT" type="java.io.Serializable"/>
+<column name="COLUMNDEFAULTID" type="CHAR"/>
+<column name="AUTOINCREMENTVALUE" type="BIGINT"/>
+<column name="AUTOINCREMENTSTART" type="BIGINT"/>
+<column name="AUTOINCREMENTINC" type="BIGINT"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="CONGLOMERATENUMBER" type="BIGINT"/>
+<column name="CONGLOMERATENAME" type="VARCHAR"/>
+<column name="ISINDEX" type="BOOLEAN"/>
+<column name="DESCRIPTOR"
+type="org.apache.derby.catalog.IndexDescriptor"/>
+<column name="ISCONSTRAINT" type="BOOLEAN"/>
+<column name="CONGLOMERATEID" type="CHAR"/>
+<column name="CONSTRAINTID" type="CHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="CONSTRAINTNAME" type="VARCHAR"/>
+<column name="TYPE" type="CHAR"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="STATE" type="CHAR"/>
+<column name="REFERENCECOUNT" type="INTEGER"/>
+<column name="DEPENDENTID" type="CHAR"/>
+<column name="DEPENDENTFINDER"
+type="org.apache.derby.catalog.DependableFinder"/>
+<column name="PROVIDERID" type="CHAR"/>
+<column name="PROVIDERFINDER"
+type="org.apache.derby.catalog.DependableFinder"/>
+<column name="FILEID" type="CHAR"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="FILENAME" type="VARCHAR"/>
+<column name="GENERATIONID" type="BIGINT"/>
+<column name="CONSTRAINTID" type="CHAR"/>
+<column name="CONGLOMERATEID" type="CHAR"/>
+<column name="KEYCONSTRAINTID" type="CHAR"/>
+<column name="DELETERULE" type="CHAR"/>
+<column name="UPDATERULE" type="CHAR"/>
+<column name="CONSTRAINTID" type="CHAR"/>
+<column name="CONGLOMERATEID" type="CHAR"/>
+<column name="UUID" type="CHAR"/>
+<column name="ROLEID" type="VARCHAR"/>
+<column name="GRANTEE" type="VARCHAR"/>
+<column name="GRANTOR" type="VARCHAR"/>
+<column name="WITHADMINOPTION" type="CHAR"/>
+<column name="ISDEF" type="CHAR"/>
+<column name="ROUTINEPERMSID" type="CHAR"/>
+<column name="GRANTEE" type="VARCHAR"/>
+<column name="GRANTOR" type="VARCHAR"/>
+<column name="ALIASID" type="CHAR"/>
+<column name="GRANTOPTION" type="CHAR"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="SCHEMANAME" type="VARCHAR"/>
+<column name="AUTHORIZATIONID" type="VARCHAR"/>
+<column name="STMTID" type="CHAR"/>
+<column name="STMTNAME" type="VARCHAR"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="TYPE" type="CHAR"/>
+<column name="VALID" type="BOOLEAN"/>
+<column name="TEXT" type="LONG VARCHAR"/>
+<column name="LASTCOMPILED" type="TIMESTAMP"/>
+<column name="COMPILATIONSCHEMAID" type="CHAR"/>
+<column name="USINGTEXT" type="LONG VARCHAR"/>
+<column name="STATID" type="CHAR"/>
+<column name="REFERENCEID" type="CHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="CREATIONTIMESTAMP" type="TIMESTAMP"/>
+<column name="TYPE" type="CHAR"/>
+<column name="VALID" type="BOOLEAN"/>
+<column name="COLCOUNT" type="INTEGER"/>
+<column name="STATISTICS" type="org.apache.derby.catalog.Statistics"/>
+<column name="TABLEPERMSID" type="CHAR"/>
+<column name="GRANTEE" type="VARCHAR"/>
+<column name="GRANTOR" type="VARCHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="SELECTPRIV" type="CHAR"/>
+<column name="DELETEPRIV" type="CHAR"/>
+<column name="INSERTPRIV" type="CHAR"/>
+<column name="UPDATEPRIV" type="CHAR"/>
+<column name="REFERENCESPRIV" type="CHAR"/>
+<column name="TRIGGERPRIV" type="CHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="TABLENAME" type="VARCHAR"/>
+<column name="TABLETYPE" type="CHAR"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="LOCKGRANULARITY" type="CHAR"/>
+<column name="TRIGGERID" type="CHAR"/>
+<column name="TRIGGERNAME" type="VARCHAR"/>
+<column name="SCHEMAID" type="CHAR"/>
+<column name="CREATIONTIMESTAMP" type="TIMESTAMP"/>
+<column name="EVENT" type="CHAR"/>
+<column name="FIRINGTIME" type="CHAR"/>
+<column name="TYPE" type="CHAR"/>
+<column name="STATE" type="CHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="WHENSTMTID" type="CHAR"/>
+<column name="ACTIONSTMTID" type="CHAR"/>
+<column name="REFERENCEDCOLUMNS"
+type="org.apache.derby.catalog.ReferencedColumns"/>
+<column name="TRIGGERDEFINITION" type="LONG VARCHAR"/>
+<column name="REFERENCINGOLD" type="BOOLEAN"/>
+<column name="REFERENCINGNEW" type="BOOLEAN"/>
+<column name="OLDREFERENCINGNAME" type="VARCHAR"/>
+<column name="NEWREFERENCINGNAME" type="VARCHAR"/>
+<column name="TABLEID" type="CHAR"/>
+<column name="VIEWDEFINITION" type="LONG VARCHAR"/>
+<column name="CHECKOPTION" type="CHAR"/>
+<column name="COMPILATIONSCHEMAID" type="CHAR"/>
+</table>
+</schema>
+<schema name="SYSCAT"/>
+<schema name="SYSCS_DIAG"/>
+<schema name="SYSCS_UTIL"/>
+<schema name="SYSFUN"/>
+<schema name="SYSIBM">
+<table name="SYSDUMMY1">
+<column name="IBMREQD" type="CHAR"/>
+</table>
+</schema>
+<schema name="SYSPROC"/>
+<schema name="SYSSTAT"/>
+</sdo:dataObject>]]></return>
+</rpcOp:getMetaDataResponse>
+</soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>juddiweb</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>   
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>UddiAction</display-name>
+    <servlet-name>UddiAction</servlet-name>
+    <servlet-class>UddiAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UddiAction</servlet-name>
+    <url-pattern>/UddiAction</url-pattern>
+  </servlet-mapping>
+  
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>juddiweb</web-resource-name>
+  		<url-pattern>/*</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>secure</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  <login-config>
+  	<auth-method>BASIC</auth-method>
+  	<realm-name>interner Bereich</realm-name>
+  </login-config>
+</web-app>

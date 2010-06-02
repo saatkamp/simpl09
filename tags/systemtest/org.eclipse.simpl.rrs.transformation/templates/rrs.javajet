@@ -1,0 +1,33 @@
+<%@ jet package="org.eclipse.simpl.rrs.transformation.jet" class="TemplateRrsXSD" %>
+<xsd:schema xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:rrs="http://uni-stuttgart.de/simpl/rrs" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="rrs" ecore:package="org.eclipse.simpl.rrs.model.rrs" targetNamespace="http://uni-stuttgart.de/simpl/rrs">
+ 	<xs:element name="epr" type="tns:EPR"/>
+    <xs:complexType name="EPR">
+        <xs:sequence>
+            <xs:element name="address" type="xs:anyURI"/>
+            <xs:element name="referenceProperties" type="tns:ReferenceProperties"/>
+            <xs:element name="referenceParameters" type="tns:ReferenceParameters"/>
+            <xs:element minOccurs="0" name="portType" type="xs:QName"/>
+            <xs:element minOccurs="0" name="serviceName" type="tns:ServiceName"/>
+            <xs:element minOccurs="0" name="policy" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ReferenceProperties">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="resolutionSystem" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ReferenceParameters">
+        <xs:sequence>
+            <xs:element name="referenceName" type="xs:string"/>
+            <xs:element name="dsAddress" type="xs:string"/>
+            <xs:element name="statement" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ServiceName">
+        <xs:simpleContent>
+            <xs:extension base="xs:QName">
+                <xs:attribute name="portName" type="xs:NCName"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xsd:schema>
