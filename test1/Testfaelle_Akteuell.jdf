@@ -1678,10 +1678,10 @@ Bei der Generierung tritt ein Fehler auf</actions>
 </testcase>
 </sequence>
 </sequence>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Referenz" number="122">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Referenz in RRS" number="122">
 <description/>
 <pre/>
-<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Dereferenz" number="123">
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Dereferenz  in RRS" number="123">
 <description/>
 <pre/>
 <testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="124" priority="C" title="Test Case dereferenzieren">
@@ -1699,7 +1699,7 @@ Bei der Generierung tritt ein Fehler auf</actions>
 <tags/>
 </testcase>
 </sequence>
-<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für die Bearbeitung von Referenz" number="210">
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für die Bearbeitung von Referenz in RRS" number="210">
 <description/>
 <pre/>
 <testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="211" priority="C" title="Test Case für Speichern einer Referenz">
@@ -1881,23 +1881,49 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <pre/>
 <testcase created="02.06.2010" creator="feras" effort="00:00" number="398" priority="C" title="Test Case: Erzeugen bzw. Einfügen von neue Datenquelle in Deployment-Deskriptor">
 <description/>
-<pre/>
-<actions/>
-<post/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.
+
+</pre>
+<actions>1) man klickt auf "New" neben der Tabelle der Datenquellen ,um neue Datenquelle zu erzeugen.
+2) man füllt alle notwendigen felder aus
+3) man clickt auf button "save" 
+4) man cklickt auf "abort"</actions>
+<post>1a. es öffnet sich der Fenster mit Felder (Formular) zum ausfüllen
+
+3a. der Datenquelle ist angelegt und  gespeichert.
+3b. der formular fenster zum Datenquelle schliesst sich
+
+4a. der Vorgang ist abgebrochen. Formular Datenquelle fesnter schliesst sich</post>
 <tags/>
 </testcase>
 <testcase created="02.06.2010" creator="feras" effort="00:00" number="399" priority="C" title="Test Case: Löschen eines Datenquelle-Objekt in Deployment-Deskriptor">
 <description/>
-<pre/>
-<actions/>
-<post/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Löschen" neben der Tabelle der Datenquellen ,um die Datenquelle zu löschen.
+</actions>
+<post>2a. die Datenquellen objekt wirdgelöscht.
+</post>
 <tags/>
 </testcase>
 <testcase created="02.06.2010" creator="feras" effort="00:00" number="400" priority="A" title="Test Case: Bearbeitung Datenquelle-Objekt in Deployment-Deskriptor">
 <description/>
-<pre/>
-<actions/>
-<post/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Edit" neben der Tabelle der Datenquellen ,um die Datenquelle zu bearbeiten.
+3) man bearbeitet die inhalte in der felder
+4) man drückt aus "save"
+5) man cklickt auf "abort"</actions>
+<post>2a. die Formular der Datenquelle öffnet sich mit der inhalten der Datenquelle
+
+4a. der formular fenster wird geschlossen und die bearbeitet inhalte ,Änderungen werden gespeichert
+5a. der fenster schliesst sich und die Änderungen werden nicht gespeichert.</post>
 <tags/>
 </testcase>
 </sequence>
@@ -1926,6 +1952,284 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <actions>1.Auswahl der Datenquelle
 2.Entfernen der Werte aus der Datenquelle</actions>
 <post>Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig aus der Datenquellen-Registry entfernt und kann nun nicht mehr verwendet werden.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Statement Editoren" number="407">
+<description>im folgende Test geht um das Testn die verscheidene Statement-Editoren</description>
+<pre>-Process existiert und geladen
+-Eine DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Insert Statement Editor" number="409">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="408" priority="C" title="Test Case: offnen Insert Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Insert DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="410" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="411" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="412" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Call Statement Editor" number="413">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="414" priority="C" title="Test Case: offnen Call Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Call DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Call .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="415" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="416" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="417" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Delete Statement Editor" number="423">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="424" priority="C" title="Test Case: offnen Insert Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Delete DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="425" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="426" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="427" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Create Statement Editor" number="428">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="429" priority="C" title="Test Case: offnen Create Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Create DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="430" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="431" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="432" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: RetrievData Statement Editor" number="433">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="434" priority="C" title="Test Case: offnen RetrievData Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Retrieve DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für RetrieveData .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="435" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="436" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="437" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Drop Statement Editor" number="438">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="439" priority="C" title="Test Case: offnen Drop Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Drop DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Drop .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="440" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="441" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="442" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Update Statement Editor" number="443">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="444" priority="C" title="Test Case: offnen Update Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Update DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Update .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="445" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="446" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="447" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: UDDI-Webinterfaces" number="453">
+<description>Testen der UDDI-Webinterfaces nach die verschiedene Testfaelle .</description>
+<pre>UDDI-Webinterfaces muss offen sein</pre>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="454" priority="C" title="Test Case: neue UDDI-Registry Speichern mit Leere angaben">
+<description/>
+<pre>-UDDI-Webinterfaces ist offen.</pre>
+<actions>1) angaben in der Felder eintragen
+2) manche felder leer lassen.</actions>
+<post>UDDI-Registry gespeichert und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="455" priority="C" title="Test Case: UDDI-Registery löschen">
+<description/>
+<pre>-Registery ist vorhanden und erreichbar
+-Benutze hat die erforderlichen Zugrifsrechte</pre>
+<actions>1) auswahl der Registry 
+2) Löschen der Registry dursch "Löschen"</actions>
+<post>1a. Registry ist ausgewählt
+2a. Registry ist gelöscht</post>
+<tags/>
+</testcase>
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="456" priority="C" title="Test Case: UDDI-Registry Bearbeiten">
+<description>Entfernen eine vorhandene UDDI-Registry</description>
+<pre>-UDDI-Registry bzw. Datenquellen-Registry ist vorhanden
+-Benutzer hat die dazu gesehene Rechte</pre>
+<actions>1- Registry Auswhlen
+2- die Einträge/Werte der Registry über den UDDI User-Interface bearbeiten
+3- speichern die Änderungen </actions>
+<post>1a. die UDDI-Registry ist ausgewählt
+2a. die werte sind angepasst
+3a. die Änderungen sind gespeichert</post>
 <tags/>
 </testcase>
 </sequence>
@@ -2007,16 +2311,6 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <relatedsequence>205</relatedsequence>
 </tsa>
 </tsa>
-<tsa name="Test Sequence für Referenz" number="122" revId="1">
-<relatedsequence>122</relatedsequence>
-<tsa name="Test Sequence für Dereferenz" number="123" revId="1">
-<relatedsequence>123</relatedsequence>
-</tsa>
-<tsa name="Test Sequence für die Bearbeitung von Referenz" number="210" revId="1">
-<relatedsequence>210</relatedsequence>
-</tsa>
-<tsa name="Test Sequence bei Bearbeitung von Referenz, fehler tritt auf." number="214" revId="1"/>
-</tsa>
 <tsa name="Test Sequence für DM-Aktivitaet" number="128" revId="1">
 <relatedsequence>128</relatedsequence>
 </tsa>
@@ -2055,12 +2349,48 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 </tsa>
 <tsa name="Test Sequence: allgemein für alle DMAktivitaeten" number="393" revId="1">
 <relatedsequence>393</relatedsequence>
-<tsa name="Test Sequence:  Listen der Data über  Properties Fenste öffnnenr- Commands,File,Folder, Driver  falls DS ist  FileSystem " number="401" revId="2">
+<tsa name="Test Sequence:  Listen der Data über  Properties Fenste öffnnenr- Commands,File,Folder, Driver  falls DS ist  FileSystem " number="401" revId="1">
 <relatedsequence>401</relatedsequence>
 </tsa>
 </tsa>
 <tsa name="Test Sequence: Datenquellen in der Deployment-Deskriptor" number="397" revId="1">
 <relatedsequence>397</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Statement Editoren" number="407" revId="1">
+<relatedsequence>407</relatedsequence>
+<tsa name="Test Sequence: Insert Statement Editor" number="409" revId="1">
+<relatedsequence>409</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Call Statement Editor" number="413" revId="2">
+<relatedsequence>413</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Delete Statement Editor" number="423" revId="2">
+<relatedsequence>423</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Create Statement Editor" number="428" revId="2">
+<relatedsequence>428</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: RetrievData Statement Editor" number="433" revId="3">
+<relatedsequence>433</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Drop Statement Editor" number="438" revId="2">
+<relatedsequence>438</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Update Statement Editor" number="443" revId="2">
+<relatedsequence>443</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für Referenz in RRS" number="122" revId="2">
+<relatedsequence>122</relatedsequence>
+<tsa name="Test Sequence für Dereferenz  in RRS" number="123" revId="2">
+<relatedsequence>123</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Bearbeitung von Referenz in RRS" number="210" revId="2">
+<relatedsequence>210</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence: UDDI-Webinterfaces" number="453" revId="2">
+<relatedsequence>453</relatedsequence>
 </tsa>
 </tsa>
 </tsa>
@@ -2070,5 +2400,5 @@ SOAP-Nachricht mit falschem Inhalt.</actions>
 <author active="Y" firstname="" lastname="feras" uid="feras">
 <extension name="standarduser" value="Y"/>
 </author>
-<extension name="maxid" value="406"/>
+<extension name="maxid" value="456"/>
 </tests>
