@@ -86,7 +86,7 @@ public class FileSysListPopUp{
 	public FileSysListPopUp(String typeOfElement, LiveEditStyleText statementText)
 	{
 		this.typeOfElement=typeOfElement;
-		if(!(typeOfElement.toUpperCase().equals("DRIVE"))||!(typeOfElement.toUpperCase().equals("COMMAND"))){
+		if(!(typeOfElement.toUpperCase().equals("DRIVE"))&&(typeOfElement.toUpperCase().equals("COMMAND"))){
 			createSShell(statementText);
 		}
 		else{
