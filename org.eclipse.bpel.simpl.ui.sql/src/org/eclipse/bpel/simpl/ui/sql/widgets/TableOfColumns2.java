@@ -34,7 +34,7 @@ import org.eclipse.swt.widgets.Text;
 /**
 * This class demonstrates TableEditor.
 */
-public class TableOfColumns {
+public class TableOfColumns2 {
 // Number of rows and columns
 private static final int NUM = 5;
 

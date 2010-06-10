@@ -16,4 +16,3 @@ Export-Package: org.eclipse.bpel.simpl.ui.sql,
  org.eclipse.bpel.simpl.ui.sql.editor,
  org.eclipse.bpel.simpl.ui.sql.widgets,
  org.eclipse.bpel.simpl.ui.sql.xmlParser
-Import-Package: org.eclipse.bpel.simpl.ui.sql.widgets

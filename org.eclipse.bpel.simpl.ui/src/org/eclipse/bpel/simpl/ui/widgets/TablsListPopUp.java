@@ -168,7 +168,7 @@ public class TablsListPopUp{
 		
 		//textToSearch.setLayoutData(gridData);
 		
-		listToSearch = new List(theShell, SWT.BORDER);
+		listToSearch = new List(theShell, SWT.BORDER|SWT.V_SCROLL);
 		//listToSearch.setItems((String[]) arrayOfElements.toArray());
 		listToSearch.setLayoutData(gridData);
 		listToSearch.addListener(SWT.MouseDoubleClick, new Listener() {
