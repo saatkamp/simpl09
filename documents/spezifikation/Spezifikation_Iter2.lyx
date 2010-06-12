@@ -2032,8 +2032,132 @@ t werden, beschrieben.
 Benutzeroberfläche des erweiterten Eclipse BPEL Designers
 \end_layout
 
+\begin_layout Standard
+Dieses Kapitel beschreibt alle Erweiterungen des Eclipse BPEL Designers
+ und dessen Benutzeroberfläche.
+\end_layout
+
 \begin_layout Subsubsection
-Referenzvariablen
+Erweiterungen zur Integration von Referenzvariablen in den Eclipse BPEL
+ Designer
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel werden alle Erweiterungen des Eclipse BPEL Designers beschrieb
+en, die für die Modellierung und Verwendung von Referenzvariablen in BPEL-Prozes
+sen benötigt werden.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Referenzvariablen"
+
+\end_inset
+
+ zeigt den erweiterten BPEL Editor des Eclipse BPEL Designers.
+ Auf die neuen Elemente wird dabei im folgenden näher eingegangen.
+ 
+\end_layout
+
+\begin_layout Standard
+Das rot umrandete Symbol in der Toolbar stößt die Transformation eines Prozesses
+ mit Referenzvariablen an.
+ Was genau während der Transformation geschieht und wie diese durchgeführt
+ wird, wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Transformation-des-Modells"
+
+\end_inset
+
+ beschrieben.
+ Damit Referenzvariablen überhaupt modelliert werden können, muss ein neuer
+ Variablentyp in BPEL eingeführt werden.
+ Da Referenzvariablen eine ähnliche Struktur wie Standard-BPEL-Variablen
+ haben, werden Referenzvariablen analog realisiert.
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:ReferenzVariable"
+
+\end_inset
+
+ zeigt die Struktur einer Referenzvariablen sowie deren Container (
+\emph on
+bpel:referenceVariables
+\emph default
+).
+ Eine Referenzvariable hat dabei immer einen Namen (
+\emph on
+name
+\emph default
+), einen Referenztyp (
+\emph on
+referenceType
+\emph default
+) und einen Werttyp (
+\emph on
+valueType
+\emph default
+).
+ Die anderen Attribute wurden nicht in die Benutzeroberfläche integriert,
+ sind aber im Modell vorhanden, sodass durch eine Erweiterung der Benutzeroberfl
+äche diese Attribute verwendet werden können.
+ Die Bedeutung der einzelnen Attribute liefert Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Realisierung-von-Referenzen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Analog zu den Standard-BPEL-Variablen können durch die Erweiterung nun Referenzv
+ariablen erzeugt, ausgewählt und gelöscht werden (siehe rot umrandeter Bereich
+ in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Referenzvariablen"
+
+\end_inset
+
+).
+ Nachdem eine Referenzvariable erstellt oder ausgewählt ist, können deren
+ Attribute in der Properties-View gesetzt werden (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-Referenzvariablen"
+
+\end_inset
+
+ unten).
+ Dabei kann als Referenztyp 
+\emph on
+onInstantiation
+\emph default
+ oder 
+\emph on
+fresh
+\emph default
+ ausgewählt werden und der Werttyp über den Browse-Button analog wie bei
+ Standard-BPEL-Variablen gesetzt werden.
+ Damit man auch Referenzvariablen in Kommunikationsaktivitäten (Invoke,
+ Reply und Receive) verwenden kann, wurde der Eclipse BPEL Designer entsprechend
+ erweitert, sodass auch Referenzvariablen bei der Modellierung zur Auswahl
+ stehen.
+ Generell sind die durchgeführten Erweiterungen nur eine Übergangslösung,
+ da das zugrundeliegende BPEL-Modell nicht für mehrere verschiedene Variablenart
+en ausgelegt ist und sich dies auch in der Implementierung des Eclipse BPEL
+ Designer niederschlägt.
+ Eine mögliche Lösung dieses Problems würde die Umstrukturierung des zugrundelie
+genden BPEL-Modells liefern.
+ D.h.
+ man sollte alle gemeinsamen Eigenschaften von Referenzvariablen und Standard-BP
+EL-Variablen in einer gemeinsamen Oberklasse abstrahieren, sodass generell
+ zwischen verschiedenen Variablenarten unterschieden werden kann und so
+ auch die Implementierung übersichtlicher, konsistenter und in Zukunft einfacher
+ erweiterbar wird.
 \end_layout
 
 \begin_layout Standard
@@ -2047,7 +2171,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename finalVersion/SIMPL_BPEL_Designer.JPG
-	width 80text%
+	width 100text%
 
 \end_inset
 
@@ -2065,6 +2189,82 @@ name "fig:SIMPL-Referenzvariablen"
 \end_inset
 
 Um Referenzvariablen erweiterter Eclipse BPEL Designer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<bpel:referenceVariables>
+\end_layout
+
+\begin_layout Plain Layout
+
+    <bpel:referenceVariable 
+\end_layout
+
+\begin_layout Plain Layout
+
+        name = "xsd:string"
+\end_layout
+
+\begin_layout Plain Layout
+
+        referenceType = "bpel:ReferenceType"
+\end_layout
+
+\begin_layout Plain Layout
+
+        valueType = "xsd:schema"
+\end_layout
+
+\begin_layout Plain Layout
+
+        period = "duration"
+\end_layout
+
+\begin_layout Plain Layout
+
+        external = "partnerLink">
+\end_layout
+
+\begin_layout Plain Layout
+
+    </bpel:referenceVariable>
+\end_layout
+
+\begin_layout Plain Layout
+
+</bpel:referenceVariables>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:ReferenzVariable"
+
+\end_inset
+
+Schema der ReferenceVariables- und ReferenceVariable-Elemente
 \end_layout
 
 \end_inset
@@ -2134,6 +2334,84 @@ Erweiterter Deployment-Deskriptor
 \end_layout
 
 \begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<process name = "xsd:string" attachedUddiAddress =
+\end_layout
+
+\begin_layout Plain Layout
+
+    "xsd:string">
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    <datasources*/>     
+\end_layout
+
+\begin_layout Plain Layout
+
+    <activityMappings*/>          
+\end_layout
+
+\begin_layout Plain Layout
+
+    <auditing>xsd:boolean</auditing>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    standard-deployment-descriptor-elements
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+</process>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:DD-Datenquelle-1"
+
+\end_inset
+
+Schema des erweiterten Deployment-Deskriptors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -2175,6 +2453,62 @@ Dialog für das Hinzufügen einer Datenquellen-Beschreibung
 \end_layout
 
 \begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<datasources dataSourceName = "xsd:string" 
+\end_layout
+
+\begin_layout Plain Layout
+
+    address = "xsd:string" type = "xsd:string"
+\end_layout
+
+\begin_layout Plain Layout
+
+    subtype = "xsd:string" language = "xsd:string"
+\end_layout
+
+\begin_layout Plain Layout
+
+    userName = "xsd:string" password = "xsd:string"
+\end_layout
+
+\begin_layout Plain Layout
+
+    format = "xsd:string"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:DD-Datenquelle"
+
+\end_inset
+
+Schema der im Deployment-Deskriptor hinterlegten Datenquelleninformationen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
@@ -2203,6 +2537,71 @@ name "fig:SIMPL-DD-AddAM"
 \end_inset
 
 Dialog für das Hinzufügen eines Activity Mappings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<activityMappings activity = "xsd:string" 
+\end_layout
+
+\begin_layout Plain Layout
+
+    strategy = "dd:STRATEGY_TYPE">       
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    <policy policyData = "xsd:string" 
+\end_layout
+
+\begin_layout Plain Layout
+
+        localPath = "xsd:string"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+</activityMappings>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:DD-Activity-Mapping"
+
+\end_inset
+
+Schema der im Deployment-Deskriptor hinterlegten Activity Mappings
 \end_layout
 
 \end_inset
@@ -2929,8 +3328,7 @@ Datenquellen-Registry Plug-In
 \end_layout
 
 \begin_layout Standard
-Das Datenquellen Plug-In wird, wie, beispielsweise die Properties, in eine
- Eclipse View integriert.
+Das Datenquellen-Registry Plug-In wird als Eclipse View in Eclipse integriert.
  Die Datenquellen-Informationen werden aus der Datenquellen-Registry gelesen
  und in einer Tabelle in der View angezeigt (siehe Abildung 
 \begin_inset CommandInset ref
@@ -13712,6 +14110,12 @@ Main Design Issues and Benefits of the Architecture
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Realisierung-von-Referenzen"
+
+\end_inset
+
 Realisierung von Referenzen in BPEL
 \end_layout
 
