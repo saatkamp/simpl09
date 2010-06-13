@@ -153,7 +153,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -3113,10 +3113,1212 @@ Open Editor
  .
  Abhängig davon, welche DM-Aktivität man gerade behandelt, wird der passende
  Statement Editor gestartet.
- Als Beispiel folgt nun eine Insert-Aktivität.
- Man Benutzer muss dabei beachten dass der verwendete Datenquelle hat DB
- als Type.
+ Als Beispiel folgt nun ein Statement Editor einer Insert-Aktivität.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_StatementEditorSample.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Editor-Inser_Aktivity"
+
+\end_inset
+
+Statement Editor einer Insert Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Allgemeine Funktionen
+\end_layout
+
+\begin_layout Standard
+In diesen Unterabschnitt behandeln werden die allgemeine Funktionalitäten
+ und Bedienelemente behandel die in allen Statement Editoren identisch sind.
+\end_layout
+
+\begin_layout Subparagraph
+Statement Schlüsselwörter Buttons:
+\end_layout
+
+\begin_layout Standard
+In jedem der Statement Editoren findet man die Statement Schlüsselwörter,
+ die man in den jeweiligen Editor verwenden kann.
+ Bei Anklicken der Schaltflächen wird das Schlüsselwort dem Statement hinzugefüg
+t.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Statement_Key_Words.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Schlüsselwörter-Buttons"
+
+\end_inset
+
+Statement Schlüsselwörter Buttons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die orangen Markierungen dienen der Orientierung und zeigen dem Benutzer
+ welche Schlüsselwörter in welcher Reichenfolge vorgesehen sind.
+\end_layout
+
+\begin_layout Standard
+Zum Beispiel: Beim Klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+WHERE
+\begin_inset Quotes erd
+\end_inset
+
+ wandert die Markierung auf die nächste in der Reihenfolge vorgesehenen
+ Statement Schlüsselwörter 
+\begin_inset Quotes eld
+\end_inset
+
+ORDER BY
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+GROUP BY
+\begin_inset Quotes erd
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Statement_Key_Words2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Schlüsselwörter-Buttons2"
+
+\end_inset
+
+Statement Schlüsselwörter Buttons 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Statement_Key_Words3.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Schlüsselwörter-Buttons3"
+
+\end_inset
+
+Statement Schlüsselwörter Buttons 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+UNDO Funktionalität:
+\end_layout
+
+\begin_layout Standard
+Durch Betätigen des Buttons 
+\begin_inset Quotes eld
+\end_inset
+
+UNDO
+\begin_inset Quotes erd
+\end_inset
+
+ wird die letzte Änderung im Statement rückgängig gemacht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Statement_UNDO.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-UNDO-Button"
+
+\end_inset
+
+Statement UNDO Button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Buttons 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Remove from table
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to Statement
+\begin_inset Quotes erd
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Statement_Insert_Remove.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Insert--und-Remove"
+
+\end_inset
+
+Insert- und Remove Buttons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Insert to table : Fügt eine Änderung als Zwischenspeicherung ein.
+ Siehe 
+\end_layout
+
+\begin_layout Itemize
+Remove from table : Entfernt Änderung oder Einträge die zuletzt der Tabelle
+ hinzugefügt wurden.
+\end_layout
+
+\begin_layout Itemize
+Insert to statement : Fügt alle Einträge der Tabelle in einem ausgewählten
+ Bereich in das Statement ein.
+\end_layout
+
+\begin_layout Standard
+Es folgt eine Beispiel Tabelle wie sie nach Einfügen diverser Operationen
+ aussehen könnte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Sample_Table.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Editor-Beispiel"
+
+\end_inset
+
+Statement Editor Beispiel Tabelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Statement_OK_CLOSE_Button.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-OK-und-CloseButton"
+
+\end_inset
+
+Statement OK und Close Button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch Betätigung von 
+\begin_inset Quotes eld
+\end_inset
+
+Close
+\begin_inset Quotes erd
+\end_inset
+
+ wird der Editor geschlossen und jede Änderung verworfen.
+\end_layout
+
+\begin_layout Standard
+Durch Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons wird die Änderung am Statement bestätigt.
+ Danach öffnet sich der Zwischenspeicherungsdialogs-Fenster welches die
+ Möglichkeit bietet das Statement von Hand zu bearbeiten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Manual_Edit_Window.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement_Zwischenspeicherungsdialog"
+
+\end_inset
+
+Zwischenspeicherungsdialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch 
+\begin_inset Quotes eld
+\end_inset
+
+Save Statement
+\begin_inset Quotes erd
+\end_inset
+
+ kann das Statement ohne Änderungen, oder wenn etwas geändert wurde dann
+ mit, übernommen werden.
+ Es gibt nur die Möglichkeit hier Änderungen vorzunehmen.
+ Änderungen in den Editoren Fenstern sind nicht möglich.
+\end_layout
+
+\begin_layout Subparagraph
+Insert Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Statement Editor ist für das Erstellen des Statements bei der Insert
+ DM-Aktivität zuständig.
+ Beim Anklicken des 
+\begin_inset Quotes eld
+\end_inset
+
+Values
+\begin_inset Quotes erd
+\end_inset
+
+ Schlüsselwortes öffnet sich folgende Ansicht :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Insert_Statement_Editor.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Insert-Statement-Editor_Values"
+
+\end_inset
+
+Insert Statement Editor - Values
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Man wählt eine zuerst eine Tabelle aus der Datenquelle,
+ dann die Spalten aus der Liste aus.
+ Diesen Spalten kann man einen Wert zuweisen und in der Tabelle zwischenspeicher
+n.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Inser_Statement_Select.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Insert-Statement-Editor_Select"
+
+\end_inset
+
+Insert-Statement-Editor_Select
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Select Schlüsselwort wird analog wie im Query Statement Editor verwendet.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Querverweis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Query Statement Editor
+\end_layout
+
+\begin_layout Standard
+Bei diesen Statement Editor handelt es sich um den Editor zur Erstellung
+ des Statements für die Query DM-Aktivität.
+ Es verfügt über die Schaltflächen bzw.
+ Schlüsselwörter: SELECT, WHERE, ORDER BY, GROUP BY und HAVING.
+ Nach Betätigen des 
+\begin_inset Quotes eld
+\end_inset
+
+Select
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons erscheint folgende Anzeige :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Query_Statement_Select.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Query-Statement-Editor_Select"
+
+\end_inset
+
+Query Statement Editor_Select
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Auf der linken Seite aus der Liste eine Tabelle aus.
+ Die Spalten der ausgewählten Tabelle erscheinen in der Combobox 
+\begin_inset Quotes eld
+\end_inset
+
+Column name
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Man sucht danach den gewünschten Spaltenname aus und wählt die anderen
+ Parameter in den restlichen Comboboxen aus.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+Operations
+\begin_inset Quotes erd
+\end_inset
+
+ werden die möglichen Operationen wie 
+\begin_inset Quotes eld
+\end_inset
+
+AVG
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+SUM
+\begin_inset Quotes erd
+\end_inset
+
+ oder
+\begin_inset Quotes erd
+\end_inset
+
+Min
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+Dist
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+All
+\begin_inset Quotes erd
+\end_inset
+
+ können nur bestimmte, oder auch alle Parameter eingestellt werden.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+richtig ??
+\end_layout
+
+\end_inset
+
+Im Textfeld 
+\begin_inset Quotes eld
+\end_inset
+
+Value
+\begin_inset Quotes erd
+\end_inset
+
+ kann dann ein Wert für den selektierten Spaltenname eingetragen werden.
+\end_layout
+
+\begin_layout Subparagraph
+Call Statement Editor 
+\end_layout
+
+\begin_layout Standard
+Dieser Statement Editor ist für das Erzeugen eines Call Statements zuständig.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Call_Statement.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Call-Statement-Editor"
+
+\end_inset
+
+Call Statement Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Man schreibt in das schmale Textfeld den Name der Prozedur,
+ auf welche das Call-Statement angewendet werden soll.
+ Danach muß der Button 
+\begin_inset Quotes eld
+\end_inset
+
+Add to Statement
+\begin_inset Quotes erd
+\end_inset
+
+ betätigt werden um den Befehl zur Statement hinzuzufügen.
+\end_layout
+
+\begin_layout Subparagraph
+Drop Statement Editor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Drop_Statement.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Drop-Statement-Editor"
+
+\end_inset
+
+Drop Statement Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Zuerst muß in 
+\begin_inset Quotes eld
+\end_inset
+
+ The handeld Schema/Table
+\begin_inset Quotes erd
+\end_inset
+
+ ein Name eingegeben werden.
+ Danach wir mit 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to Statement
+\begin_inset Quotes erd
+\end_inset
+
+ bestätigt und dies dem Statement hinzuzufügen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Drop_Statement2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Drop-Statement-Editor2"
+
+\end_inset
+
+Drop Statement Editor 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Danach erscheint das obere Menü 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Drop-Statement-Editor2"
+
+\end_inset
+
+und es kann in der Liste eine Tabelle ausgewählt und mit 
+\begin_inset Quotes eld
+\end_inset
+
+Insert table into Statement
+\begin_inset Quotes erd
+\end_inset
+
+ dies dem Statement hinzugefügt.
+\end_layout
+
+\begin_layout Subparagraph
+Delete Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Editor erzeugt die 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+-SQL-Anweisung.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Delete_Statement_Editor.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Der Benutzer wählt eine Tabelle aus der Liste aus, dann
+ wird in der Combobox 
+\begin_inset Quotes eld
+\end_inset
+
+Column name
+\begin_inset Quotes erd
+\end_inset
+
+ ein Spaltenname aus der gewählten Tabelle ausgewählt.
+ Danch kann in der Combobox 
+\begin_inset Quotes eld
+\end_inset
+
+Operation
+\begin_inset Quotes erd
+\end_inset
+
+ die gewünschte Operation ausgewählt werden und im Feld 
+\begin_inset Quotes eld
+\end_inset
+
+Value
+\begin_inset Quotes erd
+\end_inset
+
+ der Wert.
+ Danach kommt mit 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+ das Statement in den Zwischenspeicherungsdialog 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Statement_Zwischenspeicherungsdialog"
+
+\end_inset
+
+und kann noch direkt verändert werden.
+\end_layout
+
+\begin_layout Subparagraph
+Create Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Editor erzeugt die Create-SQL-Abfrage.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Create_Statement_Editor1.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Create-Statement-Editor1"
+
+\end_inset
+
+Create Statement Editor 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Zuerst benennt man die Tabelle im Feld 
+\begin_inset Quotes eld
+\end_inset
+
+Table name
+\begin_inset Quotes erd
+\end_inset
+
+.Danach definiert man in den Combo- und Checkboxen die Eigenschaften für
+ jede erzeugte Spalte.
+ Durch 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+wird noch gemacht
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Create_Statement_Editor2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Create-Statement-Editor2"
+
+\end_inset
+
+Create Statement Editor 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Retrieve Data Statement Editor
+\end_layout
+
+\begin_layout Subparagraph
+Update Statement Editor
 \end_layout
 
 \begin_layout Subsubsection
@@ -3764,7 +4966,7 @@ Delete
 \end_layout
 
 \begin_layout Subsection
-Anwendungsfälle der Datenquellen-Administratoren
+Anwendungsfälle der Datenquellen-Administratoren 
 \begin_inset Note Note
 status open
 
