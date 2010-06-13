@@ -28,9 +28,11 @@ public class StatementUtils {
 	static Logger logger = Logger.getLogger(StatementUtils.class);
 
 	/**
+	 * Processes a given statement and resolves the inserted BPEL variables.
+	 * 
 	 * @param context
 	 * @param statement
-	 * @return
+	 * @return The statement with the values of the inserted BPEL variables.
 	 */
 	public static String processStatement(ExtensionContext context,
 			String statement) {

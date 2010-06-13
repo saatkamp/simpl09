@@ -2,7 +2,6 @@ package org.apache.ode.simpl.ea;
 
 import java.util.List;
 
-import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.rtrep.common.extension.AbstractSyncExtensionOperation;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.simpl.ea.util.DeploymentInfos;
@@ -28,8 +27,13 @@ public abstract class DataManagementActivity extends
 	private static String deployDir = "";
 	private static String processName = "";
 
-	protected void loadSIMPLAttributes(ExtensionContext context, Element element)
-			throws FaultException {
+	/**
+	 * Loads all standard attributes of a DataManagementActivity.
+	 * 
+	 * @param context in which the SIMPL activities are executed.
+	 * @param element which represents an DataManagementActivity.
+	 */
+	protected void loadSIMPLAttributes(ExtensionContext context, Element element) {
 		this.dsStatement = element.getAttribute("dsStatement").toString();
 		this.dsAddress = element.getAttribute("dsAddress").toString();
 		this.dsType = element.getAttribute("dsType").toString();
@@ -41,10 +45,22 @@ public abstract class DataManagementActivity extends
 		DataManagementActivity.setDeployDir(context.getDUDir().getPath()+"deploy.xml");
 	}
 
+	/**
+	 * Returns the DataSource object on which the given activity points.
+	 * 
+	 * @param activityName of which the data source should get.
+	 * @param dataSourceName of the queried data source.
+	 * @return The DataSource object which matches to the given parameters.
+	 */
 	public DataSource getDataSource(String activityName, String dataSourceName) {
 		return DeploymentInfos.getActivityDataSource(activityName, dataSourceName);
 	}
 
+	/**
+	 * Getter for the activity name attribute.
+	 * 
+	 * @return name of the activity.
+	 */
 	public String getActivityName() {
 		return activityName;
 	}
@@ -53,39 +69,79 @@ public abstract class DataManagementActivity extends
 		return StatementUtils.processStatement(context, dsStatement);
 	}
 
+	/**
+	 * Getter for the activity data source address attribute.
+	 * 
+	 * @return address of the activity data source.
+	 */
 	public String getDsAddress() {
 		return dsAddress;
 	}
 
+	/**
+	 * Getter for the activity data source type attribute.
+	 * 
+	 * @return type of the activity data source.
+	 */
 	public String getDsType() {
 		return dsType;
 	}
 
+	/**
+	 * Getter for the activity data source subtype attribute.
+	 * 
+	 * @return subtype of the activity data source.
+	 */
 	public String getDsSubType() {
 		return dsSubType;
 	}
 
+	/**
+	 * Getter for the activity data source language attribute.
+	 * 
+	 * @return language of the activity data source.
+	 */
 	public String getDsLanguage() {
 		return dsLanguage;
 	}
 
+	/**
+	 * Getter for the path of the deployment directory.
+	 * 
+	 * @return path to the deployment directory of the process.
+	 */
 	public static String getDeployDir() {
 		return deployDir;
 	}
 
+	/**
+	 * Getter for the current process name.
+	 * 
+	 * @return current processed process name.
+	 */
 	public static String getProcessName() {
 		return processName;
 	}
 
+	/**
+	 * Setter for the path of the deployment directory.
+	 * 
+	 * @param deployDir to set.
+	 */
 	public static void setDeployDir(String deployDir) {
 		DataManagementActivity.deployDir = deployDir;
 	}
 
+	/**
+	 * Setter for the current process name.
+	 * 
+	 * @param processName to set.
+	 */
 	public static void setProcessName(String processName) {
 		DataManagementActivity.processName = processName;
 	}
 
-	// Diese beiden Methoden sind nur zu Testzwecken.
+	// These two methods are just for testing the implementation
 	@SuppressWarnings("unchecked")
 	public static void printDataObject(ExtensionContext context,
 			DataObject dataObject, int indent) {

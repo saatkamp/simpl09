@@ -24,10 +24,10 @@ public class QueryActivity extends DataManagementActivity {
 //		ScopeEvent DMStarted = new DMStarted();
 //		context.getInternalInstance().sendEvent(DMStarted);
 
-		// Laden alle Attributwerte aus der Aktivität.
+		// Load all attribute values from the activity.
 		loadSIMPLAttributes(context, element);
 
-		// Laden das Query-spezifische Attribut "queryTarget"
+		// Load all specific attribute values from the QueryActivity.
 		String queryTarget = element.getAttribute("queryTarget").toString();
 
 		if (queryTarget.contains("[") || queryTarget.contains("#")){

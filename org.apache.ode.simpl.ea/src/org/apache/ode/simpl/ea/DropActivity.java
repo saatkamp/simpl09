@@ -20,7 +20,7 @@ public class DropActivity extends DataManagementActivity {
 //		ScopeEvent DMStarted = new DMStarted();
 //		context.getInternalInstance().sendEvent(DMStarted);
 
-		// Laden alle Attributwerte aus der Aktivität.
+		// Load all attribute values from the activity.
 		loadSIMPLAttributes(context, element);
 
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());

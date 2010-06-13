@@ -1,6 +1,7 @@
 package org.eclipse.simpl.core.auditing.ui;
 
 import java.util.LinkedHashMap;
+
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.swt.SWT;
@@ -15,50 +16,98 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-@SuppressWarnings("unused")
 public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	// Global hinterlegte Keys der Einstellungen
 	private final String MODE = "MODE";
 	private final String AUDITING_DS_ADDRESS = "AUDITING_DS_ADDRESS";
+	private final String DS_TYPE = "DS_TYPE";
+	private final String DS_SUBTYPE = "DS_SUBTYPE";
+	private final String DS_FORMAT = "DS_FORMAT";
+	private final String DS_USER = "DS_USER";
+	private final String DS_PASSWORD = "DS_PASSWORD";
 
 	private Label auditingLabel = null;
 	private Button auditingCheckBox = null;
 	private Label auditingDBlabel = null;
 	private Text auditingDBtext = null;
+	private Label typelabel = null;
+	private Label subtypeLabel = null;
+	private Label formatLabel = null;
+	private Label userLabel = null;
+	private Label passwordLabel = null;
+	private Text typeText = null;
+	private Text subtypeText = null;
+	private Text formatText = null;
+	private Text userNameText = null;
+	private Text passwordText = null;
 
 	// Default-Einstellungen
 	private String dMode = "";
 	private String dAuditingDSAddress = "";
+	private String dTypeOfDS = "Database";
+	private String dSubtypeOfDS = "";
+	private String dFormatOfDS = "RDB";
+	private String dUserNameOfDS = "";
+	private String dPasswordOfDS = "";
 
 	// Buffer-Einstellungen
 	private String bMode = "";
 	private String bAuditingDSAddress = "";
+	private String bTypeOfDS = "";
+	private String bSubtypeOfDS = "";
+	private String bFormatOfDS = "";
+	private String bUserNameOfDS = "";
+	private String bPasswordOfDS = "";
 
 	// LastSaved-Einstellungen
 	private String lMode = "";
 	private String lAuditingDSAddress = "";
+	private String lTypeOfDS = "";
+	private String lSubtypeOfDS = "";
+	private String lFormatOfDS = "";
+	private String lUserNameOfDS = "";
+	private String lPasswordOfDS = "";
 
 	@Override
 	public void createComposite(Composite composite) {
-		// TODO Auto-generated method stub
+
 		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = 3;
+		gridLayout.numColumns = 2;
 		Composite comp = new Composite(composite, SWT.NONE);
+		GridData gridDataComp = new GridData();
+		gridDataComp.horizontalAlignment = GridData.FILL;
+		gridDataComp.grabExcessHorizontalSpace = true;
+		gridDataComp.verticalAlignment = GridData.CENTER;
+		
 		comp.setLayout(gridLayout);
+		comp.setLayoutData(gridDataComp);
 
 		setComposite(comp);
 
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 2;
-		GridData gridData1 = new GridData();
-		gridData1.horizontalAlignment = GridData.FILL;
-		gridData1.horizontalSpan = 4;
-		gridData1.grabExcessHorizontalSpace = true;
-		gridData1.verticalAlignment = GridData.FILL;
 		GridData gridData6 = new GridData();
 		gridData6.horizontalAlignment = GridData.FILL;
 		gridData6.grabExcessHorizontalSpace = true;
 		gridData6.verticalAlignment = GridData.CENTER;
+		GridData gridData5 = new GridData();
+		gridData5.horizontalAlignment = GridData.FILL;
+		gridData5.grabExcessHorizontalSpace = true;
+		gridData5.verticalAlignment = GridData.CENTER;
+		GridData gridData4 = new GridData();
+		gridData4.horizontalAlignment = GridData.FILL;
+		gridData4.grabExcessHorizontalSpace = true;
+		gridData4.verticalAlignment = GridData.CENTER;
+		GridData gridData3 = new GridData();
+		gridData3.horizontalAlignment = GridData.FILL;
+		gridData3.grabExcessHorizontalSpace = true;
+		gridData3.verticalAlignment = GridData.CENTER;
+		GridData gridData2 = new GridData();
+		gridData2.horizontalAlignment = GridData.FILL;
+		gridData2.grabExcessHorizontalSpace = true;
+		gridData2.verticalAlignment = GridData.CENTER;
+		GridData gridData = new GridData();
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.verticalAlignment = GridData.CENTER;
 		auditingLabel = new Label(comp, SWT.NONE);
 		auditingLabel.setText("Activate or deactivate the Auditing:");
 		auditingCheckBox = new Button(comp, SWT.CHECK);
@@ -68,7 +117,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		} else {
 			auditingCheckBox.setSelection(false);
 		}
-		Label filler3 = new Label(comp, SWT.NONE);
+
 		auditingDBlabel = new Label(comp, SWT.NONE);
 		auditingDBlabel.setText("Address of the Auditing database: ");
 		auditingDBtext = new Text(comp, SWT.BORDER);
@@ -97,6 +146,66 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 				widgetSelected(event);
 			}
 		});
+		typelabel = new Label(comp, SWT.NONE);
+		typelabel.setText("Type of the data source:");
+		typeText = new Text(comp, SWT.BORDER);
+		typeText.setLayoutData(gridData);
+		typeText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				bTypeOfDS = typeText.getText();
+			}
+		});
+		subtypeLabel = new Label(comp, SWT.NONE);
+		subtypeLabel.setText("Subtype of the data source:");
+		subtypeText = new Text(comp, SWT.BORDER);
+		subtypeText.setLayoutData(gridData2);
+		subtypeText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				bSubtypeOfDS = subtypeText.getText();
+			}
+		});
+		formatLabel = new Label(comp, SWT.NONE);
+		formatLabel.setText("Format of the data source:");
+		formatText = new Text(comp, SWT.BORDER);
+		formatText.setLayoutData(gridData3);
+		formatText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				bFormatOfDS = formatText.getText();
+			}
+		});
+		userLabel = new Label(comp, SWT.NONE);
+		userLabel.setText("User name:");
+		userNameText = new Text(comp, SWT.BORDER);
+		userNameText.setLayoutData(gridData4);
+		userNameText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				bUserNameOfDS = userNameText.getText();
+			}
+		});
+		passwordLabel = new Label(comp, SWT.NONE);
+		passwordLabel.setText("Password:");
+		passwordText = new Text(comp, SWT.BORDER | SWT.PASSWORD);
+		passwordText.setLayoutData(gridData5);
+		passwordText.addModifyListener(new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+				bPasswordOfDS = passwordText.getText();
+			}
+		});
 	}
 
 	@Override
@@ -109,7 +218,13 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			// Werte aus den Buffervariablen einfügen
 			settings.put(this.MODE, this.bMode);
 			settings.put(this.AUDITING_DS_ADDRESS, this.bAuditingDSAddress);
-
+			settings.put(this.DS_TYPE, this.bTypeOfDS);
+			settings.put(this.DS_SUBTYPE, this.bSubtypeOfDS);
+			settings.put(this.DS_FORMAT, this.bFormatOfDS);
+			settings.put(this.DS_USER, this.bUserNameOfDS);
+			settings.put(this.DS_PASSWORD, this.bPasswordOfDS);
+			
+			
 			// Über den SIMPL Core in einer embedded DerbyDB speichern
 			SIMPLCommunication.getConnection().save(parentItem, item,
 					settingName, settings);
@@ -117,6 +232,11 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			// Last-Saved Werte aktualisieren
 			this.lAuditingDSAddress = this.bAuditingDSAddress;
 			this.lMode = this.bMode;
+			this.lTypeOfDS = this.bTypeOfDS;
+			this.lSubtypeOfDS = this.bSubtypeOfDS;
+			this.lFormatOfDS = this.bFormatOfDS;
+			this.lUserNameOfDS = this.bUserNameOfDS;
+			this.lPasswordOfDS = this.bPasswordOfDS;
 		}
 	}
 
@@ -132,8 +252,19 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		if (!settings.isEmpty()) {
 			this.lMode = settings.get(this.MODE);
 			this.lAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
+			this.lTypeOfDS = settings.get(this.DS_TYPE);
+			this.lSubtypeOfDS = settings.get(this.DS_SUBTYPE);
+			this.lFormatOfDS = settings.get(this.DS_FORMAT);
+			this.lUserNameOfDS = settings.get(this.DS_USER);
+			this.lPasswordOfDS = settings.get(this.DS_PASSWORD);
+
 			this.bMode = this.lMode;
 			this.bAuditingDSAddress = this.lAuditingDSAddress;
+			this.bTypeOfDS = this.lTypeOfDS;
+			this.bSubtypeOfDS = this.lSubtypeOfDS;
+			this.bFormatOfDS = this.lFormatOfDS;
+			this.bUserNameOfDS = this.lUserNameOfDS;
+			this.bPasswordOfDS = this.lPasswordOfDS;
 		}
 
 		// Default-Einstellungen aus SIMPL Core DB laden
@@ -143,6 +274,11 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		if (!settings.isEmpty()) {
 			this.dMode = settings.get(this.MODE);
 			this.dAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
+			this.dTypeOfDS = settings.get(this.DS_TYPE);
+			this.dSubtypeOfDS = settings.get(this.DS_SUBTYPE);
+			this.dFormatOfDS = settings.get(this.DS_FORMAT);
+			this.dUserNameOfDS = settings.get(this.DS_USER);
+			this.dPasswordOfDS = settings.get(this.DS_PASSWORD);
 		}
 	}
 
@@ -151,7 +287,12 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		boolean changed = false;
 		// Überprüfen, ob Auditing-Modus oder Auditing-DB geändert wurden
 		if (!this.bMode.equals(this.lMode)
-				|| !this.bAuditingDSAddress.equals(this.lAuditingDSAddress)) {
+				|| !this.bAuditingDSAddress.equals(this.lAuditingDSAddress)
+				|| this.bTypeOfDS.equals(this.lTypeOfDS)
+				|| this.bSubtypeOfDS.equals(this.lSubtypeOfDS)
+				|| this.bFormatOfDS.equals(this.lFormatOfDS)
+				|| this.bUserNameOfDS.equals(this.lUserNameOfDS)
+				|| this.bPasswordOfDS.equals(this.lPasswordOfDS)) {
 			changed = true;
 		}
 		return changed;
@@ -171,12 +312,20 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 					auditingCheckBox.setText("inactive");
 				}
 				auditingDBtext.setText(this.dAuditingDSAddress);
-				System.out.println("LOAD FROM Default: " + this.dMode + " | "
-						+ this.dAuditingDSAddress);
+				typeText.setText(this.dTypeOfDS);
+				subtypeText.setText(this.dSubtypeOfDS);
+				formatText.setText(this.dFormatOfDS);
+				userNameText.setText(this.dUserNameOfDS);
+				passwordText.setText(this.dPasswordOfDS);
 			}
 			// Buffer-Werte aktualisieren
 			this.bAuditingDSAddress = this.dAuditingDSAddress;
 			this.bMode = this.dMode;
+			this.bTypeOfDS = this.dTypeOfDS;
+			this.bSubtypeOfDS = this.dSubtypeOfDS;
+			this.bFormatOfDS = this.dFormatOfDS;
+			this.bUserNameOfDS = this.dUserNameOfDS;
+			this.bPasswordOfDS = this.dPasswordOfDS;
 		} else {
 			if (settingName.equals("lastSaved")) {
 				if (!getComposite().isDisposed()) {
@@ -189,12 +338,20 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 						auditingCheckBox.setText("inactive");
 					}
 					auditingDBtext.setText(this.lAuditingDSAddress);
-					System.out.println("LOAD FROM LastSaved: " + this.lMode
-							+ " | " + this.lAuditingDSAddress);
+					typeText.setText(this.lTypeOfDS);
+					subtypeText.setText(this.lSubtypeOfDS);
+					formatText.setText(this.lFormatOfDS);
+					userNameText.setText(this.lUserNameOfDS);
+					passwordText.setText(this.lPasswordOfDS);
 				}
 				// Buffer-Werte aktualisieren
 				this.bAuditingDSAddress = this.lAuditingDSAddress;
 				this.bMode = this.lMode;
+				this.bTypeOfDS = this.lTypeOfDS;
+				this.bSubtypeOfDS = this.lSubtypeOfDS;
+				this.bFormatOfDS = this.lFormatOfDS;
+				this.bUserNameOfDS = this.lUserNameOfDS;
+				this.bPasswordOfDS = this.lPasswordOfDS;
 			} else {
 				if (!getComposite().isDisposed()) {
 					// Buffer-Werte in GUI-Elementen setzen
@@ -206,8 +363,11 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 						auditingCheckBox.setText("inactive");
 					}
 					auditingDBtext.setText(this.bAuditingDSAddress);
-					System.out.println("LOAD FROM BUFFER: " + this.bMode
-							+ " | " + this.bAuditingDSAddress);
+					typeText.setText(this.bTypeOfDS);
+					subtypeText.setText(this.bSubtypeOfDS);
+					formatText.setText(this.bFormatOfDS);
+					userNameText.setText(this.bUserNameOfDS);
+					passwordText.setText(this.bPasswordOfDS);
 				}
 			}
 		}

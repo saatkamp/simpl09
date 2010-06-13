@@ -25,10 +25,10 @@ public class RetrieveDataActivity extends DataManagementActivity {
 //		ScopeEvent DMStarted = new DMStarted();
 //		context.getInternalInstance().sendEvent(DMStarted);
 
-		// Laden alle Attributwerte aus der Aktivität.
+		// Load all attribute values from the activity.
 		loadSIMPLAttributes(context, element);
 
-		// Laden das RetrieveData-spezifische Attribut "dataVariable"
+		// Load all specific attribute values from the RetrieveDataActivity.
 		Attr dataVarAttr = element.getAttributeNode("dataVariable");
 		String dataVariableName = dataVarAttr.getValue();
 
