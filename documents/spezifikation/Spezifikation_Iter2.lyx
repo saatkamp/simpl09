@@ -57,7 +57,6 @@
 \font_tt_scale 100
 
 \graphics default
-\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -1144,6 +1143,14 @@ hahnml
 
 \begin_layout Plain Layout
 Korrektur der Spezifikation anhand der Kundenkommentare zur 2.Iteration.
+ Einfügen von Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Benutzeroberfläche-erw-BPEL-Des"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -1545,7 +1552,7 @@ Einbettung in die Systemumgebung
 
 \begin_layout Standard
 Das SIMPL Rahmenwerk, bestehend aus dem SIMPL Core, den SIMPL Eclipse Plug-Ins
- und dem BPEL-DM Plug-In, soll in die in Abbildung 
+ und den BPEL-DM Extension Activities, soll in die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Systemumgebung"
@@ -1593,7 +1600,7 @@ ftlichen Workflows benötigt werden, geliefert.
  Dieser Umstand erhöht die Portabilität und die Erweiterbarkeit des Rahmenwerks
  beträchtlich.
  Die SIMPL Eclipse Plug-Ins bestehen aus drei separaten Plug-Ins, dem SIMPL
- Core Plug-In, dem BPEL-DM Plug-In und dem SIMPL Core Client Plug-In.
+ Core Plug-In, dem BPEL-DM Plug-In und dem SIMPL Core Communication Plug-In.
  Das SIMPL Core Plug-In erweitert die grafische Oberfläche von Eclipse,
  um Einstellungen für das SIMPL Rahmenwerk vornehmen zu können.
  Das BPEL-DM Plug-In erweitert das Eclipse BPEL Designer Plug-In, um Prozesse
@@ -1601,16 +1608,15 @@ ftlichen Workflows benötigt werden, geliefert.
  Durch diese Trennung ist es möglich, auch nur eines der beiden Plug-Ins
  in Eclipse einzubinden und z.B.
  für das jeweils andere Plug-In eigene Implementierungen zu nutzen.
- Das SIMPL Core Client Plug-In realisiert die Verbindung mit dem SIMPL Core
- und wird sowohl für das SIMPL Core Plug-In (Laden und Speichern von Rahmenwerks
-einstellungen), als auch für das BPEL-DM Plug-In (Laden aller vom SIMPL
- Core unterstützten Datenquellen) benötigt.
+ Das SIMPL Core Communication Plug-In realisiert die Verbindung mit dem
+ SIMPL Core und wird sowohl für das SIMPL Core Plug-In (Laden und Speichern
+ von Rahmenwerkseinstellungen), als auch für das BPEL-DM Plug-In (Laden
+ aller vom SIMPL Core unterstützten Datenquellen) benötigt.
  Die Ausführungslogiken der jeweiligen DM-Aktivitäten werden in der Workflow-Eng
-ine implementiert und in diese als Plug-In (BPEL-DM Plug-In) eingebunden.
+ine implementiert und in diese als Plug-In (BPEL-DM Extension Activities)
+ eingebunden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
- Die Validation der SIMPL Extensions wird hierbei durch den Eclipse BPEL-Designe
-r erledigt.
 \end_layout
 
 \begin_layout Standard
@@ -1624,8 +1630,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Systemumgebung.jpeg
-	width 70text%
+	filename finalVersion/Systemumgebung.png
+	width 100text%
 
 \end_inset
 
@@ -2025,10 +2031,16 @@ Benutzeroberflächen von SIMPL
 
 \begin_layout Standard
 In diesem Kapitel werden alle Benutzeroberflächen, die durch SIMPL bereitgestell
-t werden, beschrieben.
+t oder erweitert werden, beschrieben.
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Benutzeroberfläche-erw-BPEL-Des"
+
+\end_inset
+
 Benutzeroberfläche des erweiterten Eclipse BPEL Designers
 \end_layout
 
@@ -2038,6 +2050,12 @@ Dieses Kapitel beschreibt alle Erweiterungen des Eclipse BPEL Designers
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Erweiterungen-zur-Integration-Ref"
+
+\end_inset
+
 Erweiterungen zur Integration von Referenzvariablen in den Eclipse BPEL
  Designer
 \end_layout
@@ -2056,6 +2074,46 @@ reference "fig:SIMPL-Referenzvariablen"
  zeigt den erweiterten BPEL Editor des Eclipse BPEL Designers.
  Auf die neuen Elemente wird dabei im folgenden näher eingegangen.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SIMPL_BPEL_Designer.JPG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-Referenzvariablen"
+
+\end_inset
+
+Um Referenzvariablen erweiterter Eclipse BPEL Designer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2113,6 +2171,24 @@ reference "sub:Realisierung-von-Referenzen"
 \end_layout
 
 \begin_layout Standard
+Die Zuordnung zwischen Referenzvariablen und Referenzen wird über den Namen
+ realisiert, d.h.
+ eine Referenzvariable mit dem Namen 
+\begin_inset Quotes eld
+\end_inset
+
+myData
+\begin_inset Quotes erd
+\end_inset
+
+ wird bei der Transformation auf die gleichnamige Referenz (logischer Namen)
+ abgebildet.
+ Der Hintergrund dafür ist, dass die Zuweisung automatisch abläuft und keine
+ weiteren Attribute in den Referenzvariablen zur Angabe einer Referenz benötigt
+ werden.
+\end_layout
+
+\begin_layout Standard
 Analog zu den Standard-BPEL-Variablen können durch die Erweiterung nun Referenzv
 ariablen erzeugt, ausgewählt und gelöscht werden (siehe rot umrandeter Bereich
  in Abbildung 
@@ -2154,51 +2230,10 @@ en ausgelegt ist und sich dies auch in der Implementierung des Eclipse BPEL
 genden BPEL-Modells liefern.
  D.h.
  man sollte alle gemeinsamen Eigenschaften von Referenzvariablen und Standard-BP
-EL-Variablen in einer gemeinsamen Oberklasse abstrahieren, sodass generell
- zwischen verschiedenen Variablenarten unterschieden werden kann und so
- auch die Implementierung übersichtlicher, konsistenter und in Zukunft einfacher
+EL-Variablen in einer Oberklasse abstrahieren, sodass generell zwischen
+ verschiedenen Variablenarten unterschieden werden kann und so auch die
+ Implementierung übersichtlicher, konsistenter und in Zukunft einfacher
  erweiterbar wird.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename finalVersion/SIMPL_BPEL_Designer.JPG
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:SIMPL-Referenzvariablen"
-
-\end_inset
-
-Um Referenzvariablen erweiterter Eclipse BPEL Designer
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2278,23 +2313,120 @@ Schema der ReferenceVariables- und ReferenceVariable-Elemente
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:ODE-Deployment-Deskriptor"
+
+\end_inset
+
 ODE Deployment-Deskriptor
 \end_layout
 
 \begin_layout Standard
-Über den ODE Deployment-Deskriptor sollen in Zukunft Einstellungen für DM-Aktivi
-täten von BPEL-Prozessen, wie z.B.
- Referenzen auf Datenquellen, Authentifizierungsinformationen für referenzierte
- Datenquellen und die Zuordnung von Late-Binding Strategien und Policies,
- spezifiziert werden.
- Eine detailliertere Beschreibung der Verwendung und Funktionalität des
- erweiterten ODE Deployment-Deskriptors wird im Laufe der Iteration nachgeliefer
-t.
+Über den ODE Deployment-Deskriptor sollen in Zukunft Daten für DM-Aktivitäten
+ eines BPEL-Prozesses, wie z.B.
+ Datenquellen-Informationen, Auditing-Parameter und die Zuordnung von Late-Bindi
+ng Strategien und Policies, spezifiziert werden.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-DD"
+
+\end_inset
+
+ zeigt die Benutzeroberfläche des erweiterten DD (Deployment-Deskriptors).
+ Das erweiterte Schema des DDs zeigt Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:DD-Schema"
+
+\end_inset
+
+.
+ Das Attribut 
+\emph on
+attachedUddiAddress
+\emph default
+ wird im Hintergrund auf den in den Einstellungen hinterlegten Wert der
+ UDDI-Adresse gesetzt.
+ Dies ist notwendig, damit in ODE zur Laufzeit die Adresse der angebundenen
+ UDDI bekannt ist und das Late-Binding sowie statisch angebundene UDDI-Datenquel
+len verwendet werden können.
+ 
+\end_layout
+
+\begin_layout Standard
+Im erweiterten DD können nun Datenquellen-Informationen wie die physikalische
+ Adresse, der Typ, der Subtyp, die Abfragesprache, das Datenformat und Authentif
+izierungsinformationen (Benutzername, Passwort) einer Datenquelle (siehe
+ Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:DD-Datenquelle"
+
+\end_inset
+
+) an einen logischen Namen gebunden werden.
+ Dieser logische Namen kann dann später einfach in jeder DM-Aktivität ausgewählt
+ werden und die entsprechenden Parameter werden automatisch in der Aktivität
+ gesetzt.
+ Die Datenquellen-Einträge können über entsprechende Dialoge angelegt oder
+ editiert werden (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-DD-AddDS"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Ebenso kann im erweiterten DD das Late-Binding von Datenquellen realisiert
+ werden.
+ Dazu werden über entsprechende Dialoge (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-DD-AddAM"
+
+\end_inset
+
+) sogenannte Activity-Mappings angelegt oder editiert.
+ In einem Activity-Mapping (siehe Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:DD-Activity-Mapping"
+
+\end_inset
+
+) wird eine DM-Aktivität aus dem zugrundeliegenden Prozessmodell ausgewählt
+ und mit einer Strategie und einer Policy-Datei verknüpft.
+ Die Strategie kann direkt und die Policy-Datei über einen entsprechenden
+ Datei-Browser ausgewählt werden.
+ Die Daten der Policy-Datei werden im DD hinterlegt und können so beim Deploymen
+t ausgelesen werden.
+ Der Inhalt der Policy-Dateien muss dabei den in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datenquellen-Policies"
+
+\end_inset
+
+ vorgegebenen Konventionen entsprechen.
+\end_layout
+
+\begin_layout Standard
+Im erweiterten DD kann auch das Auditing für das aktuell modellierte Prozessmode
+ll aktiviert und deaktiviert werden.
+ Der Unterschied zur (De-)Aktivierung des Auditings in der SIMPL Admin-Konsole
+ (siehe Kapitel ) liegt darin, dass hier das Auditing für einzelne Prozessmodell
+e (de-)aktiviert werden kann, wobei über die Admin-Konsole das Auditing
+ für alle deployten Prozessmodelle (de-)aktiviert wird.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2394,7 +2526,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "lst:DD-Datenquelle-1"
+name "lst:DD-Schema"
 
 \end_inset
 
@@ -2413,7 +2545,6 @@ Schema des erweiterten Deployment-Deskriptors
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2422,7 +2553,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename finalVersion/SIMPL_DD_AddDS.JPG
-	width 80text%
+	width 60text%
 
 \end_inset
 
@@ -2510,7 +2641,6 @@ Schema der im Deployment-Deskriptor hinterlegten Datenquelleninformationen
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2519,7 +2649,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename finalVersion/SIMPL_DD_AddAM.JPG
-	width 80text%
+	width 60text%
 
 \end_inset
 
@@ -2685,11 +2815,10 @@ Admin-Konsole
 \begin_layout Standard
 Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
  Möglichkeit, Einstellungen für den SIMPL Core vorzunehmen.
- Dazu gehört beispielsweise die Angabe von globalen Einstellungen und die
- Verwaltung des Auditings (siehe Abbildung 
+ Dazu gehört die Verwaltung des Auditings (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Admin-Konsole"
+reference "fig:Auditing-Einstellungen"
 
 \end_inset
 
@@ -2718,119 +2847,6 @@ and
 [Close]: Schließen der Admin-Konsole und Verwerfen aller Änderungen
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/Iter1Screens/AdminConsole.JPG
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Admin-Konsole"
-
-\end_inset
-
-Admin-Konsole
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection*
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Globale-Einstellungen"
-
-\end_inset
-
-Globale Einstellungen
-\end_layout
-
-\begin_layout Standard
-In Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:GlobalSettings"
-
-\end_inset
-
- wird der Unterpunkt 
-\begin_inset Quotes eld
-\end_inset
-
-Global Settings
-\begin_inset Quotes erd
-\end_inset
-
- der Admin-Konsole gezeigt.
- Hier können Standardwerte für die Authentifizierung bei Datenquellen angegeben
- werden.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ProtoTyp_Screenshots/Iter1Screens/AdminConsoleGlobalSettings.JPG
-	width 80text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:GlobalSettings"
-
-\end_inset
-
-Dialog der globalen Eigenschaften
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection*
 Auditing
 \end_layout
@@ -2852,8 +2868,8 @@ Auditing
 \end_inset
 
  der Admin-Konsole gezeigt.
- Hier kann das Auditing an- und abgeschaltet werden und eine Datenbank für
- das Auditing angegeben werden.
+ Hier kann das Auditing an- und abgeschaltet werden und eine Datenbank (analog
+ wie im Deployment-Deskriptor) für das Auditing angegeben werden.
 \end_layout
 
 \begin_layout Standard
@@ -2866,7 +2882,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ProtoTyp_Screenshots/Iter1Screens/AdminConsoleAuditing.JPG
+	filename finalVersion/AdminConsole.JPG
 	width 80text%
 
 \end_inset
@@ -2912,8 +2928,8 @@ Settings
 
  geöffnet werden und bieten die Möglichkeit, Einstellungen für die SIMPL
  Eclipse Plug-Ins vorzunehmen.
- Dazu gehört beispielsweise die Angabe der Adresse des SIMPL Cores, der
- UDDI Registry und die Adressen der zur Verfügung stehenden RRS (siehe Abbildung
+ Dazu gehört die Angabe der Adressen der SIMPL Core Web Services, der UDDI
+ Registry, eines RRS und des Transformation Web Services (siehe Abbildung
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2922,31 +2938,25 @@ reference "fig:Settings"
 \end_inset
 
 ).
- Die Einstellungen werden im weiteren Projektverlauf erweitert/vervollständigt
- und entsprechend in der Spezifikation nachgetragen.
-\end_layout
+ Die Einstellungen werden als Eclipse Preferences integriert und stehen
+ als solche auch über Eclipse zur Verfügung (Eclipse Menüleiste -> 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
-Das Layout und die Funktionalität der Einstellungen sind mit der Admin-Konsole
- identisch, es stehen hier ebenfalls folgende Schaltflächen durchgängig
- zur Verfügung:
-\end_layout
+Window
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Itemize
-[Default]: Laden der Standard-Einstellungen
-\end_layout
+ -> 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Itemize
-[Save]: Speichern aller durchgeführten Änderungen
-\end_layout
+Preferences
+\begin_inset Quotes erd
+\end_inset
 
-\begin_layout Itemize
-[Reset]: Zurücksetzen aller durchgeführten Änderungen auf den letzten Speicherst
-and
-\end_layout
-
-\begin_layout Itemize
-[Close]: Schließen der Admin-Konsole und Verwerfen aller Änderungen
+).
+ Über das SIMPL Menü erreicht man direkt die SIMPL Preference Seite.
 \end_layout
 
 \begin_layout Standard
@@ -2992,6 +3002,20 @@ SIMPL Preference Seiten
 
 \begin_layout Subsubsection
 Hilfe
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was machen wir mit der Eclipse Hilfe???
+\end_layout
+
+\begin_layout Plain Layout
+Realisierung fehlt noch komplett...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3038,11 +3062,9 @@ About
 \begin_inset Quotes erd
 \end_inset
 
- öffnet das SIMPL About-Fenster, in dem beispielsweise Informationen über
- den Versionsstand, Mitwirkende oder Lizenzbedingungen des SIMPL Rahmenwerks
- aufgeführt sind.
- Auch hier wird eine genauere Beschreibung nachgeliefert, sobald der konkrete
- Inhalt dieses Fenster feststeht.
+ öffnet das SIMPL About-Fenster, in dem Informationen über den Versionsstand,
+ Lizenzbedingungen, die Projekt-Homepage und das Projektteam des SIMPL Rahmenwer
+ks aufgeführt sind.
 \end_layout
 
 \begin_layout Standard
@@ -3107,21 +3129,23 @@ reference "fig:SIMPL-Menü"
 \end_inset
 
  des SIMPL Menüs, können alle Daten des SIMPL Cores nachträglich abgerufen
- werden, dies ist aus folgenden Gründen nötig:
+ werden.
+ Dies ist aus folgenden Gründen nötig:
 \end_layout
 
 \begin_layout Itemize
-Das BPEL-DM Plug-In ruft eine Liste von unterstützten Datenquellentypen,
- deren Subtypen und den von diesen unterstützten Abfragesprachen ab.
- Diese Informationen werden dann in den Eigenschaftsfenstern (siehe Abschnitt
- 
+Der Deployment-Deskriptor des erweiterten BPEL Designers ruft eine Liste
+ von unterstützten Datenquellentypen, deren Subtypen, den von diesen unterstützt
+en Abfragesprachen und deren Datenformaten ab.
+ Diese Informationen werden dann in den Dialogen (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Data-Management-Aktivitäten-GUI"
+reference "sub:ODE-Deployment-Deskriptor"
 
 \end_inset
 
-) der DM-Aktivitäten angezeigt und können dort ausgewählt werden.
+) beim Anlegen oder Editieren von Datenquellen angezeigt und können dort
+ ausgewählt werden.
 \end_layout
 
 \begin_layout Itemize
@@ -3185,29 +3209,11 @@ reference "sub:Resultierende-BPEL-Aktivitäten"
  Hier kann die im Prozess ausgewählte Aktivität parametrisiert werden.
  Das bedeutet, dass die Aktivität hier mit Inhalt gefüllt wird, wie z.B.
  der Zieldatenquelle oder dem Befehl, der auf dieser ausgeführt werden soll.
- Dazu wird die Art der Datenquelle ausgewählt, ein Befehl über entsprechende
- grafische Elemente erstellt und die physikalische Adresse der Datenquelle
- angegeben.
- Falls die Checkbox 
-\begin_inset Quotes eld
-\end_inset
-
-Show resulting statement
-\begin_inset Quotes erd
-\end_inset
-
- gesetzt ist, wird der durch die grafischen Elemente definierte Befehl im
- Textfeld 
-\begin_inset Quotes eld
-\end_inset
-
-Resulting statement
-\begin_inset Quotes erd
-\end_inset
-
- angezeigt.
- Im Textfeld wird dabei der Befehl in seiner vollen Länge angezeigt, genau
- so wie er auf der Datenquelle ausgeführt wird.
+ Dazu wird eine UDDI- oder DD-Datenquelle über ihren logischen Namen ausgewählt
+ und ein Befehl über entsprechende grafische Elemente oder auch einfach
+ in der Text-Form erstellt.
+ Durch die Auswahl einer Datenquelle werden alle Datenquelleninformationen
+ automatisch in der Aktivität gesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -3257,7 +3263,7 @@ Benutzeroberfläche des RRS Eclipse Plug-Ins
 
 \begin_layout Standard
 Das RRS Eclipse Plug-In wird als Eclipse View in Eclipse integriert.
- Über diese View können alle in den SIMPL Settings hinterlegten RRSs verwaltet
+ Über diese View kann das in den SIMPL Settings hinterlegte RRS verwaltet
  werden.
  Zur Verwaltung zählt das Anlegen, Bearbeiten und Löschen von Referenzen
  eines RRSs.
@@ -3271,11 +3277,14 @@ reference "fig:RRS-View"
  zeigt die View des RRS Eclipse Plug-Ins.
  Die verschiedenen Verwaltungsfunktionen können über das Kontextmenü oder
  über die Toolbar der View erreicht werden.
+ Da ein RRS nicht nur von einem Modellierer verwendet werden kann oder auch
+ Referenzen von Workflows oder Web Services erzeugt werden können, enthält
+ die View einen Refresh-Button mithilfe dessen die Daten der View aktualisiert
+ werden können.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -3301,7 +3310,82 @@ name "fig:RRS-View"
 
 \end_inset
 
-Datenquellen-Registry View
+Reference Resolution System View
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-ADD-REF"
+
+\end_inset
+
+ zeigt den Dialog für das Erstellen einer neuen Referenz.
+ Dabei werden wieder alle Angaben mit einem logischen Namen verknüpft, der
+ für die Bindung von Referenzvariablen und Referenzen benötigt wird (siehe
+ Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterungen-zur-Integration-Ref"
+
+\end_inset
+
+).
+ Die RRS-Adresse wird automatisch aus den Preferences ausgelesen und ist
+ nicht änderbar.
+ Die Adresse des Adapters, der die Referenz auflöst, kann einfach ausgewählt
+ werden.
+ Der Mechanismus dafür entspricht dem des SIMPL Core, da die Architektur
+ des RRS ähnlich strukturiert ist (Plug-In System).
+ Die physikalische Datenquellenadresse muss zusammen mit den Authentifizierungsi
+nformationen von Hand eingegeben werden.
+ Für die Zukunft wäre hier die Anbindung einer Datenquellen-Registry möglich,
+ sodass eine Datenquelle per Late-Binding oder statisch ausgewählt werden
+ kann, ohne Daten von Hand angeben zu müssen.
+ Der hinterlegte Abfragebefehl wird bei der Auflösung der Referenz durch
+ den angegebenen Adapter ausgeführt und so die entsprechenden Daten zurückgelief
+ert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/RRS_AddRef.JPG
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-ADD-REF"
+
+\end_inset
+
+Dialog für das Hinzufügen einer Referenz
 \end_layout
 
 \end_inset
@@ -3382,6 +3466,12 @@ Datenquellen-Registry View
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datenquellen-Registry-Web-Interface"
+
+\end_inset
+
 Datenquellen-Registry Web Interface
 \end_layout
 
@@ -13506,10 +13596,11 @@ Konzepte und Realisierungen
 In diesem Kapitel werden alle Konzepte, die für SIMPL benötigt werden, und
  deren Realisierung erläutert.
  Dazu zählt z.B.
- die Beschreibung eines Referenzen-Konzepts für BPEL, dass es ermöglicht
- mit Referenzen innerhalb von Workflows zu arbeiten oder die Identifizierung
- und Definition von benötigten DM-Aktivitäten, die zur Realisierung einer
- generischen Unterstützung von verschiedenen Abfragesprachen, wie z.B.
+ die Beschreibung eines Referenzen-Konzepts für BPEL, das es ermöglicht,
+ mit Referenzen auf Daten innerhalb von Workflows zu arbeiten oder die Identifiz
+ierung und Definition von benötigten DM-Aktivitäten, die zur Realisierung
+ einer generischen Unterstützung von verschiedenen Abfragesprachen, wie
+ z.B.
  der Structured Query Language (SQL) oder der XML Query Language (XQuery),
  für BPEL benötigt werden.
  Weiterhin werden Authentifizierung und Autorisierung im Rahmen von SIMPL
@@ -13532,41 +13623,29 @@ Daten-Referenzen in BPEL (IAAS-Referenzen)
 
 \size small
 Da bereits ein Konzept und umfassende Erkentnisse zur Bereitstellung und
- Verwaltung von Referenzen in BPEL, durch 
+ Verwaltung von Referenzen in BPEL vorliegt 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-3"
 
 \end_inset
 
- 
-\emph on
-(
-\begin_inset Quotes eld
-\end_inset
-
-Towards Reference Passing in Web Service and Workflow-based Applications
-\begin_inset Quotes eld
-\end_inset
-
-)
-\emph default
- vorlag, wurden an dieser Stelle nur die Ergebnisse des Dokuments zusammengefass
-t und an die Anforderungen dieses Projekts angepasst.
+, werden an dieser Stelle nur die Ergebnisse des Dokuments zusammengefasst
+ und an die Anforderungen dieses Projekts angepasst.
 \end_layout
 
 \begin_layout Standard
-\noindent
 In BPEL werden Daten immer in Variablen gespeichert und die Werte (
 \emph on
 by value
 \emph default
 ) innerhalb des Workflows weitergegeben.
- Dies hat zur Folge, dass gerade bei großen Datenmengen, wie sie in wissentschaf
-tlichen Workflows normal sind, die Performanz stark durch das Transportieren
- der Daten beeinflusst wird.
- Um dies zu verhindern sollen Referenzen eingeführt werden, diese werden
- dann zwischen den einzelnen Web-Services weitergegeben (Daten werden 
+ Dies hat zur Folge, dass gerade bei großen Datenmengen, wie sie in wissenschaft
+lichen Workflows normal sind, die Performanz der Workflow Engine stark durch
+ das Transportieren der Daten beeinflusst wird.
+ Um dies zu verhindern, sollen Referenzen auf Daten eingeführt werden.
+ Diese werden dann zwischen den einzelnen Web Services weitergegeben (Daten
+ werden 
 \emph on
 by reference
 \emph default
@@ -13575,20 +13654,20 @@ by reference
 \end_layout
 
 \begin_layout Standard
-Zur Umsetzung dieses Konzepts muss ein neue Art von BPEL Variablen eingeführt
- werden, dies sind sogenannte Referenz-Variablen, die dazu genutzt werden
- können auf Daten zu verweisen.
- Dadurch müssen nur noch Referenzen zwischen den Web-Services und Workflows
- weitergeleitet werden und nicht mehr die Daten selbst.
- Für wissentschaftliche Workflows reduziert sich dadurch der Datentransport
- von großen Datenmengen zwischen den Web-Services und dem Workflow erheblich.
+Zur Umsetzung dieses Konzepts muss eine neue Art von BPEL Variablen eingeführt
+ werden, sogenannte Referenzvariablen, die dazu genutzt werden können, auf
+ Daten zu verweisen.
+ Dadurch müssen nur noch Referenzen zwischen den Web Services und Workflows
+ weitergeleitet werden, und nicht mehr die Daten selbst.
+ Für wissenschaftliche Workflows reduziert sich dadurch der Transport von
+ großen Datenmengen zwischen den Web Services und dem Workflow erheblich.
 \end_layout
 
 \begin_layout Standard
-Zur Bereitstellung solcher Referenzen für Web-Services und Workflows müssen
+Zur Bereitstellung solcher Referenzen für Web Services und Workflows müssen
  diese extern verwaltet werden und auch extern abrufbar sein.
  So kann ein globales oder unternehmensweites Variablenkonzept erstellt
- werden, dass es ermöglicht dieselben Daten in mehreren Workflows zu nutzen
+ werden, das es ermöglicht, dieselben Daten in mehreren Workflows zu nutzen
  und nur einmal zentral zur Verfügung zu stellen.
 \end_layout
 
@@ -13611,6 +13690,15 @@ reference "sub:Reference-Resolution-System"
 \end_inset
 
  näher erläutert.
+ Die Einbindung der Referenzen in BPEL (Modellierungswerkzeug & Workflow
+ Engine) beschreibt Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Realisierung-von-Referenzen"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -13621,16 +13709,6 @@ name "sub:Reference-Resolution-System"
 \end_inset
 
 Reference Resolution System
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Text an geänderte Grafik anpassen
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13643,8 +13721,9 @@ reference "fig:RRS"
 
  zeigt die Architektur des Reference Resolution Systems (RRS).
  Am unteren Ende der Abbildung werden die verschiedenen möglichen Nutzer
- des Systems gezeigt: Workflows und Web-Services, die den Wert einer Referenz
- auslesen oder Referenzen im System anlegen, aktualisieren und löschen können.
+ des Systems gezeigt: Workflows und Web Services, die den Wert einer Referenz
+ auslesen, Referenzen auslesen oder Referenzen im System anlegen, aktualisieren
+ und löschen können.
 \end_layout
 
 \begin_layout Standard
@@ -13657,7 +13736,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename iteration2/RRSdiagramm.jpg
+	filename finalVersion/RRSdiagramm.jpg
 	width 50text%
 
 \end_inset
@@ -13692,9 +13771,9 @@ Die Architektur des Reference Resolution Systems (RRS).
 Auch wenn auf eine Trennung von Nutzern nach Zugriffsrechten (Benutzer vs.
  Administrator) aus Gründen der Flexibilität (ermöglicht automatische Erstellung
  von neuen Referenzen zur Prozesslaufzeit) verzichtet wird, so werden doch
- zwei entsprechende Web-Service Schnittstellen bereitgestellt.
+ zwei entsprechende Web Service Schnittstellen bereitgestellt.
  Dadurch ist eine spätere Erweiterung um Zugriffsrechte leicht realisierbar.
- Im folgenden werden diese zwei Schnittstellen kurz beschrieben:
+ Im Folgenden werden alle drei Schnittstellen des RRS kurz beschrieben:
 \end_layout
 
 \begin_layout Itemize
@@ -13708,10 +13787,10 @@ get
 \emph default
  und einer 
 \emph on
-enpoint reference
+Endpoint reference
 \emph default
  (EPR) als Eingabe.
- Das Konzept der endpoint references wird im Web Services Addressing Standard
+ Das Konzept der Endpoint References wird im Web Services Addressing Standard
  (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -13726,15 +13805,18 @@ key "key-25"
 \end_layout
 
 \begin_layout Itemize
-Die zweite Schnittstelle ist der Reference Management Web Service, der drei
- Methoden bereitstellt.
+Die zweite Schnittstelle ist der 
+\emph on
+Reference Management Web Service
+\emph default
+, der drei Methoden bereitstellt.
  Die Methode 
 \emph on
-insert
+insert,
 \emph default
- um eine neue Referenz zu erstellen, dabei ist die Eingabe der Wert der
- Referenz, wo dieser Wert gespeichert wird und wie er dort wieder ausgelesen
- werden kann.
+ um eine neue Referenz zu erstellen.
+ Dabei ist die Eingabe der Wert der Referenz, wo dieser Wert gespeichert
+ wird und wie er dort wieder ausgelesen werden kann.
  Dies könnte beispielsweise durch entsprechende SQL-Befehle angegeben werden.
  Der Rückgabewert ist eine Meldung, die die neu generierte EPR enthält.
  Als Zweites die 
@@ -13757,18 +13839,52 @@ delete
  ist eine Meldung, ob die Referenz erfolgreich entfernt wurde.
 \end_layout
 
+\begin_layout Itemize
+Die dritte Schnittstelle ist der 
+\emph on
+Reference Metadata Web Service
+\emph default
+, der drei Methoden bereitstellt.
+ Die Methode 
+\emph on
+getEPR,
+\emph default
+ um eine einzelne Referenz auslesen zu können.
+ Dies wird bei der Transformation eines Prozessmodells benötigt (siehe Abschnitt
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Transformation-des-Modells"
+
+\end_inset
+
+).
+ Die Methode 
+\emph on
+getAllEPR,
+\emph default
+ um alle Referenzen eines RRS auslesen zu können und diese beispielsweise
+ in der RRS Management View in Eclipse anzeigen zu können.
+ Die Methode 
+\emph on
+getAllAdapters,
+\emph default
+ um alle verwendbaren Adapter eines RRS abzufragen, sodass diese beispielsweise
+ beim Anlegen neuer Referenzen angezeigt werden können.
+\end_layout
+
 \begin_layout Standard
 Die Hauptkomponente ist allerdings das Reference Resolution System selbst.
- Es verbindet beide Web-Service Schnittstellen und bietet die Möglichkeit
+ Es verbindet die drei Web Service Schnittstellen und bietet die Möglichkeit,
  eine Menge von Adaptern für die Integration verschiedenster Datenquellen
  anzubinden.
  Jeder dieser Adapter besteht dabei aus einem Lookup-Service für gespeicherte
- Queries und Informationen, sowie aus einem ausführenden Service mit dem
+ Queries und Informationen sowie aus einem ausführenden Service, mit dem
  Queries auf den Datenquellen ausgeführt werden können.
  Anhand einer gegebenen Referenz wird dazu der passende Adapter gesucht,
  ausgewählt und für das Auflösen von Referenzen verwendet.
  Im Rahmen des Projektes wird nur ein SIMPL Adapter angeboten, der die Verbindun
-g zu allen Datenquellen ermöglicht die vom SIMPL Core unterstützt werden.
+g zu allen Datenquellen ermöglicht, die vom SIMPL Core unterstützt werden.
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -13788,8 +13904,33 @@ key "key-3"
 
 \end_inset
 
- werden mehrere mögliche Anbindungen des RRS in der Workflow-Umgebung genannt.
- Im Zusammenhang mit unseren Gegebenheiten, vorallem im Hinblick darauf,
+ werden mehrere mögliche Anbindungen des RRS in der Workflow-Umgebung genannt:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Ein RRS pro Workflow-Umgebung
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Ein RRS pro Web Service
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Ein RRS pro Datenquelle
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Im Zusammenhang mit unseren Gegebenheiten, vor allem im Hinblick darauf,
  dass die Workflow-Engine lokal auf dem Benutzer-Rechner ausgeführt wird,
  bietet sich die Variante 
 \begin_inset Quotes eld
@@ -13800,7 +13941,11 @@ Ein RRS pro Workflow-Engine
 \end_inset
 
  an.
- Dadurch erhalten wir mehrere wichtige Vorteile: 
+ Das RRS muss dabei nicht zwangsweise auf dem Rechner liegen auf dem auch
+ die Workflow-Engine ausgeführt wird.
+ Allerdings benötigt man dann eine Authentifizierung um die nachfolgenden
+ Vorteile zu erhalten, die im Moment aus der identischen Lokalität des RRS
+ und der Workflow-Engine resultieren:
 \end_layout
 
 \begin_layout Itemize
@@ -13810,7 +13955,7 @@ Jeder Prozess-Modellierer (Workflow-Administrator) kann Referenzen nach
 
 \begin_layout Itemize
 Die Referenzen können nur lokal geändert werden und sind nicht global (von
- aussen) zugänglich, dadurch benötigen wir keinen Zugriffsschutz.
+ außen) editierbar, dadurch benötigen wir keinen Zugriffsschutz.
 \end_layout
 
 \begin_layout Itemize
@@ -13831,11 +13976,11 @@ Referenzen und Endpoint References
 
 \begin_layout Standard
 Nachdem die Architektur des Systems beschrieben wurde, folgt die Beschreibung
- des wichtigsten Teils des Systems, die Referenzen selbst.
- Dazu wird die Repräsentation der Referenzen anhand des WSAddressing Konzepts
+ des wichtigsten Teils des Systems, der Referenzen selbst.
+ Dazu wird die Repräsentation der Referenzen anhand des WS-Addressing Konzepts
  der 
 \emph on
-endpoint references
+Endpoint References
 \emph default
  (EPR's) 
 \begin_inset CommandInset citation
@@ -14013,7 +14158,14 @@ name "lst:EPR-Schema"
 
 \end_inset
 
-EPR Schema
+EPR Schema 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14050,16 +14202,16 @@ ReferenceParameters
 \family default
  angegeben.
  Diese Informationen können entweder direkt angegeben werden, wie z.B.
- ein SQL-Query oder aber auch zentral gespeichert und anschließend über
+ eine SQL-Query oder aber auch zentral gespeichert und anschließend über
  einen 
 \emph on
 Uniform Resource Identifier
 \emph default
  (URI) referenziert werden.
- Beide Möglichkeiten haben Vorteile: Die direkte Angabe erlaubt es den Query
- in der EPR wärend der Laufzeit zu ändern.
+ Beide Möglichkeiten haben Vorteile: Die direkte Angabe erlaubt es, die
+ Query in der EPR während der Laufzeit zu ändern.
  Mit der Verwendung von gespeicherten Queries wird dafür sichergestellt,
- dass immer der gleiche Query ausgeführt wird und so niemand ungewollte
+ dass immer die gleiche Query ausgeführt wird und so niemand ungewollte
  Queries ausführen kann.
  
 \family typewriter
@@ -14166,7 +14318,15 @@ name "fig:AltRealisierungRefBPEL"
 
 \end_inset
 
-Alternativen zur Realisierung von Referenzen in BPEL
+Alternativen zur Realisierung von Referenzen in BPEL, vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14181,11 +14341,12 @@ Alternativen zur Realisierung von Referenzen in BPEL
 
 \begin_layout Standard
 Für beide Konzepte muss ein entsprechendes Modellierungswerkzeug erweitert
- werden, danach unterscheiden sich dann die Konzepte.
+ werden.
+ In der Laufzeitumgebung unterscheiden sich dann die Konzepte.
  Die erste Variante besteht darin, den erweiterten BPEL-Quellcode unverändert
- auf einer erweiterten Workflow-Engine auszuführen, dass hat natürlich den
- entscheidenen Nachteil, dass nur noch eine entsprechend erweiterte Workflow-Eng
-ine diese Prozesse ausführen kann.
+ auf einer erweiterten Workflow-Engine auszuführen.
+ Das hat natürlich den entscheidenen Nachteil, dass nur noch eine entsprechend
+ erweiterte Workflow-Engine diese Prozesse ausführen kann.
  Die zweite Variante umgeht dieses Problem, indem der veränderte BPEL-Quellcode
  in Standard-BPEL-Quellcode transformiert wird.
  Wir konzentrieren uns hier auf die Beschreibung der zweiten Variante, da
@@ -14275,7 +14436,14 @@ Code eines
 \family typewriter
 <referenceVariable>
 \family default
--Schemas
+-Schemas 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14294,12 +14462,12 @@ Dieses Schema ist eine Erweiterung des Standard BPEL Variablen-Schemas.
 \family typewriter
 valueType
 \family default
- spiegelt den Datentyp der referenzierten Variable wieder.
- Die Referenz-Variable selbst, ist implizit vom Type 
+ spiegelt den Datentyp der referenzierten Variable wider.
+ Die Referenz-Variable selbst ist implizit vom Typ 
 \family typewriter
 xsd:EPR
 \family default
- und dient dazu die eigentliche Referenz zu speichern.
+ und dient dazu, die eigentliche Referenz zu speichern.
  Über das Attribut 
 \family typewriter
 referenceType
@@ -14314,7 +14482,7 @@ key "key-3"
 
 \end_inset
 
- werden vier solcher Aktualitätskonstanten vorgestellt, wobei eine vielzahl
+ werden vier solcher Aktualitätskonstanten vorgestellt, wobei eine Vielzahl
  weiterer solcher Konstanten denkbar ist.
  Ihre Bedeutung und Verwendung wird nachfolgend bei der Beschreibung der
  Modelltransformation aufgezeigt.
@@ -14350,13 +14518,13 @@ Noch genauer beschreiben, da aus dem Feinentwurf hierauf referenziert wird.
 Die Integration eines Modelltransformation-Zwischenschritts vor dem Deployment
  des Prozesses erlaubt uns, ein virtuelles Referenz-Handling für Prozesse
  zu realisieren, ohne dabei die den Prozess ausführende Engine zu modifizieren.
- Die Grundidee ist dabei die Sprache BPEL nur im Modellierungswerkzeug,
- in dem wir zwischen normalen Variablen und Referenzen unterscheiden, zu
- erweitern.
+ Die Grundidee ist dabei, die Sprache BPEL nur im Modellierungswerkzeug,
+ in dem wir zwischen normalen Variablen und Referenzvariablen unterscheiden,
+ zu erweitern.
  Der zusätzliche Transformationsschritt generiert dabei standard-konforme
  BPEL Konstrukte für die Handhabung von Referenzen und speist diese in das
  originale Prozess-Modell ein.
- Für jede Referenz, die im Prozessmodell deklariert ist, werden dafür zwei
+ Für jede Referenz, die im Prozessmodell deklariert ist, werden dafür vier
  entsprechende Variablendeklarationen, wie in Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -14381,7 +14549,17 @@ status open
 
 \begin_layout Plain Layout
 
-<variable name="refNameEPR" type="xsd:EPR"/>
+<variable name="refNameEPR_Name" type="xsd:string"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+<variable name="refNameEPR_Meta" type="xsd:EPR"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+<variable name="refNameEPR_Ret" type="xsd:EPR"/>
 \end_layout
 
 \begin_layout Plain Layout
@@ -14395,7 +14573,15 @@ name "lst:VariablenDeklaration"
 
 \end_inset
 
-Code der generierten Variablen-Deklaration
+Code der generierten Variablen-Deklaration, vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14409,15 +14595,26 @@ Code der generierten Variablen-Deklaration
 \end_layout
 
 \begin_layout Standard
-Die erste Deklaration wird dabei für die Haltung des aktuellen Werts genutzt,
- die Zweite um die Referenz, die durch eine EPR repräsentiert wird, auf
- diesen Wert zu speichern.
- Weiterhin muss das RRS im Prozessmodel sichtbar sein, dies wird durch die
- Generierung eines entsprechenden 
+Die erste Variable wird dabei für die Haltung des eigentlichen Werts genutzt
+ und die Zweite um den logischen Namen einer Referenz zu halten.
+ Die beiden anderen Variablen halten die EPR der Referenz, die aus dem RRS
+ über den Metadata Web Service abgerufen bzw.
+ an den Retrieval Service geschickt wird.
+ Weiterhin muss das RRS im Prozessmodel sichtbar sein.
+ Dies wird durch die Generierung entsprechender 
 \family typewriter
 <partnerLink>
 \family default
- realisiert.
+s realisiert (siehe Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:RRS-PartnerLinks"
+
+\end_inset
+
+).
+ Dabei muss sowohl ein Partner Link für den Metadata Web Service als auch
+ für den Retrieval Web Service erstellt werden.
 \end_layout
 
 \begin_layout Standard
@@ -14429,17 +14626,115 @@ status open
 
 \begin_layout Plain Layout
 
-<invoke name="refNameRefresh_1" partnerLink="RRS"
+<bpel:partnerLink name="RRS_RET_Type" 
 \end_layout
 
 \begin_layout Plain Layout
 
-	operation="GET" inputVariable="refNameEPR"
+    partnerLinkType="tns:RRS_RET_Type"
 \end_layout
 
 \begin_layout Plain Layout
 
-	outputVariable="refName"/>
+    partnerRole="get"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<bpel:partnerLink name="RRS_MetaData"
+\end_layout
+
+\begin_layout Plain Layout
+
+    partnerLinkType="tns:RRS_MD_Type"
+\end_layout
+
+\begin_layout Plain Layout
+
+    partnerRole="getEPR"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:RRS-PartnerLinks"
+
+\end_inset
+
+Code der RRS Partner Links
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um die Referenzen zur Laufzeit auflösen zu können, müssen die EPRs in den
+ Prozess geladen werden.
+ Dazu werden entsprechende Invoke-Aktivitäten auf den Metadata Web Service
+ des RRS in das Prozessmodell eingefügt und die so eingelesenen EPRs in
+ die 
+\emph on
+refNameEPR_Meta
+\emph default
+-Variable gespeichert.
+\end_layout
+
+\begin_layout Standard
+Zu guter Letzt zeigt Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Dereferenzierungsaktivität"
+
+\end_inset
+
+ die tatsächliche Dereferenzierung einer Referenz über den Retrieval Web
+ Service des RRS.
+ Der Modelltransformationsansatz speist Variablendeklarationen und Dereferenzier
+ungsaktivitäten in den Workflow ein, um die Aktualisierung der Werte der
+ Referenzen auszuführen.
+ Auf den exakten Ablauf einer Transformation und deren Umsetzung wird am
+ Ende dieses Abschnitts nocheinmal genauer eingegangen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=3cm,xrightmargin=3cm"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<bpel:invoke name="refName_Refresh_#" partnerLink="RRS_RET_Type"
+\end_layout
+
+\begin_layout Plain Layout
+
+    operation="get" portType="ns:RRSRetrievalService"
+\end_layout
+
+\begin_layout Plain Layout
+
+    inputVariable="refNameEPR_Ret" 
+\end_layout
+
+\begin_layout Plain Layout
+
+    outputVariable="refName">
 \end_layout
 
 \begin_layout Plain Layout
@@ -14453,7 +14748,15 @@ name "lst:Dereferenzierungsaktivität"
 
 \end_inset
 
-Code einer Dereferenzierungs-Aktivität
+Code einer Dereferenzierungs-Aktivität, vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14467,24 +14770,11 @@ Code einer Dereferenzierungs-Aktivität
 \end_layout
 
 \begin_layout Standard
-Zu guter Letzt zeigt Listing 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "lst:Dereferenzierungsaktivität"
-
-\end_inset
-
- die tatsächliche Dereferenzierung einer Referenz über einen Web-Service
- Aufruf, der das RRS, das der Hauptbestandteil der Dereferenzierungsaktivität
- ist, aufruft.
- Der Modelltransformationsansatz speist Variablendeklarationen und Dereferenzier
-ungsaktivitäten in den Workflow ein, um die Aktualisierung der Werte der
- Referenzen auszuführen.
- Wie bereits weiter oben erwähnt, ermöglicht es das Attribut 
+Wie bereits weiter oben erwähnt, ermöglicht das Attribut 
 \family typewriter
 referenceType
 \family default
- dem Modellierer eine von verschiedenen Aktualisierungsoptionen für die
+ dem Modellierer, eine von verschiedenen Aktualisierungsoptionen für die
  Werte der Referenzen auszuwählen.
  Im Rahmen des Projektes werden dabei nur die beiden Aktualisierungsoptionen
  
@@ -14503,7 +14793,7 @@ periodic
 \emph on
 external
 \emph default
- sind optional.
+ sind zwei mögliche Erweiterungen.
  Abhängig von der Auswahl des Modellierers müssen die Dereferenzierungsaktivität
 en an der entsprechenden Position im Prozess folgendermaßen eingefügt werden:
 \end_layout
@@ -14522,7 +14812,7 @@ Bei der Instanzierung des Prozesses werden die Werte vom RRS abgefragt und
  Diese Einstellung ist für die Definition von Konstanten, die beim Prozessstart
  gesetzt werden und während der ganzen Laufzeit des Prozesses unverändert
  bleiben, sinnvoll.
- Für jede Referenz die auf 
+ Für jede Referenzvariable, die auf 
 \emph on
 onInstantiation
 \emph default
@@ -14534,6 +14824,10 @@ reference "lst:Dereferenzierungsaktivität"
 \end_inset
 
  zu einer Sequenz, die bei der Prozessinstanzierung ausgeführt wird, hinzugefügt.
+ Die Sequenz dieser Invokes wird dabei direkt nach dem CreateInstance-Receive
+ des Prozessmodells einfügt.
+ Der Fall, dass es mehrere CreateInstance-Receives gibt, wird vernachlässigt,
+ da er im wissenschaftlichen Bereich eher eine untergeordnete Rolle spielt.
 \end_layout
 
 \begin_layout Itemize
@@ -14557,7 +14851,7 @@ So frisch wie nur möglich - der Wert wird jedesmal abgefragt, wenn auf die
 \begin_layout Itemize
 
 \emph on
-periodic(optional)
+periodic(Erweiterung)
 \emph default
 : Im Attribut 
 \family typewriter
@@ -14586,18 +14880,18 @@ period
 \begin_layout Itemize
 
 \emph on
-external(optional)
+external(Erweiterung)
 \emph default
-: Ein externer Event im Bereich der Web-Service Orchestrierung ist typischerweis
+: Ein externes Event im Bereich der Web Service Orchestrierung ist typischerweis
 e eine Nachricht, die an die Prozessinstanz geschickt wird (oder ein Signal,
  das für alle Instanzen eines Prozessmodells gültig ist).
  Wird dieser Wert als 
 \family typewriter
 referenceType
 \family default
- gesetzt, können Aktualisierungen der Werte von Aussen, durch das Senden
- entsprechender Nachrichten an die Prozess-Engine, ausgelöst werden.
- Der Service von dem solch eine Nachricht erwartet wird, kann im Attribut
+ gesetzt, können Aktualisierungen der Werte von außen, durch das Senden
+ entsprechender Nachrichten an die Prozess-Engine ausgelöst werden.
+ Der Service, von dem solch eine Nachricht erwartet wird, kann im Attribut
  
 \family typewriter
 external
@@ -14614,6 +14908,624 @@ external
  Element eingefügt.
 \end_layout
 
+\begin_layout Standard
+Da die Transformation eines Prozessmodells relativ schnell sehr komplex
+ wird (verschachtelte Sequenzen, Flows, ...) wird die Transformation nur beispielth
+aft umgesetzt.
+ Die Einschränkungen liegen dabei darin, dass zum einen nur die oberste
+ Sequenz des Prozessmodells transformiert wird (im BPEL Designer als 
+\begin_inset Quotes eld
+\end_inset
+
+main
+\begin_inset Quotes erd
+\end_inset
+
+ bezeichnet) und zum anderen eine Dereferenzierung nur in einer Assign-Aktivität
+ mittels eines Befehls (
+\emph on
+val($refName)
+\emph default
+) angestoßen werden kann und in allen anderen Fällen die Referenz und nicht
+ die Daten verwendet werden.
+ Da die Transformation bereits in diesem rudimentären Status sehr komplex
+ ist, wird diese nachfolgend Schritt für Schritt erklärt.
+ Die oben angegebenen Beschreibungen dienen dazu als Grundlage und werden
+ zum Teil noch weiter verfeinert.
+\end_layout
+
+\begin_layout Standard
+Ein Prozessmodell wird nur transformiert falls es Referenzvariablen enthält
+ und diese auch vollständig spezifiziert sind, d.h.
+ ein Datentyp und eine Aktualisierungskonstante angegeben ist.
+ Falls dies zutrifft, kann die Transformation über den in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Erweiterungen-zur-Integration-Ref"
+
+\end_inset
+
+ beschriebenen Button angestoßen werden, falls nicht wird eine entsprechende
+ Fehlermeldung ausgegeben.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BeispielRRSProzess"
+
+\end_inset
+
+ zeigt das im Folgenden als Beispiel verwendete Prozessmodell und Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:VarVorTransformation"
+
+\end_inset
+
+ dessen Variablen vor der Transformation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SimpleRefProcess.png
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BeispielRRSProzess"
+
+\end_inset
+
+Beispiel Prozessmodell mit Referenzvariablen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/RefVariablesNormal.JPG
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:VarVorTransformation"
+
+\end_inset
+
+Variablen eines Prozessmodells vor der Transformation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Als erstes wird ein neues Projekt für die transformierten Dateien erstellt.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RefWorkspace"
+
+\end_inset
+
+ zeigt ein BPEL-Projekt und das zugehörige neue Projekt für die transformierten
+ Dateien, dessen Namen um das Kürzel 
+\begin_inset Quotes eld
+\end_inset
+
+_TF
+\begin_inset Quotes erd
+\end_inset
+
+ erweitert wird.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/RefProjectWorkspace.JPG
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RefWorkspace"
+
+\end_inset
+
+Workspace mit einem BPEL Projekt und dessen transformierter Kopie
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Im nächsten Schritt werden nun die benötigten WSDLs des RRS (Retrieval und
+ Metadata) über die in den Preferences hinterlegten Adressen heruntergeladen
+ und im neu erstellten Projekt gespeichert.
+\end_layout
+
+\begin_layout Itemize
+Nun wird die eigentliche Transformation angestoßen, d.h.
+ die BPEL-Datei wird an den Transformation Web Service geschickt und dort
+ transformiert:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Der Transformator erzeugt die RRS PartnerLinks aus Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:RRS-PartnerLinks"
+
+\end_inset
+
+ für den Retrieval Web Service und den Metadata Web Service (siehe Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:VarNachTransformation"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Anschließend werden die in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:VariablenDeklaration"
+
+\end_inset
+
+ genannten Variablen erzeugt (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:VarNachTransformation"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Nun wird die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BeispielRRSProzessTransformiert"
+
+\end_inset
+
+ dargestellte 
+\begin_inset Quotes eld
+\end_inset
+
+prepareEPR
+\begin_inset Quotes erd
+\end_inset
+
+-Sequence erzeugt.
+ In dieser werden alle verwendeten EPRs aus dem RRS abgerufen und in den
+ entsprechenden 
+\begin_inset Quotes eld
+\end_inset
+
+refNameEPR_Meta
+\begin_inset Quotes erd
+\end_inset
+
+-Variablen gespeichert.
+ Damit dies allerdings funktioniert müssen zuerst alle EPR-Namen (identisch
+ mit den Referenzvariablennamen) in den entsprechenden 
+\begin_inset Quotes eld
+\end_inset
+
+refNameEPR_Name
+\begin_inset Quotes erd
+\end_inset
+
+-Variablen hinterlegt werden.
+ Dies geschieht über die 
+\begin_inset Quotes eld
+\end_inset
+
+setEPR_Names
+\begin_inset Quotes erd
+\end_inset
+
+-Assign-Aktivität in der die Namen als fixe Werte hinterlegt werden.
+ Nun können die EPRs über die entsprechenden 
+\begin_inset Quotes eld
+\end_inset
+
+init_refNameEPR_Meta
+\begin_inset Quotes erd
+\end_inset
+
+-Invoke-Aktivitäten abgerufen werden.
+ Dazu dienen die 
+\begin_inset Quotes eld
+\end_inset
+
+refNameEPR_Name
+\begin_inset Quotes erd
+\end_inset
+
+-Variablen als Eingabevariablen und die 
+\begin_inset Quotes eld
+\end_inset
+
+refNameEPR_Meta
+\begin_inset Quotes erd
+\end_inset
+
+-Variablen zur Speicherung der Rückgabewerte (EPRs).
+ Um nun die EPRs später auflösen zu können müssen diese noch in das Nachrichtenf
+ormat des Retrieval Web Service umgewandelt werden.
+ Dazu werden die EPRs einfach in der 
+\begin_inset Quotes eld
+\end_inset
+
+copyEPRs
+\begin_inset Quotes erd
+\end_inset
+
+-Assign-Aktivität aus den 
+\begin_inset Quotes eld
+\end_inset
+
+refNameEPR_Meta
+\begin_inset Quotes erd
+\end_inset
+
+-Variablen in die 
+\begin_inset Quotes eld
+\end_inset
+
+refNameEPR_Ret
+\begin_inset Quotes erd
+\end_inset
+
+-Variablen kopiert.
+\end_layout
+
+\begin_layout Itemize
+Danach wird die oberste Sequenz des Prozessmodells durchlaufen und folgende
+ Änderungen durchgeführt:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Im Moment gibt es nur einen Fall in dem dereferenziert wird, diesen zeigt
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BeispielRRSAssignExpression"
+
+\end_inset
+
+.
+ Dabei wird über eine XPath-Expression angegeben, dass der Wert der Referenzvari
+ablen kopiert werden soll und nicht die EPR.
+ Generell gilt, dass in allen anderen Fällen z.B.
+ falls eine Referenzvariable in einer Invoke- oder Reply-Aktivität hinterlegt
+ ist, immer die zugehörige EPR der Referenzvariablen verwendet wird und
+ nicht die referenzierten Daten.
+ An dieser Stelle müssen noch entsprechende Erweiterungen und ein geeignetes
+ Konzept für die Unterscheidung zwischen EPRs und den referenzierten Daten
+ in Kommunikationsaktivitäten erarbeitet werden.
+\end_layout
+
+\begin_layout Itemize
+Dereferenzierung: Für alle Referenzvariablen, die als Aktualisierungskonstante
+ 
+\emph on
+onInstantiation
+\emph default
+ gesetzt hatten, werden 
+\begin_inset Quotes eld
+\end_inset
+
+refNameRefresh_0
+\begin_inset Quotes erd
+\end_inset
+
+-Invoke-Aktivitäten (siehe Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Dereferenzierungsaktivität"
+
+\end_inset
+
+) direkt nach der 
+\begin_inset Quotes eld
+\end_inset
+
+prepareEPR
+\begin_inset Quotes erd
+\end_inset
+
+-Sequence eingefügt.
+ Für alle Referenzvariablen, die als Aktualisierungskonstante 
+\emph on
+fresh
+\emph default
+ gesetzt hatten, werden 
+\begin_inset Quotes eld
+\end_inset
+
+refNameRefresh_1
+\begin_inset Quotes erd
+\end_inset
+
+-Invoke-Aktivitäten (siehe Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Dereferenzierungsaktivität"
+
+\end_inset
+
+) direkt vor der jeweiligen Aktivität eingefügt.
+ Die Zahl erhöht sich dabei für jede eingefügte 
+\begin_inset Quotes eld
+\end_inset
+
+refNameRefresh_#
+\begin_inset Quotes erd
+\end_inset
+
+-Invoke-Aktivität.
+\end_layout
+
+\begin_layout Itemize
+Sonst: Alle Referenzvariablen, die in Kommunikationsaktivitäten (Invoke,
+ Receive und Reply) verwendet werden, werden bei der Transformation durch
+ die entsprechenden 
+\begin_inset Quotes eld
+\end_inset
+
+refNameEPR_Ret
+\begin_inset Quotes erd
+\end_inset
+
+-Variablen ausgetauscht.
+ Ist allerdings tatsächlich gewünscht, dass eine EPR als Rückgabewert des
+ Prozessmodells verwendet werden soll, dann muss vorerst die Prozess-WSDL
+ noch von Hand entsprechend angepasst werden.
+\end_layout
+
+\begin_layout Itemize
+Für die Zukunft wäre hier eine entsprechende Erweiterung sinnvoll, die zum
+ Einen automatisch die Prozess-WSDL anpasst und zum Anderen eine Auswahlmöglichk
+eit zwischen referenzierten Daten und Referenzen in den jeweiligen Kommunikation
+saktivitäten liefert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/RefAssignExpression.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BeispielRRSAssignExpression"
+
+\end_inset
+
+Beispiel für das Anstoßen der Dereferenzierung einer Referenzvariablen über
+ eine Assign-Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Die transformierte BPEL-Datei wird im neu erstellten Projekt gespeichert.
+\end_layout
+
+\begin_layout Itemize
+Damit die beiden RRS Web Services aufgerufen werden können, müssen diese
+ in der Prozess-WSDL bekannt gemacht werden.
+ Dazu wird die originale WSDL-Datei eingelesen, die RRS-WSDLs importiert,
+ die RRS Partner Link Typen definiert und die so veränderte WSDL in das
+ neu erstellte Projekt gespeichert.
+\end_layout
+
+\begin_layout Itemize
+Zu guter Letzt werden alle unveränderten Dateien, wie z.B.
+ XSD-Schemas, nicht transformierte BPEL-Dateien und WSDLs in das neu erstellte
+ Projekt kopiert.
+\end_layout
+
+\begin_layout Itemize
+Nun erhalten wir für unser Beispiel das in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BeispielRRSProzessTransformiert"
+
+\end_inset
+
+ abgebildete Prozessmodell und dessen Variablen und Partner Links (siehe
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:VarNachTransformation"
+
+\end_inset
+
+) nach der Transformation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/SimpleRefProcessTransformed.png
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BeispielRRSProzessTransformiert"
+
+\end_inset
+
+Transformiertes Beispiel Prozessmodell
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename finalVersion/RefVariablesTransformed.JPG
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:VarNachTransformation"
+
+\end_inset
+
+Variablen eines Prozessmodells nach der Transformation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -14625,33 +15537,265 @@ Container-Referenzen in BPEL (IPVS-Referenzen)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+Die Container-Referenzen sind einfache BPEL-Variablen, denen ein Datentyp
+ mit z.T.
+ spezieller Struktur zugewiesen wird und die alle für den Verweis auf eine
+ Datenstruktureinheit notwendigen Informationen beinhalten.
+ So können in BPEL-Variablen Verweise auf Datenstruktureinheiten (Tabellen,
+ Schema, XML-Dokumente, Ordner, Dateien, usw.) von Datenquellen modelliert
+ werden.
+ Diese Container-Referenzen (BPEL-Variablen) können dann bei der Modellierung
+ von Prozessen verwendet werden.
+ Als Beispiel für einen Datentyp mit spezieller Struktur wird die Verwendung
+ von Container-Referenzen in Abfragebefehlen von DM-Aktivitäten umgesetzt.
+ Dafür wird der in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:ContainerReferenceType"
+
+\end_inset
+
+ dargestellte Datentyp bereitgestellt, mithilfe dessen die Angabe eines
+ Schema- und Tabellennamens einer SQL-Abfrage in einer BPEL-Variable hinterlegt
+ werden kann.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm"
+inline false
 status open
 
 \begin_layout Plain Layout
-noch ausarbeiten
+
+<xsd:complexType name="ContainerReferenceType">
+\end_layout
+
+\begin_layout Plain Layout
+
+    <xsd:sequence>
+\end_layout
+
+\begin_layout Plain Layout
+
+        <xsd:element name="schema" type="xsd:string" 
+\end_layout
+
+\begin_layout Plain Layout
+
+            maxOccurs="1" minOccurs="0"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+        <xsd:element name="table" type="xsd:string" 
+\end_layout
+
+\begin_layout Plain Layout
+
+            maxOccurs="1" minOccurs="1"/> 
+\end_layout
+
+\begin_layout Plain Layout
+
+    </xsd:sequence> 	
+\end_layout
+
+\begin_layout Plain Layout
+
+</xsd:complexType> 
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:ContainerReferenceType"
+
+\end_inset
+
+Schema des ContainerReferenceType-Datentyps
 \end_layout
 
 \end_inset
 
- Die Container-Referenzen in BPEL dienen dazu direkte Verweise auf z.B.
- Tabellen, Spalten oder andere Daten-Container die sich in einer Datenquelle
- befinden zu ermöglichen.
- In diesem Fall werden sie als normale BPEL-Variablen erzeugt.
- Da allerdings auch die Möglichkeit bestehen soll, dass sie auf Daten verweisen,
- ist es notwendig für diesen Fall einen neuen Variablen-Typen, der Daten
- enthalten kann, zu erzeugen.
- 
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Die BPEL-Variablen können anschließend im Deployment Deskriptor mit einem
- Namen versehen werden.
- Dafür wird die Möglichkeit geboten, eine Variable aus einer Liste aller
- im Prozess vorhandenen Variablen auszuwählen, und diese mit einem festen
- Namen zu versehen.
- Anschließend steht dieser Name als Referenz für die Modelierung des Prozesses
- zur Verfügung.
+Weiterhin können natürlich auch alle einfachen Datentypen (String, Boolean,
+ Integer, ...) für Container-Referenzen verwendet werden.
+ Um zwischen speziellen und einfachen Container-Referenzen in den Abfragebefehle
+n unterscheiden zu können, werden diese entsprechend gekennzeichnet: 
+\emph on
+#bpelVariable#
+\emph default
+ signalisiert den Verweis auf eine einfache Container-Referenz und 
+\emph on
+[bpelVariable]
+\emph default
+ den Verweis auf eine speziell strukturierte Container-Referenz.
+ Die so formatiert in den Abfragebefehlen hinterlegten BPEL-Variablen werden
+ dann in der Workflow-Engine aufgelöst und durch die aktuellen Werte der
+ BPEL-Variablen ersetzt.
+\end_layout
+
+\begin_layout Standard
+Durch dieses Konzept lassen sich dann Prozessmodelle mit DM-Aktivitäten
+ erstellen, die parametrisierbare Abfragebefehle enthalten.
+ Um das Verständnis zu erhöhen, wird dies nachfolgend an einem kleinen Beispiel
+ verdeutlicht (siehe Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:ContainerReference-Beispiel"
+
+\end_inset
+
+).
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,numbers=left,stepnumber=1,tabsize=4,xleftmargin={1cm},xrightmargin={1cm}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+***
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<bpel:variable name="target" type="simpl:containerReferenceType"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+<bpel:variable name="columns" type="ns1:string"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+***
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<bpel:extensionActivity>             
+\end_layout
+
+\begin_layout Plain Layout
+
+    <simpl:queryActivity name="QueryActivity" 
+\end_layout
+
+\begin_layout Plain Layout
+
+        dsKind="DB2" dsType="Database" 
+\end_layout
+
+\begin_layout Plain Layout
+
+        dsAddress="dd:myDB2" dsLanguage="SQL"  
+\end_layout
+
+\begin_layout Plain Layout
+
+        queryTarget="[target]"
+\end_layout
+
+\begin_layout Plain Layout
+
+        dsStatement="SELECT #columns# FROM DATA">
+\end_layout
+
+\begin_layout Plain Layout
+
+    </simpl:queryActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+</bpel:extensionActivity>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+***
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:ContainerReference-Beispiel"
+
+\end_inset
+
+Auszug aus einem Prozessmodell mit Container-Referenzen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Beispiel basiert auf einem einfachen Prozessmodell mit einer Query-Aktivität.
+ Weiterhin werden zwei Container-Referenzen benötigt, eine vom Typ 
+\emph on
+string
+\emph default
+ für die Angabe der Spaltennamen einer Relation (Zeile 4) und eine vom Typ
+ 
+\emph on
+containerReferenceType
+\emph default
+ für die Angabe der Zielrelation der Query-Aktivität (Zeile 3).
+ Die Container-Referenzen können nun über eine Assign-Aktivität auf einen
+ festen Wert gesetzt werden oder wie in unserem Fall aus der Eingabe des
+ Prozesses zur Laufzeit gelesen werden.
+ In Zeile 12 hinterlegen wir nun im queryTarget-Attribut der Query-Aktivität
+ die Container-Referenz aus Zeile 3.
+ In Zeile 13 hinterlegen wir im Abfragebefehl die Container-Referenz aus
+ Zeile 4.
+ Nun können wir das so erstellte Prozessmodell deployen und mit geeigneten
+ Werten für die hinterlegten Container-Referenzen instanzieren.
+ In ODE werden dann die Container-Referenzen aufgelöst und durch die entsprechen
+den Werte ersetzt.
+ So kann man ein- und dasselbe Prozessmodell mit verschiedenen Eingaben
+ immer wieder instanzieren und ausführen ohne es neu deployen zu müssen.
 \end_layout
 
 \begin_layout Subsection
@@ -14718,8 +15862,6 @@ reference "fig:Klassenhierarchie-der-Datenmanagement-Patterns"
 agement-Patterns.
  Diese Hierarchie kann bei Bedarf beliebig um weitere Patternklassen oder
  Patterns ergänzt werden.
- Vorerst werden allerdings nur die Patterns und Patternklassen beschrieben,
- die auch umgesetzt werden.
  Die nachfolgenden Beschreibungen orientieren sich an dieser Hierarchie
  und erläutern sie gleichzeitig etwas detaillerter.
  Darüber hinaus werden nachfolgend weitere Pattern-Klassen und Patterns
@@ -14811,7 +15953,7 @@ Process Cache Patterns
 \series default
 , die die Verarbeitung von Daten in genau einer internen Datenquelle, dem
  Prozessspeicher bzw.
- Cache realisieren und
+ Cache, realisieren und
 \end_layout
 
 \begin_layout Itemize
@@ -14819,8 +15961,8 @@ Process Cache Patterns
 \series bold
 Multiple Data Source Patterns
 \series default
-, die die Verarbeitung von Daten in mehr als einer Datenquelle, wobei der
- Prozessspeicher hier auch als eine Datenquelle angesehen wird, realisieren.
+, die die Verarbeitung von Daten in mehr als einer Datenquelle realisieren,
+ wobei der Prozessspeicher hier auch als eine Datenquelle angesehen wird.
 \end_layout
 
 \begin_layout Standard
@@ -14954,8 +16096,8 @@ reference "fig:QueryPatterns"
 
 \begin_layout Itemize
 Set Query Pattern: Für die Anfrage von relationalen (mengenorientierten)
- Daten mittels SQL-Befehlen aus einer relationalen Datenbank oder mittels
- SQL-ähnlichen Befehlen aus einer 
+ Daten beispielsweise mittels SQL-Befehlen aus einer relationalen Datenbank
+ oder mittels SQL-ähnlichen Befehlen aus einer 
 \begin_inset Newline newline
 \end_inset
 
@@ -14963,8 +16105,8 @@ Sensornetz-Datenbank (TinyDB).
 \end_layout
 
 \begin_layout Itemize
-Tree Query Pattern: Für die Anfrage von baumartigen Daten mittels XQuery-Befehle
-n aus einer XML-Datenbank.
+Tree Query Pattern: Für die Anfrage von baumartigen Daten beispielsweise
+ mittels XQuery-Befehlen aus einer XML-Datenbank.
 \end_layout
 
 \begin_layout Itemize
@@ -15028,7 +16170,7 @@ Die Klasse Data IUD Patterns beschreibt die Möglichkeit, auf Daten verschiedene
 iden sich nach der zugrundeliegenden Datenquelle und Datenstruktur.
  Die Patterns dieser Klasse können für relationale Datenbanksysteme, XML-Datenba
 nksysteme und Dateisysteme verwendet werden.
- Die Sensornetzdatenbank TinyDB unterstützt das Manipulieren von Daten nicht
+ Die Sensornetzdatenbank TinyDB unterstützt das Manipulieren von Daten nicht,
  und dadurch sind die Data IUD Patterns nicht für die TinyDB verwendbar
  (Beispiele siehe Abschnitt 
 \begin_inset CommandInset ref
@@ -15105,33 +16247,26 @@ reference "fig:Data-IUD-Patterns"
 /Datenmodelle unterscheiden.
  Im folgenden werden diese Patterns zusammengefasst beschrieben, d.
  h.
- es folgt eine Beschreibung für jedes Datenmodell.
+ es folgt eine Beschreibung für jedes Datenmodell:
 \end_layout
 
 \begin_layout Itemize
-Set (Insert/Update/Delete/Rename) Pattern: Diese Patterns beschreiben die
- Möglichkeit, auf mengenorientierten externen Daten in einem relationalen
- Datenbanksystem verschiedene Daten
+Set Insert/Update/Delete Pattern: Diese Patterns beschreiben die Möglichkeit,
+ auf mengenorientierten externen Daten z.B.
+ in einem relationalen Datenbanksystem verschiedene Daten-
 \begin_inset Newline newline
 \end_inset
 
-manipulations-Operationen ausführen zu können.
+manipulationsoperationen ausführen zu können.
  Zu diesen Operationen zählen das mengen- und tupelorientierte Einfügen
- (Set Insert Pattern), Aktualisieren (Set Update Pattern), Löschen (Set
- Delete Pattern) und Umbenennen (Set Rename Pattern) von mengenorientierten
- Daten.
- Im Gegensatz zu anderen SQL-Datenbanken sind diese Patterns nicht für die
- TinyDB verwendbar.
- Das liegt daran, dass in die TinyDB nur interne Daten, die aus dem Sensornetz
- selbst kommen, eingefügt werden können.
- Dadurch können externe Daten weder eingefügt, aktualisiert noch gelöscht
- werden.
+ (Set Insert Pattern), Aktualisieren (Set Update Pattern) und Löschen (Set
+ Delete Pattern) von mengenorientierten Daten.
 \end_layout
 
 \begin_layout Itemize
-Tree (Insert/Delete/Replace/Rename) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipulations -Operationen auf Knoten,
- Sequenzen von Knoten oder auch Teilbäumen von baumartigen externen Daten
+Tree Insert/Delete/Replace/Rename Pattern: Diese Patterns beschreiben die
+ Möglichkeit, verschiedene Datenmanipulationsoperationen auf Knoten, Sequenzen
+ von Knoten oder auch Teilbäumen von baumartigen externen Daten z.B.
  in einem XML-Datenbanksystem ausführen zu können.
  Zu diesen Operationen zählen das Einfügen (Tree Insert Pattern), Ersetzen
  (Tree Replace Pattern), Umbenennen (Tree Rename Pattern) und Löschen (Tree
@@ -15139,19 +16274,19 @@ Tree (Insert/Delete/Replace/Rename) Pattern: Diese Patterns beschreiben
 \end_layout
 
 \begin_layout Itemize
-Node Content (Insert/Delete/Replace) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipulations-Operationen in Knoten
- von baumartigen externen Daten in einem XML-Datenbanksystem ausführen zu
- können.
+Node Content Insert/Delete/Replace Pattern: Diese Patterns beschreiben die
+ Möglichkeit, verschiedene Datenmanipulationsoperationen in Knoten von baumartig
+en externen Daten z.B.
+ in einem XML-Datenbanksystem ausführen zu können.
  Zu diesen Operationen zählen das Einfügen (Node Content Insert Pattern),
  Ersetzen (Node Content Replace Pattern) und Löschen (Node Content Delete
  Pattern) von Werten und Attributwerten innerhalb von Knoten.
 \end_layout
 
 \begin_layout Itemize
-File Content (Insert/Delete/Replace) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipulations-Operationen innerhalb
- von Dateien eines Dateisystems ausführen zu können.
+File Content Insert/Delete/Replace Pattern: Diese Patterns beschreiben die
+ Möglichkeit, verschiedene Datenmanipulationsoperationen innerhalb von Dateien
+ eines Dateisystems ausführen zu können.
  Zu diesen Operationen zählen das Einfügen (File Content Insert Pattern),
  Ersetzen (File Content Replace Pattern) und Löschen (File Content Delete
  Pattern) von Dateiinhalten.
@@ -15207,12 +16342,11 @@ name "fig:Data-Setup-Patterns"
 \end_layout
 
 \begin_layout Standard
-Die Klasse Data Setup Patterns liefert die Möglichkeit, Data Definition
- Language (DDL) Befehle auf relationalen Datenbanksystemen, XML-Datenbanksysteme
-n, Dateisystemen und Sensornetz-Datenbanksystemen auszuführen.
+Die Klasse Data Setup Patterns liefert die Möglichkeit, Datenstrukturen
+ zu ändern.
  So können während der Prozessausführung die Datenquellen konfiguriert oder
- neue Container (Tabellen, Schema, XML-Dokumente, Ordner, Dateien, Buffer-Tabell
-en, usw.) erstellt, geändert oder verworfen werden.
+ neue Datenstruktureinheiten (Tabellen, Schema, XML-Dokumente, Ordner, Dateien,
+ Buffer-Tabellen, usw.) erstellt, geändert oder verworfen werden.
 \end_layout
 
 \begin_layout Standard
@@ -15232,7 +16366,7 @@ reference "fig:Data-Setup-Patterns"
 \series bold
 Data Setup Create Patterns
 \series default
-: Für das Erstellen neuer Container.
+: Für das Erstellen neuer Datenstruktureinheiten.
 \end_layout
 
 \begin_layout Itemize
@@ -15240,7 +16374,7 @@ Data Setup Create Patterns
 \series bold
 Data Setup Alter Patterns
 \series default
-: Für das Ändern bereits vorhandener Container.
+: Für das Ändern bereits vorhandener Datenstruktureinheiten.
 \end_layout
 
 \begin_layout Itemize
@@ -15248,7 +16382,7 @@ Data Setup Alter Patterns
 \series bold
 Data Setup Drop Patterns
 \series default
-: Für das Verwerfen vorhandener Container.
+: Für das Verwerfen vorhandener Datenstruktureinheiten.
 \end_layout
 
 \begin_layout Standard
@@ -15263,42 +16397,17 @@ reference "fig:Data-Setup-Patterns"
 /Datenmodelle unterscheiden.
  Im folgenden werden diese Patterns zusammengefasst beschrieben, d.
  h.
- es folgt eine Beschreibung für jedes Datenmodell.
+ es folgt eine Beschreibung für jedes einzelne Datenmodell.
 \end_layout
 
 \begin_layout Itemize
-(Create/Alter/Drop) Set Container Pattern: Diese Patterns beschreiben die
- Möglichkeit neue Relationen in einem relationalen Datenbanksystem zu Erzeugen
- (Create Set Container Pattern), vorhandene Relationen zu Bearbeiten (Alter
- Set Container Pattern) oder zu Löschen (Drop Set Container Pattern).
-\end_layout
-
-\begin_layout Itemize
-(Create/Alter/Drop) Tree Container Pattern: Diese Patterns beschreiben die
- Möglichkeit neue XML-Dokumente in einem XML-Datenbanksystem zu Erzeugen
- (Create Tree Container Pattern), vorhandene XML-Dokumente zu Bearbeiten
- (Alter Tree Container Pattern) oder zu Löschen (Drop Tree Container Pattern).
-\end_layout
-
-\begin_layout Itemize
-(Create/Alter/Drop) File Directory Pattern: Diese Patterns beschreiben die
- Möglichkeit neue Ordner in einem Dateisystem zu Erzeugen (Create File Directory
- Pattern), vorhandene Ordner zu Bearbeiten (Alter File Directory Pattern)
- oder zu Löschen (Drop File Directory Pattern).
-\end_layout
-
-\begin_layout Itemize
-(Create/Alter/Drop) File Pattern: Diese Patterns beschreiben die Möglichkeit
- neue Dateien in einem Dateisystem zu Erzeugen (Create File Pattern), vorhandene
- Dateien zu Bearbeiten (Alter File Pattern) oder zu Löschen (Drop File Pattern).
-\end_layout
-
-\begin_layout Itemize
-(Create/Drop) Sensor Buffer Container Pattern: Diese Patterns beschreiben
- die Möglichkeit neue Buffer-Tabellen in einem Sensornetz-Datenbanksystem
- zu Erzeugen (Create Sensor Buffer Container Pattern) oder vorhandene Buffer-Tab
-ellen zu Löschen (Drop Sensor Buffer Container Pattern) (Beispiele siehe
- Abschnitt 
+Create/Alter/Drop Set Container Pattern: Diese Patterns beschreiben die
+ Möglichkeit, neue Relationen in einem relationalen Datenbanksystem zu erzeugen
+ (Create Set Container Pattern), die Datenstrukturen vorhandener Relationen
+ zu bearbeiten (Alter Set Container Pattern) oder Relationen zu löschen
+ (Drop Set Container Pattern).
+ In Sensornetz-Datenbanken können mithilfe dieser Patterns auch Buffer-Tabellen
+ erstellt und gelöscht werden (Beispiele siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Sensornetze"
@@ -15306,6 +16415,31 @@ reference "sub:Sensornetze"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Itemize
+Create/Alter/Drop Tree Container Pattern: Diese Patterns beschreiben die
+ Möglichkeit, neue XML-Dokumente in einem XML-Datenbanksystem zu erzeugen
+ (Create Tree Container Pattern), die Datenstrukturen vorhandener XML-Dokumente
+ zu bearbeiten (Alter Tree Container Pattern) oder XML-Dokumente zu Löschen
+ (Drop Tree Container Pattern).
+\end_layout
+
+\begin_layout Itemize
+Create/Alter/Drop File Directory Pattern: Diese Patterns beschreiben die
+ Möglichkeit, neue Ordner in einem Dateisystem zu erzeugen (Create File
+ Directory Pattern), vorhandene Ordner zu Bearbeiten (Alter File Directory
+ Pattern) oder zu löschen (Drop File Directory Pattern).
+ Ein Beispiel für die Bearbeitung eines vorhandenen Ordners ist das Ändern
+ seiner Zugriffsrechte.
+\end_layout
+
+\begin_layout Itemize
+Create/Alter/Drop File Pattern: Diese Patterns beschreiben die Möglichkeit,
+ neue Dateien in einem Dateisystem zu erzeugen (Create File Pattern), vorhandene
+ Dateien zu bearbeiten (Alter File Pattern) oder zu löschen (Drop File Pattern).
+ Ein Beispiel für die Bearbeitung einer vorhandenen Datei ist das Ändern
+ ihres Schreibschutzes.
 \end_layout
 
 \begin_layout Paragraph*
@@ -15426,7 +16560,7 @@ name "fig:Data-Transport-Patterns"
 \end_layout
 
 \begin_layout Standard
-Die Klasse Data Transport Patterns liefert die Möglichkeit Daten zwischen
+Die Klasse Data Transport Patterns liefert die Möglichkeit, Daten zwischen
  zwei Datenquellen oder auch zwischen einer Datenquelle und einem Cache
  (Prozessspeicher) zu verschieben oder zu kopieren.
 \end_layout
@@ -15462,7 +16596,7 @@ External Data Transport Patterns
  Datenstruktur, wie z.B.
  das Kopieren von relationalen Daten in eine relationale Datenbank (Similar
  Data Transport Patterns) und für das externe Kopieren oder Verschieben
- von externen Daten aus einer Datenstruktur in eine Andere, wie z.B.
+ von externen Daten aus einer Datenstruktur in eine andere, wie z.B.
  das Kopieren von relationalen Daten in eine XML-Datenbank (Diverse Data
  Transport Patterns).
 \end_layout
@@ -15520,7 +16654,8 @@ name "fig:Process-Cache-WriteBack-Patterns"
 \begin_layout Standard
 Die Klasse Process Cache WriteBack Patterns realisiert die Synchronisation
  bzw.
- das Zurückschreiben eines lokalen Datencaches auf die originale Datenquelle.
+ das Zurückschreiben eines lokalen Datencaches im Prozessspeicher auf die
+ originale Datenquelle.
 \end_layout
 
 \begin_layout Standard
@@ -15539,13 +16674,14 @@ reference "fig:Process-Cache-WriteBack-Patterns"
 Set Cache WriteBack Pattern: Realisiert das Zurückschreiben von mengenorientiert
 en Daten.
  Dieses Pattern ist auf relationale Datenbanken anwendbar.
- Es kann ebenfalls nicht für die TinyDB verwendbar, da bei TinyDB keine
- Datenmanipulation möglich ist.
+ Es ist nicht für die TinyDB verwendbar, da bei TinyDB keine Datenmanipulation
+ möglich ist.
 \end_layout
 
 \begin_layout Itemize
 Tree Cache WriteBack Pattern: Realisiert das Zurückschreiben von baumartigen
- Daten auf XML-Datenbanken.
+ Daten z.B.
+ auf XML-Datenbanken.
 \end_layout
 
 \begin_layout Itemize
@@ -15631,9 +16767,9 @@ ntierte Datenstruktur, um externe mengenorientierte Daten im Prozessspeicher
 \end_layout
 
 \begin_layout Itemize
-Tree Retrieval 2PC Pattern: Das Tree Retrieval 2PC Pattern ist für XML-Datenbank
-en anwendbar und liefert eine baumartige Datenstruktur, um externe baumartige
- Daten im Prozessspeicher abzulegen.
+Tree Retrieval 2PC Pattern: Das Tree Retrieval 2PC Pattern ist z.B.
+ für XML-Datenbanken anwendbar und liefert eine baumartige Datenstruktur,
+ um externe baumartige Daten im Prozessspeicher abzulegen.
 \end_layout
 
 \begin_layout Itemize
@@ -15690,7 +16826,7 @@ name "fig:Similar-Data-Transport-Patterns"
 \begin_layout Standard
 Die Klasse Similar Data Transport Patterns kann für alle Datenquellentypen
  verwendet werden.
- Sie dient dazu externe Daten von externen Datenquellen auf andere externe
+ Sie dient dazu, externe Daten von externen Datenquellen auf andere externe
  Datenquellen zu verschieben oder zu kopieren, wobei die Datenstruktur der
  zu verschiebenden/kopierenden Daten unverändert bleibt.
 \end_layout
@@ -15713,7 +16849,8 @@ reference "fig:Similar-Data-Transport-Patterns"
 Similar Data Move Patterns
 \series default
 : Für das Verschieben von externen Daten auf externen Datenquellen, wobei
- die Datenstruktur unverändert bleibt.
+ die Datenstruktur unverändert bleibt und die originalen Daten gelöscht
+ werden.
 \end_layout
 
 \begin_layout Itemize
@@ -15722,7 +16859,7 @@ Similar Data Move Patterns
 Similar Data Copy Patterns
 \series default
 : Für das Kopieren von externen Daten auf externen Datenquellen, wobei die
- Datenstruktur unverändert bleibt.
+ Datenstruktur und die originalen Daten unverändert bleiben.
 \end_layout
 
 \begin_layout Standard
@@ -15735,31 +16872,31 @@ reference "fig:Similar-Data-Transport-Patterns"
 
  gezeigten Patterns umgesetzt, die sich aufgrund der beteiligten Datenstrukturen
 /Datenmodelle unterscheiden.
- Im folgenden werden diese Patterns zusammengefasst beschrieben, d.
+ Im Folgenden werden diese Patterns zusammengefasst beschrieben, d.
  h.
- es folgt eine Beschreibung für jedes Datenmodell.
+ es folgt eine Beschreibung für jedes einzelne Datenmodell.
 \end_layout
 
 \begin_layout Itemize
-(Move/Copy) Set2Set Pattern: Liefert die Möglichkeit externe mengenorientierte
+Move/Copy Set2Set Pattern: Liefert die Möglichkeit, externe mengenorientierte
  Daten von einer externen Datenquelle auf eine andere externe Datenquelle
- zu Kopieren oder zu Verschieben.
+ zu kopieren oder zu verschieben.
  Die Datenstruktur der Daten bleibt dabei unverändert mengenorientiert.
  Dieses Pattern ist für relationale Datenbanken anwendbar.
 \end_layout
 
 \begin_layout Itemize
-(Move/Copy) Tree2Tree Pattern: Liefert die Möglichkeit externe baumorientierte
+Move/Copy Tree2Tree Pattern: Liefert die Möglichkeit, externe baumorientierte
  Daten von einer externen Datenquelle auf eine andere externe Datenquelle
- zu Kopieren oder zu Verschieben.
+ zu kopieren oder zu verschieben.
  Die Datenstruktur der Daten bleibt dabei unverändert baumorientiert.
  Dieses Pattern ist für XML-Datenbanken anwendbar.
 \end_layout
 
 \begin_layout Itemize
-(Move/Copy) File2File Pattern: Liefert die Möglichkeit externe Daten aus
+Move/Copy File2File Pattern: Liefert die Möglichkeit, externe Daten aus
  Dateien von einer externen Datenquelle auf eine andere externe Datenquelle
- zu Kopieren oder zu Verschieben.
+ zu kopieren oder zu verschieben.
  Die Datenstruktur der Daten bleibt dabei unverändert.
  Dieses Pattern ist für Dateisysteme anwendbar.
 \end_layout
@@ -15812,7 +16949,7 @@ name "fig:Diverse-Data-Transport-Patterns"
 \begin_layout Standard
 Die Klasse Diverse Data Transport Patterns kann für alle Datenquellentypen
  verwendet werden.
- Sie dient dazu externe Daten von externen Datenquellen auf andere externe
+ Sie dient dazu, externe Daten von externen Datenquellen auf andere externe
  Datenquellen zu verschieben oder zu kopieren, wobei sich die Datenstruktur
  der zu verschiebenden/kopierenden Daten ändert, d.h.
  die Daten werden in eine andere Datenstruktur überführt.
@@ -15837,6 +16974,7 @@ Diverse Data Move Patterns
 \series default
 : Für das Verschieben von externen Daten auf externen Datenquellen mit verändert
 er Datenstruktur.
+ Die originalen Daten werden gelöscht.
 \end_layout
 
 \begin_layout Itemize
@@ -15846,6 +16984,7 @@ Diverse Data Copy Patterns
 \series default
 : Für das Kopieren von externen Daten auf externen Datenquellen mit veränderter
  Datenstruktur.
+ Die originalen Daten bleiben unverändert.
 \end_layout
 
 \begin_layout Standard
@@ -15858,26 +16997,27 @@ reference "fig:Diverse-Data-Transport-Patterns"
 
  gezeigten Patterns umgesetzt, die sich aufgrund der beteiligten Datenstrukturen
 /Datenmodelle unterscheiden.
- Im folgenden werden nur drei dieser Patterns beschrieben, da bei den verbleiben
+ Im Folgenden werden nur drei dieser Patterns beschrieben, da bei den verbleiben
 den drei Patterns jeweils nur eine umgekehrte Datenmodell-Transformation
  durchgeführt wird.
 \end_layout
 
 \begin_layout Itemize
-(Move/Copy) Set2Tree Pattern: Liefert die Möglichkeit externe mengenorientierte
- Daten aus einer relationalen Datenbank oder einer Sensornetz-Datenbank
- auf eine XML-Datenbank als baumartige Daten zu Kopieren oder zu Verschieben.
- Dieses Pattern ist für relationale, Sensortnetz und XML-Datenbanken anwendbar,
- wobei die relationalen bzw.
+Move/Copy Set2Tree Pattern: Liefert die Möglichkeit, externe mengenorientierte
+ Daten z.B.
+ aus einer relationalen Datenbank oder einer Sensornetz-Datenbank auf eine
+ XML-Datenbank als baumartige Daten zu kopieren oder zu verschieben.
+ Dieses Pattern ist für relationale Datenbanken, Sensortnetz- und XML-Datenbanke
+n anwendbar, wobei die relationalen bzw.
  Sensornetz-Datenbanken nur als Quelle und die XML-Datenbanken nur als Ziel
  der Kopier- bzw.
  Verschiebe-Operation verwendet werden können.
 \end_layout
 
 \begin_layout Itemize
-(Move/Copy) File2Set Pattern: Liefert die Möglichkeit externe Daten aus
- Dateisystemen auf eine relationale Datenbank als relationale Daten zu Kopieren
- oder zu Verschieben.
+Move/Copy File2Set Pattern: Liefert die Möglichkeit, externe Daten z.B.
+ aus Dateisystemen auf eine relationale Datenbank als mengenorientierte
+ Daten zu kopieren oder zu verschieben.
  Dieses Pattern ist für Dateisysteme und relationale Datenbanken anwendbar,
  wobei die Dateisysteme nur als Quelle und die relationalen Datenbanken
  nur als Ziel der Kopier- bzw.
@@ -15887,9 +17027,9 @@ den drei Patterns jeweils nur eine umgekehrte Datenmodell-Transformation
 \end_layout
 
 \begin_layout Itemize
-(Move/Copy) File2Tree Pattern: Liefert die Möglichkeit externe Daten aus
- Dateisystemen auf eine XML-Datenbank als baumartige Daten zu Kopieren oder
- zu Verschieben.
+Move/Copy File2Tree Pattern: Liefert die Möglichkeit, externe Daten z.B.
+ aus Dateisystemen auf eine XML-Datenbank als baumartige Daten zu kopieren
+ oder zu verschieben.
  Dieses Pattern ist für Dateisysteme und XML-Datenbanken anwendbar, wobei
  die Dateisysteme nur als Quelle und die XML-Datenbanken nur als Ziel der
  Kopier- bzw.
@@ -15943,7 +17083,8 @@ name "fig:Cache-Access-Patterns"
 
 \begin_layout Standard
 Die Klasse Cache Access Patterns beschreibt die Notwendigkeit, auf den im
- BPEL-Prozess erzeugten Datencache in geeigneter Weise zugreifen zu können.
+ BPEL-Prozess erzeugten Prozessspeicher in geeigneter Weise zugreifen zu
+ können.
  Die weiteren Unterklassen unterscheiden sich durch die zugrundeliegende
  Datenstruktur der Daten im Prozessspeicher.
  Die einzelnen Patterns dieser Klassen liefern verschiedene Zugriffsmöglichkeite
@@ -15968,8 +17109,8 @@ reference "fig:Cache-Access-Patterns"
 \series bold
 Set Cache Access Patterns
 \series default
-: Die Cache Set Access Patterns liefern die Möglichkeit, auf den im BPEL-Prozess
- erzeugten mengenorientierten Datencache sequentiell und direkt (wahlfrei)
+: Die Set Cache Access Patterns liefern die Möglichkeit, auf den im BPEL-Prozess
+ erzeugten mengenorientierten Prozessspeicher sequentiell und direkt (wahlfrei)
  zugreifen zu können.
 \end_layout
 
@@ -15977,9 +17118,9 @@ Set Cache Access Patterns
 \begin_layout Itemize
 Set Cache Sequential Access Pattern: Liefert den sequentiellen Zugriff auf
  die mengenorientierte Datenstruktur, d.h.
- die Relation wird von ihrem ersten Element bis zu ihrem Letzten schrittweise
- durchlaufen, wobei in einem Schritt immer nur das vorherige oder das nächste
- Element der Relation erreicht werden kann.
+ die Relation wird von ihrem ersten Element bis zu ihrem letzten Element
+ oder umgekehrt schrittweise durchlaufen, wobei in einem Schritt immer nur
+ das vorherige oder das nächste Element der Relation erreicht werden kann.
 \end_layout
 
 \begin_layout Itemize
@@ -15996,8 +17137,8 @@ Set Cache Direct Access Pattern: Liefert den direkten (wahlfreien) Zugriff
 Tree Cache Access Patterns
 \series default
 : Die Tree Cache Access Patterns liefern die Möglichkeit, auf den erzeugten
- baumorientierten Datencache hierarchisch, sequentiell und direkt (wahlfrei)
- zugreifen zu können.
+ baumorientierten Prozessspeicher hierarchisch, sequentiell und direkt (wahlfrei
+) zugreifen zu können.
  
 \end_layout
 
@@ -16012,25 +17153,29 @@ Tree Cache Hierarchical Access Pattern: Liefert den hierarchischen Zugriff,
 \end_layout
 
 \begin_layout Itemize
-Tree Cache Sequential Access Pattern: Liefert den sequentiellen Zugriff,
- der durch entsprechende Funktionen realisiert wird, die die Geschwisterknoten
- oder den Kind- bzw.
- Vaterknoten des ausgewählten Knoten liefern.
+Tree Cache Sequential Access Pattern: Liefert den sequentiellen Zugriff
+ auf einen Baum.
+ Dies wird durch entsprechende Funktionen realisiert, die den linken oder
+ rechten Geschwisterknoten bzw.
+ den nächsten Knoten der nächst tieferen (höheren) Ebene, falls die aktuelle
+ Ebene bereits durchlaufen wurde, des ausgewählten Knoten liefern.
  Über den Wurzelknoten als Startpunkt kann jede Ebene des ganzen Baums sequentie
-ll in beiden Richtungen (Wurzel -> Blatt vs.
- Blatt ->Wurzel) durchlaufen werden.
+ll durchlaufen werden.
+ Dabei kann in jedem Schritt immer nur der nächste oder vorherige Knoten
+ aus der Knotensequenz erreicht werden.
 \end_layout
 
 \begin_layout Itemize
-Tree Cache Direct Access Pattern: Liefert den direkten Zugriff beispielsweise
- durch die Angabe eines XPath-Ausdrucks (siehe
+Tree Cache Direct Access Pattern: Liefert den direkten Zugriff auf einen
+ einzelnen Knoten im Baum beispielsweise durch die Angabe eines XPath-Ausdrucks
+ (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-24"
 
 \end_inset
 
-) mit dem der entsprechende Knoten im Baum gesucht und zurückgegeben wird,
+), mit dem der entsprechende Knoten im Baum gesucht und zurückgegeben wird,
  falls ein solcher Knoten existiert.
 \end_layout
 
@@ -16041,11 +17186,11 @@ key "key-24"
 File Cache Access Patterns
 \series default
 : Die File Cache Access Patterns liefern die Möglichkeit, auf Dateiinhalte
- eines erzeugten Datencache in geeigneter Weise (z.B.
+ eines erzeugten Prozessspeichers in geeigneter Weise (z.B.
  sequentiell oder wahlfrei) zugreifen zu können.
  Die Klasse kann durch weitere dateiformatspezifische Unterklassen verfeinert
  werden.
- Im Moment wird nur das Dateiformat Comma Seperated Values (CSV) näher betrachte
+ Im Moment wird nur das Dateiformat Comma Separated Values (CSV) näher betrachte
 t und beschrieben.
 \end_layout
 
@@ -16058,15 +17203,15 @@ CSV File Cache Access Patterns: Die CSV File Cache Access Patterns liefern
 
 \begin_deeper
 \begin_layout Itemize
-CSV File Cache Sequential Access Patterns: Liefert den sequentiellen Zugriff
+CSV File Cache Sequential Access Pattern: Liefert den sequentiellen Zugriff
  auf die CSV-Daten, d.h.
- die Daten werden von der ersten Zeile bis zu der Letzten zeilenweise durchlaufe
-n, wobei in einem Schritt immer nur die vorherige oder die nachfolgende
- Zeile erreichbar ist.
+ die Daten werden von der ersten Zeile bis zu der letzten Zeile zeilenweise
+ durchlaufen, wobei in einem Schritt immer nur die vorherige oder die nachfolgen
+de Zeile erreichbar ist.
 \end_layout
 
 \begin_layout Itemize
-CSV File Cache Direct Access Patterns: Liefert den direkten (wahlfreien)
+CSV File Cache Direct Access Pattern: Liefert den direkten (wahlfreien)
  Zugriff auf die CSV-Daten, d.h.
  jede beliebige Zeile der Daten kann direkt z.B.
  über einen Index ausgewählt werden.
@@ -16121,8 +17266,8 @@ name "fig:Cache-IUD-Patterns"
 
 \begin_layout Standard
 Die Klasse Cache IUD Patterns beschreibt die Notwendigkeit, dass in einen
- Datencache auch Daten eingefügt, aktualisiert, umbenannt, ersetzt und wieder
- aus diesem gelöscht werden können.
+ Prozessspeicher auch Daten eingefügt, aktualisiert, umbenannt, ersetzt
+ und wieder aus diesem gelöscht werden können.
 \end_layout
 
 \begin_layout Standard
@@ -16188,24 +17333,23 @@ reference "fig:Cache-IUD-Patterns"
 
  gezeigten Patterns umgesetzt, die sich aufgrund der beteiligten Datenstrukturen
 /Datenmodelle unterscheiden.
- Im folgenden werden diese Patterns zusammengefasst beschrieben, d.
+ Im Folgenden werden diese Patterns zusammengefasst beschrieben, d.
  h.
- es folgt eine Beschreibung für jedes Datenmodell.
+ es folgt eine Beschreibung für jedes einzelne Datenmodell.
 \end_layout
 
 \begin_layout Itemize
-Set Cache (Insert/Update/Delete/Rename) Pattern: Diese Patterns beschreiben
- die Möglichkeit, auf mengenorientierten internen Daten im Prozessspeicher
- verschiedene Datenmanipulations-Operationen ausführen zu können.
+Set Cache Insert/Update/Delete Pattern: Diese Patterns beschreiben die Möglichke
+it, auf mengenorientierten internen Daten im Prozessspeicher verschiedene
+ Datenmanipulationsoperationen ausführen zu können.
  Zu diesen Operationen zählen das mengen- und tupelorientierte Einfügen
- (Set Cache Insert Pattern), Aktualisieren (Set Cache Update Pattern), Löschen
- (Set Cache Delete Pattern) und Umbenennen (Set Cache Rename Pattern) von
- mengenorientierten Daten.
+ (Set Cache Insert Pattern), Aktualisieren (Set Cache Update Pattern) und
+ Löschen (Set Cache Delete Pattern) von mengenorientierten Daten.
 \end_layout
 
 \begin_layout Itemize
-Tree Cache (Insert/Delete/Replace/Rename) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipulations-Operationen auf Knoten,
+Tree Cache Insert/Delete/Replace/Rename Pattern: Diese Patterns beschreiben
+ die Möglichkeit, verschiedene Datenmanipulationsoperationen auf Knoten,
  Sequenzen von Knoten oder auch Teilbäumen von baumartigen internen Daten
  im Prozessspeicher ausführen zu können.
  Zu diesen Operationen zählen das Einfügen (Tree Cache Insert Pattern),
@@ -16215,22 +17359,22 @@ Tree Cache (Insert/Delete/Replace/Rename) Pattern: Diese Patterns beschreiben
 \end_layout
 
 \begin_layout Itemize
-Node Content Cache (Insert/Delete/Replace) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipulations-Operationen in Knoten
- von baumartigen internen Daten im Prozessspeicher ausführen zu können.
+Node Content Cache Insert/Delete/Replace Pattern: Diese Patterns beschreiben
+ die Möglichkeit, verschiedene Datenmanipulationsoperationen in Knoten von
+ baumartigen internen Daten im Prozessspeicher ausführen zu können.
  Zu diesen Operationen zählen das Einfügen (Node Content Cache Insert Pattern),
  Ersetzen (Node Content Cache Replace Pattern) und Löschen (Node Content
  Cache Delete Pattern) von Werten und Attributwerten innerhalb von Knoten.
 \end_layout
 
 \begin_layout Itemize
-File Content Cache (Insert/Delete/Replace) Pattern: Diese Patterns beschreiben
- die Möglichkeit, verschiedene Datenmanipulations-Operationen innerhalb
- von Daten, die aus Dateien ausgelesen wurden, im Prozessspeicher ausführen
+File Content Cache Insert/Delete/Replace Pattern: Diese Patterns beschreiben
+ die Möglichkeit, verschiedene Datenmanipulationsoperationen innerhalb von
+ Daten, die aus Dateien ausgelesen wurden, im Prozessspeicher ausführen
  zu können.
  Zu diesen Operationen zählen das Einfügen (File Content Cache Insert Pattern),
  Ersetzen (File Content Cache Replace Pattern) und Löschen (File Content
- Cache Delete Pattern) von Dateiinhalten.
+ Cache Delete Pattern) von Daten im Prozessspeicher.
 \end_layout
 
 \begin_layout Standard
@@ -16289,7 +17433,7 @@ name "tab:Übersicht-der-Datenmanagement-Patterns"
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="41" columns="6">
+<lyxtabular version="3" rows="37" columns="6">
 <features firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="top" width="5cm">
 <column alignment="center" valignment="top" width="1.5cm">
@@ -16640,62 +17784,6 @@ x
 
 \begin_layout Plain Layout
 Set Delete Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Set Rename Pattern
 \end_layout
 
 \end_inset
@@ -17983,118 +19071,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Create Sensor Buffer Container Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Drop Sensor Buffer Container Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 Stored Procedure Pattern
 \end_layout
 
@@ -18196,7 +19172,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -18483,62 +19459,6 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Set Cache Rename Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -18588,7 +19508,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -18731,7 +19651,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -19347,7 +20267,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -19403,7 +20323,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -19739,7 +20659,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -19777,8 +20697,8 @@ reference "sub:Datenmanagement-Patterns"
 \end_inset
 
  im Zusammenhang mit den jeweiligen Datenquellentypen beschrieben.
- Einige Patterns werden dabei garnicht oder für manche Datenquellen aufgrund
- ihrer Komplexität erst in einer späteren Iterationsstufe umgesetzt.
+ Einige Patterns werden dabei nicht oder nur für manche Datenquellen aufgrund
+ ihrer Komplexität umgesetzt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -19864,16 +20784,6 @@ Beispiel: DELETE FROM department WHERE deptno = ’D11’
 
 \end_deeper
 \begin_layout Itemize
-Set Rename Pattern: Realisierung durch SQL-RENAME.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Beispiel: RENAME COLUMN department.chief TO manager
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
 Create Set Container Pattern: Realisierung durch SQL-CREATE SCHEMA, SQL-CREATE
  TABLE, SQL-CREATE VIEW und weitere SQL-CREATE Befehle.
  
@@ -19936,8 +20846,8 @@ DROP VIEW internal.departmentView
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Alter Set Container Pattern: Momentan noch optional, wird über SQL-ALTER
- Befehle realisiert.
+Alter Set Container Pattern: Wird nicht umgesetzt.
+ Realisierung über SQL-ALTER Befehle möglich.
 \end_layout
 
 \begin_deeper
@@ -20001,8 +20911,8 @@ Retrieve Set Activity
 \emph default
  realisiert.
  Dabei werden in einer Retrieve Set Activity externe Daten in eine XML-Struktur
- innerhalb des BPEL-Prozesses geladen.
- Eine etwas ausführlichere Beschreibung diese Ansatzes liefert 
+ in den Prozessspeichers geladen.
+ Eine etwas ausführlichere Beschreibung dieses Ansatzes liefert 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-2"
@@ -20019,10 +20929,10 @@ Data Access Services
 \end_layout
 
 \begin_layout Itemize
-Set Cache (Sequential/Direct) Access Pattern: Um diese Patterns zu realisieren,
- müssen im Projektverlauf Methoden in BPEL bereitgestellt werden, die einen
- sequentiellen und direkten Zugriff auf den durch das Set Retrieval 2PC
- Pattern erzeugten Datencache ermöglichen.
+Set Cache Sequential/Direct Access Pattern: Um diese Patterns zu realisieren,
+ müssen Methoden in BPEL bereitgestellt werden, die einen sequentiellen
+ und direkten Zugriff auf den durch das Set Retrieval 2PC Pattern erzeugten
+ Prozessspeicher ermöglichen.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können und auf die wir uns zunächst beschränken.
  Weiterhin soll bei einem sequentiellen Zugriff auch mit einer ForEach-Aktivität
@@ -20037,25 +20947,23 @@ key "key-4"
 \end_layout
 
 \begin_layout Itemize
-Set Cache (Insert/Update/Delete/Rename) Pattern: Erweitern die Set Cache
- Access Patterns Methoden um die Möglichkeiten, Tupel innerhalb der mengenorient
-ierten Datenstruktur im BPEL-Prozess zu aktualisieren, einzufügen, umzubenennen
- und zu löschen.
+Set Cache Insert/Update/Delete Pattern: Erweitern die Set Cache Access Patterns
+ Methoden um die Möglichkeiten, Tupel innerhalb der mengenorientierten Datenstru
+ktur im Prozessspeicher zu aktualisieren, einzufügen und zu löschen.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können und auf die wir uns zunächst beschränken.
 \end_layout
 
 \begin_layout Itemize
-Set Cache WriteBack Pattern: Um die Daten aus dem Prozesscache zurück auf
- die originale Datenbank zu übertragen, muss ebenfalls eine neue BPEL-Aktivität
+Set Cache WriteBack Pattern: Um die Daten aus dem Prozessspeicher zurück
+ auf die originale Datenbank zu übertragen, muss eine neue BPEL-Aktivität
  erstellt werden, durch die der Benutzer angibt, dass die Daten zurückgeschriebe
 n werden sollen.
- Diese Aktivität nutzt dann intern die Funktionalität der Set IUD Patterns
- und Set Cache Access Patterns sowie weitere SQL-Befehle, um die Daten aus
- dem Prozesscache auf die Datenbank zu übertragen.
+ Diese Aktivität nutzt dann intern die Funktionalität der Data IUD Patterns
+ und Cache Access Patterns sowie weitere SQL-Befehle, um die Daten aus dem
+ Prozesscache auf die Datenbank zu übertragen.
  Die SDO API und die DAS API liefern dafür bereits einige Methoden, die
  verwendet werden können und auf die wir uns zunächst beschränken.
- Die Umsetzung dieses Patterns ist vorerst nur optional geplant.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -20073,9 +20981,6 @@ reference "sub:Datenmanagement-Patterns"
  beschriebenen Patterns im Bereich der XQuery-Datenbanken durch bestehende
  XQuery-Befehle oder, falls erforderlich, durch die Definition neuer zu
  implementierender Funktionen beschrieben.
- Vorerst ist die Umsetzung der Patterns für XML-Datenbanken nur noch optional,
- der Abschnitt bleibt aber der Vollständigkeit halber und für eine evtl.
- spätere Umsetzung bestehen.
 \end_layout
 
 \begin_layout Itemize
@@ -20170,7 +21075,7 @@ Beispiel:
 status open
 
 \begin_layout Plain Layout
-???, falls es die nicht gibt entsprechend oben in 7.1.1 entfernen
+Peter nach einem Beispiel fragen
 \end_layout
 
 \end_inset
@@ -20191,7 +21096,7 @@ Beispiel:
 status open
 
 \begin_layout Plain Layout
-???
+Peter nach einem Beispiel fragen
 \end_layout
 
 \end_inset
@@ -20216,19 +21121,19 @@ WITH fn:doc("department.xml")/expectedSales/total + 50000
 
 \end_deeper
 \begin_layout Itemize
-Create Tree Container Pattern: Wird erst in einer späteren Iteration realisiert.
+Create Tree Container Pattern: Wird nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
-Alter Tree Container Pattern: Wird erst in einer späteren Iteration realisiert.
+Alter Tree Container Pattern: Wird nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
-Drop Tree Container Pattern: Wird erst in einer späteren Iteration realisiert.
+Drop Tree Container Pattern: Wird nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
-Stored Procedure Pattern: Wird erst in einer späteren Iteration realisiert.
+Stored Procedure Pattern: Wird nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
@@ -20239,22 +21144,20 @@ Tree Retrieval 2PC Pattern: Die Umsetzung erfolgt nach der Beschreibung
 \end_layout
 
 \begin_layout Itemize
-Tree Cache (Hierarchical/Sequential/Direct) Access Pattern: Wird erst in
- einer späteren Iteration realisiert.
+Tree Cache Hierarchical/Sequential/Direct Access Pattern: Werden nicht realisier
+t.
 \end_layout
 
 \begin_layout Itemize
-Tree Cache (Insert/Delete/Replace/Rename) Pattern: Werden erst in einer
- späteren Iteration realisiert.
+Tree Cache Insert/Delete/Replace/Rename Pattern: Werden nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
-Node Content Cache (Insert/Delete/Replace) Pattern: Werden erst in einer
- späteren Iteration realisiert.
+Node Content Cache Insert/Delete/Replace Pattern: Werden nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
-Tree Cache WriteBack Pattern: Wird erst in einer späteren Iteration realisiert.
+Tree Cache WriteBack Pattern: Wird nicht realisiert.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -20271,8 +21174,8 @@ reference "sub:Datenmanagement-Patterns"
 
  beschriebenen Patterns im Bereich der Dateisysteme durch entsprechende
  Systemaufrufe des dem Dateisystem zugrundeliegenden Betriebssystems beschrieben.
- Vorerst ist die Umsetzung der Patterns für Dateisysteme nur für das CSV-Dateifo
-rmat geplant.
+ Die Umsetzung der Patterns für Dateisysteme beschränkt sich dabei auf das
+ CSV-Dateiformat.
 \end_layout
 
 \begin_layout Itemize
@@ -20285,25 +21188,25 @@ File Query Pattern: Realisierung durch einen GET-Befehl, der intern java.io
  Eine Möglichkeit wäre z.B.
  einen Filter-Dialog zur Angabe von Suchparametern über die GUI bereitzustellen,
  der es ermöglicht Dateiinhalte zu suchen und zurückzugeben.
- Das Abfragen von Dateiinhalten wird erst in einer der weiteren Iteration
- realisiert.
+ Das Abfragen von Dateiinhalten wird nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
-File Content (Insert/Delete/Replace) Pattern: Realisierung durch einen entsprech
-enden PUT- bzw.
+File Content Insert/Delete/Replace Pattern: Realisierung durch einen entsprechen
+den PUT- bzw.
  REMOVE-Befehl (RM), die intern java.io Methoden verwenden, um Inhalte in
  Dateien zu schreiben, zu ersetzen und aus ihnen zu löschen.
  Ein Ersetzen wird bei Dateien intern durch das Löschen des alten Wertes
  und anschließendem Einfügen des neuen Wertes ausgeführt.
  Dafür muss noch ein Konzept erarbeitet werden, wie entsprechende Informationen
  gezielt über einen Befehl eingefügt, ersetzt und gelöscht werden können.
- Vorerst wird nur das Einfügen, Ersetzen und Löschen von vollständigen Dateiinha
-lten umgesetzt.
+ Es wird nur das Einfügen, Ersetzen und Löschen von vollständigen Dateiinhalten
+ umgesetzt.
+ Das Einfügen, Ersetzen und Löschen von Dateiinhalten wird nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
-(Create/Alter/Drop) File Pattern: Realisierung z.B.
+Create/Alter/Drop File Pattern: Realisierung z.B.
  durch die Verwendung entsprechender Erzeugungsbefehle, wie MKFILE zur Erzeugung
  oder RMFILE für das Löschen von Dateien.
  Diese werden intern wieder durch java.io-Methoden realisiert.
@@ -20312,30 +21215,29 @@ lten umgesetzt.
  Ebenso sollte das Löschen auf der gleichen Ebene, d.h.
  von ganzen Dateien, möglich sein.
  Andere Operationen wie z.B.
- das Ändern der Zugriffrechte von Dateien mit dem Befehl CHMOD werden vorerst
- nicht umgesetzt.
+ das Ändern der Zugriffrechte von Dateien mit dem Befehl CHMOD werden nicht
+ umgesetzt.
 \end_layout
 
 \begin_layout Itemize
-(Create/Alter/Drop) File Directory Pattern: Realisierung ebenso wie bei
- den File Patterns, hier allerdings für Ordner, die z.B.
+Create/Alter/Drop File Directory Pattern: Realisierung ebenso wie bei den
+ Create/Alter/Drop File Patterns, hier allerdings für Ordner, die z.B.
  mit dem Erzeugungsbefehl MKDIR erstellt und mit RMDIR gelöscht werden können.
- Auch hier werden vorerst keine weiteren Operationen realisiert.
+ Weitere Operationen werden nicht realisiert.
 \end_layout
 
 \begin_layout Itemize
 File Retrieval 2PC Pattern: Die Umsetzung erfolgt nach der Beschreibung
  des Set Retrieval Patterns für relationale Datenbanken, wobei hier entsprechend
-e Dateisystem-Befehle (siehe Query Pattern) verwendet werden und in der
- ersten Iterationsstufe nur vollständige Dateiinhalte in einer BPEL-Variable
- abgelegt werden können.
- Weiterhin beschränkt sich die Umsetzung dieses Patterns vorerst auf das
- CSV-Dateiformat.
+e Dateisystem-Befehle (siehe Query Pattern) verwendet werden.
+ Nur vollständige Dateiinhalt können in einer BPEL-Variable abgelegt werden.
+ Weiterhin beschränkt sich die Umsetzung dieses Patterns auf das CSV-Dateiformat.
 \end_layout
 
 \begin_layout Itemize
-CSV File Cache (Sequential/Direct) Access Pattern: Um diese Patterns zu
- realisieren, werden die CSV-Daten in eine relationale Datenstruktur überführt.
+CSV File Cache Sequential/Direct Access Pattern: Um diese Patterns zu realisiere
+n, werden die CSV-Daten bei der Ausführung des File Retrieval 2PC Patterns
+ in eine relationale Datenstruktur im Prozessspeicher überführt.
  Das ist ohne Probleme möglich, da die CSV-Datenstruktur sehr der einer
  Relation ähnelt.
  Dadurch können auch für diese Patterns die durch die Set Cache Access Patterns
@@ -20343,19 +21245,18 @@ CSV File Cache (Sequential/Direct) Access Pattern: Um diese Patterns zu
 \end_layout
 
 \begin_layout Itemize
-CSV File Cache (Insert/Delete/Replace) Pattern: Erweitern die CSV File Cache
+CSV File Cache Insert/Delete/Replace Pattern: Erweitern die CSV File Cache
  Access Patterns Methoden um die Möglichkeiten, Werte innerhalb des Datencaches
  des BPEL-Prozesses zu ersetzen, einzufügen und zu löschen.
  Die SDO API liefert dafür bereits einige Methoden, die verwendet werden
  können.
- Da vorerst auch hier nur CSV-Daten verarbeitet werden, kann aus den oben
- beschriebenen Gründen auch hier wieder auf die Funktionalität für mengenorienti
-erte Daten (Set Cache Patterns) zurückgegriffen werden.
+ Da auch hier nur CSV-Daten verarbeitet werden, kann aus den oben beschriebenen
+ Gründen auch hier wieder auf die Funktionalität für mengenorientierte Daten
+ (Set Cache Patterns) zurückgegriffen werden.
 \end_layout
 
 \begin_layout Itemize
-File Cache WriteBack Pattern: Wird ebenso wie das Set Cache WriteBack Pattern
- bei relationalen Datenbanken nur optional und für CSV-Daten umgesetzt.
+File Cache WriteBack Pattern: Wird nur für das CSV-Dateiformat umgesetzt.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -20388,16 +21289,13 @@ key "key-14"
 \end_inset
 
 ).
- Vorerst ist die Umsetzung der Patterns für Sensornetze nur noch optional,
- der Abschnitt bleibt aber der Vollständigkeit halber und für eine evtl.
- spätere Umsetzung bestehen.
 \end_layout
 
 \begin_layout Itemize
 Set Query Pattern: Realisierung durch ein entsprechendes SQL-SELECT der
  Sensornetz-Datenbank.
- Eine Abfrage läuft auf der Sensornetz- Datenbank dabei folgendermaßen ab:
- Die Sensornetz-Datenbank ließt die, durch den Select-Befehl, angeforderten
+ Eine Abfrage läuft auf der Sensornetz-Datenbank dabei folgendermaßen ab:
+ Die Sensornetz-Datenbank liest die durch den Select-Befehl angeforderten
  Werte aus den jeweiligen Sensoren des Sensornetzes aus, filtert diese und
  verknüpft sie zu einer Ergebnismenge, die dann als Ergebnis der Abfrage
  zurückgegeben wird.
@@ -20478,9 +21376,9 @@ command
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-(Create/Drop) Sensor Buffer Container Pattern: Es können Tabellen im Arbeitsspei
-cher der Sensoren erstellt werden, die dann Werte von Sensoren aufnehmen
- und halten können.
+Create/Drop Set Container Pattern: Es können Tabellen im Arbeitsspeicher
+ der Sensoren erstellt werden, die dann Werte von Sensoren aufnehmen und
+ halten können.
  Die Erstellung solcher Tabellen wird durch SQL-CREATE BUFFER und das Löschen
  des gesamten Buffers durch SQL-DROP realisiert.
 \end_layout
@@ -20537,13 +21435,13 @@ en.
 \end_layout
 
 \begin_layout Itemize
-Set Cache (Sequential/Direct) Access Pattern: Realisierung ebenso wie bei
+Set Cache Sequential/Direct Access Pattern: Realisierung ebenso wie bei
  SQL-Datenbanken beschrieben.
 \end_layout
 
 \begin_layout Itemize
-Set Cache (Insert/Update/Delete/Rename) Pattern: Realisierung ebenso wie
- bei SQL- Datenbanken beschrieben.
+Set Cache Insert/Update/Delete/Rename Pattern: Realisierung ebenso wie bei
+ SQL- Datenbanken beschrieben.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -20559,33 +21457,31 @@ reference "sub:Datenmanagement-Patterns"
 \end_inset
 
  beschriebenen External Data Transport Patterns beschrieben.
- Dies sind die Similar Data Transport Patterns und die Similar Data Transport
+ Dies sind die Similar Data Transport Patterns und die Diverse Data Transport
  Patterns.
- Diese Patterns werden nur optional umgesetzt und deshalb vorerst nur sehr
- oberflächlich beschrieben.
 \end_layout
 
 \begin_layout Itemize
-(Similar/Diverse) Data Move Patterns: Die Patterns dieser Klasse werden
- dadurch realisiert, dass entsprechende vorhandene Patterns der Quell- und
- Zieldatenquelle genutzt werden.
+Similar/Diverse Data Move Patterns: Die Patterns dieser Klasse werden dadurch
+ realisiert, dass entsprechende vorhandene Patterns der Quell- und Zieldatenquel
+le und des Prozessspeichers genutzt werden.
  Am Beispiel des Move Set2Set Patterns würde dies folgendermaßen aussehen:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Mithilfe des Set Query Patterns werden die Daten aus der Quell-Datenbank
- abgefragt und
+Mithilfe des Set Retrieval 2PC Patterns werden die Daten aus der Quell-Datenbank
+ abgefragt und in den Prozessspeicher geladen.
 \end_layout
 
 \begin_layout Itemize
-mit dem Create Set Container Pattern wird auf der Ziel-Datenbank eine neue
+Mit dem Create Set Container Pattern wird auf der Ziel-Datenbank eine neue
  Tabelle erzeugt.
 \end_layout
 
 \begin_layout Itemize
-Anschließend werden die abgefragten Daten mit dem Set Insert Pattern in
- die erstellte Tabelle auf der Ziel-Datenbank eingefügt und
+Anschließend werden die abgefragten Daten mit dem Set Cache WriteBack Pattern
+ in die erstellte Tabelle auf der Ziel-Datenbank eingefügt und
 \end_layout
 
 \begin_layout Itemize
@@ -20595,25 +21491,25 @@ die Ursprungstabelle der abgefragten Daten mit dem Drop Set Container Pattern
 
 \end_deeper
 \begin_layout Itemize
-(Similar/Diverse) Data Copy Patterns: Die Patterns dieser Klasse werden
- ebenfalls dadurch realisiert, dass entsprechende vorhandene Patterns der
- Quell- und Zieldatenquelle genutzt werden.
+Similar/Diverse Data Copy Patterns: Die Patterns dieser Klasse werden ebenfalls
+ dadurch realisiert, dass entsprechende vorhandene Patterns der Quell- und
+ Zieldatenquelle und des Prozessspeichers genutzt werden.
  Am Beispiel des Copy Set2Set Patterns würde dies folgendermaßen aussehen:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Mithilfe des Set Query Patterns werden die Daten aus der Quell-Datenbank
- abgefragt und
+Mithilfe des Set Retrieval 2PC Patterns werden die Daten aus der Quell-Datenbank
+ abgefragt und in den Prozessspeicher geladen.
 \end_layout
 
 \begin_layout Itemize
-mit dem Create Set Container Pattern wird auf der Ziel-Datenbank eine neue
+Mit dem Create Set Container Pattern wird auf der Ziel-Datenbank eine neue
  Tabelle erzeugt.
 \end_layout
 
 \begin_layout Itemize
-Abschließend werden die abgefragten Daten mit dem Set Insert Pattern in
+Abschließend werden die abgefragten Daten mit dem Set Cache WriteBack in
  die erstellte Tabelle auf der Ziel-Datenbank eingefügt.
 \end_layout
 
@@ -20636,40 +21532,21 @@ x
 \begin_inset Quotes erd
 \end_inset
 
- markiert dabei die vollständige Umsetzung in der ersten Iterationsstufe,
- ein 
-\begin_inset Quotes eld
+ markiert dabei die vollständige Umsetzung eines Patterns für einen Datenquellen
+typ.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Nochmal mit Michael zusammen durchgehen...
+\end_layout
+
 \end_inset
 
-t
-\begin_inset Quotes erd
-\end_inset
 
- die teilweise bzw.
- prototypische Umsetzung in der ersten Iterationsstufe, ein 
-\begin_inset Quotes eld
-\end_inset
-
-(x)
-\begin_inset Quotes erd
-\end_inset
-
- die Umsetzung in dieser Iterationsstufe und ein 
-\begin_inset Quotes eld
-\end_inset
-
-o
-\begin_inset Quotes erd
-\end_inset
-
- die generell optionale Umsetzung eines Patterns für einen Datenquellentyp.
- Es sind auch Mischformen möglich, wie z.B.
- "t/(x)
-\begin_inset Quotes erd
-\end_inset
-
- für eine vorerst teilweise und später vollständige Umsetzung oder "t/o"
- für eine vorerst teilweise und spätere optionale vollständige Umsetzung.
 \end_layout
 
 \begin_layout Standard
@@ -20677,10 +21554,6 @@ o
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -20704,7 +21577,7 @@ name "tab:Umsetzung-DMPatterns-DQTypen"
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="24" columns="6">
+<lyxtabular version="3" rows="23" columns="6">
 <features firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="top" width="5cm">
 <column alignment="center" valignment="top" width="1.5cm">
@@ -20746,6 +21619,10 @@ XML-DB
 
 \begin_layout Plain Layout
 Dateisys.
+\end_layout
+
+\begin_layout Plain Layout
+(CSV)
 \end_layout
 
 \end_inset
@@ -20810,7 +21687,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -20848,7 +21725,7 @@ Tree Query Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -20913,7 +21790,7 @@ File Query Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -21110,62 +21987,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Set Rename Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-o
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 Tree Insert Pattern
 \end_layout
 
@@ -21184,7 +22005,7 @@ Tree Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21240,7 +22061,7 @@ Tree Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21296,7 +22117,7 @@ Tree Replace Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21352,7 +22173,7 @@ Tree Rename Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21408,7 +22229,7 @@ Node Content Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21464,7 +22285,7 @@ Node Content Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21520,7 +22341,7 @@ Node Content Replace Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21585,7 +22406,7 @@ File Content Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -21641,7 +22462,7 @@ File Content Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -21697,7 +22518,7 @@ File Content Replace Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+
 \end_layout
 
 \end_inset
@@ -21791,7 +22612,7 @@ Alter Set Container Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21912,7 +22733,7 @@ Create Tree Container Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -21968,7 +22789,7 @@ Alter Tree Container Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -22024,7 +22845,7 @@ Drop Tree Container Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -22079,7 +22900,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="37" columns="6">
+<lyxtabular version="3" rows="34" columns="6">
 <features firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="top" width="5cm">
 <column alignment="center" valignment="top" width="1.5cm">
@@ -22121,6 +22942,10 @@ XML-DB
 
 \begin_layout Plain Layout
 Dateisys.
+\end_layout
+
+\begin_layout Plain Layout
+(CSV)
 \end_layout
 
 \end_inset
@@ -22176,7 +23001,7 @@ Create File Directory Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -22232,7 +23057,7 @@ Alter File Directory Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -22288,7 +23113,7 @@ Drop File Directory Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -22344,7 +23169,7 @@ Create File Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -22400,7 +23225,7 @@ Alter File Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -22456,7 +23281,7 @@ Drop File Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -22466,118 +23291,6 @@ Drop File Pattern
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row newpage="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Create Sensor Buffer Container Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-o
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row newpage="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Drop Sensor Buffer Container Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-o
 \end_layout
 
 \end_inset
@@ -22606,7 +23319,7 @@ Stored Procedure Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -22615,7 +23328,7 @@ Stored Procedure Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -22662,7 +23375,7 @@ Set Retrieval 2PC Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -22689,7 +23402,7 @@ Set Retrieval 2PC Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -22754,7 +23467,7 @@ Set Cache Sequential Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -22810,7 +23523,7 @@ Set Cache Direct Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -22866,7 +23579,7 @@ Set Cache Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -22922,7 +23635,7 @@ Set Cache Update Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -22978,63 +23691,7 @@ Set Cache Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row newpage="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Set Cache Rename Pattern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-o
+?
 \end_layout
 
 \end_inset
@@ -23054,7 +23711,7 @@ Set Cache WriteBack Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23119,7 +23776,7 @@ Tree Retrieval 2PC Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23202,7 +23859,7 @@ Tree Cache Hierarchical Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23258,7 +23915,7 @@ Tree Cache Sequential Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23314,7 +23971,7 @@ Tree Cache Direct Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23370,7 +24027,7 @@ Tree Cache Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23426,7 +24083,7 @@ Tree Cache Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23482,7 +24139,7 @@ Tree Cache Replace Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23538,7 +24195,7 @@ Tree Cache Rename Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23594,7 +24251,7 @@ Node Content Cache Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23650,7 +24307,7 @@ Node Content Cache Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23706,7 +24363,7 @@ Node Content Cache Replace Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23735,7 +24392,7 @@ Tree Cache WriteBack Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -23800,7 +24457,7 @@ File Retrieval 2PC Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -23874,7 +24531,7 @@ CSV File Cache Sequential Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -23930,7 +24587,7 @@ CSV File Cache Direct Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -23986,7 +24643,7 @@ File Content Cache Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -24042,7 +24699,7 @@ File Content Cache Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -24098,7 +24755,7 @@ File Content Cache Replace Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+?
 \end_layout
 
 \end_inset
@@ -24136,7 +24793,7 @@ File Cache WriteBack Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+
 \end_layout
 
 \end_inset
@@ -24195,7 +24852,7 @@ reference "sub:Umsetzung-der-Datenmanagement"
  Dazu gehört z.B.
  auch, welche Attribute welchen Typs für die einzelnen Aktivitäten benötigt
  werden.
- Generell gilt, dass alle Aktivitäten mindestens die fünf Variablen 
+ Generell gilt, dass alle Aktivitäten mindestens die fünf Attribute 
 \series bold
 \emph on
 dsType
@@ -24221,7 +24878,7 @@ dsStatement
 \series default
 \emph default
  vom Typ String besitzen.
- Die Variable 
+ Das Attribut 
 \series bold
 \emph on
 dsType
@@ -24230,7 +24887,7 @@ dsType
  dient zur Angabe des Datenquellentyps, für den die Aktivität ausgeführt
  wird, also ob es sich um ein Dateisystem, eine Datenbank oder ein Sensornetz
  handelt.
- Die Variable 
+ Das Attribut 
 \series bold
 \emph on
 dsKind
@@ -24239,7 +24896,7 @@ dsKind
  dient zur Angabe der genaueren Datenquellenart, d.h.
  um was für ein Dateisystem, was für eine Datenbank oder welche Art von
  Sensornetz es sich handelt.
- Die Variable 
+ Das Attribut 
 \series bold
 \emph on
 dsLanguage
@@ -24248,13 +24905,13 @@ dsLanguage
  dient zur Angabe der verwendeten Abfragesprache.
  Diese Informationen sind wichtig, um intern den richtigen SQL-Dialekt bzw.
  Befehlssatz für die entsprechende Datenquelle auszuwählen.
- Die Variable 
+ Das Attribut 
 \series bold
 \emph on
 dsAddress
 \series default
 \emph default
- dient zur Angabe der Datenquellenadresse und die Variable 
+ dient zur Angabe der Datenquellenadresse und 
 \series bold
 \emph on
 dsStatement
@@ -24263,7 +24920,7 @@ dsStatement
 \emph default
 zur Haltung des entsprechenden Systemaufrufs bzw.
  SQL- oder XQuery-Befehls, der ausgeführt werden soll.
- Da jede der definierten Aktivitäten diese fünf Variablen besitzt, werden
+ Da jede der definierten Aktivitäten diese fünf Attribute besitzt, werden
  diese nachfolgend als 
 \series bold
 \emph on
@@ -24279,7 +24936,7 @@ key "key-4"
 \end_inset
 
 ) in den Listings angegeben und nur falls benötigt weitere aktivitätsspezifische
- Variablen beschrieben.
+ Attribute beschrieben.
  Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24287,19 +24944,18 @@ reference "lst:simpl-attributes"
 
 \end_inset
 
- führt die fünf Datenmanagement-Variablen nocheinmal auf.
+ führt die fünf Datenmanagement-Attribute nocheinmal auf.
  Weiterhin werden die verschiedenen Ausprägungen der einzelnen Aktivitäten
- im Hinblick auf die zugrundeliegende Datenquelle aufgezeigt, so dass am
+ im Hinblick auf die zugrundeliegende Datenquelle aufgezeigt, sodass am
  Ende ein vollständiger Überblick aller definierten Aktivitäten und ihrer
  Ausprägungen vorliegt.
- Generell gibt es durch die verschiedenen Datenquellen nur wenige strukturelle
+ Generell gibt es durch die verschiedenen Datenquellen keine strukturellen
  Unterschiede in den Aktivitäten.
- Das liegt vor allem daran, dass auf datenquellenspezifische Eigenschaften
- bereits in der graphischen Oberfläche, also dem Eclipse BPEL Designer,
- eingegangen werden soll und diese so durch entsprechende Dialoge intern
- immer auf dieselbe Struktur abgebildet werden können.
- Eben dazu sollen alle Befehle auch über entsprechende graphische Elemente
- angegeben werden können, indem sie einfach 
+ Dadurch spielen datenquellenspezifische Eigenschaften keine Rolle in der
+ graphischen Oberfläche, wodurch eine einheitliche Benutzeroberfläche für
+ alle Aktivitäten realisiert werden kann.
+ Alle Abfragebefehle sollen über entsprechende graphische Elemente angegeben
+ werden können, indem sie einfach 
 \begin_inset Quotes eld
 \end_inset
 
@@ -24330,15 +24986,8 @@ reference "fig:Eigenschaftsfenster-einer-Data-Management-Aktivität"
 
 \end_inset
 
- dargestellt, über die Angabe von Befehlen im 
-\begin_inset Quotes eld
-\end_inset
-
-Resulting statement
-\begin_inset Quotes erd
-\end_inset
-
--Textfeld genutzt werden.
+ dargestellt, über die Angabe von Befehlen im Abfragebefehls-Textfeld genutzt
+ werden.
  So weit es möglich ist, wird allerdings versucht, den vollen Sprachumfang
  bereits durch die grafische Modellierung der Befehle abzudecken.
 \end_layout
@@ -24367,8 +25016,6 @@ key "key-4"
 \end_inset
 
  beschriebenen Notationen und Definitionen verwendet.
- Die Schemata der DM-Aktivitäten werden im Verlauf der weiteren Iteration
- vervollständigt.
 \end_layout
 
 \begin_layout Standard
@@ -24632,7 +25279,7 @@ Update Aktivität
 \end_layout
 
 \begin_layout Standard
-Diese Aktivität setzt die Data Update Patterns um.
+Diese Aktivität setzt die Data Update/Replace/Rename Patterns um.
  Sie ermöglicht es, auf einer Datenquelle hinterlegte Daten zu aktualisieren.
  Diese Aktivität kann nicht auf Sensornetze angewendet werden.
  Listing 
@@ -24844,7 +25491,7 @@ CREATE SCHEMA
 \end_layout
 
 \begin_layout Itemize
-optional:
+mögliche Erweiterungen:
 \end_layout
 
 \begin_deeper
@@ -24867,7 +25514,7 @@ CREATE TRIGGER
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-optional Sensornetze:
+mögliche Erweiterungen für Sensornetze:
 \end_layout
 
 \begin_deeper
@@ -24878,7 +25525,7 @@ CREATE BUFFER
 \end_deeper
 \begin_layout Standard
 Diese Aktivität wird für XQuery-Datenbanken nicht realisiert.
- Ebenso werden in dieser Iterationsstufe keine weiteren Befehle umgesetzt.
+ Ebenso werden keine weiteren Befehle umgesetzt.
  Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25000,7 +25647,7 @@ DROP SCHEMA
 \end_layout
 
 \begin_layout Itemize
-optional:
+mögliche Erweiterungen:
 \end_layout
 
 \begin_deeper
@@ -25023,7 +25670,7 @@ DROP TRIGGER
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-optional Sensornetze:
+mögliche Erweiterungen für Sensornetze:
 \end_layout
 
 \begin_deeper
@@ -25034,7 +25681,7 @@ DROP ALL
 \end_deeper
 \begin_layout Standard
 Diese Aktivität wird für XQuery-Datenbanken nicht realisiert.
- Ebenso werden in dieser Iterationsstufe keine weiteren Befehle umgesetzt.
+ Ebenso werden keine weiteren Befehle umgesetzt.
  Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25123,8 +25770,7 @@ Call Aktivität
 \begin_layout Standard
 Diese Aktivität setzt das Stored Procedure Pattern um.
  Sie ermöglicht es, auf der Datenquelle hinterlegte Prozeduren auszuführen.
- Diese Aktivität kann vorerst nur für relationale Datenbanken verwendet
- werden.
+ Diese Aktivität wird nur für relationale Datenbanken umgesetzt.
  Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25213,15 +25859,13 @@ RetrieveData Aktivität
 \begin_layout Standard
 Diese Aktivität setzt die Data Retrieval to Process Cache Patterns um.
  Sie ermöglicht es, Daten von Datenquellen in den BPEL-Prozess zu laden.
- Dafür wird das Attribut 
+ Dafür wird das zusätzliche Attribut 
 \emph on
 dataVariable
 \emph default
  verwendet, in das eine Referenz auf eine BPEL-Variable abgelegt werden
  kann.
- Diese Aktivität kann vorerst nur für relationale Datenbanken verwendet
- werden, später ist noch eine Ausweitung auf Dateisysteme für die Unterstützung
- des CSV-Dateiformats geplant.
+ Diese Aktivität wird nur für relationale Datenbanken und CSV-Dateien umgesetzt.
  Listing 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25314,7 +25958,7 @@ Schema einer RetrieveData Aktivität
 \end_layout
 
 \begin_layout Subsubsection*
-Optionale Aktivitäten:
+Mögliche Erweiterungen:
 \end_layout
 
 \begin_layout Itemize
@@ -25342,6 +25986,21 @@ Alter Aktivität:
  zu benennen oder zu verwerfen.
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Transfer Aktivität:
+\series default
+ Diese Aktivität setzt die External Data Transport Patterns um.
+ Sie ermöglicht das externe Kopieren oder Verschieben von externen Daten
+ in derselben Datenstruktur, wie z.B.
+ das Kopieren von relationalen Daten in eine relationale Datenbank (Similar
+ Data Transport Patterns) und das externe Kopieren oder Verschieben von
+ externen Daten aus einer Datenstruktur in eine andere, wie z.B.
+ das Kopieren von relationalen Daten in eine XML-Datenbank (Diverse Data
+ Transport Patterns).
+\end_layout
+
 \begin_layout Standard
 In Tabelle 
 \begin_inset CommandInset ref
@@ -25360,26 +26019,17 @@ x
 \begin_inset Quotes erd
 \end_inset
 
- für die vollständige Anwendbarkeit einer Aktivität auf eine Datenquelle,
- ein 
+ für die vollständige Anwendbarkeit einer Aktivität auf eine Datenquelle
+ und ein 
 \begin_inset Quotes eld
 \end_inset
 
-(x)
+m
 \begin_inset Quotes erd
 \end_inset
 
- dafür, dass diese Aktivität erst in dieser Iteration auf eine Datenquelle
- angewendet werden kann und ein 
-\begin_inset Quotes eld
-\end_inset
-
-o
-\begin_inset Quotes erd
-\end_inset
-
- dafür, dass eine Aktivität momentan nicht mit einer entsprechenden Datenquelle
- verwendet werden kann und die Umsetzung lediglich optional ist.
+ dafür, dass eine Anwendung einer Aktivität auf diese Datenquelle theoretisch
+ möglich ist, aber nicht umgesetzt wird.
  Die Markierung 
 \begin_inset Quotes eld
 \end_inset
@@ -25404,6 +26054,20 @@ reference "sub:Umsetzung-der-Datenmanagement"
 
  beschriebenen Umstände überhaupt nicht mit dieser Datenquelle verwendet
  werden kann.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Nochmal durchsprechen und ggf.
+ validieren/testen, ob die einzelnen Fälle funktionieren.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -25516,7 +26180,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25525,7 +26189,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25534,7 +26198,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25563,7 +26227,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25572,7 +26236,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25610,7 +26274,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25619,7 +26283,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+m
 \end_layout
 
 \end_inset
@@ -25657,7 +26321,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25666,7 +26330,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25704,7 +26368,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25713,7 +26377,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25722,7 +26386,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25751,7 +26415,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25760,7 +26424,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25769,7 +26433,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25789,7 +26453,7 @@ Call Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25798,7 +26462,7 @@ Call Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25836,7 +26500,7 @@ RetrieveData Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25845,7 +26509,7 @@ RetrieveData Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25854,7 +26518,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-(x)
+x
 \end_layout
 
 \end_inset
@@ -25863,7 +26527,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25883,7 +26547,7 @@ WriteBack Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25892,7 +26556,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25901,7 +26565,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25930,7 +26594,7 @@ Alter Aktivität
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25939,7 +26603,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25948,7 +26612,7 @@ o
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+m
 \end_layout
 
 \end_inset
@@ -25994,7 +26658,7 @@ Authentifizierung und Autorisierung
 \end_layout
 
 \begin_layout Standard
-Dieser Abschnitt behandelt die Authentifizierung und Autorisierung bei dem
+Dieser Abschnitt behandelt die Authentifizierung und Autorisierung beim
  Zugriff auf Datenquellen und die dabei eingesetzten Technologien und Konzepte.
  Bei beiden Verfahren handelt es sich um Verfahren auf Seite der Datenquellen,
  d.h.
@@ -26014,28 +26678,33 @@ Authentifizierung
 
 \begin_layout Standard
 Bei der Authentifizierung wird vor dem eigentlichen Zugriff zunächst ein
- Vertrauensverhältnis zwischen Benutzer und Datenquelle hergestellt.
+ Vertrauensverhältnis zwischen Klient und Datenquelle hergestellt.
  Je nach Verfahren wird dabei das Vertrauen einseitig oder auch beidseitig
  hergestellt.
  Für das Rahmenwerk soll dabei das Konzept des Single Sign On (SSO) angewendet
  werden, das nach einer erfolgreich durchgeführten Authentifizierung verhindert,
- dass bei weiteren Zugriffen eine erneute Authentifizierung durchgeführt
- werden muss.
- Unabhängig von der Realisierung, soll das für den Benutzer auch bedeuten,
+ dass bei weiteren Zugriffen auf dieselbe Datenquelle eine erneute Authentifizie
+rung durchgeführt werden muss.
+ Unabhängig von der Realisierung soll das für den Benutzer auch bedeuten,
  dass die Authentifizierungsinformationen nicht in jeder DM-Aktivität zu
  einer Datenquelle redundant angegeben werden müssen.
  Vorerst wird nur ein Verfahren mit Benutzername und Passwort realisiert.
- Benutzername und Passwort können in der ersten Iteration zunächst nur in
- den Globalen Einstellungen (siehe 
+ Benutzername und Passwort können im Deployment-Deskriptor (siehe Kapitel
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Globale-Einstellungen"
+reference "sub:ODE-Deployment-Deskriptor"
 
 \end_inset
 
-) für alle Datenquellen festgelegt werden.
- In einer weiteren Iterationsstufe wird die separate Angabe dieser Daten
- für jede Datenquelle möglich sein.
+) oder über das UDDI Web Interface (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datenquellen-Registry-Web-Interface"
+
+\end_inset
+
+) für eine Datenquelle festgelegt werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26048,24 +26717,7 @@ Eine Autorisierung findet meist nach einer erfolgreichen Authentifizierung
  die Operation, die ausgeführt werden soll, berechtigt ist.
  Dazu werden Zugriffsrechte überprüft, die als Regeln formuliert auf Seite
  der Datenquellen verwaltet werden.
- In der ersten Iteration wird lediglich die Autorisierung über Benutzername
- und Passwort unterstützt.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Sollen wir wenn es geht Autorisierunginformationen abrufen und die Autorisierung
- auf SIMPL Seite durchführen, um dem Benutzer zB bestimmte Operationen erst
- gar nicht zur Auswahl zu stellen? Oder einfach zulassen und auf einen Fehler
- warten?
-\end_layout
-
-\end_inset
-
-
+ Es wird lediglich die Autorisierung über Benutzername und Passwort unterstützt.
 \end_layout
 
 \begin_layout Subsection
@@ -26543,6 +27195,12 @@ Dieses Event wird erzeugt, wenn bei der Ausführung einer DM-Aktivität ein
 
 \end_deeper
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datenquellen-Policies"
+
+\end_inset
+
 Datenquellen Policies
 \end_layout
 
@@ -27671,7 +28329,8 @@ An Overview of SQL Support in Workflow Products
 .
  In: Proc.
  of the 24th International Conference on Data Engineering (ICDE 2008), Cancún,
- México, 7.April - 12.
+ México, 7.
+ - 12.
  April 2008
 \end_layout
 
@@ -27689,7 +28348,9 @@ Towards Reference Passing in Web Service and Workflow-based Applications
 .
  In: Proc.
  of the 13th IEEE Enterprise Distributed Object Conference (EDOC 2009),
- Auckland, New Zealand, 31.August - 04.September 2009.
+ Auckland, New Zealand, 31.
+ August - 04.
+ September 2009.
 \end_layout
 
 \begin_layout Bibliography
@@ -27902,7 +28563,7 @@ key "key-23"
 
 \end_inset
 
-Steinmetz, Th.: 
+Steinmetz, T.: 
 \emph on
 Ein Event-Modell für WS-BPEL 2.0 und dessen Realisierung in Apache ODE
 \emph default
