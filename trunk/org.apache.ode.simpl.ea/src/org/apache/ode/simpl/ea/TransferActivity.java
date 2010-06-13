@@ -32,10 +32,10 @@ public class TransferActivity extends DataManagementActivity {
 //		ScopeEvent DMStarted = new DMStarted();
 //		context.getInternalInstance().sendEvent(DMStarted);
 
-		// Laden alle Attributwerte aus der Aktivität.
+		// Load all attribute values from the activity.
 		loadSIMPLAttributes(context, element);
 
-		// Laden der Transfer-spezifischen Attribute
+		// Load all specific attribute values from the TransferActivity.
 		Attr targetDsAddressAttr = element.getAttributeNode("targetDsAddress");
 		String targetDsAddress = targetDsAddressAttr.getValue();
 		

@@ -19,16 +19,25 @@ public class DeploymentInfos {
 
 	static Logger logger = Logger.getLogger(DeploymentInfos.class);
 
+	/**
+	 * Queries the data source of a activity from a data source registry and/or
+	 * the deployment descriptor.
+	 * 
+	 * @param activityName of the activity.
+	 * @param dataSourceName of the data source.
+	 * @return The data source with the given name of the specified activity.
+	 */
 	public static DataSource getActivityDataSource(String activityName,
 			String dataSourceName) {
 		DataSource data = null;
 
 		if (dataSourceName.contains("uddi:")) {
 			// Query the data source from uddi (on demand)
-			data = DeploymentUtils.getInstance().getUDDIDataSourceByName(dataSourceName);
+			data = DeploymentUtils.getInstance().getUDDIDataSourceByName(
+					dataSourceName);
 		} else {
 			// Query the data source from the deployment-descriptor
-			
+
 			// If we have a activity-policy mapping, we have a
 			// late binding data source with policy.
 			// If no such mapping exists, we use the logical name

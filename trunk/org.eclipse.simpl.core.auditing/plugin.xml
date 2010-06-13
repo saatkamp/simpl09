@@ -4,8 +4,7 @@
    <extension
          point="org.eclipse.simpl.core.adminConsoleItem">
       <adminConsoleItem
-            label="Auditing"
-            position="2">
+            label="Auditing">
          <adminConsoleItem
                composite="org.eclipse.simpl.core.auditing.ui.AuditingGeneralComposite"
                label="General">
