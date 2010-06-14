@@ -1,9 +1,8 @@
 package org.apache.ode.simpl.events.listener;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.pmapi.TEventInfo;
@@ -17,10 +16,12 @@ public class EventWriter {
 	protected static final Log logger = LogFactory.getLog(EventWriter.class);
 
 	DataObject dataObject = null;
+	List<String> primaryKeys = new ArrayList<String>();
 
 	public EventWriter() {
 		dataObject = DataFormatProvider.getInstance(
 				AuditingParameters.getInstance().getDSFormat()).getSDO();
+		primaryKeys.add("event_id");
 	}
 
 	public void write(TEventInfo eventInfo) {
@@ -30,36 +31,31 @@ public class EventWriter {
 		tableObject = dataObject.createDataObject("table");
 		tableObject.set("name", "auditing_table");
 		tableObject.set("catalog", "");
-		tableObject.set("schema", "SimplAuditing");
-
-		// Primary Key (Auto Increment)
+		//TODO: Das Schema sollte von Außen angegeben werden können...
+		//Weiterhin kann bei der DB2 nicht einfach irgendein nicht existierendes Schema als default genutzt werden
+		tableObject.set("schema", "");
+		
+		tableObject.set("primaryKey", primaryKeys);
+		
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "event_id");
-		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
-		columnObject.set("value", null);
-
-		// Detail if für verschiedene Details
+		columnObject.set("type", "VARCHAR(255)");
+		columnObject.set("value", eventInfo.getInstanceId()+"_"+eventInfo.getTimestamp().toString());
+		
 		columnObject = tableObject.createDataObject("column");
-		columnObject.set("name", "detail");
+		columnObject.set("name", "event_type");
 		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
-		columnObject.set("value", eventInfo.toString());
-		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		columnObject.set("value", eventInfo.getType());
 		
-		ObjectOutputStream objOut;
-		try {
-			objOut = new ObjectOutputStream(byteArrayOutputStream);
-			objOut.writeObject(eventInfo);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		
-		String blob = new String(byteArrayOutputStream.toByteArray());
-		
-		// serialisiertes Objekt
 		columnObject = tableObject.createDataObject("column");
-		columnObject.set("name", "data");
-		columnObject.set("type", "BLOB");
-		columnObject.set("value", blob);
+		columnObject.set("name", "process_id");
+		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
+		columnObject.set("value", eventInfo.getProcessId().getLocalPart());
+		
+		columnObject = tableObject.createDataObject("column");
+		columnObject.set("name", "instance_id");
+		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
+		columnObject.set("value", eventInfo.getInstanceId());
 
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "scope_id");
@@ -68,23 +64,20 @@ public class EventWriter {
 
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "tstamp");
-		columnObject.set("type", "TIMESTAMP");
+		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
 		columnObject.set("value", eventInfo.getTimestamp().toString());
 
+		// serialisiertes Objekt
 		columnObject = tableObject.createDataObject("column");
-		columnObject.set("name", "event_type");
+		columnObject.set("name", "data");
 		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
-		columnObject.set("value", eventInfo.getType());
+		columnObject.set("value", eventInfo.toString());
 
-		columnObject = tableObject.createDataObject("column");
-		columnObject.set("name", "instance_id");
-		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
-		columnObject.set("value", eventInfo.getInstanceId());
-
-		columnObject = tableObject.createDataObject("column");
-		columnObject.set("name", "process_id");
-		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
-		columnObject.set("value", eventInfo.getProcessId());
+//		// Detail if für verschiedene Details
+//		columnObject = tableObject.createDataObject("column");
+//		columnObject.set("name", "detail");
+//		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
+//		columnObject.set("value", eventInfo.toString());
 
 		logger.debug("Auditing data source: " + AuditingParameters.getInstance().getDataSource().getAddress());
 		
