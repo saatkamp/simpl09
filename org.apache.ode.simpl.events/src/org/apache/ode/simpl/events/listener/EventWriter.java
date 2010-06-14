@@ -1,13 +1,12 @@
 package org.apache.ode.simpl.events.listener;
 
-import java.util.HashMap;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.ode.bpel.pmapi.TEventInfo;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.helpers.Printer;
-import org.simpl.core.services.administration.AdministrationService;
 import org.simpl.core.services.dataformat.DataFormatProvider;
-import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;
@@ -40,12 +39,26 @@ public class EventWriter {
 		columnObject.set("name", "detail");
 		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
 		columnObject.set("value", setDetails(eventInfo));
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		
+		ObjectOutputStream objOut;
+		try {
+			objOut = new ObjectOutputStream(byteArrayOutputStream);
+			objOut.writeObject(eventInfo);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		String blob = new String(byteArrayOutputStream.toByteArray());
+		
+		
 
 		// serialisiertes Objekt
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "data");
 		columnObject.set("type", "BLOB");
-		columnObject.set("value", "");
+		columnObject.set("value", blob);
 
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "scope_id");

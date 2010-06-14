@@ -84,8 +84,8 @@ public class SimplSdoEventListener implements BpelEventListener {
 		// String xml = ei.toString();
 		// logger.debug(xml);
 
-		Boolean auditing = true;
-		if (auditing) {
+		
+		if (AuditingParameters.getInstance().isMode()) {
 			writer.write(ei);
 		}
 		
