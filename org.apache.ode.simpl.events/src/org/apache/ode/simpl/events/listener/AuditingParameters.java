@@ -2,6 +2,7 @@ package org.apache.ode.simpl.events.listener;
 
 import java.util.HashMap;
 
+import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 
 public class AuditingParameters {
@@ -9,7 +10,7 @@ public class AuditingParameters {
 	private static AuditingParameters auditingParameters = null;
 
 	private HashMap<String, String> settings = new HashMap<String, String>();
-	private HashMap<String, String> lastSettings = new HashMap<String, String>();
+	private HashMap<String, String> lastSettings = null;
 
 	private DataSource dataSource = new DataSource();
 
@@ -34,8 +35,13 @@ public class AuditingParameters {
 	public static AuditingParameters getInstance() {
 		if (auditingParameters == null) {
 			auditingParameters = new AuditingParameters();
+			auditingParameters.loadSettings();
 		}
 		return auditingParameters;
+	}
+
+	private void loadSettings() {
+		this.settings = SIMPLCore.getInstance().administrationService().loadSettings("AUDITING", "GENERAL", "lastSaved");
 	}
 
 	public void setSettings(HashMap<String, String> settings) {
@@ -99,6 +105,12 @@ public class AuditingParameters {
 		return varchar_type;
 	}
 	
-	
+	public String getDSFormat() {
+		if (this.settings.isEmpty()){
+			return "RDB";
+		}else {
+			return this.settings.get(DS_FORMAT);
+		}
+	}
 
 }
