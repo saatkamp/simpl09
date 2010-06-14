@@ -153,7 +153,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -610,7 +610,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.3
 \end_layout
 
 \end_inset
@@ -619,7 +619,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+15.06.2010
 \end_layout
 
 \end_inset
@@ -628,7 +628,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+bruededl
 \end_layout
 
 \end_inset
@@ -637,7 +637,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Beschreibung der Propertie Views
 \end_layout
 
 \end_inset
@@ -648,7 +648,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.4
 \end_layout
 
 \end_inset
@@ -657,7 +657,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+14.06.2010
 \end_layout
 
 \end_inset
@@ -666,7 +666,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+bruededl
 \end_layout
 
 \end_inset
@@ -675,7 +675,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Beschreibung der Statement Editoren
 \end_layout
 
 \end_inset
@@ -3750,12 +3750,9 @@ Insert-Statement-Editor_Select
 
 \begin_layout Standard
 Das Select Schlüsselwort wird analog wie im Query Statement Editor verwendet.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Querverweis
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Query-Statement-Editor"
 
 \end_inset
 
@@ -3763,6 +3760,12 @@ Querverweis
 \end_layout
 
 \begin_layout Subparagraph
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Query-Statement-Editor"
+
+\end_inset
+
 Query Statement Editor
 \end_layout
 
@@ -4259,16 +4262,6 @@ Insert to table
 \end_inset
 
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-wird noch gemacht
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4317,8 +4310,156 @@ Create Statement Editor 2
 Retrieve Data Statement Editor
 \end_layout
 
+\begin_layout Standard
+Retrieve Data Statement Editor ist identisch zum Query Statement Editor,
+ deswegen wird hier nur auf diesen verwiesen.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Query-Statement-Editor"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subparagraph
 Update Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Editor behandelt die Update-SQL-Abfragen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Update_Statement_Editor.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Update-Statement-Editor"
+
+\end_inset
+
+Update Statement Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Der Benutzer wählt in der linken Spalte zuerst einen Tabellenna
+me aus.
+ Danach werden die Spaltennamen in der zweiten Tabelle angezeigt.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+Type of the value
+\begin_inset Quotes erd
+\end_inset
+
+ gibt man dann einen Wert für diese Spalte ein.
+ Zuletzt benutzt man 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+ um den Eintrag zwischenzuspeichern.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Update-Statement-Editor"
+
+\end_inset
+
+ist die 
+\begin_inset Quotes eld
+\end_inset
+
+Set oriented
+\begin_inset Quotes erd
+\end_inset
+
+ View aktiviert.
+ Dies kann man auch 
+\begin_inset Quotes eld
+\end_inset
+
+table oriented
+\begin_inset Quotes erd
+\end_inset
+
+ , also tabellenorientiert, darstellen lassen wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Update-Statement-Editor2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/SIMPL_DM_Update_Statement_Editor_TableOriented.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Update-Statement-Editor2"
+
+\end_inset
+
+Update Statement Editor - Tabellenorientiert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
