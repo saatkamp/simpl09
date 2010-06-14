@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1617,6 +1617,26 @@ ine implementiert und in diese als Plug-In (BPEL-DM Extension Activities)
  eingebunden.
  Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
  die Datenquellen können auf verschiedene Server verteilt sein.
+ Das RRS Plug-In bindet ein Reference Resolution System (RRS) für die Verwendung
+ von Referenzen auf Daten in BPEL in Eclipse ein (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Reference-Resolution-System"
+
+\end_inset
+
+).
+ Das UDDI Plug-In bindet eine Datenquellen-Registry in Eclipse ein (siehe
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+).
+ Die dort hinterlegten Datenquellen können dann bei der Modellierung von
+ Prozessen in den DM-Aktivitäten ausgewählt werden.
 \end_layout
 
 \begin_layout Standard
@@ -14496,22 +14516,6 @@ name "sub:Transformation-des-Modells"
 \end_inset
 
 Transformation des Modells
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Noch genauer beschreiben, da aus dem Feinentwurf hierauf referenziert wird.
- Hier sollte genau klar werden was die Implementierung bereits realisiert
- und was noch fehlt.
- Weiterhin sollten auch durch entsprechende Listings die einzelnen (bereits
- umgesetzten) Use-Cases exakt beschrieben werden (Assign derefenziert vs.
- referenziert), damit der Leser versteht, was im Hintergrund passiert und
- warum es so durchgeführt wird.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -21537,19 +21541,6 @@ typ.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Nochmal mit Michael zusammen durchgehen...
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
@@ -23467,7 +23458,7 @@ Set Cache Sequential Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -23523,7 +23514,7 @@ Set Cache Direct Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -23579,7 +23570,7 @@ Set Cache Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -23635,7 +23626,7 @@ Set Cache Update Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -23691,7 +23682,7 @@ Set Cache Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -24457,7 +24448,7 @@ File Retrieval 2PC Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+x
 \end_layout
 
 \end_inset
@@ -24531,7 +24522,7 @@ CSV File Cache Sequential Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -24587,7 +24578,7 @@ CSV File Cache Direct Access Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -24643,7 +24634,7 @@ File Content Cache Insert Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -24699,7 +24690,7 @@ File Content Cache Delete Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -24755,7 +24746,7 @@ File Content Cache Replace Pattern
 \begin_inset Text
 
 \begin_layout Plain Layout
-?
+
 \end_layout
 
 \end_inset
@@ -26057,29 +26048,11 @@ reference "sub:Umsetzung-der-Datenmanagement"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Nochmal durchsprechen und ggf.
- validieren/testen, ob die einzelnen Fälle funktionieren.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float table
 placement H
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -26103,7 +26076,7 @@ e Datenquellen
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="5">
+<lyxtabular version="3" rows="12" columns="5">
 <features>
 <column alignment="center" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="1.5cm">
@@ -26581,11 +26554,58 @@ m
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Alter Aktivität
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transfer Aktivität
 \end_layout
 
 \end_inset
