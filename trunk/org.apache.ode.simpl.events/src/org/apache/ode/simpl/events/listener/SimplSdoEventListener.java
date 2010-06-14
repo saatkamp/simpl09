@@ -55,46 +55,24 @@ public class SimplSdoEventListener implements BpelEventListener {
 	boolean initialized = false;
 	protected Calendar _calendar = Calendar.getInstance();
 
-//	private int counter = 0;
-
 	public void onEvent(BpelEvent bpelEvent) {
-		if (!initialized)
+		if (!initialized) {
 			return;
-
-		String msg = serializeEvent(bpelEvent);
-		if (msg != null) {
-			saveEventInfo(bpelEvent);
+		} else {
+			TEventInfo ei = serializeEvent(bpelEvent);
+			 
+//			if (AuditingParameters.getInstance().isMode()) {
+				logger.debug("Write event: " + ei.toString());
+				
+				writer.write(ei);
+//			}
 		}
-
-	}
-
-	// Test
-	protected void saveEventInfo(BpelEvent evt) {
-		 TEventInfo ei = TEventInfo.Factory.newInstance();
-		 fillEventInfo(ei, evt);
-		// try {
-		// File file = new File("C:/test/eventFile"+counter +".txt");
-		// ei.save(file);
-		// counter++;
-		//			
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// String xml = ei.toString();
-		// logger.debug(xml);
-
-		
-		if (AuditingParameters.getInstance().isMode()) {
-			writer.write(ei);
-		}
-		
 	}
 
 	public void shutdown() {
 
 		initialized = false;
-		logger.info("SIMPL BPEL event has been shutdown.");
+		logger.info("SIMPL BPEL Event Listener has been shutdown.");
 	}
 
 	public void startup(Properties configProperties) {
@@ -102,18 +80,15 @@ public class SimplSdoEventListener implements BpelEventListener {
 		writer = new EventWriter();
 		initialized = true;
 
-		logger.info("SIMPL BPEL event has been started.");
+		logger.info("SIMPL BPEL Event Listener has been started.");
 	}
 
-	protected String serializeEvent(BpelEvent evt) {
+	protected TEventInfo serializeEvent(BpelEvent evt) {
 		TEventInfo ei = TEventInfo.Factory.newInstance();
 		fillEventInfo(ei, evt);
-		String xml = ei.toString();
-		logger.debug(xml);
-		return xml;
+		return ei;
 	}
 
-	// TODO: This code should be reused
 	private void fillEventInfo(TEventInfo info, BpelEvent event) {
 		info.setName(BpelEvent.eventName(event));
 		info.setType(event.getType().toString());
