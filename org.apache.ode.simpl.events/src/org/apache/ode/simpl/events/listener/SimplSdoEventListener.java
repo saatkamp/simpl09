@@ -49,13 +49,8 @@ import org.apache.ode.bpel.pmapi.TEventInfo;
 public class SimplSdoEventListener implements BpelEventListener {
 	protected static final Log logger = LogFactory
 			.getLog(SimplSdoEventListener.class);
-
-	public static final String TOPIC_NAME_KEY = "jel.topicname";
-	public static final String MQ_URL_KEY = "jel.mqurl";
 	
 	EventWriter writer = new EventWriter();
-//	private String topicName;
-//	private String url;
 
 	boolean initialized = false;
 	protected Calendar _calendar = Calendar.getInstance();
@@ -89,53 +84,21 @@ public class SimplSdoEventListener implements BpelEventListener {
 		// String xml = ei.toString();
 		// logger.debug(xml);
 
-//		DataObject rdbDataObject = this.getSDO();
+		Boolean auditing = true;
+		if (auditing) {
+			writer.write(ei);
+		}
 		
-		
-		writer.write(ei);
 	}
 
 	public void shutdown() {
-		// if (connection == null) {
-		// return;
-		// }
-		// try {
-		// connection.stop();
-		// connection.close();
-		// connection = null;
-		// initialized = false;
-		// } catch (JMSException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// factory = null;
 
 		initialized = false;
 		logger.info("SIMPL BPEL event has been shutdown.");
 	}
 
 	public void startup(Properties configProperties) {
-		// if (configProperties == null) {
-		// logger
-		// .info("No configuration properties given. Initialization aborted.");
-		// return;
-		// }
-		// topicName = configProperties.getProperty(TOPIC_NAME_KEY,
-		// "org.apache.ode.events");
-		// url = configProperties.getProperty(MQ_URL_KEY,
-		// "tcp://localhost:61616");
-		//
-		// try {
-		// factory = new ActiveMQConnectionFactory(url);
-		// connection = factory.createConnection();
-		// session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		// topic = session.createTopic(topicName);
-		// publisher = session.createProducer(topic);
-		// publisher.setDeliveryMode(DeliveryMode.PERSISTENT);
-		// initialized = true;
-		// } catch (JMSException e) {
-		// logger.error("Initialization failed.", e);
-		
+				
 		writer = new EventWriter();
 		initialized = true;
 
@@ -273,29 +236,6 @@ public class SimplSdoEventListener implements BpelEventListener {
 		c.setTime(dtime);
 		return c;
 	}
-
-//	public DataObject getSDO() {
-//		DataObject dataObject = null;
-//		DataSource dataSource = new DataSource();
-//		
-//		dataObject = DataFormatProvider.getInstance("RDB").getSDO();
-//
-//		// put data into the SDO
-//		
-//		Printer.printDataObjectXML(dataObject);
-//		
-//		dataSource.setType("Database");
-//		dataSource.setSubType("EmbeddedDerby");
-//		dataSource.setAddress("C:\\test\\auditing");
-//		dataSource.setDataFormat("RDB");
-//
-//		try {
-//			SIMPLCore.getInstance().dataSourceService().writeData(dataSource, dataObject, "auditing_table");
-//		} catch (ConnectionException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		return dataObject;
-//	}
+	
+	
 }
