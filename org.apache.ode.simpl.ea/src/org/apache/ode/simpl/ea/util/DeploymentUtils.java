@@ -14,6 +14,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.ode.simpl.ea.DataManagementActivity;
+import org.apache.ode.simpl.events.listener.AuditingParameters;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -47,6 +48,8 @@ public class DeploymentUtils {
 	private static final String EL_PROCESS = "process";
 
 	private static final String AT_NAME = "name";
+	
+	private static final String AT_AUDITING_MODE = "auditingActive";
 
 	private static final String EL_DATASOURCE = "datasources";
 	private static final String EL_MAPPING = "activityMappings";
@@ -89,6 +92,8 @@ public class DeploymentUtils {
 	 */
 	private Map<String, DataSource> activityMappings = new HashMap<String, DataSource>();
 
+	private Boolean AUDITING_MODE = false;
+
 	private static String lastProcess = "";
 
 	public static DeploymentUtils getInstance() {
@@ -128,6 +133,9 @@ public class DeploymentUtils {
 
 	private void init(String path, String process) {
 		readDeploymentDescriptor(path, process);
+		
+		// Set the auditing mode in the SIMPL BPEL Event Listener
+		AuditingParameters.getInstance().setMode(AUDITING_MODE);
 	}
 
 	/**
@@ -227,7 +235,11 @@ public class DeploymentUtils {
 
 						// Read the attached UDDI-Registry address
 						PROCESS_UDDI_ADDRESS = ((Element) processElement)
-								.getAttributeValue(AT_ATTACHED_UDDI_ADDRESS);
+						.getAttributeValue(AT_ATTACHED_UDDI_ADDRESS);
+						
+						// Read the auditing mode to set to the SIMPL Event Listener
+						AUDITING_MODE  = Boolean.valueOf(((Element) processElement)
+						.getAttributeValue(AT_AUDITING_MODE));
 
 						List datasourceElements = processElement.getChildren(
 								EL_DATASOURCE, DD_NAMESPACE);
