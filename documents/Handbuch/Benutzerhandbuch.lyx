@@ -745,13 +745,12 @@ Einführung, allgemeine Hinweise
 
 \begin_layout Standard
 SIMPL ist ein erweiterbares und generisches Rahmenwerk für die Modellierung
- und Ausführung von Workflows, welches den Zugriff auf nahezu beliebige
- Datenquellen ermöglichen kann.
+ und Ausführung von Workflows.
  Bei den Datenquellen werden standardmäßig Datenbanken und Dateisysteme
  unterstützt.
  Durch die Erweiterbarkeit können prinzipiell alle Datenquellen integriert
  werden.
- Als Modellierungs- und Ausführungssprache für die hier betrachteten Workows
+ Als Modellierungs- und Ausführungssprache für die hier betrachteten Workflows
  dient die Business Process Execution Language (BPEL,
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -768,17 +767,7 @@ key "key-4"
  Nichtsdestoweniger besteht auch die Möglichkeit die Datenquellen statisch
  anbinden zu können.
  Die Ausführung der Workflows unterliegt der angepassten Workflow Engine
- Apache ODE
-\begin_inset Index
-status collapsed
-
-\begin_layout Plain Layout
-ODE
-\end_layout
-
-\end_inset
-
- (
+ Apache ODE (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-6"
@@ -801,8 +790,8 @@ Die Systemvoraussetzungen des Rahmenwerkes entspricht den Voraussetzungen
  Die Anzahl der Prozesse wird demnach nur durch die Höhe des Speichers,
  welcher durch das Betriebssystem zu Verfügung gestellt wird, beschränkt.
  Durch die Integration des SIMPL Eclipse Plug-Ins in die Eclipse IDE kann
- das Rahmenwerk prinzipiell auf allen System benutzt werden die Eclipse
- unterstützt.
+ das Rahmenwerk prinzipiell auf allen Systemen benutzt werden die Eclipse
+ unterstützen.
  Der SIMPL Core kann auf allen Java unterstützenden Web Containern eingesetzt
  werden.
  Es muß beachtet werden, daß das Rahmenwerk nur mit Apache ODE 2.0 oder höher
@@ -814,13 +803,13 @@ Installation
 \end_layout
 
 \begin_layout Standard
-Das Rahmenwerk wird als Teil eines großen Installationpakets ausgeliefert.
+Das Rahmenwerk wird als Teil eines großen Installationpaketes ausgeliefert.
  Dieses Installationspaket besteht aus allen Programmen, die für die Verwendung
  des Rahmenwerks benötigt werden.
  Dazu gehört das Modellierungstool Eclipse BPEL Designer, der Web Server
- Apache Tomcat, der die Workflow- Engine ausführt, die Workflow-Engine Apache
+ Apache Tomcat, der die Workflow-Engine ausführt, die Workflow-Engine Apache
  ODE und natürlich das Rahmenwerk selbst.
- Durch das Installationspakets sind viele Einstellungen bereits vordefiniert
+ Durch das Installationspaket sind viele Einstellungen bereits vordefiniert
  um dem Benutzer eine einfache Installation zu ermöglichen.
  Das Installationspaket ist dabei als RAR-Archiv zusammen mit allen wichtigen
  Dokumenten auf einer CD/DVD vorhanden.
@@ -834,7 +823,7 @@ All-in-one
 
 -Installation zu empfehlen.
  Für die Installation auf anderen Kontexten wird hier auch noch die Installation
- der einzelnen Komponenten erläutert.
+ der einzelnen Komponenten näher erläutert.
 \end_layout
 
 \begin_layout Subsection
@@ -860,8 +849,8 @@ SIMPL.rar
 \begin_inset Quotes erd
 \end_inset
 
- muß einfach entpackt werden und danach kann das Rahmenwerk über die Kommandozei
-le gestartet werden.
+ muß entpackt werden und danach kann das Rahmenwerk über die Kommandozeile
+ gestartet werden.
  Dazu kann der Tomcat Server über 
 \begin_inset Quotes eld
 \end_inset
@@ -927,7 +916,7 @@ plugins
 \end_inset
 
 -Ordner von Eclipse kopiert.
- Dort müssen sich die folgenden Datei für die vollständige Funkionalität
+ Dort müssen sich die folgenden Datei für die vollständige Funktionalität
  befinden :
 \end_layout
 
@@ -956,7 +945,7 @@ name "fig:SIMPL_BPEL_Installation_Files"
 
 \end_inset
 
-BPEL Designer und SIMPL Installation Dateien
+BPEL Designer und SIMPL Installationsdateien
 \end_layout
 
 \end_inset
@@ -974,19 +963,25 @@ Installation von Apache Tomcat
 \end_layout
 
 \begin_layout Enumerate
-Die Datei apache-tomcat-6.0.26.exe enthält den Apache Tomcat Webserver der
- Version 6.0.26.
+Die Datei 
+\begin_inset Quotes eld
+\end_inset
+
+apache-tomcat-6.0.26.exe
+\begin_inset Quotes erd
+\end_inset
+
+ enthält den Apache Tomcat Webserver der Version 6.0.26.
  Durch Doppelklicken auf das File startet der Installationsvorgang von Apache
  Tomcat.
  Im Verlauf der Installation ist u.a.
- das Installationsverzeichnis zu wählen, sowie den HTTP Connector Port zu
- wählen.
+ das Installationsverzeichnis sowie den HTTP Connector Port zu wählen.
  Beim HTTP Connector Port ist nach Möglichkeit der Port 8080 einzuhalten,
  da dieser auch im SIMPL Rahmenwerk voreingestellt ist.
 \end_layout
 
 \begin_layout Enumerate
-Die Datei ode.war aus der apache-ode-war-2.0-beta2.zipin das Verzeichnis 
+Die Datei ode.war aus der apache-ode-war-2.0-beta2.zip in das Verzeichnis 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1011,8 +1006,15 @@ webapps
 \end_layout
 
 \begin_layout Enumerate
-Verzeichnis /servicejars im Installationsorder von Tomcat im Verzeichnis
- 
+Verzeichnis 
+\begin_inset Quotes eld
+\end_inset
+
+servicejars
+\begin_inset Quotes erd
+\end_inset
+
+ im Installationsordner von Tomcat im Verzeichnis 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1086,7 +1088,7 @@ key "key-3"
 ) damit auf Daten auch per Referenz im Workflow zugegriffen werden kann.
  Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe zwischen
  Workflow und Web Service standardmäßig per Wert erfolgt, was bei großen
- Datenmengen (bis zu Gigabytes oder gar Terabytes im wissenschaftlichen
+ Datenmengen (bis hin zu Gigabytes oder gar Terabytes im wissenschaftlichen
  Bereich) zu erheblichen Performanzeinbußen führt.
 \end_layout
 
@@ -1120,8 +1122,8 @@ Grafische Abfragebefehls-Editoren
 
 \begin_layout Standard
 Durch grafische Abfragebefehls-Editoren, den sog.
- Statement-Editors, kann der Befehl für die DM-Aktivitäten komfortabel eingegebe
-n werden.
+ Statement-Editoren, kann der Befehl für die DM-Aktivitäten komfortabel
+ eingegeben werden.
 \end_layout
 
 \begin_layout Subsection
@@ -1165,8 +1167,8 @@ Auditing
 \begin_layout Standard
 Das Auditing protokolliert wann was gemacht wurde und speichert dies in
  einer Auditingdatenbank.
- Diese ist frei wählbar und kann in der Adminkonsole eingestellt sowie de-
- und aktiviert werden.
+ Diese ist frei wählbar und kann in der Adminkonsole eingestellt, sowie
+ de- und aktiviert werden.
  Das Auditing wird nur für Apache ODE angeboten.
 \end_layout
 
@@ -1178,8 +1180,7 @@ Plug-In System
 Das SIMPL Rahmenwerk bietet durch einen sehr modularen Aufbau die Möglichkeit
  an andere Anforderungen angepasst oder erweitert zu werden.
  Insbesondere wird dadurch die Möglichkeit zur Anbindung von weiteren Datenquell
-en, Abfragesprachen, Strategien, etc.
- geboten.
+en, Abfragesprachen, Strategien, etc., geboten.
  Die Erweiterung läßt sich einfach durch ein Plug-In System erledigen.
  Weiterführende Informationen dazu können im Entwicklerhandbuch gefunden
  werden.
@@ -1192,7 +1193,8 @@ Validierung
 \begin_layout Standard
 Die Validierung von Standard BPEL wird unterstützt, jedoch nicht die Validierung
  von SIMPL BPEL.
- 
+ Dies kann jedoch bei einer Erweiterung des Rahmenwerkes erstellt und an
+ bereits vorhandene Extension Points angebunden werden.
 \end_layout
 
 \begin_layout Section
@@ -1592,7 +1594,7 @@ Dialog für das Hinzufügen einer Datenquellen-Beschreibung
 \end_layout
 
 \begin_layout Standard
-Im obigen Fenster welches nach Drücken des New-Buttons bei 
+Im obigen Fenster, welches nach Drücken des New-Buttons bei 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1600,8 +1602,8 @@ Data Source Specification
 \begin_inset Quotes erd
 \end_inset
 
- erscheint können neue Datenquellen für die Verwendung in der Workflow Engine
- hinzugefügt werden.
+ erscheint, können neue Datenquellen für die Verwendung in der Workflow
+ Engine hinzugefügt werden.
  Als Datenquelle kann eine Datenbank oder ein Filesystem dienen.
 \end_layout
 
@@ -1703,8 +1705,8 @@ Admin Konsole
 \begin_layout Standard
 Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
  Möglichkeit Einstellungen für die Verwaltung des Auditings vorzunehmen.Das
- Auditing kann de- und aktiviert werden sowie die Datenbank wo die Auditingdaten
- spezifiziert werden.
+ Auditing kann de- und aktiviert werden, sowie die Datenbank wo die Auditingdate
+n spezifiziert werden.
 \end_layout
 
 \begin_layout Standard
@@ -1863,8 +1865,7 @@ reference "fig:ErweitertesSimplEclipse"
  des SIMPL Menüs, können alle Daten des SIMPL Cores nachträglich abgerufen
  werden.
  Damit muß Eclipse nicht neu gestartet werden wenn bei der Initialisierung
- des Rahmenwerkes der SIMPL Core oder der Webserver nicht erreichbar gewesen
- sind.
+ des Rahmenwerkes der SIMPL Core oder der Webserver nicht erreichbar waren.
  Es reicht den entsprechenden Menüpunkt auszuwählen damit das BPEL DM Plug-In
  in den entsprechenden Eigenschaftsfenstern ( siehe Abschnitt 
 \begin_inset CommandInset ref
@@ -2016,8 +2017,9 @@ Statement-Editor
 
 \begin_layout Standard
 Statement Editoren sind vorhanden um die Erstellung eines SQL Statement
- zu erleichtern.Um dies zu erreichen wird die Erstellung der Statement über
- eine graphische Oberfläche ermöglicht.
+ zu erleichtern.
+ Um dies zu erreichen wird die Erstellung der Statement über eine graphische
+ Oberfläche ermöglicht.
  Solche Editoren verfügen immer je DM-Aktivität über unterschiedliche Funktional
 ität bzw.
  graphische Oberflächen.
@@ -2091,7 +2093,7 @@ Das RRS Eclipse Plug-In ist als Eclipse View in Eclipse integriert.
  Über diese View können alle in den SIMPL Settings hinterlegten RRSs verwaltet
  werden.
  Zur Verwaltung zählt das Anlegen, Bearbeiten und Löschen von Referenzen
- eines RRSs.
+ eines RRS.
  Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2174,6 +2176,15 @@ reference "fig:Datenquellen-Registry-View"
 ).
  Die Ansicht wird über Window->Show View->Other->UDDI Registry->UDDI Browser
  View hinzugefügt.
+ In der 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+können alle Einträge der Datenquellen-Registry betrachtet, aber nicht verändert
+ oder gelöscht werden.
 \end_layout
 
 \begin_layout Standard
@@ -2201,7 +2212,7 @@ name "fig:Datenquellen-Registry-View"
 
 \end_inset
 
-Datenquellen-Registry View
+Datenquellen-Registry-View
 \end_layout
 
 \end_inset
@@ -2233,16 +2244,6 @@ Das Datenquellen-Registry Web Interface dient dem Datenquellen-Administrator
  hinzugefügt werden.
  Mit dem Save-Button werden alle durchgeführten Änderungen gespeichert.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Aktueller Screenshot für Webinterface!aus Feinentwurf!WOLLO !!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4554,16 +4555,130 @@ ODE Deployment-Deskriptor auswählen und über Edit->Delete löschen.
 
 \begin_layout Subsubsection
 Prozess vorbereiten für Deployment
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 \end_layout
 
+\begin_layout Standard
+Bevor der fertige Prozess nun deployed werden kann, bedarf es noch der Erstellun
+g eines Bindings, bzw.
+ eines Startpunktes damit der Webservice erreicht werden kann.
+ Dafür muß wie folgt vorgegangen werden :
+\end_layout
+
+\begin_layout Enumerate
+Öffnen des wsdl-Files in der grafischen Modellierungsumgebung.
+\end_layout
+
+\begin_layout Enumerate
+Mit der rechten Maustaste auf den Hintergrund des Fenster klicken und 
+\begin_inset Quotes eld
 \end_inset
 
+Add Service
+\begin_inset Quotes erd
+\end_inset
 
+ auswählen.
+ Der vorgeschlagene Name kann übernommen oder neu eingegeben werden.
+\end_layout
+
+\begin_layout Enumerate
+Mit der rechten Maustaste auf den Hintergrund des Fenster klicken und 
+\begin_inset Quotes eld
+\end_inset
+
+AddBinding
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.Danach öffnet sich die Properties View des Bindings und zeigt
+ den Punkt 
+\begin_inset Quotes eld
+\end_inset
+
+General
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Generate Binding Content...
+\begin_inset Quotes erd
+\end_inset
+
+ betätigen und um Pop-up-Fenster 
+\begin_inset Quotes eld
+\end_inset
+
+Binding Wizard
+\begin_inset Quotes erd
+\end_inset
+
+ unter 
+\begin_inset Quotes eld
+\end_inset
+
+Port Type
+\begin_inset Quotes erd
+\end_inset
+
+ das Interface auswählen welche von aussen erreicht werden soll.
+ Danach unter 
+\begin_inset Quotes eld
+\end_inset
+
+Protocol
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+SOAP
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.
+\end_layout
+
+\begin_layout Enumerate
+Bei dem neu erstellen Service nun auf den 
+\begin_inset Quotes eld
+\end_inset
+
+Port
+\begin_inset Quotes erd
+\end_inset
+
+ ( das pfeilähnliche blaue nach rechts zeigende Symbol) und die Port-Properties-
+View öffnet sich.
+ In diesem wählt man bei 
+\begin_inset Quotes eld
+\end_inset
+
+Binding
+\begin_inset Quotes erd
+\end_inset
+
+ das unter Punkt 3 erstellte Binding aus.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+Adress
+\begin_inset Quotes erd
+\end_inset
+
+ gibt man die Adresse ( z.B.
+ http://localhost:8080/ode/processes/FluegeBuchen) des ODE Servers ein.
+ Zu beachten ist, daß der Name des Services, wie er in Punkt 2 erstellt
+ wurde, auch identisch ist wie der Name des WSDL-Files auf dem ODE Server.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4615,31 +4730,124 @@ Start
 
 \begin_layout Subsubsection
 Prozessinstanz starten 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Was kommt hier rein ? 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Nach dem erfolgreichen Deployment auf der Apache ODE Workflow-Engine kann
  das Prozessmodell instanziiert werden.
- Dazu geht man auf die WEB GUI der Apache ODE Workflow-Engine ( z.b.
- localhost:8080/ode) und kann unter 
+ Dazu muß eine SOAP Nachricht an den Webservice gesendet werden.
+ Dafür gibt es viele Möglichkeiten, hier wird jedoch nur die Variante mit
+ dem 
 \begin_inset Quotes eld
 \end_inset
 
-Instances
+Web Service Explorer
 \begin_inset Quotes erd
 \end_inset
 
- die Instanz starten.
+ näher erläutert.
+ Dieser ist im SIMPL Rahmenwerk enthalten und ist Bestandteil der Eclipse
+ IDE for Java EE Developers.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/Sending SOAP Message.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Web-Service-Explorer"
+
+\end_inset
+
+Web Service Explorer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+WSDL-File des Projektes mit der rechten Maustaste anklicken und 
+\begin_inset Quotes eld
+\end_inset
+
+Web Services--> Test with Web Services Explorer
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.
+\end_layout
+
+\begin_layout Enumerate
+Im Web Service Explorer den Prozess (blaues Zahnrad) auswählen und dann
+ erscheint 
+\begin_inset Quotes eld
+\end_inset
+
+Invoke a WSDL Operation
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Im Textfenster unter 
+\begin_inset Quotes eld
+\end_inset
+
+input string
+\begin_inset Quotes erd
+\end_inset
+
+ können die Parameter / die Nachricht eingegeben werden und mit 
+\begin_inset Quotes eld
+\end_inset
+
+GO
+\begin_inset Quotes erd
+\end_inset
+
+ an die Workflow-Engine gesendet werden.
+\end_layout
+
+\begin_layout Enumerate
+Im Fenster 
+\begin_inset Quotes eld
+\end_inset
+
+Status
+\begin_inset Quotes erd
+\end_inset
+
+ erscheint dann das Ergebnis des Services oder eine Meldung der Workflow-Engine.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5024,17 +5232,6 @@ Close
 
 \begin_layout Subsubsection
 Neue Referenz in RRS einfügen 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Konnte dies nicht testen.
- Ist das so korrekt ?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5061,6 +5258,48 @@ Save
 
  wird die neue Referenz gesichert.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/RRS_AddRef.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Neue-Referenz-inRRS-einfuegen"
+
+\end_inset
+
+Neue Referenz in RRS einfügen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -5096,7 +5335,7 @@ Referenz aus RRS löschen
 \end_layout
 
 \begin_layout Standard
-Eine Referenz läßt sich nur Löschen wenn der RRS erreichbar ist.
+Eine Referenz läßt sich nur l,öschen wenn der RRS erreichbar ist.
  Nach Auswahl der zu löschenden Referenz kann über den 
 \begin_inset Quotes eld
 \end_inset
@@ -5111,17 +5350,6 @@ Delete
 
 \begin_layout Subsection
 Anwendungsfälle der Datenquellen-Administratoren 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-korrekt ??wird das ganze nicht automatisch gemacht wenn datenquellen angelegt,
- bearbeitet und gelöscht werden ?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -5129,20 +5357,40 @@ Datenquelle in UDDI-Registry registrieren
 \end_layout
 
 \begin_layout Standard
-Ein neues Datenquellenobjekt muß von einem Benutzer mit ausreichenden Rechten
- angelegt werden und dann wird die Datenquelle in der Datenquellen-Registry
- automatisch registriert.
- Voraussetzung ist natürlich die Erreichbarkeit der UDDI-Registry.
- Danach ist sie in den Workflows verwendbar.
+Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
+ werden.
+ Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb als
+ Adresse definiert.
+ Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
+ angezeigt 
 \end_layout
 
-\begin_layout Subsubsection
-Datenquelle aus UDDI-Registry entfernen 
-\begin_inset Note Note
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-w
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/datasourcelist.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Registry-Datenquellenliste"
+
+\end_inset
+
+Registry Datenquellenliste
 \end_layout
 
 \end_inset
@@ -5150,8 +5398,170 @@ w
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+und durch Betätigen von 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ öffnet sich ein neues Fenster zur Eingabe der Datenquellen Konfiguration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/edit.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Datenquelle-in-Registry_new"
+
+\end_inset
+
+Datenquelle in Registry anlegen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nach Betätigen von 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Daten in der Registry gespeichert und stehen sofort dem Rahmenwerk
+ zur Verfügung.
+ Im Registry Plug-In kann es nötig sein den 
+\begin_inset Quotes eld
+\end_inset
+
+Refresh
+\begin_inset Quotes erd
+\end_inset
+
+ Button ( 2 grüne im Kreis stehende Pfeile) zu betätigen wenn man die neue
+ Datenquelle in der UDDI Browser View 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+nicht sieht.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle aus UDDI-Registry entfernen 
+\end_layout
+
+\begin_layout Standard
+Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
+ werden.
+ Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb als
+ Adresse definiert.
+ Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
+ angezeigt.
+ In der 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Registry-Datenquellenliste"
+
+\end_inset
+
+muß dann die zu löschende Datenquelle mit dem rechten Kreis-Button markiert
+ werden und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ betätigt werden.
+\end_layout
+
 \begin_layout Subsubsection
 Datenquelle aus UDDI-Registry bearbeiten
+\end_layout
+
+\begin_layout Standard
+Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
+ werden.
+ Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb als
+ Adresse definiert.
+ Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
+ angezeigt.
+ In der 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Registry-Datenquellenliste"
+
+\end_inset
+
+muß dann die zu editierende Datenquelle mit dem rechten Kreis-Button markiert
+ und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes erd
+\end_inset
+
+ betätigt werden.
+ Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquelle-in-Registry_new"
+
+\end_inset
+
+ öffnet sich um die Datenquelle kann bearbeitet werden.
+ Nach Abschluss der Änderungen kann durch 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ alles in der Registry gespeichert werden.
 \end_layout
 
 \begin_layout Section
@@ -5472,6 +5882,500 @@ RRS nicht erreichbar
 Glossar
 \end_layout
 
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="24" columns="2">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+API 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Application Programming Interface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BPEL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DAS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Access Service
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DDL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Definition Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Management
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FLWOR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FOR, LET, WHERE, ORDER, RETURN
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrated Development Environment
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IUD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+INSERT, UPDATE, DELETE
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orchestration Director Engine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Relational Database
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reference Resolution System
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SDO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Service Data Object
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SIMPL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SimTech: Information Management, Processes and Languages
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SOAP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Simple Object Access Protocol
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Structured Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Single Sign On
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UDDI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Universal Description, Discovery and Integration 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+URI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unified Resource Identifier
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+URL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unified Resource Locator
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Web Service
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WSDL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Web Service Description Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Extensible Markup Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XPath
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML Path Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XQUERY
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Literaturverzeichnis
 \end_layout
@@ -5492,16 +6396,6 @@ Web Services Business Process Execution Language Version 2.0
  11.April 2007.
  http://docs.oasis-open.org/ wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf, zuletzt zugegriffen
  am 04.11.2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-OK
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -5522,16 +6416,6 @@ key "key-6"
 \end_inset
 
  Apache ODE, http://ode.apache.org/, zuletzt zugegriffen am 17.10.2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ok
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -5542,16 +6426,6 @@ key "key-7"
 \end_inset
 
  Apache Tomcat, http://tomcat.apache.org/, zuletzt zugegriffen am 17.10.2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-OK
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -5563,16 +6437,6 @@ key "key-8"
 
  Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, zuletzt zugegriff
 en am 17.10.2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-OK
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -5584,16 +6448,6 @@ key "key-10"
 
  Eclipse BPEL Designer, http://www.eclipse.org/bpel/, zuletzt zugegriffen
  am 17.10.2009
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ok
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Bibliography
@@ -5659,23 +6513,12 @@ XPath, http://www.w3.org/standards/techs/xpath, zuletzt zugegriffen am 30.01.201
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-label "26"
-key "key-26"
+label "13"
+key "key-13"
 
 \end_inset
 
 jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.10
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "Winrar"
-key "key-1"
-
-\end_inset
-
-WinRar, http://www.winrar.de, zuletzt zugegriffen am 13.06.2010
 \end_layout
 
 \end_body
