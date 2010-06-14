@@ -50,6 +50,7 @@ public class AdministrationServiceImpl implements AdministrationService {
         statement
             .executeUpdate(getStatement("INSERT", schem, tabl, settingName, settings));
       }
+      // Send the settings to the SIMPL BPEL Event Listener in ODE.
       AuditingParameters.getInstance().setSettings(settings);
       statement.close();
       conn.close();
