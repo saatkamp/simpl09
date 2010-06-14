@@ -42,6 +42,7 @@ public class AuditingParameters {
 
 	private void loadSettings() {
 		this.settings = SIMPLCore.getInstance().administrationService().loadSettings("AUDITING", "GENERAL", "lastSaved");
+		this.dataSource = getDataSource();
 	}
 
 	public void setSettings(HashMap<String, String> settings) {
