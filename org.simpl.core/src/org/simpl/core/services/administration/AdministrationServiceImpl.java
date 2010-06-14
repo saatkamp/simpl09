@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedHashMap;
 
+import org.apache.ode.simpl.events.listener.AuditingParameters;
+
 /**
  * <b>Purpose:</b><br>
  * <b>Description:</b><br>
@@ -48,6 +50,7 @@ public class AdministrationServiceImpl implements AdministrationService {
         statement
             .executeUpdate(getStatement("INSERT", schem, tabl, settingName, settings));
       }
+      AuditingParameters.getInstance().setSettings(settings);
       statement.close();
       conn.close();
       success = true;
