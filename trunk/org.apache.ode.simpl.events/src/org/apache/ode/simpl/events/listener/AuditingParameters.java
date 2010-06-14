@@ -23,6 +23,10 @@ public class AuditingParameters {
 	private final String DS_USER = "DS_USER";
 	private final String DS_PASSWORD = "DS_PASSWORD";
 
+	private String int_type = "";
+
+	private String varchar_type = "";
+
 	private AuditingParameters() {
 
 	}
@@ -35,14 +39,15 @@ public class AuditingParameters {
 	}
 
 	public void setSettings(HashMap<String, String> settings) {
-		//Buffer the last set settings
+		// Buffer the last set settings
 		this.lastSettings = this.settings;
-		//Set the new settings
+		// Set the new settings
 		this.settings = settings;
 	}
 
 	public DataSource getDataSource() {
-		if (!this.settings.isEmpty() && !this.settings.equals(this.lastSettings)) {
+		if (!this.settings.isEmpty()
+				&& !this.settings.equals(this.lastSettings)) {
 			DataSource data = new DataSource();
 			data.setAddress(this.settings.get(AUDITING_DS_ADDRESS));
 			data.setType(this.settings.get(DS_TYPE));
@@ -54,13 +59,25 @@ public class AuditingParameters {
 					.setPassword(this.settings.get(DS_PASSWORD));
 
 			this.dataSource = data;
+
+			if (dataSource.getSubType().equals("EmbeddedDerby")) {
+				int_type = "BIGINT";
+				varchar_type = "VARCHAR";
+			} else if (dataSource.getSubType().equals("MySQL")) {
+				int_type = "BIGINT(11)";
+				varchar_type = "VARCHAR(1024)";
+			} else if (dataSource.getSubType().equals("DB2")) {
+				int_type = "BIGINT";
+				varchar_type = "VARCHAR(1024)";
+			}
 		}
 
 		return dataSource;
 	}
 
 	public boolean isMode() {
-		if (!this.settings.isEmpty() && !this.settings.equals(this.lastSettings)){
+		if (!this.settings.isEmpty()
+				&& !this.settings.equals(this.lastSettings)) {
 			if (settings.get(MODE).contains("active")) {
 				this.mode = true;
 			} else {
@@ -73,5 +90,15 @@ public class AuditingParameters {
 	public void setMode(boolean mode) {
 		this.mode = mode;
 	}
+
+	public String getInt_type() {
+		return int_type;
+	}
+
+	public String getVarchar_type() {
+		return varchar_type;
+	}
+	
+	
 
 }

@@ -1,8 +1,11 @@
 package org.apache.ode.simpl.events.listener;
 
+import java.util.HashMap;
+
 import org.apache.ode.bpel.pmapi.TEventInfo;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Printer;
+import org.simpl.core.services.administration.AdministrationService;
 import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
@@ -13,22 +16,8 @@ public class EventWriter {
 
 	DataObject dataObject = null;
 
-	DataSource dataSource = null;
-
 	public EventWriter() {
-		this.dataSource = new DataSource();
-
 		dataObject = DataFormatProvider.getInstance("RDB").getSDO();
-
-		// put data into the SDO
-
-		Printer.printDataObjectXML(dataObject);
-
-		dataSource.setType("Database");
-		dataSource.setSubType("EmbeddedDerby");
-		dataSource.setAddress("C:\\test\\auditing");
-		dataSource.setDataFormat("RDB");
-
 	}
 
 	public void write(TEventInfo eventInfo) {
@@ -43,13 +32,13 @@ public class EventWriter {
 		// Primary Key (Auto Increment)
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "event_id");
-		columnObject.set("type", "BIGINT");
+		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
 		columnObject.set("value", null);
 
 		// Detail if für verschiedene Details
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "detail");
-		columnObject.set("type", "VARCHAR(1024)");
+		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
 		columnObject.set("value", setDetails(eventInfo));
 
 		// serialisiertes Objekt
@@ -60,7 +49,7 @@ public class EventWriter {
 
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "scope_id");
-		columnObject.set("type", "BIGINT");
+		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
 		columnObject.set("value", eventInfo.getScopeId());
 
 		columnObject = tableObject.createDataObject("column");
@@ -70,21 +59,21 @@ public class EventWriter {
 
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "event_type");
-		columnObject.set("type", "VARCAR(255)");
+		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
 		columnObject.set("value", eventInfo.getType());
 
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "instance_id");
-		columnObject.set("type", "BIGINT");
-		columnObject.set("value", "");
+		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
+		columnObject.set("value", eventInfo.getInstanceId());
 
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "process_id");
-		columnObject.set("type", "BIGINT");
-		columnObject.set("value", "");
+		columnObject.set("type", AuditingParameters.getInstance().getInt_type());
+		columnObject.set("value", eventInfo.getProcessId());
 
 		try {
-			SIMPLCore.getInstance().dataSourceService().writeData(dataSource,
+			SIMPLCore.getInstance().dataSourceService().writeData(AuditingParameters.getInstance().getDataSource(),
 					tableObject, "auditing_table");
 		} catch (ConnectionException e) {
 			// TODO Auto-generated catch block
