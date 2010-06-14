@@ -463,7 +463,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="16" columns="4">
+<lyxtabular version="3" rows="17" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1111,7 +1111,7 @@ hahnml, huettiwg
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1120,7 +1120,7 @@ hahnml, huettiwg
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1129,7 +1129,7 @@ hahnml, huettiwg
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1138,7 +1138,7 @@ hahnml
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1151,6 +1151,55 @@ reference "sub:Benutzeroberfläche-erw-BPEL-Des"
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14.06.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg, rehnre
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Überarbeitung der Spezifikation.
+\end_layout
+
+\begin_layout Plain Layout
+Einfügen von Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Ausblick"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3702,13 +3751,29 @@ Dieses Kapitel beschreibt die funktionalen Anforderungen an die Software.
  Dazu werden alle Anwendungsfälle eines jeden Akteurs, die durch das SIMPL
  Rahmenwerk neu hinzukommen, beschrieben und deren Zusammenhänge in entsprechend
 en Diagrammen graphisch dargestellt.
- D.h.
- das bereits durch vorhandene Software (z.B.
+ Das heißt, dass bereits durch vorhandene Software (z.B.
  Eclipse BPEL Designer) realisierte Anwendungsfälle nicht aufgeführt und
  beschrieben werden.
  Für die persistente Speicherung der Admin-Konsolen Einstellungen wird vorerst
  eine Apache Derby Datenbank verwendet, die im nachfolgenden als SIMPL DB
  bezeichnet wird.
+ Die SIMPL-Einstellungen werden nicht durch einen Use-Case beschrieben,
+ da diese vollständig den Eclips eigenen Einstellungen entsprechen und nur
+ als neue Unterpunkte dieser realisiert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Einstellungen Admin Konsole = SIMPL-Einstellungen? Bzw.
+ beides in der selben DB?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3728,6 +3793,21 @@ reference "fig:Gesamt-Anwendungsfall-Diagramm"
  sichtbar werden.
  Die einzelnen Anwendungsfälle der verschiedenen Akteure werden in den folgenden
  Abschnitten näher beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+RRS als Aktor löschen, bei Prozess-Modellierer noch die UseCases für die
+ Referenzen hinzumachen (hinzufügen, löschen, bearbeiten), UseCase Referenz
+ laden muss von extra Aktor (Eclipse RRS View) ausgeführt werden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3788,6 +3868,20 @@ reference "fig:UseCaseDiaProzessModell"
 ) ausführen:
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Uses Cases für Referenz löschen, erstellen und bearbeiten hinzu und der
+ UseCase für Startegie für das Latebinding auswählen müssen hinzu.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Data-Management-Aktivität erstellen
 \end_layout
@@ -3818,6 +3912,22 @@ Prozess auf ODE-Server deployen
 
 \begin_layout Itemize
 Prozessinstanz starten
+\end_layout
+
+\begin_layout Itemize
+Strategie für das Late-Binding auswählen
+\end_layout
+
+\begin_layout Itemize
+Neue Referenz in RRS einfügen
+\end_layout
+
+\begin_layout Itemize
+Referenz aus RRS bearbeiten
+\end_layout
+
+\begin_layout Itemize
+Referenz aus RRS löschen
 \end_layout
 
 \begin_layout Standard
@@ -4640,6 +4750,17 @@ Normalablauf
  die Datei öffnen.
 \end_layout
 
+\begin_layout Plain Layout
+2.
+ Tätigen der entsprechenden Änderungen
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Speichern der Änderungen durch den Menüeintrag speichern oder Linksklick
+ auf das entsprechende Symbol.
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -4775,7 +4896,9 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- ODE Deployment-Deskriptor auswählen und über Edit->Delete löschen.
+ ODE Deployment-Deskriptor auswählen und über Edit->Delete löschen oder
+ alternativ Auswählen des Deployment-Deskriptors mit der linken Maustaste
+ und anschließendes Drücken von "Entf".
 \end_layout
 
 \end_inset
@@ -5369,6 +5492,467 @@ Sonderfälle
 
 \end_layout
 
+\begin_layout Subsubsection
+Neue Referenz in RRS einfügen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eine neue Referenz soll ins RRS eingefügt werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die RRS-View ist geöffnet und das RRS ist erreichbar.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die neue Referenz wurde korrekt im RRS gespeichert und wird in der RRS-View
+ angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über
+ die aufgetretenen Fehler informiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick des [New] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punkte
+s des Kontext-Menüs
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Angabe des Namens, des Statements, der Adresse der Datenquelle und der
+ Auswahl eines Adapters der Referenz in dem entsprechenden Pop-up Fenster
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Klick auf den Button [Save].
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3a.
+ Beim Speichern der neue Referenz tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Referenz-aus-RRS löschen"
+
+\end_inset
+
+Referenz aus RRS löschen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Löschen einer vorhandenen Referenz aus dem RRS.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die RRS-View ist geöffnet, das RRS ist erreichbar und die zu löschende Referenz
+ wurde ausgewählt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS und
+ der Referenzen-Tabelle entfernt und kann nun nicht mehr verwendet werden.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die zu löschende Referenz bleibt im RRS und in der Referenzen-Tabelle unveränder
+t und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer
+ über die aufgetretenen Fehler informiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick des [Delete] Buttons der Toolbar oder Auswahl des entsprechenden
+ Menü-Punktes des Kontext-Menüs.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1a.
+ Beim Löschen der Referenz tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS bearbeiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bearbeiten einer vorhandenen Referenz des RRS.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die RRS-View ist geöffnet, das RRS ist erreichbar und die zu bearbeitende
+ Referenz ist ausgewählt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert, die
+ Referenz wurde aktualisiert und die aktualisierten Werte werden in der
+ Referenzen-Tabelle angezeigt.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die bearbeitete Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert
+ und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer
+ über die aufgetretenen Fehler informiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+ Klick des [Edit] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punkt
+es des Kontext-Menüs
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Angabe der neuen Parameter der Referenz in dem entsprechenden Pop-up Fenster
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Klick auf den Button [Save].
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3a.
+ Beim Speichern der Änderungen tritt ein Fehler auf, da z.B.
+ das RRS nicht erreichbar ist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Anwendungsfälle des Workflow-Administrators
 \begin_inset Note Note
@@ -5378,6 +5962,15 @@ status open
 Durch das Buffer-System hat sich hier einiges geändert bzw.
  auch bei den Eclipse BPEL Designer Anwendungsfällen, sollen wir das ändern
  oder so lassen (Spezifikation <=> Implementierung ?)
+\end_layout
+
+\begin_layout Plain Layout
+Admin Konsole - Einstellungen = SIMPL Einstellungen?
+\end_layout
+
+\begin_layout Plain Layout
+evtl.
+ UseCase für das Laden der Plugin-Daten.
 \end_layout
 
 \end_inset
@@ -5431,18 +6024,6 @@ Default-Einstellungen der Admin-Konsole laden
 
 \begin_layout Itemize
 Admin-Konsole schließen
-\end_layout
-
-\begin_layout Itemize
-Neue Referenz in RRS einfügen
-\end_layout
-
-\begin_layout Itemize
-Referenz aus RRS bearbeiten
-\end_layout
-
-\begin_layout Itemize
-Referenz aus RRS löschen
 \end_layout
 
 \begin_layout Standard
@@ -5557,6 +6138,25 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Anstoßen des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Admin-Konsole-laden"
+
+\end_inset
+
+ SIMPL Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+ des Eclipse BPEL Designers.
+\end_layout
+
+\begin_layout Plain Layout
 Wenn der angestoßene Anwendungsfall erfolgreich ausgeführt wurde, wird die
  Admin-Konsole mit einer Liste aller Menüpunkte (Auditing, Global Settings)
  angezeigt und kann verwendet werden.
@@ -5606,26 +6206,6 @@ Normalablauf
 \begin_layout Plain Layout
 2.
  Klick auf den Menüeintrag [Admin Console].
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Anstoßen des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Admin-Konsole-laden"
-
-\end_inset
-
- SIMPL Admin-Konsole laden
-\begin_inset Quotes erd
-\end_inset
-
- des Eclipse BPEL Designers.
 \end_layout
 
 \end_inset
@@ -6114,7 +6694,7 @@ Normalablauf
 \begin_layout Plain Layout
 1.
  Angabe der Datenbank-Adresse über einen Unified Resource Locator (URL)
- (optional Auswahl einer Datenbank über die Datenbank-Registry).
+ und alternativ die Auswahl einer Datenbank über die Datenbank-Registry).
 \end_layout
 
 \end_inset
@@ -6345,6 +6925,25 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Anwendungsfall 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Admin-Konsole-speichern"
+
+\end_inset
+
+ SIMPL Admin-Konsole speichern
+\begin_inset Quotes erd
+\end_inset
+
+ des Eclipse BPEL Designers wird angestoßen.
+\end_layout
+
+\begin_layout Plain Layout
 Wenn der angestoßene Anwendungsfall erfolgreich ausgeführt wurde, wurden
  alle Werte der Admin-Konsole korrekt gespeichert und alle veralteten Werte
  mit den Neuen überschrieben.
@@ -6395,26 +6994,6 @@ Normalablauf
 \begin_layout Plain Layout
 1.
  Klick auf den Button [Save].
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Anwendungsfall 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Admin-Konsole-speichern"
-
-\end_inset
-
- SIMPL Admin-Konsole speichern
-\begin_inset Quotes erd
-\end_inset
-
- des Eclipse BPEL Designers wird angestoßen.
 \end_layout
 
 \end_inset
@@ -6528,6 +7107,25 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Anstoßen des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Admin-Konsole-laden"
+
+\end_inset
+
+ SIMPL Admin-Konsole laden
+\begin_inset Quotes erd
+\end_inset
+
+ des Eclipse BPEL Designers.
+\end_layout
+
+\begin_layout Plain Layout
 Wenn der angestoßene Anwendungsfall erfolgreich ausgeführt wurde, wurden
  alle geänderten Werte der Admin-Konsole auf die zuletzt gespeicherten Einstellu
 ngen zurückgesetzt.
@@ -6572,26 +7170,6 @@ Normalablauf
 \begin_layout Plain Layout
 1.
  Klick auf den Button [Reset].
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Anstoßen des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Admin-Konsole-laden"
-
-\end_inset
-
- SIMPL Admin-Konsole laden
-\begin_inset Quotes erd
-\end_inset
-
- des Eclipse BPEL Designers.
 \end_layout
 
 \end_inset
@@ -6694,6 +7272,25 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
+Anstoßen des Anwendungsfalls 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Admin-Konsole-Defaults-laden"
+
+\end_inset
+
+ SIMPL Admin-Konsole Defaults laden
+\begin_inset Quotes erd
+\end_inset
+
+ des Eclipse BPEL Designers.
+\end_layout
+
+\begin_layout Plain Layout
 Wenn der angestoßene Anwendungsfall erfolgreich ausgeführt wurde, wurden
  alle Werte der Admin-Konsole auf die gespeicherten Standardwerte zurückgesetzt.
 \end_layout
@@ -6737,26 +7334,6 @@ Normalablauf
 \begin_layout Plain Layout
 1.
  Klick auf den Button [Default].
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Anstoßen des Anwendungsfalls 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Admin-Konsole-Defaults-laden"
-
-\end_inset
-
- SIMPL Admin-Konsole Defaults laden
-\begin_inset Quotes erd
-\end_inset
-
- des Eclipse BPEL Designers.
 \end_layout
 
 \end_inset
@@ -6959,11 +7536,6 @@ Normalablauf
 \end_layout
 
 \begin_layout Plain Layout
-1b.
- Klick auf den Button [Close].
-\end_layout
-
-\begin_layout Plain Layout
 2b.
  Es öffnet sich ein Dialog mit einer Sicherheitsabfrage, ob der Benutzer
  die durchgeführten Änderungen speichern möchte.
@@ -6982,513 +7554,6 @@ Normalablauf
 \begin_layout Plain Layout
 3b3.
  Klick auf den Button [Cancel] des Dialogfensters.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Neue Referenz in RRS einfügen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Eine neue Referenz soll ins RRS eingefügt werden.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der RRS-View ist geöffnet und das RRS ist erreichbar.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die neue Referenz wurde korrekt im RRS gespeichert und wird im RRS-View
- angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über
- die aufgetretenen Fehler informiert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Klick des [New] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punkte
-s des Kontext-Menüs
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Angabe aller Parameter der Referenz in dem entsprechenden Pop-up Fenster
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Klick auf [Save], um die Werte der neue Referenz zu speichern und der Anwendung
-sfall 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Referenz-speichern"
-
-\end_inset
-
- Referenz speichern
-\begin_inset Quotes erd
-\end_inset
-
- wird angestoßen 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3a.
- Beim Speichern der neue Referenz tritt ein Fehler auf, da z.B.
- das RRS nicht erreichbar ist.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Referenz aus RRS bearbeiten
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Bearbeiten einer vorhandenen Referenz des RRS.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu bearbeitende
- Referenz ist ausgewählt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert, die
- Referenz wurde aktualisiert und die aktualisierten Werte werden in der
- Referenzen-Tabelle angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die bearbeitete Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert
- und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer
- über die aufgetretenen Fehler informiert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Klick des [Edit] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punkt
-es des Kontext-Menüs
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Angabe der neuen Parameter der Referenz in dem entsprechenden Pop-up Fenster
-\end_layout
-
-\begin_layout Plain Layout
-3.
- Klick auf [Save], um die aktualisierten Werte der Referenz zu speichern
- und der Anwendungsfall 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Referenz-speichern"
-
-\end_inset
-
- Referenz speichern
-\begin_inset Quotes erd
-\end_inset
-
- wird angestoßen 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3a.
- Beim Speichern der Änderungen tritt ein Fehler auf, da z.B.
- das RRS nicht erreichbar ist.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Referenz-aus-RRS löschen"
-
-\end_inset
-
-Referenz aus RRS löschen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Löschen einer vorhandenen Referenz aus dem RRS.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu löschende Referenz
- wurde ausgewählt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS und
- der Referenzen-Tabelle entfernt und kann nun nicht mehr verwendet werden.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die zu löschende Referenz bleibt im RRS und in der Referenzen-Tabelle unveränder
-t und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer
- über die aufgetretenen Fehler informiert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Klick des [Delete] Buttons der Toolbar oder Auswahl des entsprechenden
- Menü-Punktes des Kontext-Menüs und der Anwendungsfall 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Referenz-löschen"
-
-\end_inset
-
- Referenz löschen
-\begin_inset Quotes erd
-\end_inset
-
- wird angestoßen.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1a.
- Beim Löschen der Referenz tritt ein Fehler auf, da z.B.
- das RRS nicht erreichbar ist.
 \end_layout
 
 \end_inset
@@ -7525,6 +7590,10 @@ Data-Management-Aktivität ausführen
 Data-Management-Aktivität zurücksetzen
 \end_layout
 
+\begin_layout Itemize
+Datenquelle per Strategie auswählen
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -7535,7 +7604,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename iteration1/ODEwfEngine_iter1.jpg
+	filename iteration2/ODEwfEngine_iter2.jpg
 	width 100text%
 
 \end_inset
@@ -7680,38 +7749,12 @@ Terminated
 \end_layout
 
 \begin_layout Plain Layout
-1b.
- Die Aktivität befindet sich im Zustand 
-\begin_inset Quotes eld
-\end_inset
-
-Waiting
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
 2a.
  Die Aktivität befindet sich im Endzustand 
 \begin_inset Quotes eld
 \end_inset
 
 Terminated
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-3a.
- Die Aktivität befindet sich im Endzustand 
-\begin_inset Quotes eld
-\end_inset
-
-Faulted
 \begin_inset Quotes erd
 \end_inset
 
@@ -7767,31 +7810,19 @@ Ready
 
 \begin_layout Plain Layout
 3.
- Die Verbindung zur Datenquelle auf der die DM-Operationen durchgeführt
- werden wird aufgebaut.
+ Der Datasource Service des SIMPL Cores erhällt alle Informationen die notwendig
+ sind, damit die DM-Operationen durchgeführt werden können.
 \end_layout
 
 \begin_layout Plain Layout
 4.
- Senden der in der DM-Aktivität enthaltenen DM-Operationen zur Ausführung
- an die Datenquelle.
-\end_layout
-
-\begin_layout Plain Layout
-5.
  Die DM-Operation wurde in der Datenquelle erfolgreich ausgeführt, und die
  Ausführung der DM-Aktivität ist damit beendet.
  Die DM-Aktivität befindet sich im Zustand "Complete".
 \end_layout
 
 \begin_layout Plain Layout
-6.
- Die Verbindung zur Datenquelle wird nach erfolgreicher Ausführung der DM-Operat
-ion geschlossen.
-\end_layout
-
-\begin_layout Plain Layout
-7.
+5.
  Die nächste(n) Aktivität(en) im Kontrollfluss wird(/werden) initialisiert.
 \end_layout
 
@@ -7890,103 +7921,13 @@ reference "sub:Data-Management-Aktivität-zurücksetzen"
 \end_layout
 
 \begin_layout Plain Layout
-3.
- Die Verbindung zur Datenquelle konnte nicht aufgebaut werden.
- Es wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-ConnectionLost Event
-\begin_inset Quotes erd
-\end_inset
-
- ausgelöst
+3.1 Während der Ausführung der DM-Aktivität durch den Datasource Service
+ kommt es zu einem Fehler (z.B.
+ ein Syntaxfehler, oder die Datenbank ist nicht erreichbar, Verbindungsabbruch)
 \end_layout
 
 \begin_layout Plain Layout
-4a.1.
- Während der Durchführung der DM-Operationen tritt ein Fehler in der Datenquelle
- auf (z.B.
- ein Syntaxfehler, oder die Datenbank ist nicht erreichbar).
-\end_layout
-
-\begin_layout Plain Layout
-4a.2.
- Es wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-DMFailure
-\begin_inset Quotes erd
-\end_inset
-
- Event ausgelöst.
-\end_layout
-
-\begin_layout Plain Layout
-4a.3.
- Der Use Case 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Data-Management-Aktivität-zurücksetzen"
-
-\end_inset
-
- Data-Management-Aktivität zurücksetzen
-\begin_inset Quotes erd
-\end_inset
-
- wird angestoßen.
-\end_layout
-
-\begin_layout Plain Layout
-4b.1 Während der Durchführung der DM-Operation tritt ein Verbindungsabbruch
- zur Datenquelle auf.
- Es wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-ConnectionLost Event
-\begin_inset Quotes erd
-\end_inset
-
- ausgelöst.
- Zusätzlich wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-DMFailure Event
-\begin_inset Quotes erd
-\end_inset
-
- ausgelöst.
-\end_layout
-
-\begin_layout Plain Layout
-5a.1.
- In der Vateraktivität tritt ein Fehler auf.
-\end_layout
-
-\begin_layout Plain Layout
-5a.2.
- Es wird ein 
-\begin_inset Quotes eld
-\end_inset
-
-Terminate_Activity Event
-\begin_inset Quotes erd
-\end_inset
-
- von der Vateraktivität an die entsprechende DM-Aktivität gesendet und die
- Aktivität wird beendet.
-\end_layout
-
-\begin_layout Plain Layout
-5a.3.
+3.2.
  Der Use Case 
 \begin_inset Quotes eld
 \end_inset
@@ -8068,7 +8009,7 @@ Vorbedingung
 
 \begin_layout Plain Layout
 Im Normalablauf einer DM-Aktivität tritt ein Fehler auf (siehe Sonderfälle
- 1a.1, 2a.1, 3a.1 und 4a.1 des Anwendungsfalls 
+ 1.1, 2.1, und 3.1 des Anwendungsfalls 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8177,6 +8118,143 @@ keine
 
 \end_layout
 
+\begin_layout Subsubsection
+Datenquelle per Strategie auswählen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features>
+<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
+<column alignment="left" valignment="top" width="11cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ziel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nachbedingung im Sonderfall
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Normalablauf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sonderfälle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+keine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Anwendungsfälle des Eclipse BPEL Designers
 \end_layout
@@ -8210,15 +8288,7 @@ Datenquellen aus UDDI-Registry abrufen
 \end_layout
 
 \begin_layout Itemize
-Datenquelle per Strategie auswählen
-\end_layout
-
-\begin_layout Itemize
 BPEL-Datei transformieren
-\end_layout
-
-\begin_layout Itemize
-SIMPL Extensions validieren
 \end_layout
 
 \begin_layout Standard
@@ -8408,8 +8478,9 @@ reference "sub:Admin-Konsole-Defaults-laden"
 \end_inset
 
  wird angestoßen.
- Wenn dieser Anwendungsfall erfolgreich ausgeführt wurde, wurden die hinterlegte
-n Default-Einstellungen geladen und werden im Fenster 
+ Wenn dieser Anwendungsfall erfolgreich ausgeführt wurde, wurden die in
+ der SIMPL-DB hinterlegten Default-Einstellungen geladen und werden im Fenster
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8418,6 +8489,8 @@ Admin Console
 \end_inset
 
  und dessen Unterfenstern angezeigt.
+ Sollte ein Laden aus der Datenquelle nicht möglich sein, werden die im
+ Quellcode hinterlegten Default-Einstellungen geladen.
 \end_layout
 
 \begin_layout Plain Layout
@@ -8946,166 +9019,6 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:SIMPL-Extensions-validieren"
-
-\end_inset
-
-SIMPL Extensions validieren
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Validierung der SIMPL Erweiterung
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Es wurde ein BPEL Prozess erstellt der mind.
- eine SIMPL Extension enthält.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Alle nicht schema-konformen Einträge werden erkannt und in der Problem-View
- angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- 
-\begin_inset Quotes eld
-\end_inset
-
-Validate
-\begin_inset Quotes erd
-\end_inset
-
- wird ausgeführt.
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Fehler und Warnungen werden, falls vorhanden, in der Problem-View angezeigt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
 Datenquellen aus UDDI-Registry abrufen
 \end_layout
 
@@ -9129,7 +9042,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Abrufen aller verfügbaren Datenquellen.
+Abrufen einer Liste aller in der Registry registrierten Datenquellen.
 \end_layout
 
 \end_inset
@@ -9169,7 +9082,8 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine Liste mit allen verfügbaren Datenquellen steht zur Verfügung.
+Eine Liste mit allen in der Registry registrierten Datenquellen steht zur
+ Verfügung.
 \end_layout
 
 \end_inset
@@ -9292,8 +9206,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und das Reference Resolution
- System (RRS) muss angebunden und erreichbar sein.
+Eine BPEL-Datei (BPEL-Prozess) muss vorhanden sein und RRS-Transformation
+ Service muss angebunden und erreichbar sein.
 \end_layout
 
 \end_inset
@@ -9362,7 +9276,13 @@ Normalablauf
 
 \begin_layout Plain Layout
 2.
- Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder
+ Aufrufen des Transformation Service mit dem originalen BPEL-Prozess (und
+ vielleicht anderen Sachen?) als Eingabe, um entsprechende Dereferenzierungsakti
+vitäten oder Events für Referenzen positioniert einzufügen.
+\end_layout
+
+\begin_layout Plain Layout
+Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder
  Events für Referenzen (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -9410,9 +9330,9 @@ Sonderfälle
 \end_layout
 
 \begin_layout Subsection
-Anwendungsfälle des RRS
+Anwendungsfälle des RRS Eclipse Plug-Ins
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 neu, ÜBERARBEITEN
@@ -9424,7 +9344,7 @@ neu, ÜBERARBEITEN
 \end_layout
 
 \begin_layout Standard
-Das RRS kann folgende Anwendungsfälle (siehe Abbildung 
+Das RRS Eclipse Plug-In kann folgende Anwendungsfälle (siehe Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:UseCaseDiaRRS"
@@ -9435,19 +9355,7 @@ reference "fig:UseCaseDiaRRS"
 \end_layout
 
 \begin_layout Itemize
-Referenz auflösen/dereferenzieren
-\end_layout
-
-\begin_layout Itemize
-Referenz speichern
-\end_layout
-
-\begin_layout Itemize
 Referenz laden
-\end_layout
-
-\begin_layout Itemize
-Referenz löschen
 \end_layout
 
 \begin_layout Standard
@@ -9460,7 +9368,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename iteration2/RRS_iter2.jpg
+	filename iteration2/RRS_Eclipse_Plug-In_iter2.jpg
 	width 80text%
 
 \end_inset
@@ -9478,332 +9386,13 @@ name "fig:UseCaseDiaRRS"
 
 \end_inset
 
-Anwendungsfall-Diagramm für RRS
+Anwendungsfall-Diagramm für das RRS Eclipse Plug-In
 \end_layout
 
 \end_inset
 
 
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Referenz auflösen/dereferenzieren
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der zugrundeliegende Wert einer Referenz wird ausgelesen.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die angegebene Referenz muss existieren und das RRS muss erreichbar sein.
- Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der korrekte Wert einer Referenz wird geliefert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Es wird ein entsprechender Fehler geworfen, der Informationen über das zugrundel
-iegende Problem liefert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Wert der Referenz wird im RRS abgefragt
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1a.
- Beim Abfragen des Werts tritt ein Fehler auf, da z.B.
- das RRS nicht erreichbar ist
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Referenz-speichern"
-
-\end_inset
-
- Referenz speichern
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Referenz soll im RRS gespeichert werden.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Einer der beiden Anwendungsfälle 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Neue-Referenz-in RRS einfügen"
-
-\end_inset
-
- Neue Referenz in RRS einfügen
-\begin_inset Quotes erd
-\end_inset
-
- oder 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Referenz-aus-RRS bearbeiten"
-
-\end_inset
-
- Referenz aus RRS bearbeiten
-\begin_inset Quotes erd
-\end_inset
-
- wurde erfolgreich ausgeführt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Referenz wurde korrekt gespeichert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Es wird ein Fehler geworfen, der Informationen über das zugrundeliegende
- Problem liefert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Die Referenz wird im RRS gespeichert
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1a.
- Beim Speichern der Referenz tritt ein Fehler auf, da z.B.
- das RRS nicht erreichbar ist
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
 
 \end_inset
 
@@ -9834,7 +9423,8 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Referenz soll aus dem RRS geladen werden.
+Die Referenz soll aus dem RRS geladen werden in den RRS Eclipse View geladen
+ werden.
 \end_layout
 
 \end_inset
@@ -9854,7 +9444,7 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Der RRS View wurde im Eclipse geöffnet.
+Die RRS View wurde im Eclipse geöffnet.
 \end_layout
 
 \end_inset
@@ -9916,7 +9506,9 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Die Referenz wird aus dem RRS geladen
+ Die Referenz wird beim Start des RRS View aus dem RRS geladen und anschließend
+ dargestellt.
+ 
 \end_layout
 
 \end_inset
@@ -9939,168 +9531,6 @@ Sonderfälle
 1a.
  Beim Laden der Referenz tritt ein Fehler auf, da z.B.
  das RRS nicht erreicchbar ist
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Referenz-löschen"
-
-\end_inset
-
- Referenz löschen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features>
-<column alignment="left" valignment="top" width="3cm" special=">{\columncolor{lightgray}}{l}">
-<column alignment="left" valignment="top" width="11cm">
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ziel
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Referenz soll aus dem RRS entfernt werden.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Vorbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Der Anwendungsfall 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Referenz-aus-RRS löschen"
-
-\end_inset
-
- Referenz aus RRS löschen
-\begin_inset Quotes erd
-\end_inset
-
- wurde erfolgreich ausgeführt
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Die Referenz wurde erfolgreich aus dem RRS entfernt.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nachbedingung im Sonderfall
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Es wird ein Fehler geworfen, der Informationen über das zugrundeliegende
- Problem liefert.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Normalablauf
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.
- Die Referenz wird aus dem RRS entfernt
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sonderfälle
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1a.
- Beim Entfernen der Referenz tritt ein Fehler auf, da z.B.
- das RRS nicht erreichbar ist
 \end_layout
 
 \end_inset
@@ -10676,7 +10106,7 @@ Komponenten und ihre Anwendungsfälle
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="23" columns="8">
+<lyxtabular version="3" rows="20" columns="8">
 <features firstHeadBottomDL="true" headBottomDL="true">
 <column alignment="left" valignment="middle" width="4cm">
 <column alignment="center" valignment="middle" width="1.2cm">
@@ -10767,7 +10197,19 @@ Eclipse BPEL Designer Plug-In
 \begin_layout Plain Layout
 
 \series bold
-RRS / Eclipse RRS Plug-In
+RRS
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Eclipse
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Plug-In
 \end_layout
 
 \end_inset
@@ -12123,154 +11565,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-Referenz auflösen / dereferenzieren
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Referenz speichern
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x / -
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 Referenz laden
 \end_layout
 
@@ -12325,86 +11619,12 @@ Referenz laden
 \begin_inset Text
 
 \begin_layout Plain Layout
-x / -
+x
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Referenz löschen
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-x / -
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12526,7 +11746,7 @@ Eclipse BPEL Designer Plug-In
 \begin_layout Plain Layout
 
 \series bold
-RRS / Eclipse RRS Plug-In
+RRS Eclipse Plug-In
 \end_layout
 
 \end_inset
@@ -12602,7 +11822,7 @@ Neue Referenz in RRS einfügen
 \begin_inset Text
 
 \begin_layout Plain Layout
-- / x
+x
 \end_layout
 
 \end_inset
@@ -12676,7 +11896,7 @@ Referenz aus RRS löschen
 \begin_inset Text
 
 \begin_layout Plain Layout
-- / x
+x
 \end_layout
 
 \end_inset
@@ -12750,7 +11970,7 @@ Referenz aus RRS bearbeiten
 \begin_inset Text
 
 \begin_layout Plain Layout
-- / x
+x
 \end_layout
 
 \end_inset
@@ -26663,10 +25883,6 @@ m
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -26789,15 +26005,15 @@ Events
 \end_layout
 
 \begin_layout Standard
-Events sind Ereignisse, die von der ODE Engine erzeugt werden um Rückmeldung
- über bestimmte Aktionen die innerhlab der Engine auftreten zu geben.
+Events sind Ereignisse, die von der ODE Engine erzeugt werden, um Rückmeldung
+ über bestimmte Aktionen, die innerhalb der Engine auftreten, zu geben.
  Bei diesen Ereignissen handelt es sich zum Beispiel um das Aktivieren eines
  Prozesses oder das Erzeugen einer neuen Prozessinstanz.
- Die Events sind in folgende fünf Gruppen eingeteilt: Instance lifecycle
- Events, Activity lifecycle Events, Scope Handling, Data Handling, Correlation
+ Die Events sind in folgende fünf Gruppen eingeteilt: Instance Lifecycle
+ Events, Activity Lifecycle Events, Scope Handling, Data Handling, Correlation
  Events.
  Diese Events machen es möglich zu verfolgen, was innerhalb der ODE Engine
- passiert und produzieren detailierte Informationen über die Prozessausführung.
+ passiert, und produzieren detailierte Informationen über die Prozessausführung.
  Sie können mit Hilfe der Management API oder durch die Nutzung von sogenannten
  Event Listenern abgefragt werden.
  
@@ -26805,8 +26021,8 @@ Events sind Ereignisse, die von der ODE Engine erzeugt werden um Rückmeldung
 
 \begin_layout Standard
 Die Events werden momentan in der internen ODE Derby Datenbank gespeichert.
- Im Rahmen des SIMPL Auditing ist es geplannt diese in einer externen Datenbank
- zu speichern.
+ Im Rahmen des SIMPL Auditing werden diese in einer externen Datenbank gespeiche
+rn.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -26817,9 +26033,9 @@ Event Listener
 Event Listener sind bestimmte Konstrukte, die es ermöglichen, bei dem Auftreten
  bestimmter Events eine direkte Rückmeldung zu geben, oder auf verschiedene
  Events zu reagieren und event-spezifische Aktionen durchzuführen.
- Diese Event Listener werden momentan zum Beispiel dazu benutzt um die verschied
-enen event-spezifischen Informationen an das entsprechende Event DAO weiterzulei
-ten wo diese persistent gespeichert werden.
+ Diese Event Listener werden momentan zum Beispiel dazu benutzt, um die
+ verschiedenen event-spezifischen Informationen an das entsprechende Event
+ DAO weiterzuleiten, wo diese persistent gespeichert werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26828,7 +26044,7 @@ Auditing von SIMPL
 
 \begin_layout Standard
 Im BPEL Designer ist der Zugriff auf das Auditing und die Auditingeinstellungen
- unter dem entsprechenden Menüpunkt möglich.
+ unter dem entsprechenden Menüpunkt in der Admin-Konsole möglich.
  Hier kommt man zum entsprechenden Interface, in dem sich verschiedene Einstellu
 ngen für das Auditing tätigen lassen (siehe Abbildung 
 \begin_inset CommandInset ref
@@ -26841,8 +26057,8 @@ reference "fig:Auditing-Einstellungen"
  Es ist möglich, das Auditing zu aktivieren oder zu deaktivieren.
  Weiterhin ist es möglich, die Datenbank für das Speichern der Auditing-Daten
  festzulegen.
- Das Auditing ist standardmäßig aktiviert, kann allerdings über die Adminkonsole
- deaktiviert und auch erneut aktiviert werden.
+ Das Auditing ist standardmäßig deaktiviert, kann allerdings über die Adminkonso
+le aktiviert und auch erneut deaktiviert werden.
 \end_layout
 
 \begin_layout Standard
@@ -26853,367 +26069,6 @@ Für das Auditing von SIMPL werden die von ODE erzeugten Daten direkt an
 end in einer zuvor in der Adminkonsole festgelegten Auditing-Datenbank abgelegt.
 \end_layout
 
-\begin_layout Subsubsection
-Event Modell
-\end_layout
-
-\begin_layout Standard
-In diesem Abschnitt wird das Event Modell für das Auditing von SIMPL aufgeführt.
- Das SIMPL Event-Modell nutzt als Grundlage das Modell in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-Event-Modell"
-
-\end_inset
-
- welches ein Event Modell für die Ausführung von allgemeinen Aktivitäten
- ist.
- Da es sich dabei jedoch um ein WS-BPEL 2.0 Event-Modell handelt sind einige
- Anpassungen und Änderungen notwendig.
- Der Grund dafür ist, dass die in diesem Modell vorkommenden Events nicht
- mit den Events in ODE identisch sind.
-\end_layout
-
-\begin_layout Standard
-Die verschiedenen Schritte der Aktivitätsausführung die in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-Event-Modell"
-
-\end_inset
-
- aufgeführt sind (Inactive, Ready, Executing etc.) können bis auf eine Ausnahme
- für das SIMPL Event-Modell genutzt werden.
- Der Grund dafür ist, dass der Ablauf der Ausführung in ODE dem in diesem
- Modell gleicht, d.
- h.
- es werden die selben Zustände durchlaufen.
-\end_layout
-
-\begin_layout Standard
-Die SIMPL Events werden nur während der direkten Ausführung der Aktivität
- genutzt (d.h.
- im Zustand "Executing" in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-Event-Modell"
-
-\end_inset
-
-).
- Es genügt daher, das Event Modell darauf zu beschränken was im Zustand
- "Executing" passiert, da is in allen anderen Zuständen keinen neuen Events
- gibt.
-\end_layout
-
-\begin_layout Standard
-In ODE selbst gibt es für Aktivitäten nur die fünf Events: Activity enabled,
- Activity execution started, Activity execution ended, Activity failure
- und Activity recovery.
- Da es in ODE keine Entsprechung der Events Complete Activity oder Activity_Comp
-leted (Übergang vom Zustand 
-\begin_inset Quotes eld
-\end_inset
-
-Waiting
-\begin_inset Quotes erd
-\end_inset
-
- zu 
-\begin_inset Quotes eld
-\end_inset
-
-Complete
-\begin_inset Quotes erd
-\end_inset
-
-) gibt, sondern nur das Event Activity execution ended, geht ODE vom Zustand
- Execution direkt zum Zustand Complete über.
-\end_layout
-
-\begin_layout Standard
-Das SIMPL-Event-Modell wurde daher so aufgebaut, das die Zustände 
-\begin_inset Quotes eld
-\end_inset
-
-Ready
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Complete
-\begin_inset Quotes erd
-\end_inset
-
-, sowie 
-\begin_inset Quotes eld
-\end_inset
-
-Faulted
-\begin_inset Quotes erd
-\end_inset
-
- übernommen wurden.
- Der Zustand 
-\begin_inset Quotes eld
-\end_inset
-
-Executing
-\begin_inset Quotes erd
-\end_inset
-
- wird nicht expliziet dargestellt, statt dessen werden die einzelnen Vorgänge
- die zwischen 
-\begin_inset Quotes eld
-\end_inset
-
-Ready
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Complete
-\begin_inset Quotes erd
-\end_inset
-
- auftreten näher veranschaulicht.
- Der Zustand 
-\begin_inset Quotes eld
-\end_inset
-
-Ready
-\begin_inset Quotes erd
-\end_inset
-
- stellt daher den Anfangszustand des SIMPL-Event-Modells da und der Zustand
- "Complete" den Endzustand.
-\end_layout
-
-\begin_layout Standard
-Zur Vereinfachung wurden im SIMPL-Event-Modell nur die SIMPL-Events aufgeführt
- und keine der bestehenden ODE-Events.
- Das darauß resultierende Event Modell ist in Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Event-Modell-des-Auditings"
-
-\end_inset
-
- zu sehen.
- Dabei ist zu beachten, dass die Zustände die aus dem Modell in Abbildung
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:BPEL-Event-Modell"
-
-\end_inset
-
- übernommen wurden in Rot dargestellt sind.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ODE Event Modell Steinmetz.JPG
-	scale 65
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:BPEL-Event-Modell"
-
-\end_inset
-
-BPEL Event Modell für die Ausführung allgemeiner Aktivitäten in WS-BPEL
- 2.0
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename BPEL Event Modell DM-Aktivität Ablauf 3.jpg
-	lyxscale 50
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Event-Modell-des-Auditings"
-
-\end_inset
-
-Event-Modell für die Ausführung von DM-Aktivitäten
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Wie im SIMPL-Event-Modell zu sehen ist gibt es zwei neue Event Klassen.
- Dies sind die Event Klassen Connection_Events und DM_Events.
- Jede dieser beiden Event Klassen verfügt über eine Anzahl von einzelnen
- Events, die nachfolgend genauer erläutert werden.
- Es soll zukünftig, im Rahmen der Granularität möglich sein, dass diese
- neuen Event Klassen neben den bestehenden fünf Event Klassen, bei der Erstellun
-g eines Deployment Deskriptors aktiviert oder deaktiviert werden können.
- Es ist nicht vorgesehen dies im Rahm es Projekts umzusetzen.
-\end_layout
-
-\begin_layout Paragraph
-Connection_Events
-\end_layout
-
-\begin_layout Standard
-Diese Events werden erzeugt, um verschiedene Ereignisse bei der Verbindung
- zu einer Datenquelle zu erfassen.
- Sie enthalten Informationen darüber zu welcher Datenbank eine Verbindung
- aufgebaut wurde (Typ der Datenbank und ihre Adresse) und wann die Verbindung
- aufgebaut, bzw.
- beendet wurde.
- Diese Events sind notwendig um festzuhalten wann auf eine bestimmte Datenbank
- zugegriffen wurde und dies eventuell in einem Monitoringtool darzustellen
- (z.B.
- Anzahl der Verbindungen zu einer bestimmte Datenbank in den letzten 24
- Stunden).
- 
-\end_layout
-
-\begin_layout Itemize
-ConnectionStarted
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn erfolgreich eine Verbindung aufgebaut wurde.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-ConnectionEnd
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn die Verbindung zu einer Datenquelle beendet
- wurde.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-ConnectionLost
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn es zu einen unerwarteten Abbruch der Verbindung
- kommt.
- Beispielsweise wenn es zu einem Timeout der Verbindung kommt.
-\end_layout
-
-\end_deeper
-\begin_layout Paragraph
-DM_Events
-\end_layout
-
-\begin_layout Standard
-Die DM_Events sind für die Ereignisse einer DM-Aktivität zuständig.
- Hier wird nicht unterschieden, um welche Art von DM-Aktivität es sich handelt.
- Für alle DM-Aktivitäten werden dieselben Events erzeugt.
- Diese Events enthalten alle relevanten Informationen zu den Aktivitäten
- (z.B.
- Name der Aktivität, die Art der Datenbank auf der die DM-Operation durchgeführt
- wird, das zu übergebende Statement etc.).
- Diese speziellen Events werden zusätzlich zu den normalen Activity_Events
- erzeugt.
- Der Grund dafür diese Events zusätzlich zu erzeugen liegt darin, das wie
- bereits erwähnt die Möglichkeit bestehen soll, im Rahmen des Auditing nur
- die SIMPL-Events zu erzeugen.
-\end_layout
-
-\begin_layout Itemize
-DMStarted 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität gestartet
- wurde.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-DMEnd
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität erfolgreich
- beendet wurde.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-DMFailure
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Dieses Event wird erzeugt, wenn bei der Ausführung einer DM-Aktivität ein
- Fehler auftrat.
-\end_layout
-
-\end_deeper
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -27949,6 +26804,377 @@ Bezüglich der Policy-Datei gelten einige Einschränkungen.
 
 \end_layout
 
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Ausblick"
+
+\end_inset
+
+Ausblick
+\end_layout
+
+\begin_layout Subsection
+Erweiterungsmöglichkeiten
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Event System
+\end_layout
+
+\begin_layout Standard
+In diesem Abschnitt wird das Event Modell für das Auditing von SIMPL aufgeführt.
+ Das SIMPL Event-Modell nutzt als Grundlage das Modell in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+ welches ein Event Modell für die Ausführung von allgemeinen Aktivitäten
+ ist.
+ Da es sich dabei jedoch um ein WS-BPEL 2.0 Event-Modell handelt sind einige
+ Anpassungen und Änderungen notwendig.
+ Der Grund dafür ist, dass die in diesem Modell vorkommenden Events nicht
+ mit den Events in ODE identisch sind.
+\end_layout
+
+\begin_layout Standard
+Die verschiedenen Schritte der Aktivitätsausführung die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+ aufgeführt sind (Inactive, Ready, Executing etc.) können bis auf eine Ausnahme
+ für das SIMPL Event-Modell genutzt werden.
+ Der Grund dafür ist, dass der Ablauf der Ausführung in ODE dem in diesem
+ Modell gleicht, d.
+ h.
+ es werden die selben Zustände durchlaufen.
+\end_layout
+
+\begin_layout Standard
+Die SIMPL Events werden nur während der direkten Ausführung der Aktivität
+ genutzt (d.h.
+ im Zustand "Executing" in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+).
+ Es genügt daher, das Event Modell darauf zu beschränken was im Zustand
+ "Executing" passiert, da is in allen anderen Zuständen keinen neuen Events
+ gibt.
+\end_layout
+
+\begin_layout Standard
+In ODE selbst gibt es für Aktivitäten nur die fünf Events: Activity enabled,
+ Activity execution started, Activity execution ended, Activity failure
+ und Activity recovery.
+ Da es in ODE keine Entsprechung der Events Complete Activity oder Activity_Comp
+leted (Übergang vom Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Waiting
+\begin_inset Quotes erd
+\end_inset
+
+ zu 
+\begin_inset Quotes eld
+\end_inset
+
+Complete
+\begin_inset Quotes erd
+\end_inset
+
+) gibt, sondern nur das Event Activity execution ended, geht ODE vom Zustand
+ Execution direkt zum Zustand Complete über.
+\end_layout
+
+\begin_layout Standard
+Das SIMPL-Event-Modell wurde daher so aufgebaut, das die Zustände 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Complete
+\begin_inset Quotes erd
+\end_inset
+
+, sowie 
+\begin_inset Quotes eld
+\end_inset
+
+Faulted
+\begin_inset Quotes erd
+\end_inset
+
+ übernommen wurden.
+ Der Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Executing
+\begin_inset Quotes erd
+\end_inset
+
+ wird nicht expliziet dargestellt, statt dessen werden die einzelnen Vorgänge
+ die zwischen 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Complete
+\begin_inset Quotes erd
+\end_inset
+
+ auftreten näher veranschaulicht.
+ Der Zustand 
+\begin_inset Quotes eld
+\end_inset
+
+Ready
+\begin_inset Quotes erd
+\end_inset
+
+ stellt daher den Anfangszustand des SIMPL-Event-Modells da und der Zustand
+ "Complete" den Endzustand.
+\end_layout
+
+\begin_layout Standard
+Zur Vereinfachung wurden im SIMPL-Event-Modell nur die SIMPL-Events aufgeführt
+ und keine der bestehenden ODE-Events.
+ Das darauß resultierende Event Modell ist in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Event-Modell-des-Auditings"
+
+\end_inset
+
+ zu sehen.
+ Dabei ist zu beachten, dass die Zustände die aus dem Modell in Abbildung
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BPEL-Event-Modell"
+
+\end_inset
+
+ übernommen wurden in Rot dargestellt sind.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ODE Event Modell Steinmetz.JPG
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BPEL-Event-Modell"
+
+\end_inset
+
+BPEL Event Modell für die Ausführung allgemeiner Aktivitäten in WS-BPEL
+ 2.0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename BPEL Event Modell DM-Aktivität Ablauf 3.jpg
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Event-Modell-des-Auditings"
+
+\end_inset
+
+Event-Modell für die Ausführung von DM-Aktivitäten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Wie im SIMPL-Event-Modell zu sehen ist gibt es zwei neue Event Klassen.
+ Dies sind die Event Klassen Connection_Events und DM_Events.
+ Jede dieser beiden Event Klassen verfügt über eine Anzahl von einzelnen
+ Events, die nachfolgend genauer erläutert werden.
+ Es soll zukünftig, im Rahmen der Granularität möglich sein, dass diese
+ neuen Event Klassen neben den bestehenden fünf Event Klassen, bei der Erstellun
+g eines Deployment Deskriptors aktiviert oder deaktiviert werden können.
+ Es ist nicht vorgesehen dies im Rahm es Projekts umzusetzen.
+\end_layout
+
+\begin_layout Paragraph
+Connection_Events
+\end_layout
+
+\begin_layout Standard
+Diese Events werden erzeugt, um verschiedene Ereignisse bei der Verbindung
+ zu einer Datenquelle zu erfassen.
+ Sie enthalten Informationen darüber zu welcher Datenbank eine Verbindung
+ aufgebaut wurde (Typ der Datenbank und ihre Adresse) und wann die Verbindung
+ aufgebaut, bzw.
+ beendet wurde.
+ Diese Events sind notwendig um festzuhalten wann auf eine bestimmte Datenbank
+ zugegriffen wurde und dies eventuell in einem Monitoringtool darzustellen
+ (z.B.
+ Anzahl der Verbindungen zu einer bestimmte Datenbank in den letzten 24
+ Stunden).
+ 
+\end_layout
+
+\begin_layout Itemize
+ConnectionStarted
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn erfolgreich eine Verbindung aufgebaut wurde.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ConnectionEnd
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn die Verbindung zu einer Datenquelle beendet
+ wurde.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ConnectionLost
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn es zu einen unerwarteten Abbruch der Verbindung
+ kommt.
+ Beispielsweise wenn es zu einem Timeout der Verbindung kommt.
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+DM_Events
+\end_layout
+
+\begin_layout Standard
+Die DM_Events sind für die Ereignisse einer DM-Aktivität zuständig.
+ Hier wird nicht unterschieden, um welche Art von DM-Aktivität es sich handelt.
+ Für alle DM-Aktivitäten werden dieselben Events erzeugt.
+ Diese Events enthalten alle relevanten Informationen zu den Aktivitäten
+ (z.B.
+ Name der Aktivität, die Art der Datenbank auf der die DM-Operation durchgeführt
+ wird, das zu übergebende Statement etc.).
+ Diese speziellen Events werden zusätzlich zu den normalen Activity_Events
+ erzeugt.
+ Der Grund dafür diese Events zusätzlich zu erzeugen liegt darin, das wie
+ bereits erwähnt die Möglichkeit bestehen soll, im Rahmen des Auditing nur
+ die SIMPL-Events zu erzeugen.
+\end_layout
+
+\begin_layout Itemize
+DMStarted 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität gestartet
+ wurde.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+DMEnd
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn die Ausführung einer DM-Aktivität erfolgreich
+ beendet wurde.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+DMFailure
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dieses Event wird erzeugt, wenn bei der Ausführung einer DM-Aktivität ein
+ Fehler auftrat.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
