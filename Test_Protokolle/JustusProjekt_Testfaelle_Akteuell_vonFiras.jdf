@@ -1,0 +1,3294 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tests SYSTEM "project.dtd">
+<tests product="TestDataManager" team="05" version="1.0">
+<sequence created="14.06.2010" creator="feras" name="Project" number="0">
+<description>This is the root node of the project. It contains all test sequences and test cases.</description>
+<pre/>
+<sequence created="04.11.2009" creator="tuxi23" name="Unit Test" number="1">
+<description/>
+<pre/>
+</sequence>
+<sequence created="04.11.2009" creator="tuxi23" name="Integration Test" number="2">
+<description/>
+<pre/>
+</sequence>
+<sequence created="04.11.2009" creator="tuxi23" name="System Test" number="3">
+<description/>
+<pre/>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: allgemein für alle DMAktivitaeten" number="393">
+<description/>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="394" priority="C" title="Test Case: Properties Fenster- Tabellen aus tabellen liste Fenster falls DS ist  DB ">
+<description>hier soll überprüft werden ob die tabellen und colums aus der DS gelesen werden und angezeigt werden wenn man button "Insert Table" clickt und die Fenster mit liste der tabellen und colums angezeigt wird.</description>
+<pre>-process ist angelegt und eine DM-Aktivität ist ausgewählt.
+-die PropertieFenster der DM-Aktivität ist geöffnet bzw. ausgewählt
+-und eine DB- DSObjekt ist in der Combobox für Datenquelle ausgewählt</pre>
+<actions>1)die ausführfläche (Buttom) "Insert Table" wird betätigt.
+2)man wählt einen eintrag aus der liste aus</actions>
+<post>-die Fenster mit der geparsten tabellen und endlich Colimns aus der DB  ist geöffnet und die Tabellen sind in der Liste eingetragen
+-Der ausgewälten eintrag aus der liste wird in der Statement mit entsprechende TextFarbe hinzugefügt </post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="396" priority="C" title="Test Case: Inserieren von BPEL-Variablen über die Properties">
+<description>testen ob bei ancklicken auf  button "Inser Variable" die BPEL-Variablen, die im Prozess erstellt wurden auch in der Fenster der BPEL-Variablen angezeigt werden zur auswahl.
+Und ob beim auswählen der einträge bzw. die BPEL-Variablen in der Statement hinzugefügt werden.</description>
+<pre>-process ist angelegt und eine DM-Aktivität ist ausgewählt.
+-die PropertieFenster der DM-Aktivität ist geöffnet bzw. ausgewählt
+</pre>
+<actions>1) den Button "Insert Variable" wird betätigt
+2) einen Eintrag aus der Fenster der BPEL-Variable auswählen</actions>
+<post>1a - Der Fenster der BPEL-Variablen öffnet sich und zeigt alle BPEL-Variablen aus der Process in der liste ,falls variablen in der Process vordefiniert sind.
+2a - der eintrag bzw. BPEL-Variable
+wird in der Statement hinzugefügt
+</post>
+<tags/>
+</testcase>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence:  Listen der Data über  Properties Fenste öffnnenr- Commands,File,Folder, Driver  falls DS ist  FileSystem " number="401">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="402" priority="C" title="Test Case: Insererieren eines Command ">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität ist ausgewählt
+-der Propertie Section bzw. fenster aus aufgeklappt
+-eine FIleSystem Datenquellen-objekt ist in der Propertiefenster in der dafür gesehene ComboBox ausgewählt  </pre>
+<actions>1-man klickt auf dem Button "Inser Command"
+2- man wählt einen Command aus der liste aus.</actions>
+<post>1a- es öffnet sich der Fenster mit der von FileSystem-Datenquelle geparsten Commands 
+2a- der ausgewählter Command aus der liste wird in der Statement eingetragen </post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="403" priority="C" title="Test Case: Insererieren eines File ">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität ist ausgewählt
+-der Propertie Section bzw. fenster aus aufgeklappt
+-eine FIleSystem Datenquellen-objekt ist in der Propertiefenster in der dafür gesehene ComboBox ausgewählt  </pre>
+<actions>1-man klickt auf dem Button "Insert File"
+2- man wählt einen File aus der liste aus.</actions>
+<post>1a- es öffnet sich der Fenster mit der von FileSystem-Datenquelle geparsten File 
+2a- der ausgewählter File aus der liste wird in der Statement eingetragen </post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="404" priority="C" title="Test Case: Insererieren eines Folder ">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität ist ausgewählt
+-der Propertie Section bzw. fenster aus aufgeklappt
+-eine FIleSystem Datenquellen-objekt ist in der Propertiefenster in der dafür gesehene ComboBox ausgewählt  </pre>
+<actions>1-man klickt auf dem Button "Insert Folder"
+2- man wählt einen Command aus der liste aus.</actions>
+<post>1a- es öffnet sich der Fenster mit der von FileSystem-Datenquelle geparsten Foldern 
+2a- der ausgewählter Foldern aus der liste wird in der Statement eingetragen </post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="405" priority="C" title="Test Case: Insererieren eines Driver ">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität ist ausgewählt
+-der Propertie Section bzw. fenster aus aufgeklappt
+-eine FIleSystem Datenquellen-objekt ist in der Propertiefenster in der dafür gesehene ComboBox ausgewählt  </pre>
+<actions>1-man klickt auf dem Button "Insert Driver"
+2- man wählt einen Driver aus der liste aus.</actions>
+<post>1a- es öffnet sich der Fenster mit der von FileSystem-Datenquelle geparsten Drivern 
+2a- der ausgewählter Driver aus der liste wird in der Statement eingetragen </post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: DM-Aktivitaeten" number="222">
+<description>In folgende sollen die DM Aktivitäten einzeln überprüft .
+Query, Insert, Update, Delete, Create, Drop, RetrieveData, Call, Transfer.</description>
+<pre/>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Query DMA" number="223">
+<description>Testfaelle der DMA Query </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="224" priority="A" title="Test Case:  Erstellung von Query DMA">
+<description>test die Erstellung von Query DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="225" priority="C" title="Test Case: Bearbeitung Query DM-Aktivitaet">
+<description>test die Bearbeitung Query DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="226" priority="C" title="Test Case:  Loeschen einer Query DMA">
+<description>test Loeschen Query DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="275" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="276" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="283" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="284" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="285" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="286" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="329" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="330" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="331" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="332" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Insert  DMA" number="227">
+<description>Testfaelle der DMA Insert </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="228" priority="A" title="Test Case:  Erstellung  Insert  DMA">
+<description>test die Erstellung von DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="229" priority="C" title="Test Case: Bearbeitung Insert DM-Aktivitaet">
+<description>test die Bearbeitung Insert DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="230" priority="C" title="Test Case: den Loeschen Insert DMA">
+<description>test Loeschen Insert DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="277" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="278" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="279" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="280" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="281" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="282" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="334" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="335" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="336" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="337" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Delete  DMA" number="247">
+<description>Testfaelle der DMA Delete </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="248" priority="A" title="Test Case:  Erstellung  Delete  DMA">
+<description>test die Erstellung von Delete DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="249" priority="C" title="Test Case: Bearbeitung Delete DM-Aktivitaet">
+<description>test die Bearbeitung Delete DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="250" priority="C" title="Test Case:  Loeschen Delete DMA">
+<description>test Loeschen Delete DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="287" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="288" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="289" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="290" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="291" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="292" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="338" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="339" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="340" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="341" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Call  DMA" number="251">
+<description>Testfaelle der DMA Call </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="252" priority="A" title="Test Case:  Erstellung  Call  DMA">
+<description>test die Erstellung von Call DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="253" priority="C" title="Test Case: Bearbeitung Call DM-Aktivitaet">
+<description>test die Bearbeitung Call DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="254" priority="C" title="Test Case:  Loeschen Call DMA">
+<description>test Loeschen Call DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="293" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="294" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="295" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="296" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="297" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="298" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="342" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="343" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="344" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="345" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Create  DMA" number="255">
+<description>Testfaelle der DMA Create </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="256" priority="A" title="Test Case:  Erstellung  Create  DMA">
+<description>test die Erstellung von Create DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="257" priority="C" title="Test Case: Bearbeitung Create DM-Aktivitaet">
+<description>test die Bearbeitung Create DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="258" priority="C" title="Test Case:  Loeschen Create DMA">
+<description>test Loeschen Create DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="299" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="300" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="301" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="302" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="303" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="304" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="346" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="347" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="348" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="349" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Drop  DMA" number="259">
+<description>Testfaelle der DMA Drop </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="260" priority="A" title="Test Case:  Erstellung  Drop  DMA">
+<description>test die Erstellung von Drop DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="261" priority="C" title="Test Case: Bearbeitung Drop  DM-Aktivitaet">
+<description>test die Bearbeitung Drop DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="262" priority="C" title="Test Case:  Loeschen Drop DMA">
+<description>test Loeschen Drop DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="305" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="306" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="307" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="308" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="309" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="310" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="350" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="351" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="352" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="353" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: RetrieveData  DMA" number="263">
+<description>Testfaelle der DMA RetrieveData </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="264" priority="A" title="Test Case:  Erstellung  RetrieveData  DMA">
+<description>test die Erstellung von RetrieveData DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="265" priority="C" title="Test Case: Bearbeitung RetrieveData  DM-Aktivitaet">
+<description>test die Bearbeitung RetrieveData DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="266" priority="C" title="Test Case:  Loeschen RetrieveData DMA">
+<description>test Loeschen RetrieveData DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="311" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="312" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="313" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="314" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="315" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="316" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="354" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="355" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="356" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="357" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Update  DMA" number="267">
+<description>Testfaelle der DMA Update </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="268" priority="A" title="Test Case:  Erstellung  Update  DMA">
+<description>test die Erstellung von Update DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="269" priority="C" title="Test Case: Bearbeitung Update  DM-Aktivitaet">
+<description>test die Bearbeitung Update DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="270" priority="C" title="Test Case:  Loeschen Update DMA">
+<description>test Loeschen Update DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="317" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="318" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="319" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="320" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="321" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="322" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="358" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="359" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="360" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="361" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Transfer   DMA" number="271">
+<description>Testfaelle der DMA Transfer  </description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="272" priority="A" title="Test Case:  Erstellung  Transfer   DMA">
+<description>test die Erstellung von Transfer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1.Selektion einer DM-Aktivität aus der BPEL Designer Palette durch auswahl mit der linken Maustaste und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll, mit der linken Maustaste.
+2.Eingabe eines Aktivitätsnamens durch den Benutzer. </actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den Prozess eingefügt, und der vom Benutzer eingegebene Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="273" priority="C" title="Test Case: Bearbeitung Transfer   DM-Aktivitaet">
+<description>test die Bearbeitung Transfer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2.Öffnen der "Properties-View" der DM-A um ihre Eigenschaften anzuzeigen.
+3.Änderung der Eigenschaften der DM-A. </actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten DM-A wurden korrekt übernommen und werden in der "Properties-View" angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="274" priority="C" title="Test Case:  Loeschen Transfer  DMA">
+<description>test Loeschen Transfer DM-Aktivitaet</description>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-A ist im Eclipse BPEL Designer geöffnet. </pre>
+<actions>1a.Selektierung einer DM-A aus dem Prozess durch Auswahl mit der linken Maustaste.
+2a.Löschen der DM-A durch drücken der "entf"-Taste. </actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem Prozess gelöscht.Alle ausgehenden und eingehenden Links werden entsprechend dem Standardverhalten des Eclipse BPEL-Designers neu gesetzt.</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="323" priority="C" title="Test Case: Auto. Namenvorschlag  bei erzeugung neue DMA">
+<description>beim erzeugen eine neue DM-Aktivitaet wird eine Name für die Aktivitaet auto generiert </description>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="324" priority="C" title="Test Case: Einstellung durch Drag &amp; Drop">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="325" priority="C" title="Test Case: öffnung des kontextmenü und Wählung der &quot;delete&quot; durch maus">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="326" priority="C" title="Test Case: Löschen wobei Öffnung des Kontextmenüs durch rechten Mausklick auf eine DM-A.">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="327" priority="C" title="TestCase: Löschen einer DMA durch Mausklick auf den Menüpunkt &quot;Delete&quot; des Kontextmenüs">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="328" priority="C" title="Test Case:  den Löschen einer DMA durch &quot;entf&quot;-Taste">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="362" priority="C" title="Test Case: Einstellung &quot;mit Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="363" priority="C" title="Test Case: Einstellen &quot;ohne Late-Binding&quot;">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="364" priority="C" title="Test Case: Datenquelle aus  DD">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="365" priority="C" title="Test Case: Datenquelle aus UDDI-Registry ">
+<description/>
+<pre/>
+<actions/>
+<post/>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für DM-Aktivitaet " number="9">
+<description/>
+<pre/>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deplozment-Deskriptors " number="167">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="168" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save</actions>
+<post>Der ODE Deployment-Deskriptor wurde korrekt erstellt und der BPEL Prozess kann deployt werden.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="169" priority="C" title="Test Case für die Bearbeitung von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor über Doppelklick mit der linken Maustaste auf die Datei öffnen.
+</actions>
+<post>Die Änderungen sind gespeichert und der ODE Deployment-Deskriptor ist korrekt.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="170" priority="C" title="Test Case für den Löschen von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor auswählen und über Edit-Delete löschen.</actions>
+<post>Der ODE Deployment-Deskriptor ist gelöscht.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE Deployment-Deskriptor kann nicht erstellt werden" number="171">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="172" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save
+Der ODE Deployment-Deskriptor kann nicht erstellt werden</actions>
+<post>Der ODE Deployment-Deskriptor steht nicht zur Verfügung.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE Deployment-Deskriptor kann nicht gespeichert werden." number="175">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="176" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save</actions>
+<post>Der ODE Deployment-Deskriptor wurde korrekt erstellt und der BPEL Prozess kann deployt werden.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="177" priority="C" title="Test Case für die Bearbeitung von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor über Doppelklick mit der linken Maustaste auf die Datei öffnen.
+Der ODE Deployment-Deskriptor kann nicht gespeichert werden.</actions>
+<post>Die Änderungen an der Konfiguration sind nicht gespeichert.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE Deployment-Deskriptor kann nicht gelöscht werden." number="179">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="180" priority="C" title="Test Case für die Erstellung von ODE D-D">
+<description/>
+<pre>Ein korrekter BPEL Prozess liegt vor.</pre>
+<actions>1.Erstellung eines ODE Deplozment-Deskriptors über File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment-Descriptor.
+2.Konfiguration des Deployment-Deskriptors.
+3.Speicherung des Deployment-Deskriptors über File-&gt;Save</actions>
+<post>Der ODE Deployment-Deskriptor wurde korrekt erstellt und der BPEL Prozess kann deployt werden.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="182" priority="C" title="Test Case für den Löschen von ODE D-D">
+<description/>
+<pre>Ein ODE Deployment-Deskriptor wurde korrekt erstellt.</pre>
+<actions>ODE Deployment-Deskriptor auswählen und über Edit-Delete löschen.
+Der ODE Deployment-Deskriptor kann nicht gelöscht werden.</actions>
+<post>Der ODE Deployment-Deskriptor ist nicht gelöscht.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für die Deploy und den Start eines Prozessinstanzes" number="185">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="186" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".</actions>
+<post>Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und der Prozess wurde erfolgreich deployed.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="187" priority="C" title="Test Case für den Start eines Prozessinstanzes">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE Workflow-Engine deployt</pre>
+<actions>Instanzierung des Prozessmodells und Start der Prozessinstanz durch Senden einer entsprechenden SOAP-Nachricht an den Endpunkt des Prozesses.</actions>
+<post>Prozessinstanz wurde gestartet.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence ODE-Server kann nicht starten" number="188">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="189" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".
+ODE-Server startet nicht aufgrund eines Fehlers.</actions>
+<post>Der ODE-Server ist nicht gestartet und der Prozess wurde nicht deployed.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence Fehler bei Deploy" number="191">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="192" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".
+Beim Deployen des Prozesses tritt ein Fehler auf.</actions>
+<post>Der ODE-Server ist nicht gestartet und der Prozess wurde nicht deployed.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence Fehler beim Starten der Prozessinstanz" number="194">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="195" priority="C" title="Test Case für die Deploy von Prozess auf ODE-Server">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE Workflow-Engine korrekt in Eclipse eingebunden, die Server-View wird angezeigt und ein ODE Deployment-Descriktor wurde korrekt erstellt bzw. ist bereits vorhanden.</pre>
+<actions>1.Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
+.Rechter Mausklick auf den ODE-Server
+.Auswahl des Menüpunkts "Add and Remove"
+.Hinzufügen der BPEL Prozess-Datei
+2.Starten des ODE-Servers über rechten Mausklick und klicken auf "Start".</actions>
+<post>Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine kopiert und der Prozess wurde erfolgreich deployed.</post>
+<tags/>
+</testcase>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="196" priority="C" title="Test Case für den Start eines Prozessinstanzes">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE Workflow-Engine deployt</pre>
+<actions>Instanzierung des Prozessmodells und Start der Prozessinstanz durch Senden einer entsprechenden SOAP-Nachricht an den Endpunkt des Prozesses.
+Fehler beim Starten der Prozessinstanz, z.B. durch eine SOAP-Nachricht mit falschem Inhalt.</actions>
+<post>Prozessinstanz wird verworfen.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="24.05.2010" creator="tuxi23" name="Test Sequence für die Auswählung vom Late-Binding" number="197">
+<description/>
+<pre/>
+<testcase created="24.05.2010" creator="tuxi23" effort="00:00" number="198" priority="C" title="Test Case für die Auswählung vom Late-Binding">
+<description/>
+<pre>Ein BPEL-Prozess mit ODE Deployment-Deskriptor und ein WS-Policy-Dokument mit Anforderungen an die Datenquelle müssen erstellt sein. Der ODE Deployment-Deskriptor muss geöffnet sein.</pre>
+<actions>1.Auswahl einer DM-A aus der Liste mit DM-A.
+2.Auswahl einer Strategie über das Strategie-Dropdown-Menü.
+3.Auswahl einer WS-Policy-Datei über den Button "WS-Policy-Datei auswählen".
+4.Speichern des ODE Deployment-Deskriptor über das "Speichern"-Symbol in der Symbolleiste.</actions>
+<post>Die Strategie für eine DM-A ist im ODE Deployment-Deskriptor hinterlegt.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="05.11.2009" creator="tuxi23" name="Test Sequence für Workflow-Administrator" number="10">
+<description/>
+<pre/>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für die Benutzung der Aktivität-Konsole" number="45">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="46" priority="C" title="Test Case für die Öffnung von A-K">
+<description>test die Oeffnung von A-K</description>
+<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet.</pre>
+<actions>1.klick auf das SIMPL-Menü
+2.klick auf [admin-console]
+</actions>
+<post>admin-console wird angezeiget und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="68" priority="C" title="Test Case Globale Einstellungen festlegen">
+<description>Test die Festlegung der Globale Einstellungen</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
+<actions>Eingabe/Aenderung der Werte</actions>
+<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="67" priority="C" title="Test Case Auditing-Datenbank festlegen">
+<description>Test die Festlegung der Auditing-Datenbank</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
+<actions>angabe einer Datenbank-URL</actions>
+<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="69" priority="C" title="Test Case Auditing aktivieren">
+<description>Test die Aktivierung der Auditing</description>
+<pre>Die A-k ist geoeffnet,der Unterpunkt "Auditing" wird angezeiget und die Auditing ist nicht aktiv</pre>
+<actions>setzen der Auditing-Checkbox.</actions>
+<post>Das Auditing ist Aktiv.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="47" priority="C" title="Test Case save A-K">
+<description>Test die Speicherung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf Button [Save]</actions>
+<post>Alle Werte der Admin-Konsole wurden korrekt
+gespeichert und alle veralteten Werte mit neuen ueberschrieben. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="70" priority="C" title="Test Case Auditing deaktivieren">
+<description>Test die Deaktivierung der Auditing</description>
+<pre>Die A-K ist geoeffnet, der Unterpunkt wird angezeiget, Auditing ist aktiv</pre>
+<actions>zuruecksetzen der Auditing-Checkbox</actions>
+<post>Das Auditing ist deaktiviert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="49" priority="C" title="Test Case Zuruecksetzung der A-K">
+<description>Test die Zuruecksetzung der A-K</description>
+<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
+<actions>klick auf Button [reset]</actions>
+<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="66" priority="C" title="Test Case A-K Defaults Laden">
+<description>Test die A-K Defaults zu Laden</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf den Button[Default]</actions>
+<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="50" priority="C" title="Test Case Schliessen der A-K">
+<description>Test die Schliessung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget.</pre>
+<actions>klick auf Button [close]</actions>
+<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence Fehler bei Speichern" number="51">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="52" priority="C" title="Test Case für die Öffnung von A-K">
+<description>test die Oeffnung von A-K</description>
+<pre>Eclipse mit dem SIMPL Eclipse Plug-In ist geoeffnet</pre>
+<actions>klick auf das SIMPL-Menue
+und klick auf [admin-console]</actions>
+<post>admin-console wird angezeiget und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="71" priority="C" title="Test Case Globale Einstellungen festlegen">
+<description>Test die Festlegung der Globale Einstellungen</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Global Settings" wird angezeiget.</pre>
+<actions>Eingabe/Aenderung der Werte</actions>
+<post>Die globalen Einstellungen wurden festgeleget und gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="72" priority="C" title="Test Case Auditing-Datenbank festlegen">
+<description>Test die Festlegung der Auditing-Datenbank</description>
+<pre>Die A-K ist geoeffnet und der Unterpunkt "Auditing" wird angezeiget.</pre>
+<actions>angabe einer Datenbank-URL</actions>
+<post>Die Datenbank fuer das Auditing wurde festleget, gespeichert und kann verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="73" priority="C" title="Test Case Auditing aktivieren">
+<description>Test die Aktivierung der Auditing</description>
+<pre>Die A-k ist geoeffnet,der Unterpunkt "Auditing" wird angezeiget und die Auditing ist nicht aktiv</pre>
+<actions>setzen der Auditing-Checkbox.</actions>
+<post>Das Auditing ist Aktiv.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="53" priority="C" title="Test Case save A-K">
+<description>Test die Speicherung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>
+Beim Speichern der Werte tritt ein Fehler auf.</actions>
+<post>Alle geaenderten Werte der Admin-Konsole bleiben unveraendert. eine entsprechenden Fehlermeldung wird gezeiget. ein erneuter Speicherversuch kann durchgefuehrt werden.
+Die Werten bleiben dabei solange erhalten, bis die A-K geschlossen wird. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="74" priority="C" title="Test Case Auditing deaktivieren">
+<description>Test die Deaktivierung der Auditing</description>
+<pre>Die A-K ist geoeffnet, der Unterpunkt wird angezeiget, Auditing ist aktiv</pre>
+<actions>zuruecksetzen der Auditing-Checkbox</actions>
+<post>Das Auditing ist deaktiviert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="54" priority="C" title="Test Case Zuruecksetzung der A-K">
+<description>Test die Zuruecksetzung der A-K</description>
+<pre>Die A-K wird angezeiget und es wurde mindestens ein Werte geaendert.</pre>
+<actions>klick auf Button [reset]</actions>
+<post>Alle geaenderten Werte der A-K wurden auf die gespeicherten Einstellungen zurueckgesetzt. </post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="75" priority="C" title="Test Case A-K Defaults Laden">
+<description>Test die A-K Defaults zu Laden</description>
+<pre>Die Admin-Konsole wird angezeiget</pre>
+<actions>klick auf den Button[Default]</actions>
+<post>alle geaenderten Werte der Admin-Konsole wurden auf die gespeicherten Standwerte zuruecksetzen</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="55" priority="C" title="Test Case Schliessung der A-K">
+<description>Test die Schliessung der A-K</description>
+<pre>Die Admin-Konsole wird angezeiget.</pre>
+<actions>klick auf Button [close]</actions>
+<post>Die Admin-Konsole wurde geschlossen und alle nicht gespeicherten Aenderungen wurden verworfen</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für die Erstellung, Bearbeitung und Löschen von RRS" number="82">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="83" priority="C" title="Test Case neue Referenz in RRS einfügen">
+<description>Test die Einfügung neuer Referenz in RRS</description>
+<pre>Der RRS-View ist geöffnet und das RRS ist erreichbar.</pre>
+<actions>1. Klick auf den Button [New] der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontex-Menüs 
+2. Angabe aller Parameter der Referenz in dem entsprechenden Pop-up Fenster.
+3. Klick auf [Save], um die Werte der neue Referenz zu speichern und derAnwendungsfall"Referenz speichern" wird angestoßen.</actions>
+<post>Die neue Referenz wurde korrekt im RRS gespeichert, wird in RRS-View angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="84" priority="C" title="Test Case Referenz aus RRS bearbeiten">
+<description>Test die Bearbeitung einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu bearbeitende Referenz ist ausgewählt.</pre>
+<actions>1.Klick des [Edit] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontext-Menüs 
+2. Angabe der neuen Parameter der Referenz in dem entsprechenden Pop-up Fenster 
+3. Klick auf [Save], um die aktualisierten Werte der Referenz zu speichern und der Anwendungsfall "Referenz speichern" wird angestoßen.
+</actions>
+<post>Die geänderten Werte der Referenz wurden korrekt im RRS gespeichert, die Referenz wurde aktualisiert und die aktualisierten Werte werden in der Referenzen-Tabelle angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="85" priority="C" title="Test Case Referenz aus RRS löschen">
+<description>Test den Löschen einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu löschende Referenz ist ausgewählt.</pre>
+<actions>1. Klick auf Button [Delete] der Toolbar oder Auswahldes entsprechenden Menü-Punktes des Kontext-Menüs und der Anwendungsfall "Referenz löschen" wird angestoßen</actions>
+<post>Die entsprechende Referenz wurde vollständig und korrekt aus dem RRS und der Referenzen-Tabelle entfernt und kann nun nicht mehr verwendet werden.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="14.11.2009" creator="tuxi23" name="Test Sequence für Beim Löschen der Referenz tritt ein Fehler" number="86">
+<description/>
+<pre/>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="87" priority="C" title="Test Case neue Referenz in RRS einfügen">
+<description>Test die Einfügung neuer Referenz in RRS</description>
+<pre>Der RRS-View ist geöffnet und das RRS ist erreichbar.</pre>
+<actions>1. Klick auf den Button [New] der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontex-Menüs 
+2. Angabe aller Parameter der Referenz in dem entsprechenden Pop-up Fenster.
+3. Klick auf [Save], um die Werte der neue Referenz zu speichern und derAnwendungsfall"Referenz speichern" wird angestoßen.
+Beim Speichern der neue Referenz tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist</actions>
+<post>es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="88" priority="C" title="Test Case Referenz aus RRS bearbeiten">
+<description>Test die Bearbeitung einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu bearbeitende Referenz ist ausgewählt.</pre>
+<actions>1.Klick des [Edit] Buttons der Toolbar oder Auswahl des entsprechenden Menü-Punktes des Kontext-Menüs 
+2. Angabe der neuen Parameter der Referenz in dem entsprechenden Pop-up Fenster 
+3. Klick auf [Save], um die aktualisierten Werte der Referenz zu speichern und der Anwendungsfall "Referenz speichern" wird angestoßen.
+Beim Speichern der Änderungen tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist.</actions>
+<post>Die bearbeitete Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<tags/>
+</testcase>
+<testcase created="14.11.2009" creator="tuxi23" effort="00:00" number="89" priority="C" title="Test Case Referenz aus RRS löschen">
+<description>Test den Löschen einer Referenz aus RRS</description>
+<pre>Der RRS-View ist geöffnet, das RRS ist erreichbar und die zu löschende Referenz ist ausgewählt.</pre>
+<actions>1. Klick auf Button [Delete] der Toolbar oder Auswahldes entsprechenden Menü-Punktes des Kontext-Menüs und der Anwendungsfall "Referenz löschen" wird angestoßen.
+Beim Löschen der Referenz tritt ein Fehler auf, da z.B. das RRS nicht erreichbar ist.
+</actions>
+<post>Die zu löschende Referenz bleibt im RRS und in der Referenzen-Tabelle unverändert und es wird eine entsprechende Fehlermeldung angezeigt, die den Benutzer über die aufgetretenen Fehler informiert.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Eclipse BPEL Designer" number="115">
+<description/>
+<pre/>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für den Laden, Defaults Laden und Speichern" number="116">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="117" priority="C" title="Test Case A-K laden">
+<description>Test die Ladung der A-K</description>
+<pre>Einer der Anwendungsfälle "Admin-Konsole öffnen" oder "Einstellungen der A-K zurücksetzen" wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt Werte aus der SIMPL DB. 
+2. Füllen der Felder der Admin-Konsole mit den geladenen Werten</actions>
+<post>Alle Werte der Datei mit den aktuellen Einstellungen der Admin-Konsole wurden geladen und werden im Fenster “Admin Console” und dessen Unterfenstern angezeigt werden.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="199" priority="C" title="Test Case A-K Defaults Laden">
+<description/>
+<pre>Der Anwendungsfall "Default-Einstellungen der Admin-Konsole laden" oder der Sonderfall 3a des Anwendungsfalls "SIMPL Admin-Konsole laden" wurde ausgeführt.</pre>
+<actions>1. Laden aller Default Werte aus der SIMPL DB. 
+2. Füllen der Felder der Admin-Konsole mit den geladenen Werten</actions>
+<post>Alle Werte der SIMPL DB mit den Default Einstellungen der Admin-Konsole wurden geladen und werden im Fenster “Admin Console” und dessen Unterfenstern angezeigt werden.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="118" priority="C" title="Test Case A-K Speichern">
+<description>Test den Transformieren der BPEL-Datei</description>
+<pre>Der Anwendungsfall "Einstellungen der Admin-Konsole speichern" oder der Sonderfall 3b1 des Anwendungsfalls "Admin-Konsole schließen" wurde ausgeführt.</pre>
+<actions>1.Speichern der Werte auf der SIMPL DB.</actions>
+<post>Alle Werte der Admin-Konsole wurden korrekt auf der SIMPL DB gespeichert.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence ein Fehler beim Laden von wert" number="200">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="201" priority="C" title="Test Case A-K laden ">
+<description>Test die Ladung der A-K</description>
+<pre>Einer der Anwendungsfälle "Admin-Konsole öffnen" oder "Einstellungen der A-K zurücksetzen" wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt Werte aus der SIMPL DB.
+1a.Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist. 
+2a. Es wird eine entsprechende Fehlermeldung angezeigt und der Benutzer wird über ein Dialogfenster gefragt, ob er die in der SIMPL DB hinterlegten Default-Einstellungen laden möchte oder nicht.
+3a. Klick auf den Button [yes].</actions>
+<post>Der Anwendungsfall "SIMPL Admin-Konsole Defaults laden" wird angestoßen. Wenn dieser Anwendungsfall rfolgreich ausgeführt wurde, wurden die hinterlegten Default-Einstellungen geladen und werden im Fenster "Admin Console" und dessen Unterfenstern angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="204" priority="C" title="Test Case A-K laden">
+<description>Test die Ladung der A-K</description>
+<pre>Einer der Anwendungsfälle "Admin-Konsole öffnen" oder "Einstellungen der A-K zurücksetzen" wurde ausgeführt.</pre>
+<actions>1. Laden aller zuletzt Werte aus der SIMPL DB.
+1a.Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist. 
+2a. Es wird eine entsprechende Fehlermeldung angezeigt und der Benutzer wird über ein Dialogfenster gefragt, ob er die in der SIMPL DB hinterlegten Default-Einstellungen laden möchte oder nicht.
+3b. Klick auf den Button [no].</actions>
+<post>Die in der Admin-Konsole angezeigten Werte bleiben unverändert. Falls zuvor keine Werte angezeigt wurden, bleiben die Felder der Admin-Konsole leer.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="202" priority="C" title="Test Case A-K Defaults Laden">
+<description/>
+<pre>Der Anwendungsfall "Default-Einstellungen der Admin-Konsole laden" oder der Sonderfall 3a des Anwendungsfalls "SIMPL Admin-Konsole laden" wurde ausgeführt.</pre>
+<actions>1. Laden aller Default Werte aus der SIMPL DB. 
+1a.Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist.</actions>
+<post>Im Quellcode hinterlegte Default-Werte werden geladen und im Fenster "Admin-Konsole" und dessen Unterfenstern angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="203" priority="C" title="Test Case A-K Speichern">
+<description>Test den Transformieren der BPEL-Datei</description>
+<pre>Der Anwendungsfall "Einstellungen der Admin-Konsole speichern" oder der Sonderfall 3b1 des Anwendungsfalls "Admin-Konsole schließen" wurde ausgeführt.</pre>
+<actions>1.Speichern der Werte auf der SIMPL DB.
+Beim Laden der Werte tritt ein Fehler auf, da z.B. die SIMPL DB nicht erreichbar ist.</actions>
+<post>Alle geänderten Werte der Admin-Konsole werden nicht in der SIMPL DB gespeichert. Es wird eine entsprechende Fehlermeldung angezeigt und eine erneuter Speicherversuch kann durchgeführt werden. Die Werte werden solange in der Admin-Konsole angezeigt, bis diese geschlossen wird.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für SIMPL Extensions" number="205">
+<description/>
+<pre/>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="206" priority="C" title="Test Case für die Validierung von SIMPL Extensions">
+<description/>
+<pre>Es wurde ein BPEL Prozess ertellt der mind. eine SIPL Extension enthält.</pre>
+<actions>1."Validate" wird ausgeführt.
+2.Fehler und Warnungen werden, falls vorhande, in der Problem-View angezeigt</actions>
+<post>Alle nicht schema-konformen Einträge werden erkannt und in der Problem-view angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="207" priority="C" title="Test Case für den Abrufen aus der UDDI-Registry">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar.</pre>
+<actions>1.Mit Datenquellen-Registry verbinden.
+2.Verfügbare Datenquellen abfragen</actions>
+<post>Eine Liste mit allen verfügbaren Datenquellen steht zur Verfügung.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="208" priority="C" title="Test Case für die Transformation der BPEL-Datei">
+<description/>
+<pre>Eine BPEL-Datei(BPEL-Prozess) muss vorhanden sein und das RRS muss angebunden und erreichbar sein.</pre>
+<actions>1.Auslesen des originalen Prozesses
+2.Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder Events für Referenzen.
+3.Generierung des neuen BPEL-standard-konformen erweiterten Prozesses.</actions>
+<post>Es wurde ein korrekter standard-konformer BPEL-Prozess,der die gleiche Funktionalität wie der originale Prozess besitzt und zur Verwendung von Referenzen um entsprechende Aktivitäten oder Events erweitert wurde, erzeugt.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="209" priority="C" title="Test Case für die Transformation der BPEL-Datei">
+<description/>
+<pre>Eine BPEL-Datei(BPEL-Prozess) muss vorhanden sein und das RRS muss angebunden und erreichbar sein.</pre>
+<actions>1.Auslesen des originalen Prozesses
+2.Positioniertes Einfügen entsprechender Dereferenzierungsaktivitäten oder Events für Referenzen.
+3.Generierung des neuen BPEL-standard-konformen erweiterten Prozesses.
+Bei der Generierung tritt ein Fehler auf</actions>
+<post>Es wurde kein neue BPEL-Prozess erzeugt, der originale Prozess ist unverändert und es wird eine entsprechende Fehlermeldung ausgegeben.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Referenz in RRS" number="122">
+<description/>
+<pre/>
+<sequence created="15.11.2009" creator="tuxi23" name="Test Sequence für Dereferenz  in RRS" number="123">
+<description/>
+<pre/>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="124" priority="C" title="Test Case dereferenzieren">
+<description>Test die Dereferenzierung</description>
+<pre>Die angegebene Referenz muss existieren und das RRS muss angebunden sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.</pre>
+<actions>Wert der Referenz wird im RRS abgefragt</actions>
+<post>Der korrekte Wert einer Referenz wird geliefert.</post>
+<tags/>
+</testcase>
+<testcase created="15.11.2009" creator="tuxi23" effort="00:00" number="125" priority="C" title="Test Case dereferenzieren 1">
+<description>Test die Dereferenzierung</description>
+<pre>Die angegebene Referenz muss existieren und das RRS muss angebunden sein. Ebenso muss die Datenquelle des referenzierten Werts erreichbar sein.</pre>
+<actions>Es wird ein entsprechender Fehler geworfen, der Informationen über das zugrundeliegende Problem liefert.</actions>
+<post>Der korrekte Wert einer Referenz wird geliefert.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für die Bearbeitung von Referenz in RRS" number="210">
+<description/>
+<pre/>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="211" priority="C" title="Test Case für Speichern einer Referenz">
+<description/>
+<pre>Einer der beiden Anwendungsfälle "Neue Referenz in RRS einfügen" oder "Referenz aus RRS bearbeiten" wurde erfolgreich ausgeführt.</pre>
+<actions>Die Referenz wird im RRS gespeichert</actions>
+<post>Die Rerenz wurde Korrekt gespeichert</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="212" priority="C" title="Test Case für Laden einer Referenz">
+<description/>
+<pre>Der RRS View wurde im Eclipse geöffnet.</pre>
+<actions>Die Referen wird aus dem RRS geladen.</actions>
+<post>Die Referenz wurde erfolgreich geladen und wird nun im RRSview angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="213" priority="C" title="Test Case für Löschen einer Referenz">
+<description/>
+<pre>Der Anwendungsfall "Referenz aus RRS löschen" wurde erfolgreich ausgeführt.</pre>
+<actions>Die Referenz wird aus dem RRS entfernt.</actions>
+<post>Die Referenz wurde erfolgreich aus dem RRS entfernt.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence für DM-Aktivitaet" number="128">
+<description/>
+<pre/>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 1" number="130">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="131" priority="C" title="Test Case for die Einstellung einer DM-Aktivitaet">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet
+und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>1a. Selektion einer DM-Aktivität aus der BPEL Designer Palette durch
+Auswahl mit der linken Maustaste und anschließend Selektion der
+Stelle des Prozesses, an der die ausgewählte DM-Aktivität eingefügt
+werden soll, mit der linken Maustaste.
+1b. (alternativ) Drag&amp;Drop einer DM-Aktivität aus der Palette an die
+gewünschte Stelle im Prozess.
+2. Eingabe eines Aktivitätsnamens durch den Benutzer.</actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den
+Prozess eingefügt, und der vom Benutzer eingegebene Name wird
+angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="135" priority="C" title="Test Case for die Bearbeitung der Eigenschaften einer vorhandenen DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+2. Öffnen der “Properties-View” der DM-Aktivität um ihre
+Eigenschaften anzuzeigen.
+3. Änderung der Eigenschaften der DM-Aktivität.</actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten
+DM-Aktivität wurden korrekt übernommen und werden in der
+“Properties-View” angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="138" priority="C" title="Test Case for Löschen einer DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1a. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+1b. Öffnen des Kontextmenüs durch rechten Mausklick auf eine
+DM-Aktivität.
+2a. Löschen der DM-Aktivität durch drücken der “entf”-Taste.
+2b. Mausklick auf den Menüpunkt “Delete” des Kontextmenüs.</actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem
+Prozess gelöscht. Alle ausgehenden und eingehenden Links werden
+entsprechend dem Standardverhalten des Eclipse BPEL Designers neu
+gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 2" number="132">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="134" priority="C" title="Test Case for die Einstellung einer DM-Aktivitaet">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess ist im Eclipse BPEL Designer geöffnet
+und die BPEL Designer-Palette wird angezeigt.</pre>
+<actions>2a. Der angezeigte Namensvorschlag wird vom Benutzer bestätigt.</actions>
+<post>Die erstellte DM-Aktivität wurde an der selektierten Position in den
+Prozess eingefügt, und der vom Eclipse BPEL Designer vorgeschlagene
+Name wird angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="137" priority="C" title="Test Case for die Bearbeitung der Eigenschaften einer vorhandenen DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+2. Öffnen der “Properties-View” der DM-Aktivität um ihre
+Eigenschaften anzuzeigen.
+3. Änderung der Eigenschaften der DM-Aktivität.</actions>
+<post>Alle durchgeführten Änderungen der Eigenschaften der ausgewählten
+DM-Aktivität wurden korrekt übernommen und werden in der
+“Properties-View” angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="140" priority="C" title="Test Case for Löschen einer DM-Aktivität">
+<description/>
+<pre>Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
+im Eclipse BPEL Designer geöffnet.</pre>
+<actions>1a. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl
+mit der linken Maustaste.
+1b. Öffnen des Kontextmenüs durch rechten Mausklick auf eine
+DM-Aktivität.
+2a. Löschen der DM-Aktivität durch drücken der “entf”-Taste.
+2b. Mausklick auf den Menüpunkt “Delete” des Kontextmenüs.</actions>
+<post>Die ausgewählte DM-Aktivität wurde vollständig und korrekt aus dem
+Prozess gelöscht. Alle ausgehenden und eingehenden Links werden
+entsprechend dem Standardverhalten des Eclipse BPEL Designers neu
+gesetzt.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 3" number="141">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="142" priority="C" title="Test Case for Deployen eines Prozesses auf der Apache ODE Workflow-Engine">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE
+Workflow-Engine korrekt in Eclipse eingebunden und die Server-View
+wird angezeigt.</pre>
+<actions>1. Erstellung eines ODE Deployment-Deskriptors über
+File-&gt;New-&gt;Other-&gt;BPEL2.0-&gt;Apache ODE Deployment Descriptor.
+2. Hinzufügen des Prozesses zum ODE-Server in der Eclipse
+Server-View:
+ Rechter Mausklick auf den ODE-Server
+ Auswahl des Menüpunkts “Add and Remove”
+ Hinzufügen der BPEL Prozess-Datei
+3. Starten des ODE-Servers über rechten Mausklick und klicken auf
+“Start”.</actions>
+<post>Die Prozess-Dateien wurden auf die Apache ODE Workflow-Engine
+kopiert und der Prozess wurde erfolgreich deployed.</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="143" priority="C" title="Test Case for Start einer Prozessinstanz">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE
+Workflow-Engine deployt </pre>
+<actions>Instanzierung des Prozessmodells und Start der Prozessinstanz durch
+Senden einer entsprechenden SOAP-Nachricht an den Endpunkt des
+Prozesses.</actions>
+<post>Prozessinstanz wurde gestartet.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="01.02.2010" creator="tuxi23" name="Test Sequence 4" number="144">
+<description/>
+<pre/>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="145" priority="C" title="Test Case for Prozess auf ODE-Server deployen">
+<description/>
+<pre>Ein Prozess ist im Eclipse BPEL Designer geöffnet, die Apache ODE
+Workflow-Engine korrekt in Eclipse eingebunden und die Server-View wird angezeigt.</pre>
+<actions>3b. Beim Deployen des Prozesses tritt ein Fehler auf.</actions>
+<post>3b. Der ODE-Server ist gestartet, aber der Prozess wurde nicht deployed</post>
+<tags/>
+</testcase>
+<testcase created="01.02.2010" creator="tuxi23" effort="00:00" number="146" priority="C" title="Test Case for Prozessinstanz starten">
+<description/>
+<pre>Das Prozessmodell wurde erfolgreich auf der Apache ODE
+Workflow-Engine deployt</pre>
+<actions>1a. Fehler beim Starten der Prozessinstanz, z.B. durch eine
+SOAP-Nachricht mit falschem Inhalt.</actions>
+<post>Die Prozessinstanz wird verworfen.</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Datenquellen in der Deployment-Deskriptor" number="397">
+<description>Testen der Erzeugung ,bearbeitung und löschen  von  Datenquelle / neue Datenquelle. in Deployment-Deskriptor</description>
+<pre/>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="398" priority="C" title="Test Case: Erzeugen bzw. Einfügen von neue Datenquelle in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.
+
+</pre>
+<actions>1) man klickt auf "New" neben der Tabelle der Datenquellen ,um neue Datenquelle zu erzeugen.
+2) man füllt alle notwendigen felder aus
+3) man clickt auf button "save" 
+</actions>
+<post>1a. es öffnet sich der Fenster mit Felder (Formular) zum ausfüllen
+
+3a. der Datenquelle ist angelegt und  gespeichert.
+3b. der formular fenster zum Datenquelle schliesst sich
+
+4a. der Vorgang ist abgebrochen. Formular Datenquelle fesnter schliesst sich</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="399" priority="C" title="Test Case: Löschen eines Datenquelle-Objekt in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Löschen" neben der Tabelle der Datenquellen ,um die Datenquelle zu löschen.
+</actions>
+<post>2a. die Datenquellen objekt wirdgelöscht.
+</post>
+<tags/>
+</testcase>
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="400" priority="A" title="Test Case: Bearbeitung Datenquelle-Objekt in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Edit" neben der Tabelle der Datenquellen ,um die Datenquelle zu bearbeiten.
+3) man bearbeitet die inhalte in der felder
+4) man drückt aus "save"
+5) man cklickt auf "abort"</actions>
+<post>2a. die Formular der Datenquelle öffnet sich mit der inhalten der Datenquelle
+
+4a. der formular fenster wird geschlossen und die bearbeitet inhalte ,Änderungen werden gespeichert
+5a. der fenster schliesst sich und die Änderungen werden nicht gespeichert.</post>
+<tags/>
+</testcase>
+<testcase created="06.06.2010" creator="feras" effort="00:00" number="457" priority="C" title="Test Case: Abbrechen vorgang Formular Fenster mit der Werte eines Datenquelle bei Erstellen eines Datenquelle Eintrag">
+<description/>
+<pre>-BPEL-Process ist vorhanden und geladen
+-Deployment deskreptor ist angelegt und UI davon ist offen.
+-Werte Formular Fenster eines Datenquellen Eintrag ist offen
+</pre>
+<actions>1) man cklickt auf "abort"</actions>
+<post>1a. die Änderungen werden nicht übernommen und der Formular Fenster mit der Werte wird geschlossen.</post>
+<tags/>
+</testcase>
+<testcase created="06.06.2010" creator="feras" effort="00:00" number="459" priority="C" title="Test Case: Bearbeitung Vorgang einer Datenquelle Abbrechen  bei Berarbeiten eines Datenquelle Eintrag">
+<description/>
+<pre>-BPEL-Process ist vorhanden und geladen
+-Deployment deskreptor ist angelegt und UI davon ist offen.
+-Werte Formular Fenster eines Datenquellen Eintrag ist offen</pre>
+<actions>1) man cklickt auf "abort"</actions>
+<post>1a. die Änderungen werden nicht übernommen und der Formular Fenster mit der Werte wird geschlossen.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="25.05.2010" creator="tuxi23" name="Test Sequence für die Datenquellen-Administratoren" number="218">
+<description/>
+<pre/>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="219" priority="C" title="Test Case für in UDDI-Registrieren ">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen Rechte.</pre>
+<actions>1.Anlegen eines neuen Datenquellenobjekts
+2.Registrierung des Datenquellenobjekts in der Datenquellen-Registry.</actions>
+<post>Eine neue Daenquelle wurde anhand der Benutzerangaben in der Datenquellen-Registry korrekt registriert und kann nun in Workflows verwendet werden.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="220" priority="C" title="Test Case für in UDDI-Registrieren bearbeiten">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen Rechte.</pre>
+<actions>1.Auswahl der Datenquelle
+2.Bearbeiten der Werte der Datenquelle</actions>
+<post>Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig anhand der vom Benutzer durchgeführten Änderungen(Änderung der Eigenschaften, der Adresse, usw.) aktualisiert.</post>
+<tags/>
+</testcase>
+<testcase created="25.05.2010" creator="tuxi23" effort="00:00" number="221" priority="C" title="Test Case für in UDDI-Registrieren entfernen">
+<description/>
+<pre>Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen Rechte.</pre>
+<actions>1.Auswahl der Datenquelle
+2.Entfernen der Werte aus der Datenquelle</actions>
+<post>Die vom Benutzer ausgewählte Datenquelle wurde korrekt und vollständig aus der Datenquellen-Registry entfernt und kann nun nicht mehr verwendet werden.</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Statement Editoren" number="407">
+<description>im folgende Test geht um das Testn die verscheidene Statement-Editoren</description>
+<pre>-Process existiert und geladen
+-Eine DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Insert Statement Editor" number="409">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="408" priority="C" title="Test Case: offnen Insert Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Insert DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="410" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="411" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="412" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Call Statement Editor" number="413">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="414" priority="C" title="Test Case: offnen Call Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Call DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Call .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="415" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="416" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="417" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Delete Statement Editor" number="423">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="424" priority="C" title="Test Case: offnen Insert Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Delete DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="425" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="426" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="427" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Create Statement Editor" number="428">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="429" priority="C" title="Test Case: offnen Create Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Create DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="430" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="431" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="432" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: RetrievData Statement Editor" number="433">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="434" priority="C" title="Test Case: offnen RetrievData Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Retrieve DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für RetrieveData .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="435" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="436" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="437" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Drop Statement Editor" number="438">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="439" priority="C" title="Test Case: offnen Drop Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Drop DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Drop .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="440" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="441" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="442" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Update Statement Editor" number="443">
+<description/>
+<pre/>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="444" priority="C" title="Test Case: offnen Update Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Update DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Update .</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="445" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="446" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="447" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: UDDI-Webinterfaces" number="453">
+<description>Testen der UDDI-Webinterfaces nach die verschiedene Testfaelle .</description>
+<pre>UDDI-Webinterfaces muss offen sein</pre>
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="454" priority="C" title="Test Case: neue UDDI-Registry Speichern mit Leere angaben">
+<description/>
+<pre>-UDDI-Webinterfaces ist offen.</pre>
+<actions>1) angaben in der Felder eintragen
+2) manche felder leer lassen.</actions>
+<post>UDDI-Registry gespeichert und kann verwendet werden</post>
+<tags/>
+</testcase>
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="455" priority="C" title="Test Case: UDDI-Registery löschen">
+<description/>
+<pre>-Registery ist vorhanden und erreichbar
+-Benutze hat die erforderlichen Zugrifsrechte</pre>
+<actions>1) auswahl der Registry 
+2) Löschen der Registry dursch "Löschen"</actions>
+<post>1a. Registry ist ausgewählt
+2a. Registry ist gelöscht</post>
+<tags/>
+</testcase>
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="456" priority="C" title="Test Case: UDDI-Registry Bearbeiten">
+<description>Entfernen eine vorhandene UDDI-Registry</description>
+<pre>-UDDI-Registry bzw. Datenquellen-Registry ist vorhanden
+-Benutzer hat die dazu gesehene Rechte</pre>
+<actions>1- Registry Auswhlen
+2- die Einträge/Werte der Registry über den UDDI User-Interface bearbeiten
+3- speichern die Änderungen </actions>
+<post>1a. die UDDI-Registry ist ausgewählt
+2a. die werte sind angepasst
+3a. die Änderungen sind gespeichert</post>
+<tags/>
+</testcase>
+</sequence>
+</sequence>
+</sequence>
+<tsa name="Project" number="0" revId="0">
+<relatedsequence>0</relatedsequence>
+<tsa name="Unit Test" number="1" revId="1">
+<relatedsequence>1</relatedsequence>
+</tsa>
+<tsa name="Integration Test" number="2" revId="1">
+<relatedsequence>2</relatedsequence>
+</tsa>
+<tsa name="System Test" number="3" revId="1">
+<relatedsequence>3</relatedsequence>
+<tsa name="Test Sequence für DM-Aktivitaet " number="9" revId="1">
+<relatedsequence>9</relatedsequence>
+<tsa name="Test Sequence für Erstellung , Bearbeitung und Löschen eines ODE Deplozment-Deskriptors " number="167" revId="1">
+<relatedsequence>167</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht erstellt werden" number="171" revId="1">
+<relatedsequence>171</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht gespeichert werden." number="175" revId="1">
+<relatedsequence>175</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE Deployment-Deskriptor kann nicht gelöscht werden." number="179" revId="1">
+<relatedsequence>179</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Deploy und den Start eines Prozessinstanzes" number="185" revId="1">
+<relatedsequence>185</relatedsequence>
+</tsa>
+<tsa name="Test Sequence Fehler beim Starten der Prozessinstanz" number="194" revId="1">
+<relatedsequence>194</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ODE-Server kann nicht starten" number="188" revId="1">
+<relatedsequence>188</relatedsequence>
+</tsa>
+<tsa name="Test Sequence Fehler bei Deploy" number="191" revId="1">
+<relatedsequence>191</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Auswählung vom Late-Binding" number="197" revId="1">
+<relatedsequence>197</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für Workflow-Administrator" number="10" revId="1">
+<relatedsequence>10</relatedsequence>
+<tsa name="Test Sequence für die Benutzung der Aktivität-Konsole" number="45" revId="1">
+<relatedsequence>45</relatedsequence>
+</tsa>
+<tsa name="Test Sequence Fehler bei Speichern" number="51" revId="1">
+<relatedsequence>51</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Erstellung, Bearbeitung und Löschen von RRS" number="82" revId="1">
+<relatedsequence>82</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für Beim Löschen der Referenz tritt ein Fehler" number="86" revId="1">
+<relatedsequence>86</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für ODE Workflow-Engine" number="90" revId="1">
+<tsa name="Test Sequence für die verschiedene Fehler bei der Ausführung von DM-A" number="94" revId="1"/>
+<tsa name="Test Sequence für die Ausführung und die Kompensierung von DM-A" number="91" revId="1"/>
+</tsa>
+<tsa name="Test Sequence für Eclipse BPEL Designer" number="115" revId="1">
+<relatedsequence>115</relatedsequence>
+<tsa name="Test Sequence für den Laden, Defaults Laden und Speichern" number="116" revId="1">
+<relatedsequence>116</relatedsequence>
+</tsa>
+<tsa name="Test Sequence ein Fehler beim Laden von wert" number="200" revId="1">
+<relatedsequence>200</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für SIMPL Extensions" number="205" revId="1">
+<relatedsequence>205</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für DM-Aktivitaet" number="128" revId="1">
+<relatedsequence>128</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Datenquellen-Administratoren" number="218" revId="1">
+<relatedsequence>218</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: DM-Aktivitaeten" number="222" revId="1">
+<relatedsequence>222</relatedsequence>
+<tsa name="Test Sequence: Query DMA" number="223" revId="1">
+<relatedsequence>223</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Insert  DMA" number="227" revId="1">
+<relatedsequence>227</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Delete  DMA" number="247" revId="1">
+<relatedsequence>247</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Call  DMA" number="251" revId="1">
+<relatedsequence>251</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Create  DMA" number="255" revId="1">
+<relatedsequence>255</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Drop  DMA" number="259" revId="1">
+<relatedsequence>259</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: RetrieveData  DMA" number="263" revId="1">
+<relatedsequence>263</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Update  DMA" number="267" revId="1">
+<relatedsequence>267</relatedsequence>
+</tsa>
+<tsa name="Test Sequence: Transfer   DMA" number="271" revId="1">
+<relatedsequence>271</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence: allgemein für alle DMAktivitaeten" number="393" revId="1">
+<relatedsequence>393</relatedsequence>
+<tsa name="Test Sequence:  Listen der Data über  Properties Fenste öffnnenr- Commands,File,Folder, Driver  falls DS ist  FileSystem " number="401" revId="1">
+<relatedsequence>401</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence: Datenquellen in der Deployment-Deskriptor" number="397" revId="1">
+<relatedsequence>397</relatedsequence>
+<testrun enddate="06.06.2010 15:14" priority="E" startdate="06.06.2010 14:58" tester="feras">
+<description/>
+<sut>In diesen Test Sequence werden die Testfälle untesucht ,die den Erstellen ,Bearbeitrn und Löschen eine Datenquelle Einträge in der Deployment -Diskreptor betrwffwn.</sut>
+<executedsequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Datenquellen in der Deployment-Deskriptor" number="397">
+<description>Testen der Erzeugung ,bearbeitung und löschen  von  Datenquelle / neue Datenquelle. in Deployment-Deskriptor</description>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="15:09" outcome="Ok" postok="Y" preok="Y" starttime="14:59">
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="398" priority="C" title="Test Case: Erzeugen bzw. Einfügen von neue Datenquelle in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.
+
+</pre>
+<actions>1) man klickt auf "New" neben der Tabelle der Datenquellen ,um neue Datenquelle zu erzeugen.
+2) man füllt alle notwendigen felder aus
+3) man clickt auf button "save" 
+4) man cklickt auf "abort"</actions>
+<post>1a. es öffnet sich der Fenster mit Felder (Formular) zum ausfüllen
+
+3a. der Datenquelle ist angelegt und  gespeichert.
+3b. der formular fenster zum Datenquelle schliesst sich
+
+4a. der Vorgang ist abgebrochen. Formular Datenquelle fesnter schliesst sich</post>
+<tags/>
+</testcase>
+<pre>einen BPEL-Process ist angelegt und geladen
+-eine Query DM-Aktivität ist angelegt und ausgewählt
+-Einen Deployment Diskreptor ist  vorhanden und erreichbar. Die User Interface des Deployment-Diskreptor ist offen.</pre>
+<actions>-"New" button wird gedrückt
+-die Werte für einen neuen Datenquelle Eintrag werden ausgefühlt
+-"Save" button wird ausgewählt
+ </actions>
+<post>-Die werte der Datenquelle sind gespeichert und diese neue Datenquellen eintrag ist angelegt und in der tabelle zu sehen</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="15:11" outcome="Ok" postok="Y" preok="Y" starttime="15:09">
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="399" priority="C" title="Test Case: Löschen eines Datenquelle-Objekt in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Löschen" neben der Tabelle der Datenquellen ,um die Datenquelle zu löschen.
+</actions>
+<post>2a. die Datenquellen objekt wirdgelöscht.
+</post>
+<tags/>
+</testcase>
+<pre>Process ist bereit und Diskreptor UI ist offen</pre>
+<actions>- eine Datenquellen eintrag aus der TRabelle ausgewählt und 
+- auf "Delete" gedrückt.</actions>
+<post>
+-Die Datenquellen eintrag ist in der tabelle nicht mehr zu sehen</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="15:14" outcome="Ok" postok="Y" preok="Y" starttime="15:11">
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="400" priority="A" title="Test Case: Bearbeitung Datenquelle-Objekt in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Edit" neben der Tabelle der Datenquellen ,um die Datenquelle zu bearbeiten.
+3) man bearbeitet die inhalte in der felder
+4) man drückt aus "save"
+5) man cklickt auf "abort"</actions>
+<post>2a. die Formular der Datenquelle öffnet sich mit der inhalten der Datenquelle
+
+4a. der formular fenster wird geschlossen und die bearbeitet inhalte ,Änderungen werden gespeichert
+5a. der fenster schliesst sich und die Änderungen werden nicht gespeichert.</post>
+<tags/>
+</testcase>
+<pre>-der Process ist geladen
+-Der Deployment-Diskreptor ist offen 
+-</pre>
+<actions>-eine Datenquellen Eintrag aus der Tabelle ist ausgewählt
+-durch tätigen der button "Edit" erscheint der Formular mit der werte der Datenquellen Eintrag zur Bearbeitung
+-Werte werden angepasst und "Save" gedrückt</actions>
+<post>der Formular fenster mit der angepasste werte der Datenquelle schlisst sich
+</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+<testrun enddate="06.06.2010 18:25" priority="E" startdate="06.06.2010 16:40" tester="feras">
+<description/>
+<sut>In diesen Test Sequence handelt es sich um das BEarbeitung, Erstellen und löschen von Datenquellen Einträgen in der Deployment diskreptor</sut>
+<executedsequence>
+<sequence created="02.06.2010" creator="feras" name="Test Sequence: Datenquellen in der Deployment-Deskriptor" number="397">
+<description>Testen der Erzeugung ,bearbeitung und löschen  von  Datenquelle / neue Datenquelle. in Deployment-Deskriptor</description>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="16:52" outcome="Ok" postok="Y" preok="Y" starttime="16:42">
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="398" priority="C" title="Test Case: Erzeugen bzw. Einfügen von neue Datenquelle in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.
+
+</pre>
+<actions>1) man klickt auf "New" neben der Tabelle der Datenquellen ,um neue Datenquelle zu erzeugen.
+2) man füllt alle notwendigen felder aus
+3) man clickt auf button "save" 
+</actions>
+<post>1a. es öffnet sich der Fenster mit Felder (Formular) zum ausfüllen
+
+3a. der Datenquelle ist angelegt und  gespeichert.
+3b. der formular fenster zum Datenquelle schliesst sich
+
+4a. der Vorgang ist abgebrochen. Formular Datenquelle fesnter schliesst sich</post>
+<tags/>
+</testcase>
+<pre>-BPEL-Process ist geladen
+-Eine Query Aktivität ist in der Process vorhanden
+-Der Deployment diskreptor ist angelegt und die UI davon ist Offen .</pre>
+<actions>-man betätigt der "New"  button
+-es werten alle felder der Formular fenster für die Datenquelle eintrag eingetragen
+-und im abschluss wurde "Save" gedrückt .</actions>
+<post>-der Datenquelle Eintrag ist angelegt und wurde in der tabelle eingefügt
+</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="17:05" outcome="Ok" postok="Y" preok="Y" starttime="16:52">
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="399" priority="C" title="Test Case: Löschen eines Datenquelle-Objekt in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Löschen" neben der Tabelle der Datenquellen ,um die Datenquelle zu löschen.
+</actions>
+<post>2a. die Datenquellen objekt wirdgelöscht.
+</post>
+<tags/>
+</testcase>
+<pre>-Der BPEL-Process ist geladen
+-eine Aktivität ist vorhanden
+-Deployment Diskreptor ist offen</pre>
+<actions>-der Datenquelen Eintrag in der tabelle ist ausgewählt
+-"Delete" Button ist gedrückt</actions>
+<post>Die Datenquellen Eintrag ist von der Tabelle gelöscht</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="18:14" outcome="Ok" postok="Y" preok="Y" starttime="17:05">
+<testcase created="02.06.2010" creator="feras" effort="00:00" number="400" priority="A" title="Test Case: Bearbeitung Datenquelle-Objekt in Deployment-Deskriptor">
+<description/>
+<pre>-einen Process ist geladen
+-eine Aktivität  ist vorhanden
+-Deployment Deskriptor ist angelegt und offen.</pre>
+<actions>1) man wählt einen vorhandene datenquellen objekt aus der tabelle aus
+2) man klickt auf "Edit" neben der Tabelle der Datenquellen ,um die Datenquelle zu bearbeiten.
+3) man bearbeitet die inhalte in der felder
+4) man drückt aus "save"
+5) man cklickt auf "abort"</actions>
+<post>2a. die Formular der Datenquelle öffnet sich mit der inhalten der Datenquelle
+
+4a. der formular fenster wird geschlossen und die bearbeitet inhalte ,Änderungen werden gespeichert
+5a. der fenster schliesst sich und die Änderungen werden nicht gespeichert.</post>
+<tags/>
+</testcase>
+<pre>-BPEL-Process ist geladen
+-Der Deployment Diskreptor ist angelegt und offen</pre>
+<actions>-Die Tabelle mit der Tabelle mit der Datenquellen ist alokiert 
+-die Datenquellen Eintrag zum bearbeitung wird ausgewählt
+-der "Edit" Button wird geklickt</actions>
+<post>-Der Formular Fenster mit werte der Datenquellen Eintrag ist geschlossen un dänderungen werden gespeichert und in tabelle angezeigt 
+</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="18:23" outcome="Ok" postok="Y" preok="Y" starttime="18:14">
+<testcase created="06.06.2010" creator="feras" effort="00:00" number="457" priority="C" title="Test Case: Abbrechen vorgang Formular Fenster mit der Werte eines Datenquelle bei Erstellen eines Datenquelle Eintrag">
+<description/>
+<pre>-BPEL-Process ist vorhanden und geladen
+-Deployment deskreptor ist angelegt und UI davon ist offen.
+-Werte Formular Fenster eines Datenquellen Eintrag ist offen
+</pre>
+<actions>1) man cklickt auf "abort"</actions>
+<post>1a. die Änderungen werden nicht übernommen und der Formular Fenster mit der Werte wird geschlossen.</post>
+<tags/>
+</testcase>
+<pre>-BPEL-Process ist vorhanden
+-Deployment deskreptor UI ist offen
+-Werte Formular Fenster eines Datenquelle ist offen</pre>
+<actions/>
+<post>die Änderungen wurde nicht gespeichert und der Formular fenster ist geschlossen</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="18:25" outcome="Ok" postok="Y" preok="Y" starttime="18:23">
+<testcase created="06.06.2010" creator="feras" effort="00:00" number="459" priority="C" title="Test Case: Bearbeitung Vorgang einer Datenquelle Abbrechen  bei Berarbeiten eines Datenquelle Eintrag">
+<description/>
+<pre>-BPEL-Process ist vorhanden und geladen
+-Deployment deskreptor ist angelegt und UI davon ist offen.
+-Werte Formular Fenster eines Datenquellen Eintrag ist offen</pre>
+<actions>1) man cklickt auf "abort"</actions>
+<post>1a. die Änderungen werden nicht übernommen und der Formular Fenster mit der Werte wird geschlossen.</post>
+<tags/>
+</testcase>
+<pre>-BPEL-Process ist geladen
+-Deployament Deskreptor ist angelegt und (UI) offen
+-Werte Formular Fenster eines Datenquelle zum bearbeitung ist offen</pre>
+<actions/>
+<post>die Änderungen in der werte der Datenquelle werden nicht gespeichert bzw. werden verworfen</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+<tsa name="Test Sequence: Statement Editoren" number="407" revId="1">
+<relatedsequence>407</relatedsequence>
+<tsa name="Test Sequence: Insert Statement Editor" number="409" revId="1">
+<relatedsequence>409</relatedsequence>
+<testrun enddate="04.06.2010 15:55" priority="E" startdate="04.06.2010 15:02" tester="feras">
+<description>Als Entwickler:
+In der Implementierung gibts es Probleme ,die das Öffnen (Zugang) zu der Editoren hindert.Deswegen müsste ich den Implementierung zu anpassen, sodass ich Editoren Öffne über den Quer DM Aktivität, was nicht für die Abgabe geeignet ist. Diese Fehler soll vor Abgabe korriegiert werden.
+</description>
+<sut/>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Insert Statement Editor" number="409">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="15:39" outcome="Ok" postok="Y" preok="Y" starttime="15:32">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="408" priority="C" title="Test Case: offnen Insert Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Insert DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<pre>Einen Process Existiert und Insert Aktivität ist in der BPEL-Process angelegt.
+Propertie Section ist aufgeklappt.
+
+ERROR: Bei auswählen der angelegte DM-Aktivität erscheint einen Fehler Meldung-Dialog mit der Inhalt: "An error has occurred. See error log for more details. java.lang.NullPointerException"
+
+-diesen Test Fall wird auf Localen Rechner durchgeführt.</pre>
+<actions>
+nach dem tätigen der taste "Open Editor" dann muss man einen augenblick warten bis sich der StatementEditor öffnet.</actions>
+<post>Der Statement Editor öffnet sich ohne probleme. 
+
+Problem: Der grosse der Statement-Editor ist nicht gut angepasst, weil damit man alle UI-Elemente auf dem Editor sehen kann ,muss man den fenster ganz vergrössern</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="15:44" outcome="Ok" postok="Y" preok="Y" starttime="15:40">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="410" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<pre>stimmt überein mit der Vorbedingungen.</pre>
+<actions>Ich habe den Statement mit hilfe der Editor editiert und den button "OK" betätigt</actions>
+<post>Der zwischen Speicherung Dialog öffnet sich.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="15:53" outcome="Ok" postok="Y" preok="Y" starttime="15:42">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="411" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<pre/>
+<actions>-Der Statement wurde perhand editiert/angepasst.
+-"Save" button wurde getätigt</actions>
+<post>Die durchgeführte Änderung sind in der Model gespeichert-&gt; das kann man man sehen weil die in der Statement text-Stelle wieder geladen werden.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="15:55" outcome="Ok" postok="Y" preok="Y" starttime="15:53">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="412" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<pre/>
+<actions>"Close" wurde getätigt</actions>
+<post>Der Statement Editor(Fenster) wird geschlossen und der Statement bleibt unverändert. -&gt; das sieht man in der Statement text Stelle.</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+<tsa name="Test Sequence: Call Statement Editor" number="413" revId="1">
+<relatedsequence>413</relatedsequence>
+<testrun enddate="04.06.2010 17:12" priority="E" startdate="04.06.2010 16:00" tester="feras">
+<description/>
+<sut> </sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Call Statement Editor" number="413">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="16:30" outcome="Ok" postok="Y" preok="Y" starttime="16:25">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="414" priority="C" title="Test Case: offnen Call Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Call DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Call .</post>
+<tags/>
+</testcase>
+<pre>-Process ist geladen und Call DM Aktivität ist angelegt und ausgewählt. 
+</pre>
+<actions>"Open Editor" ist getätigt 
+</actions>
+<post>Es öffnet sich der Call Statement-Editor nach verzogerung von paar Sekunden</post>
+<comment>Der Test ist erfolgreich gelaufen mit etwas verzögerung hat sich der Statement-editor geöffnet</comment>
+</result>
+<result actionok="Y" endtime="16:40" outcome="Ok" postok="Y" preok="Y" starttime="16:31">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="415" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<pre>Der Editor ist offen und der Statement Text wird angepasst </pre>
+<actions>-Es wurden Änderungen/Anpassungen in der Statement angebracht.
+
+-Der "OK" button geklickt</actions>
+<post>-Call Statement Editor hat sich geschlossen
+-Der zwischen-speichern Dialog öffnet sich mit der Editierte Statement.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="16:44" outcome="Ok" postok="Y" preok="Y" starttime="16:40">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="416" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<pre>Der Dialog ist offen und der Statement ist in TextField </pre>
+<actions>-Ich habe den Statement Per Hand editiert
+-und auf "Save" button klicken  </actions>
+<post>Die Ergebniss entspricht der "Expected Result"</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="17:12" outcome="Ok" postok="Y" preok="Y" starttime="16:47">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="417" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<pre>Statement Editor fenster ist offen.</pre>
+<actions>-Es wurden Änderungen in der Statement Text über mit hilfe der Editor UI angebracht .
+-"Close" button ist betätigt</actions>
+<post>Die Editor Fenster ist geschlossen und es wurden keine Änderungen an das Statement Text angebracht </post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+<tsa name="Test Sequence: Delete Statement Editor" number="423" revId="1">
+<relatedsequence>423</relatedsequence>
+<testrun enddate="04.06.2010 17:39" priority="E" startdate="04.06.2010 17:19" tester="feras">
+<description/>
+<sut>Im folgende werden alle Testfälle ,die im zusammenhang mit der DM-Aktivität stehen, dürgeführt bzw. getestet.</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Delete Statement Editor" number="423">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="" outcome="NA" postok="Y" preok="Y" starttime="17:20">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="424" priority="C" title="Test Case: offnen Insert Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Delete DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<pre>Der Process Existiert 
+-ich habe eine Delete DM Aktivität zu den Process hinzugefügt per drag and drop
+-der Delete DM-Aktivität ist ausgewählt.
+</pre>
+<actions>"Open Editor" wurde angeklickt</actions>
+<post/>
+<comment/>
+</result>
+<result actionok="Y" endtime="" outcome="NA" postok="Y" preok="N" starttime="">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="425" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<actions/>
+<post/>
+<comment/>
+</result>
+<result actionok="Y" endtime="" outcome="NA" postok="Y" preok="N" starttime="">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="426" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<actions/>
+<post/>
+<comment/>
+</result>
+<result actionok="Y" endtime="" outcome="NA" postok="Y" preok="N" starttime="">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="427" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<actions/>
+<post/>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+<testrun enddate="04.06.2010 18:10" priority="E" startdate="04.06.2010 17:41" tester="feras">
+<description/>
+<sut>In Folgender sollen alle Testfälle,die im zusammenhang mit der Delete DM-Aktivität stehen, testen.</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Delete Statement Editor" number="423">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="17:52" outcome="Ok" postok="Y" preok="Y" starttime="17:42">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="424" priority="C" title="Test Case: offnen Insert Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Delete DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<pre>-Process Existiert
+-eine Delete DM Aktivität ist in der BPEL-Process hinzugefügt
+-Der Delete DM-Aktivität ist ausgewählt</pre>
+<actions>-der button "Open Editor" wird getätigt</actions>
+<post>Ist-ergebnisse stimmen mit Soll-ergebnisse überein</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="17:54" outcome="Ok" postok="Y" preok="Y" starttime="17:53">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="425" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<pre>Der Statement Editor ist offen </pre>
+<actions>-Es wurden Änderunegen an den Statement Text angebracht
+-Der Button "OK" wirk angeklickt .</actions>
+<post>-Der Statement-Editor ist geschlossen
+-Es offnet sich der zwischen Speicherung Dialog.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="17:58" outcome="Ok" postok="Y" preok="Y" starttime="17:55">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="426" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<pre>-Der Dialog zum zwischen Speicherung ist 
+offen 
+-Der Statement Text wird in der Dialog angezeigt</pre>
+<actions>-Der statement Text wird per Hand angepasst bzw. es wurden paar Änderungen angebracht.
+-Ich habe den Button "Save" angeklickt.</actions>
+<post>-Der Dialog schliesst sich
+-Die Änderungen in der Statement sind in der Text Stelle in der Properties-Section zu sehen.
+</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="18:02" outcome="Ok" postok="Y" preok="Y" starttime="17:58">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="427" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor ist 
+offen 
+-</pre>
+<actions>-Ich habe paar Änderungen zweck Testen in der Statement angebracht
+-Es wurde der Button "Close" getäigt</actions>
+<post>-Der Statement Editor ist geschlossen
+-Und es wurden keine Änderungen, von dem was ich eingefügt habe, in Statement Text gemacht.</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+<tsa name="Test Sequence: Create Statement Editor" number="428" revId="1">
+<relatedsequence>428</relatedsequence>
+<testrun enddate="06.06.2010 09:45" priority="E" startdate="06.06.2010 09:24" tester="feras">
+<description/>
+<sut>In Folgender sollen alle Testfälle,die im zusammenhang mit der Create DM-Aktivität stehen, getestet.
+</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Create Statement Editor" number="428">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="21:41" outcome="Ok" postok="Y" preok="Y" starttime="21:40">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="429" priority="C" title="Test Case: offnen Create Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Create DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Insert .</post>
+<tags/>
+</testcase>
+<pre>-Der BPEL-Process ist geladen
+-Eine Create DM-Aktivität ist hinzugefügt per drag&amp;drop in der Process
+-Der Create DM-Aktivität ist ausgewählt</pre>
+<actions/>
+<post>Es öffnet sich der Create 
+Statement-Editor</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="21:43" outcome="Ok" postok="Y" preok="Y" starttime="21:41">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="430" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor ist nach kurze verzügerung offen </pre>
+<actions>Es wurden Änderunegen an den 
+Statement Text angebracht
+-Der Button "OK" wird angeklickt.</actions>
+<post>-Der Dialog zum zwischen Speicherung ist offen 
+-Der Statement Text wird in der Dialog angezeigt mit der möglichkeit dies per Hand zu editieren.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="21:44" outcome="Ok" postok="Y" preok="Y" starttime="21:43">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="431" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<pre/>
+<actions>-Der statement Text wird per Hand 
+angepasst bzw. es wurden paar 
+Änderungen angebracht.
+-Ich habe den Button "Save" 
+angeklickt.
+</actions>
+<post>-Der Dialog schliesst sich
+-Die Änderungen in der Statement 
+sind in der Text Stelle in der 
+Properties-Section zu sehen.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="21:45" outcome="Ok" postok="Y" preok="Y" starttime="21:45">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="432" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor ist offen 
+</pre>
+<actions>-Ich habe paar Änderungen zweck 
+Testen in der Statement 
+angebracht
+-Es wurde der Button "Close" 
+getäigt</actions>
+<post>-Der Statement Editor ist 
+geschlossen
+-Und es wurden keine Änderungen, 
+von dem was ich eingefügt habe, 
+in Statement Text gemacht.</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+<tsa name="Test Sequence: RetrievData Statement Editor" number="433" revId="1">
+<relatedsequence>433</relatedsequence>
+<testrun enddate="06.06.2010 09:58" priority="E" startdate="06.06.2010 09:46" tester="feras">
+<description/>
+<sut>In Folgender sollen alle Interaktion-Testfälle bei RetrievData DMAktivität
+getestet.</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: RetrievData Statement Editor" number="433">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="21:52" outcome="Ok" postok="Y" preok="Y" starttime="21:47">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="434" priority="C" title="Test Case: offnen RetrievData Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Retrieve DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für RetrieveData .</post>
+<tags/>
+</testcase>
+<pre>-Der BPEL-Process ist geladen
+-Eine Create DM-Aktivität ist hinzugefügt per drag&amp;drop in der Process
+-Der RetrievData DM-Aktivität ist ausgewählt</pre>
+<actions/>
+<post>Es öffnet sich der RetrievData 
+Statement-Editor</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="21:55" outcome="Ok" postok="Y" preok="Y" starttime="21:52">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="435" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor ist offen 
+</pre>
+<actions>-Es wurden Änderunegen an den 
+Statement Text angebracht
+-Der Button "OK" wird angeklickt 
+.</actions>
+<post>-Der RetrievData Statement Editor schlieddt sich
+-Der Dialog zum zwischen Speicherung ist offen 
+-Der Statement Text wird in der Dialog angezeigt</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="21:56" outcome="Ok" postok="Y" preok="Y" starttime="21:55">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="436" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<pre/>
+<actions>-Der statement Text wird per Hand 
+angepasst bzw. es wurden paar 
+Änderungen angebracht.
+-Ich habe den Button "Save" 
+angeklickt.</actions>
+<post>-Der zwischen speicherung Dialog schliesst sich
+-Die Änderungen in der Statement 
+sind in der Text Stelle in der 
+Properties-Section zu sehen.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="21:58" outcome="Ok" postok="Y" preok="Y" starttime="21:56">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="437" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<pre>-Der RetrievData Statement Editor ist offen 
+</pre>
+<actions>-Änderungen wurden hinzugefügt
+in der Statement 
+-Es wurde der Button "Close" 
+getäigt</actions>
+<post>-Der Statement Editor ist geschlossen
+-Und es wurden keine Änderungen, von dem was ich eingefügt habe, in Statement Text gemacht.</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+<tsa name="Test Sequence: Drop Statement Editor" number="438" revId="1">
+<relatedsequence>438</relatedsequence>
+<testrun enddate="06.06.2010 10:21" priority="E" startdate="06.06.2010 09:58" tester="feras">
+<description/>
+<sut>Wie in der andere Testfälle ,wird hier der DM Aktivität Statement Editor getestet.
+Es wird folgende getestet:
+- ob die StatementEditor von der Properties Section einen DM-Aktivität erreichbar ist
+-ob man Änderungen in einer zweischen Speicherung Dialog Anpassen und speichern kann
+-und ob die Änderungen an der Statement tatsächlich gespeichert werden.</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Drop Statement Editor" number="438">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="22:04" outcome="Ok" postok="Y" preok="Y" starttime="22:02">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="439" priority="C" title="Test Case: offnen Drop Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Drop DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Drop .</post>
+<tags/>
+</testcase>
+<pre>-Der BPEL-Process ist geladen
+-Eine Create DM-Aktivität ist 
+hinzugefügt per drag&amp;drop in der 
+Process
+-Der Create DM-Aktivität ist 
+ausgewählt</pre>
+<actions/>
+<post>Es öffnet sich der Drop Statement-Editor</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="22:05" outcome="Ok" postok="Y" preok="Y" starttime="22:04">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="440" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor ist offen 
+</pre>
+<actions>-Es wurden Änderunegen an den 
+Statement Text angebracht
+-Der Button "OK" wird angeklickt </actions>
+<post>-Der Statement Editor schließt sich
+-Der Dialog zum zwischen Speicherung ist offen 
+-Der Statement Text wird in der Dialog angezeigt</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="22:20" outcome="Ok" postok="Y" preok="Y" starttime="22:05">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="441" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor schließt sich
+-Der Dialog zum zwischen Speicherung ist offen 
+-Der Statement Text wird in der Dialog angezeigt</pre>
+<actions>-Der statement Text wird per Hand angepasst bzw. es wurden paar Änderungen angebracht.
+-Ich habe den Button "Save" angeklickt.</actions>
+<post>-Der zwischen speicherung Dialog 
+schliesst sich
+-Die Änderungen in der Statement 
+sind in der Text Stelle in der 
+Properties-Section zu sehen.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="22:21" outcome="Ok" postok="Y" preok="Y" starttime="22:20">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="442" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor ist offen 
+</pre>
+<actions>-Änderungen wurden hinzugefügt in der Statement 
+-Es wurde der Button "Close" getäigt</actions>
+<post>-Der Statement Editor ist geschlossen
+-Und es wurden keine Änderungen, von dem was ich eingefügt habe, in Statement Text gemacht.</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+<tsa name="Test Sequence: Update Statement Editor" number="443" revId="1">
+<relatedsequence>443</relatedsequence>
+<testrun enddate="06.06.2010 14:40" priority="E" startdate="06.06.2010 10:21" tester="feras">
+<description/>
+<sut>In Folgender sollen die Testfälle,die im zusammenhang mit der Update DM-Aktivität stehen, getestet werden.</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: Update Statement Editor" number="443">
+<description/>
+<pre/>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="22:45" outcome="Ok" postok="Y" preok="Y" starttime="22:41">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="444" priority="C" title="Test Case: offnen Update Statement Editor">
+<description/>
+<pre>-Process existiert und geladen
+-Eine Update DM-Aktivität existiert und ausgewählt
+-Der Propertie-Section bzw. Fenster eines Aktivität im Rahmen der Process is aufgeklappt</pre>
+<actions>1- man cklickt auf dem Button Open Editor</actions>
+<post>1a. es öffnet sich der Statement Editor für Update .</post>
+<tags/>
+</testcase>
+<pre>-Der BPEL-Process ist geladen
+-Eine Update DM-Aktivität ist 
+hinzugefügt per drag&amp;drop in der Process
+-Der Create DM-Aktivität ist ausgewählt</pre>
+<actions/>
+<post>Es öffnet sich der Statement-Editor</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="14:37" outcome="Ok" postok="Y" preok="Y" starttime="22:45">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="445" priority="C" title="Test Case: Speichern der erzeugte/editierte Statement ">
+<description/>
+<pre>-Der Editor ist bereit offen</pre>
+<actions>1) den Button "OK" tätigen</actions>
+<post>1a. der StatementEditor schliesst sich und der zwischen Speicherung Fenster/Dialog erscheint.</post>
+<tags/>
+</testcase>
+<pre/>
+<actions>-Es wurden Änderunegen an den Statement Text angebracht
+-Der Button "OK" wird angeklickt .</actions>
+<post>-Der Statement Editor schließt sich
+-Der Dialog zum zwischen Speicherung ist offen 
+-Der Statement Text wird in der Dialog angezeigt
+</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="14:39" outcome="Ok" postok="Y" preok="Y" starttime="14:38">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="446" priority="C" title="Test Case: Änderungen im zwischenSpeichern Dialog-Fenster anbringen und speichern.">
+<description/>
+<pre>-zwischen-Speichern Dialog ist offen</pre>
+<actions>1) den Statement manuell perhand anpassen und auf "Save" clicken</actions>
+<post>1a. die Änderunge bzw. Statetement werden gespeichert und im Statement -TextField im PropertiesFenster angezeigt.</post>
+<tags/>
+</testcase>
+<pre/>
+<actions>-Der Statement Editor schließt sich
+-Der Dialog zum zwischen 
+Speicherung ist offen 
+-Der Statement Text wird in der Dialog angezeigt
+</actions>
+<post>-Der zwischen speicherung Dialog schliesst sich
+-Die Änderungen in der Statement sind in der Text Stelle in der Properties-Section zu sehen.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="14:40" outcome="Ok" postok="Y" preok="Y" starttime="14:39">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="447" priority="C" title="Test Case: Statement Editor SChliessen ohne speichern">
+<description/>
+<pre>-Editor ist offen</pre>
+<actions>1) Button "Close" tätigen</actions>
+<post>1a. der Editor fenster schliesst sich ohne das Änderungen an der Statement angebracht/gespeichert werden</post>
+<tags/>
+</testcase>
+<pre>-Der Statement Editor ist offen</pre>
+<actions>-Änderungen wurden hinzugefügt in der Statement 
+-Es wurde der Button "Close" getäigt</actions>
+<post>-Der Statement Editor ist geschlossen
+-Und es wurden keine Änderungen, von dem was ich eingefügt habe, in Statement Text gemacht.</post>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+</tsa>
+<tsa name="Test Sequence für Referenz in RRS" number="122" revId="1">
+<relatedsequence>122</relatedsequence>
+<tsa name="Test Sequence für Dereferenz  in RRS" number="123" revId="1">
+<relatedsequence>123</relatedsequence>
+</tsa>
+<tsa name="Test Sequence für die Bearbeitung von Referenz in RRS" number="210" revId="1">
+<relatedsequence>210</relatedsequence>
+</tsa>
+</tsa>
+<tsa name="Test Sequence: UDDI-Webinterfaces" number="453" revId="1">
+<relatedsequence>453</relatedsequence>
+<testrun enddate="04.06.2010 14:47" priority="E" startdate="04.06.2010 14:46" tester="feras">
+<description/>
+<sut/>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: UDDI-Webinterfaces" number="453">
+<description>Testen der UDDI-Webinterfaces nach die verschiedene Testfaelle .</description>
+<pre>UDDI-Webinterfaces muss offen sein</pre>
+</sequence>
+<pre/>
+<result actionok="Y" endtime="14:47" outcome="Failure" postok="Y" preok="Y" starttime="14:46">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="454" priority="C" title="Test Case: neue UDDI-Registry Speichern mit Leere angaben">
+<description/>
+<pre>-UDDI-Webinterfaces ist offen.</pre>
+<actions>1) angaben in der Felder eintragen
+2) manche felder leer lassen.</actions>
+<post>UDDI-Registry gespeichert und kann verwendet werden</post>
+<tags/>
+</testcase>
+<pre/>
+<actions/>
+<post/>
+<comment>aa</comment>
+</result>
+<result actionok="Y" endtime="" outcome="NA" postok="Y" preok="Y" starttime="14:47">
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="455" priority="C" title="Test Case: UDDI-Registery löschen">
+<description/>
+<pre>-Registery ist vorhanden und erreichbar
+-Benutze hat die erforderlichen Zugrifsrechte</pre>
+<actions>1) auswahl der Registry 
+2) Löschen der Registry dursch "Löschen"</actions>
+<post>1a. Registry ist ausgewählt
+2a. Registry ist gelöscht</post>
+<tags/>
+</testcase>
+<pre/>
+<actions/>
+<post/>
+<comment/>
+</result>
+<result actionok="Y" endtime="" outcome="NA" postok="Y" preok="N" starttime="">
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="456" priority="C" title="Test Case: UDDI-Registry Bearbeiten">
+<description>Entfernen eine vorhandene UDDI-Registry</description>
+<pre>-UDDI-Registry bzw. Datenquellen-Registry ist vorhanden
+-Benutzer hat die dazu gesehene Rechte</pre>
+<actions>1- Registry Auswhlen
+2- die Einträge/Werte der Registry über den UDDI User-Interface bearbeiten
+3- speichern die Änderungen </actions>
+<post>1a. die UDDI-Registry ist ausgewählt
+2a. die werte sind angepasst
+3a. die Änderungen sind gespeichert</post>
+<tags/>
+</testcase>
+<actions/>
+<post/>
+<comment/>
+</result>
+</executedsequence>
+</testrun>
+<testrun enddate="14.06.2010 15:01" priority="E" startdate="14.06.2010 14:36" tester="feras">
+<description>-Das Laden der UDDI-Webinterface ist erreichbar .
+-wegen das fehlerhafte TestSequence von davor könnten keine Registeries erzeugt werden  und vondaher kann auch keine andere Interaktion/Funktionalität geben und getestet werden.</description>
+<sut>In diesen Test Sequence soll der UDDI-Webinterface getestet werden .
+-das anlegen einen neuen DataSOurce Objekt 
+-Ob die DataSource Objekte bzw. Eintraege in der ProprtiesSecion-Details der DM-Aktivitäten 
+zu erreichen sind
+ ...</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: UDDI-Webinterfaces" number="453">
+<description>Testen der UDDI-Webinterfaces nach die verschiedene Testfaelle .</description>
+<pre>UDDI-Webinterfaces muss offen sein</pre>
+</sequence>
+<pre>Dieses TestSeaquence wird über den Server durchgeführt.
+-Ich habe über "http://localhost:8080/juddiWeb/" den UDDI-Webinterface geöffnet.</pre>
+<result actionok="Y" endtime="14:58" outcome="Failure" postok="Y" preok="Y" starttime="14:43">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="454" priority="C" title="Test Case: neue UDDI-Registry Speichern mit Leere angaben">
+<description/>
+<pre>-UDDI-Webinterfaces ist offen.</pre>
+<actions>1) angaben in der Felder eintragen
+2) manche felder leer lassen.</actions>
+<post>UDDI-Registry gespeichert und kann verwendet werden</post>
+<tags/>
+</testcase>
+<pre>-der webInterface  ist über der Browser offen.</pre>
+<actions>-eine neue Eintrag erstellen. 
+-Auf "New" Schaltfläche klicken um ein neuen UDDI Registry zu erzeugen. </actions>
+<post>-nachdem man auf New klickt um einen neuen Registery zu erzeugen ,dann kommt die Seite mit der Felder nicht und der Browser ladet ständig ohne ergebnis !!!</post>
+<comment>-nachdem man auf New klickt um einen neuen Registery zu erzeugen ,dann kommt die Seite mit der Felder nicht und der Browser ladet ständig ohne ergebnis !!!
+-Also die Registery wurde nicht angelegt</comment>
+</result>
+<result actionok="Y" endtime="15:00" outcome="Failure" postok="Y" preok="Y" starttime="14:58">
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="455" priority="C" title="Test Case: UDDI-Registery löschen">
+<description/>
+<pre>-Registery ist vorhanden und erreichbar
+-Benutze hat die erforderlichen Zugrifsrechte</pre>
+<actions>1) auswahl der Registry 
+2) Löschen der Registry dursch "Löschen"</actions>
+<post>1a. Registry ist ausgewählt
+2a. Registry ist gelöscht</post>
+<tags/>
+</testcase>
+<pre>-Die Liste der Registeies ist leer</pre>
+<actions>-wegen das fehlerhafte TestSequence von davor könnten keine Registeries erzeugt werden  und vondaher kann auch keine andere Interaktion/Funktionalität geben und getestet werden.</actions>
+<post/>
+<comment>-wegen das fehlerhafte TestSequence von davor könnten keine Registeries erzeugt werden  und vondaher kann auch keine andere Interaktion/Funktionalität geben und getestet werden.</comment>
+</result>
+<result actionok="Y" endtime="15:01" outcome="Failure" postok="Y" preok="Y" starttime="15:00">
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="456" priority="C" title="Test Case: UDDI-Registry Bearbeiten">
+<description>Entfernen eine vorhandene UDDI-Registry</description>
+<pre>-UDDI-Registry bzw. Datenquellen-Registry ist vorhanden
+-Benutzer hat die dazu gesehene Rechte</pre>
+<actions>1- Registry Auswhlen
+2- die Einträge/Werte der Registry über den UDDI User-Interface bearbeiten
+3- speichern die Änderungen </actions>
+<post>1a. die UDDI-Registry ist ausgewählt
+2a. die werte sind angepasst
+3a. die Änderungen sind gespeichert</post>
+<tags/>
+</testcase>
+<pre>-wegen das fehlerhafte TestSequence von davor könnten keine Registeries erzeugt werden  und vondaher kann auch keine andere Interaktion/Funktionalität geben und getestet werden.</pre>
+<actions>Fehlerhaft</actions>
+<post/>
+<comment>-wegen das fehlerhafte TestSequence von davor könnten keine Registeries erzeugt werden  und vondaher kann auch keine andere Interaktion/Funktionalität geben und getestet werden.</comment>
+</result>
+</executedsequence>
+</testrun>
+<testrun enddate="14.06.2010 15:39" priority="E" startdate="14.06.2010 15:18" tester="feras">
+<description>es sind zwei Fehlern:
+
+Normaler Fehler:
+-wenn man Felder eines Registry leer lässt ,dann gibt es Exception
+
+Kritische Fehler: 
+-Die ausgewählte Registry wurde nicht editiert sondern es wurde eine neue Registry dazu erzeugt mit der Name "NeuTestRegistry_Modi" .
+ 
+</description>
+<sut>Im folgender wird der UDDI-WebInterface getestet.
+-neuen Registry anlegen 
+-vorhandene Registrey bearbeiten
+-vorhanden Registery löschen .
+</sut>
+<executedsequence>
+<sequence created="03.06.2010" creator="feras" name="Test Sequence: UDDI-Webinterfaces" number="453">
+<description>Testen der UDDI-Webinterfaces nach die verschiedene Testfaelle .</description>
+<pre>UDDI-Webinterfaces muss offen sein</pre>
+</sequence>
+<pre>der  UDDI-WebInterface ist über den Browser offen 
+</pre>
+<result actionok="Y" endtime="15:30" outcome="Comment" postok="Y" preok="Y" starttime="15:19">
+<testcase created="03.06.2010" creator="feras" effort="00:00" number="454" priority="C" title="Test Case: neue UDDI-Registry Speichern mit Leere angaben">
+<description/>
+<pre>-UDDI-Webinterfaces ist offen.</pre>
+<actions>1) angaben in der Felder eintragen
+2) manche felder leer lassen.</actions>
+<post>UDDI-Registry gespeichert und kann verwendet werden</post>
+<tags/>
+</testcase>
+<pre>-WebIterface (http://localhost:8080/juddiWeb/) . ist offen</pre>
+<actions>-ich erzeuge eine neuen Registry .
+-"New" Schaltfläche ist geklickt .
+  Name :NeuTestRegistry
+  Adresse :http://NeuTestRegistry
+  Type: SQL
+  Sub type: MySql
+  Language: SQL 
+ die weiteren Felder sind leer </actions>
+<post>-wenn ich leere Felder lasse ausser 
+Language,Name, Adresse, Type und SubType.
+dann kommt ein Exception.
+- Ich habe den Vorgang wiederholt und alle Felder werte zugewiessen -&gt; Läuft der Vorgang ihne problem 
+und Registry ist angelegt und in Liste der Registry zu sehen .
+
+-Die neu hinzugefügte Registry wird in der Eclipse umgebung beim PropertiesSection-Details eine DM-Aktivität ist erreichbar .</post>
+<comment>Die Exception erscheint beim Erzeugen von Registry wenn man leere Felder lässt </comment>
+</result>
+<result actionok="Y" endtime="15:36" outcome="Ok" postok="Y" preok="Y" starttime="15:31">
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="455" priority="C" title="Test Case: UDDI-Registery löschen">
+<description/>
+<pre>-Registery ist vorhanden und erreichbar
+-Benutze hat die erforderlichen Zugrifsrechte</pre>
+<actions>1) auswahl der Registry 
+2) Löschen der Registry dursch "Löschen"</actions>
+<post>1a. Registry ist ausgewählt
+2a. Registry ist gelöscht</post>
+<tags/>
+</testcase>
+<pre>-Die NeuTestRegistry ist vorhanden
+</pre>
+<actions>-eine Registry ist ausgewählt 
+-die Schaltfläche "Delete" ist getätigt</actions>
+<post>1a. die Registry ist ausgewählt
+2a. die ausgewählte Registry ist gelöscht.</post>
+<comment/>
+</result>
+<result actionok="Y" endtime="15:39" outcome="Failure" postok="Y" preok="Y" starttime="15:36">
+<testcase created="04.06.2010" creator="feras" effort="00:00" number="456" priority="C" title="Test Case: UDDI-Registry Bearbeiten">
+<description>Entfernen eine vorhandene UDDI-Registry</description>
+<pre>-UDDI-Registry bzw. Datenquellen-Registry ist vorhanden
+-Benutzer hat die dazu gesehene Rechte</pre>
+<actions>1- Registry Auswhlen
+2- die Einträge/Werte der Registry über den UDDI User-Interface bearbeiten
+3- speichern die Änderungen </actions>
+<post>1a. die UDDI-Registry ist ausgewählt
+2a. die werte sind angepasst
+3a. die Änderungen sind gespeichert</post>
+<tags/>
+</testcase>
+<pre>-ich habe die NeuTestRegistry ausgewählt über den RadioButtom 
+</pre>
+<actions>-Die taste "Edit" ist getätigt .
+-ich habe die Name der Registry Editiert von NeuTestRegistry -&gt;in NeuTestRegistry_Modi .
+-"Save" am ende geklickt</actions>
+<post>Fehler: 
+-Die ausgewählte Registry wurde nicht editiert sondern es wurde eine neue Registry dazu erzeugt mit der Name "NeuTestRegistry_Modi" .
+ </post>
+<comment>Fehler: 
+-Die ausgewählte Registry wurde nicht editiert sondern es wurde eine neue Registry dazu erzeugt mit der Name "NeuTestRegistry_Modi" .
+ </comment>
+</result>
+</executedsequence>
+</testrun>
+</tsa>
+</tsa>
+</tsa>
+<author active="Y" firstname="" lastname="tuxi23" uid="tuxi23">
+<extension name="standarduser" value="N"/>
+</author>
+<author active="Y" firstname="" lastname="feras" uid="feras">
+<extension name="standarduser" value="Y"/>
+</author>
+<extension name="maxid" value="459"/>
+</tests>
