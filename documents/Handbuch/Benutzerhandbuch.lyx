@@ -153,7 +153,7 @@ status collapsed
 
  
 \begin_inset FormulaMacro
-\renewcommand{\headrulewidth}{0mm}
+\newcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -730,6 +730,15 @@ Beschreibung der Statement Editoren
 SIMPL Benutzerhandbuch
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Einführung, allgemeine Hinweise
 \end_layout
@@ -759,7 +768,17 @@ key "key-4"
  Nichtsdestoweniger besteht auch die Möglichkeit die Datenquellen statisch
  anbinden zu können.
  Die Ausführung der Workflows unterliegt der angepassten Workflow Engine
- Apache ODE (
+ Apache ODE
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+ODE
+\end_layout
+
+\end_inset
+
+ (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-6"
@@ -786,6 +805,8 @@ Die Systemvoraussetzungen des Rahmenwerkes entspricht den Voraussetzungen
  unterstützt.
  Der SIMPL Core kann auf allen Java unterstützenden Web Containern eingesetzt
  werden.
+ Es muß beachtet werden, daß das Rahmenwerk nur mit Apache ODE 2.0 oder höher
+ verwendet werden kann.
 \end_layout
 
 \begin_layout Section
@@ -803,6 +824,62 @@ Das Rahmenwerk wird als Teil eines großen Installationpakets ausgeliefert.
  um dem Benutzer eine einfache Installation zu ermöglichen.
  Das Installationspaket ist dabei als RAR-Archiv zusammen mit allen wichtigen
  Dokumenten auf einer CD/DVD vorhanden.
+ Für eine Windows Installation ist die 
+\begin_inset Quotes eld
+\end_inset
+
+All-in-one
+\begin_inset Quotes erd
+\end_inset
+
+-Installation zu empfehlen.
+ Für die Installation auf anderen Kontexten wird hier auch noch die Installation
+ der einzelnen Komponenten erläutert.
+\end_layout
+
+\begin_layout Subsection
+All-in-one Installation
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset Quotes eld
+\end_inset
+
+All-in-one
+\begin_inset Quotes erd
+\end_inset
+
+-Installation ist die schnelle und einfach Installation und für ein Windows
+ System zu empfehlen.
+ Das Archiv 
+\begin_inset Quotes eld
+\end_inset
+
+SIMPL.rar
+\begin_inset Quotes erd
+\end_inset
+
+ muß einfach entpackt werden und danach kann das Rahmenwerk über die Kommandozei
+le gestartet werden.
+ Dazu kann der Tomcat Server über 
+\begin_inset Quotes eld
+\end_inset
+
+..bin/tomcat6.exe
+\begin_inset Quotes erd
+\end_inset
+
+ gestartet werden.
+ Eclipse kann über 
+\begin_inset Quotes eld
+\end_inset
+
+eclipse.exe
+\begin_inset Quotes erd
+\end_inset
+
+ im Eclipse Installationsverzeichnis gestartet werden.
 \end_layout
 
 \begin_layout Subsection
@@ -815,7 +892,14 @@ Die Installation von Eclipse erfolgt durch das Entpacken von Eclipse IDE
  Dadurch wäre Eclipse schon startfähig, jedoch fehlt noch der BPEL Designer
  und das SIMPL Rahmenwerk.
  Zum Entpacken genügt das oft bei Windows integrierte ZIP Programm, oder
- eine Entpackprogramm wie beispielsweise Winrar oder 7zip.
+ eine Entpackprogramm wie beispielsweise Winrar (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -892,7 +976,7 @@ Installation von Apache Tomcat
 \begin_layout Enumerate
 Die Datei apache-tomcat-6.0.26.exe enthält den Apache Tomcat Webserver der
  Version 6.0.26.
- Durch Doppelklicken des Files startet der Installationsvorgang von Apache
+ Durch Doppelklicken auf das File startet der Installationsvorgang von Apache
  Tomcat.
  Im Verlauf der Installation ist u.a.
  das Installationsverzeichnis zu wählen, sowie den HTTP Connector Port zu
@@ -902,7 +986,7 @@ Die Datei apache-tomcat-6.0.26.exe enthält den Apache Tomcat Webserver der
 \end_layout
 
 \begin_layout Enumerate
-Die Datei ode.war aus der apache-ode-war-1.3.2.zip in das Verzeichnis 
+Die Datei ode.war aus der apache-ode-war-2.0-beta2.zipin das Verzeichnis 
 \begin_inset Quotes eld
 \end_inset
 
@@ -947,24 +1031,6 @@ WEB-INF
 
 \begin_layout Subsection
 Installation von Apache ODE und SIMPL Komponenten
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Wo kommen die SIMPL RRS 
-\begin_inset Quotes eld
-\end_inset
-
-AAR
-\begin_inset Quotes erd
-\end_inset
-
- Files hin ? Wie wird das RRS installiert ?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -1131,16 +1197,6 @@ Die Validierung von Standard BPEL wird unterstützt, jedoch nicht die Validierun
 
 \begin_layout Section
 Komponenten, Aufbau und Funktionen
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-wird von Daniel noch ausführlicher gemacht
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1151,7 +1207,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ScreenshotsBenutzer/Systemumgebung.jpeg
+	filename ScreenshotsBenutzer/Systemumgebung.png
 
 \end_inset
 
@@ -1185,55 +1241,25 @@ SIMPL Systemumgebung
 
 \end_layout
 
-\begin_layout Itemize
-SIMPL Core
-\end_layout
-
-\begin_layout Itemize
-SIMPL Core Plug-In
-\end_layout
-
-\begin_layout Standard
-Das SIMPL Core Plug-In erweitert die grasche Oberäche von Eclipse, um Ein-
- stellungen für das SIMPL Rahmenwerk vornehmen zu können
-\end_layout
-
-\begin_layout Itemize
-BPEL- DM Plug-In
-\end_layout
-
-\begin_layout Standard
-Das BPEL-DM Plug-In erweitert das
-\end_layout
-
-\begin_layout Itemize
-SIMPL Extension Activity Plug-In
-\end_layout
-
-\begin_layout Itemize
-Eclipse BPEL Designer Plug-In
-\end_layout
-
-\begin_layout Itemize
-RRS / Eclipse RRS Plug-In
-\end_layout
-
-\begin_layout Itemize
-UDDI Webinterface / UDDI Eclipse Plug-In
-\end_layout
-
 \begin_layout Standard
 Das SIMPL Rahmenwerk, bestehend aus dem SIMPL Core, den SIMPL Eclipse Plug-Ins
- und dem BPEL-DM Plug-In, soll in die in Abbildung 
+ und dem BPEL-DM Plug-In, und ist in die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL_Systemumgebung"
 
 \end_inset
 
- dargestellte Systemumgebung eingebettet werden.
- Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL Designer Plug-In,
- einem Web Server, wie dem Apache Tomcat (siehe 
+ dargestellte Systemumgebung eingebettet.
+ Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL Designer Plug-In
+ (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-10"
+
+\end_inset
+
+), einem Web Server, wie dem Apache Tomcat (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-7"
@@ -1640,7 +1666,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ScreenshotsBenutzer/SIMPL_Admin_Console.jpg
+	filename ScreenshotsBenutzer/AdminConsole.JPG
 
 \end_inset
 
@@ -1676,9 +1702,9 @@ Admin Konsole
 
 \begin_layout Standard
 Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
- Möglichkeit, Einstellungen für den SIMPL Core vorzunehmen.
- Dazu gehört die Angabe von globalen Einstellungen und die Verwaltung des
- Auditings.
+ Möglichkeit Einstellungen für die Verwaltung des Auditings vorzunehmen.Das
+ Auditing kann de- und aktiviert werden sowie die Datenbank wo die Auditingdaten
+ spezifiziert werden.
 \end_layout
 
 \begin_layout Standard
@@ -1759,18 +1785,7 @@ Der Menüpunkt Help leitet den Benutzer auf die Eclipse Hilfe weiter.
  Dort stehen dem Benutzer über die Punkte BPEL-DM Plug-In und SIMPL Core
  Plug-In die entsprechenden Hilfe-Dokumente der SIMPL Eclipse Plug-Ins zur
  Verfügung.
- Eine genauere Beschreibung wird nachgeliefert, sobald die Umsetzung der
- Hilfe und deren Inhalt konkret feststeht.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Gibt es schon konkrete Inhalte ?
-\end_layout
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2222,7 +2237,7 @@ Das Datenquellen-Registry Web Interface dient dem Datenquellen-Administrator
 status open
 
 \begin_layout Plain Layout
-Aktueller Screenshot für Webinterface!aus Feinentwurf!
+Aktueller Screenshot für Webinterface!aus Feinentwurf!WOLLO !!
 \end_layout
 
 \end_inset
@@ -3075,16 +3090,6 @@ Insert BPEL Variable
 
 \begin_layout Paragraph
 Statement Editoren 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Wird noch gemacht von Daniel
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3889,17 +3894,8 @@ All
 \begin_inset Quotes erd
 \end_inset
 
- können nur bestimmte, oder auch alle Parameter eingestellt werden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-richtig ??
-\end_layout
-
-\end_inset
-
-Im Textfeld 
+ können nur bestimmte, oder auch alle Parameter eingestellt werden.Im Textfeld
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4133,7 +4129,13 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Delete-Statement-Editor"
 
+\end_inset
+
+Delete Statement Editor
 \end_layout
 
 \end_inset
@@ -4151,7 +4153,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-Funktionsweise : Der Benutzer wählt eine Tabelle aus der Liste aus, dann
+Funktionsweise: Der Benutzer wählt eine Tabelle aus der Liste aus, dann
  wird in der Combobox 
 \begin_inset Quotes eld
 \end_inset
@@ -4161,7 +4163,7 @@ Column name
 \end_inset
 
  ein Spaltenname aus der gewählten Tabelle ausgewählt.
- Danch kann in der Combobox 
+ Danach kann in der Combobox 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4551,6 +4553,20 @@ ODE Deployment-Deskriptor auswählen und über Edit->Delete löschen.
 \end_layout
 
 \begin_layout Subsubsection
+Prozess vorbereiten für Deployment
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Prozess auf ODE-Server deployen
 \end_layout
 
@@ -4595,19 +4611,6 @@ Start
 \end_inset
 
  auswählen.
-\end_layout
-
-\begin_layout Standard
-Alternativ kann man auch in der WEB GUI der Apache ODE Workflow Engine unter
- 
-\begin_inset Quotes eld
-\end_inset
-
-Deployment
-\begin_inset Quotes erd
-\end_inset
-
- das BPEL File auswählen und manuell deployen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4816,7 +4819,7 @@ Strategie Auswahlfenster
 
 \begin_layout Enumerate
 Speichern des ODE Deployment-Deskriptor über das Speichern-Symbol in der
- Symbolleiste.
+ Symbolleiste
 \end_layout
 
 \begin_layout Subsection
@@ -5181,7 +5184,7 @@ Fehlerbehandlung
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="3">
+<lyxtabular version="3" rows="9" columns="3">
 <features>
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -5396,35 +5399,6 @@ Authentifizierung fehlgeschlagen.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 RRS
 \end_layout
 
@@ -5473,93 +5447,6 @@ RRS Parameter ungültig
 
 \begin_layout Plain Layout
 RRS nicht erreichbar
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -5697,6 +5584,16 @@ key "key-10"
 
  Eclipse BPEL Designer, http://www.eclipse.org/bpel/, zuletzt zugegriffen
  am 17.10.2009
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ok
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -5767,11 +5664,18 @@ key "key-26"
 
 \end_inset
 
-jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.09
+jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.10
 \end_layout
 
-\begin_layout Section
-Anhang
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Winrar"
+key "key-1"
+
+\end_inset
+
+WinRar, http://www.winrar.de, zuletzt zugegriffen am 13.06.2010
 \end_layout
 
 \end_body
