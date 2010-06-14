@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -27228,7 +27228,7 @@ Datenbank Policies, die speziell für Datenbanken gelten und
 \end_layout
 
 \begin_layout Itemize
-Filesystem Policies, die für Filesysteme gelten.
+Dateisystem Policies, die für Dateisystem gelten.
 \end_layout
 
 \begin_layout Standard
@@ -27296,7 +27296,7 @@ Einheit
 \begin_inset Text
 
 \begin_layout Plain Layout
-responsTime
+responseTime
 \end_layout
 
 \end_inset
@@ -27305,7 +27305,7 @@ responsTime
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die maximale Zeit die ein Server zum Antworten brauchen darf.
+Die maximale Zeit, die ein Server zum Antworten brauchen darf.
 \end_layout
 
 \end_inset
@@ -27334,7 +27334,7 @@ availability
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Verfügbarkeit beschrieben als maximale Downtime des Servers.
+Die Verfügbarkeit eines Servers beschrieben als maximale Downtime des Servers.
 \end_layout
 
 \end_inset
@@ -27363,7 +27363,7 @@ throughput
 \begin_inset Text
 
 \begin_layout Plain Layout
-Maximaler Datendurchsatz
+Maximal erreichbarer Datendurchsatz, unabhängig von der Netzanbindung.
 \end_layout
 
 \end_inset
@@ -27487,7 +27487,7 @@ maxQueryLength
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die maximale Länge eines Befehls der Anfragtesprache
+Die maximale Länge eines Befehls der Anfragesprache
 \end_layout
 
 \end_inset
@@ -27496,7 +27496,7 @@ Die maximale Länge eines Befehls der Anfragtesprache
 \begin_inset Text
 
 \begin_layout Plain Layout
-Zeichen
+Anzahl der Zeichen
 \end_layout
 
 \end_inset
@@ -27516,7 +27516,7 @@ maxConcurrentTransaction
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die maximale Anzahl an Verbindungen, die gleichzeitig (konkurrierend) auf
+Die maximale Anzahl an Verbindungen, die gleichzeitig (nebenläufig) auf
  Daten der Datenbank zugreifen
 \end_layout
 
@@ -27537,7 +27537,7 @@ Anzahl
 \begin_inset Text
 
 \begin_layout Plain Layout
-maxColumSize
+maxColumnSize
 \end_layout
 
 \end_inset
@@ -27546,7 +27546,7 @@ maxColumSize
 \begin_inset Text
 
 \begin_layout Plain Layout
-Maximale Spaltenzahl innerhalb der Tabelle
+Maximale Spaltenzahl innerhalb einer Tabelle
 \end_layout
 
 \end_inset
@@ -27607,10 +27607,6 @@ Versionsnummer
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -27683,7 +27679,7 @@ Die maximale Länge eines Dateinamens
 \begin_inset Text
 
 \begin_layout Plain Layout
-Länge
+Anzahl der Zeichen
 \end_layout
 
 \end_inset
@@ -27712,7 +27708,7 @@ Die maximale Länge eines Dateipfades
 \begin_inset Text
 
 \begin_layout Plain Layout
-Länge
+Anzahl der Zeichen
 \end_layout
 
 \end_inset
@@ -27764,8 +27760,8 @@ Policy Defenition
 \end_layout
 
 \begin_layout Standard
-Folgende SIMPL Policy-Elemente stehen zur Verfügung und werden nachfolgend
- SIMPLPolicy-Elements genannt.
+Folgende SIMPL Policy-Assertions stehen zur Verfügung und werden nachfolgend
+ SIMPLPolicy-Assertions genannt.
 \end_layout
 
 \begin_layout Standard
@@ -27776,57 +27772,57 @@ status open
 
 \begin_layout Plain Layout
 
-<responsTime value = "xsd:integer"/>
+<simpl:responseTime value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<availability value = "xsd:integer"/>
+<simpl:availability value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<throughput value = "xsd:integer"/>
+<simpl:throughput value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<transaction value = "xsd:boolean"/>
+<simpl:transaction value = "xsd:boolean"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxQueryLength value = "xsd:integer"/>
+<simpl:maxQueryLength value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxConcurrentTransaction value = "xsd:integer"/>
+<simpl:maxConcurrentConnection value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxColumnSize value = "xsd:integer"/>
+<simpl:maxColumnSize value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<dbVersion value = "xsd:String"/>
+<simpl:dbVersion value = "xsd:String"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxFilenameLength value = "xsd:integer"/>
+<simpl:maxFilenameLength value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxPathLength value = "xsd:integer"/>
+<simpl:maxPathLength value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
 
-<maxFileSize value = "xsd:integer"/>
+<simpl:maxFileSize value = "xsd:integer"/>
 \end_layout
 
 \begin_layout Plain Layout
@@ -27834,7 +27830,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-SIMPL Policy-Elemente
+SIMPL Policy-Assertions
 \end_layout
 
 \end_inset
@@ -27890,7 +27886,7 @@ status open
 
 \begin_layout Plain Layout
 
-	SIMPLPolicy-Elements
+	SIMPLPolicy-Assertions
 \end_layout
 
 \begin_layout Plain Layout
@@ -27914,6 +27910,16 @@ Listing einer SIMPL Policy-Datei
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\noindent
+Bezüglich der Policy-Datei gelten einige Einschränkungen.
+ So werden zum Beispiel nur die Kompaktformen von Policies unterstützt.
+ Die Policy-Operatoren wsp:exactlyOnce und wsp:all, sowie die Möglichkeit
+ Assertions als optional zu kennzeichnen (wsp:optional) werden nicht unterstützt.
+ Darüber hinaus ist es nicht möglich Referenzen innerhalb des Dokumentes
+ zu verwenden.
 \end_layout
 
 \begin_layout Standard
