@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -463,7 +463,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="17" columns="4">
+<lyxtabular version="3" rows="18" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1157,7 +1157,7 @@ reference "sub:Benutzeroberfläche-erw-BPEL-Des"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1166,7 +1166,7 @@ reference "sub:Benutzeroberfläche-erw-BPEL-Des"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1175,7 +1175,7 @@ reference "sub:Benutzeroberfläche-erw-BPEL-Des"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1184,7 +1184,7 @@ huettiwg, rehnre
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1200,6 +1200,44 @@ reference "sec:Ausblick"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.06.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huettiwg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Abschließende Überarbeitung
 \end_layout
 
 \end_inset
@@ -3551,6 +3589,7 @@ Konfiguration
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -3618,6 +3657,7 @@ Datenquellenliste
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -3681,6 +3721,7 @@ Datenquelleneditor
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -8301,7 +8342,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine Datenquelle wird Ausgewählt
 \end_layout
 
 \end_inset
@@ -8321,7 +8362,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Für die Datenquelle und die Automatische auswahl wurden WsPolicy's erstellt
+ und sind verfügbar
 \end_layout
 
 \end_inset
@@ -8341,7 +8383,7 @@ Nachbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Eine Datenquelle wurde anhand einer Strategie ausgewählt
 \end_layout
 
 \end_inset
@@ -8381,7 +8423,14 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.
+ Datenquellen Registry wird gelesen
+\end_layout
 
+\begin_layout Plain Layout
+2.
+ Alle Policys der Datenquelle werden mit den Sucheigenschaften verglichen
+ und anhand der Strategie (first find) ausgewählt
 \end_layout
 
 \end_inset
@@ -9815,8 +9864,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
- Rechte.
+Die Datenquellen-Registry ist erreichbar und die Datenquellenübersicht wird
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -9878,12 +9927,38 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Anlegen eines neuen Datenquellenobjekts
+ Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Registrierung des Datenquellenobjekts in der Datenquellen-Registry
+ Eingeben der erfoderlichen Daten
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ drücken.
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Daten werden in der Registry gespeichert.
 \end_layout
 
 \end_inset
@@ -9903,7 +9978,8 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4a) Es wurden nicht alle erforderlichen Daten eingegeben.
+ Wiederholung von Schritt 2,3,4
 \end_layout
 
 \end_inset
@@ -9960,8 +10036,8 @@ Vorbedingung
 \begin_inset Text
 
 \begin_layout Plain Layout
-Die Datenquellen-Registry ist erreichbar und der Benutzer hat die erforderlichen
- Rechte.
+Die Datenquellen-Registry ist erreichbar und die Datenquellenübersicht wird
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -10002,7 +10078,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Datenquelle wurde nicht entfernt.
 \end_layout
 
 \end_inset
@@ -10023,12 +10099,25 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl der Datenquelle
+ Auswahl der Datenquelle mit dem Radiobutton
 \end_layout
 
 \begin_layout Plain Layout
 2.
- Entfernen der Datenquelle aus der Datenquellen-Registry
+ Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Datenquelle wird entfernt
 \end_layout
 
 \end_inset
@@ -10048,7 +10137,23 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
+1a) Keine Datenquelle wurde ausgewählt
+\end_layout
 
+\begin_layout Plain Layout
+2a) Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons
+\end_layout
+
+\begin_layout Plain Layout
+3a) Meldung erscheint, das keine Datenquelle ausgewählt wurde
 \end_layout
 
 \end_inset
@@ -10085,7 +10190,7 @@ Ziel
 \begin_inset Text
 
 \begin_layout Plain Layout
-Entfernen einer vorhandenen Datenquelle aus der Datenquellen-Registry
+Bearbeiten einer vorhandenen Datenquelle aus der Datenquellen-Registry
 \end_layout
 
 \end_inset
@@ -10148,7 +10253,7 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Nichts passiert
 \end_layout
 
 \end_inset
@@ -10169,12 +10274,38 @@ Normalablauf
 
 \begin_layout Plain Layout
 1.
- Auswahl der Datenquelle
+ Auswahl der Datenquelle mit dem Radiobutton
 \end_layout
 
 \begin_layout Plain Layout
 2.
+ Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+edit
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons
+\end_layout
+
+\begin_layout Plain Layout
+3.
  Bearbeiten der Werte der Datenquelle
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons
 \end_layout
 
 \end_inset
@@ -10194,7 +10325,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1) Es wurde keine Datenquelle gewählt
 \end_layout
 
 \end_inset
@@ -11720,7 +11851,7 @@ x
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11729,7 +11860,7 @@ Referenz laden
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11738,7 +11869,7 @@ Referenz laden
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11747,7 +11878,7 @@ Referenz laden
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11756,7 +11887,7 @@ Referenz laden
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11765,7 +11896,7 @@ Referenz laden
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11774,7 +11905,7 @@ Referenz laden
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11783,7 +11914,7 @@ x
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13692,6 +13823,7 @@ reference "fig:AltRealisierungRefBPEL"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -13774,13 +13906,6 @@ reference "lst:<referenceVariable>-Schema"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14350,6 +14475,7 @@ reference "fig:VarVorTransformation"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -14390,6 +14516,7 @@ Beispiel Prozessmodell mit Referenzvariablen
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -14451,6 +14578,7 @@ _TF
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -14834,6 +14962,7 @@ reference "fig:VarNachTransformation"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -14871,6 +15000,7 @@ Transformiertes Beispiel Prozessmodell
 
 
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -26273,6 +26403,7 @@ In den Policy-Dateien wird nicht unterschieden, welche Policies zu welchen
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -26455,6 +26586,7 @@ boolean
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -26638,6 +26770,7 @@ Versionsnummer
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -26872,13 +27005,6 @@ SIMPL Policy-Assertions
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
 \end_inset
 
 
