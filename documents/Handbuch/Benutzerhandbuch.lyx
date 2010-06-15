@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -103,7 +103,7 @@ filename "DokStatus.lyx"
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -118,7 +118,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -131,7 +131,7 @@ pagestyle
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -142,7 +142,7 @@ status collapsed
 
 fancy
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -158,7 +158,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -171,7 +171,7 @@ lhead
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -182,7 +182,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -193,7 +193,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -206,7 +206,7 @@ chead
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -217,7 +217,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -228,7 +228,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -241,7 +241,7 @@ rhead
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -252,7 +252,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -263,7 +263,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -276,7 +276,7 @@ lfoot
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -291,7 +291,7 @@ SIMPL © 2009 $IMPL
 \size default
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -302,7 +302,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -315,7 +315,7 @@ cfoot
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -326,7 +326,7 @@ status collapsed
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -337,7 +337,7 @@ status collapsed
 
  
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -350,7 +350,7 @@ rfoot
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -363,7 +363,7 @@ status collapsed
 \size small
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -389,7 +389,7 @@ reference "LastPage"
 \size default
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -403,7 +403,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -751,7 +751,7 @@ SIMPL ist ein erweiterbares und generisches Rahmenwerk für die Modellierung
  Durch die Erweiterbarkeit können prinzipiell alle Datenquellen integriert
  werden.
  Als Modellierungs- und Ausführungssprache für die hier betrachteten Workflows
- dient die Business Process Execution Language (BPEL,
+ dient die Business Process Execution Language (siehe
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-4"
@@ -767,7 +767,7 @@ key "key-4"
  Nichtsdestoweniger besteht auch die Möglichkeit die Datenquellen statisch
  anbinden zu können.
  Die Ausführung der Workflows unterliegt der angepassten Workflow Engine
- Apache ODE (
+ Apache ODE (siehe
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-6"
@@ -1210,7 +1210,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/Systemumgebung.png
-	width 100theight%
+	width 80page%
 
 \end_inset
 
@@ -1335,7 +1335,7 @@ reference "fig:ErweitertesSimplEclipse"
 
 \end_inset
 
-zeigt den erweiterten Eclipse BPEL Designer.
+ zeigt den erweiterten Eclipse BPEL Designer.
  In der Palette befinden sich die SIMPL DM-Aktivitäten, die wie die bereits
  vorhandenen Aktivitäten zur Modellierung von Prozessen verwendet werden
  können.
@@ -1358,7 +1358,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/EclipseErweitert.jpg
-	width 80text%
+	width 80page%
 
 \end_inset
 
@@ -1393,14 +1393,14 @@ Referenzvariablen
 \end_layout
 
 \begin_layout Standard
-In der mittleren Spalte von 
+In der mittleren Spalte von Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ErweitertesSimplEclipse"
 
 \end_inset
 
-sieht man die vorhandenen Referenzvariablen und kann diese mit einem Klick
+ sieht man die vorhandenen Referenzvariablen und kann diese mit einem Klick
  auf 
 \begin_inset Quotes eld
 \end_inset
@@ -1469,6 +1469,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_BPEL_Referenzvariable.JPG
+	width 80page%
 
 \end_inset
 
@@ -1515,6 +1516,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DeploymentDeskriptor.JPG
+	width 80page%
 
 \end_inset
 
@@ -1857,7 +1859,7 @@ Reload Plug-In Data
 \begin_inset Quotes erd
 \end_inset
 
- in 
+ in Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ErweitertesSimplEclipse"
@@ -1876,8 +1878,8 @@ reference "sub:Data-Management-Aktivitäten-GUI"
 
 \end_inset
 
-)die unterstützten Datenquellen, deren Subtypen und die unterstützten Abfragespr
-achen anzeigen kann.
+) die unterstützten Datenquellen, deren Subtypen und die unterstützten Abfragesp
+rachen anzeigen kann.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1955,7 +1957,7 @@ reference "fig:Eigenschaftenfenster-einer-Data-Management-Aktivität"
 
 \end_inset
 
-wird die 
+ wird die 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2053,6 +2055,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_StatementEditorSample.png
+	width 80page%
 
 \end_inset
 
@@ -2119,6 +2122,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/RRS_View.JPG
+	width 80page%
 
 \end_inset
 
@@ -2178,14 +2182,14 @@ reference "fig:Datenquellen-Registry-View"
 ).
  Die Ansicht wird über Window->Show View->Other->UDDI Registry->UDDI Browser
  View hinzugefügt.
- In der 
+ In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Datenquellen-Registry-View"
 
 \end_inset
 
-können alle Einträge der Datenquellen-Registry betrachtet, aber nicht verändert
+ können alle Einträge der Datenquellen-Registry betrachtet, aber nicht verändert
  oder gelöscht werden.
 \end_layout
 
@@ -2198,6 +2202,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/UDDI_View.JPG
+	width 80page%
 
 \end_inset
 
@@ -2257,6 +2262,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/webinterface.png
+	width 80cm
 
 \end_inset
 
@@ -2362,14 +2368,15 @@ Property-View
 \end_layout
 
 \begin_layout Standard
-Hier wird eine Property-View 
+In Abb.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL_DM_Property_View"
 
 \end_inset
 
-am Beispiel einer Query Activity gezeigt.
+ wird eine Property-View am Beispiel einer Query Activity gezeigt.
 \end_layout
 
 \begin_layout Standard
@@ -2381,6 +2388,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_PropertySection+Rahmen.jpg
+	width 80page%
 
 \end_inset
 
@@ -2484,14 +2492,15 @@ DM Statement Textbox
 \end_layout
 
 \begin_layout Standard
-1) In der 
+1) In der Abb.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL_DM_Statement_Textbox"
 
 \end_inset
 
-werden beim Editieren des Statements die Einträge in verschiedene Farben
+ werden beim Editieren des Statements die Einträge in verschiedene Farben
  angezeigt.
  Die Farbe hängt davon ab, ob es sich um bei dem Eintrag um ein Schlüsselwort,
  Befehle oder nur Tabellennamen handelt.
@@ -2545,6 +2554,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_PropertiesViewSample.png
+	width 80page%
 
 \end_inset
 
@@ -2602,6 +2612,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_SecondDMPropertiesView.png
+	width 80page%
 
 \end_inset
 
@@ -2639,8 +2650,8 @@ reference "fig:SecondDMPropertiesView"
 
 \end_inset
 
-zeigt die auf ein Filesystem angepasst Properties View mit den neuen Schaltfläch
-en 
+ zeigt die auf ein Filesystem angepasst Properties View mit den neuen Schaltfläc
+hen 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2704,14 +2715,14 @@ Select Command
 \begin_inset Quotes erd
 \end_inset
 
-
+(siehe Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL_DM_SelectCommand"
 
 \end_inset
 
- kann bei den verfügbaren Befehlen für diese Datenquelle ein Wahl getroffen
+) kann bei den verfügbaren Befehlen für diese Datenquelle ein Wahl getroffen
  werden und dann mit 
 \begin_inset Quotes eld
 \end_inset
@@ -2732,6 +2743,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_SelectCommand.png
+	width 80page%
 
 \end_inset
 
@@ -2776,6 +2788,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_SelectDrive.jpg
+	width 80page%
 
 \end_inset
 
@@ -2866,6 +2879,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Database.png
+	width 80page%
 
 \end_inset
 
@@ -2940,6 +2954,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_InsertTabel.png
+	width 80page%
 
 \end_inset
 
@@ -2985,18 +3000,14 @@ Hinzufügen von BPEL-Variablen aus dem BPEL-Prozess
 Die Properties View bietet auch die Möglichkeit an, BPEL-Variablen aus dem
  BPEL-Prozess dem Statement hinzuzufügen.
  Die bereits angelegten BPEL Variablen die hinzugefügt werden können, befinden
- sich im Bereich 
+ sich im rechten Bereich (siehe Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:SIMPL_BPEL_Variables"
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+).
 \end_layout
 
 \begin_layout Standard
@@ -3058,6 +3069,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_InsertBPELVariable.png
+	width 80page%
 
 \end_inset
 
@@ -3134,6 +3146,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_StatementEditorSample.png
+	width 80page%
 
 \end_inset
 
@@ -3673,6 +3686,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Insert_Statement_Editor.png
+	width 80page%
 
 \end_inset
 
@@ -3723,6 +3737,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Inser_Statement_Select.png
+	width 80page%
 
 \end_inset
 
@@ -3758,6 +3773,7 @@ Insert-Statement-Editor_Select
 
 \begin_layout Standard
 Das Select Schlüsselwort wird analog wie im Query Statement Editor verwendet.
+ Siehe
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Query-Statement-Editor"
@@ -3802,6 +3818,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Query_Statement_Select.png
+	width 80page%
 
 \end_inset
 
@@ -3926,6 +3943,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Call_Statement.png
+	width 80cm
 
 \end_inset
 
@@ -3986,6 +4004,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Drop_Statement.png
+	width 80page%
 
 \end_inset
 
@@ -4045,6 +4064,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Drop_Statement2.png
+	width 80cm
 
 \end_inset
 
@@ -4079,14 +4099,15 @@ Drop Statement Editor 2
 \end_layout
 
 \begin_layout Standard
-Danach erscheint das obere Menü 
+Danach erscheint das obere Menü (siehe Abb.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Drop-Statement-Editor2"
 
 \end_inset
 
-und es kann in der Liste eine Tabelle ausgewählt und mit 
+) und es kann in der Liste eine Tabelle ausgewählt und mit 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4122,6 +4143,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Delete_Statement_Editor.png
+	width 80page%
 
 \end_inset
 
@@ -4191,14 +4213,14 @@ Insert to table
 \begin_inset Quotes erd
 \end_inset
 
- das Statement in den Zwischenspeicherungsdialog 
+ das Statement in den Zwischenspeicherungsdialog (siehe Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Statement_Zwischenspeicherungsdialog"
 
 \end_inset
 
-und kann noch direkt verändert werden.
+) und kann noch direkt verändert werden.
 \end_layout
 
 \begin_layout Subparagraph
@@ -4278,6 +4300,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Create_Statement_Editor2.png
+	width 80cm
 
 \end_inset
 
@@ -4318,6 +4341,7 @@ Retrieve Data Statement Editor
 \begin_layout Standard
 Retrieve Data Statement Editor ist identisch zum Query Statement Editor,
  deswegen wird hier nur auf diesen verwiesen.
+ Siehe
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Query-Statement-Editor"
@@ -4344,6 +4368,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Update_Statement_Editor.png
+	width 80page%
 
 \end_inset
 
@@ -4438,6 +4463,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Update_Statement_Editor_TableOriented.png
+	width 80page%
 
 \end_inset
 
@@ -4762,6 +4788,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/Sending SOAP Message.jpg
+	width 80page%
 
 \end_inset
 
@@ -5430,6 +5457,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/edit.JPG
+	width 80page%
 
 \end_inset
 
@@ -5479,14 +5507,14 @@ Refresh
 \end_inset
 
  Button ( 2 grüne im Kreis stehende Pfeile) zu betätigen wenn man die neue
- Datenquelle in der UDDI Browser View 
+ Datenquelle in der UDDI Browser View (siehe Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Datenquellen-Registry-View"
 
 \end_inset
 
-nicht sieht.
+) nicht sieht.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5500,7 +5528,7 @@ Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
  Adresse definiert.
  Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
  angezeigt.
- In der 
+ In der Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Registry-Datenquellenliste"
@@ -5508,7 +5536,7 @@ reference "fig:Registry-Datenquellenliste"
 \end_inset
 
 muß dann die zu löschende Datenquelle mit dem rechten Kreis-Button markiert
- werden und danach 
+ und danach 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5530,7 +5558,7 @@ Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
  Adresse definiert.
  Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
  angezeigt.
- In der 
+ In der Abb.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Registry-Datenquellenliste"
@@ -5654,7 +5682,8 @@ Erstellung D.D.
 \begin_inset Text
 
 \begin_layout Plain Layout
-ODE Deploment Deskriptor Modul nicht installiert
+ODE D.D.
+ Modul nicht installiert
 \end_layout
 
 \end_inset
@@ -5820,7 +5849,7 @@ RRS
 \begin_inset Text
 
 \begin_layout Plain Layout
-Referenz läßt sich nicht speichern oder bearbeiten
+Referenz nicht bearbeitbar
 \end_layout
 
 \end_inset
@@ -5849,7 +5878,7 @@ RRS Parameter ungültig
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Referenz nicht speicherbar
 \end_layout
 
 \end_inset
@@ -5868,10 +5897,6 @@ RRS nicht erreichbar
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -6385,6 +6410,25 @@ Literaturverzeichnis
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+ Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: 
+\emph on
+Towards Reference Passing in Web Service and Workflow-based Applications
+\emph default
+.
+ In: Proc.
+ of the 13th IEEE Enterprise Distributed Object Conference (EDOC 2009),
+ Auckland, New Zealand, 31.
+ August - 04.
+ September 2009.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "key-4"
 
 \end_inset
@@ -6520,7 +6564,18 @@ key "key-13"
 
 \end_inset
 
-jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.10
+jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "14"
+key "key-1"
+
+\end_inset
+
+WinRAR, http://http://www.winrar.de/, zuletzt zugegriffen am 10.06.2010
 \end_layout
 
 \end_body
