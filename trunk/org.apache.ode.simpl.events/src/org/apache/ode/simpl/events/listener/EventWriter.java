@@ -19,12 +19,13 @@ public class EventWriter {
 	List<String> primaryKeys = new ArrayList<String>();
 
 	public EventWriter() {
-		dataObject = DataFormatProvider.getInstance(
-				AuditingParameters.getInstance().getDSFormat()).getSDO();
 		primaryKeys.add("event_id");
 	}
 
 	public void write(TEventInfo eventInfo, long counter) {
+		//We will send every event as a single row data object.
+		dataObject = DataFormatProvider.getInstance(
+				AuditingParameters.getInstance().getDSFormat()).getSDO();
 		DataObject tableObject = null;
 		DataObject columnObject = null;
 
@@ -65,7 +66,7 @@ public class EventWriter {
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "tstamp");
 		columnObject.set("type", AuditingParameters.getInstance().getVarchar_type());
-		columnObject.set("value", eventInfo.getTimestamp().toString());
+		columnObject.set("value", eventInfo.getTimestamp().toString().getBytes());
 
 		// serialisiertes Objekt
 		columnObject = tableObject.createDataObject("column");

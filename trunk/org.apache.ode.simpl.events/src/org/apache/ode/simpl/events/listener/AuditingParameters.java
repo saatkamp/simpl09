@@ -14,6 +14,7 @@ public class AuditingParameters {
 
 	private DataSource dataSource = new DataSource();
 	private boolean mode = false;
+	private boolean ddMode = false;
 
 	private final String MODE = "MODE";
 	private final String AUDITING_DS_ADDRESS = "AUDITING_DS_ADDRESS";
@@ -85,17 +86,29 @@ public class AuditingParameters {
 	public boolean isMode() {
 		if (!this.settings.isEmpty()
 				&& !this.settings.equals(this.lastSettings)) {
-			if (settings.get(MODE).contains("active")) {
-				this.mode = true;
+			// Check the auditing mode from the SIMPL Admin console and the DD
+			if (settings.get(MODE).equals("active")) {
+				// The DD auditing mode is decisive, if the auditing is activated over the admin console
+				if (this.ddMode){
+					this.mode = true;
+				}else {
+					this.mode = false;
+				}
 			} else {
+				// If the auditing in the admin console is turned off, it must be off in every case
 				this.mode = false;
 			}
 		}
 		return mode;
 	}
 
+	/**
+	 * Sets the auditing mode from the deployment descriptor
+	 * 
+	 * @param mode to set
+	 */
 	public void setMode(boolean mode) {
-		this.mode = mode;
+		this.ddMode = mode;
 	}
 
 	public String getInt_type() {
@@ -113,6 +126,4 @@ public class AuditingParameters {
 			return this.settings.get(DS_FORMAT);
 		}
 	}
-
-
 }

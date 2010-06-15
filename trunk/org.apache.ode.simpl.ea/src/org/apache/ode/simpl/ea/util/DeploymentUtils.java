@@ -49,7 +49,7 @@ public class DeploymentUtils {
 
 	private static final String AT_NAME = "name";
 	
-	private static final String AT_AUDITING_MODE = "auditingActive";
+	private static final String EL_AUDITING_MODE = "auditing";
 
 	private static final String EL_DATASOURCE = "datasources";
 	private static final String EL_MAPPING = "activityMappings";
@@ -136,6 +136,7 @@ public class DeploymentUtils {
 		
 		// Set the auditing mode in the SIMPL BPEL Event Listener
 		AuditingParameters.getInstance().setMode(AUDITING_MODE);
+		logger.debug("Set auditing mode to: " + AUDITING_MODE);
 	}
 
 	/**
@@ -238,8 +239,7 @@ public class DeploymentUtils {
 						.getAttributeValue(AT_ATTACHED_UDDI_ADDRESS);
 						
 						// Read the auditing mode to set to the SIMPL Event Listener
-						AUDITING_MODE  = Boolean.valueOf(((Element) processElement)
-						.getAttributeValue(AT_AUDITING_MODE));
+						AUDITING_MODE  = Boolean.valueOf(((Element) processElement).getChild(EL_AUDITING_MODE, DD_NAMESPACE).getText());
 
 						List datasourceElements = processElement.getChildren(
 								EL_DATASOURCE, DD_NAMESPACE);
