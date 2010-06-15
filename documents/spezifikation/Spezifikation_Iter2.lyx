@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -4590,7 +4590,7 @@ he ODE Deployment-Descriptor.
 
 \begin_layout Plain Layout
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 zu 1.: Das kann man im Prinzip auch in einen separaten Use Case packen, und
@@ -5051,6 +5051,11 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
+Es gibt mehrere Möglichkeite dies zu erledigen.
+ Beispielhaft sei eine erläutert :
+\end_layout
+
+\begin_layout Plain Layout
 1.
  Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View:
 \end_layout
@@ -5073,23 +5078,6 @@ Add and Remove
 
 \begin_layout Itemize
 Hinzufügen der BPEL Prozess-Datei
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-zu 1.: Das kann im Prinzip auch in umgekehrter Reihenfolge machen, also erst
- ODE-Server starten und dann den Prozess beim laufenden Betrieb deployen.
- Ihr könnt euch mal überlegen, ob ihr das als alternativen Ablauf rein schreiben
- wollt.
- Ist aber imho nicht so entscheidend für euer Projekt :-).
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -5243,16 +5231,6 @@ Nachbedingung im Sonderfall
 
 \begin_layout Plain Layout
 Die Prozessinstanz wird verworfen.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Stimmt das so??
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -5272,20 +5250,55 @@ Normalablauf
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.
- Instanzierung des Prozessmodells und Start der Prozessinstanz durch Senden
+Instanzierung des Prozessmodells und Start der Prozessinstanz durch Senden
  einer entsprechenden SOAP-Nachricht an den Endpunkt des Prozesses.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ihr könntet noch beschreiben, wie man das macht.
- Da es sehr viele Alternativen gibt, reicht aber eine als Beispiel aus.
+ Es gibt mehrere Möglichkeiten.
+ Beispielhaft wird eine erklärt :
 \end_layout
 
+\begin_layout Plain Layout
+1.
+ Auswählen des WSDL Files
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Auswahl von Web Services->Test with Web Service Explorer.
+ im Kontextmenü.
+\end_layout
+
+\begin_layout Plain Layout
+3.
+ Prozess auswählen und 
+\begin_inset Quotes eld
 \end_inset
 
+Invoke a WSDL Operation
+\begin_inset Quotes erd
+\end_inset
 
+ öffen.
+\end_layout
+
+\begin_layout Plain Layout
+4.
+ Im Textfenster unter 
+\begin_inset Quotes eld
+\end_inset
+
+ Input string
+\begin_inset Quotes erd
+\end_inset
+
+ die Parameter eingeben und mit 
+\begin_inset Quotes eld
+\end_inset
+
+GO
+\begin_inset Quotes erd
+\end_inset
+
+ absenden.
 \end_layout
 
 \end_inset
@@ -9332,7 +9345,7 @@ Sonderfälle
 \begin_layout Subsection
 Anwendungsfälle des RRS Eclipse Plug-Ins
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 neu, ÜBERARBEITEN
