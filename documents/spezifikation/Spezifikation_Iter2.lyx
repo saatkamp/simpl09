@@ -3534,50 +3534,19 @@ Datenquellen-Registry View
 
 \end_layout
 
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Datenquellen-Registry-Web-Interface"
-
-\end_inset
-
-Datenquellen-Registry Web Interface
+\begin_layout Subsection
+Uddi Web Interface
 \end_layout
 
 \begin_layout Standard
-Das Web Interface soll dem Datenquellen-Administrator dabei helfen, die
- Datenquellen-Registry zu verwalten.
- Es gibt ihm die Möglichkeit, einfach über die grafische Oberfläche, neue
- Datenquellen anzulegen (siehe Abbildung 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Datenquellen-Registry-Webinterface"
+\noindent
+Das UDDI Web Interface besteht aus den Komponenten: Konfiguration, Datenquellenl
+iste und Datenquelleneditor.
+ Alle drei Komponenten werden im folgenden noch einmal näher beschrieben.
+\end_layout
 
-\end_inset
-
-).
- Dafür gibt er den Namen der Datenquelle und deren Adresse an und wählt
- jeweils aus einem Drop-Down-Menü den Typ und den Subtyp der Datenquelle
- aus.
- Durch das Drücken des 
-\begin_inset Quotes eld
-\end_inset
-
-Add Policy
-\begin_inset Quotes erd
-\end_inset
-
--Buttons, kann für die Datenquelle eine Policy-Datei, die extern modeliert
- und über das Textfeld ausgewählt wurde, hinzugefügt werden.
- Mit dem 
-\begin_inset Quotes eld
-\end_inset
-
-Save
-\begin_inset Quotes erd
-\end_inset
-
--Button werden alle durchgeführten Änderungen gespeichert.
+\begin_layout Subsubsection
+Konfiguration
 \end_layout
 
 \begin_layout Standard
@@ -3589,8 +3558,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename iteration2/webinterface.png
-	width 80text%
+	filename iteration2/indexscreen.JPG
+	scale 80
 
 \end_inset
 
@@ -3603,11 +3572,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Datenquellen-Registry-Webinterface"
+name "fig:Uddi-Web-Inteface-Index"
 
 \end_inset
 
-Datenquellen-Registry Webinterface
+Uddi Web Inteface Index
 \end_layout
 
 \end_inset
@@ -3622,6 +3591,183 @@ Datenquellen-Registry Webinterface
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\noindent
+In der Konfiguration (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uddi-Web-Inteface-Index"
+
+\end_inset
+
+) können grundlegende Informationen, wie die Adresse der Datenquellen-Registry,
+ sowie Name und Passwort, die für die Schreibzugriffe verwendet werden,
+ hinterlegt werden können.
+ Diese Informationen werden im Web-Apps
+\backslash
+conf Verzeichniss des Web Interfaces gespeichert.
+ Beim Speichern der Konfiguration, wird Automatisch die Verfügbarkeit der
+ UDDI-Registry unter der angegeben Adresse überprüft.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellenliste
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename iteration2/datasourcelist.JPG
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uddi-Web-Interface-Datenquellenliste"
+
+\end_inset
+
+Uddi Web Interface Datenquellenliste
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+In der Datenquellenliste (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uddi-Web-Interface-Datenquellenliste"
+
+\end_inset
+
+) werden alle Verfügbaren Datenquellen und die grundlegenden Informationen
+ angezeigt.
+ Dort können außerdem Datenquellen neu erstellt werden oder nach Auswahl
+ einer Datenquelle diese Editiert oder Gelöscht werden.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelleneditor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename iteration2/edit.JPG
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uddi-Web-Interface-Editor"
+
+\end_inset
+
+Uddi Web Interface Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Der Datenquelleneditor (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uddi-Web-Interface-Editor"
+
+\end_inset
+
+) wird aufgerufen, wenn eine Datenquelle neu erstellt oder editiert wird.
+ Alle wichtigen Informationen können dort über Textfelder eingegeben werden
+ und direkt in der Datenquellen-Registry gespeichert werden.
+ Die Datenquelle benötigt dabei folgende Informationen.
+\end_layout
+
+\begin_layout Itemize
+Name: Ein Name für die Datenquelle, der innerhalb der Registry eindeutig
+ sein muss.
+ Auf Grundlage des Namens wird der Key, der zur internen Datenverwaltung
+ benötigt wird, generiert.
+\end_layout
+
+\begin_layout Itemize
+Address: Die Adresse unter der die Datenquelle aufgerufen werden kann.
+\end_layout
+
+\begin_layout Itemize
+Type: Der Typ der Datenquelle (Database, Filesystem usw.)
+\end_layout
+
+\begin_layout Itemize
+Subtype: Der Subtyp der Datenquelle (RDB, ext3, usw.)
+\end_layout
+
+\begin_layout Itemize
+Policy: Der genaue Pfad zu einer Policy-Datei, die die nicht funktionalen
+ Anforderungen für die Datenquelle beschreibt.
+\end_layout
+
+\begin_layout Itemize
+Username: Der Benutzername, der benötigt wird um auf die Datenquelle zuzugreifen.
+\end_layout
+
+\begin_layout Itemize
+Passwort: Das Passwort, das benötigt wird um auf die Datenquelle zuzugreifen.
 \end_layout
 
 \begin_layout Standard
