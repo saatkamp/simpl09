@@ -24,7 +24,7 @@ public class EventWriter {
 		primaryKeys.add("event_id");
 	}
 
-	public void write(TEventInfo eventInfo) {
+	public void write(TEventInfo eventInfo, long counter) {
 		DataObject tableObject = null;
 		DataObject columnObject = null;
 
@@ -40,7 +40,7 @@ public class EventWriter {
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "event_id");
 		columnObject.set("type", "VARCHAR(255)");
-		columnObject.set("value", eventInfo.getInstanceId()+"_"+eventInfo.getTimestamp().toString());
+		columnObject.set("value", String.valueOf(eventInfo.getInstanceId())+"_"+String.valueOf(counter));
 		
 		columnObject = tableObject.createDataObject("column");
 		columnObject.set("name", "event_type");
@@ -80,6 +80,8 @@ public class EventWriter {
 //		columnObject.set("value", eventInfo.toString());
 
 		logger.debug("Auditing data source: " + AuditingParameters.getInstance().getDataSource().getAddress());
+		logger.debug("Event SDO: " + dataObject.toString());
+		logger.debug("Event SDO table list size: " + dataObject.getList("table").size());
 		
 		try {
 			SIMPLCore.getInstance().dataSourceService().writeData(AuditingParameters.getInstance().getDataSource(),

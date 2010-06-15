@@ -54,6 +54,9 @@ public class SimplSdoEventListener implements BpelEventListener {
 
 	boolean initialized = false;
 	protected Calendar _calendar = Calendar.getInstance();
+	
+	private long lastInstanceId = 0;
+	private int counter = 0;
 
 	public void onEvent(BpelEvent bpelEvent) {
 		if (!initialized) {
@@ -64,7 +67,7 @@ public class SimplSdoEventListener implements BpelEventListener {
 //			if (AuditingParameters.getInstance().isMode()) {
 				logger.debug("Write event: " + ei.toString());
 				
-				writer.write(ei);
+				writer.write(ei, getEvtCounter(ei.getInstanceId()));
 //			}
 		}
 	}
@@ -212,5 +215,18 @@ public class SimplSdoEventListener implements BpelEventListener {
 		return c;
 	}
 	
-	
+	/**
+	 * @param instanceId
+	 * @return
+	 */
+	public long getEvtCounter(long instanceId) {
+		if (instanceId == this.lastInstanceId) {
+			counter++;
+		} else {
+			this.lastInstanceId = instanceId;
+			counter = 0;
+		}
+		logger.debug("COUNTER: " + counter);
+		return counter;
+	}
 }

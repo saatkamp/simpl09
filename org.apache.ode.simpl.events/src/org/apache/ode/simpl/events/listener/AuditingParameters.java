@@ -13,7 +13,6 @@ public class AuditingParameters {
 	private HashMap<String, String> lastSettings = null;
 
 	private DataSource dataSource = new DataSource();
-
 	private boolean mode = false;
 
 	private final String MODE = "MODE";
@@ -41,7 +40,8 @@ public class AuditingParameters {
 	}
 
 	private void loadSettings() {
-		this.settings = SIMPLCore.getInstance().administrationService().loadSettings("AUDITING", "GENERAL", "lastSaved");
+		this.settings = SIMPLCore.getInstance().administrationService()
+				.loadSettings("AUDITING", "GENERAL", "lastSaved");
 		this.dataSource = getDataSource();
 	}
 
@@ -105,13 +105,14 @@ public class AuditingParameters {
 	public String getVarchar_type() {
 		return varchar_type;
 	}
-	
+
 	public String getDSFormat() {
-		if (this.settings.isEmpty()){
+		if (this.settings.isEmpty()) {
 			return "RDB";
-		}else {
+		} else {
 			return this.settings.get(DS_FORMAT);
 		}
 	}
+
 
 }
