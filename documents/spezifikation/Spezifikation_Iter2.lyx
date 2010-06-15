@@ -26811,19 +26811,21 @@ name "sec:Ausblick"
 
 \end_inset
 
-Ausblick
+Ausblick und Erweiterungsmöglichkeiten
+\end_layout
+
+\begin_layout Standard
+In diesem Teil des Dokumentes werden mögliche Erweiterungen des SIMPL Rahmenwerk
+es beschrieben und erläutert.
 \end_layout
 
 \begin_layout Subsection
-Erweiterungsmöglichkeiten
-\end_layout
-
-\begin_layout Subsubsection
 SIMPL Event System
 \end_layout
 
 \begin_layout Standard
-In diesem Abschnitt wird das Event Modell für das Auditing von SIMPL aufgeführt.
+In diesem Teil wird das SIMPL Event Modell als mögliche Erweiterung des
+ Auditing von SIMPL besprochen.
  Das SIMPL Event-Modell nutzt als Grundlage das Modell in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -26833,30 +26835,26 @@ reference "fig:BPEL-Event-Modell"
 
  welches ein Event Modell für die Ausführung von allgemeinen Aktivitäten
  ist.
- Da es sich dabei jedoch um ein WS-BPEL 2.0 Event-Modell handelt sind einige
- Anpassungen und Änderungen notwendig.
- Der Grund dafür ist, dass die in diesem Modell vorkommenden Events nicht
- mit den Events in ODE identisch sind.
+ Die in diesem Element vorkommenden Events sind nicht mit den Events in
+ ODE identisch, da es sich dabeium ein WS-BPEL 2.0 Event-Modell handelt.
+ Deswegen sind einige Anpassungen und Änderungen notwendig.
 \end_layout
 
 \begin_layout Standard
-Die verschiedenen Schritte der Aktivitätsausführung die in Abbildung 
+Die verschiedenen Schritte der Aktivitätsausführung, die in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BPEL-Event-Modell"
 
 \end_inset
 
- aufgeführt sind (Inactive, Ready, Executing etc.) können bis auf eine Ausnahme
- für das SIMPL Event-Modell genutzt werden.
- Der Grund dafür ist, dass der Ablauf der Ausführung in ODE dem in diesem
- Modell gleicht, d.
+ aufgeführt sind (Inactive, Ready, Executing etc.), können bis auf eine Ausnahme
+ für das SIMPL Event-Modell, genutzt werden.
+ Der Grund dafür ist, dass der Ablauf der Ausführung einer Aktivität in
+ ODE dem in diesem Modell gleicht, d.
  h.
  es werden die selben Zustände durchlaufen.
-\end_layout
-
-\begin_layout Standard
-Die SIMPL Events werden nur während der direkten Ausführung der Aktivität
+ Die SIMPL Events werden nur während der direkten Ausführung der Aktivität
  genutzt (d.h.
  im Zustand "Executing" in Abbildung 
 \begin_inset CommandInset ref
@@ -26866,8 +26864,8 @@ reference "fig:BPEL-Event-Modell"
 \end_inset
 
 ).
- Es genügt daher, das Event Modell darauf zu beschränken was im Zustand
- "Executing" passiert, da is in allen anderen Zuständen keinen neuen Events
+ Es genügt daher, das SIMPL Event Modell darauf zu beschränken, was im Zustand
+ "Executing" passiert, da es in allen anderen Zuständen keine neuen Events
  gibt.
 \end_layout
 
@@ -26897,7 +26895,7 @@ Complete
 \end_layout
 
 \begin_layout Standard
-Das SIMPL-Event-Modell wurde daher so aufgebaut, das die Zustände 
+Das SIMPL-Event-Modell wurde daher so aufgebaut, dass die Zustände 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26930,7 +26928,7 @@ Executing
 \begin_inset Quotes erd
 \end_inset
 
- wird nicht expliziet dargestellt, statt dessen werden die einzelnen Vorgänge
+ wird nicht expliziet dargestellt, stattdessen werden die einzelnen Vorgänge,
  die zwischen 
 \begin_inset Quotes eld
 \end_inset
@@ -26947,7 +26945,7 @@ Complete
 \begin_inset Quotes erd
 \end_inset
 
- auftreten näher veranschaulicht.
+ auftreten, näher veranschaulicht.
  Der Zustand 
 \begin_inset Quotes eld
 \end_inset
@@ -26956,14 +26954,14 @@ Ready
 \begin_inset Quotes erd
 \end_inset
 
- stellt daher den Anfangszustand des SIMPL-Event-Modells da und der Zustand
+ stellt daher den Anfangszustand des SIMPL-Event-Modells da, und der Zustand
  "Complete" den Endzustand.
 \end_layout
 
 \begin_layout Standard
 Zur Vereinfachung wurden im SIMPL-Event-Modell nur die SIMPL-Events aufgeführt
  und keine der bestehenden ODE-Events.
- Das darauß resultierende Event Modell ist in Abbildung 
+ Das daraus resultierende Event Modell ist in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Event-Modell-des-Auditings"
@@ -26971,7 +26969,7 @@ reference "fig:Event-Modell-des-Auditings"
 \end_inset
 
  zu sehen.
- Dabei ist zu beachten, dass die Zustände die aus dem Modell in Abbildung
+ Dabei ist zu beachten, dass die Zustände, die aus dem Modell in Abbildung
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -26979,7 +26977,7 @@ reference "fig:BPEL-Event-Modell"
 
 \end_inset
 
- übernommen wurden in Rot dargestellt sind.
+ übernommen wurden, in Rot dargestellt sind.
 \end_layout
 
 \begin_layout Standard
@@ -27065,10 +27063,9 @@ Wie im SIMPL-Event-Modell zu sehen ist gibt es zwei neue Event Klassen.
  Dies sind die Event Klassen Connection_Events und DM_Events.
  Jede dieser beiden Event Klassen verfügt über eine Anzahl von einzelnen
  Events, die nachfolgend genauer erläutert werden.
- Es soll zukünftig, im Rahmen der Granularität möglich sein, dass diese
- neuen Event Klassen neben den bestehenden fünf Event Klassen, bei der Erstellun
-g eines Deployment Deskriptors aktiviert oder deaktiviert werden können.
- Es ist nicht vorgesehen dies im Rahm es Projekts umzusetzen.
+ Eine Mögliche Erweiterung ist das Aktivieren und Deaktivieren dieser Event
+ Klassen im Deployment Deskriptor, wie es auch bei den anderen Event Klassen
+ der Fall ist.
 \end_layout
 
 \begin_layout Paragraph
