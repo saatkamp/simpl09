@@ -282,11 +282,5 @@ public class UddiAction extends HttpServlet {
 		} else {
 			out.println("Not a valid action");
 		}
-
 	}
-
-	public void addPolicy(UddiDataSource datasource, String policyfile) {
-
-	}
-
 }
