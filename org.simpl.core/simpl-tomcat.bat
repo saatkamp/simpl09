@@ -19,12 +19,14 @@ REM   Arguments: C:\TOMCAT~1.0 C:\eclipse\workspace C:\SIMPL\deployment C:\SIMPL
 @echo off
 REM create directory structure in %3
 @echo on
+md "%3\conf"
 md "%3\webapps"
 md "%3\webapps\ode"
 md "%3\webapps\ode\WEB-INF"
 md "%3\webapps\ode\WEB-INF\conf"
 md "%3\webapps\ode\WEB-INF\lib"
 md "%3\webapps\ode\WEB-INF\servicejars"
+md "%3\webapps\ode\WEB-INF\services"
 
 @echo off
 REM copy all files to %3
@@ -36,12 +38,16 @@ copy "%1\webapps\ode\WEB-INF\lib\simpl-uddi-client.jar" "%3\webapps\ode\WEB-INF\
 copy "%1\webapps\ode\WEB-INF\lib\simpl-ode-extension.jar" "%3\webapps\ode\WEB-INF\lib"
 copy "%1\webapps\ode\WEB-INF\lib\tools.jar" "%3\webapps\ode\WEB-INF\lib"
 copy "%2\org.simpl.core\lib\*.*" "%3\webapps\ode\WEB-INF\lib"
-copy "%2\org.simpl.uddi.client\lib\*.*" "%3\webapps\ode\WEB-INF\lib"
 copy "%2\org.simpl.core\log4j.properties" "%3\"
 copy "%2\org.simpl.core\simpl-core-config.xml" "%3\webapps\ode\WEB-INF\conf"
 copy "%2\org.apache.ode.simpl.ea\ode-axis2.properties" "%3\webapps\ode\WEB-INF\conf"
 copy "%2\org.simpl.core\simpl-tomcat.txt" "%3\"
 copy "%1\webapps\ode\WEB-INF\conf\axis2.xml" "%3\webapps\ode\WEB-INF\conf"
+copy "%1\conf\tomcat-users.xml" "%3\conf"
+copy "%4\simpl-rrs.aar" "%3\webapps\ode\WEB-INF\services"
+copy "%4\simpl-rrs-transformation.aar" "%3\webapps\ode\WEB-INF\services"
+copy "%4\simpl-juddi-webinterface.war" "%3\webapps"
+REM copy "%4\SIMPL-~1\*.*" "%3\webapps"
 
 @echo off
 REM create simpl-tomcat.zip in %4
@@ -53,3 +59,4 @@ REM clean %3
 @echo on
 del "%3\*.*" /s /q
 rd "%3\webapps" /s /q
+rd "%3\conf" /s /q

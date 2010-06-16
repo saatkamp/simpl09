@@ -1,1 +1,14 @@
+= Content =
+- SIMPL Core
+- SIMPL Core Plugins
+- SIMPL ODE Extensions
+- SIMPL RRS
+- SIMPL RRS Transformation Service
+- SIMPL jUDDI Registry
+- SIMPL jUDDI Web Interface
+
+= Installation =
 Extract the simpl-tomcat.zip to the Tomcat root directory (/Tomcat x.x/).
+
+= Access =
+The user for Apache Tomcat and thus the jUDDI-Web-Interface is "admin", no password is set.
