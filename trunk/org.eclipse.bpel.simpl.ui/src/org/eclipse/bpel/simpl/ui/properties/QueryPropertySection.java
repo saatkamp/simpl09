@@ -363,7 +363,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			statementText.setText("");
 		}else {
 			// Setzen das Statement
-			statementText.setText(getStatement());
+			statementText.setText(activity.getDsStatement());
 		}
 
 //		statementText.addModifyListener(new ModifyListener() {
@@ -468,11 +468,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
 				saveStatementToModel();
 
@@ -480,6 +475,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				tabelsPopWindowBPELVariables.closeWindow();
 				tabelsPopWindowTables.setWindowIsOpen(false);
 				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
 			}
 		});
 		insertTable.setBackground(Display.getCurrent().getSystemColor(
@@ -619,11 +619,6 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
 				saveStatementToModel();
 
@@ -631,6 +626,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				tabelsPopWindowBPELVariables.closeWindow();
 				tabelsPopWindowTables.setWindowIsOpen(false);
 				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
 			}
 		});
 		
@@ -719,6 +719,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 		if (statementText != null && statement != null) {
 			statementText.setText(statement);
 			this.statement = statement;
+			//this.activity.setDsStatement(statement);
 		}
 	}
 

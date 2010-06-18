@@ -130,8 +130,14 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 		createWidgets(parent);
 
-		// Setzen das Statement
-		setStatement(activity.getDsStatement());
+		if (activity.getDsStatement() == null){
+			// Setzen das Statement
+			setStatement("");
+		}else {
+			// Setzen das Statement
+			setStatement(activity.getDsStatement());
+		}
+		
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Sprache
@@ -443,13 +449,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				setStatement(statementText.getText());
-				saveStatementToModel();
-
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+				widgetSelected(e);
 			}
 		});
 		insertTable.setBackground(Display.getCurrent().getSystemColor(
@@ -600,13 +600,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				setStatement(statementText.getText());
-				saveStatementToModel();
-
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+				widgetSelected(e);
 			}
 		});
 		

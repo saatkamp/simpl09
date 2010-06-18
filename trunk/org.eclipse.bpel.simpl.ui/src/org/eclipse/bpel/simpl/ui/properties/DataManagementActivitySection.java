@@ -402,13 +402,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				setStatement(statementText.getText());
-				saveStatementToModel();
-
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+				widgetSelected(e);
 			}
 		});
 		insertTable.setBackground(Display.getCurrent().getSystemColor(
@@ -559,13 +553,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				setStatement(statementText.getText());
-				saveStatementToModel();
-
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+				widgetSelected(e);
 			}
 		});
 		
@@ -666,6 +654,8 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		this.statement = statement;
 		if (statementText != null && statement != null) {
 			statementText.setText(statement);
+			this.statement = statement;
+			//this.activity.setDsStatement(statement);
 		}
 	}
 
