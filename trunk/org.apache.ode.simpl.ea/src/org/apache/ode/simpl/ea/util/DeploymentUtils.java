@@ -239,7 +239,11 @@ public class DeploymentUtils {
 						.getAttributeValue(AT_ATTACHED_UDDI_ADDRESS);
 						
 						// Read the auditing mode to set to the SIMPL Event Listener
-						AUDITING_MODE  = Boolean.valueOf(((Element) processElement).getChild(EL_AUDITING_MODE, DD_NAMESPACE).getText());
+						if (((Element) processElement).getChild(EL_AUDITING_MODE, DD_NAMESPACE) != null){
+							AUDITING_MODE = Boolean.valueOf(((Element) processElement).getChild(EL_AUDITING_MODE, DD_NAMESPACE).getText());
+						}else {
+							AUDITING_MODE = false;
+						}
 
 						List datasourceElements = processElement.getChildren(
 								EL_DATASOURCE, DD_NAMESPACE);
