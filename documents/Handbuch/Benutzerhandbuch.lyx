@@ -619,7 +619,7 @@ Erstellung der Anwendungsfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-15.06.2010
+14.06.2010
 \end_layout
 
 \end_inset
@@ -657,7 +657,7 @@ Beschreibung der Propertie Views
 \begin_inset Text
 
 \begin_layout Plain Layout
-14.06.2010
+15.06.2010
 \end_layout
 
 \end_inset
@@ -686,7 +686,7 @@ Beschreibung der Statement Editoren
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.5
 \end_layout
 
 \end_inset
@@ -695,7 +695,7 @@ Beschreibung der Statement Editoren
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+17.06.2010
 \end_layout
 
 \end_inset
@@ -704,7 +704,7 @@ Beschreibung der Statement Editoren
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+bruededl
 \end_layout
 
 \end_inset
@@ -872,7 +872,25 @@ eclipse.exe
 \end_layout
 
 \begin_layout Subsection
-Installation von Eclipse
+Installation der Komponenten und Konfiguration
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+macht Daniel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Neuinstallation
 \end_layout
 
 \begin_layout Standard
@@ -891,13 +909,24 @@ key "key-1"
 ).
 \end_layout
 
-\begin_layout Subsection
-Installation des BPEL Designers und SIMPL Eclipse Plug-In
+\begin_layout Paragraph
+Konfiguration einer vorhandenen Eclipse Entwicklungsumgebung
+\end_layout
+
+\begin_layout Subsubsection
+BPEL Designers und SIMPL Eclipse Plug-In
+\end_layout
+
+\begin_layout Paragraph
+Neuinstallation
 \end_layout
 
 \begin_layout Standard
-Der BPEL Designer ( genauer gesagt die auf SIMPL angepasste Version) und
- das SIMPL Eclipse Plug-In befinden sich in der Datei 
+Da der im Rahmenwerk beiligende BPEL Designer dem Rahmenwerk angepasst wurde,
+ ist die Neuinstallation des Eclipse BPEL Designers zwingend erforderlich
+ um die SIMPL Funktionen nutzen zu können.
+ Der BPEL Designer ( die auf SIMPL angepasste Version) und das SIMPL Eclipse
+ Plug-In befinden sich in der Datei 
 \begin_inset Quotes eld
 \end_inset
 
@@ -958,8 +987,22 @@ BPEL Designer und SIMPL Installationsdateien
 
 \end_layout
 
-\begin_layout Subsection
-Installation von Apache Tomcat 
+\begin_layout Subsubsection
+Apache Tomcat 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wer macht das ? Schneimi ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Neuinstallation
 \end_layout
 
 \begin_layout Enumerate
@@ -1031,8 +1074,42 @@ WEB-INF
  anlegen.
 \end_layout
 
-\begin_layout Subsection
-Installation von Apache ODE und SIMPL Komponenten
+\begin_layout Paragraph
+Konfiguration eines vorhandenen Apache Tomcat 
+\end_layout
+
+\begin_layout Subparagraph
+Axis2
+\end_layout
+
+\begin_layout Subparagraph
+JUDDI
+\end_layout
+
+\begin_layout Subparagraph
+RRS
+\end_layout
+
+\begin_layout Subparagraph
+RRS Transformation Service
+\end_layout
+
+\begin_layout Subsubsection
+Apache ODE 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wer macht das ? Rene ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Neuinstallation
 \end_layout
 
 \begin_layout Enumerate
@@ -1067,6 +1144,22 @@ lib
 \end_inset
 
  im Tomcat Installationsordnet kopiert werden.
+\end_layout
+
+\begin_layout Paragraph
+Konfiguration einer vorhandenen Apache ODE 
+\end_layout
+
+\begin_layout Subparagraph
+SIMPL Core
+\end_layout
+
+\begin_layout Subparagraph
+SIMPL Auditing
+\end_layout
+
+\begin_layout Subparagraph
+BPEL DM Extension Activities
 \end_layout
 
 \begin_layout Section
