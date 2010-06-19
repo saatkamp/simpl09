@@ -72,6 +72,7 @@ http://tomcat.apache.org/
 === 2. SIMPL Tomcat Bundle installieren ===
   * Herunterladen des *simpl-tomcat.zip* Archivs von http://code.google.com/p/simpl09/downloads/list.
   * Entpacken des SIMPL Tomcat Bundles in das Tomcat-Verzeichnis (z.B. C:\Tomcat\)
+  * Mit entpackte _readme.txt_ für weitere Anweisungen/Informationen lesen
 
 -> Tomcat starten
 
