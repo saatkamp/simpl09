@@ -137,8 +137,15 @@ public class UddiAction extends HttpServlet {
 												.getInputStream()));
 
 								rows = new ArrayList<String>();
+								String row = "";
 								while (in.ready()) {
-									rows.add(in.readLine());
+									row = in.readLine();
+									if (row.equals("") || row == null) {
+										
+									} else {
+										rows.add(row);
+
+									}
 								}
 							}
 						}
