@@ -165,7 +165,9 @@ public class UddiDataSource implements IUddiConfig {
 				value = reference.getKeyValue();
 			}
 		}
-
+		if (value == null) {
+			value = "";
+		}
 		return value;
 	}
 	
