@@ -15,6 +15,8 @@ String address = "";
 String username = "";
 
 String password = "";
+
+String dsAddress = "";
 	try {
 		UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
 
@@ -23,6 +25,8 @@ String password = "";
 		username = uddiWebConfig.getUsername();
 		
 		password = uddiWebConfig.getPassword();
+		
+		dsAddress = uddiWebConfig.getDsAddress();
 		
 	} catch (FileNotFoundException e) {
 		//Todo Config datei erstellen
@@ -57,10 +61,19 @@ String password = "";
 		<td><input name="password" type="password" value="<%=password%>"
 			size="100" /></td>
 	</tr>
+	
+	<tr>
+		<td><label>DataSourceService Address</label></td>
+
+		<td><input name="ds-vervice" type="text" value="<%=dsAddress%>"
+			size="100" /></td>
+	</tr>
 
 </table>
 
 
-<input type="submit" name="saveconfig" value="save" /></form>
+<input type="submit" name="saveconfig" value="save" />
+
+</form>
 
 </body>

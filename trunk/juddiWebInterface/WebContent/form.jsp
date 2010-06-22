@@ -5,7 +5,8 @@
 <%@page import="org.simpl.uddi.client.UddiDataSource"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="org.simpl.uddi.client.UddiDataSourceReader"%>
-<%@page import="org.simpl.uddi.UddiWebConfig"%><head>
+<%@page import="org.simpl.uddi.UddiWebConfig"%>
+<%@page import="org.simpl.uddi.UddiDataTypeReader"%><head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SIMPL jUDDI Web Interface</title>
 </head>
@@ -65,12 +66,36 @@
 		password = request.getParameter("password");
 		language = request.getParameter("language");
 		dataformat = request.getParameter("dataformat");
-		if (username == null || username == "null") {
+		if (username == null || username.equals("null")) {
 			username = "";
 		}
 		
-		if (password == null || password == "null") {
+		if (password == null || password.equals("null")) {
 			password = "";
+		}
+		
+		if (address == null || address.equals("null")) {
+			address = "";
+		}
+		
+		if (type == null || type.equals("null")) {
+			type = "";
+		}
+		
+		if (subtype == null || subtype.equals("null")) {
+			subtype = "";
+		}
+		
+		if (username == null || username.equals("null")) {
+			username = "";
+		}
+		
+		if (language == null || language.equals("null")) {
+			language = "";
+		}
+		
+		if (language == null || language.equals("null")) {
+			language = "";
 		}
 	}
 
@@ -97,21 +122,19 @@
 	<tr>
 		<td><label>Type</label></td>
 
-		<td><input name="type" type="text" value="<%=type%>" size="100" /></td>
+		<td><%=UddiDataTypeReader.getInstance().getTypesDropDown(type)%></td>
 	</tr>
 
 	<tr>
 		<td><label>Subtype</label></td>
 
-		<td><input name="subtype" type="text" value="<%=subtype%>"
-			size="100" /></td>
+		<td><%=UddiDataTypeReader.getInstance().getSubTypesDropDown(subtype) %></td>
 	</tr>
 	
 	<tr>
 		<td><label>Language</label></td>
 
-		<td><input name="language" type="text" value="<%=language%>"
-			size="100" /></td>
+		<td><%=UddiDataTypeReader.getInstance().getLanguagesDropDown(language) %></td>
 	</tr>
 	
 	

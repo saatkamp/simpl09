@@ -22,6 +22,8 @@ public class UddiWebConfig {
 	private String password = "";
 
 	private String username = "";
+	
+	private String dsAddress = "";
 
 	private UddiWebConfig() throws FileNotFoundException {
 
@@ -42,12 +44,16 @@ public class UddiWebConfig {
 			Element username = root.getChild("username");
 
 			Element password = root.getChild("password");
+			
+			Element dsAddress = root.getChild("ds-address");
 
 			this.address = address.getText();
 
 			this.username = username.getText();
 
 			this.password = password.getText();
+			
+			this.dsAddress = dsAddress.getText();
 
 		} catch (JDOMException e) {
 			// TODO Auto-generated catch block
@@ -57,6 +63,20 @@ public class UddiWebConfig {
 			e.printStackTrace();
 		}
 	}
+	
+	
+
+	public String getDsAddress() {
+		return dsAddress;
+	}
+
+
+
+	public void setDsAddress(String dsAddress) {
+		this.dsAddress = dsAddress;
+	}
+
+
 
 	public String getAddress() {
 		return this.address;
@@ -121,12 +141,18 @@ public class UddiWebConfig {
 				Element password = new Element("password");
 
 				password.setText(this.password);
+				
+				Element dsAddress = new Element("ds-address");
+
+				dsAddress.setText(this.dsAddress);
 
 				rootElement.addContent(address);
 
 				rootElement.addContent(username);
 
 				rootElement.addContent(password);
+				
+				rootElement.addContent(dsAddress);
 
 				doc.addContent(rootElement);
 
@@ -141,6 +167,8 @@ public class UddiWebConfig {
 				root.getChild("username").setText(getUsername());
 
 				root.getChild("password").setText(getPassword());
+				
+				root.getChild("ds-address").setText(getDsAddress());
 				
 			}
 
