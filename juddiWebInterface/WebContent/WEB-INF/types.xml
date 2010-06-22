@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simpl-types>
+<types>
+<element>Database</element>
+<element>Filesystem</element>
+</types>
+
+<subtypes>
+<element>MySQL</element>
+</subtypes>
+
+<languages>
+<element>SQL</element>
+</languages>
+
+<dataformats>
+<element>RDB</element>
+</dataformats>
+
+</simpl-types>
