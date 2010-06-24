@@ -102,8 +102,8 @@ public class UddiAction extends HttpServlet {
 		UddiDataWriter dataWriter = null;
 
 		if (isMultipart) {
-			// String message = FormValidator.validateForm(request);
 			String message = "";
+
 			if (message.equals("")) {
 				FileItemFactory factory = new DiskFileItemFactory();
 				ServletFileUpload upload = new ServletFileUpload(factory);
@@ -120,7 +120,7 @@ public class UddiAction extends HttpServlet {
 				while (itr.hasNext()) {
 					FileItem item = (FileItem) itr.next();
 					if (item.isFormField()) {
-						fields.put(item.getFieldName(), item.getString());										
+						fields.put(item.getFieldName(), item.getString());
 
 					} else {
 						fileItem = item;
@@ -138,7 +138,7 @@ public class UddiAction extends HttpServlet {
 								while (in.ready()) {
 									row = in.readLine();
 									if (row.equals("") || row == null) {
-										
+
 									} else {
 										rows.add(row);
 
@@ -151,80 +151,96 @@ public class UddiAction extends HttpServlet {
 				if (message.equals("")) {
 
 					UddiDataSource dataSource = new UddiDataSource(
-							"uddi:juddi.apache.org:simpl",
-							fields.get("key"));
+							"uddi:juddi.apache.org:simpl", fields.get("key"));
 					dataWriter = UddiDataWriter.getInstance(
-							config.getAddress(), config
-									.getUsername(), config
+							config.getAddress(), config.getUsername(), config
 									.getPassword());
-					dataSource.setName(fields.get("name"));
-					if (fields.get("address") != null && !fields.get("address").equals("")) {
-					dataSource.setAddress(fields.get("address"));
-					}
-					
-					if (fields.get("type") != null && !fields.get("type").equals("")) {
-					dataSource.addAttribute("type", fields.get("type"),
-							"uddi:juddi.apache.org:type");
-					}
-					
-					if (fields.get("subtype") != null && !fields.get("subtype").equals("")) {
-					dataSource.addAttribute("subtype", fields.get("subtype"),
-							"uddi:juddi.apache.org:subtype");
-					}
-					// dataSource.addAttribute("wspolicy",
-					// request.getParameter("policy"),
-					// "uddi:juddi.apache.org:wspolicy");
-					if (fields.get("username") != null && !fields.get("username").equals("")) {
-					dataSource.addAttribute("username", fields.get("username"),
-							"uddi:juddi.apache.org:username");
-					}
-					
-					if (fields.get("password") != null && !fields.get("password").equals("")) {
-					dataSource.addAttribute("password", fields.get("password"),
-							"uddi:juddi.apache.org:password");
-					}
-					
-					if (fields.get("language") != null && !fields.get("language").equals("")) {
-					dataSource.addAttribute("language", fields.get("language"),
-							"uddi:juddi.apache.org:language");
-					}
-					if (fields.get("dataformat") != null && !fields.get("dataformat").equals("")) {
-						dataSource.addAttribute("dataformat",
-								fields.get("dataformat"),
-								"uddi:juddi.apache.org:dataformat");
-					}
-					
-					
-					if (rows != null) {
-						dataSource.addAttribute("wspolicysize", Integer.toString(rows.size()), "uddi:juddi.apache.org:policysize");
-						for (int i = 0; i < rows.size(); i++) {
-							dataSource.addAttribute("wspolicy"+i, rows.get(i), "uddi:juddi.apache.org:wspolicy");
-						}
-					}
-					
-					
-					if (dataWriter.writeDatasource(dataSource) == true) {
-						 String nextJSP =
-						 "/list.jsp?message="+"New datasource added successfully";
-						
+					if (!fields.get("name").equals("")) {
 
-						RequestDispatcher dispatcher = getServletContext()
-								.getRequestDispatcher(nextJSP);
-						dispatcher.forward(request, response);
+						dataSource.setName(fields.get("name"));
+
+						if (fields.get("address") != null
+								&& !fields.get("address").equals("")) {
+							dataSource.setAddress(fields.get("address"));
+						}
+
+						if (fields.get("type") != null
+								&& !fields.get("type").equals("")) {
+							dataSource.addAttribute("type", fields.get("type"),
+									"uddi:juddi.apache.org:type");
+						}
+
+						if (fields.get("subtype") != null
+								&& !fields.get("subtype").equals("")) {
+							dataSource.addAttribute("subtype", fields
+									.get("subtype"),
+									"uddi:juddi.apache.org:subtype");
+						}
+						// dataSource.addAttribute("wspolicy",
+						// request.getParameter("policy"),
+						// "uddi:juddi.apache.org:wspolicy");
+						if (fields.get("username") != null
+								&& !fields.get("username").equals("")) {
+							dataSource.addAttribute("username", fields
+									.get("username"),
+									"uddi:juddi.apache.org:username");
+						}
+
+						if (fields.get("password") != null
+								&& !fields.get("password").equals("")) {
+							dataSource.addAttribute("password", fields
+									.get("password"),
+									"uddi:juddi.apache.org:password");
+						}
+
+						if (fields.get("language") != null
+								&& !fields.get("language").equals("")) {
+							dataSource.addAttribute("language", fields
+									.get("language"),
+									"uddi:juddi.apache.org:language");
+						}
+						if (fields.get("dataformat") != null
+								&& !fields.get("dataformat").equals("")) {
+							dataSource.addAttribute("dataformat", fields
+									.get("dataformat"),
+									"uddi:juddi.apache.org:dataformat");
+						}
+
+						if (rows != null) {
+							dataSource.addAttribute("wspolicysize", Integer
+									.toString(rows.size()),
+									"uddi:juddi.apache.org:policysize");
+							for (int i = 0; i < rows.size(); i++) {
+								dataSource.addAttribute("wspolicy" + i, rows
+										.get(i),
+										"uddi:juddi.apache.org:wspolicy");
+							}
+						}
+
+						if (dataWriter.writeDatasource(dataSource) == true) {
+							String nextJSP = "/list.jsp?message="
+									+ "New datasource added successfully";
+
+							RequestDispatcher dispatcher = getServletContext()
+									.getRequestDispatcher(nextJSP);
+							dispatcher.forward(request, response);
+						} else {
+							String nextJSP = "/list.jsp?message="
+									+ "Error: The UDDI registry is not available";
+							RequestDispatcher dispatcher = getServletContext()
+									.getRequestDispatcher(nextJSP);
+							dispatcher.forward(request, response);
+						}
+
 					} else {
-						String nextJSP = "/list.jsp?message="
-								+ "Error: The UDDI registry is not available";
+						String nextJSP = "/form.jsp?message=" + "Field name must not be Empty";
 						RequestDispatcher dispatcher = getServletContext()
 								.getRequestDispatcher(nextJSP);
 						dispatcher.forward(request, response);
 					}
 
 				} else {
-					String nextJSP = "/form.jsp?message="
-							+ message;
-					RequestDispatcher dispatcher = getServletContext()
-							.getRequestDispatcher(nextJSP);
-					dispatcher.forward(request, response);
+					
 
 				}
 
@@ -276,11 +292,9 @@ public class UddiAction extends HttpServlet {
 			config.setUsername(request.getParameter("username"));
 
 			config.setPassword(request.getParameter("password"));
-			
-			if (!config.getDsAddress().equals(request.getParameter("ds-address"))) {
-				UddiDataTypeReader.refresh();
-			}
-			
+
+			UddiDataTypeReader.refresh();
+
 			config.setDsAddress(request.getParameter("ds-address"));
 
 			config.writeConfig();
@@ -307,7 +321,7 @@ public class UddiAction extends HttpServlet {
 						.getRequestDispatcher(nextJSP);
 				dispatcher.forward(request, response);
 			}
-			
+
 		} else if (checkUddi != null) {
 			Transport transport = new JAXWSTransport("default");
 
@@ -330,7 +344,7 @@ public class UddiAction extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext()
 						.getRequestDispatcher(nextJSP);
 				dispatcher.forward(request, response);
-			}			
+			}
 
 		} else {
 			out.println("Not a valid action");
