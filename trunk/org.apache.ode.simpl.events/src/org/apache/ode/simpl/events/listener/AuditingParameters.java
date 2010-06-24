@@ -68,9 +68,9 @@ public class AuditingParameters {
 
 			this.dataSource = data;
 
-			if (dataSource.getSubType().equals("EmbeddedDerby")) {
+			if (dataSource.getSubType().equals("EmbeddedDerby") || dataSource.getSubType().equals("Derby")) {
 				int_type = "BIGINT";
-				varchar_type = "VARCHAR";
+				varchar_type = "VARCHAR(1024)";
 			} else if (dataSource.getSubType().equals("MySQL")) {
 				int_type = "BIGINT(11)";
 				varchar_type = "VARCHAR(1024)";

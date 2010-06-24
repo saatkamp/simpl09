@@ -34,7 +34,7 @@ public class EventWriter {
 		tableObject.set("catalog", "");
 		//TODO: Das Schema sollte von Außen angegeben werden können...
 		//Weiterhin kann bei der DB2 nicht einfach irgendein nicht existierendes Schema als default genutzt werden
-		tableObject.set("schema", "");
+		tableObject.set("schema", "SIMPL_AUDITING");
 		
 		tableObject.set("primaryKey", primaryKeys);
 		
