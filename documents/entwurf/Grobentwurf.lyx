@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Grobentwurf}
-\def\docvers{2.0}
+\def\docvers{2.1}
 \def\docautor{Michael Schneidt}
-\def\docdate{14. Juni 2010}
+\def\docdate{28. Juni 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="18" columns="4">
+<lyxtabular version="3" rows="19" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1130,7 +1130,7 @@ Kapitel 3.2.2 und 3.2.3 überarbeitet
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1139,7 +1139,7 @@ Kapitel 3.2.2 und 3.2.3 überarbeitet
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1148,7 +1148,7 @@ Kapitel 3.2.2 und 3.2.3 überarbeitet
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1157,7 +1157,7 @@ schneimi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1180,6 +1180,51 @@ reference "sec:Architektur"
 
 \begin_layout Plain Layout
 (100222-Grobentwurf-v03-comments_PR_MS.pdf)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.06.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Komponenten"
+
+\end_inset
+
+ Einleitung überarbeitet (100222-Grobentwurf-v03-comments_PR_MS.pdf)
 \end_layout
 
 \end_inset
@@ -1837,7 +1882,8 @@ Die Entwicklungsumgebung Eclipse bildet mit den SIMPL Eclipse Plug-Ins sowohl
  BPEL Prozesse erstellen und auf Apache ODE zum Einsatz bringen (deployen).
  Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse
  BPEL Designer Plug-Ins um die DM-Aktivitäten über einen vorhandenen Extension
- Point erweitert.
+ Point erweitert und um weitere Modellierungshilfen wie z.B.
+ Statement-Editoren und die Bereistellung von Datenquellen-Metadaten erweitert.
  Das SIMPL Core Plug-In stellt das SIMPL Eclipse-Menü und die GUI der Admin-Kons
 ole für den Workflow-Administrator (siehe 
 \begin_inset CommandInset citation
@@ -1944,9 +1990,9 @@ reference "sub:Auditing-von-Prozessen"
 ) wird über die SIMPL Auditing Erweiterung in der Workflow Engine realisiert,
  die alle relevanten anfallenden Daten von der Workflow Engine an den SIMPL
  Core weiterleitet, über den die Daten in einer Auditing Datenbank (Apache
- ODE Auditing) gespeichert werden können.
- Einstellungen zur Laufzeit wie das Ein- und Ausschalten des Auditing werden
- über den SIMPL Core an Apache ODE vorgenommen.
+ ODE Auditing) gespeichert werden.
+ Das Ein- und Ausschalten des Auditings zur Laufzeit, wird vom SIMPL Core
+ direkt über die SIMPL Auditing Erweiterung vorgenommen.
 \end_layout
 
 \begin_layout Subsection
@@ -1979,7 +2025,10 @@ key "key-7"
  unterstützen.
  Die Registry wird zur Laufzeit vom SIMPL Core für das Auffinden einer Datenquel
 le beim Late Binding verwendet, sowie vom UDDI Plug-In um die Datenquellen
- in Eclipse bereitzustellen.
+ in Eclipse bereitzustellen und von Apache ODE um die bei der Modellierung
+ verwendeten logischen Deskriptoren wie z.B.
+ Namen von Datenquellen zu einer Datenbankaddresse aufzulösen, mit der über
+ den SIMPL Core dann darauf zugegriffen werden kann.
 \end_layout
 
 \begin_layout Standard
@@ -2012,21 +2061,35 @@ ten gezeigt, die in den folgenden Abschnitten näher beschrieben werden.
  Die Richtung der Pfeile zu den Komponenten beschreibt die Richtung, in
  der die Zugriffe stattfinden, der Datenfluß dabei wird durch gestrichelten
  Pfeile verdeutlicht.
- Der SIMPL Core greift für das Late Binding auf die Registry Apache jUDDI
- zu, um eine passende Datenquelle zu finden.
- Für Einstellungen zur Laufzeit, wie z.B.
- das An- und Ausschalten des Auditing, muss vom SIMPL Core direkt auf Apache
- ODE zugegriffen werden.
+ 
+\end_layout
+
+\begin_layout Standard
+Eclipse greift auf die Registry Apache jUDDI zu, um die zur Verfügung stehenden
+ Datenquellen abzurufen und für die Modellierung zur Verfügung zu stellen.
+ Der SIMLCore greift ebenfalls auf Apache jUDDI zu, um beim Late Binding
+ eine passende Datenquelle zu finden.
+ Die bei der Modellierung verwendeten logischen Deskriptoren von Datenquellen
+ werden von Apache ODE zur Laufzeit über Apache jUDDI aufgelöst.
+ Eclipse bietet die Möglichkeit, den SIMPL Core über eine GUI (Admin-Konsole)
+ zu administrieren, Einstellungen werden im SIMPL Core gespeichert und von
+ dort wieder geladen.
+ Zusätzlich können vom SIMPL Core Metadaten von den Datenquellen abgerufen
+ werden, die in Eclipse zur Modellierung verwendet werden können.
+\end_layout
+
+\begin_layout Standard
+Für Einstellungen zur Laufzeit, wie das An- und Ausschalten des Auditings,
+ muss vom SIMPL Core direkt auf Apache ODE zugegriffen werden.
  Apache ODE verwendet den SIMPL Core für die Ausführung der DM-Aktivitäten
- und verwendet das RRS um Referenzen aufzulösen.
- Eclipse bietet die Möglichkeit, den SIMPL Core über eine GUI zu administrieren,
- Einstellungen werden im SIMPL Core gespeichert und von dort geladen.
- Vor dem Deployment eines modellierten Prozesses, wird zunächst eine Modelltrans
-formation durchgeführt und der Prozess anschließend in Apache ODE deployt.
+ und für die Speicherung der Auditing Daten, sowie das RRS, um Referenzen
+ zur Laufzeit aufzulösen.
  Die Referenzen des RRS werden ebenfalls über eine GUI in Eclipse verwaltet
- und vom RRS gespeichert.
- Datenquellen, die bei der Prozessmodellierung zur Auswahl stehen, werden
- über die Registry Apache jUDDI abgerufen.
+ und innerhalb des RRS gespeichert.
+ Mit Hilfe des RRS Transformation Service kann in Eclipse ggf.
+ eine Modelltransformation durchgeführt werden, bevor ein Prozess in Apache
+ ODE deployt wird.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2073,7 +2136,7 @@ Komponenten des SIMPL Rahmenwerks
 \begin_layout Subsection
 Eclipse
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 - Erweiterung der Anfragesprachen (
@@ -2095,6 +2158,16 @@ reference "sub:Erweiterbarkeit"
 \begin_layout Plain Layout
 - IPVS-Referenzen werden evtl.
  im Deployment Descriptor erstellt und beim Deployment aufgelöst
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abbildung 2 hat sich geändert, muss im Text noch überarbeitet werden.
 \end_layout
 
 \end_inset
@@ -2423,7 +2496,7 @@ View
 \begin_layout Subsection
 Apache ODE
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 - Alles was dazu im Schaubild zu sehen ist, muss beschrieben werden
@@ -2459,6 +2532,16 @@ Das ManagementAPI von Apache ODE bietet Funktionen auf Prozess- und auf
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abbildung 2 hat sich geändert, muss im Text noch überarbeitet werden
 \end_layout
 
 \end_inset
@@ -2934,16 +3017,13 @@ reference "fig:SIMPL-Core"
 \end_inset
 
 , stellt die Funktionalität zur Verfügung, die während der Prozessmodellierung
- mit DM-Aktivitäten und der Ausführung über die Extension Activities, benötigt
- wird.
- Er bietet nach außen verschiedene Web Services, die jeweils bestimmte Aufgaben
- innerhalb des SIMPL Rahmenwerks übernehmen.
- Der SIMPL Core wird als JAR-Datei im Classpath von Apache ODE hinterlegt,
+ mit DM-Aktivitäten und der Ausführung dieser über Extension Activities
+ benötigt wird.
+ Er bietet nach außen verschiedene Web Services an, die jeweils bestimmte
+ Aufgaben innerhalb des SIMPL Rahmenwerks übernehmen.
+ Der SIMPL Core wird zudem als JAR-Datei im Classpath von Apache ODE hinterlegt,
  dadurch wird eine schnelle direkte Kommunikation zwischen dem SIMPL Core
  und Apache ODE ermöglicht.
- Des Weiteren kann der SIMPL Core als Singleton betrieben werden, und es
- können damit z.B.
- Verbindungen zu Datenquellen für Folgezugriffe aufrecht gehalten werden.
  Die Web Services des SIMPL Cores werden dabei innerhalb der Axis2 Installation
  von Apache ODE bereitgestellt und zusätzlich mit der Java API JAX-WS annotiert,
  damit ein Einsatz auch mit anderen Web Containern außer Apache Tomcat möglich
@@ -2955,6 +3035,9 @@ reference "sub:Verwendbarkeit"
 \end_inset
 
 ).
+ Des Weiteren kann der SIMPL Core als Singleton betrieben werden, und es
+ können damit z.B.
+ Verbindungen zu Datenquellen für Folgezugriffe aufrecht gehalten werden.
  
 \end_layout
 
@@ -2969,6 +3052,16 @@ reference "sec:Schnittstellen"
 \end_inset
 
  weiter ausgeführt.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Web Service Schnittstellen in die Beschreibungen der Services nennen
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
