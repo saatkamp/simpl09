@@ -2552,9 +2552,10 @@ Abbildung 2 hat sich geändert, muss im Text noch überarbeitet werden
 \begin_layout Standard
 Hier werden der Aufbau und die einzelnen Bestandteile von ODE, die für das
  SIMPL Rahmenwerk von Bedeutung sind, erläutert.
- Zunächst wird eine kurz Beschreibung über den derzeitigen Zustand von ODE
- geboten.
- Im Anschluss folgt eine Beschreibung der Erweiterungen, die notwendig sind.
+ Zunächst wird eine kurze Beschreibung über den derzeitigen Zustand von
+ ODE geboten.
+ Im Anschluss folgt eine Beschreibung der Erweiterungen, die für die Ausführung
+ der DM-Aktivitäten notwendig sind.
  In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2621,10 +2622,10 @@ ProcessManagement und InstanceManagement (Management API)
 \end_layout
 
 \begin_layout Standard
-Die Management API von Apache ODE bietet Funktionen auf Prozessmodell und
+Die Management API von Apache ODE bietet Funktionen auf Prozessmodell, und
  auf Prozessinstanzebene an.
  Dadurch können z.B.
- bestimmte Nachrichten an Prozessemodelle geschickt werden um deren Ausführung
+ bestimmte Nachrichten an Prozesse geschickt werden um deren Ausführung
  zu starten oder zu beenden und es können Informationen zu den einzelnen
  Prozessinstanzen abgerufen werden.
 \end_layout
@@ -2632,7 +2633,7 @@ Die Management API von Apache ODE bietet Funktionen auf Prozessmodell und
 \begin_layout Standard
 Die Management API unterteilt sich in Instanz-Management und Prozess-Management.
  Beide bieten verschiedene Funktionen für Prozessinstanzen bzw.
- Prozessemodelle an.
+ Prozessmodelle an.
  Es besteht auf der einen Seite die Möglichkeit, verschiedene Informationen
  über die Prozessemodelle und Prozessinstanzen zu erhalten, zum Beispiel
  eine Liste der verschiedene Prozessmodelle oder Informationen über ein
@@ -2651,9 +2652,6 @@ DeploymentService
 Der Deployment Service bietet verschiedene Funktionen für das Deployment
  von Prozessen an.
  Dazu gehören Deploy- und Undeploy-Funktionen.
- In den nächsten Iterationen kommen noch weitere Punkte hinzu, die das Deploymen
-t betreffen.
- 
 \end_layout
 
 \begin_layout Subsubsection
@@ -2670,8 +2668,8 @@ Plug-In Architektur
 
 \begin_layout Standard
 ODE verfügt über eine Plug-In-Architektur, mit der es unter anderem möglich
- ist, Extension Activities zu erstellen, die die Standardaktivitäten von
- BPEL erweitern.
+ ist, Extension Activities zu erstellen, die BPEL um zusätzliche Aktivitäten
+ erweitern.
  Dazu werden spezielle Interfaces zur Verfügung gestellt.
  Dabei handelt es sich um 
 \begin_inset Quotes eld
@@ -2696,8 +2694,8 @@ AbstractAsyncExtensionOperation
 WEB-INF
 \backslash
 lib).
- Anschließend ist es nur noch notwendig die Extension in der ODE Engine
- zu registieren.
+ Anschließend ist es nur noch notwendig, die Extension in der ODE Engine
+ zu registrieren.
  Dies geschieht in der ode-axis2.PROPERTIES Datei.
 \end_layout
 
@@ -2805,7 +2803,7 @@ BPEL-Event
 \begin_inset Quotes eld
 \end_inset
 
-ActivityEvent
+Activity Life Cycle Events
 \begin_inset Quotes erd
 \end_inset
 
@@ -2813,7 +2811,7 @@ ActivityEvent
 \begin_inset Quotes eld
 \end_inset
 
-ScopeEvent
+Scope Handling Event
 \begin_inset Quotes erd
 \end_inset
 
@@ -2822,15 +2820,15 @@ ScopeEvent
 \begin_inset Quotes eld
 \end_inset
 
-Scope Event
+Scope Handling Events
 \begin_inset Quotes erd
 \end_inset
 
- wiederum ist eine Unterklasse von 
+ wiederum sind eine Unterklasse von 
 \begin_inset Quotes eld
 \end_inset
 
-ProcessInstanzEvent
+Instanz Life Cycle Events
 \begin_inset Quotes erd
 \end_inset
 
@@ -2843,6 +2841,16 @@ BPELEvent
 \end_inset
 
  sind.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+BPELEvent
+\begin_inset Quotes erd
+\end_inset
+
+ handelt es sich um die Vaterklasse, von der alle anderen Events innerhalb
+ der Hierarchie abgeleitet werden.
 \end_layout
 
 \begin_layout Paragraph
@@ -2909,24 +2917,40 @@ Extension Activity
 \end_inset
 
  realisiert.
- 
-\end_layout
-
-\begin_layout Standard
-Extension Acitivities für die Apache ODE Workflow Engine werden als Java
+ Extension Acitivities für die Apache ODE Workflow Engine werden als Java
  Klassen erstellt, welche die Implementierung der neuen Aktivitäten enthalten.
  Weiterhin ist es notwendig, die unter Plug-in Architektur genannten Interfaces
- zu implementieren.
+ zu implementieren (
+\begin_inset Quotes eld
+\end_inset
+
+AbstractAsyncExtensionOperation
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+AbstractSyncExtensionOperation
+\begin_inset Quotes erd
+\end_inset
+
+).
  Bei der Ausführung der DM-Aktivitäten wird der SIMPL Core genutzt, um die
  Datenmanagement-Operationen zur Verarbeitung an die jeweilige Datenquelle
  zu schicken.
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Note Note
+status collapsed
+
 \begin_layout Paragraph
 SIMPL Events
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Für das Auditing der DM-Aktivitäten ist es notwendig, dass eine Reihe von
  eigenen Events erstellt wird.
  Dies geschieht durch Erstellung neuer Event-Klassen, die von den bestehenden
@@ -2971,7 +2995,7 @@ ConnectionLost
 ConnectionEnd
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Bei der Implementierung werden DM-Events und Connection-Events jeweils als
  ein neuer Event-Typ implementiert und die einzelnen spezifischen Events
  werden von diesen abgeleitet.
@@ -2981,6 +3005,11 @@ Bei der Implementierung werden DM-Events und Connection-Events jeweils als
  hier auch ausgelöst.
  Es ist nicht vorgesehen, diese Events an einer anderen Stelle in ODE zu
  nutzen.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -3362,8 +3391,8 @@ Reference Resolution System (RRS)
 \end_layout
 
 \begin_layout Standard
-Das RRS erfüllt die Anforderung, große Datenmengen in BPEL referenzieren
- zu können (siehe Anforderung 
+Mit Hilfe des RRS wird das Referenzieren von großen Datenmengen in BPEL
+ ermöglicht (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Große-Datenmengen"
@@ -3434,8 +3463,8 @@ RRS Retrieval Service
 \end_layout
 
 \begin_layout Standard
-Über den RRS Service lassen sich Referenzen auflösen und die referenzierten
- Daten bei Bedarf von der Workflow Engine in einen Prozess holen.
+Über den RRS Retrieval Service lassen sich Referenzen auflösen und die referenzi
+erten Daten bei Bedarf von der Workflow Engine in einen Prozess holen.
  
 \end_layout
 
@@ -3444,8 +3473,8 @@ Datasource Adapter
 \end_layout
 
 \begin_layout Standard
-Das RRS bietet über Datasource Adapter eine erweiterbare Möglichkeit verschieden
-ste Datenquellen anzubinden und darüber auch mit dem RRS Retrieval Service
+Das RRS bietet über Datasource Adapter eine erweiterbare Möglichkeit, verschiede
+nste Datenquellen anzubinden und darüber auch mit dem RRS Retrieval Service
  und RRS Management Service Referenzen und referenzierte Daten zu verwalten.
 \end_layout
 
@@ -3618,7 +3647,7 @@ RRS
 
 \begin_layout Standard
 In den folgenden Abschnitten werden die Schnittstellen des RRS beschrieben
- (siehe 
+ (siehe Seite 19 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Reference-Resolution-System"
@@ -3653,7 +3682,8 @@ RRSManagementService
 
 \begin_layout Standard
 Diese Schnittstelle bietet Funktionen zum Speichern, Löschen und Ändern
- von Referenzen in Form von EPRs.
+ von Referenzen an und gibt im Falle eines Fehlers eine entsprechende Rückmeldun
+g die darüber informiert was den Fehler verursacht hat.
 \end_layout
 
 \begin_layout Standard
