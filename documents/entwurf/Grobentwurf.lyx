@@ -2713,10 +2713,10 @@ Instance Life Cycle Events
 
 \begin_deeper
 \begin_layout Itemize
-Diese Events sind für alle Ereignisse die während der Ausführung einer Prozessin
-stanz auftreten können zuständig.
- Beispielsweise das Starten der Ausführung oder das Terminieren einer Prozessins
-tanz
+Diese Events sind für alle Ereignisse zuständig, die während der Ausführung
+ einer Prozessinstanz auftreten können.
+ Dies sind beispielsweise das Starten der Ausführung einer Prozessinstanz
+ oder das Terminieren einer Prozessinstanz
 \end_layout
 
 \end_deeper
@@ -2726,10 +2726,10 @@ Activity Life Cycle Events
 
 \begin_deeper
 \begin_layout Itemize
-Diese Events sind für alle Ereignisse die während der Ausführung von Aktivitäten
- auftreten können zuständig.
- Beispielsweise das Starten der Ausführung einer Aktivität oder Rückmeldungen
- über das Fehlschlagen einer Aktivität.
+Diese Events sind für alle Ereignisse zuständig, die während der Ausführung
+ von Aktivitäten auftreten können.
+ Dies sind beispielsweise das Starten der Ausführung einer Aktivität oder
+ Rückmeldungen über das Fehlschlagen einer Aktivität.
 \end_layout
 
 \end_deeper
@@ -2739,10 +2739,10 @@ Scope Handling Events
 
 \begin_deeper
 \begin_layout Itemize
-Diese Events sind für alle Ereignisse die während der Ausführung von Scopes
- auftreten können zuständig.
- Beispielsweise das Registrieren von Compensation Handlern für eine Scope
- und Rückmeldungen über das Fehler in einem Scope.
+Diese Events sind für alle Ereignisse zuständig, die während der Ausführung
+ von Scopes auftreten können.
+ Dies sind peispielsweise das Registrieren von Compensation Handlern für
+ einen Scope und Rückmeldungen über Fehler in einem Scope.
 \end_layout
 
 \end_deeper
@@ -2764,7 +2764,24 @@ Correlation Events
 
 \begin_deeper
 \begin_layout Itemize
-Diese Events sind für Ereignisse Correlations betreffend zuständig.
+Diese Events sind für Ereignisse 
+\begin_inset Quotes eld
+\end_inset
+
+Correlation sets
+\begin_inset Quotes erd
+\end_inset
+
+ betreffend zuständig.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Correlation sets
+\begin_inset Quotes erd
+\end_inset
+
+ sind dabei Partner die Nachrichten untereinander austauschen.
  Hier gibt es nur die Events 
 \begin_inset Quotes eld
 \end_inset
@@ -2782,6 +2799,31 @@ Correlation no match
 \end_inset
 
 .
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Correlation match
+\begin_inset Quotes erd
+\end_inset
+
+ wird ausgelöst wenn das 
+\begin_inset Quotes eld
+\end_inset
+
+Correlation set
+\begin_inset Quotes erd
+\end_inset
+
+ für das die Nachricht bestimmt ist gefunden wurde und 
+\begin_inset Quotes eld
+\end_inset
+
+Correlation no match
+\begin_inset Quotes erd
+\end_inset
+
+, falls es nicht gefunden wurde.
 \end_layout
 
 \end_deeper
@@ -2868,7 +2910,7 @@ Das DAO ist für die persistente Datenhaltung aller Daten, die innerhalb
 Daten auf eine externe Datenbank umzuleiten.
  Es existiert zum Beispiel die Möglichkeit eine MySQL Datenbank zu nutzen.
  Dies ist jedoch nur über die ODE-Config-Dateien möglich und wird erst nach
- dem Neustart von Tomcat übernommen.
+ dem Neustart von ODE übernommen.
  Mit dem SIMPL DAO ist es möglich die Auditing-Daten, auch wärend der Laufzeit
  des Prozesses auf eine andere Datenbank umzuleiten.
  Näheres zum SIMPL DAO siehe (
@@ -2886,7 +2928,7 @@ Embedded Auditing Datenbank
 \end_layout
 
 \begin_layout Standard
-Die Embedded Auditing Datenbank, ist eine Apache Derby Datenbank und wird
+Die Embedded Auditing Datenbank ist eine Apache Derby Datenbank und wird
  als Standard bei Apache-Ode mitgeliefert.
  Die Auditingdaten, die ODE erzeugt, werden dort standardmäßig gespeichert.
  
@@ -2942,7 +2984,7 @@ AbstractSyncExtensionOperation
  zu schicken.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -3673,7 +3715,8 @@ RRSRetrievalService
 Die RRSRetrievalService-Schnittstelle bietet eine Funktion, mit der Referenzen
  aufgelöst werden können.
  Dazu wird eine Endpoint Reference (EPR) übergeben und der damit verbundene
- Wert aus einer Datenquelle ausgelesen und als SDO zurückgeliefert.
+ Wert aus einer Datenquelle ausgelesen und anschließend wird eine SOAP Nachricht
+ zurückgeschickt in der die entsprechenden Daten stehen.
 \end_layout
 
 \begin_layout Subsubsection
