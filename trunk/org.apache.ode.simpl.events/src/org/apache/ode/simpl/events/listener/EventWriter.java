@@ -86,7 +86,7 @@ public class EventWriter {
 		
 		try {
 			SIMPLCore.getInstance().dataSourceService().writeData(AuditingParameters.getInstance().getDataSource(),
-					dataObject, "auditing_table");
+					dataObject, "AUDITING_TABLE");
 		} catch (ConnectionException e) {
 			e.printStackTrace();
 		}

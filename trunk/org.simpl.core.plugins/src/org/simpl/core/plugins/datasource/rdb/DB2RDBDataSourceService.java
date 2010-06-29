@@ -377,6 +377,7 @@ public class DB2RDBDataSourceService extends
       List<DataObject> columns = null;
       List<String> primaryKeys = null;
       String createTargetStatement = null;
+      String constraint = "";
 
       // build a create statement
       for (DataObject table : tables) {
@@ -387,8 +388,14 @@ public class DB2RDBDataSourceService extends
 
         // create table with columns
         for (DataObject column : columns) {
+          if (primaryKeys.contains(column.getString("name"))){
+        	  constraint = "NOT NULL";
+          }else {
+        	  constraint = "";
+          }
           createTargetStatement += column.getString("name") + " "
-              + column.getString("type") + ",";
+              + column.getString("type") + " "
+              + constraint + ",";
         }
 
         // add primary keys
