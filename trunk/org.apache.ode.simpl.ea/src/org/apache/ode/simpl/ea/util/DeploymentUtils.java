@@ -400,6 +400,7 @@ public class DeploymentUtils {
 		result.setAddress(staticDs.getAddress());
 		result.setType(staticDs.getType());
 		result.setSubType(staticDs.getSubType());
+		result.setDataFormat(staticDs.getDataFormat());
 		result.setAuthentication(staticDs.getAuthentication());
 		result.setLateBinding(lateBindingDs.getLateBinding());
 
