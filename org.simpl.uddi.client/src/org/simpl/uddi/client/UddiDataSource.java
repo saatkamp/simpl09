@@ -175,7 +175,7 @@ public class UddiDataSource implements IUddiConfig {
 		int anzahl = Integer.parseInt(getAttributeValue("wspolicysize"));
 		String policy = "";
 		for (int i = 0; i < anzahl; i++) {
-			policy = policy + getAttributeValue("wspolicy"+i);
+			policy = policy + getAttributeValue("wspolicy"+i)+ " ";
 		}
 		
 		return policy;
