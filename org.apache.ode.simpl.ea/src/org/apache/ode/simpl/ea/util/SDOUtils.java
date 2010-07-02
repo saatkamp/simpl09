@@ -1,15 +1,11 @@
 package org.apache.ode.simpl.ea.util;
 
 import java.io.IOException;
-import java.io.StringReader;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.log4j.Logger;
-import org.w3c.dom.Document;
+import org.apache.ode.utils.DOMUtils;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import commonj.sdo.DataObject;
@@ -37,30 +33,18 @@ public class SDOUtils {
 			logger.debug("DataObject XML: " + doc);
 		}
 		
-		DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
-		Document document;
-		try {
-			document = f.newDocumentBuilder().parse(new InputSource(new StringReader(doc)));
-			
-			if (logger.isDebugEnabled()) {
-				logger.debug("Document XML: " + document.toString());
-			}
-			
-			return document;
+        Element node = null;
+        
+        try {
+			node = DOMUtils.stringToDOM(doc);
 		} catch (SAXException e) {
-			if (logger.isDebugEnabled()) {
-				logger.debug("SAXException: ", e);
-			}
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
-			if (logger.isDebugEnabled()) {
-				logger.debug("IOException: ", e);
-			}
-		} catch (ParserConfigurationException e) {
-			if (logger.isDebugEnabled()) {
-				logger.debug("ParserConfigurationException: ", e);
-			}
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		return null;
+        
+        return node;
 	}
 }
