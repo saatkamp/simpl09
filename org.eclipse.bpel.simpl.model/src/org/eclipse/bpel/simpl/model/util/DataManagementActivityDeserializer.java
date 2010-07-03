@@ -380,7 +380,7 @@ public class DataManagementActivityDeserializer implements
 				.getLocalPart())) {
 
 			String attTargetContainer = ModelPackage.eINSTANCE
-					.getDataManagementActivity_DsStatement().getName();
+					.getTransferActivity_TargetDsContainer().getName();
 			String attTargetKind = ModelPackage.eINSTANCE
 					.getDataManagementActivity_DsKind().getName();
 			String attTargetType = ModelPackage.eINSTANCE

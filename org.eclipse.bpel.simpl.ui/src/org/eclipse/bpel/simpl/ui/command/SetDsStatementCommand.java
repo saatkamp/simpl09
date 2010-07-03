@@ -19,6 +19,7 @@ import org.eclipse.bpel.simpl.model.DropActivity;
 import org.eclipse.bpel.simpl.model.InsertActivity;
 import org.eclipse.bpel.simpl.model.QueryActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.model.UpdateActivity;
 import org.eclipse.bpel.ui.commands.SetCommand;
 import org.eclipse.emf.ecore.EObject;
@@ -78,8 +79,8 @@ public class SetDsStatementCommand extends SetCommand {
 			return ((RetrieveDataActivity) fTarget).getDsStatement();
 		}
 		
-		if (fTarget instanceof DataManagementActivity){
-			return ((DataManagementActivity) fTarget).getDsStatement();
+		if (fTarget instanceof TransferActivity){
+			return ((TransferActivity) fTarget).getDsStatement();
 		}
 		
 		throw new IllegalArgumentException("This model object has no statement to get");
@@ -114,8 +115,8 @@ public class SetDsStatementCommand extends SetCommand {
 		} else if (fTarget instanceof RetrieveDataActivity) {
 			((RetrieveDataActivity) fTarget).setDsStatement((String) o);
 			
-		} else if (fTarget instanceof DataManagementActivity) {
-			((DataManagementActivity) fTarget).setDsStatement((String) o);
+		} else if (fTarget instanceof TransferActivity) {
+			((TransferActivity) fTarget).setDsStatement((String) o);
 			
 		} else {
 			throw new IllegalArgumentException(

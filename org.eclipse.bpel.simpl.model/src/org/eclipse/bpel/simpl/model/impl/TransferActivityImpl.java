@@ -36,10 +36,10 @@ public class TransferActivityImpl extends DataManagementActivityImpl implements 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetDsAddress()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String TARGET_DS_ADDRESS_EDEFAULT = "address";
+	protected static final String TARGET_DS_ADDRESS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTargetDsAddress() <em>Target Ds Address</em>}' attribute.
@@ -56,10 +56,10 @@ public class TransferActivityImpl extends DataManagementActivityImpl implements 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetDsType()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String TARGET_DS_TYPE_EDEFAULT = "type";
+	protected static final String TARGET_DS_TYPE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTargetDsType() <em>Target Ds Type</em>}' attribute.
@@ -76,10 +76,10 @@ public class TransferActivityImpl extends DataManagementActivityImpl implements 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetDsKind()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String TARGET_DS_KIND_EDEFAULT = "kind";
+	protected static final String TARGET_DS_KIND_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTargetDsKind() <em>Target Ds Kind</em>}' attribute.
@@ -96,10 +96,10 @@ public class TransferActivityImpl extends DataManagementActivityImpl implements 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetDsLanguage()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String TARGET_DS_LANGUAGE_EDEFAULT = "language";
+	protected static final String TARGET_DS_LANGUAGE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTargetDsLanguage() <em>Target Ds Language</em>}' attribute.
@@ -116,10 +116,10 @@ public class TransferActivityImpl extends DataManagementActivityImpl implements 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTargetDsContainer()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String TARGET_DS_CONTAINER_EDEFAULT = "targetDsContainer";
+	protected static final String TARGET_DS_CONTAINER_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getTargetDsContainer() <em>Target Ds Container</em>}' attribute.

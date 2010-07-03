@@ -347,6 +347,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 			}
 		}
 		
+		
+		Label statementLabel = new Label(composite, SWT.NONE);
+		statementLabel.setText("Data management operation:");
+		statementLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		statementText = new LiveEditStyleText(composite);
 		statementText.setLayoutData(gridData15);
 
