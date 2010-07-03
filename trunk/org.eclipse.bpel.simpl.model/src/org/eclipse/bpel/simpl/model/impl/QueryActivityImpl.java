@@ -39,10 +39,10 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getQueryTarget()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String QUERY_TARGET_EDEFAULT = "target";
+	protected static final String QUERY_TARGET_EDEFAULT = "";
 	/**
 	 * The cached value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
 	 * <!-- begin-user-doc -->

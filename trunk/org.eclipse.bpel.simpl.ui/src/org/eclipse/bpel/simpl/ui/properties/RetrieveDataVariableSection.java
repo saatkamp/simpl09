@@ -52,8 +52,6 @@ import org.eclipse.jface.fieldassist.TextContentAdapter;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.LineStyleEvent;
-import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -334,7 +332,12 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 			}
 		}
 		
-		statementText = new LiveEditStyleText(statementCompo);
+		Label statementLabel = new Label(composite, SWT.NONE);
+		statementLabel.setText("Data management operation:");
+		statementLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		
+		statementText = new LiveEditStyleText(composite);
 		statementText.setLayoutData(gridData15);
 
 		statementText.setBackground(Display.getCurrent().getSystemColor(

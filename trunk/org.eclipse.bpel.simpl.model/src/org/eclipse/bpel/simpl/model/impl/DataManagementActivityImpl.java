@@ -44,10 +44,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDsAddress()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String DS_ADDRESS_EDEFAULT = "address";
+	protected static final String DS_ADDRESS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getDsAddress() <em>Ds Address</em>}' attribute.
@@ -64,10 +64,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDsType()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String DS_TYPE_EDEFAULT = "type";
+	protected static final String DS_TYPE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getDsType() <em>Ds Type</em>}' attribute.
@@ -84,10 +84,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDsKind()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String DS_KIND_EDEFAULT = "subtype";
+	protected static final String DS_KIND_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getDsKind() <em>Ds Kind</em>}' attribute.
@@ -104,10 +104,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDsStatement()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String DS_STATEMENT_EDEFAULT = "statement";
+	protected static final String DS_STATEMENT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getDsStatement() <em>Ds Statement</em>}' attribute.
@@ -124,10 +124,10 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDsLanguage()
-	 * @generated
+	 * @customized
 	 * @ordered
 	 */
-	protected static final String DS_LANGUAGE_EDEFAULT = "language";
+	protected static final String DS_LANGUAGE_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getDsLanguage() <em>Ds Language</em>}' attribute.

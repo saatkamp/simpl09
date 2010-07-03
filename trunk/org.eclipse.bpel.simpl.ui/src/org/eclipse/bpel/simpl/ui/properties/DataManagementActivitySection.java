@@ -15,7 +15,6 @@ import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.simpl.communication.client.DataSource;
-import org.eclipse.simpl.communication.client.DatasourceService_Service;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -102,7 +101,6 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 				// Setzen das Statement
 				setStatement(activity.getDsStatement());
 			}
-			// Setzen das Statement
 			
 			// Setzen die Datenquellenadresse
 			dataSourceAddressCombo.setText(activity.getDsAddress());
@@ -294,6 +292,10 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 		gridData15.grabExcessVerticalSpace = true;
 		gridData15.grabExcessHorizontalSpace = true;
 		
+		Label statementLabel = new Label(composite, SWT.NONE);
+		statementLabel.setText("Data management operation:");
+		statementLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 		statementText = new LiveEditStyleText(composite);
 		statementText.setLayoutData(gridData15);
 
@@ -626,6 +628,36 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 		// Wert aus Modell setzen
 		kindText.setText(this.activity.getDsKind());
+	}
+	
+	@Override
+	public void refresh() {
+		super.refresh();
+		
+		// Setzen die im Editor ausgewählte Aktivität als Input.
+		setInput(getPart(), getBPELEditor().getSelection());
+
+		this.activity = getModel();
+		
+		if (activity.getDsStatement() == null){
+			// Setzen das Statement
+			setStatement("");
+		}else {
+			// Setzen das Statement
+			setStatement(activity.getDsStatement());
+		}
+		
+		// Setzen die Datenquellenadresse
+		dataSourceAddressCombo.setText(activity.getDsAddress());
+		
+		// Wert aus Modell setzen
+		typeText.setText(this.activity.getDsType());
+		
+		// Wert aus Modell setzen
+		kindText.setText(this.activity.getDsKind());
+		
+		// Setzen die Sprache
+		languageText.setText(activity.getDsLanguage());
 	}
 
 	/*

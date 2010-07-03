@@ -63,15 +63,13 @@ public class TransferActivityToPropertySection extends
 	protected void createClient(Composite parent) {
 		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
-		// Laden der Transfer-Aktivität und der enthaltenen toSource
-		// (DM)-Aktivität
+		// Laden der Transfer-Aktivität
 		this.transferActivity = (TransferActivity) getModel();
 
 		createWidgets(parent);
 
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(transferActivity.getTargetDsAddress());
-		// Setzen die Zieleinheit des Transfers.
 		targetText.setText(transferActivity.getTargetDsContainer());
 		// Setzen die Sprache
 		languageText.setText(transferActivity.getTargetDsLanguage());
