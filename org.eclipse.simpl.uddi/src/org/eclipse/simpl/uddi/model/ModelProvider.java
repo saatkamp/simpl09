@@ -13,6 +13,7 @@ import org.simpl.uddi.client.UddiDataSourceReader;
 public class ModelProvider {
 	private static ModelProvider content;
 	private List<DataSource> datasources;
+	private List<String> dsNames = new ArrayList<String>();
 
 	private ModelProvider() {
 		datasources = new ArrayList<DataSource>();
@@ -35,6 +36,7 @@ public class ModelProvider {
 			ds.setAuthentication(auth);
 
 			datasources.add(ds);
+			dsNames.add(source.getName());
 		}
 	}
 
@@ -79,10 +81,14 @@ public class ModelProvider {
 		return datasources;
 	}
 
+	public List<String> getDataSourceNames() {
+		return dsNames;
+	}
 
 	public void refresh() {
 		datasources.clear();
-
+		dsNames.clear();
+		
 		ArrayList<UddiDataSource> dsList = UddiDataSourceReader.getInstance(UDDIPlugIn.getDefault().getPreferenceStore().getString("UDDI_ADDRESS")).getAllDatasources();
 		
 		for (UddiDataSource source : dsList) {
@@ -100,6 +106,7 @@ public class ModelProvider {
 			ds.setAuthentication(auth);
 
 			datasources.add(ds);
+			dsNames.add(source.getName());
 		}
 	}
 }
