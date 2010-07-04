@@ -1,11 +1,5 @@
 package org.eclipse.simpl.rrs.transformation.commands;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.List;
-
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.core.commands.AbstractHandler;
@@ -17,10 +11,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.simpl.rrs.transformation.TransformerUtil;
 import org.eclipse.simpl.rrs.transformation.client.TransformationClient;
-import org.eclipse.simpl.rrs.transformation.jet.TemplateRrsXSD;
-import org.eclipse.simpl.rrs.ui.RRSUIPlugIn;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -58,50 +49,58 @@ public class TransformationHandler extends AbstractHandler {
 	 */
 	String absolutWorkspacePath = "";
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
-				.getActivePage().getSelection();
-		if (selection != null & selection instanceof IStructuredSelection) {
-			IStructuredSelection strucSelection = (IStructuredSelection) selection;
-			if (strucSelection.getFirstElement() instanceof Process) {
-				Process process = (Process) strucSelection.getFirstElement();
+		if (TransformationClient.getClient().isTransformerAvailable()) {
+			ISelection selection = HandlerUtil.getActiveWorkbenchWindow(event)
+					.getActivePage().getSelection();
+			if (selection != null & selection instanceof IStructuredSelection) {
+				IStructuredSelection strucSelection = (IStructuredSelection) selection;
+				if (strucSelection.getFirstElement() instanceof Process) {
+					Process process = (Process) strucSelection
+							.getFirstElement();
 
-				bpelFile = BPELUtil.getBPELFile(process);
+					bpelFile = BPELUtil.getBPELFile(process);
 
-				bpelPath = bpelFile.getFullPath();
+					bpelPath = bpelFile.getFullPath();
 
-				projectPath = bpelPath.removeFileExtension()
-						.removeLastSegments(1);
+					projectPath = bpelPath.removeFileExtension()
+							.removeLastSegments(1);
 
-				absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
-						.getLocation().toOSString();
+					absolutWorkspacePath = ResourcesPlugin.getWorkspace()
+							.getRoot().getLocation().toOSString();
 
-				System.out.println("PROJEKT-PFAD: " + absolutWorkspacePath
-						+ projectPath.toOSString());
-				System.out.println("Datei-PFAD: " + absolutWorkspacePath
-						+ bpelPath.toOSString());
+					System.out.println("PROJEKT-PFAD: " + absolutWorkspacePath
+							+ projectPath.toOSString());
+					System.out.println("Datei-PFAD: " + absolutWorkspacePath
+							+ bpelPath.toOSString());
 
-				// Hier wird die eigentlich Transformation angestoßen,
-				// d.h. es wird die im Editor geöffnetete BPEL-Datei
-				// an den Transformator geschickt und die transformierte
-				// Datei wird auch von diesem Plug-In lokal im Workspace in
-				// einem
-				// Unterordner "Prozessname_transformed" gespeichert.
-				TransformationCmdHelper.doTheWork(absolutWorkspacePath, projectPath, bpelPath);
+					// Hier wird die eigentlich Transformation angestoßen,
+					// d.h. es wird die im Editor geöffnetete BPEL-Datei
+					// an den Transformator geschickt und die transformierte
+					// Datei wird auch von diesem Plug-In lokal im Workspace in
+					// einem
+					// Unterordner "Prozessname_transformed" gespeichert.
+					TransformationCmdHelper.doTheWork(absolutWorkspacePath,
+							projectPath, bpelPath);
 
-			} else {
-				MessageDialog
-						.openError(
-								Display.getCurrent().getActiveShell(),
-								"SIMPL TransformationService: Unknown source",
-								"You have to focus the BPEL Editor to transform the process. "
-										+ "Alternatively you can choose a process file (*.bpel) in the "
-										+ "Package Explorer and use the context menue to transform.");
+				} else {
+					MessageDialog
+							.openError(
+									Display.getCurrent().getActiveShell(),
+									"SIMPL TransformationService: Unknown source",
+									"You have to focus the BPEL Editor to transform the process. "
+											+ "Alternatively you can choose a process file (*.bpel) in the "
+											+ "Package Explorer and use the context menue to transform.");
+				}
 			}
+		} else {
+			MessageDialog
+			.openError(
+					Display.getCurrent().getActiveShell(),
+					"SIMPL TransformationService: Connection Exception",
+					"The Transformation Service is not responding. Please check the connection and try again.");
 		}
-
 		return null;
 	}
 

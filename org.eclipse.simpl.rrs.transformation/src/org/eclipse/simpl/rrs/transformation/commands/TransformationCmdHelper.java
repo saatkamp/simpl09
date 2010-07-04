@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Display;
  */
 public class TransformationCmdHelper {
 
+	@SuppressWarnings("unchecked")
 	public static void doTheWork(String absolutWorkspacePath,
 			IPath projectPath, IPath bpelPath) {
 
