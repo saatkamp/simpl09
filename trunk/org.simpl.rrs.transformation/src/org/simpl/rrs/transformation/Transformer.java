@@ -136,9 +136,8 @@ public class Transformer {
 	private static Transformer transformer = null;
 
 	public static Transformer getTransformer() {
-		if (transformer == null) {
-			transformer = new Transformer();
-		}
+		transformer = new Transformer();
+
 		return transformer;
 	}
 
