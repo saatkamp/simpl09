@@ -73,7 +73,7 @@ public class StatementUtils {
 		if (variables != null) {
 
 			// Solve all complex variable elements
-			Pattern pattern = Pattern.compile("\\[.+\\]");
+			Pattern pattern = Pattern.compile("\\[[^\\[\\]#]+\\]");
 			Matcher matcher = pattern.matcher(statement);
 			while (matcher.find()) {
 				String match = matcher.group();
@@ -83,7 +83,7 @@ public class StatementUtils {
 			}
 
 			// Solve all simple variable elements
-			Pattern pattern2 = Pattern.compile("#.+#");
+			Pattern pattern2 = Pattern.compile("#[^\\[\\]#]+#");
 			Matcher matcher2 = pattern2.matcher(statement);
 			while (matcher2.find()) {
 				String match = matcher2.group();
