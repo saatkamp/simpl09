@@ -3,6 +3,7 @@ package org.eclipse.bpel.simpl.ui.properties;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.ui.commands.SetCommand;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
@@ -45,7 +46,7 @@ public class TransferActivityToPropertySection extends
 	private Text languageText = null;
 	private Composite parentComposite = null;
 	private Label targetLabel = null;
-	private Text targetText = null;
+	private CCombo targetCombo = null;
 
 	private TransferActivity transferActivity;
 
@@ -70,7 +71,7 @@ public class TransferActivityToPropertySection extends
 
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(transferActivity.getTargetDsAddress());
-		targetText.setText(transferActivity.getTargetDsContainer());
+		targetCombo.setText(transferActivity.getTargetDsContainer());
 		// Setzen die Sprache
 		languageText.setText(transferActivity.getTargetDsLanguage());
 	}
@@ -203,9 +204,10 @@ public class TransferActivityToPropertySection extends
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		targetText = new Text(composite, SWT.BORDER);
-		targetText.setLayoutData(gridData13);
-		targetText.addModifyListener(new ModifyListener() {
+		targetCombo = new CCombo(composite, SWT.BORDER);
+		targetCombo.setLayoutData(gridData13);
+		targetCombo.setItems(VariableUtils.getUseableVariables(getProcess()).toArray(new String[0]));
+		targetCombo.addModifyListener(new ModifyListener() {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -213,7 +215,7 @@ public class TransferActivityToPropertySection extends
 						.execute(
 								new SetCommand(
 										transferActivity,
-										targetText.getText(),
+										targetCombo.getText(),
 										ModelPackage.eINSTANCE
 												.getTransferActivity_TargetDsContainer()));
 			}
