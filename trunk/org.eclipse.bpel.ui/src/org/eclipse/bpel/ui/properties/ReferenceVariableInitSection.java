@@ -15,9 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 
 /**
@@ -38,9 +39,13 @@ public class ReferenceVariableInitSection extends BPELPropertySection {
 
 	protected CCombo fReferenceTypeCombo;
 
+	ReferenceVariable fVariable;
+
 	@Override
 	protected void basicSetInput(EObject input) {
 		super.basicSetInput(input);
+
+		fVariable = (ReferenceVariable) input;
 	}
 
 	protected void createReferenceTypeWidgets(Composite composite) {
@@ -71,10 +76,9 @@ public class ReferenceVariableInitSection extends BPELPropertySection {
 		// Load the model data in the referenceType combo
 		fReferenceTypeCombo.setItems(getReferenceTypes());
 
-		// ReferenceVariable variable = (ReferenceVariable) getInput();
-		// fReferenceTypeCombo.select(fReferenceTypeCombo
-		// .indexOf(variable.getReferenceType()
-		// .getName()));
+		if (fVariable != null && fVariable.getReferenceType() != null) {
+			fReferenceTypeCombo.setText(fVariable.getReferenceType().getName());
+		}
 
 		fReferenceTypeCombo.addSelectionListener(new SelectionListener() {
 
@@ -85,28 +89,46 @@ public class ReferenceVariableInitSection extends BPELPropertySection {
 
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				String selection = fReferenceTypeCombo
-						.getItem(fReferenceTypeCombo.getSelectionIndex());
+				String selection = fReferenceTypeCombo.getText();
 
-				ReferenceVariable variable = (ReferenceVariable) getInput();
+				fVariable = (ReferenceVariable) getInput();
 
 				Command cmd = new SetReferenceVariableReferenceTypeCommand(
-						variable,
+						fVariable,
 						selection.equals(ReferenceType.ON_INSTANTIATION
 								.getName()) ? ReferenceType.ON_INSTANTIATION
 								: ReferenceType.FRESH);
 				getCommandFramework().execute(wrapInShowContextCommand(cmd));
 			}
 		});
+		
+		fReferenceTypeCombo.addFocusListener(new FocusListener() {
+			
+			public void focusLost(FocusEvent e) {
+				if (fVariable != null && fVariable.getReferenceType() != null) {
+					fReferenceTypeCombo.setText(fVariable.getReferenceType().getName());
+				}
+			}
+			
+			public void focusGained(FocusEvent e) {
+				if (fVariable != null && fVariable.getReferenceType() != null) {
+					fReferenceTypeCombo.setText(fVariable.getReferenceType().getName());
+				}
+			}
+		});
 	}
 
 	@Override
 	protected void createClient(Composite parent) {
-		//TODO: Laden des im Modell gespeicherten ReferenceType funktioniert noch nicht.
-		//Das Speichern ist bereits umgesetzt und funktioniert.
-		
+
 		Composite composite = createFlatFormComposite(parent);
 		createReferenceTypeWidgets(composite);
+
+		fVariable = (ReferenceVariable) getInput();
+
+		if (fVariable != null && fVariable.getReferenceType() != null) {
+			fReferenceTypeCombo.setText(fVariable.getReferenceType().getName());
+		}
 	}
 
 	private String[] getReferenceTypes() {
