@@ -1,7 +1,11 @@
 package org.apache.ode.simpl.ea;
 
+import java.util.Map;
+
 import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
+import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
+import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
@@ -42,6 +46,19 @@ public class TransferActivity extends DataManagementActivity {
 		Attr targetDsContainerAttr = element.getAttributeNode("targetDsContainer");
 		String targetDsContainer = targetDsContainerAttr.getValue();
 
+		if (targetDsContainer.contains("[") || targetDsContainer.contains("#")){
+			//targetDsContainer enthält eine BPEL-Variable als Referenz
+			Map<String, Variable> variables = null;
+			try {
+				variables = context.getVisibleVariables();
+			} catch (FaultException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			targetDsContainer = String.valueOf(StatementUtils.resolveVariable(context, variables, targetDsContainer));
+		}
+		
 		DataSource dsFrom = getDataSource(getActivityName(), getDsAddress());
 		DataSource dsTo = getDataSource(getActivityName(), targetDsAddress);
 		
