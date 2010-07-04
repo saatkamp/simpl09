@@ -112,8 +112,6 @@ public class RRSClient {
 			connection.connect();
 			isAvailable = true;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			isAvailable = false;
 		}
 		return isAvailable;
