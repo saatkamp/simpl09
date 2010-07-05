@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="19" columns="4">
+<lyxtabular version="3" rows="20" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1186,7 +1186,7 @@ reference "sec:Architektur"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1195,7 +1195,7 @@ reference "sec:Architektur"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1204,7 +1204,7 @@ reference "sec:Architektur"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1213,7 +1213,7 @@ schneimi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1225,6 +1225,55 @@ reference "sec:Komponenten"
 \end_inset
 
  Einleitung überarbeitet (100222-Grobentwurf-v03-comments_PR_MS.pdf)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+28.06.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Eclipse-mit-SIMPL"
+
+\end_inset
+
+ Überarbeitet 
+\end_layout
+
+\begin_layout Plain Layout
+(100222-Grobentwurf-v03-comments_PR_MS.pdf)
 \end_layout
 
 \end_inset
@@ -2136,7 +2185,7 @@ Komponenten des SIMPL Rahmenwerks
 \begin_layout Subsection
 Eclipse
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 - Erweiterung der Anfragesprachen (
@@ -2163,29 +2212,19 @@ reference "sub:Erweiterbarkeit"
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Abbildung 2 hat sich geändert, muss im Text noch überarbeitet werden.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Die relevanten Komponenten der Enwicklungsumgebung Eclipse in Abbildung
- 
+Im Rahmen des SIMPL Projektes sind die relevanten Komponenten der Enwicklungsumg
+ebung Eclipse in Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Eclipse-mit-SIMPL"
 
 \end_inset
 
- besteht im Rahmen des SIMPL Projekts aus der Eclipse Basis IDE und dem
- SIMPL Eclipse Plug-In.
+ dargestellt.
+ Dies sind die Eclipse Basis IDE und das SIMPL Eclipse Plug-In.
  Das SIMPL Eclipse Plug-In setzt sich aus verschiedenen Plug-Ins zusammen,
  die über bestehende Extension Points realisiert werden und ggf.
  selbst Extension Points anbieten.
@@ -2263,8 +2302,8 @@ Menu
 \end_layout
 
 \begin_layout Standard
-Das Menu stellt die Auswahlmöglicheiten als Drop-Down Liste dar, die auf
- die verschiedenen Funktionsbereiche des Plug-Ins verweist.
+Das Menu stellt die Auswahlmöglicheiten als Liste dar, die auf die verschiedenen
+ Funktionsbereiche des Plug-Ins verweist.
  Der Extension Point 
 \begin_inset Quotes eld
 \end_inset
@@ -2316,7 +2355,7 @@ Eclipse BPEL Designer Plug-In Extension Points
 
 \begin_layout Standard
 Es wird auf die unten genannten drei Extension Points eingegangen, weil
- nur diese vom BPEL Designer benutzt werden.
+ nur diese vom BPEL Designer Plug-In benutzt werden.
  Es gibt auch noch weitere Extension Points im BPEL Designer Plug-In, diese
  sind jedoch nicht für SIMPL relevant.
 \end_layout
@@ -2329,8 +2368,8 @@ UIObjectFactory
 Dieser Extension Point ermöglicht das Anbinden neuer UIObjectFactories,
  mit deren Hilfe Instanzen von BPEL Extension Activities erzeugt werden
  können.
- Bei der Auswahl einer Aktivität in der BPEL Designer Palette wird ein neues
- Objekt durch die UIObjectFactory erzeugt.
+ Beim Einfügen einer Aktivität der BPEL Designer Palette in einen Prozess
+ wird ein neues Objekt durch die UIObjectFactory erzeugt.
 \end_layout
 
 \begin_layout Paragraph
@@ -2341,8 +2380,8 @@ PaletteAdditions
 Die Palette ist ein Auswahlfenster aller zur Verfügung stehenden BPEL-Konstrukte
 , dies sind z.B.
  Standard BPEL-Aktivitäten oder eigene Extension Activities.
- Durch diesen Extension Point können neue Items und Kategorien der Benutzerschni
-ttstelle hinzugefügt werden.
+ Durch diesen Extension Point können neue Items und Kategorien der Palette
+ hinzugefügt werden.
 \end_layout
 
 \begin_layout Paragraph
@@ -2350,9 +2389,9 @@ PropertySections
 \end_layout
 
 \begin_layout Standard
-Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern über
- die, in das Prozessmodell eingefügte, BPEL-Aktivitäten ausformuliert und
- mit Werten gefüllt werden können.
+Dieser Extension Point ermöglicht das Erweitern von Property-Fenstern, über
+ die - in das Prozessmodell eingefügte - BPEL-Aktivitäten ausformuliert
+ und mit Werten gefüllt werden können.
  
 \end_layout
 
@@ -2368,21 +2407,21 @@ Das BPEL-DM Plug-In beinhaltet die Datenmanagement-Aktiviäten, die die Standard
 \end_layout
 
 \begin_layout Itemize
-UIObjectFactory ( Erzeugt neue Objekte für die Modellierung)
+UIObjectFactory ( - Erzeugt neue Objekte für die Modellierung).
 \end_layout
 
 \begin_layout Itemize
-PaletteAdditions ( Ermöglicht grafische Auswahlmöglichkeit in der Palette.
+PaletteAdditions ( - Ermöglicht grafische Auswahlmöglichkeit in der Palette).
 \end_layout
 
 \begin_layout Itemize
-PropertySections ( Ermöglicht Erzeugung und Konfiguration von Werten der
- Aktivitäten )
+PropertySections ( - Ermöglicht Erzeugung und Konfiguration von Werten der
+ Aktivitäten).
 \end_layout
 
 \begin_layout Standard
 Weiterhin werden durch das BPEL-DM Plug-In PropertySections für alle Datenmanage
-ment-Aktivitäten bereitgestellt, die Zugriff auf einen Editor zur graphischen
+ment-Aktivitäten bereitgestellt, die Zugriff auf einen Editor zur grafischen
  Modellierung von Datenquellenbefehlen bieten.
 \end_layout
 
@@ -2391,8 +2430,7 @@ SIMPL Core Plug-In
 \end_layout
 
 \begin_layout Standard
-Das SIMPL Core Plug-In erweitert die Eclipse IDE um das SIMPL-Menü und die
- SIMPL-Hilfe.
+Das SIMPL Core Plug-In erweitert die Eclipse IDE um das SIMPL-Menü.
  Das SIMPL-Menü beinhaltet die Menüpunkte 
 \begin_inset Quotes eld
 \end_inset
@@ -2425,7 +2463,17 @@ About
 \begin_inset Quotes erd
 \end_inset
 
-, die auf entsprechende Fenster verlinken.
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Reload Plug-In Data
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Mit Ausnahme des letzten Punktes verlinken alle Punkte auf die entsprechenden
+ Fenster.
  Die 
 \begin_inset Quotes eld
 \end_inset
@@ -2434,9 +2482,8 @@ Admin-Console
 \begin_inset Quotes erd
 \end_inset
 
- bietet den Zugriff auf die globale Eigenschaften ,Referenzen, Datenquellen
- und Strategien.
- Unter 
+ ermöglicht die De- un Aktivierung des Auditings sowie dessen Konfiguration.
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2444,18 +2491,34 @@ Settings
 \begin_inset Quotes erd
 \end_inset
 
- werden allgemeine Einstellungen für die Eclipse Plug-Ins von SIMPL eingestellt
- die nicht systemkritisch sind, wie zum Beispiel die Adresse des SIMPL Core
- oder Schriftgrößen .Die SIMPL-
+ bietet die Möglichkeit, Einstellungen für die SIMPL Eclipse Plug-Ins vorzunehme
+n.
+ Dazu gehört die Angabe der Adresse des Reference Resolution Systems, des
+ SIMPL Cores, des Transformation Services und der UDDI Registry.
+ Der Menüpunkt Help leitet den Benutzer auf die Eclipse Hilfe weiter.
+ Dort stehen dem Benutzer über die Punkte BPEL-DM Plug-In und SIMPL Core
+ Plug-In die entsprechenden Hilfe-Dokumente der SIMPL Eclipse Plug-Ins zur
+ Verfügung.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+About
 \begin_inset Quotes erd
 \end_inset
 
-Help
+ bietet rechtliche Informationen sowie Angaben zum Entwicklerteam von SIMPL.
+ Über 
+\begin_inset Quotes eld
+\end_inset
+
+Reload Plug-In Data
 \begin_inset Quotes erd
 \end_inset
 
-stellt weiterführende Informationen zur Bedienbarkeit und Funktionalität
- dar.
+ können die Daten der Plug-Ins neu geladen werden.
+ Damit erspart man sich einen Neustart des Rahmenwerkes, wenn bei der Initialisi
+erung der SIMPL Core nicht zu erreichen war.
  Das SIMPL Core Plug-In stellt den Extension Point 
 \begin_inset Quotes eld
 \end_inset
@@ -2466,9 +2529,32 @@ Admin Console Item
 
  (ACItem) bereit, mit Hilfe dessen die Admin-Konsole um weitere Elemente
  erweitert werden kann.
- Jeder Eintrag in der Konsole wird als Plug-In realisiert welches über den
- Extension-Point ACItem angebunden werden.
- Alle Einträge des Menüs werden durch Plug-Ins integriert.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Core Communication Plug-In 
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Core Communication Plug-In ist für das Laden und Speichern von
+ Rahmenwerkseinstellungen zuständig.
+ Durch diese Realisierung als eigenständiges Plug-In ist das Rahmenwerk
+ bei Modifikationen flexibler.
+\end_layout
+
+\begin_layout Subsubsection
+UDDI Plug-In
+\end_layout
+
+\begin_layout Standard
+Das UDDI Plug-In ist in eine Eclipse View integriert.
+ Die Datenquellen-Informationen werden aus der Datenquellen-Registry gelesen
+ und in einer Tabelle in der View angezeigt.
+ Die Informationen können nur angezeigt, und nicht verändert oder gelöscht
+ werden.
+ Dies kann nur in der Datenquellen-Registry direkt über das Web Interface
+ gemacht werden.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2485,12 +2571,41 @@ View
 \end_inset
 
 -Extension-Point in Eclipse angebunden.
- Es wird eine GUI-Schnittstelle für den RRS Management Service angeboten.
+ Damit wird eine GUI-Schnittstelle für den RRS Management Service angeboten.
  Nähere Informationen dazu finden sich im Kapitel 3.4.
  So können über Eclipse mit dem RRS Plug-In alle Referenzen des angebundenen
  RRS verwaltet werden.
- Hier kann auch die Adresse eingestellt werden wenn mehrere RRS vorhanden
- sind und eines ausgewählt werden sollte.
+ Hier kann auch die Adresse des gewünschten RRS eingestellt werden, wenn
+ mehrere RRS vorhanden sind und eines ausgewählt werden sollte.
+ Die Modellierung der Referenzvariablen erfolgt in der RRS-View.
+ Dort kann durch Betätigen des 
+\begin_inset Quotes eld
+\end_inset
+
+New-Buttons oder durch New im Kontextmenü eine neue Referenzvariable erstellt
+ und in den Pim Zuerst muss dazu in der Toolbar oder im Kontextmenü 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ angeklickt werden.
+ In einem Pop-up Fenster können nun alle Parameter der Referenz eingestellt
+ werden.
+ Für die Transformation wird dann die Referenzvariable vom RRS-Transformation
+ Plug-In an den an das RRS-Transformation-Service gesendet und dort aufgelöst
+ um die 
+\begin_inset Quotes eld
+\end_inset
+
+echte
+\begin_inset Quotes erd
+\end_inset
+
+ Adresse zu erhalten.
+ Nach der Auflösung können die Daten über das RRS geholt werden.
 \end_layout
 
 \begin_layout Subsection
