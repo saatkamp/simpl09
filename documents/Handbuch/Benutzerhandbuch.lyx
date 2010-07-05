@@ -1,4 +1,4 @@
-#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -19,10 +19,10 @@
 % docvers = Versionsnr.
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
-\def\doctitel{Dokumententitel}
-\def\docvers{1.0}
-\def\docautor{Max Mustermann}
-\def\docdate{12. Juli 2009}
+\def\doctitel{Benutzerhandbuch}
+\def\docvers{0.5}
+\def\docautor{}
+\def\docdate{17.06.2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -53,7 +53,16 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -153,7 +162,7 @@ status open
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -726,14 +735,8 @@ bruededl
 
 \end_layout
 
-\begin_layout Title
-SIMPL Benutzerhandbuch
-\end_layout
-
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -778,6 +781,13 @@ key "key-6"
  Das Auditing einer Prozessausführung wird nur für Apache ODE bereitgestellt.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Systemvoraussetzungen
 \end_layout
@@ -796,6 +806,13 @@ Die Systemvoraussetzungen des Rahmenwerkes entspricht den Voraussetzungen
  werden.
  Es muß beachtet werden, daß das Rahmenwerk nur mit Apache ODE 2.0 oder höher
  verwendet werden kann.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1162,6 +1179,13 @@ SIMPL Auditing
 BPEL DM Extension Activities
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Funktionalität
 \end_layout
@@ -1290,6 +1314,13 @@ Die Validierung von Standard BPEL wird unterstützt, jedoch nicht die Validierun
  bereits vorhandene Extension Points angebunden werden.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Komponenten, Aufbau und Funktionen
 \end_layout
@@ -1412,6 +1443,13 @@ ine implementiert und in diese als Plug-In (BPEL-DM Plug-In) eingebunden.
  die Datenquellen können auf verschiedene Server verteilt sein.
  Die Validation der SIMPL Extensions wird hierbei durch den Eclipse BPEL-Designe
 r erledigt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2384,6 +2422,13 @@ Datenquellen-Registry Webinterface
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -5687,6 +5732,13 @@ Save
  alles in der Registry gespeichert werden.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Problemehilfe
 \end_layout
@@ -5993,6 +6045,13 @@ RRS nicht erreichbar
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -6496,8 +6555,11 @@ XML Query Language
 
 \end_layout
 
-\begin_layout Section
-Literaturverzeichnis
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -6669,6 +6731,37 @@ key "key-1"
 \end_inset
 
 WinRAR, http://http://www.winrar.de/, zuletzt zugegriffen am 10.06.2010
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
 \end_layout
 
 \end_body

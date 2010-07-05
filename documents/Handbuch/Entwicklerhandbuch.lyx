@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -19,10 +19,10 @@
 % docvers = Versionsnr.
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
-\def\doctitel{Dokumententitel}
-\def\docvers{1.0}
+\def\doctitel{SIMPL Entwicklerhandbuch}
+\def\docvers{0.1}
 \def\docautor{Max Mustermann}
-\def\docdate{12. Juli 2009}
+\def\docdate{24. Aprili 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -53,7 +53,16 @@
 \graphics default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_amsmath 0
@@ -153,7 +162,7 @@ status open
 
  
 \begin_inset FormulaMacro
-\newcommand{\headrulewidth}{0mm}
+\renewcommand{\headrulewidth}{0mm}
 \end_inset
 
  
@@ -727,7 +736,7 @@ Erstellung des Dokuments.
 \end_layout
 
 \begin_layout Title
-SIMPL Entwicklerhandbuch
+
 \end_layout
 
 \begin_layout Section
