@@ -11,11 +11,14 @@
  */
 package org.eclipse.bpel.apache.ode.deploy.ui.util;
 
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
+import org.eclipse.simpl.communication.CommunicationPlugIn;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
 import org.eclipse.simpl.communication.client.DataSource;
@@ -42,6 +45,8 @@ public class SIMPLCoreMetaData {
 	 */
 	private static HashMap<String, List<String>> dataSourceSubTypeLanguages = new HashMap<String, List<String>>();
 
+	private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn.getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS");
+	
 	/**
 	 * Inits the Constants class.
 	 */
@@ -123,5 +128,19 @@ public class SIMPLCoreMetaData {
 		}
 		
 		return dataSource;
+	}
+	
+	public static boolean isSIMPLCoreAvailable() {
+		boolean isAvailable = false;
+		URL url;
+		try {
+			url = new URL(DSS_WSDL_ADDRESS);
+			URLConnection connection = url.openConnection();
+			connection.connect();
+			isAvailable = true;
+		} catch (Exception e) {
+			isAvailable = false;
+		}
+		return isAvailable;
 	}
 }

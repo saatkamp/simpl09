@@ -8,6 +8,8 @@ import org.eclipse.bpel.apache.ode.deploy.ui.util.SIMPLCoreMetaData;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.simpl.communication.SIMPLCommunication;
+import org.eclipse.simpl.communication.SIMPLCore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -74,24 +76,27 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 		Label label1 = new Label(parent, SWT.NONE);
 		label1.setText("Name *");
 		name = new Text(parent, SWT.BORDER);
-		if (this.datasource.getDataSourceName() != null) {
+		if (this.datasource != null && this.datasource.getDataSourceName() != null) {
 			name.setText(this.datasource.getDataSourceName());
 		}
 
 		Label label2 = new Label(parent, SWT.NONE);
 		label2.setText("Address *");
 		address = new Text(parent, SWT.BORDER);
-		if (this.datasource.getAddress() != null) {
+		if (this.datasource != null && this.datasource.getAddress() != null) {
 			address.setText(this.datasource.getAddress());
 		}
 
 		Label label3 = new Label(parent, SWT.NONE);
 		label3.setText("Type *");
 		type = new CCombo(parent, SWT.BORDER);
-		if (SIMPLCoreMetaData.getDataSourceTypes() != null) {
-			type.setItems(SIMPLCoreMetaData.getDataSourceTypes().toArray(
-					new String[0]));
+		if (SIMPLCoreMetaData.isSIMPLCoreAvailable()){
+			if (SIMPLCoreMetaData.getDataSourceTypes() != null) {
+				type.setItems(SIMPLCoreMetaData.getDataSourceTypes().toArray(
+						new String[0]));
+			}
 		}
+		
 		type.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -101,19 +106,22 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (SIMPLCoreMetaData.getDataSourceSubTypes(type.getText()) != null) {
-					subtype.setItems(SIMPLCoreMetaData.getDataSourceSubTypes(
-							type.getText()).toArray(new String[0]));
-				}
+				if (SIMPLCoreMetaData.isSIMPLCoreAvailable()) {
+					if (SIMPLCoreMetaData.getDataSourceSubTypes(type.getText()) != null) {
+						subtype.setItems(SIMPLCoreMetaData
+								.getDataSourceSubTypes(type.getText()).toArray(
+										new String[0]));
+					}
 
-				datasource.setType(type.getText());
-				//Clear the text and the items in the following widgets
+					datasource.setType(type.getText());
+				}
+				// Clear the text and the items in the following widgets
 				subtype.setText("");
 				language.removeAll();
 				format.removeAll();
 			}
 		});
-		if (this.datasource.getType() != null) {
+		if (this.datasource != null && this.datasource.getType() != null) {
 			type.setText(this.datasource.getType());
 		}
 
@@ -129,58 +137,66 @@ public class EditDataSourceDialog extends TitleAreaDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (SIMPLCoreMetaData.getDatasourceLanguages(subtype.getText()) != null) {
-					language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
-							subtype.getText()).toArray(new String[0]));
-				}
+				if (SIMPLCoreMetaData.isSIMPLCoreAvailable()) {
+					if (SIMPLCoreMetaData.getDatasourceLanguages(subtype
+							.getText()) != null) {
+						language.setItems(SIMPLCoreMetaData
+								.getDatasourceLanguages(subtype.getText())
+								.toArray(new String[0]));
+					}
 
-				datasource.setSubtype(subtype.getText());
+					datasource.setSubtype(subtype.getText());
+				}
 				language.setText("");
 				format.removeAll();
-				
-				//Type & Subtype changed, so we have to query the supported data formats again
+
+				// Type & Subtype changed, so we have to query the supported
+				// data formats again
 				format.setItems(SIMPLCoreMetaData.getDataSourceFormats(
 						datasource).toArray(new String[0]));
 			}
 		});
-		if (this.datasource.getSubtype() != null) {
+		if (this.datasource != null && this.datasource.getSubtype() != null) {
 			subtype.setText(this.datasource.getSubtype());
 		}
 
 		Label label5 = new Label(parent, SWT.NONE);
 		label5.setText("Language *");
 		language = new CCombo(parent, SWT.BORDER);
-		if (this.datasource.getLanguage() != null) {
-			if (SIMPLCoreMetaData.getDatasourceLanguages(subtype.getText()) != null) {
-				language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
-						subtype.getText()).toArray(new String[0]));
+		if (this.datasource != null && this.datasource.getLanguage() != null) {
+			if (SIMPLCoreMetaData.isSIMPLCoreAvailable()) {
+				if (SIMPLCoreMetaData.getDatasourceLanguages(subtype.getText()) != null) {
+					language.setItems(SIMPLCoreMetaData.getDatasourceLanguages(
+							subtype.getText()).toArray(new String[0]));
+				}
 			}
-			
 			language.setText(this.datasource.getLanguage());
 		}
 
 		Label label8 = new Label(parent, SWT.NONE);
 		label8.setText("Format *");
 		format = new CCombo(parent, SWT.BORDER);
-		if (SIMPLCoreMetaData.getDataSourceFormats(this.datasource) != null) {
-			format.setItems(SIMPLCoreMetaData.getDataSourceFormats(
-					this.datasource).toArray(new String[0]));
+		if (SIMPLCoreMetaData.isSIMPLCoreAvailable()) {
+			if (SIMPLCoreMetaData.getDataSourceFormats(this.datasource) != null) {
+				format.setItems(SIMPLCoreMetaData.getDataSourceFormats(
+						this.datasource).toArray(new String[0]));
+			}
 		}
-		if (this.datasource.getFormat() != null) {
+		if (this.datasource != null && this.datasource.getFormat() != null) {
 			format.setText(this.datasource.getFormat());
 		}
 
 		Label label6 = new Label(parent, SWT.NONE);
 		label6.setText("User name");
 		user = new Text(parent, SWT.BORDER);
-		if (this.datasource.getUserName() != null) {
+		if (this.datasource != null && this.datasource.getUserName() != null) {
 			user.setText(this.datasource.getUserName());
 		}
 
 		Label label7 = new Label(parent, SWT.NONE);
 		label7.setText("Password");
 		password = new Text(parent, SWT.BORDER | SWT.PASSWORD);
-		if (this.datasource.getPassword() != null) {
+		if (this.datasource != null && this.datasource.getPassword() != null) {
 			password.setText(this.datasource.getPassword());
 		}
 

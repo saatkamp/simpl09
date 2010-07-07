@@ -161,9 +161,11 @@ public class TransferActivityToPropertySection extends
 				DataSource dataSource = PropertySectionUtils
 						.findDataSourceByName(getProcess(),
 								dataSourceAddressCombo.getText());
-				typeText.setText(dataSource.getType());
-				kindText.setText(dataSource.getSubType());
-				languageText.setText(dataSource.getLanguage());
+				if (dataSource != null) {
+					typeText.setText(dataSource.getType());
+					kindText.setText(dataSource.getSubType());
+					languageText.setText(dataSource.getLanguage());
+				}
 			}
 		});
 		dataSourceAddressCombo.setItems(PropertySectionUtils
@@ -192,6 +194,7 @@ public class TransferActivityToPropertySection extends
 								new SetCommand(transferActivity, languageText
 										.getText(), ModelPackage.eINSTANCE
 										.getTransferActivity_TargetDsLanguage()));
+				
 			}
 		});
 
@@ -206,7 +209,8 @@ public class TransferActivityToPropertySection extends
 				SWT.COLOR_WHITE));
 		targetCombo = new CCombo(composite, SWT.BORDER);
 		targetCombo.setLayoutData(gridData13);
-		targetCombo.setItems(VariableUtils.getUseableVariables(getProcess()).toArray(new String[0]));
+		targetCombo.setItems(VariableUtils.getUseableVariables(getProcess())
+				.toArray(new String[0]));
 		targetCombo.addModifyListener(new ModifyListener() {
 
 			@Override
@@ -327,13 +331,16 @@ public class TransferActivityToPropertySection extends
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource
+	 * ()
 	 */
 	@Override
 	public DataSource getDataSource() {
-		return PropertySectionUtils
-		.findDataSourceByName(getProcess(),
+		return PropertySectionUtils.findDataSourceByName(getProcess(),
 				dataSourceAddressCombo.getText());
 	}
 }
