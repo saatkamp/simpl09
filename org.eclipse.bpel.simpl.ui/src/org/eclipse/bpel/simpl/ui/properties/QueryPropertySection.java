@@ -202,9 +202,11 @@ public class QueryPropertySection extends DMActivityPropertySection {
 								dataSourceAddressCombo.getText()));
 
 				DataSource dataSource = getDataSource();
-				typeText.setText(dataSource.getType());
-				kindText.setText(dataSource.getSubType());
-				languageText.setText(dataSource.getLanguage());
+				if (dataSource != null){
+					typeText.setText(dataSource.getType());
+					kindText.setText(dataSource.getSubType());
+					languageText.setText(dataSource.getLanguage());
+				}
 			}
 		});
 		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
@@ -229,6 +231,12 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				// Auswahl im Modell speichern
 				getCommandFramework().execute(
 						new SetDsLanguageCommand(getModel(), languageText.getText()));
+			
+				if (languageText.getText().isEmpty()) {
+					openEditorButton.setEnabled(false);
+				} else {
+					openEditorButton.setEnabled(true);
+				}
 			}
 		});
 

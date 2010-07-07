@@ -69,7 +69,6 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xsd.XSDTypeDefinition;
 
-
 /**
  * The Class RetrieveDataVariableSection.
  */
@@ -81,7 +80,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	TablsListPopUp tabelsPopWindowTables;
 	ParametersListPopUp bpelVariableWindow;
 	FileSysListPopUp fSysElementsPopWindow;
-	
+
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
@@ -105,7 +104,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	private Button Save = null;
 
 	private RetrieveDataActivity activity;
-	private Button command = null,file = null,folder = null,driver = null;
+	private Button command = null, file = null, folder = null, driver = null;
 
 	private DataSource dataSource = null;
 
@@ -128,14 +127,14 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 		createWidgets(parent);
 
-		if (activity.getDsStatement() == null){
+		if (activity.getDsStatement() == null) {
 			// Setzen das Statement
 			setStatement("");
-		}else {
+		} else {
 			// Setzen das Statement
 			setStatement(activity.getDsStatement());
 		}
-		
+
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Sprache
@@ -224,13 +223,16 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 								dataSourceAddressCombo.getText()));
 
 				DataSource dataSource = getDataSource();
-				typeText.setText(dataSource.getType());
-				kindText.setText(dataSource.getSubType());
-				languageText.setText(dataSource.getLanguage());
+				if (dataSource != null) {
+					typeText.setText(dataSource.getType());
+					kindText.setText(dataSource.getSubType());
+					languageText.setText(dataSource.getLanguage());
+				}
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
-		
+		dataSourceAddressCombo.setItems(PropertySectionUtils
+				.getAllDataSourceNames(getProcess()));
+
 		dataSourceAddressLabel.setText("Data source name:");
 		dataSourceAddressCombo.setEditable(false);
 		dataSourceAddressCombo.setBackground(Display.getCurrent()
@@ -252,6 +254,12 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 				getCommandFramework().execute(
 						new SetDsLanguageCommand(getModel(), languageText
 								.getText()));
+				
+				if (languageText.getText().isEmpty()) {
+					openEditorButton.setEnabled(false);
+				} else {
+					openEditorButton.setEnabled(true);
+				}
 			}
 		});
 
@@ -275,9 +283,11 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
-				ArrayList<DBTable> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(
-						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+				MetaDataXMLParser metaDataXMLParser_Objekt = new MetaDataXMLParser();
+				ArrayList<DBTable> listOfTables = metaDataXMLParser_Objekt
+						.loadTablesFromDB(PropertySectionUtils
+								.findDataSourceByName(getProcess(),
+										dataSourceAddressCombo.getText()));
 
 				openStatementEditor(ModelPackage.eINSTANCE
 						.getRetrieveDataActivity().getInstanceClassName(),
@@ -315,42 +325,38 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		statementCompo.setLayout(gridLayout2);
 		statementCompo.setLayoutData(gridData14);
 
-
-		
-		
-		if(activity.getDsType()!=null){
-			if(activity.getDsType().equals("Filesystem")){
+		if (activity.getDsType() != null) {
+			if (activity.getDsType().equals("Filesystem")) {
 				System.out.print("\r Filesystem");
-		
+
 				createFileSystemWidgets();
-				
-			}
-			else if(activity.getDsType().equals("Database")){
+
+			} else if (activity.getDsType().equals("Database")) {
 				System.out.print("\r Database");
-				
-				createDBWidgets();	
+
+				createDBWidgets();
 			}
 		}
-		
+
 		Label statementLabel = new Label(composite, SWT.NONE);
 		statementLabel.setText("Data management operation:");
 		statementLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		
+
 		statementText = new LiveEditStyleText(composite);
 		statementText.setLayoutData(gridData15);
 
 		statementText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		
-//		statementText.addModifyListener(new ModifyListener() {
-//			
-//			@Override
-//			public void modifyText(ModifyEvent e) {
-//				setStatement(statementText.getText());
-//				saveStatementToModel();
-//			}
-//		});
+
+		// statementText.addModifyListener(new ModifyListener() {
+		//			
+		// @Override
+		// public void modifyText(ModifyEvent e) {
+		// setStatement(statementText.getText());
+		// saveStatementToModel();
+		// }
+		// });
 		// statementText.setVisible(false);
 		// +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -361,18 +367,19 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 	/**
 	 * for creating the GUI elements of DB data source as child Composite.
+	 * 
 	 * @param parentCompo
 	 * @return
 	 */
-	private void createDBWidgets(){
-		//----------------------------------------------------------
-		Composite contentCompo=new Composite(this.parentComposite, SWT.NONE);
+	private void createDBWidgets() {
+		// ----------------------------------------------------------
+		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
 		GridLayout gridLayout2 = new GridLayout();
 		gridLayout2.numColumns = 3;
 		contentCompo.setLayout(gridLayout2);
 		contentCompo.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-	
+
 		GridData gridData14 = new GridData();
 		gridData14.horizontalSpan = 4;
 		gridData14.horizontalAlignment = GridData.FILL;
@@ -380,7 +387,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		gridData14.grabExcessVerticalSpace = true;
 		gridData14.grabExcessHorizontalSpace = true;
 		contentCompo.setLayoutData(gridData14);
-		
+
 		// statementCompo.setSize(new Point(150,70));
 		insertBpelVariable = new Button(contentCompo, SWT.NONE);
 		insertBpelVariable.setText("Insert Variable");
@@ -462,24 +469,25 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		// insertBpelVariable.setLayoutData(gridData24);
 		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		//---------------------------------------------------------------
+		// ---------------------------------------------------------------
 	}
-	
-	
+
 	/**
-	 * for creating the GUI elements of FileSystem data source as child Composite.
+	 * for creating the GUI elements of FileSystem data source as child
+	 * Composite.
+	 * 
 	 * @param parentCompo
 	 * @return
 	 */
 	private void createFileSystemWidgets() {
-		//this.parentComposite = composite;
-		Composite contentCompo=new Composite(this.parentComposite, SWT.NONE);
+		// this.parentComposite = composite;
+		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
 		GridLayout gridLayout2 = new GridLayout();
 		gridLayout2.numColumns = 5;
 		contentCompo.setLayout(gridLayout2);
 		contentCompo.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		
+
 		GridData gridData14 = new GridData();
 		gridData14.horizontalSpan = 4;
 		gridData14.horizontalAlignment = GridData.FILL;
@@ -487,20 +495,20 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		gridData14.grabExcessVerticalSpace = true;
 		gridData14.grabExcessHorizontalSpace = true;
 		contentCompo.setLayoutData(gridData14);
-		
-		
-		
+
 		command = new Button(contentCompo, SWT.NONE);
 		command.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
+				SWT.COLOR_WHITE));
 		command.setText("Select Command");
 		command.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("COMMAND",statementText);
+				fSysElementsPopWindow = new FileSysListPopUp("COMMAND",
+						statementText);
 				fSysElementsPopWindow.setText("Select Command");
-				fSysElementsPopWindow.loadDataToFSysElementList("COMMAND",getDataSource());
+				fSysElementsPopWindow.loadDataToFSysElementList("COMMAND",
+						getDataSource());
 
 				if (!fSysElementsPopWindow.isWindowOpen()) {
 					fSysElementsPopWindow.openWindow();
@@ -510,21 +518,24 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
+
 			}
 		});
-		
+
 		file = new Button(contentCompo, SWT.NONE);
-		file.setBackground(Display.getCurrent().getSystemColor(
+		file
+				.setBackground(Display.getCurrent().getSystemColor(
 						SWT.COLOR_WHITE));
 		file.setText("Select File");
 		file.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("FILE",statementText);
+				fSysElementsPopWindow = new FileSysListPopUp("FILE",
+						statementText);
 				fSysElementsPopWindow.setText("Select File");
-				fSysElementsPopWindow.loadDataToFSysElementList("FILE",getDataSource());
+				fSysElementsPopWindow.loadDataToFSysElementList("FILE",
+						getDataSource());
 
 				if (!fSysElementsPopWindow.isWindowOpen()) {
 					fSysElementsPopWindow.openWindow();
@@ -534,20 +545,22 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
+
 			}
 		});
 		folder = new Button(contentCompo, SWT.NONE);
 		folder.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
+				SWT.COLOR_WHITE));
 		folder.setText("Select Folder");
 		folder.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("FOLDER",statementText);
+				fSysElementsPopWindow = new FileSysListPopUp("FOLDER",
+						statementText);
 				fSysElementsPopWindow.setText("Select Folder");
-				fSysElementsPopWindow.loadDataToFSysElementList("FOLDER",getDataSource());
+				fSysElementsPopWindow.loadDataToFSysElementList("FOLDER",
+						getDataSource());
 
 				if (!fSysElementsPopWindow.isWindowOpen()) {
 					fSysElementsPopWindow.openWindow();
@@ -557,20 +570,22 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
+
 			}
 		});
 		driver = new Button(contentCompo, SWT.NONE);
 		driver.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
+				SWT.COLOR_WHITE));
 		driver.setText("Select Driver");
 		driver.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("DRIVE",statementText);
+				fSysElementsPopWindow = new FileSysListPopUp("DRIVE",
+						statementText);
 				fSysElementsPopWindow.setText("Select Folder");
-				fSysElementsPopWindow.loadDataToFSysElementList("DRIVE",getDataSource());
+				fSysElementsPopWindow.loadDataToFSysElementList("DRIVE",
+						getDataSource());
 
 				if (!fSysElementsPopWindow.isWindowOpen()) {
 					fSysElementsPopWindow.openWindow();
@@ -580,12 +595,13 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				
+
 			}
 		});
-		
+
 		Save = new Button(contentCompo, SWT.NONE);
-		Save.setBackground(Display.getCurrent().getSystemColor(
+		Save
+				.setBackground(Display.getCurrent().getSystemColor(
 						SWT.COLOR_WHITE));
 		Save.setText("Save");
 		Save.addSelectionListener(new SelectionListener() {
@@ -606,14 +622,13 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 				widgetSelected(e);
 			}
 		});
-		
+
 		GridData gridData15 = new GridData();
 		gridData15.grabExcessHorizontalSpace = true;
 		gridData15.verticalAlignment = GridData.CENTER;
 		gridData15.horizontalAlignment = GridData.FILL;
-}
-	
-	
+	}
+
 	/**
 	 * This method initializes typeCombo
 	 * 
@@ -715,14 +730,17 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		getCommandFramework().execute(
 				new SetDsStatementCommand(getModel(), this.statement));
 	}
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource()
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource
+	 * ()
 	 */
 	@Override
 	public DataSource getDataSource() {
-		return PropertySectionUtils
-		.findDataSourceByName(getProcess(),
+		return PropertySectionUtils.findDataSourceByName(getProcess(),
 				dataSourceAddressCombo.getText());
 	}
 
