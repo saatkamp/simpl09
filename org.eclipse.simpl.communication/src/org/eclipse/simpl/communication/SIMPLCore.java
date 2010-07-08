@@ -1,5 +1,7 @@
 package org.eclipse.simpl.communication;
 
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -12,11 +14,6 @@ import org.eclipse.simpl.communication.client.DatasourceService_Service;
 import org.eclipse.simpl.communication.client.Parameter;
 
 /**
- * Die ganze Klasse ist nur ein Stub für den echten SIMPL Core bzw. für den Teil
- * den unsere Eclipse Plug-Ins benötigen. D.h. diese Klasse simuliert die
- * gesamte Funktionalität des SIMPL Core, die von Eclipse aus benötigt wird. Die
- * hier implementierte Funktionalität befindet sich später im SIMPL Core
- * (Administration- & StorageService).
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  * 
@@ -25,6 +22,10 @@ import org.eclipse.simpl.communication.client.Parameter;
 public class SIMPLCore {
 	AdministrationService administrationService = null;
 	DatasourceService datasourceService = null;
+
+	private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn
+			.getDefault().getPreferenceStore().getString(
+					"SIMPL_CORE_DSS_ADDRESS");
 
 	private DatasourceService getDatasourceService() {
 		if (datasourceService == null) {
@@ -100,58 +101,38 @@ public class SIMPLCore {
 	 * @return
 	 */
 	public List<String> getSupportedDataFormats(DataSource dataSource) {
-		List<String> dsDataFormat = (List<String>) Parameter
-				.deserialize(getDatasourceService().getSupportedDataFormatTypes(dataSource));
+		try {
+			List<String> dsDataFormat = (List<String>) Parameter
+					.deserialize(getDatasourceService()
+							.getSupportedDataFormatTypes(dataSource));
 
-		return dsDataFormat;
+			return dsDataFormat;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
-	// public boolean saveAll(List<String> schema, List<String> table, String
-	// settingName,
-	// List<LinkedHashMap<String, String>> settings) {
-	// // Code der Operation
-	//
-	// // STUB
-	// for (LinkedHashMap<String, String> map : settings) {
-	// System.out.println("-------------------------------");
-	// System.out.println("Schema: " + schema);
-	// System.out.println("Tabelle: " + table);
-	// System.out.println("Name der Einstellungen: " + settingName);
-	// for (String key : map.keySet()) {
-	// System.out.println(key + " : " + map.get(key));
-	// }
-	// System.out.println("-------------------------------");
-	// }
-	//
-	// // STUB
-	//
-	// return true;// Hier wird dann in einem boolean zurückgegeben, ob das
-	// // Speichern der Einstellungen geklappt hat.
-	// }
-	//
-	// public List<LinkedHashMap<String, String>> loadAll(List<String> schema,
-	// List<String> table, String settingName) {
-	// // Code der Operation
-	//
-	// // STUB
-	// List<LinkedHashMap<String, String>> settings = new
-	// ArrayList<LinkedHashMap<String,
-	// String>>();
-	// LinkedHashMap<String, String> globalSettings = new LinkedHashMap<String,
-	// String>();
-	// LinkedHashMap<String, String> auditingSettings = new
-	// LinkedHashMap<String, String>();
-	// // Global Settings
-	// globalSettings.put("user", "admin");
-	// globalSettings.put("password", "12345");
-	// // Auditing
-	// auditingSettings.put("mode", "off");
-	// auditingSettings.put("auditingDsAddress", "http://localhost:8080/myDB");
-	// //Zur Liste hinzufügen
-	// settings.add(globalSettings);
-	// settings.add(auditingSettings);
-	// // STUB
-	//
-	// return settings;// Einstellungen als HashMap
-	// }
+	public String getDataFormatSchema(DataSource dataSource) {
+		try {
+			return getDatasourceService().getDataFormatSchema(dataSource);
+		} catch (ConnectionException_Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	public static boolean isSIMPLCoreAvailable() {
+		boolean isAvailable = false;
+		URL url;
+		try {
+			url = new URL(DSS_WSDL_ADDRESS);
+			URLConnection connection = url.openConnection();
+			connection.connect();
+			isAvailable = true;
+		} catch (Exception e) {
+			isAvailable = false;
+		}
+		return isAvailable;
+	}
 }
