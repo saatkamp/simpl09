@@ -702,13 +702,6 @@ reference "sub:BPEL-DM-Extension"
 
 \end_inset
 
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:SIMPL-Event-System"
-
-\end_inset
-
  und 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -757,7 +750,7 @@ huettiwg
 Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:SIMPL-DAO"
+reference "sub:Simpl-Auditing"
 
 \end_inset
 
@@ -862,17 +855,10 @@ reference "sec:Kommunikation"
 \end_layout
 
 \begin_layout Plain Layout
-Beschreibung der Abschnitte 
+Beschreibung des Abschnitts 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Administration-Service"
-
-\end_inset
-
- und 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Storage-Service"
 
 \end_inset
 
@@ -1045,7 +1031,7 @@ huettiwg
 Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:SIMPL-DAO"
+reference "sub:Simpl-Auditing"
 
 \end_inset
 
@@ -1187,7 +1173,7 @@ reference "sub:Paketstruktur"
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:SIMPLCore"
+reference "sec:SIMPLCore"
 
 \end_inset
 
@@ -1228,7 +1214,7 @@ reference "sub:SIMPLConfig"
 \begin_layout Plain Layout
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Dataformat-Service"
+reference "sub:DataFormat<S,-T>"
 
 \end_inset
 

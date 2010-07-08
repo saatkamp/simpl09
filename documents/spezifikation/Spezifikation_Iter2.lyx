@@ -3573,7 +3573,13 @@ Datenquellen-Registry View
 \end_layout
 
 \begin_layout Subsection
-Uddi Web Interface
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:UDDI-Web-Interface"
+
+\end_inset
+
+UDDI Web Interface
 \end_layout
 
 \begin_layout Standard
@@ -3615,7 +3621,7 @@ name "fig:Uddi-Web-Inteface-Index"
 
 \end_inset
 
-Uddi Web Inteface Index
+UDDI Web Inteface Index
 \end_layout
 
 \end_inset
@@ -3683,7 +3689,7 @@ name "fig:Uddi-Web-Interface-Datenquellenliste"
 
 \end_inset
 
-Uddi Web Interface Datenquellenliste
+UDDI Web Interface Datenquellenliste
 \end_layout
 
 \end_inset
@@ -3747,7 +3753,7 @@ name "fig:Uddi-Web-Interface-Editor"
 
 \end_inset
 
-Uddi Web Interface Editor
+UDDI Web Interface Editor
 \end_layout
 
 \end_inset
@@ -26225,7 +26231,7 @@ reference "sub:ODE-Deployment-Deskriptor"
 ) oder über das UDDI Web Interface (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Datenquellen-Registry-Web-Interface"
+reference "sub:UDDI-Web-Interface"
 
 \end_inset
 
