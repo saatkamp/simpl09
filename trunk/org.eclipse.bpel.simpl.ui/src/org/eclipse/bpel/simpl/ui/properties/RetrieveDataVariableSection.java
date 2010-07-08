@@ -227,6 +227,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 					typeText.setText(dataSource.getType());
 					kindText.setText(dataSource.getSubType());
 					languageText.setText(dataSource.getLanguage());
+					
+					PropertySectionUtils.downloadSchema(dataSource, getProcess());
 				}
 			}
 		});
