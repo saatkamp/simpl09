@@ -122,7 +122,7 @@ public class SIMPLCore {
 		return "";
 	}
 
-	public static boolean isSIMPLCoreAvailable() {
+	public boolean isSIMPLCoreAvailable() {
 		boolean isAvailable = false;
 		URL url;
 		try {

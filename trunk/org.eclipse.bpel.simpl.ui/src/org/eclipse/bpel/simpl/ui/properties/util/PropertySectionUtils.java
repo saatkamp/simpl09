@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class PropertySectionUtils {
 	private static final String AT_DATA_SOURCE_LANG = "language";
 	private static final String AT_DATA_SOURCE_USERNAME = "userName";
 	private static final String AT_DATA_SOURCE_PASSWORD = "password";
+	private static String AT_DATA_FORMAT = "format";
 
 	/**
 	 * Die BPEL Datei des Prozesses
@@ -132,6 +134,8 @@ public class PropertySectionUtils {
 								datasource
 										.setLanguage(((Element) data)
 												.getAttributeValue(AT_DATA_SOURCE_LANG));
+								datasource.setDataFormat(((Element) data)
+										.getAttributeValue(AT_DATA_FORMAT));
 								Authentication authent = new Authentication();
 								authent
 										.setUser(((Element) data)
@@ -268,17 +272,9 @@ public class PropertySectionUtils {
 			absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
 					.getLocation().toOSString();
 
-			// TODO: Im Moment gibt es ja nur ein Datenformat pro Datenquelle,
-			// trotzdem muss die Implementierung
-			// so angepasst werden, dass das Schema über den Datenformat-Namen
-			// und nicht über ein DataSource-Objekt ausgelesen werden kann
-			// (=>Eindeutigkeit)
-			List<String> dsDataFormat = SIMPLCommunication.getConnection()
-					.getSupportedDataFormats(dataSource);
+			if (dataSource.getDataFormat() != null) {
 
-			if (dsDataFormat != null) {
-
-				IPath xsdPath = projectPath.append(dsDataFormat.get(0))
+				IPath xsdPath = projectPath.append(dataSource.getDataFormat())
 						.addFileExtension(IBPELUIConstants.EXTENSION_XSD);
 
 				File xsdFileSIMPL = new File(absolutWorkspacePath
@@ -286,26 +282,36 @@ public class PropertySectionUtils {
 
 				if (!xsdFileSIMPL.exists()) {
 					try {
-						if (xsdFileSIMPL.createNewFile()) {
+
+						// TODO: Im Moment gibt es ja nur ein Datenformat
+						// pro
+						// Datenquelle, trotzdem muss die Implementierung
+						// so angepasst werden, dass das Schema über den
+						// Datenformat-Namen und nicht über ein
+						// DataSource-Objekt ausgelesen werden kann
+						// (=>Eindeutigkeit)
+						String stream = null;
+						try {
+							stream = SIMPLCommunication.getConnection()
+									.getDataFormatSchema(dataSource);
+						} catch (Exception e) {
+						}
+						if (stream != null && xsdFileSIMPL.createNewFile()) {
 
 							OutputStreamWriter out = new OutputStreamWriter(
 									new FileOutputStream(xsdFileSIMPL
 											.getAbsolutePath()), "UTF-8");
 
-							// TODO: Im Moment gibt es ja nur ein Datenformat
-							// pro
-							// Datenquelle, trotzdem muss die Implementierung
-							// so angepasst werden, dass das Schema über den
-							// Datenformat-Namen und nicht über ein
-							// DataSource-Objekt ausgelesen werden kann
-							// (=>Eindeutigkeit)
-							String stream = SIMPLCommunication.getConnection()
-									.getDataFormatSchema(dataSource);
-
 							out.write(stream.toCharArray());
 							out.close();
 
 						}
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
