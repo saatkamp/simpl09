@@ -293,7 +293,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 				openStatementEditor(ModelPackage.eINSTANCE
 						.getRetrieveDataActivity().getInstanceClassName(),
-						activity.getDsLanguage());
+						activity.getDsLanguage(), activity.getName());
 			}
 		});
 

@@ -32,6 +32,8 @@ public class Application {
 	 */
 	private List<IConfigurationElement> languageExtensions = new ArrayList<IConfigurationElement>();
 
+	private boolean isStatementEditorOpen = false;
+
 	/**
 	 * Holds the id of the extension point which have to be managed.
 	 */
@@ -97,5 +99,22 @@ public class Application {
 			System.out.println(ex.getMessage());
 		}
 		return editorClass;
+	}
+	
+	/**
+	 * @return Whether the statement editor is opened or not
+	 */
+	public boolean isStatementEditorOpen() {
+		return this.isStatementEditorOpen;
+	}
+	
+	
+	/**
+	 * @param Set the status of the statement editor
+	 */
+	public void setStatementEditorVisibility(boolean open) {
+		//open = true
+		//closed = false
+		this.isStatementEditorOpen = open;
 	}
 }

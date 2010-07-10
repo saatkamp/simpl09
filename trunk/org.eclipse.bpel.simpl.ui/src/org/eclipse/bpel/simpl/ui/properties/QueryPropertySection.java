@@ -279,7 +279,7 @@ public class QueryPropertySection extends DMActivityPropertySection {
 						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
 				System.out.println("\r checkpoint \r");
 				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
-						.getInstanceClassName(), activity.getDsLanguage());
+						.getInstanceClassName(), activity.getDsLanguage(), activity.getName());
 			}
 		});
 
