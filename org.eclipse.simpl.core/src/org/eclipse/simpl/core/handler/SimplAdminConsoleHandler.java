@@ -28,7 +28,9 @@ public class SimplAdminConsoleHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		if (Application.getInstance().isSIMPLCoreAvailable() && Application.getInstance().isDataLoaded()) {
-			new AdminConsoleUI();
+			if (!Application.getInstance().isAdminConsoleOpen()){
+				new AdminConsoleUI();
+			}
 		} else {
 			MessageDialog
 					.openError(

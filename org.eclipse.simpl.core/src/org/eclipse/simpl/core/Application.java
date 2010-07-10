@@ -19,6 +19,8 @@ public class Application {
 	private LinkedHashMap<String, AAdminConsoleComposite> compositeClasses = new LinkedHashMap<String, AAdminConsoleComposite>();
 
 	private boolean dataLoaded = false;
+
+	private boolean isAdminConsoleOpen = false;
 	
 	// This must be the ID from your extension point
 	private static final String AC_ITEM_ID = "org.eclipse.simpl.core.adminConsoleItem";
@@ -224,5 +226,20 @@ public class Application {
 
 	public boolean isDataLoaded() {
 		return dataLoaded;
+	}
+
+	/**
+	 * @return Whether the admin console is opened or not
+	 */
+	public boolean isAdminConsoleOpen() {
+		return this.isAdminConsoleOpen;
+	}
+	
+	
+	/**
+	 * @param Set the status of the admin console
+	 */
+	public void setAdminConsoleVisibility(boolean open) {
+		this.isAdminConsoleOpen = open;
 	}
 }

@@ -40,6 +40,7 @@ public class AdminConsoleUI {
 	public AdminConsoleUI() {
 		createSShell();
 		sShell.open();
+		Application.getInstance().setAdminConsoleVisibility(true);
 	}
 
 	/**
@@ -193,6 +194,7 @@ public class AdminConsoleUI {
 				// Werte des Composites speichern
 				saveAllSettings();
 				sShell.close();
+				Application.getInstance().setAdminConsoleVisibility(false);
 			}
 		});
 
@@ -216,13 +218,16 @@ public class AdminConsoleUI {
 					if (buttonPressed == 0) {
 						saveAllSettings();
 						sShell.close();
+						Application.getInstance().setAdminConsoleVisibility(false);
 					}
 					if (buttonPressed == 1){
 						Application.getInstance().resetCompositeValues();
 						sShell.close();
+						Application.getInstance().setAdminConsoleVisibility(false);
 					}
 				}else {
 					sShell.close();
+					Application.getInstance().setAdminConsoleVisibility(false);
 				}
 			}
 		});
@@ -264,13 +269,6 @@ public class AdminConsoleUI {
 				TreeItem sItem = (TreeItem) e.item;
 				TreeItem parentItem = sItem.getParentItem();
 
-				// TODO Auswahl muss noch besser abgesichert werden. Am besten
-				// man betrachtet das Elternelement mit! Hier ist allerdings
-				// auch noch
-				// zu denken, dass das Elternelement auch eine Composite haben
-				// kann und
-				// das auch Elemente ohne Elternelement eine Composite haben
-				// (wie z.B. Auditing)
 				if (parentItem != null && sItem != null) {
 					System.out.println(parentItem.getText() + " -> "
 							+ sItem.getText() + " was selected");
@@ -278,19 +276,6 @@ public class AdminConsoleUI {
 					selectedTreeItem = sItem;
 					showComposite(sItem);
 				}
-
-				// if (father != null && father.getText().contains("Auditing")
-				// && sItem.getText().contains("General")) {
-				// System.out.println("Auditing->General was selected");
-				// showComposite("General");
-				// } else {
-				// if (father != null &&
-				// father.getText().contains("Global Settings")
-				// && sItem.getText().contains("Authentification Data")) {
-				// System.out.println("Global Settings->Authentification Data was selected");
-				// showComposite("Authentification Data");
-				// }
-				// }
 			}
 		});
 

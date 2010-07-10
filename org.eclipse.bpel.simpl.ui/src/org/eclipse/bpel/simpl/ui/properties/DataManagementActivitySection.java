@@ -252,10 +252,10 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 					// activity needs a query statement editor
 					openStatementEditor(ModelPackage.eINSTANCE
 							.getQueryActivity().getName(), activity
-							.getDsLanguage());
+							.getDsLanguage(), activity.getName());
 				} else {
 					openStatementEditor(getModel().eClass().getName(), activity
-							.getDsLanguage());
+							.getDsLanguage(), activity.getName());
 				}
 			}
 		});

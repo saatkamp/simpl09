@@ -12,6 +12,7 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
+import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.eclipse.simpl.communication.client.DataSource;
 
@@ -28,9 +29,11 @@ public abstract class DMActivityPropertySection extends BPELPropertySection {
 	 * @param language
 	 *            the language
 	 */
-	public void openStatementEditor(String eClass, String language) {
+	public void openStatementEditor(String eClass, String language, String activityName) {
 		System.out.println("StatementEditor: " + eClass + " : " + language);
-		new StatementEditor(this, language, eClass);
+		if (!Application.getInstance().isStatementEditorOpen()){
+			new StatementEditor(this, language, eClass, activityName);
+		}
 	}
 
 	/**

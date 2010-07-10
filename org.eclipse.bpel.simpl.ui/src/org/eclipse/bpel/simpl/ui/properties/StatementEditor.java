@@ -44,19 +44,6 @@ public class StatementEditor {
 	ArrayList<DBTable> listOfDBTables=null;
 	ArrayList<DBTable> listOfTablesBTables;
 	private StatementEditDialog statementEditDialogObjekt;
-	
-	/**
-	 * Instantiates a new statement editor.
-	 * @param listOfTables 
-	 * @param eClass 
-	 * @param language 
-	 * @param dmActivityPropertySection 
-	 */
-	public StatementEditor(DMActivityPropertySection dmActivityPropertySection, String language, String eClass, ArrayList<DBTable> listOfTables) {
-		createSShell();
-		listOfTablesBTables = listOfTables;
-		sShell.open();
-	}
 
 	/**
 	 * Instantiates a new statement editor.
@@ -69,8 +56,8 @@ public class StatementEditor {
 	 *            the activity, on which the statement editor relies
 	 */
 	public StatementEditor(DMActivityPropertySection parent, String language,
-			String activity) {
-		createSShell();
+			String activity, String activityName) {
+		createSShell(activityName);
 		//compositeClass = Application.getInstance().getEditorClass(language,
 		//		activity);
 		if (parent != null && language != null && activity != null) {
@@ -89,6 +76,7 @@ public class StatementEditor {
 		}
 		//compositeClass.createComposite(composite);
 		sShell.open();
+		Application.getInstance().setStatementEditorVisibility(true);
 	}
 
 	/**
@@ -112,7 +100,7 @@ public class StatementEditor {
 	/**
 	 * This method initializes the shell
 	 */
-	private void createSShell() {
+	private void createSShell(String activityName) {
 		GridData gridData2 = new GridData();
 		gridData2.horizontalAlignment = GridData.END;
 		gridData2.grabExcessHorizontalSpace = true;
@@ -126,7 +114,7 @@ public class StatementEditor {
 		GridLayout gridLayout1 = new GridLayout();
 		gridLayout1.numColumns = 3;
 		sShell = new Shell(Display.getDefault());
-		sShell.setText("Statement Editor");
+		sShell.setText("Statement Editor: " + activityName);
 		sShell.setImage(new Image(Display.getCurrent(), getClass().getResourceAsStream("/icons/database.png")));
 		
 		createComposite();
@@ -153,6 +141,7 @@ public class StatementEditor {
 					statementEditDialogObjekt.openWindow();
 				}
 				sShell.close();
+				Application.getInstance().setStatementEditorVisibility(false);
 			}
 		});
 
@@ -169,6 +158,7 @@ public class StatementEditor {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				sShell.close();
+				Application.getInstance().setStatementEditorVisibility(false);
 			}
 		});
 	}
