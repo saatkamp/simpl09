@@ -1,4 +1,4 @@
-#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -20,9 +20,9 @@
 % docautor = Author(en)
 % docdate = Datum der letzten Änderung
 \def\doctitel{Grobentwurf}
-\def\docvers{2.1}
+\def\docvers{2.3}
 \def\docautor{Michael Schneidt}
-\def\docdate{28. Juni 2010}
+\def\docdate{11. Juli 2010}
 
 % docstate = Status des Dokuments aus {neu, bearbeitet}
 % qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
@@ -457,7 +457,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="4">
+<lyxtabular version="3" rows="21" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1231,7 +1231,7 @@ reference "sec:Komponenten"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1240,7 +1240,7 @@ reference "sec:Komponenten"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1249,7 +1249,7 @@ reference "sec:Komponenten"
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1258,7 +1258,7 @@ bruededl
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1270,6 +1270,55 @@ reference "fig:Eclipse-mit-SIMPL"
 \end_inset
 
  Überarbeitet 
+\end_layout
+
+\begin_layout Plain Layout
+(100222-Grobentwurf-v03-comments_PR_MS.pdf)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.07.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+schneimi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:SIMPL-Core-1"
+
+\end_inset
+
+ überarbeitet
 \end_layout
 
 \begin_layout Plain Layout
@@ -1946,7 +1995,7 @@ key "key-5"
  zu den SIMPL Core Web Services (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:SIMPL-Core"
+reference "sub:SIMPL-Core-1"
 
 \end_inset
 
@@ -2003,7 +2052,7 @@ llt werden, der sich aus nach Aufgaben eingeteilten Web Services zusammensetzt
  (siehe Kapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:SIMPL-Core"
+reference "sub:SIMPL-Core-1"
 
 \end_inset
 
@@ -3191,6 +3240,12 @@ Das SIMPL DAO nutzt die JPA-DAO Implementierung von Apache ODE und erweitert
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SIMPL-Core-1"
+
+\end_inset
+
 SIMPL Core
 \end_layout
 
@@ -3238,16 +3293,6 @@ reference "sec:Schnittstellen"
 \end_inset
 
  weiter ausgeführt.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Web Service Schnittstellen in die Beschreibungen der Services nennen
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3313,8 +3358,8 @@ reference "sub:Admin-Konsole"
  Service verwaltet.
  Für Einstellungen, mit denen zur Laufzeit Einfluss auf Apache ODE genommen
  wird, wie z.B.
- die Granularität des Auditings, werden die vorhandenen Schnittstellen von
- Apache ODE verwendet und, falls nötig, neue Schnittstellen geschaffen.
+ das Ein- und Ausschalten des Auditings, werden die vorhandenen Schnittstellen
+ von Apache ODE verwendet und, falls nötig, neue Schnittstellen geschaffen.
  Die geforderte austauschbare GUI (siehe Anforderung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3332,9 +3377,12 @@ Datasource Service
 
 \begin_layout Standard
 Der Datasource Service ist für alle Aufgaben zuständig, die den Zugriff
- auf die Datenquellen betreffen und bietet eine WSDL-Schnittstelle, die
- von Apache ODE zur Ausführung der DM-Aktivitäten verwendet wird.
- Dort werden entsprechende Adapter (siehe 
+ auf die Datenquellen und Informationen zu den Datenquellen (z.B.
+ Metadaten) betreffen.
+ Er wird auf Klassenebene von Apache ODE zur Ausführung der DM-Aktivitäten
+ und die Speicherung der Auditing-Daten verwendet, sowie von Eclipse für
+ den Abruf von Informationen zu den Datenquellen.
+ Dazu werden entsprechende Adapter (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Adapter"
@@ -3359,93 +3407,37 @@ reference "sub:Plug-In"
 \end_inset
 
 ) für zusätzliche funktionale Erweiterungen geschaffen, wie z.B die Unterstützung
- verschiedener Dateitypen bei Dateisystemen.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Was passiert denn, wenn externe Daten in den Prozessspeicher geladen werden
- (Retrieve Activity)? Die müssen imho ja irgendwie in die interne Datenbank
- von ODE kommen, damit ODE dann über seine DAOs darauf zugreifen kann.
- Wie funktioniert das mit dem Data Source Service?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Security Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Was macht der Service konkret? "verarbeiten", "transformieren", "zwischenspeiche
-rn" - das sagt mir nichts über seine Funktionalität aus.
- WIE soll denn SSO realisiert werden? Meldet der Service sich bei den Datenquell
-en an? Wie macht er das? usw.
-\end_layout
-
-\begin_layout Plain Layout
-Ihr solltet in dem Zusammenhang auch über die Verwaltung der Connections
- nachdenken, z.B.
- über einen connection pool o.ä.
- Es ist an dieser Stelle nicht klar, ob das hier der Security Service macht,
- ob das der Data Source Service macht (oder ein anderer), ob man dafür einen
- neuen Service braucht, oder ob das der Container, in dem der SIMPL Core
- deployed ist, machen soll.
-\end_layout
-
-\begin_layout Plain Layout
-Tomcat oder ein Service Bus sollten dafür auch entsprechende Funktionalitäten
- bieten.
- Sprecht da am besten mal mit Michael Reiter drüber.
- Auf jeden Fall sollte so etwas in den Grobentwurf.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Hier fehlt die Verbindung zwischen dem Data Source Service und dem Security
- Service.
- Wie genau spielen die zusammen? Insbesonder: wer von beiden führt die Authentif
-izierung und Autorisierung sowie das SSO gegenüber den Datenquellen durch?
-\end_layout
-
-\begin_layout Plain Layout
-Wo werden außerdem die Informationen festgelegt? Braucht man da noch eine
- zusätzliche externe Schnittstelle?
-\end_layout
-
-\end_inset
-
-
+ verschiedener Datenformate bei Datenquellen (z.B.
+ CSV-Daten bei Dateisystemen) und die Konvertierung der Daten zwischen den
+ Datenformaten.
 \end_layout
 
 \begin_layout Standard
-Der Security Service ist zuständig für die Verwaltung von Informationen
- zur Authentifizierung und Autorisierung gegenüber Datenquellen.
- Mit diesem Service können ggf.
- auch Authentifizierungs- und Autorisierungsinformationen in andere Formate
- transformiert werden, wie beispielsweise Benutzername und Passwort nach
- SAML.
- Die Informationen werden über den Storage Service persistent gespeichert
- um das Konzept des SSO (siehe Anforderung 
+Die Authentifizierungdaten für den Verbindungsaufbau zu einer Datenquelle,
+ werden in der Datenquellenregistry (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Authentifizierung-und-Autorisierung"
+reference "sub:Registry"
 
 \end_inset
 
-) zu realisieren, bei dem diese Informationen wiederverwendet werden.
- Des Weiteren werden dort offene Verbindungen zu Datenquellen verwaltet,
- damit diese ggf.
- wiederaufgenommen werden können und nicht erneut hergestellt werden müssen.
+) hinterlegt und beim Zugriff an den Datasource Service übermittelt, wo
+ sie vom Connection Service zwischengespeichert werden.
+\end_layout
+
+\begin_layout Subsubsection
+Connection Service
+\end_layout
+
+\begin_layout Standard
+Der Connection Service ist für die Verwaltung von Datenquellenverbindungen
+ zuständig und ermöglicht das Pooling von Verbindungen, die wiederaufgenommen
+ werden können.
+ Damit entfällt bei nachfolgenden Verbindungen, der meist lange Verbindungsaufba
+u und die Authentifzierung.
+ Im Rahmen des Studienprojekts und der damit unterstützten Typen von Datenquelle
+n, wird der Connection Service ausschließlich für JDBC-Datenbankverbindungen
+ realisiert.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3469,11 +3461,10 @@ reference "sub:Late-Binding-von"
 
 ) verwendet.
  Dort stehen verschiedene Auswahlstrategien bzw.
- -algorithmen zur Verfügung, um mit im Prozess formulierten Anforderungen
- eine passende Datenquelle ausfindig zu machen.
- Die Datenquellen zur Auswahl werden von der UDDI Registry (Apache jUDDI)
- bereitgestellt.
- In einer späteren Iteration werden die Strategien 
+ -algorithmen zur Verfügung, um mit im Prozess formulierten funktionalen
+ und nicht-funktionalen Anforderungen eine passende Datenquelle ausfindig
+ zu machen.
+ Im Rahmen des Studienprojekts wird nur die Auswahlstrategie 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3481,66 +3472,9 @@ Erster Fund
 \begin_inset Quotes erd
 \end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Bester Fund
-\begin_inset Quotes erd
-\end_inset
-
- und 
-\begin_inset Quotes eld
-\end_inset
-
-Passender Fund
-\begin_inset Quotes erd
-\end_inset
-
- realisiert, die erst in dieser Iteration entworfen werden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Sollte auch mal jemand entwerfen...
- Feinentwurf?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Storage Service
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Ihr müsst hier und an anderen entsprechenden Stellen in Kapitel 3.3 noch
- begründen, warum man diesen separaten Storage Service braucht.
- Schließlich könnte man die Datenhaltung auch über die anderen Services
- realisieren.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Der Storage Service verwaltet in einer embedded Datenbank alle Daten die
- innerhalb des Rahmenwerks gespeichert werden müssen.
- Damit werden beispielsweise vom Administration Service die Einstellungen
- des SIMPL Rahmenwerks aus der Admin-Konsole gespeichert und können später
- wieder abgerufen werden.
- Auch andere Services können diesen Dienst zur Verwaltung von Daten benutzen,
- wie z.B.
- der Security Service zur Verwaltung von Authentifizierungs- und Autorisierungsi
-nformationen.
- Durch den Storage Service bleibt die Datenhaltung dienstunabhängig und
- der SIMPL Core kann einfach um weitere Dienste erweitert werden, die ebenfalls
- eine Datenhaltung benötigen, da diese nicht implementiert werden müssen.
+ realisiert.
+ Die Datenquellen zur Auswahl für den Strategy Service, werden von der UDDI
+ Registry (Apache jUDDI) bereitgestellt.
 \end_layout
 
 \begin_layout Subsection
