@@ -93,7 +93,7 @@ public class LiveEditStyleText extends StyledText{
 		        	typedWord=wordsOfSyleText[i];
 		        	index=index+typedWord.length();
 		        	if(isEqualToKeyword(typedWord)){
-		        		System.out.print("is a keyword");
+//		        		System.out.print("is a keyword");
 		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
 			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
 			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),KEYWORD));
@@ -102,7 +102,7 @@ public class LiveEditStyleText extends StyledText{
 		        		//list.add(getHighlightStyle(index, typedWord.length()));
 		        	}
 		        	else if(isEqualToTableName(typedWord)){
-		        		System.out.print("is a keyword");
+//		        		System.out.print("is a keyword");
 		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
 		        		String tmpWord=removeSpacesFromWord(typedWord);
 		        		if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
@@ -112,7 +112,7 @@ public class LiveEditStyleText extends StyledText{
 		        		//list.add(getHighlightStyle(index, typedWord.length()));
 		        	}
 		        	else if(isEqualToSimplParameter(typedWord)){
-		        		System.out.print("is a keyword");
+//		        		System.out.print("is a keyword");
 		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
 			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
 			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),SIMPLE_PARAMETER));
@@ -121,7 +121,7 @@ public class LiveEditStyleText extends StyledText{
 		        		//list.add(getHighlightStyle(index, typedWord.length()));
 		        	}
 		        	else if(isEqualToKomplexParameter(typedWord)){
-		        		System.out.print("is a keyword");
+//		        		System.out.print("is a keyword");
 		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
 			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
 			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),KOMPLEX_PARAMETER));
@@ -131,7 +131,7 @@ public class LiveEditStyleText extends StyledText{
 		        	}
 		        	
 		        	else if(isEqualToBPLEVariable(typedWord)){
-		        		System.out.print("is a keyword");
+//		        		System.out.print("is a keyword");
 		      	          //list.add(getHighlightStyle(styledText.getText().length()-lastTypedWord.length(), styledText.getText().length()-1));
 			    	    if( (cursor = line.indexOf(typedWord, cursor+1)) >= 0) {
 			  	          list.add(getHighlightStyle(event.lineOffset+cursor, typedWord.length(),BPEL_VARIABLE));
@@ -166,7 +166,7 @@ public class LiveEditStyleText extends StyledText{
 				text.replaceAll( "  ", " ");
 			
 		}
-		System.out.print("\r**"+text+"**");
+//		System.out.print("\r**"+text+"**");
 		return text;
 	}
 

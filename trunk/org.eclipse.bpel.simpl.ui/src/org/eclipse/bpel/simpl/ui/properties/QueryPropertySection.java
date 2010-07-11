@@ -28,12 +28,11 @@ import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
 import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
+import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.LineStyleEvent;
-import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -44,6 +43,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -52,13 +52,12 @@ import org.eclipse.swt.widgets.Text;
 public class QueryPropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
-	TablsListPopUp tabelsPopWindowTables;
-	
-	/** The tabels pop window bpel variables. */
-	TablsListPopUp tabelsPopWindowBPELVariables;
+	SchemaListPopUp schemaPopWindow;
 	ParametersListPopUp bpelVariableWindow;
 	FileSysListPopUp fSysElementsPopWindow;
-	
+
+	/** The tabels pop window bpel variables. */
+	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
 	private Label statementLabel = null;
@@ -76,12 +75,13 @@ public class QueryPropertySection extends DMActivityPropertySection {
 	private CCombo queryTargetCombo = null;
 
 	private LiveEditStyleText statementText = null;
-	private Button insertBpelVariable = null;
+	private Button insertParameterVariable = null;
+	private Button insertContainerVariable = null;
 	private Button insertTable = null;
 	private Button Save = null;
 	
 	private QueryActivity activity;
-	private Button command = null,file = null,folder = null,driver = null;
+	private Button command = null, file = null; //, folder = null, driver = null;
 	
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -277,164 +277,55 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
 				ArrayList<DBTable> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(
 						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
-				System.out.println("\r checkpoint \r");
+//				System.out.println("\r checkpoint \r");
 				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
 						.getInstanceClassName(), activity.getDsLanguage(), activity.getName());
 			}
 		});
 
-		
-		
-		
-		//+++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++ 
-		Composite statementCompo=new Composite(composite, SWT.NONE);
-		statementCompo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-		GridData gridData131 = new GridData();
-		gridData131.horizontalSpan = 3;
-		
+		Label filler = new Label(composite, SWT.NONE);
+		Label filler6 = new Label(composite, SWT.NONE);
+
 		GridData gridData14 = new GridData();
 		gridData14.horizontalSpan = 4;
 		gridData14.horizontalAlignment = GridData.FILL;
 		gridData14.verticalAlignment = GridData.FILL;
 		gridData14.grabExcessVerticalSpace = true;
 		gridData14.grabExcessHorizontalSpace = true;
-		
+
+		if (activity.getDsType() != null) {
+			if (activity.getDsType().equals("Filesystem")) {
+				System.out.print("\r Filesystem");
+
+				createFileSystemWidgets();
+
+			} else if (activity.getDsType().equals("Database")) {
+				System.out.print("\r Database");
+
+				createDBWidgets();
+			}
+		}
+
 		GridData gridData15 = new GridData();
 		gridData15.horizontalSpan = 4;
 		gridData15.horizontalAlignment = GridData.FILL;
 		gridData15.verticalAlignment = GridData.FILL;
 		gridData15.grabExcessVerticalSpace = true;
 		gridData15.grabExcessHorizontalSpace = true;
-		
-		GridData gridData24 = new GridData();
-		gridData24.horizontalAlignment = GridData.BEGINNING;
-		gridData24.verticalAlignment = GridData.CENTER;
-		
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
-		statementCompo.setLayout(gridLayout2);
-		statementCompo.setLayoutData(gridData14);
-		//statementCompo.setSize(new Point(150,70));
-				
-//		Save = new Button(statementCompo, SWT.NONE);
-//		Save.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-//		Save.setText("Save");
-//		Save.addSelectionListener(new SelectionListener() {
-//			
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				
-//			}
-//			
-//			@Override
-//			public void widgetDefaultSelected(SelectionEvent e) {
-//				
-//				//activity.setDsStatement(statementText.getText());
-//				setStatement(statementText.getText());
-//				saveStatementToModel();
-//				 
-//				tabelsPopWindowTables.closeWindow();
-//				tabelsPopWindowBPELVariables.closeWindow();
-//				tabelsPopWindowTables.setWindowIsOpen(false);
-//				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
-//			}
-//		});
 
-				
-		if(activity.getDsType()!=null){
-			if(activity.getDsType().equals("Filesystem")){
-				System.out.print("\r Filesystem");
-		
-				createFileSystemWidgets();
-				
-			}
-			else if(activity.getDsType().equals("Database")){
-				System.out.print("\r Database");
-				
-				createDBWidgets();	
-			}
-		}
-		
-		
-		Label statementLabel = new Label(composite, SWT.NONE);
-		statementLabel.setText("Data management operation:");
-		statementLabel.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		statementText = new LiveEditStyleText(composite);
-		statementText.setLayoutData(gridData15);
-
-		statementText.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		
-		
-		
-		
-		
-		if (activity.getDsStatement() == null){
-			// Setzen das Statement
-			setStatement("");
-			statementText.setText("");
-		}else {
-			// Setzen das Statement
-			statementText.setText(activity.getDsStatement());
-		}
-
-//		statementText.addModifyListener(new ModifyListener() {
-//			
-//			@Override
-//			public void modifyText(ModifyEvent e) {
-//				//setStatement(statementText.getText());
-//				setStatement(statementText.getText());
-//				saveStatementToModel();
-//			}
-//		});
-		
-		statementText.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		//statementText.setVisible(false);
-		//+++++++++++++++++++++++++++++++++++++++++++++++++++++
-		
-		typeText.setEnabled(false);
-		kindText.setEnabled(false);
-		languageText.setEnabled(false);
-	}
-
-	/**
-	 * for creating the GUI elements of DB data source as child Composite.
-	 * @param parentCompo
-	 * @return
-	 */
-	private void createDBWidgets(){
-		//----------------------------------------------------------
-		Composite contentCompo=new Composite(this.parentComposite, SWT.NONE);
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
-		contentCompo.setLayout(gridLayout2);
-		contentCompo.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-	
-		GridData gridData14 = new GridData();
-		gridData14.horizontalSpan = 4;
-		gridData14.horizontalAlignment = GridData.FILL;
-		gridData14.verticalAlignment = GridData.FILL;
-		gridData14.grabExcessVerticalSpace = true;
-		gridData14.grabExcessHorizontalSpace = true;
-		contentCompo.setLayoutData(gridData14);
-		
-		// statementCompo.setSize(new Point(150,70));
-		insertBpelVariable = new Button(contentCompo, SWT.NONE);
-		insertBpelVariable.setText("Insert Variable");
-		insertBpelVariable.addSelectionListener(new SelectionListener() {
+		insertParameterVariable = new Button(composite, SWT.NONE);
+		insertParameterVariable.setText("Insert Parameter Variable");
+		insertParameterVariable.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				bpelVariableWindow = new ParametersListPopUp(statementText);
-				// Display display2 = Display.getDefault();
-				bpelVariableWindow.setText("Insert BPEL-Variable");
-				// sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-				// sShell.setLayout(gridLayout);
+
+				bpelVariableWindow.setText("Insert Parameter Variable");
+
 				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
-						.getUseableVariables(getProcess());
+						.getUseableVariables(getProcess(),
+								VariableUtils.PARAMETER_VAR);
 				bpelVariableWindow
 						.loadBPELVariables(listOfBPELVariablesAsStrings);
 				if (!bpelVariableWindow.isWindowOpen()) {
@@ -446,48 +337,31 @@ public class QueryPropertySection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
+				widgetSelected(e);
 			}
 		});
 
-		insertTable = new Button(contentCompo, SWT.NONE);
-		insertTable.addSelectionListener(new SelectionListener() {
+		insertContainerVariable = new Button(composite, SWT.NONE);
+		insertContainerVariable.setText("Insert Container Reference Variable");
+		insertContainerVariable.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tabelsPopWindowTables = new TablsListPopUp(statementText);
-				tabelsPopWindowTables.setText("Select Tabel");
-				tabelsPopWindowTables.loadTablesFromDB(getDataSource());
+				bpelVariableWindow = new ParametersListPopUp(statementText);
 
-				if (!tabelsPopWindowTables.isWindowOpen()) {
-					tabelsPopWindowTables.openWindow();
-					tabelsPopWindowTables.setWindowIsOpen(true);
+				bpelVariableWindow
+						.setText("Insert Container Reference Variable");
+
+				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
+						.getUseableVariables(getProcess(),
+								VariableUtils.CONTAINER_VAR);
+				bpelVariableWindow
+						.loadBPELVariables(listOfBPELVariablesAsStrings);
+				if (!bpelVariableWindow.isWindowOpen()) {
+					bpelVariableWindow.openWindow();
+					bpelVariableWindow.setWindowIsOpen(true);
 				}
 
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-
-		Save = new Button(contentCompo, SWT.NONE);
-		Save
-				.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
-		Save.setText("Save");
-		Save.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setStatement(statementText.getText());
-				saveStatementToModel();
-
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
 			}
 
 			@Override
@@ -495,136 +369,8 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				widgetSelected(e);
 			}
 		});
-		insertTable.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		insertTable.setText("Insert Table");
-
-		// insertBpelVariable.setLayoutData(gridData24);
-		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		//---------------------------------------------------------------
-	}
-	
-	
-	/**
-	 * for creating the GUI elements of FileSystem data source as child Composite.
-	 * @param parentCompo
-	 * @return
-	 */
-	private void createFileSystemWidgets() {
-		//this.parentComposite = composite;
-		Composite contentCompo=new Composite(this.parentComposite, SWT.NONE);
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 5;
-		contentCompo.setLayout(gridLayout2);
-		contentCompo.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
 		
-		GridData gridData14 = new GridData();
-		gridData14.horizontalSpan = 4;
-		gridData14.horizontalAlignment = GridData.FILL;
-		gridData14.verticalAlignment = GridData.FILL;
-		gridData14.grabExcessVerticalSpace = true;
-		gridData14.grabExcessHorizontalSpace = true;
-		contentCompo.setLayoutData(gridData14);
-		
-		
-		
-		command = new Button(contentCompo, SWT.NONE);
-		command.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
-		command.setText("Select Command");
-		command.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("COMMAND",statementText);
-				fSysElementsPopWindow.setText("Select Command");
-				fSysElementsPopWindow.loadDataToFSysElementList("COMMAND",getDataSource());
-
-				if (!fSysElementsPopWindow.isWindowOpen()) {
-					fSysElementsPopWindow.openWindow();
-					fSysElementsPopWindow.setWindowIsOpen(true);
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				
-			}
-		});
-		
-		file = new Button(contentCompo, SWT.NONE);
-		file.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
-		file.setText("Select File");
-		file.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("FILE",statementText);
-				fSysElementsPopWindow.setText("Select File");
-				fSysElementsPopWindow.loadDataToFSysElementList("FILE",getDataSource());
-
-				if (!fSysElementsPopWindow.isWindowOpen()) {
-					fSysElementsPopWindow.openWindow();
-					fSysElementsPopWindow.setWindowIsOpen(true);
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				
-			}
-		});
-		folder = new Button(contentCompo, SWT.NONE);
-		folder.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
-		folder.setText("Select Folder");
-		folder.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("FOLDER",statementText);
-				fSysElementsPopWindow.setText("Select Folder");
-				fSysElementsPopWindow.loadDataToFSysElementList("FOLDER",getDataSource());
-
-				if (!fSysElementsPopWindow.isWindowOpen()) {
-					fSysElementsPopWindow.openWindow();
-					fSysElementsPopWindow.setWindowIsOpen(true);
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				
-			}
-		});
-		driver = new Button(contentCompo, SWT.NONE);
-		driver.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
-		driver.setText("Select Driver");
-		driver.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("DRIVE",statementText);
-				fSysElementsPopWindow.setText("Select Folder");
-				fSysElementsPopWindow.loadDataToFSysElementList("DRIVE",getDataSource());
-
-				if (!fSysElementsPopWindow.isWindowOpen()) {
-					fSysElementsPopWindow.openWindow();
-					fSysElementsPopWindow.setWindowIsOpen(true);
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				
-			}
-		});
-		
-		Save = new Button(contentCompo, SWT.NONE);
+		Save = new Button(composite, SWT.NONE);
 		Save.setBackground(Display.getCurrent().getSystemColor(
 						SWT.COLOR_WHITE));
 		Save.setText("Save");
@@ -635,10 +381,14 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				setStatement(statementText.getText());
 				saveStatementToModel();
 
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+//				if (tabelsPopWindowTables != null){
+//					tabelsPopWindowTables.closeWindow();
+//					tabelsPopWindowTables.setWindowIsOpen(false);
+//				}
+//				if (tabelsPopWindowBPELVariables != null){
+//					tabelsPopWindowBPELVariables.closeWindow();
+//					tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+//				}
 			}
 
 			@Override
@@ -646,12 +396,214 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				widgetSelected(e);
 			}
 		});
-		
+
+		insertParameterVariable.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
+		insertContainerVariable.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
+
+		Label filler1 = new Label(composite, SWT.NONE);
+
+		Label statementLabel = new Label(composite, SWT.NONE);
+		statementLabel.setText("Data management operation:");
+		statementLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		statementText = new LiveEditStyleText(composite);
+		statementText.setLayoutData(gridData15);
+
+		statementText.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
+		typeText.setEnabled(false);
+		kindText.setEnabled(false);
+		languageText.setEnabled(false);
+	}
+
+	/**
+	 * for creating the GUI elements of DB data source as child Composite.
+	 * 
+	 * @param parentCompo
+	 * @return
+	 */
+	private void createDBWidgets() {
+		// ----------------------------------------------------------
+		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		contentCompo.setLayout(gridLayout2);
+		contentCompo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+		contentCompo.setLayoutData(gridData14);
+
+		// statementCompo.setSize(new Point(150,70));
+
+		insertTable = new Button(contentCompo, SWT.NONE);
+		insertTable.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				schemaPopWindow = new SchemaListPopUp(statementText);
+				schemaPopWindow.setText("Select Table Name");
+				schemaPopWindow.loadSchemasFromDB(getDataSource());
+
+				if (!schemaPopWindow.isWindowOpen()) {
+					schemaPopWindow.openWindow();
+					schemaPopWindow.setWindowIsOpen(true);
+				}
+
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+
+		insertTable.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		insertTable.setText("Insert Table Name");
+	}
+
+	/**
+	 * for creating the GUI elements of FileSystem data source as child
+	 * Composite.
+	 * 
+	 * @param parentCompo
+	 * @return
+	 */
+	private void createFileSystemWidgets() {
+		// this.parentComposite = composite;
+		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 4;
+		contentCompo.setLayout(gridLayout2);
+		contentCompo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+		contentCompo.setLayoutData(gridData14);
+
+		command = new Button(contentCompo, SWT.NONE);
+		command.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		command.setText("Select Command");
+		command.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				fSysElementsPopWindow = new FileSysListPopUp("COMMAND",
+						statementText);
+				fSysElementsPopWindow.setText("Select Command");
+				fSysElementsPopWindow.loadDataToFSysElementList("COMMAND",
+						getDataSource());
+
+				if (!fSysElementsPopWindow.isWindowOpen()) {
+					fSysElementsPopWindow.openWindow();
+					fSysElementsPopWindow.setWindowIsOpen(true);
+				}
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+
+		file = new Button(contentCompo, SWT.NONE);
+		file
+				.setBackground(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
+		file.setText("Select File");
+		file.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				FileDialog dialog = new FileDialog(parentComposite.getShell(), SWT.OPEN);
+			    dialog
+			        .setFilterNames(new String[] { "Comma Separated Values", "All Files (*.*)" });
+			    dialog.setFilterExtensions(new String[] { "*.csv", "*.*" });                   
+			    dialog.setFilterPath(getDataSource().getAddress());
+			    dialog.setFileName("");
+			    
+			    dialog.open();
+			    
+			    statementText.append(" " + dialog.getFilterPath() + dialog.getFileName());
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+//		folder = new Button(contentCompo, SWT.NONE);
+//		folder.setBackground(Display.getCurrent().getSystemColor(
+//				SWT.COLOR_WHITE));
+//		folder.setText("Select Folder");
+//		folder.addSelectionListener(new SelectionListener() {
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				fSysElementsPopWindow = new FileSysListPopUp("FOLDER",
+//						statementText);
+//				fSysElementsPopWindow.setText("Select Folder");
+//				fSysElementsPopWindow.loadDataToFSysElementList("FOLDER",
+//						getDataSource());
+//
+//				if (!fSysElementsPopWindow.isWindowOpen()) {
+//					fSysElementsPopWindow.openWindow();
+//					fSysElementsPopWindow.setWindowIsOpen(true);
+//				}
+//			}
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//
+//			}
+//		});
+//		driver = new Button(contentCompo, SWT.NONE);
+//		driver.setBackground(Display.getCurrent().getSystemColor(
+//				SWT.COLOR_WHITE));
+//		driver.setText("Select Driver");
+//		driver.addSelectionListener(new SelectionListener() {
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				fSysElementsPopWindow = new FileSysListPopUp("DRIVE",
+//						statementText);
+//				fSysElementsPopWindow.setText("Select Folder");
+//				fSysElementsPopWindow.loadDataToFSysElementList("DRIVE",
+//						getDataSource());
+//
+//				if (!fSysElementsPopWindow.isWindowOpen()) {
+//					fSysElementsPopWindow.openWindow();
+//					fSysElementsPopWindow.setWindowIsOpen(true);
+//				}
+//			}
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//
+//			}
+//		});
+
 		GridData gridData15 = new GridData();
 		gridData15.grabExcessHorizontalSpace = true;
 		gridData15.verticalAlignment = GridData.CENTER;
 		gridData15.horizontalAlignment = GridData.FILL;
-}
+
+	}
 	
 	/**
 	 * This method initializes typeCombo

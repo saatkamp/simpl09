@@ -140,7 +140,7 @@ public class TablsListPopUp{
 			
 			@Override
 			public void modifyText(ModifyEvent e) {
-				System.out.print(textToSearch.getText());
+//				System.out.print(textToSearch.getText());
 				searchListForResults(textToSearch.getText());
 			}
 
@@ -241,7 +241,7 @@ public class TablsListPopUp{
 		//arrayOfElements= listToSearch.getItems();
 		listToSearch.removeAll();
 		for(int i=0;i<arrayOfElements.size();i++){
-			if(arrayOfElements.get(i).toLowerCase().contains(text)){
+			if(arrayOfElements.get(i).toLowerCase().contains(text.toLowerCase())){
 				listToSearch.add(arrayOfElements.get(i));
 			}
 		}
