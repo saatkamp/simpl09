@@ -91,7 +91,7 @@ public class StatementEditDialog {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.print(styleTextEditor.getText());
+//				System.out.print(styleTextEditor.getText());
 				if (styleTextEditor.getText() != null) {
 					parentClass.setStatement(styleTextEditor.getText());
 					parentClass.saveStatementToModel();
@@ -102,7 +102,7 @@ public class StatementEditDialog {
 			
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				System.out.print(styleTextEditor.getText());
+//				System.out.print(styleTextEditor.getText());
 				if (styleTextEditor.getText() != null) {
 					parentClass.setStatement(styleTextEditor.getText());
 					parentClass.saveStatementToModel();

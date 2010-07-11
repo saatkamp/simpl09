@@ -151,7 +151,7 @@ public class FileSysListPopUp{
 			
 			@Override
 			public void modifyText(ModifyEvent e) {
-				System.out.print(textToSearch.getText());
+//				System.out.print(textToSearch.getText());
 				searchListForResults(textToSearch.getText());
 			}
 
@@ -165,7 +165,10 @@ public class FileSysListPopUp{
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);				
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				
+				closeWindow();
+				setWindowIsOpen(false);
 			}
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -174,7 +177,7 @@ public class FileSysListPopUp{
 		});
 		//textToSearch.setLayoutData(gridData);
 		
-		listToSearch = new List(theShell, SWT.BORDER);
+		listToSearch = new List(theShell, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 		//listToSearch.setItems((String[]) arrayOfElements.toArray());
 		listToSearch.setLayoutData(gridData);
 		listToSearch.addListener(SWT.MouseDoubleClick, new Listener() {
@@ -185,7 +188,7 @@ public class FileSysListPopUp{
 			}
 		});
 		
-		listToSearch = new List(theShell, SWT.BORDER);
+		listToSearch = new List(theShell, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 		//listToSearch.setItems((String[]) arrayOfElements.toArray());
 		listToSearch.setLayoutData(gridData);
 		listToSearch.addSelectionListener(new SelectionListener() {
@@ -241,7 +244,7 @@ public class FileSysListPopUp{
 			
 			@Override
 			public void modifyText(ModifyEvent e) {
-				System.out.print(textToSearch.getText());
+//				System.out.print(textToSearch.getText());
 				searchListForResults(textToSearch.getText());
 			}
 		});	
@@ -252,7 +255,10 @@ public class FileSysListPopUp{
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);				
+				statementText.append(" "+listToSearch.getItems()[listToSearch.getSelectionIndex()]);
+				
+				closeWindow();
+				setWindowIsOpen(false);
 			}
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -261,7 +267,7 @@ public class FileSysListPopUp{
 		});
 		//textToSearch.setLayoutData(gridData);
 		
-		listToSearch = new List(theShell, SWT.BORDER);
+		listToSearch = new List(theShell, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 		//listToSearch.setItems((String[]) arrayOfElements.toArray());
 		listToSearch.setLayoutData(gridData);
 		listToSearch.addListener(SWT.MouseDoubleClick, new Listener() {
@@ -324,7 +330,7 @@ public class FileSysListPopUp{
 		//arrayOfElements= listToSearch.getItems();
 		listToSearch.removeAll();
 		for(int i=0;i<arrayOfElements.size();i++){
-			if(arrayOfElements.get(i).toLowerCase().contains(text)){
+			if(arrayOfElements.get(i).toLowerCase().contains(text.toLowerCase())){
 				listToSearch.add(arrayOfElements.get(i));
 			}
 		}
@@ -388,18 +394,21 @@ public class FileSysListPopUp{
 			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_command();
 			for(int i=0;i<listOfFSysElements.size();i++){
 				listToSearch.add(listOfFSysElements.get(i).getCommandName());
+				arrayOfElements.add(listOfFSysElements.get(i).getCommandName());
 			}
 		}
 		if(typeOfElement.toUpperCase().equals("FOLDER")){
 			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_folder();
 			for(int i=0;i<listOfFSysElements.size();i++){
 				listToSearch.add(listOfFSysElements.get(i).getFolderName());
+				arrayOfElements.add(listOfFSysElements.get(i).getFolderName());
 			}
 		}
 		if(typeOfElement.toUpperCase().equals("DRIVE")){
 			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_drive();
 			for(int i=0;i<listOfFSysElements.size();i++){
 				listToSearch.add(listOfFSysElements.get(i).getDriveName());
+				arrayOfElements.add(listOfFSysElements.get(i).getDriveName());
 			}
 		}
 		
@@ -407,6 +416,7 @@ public class FileSysListPopUp{
 			listOfFSysElements=metaDataXMLParser_Objekt.getListOfFileSysElements_file();
 			for(int i=0;i<listOfFSysElements.size();i++){
 				listToSearch.add(listOfFSysElements.get(i).getFileName());
+				arrayOfElements.add(listOfFSysElements.get(i).getFileName());
 			}
 		}
 		
