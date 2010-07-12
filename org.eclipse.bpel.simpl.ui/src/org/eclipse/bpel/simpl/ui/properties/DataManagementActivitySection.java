@@ -1,5 +1,6 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
@@ -522,7 +523,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 			    
 			    dialog.open();
 			    
-			    statementText.append(" " + dialog.getFilterPath() + dialog.getFileName());
+			    statementText.append(" " + dialog.getFilterPath() + File.separator + dialog.getFileName());
 			}
 
 			@Override
