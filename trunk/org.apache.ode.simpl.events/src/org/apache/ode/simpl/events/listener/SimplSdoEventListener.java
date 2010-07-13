@@ -62,11 +62,11 @@ public class SimplSdoEventListener implements BpelEventListener {
 		if (!initialized) {
 			return;
 		} else {
-			TEventInfo ei = serializeEvent(bpelEvent);
-			
 			logger.debug("Auditing MODE: " + AuditingParameters.getInstance().isMode());
 			
 			if (AuditingParameters.getInstance().isMode()) {
+				TEventInfo ei = serializeEvent(bpelEvent);
+				
 				logger.debug("Write event: " + ei.toString());
 				
 				writer.write(ei, getEvtCounter(ei.getInstanceId()));

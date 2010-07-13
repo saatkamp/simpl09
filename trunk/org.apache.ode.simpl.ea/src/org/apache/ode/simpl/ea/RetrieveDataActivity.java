@@ -1,14 +1,13 @@
 package org.apache.ode.simpl.ea;
 
 import org.apache.ode.bpel.common.FaultException;
-import org.apache.ode.bpel.evar.ExternalVariableModuleException;
+import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.SDOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,7 +19,6 @@ public class RetrieveDataActivity extends DataManagementActivity {
 	@Override
 	protected void runSync(ExtensionContext context, Element element)
 			throws FaultException {
-		// TODO Auto-generated method stub
 
 //		ScopeEvent DMStarted = new DMStarted();
 //		context.getInternalInstance().sendEvent(DMStarted);
@@ -59,12 +57,16 @@ public class RetrieveDataActivity extends DataManagementActivity {
 //				context.getInternalInstance().sendEvent(DMEnd);
 			}
 
-		} catch (ConnectionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExternalVariableModuleException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
+			event.setActivityName(context.getActivityName());
+			event.setActivityId(context.getOActivity().getId());
+			event.setActivityType("RetrieveDataActivity");
+			event.setScopeName(context.getOActivity().getParent().name);
+			event.setScopeId(0L);
+			event.setScopeDeclerationId(context.getOActivity().getParent().getId());
+			
+			context.getInternalInstance().sendEvent(event);
 		}
 	}
 

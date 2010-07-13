@@ -3,13 +3,13 @@ package org.apache.ode.simpl.ea;
 import java.util.Map;
 
 import org.apache.ode.bpel.common.FaultException;
+import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;
@@ -19,7 +19,6 @@ public class QueryActivity extends DataManagementActivity {
 	@Override
 	protected void runSync(ExtensionContext context, Element element)
 			throws FaultException {
-		// TODO Auto-generated method stub
 
 //		ScopeEvent DMStarted = new DMStarted();
 //		context.getInternalInstance().sendEvent(DMStarted);
@@ -36,8 +35,15 @@ public class QueryActivity extends DataManagementActivity {
 			try {
 				variables = context.getVisibleVariables();
 			} catch (FaultException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
+				event.setActivityName(context.getActivityName());
+				event.setActivityId(context.getOActivity().getId());
+				event.setActivityType("QueryActivity");
+				event.setScopeName(context.getOActivity().getParent().name);
+				event.setScopeId(0L);
+				event.setScopeDeclerationId(context.getOActivity().getParent().getId());
+				
+				context.getInternalInstance().sendEvent(event);
 			}
 			
 			queryTarget = String.valueOf(StatementUtils.resolveVariable(context, variables, queryTarget));
@@ -63,9 +69,16 @@ public class QueryActivity extends DataManagementActivity {
 //				context.getInternalInstance().sendEvent(DMFailure);
 //			}
 
-		} catch (ConnectionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
+			event.setActivityName(context.getActivityName());
+			event.setActivityId(context.getOActivity().getId());
+			event.setActivityType("QueryActivity");
+			event.setScopeName(context.getOActivity().getParent().name);
+			event.setScopeId(0L);
+			event.setScopeDeclerationId(context.getOActivity().getParent().getId());
+			
+			context.getInternalInstance().sendEvent(event);
 		}
 	}
 }
