@@ -80,10 +80,20 @@ public class TransferActivity extends DataManagementActivity {
 //						"The result of the query is null");
 //				context.getInternalInstance().sendEvent(DMFailure);
 			} else {
-				datasourceService.writeData(dsTo, dataObject, targetDsContainer);
+				this.successfullExecution = datasourceService.writeData(dsTo, dataObject, targetDsContainer);
 
-//				ScopeEvent DMEnd = new DMEnd();
-//				context.getInternalInstance().sendEvent(DMEnd);
+				if (!this.successfullExecution) {
+					ActivityFailureEvent event = new ActivityFailureEvent();
+					event.setActivityName(context.getActivityName());
+					event.setActivityId(context.getOActivity().getId());
+					event.setActivityType("TransferActivity");
+					event.setScopeName(context.getOActivity().getParent().name);
+					event.setScopeId(0L);
+					event.setScopeDeclerationId(context.getOActivity().getParent()
+							.getId());
+					context.getInternalInstance().sendEvent(event);
+					context.completeWithFault(new Throwable("SIMPL Exception"));
+				}
 			}
 
 		} catch (Exception e) {

@@ -31,16 +31,18 @@ public class DropActivity extends DataManagementActivity {
 			this.successfullExecution = datasourceService.executeStatement(ds,
 					getDsStatement(context));
 
-//			if (this.successfullExecution) {
-//				ScopeEvent DMEnd = new DMEnd();
-//				context.getInternalInstance().sendEvent(DMEnd);
-//			} else {
-//				// Hier werden alle vorhandenen "wichtigen" Daten dem Event
-//				// übergeben
-//				ScopeEvent DMFailure = new DMFailure(getActivityName(),
-//						getDsAddress(), getDsStatement(context), "UNKNOWN");
-//				context.getInternalInstance().sendEvent(DMFailure);
-//			}
+			if (!this.successfullExecution) {
+				ActivityFailureEvent event = new ActivityFailureEvent();
+				event.setActivityName(context.getActivityName());
+				event.setActivityId(context.getOActivity().getId());
+				event.setActivityType("DropActivity");
+				event.setScopeName(context.getOActivity().getParent().name);
+				event.setScopeId(0L);
+				event.setScopeDeclerationId(context.getOActivity().getParent()
+						.getId());
+				context.getInternalInstance().sendEvent(event);
+				context.completeWithFault(new Throwable("SIMPL Exception"));
+			}
 
 		} catch (Exception e) {
 			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
