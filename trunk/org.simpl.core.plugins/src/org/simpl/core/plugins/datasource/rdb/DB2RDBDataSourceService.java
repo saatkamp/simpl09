@@ -80,7 +80,7 @@ public class DB2RDBDataSourceService extends
       }
     }
 
-    DB2RDBDataSourceService.logger.info("Statement '" + statement + "' send to "
+    DB2RDBDataSourceService.logger.info("Statement '" + statement + "' sent to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
     return success;
@@ -235,6 +235,8 @@ public class DB2RDBDataSourceService extends
           e1.printStackTrace();
         }
       }
+    } else {
+      DB2RDBDataSourceService.logger.debug("No insert statements found.");
     }
 
     closeConnection(connection);
@@ -369,10 +371,15 @@ public class DB2RDBDataSourceService extends
     boolean createdTarget = false;
 
     // test if target already exists
-    if (SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
-        "SELECT * FROM " + target)) {
+    try {
+      SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
+          "SELECT * FROM " + target);
       createdTarget = true;
-    } else {
+    } catch (Exception e) {
+      createdTarget = false;
+    }
+
+    if (!createdTarget) {
       List<DataObject> tables = dataObject.getList("table");
       List<DataObject> columns = null;
       List<String> primaryKeys = null;
