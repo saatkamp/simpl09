@@ -117,7 +117,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-
+    
     return rdbDataObject;
   }
 
@@ -167,13 +167,13 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
               + findPrimaryKeyValue(primaryKey, columns);
         }
 
-        //logger.debug("Produced UPDATE statement: " + statement);
+        logger.debug("Created UPDATE statement: " + statement);
         statements.add(statement);
       }
 
       // create insert statement
       statement = "INSERT INTO " + tableSchema + " " + createInsertColumnValues(columns);
-      //logger.debug("Produced INSERT statement: " + statement);
+      logger.debug("Created INSERT statement: " + statement);
       statements.add(statement);
     }
 

@@ -1,5 +1,7 @@
 package org.simpl.core.plugins.dataformat.converter;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSourceService;
 import org.simpl.core.services.datasource.DataSourceService;
 
 import commonj.sdo.DataObject;
+import commonj.sdo.helper.XMLHelper;
 
 /**
  * <b>Purpose: Converts the CSV data format to the RDB data format and vice versa.</b> <br>
@@ -95,6 +98,18 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
       }
     }
 
+    if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      try {
+        XMLHelper.INSTANCE.save(rdbSDO, "commonj.sdo", "dataObject", baos);
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+      CSVtoRDBDataFormatConverter.logger.debug("CSV DataObject: "
+          + new String(baos.toByteArray()));
+    }
+
     return rdbSDO;
   }
 
@@ -142,6 +157,18 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
     }
 
     csvHeaderObject.setList("column", csvHeaderNames);
+
+    if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      try {
+        XMLHelper.INSTANCE.save(csvSDO, "commonj.sdo", "dataObject", baos);
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+      CSVtoRDBDataFormatConverter.logger.debug("CSV DataObject: "
+          + new String(baos.toByteArray()));
+    }
 
     return csvSDO;
   }
