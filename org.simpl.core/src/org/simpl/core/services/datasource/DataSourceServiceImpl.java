@@ -45,16 +45,20 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataSourceService<Object, Object> dataSourceService;
     StrategyService strategyService = new StrategyServiceImpl();
 
-    // late binding
-    if (this.hasLateBindingInformation(dataSource)) {
-      dataSource = strategyService.findDataSource(dataSource);
-    }
+    try {
+      // late binding
+      if (this.hasLateBindingInformation(dataSource)) {
+        dataSource = strategyService.findDataSource(dataSource);
+      }
 
-    if (this.isDataSourceComplete(dataSource)) {
-      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-          dataSource.getSubType());
+      if (this.isDataSourceComplete(dataSource)) {
+        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+            dataSource.getSubType());
 
-      success = dataSourceService.depositData(dataSource, statement, target);
+        success = dataSourceService.depositData(dataSource, statement, target);
+      }
+    } catch (Exception e) {
+      throw new ConnectionException(e.getCause());
     }
 
     return success;
@@ -70,24 +74,29 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public synchronized boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
     boolean success = false;
+
     DataSourceService<Object, Object> dataSourceService = null;
     DataSource lateBindingDataSource = null;
 
-    // late binding
-    lateBindingDataSource = findLateBindingDataSource(dataSource);
+    try {
+      // late binding
+      lateBindingDataSource = findLateBindingDataSource(dataSource);
 
-    if (lateBindingDataSource != null) {
-      dataSource = lateBindingDataSource;
-    }
-
-    // execute statement
-    if (this.isDataSourceComplete(dataSource)) {
-      // get data source service instance
-      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-          dataSource.getSubType());
+      if (lateBindingDataSource != null) {
+        dataSource = lateBindingDataSource;
+      }
 
       // execute statement
-      success = dataSourceService.executeStatement(dataSource, statement);
+      if (this.isDataSourceComplete(dataSource)) {
+        // get data source service instance
+        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+            dataSource.getSubType());
+
+        // execute statement
+        success = dataSourceService.executeStatement(dataSource, statement);
+      }
+    } catch (Exception e) {
+      throw new ConnectionException(e.getCause());
     }
 
     return success;
@@ -103,32 +112,35 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public synchronized DataObject retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
     DataObject retrieveData = null;
-
     Object data = null;
     DataSourceService<Object, Object> dataSourceService = null;
     DataSource lateBindingDataSource = null;
 
-    // late binding
-    lateBindingDataSource = findLateBindingDataSource(dataSource);
+    try {
+      // late binding
+      lateBindingDataSource = findLateBindingDataSource(dataSource);
 
-    if (lateBindingDataSource != null) {
-      dataSource = lateBindingDataSource;
-    }
-
-    // retrieve data
-    if (this.isDataSourceComplete(dataSource)) {
-      // get data source service instance
-      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-          dataSource.getSubType());
+      if (lateBindingDataSource != null) {
+        dataSource = lateBindingDataSource;
+      }
 
       // retrieve data
-      data = dataSourceService.retrieveData(dataSource, statement);
-    }
+      if (this.isDataSourceComplete(dataSource)) {
+        // get data source service instance
+        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+            dataSource.getSubType());
 
-    // format data to SDO
-    if (data != null) {
-      retrieveData = formatRetrievedData(dataSourceService, data, dataSource
-          .getDataFormat());
+        // retrieve data
+        data = dataSourceService.retrieveData(dataSource, statement);
+      }
+
+      // format data to SDO
+      if (data != null) {
+        retrieveData = formatRetrievedData(dataSourceService, data, dataSource
+            .getDataFormat());
+      }
+    } catch (Exception e) {
+      throw new ConnectionException(e.getCause());
     }
 
     return retrieveData;
@@ -149,25 +161,29 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     Object writeData = null;
     DataSource lateBindingDataSource = null;
 
-    // late binding
-    lateBindingDataSource = findLateBindingDataSource(dataSource);
+    try {
+      // late binding
+      lateBindingDataSource = findLateBindingDataSource(dataSource);
 
-    if (lateBindingDataSource != null) {
-      dataSource = lateBindingDataSource;
-    }
-
-    if (this.isDataSourceComplete(dataSource)) {
-      // get data source service instance
-      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-          dataSource.getSubType());
-
-      writeData = DataFormatProvider.getInstance(dataSource.getDataFormat())
-          .fromSDO(data);
-
-      // write data
-      if (writeData != null) {
-        success = dataSourceService.writeBack(dataSource, writeData);
+      if (lateBindingDataSource != null) {
+        dataSource = lateBindingDataSource;
       }
+
+      if (this.isDataSourceComplete(dataSource)) {
+        // get data source service instance
+        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+            dataSource.getSubType());
+
+        writeData = DataFormatProvider.getInstance(dataSource.getDataFormat()).fromSDO(
+            data);
+
+        // write data
+        if (writeData != null) {
+          success = dataSourceService.writeBack(dataSource, writeData);
+        }
+      }
+    } catch (Exception e) {
+      throw new ConnectionException(e.getCause());
     }
 
     return success;
@@ -188,25 +204,29 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     Object writeData = null;
     DataSource lateBindingDataSource = null;
 
-    // late binding
-    lateBindingDataSource = findLateBindingDataSource(dataSource);
+    try {
+      // late binding
+      lateBindingDataSource = findLateBindingDataSource(dataSource);
 
-    if (lateBindingDataSource != null) {
-      dataSource = lateBindingDataSource;
-    }
-
-    if (this.isDataSourceComplete(dataSource)) {
-      // get data source service instance
-      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-          dataSource.getSubType());
-
-      // format data
-      writeData = formatWriteDataAndCreateTarget(dataSourceService, data, dataSource,
-          target);
-
-      if (writeData != null) {
-        success = dataSourceService.writeData(dataSource, writeData, target);
+      if (lateBindingDataSource != null) {
+        dataSource = lateBindingDataSource;
       }
+
+      if (this.isDataSourceComplete(dataSource)) {
+        // get data source service instance
+        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+            dataSource.getSubType());
+
+        // format data
+        writeData = formatWriteDataAndCreateTarget(dataSourceService, data, dataSource,
+            target);
+
+        if (writeData != null) {
+          success = dataSourceService.writeData(dataSource, writeData, target);
+        }
+      }
+    } catch (Exception e) {
+      throw new ConnectionException(e.getCause());
     }
 
     return success;
@@ -225,20 +245,24 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataSourceService<Object, Object> dataSourceService;
     DataSource lateBindingDataSource = null;
 
-    // late binding
-    lateBindingDataSource = findLateBindingDataSource(dataSource);
+    try {
+      // late binding
+      lateBindingDataSource = findLateBindingDataSource(dataSource);
 
-    if (lateBindingDataSource != null) {
-      dataSource = lateBindingDataSource;
-    }
+      if (lateBindingDataSource != null) {
+        dataSource = lateBindingDataSource;
+      }
 
-    if (this.isDataSourceComplete(dataSource)) {
-      // get data source service instance
-      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-          dataSource.getSubType());
+      if (this.isDataSourceComplete(dataSource)) {
+        // get data source service instance
+        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+            dataSource.getSubType());
 
-      // get meta data
-      data = dataSourceService.getMetaData(dataSource, filter);
+        // get meta data
+        data = dataSourceService.getMetaData(dataSource, filter);
+      }
+    } catch (Exception e) {
+      throw new ConnectionException(e.getCause());
     }
 
     return data;
@@ -256,12 +280,16 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     boolean success = false;
     DataSourceService<Object, Object> dataSourceService = null;
 
-    // get data source service instance
-    dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-        dataSource.getSubType());
+    try {
+      // get data source service instance
+      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+          dataSource.getSubType());
 
-    // create target
-    success = dataSourceService.createTarget(dataSource, dataObject, target);
+      // create target
+      success = dataSourceService.createTarget(dataSource, dataObject, target);
+    } catch (Exception e) {
+      throw new ConnectionException(e.getCause());
+    }
 
     return success;
   }
