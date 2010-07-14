@@ -53,17 +53,28 @@ public class UddiAction extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		tmpDir = new File(TMP_DIR_PATH);
-
+		
+		if (System.getProperty("user.dir").endsWith("bin")){
+			tmpDir = new File(System.getProperty("user.dir") + "\\..\\"+TMP_DIR_PATH);
+		}else {
+			tmpDir = new File(TMP_DIR_PATH);
+		}
+		
 		if (!tmpDir.isDirectory()) {
-			throw new ServletException(TMP_DIR_PATH + " is not a directory");
+			throw new ServletException(tmpDir.getAbsolutePath() + " is not a directory");
 		}
 		// String realPath =
 		// getServletContext().getRealPath(DESTINATION_DIR_PATH);
-		destinationDir = new File(DESTINATION_DIR_PATH);
+		
+		
+		if (System.getProperty("user.dir").endsWith("bin")){
+			destinationDir = new File(System.getProperty("user.dir") + "\\..\\"+DESTINATION_DIR_PATH);
+		}else {
+			destinationDir = new File(DESTINATION_DIR_PATH);
+		}
+		
 		if (!destinationDir.isDirectory()) {
-			throw new ServletException(DESTINATION_DIR_PATH
-					+ " is not a directory");
+			throw new ServletException(destinationDir.getAbsolutePath() + " is not a directory");
 		}
 
 	}

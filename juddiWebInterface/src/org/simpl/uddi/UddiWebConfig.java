@@ -30,10 +30,15 @@ public class UddiWebConfig {
 		SAXBuilder builder = new SAXBuilder();
 		Document doc = null;
 
-		File file = new File(System.getProperty("user.dir")
-				+ "\\webapps\\juddiweb\\WEB-INF\\config.xml");
+		File file;
 
-		// File file = new File("config.xml");
+		if (System.getProperty("user.dir").endsWith("bin")){
+			file = new File(System.getProperty("user.dir")
+					+ "\\..\\webapps\\juddiweb\\WEB-INF\\config.xml");
+		}else {
+			file = new File(System.getProperty("user.dir")
+					+ "\\webapps\\juddiweb\\WEB-INF\\config.xml");
+		}
 
 		try {
 			doc = builder.build(new FileInputStream(file));
@@ -115,9 +120,16 @@ public class UddiWebConfig {
 	}
 
 	public void writeConfig() {
-		File file = new File(System.getProperty("user.dir")
-				+ "\\webapps\\juddiweb\\WEB-INF\\config.xml");
-
+		File file;
+		
+		if (System.getProperty("user.dir").endsWith("bin")){
+			file = new File(System.getProperty("user.dir")
+					+ "\\..\\webapps\\juddiweb\\WEB-INF\\config.xml");
+		}else {
+			file = new File(System.getProperty("user.dir")
+					+ "\\webapps\\juddiweb\\WEB-INF\\config.xml");
+		}
+		
 		SAXBuilder builder = new SAXBuilder();
 
 		try {
