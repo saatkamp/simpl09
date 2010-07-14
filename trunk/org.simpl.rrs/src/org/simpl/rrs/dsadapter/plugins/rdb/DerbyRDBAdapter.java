@@ -30,7 +30,7 @@ public class DerbyRDBAdapter extends DSAdapterPlugin {
 			Class.forName("org.apache.derby.jdbc.ClientDriver");
 			StringBuilder uri = new StringBuilder();
 			// jdbc:derby:sampleDB", "dba", "password");
-			uri.append("jdbc:derby:");
+			uri.append("jdbc:derby://");
 			uri.append(dsAddress);
 			uri.append(";create=true");
 
