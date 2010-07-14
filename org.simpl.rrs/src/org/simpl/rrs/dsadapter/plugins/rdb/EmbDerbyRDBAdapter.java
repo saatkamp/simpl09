@@ -25,12 +25,11 @@ public class EmbDerbyRDBAdapter extends DSAdapterPlugin {
 		Connection connect = null;
 
 		StringBuilder uri = new StringBuilder();
-		uri.append("jdbc:derby://");
+		uri.append("jdbc:derby:");
 		uri.append(dsAddress);
-		uri.append(";create=true");
 
 		try {
-			connect = DriverManager.getConnection("jdbc:jdc:jdcpool");
+			connect = DriverManager.getConnection(uri.toString(), userName, password);
 			connect.setAutoCommit(false);
 		} catch (SQLException e) {
 		}
