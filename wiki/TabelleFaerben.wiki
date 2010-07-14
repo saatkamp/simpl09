@@ -1,5 +1,4 @@
 #summary Diese Seite soll als Hilfestellung für das Einfärben von Tabellen in LyX/LaTeX dienen.
-#labels Featured
 
 = Einleitung =
 
