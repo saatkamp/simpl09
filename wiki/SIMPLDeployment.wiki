@@ -1,4 +1,5 @@
 #summary Deployment des SIMPL Rahmenwerks
+#labels Featured
 = Deployment =
 Hier werden die Schritte erklärt, die für das Deployment (die Installation) des SIMPL Rahmenwerks notwendig sind.
 
