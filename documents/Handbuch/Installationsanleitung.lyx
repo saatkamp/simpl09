@@ -747,6 +747,10 @@ Einleitung
 \end_layout
 
 \begin_layout Standard
+bla bla bla
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -755,6 +759,20 @@ Einleitung
 
 \begin_layout Section
 Systemanforderungen
+\end_layout
+
+\begin_layout Standard
+Abschreiben aus dem Handbuch (OMFG)
+\end_layout
+
+\begin_layout Section
+Vorbereitung
+\end_layout
+
+\begin_layout Standard
+Eclipse (JEE, Galileo, alles andere nicht garantiert (eclipse.org)) und Tomcat
+ (tomcat.apache.org 5.5 oder 6.0) vorinstallieren.
+ Es wird ODE in der Version 2.0 verwendet.
 \end_layout
 
 \begin_layout Standard
@@ -769,11 +787,70 @@ All-In-One-Installation
 \end_layout
 
 \begin_layout Subsection
-Vorbereitung
+Installation
 \end_layout
 
-\begin_layout Subsection
-Installation
+\begin_layout Standard
+Download der einzelnen Bestandteile des Rahmenwerks unter simpl-HP.
+ Dies sind .....
+\end_layout
+
+\begin_layout Standard
+Die Eclipse-Plugins müssen im Hauptordner von Eclipse entpackt werden.
+ Das SIMPL-Tomcat-Archiev muss im Hauptordner von Tomcat entpackt werden.
+ Anschließend muss der Tomcat gestartet werden, entweder durch ausführen
+ der Startup.exe unter Tomcat/bin oder aber durch den entsprechenden Startmenüein
+trag.
+ Jetzt prüfen ob die SIMPL Core Services aktiviert sind unter: http://localhost:
+8080/ode/services/listServices.
+\end_layout
+
+\begin_layout Standard
+Wenn die Webservices aktiviert sind, kann Eclipse gestartet werden und man
+ kann anfangen mit SIMPL zu arbeiten.
+\end_layout
+
+\begin_layout Subsubsection*
+Probleme und Lösungen
+\end_layout
+
+\begin_layout Standard
+1.
+ Die SIMPL Web Services stehen zwar bereit, die WSDLs können aber nicht
+ generiert und benutzt werden
+\end_layout
+
+\begin_layout Enumerate
+Für die Generierung wird die tools.jar aus dem Java Development Toolkit (JDK)
+ benötigt.
+ Diese wird aus dem JDK 1.6.0_14 in der simpl-tomcat.zip mitgeliefert.
+ Je nachdem welche Version des Java Runtime Environment (JRE) auf dem Betriebssy
+stem installiert ist, kann es unter Umständen nötig sein die tools.jar aus
+ der entsprechend anderen Version des JDK zu verwenden.
+ Diese muss unter /Tomcat x.x/webapps/ode/WEB-INF/lib/ die bereits vorhandene
+ tools.jar ersetzen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Der BPEL Eclipse Designer kann nicht geöffnet werden, ein Fehler wird angezeigt
+\end_layout
+
+\begin_layout Itemize
+Apache Tomcat ist nicht gestartet
+\end_layout
+
+\begin_layout Itemize
+Die simpl-tomcat.zip wurde nicht deployt
+\end_layout
+
+\begin_layout Itemize
+Die simpl-eclipse.zip wurde nicht deployt
+\end_layout
+
+\begin_layout Itemize
+Es besteht Problem Nr.
+ 1 
 \end_layout
 
 \begin_layout Standard
@@ -787,8 +864,9 @@ Installation
 Installation einzelner Komponenten
 \end_layout
 
-\begin_layout Subsection
-Vorbereitung
+\begin_layout Standard
+Bei den Tomcat sachen wird stehts vom Tomcate root verzeichnis ausgegangen.
+ ODE 2.0 verwenden.
 \end_layout
 
 \begin_layout Subsection
@@ -799,36 +877,280 @@ Installation
 SIMPL Eclipse Plug-Ins
 \end_layout
 
-\begin_layout Subsubsection
-Apache ODE
+\begin_layout Standard
+simpl-eclipse.zip von simplcode seite runterladen und ins eclipse root-verzeichni
+s entpacken.
+ Auflistung der libs mit namen und Funktion
 \end_layout
 
 \begin_layout Subsubsection
-Apache Axis2
-\end_layout
-
-\begin_layout Subsubsection
-Apache jUDDI
-\end_layout
-
-\begin_layout Subsubsection
-SIMPL Reference Resolution System (RRS)
-\end_layout
-
-\begin_layout Subsubsection
-SIMPL Transformation Service
-\end_layout
-
-\begin_layout Subsubsection
-SIMPL Core + Plug-Ins
-\end_layout
-
-\begin_layout Subsubsection
-SIMPL jUDDI Web Interface + Client
+BPEL-DM Extension Activities
 \end_layout
 
 \begin_layout Standard
+in den webapps/ode/WEB-INF/lib kopieren simpl-ode-extension.jar.
+ In die ode-axis2.properties müssen die beiden zeilen eingefügt werden (zeilen
+ hier reinkopieren)
+\end_layout
 
+\begin_layout Subsubsection
+SIMPL Reference Resolution System (RRS) und RRS-Transformation-Service
+\end_layout
+
+\begin_layout Standard
+Es muss axis2 in der version 1.5 installiert werden.
+ Link zu Axis2 Seite hier.
+ webapps/axis2/WEB-INF/services (simpl-rrs.aar und simpl-rrs-transformation.aar).
+ Unter webapps/axis2/WEB-INF/conf muss die rrs-config.xml reinkopiert werden.
+\end_layout
+
+\begin_layout Standard
+Abhängigkeiten:
+\end_layout
+
+\begin_layout Standard
+Die entsprechenden Datenbankentreiber (Connectoren) müssen in den axis2-lib
+ ordner kopiert werden.
+ Das sind bspw.
+ derby.jar, db2jcc.jar und mysql-connector.jar (bei relationalen Datenbanken)
+ müssen aus ODE rüberkopiert werden.
+\end_layout
+
+\begin_layout Standard
+Es funktioniert auch dies alles in das ODE-eigene axis2 reinkopieren, ordnername
+n bleiben gleich.
+ services ordner muss angelegt werden...
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Core + Plug-Ins + Webservices
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib reinkopieren (simpl-core.jar, simpl-core-plugins.jar)
+ und die Webservices unter webapps/ode/WEB-INF/servicejars (simpl-core-webservic
+es.jar) reinkopieren.
+\end_layout
+
+\begin_layout Standard
+Für die Webservices muss im ordner webapps/ode/WEB-INF/conf axis2.xml muss
+ eventuell (falls Probleme auftreten, webservices nicht erkannt usw.) die
+ 
+\begin_inset Quotes eld
+\end_inset
+
+deplyoer-Zeile
+\begin_inset Quotes erd
+\end_inset
+
+ reinkopiert werden.
+\end_layout
+
+\begin_layout Standard
+simpl-core-config.xml muss nach webapps/ode/WEB-INF/conf kopiert werden,
+ damit der simpl-Core alle Plug-Ins erkennt.
+\end_layout
+
+\begin_layout Subsubsection*
+Embedded Datenbank
+\end_layout
+
+\begin_layout Standard
+Die SimplDB muss je nachdem wo Tomcat gestartet wird im bin-ordner oder
+ im root-verzeichnis liegen.
+ Im Bundle liegt die Datenbank bereits in beiden Ordnern.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Logging
+\end_layout
+
+\begin_layout Standard
+log4j.properties muss in den tomcat-root-verzeichnis wenn tomcat als service
+ gestartet wird, wenn mit startup (bin-Ordner) gestartet wird dann in den
+ bin ordner.
+ Logs werden bei Start als Service in tomcat/logs in der Datei simplCore.logs
+ abgelegt, bei Start über Startup Ausgabe in Konsole.
+\end_layout
+
+\begin_layout Subsubsection*
+Abhängigkeiten
+\end_layout
+
+\begin_layout Standard
+Librarys die im lib ordner von org.simpl.core liegen nennen und erklären.
+\end_layout
+
+\begin_layout Itemize
+Hilfsfunktionen 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/common-2.2.3.jar
+\end_layout
+
+\begin_layout Itemize
+XML, XSD Verarbeitung
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/jdom.jar 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/stax-api-1.0.1.jar 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/xsd-2.2.3.jar
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/wstx-asl-3.2.0.jar
+\end_layout
+
+\begin_layout Itemize
+Datenbankverbindung 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/db2jcc.jar 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar
+\end_layout
+
+\begin_layout Itemize
+SDO 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/tuscany-sdo-api-r2.1-1.0-incubating.jar 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/tuscany-sdo-impl-1.0-incubating.jar 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/tuscany-sdo-lib-1.0-incubating.jar
+\end_layout
+
+\begin_layout Itemize
+Keine Ahnung mehr 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/ecore-2.2.3.jar 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/ecore-change-2.2.3.jar 
+\end_layout
+
+\begin_layout Standard
+webapps/ode/WEB-INF/lib/ecore-xmi-2.2.3.jar
+\end_layout
+
+\begin_layout Subsubsection*
+Problems
+\end_layout
+
+\begin_layout Standard
+On problems with the SIMPL Core web services wsdl generation, copy the "tools.jar
+" from your java SDK installation (e.g.
+ C:
+\backslash
+Programme
+\backslash
+Java
+\backslash
+jdk1.6.0_xx
+\backslash
+lib
+\backslash
+) to the Apache Tomcat "webapps
+\backslash
+ode
+\backslash
+WEB-INF
+\backslash
+lib
+\backslash
+" directory.
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL jUDDI Web Interface + Client + Registry
+\end_layout
+
+\begin_layout Standard
+juddi bundle entpacken nach tomcat-root.
+ Unter tomcat/conf tomcat-users.xml erweitern um rolle 
+\begin_inset Quotes eld
+\end_inset
+
+secure
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+<tomcat-users> 
+\end_layout
+
+\begin_layout Standard
+<role rolename="secure" /> 
+\end_layout
+
+\begin_layout Standard
+<user name="admin" password="" roles="admin,manager,secure" /> 
+\end_layout
+
+\begin_layout Standard
+</tomcat-users>
+\end_layout
+
+\begin_layout Standard
+Diese Rolle muss einem User zugewiesen werden.
+ Mit diesem User kann man sich nun im jUDDI Web Interface einloggen.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Problems
+\end_layout
+
+\begin_layout Standard
+On memory problems with the Apache jUDDI registry add "-XX:MaxPermSize=256m"
+ to the Apache Tomcat windows webservice java options (Apache Monitor ->
+ Configure...
+ -> Java -> Java Options).
+\end_layout
+
+\begin_layout Subsubsection*
+Abhängige Jars der Registry
+\end_layout
+
+\begin_layout Standard
+bei Tomcat 5.5 tomcat/common/lib, hier Derby.jar reinkopieren
+\end_layout
+
+\begin_layout Standard
+bei Tomcat 6.0 unter tomcat/lib reinkopieren (derby.jar).
+\end_layout
+
+\begin_layout Subsubsection
+SIMPL Auditing
+\end_layout
+
+\begin_layout Standard
+in den webapps/ode/WEB-INF/lib kopieren simpl-ode-extension.jar.
+ In die ode-axis2.properties event-listner zeile reinkopieren.
 \end_layout
 
 \end_body
