@@ -1,0 +1,446 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[german,ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\def\doctitel{1.Kundengespräch} 
+\def\docvers{1.0}
+\def\docautor{Wolfgang Hüttig, Daniel Brüderle, Michael Schneidt, René Rehn, Firas Zoabi, Tu Xi, Michael Hahn}
+\def\docdate{03. Juli 2009}
+
+\makeatother
+
+\begin{document}
+\input{Deckblatt.tex}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents{}
+
+\newpage{}
+
+
+\section{Vertrieb}
+\begin{itemize}
+\item Welches Budget steht zur Verfügung ?
+
+\begin{itemize}
+\item A: Orientierung am Prototyp, anhand der 1.Version des Angebots
+\end{itemize}
+\item Möchte der Auftraggeber die exklusiven Verwertungsrechte ? ( open
+source ?) 
+
+\begin{itemize}
+\item A: OpenSource
+\end{itemize}
+\item Welche(r) Mitarbeiter sind unsere Ansprechpartner ? Schnittstellen
+! 
+
+\begin{itemize}
+\item A: Kunden (Katharina Görlach, Peter Reimann) \& Betreuer (Marko Vrhovnik,
+Michael Reiter)
+\end{itemize}
+\item Festpreisprojekt oder Time \& Material ? 
+
+\begin{itemize}
+\item A: Aufwandsschätzung erwartet, gelegentliche Treffen zur Feststellung
+des Fortschritts
+\end{itemize}
+\item Arbeitsort ? Beim Kunde oder in unserer Firma ? 
+
+\begin{itemize}
+\item A: Uni Stuttgart
+\end{itemize}
+\item Geforderte Qualität ? Wie wichtig ist ist die Zuverlässigkeit. 
+
+\begin{itemize}
+\item A: Keine Strafzahlungen, maximal mögliche Korrektheit, Fehlerfreiheit.
+Frühzeitige Meldung bei Problemen.
+\end{itemize}
+\item Liefertermin ? 
+
+\begin{itemize}
+\item A: April 2010, Abnahmetest (danach kleine Änderungen möglich)
+\end{itemize}
+\item Welche Kosten kommen auf uns zu bei späterer Fertigstellung ? ¤ /
+Woche. 
+
+\begin{itemize}
+\item A: keine
+\end{itemize}
+\item In welchem Umfang werde hinterher Schulungen benötigt ? 
+
+\begin{itemize}
+\item A: keine, gute Demo und Doku reichen
+
+\begin{itemize}
+\item Folgefrage: Was bedeutet eine {}``gute'' Demo?
+\end{itemize}
+\end{itemize}
+\item Wie soll der Service erreichbar sein ? 24 Stunden / 7 Tage ? 
+
+\begin{itemize}
+\item A: werktags, Urlaubsplan an Kunden schicken
+\end{itemize}
+\item Wartungsvertrag ? Für Fehler die nach der Gewährleistung auftreten. 
+
+\begin{itemize}
+\item A: Nein
+\end{itemize}
+\item Welche Unterstützung bekommen wir während der Entwicklung vom Auftraggeber
+? 
+
+\begin{itemize}
+\item A: Wie in {[}\ref{the:Ausschreibung}{]} und {[}\ref{the:Kick-Off-Folien}{]}
+beschrieben.
+\end{itemize}
+\item Wie lange benötigen Sie Garantie ? 
+
+\begin{itemize}
+\item A: keine
+\end{itemize}
+\end{itemize}
+
+\section{Generische BPEL Aktivitäten }
+\begin{itemize}
+\item Replacement, Delete in Klammern bedeutet optional, oder wenn möglich?
+(siehe Folie Nr.7 in {[}\ref{the:Kick-Off-Folien}{]})
+
+\begin{itemize}
+\item A: Alle selbst erstellen => Orientierung an BPEL/SQL-Paper (siehe
+Patterns in {[}\ref{the:BPEL/SQL Paper}{]}) 
+\end{itemize}
+\item Anlegen von DB-Tabellen wird gewünscht, auch Änderung und Löschen
+von Tabellen? (siehe Folie Nr.7 in {[}\ref{the:Kick-Off-Folien}{]})
+
+\begin{itemize}
+\item A: Alles soll möglich sein (siehe Patterns in {[}\ref{the:BPEL/SQL Paper}{]})
+\end{itemize}
+\item BPEL-Aktivitäten von uns zu erstellen oder bereits irgendwie vorhanden
+(müssen nur noch angepasst werden)?
+
+\begin{itemize}
+\item A: Nichts vorhanden, BPEL Extension Activity
+\end{itemize}
+\end{itemize}
+
+\section{Anbindung versch. Datenquellen }
+\begin{itemize}
+\item Welche? Theoretisch alle?
+
+\begin{itemize}
+\item A: Generisch, soviel wie möglich. IBM DB2 + OpenSourceDB's (mind.
+1{*}RDB + mind. 1{*}XMLDB) + mind. 1{*}SensorDB (z.B. TinyDB)
+\end{itemize}
+\item Welche Dateiformate müssen unterstützt werden (lesen/schreiben)?
+
+\begin{itemize}
+\item A: Alle, wenn Einschränkungen stattfinden müssen diese begründet werden
+\end{itemize}
+\item Welche Anfragesprachen für den Datenbankzugriff müssen unterstützt
+werden?
+
+\begin{itemize}
+\item A: Alle, Kick-Off-Angaben als Minimum!
+\end{itemize}
+\item In welchem Umfang sollen Transaktionen unterstützt werden und welche
+Funktionen/Konzepte (2-Phase-Commit, ChangeHistory, ...) sollen integriert
+sein? Transaktionen über mehrere Datenquellen?
+
+\begin{itemize}
+\item A: Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt
+werden. Konzepte frei wählbar.
+
+\begin{itemize}
+\item Folgefrage: Zugriffe auf mehrere Datenquellen innerhalb eines Prozess
+und wie werden diese dann angegeben und die Queries referenziert?
+\end{itemize}
+\end{itemize}
+\item Wie sollen Anforderungen an eine Datenquelle durch den User modelliert
+werden können? Anotationen?
+
+\begin{itemize}
+\item A: Wenn DB als Web-Service dann mit Anotation mit/über {}``QUALITY
+OF SERVICE'', sonst statische Auswahl zur Modellierungs- oder Laufzeit
+\end{itemize}
+\item Sollen Daten aus Datenbanken in einem Prozess auch in lokale Dateien
+exportiert werden können und wenn ja in welche Formate?
+
+\begin{itemize}
+\item A: Ja.
+
+\begin{itemize}
+\item Folgefrage: Welche Formate werden dabei benötigt bzw. sind sinnvoll?
+\end{itemize}
+\end{itemize}
+\item sollen alle Operationen atomar sein, wenn nicht: welche Operationen
+sollen als Transaktion durchgeführt werden (bzw. wo ist Atomizität
+notwendig, wo nicht?)
+
+\begin{itemize}
+\item A: nicht zwangsweise, da Web-Services auch als atomar von Aussen angesehen
+werden. Atomic Scopes
+\end{itemize}
+\item Modellierung der Anforderungen an eine Datenquelle
+
+\begin{itemize}
+\item bedeutet das ein Nutzer kann eingeben was die Datenquelle können muss
+und das Programm wählt eine passende aus?
+\item A: Ja
+\item wie soll die Modellierung der Anforderungen genau gesehen, was muss
+enthalten sein? 
+\item A: Definition eines Anforderungskatalogs (Absprache mit Kunden)
+\item Woran soll sich die Strategie orientieren, bzw. Sich hauptsächlich
+orientieren?
+\item A: Anforderungen, Strategien entwickeln und mit Kunden absprechen
+\end{itemize}
+\item welche Kriterien sollen die Strategien enthalten (Auf welche Art sollen
+die Datenbanken/ Datenquellen beschrieben werden, was soll alles enthalten
+sein) (siehe Folie Nr.8 in {[}\ref{the:Kick-Off-Folien}{]} )
+
+\begin{itemize}
+\item A: Selber definieren und mit Kunde absprechen
+\end{itemize}
+\item wie sollen die Anotations ausgewertet werden, bzw. wie sollen die
+Informationen genutzt werden?
+
+\begin{itemize}
+\item A: Selber definieren und mit Kunde absprechen
+\end{itemize}
+\item Gibt es Datenquellen für Testzwecke?
+
+\begin{itemize}
+\item A: Michael Reiter fragen. RDB Biowissenschaften (SwissProt, UniProt,
+blast)
+\end{itemize}
+\end{itemize}
+
+\section{Autorisierung der Zugriffe }
+\begin{itemize}
+\item Sollen Authorisierung und Authentifizierung nur für Datenquellen bereitgestellt
+werden?
+
+\begin{itemize}
+\item A: Ja (Erweiterbarkeit!)
+\end{itemize}
+\item Welches Authentifizierungsverfahren ist gewünscht? Gibt es bereits
+Zugriffsregeln? 
+
+\begin{itemize}
+\item A: Es sind verschiedene Verfahren gewünscht und in jeder Situation
+das Bestmögliche.
+\end{itemize}
+\item Gibt es bereits ein Authentifizierungsverfahren bei dem Zugriff auf
+die wissenschaftlichen Datenbanken?
+
+\begin{itemize}
+\item A: Michael Reiter, als Beispiel {}``Kepler-Projekt''
+\end{itemize}
+\item Wo und in welchem Umfang soll die Autorisierung und die Authentifizierung
+stattfinden?
+
+\begin{itemize}
+\item A: Zugriff auf Datenquellen, Single-Sign-On (Prozess oder Instanz,
+unsere Entscheidung)
+\end{itemize}
+\item Beschränken sich Autorisierung und Authentifizierung nur auf die Ausführung
+oder auch auf die Modellierung/Implementierung von Prozessen (z.B.
+bei Implementierung von abstrakten Prozessen)?
+
+\begin{itemize}
+\item A: nur auf die Ausführung
+\end{itemize}
+\item Wie und wo sollen Autorisierungs- und Authentifizierungsparameter
+für einen Prozess spezifiziert werden?
+
+\begin{itemize}
+\item A: Auf Datenquellenebene. Bei Datenbanken über Schema, bei Dateisystemen
+z.B. über extra Dateien und bei Sensornetzen über spezielle Datenbank
+(TinyDB?).
+\end{itemize}
+\item Autorisierung bei allen Datenquellen notwendig? wenn ja auf die selbe
+Art? wenn nein bei welchen ist es notwendig?
+
+\begin{itemize}
+\item A: bei allen Datenquellen notwendig, verschiedene Arten
+\end{itemize}
+\end{itemize}
+
+\section{Monitoring der Prozessausführung }
+\begin{itemize}
+\item Extra Datenbank für das Monitoring kann eine feste oder frei wählbare
+sein? Oder Unterstützung verschiedener Datenbanken? 
+
+\begin{itemize}
+\item A: ODE hat eigene Monitoring-DB, muss frei wählbar sein über Rahmenwerk,
+Monitoring nicht verteilt über mehrere DB's
+\end{itemize}
+\item Wo soll das Monitoring ansetzen, bei BPEL Aktivitäten oder bei Datenbankzugriffen? 
+
+\begin{itemize}
+\item A: BPEL hat schon ein Monitoring, für unsere Zwecke Monitoring erstellen
+\end{itemize}
+\item Wie ausführlich soll das erfasst werden, welche Informationen werden
+benötig?
+
+\begin{itemize}
+\item A: Modell für Monitoring (Informationen) erstellen und mit Kunden
+absprechen
+\end{itemize}
+\item wie lang sollen Daten gespeichert werden (History = 2 wochen, 1 Monat
+... ?) 
+
+\begin{itemize}
+\item A: Variabel, soll als Parameter übergeben werden können
+\end{itemize}
+\item Monitoring immer aktiv, oder nur auf Userwunsch
+
+\begin{itemize}
+\item A: default: aktiv, auch abschaltbar. Über Eclipse BPEL-Designer mit
+Deployment-Deskriptoren definierbar
+\end{itemize}
+\end{itemize}
+
+\section{Sonstige Fragen }
+\begin{itemize}
+\item Wie soll die Demo genau aussehen? Was soll gezeigt werden?
+
+\begin{itemize}
+\item A: Inhalte werden später geklärt, die wichtigsten Use-Cases sollen
+vorgeführt werden und kurzer Einblick in die Doku
+\end{itemize}
+\item Welche Schritte werden bei der Prozessmodellierung ausgeführt, die
+die Funktionalität des Rahmenwerks nutzen?
+
+\begin{itemize}
+\item A: FRAGE UMFORMULIEREN UND NOCHMAL FRAGEN...
+\end{itemize}
+\item In welcher Form soll das Rahmenwerk am Ende zur Verfügung stehen?
+
+\begin{itemize}
+\item A: Komplettpaket und als Eclipse Plug-In
+
+\begin{itemize}
+\item Folgefrage: Wird das Rahmenwerk direkt in Eclipse als Plug-In ausgeführt
+oder soll das Rahmenwerk unabhängig von Eclipse sein und zusätzlich
+ein Eclipse Plug-In erstellt werden?
+\end{itemize}
+\end{itemize}
+\item Welche speziellen Dokumente müssen am Ende des Projekts angefertigt
+worden sein? (Erweiterte BPEL-Spec, ...)
+
+\begin{itemize}
+\item A: Eine zentrale Spezifikation / Dokumentation mit allen Erweiterungen
+\end{itemize}
+\item Stehen die Kunden während des Projekts für Reviews oder ähnliches
+zu Verfügung?
+
+\begin{itemize}
+\item A: Ja, nach Terminabsprache
+\end{itemize}
+\item Bedeutung/Definition von Erweiterbarkeit des Frameworks? (siehe {[}\ref{the:Ausschreibung}{]})
+
+\begin{itemize}
+\item A: Schnittstellen leicht erweiterbar, modularer Aufbau (Erweiterbarkeit
+wichtiges Merkmal)
+\end{itemize}
+\item Welche Teile/Aspekte sollen erweiterbar sein? (siehe {[}\ref{the:Ausschreibung}{]})
+
+\begin{itemize}
+\item A: Alle (modularer Aufbau)
+\end{itemize}
+\item Welche Erfahrungen haben die Nutzer?
+
+\begin{itemize}
+\item A: keine bis wenig (keine Informatiker)
+\end{itemize}
+\item Zielgruppe?
+
+\begin{itemize}
+\item A: Wissenschaftler, Ingenieure
+\end{itemize}
+\item Überprüfung der Benutzereingaben?
+
+\begin{itemize}
+\item A: Syntax und Plausibilitätsprüfung für unsere Erweiterungen (z.B.
+für neue BPEL-Aktivitäten)
+\end{itemize}
+\item Wird eine bestimmte Middleware bevorzugt?
+
+\begin{itemize}
+\item A: keine Vorgaben
+\end{itemize}
+\end{itemize}
+
+\section{Ist-Analyse: (nur Antworten)}
+\begin{itemize}
+\item Konzepte/Ansätze: siehe Seminarthemen
+\item WS-RF (Ressource Framework) Anbindung von Ressourcen mit Properties
+\item BPEL wird im Moment nicht in Scientific Workflows verwendet
+\item Scientific Workflow Management Systeme Info bei Görlach, Reiter
+\item myexperiment.org
+\end{itemize}
+
+\section{Nichtfunktionale Anforderungen (nur Antworten)}
+\begin{itemize}
+\item Fehlertoleranz: Scopes mit Handler; CompensationHandler und FaultHandler
+implementieren Logik für Kompensation und Fehler (rollback)
+\item Ausfallsicherheit: so gut wie möglich
+\item Usability: Zielgruppe, größtmögliche Transparenz
+\end{itemize}
+
+\section{NEUER TERMIN}
+
+2.Kundengespräch: Freitag 10.07.2009 10:00 Uhr Raum 1.049
+
+
+\section{Änderungsgeschichte}
+\begin{itemize}
+\item \textbf{Version 0.1}, 22. Juni 2009: Erstellung des Dokuments.
+\item \textbf{Version 0.1}, 29. Juni 2009: Erweiterung und Überarbeitung
+des Fragenkatalogs.
+\item \textbf{Version 1.0}, 03. Juli 2009: Ergebnisse des 1.Kundengesprächs
+wurden eingetragen.\end{itemize}
+\begin{thebibliography}{3}
+\bibitem{key-1}\label{the:Ausschreibung}Projektantrag\_StuProA\_ODE.pdf
+
+\bibitem{key-2}\label{the:Kick-Off-Folien}SIMPL\_KickOff.pdf
+
+\bibitem{key-1}\foreignlanguage{german}{\label{the:BPEL/SQL Paper}Vrhovnik,
+M.; Schwarz, H.; Radeschütz, S.; Mitschang, B.: An Overview of SQL
+Support in Workflow Products. In: Proc. of the 24th International
+Conference on Data Engineering (ICDE 2008), Cancún, México, April
+7-12, 2008}
+\end{thebibliography}
+
+\end{document}

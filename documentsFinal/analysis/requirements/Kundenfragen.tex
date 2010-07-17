@@ -1,0 +1,139 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman, a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{a4wide}
+
+\begin{document}
+
+\title{Fragen an die Kunden:}
+
+\maketitle
+
+\section{Ist Analyse}
+\begin{itemize}
+\item Welche Konzepte/Ansätze werden momentan genutzt und wofür?
+\item Mit welchen Konzepten wird bis jetzt auf wissenschaftliche Daten über
+BPEL-Prozesse zugegriffen, wenn überhaupt?
+\item Welche Datenquellen werden bereits benutzt?
+\end{itemize}
+
+\section{Angebot}
+\begin{itemize}
+\item Welche speziellen Inhalte soll das Angebot enthalten?
+\item Strafzahlungen pro Tag Verspätung. (Notenabzug)
+\item Welche Erreichbarkeit des Service wird gewünscht?
+\end{itemize}
+
+\section{Generische BPEL Aktivitäten }
+\begin{itemize}
+\item Replacement, Delete in Klammern bedeutet optional, oder wenn möglich?
+(siehe Folie Nr.7 in {[}\ref{the:Kick-Off-Folien}{]})
+\item Anlegen von DB-Tabellen wird gewünscht, auch Änderung und Löschen
+von Tabellen? (siehe Folie Nr.7 in {[}\ref{the:Kick-Off-Folien}{]})
+\item BPEL-Aktivitäten von uns zu erstellen oder bereits irgendwie vorhanden
+(müssen nur noch angepasst werden)?
+\end{itemize}
+
+\section{Anbindung versch. Datenquellen }
+\begin{itemize}
+\item Welche? Theoretisch alle?
+\item Welche Dateiformate müssen unterstützt werden (lesen/schreiben)?
+\item Welche Anfragesprachen für den Datenbankzugriff müssen unterstützt
+werden?
+\item In welchem Umfang sollen Transaktionen unterstützt werden und welche
+Funktionen/Konzepte (2-Phase-Commit, ChangeHistory, ...) sollen integriert
+sein? Transaktionen über mehrere Datenquellen?
+\item Wie sollen Anforderungen an eine Datenquelle durch den User modelliert
+werden können? Anotationen?
+\item Sollen Daten aus Datenbanken in einem Prozess auch in lokale Dateien
+exportiert werden können und wenn ja in welche Formate?
+\item sollen alle Operationen atomar sein, wenn nicht: welche Operationen
+sollen als Transaktion durchgeführt werden (bzw. wo ist Atomizität
+notwendig, wo nicht?)
+\item Modellierung der Anforderungen an eine Datenquelle
+
+\begin{itemize}
+\item bedeutet das ein Nutzer kann eingeben was die Datenquelle können muss
+und das Programm wählt eine passende aus?
+\item wie soll die Modellierung der Anforderungen genau gesehen, was muss
+enthalten sein?
+\item Woran soll sich die Strategie orientieren, bzw. Sich hauptsächlich
+orientieren?
+\end{itemize}
+\item Was ist unter {}``Strategien'' zu verstehen?
+\item welche Kriterien sollen die Strategien enthalten (Auf welche Art sollen
+die Datenbanken/Datenquellen beschrieben werden, was soll alles enthalten
+sein) (siehe Folie Nr.8 in {[}\ref{the:Kick-Off-Folien}{]} )
+\item wie sollen die Annotations ausgewertet werden, bzw. wie sollen die
+Informationen genutzt werden?
+\item Gibt es Datenquellen für Testzwecke?
+\end{itemize}
+
+\section{Autorisierung der Zugriffe }
+\begin{itemize}
+\item Sollen Authorisierung und Authentifizierung nur für Datenquellen bereitgestellt
+werden?
+\item Welches Autorisierungsverfahren ist gewünscht? Gibt es bereits Zugriffsregeln?
+\item Authentifizierung wird gar nicht als Anforderung genannt.
+\item Authentifizierung der Zugriffe auf eine bestimmte Art, oder auf verschiedene
+Arten?
+\item Gibt es bereits ein Authentifizierungsverfahren bei dem Zugriff auf
+die wissenschaftlichen Datenbanken?
+\item Wo und in welchem Umfang soll die Autorisierung und die Authentifizierung
+stattfinden?
+\item Beschränken sich Autorisierung und Authentifizierung nur auf die Ausführung
+oder auch auf die Modellierung/Implementierung von Prozessen (z.B.
+bei Implementierung von abstrakten Prozessen)?
+\item Wie und wo sollen Autorisierungs- und Authentifizierungsparameter
+für einen Prozess spezifiziert werden?
+\item Autorisierung bei allen Datenquellen notwendig? wenn ja auf die selbe
+Art? wenn nein bei welchen ist es notwendig?
+\end{itemize}
+
+\section{Monitoring der Prozessausführung }
+\begin{itemize}
+\item Extra Datenbank für das Monitoring kann eine feste frei wählbare sein?
+Oder Unterstützung verschiedener Datenbanken?
+\item Wo soll das Monitoring ansetzen, bei BPEL Aktivitäten oder bei Datenbankzugriffen?
+Wie ausführlich soll das erfasst werden, welche Informationen werden
+benötig?
+\item wie lang sollen Daten gespeichert werden (History = 2 wochen, 1 Monat
+... ?)
+\item Monitoring immer aktiv, oder nur auf Userwunsch
+\end{itemize}
+
+\section{Sonstige Fragen }
+\begin{itemize}
+\item Wie soll die Demo genau aussehen? Was soll gezeigt werden?
+\item Welche Schritte werden bei der Prozessmodellierung ausgeführt, die
+die Funktionalität des Rahmenwerks nutzen?
+\item In welcher Form soll das Rahmenwerk am Ende zur Verfügung stehen?
+\item Welche speziellen Dokumente müssen am Ende des Projekts angefertigt
+worden sein? (Erweiterte BPEL-Spec, ...)
+\item Stehen die Kunden während des Projekts für Reviews oder ähnliches
+zu Verfügung?
+\item Bedeutung/Definition von Erweiterbarkeit des Frameworks? (siehe {[}\ref{the:Ausschreibung}{]})
+\item Welche Teile/Aspekte sollen erweiterbar sein? (siehe {[}\ref{the:Ausschreibung}{]})
+\item Welche Erfahrungen haben die Nutzer?
+\item Zielgruppe?
+\item Überprüfung der Benutzereingaben?
+\item Wird eine bestimmte Middleware bevorzugt?
+\end{itemize}
+
+\section{Nichtfunktionale Anforderungen }
+\begin{itemize}
+\item Fehlertoleranz?
+\item Ausfallsicherheit?
+\item Erweiterbarkeit?
+\item Anforderung an Benutzbarkeit(usability)\end{itemize}
+
+\begin{thebibliography}{2}
+\bibitem{key-1}\label{the:Ausschreibung}Projektantrag\_StuProA\_ODE.pdf
+
+\bibitem{key-2}\label{the:Kick-Off-Folien}SIMPL\_KickOff.pdf
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,3052 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{listings}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+
+\usepackage{array}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\newcommand{\noun}[1]{\textsc{#1}}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Feinentwurf}
+\def\docvers{3.0}
+\def\docautor{}
+\def\docdate{21. Mai 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\makeatother
+
+\begin{document}
+\input{Deckblatt.tex}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents{}
+
+\newpage{}
+
+
+\section*{Änderungsgeschichte}
+
+\begin{center}
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{3cm}|>{\raggedright}p{3cm}|>{\raggedright}p{6cm}|}
+\hline 
+\textbf{Version} & \textbf{Datum} & \textbf{Autor} & \textbf{Änderungen}\tabularnewline
+\hline
+\hline 
+0.1 & 13.11.2009 & zoabifs & Erstellung des Dokuments.\tabularnewline
+\hline 
+0.2 & 04.01.2010 & schneimi & Überarbeitung der Struktur, Kapitel \ref{sec:Einleitung} hinzugefügt.\tabularnewline
+\hline 
+0.3 & 09.01.2010 & schneimi & Kapitel \ref{sec:SIMPLCore} hinzugefügt.\tabularnewline
+\hline 
+0.4 & 12.02.2010 & schneimi & Beschreibung von Kapitel \ref{sec:Kommunikation}.\tabularnewline
+\hline 
+0.5 & 12.01.2010 & rehnre & Kapitel \ref{sub:BPEL-DM-Extension} und \ref{sub:Ausf=0000FChrung-einer-BPEL-DM}
+hinzugefügt.\tabularnewline
+\hline 
+0.6 & 12.01.2010 & huettiwg & Kapitel \ref{sub:Simpl-Auditing} hinzugefügt.\tabularnewline
+\hline 
+0.7 & 12.01.2010 & bruededl & Beschreibung von Kapitel \ref{sec:Eclipse}.\tabularnewline
+\hline 
+0.8 & 12.01.2010 & hahnml & Diagramme in Kapitel \ref{sec:Eclipse} und \ref{sec:Kommunikation}
+eingefügt.
+
+Beschreibung des Abschnitts \ref{sub:Administration-Service}.\tabularnewline
+\hline 
+0.9 & 15.01.2010 & bruededl & Kapitel \ref{sec:Eclipse} überarbeitet\tabularnewline
+\hline 
+1.0 & 15.01.2010 & schneimi, hahnml, huettiwg & Abschließende Korrekturen durchgeführt.\tabularnewline
+\hline 
+1.1 & 24.03.2010 & hahnml & Kapitel \ref{sec:Eclipse} überarbeitet.\tabularnewline
+\hline 
+1.2 & 24.03.2010 & huettiwg & Kapitel \ref{sub:Simpl-Auditing} überarbeitet.\tabularnewline
+\hline 
+1.3 & 26.03.2010 & schneimi, hahnml, huettiwg, rehnre & Abschluss der Korrektur der 1.Iteration.\tabularnewline
+\hline 
+2.0 & 27.03.2010 & hahnml & Abschnitte \ref{sub:RRS-Eclipse-Plug-In} und \ref{sub:UDDI-Eclipse-Plug-In}
+eingefügt.\tabularnewline
+\hline 
+2.1 & 29.03.2010 & schneimi & Kapitel \ref{sub:Paketstruktur}, \ref{sec:SIMPLCore}, \ref{sub:Datasource-Service},
+
+\ref{sub:Plug-In-System}, \ref{sub:Web-Services} überarbeitet, Kapitel
+\ref{sub:SIMPLConfig},
+
+\ref{sub:DataFormat<S,-T>}, \ref{sub:Metadaten}, \ref{sub:Hilfsklassen}
+hinzugefügt.\tabularnewline
+\hline 
+2.2 & 01.04.2010 & schneimi & Kapitel \ref{sub:SIMPL-Core-Client}, \ref{sec:Kommunikation} überarbeitet,
+Kapitel \ref{sub:Strategy-Service}, \ref{sub:Connection-Service}
+hinzugefügt.\tabularnewline
+\hline 
+2.3 & 01.04.2010 & rehnre & Kapitel \ref{sec:Apache-ODE} überarbeitet und \ref{sec:Reference-Resolution-System}
+eingefügt.\tabularnewline
+\hline 
+2.4 & 01.04.2010 & huettiwg & Kapitel \ref{sec:Uddi-Registry} erstellt.\tabularnewline
+\hline 
+2.5 & 15.05.2010 & hahnml & Kapitel \ref{sub:BPEL-DM-Plug-In} bis \ref{sub:RRS-Eclipse-Plug-In}
+überarbeitet. Kapitel \ref{sub:RRS-Transformation-Service} und \ref{sub:RRS-Transformation-Eclipse-Plug-In}
+eingefügt bzw. erweitert.
+
+\tabularnewline
+\hline 
+2.6 & 17.05.2010 & rehnre & Kapitel \ref{sec:Reference-Resolution-System} überarbeitet und erweitert.\tabularnewline
+\hline 
+2.7 & 18.05.2010 & schneimi & Abbildung \ref{fig:SIMPL-Core-Klassendiagramm} und Kapitel \ref{sub:Paketstruktur},
+\ref{sub:Datentypen-und-Enumerationen}, \ref{sub:Interfaces}, \ref{sub:Hilfsklassen}
+überarbeitet\tabularnewline
+\hline 
+2.8 & 19.05.2010 & schneimi & Kapitel \ref{sub:SIMPLCore-Klasse}, \ref{sub:SIMPLConfig}, \ref{sub:Plug-In-System},
+\ref{sub:Datasource-Service} überarbeitet und Sequenzdiagramme hinzugefügt\tabularnewline
+\hline 
+2.9 & 19.05.2010 & huettiwg & Kapitel \ref{sub:Simpl-Auditing}, \ref{sec:Uddi-Registry}hinzugefügt
+und überarbeitet\tabularnewline
+\hline 
+3.0 & 21.05.2010 & hahnml & Kapitel \ref{sec:Eclipse} überarbeitet und Abschnitte \ref{sub:Eclipse-BPEL-Designer-Modell},
+\ref{sub:Eclipse-BPEL-Designer-UI}, \ref{sub:Eclipse-BPEL-Designer-DD-Modell}und
+\ref{sub:Eclipse-BPEL-Designer-DD-UI} eingefügt.\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+\pagebreak{}
+
+
+\section{\label{sec:Einleitung}Einleitung}
+
+Dieses Kapitel erklärt den Zweck des Dokuments, den Zusammenhang zu
+anderen Dokumenten und gibt dem Leser einen Überblick über den Aufbau
+des Dokuments.
+
+
+\subsection{Zweck dieses Dokuments}
+
+Der Feinentwurf beschreibt Details der Implementierung der Komponenten,
+die im Grobentwurf \\
+\cite{key-1} in Kapitel 3 vorgestellt wurden. Die Komponenten
+werden ausführlich beschrieben und ihre Funktionalität durch statische
+und dynamische UML-Diagramme visualisiert. Der Feinentwurf bezieht
+sich im Gegensatz zum Grobentwurf aktuell nur auf die erste Iteration
+und wird mit der zweiten Iteration vervollständigt. Grobentwurf und
+Feinentwurf bilden zusammen den vollständigen Entwurf des SIMPL Rahmenwerks.
+
+
+\subsection{Gliederung}
+
+Der Feinentwurf gliedert sich in die folgenden Kapitel:
+\begin{itemize}
+\item Kapitel \ref{sec:SIMPLCore} {}``SIMPL Core'' beschreibt die Implementierung
+des SIMPL Cores und seinen Web Services (siehe \cite{key-1} Kapitel
+3.1).
+\item Kapitel \ref{sec:Apache-ODE} {}``Apache ODE'' beschreibt die Implementierung
+der Datamanagement-Aktivitäten (DM-Aktivitäten) und das externe Auditing
+(siehe\cite{key-1} Kapitel 3.2).
+\item Kapitel \ref{sec:Reference-Resolution-System} {}``Reference Resolution
+System'' beschreibt die Implementierung des Reference Resolution
+Systems und seiner Services sowie des RRS DS-Adapter Plug-In Systems.
+\item Kapitel \ref{sec:Eclipse} {}``Eclipse Plug-Ins'' beschreibt die
+Implementierung der Eclipse Plug-Ins, die für das SIMPL Rahmenwerk
+realisiert werden (siehe\cite{key-1} Kapitel 3.3).
+\item Kapitel \ref{sec:Kommunikation} {}``Kommunikation'' beschreibt
+die Kommunikation der Komponenten im SIMPL Rahmenwerk auf Funktionsebene.
+\end{itemize}
+\pagebreak{}
+
+
+\section{\label{sec:SIMPLCore}SIMPL Core}
+
+Abbildung \ref{fig:SIMPL-Core-Klassendiagramm} zeigt den Aufbau des
+SIMPL Cores mit Paketstruktur, Klassen und Interfaces, sowie deren
+Zusammenhänge über Verbindungspfeile, die in den folgenden Abschnitten
+beschrieben werden. In der Abbildung wird aus Gründen der Übersichtlichkeit
+auf die Darstellung der Interface- und Web Service-Methoden, sowie
+Getter- und Setter-Methoden verzichtet, die aber in den folgenden
+Abschnitten weitestgehend genannt und beschrieben werden. Des Weiteren
+werden folgende Abkürzungen für Klassennamen verwendet \emph{DSS}
+für DataSourceService und \emph{DF} für DataFormat. Einige der SIMPL
+Core Dienste werden, falls sie außerhalb des SIMPL Cores aufrufbar
+sein müssen, nach Außen über Web Services verfügbar gemacht und entsprechend
+als solche bezeichnet, wie z.B. Administration Web Service anstelle
+von Administration Service, wenn diese gemeint sind.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPLCore_Class_Diagram}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL-Core-Klassendiagramm}SIMPL Core Klassendiagramm}
+
+\end{figure}
+
+
+
+\subsection{\label{sub:Paketstruktur}Paketstruktur}
+
+Der SIMPL Core besitzt folgende Paketstruktur, die sich ausgehend
+vom Kernbereich (\emph{org.simpl.core}), in Bereiche für die Dienste
+(\emph{services}), Web Services (\emph{webservices}), Plug-Ins (\emph{plugins})
+sowie Hilfsklassen (\emph{helpers}) aufteilt.
+
+
+\subsubsection*{org.simpl.core}
+
+Hier befinden sich zentrale Klassen des SIMPL Cores, dazu gehört die
+\emph{SIMPLCore}-Klasse, die den Zugriff auf die verschiedenen Dienste
+ermöglicht, sowie die \emph{SIMPLConfig}-Klasse, die für das Einlesen
+der Konfigurationsdatei des SIMPL Cores zuständig ist.
+
+
+\subsubsection*{org.simpl.core.services}
+
+In diesem Paket befinden sich keine Klassen oder Interfaces, es dient
+lediglich zur Gliederung der verschiedenen Dienste des SIMPL Cores.
+
+
+\subsubsection*{org.simpl.core.services.administration}
+
+Hier befinden sich alle Klassen zur Realisierung des Administration
+Service (siehe \cite{key-1}, Kapitel 3.3.1). Dieser Dienst wird benötigt,
+um alle Einstellungen des SIMPL Cores zu verwalten.
+
+
+\subsubsection*{org.simpl.core.services.strategy}
+
+Hier befinden sich alle Klassen zur Realisierung des Strategy Service
+(siehe \cite{key-1}, Kapitel 3.3.4). Dieser Dienst wird für das Late-Binding
+benötigt.
+
+
+\subsubsection*{org.simpl.core.services.datasource}
+
+Hier befinden sich alle Klassen zur Realisierung des Datasource Service
+(siehe \cite{key-1}, Kapitel 3.3.2). Dieser Dienst wird benötigt,
+um Datenquellen anzubinden und Abfragen an diese zu senden.
+
+
+\subsubsection*{org.simpl.core.plugins}
+
+In diesem Paket befinden sich keine Klassen oder Interfaces, es dient
+lediglich zur Gliederung der verschiedenen Plugins des SIMPL Cores.
+
+
+\subsubsection*{org.simpl.core.plugins.datasource}
+
+Hier befinden sich die Plug-Ins für den Datasource Service, die für
+die verschiedenen Datenquellentypen entwickelt werden. Falls sich
+die einzelnen Plug-Ins auf mehrere Klassen verteilen, können diese
+zusätzlich auf eigene Unterpakete verteilt werden. Das Plug-In-System
+wird in Kapitel \ref{sub:Plug-In-System} näher beschrieben.
+
+
+\subsubsection*{org.simpl.core.plugins.dataformat}
+
+Hier befinden sich die DataFormat Plug-Ins, die für die Unterstützung
+verschiedener Datenformate entwickelt werden. Falls sich die einzelnen
+Plug-Ins auf mehrere Klassen verteilen, können diese zusätzlich auf
+eigene Unterpakete verteilt werden. Das Plug-In-System wird in Kapitel
+\ref{sub:Plug-In-System} näher beschrieben.
+
+
+\subsubsection*{org.simpl.core.plugins.dataformat.converter}
+
+Hier befinden sich die DataFormatConverter Plug-Ins, die für die Konvertierung
+zwischen DataFormat Plug-Ins entwickelt werden um einen Austausch
+von Daten zwischen verschiedenen Datasource Services zu ermöglichen.
+
+
+\subsubsection*{org.simpl.core.webservices}
+
+Hier befinden sich die Web Services des SIMPL Cores, die den Zugriff
+von Außen auf Dienste des SIMPL Cores ermöglichen. Alle Klassen werden
+mit JAX-WS-Annotationen versehen und als Webservices über den Axis2
+Integration Layer von ODE zur Verfügung gestellt.
+
+
+\subsubsection*{org.simpl.core.helpers}
+
+In diesem Paket befinden sich Hilfsklassen, die den Entwickler unterstützen.
+
+
+\subsection{\label{sub:Datentypen-und-Enumerationen}Datentypen und Enumerationen}
+
+Im SIMPL Core werden bestimmte Datentypen und Enumerationen verwendet,
+die durch entsprechende JAX-WS Annotationen ebenfalls über die Web
+Services genutzt werden.
+
+
+\subsubsection{\label{sub:DataSource}DataSource}
+
+Stellt alle Eigenschaften einer Datenquelle zur Verfügung und enthält
+wichtige Zugriffsinformationen, die für einen Verbindungsaufbau benötigt
+werden. Dazu gehören Authentifizierungsinformationen und Informationen
+für das Late-Binding.
+
+
+\subsubsection{Authentication}
+
+Enthält Authentifizierungsinformationen wie Benutzername und Passwort
+und kann ggf. um weitere Informationen erweitert werden.
+
+
+\subsubsection{LateBinding}
+
+Enthält alle Informationen für das Late-Binding wie z.B. WS-Policy
+Informationen, die Adresse der UDDI-Registry und die Strategie (siehe
+Abschnitt \ref{sub:Strategy}), die verwendet werden soll.
+
+
+\subsubsection{\label{sub:Strategy}Strategy}
+
+Diese Enumeration dient der Unterscheidung der verschiedenen Late-Binding
+Strategien.
+
+
+\subsection{\label{sub:Interfaces}Interfaces}
+
+Dieses Kapitel beschreibt alle wichtigen Interfaces im SIMPL Core
+und ihre Funktionen.
+
+
+\subsubsection{\label{sub:DataSourceService<S,-T>}DataSourceService<S, T>}
+
+Das \emph{DataSourceService}-Interface beschreibt die zu implementierenden
+Funktionen des Datasource Service, sowie den \emph{DataSourceService}-Plug-Ins
+und bietet generische ein- und ausgehende Datentypen, die sich je
+nach Datenquellentyp unterscheiden können und deshalb erst bei der
+Implementierung festgelegt werden. Eingabeparameter für alle Funktionen
+ist die Datenquelle auf der operiert werden soll als \emph{DataSource}-Objekt,
+mit allen Angaben die für einen Verbindungsaufbau zu einer Datenquelle
+benötigt werden.
+
+
+\paragraph{public boolean executeStatement(DataSource dataSource, String statement)}
+
+Ermöglicht die Ausführung eines Statements auf einer Datenquelle und
+bestätigt die Ausführung mit einem booleschen Rückgabewert. Die Funktion
+wird hauptsächlich dazu verwendet um Datenstrukturen auf einer Datenquelle
+zu definieren, wie z.B. das Erstellen einer Tabelle auf einer relationalen
+Datenbank.
+
+
+\paragraph{public T retrieveData(DataSource dataSource, String statement)}
+
+Ermöglicht die Anforderung von Daten einer bestimmten Datenquelle
+durch Adresse und ein Statement der entsprechenden Anfragesprache
+wie z.B. ein SELECT-Statement in der Anfragesprache SQL bei relationalen
+Datenbanken. In welcher Form die Daten zurückgegeben werden, wird
+von der Implementierung bestimmt.
+
+
+\paragraph{public boolean writeBack(DataSource dataSource, S data)}
+
+Wird verwendet, um bestehende Daten einer Datenquelle zu manipulieren
+bzw. zu aktualisieren. Die Funktion erhält die geänderten Daten oder
+auch Anweisungen was geändert werden muss und übernimmt diese für
+die vorhanden Daten auf der Datenquelle. Der Erfolg des Zurückschreibens
+wird mit einem booleschen Rückgabewert bestätigt.
+
+
+\paragraph{public boolean writeData(DataSource dataSource, S data, String target)}
+
+Diese Funktion arbeitet ähnlich wie \emph{writeBack}, ist aber für
+das Schreiben noch nicht vorhandener Daten zuständig. Damit die geschriebenen
+Daten wieder abgerufen werden können, wird ein \emph{target} (Ziel)
+benötigt, das unter Umständen zuvor angelegt werden muss, was über
+die Funktion \emph{createTarget }möglich ist, die weiter unten beschrieben
+ist. Ob das Schreiben erfolgreich ausgeführt wurde, wird mit einem
+booleschen Rückgabewert bestätigt.
+
+
+\paragraph{public boolean depositData(DataSource dataSource, String statement,
+String target)}
+
+Mit dieser Funktion werden über ein Statement Daten einer Datenquelle
+selektiert und auf der Datenquelle selbst hinterlegt. Die hinterlegten
+Daten werden über das \emph{target} referenziert und können darüber
+anschließend abgerufen werden, dies kann z.B. der Tabellenname bei
+einer relationalen Datenbank sein. Die Ausführung wird mit einem booleschen
+Rückgabewert bestätigt.
+
+
+\paragraph{public DataObject getMetaData(DataSource dataSource, String filter)}
+
+Liefert Metadaten einer Datenquelle als SDO. Die Umsetzung wird in
+Kapitel \ref{sub:Metadaten} näher beschrieben.
+
+
+\paragraph{public boolean createTarget(DataSource dataSource, DataObject dataObject,
+String target)}
+
+Mit \emph{createTarget }kann ein Ziel für das Schreiben neuer Daten
+angelegt werden, z.B. eine Tabelle bei relationalen Datenbanken. Die
+Daten als SDO werden benötigt, da sich dort auch Metadaten befinden
+können, die für die Erstellung eines \emph{target} benötigt werden,
+z.B. Datentyp und Größe einer Spalte in einer relationalen Datenbank,
+die unter Umständen im eingehenden Datentyp (S) des Datasource Service
+nicht mehr vorhanden sind.
+
+
+\subsubsection{\label{sub:DataFormat<S,-T>}DataFormat<S, T>}
+
+Das \emph{DataFormat}-Interface ist die einheitliche Schnittstelle
+für die \emph{DataFormat}-Plug-Ins, die verwendet werden um die ausgehenden
+Datentypen von Datasource Service Plug-Ins zu SDO und umgekehrt die
+eingehenden SDO zurück zum eingehenden Datentyp umzuwandeln. \emph{DataFormat}-Plug-Ins
+können vom Datasource Service für verschiedene Datasource Service
+Plug-Ins wiederverwendet werden, wenn es sich die gleichen ein- und
+ausgehenden Datentypen handelt, die hier ebenfalls generisch sind
+und erst zur Implementierung bestimmt werden.
+
+
+\paragraph{public DataObject toSDO(S data)}
+
+Wandelt die eingehenden Daten zu SDO.
+
+
+\paragraph{public T fromSDO(DataObject data)}
+
+Wandelt die eingehenden SDO-Daten zurück in den ausgehenden Datentyp
+T.
+
+
+\paragraph{public DataObject getSDO()}
+
+Liefert ein leeres (ohne Daten) SDO mit der Struktur des XML-Schema,
+das dem \emph{DataFormat}-Plug-In zu Grunde liegt.
+
+
+\paragraph{public String getType()}
+
+Liefert den Typ des \emph{DataFormat}-Plug-Ins, der zur Identifikation
+verwendet wird und im Plug-In festgelegt wird.
+
+
+\subsubsection{\label{sub:DataFormatConverter}DataFormatConverter}
+
+Das \emph{DataFormatConverter}-Interface ist die einheitliche Schnittstelle
+für die \emph{DataFormatConverter}-Plug-Ins, die dafür verwendet werden
+um Daten die von einer Datenquelle abgerufen wurden, auch auf eine
+anderen Datenquelle schreiben zu können. Das Format des SDO wird durch
+die vom Datasource Service verwendeten \emph{DataFormat}-Plug-Ins
+bestimmt und kann daher von Datenquelle zu Datenquelle variieren.
+In einem \emph{DataFormatConverter}-Plug-In wird jeweils ein \emph{toSDO
+}DataFormat-Typ und ein \emph{fromSDO} DataFormat-Typ festgelegt.
+Damit ein \emph{DataFormatConverter}-Plug-In vom Datasource Service
+für mehrere Datenquellen wiederverwendet werden kann, wird den Funktionen
+zusätzlich die konkrete Implementierung des \emph{DataSourceService}-Plug-Ins
+mitgegeben um spezielle Konvertierungsunterschiede zu berücksichtigen.
+Das Plug-In besitzt folgende Funktionen um zwischen den Typen zu konvertieren.
+
+
+\paragraph{public DataObject convertTo(DataObject data, DataSourceService<Object,
+Object> dataSourceService)}
+
+Wandelt das eingehende SDO im \emph{toSDO} DataFormat-Typ in den \emph{fromSDO}
+Data"-Format-Typ.
+
+
+\paragraph{public DataObject convertFrom(DataObject data, DataSourceService<Object,
+Object> dataSourceService)}
+
+Wandelt das eingehende SDO im \emph{toSDO} DataFormat-Typ in den \emph{fromSDO}
+DataFormat-Typ.
+
+
+\paragraph{public DataObject convert(DataObject dataObject, DataSourceService<Object,
+Object> dataSourceService)}
+
+
+\subsubsection{\label{sub:StrategyService}StrategyService}
+
+Das \emph{StrategyService}-Interface beschreibt die Funktionen, die
+der Strategy Service implementieren muss, der für das Late-Binding
+Datenquellen aus der UDDI-Registry zuständig ist.
+
+
+\paragraph{public DataSource findDataSource(DataSource dataSource)}
+
+Erhält eine nicht vollständig spezifizierte Datenquelle mit Late-Binding
+Informationen (\emph{LateBinding}-Objekt) und sucht über den UDDI-Client
+eine entsprechende Datenquelle, die den Anforderungen genügt.
+
+
+\subsubsection{AdministrationService}
+
+Das \emph{AdministrationService-Interface} beschreibt die Funktionen,
+die der Administration Service implementieren muss.
+
+
+\paragraph{public boolean saveSettings(String schema, String table, String settingName,
+LinkedHashMap<String, String> settings)}
+
+Speichert die Einstellungen aus \emph{settings} in der Embedded Datenbank.
+
+
+\paragraph{public LinkedHashMap<String, String> loadSettings(String schema,
+String table, String settingName)}
+
+Lädt Einstellungen aus der Embedded Datenbank.
+
+
+\subsection{\label{sub:Hilfsklassen}Hilfsklassen}
+
+Für den Entwickler werden folgende Hilfsklassen zur Verfügung gestellt.
+
+
+\subsubsection{Printer}
+
+Mit der Klasse\emph{ Printer} kann über die statische Methoden \emph{+printDataObject(DataObject)
+}und \emph{+printDataObjectXML(DataObject)} ein SDO auf der Konsole
+ausgeben werden.
+
+
+\subsubsection{\label{sub:Parameter}Parameter}
+
+Mit der Klasse \emph{Parameter }können über die statischen Methoden
+\emph{+serialize(Object object)} und \emph{+deserialize(String data)
+}beliebige Java Objekte zu XML serialisiert und von XML deserialisiert
+werden. Dies geschieht mit Hilfe der Java Klassen \emph{XMLEncoder}
+und \emph{XMLDecoder}.
+
+
+\subsection{\label{sub:SIMPLCore-Klasse}SIMPLCore Klasse}
+
+Die Klasse\emph{ SIMPLCore} bildet den zentralen Zugriffspunkt auf
+alle Dienste des SIMPL Cores auf Klassenebene. Damit die Instanzen
+der Dienste nur einmal existieren und nicht bei jedem Zugriff erneut
+erstellt werden, ist die Klasse als Singleton (\cite{key-1} Kapitel
+3.3) ausgelegt. Diese Klasse wird von den Apache ODE Extension Activities
+(siehe \ref{sub:BPEL-DM-Extension}) benutzt, um DM-Aktivitäten auszuführen,
+sowie innerhalb des SIMPL Cores, wenn Dienste sich gegenseitig verwenden.
+
+
+\subsubsection{\label{sub:Singleton}Singleton}
+
+Das Singleton wird über einen privaten Konstruktor, sowie der Methode
+\emph{+getInstance() }realisiert, die, falls noch keine Instanz existiert,
+einmalig eine Instanz erstellt und bei folgenden Anfragen auf diese
+zurückgreift.
+
+
+\subsubsection{\label{sub:Funktionen-SIMPLCore}Funktionen}
+
+Folgende Funktionen stehen zur Verfügung:
+
+
+\paragraph*{getInstance()}
+
+Liefert die Instanz des SIMPL Cores, über die die folgenden Funktionen
+erreichbar sind.
+
+
+\paragraph*{administrationService() }
+
+Liefert die Instanz des Administration Service.
+
+
+\paragraph*{dataSourceService() }
+
+Liefert die Instanz des Datasource Service.
+
+
+\paragraph*{strategyService() }
+
+Liefert die Instanz des Strategy Service.
+
+
+\paragraph*{getConfig() }
+
+Liefert die Konfiguration des SIMPL Cores als Instanz der Klasse \emph{SIMPLConfig}.
+
+
+\subsection{\label{sub:SIMPLConfig}SIMPLConfig Klasse}
+
+Die installierten Plugins und ggf. später weitere Einstellungen des
+SIMPL Cores, werden über eine Konfigurationsdatei registriert, deren
+Inhalt und Verwendung in den folgendem Abschnitten näher beschrieben
+wird. Das Einlesen und Abrufen der Informationen aus dieser Datei
+wird über die \emph{SIMPLConfig-}Klasse realisiert. Die Konfigurationsdatei
+ist innerhalb der Apache ODE Konfiguration unter\emph{ ode/conf/simpl-core-config.xml
+}abgelegt und folgt dem Aufbau und der Struktur des XML-Schemas \emph{simpl-core-config.xsd}
+das dem \emph{org.simpl.core} Projekt beiliegt und in Abbildung \ref{fig:XML-Schema-der-Konfigurationsdatei}
+dargestellt ist. Die Plug-In-Klassen müssen in der Konfigurationsdatei
+jeweils mit dem vollqualifizierten Namen registriert und als \emph{jar}-Dateien
+beliebigen Namens unter \emph{ode/lib} abgelegt werden, damit sie
+vom SIMPL Core erkannt werden. Die Konfigurationsdatei wird beim Start
+des SIMPL Cores einmalig geladen, Änderungen an der Konfigurationsdatei
+sind deshalb erst nach einem Neustart von Apache Tomcat verfügbar.
+
+
+\subsubsection{\label{sub:XML-Schema}XML-Schema}
+
+Abbildung \ref{fig:XML-Schema-der-Konfigurationsdatei} zeigt alle
+Schema-Typen der XML-Konfigurationsdatei des SIMPL Cores. Das Schema
+besitzt ein Hauptelement vom Typ \emph{tSIMPLConfig }an dem alle weiteren
+Konfigurationselemente hängen. Die Plug-In Elemente werden zum Teil
+über IDs (Typ\emph{ ID}) referenziert (Typ\emph{ IDREF}) um redundante
+lange Klassennamen zu vermeiden. Die verschiedenen Elemente und ihre
+Typen werden im folgenden Abschnitt näher beschrieben. Elemente sind
+in der Abbildung mit einem e-Symbol gekennzeichnet, Attribute mit
+einem a-Symbol und eine Sequenz von Elementen durch ein Symbol mit
+drei Punkten. Die Beschriftung erfolgt in der Reihenfolge Name des
+Elements bzw. Attributs, Multiplizität (bei einer Sequenz von Elementen)
+und Typ.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPLConfigSchema}
+\par\end{centering}
+
+\caption{\label{fig:XML-Schema-der-Konfigurationsdatei}XML-Schema der Konfigurationsdatei}
+
+\end{figure}
+
+
+
+\paragraph*{SIMPLConfig}
+
+Das Hauptelement vom Typ \emph{tSIMPLConfig}, das in Abbildung \ref{fig:XML-Schema-der-Konfigurationsdatei}
+nicht zu sehen ist und alle anderen Konfigurationselemente enthält.
+
+
+\paragraph*{DataSourceServicePlugin}
+
+Ein registriertes DataSourceService Plug-In vom Typ \emph{tDataSourceServicePlugin}.
+Über die \emph{ID }kann das Element referenziert werden, \emph{className}
+entält den voll-qualifizierten Klassennamen des Plug-Ins.
+
+
+\paragraph*{DataFormatPlugin}
+
+Ein registriertes DataFormat Plug-In vom Typ \emph{tDataSourceServicePlugin}.
+Über die \emph{ID }kann das Element referenziert werden, \emph{className}
+entält den voll-qualifizierten Klassennamen des Plug-Ins.
+
+
+\paragraph*{DataFormatConverterPlugin}
+
+Ein registriertes DataFormatConverter Plug-In vom Typ \emph{tDataSourceServicePlugin}.
+Über die \emph{ID }kann das Element referenziert werden, \emph{className}
+entält den voll-qualifizierten Klassennamen des Plug-Ins.
+
+
+\paragraph*{DataFormat}
+
+Ein \emph{DataFormat}-Element referenziert ein \emph{DataFormatPlugin}-Element
+und legt fest für welche \emph{DataSourceService} Plug-Ins ein DataFormat
+Plug-In verwendet werden kann.
+
+
+\paragraph*{DataFormatConverter}
+
+Ein \emph{DataFormatConverter}-Element referenziert ein \emph{DataFormatConverterPlugin}-Element
+und legt fest für welche \emph{DataSourceService} Plug-Ins ein DataFormatConverter
+Plug-In verwendet werden kann.
+
+
+\paragraph*{DataSourceService}
+
+Ein referenziertes \emph{DataSourceServicePlugin}-Element.
+
+
+\subsubsection{XML-Konfigurationsdatei}
+
+Abbildung \ref{fig:XML-Konfigurationsdatei} zeigt die XML-Konfigurationsdatei
+als Instanz des XML-Schema (siehe Kapitel \ref{sub:XML-Schema}) mit
+den für das Projekt entwickelten Plug-Ins. Neben den DataSourceService
+Plug-Ins für die verschiedenen Datenbanken, und das lokale Windows
+Dateisystem, gibt es jeweils ein entsprechenes DataFormat Plug-In
+und ein DataFormatConverter Plug-In, das zwischen den registrierten
+DataSourceFormat Plug-Ins und somit dem Datenformat zwischen Datenbank
+und Dateisystem konvertieren kann.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/simpl-core-config\lyxdot xml}
+\par\end{centering}
+
+\caption{\label{fig:XML-Konfigurationsdatei}XML-Konfigurationsdatei}
+
+\end{figure}
+
+
+
+\subsubsection{Funktionen}
+
+Die \emph{SIMPLConfig}-Klasse bietet folgende Funktionen um die Informationen
+aus der XML-Konfigurations"=datei auszulesen:
+
+
+\paragraph*{getDataSourceServicePlugins()}
+
+Liefert eine Liste mit den vollqualifizierten Namen der registrierten
+DataSourceService Plug-Ins.
+
+
+\paragraph*{getDataFormatPlugins()}
+
+Liefert eine Liste mit den vollqualifizierten Namen der registrierten
+DataFormat Plug-Ins.
+
+
+\paragraph*{getDataFormatConverterPlugins()}
+
+Liefert eine Liste mit den vollqualifizierten Namen der registrierten
+DataFormatConverter Plug-Ins.
+
+
+\paragraph*{getDataFormatMapping()}
+
+Liefert eine Hashmap mit den vollqualifizierten Namen der registrierten
+DataFormat Plug-Ins und ihren unterstützten DataSourceService Plug-Ins.
+
+
+\paragraph*{getDataFormatConverterMapping()}
+
+Liefert eine Hashmap mit den vollqualifizierten Namen der registrierten
+DataFormatConverter Plug-Ins und ihren unterstützten DataSourceService
+Plug-Ins.
+
+
+\subsection{\label{sub:Plug-In-System}Plug-In System}
+
+Um eine Erweiterungsmöglichkeit des SIMPL Cores für die Unterstützung
+verschiedener Typen von Datenquellen und Datenformaten zu garantieren,
+wird ein Plug-In System realisiert. Dies wird durch die Bereitstellung
+von abstrakten Klassen erreicht, von der sich die Plug-Ins durch Vererbung
+ableiten lassen. Mit der Reflection API von Java ist es möglich, die
+Plug-Ins zur Laufzeit zu laden und zu verwenden, ohne dass bestehender
+Code angepasst werden muss. Die Plug-Ins werden als JAR-Dateien im
+Classpath von Apache ODE \emph{ode/lib} abgelegt und müssen in der
+\emph{simpl-core-config.xml }(siehe \ref{sub:SIMPLConfig}) registriert
+werden. Für das Laden der Plug-Ins stehen sog. Service-Provider zur
+Verfügung, die die Plug-Ins als Instanzen bereitstellen und die dafür
+nötigen Informationen von der \emph{SIMPLConfig}-Klasse anfordern.
+In den folgenden Abschnitten werden die verschiedenen Plug-Ins vorgestellt
+und beschrieben. Wie diese Plug-Ins verwendet werden und ihr Zusammenspiel
+wird in Kapitel \ref{sub:Datasource-Service} genauer beschrieben.
+
+
+\subsubsection{\label{sub:DataSourceServicePlugin}DataSourceService Plug-In}
+
+Über DataSourceService Plug-Ins können beliebige Datenquellen an den
+SIMPL Core angeschlossen werden. DataSourceService Plug-Ins erben
+von der abstrakten \emph{DataSourceServicePlugin}-Klasse und müssen
+damit das \emph{DataSourceService<S, T>}-Interface (siehe Kapitel
+\ref{sub:DataSourceService<S,-T>}) implementieren. Über den \emph{DataSourceServiceProvider}
+kann mit der Methode \emph{+getInstance(String dsType, String dsSubtype)}
+die Instanz eines DataSourceService Plug-Ins angefordert werden. Folgende
+wichtige Funktionen werden von der abstrakten Plugin-Klasse bereitgestellt:
+
+
+\paragraph*{public void setType(String dsType)}
+
+Bestimmt den Typ der Datenquelle.
+
+
+\paragraph*{public void addSubtype(String dsSubtype)}
+
+Fügt einen unterstützten Subtyp der Datenquelle hinzu.
+
+
+\paragraph*{public void addLanguage(String dsSubtype, String dsLanguage)}
+
+Fügt eine unterstützte Sprache der Datenquelle hinzu.
+
+
+\paragraph*{public void setMetaDataSchemaFile(String dfSchemaFile)}
+
+Legt Pfad und Dateiname des zu verwendenden Metadaten XML-Schemas
+fest (siehe auch \ref{sub:Metadaten}).
+
+
+\paragraph*{public void setMetaDataSchemaType(String dsMetaDataType)}
+
+Legt den root Schema-Typ fest von dem aus das SDO erstellt wird.
+
+
+\paragraph*{public DataObject getMetaDataSDO()}
+
+Liefert ein leeres (ohne Dateninhalt und Struktur) SDO zurück, das
+aus dem Metadaten-Schema erzeugt wird.
+
+
+\subsubsection{\label{sub:DataFormatPlugin}DataFormat Plug-In}
+
+Mit DataFormat Plug-Ins können die verschiedene Datenformate von Datenquellen
+unterstützt werden, bspw. verschiedene Dateitypen bei Dateisystemen.
+DataFormat Plug-Ins erben von der abstrakten \emph{DataFormatPlugin}-Klasse
+und müssen damit das \emph{DataFormat<S, T>}-Interface (siehe Kapitel
+\ref{sub:DataFormat<S,-T>}) implementieren. Über den \emph{DataFormatProvider}
+kann mit der Methode \emph{+getInstance(String dfType) }die Instanz
+eines DataFormat Plug-Ins angefordert werden.
+
+Ein DataFormat Plug-In wird dazu verwendet um die unterschiedlichen
+ein- und ausgehenden Datentypen eines DataSourceService Plug-Ins von-
+und zu einem SDO zu konvertieren. Damit können DataFormat Plug-Ins
+für DataSourceService Plug-Ins wiederverwendet werden, die die gleichen
+Datentypen verwenden. Jedem \emph{DataFormatPlugin }liegt ein XML-Schema
+zu Grunde das die Struktur des SDO festlegt. Dadurch werden abgerufene
+Daten je nach Datenquelle (\emph{DataSourceServicePlugin}) und verwendetem
+\emph{DataFormatPlugin} in unterschiedlichen Formaten geliefert. Für
+eine Konvertierung zwischen diesen SDO Formaten können DataFormatConverter
+Plug-Ins entwickelt werden (siehe \ref{sub:DataFormatConverterPlugin}).
+Folgende wichtige Funktionen werden von der abstrakten Plugin-Klasse
+bereitgestellt:
+
+
+\paragraph*{public void setType(String dfType)}
+
+Legt den Typ des Datenformats fest. Der Typ wird im Gegensatz zu DataSourceService
+Plug-Ins zur Identifikation verwendet.
+
+
+\paragraph*{public void setSchemaFile(String dfSchemaFile)}
+
+Legt Pfad und Dateiname des zu verwendenden XML-Schemas fest.
+
+
+\paragraph*{public void setSchemaType(String dfSchemaType)}
+
+Legt den root Schema-Typ fest von dem aus das SDO erstellt wird.
+
+
+\paragraph*{public DataObject getSDO()}
+
+Liefert ein leeres (ohne Dateninhalt und Struktur) SDO zurück, das
+aus dem XML-Schema erzeugt wird.
+
+
+\subsubsection{\label{sub:DataFormatConverterPlugin}DataFormatConverterPlugin}
+
+Während DataFormat Plug-Ins für die Konvertierung zwischen SDO und
+Datentypen eines DataSourceService Plug-Ins zuständig ist, werden
+DataFormatConverter Plug-Ins für die Konvertierung zwischen den unterschiedlichen
+SDO-Datenformaten verwendet. Dies ermöglicht z.B. Daten aus einem
+Dateisystem, die über ein entsprechendes DataFormat Plug-In zu einem
+SDO konvertiert werden, in eine Datenquelle zu schreiben, der ein
+anderes DataFormat Plug-In zu Grunde liegt und folglich das resultierende
+SDO aus dem Dateisystem ohne eine Konvertierung nicht verstehen kann.
+DataFormatConverter Plug-Ins erben von der abstrakten \emph{DataFormatConverterPlugin}-Klasse
+und müssen damit das \emph{DataFormatConverter}-Interface (siehe Kapitel
+\ref{sub:DataFormatConverter}) implementieren. Über den \emph{DataFormatConverterProvider
+}kann mit der Methode \emph{+getInstance(String fromDF, String toDF)
+}die Instanz eines DataFormatConverter Plug-Ins angefordert werden.
+Folgende wichtige Funktionen werden von der abstrakten Plugin-Klasse
+bereitgestellt:
+
+
+\paragraph*{public void setFromDataFormat(String fromDataFormat)}
+
+Legt das Datenformat fest (Typ zur Identifikation, siehe\ref{sub:DataFormatPlugin})
+von dem konvertiert werden kann.
+
+
+\paragraph*{public void setToDataFormat(String toDataFormat)}
+
+Legt das Datenformat fest zu dem konvertiert werden kann.
+
+
+\paragraph*{public DataObject convert(DataObject dataObject, DataSourceService<Object,
+Object> dataSourceService)}
+
+Konvertiert das eingehende SDO, in einem der unterstützten Formate,
+automatisch in das entsprechende andere SDO Format.
+
+
+\paragraph*{public DataFormat<Object, Object> getFromDataFormat()}
+
+Liefert eine Instanz des festgelegten \emph{fromDataFormat}.
+
+
+\paragraph*{public DataFormat<Object, Object> getToDataFormat()}
+
+Liefert eine Instanz des festgelegten \emph{toDataFormat}.
+
+
+\subsection{SIMPL Core Services}
+
+In diesem Abschnitt werden die Dienste des SIMPL Cores und ihre Funktionsweise
+beschrieben.
+
+
+\subsubsection{\label{sub:Administration-Service}Administration Service}
+
+Der Administration Service ist für die Verwaltung der Einstellungen
+der Admin-Konsole des SIMPL Core Eclipse Plug-Ins zuständig. Die Einstellungen
+der Admin-Konsole werden dabei über das SIMPL Core Communication Plug-In
+(siehe \cite{key-1}, Kapitel 2.1) an den Administration Service übermittelt
+oder von ihm angefordert. Die auf diese Weise zentral im SIMPL Core
+hinterlegten Einstellungen können dann bei Bedarf direkt von anderen
+SIMPL Core Diensten, die diese Informationen benötigen, ausgelesen
+werden. Zur persistenten Speicherung der Einstellungen und weiterer
+Daten wird eine eigene eingebettete Apache Derby (Embedded Derby)
+Datenbank verwendet, die vom gesamten SIMPL Core genutzt wird.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/AdminServiceSequence}
+\par\end{centering}
+
+\caption{\label{fig:Sequenzdiagramm-des-AdministrationServices}Sequenzdiagramm
+eines Lade- und Speichervorgangs der SIMPL Core Einstellungen}
+
+\end{figure}
+
+
+Abbildung \ref{fig:Sequenzdiagramm-des-AdministrationServices} zeigt
+die Verwendung und die Funktionalität des Administration Service.
+Mit der loadSettings()-Methode können Einstellungen aus der Datenbank
+geladen werden. Dafür wird intern eine einfache Datenbankabfrage genutzt.
+Die Einstellungen werden dabei als HashMap zurückgeliefert und auch
+so beim Speichern übergeben, damit sowohl die Bezeichnung der Einstellung
+wie auch ihr Wert zu jeder Zeit verfügbar sind. Zur Identifizierung
+verschiedener Einstellungsprofile, wie z.B. Standard-Einstellungen
+und zuletzt gespeicherten Einstellungen, besitzt jede Einstellung
+eine eindeutige Id. So kann später die Admin-Konsole um das Laden
+und Speichern von benutzerspezifischen Preset-Einstellungen ergänzt
+werden.
+
+Die Struktur der Datenbank orientiert sich direkt am Aufbau der Admin-Konsole.
+Da in der Admin-Konsole immer Ober- und Unterpunkte zusammengehören,
+wurden auf der Datenbank diese Beziehungen durch die Strukturierung
+mit Schemata und Tabellen umgesetzt. So gibt es für jeden Oberpunkt,
+wie z.B. \emph{Auditing} ein gleichnamiges Schema und für jeden Unterpunkt
+eines Oberpunkts, wie z.B. \emph{General} eine gleichnamige Tabelle
+im Schema des Oberpunkts. Daraus ergibt sich der genaue Pfad einer
+in der Datenbank gespeicherten Einstellung aus der Auswahl in der
+Admin-Konsole. Mit der saveSettings()-Methode können Einstellungen
+in einer entsprechenden Tabelle eines Schemas gespeichert werden.
+Dazu wird zuerst überprüft, ob das zu den Einstellungen gehörige Schema
+bereits existiert (createSchemaIfItDoesntExistYet()) oder noch erzeugt
+werden muss, und anschließend, ob die Tabelle bereits existiert (createTableIfItDoesntExistYet())
+oder noch erzeugt werden muss. Die Tabelle wird dabei direkt aus den
+übergebenen Einstellungen automatisch erzeugt, indem die Einstellungsnamen
+als Spaltennamen verwendet werden. Wenn nun Schema und Tabelle vorhanden
+sind, wird überprüft, ob die zu speichernde Einstellung bereits vorhanden
+ist und nur noch aktualisiert werden muss, oder ob die Einstellung
+neu angelegt, also eine neue Zeile eingefügt werden muss. Dazu wird
+die executeUpdate()-Methode verwendet, die eventuell vorhandene Einstellungsprofile
+abfragt und anhand des Abfrageergebnisses (Einstellungsprofil existiert
+vs. Einstellungsprofil existiert nicht) das Einstellungsprofil über
+entsprechende Datenbankbefehle aktualisiert oder erstellt. Der AdministrationService
+gibt anschließend eine Statusmeldung (success?) an den SIMPL Core
+zurück, ob der ausgeführte Speichervorgang erfolgreich war. Dieses
+generische Vorgehen ist erforderlich, um die Erweiterung der Admin-Konsole
+durch weitere Eigenschaften möglichst einfach zu halten. Ein Entwickler
+muss nur die vorhandenen Schnittstellen der Admin-Konsole implementieren,
+seine Implementierung an den entsprechenden Extension-Point anbinden
+und braucht sich nicht um das Laden und Speichern seiner Einstellungen
+zu kümmern.
+
+
+\subsubsection{\label{sub:Datasource-Service}Datasource Service}
+
+Der Datasource Service ist der zentrale Dienst für den Datenquellenzugriff
+über den SIMPL Core. Alle Datenquellenanfragen richten sich an den
+Datasource Service, der wie die DataSourceService Plug-Ins das Interface
+\emph{DataSourceService<S, T>} (siehe Kapitel \ref{sub:DataSourceService<S,-T>})
+implementiert, als eingehende und ausgehende Datentypen aber ausschließlich
+mit SDOs (Datentyp \emph{DataObject}) arbeitet. In den folgenden Sequenzdiagrammen
+wird dargestellt wie verschiedene Anfragen verarbeitet werden und
+welche Rollen dabei die DataSourceService Plug-Ins, DataFormat Plug-Ins
+und DataFormatConverter Plug-Ins spielen. Die einzelnen Schritte sind
+in den Sequenzdiagrammen durchnummeriert und werden in den Beschreibungen
+in Klammern entsprechend referenziert.
+
+
+\paragraph*{\label{par:Abruf-von-Daten}Abruf von Daten einer Datenquelle}
+
+Das Sequenzdiagramm in Abbildung zeigt den Ablauf bei Abruf von Daten
+von einer Datenquelle. Zunächst wird die \emph{SIMPLCore}-Instanz
+angefordert (1), wobei eine Instanz des \emph{DataSourceService} erstellt
+wird (1.1). Über die \emph{SIMPLCore}-Instanz wird diese Instanz angefordert
+(2 und 3) und über \emph{retrieveData()} der Abruf der Daten in Auftrag
+gegeben (4). Der \emph{DataSourceService} holt sich zunächst über
+den \emph{DataSourceServiceProvider} die Instanz eines DataSourceService
+Plug-Ins für die gewünschte Datenquelle (4.1). Anschließend wird die
+Anfrage an die \emph{retrieveData()}-Funktion des Plug-Ins weitergeleitet
+(4.2), das die Daten von der Datenquelle holt und diese zurückgibt
+(4.3). Im nächsten Schritt werden die Daten über die interne Funktion
+\emph{formatRetrievedData()} zu einem SDO konvertiert (4.4), dazu
+wird über den DataFormatProvider mit \emph{getSupportedDataFormatTypes()}
+zunächst überprüft welche Datenformat-Typen für die ausgehenden Daten
+des DataSourceService Plug-Ins in Frage kommen (4.5), die als Liste
+zurückgeschickt werden (4.6). Wenn ein unterstützter Datenformat-Typ
+gefunden wurde, kann über den DataFormatProvider die Instanz des entsprechenden
+DataFormat Plug-Ins angefordert werden (4.7). Mit dieser Instanz ist
+es möglich die Daten mit der Funktion \emph{toSDO()\textasciiacute{}}in
+ein SDO zu konvertieren (4.8 und 4.9), das abschließend an den Aufrufer
+zurückgegeben wird (5).
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPLCore-retrieveData-Sequenzdiagramm}
+\par\end{centering}
+
+\caption{Sequenzdiagramm zu Abruf von Daten}
+
+
+
+\end{figure}
+
+
+
+\paragraph*{Abruf von Daten einer Datenquelle mit Late-Binding}
+
+Das Sequenzdiagramm in Abbildung \ref{fig:Sequenzdiagramm-zu-Abruf}
+zeigt den Ablauf bei Abruf von Daten einer Datenquelle, die über Late-Binding
+erst zur Laufzeit festgelegt wird. Der Ablauf unterscheidet sich zu
+dem vorherigen Szenario nur darin, dass zunächst eine Datenquelle
+bestimmt werden muss, deshalb wird in der folgenden Beschreibung nur
+auf zusätzliche Schritte vor, während und nach der Auswahl eingegangen.
+
+Bei der Anforderung des \emph{SIMPLCore} (1) wird ebenfalls der \emph{StrategyService}
+instanziiert (1.2), der zuvor nicht gezeigt wurde und der für das
+Late-Binding benötigt wird. Nach der Anfrage beim DataSourceService
+(4) wird in der internen Funktion \emph{findLateBindingDataSource()}
+(4.1) zunächst die Instanz des \emph{StrategyService} vom \emph{SIMPLCore}
+angefordert (4.2 bis 4.5), anschließend wird der \emph{StrategyService}
+über \emph{findDataSource} (4.6) dazu aufgefordert eine Datenquelle
+über die UDDI-Registry ausfindig zu machen. Dazu wird der UDDI-Client
+\emph{UddiDataSourceReader }instanziiert und über die Funktion \emph{getAllDatasources()
+}eine Liste der der verfügbaren Datenquellen angefordert (4.6.2 und
+4.6.3). Aus der Liste wird nun entsprechend der gewünschten Strategie,
+die bei der Anfrage angegeben wurde, eine Datenquelle ausgewählt und
+zurückgegeben (4.7) von der anschließend, wie in Abschnitt \ref{par:Abruf-von-Daten}
+{}``Abruf von Daten einer Datenquelle'' beschrieben (ab 4.1), die
+Daten abgerufen werden können.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPLCore-retrieveData-LateBinding-Sequenzdiagramm}
+\par\end{centering}
+
+\caption{\label{fig:Sequenzdiagramm-zu-Abruf}Sequenzdiagramm zu Abruf von
+Daten mit Late-Binding}
+
+
+
+\end{figure}
+
+
+
+\paragraph*{Transfer von Daten aus einem Dateisystem in eine Datenbank}
+
+Das folgende Szenario im Sequenzdiagramm in Abbildung \ref{fig:Sequenzdiagramm-zu-Transfer},
+zeigt den beispielhaften Ablauf beim Schreiben von Daten in eine Datenbank,
+die zuvor aus einem Dateisystem abgerufen wurden. Dabei soll vor allem
+die Konvertierung der eingehenden SDO Daten durch ein entsprechendes
+DataFormatConverter Plug-In klar werden. Da der Abruf der Daten aus
+einer Datenquelle, sowie die Anforderung des \emph{DataSourceService}
+über den \emph{SIMPLCore} bereits beschrieben wurden, wird an dieser
+Stelle nicht näher darauf eingegangen und der Abruf der Daten mit
+\emph{retrieveData()} , sowie das Schreiben mit \emph{writeData()}
+in der Abbildung direkt über den \emph{DataSourceService} dargestellt.
+
+Nachdem die Daten vom Dateisystem abgerufen wurden (1 und 2), werden
+diese zum Schreiben an die Datenbank mit \emph{writeData()} adressiert
+(3). Zunächst wird das entsprechende \emph{DataSourceServicePlugin}
+angefordert, für das aber in diesem Fall kein \emph{DataFormatPlugin}
+zugeordnet ist, das das SDO Datenformat verstehen kann. Die Daten
+aus dem Dateisystem liegen in dem Fall im CSV-Datenformat vor, dem
+\emph{DataSourceServicePlugin} für die Datenbank ist dagegen das RDB-Datenformat
+zugewiesen, beide Datenformate basieren auf jeweils unterschiedlichen
+XML-Schemata. Über die interne Methode \emph{formatWriteDataAndCreateTarget()}
+wird der Schreibvorgang abgewickelt (3.2). Um zu überprüfen ob das
+Datenformat des eingehenden SDOs bekannt ist, wird zunächst vom \emph{DataFormatProvider}
+eine Liste der von der Datenbank unterstützten Datenformate angefordert
+(3.3 und 3.4) und mit dem vorliegenden Datenformat verglichen. Im
+Sequenzdiagramm ist der Vollständigkeit halber auch der alternative
+Fall eingezeichnet, dass die Daten bereits in einem unterstützten
+Datenformat vorliegen (3.5 und 3.6). In unserem Szenario ist das aber
+nicht der Fall, daher muss geguckt werden in welche Datenformate das
+SDO konvertiert werden kann, und ob eines dieser Datenformate von
+der Datenbank unterstützt wird. Dazu wird mit \emph{getSupportedConvertDataFormatTypes()}
+vom \emph{DataFormatProvider} eine Liste der Datenformate abgerufen,
+in die das Datenformat generell konvertiert werden kann (3.6 und 3.7).
+Falls eines der Datenformate für die Datenbank unterstützt wird, wird
+das entsprechende \emph{DataFormatConverterPlugin }angefordert (3.8)
+und das SDO mit \emph{convert()} konvertiert (3.9 und 3.10). Sobald
+das SDO in einem unterstützten Datenformat vorliegt, kann es durch
+das entsprechende \emph{DataFormatPlugin }(die Unterstützung wurde
+ja zuvor geprüft) mit der Methode \emph{fromSDO()} zurück in den erwarteten
+Datentyp des Datenbank-\emph{DataSourceService} übersetzt werden (3.11
+bis 3.13). Nicht bei allen Datenquellen ist es notwendig Vorbereitungen
+auf der Datenquelle zu treffen, damit diese überhaupt geschrieben
+werden können. In diesem Fall muss aber eine Tabelle erstellt werden,
+in die die Daten geschrieben werden können was mit \emph{createTarget()}
+am \emph{DataSourceServicePlugin }ausgeführt wird (3.14). Abschließend
+werden die Daten geschrieben (3.15) und der Erfolg oder Mißerfolg
+durch einen booleschen Rückgabewert bestätigt (3.16) und zurückgegeben
+(4).
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPLCore-Transfer-Sequenzdiagramm}
+\par\end{centering}
+
+\caption{\label{fig:Sequenzdiagramm-zu-Transfer}Sequenzdiagramm zu Transfer
+von Daten aus einem Dateisystem in eine Datenbank}
+
+\end{figure}
+
+
+
+\subsubsection{\label{sub:Strategy-Service}Strategy Service}
+
+Der Strategy Service stellt dem Datasource Service die Möglichkeit
+des Late Bindung zur Verfügung, dabei kann eine bei der Modellierung
+noch nicht vollständig spezifizierte Datenquelle, über nichtfunktionale
+Anforderungen in Form von WS-Policy Annotationen, zur Laufzeit aus
+einer Datenquellen-Registry ausgewählt werden. Zu diesem Zweck implementiert
+der Strategy Service die Funktion, die in Kapitel \ref{sub:StrategyService}
+bereits beschrieben wurde. Als Parameter bekommt die Funktion die
+Datenquelleninformationen inklusive\emph{ }der \emph{LateBinding}-Informationen
+(siehe Kapitel \ref{sub:DataSource}) mitgeteilt und kann anschließend
+mit der angegebenen Strategie wie z.B. \emph{FIRST\_FIND}, eine Datenquelle
+in der Datenquellenregistry (UDDI) ausfindig machen. Mit den \emph{DataSource}-Informationen
+aus der Datenquellenregistry kann das entsprechenden Datasource Service
+Plug-In vom Datasource Service bereitgestellt werden. Der Zugriff
+auf die Registry wird mit einem Client realisiert, der der Apache
+jUDDI Registry \cite{key-4} als \emph{juddi-client-3.0.1.jar }beiliegt
+und mit dem auch andere UDDI v3 konformen Registries angesprochen
+werden können.
+
+
+\subsubsection{\label{sub:Connection-Service}Connection Service}
+
+Der Connection Service bietet dem Datasource Service die Möglichkeit,
+JDBC Verbindungen in einem Pool zwischenzuspeichern und bei Folgezugriffen
+wiederaufzunehmen. Dadurch wird die Ausführung von Workflows mit DM-Aktivitäten
+beschleunigt sowie ein Single Sign On erreicht, da bei Folgezugriffen
+keine erneute Verbindung mit Authentifizierung durchgeführt werden
+muss. Als Implementierung wird ein Connection Pool nach \cite{key-3}
+realisiert und ein JDBC Wrapper geschrieben, der Transparenz und Flexibilität
+sowie Threadsicherheit des Connection Pooling gewährleistet. Der Connection
+Service übernimmt dabei die Rolle des JDCConnectionPool wie in \cite{key-3}
+beschrieben und besitzt folgende Funktionen:
+
+
+\paragraph*{public synchronized Connection getConnection() }
+
+Liefert die Verbindung zu der Datenquelle.
+
+
+\paragraph*{public synchronized void returnConnection(JDCConnection conn) }
+
+Übergibt eine Verbindung zurück in den Pool bzw. markiert die Verbindung
+als nicht mehr in Benutzung.
+
+
+\paragraph*{public synchronized void closeConnections() }
+
+Schließt alle Verbindungen zu der Datenquelle.
+
+
+\paragraph*{public synchronized void reapConnections() }
+
+Sorgt dafür, dass blockierte oder tote Verbindungen aus dem Pool gelöscht
+werden, da dies nicht von allen Datenquellen unterstützt wird.
+
+
+\subsection{\label{sub:Metadaten}Metadaten}
+
+Für die Modellierung im Eclipse BPEL Designer werden Metadaten von
+Datenquellen benötigt um dem Modellierer verfügbare Ressourcen, wie
+z.B. Tabellen einer relationalen Datenbank, zur Auswahl zu stellen.
+Da die Metadaten je nach Datenquelle unterschiedliche Struktur haben
+können, werden diese mit dem SDO Konzept realisiert. Dabei kann jedem
+\emph{DataSourcePlugin }ein XML-Schema beigelegt werden (DataSourceMetaData.xsd),
+das die Struktur der Metadaten beschreibt. Über die DataSourcePlugin-Methode\emph{
++setMetaDataType(String) }wird der entsprechende Element-Typ des Schemas
+angegeben, über das mit der Methode \emph{+createMetaDataObject()}
+ein leeres Metadaten-SDO mit entsprechender Struktur erstellt werden
+kann. 
+
+Die eigentlichen Metadaten können damit vom Entwickler eines DataSourcePlugins
+in der zu implementierenden Funktion \emph{getMetaData(String dsAddress)}
+(siehe Abschnitt \ref{sub:Datasource-Service}), von der Datenquelle
+ausgelesen und in ein entsprechendes leeres Metadaten-SDO mit vorgegebener
+Struktur geschrieben werden. Der SIMPL Core stellt bereits ein XML-Schema
+für Metadaten von Datenbanken (tDatabaseMetaData) und Dateisystemen
+(tFilesystemMetaData) zur Verfügung, die von Datenquellen-Plug-Ins
+genutzt werden können. 
+
+Metadaten die durch den Datasource Web Service angefordert werden,
+werden serialisiert in XML geliefert und können nur mit Hilfe des
+entsprechenden XML-Schemas wieder als Objekt deserialisiert werden.
+Dazu stellt das \emph{DataSourcePlugin }die Funktion \emph{+getMetaDataSchema()
+}zur Verfügung, die das zu Grunde liegende XML-Schema liefert.
+
+
+\subsection{\label{sub:Web-Services}Web Services}
+
+Die Web Services werden mit den JAX-WS annotierten Klassen wie folgt
+bereitgestellt. Zunächst wird mit Hilfe des Befehls wsgen.exe (..\textbackslash{}Java\textbackslash{}jdk1.6.0\_14\textbackslash{}bin\textbackslash{}wsgen.exe)
+eine WSDL-Datei zu einer Klasse erzeugt. Die WSDL-Datei wird anschließend
+zusammen mit der kompilierten Klasse als JAR-Datei in Apache ODE hinterlegt
+(..\textbackslash{}Tomcat 6.0\textbackslash{}webapps\textbackslash{}ode\textbackslash{}WEB-INF\textbackslash{}servicejars)
+und wird damit beim Start von Apache Tomcat von Apache ODE als Web
+Service bereitgestellt.
+
+Komplexe Objekte wie z.B. HashMaps, die intern von den SIMPL Core
+Diensten zur Ausführung benötigt werden, werden als String serialisiert
+an die Web Services übergeben und in dieser Form auch als Rückgabeparameter
+empfangen. Bei der Deserialisierung werden die Objekte wieder hergestellt
+und können als solche verwendet werden. Eine Ausnahme bilden die SDO
+Objekte, die bereits über eine XML Darstellung verfügen und in dieser
+direkt übermittelt werden können. Für diesen Vorgang stellt die Helper-Klasse
+Parameter (siehe Abschnitt \ref{sub:Parameter}) entsprechende Funktionen
+zur Verfügung.
+
+
+\subsubsection{Datasource Web Service}
+
+Der Datasource Web Service \emph{simpl.core.webservices.Datasource}
+bietet eine Schnittstelle nach Außen zu allen Ausprägungen des Datasource
+Service im SIMPL Core. Die Funktionen des Datasource Web Service entsprechen
+den Funktionen der Datasource Services (siehe Abschnitt \ref{sub:Datasource-Service}),
+die über die \emph{SIMPLCore}-Funktion \emph{+dataSourceService(String
+dsType, String dsSubtype)} angefordert werden. Zusätzlich stehen die
+Funktionen des SIMPLCores zur Verfügung, die Informationen zu den,
+durch die Plug-Ins unterstützten, Datenquellen liefern (siehe Abschnitt
+\ref{sub:Funktionen-SIMPLCore}). Durch die Serialisierung und Deserialisierung
+besitzen alle Funktionen String Parameter und Rückgabewerte.
+
+
+\subsubsection{Administration Web Service}
+
+Der Administration Web Service \emph{simpl.core.webservices.Administration}
+ist die direkte Schnittstelle des Administration Service nach außen
+und besitzt daher die gleichen Funktionen wie dieser, mit dem Unterschied,
+dass komplexe Parameter und Rückgabewerte durch die Serialisierung
+und Deserialisierung als String-Parameter gehandhabt werden (siehe
+Abschnitt \ref{sub:Web-Services}).
+
+\pagebreak{}
+
+
+\section{\label{sec:Apache-ODE}Apache ODE}
+
+In diesem Kapitel wird auf die Erweiterungen, die an Apache ODE vorgenommen
+werden, eingegangen. Dies beinhaltet die BPEL-DM Extension Activities,
+sowie das SIMPL DAO. Es wird auf die verschiedenen Funktionalitäten
+als auch auf deren Umsetzung eingegangen.
+
+
+\subsection{\label{sub:BPEL-DM-Extension}BPEL-DM Extension Activities}
+
+Die BPEL-DM Extension Activities (siehe Abbildung \ref{fig:BPEL-DM-Extension})
+haben als Vaterklasse die Klasse SimplActivity, welche verschiedene
+Funktionalitäten für alle weiteren Extension Activities anbietet.
+Die Extension Activities nutzen zur Ausführung der verschiedenen Data-Management-Operationen
+den Datasource Service des SIMPL Cores. Die Implementierung der Extension
+Activities wird wie folgt umgesetzt.
+
+Zunächst muss eine neue Aktivität von der Klasse \quotedblbase{}AbstractSyncExtensionOperation\textquotedblleft{}
+abgeleitet werden und die dadurch vererbten Methoden müssen implementiert
+werden. Die Methode \quotedblbase{}runsync\textquotedblleft{} ist
+hierbei für die eigentliche Ausführung der neuen Aktivität verantwortlich.
+Dafür ist die Nutzung der beiden Parameter \quotedblbase{}context\textquotedblleft{}
+und \quotedblbase{}element\textquotedblleft{} notwendig. Mit {}``context''
+hat man die Möglichkeit, auf BPEL-Variablen und weitere Konstrukte,
+die im Prozess vorhanden sind, zuzugreifen. Der Inhalt des BPEL-Prozess-Dokuments
+wird als DOM-Baum geparst, um ein objektbasiertes Modell des BPEL
+Prozesses zu erzeugen. Mit \quotedblbase{}element\textquotedblleft{}
+ist es möglich, auf die verschiedenen Eigenschaften der einzelnen
+Knoten des Baumes zuzugreifen und mit ihnen zu arbeiten. 
+
+Weiterhin ist es notwendig, ein eigenes ExtensionBundle zu implementieren.
+Das ExtensionBundle ist notwendig, damit ODE weiß, aus welchen Extension
+Activities die Erweiterung besteht, und um sie zur Laufzeit ausführen
+zu können. Die Implementierung wird erreicht durch das Ableiten einer
+neuen Klassen von \quotedblbase{}AbstractExtensionBundle\textquotedblleft{}.
+In dieser Klasse müssen nun in der Methode \quotedblbase{}registerExtensionActivity\textquotedblleft{}
+alle Klassen, die für die Extension Activity von Bedeutung sind, mit
+Hilfe von \quotedblbase{}registerExtensionOperation\textquotedblleft{}
+bei ODE registriert werden.
+
+Es gibt folgende acht Aktivitäten, welche in der Spezifikation genauer
+beschrieben werden:
+\begin{itemize}
+\item CallActivity
+\item DropActivity
+\item DeleteActivity
+\item CreateActivity
+\item UpdateActivity
+\item InsertActivty
+\item QueryActivity
+\item RetrievDataActivity
+\end{itemize}
+Wie bereits erwähnt ist SimplActivity die Vaterklasse für alle weiteren
+DM Extension Activities. In ihr werden außerdem verschiedene Variablen
+deklariert und verschiedene Methoden implementiert, die die anderen
+Aktivitäten verwenden. Dies wird getan um die Hauptfunktionalitäten
+in einer Klasse zusammenzufassen. Die Methode getStatement() dient
+dazu das während der Modellierung erzeugte Statement aus dem BPEL-Prozess
+auszulesen und in der entsprechenden Variable Statement abzulegen.
+Die Methode getdsAdress() ist dient analog dazu, die Adresse der Datenquelle
+aus dem BPEL-Prozess zu lesen und in der Variable dsAdress abzulegen.
+Die Variable service ist eine Instanz des DatasourceServices. Ihr
+werden die Variablen Statement und dsAdress übergeben um die enstprechenden
+Datenmanagement Aktionen auf der Datenquelle durchzuführen.
+
+Wie in Abbildung \ref{sub:BPEL-DM-Extension} zu sehen ist, verfügen
+die Aktivitäten RetrieveDataActivity und QueryActivity zusätzlich
+zu den Variablen aus SimplActivity noch über weitere, zusätzliche
+Variablen. Dies ist einmal die Variable DataObject in RetrieveDataActivity,
+die für die Verarbeitung der Daten die in den Prozess geladen werden
+sollen, benötigt wird. Weiterhin die Variable queryTarget in QueryActivity,
+in dieser wird die Zieltabelle, in der die Query-Daten abgelegt werden
+sollen angegeben. Da die Angabe einer Zieltabelle nur in der QueryActivity
+notwendig ist, war es nicht notwendig eine zusätzliche Methode in
+der Klasse SimplAcitvity zu implementieren, statt dessen wird dieses
+direkt in QueryActivity getan.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPL-EA}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-DM-Extension}BPEL-DM Extension Activities}
+
+\end{figure}
+
+
+
+\subsection{\label{sub:Ausf=0000FChrung-einer-BPEL-DM}Ausführung der BPEL-DM
+Extension Activity}
+
+In Abbildung \ref{fig:Ausf=0000FChrung-einer-SIMPL} wird die Ausführung
+einer Query-Activity, mit den während der Ausführung auftretenden
+Events, aufgezeigt. Hierbei ist zu erwähnen, dass die Query-Activity
+folgendermaßen durchgeführt wird:
+\begin{enumerate}
+\item Es werden das Statement, die Addresse der Datenquelle sowie das queryTarget
+an die depositData-Methode übergeben, diese ist anschließend für die
+eigentliche Ausführung des Statements auf der Datenquelle verantwortlich.
+\item Es wird die boolean Variable {}``success'' zurückgegeben die angibt
+ob die Ausführung erfolgreich war oder nicht.
+\item Sollte {}``success'' true sein, wird die Ausführung der Extension
+Acitivty fortgesetzt und entsprechend ein DMEnd Event erzeugt. Wenn
+success false ist, wird ein DMFailure Event erzeugt.
+\end{enumerate}
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{\string"img/Ausführung Query Activity\string".jpg}
+\par\end{centering}
+
+\caption{\label{fig:Ausf=0000FChrung-einer-SIMPL}Ausführung einer Query Activity}
+
+\end{figure}
+
+
+
+\subsubsection*{Ausführung der weiteren Aktivitäten}
+
+Die Aktivitäten Call, Create, Drop, Delete, Insert und Update unterscheiden
+sich in der Ausführung nur durch das jeweilige Statement, was für
+die BPEL-DM Extension-Activities keine Bedeutung hat. Daher kann die
+Ausführung dieser vier Aktivitäten zusammengefasst werden:
+\begin{enumerate}
+\item Es werden das Statement und die Addresse der Datenquelle an die executeStatement-Methode
+übergeben, diese ist anschließend für die eigentliche Ausführung des
+Statements auf der Datenquelle verantwortlich.
+\item Es wird die boolean Variable {}``success'' zurückgegeben, die angibt,
+ob die Ausführung erfolgreich war oder nicht.
+\item Sollte {}``success'' true sein, wird die Ausführung der Extension
+Acitivty fortgesetzt und entsprechend ein DMEnd Event erzeugt. Wenn
+success false ist, wird ein DMFailure Event erzeugt.
+\end{enumerate}
+Die Events {}``DMStarted'' und {}``DMEnd'' werden zu Beginn bzw.
+am Ende der Ausführung erzeugt. Das Event {}``DMFailure'' wird erzeugt,
+falls die Rückmeldungsvariable {}``success'' auf false gesetzt wurde.
+
+
+\subsection{SIMPL Auditing\label{sub:Simpl-Auditing}}
+
+Das Auditing in SIMPL wird über einen Event-Listener realisiert, der
+in der axis2.properties von Apache ODE angemeldet wird. 
+
+
+\subsubsection{ode-axis2.properties}
+
+In der Datei ode-axis2.properties (Pfad: ../Tomcat/""webapps/""ode/""WEB-INF/""conf)
+wird der Event Listener, der das Auditing realisiert, angemeldet.
+Folgende Zeile muss dafür in der Datei hinzugefügt werden: 
+\begin{lstlisting}
+ode-axis2.event.listeners = 
+		org.apache.ode.simpl.events.listener.SimplSdoEventListener
+\end{lstlisting}
+
+
+
+\subsubsection{Unterstützte Events}
+
+Folgende Events werden von der Implementierung unterstützt und werden
+per SDO an den SIMPL Core gesendet, wo sie in beliebigen Datenbanken
+gespeichert werden können.
+
+Alle Eventes besitzen die Grundattribute: \emph{Name}, \emph{Type},
+\emph{LineNumber}, \emph{Timestamp}
+\begin{itemize}
+\item ActivityEvent: Liefert Name, Id, Type und DeklarationId der Aktivität.
+\item Activity FailureEvent: Liefert den \emph{Grund des Fehlschlages}.
+\item CorrelationEvent: Liefert \emph{PortType}, \emph{Operation} und \emph{MexID.}
+\item CorrelationSetWriteEvent: Liefert den \emph{Correlation Key}.
+\item ExpressionEvaluationEvent: Liefert eine \emph{Expression} zurück.
+\item ExpressionEvaluationFailedEvent: Liefert den \emph{Fehler bei der
+Evaluation} zurück.
+\item NewProcessInstanceEvent: Liefert, wenn vorhanden, die \emph{Root-Scope-Id}
+und die\emph{ Scope-Deklarations-id}.
+\item PartnerLinkEvent: Liefert den \emph{Partner Link Name}
+\item ProcessCompletionEvent: Liefert einen Fehler zurück, falls dir Prozessausführung
+nicht erfolgreich war.
+\item ProcessEvent: Liefert die ProzessId und den Prozesstypen zurück
+\item ProcessInstanceEvent: Gibt die ProzessInstanceId zurück.
+\item ProcessInstanceStartedEvent: Gibt wenn vorhanden, die RootScopeId
+und die RootScopeDeclarationId zurück.
+\item ProcessInstanceStateChangeEvent: Gibt den OldState und den NewState
+des Prozesses zurück.
+\item ProcessMessageExchangeEvent: Gibt den PortType, die Operation und
+die MexId zurück.
+\item ScopeCompletionEvent: Liefert Success oder Fault zurück.
+\item ScopeEvent: Liefert die ScopeId, ParentScopeId und den ScopeName zurück.
+\item ScopeFaultEvent: Liefert Fault, FaultLineNumber und Explanation zurück.
+\item VariableEvent: Gibt den VariableName zurück.
+\end{itemize}
+\pagebreak{}
+
+
+\section{\label{sec:Reference-Resolution-System}Reference Resolution System}
+
+Abbildung \ref{fig:RRS-Klassendiagramm} zeigt den Aufbau des Reference
+Resolution System (RRS) mit Paketstruktur, Klassen und Interfaces.
+Die Zusammenhänge zwischen diesen werden durch verschiedene Verbindungspfeile
+dargestellt und werden in den nachfolgenden Abschnitten genauer beschrieben.
+Da einige Dienste des RRS auch von anderen Bestandteilen des Frameworks
+genutzt werden, zum Beispiel von Apache ODE oder von Eclipse, bzw.
+dem RRS Eclipse Plug-In, werden diese als Webservices zur Verfügung
+gestellt. Sollten nachfolgend die Webservices direkt gemeint sein,
+dann werden diese auch als solche bezeichent, z.B. Reference Management
+Web Service.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/RRS_Class_Diagramm}
+\par\end{centering}
+
+\caption{\label{fig:RRS-Klassendiagramm}RRS Klassendiagramm}
+
+\end{figure}
+
+
+
+\subsection{Paketstruktur}
+
+Das RRS besitzt folgende Paketstruktur, die sich in einen Kernbereich,
+die Dienste und das RRS DS-Adapter Plugin System unterteilen lässt.
+
+
+\subsubsection*{org.simpl.rrs}
+
+Hier befinden sich die zentralen Klassen des RRS die auf die unterschiedlichen
+Dienste und die Datenquellen-Adapter zugreifen
+
+
+\subsubsection*{org.simpl.rrs.retrieval}
+
+Hier befinden sich alle Klassen zur Realisierung des Reference Retrieval
+Service. Dieser Dienst wird zum Auflösen einer Referenz und zum Laden
+der referenzierten Daten benötigt.
+
+
+\subsubsection*{org.simpl.rrs.management}
+
+Hier befinden sich alle Klassen zur Realisierung des Reference Management
+Service. Dieser Service wird zur Verwaltung der Referenzen benötigt
+und bietet das Hinzufügen neuer Referenzen (Insert), das Aktualisieren
+bestehender Referenzen (Update) und das Löschen von Referenzen (Delete)
+an.
+
+
+\subsubsection*{org.simpl.rrs.metadata}
+
+Hier befinden sich alle Klassen zur Realisierung des Reference Metadata
+Service. Dieser Service wird für den RRS Eclipse View benötigt um
+alle im RRS enthaltenen Referencen aufzulisten oder aber um die Werte
+einer einzelnen Reference abzurufen.
+
+
+\subsubsection*{org.simpl.rrs.dqadapter}
+
+Hier befinden sich alle Klassen zur Realisierung des Datenquellen-Adapter
+Plug-In Systems.
+
+
+\subsubsection*{org.simpl.rrs.dqadapter.plugins}
+
+Hier befinden sich die einzelnen Plug-Ins für die verschiedenen Datenquellen-Adapter.
+Diese Adapter können für unterschiedliche Datenquellentypen entwickelt
+werden. Im Rahmen des Projektes werden allerdings nur Plug-Ins für
+den Zugriff auf Relationale Datenbanken umgesetzt.
+
+
+\subsubsection*{org.simpl.rrs.webservices}
+
+Hier befinden sich die Web Services des RRS, welchen den Zugriff von
+Außen auf das RRS ermöglichen. Dies ist zum Beispiel für die Kommunikation
+mit Apache ODE notwendig.
+
+
+\subsection{Die RRS-Klasse}
+
+Die RRS-Klasse bildet den zentralen Zugriffspunkt auf alle Klassen
+und Dienste des RRS. Diese Klasse stellt die einzelnen Dienste zur
+Verfügung und ist zuständig für das RRS DS-Adapter Plug-In System.
+Beim Start des RRS werden die Dienste initialisiert, sowie eine Liste
+der Verfügbaren Datenquellen-Adapter geladen. Diese Klasse wird von
+Apache ODE beim Auflösen einer Referenz, vom RRS-Eclipse-Plugin und
+sowie innerhalb des RRS, wenn sich Dienste gegenseitig verwenden.
+
+
+\subsubsection*{Funktionen}
+
+
+\paragraph*{retrievalService() }
+
+Liefert eine Instanz des Reference Retrieval Service. 
+
+
+\paragraph*{managementService()}
+
+Liefert eine Instanz des Reference Management Service. 
+
+
+\paragraph*{metadataService()}
+
+Liefert eine Instanz des Reference Metadata Service. 
+
+
+\paragraph*{confi{}g() }
+
+Liefert die Konfi{}guration des RRS als Instanz von RRSConfi{}g. 
+
+
+\paragraph*{dsAdapter(String dsType, String dsSubtype) }
+
+Liefert eine Instanz des DsAdapterProviders.
+
+
+\paragraph*{getDSAdapterType()}
+
+Liefert eine Liste mit allen Datenquellentypen, die durch DS-Adapter-Plug-Ins
+unterstützt werden. 
+
+
+\paragraph{getDSAdapterSubtypes(String dsType) }
+
+Liefert eine Liste mit allen Untertypen eines Typs, die durch DS-Adapter-Plug-Ins
+unterstützt werden. 
+
+
+\paragraph*{getDSAdapterLanguages(String dsSubtype) }
+
+Liefert eine Liste mit allen Anfragesprachen eines Subtyps, der durch
+DS-Adapter-Plug-Ins unterstützt wird. 
+
+
+\subsection{Die EPR}
+
+Die EPR selbst wird im RRS, sowie bei der Kommunikation durch die
+Webservices durch ein EPR-Objekt repräsentiert. Dieses EPR-Objekt
+enthält alle relevanten Informationen die für die jeweiligen Services
+des RRS, oder aber in Apache ODE und dem RRS-Eclipse-Plug-In, benötigt
+werden.
+
+
+\subsection{RRSConfig Klasse}
+
+Die verschiedenen installierten Plug-Ins des DS-Adapter Plug-In Systems,
+werden über ein Konfigurationsdatei registriert. Das Einlesen und
+Abrufen der Informationen aus dieser Datei ist über diese Klasse möglich.
+
+
+\subsubsection{Die RRS Konfigurationsdatei}
+
+Die RRS Konfigurationsdatei wird analog zu der des SimplCores unter
+\emph{ode/conf/rrs-confi{}g.xml }abgelegt. Die Plug-In-Klassen müssen
+hier jeweils mit dem vollqualifi{}zierten Namen registriert werden
+und als jar-Dateien beliebigen Namens unter ode/lib abgelegt werden,
+damit sie erkannt werden. Die Konfi{}gurationsdatei wird beim Start
+des RRS einmalig geladen, Änderungen an der Konfi{}gurationsdatei
+sind deshalb erst nach einem Neustart verfügbar. Momentan dient die
+RRS Konfigurationsdatei nur der Registrierung der einzelnen DS-Adapter-Plug-Ins,
+allerdings könnten später auch weitere Einstellungen des RRS hier
+enthalten sein, bspw. der Name der RRS DB oder der Name der Tabelle
+in der die Referenzen abgelegt werden. Da die Struktur der RRS Konfigurationsdatei
+ähnlich der des SimplCores ist, wird darauf verzichtet diese hier
+nocheinmal aufzuzeigen.
+
+
+\subsubsection{Funktionen}
+
+
+\paragraph*{getDSAdapterPlugins()}
+
+Liefert eine Liste mit vollqualifi{}zierten Namen der registrierten
+DS-Adapter-Plug-Ins.
+
+
+\subsection{RRS Dienste}
+
+Wie in \cite{key-2} bereits erläutert, besitzt das RRS drei Dienste
+bzw. Webservice Interfaces. Dies sind der Reference Retrieval Service,
+der Reference Management Service, sowie der Reference Metadata Service.
+Alle Services verfügen wie in \ref{fig:RRS-Klassendiagramm} angegeben
+über einen entsprechenden Webservice. Die Umsetzung der Webservices
+geschieht dabei analog zur Umsetzung der Webservices des SIMPL-Cores,
+weswegen dieses hier nicht noch einmal expliziet erläuertert wird.
+
+
+\subsubsection{Reference Retrieval Service}
+
+Der Reference Retrieval Service ist für Auflösen von Referenzen und
+auf der anderen Seite für das Laden der referenzierten Daten nach
+Auflösen einer Referenz.
+
+Der Reference Retrieval Service setzt dabei die \textit{get} Methode
+des RRS um. Diese Methode bekommt ein EPR-Objekt als Eingabe übergeben.
+Mit Hilfe der get-Methode werden nun alle zum Auflösen der Referenz
+und zum Laden der referenzierten Daten notwendigen Informationen aus
+dem EPR-Objekt ausgelesen. Die Daten selbst werden anschließend mit
+Hilfe eines entsprechenden DS-Adapters aus der Datenquelle ausgelesen.
+Der DS-Adapter wird dabei über das Attribut {}``Adapter-Typ'' ausgewählt.
+Adapter-Typ ist folgendermaßen aufgebaut: \textbf{\textsc{\emph{Datenquellen-Type:Datenquellen-Subtype:Datenquellen-Anfragesprache}}}\textbf{
+(z.B. RDB:MySQL:SQL). }
+
+Durch dieses Attribut kann der richtige Adapter für die jeweilige
+Datenquelle ausgewählt werden. Anschließend werden die Daten mit Hilfe
+des Retrieval Webservices an ODE übergeben.
+
+
+\subsubsection{Reference Management Service}
+
+Der Reference Management Service ist für das Einfügen neuer Referenzen
+in das RRS, das Aktualisieren bestehender und das Löschen von Referenzen
+zuständig.
+
+Beim Einfügen einer neuen Referenz in das RRS wird die Methode \textit{insert}
+ausgeführt. Die Eingabe ist auch hier ein entsprechendes EPR-Objekt,
+was alle Werte der neuen Referenz enthält und auch alle Informationen
+die notwendig sind um die Referenz wieder aufzulösen (beispielsweise
+alle Informationen über eine RDB und ein entsprechendes SQL Statement,
+mit dem die Daten ausgelesen werden können). Bei der Insert-Methode
+wird zunächst mit Hilfe der Methode \textit{DoesTableExist()} überprüft
+ob die Tabelle {}``ReferenceTable'' vorhanden ist, wenn dies nicht
+der Fall ist wird diese zuerst erzeugt. Im nächsten Schritt wird mit
+Hilfe der Methode \emph{EPRAllreadyExists} überprüft ob die Reference
+bereits in der Tabelle vorhanden ist. Da der Name einer Referenz sets
+eindeutig sein muss, beschränkt sich diese Überprüfung darauf, ob
+bereits eine Referenz mit diesem Namen vorhanden ist. Falls dies nicht
+der Fall ist wird die Referenz in die Tabelle eingefügt. Die Ausgabe
+der insert-Methode eine Rückmeldung, darüber ob das Einfügen erfolgreich
+war, oder aber im Fehlerfall eine entsprechende Fehlermeldung.
+
+Das Aktualisieren einer Referenz wird durch die \textit{update} Methode
+umgesetzt. Dabei erhält die update Methode ein EPR-Objekt, welches
+die neuen Werte der Referenz, die aktualisiert werden sollen, enthält.
+Auch hier findet zunächst eine Überprüfung statt ob die Referenz im
+RRS enthalten ist. Sollte dies nicht der Fall sein, findet keine Aktualisierung
+statt. Die Ausgabe ist analog zur insert-Methode eine entsprechende
+Rückmeldung ob die Operation erfolgreich durchgeführt wurde oder nicht.
+Im Falle das die zu aktualisierende Referenz nicht gefunden wurde,
+wird ebenfalls eine negative Rückmeldung gegeben.
+
+Zum Löschen einer Referenz aus dem RRS wird die Methode \textit{delete}
+benutzt. Diese Methode erhält als Eingabe ein EPR-Objekt und entfernt
+anschließend die entsprechende Referenz aus dem System. Hier wird
+analog wie bei den beiden anderen Operationen zunächst überprüft ob
+die zu löschende Referenz in der Tabelle vorhanden ist. Ist dies der
+Fall, wird sie gelöscht. Die Ausgabe der Methode ist eine entsprechende
+Rückmeldung ob das Löschen erfolgreich war, oder ob ein Fehler aufgetreten
+ist.
+
+
+\subsubsection*{Die RRS DB}
+
+Die RRS DB wird als eine Embedded Derby realisiert. In ihr werden
+alle Referenzen die dem RRS bekannt sind gespeichert. Es ist dabei
+zu beachten, dass der Name der Datenbank, sowie der Name der Tabelle
+eindeutig durch die Implementierung festgelegt sind. Weiterhin ist
+zu beachten, dass eine Referenz durch ihren Namen erkannt wird. Daher
+muss der Name der Referenz eindeutig sein und es können nicht mehrere
+Referenzen mit dem selben Namen eingefügt werden.
+
+
+\subsubsection{Reference Metadata Service}
+
+Der Reference Metadata Service ist für das Abrufen aller Referenzen
+die im RRS enthalten sind und für das Abrufen der Werte einer einzelnen
+Referenz zuständig, da diese Funktionen für die Umsetzung des RRS-Eclipse
+Plug-Ins notwendig ist.
+
+Zum Abrufen aller Referenzen wird die Methode \textit{GetAllEPR} verwendet.
+Diese erzeugt zunächst zu jeder in der Datenbank des RRS enthaltenen
+Referenz ein EPR Objekt und fügt diese Objekte anschließend in ein
+EPR Array ein, welches anschließend übertragen wird. Es ist hierbei
+anzumerken, dass diese Methode die Tabelle {}``ReferenceTable''
+die alle Referenzen enthält erzeugt, falls sie nicht vorhanden ist.
+Dies ist notwendig damit es nicht zu Fehlern beim Initialisieren des
+RRS Eclipse Plug-Ins kommt, da dabei direkt diese Methode aufgerufen
+wird.
+
+Zum Abrufen der Werte einer bestimmten Referenz wird die Methode \textit{getEPR}
+aufgerufen. Diese Methode bekommt den Namen der gesuchten Referenz
+übergeben und gibt anschließend ein EPR Objekt zurück welches alle
+Werte der Referenz erhält.
+
+Weiterhin bietet der Reference Metadata Service noch die Möglichkeit
+eine Liste der derzeitig verfügbaren Adapter anzuzeigen.
+
+
+\subsection{Das RRS DS-Adapter Plug-In System}
+
+Das RRS DS-Adapter Plug-In System bietet eine Reihe von Adaptern an,
+die für den Zugriff auf die jeweilligen Datenquellentypen zuständig
+sind. Wie bereits zuvor erwähnt werden im Rahmen des Projektes allerdings
+nur Adapter für den Zugriff auf relationale Datenbanken umgesetzt.
+
+Der Aufbau des RRS DS-Adapter Plug-In Systems gleicht dem Aufbau des
+DatasourceService des SIMPL Cores. Es soll möglich sein wie auch beim
+Datasource Service verschiedene Plug-Ins zu nutzen um das Lesen und
+Schreiben auf verschiedenen Datenquellen zu realisieren. Wie in \ref{fig:RRS-Klassendiagramm}
+zu sehen, gibt es einen sogenannten DSAdapterProvider, dieser wird
+beim Start des RRS Initialisiert und erhält durch die RRSConfig alle
+verfügbaren DS-Adapter-Plug-Ins. Anhand der Informationen die in einem
+EPR-Objekt angegeben sind, wird eine Instanz des richtigen Adapters
+für den Zugriff auf die Datenquelle auswählt.
+
+
+\subsection{\label{sub:RRS-Transformation-Service}RRS Transformation Service}
+
+Obwohl der Transformation Service kein direkter Bestandteil des RRS
+ist, wird er dennoch in diesem Teil des Feinentwurfs besprochen, da
+seine Aufgabe direkt mit dem RRS zusammenhängt. Da eine Beschreibung
+des Transformationsvorgangs bereits in \cite{key-2} enthalten ist,
+konzentrieren wir uns hier nur auf die Beschreibung der Implementierung
+und deren Zuordnung zur benötigten Funktionalität. Abbildung \ref{fig:RRS-Transformation-Service}
+zeigt die Struktur des Transformation Service. Die einzelnen Klassen
+werden nachfolgend näher beschrieben.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.5\textwidth]{img/RRSTransformationService}
+\par\end{centering}
+
+\caption{\label{fig:RRS-Transformation-Service}Klassendiagramm des RRS Transformation
+Service}
+
+\end{figure}
+
+
+Die Klasse \emph{Transformer} enthält die gesammte Funktionalität,
+die zur Transformation eines BPEL-Prozessmodells benötigt wird. Als
+Eingabe erhält die Klasse ein, in ein String-Objekt serialisiertes,
+BPEL-Prozessmodell über den Transformation Web Service. Dieses wird
+gelesen und anschließend werden die in \cite{key-2} (Kapitel 7.1.3)
+beschrieben Schritte durchgeführt. Am Ende der Transformation wird
+das transformierte BPEL-Prozessmodell, das nun nur noch standardkonforme
+BPEL-Konstrukte enthält, wieder serialisiert und über den Web Service
+an den Sender des ursprünglichen BPEL-Prozessmodells zurückgeschickt.
+
+Das Paket org.""simpl.""rrs.""transformation.""webservices enthält
+die Klasse \emph{TransformationService} (Web Service) und alle weiteren
+für die Realisierung des Web Services benötigten Klassen. Diese werden
+hier allerdings nicht angegeben, da sie keinerlei relevante Funktionalität
+beinhalten und über die erstellte WSDL des TransformationService automatisch
+generiert wurden. Die Klasse \emph{TransformationService} wird nur
+stellvertretend für alle weiteren Klassen genannt, da sie den Übergang
+zwischen Web Service und Implementierung darstellt.
+
+\pagebreak{}
+
+
+\section{\label{sec:Uddi-Registry}UDDI Registry}
+
+In diesen Abschnitt wird die verwendete UDDI Registry jUDDI, beschrieben
+und wie Datenquellen in ihr abgespeichert und Abgerufen werden.
+
+
+\subsection{Aufbau der Registry}
+
+Die Registry besteht hauptsächlich aus den nachfolgend beschriebenen
+Basiselementen:
+
+
+\subsubsection{Business Entity}
+
+Beschreibt ein Unternehmen und biete Kontaktinformationen, von einem
+Unternehmen, dass den Webservice anbietet.
+
+
+\subsubsection{Business Service}
+
+Hier werden die Angebotenen Web Services näher charakterisiert. Dies
+kann mehrere Web Services oder auch nur mehrere Ausprägungen eines
+Web Service beinhalten.
+
+
+\subsubsection{Binding Template}
+
+Das Binding Template gibt detaillierte technische Informationen zur
+Nutzung des Webservice an, wie zum Beispiel die Adresse (URL) über
+die auf einen Webservice zugegriffen werden kann.
+
+
+\subsubsection{TModel}
+
+Beim TModel handelt es sich um eine generische Komponente, mit der
+man detaillierte Informationen über einen Service zusammenfassen kann.
+Mithilfe der TModels, lassen sich Web Services auch in Kategorien
+einordnen.
+
+
+\subsection{Nutzung der Registry für Datenquellen}
+
+In den folgenden Abschnitten wird erklärt, wie die verschiedenen Basiskomponenten
+von UDDI genutzt werden um eine Abspeicherung von Datenquellen zu
+ermöglichen.
+
+
+\subsubsection{Business Entity}
+
+Beschreibt ein Unternehmen und biete Kontaktinformationen, des Anbieters
+der Datenquellen.
+
+
+\subsubsection{Business Service}
+
+Hier wird der Name und die Beschreibung der Datenquelle gespeichert.
+
+
+\subsubsection{Binding Template}
+
+In den Binding Templates, wird die Adresse der Datenquelle gespeichert.
+
+
+\subsubsection{TModel}
+
+Mit Hilfe des TModels werden die Datenquellentypen und Subtypen modelliert
+und können über {}``Keyed References'' den Datenquellen zugewiesen
+werden
+
+
+\subsection{SIMPL jUDDI Client}
+
+Der SIMPL jUDDI Client ermöglicht den einfachen Zugriff und die Modifikation
+von Datenquellen innerhalb der Registry.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[scale=0.7]{img/JUddiClient}
+\par\end{centering}
+
+\caption{SIMPL jUDDI Client}
+
+
+
+\end{figure}
+
+
+
+\subsubsection*{UddiBusiness}
+
+Die Klasse repräsentiert ein Business innerhalb der UDDI Registry
+und kann mit Hilfe des UddiDatawriters in die Registry geschrieben
+werden.
+
+
+\subsubsection*{UddiBusinessReader}
+
+Die Klasse kann mithilfe der Business Id ein UddiBusiness aus der
+Datenbank lesen.
+
+
+\subsubsection*{UddiDatasource}
+
+Die Klasse repräsentiert eine UddiDatasource und enthält alle wichtigen
+Datasource Eigenschaften sowie frei definierbarer Attribute. Die Datasource
+kann mit Hilfe des UddiDatawriters in der UddiRegistry gespeichert
+werden.
+
+
+\subsubsection*{UddiDatasourceReader}
+
+Mit Hilfe der Datasource-Id kann eine beliebige Datenquelle aus der
+Registry geladen werden. Durch filtern nach einem bestimmten Attribut,
+kann eine Liste von Datasources mit dem entsprechenden Attribut heruntergeladen
+werden.
+
+
+\subsubsection*{UddiDataWriter}
+
+Die Klasse ermöglicht es, UddiBusiness und UddiDatasources in die
+Registry zu schreiben und Datenquelle anhand ihrer Id zu löschen.
+
+
+\subsection{\label{sub:Uddi-Registry-Web}UDDI Registry Web Interface}
+
+\noindent Das UDDI Web Interface besteht aus den Komponenten: Konfiguration,
+Datenquellenliste und Datenquelleneditor. Alle drei Komponenten werden
+im folgenden noch einmal näher beschrieben.
+
+
+\subsubsection{Konfiguration}
+
+\noindent In der Konfiguration können grundlegende Informationen,
+wie die Adresse der Datenquellen-Registry, sowie Name und Passwort,
+die für die Schreibzugriffe verwendet werden, hinterlegt werden können.
+Diese Informationen werden im Web-Apps\textbackslash{}conf Verzeichniss
+des Web Interfaces gespeichert. Beim Speichern der Konfiguration,
+wird Automatisch die Verfügbarkeit der UDDI-Registry unter der angegeben
+Adresse überprüft.
+
+
+\subsubsection{Datenquellenliste}
+
+\noindent In der Datenquellenliste werden alle Verfügbaren Datenquellen
+und die grundlegenden Informationen angezeigt. Dort können außerdem
+Datenquellen neu erstellt werden oder nach Auswahl einer Datenquelle
+diese Editiert oder Gelöscht werden.
+
+
+\subsubsection{Datenquelleneditor}
+
+Der Datenquelleneditor wird aufgerufen, wenn eine Datenquelle neu
+erstellt oder editiert wird. Alle wichtigen Informationen können dort
+über Textfelder eingegeben werden und direkt in der Datenquellen-Registry
+gespeichert werden. Die Datenquelle benötigt dabei folgende Informationen.
+\begin{itemize}
+\item Name: Ein Name für die Datenquelle, der innerhalb der Registry eindeutig
+sein muss. Auf Grundlage des Namens wird der Key, der zur internen
+Datenverwaltung benötigt wird, generiert.
+\item Address: Die Adresse unter der die Datenquelle aufgerufen werden kann.
+\item Type: Der Typ der Datenquelle (Database, Filesystem usw.)
+\item Subtype: Der Subtyp der Datenquelle (RDB, ext3, usw.)
+\item Policy: Der genaue Pfad zu einer Policy-Datei, die die nicht funktionalen
+Anforderungen für die Datenquelle beschreibt.
+\item Username: Der Benutzername, der benötigt wird um auf die Datenquelle
+zuzugreifen.
+\item Passwort: Das Passwort, das benötigt wird um auf die Datenquelle zuzugreifen.
+\end{itemize}
+\pagebreak{}
+
+
+\section{\label{sec:Eclipse}Eclipse}
+
+Das SIMPL Rahmenwerk besteht aus der bereits vorhandenen Eclipse IDE
+und dem erweiterten Eclipse BPEL Designer Plug-In sowie den drei zu
+erstellenden Plug-Ins BPEL-DM Plug-In, SIMPL Core Plug-In und SIMPL
+Core Client Plug-In. Dazu kommen noch Eclipse Plug-Ins für das Reference
+Resolution System (RRS) und eine UDDI-Registry. Im Rahmen des Feinentwurfes
+werden die Anbindung an die vorhandenen Komponenten sowie die zu erstellenden
+Komponenten näher erläutert.
+
+
+\subsection{Erweiterter Eclipse BPEL Designer}
+
+Für die Verwendung von Referenzen in BPEL muss, wie in \cite{key-2}
+(Kapitel 7.1) beschrieben, dass vorhande Modellierungswerkzeug um
+die Modellierung von Referenzvariablen (reference variables) erweitert
+werden. Dieser Abschnitt soll dafür einen Überblick aller erweiterten
+oder neu erstellten Klassen des BPEL Designer Plug-Ins liefern und
+die Realisierung der Modellierung von Referenzvariablen näher beschreiben.
+Die nachfolgende Beschreibung gliedert sich dabei in zwei Teile, die
+Beschreibung des zugrundeliegenden Modells und der grafischen Benutzeroberfläche
+des erweiterten Eclipse BPEL Designer Plug-Ins. 
+
+Für die Modellierung des Late-Bindings von Datenquellen und für die
+Spezifikation von Datenquellen, die für die Modellierung von DM-Aktivitäten
+verwendet werden, wird der Deployment-Deskriptor des Eclipse BPEL
+Designers ebenfalls erweitert. Die Beschreibung der dafür durchgeführten
+Erweiterungen, gliedert sich ebenfalls wieder in Modell und UI und
+folgt am Ende dieses Kapitels.
+
+
+\subsubsection{\label{sub:Eclipse-BPEL-Designer-Modell}Eclipse BPEL Designer Modell}
+
+Abbildung \ref{fig:BPEL-Designer-Plug-In-Model} zeigt alle erweiterten
+und neu erstellten Klassen des Eclipse BPEL Designer Modells. Die
+verschiedenen Pakete und deren Klassen werden nachfolgend näher erläutert.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/BPELDesignerModel}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-Designer-Plug-In-Model}Klassendiagramm des Modells
+des erweiterten BPEL Designer Plug-Ins}
+
+\end{figure}
+
+
+
+\subsubsection*{org.eclipse.bpel.model}
+
+Dieses Paket enthält alle neuen EMF-Modellklassen, die das Modell
+der Referenzvariablen bilden. Die Implementierung orientiert sich
+dabei an den Standard BPEL-Variablen, da diese eine ähnliche Struktur
+haben. Die Klasse \emph{ReferenceVariables }liefert das Modell für
+einen Container für Referenzvariablen, der in das Prozess-Modell (Klasse
+\emph{Process}) eingefügt werden kann. Die Klasse \emph{ReferenceVariable}
+stellt das Modell der Referenzvariablen dar und bietet entsprechende
+Methoden für das lesen und setzen der Werte einer Referenzvariablen
+(siehe hierzu \cite{key-2} Kapitel 7.1). Die Klasse \emph{ReferenceType}
+ist eine Enumeration der verschiedenen Referenztypen (\emph{onInstantiation}
+und \emph{fresh}), die für die Modellierung verfügbar sind. Die Klassen
+\emph{BPELPackage} und \emph{BPELFactory} wurden für die Referenzvariablen
+entsprechend erweitert.
+
+
+\subsubsection*{org.eclipse.bpel.model.impl}
+
+Dieses Paket wurde um die konkreten Implementierungen der Modellklassen
+des Pakets org.""eclipse.""bpel.""model erweitert.
+
+
+\subsubsection*{org.eclipse.bpel.model.resource}
+
+In diesem Paket wurden die Klassen \emph{BPELReader} und \emph{BPELWriter}
+um die Deserialiserung/Serialisierung der Referenzvariablen bzw. des
+Referenzvariablen-Containers ergänzt.
+
+
+\subsubsection*{org.eclipse.bpel.model.util}
+
+In diesem Paket befinden sich einige Hilfsklassen, die an verschiedenen
+Stellen aus der UI genutzt werden. Damit auch für Referenzvariablen
+bzw. Referenzvariablen-Container solche Hilfsmethoden zur Verfügung
+stehen, wurden die entsprechenden Klassen erweitert. Die Klasse \emph{BPELConstants}
+enthält beispielsweise alle Konstanten des BPEL-Modells, wie z.B.
+Namensräume, Attributnamen oder Elementnamen und wurde um alle Referenzvariablen-Attributnamen
+und Elementnamen erweitert. Die Klasse \emph{ElementFactory} erstellt
+die XML-Repräsentation eines Modellobjekts und wurde um Methoden zur
+Erstellung von XML-Elementen für \emph{ReferenceVariable} und \emph{ReferenceVariables}
+-Objekte erweitert. Die Klasse \emph{ReconciliationHelper} sorgt dafür,
+dass Änderungen an Modellobjekten aus der UI direkt in BPEL-Sourcecode
+übernommen werden und die Elemente aktualisiert werden. Um dies auch
+für Referenzvariablen zu ermöglichen, musste dafür die Klasse \emph{ReconciliationHelper}
+um entsprechende Methoden ergänzt werden. Die übrigen Klassen wurden
+nur minimal oder analog geändert, weshalb hier auf eine genauere Beschreibung
+verzichtet wird.
+
+
+\subsubsection{\label{sub:Eclipse-BPEL-Designer-UI}Eclipse BPEL Designer UI}
+
+Abbildung \ref{fig:BPEL-Designer-Plug-In-UI} zeigt alle neu erstellten
+und erweiterten Klassen des User Interfaces des BPEL Designer Plug-Ins.
+Die verschiedenen Pakete und deren Klassen werden nachfolgend näher
+erläutert.
+
+
+\subsubsection*{org.eclipse.bpel.ui}
+
+Die BPEL Editor-Klassen (\emph{BPELEditor} und \emph{BPELMultipageEditor})
+werden, um die Anbindung der neu erstellten Editparts für Referenzvariablen
+(siehe \emph{org.eclipse.bpel.ui.editparts}) erweitert. Die Klasse
+\emph{IBPELUIConstants }enthält alle Konstanten der UI, wie z.B. die
+Pfade aller Icons. Sie wird um den Iconpfad für Referenzvariablen
+erweitert. Die Klasse \emph{ProcessContextMenuProvider} sorgt dafür,
+dass gewisse Aktionen (Kopieren, Einfügen, ...) über das Kontextmenü
+erreichbar sind. Da Standard-Variablen über das Kontextmenü erstellt
+werden können, wurde die Klasse analog für Referenzvariablen erweitert.
+
+
+\subsubsection*{org.eclipse.bpel.ui.actions.editpart}
+
+Die Klasse \emph{SetReferenceVariableAction} realisiert das Setzen
+einer Referenzvariablen in einem Modellobjekt, wie z.B. einem Invoke.
+
+
+\subsubsection*{org.eclipse.bpel.ui.adapters}
+
+Die Adapter-Klassen verknüpfen das Modell und die grafische Repräsentation
+(UI) der Referenzvariablen und sind analog zu den Variablen-Adaptern
+implementiert.
+
+
+\subsubsection*{org.eclipse.bpel.ui.commands}
+
+Dieses Paket enthält verschiedene Command-Klassen, die dabei helfen
+Eigenschaften in EMF-Modell"=objekten zu setzen bzw. neue Kindelemente
+hinzuzufügen. Die Klasse \emph{AddReferenceVariableCommand} wird dazu
+verwendet, eine neue Referenzvariable in den Referenzvariablen-Container
+einzufügen. Die übrigen drei Klassen (\emph{SetReferenceVariableCommand,
+SetReferenceVariableReferenceTypeCommand} und \emph{SetReferenceVariableValueTypeCommand})
+werden genutzt, um eine Referenzvariable in einem EMF-Modellobjekt
+z.B. einem Invoke zu setzen oder die Attribute (\emph{ValueType} und
+\emph{ReferenceType}) einer Referenzvariablen selbst zu setzen.
+
+
+\subsubsection*{org.eclipse.bpel.ui.details.providers}
+
+Die Klassen \emph{ReferenceVariableContentProvider} und \emph{ReferenceVariableValueTypeTreeContentProvider}
+werden analog zu den entsprechenden Standard-Variablen Klassen implementiert
+und dienen dazu die Referenzvariablen bzw. deren Inhalt in der UI
+entsprechend anzeigen zu können. Die Klassen \emph{VariableContentProvider}
+und \emph{VariableFilter }müssen um Referenzvariablen erweitert werden,
+da Referenzvariablen auch in Kommunikationsaktivitäten (Invoke, Receive,
+Pick und Reply) verwendet werden sollen und das momentane BPEL-Modell
+nur Standard-Variablen dort zulässt. Um dieses Problem zu umgehen,
+wurden die beiden Klassen so erweitert, das auch Referenzvariablen
+als Variable in den Kommunikationsaktivitäten auswählbar sind. Für
+die Zukunft sollte hier allerdings ein besseres Konzept erarbeitet
+werden, in dem z.B. das zugrundeliegende Modell entsprechend erweitert
+wird, womit in der UI dann klarer und auch einfacher zwischen verschiedenen
+Variablentypen unterschieden werden kann. Da dies aber über den Rahmen
+dieses Projekts hinausgeht wurde hier die einfachste, wenn auch nicht
+beste, Lösung dieses Problems angewandt.
+
+
+\subsubsection*{org.eclipse.bpel.ui.editparts}
+
+Dieses Paket enthält die verschiedenen EditParts (Bestandteile des
+BPEL Editors) des Eclipse BPEL Designers. Die Klassen \emph{ProcessOutlineEditPart}
+und \emph{ProcessTrayEditPart} müssen wieder um Referenzvariablen
+erweitert werden, damit die Referenzvariablen auch in der Outline-View
+angezeigt werden können. Die Klassen \emph{ReferenceVariablesEditPart}
+und \emph{ReferenceVariableEditPart} werden analog zu den entsprechenden
+Standard-Variablen Klassen implementiert und realisieren die Anzeige
+sowie die zentrale Möglichkeit für das Hinzufügen und Löschen von
+Referenzvariablen.
+
+
+\subsubsection*{org.eclipse.bpel.ui.properties}
+
+Die Klassen \emph{ReferenceVariableInitSection,} \emph{ReferenceVariableTypeSection}
+und \emph{ReferenceVariableTypeSelector} realisieren die PropertySection
+der Referenzvariablen. Dabei stellt die Klasse \emph{ReferenceVariableInitSection}
+eine UI für die Initialisierung aller Eigenschaften außer des ValueTypes
+einer Referenzvariablen. Die Klasse \emph{ReferenceVariableTypeSection}
+realisiert die Initialisierung des ValueTypes einer Referenzvariablen
+und die Klasse \emph{ReferenceVariableTypeSelector} liefert ein Fenster,
+in dem der ValueType bequem aus einer Liste ausgewählt werden kann.
+
+Die Klasse \emph{InvokeVariableSection} realisiert die Zuweisung von
+Variablen in Kommunikationsaktivitäten. Wie schon weiter oben beschrieben
+sollen dabei in Zukunft auch Referenzvariablen ausgewählt werden können.
+Dafür muss diese Klasse entsprechend angepasst werden, um nicht nur
+Standard-Variablen sondern auch Referenzvariablen in den PropertySections
+auswählbar zu machen..
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/BPELDesignerUI}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-Designer-Plug-In-UI}Klassendiagramm der UI des erweiterten
+BPEL Designer Plug-Ins}
+
+\end{figure}
+
+
+
+\subsubsection{\label{sub:Eclipse-BPEL-Designer-DD-Modell}Eclipse BPEL Designer
+Deployment-Deskriptor Modell}
+
+Abbildung \ref{fig:BPEL-Designer-Plug-In-DD-Model} zeigt das erweiterte
+Modell des Deployment-Deskriptors. Es handelt sich hier auch wieder
+um ein EMF-Modell das für jedes Modellobjekt eine Klasse bereitstellt.
+Im folgenden werden die Modellklassen beschrieben, auf die Implementierung
+(Klasse\emph{Impl}) wird nicht näher eingegangen, da diese lediglich
+die Funktionalität für die Modellobjekte liefern.
+
+Die Klasse \emph{TDataSource} liefert ein Modell für Datenquellen
+und besitzt dafür die Attribute \emph{name, address, type, subtype,
+language, dataFormat, username} und\emph{ password. }Mithilfe dieser
+Klasse können im Deployment-Deskriptor Datenquellen hinterlegt werden,
+die dann bei der Modellierung von Prozessen verwendet werden können
+(näheres hierzu siehe \cite{key-2}). 
+
+Die Klasse \emph{TActivityMapping} stellt analog dazu ein Modell für
+das Late-Binding von Datenquellen bereit und besitzt dafür die Attribute
+\emph{activityName, strategy, localPath} und \emph{policy}. Mithilfe
+dieser Klasse können dann im Deployment-Deskriptor Policy-Dateien
+an DM-Aktivitäten angeheftet werden. Das Attribut \emph{localPath}
+dient lediglich dazu, dass der Modellierer sehen kann, welche Policy
+im Moment mit einer Aktivität verknüpft ist, denn die Policy wird
+aus der Policy-Datei gelesen und im Attribut \emph{policy} hinterlegt.
+Die Klasse \emph{StrategyType }ist eine Enumeration aller verfügbaren
+Late-Binding Strategien. Eine dieser Strategien wird ebenfalls bei
+der Late-Binding Modellierung ausgewählt und im Attribut \emph{strategy}
+des ActivityMappings hinterlegt.
+
+Um die beschriebenen neuen Modellelemente im Deployment-Deskriptor
+hinterlegen zu können, muss die Klasse \emph{ProcessType} entsprechend
+erweitert werden, da in dieser alle für den Prozess relevanten Informationen
+hinterlegt sind.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/BPELDeploymentModel}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-Designer-Plug-In-DD-Model}Klassendiagramm des Modells
+des erweiterten BPEL Designer Deployment-Deskriptors}
+
+\end{figure}
+
+
+
+\subsubsection{\label{sub:Eclipse-BPEL-Designer-DD-UI}Eclipse BPEL Designer Deployment-Deskriptor
+UI}
+
+Abbildung \ref{fig:BPEL-Designer-Plug-In-DD-UI} zeigt alle erweiterten
+und neuen Klassen der UI des Deployment-Deskriptors. Diese werden
+nachfolgend näher erläutert.
+
+Das Paket \emph{org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs}
+enthält vier Klassen, die org.""eclipse.""jface.""dialogs.""TitleAreaDialog
+erweitern und so eine Schnittstelle zur Angabe aller Eigenschaften
+der, in Abschnitt \ref{sub:Eclipse-BPEL-Designer-DD-Modell} beschriebenen,
+Modellobjekte liefern. Die Klasse \emph{AddDataSourceDialog} liefert
+einen entsprechenden Dialog über den eine neue Datenquelle mit allen
+Attributen angelegt werden kann. Die Klasse \emph{EditDataSourceDialog}
+liefert entsprechend die Möglichkeit bereits angelegte Datenquellen
+zu editieren. Da hier einige Werte direkt aus den im SIMPL Core angebundenen
+Plug-Ins resultieren, werden diese Werte über die Klasse \emph{SIMPLCoreMetaData}
+bereitgestellt und zur Auswahl angeboten in den Dialogen angeboten.
+Die Klasse \emph{ReloadPlugInDataHandler} sorgt dafür, dass falls
+die Daten aus dem SIMPL Core nicht beim Start von Eclipse geladen
+wurden konnten, der Benutzer die Möglichkeit erhält über das SIMPL
+Menü die Daten neu einzulesen ohne Eclipse neu starten zu müssen.
+
+Analog zu den Datenquellen-Dialogen werden durch die Klassen \emph{AddMappingDialog
+}und\emph{ EditMappingDialog} Dialoge für das Erstellen und Editieren
+von Late-Binding Mappings (Aktivität + Policy + Strategie) bereitgestellt.
+
+Die Integration der Datenquellen- und Late-Binding-Modellobjekte in
+die UI des Deployment-Deskriptors wird in der Klasse \emph{ProcessPage}
+realisiert, die für die Visualisierung aller Werte eines Deployment-Deskriptors
+eines Prozesses zuständig ist. Um die neuen Modellobjekte in den Deployment-Deskriptor
+zu integrieren, werden zwei Tabellen, die die Attribute der Modellobjekte
+anzeigen, in die ProcessPage integriert. Jede dieser zwei Tabellen
+erhält weiterhin drei Buttons, über die ein neues Element in die Tabelle
+eingefügt (Add\#\#\#Dialog), ein vorhandenes Element aus der Tabelle
+bearbeitet (Edit\#\#\#Dialog) und ein Element aus der Tabelle gelöscht
+werden kann. Durch diese Erweiterungen lassen sich nun beliebige Datenquellen
+und Late-Binding Informationen im Deployment-Deskriptor hinterlegen.
+Diese werden dann bei der Ausführung des Prozesses ausgelesen und
+entsprechend verarbeitet.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/BPELDeploymentUI}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-Designer-Plug-In-DD-UI}Klassendiagramm der UI des
+erweiterten BPEL Designer Deployment-Deskriptors}
+
+\end{figure}
+
+
+
+\subsection{\label{sub:BPEL-DM-Plug-In}BPEL DM Plug-In}
+
+Mit dem BPEL-DM Plug-In werden die bestehenden Aktivitäten des Eclipse
+BPEL Designer Plug-Ins um die DM-Aktivitäten ergänzt. Das Plug-In
+gliedert sich in die in Abbildung \ref{fig:BPEL-DM-Plug-In} dargestellten
+Pakete. Das User-Interface Paket (org.""eclipse.""bpel.""simpl.""ui)
+sorgt für die grafische Darstellung der DM-Aktivitäten und deren Einbindung
+in den Eclipse BPEL Designer. Das zugrundeliegende Modell der DM-Aktivitäten
+befindet sich im Paket org.""eclipse.""bpel.""simpl.""model. Für
+die grafische Modellierung von Abfragebefehlen für verschiedene Datenquellen
+können weitere Plug-Ins über einen Extension-Point an das BPEL-DM
+Plug-In angebunden werden. Im Rahmen des Projekts wird ein Beispiel
+Plug-In (org.""eclipse.""bpel.""simpl.""ui.""sql) für die grafische
+Modellierung von SQL-Abfragen umgesetzt. Die verschiedenen Pakete
+und deren Klassen werden in den folgenden Unterkapiteln näher erläutert.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{\string"img/BPEL-DM Plug-In Overview\string".png}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-DM-Plug-In}BPEL DM Plug-In Paketstruktur}
+
+\end{figure}
+
+
+
+\subsubsection{BPEL DM Plug-In User Interface}
+
+Abbildung \ref{fig:BPEL-DM-Plug-In UI} zeigt den Aufbau der grafischen
+Benutzerschnittstelle (User Interface) des BPEL-DM Plug-Ins. Der Aufbau
+orientiert sich dabei an der Architektur des Eclipse BPEL Designer
+Plug-Ins und dessen Extension Points. Nachfolgend werden nun alle
+Pakete und die wichtigsten Klassen des BPEL-DM Plug-Ins beschrieben
+und deren Zweck näher erläutert.
+
+\begin{center}
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{\string"img/BPEL-DM Plug-In UI\string".png}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-DM-Plug-In UI}BPEL DM Plug-In User Interface}
+
+\end{figure}
+
+\par\end{center}
+
+
+\subsubsection*{org.eclipse.bpel.simpl.ui}
+
+Dieses Paket enthält die Klassen \emph{Application} und \emph{DataManagementUIConstants}.
+Die Klasse \emph{Application} enthält verschiedene Methoden, die die
+Verwaltung der angebunden Plug-Ins des \emph{queryLanguage} Extension-Points
+erleichtern. Die Klasse \emph{DataManagementUIConstants} enthält alle
+Bildpfade der Icons der DM-Aktivitäten und stellt diese zur Verfügung.
+
+
+\subsubsection*{org.eclipse.bpel.simpl.adapters}
+
+Dieses Paket enthält eine Adapter-Klasse für jede DM-Aktivität. Die
+Adapter-Klassen verknüpfen das Modell und die grafische Repräsentation
+(UI) einer DM-Aktivität und erben von der abstrakten Klasse\emph{
+}org.""eclipse.""bpel.""ui.""adapters.""ActivityAdapter.
+
+
+\subsubsection*{org.eclipse.bpel.simpl.extensions}
+
+Das Interface \emph{IStatementeEditor} vererbt an die abstrakte Klasse
+\emph{AStatementEditor}, und diese gibt die Rahmenbedingungen für
+die Einbindung von Statement-Editoren für neue Anfragesprachen vor.
+Eine StatementEditor-Implementierung enthält immer ein Composite,
+in dem die grafischen Elemente positioniert sind und die Logik zur
+grafischen Modellierung eines Befehls, über die zur Verfügung gestellten
+Elemente. Weiterhin müssen die Methoden \emph{getComposite()}, \emph{setComposite()}
+und \emph{createComposite()} zur Verwaltung und Erzeugung des Composites,
+aus der Vaterklasse heraus, bereitgestellt werden. Um den modellierten
+Abfragebefehl aus der StatementEditor-Implementierung auszulesen bzw.
+einen gespeicherten Befehl zu übergeben, werden noch die \emph{getStatement()}
+und \emph{setStatement()}-Methoden benötigt. Die Anbindung von StatementEditor-Implementierungen
+erfolgt dabei über den Extension Point \noun{org.""eclipse.""bpel.""simpl.""ui.""queryLanguage}.
+
+
+\subsubsection*{org.eclipse.bpel.simpl.factories}
+
+Die beiden Klassen in diesem Paket erzeugen Objekte für die grafische
+Platzierung von DM-Aktivitäten in der Modellierungsumgebung. Die Klasse
+\emph{DataManagementUIObjectFactory} erzeugt Objekte für die grafische
+Repräsentation der jeweiligen Aktivität und die Klasse \emph{DataManagementUIAdapterFactory}
+die zugehörigen Adapter, die für die Verknüpfung der oben genannten
+Objekte entsprechenden Modellinstanzen der Aktivitäten benötigt werden.
+Die Klasse \emph{DataManagementUIObjectFactory} erweitert dafür die
+abstrakte Klasse org.""eclipse.""bpel.""ui.""factories.""AbstractUIObjectFactory
+und wird über den vorhandenen Extension-Point \noun{org.""eclipse.""bpel.""ui.""uiObjectFactories}
+an den BPEL Designer angebunden. Die Klasse \emph{DataManagementUIAdapterFactory}
+erweitert die Klasse org.""eclipse.""bpel.""simpl.""model.""util.""ModelAdapterFactory
+des BPEL-DM Modells.
+
+
+\subsubsection*{org.eclipse.bpel.simpl.palette}
+
+Dieses Paket erweitert die grafische Palette der Aktivitäten des BPEL
+Designers. In der Palette werden alle verfügbaren Aktivitäten des
+BPEL Designers und durch die Erweiterung auch die BPEL-DM-Aktivitäten
+dargestellt. Mithilfe der Palette können die Aktivitäten ausgewählt
+und in den Editor zur Prozessmodellierung eingefügt werden. Die Klasse
+\emph{DataManagementPaletteProvider} implementiert dafür die Schnittstelle
+org.""eclipse.""bpel.""common.""ui.""palette.""IPaletteProvider und
+wird über den vorhandenen BPEL Designer Extension-Point org.""eclipse.""bpel.""common.""ui.""paletteAdditions.
+
+
+\subsubsection*{org.eclipse.bpel.simpl.properties}
+
+Das Paket beinhaltet die Anzeige der Eigenschaften der jeweiligen
+DM-Aktivitäten. Die Anbindung erfolgt über den vorhandenen BPEL Designer
+Extension-Point org.""eclipse.""ui.""views.""properties.""tabbed.""propertySections.
+Die Eigenschaften können in der Modellierungsumgebung unter dem Punkt
+{}``Details'' in der Property-View von Eclipse ausgewählt werden.
+Zu den Eigenschaften gehört die Auswahl einer im Deployment-Desktiptor
+oder der UDDI-Registry hinterlegten Datenquelle und die Angabe eines
+Befehls (DM-Befehl) der auf der Datenquelle ausgeführt werden soll.
+Der DM-Befehl kann entweder direkt von Hand in das entsprechende Textfeld
+eingegeben werden oder kann im Statement-Editor bearbeitet oder auch
+neu modelliert werden.
+
+
+\subsubsection{BPEL-DM Plug-In Modell}
+
+Das BPEL-DM Plug-In Modell stellt die Pakete und Klassen des (EMF-)
+Modells der BPEL-DM-Aktivitäten dar.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{\string"img/BPEL-DM Plug-In Model\string".png}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-DM-Plug-In Modell}BPEL-DM Plug-In Modell}
+
+\end{figure}
+
+
+Abbildung \ref{fig:BPEL-DM-Plug-In Modell} zeigt alle Pakete und
+Klassen, die das BPEL-DM Modell ergeben. An oberster Stelle steht
+die \emph{DataManagementActivity}-Klasse (Interface), die die Klasse
+org.""eclipse.""bpel.""model.""ExtensionActivity erweitert. Sie enthält
+die Variablen \emph{dsType}, \emph{dsKind}, \emph{dsAddress, dsLanguage}
+und \emph{dsStatement,} die die gemeinsame Schnittmenge der Aktivitätenvariablen
+bilden. Diese werden an die Kindklassen wie z.B. \emph{QueryActivity}
+(Interface) vererbt und können somit bei Bedarf um schnittstellenspezifische
+Eigenschaften erweitert werden. Die konkrete Realisierung dieser Interfaces
+erfolgt dann im Paket org.""eclipse.""bpel.""simpl.""model.""impl
+z.B. in der Klasse \emph{QueryActivityImpl}. Die Klassen \emph{ModelFactory}
+(Interface) und \emph{ModelPackage} (Interface) erben von den Klassen
+\emph{org.eclipse.emf.ecore.EFactory} und \emph{org.eclipse.emf.ecore.EPackage}
+und werden benötigt, um Objekte des Modells zu erzeugen (Factory),
+wie z.B. ein QueryActivity-Objekt und um Objekte des Modells zu verwalten
+(Package), wie z.B. das Auslesen der Variablenwerte eines QueryActivity-Objekts.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.6\textwidth]{img/BPEL-DMPlugInModellUtil}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-DM-Plug-In Modell-Util}Utility-Paket des BPEL-DM
+Plug-In Modells}
+
+\end{figure}
+
+
+Im Paket \emph{org.eclipse.bpel.simpl.model.util} (siehe Abbildung
+\ref{fig:BPEL-DM-Plug-In Modell-Util}) befinden sich Zubehörklassen
+wie Serializer und Deserializer. Letztgenannte übernehmen das Lesen
+bzw. Schreiben der DM-Aktivitäten aus bzw. in BPEL-Files. Serializer
+werden dafür von der Klasse org.""eclipse.""bpel.""model.""extensions.""BPELActivitySerializer
+und Deserializer von der Klasse\emph{ }org.""eclipse.""bpel.""model.""extensions.""BPELActivityDerserializer
+abgeleitet.
+
+
+\subsubsection{BPEL-DM Plug-In Abfragesprachen-Erweiterung}
+
+Die Abbildung \ref{fig:BPEL-DM-Plug-In Extension Modell} des Pakets
+\emph{org.eclipse.bpel.simpl.ui.sql.editor} steht beispielhaft für
+eine Erweiterung des Statementeditors um die Abfragesprache SQL. Die
+einzelnen Klassen dieses Pakets erben von der abstrakten Klasse org.""eclipse.""bpel.""simpl.""ui.""extensions.""AStatementEditor
+und realisieren die grafische Modellierung von elementaren SQL-Abfragen
+wie Select und Insert. Jede Erweiterung kann am Extension Point \emph{org.eclipse.bpel.simpl.ui.queryLanguage}
+angeschlossen werden.
+
+\begin{center}
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{\string"img/BPEL-DM Plug-In Extensions\string".png}
+\par\end{centering}
+
+\caption{\label{fig:BPEL-DM-Plug-In Extension Modell}Klassendiagramm der BPEL-DM
+Plug-In SQL-Erweiterung}
+
+\end{figure}
+
+\par\end{center}
+
+
+\subsection{SIMPL Core Plug-In}
+
+Das SIMPL Core Plug-In kümmert sich um die Integration des SIMPL Menüs
+in die Eclipse Menüleiste und liefert die Admin-Konsole zur Verwaltung
+der Einstellungen des SIMPL Cores. In der Admin-Konsole können momentan
+Authentifizierungsinformationen (Benutzername und Passwort) für Datenquellen
+hinterlegt, das Auditing aktiviert und deaktiviert und die Auditing
+Datenbank festgelegt werden. Nähere Informationen und einige Bilder
+des SIMPL Menüs und der Admin-Konsole liefert \cite{key-2} (Kapitel
+4.1).
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPL_Core_PlugIn}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL-Core-Plug-In }SIMPL Core Plug-In Klassendiagramm}
+
+\end{figure}
+
+
+Abbildung \ref{fig:SIMPL-Core-Plug-In } zeigt das Klassendiagramm
+des SIMPL Core Plug-Ins. Die zentrale Klasse dieses Plug-Ins ist die
+Klasse \emph{AdminConsoleUI}, die die Admin-Konsole erzeugt und deren
+Funktionalität liefert. Die Methode \emph{createComposite()} erzeugt
+dafür die Composites der Admin-Konsolen Plug-Ins und mit \emph{showComposite()}
+werden diese, entsprechend der Auswahl im Baum der Admin-Konsole,
+angezeigt. Die Methode \emph{createSShell() }erzeugt die Admin-Konsole
+selbst und \emph{fillTree()} füllt den Baum mit den entsprechenden
+Einträgen der Plug-Ins beim Öffnen der Admin-Konsole. Ebenso wichtig
+ist die Klasse \emph{IAdminConsoleComposite}, die die Schnittstelle
+der Admin-Konsolen Plug-In Composites definiert. Diese Klasse muss
+von jedem Plug-In implementiert werden. Die \emph{getComposite()}
+und \emph{setComposite()}-Methoden werden dazu benötigt, die Plug-In
+Composites aus dem SIMPL Core Plug-In heraus zu verwalten. Die Methode
+\emph{createComposite()} wird benötigt, um das entsprechende Composite
+des Plug-Ins aus der Klasse \emph{AdminConsoleUI} heraus zu erstellen.
+Die übrigen Methoden der Klasse werden dazu benötigt, die Einstellungen
+der Admin-Konsolen Plug-Ins über den SIMPL Core zu laden (\emph{loadSettings()}),
+über den SIMPL Core zu speichern (\emph{saveSettings()}), zu überprüfen
+ob sich die Einstellungen seit dem letzten Speichern geändert haben
+(\emph{haveSettingsChanged()}) und um Einstellungen aus einem lokalen
+Buffer zu laden (\emph{loadSettingsFromBuffer()}). Der lokale Buffer
+wird benötigt, um geänderte Einstellungen, die noch nicht gespeichert
+wurden, aber durch einen Wechsel des Einstellungspunktes der Admin-Konsole
+verloren gehen würden, zu sichern. Der Buffer wird dadurch realisiert,
+dass die Einstellungen in den entsprechenden Composite-Klassen in
+Variablen hinterlegt werden und alle Composite-Klassen zentral in
+der Klasse \emph{Application} verwaltet werden. 
+
+Die Klasse \emph{Application} enthält nützliche Methoden zur Verwaltung
+der Admin-Konsolen Plug-Ins und dient gleichzeitig als lokaler Buffer
+für die Composite-Klassen der Plug-Ins. Sie ist als Singleton realisiert
+und kann über die \emph{getInstance()}-Methode verwendet werden. Die
+Methode \emph{initApplication()} sorgt dafür, dass beim Laden des
+SIMPL Core Plug-Ins alle angebundenen Plug-In Composites erstellt
+werden und mit den im SIMPL Core hinterlegten Einstellungen gefüllt
+werden. Durch diesen Umstand muss nur einmal ein Ladevorgang auf dem
+SIMPL Core ausgeführt werden, da die Einstellungen dann im lokalen
+Buffer liegen und von dort gelesen werden können. Das Speichern der
+Einstellungen hingegen erfolgt direkt und erfordert, sofern sich Werte
+geändert haben, jedesmal eine Verbindung mit dem SIMPL Core. Die beiden
+Methoden \emph{getTreeItems()} und \emph{getTreeSubItems()} werden
+benötigt, um den Baum der Admin-Konsole aus den angebundenen Plug-Ins
+zu erstellen. Dazu wird auch die Klasse \emph{Tuple} benötigt, die
+es ermöglicht jeden Eintrag in den Admin-Konsolen Baum mit einem Index
+zu versehen, so dass ein Plug-In Entwickler direkt darauf Einfluss
+nehmen kann, an welcher Stelle sein neuer Eintrag im Baum positioniert
+ist. Die Methode \emph{sortTuple()} der Klasse \emph{Application}
+sorgt dann dafür, dass die verschiedenen Plug-Ins bzw. deren Einträge
+für die Admin-Konsole nach den angegebenen Indizes sortiert wird.
+Sollte hier ein Index doppelt vergeben sein, so entscheidet sich die
+Reihenfolge durch die Initialisierungsfolge der einzelnen Plug-Ins
+durch Eclipse. Die Klasse \emph{SimplHandler} sorgt dafür, dass falls
+der SIMPL Menüpunkt {}``Admin Console'' ausgewählt wird, die Admin-Konsole
+geöffnet wird.
+
+Die Admin-Konsole besteht nur aus Extension-Point-Erweiterungen, um
+eine größtmögliche Flexibilität hinsichtlich der späteren Nutzung
+zu erreichen. Das bedeutet, die Einträge, die bereits bei der Auslieferung
+von SIMPL in der Admin-Konsole vorhanden sind, wurden auch durch entsprechende
+Plug-Ins, die an diese Extension-Points angebunden sind, realisiert
+und können gegebenenfalls leicht ausgetauscht werden. Weitere Einträge
+können über den Extension-Point \noun{org.""eclipse.""simpl.""core.""adminConsoleItem}
+hinzugefügt werden. Bei der Auslieferung sind die Funktionen Auditing
+(\emph{org.eclipse.simpl.core.auditing}) und Global Settings (\emph{org.eclipse.simpl.core.globalSettings})
+bereits durch Plug-Ins eingebunden.
+
+Die Klasse \emph{SIMPLHomePreferencePage} wird über den entsprechenden
+Extension-Point \noun{org.""eclipse.""ui.""preferencePages} für Preference
+Pages (Einstellungsseiten) in Eclipse angebunden. Die so erstellte
+Preference Page kann nun um weitere Sub-Preference Pages ergänzt werden.
+So kann aus jedem beliebigen anderen Plug-In eine Preference Page
+zur SIMPL Home Preference Page hinzugefügt werden. Die so erstellte
+Preference Page Hierarchie ist über die Eclipse Preferences zugänglich
+und macht es möglich, dass alle relevanten Einstellungen der SIMPL
+Eclipse Plug-Ins über die Eclipse Preferences angegeben werden können.
+
+
+\subsection{SIMPL Core Client Plug-In\label{sub:SIMPL-Core-Client}}
+
+Das SIMPL Core Client Plug-In stellt die Verbindung zu den SIMPL Core
+Web Services her und bietet den anderen Eclipse Plug-Ins damit die
+Möglichkeit, diese zu verwenden. Da sowohl das BPEL-DM Plug-In als
+auch das SIMPL Core Plug-In mit dem SIMPL Core kommunizieren, wird
+der SIMPL Core Client als eigenständiges Plug-In realisiert um von
+mehreren Plug-Ins genutzt werden zu können. Die Funktionalität für
+den Zugriff auf die Web Services wird mit Hilfe des Befehls wsimport
+(..\textbackslash{}Java\textbackslash{}jdk1.6.0\_14\textbackslash{}bin\textbackslash{}wimport.exe)
+über die WSDL-Schnittstellen generiert und wird um die Serialisierung
+und Deserialisierung der komplexen Parameter wie z.B. Hashmaps und
+Listen erweitert.
+
+
+\subsection{\label{sub:RRS-Eclipse-Plug-In}RRS Eclipse Plug-In}
+
+Das RRS Eclipse Plug-In besteht zum Einen aus einem Client der für
+die Kommunikation mit einem RRS benötigt wird und zum Anderen aus
+einem Eclipse View, in dem EPRs mehrerer RRS verwaltet werden können.
+In den folgenden zwei Abschnitten wird zuerst der Client und das EPR-Modell
+näher erläutert und anschließend die Umsetzung der Verwaltung der
+EPRs über eine Eclipse View beschrieben.
+
+
+\subsubsection{RRS Client}
+
+Da das RRS nur über Web Services erreichbar ist, benötigt das RRS
+Eclipse Plug-In einen entsprechenden Client, der die Kommunikation
+realisiert. Der RRS Client besteht dabei aus den zur Kommunikation
+notwendigen Klassen und aus den Klassen des EPR-Modells. Diese Klassen
+werden analog der Beschreibung in Abschnitt \ref{sub:SIMPL-Core-Client}
+über wsimport generiert. Die Struktur des Clients zeigt Abbildung
+\ref{fig:RRS-Plug-In-Client}, dabei wurden alle automatisch generierten
+Klassen, außer den EPR Modellklassen, weggelassen. Im Folgenden wird
+auf die einzelnen Klassen näher eingegangen. 
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/RRSPlugInClient}
+\par\end{centering}
+
+\caption{\label{fig:RRS-Plug-In-Client}Klassendiagramm des RRS Clients}
+
+\end{figure}
+
+
+Die Klasse \emph{ModelProvider} hält alle EPRs, die in der RRS View
+angezeigt werden. Sie ist der globale Zugriffpunkt für die vorhandenen
+EPRs und den in diesen enthaltenen Daten. Die Klassen \emph{EPR},
+\emph{ReferenceParameters}, \emph{ReferenceProperties }und \emph{ServiceName
+}realisieren, das den EPRs zugrundeliegende Modell. Die innere Struktur
+der EPR-Klasse entspricht dabei genau dem EPR-Schema aus Kapitel 7.1.2
+in \cite{key-2}. Die Klasse \emph{RRSClient }dient als zentraler
+Zugriffspunkt auf die automatisch generierten Web Service Client Klassen
+und liefert eine gebündelte Schnittstelle zu allen benötigten Methoden
+des RRS.
+
+
+\subsubsection{RRS Eclipse Plug-In User Interface}
+
+Diese Komponente des RRS Eclipse Plug-Ins sorgt dafür, dass in Eclipse
+ein neuer View bereitgestellt wird, mit dessen Hilfe EPRs aus verschiedenen
+RRS angezeigt und verwaltet werden können. Zur Verwaltung gehört das
+Anlegen von neuen EPRs sowie das Bearbeiten und Löschen vorhandener
+EPRs. Die grundlegende Struktur der Implementierung des User Interfaces
+zeigt Abbildung \ref{fig:RRS-Plug-In-UI}. Im Folgenden wird auf die
+einzelnen Pakete bzw. deren Klassen näher eingegangen.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/RRSPlugInUI}
+\par\end{centering}
+
+\caption{\label{fig:RRS-Plug-In-UI}Klassendiagramm des User Interfaces des
+RRS Eclipse Plug-Ins}
+
+\end{figure}
+
+
+
+\subsubsection*{org.eclipse.simpl.rrs.ui.dialogs}
+
+Dieses Paket enthält die beiden Klassen \emph{AddReferenceDialog}
+und \emph{EditReferenceDialog}, die die Klasse \emph{org.eclipse.jface.dialogs.TitleAreaDialog}
+erweitern. Die Klasse \emph{AddReferenceDialog} wird dazu verwendet,
+einen Dialog für das Anlegen neuer EPRs bereitszustellen. Die Klasse
+\emph{EditReferenceDialog} stellt dazu analog einen Dialog für das
+Editieren von EPRs bereit.
+
+
+\subsubsection*{org.eclipse.simpl.rrs.ui.commands}
+
+Dieses Paket enthält drei Klassen, die die Schnittstelle \emph{org.eclipse.core.commands.IHandler}
+implementieren. Diese werden dazu benötigt, um auf entsprechende Commands
+zu reagieren, die mit Toolbar- bzw. Menüeinträgen des RRS View verknüpft
+sind und bei der Auswahl eines solchen Eintrags angestoßen werden.
+Die Klasse \emph{AddEPRHandler} sorgt dafür, dass bei der Auswahl
+des Add-Menüeintrags der AddEPR-Dialog geöffnet wird. Die Klasse \emph{EditEPRHandler}
+sorgt entsprechend dafür, dass bei der Auswahl des Edit-Menüeintrags
+der EditEPR-Dialog geöffnet wird. Die Klasse \emph{RemoveEPRHandler}
+sorgt dafür, dass alle in der View ausgewählten EPRs gelöscht werden. 
+
+
+\subsubsection*{org.eclipse.simpl.rrs.ui.view}
+
+Dieses Paket enthält alle Klassen, die für Einbindung der RRS View
+in Eclipse benötigt werden. Die Klasse \emph{ReferenceManagementView}
+erweitert dafür die Klasse \emph{org.eclipse.ui.part.ViewPart} und
+sorgt somit für die Darstellung des RRS Views und die Visualisierung
+aller EPRs eines RRS in einer Tabelle innerhalb des Views. Die Klasse
+\emph{ReferenceContentProvider} implementiert die Schnittstelle org.""eclipse.""jface.""viewers.""IStructuredContentProvider
+und sorgt dafür, dass die EPRs, aus dem Modell, der View zugänglich
+gemacht werden. Die Klasse \emph{ReferenceLabelProvider} erweitert
+die Klasse \emph{org.eclipse.jface.viewers.LabelProvider} und sorgt
+dafür, dass die einzelnen Daten der EPRs in der View entsprechend
+angezeigt werden, d.h. in dieser Klasse wird definiert, wie die über
+den \emph{ReferenceContentProvider} bereitgestellten EPR-Objekte ausgelesen
+werden sollen und welche Daten überhaupt in der View angezeigt werden
+sollen.
+
+
+\subsubsection*{org.eclipse.simpl.rrs.ui.view.filter}
+
+Die Klasse \emph{ReferenceFilter} erweitert die Klasse \emph{org.eclipse.jface.viewers.ViewerFilter}
+und liefert die Möglichkeit die in der View angezeigten EPRs zu filtern,
+d.h. die EPRs nach entsprechenden Zeichenfolgen zu durchsuchen und
+nur solche anzuzeigen, die die Zeichenfolge enthalten.
+
+
+\subsubsection*{org.eclipse.simpl.rrs.ui.view.sorter}
+
+Die Klasse \emph{TableSorter} erweitert die Klasse \emph{org.eclipse.jface.viewers.ViewerSorter}
+und liefert die Möglichkeit, die im View angezeigten EPRs zu sortieren,
+d.h. die EPRs können nach jeder beliebigen Spalte des RRS Views auf-
+oder absteigend sortiert werden.
+
+
+\subsubsection*{org.eclipse.simpl.rrs.ui.preferences}
+
+Die Klasse \emph{RRSPreferencePage} erweitert die Klasse org.""eclipse.""jface.""preference.""FieldEditorPreferencePage
+und liefert die Möglichkeit, die Addressen der drei Reference Resolution
+System Web Services (Retrieval, Management und MetaData) über eine
+Preference Page in den SIMPL Einstellungen anzugeben. Dadurch hat
+man die Möglichkeit einfach ein anderes RRS anzubinden und dessen
+Daten im Reference Management View anzuzeigen.
+
+
+\subsection{\label{sub:RRS-Transformation-Eclipse-Plug-In}RRS Transformation
+Eclipse Plug-In}
+
+Das RRS Transformation Eclipse Plug-In realisiert die Anbindung des
+RRS Transformation Service (siehe Kapitel \ref{sub:RRS-Transformation-Service})
+in Eclipse. Nachfolgend werden nun alle Pakete und die wichtigsten
+Klassen des RRS Transformation Eclipse Plug-Ins beschrieben und deren
+Zweck näher erläutert.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.7\textwidth]{img/RRSTransormationEclipsePlugIn}
+\par\end{centering}
+
+\caption{\label{fig:RRS-Transformation-Plug-In}Klassendiagramm des RRS Transformation
+Eclipse Plug-Ins}
+
+\end{figure}
+
+
+
+\subsubsection*{org.eclipse.simpl.rrs.transformation}
+
+Die Klasse \emph{TransformerUtil} enthält Methoden, die während der
+Transformation benötigt werden. Dazu zählt z.B. eine Methode, die
+die Prozess-WSDL einließt, erweitert und in das transformierte Projekt
+kopiert (näheres dazu in \cite{key-2} Kapitel 7.1.3). Weiterhin werden
+Methoden für das Herunterladen der RRS-WSDL-Dateien bereitgestellt,
+sowie einige Methoden, mit deren Hilfe festgestellt werden kann, ob
+eine Transformation überhaupt notwendig ist bzw. fehlerfrei durchgeführt
+werden kann (existieren Referenzvariablen?, sind alle Referenzvariablen
+voll spezifiziert?, etc.). 
+
+
+\subsubsection*{org.eclipse.simpl.rrs.transformation.preferences}
+
+Die Klasse \emph{TransformationPreferencePage} erweitert die Klasse
+org.""eclipse.""jface.""preference.""FieldEditorPreferencePage und
+liefert die Möglichkeit, die Addresse des Transformation Web Service
+über eine Preference Page in den SIMPL Einstellungen anzugeben. Dadurch
+hat man die Möglichkeit einfach einen anderen Transformator an Eclipse
+anzubinden bzw. zwischen verschiedenen Transformatoren zu wechseln.
+
+
+\subsubsection*{org.eclipse.simpl.rrs.transformation.commands}
+
+Dieses Paket enthält zwei Handler-Klassen, die die abstrakte Klasse
+org.""eclipse.""core.""commands.""AbstractHandler erweitern. Diese
+werden dazu benötigt, um auf entsprechende Commands zu reagieren,
+die mit einem Toolbar- bzw. Kontext-Menüeintrag in Eclipse verknüpft
+sind und bei der Auswahl eines solchen Eintrags angestoßen werden.
+Die Klasse \emph{TransformationContextHandler} sorgt dafür, dass ein
+im Projekt-Explorer selektierter BPEL-Prozesses mithilfe eines Rechtsklicks
+über das so geöffnete Kontextmenü transformiert werden kann. Die Klasse
+\emph{TransformationHandler} sorgt entsprechend dafür, dass ein im
+BPEL-Editor geöffneter BPEL-Prozess über einen Toolbar-Eintrag transformiert
+werden kann. Da beide Handler-Klassen nahezu identische Aufgaben ausführen
+müssen, bevor der entsprechende BPEL-Prozess tatsächlich an den Transformation
+Service geschickt werden kann, gibt es die Klasse \emph{TransformationCmdHelper}.
+Sie wird von den Handlern verwendet und sorgt dafür, dass alle in
+\cite{key-2} (Kapitel 7.1.3) beschrieben Schritte (wsdl-Dateien herunterladen,
+Projekt anlegen/aktualisieren, usw.) vor und nach der Transformation
+ausgeführt werden.
+
+
+\subsubsection*{org.eclipse.simpl.rrs.transformation.jet}
+
+Die Klasse \emph{TemplateRrsXSD} ist ein Java Emitter Template (JET)
+und beinhaltet das EPR-Schema, das zur Ausführung des transformierten
+Prozesses in Apache ODE benötigt wird. Über den Aufruf der \emph{generate()}-Methode
+erzeugt diese Klasse das EPR-Schema und serialisiert dieses in eine
+Datei (rrs.xsd). Der Aufruf wird bei der Transformation aus der Klasse
+\emph{TransformationCmdHelper} durchgeführt.
+
+
+\subsubsection*{org.eclipse.simpl.rrs.transformation.client}
+
+Dieses Paket enthält alle RRS Transformation Service Client-Klassen.
+Diese werden analog zum SIMPL Core Client und RRS Client automatisch
+generiert. Auf die generierten Client-Klassen wird hier nicht weiter
+eingegangen. Die Klasse \emph{TransformationClient} liefert einen
+zentralen Zugriffspunkt auf den RRS Transformation Service Client
+und stellt alle Methoden des Transformation Service bereit.
+
+
+\subsection{\label{sub:UDDI-Eclipse-Plug-In}UDDI Eclipse Plug-In}
+
+Das UDDI Eclipse Plug-In ist analog zum RRS Eclipse Plug-In aufgebaut,
+mit der Einschränkung, dass es nur für die Betrachtung von UDDI-Einträgen
+verwendet werden kann und eine Verwaltung dieser nicht über das Plug-In
+in Eclipse realisiert wird. Für die Verwaltung wird ein spezielles
+Web Interface bereitgestellt, dass in Kapitel \ref{sub:Uddi-Registry-Web}
+näher beschrieben wird.
+
+Die in der UDDI-Registry hinterlegten Datenquellen werden für die
+Darstellung im UDDI Browser View, der durch dieses Plug-In bereitgestellt
+wird, über eine entsprechende EMF-Modell Implementierung repräsentiert.
+Die grundlegende Struktur der Implementierung des gesamten Plug-Ins
+zeigt Abbildung \ref{fig:UDDI-Plug-In}. Im Folgenden wird auf die
+einzelnen Pakete bzw. deren Klassen näher eingegangen.
+
+%
+\begin{figure}
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/UddiEclipsePlugin}
+\par\end{centering}
+
+\caption{\label{fig:UDDI-Plug-In}UDDI Eclipse Plug-In Klassendiagramm}
+
+\end{figure}
+
+
+
+\subsubsection*{org.eclipse.simpl.uddi.model}
+
+Die Klasse \emph{ModelProvider} hält alle Datenquellen (DataSource-Objekte),
+die in der UDDI View angezeigt werden. Sie ist der globale Zugriffpunkt
+für die vorhandenen Datenquellen.
+
+
+
+
+
+
+
+
+\subsubsection*{org.eclipse.simpl.uddi.view}
+
+Dieses Paket enthält alle Klassen, die für Einbindung der UDDI View
+in Eclipse benötigt werden. Die Klasse \emph{UDDIBrowserView} erweitert
+dafür die Klasse \emph{org.eclipse.ui.part.ViewPart} und sorgt somit
+für die Darstellung des UDDI Views und die Visualisierung aller hinterlegter
+Datenquellen einer UDDI-Registry in einer Tabelle innerhalb des Views.
+Die Klasse \emph{UDDIContentProvider} implementiert die Schnittstelle
+org.""eclipse.""jface.""viewers.""IStructuredContentProvider und
+sorgt dafür, dass die Datenquellen, aus dem Modell, der View zugänglich
+gemacht werden. Die Klasse \emph{UDDILabelProvider} erweitert die
+Klasse \emph{org.eclipse.jface.viewers.LabelProvider} und sorgt dafür,
+dass die einzelnen Informationen der Datenquellen in der View entsprechend
+angezeigt werden, d.h. in dieser Klasse wird definiert, wie die über
+den \emph{UDDIContentProvider} bereitgestellten DataSource-Objekte
+ausgelesen werden sollen und welche Daten überhaupt in der View angezeigt
+werden sollen.
+
+
+\subsubsection*{org.eclipse.simpl.uddi.view.filter}
+
+Die Klasse \emph{DataSourceFilter} erweitert die Klasse \emph{org.eclipse.jface.viewers.ViewerFilter}
+und liefert die Möglichkeit die in der View angezeigten Datenquellen
+zu filtern, d.h. die Informationen der Datenquellen nach entsprechenden
+Zeichenfolgen zu durchsuchen und nur solche Datenquellen anzuzeigen,
+deren Informationen die Zeichenfolge enthalten.
+
+
+\subsubsection*{org.eclipse.simpl.uddi.view.sorter}
+
+Die Klasse \emph{TableSorter} erweitert die Klasse \emph{org.eclipse.jface.viewers.ViewerSorter}
+und liefert die Möglichkeit die im View angezeigten Datenquellen zu
+sortieren, d.h. die Datenquellen können nach jeder beliebigen Spalte
+des UDDI Views auf- oder absteigend sortiert werden.
+
+\pagebreak{}
+
+
+\section{\label{sec:Kommunikation}Kommunikation}
+
+In diesem Kapitel werden die Kommunikation zwischen den Komponenten
+des SIMPL Rahmenwerks beschrieben und wichtige Abläufe deutlich gemacht.
+
+In Abbildung \ref{fig:Kommunikation-im-SIMPL} wird die Kommunikation
+zwischen den Komponenten mit entsprechenden Funktionsaufrufen (Bezeichner
+mit Klammern) und der Fluß der Daten (Bezeichner ohne Klammern) gezeigt,
+die Richtung des Aufruf bzw. des Datenflußes wird jeweils durch einen
+Pfeil beschrieben. Für die Referenzierung in den folgenden Abschnitten
+und sind zusammengehörige Abläufe durchnummeriert.
+
+Über das SIMPL Core Client Plug-In wird die Kommunikation der anderen
+SIMPL Eclipse Plug-Ins zum SIMPL Core hergestellt (1, 2, 3). Über
+die Web Services des SIMPL Cores werden Metadaten zu Datenquellen
+angefordert (4) und Einstellungen gespeichert und geladen (5). Dazu
+werden von den Web Services die Dienste des SIMPL Cores verwendet
+und die Anfragen entsprechend weitergeleitet (6, 7). Über den Storage
+Service werden die Daten persistent gespeichert (8). Apache ODE kann
+die Dienste des SIMPL Cores direkt ansprechen, da sich der SIMPL Core
+im Classpath von Apache ODE befindet. Dort werden die DM-Aktivitäten
+(DM-Activities) über den DatasourceService ausgeführt (9), dessen
+Funktionen in Kapitel \ref{sub:Datasource-Service} beschrieben wurden.
+Für das SIMPL Auditing benötigen die SIMPL DAOs ebenfalls Zugriff
+auf den DatasourceService, um die Auditing Daten zu speichern (10).
+Die Auditing Daten entstehen unter anderem bei der Ausführung der
+DM-Aktivitäten (11) und lösen die Speicherung über die SIMPL DAOs
+aus.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPLRahmenwerkKommunikation}
+\par\end{centering}
+
+\caption{\label{fig:Kommunikation-im-SIMPL}Kommunikation im SIMPL Rahmenwerk}
+
+
+
+\end{figure}
+
+
+\pagebreak{}
+
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\begin{thebibliography}{ApachejUDDI}
+\bibitem[SIMPLGrobE]{key-1}\textit{Grobentwurf v1.5}.\textit{ }Stupro-A
+SIMPL (2009)
+
+\bibitem[SIMPLSpez]{key-2}\emph{Spezifikation v2.3}. Stupro-A SIMPL
+(2009)
+
+\bibitem[ConnectionPooling]{key-3}\emph{Connection Pooling}, http://""java.sun.com/""developer/""onlineTraining/""Programming/""JDCBook/""conpool.html.
+Zuletzt aufgerufen am 01.04.2010
+
+\bibitem[ApachejUDDI]{key-4} \emph{Apache jUDDI}, http://""ws.apache.org/""juddi/.
+Zuletzt aufgerufen am 01.04.2010\pagebreak{}
+
+\end{thebibliography}
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+
+
+\section*{Abkürzungsverzeichnis}
+
+\begin{center}
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{10cm}|}
+\hline 
+API & Application Programming Interface\tabularnewline
+\hline 
+BPEL & Business Process Execution Language\tabularnewline
+\hline 
+CSV & Comma Separated Values\tabularnewline
+\hline 
+DAO & Data Access Object\tabularnewline
+\hline 
+DM & Data-Management\tabularnewline
+\hline 
+GUI & Graphical User Interface\tabularnewline
+\hline 
+JAX-WS & Java API for XML - Web Services\tabularnewline
+\hline 
+JET & Java Emitter Template\tabularnewline
+\hline 
+ODE & Orchestration Director Engine\tabularnewline
+\hline 
+SDO & Service Data Object\tabularnewline
+\hline 
+SIMPL  & SimTech: Information Management, Processes and Languages\tabularnewline
+\hline 
+SQL & Structured Query Language\tabularnewline
+\hline 
+UDDI & Universal Description, Discovery and Integration\tabularnewline
+\hline 
+UML & Unified Modeling Language\tabularnewline
+\hline 
+WS & Web Service\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+\pagebreak{}
+
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+
+\listoffigures
+
+\end{document}

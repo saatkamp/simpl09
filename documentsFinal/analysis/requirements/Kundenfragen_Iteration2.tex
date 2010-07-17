@@ -1,0 +1,302 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+
+\usepackage{array}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Fragen an die Kunden zur 2.Iteration}
+\def\docvers{0.3}
+\def\docautor{hahnml}
+\def\docdate{25. Februar 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\makeatother
+
+\begin{document}
+\input{Deckblatt.tex}
+
+
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents{}
+
+\newpage{}
+
+
+\section*{Änderungsgeschichte}
+
+\begin{center}
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{3cm}|>{\raggedright}p{3cm}|>{\raggedright}p{6cm}|}
+\hline 
+\textbf{Version} & \textbf{Datum} & \textbf{Autor} & \textbf{Änderungen}\tabularnewline
+\hline
+\hline 
+0.1 & 12.02.2010 & hahnml & Erstellung des Dokuments.\tabularnewline
+\hline 
+0.2 & 25.02.2010 & hahnml & Einfügen weiterer Fragen.\tabularnewline
+\hline 
+0.3 & 25.02.2010 & hahnml & Antworten der Kunden eingefügt.\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+
+\section{Allgemeine Fragen}
+
+In diesem Kapitel befinden sich alle allgemeinen Fragen, die keinem
+konkreten Teil des SIMPL Rahmenwerks zuzuordnen sind.
+\begin{itemize}
+\item Welche Namespace sollte für das SIMPL Rahmenwerk verwendet werden
+(vor allem für die DM-Aktivitäten)?
+
+\begin{itemize}
+\item A: Irgendwas mit SIMPL (simpl.uni-stuttgart.de)
+\end{itemize}
+\item CSV-Trennzeichen muss im Modellierungswerkzeug einstellbar sein
+\item Mit Michael Reiter reden, welche Use-Cases als Test (Abschlusspräsentation)
+durchgeführt werden müssen
+\end{itemize}
+
+\section{Eclipse Plug-Ins}
+
+In diesem Kapitel befinden sich alle Fragen zu verschiedenen Eclipse
+Plug-Ins.
+
+
+\subsection{Eclipse BPEL Designer}
+\begin{itemize}
+\item Was sollte alles im Deployment-Deskriptor einstellbar sein (ausser
+dem Auditing)?
+
+\begin{itemize}
+\item A: Datenquellenreferenzen sollten irgendwann noch einstellbar sein
+\item A: Username \& Password sollte auch noch irgendwann einstellbar sein
+\item A: Liste aller Prozess-Aktivitäten denen dann eine Strategie zugeordnet
+werden kann und auch Policies
+\end{itemize}
+\item SIMPL Validator:
+
+\begin{itemize}
+\item Welche Tiefe soll der SIMPL Validator haben ? 
+
+\begin{itemize}
+\item A: 
+\end{itemize}
+\item Wird eine Semantikprüfung gefordert ? 
+
+\begin{itemize}
+\item A: Nein, Syntax reicht.
+\end{itemize}
+\item Reicht eine Verfizierung gegen das SIMPL XSD-Schema ?
+
+\begin{itemize}
+\item A: JA
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\subsection{BPEL-DM Plug-In}
+
+
+\begin{itemize}
+\item Kann beim Einfügen einer RetrieveData-Aktivität gleich eine entsprechende
+SDO-Variable im Prozess hinzugefügt und diese an die Aktivität gebunden
+werden oder soll der Prozess-Modellierer dies selber durchführen?
+
+\begin{itemize}
+\item A: So wie bei BPEL sonst...
+\end{itemize}
+\item Wie soll mit durch Create-Aktivitäten erzeugten Containern während
+der Modellierungszeit umgegangen werden, da diese ja erst zur Laufzeit
+erzeugt werden und so nicht zur Modellierungszeit zur Auswahl stehen?
+
+\begin{itemize}
+\item A: Create erstellt eine BPEL-Variable (IPVS-Referenz auf Container),
+die dann in der nächsten Aktivität verwendet werden kann
+\end{itemize}
+\end{itemize}
+
+\subsection{RRS Plug-In}
+\begin{itemize}
+\item Wie sollten die EPR modelliert werden (GUI)?
+
+\begin{itemize}
+\item A: Erstmal so einfach wie möglich realisieren.
+\end{itemize}
+\end{itemize}
+
+\subsection{DS-Registry Plug-In}
+\begin{itemize}
+\item Sollen die Policies extern modellierbar sein (beispielsweise durch
+einen Eclipse Editor) und dann als Datei an die Aktivität angebunden
+oder direkt in der Aktivität über eine entsprechende GUI modelliert
+werden?
+
+\begin{itemize}
+\item A: Extern modellieren und als Datei anbinden
+\end{itemize}
+\end{itemize}
+
+\subsection{SIMPL Settings Plug-In}
+\begin{itemize}
+\item Welche Parameter der SIMPL Eclipse Plug-Ins sollten über Einstellungen
+im SIMPL Settings-Menüpunkt konfigurierbar sein? (z.B.: Adresse des
+RRS, Adresse der DQ-Registry, Adresse des SIMPL Core, usw.)
+\end{itemize}
+
+\section{Reference Resolution System}
+
+In diesem Kapitel befinden sich alle Fragen zum RRS.
+\begin{itemize}
+\item Welche Aktualisierungskonstanten sollten auf jeden Fall umgesetzt
+werden, bzw. haben die höchste Priorität (onInstantiation, fresh,
+periodic, external oder andere)?
+
+\begin{itemize}
+\item A: external und periodic erstmal nicht so wichtig
+\end{itemize}
+\item Ein zu transformierender BPEL-Prozess wird per WebService an den Transformator
+übermittelt und eine transformierte Kopie des BPEL-Prozesses zurück
+an Eclipse geschickt. Die zurückgelieferte Kopie kann dann ganz normal
+deployd werden. Ist dies so in Ordnung?
+
+\begin{itemize}
+\item A: Transformieren und anschließend sofort deployen besser. Anderer
+Fall eher optional
+\end{itemize}
+\item Ist ein SIMPL Core Adapter für das RRS denkbar oder soll jede Art
+von Datenquelle immer ihren eigenen Adapter haben?
+
+\begin{itemize}
+\item A: Mehrere Adapter müssen anschließbar sein, ansonsten kann mit dem
+SIMPL Adapter gemacht werden.
+\end{itemize}
+\end{itemize}
+
+\section{Datenquellen-Registry}
+
+In diesem Kapitel befinden sich alle Fragen zur Datenquellen-Registry.
+\begin{itemize}
+\item Wie sollen die Datenquellen mit einer UDDI-Registry verwaltet werden?
+
+\begin{itemize}
+\item A: Dummy Web-Service der die Datenquelleninformation zurückliefert.
+\end{itemize}
+\item Welche nichtfunktionalen Anforderungen sind wichtig für die Datenquellen
+(ws-policy) und sollen unterstützt werden?
+
+\begin{itemize}
+\item A: Typ der Datenquelle (RDB, ...), Subtyp der Datenquelle (MySQL,
+DB2)
+\end{itemize}
+\item Muss ein Web-Interface für die Verwaltung der Datenquellen-Registry
+erstellt werden oder würde die Realisierung als Eclipse Plug-In vorerst
+ausreichen?
+
+\begin{itemize}
+\item A: Eclipse Plug-In zum Anzeigen der Datenquellen und Web-Interface
+für die Verwaltung
+\item A: Es müssen auch Authetifizierungsinformationen in der Registry hinterlegt
+werden können
+\end{itemize}
+\end{itemize}
+
+\section{SIMPL Core}
+
+In diesem Kapitel befinden sich alle Fragen zum SIMPL Core.
+
+
+\subsection{Authentifizierung}
+\begin{itemize}
+\item Reichen {}``Benutzername \& Passwort'' vorerst zur Authentifizierung
+aus?
+
+\begin{itemize}
+\item A: JA
+\end{itemize}
+\item Sollten die Authentifizierungsinformationen sicher gespeichert und
+übertragen werden?
+
+\begin{itemize}
+\item A: Sicherheit ist keine wichtige Anforderung
+\end{itemize}
+\end{itemize}
+
+\section{Apache ODE}
+
+In diesem Kapitel befinden sich alle Fragen zu Apache ODE.
+
+
+\begin{itemize}
+\item Peter Reimann: {}``Was passiert denn, wenn externe Daten in den Prozessspeicher
+geladen werden (Retrieve Activity)? Die müssen imho ja irgendwie in
+die interne Datenbank von ODE kommen, damit ODE dann über seine DAOs
+darauf zugreifen kann. Wie funktioniert das mit dem Data Source Service?''
+=> Was ist damit genau gemeint?
+\end{itemize}
+
+\subsection{Auditing}
+\begin{itemize}
+\item Es kam die Idee auf, das komplette Auditing in einem, dem Prozessmodell
+entsprechend strukturierten, SDO zu kapseln und so über den SIMPL
+Core zu speichern. Ist dieser Ansatz so sinnvoll oder sollen die Daten
+so wie in den bestehenden Datenbanken (JPA und Hibernate) organisiert
+sein?
+
+\begin{itemize}
+\item A: So wie es am einfachsten ist realisieren.
+\end{itemize}
+\end{itemize}
+
+\end{document}

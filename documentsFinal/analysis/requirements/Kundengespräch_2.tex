@@ -1,0 +1,169 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\def\doctitel{2.Kundengespräch} 
+\def\docvers{1.0}
+\def\docautor{Wolfgang Hüttig, Daniel Brüderle, Michael Schneidt, René Rehn, Firas Zoabi, Tu Xi, Michael Hahn}
+\def\docdate{10. Juli 2009}
+
+\makeatother
+
+\begin{document}
+\input{Deckblatt.tex}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents{}
+
+\newpage{}
+
+
+\section{Vertrieb}
+\begin{itemize}
+\item Folgefrage: Für welche Datenquellen soll der Zugriff in der Demo gezeigt
+werden?
+
+\begin{itemize}
+\item A: IBM DB2, OpenSourceDB's: eine RDB und eine XMLDB, evtl. TinyDB
+(falls öffentlich zugänglich). Ebenso Vorstellung der Monitoring-DB-Anbindung
+mit einer der oben genannten.
+\end{itemize}
+\end{itemize}
+
+\section{Anbindung versch. Datenquellen}
+\begin{itemize}
+\item Folgefrage: Sollen auch Zugriffe auf mehrere Datenquellen innerhalb
+eines Prozess möglich sein und wie werden diese dann angegeben und
+die Queries referenziert?
+
+\begin{itemize}
+\item A: Ja, soll möglich sein. Jede Aktivität hat seine eigene Datenquellen-Referenz.
+\end{itemize}
+\item Folgefrage: Welche Formate werden beim export in lokale Dateien benötigt
+bzw. sind sinnvoll?
+
+\begin{itemize}
+\item A: XML als Standard (siehe IBM Ansatz: RDB-Tabelle <->XML).
+\end{itemize}
+\item Sollen auch Datenbanken aus einem Prozess heraus erstellt werden können?
+
+\begin{itemize}
+\item A: Nein, Datenbanken existieren bereits. Schema-Definition soll möglich
+sein und das Erstellen, Ändern und Löschen von Tabellen innerhalb
+der Schemas.
+\end{itemize}
+\item Wie wird das Datenbankmanagement realisiert und von wem (Wer setzt
+Zugriffsrechte auf der DB)?
+
+\begin{itemize}
+\item A: Zugriffsrechte werden in DB gesetzt und sind bereits vorhanden.
+\end{itemize}
+\end{itemize}
+
+\section{Authentifizierung und Autorisierung der Zugriffe}
+\begin{itemize}
+\item Wie soll die Angabe von Authentifizierungs- und Authorisierungseinstellungen
+über den Eclipse BPEL Designer realisisert werden?
+
+\begin{itemize}
+\item A: Angaben sollen extra abgefragt und als Nachricht an die DB geschickt
+werden.
+\end{itemize}
+\end{itemize}
+
+\section{Monitoring der Prozessausführung}
+\begin{itemize}
+\item Muss das vorhandene Monitoring von BPEL und Apache ODE erweitert werden?
+
+\begin{itemize}
+\item A: Erweiterung um das Monitoring unserer Funktionalitäten und die
+Möglichkeit eine variable DB als Monitoring-DB anzugeben.
+\end{itemize}
+\end{itemize}
+
+\section{Sonstige Fragen}
+\begin{itemize}
+\item Folgefrage: Welche Schritte werden bei der Prozessmodellierung ausgeführt,
+die die Funktionalität des Rahmenwerks nutzen, z.B. 1.Einfügen einer
+SQL-Activity, 2.Datenquelle angeben, 3.Query eingeben, 4.Sicherheitsaspekte
+einstellen, ...?
+
+\begin{itemize}
+\item A: Test von Queries als Feature (falls zeitlich machbar)
+\end{itemize}
+\item Folgefrage: Wird das Rahmenwerk direkt in Eclipse als Plug-In ausgeführt
+oder soll das Rahmenwerk unabhängig von Eclipse sein und zusätzlich
+ein Eclipse Plug-In erstellt werden?
+
+\begin{itemize}
+\item A: Eclipse Plug-In.
+\end{itemize}
+\item Auf welcher Infrastruktur läuft das System später?
+
+\begin{itemize}
+\item A: keine bestimmte, ODE läuft überall lokal, DB's verteilt.
+\end{itemize}
+\end{itemize}
+
+\section{Ist-Analyse}
+\begin{itemize}
+\item Wie werden im Moment Workflows und BPEL genutzt?
+
+\begin{itemize}
+\item A: kein BPEL Einsatz in Scientific Workflows, Realisierung über Web-Services.
+Kepler, ... definieren eigene Sprachen für Scientific Workflows.
+\end{itemize}
+\end{itemize}
+
+\section{Nichtfunktionale Anforderungen}
+\begin{itemize}
+\item Wie hoch muss die Skalierbarkeit des Systems sein?
+
+\begin{itemize}
+\item A: keine bestimmte Infrastruktur => von schlechten PC's bis zu Supercomputern
+alles möglich
+\end{itemize}
+\end{itemize}
+
+\section{Änderungsgeschichte}
+\begin{itemize}
+\item \textbf{Version 0.1}, 06. Juli 2009: Erstellung des Dokuments.
+\item \textbf{Version 0.2}, 08. Juli 2009: Erweiterung und Überarbeitung
+des Fragenkatalogs.
+\item \textbf{Version 1.0}, 10. Juli 2009: Ergebnisse des 2.Kundengesprächs
+wurden eingetragen.
+\end{itemize}
+
+\end{document}

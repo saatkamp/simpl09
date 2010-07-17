@@ -1,0 +1,315 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{textcomp}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Begriffslexikon}
+\def\docvers{1.1}
+\def\docautor{}
+\def\docdate{31. Januar 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+\input{Deckblatt.tex}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+
+
+\newpage{}
+
+
+\section{Änderungsgeschichte}
+
+\begin{center}
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{3cm}|>{\raggedright}p{3cm}|>{\raggedright}p{6cm}|}
+\hline 
+\textbf{Version} & \textbf{Datum} & \textbf{Autor} & \textbf{Änderungen}\tabularnewline
+\hline
+\hline 
+0.1 & 16.10.2009 & zoabifs & Erstellung des Dokuments.\tabularnewline
+\hline 
+0.2 & 16.10.2009 & zoabifs & Überarbeitung der Begriffe, Beschreibungen und Synonyme\tabularnewline
+\hline 
+1.0 & 17.10.2009 & schneimi & Überarbeitung und Ergänzung der Begriffe\tabularnewline
+\hline 
+1.1 & 31.01.2010 & schneimi & Überarbeitung  anhand der Kundenkommentare\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+
+\section{Die Begriffe}
+
+\begin{longtable}{|>{\raggedright}p{1.7in}|>{\raggedright}p{1.3in}|>{\raggedright}m{3.1in}|}
+\hline
+\hline 
+Begriff & Synonyme & Beschreibung\tabularnewline
+\hline
+\endhead
+\hline 
+Abnahmetest &  & Test des Rahmenwerks durch den Kunden vor der Abnahme.\tabularnewline
+\hline 
+Administrator &  & Eine Rolle im SIMPL-Team. Er verwaltet den Server und ist zuständig
+für den Einsatz der Entwicklungswerkzeuge und die Softwareinfrastuktur.\tabularnewline
+\hline 
+Aktivität & BPEL-Aktivität & \tabularnewline
+\hline 
+Annotation &  & Formulierte Anforderung an eine Datenquelle, die erst zur Laufzeit
+ausgewertet wird, um die Datenquelle durch eine Auswahlstrategie zu
+bestimmen.\tabularnewline
+\hline 
+Apache ODE & ODE, Apache ODE Engine, Engine & Laufzeitsystem für BPEL-Prozesse.\tabularnewline
+\hline 
+Apache Tomcat & Tomcat & Web Server und Laufzeitumgebung für Apache ODE.\tabularnewline
+\hline 
+Atomic Scope &  & Ein Bereich innerhalb eines BPEL-Prozesses/Workflows, in dem alle
+Aktivitäten atomar durchgeführt werden.\tabularnewline
+\hline 
+Auditing &  & Speicherung bzw. Protokollierung von Daten und Ereignissen, die beim
+Ablauf eines Prozesses anfallen.\tabularnewline
+\hline 
+Auswahlstrategie & Strategie & Verfahren zur Auswahl einer passenden Datenquelle zu entsprechenden
+Annotationen.\tabularnewline
+\hline 
+Authentifizierung &  & Ausweisung eines Benutzers gegenüber einer Datenquelle.\tabularnewline
+\hline 
+Autorisierung &  & Das Einräumen von Rechten für den Zugriff auf eine Datenquelle anhand
+von Zugriffsrechten.\tabularnewline
+\hline 
+Axis2 &  & Web Service Engine für Java.\tabularnewline
+\hline 
+Benutzer &  & Ein Benutzer des Rahmenwerks in der Rolle des Prozess-Modellierers
+oder Workflow-Administrators.\tabularnewline
+\hline 
+BPEL & Business Process Execution Language & XML-basierte Sprache zur Formulierung und Ausführung von Geschäftsprozessen.\tabularnewline
+\hline 
+Data Management Aktivität & DM-Aktivität & BPEL-Aktivität für den Zugriff auf Datenquellen im SIMPL-Rahmenwerk.\tabularnewline
+\hline 
+Dateisystem &  & Umgebung, in der Dateien abgelegt und verwaltet werden.\tabularnewline
+\hline 
+Datenmanagement &  & Alle Operationen und Maßnahmen zum Abrufen, Verarbeiten und Organisieren
+von Daten in einem Prozess.\tabularnewline
+\hline 
+Datenmanagement-Pattern & Pattern & Entwurfsmuster für den Zugriff auf Datenquellen und die Behandlung
+der Daten.\tabularnewline
+\hline 
+Datenquelle &  & Ein System zur Datenhaltung, von dem Daten verschiedenster Art abgerufen
+und ggf. auch geändert oder gelöscht werden können.\tabularnewline
+\hline 
+Datenquellen-Administrator &  & Eine Person zur Verwaltung von Datenquellen in einer Datenquellen-Registry.\tabularnewline
+\hline 
+DB & Datenbank & Eine spezielle Datenquelle zur effizienten, widerspruchsfreien und
+dauerhaften Speicherung großer Datenmengen, die über eine Abfragesprache,
+wie z.B. SQL, bedarfsgerecht abgerufen werden können.\tabularnewline
+\hline 
+DB2 & IBM DB2 & Ein Datenbanksystem der Firma IBM.\tabularnewline
+\hline 
+DDL & Data Definition Language & Sprache zum Aufbau, Verwerfen und Manipulation von Datenstrukturen.\tabularnewline
+\hline 
+Demo &  & Das Endprodukt des Rahmenwerks mit Beispielprozessen zur Demonstration.\tabularnewline
+\hline 
+Deployment &  & Installation eines Prozesses auf einer Workflow-Engine oder eines
+Web-Services auf einem Server.\tabularnewline
+\hline 
+Deployment Descriptor &  & Beschreibungs-Datei zu einem BPEL-Prozess oder Web-Services, in der
+Anweisungen und Einstellungen zum Deployment formuliert werden.\tabularnewline
+\hline 
+DML & Data Manipulation Language & Sprache, um Daten innerhalb einer Datenquelle lesen, schreiben, ändern
+und löschen zu können.\tabularnewline
+\hline 
+Eclipse &  & Integrierte Entwicklungsumgebung für die Softwareentwicklung mit Java.\tabularnewline
+\hline 
+Eclipse BPEL Designer &  & Eclipse Plugin zur Modellierung von BPEL-Prozessen.\tabularnewline
+\hline 
+Endpunkt &  & Der Ort, an dem ein Web-Service zur Verfügung gestellt wird.\tabularnewline
+\hline 
+Extension Activity & BPEL Extension Activity & Eine spezielle Aktivität in BPEL, mit der die Funktionalität von BPEL
+erweitert werden kann.\tabularnewline
+\hline 
+Funktionalität &  & Die Fähigkeit eines Systems, bestimmte Funktionen zu erfüllen.\tabularnewline
+\hline 
+generisch &  & Universell anwendbar, nicht an eine Sache gebunden (z.B. an einen
+bestimmten Typ einer Datenquelle).\tabularnewline
+\hline 
+Handler &  & Eine Komponente, die auf bestimmte Ereignisse reagiert (in BPEL z.B.
+der FaultHandler und CompensationHandler).\tabularnewline
+\hline 
+History &  & Chronologisch aufgezeichnete Daten von Aktivitäten in einem Prozess
+(z.B. Start und Ende der Ausführung).\tabularnewline
+\hline 
+Infrastruktur &  & Bezeichnet alle Hard- und Softwarekomponenten, die zu einem Computersystem
+gehören oder von ihm genutzt werden.\tabularnewline
+\hline 
+Instanz &  & Ein Exemplar oder eine Ausprägung eines gegebenen Schemas.\tabularnewline
+\hline 
+IUD & Insert, Update, Delete & DML-Funktionen für das Einfügen, Aktualisieren und Löschen von Daten
+innerhalb einer Datenquelle.\tabularnewline
+\hline 
+Konkrete Adresse &  & Eine physikalische Adresse z.B. die IP-Adresse einer Datenquelle.\tabularnewline
+\hline 
+Kunde & Kunden & Die Auftraggeber vom IAAS und IPVS.\tabularnewline
+\hline 
+Late Binding &  & Die Bestimmung von Datenquellen zur Laufzeit über die Interpretation
+und Auswertung von Annotationen.\tabularnewline
+\hline 
+Liefertermin &  & Der Termin, an dem die Software beim Kunden eingegangen sein muss.\tabularnewline
+\hline 
+Logische Adresse &  & Die Adresse eines Computers, über die dieser erreichbar ist und angesprochen
+werden kann.\tabularnewline
+\hline 
+Modellierung &  & Abbildung eines Teils der Realität auf ein Computer-Modell.\tabularnewline
+\hline 
+Modul &  & Bestandteil eines Computersystems, meist mit einer selbstständigen
+Funktionalität.\tabularnewline
+\hline 
+modular &  & Bezeichnung eines Computersystems, welches aus verschiedenen Modulen
+aufgebaut ist.\tabularnewline
+\hline 
+Monitoring &  & Präsentation der beim Auditing anfallenden Daten beim Benutzer, zur
+Beobachtung und Überwachung der Prozesse.\tabularnewline
+\hline 
+Open Source &  & Eine Lizenz, die den Quellcode sowie alle dazugehörenden Dokumente
+einer Software unter öffentlichen Zugang stellt.\tabularnewline
+\hline 
+Plug-In &  & Ein Softwaremodul, das in andere Softwareprodukte eingebunden werden
+kann, um deren Funktionalität zu erweitern.\tabularnewline
+\hline 
+Pointer &  & Meist eine spezielle Variable, die auf eine andere Variable oder Funktion
+verweist.\tabularnewline
+\hline 
+Prototyp &  & Lauffähige Version des Rahmenwerks nach einer Iteration.\tabularnewline
+\hline 
+Prozess & BPEL-Prozess & Ein in BPEL formulierter Workflow.\tabularnewline
+\hline 
+Quality of Service & QoS & Die Güte eines Kommunikationsdienstes aus der Sicht eines Anwenders,
+die mit Qualitätsanforderungen formalisiert wird. Bei Web-Services
+handelt es sich eine Ebene des Web-Service Standard Stacks, welche
+die Standards Reliable Messaging, Security und Transactions beinhaltet.\tabularnewline
+\hline 
+Query &  & Datenbankanfrage\tabularnewline
+\hline 
+Rahmenwerk & SIMPL, SIMPL-Rahmenwerk & Das SIMPL-Rahmenwerk für den Zugriff auf Datenquellen aus einem BPEL-Prozess.\tabularnewline
+\hline 
+RDB &  & Relationale Datenbank\tabularnewline
+\hline 
+Referenz &  & Ein Zeiger bzw. Verweis z.B. auf eine Datenquelle.\tabularnewline
+\hline 
+Referenz Resolution System & RRS & Ein System zur Auflösung von Referenzen.\tabularnewline
+\hline 
+Schema &  & Namensraum in einer Datenbank.\tabularnewline
+\hline 
+Scientific Workflows &  & Workflows im wissenschaftlichen Bereich.\tabularnewline
+\hline 
+Scope & Block & BPEL ist blockstrukturiert und bietet mit Scopes lokale Umgebungen,
+in denen lokale Variablen definiert werden können und außerdem die
+Fehlerbehandlung, Kompensationsbehandlung und Ereignisbehandlung möglich
+ist.\tabularnewline
+\hline 
+Sensor &  & Ein technisches Bauteil, das physikalische oder chemische Effekte
+qualitativ oder quantitativ erfassen kann und in meßbare Größen, wie
+z.B. elektrische Signale, umwandelt.\tabularnewline
+\hline 
+Sensornetz &  & Ein Netz aus Sensoren, die miteinander verbunden sind.\tabularnewline
+\hline 
+SIMPL-Core & SIMPLCore & Kernfunktionalität des SIMPL-Rahmenwerks, die in Apache ODE als JAR-Datei
+deployt ist. Die Funktionalität wird zusätzlich über Web -Services
+bereitgestellt.\tabularnewline
+\hline 
+SSO & Single Sign On & Eine Technik, die es einem Benutzer ermöglicht, mit einmaliger Authentifikation
+mehrere (verteilte) Aktionen auszuführen.\tabularnewline
+\hline 
+SOAP &  & XML-Nachrichtenformat für Datenaustausch zwischen Web-Services.\tabularnewline
+\hline 
+SQL & Structured Query Language & Eine standardisierte Sprache für Datenbankanweisungen.\tabularnewline
+\hline 
+Statement & SQL Statement & Eine formulierte Anweisung (Query) in SQL.\tabularnewline
+\hline 
+STUPRO & STUPRO-A, Stupro-A, Stupro & Studienprojekt A\tabularnewline
+\hline 
+Team &  & Das SIMPL Experten-Team bestehend aus den Projektmitgliedern des STUPRO-A.\tabularnewline
+\hline 
+Tiny DB &  & Ein Datenbanksystem für Sensornetze.\tabularnewline
+\hline 
+Transaktion &  & Eine Folge von Operationen, die ganz oder gar nicht durchgeführt werden
+und die Atomizität, Konsistenz, Isolation und Dauerhaftigkeit der
+Durchführung garantieren.\tabularnewline
+\hline 
+Transparenz &  & Leichte Verständlichkeit und Vereinfachung für den Benutzer, durch
+das Verstecken von Komplexität.\tabularnewline
+\hline 
+UDDI & Universal Description, Discovery and Integration & Verzeichnisdienst für Web-Services, bei dem Web-Services registriert
+und abgefragt werden können.\tabularnewline
+\hline 
+URI & Unified Resource Locator & Identifikator zur Identifzierung von Ressourcen im Internet.\tabularnewline
+\hline 
+Usability & Benutzerfreundlichkeit & Grad der Qualität der Interaktion mit einem System.\tabularnewline
+\hline 
+Variable & BPEL-Variable & Eine Variable in einem BPEL-Prozess.\tabularnewline
+\hline 
+Verwertungsrechte &  & Die Rechte zur Verwendung, Änderung und Vertrieb des Rahmenwerks.\tabularnewline
+\hline 
+Web Container &  & Laufzeitumgebung für Web-Services.\tabularnewline
+\hline 
+Web-Service &  & Eine Softwareanwendung, die über eine URI lokalisierbar ist und über
+eine WSDL-Schnittstelle verfügt.\tabularnewline
+\hline 
+XML & Extensible Markup Language & Auszeichnungssprache für hierarchisch strukturierte Daten.\tabularnewline
+\hline 
+XMLDB & XML-DB & Datenbank, die auf XML basiert bzw. die Datenhaltung über XML-Dateien
+realisiert.\tabularnewline
+\hline 
+XQuery &  & Abfragesprache für XML-Datenbanken.\tabularnewline
+\hline
+\end{longtable}
+\end{document}

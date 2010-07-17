@@ -1,0 +1,319 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{color}
+\usepackage{babel}
+
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\def\doctitel{Anforderungskatalog} 
+\def\docvers{0.2}
+\def\docautor{Michael Hahn}
+\def\docdate{11. Juli 2009}
+
+\makeatother
+
+\begin{document}
+\input{Deckblatt.tex}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents{}
+
+\newpage{}
+
+
+\section{Nichtfunktionale Anforderungen}
+\begin{enumerate}
+\item Die Schnittstellen des Rahmenwerks sollen leicht erweiterbar sein
+und insgesamt soll ein modularer Aufbau zugrunde liegen.
+\item Erweiterbarkeit ist ein wichtiges Qualitätsmerkmal.
+\item Fehlertoleranz: Scopes mit Handler. CompensationHandler und FaultHandler
+implementieren Logik für die Kompensation von Fehlern (rollback).
+\item Ausfallsicherheit soll so gut wie möglich sein.
+\item Usability sollte sich an Zielgruppe orientieren und dazu die größtmögliche
+Transparenz liefern.
+\item Es gibt keine bestimmte Infrastruktur in der das System später läuft.
+ODE läuft überall lokal und die Datenbanken sind verteilt.
+\item Skalierbarkeit: keine bestimmte Infrastruktur => von schlechten PC\textquoteright{}s
+bis zu Supercomputern ist alles möglich.
+\end{enumerate}
+
+\subsection{Dokumente}
+\begin{enumerate}
+\item Am Ende des Projekts soll es eine zentrale Spezifikation und auch
+Dokumentation für/mit alle Erweiterungen geben.
+\end{enumerate}
+
+\subsection{Benutzer}
+\begin{enumerate}
+\item Benutzer haben keine bis wenig Vorkentnisse (keine Informatiker).
+\item Die Zielgruppe sind Wissenschaftler und Ingenieure.
+\end{enumerate}
+
+\section{Funktionale Anforderungen}
+\begin{enumerate}
+\item Das Rahmenwerk soll als Eclipse Plug-In verwendet werden.
+\item Verarbeitung von großen heterogenen Datenmengen im Rahmen eines wissenschaftlichen
+Workflows.
+\end{enumerate}
+
+\subsection{BPEL}
+\begin{enumerate}
+\item Fehlerbehandlung und Kompensation im Workflow.
+\item Unterstützung von Referenzen in BPEL-Prozessen
+
+\begin{enumerate}
+\item Referenzen (z.B. auf eine Tabelle) im SQL Statement via BPEL Variable
+\item Implementierung eines Reference Resolution System in einer Testumgebung 
+
+\begin{enumerate}
+\item Referenz/ Pointer im BPEL Prozess auflösen 
+\item Bei Daten, die nicht für die Prozesslogik, soll die Referenz / der
+Pointer vom Service aufgelöst werden (zur Entlastung der Engine)
+\end{enumerate}
+\end{enumerate}
+\item Momentan kein BPEL Einsatz in Scientific Workflows, Realisierung über
+Web-Services. Kepler und Andere definieren eigene Sprachen für Scientific
+Workflows.
+\end{enumerate}
+
+\subsubsection{BPEL Aktivitäten}
+\begin{enumerate}
+\item Alle generischen BPEL-Aktivitäten, die für den Umgang mit Datenquellen
+benötigt werden, müssen erstellt werden. Welche Datenmanagement-Patterns
+dabei abgedeckt werden müssen ist aus {[}\ref{BPEL/SQL Paper}{]}
+zu entnehmen.
+\item Auch das Anlegen, Löschen und Ändern von DB-Tabellen soll möglich
+sein, siehe hierzu auch {[}\ref{BPEL/SQL Paper}{]}.
+\item Um neue BPEL-Aktivitäten zu erstellen, werden die BPEL Extension Activities
+genutzt.
+\end{enumerate}
+
+\subsubsection{BPEL Monitoring}
+\begin{enumerate}
+\item BPEL hat schon ein Monitoring, das für unsere Zwecke um die von uns
+neu erstellte Funktionalität erweitert werden muss und die Möglichkeit
+besitzt eine frei wählbare Monitoring-DB anzugeben.
+\end{enumerate}
+
+\subsection{ODE}
+\begin{enumerate}
+\item ODE hat bereits eine eigene Monitoring-DB, doch es soll möglich sein
+eine frei wählbare Monitoring-DB anzugeben.
+\item Das bereits vorhandene Monitoring muss, um die von uns neu erstellten
+Funktionen, erweitert werden.
+\end{enumerate}
+
+\subsection{Eclipse BPEL Designer}
+\begin{enumerate}
+\item Syntax und Plausibilitätsprüfung für unsere Erweiterungen (z.B. für
+neue BPEL-Aktivitäten).
+\item Test von Queries als Feature (falls zeitlich machbar).
+\end{enumerate}
+
+\subsection{Anbindung von Datenquellen}
+\begin{enumerate}
+\item Unterstützung von Transaktionen.
+\item Late-binding bei Datenquellen: Kriterien zur Beschreibung von Datenquellen
+\textendash{} Annotation von Datenquellen, Modellierung der Anforderungen
+an eine Datenquelle (durch den User), Strategien zur Auswahl einer
+geeigneten Datenbank.
+\item Anforderungen an eine Datenquelle sollen, falls die Datenquelle über
+einen Web-Service eingebunden ist, mit Anotation mit/über \textquotedblleft{}QUALITY
+OF SERVICE\textquotedblright{} angegeben werden, sonst statische Auswahl
+einer Datenquelle zur Modellierungs- oder Laufzeit.
+\item Ein Nutzer soll angeben können, was die Datenquelle können muss und
+das Rahmenwerk wählt eine passende Datenquelle aus.
+\item Spezifizierung der Anforderungen, die sinnvoll an eine Datenquelle
+gestellt werden können sollten, wird über die Definition eines Anforderungskataloges,
+der nach Fertigstellung mit dem Kunden abgesprochen werden muss, realisiert.
+\item Ebenso sollen auch Strategien für die Auswahl von Datenquellen anhand
+definierter Anforderungen entwickelt und mit dem Kunden abgesprochen
+werden.
+\item Die Strategien, die zur Auswahl einer Datenquelle anhand der vom Benutzer
+angegebenen Anforderungen verwendet werden, müssen selbst definiert
+und anschließend mit dem Kunden abgesprochen werden.
+\item Die Auswertung der Anotationen und die Verarbeitung der darin enthaltenen
+Informationen soll ebenfalls selbst definiert und anschließend mit
+dem Kunden abgesprochen werden.
+\end{enumerate}
+
+\subsubsection{Datenbanken}
+\begin{enumerate}
+\item Adressierung der Datenbanken: Statisch über konkrete Adresse oder
+dynamisch über logische Adresse.
+\item Anbindung generisch, soviele Anbindungen wie möglich realisieren.
+Als Minimum gilt: IBM DB2 + OpenSourceDB\textquoteright{}s (mind.
+1{*}RDB + mind. 1{*}XMLDB) + mind. 1{*}SensorDB (z.B. TinyDB).
+\item Es sollen auch Zugriffe auf mehrere Datenquellen innerhalb eines Prozess
+möglich sein, dazu besitzt jede Aktivität seine eigene Datenquellen-Referenz.
+\item Alle Anfragesprachen für den Datenbankzugriff müssen unterstützt werden,
+mindestens SQL und XQuery.
+\item Transaktionen sollen innerhalb von DB und BPEL-Prozessen unterstützt
+werden. Konzepte frei wählbar.
+\item Es soll möglich sein, dass Daten aus Datenbanken aus einem Prozess
+auch in lokale Dateien exportiert werden können. Dabei gilt: XML als
+Standardformat (siehe IBM Ansatz: RDB-Tabellen <->XML).
+\item Es müssen nicht zwangsweise alle Operationen auf Daten atomar sein,
+da z.B. Web-Services auch als atomar von Aussen angesehen werden.
+Als weitere Informationen hierzu dient auch das Thema \emph{Atomic
+Scopes.}
+\item Es gibt öffentliche wissenschaftliche Datenbanken, die für Testzwecke
+verwendet werden können: RDB Biowissenschaften (SwissProt, UniProt,
+blast). Weitere Informationen dazu gibt es bei Michael Reiter.
+\item Datenbanken existieren bereits und müssen nicht durch das Rahmenwerk
+erstellt werden. Weiterhin sollen aber Schema-Definitionen möglich
+sein und das Erstellen, Ändern und Löschen von Tabellen innerhalb
+der Schemas.
+\item Die Zugriffsrechte werden innerhalb der Datenbanken gesetzt und sind
+bereits vorhanden.
+\end{enumerate}
+
+\subsubsection{Dateien}
+\begin{enumerate}
+\item Alle möglichen Dateiformate müssen unterstützt werden, wenn Einschränkungen
+stattfinden, müssen diese begründet werden.
+\end{enumerate}
+
+\subsection{Autorisierung und Authentifizierung}
+\begin{enumerate}
+\item Autorisierung und Authentifizierung soll momentan nur für Datenquellen
+bereitgestellt werden, allerdings soll eine spätere Erweiterung einfach
+realisiert werden können.
+\item Für die Authentifizierung sind verschiedene Verfahren gewünscht, sodass
+in jeder Situation das Bestmögliche verwendet wird.
+\item Informationen über Authentifizierungsverfahren für wissenschaftliche
+Datenbanken gibt es bei Michael Reiter und als praktisches Beispiel
+das \textquotedblleft{}Kepler-Projekt''.
+\item Die Autorisierung und die Authentifizierung sollen, über einen Single-Sign-On
+entweder im Prozess oder in der Instanz (unsere Entscheidung), beim
+Zugriff auf Datenquellen durchgeführt werden.
+\item Autorisierung und Authentifizierung sollen auf die Ausführung von
+Prozessen beschränkt sein.
+\item Autorisierungs- und Authentifizierungsparameter für einen Prozess
+sollen auf Datenquellenebene spezifiziert werden, d.h. bei Datenbanken
+über Schema, bei Dateisystemen z.B. über extra Dateien und bei Sensornetzen
+über spezielle Datenbanken (TinyDB?).
+\item Autorisierung und Authentifizierung ist bei allen Datenquellen notwendig
+und soll auf verschiedene Arten möglich sein.
+\item \textcolor{red}{Angaben über Autorisierung und Authentifizierung sollen
+extra abgefragt und als Nachricht an die DB geschickt werden.}
+\end{enumerate}
+
+\subsection{Monitoring}
+\begin{enumerate}
+\item Monitoring der Prozessausführung: ExecutingHistory in einer angebundenen
+Datenbank speichern (nicht im lokalen Speicher der Engine).
+\item Die Datenbank für das Monitoring muss über das Rahmenwerk frei wählbar
+sein und es soll nicht über mehrere Datenbanken verteilt sein.
+\item Für unsere Zwecke muss ein komplettes Monitoring erstellt werden,
+d.h. ein Monitoring für BPEL, ODE und alle Datenquellenaktionen.
+\item Das vorhandene Monitoring von BPEL und Apache ODE muss um das Monitoring
+unserer Funktionalitäten und die Möglichkeit eine variable DB als
+Monitoring-DB anzugeben erweitert werden.
+\item Es soll ein Modell für das Monitoring (Informationen) erstellt und
+mit den Kunden abgesprochen werden.
+\item Die Speicherungsdauer der Monitoring-Daten soll variabel als Parameter
+übergeben werden können.
+\item Das Monitoring soll standardmäßig aktiv sein, aber auch auf Benutzerwunsch
+abschaltbar. Dies soll auch über den Eclipse BPEL-Designer mit Deployment-Deskriptoren
+definierbar sein.
+\end{enumerate}
+
+\subsection{Demo-Programm}
+\begin{enumerate}
+\item Die Inhalte der Demo werden später geklärt. Es sollen darin die wichtigsten
+Use-Cases vorgeführt und ein kurzer Einblick in die Dokumentation
+gegeben werden.
+\item In der Demo soll der Zugriff auf die IBM DB2 Datenbank, eine OpenSource
+RDB und eine OpenSource XMLDB, sowie evtl. auf Sensornetzdaten mittels
+TinyDB (falls öffentlich zugänglich) gezeigt werden. Ebenso soll eine
+kurze Vorstellung der Monitoring-DB-Anbindung mit einer der oben genannten
+Datenbanken gezeigt werden.
+\end{enumerate}
+
+\section{Organisatorisches}
+\begin{enumerate}
+\item Vom Kunden erwartet:
+
+\begin{enumerate}
+\item Angebot
+
+\begin{enumerate}
+\item mit Zeitplan
+\end{enumerate}
+\item Spezifikation
+
+\begin{enumerate}
+\item mit Prototyp 
+\end{enumerate}
+\item Entwurf 
+\item Implementierung 
+
+\begin{enumerate}
+\item mit Handbuch und Demo
+\end{enumerate}
+\end{enumerate}
+\item Budget orientiert sich an der 1.Version des Angebots.
+\item Verwertungsrechte sind OpenSource.
+\item Regelmäßige Treffen zwischen Projektleiter und Betreuer/Kunde zur
+Fortschrittskontrolle im Projekt.
+\item Arbeitsort des Projekts ist die Universität Stuttgart.
+\item Liefertermin: April 2010, danach Abnahmetest und evtl. noch kleinere
+Änderungen/Anpassungen.
+\item Urlaubsplan der Projektgruppe muss den Kunden geschickt werden.
+\item Die Kunden stehen während des Projekts für Reviews oder ähnliches
+nach Terminabsprache zur Verfügung.
+\end{enumerate}
+
+\section{Änderungsgeschichte}
+\begin{itemize}
+\item \textbf{Version 0.1}, 10. Juli 2009: Erstellung des Dokuments.
+\item \textbf{Version 0.2}, 11. Juli 2009: Ergebnisse der beiden Kundengespräche
+und Anforderungen aus den Kick-Off-Folien hinzugefügt.\end{itemize}
+\begin{thebibliography}{4}
+\bibitem{key-1}\label{BPEL/SQL Paper}Vrhovnik, M.; Schwarz, H.;
+Radeschütz, S.; Mitschang, B.: An Overview of SQL Support in Workflow
+Products. In: Proc. of the 24th International Conference on Data Engineering
+(ICDE 2008), Cancún, México, April 7-12, 2008
+
+\bibitem{key-2}1.Kundengespräch, Kundengespräch\_1.pdf, 10. Juli
+2009
+
+\bibitem{key-3}2.Kundengespräch, Kundengespräch\_2.pdf, 10. Juli
+2009
+
+\bibitem{key-4}SIMPL Kick-Off Meeting Folien, SIMPL\_KickOff.pdf,
+13. Mai 2009
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,34 @@
+Hallo Daniel,
+
+ich habe das Handbuch gerade eben ganz kurz überflogen. Hier meine ersten
+Anmerkungen:
+
+Grundsätzlich:
+- mehr erkärende Screeshots in den Kapiteln 1 bis 4 sind gut
+- Abkürzungen, auch die ihr im Glossar (Kapitel 9) nutzt, bitte wenn es
+geht beim ersten Benutzen ausschreiben und nicht in der Mitte des
+Dokuments (Beispiel: DM wird in Kapitel 4.3 das erst Mal genutzt, das
+erste mal ausgeschrieben wird die Abkürzung mitten im Dokument, hier im
+Kapitel 7.1.1)
+- Produktnamen beim ersten Erwähnen wenn es geht ausschreiben oder eine
+Refferenz auf Kapitel 10 angeben und nicht in der Mitte des Dokuments
+(Beispiel DB2 in Kapitel 4.6.1).
+- Auch die Tools werden zum Teil lange nach ihrem ersten Erwähnen
+ausgeschrieben oder erklärt. (Beispiel: das ODE für Apache Orchestration
+Director Engine steht erfährt man erst im Kapitel 5)
+- Angaben zur Lizenz fehlen! Das ist wichtig!
+- Häufig fehlen noch Leerzeichen (Seite 29: Siehe7.1.2) oder oder es gibt
+überflüssige Leerzeichen (Seite 29: Funktionsweise :)
+
+Kapitel 2: Nicht ODE 2.0, sondern 1.34!!!
+Kapitel 3.3: Kapitel endet mit ":" anstelle mit "."
+Kapitel 5: Bitte die Legende bei Abbildung 2 überarbeiten. 1) es gibt noch
+einige weiße Elemente 2) so etwas wie "wird realisiert" sollte nicht im
+Handbuch einer Software stehen, die gerade ausgeliefert wird. Bitte achtet
+auch bei anderen Stellen auf solche "veralteten" Bezeichnungen.
+Seite 20 und 32, 36, 39: Bild wird falsch dargestellt (zumindest in meinem
+Dokument)
+Kapitel 7.1.2: auf Seite 24 ist ein leerer Aufzählungspunkt.
+Kapitel 10: bitte Links noch mal überprüfen (letzter Zugriff ist zum Teil
+mehr als ein halbes Jahr her)
+
