@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1622,7 +1622,7 @@ Allgemeine Beschreibung
 \begin_layout Standard
 Dieses Kapitel liefert allgemeine Informationen über die zu entwickelnde
  Software.
- Dazu gehöhren beispielsweise die Beschreibung der späteren Systemumgebung,
+ Dazu gehören beispielsweise die Beschreibung der späteren Systemumgebung,
  die wichtigsten Funktionen, die verwendete Sprache und Informationen über
  den Benutzerkreis der Software.
 \end_layout
@@ -1713,8 +1713,8 @@ reference "sub:Reference-Resolution-System"
 \end_inset
 
 ).
- Das UDDI Plug-In bindet eine Datenquellen-Registry in Eclipse ein (siehe
- 
+ Das UDDI ( Universal Description, Discovery and Integration ) Plug-In bindet
+ eine Datenquellen-Registry in Eclipse ein (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Datenquellen-Registry-View"
@@ -1787,7 +1787,7 @@ In diesem Abschnitt folgen die wichtigsten Funktionen des Rahmenwerks, die
 Das Rahmenwerk soll als Eclipse Plug-In verwendet werden und mit der Laufzeitumg
 ebung integriert sein.
  Es soll die Verarbeitung von großen, heterogenen Datenmengen im Rahmen
- eines wissenschaftlichen Workflows ermöglichen.
+ von wissenschaftlichen Workflows ermöglichen.
 \end_layout
 
 \begin_layout Standard
@@ -1820,8 +1820,8 @@ Alle Ereignisse, die während der Laufzeit eines Prozesses auftreten (z.B.
 \begin_layout Standard
 Für die Verwaltung des SIMPL-Rahmenwerks und zur Änderung von Einstellungen
  auch während der Laufzeit von Prozessen wird eine Admin-Konsole implementiert.
- Über diese kann zum Beispiel das Auditing an und ausgeschaltet und eine
- Datenbank zur Speicherung der Auditinginformationen angegeben werden.
+ Über diese kann das Auditing an- und ausgeschaltet sowie eine Datenbank
+ zur Speicherung der Auditinginformationen angegeben werden.
 \end_layout
 
 \begin_layout Subsection
@@ -28190,7 +28190,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="24" columns="2">
+<lyxtabular version="3" rows="26" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="6cm">
@@ -28229,6 +28229,26 @@ BPEL
 
 \begin_layout Plain Layout
 Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comma-Separated Values
 \end_layout
 
 \end_inset
@@ -28349,6 +28369,26 @@ IUD
 
 \begin_layout Plain Layout
 INSERT, UPDATE, DELETE
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NTFS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+New Technology File System
 \end_layout
 
 \end_inset
