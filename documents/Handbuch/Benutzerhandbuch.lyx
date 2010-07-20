@@ -4696,7 +4696,7 @@ Create Statement Editor 1
 \end_layout
 
 \begin_layout Standard
-Funktionsweise : Zuerst benennt man die Tabelle im Feld 
+Funktionsweise: Zuerst benennt man die Tabelle im Feld 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4715,7 +4715,14 @@ Insert to table
 \begin_inset Quotes erd
 \end_inset
 
- 
+ wird der Eintrag in die Zwischenspeicherung übergeben und wird noch einer
+ manuellen Bearbeitung oder Bestätigung in die Datenbanktabelle eingetragen.
+ Zum Erzeugen eines Schemas erscheint die unten gezeigte Ansicht.
+ Hier kann der Schemaname und die optional eine Authorisierungsinformation
+ eingetragen werden.
+ Durch Betätigung von OK wird das Statement in die Zwischenspeicherungsebene
+ geleitet und es bietet sich die Möglichkeit für ein manuelles Bearbeiten
+ oder zum Bestätigen des Statements.
 \end_layout
 
 \begin_layout Standard
@@ -4752,10 +4759,6 @@ Create Statement Editor 2
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -4767,15 +4770,14 @@ Retrieve Data Statement Editor
 
 \begin_layout Standard
 Retrieve Data Statement Editor ist identisch zum Query Statement Editor,
- deswegen wird hier nur auf diesen verwiesen.
- Siehe
+ deswegen wird hier nur auf diesen verwiesen (sieheKapitel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Query-Statement-Editor"
 
 \end_inset
 
-
+)
 \end_layout
 
 \begin_layout Subparagraph
@@ -4854,7 +4856,7 @@ reference "fig:Update-Statement-Editor"
 
 \end_inset
 
-ist die 
+ ist die 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4925,7 +4927,7 @@ Data-Management-Aktivität löschen
 \end_layout
 
 \begin_layout Standard
-Die vorhandene DM-Aktivität im geöffneten BPEL Prozess muß selektiert werden
+Die vorhandene DM-Aktivität im geöffneten BPEL Prozess muss selektiert werden
  und das Kontextmenü aufgerufen werden.
  Dort kann die Aktivität durch 
 \begin_inset Quotes eld
@@ -4936,7 +4938,7 @@ Delete
 \end_inset
 
  gelöscht werden.
- Alternativ durch drücken der ENTF / Delete -Taste.
+ Alternativ kann dies auch durch drücken der ENTF / Delete -Taste.
  Danach werden alle Links gemäß dem Standardverhalten des BPEL Designers
  neu gesetzt.
 \end_layout
@@ -4950,7 +4952,55 @@ Ein ODE Deployment-Deskriptor wird wie folgt erstellt :
 \end_layout
 
 \begin_layout Enumerate
-File->New->Other->BPEL2.0->Apache ODE Deployment-Descriptor
+Im der Eclipse Menüleiste muss 
+\begin_inset Quotes eld
+\end_inset
+
+File
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes eld
+\end_inset
+
+Other
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes eld
+\end_inset
+
+BPEL2.0
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes erd
+\end_inset
+
+Apache ODE
+\begin_inset Quotes erd
+\end_inset
+
+ und zuletzt 
+\begin_inset Quotes eld
+\end_inset
+
+Deployment-Descriptor
+\begin_inset Quotes erd
+\end_inset
+
+ angeklickt werden.
 \end_layout
 
 \begin_layout Enumerate
@@ -4978,11 +5028,39 @@ Finish
 \end_layout
 
 \begin_layout Enumerate
-Konguration des Deployment-Deskriptors
+Konguration des Deployment-Deskriptors.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beispiele machen.
+ Siehe Kommentar Peter.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-Speicherung des Deployment-Deskriptors über File -> Save
+Speicherung des Deployment-Deskriptors über Anklicken von 
+\begin_inset Quotes eld
+\end_inset
+
+File
+\begin_inset Quotes erd
+\end_inset
+
+ und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ im Eclipse Menü.
 \end_layout
 
 \begin_layout Standard
@@ -4990,14 +5068,37 @@ Nach der Erstellung ohne Fehlermeldung kann der Deskriptor deployed werden.
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:ODE-Deployment-Deskriptor-bearbeiten"
+
+\end_inset
+
 ODE Deployment-Deskriptor bearbeiten
 \end_layout
 
 \begin_layout Standard
 Ein vorhandener Deployment-Deskriptor kann mit einem Doppelklick mit der
- linken Maustaste auf das File geöffnet und bearbeitet werden.
- Nach dem Bearbeiten sind die neuen Einstellungen zu mittels File->Save
- zu speichern, andernfalls werden die Änderungen nicht übernommen.
+ linken Maustaste auf die Datei im BPEL Project Explorer geöffnet und bearbeitet
+ werden.
+ Nach dem Bearbeiten sind die neuen Einstellungen mittels 
+\begin_inset Quotes eld
+\end_inset
+
+File
+\begin_inset Quotes erd
+\end_inset
+
+ und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ im Eclipse Menü zu speichern, andernfalls werden die Änderungen nicht übernomme
+n.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5005,22 +5106,38 @@ ODE Deployment-Deskriptor löschen
 \end_layout
 
 \begin_layout Standard
-ODE Deployment-Deskriptor auswählen und über Edit->Delete löschen.
+ODE Deployment-Deskriptor auswählen und in der Eclipse Menüleiste 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes erd
+\end_inset
+
+ und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ anklicken.
 \end_layout
 
 \begin_layout Subsubsection
-Prozess vorbereiten für Deployment
+Prozess vorbereiten für das Deployment
 \end_layout
 
 \begin_layout Standard
 Bevor der fertige Prozess nun deployed werden kann, bedarf es noch der Erstellun
 g eines Bindings, bzw.
- eines Startpunktes damit der Webservice erreicht werden kann.
- Dafür muß wie folgt vorgegangen werden :
+ eines Endpunktes damit der Webservice erreicht werden kann.
+ Dafür muß wie folgt vorgegangen werden:
 \end_layout
 
 \begin_layout Enumerate
-Öffnen des wsdl-Files in der grafischen Modellierungsumgebung.
+Öffnen der WSDL-Datei in der grafischen Modellierungsumgebung.
 \end_layout
 
 \begin_layout Enumerate
@@ -5066,7 +5183,7 @@ Generate Binding Content...
 \begin_inset Quotes erd
 \end_inset
 
- betätigen und um Pop-up-Fenster 
+ betätigen und im Pop-up-Fenster 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5082,7 +5199,7 @@ Port Type
 \begin_inset Quotes erd
 \end_inset
 
- das Interface auswählen welche von aussen erreicht werden soll.
+ das Interface auswählen, welche von aussen erreicht werden soll.
  Danach unter 
 \begin_inset Quotes eld
 \end_inset
@@ -5126,23 +5243,26 @@ Binding
 \begin_inset Quotes eld
 \end_inset
 
-Adress
+Address
 \begin_inset Quotes erd
 \end_inset
 
- gibt man die Adresse ( z.B.
+ gibt man die Adresse (z.B.
  http://localhost:8080/ode/processes/FluegeBuchen) des ODE Servers ein.
- Zu beachten ist, daß der Name des Services, wie er in Punkt 2 erstellt
- wurde, auch identisch ist wie der Name des WSDL-Files auf dem ODE Server.
+ Zu beachten ist, dass der Name des Services, wie er in Punkt 2 erstellt
+ wurde, auch identisch ist, wie der Name der WSDL-Datei im BPEL Designer.
 \end_layout
 
 \begin_layout Subsubsection
 Prozess auf ODE-Server deployen
 \end_layout
 
+\begin_layout Standard
+Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View: 
+\end_layout
+
 \begin_layout Enumerate
-Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View: Rechter
- Mausklick auf den ODE-Server 
+Rechter Mausklick auf den ODE-Server 
 \end_layout
 
 \begin_layout Enumerate
@@ -5152,7 +5272,7 @@ Auswahl des Menüpunkts Add and Remove.
 \begin_layout Enumerate
 Hinzufügen der BPEL Prozess-Datei mit Add-Button oder Doppelklick auf das
  BPEL-File.
- Danach abschliessen mit dem 
+ Danach abschließen mit dem 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5262,8 +5382,8 @@ Web Services--> Test with Web Services Explorer
 \end_layout
 
 \begin_layout Enumerate
-Im Web Service Explorer den Prozess (blaues Zahnrad) auswählen und dann
- erscheint 
+Im Web Service Explorer die WSDL Operation ( gekennzeichnet durch ein blaues
+ Zahnrad) auswählen die der Prozess anbietet, und dann erscheint 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5303,7 +5423,8 @@ Status
 \begin_inset Quotes erd
 \end_inset
 
- erscheint dann das Ergebnis des Services oder eine Meldung der Workflow-Engine.
+ erscheint dann das Ergebnis des Services oder eine Statusmeldung der Workflow-E
+ngine.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5313,11 +5434,20 @@ Strategie für das Late-Binding auswählen
 \begin_layout Standard
 Ein BPEL-Prozess mit ODE Deployment-Deskriptor und ein WS-Policy-Dokument
  mit Anforderungen an die Datenquelle müssen erstellt sein.
- Dort kann die Strategie erstellt, geändert oder gelöscht werden.
+ Im Deployment-Deskriptor kann danach die Strategie erstellt, geändert oder
+ gelöscht werden.
 \end_layout
 
 \begin_layout Enumerate
-Deployment-Deskriptor öffnen
+Deployment-Deskriptor öffnen bzw.
+ bearbeiten (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:ODE-Deployment-Deskriptor-bearbeiten"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Enumerate
@@ -5422,8 +5552,8 @@ Activity
 
  kann die Aktivität ausgewählt werden für welche die Strategie erstellt
  werden soll.
- Das Auswählen kann erst vorgenommen werden wenn die Aktivität im Modellierungsf
-enster verwendet wurde.
+ Das Auswählen kann erst vorgenommen werden, wenn die Aktivität im Modellierungs
+fenster verwendet wurde.
  Unter 
 \begin_inset Quotes eld
 \end_inset
@@ -5442,7 +5572,39 @@ Strategy
 \begin_inset Quotes erd
 \end_inset
 
- kann die Strategie dann ausgewählt werden.
+ kann die Strategie ausgewählt werden.
+ Von SIMPL wird nur First Find unterstützt.
+ Dies bedeutet es wird die erste Datenquelle benutzt die gefunden wird und
+ die in der Policy definierten Anforderungen erfüllt.
+ Ein Mapping zu einer DM-Aktivität kann durch Selektion und danach durch
+ anklicken des 
+\begin_inset Quotes eld
+\end_inset
+
+Remove
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons gelöscht werden.
+ Für eine Änderung muß das gewünschte Mapping ebenso Selektiert werden und
+ danach durch Betätigen von 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes eld
+\end_inset
+
+ verändert werden.
+ Mit 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ wir die Änderung übernommen.
  
 \begin_inset Float figure
 wide false
