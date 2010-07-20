@@ -449,7 +449,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="4">
+<lyxtabular version="3" rows="9" columns="4">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -730,7 +730,7 @@ Beschreibung der Installation
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -739,11 +739,49 @@ Beschreibung der Installation
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 17.07.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Allg.Überarbeitung nach Feedback
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20.07.2010
 \end_layout
 
 \end_inset
@@ -5648,8 +5686,138 @@ Speichern des ODE Deployment-Deskriptor über das Speichern-Symbol in der
  Symbolleiste
 \end_layout
 
+\begin_layout Subsubsection
+Neue Referenz in RRS einfügen 
+\end_layout
+
+\begin_layout Standard
+Wenn das RRS erreichbar und eine View geöffnet ist, dann kann eine neue
+ Referenz eingefügt werden.
+ Zuerst muß dazu in der Toolbar oder im Kontextmenü 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ angeklickt werden.
+ In dem Pop-up Fenster können nun alle Parameter der Referenz eingestellt
+ werden.
+ Zu den Parameter gehört der Name, die Adresse des RRS, die Art des Adapters,
+ die Adresse der Datenquelle und natürlich das Statement.
+ Optional kann noch ein Name und ein Passwort angegeben werden.
+ Durch klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ wird die neue Referenz gesichert.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ScreenshotsBenutzer/RRS_AddRef.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Neue-Referenz-inRRS-einfuegen"
+
+\end_inset
+
+Neue Referenz in RRS einfügen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS bearbeiten 
+\end_layout
+
+\begin_layout Standard
+Eine Referenz lässt sich nur bearbeiten, wenn das RRS erreichbar ist.
+ Durch Klicken auf den 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes erd
+\end_inset
+
+-Button der Toolbar oder Auswahl des entsprechenden Menüpunktes im Kontext-Menü
+ kann die Referenz bearbeitet werden.
+ Im Pop-up können die Parameter verändert werden.
+ Durch klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Änderungen übernommen.
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS löschen
+\end_layout
+
+\begin_layout Standard
+Eine Referenz lässt sich nur l,öschen wenn der RRS erreichbar ist.
+ Nach Auswahl der zu löschenden Referenz kann über den 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ Button oder den entsprechenden Menüpunkt im Kontext-Menü die Referenz gelöscht
+ werden.
+\end_layout
+
 \begin_layout Subsection
 Anwendungsfälle des Workflow-Administrators
+\end_layout
+
+\begin_layout Standard
+Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers.
+ D.h.
+ er kann alle Anwendungsfälle des Prozess-Modellierers und noch weitere
+ administrative Anwendungsfälle ausführen.
+ Seine Kenntnisse liegen eher im technischen Bereich, wie z.B.
+ bei der Konfiguration des Rahmenwerks.
+ Er kann beispielsweise über die Admin-Konsole während der Prozesslaufzeit
+ das Auditing an- und abschalten.
+ Ebenso legt er die Datenbank für das Speichern der Auditing-Daten fest.
+ Diese Anwendungsfälle werden im Folgenden näher erläutert:
 \end_layout
 
 \begin_layout Subsubsection
@@ -5720,8 +5888,8 @@ Auditing-Datenbank festlegen/ändern
 
 \begin_layout Standard
 Admin-Konsole öffnen und dann den Menüpunkt Auditing auswählen.
- Hier kann die Datenbank durch Angabe des URIs festgelegt oder geändert
- werden.
+ Hier kann eine lokale Auditing-Datenbank de- und aktiviert sowie festgelegt
+ und konfiguriert werden.
  Die Übernahme der Einstellung erfolgt mittels 
 \begin_inset Quotes eld
 \end_inset
@@ -5738,7 +5906,7 @@ Globale Einstellungen festlegen/ändern
 \end_layout
 
 \begin_layout Standard
-Die globalen Einstellungen die das Rahmenwerk betreffen können in Eclipse
+Die globalen Einstellungen, die das Rahmenwerk betreffen, können in Eclipse
  im Menüpunkt SIMPL unter Settings im 
 \begin_inset Quotes eld
 \end_inset
@@ -5758,8 +5926,8 @@ SIMPL
  eingestellt werden.
  Alternativ ist dies auch unter Eclipse im Menüpunkt Window unter Preferences
  bei SIMPL möglich.
- Hier können Einstellungen bezüglich des RRS, des SIMPLE Cores, des Transformati
-on Services und der UDDI Registry vorgenommen werden.
+ Hier können Einstellungen bezüglich des RRS, des SIMPL Cores, des Transformatio
+n Services und der UDDI Registry vorgenommen werden.
  Mittels des 
 \begin_inset Quotes eld
 \end_inset
@@ -5792,9 +5960,8 @@ Save
 \begin_inset Quotes erd
 \end_inset
 
- werden die Einstellungen der Admin-Konsole in der SIMPL DB gespeichert.
- Das Speichern gelingt nicht wenn das Auditung aktiviert ist, aber keine
- Auditing Datenbank festgelegt ist oder die Datenbank nicht erreichbar ist.
+ werden die Einstellungen der Admin-Konsole in der SIMPL Datenbank gespeichert.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -5810,7 +5977,7 @@ Reset
 \begin_inset Quotes erd
 \end_inset
 
--Button werden die zuletzt vorhandenen Einstellungen wieder hergestellt.
+-Button werden die zuletzt gespeicherten Einstellungen wieder hergestellt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5827,10 +5994,20 @@ Default
 \end_inset
 
  wieder hergestellt werden.
+ Im Unterschied zum 
+\begin_inset Quotes eld
+\end_inset
+
+Reset-Button
+\begin_inset Quotes erd
+\end_inset
+
+ werden hiermit die Standard-Einstellungen geladen die in SIMPL hinterlegt
+ sind.
 \end_layout
 
 \begin_layout Subsubsection
-Admin-Konsole schliessen 
+Admin-Konsole schließen 
 \end_layout
 
 \begin_layout Standard
@@ -5843,144 +6020,80 @@ Close
 \end_inset
 
  wird die Admin-Konsole geschlossen.
- Wurden Änderungen vorgenommen die nicht gesichert wurden , dann erscheint
- eine Sicherheitsabfrage mit der Möglichkeit die Änderungen zu sichern.
+ Wurden Änderungen vorgenommen, die nicht gesichert wurden, dann erscheint
+ eine Sicherheitsabfrage mit der Möglichkeit die Änderungen zu sichern (
  
-\end_layout
-
-\begin_layout Subsubsection
-Neue Referenz in RRS einfügen 
-\end_layout
-
-\begin_layout Standard
-Wenn das RRS erreichbar und eine View geöffnet ist, dann kann eine neue
- Referenz eingefügt werden.
- Zuerst muß dazu in der Toolbar oder im Kontextmenü 
 \begin_inset Quotes eld
 \end_inset
 
-New
+Yes
 \begin_inset Quotes erd
 \end_inset
 
- angeklickt werden.
- In dem Pop-up Fenster können nun alle Parameter der Referenz eingestellt
- werden.
- Durch klicken auf 
+, zu verwerfen (
 \begin_inset Quotes eld
 \end_inset
 
-Save
+No
 \begin_inset Quotes erd
 \end_inset
 
- wird die neue Referenz gesichert.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ScreenshotsBenutzer/RRS_AddRef.JPG
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Neue-Referenz-inRRS-einfuegen"
-
-\end_inset
-
-Neue Referenz in RRS einfügen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Referenz aus RRS bearbeiten 
-\end_layout
-
-\begin_layout Standard
-Eine Referenz läßt sich nur bearbeiten wenn der RRS erreichbar ist.
- Durch Klicken auf den 
+) oder das Close durch 
 \begin_inset Quotes eld
 \end_inset
 
-Edit
+Cancel
 \begin_inset Quotes erd
 \end_inset
 
--Button der Toolbar oder Auswahl des entsprechenden Menüpunktes im Kontext-Menü
- kann die Referenz bearbeitet werden.
- Im Pop-up können die Parameter verändert werden.
- Durch klicken auf 
-\begin_inset Quotes eld
-\end_inset
-
-Save
-\begin_inset Quotes erd
-\end_inset
-
- werden die Änderungen übernommen.
-\end_layout
-
-\begin_layout Subsubsection
-Referenz aus RRS löschen
-\end_layout
-
-\begin_layout Standard
-Eine Referenz läßt sich nur l,öschen wenn der RRS erreichbar ist.
- Nach Auswahl der zu löschenden Referenz kann über den 
-\begin_inset Quotes eld
-\end_inset
-
-Delete
-\begin_inset Quotes erd
-\end_inset
-
- Button oder den entsprechenden Menüpunkt im Kontext-Menü die Referenz gelöscht
- werden.
+ abzubrechen und wieder die vorherige Maske zu sehen.
 \end_layout
 
 \begin_layout Subsection
 Anwendungsfälle der Datenquellen-Administratoren 
 \end_layout
 
+\begin_layout Standard
+Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese über
+ die Datenquellen-Registry anderen Nutzern zu Verfügung.
+ Dazu kann er Datenquellen in der Datenquellen-Registry registrieren, die
+ Eigenschaften bereits registrierter Datenquellen bearbeiten und registrierte
+ Datenquellen auch wieder aus der Datenquellen-Registry löschen.
+ Die Anwendungsfälle werden nun im Folgenden erläuter.
+\end_layout
+
 \begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datenquelle-in-UDDI-Registrieren"
+
+\end_inset
+
 Datenquelle in UDDI-Registry registrieren 
 \end_layout
 
 \begin_layout Standard
-Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
+Zuerst muss das Datenquellen-Registry Web Interface in Web Browser aufgerufen
  werden.
  Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb als
  Adresse definiert.
  Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
- angezeigt 
+ durch Klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Show Data Sources
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Registry-Datenquellenliste"
+
+\end_inset
+
+ dargestellt.
 \end_layout
 
 \begin_layout Standard
@@ -6026,7 +6139,7 @@ Registry Datenquellenliste
 \end_layout
 
 \begin_layout Standard
-und durch Betätigen von 
+Durch Betätigen von 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6077,6 +6190,11 @@ Datenquelle in Registry anlegen
 \end_layout
 
 \begin_layout Standard
+Erforderlich ist der Name, die Adresse, der Typ, der Subtyp, die Sprache,
+ der Benutzername, das Passwort und optional eine Policy Datei.
+\end_layout
+
+\begin_layout Standard
 Nach Betätigen von 
 \begin_inset Quotes eld
 \end_inset
@@ -6087,7 +6205,15 @@ Save
 
  werden die Daten in der Registry gespeichert und stehen sofort dem Rahmenwerk
  zur Verfügung.
- Im Registry Plug-In kann es nötig sein den 
+ Im Registry Plug-In (siehe Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+)  kann es nötig sein den 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6096,14 +6222,7 @@ Refresh
 \end_inset
 
  Button ( 2 grüne im Kreis stehende Pfeile) zu betätigen wenn man die neue
- Datenquelle in der UDDI Browser View (siehe Abb.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Datenquellen-Registry-View"
-
-\end_inset
-
-) nicht sieht.
+ Datenquelle in der UDDI Browser View nicht erscheint.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6111,21 +6230,19 @@ Datenquelle aus UDDI-Registry entfernen
 \end_layout
 
 \begin_layout Standard
-Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
- werden.
- Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb als
- Adresse definiert.
- Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
- angezeigt.
- In der Abb.
+Zuerst muss das Datenquellen-Registry wie in Kap.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Registry-Datenquellenliste"
+reference "sub:Datenquelle-in-UDDI-Registrieren"
 
 \end_inset
 
-muß dann die zu löschende Datenquelle mit dem rechten Kreis-Button markiert
- und danach 
+ aufgerufen werden.
+ Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
+ angezeigt.
+ In der Liste muß dann die zu löschende Datenquelle mit dem rechten Kreis-Button
+ markiert und danach 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6147,15 +6264,8 @@ Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
  Adresse definiert.
  Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
  angezeigt.
- In der Abb.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Registry-Datenquellenliste"
-
-\end_inset
-
-muß dann die zu editierende Datenquelle mit dem rechten Kreis-Button markiert
- und danach 
+ In der Liste muß dann die zu editierende Datenquelle mit dem rechten Kreis-Butt
+on markiert und danach 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6167,11 +6277,11 @@ Edit
  Die Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Datenquelle-in-Registry_new"
+reference "fig:Registry-Datenquellenliste"
 
 \end_inset
 
- öffnet sich um die Datenquelle kann bearbeitet werden.
+ öffnet sich umd die Datenquelle kann bearbeitet werden.
  Nach Abschluss der Änderungen kann durch 
 \begin_inset Quotes eld
 \end_inset
@@ -6210,7 +6320,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Fehlerbehandlung
+Mögliche Fehler
 \end_layout
 
 \end_inset
