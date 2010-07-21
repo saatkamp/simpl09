@@ -104,13 +104,20 @@ public class UddiAction extends HttpServlet {
 		String save = request.getParameter("save");
 		String saveConfig = request.getParameter("saveconfig");
 		String checkUddi = request.getParameter("checkuddi");
-
+		String cancel = request.getParameter("cancel");
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-
-		out.println(Boolean.toString(isMultipart));
 
 		UddiWebConfig config = UddiWebConfig.getInstance();
 		UddiDataWriter dataWriter = null;
+		
+		if (cancel != null) {
+			String nextJSP = "";
+				nextJSP = "/list.jsp";
+
+			RequestDispatcher dispatcher = getServletContext()
+					.getRequestDispatcher(nextJSP);
+			dispatcher.forward(request, response);
+		}
 
 		if (isMultipart) {
 			String message = "";
@@ -230,7 +237,7 @@ public class UddiAction extends HttpServlet {
 
 						if (dataWriter.writeDatasource(dataSource) == true) {
 							String nextJSP = "/list.jsp?message="
-									+ "New datasource added successfully";
+									+ "New datasource added/edited successfully";
 
 							RequestDispatcher dispatcher = getServletContext()
 									.getRequestDispatcher(nextJSP);
@@ -257,22 +264,12 @@ public class UddiAction extends HttpServlet {
 
 			}
 
-		} else if (delete != null) {
-			if (request.getParameter("uddi") != null) {
-				dataWriter = UddiDataWriter.getInstance(config.getAddress(),
-						config.getUsername(), config.getPassword());
-				dataWriter.deleteDatasource(request.getParameter("uddi"));
-				response
-						.sendRedirect("list.jsp?message=Datasource deleted successfully");
-			} else {
-				response
-						.sendRedirect("list.jsp?message=No datasource selected");
-			}
+		
 
 		} else if (edit != null) {
 			String nextJSP = "";
 			if (request.getParameter("uddi") == null) {
-				nextJSP = "/list.jsp";
+				nextJSP = "/list.jsp?message= No datasource selected";
 			} else {
 				nextJSP = "/form.jsp";
 			}
@@ -355,6 +352,18 @@ public class UddiAction extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext()
 						.getRequestDispatcher(nextJSP);
 				dispatcher.forward(request, response);
+			}
+			
+		} else if (delete != null) {
+			if (request.getParameter("uddi") != null) {
+				dataWriter = UddiDataWriter.getInstance(config.getAddress(),
+						config.getUsername(), config.getPassword());
+				dataWriter.deleteDatasource(request.getParameter("uddi"));
+				response
+						.sendRedirect("list.jsp?message=Datasource deleted successfully");
+			} else {
+				response
+						.sendRedirect("list.jsp?message=No datasource selected");
 			}
 
 		} else {

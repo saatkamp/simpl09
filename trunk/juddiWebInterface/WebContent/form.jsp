@@ -169,6 +169,12 @@
 
 <input name="key" type="hidden" value=" <%=key %>" />
 
-<input type="submit" name="save" value="save" /></form>
+<input type="submit" name="save" value="save" />
+
+</form>
+<form action="UddiAction" method="post">
+
+<input type="submit" name="cancel" value="cancel" />
+</form>
 
 </body>

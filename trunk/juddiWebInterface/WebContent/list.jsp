@@ -15,8 +15,16 @@
 	http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <head>
 <title>SIMPL jUDDI Web Interface: List of data sources</title>
+<script type="text/javascript">
+function pruefe () {
+	Check = confirm("Are you sure to delete the datasource?");
+	if (Check == true) 
+		document.datasources.submit();
+}
+</script>
 </head>
 <body>
+
 <%
 	UddiWebConfig uddiWebConfig = UddiWebConfig.getInstance();
 	PrintWriter output = response.getWriter();
@@ -30,7 +38,7 @@
 
 	}
 %>
-<form action="UddiAction" method="post">
+<form name ="datasources" action="UddiAction" method="post">
 <table border="1">
 	<tr>
 		<td>Datasource name</td>
@@ -62,8 +70,12 @@
 </table>
 <input type="submit" name="new" value="New" /> <%
  	if (dataSources.size() > 0) {
- %> <input type="submit" name="edit" value="Edit" /> <input
-	type="submit" name="delete" value="Delete" /></form>
+ %> <input type="submit" name="edit" value="Edit" "/> 
+ <input type="button" name="del" value="Delete" onclick="pruefe()" />
+ <input type="hidden" name="delete" value="Delete" />
+ 
+ </form>
+  <a href="/juddiweb">Config</a>
 <%
 	}
 %>
