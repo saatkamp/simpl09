@@ -70,6 +70,8 @@
 \begin{document}
 \input{Deckblatt.tex}
 
+
+
 %Header und Footer Definitionen für alle anderen Seiten
 \pagestyle{fancy} \global\long\def\headrulewidth{0mm}
  \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
@@ -292,7 +294,7 @@ der Software benötigt werden, vorgestellt.
 \section{\label{sec:Allgemeine-Beschreibung}Allgemeine Beschreibung}
 
 Dieses Kapitel liefert allgemeine Informationen über die zu entwickelnde
-Software. Dazu gehöhren beispielsweise die Beschreibung der späteren
+Software. Dazu gehören beispielsweise die Beschreibung der späteren
 Systemumgebung, die wichtigsten Funktionen, die verwendete Sprache
 und Informationen über den Benutzerkreis der Software.
 
@@ -343,7 +345,8 @@ lokalen Rechner des Benutzers, die Datenquellen können auf verschiedene
 Server verteilt sein. Das RRS Plug-In bindet ein Reference Resolution
 System (RRS) für die Verwendung von Referenzen auf Daten in BPEL in
 Eclipse ein (siehe \ref{sub:Reference-Resolution-System}). Das UDDI
-Plug-In bindet eine Datenquellen-Registry in Eclipse ein (siehe \ref{fig:Datenquellen-Registry-View}).
+( Universal Description, Discovery and Integration ) Plug-In bindet
+eine Datenquellen-Registry in Eclipse ein (siehe \ref{fig:Datenquellen-Registry-View}).
 Die dort hinterlegten Datenquellen können dann bei der Modellierung
 von Prozessen in den DM-Aktivitäten ausgewählt werden.
 
@@ -366,7 +369,7 @@ die später dessen Kernfunktionalität bilden sollen.
 
 Das Rahmenwerk soll als Eclipse Plug-In verwendet werden und mit der
 Laufzeitumgebung integriert sein. Es soll die Verarbeitung von großen,
-heterogenen Datenmengen im Rahmen eines wissenschaftlichen Workflows
+heterogenen Datenmengen im Rahmen von wissenschaftlichen Workflows
 ermöglichen.
 
 Die vorhandenen BPEL-Aktivitäten des Eclipse BPEL Designers werden
@@ -386,9 +389,8 @@ einer vom Nutzer definierten Datenbank gespeichert.
 
 Für die Verwaltung des SIMPL-Rahmenwerks und zur Änderung von Einstellungen
 auch während der Laufzeit von Prozessen wird eine Admin-Konsole implementiert.
-Über diese kann zum Beispiel das Auditing an und ausgeschaltet und
-eine Datenbank zur Speicherung der Auditinginformationen angegeben
-werden.
+Über diese kann das Auditing an- und ausgeschaltet sowie eine Datenbank
+zur Speicherung der Auditinginformationen angegeben werden.
 
 
 \subsection{Sprache}
@@ -714,11 +716,9 @@ für alle deployten Prozessmodelle (de-)aktiviert wird.
 \end{figure}
 
 
-\pagebreak{}
-
 \begin{center}
 
-\begin{lstlisting}[caption={Schema des erweiterten Deployment-Deskriptors},label={lst:DD-Schema},basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm]
+\begin{lstlisting}[caption={Schema des erweiterten Deployment-Deskriptors},label={lst:DD-Schema},basicstyle={\small\ttfamily},captionpos=b,float,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm]
 <process name = "xsd:string" attachedUddiAddress =
     "xsd:string">
 
@@ -802,7 +802,7 @@ bzw. angezeigt werden können.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.6\textwidth]{img/screenshots/SIMPL_Menü.JPG}
+\includegraphics[width=0.8\textwidth]{img/screenshots/SIMPL_Menü.JPG}
 \par\end{centering}
 
 \caption{\label{fig:SIMPL-Men=0000FC}SIMPL Menü und Eclipse BPEL Designer
@@ -1303,7 +1303,8 @@ Ziel & Bearbeitung der Eigenschaften einer vorhandenen DM-Aktivität.\tabularnewl
 \hline
 \hline 
 Vorbedingung & Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist
-im Eclipse BPEL Designer geöffnet.\tabularnewline
+im Eclipse BPEL Designer geöffnet und eine Datenquelle wurde im Deployment-Deskriptor
+für diesen Prozess spezifiziert.\tabularnewline
 \hline
 \hline 
 Nachbedingung & Alle durchgeführten Änderungen der Eigenschaften der ausgewählten
@@ -1311,7 +1312,10 @@ DM-Aktivität wurden korrekt übernommen und werden in der {}``Properties-View''
 angezeigt.\tabularnewline
 \hline
 \hline 
-Nachbedingung im Sonderfall & keine\tabularnewline
+Nachbedingung im Sonderfall & Es konnten keine Änderungen bezüglich der Datenquelle getätigt werden
+und der Statement-Editor zum Erstellen von Statements konnte nicht
+geöffnet werden. Änderungen der anderen Eigenschaften wurden korrekt
+übernommen und werden in der {}``Properties-View'' angezeigt.\tabularnewline
 \hline
 \hline 
 Normalablauf & 1. Selektierung einer DM-Aktivität aus dem Prozess durch Auswahl mit
@@ -1323,7 +1327,8 @@ anzuzeigen.
 3. Änderung der Eigenschaften der DM-Aktivität.\tabularnewline
 \hline
 \hline 
-Sonderfälle & keine\tabularnewline
+Sonderfälle & 3.a Im Deplyoment-Deskriptor wurde keine Datenquelle für den Prozess
+spezifiziert.\tabularnewline
 \hline
 \end{tabular}
 
@@ -5713,6 +5718,8 @@ API  & Application Programming Interface\tabularnewline
 \hline 
 BPEL & Business Process Execution Language\tabularnewline
 \hline 
+CSV & Comma-Separated Values\tabularnewline
+\hline 
 DAS & Data Access Service\tabularnewline
 \hline 
 DDL & Data Definition Language\tabularnewline
@@ -5724,6 +5731,8 @@ FLWOR & FOR, LET, WHERE, ORDER, RETURN\tabularnewline
 IDE & Integrated Development Environment\tabularnewline
 \hline 
 IUD & INSERT, UPDATE, DELETE\tabularnewline
+\hline 
+NTFS & New Technology File System\tabularnewline
 \hline 
 ODE & Orchestration Director Engine\tabularnewline
 \hline 

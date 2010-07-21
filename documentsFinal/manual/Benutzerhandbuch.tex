@@ -1,0 +1,2005 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+
+\usepackage{array}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Benutzerhandbuch}
+\def\docvers{0.7}
+\def\docautor{}
+\def\docdate{20. Juli 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\makeatother
+
+\begin{document}
+\input{Deckblatt.tex}
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents{}
+
+\newpage{}
+
+
+\section*{Änderungsgeschichte}
+
+\begin{center}
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{3cm}|>{\raggedright}p{3cm}|>{\raggedright}p{6cm}|}
+\hline 
+\textbf{Version} & \textbf{Datum} & \textbf{Autor} & \textbf{Änderungen}\tabularnewline
+\hline
+\hline 
+0.1 & 12.04.2010 & bruededl & Erstellung des Dokuments.\tabularnewline
+\hline 
+0.1.1 & 24.04.2010 & bruededl & Erstellung Struktur Benutzerhandbuch\tabularnewline
+\hline 
+0.2 & 02.05.2010 & bruededl & Erstellung der Anwendungsfälle\tabularnewline
+\hline 
+0.3 & 14.06.2010 & bruededl & Beschreibung der Propertie Views\tabularnewline
+\hline 
+0.4 & 15.06.2010 & bruededl & Beschreibung der Statement Editoren\tabularnewline
+\hline 
+0.5 & 17.06.2010 & bruededl & Beschreibung der Installation\tabularnewline
+\hline 
+0.6 & 17.07.2010 & bruededl & Allg.Überarbeitung nach Feedback\tabularnewline
+\hline 
+0.7 & 20.07.2010 & bruededl & Allg.Überarbeitung nach Feedback\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+\newpage{}
+
+
+\section{Einführung, allgemeine Hinweise}
+
+SIMPL ist ein erweiterbares und generisches Rahmenwerk für die Modellierung
+und Ausführung von Workflows. Bei den Datenquellen werden standardmäßig
+Datenbanken und Dateisysteme unterstützt. Durch die Erweiterbarkeit
+können prinzipiell alle Datenquellen integriert werden. Als Modellierungs-
+und Ausführungssprache für die hier betrachteten Workflows dient die
+Business Process Execution Language (BPEL, siehe\cite{key-4}) . Über
+das Rahmenwerk können beliebige Datenmanagement-Funktionen in einen
+BPEL-Prozess eingebunden werden. Für eine möglichst hohe Flexibilität
+kann ein dynamischer Ansatz gewählt werden, so dass auch erst zur
+Laufzeit des Systems die Datenquellen festgelegt werden können (sog.
+Late Binding). Nichtsdestoweniger besteht auch die Möglichkeit die
+Datenquellen statisch anbinden zu können. Die Ausführung der Workflows
+unterliegt der erweiterten Workflow Engine Apache ODE (siehe\cite{key-6})
+und die Modellierung erfolgt durch den angepassten Eclipse BPEL Designer.
+Das Auditing einer Prozessausführung wird nur für Apache ODE bereitgestellt.
+In diesem Benutzerhandbuch werden dem Leser alle Informationen gegeben
+um mit SIMPL arbeiten zu können. Für die Erweiterung des SIMPL Funktionsumfanges
+kann das Entwicklerhandbuch zur Hilfe genommen werden, für das Installation
+und Deployment gibt das Installationshandbuch. In den folgenden Kapiteln
+wird die Funktionalität, die Komponenten, der Aufbau, die Benutzeroberfläche
+und die Benutzung erläutert. Kompliziertere Anwendungssituationen
+werden dabei mit einer ausführlichen und bebilderten Schritt-für-Schritt
+Anleitung erläutert.
+
+\newpage{}
+
+
+\section{Systemvoraussetzungen}
+
+Die Systemvoraussetzungen des Rahmenwerkes entspricht den Voraussetzungen
+der verwendeten Java Runtime Evironment und der Workflow-Engine. Empfohlen
+sind jedoch mindestes 1 GB freier Arbeitsspeicher sowie mindestens
+500 MB freier Festplattenspeicher. Aufgrund der Skalierbarkeit richten
+sich die Systemvoraussetzungen nach der Anzahl der laufenden Prozesse
+in der Workflow-Engine. Je nach Anwendungskonstellation kann sich
+jedoch ein erheblich größerer Speicherbedarf ergeben. Die Anzahl der
+Prozesse wird demnach nur durch die Höhe des Speichers, welcher durch
+das Betriebssystem zu Verfügung gestellt wird, beschränkt. Durch die
+Integration des SIMPL Eclipse Plug-Ins in die Eclipse IDE kann das
+Rahmenwerk prinzipiell auf allen Systemen benutzt werden, die Eclipse
+unterstützen. Der SIMPL Core kann auf allen Java unterstützenden Web
+Containern eingesetzt werden. Es muß beachtet werden, dass das Rahmenwerk
+nur mit Apache ODE 2.0 oder höher verwendet werden kann. Die letzte
+stabile Version von Apache ODE 1.3.4 unterstützt keine Extension Activities
+und ist für SIMPL nicht geeignet. Sollten die Extension Activities
+in einer Version 1.X unterstützt werden, so ist eine Verwendung prinzipiell
+möglich, jedoch ist ohne Gewährleistung eines Betriebes, da SIMPL
+für ODE 2.0 entwickelt wurde.
+
+\newpage{}
+
+
+\section{Installation }
+
+Das Rahmenwerk wird als Teil eines großen Installationpaketes ausgeliefert.
+Dieses Installationspaket besteht aus allen Programmen, die für die
+Verwendung des Rahmenwerks benötigt werden. Dazu gehört das Modellierungstool
+Eclipse BPEL Designer, der Web Server Apache Tomcat, der die Workflow-Engine
+ausführt, die Workflow-Engine Apache ODE und natürlich das Rahmenwerk
+selbst. Das SIMPL Rahmenwerk bestehend wiederum aus dem SIMPL Core,
+den SIMPL Eclipse Plug-Ins und dem BPEL-DM Plug-In. Näheres dazu kann
+Seite \pageref{sec:Komponenten,-Aufbau-und} entnommen werden. Durch
+das Installationspaket sind viele Einstellungen bereits vordefiniert,
+um dem Benutzer eine einfache Installation zu ermöglichen. Das Installationspaket
+ist dabei als RAR-Archiv zusammen mit allen wichtigen Dokumenten auf
+einer CD/DVD vorhanden. Für eine neue Windows Installation ist die
+{}``All-in-one''-Installation zu empfehlen. Für die Installation
+auf bestehenden Systemen, wo vorhandene Komponenten übernommen werden
+sollen, wird auch die Installation der einzelnen, isolierten Komponenten
+näher erläutert.
+
+
+\subsection{All-in-one Installation}
+
+Die {}``All-in-one''-Installation ist die schnelle und einfache
+Installation und für ein Windows System zu empfehlen. Das Archiv {}``SIMPL.rar''
+muß entpackt werden und danach kann das Rahmenwerk über die Kommandozeile
+oder durch einen Doppelklick auf {}``eclipse.exe'' im Eclipse Installationsverzeichnis
+gestartet werden. Dazu kann der Tomcat Server über {}``..bin/tomcat6.exe''
+gestartet werden. 
+
+
+\subsection{Installation der Komponenten und Konfiguration}
+
+
+\subsubsection{Eclipse}
+
+
+\paragraph*{Neuinstallation}
+
+Die Installation von Eclipse erfolgt durch das Entpacken von Eclipse
+IDE for Java EE Developers (eclipse-jee-galileo-SR2-win32.zip). Dadurch
+wäre Eclipse schon startfähig, jedoch fehlt noch der BPEL Designer
+und das SIMPL Rahmenwerk. Zum Entpacken genügt das oft bei Windows
+integrierte ZIP Programm, oder eine Entpackprogramm wie beispielsweise
+Winrar (siehe \cite{key-1}).
+
+
+\paragraph{Konfiguration einer vorhandenen Eclipse Entwicklungsumgebung}
+
+
+\subsubsection{BPEL Designers und SIMPL Eclipse Plug-In}
+
+
+\paragraph{Neuinstallation}
+
+Da der im Rahmenwerk beiligende BPEL Designer dem Rahmenwerk angepasst
+wurde, ist die Neuinstallation des Eclipse BPEL Designers zwingend
+erforderlich um die SIMPL Funktionen nutzen zu können. Der BPEL Designer
+( die auf SIMPL angepasste Version) und das SIMPL Eclipse Plug-In
+befinden sich in der Datei {}``simpl-eclipse.zip''. Diese Datei
+muß in den Eclipse Hauptordner kopiert und dort entpackt werden. Beim
+Entpacken werden 22 Files automatisch in den {}``plugins''-Ordner
+von Eclipse kopiert. Dort müssen sich die folgenden Datei für die
+vollständige Funktionalität befinden :
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_Installation_SIMPL_ECLIPSE_Files}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_BPEL_Installation_Files}BPEL Designer und SIMPL
+Installationsdateien}
+
+\end{figure}
+
+
+
+\subsubsection{Apache Tomcat }
+
+
+\paragraph{Neuinstallation}
+\begin{enumerate}
+\item Die Datei {}``apache-tomcat-6.0.26.exe'' enthält den Apache Tomcat
+Webserver der Version 6.0.26. Durch Doppelklicken auf das File startet
+der Installationsvorgang von Apache Tomcat. Im Verlauf der Installation
+ist u.a. das Installationsverzeichnis sowie den HTTP Connector Port
+zu wählen. Beim HTTP Connector Port ist nach Möglichkeit der Port
+8080 einzuhalten, da dieser auch im SIMPL Rahmenwerk voreingestellt
+ist.
+\item Die Datei ode.war aus der apache-ode-war-2.0-beta2.zip in das Verzeichnis
+{}``webapp'' des Apache Tomcat Installationsordner kopieren.
+\item axis2.war aus der axis2-1.5-war.zip in den Ordner {}``webapps''
+des Apache Tomcat Installationsordner kopieren. 
+\item Verzeichnis {}``servicejars'' im Installationsordner von Tomcat
+im Verzeichnis {}``\textbackslash{}webapps\textbackslash{}axis2\textbackslash{}WEB-INF''
+anlegen.
+\end{enumerate}
+
+\paragraph{Konfiguration eines vorhandenen Apache Tomcat }
+
+
+\subparagraph{Axis2}
+
+
+\subparagraph{JUDDI}
+
+
+\subparagraph{RRS}
+
+
+\subparagraph{RRS Transformation Service}
+
+
+\subsubsection{Apache ODE }
+
+
+\paragraph{Neuinstallation}
+\begin{enumerate}
+\item Das File {}``simpl-tomcat.zip'' muß in das Tomcat Installationsverzeichnis
+kopiert und dort entpackt werden. Dieses File enthält mehrere SIMPL
+Komponenten wie den SIMPL Core, den Verzeichnisdienst Apache Juddi
+und die Workflow Engine Apache ODE.
+\item Das File {}``simpl-ode-extension.jar'' muß in den Ordner {}``lib''
+im Tomcat Installationsordnet kopiert werden.
+\end{enumerate}
+
+\paragraph{Konfiguration einer vorhandenen Apache ODE }
+
+
+\subparagraph{SIMPL Core}
+
+
+\subparagraph{SIMPL Auditing}
+
+
+\subparagraph{BPEL DM Extension Activities}
+
+\newpage{}
+
+
+\section{Funktionalität}
+
+
+\subsection{\label{sub:Referenzverwaltung}Referenzverwaltung}
+
+Unterstützung von Referenzen in BPEL (siehe \cite{key-3}), damit
+auf Daten auch per Referenz im Workflow zugegriffen werden kann. Dies
+wird aus Gründen der Performanz benötigt, da die Datenübergabe zwischen
+Workflow und Web Service standardmäßig per Wert erfolgt, was bei großen
+Datenmengen (bis hin zu Gigabytes oder gar Terabytes im wissenschaftlichen
+Bereich) zu erheblichen Performanzeinbußen führt.
+
+
+\subsection{Datenquellen-Registry}
+
+Es wird eine Datenquellen-Registry bereitgestellt, mit dessen Hilfe
+Datenquellen über den Eclipse BPEL Designer (siehe \cite{key-10})
+ausgewählt werden können. Bei den Datenquellen kann es sich um Datenbanken
+oder Dateisysteme handeln, die dabei statisch oder dynamisch angebunden
+werden. Bei der dymanischen Anbindung, dem sog. Late-Binding, erfolgt
+die Auswahl der Anbindung nach definierten Richtlinien, den sog. Policies.Im
+Bereich der Datenbanken werden relationale Datenbanken der Typen MySQL,
+Derby, EmbeddedDerby und DB2 unterstützt, im Bereich der Dateisysteme
+nur Windows Dateisysteme auf NTFS- (New Technology File System) Basis
+mit dem CSV (Comma-Separated Values) Dateiformat. 
+
+
+\subsection{Bereitstellung von generischen BPEL-Aktivitäten}
+
+Durch die DM-Aktivitäten kann direkt auf die Datenquellen zugegrien
+werden.
+
+
+\subsection{Auditing}
+
+Das Auditing protokolliert alle Ereignisse ( z.B. Ausführung einer
+DM-Aktivität ) die während der Laufzeit eines Prozesses auftreten
+und speichert dies in einer vom Nutzer definierten Datenbank. Diese
+ist frei wählbar und kann in der Adminkonsole eingestellt, sowie de-
+und aktiviert werden. Das Auditing wird nur für Apache ODE angeboten.
+
+
+\subsection{Erweiterbarkeit}
+
+Das SIMPL Rahmenwerk bietet durch einen sehr modularen Aufbau die
+Möglichkeit an andere Anforderungen angepasst oder erweitert zu werden.
+Insbesondere wird dadurch die Möglichkeit zur Anbindung von weiteren
+Datenquellen, Abfragesprachen, Strategien, etc., geboten. Die Erweiterung
+läßt sich hauptsächlich mittels einem Plug-In System realisieren.
+Weiterführende Informationen dazu können im Entwicklerhandbuch gefunden
+werden.
+
+
+\subsection{Validierung}
+
+Die Validierung von Standard BPEL wird unterstützt, jedoch nicht die
+Validierung der SIMPL-Erweiterungen von BPEL. Dies kann jedoch bei
+einer Erweiterung des Rahmenwerkes erstellt und an bereits vorhandene
+Extension Points angebunden werden.
+
+\newpage{}
+
+
+\section{\label{sec:Komponenten,-Aufbau-und}Komponenten, Aufbau und Funktionen}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/Systemumgebung}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_Systemumgebung}SIMPL Systemumgebung}
+
+
+
+\end{figure}
+
+
+Das SIMPL Rahmenwerk, bestehend aus dem SIMPL Core, den SIMPL Eclipse
+Plug-Ins und dem BPEL-DM Plug-In, ist in die in Abbildung \ref{fig:SIMPL_Systemumgebung}
+dargestellte Systemumgebung eingebettet. Die Systemumgebung besteht
+dabei aus Eclipse mit dem BPEL Designer Plug-In (siehe\cite{key-10}),
+einem Web Server, wie dem Apache Tomcat (siehe \cite{key-7}), und
+den Datenquellen, auf die zugegriffen wird. Der SIMPL Core und eine
+Workflow-Engine (Apache Orchestration Director Engine (ODE), siehe
+\cite{key-6}) werden auf dem Web Server ausgeführt. SIMPL unterstützt
+relationale Datenbanken (MySQL, IBM DB2, Apache Derby) und Dateisysteme
+(CSV-Dateiformat) und kann um weitere Datenquellen, wie XML-Datenbanken
+(IBM DB2 mit pureXML-Technologie) oder Sensornetz-Datenbanken (TinyDB)
+ergänzt werden. Eine Sensornetz-Datenbank (TinyDB) speichert die Daten
+von meist kabellos vernetzten Sensoren und liefert so eine zentrale
+und einheitliche Zugriffsmöglichkeit auf Sensordaten. Der SIMPL Core
+läuft als Web Service auf dem Web Server und liefert u.a. die Funktionalität,
+die während der Laufzeit von Prozessen mit DM-Aktivitäten benötigt
+wird. Durch den SIMPL Core werden generell weitgehend alle Funktionalitäten,
+die von einem beliebigen Ansatz für den Zugriff auf Datenquellen von
+wissenschaftlichen Workflows benötigt werden, geliefert. Dadurch ergibt
+sich die Möglichkeit, in der Workflow-Engine so wenig wie nötig implementieren
+zu müssen. Diese Aufteilung ermöglicht es, entsprechende zukünftige
+Ansätze für den Datenzugriff relativ leicht umzusetzen bzw. bereits
+entwickelte Ansätze auch relativ leicht in andere Workflow-Laufzeit-
+und Modellierungsumgebungen zu integrieren. Dieser Umstand erhöht
+die Portabilität und die Erweiterbarkeit des Rahmenwerks beträchtlich.
+Die SIMPL Eclipse Plug-Ins bestehen aus drei separaten Plug-Ins, dem
+SIMPL Core Plug-In, dem BPEL-DM Plug-In und dem SIMPL Core Client
+Plug-In. Das SIMPL Core Plug-In erweitert die grafische Oberfläche
+von Eclipse, um Einstellungen für das SIMPL Rahmenwerk vornehmen zu
+können. Das BPEL-DM Plug-In erweitert das Eclipse BPEL Designer Plug-In,
+um Prozesse mit DM-Aktivitäten modellieren zu können. Durch diese
+Trennung ist es möglich, auch nur eines der beiden Plug-Ins in Eclipse
+einzubinden und z.B. für das jeweils andere Plug-In eigene Implementierungen
+zu nutzen. Das SIMPL Core Client Plug-In realisiert die Verbindung
+mit dem SIMPL Core und wird sowohl für das SIMPL Core Plug-In (Laden
+und Speichern von Rahmenwerkseinstellungen), als auch für das BPEL-DM
+Plug-In (Laden aller vom SIMPL Core unterstützten Datenquellen) benötigt.
+Die Ausführungslogiken der jeweiligen DM-Aktivitäten werden in der
+Workflow-Engine implementiert und in diese als Plug-In (BPEL-DM Extension
+Activities) eingebunden. Dabei läuft die benötigte Software auf dem
+lokalen Rechner des Benutzers, die Datenquellen können jedoch auf
+verschiedene Server verteilt sein. 
+
+\newpage{}
+
+
+\section{Benutzeroberfläche von SIMPL}
+
+In diesem Kapitel wird die grafische Benutzeroberfläche der SIMPL
+Eclipse Plug-Ins beschrieben. 
+
+
+\subsection{Benutzeroberfläche des erweiterten Eclipse BPEL Designers}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/EclipseErweitert}
+\par\end{centering}
+
+\caption{\label{fig:ErweitertesSimplEclipse}Erweiteter Eclipse BPEL Designer}
+
+\end{figure}
+
+
+Abbildung \ref{fig:ErweitertesSimplEclipse} zeigt den erweiterten
+Eclipse BPEL Designer. In der Palette befinden sich die SIMPL DM-Aktivitäten,
+die wie die bereits vorhandenen Aktivitäten zur Modellierung von Prozessen
+verwendet werden können. Weiterhin wird das SIMPL Menü bereitgestellt,
+über das alle wichtigen Einstellungen und Informationen des SIMPL
+Rahmenwerks vorgenommen bzw. angezeigt werden können. 
+
+
+\subsubsection{Referenzvariablen}
+
+In der mittleren Spalte von Abb.\ref{fig:ErweitertesSimplEclipse}
+sieht man die vorhandenen Referenzvariablen und kann diese mit einem
+Klick auf {}``+'' neu erstellen und benennen. Nach einer Selektierung
+einer Referenzvariable und einem Klick auf {}``x'' kann diese gelöscht
+werden. Im unteren Properties Fenster ist es möglich unter Details
+den Reference type auf {}``onInstantiation'' oder auf {}``fresh''
+zu setzen. Bei ersterem wird die Referenzvariable nur beim Starten
+eines BPEL Prozesses auf den tatsächlichen Wert gesetzt, bei {}``fresh''
+bei jedem Zugriff auf die Referenzvariable. Der Typ des Referenzwertes
+kann mit {}``Browse'' ausgewählt werden und wird im Structure Fenster
+angezeigt. Das rot umrandete Symbol in der Toolbar stößt die Transformation
+eines Prozesses mit Referenzvariablen an.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPL_BPEL_Referenzvariable.JPG}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_BPEL_Referencevariable}Um Referenzvariablen erweiterter
+BPEL Designer}
+
+\end{figure}
+
+
+Was genau während der Transformation geschieht und wie diese durchgeführt
+wird, wird in Kapitel \ref{sub:Referenzverwaltung} beschrieben.
+
+
+\subsubsection{ODE Deployment-Deskriptor}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DeploymentDeskriptor.JPG}
+\par\end{centering}
+
+\caption{\label{fig:Erweiteter Deployment-Deskriptor}Erweiteter Deployment-Deskriptor}
+
+\end{figure}
+
+
+Der ODE Deployment-Deskriptor ist die XML-Konfigurationsdatei für
+die Apache ODE Workflow-Engine. Sie kann hier in dieser grafischen
+Oberfläche bearbeitet werden. Sie ermöglicht die De- und Aktivierung
+des Prozesses, des Auditings und Monitorings sowie das Hinzufügen,
+Bearbeiten und Löschen von Datenquellen Registrierungen und Mappings.
+Die Mappings dienen dazu um bei der Ausführung von DM-Aktivitäten
+definierte Richtlinien ( Policies) und Strategien einzuhalten.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DD_AddDS.JPG}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL-DD-AddDS}Dialog für das Hinzufügen einer Datenquellen-Beschreibung}
+
+
+
+\end{figure}
+
+
+Im obigen Fenster, welches nach Drücken des New-Buttons bei {}``Data
+Source Specification'' erscheint, können neue Datenquellen für die
+Verwendung in der Workflow Engine hinzugefügt werden. Als Datenquelle
+kann eine Datenbank oder ein Filesystem dienen. Erforderliche Angaben
+sind Name, Adresse, Typ, Untertyp, Sprache und Format. Optional sind
+Benutzername und Passwort.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DD_AddAM.JPG}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL-DD-AddAM}Dialog für das Hinzufügen eines Activity
+Mapping}
+
+\end{figure}
+
+
+In Abb.\ref{fig:SIMPL-DD-AddAM} können neue Activity Mappings hinzugefügt
+werden. Für jede DM-Aktivität kann eine eigene Policy mit einer Strategie
+ausgewählt werden. Als Strategie unterstützt SIMPL nur First\_Find.
+First\_Find ermöglicht das Mapping bei auf die erste geeignete Datenquelle,
+die der Policy entspricht. Das Mapping wird bei der Ausführung des
+DM-Aktivität ausgeführt.
+
+
+\subsection{Benutzeroberfläche der SIMPL Eclipse Plug-Ins}
+
+
+\subsubsection{Admin Konsole}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/AdminConsole.JPG}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_Admin_Console}Admin Konsole}
+
+
+
+\end{figure}
+
+
+Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet
+die Möglichkeit Einstellungen für die Verwaltung des Auditings vorzunehmen.
+Das Auditing kann de- und aktiviert werden, sowie die Datenbank, wo
+die Auditingdaten gespeichert werden, spezifiziert werden.
+
+Folgende Schaltächen stehen durchgängig zur Verfügung: {[}Default{]}:
+Laden der Standard-Einstellungen, {[}Save{]}: Speichern aller durchgeführten
+Änderungen, {[}Reset{]}: Zurücksetzen aller durchgeführten Änderungen
+auf den letzten Speicherstand und {[}Close{]}: Schliessen der Admin-Konsole
+und Verwerfen aller Änderungen
+
+
+\subsubsection{Settings}
+
+Die Einstellungen können über das SIMPL Menü mit dem Menüpunkt Settings
+geöffnet werden und bieten die Möglichkeit, Einstellungen für die
+SIMPL Eclipse Plug-Ins vorzunehmen. 
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_Settings}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_Settings}SIMPL Settings}
+
+
+
+\end{figure}
+
+
+Dazu gehört die Angabe der Adresse des Reference Resolution Systems,
+des SIMPL Cores, des Transformation Services und der UDDI Registry.
+Die Schaltflächen erfüllen folgende Funktionen: {[}Restore Defaults{]}:
+Laden der Standard-Einstellungen, {[}Apply{]}: Speichern aller durchgeführten
+Änderungen, {[}OK{]} : Speichern der Änderungen und schliessen des
+Fensters, {[}Cancel{]}: Schliessen der Admin-Konsole und verwerfen
+aller Änderungen
+
+
+\subsubsection{Help}
+
+Der Menüpunkt Help leitet den Benutzer auf die Eclipse Hilfe weiter.
+Dort stehen dem Benutzer über die Punkte BPEL-DM Plug-In und SIMPL
+Core Plug-In die entsprechenden Hilfe-Dokumente der SIMPL Eclipse
+Plug-Ins zur Verfügung. 
+
+
+\subsubsection{About}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_About}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_About}SIMPL About}
+
+
+
+\end{figure}
+
+
+Der Menüpunkt About öffnet das SIMPL About-Fenster und zeigt die Versionsnummer,
+Lizenzinformationen und Mitwirkende des Rahmenwerkes an. 
+
+
+\subsubsection{Reload Plug-In Data}
+
+Über den Menüpunkt {}``Reload Plug-In Data'' in Abb.\ref{fig:ErweitertesSimplEclipse}
+des SIMPL Menüs, können alle Daten des SIMPL Cores nachträglich abgerufen
+werden. Damit muß Eclipse nicht neu gestartet werden wenn bei der
+Initialisierung des Rahmenwerkes der SIMPL Core oder der Webserver
+nicht erreichbar waren. Es reicht den entsprechenden Menüpunkt auszuwählen,
+damit das BPEL DM Plug-In in den entsprechenden Eigenschaftsfenstern
+(siehe Abschnitt \ref{sub:Data-Management-Aktivit=0000E4ten-GUI})
+die unterstützten Datenquellen, deren Subtypen und die unterstützten
+Abfragesprachen anzeigen kann.
+
+
+\subsubsection{\label{sub:Data-Management-Aktivit=0000E4ten-GUI}Daten-Management-Aktivitäten}
+
+Die Data-Management-Aktivitäten sind wie in folgender Abbildung \ref{fig:SIMPL_DataManagement_Palette}
+dargestellt in der Palette von Eclipse zu finden:
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DM_Palette}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_DataManagement_Palette}Data Management Aktivitäten}
+
+
+
+\end{figure}
+
+
+Die DM-Aktivitäten erfüllen folgende Funktionen :
+\begin{itemize}
+\item Query :
+\item Insert :
+\item Update :
+\item Delete :
+\item Create :
+\item Drop :
+\item Call :
+\item RetrieveData :
+\item Transfer :
+\end{itemize}
+Für die Parametrisierung der DM-Aktivitäten und die Anzeige der bereits
+eingestellten Parameter dient die Property-View mit Ihren Statement-Editoren,
+die im Folgenden näher erläutert werden.
+
+
+\paragraph{Property-View}
+
+In Abbildung \ref{fig:Eigenschaftenfenster-einer-Data-Management-Aktivit=0000E4t}
+wird die {}``Property View'' am Beispiel einer Query-Aktivität gezeigt.
+Für die Parametrisierung der DM-Aktivitäten der Aktivität dient die
+Property-View. Das bedeutet, dass die Aktivität hier mit Inhalt gefüllt
+wird, wie z.B. der Zieldatenquelle oder dem Befehl, der auf dieser
+ausgeführt werden soll. Dazu wird die zuerst die Datenquelle bei {}``Data
+source name'' ausgewählt, worauf hin dann die Eigenschaften Typ,
+Untertyp und Sprache dieser Datenquelle in der linken Hälfte der Ansicht
+angezeigt werden. Das Ziel dieser Aktivität kann bei {}``Target to
+insert the query result'' ausgewählt werden.
+
+Im Textfeld {}``Data management operation'' wird dabei der Befehl
+in seiner vollen Länge angezeigt, genau so wie er auf der Datenquelle
+ausgeführt wird. Dort kann der Befehl auch noch manuell geändert werden.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{img/SIMPL_DM_PropertySection.JPG}
+\par\end{centering}
+
+\caption{\label{fig:Eigenschaftenfenster-einer-Data-Management-Aktivit=0000E4t}Eigenschaftsfenster
+eine DM-Aktivität am Beispiel einer Query Activity}
+
+\end{figure}
+
+
+
+\paragraph{Statement-Editor}
+
+Statement Editoren sind vorhanden, um die Erstellung eines SQL Statement
+zu erleichtern. Um dies zu erreichen, wird die Erstellung der Statements
+über eine grafische Oberfläche ermöglicht. Solche Editoren verfügen
+immer je DM-Aktivität über unterschiedliche Funktionalität bzw. graphische
+Oberflächen. Man erreicht die Statement Editoren unter dem Menüpunkt
+{}``Details'' in der Properties Section der jeweiligen Aktivität
+über den Button {}``Open Editor''.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_StatementEditorSample}
+\par\end{centering}
+
+\caption{\label{fig:DM_StatementEditor}Statement Editor Beispiel }
+
+
+
+\end{figure}
+
+
+
+\subsection{Benutzeroberfläche des RRS Eclipse Plug-Ins}
+
+Das RRS Eclipse Plug-In ist als Eclipse View in Eclipse integriert.
+Über diese View können alle in den SIMPL Settings hinterlegten RRSs
+verwaltet werden. Zur Verwaltung zählt das Anlegen, Bearbeiten, Löschen
+und Aktualisieren von Referenzen eines RRS. Abbildung \ref{fig:RRS-View}
+zeigt die View des RRS Eclipse Plug-Ins. Die o.g. Verwaltungsfunktionen
+können über das Kontextmenü oder über die Toolbar,in d er rechten
+oberen Ecke der View, erreicht werden. Das Hinzufügen der RRS View
+geschieht in Eclipse durch aktivieren der Reference Management View
+in der Eclipse Menüleiste unter dem Punkt {}``Window'' unter {}``Show
+View'' unter {}``Other'' unter {}``Reference Resolution System''
+und dann anklicken von {}``Reference Management View''.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/RRS_View.JPG}
+\par\end{centering}
+
+\caption{\label{fig:RRS-View}RRS-View}
+
+\end{figure}
+
+
+
+\subsection{Datenquellen-Registry}
+
+In diesem Kapitel wird die Benutzeroberäche des Eclipse Datenquellen-Registry
+Plug-Ins und des Datenquellen-Registry Web Interfaces beschrieben.
+
+
+\subsubsection{Datenquellen-Registry Plug-In }
+
+Das Datenquellen-Registry Plug-In ist in eine Eclipse View integriert.
+Die Datenquellen-Informationen werden aus der Datenquellen-Registry
+gelesen und in einer Tabelle in der View angezeigt (siehe Abbildung
+\ref{fig:Datenquellen-Registry-View}). Die Ansicht wird über Window->Show
+View->Other->UDDI Registry->UDDI Browser View hinzugefügt. In Abbildung
+\ref{fig:Datenquellen-Registry-View} können alle Einträge der Datenquellen-Registry
+betrachtet, aber nicht verändert oder gelöscht werden.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/UDDI_View.JPG}
+\par\end{centering}
+
+\caption{\label{fig:Datenquellen-Registry-View}Datenquellen-Registry-View}
+
+
+
+\end{figure}
+
+
+
+\subsubsection{Datenquellen-Registry Web Interface}
+
+Das Datenquellen-Registry Web Interface dient dem Datenquellen-Administrator
+die Datenquellen-Registry zu verwalten. Dafür gibt er den Namen der
+Datenquelle und deren Adresse an und wählt jeweils aus einem Drop-Down-Menü
+den Typ und den Subtyp der Datenquelle aus. Durch das Drücken des
+Add Policy-Buttons, kann für die Datenquelle eine Policy-Datei, die
+extern modeliert und über das Textfeld ausgewählt wurde, hinzugefügt
+werden. Mit dem Save-Button werden alle durchgeführten Änderungen
+gespeichert. 
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/webinterface}
+\par\end{centering}
+
+\caption{\label{fig:Datenquellen-Registry-Webinterface}Datenquellen-Registry
+Webinterface}
+
+
+
+\end{figure}
+
+
+\newpage{}
+
+
+\section{Benutzung von SIMPL}
+
+
+\subsection{Anwendungsfälle Prozess-Modellierer}
+
+Vorab: Jede Selektion von Aktivitäten oder Eigenschaften erfolgt mit
+der linken Maustaste. Jedes dazugehörige Konextmenü wird durch die
+rechte Maustaste nach der Selektion aufgerufen.
+
+
+\subsubsection{Data-Management-Aktivität erstellen}
+
+Zur Erstellung einer neuen Data-Management (DM) Aktivität muss ein
+vorhandener BPEL Prozess im BPEL Designer geöffnet und die BPEL Designer-Palette
+angezeigt werden. Danach erfolgt die Selektion einer DM-Aktivität
+aus der BPEL Designer-Palette durch Auswahl mit der linken Maustaste
+und anschließend Selektion der Stelle des Prozesses, an der die ausgewählte
+DM-Aktivität eingefügt werden soll. Alternativ kann dies auch per
+Drag\&Drop geschehen. Anschliessend ist der Aktivitätsname einzugeben
+oder der vorgeschlagene Name zu bestätigen. Sollte die Palette mit
+den DM Aktivitäten nicht sichtbar sein, so kann sie durch einen Klick
+auf das Dreieck rechts oben im Hauptfenster angezeigt werden.
+
+
+\subsubsection{Data-Management-Aktivität bearbeiten}
+
+Wenn ein BPEL Prozess mit einer DM- Aktivität geöffnet ist, dann kann
+diese DM-Aktivität selektiert werden und danach in der Properties-View
+unter {}``Details'' alle Eigenschaften angezeigt werden. Die zu
+bearbeitenden Eigenschaften können direkt ausgewählt und geändert
+werden. Komplexere oder größere Änderungen an den Statements können
+mithilfe der {}``Statement Editoren'' vollzogen werden. Für jeden
+DM-Aktvität gibt es eine spezifische Properties-View und verschiedene
+Statement-Editoren. Die Bedienung und die Funktionen werden im Folgenden
+näher erläutert.
+
+
+\paragraph{Property-View}
+
+In Abb. \ref{fig:SIMPL_DM_Property_View} wird eine Property-View
+am Beispiel einer Query Activity gezeigt.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_PropertySection+Rahmen}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_DM_Property_View}DM Properties View}
+
+
+
+\end{figure}
+
+
+Wenn im Folgenden von der Properties View gesprochen wird, dann bezieht
+es sich immer auf den {}``Detail'' Abschnitt wie in der obigen Grafik
+angezeigt. Es gibt allgemeine Funktionalitäten, die bei allen Property
+Views vorhanden sind. Dies sind:
+
+1) Unterschiedliche Textfarben für verschiedene Statement-Komponenten 
+
+2) Schaltfläche {}``Save'' für das Speichern der Änderungen im Statement-Textfeld,
+Schaltfläche {}``Insert Parameter Variable'' zum Einfügen von Variablen
+und die Schaltfläche {}``Insert Container Reference Variable'' zum
+Einfügen von Referenzvariablen.
+
+%
+\begin{figure}[H]
+\centering{}\includegraphics[width=0.8\textwidth]{img/SIMPL_Statement_Textbox}\caption{\label{fig:SIMPL_DM_Statement_Textbox}DM Statement Textbox}
+
+\end{figure}
+
+
+1) In der Abb. \ref{fig:SIMPL_DM_Statement_Textbox} werden, wie oben
+bereits erwähnt,beim Editieren des Statements die Einträge in verschiedene
+Farben angezeigt. Die Farbe hängt davon ab, ob es sich bei dem Eintrag
+um ein Schlüsselwort, Befehle oder nur einen Tabellennamen handelt.
+Die Farben werden wie folgt zugeordnet :
+\begin{itemize}
+\item Blau : BPEL-Variablen und weitere Werte mit Rauten umgeklammert \#values\#
+\item Lila : SQL-Schlüsselwörter und Befehle
+\item Schwarz : Tabellen-, Spalten-, File-,Verzeichnis- und Laufwerksnamen
+\end{itemize}
+2) Die Schaltfläche {}``Save'' welche zum Speichern des Statements
+dient. Ohne Betätigen dieser Schaltfläche werden alle Änderungen verworfen.
+
+In der Combobox {}``Data source name'' wird die Datenquelle, die
+im Voraus über dir Datenquellen Registry definiert wird, ausgewählt.
+Es werden die Bedienelemente an den ausgewählten Datenquellentyp angepasst.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_PropertiesViewSample}
+\par\end{centering}
+
+\caption{\label{fig:FirstDMPropertiesView}DM Properties View Insert Aktivität}
+
+
+
+\end{figure}
+
+
+Abbildung \ref{fig:FirstDMPropertiesView} zeigt eine DM Properties
+View am Beispiel einer Insert Aktivität. Im Folgenden werden die Schaltflächen
+bei unterschiedlichen Datenquellenarten erläutert.
+
+
+\subparagraph{Schaltflächen bei einem Filesystem als Datenquelle}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_SecondDMPropertiesView}
+\par\end{centering}
+
+\caption{\label{fig:SecondDMPropertiesView}DM PropertiesView Filesystem}
+
+\end{figure}
+
+
+Abbildung \ref{fig:SecondDMPropertiesView} zeigt die auf ein Filesystem
+angepasst Properties View mit den neuen Schaltflächen {}``Select
+Command'', {}``Select File'', {}``Select Folder'' und {}``Select
+Drive''. Nach der Auswahl der Datenquelle wird der Datentyp ( hier
+Filesystem), der Subtype ( hier Windows Local) und die Anfragesprache
+( hier Shell) angezeigt. . Bei Benutzung des {}``Open Editor''-Buttons
+erscheint der für die jeweilige Aktivität verfügbare Editor. Hier
+würde nun der Insert Statement Editor erscheinen.
+
+\emph{Select Command}
+
+Durch die Schaltfläche {}``Select Command'' (siehe Abb.\ref{fig:SIMPL_DM_SelectCommand})
+kann bei den verfügbaren Befehlen (z.B. Cacls für Benutzerrechte )
+für diese Datenquelle eine Wahl getroffen werden und dann mit {}``Insert
+to Statement'' in das Statement hinzugefügt werden.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_SelectCommand}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_DM_SelectCommand}DM Select Command}
+
+\end{figure}
+
+
+\emph{Select Drive}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_SelectDrive}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_DM_SelectDrive}DM Select Drive}
+
+\end{figure}
+
+
+Nach {}``Select Drive'' erscheinen alle zur Verfügung stehenden
+Laufwerke mit der Format-Typ und der Kapazität.
+
+
+\subparagraph{Schaltflächen bei einer Datenbank als Datenquelle}
+
+Abhängig vom Typ der ausgewählten Datenquellen werden die Bedienelemente
+bzw. die Schaltflächen dynamisch angepasst. 
+
+Bei der Auswahl eines Filesystemes als Datenquelle werden folgende
+Schaltflächen angezeigt :
+\begin{itemize}
+\item {}``Insert Variable'' : Fügt BPEL-Variablen ein. Es folgt ein neues
+Fenster wo die gewünschte Variable ausgewählt werden kann.
+\item {}``Insert Table'' : Zur Auswahl von Datenbanktabellen und Spalten
+aus der gewählten Datenbank
+\end{itemize}
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Database}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_DM_DatabaseSource}Datenbank als Datenquelle}
+
+\end{figure}
+
+
+
+\subparagraph{Hinzufügen von Tabellen/Spalten aus der DB der Datenquelle}
+
+In der folgenden Abbildung \ref{fig:SIMPL_DM_InsertTable} wird das
+Fenster zur Auswahl von Tabellen und Spalten aus der Datenbank-Datenquelle
+dargestellt. Man öffnet dieses Fenster indem man {}``Insert Table''
+anklickt. Die Spalten und Tabellennamen werden dem Statement hinzugefügt,
+indem man den gewünschten Tabellen- und Spaltennamen markiert und
+{}``Insert to statement'' anklickt. 
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_InsertTabel}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_DM_InsertTable}DM {}``Insert Table'' Befehl}
+
+\end{figure}
+
+
+
+\subparagraph{Hinzufügen von BPEL-Variablen aus dem BPEL-Prozess}
+
+Die Properties View bietet auch die Möglichkeit an, BPEL-Variablen
+aus dem BPEL-Prozess dem Statement hinzuzufügen. Die bereits angelegten
+BPEL Variablen. die hinzugefügt werden können, befinden sich im rechten
+Bereich (siehe Abb.\ref{fig:SIMPL_BPEL_Variables}).
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_BPEL_Variables}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_BPEL_Variables}BPEL Variablen}
+
+\end{figure}
+
+
+Durch Betätigung des Buttons {}``Insert Variable'' erscheint die
+Liste der BPEL-Variablen :
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_InsertBPELVariable}
+\par\end{centering}
+
+\caption{\label{fig:SIMPL_DM_InsertBPELVariable}Insert BPEL Variable}
+
+\end{figure}
+
+
+Die Variable kann ausgewählt und in das Statement durch Drücken von
+{}``Insert to statement'' eingefügt werden.
+
+
+\paragraph{Statement Editoren }
+
+Statement Editoren sind da, um die Erstellung eines SQL Statement
+zu erleichtern. Um dies zu erreichen, wird die Erstellung der Statements,
+über eine graphischen Oberfläche ermöglicht. Solche Editoren verfügen
+immer je DM-Aktivität über unterschiedlichen Funktionalität bzw. grafische
+Benutzeroberflächen. Man erreicht die Statement Editoren über die
+Properties View unter {}``Details'' über die Schaltfläche {}``Open
+Editor'' . Abhängig davon, welche DM-Aktivität man gerade behandelt,
+wird der passende Statement Editor gestartet. Als Beispiel folgt nun
+ein Statement Editor einer Insert-Aktivität. 
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_StatementEditorSample}
+\par\end{centering}
+
+\caption{\label{fig:Statement-Editor-Inser_Aktivity}Statement Editor einer
+Insert Aktivität}
+
+\end{figure}
+
+
+
+\subparagraph{Allgemeine Funktionen}
+
+In diesen Unterabschnitt werden die allgemeine Funktionalitäten und
+Bedienelemente behandelt die in allen Statement Editoren identisch
+sind.
+
+
+\subparagraph{Statement Schlüsselwörter Buttons:}
+
+In jedem der Statement Editoren findet man die Statement Schlüsselwörter,
+die man in dem jeweiligen Editor verwenden kann. Bei Anklicken der
+Schaltflächen wird das Schlüsselwort dem Statement hinzugefügt.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DM_Statement_Key_Words}
+\par\end{centering}
+
+\caption{\label{fig:Statement-Schl=0000FCsselw=0000F6rter-Buttons}Statement
+Schlüsselwörter Buttons}
+
+
+
+\end{figure}
+
+
+Die orangen Markierungen dienen der Orientierung und zeigen dem Benutzer,
+welche Schlüsselwörter in welcher Reichenfolge vorgesehen sind.
+
+Zum Beispiel: Beim Klicken auf {}``WHERE'' wandert die Markierung
+auf die nächste in der Reihenfolge vorgesehenen Statement Schlüsselwörter
+{}``ORDER BY'' und {}``GROUP BY'' .
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DM_Statement_Key_Words2}
+\par\end{centering}
+
+\caption{\label{fig:Statement-Schl=0000FCsselw=0000F6rter-Buttons2}Statement
+Schlüsselwörter Buttons 2}
+
+\end{figure}
+
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DM_Statement_Key_Words3}
+\par\end{centering}
+
+\caption{\label{fig:Statement-Schl=0000FCsselw=0000F6rter-Buttons3}Statement
+Schlüsselwörter Buttons 3}
+
+
+
+\end{figure}
+
+
+
+\subparagraph{UNDO Funktionalität:}
+
+Durch Betätigen des Buttons {}``UNDO'' wird die letzte Änderung
+im Statement rückgängig gemacht.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DM_Statement_UNDO}
+\par\end{centering}
+
+\caption{\label{fig:Statement-UNDO-Button}Statement UNDO Button}
+
+
+
+\end{figure}
+
+
+
+\subparagraph{Buttons {}``Insert to table'', {}``Remove from table'' und {}``Insert
+to Statement'' :}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DM_Statement_Insert_Remove}
+\par\end{centering}
+
+\caption{\label{fig:Insert--und-Remove}Insert- und Remove Buttons}
+
+
+
+\end{figure}
+
+\begin{itemize}
+\item Insert to table : Fügt eine zuvor erstelltes Statement in die Datenbanktabelle
+ein.
+\item Remove from table : Entfernt Änderung oder Einträge, die zuletzt der
+Datenbanktabelle hinzugefügt wurden.
+\item Insert to statement : Fügt alle Einträge der Datenbanktabelle in einem
+ausgewählten Bereich in das Statement ein.
+\end{itemize}
+Es folgt eine Beispiel Tabelle wie sie nach Einfügen diverser Operationen
+aussehen könnte.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Sample_Table}
+\par\end{centering}
+
+\caption{\label{fig:Statement-Editor-Beispiel}Statement Editor Beispiel Tabelle}
+
+\end{figure}
+
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics{img/SIMPL_DM_Statement_OK_CLOSE_Button}
+\par\end{centering}
+
+\caption{\label{fig:Statement-OK-und-CloseButton}Statement OK und Close Button}
+
+
+
+\end{figure}
+
+
+Durch Betätigung von {}``Close'' wird der Editor geschlossen und
+jede Änderung verworfen.
+
+Durch Drücken des {}``OK'' Buttons wird die Änderung am Statement
+bestätigt. Danach öffnet sich der Zwischenspeicherungsdialog, welcher
+die Möglichkeit bietet das Statement von Hand zu bearbeiten.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.6\textwidth]{img/SIMPL_DM_Manual_Edit_Window}
+\par\end{centering}
+
+\caption{\label{fig:Statement_Zwischenspeicherungsdialog}Zwischenspeicherungsdialog}
+
+\end{figure}
+
+
+Durch {}``Save Statement'' kann das Statement ohne Änderungen, oder
+wenn etwas geändert wurde dann mit, übernommen werden. Es gibt nur
+die Möglichkeit hier Änderungen vorzunehmen. Änderungen in den Editoren
+Fenstern sind nicht möglich.
+
+
+\subparagraph{Insert Statement Editor}
+
+Dieser Statement Editor ist für das Erstellen des Statements bei der
+Insert DM-Aktivität zuständig. Beim Anklicken des {}``Values'' Schlüsselwortes
+öffnet sich folgende Ansicht:
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Insert_Statement_Editor}
+\par\end{centering}
+
+\caption{\label{fig:Insert-Statement-Editor_Values}Insert Statement Editor
+- Values}
+
+
+
+\end{figure}
+
+
+Funktionsweise: Man wählt zuerst eine Tabelle aus der Datenquelle,
+dann die Spalten aus der Liste aus. Diesen Spalten kann man einen
+Wert zuweisen und in der Tabelle zwischenspeichern. 
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Inser_Statement_Select}
+\par\end{centering}
+
+\caption{\label{fig:Insert-Statement-Editor_Select}Insert-Statement-Editor\_Select}
+
+
+
+\end{figure}
+
+
+Das Select Schlüsselwort wird analog wie im Query Statement Editor
+verwendet. Siehe Kapitel \ref{sub:Query-Statement-Editor}
+
+
+\subparagraph{\label{sub:Query-Statement-Editor}Query Statement Editor}
+
+Bei diesen Statement Editor handelt es sich um den Editor zur Erstellung
+des Statements für die Query DM-Aktivität. Es verfügt über die Schaltflächen
+bzw. Schlüsselwörter: SELECT, WHERE, ORDER BY, GROUP BY und HAVING.
+Nach Betätigen des {}``Select'' Buttons erscheint folgende Anzeige
+:
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Query_Statement_Select}
+\par\end{centering}
+
+\caption{\label{fig:Query-Statement-Editor_Select}Query Statement Editor\_Select}
+
+
+
+\end{figure}
+
+
+Funktionsweise : Auf der linken Hälfte des Fensters wählt man aus
+der Tabelle eine Liste aus. Die Spalten der ausgewählten Tabelle erscheinen
+in der Combobox {}``Column name''. Man sucht danach den gewünschten
+Spaltenname aus und wählt die anderen Parameter in den restlichen
+Comboboxen aus. Bei {}``Operations'' werden die möglichen Operationen
+wie {}``AVG'', {}``SUM'' oder''Min'' ausgewählt. Mit {}``Dist''
+(engl. distinct) können einzelne Parameter und mit {}``All'' auch
+alle Parameter eingestellt werden. Im Textfeld {}``Value'' kann
+dann ein Wert für den selektierten Spaltenname eingetragen werden.
+
+
+\subparagraph{Call Statement Editor }
+
+Dieser Statement Editor ist für das Erzeugen eines Call-Statements
+zuständig.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Call_Statement}
+\par\end{centering}
+
+\caption{\label{fig:Call-Statement-Editor}Call Statement Editor}
+
+
+
+\end{figure}
+
+
+Funktionsweise : Man schreibt in das schmale Textfeld den Name der
+Prozedur, auf welche das Call-Statement angewendet werden soll. Danach
+muss der Button {}``Add to Statement'' betätigt werden, um den Befehl
+zum Statement hinzuzufügen.
+
+
+\subparagraph{Drop Statement Editor}
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Drop_Statement}
+\par\end{centering}
+
+\caption{\label{fig:Drop-Statement-Editor}Drop Statement Editor}
+
+\end{figure}
+
+
+Funktionsweise : Zuerst muss im {}``The handeld Schema/Table'' ein
+Name eingegeben werden. Danach wird mit {}``Insert to Statement''
+bestätigt um dies dem Statement hinzuzufügen.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Drop_Statement2}
+\par\end{centering}
+
+\caption{\label{fig:Drop-Statement-Editor2}Drop Statement Editor 2}
+
+
+
+\end{figure}
+
+
+Danach erscheint das obere Menü (siehe Abb. \ref{fig:Drop-Statement-Editor2})
+und es kann in der Liste eine Tabelle ausgewählt und mit {}``Insert
+table into Statement'' dem Statement hinzugefügt werden.
+
+
+\subparagraph{Delete Statement Editor}
+
+Dieser Editor erzeugt die {}``Delete''-SQL-Anweisung.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Delete_Statement_Editor}
+\par\end{centering}
+
+\caption{\label{fig:Delete-Statement-Editor}Delete Statement Editor}
+
+
+
+\end{figure}
+
+
+Funktionsweise: Der Benutzer wählt eine Tabelle aus der Liste aus,
+dann wird in der Combobox {}``Column name'' der Name der zu bearbeitenden
+Spalte ausgewählt. Danach kann in der Combobox {}``Operation'' die
+gewünschte Operation ausgewählt werden und im Feld {}``Value'' der
+Wert. Danach kommt mit {}``Insert to table'' das Statement in den
+Zwischenspeicherungsdialog (siehe Abb.\ref{fig:Statement_Zwischenspeicherungsdialog})
+und kann noch direkt verändert werden.
+
+
+\subparagraph{Create Statement Editor}
+
+Dieser Editor erzeugt die Create-SQL-Abfrage.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Create_Statement_Editor1}
+\par\end{centering}
+
+\caption{\label{fig:Create-Statement-Editor1}Create Statement Editor 1}
+
+\end{figure}
+
+
+Funktionsweise: Zuerst benennt man die Tabelle im Feld {}``Table
+name''. Danach definiert man in den Combo- und Checkboxen die Eigenschaften
+für jede erzeugte Spalte. Durch {}``Insert to table'' wird der Eintrag
+in die Zwischenspeicherung übergeben und wird noch einer manuellen
+Bearbeitung oder Bestätigung in die Datenbanktabelle eingetragen.
+Zum Erzeugen eines Schemas erscheint die unten gezeigte Ansicht. Hier
+kann der Schemaname und die optional eine Authorisierungsinformation
+eingetragen werden. Durch Betätigung von OK wird das Statement in
+die Zwischenspeicherungsebene geleitet und es bietet sich die Möglichkeit
+für ein manuelles Bearbeiten oder zum Bestätigen des Statements.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Create_Statement_Editor2}
+\par\end{centering}
+
+\caption{\label{fig:Create-Statement-Editor2}Create Statement Editor 2}
+
+\end{figure}
+
+
+
+\subparagraph{Retrieve Data Statement Editor}
+
+Retrieve Data Statement Editor ist identisch zum Query Statement Editor,
+deswegen wird hier nur auf diesen verwiesen (sieheKapitel \ref{sub:Query-Statement-Editor})
+
+
+\subparagraph{Update Statement Editor}
+
+Dieser Editor behandelt die Update-SQL-Abfragen.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Update_Statement_Editor}
+\par\end{centering}
+
+\caption{\label{fig:Update-Statement-Editor}Update Statement Editor}
+
+\end{figure}
+
+
+Funktionsweise : Der Benutzer wählt in der linken Spalte zuerst einen
+Tabellenname aus. Danach werden die Spaltennamen in der zweiten Tabelle
+angezeigt. Bei {}``Type of the value'' gibt man dann einen Wert
+für diese Spalte ein. Zuletzt benutzt man {}``Insert to table''
+um den Eintrag zwischenzuspeichern. In der Abbildung \ref{fig:Update-Statement-Editor}
+ist die {}``Set oriented'' View aktiviert. Dies kann man auch {}``table
+oriented'' , also tabellenorientiert, darstellen lassen wie in Abbildung
+\ref{fig:Update-Statement-Editor2}.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DM_Update_Statement_Editor_TableOriented}
+\par\end{centering}
+
+\caption{\label{fig:Update-Statement-Editor2}Update Statement Editor - Tabellenorientiert}
+
+\end{figure}
+
+
+
+\subsubsection{Data-Management-Aktivität löschen}
+
+Die vorhandene DM-Aktivität im geöffneten BPEL Prozess muss selektiert
+werden und das Kontextmenü aufgerufen werden. Dort kann die Aktivität
+durch {}``Delete'' gelöscht werden. Alternativ kann dies auch durch
+drücken der ENTF / Delete -Taste. Danach werden alle Links gemäß dem
+Standardverhalten des BPEL Designers neu gesetzt.
+
+
+\subsubsection{ODE Deployment-Deskriptor erstellen}
+
+Ein ODE Deployment-Deskriptor wird wie folgt erstellt :
+\begin{enumerate}
+\item Im der Eclipse Menüleiste muss {}``File'', danach {}``New'', danach
+{}``Other'', danach {}``BPEL2.0'', danach ''Apache ODE'' und
+zuletzt {}``Deployment-Descriptor'' angeklickt werden.
+\item BPEL Projekt manuell eintragen oder über {}``Browse'' auswählen.
+\item Mit {}``Finish'' bestätigen.
+\item Konguration des Deployment-Deskriptors. 
+\item Speicherung des Deployment-Deskriptors über Anklicken von {}``File''
+und danach {}``Save'' im Eclipse Menü.
+\end{enumerate}
+Nach der Erstellung ohne Fehlermeldung kann der Deskriptor deployed
+werden.
+
+
+\subsubsection{\label{sub:ODE-Deployment-Deskriptor-bearbeiten}ODE Deployment-Deskriptor
+bearbeiten}
+
+Ein vorhandener Deployment-Deskriptor kann mit einem Doppelklick mit
+der linken Maustaste auf die Datei im BPEL Project Explorer geöffnet
+und bearbeitet werden. Nach dem Bearbeiten sind die neuen Einstellungen
+mittels {}``File'' und danach {}``Save'' im Eclipse Menü zu speichern,
+andernfalls werden die Änderungen nicht übernommen.
+
+
+\subsubsection{ODE Deployment-Deskriptor löschen}
+
+ODE Deployment-Deskriptor auswählen und in der Eclipse Menüleiste
+{}``Edit'' und danach {}``Delete'' anklicken.
+
+
+\subsubsection{Prozess vorbereiten für das Deployment}
+
+Bevor der fertige Prozess nun deployed werden kann, bedarf es noch
+der Erstellung eines Bindings, bzw. eines Endpunktes damit der Webservice
+erreicht werden kann. Dafür muß wie folgt vorgegangen werden:
+\begin{enumerate}
+\item Öffnen der WSDL-Datei in der grafischen Modellierungsumgebung.
+\item Mit der rechten Maustaste auf den Hintergrund des Fenster klicken
+und {}``Add Service'' auswählen. Der vorgeschlagene Name kann übernommen
+oder neu eingegeben werden.
+\item Mit der rechten Maustaste auf den Hintergrund des Fenster klicken
+und {}``AddBinding'' auswählen.Danach öffnet sich die Properties
+View des Bindings und zeigt den Punkt {}``General''.
+\item Schaltfläche {}``Generate Binding Content...'' betätigen und im
+Pop-up-Fenster {}``Binding Wizard'' unter {}``Port Type'' das
+Interface auswählen, welche von aussen erreicht werden soll. Danach
+unter {}``Protocol'' {}``SOAP'' auswählen.
+\item Bei dem neu erstellen Service nun auf den {}``Port'' ( das pfeilähnliche
+blaue nach rechts zeigende Symbol) und die Port-Properties-View öffnet
+sich. In diesem wählt man bei {}``Binding'' das unter Punkt 3 erstellte
+Binding aus. Bei {}``Address'' gibt man die Adresse (z.B. http://{""}localhost:8080/{""}ode/{""}processes/{""}FluegeBuchen)
+des ODE Servers ein. Zu beachten ist, dass der Name des Services,
+wie er in Punkt 2 erstellt wurde, auch identisch ist, wie der Name
+der WSDL-Datei im BPEL Designer.
+\end{enumerate}
+
+\subsubsection{Prozess auf ODE-Server deployen}
+
+Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View: 
+\begin{enumerate}
+\item Rechter Mausklick auf den ODE-Server 
+\item Auswahl des Menüpunkts Add and Remove.
+\item Hinzufügen der BPEL Prozess-Datei mit Add-Button oder Doppelklick
+auf das BPEL-File. Danach abschließen mit dem {}``Finish'' Button.
+\item Anklicken des Eintrages {}``Ode v1.x Server at....''mit der rechten
+Maustaste und {}``Start'' auswählen.
+\end{enumerate}
+
+\subsubsection{Prozessinstanz starten }
+
+Nach dem erfolgreichen Deployment auf der Apache ODE Workflow-Engine
+kann das Prozessmodell instanziiert werden. Dazu muß eine SOAP Nachricht
+an den Webservice gesendet werden. Dafür gibt es viele Möglichkeiten,
+hier wird jedoch nur die Variante mit dem {}``Web Service Explorer''
+näher erläutert. Dieser ist im SIMPL Rahmenwerk enthalten und ist
+Bestandteil der Eclipse IDE for Java EE Developers. 
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{\string"img/Sending SOAP Message\string".jpg}
+\par\end{centering}
+
+\caption{\label{fig:Web-Service-Explorer}Web Service Explorer}
+
+
+
+\end{figure}
+
+\begin{enumerate}
+\item WSDL-File des Projektes mit der rechten Maustaste anklicken und {}``Web
+Services--> Test with Web Services Explorer'' auswählen.
+\item Im Web Service Explorer die WSDL Operation ( gekennzeichnet durch
+ein blaues Zahnrad) auswählen die der Prozess anbietet, und dann erscheint
+{}``Invoke a WSDL Operation''.
+\item Im Textfenster unter {}``input string'' können die Parameter / die
+Nachricht eingegeben werden und mit {}``GO'' an die Workflow-Engine
+gesendet werden.
+\item Im Fenster {}``Status'' erscheint dann das Ergebnis des Services
+oder eine Statusmeldung der Workflow-Engine.
+\end{enumerate}
+
+\subsubsection{Strategie für das Late-Binding auswählen}
+
+Ein BPEL-Prozess mit ODE Deployment-Deskriptor und ein WS-Policy-Dokument
+mit Anforderungen an die Datenquelle müssen erstellt sein. Im Deployment-Deskriptor
+kann danach die Strategie erstellt, geändert oder gelöscht werden.
+\begin{enumerate}
+\item Deployment-Deskriptor öffnen bzw. bearbeiten (siehe Kapitel \ref{sub:ODE-Deployment-Deskriptor-bearbeiten})
+\item Im unteren Bereich bei {}``Activity-Data source mapping'' kann eine
+Strategie mit {}``New'' erstellt, mit {}``Edit'' geändert und
+mit {}``Remove'' gelöscht werden.%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.6\textwidth]{img/SIMPL_Activity-Data_Source_Mapping}
+\par\end{centering}
+
+\caption{\label{fig:Activity_Data_Source_Mapping}Activity-Data source Mapping}
+
+
+
+\end{figure}
+
+\item Nach Drücken des {}``New'' Buttons erscheint das {}``Add a new
+activity mapping''-Fenster und bei {}``Activity'' kann die Aktivität
+ausgewählt werden für welche die Strategie erstellt werden soll. Das
+Auswählen kann erst vorgenommen werden, wenn die Aktivität im Modellierungsfenster
+verwendet wurde. Unter {}``Policy path'' kann die WS-Policy mit
+den Anforderungen an die Datenquelle ausgewählt werden. Unter {}``Strategy''
+kann die Strategie ausgewählt werden. Von SIMPL wird nur First Find
+unterstützt. Dies bedeutet es wird die erste Datenquelle benutzt die
+gefunden wird und die in der Policy definierten Anforderungen erfüllt.
+Ein Mapping zu einer DM-Aktivität kann durch Selektion und danach
+durch anklicken des {}``Remove'' Buttons gelöscht werden. Für eine
+Änderung muß das gewünschte Mapping ebenso Selektiert werden und danach
+durch Betätigen von {}``Edit{}`` verändert werden. Mit {}``Save''
+wir die Änderung übernommen. %
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.5\textwidth]{img/SIMPL_Choose_Strategy}
+\par\end{centering}
+
+\caption{\label{fig:Choose_Strategy}Strategie Auswahlfenster}
+
+\end{figure}
+
+\item Speichern des ODE Deployment-Deskriptor über das Speichern-Symbol
+in der Symbolleiste
+\end{enumerate}
+
+\subsubsection{Neue Referenz in RRS einfügen }
+
+Wenn das RRS erreichbar und eine View geöffnet ist, dann kann eine
+neue Referenz eingefügt werden. Zuerst muß dazu in der Toolbar oder
+im Kontextmenü {}``New'' angeklickt werden. In dem Pop-up Fenster
+können nun alle Parameter der Referenz eingestellt werden. Zu den
+Parameter gehört der Name, die Adresse des RRS, die Art des Adapters,
+die Adresse der Datenquelle und natürlich das Statement. Optional
+kann noch ein Name und ein Passwort angegeben werden. Durch klicken
+auf {}``Save'' wird die neue Referenz gesichert. 
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.5\textwidth]{img/RRS_AddRef.JPG}
+\par\end{centering}
+
+\caption{\label{fig:Neue-Referenz-inRRS-einfuegen}Neue Referenz in RRS einfügen}
+
+\end{figure}
+
+
+
+\subsubsection{Referenz aus RRS bearbeiten }
+
+Eine Referenz lässt sich nur bearbeiten, wenn das RRS erreichbar ist.
+Durch Klicken auf den {}``Edit''-Button der Toolbar oder Auswahl
+des entsprechenden Menüpunktes im Kontext-Menü kann die Referenz bearbeitet
+werden. Im Pop-up können die Parameter verändert werden. Durch klicken
+auf {}``Save'' werden die Änderungen übernommen.
+
+
+\subsubsection{Referenz aus RRS löschen}
+
+Eine Referenz lässt sich nur l,öschen wenn der RRS erreichbar ist.
+Nach Auswahl der zu löschenden Referenz kann über den {}``Delete''
+Button oder den entsprechenden Menüpunkt im Kontext-Menü die Referenz
+gelöscht werden.
+
+
+\subsection{Anwendungsfälle des Workflow-Administrators}
+
+Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers.
+D.h. er kann alle Anwendungsfälle des Prozess-Modellierers und noch
+weitere administrative Anwendungsfälle ausführen. Seine Kenntnisse
+liegen eher im technischen Bereich, wie z.B. bei der Konfiguration
+des Rahmenwerks. Er kann beispielsweise über die Admin-Konsole während
+der Prozesslaufzeit das Auditing an- und abschalten. Ebenso legt er
+die Datenbank für das Speichern der Auditing-Daten fest. Diese Anwendungsfälle
+werden im Folgenden näher erläutert:
+
+
+\subsubsection{Admin-Konsole öffnen}
+
+Durch einen Klick auf Admin-Konsole im Eclipse Menü unter SIMPL kann
+die Admin-Konsole geöffnet und verwendet werden.
+
+
+\subsubsection{Auditing aktivieren }
+
+Admin-Konsole zuerst öffnen und dann den Menüpunkt Auditing auswählen.
+Durch Setzen des Häkchens bei Auditing unter {}``General'' kann
+dieses aktiviert werden. Die Übernahme der Einstellung erfolgt mittels
+{}``Save''-Button.
+
+
+\subsubsection{Auditing deaktivieren }
+
+Admin-Konsole zuerst öffnen und dann den Menüpunkt Auditing auswählen.
+Durch Klicken auf den Haken wird das Auditig deaktiviert und es erscheint
+{}``inactive''. Die Übernahme der Einstellung erfolgt mittels {}``Save''-Button.
+
+
+\subsubsection{Auditing-Datenbank festlegen/ändern }
+
+Admin-Konsole öffnen und dann den Menüpunkt Auditing auswählen. Hier
+kann eine lokale Auditing-Datenbank de- und aktiviert sowie festgelegt
+und konfiguriert werden. Die Übernahme der Einstellung erfolgt mittels
+{}``Save''-Button.
+
+
+\subsubsection{Globale Einstellungen festlegen/ändern }
+
+Die globalen Einstellungen, die das Rahmenwerk betreffen, können in
+Eclipse im Menüpunkt SIMPL unter Settings im {}``Preferences'' Fenster
+unter {}``SIMPL'' eingestellt werden. Alternativ ist dies auch unter
+Eclipse im Menüpunkt Window unter Preferences bei SIMPL möglich. Hier
+können Einstellungen bezüglich des RRS, des SIMPL Cores, des Transformation
+Services und der UDDI Registry vorgenommen werden. Mittels des {}``APPLY''
+Buttons werden die Einstellungen übernommen und mit {}``OK'' wird
+die Auswahl geschlossen.
+
+
+\subsubsection{Einstellungen der Admin-Konsole speichern }
+
+Durch Klick auf den Button {}``Save'' werden die Einstellungen der
+Admin-Konsole in der SIMPL Datenbank gespeichert. 
+
+
+\subsubsection{Einstellungen der Admin-Konsole zurücksetzen }
+
+Durch einen Klick auf den {}``Reset''-Button werden die zuletzt
+gespeicherten Einstellungen wieder hergestellt.
+
+
+\subsubsection{Default-Einstellungen der Admin-Konsole laden }
+
+Die Standardwerte der Admin-Konsole können durch einen Klick auf {}``Default''
+wieder hergestellt werden. Im Unterschied zum {}``Reset-Button''
+werden hiermit die Standard-Einstellungen geladen die in SIMPL hinterlegt
+sind.
+
+
+\subsubsection{Admin-Konsole schließen }
+
+Durch einen Klick auf {}``Close'' wird die Admin-Konsole geschlossen.
+Wurden Änderungen vorgenommen, die nicht gesichert wurden, dann erscheint
+eine Sicherheitsabfrage mit der Möglichkeit die Änderungen zu sichern
+( {}``Yes'', zu verwerfen ({}``No'') oder das Close durch {}``Cancel''
+abzubrechen und wieder die vorherige Maske zu sehen.
+
+
+\subsection{Anwendungsfälle der Datenquellen-Administratoren }
+
+Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese
+über die Datenquellen-Registry anderen Nutzern zu Verfügung. Dazu
+kann er Datenquellen in der Datenquellen-Registry registrieren, die
+Eigenschaften bereits registrierter Datenquellen bearbeiten und registrierte
+Datenquellen auch wieder aus der Datenquellen-Registry löschen. Die
+Anwendungsfälle werden nun im Folgenden erläuter.
+
+
+\subsubsection{\label{sub:Datenquelle-in-UDDI-Registrieren}Datenquelle in UDDI-Registry
+registrieren }
+
+Zuerst muss das Datenquellen-Registry Web Interface in Web Browser
+aufgerufen werden. Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb
+als Adresse definiert. Nach der Authorisierung wird die Liste der
+bereits angelegten Datenquellen durch Klicken auf {}``Show Data Sources''
+angezeigt wie in Abbildung \ref{fig:Registry-Datenquellenliste} dargestellt.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/datasourcelist.JPG}
+\par\end{centering}
+
+\caption{\label{fig:Registry-Datenquellenliste}Registry Datenquellenliste}
+
+
+
+\end{figure}
+
+
+Durch Betätigen von {}``New'' öffnet sich ein neues Fenster zur
+Eingabe der Datenquellen Konfiguration.
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{img/edit.JPG}
+\par\end{centering}
+
+\caption{\label{fig:Datenquelle-in-Registry_new}Datenquelle in Registry anlegen}
+
+\end{figure}
+
+
+Erforderlich ist der Name, die Adresse, der Typ, der Subtyp, die Sprache,
+der Benutzername, das Passwort und optional eine Policy Datei.
+
+Nach Betätigen von {}``Save'' werden die Daten in der Registry gespeichert
+und stehen sofort dem Rahmenwerk zur Verfügung. Im Registry Plug-In
+(siehe Abb. \ref{fig:Datenquellen-Registry-View})  kann es nötig
+sein den {}``Refresh'' Button ( 2 grüne im Kreis stehende Pfeile)
+zu betätigen wenn man die neue Datenquelle in der UDDI Browser View
+nicht erscheint.
+
+
+\subsubsection{Datenquelle aus UDDI-Registry entfernen }
+
+Zuerst muss das Datenquellen-Registry wie in Kap. \ref{sub:Datenquelle-in-UDDI-Registrieren}
+aufgerufen werden. Nach der Authorisierung wird die Liste der bereits
+angelegten Datenquellen angezeigt. In der Liste muß dann die zu löschende
+Datenquelle mit dem rechten Kreis-Button markiert und danach {}``Delete''
+betätigt werden.
+
+
+\subsubsection{Datenquelle aus UDDI-Registry bearbeiten}
+
+Zuerst muß das Datenquellen-Registry Web Interface in Web Browser
+aufgerufen werden. Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb
+als Adresse definiert. Nach der Authorisierung wird die Liste der
+bereits angelegten Datenquellen angezeigt. In der Liste muß dann die
+zu editierende Datenquelle mit dem rechten Kreis-Button markiert und
+danach {}``Edit'' betätigt werden. Die Abbildung \ref{fig:Registry-Datenquellenliste}
+öffnet sich umd die Datenquelle kann bearbeitet werden. Nach Abschluss
+der Änderungen kann durch {}``Save'' alles in der Registry gespeichert
+werden.
+
+\newpage{}
+
+
+\section{Problemehilfe}
+
+Die SIMPL Eclipse Plug-Ins sind nur voll funktionsfähig, falls der
+SIMPL Core erreichbar ist, d.h. das ein Apache Tomcat Server mit angebundenem
+SIMPL Core gestartet wurde.
+
+%
+\begin{table}[H]
+\caption{Mögliche Fehler}
+
+
+\begin{tabular}{|c|c|c|}
+\hline 
+Bereich & Fehler & Ursachen\tabularnewline
+\hline
+\hline 
+Deployment & Erstellung D.D. nicht möglich & ODE D.D. Modul nicht installiert\tabularnewline
+\hline 
+ & Deployen nicht möglich & ODE Server nicht gestartet\tabularnewline
+\hline 
+ & Server Port in Use & Server bereits gestartet. \tabularnewline
+\hline 
+Admin Konsole & Speichern nicht möglich & Auditing Datenbank fehlt\tabularnewline
+\hline 
+ &  & Datenbank nicht erreichbar\tabularnewline
+\hline 
+ &  & Authentifizierung fehlgeschlagen.\tabularnewline
+\hline 
+RRS & Referenz nicht bearbeitbar & RRS Parameter ungültig\tabularnewline
+\hline 
+ & Referenz nicht speicherbar & RRS nicht erreichbar\tabularnewline
+\hline
+\end{tabular}
+\end{table}
+
+
+\newpage{}
+
+
+\section{Glossar}
+
+\begin{center}
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{6cm}|}
+\hline 
+API  & Application Programming Interface\tabularnewline
+\hline 
+BPEL & Business Process Execution Language\tabularnewline
+\hline 
+CSV & Comma-Separated Values\tabularnewline
+\hline 
+DAS & Data Access Service\tabularnewline
+\hline 
+DDL & Data Definition Language\tabularnewline
+\hline 
+DM & Data Management\tabularnewline
+\hline 
+Extension Activities & Erweiterungsaktivität\tabularnewline
+\hline 
+FLWOR & FOR, LET, WHERE, ORDER, RETURN\tabularnewline
+\hline 
+IDE & Integrated Development Environment\tabularnewline
+\hline 
+IUD & INSERT, UPDATE, DELETE\tabularnewline
+\hline 
+NTFS & New Technology File System\tabularnewline
+\hline 
+ODE & Orchestration Director Engine\tabularnewline
+\hline 
+RDB & Relational Database\tabularnewline
+\hline 
+RRS & Reference Resolution System\tabularnewline
+\hline 
+SDO & Service Data Object\tabularnewline
+\hline 
+SIMPL & SimTech: Information Management, Processes and Languages\tabularnewline
+\hline 
+SOAP & Simple Object Access Protocol\tabularnewline
+\hline 
+SQL & Structured Query Language\tabularnewline
+\hline 
+SSO & Single Sign On\tabularnewline
+\hline 
+UDDI & Universal Description, Discovery and Integration \tabularnewline
+\hline 
+URI & Unified Resource Identifier\tabularnewline
+\hline 
+URL & Unified Resource Locator\tabularnewline
+\hline 
+WS & Web Service\tabularnewline
+\hline 
+WSDL & Web Service Description Language\tabularnewline
+\hline 
+XML & Extensible Markup Language\tabularnewline
+\hline 
+XPath & XML Path Language\tabularnewline
+\hline 
+XQUERY & XML Query Language\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+\newpage{}
+\begin{thebibliography}{14}
+\bibitem{key-3} Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.:
+\emph{Towards Reference Passing in Web Service and Workflow-based
+Applications}. In: Proc. of the 13th IEEE Enterprise Distributed Object
+Conference (EDOC 2009), Auckland, New Zealand, 31. August - 04. September
+2009.
+
+\bibitem{key-4} Jordan, D.; Evdemon, J.: \emph{Web Services Business
+Process Execution Language Version 2.0}, OASIS Standard. Organization
+for the Advancement of Structured Information Standards (OASIS), 11.April
+2007. http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf,
+zuletzt zugegriffen am 13.07.2010
+
+\bibitem{key-5} Axis2, http://ws.apache.org/axis2/, zuletzt zugegriffen
+am 17.10.2009
+
+\bibitem{key-6} Apache ODE, http://ode.apache.org/, zuletzt zugegriffen
+am 17.07.2010
+
+\bibitem{key-7} Apache Tomcat, http://tomcat.apache.org/, zuletzt
+zugegriffen am 17.07.2010
+
+\bibitem{key-8} Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html,
+zuletzt zugegriffen am 17.10.2009
+
+\bibitem{key-10} Eclipse BPEL Designer, http://www.eclipse.org/bpel/,
+zuletzt zugegriffen am 17.10.2010
+
+\bibitem{key-11} IBM-DB2, http://www.ibm.com/db2/, zuletzt zugegriffen
+am 17.10.2009
+
+\bibitem{key-12} Java 6, http://java.sun.com/, zuletzt zugegriffen
+am 17.10.2009
+
+\bibitem{key-14} TinyDB, http://telegraph.cs.berkeley.edu/tinydb/,
+zuletzt zugegriffen am 17.10.2009
+
+\bibitem{key-16} Eclipse, http://www.eclipse.org/, zuletzt zugegriffen
+am 18.10.2009
+
+\bibitem{key-21}WSDL, http://www.w3.org/standards/techs/wsdl, zuletzt
+zugegriffen am 04.11.2009
+
+\bibitem{key-24}XPath, http://www.w3.org/standards/techs/xpath, zuletzt
+zugegriffen am 30.01.2010
+
+\bibitem[13]{key-13}jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen
+am 28.02.2010
+
+\bibitem[14]{key-1}WinRAR, http://http://www.winrar.de/, zuletzt
+zugegriffen am 10.06.2010
+
+\end{thebibliography}
+\pagebreak{}
+
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+
+\listoffigures
+
+\end{document}

@@ -107,6 +107,25 @@ filename "Deckblatt.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "DokStatus.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -1603,7 +1622,7 @@ Allgemeine Beschreibung
 \begin_layout Standard
 Dieses Kapitel liefert allgemeine Informationen über die zu entwickelnde
  Software.
- Dazu gehöhren beispielsweise die Beschreibung der späteren Systemumgebung,
+ Dazu gehören beispielsweise die Beschreibung der späteren Systemumgebung,
  die wichtigsten Funktionen, die verwendete Sprache und Informationen über
  den Benutzerkreis der Software.
 \end_layout
@@ -1694,8 +1713,8 @@ reference "sub:Reference-Resolution-System"
 \end_inset
 
 ).
- Das UDDI Plug-In bindet eine Datenquellen-Registry in Eclipse ein (siehe
- 
+ Das UDDI ( Universal Description, Discovery and Integration ) Plug-In bindet
+ eine Datenquellen-Registry in Eclipse ein (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Datenquellen-Registry-View"
@@ -1768,7 +1787,7 @@ In diesem Abschnitt folgen die wichtigsten Funktionen des Rahmenwerks, die
 Das Rahmenwerk soll als Eclipse Plug-In verwendet werden und mit der Laufzeitumg
 ebung integriert sein.
  Es soll die Verarbeitung von großen, heterogenen Datenmengen im Rahmen
- eines wissenschaftlichen Workflows ermöglichen.
+ von wissenschaftlichen Workflows ermöglichen.
 \end_layout
 
 \begin_layout Standard
@@ -1801,8 +1820,8 @@ Alle Ereignisse, die während der Laufzeit eines Prozesses auftreten (z.B.
 \begin_layout Standard
 Für die Verwaltung des SIMPL-Rahmenwerks und zur Änderung von Einstellungen
  auch während der Laufzeit von Prozessen wird eine Admin-Konsole implementiert.
- Über diese kann zum Beispiel das Auditing an und ausgeschaltet und eine
- Datenbank zur Speicherung der Auditinginformationen angegeben werden.
+ Über diese kann das Auditing an- und ausgeschaltet sowie eine Datenbank
+ zur Speicherung der Auditinginformationen angegeben werden.
 \end_layout
 
 \begin_layout Subsection
@@ -2554,16 +2573,9 @@ Erweiterter Deployment-Deskriptor
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \align center
 \begin_inset listings
-lstparams "basicstyle={\small\ttfamily},captionpos=b,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm"
+lstparams "basicstyle={\small\ttfamily},captionpos=b,float,frame=single,tabsize=4,xleftmargin=2cm,xrightmargin=2cm"
 inline false
 status open
 
@@ -2873,7 +2885,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename img/screenshots/SIMPL_Menü.JPG
-	width 60text%
+	width 80text%
 
 \end_inset
 
@@ -3097,6 +3109,20 @@ SIMPL Preference Seiten
 
 \begin_layout Subsubsection
 Hilfe
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Was machen wir mit der Eclipse Hilfe???
+\end_layout
+
+\begin_layout Plain Layout
+Realisierung fehlt noch komplett...
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4346,7 +4372,8 @@ Vorbedingung
 
 \begin_layout Plain Layout
 Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist im Eclipse
- BPEL Designer geöffnet.
+ BPEL Designer geöffnet und eine Datenquelle wurde im Deployment-Deskriptor
+ für diesen Prozess spezifiziert.
 \end_layout
 
 \end_inset
@@ -4395,7 +4422,19 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-keine
+Es konnten keine Änderungen bezüglich der Datenquelle getätigt werden und
+ der Statement-Editor zum Erstellen von Statements konnte nicht geöffnet
+ werden.
+ Änderungen der anderen Eigenschaften wurden korrekt übernommen und werden
+ in der 
+\begin_inset Quotes eld
+\end_inset
+
+Properties-View
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -4455,7 +4494,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-keine
+3.a Im Deplyoment-Deskriptor wurde keine Datenquelle für den Prozess spezifiziert.
 \end_layout
 
 \end_inset
@@ -28181,7 +28220,7 @@ Abkürzungsverzeichnis
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="24" columns="2">
+<lyxtabular version="3" rows="26" columns="2">
 <features>
 <column alignment="left" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="6cm">
@@ -28220,6 +28259,26 @@ BPEL
 
 \begin_layout Plain Layout
 Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comma-Separated Values
 \end_layout
 
 \end_inset
@@ -28340,6 +28399,26 @@ IUD
 
 \begin_layout Plain Layout
 INSERT, UPDATE, DELETE
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NTFS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+New Technology File System
 \end_layout
 
 \end_inset

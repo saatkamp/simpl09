@@ -1,0 +1,7465 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Benutzerhandbuch}
+\def\docvers{0.7}
+\def\docautor{}
+\def\docdate{20. Juli 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+\end_preamble
+\use_default_options false
+\language ngerman
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Deckblatt.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für alle anderen Seiten
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+fancy
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\headrulewidth}{0mm}
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+SIMPL © 2009 $IMPL
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+/ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "LastPage"
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Ab hier beginnt das Dokument
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Änderungsgeschichte
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="4">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Datum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Autor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Änderungen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.04.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung des Dokuments.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24.04.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung Struktur Benutzerhandbuch
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+02.05.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung der Anwendungsfälle
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14.06.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung der Propertie Views
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.06.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung der Statement Editoren
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.06.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Beschreibung der Installation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.07.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Allg.Überarbeitung nach Feedback
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20.07.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bruededl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Allg.Überarbeitung nach Feedback
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Einführung, allgemeine Hinweise
+\end_layout
+
+\begin_layout Standard
+SIMPL ist ein erweiterbares und generisches Rahmenwerk für die Modellierung
+ und Ausführung von Workflows.
+ Bei den Datenquellen werden standardmäßig Datenbanken und Dateisysteme
+ unterstützt.
+ Durch die Erweiterbarkeit können prinzipiell alle Datenquellen integriert
+ werden.
+ Als Modellierungs- und Ausführungssprache für die hier betrachteten Workflows
+ dient die Business Process Execution Language (BPEL, siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-4"
+
+\end_inset
+
+) .
+ Über das Rahmenwerk können beliebige Datenmanagement-Funktionen in einen
+ BPEL-Prozess eingebunden werden.
+ Für eine möglichst hohe Flexibilität kann ein dynamischer Ansatz gewählt
+ werden, so dass auch erst zur Laufzeit des Systems die Datenquellen festgelegt
+ werden können (sog.
+ Late Binding).
+ Nichtsdestoweniger besteht auch die Möglichkeit die Datenquellen statisch
+ anbinden zu können.
+ Die Ausführung der Workflows unterliegt der erweiterten Workflow Engine
+ Apache ODE (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
+
+\end_inset
+
+) und die Modellierung erfolgt durch den angepassten Eclipse BPEL Designer.
+ Das Auditing einer Prozessausführung wird nur für Apache ODE bereitgestellt.
+ In diesem Benutzerhandbuch werden dem Leser alle Informationen gegeben
+ um mit SIMPL arbeiten zu können.
+ Für die Erweiterung des SIMPL Funktionsumfanges kann das Entwicklerhandbuch
+ zur Hilfe genommen werden, für das Installation und Deployment gibt das
+ Installationshandbuch
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Drinlassen ?
+\end_layout
+
+\end_inset
+
+.
+ In den folgenden Kapiteln wird die Funktionalität, die Komponenten, der
+ Aufbau, die Benutzeroberfläche und die Benutzung erläutert.
+ Kompliziertere Anwendungssituationen werden dabei mit einer ausführlichen
+ und bebilderten Schritt-für-Schritt Anleitung erläutert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Systemvoraussetzungen
+\end_layout
+
+\begin_layout Standard
+Die Systemvoraussetzungen des Rahmenwerkes entspricht den Voraussetzungen
+ der verwendeten Java Runtime Evironment und der Workflow-Engine.
+ Empfohlen sind jedoch mindestes 1 GB freier Arbeitsspeicher sowie mindestens
+ 500 MB freier Festplattenspeicher.
+ Aufgrund der Skalierbarkeit richten sich die Systemvoraussetzungen nach
+ der Anzahl der laufenden Prozesse in der Workflow-Engine.
+ Je nach Anwendungskonstellation kann sich jedoch ein erheblich größerer
+ Speicherbedarf ergeben.
+ Die Anzahl der Prozesse wird demnach nur durch die Höhe des Speichers,
+ welcher durch das Betriebssystem zu Verfügung gestellt wird, beschränkt.
+ Durch die Integration des SIMPL Eclipse Plug-Ins in die Eclipse IDE kann
+ das Rahmenwerk prinzipiell auf allen Systemen benutzt werden, die Eclipse
+ unterstützen.
+ Der SIMPL Core kann auf allen Java unterstützenden Web Containern eingesetzt
+ werden.
+ Es muß beachtet werden, dass das Rahmenwerk nur mit Apache ODE 2.0 oder
+ höher verwendet werden kann.
+ Die letzte stabile Version von Apache ODE 1.3.4 unterstützt keine Extension
+ Activities und ist für SIMPL nicht geeignet.
+ Sollten die Extension Activities in einer Version 1.X unterstützt werden,
+ so ist eine Verwendung prinzipiell möglich, jedoch ist ohne Gewährleistung
+ eines Betriebes, da SIMPL für ODE 2.0 entwickelt wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Installation 
+\end_layout
+
+\begin_layout Standard
+Das Rahmenwerk wird als Teil eines großen Installationpaketes ausgeliefert.
+ Dieses Installationspaket besteht aus allen Programmen, die für die Verwendung
+ des Rahmenwerks benötigt werden.
+ Dazu gehört das Modellierungstool Eclipse BPEL Designer, der Web Server
+ Apache Tomcat, der die Workflow-Engine ausführt, die Workflow-Engine Apache
+ ODE und natürlich das Rahmenwerk selbst.
+ Das SIMPL Rahmenwerk bestehend wiederum aus dem SIMPL Core, den SIMPL Eclipse
+ Plug-Ins und dem BPEL-DM Plug-In.
+ Näheres dazu kann Seite 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sec:Komponenten,-Aufbau-und"
+
+\end_inset
+
+ entnommen werden.
+ Durch das Installationspaket sind viele Einstellungen bereits vordefiniert,
+ um dem Benutzer eine einfache Installation zu ermöglichen.
+ Das Installationspaket ist dabei als RAR-Archiv zusammen mit allen wichtigen
+ Dokumenten auf einer CD/DVD vorhanden.
+ Für eine neue Windows Installation ist die 
+\begin_inset Quotes eld
+\end_inset
+
+All-in-one
+\begin_inset Quotes erd
+\end_inset
+
+-Installation zu empfehlen.
+ Für die Installation auf bestehenden Systemen, wo vorhandene Komponenten
+ übernommen werden sollen, wird auch die Installation der einzelnen, isolierten
+ Komponenten näher erläutert.
+\end_layout
+
+\begin_layout Subsection
+All-in-one Installation
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset Quotes eld
+\end_inset
+
+All-in-one
+\begin_inset Quotes erd
+\end_inset
+
+-Installation ist die schnelle und einfache Installation und für ein Windows
+ System zu empfehlen.
+ Das Archiv 
+\begin_inset Quotes eld
+\end_inset
+
+SIMPL.rar
+\begin_inset Quotes erd
+\end_inset
+
+ muß entpackt werden und danach kann das Rahmenwerk über die Kommandozeile
+ oder durch einen Doppelklick auf 
+\begin_inset Quotes eld
+\end_inset
+
+eclipse.exe
+\begin_inset Quotes erd
+\end_inset
+
+ im Eclipse Installationsverzeichnis gestartet werden.
+ Dazu kann der Tomcat Server über 
+\begin_inset Quotes eld
+\end_inset
+
+..bin/tomcat6.exe
+\begin_inset Quotes erd
+\end_inset
+
+ gestartet werden.
+ 
+\end_layout
+
+\begin_layout Subsection
+Installation der Komponenten und Konfiguration
+\end_layout
+
+\begin_layout Subsubsection
+Eclipse
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+macht Daniel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Neuinstallation
+\end_layout
+
+\begin_layout Standard
+Die Installation von Eclipse erfolgt durch das Entpacken von Eclipse IDE
+ for Java EE Developers (eclipse-jee-galileo-SR2-win32.zip).
+ Dadurch wäre Eclipse schon startfähig, jedoch fehlt noch der BPEL Designer
+ und das SIMPL Rahmenwerk.
+ Zum Entpacken genügt das oft bei Windows integrierte ZIP Programm, oder
+ eine Entpackprogramm wie beispielsweise Winrar (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-1"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Paragraph
+Konfiguration einer vorhandenen Eclipse Entwicklungsumgebung
+\end_layout
+
+\begin_layout Subsubsection
+BPEL Designers und SIMPL Eclipse Plug-In
+\end_layout
+
+\begin_layout Paragraph
+Neuinstallation
+\end_layout
+
+\begin_layout Standard
+Da der im Rahmenwerk beiligende BPEL Designer dem Rahmenwerk angepasst wurde,
+ ist die Neuinstallation des Eclipse BPEL Designers zwingend erforderlich
+ um die SIMPL Funktionen nutzen zu können.
+ Der BPEL Designer ( die auf SIMPL angepasste Version) und das SIMPL Eclipse
+ Plug-In befinden sich in der Datei 
+\begin_inset Quotes eld
+\end_inset
+
+simpl-eclipse.zip
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Diese Datei muß in den Eclipse Hauptordner kopiert und dort entpackt werden.
+ Beim Entpacken werden 22 Files automatisch in den 
+\begin_inset Quotes eld
+\end_inset
+
+plugins
+\begin_inset Quotes erd
+\end_inset
+
+-Ordner von Eclipse kopiert.
+ Dort müssen sich die folgenden Datei für die vollständige Funktionalität
+ befinden :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_Installation_SIMPL_ECLIPSE_Files.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_BPEL_Installation_Files"
+
+\end_inset
+
+BPEL Designer und SIMPL Installationsdateien
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Apache Tomcat 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wer macht das ? Schneimi ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Neuinstallation
+\end_layout
+
+\begin_layout Enumerate
+Die Datei 
+\begin_inset Quotes eld
+\end_inset
+
+apache-tomcat-6.0.26.exe
+\begin_inset Quotes erd
+\end_inset
+
+ enthält den Apache Tomcat Webserver der Version 6.0.26.
+ Durch Doppelklicken auf das File startet der Installationsvorgang von Apache
+ Tomcat.
+ Im Verlauf der Installation ist u.a.
+ das Installationsverzeichnis sowie den HTTP Connector Port zu wählen.
+ Beim HTTP Connector Port ist nach Möglichkeit der Port 8080 einzuhalten,
+ da dieser auch im SIMPL Rahmenwerk voreingestellt ist.
+\end_layout
+
+\begin_layout Enumerate
+Die Datei ode.war aus der apache-ode-war-2.0-beta2.zip in das Verzeichnis 
+\begin_inset Quotes eld
+\end_inset
+
+webapp
+\begin_inset Quotes erd
+\end_inset
+
+ des Apache Tomcat Installationsordner kopieren.
+\end_layout
+
+\begin_layout Enumerate
+axis2.war aus der axis2-1.5-war.zip in den Ordner 
+\begin_inset Quotes eld
+\end_inset
+
+webapps
+\begin_inset Quotes erd
+\end_inset
+
+ des Apache Tomcat Installationsordner kopieren.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Verzeichnis 
+\begin_inset Quotes eld
+\end_inset
+
+servicejars
+\begin_inset Quotes erd
+\end_inset
+
+ im Installationsordner von Tomcat im Verzeichnis 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+webapps
+\backslash
+axis2
+\backslash
+WEB-INF
+\begin_inset Quotes erd
+\end_inset
+
+ anlegen.
+\end_layout
+
+\begin_layout Paragraph
+Konfiguration eines vorhandenen Apache Tomcat 
+\end_layout
+
+\begin_layout Subparagraph
+Axis2
+\end_layout
+
+\begin_layout Subparagraph
+JUDDI
+\end_layout
+
+\begin_layout Subparagraph
+RRS
+\end_layout
+
+\begin_layout Subparagraph
+RRS Transformation Service
+\end_layout
+
+\begin_layout Subsubsection
+Apache ODE 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Wer macht das ? Rene ?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Neuinstallation
+\end_layout
+
+\begin_layout Enumerate
+Das File 
+\begin_inset Quotes eld
+\end_inset
+
+simpl-tomcat.zip
+\begin_inset Quotes erd
+\end_inset
+
+ muß in das Tomcat Installationsverzeichnis kopiert und dort entpackt werden.
+ Dieses File enthält mehrere SIMPL Komponenten wie den SIMPL Core, den Verzeichn
+isdienst Apache Juddi und die Workflow Engine Apache ODE.
+\end_layout
+
+\begin_layout Enumerate
+Das File 
+\begin_inset Quotes eld
+\end_inset
+
+simpl-ode-extension.jar
+\begin_inset Quotes erd
+\end_inset
+
+ muß in den Ordner 
+\begin_inset Quotes eld
+\end_inset
+
+lib
+\begin_inset Quotes erd
+\end_inset
+
+ im Tomcat Installationsordnet kopiert werden.
+\end_layout
+
+\begin_layout Paragraph
+Konfiguration einer vorhandenen Apache ODE 
+\end_layout
+
+\begin_layout Subparagraph
+SIMPL Core
+\end_layout
+
+\begin_layout Subparagraph
+SIMPL Auditing
+\end_layout
+
+\begin_layout Subparagraph
+BPEL DM Extension Activities
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Funktionalität
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Referenzverwaltung"
+
+\end_inset
+
+Referenzverwaltung
+\end_layout
+
+\begin_layout Standard
+Unterstützung von Referenzen in BPEL (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-3"
+
+\end_inset
+
+), damit auf Daten auch per Referenz im Workflow zugegriffen werden kann.
+ Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe zwischen
+ Workflow und Web Service standardmäßig per Wert erfolgt, was bei großen
+ Datenmengen (bis hin zu Gigabytes oder gar Terabytes im wissenschaftlichen
+ Bereich) zu erheblichen Performanzeinbußen führt.
+\end_layout
+
+\begin_layout Subsection
+Datenquellen-Registry
+\end_layout
+
+\begin_layout Standard
+Es wird eine Datenquellen-Registry bereitgestellt, mit dessen Hilfe Datenquellen
+ über den Eclipse BPEL Designer (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-10"
+
+\end_inset
+
+) ausgewählt werden können.
+ Bei den Datenquellen kann es sich um Datenbanken oder Dateisysteme handeln,
+ die dabei statisch oder dynamisch angebunden werden.
+ Bei der dymanischen Anbindung, dem sog.
+ Late-Binding, erfolgt die Auswahl der Anbindung nach definierten Richtlinien,
+ den sog.
+ Policies.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Policies nennen.
+\end_layout
+
+\end_inset
+
+Im Bereich der Datenbanken werden relationale Datenbanken der Typen MySQL,
+ Derby, EmbeddedDerby und DB2 unterstützt, im Bereich der Dateisysteme nur
+ Windows Dateisysteme auf NTFS- (New Technology File System) Basis mit dem
+ CSV (Comma-Separated Values) Dateiformat.
+ 
+\end_layout
+
+\begin_layout Subsection
+Bereitstellung von generischen BPEL-Aktivitäten
+\end_layout
+
+\begin_layout Standard
+Durch die DM-Aktivitäten kann direkt auf die Datenquellen zugegrien werden.
+\end_layout
+
+\begin_layout Subsection
+Auditing
+\end_layout
+
+\begin_layout Standard
+Das Auditing protokolliert alle Ereignisse ( z.B.
+ Ausführung einer DM-Aktivität ) die während der Laufzeit eines Prozesses
+ auftreten und speichert dies in einer vom Nutzer definierten Datenbank.
+ Diese ist frei wählbar und kann in der Adminkonsole eingestellt, sowie
+ de- und aktiviert werden.
+ Das Auditing wird nur für Apache ODE angeboten.
+\end_layout
+
+\begin_layout Subsection
+Erweiterbarkeit
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Rahmenwerk bietet durch einen sehr modularen Aufbau die Möglichkeit
+ an andere Anforderungen angepasst oder erweitert zu werden.
+ Insbesondere wird dadurch die Möglichkeit zur Anbindung von weiteren Datenquell
+en, Abfragesprachen, Strategien, etc., geboten.
+ Die Erweiterung läßt sich hauptsächlich mittels einem Plug-In System realisiere
+n.
+ Weiterführende Informationen dazu können im Entwicklerhandbuch gefunden
+ werden.
+\end_layout
+
+\begin_layout Subsection
+Validierung
+\end_layout
+
+\begin_layout Standard
+Die Validierung von Standard BPEL wird unterstützt, jedoch nicht die Validierung
+ der SIMPL-Erweiterungen von BPEL.
+ Dies kann jedoch bei einer Erweiterung des Rahmenwerkes erstellt und an
+ bereits vorhandene Extension Points angebunden werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Komponenten,-Aufbau-und"
+
+\end_inset
+
+Komponenten, Aufbau und Funktionen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/Systemumgebung.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_Systemumgebung"
+
+\end_inset
+
+SIMPL Systemumgebung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das SIMPL Rahmenwerk, bestehend aus dem SIMPL Core, den SIMPL Eclipse Plug-Ins
+ und dem BPEL-DM Plug-In, ist in die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL_Systemumgebung"
+
+\end_inset
+
+ dargestellte Systemumgebung eingebettet.
+ Die Systemumgebung besteht dabei aus Eclipse mit dem BPEL Designer Plug-In
+ (siehe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-10"
+
+\end_inset
+
+), einem Web Server, wie dem Apache Tomcat (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-7"
+
+\end_inset
+
+), und den Datenquellen, auf die zugegriffen wird.
+ Der SIMPL Core und eine Workflow-Engine (Apache Orchestration Director
+ Engine (ODE), siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "key-6"
+
+\end_inset
+
+) werden auf dem Web Server ausgeführt.
+ SIMPL unterstützt relationale Datenbanken (MySQL, IBM DB2, Apache Derby)
+ und Dateisysteme (CSV-Dateiformat) und kann um weitere Datenquellen, wie
+ XML-Datenbanken (IBM DB2 mit pureXML-Technologie) oder Sensornetz-Datenbanken
+ (TinyDB) ergänzt werden.
+ Eine Sensornetz-Datenbank (TinyDB) speichert die Daten von meist kabellos
+ vernetzten Sensoren und liefert so eine zentrale und einheitliche Zugriffsmögli
+chkeit auf Sensordaten.
+ Der SIMPL Core läuft als Web Service auf dem Web Server und liefert u.a.
+ die Funktionalität, die während der Laufzeit von Prozessen mit DM-Aktivitäten
+ benötigt wird.
+ Durch den SIMPL Core werden generell weitgehend alle Funktionalitäten,
+ die von einem beliebigen Ansatz für den Zugriff auf Datenquellen von wissenscha
+ftlichen Workflows benötigt werden, geliefert.
+ Dadurch ergibt sich die Möglichkeit, in der Workflow-Engine so wenig wie
+ nötig implementieren zu müssen.
+ Diese Aufteilung ermöglicht es, entsprechende zukünftige Ansätze für den
+ Datenzugriff relativ leicht umzusetzen bzw.
+ bereits entwickelte Ansätze auch relativ leicht in andere Workflow-Laufzeit-
+ und Modellierungsumgebungen zu integrieren.
+ Dieser Umstand erhöht die Portabilität und die Erweiterbarkeit des Rahmenwerks
+ beträchtlich.
+ Die SIMPL Eclipse Plug-Ins bestehen aus drei separaten Plug-Ins, dem SIMPL
+ Core Plug-In, dem BPEL-DM Plug-In und dem SIMPL Core Client Plug-In.
+ Das SIMPL Core Plug-In erweitert die grafische Oberfläche von Eclipse,
+ um Einstellungen für das SIMPL Rahmenwerk vornehmen zu können.
+ Das BPEL-DM Plug-In erweitert das Eclipse BPEL Designer Plug-In, um Prozesse
+ mit DM-Aktivitäten modellieren zu können.
+ Durch diese Trennung ist es möglich, auch nur eines der beiden Plug-Ins
+ in Eclipse einzubinden und z.B.
+ für das jeweils andere Plug-In eigene Implementierungen zu nutzen.
+ Das SIMPL Core Client Plug-In realisiert die Verbindung mit dem SIMPL Core
+ und wird sowohl für das SIMPL Core Plug-In (Laden und Speichern von Rahmenwerks
+einstellungen), als auch für das BPEL-DM Plug-In (Laden aller vom SIMPL
+ Core unterstützten Datenquellen) benötigt.
+ Die Ausführungslogiken der jeweiligen DM-Aktivitäten werden in der Workflow-Eng
+ine implementiert und in diese als Plug-In (BPEL-DM Extension Activities)
+ eingebunden.
+ Dabei läuft die benötigte Software auf dem lokalen Rechner des Benutzers,
+ die Datenquellen können jedoch auf verschiedene Server verteilt sein.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Benutzeroberfläche von SIMPL
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die grafische Benutzeroberfläche der SIMPL Eclipse
+ Plug-Ins beschrieben.
+ 
+\end_layout
+
+\begin_layout Subsection
+Benutzeroberfläche des erweiterten Eclipse BPEL Designers
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/EclipseErweitert.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ErweitertesSimplEclipse"
+
+\end_inset
+
+Erweiteter Eclipse BPEL Designer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ErweitertesSimplEclipse"
+
+\end_inset
+
+ zeigt den erweiterten Eclipse BPEL Designer.
+ In der Palette befinden sich die SIMPL DM-Aktivitäten, die wie die bereits
+ vorhandenen Aktivitäten zur Modellierung von Prozessen verwendet werden
+ können.
+ Weiterhin wird das SIMPL Menü bereitgestellt, über das alle wichtigen Einstellu
+ngen und Informationen des SIMPL Rahmenwerks vorgenommen bzw.
+ angezeigt werden können.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Referenzvariablen
+\end_layout
+
+\begin_layout Standard
+In der mittleren Spalte von Abb.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ErweitertesSimplEclipse"
+
+\end_inset
+
+ sieht man die vorhandenen Referenzvariablen und kann diese mit einem Klick
+ auf 
+\begin_inset Quotes eld
+\end_inset
+
++
+\begin_inset Quotes erd
+\end_inset
+
+ neu erstellen und benennen.
+ Nach einer Selektierung einer Referenzvariable und einem Klick auf 
+\begin_inset Quotes eld
+\end_inset
+
+x
+\begin_inset Quotes erd
+\end_inset
+
+ kann diese gelöscht werden.
+ Im unteren Properties Fenster ist es möglich unter Details den Reference
+ type auf 
+\begin_inset Quotes eld
+\end_inset
+
+onInstantiation
+\begin_inset Quotes erd
+\end_inset
+
+ oder auf 
+\begin_inset Quotes eld
+\end_inset
+
+fresh
+\begin_inset Quotes erd
+\end_inset
+
+ zu setzen.
+ Bei ersterem wird die Referenzvariable nur beim Starten eines BPEL Prozesses
+ auf den tatsächlichen Wert gesetzt, bei 
+\begin_inset Quotes eld
+\end_inset
+
+fresh
+\begin_inset Quotes erd
+\end_inset
+
+ bei jedem Zugriff auf die Referenzvariable.
+ Der Typ des Referenzwertes kann mit 
+\begin_inset Quotes eld
+\end_inset
+
+Browse
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt werden und wird im Structure Fenster angezeigt.
+ Das rot umrandete Symbol in der Toolbar stößt die Transformation eines
+ Prozesses mit Referenzvariablen an.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_BPEL_Referenzvariable.JPG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_BPEL_Referencevariable"
+
+\end_inset
+
+Um Referenzvariablen erweiterter BPEL Designer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Was genau während der Transformation geschieht und wie diese durchgeführt
+ wird, wird in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Referenzverwaltung"
+
+\end_inset
+
+ beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+ODE Deployment-Deskriptor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DeploymentDeskriptor.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Erweiteter Deployment-Deskriptor"
+
+\end_inset
+
+Erweiteter Deployment-Deskriptor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der ODE Deployment-Deskriptor ist die XML-Konfigurationsdatei für die Apache
+ ODE Workflow-Engine.
+ Sie kann hier in dieser grafischen Oberfläche bearbeitet werden.
+ Sie ermöglicht die De- und Aktivierung des Prozesses, des Auditings und
+ Monitorings sowie das Hinzufügen, Bearbeiten und Löschen von Datenquellen
+ Registrierungen und Mappings.
+ Die Mappings dienen dazu um bei der Ausführung von DM-Aktivitäten definierte
+ Richtlinien ( Policies) und Strategien einzuhalten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DD_AddDS.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-DD-AddDS"
+
+\end_inset
+
+Dialog für das Hinzufügen einer Datenquellen-Beschreibung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im obigen Fenster, welches nach Drücken des New-Buttons bei 
+\begin_inset Quotes eld
+\end_inset
+
+Data Source Specification
+\begin_inset Quotes erd
+\end_inset
+
+ erscheint, können neue Datenquellen für die Verwendung in der Workflow
+ Engine hinzugefügt werden.
+ Als Datenquelle kann eine Datenbank oder ein Filesystem dienen.
+ Erforderliche Angaben sind Name, Adresse, Typ, Untertyp, Sprache und Format.
+ Optional sind Benutzername und Passwort.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DD_AddAM.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL-DD-AddAM"
+
+\end_inset
+
+Dialog für das Hinzufügen eines Activity Mapping
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Abb.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL-DD-AddAM"
+
+\end_inset
+
+ können neue Activity Mappings hinzugefügt werden.
+ Für jede DM-Aktivität kann eine eigene Policy mit einer Strategie ausgewählt
+ werden.
+ Als Strategie unterstützt SIMPL nur First_Find.
+ First_Find ermöglicht das Mapping bei auf die erste geeignete Datenquelle,
+ die der Policy entspricht.
+ Das Mapping wird bei der Ausführung des DM-Aktivität ausgeführt.
+\end_layout
+
+\begin_layout Subsection
+Benutzeroberfläche der SIMPL Eclipse Plug-Ins
+\end_layout
+
+\begin_layout Subsubsection
+Admin Konsole
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/AdminConsole.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_Admin_Console"
+
+\end_inset
+
+Admin Konsole
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Admin-Konsole kann über das SIMPL Menü geöffnet werden und bietet die
+ Möglichkeit Einstellungen für die Verwaltung des Auditings vorzunehmen.
+ Das Auditing kann de- und aktiviert werden, sowie die Datenbank, wo die
+ Auditingdaten gespeichert werden, spezifiziert werden.
+\end_layout
+
+\begin_layout Standard
+Folgende Schaltächen stehen durchgängig zur Verfügung: [Default]: Laden
+ der Standard-Einstellungen, [Save]: Speichern aller durchgeführten Änderungen,
+ [Reset]: Zurücksetzen aller durchgeführten Änderungen auf den letzten Speichers
+tand und [Close]: Schliessen der Admin-Konsole und Verwerfen aller Änderungen
+\end_layout
+
+\begin_layout Subsubsection
+Settings
+\end_layout
+
+\begin_layout Standard
+Die Einstellungen können über das SIMPL Menü mit dem Menüpunkt Settings
+ geöffnet werden und bieten die Möglichkeit, Einstellungen für die SIMPL
+ Eclipse Plug-Ins vorzunehmen.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_Settings.jpg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_Settings"
+
+\end_inset
+
+SIMPL Settings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dazu gehört die Angabe der Adresse des Reference Resolution Systems, des
+ SIMPL Cores, des Transformation Services und der UDDI Registry.
+ Die Schaltflächen erfüllen folgende Funktionen: [Restore Defaults]: Laden
+ der Standard-Einstellungen, [Apply]: Speichern aller durchgeführten Änderungen,
+ [OK] : Speichern der Änderungen und schliessen des Fensters, [Cancel]:
+ Schliessen der Admin-Konsole und verwerfen aller Änderungen
+\end_layout
+
+\begin_layout Subsubsection
+Help
+\end_layout
+
+\begin_layout Standard
+Der Menüpunkt Help leitet den Benutzer auf die Eclipse Hilfe weiter.
+ Dort stehen dem Benutzer über die Punkte BPEL-DM Plug-In und SIMPL Core
+ Plug-In die entsprechenden Hilfe-Dokumente der SIMPL Eclipse Plug-Ins zur
+ Verfügung.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+About
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_About.jpg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_About"
+
+\end_inset
+
+SIMPL About
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Menüpunkt About öffnet das SIMPL About-Fenster und zeigt die Versionsnummer,
+ Lizenzinformationen und Mitwirkende des Rahmenwerkes an.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Reload Plug-In Data
+\end_layout
+
+\begin_layout Standard
+Über den Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Reload Plug-In Data
+\begin_inset Quotes erd
+\end_inset
+
+ in Abb.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ErweitertesSimplEclipse"
+
+\end_inset
+
+ des SIMPL Menüs, können alle Daten des SIMPL Cores nachträglich abgerufen
+ werden.
+ Damit muß Eclipse nicht neu gestartet werden wenn bei der Initialisierung
+ des Rahmenwerkes der SIMPL Core oder der Webserver nicht erreichbar waren.
+ Es reicht den entsprechenden Menüpunkt auszuwählen, damit das BPEL DM Plug-In
+ in den entsprechenden Eigenschaftsfenstern (siehe Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Data-Management-Aktivitäten-GUI"
+
+\end_inset
+
+) die unterstützten Datenquellen, deren Subtypen und die unterstützten Abfragesp
+rachen anzeigen kann.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Data-Management-Aktivitäten-GUI"
+
+\end_inset
+
+Daten-Management-Aktivitäten
+\end_layout
+
+\begin_layout Standard
+Die Data-Management-Aktivitäten sind wie in folgender Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL_DataManagement_Palette"
+
+\end_inset
+
+ dargestellt in der Palette von Eclipse zu finden:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Palette.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DataManagement_Palette"
+
+\end_inset
+
+Data Management Aktivitäten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die DM-Aktivitäten erfüllen folgende Funktionen :
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+noch machen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Query :
+\end_layout
+
+\begin_layout Itemize
+Insert :
+\end_layout
+
+\begin_layout Itemize
+Update :
+\end_layout
+
+\begin_layout Itemize
+Delete :
+\end_layout
+
+\begin_layout Itemize
+Create :
+\end_layout
+
+\begin_layout Itemize
+Drop :
+\end_layout
+
+\begin_layout Itemize
+Call :
+\end_layout
+
+\begin_layout Itemize
+RetrieveData :
+\end_layout
+
+\begin_layout Itemize
+Transfer :
+\end_layout
+
+\begin_layout Standard
+Für die Parametrisierung der DM-Aktivitäten und die Anzeige der bereits
+ eingestellten Parameter dient die Property-View mit Ihren Statement-Editoren,
+ die im Folgenden näher erläutert werden.
+\end_layout
+
+\begin_layout Paragraph
+Property-View
+\end_layout
+
+\begin_layout Standard
+In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Eigenschaftenfenster-einer-Data-Management-Aktivität"
+
+\end_inset
+
+ wird die 
+\begin_inset Quotes eld
+\end_inset
+
+Property View
+\begin_inset Quotes erd
+\end_inset
+
+ am Beispiel einer Query-Aktivität gezeigt.
+ Für die Parametrisierung der DM-Aktivitäten der Aktivität dient die Property-Vi
+ew.
+ Das bedeutet, dass die Aktivität hier mit Inhalt gefüllt wird, wie z.B.
+ der Zieldatenquelle oder dem Befehl, der auf dieser ausgeführt werden soll.
+ Dazu wird die zuerst die Datenquelle bei 
+\begin_inset Quotes eld
+\end_inset
+
+Data source name
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt, worauf hin dann die Eigenschaften Typ, Untertyp und Sprache
+ dieser Datenquelle in der linken Hälfte der Ansicht angezeigt werden.
+ Das Ziel dieser Aktivität kann bei 
+\begin_inset Quotes eld
+\end_inset
+
+Target to insert the query result
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt werden.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+mehr zu den Buttons hineinschreiben
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Textfeld 
+\begin_inset Quotes eld
+\end_inset
+
+Data management operation
+\begin_inset Quotes erd
+\end_inset
+
+ wird dabei der Befehl in seiner vollen Länge angezeigt, genau so wie er
+ auf der Datenquelle ausgeführt wird.
+ Dort kann der Befehl auch noch manuell geändert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_PropertySection.JPG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Eigenschaftenfenster-einer-Data-Management-Aktivität"
+
+\end_inset
+
+Eigenschaftsfenster eine DM-Aktivität am Beispiel einer Query Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Statement-Editor
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ausführlicher machen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Statement Editoren sind vorhanden, um die Erstellung eines SQL Statement
+ zu erleichtern.
+ Um dies zu erreichen, wird die Erstellung der Statements über eine grafische
+ Oberfläche ermöglicht.
+ Solche Editoren verfügen immer je DM-Aktivität über unterschiedliche Funktional
+ität bzw.
+ graphische Oberflächen.
+ Man erreicht die Statement Editoren unter dem Menüpunkt 
+\begin_inset Quotes eld
+\end_inset
+
+Details
+\begin_inset Quotes erd
+\end_inset
+
+ in der Properties Section der jeweiligen Aktivität über den Button 
+\begin_inset Quotes eld
+\end_inset
+
+Open Editor
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_StatementEditorSample.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:DM_StatementEditor"
+
+\end_inset
+
+Statement Editor Beispiel 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Benutzeroberfläche des RRS Eclipse Plug-Ins
+\end_layout
+
+\begin_layout Standard
+Das RRS Eclipse Plug-In ist als Eclipse View in Eclipse integriert.
+ Über diese View können alle in den SIMPL Settings hinterlegten RRSs verwaltet
+ werden.
+ Zur Verwaltung zählt das Anlegen, Bearbeiten, Löschen und Aktualisieren
+ von Referenzen eines RRS.
+ Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RRS-View"
+
+\end_inset
+
+ zeigt die View des RRS Eclipse Plug-Ins.
+ Die o.g.
+ Verwaltungsfunktionen können über das Kontextmenü oder über die Toolbar,in
+ d er rechten oberen Ecke der View, erreicht werden.
+ Das Hinzufügen der RRS View geschieht in Eclipse durch aktivieren der Reference
+ Management View in der Eclipse Menüleiste unter dem Punkt 
+\begin_inset Quotes eld
+\end_inset
+
+Window
+\begin_inset Quotes erd
+\end_inset
+
+ unter 
+\begin_inset Quotes eld
+\end_inset
+
+Show View
+\begin_inset Quotes erd
+\end_inset
+
+ unter 
+\begin_inset Quotes eld
+\end_inset
+
+Other
+\begin_inset Quotes erd
+\end_inset
+
+ unter 
+\begin_inset Quotes eld
+\end_inset
+
+Reference Resolution System
+\begin_inset Quotes erd
+\end_inset
+
+ und dann anklicken von 
+\begin_inset Quotes eld
+\end_inset
+
+Reference Management View
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/RRS_View.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RRS-View"
+
+\end_inset
+
+RRS-View
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Datenquellen-Registry
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Benutzeroberäche des Eclipse Datenquellen-Registry
+ Plug-Ins und des Datenquellen-Registry Web Interfaces beschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellen-Registry Plug-In 
+\end_layout
+
+\begin_layout Standard
+Das Datenquellen-Registry Plug-In ist in eine Eclipse View integriert.
+ Die Datenquellen-Informationen werden aus der Datenquellen-Registry gelesen
+ und in einer Tabelle in der View angezeigt (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+).
+ Die Ansicht wird über Window->Show View->Other->UDDI Registry->UDDI Browser
+ View hinzugefügt.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+ können alle Einträge der Datenquellen-Registry betrachtet, aber nicht verändert
+ oder gelöscht werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/UDDI_View.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+Datenquellen-Registry-View
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Datenquellen-Registry Web Interface
+\end_layout
+
+\begin_layout Standard
+Das Datenquellen-Registry Web Interface dient dem Datenquellen-Administrator
+ die Datenquellen-Registry zu verwalten.
+ Dafür gibt er den Namen der Datenquelle und deren Adresse an und wählt
+ jeweils aus einem Drop-Down-Menü den Typ und den Subtyp der Datenquelle
+ aus.
+ Durch das Drücken des Add Policy-Buttons, kann für die Datenquelle eine
+ Policy-Datei, die extern modeliert und über das Textfeld ausgewählt wurde,
+ hinzugefügt werden.
+ Mit dem Save-Button werden alle durchgeführten Änderungen gespeichert.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/webinterface.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Datenquellen-Registry-Webinterface"
+
+\end_inset
+
+Datenquellen-Registry Webinterface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Benutzung von SIMPL
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle Prozess-Modellierer
+\end_layout
+
+\begin_layout Standard
+Vorab: Jede Selektion von Aktivitäten oder Eigenschaften erfolgt mit der
+ linken Maustaste.
+ Jedes dazugehörige Konextmenü wird durch die rechte Maustaste nach der
+ Selektion aufgerufen.
+\end_layout
+
+\begin_layout Subsubsection
+Data-Management-Aktivität erstellen
+\end_layout
+
+\begin_layout Standard
+Zur Erstellung einer neuen Data-Management (DM) Aktivität muss ein vorhandener
+ BPEL Prozess im BPEL Designer geöffnet und die BPEL Designer-Palette angezeigt
+ werden.
+ Danach erfolgt die Selektion einer DM-Aktivität aus der BPEL Designer-Palette
+ durch Auswahl mit der linken Maustaste und anschließend Selektion der Stelle
+ des Prozesses, an der die ausgewählte DM-Aktivität eingefügt werden soll.
+ Alternativ kann dies auch per Drag&Drop geschehen.
+ Anschliessend ist der Aktivitätsname einzugeben oder der vorgeschlagene
+ Name zu bestätigen.
+ Sollte die Palette mit den DM Aktivitäten nicht sichtbar sein, so kann
+ sie durch einen Klick auf das Dreieck rechts oben im Hauptfenster angezeigt
+ werden.
+\end_layout
+
+\begin_layout Subsubsection
+Data-Management-Aktivität bearbeiten
+\end_layout
+
+\begin_layout Standard
+Wenn ein BPEL Prozess mit einer DM- Aktivität geöffnet ist, dann kann diese
+ DM-Aktivität selektiert werden und danach in der Properties-View unter
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Details
+\begin_inset Quotes erd
+\end_inset
+
+ alle Eigenschaften angezeigt werden.
+ Die zu bearbeitenden Eigenschaften können direkt ausgewählt und geändert
+ werden.
+ Komplexere oder größere Änderungen an den Statements können mithilfe der
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Statement Editoren
+\begin_inset Quotes erd
+\end_inset
+
+ vollzogen werden.
+ Für jeden DM-Aktvität gibt es eine spezifische Properties-View und verschiedene
+ Statement-Editoren.
+ Die Bedienung und die Funktionen werden im Folgenden näher erläutert.
+\end_layout
+
+\begin_layout Paragraph
+Property-View
+\end_layout
+
+\begin_layout Standard
+In Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL_DM_Property_View"
+
+\end_inset
+
+ wird eine Property-View am Beispiel einer Query Activity gezeigt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_PropertySection+Rahmen.jpg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DM_Property_View"
+
+\end_inset
+
+DM Properties View
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn im Folgenden von der Properties View gesprochen wird, dann bezieht
+ es sich immer auf den 
+\begin_inset Quotes eld
+\end_inset
+
+Detail
+\begin_inset Quotes erd
+\end_inset
+
+ Abschnitt wie in der obigen Grafik angezeigt.
+ Es gibt allgemeine Funktionalitäten, die bei allen Property Views vorhanden
+ sind.
+ Dies sind:
+\end_layout
+
+\begin_layout Standard
+1) Unterschiedliche Textfarben für verschiedene Statement-Komponenten 
+\end_layout
+
+\begin_layout Standard
+2) Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ für das Speichern der Änderungen im Statement-Textfeld, Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Insert Parameter Variable
+\begin_inset Quotes erd
+\end_inset
+
+ zum Einfügen von Variablen und die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Insert Container Reference Variable
+\begin_inset Quotes erd
+\end_inset
+
+ zum Einfügen von Referenzvariablen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_Statement_Textbox.png
+	width 80text%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DM_Statement_Textbox"
+
+\end_inset
+
+DM Statement Textbox
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) In der Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL_DM_Statement_Textbox"
+
+\end_inset
+
+ werden, wie oben bereits erwähnt,beim Editieren des Statements die Einträge
+ in verschiedene Farben angezeigt.
+ Die Farbe hängt davon ab, ob es sich bei dem Eintrag um ein Schlüsselwort,
+ Befehle oder nur einen Tabellennamen handelt.
+ Die Farben werden wie folgt zugeordnet :
+\end_layout
+
+\begin_layout Itemize
+Blau : BPEL-Variablen und weitere Werte mit Rauten umgeklammert #values#
+\end_layout
+
+\begin_layout Itemize
+Lila : SQL-Schlüsselwörter und Befehle
+\end_layout
+
+\begin_layout Itemize
+Schwarz : Tabellen-, Spalten-, File-,Verzeichnis- und Laufwerksnamen
+\end_layout
+
+\begin_layout Standard
+2) Die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ welche zum Speichern des Statements dient.
+ Ohne Betätigen dieser Schaltfläche werden alle Änderungen verworfen.
+\end_layout
+
+\begin_layout Standard
+In der Combobox 
+\begin_inset Quotes eld
+\end_inset
+
+Data source name
+\begin_inset Quotes erd
+\end_inset
+
+ wird die Datenquelle, die im Voraus über dir Datenquellen Registry definiert
+ wird, ausgewählt.
+ Es werden die Bedienelemente an den ausgewählten Datenquellentyp angepasst.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_PropertiesViewSample.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FirstDMPropertiesView"
+
+\end_inset
+
+DM Properties View Insert Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FirstDMPropertiesView"
+
+\end_inset
+
+ zeigt eine DM Properties View am Beispiel einer Insert Aktivität.
+ Im Folgenden werden die Schaltflächen bei unterschiedlichen Datenquellenarten
+ erläutert.
+\end_layout
+
+\begin_layout Subparagraph
+Schaltflächen bei einem Filesystem als Datenquelle
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_SecondDMPropertiesView.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SecondDMPropertiesView"
+
+\end_inset
+
+DM PropertiesView Filesystem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SecondDMPropertiesView"
+
+\end_inset
+
+ zeigt die auf ein Filesystem angepasst Properties View mit den neuen Schaltfläc
+hen 
+\begin_inset Quotes eld
+\end_inset
+
+Select Command
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Select File
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Select Folder
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Select Drive
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Nach der Auswahl der Datenquelle wird der Datentyp ( hier Filesystem),
+ der Subtype ( hier Windows Local) und die Anfragesprache ( hier Shell)
+ angezeigt.
+ .
+ Bei Benutzung des 
+\begin_inset Quotes eld
+\end_inset
+
+Open Editor
+\begin_inset Quotes erd
+\end_inset
+
+-Buttons erscheint der für die jeweilige Aktivität verfügbare Editor.
+ Hier würde nun der Insert Statement Editor erscheinen.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Select Command
+\end_layout
+
+\begin_layout Standard
+Durch die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Select Command
+\begin_inset Quotes erd
+\end_inset
+
+ (siehe Abb.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL_DM_SelectCommand"
+
+\end_inset
+
+) kann bei den verfügbaren Befehlen (z.B.
+ Cacls für Benutzerrechte ) für diese Datenquelle eine Wahl getroffen werden
+ und dann mit 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to Statement
+\begin_inset Quotes erd
+\end_inset
+
+ in das Statement hinzugefügt werden.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+grafik updaten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_SelectCommand.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DM_SelectCommand"
+
+\end_inset
+
+DM Select Command
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Select Drive
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+grafik updaten
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_SelectDrive.jpg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DM_SelectDrive"
+
+\end_inset
+
+DM Select Drive
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nach 
+\begin_inset Quotes eld
+\end_inset
+
+Select Drive
+\begin_inset Quotes erd
+\end_inset
+
+ erscheinen alle zur Verfügung stehenden Laufwerke mit der Format-Typ und
+ der Kapazität.
+\end_layout
+
+\begin_layout Subparagraph
+Schaltflächen bei einer Datenbank als Datenquelle
+\end_layout
+
+\begin_layout Standard
+Abhängig vom Typ der ausgewählten Datenquellen werden die Bedienelemente
+ bzw.
+ die Schaltflächen dynamisch angepasst.
+ 
+\end_layout
+
+\begin_layout Standard
+Bei der Auswahl eines Filesystemes als Datenquelle werden folgende Schaltflächen
+ angezeigt :
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Insert Variable
+\begin_inset Quotes erd
+\end_inset
+
+ : Fügt BPEL-Variablen ein.
+ Es folgt ein neues Fenster wo die gewünschte Variable ausgewählt werden
+ kann.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Insert Table
+\begin_inset Quotes erd
+\end_inset
+
+ : Zur Auswahl von Datenbanktabellen und Spalten aus der gewählten Datenbank
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Database.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DM_DatabaseSource"
+
+\end_inset
+
+Datenbank als Datenquelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Hinzufügen von Tabellen/Spalten aus der DB der Datenquelle
+\end_layout
+
+\begin_layout Standard
+In der folgenden Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL_DM_InsertTable"
+
+\end_inset
+
+ wird das Fenster zur Auswahl von Tabellen und Spalten aus der Datenbank-Datenqu
+elle dargestellt.
+ Man öffnet dieses Fenster indem man 
+\begin_inset Quotes eld
+\end_inset
+
+Insert Table
+\begin_inset Quotes erd
+\end_inset
+
+ anklickt.
+ Die Spalten und Tabellennamen werden dem Statement hinzugefügt, indem man
+ den gewünschten Tabellen- und Spaltennamen markiert und 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to statement
+\begin_inset Quotes erd
+\end_inset
+
+ anklickt.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_InsertTabel.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DM_InsertTable"
+
+\end_inset
+
+DM 
+\begin_inset Quotes eld
+\end_inset
+
+Insert Table
+\begin_inset Quotes erd
+\end_inset
+
+ Befehl
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Hinzufügen von BPEL-Variablen aus dem BPEL-Prozess
+\end_layout
+
+\begin_layout Standard
+Die Properties View bietet auch die Möglichkeit an, BPEL-Variablen aus dem
+ BPEL-Prozess dem Statement hinzuzufügen.
+ Die bereits angelegten BPEL Variablen.
+ die hinzugefügt werden können, befinden sich im rechten Bereich (siehe
+ Abb.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIMPL_BPEL_Variables"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_BPEL_Variables.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_BPEL_Variables"
+
+\end_inset
+
+BPEL Variablen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch Betätigung des Buttons 
+\begin_inset Quotes eld
+\end_inset
+
+Insert Variable
+\begin_inset Quotes erd
+\end_inset
+
+ erscheint die Liste der BPEL-Variablen :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_InsertBPELVariable.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIMPL_DM_InsertBPELVariable"
+
+\end_inset
+
+Insert BPEL Variable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Variable kann ausgewählt und in das Statement durch Drücken von 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to statement
+\begin_inset Quotes erd
+\end_inset
+
+ eingefügt werden.
+\end_layout
+
+\begin_layout Paragraph
+Statement Editoren 
+\end_layout
+
+\begin_layout Standard
+Statement Editoren sind da, um die Erstellung eines SQL Statement zu erleichtern.
+ Um dies zu erreichen, wird die Erstellung der Statements, über eine graphischen
+ Oberfläche ermöglicht.
+ Solche Editoren verfügen immer je DM-Aktivität über unterschiedlichen Funktiona
+lität bzw.
+ grafische Benutzeroberflächen.
+ Man erreicht die Statement Editoren über die Properties View unter 
+\begin_inset Quotes eld
+\end_inset
+
+Details
+\begin_inset Quotes erd
+\end_inset
+
+ über die Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Open Editor
+\begin_inset Quotes erd
+\end_inset
+
+ .
+ Abhängig davon, welche DM-Aktivität man gerade behandelt, wird der passende
+ Statement Editor gestartet.
+ Als Beispiel folgt nun ein Statement Editor einer Insert-Aktivität.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_StatementEditorSample.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Editor-Inser_Aktivity"
+
+\end_inset
+
+Statement Editor einer Insert Aktivität
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Allgemeine Funktionen
+\end_layout
+
+\begin_layout Standard
+In diesen Unterabschnitt werden die allgemeine Funktionalitäten und Bedienelemen
+te behandelt die in allen Statement Editoren identisch sind.
+\end_layout
+
+\begin_layout Subparagraph
+Statement Schlüsselwörter Buttons:
+\end_layout
+
+\begin_layout Standard
+In jedem der Statement Editoren findet man die Statement Schlüsselwörter,
+ die man in dem jeweiligen Editor verwenden kann.
+ Bei Anklicken der Schaltflächen wird das Schlüsselwort dem Statement hinzugefüg
+t.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Statement_Key_Words.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Schlüsselwörter-Buttons"
+
+\end_inset
+
+Statement Schlüsselwörter Buttons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die orangen Markierungen dienen der Orientierung und zeigen dem Benutzer,
+ welche Schlüsselwörter in welcher Reichenfolge vorgesehen sind.
+\end_layout
+
+\begin_layout Standard
+Zum Beispiel: Beim Klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+WHERE
+\begin_inset Quotes erd
+\end_inset
+
+ wandert die Markierung auf die nächste in der Reihenfolge vorgesehenen
+ Statement Schlüsselwörter 
+\begin_inset Quotes eld
+\end_inset
+
+ORDER BY
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+GROUP BY
+\begin_inset Quotes erd
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Statement_Key_Words2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Schlüsselwörter-Buttons2"
+
+\end_inset
+
+Statement Schlüsselwörter Buttons 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Statement_Key_Words3.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Schlüsselwörter-Buttons3"
+
+\end_inset
+
+Statement Schlüsselwörter Buttons 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+UNDO Funktionalität:
+\end_layout
+
+\begin_layout Standard
+Durch Betätigen des Buttons 
+\begin_inset Quotes eld
+\end_inset
+
+UNDO
+\begin_inset Quotes erd
+\end_inset
+
+ wird die letzte Änderung im Statement rückgängig gemacht.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Statement_UNDO.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-UNDO-Button"
+
+\end_inset
+
+Statement UNDO Button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Buttons 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Remove from table
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to Statement
+\begin_inset Quotes erd
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Statement_Insert_Remove.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Insert--und-Remove"
+
+\end_inset
+
+Insert- und Remove Buttons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Insert to table : Fügt eine zuvor erstelltes Statement in die Datenbanktabelle
+ ein.
+\end_layout
+
+\begin_layout Itemize
+Remove from table : Entfernt Änderung oder Einträge, die zuletzt der Datenbankta
+belle hinzugefügt wurden.
+\end_layout
+
+\begin_layout Itemize
+Insert to statement : Fügt alle Einträge der Datenbanktabelle in einem ausgewähl
+ten Bereich in das Statement ein.
+\end_layout
+
+\begin_layout Standard
+Es folgt eine Beispiel Tabelle wie sie nach Einfügen diverser Operationen
+ aussehen könnte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Sample_Table.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-Editor-Beispiel"
+
+\end_inset
+
+Statement Editor Beispiel Tabelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Statement_OK_CLOSE_Button.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement-OK-und-CloseButton"
+
+\end_inset
+
+Statement OK und Close Button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch Betätigung von 
+\begin_inset Quotes eld
+\end_inset
+
+Close
+\begin_inset Quotes erd
+\end_inset
+
+ wird der Editor geschlossen und jede Änderung verworfen.
+\end_layout
+
+\begin_layout Standard
+Durch Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons wird die Änderung am Statement bestätigt.
+ Danach öffnet sich der Zwischenspeicherungsdialog, welcher die Möglichkeit
+ bietet das Statement von Hand zu bearbeiten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Manual_Edit_Window.png
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statement_Zwischenspeicherungsdialog"
+
+\end_inset
+
+Zwischenspeicherungsdialog
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch 
+\begin_inset Quotes eld
+\end_inset
+
+Save Statement
+\begin_inset Quotes erd
+\end_inset
+
+ kann das Statement ohne Änderungen, oder wenn etwas geändert wurde dann
+ mit, übernommen werden.
+ Es gibt nur die Möglichkeit hier Änderungen vorzunehmen.
+ Änderungen in den Editoren Fenstern sind nicht möglich.
+\end_layout
+
+\begin_layout Subparagraph
+Insert Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Statement Editor ist für das Erstellen des Statements bei der Insert
+ DM-Aktivität zuständig.
+ Beim Anklicken des 
+\begin_inset Quotes eld
+\end_inset
+
+Values
+\begin_inset Quotes erd
+\end_inset
+
+ Schlüsselwortes öffnet sich folgende Ansicht:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Insert_Statement_Editor.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Insert-Statement-Editor_Values"
+
+\end_inset
+
+Insert Statement Editor - Values
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise: Man wählt zuerst eine Tabelle aus der Datenquelle, dann
+ die Spalten aus der Liste aus.
+ Diesen Spalten kann man einen Wert zuweisen und in der Tabelle zwischenspeicher
+n.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Inser_Statement_Select.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Insert-Statement-Editor_Select"
+
+\end_inset
+
+Insert-Statement-Editor_Select
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Select Schlüsselwort wird analog wie im Query Statement Editor verwendet.
+ Siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Query-Statement-Editor"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Query-Statement-Editor"
+
+\end_inset
+
+Query Statement Editor
+\end_layout
+
+\begin_layout Standard
+Bei diesen Statement Editor handelt es sich um den Editor zur Erstellung
+ des Statements für die Query DM-Aktivität.
+ Es verfügt über die Schaltflächen bzw.
+ Schlüsselwörter: SELECT, WHERE, ORDER BY, GROUP BY und HAVING.
+ Nach Betätigen des 
+\begin_inset Quotes eld
+\end_inset
+
+Select
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons erscheint folgende Anzeige :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Query_Statement_Select.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Query-Statement-Editor_Select"
+
+\end_inset
+
+Query Statement Editor_Select
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Auf der linken Hälfte des Fensters wählt man aus der Tabelle
+ eine Liste aus.
+ Die Spalten der ausgewählten Tabelle erscheinen in der Combobox 
+\begin_inset Quotes eld
+\end_inset
+
+Column name
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Man sucht danach den gewünschten Spaltenname aus und wählt die anderen
+ Parameter in den restlichen Comboboxen aus.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+Operations
+\begin_inset Quotes erd
+\end_inset
+
+ werden die möglichen Operationen wie 
+\begin_inset Quotes eld
+\end_inset
+
+AVG
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+SUM
+\begin_inset Quotes erd
+\end_inset
+
+ oder
+\begin_inset Quotes erd
+\end_inset
+
+Min
+\begin_inset Quotes erd
+\end_inset
+
+ ausgewählt.
+ Mit 
+\begin_inset Quotes eld
+\end_inset
+
+Dist
+\begin_inset Quotes erd
+\end_inset
+
+ (engl.
+ distinct) können einzelne Parameter und mit 
+\begin_inset Quotes eld
+\end_inset
+
+All
+\begin_inset Quotes erd
+\end_inset
+
+ auch alle Parameter eingestellt werden.
+ Im Textfeld 
+\begin_inset Quotes eld
+\end_inset
+
+Value
+\begin_inset Quotes erd
+\end_inset
+
+ kann dann ein Wert für den selektierten Spaltenname eingetragen werden.
+\end_layout
+
+\begin_layout Subparagraph
+Call Statement Editor 
+\end_layout
+
+\begin_layout Standard
+Dieser Statement Editor ist für das Erzeugen eines Call-Statements zuständig.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Call_Statement.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Call-Statement-Editor"
+
+\end_inset
+
+Call Statement Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Man schreibt in das schmale Textfeld den Name der Prozedur,
+ auf welche das Call-Statement angewendet werden soll.
+ Danach muss der Button 
+\begin_inset Quotes eld
+\end_inset
+
+Add to Statement
+\begin_inset Quotes erd
+\end_inset
+
+ betätigt werden, um den Befehl zum Statement hinzuzufügen.
+\end_layout
+
+\begin_layout Subparagraph
+Drop Statement Editor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Drop_Statement.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Drop-Statement-Editor"
+
+\end_inset
+
+Drop Statement Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Zuerst muss im 
+\begin_inset Quotes eld
+\end_inset
+
+The handeld Schema/Table
+\begin_inset Quotes erd
+\end_inset
+
+ ein Name eingegeben werden.
+ Danach wird mit 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to Statement
+\begin_inset Quotes erd
+\end_inset
+
+ bestätigt um dies dem Statement hinzuzufügen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Drop_Statement2.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Drop-Statement-Editor2"
+
+\end_inset
+
+Drop Statement Editor 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Danach erscheint das obere Menü (siehe Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Drop-Statement-Editor2"
+
+\end_inset
+
+) und es kann in der Liste eine Tabelle ausgewählt und mit 
+\begin_inset Quotes eld
+\end_inset
+
+Insert table into Statement
+\begin_inset Quotes erd
+\end_inset
+
+ dem Statement hinzugefügt werden.
+\end_layout
+
+\begin_layout Subparagraph
+Delete Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Editor erzeugt die 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+-SQL-Anweisung.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Delete_Statement_Editor.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Delete-Statement-Editor"
+
+\end_inset
+
+Delete Statement Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise: Der Benutzer wählt eine Tabelle aus der Liste aus, dann
+ wird in der Combobox 
+\begin_inset Quotes eld
+\end_inset
+
+Column name
+\begin_inset Quotes erd
+\end_inset
+
+ der Name der zu bearbeitenden Spalte ausgewählt.
+ Danach kann in der Combobox 
+\begin_inset Quotes eld
+\end_inset
+
+Operation
+\begin_inset Quotes erd
+\end_inset
+
+ die gewünschte Operation ausgewählt werden und im Feld 
+\begin_inset Quotes eld
+\end_inset
+
+Value
+\begin_inset Quotes erd
+\end_inset
+
+ der Wert.
+ Danach kommt mit 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+ das Statement in den Zwischenspeicherungsdialog (siehe Abb.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Statement_Zwischenspeicherungsdialog"
+
+\end_inset
+
+) und kann noch direkt verändert werden.
+\end_layout
+
+\begin_layout Subparagraph
+Create Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Editor erzeugt die Create-SQL-Abfrage.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Create_Statement_Editor1.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Create-Statement-Editor1"
+
+\end_inset
+
+Create Statement Editor 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise: Zuerst benennt man die Tabelle im Feld 
+\begin_inset Quotes eld
+\end_inset
+
+Table name
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Danach definiert man in den Combo- und Checkboxen die Eigenschaften für
+ jede erzeugte Spalte.
+ Durch 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+ wird der Eintrag in die Zwischenspeicherung übergeben und wird noch einer
+ manuellen Bearbeitung oder Bestätigung in die Datenbanktabelle eingetragen.
+ Zum Erzeugen eines Schemas erscheint die unten gezeigte Ansicht.
+ Hier kann der Schemaname und die optional eine Authorisierungsinformation
+ eingetragen werden.
+ Durch Betätigung von OK wird das Statement in die Zwischenspeicherungsebene
+ geleitet und es bietet sich die Möglichkeit für ein manuelles Bearbeiten
+ oder zum Bestätigen des Statements.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Create_Statement_Editor2.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Create-Statement-Editor2"
+
+\end_inset
+
+Create Statement Editor 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+Retrieve Data Statement Editor
+\end_layout
+
+\begin_layout Standard
+Retrieve Data Statement Editor ist identisch zum Query Statement Editor,
+ deswegen wird hier nur auf diesen verwiesen (sieheKapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Query-Statement-Editor"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subparagraph
+Update Statement Editor
+\end_layout
+
+\begin_layout Standard
+Dieser Editor behandelt die Update-SQL-Abfragen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Update_Statement_Editor.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Update-Statement-Editor"
+
+\end_inset
+
+Update Statement Editor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionsweise : Der Benutzer wählt in der linken Spalte zuerst einen Tabellenna
+me aus.
+ Danach werden die Spaltennamen in der zweiten Tabelle angezeigt.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+Type of the value
+\begin_inset Quotes erd
+\end_inset
+
+ gibt man dann einen Wert für diese Spalte ein.
+ Zuletzt benutzt man 
+\begin_inset Quotes eld
+\end_inset
+
+Insert to table
+\begin_inset Quotes erd
+\end_inset
+
+ um den Eintrag zwischenzuspeichern.
+ In der Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Update-Statement-Editor"
+
+\end_inset
+
+ ist die 
+\begin_inset Quotes eld
+\end_inset
+
+Set oriented
+\begin_inset Quotes erd
+\end_inset
+
+ View aktiviert.
+ Dies kann man auch 
+\begin_inset Quotes eld
+\end_inset
+
+table oriented
+\begin_inset Quotes erd
+\end_inset
+
+ , also tabellenorientiert, darstellen lassen wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Update-Statement-Editor2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_DM_Update_Statement_Editor_TableOriented.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Update-Statement-Editor2"
+
+\end_inset
+
+Update Statement Editor - Tabellenorientiert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Data-Management-Aktivität löschen
+\end_layout
+
+\begin_layout Standard
+Die vorhandene DM-Aktivität im geöffneten BPEL Prozess muss selektiert werden
+ und das Kontextmenü aufgerufen werden.
+ Dort kann die Aktivität durch 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ gelöscht werden.
+ Alternativ kann dies auch durch drücken der ENTF / Delete -Taste.
+ Danach werden alle Links gemäß dem Standardverhalten des BPEL Designers
+ neu gesetzt.
+\end_layout
+
+\begin_layout Subsubsection
+ODE Deployment-Deskriptor erstellen
+\end_layout
+
+\begin_layout Standard
+Ein ODE Deployment-Deskriptor wird wie folgt erstellt :
+\end_layout
+
+\begin_layout Enumerate
+Im der Eclipse Menüleiste muss 
+\begin_inset Quotes eld
+\end_inset
+
+File
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes eld
+\end_inset
+
+Other
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes eld
+\end_inset
+
+BPEL2.0
+\begin_inset Quotes erd
+\end_inset
+
+, danach 
+\begin_inset Quotes erd
+\end_inset
+
+Apache ODE
+\begin_inset Quotes erd
+\end_inset
+
+ und zuletzt 
+\begin_inset Quotes eld
+\end_inset
+
+Deployment-Descriptor
+\begin_inset Quotes erd
+\end_inset
+
+ angeklickt werden.
+\end_layout
+
+\begin_layout Enumerate
+BPEL Projekt manuell eintragen oder über 
+\begin_inset Quotes eld
+\end_inset
+
+Browse
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.
+\end_layout
+
+\begin_layout Enumerate
+Mit 
+\begin_inset Quotes eld
+\end_inset
+
+Finish
+\begin_inset Quotes erd
+\end_inset
+
+ bestätigen.
+\end_layout
+
+\begin_layout Enumerate
+Konguration des Deployment-Deskriptors.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beispiele machen.
+ Siehe Kommentar Peter.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Speicherung des Deployment-Deskriptors über Anklicken von 
+\begin_inset Quotes eld
+\end_inset
+
+File
+\begin_inset Quotes erd
+\end_inset
+
+ und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ im Eclipse Menü.
+\end_layout
+
+\begin_layout Standard
+Nach der Erstellung ohne Fehlermeldung kann der Deskriptor deployed werden.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:ODE-Deployment-Deskriptor-bearbeiten"
+
+\end_inset
+
+ODE Deployment-Deskriptor bearbeiten
+\end_layout
+
+\begin_layout Standard
+Ein vorhandener Deployment-Deskriptor kann mit einem Doppelklick mit der
+ linken Maustaste auf die Datei im BPEL Project Explorer geöffnet und bearbeitet
+ werden.
+ Nach dem Bearbeiten sind die neuen Einstellungen mittels 
+\begin_inset Quotes eld
+\end_inset
+
+File
+\begin_inset Quotes erd
+\end_inset
+
+ und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ im Eclipse Menü zu speichern, andernfalls werden die Änderungen nicht übernomme
+n.
+\end_layout
+
+\begin_layout Subsubsection
+ODE Deployment-Deskriptor löschen
+\end_layout
+
+\begin_layout Standard
+ODE Deployment-Deskriptor auswählen und in der Eclipse Menüleiste 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes erd
+\end_inset
+
+ und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ anklicken.
+\end_layout
+
+\begin_layout Subsubsection
+Prozess vorbereiten für das Deployment
+\end_layout
+
+\begin_layout Standard
+Bevor der fertige Prozess nun deployed werden kann, bedarf es noch der Erstellun
+g eines Bindings, bzw.
+ eines Endpunktes damit der Webservice erreicht werden kann.
+ Dafür muß wie folgt vorgegangen werden:
+\end_layout
+
+\begin_layout Enumerate
+Öffnen der WSDL-Datei in der grafischen Modellierungsumgebung.
+\end_layout
+
+\begin_layout Enumerate
+Mit der rechten Maustaste auf den Hintergrund des Fenster klicken und 
+\begin_inset Quotes eld
+\end_inset
+
+Add Service
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.
+ Der vorgeschlagene Name kann übernommen oder neu eingegeben werden.
+\end_layout
+
+\begin_layout Enumerate
+Mit der rechten Maustaste auf den Hintergrund des Fenster klicken und 
+\begin_inset Quotes eld
+\end_inset
+
+AddBinding
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.Danach öffnet sich die Properties View des Bindings und zeigt
+ den Punkt 
+\begin_inset Quotes eld
+\end_inset
+
+General
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Schaltfläche 
+\begin_inset Quotes eld
+\end_inset
+
+Generate Binding Content...
+\begin_inset Quotes erd
+\end_inset
+
+ betätigen und im Pop-up-Fenster 
+\begin_inset Quotes eld
+\end_inset
+
+Binding Wizard
+\begin_inset Quotes erd
+\end_inset
+
+ unter 
+\begin_inset Quotes eld
+\end_inset
+
+Port Type
+\begin_inset Quotes erd
+\end_inset
+
+ das Interface auswählen, welche von aussen erreicht werden soll.
+ Danach unter 
+\begin_inset Quotes eld
+\end_inset
+
+Protocol
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+SOAP
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.
+\end_layout
+
+\begin_layout Enumerate
+Bei dem neu erstellen Service nun auf den 
+\begin_inset Quotes eld
+\end_inset
+
+Port
+\begin_inset Quotes erd
+\end_inset
+
+ ( das pfeilähnliche blaue nach rechts zeigende Symbol) und die Port-Properties-
+View öffnet sich.
+ In diesem wählt man bei 
+\begin_inset Quotes eld
+\end_inset
+
+Binding
+\begin_inset Quotes erd
+\end_inset
+
+ das unter Punkt 3 erstellte Binding aus.
+ Bei 
+\begin_inset Quotes eld
+\end_inset
+
+Address
+\begin_inset Quotes erd
+\end_inset
+
+ gibt man die Adresse (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+z.B.
+ http://
+""
+\lang ngerman
+localhost:8080/
+""
+\lang ngerman
+ode/
+""
+\lang ngerman
+processes/
+""
+\lang ngerman
+FluegeBuchen
+\end_layout
+
+\end_inset
+
+) des ODE Servers ein.
+ Zu beachten ist, dass der Name des Services, wie er in Punkt 2 erstellt
+ wurde, auch identisch ist, wie der Name der WSDL-Datei im BPEL Designer.
+\end_layout
+
+\begin_layout Subsubsection
+Prozess auf ODE-Server deployen
+\end_layout
+
+\begin_layout Standard
+Hinzufügen des Prozesses zum ODE-Server in der Eclipse Server-View: 
+\end_layout
+
+\begin_layout Enumerate
+Rechter Mausklick auf den ODE-Server 
+\end_layout
+
+\begin_layout Enumerate
+Auswahl des Menüpunkts Add and Remove.
+\end_layout
+
+\begin_layout Enumerate
+Hinzufügen der BPEL Prozess-Datei mit Add-Button oder Doppelklick auf das
+ BPEL-File.
+ Danach abschließen mit dem 
+\begin_inset Quotes eld
+\end_inset
+
+Finish
+\begin_inset Quotes erd
+\end_inset
+
+ Button.
+\end_layout
+
+\begin_layout Enumerate
+Anklicken des Eintrages 
+\begin_inset Quotes eld
+\end_inset
+
+Ode v1.x Server at....
+\begin_inset Quotes erd
+\end_inset
+
+mit der rechten Maustaste und 
+\begin_inset Quotes eld
+\end_inset
+
+Start
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.
+\end_layout
+
+\begin_layout Subsubsection
+Prozessinstanz starten 
+\end_layout
+
+\begin_layout Standard
+Nach dem erfolgreichen Deployment auf der Apache ODE Workflow-Engine kann
+ das Prozessmodell instanziiert werden.
+ Dazu muß eine SOAP Nachricht an den Webservice gesendet werden.
+ Dafür gibt es viele Möglichkeiten, hier wird jedoch nur die Variante mit
+ dem 
+\begin_inset Quotes eld
+\end_inset
+
+Web Service Explorer
+\begin_inset Quotes erd
+\end_inset
+
+ näher erläutert.
+ Dieser ist im SIMPL Rahmenwerk enthalten und ist Bestandteil der Eclipse
+ IDE for Java EE Developers.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/Sending SOAP Message.jpg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Web-Service-Explorer"
+
+\end_inset
+
+Web Service Explorer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+WSDL-File des Projektes mit der rechten Maustaste anklicken und 
+\begin_inset Quotes eld
+\end_inset
+
+Web Services--> Test with Web Services Explorer
+\begin_inset Quotes erd
+\end_inset
+
+ auswählen.
+\end_layout
+
+\begin_layout Enumerate
+Im Web Service Explorer die WSDL Operation ( gekennzeichnet durch ein blaues
+ Zahnrad) auswählen die der Prozess anbietet, und dann erscheint 
+\begin_inset Quotes eld
+\end_inset
+
+Invoke a WSDL Operation
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Im Textfenster unter 
+\begin_inset Quotes eld
+\end_inset
+
+input string
+\begin_inset Quotes erd
+\end_inset
+
+ können die Parameter / die Nachricht eingegeben werden und mit 
+\begin_inset Quotes eld
+\end_inset
+
+GO
+\begin_inset Quotes erd
+\end_inset
+
+ an die Workflow-Engine gesendet werden.
+\end_layout
+
+\begin_layout Enumerate
+Im Fenster 
+\begin_inset Quotes eld
+\end_inset
+
+Status
+\begin_inset Quotes erd
+\end_inset
+
+ erscheint dann das Ergebnis des Services oder eine Statusmeldung der Workflow-E
+ngine.
+\end_layout
+
+\begin_layout Subsubsection
+Strategie für das Late-Binding auswählen
+\end_layout
+
+\begin_layout Standard
+Ein BPEL-Prozess mit ODE Deployment-Deskriptor und ein WS-Policy-Dokument
+ mit Anforderungen an die Datenquelle müssen erstellt sein.
+ Im Deployment-Deskriptor kann danach die Strategie erstellt, geändert oder
+ gelöscht werden.
+\end_layout
+
+\begin_layout Enumerate
+Deployment-Deskriptor öffnen bzw.
+ bearbeiten (siehe Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:ODE-Deployment-Deskriptor-bearbeiten"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Im unteren Bereich bei 
+\begin_inset Quotes eld
+\end_inset
+
+Activity-Data source mapping
+\begin_inset Quotes erd
+\end_inset
+
+ kann eine Strategie mit 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ erstellt, mit 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes erd
+\end_inset
+
+ geändert und mit 
+\begin_inset Quotes eld
+\end_inset
+
+Remove
+\begin_inset Quotes erd
+\end_inset
+
+ gelöscht werden.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_Activity-Data_Source_Mapping.jpg
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Activity_Data_Source_Mapping"
+
+\end_inset
+
+Activity-Data source Mapping
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nach Drücken des 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons erscheint das 
+\begin_inset Quotes eld
+\end_inset
+
+Add a new activity mapping
+\begin_inset Quotes erd
+\end_inset
+
+-Fenster und bei 
+\begin_inset Quotes eld
+\end_inset
+
+Activity
+\begin_inset Quotes erd
+\end_inset
+
+ kann die Aktivität ausgewählt werden für welche die Strategie erstellt
+ werden soll.
+ Das Auswählen kann erst vorgenommen werden, wenn die Aktivität im Modellierungs
+fenster verwendet wurde.
+ Unter 
+\begin_inset Quotes eld
+\end_inset
+
+Policy path
+\begin_inset Quotes erd
+\end_inset
+
+ kann die WS-Policy mit den Anforderungen an die Datenquelle ausgewählt
+ werden.
+ Unter 
+\begin_inset Quotes eld
+\end_inset
+
+Strategy
+\begin_inset Quotes erd
+\end_inset
+
+ kann die Strategie ausgewählt werden.
+ Von SIMPL wird nur First Find unterstützt.
+ Dies bedeutet es wird die erste Datenquelle benutzt die gefunden wird und
+ die in der Policy definierten Anforderungen erfüllt.
+ Ein Mapping zu einer DM-Aktivität kann durch Selektion und danach durch
+ anklicken des 
+\begin_inset Quotes eld
+\end_inset
+
+Remove
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons gelöscht werden.
+ Für eine Änderung muß das gewünschte Mapping ebenso Selektiert werden und
+ danach durch Betätigen von 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes eld
+\end_inset
+
+ verändert werden.
+ Mit 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ wir die Änderung übernommen.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/SIMPL_Choose_Strategy.jpg
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Choose_Strategy"
+
+\end_inset
+
+Strategie Auswahlfenster
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Speichern des ODE Deployment-Deskriptor über das Speichern-Symbol in der
+ Symbolleiste
+\end_layout
+
+\begin_layout Subsubsection
+Neue Referenz in RRS einfügen 
+\end_layout
+
+\begin_layout Standard
+Wenn das RRS erreichbar und eine View geöffnet ist, dann kann eine neue
+ Referenz eingefügt werden.
+ Zuerst muß dazu in der Toolbar oder im Kontextmenü 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ angeklickt werden.
+ In dem Pop-up Fenster können nun alle Parameter der Referenz eingestellt
+ werden.
+ Zu den Parameter gehört der Name, die Adresse des RRS, die Art des Adapters,
+ die Adresse der Datenquelle und natürlich das Statement.
+ Optional kann noch ein Name und ein Passwort angegeben werden.
+ Durch klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ wird die neue Referenz gesichert.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/RRS_AddRef.JPG
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Neue-Referenz-inRRS-einfuegen"
+
+\end_inset
+
+Neue Referenz in RRS einfügen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS bearbeiten 
+\end_layout
+
+\begin_layout Standard
+Eine Referenz lässt sich nur bearbeiten, wenn das RRS erreichbar ist.
+ Durch Klicken auf den 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes erd
+\end_inset
+
+-Button der Toolbar oder Auswahl des entsprechenden Menüpunktes im Kontext-Menü
+ kann die Referenz bearbeitet werden.
+ Im Pop-up können die Parameter verändert werden.
+ Durch klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Änderungen übernommen.
+\end_layout
+
+\begin_layout Subsubsection
+Referenz aus RRS löschen
+\end_layout
+
+\begin_layout Standard
+Eine Referenz lässt sich nur l,öschen wenn der RRS erreichbar ist.
+ Nach Auswahl der zu löschenden Referenz kann über den 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ Button oder den entsprechenden Menüpunkt im Kontext-Menü die Referenz gelöscht
+ werden.
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle des Workflow-Administrators
+\end_layout
+
+\begin_layout Standard
+Ein Workflow-Administrator ist eine Spezialisierung des Prozess-Modellierers.
+ D.h.
+ er kann alle Anwendungsfälle des Prozess-Modellierers und noch weitere
+ administrative Anwendungsfälle ausführen.
+ Seine Kenntnisse liegen eher im technischen Bereich, wie z.B.
+ bei der Konfiguration des Rahmenwerks.
+ Er kann beispielsweise über die Admin-Konsole während der Prozesslaufzeit
+ das Auditing an- und abschalten.
+ Ebenso legt er die Datenbank für das Speichern der Auditing-Daten fest.
+ Diese Anwendungsfälle werden im Folgenden näher erläutert:
+\end_layout
+
+\begin_layout Subsubsection
+Admin-Konsole öffnen
+\end_layout
+
+\begin_layout Standard
+Durch einen Klick auf Admin-Konsole im Eclipse Menü unter SIMPL kann die
+ Admin-Konsole geöffnet und verwendet werden.
+\end_layout
+
+\begin_layout Subsubsection
+Auditing aktivieren 
+\end_layout
+
+\begin_layout Standard
+Admin-Konsole zuerst öffnen und dann den Menüpunkt Auditing auswählen.
+ Durch Setzen des Häkchens bei Auditing unter 
+\begin_inset Quotes eld
+\end_inset
+
+General
+\begin_inset Quotes erd
+\end_inset
+
+ kann dieses aktiviert werden.
+ Die Übernahme der Einstellung erfolgt mittels 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+-Button.
+\end_layout
+
+\begin_layout Subsubsection
+Auditing deaktivieren 
+\end_layout
+
+\begin_layout Standard
+Admin-Konsole zuerst öffnen und dann den Menüpunkt Auditing auswählen.
+ Durch Klicken auf den Haken wird das Auditig deaktiviert und es erscheint
+ 
+\begin_inset Quotes eld
+\end_inset
+
+inactive
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Die Übernahme der Einstellung erfolgt mittels 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+-Button.
+\end_layout
+
+\begin_layout Subsubsection
+Auditing-Datenbank festlegen/ändern 
+\end_layout
+
+\begin_layout Standard
+Admin-Konsole öffnen und dann den Menüpunkt Auditing auswählen.
+ Hier kann eine lokale Auditing-Datenbank de- und aktiviert sowie festgelegt
+ und konfiguriert werden.
+ Die Übernahme der Einstellung erfolgt mittels 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+-Button.
+\end_layout
+
+\begin_layout Subsubsection
+Globale Einstellungen festlegen/ändern 
+\end_layout
+
+\begin_layout Standard
+Die globalen Einstellungen, die das Rahmenwerk betreffen, können in Eclipse
+ im Menüpunkt SIMPL unter Settings im 
+\begin_inset Quotes eld
+\end_inset
+
+Preferences
+\begin_inset Quotes erd
+\end_inset
+
+ Fenster unter 
+\begin_inset Quotes eld
+\end_inset
+
+SIMPL
+\begin_inset Quotes erd
+\end_inset
+
+ eingestellt werden.
+ Alternativ ist dies auch unter Eclipse im Menüpunkt Window unter Preferences
+ bei SIMPL möglich.
+ Hier können Einstellungen bezüglich des RRS, des SIMPL Cores, des Transformatio
+n Services und der UDDI Registry vorgenommen werden.
+ Mittels des 
+\begin_inset Quotes eld
+\end_inset
+
+APPLY
+\begin_inset Quotes erd
+\end_inset
+
+ Buttons werden die Einstellungen übernommen und mit 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+ wird die Auswahl geschlossen.
+\end_layout
+
+\begin_layout Subsubsection
+Einstellungen der Admin-Konsole speichern 
+\end_layout
+
+\begin_layout Standard
+Durch Klick auf den Button 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Einstellungen der Admin-Konsole in der SIMPL Datenbank gespeichert.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Einstellungen der Admin-Konsole zurücksetzen 
+\end_layout
+
+\begin_layout Standard
+Durch einen Klick auf den 
+\begin_inset Quotes eld
+\end_inset
+
+Reset
+\begin_inset Quotes erd
+\end_inset
+
+-Button werden die zuletzt gespeicherten Einstellungen wieder hergestellt.
+\end_layout
+
+\begin_layout Subsubsection
+Default-Einstellungen der Admin-Konsole laden 
+\end_layout
+
+\begin_layout Standard
+Die Standardwerte der Admin-Konsole können durch einen Klick auf 
+\begin_inset Quotes eld
+\end_inset
+
+Default
+\begin_inset Quotes erd
+\end_inset
+
+ wieder hergestellt werden.
+ Im Unterschied zum 
+\begin_inset Quotes eld
+\end_inset
+
+Reset-Button
+\begin_inset Quotes erd
+\end_inset
+
+ werden hiermit die Standard-Einstellungen geladen die in SIMPL hinterlegt
+ sind.
+\end_layout
+
+\begin_layout Subsubsection
+Admin-Konsole schließen 
+\end_layout
+
+\begin_layout Standard
+Durch einen Klick auf 
+\begin_inset Quotes eld
+\end_inset
+
+Close
+\begin_inset Quotes erd
+\end_inset
+
+ wird die Admin-Konsole geschlossen.
+ Wurden Änderungen vorgenommen, die nicht gesichert wurden, dann erscheint
+ eine Sicherheitsabfrage mit der Möglichkeit die Änderungen zu sichern (
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Yes
+\begin_inset Quotes erd
+\end_inset
+
+, zu verwerfen (
+\begin_inset Quotes eld
+\end_inset
+
+No
+\begin_inset Quotes erd
+\end_inset
+
+) oder das Close durch 
+\begin_inset Quotes eld
+\end_inset
+
+Cancel
+\begin_inset Quotes erd
+\end_inset
+
+ abzubrechen und wieder die vorherige Maske zu sehen.
+\end_layout
+
+\begin_layout Subsection
+Anwendungsfälle der Datenquellen-Administratoren 
+\end_layout
+
+\begin_layout Standard
+Ein Datenquellen-Administrator verwaltet Datenquellen und stellt diese über
+ die Datenquellen-Registry anderen Nutzern zu Verfügung.
+ Dazu kann er Datenquellen in der Datenquellen-Registry registrieren, die
+ Eigenschaften bereits registrierter Datenquellen bearbeiten und registrierte
+ Datenquellen auch wieder aus der Datenquellen-Registry löschen.
+ Die Anwendungsfälle werden nun im Folgenden erläuter.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Datenquelle-in-UDDI-Registrieren"
+
+\end_inset
+
+Datenquelle in UDDI-Registry registrieren 
+\end_layout
+
+\begin_layout Standard
+Zuerst muss das Datenquellen-Registry Web Interface in Web Browser aufgerufen
+ werden.
+ Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb als
+ Adresse definiert.
+ Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
+ durch Klicken auf 
+\begin_inset Quotes eld
+\end_inset
+
+Show Data Sources
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Registry-Datenquellenliste"
+
+\end_inset
+
+ dargestellt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/datasourcelist.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Registry-Datenquellenliste"
+
+\end_inset
+
+Registry Datenquellenliste
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Durch Betätigen von 
+\begin_inset Quotes eld
+\end_inset
+
+New
+\begin_inset Quotes erd
+\end_inset
+
+ öffnet sich ein neues Fenster zur Eingabe der Datenquellen Konfiguration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/edit.JPG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Datenquelle-in-Registry_new"
+
+\end_inset
+
+Datenquelle in Registry anlegen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Erforderlich ist der Name, die Adresse, der Typ, der Subtyp, die Sprache,
+ der Benutzername, das Passwort und optional eine Policy Datei.
+\end_layout
+
+\begin_layout Standard
+Nach Betätigen von 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ werden die Daten in der Registry gespeichert und stehen sofort dem Rahmenwerk
+ zur Verfügung.
+ Im Registry Plug-In (siehe Abb.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-View"
+
+\end_inset
+
+)  kann es nötig sein den 
+\begin_inset Quotes eld
+\end_inset
+
+Refresh
+\begin_inset Quotes erd
+\end_inset
+
+ Button ( 2 grüne im Kreis stehende Pfeile) zu betätigen wenn man die neue
+ Datenquelle in der UDDI Browser View nicht erscheint.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle aus UDDI-Registry entfernen 
+\end_layout
+
+\begin_layout Standard
+Zuerst muss das Datenquellen-Registry wie in Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Datenquelle-in-UDDI-Registrieren"
+
+\end_inset
+
+ aufgerufen werden.
+ Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
+ angezeigt.
+ In der Liste muß dann die zu löschende Datenquelle mit dem rechten Kreis-Button
+ markiert und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Delete
+\begin_inset Quotes erd
+\end_inset
+
+ betätigt werden.
+\end_layout
+
+\begin_layout Subsubsection
+Datenquelle aus UDDI-Registry bearbeiten
+\end_layout
+
+\begin_layout Standard
+Zuerst muß das Datenquellen-Registry Web Interface in Web Browser aufgerufen
+ werden.
+ Standardmäßig ist im SIMPL Rahmenwerk http://localhost:8080/juddiweb als
+ Adresse definiert.
+ Nach der Authorisierung wird die Liste der bereits angelegten Datenquellen
+ angezeigt.
+ In der Liste muß dann die zu editierende Datenquelle mit dem rechten Kreis-Butt
+on markiert und danach 
+\begin_inset Quotes eld
+\end_inset
+
+Edit
+\begin_inset Quotes erd
+\end_inset
+
+ betätigt werden.
+ Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Registry-Datenquellenliste"
+
+\end_inset
+
+ öffnet sich umd die Datenquelle kann bearbeitet werden.
+ Nach Abschluss der Änderungen kann durch 
+\begin_inset Quotes eld
+\end_inset
+
+Save
+\begin_inset Quotes erd
+\end_inset
+
+ alles in der Registry gespeichert werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problemehilfe
+\end_layout
+
+\begin_layout Standard
+Die SIMPL Eclipse Plug-Ins sind nur voll funktionsfähig, falls der SIMPL
+ Core erreichbar ist, d.h.
+ das ein Apache Tomcat Server mit angebundenem SIMPL Core gestartet wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Mögliche Fehler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bereich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fehler
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ursachen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Deployment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung D.D.
+ nicht möglich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE D.D.
+ Modul nicht installiert
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Deployen nicht möglich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE Server nicht gestartet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Server Port in Use
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Server bereits gestartet.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin Konsole
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speichern nicht möglich
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auditing Datenbank fehlt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Datenbank nicht erreichbar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Authentifizierung fehlgeschlagen.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Referenz nicht bearbeitbar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS Parameter ungültig
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Referenz nicht speicherbar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS nicht erreichbar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Glossar
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="27" columns="2">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+API 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Application Programming Interface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BPEL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Business Process Execution Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CSV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comma-Separated Values
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DAS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Access Service
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DDL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Definition Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Data Management
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Extension Activities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erweiterungsaktivität
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FLWOR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FOR, LET, WHERE, ORDER, RETURN
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Integrated Development Environment
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IUD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+INSERT, UPDATE, DELETE
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NTFS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+New Technology File System
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ODE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orchestration Director Engine
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Relational Database
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RRS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reference Resolution System
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SDO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Service Data Object
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SIMPL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SimTech: Information Management, Processes and Languages
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SOAP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Simple Object Access Protocol
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SQL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Structured Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SSO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Single Sign On
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UDDI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Universal Description, Discovery and Integration 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+URI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unified Resource Identifier
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+URL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unified Resource Locator
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Web Service
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WSDL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Web Service Description Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Extensible Markup Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XPath
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML Path Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XQUERY
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XML Query Language
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-3"
+
+\end_inset
+
+ Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: 
+\emph on
+Towards Reference Passing in Web Service and Workflow-based Applications
+\emph default
+.
+ In: Proc.
+ of the 13th IEEE Enterprise Distributed Object Conference (EDOC 2009),
+ Auckland, New Zealand, 31.
+ August - 04.
+ September 2009.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-4"
+
+\end_inset
+
+ Jordan, D.; Evdemon, J.: 
+\emph on
+Web Services Business Process Execution Language Version 2.0
+\emph default
+, OASIS Standard.
+ Organization for the Advancement of Structured Information Standards (OASIS),
+ 11.April 2007.
+ http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf, zuletzt zugegriffen
+ am 13.07.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-5"
+
+\end_inset
+
+ Axis2, http://ws.apache.org/axis2/, zuletzt zugegriffen am 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-6"
+
+\end_inset
+
+ Apache ODE, http://ode.apache.org/, zuletzt zugegriffen am 17.07.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-7"
+
+\end_inset
+
+ Apache Tomcat, http://tomcat.apache.org/, zuletzt zugegriffen am 17.07.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-8"
+
+\end_inset
+
+ Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, zuletzt zugegriff
+en am 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-10"
+
+\end_inset
+
+ Eclipse BPEL Designer, http://www.eclipse.org/bpel/, zuletzt zugegriffen
+ am 17.10.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-11"
+
+\end_inset
+
+ IBM-DB2, http://www.ibm.com/db2/, zuletzt zugegriffen am 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-12"
+
+\end_inset
+
+ Java 6, http://java.sun.com/, zuletzt zugegriffen am 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-14"
+
+\end_inset
+
+ TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, zuletzt zugegriffen am 17.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-16"
+
+\end_inset
+
+ Eclipse, http://www.eclipse.org/, zuletzt zugegriffen am 18.10.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-21"
+
+\end_inset
+
+WSDL, http://www.w3.org/standards/techs/wsdl, zuletzt zugegriffen am 04.11.2009
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-24"
+
+\end_inset
+
+XPath, http://www.w3.org/standards/techs/xpath, zuletzt zugegriffen am 30.01.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "13"
+key "key-13"
+
+\end_inset
+
+jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "14"
+key "key-1"
+
+\end_inset
+
+WinRAR, http://http://www.winrar.de/, zuletzt zugegriffen am 10.06.2010
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
