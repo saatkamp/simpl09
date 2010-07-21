@@ -1,4 +1,4 @@
-#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -4365,7 +4365,8 @@ Vorbedingung
 
 \begin_layout Plain Layout
 Ein vorhandener BPEL-Prozess mit mindestens einer DM-Aktivität ist im Eclipse
- BPEL Designer geöffnet.
+ BPEL Designer geöffnet und eine Datenquelle wurde im Deployment-Deskriptor
+ für diesen Prozess spezifiziert.
 \end_layout
 
 \end_inset
@@ -4414,7 +4415,19 @@ Nachbedingung im Sonderfall
 \begin_inset Text
 
 \begin_layout Plain Layout
-keine
+Es konnten keine Änderungen bezüglich der Datenquelle getätigt werden und
+ der Statement-Editor zum Erstellen von Statements konnte nicht geöffnet
+ werden.
+ Änderungen der anderen Eigenschaften wurden korrekt übernommen und werden
+ in der 
+\begin_inset Quotes eld
+\end_inset
+
+Properties-View
+\begin_inset Quotes erd
+\end_inset
+
+ angezeigt.
 \end_layout
 
 \end_inset
@@ -4474,7 +4487,7 @@ Sonderfälle
 \begin_inset Text
 
 \begin_layout Plain Layout
-keine
+3.a Im Deplyoment-Deskriptor wurde keine Datenquelle für den Prozess spezifiziert.
 \end_layout
 
 \end_inset
