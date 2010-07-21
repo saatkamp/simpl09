@@ -4704,6 +4704,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Create_Statement_Editor1.png
+	width 80text%
 
 \end_inset
 
@@ -4772,7 +4773,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ScreenshotsBenutzer/SIMPL_DM_Create_Statement_Editor2.png
-	width 80cm
+	width 80text%
 
 \end_inset
 
