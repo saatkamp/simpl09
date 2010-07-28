@@ -1,4 +1,4 @@
-%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 1.6.6.1 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[ngerman]{article}
 \usepackage[T1]{fontenc}
@@ -157,157 +157,30 @@ für ODE 2.0 entwickelt wurde.
 \newpage{}
 
 
-\section{Installation }
-
-Das Rahmenwerk wird als Teil eines großen Installationpaketes ausgeliefert.
-Dieses Installationspaket besteht aus allen Programmen, die für die
-Verwendung des Rahmenwerks benötigt werden. Dazu gehört das Modellierungstool
-Eclipse BPEL Designer, der Web Server Apache Tomcat, der die Workflow-Engine
-ausführt, die Workflow-Engine Apache ODE und natürlich das Rahmenwerk
-selbst. Das SIMPL Rahmenwerk bestehend wiederum aus dem SIMPL Core,
-den SIMPL Eclipse Plug-Ins und dem BPEL-DM Plug-In. Näheres dazu kann
-Seite \pageref{sec:Komponenten,-Aufbau-und} entnommen werden. Durch
-das Installationspaket sind viele Einstellungen bereits vordefiniert,
-um dem Benutzer eine einfache Installation zu ermöglichen. Das Installationspaket
-ist dabei als RAR-Archiv zusammen mit allen wichtigen Dokumenten auf
-einer CD/DVD vorhanden. Für eine neue Windows Installation ist die
-{}``All-in-one''-Installation zu empfehlen. Für die Installation
-auf bestehenden Systemen, wo vorhandene Komponenten übernommen werden
-sollen, wird auch die Installation der einzelnen, isolierten Komponenten
-näher erläutert.
-
-
-\subsection{All-in-one Installation}
-
-Die {}``All-in-one''-Installation ist die schnelle und einfache
-Installation und für ein Windows System zu empfehlen. Das Archiv {}``SIMPL.rar''
-muß entpackt werden und danach kann das Rahmenwerk über die Kommandozeile
-oder durch einen Doppelklick auf {}``eclipse.exe'' im Eclipse Installationsverzeichnis
-gestartet werden. Dazu kann der Tomcat Server über {}``..bin/tomcat6.exe''
-gestartet werden. 
-
-
-\subsection{Installation der Komponenten und Konfiguration}
-
-
-\subsubsection{Eclipse}
-
-
-\paragraph*{Neuinstallation}
-
-Die Installation von Eclipse erfolgt durch das Entpacken von Eclipse
-IDE for Java EE Developers (eclipse-jee-galileo-SR2-win32.zip). Dadurch
-wäre Eclipse schon startfähig, jedoch fehlt noch der BPEL Designer
-und das SIMPL Rahmenwerk. Zum Entpacken genügt das oft bei Windows
-integrierte ZIP Programm, oder eine Entpackprogramm wie beispielsweise
-Winrar (siehe \cite{key-1}).
-
-
-\paragraph{Konfiguration einer vorhandenen Eclipse Entwicklungsumgebung}
-
-
-\subsubsection{BPEL Designers und SIMPL Eclipse Plug-In}
-
-
-\paragraph{Neuinstallation}
-
-Da der im Rahmenwerk beiligende BPEL Designer dem Rahmenwerk angepasst
-wurde, ist die Neuinstallation des Eclipse BPEL Designers zwingend
-erforderlich um die SIMPL Funktionen nutzen zu können. Der BPEL Designer
-( die auf SIMPL angepasste Version) und das SIMPL Eclipse Plug-In
-befinden sich in der Datei {}``simpl-eclipse.zip''. Diese Datei
-muß in den Eclipse Hauptordner kopiert und dort entpackt werden. Beim
-Entpacken werden 22 Files automatisch in den {}``plugins''-Ordner
-von Eclipse kopiert. Dort müssen sich die folgenden Datei für die
-vollständige Funktionalität befinden :
-
-%
-\begin{figure}[H]
-\begin{centering}
-\includegraphics{img/SIMPL_Installation_SIMPL_ECLIPSE_Files}
-\par\end{centering}
-
-\caption{\label{fig:SIMPL_BPEL_Installation_Files}BPEL Designer und SIMPL
-Installationsdateien}
-
-\end{figure}
-
-
-
-\subsubsection{Apache Tomcat }
-
-
-\paragraph{Neuinstallation}
-\begin{enumerate}
-\item Die Datei {}``apache-tomcat-6.0.26.exe'' enthält den Apache Tomcat
-Webserver der Version 6.0.26. Durch Doppelklicken auf das File startet
-der Installationsvorgang von Apache Tomcat. Im Verlauf der Installation
-ist u.a. das Installationsverzeichnis sowie den HTTP Connector Port
-zu wählen. Beim HTTP Connector Port ist nach Möglichkeit der Port
-8080 einzuhalten, da dieser auch im SIMPL Rahmenwerk voreingestellt
-ist.
-\item Die Datei ode.war aus der apache-ode-war-2.0-beta2.zip in das Verzeichnis
-{}``webapp'' des Apache Tomcat Installationsordner kopieren.
-\item axis2.war aus der axis2-1.5-war.zip in den Ordner {}``webapps''
-des Apache Tomcat Installationsordner kopieren. 
-\item Verzeichnis {}``servicejars'' im Installationsordner von Tomcat
-im Verzeichnis {}``\textbackslash{}webapps\textbackslash{}axis2\textbackslash{}WEB-INF''
-anlegen.
-\end{enumerate}
-
-\paragraph{Konfiguration eines vorhandenen Apache Tomcat }
-
-
-\subparagraph{Axis2}
-
-
-\subparagraph{JUDDI}
-
-
-\subparagraph{RRS}
-
-
-\subparagraph{RRS Transformation Service}
-
-
-\subsubsection{Apache ODE }
-
-
-\paragraph{Neuinstallation}
-\begin{enumerate}
-\item Das File {}``simpl-tomcat.zip'' muß in das Tomcat Installationsverzeichnis
-kopiert und dort entpackt werden. Dieses File enthält mehrere SIMPL
-Komponenten wie den SIMPL Core, den Verzeichnisdienst Apache Juddi
-und die Workflow Engine Apache ODE.
-\item Das File {}``simpl-ode-extension.jar'' muß in den Ordner {}``lib''
-im Tomcat Installationsordnet kopiert werden.
-\end{enumerate}
-
-\paragraph{Konfiguration einer vorhandenen Apache ODE }
-
-
-\subparagraph{SIMPL Core}
-
-
-\subparagraph{SIMPL Auditing}
-
-
-\subparagraph{BPEL DM Extension Activities}
-
-\newpage{}
-
-
 \section{Funktionalität}
 
 
 \subsection{\label{sub:Referenzverwaltung}Referenzverwaltung}
 
-Unterstützung von Referenzen in BPEL (siehe \cite{key-3}), damit
-auf Daten auch per Referenz im Workflow zugegriffen werden kann. Dies
-wird aus Gründen der Performanz benötigt, da die Datenübergabe zwischen
-Workflow und Web Service standardmäßig per Wert erfolgt, was bei großen
-Datenmengen (bis hin zu Gigabytes oder gar Terabytes im wissenschaftlichen
-Bereich) zu erheblichen Performanzeinbußen führt.
+Das Reference Resolution System (RRS) repräsentiert den Kern der Referenzverwaltung
+und sorgt für das automatische Aufl{}ösen von Referenzen zur Laufzeit
+von Prozessinstanzen und realisiert die Verwaltung (Erstellen, Bearbeiten
+und Löschen) von Referenzen. Durch die Unterstützung von Referenzen
+in BPEL (siehe \cite{key-3}), kann auf Daten per Referenz im Workflow
+zugegriffen werden. Dies wird aus Gründen der Performanz benötigt,
+da die Datenübergabe zwischen Workflow und Web Service standardmäßig
+per Wert erfolgt, was bei großen Datenmengen (bis hin zu Gigabytes
+oder gar Terabytes im wissenschaftlichen Bereich) zu erheblichen Performanzeinbußen
+führt. Es werden Daten-Referenzen sowie Container-Referenzen unterstützt.
+Die Daten-Referenzen werden zwischen den einzelnen Web Services weitergegeben
+(Daten werden by reference übergeben) und die Daten bleiben, sofern
+sie nicht im Workfl{}ow benötigt werden, auf ihrer Datenquelle und
+werden dort auch bearbeitet. Die Container-Referenzen sind einfache
+BPEL-Variablen, denen ein Datentyp mit z.T. spezieller Struktur zugewiesen
+wird und die alle für den Verweis auf eine Datenstruktureinheit notwendigen
+Informationen beinhalten. So können in BPEL-Variablen Verweise auf
+Datenstruktureinheiten (Tabellen, Schema, XML-Dokumente, Ordner, Dateien,
+usw.) von Datenquellen modelliert werden. 
 
 
 \subsection{Datenquellen-Registry}
@@ -317,26 +190,35 @@ Datenquellen über den Eclipse BPEL Designer (siehe \cite{key-10})
 ausgewählt werden können. Bei den Datenquellen kann es sich um Datenbanken
 oder Dateisysteme handeln, die dabei statisch oder dynamisch angebunden
 werden. Bei der dymanischen Anbindung, dem sog. Late-Binding, erfolgt
-die Auswahl der Anbindung nach definierten Richtlinien, den sog. Policies.Im
-Bereich der Datenbanken werden relationale Datenbanken der Typen MySQL,
-Derby, EmbeddedDerby und DB2 unterstützt, im Bereich der Dateisysteme
+die Auswahl der Anbindung nach definierten Richtlinien, den sog. Policies.
+Im Bereich der Datenbanken werden relationale Datenbanken der Typen
+MySQL, Derby, EmbeddedDerby und DB2 unterstützt, im Bereich der Dateisysteme
 nur Windows Dateisysteme auf NTFS- (New Technology File System) Basis
 mit dem CSV (Comma-Separated Values) Dateiformat. 
 
 
 \subsection{Bereitstellung von generischen BPEL-Aktivitäten}
 
-Durch die DM-Aktivitäten kann direkt auf die Datenquellen zugegrien
-werden.
+Durch die Bereitstellung von generischen BPEL-Aktivitäten kann auf
+nahezu beliebige Datenquellen zugegriffen werden. Bei den Datenquellen
+kann es sich beispielsweise um Sensornetze, Datenbanken oder Dateisysteme
+handeln. Durch den modularen Aufbau und dem damit möglichen Hinzufügen
+von neuen Adapter, kann prinzipiell jede Datenquelle mit den DM-Aktivitäten
+verknüpft werden.
 
 
 \subsection{Auditing}
 
 Das Auditing protokolliert alle Ereignisse ( z.B. Ausführung einer
 DM-Aktivität ) die während der Laufzeit eines Prozesses auftreten
-und speichert dies in einer vom Nutzer definierten Datenbank. Diese
-ist frei wählbar und kann in der Adminkonsole eingestellt, sowie de-
-und aktiviert werden. Das Auditing wird nur für Apache ODE angeboten.
+und speichert dies in einer vom Nutzer definierten, frei wählbaren,
+Datenbank. Das Auditung kann in der Adminkonsole eingestellt, sowie
+de- und aktiviert werden. Das Auditing wird nur für Apache ODE angeboten.
+Da die Ausführungslogik der DM-Aktivitäten der Workflow-Engine Apache
+ODE obliegt, erfolgt dort die Mehrzahl der Erzeugung der Auditing
+Ereignisse. Die Ereignisse (Events) sind in folgende fünf Gruppen
+eingeteilt: Instance Lifecycle Events, Activity Lifecycle Events,
+Scope Handling, Data Handling, Correlation Events.
 
 
 \subsection{Erweiterbarkeit}
@@ -344,11 +226,15 @@ und aktiviert werden. Das Auditing wird nur für Apache ODE angeboten.
 Das SIMPL Rahmenwerk bietet durch einen sehr modularen Aufbau die
 Möglichkeit an andere Anforderungen angepasst oder erweitert zu werden.
 Insbesondere wird dadurch die Möglichkeit zur Anbindung von weiteren
-Datenquellen, Abfragesprachen, Strategien, etc., geboten. Die Erweiterung
-läßt sich hauptsächlich mittels einem Plug-In System realisieren.
-Weiterführende Informationen dazu können im Entwicklerhandbuch gefunden
-werden.
-
+Datenquellen, Abfragesprachen, Strategien, etc., geboten. Die wichtigsten
+Aspekte zur Erweiterbarkeit sind :
+\begin{itemize}
+\item Die Aufteilung des Rahmenwerks in SIMPL Core, erweiterter Workfl{}ow-Engine
+und erweitertes Eclipse Plug-In.
+\item Das Plug-In System des SIMPL Cores, über das Plug-Ins zur Unterstützung
+von weiteren Da- tenquellentypen einfach angebunden werden können. 
+\item Die Verwendung des Eclipse Plug-In Mechanismus für die Admin-Konsole.
+\end{itemize}
 
 \subsection{Validierung}
 
@@ -466,7 +352,7 @@ eines Prozesses mit Referenzvariablen an.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=1\textwidth]{img/SIMPL_BPEL_Referenzvariable.JPG}
+\includegraphics[width=1\textwidth]{img/SIMPL_BPEL_Referenzvariable}
 \par\end{centering}
 
 \caption{\label{fig:SIMPL_BPEL_Referencevariable}Um Referenzvariablen erweiterter
@@ -484,7 +370,7 @@ wird, wird in Kapitel \ref{sub:Referenzverwaltung} beschrieben.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.8\textwidth]{img/SIMPL_DeploymentDeskriptor.JPG}
+\includegraphics[width=0.8\textwidth]{img/SIMPL_DeploymentDeskriptor}
 \par\end{centering}
 
 \caption{\label{fig:Erweiteter Deployment-Deskriptor}Erweiteter Deployment-Deskriptor}
@@ -503,7 +389,7 @@ definierte Richtlinien ( Policies) und Strategien einzuhalten.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics{img/SIMPL_DD_AddDS.JPG}
+\includegraphics{img/SIMPL_DD_AddDS}
 \par\end{centering}
 
 \caption{\label{fig:SIMPL-DD-AddDS}Dialog für das Hinzufügen einer Datenquellen-Beschreibung}
@@ -523,7 +409,7 @@ Benutzername und Passwort.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics{img/SIMPL_DD_AddAM.JPG}
+\includegraphics{img/SIMPL_DD_AddAM}
 \par\end{centering}
 
 \caption{\label{fig:SIMPL-DD-AddAM}Dialog für das Hinzufügen eines Activity
@@ -548,7 +434,7 @@ DM-Aktivität ausgeführt.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.8\textwidth]{img/AdminConsole.JPG}
+\includegraphics[width=0.8\textwidth]{img/AdminConsole}
 \par\end{centering}
 
 \caption{\label{fig:SIMPL_Admin_Console}Admin Konsole}
@@ -684,16 +570,21 @@ ausgeführt werden soll. Dazu wird die zuerst die Datenquelle bei {}``Data
 source name'' ausgewählt, worauf hin dann die Eigenschaften Typ,
 Untertyp und Sprache dieser Datenquelle in der linken Hälfte der Ansicht
 angezeigt werden. Das Ziel dieser Aktivität kann bei {}``Target to
-insert the query result'' ausgewählt werden.
+insert the query result'' ausgewählt werden. Bei {}``Insert Table
+Name'' kann eine Schema und / oder ein Tabelle ausgewählt und in
+das Statement eingefügt werden. {}``Insert Parameter Variable''
+ermöglicht die Auswahl einer Parameter-Variablen, und {}``Insert
+Container Variable'' ermöglicht die Auswahl einer Container Variablen
+aus den bereits angelegten jeweiligen Variablen.
 
 Im Textfeld {}``Data management operation'' wird dabei der Befehl
-in seiner vollen Länge angezeigt, genau so wie er auf der Datenquelle
+in einer vollen Länge angezeigt, genau so wie er auf der Datenquelle
 ausgeführt wird. Dort kann der Befehl auch noch manuell geändert werden.
 
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=1\textwidth]{img/SIMPL_DM_PropertySection.JPG}
+\includegraphics[width=1\textwidth]{img/SIMPL_DM_PropertySection}
 \par\end{centering}
 
 \caption{\label{fig:Eigenschaftenfenster-einer-Data-Management-Aktivit=0000E4t}Eigenschaftsfenster
@@ -744,7 +635,7 @@ und dann anklicken von {}``Reference Management View''.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.8\textwidth]{img/RRS_View.JPG}
+\includegraphics[width=0.8\textwidth]{img/RRS_View}
 \par\end{centering}
 
 \caption{\label{fig:RRS-View}RRS-View}
@@ -772,7 +663,7 @@ betrachtet, aber nicht verändert oder gelöscht werden.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.8\textwidth]{img/UDDI_View.JPG}
+\includegraphics[width=0.8\textwidth]{img/UDDI_View}
 \par\end{centering}
 
 \caption{\label{fig:Datenquellen-Registry-View}Datenquellen-Registry-View}
@@ -786,13 +677,12 @@ betrachtet, aber nicht verändert oder gelöscht werden.
 \subsubsection{Datenquellen-Registry Web Interface}
 
 Das Datenquellen-Registry Web Interface dient dem Datenquellen-Administrator
-die Datenquellen-Registry zu verwalten. Dafür gibt er den Namen der
-Datenquelle und deren Adresse an und wählt jeweils aus einem Drop-Down-Menü
-den Typ und den Subtyp der Datenquelle aus. Durch das Drücken des
-Add Policy-Buttons, kann für die Datenquelle eine Policy-Datei, die
-extern modeliert und über das Textfeld ausgewählt wurde, hinzugefügt
-werden. Mit dem Save-Button werden alle durchgeführten Änderungen
-gespeichert. 
+die Datenquellen-Registry zu verwalten. Um eine neue Datenquelle zu
+registrieren werden die in Abbildung \ref{fig:Datenquellen-Registry-Webinterface}
+gezeigten Daten benötigt. Diese bestehen aus dem Namen der Datenquelle,
+deren Adresse, dem Typ, dem Subtyp, der Sprache, dem Benutzername,
+dem Passwort und dem Policy File.Mit dem Save-Button werden alle durchgeführten
+Änderungen gespeichert. 
 
 %
 \begin{figure}[H]
@@ -1538,7 +1428,7 @@ unter {}``Protocol'' {}``SOAP'' auswählen.
 \item Bei dem neu erstellen Service nun auf den {}``Port'' ( das pfeilähnliche
 blaue nach rechts zeigende Symbol) und die Port-Properties-View öffnet
 sich. In diesem wählt man bei {}``Binding'' das unter Punkt 3 erstellte
-Binding aus. Bei {}``Address'' gibt man die Adresse (z.B. http://{""}localhost:8080/{""}ode/{""}processes/{""}FluegeBuchen)
+Binding aus. Bei {}``Address'' gibt man die Adresse (z.B. http://""localhost:8080/""ode/""processes/""FluegeBuchen)
 des ODE Servers ein. Zu beachten ist, dass der Name des Services,
 wie er in Punkt 2 erstellt wurde, auch identisch ist, wie der Name
 der WSDL-Datei im BPEL Designer.
@@ -1568,7 +1458,7 @@ Bestandteil der Eclipse IDE for Java EE Developers.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.8\textwidth]{\string"img/Sending SOAP Message\string".jpg}
+\includegraphics[width=0.8\textwidth]{\string"img/Sending SOAP Message\string".eps}
 \par\end{centering}
 
 \caption{\label{fig:Web-Service-Explorer}Web Service Explorer}
@@ -1652,7 +1542,7 @@ auf {}``Save'' wird die neue Referenz gesichert.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.5\textwidth]{img/RRS_AddRef.JPG}
+\includegraphics[width=0.5\textwidth]{img/RRS_AddRef}
 \par\end{centering}
 
 \caption{\label{fig:Neue-Referenz-inRRS-einfuegen}Neue Referenz in RRS einfügen}
@@ -1782,7 +1672,7 @@ angezeigt wie in Abbildung \ref{fig:Registry-Datenquellenliste} dargestellt.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.8\textwidth]{img/datasourcelist.JPG}
+\includegraphics[width=0.8\textwidth]{img/datasourcelist}
 \par\end{centering}
 
 \caption{\label{fig:Registry-Datenquellenliste}Registry Datenquellenliste}
@@ -1798,7 +1688,7 @@ Eingabe der Datenquellen Konfiguration.
 %
 \begin{figure}[H]
 \begin{centering}
-\includegraphics[width=0.8\textwidth]{img/edit.JPG}
+\includegraphics[width=0.8\textwidth]{img/edit}
 \par\end{centering}
 
 \caption{\label{fig:Datenquelle-in-Registry_new}Datenquelle in Registry anlegen}
@@ -1944,20 +1834,11 @@ XQUERY & XML Query Language\tabularnewline
 
 \newpage{}
 \begin{thebibliography}{14}
-\bibitem{key-3} Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.:
-\emph{Towards Reference Passing in Web Service and Workflow-based
-Applications}. In: Proc. of the 13th IEEE Enterprise Distributed Object
-Conference (EDOC 2009), Auckland, New Zealand, 31. August - 04. September
-2009.
-
 \bibitem{key-4} Jordan, D.; Evdemon, J.: \emph{Web Services Business
 Process Execution Language Version 2.0}, OASIS Standard. Organization
 for the Advancement of Structured Information Standards (OASIS), 11.April
 2007. http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf,
 zuletzt zugegriffen am 13.07.2010
-
-\bibitem{key-5} Axis2, http://ws.apache.org/axis2/, zuletzt zugegriffen
-am 17.10.2009
 
 \bibitem{key-6} Apache ODE, http://ode.apache.org/, zuletzt zugegriffen
 am 17.07.2010
@@ -1965,32 +1846,29 @@ am 17.07.2010
 \bibitem{key-7} Apache Tomcat, http://tomcat.apache.org/, zuletzt
 zugegriffen am 17.07.2010
 
-\bibitem{key-8} Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html,
-zuletzt zugegriffen am 17.10.2009
-
 \bibitem{key-10} Eclipse BPEL Designer, http://www.eclipse.org/bpel/,
-zuletzt zugegriffen am 17.10.2010
+zuletzt zugegriffen am 17.7.2010
 
 \bibitem{key-11} IBM-DB2, http://www.ibm.com/db2/, zuletzt zugegriffen
-am 17.10.2009
+am 20.07.2010
 
 \bibitem{key-12} Java 6, http://java.sun.com/, zuletzt zugegriffen
-am 17.10.2009
+am 20.7.2010
 
 \bibitem{key-14} TinyDB, http://telegraph.cs.berkeley.edu/tinydb/,
-zuletzt zugegriffen am 17.10.2009
+zuletzt zugegriffen am 20.07.2010
 
 \bibitem{key-16} Eclipse, http://www.eclipse.org/, zuletzt zugegriffen
-am 18.10.2009
+am 20.7.2010
 
 \bibitem{key-21}WSDL, http://www.w3.org/standards/techs/wsdl, zuletzt
-zugegriffen am 04.11.2009
+zugegriffen am 20.07.2010
 
 \bibitem{key-24}XPath, http://www.w3.org/standards/techs/xpath, zuletzt
-zugegriffen am 30.01.2010
+zugegriffen am 20.07.2010
 
 \bibitem[13]{key-13}jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen
-am 28.02.2010
+am 20.07.2010
 
 \bibitem[14]{key-1}WinRAR, http://http://www.winrar.de/, zuletzt
 zugegriffen am 10.06.2010

@@ -1,4 +1,4 @@
-#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -851,17 +851,7 @@ key "key-6"
  um mit SIMPL arbeiten zu können.
  Für die Erweiterung des SIMPL Funktionsumfanges kann das Entwicklerhandbuch
  zur Hilfe genommen werden, für das Installation und Deployment gibt das
- Installationshandbuch
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Drinlassen ?
-\end_layout
-
-\end_inset
-
-.
+ Installationshandbuch.
  In den folgenden Kapiteln wird die Funktionalität, die Komponenten, der
  Aufbau, die Benutzeroberfläche und die Benutzung erläutert.
  Kompliziertere Anwendungssituationen werden dabei mit einer ausführlichen
@@ -912,389 +902,6 @@ Die Systemvoraussetzungen des Rahmenwerkes entspricht den Voraussetzungen
 \end_layout
 
 \begin_layout Section
-Installation 
-\end_layout
-
-\begin_layout Standard
-Das Rahmenwerk wird als Teil eines großen Installationpaketes ausgeliefert.
- Dieses Installationspaket besteht aus allen Programmen, die für die Verwendung
- des Rahmenwerks benötigt werden.
- Dazu gehört das Modellierungstool Eclipse BPEL Designer, der Web Server
- Apache Tomcat, der die Workflow-Engine ausführt, die Workflow-Engine Apache
- ODE und natürlich das Rahmenwerk selbst.
- Das SIMPL Rahmenwerk bestehend wiederum aus dem SIMPL Core, den SIMPL Eclipse
- Plug-Ins und dem BPEL-DM Plug-In.
- Näheres dazu kann Seite 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "sec:Komponenten,-Aufbau-und"
-
-\end_inset
-
- entnommen werden.
- Durch das Installationspaket sind viele Einstellungen bereits vordefiniert,
- um dem Benutzer eine einfache Installation zu ermöglichen.
- Das Installationspaket ist dabei als RAR-Archiv zusammen mit allen wichtigen
- Dokumenten auf einer CD/DVD vorhanden.
- Für eine neue Windows Installation ist die 
-\begin_inset Quotes eld
-\end_inset
-
-All-in-one
-\begin_inset Quotes erd
-\end_inset
-
--Installation zu empfehlen.
- Für die Installation auf bestehenden Systemen, wo vorhandene Komponenten
- übernommen werden sollen, wird auch die Installation der einzelnen, isolierten
- Komponenten näher erläutert.
-\end_layout
-
-\begin_layout Subsection
-All-in-one Installation
-\end_layout
-
-\begin_layout Standard
-Die 
-\begin_inset Quotes eld
-\end_inset
-
-All-in-one
-\begin_inset Quotes erd
-\end_inset
-
--Installation ist die schnelle und einfache Installation und für ein Windows
- System zu empfehlen.
- Das Archiv 
-\begin_inset Quotes eld
-\end_inset
-
-SIMPL.rar
-\begin_inset Quotes erd
-\end_inset
-
- muß entpackt werden und danach kann das Rahmenwerk über die Kommandozeile
- oder durch einen Doppelklick auf 
-\begin_inset Quotes eld
-\end_inset
-
-eclipse.exe
-\begin_inset Quotes erd
-\end_inset
-
- im Eclipse Installationsverzeichnis gestartet werden.
- Dazu kann der Tomcat Server über 
-\begin_inset Quotes eld
-\end_inset
-
-..bin/tomcat6.exe
-\begin_inset Quotes erd
-\end_inset
-
- gestartet werden.
- 
-\end_layout
-
-\begin_layout Subsection
-Installation der Komponenten und Konfiguration
-\end_layout
-
-\begin_layout Subsubsection
-Eclipse
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-macht Daniel
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph*
-Neuinstallation
-\end_layout
-
-\begin_layout Standard
-Die Installation von Eclipse erfolgt durch das Entpacken von Eclipse IDE
- for Java EE Developers (eclipse-jee-galileo-SR2-win32.zip).
- Dadurch wäre Eclipse schon startfähig, jedoch fehlt noch der BPEL Designer
- und das SIMPL Rahmenwerk.
- Zum Entpacken genügt das oft bei Windows integrierte ZIP Programm, oder
- eine Entpackprogramm wie beispielsweise Winrar (siehe 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "key-1"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Paragraph
-Konfiguration einer vorhandenen Eclipse Entwicklungsumgebung
-\end_layout
-
-\begin_layout Subsubsection
-BPEL Designers und SIMPL Eclipse Plug-In
-\end_layout
-
-\begin_layout Paragraph
-Neuinstallation
-\end_layout
-
-\begin_layout Standard
-Da der im Rahmenwerk beiligende BPEL Designer dem Rahmenwerk angepasst wurde,
- ist die Neuinstallation des Eclipse BPEL Designers zwingend erforderlich
- um die SIMPL Funktionen nutzen zu können.
- Der BPEL Designer ( die auf SIMPL angepasste Version) und das SIMPL Eclipse
- Plug-In befinden sich in der Datei 
-\begin_inset Quotes eld
-\end_inset
-
-simpl-eclipse.zip
-\begin_inset Quotes erd
-\end_inset
-
-.
- Diese Datei muß in den Eclipse Hauptordner kopiert und dort entpackt werden.
- Beim Entpacken werden 22 Files automatisch in den 
-\begin_inset Quotes eld
-\end_inset
-
-plugins
-\begin_inset Quotes erd
-\end_inset
-
--Ordner von Eclipse kopiert.
- Dort müssen sich die folgenden Datei für die vollständige Funktionalität
- befinden :
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename img/SIMPL_Installation_SIMPL_ECLIPSE_Files.jpg
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:SIMPL_BPEL_Installation_Files"
-
-\end_inset
-
-BPEL Designer und SIMPL Installationsdateien
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Apache Tomcat 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Wer macht das ? Schneimi ?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Neuinstallation
-\end_layout
-
-\begin_layout Enumerate
-Die Datei 
-\begin_inset Quotes eld
-\end_inset
-
-apache-tomcat-6.0.26.exe
-\begin_inset Quotes erd
-\end_inset
-
- enthält den Apache Tomcat Webserver der Version 6.0.26.
- Durch Doppelklicken auf das File startet der Installationsvorgang von Apache
- Tomcat.
- Im Verlauf der Installation ist u.a.
- das Installationsverzeichnis sowie den HTTP Connector Port zu wählen.
- Beim HTTP Connector Port ist nach Möglichkeit der Port 8080 einzuhalten,
- da dieser auch im SIMPL Rahmenwerk voreingestellt ist.
-\end_layout
-
-\begin_layout Enumerate
-Die Datei ode.war aus der apache-ode-war-2.0-beta2.zip in das Verzeichnis 
-\begin_inset Quotes eld
-\end_inset
-
-webapp
-\begin_inset Quotes erd
-\end_inset
-
- des Apache Tomcat Installationsordner kopieren.
-\end_layout
-
-\begin_layout Enumerate
-axis2.war aus der axis2-1.5-war.zip in den Ordner 
-\begin_inset Quotes eld
-\end_inset
-
-webapps
-\begin_inset Quotes erd
-\end_inset
-
- des Apache Tomcat Installationsordner kopieren.
- 
-\end_layout
-
-\begin_layout Enumerate
-Verzeichnis 
-\begin_inset Quotes eld
-\end_inset
-
-servicejars
-\begin_inset Quotes erd
-\end_inset
-
- im Installationsordner von Tomcat im Verzeichnis 
-\begin_inset Quotes eld
-\end_inset
-
-
-\backslash
-webapps
-\backslash
-axis2
-\backslash
-WEB-INF
-\begin_inset Quotes erd
-\end_inset
-
- anlegen.
-\end_layout
-
-\begin_layout Paragraph
-Konfiguration eines vorhandenen Apache Tomcat 
-\end_layout
-
-\begin_layout Subparagraph
-Axis2
-\end_layout
-
-\begin_layout Subparagraph
-JUDDI
-\end_layout
-
-\begin_layout Subparagraph
-RRS
-\end_layout
-
-\begin_layout Subparagraph
-RRS Transformation Service
-\end_layout
-
-\begin_layout Subsubsection
-Apache ODE 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Wer macht das ? Rene ?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Neuinstallation
-\end_layout
-
-\begin_layout Enumerate
-Das File 
-\begin_inset Quotes eld
-\end_inset
-
-simpl-tomcat.zip
-\begin_inset Quotes erd
-\end_inset
-
- muß in das Tomcat Installationsverzeichnis kopiert und dort entpackt werden.
- Dieses File enthält mehrere SIMPL Komponenten wie den SIMPL Core, den Verzeichn
-isdienst Apache Juddi und die Workflow Engine Apache ODE.
-\end_layout
-
-\begin_layout Enumerate
-Das File 
-\begin_inset Quotes eld
-\end_inset
-
-simpl-ode-extension.jar
-\begin_inset Quotes erd
-\end_inset
-
- muß in den Ordner 
-\begin_inset Quotes eld
-\end_inset
-
-lib
-\begin_inset Quotes erd
-\end_inset
-
- im Tomcat Installationsordnet kopiert werden.
-\end_layout
-
-\begin_layout Paragraph
-Konfiguration einer vorhandenen Apache ODE 
-\end_layout
-
-\begin_layout Subparagraph
-SIMPL Core
-\end_layout
-
-\begin_layout Subparagraph
-SIMPL Auditing
-\end_layout
-
-\begin_layout Subparagraph
-BPEL DM Extension Activities
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
 Funktionalität
 \end_layout
 
@@ -1309,18 +916,35 @@ Referenzverwaltung
 \end_layout
 
 \begin_layout Standard
-Unterstützung von Referenzen in BPEL (siehe 
+Das Reference Resolution System (RRS) repräsentiert den Kern der Referenzverwalt
+ung und sorgt für das automatische Auﬂösen von Referenzen zur Laufzeit von
+ Prozessinstanzen und realisiert die Verwaltung (Erstellen, Bearbeiten und
+ Löschen) von Referenzen.
+ Durch die Unterstützung von Referenzen in BPEL (siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "key-3"
 
 \end_inset
 
-), damit auf Daten auch per Referenz im Workflow zugegriffen werden kann.
+), kann auf Daten per Referenz im Workflow zugegriffen werden.
  Dies wird aus Gründen der Performanz benötigt, da die Datenübergabe zwischen
  Workflow und Web Service standardmäßig per Wert erfolgt, was bei großen
  Datenmengen (bis hin zu Gigabytes oder gar Terabytes im wissenschaftlichen
  Bereich) zu erheblichen Performanzeinbußen führt.
+ Es werden Daten-Referenzen sowie Container-Referenzen unterstützt.
+ Die Daten-Referenzen werden zwischen den einzelnen Web Services weitergegeben
+ (Daten werden by reference übergeben) und die Daten bleiben, sofern sie
+ nicht im Workﬂow benötigt werden, auf ihrer Datenquelle und werden dort
+ auch bearbeitet.
+ Die Container-Referenzen sind einfache BPEL-Variablen, denen ein Datentyp
+ mit z.T.
+ spezieller Struktur zugewiesen wird und die alle für den Verweis auf eine
+ Datenstruktureinheit notwendigen Informationen beinhalten.
+ So können in BPEL-Variablen Verweise auf Datenstruktureinheiten (Tabellen,
+ Schema, XML-Dokumente, Ordner, Dateien, usw.) von Datenquellen modelliert
+ werden.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1343,16 +967,7 @@ key "key-10"
  Late-Binding, erfolgt die Auswahl der Anbindung nach definierten Richtlinien,
  den sog.
  Policies.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Policies nennen.
-\end_layout
-
-\end_inset
-
-Im Bereich der Datenbanken werden relationale Datenbanken der Typen MySQL,
+ Im Bereich der Datenbanken werden relationale Datenbanken der Typen MySQL,
  Derby, EmbeddedDerby und DB2 unterstützt, im Bereich der Dateisysteme nur
  Windows Dateisysteme auf NTFS- (New Technology File System) Basis mit dem
  CSV (Comma-Separated Values) Dateiformat.
@@ -1364,7 +979,13 @@ Bereitstellung von generischen BPEL-Aktivitäten
 \end_layout
 
 \begin_layout Standard
-Durch die DM-Aktivitäten kann direkt auf die Datenquellen zugegrien werden.
+Durch die Bereitstellung von generischen BPEL-Aktivitäten kann auf nahezu
+ beliebige Datenquellen zugegriffen werden.
+ Bei den Datenquellen kann es sich beispielsweise um Sensornetze, Datenbanken
+ oder Dateisysteme handeln.
+ Durch den modularen Aufbau und dem damit möglichen Hinzufügen von neuen
+ Adapter, kann prinzipiell jede Datenquelle mit den DM-Aktivitäten verknüpft
+ werden.
 \end_layout
 
 \begin_layout Subsection
@@ -1374,10 +995,16 @@ Auditing
 \begin_layout Standard
 Das Auditing protokolliert alle Ereignisse ( z.B.
  Ausführung einer DM-Aktivität ) die während der Laufzeit eines Prozesses
- auftreten und speichert dies in einer vom Nutzer definierten Datenbank.
- Diese ist frei wählbar und kann in der Adminkonsole eingestellt, sowie
- de- und aktiviert werden.
+ auftreten und speichert dies in einer vom Nutzer definierten, frei wählbaren,
+ Datenbank.
+ Das Auditung kann in der Adminkonsole eingestellt, sowie de- und aktiviert
+ werden.
  Das Auditing wird nur für Apache ODE angeboten.
+ Da die Ausführungslogik der DM-Aktivitäten der Workflow-Engine Apache ODE
+ obliegt, erfolgt dort die Mehrzahl der Erzeugung der Auditing Ereignisse.
+ Die Ereignisse (Events) sind in folgende fünf Gruppen eingeteilt: Instance
+ Lifecycle Events, Activity Lifecycle Events, Scope Handling, Data Handling,
+ Correlation Events.
 \end_layout
 
 \begin_layout Subsection
@@ -1389,10 +1016,22 @@ Das SIMPL Rahmenwerk bietet durch einen sehr modularen Aufbau die Möglichkeit
  an andere Anforderungen angepasst oder erweitert zu werden.
  Insbesondere wird dadurch die Möglichkeit zur Anbindung von weiteren Datenquell
 en, Abfragesprachen, Strategien, etc., geboten.
- Die Erweiterung läßt sich hauptsächlich mittels einem Plug-In System realisiere
-n.
- Weiterführende Informationen dazu können im Entwicklerhandbuch gefunden
- werden.
+ Die wichtigsten Aspekte zur Erweiterbarkeit sind :
+\end_layout
+
+\begin_layout Itemize
+Die Aufteilung des Rahmenwerks in SIMPL Core, erweiterter Workﬂow-Engine
+ und erweitertes Eclipse Plug-In.
+\end_layout
+
+\begin_layout Itemize
+Das Plug-In System des SIMPL Cores, über das Plug-Ins zur Unterstützung
+ von weiteren Da- tenquellentypen einfach angebunden werden können.
+ 
+\end_layout
+
+\begin_layout Itemize
+Die Verwendung des Eclipse Plug-In Mechanismus für die Admin-Konsole.
 \end_layout
 
 \begin_layout Subsection
@@ -2313,16 +1952,34 @@ Target to insert the query result
 \end_inset
 
  ausgewählt werden.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-mehr zu den Buttons hineinschreiben
-\end_layout
-
+ Bei 
+\begin_inset Quotes eld
 \end_inset
 
+Insert Table Name
+\begin_inset Quotes erd
+\end_inset
 
+ kann eine Schema und / oder ein Tabelle ausgewählt und in das Statement
+ eingefügt werden.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Insert Parameter Variable
+\begin_inset Quotes erd
+\end_inset
+
+ ermöglicht die Auswahl einer Parameter-Variablen, und 
+\begin_inset Quotes eld
+\end_inset
+
+Insert Container Variable
+\begin_inset Quotes erd
+\end_inset
+
+ ermöglicht die Auswahl einer Container Variablen aus den bereits angelegten
+ jeweiligen Variablen.
 \end_layout
 
 \begin_layout Standard
@@ -2334,7 +1991,7 @@ Data management operation
 \begin_inset Quotes erd
 \end_inset
 
- wird dabei der Befehl in seiner vollen Länge angezeigt, genau so wie er
+ wird dabei der Befehl in einer vollen Länge angezeigt, genau so wie er
  auf der Datenquelle ausgeführt wird.
  Dort kann der Befehl auch noch manuell geändert werden.
 \end_layout
@@ -2381,16 +2038,6 @@ Eigenschaftsfenster eine DM-Aktivität am Beispiel einer Query Activity
 
 \begin_layout Paragraph
 Statement-Editor
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-ausführlicher machen
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2657,13 +2304,17 @@ Datenquellen-Registry Web Interface
 \begin_layout Standard
 Das Datenquellen-Registry Web Interface dient dem Datenquellen-Administrator
  die Datenquellen-Registry zu verwalten.
- Dafür gibt er den Namen der Datenquelle und deren Adresse an und wählt
- jeweils aus einem Drop-Down-Menü den Typ und den Subtyp der Datenquelle
- aus.
- Durch das Drücken des Add Policy-Buttons, kann für die Datenquelle eine
- Policy-Datei, die extern modeliert und über das Textfeld ausgewählt wurde,
- hinzugefügt werden.
- Mit dem Save-Button werden alle durchgeführten Änderungen gespeichert.
+ Um eine neue Datenquelle zu registrieren werden die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Datenquellen-Registry-Webinterface"
+
+\end_inset
+
+ gezeigten Daten benötigt.
+ Diese bestehen aus dem Namen der Datenquelle, deren Adresse, dem Typ, dem
+ Subtyp, der Sprache, dem Benutzername, dem Passwort und dem Policy File.Mit
+ dem Save-Button werden alle durchgeführten Änderungen gespeichert.
  
 \end_layout
 
@@ -5334,20 +4985,9 @@ Address
 status open
 
 \begin_layout Plain Layout
+
 z.B.
- http://
-""
-\lang ngerman
-localhost:8080/
-""
-\lang ngerman
-ode/
-""
-\lang ngerman
-processes/
-""
-\lang ngerman
-FluegeBuchen
+ http://""localhost:8080/""ode/""processes/""FluegeBuchen
 \end_layout
 
 \end_inset
@@ -7262,25 +6902,6 @@ XML Query Language
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-3"
-
-\end_inset
-
- Wieland, M.; Görlach, K.; Schumm, D.; Leymann, F.: 
-\emph on
-Towards Reference Passing in Web Service and Workflow-based Applications
-\emph default
-.
- In: Proc.
- of the 13th IEEE Enterprise Distributed Object Conference (EDOC 2009),
- Auckland, New Zealand, 31.
- August - 04.
- September 2009.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
 key "key-4"
 
 \end_inset
@@ -7294,16 +6915,6 @@ Web Services Business Process Execution Language Version 2.0
  11.April 2007.
  http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf, zuletzt zugegriffen
  am 13.07.2010
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "key-5"
-
-\end_inset
-
- Axis2, http://ws.apache.org/axis2/, zuletzt zugegriffen am 17.10.2009
 \end_layout
 
 \begin_layout Bibliography
@@ -7329,23 +6940,12 @@ key "key-7"
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-8"
-
-\end_inset
-
- Apache Tuscany DAS, http://tuscany.apache.org/das-overview.html, zuletzt zugegriff
-en am 17.10.2009
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
 key "key-10"
 
 \end_inset
 
  Eclipse BPEL Designer, http://www.eclipse.org/bpel/, zuletzt zugegriffen
- am 17.10.2010
+ am 17.7.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -7355,7 +6955,7 @@ key "key-11"
 
 \end_inset
 
- IBM-DB2, http://www.ibm.com/db2/, zuletzt zugegriffen am 17.10.2009
+ IBM-DB2, http://www.ibm.com/db2/, zuletzt zugegriffen am 20.07.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -7365,7 +6965,7 @@ key "key-12"
 
 \end_inset
 
- Java 6, http://java.sun.com/, zuletzt zugegriffen am 17.10.2009
+ Java 6, http://java.sun.com/, zuletzt zugegriffen am 20.7.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -7375,7 +6975,7 @@ key "key-14"
 
 \end_inset
 
- TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, zuletzt zugegriffen am 17.10.2009
+ TinyDB, http://telegraph.cs.berkeley.edu/tinydb/, zuletzt zugegriffen am 20.07.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -7385,7 +6985,7 @@ key "key-16"
 
 \end_inset
 
- Eclipse, http://www.eclipse.org/, zuletzt zugegriffen am 18.10.2009
+ Eclipse, http://www.eclipse.org/, zuletzt zugegriffen am 20.7.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -7395,7 +6995,7 @@ key "key-21"
 
 \end_inset
 
-WSDL, http://www.w3.org/standards/techs/wsdl, zuletzt zugegriffen am 04.11.2009
+WSDL, http://www.w3.org/standards/techs/wsdl, zuletzt zugegriffen am 20.07.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -7405,7 +7005,7 @@ key "key-24"
 
 \end_inset
 
-XPath, http://www.w3.org/standards/techs/xpath, zuletzt zugegriffen am 30.01.2010
+XPath, http://www.w3.org/standards/techs/xpath, zuletzt zugegriffen am 20.07.2010
 \end_layout
 
 \begin_layout Bibliography
@@ -7416,7 +7016,7 @@ key "key-13"
 
 \end_inset
 
-jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 28.02.2010
+jUDDI, http://ws.apache.org/juddi/, zuletzt zugegriffen am 20.07.2010
 \end_layout
 
 \begin_layout Bibliography
