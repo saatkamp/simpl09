@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<juddi-properties>
-	<address>http://localhost:8080/juddiv3</address>
-	<username>root</username>
-	<password></password>
-	<ds-address>http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl</ds-address>
-</juddi-properties>
