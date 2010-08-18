@@ -1,8 +1,5 @@
 package org.simpl.core.plugins.dataformat.converter;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -14,7 +11,6 @@ import org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSourceService;
 import org.simpl.core.services.datasource.DataSourceService;
 
 import commonj.sdo.DataObject;
-import commonj.sdo.helper.XMLHelper;
 
 /**
  * <b>Purpose: Converts the CSV data format to the RDB data format and vice versa.</b> <br>
@@ -59,17 +55,19 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
           + this.getToDataFormat().getType());
     }
 
-    // RDB SDO data holder
+    // data from CSV SDO
+    List<DataObject> csvTables = csvSDO.getList("table");
+    List<DataObject> csvRows = null;
+    List<DataObject> csvColumns = null;
+
+    // data of RDB SDO
     DataObject rdbSDO = this.getToDataFormat().getSDO();
     DataObject rdbTableObject = null;
+    DataObject rdbRowObject = null;
     DataObject rdbColumnObject = null;
-    List<String> rdbPrimaryKeys = new ArrayList<String>();
-
-    // read data from CSV SDO
-    List<DataObject> csvDataRows = csvSDO.getList("dataset");
 
     // write data to RDB SDO
-    for (int i = 0; i < csvDataRows.size(); i++) {
+    for (int i = 0; i < csvTables.size(); i++) {
       // add table
       rdbTableObject = rdbSDO.createDataObject("table");
       rdbTableObject.set("name", csvSDO.getString("filename").toUpperCase().replace(".",
@@ -77,38 +75,45 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
       rdbTableObject.set("catalog", "");
       rdbTableObject.set("schema", "");
 
-      // add primary key
-      rdbColumnObject = rdbTableObject.createDataObject("column");
-      rdbColumnObject.set("name", "PK_ID");
-      rdbColumnObject.set("type", this.getColumnType("123", dataSourceService));
-      rdbColumnObject.set("value", String.valueOf(i));
-      rdbPrimaryKeys.add("PK_ID");
-      rdbTableObject.set("primaryKey", rdbPrimaryKeys);
-      rdbPrimaryKeys.clear();
+      csvRows = csvTables.get(i).getList("row");
 
-      // add columns
-      List<DataObject> csvColumns = csvDataRows.get(i).getList("column");
+      // add rows
+      for (int j = 0; j < csvRows.size(); j++) {
+        rdbRowObject = rdbTableObject.createDataObject("row");
 
-      for (DataObject csvColumn : csvColumns) {
-        rdbColumnObject = rdbTableObject.createDataObject("column");
-        rdbColumnObject.set("name", csvColumn.getString("name"));
-        rdbColumnObject.set("type", this.getColumnType(csvColumn.getString("value"),
-            dataSourceService));
-        rdbColumnObject.set("value", csvColumn.getString("value"));
+        csvColumns = csvRows.get(j).getList("column");
+
+        // add primary key column
+        rdbColumnObject = rdbRowObject.createDataObject("column");
+        rdbColumnObject.set("name", "PK_ID");
+        rdbColumnObject.set("type", this.getColumnType("123", dataSourceService));
+        rdbColumnObject.set("value", String.valueOf(j));
+        rdbColumnObject.set("pk", true);
+
+        // add columns
+        for (DataObject csvColumn : csvColumns) {
+          rdbColumnObject = rdbRowObject.createDataObject("column");
+          rdbColumnObject.set("name", csvColumn.getString("name"));
+          rdbColumnObject.set("type", this.getColumnType(csvColumn.getString("value"),
+              dataSourceService));
+          rdbColumnObject.set("value", csvColumn.getString("value"));
+        }
       }
     }
 
-    if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      try {
-        XMLHelper.INSTANCE.save(rdbSDO, "commonj.sdo", "dataObject", baos);
-      } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      CSVtoRDBDataFormatConverter.logger.debug("CSV DataObject: "
-          + new String(baos.toByteArray()));
-    }
+    // if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
+    // ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    //
+    // try {
+    // XMLHelper.INSTANCE.save(rdbSDO, "commonj.sdo", "dataObject", baos);
+    // } catch (IOException e) {
+    // // TODO Auto-generated catch block
+    // e.printStackTrace();
+    // }
+    //
+    // CSVtoRDBDataFormatConverter.logger.debug("CSV DataObject: "
+    // + new String(baos.toByteArray()));
+    // }
 
     return rdbSDO;
   }
@@ -128,47 +133,53 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
           + this.getFromDataFormat().getType());
     }
 
-    // CSV SDO data holder
-    DataObject csvSDO = this.getFromDataFormat().getSDO();
-    DataObject csvHeaderObject = null;
-    DataObject csvDatasetObject = null;
-    DataObject csvColumnObject = null;
-    List<String> csvHeaderNames = new ArrayList<String>();
-
-    // read data from RDB SDO
+    // data from RDB SDO
     List<DataObject> rdbTables = rdbSDO.getList("table");
+    List<DataObject> rdbRows = null;
     List<DataObject> rdbColumns = null;
 
-    csvHeaderObject = csvSDO.createDataObject("header");
+    // data of CSV SDO
+    DataObject csvSDO = this.getFromDataFormat().getSDO();
+    DataObject csvTableObject = null;
+    DataObject csvRowObject = null;
+    DataObject csvColumnObject = null;
 
-    for (DataObject rdbTable : rdbTables) {
-      csvDatasetObject = csvSDO.createDataObject("dataset");
-      rdbColumns = rdbTable.getList("column");
+    csvSDO.set("filename", "");
 
-      for (DataObject rdbColumn : rdbColumns) {
-        csvColumnObject = csvDatasetObject.createDataObject("column");
-        csvColumnObject.set("name", rdbColumn.get("name"));
-        csvColumnObject.set("value", rdbColumn.get("value"));
+    // write data to RDB SDO
+    for (int i = 0; i < rdbTables.size(); i++) {
+      // add table
+      csvTableObject = csvSDO.createDataObject("table");
 
-        if (!csvHeaderNames.contains(rdbColumn.get("name"))) {
-          csvHeaderNames.add(rdbColumn.getString("name"));
+      rdbRows = rdbTables.get(i).getList("row");
+
+      // add rows
+      for (int j = 0; j < rdbRows.size(); j++) {
+        csvRowObject = csvTableObject.createDataObject("row");
+        rdbColumns = rdbRows.get(j).getList("column");
+
+        // add columns
+        for (DataObject rdbColumn : rdbColumns) {
+          csvColumnObject = csvRowObject.createDataObject("column");
+          csvColumnObject.set("name", rdbColumn.getString("name"));
+          csvColumnObject.set("value", rdbColumn.getString("value"));
         }
       }
     }
 
-    csvHeaderObject.setList("column", csvHeaderNames);
-
-    if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
-      ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      try {
-        XMLHelper.INSTANCE.save(csvSDO, "commonj.sdo", "dataObject", baos);
-      } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      CSVtoRDBDataFormatConverter.logger.debug("CSV DataObject: "
-          + new String(baos.toByteArray()));
-    }
+    // if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
+    // ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    //
+    // try {
+    // XMLHelper.INSTANCE.save(csvSDO, "commonj.sdo", "dataObject", baos);
+    // } catch (IOException e) {
+    // // TODO Auto-generated catch block
+    // e.printStackTrace();
+    // }
+    //
+    // CSVtoRDBDataFormatConverter.logger.debug("CSV DataObject: "
+    // + new String(baos.toByteArray()));
+    // }
 
     return csvSDO;
   }

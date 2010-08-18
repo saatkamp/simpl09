@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -364,42 +365,52 @@ public class EmbDerbyRDBDataSourceService extends
       throws ConnectionException {
     boolean createdTarget = false;
 
+    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
+      MySQLRDBDataSourceService.logger.debug("createTarget '" + target + "' on '"
+          + dataSource.getAddress() + "'.");
+    }
+
     // test if target already exists
-    if (SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
-        "SELECT * FROM " + target)) {
-      createdTarget = true;
-    } else {
+    try {
+      createdTarget = SIMPLCore.getInstance().dataSourceService().executeStatement(
+          dataSource, "SELECT * FROM " + target);
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    if (!createdTarget) {
       List<DataObject> tables = dataObject.getList("table");
-      List<DataObject> columns = null;
-      List<String> primaryKeys = null;
+      List<DataObject> rows = tables.get(0).getList("row");
+      List<DataObject> columns = rows.get(0).getList("column");;
+      List<String> primaryKeys = new ArrayList<String>();
       String createTargetStatement = null;
 
-      // build a create statement
-      for (DataObject table : tables) {
-        columns = table.getList("column");
-        primaryKeys = table.getList("primaryKey");
+      // build create statement
+      createTargetStatement = "CREATE TABLE " + target + " (";
 
-        createTargetStatement = "CREATE TABLE " + target + " (";
+      // create table with columns
+      for (DataObject column : columns) {
+        createTargetStatement += column.getString("name") + " "
+            + column.getString("type") + ",";
 
-        // create table with columns
-        for (DataObject column : columns) {
-          createTargetStatement += column.getString("name") + " "
-              + column.getString("type") + ",";
+        if (column.getBoolean("pk")) {
+          primaryKeys.add(column.getString("name"));
         }
-
-        // add primary keys
-        createTargetStatement += " PRIMARY KEY (";
-
-        for (int i = 0; i < primaryKeys.size(); i++) {
-          createTargetStatement += primaryKeys.get(i);
-
-          if (i < primaryKeys.size() - 1) {
-            createTargetStatement += ",";
-          }
-        }
-
-        createTargetStatement += "))";
       }
+
+      // add primary keys
+      createTargetStatement += " PRIMARY KEY (";
+
+      for (int j = 0; j < primaryKeys.size(); j++) {
+        createTargetStatement += primaryKeys.get(j);
+
+        if (j < primaryKeys.size() - 1) {
+          createTargetStatement += ",";
+        }
+      }
+
+      createTargetStatement += "))";
 
       createdTarget = this.executeStatement(dataSource, createTargetStatement);
     }

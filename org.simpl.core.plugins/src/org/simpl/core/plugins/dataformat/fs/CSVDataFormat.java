@@ -55,7 +55,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     String[] headLine;
     String[] nextLine;
     DataObject sdo = this.getSDO();
-    DataObject headerObject = sdo.createDataObject("header");
+    DataObject tableObject = sdo.createDataObject("table");
     DataObject rowObject;
     DataObject columnObject;
 
@@ -65,8 +65,9 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
 
     try {
       csvReader = new CSVReader(new FileReader(file));
+
+      // take first line as headline
       headLine = csvReader.readNext();
-      headerObject.setList("column", Arrays.asList(headLine));
 
       sdo.setString("filename", file.getName());
 
@@ -77,7 +78,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
       // sdo.setBoolean("strictQuotes", false);
 
       while ((nextLine = csvReader.readNext()) != null) {
-        rowObject = sdo.createDataObject("dataset");
+        rowObject = tableObject.createDataObject("row");
 
         for (int i = 0; i < nextLine.length; i++) {
           columnObject = rowObject.createDataObject("column");
@@ -107,9 +108,15 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     File file = null;
     FileWriter fileWriter;
     CSVWriter csvWriter;
-    String[] dataset = null;
-    List<String[]> lines = new ArrayList<String[]>();
 
+    String[] row = null;
+    List<String> headerRow = new ArrayList<String>();
+    List<String[]> dataRows = new ArrayList<String[]>();
+    List<String[]> csvLines = new ArrayList<String[]>();
+    List<DataObject> tableObjects = data.getList("table");
+    List<DataObject> rowObjects = null;
+
+    boolean headerComplete = false;
     // uncommented because CSV properties cannot be recognized and used by OpenCSV
     // char separator = data.getChar("separator");
     // char quoteChar = data.getChar("quoteChar");
@@ -127,31 +134,35 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
       fileWriter = new FileWriter(file);
       csvWriter = new CSVWriter(fileWriter);
 
-      // get column names for header
-      dataset = (String[]) data.getDataObject("header").getList("column").toArray();
+      // get rows
+      rowObjects = tableObjects.get(0).getList("row");
 
-      // add header
-      lines.add(dataset);
-
-      // get dataset
-      List<DataObject> datasetObjects = data.getList("dataset");
-
-      for (DataObject datasetObject : datasetObjects) {
-        List<DataObject> columns = datasetObject.getList("column");
+      // gather rows
+      for (DataObject rowObject : rowObjects) {
+        List<DataObject> columns = rowObject.getList("column");
         List<String> values = new ArrayList<String>();
 
         for (DataObject column : columns) {
           values.add(column.getString("value"));
+
+          if (!headerComplete) {
+            headerRow.add(column.getString("name"));
+          }
         }
 
-        dataset = Arrays.copyOf(values.toArray(), values.size(), String[].class);
+        headerComplete = true;
+
+        row = Arrays.copyOf(values.toArray(), values.size(), String[].class);
 
         // add row
-        lines.add(dataset);
+        dataRows.add(row);
       }
 
+      csvLines.add(headerRow.toArray(new String[headerRow.size()]));
+      csvLines.addAll(dataRows);
+
       // write lines to temporary file
-      csvWriter.writeAll(lines);
+      csvWriter.writeAll(csvLines);
       csvWriter.close();
       fileWriter.close();
     } catch (IOException e) {
