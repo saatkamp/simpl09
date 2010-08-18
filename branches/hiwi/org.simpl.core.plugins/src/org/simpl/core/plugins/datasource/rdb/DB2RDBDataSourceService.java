@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -210,6 +211,11 @@ public class DB2RDBDataSourceService extends
                   + target + " (");
             }
 
+            if (DB2RDBDataSourceService.logger.isDebugEnabled()) {
+              DB2RDBDataSourceService.logger.debug("execute statement '"
+                  + dataSource.getAddress() + "' on " + dataSource.getAddress() + ".");
+            }
+
             connStatement.executeUpdate(statement);
 
             DB2RDBDataSourceService.logger.info("Statement \"" + statement + "\" "
@@ -372,52 +378,48 @@ public class DB2RDBDataSourceService extends
 
     // test if target already exists
     try {
-      SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
-          "SELECT * FROM " + target);
-      createdTarget = true;
+      createdTarget = SIMPLCore.getInstance().dataSourceService().executeStatement(
+          dataSource, "SELECT * FROM " + target);
     } catch (Exception e) {
-      createdTarget = false;
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
 
     if (!createdTarget) {
       List<DataObject> tables = dataObject.getList("table");
-      List<DataObject> columns = null;
-      List<String> primaryKeys = null;
+      List<DataObject> rows = tables.get(0).getList("row");
+      List<DataObject> columns = rows.get(0).getList("column");;
+      List<String> primaryKeys = new ArrayList<String>();
       String createTargetStatement = null;
-      String constraint = "";
 
-      // build a create statement
-      for (DataObject table : tables) {
-        columns = table.getList("column");
-        primaryKeys = table.getList("primaryKey");
+      // build create statement
+      createTargetStatement = "CREATE TABLE " + target + " (";
 
-        createTargetStatement = "CREATE TABLE " + target + " (";
+      // create table with columns
+      for (DataObject column : columns) {
+        createTargetStatement += column.getString("name") + " "
+            + column.getString("type");
 
-        // create table with columns
-        for (DataObject column : columns) {
-          if (primaryKeys.contains(column.getString("name"))){
-        	  constraint = "NOT NULL";
-          }else {
-        	  constraint = "";
-          }
-          createTargetStatement += column.getString("name") + " "
-              + column.getString("type") + " "
-              + constraint + ",";
+        if (column.getBoolean("pk")) {
+          primaryKeys.add(column.getString("name"));
+          createTargetStatement += " NOT NULL ";
         }
 
-        // add primary keys
-        createTargetStatement += " PRIMARY KEY (";
-
-        for (int i = 0; i < primaryKeys.size(); i++) {
-          createTargetStatement += primaryKeys.get(i);
-
-          if (i < primaryKeys.size() - 1) {
-            createTargetStatement += ",";
-          }
-        }
-
-        createTargetStatement += "))";
+        createTargetStatement += ",";
       }
+
+      // add primary keys
+      createTargetStatement += " PRIMARY KEY (";
+
+      for (int j = 0; j < primaryKeys.size(); j++) {
+        createTargetStatement += primaryKeys.get(j);
+
+        if (j < primaryKeys.size() - 1) {
+          createTargetStatement += ",";
+        }
+      }
+
+      createTargetStatement += "))";
 
       createdTarget = this.executeStatement(dataSource, createTargetStatement);
     }

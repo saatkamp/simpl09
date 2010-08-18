@@ -21,7 +21,8 @@ import commonj.sdo.DataObject;
  * database to create or update the data.<br>
  * Because the result set and data base meta data objects need a connection to be able to
  * retrieve data from, the connection is not closed by the data source service
- * retrieveData() method but after toSDO().<br>
+ * retrieveData() method but after toSDO(). The method fromSDO() is only working if the
+ * table has primary keys<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -52,10 +53,11 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   public DataObject toSDO(RDBResult result) {
     DataObject rdbDataObject = this.getSDO();
     DataObject tableObject = null;
+    DataObject rowObject = null;
     DataObject columnObject = null;
 
     ResultSet resultSet = result.getResultSet();
-    ResultSet primaryKey = null;
+    ResultSet primaryKeys = null;
     DatabaseMetaData dbMetaData = result.getDbMetaData();
 
     List<String> primaryKeyList = new ArrayList<String>();
@@ -65,44 +67,42 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     }
 
     try {
+      ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+
+      // get primary keys
+      primaryKeys = dbMetaData.getPrimaryKeys(resultSetMetaData.getCatalogName(1),
+          resultSetMetaData.getSchemaName(1), resultSetMetaData.getTableName(1));
+
+      while (primaryKeys.next()) {
+        primaryKeyList.add(primaryKeys.getString("COLUMN_NAME"));
+      }
+
+      // add table
+      tableObject = rdbDataObject.createDataObject("table");
+      tableObject.set("name", resultSetMetaData.getTableName(1));
+      tableObject.set("catalog", resultSetMetaData.getCatalogName(1));
+      tableObject.set("schema", resultSetMetaData.getSchemaName(1));
+
       while (resultSet.next()) {
-        ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+        // add row
+        rowObject = tableObject.createDataObject("row");
 
+        // add columns
         for (int i = 1; i < resultSetMetaData.getColumnCount() + 1; i++) {
-          // add table
-          if (tableObject == null) {
-            tableObject = rdbDataObject.createDataObject("table");
-            tableObject.set("name", resultSetMetaData.getTableName(i));
-            tableObject.set("catalog", resultSetMetaData.getCatalogName(i));
-            tableObject.set("schema", resultSetMetaData.getSchemaName(i));
-          }
-
-          // add primary keys
-          primaryKeyList.clear();
-          primaryKey = dbMetaData.getPrimaryKeys(resultSetMetaData.getCatalogName(i),
-              resultSetMetaData.getSchemaName(i), resultSetMetaData.getTableName(i));
-
-          while (primaryKey.next()) {
-            for (int j = 1; j < primaryKey.getFetchSize() + 1; j++) {
-              primaryKeyList.add(primaryKey.getString("COLUMN_NAME"));
-            }
-          }
-
-          tableObject.set("primaryKey", primaryKeyList);
-
-          // add columns
-          columnObject = tableObject.createDataObject("column");
+          columnObject = rowObject.createDataObject("column");
           columnObject.set("name", resultSetMetaData.getColumnName(i));
-
           columnObject.set("type", resultSetMetaData.getColumnTypeName(i)
               + "("
               + this.getColumnSize(dbMetaData, resultSetMetaData.getTableName(i),
                   resultSetMetaData.getColumnName(i)) + ")");
           columnObject.set("value", resultSet.getObject(resultSetMetaData
               .getColumnName(i)));
-        }
 
-        tableObject = null;
+          // set primary key
+          if (primaryKeyList.contains(resultSetMetaData.getColumnName(i))) {
+            columnObject.set("pk", true);
+          }
+        }
       }
     } catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -117,7 +117,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
+
     return rdbDataObject;
   }
 
@@ -131,8 +131,9 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   public List<String> fromSDO(DataObject dataObject) {
     List<String> statements = new ArrayList<String>();
     List<DataObject> tables = dataObject.getList("table");
+    List<DataObject> rows = null;
     List<DataObject> columns = null;
-    List<String> primaryKeys = null;
+    List<String> primaryKeys = new ArrayList<String>();
     String quote = "";
     String statement = "";
     String tableSchema = "";
@@ -142,39 +143,52 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     }
 
     for (DataObject table : tables) {
-      columns = table.getList("column");
-      primaryKeys = table.getList("primaryKey");
+      rows = table.getList("row");
 
-      for (DataObject column : columns) {
-        if (column.getString("type").startsWith("VARCHAR")) {
-          quote = "'";
-        } else {
-          quote = "";
+      for (DataObject row : rows) {
+        columns = row.getList("column");
+
+        // get primary keys
+        if (primaryKeys.isEmpty()) {
+          for (DataObject column : columns) {
+            if (column.getBoolean("pk")) {
+              primaryKeys.add(column.getString("name"));
+            }
+          }
         }
 
-        if (table.getString("schema").equals("")) {
-          tableSchema = table.getString("name");
-        } else {
-          tableSchema = table.getString("schema") + "." + table.getString("name");
+        for (DataObject column : columns) {
+          if (column.getString("type").startsWith("VARCHAR")) {
+            quote = "'";
+          } else {
+            quote = "";
+          }
+
+          if (table.getString("schema").equals("")) {
+            tableSchema = table.getString("name");
+          } else {
+            tableSchema = table.getString("schema") + "." + table.getString("name");
+          }
+
+          // create update statement
+          statement = "UPDATE " + tableSchema + " SET " + column.getString("name") + "="
+              + quote + column.getString("value") + quote + " WHERE 1=1";
+
+          for (String primaryKey : primaryKeys) {
+            statement += " AND " + primaryKey + "="
+                + findPrimaryKeyValue(primaryKey, columns);
+          }
+
+          logger.debug("Created UPDATE statement: " + statement);
+          statements.add(statement);
         }
 
-        // create update statement
-        statement = "UPDATE " + tableSchema + " SET " + column.getString("name") + "="
-            + quote + column.getString("value") + quote + " WHERE 1=1";
-
-        for (String primaryKey : primaryKeys) {
-          statement += " AND " + primaryKey + "="
-              + findPrimaryKeyValue(primaryKey, columns);
-        }
-
-        logger.debug("Created UPDATE statement: " + statement);
+        // create insert statement
+        statement = "INSERT INTO " + tableSchema + " "
+            + createInsertColumnValues(columns);
+        logger.debug("Created INSERT statement: " + statement);
         statements.add(statement);
       }
-
-      // create insert statement
-      statement = "INSERT INTO " + tableSchema + " " + createInsertColumnValues(columns);
-      logger.debug("Created INSERT statement: " + statement);
-      statements.add(statement);
     }
 
     return statements;
@@ -221,7 +235,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
       insertColumns += columns.get(i).getString("name");
 
       if (i < columns.size() - 1) {
-        insertColumns += ",";
+        insertColumns += ", ";
       } else {
         insertColumns += ")";
       }
@@ -239,7 +253,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
       insertColumns += quote + columns.get(i).getString("value") + quote;
 
       if (i < columns.size() - 1) {
-        insertColumns += ",";
+        insertColumns += ", ";
       } else {
         insertColumns += ")";
       }
