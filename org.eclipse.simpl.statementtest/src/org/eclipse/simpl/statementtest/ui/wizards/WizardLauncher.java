@@ -27,7 +27,8 @@ public class WizardLauncher {
 
     // data source type filtering with message dialogs
     if (dmActivity.getDsType().equals("Database")
-        || dmActivity.getDsType().equals("Filesystem")) {
+        || dmActivity.getDsType().equals("Filesystem") 
+        || dmActivity.getDsType().equals("")) {
       statementTestWizard = new StatementTestWizard(dmActivity, process);
       statementTestWizard.setHelpAvailable(false);
 
@@ -41,10 +42,6 @@ public class WizardLauncher {
       // open wizard
       dialog.create();
       dialog.open();
-    } else if (dmActivity.getDsType().equals("type")) {
-      MessageDialog.openInformation(window.getShell(), "No data source assigned.",
-          "Please assign a data source in the activity 'Properties' section.");
-
     } else {
       MessageDialog.openInformation(window.getShell(), dmActivity.getDsType()
           + " is not supported.", "Statement tests for the data source type '"

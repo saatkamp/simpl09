@@ -23,6 +23,7 @@ public class RDBResult extends Result {
   String table = null;
   List<String> columns = new ArrayList<String>();
   List<String> values = new ArrayList<String>();
+  List<String> primaryKeys = new ArrayList<String>();
 
   public RDBResult() {
 
@@ -52,6 +53,12 @@ public class RDBResult extends Result {
 
           if (columnAttributes != null) {
             columns.add(columnAttributes.getNamedItem("name").getNodeValue());
+
+            // catch primary key
+            if (columnAttributes.getNamedItem("pk") != null
+                && columnAttributes.getNamedItem("pk").getNodeValue().equals("true")) {
+              primaryKeys.add(columnAttributes.getNamedItem("name").getNodeValue());
+            }
           }
         }
       }
@@ -128,6 +135,21 @@ public class RDBResult extends Result {
     }
 
     return values.toArray(new String[values.size()]);
+  }
+
+  /**
+   * @return the primaryKeys
+   */
+  public List<String> getPrimaryKeys() {
+    return primaryKeys;
+  }
+
+  /**
+   * @param table
+   *          the table to set
+   */
+  public void setTable(String table) {
+    this.table = table;
   }
 
   /**

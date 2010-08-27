@@ -283,6 +283,12 @@ public class StatementTestView extends ViewPart {
 
     for (String columnName : result.getColumns()) {
       column = new TableColumn(table, SWT.LEFT);
+      
+      // primary key marker
+      if (result.getPrimaryKeys().contains(columnName)) {
+        columnName = "*" + columnName;
+      }
+      
       column.setText(columnName);
       column.setWidth(100);
     }
@@ -293,7 +299,6 @@ public class StatementTestView extends ViewPart {
       // numeration
       row.setText(0, String.valueOf(i + 1));
 
-      // TODO endlosschleife
       for (int k = 0; k < result.getValues(i).length; k++) {
         row.setText(k + 1, result.getValues(i)[k]);
       }
@@ -608,9 +613,11 @@ public class StatementTestView extends ViewPart {
     Label greenTextLabel = null;
     Label blueLabel = null;
     Label blueTextLabel = null;
-
+    Label primaryKeyLabel = null;
+    Label primaryKeyTextLabel = null;
+    
     statisticComposite = new Composite(resultComposite, SWT.NONE);
-    statisticComposite.setLayout(new GridLayout(12, false));
+    statisticComposite.setLayout(new GridLayout(14, false));
     statisticComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 
     gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false);
@@ -668,6 +675,15 @@ public class StatementTestView extends ViewPart {
     blueValueLabel = new Label(statisticComposite, SWT.NONE);
     blueValueLabel.setText("0    ");
     blueValueLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
+    
+    // primary key label
+    primaryKeyLabel = new Label(statisticComposite, SWT.NONE);
+    primaryKeyLabel.setText("*");
+    primaryKeyLabel.setLayoutData(gridData);
+
+    primaryKeyTextLabel = new Label(statisticComposite, SWT.NONE);
+    primaryKeyTextLabel.setText("Primary Key");
+    primaryKeyTextLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
   }
 
   /**
@@ -701,7 +717,8 @@ public class StatementTestView extends ViewPart {
         resultTableLabel.setText("Created Table:");
       }
     } else if (statementTest.getActivity().eClass().getName().equals("DropActivity")) {
-      resultTableLabel.setText("Dropped Table:");
+      resultTableLabel.setText("Dropped Table: "
+          + ((RDBResult) statementTest.getComparativeResult()).getTable());
     }
   }
 
