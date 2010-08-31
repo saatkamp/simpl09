@@ -1,0 +1,589 @@
+%% LyX 1.6.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[ngerman]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{listings}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\usepackage{babel}
+
+\usepackage{array}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,colorlinks=false]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Installationsanleitung}
+\def\docvers{1.0}
+\def\docautor{}
+\def\docdate{31. August 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+
+\makeatother
+
+\begin{document}
+\input{Deckblatt.tex}
+
+
+
+%Header und Footer Definitionen für alle anderen Seiten
+\pagestyle{fancy} \global\long\def\headrulewidth{0mm}
+ \lhead{} \chead{} \rhead{} \lfoot{{\small SIMPL © 2009
+\$IMPL}} \cfoot{} \rfoot{{\small \thepage\ / \pageref{LastPage}}}
+
+%Ab hier beginnt das Dokument
+\tableofcontents{}
+
+\newpage{}
+
+
+\section*{Änderungsgeschichte}
+
+\begin{center}
+\begin{tabular}{|>{\raggedright}p{2cm}|>{\raggedright}p{3cm}|>{\raggedright}p{3cm}|>{\raggedright}p{6cm}|}
+\hline 
+\textbf{Version} & \textbf{Datum} & \textbf{Autor} & \textbf{Änderungen}\tabularnewline
+\hline
+\hline 
+0.1 & 13.07.2010 & René Rehn & Erstellung der Dokumentstruktur und Skizzierung des Inhalts.\tabularnewline
+\hline 
+1.0 & 31.08.2010 & Michael Hahn & Ausformulierung und Erweiterung der Kapitel. Fertigstellung des Dokuments.\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+\newpage{}
+
+
+\section{Einleitung}
+
+Dieses Dokument soll eine Hilfestellung für die Installation und Einrichtung
+des SIMPL Rahmenwerks geben. Dafür werden die Systemanforderungen
+und durchzuführende Vorbereitungen für die Installation beschrieben,
+sowie die eigentliche Installation selbst. Es gibt dabei zwei verschiedene
+Installationsszenarien. Zum Einen kann eine All-In-One Installation
+durchgeführt werden, bei der eventuell bestehende Ressourcen überschrieben
+werden, die aber ein voll funktionsfähiges System ohne weitere Konfiguration
+liefert und zum Anderen kann eine paketbasierte Installation durchgeführt
+werden, bei der jede Komponente des SIMPL Rahmenwerks einzeln in eine
+bereits bestehende Infrastruktur installiert werden kann. Im Rahmen
+der paketbasierten Installation müssen teilweise bestehende Ressourcen
+nachträglich durch den Benutzer angepasst werden. Die nachfolgenden
+Kapitel beschreiben die aufgezeigten Aspekte genauer.
+
+\newpage{}
+
+
+\section{Systemanforderungen}
+
+Die Systemvoraussetzungen des Rahmenwerkes entsprechen den Voraussetzungen
+der verwendeten Java Runtime Environment und der Workflow-Engine.
+Empfohlen sind jedoch mindestens 1 GB freier Arbeitsspeicher sowie
+mindestens 500 MB freier Festplattenspeicher. Aufgrund der Skalierbarkeit
+richten sich die Systemvoraussetzungen nach der Anzahl der laufenden
+Prozesse in der Workflow-Engine. Je nach Anwendungskonstellation kann
+sich jedoch ein erheblich größerer Speicherbedarf ergeben. Die Anzahl
+der Prozesse wird demnach nur durch die Höhe des Speichers, welcher
+durch das Betriebssystem zur Verfügung gestellt wird, beschränkt.
+Durch die Integration des SIMPL Eclipse Plug-Ins in die Eclipse IDE
+kann das Rahmenwerk prinzipiell auf allen Systemen benutzt werden,
+die Eclipse unterstützen. Der SIMPL Core kann in allen Java fähigen
+Web Containern eingesetzt werden. Es muss beachtet werden, dass das
+Rahmenwerk momentan nur mit Apache ODE 2.0 verwendet werden kann,
+da nur diese Version die Anbindung von Extension Activities unterstützt.
+Die letzte stabile Version von Apache ODE 1.3.4 unterstützt noch keine
+Extension Activities und kann daher nicht mit SIMPL verwendet werden.
+Sollten die Extension Activities in einer Version 1.X unterstützt
+werden, so ist eine Verwendung prinzipiell möglich, jedoch wird keine
+Gewährleistung für den einwandfreien Betrieb übernommen, da SIMPL
+für Apache ODE 2.0 entwickelt wurde.
+
+\pagebreak{}
+
+
+\section{Vorbereitung}
+
+In diesem Kapitel werden alle nötigen Vorbereitungsmaßnahmen für die
+Installation des SIMPL Rahmenwerks aufgezeigt und beschrieben. Dabei
+spielt es keine Rolle, ob nach der Vorbereitung die All-In-One-Installation
+oder eine paketbasierte Installation einzelner Komponenten durchgeführt
+wird.
+
+Für beide Installationsarten muss zunächst, falls nicht bereits vorhanden,
+Apache Tomcat wahlweise in Version 5.5 oder 6.0 heruntergeladen und
+installiert werden. Eine detaillierte Installationsanleitung für verschiedene
+Betriebssysteme findet sich auf der Homepage von Apache Tomcat (siehe
+\cite{TOMCAT}). Weiterhin muss Eclipse vorhanden sein. Die beste
+und einfachste Möglichkeit ist die Verwendung einer Eclipse JEE Version,
+da diese bereits alle für den Eclipse BPEL Designer und SIMPL benötigten
+Pakete enthält und die Installation dadurch sehr einfach ausfällt.
+Zum Zeitpunkt des Projekts war Eclipse Galileo (Eclipse Version 3.5)
+die aktuellste Eclipse Version. Neuere Eclipse Versionen sollten theoretisch
+fehlerfrei mit den SIMPL Eclipse Plug-Ins und dem Eclipse BPEL Designer
+funktionieren, dies kann allerdings nicht garantiert werden. Wir empfehlen
+daher die Installation und Verwendung von Eclipse Galileo JEE. Das
+Installationspaket und entsprechende Anleitungen finden sich auf der
+Eclipse Homepage (siehe \cite{ECLIPSE}).
+
+Weiterhin können noch die SIMPL Eclipse Plug-Ins und der SIMPL BPEL
+Designer direkt installiert werden, da diese für beide Installationsarten
+gleich installiert werden. Dazu muss das \textbf{\emph{simpl-eclipse.zip}}
+Installationspaket von der SIMPL Homepage (\cite{SIMPL}) heruntergeladen
+werden. Dieses Paket enthält einen Ordner \emph{plugins}, der wiederum
+alle durch SIMPL bereitgestellten Eclipse Plug-Ins enthält. Diese
+müssen in den \emph{plugins}-Ordner des zuvor installierten Eclipse
+JEE entpackt werden. Damit ist die Installation der Eclipse Plug-Ins
+bereits abgeschlossen. Die korrekte Funktion kann durch starten von
+Eclipse und dem Anlegen eines BPEL-Projekts sowie eines BPEL-Prozesses
+überprüft werden. Eine detaillierte Anleitung dazu findet sich unter
+\href{http://www.se.uni-hannover.de/lehre/tutorials/BPEL-ODE-Eclipse-Getting-Started.php\#h2-3}{http://www.se.uni-hannover.de/lehre/tutorials/ BPEL-ODE-Eclipse-Getting-Started.php\#{}h2-3}
+(zuletzt zugegriffen am 31.08.2010).
+
+\newpage{}
+
+
+\section{All-In-One-Installation}
+
+In diesem Kapitel wird die Installation des SIMPL Rahmenwerks mit
+Hilfe des All-In-One Installationspakets beschrieben.
+
+Zuerst muss das entsprechende Installationspaket von der SIMPL Homepage
+(\cite{SIMPL}) heruntergeladen werden. Für die All-In-One Installation
+ist dies das Paket \textbf{\emph{simpl-tomcat.zip}}. Anschließend
+muss das Paket nur noch in den Grundordner (normalerweise \emph{C:/Programme/Tomcat
+X.X/}) der Apache Tomcat Installation entpackt werden. Danach muss
+der Tomcat-Server gestartet werden, entweder durch ausführen der startup.bat
+(Win) bzw. startup.sh (Unix) unter \emph{{}``Tomcat-Installationspfad''/bin}
+oder aber in Windows durch den entsprechenden Service (z.B. über das
+Startmenü: Apache Tomcat X.X/Monitor Tomcat -> Start service), falls
+dieser installiert wurde (siehe Abbildung \ref{fig:Start-des-Tomcat}).
+Im Anschluss kann direkt geprüft werden, ob die SIMPL Web-Services
+erreichbar sind, dazu in einem Browser folgende URL \href{http://localhost:8080/ode/services/listServices}{http://localhost:8080/ode/services/listServices}
+aufrufen und den AdministrationService oder DataSourceService anklicken.
+Dadurch sollte dann die autogenerierte WSDL des Web-Services erscheinen,
+falls dies nicht der Fall ist, liefert Punkt 1 in Kapitel \ref{sub:Probleme-und-L=0000F6sungen}
+entsprechende Hilfe.
+
+Falls die WSDL des Web-Services erscheint, kann Eclipse gestartet
+und mit SIMPL gearbeitet werden, näheres dazu liefert das SIMPL Benutzerhandbuch.
+
+%
+\begin{figure}[h]
+\begin{centering}
+\includegraphics{imgInstall/TomcatServiceStart.JPG}
+\par\end{centering}
+
+\caption{\label{fig:Start-des-Tomcat}Start des Tomcat Services}
+
+
+
+\end{figure}
+
+
+\newpage{}
+
+
+\section{Paketbasierte Installation}
+
+In diesem Kapitel wird die paketbasierte Installation des SIMPL Rahmenwerks
+beschrieben. Hierbei ist zu beachten, dass davon ausgegangen wird,
+dass benötigte Komponenten wie Apache ODE 2.0 (\cite{ODE2}) oder
+auch Apache Axis2 (\cite{AXIS2}) bereits vorhanden und korrekt installiert
+sind. Alle Abhängigkeiten werden aber nochmal explizit in den nachfolgenden
+Punkten aufgeführt. Alle nachfolgenden Verzeichnissangaben beziehen
+sich stets auf das Tomcat-Installationsverzeichnis, d.h. \emph{/webapps/ode}
+bezieht sich auf \emph{{}``Tomcat-Installationspfad''/webapps/ode}.
+
+
+\subsection{SIMPL Core, BPEL-DM Extension Activities und SIMPL Auditing}
+
+Zunächst muss das entsprechende Installationspaket (\textbf{\emph{simpl-core.zip}})
+von der SIMPL Homepage (\cite{SIMPL}) heruntergeladen werden. Dieses
+enthält alle Ressourcen des SIMPL Cores und der BPEL-DM Extension
+Activities. Für die Installation des SIMPL Cores muss Apache ODE 2.0
+bereits vorhanden sein, ist dies nicht der Fall muss zuerst ODE installiert
+werden. Die benötigten Pakete und eine Installationsanleitung finden
+sich hier \cite{ODE2}.
+
+Nachdem ODE installiert bzw. falls es bereits vorhanden ist, gibt
+es zwei mögliche Installationsszenarien: 
+\begin{enumerate}
+\item Sollte man bisher keine Änderungen/Konfigurationen in den Dateien
+ode-axis2.properties (\emph{webapps/""ode/""conf/""ode-axis2.properties})
+und axis2.xml (\emph{webapps/ode/conf/axis2.xml}) vorgenommen haben,
+kann man das Installationspaket einfach in das Tomcat-Installationsverzeichnis
+entpacken und alle bereits vorhandenen Ressourcen überschreiben. Damit
+ist der SIMPL Core, die BPEL-DM Extension Activities und das SIMPL
+Auditing installiert.
+\item Wurden an einer der in Punkt 1 genannten Dateien Änderungen vorgenommen,
+die erhalten werden sollen, so muss die Installation schrittweise
+durchgeführt werden. Zunächst können alle Dateien, bis auf die oben
+genannten zwei, in das Tomcat-Installationsverzeichnis entpackt werden.
+Im Anschluss müssen nun die Änderungen der zwei verbleibenden Dateien
+von Hand übernommen werden.
+
+\begin{enumerate}
+\item axis2.xml: Die Zeile aus Listing \ref{lst:Aktivierung-des-dynamischen}
+muss am Ende der Datei eingefügt werden (siehe Abbildung \ref{fig:=0000C4nderung-Axis2}).
+Dadurch wird das dynamische Deployment der SIMPL Web-Services ermöglicht,
+die sich im Ordner \emph{webapps/ode/WEB-INF/servicejars} in der Datei
+\emph{simpl-core-webservices.jar} befinden.
+\item ode-axis2.properties: Es müssen die Zeilen aus Listing \ref{lst:BPEL-DM}
+hinzugefügt werden (siehe Abbildung \ref{fig:=0000C4nderung-Axis2Properties}).
+Dadurch werden die BPEL-DM Extension Activities und der SIMPL EventListener
+in ODE registriert. Die dahinter liegende Implementierung dafür liefert
+die Datei \emph{simpl-ode-extension.jar}, die in den Ordner \emph{webapps/ode/WEB-INF/lib}
+entpackt wird.
+\end{enumerate}
+\end{enumerate}
+Danach kann der Tomcat-Server gestartet werden, entweder durch ausführen
+der startup.bat (Win) bzw. startup.sh (Unix) unter \emph{{}``Tomcat-Installationspfad''/bin}
+oder aber in Windows durch den entsprechenden Service (z.B. über das
+Startmenü: Apache Tomcat X.X/Monitor Tomcat -> Start service), falls
+dieser installiert wurde (siehe Abbildung \ref{fig:Start-des-Tomcat}).
+Im Anschluss kann direkt geprüft werden, ob die SIMPL Web-Services
+erreichbar sind, dazu in einem Browser einfach \href{http://localhost:8080/ode/services/listServices}{http://localhost:8080/ode/services/ listServices}
+aufrufen und den AdministrationService oder DataSourceService aufrufen.
+Dadurch sollte dann die autogenerierte WSDL des Web-Services erscheinen,
+falls dies nicht der Fall ist, liefert Punkt 1 in Kapitel \ref{sub:Probleme-und-L=0000F6sungen}
+entsprechende Hilfe.
+
+Falls die WSDL des Web-Services erscheint, kann Eclipse gestartet
+und mit SIMPL gearbeitet werden, näheres dazu liefert das SIMPL Benutzerhandbuch.
+
+
+\begin{lstlisting}[caption={Aktivierung des dynamischen
+Deployments von Web-Services},label={lst:Aktivierung-des-dynamischen},captionpos=b,float,frame=single,xleftmargin={1cm},xrightmargin={1cm}]
+<deployer extension=".jar" 
+    directory="servicejars" 
+    class="org.apache.axis2.jaxws.framework.JAXWSDeployer"/> 
+\end{lstlisting}
+
+
+%
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[width=1\textwidth]{imgInstall/Axis2JAXWS.JPG}
+\par\end{centering}
+
+\caption{\label{fig:=0000C4nderung-Axis2}Änderung der Datei axis2.xml}
+
+
+
+\end{figure}
+
+
+
+\begin{lstlisting}[caption={Registrierung der BPEL-DM Extension Activities
+und des SIMPL EventListeners},label={lst:BPEL-DM},captionpos=b,float=h,frame=single,xleftmargin={1cm},xrightmargin={1cm}]
+## Extension Bundles 
+## FQCNs, comma separated. 
+ode-axis2.extension.bundles.runtime = 
+    org.apache.ode.simpl.ea.SimplExtensionBundle 
+ode-axis2.extension.bundles.validation = 
+    org.apache.ode.simpl.ea.SimplExtensionBundle
+
+## SIMPL Eventlistener registration
+ode-axis2.event.listeners = 
+    org.apache.ode.simpl.events.listener.SimplSdoEventListener 
+\end{lstlisting}
+
+
+%
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=1\textwidth]{imgInstall/Axis2Properties.JPG}
+\par\end{centering}
+
+\caption{\label{fig:=0000C4nderung-Axis2Properties}Änderung der Datei ode-axis2.properties}
+
+
+
+\end{figure}
+
+
+Nachfolgend werden noch alle Bestandteile des Installationspakets
+und deren Bedeutung beschrieben. Dies ist für die eigentliche Installation
+nicht von Bedeutung, aber für eventuelle Anpassungen oder Portierungen
+in andere Laufzeitumgebungen.
+\begin{itemize}
+\item \emph{simplDB}: Embedded Derby Datenbank in der die Einstellungen
+des SIMPL Cores, die über die SIMPL Admin-Konsole in Eclipse vorgenommen
+werden, hinterlegt sind. Diese ist nicht dringend erforderlich, da
+sie dynamisch neu generiert wird, falls sie nicht vorhanden ist.
+\item \emph{log4j.properties}: Enthält Logging-Einstellungen für den SIMPL
+Core.
+\item \emph{webapps/ode/conf/}: Wie bereits weiter oben beschrieben, wird
+in der Datei \emph{axis2.xml} das dynamische Deployment der SIMPL
+Web-Services aktiviert und in der Datei \emph{ode-axis2.properties}
+die BPEL-DM Extension Activities sowie der SIMPL EventListener registriert.
+Weiterhin enthält dieser Ordner die Datei \emph{simpl-core-config.xml}
+in der SIMPL Core Plug-Ins registriert werden können. Die Implementierung
+aller im Moment registrierten Plug-Ins befindet sich in der Library
+\emph{webapps/ode/lib}/\emph{simpl-core-plugins.jar}.
+\item \emph{webapps/ode/lib}: Dieser Ordner enthält alle Libraries, die
+der SIMPL Core benötigt und den SIMPL Core selbst. Diese lassen sich
+noch in folgende Gruppen gliedern:
+
+\begin{itemize}
+\item SIMPL Core
+
+\begin{itemize}
+\item simpl-core.jar
+\item simpl-core-plugins.jar
+\item simpl-ode-extension.jar
+\item simpl-uddi-client.jar
+\end{itemize}
+\item Datenbanktreiber 
+
+\begin{itemize}
+\item db2jcc.jar 
+\item mysql-connector-java-5.0.8-bin.jar
+\end{itemize}
+\item Service Data Objects (SDO) 
+
+\begin{itemize}
+\item tuscany-sdo-api-r2.1-1.0-incubating.jar 
+\item tuscany-sdo-impl-1.0-incubating.jar 
+\item tuscany-sdo-lib-1.0-incubating.jar
+\end{itemize}
+\item Universal Description, Discovery and Integration (UDDI)
+
+\begin{itemize}
+\item uddi-ws-3.0.1.jar
+\item juddi-core-3.0.1.jar
+\item juddi-client-3.0.1.jar
+\end{itemize}
+\item XML, XSD Verarbeitung
+
+\begin{itemize}
+\item jdom.jar 
+\item stax-api-1.0.1.jar 
+\item xsd-2.2.3.jar
+\item wstx-asl-3.2.0.jar
+\end{itemize}
+\item Hilfsfunktionen 
+
+\begin{itemize}
+\item common-2.2.3.jar
+\item ecore-2.2.3.jar 
+\item ecore-change-2.2.3.jar 
+\item ecore-xmi-2.2.3.jar
+\item tools.jar
+\end{itemize}
+\end{itemize}
+\item \emph{webapps/ode/servicejars/simpl-core-webservices.jar}: Dies sind
+die Web-Services des SIMPL Cores, die über Axis2 dynamisch generiert
+und deployt werden.
+\end{itemize}
+
+\subsection{SIMPL Reference Resolution System (RRS) und RRS Transformation-Service}
+
+Für die Installation des SIMPL RRS muss Apache Axis2 Version 1.5 oder
+höher installiert sein. Ein Installationspaket und eine Installationsanleitung
+findet sich hier \cite{AXIS2}. Danach muss wieder das entsprechende
+Installationspaket (\textbf{\emph{simpl-rrs.zip}}) von der SIMPL Homepage
+(\cite{SIMPL}) heruntergeladen werden. Im Anschluss muss einfach
+das Installationspaket in das Tomcat-In{"-}stallationsverzeichnis
+entpackt werden. Die Pfade sind bereits so vordefiniert, dass die
+entsprechenden Dateien direkt in die entsprechenden Axis2-Unterordner
+entpackt werden. Sollten die Pfade eventuell nicht passen, können
+einfach direkt die Axis2-Unterordner (\emph{services},\emph{ lib},
+\emph{conf}) bzw. deren Inhalt aus dem Installationspaket in den lokalen
+Axis2-Ordner entpackt werden. Die Installation ist damit abgeschlossen
+und kann in Eclipse durch die RRS Management View getestet werden,
+näheres dazu findet sich im SIMPL Benutzerhandbuch.
+
+Nachfolgend werden noch alle Bestandteile des Installationspakets
+und deren Bedeutung beschrieben. Dies ist für die eigentliche Installation
+nicht von Bedeutung, aber für eventuelle Anpassungen oder Portierungen
+in andere Laufzeitumgebungen.
+\begin{itemize}
+\item \emph{webapps/axis2/WEB-INF/services}: Dieser Ordner enthält die SIMPL
+RRS Web-Services und die dahinter liegende Implementierung (\emph{simpl-rrs.aar})
+sowie den SIMPL RRS Transformation Web-Service und dessen Implementierung
+(\emph{simpl-rrs-transformation.aar}). 
+\item \emph{webapps/axis2/WEB-INF/lib}: Hier sind befinden Datenbanktreiber,
+die für die Datenbankzugriffe beim Auflösen von Referenzen benötigt
+werden. Im Moment sind dies Treiber für die Datenbanken Apache Derby
+(\emph{derby.jar}), IBM DB2 (\emph{db2jcc.jar}) und MySQL (\emph{mysql-connector.jar}).
+\item \emph{webapps/axis2/WEB-INF/conf}: Dieser Ordner enthält die Datei
+\emph{rrs-config.xml} in der RRS Daten{"-}quellen-Adpater registriert
+werden können. Im Moment sind dies, analog zu den vorher aufgezählten
+Datenbanktreiber, Adapter für Apache Derby, IBM DB2 und MySQL.
+\end{itemize}
+Natürlich muss das RRS nicht zwangsweise in einer eigenen Axis2 Installation
+deployt werden, ebenso könnte man das RRS in der in ODE integrierten
+Axis2 Installation deployen. Dabei ist allerdings zu beachten, dass
+sich dadurch die Web-Service Adressen ändern. Diese müssten dann in
+Eclipse angepasst werden, damit das RRS wieder erreichbar ist, da
+dort die Adressen der hier beschriebenen separaten Installation hinterlegt
+sind. Dazu müssen in Eclipse einfach im \emph{SIMPL}-Menü die \emph{Settings}
+geöffnet und unter \emph{Reference Resolution System} die Adressen
+angepasst werden (siehe SIMPL Benutzerhandbuch).
+
+
+\subsection{jUDDI Registry und SIMPL Web-Interface}
+
+Zunächst muss das entsprechende Installationspaket (\textbf{\emph{simpl-jUDDI.zip}})
+von der SIMPL Homepage heruntergeladen werden. Dieses Paket enthält
+bereits eine vollständige Apache jUDDI (\cite{jUDDI}) Installation,
+deshalb ist keine weitere Vorbereitung notwendig und das Paket kann
+direkt in das Tomcat-Installationsverzeichnis entpackt werden. Es
+ist lediglich zu beachten, dass für das SIMPL jUDDI Web-Interface
+eine neue Tomcat Benutzerrolle \emph{secure} benötigt wird, deshalb
+wird im Installationspaket eine entsprechende \emph{tomcat-users.xml}
+Datei mitgeliefert. Dadurch wird natürlich die bereits bestehende
+Datei überschrieben, falls dies nicht gewünscht ist, muss der Ordner
+\emph{conf} einfach nicht mit entpackt werden und eine neue Rolle\emph{
+secure} von Hand angelegt und einem bestehenden oder neu erstellten
+Benutzer zugewiesen werden (siehe Listing \ref{lst:Mitgelieferte-tomcat-users.xml-Datei}).
+
+
+\begin{lstlisting}[caption={Mitgelieferte \emph{tomcat-users.xml}
+Datei},label={lst:Mitgelieferte-tomcat-users.xml-Datei},captionpos=b,float,frame=single,xleftmargin={1cm},xrightmargin={1cm}]
+<tomcat-users> 
+  <role rolename="secure"/>
+  <user name="admin" password="" roles="admin,manager,secure"/>
+</tomcat-users>
+
+\end{lstlisting}
+
+
+Damit ist die Installation schon abgeschlossen und kann direkt durch
+aufrufen folgender Adressen getestet werden: Test der jUDDI Installation
+\href{http://localhost:8080/juddiv3/}{http://localhost:8080/juddiv3/}
+und Test der SIMPL jUDDI Web-Interface Installation \href{http://localhost:8080/juddiweb/}{http://localhost:8080/juddiweb/}
+(standardmäßig: Benutzername\emph{ admin}, kein Passwort). Es empfiehlt
+sich direkt im Anschluss die in Kapitel \ref{sub:Probleme-und-L=0000F6sungen}
+unter Punkt 2 beschriebene Speicheranpassung vorzunehmen.
+
+\pagebreak{}
+
+
+\section{\label{sub:Probleme-und-L=0000F6sungen}Probleme und Lösungen}
+\begin{enumerate}
+\item Die SIMPL Web-Services wurden deployt, die WSDLs können aber nicht
+generiert werden:
+
+\begin{enumerate}
+\item Für die Generierung wird die \emph{tools.jar} aus dem Java Development
+Toolkit (JDK, siehe \cite{JAVA6}) benötigt. Diese wird aus dem JDK
+1.6.0\_14 in der \textbf{\emph{simpl-tomcat.zip}} mitgeliefert. Je
+nachdem welche Version des Java Runtime Environment (JRE) auf dem
+Betriebssystem installiert ist, kann es unter Umständen nötig sein
+die \emph{tools.jar} aus der entsprechend anderen Version des JDK
+zu verwenden. Diese muss unter \emph{Tomcat x.x/webapps/ode/WEB-INF/lib/}
+die bereits vorhandene \emph{tools.jar} ersetzen. 
+\item Der Eclipse BPEL Designer kann nicht geöffnet werden, ein Fehler wird
+angezeigt
+
+\begin{itemize}
+\item Apache Tomcat wurde nicht gestartet, der SIMPL Core ist nicht erreichbar
+\item Die \textbf{\emph{simpl-tomcat.zip}} wurde nicht deployt
+\item Die \textbf{\emph{simpl-eclipse.zip}} wurde nicht deployt
+\item Es besteht Problem Nr. 1
+\end{itemize}
+\end{enumerate}
+\item {}``Heap Space'', {}``OutOfMemory'' oder {}``PermGem Space''
+Fehlermeldungen von Tomcat
+
+\begin{itemize}
+\item Falls Speicherprobleme auftreten, muss der Speicher in der von Tomcat
+verwendeten Java Virtual Machine erhöht werden. Dazu muss die Zeile
+\textquotedbl{}-XX:MaxPermSize=256m\textquotedbl{} im Windows Service
+in der Registerkarte {}``Java'' (Apache Monitor -> Configure...
+-> Java -> Java Options) unter {}``Java Options'' hinzugefügt werden.
+256m steht dabei für 256Mb Arbeitsspeicher, dieser Wert ist nur eine
+Empfehlung und kann entsprechend dem verwendeten System nach oben
+oder unten korrigiert werden. Dieses Problem tritt nahezu immer bei
+der Verwendung von jUDDI auf, daher empfiehlt es sich diese Anpassung
+direkt nach der Installation vorzunehmen.
+\item Sollte man Tomcat über die Kommandozeile mit startup.bat bzw. startup.sh
+starten, dann kann man den Speicher über eine entsprechende Umgebungsvariable
+setzen. Dazu muss einfach eine neue Umgebungsvariable {}``JAVA\_OPTS''
+mit dem Wert \textquotedbl{}-XX:MaxPermSize=256m\textquotedbl{} erstellt
+werden.
+\end{itemize}
+\end{enumerate}
+\newpage{}
+
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\begin{thebibliography}{SIMPL}
+\bibitem[AXIS2]{AXIS2} Axis2, \href{http://ws.apache.org/axis2/}{http://ws.apache.org/axis2/},
+zuletzt zugegriffen am 24.08.2010
+
+\bibitem[ODE2]{ODE2} Apache ODE, \href{http://ode.apache.org/}{http://ode.apache.org/},
+zuletzt zugegriffen am 24.08.2010
+
+\bibitem[TOMCAT]{TOMCAT} Apache Tomcat, \href{http://tomcat.apache.org/}{http://tomcat.apache.org/},
+zuletzt zugegriffen am 24.08.2010
+
+\bibitem[JAVA6]{JAVA6} Java 6, \href{http://java.sun.com/}{http://java.sun.com/},
+zuletzt zugegriffen am 24.08.2010
+
+\bibitem[JAX-WS]{JAX-WS} JAX-WS, \href{https://jax-ws.dev.java.net/}{https://jax-ws.dev.java.net/},
+zuletzt zugegriffen am 24.08.2010
+
+\bibitem[ECLIPSE]{ECLIPSE} Eclipse, \href{http://www.eclipse.org/}{http://www.eclipse.org/},
+zuletzt zugegriffen am 24.08.2010
+
+\bibitem[jUDDI]{jUDDI}jUDDI, \href{http://ws.apache.org/juddi/}{http://ws.apache.org/juddi/},
+zuletzt zugegriffen am 24.08.2010
+
+\bibitem[SIMPL]{SIMPL}SIMPL, \href{http://code.google.com/p/simpl09/}{http://code.google.com/p/simpl09/},
+zuletzt zugegriffen am 24.08.2010
+
+\end{thebibliography}
+\pagebreak{}
+
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+
+\listoffigures
+
+
+\pagebreak{}
+
+\addcontentsline{toc}{section}{Verzeichnis der Listings}
+\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
+\lstlistoflistings
+\end{document}

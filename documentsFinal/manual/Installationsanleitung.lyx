@@ -1,0 +1,2240 @@
+#LyX 1.6.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+
+
+
+
+\usepackage{babel}
+
+%Packages für eigen definierte Header und Footer
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% doctitel = Titel des Dokuments
+% docvers = Versionsnr.
+% docautor = Author(en)
+% docdate = Datum der letzten Änderung
+\def\doctitel{Installationsanleitung}
+\def\docvers{1.0}
+\def\docautor{}
+\def\docdate{31. August 2010}
+
+% docstate = Status des Dokuments aus {neu, bearbeitet}
+% qsstate = QS-Prüfungsstatus aus {positiv QS-geprüft, negativ QS-geprüft, verworfen}
+% proofstate = Prüfungsstatus (durch Projektleiter) aus {positiv geprüft, negativ geprüft, verworfen}
+% reviewstate = Annahmestatus des Reviews {kein Review durchgeführt, akzeptiert ohne Änderungen, akzeptiert mit Änderungen, nicht akzeptiert}
+% endstate = Endstatus des Dokuments aus {freigegeben, verworfen}
+\def\docstate{neu}
+\def\qsstate{nicht QS-geprüft}
+\def\proofstate{nicht geprüft}
+\def\reviewstate{kein Review durchgeführt}
+\def\endstate{-}
+
+%Nicht einrücken
+%\setlength{\parindent}{0pt}
+\end_preamble
+\use_default_options false
+\language ngerman
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Deckblatt.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "DokStatus.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Header und Footer Definitionen für alle anderen Seiten
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+fancy
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\headrulewidth}{0mm}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+SIMPL © 2009 $IMPL
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+/ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "LastPage"
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%Ab hier beginnt das Dokument
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Änderungsgeschichte
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features>
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="6cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Datum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Autor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Änderungen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.07.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+René Rehn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellung der Dokumentstruktur und Skizzierung des Inhalts.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+31.08.2010
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Michael Hahn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ausformulierung und Erweiterung der Kapitel.
+ Fertigstellung des Dokuments.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Einleitung
+\end_layout
+
+\begin_layout Standard
+Dieses Dokument soll eine Hilfestellung für die Installation und Einrichtung
+ des SIMPL Rahmenwerks geben.
+ Dafür werden die Systemanforderungen und durchzuführende Vorbereitungen
+ für die Installation beschrieben, sowie die eigentliche Installation selbst.
+ Es gibt dabei zwei verschiedene Installationsszenarien.
+ Zum Einen kann eine All-In-One Installation durchgeführt werden, bei der
+ eventuell bestehende Ressourcen überschrieben werden, die aber ein voll
+ funktionsfähiges System ohne weitere Konfiguration liefert und zum Anderen
+ kann eine paketbasierte Installation durchgeführt werden, bei der jede
+ Komponente des SIMPL Rahmenwerks einzeln in eine bereits bestehende Infrastrukt
+ur installiert werden kann.
+ Im Rahmen der paketbasierten Installation müssen teilweise bestehende Ressource
+n nachträglich durch den Benutzer angepasst werden.
+ Die nachfolgenden Kapitel beschreiben die aufgezeigten Aspekte genauer.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Systemanforderungen
+\end_layout
+
+\begin_layout Standard
+Die Systemvoraussetzungen des Rahmenwerkes entsprechen den Voraussetzungen
+ der verwendeten Java Runtime Environment und der Workflow-Engine.
+ Empfohlen sind jedoch mindestens 1 GB freier Arbeitsspeicher sowie mindestens
+ 500 MB freier Festplattenspeicher.
+ Aufgrund der Skalierbarkeit richten sich die Systemvoraussetzungen nach
+ der Anzahl der laufenden Prozesse in der Workflow-Engine.
+ Je nach Anwendungskonstellation kann sich jedoch ein erheblich größerer
+ Speicherbedarf ergeben.
+ Die Anzahl der Prozesse wird demnach nur durch die Höhe des Speichers,
+ welcher durch das Betriebssystem zur Verfügung gestellt wird, beschränkt.
+ Durch die Integration des SIMPL Eclipse Plug-Ins in die Eclipse IDE kann
+ das Rahmenwerk prinzipiell auf allen Systemen benutzt werden, die Eclipse
+ unterstützen.
+ Der SIMPL Core kann in allen Java fähigen Web Containern eingesetzt werden.
+ Es muss beachtet werden, dass das Rahmenwerk momentan nur mit Apache ODE
+ 2.0 verwendet werden kann, da nur diese Version die Anbindung von Extension
+ Activities unterstützt.
+ Die letzte stabile Version von Apache ODE 1.3.4 unterstützt noch keine Extension
+ Activities und kann daher nicht mit SIMPL verwendet werden.
+ Sollten die Extension Activities in einer Version 1.X unterstützt werden,
+ so ist eine Verwendung prinzipiell möglich, jedoch wird keine Gewährleistung
+ für den einwandfreien Betrieb übernommen, da SIMPL für Apache ODE 2.0 entwickelt
+ wurde.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Vorbereitung
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel werden alle nötigen Vorbereitungsmaßnahmen für die Installatio
+n des SIMPL Rahmenwerks aufgezeigt und beschrieben.
+ Dabei spielt es keine Rolle, ob nach der Vorbereitung die All-In-One-Installati
+on oder eine paketbasierte Installation einzelner Komponenten durchgeführt
+ wird.
+\end_layout
+
+\begin_layout Standard
+Für beide Installationsarten muss zunächst, falls nicht bereits vorhanden,
+ Apache Tomcat wahlweise in Version 5.5 oder 6.0 heruntergeladen und installiert
+ werden.
+ Eine detaillierte Installationsanleitung für verschiedene Betriebssysteme
+ findet sich auf der Homepage von Apache Tomcat (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TOMCAT"
+
+\end_inset
+
+).
+ Weiterhin muss Eclipse vorhanden sein.
+ Die beste und einfachste Möglichkeit ist die Verwendung einer Eclipse JEE
+ Version, da diese bereits alle für den Eclipse BPEL Designer und SIMPL
+ benötigten Pakete enthält und die Installation dadurch sehr einfach ausfällt.
+ Zum Zeitpunkt des Projekts war Eclipse Galileo (Eclipse Version 3.5) die
+ aktuellste Eclipse Version.
+ Neuere Eclipse Versionen sollten theoretisch fehlerfrei mit den SIMPL Eclipse
+ Plug-Ins und dem Eclipse BPEL Designer funktionieren, dies kann allerdings
+ nicht garantiert werden.
+ Wir empfehlen daher die Installation und Verwendung von Eclipse Galileo
+ JEE.
+ Das Installationspaket und entsprechende Anleitungen finden sich auf der
+ Eclipse Homepage (siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECLIPSE"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Weiterhin können noch die SIMPL Eclipse Plug-Ins und der SIMPL BPEL Designer
+ direkt installiert werden, da diese für beide Installationsarten gleich
+ installiert werden.
+ Dazu muss das 
+\series bold
+\emph on
+simpl-eclipse.zip
+\series default
+\emph default
+ Installationspaket von der SIMPL Homepage (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SIMPL"
+
+\end_inset
+
+) heruntergeladen werden.
+ Dieses Paket enthält einen Ordner 
+\emph on
+plugins
+\emph default
+, der wiederum alle durch SIMPL bereitgestellten Eclipse Plug-Ins enthält.
+ Diese müssen in den 
+\emph on
+plugins
+\emph default
+-Ordner des zuvor installierten Eclipse JEE entpackt werden.
+ Damit ist die Installation der Eclipse Plug-Ins bereits abgeschlossen.
+ Die korrekte Funktion kann durch starten von Eclipse und dem Anlegen eines
+ BPEL-Projekts sowie eines BPEL-Prozesses überprüft werden.
+ Eine detaillierte Anleitung dazu findet sich unter 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.se.uni-hannover.de/lehre/tutorials/ BPEL-ODE-Eclipse-Getting-Started.php#h2-3"
+target "http://www.se.uni-hannover.de/lehre/tutorials/BPEL-ODE-Eclipse-Getting-Started.php#h2-3"
+
+\end_inset
+
+ (zuletzt zugegriffen am 31.08.2010).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+All-In-One-Installation
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Installation des SIMPL Rahmenwerks mit Hilfe
+ des All-In-One Installationspakets beschrieben.
+\end_layout
+
+\begin_layout Standard
+Zuerst muss das entsprechende Installationspaket von der SIMPL Homepage
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SIMPL"
+
+\end_inset
+
+) heruntergeladen werden.
+ Für die All-In-One Installation ist dies das Paket 
+\series bold
+\emph on
+simpl-tomcat.zip
+\series default
+\emph default
+.
+ Anschließend muss das Paket nur noch in den Grundordner (normalerweise
+ 
+\emph on
+C:/Programme/Tomcat X.X/
+\emph default
+) der Apache Tomcat Installation entpackt werden.
+ Danach muss der Tomcat-Server gestartet werden, entweder durch ausführen
+ der startup.bat (Win) bzw.
+ startup.sh (Unix) unter 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Tomcat-Installationspfad
+\begin_inset Quotes erd
+\end_inset
+
+/bin
+\emph default
+ oder aber in Windows durch den entsprechenden Service (z.B.
+ über das Startmenü: Apache Tomcat X.X/Monitor Tomcat -> Start service),
+ falls dieser installiert wurde (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Start-des-Tomcat"
+
+\end_inset
+
+).
+ Im Anschluss kann direkt geprüft werden, ob die SIMPL Web-Services erreichbar
+ sind, dazu in einem Browser folgende URL 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://localhost:8080/ode/services/listServices"
+target "http://localhost:8080/ode/services/listServices"
+
+\end_inset
+
+ aufrufen und den AdministrationService oder DataSourceService anklicken.
+ Dadurch sollte dann die autogenerierte WSDL des Web-Services erscheinen,
+ falls dies nicht der Fall ist, liefert Punkt 1 in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Probleme-und-Lösungen"
+
+\end_inset
+
+ entsprechende Hilfe.
+\end_layout
+
+\begin_layout Standard
+Falls die WSDL des Web-Services erscheint, kann Eclipse gestartet und mit
+ SIMPL gearbeitet werden, näheres dazu liefert das SIMPL Benutzerhandbuch.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgInstall/TomcatServiceStart.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Start-des-Tomcat"
+
+\end_inset
+
+Start des Tomcat Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Paketbasierte Installation
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die paketbasierte Installation des SIMPL Rahmenwerks
+ beschrieben.
+ Hierbei ist zu beachten, dass davon ausgegangen wird, dass benötigte Komponente
+n wie Apache ODE 2.0 (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ODE2"
+
+\end_inset
+
+) oder auch Apache Axis2 (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AXIS2"
+
+\end_inset
+
+) bereits vorhanden und korrekt installiert sind.
+ Alle Abhängigkeiten werden aber nochmal explizit in den nachfolgenden Punkten
+ aufgeführt.
+ Alle nachfolgenden Verzeichnissangaben beziehen sich stets auf das Tomcat-Insta
+llationsverzeichnis, d.h.
+ 
+\emph on
+/webapps/ode
+\emph default
+ bezieht sich auf 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Tomcat-Installationspfad
+\begin_inset Quotes erd
+\end_inset
+
+/webapps/ode
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+SIMPL Core, BPEL-DM Extension Activities und SIMPL Auditing
+\end_layout
+
+\begin_layout Standard
+Zunächst muss das entsprechende Installationspaket (
+\series bold
+\emph on
+simpl-core.zip
+\series default
+\emph default
+) von der SIMPL Homepage (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SIMPL"
+
+\end_inset
+
+) heruntergeladen werden.
+ Dieses enthält alle Ressourcen des SIMPL Cores und der BPEL-DM Extension
+ Activities.
+ Für die Installation des SIMPL Cores muss Apache ODE 2.0 bereits vorhanden
+ sein, ist dies nicht der Fall muss zuerst ODE installiert werden.
+ Die benötigten Pakete und eine Installationsanleitung finden sich hier
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ODE2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nachdem ODE installiert bzw.
+ falls es bereits vorhanden ist, gibt es zwei mögliche Installationsszenarien:
+ 
+\end_layout
+
+\begin_layout Enumerate
+Sollte man bisher keine Änderungen/Konfigurationen in den Dateien ode-axis2.prope
+rties (
+\emph on
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+webapps/""ode/""conf/""ode-axis2.properties
+\end_layout
+
+\end_inset
+
+
+\emph default
+) und axis2.xml (
+\emph on
+webapps/ode/conf/axis2.xml
+\emph default
+) vorgenommen haben, kann man das Installationspaket einfach in das Tomcat-Insta
+llationsverzeichnis entpacken und alle bereits vorhandenen Ressourcen überschrei
+ben.
+ Damit ist der SIMPL Core, die BPEL-DM Extension Activities und das SIMPL
+ Auditing installiert.
+\end_layout
+
+\begin_layout Enumerate
+Wurden an einer der in Punkt 1 genannten Dateien Änderungen vorgenommen,
+ die erhalten werden sollen, so muss die Installation schrittweise durchgeführt
+ werden.
+ Zunächst können alle Dateien, bis auf die oben genannten zwei, in das Tomcat-In
+stallationsverzeichnis entpackt werden.
+ Im Anschluss müssen nun die Änderungen der zwei verbleibenden Dateien von
+ Hand übernommen werden.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+axis2.xml: Die Zeile aus Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Aktivierung-des-dynamischen"
+
+\end_inset
+
+ muss am Ende der Datei eingefügt werden (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Änderung-Axis2"
+
+\end_inset
+
+).
+ Dadurch wird das dynamische Deployment der SIMPL Web-Services ermöglicht,
+ die sich im Ordner 
+\emph on
+webapps/ode/WEB-INF/servicejars
+\emph default
+ in der Datei 
+\emph on
+simpl-core-webservices.jar
+\emph default
+ befinden.
+\end_layout
+
+\begin_layout Enumerate
+ode-axis2.properties: Es müssen die Zeilen aus Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:BPEL-DM"
+
+\end_inset
+
+ hinzugefügt werden (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Änderung-Axis2Properties"
+
+\end_inset
+
+).
+ Dadurch werden die BPEL-DM Extension Activities und der SIMPL EventListener
+ in ODE registriert.
+ Die dahinter liegende Implementierung dafür liefert die Datei 
+\emph on
+simpl-ode-extension.jar
+\emph default
+, die in den Ordner 
+\emph on
+webapps/ode/WEB-INF/lib
+\emph default
+ entpackt wird.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Danach kann der Tomcat-Server gestartet werden, entweder durch ausführen
+ der startup.bat (Win) bzw.
+ startup.sh (Unix) unter 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+Tomcat-Installationspfad
+\begin_inset Quotes erd
+\end_inset
+
+/bin
+\emph default
+ oder aber in Windows durch den entsprechenden Service (z.B.
+ über das Startmenü: Apache Tomcat X.X/Monitor Tomcat -> Start service),
+ falls dieser installiert wurde (siehe Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Start-des-Tomcat"
+
+\end_inset
+
+).
+ Im Anschluss kann direkt geprüft werden, ob die SIMPL Web-Services erreichbar
+ sind, dazu in einem Browser einfach 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://localhost:8080/ode/services/ listServices"
+target "http://localhost:8080/ode/services/listServices"
+
+\end_inset
+
+ aufrufen und den AdministrationService oder DataSourceService aufrufen.
+ Dadurch sollte dann die autogenerierte WSDL des Web-Services erscheinen,
+ falls dies nicht der Fall ist, liefert Punkt 1 in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Probleme-und-Lösungen"
+
+\end_inset
+
+ entsprechende Hilfe.
+\end_layout
+
+\begin_layout Standard
+Falls die WSDL des Web-Services erscheint, kann Eclipse gestartet und mit
+ SIMPL gearbeitet werden, näheres dazu liefert das SIMPL Benutzerhandbuch.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "captionpos=b,float,frame=single,xleftmargin={1cm},xrightmargin={1cm}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<deployer extension=".jar" 
+\end_layout
+
+\begin_layout Plain Layout
+
+    directory="servicejars" 
+\end_layout
+
+\begin_layout Plain Layout
+
+    class="org.apache.axis2.jaxws.framework.JAXWSDeployer"/> 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Aktivierung-des-dynamischen"
+
+\end_inset
+
+Aktivierung des dynamischen Deployments von Web-Services
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgInstall/Axis2JAXWS.JPG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Änderung-Axis2"
+
+\end_inset
+
+Änderung der Datei axis2.xml
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "captionpos=b,float=h,frame=single,xleftmargin={1cm},xrightmargin={1cm}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+## Extension Bundles 
+\end_layout
+
+\begin_layout Plain Layout
+
+## FQCNs, comma separated.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+ode-axis2.extension.bundles.runtime = 
+\end_layout
+
+\begin_layout Plain Layout
+
+    org.apache.ode.simpl.ea.SimplExtensionBundle 
+\end_layout
+
+\begin_layout Plain Layout
+
+ode-axis2.extension.bundles.validation = 
+\end_layout
+
+\begin_layout Plain Layout
+
+    org.apache.ode.simpl.ea.SimplExtensionBundle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+## SIMPL Eventlistener registration
+\end_layout
+
+\begin_layout Plain Layout
+
+ode-axis2.event.listeners = 
+\end_layout
+
+\begin_layout Plain Layout
+
+    org.apache.ode.simpl.events.listener.SimplSdoEventListener 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:BPEL-DM"
+
+\end_inset
+
+Registrierung der BPEL-DM Extension Activities und des SIMPL EventListeners
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imgInstall/Axis2Properties.JPG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Änderung-Axis2Properties"
+
+\end_inset
+
+Änderung der Datei ode-axis2.properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nachfolgend werden noch alle Bestandteile des Installationspakets und deren
+ Bedeutung beschrieben.
+ Dies ist für die eigentliche Installation nicht von Bedeutung, aber für
+ eventuelle Anpassungen oder Portierungen in andere Laufzeitumgebungen.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+simplDB
+\emph default
+: Embedded Derby Datenbank in der die Einstellungen des SIMPL Cores, die
+ über die SIMPL Admin-Konsole in Eclipse vorgenommen werden, hinterlegt
+ sind.
+ Diese ist nicht dringend erforderlich, da sie dynamisch neu generiert wird,
+ falls sie nicht vorhanden ist.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+log4j.properties
+\emph default
+: Enthält Logging-Einstellungen für den SIMPL Core.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+webapps/ode/conf/
+\emph default
+: Wie bereits weiter oben beschrieben, wird in der Datei 
+\emph on
+axis2.xml
+\emph default
+ das dynamische Deployment der SIMPL Web-Services aktiviert und in der Datei
+ 
+\emph on
+ode-axis2.properties
+\emph default
+ die BPEL-DM Extension Activities sowie der SIMPL EventListener registriert.
+ Weiterhin enthält dieser Ordner die Datei 
+\emph on
+simpl-core-config.xml
+\emph default
+ in der SIMPL Core Plug-Ins registriert werden können.
+ Die Implementierung aller im Moment registrierten Plug-Ins befindet sich
+ in der Library 
+\emph on
+webapps/ode/lib
+\emph default
+/
+\emph on
+simpl-core-plugins.jar
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+webapps/ode/lib
+\emph default
+: Dieser Ordner enthält alle Libraries, die der SIMPL Core benötigt und
+ den SIMPL Core selbst.
+ Diese lassen sich noch in folgende Gruppen gliedern:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+SIMPL Core
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+simpl-core.jar
+\end_layout
+
+\begin_layout Itemize
+simpl-core-plugins.jar
+\end_layout
+
+\begin_layout Itemize
+simpl-ode-extension.jar
+\end_layout
+
+\begin_layout Itemize
+simpl-uddi-client.jar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Datenbanktreiber 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+db2jcc.jar 
+\end_layout
+
+\begin_layout Itemize
+mysql-connector-java-5.0.8-bin.jar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Service Data Objects (SDO) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+tuscany-sdo-api-r2.1-1.0-incubating.jar 
+\end_layout
+
+\begin_layout Itemize
+tuscany-sdo-impl-1.0-incubating.jar 
+\end_layout
+
+\begin_layout Itemize
+tuscany-sdo-lib-1.0-incubating.jar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Universal Description, Discovery and Integration (UDDI)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+uddi-ws-3.0.1.jar
+\end_layout
+
+\begin_layout Itemize
+juddi-core-3.0.1.jar
+\end_layout
+
+\begin_layout Itemize
+juddi-client-3.0.1.jar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+XML, XSD Verarbeitung
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+jdom.jar 
+\end_layout
+
+\begin_layout Itemize
+stax-api-1.0.1.jar 
+\end_layout
+
+\begin_layout Itemize
+xsd-2.2.3.jar
+\end_layout
+
+\begin_layout Itemize
+wstx-asl-3.2.0.jar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Hilfsfunktionen 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+common-2.2.3.jar
+\end_layout
+
+\begin_layout Itemize
+ecore-2.2.3.jar 
+\end_layout
+
+\begin_layout Itemize
+ecore-change-2.2.3.jar 
+\end_layout
+
+\begin_layout Itemize
+ecore-xmi-2.2.3.jar
+\end_layout
+
+\begin_layout Itemize
+tools.jar
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+webapps/ode/servicejars/simpl-core-webservices.jar
+\emph default
+: Dies sind die Web-Services des SIMPL Cores, die über Axis2 dynamisch generiert
+ und deployt werden.
+\end_layout
+
+\begin_layout Subsection
+SIMPL Reference Resolution System (RRS) und RRS Transformation-Service
+\end_layout
+
+\begin_layout Standard
+Für die Installation des SIMPL RRS muss Apache Axis2 Version 1.5 oder höher
+ installiert sein.
+ Ein Installationspaket und eine Installationsanleitung findet sich hier
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AXIS2"
+
+\end_inset
+
+.
+ Danach muss wieder das entsprechende Installationspaket (
+\series bold
+\emph on
+simpl-rrs.zip
+\series default
+\emph default
+) von der SIMPL Homepage (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SIMPL"
+
+\end_inset
+
+) heruntergeladen werden.
+ Im Anschluss muss einfach das Installationspaket in das 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+Tomcat-In
+"-
+\lang ngerman
+stallationsverzeichnis
+\end_layout
+
+\end_inset
+
+ entpackt werden.
+ Die Pfade sind bereits so vordefiniert, dass die entsprechenden Dateien
+ direkt in die entsprechenden Axis2-Unterordner entpackt werden.
+ Sollten die Pfade eventuell nicht passen, können einfach direkt die Axis2-Unter
+ordner (
+\emph on
+services
+\emph default
+,
+\emph on
+ lib
+\emph default
+, 
+\emph on
+conf
+\emph default
+) bzw.
+ deren Inhalt aus dem Installationspaket in den lokalen Axis2-Ordner entpackt
+ werden.
+ Die Installation ist damit abgeschlossen und kann in Eclipse durch die
+ RRS Management View getestet werden, näheres dazu findet sich im SIMPL
+ Benutzerhandbuch.
+\end_layout
+
+\begin_layout Standard
+Nachfolgend werden noch alle Bestandteile des Installationspakets und deren
+ Bedeutung beschrieben.
+ Dies ist für die eigentliche Installation nicht von Bedeutung, aber für
+ eventuelle Anpassungen oder Portierungen in andere Laufzeitumgebungen.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+webapps/axis2/WEB-INF/services
+\emph default
+: Dieser Ordner enthält die SIMPL RRS Web-Services und die dahinter liegende
+ Implementierung (
+\emph on
+simpl-rrs.aar
+\emph default
+) sowie den SIMPL RRS Transformation Web-Service und dessen Implementierung
+ (
+\emph on
+simpl-rrs-transformation.aar
+\emph default
+).
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+webapps/axis2/WEB-INF/lib
+\emph default
+: Hier sind befinden Datenbanktreiber, die für die Datenbankzugriffe beim
+ Auflösen von Referenzen benötigt werden.
+ Im Moment sind dies Treiber für die Datenbanken Apache Derby (
+\emph on
+derby.jar
+\emph default
+), IBM DB2 (
+\emph on
+db2jcc.jar
+\emph default
+) und MySQL (
+\emph on
+mysql-connector.jar
+\emph default
+).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+webapps/axis2/WEB-INF/conf
+\emph default
+: Dieser Ordner enthält die Datei 
+\emph on
+rrs-config.xml
+\emph default
+ in der RRS 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+Daten
+"-
+\lang ngerman
+quellen-Adpater
+\end_layout
+
+\end_inset
+
+ registriert werden können.
+ Im Moment sind dies, analog zu den vorher aufgezählten Datenbanktreiber,
+ Adapter für Apache Derby, IBM DB2 und MySQL.
+\end_layout
+
+\begin_layout Standard
+Natürlich muss das RRS nicht zwangsweise in einer eigenen Axis2 Installation
+ deployt werden, ebenso könnte man das RRS in der in ODE integrierten Axis2
+ Installation deployen.
+ Dabei ist allerdings zu beachten, dass sich dadurch die Web-Service Adressen
+ ändern.
+ Diese müssten dann in Eclipse angepasst werden, damit das RRS wieder erreichbar
+ ist, da dort die Adressen der hier beschriebenen separaten Installation
+ hinterlegt sind.
+ Dazu müssen in Eclipse einfach im 
+\emph on
+SIMPL
+\emph default
+-Menü die 
+\emph on
+Settings
+\emph default
+ geöffnet und unter 
+\emph on
+Reference Resolution System
+\emph default
+ die Adressen angepasst werden (siehe SIMPL Benutzerhandbuch).
+\end_layout
+
+\begin_layout Subsection
+jUDDI Registry und SIMPL Web-Interface
+\end_layout
+
+\begin_layout Standard
+Zunächst muss das entsprechende Installationspaket (
+\series bold
+\emph on
+simpl-jUDDI.zip
+\series default
+\emph default
+) von der SIMPL Homepage heruntergeladen werden.
+ Dieses Paket enthält bereits eine vollständige Apache jUDDI (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jUDDI"
+
+\end_inset
+
+) Installation, deshalb ist keine weitere Vorbereitung notwendig und das
+ Paket kann direkt in das Tomcat-Installationsverzeichnis entpackt werden.
+ Es ist lediglich zu beachten, dass für das SIMPL jUDDI Web-Interface eine
+ neue Tomcat Benutzerrolle 
+\emph on
+secure
+\emph default
+ benötigt wird, deshalb wird im Installationspaket eine entsprechende 
+\emph on
+tomcat-users.xml
+\emph default
+ Datei mitgeliefert.
+ Dadurch wird natürlich die bereits bestehende Datei überschrieben, falls
+ dies nicht gewünscht ist, muss der Ordner 
+\emph on
+conf
+\emph default
+ einfach nicht mit entpackt werden und eine neue Rolle
+\emph on
+ secure
+\emph default
+ von Hand angelegt und einem bestehenden oder neu erstellten Benutzer zugewiesen
+ werden (siehe Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:Mitgelieferte-tomcat-users.xml-Datei"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "captionpos=b,float,frame=single,xleftmargin={1cm},xrightmargin={1cm}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<tomcat-users> 
+\end_layout
+
+\begin_layout Plain Layout
+
+  <role rolename="secure"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+  <user name="admin" password="" roles="admin,manager,secure"/>
+\end_layout
+
+\begin_layout Plain Layout
+
+</tomcat-users>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Mitgelieferte-tomcat-users.xml-Datei"
+
+\end_inset
+
+Mitgelieferte 
+\emph on
+tomcat-users.xml
+\emph default
+ Datei
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Damit ist die Installation schon abgeschlossen und kann direkt durch aufrufen
+ folgender Adressen getestet werden: Test der jUDDI Installation 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://localhost:8080/juddiv3/"
+target "http://localhost:8080/juddiv3/"
+
+\end_inset
+
+ und Test der SIMPL jUDDI Web-Interface Installation 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://localhost:8080/juddiweb/"
+target "http://localhost:8080/juddiweb/"
+
+\end_inset
+
+ (standardmäßig: Benutzername
+\emph on
+ admin
+\emph default
+, kein Passwort).
+ Es empfiehlt sich direkt im Anschluss die in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Probleme-und-Lösungen"
+
+\end_inset
+
+ unter Punkt 2 beschriebene Speicheranpassung vorzunehmen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Probleme-und-Lösungen"
+
+\end_inset
+
+Probleme und Lösungen
+\end_layout
+
+\begin_layout Enumerate
+Die SIMPL Web-Services wurden deployt, die WSDLs können aber nicht generiert
+ werden:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Für die Generierung wird die 
+\emph on
+tools.jar
+\emph default
+ aus dem Java Development Toolkit (JDK, siehe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JAVA6"
+
+\end_inset
+
+) benötigt.
+ Diese wird aus dem JDK 1.6.0_14 in der 
+\series bold
+\emph on
+simpl-tomcat.zip
+\series default
+\emph default
+ mitgeliefert.
+ Je nachdem welche Version des Java Runtime Environment (JRE) auf dem Betriebssy
+stem installiert ist, kann es unter Umständen nötig sein die 
+\emph on
+tools.jar
+\emph default
+ aus der entsprechend anderen Version des JDK zu verwenden.
+ Diese muss unter 
+\emph on
+Tomcat x.x/webapps/ode/WEB-INF/lib/
+\emph default
+ die bereits vorhandene 
+\emph on
+tools.jar
+\emph default
+ ersetzen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Der Eclipse BPEL Designer kann nicht geöffnet werden, ein Fehler wird angezeigt
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Apache Tomcat wurde nicht gestartet, der SIMPL Core ist nicht erreichbar
+\end_layout
+
+\begin_layout Itemize
+Die 
+\series bold
+\emph on
+simpl-tomcat.zip
+\series default
+\emph default
+ wurde nicht deployt
+\end_layout
+
+\begin_layout Itemize
+Die 
+\series bold
+\emph on
+simpl-eclipse.zip
+\series default
+\emph default
+ wurde nicht deployt
+\end_layout
+
+\begin_layout Itemize
+Es besteht Problem Nr.
+ 1
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Quotes eld
+\end_inset
+
+Heap Space
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+OutOfMemory
+\begin_inset Quotes erd
+\end_inset
+
+ oder 
+\begin_inset Quotes eld
+\end_inset
+
+PermGem Space
+\begin_inset Quotes erd
+\end_inset
+
+ Fehlermeldungen von Tomcat
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Falls Speicherprobleme auftreten, muss der Speicher in der von Tomcat verwendete
+n Java Virtual Machine erhöht werden.
+ Dazu muss die Zeile "-XX:MaxPermSize=256m" im Windows Service in der Registerka
+rte 
+\begin_inset Quotes eld
+\end_inset
+
+Java
+\begin_inset Quotes erd
+\end_inset
+
+ (Apache Monitor -> Configure...
+ -> Java -> Java Options) unter 
+\begin_inset Quotes eld
+\end_inset
+
+Java Options
+\begin_inset Quotes erd
+\end_inset
+
+ hinzugefügt werden.
+ 256m steht dabei für 256Mb Arbeitsspeicher, dieser Wert ist nur eine Empfehlung
+ und kann entsprechend dem verwendeten System nach oben oder unten korrigiert
+ werden.
+ Dieses Problem tritt nahezu immer bei der Verwendung von jUDDI auf, daher
+ empfiehlt es sich diese Anpassung direkt nach der Installation vorzunehmen.
+\end_layout
+
+\begin_layout Itemize
+Sollte man Tomcat über die Kommandozeile mit startup.bat bzw.
+ startup.sh starten, dann kann man den Speicher über eine entsprechende Umgebungs
+variable setzen.
+ Dazu muss einfach eine neue Umgebungsvariable 
+\begin_inset Quotes eld
+\end_inset
+
+JAVA_OPTS
+\begin_inset Quotes erd
+\end_inset
+
+ mit dem Wert "-XX:MaxPermSize=256m" erstellt werden.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Literaturverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "AXIS2"
+key "AXIS2"
+
+\end_inset
+
+ Axis2, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ws.apache.org/axis2/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "ODE2"
+key "ODE2"
+
+\end_inset
+
+ Apache ODE, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ode.apache.org/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "TOMCAT"
+key "TOMCAT"
+
+\end_inset
+
+ Apache Tomcat, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://tomcat.apache.org/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "JAVA6"
+key "JAVA6"
+
+\end_inset
+
+ Java 6, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://java.sun.com/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "JAX-WS"
+key "JAX-WS"
+
+\end_inset
+
+ JAX-WS, 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://jax-ws.dev.java.net/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "ECLIPSE"
+key "ECLIPSE"
+
+\end_inset
+
+ Eclipse, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.eclipse.org/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "jUDDI"
+key "jUDDI"
+
+\end_inset
+
+jUDDI, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://ws.apache.org/juddi/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "SIMPL"
+key "SIMPL"
+
+\end_inset
+
+SIMPL, 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://code.google.com/p/simpl09/"
+
+\end_inset
+
+, zuletzt zugegriffen am 24.08.2010
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Verzeichnis der Listings}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+lstlistlistingname}{Verzeichnis der Listings}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstlistoflistings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
