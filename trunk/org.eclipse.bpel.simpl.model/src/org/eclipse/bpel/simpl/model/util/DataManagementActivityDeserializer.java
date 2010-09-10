@@ -382,13 +382,13 @@ public class DataManagementActivityDeserializer implements
 			String attTargetContainer = ModelPackage.eINSTANCE
 					.getTransferActivity_TargetDsContainer().getName();
 			String attTargetKind = ModelPackage.eINSTANCE
-					.getDataManagementActivity_DsKind().getName();
+					.getTransferActivity_TargetDsKind().getName();
 			String attTargetType = ModelPackage.eINSTANCE
-					.getDataManagementActivity_DsType().getName();
+					.getTransferActivity_TargetDsType().getName();
 			String attTargetAddress = ModelPackage.eINSTANCE
-					.getDataManagementActivity_DsAddress().getName();
+					.getTransferActivity_TargetDsAddress().getName();
 			String attTargetLanguage = ModelPackage.eINSTANCE
-					.getDataManagementActivity_DsLanguage().getName();
+					.getTransferActivity_TargetDsLanguage().getName();
 
 			Element transferActivityElement = (Element) node;
 
