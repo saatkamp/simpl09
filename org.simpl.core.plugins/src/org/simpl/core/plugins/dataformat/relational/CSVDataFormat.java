@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.dataformat.fs;
+package org.simpl.core.plugins.dataformat.relational;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,7 +22,7 @@ import commonj.sdo.DataObject;
 /**
  * <b>Purpose:</b>Used to create a SDO from standard CSV file and vice versa.<br>
  * <b>Description:</b>Uses OpenCSV to read and write the CSV data. The data is written to
- * a temporary file, to be able to return it as java.io.File.<br>
+ * a temporary file, to be able to return it as java.io.File object.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -31,7 +31,7 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class CSVDataFormat extends DataFormatPlugin<File, File> {
+public class CSVDataFormat extends DataFormatPlugin<CSVResult, File> {
   static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
 
   /**
@@ -39,8 +39,8 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
    */
   public CSVDataFormat() {
     this.setType("CSV");
-    this.setSchemaFile("CSVDataFormat.xsd");
-    this.setSchemaType("tCSVDataFormat");
+    this.setSchemaFile("RelationalDataFormat.xsd");
+    this.setSchemaType("tRelationalDataFormat");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -50,32 +50,36 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
    * (non-Javadoc)
    * @see org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang.Object )
    */
-  public DataObject toSDO(File file) {
+  public DataObject toSDO(CSVResult csvResult) {
     CSVReader csvReader;
     String[] headLine;
     String[] nextLine;
-    DataObject sdo = this.getSDO();
-    DataObject tableObject = sdo.createDataObject("table");
+    DataObject csvDataObject = this.getSDO();
+    DataObject dataFormatMetaDataObject = csvDataObject
+        .createDataObject("dataFormatMetaData");
+    DataObject tableObject = csvDataObject.createDataObject("table");
+    DataObject csvTableMetaDataObject = tableObject.createDataObject("csvTableMetaData");
     DataObject rowObject;
     DataObject columnObject;
 
     if (CSVDataFormat.logger.isDebugEnabled()) {
-      CSVDataFormat.logger.debug("Convert data from 'File' to 'DataObject'.");
+      CSVDataFormat.logger.debug("Convert data from 'CSVResult' to 'DataObject'.");
     }
 
     try {
-      csvReader = new CSVReader(new FileReader(file));
+      csvReader = new CSVReader(new FileReader(csvResult.getFile()));
 
-      // take first line as headline
+      // the first line is expected to be the headline
       headLine = csvReader.readNext();
 
-      sdo.setString("filename", file.getName());
+      dataFormatMetaDataObject.set("dataSource", csvResult.getDataSource().getName());
+      csvTableMetaDataObject.setString("filename", csvResult.getFile().getName());
 
       // uncommented because CSV properties cannot be recognized and used by OpenCSV
-      // sdo.setChar("separator", ',');
-      // sdo.setChar("quoteChar", '\0');
-      // sdo.setChar("escapeChar", '\\');
-      // sdo.setBoolean("strictQuotes", false);
+      // csvTableMetaDataObject.setString("separator", ",");
+      // csvTableMetaDataObject.setString("quoteChar", "\0");
+      // csvTableMetaDataObject.setString("escapeChar", "\\");
+      // csvTableMetaDataObject.setString("strictQuotes", false);
 
       while ((nextLine = csvReader.readNext()) != null) {
         rowObject = tableObject.createDataObject("row");
@@ -83,7 +87,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
         for (int i = 0; i < nextLine.length; i++) {
           columnObject = rowObject.createDataObject("column");
           columnObject.setString("name", headLine[i]);
-          columnObject.setString("value", nextLine[i]);
+          columnObject.set(0, nextLine[i]);
         }
       }
     } catch (FileNotFoundException e) {
@@ -94,7 +98,7 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
       e.printStackTrace();
     }
 
-    return sdo;
+    return csvDataObject;
   }
 
   /*
@@ -117,7 +121,8 @@ public class CSVDataFormat extends DataFormatPlugin<File, File> {
     List<DataObject> rowObjects = null;
 
     boolean headerComplete = false;
-    // uncommented because CSV properties cannot be recognized and used by OpenCSV
+    // TODO: uncommented because CSV properties cannot be recognized and used by OpenCSV.
+    // If this is implemented, the plugin could be used with various csv styles.
     // char separator = data.getChar("separator");
     // char quoteChar = data.getChar("quoteChar");
     // char escapeChar = data.getChar("escapeChar");
