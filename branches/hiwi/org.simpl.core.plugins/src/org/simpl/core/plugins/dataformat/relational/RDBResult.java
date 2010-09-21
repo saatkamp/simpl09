@@ -1,13 +1,15 @@
-package org.simpl.core.plugins.dataformat.rdb;
+package org.simpl.core.plugins.dataformat.relational;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 
+import org.simpl.core.services.datasource.DataSource;
+
 /**
  * <b>Purpose: Used by RDBDataFormat to hold the resultSet and the associated database
  * meta data.</b> <br>
- * <b>Description: The database meta data is needed zo retrieve the primary keys when
- * preparing update statments from the result set.</b> <br>
+ * <b>Description: The database meta data is needed to retrieve the primary keys when
+ * preparing update statements from the result set.</b> <br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
@@ -19,7 +21,7 @@ import java.sql.ResultSet;
 public class RDBResult {
   private ResultSet resultSet = null;
   private DatabaseMetaData dbMetaData = null;
-  private String target = null;
+  private DataSource dataSource = null;
 
   /**
    * @return the resultSet
@@ -52,17 +54,17 @@ public class RDBResult {
   }
 
   /**
-   * @return the target
+   * @return the dataSource
    */
-  public String getTarget() {
-    return target;
+  public DataSource getDataSource() {
+    return dataSource;
   }
 
   /**
-   * @param target
-   *          the target to set
+   * @param dataSource
+   *          the dataSource to set
    */
-  public void setTarget(String target) {
-    this.target = target;
+  public void setDataSource(DataSource dataSource) {
+    this.dataSource = dataSource;
   }
 }

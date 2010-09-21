@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.simpl.core.plugins.dataformat.relational.CSVResult;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
 import org.simpl.core.services.datasource.DataSource;
@@ -30,7 +31,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<File, File> {
+public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<File, CSVResult> {
   static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
 
   /**
@@ -84,13 +85,18 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
    * java.lang.String)
    */
   @Override
-  public File retrieveData(DataSource dataSource, String file) throws ConnectionException {
+  public CSVResult retrieveData(DataSource dataSource, String file) throws ConnectionException {
+    CSVResult result = new CSVResult();
+    
     if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
       WindowsLocalFSDataSourceService.logger.debug("DataObject retrieveData("
           + dataSource.getAddress() + ", " + file + ") executed.");
     }
+    
+    result.setDataSource(dataSource);
+    result.setFile(new File(file));
 
-    return new File(file);
+    return result;
   }
 
   /*

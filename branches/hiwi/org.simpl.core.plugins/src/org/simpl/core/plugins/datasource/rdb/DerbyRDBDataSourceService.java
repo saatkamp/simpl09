@@ -12,7 +12,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.plugins.dataformat.rdb.RDBResult;
+import org.simpl.core.plugins.dataformat.relational.RDBResult;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
@@ -109,6 +109,7 @@ public class DerbyRDBDataSourceService extends
       rdbResult = new RDBResult();
       rdbResult.setDbMetaData(connection.getMetaData());
       rdbResult.setResultSet(resultSet);
+      rdbResult.setDataSource(dataSource);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

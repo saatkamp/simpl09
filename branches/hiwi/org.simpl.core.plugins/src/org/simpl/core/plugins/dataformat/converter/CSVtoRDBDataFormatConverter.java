@@ -55,49 +55,41 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
           + this.getToDataFormat().getType());
     }
 
-    // data from CSV SDO
-    List<DataObject> csvTables = csvSDO.getList("table");
-    List<DataObject> csvRows = null;
-    List<DataObject> csvColumns = null;
+    // use csv SDO and add rdb table meta data
+    DataObject rdbSDO = csvSDO;
+    rdbSDO.setString("dataFormatType", "RDB");
 
-    // data of RDB SDO
-    DataObject rdbSDO = this.getToDataFormat().getSDO();
+    DataObject csvTableMetaDataObject = null;
+    DataObject rdbTableMetaDataObject = null;
+    DataObject rdbTableMetaDataColumnTypeObject = null;
     DataObject rdbTableObject = null;
-    DataObject rdbRowObject = null;
-    DataObject rdbColumnObject = null;
+    List<DataObject> rdbTables = rdbSDO.getList("table");
+    List<DataObject> rdbRows = null;
+    List<DataObject> rdbColumns = null;
 
-    // write data to RDB SDO
-    for (int i = 0; i < csvTables.size(); i++) {
-      // add table
-      rdbTableObject = rdbSDO.createDataObject("table");
-      rdbTableObject.set("name", csvSDO.getString("filename").toUpperCase().replace(".",
-          "_"));
-      rdbTableObject.set("catalog", "");
-      rdbTableObject.set("schema", "");
+    // add rdb table meta data
+    for (int i = 0; i < rdbTables.size(); i++) {
+      csvTableMetaDataObject = rdbTables.get(i).getDataObject("csvTableMetaData");
+      rdbTableObject = rdbTables.get(i);
+      rdbRows = rdbTables.get(i).getList("row");
+      rdbColumns = rdbRows.get(0).getList("column");
 
-      csvRows = csvTables.get(i).getList("row");
+      // remove csv table meta data
+      csvTableMetaDataObject.detach();
 
-      // add rows
-      for (int j = 0; j < csvRows.size(); j++) {
-        rdbRowObject = rdbTableObject.createDataObject("row");
+      rdbTableMetaDataObject = rdbTableObject.createDataObject("rdbTableMetaData");
+      rdbTableMetaDataObject.setString("name", csvTableMetaDataObject.getString(
+          "filename").toUpperCase().replace(".", "_"));
+      rdbTableMetaDataObject.setString("schema", "");
+      rdbTableMetaDataObject.setString("catalog", "");
 
-        csvColumns = csvRows.get(j).getList("column");
-
-        // add primary key column
-        rdbColumnObject = rdbRowObject.createDataObject("column");
-        rdbColumnObject.set("name", "PK_ID");
-        rdbColumnObject.set("type", this.getColumnType("123", dataSourceService));
-        rdbColumnObject.set("value", String.valueOf(j));
-        rdbColumnObject.set("pk", true);
-
-        // add columns
-        for (DataObject csvColumn : csvColumns) {
-          rdbColumnObject = rdbRowObject.createDataObject("column");
-          rdbColumnObject.set("name", csvColumn.getString("name"));
-          rdbColumnObject.set("type", this.getColumnType(csvColumn.getString("value"),
-              dataSourceService));
-          rdbColumnObject.set("value", csvColumn.getString("value"));
-        }
+      for (int k = 0; k < rdbColumns.size(); k++) {
+        rdbTableMetaDataColumnTypeObject = rdbTableMetaDataObject
+            .createDataObject("columnType");
+        rdbTableMetaDataColumnTypeObject.setString("columnName", rdbColumns.get(k)
+            .getString("name"));
+        rdbTableMetaDataColumnTypeObject.set(0, this.getColumnType(rdbColumns.get(k)
+            .getString(0), dataSourceService));
       }
     }
 
@@ -133,38 +125,24 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
           + this.getFromDataFormat().getType());
     }
 
-    // data from RDB SDO
-    List<DataObject> rdbTables = rdbSDO.getList("table");
-    List<DataObject> rdbRows = null;
-    List<DataObject> rdbColumns = null;
+    // use rdb SDO and add csv table meta data
+    DataObject csvSDO = rdbSDO;
+    csvSDO.setString("dataFormatType", "CSV");
 
-    // data of CSV SDO
-    DataObject csvSDO = this.getFromDataFormat().getSDO();
-    DataObject csvTableObject = null;
-    DataObject csvRowObject = null;
-    DataObject csvColumnObject = null;
+    DataObject csvTableMetaDataObject = null;
+    DataObject rdbTableMetaDataObject = null;
+    List<DataObject> csvTables = csvSDO.getList("table");
+    DataObject csvTable = null;
 
-    csvSDO.set("filename", "");
+    // add csv table meta data
+    for (int i = 0; i < csvTables.size(); i++) {
+      csvTable = csvTables.get(i);
+      csvTableMetaDataObject = csvTable.createDataObject("csvTableMetaData");
+      csvTableMetaDataObject.setString("filename", "");
 
-    // write data to RDB SDO
-    for (int i = 0; i < rdbTables.size(); i++) {
-      // add table
-      csvTableObject = csvSDO.createDataObject("table");
-
-      rdbRows = rdbTables.get(i).getList("row");
-
-      // add rows
-      for (int j = 0; j < rdbRows.size(); j++) {
-        csvRowObject = csvTableObject.createDataObject("row");
-        rdbColumns = rdbRows.get(j).getList("column");
-
-        // add columns
-        for (DataObject rdbColumn : rdbColumns) {
-          csvColumnObject = csvRowObject.createDataObject("column");
-          csvColumnObject.set("name", rdbColumn.getString("name"));
-          csvColumnObject.set("value", rdbColumn.getString("value"));
-        }
-      }
+      // remove csv table meta data
+      rdbTableMetaDataObject = csvTable.createDataObject("rdbTableMetaData");
+      rdbTableMetaDataObject.detach();
     }
 
     // if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
@@ -187,7 +165,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
   /**
    * Returns a SQL data type declaration depending on the string content.
    * 
-   * TODO: support more sql types like date, decimal, ...
+   * TODO: support more sql data types like date, decimal, ...
    * 
    * @param type
    * @param dataSourceService

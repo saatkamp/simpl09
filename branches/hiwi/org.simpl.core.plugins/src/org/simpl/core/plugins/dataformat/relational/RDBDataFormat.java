@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.dataformat.rdb;
+package org.simpl.core.plugins.dataformat.relational;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -39,8 +39,8 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
   public RDBDataFormat() {
     this.setType("RDB");
-    this.setSchemaFile("RDBDataFormat.xsd");
-    this.setSchemaType("tRDBDataFormat");
+    this.setSchemaFile("RelationalDataFormat.xsd");
+    this.setSchemaType("tRelationalDataFormat");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -50,21 +50,29 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
    * (non-Javadoc)
    * @see org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang.Object )
    */
-  public DataObject toSDO(RDBResult result) {
+  public DataObject toSDO(RDBResult rdbResult) {
     DataObject rdbDataObject = this.getSDO();
-    DataObject tableObject = null;
+    DataObject dataFormatMetaDataObject = rdbDataObject
+        .createDataObject("dataFormatMetaData");
+    DataObject tableObject = rdbDataObject.createDataObject("table");
+    DataObject rdbTableMetaDataObject = tableObject.createDataObject("rdbTableMetaData");
+    DataObject columnTypeObject = null;
     DataObject rowObject = null;
     DataObject columnObject = null;
 
-    ResultSet resultSet = result.getResultSet();
+    ResultSet resultSet = rdbResult.getResultSet();
     ResultSet primaryKeys = null;
-    DatabaseMetaData dbMetaData = result.getDbMetaData();
+    DatabaseMetaData dbMetaData = rdbResult.getDbMetaData();
 
     List<String> primaryKeyList = new ArrayList<String>();
+    boolean isSetTableMetaData = false;
 
     if (RDBDataFormat.logger.isDebugEnabled()) {
       RDBDataFormat.logger.debug("Convert data from 'RDBResult' to 'DataObject'.");
     }
+
+    // add data format meta data
+    dataFormatMetaDataObject.set("dataSource", rdbResult.getDataSource().getName());
 
     try {
       ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
@@ -77,32 +85,37 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
         primaryKeyList.add(primaryKeys.getString("COLUMN_NAME"));
       }
 
-      // add table
-      tableObject = rdbDataObject.createDataObject("table");
-      tableObject.set("name", resultSetMetaData.getTableName(1));
-      tableObject.set("catalog", resultSetMetaData.getCatalogName(1));
-      tableObject.set("schema", resultSetMetaData.getSchemaName(1));
+      // add table meta data
+      rdbTableMetaDataObject.setString("schema", resultSetMetaData.getSchemaName(1));
+      rdbTableMetaDataObject.setString("name", resultSetMetaData.getTableName(1));
+      rdbTableMetaDataObject.setString("catalog", resultSetMetaData.getCatalogName(1));
 
       while (resultSet.next()) {
         // add row
         rowObject = tableObject.createDataObject("row");
 
-        // add columns
         for (int i = 1; i < resultSetMetaData.getColumnCount() + 1; i++) {
+          // add table meta data
+          if (!isSetTableMetaData) {
+            columnTypeObject = rdbTableMetaDataObject.createDataObject("columnType");
+            columnTypeObject.set(0, resultSetMetaData.getColumnTypeName(i)
+                + "("
+                + this.getColumnSize(dbMetaData, resultSetMetaData.getTableName(i),
+                    resultSetMetaData.getColumnName(i)) + ")");
+            columnTypeObject.set("columnName", resultSetMetaData.getColumnName(i));
+
+            if (primaryKeyList.contains(resultSetMetaData.getColumnName(i))) {
+              columnTypeObject.set("isPrimaryKey", true);
+            }
+          }
+
+          // add column
           columnObject = rowObject.createDataObject("column");
           columnObject.set("name", resultSetMetaData.getColumnName(i));
-          columnObject.set("type", resultSetMetaData.getColumnTypeName(i)
-              + "("
-              + this.getColumnSize(dbMetaData, resultSetMetaData.getTableName(i),
-                  resultSetMetaData.getColumnName(i)) + ")");
-          columnObject.set("value", resultSet.getObject(resultSetMetaData
-              .getColumnName(i)));
-
-          // set primary key
-          if (primaryKeyList.contains(resultSetMetaData.getColumnName(i))) {
-            columnObject.set("pk", true);
-          }
+          columnObject.set(0, resultSet.getString(resultSetMetaData.getColumnName(i)));
         }
+
+        isSetTableMetaData = true;
       }
     } catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -133,7 +146,8 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     List<DataObject> tables = dataObject.getList("table");
     List<DataObject> rows = null;
     List<DataObject> columns = null;
-    List<String> primaryKeys = new ArrayList<String>();
+    List<String> primaryKeys = null;
+    DataObject tableMetaData = null;
     String quote = "";
     String statement = "";
     String tableSchema = "";
@@ -143,31 +157,28 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     }
 
     for (DataObject table : tables) {
+      tableMetaData = table.getDataObject("rdbTableMetaData");
       rows = table.getList("row");
+
+      // get primary keys
+      primaryKeys = this.getPrimaryKeys(tableMetaData);
 
       for (DataObject row : rows) {
         columns = row.getList("column");
 
-        // get primary keys
-        if (primaryKeys.isEmpty()) {
-          for (DataObject column : columns) {
-            if (column.getBoolean("pk")) {
-              primaryKeys.add(column.getString("name"));
-            }
-          }
-        }
-
         for (DataObject column : columns) {
-          if (column.getString("type").startsWith("VARCHAR")) {
+          if (this.getColumnType(column.getString("name"), tableMetaData).startsWith(
+              "VARCHAR")) {
             quote = "'";
           } else {
             quote = "";
           }
 
-          if (table.getString("schema").equals("")) {
-            tableSchema = table.getString("name");
+          if (tableMetaData.getString("schema").equals("")) {
+            tableSchema = tableMetaData.getString("name");
           } else {
-            tableSchema = table.getString("schema") + "." + table.getString("name");
+            tableSchema = tableMetaData.getString("schema") + "."
+                + tableMetaData.getString("name");
           }
 
           // create update statement
@@ -176,7 +187,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
           for (String primaryKey : primaryKeys) {
             statement += " AND " + primaryKey + "="
-                + findPrimaryKeyValue(primaryKey, columns);
+                + getPrimaryKeyValue(primaryKey, columns, tableMetaData);
           }
 
           logger.debug("Created UPDATE statement: " + statement);
@@ -185,7 +196,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
 
         // create insert statement
         statement = "INSERT INTO " + tableSchema + " "
-            + createInsertColumnValues(columns);
+            + createInsertColumnValues(columns, tableMetaData);
         logger.debug("Created INSERT statement: " + statement);
         statements.add(statement);
       }
@@ -195,18 +206,60 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   }
 
   /**
+   * Returns the primary key columns from the table meta data.
+   * 
+   * @param tableMetaData
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  private List<String> getPrimaryKeys(DataObject tableMetaData) {
+    List<String> primaryKeys = new ArrayList<String>();
+    List<DataObject> columnTypes = tableMetaData.getList("columnType");
+
+    for (DataObject columnType : columnTypes) {
+      if (columnType.getBoolean("isPrimaryKey")) {
+        primaryKeys.add(columnType.getString("columnName"));
+      }
+    }
+
+    return primaryKeys;
+  }
+
+  /**
+   * Returns the column type of a column from the table meta data.
+   * 
+   * @param column
+   * @param tableMetaData
+   */
+  @SuppressWarnings("unchecked")
+  private String getColumnType(String column, DataObject tableMetaData) {
+    String columnType = "";
+    List<DataObject> columnTypes = tableMetaData.getList("columnType");
+
+    for (DataObject columnTypeObject : columnTypes) {
+      if (columnTypeObject.getString("columnName").equals("column")) {
+        columnType = columnTypeObject.getString(0);
+        break;
+      }
+    }
+
+    return columnType;
+  }
+
+  /**
    * Searches for a primary key value in the columns of a table.
    * 
    * @param primaryKey
    * @param columns
+   * @param tableMetaData
    * @return
    */
-  private String findPrimaryKeyValue(String primaryKey, List<DataObject> columns) {
+  private String getPrimaryKeyValue(String primaryKey, List<DataObject> columns, DataObject tableMetaData) {
     String primaryKeyValue = "";
     String quote = "";
-
+    
     for (DataObject column : columns) {
-      if (column.getString("type").startsWith("VARCHAR")) {
+      if (this.getColumnType(column.getString("name"), tableMetaData).startsWith("VARCHAR")) {
         quote = "'";
       } else {
         quote = "";
@@ -225,9 +278,10 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
    * Creates a comma sparated columns and values statement for an insert statement.
    * 
    * @param columns
+   * @param tableMetaData
    * @return
    */
-  private String createInsertColumnValues(List<DataObject> columns) {
+  private String createInsertColumnValues(List<DataObject> columns, DataObject tableMetaData) {
     String insertColumns = "(";
     String quote = "";
 
@@ -244,7 +298,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     insertColumns += " VALUES (";
 
     for (int i = 0; i < columns.size(); i++) {
-      if (columns.get(i).getString("type").startsWith("VARCHAR")) {
+      if (this.getColumnType(columns.get(i).getString("name"), tableMetaData).startsWith("VARCHAR")) {
         quote = "'";
       } else {
         quote = "";
