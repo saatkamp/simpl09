@@ -6,7 +6,7 @@ import org.eclipse.bpel.model.Variable;
 import org.eclipse.simpl.statementtest.StatementTestPlugin;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.CreateTableResult;
-import org.eclipse.simpl.statementtest.model.results.RDBResult;
+import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 import org.eclipse.simpl.statementtest.model.variables.ContainerVariable;
 import org.eclipse.simpl.statementtest.model.variables.ParameterVariable;
 import org.eclipse.swt.SWT;
@@ -268,7 +268,7 @@ public class StatementTestView extends ViewPart {
    * 
    * @param result
    */
-  private void buildRDBResultTable(RDBResult result, Table table) {
+  private void buildRDBResultTable(RelationalResult result, Table table) {
     TableItem row = null;
     TableColumn column = null;
 
@@ -318,8 +318,8 @@ public class StatementTestView extends ViewPart {
    * @param result
    * @param comparativeResult
    */
-  private void buildRDBResultComparativeTable(RDBResult result,
-      RDBResult comparativeResult) {
+  private void buildRDBResultComparativeTable(RelationalResult result,
+      RelationalResult comparativeResult) {
     TableItem row = null;
     TableColumn column = null;
 
@@ -692,16 +692,16 @@ public class StatementTestView extends ViewPart {
    * @param statementTest
    */
   private void buildResultTables(StatementTest statementTest) {
-    if (statementTest.getResult() instanceof RDBResult
+    if (statementTest.getResult() instanceof RelationalResult
         && statementTest.getComparativeResult() == null) {
-      this.buildRDBResultTable(((RDBResult) statementTest.getResult()), resultTable);
-    } else if (statementTest.getResult() instanceof RDBResult
-        && statementTest.getComparativeResult() instanceof RDBResult) {
-      this.buildRDBResultComparativeTable(((RDBResult) statementTest.getResult()),
-          ((RDBResult) statementTest.getComparativeResult()));
+      this.buildRDBResultTable(((RelationalResult) statementTest.getResult()), resultTable);
+    } else if (statementTest.getResult() instanceof RelationalResult
+        && statementTest.getComparativeResult() instanceof RelationalResult) {
+      this.buildRDBResultComparativeTable(((RelationalResult) statementTest.getResult()),
+          ((RelationalResult) statementTest.getComparativeResult()));
 
       if (statementTest.isEnhancedResult()) {
-        this.buildRDBResultTable(((RDBResult) statementTest.getComparativeResult()),
+        this.buildRDBResultTable(((RelationalResult) statementTest.getComparativeResult()),
             originalTable);
       }
     } else if (statementTest.getResult() instanceof CreateTableResult) {
@@ -718,7 +718,7 @@ public class StatementTestView extends ViewPart {
       }
     } else if (statementTest.getActivity().eClass().getName().equals("DropActivity")) {
       resultTableLabel.setText("Dropped Table: "
-          + ((RDBResult) statementTest.getComparativeResult()).getTable());
+          + ((RelationalResult) statementTest.getComparativeResult()).getTable());
     }
   }
 

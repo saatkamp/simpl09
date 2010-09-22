@@ -17,7 +17,7 @@ import org.w3c.dom.NodeList;
  * @version $Id: RDBResult.java 87 2010-08-08 14:56:15Z hiwi $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RDBResult extends Result {
+public class RelationalResult extends Result {
   int rowCount = 0;
   String schema = null;
   String table = null;
@@ -25,7 +25,7 @@ public class RDBResult extends Result {
   List<String> values = new ArrayList<String>();
   List<String> primaryKeys = new ArrayList<String>();
 
-  public RDBResult() {
+  public RelationalResult() {
 
   }
 
@@ -34,15 +34,28 @@ public class RDBResult extends Result {
    * 
    * @param result
    */
-  public RDBResult(String result) {
+  public RelationalResult(String result) {
     super(result);
 
     rowCount = doc.getElementsByTagName("row").getLength();
 
-    NodeList tableNodes = doc.getElementsByTagName("table");
-    NodeList rowNodes = tableNodes.item(0).getChildNodes();
+    NodeList columnTypeNodes = doc.getElementsByTagName("columnType");
+    NodeList rowNodes = doc.getElementsByTagName("row");
     NodeList columnNodes = null;
     NamedNodeMap columnAttributes = null;
+
+    // get primary keys
+    for (int i = 0; i < columnTypeNodes.getLength(); i++) {
+      columnAttributes = columnTypeNodes.item(i).getAttributes();
+
+      if (columnAttributes != null) {
+        if (columnAttributes.getNamedItem("isPrimaryKey") != null
+            && columnAttributes.getNamedItem("isPrimaryKey").getNodeValue()
+                .equals("true")) {
+          primaryKeys.add(columnAttributes.getNamedItem("columnName").getNodeValue());
+        }
+      }
+    }
 
     if (rowNodes != null && rowNodes.item(1) != null) {
       columnNodes = rowNodes.item(1).getChildNodes();
@@ -53,12 +66,6 @@ public class RDBResult extends Result {
 
           if (columnAttributes != null) {
             columns.add(columnAttributes.getNamedItem("name").getNodeValue());
-
-            // catch primary key
-            if (columnAttributes.getNamedItem("pk") != null
-                && columnAttributes.getNamedItem("pk").getNodeValue().equals("true")) {
-              primaryKeys.add(columnAttributes.getNamedItem("name").getNodeValue());
-            }
           }
         }
       }
@@ -105,10 +112,8 @@ public class RDBResult extends Result {
    */
   public String[] getValues(int row) {
     if (doc != null) {
-      NodeList tableNodes = doc.getElementsByTagName("table");
-      NodeList rowNodes = tableNodes.item(0).getChildNodes();
+      NodeList rowNodes = doc.getElementsByTagName("row");
       NodeList columnNodes = null;
-      NamedNodeMap columnAttributes = null;
       int rowCounter = 0;
 
       values.clear();
@@ -119,14 +124,8 @@ public class RDBResult extends Result {
             columnNodes = rowNodes.item(i).getChildNodes();
 
             for (int j = 0; j < columnNodes.getLength(); j++) {
-              columnAttributes = columnNodes.item(j).getAttributes();
-
-              if (columnAttributes != null) {
-                if (columnAttributes.getNamedItem("value") != null) {
-                  values.add(columnAttributes.getNamedItem("value").getNodeValue());
-                } else {
-                  values.add("");
-                }
+              if (columnNodes.item(j).getNodeName().equals("column")) {
+                values.add(columnNodes.item(j).getTextContent());
               }
             }
           }

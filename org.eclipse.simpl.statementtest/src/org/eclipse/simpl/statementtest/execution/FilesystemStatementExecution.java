@@ -2,7 +2,7 @@ package org.eclipse.simpl.statementtest.execution;
 
 import org.eclipse.simpl.communication.client.DatasourceService;
 import org.eclipse.simpl.statementtest.model.StatementTest;
-import org.eclipse.simpl.statementtest.model.results.RDBResult;
+import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 
 /**
  * TODO <b>Purpose:</b><br>
@@ -36,9 +36,9 @@ public class FilesystemStatementExecution extends StatementExecution {
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
-        statementTest.setResult(new RDBResult(result));
+        statementTest.setResult(new RelationalResult(result));
         this.statementTest.log("Retrieved "
-            + ((RDBResult) this.statementTest.getResult()).getRowCount() + " tuple.");
+            + ((RelationalResult) this.statementTest.getResult()).getRowCount() + " tuple.");
       } else {
         this.statementTest.log("Failed to retrieve result.");
 

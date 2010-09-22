@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import org.eclipse.simpl.communication.client.DatasourceService;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.CreateTableResult;
-import org.eclipse.simpl.statementtest.model.results.RDBResult;
+import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 import org.eclipse.simpl.statementtest.utils.StringUtils;
 
 /**
@@ -369,9 +369,9 @@ public class DatabaseStatementExecution extends StatementExecution {
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
-        statementTest.setResult(new RDBResult(result));
+        statementTest.setResult(new RelationalResult(result));
         this.statementTest.log("Retrieved "
-            + ((RDBResult) this.statementTest.getResult()).getRowCount() + " tuple.");
+            + ((RelationalResult) this.statementTest.getResult()).getRowCount() + " tuple.");
       } else {
         this.statementTest.log("Failed to retrieve result.");
 
@@ -420,13 +420,13 @@ public class DatabaseStatementExecution extends StatementExecution {
           .getDataSource(), execStatement);
       
       // set table name (for drop activity)
-      RDBResult result = new RDBResult(resultBefore);
+      RelationalResult result = new RelationalResult(resultBefore);
       result.setTable(tables);
       
       if (resultBefore != null && !resultBefore.isEmpty()) {
-        this.statementTest.setComparativeResult(new RDBResult(resultBefore));
+        this.statementTest.setComparativeResult(new RelationalResult(resultBefore));
         this.statementTest.log("Retrieved "
-            + ((RDBResult) this.statementTest.getComparativeResult()).getRowCount()
+            + ((RelationalResult) this.statementTest.getComparativeResult()).getRowCount()
             + " tuple.");
       } else {
         this.statementTest.log("Failed to retrieve result.");
@@ -480,11 +480,11 @@ public class DatabaseStatementExecution extends StatementExecution {
             .getDataSource(), execStatement);
   
         if (resultAfter != null && !resultAfter.equals("")) {
-          this.statementTest.setResult(new RDBResult(resultAfter));
+          this.statementTest.setResult(new RelationalResult(resultAfter));
           statementTest.log("Retrieved "
-              + ((RDBResult) this.statementTest.getResult()).getRowCount() + " tuple.");
+              + ((RelationalResult) this.statementTest.getResult()).getRowCount() + " tuple.");
         } else {
-          this.statementTest.setResult(new RDBResult());
+          this.statementTest.setResult(new RelationalResult()); // empty result
           statementTest.log("Failed to retrieve result.");
   
           return;
@@ -496,7 +496,7 @@ public class DatabaseStatementExecution extends StatementExecution {
         return;
       }
     } else {
-      this.statementTest.setResult(new RDBResult());
+      this.statementTest.setResult(new RelationalResult());
     }
   }
 
