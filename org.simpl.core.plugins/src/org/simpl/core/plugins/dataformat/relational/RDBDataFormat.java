@@ -77,16 +77,18 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     try {
       ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 
-      // get primary keys
-      primaryKeys = dbMetaData.getPrimaryKeys(resultSetMetaData.getCatalogName(1),
-          resultSetMetaData.getSchemaName(1), resultSetMetaData.getTableName(1));
+      // get primary keys (the catalog attribute is set null because it doesn't reflect
+      // the DB2 catalog, and no primary keys are retrieved in that case)
+      primaryKeys = dbMetaData.getPrimaryKeys(null, resultSetMetaData.getSchemaName(1)
+          .trim(), resultSetMetaData.getTableName(1));
 
       while (primaryKeys.next()) {
         primaryKeyList.add(primaryKeys.getString("COLUMN_NAME"));
       }
 
       // add table meta data
-      rdbTableMetaDataObject.setString("schema", resultSetMetaData.getSchemaName(1));
+      rdbTableMetaDataObject.setString("schema", resultSetMetaData.getSchemaName(1)
+          .trim());
       rdbTableMetaDataObject.setString("name", resultSetMetaData.getTableName(1));
       rdbTableMetaDataObject.setString("catalog", resultSetMetaData.getCatalogName(1));
 
@@ -254,12 +256,14 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
    * @param tableMetaData
    * @return
    */
-  private String getPrimaryKeyValue(String primaryKey, List<DataObject> columns, DataObject tableMetaData) {
+  private String getPrimaryKeyValue(String primaryKey, List<DataObject> columns,
+      DataObject tableMetaData) {
     String primaryKeyValue = "";
     String quote = "";
-    
+
     for (DataObject column : columns) {
-      if (this.getColumnType(column.getString("name"), tableMetaData).startsWith("VARCHAR")) {
+      if (this.getColumnType(column.getString("name"), tableMetaData).startsWith(
+          "VARCHAR")) {
         quote = "'";
       } else {
         quote = "";
@@ -281,7 +285,8 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
    * @param tableMetaData
    * @return
    */
-  private String createInsertColumnValues(List<DataObject> columns, DataObject tableMetaData) {
+  private String createInsertColumnValues(List<DataObject> columns,
+      DataObject tableMetaData) {
     String insertColumns = "(";
     String quote = "";
 
@@ -298,7 +303,8 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     insertColumns += " VALUES (";
 
     for (int i = 0; i < columns.size(); i++) {
-      if (this.getColumnType(columns.get(i).getString("name"), tableMetaData).startsWith("VARCHAR")) {
+      if (this.getColumnType(columns.get(i).getString("name"), tableMetaData).startsWith(
+          "VARCHAR")) {
         quote = "'";
       } else {
         quote = "";

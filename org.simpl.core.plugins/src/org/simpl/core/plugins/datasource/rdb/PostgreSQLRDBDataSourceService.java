@@ -21,7 +21,7 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Implements all methods of the {@link IDatasourceService} interface for
- * supporting the MySQL relational database.<br>
+ * supporting the PostgreSQL relational database.<br>
  * <b>Description:</b>dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
  * //localhost:3306/simplDB.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
@@ -33,18 +33,18 @@ import commonj.sdo.DataObject;
  *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class MySQLRDBDataSourceService extends
+public class PostgreSQLRDBDataSourceService extends
     DataSourceServicePlugin<List<String>, RDBResult> {
-  static Logger logger = Logger.getLogger(MySQLRDBDataSourceService.class);
+  static Logger logger = Logger.getLogger(PostgreSQLRDBDataSourceService.class);
 
   /**
    * Initialize the plug-in.
    */
-  public MySQLRDBDataSourceService() {
+  public PostgreSQLRDBDataSourceService() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
-    this.addSubtype("MySQL");
-    this.addLanguage("MySQL", "SQL");
+    this.addSubtype("PostgreSQL");
+    this.addLanguage("PostgreSQL", "SQL/XML");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -53,8 +53,8 @@ public class MySQLRDBDataSourceService extends
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("boolean executeStatement("
+    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+      PostgreSQLRDBDataSourceService.logger.debug("boolean executeStatement("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
@@ -69,9 +69,9 @@ public class MySQLRDBDataSourceService extends
       conn.commit();
       success = true;
     } catch (Throwable e) {
-      MySQLRDBDataSourceService.logger.error("exception executing the statement: "
+      PostgreSQLRDBDataSourceService.logger.error("exception executing the statement: "
           + statement, e);
-      MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -81,7 +81,7 @@ public class MySQLRDBDataSourceService extends
       }
     }
 
-    MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" send to "
+    PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" send to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
 
@@ -91,8 +91,8 @@ public class MySQLRDBDataSourceService extends
   @Override
   public RDBResult retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("DataObject retrieveData("
+    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+      PostgreSQLRDBDataSourceService.logger.debug("DataObject retrieveData("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
@@ -125,8 +125,8 @@ public class MySQLRDBDataSourceService extends
       }
     }
 
-    MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" executed on "
-        + dataSource.getAddress() + ".");
+    PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement
+        + "\" executed on " + dataSource.getAddress() + ".");
 
     return rdbResult;
   }
@@ -140,8 +140,8 @@ public class MySQLRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("boolean writeBack("
+    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+      PostgreSQLRDBDataSourceService.logger.debug("boolean writeBack("
           + dataSource.getAddress() + ", DataObject) executed.");
     }
 
@@ -152,7 +152,7 @@ public class MySQLRDBDataSourceService extends
         if (statement.startsWith("UPDATE")) {
           connStatement.executeUpdate(statement);
 
-          MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+          PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
               + "executed on " + dataSource.getAddress()
               + (success ? " was successful" : " failed"));
         }
@@ -166,7 +166,7 @@ public class MySQLRDBDataSourceService extends
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         connection.rollback();
@@ -196,8 +196,8 @@ public class MySQLRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("boolean writeData("
+    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+      PostgreSQLRDBDataSourceService.logger.debug("boolean writeData("
           + dataSource.getAddress() + ", DataObject) executed.");
     }
 
@@ -215,7 +215,7 @@ public class MySQLRDBDataSourceService extends
 
             connStatement.executeUpdate(statement);
 
-            MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+            PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
                 + "executed on " + dataSource.getAddress()
                 + (success ? " was successful" : " failed"));
           }
@@ -229,7 +229,7 @@ public class MySQLRDBDataSourceService extends
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-        MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+        PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
         try {
           connection.rollback();
@@ -250,8 +250,8 @@ public class MySQLRDBDataSourceService extends
       throws ConnectionException {
     boolean success = false;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("DataObject depositData("
+    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+      PostgreSQLRDBDataSourceService.logger.debug("DataObject depositData("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
@@ -262,7 +262,7 @@ public class MySQLRDBDataSourceService extends
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" ");
+    createTableStatement.append(" AS ");
     createTableStatement.append(statement);
 
     Connection conn = openConnection(dataSource.getAddress(), dataSource
@@ -280,9 +280,9 @@ public class MySQLRDBDataSourceService extends
 
       success = true;
     } catch (Throwable e) {
-      MySQLRDBDataSourceService.logger.error("exception executing the statement: "
+      PostgreSQLRDBDataSourceService.logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
-      MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -292,7 +292,7 @@ public class MySQLRDBDataSourceService extends
       }
     }
 
-    MySQLRDBDataSourceService.logger.info("Statement \""
+    PostgreSQLRDBDataSourceService.logger.info("Statement \""
         + createTableStatement.toString() + "\" " + "executed on "
         + dataSource.getAddress());
 
@@ -357,8 +357,8 @@ public class MySQLRDBDataSourceService extends
       throws ConnectionException {
     boolean createdTarget = false;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("createTarget '" + target + "' on '"
+    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+      PostgreSQLRDBDataSourceService.logger.debug("createTarget '" + target + "' on '"
           + dataSource.getAddress() + "'.");
     }
 
@@ -445,6 +445,12 @@ public class MySQLRDBDataSourceService extends
       if (columnTypeObject.getString("columnName").equals(column)) {
         columnType = columnTypeObject.getString(0);
 
+        // remove length from certain column types because it is not supported by
+        // postgreSQL
+        if (columnType.toLowerCase().contains("int")) {
+          columnType = columnType.replaceAll("\\([0-9]*\\)", "");
+        }
+
         break;
       }
     }
@@ -463,17 +469,17 @@ public class MySQLRDBDataSourceService extends
    */
   private Connection openConnection(String dsAddress, String user, String password)
       throws ConnectionException {
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("Connection openConnection(" + dsAddress
-          + ") executed.");
+    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+      PostgreSQLRDBDataSourceService.logger.debug("Connection openConnection("
+          + dsAddress + ") executed.");
     }
 
     Connection connect = null;
 
     try {
-      Class.forName("com.mysql.jdbc.Driver");
+      Class.forName("org.postgresql.Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:mysql://");
+      uri.append("jdbc:postgresql://");
       uri.append(dsAddress);
 
       try {
@@ -481,16 +487,17 @@ public class MySQLRDBDataSourceService extends
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
-        MySQLRDBDataSourceService.logger.fatal(
+        PostgreSQLRDBDataSourceService.logger.fatal(
             "exception during establishing connection to: " + uri.toString(), e);
       }
 
-      MySQLRDBDataSourceService.logger.info("Connection opened on " + dsAddress + ".");
+      PostgreSQLRDBDataSourceService.logger.info("Connection opened on " + dsAddress
+          + ".");
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
-      MySQLRDBDataSourceService.logger.fatal("exception during loading the JDBC driver",
-          e);
+      PostgreSQLRDBDataSourceService.logger.fatal(
+          "exception during loading the JDBC driver", e);
     }
 
     return connect;
@@ -508,15 +515,15 @@ public class MySQLRDBDataSourceService extends
     try {
       (connection).close();
       success = true;
-      if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-        MySQLRDBDataSourceService.logger
+      if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+        PostgreSQLRDBDataSourceService.logger
             .debug("boolean closeConnection() executed successfully.");
       }
-      MySQLRDBDataSourceService.logger.info("Connection closed.");
+      PostgreSQLRDBDataSourceService.logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-        MySQLRDBDataSourceService.logger.error(
+      if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
+        PostgreSQLRDBDataSourceService.logger.error(
             "boolean closeConnection() executed with failures.", e);
       }
     }

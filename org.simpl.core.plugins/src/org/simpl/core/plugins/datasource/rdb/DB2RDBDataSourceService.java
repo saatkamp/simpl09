@@ -206,7 +206,7 @@ public class DB2RDBDataSourceService extends
 
         for (String statement : statements) {
           if (statement.startsWith("INSERT")) {
-            // replace dataObject's implizit schema.table name with target
+            // replace dataObject's including schema.table name with target name
             if (target != null) {
               statement = statement.replaceAll("INSERT INTO .*?\\(", "INSERT INTO "
                   + target + " (");
@@ -388,44 +388,97 @@ public class DB2RDBDataSourceService extends
 
     if (!createdTarget) {
       List<DataObject> tables = dataObject.getList("table");
+      DataObject tableMetaData = tables.get(0).getDataObject("rdbTableMetaData");
       List<DataObject> rows = tables.get(0).getList("row");
-      List<DataObject> columns = rows.get(0).getList("column");;
-      List<String> primaryKeys = new ArrayList<String>();
+      List<DataObject> columns = rows.get(0).getList("column");
+      List<String> primaryKeys = this.getPrimaryKeys(tableMetaData);
       String createTargetStatement = null;
 
       // build create statement
       createTargetStatement = "CREATE TABLE " + target + " (";
 
       // create table with columns
-      for (DataObject column : columns) {
-        createTargetStatement += column.getString("name") + " "
-            + column.getString("type");
+      for (int i = 0; i < columns.size(); i++) {
+        createTargetStatement += columns.get(i).getString("name") + " "
+            + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
 
-        if (column.getBoolean("pk")) {
-          primaryKeys.add(column.getString("name"));
+        if (primaryKeys.contains(columns.get(i).getString("name"))) {
           createTargetStatement += " NOT NULL ";
         }
 
-        createTargetStatement += ",";
-      }
-
-      // add primary keys
-      createTargetStatement += " PRIMARY KEY (";
-
-      for (int j = 0; j < primaryKeys.size(); j++) {
-        createTargetStatement += primaryKeys.get(j);
-
-        if (j < primaryKeys.size() - 1) {
+        if (i != columns.size() - 1) {
           createTargetStatement += ",";
         }
       }
 
-      createTargetStatement += "))";
+      // add primary keys
+      if (!primaryKeys.isEmpty()) {
+        createTargetStatement += ", PRIMARY KEY (";
 
+        for (int j = 0; j < primaryKeys.size(); j++) {
+          createTargetStatement += primaryKeys.get(j);
+
+          if (j < primaryKeys.size() - 1) {
+            createTargetStatement += ",";
+          }
+        }
+
+        createTargetStatement += ")";
+      }
+
+      createTargetStatement += ")";
       createdTarget = this.executeStatement(dataSource, createTargetStatement);
     }
 
     return createdTarget;
+  }
+
+  /**
+   * Returns the primary key columns from the table meta data.
+   * 
+   * @param tableMetaData
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  private List<String> getPrimaryKeys(DataObject tableMetaData) {
+    List<String> primaryKeys = new ArrayList<String>();
+    List<DataObject> columnTypes = tableMetaData.getList("columnType");
+
+    for (DataObject columnType : columnTypes) {
+      if (columnType.getBoolean("isPrimaryKey")) {
+        primaryKeys.add(columnType.getString("columnName"));
+      }
+    }
+
+    return primaryKeys;
+  }
+
+  /**
+   * Returns the column type of a column from the table meta data.
+   * 
+   * @param column
+   * @param tableMetaData
+   */
+  @SuppressWarnings("unchecked")
+  private String getColumnType(String column, DataObject tableMetaData) {
+    String columnType = "";
+    List<DataObject> columnTypes = tableMetaData.getList("columnType");
+
+    for (DataObject columnTypeObject : columnTypes) {
+      if (columnTypeObject.getString("columnName").equals(column)) {
+        columnType = columnTypeObject.getString(0);
+
+        // remove length from certain column types because it is not supported by
+        // db2
+        if (columnType.toLowerCase().contains("integer")) {
+          columnType = columnType.replaceAll("\\([0-9]*\\)", "");
+        }
+        
+        break;
+      }
+    }
+
+    return columnType;
   }
 
   /**
