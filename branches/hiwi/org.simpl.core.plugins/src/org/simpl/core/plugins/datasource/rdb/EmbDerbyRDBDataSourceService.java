@@ -382,9 +382,10 @@ public class EmbDerbyRDBDataSourceService extends
 
     if (!createdTarget) {
       List<DataObject> tables = dataObject.getList("table");
+      DataObject tableMetaData = tables.get(0).getDataObject("rdbTableMetaData");
       List<DataObject> rows = tables.get(0).getList("row");
-      List<DataObject> columns = rows.get(0).getList("column");;
-      List<String> primaryKeys = new ArrayList<String>();
+      List<DataObject> columns = rows.get(0).getList("column");
+      List<String> primaryKeys = this.getPrimaryKeys(tableMetaData);
       String createTargetStatement = null;
 
       // build create statement
@@ -393,30 +394,71 @@ public class EmbDerbyRDBDataSourceService extends
       // create table with columns
       for (DataObject column : columns) {
         createTargetStatement += column.getString("name") + " "
-            + column.getString("type") + ",";
-
-        if (column.getBoolean("pk")) {
-          primaryKeys.add(column.getString("name"));
-        }
+            + this.getColumnType(column.getString("name"), tableMetaData) + ",";
       }
 
       // add primary keys
-      createTargetStatement += " PRIMARY KEY (";
+      if (!primaryKeys.isEmpty()) {
+        createTargetStatement += " PRIMARY KEY (";
 
-      for (int j = 0; j < primaryKeys.size(); j++) {
-        createTargetStatement += primaryKeys.get(j);
+        for (int j = 0; j < primaryKeys.size(); j++) {
+          createTargetStatement += primaryKeys.get(j);
 
-        if (j < primaryKeys.size() - 1) {
-          createTargetStatement += ",";
+          if (j < primaryKeys.size() - 1) {
+            createTargetStatement += ",";
+          }
         }
+
+        createTargetStatement += ")";
       }
 
-      createTargetStatement += "))";
-
+      createTargetStatement += ")";
       createdTarget = this.executeStatement(dataSource, createTargetStatement);
     }
 
     return createdTarget;
+  }
+
+  /**
+   * Returns the primary key columns from the table meta data.
+   * 
+   * @param tableMetaData
+   * @return
+   */
+  @SuppressWarnings("unchecked")
+  private List<String> getPrimaryKeys(DataObject tableMetaData) {
+    List<String> primaryKeys = new ArrayList<String>();
+    List<DataObject> columnTypes = tableMetaData.getList("columnType");
+
+    for (DataObject columnType : columnTypes) {
+      if (columnType.getBoolean("isPrimaryKey")) {
+        primaryKeys.add(columnType.getString("columnName"));
+      }
+    }
+
+    return primaryKeys;
+  }
+
+  /**
+   * Returns the column type of a column from the table meta data.
+   * 
+   * @param column
+   * @param tableMetaData
+   */
+  @SuppressWarnings("unchecked")
+  private String getColumnType(String column, DataObject tableMetaData) {
+    String columnType = "";
+    List<DataObject> columnTypes = tableMetaData.getList("columnType");
+
+    for (DataObject columnTypeObject : columnTypes) {
+      if (columnTypeObject.getString("columnName").equals(column)) {
+        columnType = columnTypeObject.getString(0);
+
+        break;
+      }
+    }
+
+    return columnType;
   }
 
   /**
