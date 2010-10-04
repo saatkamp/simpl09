@@ -239,7 +239,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     List<DataObject> columnTypes = tableMetaData.getList("columnType");
 
     for (DataObject columnTypeObject : columnTypes) {
-      if (columnTypeObject.getString("columnName").equals("column")) {
+      if (columnTypeObject.getString("columnName").equals(column)) {
         columnType = columnTypeObject.getString(0);
         break;
       }
