@@ -383,14 +383,18 @@ public class MySQLRDBDataSourceService extends
       createTargetStatement = "CREATE TABLE " + target + " (";
 
       // create table with columns
-      for (DataObject column : columns) {
-        createTargetStatement += column.getString("name") + " "
-            + this.getColumnType(column.getString("name"), tableMetaData) + ",";
+      for (int i = 0; i < columns.size(); i++) {
+        if (i > 0) {
+          createTargetStatement += ",";
+        }
+        
+        createTargetStatement += columns.get(i).getString("name") + " "
+            + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
       }
 
       // add primary keys
       if (!primaryKeys.isEmpty()) {
-        createTargetStatement += " PRIMARY KEY (";
+        createTargetStatement += ", PRIMARY KEY (";
 
         for (int j = 0; j < primaryKeys.size(); j++) {
           createTargetStatement += primaryKeys.get(j);

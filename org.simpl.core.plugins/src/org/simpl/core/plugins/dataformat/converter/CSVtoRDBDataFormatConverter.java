@@ -55,29 +55,28 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
           + this.getToDataFormat().getType());
     }
 
-    // use csv SDO and add rdb table meta data
+    // use csv SDO and replace csv table meta data with rdb table meta data
     DataObject rdbSDO = csvSDO;
     rdbSDO.setString("dataFormatType", "RDB");
 
     DataObject csvTableMetaDataObject = null;
     DataObject rdbTableMetaDataObject = null;
     DataObject rdbTableMetaDataColumnTypeObject = null;
-    DataObject rdbTableObject = null;
     List<DataObject> rdbTables = rdbSDO.getList("table");
     List<DataObject> rdbRows = null;
     List<DataObject> rdbColumns = null;
+    DataObject rdbColumn = null;
 
-    // add rdb table meta data
-    for (int i = 0; i < rdbTables.size(); i++) {
-      csvTableMetaDataObject = rdbTables.get(i).getDataObject("csvTableMetaData");
-      rdbTableObject = rdbTables.get(i);
-      rdbRows = rdbTables.get(i).getList("row");
+    for (DataObject rdbTable : rdbTables) {
+      rdbRows = rdbTable.getList("row");
       rdbColumns = rdbRows.get(0).getList("column");
 
       // remove csv table meta data
+      csvTableMetaDataObject = rdbTable.getDataObject("csvTableMetaData");
       csvTableMetaDataObject.detach();
 
-      rdbTableMetaDataObject = rdbTableObject.createDataObject("rdbTableMetaData");
+      // add rdb table meta data
+      rdbTableMetaDataObject = rdbTable.createDataObject("rdbTableMetaData");
       rdbTableMetaDataObject.setString("name", csvTableMetaDataObject.getString(
           "filename").toUpperCase().replace(".", "_"));
       rdbTableMetaDataObject.setString("schema", "");
@@ -91,8 +90,22 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
         rdbTableMetaDataColumnTypeObject.set(0, this.getColumnType(rdbColumns.get(k)
             .getString(0), dataSourceService));
       }
-    }
 
+      // create default primary key
+      rdbTableMetaDataColumnTypeObject = rdbTableMetaDataObject
+          .createDataObject("columnType");
+      rdbTableMetaDataColumnTypeObject.setString("columnName", "PK_ID");
+      rdbTableMetaDataColumnTypeObject.setBoolean("isPrimaryKey", true);
+      rdbTableMetaDataColumnTypeObject.set(0, this
+          .getColumnType("123", dataSourceService));
+
+      // add primary key column to rows
+      for (int k = 0; k < rdbRows.size(); k++) {
+        rdbColumn = rdbRows.get(k).createDataObject("column");
+        rdbColumn.set("name", "PK_ID");
+        rdbColumn.set(0, String.valueOf(k));
+      }
+    }
     // if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
     // ByteArrayOutputStream baos = new ByteArrayOutputStream();
     //

@@ -399,15 +399,15 @@ public class DB2RDBDataSourceService extends
 
       // create table with columns
       for (int i = 0; i < columns.size(); i++) {
+        if (i > 0) {
+          createTargetStatement += ",";
+        }
+        
         createTargetStatement += columns.get(i).getString("name") + " "
             + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
 
         if (primaryKeys.contains(columns.get(i).getString("name"))) {
           createTargetStatement += " NOT NULL ";
-        }
-
-        if (i != columns.size() - 1) {
-          createTargetStatement += ",";
         }
       }
 
