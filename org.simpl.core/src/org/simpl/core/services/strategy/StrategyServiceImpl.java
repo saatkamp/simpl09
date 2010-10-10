@@ -40,6 +40,7 @@ public class StrategyServiceImpl implements StrategyService {
     }
 
     DataSource resultDataSource = null;
+// TODO Auf Resource Framework umstellen    
 //    boolean hasDsPolicy = dataSource.getLateBinding().getPolicy() != null;
 //
 //    if (logger.isDebugEnabled()) {
