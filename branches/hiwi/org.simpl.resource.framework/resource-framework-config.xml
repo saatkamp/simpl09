@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceFramework>
+  <!--SIMPL Core data source (web) service location-->
+  <DataSourceService>
+    <address>http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl</address>
+  </DataSourceService>
+
+  <!--SIMPL data source to store the resource framework data-->
+  <DataSource>
+    <name>Local PostgreSQL 8.4</name>
+    <address>localhost:5432/postgres</address>
+    <type>Database</type>
+    <subType>PostgreSQL</subType>
+    <dataFormat>RDB</dataFormat>
+    
+    <Authentication>
+      <user>postgres</user>
+      <password>postgres</password>
+    </Authentication>
+  </DataSource>
+</ResourceFramework>
