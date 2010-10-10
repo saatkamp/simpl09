@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema targetNamespace="http://org.simpl.core/SIMPLCoreConfig" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/SIMPLCoreConfig">
+	<xsd:element name="SIMPLCoreConfig" type="tSIMPLCoreConfig"></xsd:element>
+
+	<xsd:complexType name="tSIMPLCoreConfig">
+		<xsd:sequence>
+		  <xsd:element name="DataSourceServicePlugin"
+		    type="tDataSourceServicePlugin" maxOccurs="unbounded"
+		    minOccurs="0">
+		  </xsd:element>
+		  <xsd:element name="DataFormatPlugin" type="tDataFormatPlugin"
+		    maxOccurs="unbounded" minOccurs="0">
+		  </xsd:element>
+		  <xsd:element name="DataFormatConverterPlugin"
+		    type="tDataFormatConverterPlugin" maxOccurs="unbounded"
+		    minOccurs="0">
+		  </xsd:element>
+		  <xsd:element name="DataFormat" type="tDataFormat"
+		    maxOccurs="unbounded" minOccurs="0">
+		  </xsd:element>
+
+		  <xsd:element name="DataFormatConverter"
+		    type="tDataFormatConverter" maxOccurs="unbounded" minOccurs="0">
+		  </xsd:element>
+
+
+
+		  <xsd:element name="WebServices" type="tWebServices" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="tDataSourceServicePlugin">
+		<xsd:attribute name="id" type="xsd:ID"></xsd:attribute>
+		<xsd:attribute name="className" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="tDataFormatPlugin">
+		<xsd:attribute name="id" type="xsd:ID"></xsd:attribute>
+		<xsd:attribute name="className" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="tDataFormatConverterPlugin">
+		<xsd:attribute name="id" type="xsd:ID"></xsd:attribute>
+		<xsd:attribute name="className" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="tDataFormat">
+		<xsd:sequence>
+			<xsd:element name="DataSourceService" type="xsd:IDREF"
+				maxOccurs="unbounded" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+
+		<xsd:attribute name="ref" type="xsd:IDREF"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="tDataFormatConverter">
+		<xsd:sequence>
+			<xsd:element name="DataSourceService" type="xsd:IDREF"
+				maxOccurs="unbounded" minOccurs="0">
+			</xsd:element>
+
+		</xsd:sequence>
+		<xsd:attribute name="ref" type="xsd:IDREF"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:attribute name="NewAttribute" type="xsd:IDREF"></xsd:attribute>
+
+
+
+
+	<xsd:complexType name="tWebServices">
+	  <xsd:sequence>
+	    <xsd:element name="DatasourceService" type="xsd:string"></xsd:element>
+	    <xsd:element name="AdministrationService" type="xsd:string"></xsd:element>
+	  </xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
