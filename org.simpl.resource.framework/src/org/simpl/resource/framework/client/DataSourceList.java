@@ -3,10 +3,13 @@ package org.simpl.resource.framework.client;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+
+import org.simpl.core.webservices.client.DataSource;
 
 
 /**
@@ -29,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataSourceList", propOrder = {
+@XmlType(name = "dataSourceList", namespace = "http://framework.resource.simpl.org/", propOrder = {
     "dataSources"
 })
 public class DataSourceList {

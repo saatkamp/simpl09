@@ -6,6 +6,10 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.DataSource;
+import org.simpl.core.webservices.client.LateBinding;
+
 
 /**
  * This object contains factory methods for each 
@@ -34,30 +38,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
      * Create an instance of {@link LateBinding }
      * 
      */
@@ -71,6 +51,30 @@ public class ObjectFactory {
      */
     public DataSourceList createDataSourceList() {
         return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
     }
 
     /**
