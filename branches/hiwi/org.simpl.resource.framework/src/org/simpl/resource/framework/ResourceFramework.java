@@ -9,17 +9,16 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
-import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import org.simpl.resource.framework.simpl.core.client.Authentication;
-import org.simpl.resource.framework.simpl.core.client.DataSource;
-import org.simpl.resource.framework.simpl.core.client.DataSourceList;
-import org.simpl.resource.framework.simpl.core.client.DatasourceService;
-import org.simpl.resource.framework.simpl.core.client.DatasourceService_Service;
+import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.DataSource;
+import org.simpl.core.webservices.client.DatasourceService;
+import org.simpl.core.webservices.client.DatasourceService_Service;
+import org.simpl.resource.framework.client.DataSourceList;
 import org.xml.sax.InputSource;
 
 /**
@@ -32,13 +31,12 @@ import org.xml.sax.InputSource;
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de>
  */
-@WebService(name = "ResourceFramework", targetNamespace = "")
-@XmlSeeAlso( { DataSourceList.class })
+@WebService(name = "ResourceFramework")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ResourceFramework {
   DatasourceService dataSourceService = new DatasourceService_Service()
       .getDatasourceServicePort();
-  DataSource rfDataSource = Config.getInstance().getDataSource();
+  DataSource rfDataSource = ResourceFrameworkConfig.getInstance().getDataSource();
 
   /**
    * Returns all data sources.
@@ -58,7 +56,7 @@ public class ResourceFramework {
 
     DataSourceList dataSourceList = new DataSourceList();
     dataSourceList.getDataSources().addAll(dataSources);
-
+    
     return dataSourceList;
   }
 
@@ -137,9 +135,10 @@ public class ResourceFramework {
     // build select statement
     statement = "SELECT * FROM data_sources WHERE ";
     statement += "name LIKE '" + name + "'";
-    
+
     // retrieve data sources
-    result = dataSourceService.retrieveData(rfDataSource, statement);System.out.println(result);
+    result = dataSourceService.retrieveData(rfDataSource, statement);
+    System.out.println(result);
     dataSources = this.getDataSourcesFromResult(result);
 
     DataSourceList dataSourceList = new DataSourceList();

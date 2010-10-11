@@ -9,52 +9,53 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import org.simpl.resource.framework.simpl.core.client.Authentication;
-import org.simpl.resource.framework.simpl.core.client.DataSource;
+import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.DataSource;
 
-public class Config {
+public class ResourceFrameworkConfig {
   /**
    * config file.
    */
-  private static final String CONFIG_FILE_NAME = "resource-framework-config.xml";
+  private static final String CONFIG_FILE_NAME = "simpl-resource-framework-config.xml";
 
   /**
    * Config file location from Apache ODE \webapps.
    */
   private static final String CONFIG_FILE_LOCATION_1 = System.getProperty("user.dir")
-      + "\\webapps\\ode\\WEB-INF\\conf\\" + Config.CONFIG_FILE_NAME;
+      + "\\webapps\\ode\\WEB-INF\\conf\\" + ResourceFrameworkConfig.CONFIG_FILE_NAME;
 
   /**
    * Config file location from Apache ODE \bin.
    */
   private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\ode\\WEB-INF\\conf\\" + Config.CONFIG_FILE_NAME;
+      + "\\..\\webapps\\ode\\WEB-INF\\conf\\" + ResourceFrameworkConfig.CONFIG_FILE_NAME;
 
   /**
    * Config singleton instance.
    */
-  private static final Config instance = new Config();
+  private static final ResourceFrameworkConfig instance = new ResourceFrameworkConfig();
   
+  Element webServiceElement = null;
   Element dataSourceServiceElement = null;
   Element dataSourceElement = null;
 
   /**
    * Reads the config file into variables.
    */
-  private Config() {
+  private ResourceFrameworkConfig() {
     InputStream in = null;
     Document configDoc = null;
     Element root = null;
     SAXBuilder saxBuilder = new SAXBuilder();
 
     try {
-      in = new FileInputStream(Config.CONFIG_FILE_LOCATION_1);
+      in = new FileInputStream(ResourceFrameworkConfig.CONFIG_FILE_LOCATION_1);
     } catch (FileNotFoundException e) {
       try {
-        in = new FileInputStream(Config.CONFIG_FILE_LOCATION_2);
+        in = new FileInputStream(ResourceFrameworkConfig.CONFIG_FILE_LOCATION_2);
       } catch (FileNotFoundException e1) {
         try {
-          in = new FileInputStream(Config.CONFIG_FILE_NAME);
+          in = new FileInputStream(ResourceFrameworkConfig.CONFIG_FILE_NAME);
         } catch (FileNotFoundException e2) {
           // TODO Auto-generated catch block
           e2.printStackTrace();
@@ -69,6 +70,7 @@ public class Config {
       root = configDoc.getRootElement();
 
       // read elements
+      webServiceElement = root.getChild("WebService");
       dataSourceServiceElement = root.getChild("DataSourceService");
       dataSourceElement = root.getChild("DataSource");
     } catch (JDOMException e) {
@@ -80,12 +82,12 @@ public class Config {
     }
   }
 
-  public static Config getInstance() {
-    return Config.instance;
+  public static ResourceFrameworkConfig getInstance() {
+    return ResourceFrameworkConfig.instance;
   }
 
-  public String getDataSourceServiceAddress() {
-    return dataSourceServiceElement.getChildText("address");
+  public String getWebServiceAddress() {
+    return webServiceElement.getChildText("address");
   }
 
   public DataSource getDataSource() {

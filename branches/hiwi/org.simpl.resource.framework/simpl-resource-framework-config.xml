@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ResourceFramework>
-  <!--SIMPL Core data source (web) service location-->
-  <DataSourceService>
-    <address>http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl</address>
-  </DataSourceService>
+  <!--SIMPL Resource Framework web service location for client-->
+  <WebService>
+    <address>http://localhost:8080/ode/processes/ResourceFrameworkService.ResourceFrameworkPort?wsdl</address>
+  </WebService>
 
   <!--SIMPL data source to store the resource framework data-->
   <DataSource>
