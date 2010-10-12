@@ -161,7 +161,7 @@ public class BPELDMUIPlugIn extends AbstractUIPlugin {
 			status = new Status(severity, PLUGIN_ID, 0,
 					m == null ? "<no message>" : m, e); //$NON-NLS-1$
 		}
-		System.out.println(e.getClass().getName() + ": " + status);
+		//System.out.println(e.getClass().getName() + ": " + status);
 		INSTANCE.getLog().log(status);
 	}
 
