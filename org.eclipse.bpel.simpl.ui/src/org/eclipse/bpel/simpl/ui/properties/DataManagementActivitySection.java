@@ -297,12 +297,12 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 
 		if (activity.getDsType() != null) {
 			if (activity.getDsType().equals("Filesystem")) {
-				System.out.print("\r Filesystem");
+				//System.out.print("\r Filesystem");
 
 				createFileSystemWidgets();
 
 			} else if (activity.getDsType().equals("Database")) {
-				System.out.print("\r Database");
+				//System.out.print("\r Database");
 
 				createDBWidgets();
 			}

@@ -108,9 +108,9 @@ public class MetaDataXMLParser {
 								for (int j = 0; j < columsNodesList.getLength(); j++) {
 									// get the child element
 									if (columsNodesList.item(j).getNodeName() == "column") {
-										System.out.print(columsNodesList
-												.item(j).getNodeName()
-												+ "\r");
+//										System.out.print(columsNodesList
+//												.item(j).getNodeName()
+//												+ "\r");
 										columXMLElement = (Element) columsNodesList
 												.item(j);
 										listOfColumnsNames.add(columXMLElement

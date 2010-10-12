@@ -67,10 +67,10 @@ public class StatementEditor {
 			if (compositeClass != null) {
 				compositeClass.setStatement(parentClass.getStatement());
 				compositeClass.setDataSource(parentClass.getDataSource());
-				System.out.println("DMProperty-Statement: "
-						+ parentClass.getStatement());
-				System.out.println("DMCompos-Statement: "
-						+ compositeClass.getStatement());
+//				System.out.println("DMProperty-Statement: "
+//						+ parentClass.getStatement());
+//				System.out.println("DMCompos-Statement: "
+//						+ compositeClass.getStatement());
 				compositeClass.createComposite(composite);
 			}
 		}
