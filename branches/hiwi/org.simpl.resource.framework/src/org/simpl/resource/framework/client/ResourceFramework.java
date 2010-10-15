@@ -74,12 +74,12 @@ public interface ResourceFramework {
      * 
      * @param name
      * @return
-     *     returns org.simpl.resource.framework.client.DataSourceList
+     *     returns org.simpl.resource.framework.client.DataSource
      * @throws Exception_Exception
      */
     @WebMethod(action = "getDataSourcesByName")
     @WebResult(partName = "return")
-    public DataSourceList getDataSourcesByName(
+    public DataSource getDataSourceByName(
         @WebParam(name = "name", partName = "name")
         String name)
         throws Exception_Exception

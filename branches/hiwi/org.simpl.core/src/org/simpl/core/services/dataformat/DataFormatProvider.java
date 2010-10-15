@@ -61,7 +61,7 @@ public class DataFormatProvider {
    * @param dataSourceService
    * @return
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   public static List<String> getSupportedDataFormatTypes(
       DataSourceService dataSourceService) {
     List<String> dataFormats = new ArrayList<String>();
@@ -94,7 +94,7 @@ public class DataFormatProvider {
    * Loads instances of the data format plugins and retrieves information about their
    * supported type.
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   private static void loadPlugins() {
     List<String> plugins = SIMPLCoreConfig.getInstance().getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();

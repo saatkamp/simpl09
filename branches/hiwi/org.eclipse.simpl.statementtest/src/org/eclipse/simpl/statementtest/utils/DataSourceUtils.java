@@ -53,7 +53,7 @@ public class DataSourceUtils {
 
   private static final String DD_PREFIX = "dd";
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   private static DataSource findDeploymentDescriptorDatasourceByName(String processName,
       String dsName) {
     DataSource datasource = null;
@@ -128,7 +128,7 @@ public class DataSourceUtils {
     return datasource;
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   private static List<String> getDeploymentDescriptorDatasourceNames(String processName) {
     List<String> datasources = new ArrayList<String>();
 

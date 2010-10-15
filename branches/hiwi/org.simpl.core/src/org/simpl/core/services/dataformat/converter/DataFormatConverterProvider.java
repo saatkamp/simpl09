@@ -65,7 +65,7 @@ public class DataFormatConverterProvider {
    * @param dataSourceService
    * @return
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   public static List<String> getSupportedConvertDataFormatTypes(
       DataSourceService dataSourceService, String dataFormatType) {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
@@ -86,8 +86,8 @@ public class DataFormatConverterProvider {
           if (dataFormatConverter.getFromDataFormat().getType().equals(dataFormatType)) {
             supportedConvertDataFormats.add(dataFormatConverter.getToDataFormat()
                 .getType());
-          } else if (dataFormatConverter.getToDataFormat().getType().equals(
-              dataFormatType)) {
+          } else if (dataFormatConverter.getToDataFormat().getType()
+              .equals(dataFormatType)) {
             supportedConvertDataFormats.add(dataFormatConverter.getFromDataFormat()
                 .getType());
           }
@@ -126,8 +126,8 @@ public class DataFormatConverterProvider {
         toDataFormat = dataFormatConverterInstance.getToDataFormat().getType();
         fromDataFormat = dataFormatConverterInstance.getFromDataFormat().getType();
 
-        DataFormatConverterProvider.dataFormatConverter.put(Arrays.asList(toDataFormat,
-            fromDataFormat), dataFormatConverterInstance);
+        DataFormatConverterProvider.dataFormatConverter.put(
+            Arrays.asList(toDataFormat, fromDataFormat), dataFormatConverterInstance);
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();

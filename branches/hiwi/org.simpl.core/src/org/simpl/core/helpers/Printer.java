@@ -40,7 +40,7 @@ public class Printer {
     }
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("rawtypes")
   private static void printDataObjectWithIndent(DataObject dataObject, int indent) {
     // For each Property
     List properties = dataObject.getInstanceProperties();

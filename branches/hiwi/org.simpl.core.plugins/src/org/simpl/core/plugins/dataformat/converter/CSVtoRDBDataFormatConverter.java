@@ -46,7 +46,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
    * org.simpl.core.services.dataformat.converter.DataFormatConverter#convertFrom(commonj
    * .sdo.DataObject)
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
   public DataObject convertTo(DataObject csvSDO, DataSourceService dataSourceService) {
     if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
@@ -129,7 +129,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
    * org.simpl.core.services.dataformat.converter.DataFormatConverter#convertTo(commonj
    * .sdo.DataObject)
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
   public DataObject convertFrom(DataObject rdbSDO, DataSourceService dataSourceService) {
     if (CSVtoRDBDataFormatConverter.logger.isDebugEnabled()) {
@@ -184,7 +184,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
    * @param dataSourceService
    * @return
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   private String getColumnType(String type, DataSourceService dataSourceService) {
     String sqlType = "VARCHAR(255)";
 
