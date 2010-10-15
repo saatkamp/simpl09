@@ -136,10 +136,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
       // format data to SDO
       if (data != null) {
-        retrievedData = formatRetrievedData(dataSourceService, data, dataSource
-            .getDataFormat());
+        retrievedData = formatRetrievedData(dataSourceService, data,
+            dataSource.getDataFormat());
       }
-    } catch (Exception e) {e.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
       throw new ConnectionException(e.getCause());
     }
 
@@ -300,7 +301,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @param dataSource
    * @return
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   public InputStream getMetaDataSchemaFile(DataSource dataSource) {
     InputStream inputStream = ((DataSourceServicePlugin) DataSourceServiceProvider
         .getInstance(dataSource.getType(), dataSource.getSubType()))
@@ -315,7 +316,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @param dataSource
    * @return
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   public InputStream getDataFormatSchemaFile(DataSource dataSource) {
     InputStream inputStream = null;
     DataSourceService dataSourceService = null;
@@ -401,7 +402,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @return
    * @throws ConnectionException
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   private Object formatWriteDataAndCreateTarget(DataSourceService dataSourceService,
       DataObject data, DataSource dataSource, String target) throws ConnectionException {
     Object writeData = null;
@@ -465,7 +466,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @param dataSourceFs
    * @return
    */
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "rawtypes" })
   private DataObject formatRetrievedData(DataSourceService dataSourceService,
       Object data, String dataFormatType) {
     DataObject retrieveDataSDO = null;

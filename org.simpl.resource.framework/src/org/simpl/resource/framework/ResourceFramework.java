@@ -56,7 +56,7 @@ public class ResourceFramework {
 
     DataSourceList dataSourceList = new DataSourceList();
     dataSourceList.getDataSources().addAll(dataSources);
-    
+
     return dataSourceList;
   }
 
@@ -126,25 +126,29 @@ public class ResourceFramework {
    * @throws Exception
    */
   @WebMethod(action = "getDataSourcesByName")
-  public DataSourceList getDataSourcesByName(@WebParam(name = "name") String name)
+  public DataSource getDataSourceByName(@WebParam(name = "name") String name)
       throws Exception {
     ArrayList<DataSource> dataSources = null;
     String statement = null;
     String result = null;
+    DataSource resultDataSource = new DataSource();
 
     // build select statement
     statement = "SELECT * FROM data_sources WHERE ";
     statement += "name LIKE '" + name + "'";
 
-    // retrieve data sources
+    // retrieve data source
     result = dataSourceService.retrieveData(rfDataSource, statement);
-    System.out.println(result);
     dataSources = this.getDataSourcesFromResult(result);
 
     DataSourceList dataSourceList = new DataSourceList();
     dataSourceList.getDataSources().addAll(dataSources);
 
-    return dataSourceList;
+    if (dataSources.size() > 0) {
+      resultDataSource = dataSources.get(0);
+    }
+
+    return resultDataSource;
   }
 
   /**

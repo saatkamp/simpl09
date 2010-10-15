@@ -38,14 +38,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
-    }
-
-    /**
      * Create an instance of {@link DataSourceList }
      * 
      */
@@ -75,6 +67,14 @@ public class ObjectFactory {
      */
     public DataSource createDataSource() {
         return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link LateBinding }
+     * 
+     */
+    public LateBinding createLateBinding() {
+        return new LateBinding();
     }
 
     /**
