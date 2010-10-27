@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.simpl.communication.client.Authentication;
-import org.eclipse.simpl.communication.client.DataSource;
-import org.eclipse.simpl.uddi.model.ModelProvider;
+import org.eclipse.simpl.resource.framework.model.ModelProvider;
 import org.eclipse.ui.PlatformUI;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
+import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * <b>Purpose:</b>Util functions for data source retrieval.<br>
@@ -49,7 +49,7 @@ public class DataSourceUtils {
   private final static Namespace DD_NAMESPACE = Namespace
       .getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
 
-  private static final String UDDI_PREFIX = "uddi";
+  private static final String RESOURCE_FRAMEWORK_PREFIX = "rf";
 
   private static final String DD_PREFIX = "dd";
 
@@ -183,13 +183,13 @@ public class DataSourceUtils {
     return datasources;
   }
 
-  private static List<String> getUDDIDatasourceNames() {
+  private static List<String> getRFDatasourceNames() {
     List<String> dataSourceNames = new ArrayList<String>();
 
     List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
 
     for (DataSource dat : dataSources) {
-      dataSourceNames.add(DataSourceUtils.UDDI_PREFIX + ":" + dat.getName());
+      dataSourceNames.add(DataSourceUtils.RESOURCE_FRAMEWORK_PREFIX + ":" + dat.getName());
     }
 
     return dataSourceNames;
@@ -200,7 +200,7 @@ public class DataSourceUtils {
 
     datasources.addAll(DataSourceUtils
         .getDeploymentDescriptorDatasourceNames(processName));
-    datasources.addAll(DataSourceUtils.getUDDIDatasourceNames());
+    datasources.addAll(DataSourceUtils.getRFDatasourceNames());
 
     return datasources.toArray(new String[0]);
   }
@@ -214,7 +214,7 @@ public class DataSourceUtils {
       data = DataSourceUtils.findDeploymentDescriptorDatasourceByName(processName,
           name[1]);
     } else {
-      if (name[0].equals(DataSourceUtils.UDDI_PREFIX)) {
+      if (name[0].equals(DataSourceUtils.RESOURCE_FRAMEWORK_PREFIX)) {
         data = ModelProvider.getInstance().findDataSourceByName(name[1]);
       }
     }

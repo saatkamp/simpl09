@@ -14,7 +14,6 @@ package org.eclipse.bpel.simpl.ui.widgets;
 
 import java.util.ArrayList;
 
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -30,8 +29,7 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.swt.widgets.Table;
+import org.simpl.core.webservices.client.DataSource;
 
 
 // TODO: Auto-generated Javadoc

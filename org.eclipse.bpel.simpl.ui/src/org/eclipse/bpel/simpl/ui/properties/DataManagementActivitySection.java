@@ -20,7 +20,6 @@ import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -37,6 +36,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * <b>Purpose:</b> <br>
@@ -121,7 +121,8 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	 * @param composite
 	 *            to put the content in.
 	 */
-	private void createWidgets(Composite composite) {
+	@SuppressWarnings("unused")
+  private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;

@@ -1,7 +1,7 @@
 package org.eclipse.simpl.statementtest.execution;
 
-import org.eclipse.simpl.communication.client.DatasourceService;
 import org.eclipse.simpl.statementtest.model.StatementTest;
+import org.simpl.core.webservices.client.DatasourceService;
 
 /** TODO
  * <b>Purpose:</b><br>

@@ -11,8 +11,6 @@ import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.simpl.communication.client.DatasourceService;
-import org.eclipse.simpl.communication.client.DatasourceService_Service;
 import org.eclipse.simpl.statementtest.StatementTestPlugin;
 import org.eclipse.simpl.statementtest.execution.DatabaseStatementExecution;
 import org.eclipse.simpl.statementtest.execution.FilesystemStatementExecution;
@@ -30,6 +28,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
+import org.simpl.core.webservices.client.DatasourceService;
+import org.simpl.core.webservices.client.DatasourceService_Service;
 
 /**
  * <b>Purpose:</b>Wizard to create a new statement test.<br>

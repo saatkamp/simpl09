@@ -6,7 +6,7 @@
          id="DataManagementUIObjectFactory"
          name="simpl"
          point="org.eclipse.bpel.ui.uiObjectFactories">
-      <factory
+       <factory
             categoryId="not.used"
             class="org.eclipse.bpel.simpl.ui.factories.DataManagementUIObjectFactory"
             id="org.eclipse.bpel.simpl.ui.factories.DataManagementUIObjectFactory"

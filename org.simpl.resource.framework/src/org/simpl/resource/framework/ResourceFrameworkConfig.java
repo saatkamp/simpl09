@@ -35,7 +35,6 @@ public class ResourceFrameworkConfig {
    */
   private static final ResourceFrameworkConfig instance = new ResourceFrameworkConfig();
   
-  Element webServiceElement = null;
   Element dataSourceServiceElement = null;
   Element dataSourceElement = null;
 
@@ -70,7 +69,6 @@ public class ResourceFrameworkConfig {
       root = configDoc.getRootElement();
 
       // read elements
-      webServiceElement = root.getChild("WebService");
       dataSourceServiceElement = root.getChild("DataSourceService");
       dataSourceElement = root.getChild("DataSource");
     } catch (JDOMException e) {
@@ -84,10 +82,6 @@ public class ResourceFrameworkConfig {
 
   public static ResourceFrameworkConfig getInstance() {
     return ResourceFrameworkConfig.instance;
-  }
-
-  public String getWebServiceAddress() {
-    return webServiceElement.getChildText("address");
   }
 
   public DataSource getDataSource() {

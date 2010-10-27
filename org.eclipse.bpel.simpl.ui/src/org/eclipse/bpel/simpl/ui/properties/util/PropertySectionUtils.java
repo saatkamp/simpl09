@@ -18,14 +18,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.client.Authentication;
-import org.eclipse.simpl.communication.client.DataSource;
-import org.eclipse.simpl.uddi.model.ModelProvider;
+import org.eclipse.simpl.resource.framework.model.ModelProvider;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
+import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * <b>Purpose:</b> <br>
@@ -78,11 +78,12 @@ public class PropertySectionUtils {
 	private final static Namespace DD_NAMESPACE = Namespace
 			.getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
 
-	private static final String UDDI_PREFIX = "uddi";
+	private static final String RF_PREFIX = "rf";
 
 	private static final String DD_PREFIX = "dd";
 
-	private static DataSource findDeploymentDescriptorDatasourceByName(
+	@SuppressWarnings("rawtypes")
+  private static DataSource findDeploymentDescriptorDatasourceByName(
 			Process process, String dsName) {
 		DataSource datasource = null;
 
@@ -164,7 +165,8 @@ public class PropertySectionUtils {
 		return datasource;
 	}
 
-	private static List<String> getDeploymentDescriptorDatasourceNames(
+	@SuppressWarnings("rawtypes")
+  private static List<String> getDeploymentDescriptorDatasourceNames(
 			Process process) {
 		List<String> datasources = new ArrayList<String>();
 
@@ -221,14 +223,14 @@ public class PropertySectionUtils {
 		return datasources;
 	}
 
-	private static List<String> getUDDIDatasourceNames() {
+	private static List<String> getRFDatasourceNames() {
 		List<String> dataSourceNames = new ArrayList<String>();
 
 		List<DataSource> dataSources = ModelProvider.getInstance()
 				.getDataSources();
 
 		for (DataSource dat : dataSources) {
-			dataSourceNames.add(UDDI_PREFIX + ":" + dat.getName());
+			dataSourceNames.add(RF_PREFIX + ":" + dat.getName());
 		}
 
 		return dataSourceNames;
@@ -238,7 +240,7 @@ public class PropertySectionUtils {
 		List<String> datasources = new ArrayList<String>();
 
 		datasources.addAll(getDeploymentDescriptorDatasourceNames(process));
-		datasources.addAll(getUDDIDatasourceNames());
+		datasources.addAll(getRFDatasourceNames());
 
 		return datasources.toArray(new String[0]);
 	}
@@ -251,7 +253,7 @@ public class PropertySectionUtils {
 		if (name[0].equals(DD_PREFIX)) {
 			data = findDeploymentDescriptorDatasourceByName(process, name[1]);
 		} else {
-			if (name[0].equals(UDDI_PREFIX)) {
+			if (name[0].equals(RF_PREFIX)) {
 				data = ModelProvider.getInstance()
 						.findDataSourceByName(name[1]);
 			}

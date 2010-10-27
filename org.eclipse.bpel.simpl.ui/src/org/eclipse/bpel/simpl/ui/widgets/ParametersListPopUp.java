@@ -13,10 +13,6 @@ package org.eclipse.bpel.simpl.ui.widgets;
 
 import java.util.ArrayList;
 
-import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.SIMPLCore;
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -32,8 +28,7 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import org.simpl.core.webservices.client.DataSource;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -211,7 +206,8 @@ public class ParametersListPopUp {
 	/**
 	 * add the colums of the spezified table in the colums-liste
 	 */
-	private void loadColumsOfTable(String searchedString) {
+	@SuppressWarnings("unused")
+  private void loadColumsOfTable(String searchedString) {
 		DBTable tmpTableObjekt = null;
 		listColumns.removeAll();
 		for (int i = 0; i < listOfTableObjekts.size(); i++) {
