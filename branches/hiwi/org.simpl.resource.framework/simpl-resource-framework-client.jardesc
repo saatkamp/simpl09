@@ -11,7 +11,7 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.resource.framework/src&lt;org.simpl.resource.framework{ResourceFrameworkConfig.java"/>
+        <javaElement handleIdentifier="=org.simpl.resource.framework/src&lt;org.simpl.core.webservices.client"/>
         <javaElement handleIdentifier="=org.simpl.resource.framework/src&lt;org.simpl.resource.framework.client"/>
     </selectedElements>
 </jardesc>

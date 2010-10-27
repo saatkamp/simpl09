@@ -12,9 +12,9 @@
 package org.eclipse.bpel.simpl.ui.factories;
 
 
+import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.BPELDMUIPlugIn;
-import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.ui.factories.AbstractUIObjectFactory;
 import org.eclipse.bpel.ui.factories.IExtensionUIObjectFactory;
 import org.eclipse.emf.ecore.EClass;

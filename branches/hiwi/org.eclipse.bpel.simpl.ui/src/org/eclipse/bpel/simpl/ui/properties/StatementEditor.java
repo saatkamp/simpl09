@@ -100,7 +100,8 @@ public class StatementEditor {
 	/**
 	 * This method initializes the shell
 	 */
-	private void createSShell(String activityName) {
+	@SuppressWarnings("unused")
+  private void createSShell(String activityName) {
 		GridData gridData2 = new GridData();
 		gridData2.horizontalAlignment = GridData.END;
 		gridData2.grabExcessHorizontalSpace = true;

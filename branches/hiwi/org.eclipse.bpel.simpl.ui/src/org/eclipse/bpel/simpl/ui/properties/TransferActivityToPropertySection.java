@@ -5,7 +5,6 @@ import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.ui.commands.SetCommand;
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -19,6 +18,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * <b>Purpose:</b> <br>
@@ -82,7 +82,8 @@ public class TransferActivityToPropertySection extends
 	 * @param composite
 	 *            to put the content in.
 	 */
-	private void createWidgets(Composite composite) {
+	@SuppressWarnings("unused")
+  private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
 		GridData gridData13 = new GridData();
 		gridData13.horizontalAlignment = GridData.FILL;

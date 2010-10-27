@@ -19,7 +19,7 @@ import org.eclipse.simpl.statementtest.actions.OpenStatementTestWizardAction;
  * @link http://code.google.com/p/simpl09/
  */
 public class DMActivityAdapter extends ActivityAdapter {
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   @Override
   public List getEditPartActions(final EditPart editPart) {
     List actions = super.getEditPartActions(editPart);

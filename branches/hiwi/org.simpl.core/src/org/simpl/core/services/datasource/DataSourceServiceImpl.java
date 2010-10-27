@@ -514,7 +514,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     hasLateBindingInformation = dataSource != null
         && dataSource.getLateBinding().getPolicy() != null
         && dataSource.getLateBinding().getStrategy() != null
-        && dataSource.getLateBinding().getUddiAddress() != null;
+        && dataSource.getLateBinding().getResourceFrameworkAddress() != null;
 
     return hasLateBindingInformation;
   }

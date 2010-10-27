@@ -11,7 +11,6 @@
  */
 package org.eclipse.bpel.simpl.ui.factories;
 
-import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.util.ModelAdapterFactory;
 import org.eclipse.bpel.simpl.ui.adapters.CallActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.CreateActivityAdapter;
@@ -22,7 +21,6 @@ import org.eclipse.bpel.simpl.ui.adapters.QueryActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.RetrieveDataActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.TransferActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.UpdateActivityAdapter;
-import org.eclipse.bpel.ui.adapters.ActivityAdapter;
 import org.eclipse.emf.common.notify.Adapter;
 
 public class DataManagementUIAdapterFactory extends ModelAdapterFactory{

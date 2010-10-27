@@ -48,7 +48,6 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener;
 import org.eclipse.jface.fieldassist.IControlContentAdapter;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -69,6 +68,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xsd.XSDTypeDefinition;
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * The Class RetrieveDataVariableSection.
@@ -103,8 +103,6 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	private Button command = null, file = null; //, folder = null, driver = null;
 
 	private RetrieveDataActivity activity;
-
-	private DataSource dataSource = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -145,7 +143,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	 * @param composite
 	 *            to put the content in.
 	 */
-	private void createWidgets(Composite composite) {
+	@SuppressWarnings("unused")
+  private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
 		GridData gridData130 = new GridData();
 		gridData130.horizontalAlignment = GridData.FILL;
@@ -765,7 +764,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		}
 	};
 	private Button inputVariableButton;
-	private Label inputVariableLabel;
+	@SuppressWarnings("unused")
+  private Label inputVariableLabel;
 	private Text inputVariableText;
 	private Composite parentComposite;
 
@@ -797,7 +797,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		} };
 	}
 
-	private void createInputVariableWidgets() {
+	@SuppressWarnings("deprecation")
+  private void createInputVariableWidgets() {
 		Composite inputVariableComp = new Composite(parentComposite, SWT.NONE);
 
 		GridLayout gridLayout = new GridLayout();

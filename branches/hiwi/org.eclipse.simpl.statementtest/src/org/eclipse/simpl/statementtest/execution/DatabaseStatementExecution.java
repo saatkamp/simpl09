@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.simpl.communication.client.DatasourceService;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.CreateTableResult;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 import org.eclipse.simpl.statementtest.utils.StringUtils;
+import org.simpl.core.webservices.client.DatasourceService;
 
 /**
  * TODO <b>Purpose:</b><br>

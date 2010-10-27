@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ResourceFramework>
-  <!--SIMPL Resource Framework web service location for client-->
-  <WebService>
-    <address>http://localhost:8080/ode/processes/ResourceFrameworkService.ResourceFrameworkPort?wsdl</address>
-  </WebService>
-
-  <!--SIMPL data source to store the resource framework data-->
+ <!--SIMPL data source to store the resource framework data-->
   <DataSource>
     <name>Local PostgreSQL 8.4</name>
     <address>localhost:5432/postgres</address>

@@ -8,10 +8,10 @@ import java.util.LinkedList;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.simpl.statementtest.model.results.Result;
 import org.eclipse.simpl.statementtest.model.variables.ContainerVariable;
 import org.eclipse.simpl.statementtest.model.variables.ParameterVariable;
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * <b>Purpose: Represents a statement test and holds all information about the test

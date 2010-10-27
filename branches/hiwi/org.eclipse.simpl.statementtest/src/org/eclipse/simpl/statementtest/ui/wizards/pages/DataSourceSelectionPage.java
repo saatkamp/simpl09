@@ -8,7 +8,6 @@ import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.simpl.statementtest.StatementTestPlugin;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.ui.wizards.StatementTestWizard;
@@ -32,6 +31,7 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * <b>Purpose:</b>Wizard page for the data source selection.<br>
@@ -86,7 +86,7 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
     // next page is not available until data source selection
     this.setPageComplete(false);
 
-    // data source retrieval from deployment descriptor and UDDI registry
+    // data source retrieval from deployment descriptor and resource framework
     dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
         .getName());
 
@@ -182,9 +182,9 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
             .getService(IHandlerService.class);
 
         try {
-          // TODO: der command aktualisiert nicht, da der Aufruf von einem anderen GUI
+          // TODO: der command aktualisiert nicht, da der Aufruf hier von einem anderen GUI
           // Kontext kommt.
-          handlerService.executeCommand("org.eclipse.simpl.uddi.refreshCommand", null);
+          handlerService.executeCommand("org.eclipse.simpl.resource.framework.refreshCommand", null);
           dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
               .getName());
         } catch (ExecutionException e1) {
