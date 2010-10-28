@@ -17,7 +17,7 @@ import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
-import org.simpl.core.webservices.client.DatasourceService_Service;
+import org.simpl.core.webservices.client.DatasourceServiceClient;
 import org.simpl.resource.framework.client.DataSourceList;
 import org.xml.sax.InputSource;
 
@@ -34,8 +34,8 @@ import org.xml.sax.InputSource;
 @WebService(name = "ResourceFramework")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ResourceFramework {
-  DatasourceService dataSourceService = new DatasourceService_Service()
-      .getDatasourceServicePort();
+  DatasourceService dataSourceService = DatasourceServiceClient.getService(
+      ResourceFrameworkConfig.getInstance().getDataSourceServiceAddress());
   DataSource rfDataSource = ResourceFrameworkConfig.getInstance().getDataSource();
 
   /**

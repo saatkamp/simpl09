@@ -30,9 +30,9 @@ public class AdministrationService_Service
         try {
             URL baseUrl;
             baseUrl = org.simpl.core.webservices.client.AdministrationService_Service.class.getResource(".");
-            url = new URL(baseUrl, "http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl");
+            url = new URL(baseUrl, AdministrationServiceClient.serviceAddress);
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: '" + AdministrationServiceClient.serviceAddress + "', retrying as a local file");
             logger.warning(e.getMessage());
         }
         ADMINISTRATIONSERVICE_WSDL_LOCATION = url;

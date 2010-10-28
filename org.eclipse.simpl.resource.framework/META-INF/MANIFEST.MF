@@ -13,7 +13,8 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.ecore
 Bundle-ClassPath: .,
  lib/commons-configuration-1.5.jar,
- lib/commons-lang-2.3.jar
+ lib/commons-lang-2.3.jar,
+ lib/simpl-resource-framework-client.jar
 Export-Package: org.apache.commons.configuration;
   uses:="org.apache.commons.logging,
    org.apache.commons.collections,

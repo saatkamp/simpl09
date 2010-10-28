@@ -5,13 +5,13 @@ import java.net.URLConnection;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.simpl.core.helpers.Parameter;
 import org.simpl.core.webservices.client.AdministrationService;
-import org.simpl.core.webservices.client.AdministrationService_Service;
-import org.simpl.core.webservices.client.ConnectionException_Exception;
+import org.simpl.core.webservices.client.AdministrationServiceClient;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
-import org.simpl.core.webservices.client.DatasourceService_Service;
-import org.simpl.core.webservices.client.Parameter;
+import org.simpl.core.webservices.client.DatasourceServiceClient;
+import org.simpl.core.webservices.client.Exception_Exception;
 
 /**
  * 
@@ -27,18 +27,20 @@ public class SIMPLCore {
 			.getDefault().getPreferenceStore().getString(
 					"SIMPL_CORE_DSS_ADDRESS");
 
+	 private final static String AS_WSDL_ADDRESS = CommunicationPlugIn
+   .getDefault().getPreferenceStore().getString(
+       "SIMPL_CORE_AS_ADDRESS");
+	
 	private DatasourceService getDatasourceService() {
 		if (datasourceService == null) {
-			datasourceService = new DatasourceService_Service()
-					.getDatasourceServicePort();
+			datasourceService = DatasourceServiceClient.getService(DSS_WSDL_ADDRESS);
 		}
 		return datasourceService;
 	}
 
-	private AdministrationService getAdministrationService() {
+	private AdministrationService getAdministrationService() {  
 		if (administrationService == null) {
-			administrationService = new AdministrationService_Service()
-					.getAdministrationServicePort();
+			administrationService = AdministrationServiceClient.getService(AS_WSDL_ADDRESS);
 		}
 		return administrationService;
 	}
@@ -65,7 +67,7 @@ public class SIMPLCore {
 	}
 
 	public String getMetaData(DataSource dataSource, String filter)
-			throws ConnectionException_Exception {
+			throws Exception_Exception {
 
 		String metaData = getDatasourceService()
 				.getMetaData(dataSource, filter);
@@ -113,13 +115,16 @@ public class SIMPLCore {
 	}
 
 	public String getDataFormatSchema(DataSource dataSource) {
-		try {
-			return getDatasourceService().getDataFormatSchema(dataSource);
-		} catch (ConnectionException_Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "";
+	  String dataFormatSchema = "";
+
+    try {
+      dataFormatSchema = getDatasourceService().getDataFormatSchema(dataSource);
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+		return dataFormatSchema;
 	}
 
 	public boolean isSIMPLCoreAvailable() {
