@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.simpl.resource.framework.ResourceFrameworkClient;
+import org.eclipse.simpl.resource.framework.ResourceFrameworkPlugIn;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.resource.framework.client.Exception_Exception;
+import org.simpl.resource.framework.client.ResourceFrameworkClient;
 
 public class ModelProvider {
 	private static ModelProvider content;
@@ -71,8 +72,12 @@ public class ModelProvider {
 		dsNames.clear();
 		datasources.clear();
 		
-		try {
-      datasources.addAll(ResourceFrameworkClient.getInstance().getAllDataSources().getDataSources());    
+    try {
+      datasources.addAll(ResourceFrameworkClient
+          .getService(
+              ResourceFrameworkPlugIn.getDefault().getPreferenceStore()
+                  .getString("RESOURCE_FRAMEWORK_ADDRESS")).getAllDataSources()
+          .getDataSources());
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

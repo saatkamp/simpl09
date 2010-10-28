@@ -10,4 +10,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.simpl.communication;uses:="org.eclipse.core.runtime,org.osgi.framework",
  org.simpl.core.webservices.client
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/simpl-core-webservices-client.jar

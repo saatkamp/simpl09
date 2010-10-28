@@ -100,4 +100,8 @@ public class ResourceFrameworkConfig {
 
     return dataSource;
   }
+  
+  public String getDataSourceServiceAddress() {
+    return dataSourceServiceElement.getChildText("address");
+  }
 }

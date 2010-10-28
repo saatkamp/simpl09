@@ -75,7 +75,7 @@ public class StrategyServiceImpl implements StrategyService {
 
         try {
           dataSources = ResourceFrameworkClient
-              .getInstance(dataSource.getLateBinding().getResourceFrameworkAddress())
+              .getService(dataSource.getLateBinding().getResourceFrameworkAddress())
               .getAllDataSources().getDataSources();
         } catch (Exception_Exception e1) {
           // TODO Auto-generated catch block

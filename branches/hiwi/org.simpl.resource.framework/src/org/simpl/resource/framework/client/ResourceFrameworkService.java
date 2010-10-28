@@ -24,25 +24,20 @@ public class ResourceFrameworkService
 
     private final static URL RESOURCEFRAMEWORKSERVICE_WSDL_LOCATION;
     private final static Logger logger = Logger.getLogger(org.simpl.resource.framework.client.ResourceFrameworkService.class.getName());
-    private static String address = "";
     
     static {
         URL url = null;
         try {
             URL baseUrl;
             baseUrl = org.simpl.resource.framework.client.ResourceFrameworkService.class.getResource(".");
-            url = new URL(baseUrl, ResourceFrameworkService.address);
+            url = new URL(baseUrl, ResourceFrameworkClient.serviceAddress);
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: '" + ResourceFrameworkService.address + "', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: '" + ResourceFrameworkClient.serviceAddress + "', retrying as a local file");
             logger.warning(e.getMessage());
         }
         RESOURCEFRAMEWORKSERVICE_WSDL_LOCATION = url;
     }
 
-    public void setAddress(String address) {
-      ResourceFrameworkService.address = address;
-    }
-    
     public ResourceFrameworkService(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }

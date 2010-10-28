@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Tomcat6.0/webapps/axis2/WEB-INF/lib/simpl-rrs.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.rrs/simpl-rrs.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="/org.simpl.core/SIMPL-CORE.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.dsadapter.plugins"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.dsadapter"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.retrieval.util"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.dsadapter.plugins.rdb"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.webservices"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.retrieval"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.metadata"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs{RRS.java"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs{RRSConfig.java"/>
+        <javaElement handleIdentifier="=org.simpl.rrs/src&lt;org.simpl.rrs.management"/>
+    </selectedElements>
+</jardesc>
