@@ -4,50 +4,50 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            category="org.eclipse.simpl.uddi.category"
-            class="org.eclipse.simpl.uddi.view.UDDIBrowserView"
+            category="org.eclipse.simpl.resource.framework.category"
+            class="org.eclipse.simpl.resource.framework.view.ResourceFrameworkBrowserView"
             icon="icons/browser.png"
-            id="org.eclipse.simpl.uddi.uddiView"
-            name="UDDI Browser View"
+            id="org.eclipse.simpl.resource.framework.resourceFrameworkView"
+            name="Resource Framework Data Source Browser"
             restorable="true">
       </view>
       <category
-            id="org.eclipse.simpl.uddi.category"
-            name="UDDI Registry">
+            id="org.eclipse.simpl.resource.framework.category"
+            name="Resource Framework">
       </category>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
             category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
-            class="org.eclipse.simpl.uddi.preferences.UDDIPreferencePage"
-            id="org.eclipse.simpl.uddi.preferences.UDDIPreferencePage"
-            name="UDDI Registry">
+            class="org.eclipse.simpl.resource.framework.preferences.ResourceFrameworkPreferencePage"
+            id="org.eclipse.simpl.resource.framework.preferences.ResourceFrameworkPreferencePage"
+            name="Resource Framework">
       </page>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="org.eclipse.simpl.uddi.commands.RefreshHandler"
-            id="org.eclipse.simpl.uddi.refreshCommand"
+            defaultHandler="org.eclipse.simpl.resource.framework.commands.RefreshHandler"
+            id="org.eclipse.simpl.resource.framework.refreshCommand"
             name="Refresh">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="menu:org.eclipse.simpl.uddi.uddiView">
+            locationURI="menu:org.eclipse.simpl.resource.framework.resourceFrameworkView">
          <command
-               commandId="org.eclipse.simpl.uddi.refreshCommand"
+               commandId="org.eclipse.simpl.resource.framework.refreshCommand"
                icon="icons/action_refresh.gif"
                label="Refresh"
                style="push">
          </command>
       </menuContribution>
       <menuContribution
-            locationURI="toolbar:org.eclipse.simpl.uddi.uddiView">
+            locationURI="toolbar:org.eclipse.simpl.resource.framework.resourceFrameworkView">
          <command
-               commandId="org.eclipse.simpl.uddi.refreshCommand"
+               commandId="org.eclipse.simpl.resource.framework.refreshCommand"
                icon="icons/action_refresh.gif"
                label="Refresh"
                style="push">

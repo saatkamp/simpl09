@@ -63,7 +63,7 @@
                   commandId="org.eclipse.ui.window.preferences"
                   id="org.eclipse.ui.window.preferences"
                   label="Settings"
-                  style="push">
+                  style="pull">
                <parameter
                      name="preferencePageId"
                      value="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage">
