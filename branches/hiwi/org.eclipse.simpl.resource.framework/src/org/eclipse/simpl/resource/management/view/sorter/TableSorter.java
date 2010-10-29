@@ -1,4 +1,4 @@
-package org.eclipse.simpl.resource.framework.view.sorter;
+package org.eclipse.simpl.resource.management.view.sorter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;

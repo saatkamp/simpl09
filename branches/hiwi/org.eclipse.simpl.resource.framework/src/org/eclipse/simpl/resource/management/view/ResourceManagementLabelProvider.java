@@ -1,11 +1,11 @@
-package org.eclipse.simpl.resource.framework.view;
+package org.eclipse.simpl.resource.management.view;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.simpl.core.webservices.client.DataSource;
 
-public class ResourceFrameworkLabelProvider extends LabelProvider implements
+public class ResourceManagementLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
 	@Override
 	public String getColumnText(Object element, int columnIndex) {

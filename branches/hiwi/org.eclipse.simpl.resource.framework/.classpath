@@ -5,6 +5,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-configuration-1.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/simpl-resource-framework-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/simpl-resource-management-client.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

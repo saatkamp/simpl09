@@ -1,4 +1,4 @@
-package org.eclipse.simpl.resource.framework;
+package org.eclipse.simpl.resource.management;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -6,18 +6,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class ResourceFrameworkPlugIn extends AbstractUIPlugin {
+public class ResourceManagementPlugIn extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.simpl.resource.framework";
+	public static final String PLUGIN_ID = "org.eclipse.simpl.resource.management";
 
 	// The shared instance
-	private static ResourceFrameworkPlugIn plugin;
+	private static ResourceManagementPlugIn plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public ResourceFrameworkPlugIn() {
+	public ResourceManagementPlugIn() {
 	}
 
 	/*
@@ -28,7 +28,7 @@ public class ResourceFrameworkPlugIn extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		
-		plugin.getPreferenceStore().setDefault("RESOURCE_FRAMEWORK_ADDRESS", "http://localhost:8080/ode/processes/ResourceFrameworkService.ResourceFrameworkPort?wsdl");
+		plugin.getPreferenceStore().setDefault("RESOURCE_MANAGEMENT_ADDRESS", "http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl");
 	}
 
 	/*
@@ -45,7 +45,7 @@ public class ResourceFrameworkPlugIn extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static ResourceFrameworkPlugIn getDefault() {
+	public static ResourceManagementPlugIn getDefault() {
 		return plugin;
 	}
 

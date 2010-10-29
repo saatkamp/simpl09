@@ -1,4 +1,4 @@
-package org.eclipse.simpl.resource.framework.view.filter;
+package org.eclipse.simpl.resource.management.view.filter;
 
 import java.util.regex.PatternSyntaxException;
 

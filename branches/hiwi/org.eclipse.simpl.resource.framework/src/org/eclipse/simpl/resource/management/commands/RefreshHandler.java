@@ -1,10 +1,10 @@
-package org.eclipse.simpl.resource.framework.commands;
+package org.eclipse.simpl.resource.management.commands;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.simpl.resource.framework.model.ModelProvider;
-import org.eclipse.simpl.resource.framework.view.ResourceFrameworkBrowserView;
+import org.eclipse.simpl.resource.management.model.ModelProvider;
+import org.eclipse.simpl.resource.management.view.ResourceManagementBrowserView;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 
@@ -25,8 +25,8 @@ public class RefreshHandler extends AbstractHandler{
 		ModelProvider.getInstance().refresh();
 		IWorkbenchPart part = HandlerUtil.getActivePart(event);
 		
-		if (part instanceof ResourceFrameworkBrowserView){
-			ResourceFrameworkBrowserView view = (ResourceFrameworkBrowserView) part;
+		if (part instanceof ResourceManagementBrowserView){
+			ResourceManagementBrowserView view = (ResourceManagementBrowserView) part;
 			view.getViewer().refresh();
 		}
 		
