@@ -1,13 +1,13 @@
-package org.eclipse.simpl.resource.framework.model;
+package org.eclipse.simpl.resource.management.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.simpl.resource.framework.ResourceFrameworkPlugIn;
+import org.eclipse.simpl.resource.management.ResourceManagementPlugIn;
 import org.simpl.core.webservices.client.DataSource;
-import org.simpl.resource.framework.client.Exception_Exception;
-import org.simpl.resource.framework.client.ResourceFrameworkClient;
+import org.simpl.resource.management.client.Exception_Exception;
+import org.simpl.resource.management.client.ResourceManagementClient;
 
 public class ModelProvider {
 	private static ModelProvider content;
@@ -73,10 +73,10 @@ public class ModelProvider {
 		datasources.clear();
 		
     try {
-      datasources.addAll(ResourceFrameworkClient
+      datasources.addAll(ResourceManagementClient
           .getService(
-              ResourceFrameworkPlugIn.getDefault().getPreferenceStore()
-                  .getString("RESOURCE_FRAMEWORK_ADDRESS")).getAllDataSources()
+              ResourceManagementPlugIn.getDefault().getPreferenceStore()
+                  .getString("RESOURCE_MANAGEMENT_ADDRESS")).getAllDataSources()
           .getDataSources());
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block

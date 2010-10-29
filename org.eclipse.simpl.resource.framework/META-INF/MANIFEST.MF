@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: SIMPL Resource Framework Eclipse Plug-In
-Bundle-SymbolicName: org.eclipse.simpl.resource.framework;singleton:=true
+Bundle-Name: SIMPL Resource Management Eclipse Plug-In
+Bundle-SymbolicName: org.eclipse.impl.resource.management;singleton:=true
 Bundle-Version: 0.1.0
-Bundle-Activator: org.eclipse.simpl.resource.framework.ResourceFrameworkPlugIn
+Bundle-Activator: org.eclipse.simpl.resource.management.ResourceManagementPlugIn
 Bundle-Vendor: SIMPL
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -14,7 +14,7 @@ Import-Package: org.eclipse.emf.ecore
 Bundle-ClassPath: .,
  lib/commons-configuration-1.5.jar,
  lib/commons-lang-2.3.jar,
- lib/simpl-resource-framework-client.jar
+ lib/simpl-resource-management-client.jar
 Export-Package: org.apache.commons.configuration;
   uses:="org.apache.commons.logging,
    org.apache.commons.collections,
@@ -54,13 +54,13 @@ Export-Package: org.apache.commons.configuration;
  org.apache.commons.lang.mutable,
  org.apache.commons.lang.text,
  org.apache.commons.lang.time,
- org.eclipse.simpl.resource.framework;uses:="org.eclipse.ui.plugin,org.osgi.framework",
- org.eclipse.simpl.resource.framework.model;uses:="org.eclipse.simpl.communication.client",
- org.eclipse.simpl.resource.framework.preferences;uses:="org.eclipse.jface.preference,org.eclipse.ui",
- org.eclipse.simpl.resource.framework.view;
+ org.eclipse.simpl.resource.management;uses:="org.eclipse.ui.plugin,org.osgi.framework",
+ org.eclipse.simpl.resource.management.model;uses:="org.eclipse.simpl.communication.client",
+ org.eclipse.simpl.resource.management.preferences;uses:="org.eclipse.jface.preference,org.eclipse.ui",
+ org.eclipse.simpl.resource.management.view;
   uses:="org.eclipse.swt.graphics,
    org.eclipse.jface.viewers,
    org.eclipse.ui.part,
    org.eclipse.swt.widgets",
- org.eclipse.simpl.resource.framework.view.filter;uses:="org.eclipse.jface.viewers",
- org.eclipse.simpl.resource.framework.view.sorter;uses:="org.eclipse.jface.viewers"
+ org.eclipse.simpl.resource.management.view.filter;uses:="org.eclipse.jface.viewers",
+ org.eclipse.simpl.resource.management.view.sorter;uses:="org.eclipse.jface.viewers"

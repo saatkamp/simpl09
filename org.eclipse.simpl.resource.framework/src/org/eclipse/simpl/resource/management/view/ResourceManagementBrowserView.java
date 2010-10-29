@@ -1,10 +1,10 @@
-package org.eclipse.simpl.resource.framework.view;
+package org.eclipse.simpl.resource.management.view;
 
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.simpl.resource.framework.model.ModelProvider;
-import org.eclipse.simpl.resource.framework.view.filter.DataSourceFilter;
-import org.eclipse.simpl.resource.framework.view.sorter.TableSorter;
+import org.eclipse.simpl.resource.management.model.ModelProvider;
+import org.eclipse.simpl.resource.management.view.filter.DataSourceFilter;
+import org.eclipse.simpl.resource.management.view.sorter.TableSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -19,8 +19,8 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
-public class ResourceFrameworkBrowserView extends ViewPart {
-	public ResourceFrameworkBrowserView() {
+public class ResourceManagementBrowserView extends ViewPart {
+	public ResourceManagementBrowserView() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -46,8 +46,8 @@ public class ResourceFrameworkBrowserView extends ViewPart {
 		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
 		createColumns(viewer);
-		viewer.setContentProvider(new ResourceFrameworkContentProvider());
-		viewer.setLabelProvider(new ResourceFrameworkLabelProvider());
+		viewer.setContentProvider(new ResourceManagementContentProvider());
+		viewer.setLabelProvider(new ResourceManagementLabelProvider());
 		// Get the content for the viewer, setInput will call getElements in the
 		// contentProvider
 		viewer.setInput(ModelProvider.getInstance().getDataSources());
