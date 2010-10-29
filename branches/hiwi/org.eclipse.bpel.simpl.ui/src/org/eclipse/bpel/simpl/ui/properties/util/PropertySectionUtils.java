@@ -18,7 +18,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.resource.framework.model.ModelProvider;
+import org.eclipse.simpl.resource.management.model.ModelProvider;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -78,7 +78,7 @@ public class PropertySectionUtils {
 	private final static Namespace DD_NAMESPACE = Namespace
 			.getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
 
-	private static final String RF_PREFIX = "rf";
+	private static final String RM_PREFIX = "rm";
 
 	private static final String DD_PREFIX = "dd";
 
@@ -230,7 +230,7 @@ public class PropertySectionUtils {
 				.getDataSources();
 
 		for (DataSource dat : dataSources) {
-			dataSourceNames.add(RF_PREFIX + ":" + dat.getName());
+			dataSourceNames.add(RM_PREFIX + ":" + dat.getName());
 		}
 
 		return dataSourceNames;
@@ -253,7 +253,7 @@ public class PropertySectionUtils {
 		if (name[0].equals(DD_PREFIX)) {
 			data = findDeploymentDescriptorDatasourceByName(process, name[1]);
 		} else {
-			if (name[0].equals(RF_PREFIX)) {
+			if (name[0].equals(RM_PREFIX)) {
 				data = ModelProvider.getInstance()
 						.findDataSourceByName(name[1]);
 			}

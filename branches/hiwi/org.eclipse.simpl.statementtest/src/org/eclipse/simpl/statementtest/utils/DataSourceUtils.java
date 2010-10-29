@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.simpl.resource.framework.model.ModelProvider;
+import org.eclipse.simpl.resource.management.model.ModelProvider;
 import org.eclipse.ui.PlatformUI;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -49,7 +49,7 @@ public class DataSourceUtils {
   private final static Namespace DD_NAMESPACE = Namespace
       .getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
 
-  private static final String RESOURCE_FRAMEWORK_PREFIX = "rf";
+  private static final String RESOURCE_MANAGEMENT_PREFIX = "rm";
 
   private static final String DD_PREFIX = "dd";
 
@@ -189,7 +189,7 @@ public class DataSourceUtils {
     List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
 
     for (DataSource dat : dataSources) {
-      dataSourceNames.add(DataSourceUtils.RESOURCE_FRAMEWORK_PREFIX + ":" + dat.getName());
+      dataSourceNames.add(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX + ":" + dat.getName());
     }
 
     return dataSourceNames;
@@ -214,7 +214,7 @@ public class DataSourceUtils {
       data = DataSourceUtils.findDeploymentDescriptorDatasourceByName(processName,
           name[1]);
     } else {
-      if (name[0].equals(DataSourceUtils.RESOURCE_FRAMEWORK_PREFIX)) {
+      if (name[0].equals(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX)) {
         data = ModelProvider.getInstance().findDataSourceByName(name[1]);
       }
     }

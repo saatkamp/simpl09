@@ -86,7 +86,7 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
     // next page is not available until data source selection
     this.setPageComplete(false);
 
-    // data source retrieval from deployment descriptor and resource framework
+    // data source retrieval from deployment descriptor and resource management
     dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
         .getName());
 
@@ -184,7 +184,7 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
         try {
           // TODO: der command aktualisiert nicht, da der Aufruf hier von einem anderen GUI
           // Kontext kommt.
-          handlerService.executeCommand("org.eclipse.simpl.resource.framework.refreshCommand", null);
+          handlerService.executeCommand("org.eclipse.simpl.resource.management.refreshCommand", null);
           dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
               .getName());
         } catch (ExecutionException e1) {

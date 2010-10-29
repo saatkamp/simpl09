@@ -19,7 +19,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.swt.widgets.Display;
 /**
- * A eclipse resource listener used by the shared resource framework
+ * A eclipse resource listener used by the shared resource management
  * to support updating/reloading the model, informing the user, or closing the editor
  * when a resource is changed by another editor kind or outside the
  * workspace.

@@ -1170,15 +1170,15 @@ public interface ddPackage extends EPackage {
 	EReference getProcessType_ActivityMappings();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedRFAddress <em>Attached RF Address</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedRMAddress <em>Attached RF Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Attached RF Address</em>'.
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedRFAddress()
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedRMAddress()
 	 * @see #getProcessType()
 	 * @generated
 	 */
-	EAttribute getProcessType_AttachedRFAddress();
+	EAttribute getProcessType_AttachedRMAddress();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType <em>Property Type</em>}'.
@@ -1895,7 +1895,7 @@ public interface ddPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROCESS_TYPE__ATTACHED_RF_ADDRESS = eINSTANCE.getProcessType_AttachedRFAddress();
+		EAttribute PROCESS_TYPE__ATTACHED_RF_ADDRESS = eINSTANCE.getProcessType_AttachedRMAddress();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.

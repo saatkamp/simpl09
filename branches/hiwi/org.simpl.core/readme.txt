@@ -4,8 +4,8 @@ SIMPL Core Plugins
 SIMPL ODE Extensions
 SIMPL RRS
 SIMPL RRS Transformation Service
-SIMPL Resource Framework
-SIMPL Resource Framework Web Interface
+SIMPL Resource Management
+SIMPL Resource Management Web Interface
 
 = Requirements =
 Apache Tomcat 5.5/6.0
@@ -14,13 +14,13 @@ Apache Tomcat 5.5/6.0
 Extract the simpl-tomcat.zip to the Tomcat root directory (/Tomcat x.x/).
 
 = Login =
-The user for Apache Tomcat and thus the resource framework web interface is "admin", no password is set.
+The user for Apache Tomcat and thus the resource management web interface is "admin", no password is set.
 
 = Links =
 SIMPL Core Web Service List: http://localhost:8080/ode/services/listServices
 SIMPL RRS Web Service List: http://localhost:8080/axis2/services/listServices
-SIMPL Resource Framework: http://localhost:8080/ode/processes/ResourceFrameworkService.ResourceFrameworkPort?wsdl
-SIMPL Resource Framework Web Interface: http://localhost:8080/rfweb
+SIMPL Resource Management: http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl
+SIMPL Resource Management Web Interface: http://localhost:8080/rmweb
 
 = Problems =
 On memory problems try to add "-XX:MaxPermSize=256m" to the Apache Tomcat 

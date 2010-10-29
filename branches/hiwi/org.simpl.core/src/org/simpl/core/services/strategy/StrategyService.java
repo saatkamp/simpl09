@@ -7,7 +7,7 @@ import org.simpl.core.services.datasource.DataSource;
  * <b>Description:</b>The strategy service is used for the late binding to find an
  * appropriate data source for data source service operations that are given incomplete
  * data source information and non-functional requirements as WS-Policy Assertions. In
- * order to find a data source it responds to a resource framework and compares the
+ * order to find a data source it responds to the resource management and compares the
  * properties.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>

@@ -6,6 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_PLUGINS"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_CORE_WEBSERVICES_CLIENT"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.apache.ode.simpl.events"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_RESOURCE_FRAMEWORK_CLIENT"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_RESOURCE_MANAGEMENT_CLIENT"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
