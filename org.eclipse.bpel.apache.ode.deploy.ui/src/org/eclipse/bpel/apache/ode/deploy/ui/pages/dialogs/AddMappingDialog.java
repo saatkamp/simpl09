@@ -10,7 +10,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.simpl.resource.framework.ResourceFrameworkPlugIn;
+import org.eclipse.simpl.resource.management.ResourceManagementPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;

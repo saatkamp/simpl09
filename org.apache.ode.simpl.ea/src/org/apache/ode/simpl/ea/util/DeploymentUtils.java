@@ -24,9 +24,9 @@ import org.simpl.core.services.datasource.Authentication;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.LateBinding;
 import org.simpl.core.services.strategy.Strategy;
-import org.simpl.resource.framework.client.Exception_Exception;
-import org.simpl.resource.framework.client.ResourceFramework;
-import org.simpl.resource.framework.client.ResourceFrameworkService;
+import org.simpl.resource.management.client.Exception_Exception;
+import org.simpl.resource.management.client.ResourceManagement;
+import org.simpl.resource.management.client.ResourceManagementService;
 
 /**
  * <b>Purpose:</b> <br>
@@ -68,9 +68,9 @@ public class DeploymentUtils {
   private static final String AT_MAPPING_POLICY_DATA = "policyData";
   private static final String AT_MAPPING_STRATEGY = "strategy";
 
-  private static final String AT_ATTACHED_RF_ADDRESS = "attachedRFAddress";
+  private static final String AT_ATTACHED_RM_ADDRESS = "attachedRMAddress";
 
-  private static String PROCESS_RF_ADDRESS = "http://localhost:8080/ode/processes/ResourceFrameworkService.ResourceFrameworkPort?wsdl";
+  private static String PROCESS_RM_ADDRESS = "http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl";
 
   private final Namespace DD_NAMESPACE = Namespace
       .getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
@@ -81,10 +81,10 @@ public class DeploymentUtils {
   private List<DataSource> dataSourceElements = new ArrayList<DataSource>();
 
   /**
-   * This map holds all yet queried data sources and their names (with "rf:" prefix) of
-   * the resource framework. So we can use them several times without querying them again.
+   * This map holds all yet queried data sources and their names (with "rm:" prefix) of
+   * the resource management. So we can use them several times without querying them again.
    */
-  private HashMap<String, DataSource> rfDataSourceElements = new HashMap<String, DataSource>();
+  private HashMap<String, DataSource> rmDataSourceElements = new HashMap<String, DataSource>();
 
   /**
    * This map holds all activity-policy mappings for the late binding of data source which
@@ -140,25 +140,25 @@ public class DeploymentUtils {
   }
 
   /**
-   * Queries a data source from the resource framework just on demand. That means that the
+   * Queries a data source from the resource management just on demand. That means that the
    * data source is queried just before it is used from the activity. So we will save a
    * lot of time and performance.
    */
-  public DataSource getResourceFrameworkDataSourceByName(String dataSourceName) {
+  public DataSource getResourceManagementDataSourceByName(String dataSourceName) {
     DataSource resultDataSource = null;
 
-    if (rfDataSourceElements.containsKey(dataSourceName)) {
+    if (rmDataSourceElements.containsKey(dataSourceName)) {
 
-      resultDataSource = rfDataSourceElements.get(dataSourceName);
+      resultDataSource = rmDataSourceElements.get(dataSourceName);
 
     } else {
       String nameWOprefix = dataSourceName.split(":")[1];
 
-      ResourceFramework resourceFramework = new ResourceFrameworkService()
-          .getResourceFrameworkPort();
+      ResourceManagement resourceManagement = new ResourceManagementService()
+          .getResourceManagementPort();
 
       try {
-        resultDataSource = this.convertWebServiceClientDataSource(resourceFramework
+        resultDataSource = this.convertWebServiceClientDataSource(resourceManagement
             .getDataSourceByName(nameWOprefix));
         resultDataSource.setName(dataSourceName); // set name with prefix
       } catch (Exception_Exception e) {
@@ -167,7 +167,7 @@ public class DeploymentUtils {
       }
 
       // Add the queried data source to the map
-      rfDataSourceElements.put(dataSourceName, resultDataSource);
+      rmDataSourceElements.put(dataSourceName, resultDataSource);
 
       if (logger.isDebugEnabled()) {
         logger.debug("Name of ds: " + resultDataSource.getName());
@@ -228,9 +228,9 @@ public class DeploymentUtils {
           Element processElement = (Element) processObj;
           if (processElement.getAttributeValue(AT_NAME).contains(process)) {
 
-            // Read the attached Resource Framework address
-            PROCESS_RF_ADDRESS = ((Element) processElement)
-                .getAttributeValue(AT_ATTACHED_RF_ADDRESS);
+            // Read the attached Resource Management address
+            PROCESS_RM_ADDRESS = ((Element) processElement)
+                .getAttributeValue(AT_ATTACHED_RM_ADDRESS);
 
             // Read the auditing mode to set to the SIMPL Event Listener
             if (((Element) processElement).getChild(EL_AUDITING_MODE, DD_NAMESPACE) != null) {
@@ -309,13 +309,13 @@ public class DeploymentUtils {
                 logger.debug("Policy of ds: " + policyData);
               }
 
-              String rfAddress = PROCESS_RF_ADDRESS;
+              String RMAddress = PROCESS_RM_ADDRESS;
 
               DataSource newDs = new DataSource();
               LateBinding lateBinding = new LateBinding();
               lateBinding.setPolicy(policyData);
               lateBinding.setStrategy(strategy);
-              lateBinding.setResourceFrameworkAddress(rfAddress);
+              lateBinding.setResourceManagementAddress(RMAddress);
               newDs.setLateBinding(lateBinding);
               activityMappings.put(activity, newDs);
             }
@@ -413,7 +413,7 @@ public class DeploymentUtils {
         dataSource.getAuthentication().getPassword());
     convertedDataSource.getLateBinding().setPolicy(
         dataSource.getLateBinding().getPolicy());
-    convertedDataSource.getLateBinding().setResourceFrameworkAddress(dataSource.getLateBinding().getResourceFrameworkAddress());
+    convertedDataSource.getLateBinding().setResourceManagementAddress(dataSource.getLateBinding().getResourceManagementAddress());
     
     if (dataSource.getLateBinding().getStrategy().equals(org.simpl.core.webservices.client.Strategy.FIRST_FIND)) {
       convertedDataSource.getLateBinding().setStrategy(Strategy.FIRST_FIND);

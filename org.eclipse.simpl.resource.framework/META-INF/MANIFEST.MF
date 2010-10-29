@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SIMPL Resource Management Eclipse Plug-In
-Bundle-SymbolicName: org.eclipse.impl.resource.management;singleton:=true
+Bundle-SymbolicName: org.eclipse.simpl.resource.management;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Activator: org.eclipse.simpl.resource.management.ResourceManagementPlugIn
 Bundle-Vendor: SIMPL

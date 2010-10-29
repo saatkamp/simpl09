@@ -11,13 +11,13 @@ import org.apache.neethi.Policy;
 import org.apache.neethi.PolicyEngine;
 import org.apache.neethi.util.PolicyComparator;
 import org.simpl.core.services.datasource.DataSource;
-import org.simpl.resource.framework.client.Exception_Exception;
-import org.simpl.resource.framework.client.ResourceFrameworkClient;
+import org.simpl.resource.management.client.Exception_Exception;
+import org.simpl.resource.management.client.ResourceManagementClient;
 
 /**
  * <b>Purpose:</b>Implementation of the strategy service.<br>
- * <b>Description:</b>Uses the resource framework client to respond to the resource
- * framework that is defined in the data source late binding information.<br>
+ * <b>Description:</b>Uses the resource management client to respond to the resource
+ * management that is defined in the data source late binding information.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
@@ -46,8 +46,8 @@ public class StrategyServiceImpl implements StrategyService {
       logger.debug("Policy of incoming ds: " + dataSource.getLateBinding().getPolicy());
       logger.debug("Strategy of incoming ds: "
           + dataSource.getLateBinding().getStrategy().toString());
-      logger.debug("Resource Framework address of incoming ds: "
-          + dataSource.getLateBinding().getResourceFrameworkAddress());
+      logger.debug("Resource Management address of incoming ds: "
+          + dataSource.getLateBinding().getResourceManagementAddress());
     }
 
     DataSource resultDataSource = null;
@@ -74,8 +74,8 @@ public class StrategyServiceImpl implements StrategyService {
         List<org.simpl.core.webservices.client.DataSource> dataSources = null;
 
         try {
-          dataSources = ResourceFrameworkClient
-              .getService(dataSource.getLateBinding().getResourceFrameworkAddress())
+          dataSources = ResourceManagementClient
+              .getService(dataSource.getLateBinding().getResourceManagementAddress())
               .getAllDataSources().getDataSources();
         } catch (Exception_Exception e1) {
           // TODO Auto-generated catch block
@@ -155,8 +155,8 @@ public class StrategyServiceImpl implements StrategyService {
       logger.debug("Format of result ds: " + resultDataSource.getDataFormat());
       logger.debug("Policy of result ds: "
           + resultDataSource.getLateBinding().getPolicy());
-      logger.debug("Resource Framework address of result ds: "
-          + resultDataSource.getLateBinding().getResourceFrameworkAddress());
+      logger.debug("Resource Management address of result ds: "
+          + resultDataSource.getLateBinding().getResourceManagementAddress());
     }
 
     return resultDataSource;

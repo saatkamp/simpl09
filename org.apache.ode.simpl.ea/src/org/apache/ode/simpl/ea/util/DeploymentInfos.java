@@ -32,8 +32,8 @@ public class DeploymentInfos {
 		DataSource data = null;
 
 		if (dataSourceName.contains("rf:")) {
-			// Query the data source from resource framework (on demand)
-			data = DeploymentUtils.getInstance().getResourceFrameworkDataSourceByName(
+			// Query the data source from resource management (on demand)
+			data = DeploymentUtils.getInstance().getResourceManagementDataSourceByName(
 					dataSourceName);
 		} else {
 			// Query the data source from the deployment-descriptor

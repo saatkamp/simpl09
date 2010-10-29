@@ -15,16 +15,15 @@ import org.simpl.core.services.strategy.Strategy;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: UserPasswordAuthentication.java 1183 2010-04-22 20:05:13Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LateBinding", propOrder = { "policy", "strategy", "resourceFrameworkAddress" })
+@XmlType(name = "LateBinding", propOrder = { "policy", "strategy", "resourceManagementAddress" })
 public class LateBinding {
   private String policy;
   private Strategy strategy;
-  private String resourceFrameworkAddress;
+  private String resourceManagementAddress;
 
   /**
    * @return the policy
@@ -57,17 +56,17 @@ public class LateBinding {
   }
 
   /**
-   * @return the resourceFrameworkAddress
+   * @return the resourceManagementAddress
    */
-  public String getResourceFrameworkAddress() {
-    return resourceFrameworkAddress;
+  public String getResourceManagementAddress() {
+    return resourceManagementAddress;
   }
 
   /**
-   * @param resourceFrameworkAddress
-   *          the resourceFrameworkAddress to set
+   * @param resourceManagementAddress
+   *          the resourceManagementAddress to set
    */
-  public void setResourceFrameworkAddress(String resourceFrameworkAddress) {
-    this.resourceFrameworkAddress = resourceFrameworkAddress;
+  public void setResourceManagementAddress(String resourceManagementAddress) {
+    this.resourceManagementAddress = resourceManagementAddress;
   }
 }

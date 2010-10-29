@@ -6,7 +6,7 @@ import java.util.List;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
-import org.eclipse.simpl.resource.framework.model.ModelProvider;
+import org.eclipse.simpl.resource.management.model.ModelProvider;
 
 /**
  * <b>Purpose:</b> <br>
