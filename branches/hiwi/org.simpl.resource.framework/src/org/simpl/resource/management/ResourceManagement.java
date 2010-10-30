@@ -1,4 +1,4 @@
-package org.simpl.resource.framework;
+package org.simpl.resource.management;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -18,25 +18,25 @@ import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
-import org.simpl.resource.framework.client.DataSourceList;
+import org.simpl.resource.management.client.DataSourceList;
 import org.xml.sax.InputSource;
 
 /**
- * The Resource Framework stores data sources and other resources for SIMPL. The resources
+ * The Resource Management stores data sources and other resources for SIMPL. The resources
  * are stored in a PostgreSQL database that is actually accessed via the SIMPL Core data
  * source web service.
  * 
  * The PostgreSQL data source and the SIMPL Core data source web service are setup in the
- * resource-framework-config.xml config file.
+ * resource-management-config.xml config file.
  * 
  * @author Michael Schneidt <michael.schneidt@arcor.de>
  */
-@WebService(name = "ResourceFramework")
+@WebService(name = "ResourceManagement")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public class ResourceFramework {
+public class ResourceManagement {
   DatasourceService dataSourceService = DatasourceServiceClient.getService(
-      ResourceFrameworkConfig.getInstance().getDataSourceServiceAddress());
-  DataSource rfDataSource = ResourceFrameworkConfig.getInstance().getDataSource();
+      ResourceManagementConfig.getInstance().getDataSourceServiceAddress());
+  DataSource rmDataSource = ResourceManagementConfig.getInstance().getDataSource();
 
   /**
    * Returns all data sources.
@@ -45,13 +45,13 @@ public class ResourceFramework {
    * @throws Exception
    */
   @WebMethod(action = "getAllDataSources")
-  public DataSourceList getAllDataSources() throws Exception {
+  public DataSourceList getAllDataSources() throws Exception {System.out.println("ADDRESS: " + ResourceManagementConfig.getInstance().getDataSourceServiceAddress());
     ArrayList<DataSource> dataSources = null;
     String statement = "SELECT * FROM data_sources";
     String result = null;
 
     // retrieve data sources
-    result = dataSourceService.retrieveData(rfDataSource, statement);
+    result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
 
     DataSourceList dataSourceList = new DataSourceList();
@@ -79,7 +79,7 @@ public class ResourceFramework {
     statement += "type LIKE '" + type + "'";
 
     // retrieve data sources
-    result = dataSourceService.retrieveData(rfDataSource, statement);
+    result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
 
     DataSourceList dataSourceList = new DataSourceList();
@@ -109,7 +109,7 @@ public class ResourceFramework {
     statement += "type LIKE '" + type + "'";
 
     // retrieve data sources
-    result = dataSourceService.retrieveData(rfDataSource, statement);
+    result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
 
     DataSourceList dataSourceList = new DataSourceList();
@@ -138,7 +138,7 @@ public class ResourceFramework {
     statement += "name LIKE '" + name + "'";
 
     // retrieve data source
-    result = dataSourceService.retrieveData(rfDataSource, statement);
+    result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
 
     DataSourceList dataSourceList = new DataSourceList();
@@ -152,14 +152,14 @@ public class ResourceFramework {
   }
 
   /**
-   * Creates the tables for the Resource Framework in the configured PostgreSQL data
+   * Creates the tables for the Resource Management in the configured PostgreSQL data
    * source.
    * 
    * @return
    * @throws Exception
    */
-  @WebMethod(action = "createResourceFrameworkTables")
-  public boolean createResourceFrameworkTables() throws Exception {
+  @WebMethod(action = "createResourceManagementTables")
+  public boolean createResourceManagementTables() throws Exception {
     boolean success = false;
     String statement = null;
 
@@ -177,13 +177,13 @@ public class ResourceFramework {
     statement += "password VARCHAR(255)";
     statement += ")";
 
-    success = dataSourceService.executeStatement(rfDataSource, statement);
+    success = dataSourceService.executeStatement(rmDataSource, statement);
 
     return success;
   }
 
   /**
-   * Adds a data source to the Resource Framework.
+   * Adds a data source to the Resource Management.
    * 
    * @param dataSource
    * @return
@@ -208,7 +208,7 @@ public class ResourceFramework {
     statement += ")";
 
     // add data source
-    success = dataSourceService.executeStatement(rfDataSource, statement);
+    success = dataSourceService.executeStatement(rmDataSource, statement);
 
     return success;
   }

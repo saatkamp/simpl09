@@ -1,5 +1,5 @@
 
-package org.simpl.resource.framework.client;
+package org.simpl.resource.management.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Exception", namespace = "http://framework.resource.simpl.org/", propOrder = {
+@XmlType(name = "Exception", namespace = "http://management.resource.simpl.org/", propOrder = {
     "message"
 })
 public class Exception {

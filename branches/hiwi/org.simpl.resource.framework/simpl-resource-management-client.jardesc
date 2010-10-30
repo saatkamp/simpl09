@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="C:/Tomcat6.0/webapps/ode/WEB-INF/lib/simpl-resource-framework-client.jar"/>
-    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.resource.framework/simpl-resource-framework-client.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <jar path="C:/Tomcat6.0/webapps/axis2/WEB-INF/lib/simpl-resource-management-client.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.resource.management/simpl-resource-management-client.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
     <manifest generateManifest="true" manifestLocation="/org.simpl.core/SIMPL-CORE.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
@@ -11,6 +11,6 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.resource.framework/src&lt;org.simpl.resource.framework.client"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.client"/>
     </selectedElements>
 </jardesc>

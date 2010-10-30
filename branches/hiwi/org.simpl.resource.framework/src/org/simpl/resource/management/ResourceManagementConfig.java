@@ -1,4 +1,4 @@
-package org.simpl.resource.framework;
+package org.simpl.resource.management;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,28 +12,28 @@ import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 
-public class ResourceFrameworkConfig {
+public class ResourceManagementConfig {
   /**
    * config file.
    */
-  private static final String CONFIG_FILE_NAME = "simpl-resource-framework-config.xml";
+  private static final String CONFIG_FILE_NAME = "simpl-resource-management-config.xml";
 
   /**
-   * Config file location from Apache ODE \webapps.
+   * Config file location from Apache Tomcat \webapps.
    */
   private static final String CONFIG_FILE_LOCATION_1 = System.getProperty("user.dir")
-      + "\\webapps\\ode\\WEB-INF\\conf\\" + ResourceFrameworkConfig.CONFIG_FILE_NAME;
+      + "\\webapps\\axis2\\WEB-INF\\conf\\" + ResourceManagementConfig.CONFIG_FILE_NAME;
 
   /**
-   * Config file location from Apache ODE \bin.
+   * Config file location from Apache Tomcat \bin.
    */
   private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\ode\\WEB-INF\\conf\\" + ResourceFrameworkConfig.CONFIG_FILE_NAME;
+      + "\\..\\webapps\\axis2\\WEB-INF\\conf\\" + ResourceManagementConfig.CONFIG_FILE_NAME;
 
   /**
    * Config singleton instance.
    */
-  private static final ResourceFrameworkConfig instance = new ResourceFrameworkConfig();
+  private static final ResourceManagementConfig instance = new ResourceManagementConfig();
   
   Element dataSourceServiceElement = null;
   Element dataSourceElement = null;
@@ -41,20 +41,20 @@ public class ResourceFrameworkConfig {
   /**
    * Reads the config file into variables.
    */
-  private ResourceFrameworkConfig() {
+  private ResourceManagementConfig() {System.out.println("DER PATH: " + System.getProperty("user.dir"));
     InputStream in = null;
     Document configDoc = null;
     Element root = null;
     SAXBuilder saxBuilder = new SAXBuilder();
 
     try {
-      in = new FileInputStream(ResourceFrameworkConfig.CONFIG_FILE_LOCATION_1);
+      in = new FileInputStream(ResourceManagementConfig.CONFIG_FILE_LOCATION_1);
     } catch (FileNotFoundException e) {
       try {
-        in = new FileInputStream(ResourceFrameworkConfig.CONFIG_FILE_LOCATION_2);
+        in = new FileInputStream(ResourceManagementConfig.CONFIG_FILE_LOCATION_2);
       } catch (FileNotFoundException e1) {
         try {
-          in = new FileInputStream(ResourceFrameworkConfig.CONFIG_FILE_NAME);
+          in = new FileInputStream(ResourceManagementConfig.CONFIG_FILE_NAME);
         } catch (FileNotFoundException e2) {
           // TODO Auto-generated catch block
           e2.printStackTrace();
@@ -80,8 +80,8 @@ public class ResourceFrameworkConfig {
     }
   }
 
-  public static ResourceFrameworkConfig getInstance() {
-    return ResourceFrameworkConfig.instance;
+  public static ResourceManagementConfig getInstance() {
+    return ResourceManagementConfig.instance;
   }
 
   public DataSource getDataSource() {
