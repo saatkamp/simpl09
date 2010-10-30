@@ -1,5 +1,5 @@
 
-package org.simpl.resource.framework.client;
+package org.simpl.resource.management.client;
 
 import javax.xml.ws.WebFault;
 
@@ -11,7 +11,7 @@ import javax.xml.ws.WebFault;
  * 
  */
 @SuppressWarnings("serial")
-@WebFault(name = "Exception", targetNamespace = "http://framework.resource.simpl.org/")
+@WebFault(name = "Exception", targetNamespace = "http://management.resource.simpl.org/")
 public class Exception_Exception
     extends java.lang.Exception
 {
@@ -20,14 +20,14 @@ public class Exception_Exception
      * Java type that goes as soapenv:Fault detail element.
      * 
      */
-    private org.simpl.resource.framework.client.Exception faultInfo;
+    private org.simpl.resource.management.client.Exception faultInfo;
 
     /**
      * 
      * @param message
      * @param faultInfo
      */
-    public Exception_Exception(String message, org.simpl.resource.framework.client.Exception faultInfo) {
+    public Exception_Exception(String message, org.simpl.resource.management.client.Exception faultInfo) {
         super(message);
         this.faultInfo = faultInfo;
     }
@@ -38,7 +38,7 @@ public class Exception_Exception
      * @param faultInfo
      * @param cause
      */
-    public Exception_Exception(String message, org.simpl.resource.framework.client.Exception faultInfo, Throwable cause) {
+    public Exception_Exception(String message, org.simpl.resource.management.client.Exception faultInfo, Throwable cause) {
         super(message, cause);
         this.faultInfo = faultInfo;
     }
@@ -46,9 +46,9 @@ public class Exception_Exception
     /**
      * 
      * @return
-     *     returns fault bean: org.simpl.resource.framework.client.Exception
+     *     returns fault bean: org.simpl.resource.management.client.Exception
      */
-    public org.simpl.resource.framework.client.Exception getFaultInfo() {
+    public org.simpl.resource.management.client.Exception getFaultInfo() {
         return faultInfo;
     }
 

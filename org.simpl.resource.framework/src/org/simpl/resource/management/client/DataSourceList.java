@@ -1,5 +1,5 @@
 
-package org.simpl.resource.framework.client;
+package org.simpl.resource.management.client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import org.simpl.core.webservices.client.DataSource;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataSourceList", namespace = "http://framework.resource.simpl.org/", propOrder = {
+@XmlType(name = "dataSourceList", namespace = "http://management.resource.simpl.org/", propOrder = {
     "dataSources"
 })
 public class DataSourceList {

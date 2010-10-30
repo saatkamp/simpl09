@@ -1,5 +1,5 @@
 
-package org.simpl.resource.framework.client;
+package org.simpl.resource.management.client;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -17,18 +17,18 @@ import org.simpl.core.webservices.client.DataSource;
  * Generated source version: 2.1
  * 
  */
-@WebService(name = "ResourceFramework", targetNamespace = "http://framework.resource.simpl.org/")
+@WebService(name = "ResourceManagement", targetNamespace = "http://management.resource.simpl.org/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 @XmlSeeAlso({
     ObjectFactory.class
 })
-public interface ResourceFramework {
+public interface ResourceManagement {
 
 
     /**
      * 
      * @return
-     *     returns org.simpl.resource.framework.client.DataSourceList
+     *     returns org.simpl.resource.management.client.DataSourceList
      * @throws Exception_Exception
      */
     @WebMethod(action = "getAllDataSources")
@@ -41,7 +41,7 @@ public interface ResourceFramework {
      * 
      * @param type
      * @return
-     *     returns org.simpl.resource.framework.client.DataSourceList
+     *     returns org.simpl.resource.management.client.DataSourceList
      * @throws Exception_Exception
      */
     @WebMethod(action = "getDataSourcesByType")
@@ -57,7 +57,7 @@ public interface ResourceFramework {
      * @param subType
      * @param type
      * @return
-     *     returns org.simpl.resource.framework.client.DataSourceList
+     *     returns org.simpl.resource.management.client.DataSourceList
      * @throws Exception_Exception
      */
     @WebMethod(action = "getDataSourcesByTypeAndSubtype")
@@ -74,7 +74,7 @@ public interface ResourceFramework {
      * 
      * @param name
      * @return
-     *     returns org.simpl.resource.framework.client.DataSource
+     *     returns org.simpl.resource.management.client.DataSource
      * @throws Exception_Exception
      */
     @WebMethod(action = "getDataSourcesByName")
@@ -82,18 +82,6 @@ public interface ResourceFramework {
     public DataSource getDataSourceByName(
         @WebParam(name = "name", partName = "name")
         String name)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "createResourceFrameworkTables")
-    @WebResult(partName = "return")
-    public boolean createResourceFrameworkTables()
         throws Exception_Exception
     ;
 
@@ -109,6 +97,18 @@ public interface ResourceFramework {
     public boolean addDataSource(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "createResourceManagementTables")
+    @WebResult(partName = "return")
+    public boolean createResourceManagementTables()
         throws Exception_Exception
     ;
 
