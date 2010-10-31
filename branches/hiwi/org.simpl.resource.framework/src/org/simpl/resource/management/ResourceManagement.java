@@ -159,6 +159,31 @@ public class ResourceManagement {
   }
 
   /**
+   * Returns a data source by id.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataSourceById")
+  public DataSource getDataSourceById(@WebParam(name = "id") int id)
+      throws Exception {
+    String statement = null;
+    String result = null;
+    DataSource resultDataSource = new DataSource();
+
+    // build select statement
+    statement = "SELECT * FROM data_sources WHERE ";
+    statement += "id = " + id + "'";
+
+    // retrieve data source
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    resultDataSource = this.getDataSourcesFromResult(result).get(0);
+
+    return resultDataSource;
+  }
+  
+  /**
    * Creates the tables for the Resource Management in the configured PostgreSQL data
    * source.
    * 
