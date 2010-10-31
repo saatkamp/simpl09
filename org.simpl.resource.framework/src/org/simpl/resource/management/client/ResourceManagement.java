@@ -87,6 +87,21 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.DataSource
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataSourceById")
+    @WebResult(partName = "return")
+    public DataSource getDataSourceById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns boolean
      * @throws Exception_Exception
