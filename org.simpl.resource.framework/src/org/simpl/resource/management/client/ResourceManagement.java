@@ -87,6 +87,18 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "createResourceManagementTables")
+    @WebResult(partName = "return")
+    public boolean createResourceManagementTables()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns boolean
@@ -102,13 +114,16 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param arg0
      * @return
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "createResourceManagementTables")
+    @WebMethod(action = "deleteDataSource")
     @WebResult(partName = "return")
-    public boolean createResourceManagementTables()
+    public boolean deleteDataSource(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
         throws Exception_Exception
     ;
 

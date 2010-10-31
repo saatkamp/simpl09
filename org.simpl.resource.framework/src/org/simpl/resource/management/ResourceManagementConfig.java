@@ -12,6 +12,17 @@ import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 
+/**
+ * <b>Purpose:</b><br>
+ * <b>Description:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
+ * 
+ * @author hiwi<br>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
+ */
 public class ResourceManagementConfig {
   /**
    * config file.
@@ -41,7 +52,7 @@ public class ResourceManagementConfig {
   /**
    * Reads the config file into variables.
    */
-  private ResourceManagementConfig() {System.out.println("DER PATH: " + System.getProperty("user.dir"));
+  private ResourceManagementConfig() {
     InputStream in = null;
     Document configDoc = null;
     Element root = null;

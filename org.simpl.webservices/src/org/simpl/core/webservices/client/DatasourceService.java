@@ -46,12 +46,12 @@ public interface DatasourceService {
      * @param statement
      * @param dataSource
      * @return
-     *     returns boolean
+     *     returns java.lang.String
      * @throws Exception_Exception
      */
-    @WebMethod(action = "executeStatement")
+    @WebMethod(action = "retrieveData")
     @WebResult(partName = "return")
-    public boolean executeStatement(
+    public String retrieveData(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
@@ -64,12 +64,12 @@ public interface DatasourceService {
      * @param statement
      * @param dataSource
      * @return
-     *     returns java.lang.String
+     *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "retrieveData")
+    @WebMethod(action = "executeStatement")
     @WebResult(partName = "return")
-    public String retrieveData(
+    public boolean executeStatement(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")

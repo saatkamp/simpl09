@@ -22,20 +22,27 @@ import org.simpl.resource.management.client.DataSourceList;
 import org.xml.sax.InputSource;
 
 /**
- * The Resource Management stores data sources and other resources for SIMPL. The resources
- * are stored in a PostgreSQL database that is actually accessed via the SIMPL Core data
- * source web service.
+ * <b>Purpose:</b>The Resource Management stores data sources and other resources for the
+ * SIMPL framework. This class represents the resource management and its web service
+ * interface.<br>
+ * <b>Description:</b>The resources are stored in a PostgreSQL database that is actually
+ * accessed via the SIMPL Core data source web service. The PostgreSQL data source and the
+ * SIMPL Core data source web service are setup in the
+ * WEB-INF\lib\resource-management-config.xml file.<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
  * 
- * The PostgreSQL data source and the SIMPL Core data source web service are setup in the
- * resource-management-config.xml config file.
- * 
+ * @author hiwi<br>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
  * @author Michael Schneidt <michael.schneidt@arcor.de>
  */
 @WebService(name = "ResourceManagement")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ResourceManagement {
-  DatasourceService dataSourceService = DatasourceServiceClient.getService(
-      ResourceManagementConfig.getInstance().getDataSourceServiceAddress());
+  DatasourceService dataSourceService = DatasourceServiceClient
+      .getService(ResourceManagementConfig.getInstance().getDataSourceServiceAddress());
   DataSource rmDataSource = ResourceManagementConfig.getInstance().getDataSource();
 
   /**
@@ -45,7 +52,7 @@ public class ResourceManagement {
    * @throws Exception
    */
   @WebMethod(action = "getAllDataSources")
-  public DataSourceList getAllDataSources() throws Exception {System.out.println("ADDRESS: " + ResourceManagementConfig.getInstance().getDataSourceServiceAddress());
+  public DataSourceList getAllDataSources() throws Exception {
     ArrayList<DataSource> dataSources = null;
     String statement = "SELECT * FROM data_sources";
     String result = null;
@@ -214,6 +221,24 @@ public class ResourceManagement {
   }
 
   /**
+   * Deletes a data source from the Resource Management.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "deleteDataSource")
+  public boolean deleteDataSource(int id) throws Exception {
+    boolean success = false;
+    String statement = "DELETE FROM data_sources WHERE id = " + String.valueOf(id);
+
+    // delete data source
+    success = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return success;
+  }
+
+  /**
    * Parses data sources from a rdb data format result.
    * 
    * @param result
@@ -226,13 +251,13 @@ public class ResourceManagement {
   private ArrayList<DataSource> getDataSourcesFromResult(String result)
       throws JDOMException, IOException {
     ArrayList<DataSource> dataSources = new ArrayList<DataSource>();
-
+    
     Document configDoc = null;
     Element root = null;
     List<Element> rows = null;
     SAXBuilder saxBuilder = new SAXBuilder();
 
-    // transform string to list of dataobject
+    // transform the document to a list of data objects
     configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
     root = configDoc.getRootElement();
     rows = root.getChild("table").getChildren("row");
@@ -241,9 +266,11 @@ public class ResourceManagement {
       DataSource dataSource = new DataSource();
       Authentication authentication = new Authentication();
       List<Element> columns = row.getChildren("column");
-
+      
       for (Element column : columns) {
-        if (column.getAttribute("name").getValue().equals("name")) {
+        if (column.getAttribute("name").getValue().equals("id")) {
+          dataSource.setId(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("name")) {
           dataSource.setName(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("address")) {
           dataSource.setAddress(column.getValue());

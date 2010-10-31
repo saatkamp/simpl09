@@ -38,14 +38,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSourceList }
-     * 
-     */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
-    }
-
-    /**
      * Create an instance of {@link Exception }
      * 
      */
@@ -59,6 +51,14 @@ public class ObjectFactory {
      */
     public LateBinding createLateBinding() {
         return new LateBinding();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceList }
+     * 
+     */
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
     }
 
     /**
