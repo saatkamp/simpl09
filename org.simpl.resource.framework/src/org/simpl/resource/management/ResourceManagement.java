@@ -18,6 +18,8 @@ import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
+import org.simpl.core.webservices.client.Exception_Exception;
+import org.simpl.core.webservices.client.LateBinding;
 import org.simpl.resource.management.client.DataSourceList;
 import org.xml.sax.InputSource;
 
@@ -166,15 +168,14 @@ public class ResourceManagement {
    * @throws Exception
    */
   @WebMethod(action = "getDataSourceById")
-  public DataSource getDataSourceById(@WebParam(name = "id") int id)
-      throws Exception {
+  public DataSource getDataSourceById(@WebParam(name = "id") int id) throws Exception {
     String statement = null;
     String result = null;
     DataSource resultDataSource = new DataSource();
 
     // build select statement
     statement = "SELECT * FROM data_sources WHERE ";
-    statement += "id = " + id + "'";
+    statement += "id = " + id;
 
     // retrieve data source
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -182,7 +183,7 @@ public class ResourceManagement {
 
     return resultDataSource;
   }
-  
+
   /**
    * Creates the tables for the Resource Management in the configured PostgreSQL data
    * source.
@@ -204,7 +205,7 @@ public class ResourceManagement {
     statement += "subtype VARCHAR(255), ";
     statement += "language VARCHAR(255), ";
     statement += "dataformat VARCHAR(255), ";
-    statement += "wspolicy XML, ";
+    statement += "policy XML, ";
     statement += "username VARCHAR(255), ";
     statement += "password VARCHAR(255)";
     statement += ")";
@@ -225,6 +226,12 @@ public class ResourceManagement {
   public boolean addDataSource(DataSource dataSource) throws Exception {
     boolean success = false;
     String statement = null;
+    String policy = dataSource.getLateBinding().getPolicy();
+
+    // set empty xml policy value
+    if (policy.equals("")) {
+      policy = "<empty/>";
+    }
 
     // build SQL insert statement
     statement = "INSERT INTO data_sources (name, address, type, subtype, language, dataformat, wspolicy, username, password) VALUES (";
@@ -234,12 +241,46 @@ public class ResourceManagement {
     statement += "'" + dataSource.getSubType() + "', ";
     statement += "'" + dataSource.getLanguage() + "', ";
     statement += "'" + dataSource.getDataFormat() + "', ";
-    statement += "'" + dataSource.getLateBinding().getPolicy() + "', ";
+    statement += "'" + policy + "', ";
     statement += "'" + dataSource.getAuthentication().getUser() + "', ";
     statement += "'" + dataSource.getAuthentication().getPassword() + "'";
     statement += ")";
 
     // add data source
+    success = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return success;
+  }
+
+  /**
+   * 
+   * @param dataSource
+   * @return
+   * @throws Exception_Exception
+   */
+  @WebMethod(action = "updateDataSource")
+  public boolean updateDataSource(DataSource dataSource) throws Exception {
+    boolean success = false;
+    String statement = "UPDATE data_sources SET ";
+    String policy = dataSource.getLateBinding().getPolicy();
+
+    // set empty xml policy value
+    if (policy.equals("")) {
+      policy = "<empty/>";
+    }
+
+    statement += "name='" + dataSource.getName() + "',";
+    statement += "address='" + dataSource.getAddress() + "',";
+    statement += "type='" + dataSource.getType() + "',";
+    statement += "subtype='" + dataSource.getSubType() + "',";
+    statement += "language='" + dataSource.getLanguage() + "',";
+    statement += "dataformat='" + dataSource.getDataFormat() + "',";
+    statement += "username='" + dataSource.getAuthentication().getUser() + "',";
+    statement += "password='" + dataSource.getAuthentication().getPassword() + "',";
+    statement += "wspolicy='" + policy + "'";
+    statement += " WHERE id=" + dataSource.getId();
+
+    // delete data source
     success = dataSourceService.executeStatement(rmDataSource, statement);
 
     return success;
@@ -276,7 +317,7 @@ public class ResourceManagement {
   private ArrayList<DataSource> getDataSourcesFromResult(String result)
       throws JDOMException, IOException {
     ArrayList<DataSource> dataSources = new ArrayList<DataSource>();
-    
+
     Document configDoc = null;
     Element root = null;
     List<Element> rows = null;
@@ -290,8 +331,9 @@ public class ResourceManagement {
     for (Element row : rows) {
       DataSource dataSource = new DataSource();
       Authentication authentication = new Authentication();
+      LateBinding lateBinding = new LateBinding();
       List<Element> columns = row.getChildren("column");
-      
+
       for (Element column : columns) {
         if (column.getAttribute("name").getValue().equals("id")) {
           dataSource.setId(column.getValue());
@@ -312,13 +354,14 @@ public class ResourceManagement {
         } else if (column.getAttribute("name").getValue().equals("password")) {
           authentication.setPassword(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("wspolicy")) {
-          dataSource.setDataFormat(column.getValue());
+          lateBinding.setPolicy(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("id")) {
           dataSource.setName(column.getValue());
         }
       }
 
       dataSource.setAuthentication(authentication);
+      dataSource.setLateBinding(lateBinding);
       dataSources.add(dataSource);
     }
 
