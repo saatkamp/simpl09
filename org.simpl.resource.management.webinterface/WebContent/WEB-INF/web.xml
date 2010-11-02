@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>rmweb</display-name>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <description>IndexAction</description>
+    <display-name>IndexAction</display-name>
+    <servlet-name>IndexAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.IndexAction</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>FormAction</description>
+    <display-name>FormAction</display-name>
+    <servlet-name>FormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.FormAction</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>IndexAction</servlet-name>
+    <url-pattern>/IndexAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>FormAction</servlet-name>
+    <url-pattern>/FormAction</url-pattern>
+  </servlet-mapping>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>rmweb</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    
+    <auth-constraint>
+      <role-name>secure</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Interner Bereich</realm-name>
+  </login-config>
+</web-app>
