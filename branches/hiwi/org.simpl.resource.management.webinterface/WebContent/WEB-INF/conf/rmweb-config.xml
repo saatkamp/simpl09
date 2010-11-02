@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceManagementWebInterface>
+  <!--SIMPL Core data source service-->
+  <DataSourceService>
+    <address>http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl</address>
+  </DataSourceService>
+
+  <!--SIMPL resource management service-->
+  <ResourceManagement>
+    <address>http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl</address>
+  </ResourceManagement>
+</ResourceManagementWebInterface>
