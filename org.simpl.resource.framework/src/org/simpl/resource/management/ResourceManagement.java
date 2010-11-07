@@ -230,7 +230,9 @@ public class ResourceManagement {
 
     // set empty xml policy value
     if (policy.equals("")) {
-      policy = "<empty/>";
+      policy = "NULL";
+    } else {
+      policy = "'" + policy + "'";
     }
 
     // build SQL insert statement
@@ -241,7 +243,7 @@ public class ResourceManagement {
     statement += "'" + dataSource.getSubType() + "', ";
     statement += "'" + dataSource.getLanguage() + "', ";
     statement += "'" + dataSource.getDataFormat() + "', ";
-    statement += "'" + policy + "', ";
+    statement += "" + policy + ", ";
     statement += "'" + dataSource.getAuthentication().getUser() + "', ";
     statement += "'" + dataSource.getAuthentication().getPassword() + "'";
     statement += ")";
@@ -266,18 +268,20 @@ public class ResourceManagement {
 
     // set empty xml policy value
     if (policy.equals("")) {
-      policy = "<empty/>";
+      policy = "NULL";
+    } else {
+      policy = "'" + policy + "'";
     }
 
     statement += "name='" + dataSource.getName() + "',";
-    statement += "address='" + dataSource.getAddress() + "',";
+    statement += "address='" + dataSource.getAddress().replace("\\", "\\\\") + "',";
     statement += "type='" + dataSource.getType() + "',";
     statement += "subtype='" + dataSource.getSubType() + "',";
     statement += "language='" + dataSource.getLanguage() + "',";
     statement += "dataformat='" + dataSource.getDataFormat() + "',";
     statement += "username='" + dataSource.getAuthentication().getUser() + "',";
     statement += "password='" + dataSource.getAuthentication().getPassword() + "',";
-    statement += "wspolicy='" + policy + "'";
+    statement += "wspolicy=" + policy + "";
     statement += " WHERE id=" + dataSource.getId();
 
     // delete data source

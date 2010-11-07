@@ -118,13 +118,13 @@
 
   <tr>
     <td><label>Password</label></td>
-    <td><input name="password" type="text" value="<%=password%>" size="100" /></td>
+    <td><input name="password" type="password" value="<%=password%>" size="100" /></td>
   </tr>
 
   <tr>
     <td><label>Policy file</label></td>
     <td>
-      <textarea name="policyData" cols="77" rows="5" readonly><%=policy%></textarea>
+      <textarea name="policyData" cols="77" rows="5"><%=policy%></textarea>
       <br/>
       <input name="policy" type="file" size="100"/>
     </td>
