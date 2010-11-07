@@ -13,15 +13,6 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <title>SIMPL Resource Management Web Interface: data source list</title>
-  <script type="text/javascript">
-  	function confirm() {
-  		Check = confirm("Are you sure to delete the data source?");
-  
-  		if (Check == true) {
-  			document.datasources.submit();
-  		}
-  	}
-  </script>
 </head>
 
 <body>
@@ -32,8 +23,9 @@
 <h2>Data Source List</h2>
 
 <form name="datasources" action="IndexAction" method="post">
-  <table border="1" cellspacing="3" cellpadding="3" style="border: 1px solid;">
+  <table border="1" cellspacing="3" cellpadding="3">
     <tr>
+      <td></td>
       <td>Name</td>
       <td>Address</td>
       <td>Type</td>
@@ -47,6 +39,7 @@
     
     <% for (DataSource source : dataSources) { %>
       <tr>
+        <td><input type="radio" name="id" value="<%=source.getId()%>"></input></td>
         <td><%=source.getName()%></td>
         <td><%=source.getAddress()%></td>
         <td><%=source.getType()%></td>
@@ -56,7 +49,6 @@
         <td><%=source.getAuthentication().getUser()%></td>
         <td><%=source.getAuthentication().getPassword()%></td>
         <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
-        <td><input type="radio" name="id" value="<%=source.getId()%>"></input></td>
       </tr>
     <% } %>
   </table>
@@ -65,7 +57,7 @@
   <input type="submit" name="indexSubmit" value="New" />
   <% if (dataSources.size() > 0) { %>
     <input type="submit" name="indexSubmit" value="Edit" "/>
-    <input type="submit" name="indexSubmit" value="Delete" onclick="confirm()" />
+    <input type="submit" name="indexSubmit" value="Delete" onclick="return confirm('Are you sure to delete the data source?')" />
   <% } %>
 </form>
   

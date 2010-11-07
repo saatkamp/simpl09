@@ -43,8 +43,8 @@ public class FormAction extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     HashMap<String, String> parameters = MultipartForm.getParameters(request);
-
-    if (parameters.get("formSubmit").equals("Save") && parameters.get("id") == null) {
+    
+    if (parameters.get("formSubmit").equals("Save") && parameters.get("id").equals("")) {
       if (this.save(parameters)) {
         response.sendRedirect("index.jsp?message=Successfully created data source.");
       } else {
