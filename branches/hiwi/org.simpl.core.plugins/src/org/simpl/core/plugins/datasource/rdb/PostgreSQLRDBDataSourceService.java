@@ -98,6 +98,7 @@ public class PostgreSQLRDBDataSourceService extends
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
+
     Statement connStatement = null;
     ResultSet resultSet = null;
     RDBResult rdbResult = null;
@@ -364,8 +365,8 @@ public class PostgreSQLRDBDataSourceService extends
 
     // test if target already exists
     try {
-      createdTarget = SIMPLCore.getInstance().dataSourceService().executeStatement(
-          dataSource, "SELECT * FROM " + target);
+      createdTarget = SIMPLCore.getInstance().dataSourceService()
+          .executeStatement(dataSource, "SELECT * FROM " + target);
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -387,9 +388,9 @@ public class PostgreSQLRDBDataSourceService extends
         if (i > 0) {
           createTargetStatement += ",";
         }
-        
+
         createTargetStatement += columns.get(i).getString("name") + " "
-        + this.getColumnType(columns.get(i).getString("name"), tableMetaData);        
+            + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
       }
 
       // add primary keys
