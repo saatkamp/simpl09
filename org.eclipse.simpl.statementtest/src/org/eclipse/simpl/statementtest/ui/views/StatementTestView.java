@@ -264,9 +264,11 @@ public class StatementTestView extends ViewPart {
   }
 
   /**
-   * Builts a result table from rdb result data.
+   * Builds a result table from RDB result data.
    * 
    * @param result
+   * @param table
+   *          The table GUI to build in
    */
   private void buildRDBResultTable(RelationalResult result, Table table) {
     TableItem row = null;
@@ -280,15 +282,15 @@ public class StatementTestView extends ViewPart {
     column = new TableColumn(table, SWT.LEFT);
     column.setText("#");
     column.setWidth(25);
-
+    
     for (String columnName : result.getColumns()) {
       column = new TableColumn(table, SWT.LEFT);
-      
+
       // primary key marker
       if (result.getPrimaryKeys().contains(columnName)) {
         columnName = "*" + columnName;
       }
-      
+
       column.setText(columnName);
       column.setWidth(100);
     }
@@ -308,18 +310,20 @@ public class StatementTestView extends ViewPart {
   }
 
   /**
-   * Builts a comparative result table between two rdb results, where altered data is
+   * Builds a comparative result table between two RDB results, where altered data is
    * colorized.
    * 
-   * result: after execution comparativeResult: before execution
-   * 
-   * green = new data red = deleted data orange = altered data
+   * green = new data | red = deleted data | orange = altered data
    * 
    * @param result
+   *          Result after execution
    * @param comparativeResult
+   *          Result before execution
+   * @param table
+   *          The table GUI to build in
    */
   private void buildRDBResultComparativeTable(RelationalResult result,
-      RelationalResult comparativeResult) {
+      RelationalResult comparativeResult, Table table) {
     TableItem row = null;
     TableColumn column = null;
 
@@ -328,24 +332,24 @@ public class StatementTestView extends ViewPart {
     int alteredTuple = 0;
     boolean changeInRow = false;
 
-    resultTable.setLinesVisible(true);
-    resultTable.setHeaderVisible(true);
-    resultTable.setEnabled(true);
+    table.setLinesVisible(true);
+    table.setHeaderVisible(true);
+    table.setEnabled(true);
 
     // numeration column
-    column = new TableColumn(resultTable, SWT.LEFT);
+    column = new TableColumn(table, SWT.LEFT);
     column.setText("#");
     column.setWidth(25);
-
+System.out.println(comparativeResult);
     if (result.getRowCount() >= comparativeResult.getRowCount()) {
       for (String columnName : result.getColumns()) {
-        column = new TableColumn(resultTable, SWT.LEFT);
+        column = new TableColumn(table, SWT.LEFT);
         column.setText(columnName);
         column.setWidth(100);
       }
 
       for (int i = 0; i < result.getRowCount(); i++) {
-        row = new TableItem(resultTable, SWT.NONE);
+        row = new TableItem(table, SWT.NONE);
 
         changeInRow = false;
 
@@ -381,13 +385,13 @@ public class StatementTestView extends ViewPart {
       this.whiteValueLabel.setText(String.valueOf(result.getRowCount()) + STATISTIC_GAP);
     } else {
       for (String columnName : comparativeResult.getColumns()) {
-        column = new TableColumn(resultTable, SWT.LEFT);
+        column = new TableColumn(table, SWT.LEFT);
         column.setText(columnName);
         column.setWidth(100);
       }
 
       for (int i = 0; i < comparativeResult.getRowCount(); i++) {
-        row = new TableItem(resultTable, SWT.NONE);
+        row = new TableItem(table, SWT.NONE);
 
         changeInRow = false;
 
@@ -430,7 +434,7 @@ public class StatementTestView extends ViewPart {
   }
 
   /**
-   * Builts a table from a create table result.
+   * Builds a table from a "CREATE table" result.
    * 
    * @param tableResult
    */
@@ -615,7 +619,7 @@ public class StatementTestView extends ViewPart {
     Label blueTextLabel = null;
     Label primaryKeyLabel = null;
     Label primaryKeyTextLabel = null;
-    
+
     statisticComposite = new Composite(resultComposite, SWT.NONE);
     statisticComposite.setLayout(new GridLayout(14, false));
     statisticComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
@@ -675,7 +679,7 @@ public class StatementTestView extends ViewPart {
     blueValueLabel = new Label(statisticComposite, SWT.NONE);
     blueValueLabel.setText("0    ");
     blueValueLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
-    
+
     // primary key label
     primaryKeyLabel = new Label(statisticComposite, SWT.NONE);
     primaryKeyLabel.setText("*");
@@ -694,15 +698,17 @@ public class StatementTestView extends ViewPart {
   private void buildResultTables(StatementTest statementTest) {
     if (statementTest.getResult() instanceof RelationalResult
         && statementTest.getComparativeResult() == null) {
-      this.buildRDBResultTable(((RelationalResult) statementTest.getResult()), resultTable);
+      this.buildRDBResultTable((RelationalResult) statementTest.getResult(),
+          this.resultTable);
     } else if (statementTest.getResult() instanceof RelationalResult
         && statementTest.getComparativeResult() instanceof RelationalResult) {
-      this.buildRDBResultComparativeTable(((RelationalResult) statementTest.getResult()),
-          ((RelationalResult) statementTest.getComparativeResult()));
+      this.buildRDBResultComparativeTable((RelationalResult) statementTest.getResult(),
+          (RelationalResult) statementTest.getComparativeResult(), this.resultTable);
 
       if (statementTest.isEnhancedResult()) {
-        this.buildRDBResultTable(((RelationalResult) statementTest.getComparativeResult()),
-            originalTable);
+        this.buildRDBResultComparativeTable(
+            (RelationalResult) statementTest.getComparativeResult(),
+            (RelationalResult) statementTest.getResult(), this.originalTable);
       }
     } else if (statementTest.getResult() instanceof CreateTableResult) {
       this.buildCreateTableResultTable(((CreateTableResult) statementTest.getResult()));

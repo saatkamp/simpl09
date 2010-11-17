@@ -120,7 +120,8 @@ public class StatementScreeningPage extends StatementTestWizardPage {
 
     this.updateDataSource();
 
-    if (!this.statementTest.getActivity().eClass().getName().equals("CreateActivity")) {
+    if (!this.statementTest.getActivity().eClass().getName().equals("CreateActivity")
+        && !this.statementTest.getDataSource().getType().equals("Filesystem")) {
       optionsGroup = new Group(this.pageComposite, SWT.SHADOW_NONE);
       optionsGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
       optionsGroup.setLayout(new GridLayout(2, false));
@@ -148,8 +149,11 @@ public class StatementScreeningPage extends StatementTestWizardPage {
     if (!this.statementTest.getActivity().eClass().getName().equals("QueryActivity")
         && !this.statementTest.getActivity().eClass().getName().equals("CreateActivity")
         && !this.statementTest.getActivity().eClass().getName().equals("DropActivity")
-        && !this.statementTest.getActivity().eClass().getName().equals("TransferActivity")
-        && !this.statementTest.getActivity().eClass().getName().equals("RetrieveDataActivity")) {
+        && !this.statementTest.getActivity().eClass().getName()
+            .equals("TransferActivity")
+        && !this.statementTest.getActivity().eClass().getName()
+            .equals("RetrieveDataActivity")
+        && !this.statementTest.getDataSource().getType().equals("Filesystem")) {
       exclusiveResultLabel = new Label(optionsGroup, SWT.NONE);
       exclusiveResultLabel.setText(EXCLUSIVE_RESULT_LABEL);
       exclusiveResultLabel.addMouseListener(new MouseAdapter() {
@@ -210,8 +214,8 @@ public class StatementScreeningPage extends StatementTestWizardPage {
       ContainerVariable containerVariable = statementTest.getContainerVariables().get(
           bpelContainerVariable);
 
-      generatedStatement = generatedStatement.replaceAll("\\["
-          + containerVariable.getName() + "\\]", containerVariable.toString());
+      generatedStatement = generatedStatement.replaceAll(
+          "\\[" + containerVariable.getName() + "\\]", containerVariable.toString());
     }
 
     text.setText(generatedStatement);
