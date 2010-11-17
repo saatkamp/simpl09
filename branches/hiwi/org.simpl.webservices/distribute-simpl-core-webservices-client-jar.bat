@@ -1,5 +1,5 @@
 @echo off
-REM org.simpl.resource.framework
+REM org.simpl.resource.management
 copy /Y "C:\Tomcat6.0\webapps\ode\WEB-INF\lib\simpl-core-webservices-client.jar" "C:\Tomcat6.0\webapps\axis2\WEB-INF\lib"
 
 REM org.eclipse.simpl.communication
