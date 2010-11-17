@@ -20,102 +20,95 @@ import org.simpl.core.webservices.client.Exception_Exception;
  */
 @SuppressWarnings("unchecked")
 public class SIMPLCore {
-	AdministrationService administrationService = null;
-	DatasourceService datasourceService = null;
+  AdministrationService administrationService = null;
+  DatasourceService datasourceService = null;
 
-	private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn
-			.getDefault().getPreferenceStore().getString(
-					"SIMPL_CORE_DSS_ADDRESS");
+  private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn.getDefault()
+      .getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS");
 
-	 private final static String AS_WSDL_ADDRESS = CommunicationPlugIn
-   .getDefault().getPreferenceStore().getString(
-       "SIMPL_CORE_AS_ADDRESS");
-	
-	private DatasourceService getDatasourceService() {
-		if (datasourceService == null) {
-			datasourceService = DatasourceServiceClient.getService(DSS_WSDL_ADDRESS);
-		}
-		return datasourceService;
-	}
+  private final static String AS_WSDL_ADDRESS = CommunicationPlugIn.getDefault()
+      .getPreferenceStore().getString("SIMPL_CORE_AS_ADDRESS");
 
-	private AdministrationService getAdministrationService() {  
-		if (administrationService == null) {
-			administrationService = AdministrationServiceClient.getService(AS_WSDL_ADDRESS);
-		}
-		return administrationService;
-	}
+  private DatasourceService getDatasourceService() {
+    if (datasourceService == null) {
+      datasourceService = DatasourceServiceClient.getService(DSS_WSDL_ADDRESS);
+    }
+    return datasourceService;
+  }
 
-	public boolean save(String schema, String table, String settingName,
-			LinkedHashMap<String, String> settings) {
-		boolean success = false;
+  private AdministrationService getAdministrationService() {
+    if (administrationService == null) {
+      administrationService = AdministrationServiceClient.getService(AS_WSDL_ADDRESS);
+    }
+    return administrationService;
+  }
 
-		success = getAdministrationService().saveSettings(schema, table,
-				settingName, Parameter.serialize(settings));
+  public boolean save(String schema, String table, String settingName,
+      LinkedHashMap<String, String> settings) {
+    boolean success = false;
 
-		return success;
-	}
+    success = getAdministrationService().saveSettings(schema, table, settingName,
+        Parameter.serialize(settings));
 
-	public LinkedHashMap<String, String> load(String schema, String table,
-			String settingName) {
-		LinkedHashMap<String, String> settings = null;
+    return success;
+  }
 
-		settings = (LinkedHashMap<String, String>) Parameter
-				.deserialize(getAdministrationService().loadSettings(schema,
-						table, settingName));
+  public LinkedHashMap<String, String> load(String schema, String table,
+      String settingName) {
+    LinkedHashMap<String, String> settings = null;
 
-		return settings;
-	}
+    settings = (LinkedHashMap<String, String>) Parameter
+        .deserialize(getAdministrationService().loadSettings(schema, table, settingName));
 
-	public String getMetaData(DataSource dataSource, String filter)
-			throws Exception_Exception {
+    return settings;
+  }
 
-		String metaData = getDatasourceService()
-				.getMetaData(dataSource, filter);
+  public String getMetaData(DataSource dataSource, String filter)
+      throws Exception_Exception {
 
-		return metaData;
-	}
+    String metaData = getDatasourceService().getMetaData(dataSource, filter);
 
-	public List<String> getDatasourceTypes() {
-		List<String> dsTypes = (List<String>) Parameter
-				.deserialize(getDatasourceService().getDataSourceTypes());
+    return metaData;
+  }
 
-		return dsTypes;
-	}
+  public List<String> getDatasourceTypes() {
+    List<String> dsTypes = (List<String>) Parameter.deserialize(getDatasourceService()
+        .getDataSourceTypes());
 
-	public List<String> getDatasourceSubTypes(String dsType) {
-		List<String> dsSubTypes = (List<String>) Parameter
-				.deserialize(getDatasourceService().getDataSourceSubTypes(
-						dsType));
+    return dsTypes;
+  }
 
-		return dsSubTypes;
-	}
+  public List<String> getDatasourceSubTypes(String dsType) {
+    List<String> dsSubTypes = (List<String>) Parameter.deserialize(getDatasourceService()
+        .getDataSourceSubTypes(dsType));
 
-	public List<String> getDatasourceLanguages(String dsSubtype) {
-		List<String> dsSubTypeLanguages = (List<String>) Parameter
-				.deserialize(getDatasourceService().getDataSourceLanguages(
-						dsSubtype));
+    return dsSubTypes;
+  }
 
-		return dsSubTypeLanguages;
-	}
+  public List<String> getDatasourceLanguages(String dsSubtype) {
+    List<String> dsSubTypeLanguages = (List<String>) Parameter
+        .deserialize(getDatasourceService().getDataSourceLanguages(dsSubtype));
 
-	/**
-	 * @param subTypeName
-	 * @return
-	 */
-	public List<String> getSupportedDataFormats(DataSource dataSource) {
-		try {
-			List<String> dsDataFormat = (List<String>) Parameter
-					.deserialize(getDatasourceService()
-							.getSupportedDataFormatTypes(dataSource));
+    return dsSubTypeLanguages;
+  }
 
-			return dsDataFormat;
-		} catch (Exception e) {
-			return null;
-		}
-	}
+  /**
+   * @param subTypeName
+   * @return
+   */
+  public List<String> getSupportedDataFormats(DataSource dataSource) {
+    try {
+      List<String> dsDataFormat = (List<String>) Parameter
+          .deserialize(getDatasourceService().getSupportedDataFormatTypes(dataSource));
 
-	public String getDataFormatSchema(DataSource dataSource) {
-	  String dataFormatSchema = "";
+      return dsDataFormat;
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  public String getDataFormatSchema(DataSource dataSource) {
+    String dataFormatSchema = "";
 
     try {
       dataFormatSchema = getDatasourceService().getDataFormatSchema(dataSource);
@@ -124,20 +117,20 @@ public class SIMPLCore {
       e.printStackTrace();
     }
 
-		return dataFormatSchema;
-	}
+    return dataFormatSchema;
+  }
 
-	public boolean isSIMPLCoreAvailable() {
-		boolean isAvailable = false;
-		URL url;
-		try {
-			url = new URL(DSS_WSDL_ADDRESS);
-			URLConnection connection = url.openConnection();
-			connection.connect();
-			isAvailable = true;
-		} catch (Exception e) {
-			isAvailable = false;
-		}
-		return isAvailable;
-	}
+  public boolean isSIMPLCoreAvailable() {
+    boolean isAvailable = false;
+    URL url;
+    try {
+      url = new URL(DSS_WSDL_ADDRESS);
+      URLConnection connection = url.openConnection();
+      connection.connect();
+      isAvailable = true;
+    } catch (Exception e) {
+      isAvailable = false;
+    }
+    return isAvailable;
+  }
 }
