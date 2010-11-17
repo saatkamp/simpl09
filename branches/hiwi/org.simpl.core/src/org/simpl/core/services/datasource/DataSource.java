@@ -169,4 +169,21 @@ public class DataSource {
   public void setDataFormat(String dataFormat) {
     this.dataFormat = dataFormat;
   }
+
+  @Override
+  public String toString() {
+    String string = "";
+
+    string += "DataSource {\r\n";
+    string += "  id: " + this.id + ",\r\n";
+    string += "  name: " + this.name + ",\r\n";
+    string += "  address: " + this.address + ",\r\n";
+    string += "  type: " + this.type + ",\r\n";
+    string += "  subtype: " + this.subType + ",\r\n";
+    string += "  language: " + this.language + ",\r\n";
+    string += "  dataformat: " + this.dataFormat + "\r\n";
+    string += "}";
+
+    return string;
+  }
 }

@@ -73,7 +73,7 @@ public class DataSourceServiceProvider {
   private static void loadPlugins() {
     List<String> plugins = SIMPLCoreConfig.getInstance().getDataSourceServicePlugins();
     Iterator<String> pluginIterator = plugins.iterator();
-    DataSourceServicePlugin<Object, Object> dataSourceServiceInstance;
+    DataSourceServicePlugin<Object, Object> dataSourceServiceInstance = null;
     String dataSourceType = null;
 
     while (pluginIterator.hasNext()) {

@@ -14,18 +14,22 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
 /**
- * <b>Purpose:</b> Reads the SIMPL Core configuration from the configuration file and
- * provides functions to access the configuration settings. This includes information
- * about all registered plug-ins.<br>
- * <b>Description:</b> Searches for the configuration file in the current work directory
- * and in the Apache ODE <i>conf</i> directory whose relative location depends on the
- * execution path of Apache Tomcat.<br>
+ * <b>Purpose:</b> Reads the SIMPL Core configuration from the configuration file and the
+ * Resource Management and provides functions to access the configuration settings. This
+ * includes information about all registered plug-ins.<br>
+ * <b>Description:</b> Expects the configuration file (simpl-core-config.xml) in the
+ * WEB-INF/conf folder related to the running instance of the SIMPL Core. If the Resource
+ * Management is declared in the configuration file and is online, the information from
+ * the Resource Management will overwrite the information from the configuration file. The
+ * configuration file is just intended to be able to run the SIMPL Core without the
+ * Resource Managament.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: SIMPLCoreConfig.java 1673 2010-10-10 17:24:35Z michael.schneidt@arcor.de
+ *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLCoreConfig {
@@ -33,18 +37,6 @@ public class SIMPLCoreConfig {
    * SIMPL config file.
    */
   private static final String CONFIG_FILE_NAME = "simpl-core-config.xml";
-
-  /**
-   * Config file location within Apache ODE.
-   */
-  private static final String CONFIG_FILE_LOCATION_1 = System.getProperty("user.dir")
-      + "\\webapps\\ode\\WEB-INF\\conf\\" + SIMPLCoreConfig.CONFIG_FILE_NAME;
-
-  /**
-   * Config file location within Apache ODE.
-   */
-  private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\ode\\WEB-INF\\conf\\" + SIMPLCoreConfig.CONFIG_FILE_NAME;
 
   /**
    * List of registered data source service plug-ins.
@@ -64,12 +56,12 @@ public class SIMPLCoreConfig {
   /**
    * Maps data formats to the data source services that can use it.
    */
-  private HashMap<String, List<String>> dataFormatMapping = new HashMap<String, List<String>>();
+  private HashMap<String, ArrayList<String>> dataFormatMapping = new HashMap<String, ArrayList<String>>();
 
   /**
    * Maps data format converter to the data source services that can use it.
    */
-  private HashMap<String, List<String>> dataFormatConverterMapping = new HashMap<String, List<String>>();
+  private HashMap<String, ArrayList<String>> dataFormatConverterMapping = new HashMap<String, ArrayList<String>>();
 
   /**
    * Maps the web services to their addresses.
@@ -98,18 +90,21 @@ public class SIMPLCoreConfig {
     List<Element> dataFormatConverterElements = null;
     Element webServicesElement = null;
 
+    // determine path to the simpl-core-config.xml
+    ClassLoader loader = Thread.currentThread().getContextClassLoader();
+    String configFilePath = loader.getResource(
+        SIMPLCore.class.getName().replace('.', '/') + ".class").getPath();
+    configFilePath = configFilePath.replace("file:/", "").substring(0,
+        configFilePath.indexOf("WEB-INF") + 1)
+        + "/conf/";
+
     try {
-      in = new FileInputStream(SIMPLCoreConfig.CONFIG_FILE_LOCATION_1);
+      in = new FileInputStream(configFilePath + CONFIG_FILE_NAME);
     } catch (FileNotFoundException e) {
       try {
-        in = new FileInputStream(SIMPLCoreConfig.CONFIG_FILE_LOCATION_2);
+        in = new FileInputStream(SIMPLCoreConfig.CONFIG_FILE_NAME);
       } catch (FileNotFoundException e1) {
-        try {
-          in = new FileInputStream(SIMPLCoreConfig.CONFIG_FILE_NAME);
-        } catch (FileNotFoundException e2) {
-          // TODO Auto-generated catch block
-          e2.printStackTrace();
-        }
+        e1.printStackTrace();
       }
     }
 
@@ -128,61 +123,73 @@ public class SIMPLCoreConfig {
       webServicesElement = root.getChild("WebServices");
 
       // retrieve data source service plug-ins
-      for (Element dataSourceServicePluginElement : dataSourceServicePluginElements) {
-        dataSourceServicePlugins.add(dataSourceServicePluginElement
-            .getAttributeValue("className"));
+      if (dataSourceServicePluginElements.size() > 0) {
+        for (Element dataSourceServicePluginElement : dataSourceServicePluginElements) {
+          dataSourceServicePlugins.add(dataSourceServicePluginElement
+              .getAttributeValue("className"));
+        }
       }
 
       // retrieve data format plug-ins
-      for (Element dataFormatPluginElement : dataFormatPluginElements) {
-        dataFormatPlugins.add(dataFormatPluginElement.getAttributeValue("className"));
+      if (dataFormatPluginElements.size() > 0) {
+        for (Element dataFormatPluginElement : dataFormatPluginElements) {
+          dataFormatPlugins.add(dataFormatPluginElement.getAttributeValue("className"));
+        }
       }
 
       // retrieve data format converter plug-ins
-      for (Element dataFormatConverterPluginElement : dataFormatConverterPluginElements) {
-        dataFormatConverterPlugins.add(dataFormatConverterPluginElement
-            .getAttributeValue("className"));
+      if (dataFormatConverterPluginElements.size() > 0) {
+        for (Element dataFormatConverterPluginElement : dataFormatConverterPluginElements) {
+          dataFormatConverterPlugins.add(dataFormatConverterPluginElement
+              .getAttributeValue("className"));
+        }
       }
 
       // retrieve data format mapping
-      for (Element dataFormatElement : dataFormatElements) {
-        String dataFormatClassName = getElementbyId(root,
-            dataFormatElement.getAttributeValue("ref")).getAttributeValue("className");
-        List<String> dataSourceServiceClassNames = new ArrayList<String>();
-        String dataSourceServiceClassName = null;
+      if (dataFormatElements.size() > 0) {
+        for (Element dataFormatElement : dataFormatElements) {
+          String dataFormatClassName = getElementbyId(root,
+              dataFormatElement.getAttributeValue("ref")).getAttributeValue("className");
+          ArrayList<String> dataSourceServiceClassNames = new ArrayList<String>();
+          String dataSourceServiceClassName = null;
 
-        for (Element dataSourceServiceElement : (List<Element>) dataFormatElement
-            .getChildren()) {
-          dataSourceServiceClassName = getElementbyId(root,
-              dataSourceServiceElement.getValue()).getAttributeValue("className");
-          dataSourceServiceClassNames.add(dataSourceServiceClassName);
+          for (Element dataSourceServiceElement : (List<Element>) dataFormatElement
+              .getChildren()) {
+            dataSourceServiceClassName = getElementbyId(root,
+                dataSourceServiceElement.getValue()).getAttributeValue("className");
+            dataSourceServiceClassNames.add(dataSourceServiceClassName);
+          }
+
+          dataFormatMapping.put(dataFormatClassName, dataSourceServiceClassNames);
         }
-
-        dataFormatMapping.put(dataFormatClassName, dataSourceServiceClassNames);
       }
 
       // retrieve data format converter mapping
-      for (Element dataFormatConverterElement : dataFormatConverterElements) {
-        String dataFormatConverterClassName = getElementbyId(root,
-            dataFormatConverterElement.getAttributeValue("ref")).getAttributeValue(
-            "className");
-        List<String> dataSourceServiceClassNames = new ArrayList<String>();
-        String dataSourceServiceClassName = null;
+      if (dataFormatConverterElements.size() > 0) {
+        for (Element dataFormatConverterElement : dataFormatConverterElements) {
+          String dataFormatConverterClassName = getElementbyId(root,
+              dataFormatConverterElement.getAttributeValue("ref")).getAttributeValue(
+              "className");
+          ArrayList<String> dataSourceServiceClassNames = new ArrayList<String>();
+          String dataSourceServiceClassName = null;
 
-        for (Element dataSourceServiceElement : (List<Element>) dataFormatConverterElement
-            .getChildren()) {
-          dataSourceServiceClassName = getElementbyId(root,
-              dataSourceServiceElement.getValue()).getAttributeValue("className");
-          dataSourceServiceClassNames.add(dataSourceServiceClassName);
+          for (Element dataSourceServiceElement : (List<Element>) dataFormatConverterElement
+              .getChildren()) {
+            dataSourceServiceClassName = getElementbyId(root,
+                dataSourceServiceElement.getValue()).getAttributeValue("className");
+            dataSourceServiceClassNames.add(dataSourceServiceClassName);
+          }
+
+          dataFormatConverterMapping.put(dataFormatConverterClassName,
+              dataSourceServiceClassNames);
         }
-
-        dataFormatConverterMapping.put(dataFormatConverterClassName,
-            dataSourceServiceClassNames);
       }
 
       // retrieve web services
-      for (Element webService : (List<Element>) webServicesElement.getChildren()) {
-        webServicesMapping.put(webService.getName(), webService.getValue());
+      if (webServicesElement != null) {
+        for (Element webService : (List<Element>) webServicesElement.getChildren()) {
+          webServicesMapping.put(webService.getName(), webService.getValue());
+        }
       }
     } catch (JDOMException e) {
       // TODO Auto-generated catch block
@@ -209,6 +216,13 @@ public class SIMPLCoreConfig {
    * @return List of DataSourcePlugins
    */
   public List<String> getDataSourceServicePlugins() {
+    List<String> dataSourceServicePlugins = SIMPLResourceManagement.getInstance()
+        .getDataSourceServicePlugins();
+
+    if (dataSourceServicePlugins.size() == 0) {
+      dataSourceServicePlugins = this.dataSourceServicePlugins;
+    }
+
     return dataSourceServicePlugins;
   }
 
@@ -219,6 +233,13 @@ public class SIMPLCoreConfig {
    * @return List of DataFormatPlugins
    */
   public List<String> getDataFormatPlugins() {
+    List<String> dataFormatPlugins = SIMPLResourceManagement.getInstance()
+        .getDataFormatPlugins();
+
+    if (dataFormatPlugins.size() == 0) {
+      dataFormatPlugins = this.dataFormatPlugins;
+    }
+
     return dataFormatPlugins;
   }
 
@@ -229,6 +250,13 @@ public class SIMPLCoreConfig {
    * @return List of DataFormatPlugins
    */
   public List<String> getDataFormatConverterPlugins() {
+    List<String> dataFormatConverterPlugins = SIMPLResourceManagement.getInstance()
+        .getDataFormatConverterPlugins();
+
+    if (dataFormatConverterPlugins.size() == 0) {
+      dataFormatConverterPlugins = this.dataFormatConverterPlugins;
+    }
+
     return dataFormatConverterPlugins;
   }
 
@@ -238,7 +266,14 @@ public class SIMPLCoreConfig {
    * 
    * @return data format mapping
    */
-  public HashMap<String, List<String>> getDataFormatMapping() {
+  public HashMap<String, ArrayList<String>> getDataFormatMapping() {
+    HashMap<String, ArrayList<String>> dataFormatMapping = SIMPLResourceManagement
+        .getInstance().getDataFormatMapping();
+
+    if (dataFormatMapping.size() == 0) {
+      dataFormatMapping = this.dataFormatMapping;
+    }
+
     return dataFormatMapping;
   }
 
@@ -248,12 +283,19 @@ public class SIMPLCoreConfig {
    * 
    * @return data format converter mapping
    */
-  public HashMap<String, List<String>> getDataFormatConverterMapping() {
+  public HashMap<String, ArrayList<String>> getDataFormatConverterMapping() {
+    HashMap<String, ArrayList<String>> dataFormatConverterMapping = SIMPLResourceManagement
+        .getInstance().getDataFormatConverterMapping();
+
+    if (dataFormatConverterMapping.size() == 0) {
+      dataFormatConverterMapping = this.dataFormatConverterMapping;
+    }
+
     return dataFormatConverterMapping;
   }
 
   /**
-   * Returns the address of a SIMPL Core web service.
+   * Returns the address of a SIMPL Core needed web service.
    * 
    * @param webService
    *          Web service name

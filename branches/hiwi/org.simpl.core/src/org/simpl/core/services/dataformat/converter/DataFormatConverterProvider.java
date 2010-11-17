@@ -71,7 +71,7 @@ public class DataFormatConverterProvider {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
     DataFormatConverterPlugin dataFormatConverter = null;
 
-    HashMap<String, List<String>> dataFormatCoverterMapping = SIMPLCoreConfig
+    HashMap<String, ArrayList<String>> dataFormatCoverterMapping = SIMPLCoreConfig
         .getInstance().getDataFormatConverterMapping();
 
     for (String dataFormatConverterClassName : dataFormatCoverterMapping.keySet()) {
