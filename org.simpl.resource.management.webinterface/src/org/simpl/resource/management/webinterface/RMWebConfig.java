@@ -10,23 +10,22 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
+/**
+ * <b>Purpose:</b>Offers access to the rmweb-config.xml config file and its data.<br>
+ * <b>Description:</b><br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
+ * 
+ * @author hiwi<br>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
+ */
 public class RMWebConfig {
   /**
-   * config file.
+   * Config file.
    */
   private static final String CONFIG_FILE_NAME = "rmweb-config.xml";
-
-  /**
-   * Config file location from Apache Tomcat \webapps.
-   */
-  private static final String CONFIG_FILE_LOCATION_1 = System.getProperty("user.dir")
-      + "\\webapps\\rmweb\\WEB-INF\\conf\\" + RMWebConfig.CONFIG_FILE_NAME;
-
-  /**
-   * Config file location from Apache Tomcat \bin.
-   */
-  private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\rmweb\\WEB-INF\\conf\\" + RMWebConfig.CONFIG_FILE_NAME;
 
   /**
    * Config singleton instance.
@@ -45,23 +44,24 @@ public class RMWebConfig {
     Element root = null;
     SAXBuilder saxBuilder = new SAXBuilder();
 
+    // determine path to the rmweb-config.xml
+    ClassLoader loader = Thread.currentThread().getContextClassLoader();
+    String configFilePath = loader.getResource(
+        RMWebConfig.class.getName().replace('.', '/') + ".class").getPath();
+
+    configFilePath = configFilePath.substring(1, configFilePath.indexOf("WEB-INF") + 7)
+        + "/conf/";
+
     try {
-      in = new FileInputStream(RMWebConfig.CONFIG_FILE_LOCATION_1);
+      in = new FileInputStream(configFilePath + CONFIG_FILE_NAME);
     } catch (FileNotFoundException e) {
       try {
-        in = new FileInputStream(RMWebConfig.CONFIG_FILE_LOCATION_2);
+        in = new FileInputStream(RMWebConfig.CONFIG_FILE_NAME);
       } catch (FileNotFoundException e1) {
-        try {
-          in = new FileInputStream(RMWebConfig.CONFIG_FILE_NAME);
-        } catch (FileNotFoundException e2) {
-          System.out.println(RMWebConfig.CONFIG_FILE_LOCATION_1 + " not found");
-          System.out.println(RMWebConfig.CONFIG_FILE_LOCATION_2 + " not found");
-          
-          e2.printStackTrace();
-        }
+        e1.printStackTrace();
       }
     }
-    
+
     // retrieve information from the config file
     if (in != null) {
       try {
@@ -87,10 +87,22 @@ public class RMWebConfig {
   }
 
   public String getResourceManagementAddress() {
-    return resourceManagementElement.getChildText("address");
+    String address = null;
+
+    if (resourceManagementElement != null) {
+      address = resourceManagementElement.getChildText("address");
+    }
+
+    return address;
   }
 
   public String getDataSourceServiceAddress() {
-    return dataSourceServiceElement.getChildText("address");
+    String address = null;
+
+    if (dataSourceServiceElement != null) {
+      address = dataSourceServiceElement.getChildText("address");
+    }
+
+    return address;
   }
 }

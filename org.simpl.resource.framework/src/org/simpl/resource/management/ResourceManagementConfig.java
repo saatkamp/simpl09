@@ -39,13 +39,14 @@ public class ResourceManagementConfig {
    * Config file location from Apache Tomcat \bin.
    */
   private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\axis2\\WEB-INF\\conf\\" + ResourceManagementConfig.CONFIG_FILE_NAME;
+      + "\\..\\webapps\\axis2\\WEB-INF\\conf\\"
+      + ResourceManagementConfig.CONFIG_FILE_NAME;
 
   /**
    * Config singleton instance.
    */
   private static final ResourceManagementConfig instance = new ResourceManagementConfig();
-  
+
   Element dataSourceServiceElement = null;
   Element dataSourceElement = null;
 
@@ -98,10 +99,12 @@ public class ResourceManagementConfig {
   public DataSource getDataSource() {
     DataSource dataSource = new DataSource();
     Authentication authentication = new Authentication();
-    
-    authentication.setUser(dataSourceElement.getChild("Authentication").getChildText("user"));
-    authentication.setPassword(dataSourceElement.getChild("Authentication").getChildText("password"));
-    
+
+    authentication.setUser(dataSourceElement.getChild("Authentication").getChildText(
+        "user"));
+    authentication.setPassword(dataSourceElement.getChild("Authentication").getChildText(
+        "password"));
+
     dataSource.setName(dataSourceElement.getChildText("name"));
     dataSource.setAddress(dataSourceElement.getChildText("address"));
     dataSource.setType(dataSourceElement.getChildText("type"));
@@ -111,7 +114,7 @@ public class ResourceManagementConfig {
 
     return dataSource;
   }
-  
+
   public String getDataSourceServiceAddress() {
     return dataSourceServiceElement.getChildText("address");
   }

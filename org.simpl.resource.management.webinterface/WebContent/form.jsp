@@ -32,6 +32,7 @@
   String password = "";
   String language = "";
   String dataformat = "";
+  
   DataSource dataSource = null;
   String param = null;
   HashMap<String, String> parameters = new HashMap<String, String>();
@@ -41,28 +42,32 @@
   } else {
     @SuppressWarnings("rawtypes")
     Enumeration names = request.getParameterNames();
-    
+
     while (names.hasMoreElements()) {
       param = names.nextElement().toString();
       parameters.put(param, request.getParameter(param));
     }
   }
-  
+
   if (parameters.get("indexSubmit") != null
-      && parameters.get("indexSubmit").equals("Edit") && parameters.get("id") != null) { // edit from index
-    dataSource = resourceManagement.getDataSourceById(Integer.valueOf(parameters.get("id")));
-    id = dataSource.getId();
-    name = dataSource.getName();
-    address = dataSource.getAddress();
-    type = dataSource.getType();
-    subtype = dataSource.getSubType();
-    policy = dataSource.getLateBinding().getPolicy();
-    username = dataSource.getAuthentication().getUser();
-    password = dataSource.getAuthentication().getPassword();
-    language = dataSource.getLanguage();
-    dataformat = dataSource.getDataFormat();
+      && parameters.get("indexSubmit").equals("Edit") && parameters.get("id") != null) { // edit action from index.jsp
+    dataSource = resourceManagement.getDataSourceById(Integer.valueOf(parameters
+        .get("id")));
+
+    if (dataSource != null) {
+      id = dataSource.getId();
+      name = dataSource.getName();
+      address = dataSource.getAddress();
+      type = dataSource.getType();
+      subtype = dataSource.getSubType();
+      policy = dataSource.getLateBinding().getPolicy();
+      username = dataSource.getAuthentication().getUser();
+      password = dataSource.getAuthentication().getPassword();
+      language = dataSource.getLanguage();
+      dataformat = dataSource.getDataFormat();
+    }
   } else if (parameters.get("formSubmit") != null
-      && parameters.get("formSubmit").equals("Save")) { // return to form after saving
+      && parameters.get("formSubmit").equals("Save")) { // TODO: return to form after saving (does not work yet)
     id = parameters.get("id");
     name = parameters.get("name");
     address = parameters.get("address");
@@ -76,7 +81,7 @@
     dataformat = parameters.get("dataformat");
   }
 %>
-<h2>Data Source Form</h2>
+<h2>SIMPL Resource Management: Data Source Form</h2>
 
 <form name="datasource" action="FormAction" method="post" enctype="multipart/form-data">
 <table cellspacing="3" cellpadding="3" style="border: 1px solid;">
@@ -107,8 +112,7 @@
 
   <tr>
     <td><label>Data format</label></td>
-    <td><input name="dataformat" type="text" value="<%=dataformat%>"
-      size="100" /></td>
+    <td><%=RMFormMetaData.getInstance().getDataFormatSelect(dataformat)%></td>
   </tr>
 
   <tr>
@@ -140,7 +144,8 @@
 <br/>
 <div>
   <b>
-  <%= (request.getParameter("message") != null ? request.getParameter("message"): "") %>
+  <%=(request.getParameter("message") != null ? request
+          .getParameter("message") : "")%>
   </b>
 </div>
 </body>

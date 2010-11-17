@@ -18,7 +18,7 @@ import org.simpl.core.services.strategy.StrategyServiceImpl;
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLCore {
-  private static SIMPLCore instance = null;
+  private static SIMPLCore instance = new SIMPLCore();
   private static AdministrationServiceImpl administrationService = new AdministrationServiceImpl();
   private static StrategyServiceImpl strategyService = new StrategyServiceImpl();
   private static DataSourceServiceImpl dataSourceService = new DataSourceServiceImpl();
@@ -35,10 +35,6 @@ public class SIMPLCore {
    * @throws Exception
    */
   public static synchronized SIMPLCore getInstance() {
-    if (SIMPLCore.instance == null) {
-      SIMPLCore.instance = new SIMPLCore();
-    }
-
     return SIMPLCore.instance;
   }
 

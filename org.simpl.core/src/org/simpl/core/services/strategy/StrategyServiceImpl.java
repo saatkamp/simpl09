@@ -63,7 +63,7 @@ public class StrategyServiceImpl implements StrategyService {
     Policy dsPolicyObj = null;
     Policy wsPolicyObj = null;
     URL policyURL = null;
-    org.simpl.core.webservices.client.DataSource resultRFDataSource = null;
+    org.simpl.core.webservices.client.DataSource resultRMDataSource = null;
 
     if (hasDsPolicy) {
       dsPolicyObj = PolicyEngine.getPolicy(new ByteArrayInputStream(dataSource
@@ -109,27 +109,27 @@ public class StrategyServiceImpl implements StrategyService {
 
             // comparison
             if (PolicyComparator.compare(wsPolicyObj, dsPolicyObj)) {
-              resultRFDataSource = rfDataSource;
+              resultRMDataSource = rfDataSource;
               break;
             }
           }
         }
 
-        if (resultRFDataSource != null) {
+        if (resultRMDataSource != null) {
           resultDataSource = new DataSource();
-          resultDataSource.setName(resultRFDataSource.getName());
-          resultDataSource.setType(resultRFDataSource.getType());
-          resultDataSource.setSubType(resultRFDataSource.getSubType());
+          resultDataSource.setName(resultRMDataSource.getName());
+          resultDataSource.setType(resultRMDataSource.getType());
+          resultDataSource.setSubType(resultRMDataSource.getSubType());
 
           resultDataSource.getLateBinding().setPolicy(
-              resultRFDataSource.getLateBinding().getPolicy());
+              resultRMDataSource.getLateBinding().getPolicy());
 
-          resultDataSource.setAddress(resultRFDataSource.getAddress());
-          resultDataSource.setDataFormat(resultRFDataSource.getDataFormat());
+          resultDataSource.setAddress(resultRMDataSource.getAddress());
+          resultDataSource.setDataFormat(resultRMDataSource.getDataFormat());
           resultDataSource.getAuthentication().setUser(
-              resultRFDataSource.getAuthentication().getUser());
+              resultRMDataSource.getAuthentication().getUser());
           resultDataSource.getAuthentication().setPassword(
-              resultRFDataSource.getAuthentication().getPassword());
+              resultRMDataSource.getAuthentication().getPassword());
         } else {
           resultDataSource = dataSource;
         }

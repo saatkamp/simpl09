@@ -15,7 +15,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * <b>Purpose:</b><br>
+ * <b>Purpose:</b>Offers operations for multipart forms that handle data in another
+ * way.<br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
