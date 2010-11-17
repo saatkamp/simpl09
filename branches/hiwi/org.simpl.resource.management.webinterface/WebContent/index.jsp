@@ -47,7 +47,7 @@
         <td><%=source.getLanguage()%></td>
         <td><%=source.getDataFormat()%></td>
         <td><%=source.getAuthentication().getUser()%></td>
-        <td><%=source.getAuthentication().getPassword().equals("") != null ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
+        <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
         <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
       </tr>
     <% } %>

@@ -59,7 +59,7 @@ public class ResourceManagement {
   @WebMethod(action = "getAllDataSources")
   public DataSourceList getAllDataSources() throws Exception {
     ArrayList<DataSource> dataSources = null;
-    String statement = "SELECT * FROM datasources";
+    String statement = "SELECT * FROM datasources ORDER BY id ASC";
     String result = null;
     
     // retrieve data sources
@@ -119,7 +119,7 @@ public class ResourceManagement {
     // build select statement
     statement = "SELECT * FROM datasources WHERE ";
     statement += "type LIKE '" + type + "' AND ";
-    statement += "subtype LIKE '" + subType + "'";
+    statement += "subtype LIKE '" + subType + "' ORDER BY id ASC";
 
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
