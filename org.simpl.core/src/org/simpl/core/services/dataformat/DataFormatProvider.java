@@ -65,7 +65,7 @@ public class DataFormatProvider {
   public static List<String> getSupportedDataFormatTypes(
       DataSourceService dataSourceService) {
     List<String> dataFormats = new ArrayList<String>();
-    HashMap<String, List<String>> dataFormatMapping = SIMPLCoreConfig.getInstance()
+    HashMap<String, ArrayList<String>> dataFormatMapping = SIMPLCoreConfig.getInstance()
         .getDataFormatMapping();
 
     for (String dataFormatClassName : dataFormatMapping.keySet()) {

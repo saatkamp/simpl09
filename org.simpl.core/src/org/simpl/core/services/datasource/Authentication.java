@@ -39,4 +39,16 @@ public class Authentication {
   public void setPassword(String password) {
     this.password = password;
   }
+
+  @Override
+  public String toString() {
+    String string = "";
+
+    string += "Authentication {\r\n";
+    string += "  user: " + this.user + ",\r\n";
+    string += "  password: " + this.password + "\r\n";
+    string += "}";
+    
+    return string;
+  }
 }

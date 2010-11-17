@@ -19,7 +19,8 @@ import org.simpl.core.services.strategy.Strategy;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "LateBinding", propOrder = { "policy", "strategy", "resourceManagementAddress" })
+@XmlType(name = "LateBinding", propOrder = { "policy", "strategy",
+    "resourceManagementAddress" })
 public class LateBinding {
   private String policy;
   private Strategy strategy;
@@ -68,5 +69,16 @@ public class LateBinding {
    */
   public void setResourceManagementAddress(String resourceManagementAddress) {
     this.resourceManagementAddress = resourceManagementAddress;
+  }
+
+  @Override
+  public String toString() {
+    String string = "";
+
+    string += "LateBinding {\r\n";
+    string += "  policy: " + this.policy + "\r\n";
+    string += "}";
+    
+    return string;
   }
 }
