@@ -51,7 +51,7 @@ public class CSVDataFormat extends DataFormatPlugin<CSVResult, File> {
    * @see org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang.Object )
    */
   public DataObject toSDO(CSVResult csvResult) {
-    CSVReader csvReader;
+    CSVReader csvReader = null;
     String[] headLine;
     String[] nextLine;
     DataObject csvDataObject = this.getSDO();
@@ -97,7 +97,16 @@ public class CSVDataFormat extends DataFormatPlugin<CSVResult, File> {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-
+    
+    try {
+      if (csvReader != null) {
+        csvReader.close();
+      }
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
     return csvDataObject;
   }
 
@@ -110,8 +119,8 @@ public class CSVDataFormat extends DataFormatPlugin<CSVResult, File> {
   @Override
   public File fromSDO(DataObject data) {
     File file = null;
-    FileWriter fileWriter;
-    CSVWriter csvWriter;
+    FileWriter fileWriter = null;
+    CSVWriter csvWriter = null;
 
     String[] row = null;
     List<String> headerRow = new ArrayList<String>();
@@ -175,6 +184,24 @@ public class CSVDataFormat extends DataFormatPlugin<CSVResult, File> {
       e.printStackTrace();
     }
 
+    try {
+      if (csvWriter != null) {
+        csvWriter.close();
+      }
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    try {
+      if (fileWriter != null) {
+        fileWriter.close();
+      }
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
     return file;
   }
 }

@@ -10,7 +10,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
-import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
 
 import commonj.sdo.DataObject;
 
@@ -35,7 +34,7 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
-  static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
+  static Logger logger = Logger.getLogger(RDBDataFormat.class);
 
   public RDBDataFormat() {
     this.setType("RDB");
