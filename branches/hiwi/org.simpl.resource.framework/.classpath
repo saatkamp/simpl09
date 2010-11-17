@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_ODE"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_CORE_WEBSERVICES_CLIENT"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_RESOURCE_MANAGEMENT_AXIS2"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

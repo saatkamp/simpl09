@@ -20,7 +20,7 @@
   List<DataSource> dataSources = resourceManagement.getAllDataSources()
       .getDataSources();
 %>
-<h2>Data Source List</h2>
+<h2>SIMPL Resource Management: Data Source List</h2>
 
 <form name="datasources" action="IndexAction" method="post">
   <table border="1" cellspacing="3" cellpadding="3">
@@ -29,10 +29,10 @@
       <td>Name</td>
       <td>Address</td>
       <td>Type</td>
-      <td>Subtype</td>
+      <td>Sub type</td>
       <td>Language</td>
       <td>Data format</td>
-      <td>User name</td>
+      <td>User</td>
       <td>Password</td>
       <td>Policy</td>
     </tr>
@@ -47,7 +47,7 @@
         <td><%=source.getLanguage()%></td>
         <td><%=source.getDataFormat()%></td>
         <td><%=source.getAuthentication().getUser()%></td>
-        <td><%=source.getAuthentication().getPassword()%></td>
+        <td><%=source.getAuthentication().getPassword().equals("") != null ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
         <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
       </tr>
     <% } %>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simpl:SIMPLCoreConfig xmlns:simpl="http://org.simpl.core/SIMPLCoreConfig"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://org.simpl.core/SIMPLCoreConfig simpl-core-config.xsd ">
+  <!--data source service plug-ins-->
+  <DataSourceServicePlugin id="PostgreSQLRDBDataSourceService"
+    className="org.simpl.core.plugins.datasource.rdb.PostgreSQLRDBDataSourceService" />
+
+  <!--data format plug-ins-->
+  <DataFormatPlugin id="RDBDataFormat"
+    className="org.simpl.core.plugins.dataformat.relational.RDBDataFormat" />
+
+  <!--data format converter plug-ins-->
+
+  <!--data format to data source service mapping-->
+  <DataFormat ref="RDBDataFormat">
+    <DataSourceService>PostgreSQLRDBDataSourceService</DataSourceService>
+  </DataFormat>
+
+  <!--data format converter to data source service mapping-->
+
+  <!--web service locations-->
+</simpl:SIMPLCoreConfig>

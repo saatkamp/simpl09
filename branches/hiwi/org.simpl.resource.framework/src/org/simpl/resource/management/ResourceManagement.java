@@ -18,9 +18,7 @@ import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
-import org.simpl.core.webservices.client.Exception_Exception;
 import org.simpl.core.webservices.client.LateBinding;
-import org.simpl.resource.management.client.DataSourceList;
 import org.xml.sax.InputSource;
 
 /**
@@ -47,6 +45,11 @@ public class ResourceManagement {
       .getService(ResourceManagementConfig.getInstance().getDataSourceServiceAddress());
   DataSource rmDataSource = ResourceManagementConfig.getInstance().getDataSource();
 
+  Document configDoc = null;
+  Element root = null;
+  List<Element> rows = null;
+  SAXBuilder saxBuilder = new SAXBuilder();
+
   /**
    * Returns all data sources.
    * 
@@ -56,9 +59,9 @@ public class ResourceManagement {
   @WebMethod(action = "getAllDataSources")
   public DataSourceList getAllDataSources() throws Exception {
     ArrayList<DataSource> dataSources = null;
-    String statement = "SELECT * FROM data_sources";
+    String statement = "SELECT * FROM datasources";
     String result = null;
-
+    
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
@@ -79,19 +82,19 @@ public class ResourceManagement {
   @WebMethod(action = "getDataSourcesByType")
   public DataSourceList getDataSourcesByType(@WebParam(name = "type") String type)
       throws Exception {
+    DataSourceList dataSourceList = new DataSourceList();
     ArrayList<DataSource> dataSources = null;
     String statement = null;
     String result = null;
 
     // build select statement
-    statement = "SELECT * FROM data_sources WHERE ";
+    statement = "SELECT * FROM datasources WHERE ";
     statement += "type LIKE '" + type + "'";
 
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
 
-    DataSourceList dataSourceList = new DataSourceList();
     dataSourceList.getDataSources().addAll(dataSources);
 
     return dataSourceList;
@@ -108,20 +111,20 @@ public class ResourceManagement {
   public DataSourceList getDataSourcesByTypeAndSubtype(
       @WebParam(name = "type") String type, @WebParam(name = "subType") String subType)
       throws Exception {
+    DataSourceList dataSourceList = new DataSourceList();
     ArrayList<DataSource> dataSources = null;
     String statement = null;
     String result = null;
 
     // build select statement
-    statement = "SELECT * FROM data_sources WHERE ";
+    statement = "SELECT * FROM datasources WHERE ";
     statement += "type LIKE '" + type + "' AND ";
-    statement += "type LIKE '" + type + "'";
+    statement += "subtype LIKE '" + subType + "'";
 
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
 
-    DataSourceList dataSourceList = new DataSourceList();
     dataSourceList.getDataSources().addAll(dataSources);
 
     return dataSourceList;
@@ -137,20 +140,20 @@ public class ResourceManagement {
   @WebMethod(action = "getDataSourcesByName")
   public DataSource getDataSourceByName(@WebParam(name = "name") String name)
       throws Exception {
+    DataSource resultDataSource = new DataSource();
+    DataSourceList dataSourceList = new DataSourceList();
     ArrayList<DataSource> dataSources = null;
     String statement = null;
     String result = null;
-    DataSource resultDataSource = new DataSource();
 
     // build select statement
-    statement = "SELECT * FROM data_sources WHERE ";
-    statement += "name LIKE '" + name + "'";
+    statement = "SELECT * FROM datasources WHERE ";
+    statement += "logical_name LIKE '" + name + "'";
 
     // retrieve data source
     result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
 
-    DataSourceList dataSourceList = new DataSourceList();
     dataSourceList.getDataSources().addAll(dataSources);
 
     if (dataSources.size() > 0) {
@@ -169,17 +172,25 @@ public class ResourceManagement {
    */
   @WebMethod(action = "getDataSourceById")
   public DataSource getDataSourceById(@WebParam(name = "id") int id) throws Exception {
+    DataSource resultDataSource = new DataSource();
+    DataSourceList dataSourceList = new DataSourceList();
+    ArrayList<DataSource> dataSources = null;
     String statement = null;
     String result = null;
-    DataSource resultDataSource = new DataSource();
 
     // build select statement
-    statement = "SELECT * FROM data_sources WHERE ";
+    statement = "SELECT * FROM datasources WHERE ";
     statement += "id = " + id;
 
     // retrieve data source
     result = dataSourceService.retrieveData(rmDataSource, statement);
-    resultDataSource = this.getDataSourcesFromResult(result).get(0);
+    dataSources = this.getDataSourcesFromResult(result);
+
+    dataSourceList.getDataSources().addAll(dataSources);
+
+    if (dataSources.size() > 0) {
+      resultDataSource = dataSources.get(0);
+    }
 
     return resultDataSource;
   }
@@ -196,8 +207,11 @@ public class ResourceManagement {
     boolean success = false;
     String statement = null;
 
+    // TODO resource_management.sql ausführen
+    // Datei einlesen -> Nach ; splitten -> Zeilenumbrüche entfernen -> executeStatement
+
     // build SQL create statement
-    statement = "CREATE TABLE data_sources (";
+    statement = "CREATE TABLE datasources (";
     statement += "id SERIAL PRIMARY KEY, ";
     statement += "name VARCHAR(255), ";
     statement += "address VARCHAR(255), ";
@@ -236,7 +250,7 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO data_sources (name, address, type, subtype, language, dataformat, wspolicy, username, password) VALUES (";
+    statement = "INSERT INTO datasources (logical_name, interface_description, type, subtype, language, dataformat, properties_description, security_username, security_password) VALUES (";
     statement += "'" + dataSource.getName() + "', ";
     statement += "'" + dataSource.getAddress() + "', ";
     statement += "'" + dataSource.getType() + "', ";
@@ -255,15 +269,16 @@ public class ResourceManagement {
   }
 
   /**
+   * Updates a data source.
    * 
    * @param dataSource
    * @return
-   * @throws Exception_Exception
+   * @throws Exception
    */
   @WebMethod(action = "updateDataSource")
   public boolean updateDataSource(DataSource dataSource) throws Exception {
     boolean success = false;
-    String statement = "UPDATE data_sources SET ";
+    String statement = null;
     String policy = dataSource.getLateBinding().getPolicy();
 
     // set empty xml policy value
@@ -273,18 +288,22 @@ public class ResourceManagement {
       policy = "'" + policy + "'";
     }
 
-    statement += "name='" + dataSource.getName() + "',";
-    statement += "address='" + dataSource.getAddress().replace("\\", "\\\\") + "',";
+    // build SQL update statement
+    statement = "UPDATE datasources SET ";
+    statement += "logical_name='" + dataSource.getName() + "',";
+    statement += "interface_description='"
+        + dataSource.getAddress().replace("\\", "\\\\") + "',";
     statement += "type='" + dataSource.getType() + "',";
     statement += "subtype='" + dataSource.getSubType() + "',";
     statement += "language='" + dataSource.getLanguage() + "',";
     statement += "dataformat='" + dataSource.getDataFormat() + "',";
-    statement += "username='" + dataSource.getAuthentication().getUser() + "',";
-    statement += "password='" + dataSource.getAuthentication().getPassword() + "',";
-    statement += "wspolicy=" + policy + "";
+    statement += "security_username='" + dataSource.getAuthentication().getUser() + "',";
+    statement += "security_password='" + dataSource.getAuthentication().getPassword()
+        + "',";
+    statement += "properties_description=" + policy + "";
     statement += " WHERE id=" + dataSource.getId();
 
-    // delete data source
+    // update data source
     success = dataSourceService.executeStatement(rmDataSource, statement);
 
     return success;
@@ -300,7 +319,7 @@ public class ResourceManagement {
   @WebMethod(action = "deleteDataSource")
   public boolean deleteDataSource(int id) throws Exception {
     boolean success = false;
-    String statement = "DELETE FROM data_sources WHERE id = " + String.valueOf(id);
+    String statement = "DELETE FROM datasources WHERE id = " + String.valueOf(id);
 
     // delete data source
     success = dataSourceService.executeStatement(rmDataSource, statement);
@@ -309,7 +328,169 @@ public class ResourceManagement {
   }
 
   /**
-   * Parses data sources from a rdb data format result.
+   * Returns a list of data source connectors.
+   * 
+   * @return
+   * @throws Exception
+   * @throws JDOMException
+   * @throws IOException
+   */
+  @SuppressWarnings("unchecked")
+  @WebMethod(action = "getDataSourceConnectors")
+  public DataSourceConnectorList getDataSourceConnectors() throws Exception {
+    DataSourceConnectorList dataSourceConnectors = new DataSourceConnectorList();
+    String statement = "SELECT * FROM datasourceconnectors";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    Document configDoc = null;
+    Element root = null;
+    List<Element> rows = null;
+    SAXBuilder saxBuilder = new SAXBuilder();
+
+    // transform the document to a list of data converters
+    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    root = configDoc.getRootElement();
+    rows = root.getChild("table").getChildren("row");
+
+    for (Element row : rows) {
+      DataSourceConnector dataSourceConnector = new DataSourceConnector();
+      List<Element> columns = row.getChildren("column");
+
+      for (Element column : columns) {
+        if (column.getAttribute("name").getValue().equals("id")) {
+          dataSourceConnector.setId(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("name")) {
+          dataSourceConnector.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals("properties_description")) {
+          dataSourceConnector.setPropertiesDescription(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals("dataconverter_dataformat")) {
+          dataSourceConnector.setDataConverterDataFormat(column.getValue());
+        }
+      }
+
+      dataSourceConnectors.getDataSourceConnectors().add(dataSourceConnector);
+    }
+
+    return dataSourceConnectors;
+//    DataSourceConnectorList dataSourceConnectorList = new DataSourceConnectorList();
+//    String statement = "SELECT * FROM datasourceconnectors";
+//    DataObject result = (DataObject) dataSourceService.retrieveData(rmDataSource,
+//        statement);
+//
+//    List<DataObject> tables = result.getList("table");
+//    List<DataObject> rows = null;
+//    List<DataObject> columns = null;
+//
+//    rows = tables.get(0).getList("row");
+//
+//    for (DataObject row : rows) {
+//      columns = row.getList("column");
+//
+//      DataSourceConnector dataSourceConnector = new DataSourceConnector();
+//
+//      for (DataObject column : columns) {
+//        column.getString("name");
+//
+//        if (column.getString("name").equals("id")) {
+//          dataSourceConnector.setId(String.valueOf(column.getInt(0)));
+//        } else if (column.getString("name").equals("name")) {
+//          dataSourceConnector.setName(column.getString(0));
+//        } else if (column.getString("name").equals("properties_description")) {
+//          dataSourceConnector.setPropertiesDescription(column.getString(0));
+//        } else if (column.getString("name").equals("dataconverter_dataformat")) {
+//          dataSourceConnector.setDataConverterDataFormat(column.getString(0));
+//        }
+//      }
+//
+//      dataSourceConnectorList.getDataSourceConnectors().add(dataSourceConnector);
+//    }
+  }
+
+  /**
+   * Returns a list of data converters.
+   * 
+   * @return
+   * @throws Exception
+   * @throws JDOMException
+   * @throws IOException
+   */
+  @SuppressWarnings("unchecked")
+  @WebMethod(action = "getDataConverters")
+  public DataConverterList getDataConverters() throws Exception {
+    DataConverterList dataConverters = new DataConverterList();
+    String statement = "SELECT * FROM dataconverters";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    Document configDoc = null;
+    Element root = null;
+    List<Element> rows = null;
+    SAXBuilder saxBuilder = new SAXBuilder();
+
+    // transform the document to a list of data converters
+    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    root = configDoc.getRootElement();
+    rows = root.getChild("table").getChildren("row");
+
+    for (Element row : rows) {
+      DataConverter dataConverter = new DataConverter();
+      List<Element> columns = row.getChildren("column");
+
+      for (Element column : columns) {
+        if (column.getAttribute("name").getValue().equals("id")) {
+          dataConverter.setId(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("name")) {
+          dataConverter.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals("datasourceconnector_dataformat")) {
+          dataConverter.setDataSourceConnectorDataFormat(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("workflow_dataformat")) {
+          dataConverter.setWorkflowDataFormat(column.getValue());
+        }
+      }
+
+      dataConverters.getDataConverters().add(dataConverter);
+    }
+
+    return dataConverters;
+    
+//    DataConverterList dataConverters = new DataConverterList();
+//    String statement = "SELECT * FROM dataconverters";
+//    String result = dataSourceService.retrieveData(rmDataSource,
+//        statement);
+//
+//    List<DataObject> tables = result.getList("table");
+//    List<DataObject> rows = null;
+//    List<DataObject> columns = null;
+//
+//    rows = tables.get(0).getList("row");
+//
+//    for (DataObject row : rows) {
+//      columns = row.getList("column");
+//
+//      DataConverter dataConverter = new DataConverter();
+//
+//      for (DataObject column : columns) {
+//        column.getString("name");
+//
+//        if (column.getString("name").equals("id")) {
+//          dataConverter.setId(String.valueOf(column.getInt(0)));
+//        } else if (column.getString("name").equals("name")) {
+//          dataConverter.setName(column.getString(0));
+//        } else if (column.getString("name").equals("datasourceconnector_dataformat")) {
+//          dataConverter.setDataSourceConnectorDataFormat(column.getString(0));
+//        } else if (column.getString("name").equals("workflow_dataformat")) {
+//          dataConverter.setWorkflowDataFormat(column.getString(0));
+//        }
+//      }
+//
+//      dataConverters.getDataConverters().add(dataConverter);
+//    }
+  }
+
+  /**
+   * Creates DataSource objects from a RDB data format result.
    * 
    * @param result
    * @return
@@ -341,9 +522,9 @@ public class ResourceManagement {
       for (Element column : columns) {
         if (column.getAttribute("name").getValue().equals("id")) {
           dataSource.setId(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("name")) {
+        } else if (column.getAttribute("name").getValue().equals("logical_name")) {
           dataSource.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("address")) {
+        } else if (column.getAttribute("name").getValue().equals("interface_description")) {
           dataSource.setAddress(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("type")) {
           dataSource.setType(column.getValue());
@@ -353,14 +534,12 @@ public class ResourceManagement {
           dataSource.setLanguage(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("dataformat")) {
           dataSource.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("username")) {
+        } else if (column.getAttribute("name").getValue().equals("security_username")) {
           authentication.setUser(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("password")) {
+        } else if (column.getAttribute("name").getValue().equals("security_password")) {
           authentication.setPassword(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("wspolicy")) {
+        } else if (column.getAttribute("name").getValue().equals("properties_description")) {
           lateBinding.setPolicy(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("id")) {
-          dataSource.setName(column.getValue());
         }
       }
 
@@ -370,5 +549,51 @@ public class ResourceManagement {
     }
 
     return dataSources;
+//    ArrayList<DataSource> dataSources = new ArrayList<DataSource>();
+//
+//    List<DataObject> tables = result.getList("table");
+//    List<DataObject> rows = null;
+//    List<DataObject> columns = null;
+//
+//    rows = tables.get(0).getList("row");
+//
+//    for (DataObject row : rows) {
+//      columns = row.getList("column");
+//
+//      DataSource dataSource = new DataSource();
+//      Authentication authentication = new Authentication();
+//      LateBinding lateBinding = new LateBinding();
+//
+//      for (DataObject column : columns) {
+//        column.getString("name");
+//
+//        if (column.getString("name").equals("id")) {
+//          dataSource.setId(String.valueOf(column.getInt(0)));
+//        } else if (column.getString("name").equals("logical_name")) {
+//          dataSource.setName(column.getString(0));
+//        } else if (column.getString("name").equals("interface_description")) {
+//          dataSource.setAddress(column.getString(0));
+//        } else if (column.getString("name").equals("type")) {
+//          dataSource.setType(column.getString(0));
+//        } else if (column.getString("name").equals("subtype")) {
+//          dataSource.setSubType(column.getString(0));
+//        } else if (column.getString("name").equals("language")) {
+//          dataSource.setLanguage(column.getString(0));
+//        } else if (column.getString("name").equals("dataformat")) {
+//          dataSource.setDataFormat(column.getString(0));
+//        } else if (column.getString("name").equals("security_username")) {
+//          authentication.setUser(column.getString(0));
+//        } else if (column.getString("name").equals("security_password")) {
+//          authentication.setPassword(column.getString(0));
+//        } else if (column.getString("name").equals(
+//            "properties_description")) {
+//          lateBinding.setPolicy(column.getString(0));
+//        }
+//      }
+//
+//      dataSource.setAuthentication(authentication);
+//      dataSource.setLateBinding(lateBinding);
+//      dataSources.add(dataSource);
+//    }
   }
 }

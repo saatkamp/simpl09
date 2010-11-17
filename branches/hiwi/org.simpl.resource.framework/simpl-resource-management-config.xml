@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ResourceManagement>
-  <!--SIMPL Core data source service-->
+  <!--SIMPL Core data source web service-->
   <DataSourceService>
-    <address>http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl</address>
+    <address>http://localhost:8080/axis2/services/DatasourceService.DatasourceServicePort?wsdl</address>
   </DataSourceService>
-
+  
   <!--SIMPL data source to store the resource management data-->
   <DataSource>
     <name>Local PostgreSQL 8.4</name>

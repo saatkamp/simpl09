@@ -51,7 +51,6 @@
 
   <!--web service locations-->
   <WebServices>
-    <DatasourceService>http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl</DatasourceService>
-    <AdministrationService>http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl</AdministrationService>
+    <ResourceManagement>http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl</ResourceManagement>
   </WebServices>
 </simpl:SIMPLCoreConfig>

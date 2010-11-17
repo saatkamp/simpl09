@@ -6,6 +6,18 @@ import org.simpl.core.helpers.Parameter;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
 
+/**
+ * <b>Purpose: Offers elements for web forms with data from the SIMPL Core.</b><br>
+ * <b>Description:</b>Connects to the SIMPL Core data source web service to retrieve the
+ * data.<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
+ * 
+ * @author hiwi<br>
+ * @version $Id$<br>
+ * @link http://code.google.com/p/simpl09/
+ */
 public class SIMPLCoreFormMetaData {
   private static SIMPLCoreFormMetaData instance = null;
   private ArrayList<String> types = null;

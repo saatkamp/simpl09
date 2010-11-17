@@ -47,6 +47,21 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
+    @WebMethod(action = "updateDataSource")
+    @WebResult(partName = "return")
+    public boolean updateDataSource(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataSource arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
     @WebMethod(action = "deleteDataSource")
     @WebResult(partName = "return")
     public boolean deleteDataSource(
@@ -144,16 +159,25 @@ public interface ResourceManagement {
 
     /**
      * 
-     * @param arg0
      * @return
-     *     returns boolean
+     *     returns org.simpl.resource.management.client.DataSourceConnectorList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "updateDataSource")
+    @WebMethod(action = "getDataSourceConnectors")
     @WebResult(partName = "return")
-    public boolean updateDataSource(
-        @WebParam(name = "arg0", partName = "arg0")
-        DataSource arg0)
+    public DataSourceConnectorList getDataSourceConnectors()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.DataConverterList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataConverters")
+    @WebResult(partName = "return")
+    public DataConverterList getDataConverters()
         throws Exception_Exception
     ;
 

@@ -17,7 +17,7 @@ import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
 /**
- * <b>Purpose:</b><br>
+ * <b>Purpose:</b>Receiver for actions from the form.jsp. <br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
