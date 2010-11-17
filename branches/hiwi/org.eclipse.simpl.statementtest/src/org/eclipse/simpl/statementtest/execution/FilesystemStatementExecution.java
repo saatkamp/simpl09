@@ -31,14 +31,15 @@ public class FilesystemStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.dataSourceService.retrieveData(this.statementTest
-          .getDataSource(), this.statementTest.getGeneratedStatement());
+      String result = this.dataSourceService.retrieveData(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
         statementTest.setResult(new RelationalResult(result));
         this.statementTest.log("Retrieved "
-            + ((RelationalResult) this.statementTest.getResult()).getRowCount() + " tuple.");
+            + ((RelationalResult) this.statementTest.getResult()).getRowCount()
+            + " tuple.");
       } else {
         this.statementTest.log("Failed to retrieve result.");
 
@@ -48,5 +49,34 @@ public class FilesystemStatementExecution extends StatementExecution {
       System.out.println(e.getMessage());
       this.statementTest.log("Error on statement execution.");
     }
+  }
+
+  @Override
+  public void executeDeleteActivityStatement() {
+    executeStatement();
+  }
+
+  private boolean executeStatement() {
+    boolean successed = false;
+
+    try {
+      this.statementTest.log("Execute statement: "
+          + this.statementTest.getGeneratedStatement());
+
+      successed = this.dataSourceService.executeStatement(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
+
+      if (successed) {
+        statementTest.setExecuted(true);
+        this.statementTest.log("Successfully executed statement.");
+      } else {
+        this.statementTest.log("Failed to execute statement.");
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      this.statementTest.log("Error on statement execution.");
+    }
+
+    return successed;
   }
 }

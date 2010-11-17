@@ -183,7 +183,7 @@ public class DataSourceUtils {
     return datasources;
   }
 
-  private static List<String> getRFDatasourceNames() {
+  private static List<String> getRMDatasourceNames() {
     List<String> dataSourceNames = new ArrayList<String>();
 
     List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
@@ -200,7 +200,7 @@ public class DataSourceUtils {
 
     datasources.addAll(DataSourceUtils
         .getDeploymentDescriptorDatasourceNames(processName));
-    datasources.addAll(DataSourceUtils.getRFDatasourceNames());
+    datasources.addAll(DataSourceUtils.getRMDatasourceNames());
 
     return datasources.toArray(new String[0]);
   }

@@ -11,6 +11,7 @@ import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.simpl.communication.CommunicationPlugIn;
 import org.eclipse.simpl.statementtest.StatementTestPlugin;
 import org.eclipse.simpl.statementtest.execution.DatabaseStatementExecution;
 import org.eclipse.simpl.statementtest.execution.FilesystemStatementExecution;
@@ -29,7 +30,7 @@ import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.simpl.core.webservices.client.DatasourceService;
-import org.simpl.core.webservices.client.DatasourceService_Service;
+import org.simpl.core.webservices.client.DatasourceServiceClient;
 
 /**
  * <b>Purpose:</b>Wizard to create a new statement test.<br>
@@ -144,8 +145,8 @@ public class StatementTestWizard extends Wizard {
       // initialize the data source service client
       while (retry) {
         try {
-          this.dataSourceService = new DatasourceService_Service()
-              .getDatasourceServicePort();
+          this.dataSourceService = DatasourceServiceClient.getService(CommunicationPlugIn.getDefault()
+              .getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS"));
           isSimplCoreAvailable = true;
           retry = false;
         } catch (WebServiceException e) {
@@ -275,6 +276,8 @@ public class StatementTestWizard extends Wizard {
             || activityType.equals("TransferActivity")
             || activityType.equals("RetrieveActivity")) {
           filesystemActivityExecution.executeQueryActivityStatement();
+        } else if (activityType.equals("DeleteActivity")) {
+          filesystemActivityExecution.executeDeleteActivityStatement();
         }
       }
     } else {

@@ -57,8 +57,8 @@ public class RelationalResult extends Result {
       }
     }
 
-    if (rowNodes != null && rowNodes.item(1) != null) {
-      columnNodes = rowNodes.item(1).getChildNodes();
+    if (rowNodes != null && rowNodes.item(0) != null) {
+      columnNodes = rowNodes.item(0).getChildNodes();
 
       for (int i = 0; i < columnNodes.getLength(); i++) {
         if (columnNodes.item(i).getNodeName().equals("column")) {
