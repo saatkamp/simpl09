@@ -18,11 +18,9 @@ import org.jdom.input.SAXBuilder;
  * Resource Management and provides functions to access the configuration settings. This
  * includes information about all registered plug-ins.<br>
  * <b>Description:</b> Expects the configuration file (simpl-core-config.xml) in the
- * WEB-INF/conf folder related to the running instance of the SIMPL Core. If the Resource
- * Management is declared in the configuration file and is online, the information from
- * the Resource Management will overwrite the information from the configuration file. The
- * configuration file is just intended to be able to run the SIMPL Core without the
- * Resource Managament.<br>
+ * WEB-INF/conf folder relative to the deployed SIMPL Core. If the Resource Management is
+ * declared in the configuration file and is online, the information from the Resource
+ * Management will overwrite the information from the configuration file.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
