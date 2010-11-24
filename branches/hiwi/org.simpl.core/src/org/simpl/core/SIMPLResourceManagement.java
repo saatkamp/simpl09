@@ -1,7 +1,5 @@
 package org.simpl.core;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,7 +26,8 @@ import org.simpl.resource.management.client.ResourceManagementClient;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author hiwi<br>
- * @version $Id$<br>
+ * @version $Id: SIMPLResourceManagement.java 1718 2010-11-17 18:25:37Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLResourceManagement {
@@ -78,23 +77,17 @@ public class SIMPLResourceManagement {
 
     try {
       if (resourceManagementLocation != null && !resourceManagementLocation.equals("")) {
-        // check if service is online and available
-        HttpURLConnection con = (HttpURLConnection) new URL(resourceManagementLocation)
-            .openConnection();
-        con.setRequestMethod("HEAD");
-        
-        if (con.getResponseCode() == HttpURLConnection.HTTP_OK) {
-          resourceManagement = ResourceManagementClient.getService(resourceManagementLocation);
-          
-          dataSourceConnectors = resourceManagement.getDataSourceConnectors();
-          dataConverters = resourceManagement.getDataConverters();
-        }
+        resourceManagement = ResourceManagementClient
+            .getService(resourceManagementLocation);
+
+        dataSourceConnectors = resourceManagement.getDataSourceConnectors();
+        dataConverters = resourceManagement.getDataConverters();
       }
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
+
     if (dataSourceConnectors.getDataSourceConnectors().size() > 0) {
       for (DataSourceConnector dataSourceConnector : dataSourceConnectors
           .getDataSourceConnectors()) {
@@ -118,7 +111,7 @@ public class SIMPLResourceManagement {
         }
       }
     }
-    
+
     // retrieve data format converter plug-ins
     if (dataConverters.getDataConverters().size() > 0) {
       for (DataConverter dataConverter : dataConverters.getDataConverters()) {
