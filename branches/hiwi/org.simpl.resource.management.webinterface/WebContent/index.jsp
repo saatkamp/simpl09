@@ -29,9 +29,9 @@
       <td>Name</td>
       <td>Address</td>
       <td>Type</td>
-      <td>Sub type</td>
+      <td>Sub Type</td>
       <td>Language</td>
-      <td>Data format</td>
+      <td>Data Format</td>
       <td>User</td>
       <td>Password</td>
       <td>Policy</td>

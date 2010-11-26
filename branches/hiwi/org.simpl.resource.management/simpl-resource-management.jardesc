@@ -12,5 +12,6 @@
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
         <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management"/>
+        <file path="/org.simpl.resource.management/resource_management.sql"/>
     </selectedElements>
 </jardesc>
