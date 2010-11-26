@@ -23,36 +23,40 @@
 <h2>SIMPL Resource Management: Data Source List</h2>
 
 <form name="datasources" action="IndexAction" method="post">
-  <table border="1" cellspacing="3" cellpadding="3">
-    <tr>
-      <td></td>
-      <td>Name</td>
-      <td>Address</td>
-      <td>Type</td>
-      <td>Sub Type</td>
-      <td>Language</td>
-      <td>Data Format</td>
-      <td>User</td>
-      <td>Password</td>
-      <td>Policy</td>
-    </tr>
-    
-    <% for (DataSource source : dataSources) { %>
+  <% if (dataSources.size() > 0) { %>
+    <table border="1" cellspacing="3" cellpadding="3">
       <tr>
-        <td><input type="radio" name="id" value="<%=source.getId()%>"></input></td>
-        <td><%=source.getName()%></td>
-        <td><%=source.getAddress()%></td>
-        <td><%=source.getType()%></td>
-        <td><%=source.getSubType()%></td>
-        <td><%=source.getLanguage()%></td>
-        <td><%=source.getDataFormat()%></td>
-        <td><%=source.getAuthentication().getUser()%></td>
-        <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
-        <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
+        <td></td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Type</td>
+        <td>Sub Type</td>
+        <td>Language</td>
+        <td>Data Format</td>
+        <td>User</td>
+        <td>Password</td>
+        <td>Policy</td>
       </tr>
-    <% } %>
-  </table>
-  
+      
+      <% for (DataSource source : dataSources) { %>
+        <tr>
+          <td><input type="radio" name="id" value="<%=source.getId()%>"></input></td>
+          <td><%=source.getName()%></td>
+          <td><%=source.getAddress()%></td>
+          <td><%=source.getType()%></td>
+          <td><%=source.getSubType()%></td>
+          <td><%=source.getLanguage()%></td>
+          <td><%=source.getDataFormat()%></td>
+          <td><%=source.getAuthentication().getUser()%></td>
+          <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
+          <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
+        </tr>
+      <% } %>
+    </table>
+  <% } else { %>
+    No data sources available, please create a new data source.
+    <br/>
+  <% } %>
   <br/>
   <input type="submit" name="indexSubmit" value="New" />
   <% if (dataSources.size() > 0) { %>

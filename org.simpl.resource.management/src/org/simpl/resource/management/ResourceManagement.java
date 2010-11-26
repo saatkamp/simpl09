@@ -278,7 +278,7 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO datasources (logical_name, interface_description, properties_description, security_username, security_password) VALUES (";
+    statement = "INSERT INTO datasources (logical_name, interface_description, datasourceconnector_properties_description, properties_description, security_username, security_password) VALUES (";
     statement += "'" + dataSource.getName() + "', ";
     statement += "'" + dataSource.getAddress() + "', ";
     statement += "'"
