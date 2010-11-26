@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -452,6 +454,132 @@ public class ResourceManagement {
     return dataConverters;
   }
 
+  @WebMethod(action = "getDataSourceTypes")
+  public StringList getDataSourceTypes() throws Exception {
+    StringList stringList = new StringList();
+    ArrayList<String> propertiesDescriptions = null;
+
+    String statement = "SELECT properties_description FROM datasourceconnectors";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    // extract properties description from result
+    propertiesDescriptions = this.getColumnValuesFromResult(result,
+        "properties_description");
+
+    // extract types from the properties description
+    for (String propertyDescription : propertiesDescriptions) {
+      stringList.getItems().add(
+          this.getFromPropertiesDescription("type", propertyDescription));
+    }
+
+    // remove duplicates
+    HashSet<String> h = new HashSet<String>(stringList.getItems());
+    stringList.getItems().clear();
+    stringList.getItems().addAll(h);
+
+    // sort items
+    Collections.sort(stringList.getItems());
+
+    return stringList;
+  }
+
+  @WebMethod(action = "getDataSourceSubTypes")
+  public StringList getDataSourceSubTypes(String type) throws Exception {
+    StringList stringList = new StringList();
+    ArrayList<String> propertiesDescriptions = null;
+
+    String statement = "SELECT properties_description FROM datasourceconnectors";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    // extract properties description from result
+    propertiesDescriptions = this.getColumnValuesFromResult(result,
+        "properties_description");
+
+    // extract sub types from the properties description
+    for (String propertyDescription : propertiesDescriptions) {
+      String typeFromResult = this.getFromPropertiesDescription("type",
+          propertyDescription);
+
+      if (typeFromResult.equals(type)) {
+        stringList.getItems().add(
+            this.getFromPropertiesDescription("subType", propertyDescription));
+      }
+    }
+
+    // remove duplicates
+    HashSet<String> h = new HashSet<String>(stringList.getItems());
+    stringList.getItems().clear();
+    stringList.getItems().addAll(h);
+
+    // sort items
+    Collections.sort(stringList.getItems());
+
+    return stringList;
+  }
+
+  @WebMethod(action = "getDataSourceLanguages")
+  public StringList getDataSourceLanguages(String subType) throws Exception {
+    StringList stringList = new StringList();
+    ArrayList<String> propertiesDescriptions = null;
+
+    String statement = "SELECT properties_description FROM datasourceconnectors";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    // extract properties description from result
+    propertiesDescriptions = this.getColumnValuesFromResult(result,
+        "properties_description");
+
+    // extract sub types from the properties description
+    for (String propertyDescription : propertiesDescriptions) {
+      String typeFromResult = this.getFromPropertiesDescription("subType",
+          propertyDescription);
+
+      if (typeFromResult.equals(subType)) {
+        stringList.getItems().add(
+            this.getFromPropertiesDescription("language", propertyDescription));
+      }
+    }
+
+    // remove duplicates
+    HashSet<String> h = new HashSet<String>(stringList.getItems());
+    stringList.getItems().clear();
+    stringList.getItems().addAll(h);
+
+    // sort items
+    Collections.sort(stringList.getItems());
+
+    return stringList;
+  }
+
+  @WebMethod(action = "getSupportedDataFormatTypes")
+  public StringList getSupportedDataFormatTypes(DataSource dataSource) throws Exception {
+    StringList stringList = new StringList();
+
+    // TODO: implement
+
+    return stringList;
+  }
+
+  @WebMethod(action = "getSupportedConvertDataFormatTypes")
+  public StringList getSupportedConvertDataFormatTypes(DataSource dataSource,
+      String dataFormatType) throws Exception {
+    StringList stringList = new StringList();
+
+    // TODO: implement
+
+    return stringList;
+  }
+
+
+  @WebMethod(action = "getDataFormatSchema")
+  public String getDataFormatSchema(DataSource dataSource) {
+    String dataFormatSchema = null;
+
+    // TODO: implement
+
+    return dataFormatSchema;
+  }
+  
   /**
    * Creates DataSource objects from a RDB data format result.
    * 
@@ -491,12 +619,13 @@ public class ResourceManagement {
           dataSource.setAddress(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals("datasourceconnector_properties_description")) {
-          dataSource.setType(this.getPropertiesDescription("type", column.getValue()));
-          dataSource.setSubType(this.getPropertiesDescription("subType",
+          dataSource
+              .setType(this.getFromPropertiesDescription("type", column.getValue()));
+          dataSource.setSubType(this.getFromPropertiesDescription("subType",
               column.getValue()));
-          dataSource.setLanguage(this.getPropertiesDescription("language",
+          dataSource.setLanguage(this.getFromPropertiesDescription("language",
               column.getValue()));
-          dataSource.setDataFormat(this.getPropertiesDescription("dataFormat",
+          dataSource.setDataFormat(this.getFromPropertiesDescription("dataFormat",
               column.getValue()));
         } else if (column.getAttribute("name").getValue().equals("security_username")) {
           authentication.setUser(column.getValue());
@@ -516,19 +645,48 @@ public class ResourceManagement {
     return dataSources;
   }
 
+  @SuppressWarnings("unchecked")
+  private ArrayList<String> getColumnValuesFromResult(String result, String columnName)
+      throws Exception {
+    ArrayList<String> values = new ArrayList<String>();
+
+    Document configDoc = null;
+    Element root = null;
+    List<Element> rows = null;
+    SAXBuilder saxBuilder = new SAXBuilder();
+
+    // transform the document to a list of data source objects
+    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    root = configDoc.getRootElement();
+    rows = root.getChild("table").getChildren("row");
+
+    for (Element row : rows) {
+      List<Element> columns = row.getChildren("column");
+
+      for (Element column : columns) {
+        if (column.getAttribute("name").getValue().equals(columnName)) {
+          values.add(column.getValue());
+        }
+      }
+    }
+
+    return values;
+  }
+
   /**
    * Returns a property from the given properties description.
    * 
    * @param property
    *          Property name
-   * @param properties
+   * @param propertiesDescription
    *          XML data
    * @return
    */
-  private String getPropertiesDescription(String property, String properties) {
+  private String getFromPropertiesDescription(String property,
+      String propertiesDescription) {
     String value = null;
     Pattern pattern = Pattern.compile("<" + property + ">(.*?)</" + property + ">");
-    Matcher matcher = pattern.matcher(properties);
+    Matcher matcher = pattern.matcher(propertiesDescription);
 
     if (matcher.find()) {
       value = matcher.group(1);

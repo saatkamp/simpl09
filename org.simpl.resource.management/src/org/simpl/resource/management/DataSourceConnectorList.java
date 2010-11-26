@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataSourceConnectorList", namespace = "http://management.resource.simpl.org/", propOrder = { "dataSourceConnectors" })
 public class DataSourceConnectorList {
@@ -20,7 +19,7 @@ public class DataSourceConnectorList {
     if (dataSourceConnectors == null) {
       dataSourceConnectors = new ArrayList<DataSourceConnector>();
     }
-    
+
     return this.dataSourceConnectors;
   }
 }

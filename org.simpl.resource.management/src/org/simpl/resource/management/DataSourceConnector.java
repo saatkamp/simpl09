@@ -97,7 +97,7 @@ public class DataSourceConnector {
     string += "  dataconverter_dataformat: " + this.dataConverterDataFormat + ",\n\r";
     string += "  properties_description: " + this.propertiesDescription + "\n\r";
     string += "}";
-    
+
     return string;
   }
 }

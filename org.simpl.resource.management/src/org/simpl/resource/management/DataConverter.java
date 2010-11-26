@@ -96,7 +96,7 @@ public class DataConverter {
         + ",\n\r";
     string += "  workflow_dataformat: " + this.workflowDataFormat + "\n\r";
     string += "}";
-    
+
     return string;
   }
 }
