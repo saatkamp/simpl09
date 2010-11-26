@@ -1,9 +1,14 @@
 package org.simpl.resource.management;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -41,6 +46,8 @@ import org.xml.sax.InputSource;
 @WebService(name = "ResourceManagement")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ResourceManagement {
+  final static String propertiesDescription = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><datasourceconnector_properties_description xmlns=\"http://org.simpl.resource.management/datasources/datasourceconnector_properties_description\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://org.simpl.resource.management/datasources/datasourceconnector_properties_description datasources.xsd \"><type>%s</type><subType>%s</subType><language>%s</language><dataFormat>%s</dataFormat></datasourceconnector_properties_description>";
+
   DatasourceService dataSourceService = DatasourceServiceClient
       .getService(ResourceManagementConfig.getInstance().getDataSourceServiceAddress());
   DataSource rmDataSource = ResourceManagementConfig.getInstance().getDataSource();
@@ -61,7 +68,7 @@ public class ResourceManagement {
     ArrayList<DataSource> dataSources = null;
     String statement = "SELECT * FROM datasources ORDER BY id ASC";
     String result = null;
-    
+
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
@@ -199,32 +206,53 @@ public class ResourceManagement {
    * Creates the tables for the Resource Management in the configured PostgreSQL data
    * source.
    * 
+   * The SQL statements are retrieved from the resource_management.sql file that is placed
+   * inside the resource management web service jar.
+   * 
+   * Caveat: Should be executed carefully if tables already exist, because in this case
+   * tables and data get deleted and must be recreated.
+   * 
    * @return
    * @throws Exception
    */
   @WebMethod(action = "createResourceManagementTables")
   public boolean createResourceManagementTables() throws Exception {
+    final String sqlFile = "resource_management.sql";
+
     boolean success = false;
-    String statement = null;
+    String fileLine = null;
+    String statement = "";
+    ArrayList<String> statements = new ArrayList<String>();
+    BufferedReader bufferedFileReader = null;
+    InputStream fileStream = null;
 
-    // TODO resource_management.sql ausführen
-    // Datei einlesen -> Nach ; splitten -> Zeilenumbrüche entfernen -> executeStatement
+    fileStream = this.getClass().getClassLoader().getResourceAsStream(sqlFile);
+    bufferedFileReader = new BufferedReader(new InputStreamReader(fileStream));
 
-    // build SQL create statement
-    statement = "CREATE TABLE datasources (";
-    statement += "id SERIAL PRIMARY KEY, ";
-    statement += "name VARCHAR(255), ";
-    statement += "address VARCHAR(255), ";
-    statement += "type VARCHAR(255), ";
-    statement += "subtype VARCHAR(255), ";
-    statement += "language VARCHAR(255), ";
-    statement += "dataformat VARCHAR(255), ";
-    statement += "policy XML, ";
-    statement += "username VARCHAR(255), ";
-    statement += "password VARCHAR(255)";
-    statement += ")";
+    // build one line statements
+    while ((fileLine = bufferedFileReader.readLine()) != null) {
+      if (!fileLine.equals("")) {
+        statement += fileLine;
+      } else {
+        statements.add(statement);
+        statement = "";
+      }
+    }
 
-    success = dataSourceService.executeStatement(rmDataSource, statement);
+    // execute statements
+    for (int i = 0; i < statements.size(); i++) {
+      success = dataSourceService.executeStatement(rmDataSource, statements.get(i));
+    }
+
+    // drop tables on failure
+    if (!success) {
+      dataSourceService.executeStatement(rmDataSource, "DROP TABLE datasources");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP TABLE datasourceconnectors_dataconverters");
+      dataSourceService.executeStatement(rmDataSource, "DROP TABLE datasourceconnectors");
+      dataSourceService.executeStatement(rmDataSource, "DROP TABLE dataconverters");
+      dataSourceService.executeStatement(rmDataSource, "DROP TABLE datacontainers");
+    }
 
     return success;
   }
@@ -250,13 +278,13 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO datasources (logical_name, interface_description, type, subtype, language, dataformat, properties_description, security_username, security_password) VALUES (";
+    statement = "INSERT INTO datasources (logical_name, interface_description, properties_description, security_username, security_password) VALUES (";
     statement += "'" + dataSource.getName() + "', ";
     statement += "'" + dataSource.getAddress() + "', ";
-    statement += "'" + dataSource.getType() + "', ";
-    statement += "'" + dataSource.getSubType() + "', ";
-    statement += "'" + dataSource.getLanguage() + "', ";
-    statement += "'" + dataSource.getDataFormat() + "', ";
+    statement += "'"
+        + String
+            .format(propertiesDescription, dataSource.getType(), dataSource.getSubType(),
+                dataSource.getLanguage(), dataSource.getDataFormat()) + "', ";
     statement += "" + policy + ", ";
     statement += "'" + dataSource.getAuthentication().getUser() + "', ";
     statement += "'" + dataSource.getAuthentication().getPassword() + "'";
@@ -293,10 +321,10 @@ public class ResourceManagement {
     statement += "logical_name='" + dataSource.getName() + "',";
     statement += "interface_description='"
         + dataSource.getAddress().replace("\\", "\\\\") + "',";
-    statement += "type='" + dataSource.getType() + "',";
-    statement += "subtype='" + dataSource.getSubType() + "',";
-    statement += "language='" + dataSource.getLanguage() + "',";
-    statement += "dataformat='" + dataSource.getDataFormat() + "',";
+    statement += "datasourceconnector_properties_description='"
+        + String
+            .format(propertiesDescription, dataSource.getType(), dataSource.getSubType(),
+                dataSource.getLanguage(), dataSource.getDataFormat()) + "', ";
     statement += "security_username='" + dataSource.getAuthentication().getUser() + "',";
     statement += "security_password='" + dataSource.getAuthentication().getPassword()
         + "',";
@@ -374,38 +402,6 @@ public class ResourceManagement {
     }
 
     return dataSourceConnectors;
-//    DataSourceConnectorList dataSourceConnectorList = new DataSourceConnectorList();
-//    String statement = "SELECT * FROM datasourceconnectors";
-//    DataObject result = (DataObject) dataSourceService.retrieveData(rmDataSource,
-//        statement);
-//
-//    List<DataObject> tables = result.getList("table");
-//    List<DataObject> rows = null;
-//    List<DataObject> columns = null;
-//
-//    rows = tables.get(0).getList("row");
-//
-//    for (DataObject row : rows) {
-//      columns = row.getList("column");
-//
-//      DataSourceConnector dataSourceConnector = new DataSourceConnector();
-//
-//      for (DataObject column : columns) {
-//        column.getString("name");
-//
-//        if (column.getString("name").equals("id")) {
-//          dataSourceConnector.setId(String.valueOf(column.getInt(0)));
-//        } else if (column.getString("name").equals("name")) {
-//          dataSourceConnector.setName(column.getString(0));
-//        } else if (column.getString("name").equals("properties_description")) {
-//          dataSourceConnector.setPropertiesDescription(column.getString(0));
-//        } else if (column.getString("name").equals("dataconverter_dataformat")) {
-//          dataSourceConnector.setDataConverterDataFormat(column.getString(0));
-//        }
-//      }
-//
-//      dataSourceConnectorList.getDataSourceConnectors().add(dataSourceConnector);
-//    }
   }
 
   /**
@@ -454,39 +450,6 @@ public class ResourceManagement {
     }
 
     return dataConverters;
-    
-//    DataConverterList dataConverters = new DataConverterList();
-//    String statement = "SELECT * FROM dataconverters";
-//    String result = dataSourceService.retrieveData(rmDataSource,
-//        statement);
-//
-//    List<DataObject> tables = result.getList("table");
-//    List<DataObject> rows = null;
-//    List<DataObject> columns = null;
-//
-//    rows = tables.get(0).getList("row");
-//
-//    for (DataObject row : rows) {
-//      columns = row.getList("column");
-//
-//      DataConverter dataConverter = new DataConverter();
-//
-//      for (DataObject column : columns) {
-//        column.getString("name");
-//
-//        if (column.getString("name").equals("id")) {
-//          dataConverter.setId(String.valueOf(column.getInt(0)));
-//        } else if (column.getString("name").equals("name")) {
-//          dataConverter.setName(column.getString(0));
-//        } else if (column.getString("name").equals("datasourceconnector_dataformat")) {
-//          dataConverter.setDataSourceConnectorDataFormat(column.getString(0));
-//        } else if (column.getString("name").equals("workflow_dataformat")) {
-//          dataConverter.setWorkflowDataFormat(column.getString(0));
-//        }
-//      }
-//
-//      dataConverters.getDataConverters().add(dataConverter);
-//    }
   }
 
   /**
@@ -508,7 +471,7 @@ public class ResourceManagement {
     List<Element> rows = null;
     SAXBuilder saxBuilder = new SAXBuilder();
 
-    // transform the document to a list of data objects
+    // transform the document to a list of data source objects
     configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
     root = configDoc.getRootElement();
     rows = root.getChild("table").getChildren("row");
@@ -526,19 +489,21 @@ public class ResourceManagement {
           dataSource.setName(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("interface_description")) {
           dataSource.setAddress(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("type")) {
-          dataSource.setType(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("subtype")) {
-          dataSource.setSubType(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("language")) {
-          dataSource.setLanguage(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("dataformat")) {
-          dataSource.setDataFormat(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals("datasourceconnector_properties_description")) {
+          dataSource.setType(this.getPropertiesDescription("type", column.getValue()));
+          dataSource.setSubType(this.getPropertiesDescription("subType",
+              column.getValue()));
+          dataSource.setLanguage(this.getPropertiesDescription("language",
+              column.getValue()));
+          dataSource.setDataFormat(this.getPropertiesDescription("dataFormat",
+              column.getValue()));
         } else if (column.getAttribute("name").getValue().equals("security_username")) {
           authentication.setUser(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("security_password")) {
           authentication.setPassword(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("properties_description")) {
+        } else if (column.getAttribute("name").getValue()
+            .equals("properties_description")) {
           lateBinding.setPolicy(column.getValue());
         }
       }
@@ -549,51 +514,26 @@ public class ResourceManagement {
     }
 
     return dataSources;
-//    ArrayList<DataSource> dataSources = new ArrayList<DataSource>();
-//
-//    List<DataObject> tables = result.getList("table");
-//    List<DataObject> rows = null;
-//    List<DataObject> columns = null;
-//
-//    rows = tables.get(0).getList("row");
-//
-//    for (DataObject row : rows) {
-//      columns = row.getList("column");
-//
-//      DataSource dataSource = new DataSource();
-//      Authentication authentication = new Authentication();
-//      LateBinding lateBinding = new LateBinding();
-//
-//      for (DataObject column : columns) {
-//        column.getString("name");
-//
-//        if (column.getString("name").equals("id")) {
-//          dataSource.setId(String.valueOf(column.getInt(0)));
-//        } else if (column.getString("name").equals("logical_name")) {
-//          dataSource.setName(column.getString(0));
-//        } else if (column.getString("name").equals("interface_description")) {
-//          dataSource.setAddress(column.getString(0));
-//        } else if (column.getString("name").equals("type")) {
-//          dataSource.setType(column.getString(0));
-//        } else if (column.getString("name").equals("subtype")) {
-//          dataSource.setSubType(column.getString(0));
-//        } else if (column.getString("name").equals("language")) {
-//          dataSource.setLanguage(column.getString(0));
-//        } else if (column.getString("name").equals("dataformat")) {
-//          dataSource.setDataFormat(column.getString(0));
-//        } else if (column.getString("name").equals("security_username")) {
-//          authentication.setUser(column.getString(0));
-//        } else if (column.getString("name").equals("security_password")) {
-//          authentication.setPassword(column.getString(0));
-//        } else if (column.getString("name").equals(
-//            "properties_description")) {
-//          lateBinding.setPolicy(column.getString(0));
-//        }
-//      }
-//
-//      dataSource.setAuthentication(authentication);
-//      dataSource.setLateBinding(lateBinding);
-//      dataSources.add(dataSource);
-//    }
+  }
+
+  /**
+   * Returns a property from the given properties description.
+   * 
+   * @param property
+   *          Property name
+   * @param properties
+   *          XML data
+   * @return
+   */
+  private String getPropertiesDescription(String property, String properties) {
+    String value = null;
+    Pattern pattern = Pattern.compile("<" + property + ">(.*?)</" + property + ">");
+    Matcher matcher = pattern.matcher(properties);
+
+    if (matcher.find()) {
+      value = matcher.group(1);
+    }
+
+    return value;
   }
 }
