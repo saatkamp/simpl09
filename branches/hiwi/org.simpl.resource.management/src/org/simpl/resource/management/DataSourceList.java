@@ -10,8 +10,6 @@ import javax.xml.bind.annotation.XmlType;
 
 import org.simpl.core.webservices.client.DataSource;
 
-
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataSourceList", namespace = "http://management.resource.simpl.org/", propOrder = { "dataSources" })
 public class DataSourceList {

@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataConverterList", namespace = "http://management.resource.simpl.org/", propOrder = { "dataConverters" })
 public class DataConverterList {
@@ -20,7 +19,7 @@ public class DataConverterList {
     if (dataConverters == null) {
       dataConverters = new ArrayList<DataConverter>();
     }
-    
+
     return this.dataConverters;
   }
 }
