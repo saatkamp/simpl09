@@ -48,6 +48,7 @@ import org.xml.sax.InputSource;
 @WebService(name = "ResourceManagement")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class ResourceManagement {
+  // TODO: use xpath in statements and fill in the default xml in the database
   final static String propertiesDescription = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><datasourceconnector_properties_description xmlns=\"http://org.simpl.resource.management/datasources/datasourceconnector_properties_description\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://org.simpl.resource.management/datasources/datasourceconnector_properties_description datasources.xsd \"><type>%s</type><subType>%s</subType><language>%s</language><dataFormat>%s</dataFormat></datasourceconnector_properties_description>";
 
   DatasourceService dataSourceService = DatasourceServiceClient
@@ -93,12 +94,16 @@ public class ResourceManagement {
       throws Exception {
     DataSourceList dataSourceList = new DataSourceList();
     ArrayList<DataSource> dataSources = null;
-    String statement = null;
+    String statement = "";
     String result = null;
 
     // build select statement
-    statement = "SELECT * FROM datasources WHERE ";
-    statement += "type LIKE '" + type + "'";
+    statement += "SELECT datasources.* ";
+    statement += "FROM datasources ";
+    statement += "INNER JOIN datasourceconnectors ON (datasourceconnectors.id = datasources.datasourceconnector_id) ";
+    statement += "WHERE getText('type', datasourceconnectors.properties_description) = '"
+        + type + "' ";
+    statement += "ORDER BY datasources.id ASC";
 
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -110,7 +115,7 @@ public class ResourceManagement {
   }
 
   /**
-   * Returns all data sources filtered by type and subtype.
+   * Returns all data sources filtered by type and sub type.
    * 
    * @param type
    * @return
@@ -122,13 +127,19 @@ public class ResourceManagement {
       throws Exception {
     DataSourceList dataSourceList = new DataSourceList();
     ArrayList<DataSource> dataSources = null;
-    String statement = null;
+    String statement = "";
     String result = null;
 
     // build select statement
-    statement = "SELECT * FROM datasources WHERE ";
-    statement += "type LIKE '" + type + "' AND ";
-    statement += "subtype LIKE '" + subType + "' ORDER BY id ASC";
+    statement += "SELECT datasources.* ";
+    statement += "FROM datasources ";
+    statement += "INNER JOIN datasourceconnectors ON (datasourceconnectors.id = datasources.datasourceconnector_id) ";
+    statement += "WHERE getText('type', datasourceconnectors.properties_description) = '"
+        + type + "' ";
+    statement += "AND ";
+    statement += "getText('subType', datasourceconnectors.properties_description) LIKE '"
+        + subType + "' ";
+    statement += "ORDER BY datasources.id ASC";
 
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -211,9 +222,6 @@ public class ResourceManagement {
    * The SQL statements are retrieved from the resource_management.sql file that is placed
    * inside the resource management web service jar.
    * 
-   * Caveat: Should be executed carefully if tables already exist, because in this case
-   * tables and data get deleted and must be recreated.
-   * 
    * @return
    * @throws Exception
    */
@@ -247,14 +255,15 @@ public class ResourceManagement {
     }
 
     // drop tables on failure
-    if (!success) {
-      dataSourceService.executeStatement(rmDataSource, "DROP TABLE datasources");
-      dataSourceService.executeStatement(rmDataSource,
-          "DROP TABLE datasourceconnectors_dataconverters");
-      dataSourceService.executeStatement(rmDataSource, "DROP TABLE datasourceconnectors");
-      dataSourceService.executeStatement(rmDataSource, "DROP TABLE dataconverters");
-      dataSourceService.executeStatement(rmDataSource, "DROP TABLE datacontainers");
-    }
+    // if (!success) {
+    // dataSourceService.executeStatement(rmDataSource, "DROP TABLE datasources");
+    // dataSourceService.executeStatement(rmDataSource,
+    // "DROP TABLE datasourceconnectors_dataconverters");
+    // dataSourceService.executeStatement(rmDataSource,
+    // "DROP TABLE datasourceconnectors");
+    // dataSourceService.executeStatement(rmDataSource, "DROP TABLE dataconverters");
+    // dataSourceService.executeStatement(rmDataSource, "DROP TABLE datacontainers");
+    // }
 
     return success;
   }
@@ -454,6 +463,12 @@ public class ResourceManagement {
     return dataConverters;
   }
 
+  /**
+   * Returns a list of data source types.
+   * 
+   * @return
+   * @throws Exception
+   */
   @WebMethod(action = "getDataSourceTypes")
   public StringList getDataSourceTypes() throws Exception {
     StringList stringList = new StringList();
@@ -483,6 +498,13 @@ public class ResourceManagement {
     return stringList;
   }
 
+  /**
+   * Returns a list of data source sub types of the given type.
+   * 
+   * @param type
+   * @return
+   * @throws Exception
+   */
   @WebMethod(action = "getDataSourceSubTypes")
   public StringList getDataSourceSubTypes(String type) throws Exception {
     StringList stringList = new StringList();
@@ -517,6 +539,13 @@ public class ResourceManagement {
     return stringList;
   }
 
+  /**
+   * Returns a list of data source languages of the given sub type.
+   * 
+   * @param subType
+   * @return
+   * @throws Exception
+   */
   @WebMethod(action = "getDataSourceLanguages")
   public StringList getDataSourceLanguages(String subType) throws Exception {
     StringList stringList = new StringList();
@@ -551,35 +580,49 @@ public class ResourceManagement {
     return stringList;
   }
 
-  @WebMethod(action = "getSupportedDataFormatTypes")
-  public StringList getSupportedDataFormatTypes(DataSource dataSource) throws Exception {
-    StringList stringList = new StringList();
-
-    // TODO: implement
-
-    return stringList;
-  }
-
+  /**
+   * Returns a list of data format types that can be converted to and from the data format
+   * type of the given data source.
+   * 
+   * @param dataSource
+   * @param dataFormatType
+   * @return
+   * @throws Exception
+   */
   @WebMethod(action = "getSupportedConvertDataFormatTypes")
-  public StringList getSupportedConvertDataFormatTypes(DataSource dataSource,
-      String dataFormatType) throws Exception {
+  public StringList getSupportedConvertDataFormatTypes(DataSource dataSource)
+      throws Exception {
     StringList stringList = new StringList();
+    String statement = "";
+    String result = null;
 
-    // TODO: implement
+    statement += "SELECT dataconverters.datasourceconnector_dataformat, dataconverters.workflow_dataformat ";
+    statement += "FROM datasources ";
+    statement += "INNER JOIN datasourceconnectors ON (datasources.datasourceconnector_id = datasourceconnectors.id) ";
+    statement += "INNER JOIN dataconverters ON (dataconverters.datasourceconnector_dataformat = datasourceconnectors.dataconverter_dataformat OR dataconverters.workflow_dataformat = datasourceconnectors.dataconverter_dataformat) ";
+    statement += "WHERE datasources.id = " + dataSource.getId();
+
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    stringList.getItems().addAll(
+        getColumnValuesFromResult(result, "datasourceconnector_dataformat"));
+    stringList.getItems()
+        .addAll(getColumnValuesFromResult(result, "workflow_dataformat"));
+
+    // remove duplicates
+    HashSet<String> h = new HashSet<String>(stringList.getItems());
+    stringList.getItems().clear();
+    stringList.getItems().addAll(h);
+
+    // remove data format of the data source itself
+    stringList.getItems().remove(dataSource.getDataFormat());
+
+    // sort items
+    Collections.sort(stringList.getItems());
 
     return stringList;
   }
 
-
-  @WebMethod(action = "getDataFormatSchema")
-  public String getDataFormatSchema(DataSource dataSource) {
-    String dataFormatSchema = null;
-
-    // TODO: implement
-
-    return dataFormatSchema;
-  }
-  
   /**
    * Creates DataSource objects from a RDB data format result.
    * 
