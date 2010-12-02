@@ -1,3 +1,6 @@
+/**
+ * TABLES
+ */
 CREATE TABLE datasourceconnectors (
    id SERIAL PRIMARY KEY,
    name varchar(255) NOT NULL,
@@ -51,6 +54,20 @@ CREATE TABLE datacontainers (
    local_identifier xml NOT NULL
 );
 
+/**
+ * FUNCTIONS
+ */
+-- retrieves the text of an XML element (text) from a xml data type (xml)
+CREATE OR REPLACE FUNCTION getText(text, xml)
+  RETURNS text AS 
+  $$
+    SELECT substring(xmlserialize(DOCUMENT $2 as text) from '<' || $1 || '>(.*?)</' || $1 || '>') FROM datasources
+  $$ 
+  LANGUAGE SQL
+
+/**
+ * DATA 
+ */
 INSERT INTO datasourceconnectors
 (id, name, properties_description, dataconverter_dataformat)
 VALUES
