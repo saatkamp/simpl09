@@ -101,7 +101,7 @@ public class ResourceManagement {
     statement += "SELECT datasources.* ";
     statement += "FROM datasources ";
     statement += "INNER JOIN datasourceconnectors ON (datasourceconnectors.id = datasources.datasourceconnector_id) ";
-    statement += "WHERE getText('type', datasourceconnectors.properties_description) = '"
+    statement += "WHERE getProperty('type', datasourceconnectors.properties_description) = '"
         + type + "' ";
     statement += "ORDER BY datasources.id ASC";
 
@@ -134,10 +134,10 @@ public class ResourceManagement {
     statement += "SELECT datasources.* ";
     statement += "FROM datasources ";
     statement += "INNER JOIN datasourceconnectors ON (datasourceconnectors.id = datasources.datasourceconnector_id) ";
-    statement += "WHERE getText('type', datasourceconnectors.properties_description) = '"
+    statement += "WHERE getProperty('type', datasourceconnectors.properties_description) = '"
         + type + "' ";
     statement += "AND ";
-    statement += "getText('subType', datasourceconnectors.properties_description) LIKE '"
+    statement += "getProperty('subType', datasourceconnectors.properties_description) LIKE '"
         + subType + "' ";
     statement += "ORDER BY datasources.id ASC";
 

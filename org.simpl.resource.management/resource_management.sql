@@ -57,13 +57,13 @@ CREATE TABLE datacontainers (
 /**
  * FUNCTIONS
  */
--- retrieves the text of an XML element (text) from a xml data type (xml)
-CREATE OR REPLACE FUNCTION getText(text, xml)
+-- retrieves the property (text) of a XML element from a xml field (xml)
+CREATE OR REPLACE FUNCTION getProperty(text, xml)
   RETURNS text AS 
   $$
-    SELECT substring(xmlserialize(DOCUMENT $2 as text) from '<' || $1 || '>(.*?)</' || $1 || '>') FROM datasources
+    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/datasourceconnectors/properties_description']]))[1] AS text) FROM datasourceconnectors
   $$ 
-  LANGUAGE SQL
+LANGUAGE SQL
 
 /**
  * DATA 
