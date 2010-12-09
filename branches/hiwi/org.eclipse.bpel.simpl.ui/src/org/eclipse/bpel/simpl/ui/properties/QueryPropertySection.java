@@ -31,6 +31,7 @@ import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -345,13 +346,17 @@ public class QueryPropertySection extends DMActivityPropertySection {
 				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
 						.getUseableVariables(getProcess(),
 								VariableUtils.PARAMETER_VAR);
-				bpelVariableWindow
-						.loadBPELVariables(listOfBPELVariablesAsStrings);
-				if (!bpelVariableWindow.isWindowOpen()) {
-					bpelVariableWindow.openWindow();
-					bpelVariableWindow.setWindowIsOpen(true);
-				}
-
+				
+        if (!listOfBPELVariablesAsStrings.isEmpty()) {
+          bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
+          if (!bpelVariableWindow.isWindowOpen()) {
+            bpelVariableWindow.openWindow();
+            bpelVariableWindow.setWindowIsOpen(true);
+          }
+        } else {
+          MessageDialog.openInformation(parentComposite.getShell(), "Information",
+              "No parameter variables found.\n\nPlease create at least one variable of primitive type");
+        }
 			}
 
 			@Override
@@ -376,11 +381,18 @@ public class QueryPropertySection extends DMActivityPropertySection {
 								VariableUtils.CONTAINER_VAR);
 				bpelVariableWindow
 						.loadBPELVariables(listOfBPELVariablesAsStrings);
-				if (!bpelVariableWindow.isWindowOpen()) {
-					bpelVariableWindow.openWindow();
-					bpelVariableWindow.setWindowIsOpen(true);
-				}
-
+				
+        if (!listOfBPELVariablesAsStrings.isEmpty()) {
+          if (!bpelVariableWindow.isWindowOpen()) {
+            bpelVariableWindow.openWindow();
+            bpelVariableWindow.setWindowIsOpen(true);
+          }
+        } else {
+          MessageDialog.openInformation(
+              parentComposite.getShell(),
+              "Information",
+              "No container reference variable found.\n\nPlease create at least one variable of type 'ContainerReferenceType'.");
+        }
 			}
 
 			@Override

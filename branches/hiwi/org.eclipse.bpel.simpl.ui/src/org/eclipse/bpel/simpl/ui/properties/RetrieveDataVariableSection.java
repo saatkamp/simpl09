@@ -43,6 +43,7 @@ import org.eclipse.bpel.ui.util.MultiObjectAdapter;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener;
@@ -355,11 +356,16 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 								VariableUtils.PARAMETER_VAR);
 				bpelVariableWindow
 						.loadBPELVariables(listOfBPELVariablesAsStrings);
-				if (!bpelVariableWindow.isWindowOpen()) {
-					bpelVariableWindow.openWindow();
-					bpelVariableWindow.setWindowIsOpen(true);
-				}
-
+				
+        if (!listOfBPELVariablesAsStrings.isEmpty()) {
+          if (!bpelVariableWindow.isWindowOpen()) {
+            bpelVariableWindow.openWindow();
+            bpelVariableWindow.setWindowIsOpen(true);
+          }
+        } else {
+          MessageDialog.openInformation(parentComposite.getShell(), "Information",
+              "No parameter variables found.\n\nPlease create at least one variable of primitive type");
+        }
 			}
 
 			@Override
@@ -384,11 +390,18 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 								VariableUtils.CONTAINER_VAR);
 				bpelVariableWindow
 						.loadBPELVariables(listOfBPELVariablesAsStrings);
-				if (!bpelVariableWindow.isWindowOpen()) {
-					bpelVariableWindow.openWindow();
-					bpelVariableWindow.setWindowIsOpen(true);
-				}
-
+				
+        if (!listOfBPELVariablesAsStrings.isEmpty()) {
+          if (!bpelVariableWindow.isWindowOpen()) {
+            bpelVariableWindow.openWindow();
+            bpelVariableWindow.setWindowIsOpen(true);
+          }
+        } else {
+          MessageDialog.openInformation(
+              parentComposite.getShell(),
+              "Information",
+              "No container reference variable found.\n\nPlease create at least one variable of type 'ContainerReferenceType'.");
+        }
 			}
 
 			@Override
