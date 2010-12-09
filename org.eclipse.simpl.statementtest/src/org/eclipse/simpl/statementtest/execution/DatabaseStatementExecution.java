@@ -146,6 +146,9 @@ public class DatabaseStatementExecution extends StatementExecution {
 
     if (statementTest.isExclusiveResult()) {
       condition = addToCondition(null, columns, values);
+
+      // clear columns to select all columns on execution
+      columns.clear();
     }
 
     this.statementTest.log("Table: " + tables);
@@ -237,6 +240,9 @@ public class DatabaseStatementExecution extends StatementExecution {
     }
 
     if (statementTest.isExclusiveResult()) {
+      // clear columns to select all columns on execution
+      columns.clear();
+
       if (condition != null) {
         if (comparativeCondition != null) {
           condition += " OR (" + comparativeCondition + ")";
@@ -254,7 +260,8 @@ public class DatabaseStatementExecution extends StatementExecution {
 
     // execute the statement
     this.statementTest.log("= Statement execution =");
-    this.executeStatementAndCompare(tables, columns, condition, comparativeCondition, true);
+    this.executeStatementAndCompare(tables, columns, condition, comparativeCondition,
+        true);
   }
 
   @Override
@@ -336,8 +343,8 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = this.dataSourceService.executeStatement(this.statementTest
-          .getDataSource(), this.statementTest.getGeneratedStatement());
+      boolean result = this.dataSourceService.executeStatement(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
       statementTest.setExecuted(result);
 
       if (result) {
@@ -364,14 +371,15 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.dataSourceService.retrieveData(this.statementTest
-          .getDataSource(), this.statementTest.getGeneratedStatement());
+      String result = this.dataSourceService.retrieveData(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
         statementTest.setResult(new RelationalResult(result));
         this.statementTest.log("Retrieved "
-            + ((RelationalResult) this.statementTest.getResult()).getRowCount() + " tuple.");
+            + ((RelationalResult) this.statementTest.getResult()).getRowCount()
+            + " tuple.");
       } else {
         this.statementTest.log("Failed to retrieve result.");
 
@@ -401,8 +409,9 @@ public class DatabaseStatementExecution extends StatementExecution {
     // define statement to execute
     if (this.statementTest.isExclusiveResult()) {
       execStatement = "SELECT "
-          + (columns == null ? "*" : StringUtils.implode(columns, ",")) + " FROM "
-          + tables + (conditionBefore == null ? "" : " WHERE " + conditionBefore);
+          + (columns == null || columns.isEmpty() ? "*" : StringUtils.implode(columns,
+              ",")) + " FROM " + tables
+          + (conditionBefore == null ? "" : " WHERE " + conditionBefore);
     } else {
       execStatement = "SELECT * FROM " + tables;
     }
@@ -416,18 +425,18 @@ public class DatabaseStatementExecution extends StatementExecution {
     try {
       this.statementTest.log("Retrieve result before: " + execStatement);
 
-      resultBefore = this.dataSourceService.retrieveData(this.statementTest
-          .getDataSource(), execStatement);
-      
+      resultBefore = this.dataSourceService.retrieveData(
+          this.statementTest.getDataSource(), execStatement);
+
       // set table name (for drop activity)
       RelationalResult result = new RelationalResult(resultBefore);
       result.setTable(tables);
-      
+
       if (resultBefore != null && !resultBefore.isEmpty()) {
         this.statementTest.setComparativeResult(new RelationalResult(resultBefore));
         this.statementTest.log("Retrieved "
-            + ((RelationalResult) this.statementTest.getComparativeResult()).getRowCount()
-            + " tuple.");
+            + ((RelationalResult) this.statementTest.getComparativeResult())
+                .getRowCount() + " tuple.");
       } else {
         this.statementTest.log("Failed to retrieve result.");
 
@@ -445,8 +454,8 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = dataSourceService.executeStatement(this.statementTest
-          .getDataSource(), this.statementTest.getGeneratedStatement());
+      boolean result = dataSourceService.executeStatement(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
       statementTest.setExecuted(result);
 
       if (result) {
@@ -461,38 +470,39 @@ public class DatabaseStatementExecution extends StatementExecution {
       return;
     }
 
-    if (getResultAfter) {    
+    if (getResultAfter) {
       // modify statement to execute with condition after
       if (this.statementTest.isExclusiveResult() && conditionAfter != null) {
         execStatement = execStatement.replaceFirst("(?i)WHERE(.*?)$", "");
         execStatement += " WHERE " + conditionAfter;
-  
+
         // TODO abfangen, wenn bereits ein LIMIT gesetzt ist.
         if (this.statementTest.isLimitedResult()) {
           execStatement += " LIMIT 10";
         }
       }
-  
+
       // retrieve result after
       try {
         statementTest.log("Retrieve result after: " + execStatement);
-        resultAfter = this.dataSourceService.retrieveData(this.statementTest
-            .getDataSource(), execStatement);
-  
+        resultAfter = this.dataSourceService.retrieveData(
+            this.statementTest.getDataSource(), execStatement);
+
         if (resultAfter != null && !resultAfter.equals("")) {
           this.statementTest.setResult(new RelationalResult(resultAfter));
           statementTest.log("Retrieved "
-              + ((RelationalResult) this.statementTest.getResult()).getRowCount() + " tuple.");
+              + ((RelationalResult) this.statementTest.getResult()).getRowCount()
+              + " tuple.");
         } else {
           this.statementTest.setResult(new RelationalResult()); // empty result
           statementTest.log("Failed to retrieve result.");
-  
+
           return;
         }
       } catch (Exception e) {
         System.out.println(e.getMessage());
         this.statementTest.log("Error on statement execution.");
-  
+
         return;
       }
     } else {

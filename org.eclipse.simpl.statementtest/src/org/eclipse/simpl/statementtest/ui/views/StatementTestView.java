@@ -340,7 +340,7 @@ public class StatementTestView extends ViewPart {
     column = new TableColumn(table, SWT.LEFT);
     column.setText("#");
     column.setWidth(25);
-System.out.println(comparativeResult);
+
     if (result.getRowCount() >= comparativeResult.getRowCount()) {
       for (String columnName : result.getColumns()) {
         column = new TableColumn(table, SWT.LEFT);
