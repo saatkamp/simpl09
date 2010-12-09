@@ -46,6 +46,9 @@ public class ReferenceVariableInitSection extends BPELPropertySection {
 		super.basicSetInput(input);
 
 		fVariable = (ReferenceVariable) input;
+		
+		// preselect the reference type of the variable
+		this.fReferenceTypeCombo.setText(fVariable.getReferenceType().getName());
 	}
 
 	protected void createReferenceTypeWidgets(Composite composite) {
