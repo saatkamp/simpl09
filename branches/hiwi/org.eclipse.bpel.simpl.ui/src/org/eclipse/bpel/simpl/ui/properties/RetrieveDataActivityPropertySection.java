@@ -5,15 +5,13 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id: RetrieveDataVariableSection.java 1365 2010-05-13 14:35:31Z hahnml@t-online.de $ <br>
+ * @version $Id$ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
-package org.eclipse.bpel.simpl.ui.properties.backup;
+package org.eclipse.bpel.simpl.ui.properties;
 
-//TODO: Diese Implementierung abändern und per Extension-Point 
-//in die RetrieveDataPropertySection einbinden.
-
+import java.io.File;
 import java.util.ArrayList;
 
 import org.eclipse.bpel.common.ui.assist.FieldAssistAdapter;
@@ -29,9 +27,11 @@ import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.simpl.ui.widgets.DBTable;
+import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
 import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
+import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
 import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;
 import org.eclipse.bpel.ui.details.providers.VariableContentProvider;
@@ -43,16 +43,15 @@ import org.eclipse.bpel.ui.util.MultiObjectAdapter;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener;
 import org.eclipse.jface.fieldassist.IControlContentAdapter;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.simpl.communication.client.DataSource;
+import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.LineStyleEvent;
-import org.eclipse.swt.custom.LineStyleListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
@@ -65,48 +64,46 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xsd.XSDTypeDefinition;
-
+import org.simpl.core.webservices.client.DataSource;
 
 /**
  * The Class RetrieveDataVariableSection.
  */
-public class RetrieveDataVariableSection extends DMActivityPropertySection {
+public class RetrieveDataActivityPropertySection extends DMActivityPropertySection {
 
 	private VariableFilter fInputVariableFilter = new VariableFilter();
 
 	/** The tabels pop window tables. */
-	TablsListPopUp tabelsPopWindowTables;
+	SchemaListPopUp schemaPopWindow;
 	ParametersListPopUp bpelVariableWindow;
-	
+	FileSysListPopUp fSysElementsPopWindow;
+
 	/** The tabels pop window bpel variables. */
 	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
-	private Label statementLabel = null;
-	// private Text statementText = null;
 	private Label dataSourceAddressLabel = null;
 	private CCombo dataSourceAddressCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
 	private Button openEditorButton = null;
+	private Button openStatementTestWizardButton = null;
 	private Label languageLabel = null;
 	private Text languageText = null;
-	private Label queryTargetLabel = null;
-	private Text queryTargetText = null;
 
 	private LiveEditStyleText statementText = null;
-
-	private Button insertBpelVariable = null;
+	private Button insertParameterVariable = null;
+	private Button insertContainerVariable = null;
 	private Button insertTable = null;
 	private Button Save = null;
+	private Button command = null, file = null; //, folder = null, driver = null;
 
 	private RetrieveDataActivity activity;
-
-	private DataSource dataSource = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -127,8 +124,14 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 		createWidgets(parent);
 
-		// Setzen das Statement
-		setStatement(activity.getDsStatement());
+		if (activity.getDsStatement() == null) {
+			// Setzen das Statement
+			setStatement("");
+		} else {
+			// Setzen das Statement
+			setStatement(activity.getDsStatement());
+		}
+
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Sprache
@@ -141,7 +144,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	 * @param composite
 	 *            to put the content in.
 	 */
-	private void createWidgets(Composite composite) {
+	@SuppressWarnings("unused")
+  private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
 		GridData gridData130 = new GridData();
 		gridData130.horizontalAlignment = GridData.FILL;
@@ -215,15 +219,20 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 				getCommandFramework().execute(
 						new SetDsAddressCommand(getModel(),
 								dataSourceAddressCombo.getText()));
-				
-				DataSource dataSource = PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText());
-				typeText.setText(dataSource.getType());
-				kindText.setText(dataSource.getSubType());
-				languageText.setText(dataSource.getLanguage());
+
+				DataSource dataSource = getDataSource();
+				if (dataSource != null) {
+					typeText.setText(dataSource.getType());
+					kindText.setText(dataSource.getSubType());
+					languageText.setText(dataSource.getLanguage());
+					
+					PropertySectionUtils.downloadSchema(dataSource, getProcess());
+				}
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
-		
+		dataSourceAddressCombo.setItems(PropertySectionUtils
+				.getAllDataSourceNames(getProcess()));
+
 		dataSourceAddressLabel.setText("Data source name:");
 		dataSourceAddressCombo.setEditable(false);
 		dataSourceAddressCombo.setBackground(Display.getCurrent()
@@ -245,6 +254,12 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 				getCommandFramework().execute(
 						new SetDsLanguageCommand(getModel(), languageText
 								.getText()));
+				
+				if (languageText.getText().isEmpty()) {
+					openEditorButton.setEnabled(false);
+				} else {
+					openEditorButton.setEnabled(true);
+				}
 			}
 		});
 
@@ -268,22 +283,36 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 
 			@Override
 			public void widgetSelected(SelectionEvent arg0) {
-				MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
-				ArrayList<DBTable> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(
-						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+				MetaDataXMLParser metaDataXMLParser_Objekt = new MetaDataXMLParser();
+				ArrayList<DBTable> listOfTables = metaDataXMLParser_Objekt
+						.loadTablesFromDB(PropertySectionUtils
+								.findDataSourceByName(getProcess(),
+										dataSourceAddressCombo.getText()));
 
 				openStatementEditor(ModelPackage.eINSTANCE
 						.getRetrieveDataActivity().getInstanceClassName(),
-						activity.getDsLanguage());
+						activity.getDsLanguage(), activity.getName());
 			}
 		});
 
-		// +++++++++++++++++++++++++++++++++++Buttons for Statmet Feld+++++++
-		Composite statementCompo = new Composite(composite, SWT.NONE);
-		statementCompo.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		GridData gridData13 = new GridData();
-		gridData13.horizontalSpan = 3;
+    openStatementTestWizardButton = new Button(composite, SWT.NONE);
+    openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+    openStatementTestWizardButton.setText("Test Statement");
+    openStatementTestWizardButton.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetDefaultSelected(SelectionEvent e) {
+        widgetSelected(e);
+      }
+
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        // open wizard
+        WizardLauncher.launch(activity, getProcess());
+      }
+    });
+		
+		Label filler = new Label(composite, SWT.NONE);
+		Label filler6 = new Label(composite, SWT.NONE);
 
 		GridData gridData14 = new GridData();
 		gridData14.horizontalSpan = 4;
@@ -292,6 +321,19 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		gridData14.grabExcessVerticalSpace = true;
 		gridData14.grabExcessHorizontalSpace = true;
 
+		if (activity.getDsType() != null) {
+			if (activity.getDsType().equals("Filesystem")) {
+				//System.out.print("\r Filesystem");
+
+				createFileSystemWidgets();
+
+			} else if (activity.getDsType().equals("Database")) {
+				//System.out.print("\r Database");
+
+				createDBWidgets();
+			}
+		}
+
 		GridData gridData15 = new GridData();
 		gridData15.horizontalSpan = 4;
 		gridData15.horizontalAlignment = GridData.FILL;
@@ -299,73 +341,77 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		gridData15.grabExcessVerticalSpace = true;
 		gridData15.grabExcessHorizontalSpace = true;
 
-		GridData gridData24 = new GridData();
-		gridData24.horizontalAlignment = GridData.BEGINNING;
-		gridData24.verticalAlignment = GridData.CENTER;
-
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
-		statementCompo.setLayout(gridLayout2);
-		statementCompo.setLayoutData(gridData14);
-		// statementCompo.setSize(new Point(150,70));
-		insertBpelVariable = new Button(statementCompo, SWT.NONE);
-		insertBpelVariable.setText("Insert Variable");
-		insertBpelVariable.addSelectionListener(new SelectionListener() {
+		insertParameterVariable = new Button(composite, SWT.NONE);
+		insertParameterVariable.setText("Insert Parameter Variable");
+		insertParameterVariable.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				bpelVariableWindow = new ParametersListPopUp(statementText);
-				// Display display2 = Display.getDefault();
-				bpelVariableWindow.setText("Insert BPEL-Variable");
-				// sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-				// sShell.setLayout(gridLayout);
-				java.util.List<String> listOfBPELVariablesAsStrings=VariableUtils.getUseableVariables(getProcess());
-				bpelVariableWindow.loadBPELVariables(listOfBPELVariablesAsStrings);
-				if (!bpelVariableWindow.isWindowOpen()) {
-					bpelVariableWindow.openWindow();
-					bpelVariableWindow.setWindowIsOpen(true);
-				}
 
+				bpelVariableWindow.setText("Insert Parameter Variable");
+
+				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
+						.getUseableVariables(getProcess(),
+								VariableUtils.PARAMETER_VAR);
+				bpelVariableWindow
+						.loadBPELVariables(listOfBPELVariablesAsStrings);
+				
+        if (!listOfBPELVariablesAsStrings.isEmpty()) {
+          if (!bpelVariableWindow.isWindowOpen()) {
+            bpelVariableWindow.openWindow();
+            bpelVariableWindow.setWindowIsOpen(true);
+          }
+        } else {
+          MessageDialog.openInformation(parentComposite.getShell(), "Information",
+              "No parameter variables found.\n\nPlease create at least one variable of primitive type");
+        }
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
+				widgetSelected(e);
 			}
 		});
 
-		insertTable = new Button(statementCompo, SWT.NONE);
-		insertTable.addSelectionListener(new SelectionListener() {
+		insertContainerVariable = new Button(composite, SWT.NONE);
+		insertContainerVariable.setText("Insert Container Reference Variable");
+		insertContainerVariable.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				// Display tablesDisplay =new Display();
-				// Composite tablesComp=new
-				// Composite(tablesDisplay.getCurrent(), SWT.NONE);
-				tabelsPopWindowTables = new TablsListPopUp(statementText);
-				// Display display2 = Display.getDefault();
-				tabelsPopWindowTables.setText("Select Tabel");
-				//sShell.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-				//sShell.setLayout(gridLayout);
-				tabelsPopWindowTables.loadTablesFromDB(PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+				bpelVariableWindow = new ParametersListPopUp(statementText);
 
-				if (!tabelsPopWindowTables.isWindowOpen()) {
-					tabelsPopWindowTables.openWindow();
-					tabelsPopWindowTables.setWindowIsOpen(true);
-				}
+				bpelVariableWindow
+						.setText("Insert Container Reference Variable");
 
+				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
+						.getUseableVariables(getProcess(),
+								VariableUtils.CONTAINER_VAR);
+				bpelVariableWindow
+						.loadBPELVariables(listOfBPELVariablesAsStrings);
+				
+        if (!listOfBPELVariablesAsStrings.isEmpty()) {
+          if (!bpelVariableWindow.isWindowOpen()) {
+            bpelVariableWindow.openWindow();
+            bpelVariableWindow.setWindowIsOpen(true);
+          }
+        } else {
+          MessageDialog.openInformation(
+              parentComposite.getShell(),
+              "Information",
+              "No container reference variable found.\n\nPlease create at least one variable of type 'ContainerReferenceType'.");
+        }
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-
+				widgetSelected(e);
 			}
 		});
-
-		Save = new Button(statementCompo, SWT.NONE);
-		Save
-				.setBackground(Display.getCurrent().getSystemColor(
+		
+		Save = new Button(composite, SWT.NONE);
+		Save.setBackground(Display.getCurrent().getSystemColor(
 						SWT.COLOR_WHITE));
 		Save.setText("Save");
 		Save.addSelectionListener(new SelectionListener() {
@@ -374,52 +420,229 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 			public void widgetSelected(SelectionEvent e) {
 				setStatement(statementText.getText());
 				saveStatementToModel();
-				
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+
+//				if (tabelsPopWindowTables != null){
+//					tabelsPopWindowTables.closeWindow();
+//					tabelsPopWindowTables.setWindowIsOpen(false);
+//				}
+//				if (tabelsPopWindowBPELVariables != null){
+//					tabelsPopWindowBPELVariables.closeWindow();
+//					tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+//				}
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				setStatement(statementText.getText());
-				saveStatementToModel();
-				
-				tabelsPopWindowTables.closeWindow();
-				tabelsPopWindowBPELVariables.closeWindow();
-				tabelsPopWindowTables.setWindowIsOpen(false);
-				tabelsPopWindowBPELVariables.setWindowIsOpen(false);
+				widgetSelected(e);
+			}
+		});
+
+		insertParameterVariable.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
+		insertContainerVariable.setBackground(Display.getCurrent()
+				.getSystemColor(SWT.COLOR_WHITE));
+
+		Label filler1 = new Label(composite, SWT.NONE);
+
+		Label statementLabel = new Label(composite, SWT.NONE);
+		statementLabel.setText("Data management operation:");
+		statementLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+		statementText = new LiveEditStyleText(composite);
+		statementText.setLayoutData(gridData15);
+
+		statementText.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
+		typeText.setEnabled(false);
+		kindText.setEnabled(false);
+		languageText.setEnabled(false);
+	}
+
+	/**
+	 * for creating the GUI elements of DB data source as child Composite.
+	 * 
+	 * @param parentCompo
+	 * @return
+	 */
+	private void createDBWidgets() {
+		// ----------------------------------------------------------
+		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 3;
+		contentCompo.setLayout(gridLayout2);
+		contentCompo.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
+
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+		contentCompo.setLayoutData(gridData14);
+
+		// statementCompo.setSize(new Point(150,70));
+
+		insertTable = new Button(contentCompo, SWT.NONE);
+		insertTable.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				schemaPopWindow = new SchemaListPopUp(statementText);
+				schemaPopWindow.setText("Select Table Name");
+				schemaPopWindow.loadSchemasFromDB(getDataSource());
+
+				if (!schemaPopWindow.isWindowOpen()) {
+					schemaPopWindow.openWindow();
+					schemaPopWindow.setWindowIsOpen(true);
+				}
+
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
 			}
 		});
 
 		insertTable.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		insertTable.setText("Insert Table");
+		insertTable.setText("Insert Table Name");
+	}
 
-		// insertBpelVariable.setLayoutData(gridData24);
-		insertBpelVariable.setBackground(Display.getCurrent().getSystemColor(
+	/**
+	 * for creating the GUI elements of FileSystem data source as child
+	 * Composite.
+	 * 
+	 * @param parentCompo
+	 * @return
+	 */
+	private void createFileSystemWidgets() {
+		// this.parentComposite = composite;
+		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
+		GridLayout gridLayout2 = new GridLayout();
+		gridLayout2.numColumns = 4;
+		contentCompo.setLayout(gridLayout2);
+		contentCompo.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		statementText = new LiveEditStyleText(statementCompo,this);
-		statementText.setLayoutData(gridData15);
 
-		statementText.setBackground(Display.getCurrent().getSystemColor(
+		GridData gridData14 = new GridData();
+		gridData14.horizontalSpan = 4;
+		gridData14.horizontalAlignment = GridData.FILL;
+		gridData14.verticalAlignment = GridData.FILL;
+		gridData14.grabExcessVerticalSpace = true;
+		gridData14.grabExcessHorizontalSpace = true;
+		contentCompo.setLayoutData(gridData14);
+
+		command = new Button(contentCompo, SWT.NONE);
+		command.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		
-//		statementText.addModifyListener(new ModifyListener() {
-//			
+		command.setText("Select Command");
+		command.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				fSysElementsPopWindow = new FileSysListPopUp("COMMAND",
+						statementText);
+				fSysElementsPopWindow.setText("Select Command");
+				fSysElementsPopWindow.loadDataToFSysElementList("COMMAND",
+						getDataSource());
+
+				if (!fSysElementsPopWindow.isWindowOpen()) {
+					fSysElementsPopWindow.openWindow();
+					fSysElementsPopWindow.setWindowIsOpen(true);
+				}
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+
+		file = new Button(contentCompo, SWT.NONE);
+		file
+				.setBackground(Display.getCurrent().getSystemColor(
+						SWT.COLOR_WHITE));
+		file.setText("Select File");
+		file.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				FileDialog dialog = new FileDialog(parentComposite.getShell(), SWT.OPEN);
+			    dialog
+			        .setFilterNames(new String[] { "Comma Separated Values", "All Files (*.*)" });
+			    dialog.setFilterExtensions(new String[] { "*.csv", "*.*" });                   
+			    dialog.setFilterPath(getDataSource().getAddress());
+			    dialog.setFileName("");
+			    
+			    dialog.open();
+			    
+			    statementText.append(" " + dialog.getFilterPath() + File.separator + dialog.getFileName());
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+
+			}
+		});
+//		folder = new Button(contentCompo, SWT.NONE);
+//		folder.setBackground(Display.getCurrent().getSystemColor(
+//				SWT.COLOR_WHITE));
+//		folder.setText("Select Folder");
+//		folder.addSelectionListener(new SelectionListener() {
+//
 //			@Override
-//			public void modifyText(ModifyEvent e) {
-//				setStatement(statementText.getText());
-//				saveStatementToModel();
+//			public void widgetSelected(SelectionEvent e) {
+//				fSysElementsPopWindow = new FileSysListPopUp("FOLDER",
+//						statementText);
+//				fSysElementsPopWindow.setText("Select Folder");
+//				fSysElementsPopWindow.loadDataToFSysElementList("FOLDER",
+//						getDataSource());
+//
+//				if (!fSysElementsPopWindow.isWindowOpen()) {
+//					fSysElementsPopWindow.openWindow();
+//					fSysElementsPopWindow.setWindowIsOpen(true);
+//				}
+//			}
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//
 //			}
 //		});
-		// statementText.setVisible(false);
-		// +++++++++++++++++++++++++++++++++++++++++++++++++++++
+//		driver = new Button(contentCompo, SWT.NONE);
+//		driver.setBackground(Display.getCurrent().getSystemColor(
+//				SWT.COLOR_WHITE));
+//		driver.setText("Select Driver");
+//		driver.addSelectionListener(new SelectionListener() {
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				fSysElementsPopWindow = new FileSysListPopUp("DRIVE",
+//						statementText);
+//				fSysElementsPopWindow.setText("Select Folder");
+//				fSysElementsPopWindow.loadDataToFSysElementList("DRIVE",
+//						getDataSource());
+//
+//				if (!fSysElementsPopWindow.isWindowOpen()) {
+//					fSysElementsPopWindow.openWindow();
+//					fSysElementsPopWindow.setWindowIsOpen(true);
+//				}
+//			}
+//
+//			@Override
+//			public void widgetDefaultSelected(SelectionEvent e) {
+//
+//			}
+//		});
 
-		typeText.setEnabled(false);
-		kindText.setEnabled(false);
-		languageText.setEnabled(false);
+		GridData gridData15 = new GridData();
+		gridData15.grabExcessHorizontalSpace = true;
+		gridData15.verticalAlignment = GridData.CENTER;
+		gridData15.horizontalAlignment = GridData.FILL;
+
 	}
 
 	/**
@@ -487,7 +710,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getStatement
 	 * ()
 	 */
 	@Override
@@ -500,28 +723,40 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#setStatement
 	 * (java.lang.String)
 	 */
 	@Override
 	public void setStatement(String statement) {
-		// TODO Auto-generated method stub
-		this.statement = statement;
-		if (statementText != null){
+		if (statementText != null && statement != null) {
 			statementText.setText(statement);
+			this.statement = statement;
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#
+	 * @seeorg.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#
 	 * saveStatementToModel()
 	 */
 	@Override
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
 				new SetDsStatementCommand(getModel(), this.statement));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getDataSource
+	 * ()
+	 */
+	@Override
+	public DataSource getDataSource() {
+		return PropertySectionUtils.findDataSourceByName(getProcess(),
+				dataSourceAddressCombo.getText());
 	}
 
 	private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {
@@ -542,7 +777,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		}
 	};
 	private Button inputVariableButton;
-	private Label inputVariableLabel;
+	@SuppressWarnings("unused")
+  private Label inputVariableLabel;
 	private Text inputVariableText;
 	private Composite parentComposite;
 
@@ -574,7 +810,8 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 		} };
 	}
 
-	private void createInputVariableWidgets() {
+	@SuppressWarnings("deprecation")
+  private void createInputVariableWidgets() {
 		Composite inputVariableComp = new Composite(parentComposite, SWT.NONE);
 
 		GridLayout gridLayout = new GridLayout();

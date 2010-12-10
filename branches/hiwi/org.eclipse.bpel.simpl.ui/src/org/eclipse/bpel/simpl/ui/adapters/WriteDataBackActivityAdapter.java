@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: RetrieveDataActivityAdapter.java 1656 2010-08-18 15:43:55Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -13,8 +13,8 @@ package org.eclipse.bpel.simpl.ui.adapters;
 
 
 /**
- * The Class UpdateActivityAdapter.
+ * The Class WriteDataBackActivityAdapter.
  */
-public class UpdateActivityAdapter extends DMActivityAdapter {
+public class WriteDataBackActivityAdapter extends DMActivityAdapter {
 
 }

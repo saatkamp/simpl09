@@ -29,7 +29,7 @@ public abstract class DMActivityPropertySection extends BPELPropertySection {
 	 *            the language
 	 */
 	public void openStatementEditor(String eClass, String language, String activityName) {
-		System.out.println("StatementEditor: " + eClass + " : " + language);
+		//System.out.println("StatementEditor: " + eClass + " : " + language);
 		if (!Application.getInstance().isStatementEditorOpen()){
 			new StatementEditor(this, language, eClass, activityName);
 		}

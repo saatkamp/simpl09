@@ -17,6 +17,6 @@ package org.eclipse.bpel.simpl.ui.adapters;
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  */
-public class InsertActivityAdapter extends DMActivityAdapter {
+public class IssueActivityAdapter extends DMActivityAdapter {
 
 }

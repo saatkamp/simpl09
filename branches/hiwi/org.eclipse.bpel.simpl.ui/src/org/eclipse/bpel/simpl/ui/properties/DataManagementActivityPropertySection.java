@@ -51,7 +51,7 @@ import org.simpl.core.webservices.client.DataSource;
  * @link http://code.google.com/p/simpl09/
  * 
  */
-public class DataManagementActivitySection extends DMActivityPropertySection {
+public class DataManagementActivityPropertySection extends DMActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	SchemaListPopUp schemaPopWindow;
@@ -715,7 +715,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getStatement
 	 * ()
 	 */
 	@Override
@@ -728,7 +728,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#setStatement
 	 * (java.lang.String)
 	 */
 	@Override
@@ -742,7 +742,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#
+	 * @seeorg.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#
 	 * saveStatementToModel()
 	 */
 	@Override
@@ -755,7 +755,7 @@ public class DataManagementActivitySection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getDataSource
 	 * ()
 	 */
 	@Override
