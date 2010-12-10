@@ -10,22 +10,22 @@ import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;
 
-public class CallActivity extends DataManagementActivity {
+public class IssueActivity extends DataManagementActivity {
 
 	@Override
 	protected void runSync(ExtensionContext context, Element element)
 			throws FaultException {
 
-		// ScopeEvent DMStarted = new DMStarted();
-		// context.getInternalInstance().sendEvent(DMStarted);
+//		ScopeEvent DMStarted = new DMStarted();
+//		context.getInternalInstance().sendEvent(DMStarted);
 
 		// Load all attribute values from the activity.
 		loadSIMPLAttributes(context, element);
 
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
-		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore
-				.getInstance().dataSourceService();
+		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
+				.dataSourceService();
 
 		try {
 			this.successfullExecution = datasourceService.executeStatement(ds,
@@ -35,7 +35,7 @@ public class CallActivity extends DataManagementActivity {
 				ActivityFailureEvent event = new ActivityFailureEvent();
 				event.setActivityName(context.getActivityName());
 				event.setActivityId(context.getOActivity().getId());
-				event.setActivityType("CallActivity");
+				event.setActivityType("IssueActivity");
 				event.setScopeName(context.getOActivity().getParent().name);
 				event.setScopeId(0L);
 				event.setScopeDeclerationId(context.getOActivity().getParent()
@@ -48,7 +48,7 @@ public class CallActivity extends DataManagementActivity {
 			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 			event.setActivityName(context.getActivityName());
 			event.setActivityId(context.getOActivity().getId());
-			event.setActivityType("CallActivity");
+			event.setActivityType("IssueActivity");
 			event.setScopeName(context.getOActivity().getParent().name);
 			event.setScopeId(0L);
 			event.setScopeDeclerationId(context.getOActivity().getParent().getId());
@@ -57,4 +57,5 @@ public class CallActivity extends DataManagementActivity {
 		}
 
 	}
+
 }
