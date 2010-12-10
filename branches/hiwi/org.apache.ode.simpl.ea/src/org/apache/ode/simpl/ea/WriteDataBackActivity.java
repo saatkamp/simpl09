@@ -3,14 +3,18 @@ package org.apache.ode.simpl.ea;
 import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
+import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
+import org.apache.ode.simpl.ea.util.SDOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 import commonj.sdo.DataObject;
 
-public class DropActivity extends DataManagementActivity {
+public class WriteDataBackActivity extends DataManagementActivity {
 
 	@Override
 	protected void runSync(ExtensionContext context, Element element)
@@ -22,40 +26,45 @@ public class DropActivity extends DataManagementActivity {
 		// Load all attribute values from the activity.
 		loadSIMPLAttributes(context, element);
 
+		// Load all specific attribute values from the RetrieveDataActivity.
+		Attr dataVarAttr = element.getAttributeNode("dataVariable");
+		String dataVariableName = dataVarAttr.getValue();
+
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
-		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
-				.dataSourceService();
+		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore
+				.getInstance().dataSourceService();
 
 		try {
-			this.successfullExecution = datasourceService.executeStatement(ds,
-					getDsStatement(context));
+		  Node value = null;
+      Variable variable = context.getVisibleVariables().get(
+          dataVariableName);
+      
+      if (variable != null) {
+        value = context.readVariable(variable);
+      }
+      
+      // TODO: variable in SDO zurück verwandeln (XSD muss irgendwo her geholt werden, sollte beim Prozess liegen)
+      // TODO: writeData  beim SIMPL Core ausführen
+			boolean successful = false;
 
-			if (!this.successfullExecution) {
-				ActivityFailureEvent event = new ActivityFailureEvent();
-				event.setActivityName(context.getActivityName());
-				event.setActivityId(context.getOActivity().getId());
-				event.setActivityType("DropActivity");
-				event.setScopeName(context.getOActivity().getParent().name);
-				event.setScopeId(0L);
-				event.setScopeDeclerationId(context.getOActivity().getParent()
-						.getId());
-				context.getInternalInstance().sendEvent(event);
-				context.completeWithFault(new Throwable("SIMPL Exception"));
-			}
+			if (!successful) {
+//				ScopeEvent DMFailure = new DMFailure(
+//						"The result of the query is null");
+//				context.getInternalInstance().sendEvent(DMFailure);
+			} 
 
 		} catch (Exception e) {
 			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 			event.setActivityName(context.getActivityName());
 			event.setActivityId(context.getOActivity().getId());
-			event.setActivityType("DropActivity");
+			event.setActivityType("WriteDataBackActivity");
 			event.setScopeName(context.getOActivity().getParent().name);
 			event.setScopeId(0L);
 			event.setScopeDeclerationId(context.getOActivity().getParent().getId());
 			
 			context.getInternalInstance().sendEvent(event);
 		}
-
 	}
 
 }

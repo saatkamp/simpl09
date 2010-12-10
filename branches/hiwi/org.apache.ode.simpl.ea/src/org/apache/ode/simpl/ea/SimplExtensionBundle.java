@@ -23,13 +23,9 @@ public class SimplExtensionBundle extends AbstractExtensionBundle {
 		
 		// TODO Auto-generated method stub
 		super.registerExtensionOperation("queryActivity", QueryActivity.class);
-		super.registerExtensionOperation("callActivity", CallActivity.class);
-		super.registerExtensionOperation("deleteActivity", DeleteActivity.class);
-		super.registerExtensionOperation("dropActivity", DropActivity.class);
-		super.registerExtensionOperation("insertActivity", InsertActivity.class);
-		super.registerExtensionOperation("createActivity", CreateActivity.class);
-		super.registerExtensionOperation("updateActivity", UpdateActivity.class);
+		super.registerExtensionOperation("issueActivity", IssueActivity.class);
 		super.registerExtensionOperation("retrieveDataActivity", RetrieveDataActivity.class);
+		super.registerExtensionOperation("writeDataBackActivity", WriteDataBackActivity.class);
 		super.registerExtensionOperation("transferActivity", TransferActivity.class);
 		
 		logger.debug("SIMPL Extension Bundle loaded successfully.");
