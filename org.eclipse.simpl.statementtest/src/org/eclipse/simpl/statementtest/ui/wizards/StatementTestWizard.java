@@ -29,6 +29,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
+import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
 
@@ -80,9 +81,17 @@ public class StatementTestWizard extends Wizard {
     this.setDefaultPageImageDescriptor(StatementTestPlugin
         .getImageDescriptor(WIZARD_ICON));
 
+    // create a data source object from the activity data source properties
+    DataSource activityDataSource = new DataSource();
+    activityDataSource.setAddress(activity.getDsAddress());
+    activityDataSource.setType(activity.getDsType());
+    activityDataSource.setSubType(activity.getDsKind());
+    activityDataSource.setLanguage(activity.getDsLanguage());
+    
     this.statementTest = new StatementTest(activity, process);
     this.statementTest.setStatement(activity.getDsStatement());
-
+    this.statementTest.setDataSource(activityDataSource);
+    
     // set variables
     List<String> parameterVariableNames = VariableUtils
         .getParameterVariablesFromStatement(activity.getDsStatement(), process);

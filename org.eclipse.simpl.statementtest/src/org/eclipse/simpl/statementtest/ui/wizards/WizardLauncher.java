@@ -27,7 +27,7 @@ public class WizardLauncher {
 
     // data source type filtering with message dialogs
     if (dmActivity.getDsType().equals("Database")
-        || dmActivity.getDsType().equals("Filesystem") 
+        || dmActivity.getDsType().equals("Filesystem")
         || dmActivity.getDsType().equals("")) {
       statementTestWizard = new StatementTestWizard(dmActivity, process);
       statementTestWizard.setHelpAvailable(false);
@@ -42,10 +42,13 @@ public class WizardLauncher {
       // open wizard
       dialog.create();
       dialog.open();
-    } else {
+    } else if (!dmActivity.getDsType().equals("type")) {
       MessageDialog.openInformation(window.getShell(), dmActivity.getDsType()
           + " is not supported.", "Statement tests for the data source type '"
           + dmActivity.getDsType() + "' are not supported yet.");
+    } else {
+      MessageDialog.openInformation(window.getShell(), "Activity has no data source.",
+          "Please select a data source in the activity details.");
     }
   }
 }

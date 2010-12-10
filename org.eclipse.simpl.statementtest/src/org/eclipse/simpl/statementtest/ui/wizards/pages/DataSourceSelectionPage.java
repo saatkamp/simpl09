@@ -90,17 +90,25 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
     dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
         .getName());
 
-    List<String> databases = new ArrayList<String>();
+    List<String> filteredDataSources = new ArrayList<String>();
 
-    // data source filter
+    // filter data sources by type
     for (int i = 0; i < dataSources.length; i++) {
       String dataSourceType = DataSourceUtils.findDataSourceByName(
           statementTest.getProcess().getName(), dataSources[i]).getType();
-      if (dataSourceType.equals("Database") || dataSourceType.equals("Filesystem")) {
-        databases.add(dataSources[i]);
+
+      // filter data sources of the same type as the data source set in the
+      // activity
+      if (dataSourceType.equals(statementTest.getDataSource().getType())) {
+        filteredDataSources.add(dataSources[i]);
+        // if no data source is selected in the activity
+      } else if (statementTest.getDataSource().getType() == null
+          && (dataSourceType.equals("Database") || dataSourceType.equals("Filesystem"))) {
+        filteredDataSources.add(dataSources[i]);
       }
     }
-    dataSources = databases.toArray(new String[databases.size()]);
+
+    dataSources = filteredDataSources.toArray(new String[filteredDataSources.size()]);
 
     // layout
     this.pageComposite.setLayout(new GridLayout(3, false));
@@ -161,7 +169,8 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
 
         tableItem = new TableItem(table, SWT.NONE);
         tableItem.setText(0, "Data Format");
-        tableItem.setText(1,
+        tableItem.setText(
+            1,
             (selectedDataSource.getDataFormat() != null) ? selectedDataSource
                 .getDataFormat() : "");
       }
@@ -182,9 +191,11 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
             .getService(IHandlerService.class);
 
         try {
-          // TODO: der command aktualisiert nicht, da der Aufruf hier von einem anderen GUI
+          // TODO: der command aktualisiert nicht, da der Aufruf hier von einem anderen
+          // GUI
           // Kontext kommt.
-          handlerService.executeCommand("org.eclipse.simpl.resource.management.refreshCommand", null);
+          handlerService.executeCommand(
+              "org.eclipse.simpl.resource.management.refreshCommand", null);
           dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
               .getName());
         } catch (ExecutionException e1) {
