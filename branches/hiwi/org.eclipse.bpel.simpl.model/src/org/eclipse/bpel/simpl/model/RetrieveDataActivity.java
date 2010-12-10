@@ -55,12 +55,12 @@ public interface RetrieveDataActivity extends DataManagementActivity {
 	Variable getDataVariable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable <em>Data Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable <em>Data Variable</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Variable</em>' reference.
-	 * @see #getDataVariable()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Data Variable</em>' reference.
+   * @see #getDataVariable()
+   * @generated
+   */
 	void setDataVariable(Variable value);
 } // RetrieveDataActivity
