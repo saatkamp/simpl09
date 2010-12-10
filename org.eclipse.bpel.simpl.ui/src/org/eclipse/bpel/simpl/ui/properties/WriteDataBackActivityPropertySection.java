@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: RetrieveDataVariableSection.java 1730 2010-12-09 14:19:43Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import org.eclipse.bpel.common.ui.assist.FieldAssistAdapter;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDataVariableCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
@@ -74,7 +74,7 @@ import org.simpl.core.webservices.client.DataSource;
 /**
  * The Class RetrieveDataVariableSection.
  */
-public class RetrieveDataVariableSection extends DMActivityPropertySection {
+public class WriteDataBackActivityPropertySection extends DMActivityPropertySection {
 
 	private VariableFilter fInputVariableFilter = new VariableFilter();
 
@@ -103,7 +103,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	private Button Save = null;
 	private Button command = null, file = null; //, folder = null, driver = null;
 
-	private RetrieveDataActivity activity;
+	private WriteDataBackActivity activity;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -710,7 +710,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getStatement
 	 * ()
 	 */
 	@Override
@@ -723,7 +723,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#setStatement
 	 * (java.lang.String)
 	 */
 	@Override
@@ -737,7 +737,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#
+	 * @seeorg.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#
 	 * saveStatementToModel()
 	 */
 	@Override
@@ -750,7 +750,7 @@ public class RetrieveDataVariableSection extends DMActivityPropertySection {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getDataSource
 	 * ()
 	 */
 	@Override

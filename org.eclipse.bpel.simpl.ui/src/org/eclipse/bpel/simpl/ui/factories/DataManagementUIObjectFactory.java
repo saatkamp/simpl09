@@ -34,17 +34,13 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	
 	private EClass[] classArray = {  
 			ModelPackage.eINSTANCE.getQueryActivity(),
-			ModelPackage.eINSTANCE.getInsertActivity(),
-			ModelPackage.eINSTANCE.getUpdateActivity(),
-			ModelPackage.eINSTANCE.getDeleteActivity(),
-			ModelPackage.eINSTANCE.getCreateActivity(),
-			ModelPackage.eINSTANCE.getDropActivity(),
-			ModelPackage.eINSTANCE.getCallActivity(),
+			ModelPackage.eINSTANCE.getIssueActivity(),
 			ModelPackage.eINSTANCE.getRetrieveDataActivity(),
+			ModelPackage.eINSTANCE.getWriteDataBackActivity(),
 			ModelPackage.eINSTANCE.getTransferActivity()};
 
 	/**
-	 * Instantiates a new data management ui object factory.
+	 * Instantiates a new data management UI object factory.
 	 * 
 	 * @param modelType
 	 *            the model type

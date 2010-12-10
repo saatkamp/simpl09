@@ -32,7 +32,7 @@ import org.simpl.core.webservices.client.DataSource;
  * @link http://code.google.com/p/simpl09/
  * 
  */
-public class TransferActivityToPropertySection extends
+public class TransferActivityPropertySection extends
 		DMActivityPropertySection {
 
 	private Label typeLabel = null;
@@ -298,7 +298,7 @@ public class TransferActivityToPropertySection extends
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getStatement
 	 * ()
 	 */
 	@Override
@@ -310,7 +310,7 @@ public class TransferActivityToPropertySection extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @seeorg.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#
+	 * @seeorg.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#
 	 * saveStatementToModel()
 	 */
 	@Override
@@ -323,7 +323,7 @@ public class TransferActivityToPropertySection extends
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#setStatement
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#setStatement
 	 * (java.lang.String)
 	 */
 	@Override
@@ -336,7 +336,7 @@ public class TransferActivityToPropertySection extends
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection#getDataSource
+	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getDataSource
 	 * ()
 	 */
 	@Override

@@ -32,7 +32,7 @@ public class StatementEditDialog {
 	
 	LiveEditStyleText styleTextEditor;	
 	
-	//private DMActivityPropertySection parentClass = null;
+	//private DataManagementActivityPropertySection parentClass = null;
 	
 	@SuppressWarnings("unused")
   public StatementEditDialog(final String statement, final DMActivityPropertySection parentClass){

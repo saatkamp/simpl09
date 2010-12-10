@@ -11,15 +11,11 @@
  */
 package org.eclipse.bpel.simpl.ui.command;
 
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.IssueActivity;
 import org.eclipse.bpel.simpl.model.QueryActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.commands.SetCommand;
 import org.eclipse.emf.ecore.EObject;
 
@@ -50,33 +46,17 @@ public class SetDsAddressCommand extends SetCommand {
 			return ((QueryActivity) fTarget).getDsAddress();
 		}
 		
-		if (fTarget instanceof InsertActivity){
-			return ((InsertActivity) fTarget).getDsAddress();
-		}
-		
-		if (fTarget instanceof UpdateActivity){
-			return ((UpdateActivity) fTarget).getDsAddress();
-		}
-		
-		if (fTarget instanceof DeleteActivity){
-			return ((DeleteActivity) fTarget).getDsAddress();
-		}
-		
-		if (fTarget instanceof CreateActivity){
-			return ((CreateActivity) fTarget).getDsAddress();
-		}
-		
-		if (fTarget instanceof DropActivity){
-			return ((DropActivity) fTarget).getDsAddress();
-		}
-		
-		if (fTarget instanceof CallActivity){
-			return ((CallActivity) fTarget).getDsAddress();
+		if (fTarget instanceof IssueActivity){
+			return ((IssueActivity) fTarget).getDsAddress();
 		}
 		
 		if (fTarget instanceof RetrieveDataActivity){
 			return ((RetrieveDataActivity) fTarget).getDsAddress();
 		}
+
+    if (fTarget instanceof WriteDataBackActivity){
+      return ((WriteDataBackActivity) fTarget).getDsAddress();
+    }
 		
 		if (fTarget instanceof DataManagementActivity){
 			return ((DataManagementActivity) fTarget).getDsAddress();
@@ -93,30 +73,14 @@ public class SetDsAddressCommand extends SetCommand {
 		if (fTarget instanceof QueryActivity) {
 			((QueryActivity) fTarget).setDsAddress((String) o);
 			
-		} else if (fTarget instanceof InsertActivity) {
-			((InsertActivity) fTarget).setDsAddress((String) o);
-			
-		} else if (fTarget instanceof UpdateActivity) {
-			((UpdateActivity) fTarget).setDsAddress((String) o);
-			
-		} else if (fTarget instanceof DeleteActivity) {
-			((DeleteActivity) fTarget).setDsAddress((String) o);
-			
-		} else if (fTarget instanceof CreateActivity) {
-			((CreateActivity) fTarget).setDsAddress((String) o);
-			
-		} else if (fTarget instanceof DropActivity) {
-			((DropActivity) fTarget).setDsAddress((String) o);
-			
-		} else if (fTarget instanceof CallActivity) {
-			((CallActivity) fTarget).setDsAddress((String) o);
-			
+		} else if (fTarget instanceof IssueActivity) {
+			((IssueActivity) fTarget).setDsAddress((String) o);
 		} else if (fTarget instanceof RetrieveDataActivity) {
-			((RetrieveDataActivity) fTarget).setDsAddress((String) o);
-			
+      ((RetrieveDataActivity) fTarget).setDsAddress((String) o);
+    }  else if (fTarget instanceof WriteDataBackActivity) {
+			((WriteDataBackActivity) fTarget).setDsAddress((String) o);
 		} else if (fTarget instanceof DataManagementActivity) {
 			((DataManagementActivity) fTarget).setDsAddress((String) o);
-			
 		} else {
 			throw new IllegalArgumentException(
 					"This model object has no address to set");
