@@ -28,17 +28,13 @@ import org.eclipse.bpel.model.Import;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.extensions.BPELActivitySerializer;
 import org.eclipse.bpel.model.resource.BPELWriter;
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.IssueActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.simpl.model.TransferActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.simpl.model.impl.jet.TemplateSIMPL;
 import org.eclipse.bpel.ui.IBPELUIConstants;
 import org.eclipse.bpel.ui.util.BPELUtil;
@@ -142,311 +138,51 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 		}
 
 		/*
-		 * InsertActivity
+		 * IssueActivity
 		 */
-		if (activity instanceof InsertActivity) {
+		if (activity instanceof IssueActivity) {
 
 			// create a new DOM element for our Activity
 			Element activityElement = document.createElementNS(elementType
 					.getNamespaceURI(),
-					DataManagementConstants.ND_INSERT_ACTIVITY);
+					DataManagementConstants.ND_ISSUE_ACTIVITY);
 			activityElement
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
-			// handle the InsertActivity Attributes
-			if (((InsertActivity) activity).getDsStatement() != null) {
+			// handle the IssueActivity Attributes
+			if (((IssueActivity) activity).getDsStatement() != null) {
 				String attName = ModelPackage.eINSTANCE
 						.getDataManagementActivity_DsStatement().getName();
 				activityElement.setAttribute(attName,
-						((InsertActivity) activity).getDsStatement());
+						((IssueActivity) activity).getDsStatement());
 			}
 
-			if (((InsertActivity) activity).getDsKind() != null) {
+			if (((IssueActivity) activity).getDsKind() != null) {
 				String attName = ModelPackage.eINSTANCE
 						.getDataManagementActivity_DsKind().getName();
 				activityElement.setAttribute(attName,
-						((InsertActivity) activity).getDsKind());
+						((IssueActivity) activity).getDsKind());
 			}
 
-			if (((InsertActivity) activity).getDsType() != null) {
+			if (((IssueActivity) activity).getDsType() != null) {
 				String attName = ModelPackage.eINSTANCE
 						.getDataManagementActivity_DsType().getName();
 				activityElement.setAttribute(attName,
-						((InsertActivity) activity).getDsType());
+						((IssueActivity) activity).getDsType());
 			}
 
-			if (((InsertActivity) activity).getDsAddress() != null) {
+			if (((IssueActivity) activity).getDsAddress() != null) {
 				String attName = ModelPackage.eINSTANCE
 						.getDataManagementActivity_DsAddress().getName();
 				activityElement.setAttribute(attName,
-						((InsertActivity) activity).getDsAddress());
+						((IssueActivity) activity).getDsAddress());
 			}
 
-			if (((InsertActivity) activity).getDsLanguage() != null) {
+			if (((IssueActivity) activity).getDsLanguage() != null) {
 				String attName = ModelPackage.eINSTANCE
 						.getDataManagementActivity_DsLanguage().getName();
 				activityElement.setAttribute(attName,
-						((InsertActivity) activity).getDsLanguage());
-			}
-
-			// insert the DOM element into the DOM tree
-			parentNode.appendChild(activityElement);
-		}
-
-		/*
-		 * UpdateActivity
-		 */
-		if (activity instanceof UpdateActivity) {
-
-			// create a new DOM element for our Activity
-			Element activityElement = document.createElementNS(elementType
-					.getNamespaceURI(),
-					DataManagementConstants.ND_UPDATE_ACTIVITY);
-			activityElement
-					.setPrefix(DataManagementUtils.addNamespace(process));
-
-			// handle the UpdateActivity Attributes
-			if (((UpdateActivity) activity).getDsStatement() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
-				activityElement.setAttribute(attName,
-						((UpdateActivity) activity).getDsStatement());
-			}
-
-			if (((UpdateActivity) activity).getDsKind() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
-				activityElement.setAttribute(attName,
-						((UpdateActivity) activity).getDsKind());
-			}
-
-			if (((UpdateActivity) activity).getDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
-				activityElement.setAttribute(attName,
-						((UpdateActivity) activity).getDsType());
-			}
-
-			if (((UpdateActivity) activity).getDsAddress() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
-				activityElement.setAttribute(attName,
-						((UpdateActivity) activity).getDsAddress());
-			}
-
-			if (((UpdateActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName,
-						((UpdateActivity) activity).getDsLanguage());
-			}
-
-			// insert the DOM element into the DOM tree
-			parentNode.appendChild(activityElement);
-		}
-
-		/*
-		 * DeleteActivity
-		 */
-		if (activity instanceof DeleteActivity) {
-
-			// create a new DOM element for our Activity
-			Element activityElement = document.createElementNS(elementType
-					.getNamespaceURI(),
-					DataManagementConstants.ND_DELETE_ACTIVITY);
-			activityElement
-					.setPrefix(DataManagementUtils.addNamespace(process));
-
-			// handle the DeleteActivity Attributes
-			if (((DeleteActivity) activity).getDsStatement() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
-				activityElement.setAttribute(attName,
-						((DeleteActivity) activity).getDsStatement());
-			}
-
-			if (((DeleteActivity) activity).getDsKind() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
-				activityElement.setAttribute(attName,
-						((DeleteActivity) activity).getDsKind());
-			}
-
-			if (((DeleteActivity) activity).getDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
-				activityElement.setAttribute(attName,
-						((DeleteActivity) activity).getDsType());
-			}
-
-			if (((DeleteActivity) activity).getDsAddress() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
-				activityElement.setAttribute(attName,
-						((DeleteActivity) activity).getDsAddress());
-			}
-
-			if (((DeleteActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName,
-						((DeleteActivity) activity).getDsLanguage());
-			}
-
-			// insert the DOM element into the DOM tree
-			parentNode.appendChild(activityElement);
-		}
-
-		/*
-		 * CreateActivity
-		 */
-		if (activity instanceof CreateActivity) {
-
-			// create a new DOM element for our Activity
-			Element activityElement = document.createElementNS(elementType
-					.getNamespaceURI(),
-					DataManagementConstants.ND_CREATE_ACTIVITY);
-			activityElement
-					.setPrefix(DataManagementUtils.addNamespace(process));
-
-			// handle the CreateActivity Attributes
-			if (((CreateActivity) activity).getDsStatement() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
-				activityElement.setAttribute(attName,
-						((CreateActivity) activity).getDsStatement());
-			}
-
-			if (((CreateActivity) activity).getDsKind() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
-				activityElement.setAttribute(attName,
-						((CreateActivity) activity).getDsKind());
-			}
-
-			if (((CreateActivity) activity).getDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
-				activityElement.setAttribute(attName,
-						((CreateActivity) activity).getDsType());
-			}
-
-			if (((CreateActivity) activity).getDsAddress() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
-				activityElement.setAttribute(attName,
-						((CreateActivity) activity).getDsAddress());
-			}
-
-			if (((CreateActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName,
-						((CreateActivity) activity).getDsLanguage());
-			}
-
-			// insert the DOM element into the DOM tree
-			parentNode.appendChild(activityElement);
-		}
-
-		/*
-		 * DropActivity
-		 */
-		if (activity instanceof DropActivity) {
-
-			// create a new DOM element for our Activity
-			Element activityElement = document.createElementNS(elementType
-					.getNamespaceURI(),
-					DataManagementConstants.ND_DROP_ACTIVITY);
-			activityElement
-					.setPrefix(DataManagementUtils.addNamespace(process));
-
-			// handle the DropActivity Attributes
-			if (((DropActivity) activity).getDsStatement() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
-				activityElement.setAttribute(attName, ((DropActivity) activity)
-						.getDsStatement());
-			}
-
-			if (((DropActivity) activity).getDsKind() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
-				activityElement.setAttribute(attName, ((DropActivity) activity)
-						.getDsKind());
-			}
-
-			if (((DropActivity) activity).getDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
-				activityElement.setAttribute(attName, ((DropActivity) activity)
-						.getDsType());
-			}
-
-			if (((DropActivity) activity).getDsAddress() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
-				activityElement.setAttribute(attName, ((DropActivity) activity)
-						.getDsAddress());
-			}
-
-			if (((DropActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName, ((DropActivity) activity)
-						.getDsLanguage());
-			}
-
-			// insert the DOM element into the DOM tree
-			parentNode.appendChild(activityElement);
-		}
-
-		/*
-		 * CallActivity
-		 */
-		if (activity instanceof CallActivity) {
-
-			// create a new DOM element for our Activity
-			Element activityElement = document.createElementNS(elementType
-					.getNamespaceURI(),
-					DataManagementConstants.ND_CALL_ACTIVITY);
-			activityElement
-					.setPrefix(DataManagementUtils.addNamespace(process));
-
-			// handle the CallActivity Attributes
-			if (((CallActivity) activity).getDsStatement() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
-				activityElement.setAttribute(attName, ((CallActivity) activity)
-						.getDsStatement());
-			}
-
-			if (((CallActivity) activity).getDsKind() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
-				activityElement.setAttribute(attName, ((CallActivity) activity)
-						.getDsKind());
-			}
-
-			if (((CallActivity) activity).getDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
-				activityElement.setAttribute(attName, ((CallActivity) activity)
-						.getDsType());
-			}
-
-			if (((CallActivity) activity).getDsAddress() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
-				activityElement.setAttribute(attName, ((CallActivity) activity)
-						.getDsAddress());
-			}
-
-			if (((CallActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName, ((CallActivity) activity)
-						.getDsLanguage());
+						((IssueActivity) activity).getDsLanguage());
 			}
 
 			// insert the DOM element into the DOM tree
@@ -513,6 +249,67 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			parentNode.appendChild(activityElement);
 		}
 
+    /*
+     * WriteDataBackActivity
+     */
+    if (activity instanceof WriteDataBackActivity) {
+
+      // create a new DOM element for our Activity
+      Element activityElement = document.createElementNS(elementType
+          .getNamespaceURI(),
+          DataManagementConstants.ND_WRITE_DATA_BACK_ACTIVITY);
+      activityElement
+          .setPrefix(DataManagementUtils.addNamespace(process));
+
+      // handle the WriteDataBackActivity Attributes
+      if (((WriteDataBackActivity) activity).getDsStatement() != null) {
+        String attName = ModelPackage.eINSTANCE
+            .getDataManagementActivity_DsStatement().getName();
+        activityElement.setAttribute(attName,
+            ((WriteDataBackActivity) activity).getDsStatement());
+      }
+
+      if (((WriteDataBackActivity) activity).getDsKind() != null) {
+        String attName = ModelPackage.eINSTANCE
+            .getDataManagementActivity_DsKind().getName();
+        activityElement.setAttribute(attName,
+            ((WriteDataBackActivity) activity).getDsKind());
+      }
+
+      if (((WriteDataBackActivity) activity).getDsType() != null) {
+        String attName = ModelPackage.eINSTANCE
+            .getDataManagementActivity_DsType().getName();
+        activityElement.setAttribute(attName,
+            ((WriteDataBackActivity) activity).getDsType());
+      }
+
+      if (((WriteDataBackActivity) activity).getDsAddress() != null) {
+        String attName = ModelPackage.eINSTANCE
+            .getDataManagementActivity_DsAddress().getName();
+        activityElement.setAttribute(attName,
+            ((WriteDataBackActivity) activity).getDsAddress());
+      }
+
+      if (((WriteDataBackActivity) activity).getDsLanguage() != null) {
+        String attName = ModelPackage.eINSTANCE
+            .getDataManagementActivity_DsLanguage().getName();
+        activityElement.setAttribute(attName,
+            ((WriteDataBackActivity) activity).getDsLanguage());
+      }
+
+      if (((WriteDataBackActivity) activity).getDataVariable() != null) {
+        String attName = ModelPackage.eINSTANCE
+            .getWriteDataBackActivity_DataVariable().getName();
+        activityElement.setAttribute(attName,
+            ((WriteDataBackActivity) activity).getDataVariable()
+                .getName());
+      }
+
+      // insert the DOM element into the DOM tree
+      parentNode.appendChild(activityElement);
+    }
+
+		
 		/*
 		 * TransferActivity
 		 */

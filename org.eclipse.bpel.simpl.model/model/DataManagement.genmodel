@@ -9,10 +9,6 @@
   <foreignModel>DataManagement.ecore</foreignModel>
   <genPackages prefix="Model" basePackage="org.eclipse.bpel.simpl" disposableProviderFactory="true"
       ecorePackage="DataManagement.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DataManagement.ecore#//ReferenceType">
-      <genEnumLiterals ecoreEnumLiteral="DataManagement.ecore#//ReferenceType/onInstantiation"/>
-      <genEnumLiterals ecoreEnumLiteral="DataManagement.ecore#//ReferenceType/fresh"/>
-    </genEnums>
     <genClasses image="false" ecoreClass="DataManagement.ecore#//DataManagementActivity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsAddress"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsType"/>
@@ -23,26 +19,20 @@
     <genClasses ecoreClass="DataManagement.ecore#//QueryActivity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//QueryActivity/queryTarget"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//InsertActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//UpdateActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//DeleteActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//CreateActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//DropActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//CallActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//IssueActivity"/>
     <genClasses ecoreClass="DataManagement.ecore#//RetrieveDataActivity">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//RetrieveDataActivity/dataVariable"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//ReferenceVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//ReferenceVariable/valueType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//ReferenceVariable/referenceType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//ReferenceVariable/period"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//ReferenceVariable/external"/>
+    <genClasses ecoreClass="DataManagement.ecore#//WriteDataBackActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//WriteDataBackActivity/dataVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//WriteDataBackActivity/queryTarget"/>
     </genClasses>
     <genClasses ecoreClass="DataManagement.ecore#//TransferActivity">
-      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
-          propertyDescription="" ecoreFeature="ecore:EReference DataManagement.ecore#//TransferActivity/fromSource"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataManagement.ecore#//TransferActivity/toSource"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsKind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsContainer"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

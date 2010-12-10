@@ -44,33 +44,33 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 */
 	protected static final String QUERY_TARGET_EDEFAULT = "";
 	/**
-	 * The cached value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQueryTarget()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getQueryTarget()
+   * @generated
+   * @ordered
+   */
 	protected String queryTarget = QUERY_TARGET_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected QueryActivityImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.QUERY_ACTIVITY;
-	}
+    return ModelPackage.Literals.QUERY_ACTIVITY;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -79,8 +79,8 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 * @generated
 	 */
 	public String getQueryTarget() {
-		return queryTarget;
-	}
+    return queryTarget;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -115,12 +115,12 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
-				return getQueryTarget();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
+        return getQueryTarget();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -133,13 +133,13 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
-				setQueryTarget((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
+        setQueryTarget((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -150,13 +150,13 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
-				setQueryTarget(QUERY_TARGET_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
+        setQueryTarget(QUERY_TARGET_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -168,12 +168,12 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
-				return QUERY_TARGET_EDEFAULT == null ? queryTarget != null : !QUERY_TARGET_EDEFAULT.equals(queryTarget);
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ModelPackage.QUERY_ACTIVITY__QUERY_TARGET:
+        return QUERY_TARGET_EDEFAULT == null ? queryTarget != null : !QUERY_TARGET_EDEFAULT.equals(queryTarget);
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -183,13 +183,13 @@ public class QueryActivityImpl extends DataManagementActivityImpl implements Que
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (queryTarget: ");
-		result.append(queryTarget);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (queryTarget: ");
+    result.append(queryTarget);
+    result.append(')');
+    return result.toString();
+  }
 
 } //QueryActivityImpl

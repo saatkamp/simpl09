@@ -35,7 +35,7 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-	<xsd:element name="insertActivity"
+	<xsd:element name="issueActivity"
 		type="simpl:DataManagementActivityType">
 	</xsd:element>
 
@@ -43,21 +43,9 @@
 		type="simpl:DataManagementActivityType">
 	</xsd:element>
 
-	<xsd:element name="deleteActivity"
-		type="simpl:DataManagementActivityType">
-	</xsd:element>
 
-	<xsd:element name="createActivity"
-		type="simpl:DataManagementActivityType">
-	</xsd:element>
 
-	<xsd:element name="dropActivity"
-		type="simpl:DataManagementActivityType">
-	</xsd:element>
 
-	<xsd:element name="callActivity"
-		type="simpl:DataManagementActivityType">
-	</xsd:element>
 
 	<xsd:element name="retrieveDataActivity"
 		type="simpl:RetrieveDataActivityType">
@@ -85,4 +73,18 @@
 
 	<xsd:element name="containerReference" type="simpl:ContainerReferenceType"></xsd:element>
 
-</xsd:schema>
+
+	<xsd:element name="writeDataBackActivity"
+	  type="simpl:WriteDataBackActivityType">
+	</xsd:element>
+	
+  <xsd:complexType name="WriteDataBackActivityType">
+    <xsd:complexContent>
+      <xsd:extension base="simpl:DataManagementActivityType">
+
+        <xsd:attribute name="dataVariable"
+          type="simpl:BPELVariableName" use="optional">
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType></xsd:schema>

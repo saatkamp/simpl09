@@ -37,33 +37,33 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 @SuppressWarnings("restriction")
 public class RetrieveDataActivityImpl extends DataManagementActivityImpl implements RetrieveDataActivity {
 	/**
-	 * The cached value of the '{@link #getDataVariable() <em>Data Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDataVariable() <em>Data Variable</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDataVariable()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDataVariable()
+   * @generated
+   * @ordered
+   */
 	protected Variable dataVariable;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RetrieveDataActivityImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.RETRIEVE_DATA_ACTIVITY;
-	}
+    return ModelPackage.Literals.RETRIEVE_DATA_ACTIVITY;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -72,16 +72,16 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	 * @generated
 	 */
 	public Variable getDataVariable() {
-		if (dataVariable != null && dataVariable.eIsProxy()) {
-			InternalEObject oldDataVariable = (InternalEObject)dataVariable;
-			dataVariable = (Variable)eResolveProxy(oldDataVariable);
-			if (dataVariable != oldDataVariable) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE, oldDataVariable, dataVariable));
-			}
-		}
-		return dataVariable;
-	}
+    if (dataVariable != null && dataVariable.eIsProxy()) {
+      InternalEObject oldDataVariable = (InternalEObject)dataVariable;
+      dataVariable = (Variable)eResolveProxy(oldDataVariable);
+      if (dataVariable != oldDataVariable) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE, oldDataVariable, dataVariable));
+      }
+    }
+    return dataVariable;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -90,8 +90,8 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	 * @generated
 	 */
 	public Variable basicGetDataVariable() {
-		return dataVariable;
-	}
+    return dataVariable;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -127,13 +127,13 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-				if (resolve) return getDataVariable();
-				return basicGetDataVariable();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
+        if (resolve) return getDataVariable();
+        return basicGetDataVariable();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -146,13 +146,13 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-				setDataVariable((Variable)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
+        setDataVariable((Variable)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -163,13 +163,13 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-				setDataVariable((Variable)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
+        setDataVariable((Variable)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -181,11 +181,11 @@ public class RetrieveDataActivityImpl extends DataManagementActivityImpl impleme
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-				return dataVariable != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
+        return dataVariable != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 } //RetrieveDataActivityImpl
