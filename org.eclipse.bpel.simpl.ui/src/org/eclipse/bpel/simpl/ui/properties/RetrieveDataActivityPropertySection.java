@@ -851,7 +851,7 @@ public class RetrieveDataActivityPropertySection extends DMActivityPropertySecti
 		final FieldAssistAdapter contentAssist = new FieldAssistAdapter(
 				inputVariableText, fTextContentAdapter, proposalProvider, null,
 				null, true);
-		// 
+		
 		contentAssist.setLabelProvider(new ModelLabelProvider());
 		contentAssist.setPopupSize(new Point(300, 100));
 		contentAssist.setFilterStyle(ContentProposalAdapter.FILTER_CUMULATIVE);
