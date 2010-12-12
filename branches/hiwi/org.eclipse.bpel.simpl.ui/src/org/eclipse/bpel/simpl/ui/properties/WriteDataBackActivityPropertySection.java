@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id: RetrieveDataVariableSection.java 1730 2010-12-09 14:19:43Z michael.schneidt@arcor.de $ <br>
+ * @version $Id: WriteDataBackVariableSection.java 1730 2010-12-09 14:19:43Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -72,7 +72,7 @@ import org.eclipse.xsd.XSDTypeDefinition;
 import org.simpl.core.webservices.client.DataSource;
 
 /**
- * The Class RetrieveDataVariableSection.
+ * The Class WriteDataBackVariableSection.
  */
 public class WriteDataBackActivityPropertySection extends DMActivityPropertySection {
 
@@ -290,7 +290,7 @@ public class WriteDataBackActivityPropertySection extends DMActivityPropertySect
 										dataSourceAddressCombo.getText()));
 
 				openStatementEditor(ModelPackage.eINSTANCE
-						.getRetrieveDataActivity().getInstanceClassName(),
+						.getWriteDataBackActivity().getInstanceClassName(),
 						activity.getDsLanguage(), activity.getName());
 			}
 		});
