@@ -100,8 +100,7 @@ public class ResourceManagement {
     // build select statement
     statement += "SELECT datasources.* ";
     statement += "FROM datasources ";
-    statement += "INNER JOIN datasourceconnectors ON (datasourceconnectors.id = datasources.datasourceconnector_id) ";
-    statement += "WHERE getProperty('type', datasourceconnectors.properties_description) = '"
+    statement += "WHERE getProperty('type', datasources.datasourceconnector_properties_description) = '"
         + type + "' ";
     statement += "ORDER BY datasources.id ASC";
 
@@ -131,15 +130,14 @@ public class ResourceManagement {
     String result = null;
 
     // build select statement
-    statement += "SELECT datasources.* ";
+    statement += "SELECT * ";
     statement += "FROM datasources ";
-    statement += "INNER JOIN datasourceconnectors ON (datasourceconnectors.id = datasources.datasourceconnector_id) ";
-    statement += "WHERE getProperty('type', datasourceconnectors.properties_description) = '"
+    statement += "WHERE getProperty('type', datasourceconnector_properties_description) = '"
         + type + "' ";
     statement += "AND ";
-    statement += "getProperty('subType', datasourceconnectors.properties_description) LIKE '"
+    statement += "getProperty('subType', datasourceconnector_properties_description) LIKE '"
         + subType + "' ";
-    statement += "ORDER BY datasources.id ASC";
+    statement += "ORDER BY id ASC";
 
     // retrieve data sources
     result = dataSourceService.retrieveData(rmDataSource, statement);
