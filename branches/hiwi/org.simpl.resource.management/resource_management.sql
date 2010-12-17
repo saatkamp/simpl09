@@ -61,7 +61,7 @@ CREATE TABLE datacontainers (
 CREATE OR REPLACE FUNCTION getProperty(text, xml)
   RETURNS text AS 
   $$
-    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/datasourceconnectors/properties_description']]))[1] AS text) FROM datasourceconnectors
+    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/datasources/datasourceconnector_properties_description']]))[1] AS text) FROM datasources
   $$ 
 LANGUAGE SQL
 
