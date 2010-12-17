@@ -33,9 +33,11 @@ import org.xml.sax.InputSource;
  * SIMPL framework. This class represents the resource management and its web service
  * interface.<br>
  * <b>Description:</b>The resources are stored in a PostgreSQL database that is actually
- * accessed via the SIMPL Core data source web service. The PostgreSQL data source and the
- * SIMPL Core data source web service are setup in the
+ * accessed via an additionally deployed SIMPL Core data source web service. The
+ * PostgreSQL data source and the SIMPL Core data source web service are setup in the
  * WEB-INF\lib\resource-management-config.xml file.<br>
+ * The PostgreSQL database is setup via the createResourceManagementTables() method, that
+ * executes the statements from the resource_management.sql on the database.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -250,18 +252,32 @@ public class ResourceManagement {
     // execute statements
     for (int i = 0; i < statements.size(); i++) {
       success = dataSourceService.executeStatement(rmDataSource, statements.get(i));
+
+      if (!success) {
+        break;
+      }
     }
 
     // drop tables on failure
-    // if (!success) {
-    // dataSourceService.executeStatement(rmDataSource, "DROP TABLE datasources");
-    // dataSourceService.executeStatement(rmDataSource,
-    // "DROP TABLE datasourceconnectors_dataconverters");
-    // dataSourceService.executeStatement(rmDataSource,
-    // "DROP TABLE datasourceconnectors");
-    // dataSourceService.executeStatement(rmDataSource, "DROP TABLE dataconverters");
-    // dataSourceService.executeStatement(rmDataSource, "DROP TABLE datacontainers");
-    // }
+    if (!success) {
+      dataSourceService
+          .executeStatement(rmDataSource, "DROP TABLE IF EXISTS datasources");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP TABLE IF EXISTS datasourceconnectors_dataconverters");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP TABLE IF EXISTS datasourceconnectors");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP TABLE IF EXISTS dataconverters");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP TABLE IF EXISTS datacontainers");
+      dataSourceService
+          .executeStatement(rmDataSource, "DROP TABLE IF EXISTS dataformats");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP TABLE IF EXISTS statement_types");
+      dataSourceService.executeStatement(rmDataSource, "DROP TABLE IF EXISTS languages");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP FUNCTION IF EXISTS getProperty(text, xml)");
+    }
 
     return success;
   }
@@ -376,7 +392,7 @@ public class ResourceManagement {
   @WebMethod(action = "getDataSourceConnectors")
   public DataSourceConnectorList getDataSourceConnectors() throws Exception {
     DataSourceConnectorList dataSourceConnectors = new DataSourceConnectorList();
-    String statement = "SELECT * FROM datasourceconnectors";
+    String statement = "SELECT datasourceconnectors.id, datasourceconnectors.name, datasourceconnectors.properties_description, dataformats.name AS dataformat FROM datasourceconnectors INNER JOIN dataformats ON (datasourceconnectors.dataconverter_dataformat_id = dataformats.id)";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
     Document configDoc = null;
@@ -401,8 +417,7 @@ public class ResourceManagement {
         } else if (column.getAttribute("name").getValue()
             .equals("properties_description")) {
           dataSourceConnector.setPropertiesDescription(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("dataconverter_dataformat")) {
+        } else if (column.getAttribute("name").getValue().equals("dataformat")) {
           dataSourceConnector.setDataConverterDataFormat(column.getValue());
         }
       }
@@ -579,6 +594,25 @@ public class ResourceManagement {
   }
 
   /**
+   * Returns the statement description of a language.
+   * 
+   * @param language
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getLanguageStatementDescription")
+  public String getLanguageStatementDescription(String language) throws Exception {
+    String statementDescription = null;
+    
+    String statement = "SELECT CAST(statement_description AS TEXT) FROM languages";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+    
+    statementDescription = this.getColumnValuesFromResult(result, "statement_description").get(0);
+    
+    return statementDescription;
+  }
+  
+  /**
    * Returns a list of data format types that can be converted to and from the data format
    * type of the given data source.
    * 
@@ -594,18 +628,16 @@ public class ResourceManagement {
     String statement = "";
     String result = null;
 
-    statement += "SELECT dataconverters.datasourceconnector_dataformat, dataconverters.workflow_dataformat ";
+    statement += "SELECT dataformats.name ";
     statement += "FROM datasources ";
     statement += "INNER JOIN datasourceconnectors ON (datasources.datasourceconnector_id = datasourceconnectors.id) ";
-    statement += "INNER JOIN dataconverters ON (dataconverters.datasourceconnector_dataformat = datasourceconnectors.dataconverter_dataformat OR dataconverters.workflow_dataformat = datasourceconnectors.dataconverter_dataformat) ";
+    statement += "INNER JOIN dataconverters ON (dataconverters.datasourceconnector_dataformat_id = datasourceconnectors.dataconverter_dataformat_id OR dataconverters.workflow_dataformat_id = datasourceconnectors.dataconverter_dataformat_id) ";
+    statement += "INNER JOIN dataformats ON (dataconverters.datasourceconnector_dataformat_id = dataformats.id OR dataconverters.workflow_dataformat_id = dataformats.id) ";
     statement += "WHERE datasources.id = " + dataSource.getId();
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
 
-    stringList.getItems().addAll(
-        getColumnValuesFromResult(result, "datasourceconnector_dataformat"));
-    stringList.getItems()
-        .addAll(getColumnValuesFromResult(result, "workflow_dataformat"));
+    stringList.getItems().addAll(getColumnValuesFromResult(result, "name"));
 
     // remove duplicates
     HashSet<String> h = new HashSet<String>(stringList.getItems());
@@ -686,6 +718,14 @@ public class ResourceManagement {
     return dataSources;
   }
 
+  /**
+   * Returns a list of all items from the given column.
+   * 
+   * @param result
+   * @param columnName
+   * @return
+   * @throws Exception
+   */
   @SuppressWarnings("unchecked")
   private ArrayList<String> getColumnValuesFromResult(String result, String columnName)
       throws Exception {
