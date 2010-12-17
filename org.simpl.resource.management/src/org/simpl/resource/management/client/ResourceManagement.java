@@ -9,6 +9,7 @@ import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.StringList;
 
 
 /**
@@ -67,6 +68,63 @@ public interface ResourceManagement {
     public boolean deleteDataSource(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataSourceTypes")
+    @WebResult(partName = "return")
+    public StringList getDataSourceTypes()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataSourceSubTypes")
+    @WebResult(partName = "return")
+    public StringList getDataSourceSubTypes(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataSourceLanguages")
+    @WebResult(partName = "return")
+    public StringList getDataSourceLanguages(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getSupportedConvertDataFormatTypes")
+    @WebResult(partName = "return")
+    public StringList getSupportedConvertDataFormatTypes(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataSource arg0)
         throws Exception_Exception
     ;
 
@@ -178,6 +236,21 @@ public interface ResourceManagement {
     @WebMethod(action = "getDataConverters")
     @WebResult(partName = "return")
     public DataConverterList getDataConverters()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getLanguageStatementDescription")
+    @WebResult(partName = "return")
+    public String getLanguageStatementDescription(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0)
         throws Exception_Exception
     ;
 

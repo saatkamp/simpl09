@@ -9,6 +9,7 @@ import javax.xml.namespace.QName;
 import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.LateBinding;
+import org.simpl.resource.management.StringList;
 
 
 /**
@@ -40,11 +41,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exception }
+     * Create an instance of {@link DataConverter }
      * 
      */
-    public Exception createException() {
-        return new Exception();
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
     /**
@@ -53,6 +54,46 @@ public class ObjectFactory {
      */
     public DataConverterList createDataConverterList() {
         return new DataConverterList();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceConnector }
+     * 
+     */
+    public DataSourceConnector createDataSourceConnector() {
+        return new DataSourceConnector();
+    }
+
+    /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceList }
+     * 
+     */
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
+     * Create an instance of {@link StringList }
+     * 
+     */
+    public StringList createStringList() {
+        return new StringList();
     }
 
     /**
@@ -72,43 +113,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataConverter }
+     * Create an instance of {@link Exception }
      * 
      */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
-    }
-
-    /**
-     * Create an instance of {@link DataSourceConnector }
-     * 
-     */
-    public DataSourceConnector createDataSourceConnector() {
-        return new DataSourceConnector();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link DataSourceList }
-     * 
-     */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
