@@ -108,7 +108,6 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
               .equals(DataSourceTypes.FILESYSTEM))) {
         filteredDataSources.add(dataSources[i]);
       }
-      System.out.println(statementTest.getDataSource().getType() + "jo");
     }
 
     dataSources = filteredDataSources.toArray(new String[filteredDataSources.size()]);

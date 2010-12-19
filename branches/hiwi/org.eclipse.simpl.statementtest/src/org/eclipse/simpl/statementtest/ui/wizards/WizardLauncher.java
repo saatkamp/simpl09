@@ -47,8 +47,10 @@ public class WizardLauncher {
       if (dmActivity.eClass().getName().equals(DMActivityTypes.ISSUE_ACTIVITY)) {
         issue = IssueRecognition.getInstance().recognizeIssue(dmActivity.getDsLanguage(),
             dmActivity.getDsStatement());
-
-        statementTestWizard.getStatementTest().setIssue(issue);
+        
+        if (issue != null) {
+          statementTestWizard.getStatementTest().setIssue(issue);
+        }
       }
 
       // open wizard
