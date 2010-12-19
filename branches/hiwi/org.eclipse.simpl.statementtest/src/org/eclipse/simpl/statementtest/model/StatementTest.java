@@ -31,6 +31,7 @@ public class StatementTest {
   private DataManagementActivity activity = null;
   private Process process = null;
   private String statement = null;
+  private String issue = "";
   private String generatedStatement = null;
   private DataSource dataSource = null;
   private Result result = null;
@@ -97,6 +98,21 @@ public class StatementTest {
    */
   public void setStatement(String statement) {
     this.statement = statement.trim();
+  }
+
+  /**
+   * @return the issue
+   */
+  public String getIssue() {
+    return issue;
+  }
+
+  /**
+   * @param issue
+   *          the issue to set
+   */
+  public void setIssue(String issue) {
+    this.issue = issue;
   }
 
   /**
@@ -266,5 +282,16 @@ public class StatementTest {
    */
   public void setEnhancedResult(boolean enhancedResult) {
     this.enhancedResult = enhancedResult;
+  }
+
+  /**
+   * Returns the activity name.
+   * 
+   * @return name
+   */
+  public String getActivityName() {
+    String activityName = this.getActivity().eClass().getName();
+
+    return activityName;
   }
 }

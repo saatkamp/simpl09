@@ -84,7 +84,7 @@ public class StatementTestViewModel {
   /**
    * Loads the statement tests from the plugin preference store.
    */
-  @SuppressWarnings( { "unchecked", "unused" })
+  @SuppressWarnings({ "unchecked", "unused" })
   private static void loadModel() {
     String serializedStatementTests = null;
     ObjectInputStream in = null;
@@ -95,8 +95,8 @@ public class StatementTestViewModel {
 
     if (serializedStatementTests != null && !serializedStatementTests.equals("")) {
       try {
-        in = new ObjectInputStream(new ByteArrayInputStream(serializedStatementTests
-            .getBytes()));
+        in = new ObjectInputStream(new ByteArrayInputStream(
+            serializedStatementTests.getBytes()));
 
         deserializedStatementTests = (List<StatementTest>) in.readObject();
         in.close();

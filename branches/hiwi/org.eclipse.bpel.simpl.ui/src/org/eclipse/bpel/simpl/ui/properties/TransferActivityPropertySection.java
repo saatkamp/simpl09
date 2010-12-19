@@ -33,7 +33,7 @@ import org.simpl.core.webservices.client.DataSource;
  * 
  */
 public class TransferActivityPropertySection extends
-		DMActivityPropertySection {
+		ADataManagementActivityPropertySection {
 
 	private Label typeLabel = null;
 	private Text typeText = null;

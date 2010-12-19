@@ -189,7 +189,8 @@ public class DataSourceUtils {
     List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
 
     for (DataSource dat : dataSources) {
-      dataSourceNames.add(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX + ":" + dat.getName());
+      dataSourceNames.add(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX + ":"
+          + dat.getName());
     }
 
     return dataSourceNames;

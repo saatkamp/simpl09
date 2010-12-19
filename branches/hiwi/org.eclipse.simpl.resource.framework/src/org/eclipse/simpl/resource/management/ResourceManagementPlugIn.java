@@ -7,7 +7,6 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle
  */
 public class ResourceManagementPlugIn extends AbstractUIPlugin {
-
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.simpl.resource.management";
 

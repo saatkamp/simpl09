@@ -10,6 +10,7 @@ import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.simpl.statementtest.StatementTestPlugin;
 import org.eclipse.simpl.statementtest.model.StatementTest;
+import org.eclipse.simpl.statementtest.types.DataSourceTypes;
 import org.eclipse.simpl.statementtest.ui.wizards.StatementTestWizard;
 import org.eclipse.simpl.statementtest.utils.DataSourceUtils;
 import org.eclipse.swt.SWT;
@@ -102,10 +103,12 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
       if (dataSourceType.equals(statementTest.getDataSource().getType())) {
         filteredDataSources.add(dataSources[i]);
         // if no data source is selected in the activity
-      } else if (statementTest.getDataSource().getType() == null
-          && (dataSourceType.equals("Database") || dataSourceType.equals("Filesystem"))) {
+      } else if (statementTest.getDataSource().getType().equals("")
+          && (dataSourceType.equals(DataSourceTypes.DATABASE) || dataSourceType
+              .equals(DataSourceTypes.FILESYSTEM))) {
         filteredDataSources.add(dataSources[i]);
       }
+      System.out.println(statementTest.getDataSource().getType() + "jo");
     }
 
     dataSources = filteredDataSources.toArray(new String[filteredDataSources.size()]);

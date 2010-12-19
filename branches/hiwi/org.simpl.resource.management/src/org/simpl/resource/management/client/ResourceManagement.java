@@ -9,7 +9,6 @@ import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.simpl.core.webservices.client.DataSource;
-import org.simpl.resource.management.StringList;
 
 
 /**
@@ -251,6 +250,18 @@ public interface ResourceManagement {
     public String getLanguageStatementDescription(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getLanguages")
+    @WebResult(partName = "return")
+    public StringList getLanguages()
         throws Exception_Exception
     ;
 

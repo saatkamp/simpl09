@@ -5,6 +5,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.variables.ContainerVariable;
 import org.eclipse.simpl.statementtest.model.variables.ParameterVariable;
+import org.eclipse.simpl.statementtest.types.DMActivityTypes;
+import org.eclipse.simpl.statementtest.types.DataSourceTypes;
+import org.eclipse.simpl.statementtest.types.IssueTypes;
 import org.eclipse.simpl.statementtest.ui.wizards.StatementTestWizard;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
@@ -63,6 +66,7 @@ public class StatementScreeningPage extends StatementTestWizardPage {
   Label dataSourceLanguageLabel = null;
   Label dataSourceAddressLabel = null;
   Label dataSourceDataFormatLabel = null;
+  Label dataSourceIssueLabel = null;
 
   /**
    * @param pageName
@@ -86,7 +90,7 @@ public class StatementScreeningPage extends StatementTestWizardPage {
 
     dataSourceGroup = new Group(this.pageComposite, SWT.SHADOW_NONE);
     dataSourceGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-    dataSourceGroup.setLayout(new GridLayout(2, true));
+    dataSourceGroup.setLayout(new GridLayout(1, true));
     dataSourceGroup.setText(DATA_SOURCE_GROUP_TEXT);
 
     statementGroup = new Group(this.pageComposite, SWT.SHADOW_NONE);
@@ -94,6 +98,13 @@ public class StatementScreeningPage extends StatementTestWizardPage {
     statementGroup.setLayout(new GridLayout());
     statementGroup.setText(STATEMENT_GROUP_TEXT);
 
+    // add the issue label if it is an issue activity
+    if (statementTest.getActivityName().equals(DMActivityTypes.ISSUE_ACTIVITY)) {
+      dataSourceIssueLabel = new Label(statementGroup, SWT.NONE);
+      dataSourceIssueLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+      dataSourceIssueLabel.setText("Issue: " + this.statementTest.getIssue());
+    }
+    
     gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
     gridData.heightHint = 50;
     text = new Text(statementGroup, SWT.BORDER | SWT.READ_ONLY | SWT.WRAP | SWT.V_SCROLL);
@@ -120,8 +131,10 @@ public class StatementScreeningPage extends StatementTestWizardPage {
 
     this.updateDataSource();
 
-    if (!this.statementTest.getActivity().eClass().getName().equals("CreateActivity")
-        && !this.statementTest.getDataSource().getType().equals("Filesystem")) {
+    if (!(this.statementTest.getActivity().equals(DMActivityTypes.ISSUE_ACTIVITY) && this.statementTest
+        .getIssue().equals(IssueTypes.SQL_CREATE))
+        && !this.statementTest.getDataSource().getType()
+            .equals(DataSourceTypes.FILESYSTEM)) {
       optionsGroup = new Group(this.pageComposite, SWT.SHADOW_NONE);
       optionsGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
       optionsGroup.setLayout(new GridLayout(2, false));
@@ -146,14 +159,17 @@ public class StatementScreeningPage extends StatementTestWizardPage {
       });
     }
 
-    if (!this.statementTest.getActivity().eClass().getName().equals("QueryActivity")
-        && !this.statementTest.getActivity().eClass().getName().equals("CreateActivity")
-        && !this.statementTest.getActivity().eClass().getName().equals("DropActivity")
-        && !this.statementTest.getActivity().eClass().getName()
-            .equals("TransferActivity")
-        && !this.statementTest.getActivity().eClass().getName()
-            .equals("RetrieveDataActivity")
-        && !this.statementTest.getDataSource().getType().equals("Filesystem")) {
+    if (!this.statementTest.getActivityName().equals(DMActivityTypes.QUERY_ACTIVITY)
+        && !(this.statementTest.getActivityName().equals(DMActivityTypes.ISSUE_ACTIVITY) && this.statementTest
+            .getIssue().equals(IssueTypes.SQL_CREATE))
+        && !(this.statementTest.getActivityName().equals(DMActivityTypes.ISSUE_ACTIVITY) && this.statementTest
+            .getIssue().equals(IssueTypes.SQL_DROP))
+        && !this.statementTest.getActivityName()
+            .equals(DMActivityTypes.TRANSFER_ACTIVITY)
+        && !this.statementTest.getActivityName().equals(
+            DMActivityTypes.RETRIEVE_DATA_ACTIVITY)
+        && !this.statementTest.getDataSource().getType()
+            .equals(DataSourceTypes.FILESYSTEM)) {
       exclusiveResultLabel = new Label(optionsGroup, SWT.NONE);
       exclusiveResultLabel.setText(EXCLUSIVE_RESULT_LABEL);
       exclusiveResultLabel.addMouseListener(new MouseAdapter() {

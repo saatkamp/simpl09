@@ -74,7 +74,7 @@ import org.simpl.core.webservices.client.DataSource;
 /**
  * The Class RetrieveDataVariableSection.
  */
-public class RetrieveDataActivityPropertySection extends DMActivityPropertySection {
+public class RetrieveDataActivityPropertySection extends ADataManagementActivityPropertySection {
 
 	private VariableFilter fInputVariableFilter = new VariableFilter();
 

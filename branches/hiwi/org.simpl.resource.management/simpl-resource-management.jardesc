@@ -13,5 +13,6 @@
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
         <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management"/>
         <file path="/org.simpl.resource.management/resource_management.sql"/>
+        <folder path="/org.simpl.resource.management/schemas"/>
     </selectedElements>
 </jardesc>

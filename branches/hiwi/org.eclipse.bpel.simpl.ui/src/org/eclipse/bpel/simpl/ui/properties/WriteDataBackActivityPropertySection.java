@@ -74,7 +74,7 @@ import org.simpl.core.webservices.client.DataSource;
 /**
  * The Class WriteDataBackVariableSection.
  */
-public class WriteDataBackActivityPropertySection extends DMActivityPropertySection {
+public class WriteDataBackActivityPropertySection extends ADataManagementActivityPropertySection {
 
 	private VariableFilter fInputVariableFilter = new VariableFilter();
 

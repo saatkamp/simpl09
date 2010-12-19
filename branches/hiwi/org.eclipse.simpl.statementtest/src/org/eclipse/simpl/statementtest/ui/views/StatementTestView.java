@@ -161,7 +161,7 @@ public class StatementTestView extends ViewPart {
   public void addStatementTest(StatementTest statementTest) {
     tableItem = new TableItem(statementTestTable, SWT.NONE);
     tableItem.setText(1, statementTest.getActivity().getName());
-    tableItem.setText(2, statementTest.getActivity().eClass().getName());
+    tableItem.setText(2, statementTest.getActivityName());
     tableItem.setText(3, statementTest.getProcess().getName());
     tableItem.setText(4, statementTest.getStatement());
 
@@ -282,7 +282,7 @@ public class StatementTestView extends ViewPart {
     column = new TableColumn(table, SWT.LEFT);
     column.setText("#");
     column.setWidth(25);
-    
+
     for (String columnName : result.getColumns()) {
       column = new TableColumn(table, SWT.LEFT);
 
@@ -715,14 +715,14 @@ public class StatementTestView extends ViewPart {
     }
 
     // activity specific gui changes
-    if (statementTest.getActivity().eClass().getName().equals("CreateActivity")) {
+    if (statementTest.getActivityName().equals("CreateActivity")) {
       if (statementTest.getResult() != null) {
         resultTableLabel.setText("Created Table: "
             + ((CreateTableResult) statementTest.getResult()).getTable());
       } else {
         resultTableLabel.setText("Created Table:");
       }
-    } else if (statementTest.getActivity().eClass().getName().equals("DropActivity")) {
+    } else if (statementTest.getActivityName().equals("DropActivity")) {
       resultTableLabel.setText("Dropped Table: "
           + ((RelationalResult) statementTest.getComparativeResult()).getTable());
     }

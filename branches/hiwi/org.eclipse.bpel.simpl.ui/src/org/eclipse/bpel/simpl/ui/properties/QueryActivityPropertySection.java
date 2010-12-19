@@ -52,7 +52,7 @@ import org.simpl.core.webservices.client.DataSource;
 
 
 @SuppressWarnings("unused")
-public class QueryActivityPropertySection extends DMActivityPropertySection {
+public class QueryActivityPropertySection extends ADataManagementActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	SchemaListPopUp schemaPopWindow;

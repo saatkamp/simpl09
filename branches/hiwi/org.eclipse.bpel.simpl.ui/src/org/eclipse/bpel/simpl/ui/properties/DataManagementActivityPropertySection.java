@@ -51,7 +51,7 @@ import org.simpl.core.webservices.client.DataSource;
  * @link http://code.google.com/p/simpl09/
  * 
  */
-public class DataManagementActivityPropertySection extends DMActivityPropertySection {
+public class DataManagementActivityPropertySection extends ADataManagementActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	SchemaListPopUp schemaPopWindow;

@@ -2,13 +2,13 @@ package org.eclipse.simpl.statementtest.utils;
 
 import java.util.List;
 
-/** TODO
- * <b>Purpose:</b><br>
+/**
+ * TODO <b>Purpose:</b><br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
- *
+ * 
  * @author Michael Schneidt <michael.schneidt@arcor.de><br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
