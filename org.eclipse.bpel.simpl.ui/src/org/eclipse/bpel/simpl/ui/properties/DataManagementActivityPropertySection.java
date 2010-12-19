@@ -1,11 +1,8 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.TransferActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
@@ -13,10 +10,8 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
-import org.eclipse.bpel.simpl.ui.widgets.DBTable;
 import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
-import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
@@ -227,11 +222,12 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 						new SetDsLanguageCommand(activity, languageText
 								.getText()));
 
+				/* TODO: uncomment if editor is ready to use
 				if (languageText.getText().isEmpty()) {
 					openEditorButton.setEnabled(false);
 				} else {
 					openEditorButton.setEnabled(true);
-				}
+				}*/
 			}
 		});
 
@@ -241,6 +237,8 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
+    
+		/* TODO: uncomment if editor is ready to use
 		Label filler43 = new Label(composite, SWT.NONE);
 
 		openEditorButton = new Button(composite, SWT.NONE);
@@ -269,7 +267,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 							.getDsLanguage(), activity.getName());
 				}
 			}
-		});
+		});*/
 
     openStatementTestWizardButton = new Button(composite, SWT.NONE);
     openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));

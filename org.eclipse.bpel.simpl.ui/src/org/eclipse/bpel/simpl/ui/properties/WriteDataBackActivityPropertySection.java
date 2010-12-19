@@ -255,11 +255,12 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 						new SetDsLanguageCommand(getModel(), languageText
 								.getText()));
 				
+				/* TODO: uncomment if editor is ready to use
 				if (languageText.getText().isEmpty()) {
 					openEditorButton.setEnabled(false);
 				} else {
 					openEditorButton.setEnabled(true);
-				}
+				}*/
 			}
 		});
 
@@ -270,7 +271,9 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 
 		createInputVariableWidgets();
 
+    /* TODO: uncomment if editor is ready to use
 		Label filler43 = new Label(composite, SWT.NONE);
+		
 		openEditorButton = new Button(composite, SWT.NONE);
 		openEditorButton.setText("Open Editor");
 		openEditorButton.setLayoutData(gridData21);
@@ -293,7 +296,7 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 						.getWriteDataBackActivity().getInstanceClassName(),
 						activity.getDsLanguage(), activity.getName());
 			}
-		});
+		});*/
 
     openStatementTestWizardButton = new Button(composite, SWT.NONE);
     openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
