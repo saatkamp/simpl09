@@ -311,7 +311,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * Returns the data source's data format schema file as InputStream.
+   * Returns the data source's primary data format schema file as InputStream.
    * 
    * @param dataSource
    * @return
@@ -364,7 +364,10 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * @return List of data format types that are available for the given data source.
+   * Returns a list of data format types that are available for the given data source.
+   * 
+   * @param dataSource
+   * @return List of data format types.
    */
   public List<String> getSupportedDataFormatTypes(DataSource dataSource) {
     DataSourceService<Object, Object> dataSourceService = DataSourceServiceProvider
@@ -374,11 +377,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * Returns a list of data format types that can be converted to from the given data
+   * Returns a list of data format types that can be converted to and from the given data
    * source data format type.
    * 
    * @param dataFormat
-   * @return A list of data format types.
+   * @return List of data format types.
    */
   public List<String> getSupportedConvertDataFormatTypes(DataSource dataSource) {
     DataSourceService<Object, Object> dataSourceService = DataSourceServiceProvider

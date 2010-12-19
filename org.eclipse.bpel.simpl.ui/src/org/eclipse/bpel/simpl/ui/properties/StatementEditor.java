@@ -40,7 +40,7 @@ public class StatementEditor {
 	private Button okButton = null;
 	private Button closeButton = null;
 	private AStatementEditor compositeClass = null;
-	private DMActivityPropertySection parentClass = null;
+	private ADataManagementActivityPropertySection parentClass = null;
 	ArrayList<DBTable> listOfDBTables=null;
 	ArrayList<DBTable> listOfTablesBTables;
 	private StatementEditDialog statementEditDialogObjekt;
@@ -55,7 +55,7 @@ public class StatementEditor {
 	 * @param activity
 	 *            the activity, on which the statement editor relies
 	 */
-	public StatementEditor(DMActivityPropertySection parent, String language,
+	public StatementEditor(ADataManagementActivityPropertySection parent, String language,
 			String activity, String activityName) {
 		createSShell(activityName);
 		//compositeClass = Application.getInstance().getEditorClass(language,

@@ -63,4 +63,5 @@ Export-Package: org.apache.commons.configuration;
    org.eclipse.ui.part,
    org.eclipse.swt.widgets",
  org.eclipse.simpl.resource.management.view.filter;uses:="org.eclipse.jface.viewers",
- org.eclipse.simpl.resource.management.view.sorter;uses:="org.eclipse.jface.viewers"
+ org.eclipse.simpl.resource.management.view.sorter;uses:="org.eclipse.jface.viewers",
+ org.simpl.resource.management.client

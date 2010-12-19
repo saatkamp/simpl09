@@ -1,6 +1,6 @@
 package org.eclipse.bpel.simpl.ui.widgets;
 
-import org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection;
+import org.eclipse.bpel.simpl.ui.properties.ADataManagementActivityPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -35,7 +35,7 @@ public class StatementEditDialog {
 	//private DataManagementActivityPropertySection parentClass = null;
 	
 	@SuppressWarnings("unused")
-  public StatementEditDialog(final String statement, final DMActivityPropertySection parentClass){
+  public StatementEditDialog(final String statement, final ADataManagementActivityPropertySection parentClass){
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = true;
 		gridData1.grabExcessVerticalSpace = false;

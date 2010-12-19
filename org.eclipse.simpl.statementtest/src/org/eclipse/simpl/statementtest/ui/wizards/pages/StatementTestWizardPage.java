@@ -91,7 +91,7 @@ public class StatementTestWizardPage extends WizardPage {
 
     // Object a = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
     // .getActiveEditor().getAdapter(IOutlineEditPartFactory.class);
-    //  
+    //
     // ProcessOutlineEditPart p = (ProcessOutlineEditPart)a;
     // System.out.println(a);
 

@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "stringList", namespace = "http://management.resource.simpl.org/", propOrder = { "item" })
+@XmlType(name = "stringList", namespace = "http://management.resource.simpl.org/", propOrder = { "items" })
 public class StringList {
   @XmlElement(nillable = true)
-  protected List<String> item;
+  protected List<String> items;
 
   public List<String> getItems() {
-    if (item == null) {
-      item = new ArrayList<String>();
+    if (items == null) {
+      items = new ArrayList<String>();
     }
 
-    return this.item;
+    return this.items;
   }
 }

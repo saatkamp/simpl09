@@ -603,13 +603,36 @@ public class ResourceManagement {
   @WebMethod(action = "getLanguageStatementDescription")
   public String getLanguageStatementDescription(String language) throws Exception {
     String statementDescription = null;
+    String statement = "";
+    String result = null;
     
-    String statement = "SELECT CAST(statement_description AS TEXT) FROM languages";
-    String result = dataSourceService.retrieveData(rmDataSource, statement);
+    statement += "SELECT CAST(statement_description AS TEXT) ";
+    statement += "FROM languages ";
+    statement += "WHERE name LIKE '%" + language + "%'";
+    
+    result = dataSourceService.retrieveData(rmDataSource, statement);
     
     statementDescription = this.getColumnValuesFromResult(result, "statement_description").get(0);
     
     return statementDescription;
+  }
+
+  /**
+   * Returns the names of all available languages.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getLanguages")
+  public StringList getLanguages() throws Exception {
+    StringList languages = new StringList();
+    
+    String statement = "SELECT name FROM languages";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+    
+    languages.getItems().addAll(this.getColumnValuesFromResult(result, "name"));
+    
+    return languages;
   }
   
   /**

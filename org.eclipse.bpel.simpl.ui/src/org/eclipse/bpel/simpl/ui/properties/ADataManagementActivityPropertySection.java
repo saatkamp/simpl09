@@ -15,7 +15,7 @@ import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.simpl.core.webservices.client.DataSource;
 
-public abstract class DMActivityPropertySection extends BPELPropertySection {
+public abstract class ADataManagementActivityPropertySection extends BPELPropertySection {
 
 	/** The statement. */
 	public String statement;

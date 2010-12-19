@@ -9,7 +9,6 @@ import javax.xml.namespace.QName;
 import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.LateBinding;
-import org.simpl.resource.management.StringList;
 
 
 /**
@@ -41,27 +40,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataConverter }
+     * Create an instance of {@link Exception }
      * 
      */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
-    }
-
-    /**
-     * Create an instance of {@link DataConverterList }
-     * 
-     */
-    public DataConverterList createDataConverterList() {
-        return new DataConverterList();
-    }
-
-    /**
-     * Create an instance of {@link DataSourceConnector }
-     * 
-     */
-    public DataSourceConnector createDataSourceConnector() {
-        return new DataSourceConnector();
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
@@ -73,27 +56,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSourceList }
+     * Create an instance of {@link DataConverterList }
      * 
      */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link StringList }
-     * 
-     */
-    public StringList createStringList() {
-        return new StringList();
+    public DataConverterList createDataConverterList() {
+        return new DataConverterList();
     }
 
     /**
@@ -105,6 +72,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link StringList }
+     * 
+     */
+    public StringList createStringList() {
+        return new StringList();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceList }
+     * 
+     */
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link DataConverter }
+     * 
+     */
+    public DataConverter createDataConverter() {
+        return new DataConverter();
+    }
+
+    /**
      * Create an instance of {@link DataSourceConnectorList }
      * 
      */
@@ -113,11 +104,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exception }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public Exception createException() {
-        return new Exception();
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceConnector }
+     * 
+     */
+    public DataSourceConnector createDataSourceConnector() {
+        return new DataSourceConnector();
     }
 
     /**

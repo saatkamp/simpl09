@@ -19,6 +19,9 @@ import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.StatementTestViewModel;
 import org.eclipse.simpl.statementtest.model.variables.ContainerVariable;
 import org.eclipse.simpl.statementtest.model.variables.ParameterVariable;
+import org.eclipse.simpl.statementtest.types.DMActivityTypes;
+import org.eclipse.simpl.statementtest.types.DataSourceTypes;
+import org.eclipse.simpl.statementtest.types.IssueTypes;
 import org.eclipse.simpl.statementtest.ui.wizards.pages.DataSourceSelectionPage;
 import org.eclipse.simpl.statementtest.ui.wizards.pages.ParameterAdjustmentPage;
 import org.eclipse.simpl.statementtest.ui.wizards.pages.StatementScreeningPage;
@@ -46,7 +49,7 @@ import org.simpl.core.webservices.client.DatasourceServiceClient;
  * @link http://code.google.com/p/simpl09/
  */
 public class StatementTestWizard extends Wizard {
-  final static String WIZARD_TITLE = "New Statement Test";
+  final static String WIZARD_TITLE = "Statement Test";
   final static String WIZARD_ICON = "icons/database.png";
   final static String DATA_SOURCE_SELECTION_PAGE_ICON = "icons/database.png";
   final static String PARAMETER_ADJUSTMENT_PAGE_ICON = "icons/table.png";
@@ -77,7 +80,7 @@ public class StatementTestWizard extends Wizard {
   public StatementTestWizard(DataManagementActivity activity, Process process) {
     this.setHelpAvailable(false);
     this.setNeedsProgressMonitor(false);
-    this.setWindowTitle(WIZARD_TITLE);
+    this.setWindowTitle(WIZARD_TITLE + " for " + activity.getName());
     this.setDefaultPageImageDescriptor(StatementTestPlugin
         .getImageDescriptor(WIZARD_ICON));
 
@@ -87,11 +90,11 @@ public class StatementTestWizard extends Wizard {
     activityDataSource.setType(activity.getDsType());
     activityDataSource.setSubType(activity.getDsKind());
     activityDataSource.setLanguage(activity.getDsLanguage());
-    
+
     this.statementTest = new StatementTest(activity, process);
     this.statementTest.setStatement(activity.getDsStatement());
     this.statementTest.setDataSource(activityDataSource);
-    
+
     // set variables
     List<String> parameterVariableNames = VariableUtils
         .getParameterVariablesFromStatement(activity.getDsStatement(), process);
@@ -113,8 +116,8 @@ public class StatementTestWizard extends Wizard {
 
   @Override
   public void addPages() {
-    dataSourcePage = new DataSourceSelectionPage("dataSourcePage", StatementTestPlugin
-        .getImageDescriptor(DATA_SOURCE_SELECTION_PAGE_ICON));
+    dataSourcePage = new DataSourceSelectionPage("dataSourcePage",
+        StatementTestPlugin.getImageDescriptor(DATA_SOURCE_SELECTION_PAGE_ICON));
     parameterAdjustmentPage = new ParameterAdjustmentPage("parameterAdjustmentPage",
         StatementTestPlugin.getImageDescriptor(PARAMETER_ADJUSTMENT_PAGE_ICON));
     statementScreeningPage = new StatementScreeningPage("statementScreeningPage",
@@ -154,8 +157,8 @@ public class StatementTestWizard extends Wizard {
       // initialize the data source service client
       while (retry) {
         try {
-          this.dataSourceService = DatasourceServiceClient.getService(CommunicationPlugIn.getDefault()
-              .getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS"));
+          this.dataSourceService = DatasourceServiceClient.getService(CommunicationPlugIn
+              .getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS"));
           isSimplCoreAvailable = true;
           retry = false;
         } catch (WebServiceException e) {
@@ -176,8 +179,8 @@ public class StatementTestWizard extends Wizard {
 
       // open the statement test view
       IViewPart view = StatementTestPlugin.getDefault().getWorkbench()
-          .getActiveWorkbenchWindow().getActivePage().showView(
-              "org.eclipse.simpl.statementtest.ui.views.StatementTestView");
+          .getActiveWorkbenchWindow().getActivePage()
+          .showView("org.eclipse.simpl.statementtest.ui.views.StatementTestView");
 
       // connect the view to the model
       StatementTestViewModel.getInstance().setView(view);
@@ -228,13 +231,13 @@ public class StatementTestWizard extends Wizard {
         this.statementTest, this.dataSourceService);
     FilesystemStatementExecution filesystemActivityExecution = new FilesystemStatementExecution(
         this.statementTest, this.dataSourceService);
-    String activityType = statementTest.getActivity().eClass().getName();
+    String activityType = statementTest.getActivityName();
     String dataSourceType = statementTest.getDataSource().getType();
 
     if (this.statementTest.getGeneratedStatement() != null) {
       // statement test log entries
       this.statementTest.log("= Statement test =");
-      this.statementTest.log(this.statementTest.getActivity().eClass().getName() + ": "
+      this.statementTest.log(this.statementTest.getActivityName() + ": "
           + this.statementTest.getActivity().getName());
       this.statementTest.log("Statement: " + this.statementTest.getGeneratedStatement());
       this.statementTest.log("Data source: "
@@ -261,32 +264,36 @@ public class StatementTestWizard extends Wizard {
       }
 
       // execute database activity
-      if (dataSourceType.equals("Database")) {
-        if (activityType.equals("QueryActivity")
-            || activityType.equals("TransferActivity")
-            || activityType.equals("RetrieveDataActivity")) {
+      if (dataSourceType.equals(DataSourceTypes.DATABASE)) {
+        if (activityType.equals(DMActivityTypes.QUERY_ACTIVITY)
+            || activityType.equals(DMActivityTypes.TRANSFER_ACTIVITY)
+            || activityType.equals(DMActivityTypes.RETRIEVE_DATA_ACTIVITY)) {
           databaseActivityExecution.executeQueryActivityStatement();
-        } else if (activityType.equals("InsertActivity")) {
-          databaseActivityExecution.executeInsertActivityStatement();
-        } else if (activityType.equals("DeleteActivity")) {
-          databaseActivityExecution.executeDeleteActivityStatement();
-        } else if (activityType.equals("UpdateActivity")) {
-          databaseActivityExecution.executeUpdateActivityStatement();
-        } else if (activityType.equals("CreateActivity")) {
-          databaseActivityExecution.executeCreateActivityStatement();
-        } else if (activityType.equals("DropActivity")) {
-          databaseActivityExecution.executeDropActivityStatement();
+        } else if (activityType.equals(DMActivityTypes.ISSUE_ACTIVITY)) {
+          if (statementTest.getIssue().equals(IssueTypes.SQL_INSERT)) {
+            databaseActivityExecution.executeInsertActivityStatement();
+          } else if (statementTest.getIssue().equals(IssueTypes.SQL_DELETE)) {
+            databaseActivityExecution.executeDeleteActivityStatement();
+          } else if (statementTest.getIssue().equals(IssueTypes.SQL_UPDATE)) {
+            databaseActivityExecution.executeUpdateActivityStatement();
+          } else if (statementTest.getIssue().equals(IssueTypes.SQL_CREATE)) {
+            databaseActivityExecution.executeCreateActivityStatement();
+          } else if (statementTest.getIssue().equals(IssueTypes.SQL_DROP)) {
+            databaseActivityExecution.executeDropActivityStatement();
+          }
         }
       }
 
       // execute filesystem activity
-      if (dataSourceType.equals("Filesystem")) {
-        if (activityType.equals("QueryActivity")
-            || activityType.equals("TransferActivity")
-            || activityType.equals("RetrieveActivity")) {
+      if (dataSourceType.equals(dataSourceType.equals(DataSourceTypes.FILESYSTEM))) {
+        if (activityType.equals(DMActivityTypes.QUERY_ACTIVITY)
+            || activityType.equals(DMActivityTypes.TRANSFER_ACTIVITY)
+            || activityType.equals(DMActivityTypes.RETRIEVE_DATA_ACTIVITY)) {
           filesystemActivityExecution.executeQueryActivityStatement();
-        } else if (activityType.equals("DeleteActivity")) {
-          filesystemActivityExecution.executeDeleteActivityStatement();
+        } else if (activityType.equals(DMActivityTypes.ISSUE_ACTIVITY)) {
+          if (statementTest.getIssue().equals(IssueTypes.SQL_DELETE)) {
+            filesystemActivityExecution.executeDeleteActivityStatement();
+          }
         }
       }
     } else {
