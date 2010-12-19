@@ -80,7 +80,7 @@ public class StatementTestWizard extends Wizard {
   public StatementTestWizard(DataManagementActivity activity, Process process) {
     this.setHelpAvailable(false);
     this.setNeedsProgressMonitor(false);
-    this.setWindowTitle(WIZARD_TITLE + " for " + activity.getName());
+    this.setWindowTitle(WIZARD_TITLE + " for \"" + activity.getName() + "\"");
     this.setDefaultPageImageDescriptor(StatementTestPlugin
         .getImageDescriptor(WIZARD_ICON));
 

@@ -112,7 +112,6 @@ public class IssueRecognition {
     HashMap<String, String> issues = languagesStatementDescription.get(language);
 
     if (languagesStatementDescription.containsKey(language)) {
-
       for (String tmpIssue : issues.keySet()) {
         predicate = issues.get(tmpIssue);
 
