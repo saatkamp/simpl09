@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<datasourceconnector_properties_description xmlns="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description datasources.xsd ">
-  <type>type</type>
-  <subType>subType</subType>
-  <language>language</language>
-  <dataFormat>dataFormat</dataFormat>
-</datasourceconnector_properties_description>
