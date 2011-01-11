@@ -22,44 +22,44 @@ CREATE TABLE languages (
    UNIQUE (id)
 );
 
-CREATE TABLE datasourceconnectors (
+CREATE TABLE connectors (
    id SERIAL PRIMARY KEY,
-   dataconverter_dataformat_id INTEGER,
+   converter_dataformat_id INTEGER,
    name varchar(255) NOT NULL,
    properties_description xml DEFAULT '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/datasourceconnectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasourceconnectors/properties_description datasourceconnectors.xsd ">
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type></type>
   <subType></subType>
   <language></language>
   <dataFormat></dataFormat>
 </properties_description>' NOT NULL,
-   FOREIGN KEY (dataconverter_dataformat_id) references dataformats(id)
+   FOREIGN KEY (converter_dataformat_id) references dataformats(id)
 );
 
-CREATE TABLE datasources (
+CREATE TABLE sources (
    id SERIAL PRIMARY KEY,
-   datasourceconnector_id INTEGER,
+   connector_id INTEGER,
    logical_name varchar(255) UNIQUE NOT NULL,
    security_username varchar(255),
    security_password varchar(255),
    interface_description varchar(255) NOT NULL,
    properties_description xml,
-   datasourceconnector_properties_description xml DEFAULT '<datasourceconnector_properties_description xmlns="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description datasources.xsd ">
+   connector_properties_description xml DEFAULT '<connector_properties_description xmlns="http://org.simpl.resource.management/sources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/sources/connector_properties_description sources.xsd ">
   <type></type>
   <subType></subType>
   <language></language>
   <dataFormat></dataFormat>
-</datasourceconnector_properties_description>',
-   FOREIGN KEY (datasourceconnector_id) references datasourceconnectors(id)
+</connector_properties_description>',
+   FOREIGN KEY (connector_id) references connectors(id)
 );
 
-CREATE TABLE dataconverters (
+CREATE TABLE converters (
    id SERIAL PRIMARY KEY,
-   datasourceconnector_dataformat_id INTEGER NOT NULL,
+   connector_dataformat_id INTEGER NOT NULL,
    workflow_dataformat_id INTEGER NOT NULL,
    name varchar(255) UNIQUE NOT NULL,
-   UNIQUE (datasourceconnector_dataformat_id, workflow_dataformat_id),
-   FOREIGN KEY (datasourceconnector_dataformat_id) references dataformats(id),
+   UNIQUE (connector_dataformat_id, workflow_dataformat_id),
+   FOREIGN KEY (connector_dataformat_id) references dataformats(id),
    FOREIGN KEY (workflow_dataformat_id) references dataformats(id)
 );
 
@@ -79,7 +79,7 @@ CREATE TABLE datacontainers (
 CREATE OR REPLACE FUNCTION getProperty(text, xml)
   RETURNS text AS 
   $$
-    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/datasources/datasourceconnector_properties_description']]))[1] AS text) FROM datasources
+    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/sources/connector_properties_description']]))[1] AS text) FROM sources
   $$ 
 LANGUAGE SQL;
 
@@ -242,87 +242,87 @@ VALUES
     </xsd:complexType>
 </xsd:schema>');
 
-INSERT INTO datasourceconnectors
-(id, name, properties_description, dataconverter_dataformat_id)
+INSERT INTO connectors
+(id, name, properties_description, converter_dataformat_id)
 VALUES
 (1, 'org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/datasourceconnectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasourceconnectors/properties_description datasourceconnectors.xsd ">
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>DB2</subType>
   <language>SQL</language>
   <dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat>
 </properties_description>', 1);
 
-INSERT INTO datasourceconnectors
-(id, name, properties_description, dataconverter_dataformat_id)
+INSERT INTO connectors
+(id, name, properties_description, converter_dataformat_id)
 VALUES
 (2, 'org.simpl.core.plugins.datasource.rdb.DerbyRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/datasourceconnectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasourceconnectors/properties_description datasourceconnectors.xsd ">
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>Derby</subType>
   <language>SQL</language>
   <dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat>
 </properties_description>', 1);
 
-INSERT INTO datasourceconnectors
-(id, name, properties_description, dataconverter_dataformat_id)
+INSERT INTO connectors
+(id, name, properties_description, converter_dataformat_id)
 VALUES
 (3, 'org.simpl.core.plugins.datasource.rdb.EmbDerbyRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/datasourceconnectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasourceconnectors/properties_description datasourceconnectors.xsd ">
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>EmbeddedDerby</subType>
   <language>SQL</language>
   <dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat>
 </properties_description>', 1);
 
-INSERT INTO datasourceconnectors
-(id, name, properties_description, dataconverter_dataformat_id)
+INSERT INTO connectors
+(id, name, properties_description, converter_dataformat_id)
 VALUES
 (4, 'org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/datasourceconnectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasourceconnectors/properties_description datasourceconnectors.xsd ">
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>MySQL</subType>
   <language>SQL</language>
   <dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat>
 </properties_description>', 1);
 
-INSERT INTO datasourceconnectors
-(id, name, properties_description, dataconverter_dataformat_id)
+INSERT INTO connectors
+(id, name, properties_description, converter_dataformat_id)
 VALUES
 (5, 'org.simpl.core.plugins.datasource.rdb.PostgreSQLRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/datasourceconnectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasourceconnectors/properties_description datasourceconnectors.xsd ">
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>PostgreSQL</subType>
   <language>SQL</language>
   <dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat>
 </properties_description>', 1);
 
-INSERT INTO datasourceconnectors
-(id, name, properties_description, dataconverter_dataformat_id)
+INSERT INTO connectors
+(id, name, properties_description, converter_dataformat_id)
 VALUES
 (6, 'org.simpl.core.plugins.datasource.fs.WindowsLocalFSDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/datasourceconnectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasourceconnectors/properties_description datasourceconnectors.xsd ">
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Filesystem</type>
   <subType>Windows Local</subType>
   <language>Shell</language>
   <dataFormat>org.simpl.core.plugins.dataformat.relational.CSVDataFormat</dataFormat>
 </properties_description>', 2);
 
-INSERT INTO dataconverters
-(id, name, datasourceconnector_dataformat_id, workflow_dataformat_id)
+INSERT INTO converters
+(id, name, connector_dataformat_id, workflow_dataformat_id)
 VALUES
 (1, 'org.simpl.core.plugins.dataformat.converter.CSVtoRDBDataFormatConverter', 1, 2);
 
-INSERT INTO datasources
+INSERT INTO sources
 (
     id
-  , datasourceconnector_id
+  , connector_id
   , logical_name
   , security_username
   , security_password
   , interface_description
   , properties_description
-  , datasourceconnector_properties_description
+  , connector_properties_description
 )
 VALUES
 (
@@ -333,19 +333,19 @@ VALUES
   , NULL
   , 'C:\\'
   , NULL
-  , '<datasourceconnector_properties_description xmlns="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description datasources.xsd ">  <type>Filesystem</type>  <subType>Windows Local</subType>  <language>Shell</language>  <dataFormat>org.simpl.core.plugins.dataformat.relational.CSVDataFormat</dataFormat></datasourceconnector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/sources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/sources/connector_properties_description sources.xsd ">  <type>Filesystem</type>  <subType>Windows Local</subType>  <language>Shell</language>  <dataFormat>org.simpl.core.plugins.dataformat.relational.CSVDataFormat</dataFormat></connector_properties_description>'
 );
 
-INSERT INTO datasources
+INSERT INTO sources
 (
     id
-  , datasourceconnector_id
+  , connector_id
   , logical_name
   , security_username
   , security_password
   , interface_description
   , properties_description
-  , datasourceconnector_properties_description
+  , connector_properties_description
 )
 VALUES
 (
@@ -356,19 +356,19 @@ VALUES
   , ''
   , 'localhost'
   , NULL
-  , '<datasourceconnector_properties_description xmlns="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description datasources.xsd "><type>Database</type><subType>DB2</subType><language>SQL</language><dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat></datasourceconnector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/sources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/sources/connector_properties_description sources.xsd "><type>Database</type><subType>DB2</subType><language>SQL</language><dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
-INSERT INTO datasources
+INSERT INTO sources
 (
     id
-  , datasourceconnector_id
+  , connector_id
   , logical_name
   , security_username
   , security_password
   , interface_description
   , properties_description
-  , datasourceconnector_properties_description
+  , connector_properties_description
 )
 VALUES
 (
@@ -379,7 +379,7 @@ VALUES
   , NULL
   , 'localhost'
   , NULL
-  , '<datasourceconnector_properties_description xmlns="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/datasourceconnector_properties_description datasources.xsd ">  <type>Database</type>  <subType>MySQL</subType>  <language>SQL</language>  <dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat></datasourceconnector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/sources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/sources/connector_properties_description sources.xsd ">  <type>Database</type>  <subType>MySQL</subType>  <language>SQL</language>  <dataFormat>org.simpl.core.plugins.dataformat.relational.RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
 INSERT INTO languages

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector_properties_description xmlns="http://org.simpl.resource.management/sources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/sources/connector_properties_description sources.xsd ">
+  <type>type</type>
+  <subType>subType</subType>
+  <language>language</language>
+  <dataFormat>dataFormat</dataFormat>
+</connector_properties_description>
