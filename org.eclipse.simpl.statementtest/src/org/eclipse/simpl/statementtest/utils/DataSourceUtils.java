@@ -101,7 +101,7 @@ public class DataSourceUtils {
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_SUBTYPE));
                 datasource.setLanguage(((Element) data)
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_LANG));
-                datasource.setDataFormat(((Element) data)
+                datasource.setDataFormatName(((Element) data)
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_FORMAT));
                 Authentication authent = new Authentication();
                 authent.setUser(((Element) data)

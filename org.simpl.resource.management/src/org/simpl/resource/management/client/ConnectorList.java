@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dataSourceConnectorList complex type.
+ * <p>Java class for connectorList complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="dataSourceConnectorList">
+ * &lt;complexType name="connectorList">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="dataSourceConnectors" type="{http://management.resource.simpl.org/}DataSourceConnector" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="connectors" type="{http://management.resource.simpl.org/}Connector" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,41 +29,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataSourceConnectorList", propOrder = {
-    "dataSourceConnectors"
+@XmlType(name = "connectorList", propOrder = {
+    "connectors"
 })
-public class DataSourceConnectorList {
+public class ConnectorList {
 
     @XmlElement(nillable = true)
-    protected List<DataSourceConnector> dataSourceConnectors;
+    protected List<Connector> connectors;
 
     /**
-     * Gets the value of the dataSourceConnectors property.
+     * Gets the value of the connectors property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataSourceConnectors property.
+     * This is why there is not a <CODE>set</CODE> method for the connectors property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDataSourceConnectors().add(newItem);
+     *    getConnectors().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link DataSourceConnector }
+     * {@link Connector }
      * 
      * 
      */
-    public List<DataSourceConnector> getDataSourceConnectors() {
-        if (dataSourceConnectors == null) {
-            dataSourceConnectors = new ArrayList<DataSourceConnector>();
+    public List<Connector> getConnectors() {
+        if (connectors == null) {
+            connectors = new ArrayList<Connector>();
         }
-        return this.dataSourceConnectors;
+        return this.connectors;
     }
 
 }

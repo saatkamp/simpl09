@@ -24,7 +24,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="authentication" type="{http://webservices.core.simpl.org/}Authentication" minOccurs="0"/>
  *         &lt;element name="lateBinding" type="{http://webservices.core.simpl.org/}LateBinding" minOccurs="0"/>
  *         &lt;element name="language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="dataFormat" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="dataFormatName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="dataFormatImplementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="connectorName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="connectorImplementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="connectorPropertiesDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +47,11 @@ import javax.xml.bind.annotation.XmlType;
     "authentication",
     "lateBinding",
     "language",
-    "dataFormat"
+    "dataFormatName",
+    "dataFormatImplementation",
+    "connectorName",
+    "connectorImplementation",
+    "connectorPropertiesDescription"
 })
 public class DataSource {
 
@@ -55,7 +63,11 @@ public class DataSource {
     protected Authentication authentication;
     protected LateBinding lateBinding;
     protected String language;
-    protected String dataFormat;
+    protected String dataFormatName;
+    protected String dataFormatImplementation;
+    protected String connectorName;
+    protected String connectorImplementation;
+    protected String connectorPropertiesDescription;
 
     /**
      * Gets the value of the id property.
@@ -250,27 +262,123 @@ public class DataSource {
     }
 
     /**
-     * Gets the value of the dataFormat property.
+     * Gets the value of the dataFormatName property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDataFormat() {
-        return dataFormat;
+    public String getDataFormatName() {
+        return dataFormatName;
     }
 
     /**
-     * Sets the value of the dataFormat property.
+     * Sets the value of the dataFormatName property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDataFormat(String value) {
-        this.dataFormat = value;
+    public void setDataFormatName(String value) {
+        this.dataFormatName = value;
+    }
+
+    /**
+     * Gets the value of the dataFormatImplementation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDataFormatImplementation() {
+        return dataFormatImplementation;
+    }
+
+    /**
+     * Sets the value of the dataFormatImplementation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDataFormatImplementation(String value) {
+        this.dataFormatImplementation = value;
+    }
+
+    /**
+     * Gets the value of the connectorName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConnectorName() {
+        return connectorName;
+    }
+
+    /**
+     * Sets the value of the connectorName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConnectorName(String value) {
+        this.connectorName = value;
+    }
+
+    /**
+     * Gets the value of the connectorImplementation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConnectorImplementation() {
+        return connectorImplementation;
+    }
+
+    /**
+     * Sets the value of the connectorImplementation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConnectorImplementation(String value) {
+        this.connectorImplementation = value;
+    }
+
+    /**
+     * Gets the value of the connectorPropertiesDescription property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConnectorPropertiesDescription() {
+        return connectorPropertiesDescription;
+    }
+
+    /**
+     * Sets the value of the connectorPropertiesDescription property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConnectorPropertiesDescription(String value) {
+        this.connectorPropertiesDescription = value;
     }
 
 }

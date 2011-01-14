@@ -109,7 +109,7 @@ public class ResourceManagementConfig {
     dataSource.setAddress(dataSourceElement.getChildText("address"));
     dataSource.setType(dataSourceElement.getChildText("type"));
     dataSource.setSubType(dataSourceElement.getChildText("subType"));
-    dataSource.setDataFormat(dataSourceElement.getChildText("dataFormat"));
+    dataSource.setDataFormatName(dataSourceElement.getChildText("dataFormat"));
     dataSource.setAuthentication(authentication);
 
     return dataSource;

@@ -55,7 +55,7 @@ public class AuditingDSUtils {
 			localDs.setName("local");
 			localDs.setType("Database");
 			localDs.setSubType("EmbeddedDerby");
-			localDs.setDataFormat("RDB");
+			localDs.setDataFormatName("RDBDataFormat");
 			Authentication auth = new Authentication();
 			auth.setUser("");
 			auth.setPassword("");

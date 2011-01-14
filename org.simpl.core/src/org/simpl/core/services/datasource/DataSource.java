@@ -23,7 +23,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "DataSource")
 @XmlType(name = "DataSource", propOrder = { "id", "name", "address", "type", "subType",
-    "authentication", "lateBinding", "language", "dataFormat" })
+    "authentication", "lateBinding", "language", "dataFormatName",
+    "dataFormatImplementation", "connectorName", "connectorImplementation",
+    "connectorPropertiesDescription" })
 public class DataSource {
   private String id;
   private String name;
@@ -31,7 +33,11 @@ public class DataSource {
   private String type;
   private String subType;
   private String language;
-  private String dataFormat;
+  private String dataFormatName;
+  private String dataFormatImplementation;
+  private String connectorName;
+  private String connectorImplementation;
+  private String connectorPropertiesDescription;
   private Authentication authentication = new Authentication();
   private LateBinding lateBinding = new LateBinding();
 
@@ -111,6 +117,96 @@ public class DataSource {
   }
 
   /**
+   * @return the language
+   */
+  public String getLanguage() {
+    return language;
+  }
+
+  /**
+   * @param language
+   *          the language to set
+   */
+  public void setLanguage(String language) {
+    this.language = language;
+  }
+
+  /**
+   * @return the connectorPropertiesDescription
+   */
+  public String getConnectorPropertiesDescription() {
+    return connectorPropertiesDescription;
+  }
+
+  /**
+   * @param connectorPropertiesDescription
+   *          the connectorPropertiesDescription to set
+   */
+  public void setConnectorPropertiesDescription(String connectorPropertiesDescription) {
+    this.connectorPropertiesDescription = connectorPropertiesDescription;
+  }
+
+  /**
+   * @return the dataFormatName
+   */
+  public String getDataFormatName() {
+    return dataFormatName;
+  }
+
+  /**
+   * @param dataFormatName
+   *          the dataFormatName to set
+   */
+  public void setDataFormatName(String dataFormatName) {
+    this.dataFormatName = dataFormatName;
+  }
+
+  /**
+   * @return the dataFormatImplementation
+   */
+  public String getDataFormatImplementation() {
+    return dataFormatImplementation;
+  }
+
+  /**
+   * @param dataFormatImplementation
+   *          the dataFormatImplementation to set
+   */
+  public void setDataFormatImplementation(String dataFormatImplementation) {
+    this.dataFormatImplementation = dataFormatImplementation;
+  }
+
+  /**
+   * @return the connectorName
+   */
+  public String getConnectorName() {
+    return connectorName;
+  }
+
+  /**
+   * @param connectorName
+   *          the connectorName to set
+   */
+  public void setConnectorName(String connectorName) {
+    this.connectorName = connectorName;
+  }
+
+  /**
+   * @return the connectorImplementation
+   */
+  public String getConnectorImplementation() {
+    return connectorImplementation;
+  }
+
+  /**
+   * @param connectorImplementation
+   *          the connectortImplementation to set
+   */
+  public void setConnectorImplementation(String connectorImplementation) {
+    this.connectorImplementation = connectorImplementation;
+  }
+
+  /**
    * @return the authentication
    */
   public Authentication getAuthentication() {
@@ -140,36 +236,6 @@ public class DataSource {
     this.lateBinding = lateBinding;
   }
 
-  /**
-   * @return the language
-   */
-  public String getLanguage() {
-    return language;
-  }
-
-  /**
-   * @param language
-   *          the language to set
-   */
-  public void setLanguage(String language) {
-    this.language = language;
-  }
-
-  /**
-   * @return the dataFormat
-   */
-  public String getDataFormat() {
-    return dataFormat;
-  }
-
-  /**
-   * @param dataFormat
-   *          the dataFormat to set
-   */
-  public void setDataFormat(String dataFormat) {
-    this.dataFormat = dataFormat;
-  }
-
   @Override
   public String toString() {
     String string = "";
@@ -181,7 +247,10 @@ public class DataSource {
     string += "  type: " + this.type + ",\r\n";
     string += "  subtype: " + this.subType + ",\r\n";
     string += "  language: " + this.language + ",\r\n";
-    string += "  dataformat: " + this.dataFormat + "\r\n";
+    string += "  dataFormatName: " + this.dataFormatName + "\r\n";
+    string += "  dataFormatImplementation: " + this.dataFormatImplementation + "\r\n";
+    string += "  connectorName: " + this.connectorName + "\r\n";
+    string += "  connectorImplementation: " + this.connectorImplementation + "\r\n";
     string += "}";
 
     return string;

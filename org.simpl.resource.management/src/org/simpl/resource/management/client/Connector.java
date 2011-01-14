@@ -7,18 +7,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DataSourceConnector complex type.
+ * <p>Java class for Connector complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="DataSourceConnector">
+ * &lt;complexType name="Connector">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="dataConverterDataFormat" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="implementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="converterDataFormatName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="converterDataFormatImplementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="propertiesDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -29,17 +31,21 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DataSourceConnector", propOrder = {
+@XmlType(name = "Connector", propOrder = {
     "id",
     "name",
-    "dataConverterDataFormat",
+    "implementation",
+    "converterDataFormatName",
+    "converterDataFormatImplementation",
     "propertiesDescription"
 })
-public class DataSourceConnector {
+public class Connector {
 
     protected String id;
     protected String name;
-    protected String dataConverterDataFormat;
+    protected String implementation;
+    protected String converterDataFormatName;
+    protected String converterDataFormatImplementation;
     protected String propertiesDescription;
 
     /**
@@ -91,27 +97,75 @@ public class DataSourceConnector {
     }
 
     /**
-     * Gets the value of the dataConverterDataFormat property.
+     * Gets the value of the implementation property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDataConverterDataFormat() {
-        return dataConverterDataFormat;
+    public String getImplementation() {
+        return implementation;
     }
 
     /**
-     * Sets the value of the dataConverterDataFormat property.
+     * Sets the value of the implementation property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDataConverterDataFormat(String value) {
-        this.dataConverterDataFormat = value;
+    public void setImplementation(String value) {
+        this.implementation = value;
+    }
+
+    /**
+     * Gets the value of the converterDataFormatName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConverterDataFormatName() {
+        return converterDataFormatName;
+    }
+
+    /**
+     * Sets the value of the converterDataFormatName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConverterDataFormatName(String value) {
+        this.converterDataFormatName = value;
+    }
+
+    /**
+     * Gets the value of the converterDataFormatImplementation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConverterDataFormatImplementation() {
+        return converterDataFormatImplementation;
+    }
+
+    /**
+     * Sets the value of the converterDataFormatImplementation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConverterDataFormatImplementation(String value) {
+        this.converterDataFormatImplementation = value;
     }
 
     /**

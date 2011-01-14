@@ -135,7 +135,7 @@ public class PropertySectionUtils {
 								datasource
 										.setLanguage(((Element) data)
 												.getAttributeValue(AT_DATA_SOURCE_LANG));
-								datasource.setDataFormat(((Element) data)
+								datasource.setDataFormatName(((Element) data)
 										.getAttributeValue(AT_DATA_FORMAT));
 								Authentication authent = new Authentication();
 								authent
@@ -274,9 +274,9 @@ public class PropertySectionUtils {
 			absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
 					.getLocation().toOSString();
 
-			if (dataSource.getDataFormat() != null) {
+			if (dataSource.getDataFormatName() != null) {
 
-				IPath xsdPath = projectPath.append(dataSource.getDataFormat())
+				IPath xsdPath = projectPath.append(dataSource.getDataFormatName())
 						.addFileExtension(IBPELUIConstants.EXTENSION_XSD);
 
 				File xsdFileSIMPL = new File(absolutWorkspacePath

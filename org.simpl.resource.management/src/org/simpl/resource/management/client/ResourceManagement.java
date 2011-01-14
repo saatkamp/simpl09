@@ -217,24 +217,24 @@ public interface ResourceManagement {
     /**
      * 
      * @return
-     *     returns org.simpl.resource.management.client.DataSourceConnectorList
+     *     returns org.simpl.resource.management.client.ConnectorList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getDataSourceConnectors")
+    @WebMethod(action = "getConnectors")
     @WebResult(partName = "return")
-    public DataSourceConnectorList getDataSourceConnectors()
+    public ConnectorList getConnectors()
         throws Exception_Exception
     ;
 
     /**
      * 
      * @return
-     *     returns org.simpl.resource.management.client.DataConverterList
+     *     returns org.simpl.resource.management.client.ConverterList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getDataConverters")
+    @WebMethod(action = "getConverters")
     @WebResult(partName = "return")
-    public DataConverterList getDataConverters()
+    public ConverterList getConverters()
         throws Exception_Exception
     ;
 

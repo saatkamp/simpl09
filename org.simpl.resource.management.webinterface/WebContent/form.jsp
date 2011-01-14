@@ -32,6 +32,7 @@
   String password = "";
   String language = "";
   String dataformat = "";
+  String connectorProperties = "";
   
   DataSource dataSource = null;
   String param = null;
@@ -64,7 +65,8 @@
       username = dataSource.getAuthentication().getUser();
       password = dataSource.getAuthentication().getPassword();
       language = dataSource.getLanguage();
-      dataformat = dataSource.getDataFormat();
+      dataformat = dataSource.getDataFormatName();
+      connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
   } else if (parameters.get("formSubmit") != null
       && parameters.get("formSubmit").equals("Save")) { // TODO: return to form after saving (does not work yet)
@@ -79,6 +81,7 @@
     password = parameters.get("password");
     language = parameters.get("language");
     dataformat = parameters.get("dataformat");
+    connectorProperties = parameters.get("connectorProperties");
   }
 %>
 <h2>SIMPL Resource Management: Data Source Form</h2>
@@ -97,17 +100,17 @@
 
   <tr>
     <td><label>Type</label></td>
-    <td><%=SIMPLCoreFormMetaData.getInstance().getTypeSelect(type)%></td>
+    <td><%=RMFormMetaData.getInstance().getTypeSelect(type)%></td>
   </tr>
 
   <tr>
     <td><label>Sub Type</label></td>
-    <td><%=SIMPLCoreFormMetaData.getInstance().getSubTypeSelect(subtype)%></td>
+    <td><%=RMFormMetaData.getInstance().getSubTypeSelect(subtype)%></td>
   </tr>
 
   <tr>
     <td><label>Language</label></td>
-    <td><%=SIMPLCoreFormMetaData.getInstance().getLanguageSelect(language)%></td>
+    <td><%=RMFormMetaData.getInstance().getLanguageSelect(language)%></td>
   </tr>
 
   <tr>
@@ -133,6 +136,16 @@
       <input name="policy" type="file" size="100"/>
     </td>
   </tr>
+  
+  <tr>
+    <td><label>Connector Properties Description</label></td>
+    <td>
+      <textarea name="connectorPropertiesData" cols="77" rows="5"><%=connectorProperties%></textarea>
+      <textarea name="oldConnectorPropertiesData" cols="0" rows="0" style="height:0px;width:0px;position:absolute;top:0px;left:0px;visibility:hidden"><%=connectorProperties%></textarea>
+      <br/>
+      <input name="connectorProperties" type="file" size="100"/>
+    </td>
+  </tr> 
 </table>
 
 <br/>

@@ -243,7 +243,7 @@ public class SIMPLCoreConfig {
 
   /**
    * Returns a list of registered DataFormatPlugins. The list contains full qualified
-   * names of DataFormatPlugin classes.
+   * names of DataConverterPlugin classes.
    * 
    * @return List of DataFormatPlugins
    */

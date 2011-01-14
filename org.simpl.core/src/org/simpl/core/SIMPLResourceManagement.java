@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.simpl.resource.management.client.DataConverter;
-import org.simpl.resource.management.client.DataConverterList;
-import org.simpl.resource.management.client.DataSourceConnector;
-import org.simpl.resource.management.client.DataSourceConnectorList;
+import org.simpl.resource.management.client.Converter;
+import org.simpl.resource.management.client.ConverterList;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.ConnectorList;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
@@ -70,8 +70,8 @@ public class SIMPLResourceManagement {
    * Initialize data.
    */
   private SIMPLResourceManagement() {
-    DataSourceConnectorList dataSourceConnectors = new DataSourceConnectorList();
-    DataConverterList dataConverters = new DataConverterList();
+    ConnectorList connectors = new ConnectorList();
+    ConverterList dataConverters = new ConverterList();
     String resourceManagementLocation = SIMPLCoreConfig.getInstance()
         .getWebServiceAddress("ResourceManagement");
 
@@ -80,56 +80,56 @@ public class SIMPLResourceManagement {
         resourceManagement = ResourceManagementClient
             .getService(resourceManagementLocation);
 
-        dataSourceConnectors = resourceManagement.getDataSourceConnectors();
-        dataConverters = resourceManagement.getDataConverters();
+        connectors = resourceManagement.getConnectors();
+        dataConverters = resourceManagement.getConverters();
       }
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
-    if (dataSourceConnectors.getDataSourceConnectors().size() > 0) {
-      for (DataSourceConnector dataSourceConnector : dataSourceConnectors
-          .getDataSourceConnectors()) {
+    if (connectors.getConnectors().size() > 0) {
+      for (Connector dataSourceConnector : connectors
+          .getConnectors()) {
         // retrieve data source service plug-ins
-        this.dataSourceServicePlugins.add(dataSourceConnector.getName());
+        this.dataSourceServicePlugins.add(dataSourceConnector.getImplementation());
 
         // retrieve data format plug-ins
         if (!this.dataFormatPlugins.contains(dataSourceConnector
-            .getDataConverterDataFormat())) {
-          this.dataFormatPlugins.add(dataSourceConnector.getDataConverterDataFormat());
+            .getConverterDataFormatImplementation())) {
+          this.dataFormatPlugins.add(dataSourceConnector.getConverterDataFormatImplementation());
         }
 
         // retrieve data format mapping
         if (this.dataFormatMapping.containsKey(dataSourceConnector
-            .getDataConverterDataFormat())) {
-          this.dataFormatMapping.get(dataSourceConnector.getDataConverterDataFormat())
-              .add(dataSourceConnector.getName());
+            .getConverterDataFormatImplementation())) {
+          this.dataFormatMapping.get(dataSourceConnector.getConverterDataFormatImplementation())
+              .add(dataSourceConnector.getImplementation());
         } else {
-          this.dataFormatMapping.put(dataSourceConnector.getDataConverterDataFormat(),
-              new ArrayList<String>(Arrays.asList(dataSourceConnector.getName())));
+          this.dataFormatMapping.put(dataSourceConnector.getConverterDataFormatImplementation(),
+              new ArrayList<String>(Arrays.asList(dataSourceConnector.getImplementation())));
         }
       }
     }
 
     // retrieve data format converter plug-ins
-    if (dataConverters.getDataConverters().size() > 0) {
-      for (DataConverter dataConverter : dataConverters.getDataConverters()) {
-        this.dataFormatConverterPlugins.add(dataConverter.getName());
+    if (dataConverters.getConverters().size() > 0) {
+      for (Converter dataConverter : dataConverters.getConverters()) {
+        this.dataFormatConverterPlugins.add(dataConverter.getImplementation());
 
         // retrieve data format converter mapping
-        for (DataSourceConnector dataSourceConnector : dataSourceConnectors
-            .getDataSourceConnectors()) {
-          if (dataSourceConnector.getDataConverterDataFormat().equals(
-              dataConverter.getDataSourceConnectorDataFormat())
-              || dataSourceConnector.getDataConverterDataFormat().equals(
-                  dataConverter.getWorkflowDataFormat())) {
-            if (this.dataFormatConverterMapping.containsKey(dataConverter.getName())) {
-              this.dataFormatConverterMapping.get(dataConverter.getName()).add(
-                  dataSourceConnector.getName());
+        for (Connector connector : connectors
+            .getConnectors()) {
+          if (connector.getConverterDataFormatImplementation().equals(
+              dataConverter.getConnectorDataFormatImplementation())
+              || connector.getConverterDataFormatImplementation().equals(
+                  dataConverter.getWorkflowDataFormatImplementation())) {
+            if (this.dataFormatConverterMapping.containsKey(dataConverter.getImplementation())) {
+              this.dataFormatConverterMapping.get(dataConverter.getImplementation()).add(
+                  connector.getImplementation());
             } else {
-              this.dataFormatConverterMapping.put(dataConverter.getName(),
-                  new ArrayList<String>(Arrays.asList(dataSourceConnector.getName())));
+              this.dataFormatConverterMapping.put(dataConverter.getImplementation(),
+                  new ArrayList<String>(Arrays.asList(connector.getImplementation())));
             }
           }
         }
@@ -177,7 +177,7 @@ public class SIMPLResourceManagement {
   }
 
   /**
-   * Returns a map of data format and their supported data source services, key and values
+   * Returns a map of data formats and their supported data source services, key and values
    * are full qualified class names.
    * 
    * @return data format mapping

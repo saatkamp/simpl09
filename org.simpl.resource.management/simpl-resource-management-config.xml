@@ -11,7 +11,7 @@
     <address>localhost:5432/postgres</address>
     <type>Database</type>
     <subType>PostgreSQL</subType>
-    <dataFormat>RDB</dataFormat>
+    <dataFormat>RDBDataFormat</dataFormat>
     
     <Authentication>
       <user>postgres</user>

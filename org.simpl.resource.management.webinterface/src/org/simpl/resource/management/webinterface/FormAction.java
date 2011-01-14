@@ -124,6 +124,18 @@ public class FormAction extends HttpServlet {
       lateBinding.setPolicy(parameters.get("policyData"));
     }
 
+    // use existing connector properties data if no file is chosen
+    if (!parameters.get("connectorProperties").equals("")) {
+      dataSource.setConnectorPropertiesDescription(parameters.get("connectorProperties"));
+    } else {
+      if (!parameters.get("oldConnectorPropertiesData").equals(parameters.get("connectorPropertiesData"))) {
+        dataSource.setConnectorPropertiesDescription(parameters.get("connectorPropertiesData"));
+      } else {
+        // if the properties description data didn't change, the properties are regenerated from the form fields
+        dataSource.setConnectorPropertiesDescription("");
+      }
+    }
+    
     // initialize data source
     dataSource.setId(parameters.get("id"));
     dataSource.setName(parameters.get("name"));
@@ -131,7 +143,7 @@ public class FormAction extends HttpServlet {
     dataSource.setType(parameters.get("type"));
     dataSource.setSubType(parameters.get("subtype"));
     dataSource.setLanguage(parameters.get("language"));
-    dataSource.setDataFormat(parameters.get("dataformat"));
+    dataSource.setDataFormatName(parameters.get("dataformat"));
     dataSource.setAuthentication(auth);
     dataSource.setLateBinding(lateBinding);
 

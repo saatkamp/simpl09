@@ -37,7 +37,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   static Logger logger = Logger.getLogger(RDBDataFormat.class);
 
   public RDBDataFormat() {
-    this.setType("RDB");
+    this.setType("RDBDataFormat");
     this.setSchemaFile("RelationalDataFormat.xsd");
     this.setSchemaType("tRelationalDataFormat");
 

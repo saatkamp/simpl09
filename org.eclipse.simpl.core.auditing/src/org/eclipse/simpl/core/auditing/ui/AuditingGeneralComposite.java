@@ -213,7 +213,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		addressText.setText(dataSource.getAddress());
 		typeText.setText(dataSource.getType());
 		subtypeText.setText(dataSource.getSubType());
-		formatText.setText(dataSource.getDataFormat());
+		formatText.setText(dataSource.getDataFormatName());
 		userNameText.setText(dataSource.getAuthentication().getUser());
 		passwordText.setText(dataSource.getAuthentication().getPassword());
 		bAuditingDSAddress = addressText.getText();
@@ -291,7 +291,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			this.bAuditingDSAddress = data.getAddress();
 			this.bTypeOfDS = data.getType();
 			this.bSubtypeOfDS = data.getSubType();
-			this.bFormatOfDS = data.getDataFormat();
+			this.bFormatOfDS = data.getDataFormatName();
 			this.bUserNameOfDS = "";
 			this.bPasswordOfDS = "";
 		}
@@ -403,7 +403,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 						this.bAuditingDSAddress = data.getAddress();
 						this.bTypeOfDS = data.getType();
 						this.bSubtypeOfDS = data.getSubType();
-						this.bFormatOfDS = data.getDataFormat();
+						this.bFormatOfDS = data.getDataFormatName();
 						this.bUserNameOfDS = "";
 						this.bPasswordOfDS = "";
 					}
