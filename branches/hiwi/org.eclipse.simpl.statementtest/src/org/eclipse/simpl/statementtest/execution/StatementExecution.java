@@ -10,6 +10,8 @@ import org.simpl.core.webservices.client.DatasourceService;
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
+ * TODO: Auf die drei Methoden beim SIMPL Core umstellen
+ * 
  * @author Michael Schneidt <michael.schneidt@arcor.de><br>
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/

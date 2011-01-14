@@ -35,21 +35,25 @@
         <td>Data Format</td>
         <td>User</td>
         <td>Password</td>
-        <td>Policy</td>
+        <td>Properties (XML)</td>
+        <td>Connector Properties (XML)</td>
+        <td>Assigned Connector</td>
       </tr>
       
       <% for (DataSource source : dataSources) { %>
         <tr>
           <td><input type="radio" name="id" value="<%=source.getId()%>"></input></td>
-          <td><%=source.getName()%></td>
-          <td><%=source.getAddress()%></td>
-          <td><%=source.getType()%></td>
-          <td><%=source.getSubType()%></td>
-          <td><%=source.getLanguage()%></td>
-          <td><%=source.getDataFormat()%></td>
-          <td><%=source.getAuthentication().getUser()%></td>
+          <td><%=!source.getName().equals("") ? source.getName() : ""%></td>
+          <td><%=!source.getAddress().equals("") ? source.getAddress() : ""%></td>
+          <td><%=!source.getType().equals("") ? source.getType() : ""%></td>
+          <td><%=!source.getSubType().equals("") ? source.getSubType() : ""%></td>
+          <td><%=!source.getLanguage().equals("") ? source.getLanguage() : ""%></td>
+          <td><%=!source.getDataFormatName().equals("") ? source.getDataFormatName() : ""%></td>
+          <td><%=!source.getAuthentication().getUser().equals("") ? source.getAuthentication().getUser() : ""%></td>
           <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
           <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
+          <td><%=!source.getConnectorPropertiesDescription().equals("")%></td>
+          <td><%=source.getConnectorName()%></td>
         </tr>
       <% } %>
     </table>

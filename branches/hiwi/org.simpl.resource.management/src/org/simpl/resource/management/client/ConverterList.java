@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dataConverterList complex type.
+ * <p>Java class for converterList complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="dataConverterList">
+ * &lt;complexType name="converterList">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="dataConverters" type="{http://management.resource.simpl.org/}DataConverter" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="converters" type="{http://management.resource.simpl.org/}Converter" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,41 +29,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataConverterList", propOrder = {
-    "dataConverters"
+@XmlType(name = "converterList", propOrder = {
+    "converters"
 })
-public class DataConverterList {
+public class ConverterList {
 
     @XmlElement(nillable = true)
-    protected List<DataConverter> dataConverters;
+    protected List<Converter> converters;
 
     /**
-     * Gets the value of the dataConverters property.
+     * Gets the value of the converters property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataConverters property.
+     * This is why there is not a <CODE>set</CODE> method for the converters property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDataConverters().add(newItem);
+     *    getConverters().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link DataConverter }
+     * {@link Converter }
      * 
      * 
      */
-    public List<DataConverter> getDataConverters() {
-        if (dataConverters == null) {
-            dataConverters = new ArrayList<DataConverter>();
+    public List<Converter> getConverters() {
+        if (converters == null) {
+            converters = new ArrayList<Converter>();
         }
-        return this.dataConverters;
+        return this.converters;
     }
 
 }

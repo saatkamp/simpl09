@@ -44,7 +44,7 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 		dataSource.setName("local");
 		dataSource.setType("Database");
 		dataSource.setSubType("EmbeddedDerby");
-		dataSource.setDataFormat("RDB");
+		dataSource.setDataFormatName("RDB");
 		Authentication auth = new Authentication();
 		auth.setUser("");
 		auth.setPassword("");
@@ -129,7 +129,7 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 		formatLabel.setText("Format of the data source:");
 		formatText = new Text(comp, SWT.BORDER);
 		formatText.setLayoutData(gridData3);
-		formatText.setText(dataSource.getDataFormat());
+		formatText.setText(dataSource.getDataFormatName());
 		formatText.setEnabled(false);
 	}
 

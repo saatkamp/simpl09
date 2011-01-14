@@ -173,8 +173,8 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
         tableItem.setText(0, "Data Format");
         tableItem.setText(
             1,
-            (selectedDataSource.getDataFormat() != null) ? selectedDataSource
-                .getDataFormat() : "");
+            (selectedDataSource.getDataFormatName() != null) ? selectedDataSource
+                .getDataFormatName() : "");
       }
     });
 

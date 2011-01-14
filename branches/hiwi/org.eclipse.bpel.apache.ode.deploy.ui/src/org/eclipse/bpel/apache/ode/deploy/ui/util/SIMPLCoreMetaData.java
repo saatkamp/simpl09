@@ -124,7 +124,7 @@ public class SIMPLCoreMetaData {
 			dataSource.setType(data.getType());
 			dataSource.setSubType(data.getSubtype());
 			dataSource.setLanguage(data.getLanguage());
-			dataSource.setDataFormat(data.getFormat());
+			dataSource.setDataFormatName(data.getFormat());
 		}
 		
 		return dataSource;

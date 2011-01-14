@@ -38,7 +38,7 @@ public class CSVDataFormat extends DataFormatPlugin<CSVResult, File> {
    * Initialize the plug-in.
    */
   public CSVDataFormat() {
-    this.setType("CSV");
+    this.setType("CSVDataFormat");
     this.setSchemaFile("RelationalDataFormat.xsd");
     this.setSchemaType("tRelationalDataFormat");
 
