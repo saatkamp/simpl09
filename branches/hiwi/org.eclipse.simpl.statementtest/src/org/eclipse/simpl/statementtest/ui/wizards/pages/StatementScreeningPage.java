@@ -238,6 +238,9 @@ public class StatementScreeningPage extends StatementTestWizardPage {
 
     // save generated statement
     statementTest.setGeneratedStatement(generatedStatement);
+    
+    // update issue label
+    dataSourceIssueLabel.setText("Issue: " + this.statementTest.getIssue());
   }
 
   /**
