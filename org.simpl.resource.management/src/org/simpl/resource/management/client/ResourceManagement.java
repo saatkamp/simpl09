@@ -32,6 +32,21 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
+    @WebMethod(action = "addConnector")
+    @WebResult(partName = "return")
+    public boolean addConnector(
+        @WebParam(name = "arg0", partName = "arg0")
+        Connector arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
     @WebMethod(action = "addDataSource")
     @WebResult(partName = "return")
     public boolean addDataSource(
@@ -205,24 +220,24 @@ public interface ResourceManagement {
     /**
      * 
      * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "createResourceManagementTables")
-    @WebResult(partName = "return")
-    public boolean createResourceManagementTables()
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @return
      *     returns org.simpl.resource.management.client.ConnectorList
      * @throws Exception_Exception
      */
     @WebMethod(action = "getConnectors")
     @WebResult(partName = "return")
     public ConnectorList getConnectors()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.DataFormatList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataFormats")
+    @WebResult(partName = "return")
+    public DataFormatList getDataFormats()
         throws Exception_Exception
     ;
 
@@ -262,6 +277,93 @@ public interface ResourceManagement {
     @WebMethod(action = "getLanguages")
     @WebResult(partName = "return")
     public StringList getLanguages()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addDataFormat")
+    @WebResult(partName = "return")
+    public boolean addDataFormat(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataFormat arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateConnector")
+    @WebResult(partName = "return")
+    public boolean updateConnector(
+        @WebParam(name = "arg0", partName = "arg0")
+        Connector arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateDataFormat")
+    @WebResult(partName = "return")
+    public boolean updateDataFormat(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataFormat arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteConnector")
+    @WebResult(partName = "return")
+    public boolean deleteConnector(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteDataFormat")
+    @WebResult(partName = "return")
+    public boolean deleteDataFormat(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "createResourceManagementTables")
+    @WebResult(partName = "return")
+    public boolean createResourceManagementTables()
         throws Exception_Exception
     ;
 
