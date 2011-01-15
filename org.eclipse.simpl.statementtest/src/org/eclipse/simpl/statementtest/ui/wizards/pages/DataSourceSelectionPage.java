@@ -13,6 +13,7 @@ import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.types.DataSourceTypes;
 import org.eclipse.simpl.statementtest.ui.wizards.StatementTestWizard;
 import org.eclipse.simpl.statementtest.utils.DataSourceUtils;
+import org.eclipse.simpl.statementtest.utils.IssueRecognition;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -51,6 +52,7 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
   static final String REFRESH_ICON = "icons/action_refresh.gif";
   static final String REFRESH_ITEM_TOOLTIP = "Refresh Data Source List";
 
+  StatementTestWizard statementTestWizard = null;
   StatementTest statementTest = null;
   Label label = null;
   Combo combo = null;
@@ -82,7 +84,8 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
   @Override
   public void createControl(Composite parent) {
     super.createControl(parent);
-    statementTest = ((StatementTestWizard) this.getWizard()).getStatementTest();
+    statementTestWizard = (StatementTestWizard) this.getWizard();
+    statementTest = statementTestWizard.getStatementTest();
 
     // next page is not available until data source selection
     this.setPageComplete(false);
@@ -133,6 +136,7 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
 
       @Override
       public void widgetSelected(SelectionEvent e) {
+        String issue;
         String selectedValue = ((Combo) e.widget).getItem(((Combo) e.widget)
             .getSelectionIndex());
 
@@ -143,6 +147,13 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
         selectedDataSource = DataSourceUtils.findDataSourceByName(statementTest
             .getProcess().getName(), selectedValue);
 
+        // recognize the issue of the statement
+        issue = IssueRecognition.getInstance().recognizeIssue(selectedDataSource.getLanguage(), statementTest.getStatement());
+    
+        if (issue != null) {
+          statementTest.setIssue(issue);
+        }
+        
         // save selected data source
         statementTest.setDataSource(selectedDataSource);
 

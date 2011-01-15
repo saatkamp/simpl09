@@ -58,8 +58,9 @@ public class StatementTestWizard extends Wizard {
   /**
    * The wizard pages.
    */
-  private StatementTestWizardPage dataSourcePage, parameterAdjustmentPage,
-      statementScreeningPage;
+  private StatementTestWizardPage dataSourcePage;
+  private StatementTestWizardPage parameterAdjustmentPage;
+  private StatementTestWizardPage statementScreeningPage;
 
   /**
    * Instance of the data source service.
@@ -123,16 +124,17 @@ public class StatementTestWizard extends Wizard {
     statementScreeningPage = new StatementScreeningPage("statementScreeningPage",
         StatementTestPlugin.getImageDescriptor(STATEMENT_SCREENING_PAGE_ICON));
 
-    addPage(dataSourcePage);
-    addPage(parameterAdjustmentPage);
-    addPage(statementScreeningPage);
+    this.addPage(dataSourcePage);
+    this.addPage(parameterAdjustmentPage);
+    this.addPage(statementScreeningPage);
   }
 
   @Override
   public boolean canFinish() {
     boolean canFinish = false;
 
-    if (this.getContainer().getCurrentPage() == statementScreeningPage) {
+    if (statementScreeningPage != null
+        && this.getContainer().getCurrentPage() == statementScreeningPage) {
       canFinish = true;
     } else {
       canFinish = false;
@@ -222,7 +224,7 @@ public class StatementTestWizard extends Wizard {
   public StatementTest getStatementTest() {
     return statementTest;
   }
-
+  
   /**
    * Executes the statement depending on the data source type and activity type.
    */
