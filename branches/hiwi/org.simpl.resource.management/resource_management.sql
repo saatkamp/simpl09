@@ -4,7 +4,7 @@
 CREATE TABLE dataformats (
    id SERIAL PRIMARY KEY,
    name varchar(255) UNIQUE NOT NULL,
-   implementation varchar(255) NOT NULL,
+   implementation varchar(255) UNIQUE NOT NULL,
    xml_schema xml,
    UNIQUE (id)
 );
@@ -27,7 +27,7 @@ CREATE TABLE connectors (
    id SERIAL PRIMARY KEY,
    converter_dataformat_id INTEGER,
    name varchar(255) UNIQUE NOT NULL,
-   implementation varchar(255) NOT NULL,
+   implementation varchar(255) UNIQUE NOT NULL,
    properties_description xml DEFAULT '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type></type>
@@ -60,7 +60,7 @@ CREATE TABLE converters (
    connector_dataformat_id INTEGER NOT NULL,
    workflow_dataformat_id INTEGER NOT NULL,
    name varchar(255) UNIQUE NOT NULL,
-   implementation varchar(255) NOT NULL,
+   implementation varchar(255) UNIQUE NOT NULL,
    UNIQUE (connector_dataformat_id, workflow_dataformat_id),
    FOREIGN KEY (connector_dataformat_id) references dataformats(id),
    FOREIGN KEY (workflow_dataformat_id) references dataformats(id)
