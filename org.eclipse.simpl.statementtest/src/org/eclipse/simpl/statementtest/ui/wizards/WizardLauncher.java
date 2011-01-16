@@ -31,7 +31,7 @@ public class WizardLauncher {
 
     // data source type filtering with message dialogs
     if (dmActivity.getDsType().equals(DataSourceTypes.DATABASE)
-        || dmActivity.getDsType().equals(DataSourceTypes.DATABASE)
+        || dmActivity.getDsType().equals(DataSourceTypes.FILESYSTEM)
         || dmActivity.getDsType().equals("")) {
       statementTestWizard = new StatementTestWizard(dmActivity, process);
       statementTestWizard.setHelpAvailable(false);

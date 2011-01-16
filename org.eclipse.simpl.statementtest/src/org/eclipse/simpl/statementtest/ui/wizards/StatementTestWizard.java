@@ -287,7 +287,7 @@ public class StatementTestWizard extends Wizard {
       }
 
       // execute filesystem activity
-      if (dataSourceType.equals(dataSourceType.equals(DataSourceTypes.FILESYSTEM))) {
+      if (dataSourceType.equals(DataSourceTypes.FILESYSTEM)) {
         if (activityType.equals(DMActivityTypes.QUERY_ACTIVITY)
             || activityType.equals(DMActivityTypes.TRANSFER_ACTIVITY)
             || activityType.equals(DMActivityTypes.RETRIEVE_DATA_ACTIVITY)) {

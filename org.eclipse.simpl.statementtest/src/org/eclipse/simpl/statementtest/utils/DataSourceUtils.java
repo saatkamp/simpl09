@@ -17,6 +17,8 @@ import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 
 /**
@@ -57,6 +59,7 @@ public class DataSourceUtils {
   private static DataSource findDeploymentDescriptorDatasourceByName(String processName,
       String dsName) {
     DataSource datasource = null;
+    
     IFile file = (IFile) PlatformUI.getWorkbench().getActiveWorkbenchWindow()
         .getActivePage().getActivePart().getSite().getPage().getActiveEditor()
         .getEditorInput().getAdapter(IFile.class);
@@ -101,13 +104,20 @@ public class DataSourceUtils {
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_SUBTYPE));
                 datasource.setLanguage(((Element) data)
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_LANG));
-                datasource.getConnector().getConverterDataFormat().setName(((Element) data)
+                
+                Connector connector = new Connector();
+                DataFormat converterDataFormat = new DataFormat();
+                converterDataFormat.setName(((Element) data)
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_FORMAT));
+                
                 Authentication authent = new Authentication();
                 authent.setUser(((Element) data)
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_USERNAME));
                 authent.setPassword(((Element) data)
                     .getAttributeValue(DataSourceUtils.AT_DATA_SOURCE_PASSWORD));
+                
+                connector.setConverterDataFormat(converterDataFormat);
+                datasource.setConnector(connector);
                 datasource.setAuthentication(authent);
               }
             }
