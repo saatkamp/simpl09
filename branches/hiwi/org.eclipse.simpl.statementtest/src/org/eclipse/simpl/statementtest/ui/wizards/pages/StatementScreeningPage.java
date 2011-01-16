@@ -240,7 +240,9 @@ public class StatementScreeningPage extends StatementTestWizardPage {
     statementTest.setGeneratedStatement(generatedStatement);
 
     // update issue label
-    dataSourceIssueLabel.setText("Issue: " + this.statementTest.getIssue());
+    if (dataSourceIssueLabel != null) {
+      dataSourceIssueLabel.setText("Issue: " + this.statementTest.getIssue());
+    }
   }
 
   /**
