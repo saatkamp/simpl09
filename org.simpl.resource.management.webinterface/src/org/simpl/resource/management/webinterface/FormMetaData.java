@@ -3,8 +3,8 @@ package org.simpl.resource.management.webinterface;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.resource.management.client.ConnectorList;
+import org.simpl.core.webservices.client.DataFormat;
+import org.simpl.resource.management.client.DataFormatList;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
@@ -20,22 +20,22 @@ import org.simpl.resource.management.client.ResourceManagementClient;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RMFormMetaData {
-  private static RMFormMetaData instance = null;
+public class FormMetaData {
+  private static FormMetaData instance = null;
   private ArrayList<String> dataFormats = null;
   private ResourceManagement resourceManagement = null;
   private ArrayList<String> types = null;
   private ArrayList<String> subTypes = null;
   private ArrayList<String> languages = null;
 
-  private RMFormMetaData() {
+  private FormMetaData() {
     this.resourceManagement = ResourceManagementClient.getService(RMWebConfig
         .getInstance().getResourceManagementAddress());
   }
 
-  public static RMFormMetaData getInstance() {
+  public static FormMetaData getInstance() {
     if (instance == null) {
-      instance = new RMFormMetaData();
+      instance = new FormMetaData();
     }
 
     return instance;
@@ -114,19 +114,19 @@ public class RMFormMetaData {
   }
 
   /**
-   * Retrieves the data formats from the resource management.
+   * Retrieves the data format names from the resource management.
    * 
    * @throws Exception
    */
   private void retrieveDataFormats() throws Exception {
     if (this.dataFormats == null) {
-      ConnectorList connectors = resourceManagement.getConnectors();
-
       this.dataFormats = new ArrayList<String>();
+      
+      DataFormatList dataFormats = resourceManagement.getAllDataFormats();
 
-      for (Connector connector : connectors.getConnectors()) {
-        if (!this.dataFormats.contains(connector.getConverterDataFormat().getName())) {
-          this.dataFormats.add(connector.getConverterDataFormat().getName());
+      for (DataFormat dataFormat : dataFormats.getDataFormats()) {
+        if (!this.dataFormats.contains(dataFormat.getName())) {
+          this.dataFormats.add(dataFormat.getName());
         }
       }
     }

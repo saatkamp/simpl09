@@ -61,7 +61,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 	private CCombo dataSourceAddressCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
-	private Button openEditorButton = null;
+	//private Button openEditorButton = null;
 	private Button openStatementTestWizardButton = null;
 	private Label languageLabel = null;
 	private Text languageText = null;

@@ -80,8 +80,8 @@ public class SIMPLResourceManagement {
         resourceManagement = ResourceManagementClient
             .getService(resourceManagementLocation);
 
-        connectors = resourceManagement.getConnectors();
-        dataConverters = resourceManagement.getConverters();
+        connectors = resourceManagement.getAllConnectors();
+        dataConverters = resourceManagement.getAllConverters();
       }
     } catch (Exception e) {
       // TODO Auto-generated catch block

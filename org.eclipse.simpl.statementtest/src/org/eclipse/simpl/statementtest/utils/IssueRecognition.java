@@ -54,7 +54,7 @@ public class IssueRecognition {
     SAXBuilder saxBuilder = new SAXBuilder();
 
     try {
-      languages = resourceManagement.getLanguages();
+      languages = resourceManagement.getAllLanguages();
 
       for (String language : languages.getItems()) {
         issuePredicateMap = new HashMap<String, String>();

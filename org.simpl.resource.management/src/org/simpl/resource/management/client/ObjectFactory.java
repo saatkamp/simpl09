@@ -41,11 +41,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSource }
+     * Create an instance of {@link LateBinding }
      * 
      */
-    public DataSource createDataSource() {
-        return new DataSource();
+    public LateBinding createLateBinding() {
+        return new LateBinding();
+    }
+
+    /**
+     * Create an instance of {@link ConverterList }
+     * 
+     */
+    public ConverterList createConverterList() {
+        return new ConverterList();
     }
 
     /**
@@ -57,59 +65,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
-    }
-
-    /**
-     * Create an instance of {@link StringList }
-     * 
-     */
-    public StringList createStringList() {
-        return new StringList();
-    }
-
-    /**
-     * Create an instance of {@link DataFormat }
-     * 
-     */
-    public DataFormat createDataFormat() {
-        return new DataFormat();
-    }
-
-    /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
-    }
-
-    /**
-     * Create an instance of {@link DataFormatList }
-     * 
-     */
-    public DataFormatList createDataFormatList() {
-        return new DataFormatList();
-    }
-
-    /**
      * Create an instance of {@link Converter }
      * 
      */
     public Converter createConverter() {
         return new Converter();
-    }
-
-    /**
-     * Create an instance of {@link ConnectorList }
-     * 
-     */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
     }
 
     /**
@@ -121,6 +81,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
+    }
+
+    /**
      * Create an instance of {@link Exception }
      * 
      */
@@ -129,11 +97,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConverterList }
+     * Create an instance of {@link DataSource }
      * 
      */
-    public ConverterList createConverterList() {
-        return new ConverterList();
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link StringList }
+     * 
+     */
+    public StringList createStringList() {
+        return new StringList();
+    }
+
+    /**
+     * Create an instance of {@link ConnectorList }
+     * 
+     */
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
+    }
+
+    /**
+     * Create an instance of {@link DataFormat }
+     * 
+     */
+    public DataFormat createDataFormat() {
+        return new DataFormat();
+    }
+
+    /**
+     * Create an instance of {@link DataFormatList }
+     * 
+     */
+    public DataFormatList createDataFormatList() {
+        return new DataFormatList();
     }
 
     /**
