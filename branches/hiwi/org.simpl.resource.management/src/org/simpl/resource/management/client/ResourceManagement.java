@@ -89,6 +89,21 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataFormatSchema")
+    @WebResult(partName = "return")
+    public String getDataFormatSchema(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns org.simpl.resource.management.client.StringList
      * @throws Exception_Exception
@@ -225,9 +240,9 @@ public interface ResourceManagement {
      *     returns org.simpl.resource.management.client.ConnectorList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getConnectors")
+    @WebMethod(action = "getAllConnectors")
     @WebResult(partName = "return")
-    public ConnectorList getConnectors()
+    public ConnectorList getAllConnectors()
         throws Exception_Exception
     ;
 
@@ -237,9 +252,9 @@ public interface ResourceManagement {
      *     returns org.simpl.resource.management.client.DataFormatList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getDataFormats")
+    @WebMethod(action = "getAllDataFormats")
     @WebResult(partName = "return")
-    public DataFormatList getDataFormats()
+    public DataFormatList getAllDataFormats()
         throws Exception_Exception
     ;
 
@@ -249,9 +264,21 @@ public interface ResourceManagement {
      *     returns org.simpl.resource.management.client.ConverterList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getConverters")
+    @WebMethod(action = "getAllConverters")
     @WebResult(partName = "return")
-    public ConverterList getConverters()
+    public ConverterList getAllConverters()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllLanguages")
+    @WebResult(partName = "return")
+    public StringList getAllLanguages()
         throws Exception_Exception
     ;
 
@@ -267,18 +294,6 @@ public interface ResourceManagement {
     public String getLanguageStatementDescription(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @return
-     *     returns org.simpl.resource.management.client.StringList
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "getLanguages")
-    @WebResult(partName = "return")
-    public StringList getLanguages()
         throws Exception_Exception
     ;
 

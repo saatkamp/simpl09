@@ -231,7 +231,7 @@ public class ResourceManagement {
   }
 
   /**
-   * Returns a list of data source connectors.
+   * Returns a list of all data source connectors.
    * 
    * @return
    * @throws Exception
@@ -239,8 +239,8 @@ public class ResourceManagement {
    * @throws IOException
    */
   @SuppressWarnings("unchecked")
-  @WebMethod(action = "getConnectors")
-  public ConnectorList getConnectors() throws Exception {
+  @WebMethod(action = "getAllConnectors")
+  public ConnectorList getAllConnectors() throws Exception {
     ConnectorList connectors = new ConnectorList();
     String statement = "";
     String result;
@@ -291,7 +291,7 @@ public class ResourceManagement {
   }
 
   /**
-   * Returns a list of data formats.
+   * Returns a list of all data formats.
    * 
    * @return
    * @throws Exception
@@ -299,8 +299,8 @@ public class ResourceManagement {
    * @throws IOException
    */
   @SuppressWarnings("unchecked")
-  @WebMethod(action = "getDataFormats")
-  public DataFormatList getDataFormats() throws Exception {
+  @WebMethod(action = "getAllDataFormats")
+  public DataFormatList getAllDataFormats() throws Exception {
     DataFormatList dataFormats = new DataFormatList();
     String statement = "SELECT * FROM dataformats";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -339,7 +339,7 @@ public class ResourceManagement {
   }
   
   /**
-   * Returns a list of data converters.
+   * Returns a list of all data converters.
    * 
    * @return
    * @throws Exception
@@ -347,8 +347,8 @@ public class ResourceManagement {
    * @throws IOException
    */
   @SuppressWarnings("unchecked")
-  @WebMethod(action = "getConverters")
-  public ConverterList getConverters() throws Exception {
+  @WebMethod(action = "getAllConverters")
+  public ConverterList getAllConverters() throws Exception {
     ConverterList dataConverters = new ConverterList();
     String statement = "";
     String result;
@@ -406,6 +406,24 @@ public class ResourceManagement {
     }
 
     return dataConverters;
+  }
+
+  /**
+   * Returns the names of all available languages.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllLanguages")
+  public StringList getAllLanguages() throws Exception {
+    StringList languages = new StringList();
+  
+    String statement = "SELECT name FROM languages";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+  
+    languages.getItems().addAll(this.getColumnValuesFromResult(result, "name"));
+  
+    return languages;
   }
 
   /**
@@ -526,6 +544,29 @@ public class ResourceManagement {
   }
 
   /**
+   * Returns the xml schema the data format.
+   * 
+   * @param dataSource
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataFormatSchema")
+  public String getDataFormatSchema(String dataFormatName) throws Exception {
+    String xmlSchema = null;
+    String statement = "";
+    String result = null;
+    
+    statement += "SELECT xml_schema FROM dataformats ";
+    statement += "WHERE name LIKE '" + dataFormatName + "'";
+    
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    
+    xmlSchema = this.getColumnValuesFromResult(result, "xml_schema").get(0);
+    
+    return xmlSchema;
+  }
+  
+  /**
    * Returns the statement description of a language.
    * 
    * @param language
@@ -548,24 +589,6 @@ public class ResourceManagement {
         .getColumnValuesFromResult(result, "statement_description").get(0);
 
     return statementDescription;
-  }
-
-  /**
-   * Returns the names of all available languages.
-   * 
-   * @return
-   * @throws Exception
-   */
-  @WebMethod(action = "getLanguages")
-  public StringList getLanguages() throws Exception {
-    StringList languages = new StringList();
-
-    String statement = "SELECT name FROM languages";
-    String result = dataSourceService.retrieveData(rmDataSource, statement);
-
-    languages.getItems().addAll(this.getColumnValuesFromResult(result, "name"));
-
-    return languages;
   }
 
   /**

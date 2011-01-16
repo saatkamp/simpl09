@@ -98,22 +98,22 @@
 
   <tr>
     <td><label>Type</label></td>
-    <td><%=RMFormMetaData.getInstance().getTypeSelect(type)%></td>
+    <td><%=FormMetaData.getInstance().getTypeSelect(type)%></td>
   </tr>
 
   <tr>
     <td><label>Sub Type</label></td>
-    <td><%=RMFormMetaData.getInstance().getSubTypeSelect(subtype)%></td>
+    <td><%=FormMetaData.getInstance().getSubTypeSelect(subtype)%></td>
   </tr>
 
   <tr>
     <td><label>Language</label></td>
-    <td><%=RMFormMetaData.getInstance().getLanguageSelect(language)%></td>
+    <td><%=FormMetaData.getInstance().getLanguageSelect(language)%></td>
   </tr>
 
   <tr>
     <td><label>Data format</label></td>
-    <td><%=RMFormMetaData.getInstance().getDataFormatSelect(dataformat)%></td>
+    <td><%=FormMetaData.getInstance().getDataFormatSelect(dataformat)%></td>
   </tr>
 
   <tr>

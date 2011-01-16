@@ -12,11 +12,9 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import org.eclipse.bpel.common.ui.assist.FieldAssistAdapter;
 import org.eclipse.bpel.model.Variable;
-import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDataVariableCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
@@ -26,10 +24,8 @@ import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
-import org.eclipse.bpel.simpl.ui.widgets.DBTable;
 import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
-import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
@@ -91,7 +87,7 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 	private CCombo dataSourceAddressCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
-	private Button openEditorButton = null;
+	//private Button openEditorButton = null;
 	private Button openStatementTestWizardButton = null;
 	private Label languageLabel = null;
 	private Text languageText = null;

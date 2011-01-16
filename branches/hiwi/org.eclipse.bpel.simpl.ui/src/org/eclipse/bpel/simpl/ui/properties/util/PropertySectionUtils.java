@@ -26,6 +26,7 @@ import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
 import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.ResourceManagementClient;
 
 /**
  * <b>Purpose:</b> <br>
@@ -269,17 +270,10 @@ public class PropertySectionUtils {
 
         if (!xsdFileSIMPL.exists()) {
           try {
-
-            // TODO: Im Moment gibt es ja nur ein Datenformat
-            // pro
-            // Datenquelle, trotzdem muss die Implementierung
-            // so angepasst werden, dass das Schema über den
-            // Datenformat-Namen und nicht über ein
-            // DataSource-Objekt ausgelesen werden kann
-            // (=>Eindeutigkeit)
             String stream = null;
             try {
-              stream = SIMPLCommunication.getConnection().getDataFormatSchema(dataSource);
+              stream = ResourceManagementClient.getService().getDataFormatSchema(
+                  dataSource.getConnector().getConverterDataFormat().getName());
             } catch (Exception e) {
             }
             if (stream != null && xsdFileSIMPL.createNewFile()) {
