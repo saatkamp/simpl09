@@ -23,7 +23,7 @@ public class ResourceManagementLabelProvider extends LabelProvider implements
 		case 4:
 			return datasource.getLanguage();
 		case 5:
-			return datasource.getDataFormatName();
+			return datasource.getConnector().getConverterDataFormat().getName();
 		case 6:
 			return datasource.getAuthentication().getUser();
 		case 7:

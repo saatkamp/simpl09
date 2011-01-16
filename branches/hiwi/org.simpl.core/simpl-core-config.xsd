@@ -71,8 +71,7 @@
 
 	<xsd:complexType name="tWebServices">
 	  <xsd:sequence>
-	    <xsd:element name="DatasourceService" type="xsd:string"></xsd:element>
-	    <xsd:element name="AdministrationService" type="xsd:string"></xsd:element>
+	    <xsd:element name="ResourceManagement" type="xsd:string"></xsd:element>
 	  </xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>

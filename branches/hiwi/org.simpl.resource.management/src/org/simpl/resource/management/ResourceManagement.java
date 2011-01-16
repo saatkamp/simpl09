@@ -22,6 +22,9 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.Converter;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
@@ -260,8 +263,9 @@ public class ResourceManagement {
 
     for (Element row : rows) {
       Connector connector = new Connector();
+      DataFormat converterDataFormat = new DataFormat();
       List<Element> columns = row.getChildren("column");
-
+      
       for (Element column : columns) {
         if (column.getAttribute("name").getValue().equals("id")) {
           connector.setId(column.getValue());
@@ -273,13 +277,13 @@ public class ResourceManagement {
             .equals("properties_description")) {
           connector.setPropertiesDescription(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("dataformat_name")) {
-          connector.setConverterDataFormatName(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("dataformat_implementation")) {
-          connector.setConverterDataFormatImplementation(column.getValue());
+          converterDataFormat.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("dataformat_implementation")) {
+          converterDataFormat.setImplementation(column.getValue());
         }
       }
 
+      connector.setConverterDataFormat(converterDataFormat);
       connectors.getConnectors().add(connector);
     }
 
@@ -370,6 +374,8 @@ public class ResourceManagement {
 
     for (Element row : rows) {
       Converter converter = new Converter();
+      DataFormat connectorDataFormat = new DataFormat();
+      DataFormat workflowDataFormat = new DataFormat();
       List<Element> columns = row.getChildren("column");
 
       for (Element column : columns) {
@@ -381,19 +387,21 @@ public class ResourceManagement {
           converter.setImplementation(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals("connector_dataformat_name")) {
-          converter.setConnectorDataFormatName(column.getValue());
+          connectorDataFormat.setName(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals("connector_dataformat_implementation")) {
-          converter.setConnectorDataFormatImplementation(column.getValue());
+          connectorDataFormat.setImplementation(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals("workflow_dataformat_name")) {
-          converter.setWorkflowDataFormatName(column.getValue());
+          workflowDataFormat.setName(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals("workflow_dataformat_implementation")) {
-          converter.setWorkflowDataFormatImplementation(column.getValue());
+          workflowDataFormat.setImplementation(column.getValue());
         }
       }
 
+      converter.setConnectorDataFormat(connectorDataFormat);
+      converter.setWorkflowDataFormat(workflowDataFormat);
       dataConverters.getConverters().add(converter);
     }
 
@@ -593,7 +601,7 @@ public class ResourceManagement {
     stringList.getItems().addAll(h);
 
     // remove data format of the data source itself
-    stringList.getItems().remove(dataSource.getDataFormatName());
+    stringList.getItems().remove(dataSource.getConnector().getConverterDataFormat().getName());
 
     // sort items
     Collections.sort(stringList.getItems());
@@ -636,7 +644,7 @@ public class ResourceManagement {
     statement += "'"
         + String.format(propertiesDescription, dataSource.getType(),
             dataSource.getSubType(), dataSource.getLanguage(),
-            dataSource.getDataFormatName()) + "', ";
+            dataSource.getConnector().getConverterDataFormat().getName()) + "', ";
     statement += "" + policy + ", ";
     statement += "'" + dataSource.getAuthentication().getUser() + "', ";
     statement += "'" + dataSource.getAuthentication().getPassword() + "'";
@@ -747,7 +755,7 @@ public class ResourceManagement {
       statement += "connector_properties_description='"
           + String.format(propertiesDescription, dataSource.getType(),
               dataSource.getSubType(), dataSource.getLanguage(),
-              dataSource.getDataFormatName()) + "', ";
+              dataSource.getConnector().getConverterDataFormat().getName()) + "', ";
     }
 
     statement += "security_username='" + dataSource.getAuthentication().getUser() + "',";
@@ -983,6 +991,8 @@ public class ResourceManagement {
 
     for (Element row : rows) {
       DataSource dataSource = new DataSource();
+      Connector connector = new Connector();
+      DataFormat converterDataFormat = new DataFormat();
       Authentication authentication = new Authentication();
       LateBinding lateBinding = new LateBinding();
       List<Element> columns = row.getChildren("column");
@@ -995,31 +1005,29 @@ public class ResourceManagement {
         } else if (column.getAttribute("name").getValue().equals("interface_description")) {
           dataSource.setAddress(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("connector_name")) {
-          dataSource.setConnectorName(column.getValue());
+          connector.setName(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals("connector_implementation")) {
-          dataSource.setConnectorImplementation(column.getValue());
+          connector.setImplementation(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals("connector_properties_description")) {
           dataSource.setConnectorPropertiesDescription(column.getValue());
-          dataSource
-              .setType(this.getFromPropertiesDescription("type", column.getValue()));
-          dataSource.setSubType(this.getFromPropertiesDescription("subType",
-              column.getValue()));
-          dataSource.setLanguage(this.getFromPropertiesDescription("language",
-              column.getValue()));
-          dataSource.setDataFormatName(this.getFromPropertiesDescription(
-              "dataFormatName", column.getValue()));
+          dataSource.setType(this.getFromPropertiesDescription("type", column.getValue()));
+          dataSource.setSubType(this.getFromPropertiesDescription("subType", column.getValue()));
+          dataSource.setLanguage(this.getFromPropertiesDescription("language", column.getValue()));
+          
+          converterDataFormat.setName(this.getFromPropertiesDescription("dataFormatName", column.getValue()));
         } else if (column.getAttribute("name").getValue().equals("security_username")) {
           authentication.setUser(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("security_password")) {
           authentication.setPassword(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("properties_description")) {
+        } else if (column.getAttribute("name").getValue().equals("properties_description")) {
           lateBinding.setPolicy(column.getValue());
         }
       }
 
+      connector.setConverterDataFormat(converterDataFormat);
+      dataSource.setConnector(connector);
       dataSource.setAuthentication(authentication);
       dataSource.setLateBinding(lateBinding);
       dataSources.add(dataSource);

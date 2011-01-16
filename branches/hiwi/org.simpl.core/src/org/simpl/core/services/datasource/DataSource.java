@@ -23,9 +23,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "DataSource")
 @XmlType(name = "DataSource", propOrder = { "id", "name", "address", "type", "subType",
-    "authentication", "lateBinding", "language", "dataFormatName",
-    "dataFormatImplementation", "connectorName", "connectorImplementation",
-    "connectorPropertiesDescription" })
+    "authentication", "lateBinding", "language", "connectorPropertiesDescription",
+    "connector" })
 public class DataSource {
   private String id;
   private String name;
@@ -33,11 +32,9 @@ public class DataSource {
   private String type;
   private String subType;
   private String language;
-  private String dataFormatName;
-  private String dataFormatImplementation;
-  private String connectorName;
-  private String connectorImplementation;
   private String connectorPropertiesDescription;
+  private Connector connector;
+
   private Authentication authentication = new Authentication();
   private LateBinding lateBinding = new LateBinding();
 
@@ -147,63 +144,18 @@ public class DataSource {
   }
 
   /**
-   * @return the dataFormatName
+   * @return the connector
    */
-  public String getDataFormatName() {
-    return dataFormatName;
+  public Connector getConnector() {
+    return connector;
   }
 
   /**
-   * @param dataFormatName
-   *          the dataFormatName to set
+   * @param connector
+   *          the connector to set
    */
-  public void setDataFormatName(String dataFormatName) {
-    this.dataFormatName = dataFormatName;
-  }
-
-  /**
-   * @return the dataFormatImplementation
-   */
-  public String getDataFormatImplementation() {
-    return dataFormatImplementation;
-  }
-
-  /**
-   * @param dataFormatImplementation
-   *          the dataFormatImplementation to set
-   */
-  public void setDataFormatImplementation(String dataFormatImplementation) {
-    this.dataFormatImplementation = dataFormatImplementation;
-  }
-
-  /**
-   * @return the connectorName
-   */
-  public String getConnectorName() {
-    return connectorName;
-  }
-
-  /**
-   * @param connectorName
-   *          the connectorName to set
-   */
-  public void setConnectorName(String connectorName) {
-    this.connectorName = connectorName;
-  }
-
-  /**
-   * @return the connectorImplementation
-   */
-  public String getConnectorImplementation() {
-    return connectorImplementation;
-  }
-
-  /**
-   * @param connectorImplementation
-   *          the connectortImplementation to set
-   */
-  public void setConnectorImplementation(String connectorImplementation) {
-    this.connectorImplementation = connectorImplementation;
+  public void setConnector(Connector connector) {
+    this.connector = connector;
   }
 
   /**
@@ -247,10 +199,8 @@ public class DataSource {
     string += "  type: " + this.type + ",\r\n";
     string += "  subtype: " + this.subType + ",\r\n";
     string += "  language: " + this.language + ",\r\n";
-    string += "  dataFormatName: " + this.dataFormatName + "\r\n";
-    string += "  dataFormatImplementation: " + this.dataFormatImplementation + "\r\n";
-    string += "  connectorName: " + this.connectorName + "\r\n";
-    string += "  connectorImplementation: " + this.connectorImplementation + "\r\n";
+    string += "  connectorPropertiesDescription: " + this.connectorPropertiesDescription + ",\r\n";
+    string += "  connector: " + this.connector + "\r\n";
     string += "}";
 
     return string;

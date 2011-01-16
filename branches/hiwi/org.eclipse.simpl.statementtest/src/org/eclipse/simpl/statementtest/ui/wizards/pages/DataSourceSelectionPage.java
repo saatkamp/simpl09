@@ -148,12 +148,13 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
             .getProcess().getName(), selectedValue);
 
         // recognize the issue of the statement
-        issue = IssueRecognition.getInstance().recognizeIssue(selectedDataSource.getLanguage(), statementTest.getStatement());
-    
+        issue = IssueRecognition.getInstance().recognizeIssue(
+            selectedDataSource.getLanguage(), statementTest.getStatement());
+
         if (issue != null) {
           statementTest.setIssue(issue);
         }
-        
+
         // save selected data source
         statementTest.setDataSource(selectedDataSource);
 
@@ -182,10 +183,9 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
 
         tableItem = new TableItem(table, SWT.NONE);
         tableItem.setText(0, "Data Format");
-        tableItem.setText(
-            1,
-            (selectedDataSource.getDataFormatName() != null) ? selectedDataSource
-                .getDataFormatName() : "");
+        tableItem.setText(1, (selectedDataSource.getConnector().getConverterDataFormat()
+            .getName() != null) ? selectedDataSource.getConnector()
+            .getConverterDataFormat().getName() : "");
       }
     });
 

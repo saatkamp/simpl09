@@ -13,6 +13,7 @@ import javax.jws.soap.SOAPBinding;
 import org.apache.commons.io.IOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
+import org.simpl.core.services.datasource.Converter;
 import org.simpl.core.services.datasource.DataSource;
 
 import commonj.sdo.DataObject;
@@ -41,8 +42,8 @@ public class Datasource {
       @WebParam(name = "statement") String statement) throws Exception {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceService().executeStatement(dataSource,
-        statement);
+    success = SIMPLCore.getInstance().dataSourceService()
+        .executeStatement(dataSource, statement);
 
     return success;
   }
@@ -53,8 +54,8 @@ public class Datasource {
     DataObject dataObject = null;
     String data = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService().retrieveData(dataSource,
-        statement);
+    dataObject = SIMPLCore.getInstance().dataSourceService()
+        .retrieveData(dataSource, statement);
 
     if (dataObject != null) {
       try {
@@ -80,8 +81,8 @@ public class Datasource {
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceService().writeBack(dataSource,
-        dataObject);
+    success = SIMPLCore.getInstance().dataSourceService()
+        .writeBack(dataSource, dataObject);
 
     return success;
   }
@@ -94,8 +95,8 @@ public class Datasource {
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceService().writeData(dataSource,
-        dataObject, target);
+    success = SIMPLCore.getInstance().dataSourceService()
+        .writeData(dataSource, dataObject, target);
 
     return success;
   }
@@ -106,8 +107,8 @@ public class Datasource {
       @WebParam(name = "target") String target) throws Exception {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceService().depositData(dataSource,
-        statement, target);
+    success = SIMPLCore.getInstance().dataSourceService()
+        .depositData(dataSource, statement, target);
 
     return success;
   }
@@ -118,8 +119,8 @@ public class Datasource {
     DataObject dataObject = null;
     String metaData = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceService().getMetaData(dataSource,
-        filter);
+    dataObject = SIMPLCore.getInstance().dataSourceService()
+        .getMetaData(dataSource, filter);
 
     try {
       XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject,
@@ -143,8 +144,8 @@ public class Datasource {
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();
 
-    inputStream = SIMPLCore.getInstance().dataSourceService().getMetaDataSchemaFile(
-        dataSource);
+    inputStream = SIMPLCore.getInstance().dataSourceService()
+        .getMetaDataSchemaFile(dataSource);
 
     // convert inputStream to String
     try {
@@ -166,8 +167,8 @@ public class Datasource {
     String dataFormatSchema = "";
     StringWriter writer = new StringWriter();
 
-    inputStream = SIMPLCore.getInstance().dataSourceService().getDataFormatSchemaFile(
-        dataSource);
+    inputStream = SIMPLCore.getInstance().dataSourceService()
+        .getDataFormatSchemaFile(dataSource);
 
     // convert inputStream to String
     try {
@@ -213,5 +214,16 @@ public class Datasource {
       @WebParam(name = "dataFormatType") String dataFormatType) {
     return Parameter.serialize(SIMPLCore.getInstance().dataSourceService()
         .getSupportedConvertDataFormatTypes(dataSource));
+  }
+
+  /**
+   * This function is only for the reason that the converter class is generated in the
+   * client and can be used by other instances such as the resource management.
+   * 
+   * @return
+   */
+  @WebMethod(action = "getConverter")
+  public Converter dummy() {
+    return new Converter();
   }
 }

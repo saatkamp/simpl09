@@ -25,6 +25,15 @@ public interface DatasourceService {
 
     /**
      * 
+     * @return
+     *     returns org.simpl.core.webservices.client.Converter
+     */
+    @WebMethod(action = "getConverter")
+    @WebResult(partName = "return")
+    public Converter dummy();
+
+    /**
+     * 
      * @param dataSource
      * @param filter
      * @return

@@ -1,5 +1,5 @@
 
-package org.simpl.resource.management.client;
+package org.simpl.core.webservices.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,21 +7,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Connector complex type.
+ * <p>Java class for DataFormat complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Connector">
+ * &lt;complexType name="DataFormat">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="implementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="converterDataFormatName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="converterDataFormatImplementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="propertiesDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="xmlSchema" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,22 +29,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Connector", propOrder = {
+@XmlType(name = "DataFormat", propOrder = {
     "id",
     "name",
     "implementation",
-    "converterDataFormatName",
-    "converterDataFormatImplementation",
-    "propertiesDescription"
+    "xmlSchema"
 })
-public class Connector {
+public class DataFormat {
 
     protected String id;
     protected String name;
     protected String implementation;
-    protected String converterDataFormatName;
-    protected String converterDataFormatImplementation;
-    protected String propertiesDescription;
+    protected String xmlSchema;
 
     /**
      * Gets the value of the id property.
@@ -121,75 +115,27 @@ public class Connector {
     }
 
     /**
-     * Gets the value of the converterDataFormatName property.
+     * Gets the value of the xmlSchema property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getConverterDataFormatName() {
-        return converterDataFormatName;
+    public String getXmlSchema() {
+        return xmlSchema;
     }
 
     /**
-     * Sets the value of the converterDataFormatName property.
+     * Sets the value of the xmlSchema property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setConverterDataFormatName(String value) {
-        this.converterDataFormatName = value;
-    }
-
-    /**
-     * Gets the value of the converterDataFormatImplementation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getConverterDataFormatImplementation() {
-        return converterDataFormatImplementation;
-    }
-
-    /**
-     * Sets the value of the converterDataFormatImplementation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setConverterDataFormatImplementation(String value) {
-        this.converterDataFormatImplementation = value;
-    }
-
-    /**
-     * Gets the value of the propertiesDescription property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPropertiesDescription() {
-        return propertiesDescription;
-    }
-
-    /**
-     * Sets the value of the propertiesDescription property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPropertiesDescription(String value) {
-        this.propertiesDescription = value;
+    public void setXmlSchema(String value) {
+        this.xmlSchema = value;
     }
 
 }

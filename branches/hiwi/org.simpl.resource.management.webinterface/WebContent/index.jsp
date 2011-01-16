@@ -48,12 +48,12 @@
           <td><%=!source.getType().equals("") ? source.getType() : ""%></td>
           <td><%=!source.getSubType().equals("") ? source.getSubType() : ""%></td>
           <td><%=!source.getLanguage().equals("") ? source.getLanguage() : ""%></td>
-          <td><%=!source.getDataFormatName().equals("") ? source.getDataFormatName() : ""%></td>
+          <td><%=!source.getConnector().getConverterDataFormat().getName().equals("") ? source.getConnector().getConverterDataFormat().getName() : ""%></td>
           <td><%=!source.getAuthentication().getUser().equals("") ? source.getAuthentication().getUser() : ""%></td>
           <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
           <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
           <td><%=!source.getConnectorPropertiesDescription().equals("")%></td>
-          <td><%=source.getConnectorName()%></td>
+          <td><%=source.getConnector().getName()%></td>
         </tr>
       <% } %>
     </table>

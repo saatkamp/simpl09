@@ -24,6 +24,9 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Converter_QNAME = new QName("http://webservices.core.simpl.org/", "Converter");
+    private final static QName _Connector_QNAME = new QName("http://webservices.core.simpl.org/", "Connector");
+    private final static QName _DataFormat_QNAME = new QName("http://webservices.core.simpl.org/", "DataFormat");
     private final static QName _DataSource_QNAME = new QName("http://webservices.core.simpl.org/", "DataSource");
     private final static QName _Exception_QNAME = new QName("http://webservices.core.simpl.org/", "Exception");
 
@@ -32,6 +35,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link LateBinding }
+     * 
+     */
+    public LateBinding createLateBinding() {
+        return new LateBinding();
     }
 
     /**
@@ -51,6 +70,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataFormat }
+     * 
+     */
+    public DataFormat createDataFormat() {
+        return new DataFormat();
+    }
+
+    /**
      * Create an instance of {@link DataSource }
      * 
      */
@@ -59,11 +86,38 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LateBinding }
+     * Create an instance of {@link Converter }
      * 
      */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
+    public Converter createConverter() {
+        return new Converter();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Converter }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "Converter")
+    public JAXBElement<Converter> createConverter(Converter value) {
+        return new JAXBElement<Converter>(_Converter_QNAME, Converter.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Connector }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "Connector")
+    public JAXBElement<Connector> createConnector(Connector value) {
+        return new JAXBElement<Connector>(_Connector_QNAME, Connector.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DataFormat }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "DataFormat")
+    public JAXBElement<DataFormat> createDataFormat(DataFormat value) {
+        return new JAXBElement<DataFormat>(_DataFormat_QNAME, DataFormat.class, null, value);
     }
 
     /**

@@ -104,7 +104,7 @@ public class StatementScreeningPage extends StatementTestWizardPage {
       dataSourceIssueLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
       dataSourceIssueLabel.setText("Issue: " + this.statementTest.getIssue());
     }
-    
+
     gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
     gridData.heightHint = 50;
     text = new Text(statementGroup, SWT.BORDER | SWT.READ_ONLY | SWT.WRAP | SWT.V_SCROLL);
@@ -238,7 +238,7 @@ public class StatementScreeningPage extends StatementTestWizardPage {
 
     // save generated statement
     statementTest.setGeneratedStatement(generatedStatement);
-    
+
     // update issue label
     dataSourceIssueLabel.setText("Issue: " + this.statementTest.getIssue());
   }
@@ -261,7 +261,8 @@ public class StatementScreeningPage extends StatementTestWizardPage {
       dataSourceAddressLabel.setText("Address: "
           + this.statementTest.getDataSource().getAddress());
       dataSourceDataFormatLabel.setText("Data Format: "
-          + this.statementTest.getDataSource().getDataFormatName());
+          + this.statementTest.getDataSource().getConnector().getConverterDataFormat()
+              .getName());
     }
   }
 }
