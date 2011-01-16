@@ -3,7 +3,7 @@ package org.simpl.resource.management.webinterface;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.simpl.resource.management.client.Connector;
+import org.simpl.core.webservices.client.Connector;
 import org.simpl.resource.management.client.ConnectorList;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
@@ -125,8 +125,8 @@ public class RMFormMetaData {
       this.dataFormats = new ArrayList<String>();
 
       for (Connector connector : connectors.getConnectors()) {
-        if (!this.dataFormats.contains(connector.getConverterDataFormatName())) {
-          this.dataFormats.add(connector.getConverterDataFormatName());
+        if (!this.dataFormats.contains(connector.getConverterDataFormat().getName())) {
+          this.dataFormats.add(connector.getConverterDataFormat().getName());
         }
       }
     }

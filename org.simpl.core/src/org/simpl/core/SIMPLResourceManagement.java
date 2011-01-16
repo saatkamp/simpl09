@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import org.simpl.resource.management.client.Converter;
-import org.simpl.resource.management.client.ConverterList;
-import org.simpl.resource.management.client.Connector;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.Converter;
 import org.simpl.resource.management.client.ConnectorList;
+import org.simpl.resource.management.client.ConverterList;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
@@ -95,18 +95,17 @@ public class SIMPLResourceManagement {
         this.dataSourceServicePlugins.add(dataSourceConnector.getImplementation());
 
         // retrieve data format plug-ins
-        if (!this.dataFormatPlugins.contains(dataSourceConnector
-            .getConverterDataFormatImplementation())) {
-          this.dataFormatPlugins.add(dataSourceConnector.getConverterDataFormatImplementation());
+        if (!this.dataFormatPlugins.contains(dataSourceConnector.getConverterDataFormat().getImplementation())) {
+          this.dataFormatPlugins.add(dataSourceConnector.getConverterDataFormat().getImplementation());
         }
 
         // retrieve data format mapping
         if (this.dataFormatMapping.containsKey(dataSourceConnector
-            .getConverterDataFormatImplementation())) {
-          this.dataFormatMapping.get(dataSourceConnector.getConverterDataFormatImplementation())
+            .getConverterDataFormat().getImplementation())) {
+          this.dataFormatMapping.get(dataSourceConnector.getConverterDataFormat().getImplementation())
               .add(dataSourceConnector.getImplementation());
         } else {
-          this.dataFormatMapping.put(dataSourceConnector.getConverterDataFormatImplementation(),
+          this.dataFormatMapping.put(dataSourceConnector.getConverterDataFormat().getImplementation(),
               new ArrayList<String>(Arrays.asList(dataSourceConnector.getImplementation())));
         }
       }
@@ -120,10 +119,10 @@ public class SIMPLResourceManagement {
         // retrieve data format converter mapping
         for (Connector connector : connectors
             .getConnectors()) {
-          if (connector.getConverterDataFormatImplementation().equals(
-              dataConverter.getConnectorDataFormatImplementation())
-              || connector.getConverterDataFormatImplementation().equals(
-                  dataConverter.getWorkflowDataFormatImplementation())) {
+          if (connector.getConverterDataFormat().getImplementation().equals(
+              dataConverter.getConnectorDataFormat().getImplementation())
+              || connector.getConverterDataFormat().getImplementation().equals(
+                  dataConverter.getWorkflowDataFormat().getImplementation())) {
             if (this.dataFormatConverterMapping.containsKey(dataConverter.getImplementation())) {
               this.dataFormatConverterMapping.get(dataConverter.getImplementation()).add(
                   connector.getImplementation());

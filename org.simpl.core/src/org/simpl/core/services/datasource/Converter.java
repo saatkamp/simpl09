@@ -1,4 +1,4 @@
-package org.simpl.resource.management;
+package org.simpl.core.services.datasource;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <b>Purpose:</b>Represents a tuple of the resource management 'dataformats' table.<br>
+ * <b>Purpose:</b>A data converter to convert between data formats.<br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -17,13 +17,15 @@ import javax.xml.bind.annotation.XmlType;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "DataFormat")
-@XmlType(name = "DataFormat", propOrder = { "id", "name", "implementation", "xmlSchema" })
-public class DataFormat {
+@XmlRootElement(name = "Converter")
+@XmlType(name = "Converter", propOrder = { "id", "name", "implementation",
+    "connectorDataFormat", "workflowDataFormat" })
+public class Converter {
   private String id;
   private String name;
   private String implementation;
-  private String xmlSchema;
+  private DataFormat connectorDataFormat;
+  private DataFormat workflowDataFormat;
 
   /**
    * @return the id
@@ -71,29 +73,44 @@ public class DataFormat {
   }
 
   /**
-   * @return the xmlSchema
+   * @return the connectorDataFormat
    */
-  public String getXmlSchema() {
-    return xmlSchema;
+  public DataFormat getConnectorDataFormat() {
+    return connectorDataFormat;
   }
 
   /**
-   * @param xmlSchema
-   *          the xmlSchema to set
+   * @param connectorDataFormat
+   *          the connectorDataFormat to set
    */
-  public void setXmlSchema(String xmlSchema) {
-    this.xmlSchema = xmlSchema;
+  public void setConnectorDataFormat(DataFormat connectorDataFormat) {
+    this.connectorDataFormat = connectorDataFormat;
+  }
+
+  /**
+   * @return the workflowDataFormat
+   */
+  public DataFormat getWorkflowDataFormat() {
+    return workflowDataFormat;
+  }
+
+  /**
+   * @param workflowDataFormat
+   *          the workflowDataFormat to set
+   */
+  public void setWorkflowDataFormat(DataFormat workflowDataFormat) {
+    this.workflowDataFormat = workflowDataFormat;
   }
 
   @Override
   public String toString() {
     String string = "";
-
-    string += "DataFormat {\n\r";
+    string += "Converter {\n\r";
     string += "  id: " + this.id + ",\n\r";
     string += "  name: " + this.name + ",\n\r";
-    string += "  implementation: " + this.implementation + ",\n\r";
-    string += "  xml_schema: " + this.xmlSchema + ",\n\r";
+    string += "  implementation: " + this.name + ",\n\r";
+    string += "  connectorDataformat: " + this.connectorDataFormat + ",\n\r";
+    string += "  workflowDataformat: " + this.workflowDataFormat + "\n\r";
     string += "}";
 
     return string;

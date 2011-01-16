@@ -42,7 +42,8 @@ public class StrategyServiceImpl implements StrategyService {
           .debug("UserName of incoming ds: " + dataSource.getAuthentication().getUser());
       logger.debug("Password of incoming ds: "
           + dataSource.getAuthentication().getPassword());
-      logger.debug("Format of incoming ds: " + dataSource.getDataFormatName());
+      logger.debug("Format of incoming ds: "
+          + dataSource.getConnector().getConverterDataFormat().getName());
       logger.debug("Policy of incoming ds: " + dataSource.getLateBinding().getPolicy());
       logger.debug("Strategy of incoming ds: "
           + dataSource.getLateBinding().getStrategy().toString());
@@ -125,7 +126,8 @@ public class StrategyServiceImpl implements StrategyService {
               resultRMDataSource.getLateBinding().getPolicy());
 
           resultDataSource.setAddress(resultRMDataSource.getAddress());
-          resultDataSource.setDataFormatName(resultRMDataSource.getDataFormatName());
+          resultDataSource.getConnector().getConverterDataFormat()
+              .setName(resultRMDataSource.getConnector().getConverterDataFormat().getName());
           resultDataSource.getAuthentication().setUser(
               resultRMDataSource.getAuthentication().getUser());
           resultDataSource.getAuthentication().setPassword(
@@ -152,7 +154,8 @@ public class StrategyServiceImpl implements StrategyService {
           + resultDataSource.getAuthentication().getUser());
       logger.debug("Password of result ds: "
           + resultDataSource.getAuthentication().getPassword());
-      logger.debug("Format of result ds: " + resultDataSource.getDataFormatName());
+      logger.debug("Format of result ds: "
+          + resultDataSource.getConnector().getConverterDataFormat().getName());
       logger.debug("Policy of result ds: "
           + resultDataSource.getLateBinding().getPolicy());
       logger.debug("Resource Management address of result ds: "

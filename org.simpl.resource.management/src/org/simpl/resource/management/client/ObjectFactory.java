@@ -7,6 +7,9 @@ import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
 import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.Converter;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.LateBinding;
 
@@ -28,10 +31,7 @@ import org.simpl.core.webservices.client.LateBinding;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Connector_QNAME = new QName("http://management.resource.simpl.org/", "Connector");
-    private final static QName _DataFormat_QNAME = new QName("http://management.resource.simpl.org/", "DataFormat");
     private final static QName _Exception_QNAME = new QName("http://management.resource.simpl.org/", "Exception");
-    private final static QName _Converter_QNAME = new QName("http://management.resource.simpl.org/", "Converter");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.simpl.resource.management.client
@@ -41,11 +41,59 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceList }
+     * 
+     */
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link LateBinding }
+     * 
+     */
+    public LateBinding createLateBinding() {
+        return new LateBinding();
+    }
+
+    /**
      * Create an instance of {@link StringList }
      * 
      */
     public StringList createStringList() {
         return new StringList();
+    }
+
+    /**
+     * Create an instance of {@link DataFormat }
+     * 
+     */
+    public DataFormat createDataFormat() {
+        return new DataFormat();
+    }
+
+    /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link DataFormatList }
+     * 
+     */
+    public DataFormatList createDataFormatList() {
+        return new DataFormatList();
     }
 
     /**
@@ -65,19 +113,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataFormatList }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public DataFormatList createDataFormatList() {
-        return new DataFormatList();
-    }
-
-    /**
-     * Create an instance of {@link DataSourceList }
-     * 
-     */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
@@ -97,79 +137,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataFormat }
-     * 
-     */
-    public DataFormat createDataFormat() {
-        return new DataFormat();
-    }
-
-    /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
-    }
-
-    /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Connector }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://management.resource.simpl.org/", name = "Connector")
-    public JAXBElement<Connector> createConnector(Connector value) {
-        return new JAXBElement<Connector>(_Connector_QNAME, Connector.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataFormat }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://management.resource.simpl.org/", name = "DataFormat")
-    public JAXBElement<DataFormat> createDataFormat(DataFormat value) {
-        return new JAXBElement<DataFormat>(_DataFormat_QNAME, DataFormat.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://management.resource.simpl.org/", name = "Exception")
     public JAXBElement<Exception> createException(Exception value) {
         return new JAXBElement<Exception>(_Exception_QNAME, Exception.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Converter }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://management.resource.simpl.org/", name = "Converter")
-    public JAXBElement<Converter> createConverter(Converter value) {
-        return new JAXBElement<Converter>(_Converter_QNAME, Converter.class, null, value);
     }
 
 }

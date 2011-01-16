@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.LateBinding;
 import org.simpl.resource.management.client.Exception_Exception;
@@ -109,7 +111,9 @@ public class FormAction extends HttpServlet {
    */
   private DataSource parametersToDataSource(HashMap<String, String> parameters) {
     DataSource dataSource = new DataSource();
-
+    Connector connector = new Connector();
+    DataFormat converterDataFormat = new DataFormat();
+    
     // initialize authentication and late binding
     Authentication auth = new Authentication();
     LateBinding lateBinding = new LateBinding();
@@ -143,7 +147,11 @@ public class FormAction extends HttpServlet {
     dataSource.setType(parameters.get("type"));
     dataSource.setSubType(parameters.get("subtype"));
     dataSource.setLanguage(parameters.get("language"));
-    dataSource.setDataFormatName(parameters.get("dataformat"));
+    
+    converterDataFormat.setName(parameters.get("dataformat"));
+    connector.setConverterDataFormat(converterDataFormat);
+    
+    dataSource.setConnector(connector);
     dataSource.setAuthentication(auth);
     dataSource.setLateBinding(lateBinding);
 

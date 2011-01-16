@@ -41,286 +41,269 @@ import org.simpl.core.webservices.client.DataSource;
  */
 public class PropertySectionUtils {
 
-	private static final String EL_PROCESS = "process";
-	private static final String EL_DATASOURCE = "datasources";
+  private static final String EL_PROCESS = "process";
+  private static final String EL_DATASOURCE = "datasources";
 
-	private static final String AT_NAME = "name";
-	private static final String AT_DATA_SOURCE_NAME = "dataSourceName";
-	private static final String AT_DATA_SOURCE_ADDRESS = "address";
-	private static final String AT_DATA_SOURCE_TYPE = "type";
-	private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
-	private static final String AT_DATA_SOURCE_LANG = "language";
-	private static final String AT_DATA_SOURCE_USERNAME = "userName";
-	private static final String AT_DATA_SOURCE_PASSWORD = "password";
-	private static String AT_DATA_FORMAT = "format";
+  private static final String AT_NAME = "name";
+  private static final String AT_DATA_SOURCE_NAME = "dataSourceName";
+  private static final String AT_DATA_SOURCE_ADDRESS = "address";
+  private static final String AT_DATA_SOURCE_TYPE = "type";
+  private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
+  private static final String AT_DATA_SOURCE_LANG = "language";
+  private static final String AT_DATA_SOURCE_USERNAME = "userName";
+  private static final String AT_DATA_SOURCE_PASSWORD = "password";
+  private static String AT_DATA_FORMAT = "format";
 
-	/**
-	 * Die BPEL Datei des Prozesses
-	 */
-	private static IFile bpelFile = null;
+  /**
+   * Die BPEL Datei des Prozesses
+   */
+  private static IFile bpelFile = null;
 
-	/**
-	 * Der Pfad zur BPEL Datei des Prozesses
-	 */
-	private static IPath bpelPath = null;
+  /**
+   * Der Pfad zur BPEL Datei des Prozesses
+   */
+  private static IPath bpelPath = null;
 
-	/**
-	 * Pfad zum Projektordner = Pfad zur BPEL Datei ohne Dateiendung
-	 */
-	private static IPath projectPath = null;
+  /**
+   * Pfad zum Projektordner = Pfad zur BPEL Datei ohne Dateiendung
+   */
+  private static IPath projectPath = null;
 
-	/**
-	 * Absoluter Workspace-Pfad. Pfad in Format "OSString" umwandeln, so dass
-	 * man mit java.io arbeiten kann.
-	 */
-	private static String absolutWorkspacePath = "";
+  /**
+   * Absoluter Workspace-Pfad. Pfad in Format "OSString" umwandeln, so dass man mit
+   * java.io arbeiten kann.
+   */
+  private static String absolutWorkspacePath = "";
 
-	private final static Namespace DD_NAMESPACE = Namespace
-			.getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
+  private final static Namespace DD_NAMESPACE = Namespace
+      .getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
 
-	private static final String RM_PREFIX = "rm";
+  private static final String RM_PREFIX = "rm";
 
-	private static final String DD_PREFIX = "dd";
+  private static final String DD_PREFIX = "dd";
 
-	@SuppressWarnings("rawtypes")
-  private static DataSource findDeploymentDescriptorDatasourceByName(
-			Process process, String dsName) {
-		DataSource datasource = null;
+  @SuppressWarnings("rawtypes")
+  private static DataSource findDeploymentDescriptorDatasourceByName(Process process,
+      String dsName) {
+    DataSource datasource = null;
 
-		bpelFile = BPELUtil.getBPELFile(process);
+    bpelFile = BPELUtil.getBPELFile(process);
 
-		bpelPath = bpelFile.getFullPath();
+    bpelPath = bpelFile.getFullPath();
 
-		projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
+    projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
 
-		absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
-				.getLocation().toOSString();
+    absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+        .toOSString();
 
-		File deploy = new File(absolutWorkspacePath + projectPath.toOSString()
-				+ System.getProperty("file.separator") + "deploy.xml");
+    File deploy = new File(absolutWorkspacePath + projectPath.toOSString()
+        + System.getProperty("file.separator") + "deploy.xml");
 
-		if (deploy.exists()) {
-			SAXBuilder builder = new SAXBuilder();
-			Document doc;
-			try {
-				InputStream inputStream = new FileInputStream(deploy);
+    if (deploy.exists()) {
+      SAXBuilder builder = new SAXBuilder();
+      Document doc;
+      try {
+        InputStream inputStream = new FileInputStream(deploy);
 
-				doc = builder.build(inputStream);
+        doc = builder.build(inputStream);
 
-				Element root = doc.getRootElement();
+        Element root = doc.getRootElement();
 
-				List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
+        List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
 
-				for (Object processObj : processes) {
-					Element processElement = (Element) processObj;
-					if (processElement.getAttributeValue(AT_NAME).contains(
-							process.getName())) {
-						List datasourceElements = processElement.getChildren(
-								EL_DATASOURCE, DD_NAMESPACE);
-						for (Object data : datasourceElements) {
-							String name = ((Element) data)
-									.getAttributeValue(AT_DATA_SOURCE_NAME);
-							if (name.equals(dsName)) {
-								datasource = new DataSource();
-								datasource.setName(name);
-								datasource
-										.setAddress(((Element) data)
-												.getAttributeValue(AT_DATA_SOURCE_ADDRESS));
-								datasource
-										.setType(((Element) data)
-												.getAttributeValue(AT_DATA_SOURCE_TYPE));
-								datasource
-										.setSubType(((Element) data)
-												.getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
-								datasource
-										.setLanguage(((Element) data)
-												.getAttributeValue(AT_DATA_SOURCE_LANG));
-								datasource.setDataFormatName(((Element) data)
-										.getAttributeValue(AT_DATA_FORMAT));
-								Authentication authent = new Authentication();
-								authent
-										.setUser(((Element) data)
-												.getAttributeValue(AT_DATA_SOURCE_USERNAME));
-								authent
-										.setPassword(((Element) data)
-												.getAttributeValue(AT_DATA_SOURCE_PASSWORD));
-								datasource.setAuthentication(authent);
-							}
-						}
-					}
-				}
+        for (Object processObj : processes) {
+          Element processElement = (Element) processObj;
+          if (processElement.getAttributeValue(AT_NAME).contains(process.getName())) {
+            List datasourceElements = processElement.getChildren(EL_DATASOURCE,
+                DD_NAMESPACE);
+            for (Object data : datasourceElements) {
+              String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
+              if (name.equals(dsName)) {
+                datasource = new DataSource();
+                datasource.setName(name);
+                datasource.setAddress(((Element) data)
+                    .getAttributeValue(AT_DATA_SOURCE_ADDRESS));
+                datasource.setType(((Element) data)
+                    .getAttributeValue(AT_DATA_SOURCE_TYPE));
+                datasource.setSubType(((Element) data)
+                    .getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
+                datasource.setLanguage(((Element) data)
+                    .getAttributeValue(AT_DATA_SOURCE_LANG));
+                datasource.getConnector().getConverterDataFormat()
+                    .setName(((Element) data).getAttributeValue(AT_DATA_FORMAT));
+                Authentication authent = new Authentication();
+                authent.setUser(((Element) data)
+                    .getAttributeValue(AT_DATA_SOURCE_USERNAME));
+                authent.setPassword(((Element) data)
+                    .getAttributeValue(AT_DATA_SOURCE_PASSWORD));
+                datasource.setAuthentication(authent);
+              }
+            }
+          }
+        }
 
-			} catch (JDOMException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+      } catch (JDOMException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (FileNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
 
-		return datasource;
-	}
+    return datasource;
+  }
 
-	@SuppressWarnings("rawtypes")
-  private static List<String> getDeploymentDescriptorDatasourceNames(
-			Process process) {
-		List<String> datasources = new ArrayList<String>();
+  @SuppressWarnings("rawtypes")
+  private static List<String> getDeploymentDescriptorDatasourceNames(Process process) {
+    List<String> datasources = new ArrayList<String>();
 
-		bpelFile = BPELUtil.getBPELFile(process);
+    bpelFile = BPELUtil.getBPELFile(process);
 
-		bpelPath = bpelFile.getFullPath();
+    bpelPath = bpelFile.getFullPath();
 
-		projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
+    projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
 
-		absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
-				.getLocation().toOSString();
+    absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+        .toOSString();
 
-		File deploy = new File(absolutWorkspacePath + projectPath.toOSString()
-				+ System.getProperty("file.separator") + "deploy.xml");
+    File deploy = new File(absolutWorkspacePath + projectPath.toOSString()
+        + System.getProperty("file.separator") + "deploy.xml");
 
-		if (deploy.exists()) {
-			SAXBuilder builder = new SAXBuilder();
-			Document doc;
-			try {
-				InputStream inputStream = new FileInputStream(deploy);
+    if (deploy.exists()) {
+      SAXBuilder builder = new SAXBuilder();
+      Document doc;
+      try {
+        InputStream inputStream = new FileInputStream(deploy);
 
-				doc = builder.build(inputStream);
+        doc = builder.build(inputStream);
 
-				Element root = doc.getRootElement();
+        Element root = doc.getRootElement();
 
-				List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
+        List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
 
-				for (Object processObj : processes) {
-					Element processElement = (Element) processObj;
-					if (processElement.getAttributeValue(AT_NAME).contains(
-							process.getName())) {
-						List datasourceElements = processElement.getChildren(
-								EL_DATASOURCE, DD_NAMESPACE);
-						for (Object data : datasourceElements) {
-							String name = ((Element) data)
-									.getAttributeValue(AT_DATA_SOURCE_NAME);
-							datasources.add(DD_PREFIX + ":" + name);
-						}
-					}
-				}
+        for (Object processObj : processes) {
+          Element processElement = (Element) processObj;
+          if (processElement.getAttributeValue(AT_NAME).contains(process.getName())) {
+            List datasourceElements = processElement.getChildren(EL_DATASOURCE,
+                DD_NAMESPACE);
+            for (Object data : datasourceElements) {
+              String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
+              datasources.add(DD_PREFIX + ":" + name);
+            }
+          }
+        }
 
-			} catch (JDOMException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+      } catch (JDOMException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (FileNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
 
-		return datasources;
-	}
+    return datasources;
+  }
 
-	private static List<String> getRFDatasourceNames() {
-		List<String> dataSourceNames = new ArrayList<String>();
+  private static List<String> getRFDatasourceNames() {
+    List<String> dataSourceNames = new ArrayList<String>();
 
-		List<DataSource> dataSources = ModelProvider.getInstance()
-				.getDataSources();
+    List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
 
-		for (DataSource dat : dataSources) {
-			dataSourceNames.add(RM_PREFIX + ":" + dat.getName());
-		}
+    for (DataSource dat : dataSources) {
+      dataSourceNames.add(RM_PREFIX + ":" + dat.getName());
+    }
 
-		return dataSourceNames;
-	}
+    return dataSourceNames;
+  }
 
-	public static String[] getAllDataSourceNames(Process process) {
-		List<String> datasources = new ArrayList<String>();
+  public static String[] getAllDataSourceNames(Process process) {
+    List<String> datasources = new ArrayList<String>();
 
-		datasources.addAll(getDeploymentDescriptorDatasourceNames(process));
-		datasources.addAll(getRFDatasourceNames());
+    datasources.addAll(getDeploymentDescriptorDatasourceNames(process));
+    datasources.addAll(getRFDatasourceNames());
 
-		return datasources.toArray(new String[0]);
-	}
+    return datasources.toArray(new String[0]);
+  }
 
-	public static DataSource findDataSourceByName(Process process,
-			String nameWithPrefix) {
-		DataSource data = null;
+  public static DataSource findDataSourceByName(Process process, String nameWithPrefix) {
+    DataSource data = null;
 
-		String[] name = nameWithPrefix.split(":");
-		if (name[0].equals(DD_PREFIX)) {
-			data = findDeploymentDescriptorDatasourceByName(process, name[1]);
-		} else {
-			if (name[0].equals(RM_PREFIX)) {
-				data = ModelProvider.getInstance()
-						.findDataSourceByName(name[1]);
-			}
-		}
-		return data;
-	}
+    String[] name = nameWithPrefix.split(":");
+    if (name[0].equals(DD_PREFIX)) {
+      data = findDeploymentDescriptorDatasourceByName(process, name[1]);
+    } else {
+      if (name[0].equals(RM_PREFIX)) {
+        data = ModelProvider.getInstance().findDataSourceByName(name[1]);
+      }
+    }
+    return data;
+  }
 
-	public static void downloadSchema(DataSource dataSource, Process process) {
+  public static void downloadSchema(DataSource dataSource, Process process) {
 
-		if (SIMPLCommunication.getConnection().isSIMPLCoreAvailable()
-				&& dataSource != null) {
-			bpelFile = BPELUtil.getBPELFile(process);
+    if (SIMPLCommunication.getConnection().isSIMPLCoreAvailable() && dataSource != null) {
+      bpelFile = BPELUtil.getBPELFile(process);
 
-			bpelPath = bpelFile.getFullPath();
+      bpelPath = bpelFile.getFullPath();
 
-			projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
+      projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
 
-			absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
-					.getLocation().toOSString();
+      absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+          .toOSString();
 
-			if (dataSource.getDataFormatName() != null) {
+      if (dataSource.getConnector().getConverterDataFormat().getName() != null) {
 
-				IPath xsdPath = projectPath.append(dataSource.getDataFormatName())
-						.addFileExtension(IBPELUIConstants.EXTENSION_XSD);
+        IPath xsdPath = projectPath.append(
+            dataSource.getConnector().getConverterDataFormat().getName())
+            .addFileExtension(IBPELUIConstants.EXTENSION_XSD);
 
-				File xsdFileSIMPL = new File(absolutWorkspacePath
-						+ xsdPath.toOSString());
+        File xsdFileSIMPL = new File(absolutWorkspacePath + xsdPath.toOSString());
 
-				if (!xsdFileSIMPL.exists()) {
-					try {
+        if (!xsdFileSIMPL.exists()) {
+          try {
 
-						// TODO: Im Moment gibt es ja nur ein Datenformat
-						// pro
-						// Datenquelle, trotzdem muss die Implementierung
-						// so angepasst werden, dass das Schema über den
-						// Datenformat-Namen und nicht über ein
-						// DataSource-Objekt ausgelesen werden kann
-						// (=>Eindeutigkeit)
-						String stream = null;
-						try {
-							stream = SIMPLCommunication.getConnection()
-									.getDataFormatSchema(dataSource);
-						} catch (Exception e) {
-						}
-						if (stream != null && xsdFileSIMPL.createNewFile()) {
+            // TODO: Im Moment gibt es ja nur ein Datenformat
+            // pro
+            // Datenquelle, trotzdem muss die Implementierung
+            // so angepasst werden, dass das Schema über den
+            // Datenformat-Namen und nicht über ein
+            // DataSource-Objekt ausgelesen werden kann
+            // (=>Eindeutigkeit)
+            String stream = null;
+            try {
+              stream = SIMPLCommunication.getConnection().getDataFormatSchema(dataSource);
+            } catch (Exception e) {
+            }
+            if (stream != null && xsdFileSIMPL.createNewFile()) {
 
-							OutputStreamWriter out = new OutputStreamWriter(
-									new FileOutputStream(xsdFileSIMPL
-											.getAbsolutePath()), "UTF-8");
+              OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(
+                  xsdFileSIMPL.getAbsolutePath()), "UTF-8");
 
-							out.write(stream.toCharArray());
-							out.close();
+              out.write(stream.toCharArray());
+              out.close();
 
-						}
-					} catch (UnsupportedEncodingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+            }
+          } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
 
-				}
-			}
-		}
-	}
+        }
+      }
+    }
+  }
 }

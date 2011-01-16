@@ -65,7 +65,7 @@
       username = dataSource.getAuthentication().getUser();
       password = dataSource.getAuthentication().getPassword();
       language = dataSource.getLanguage();
-      dataformat = dataSource.getDataFormatName();
+      dataformat = dataSource.getConnector().getConverterDataFormat().getName();
       connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
   } else if (parameters.get("formSubmit") != null

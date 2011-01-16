@@ -136,8 +136,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
       // format data to SDO
       if (data != null) {
-        retrievedData = formatRetrievedData(dataSourceService, data,
-            dataSource.getDataFormatName());
+        retrievedData = formatRetrievedData(dataSourceService, data, dataSource
+            .getConnector().getConverterDataFormat().getName());
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -175,8 +175,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
         dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
-        writeData = DataFormatProvider.getInstance(dataSource.getDataFormatName()).fromSDO(
-            data);
+        writeData = DataFormatProvider.getInstance(
+            dataSource.getConnector().getConverterDataFormat().getName()).fromSDO(data);
 
         // write data
         if (writeData != null) {
@@ -388,7 +388,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
         .getInstance(dataSource.getType(), dataSource.getSubType());
 
     return DataFormatConverterProvider.getSupportedConvertDataFormatTypes(
-        dataSourceService, dataSource.getDataFormatName());
+        dataSourceService, dataSource.getConnector().getConverterDataFormat().getName());
   }
 
   /**
@@ -532,7 +532,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
     complete = dataSource != null && dataSource.getAddress() != null
         && dataSource.getType() != null && dataSource.getSubType() != null
-        && dataSource.getDataFormatName() != null;
+        && dataSource.getConnector().getConverterDataFormat().getName() != null;
 
     return complete;
   }

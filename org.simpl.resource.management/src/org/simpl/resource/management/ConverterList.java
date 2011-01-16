@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.simpl.core.webservices.client.Converter;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "converterList", namespace = "http://management.resource.simpl.org/", propOrder = { "converters" })
 public class ConverterList {

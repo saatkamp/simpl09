@@ -10,6 +10,8 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 
 /**
@@ -98,6 +100,8 @@ public class ResourceManagementConfig {
 
   public DataSource getDataSource() {
     DataSource dataSource = new DataSource();
+    Connector connector = new Connector();
+    DataFormat converterDataFormat = new DataFormat();
     Authentication authentication = new Authentication();
 
     authentication.setUser(dataSourceElement.getChild("Authentication").getChildText(
@@ -109,9 +113,13 @@ public class ResourceManagementConfig {
     dataSource.setAddress(dataSourceElement.getChildText("address"));
     dataSource.setType(dataSourceElement.getChildText("type"));
     dataSource.setSubType(dataSourceElement.getChildText("subType"));
-    dataSource.setDataFormatName(dataSourceElement.getChildText("dataFormat"));
+    
+    converterDataFormat.setName(dataSourceElement.getChildText("dataFormat"));
+    
+    connector.setConverterDataFormat(converterDataFormat);
     dataSource.setAuthentication(authentication);
-
+    dataSource.setConnector(connector);
+    
     return dataSource;
   }
 

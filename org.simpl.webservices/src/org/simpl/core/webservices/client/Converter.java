@@ -1,5 +1,5 @@
 
-package org.simpl.resource.management.client;
+package org.simpl.core.webservices.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,10 +19,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="implementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="connectorDataFormatName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="connectorDataFormatImplementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="workflowDataFormatName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="workflowDataFormatImplementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="connectorDataFormat" type="{http://webservices.core.simpl.org/}DataFormat" minOccurs="0"/>
+ *         &lt;element name="workflowDataFormat" type="{http://webservices.core.simpl.org/}DataFormat" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,20 +34,16 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "name",
     "implementation",
-    "connectorDataFormatName",
-    "connectorDataFormatImplementation",
-    "workflowDataFormatName",
-    "workflowDataFormatImplementation"
+    "connectorDataFormat",
+    "workflowDataFormat"
 })
 public class Converter {
 
     protected String id;
     protected String name;
     protected String implementation;
-    protected String connectorDataFormatName;
-    protected String connectorDataFormatImplementation;
-    protected String workflowDataFormatName;
-    protected String workflowDataFormatImplementation;
+    protected DataFormat connectorDataFormat;
+    protected DataFormat workflowDataFormat;
 
     /**
      * Gets the value of the id property.
@@ -124,99 +118,51 @@ public class Converter {
     }
 
     /**
-     * Gets the value of the connectorDataFormatName property.
+     * Gets the value of the connectorDataFormat property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link DataFormat }
      *     
      */
-    public String getConnectorDataFormatName() {
-        return connectorDataFormatName;
+    public DataFormat getConnectorDataFormat() {
+        return connectorDataFormat;
     }
 
     /**
-     * Sets the value of the connectorDataFormatName property.
+     * Sets the value of the connectorDataFormat property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link DataFormat }
      *     
      */
-    public void setConnectorDataFormatName(String value) {
-        this.connectorDataFormatName = value;
+    public void setConnectorDataFormat(DataFormat value) {
+        this.connectorDataFormat = value;
     }
 
     /**
-     * Gets the value of the connectorDataFormatImplementation property.
+     * Gets the value of the workflowDataFormat property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link DataFormat }
      *     
      */
-    public String getConnectorDataFormatImplementation() {
-        return connectorDataFormatImplementation;
+    public DataFormat getWorkflowDataFormat() {
+        return workflowDataFormat;
     }
 
     /**
-     * Sets the value of the connectorDataFormatImplementation property.
+     * Sets the value of the workflowDataFormat property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link DataFormat }
      *     
      */
-    public void setConnectorDataFormatImplementation(String value) {
-        this.connectorDataFormatImplementation = value;
-    }
-
-    /**
-     * Gets the value of the workflowDataFormatName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getWorkflowDataFormatName() {
-        return workflowDataFormatName;
-    }
-
-    /**
-     * Sets the value of the workflowDataFormatName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setWorkflowDataFormatName(String value) {
-        this.workflowDataFormatName = value;
-    }
-
-    /**
-     * Gets the value of the workflowDataFormatImplementation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getWorkflowDataFormatImplementation() {
-        return workflowDataFormatImplementation;
-    }
-
-    /**
-     * Sets the value of the workflowDataFormatImplementation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setWorkflowDataFormatImplementation(String value) {
-        this.workflowDataFormatImplementation = value;
+    public void setWorkflowDataFormat(DataFormat value) {
+        this.workflowDataFormat = value;
     }
 
 }
