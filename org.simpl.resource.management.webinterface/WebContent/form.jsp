@@ -9,8 +9,6 @@
   PrintWriter output = response.getWriter();
   ResourceManagement resourceManagement = ResourceManagementClient
       .getService(RMWebConfig.getInstance().getResourceManagementAddress());
-  DatasourceService dataSourceService = DatasourceServiceClient
-      .getService(RMWebConfig.getInstance().getDataSourceServiceAddress());
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
