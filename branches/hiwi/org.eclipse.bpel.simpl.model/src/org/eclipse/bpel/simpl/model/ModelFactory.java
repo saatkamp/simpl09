@@ -41,22 +41,22 @@ public interface ModelFactory extends EFactory {
 	DataManagementActivity createDataManagementActivity();
 
 	/**
-	 * Returns a new object of class '<em>Query Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	QueryActivity createQueryActivity();
-
-	/**
-   * Returns a new object of class '<em>Issue Activity</em>'.
+   * Returns a new object of class '<em>Query Data Activity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Issue Activity</em>'.
+   * @return a new object of class '<em>Query Data Activity</em>'.
    * @generated
    */
-  IssueActivity createIssueActivity();
+  QueryDataActivity createQueryDataActivity();
+
+  /**
+   * Returns a new object of class '<em>Issue Command Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Issue Command Activity</em>'.
+   * @generated
+   */
+  IssueCommandActivity createIssueCommandActivity();
 
   /**
    * Returns a new object of class '<em>Write Data Back Activity</em>'.
@@ -68,6 +68,15 @@ public interface ModelFactory extends EFactory {
   WriteDataBackActivity createWriteDataBackActivity();
 
   /**
+   * Returns a new object of class '<em>Transfer Data Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Transfer Data Activity</em>'.
+   * @generated
+   */
+  TransferDataActivity createTransferDataActivity();
+
+  /**
 	 * Returns a new object of class '<em>Retrieve Data Activity</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -75,15 +84,6 @@ public interface ModelFactory extends EFactory {
 	 * @generated
 	 */
 	RetrieveDataActivity createRetrieveDataActivity();
-
-	/**
-   * Returns a new object of class '<em>Transfer Activity</em>'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return a new object of class '<em>Transfer Activity</em>'.
-   * @generated
-   */
-	TransferActivity createTransferActivity();
 
 	/**
    * Returns the package supported by this factory.

@@ -12,10 +12,8 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import java.io.File;
-import java.util.ArrayList;
 
-import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
@@ -24,10 +22,8 @@ import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
 import org.eclipse.bpel.simpl.ui.command.SetQueryTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
-import org.eclipse.bpel.simpl.ui.widgets.DBTable;
 import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
-import org.eclipse.bpel.simpl.ui.widgets.MetaDataXMLParser;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
@@ -52,7 +48,7 @@ import org.simpl.core.webservices.client.DataSource;
 
 
 @SuppressWarnings("unused")
-public class QueryActivityPropertySection extends ADataManagementActivityPropertySection {
+public class QueryDataActivityPropertySection extends ADataManagementActivityPropertySection {
 
 	/** The tabels pop window tables. */
 	SchemaListPopUp schemaPopWindow;
@@ -84,7 +80,7 @@ public class QueryActivityPropertySection extends ADataManagementActivityPropert
 	private Button insertTable = null;
 	private Button Save = null;
 	
-	private QueryActivity activity;
+	private QueryDataActivity activity;
 	private Button command = null, file = null; //, folder = null, driver = null;
 	
 	/**
@@ -117,7 +113,7 @@ public class QueryActivityPropertySection extends ADataManagementActivityPropert
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(activity.getDsAddress());
 		// Setzen die Zieleinheit des Queries.
-		queryTargetCombo.setText(activity.getQueryTarget());
+		queryTargetCombo.setText(!activity.getQueryTarget().equals("target") ? activity.getQueryTarget() : "");
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
 		

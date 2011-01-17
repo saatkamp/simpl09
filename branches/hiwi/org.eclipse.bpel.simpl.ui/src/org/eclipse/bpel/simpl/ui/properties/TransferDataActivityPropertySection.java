@@ -1,7 +1,7 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.TransferActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.ui.commands.SetCommand;
@@ -32,7 +32,7 @@ import org.simpl.core.webservices.client.DataSource;
  * @link http://code.google.com/p/simpl09/
  * 
  */
-public class TransferActivityPropertySection extends
+public class TransferDataActivityPropertySection extends
 		ADataManagementActivityPropertySection {
 
 	private Label typeLabel = null;
@@ -48,7 +48,7 @@ public class TransferActivityPropertySection extends
 	private Label targetLabel = null;
 	private CCombo targetCombo = null;
 
-	private TransferActivity transferActivity;
+	private TransferDataActivity transferDataActivity;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -65,15 +65,15 @@ public class TransferActivityPropertySection extends
 		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
 		// Laden der Transfer-Aktivität
-		this.transferActivity = (TransferActivity) getModel();
+		this.transferDataActivity = (TransferDataActivity) getModel();
 
 		createWidgets(parent);
 
 		// Setzen die Datenquellenadresse
-		dataSourceAddressCombo.setText(transferActivity.getTargetDsAddress());
-		targetCombo.setText(transferActivity.getTargetDsContainer());
+		dataSourceAddressCombo.setText(transferDataActivity.getTargetDsAddress());
+		targetCombo.setText(transferDataActivity.getTargetDsContainer());
 		// Setzen die Sprache
-		languageText.setText(transferActivity.getTargetDsLanguage());
+		languageText.setText(transferDataActivity.getTargetDsLanguage());
 	}
 
 	/**
@@ -155,9 +155,9 @@ public class TransferActivityPropertySection extends
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetCommand(transferActivity, dataSourceAddressCombo
+						new SetCommand(transferDataActivity, dataSourceAddressCombo
 								.getText(), ModelPackage.eINSTANCE
-								.getTransferActivity_TargetDsAddress()));
+								.getTransferDataActivity_TargetDsAddress()));
 
 				DataSource dataSource = PropertySectionUtils
 						.findDataSourceByName(getProcess(),
@@ -192,9 +192,9 @@ public class TransferActivityPropertySection extends
 				// Auswahl im Modell speichern
 				getCommandFramework()
 						.execute(
-								new SetCommand(transferActivity, languageText
+								new SetCommand(transferDataActivity, languageText
 										.getText(), ModelPackage.eINSTANCE
-										.getTransferActivity_TargetDsLanguage()));
+										.getTransferDataActivity_TargetDsLanguage()));
 				
 			}
 		});
@@ -219,10 +219,10 @@ public class TransferActivityPropertySection extends
 				getCommandFramework()
 						.execute(
 								new SetCommand(
-										transferActivity,
+										transferDataActivity,
 										targetCombo.getText(),
 										ModelPackage.eINSTANCE
-												.getTransferActivity_TargetDsContainer()));
+												.getTransferDataActivity_TargetDsContainer()));
 			}
 		});
 
@@ -252,15 +252,15 @@ public class TransferActivityPropertySection extends
 			public void modifyText(ModifyEvent e) {
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetCommand(transferActivity, typeText.getText(),
+						new SetCommand(transferDataActivity, typeText.getText(),
 								ModelPackage.eINSTANCE
-										.getTransferActivity_TargetDsType()));
+										.getTransferDataActivity_TargetDsType()));
 			}
 		});
 		typeText.setEditable(false);
 
 		// Wert aus Modell setzen
-		typeText.setText(this.transferActivity.getTargetDsType());
+		typeText.setText(this.transferDataActivity.getTargetDsType());
 	}
 
 	/**
@@ -284,14 +284,14 @@ public class TransferActivityPropertySection extends
 			public void modifyText(ModifyEvent e) {
 				// Speichern Auswahl in Modell
 				getCommandFramework().execute(
-						new SetCommand(transferActivity, kindText.getText(),
+						new SetCommand(transferDataActivity, kindText.getText(),
 								ModelPackage.eINSTANCE
-										.getTransferActivity_TargetDsKind()));
+										.getTransferDataActivity_TargetDsKind()));
 			}
 		});
 
 		// Wert aus Modell setzen
-		kindText.setText(this.transferActivity.getTargetDsKind());
+		kindText.setText(this.transferDataActivity.getTargetDsKind());
 	}
 
 	/*

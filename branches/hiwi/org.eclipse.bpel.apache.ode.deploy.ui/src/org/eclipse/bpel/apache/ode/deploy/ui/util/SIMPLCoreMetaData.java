@@ -21,6 +21,8 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.simpl.communication.CommunicationPlugIn;
 import org.eclipse.simpl.communication.SIMPLCommunication;
 import org.eclipse.simpl.communication.SIMPLCore;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 
 public class SIMPLCoreMetaData {
@@ -117,6 +119,8 @@ public class SIMPLCoreMetaData {
 	
 	private static DataSource tDs2ds (TDatasource data){
 		DataSource dataSource = new DataSource();
+		Connector connector = new Connector();
+		DataFormat dataFormat = new DataFormat(); 
 		
 		if (data != null){
 			dataSource.setName(data.getDataSourceName());
@@ -124,7 +128,10 @@ public class SIMPLCoreMetaData {
 			dataSource.setType(data.getType());
 			dataSource.setSubType(data.getSubtype());
 			dataSource.setLanguage(data.getLanguage());
-			dataSource.getConnector().getConverterDataFormat().setName(data.getFormat());
+			dataFormat.setName(data.getFormat());
+			
+			connector.setConverterDataFormat(dataFormat);
+			dataSource.setConnector(connector);
 		}
 		
 		return dataSource;

@@ -12,20 +12,20 @@
 package org.eclipse.bpel.simpl.ui.factories;
 
 import org.eclipse.bpel.simpl.model.util.ModelAdapterFactory;
-import org.eclipse.bpel.simpl.ui.adapters.IssueActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.IssueCommandActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.QueryActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.RetrieveDataActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.TransferActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.TransferDataActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.WriteDataBackActivityAdapter;
 import org.eclipse.emf.common.notify.Adapter;
 
 public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 
-	private QueryActivityAdapter queryActivityAdapter;
-	private IssueActivityAdapter issueActivityAdapter;
+	private QueryActivityAdapter queryDataActivityAdapter;
+	private IssueCommandActivityAdapter issueCommandActivityAdapter;
 	private RetrieveDataActivityAdapter retrieveDataActivityAdapter;
 	private WriteDataBackActivityAdapter writeDataBackActivityAdapter;
-	private TransferActivityAdapter transferActivityAdapter;
+	private TransferDataActivityAdapter transferDataActivityAdapter;
 	
 	static private DataManagementUIAdapterFactory instance;
 	
@@ -46,22 +46,22 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createQueryActivityAdapter()
 	 */
 	@Override
-	public Adapter createQueryActivityAdapter() {
-		if (this.queryActivityAdapter == null) {
-			this.queryActivityAdapter = new QueryActivityAdapter();
+	public Adapter createQueryDataActivityAdapter() {
+		if (this.queryDataActivityAdapter == null) {
+			this.queryDataActivityAdapter = new QueryActivityAdapter();
 		}
-		return this.queryActivityAdapter;
+		return this.queryDataActivityAdapter;
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createissueActivityAdapter()
 	 */
 	@Override
-	public Adapter createIssueActivityAdapter() {
-		if (this.issueActivityAdapter == null) {
-			this.issueActivityAdapter = new IssueActivityAdapter();
+	public Adapter createIssueCommandActivityAdapter() {
+		if (this.issueCommandActivityAdapter == null) {
+			this.issueCommandActivityAdapter = new IssueCommandActivityAdapter();
 		}
-		return this.issueActivityAdapter;
+		return this.issueCommandActivityAdapter;
 	}
 		
 	/* (non-Javadoc)
@@ -87,10 +87,10 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
   }
 	
 	@Override
-	public Adapter createTransferActivityAdapter() {
-		if (this.transferActivityAdapter == null) {
-			this.transferActivityAdapter = new TransferActivityAdapter();
+	public Adapter createTransferDataActivityAdapter() {
+		if (this.transferDataActivityAdapter == null) {
+			this.transferDataActivityAdapter = new TransferDataActivityAdapter();
 		}
-		return this.transferActivityAdapter;
+		return this.transferDataActivityAdapter;
 	}
 }

@@ -12,10 +12,10 @@
 package org.eclipse.bpel.simpl.ui.command;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.IssueActivity;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.commands.SetCommand;
 import org.eclipse.emf.ecore.EObject;
@@ -43,12 +43,12 @@ public class SetDsStatementCommand extends SetCommand {
 	 */
 	@Override
 	public Object get() {
-		if (fTarget instanceof QueryActivity){
-			return ((QueryActivity) fTarget).getDsStatement();
+		if (fTarget instanceof QueryDataActivity){
+			return ((QueryDataActivity) fTarget).getDsStatement();
 		}
 		
-		if (fTarget instanceof IssueActivity){
-			return ((IssueActivity) fTarget).getDsStatement();
+		if (fTarget instanceof IssueCommandActivity){
+			return ((IssueCommandActivity) fTarget).getDsStatement();
 		}
 		
 		if (fTarget instanceof RetrieveDataActivity){
@@ -59,8 +59,8 @@ public class SetDsStatementCommand extends SetCommand {
       return ((WriteDataBackActivity) fTarget).getDsStatement();
     }
 		
-		if (fTarget instanceof TransferActivity){
-			return ((TransferActivity) fTarget).getDsStatement();
+		if (fTarget instanceof TransferDataActivity){
+			return ((TransferDataActivity) fTarget).getDsStatement();
 		}
 		
     if (fTarget instanceof DataManagementActivity) {
@@ -75,17 +75,17 @@ public class SetDsStatementCommand extends SetCommand {
 	 */
 	@Override
 	public void set(Object o) {
-		if (fTarget instanceof QueryActivity) {
-			((QueryActivity) fTarget).setDsStatement((String) o);
+		if (fTarget instanceof QueryDataActivity) {
+			((QueryDataActivity) fTarget).setDsStatement((String) o);
 			
-		} else if (fTarget instanceof IssueActivity) {
-			((IssueActivity) fTarget).setDsStatement((String) o);
+		} else if (fTarget instanceof IssueCommandActivity) {
+			((IssueCommandActivity) fTarget).setDsStatement((String) o);
 		} else if (fTarget instanceof RetrieveDataActivity) {
 			((RetrieveDataActivity) fTarget).setDsStatement((String) o);
 		} else if (fTarget instanceof WriteDataBackActivity) {
       ((WriteDataBackActivity) fTarget).setDsStatement((String) o);
-    }  else if (fTarget instanceof TransferActivity) {
-			((TransferActivity) fTarget).setDsStatement((String) o);
+    }  else if (fTarget instanceof TransferDataActivity) {
+			((TransferDataActivity) fTarget).setDsStatement((String) o);
 		} else {
 			throw new IllegalArgumentException(
 					"This model object has no statement to set");

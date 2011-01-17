@@ -9,7 +9,7 @@ package org.eclipse.bpel.simpl.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Issue Activity</b></em>'.
+ * A representation of the model object '<em><b>Issue Command Activity</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -17,9 +17,9 @@ package org.eclipse.bpel.simpl.model;
  * <!-- end-model-doc -->
  *
  *
- * @see org.eclipse.bpel.simpl.model.ModelPackage#getIssueActivity()
+ * @see org.eclipse.bpel.simpl.model.ModelPackage#getIssueCommandActivity()
  * @model
  * @generated
  */
-public interface IssueActivity extends DataManagementActivity {
-} // IssueActivity
+public interface IssueCommandActivity extends DataManagementActivity {
+} // IssueCommandActivity

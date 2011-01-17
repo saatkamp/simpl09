@@ -134,7 +134,7 @@ public class ParametersListPopUp {
 		});
 
 		Button addToStatement = new Button(theShell, SWT.NONE);
-		addToStatement.setText("Insert to statement");
+		addToStatement.setText("Insert into statement");
 		addToStatement.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -160,6 +160,22 @@ public class ParametersListPopUp {
 			}
 		});
 
+		Button cancel = new Button(theShell, SWT.NONE);
+		cancel.setText("Cancel");
+		cancel.addSelectionListener(new SelectionListener() {
+      @Override
+      public void widgetDefaultSelected(SelectionEvent arg0) {
+        this.widgetSelected(arg0);
+      }
+
+      @Override
+      public void widgetSelected(SelectionEvent arg0) {
+        closeWindow();
+        setWindowIsOpen(false);
+      }
+		  
+		});
+		
 		textToSearch.setLayoutData(gridData1);
 
 		listToSearch = new List(theShell, SWT.BORDER | SWT.V_SCROLL);

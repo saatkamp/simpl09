@@ -13,12 +13,12 @@ package org.eclipse.bpel.simpl.model.impl;
 
 import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.IssueActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -76,11 +76,11 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public EObject create(EClass eClass) {
     switch (eClass.getClassifierID()) {
       case ModelPackage.DATA_MANAGEMENT_ACTIVITY: return createDataManagementActivity();
-      case ModelPackage.QUERY_ACTIVITY: return createQueryActivity();
-      case ModelPackage.ISSUE_ACTIVITY: return createIssueActivity();
+      case ModelPackage.QUERY_DATA_ACTIVITY: return createQueryDataActivity();
+      case ModelPackage.ISSUE_COMMAND_ACTIVITY: return createIssueCommandActivity();
       case ModelPackage.RETRIEVE_DATA_ACTIVITY: return createRetrieveDataActivity();
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY: return createWriteDataBackActivity();
-      case ModelPackage.TRANSFER_ACTIVITY: return createTransferActivity();
+      case ModelPackage.TRANSFER_DATA_ACTIVITY: return createTransferDataActivity();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -98,24 +98,23 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
   }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the query activity
-	 * @generated
-	 */
-	public QueryActivity createQueryActivity() {
-    QueryActivityImpl queryActivity = new QueryActivityImpl();
-    return queryActivity;
-  }
-
-	/**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public IssueActivity createIssueActivity() {
-    IssueActivityImpl issueActivity = new IssueActivityImpl();
-    return issueActivity;
+  public QueryDataActivity createQueryDataActivity() {
+    QueryDataActivityImpl queryDataActivity = new QueryDataActivityImpl();
+    return queryDataActivity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IssueCommandActivity createIssueCommandActivity() {
+    IssueCommandActivityImpl issueCommandActivity = new IssueCommandActivityImpl();
+    return issueCommandActivity;
   }
 
   /**
@@ -129,6 +128,16 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TransferDataActivity createTransferDataActivity() {
+    TransferDataActivityImpl transferDataActivity = new TransferDataActivityImpl();
+    return transferDataActivity;
+  }
+
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the retrieve data activity
@@ -137,16 +146,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public RetrieveDataActivity createRetrieveDataActivity() {
     RetrieveDataActivityImpl retrieveDataActivity = new RetrieveDataActivityImpl();
     return retrieveDataActivity;
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public TransferActivity createTransferActivity() {
-    TransferActivityImpl transferActivity = new TransferActivityImpl();
-    return transferActivity;
   }
 
 	/**

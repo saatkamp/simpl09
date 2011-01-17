@@ -32,6 +32,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
@@ -87,6 +89,11 @@ public class StatementTestWizard extends Wizard {
 
     // create a data source object from the activity data source properties
     DataSource activityDataSource = new DataSource();
+    Connector connector = new Connector();
+    DataFormat dataFormat = new DataFormat();
+    
+    connector.setConverterDataFormat(dataFormat);
+    activityDataSource.setConnector(connector);
     activityDataSource.setAddress(activity.getDsAddress());
     activityDataSource.setType(activity.getDsType());
     activityDataSource.setSubType(activity.getDsKind());
@@ -267,11 +274,11 @@ public class StatementTestWizard extends Wizard {
 
       // execute database activity
       if (dataSourceType.equals(DataSourceTypes.DATABASE)) {
-        if (activityType.equals(DMActivityTypes.QUERY_ACTIVITY)
-            || activityType.equals(DMActivityTypes.TRANSFER_ACTIVITY)
+        if (activityType.equals(DMActivityTypes.QUERY_DATA_ACTIVITY)
+            || activityType.equals(DMActivityTypes.TRANSFER_DATA_ACTIVITY)
             || activityType.equals(DMActivityTypes.RETRIEVE_DATA_ACTIVITY)) {
           databaseActivityExecution.executeQueryActivityStatement();
-        } else if (activityType.equals(DMActivityTypes.ISSUE_ACTIVITY)) {
+        } else if (activityType.equals(DMActivityTypes.ISSUE_COMMAND_ACTIVITY)) {
           if (statementTest.getIssue().equals(IssueTypes.SQL_INSERT)) {
             databaseActivityExecution.executeInsertActivityStatement();
           } else if (statementTest.getIssue().equals(IssueTypes.SQL_DELETE)) {
@@ -288,11 +295,11 @@ public class StatementTestWizard extends Wizard {
 
       // execute filesystem activity
       if (dataSourceType.equals(DataSourceTypes.FILESYSTEM)) {
-        if (activityType.equals(DMActivityTypes.QUERY_ACTIVITY)
-            || activityType.equals(DMActivityTypes.TRANSFER_ACTIVITY)
+        if (activityType.equals(DMActivityTypes.QUERY_DATA_ACTIVITY)
+            || activityType.equals(DMActivityTypes.TRANSFER_DATA_ACTIVITY)
             || activityType.equals(DMActivityTypes.RETRIEVE_DATA_ACTIVITY)) {
           filesystemActivityExecution.executeQueryActivityStatement();
-        } else if (activityType.equals(DMActivityTypes.ISSUE_ACTIVITY)) {
+        } else if (activityType.equals(DMActivityTypes.ISSUE_COMMAND_ACTIVITY)) {
           if (statementTest.getIssue().equals(IssueTypes.SQL_DELETE)) {
             filesystemActivityExecution.executeDeleteActivityStatement();
           }

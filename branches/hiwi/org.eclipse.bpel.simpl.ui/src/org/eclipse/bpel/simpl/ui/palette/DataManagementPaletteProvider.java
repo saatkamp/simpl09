@@ -32,11 +32,11 @@ public class DataManagementPaletteProvider implements IPaletteProvider {
     category.setCategoryId("dataManagement");
     category.setOrder(40);
 
-    category.add(new BPELCreationToolEntry("Query", "Creates a new Query Activity",
-        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getQueryActivity())));
+    category.add(new BPELCreationToolEntry("QueryData", "Creates a new QueryData Activity",
+        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getQueryDataActivity())));
 
-    category.add(new BPELCreationToolEntry("Issue", "Creates a new Issue Activity",
-        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getIssueActivity())));
+    category.add(new BPELCreationToolEntry("IssueCommand", "Creates a new IssueCommand Activity",
+        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getIssueCommandActivity())));
 
     category.add(new BPELCreationToolEntry("RetrieveData",
         "Creates a new RetrieveData Activity", new DataManagementUIObjectFactory(
@@ -46,8 +46,8 @@ public class DataManagementPaletteProvider implements IPaletteProvider {
         "Creates a new WriteDataBack Activity", new DataManagementUIObjectFactory(
             ModelPackage.eINSTANCE.getWriteDataBackActivity())));
 
-    category.add(new BPELCreationToolEntry("Transfer", "Creates a new Transfer Activity",
-        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getTransferActivity())));
+    category.add(new BPELCreationToolEntry("TransferData", "Creates a new TransferData Activity",
+        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getTransferDataActivity())));
 
     paletteRoot.add(category);
   }

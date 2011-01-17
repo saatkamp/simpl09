@@ -25,6 +25,8 @@ import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.simpl.core.webservices.client.Authentication;
+import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
@@ -86,8 +88,8 @@ public class PropertySectionUtils {
   @SuppressWarnings("rawtypes")
   private static DataSource findDeploymentDescriptorDatasourceByName(Process process,
       String dsName) {
-    DataSource datasource = null;
-
+    DataSource datasource = new DataSource();
+    
     bpelFile = BPELUtil.getBPELFile(process);
 
     bpelPath = bpelFile.getFullPath();
@@ -120,7 +122,9 @@ public class PropertySectionUtils {
             for (Object data : datasourceElements) {
               String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
               if (name.equals(dsName)) {
-                datasource = new DataSource();
+                Connector connector = new Connector();
+                DataFormat dataFormat = new DataFormat();
+                
                 datasource.setName(name);
                 datasource.setAddress(((Element) data)
                     .getAttributeValue(AT_DATA_SOURCE_ADDRESS));
@@ -130,13 +134,16 @@ public class PropertySectionUtils {
                     .getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
                 datasource.setLanguage(((Element) data)
                     .getAttributeValue(AT_DATA_SOURCE_LANG));
-                datasource.getConnector().getConverterDataFormat()
-                    .setName(((Element) data).getAttributeValue(AT_DATA_FORMAT));
+                
+                dataFormat.setName(((Element) data).getAttributeValue(AT_DATA_FORMAT));
+                connector.setConverterDataFormat(dataFormat);
+                datasource.setConnector(connector);
+                
                 Authentication authent = new Authentication();
                 authent.setUser(((Element) data)
                     .getAttributeValue(AT_DATA_SOURCE_USERNAME));
                 authent.setPassword(((Element) data)
-                    .getAttributeValue(AT_DATA_SOURCE_PASSWORD));
+                    .getAttributeValue(AT_DATA_SOURCE_PASSWORD));                
                 datasource.setAuthentication(authent);
               }
             }
@@ -213,7 +220,7 @@ public class PropertySectionUtils {
     return datasources;
   }
 
-  private static List<String> getRFDatasourceNames() {
+  private static List<String> getRMDatasourceNames() {
     List<String> dataSourceNames = new ArrayList<String>();
 
     List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
@@ -229,7 +236,7 @@ public class PropertySectionUtils {
     List<String> datasources = new ArrayList<String>();
 
     datasources.addAll(getDeploymentDescriptorDatasourceNames(process));
-    datasources.addAll(getRFDatasourceNames());
+    datasources.addAll(getRMDatasourceNames());
 
     return datasources.toArray(new String[0]);
   }

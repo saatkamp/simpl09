@@ -6,27 +6,27 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
-import org.eclipse.bpel.simpl.model.IssueActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Issue Activity</b></em>'.
+ * An implementation of the model object '<em><b>Issue Command Activity</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class IssueActivityImpl extends DataManagementActivityImpl implements IssueActivity {
+public class IssueCommandActivityImpl extends DataManagementActivityImpl implements IssueCommandActivity {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected IssueActivityImpl() {
+  protected IssueCommandActivityImpl() {
     super();
   }
 
@@ -37,7 +37,7 @@ public class IssueActivityImpl extends DataManagementActivityImpl implements Iss
    */
   @Override
   protected EClass eStaticClass() {
-    return ModelPackage.Literals.ISSUE_ACTIVITY;
+    return ModelPackage.Literals.ISSUE_COMMAND_ACTIVITY;
   }
 
-} //IssueActivityImpl
+} //IssueCommandActivityImpl

@@ -99,7 +99,7 @@ public class StatementScreeningPage extends StatementTestWizardPage {
     statementGroup.setText(STATEMENT_GROUP_TEXT);
 
     // add the issue label if it is an issue activity
-    if (statementTest.getActivityName().equals(DMActivityTypes.ISSUE_ACTIVITY)) {
+    if (statementTest.getActivityName().equals(DMActivityTypes.ISSUE_COMMAND_ACTIVITY)) {
       dataSourceIssueLabel = new Label(statementGroup, SWT.NONE);
       dataSourceIssueLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
       dataSourceIssueLabel.setText("Issue: " + this.statementTest.getIssue());
@@ -131,7 +131,7 @@ public class StatementScreeningPage extends StatementTestWizardPage {
 
     this.updateDataSource();
 
-    if (!(this.statementTest.getActivity().equals(DMActivityTypes.ISSUE_ACTIVITY) && this.statementTest
+    if (!(this.statementTest.getActivity().equals(DMActivityTypes.ISSUE_COMMAND_ACTIVITY) && this.statementTest
         .getIssue().equals(IssueTypes.SQL_CREATE))
         && !this.statementTest.getDataSource().getType()
             .equals(DataSourceTypes.FILESYSTEM)) {
@@ -159,13 +159,15 @@ public class StatementScreeningPage extends StatementTestWizardPage {
       });
     }
 
-    if (!this.statementTest.getActivityName().equals(DMActivityTypes.QUERY_ACTIVITY)
-        && !(this.statementTest.getActivityName().equals(DMActivityTypes.ISSUE_ACTIVITY) && this.statementTest
-            .getIssue().equals(IssueTypes.SQL_CREATE))
-        && !(this.statementTest.getActivityName().equals(DMActivityTypes.ISSUE_ACTIVITY) && this.statementTest
-            .getIssue().equals(IssueTypes.SQL_DROP))
-        && !this.statementTest.getActivityName()
-            .equals(DMActivityTypes.TRANSFER_ACTIVITY)
+    if (!this.statementTest.getActivityName().equals(DMActivityTypes.QUERY_DATA_ACTIVITY)
+        && !(this.statementTest.getActivityName().equals(
+            DMActivityTypes.ISSUE_COMMAND_ACTIVITY) && this.statementTest.getIssue()
+            .equals(IssueTypes.SQL_CREATE))
+        && !(this.statementTest.getActivityName().equals(
+            DMActivityTypes.ISSUE_COMMAND_ACTIVITY) && this.statementTest.getIssue()
+            .equals(IssueTypes.SQL_DROP))
+        && !this.statementTest.getActivityName().equals(
+            DMActivityTypes.TRANSFER_DATA_ACTIVITY)
         && !this.statementTest.getActivityName().equals(
             DMActivityTypes.RETRIEVE_DATA_ACTIVITY)
         && !this.statementTest.getDataSource().getType()
@@ -251,20 +253,17 @@ public class StatementScreeningPage extends StatementTestWizardPage {
    * @param dataSource
    */
   public void updateDataSource() {
-    if (this.statementTest.getDataSource() != null) {
-      dataSourceNameLabel
-          .setText("Name: " + this.statementTest.getDataSource().getName());
-      dataSourceTypeLabel
-          .setText("Type: " + this.statementTest.getDataSource().getType());
-      dataSourceSubTypeLabel.setText("Subtype: "
-          + this.statementTest.getDataSource().getSubType());
-      dataSourceLanguageLabel.setText("Language: "
-          + this.statementTest.getDataSource().getLanguage());
-      dataSourceAddressLabel.setText("Address: "
-          + this.statementTest.getDataSource().getAddress());
-      dataSourceDataFormatLabel.setText("Data Format: "
-          + this.statementTest.getDataSource().getConnector().getConverterDataFormat()
-              .getName());
-    }
+    dataSourceNameLabel.setText("Name: " + this.statementTest.getDataSource().getName());
+    dataSourceTypeLabel.setText("Type: " + this.statementTest.getDataSource().getType());
+    dataSourceSubTypeLabel.setText("Subtype: "
+        + this.statementTest.getDataSource().getSubType());
+    dataSourceLanguageLabel.setText("Language: "
+        + this.statementTest.getDataSource().getLanguage());
+    dataSourceAddressLabel.setText("Address: "
+        + this.statementTest.getDataSource().getAddress());
+    dataSourceDataFormatLabel.setText("Data Format: "
+        + this.statementTest.getDataSource().getConnector().getConverterDataFormat()
+            .getName());
+
   }
 }

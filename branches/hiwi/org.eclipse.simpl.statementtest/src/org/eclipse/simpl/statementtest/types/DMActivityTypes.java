@@ -12,9 +12,9 @@ package org.eclipse.simpl.statementtest.types;
  * @link http://code.google.com/p/simpl09/
  */
 public class DMActivityTypes {
-  public static final String ISSUE_ACTIVITY = "IssueActivity";
-  public static final String QUERY_ACTIVITY = "QueryActivity";
+  public static final String ISSUE_COMMAND_ACTIVITY = "IssueCommandActivity";
+  public static final String QUERY_DATA_ACTIVITY = "QueryDataActivity";
   public static final String RETRIEVE_DATA_ACTIVITY = "RetrieveDataActivity";
   public static final String WRITE_DATA_BACK_ACTIVITY = "WriteDataBackActivity";
-  public static final String TRANSFER_ACTIVITY = "TransferActivity";
+  public static final String TRANSFER_DATA_ACTIVITY = "TransferDataActivity";
 }

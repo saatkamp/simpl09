@@ -204,159 +204,159 @@ public interface ModelPackage extends EPackage {
 	int DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 5;
 
 	/**
-   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.QueryActivityImpl <em>Query Activity</em>}' class.
+   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl <em>Query Data Activity</em>}' class.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @see org.eclipse.bpel.simpl.model.impl.QueryActivityImpl
-   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getQueryActivity()
+   * <!-- end-user-doc -->
+   * @see org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl
+   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getQueryDataActivity()
    * @generated
    */
-	int QUERY_ACTIVITY = 1;
+  int QUERY_DATA_ACTIVITY = 1;
 
-	/**
+  /**
    * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION_ELEMENT;
+  int QUERY_DATA_ACTIVITY__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION_ELEMENT;
 
-	/**
+  /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__ELEMENT = DATA_MANAGEMENT_ACTIVITY__ELEMENT;
+  int QUERY_DATA_ACTIVITY__ELEMENT = DATA_MANAGEMENT_ACTIVITY__ELEMENT;
 
-	/**
+  /**
    * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
+  int QUERY_DATA_ACTIVITY__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
 
-	/**
+  /**
    * The feature id for the '<em><b>Documentation</b></em>' containment reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__DOCUMENTATION = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION;
+  int QUERY_DATA_ACTIVITY__DOCUMENTATION = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION;
 
-	/**
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__NAME = DATA_MANAGEMENT_ACTIVITY__NAME;
+  int QUERY_DATA_ACTIVITY__NAME = DATA_MANAGEMENT_ACTIVITY__NAME;
 
-	/**
+  /**
    * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_ACTIVITY__SUPPRESS_JOIN_FAILURE;
+  int QUERY_DATA_ACTIVITY__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_ACTIVITY__SUPPRESS_JOIN_FAILURE;
 
-	/**
+  /**
    * The feature id for the '<em><b>Targets</b></em>' containment reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__TARGETS = DATA_MANAGEMENT_ACTIVITY__TARGETS;
+  int QUERY_DATA_ACTIVITY__TARGETS = DATA_MANAGEMENT_ACTIVITY__TARGETS;
 
-	/**
+  /**
    * The feature id for the '<em><b>Sources</b></em>' containment reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
+  int QUERY_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Address</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int QUERY_DATA_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
+  int QUERY_DATA_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
+  int QUERY_DATA_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+  int QUERY_DATA_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Language</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+  int QUERY_DATA_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
-	/**
+  /**
    * The feature id for the '<em><b>Query Target</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int QUERY_ACTIVITY__QUERY_TARGET = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+  int QUERY_DATA_ACTIVITY__QUERY_TARGET = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
-	/**
-   * The number of structural features of the '<em>Query Activity</em>' class.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int QUERY_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
-
-	/**
-   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.IssueActivityImpl <em>Issue Activity</em>}' class.
+  /**
+   * The number of structural features of the '<em>Query Data Activity</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.bpel.simpl.model.impl.IssueActivityImpl
-   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getIssueActivity()
+   * @generated
+   * @ordered
+   */
+  int QUERY_DATA_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.IssueCommandActivityImpl <em>Issue Command Activity</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.bpel.simpl.model.impl.IssueCommandActivityImpl
+   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getIssueCommandActivity()
    * @generated
    */
-  int ISSUE_ACTIVITY = 2;
+  int ISSUE_COMMAND_ACTIVITY = 2;
 
   /**
    * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -365,7 +365,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION_ELEMENT;
+  int ISSUE_COMMAND_ACTIVITY__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION_ELEMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -374,7 +374,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__ELEMENT = DATA_MANAGEMENT_ACTIVITY__ELEMENT;
+  int ISSUE_COMMAND_ACTIVITY__ELEMENT = DATA_MANAGEMENT_ACTIVITY__ELEMENT;
 
   /**
    * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
@@ -383,7 +383,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
+  int ISSUE_COMMAND_ACTIVITY__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Documentation</b></em>' containment reference.
@@ -392,7 +392,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__DOCUMENTATION = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION;
+  int ISSUE_COMMAND_ACTIVITY__DOCUMENTATION = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -401,7 +401,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__NAME = DATA_MANAGEMENT_ACTIVITY__NAME;
+  int ISSUE_COMMAND_ACTIVITY__NAME = DATA_MANAGEMENT_ACTIVITY__NAME;
 
   /**
    * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
@@ -410,7 +410,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_ACTIVITY__SUPPRESS_JOIN_FAILURE;
+  int ISSUE_COMMAND_ACTIVITY__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_ACTIVITY__SUPPRESS_JOIN_FAILURE;
 
   /**
    * The feature id for the '<em><b>Targets</b></em>' containment reference.
@@ -419,7 +419,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__TARGETS = DATA_MANAGEMENT_ACTIVITY__TARGETS;
+  int ISSUE_COMMAND_ACTIVITY__TARGETS = DATA_MANAGEMENT_ACTIVITY__TARGETS;
 
   /**
    * The feature id for the '<em><b>Sources</b></em>' containment reference.
@@ -428,7 +428,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
+  int ISSUE_COMMAND_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
    * The feature id for the '<em><b>Ds Address</b></em>' attribute.
@@ -437,7 +437,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int ISSUE_COMMAND_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
 
   /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
@@ -446,7 +446,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
+  int ISSUE_COMMAND_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
 
   /**
    * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
@@ -455,7 +455,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
+  int ISSUE_COMMAND_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
 
   /**
    * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
@@ -464,7 +464,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+  int ISSUE_COMMAND_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
   /**
    * The feature id for the '<em><b>Ds Language</b></em>' attribute.
@@ -473,16 +473,16 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+  int ISSUE_COMMAND_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
   /**
-   * The number of structural features of the '<em>Issue Activity</em>' class.
+   * The number of structural features of the '<em>Issue Command Activity</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ISSUE_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+  int ISSUE_COMMAND_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.WriteDataBackActivityImpl <em>Write Data Back Activity</em>}' class.
@@ -785,187 +785,187 @@ public interface ModelPackage extends EPackage {
 
 
 	/**
-   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl <em>Transfer Activity</em>}' class.
+   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl <em>Transfer Data Activity</em>}' class.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @see org.eclipse.bpel.simpl.model.impl.TransferActivityImpl
-   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getTransferActivity()
+   * <!-- end-user-doc -->
+   * @see org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl
+   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getTransferDataActivity()
    * @generated
    */
-	int TRANSFER_ACTIVITY = 5;
+  int TRANSFER_DATA_ACTIVITY = 5;
 
-	/**
+  /**
    * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION_ELEMENT;
+  int TRANSFER_DATA_ACTIVITY__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION_ELEMENT;
 
-	/**
+  /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__ELEMENT = DATA_MANAGEMENT_ACTIVITY__ELEMENT;
+  int TRANSFER_DATA_ACTIVITY__ELEMENT = DATA_MANAGEMENT_ACTIVITY__ELEMENT;
 
-	/**
+  /**
    * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
+  int TRANSFER_DATA_ACTIVITY__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
 
-	/**
+  /**
    * The feature id for the '<em><b>Documentation</b></em>' containment reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__DOCUMENTATION = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION;
+  int TRANSFER_DATA_ACTIVITY__DOCUMENTATION = DATA_MANAGEMENT_ACTIVITY__DOCUMENTATION;
 
-	/**
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__NAME = DATA_MANAGEMENT_ACTIVITY__NAME;
+  int TRANSFER_DATA_ACTIVITY__NAME = DATA_MANAGEMENT_ACTIVITY__NAME;
 
-	/**
+  /**
    * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_ACTIVITY__SUPPRESS_JOIN_FAILURE;
+  int TRANSFER_DATA_ACTIVITY__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_ACTIVITY__SUPPRESS_JOIN_FAILURE;
 
-	/**
+  /**
    * The feature id for the '<em><b>Targets</b></em>' containment reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__TARGETS = DATA_MANAGEMENT_ACTIVITY__TARGETS;
+  int TRANSFER_DATA_ACTIVITY__TARGETS = DATA_MANAGEMENT_ACTIVITY__TARGETS;
 
-	/**
+  /**
    * The feature id for the '<em><b>Sources</b></em>' containment reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
+  int TRANSFER_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Address</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int TRANSFER_DATA_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
+  int TRANSFER_DATA_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
+  int TRANSFER_DATA_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+  int TRANSFER_DATA_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Language</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+  int TRANSFER_DATA_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
-	/**
+  /**
    * The feature id for the '<em><b>Target Ds Address</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__TARGET_DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+  int TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
-	/**
+  /**
    * The feature id for the '<em><b>Target Ds Type</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__TARGET_DS_TYPE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
+  int TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
 
-	/**
+  /**
    * The feature id for the '<em><b>Target Ds Kind</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__TARGET_DS_KIND = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 2;
+  int TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 2;
 
-	/**
+  /**
    * The feature id for the '<em><b>Target Ds Language</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 3;
+  int TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 3;
 
-	/**
+  /**
    * The feature id for the '<em><b>Target Ds Container</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY__TARGET_DS_CONTAINER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 4;
+  int TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 4;
 
-	/**
-   * The number of structural features of the '<em>Transfer Activity</em>' class.
+  /**
+   * The number of structural features of the '<em>Transfer Data Activity</em>' class.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int TRANSFER_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 5;
+  int TRANSFER_DATA_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 5;
 
-	/**
+  /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataManagementActivity <em>Data Management Activity</em>}'.
    * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -996,6 +996,27 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsLanguage();
 
 	/**
+   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.QueryDataActivity <em>Query Data Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Query Data Activity</em>'.
+   * @see org.eclipse.bpel.simpl.model.QueryDataActivity
+   * @generated
+   */
+  EClass getQueryDataActivity();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.QueryDataActivity#getQueryTarget <em>Query Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Query Target</em>'.
+   * @see org.eclipse.bpel.simpl.model.QueryDataActivity#getQueryTarget()
+   * @see #getQueryDataActivity()
+   * @generated
+   */
+  EAttribute getQueryDataActivity_QueryTarget();
+
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Ds Kind</em>'.
@@ -1026,33 +1047,14 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsAddress();
 
 	/**
-   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.QueryActivity <em>Query Activity</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for class '<em>Query Activity</em>'.
-   * @see org.eclipse.bpel.simpl.model.QueryActivity
-   * @generated
-   */
-	EClass getQueryActivity();
-
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.QueryActivity#getQueryTarget <em>Query Target</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Query Target</em>'.
-   * @see org.eclipse.bpel.simpl.model.QueryActivity#getQueryTarget()
-   * @see #getQueryActivity()
-   * @generated
-   */
-	EAttribute getQueryActivity_QueryTarget();
-
-	/**
-   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.IssueActivity <em>Issue Activity</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.IssueCommandActivity <em>Issue Command Activity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Issue Activity</em>'.
-   * @see org.eclipse.bpel.simpl.model.IssueActivity
+   * @return the meta object for class '<em>Issue Command Activity</em>'.
+   * @see org.eclipse.bpel.simpl.model.IssueCommandActivity
    * @generated
    */
-  EClass getIssueActivity();
+  EClass getIssueCommandActivity();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity <em>Write Data Back Activity</em>}'.
@@ -1087,6 +1089,71 @@ public interface ModelPackage extends EPackage {
   EAttribute getWriteDataBackActivity_QueryTarget();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.TransferDataActivity <em>Transfer Data Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Transfer Data Activity</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity
+   * @generated
+   */
+  EClass getTransferDataActivity();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsAddress <em>Target Ds Address</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Ds Address</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsAddress()
+   * @see #getTransferDataActivity()
+   * @generated
+   */
+  EAttribute getTransferDataActivity_TargetDsAddress();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType <em>Target Ds Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Ds Type</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType()
+   * @see #getTransferDataActivity()
+   * @generated
+   */
+  EAttribute getTransferDataActivity_TargetDsType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsKind <em>Target Ds Kind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Ds Kind</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsKind()
+   * @see #getTransferDataActivity()
+   * @generated
+   */
+  EAttribute getTransferDataActivity_TargetDsKind();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsLanguage <em>Target Ds Language</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Ds Language</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsLanguage()
+   * @see #getTransferDataActivity()
+   * @generated
+   */
+  EAttribute getTransferDataActivity_TargetDsLanguage();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsContainer <em>Target Ds Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Ds Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsContainer()
+   * @see #getTransferDataActivity()
+   * @generated
+   */
+  EAttribute getTransferDataActivity_TargetDsContainer();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity <em>Retrieve Data Activity</em>}'.
    * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -1105,71 +1172,6 @@ public interface ModelPackage extends EPackage {
    * @generated
    */
 	EReference getRetrieveDataActivity_DataVariable();
-
-	/**
-   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.TransferActivity <em>Transfer Activity</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Transfer Activity</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferActivity
-   * @generated
-   */
-	EClass getTransferActivity();
-
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsAddress <em>Target Ds Address</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Address</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsAddress()
-   * @see #getTransferActivity()
-   * @generated
-   */
-	EAttribute getTransferActivity_TargetDsAddress();
-
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsType <em>Target Ds Type</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Type</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsType()
-   * @see #getTransferActivity()
-   * @generated
-   */
-	EAttribute getTransferActivity_TargetDsType();
-
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsKind <em>Target Ds Kind</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Kind</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsKind()
-   * @see #getTransferActivity()
-   * @generated
-   */
-	EAttribute getTransferActivity_TargetDsKind();
-
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsLanguage <em>Target Ds Language</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Language</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsLanguage()
-   * @see #getTransferActivity()
-   * @generated
-   */
-	EAttribute getTransferActivity_TargetDsLanguage();
-
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsContainer <em>Target Ds Container</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Container</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferActivity#getTargetDsContainer()
-   * @see #getTransferActivity()
-   * @generated
-   */
-	EAttribute getTransferActivity_TargetDsContainer();
 
 	/**
    * Returns the factory that creates the instances of the model.
@@ -1221,6 +1223,24 @@ public interface ModelPackage extends EPackage {
 		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE = eINSTANCE.getDataManagementActivity_DsLanguage();
 
 		/**
+     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl <em>Query Data Activity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl
+     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getQueryDataActivity()
+     * @generated
+     */
+    EClass QUERY_DATA_ACTIVITY = eINSTANCE.getQueryDataActivity();
+
+    /**
+     * The meta object literal for the '<em><b>Query Target</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUERY_DATA_ACTIVITY__QUERY_TARGET = eINSTANCE.getQueryDataActivity_QueryTarget();
+
+    /**
      * The meta object literal for the '<em><b>Ds Kind</b></em>' attribute feature.
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1245,32 +1265,14 @@ public interface ModelPackage extends EPackage {
 		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS = eINSTANCE.getDataManagementActivity_DsAddress();
 
 		/**
-     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.QueryActivityImpl <em>Query Activity</em>}' class.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @see org.eclipse.bpel.simpl.model.impl.QueryActivityImpl
-     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getQueryActivity()
-     * @generated
-     */
-		EClass QUERY_ACTIVITY = eINSTANCE.getQueryActivity();
-
-		/**
-     * The meta object literal for the '<em><b>Query Target</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute QUERY_ACTIVITY__QUERY_TARGET = eINSTANCE.getQueryActivity_QueryTarget();
-
-		/**
-     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.IssueActivityImpl <em>Issue Activity</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.IssueCommandActivityImpl <em>Issue Command Activity</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.bpel.simpl.model.impl.IssueActivityImpl
-     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getIssueActivity()
+     * @see org.eclipse.bpel.simpl.model.impl.IssueCommandActivityImpl
+     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getIssueCommandActivity()
      * @generated
      */
-    EClass ISSUE_ACTIVITY = eINSTANCE.getIssueActivity();
+    EClass ISSUE_COMMAND_ACTIVITY = eINSTANCE.getIssueCommandActivity();
 
     /**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.WriteDataBackActivityImpl <em>Write Data Back Activity</em>}' class.
@@ -1299,6 +1301,56 @@ public interface ModelPackage extends EPackage {
     EAttribute WRITE_DATA_BACK_ACTIVITY__QUERY_TARGET = eINSTANCE.getWriteDataBackActivity_QueryTarget();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl <em>Transfer Data Activity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl
+     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getTransferDataActivity()
+     * @generated
+     */
+    EClass TRANSFER_DATA_ACTIVITY = eINSTANCE.getTransferDataActivity();
+
+    /**
+     * The meta object literal for the '<em><b>Target Ds Address</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS = eINSTANCE.getTransferDataActivity_TargetDsAddress();
+
+    /**
+     * The meta object literal for the '<em><b>Target Ds Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE = eINSTANCE.getTransferDataActivity_TargetDsType();
+
+    /**
+     * The meta object literal for the '<em><b>Target Ds Kind</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND = eINSTANCE.getTransferDataActivity_TargetDsKind();
+
+    /**
+     * The meta object literal for the '<em><b>Target Ds Language</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE = eINSTANCE.getTransferDataActivity_TargetDsLanguage();
+
+    /**
+     * The meta object literal for the '<em><b>Target Ds Container</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER = eINSTANCE.getTransferDataActivity_TargetDsContainer();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.RetrieveDataActivityImpl <em>Retrieve Data Activity</em>}' class.
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1315,56 +1367,6 @@ public interface ModelPackage extends EPackage {
      * @generated
      */
 		EReference RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE = eINSTANCE.getRetrieveDataActivity_DataVariable();
-
-		/**
-     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.TransferActivityImpl <em>Transfer Activity</em>}' class.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @see org.eclipse.bpel.simpl.model.impl.TransferActivityImpl
-     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getTransferActivity()
-     * @generated
-     */
-		EClass TRANSFER_ACTIVITY = eINSTANCE.getTransferActivity();
-
-		/**
-     * The meta object literal for the '<em><b>Target Ds Address</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute TRANSFER_ACTIVITY__TARGET_DS_ADDRESS = eINSTANCE.getTransferActivity_TargetDsAddress();
-
-		/**
-     * The meta object literal for the '<em><b>Target Ds Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute TRANSFER_ACTIVITY__TARGET_DS_TYPE = eINSTANCE.getTransferActivity_TargetDsType();
-
-		/**
-     * The meta object literal for the '<em><b>Target Ds Kind</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute TRANSFER_ACTIVITY__TARGET_DS_KIND = eINSTANCE.getTransferActivity_TargetDsKind();
-
-		/**
-     * The meta object literal for the '<em><b>Target Ds Language</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE = eINSTANCE.getTransferActivity_TargetDsLanguage();
-
-		/**
-     * The meta object literal for the '<em><b>Target Ds Container</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute TRANSFER_ACTIVITY__TARGET_DS_CONTAINER = eINSTANCE.getTransferActivity_TargetDsContainer();
 
 	}
 

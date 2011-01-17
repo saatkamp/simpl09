@@ -12,8 +12,8 @@
 package org.eclipse.bpel.simpl.ui.command;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.IssueActivity;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.commands.SetCommand;
@@ -44,12 +44,12 @@ public class SetDsTypeCommand extends SetCommand {
 	 */
 	@Override
 	public Object get() {
-		if (fTarget instanceof QueryActivity) {
-			return ((QueryActivity) fTarget).getDsType();
+		if (fTarget instanceof QueryDataActivity) {
+			return ((QueryDataActivity) fTarget).getDsType();
 		}
 
-		if (fTarget instanceof IssueActivity) {
-			return ((IssueActivity) fTarget).getDsType();
+		if (fTarget instanceof IssueCommandActivity) {
+			return ((IssueCommandActivity) fTarget).getDsType();
 		}
 
 		if (fTarget instanceof RetrieveDataActivity) {
@@ -75,11 +75,11 @@ public class SetDsTypeCommand extends SetCommand {
 	 */
 	@Override
 	public void set(Object o) {
-		if (fTarget instanceof QueryActivity) {
-			((QueryActivity) fTarget).setDsType((String) o);
+		if (fTarget instanceof QueryDataActivity) {
+			((QueryDataActivity) fTarget).setDsType((String) o);
 
-		} else if (fTarget instanceof IssueActivity) {
-			((IssueActivity) fTarget).setDsType((String) o);
+		} else if (fTarget instanceof IssueCommandActivity) {
+			((IssueCommandActivity) fTarget).setDsType((String) o);
 		} else if (fTarget instanceof RetrieveDataActivity) {
 			((RetrieveDataActivity) fTarget).setDsType((String) o);
 		} else if (fTarget instanceof WriteDataBackActivity) {
