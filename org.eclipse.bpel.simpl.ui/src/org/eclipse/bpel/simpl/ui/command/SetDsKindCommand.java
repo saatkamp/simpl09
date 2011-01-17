@@ -12,8 +12,8 @@
 package org.eclipse.bpel.simpl.ui.command;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.IssueActivity;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.commands.SetCommand;
@@ -42,12 +42,12 @@ public class SetDsKindCommand extends SetCommand {
 	 */
 	@Override
 	public Object get() {
-		if (fTarget instanceof QueryActivity){
-			return ((QueryActivity) fTarget).getDsKind();
+		if (fTarget instanceof QueryDataActivity){
+			return ((QueryDataActivity) fTarget).getDsKind();
 		}
 		
-		if (fTarget instanceof IssueActivity){
-			return ((IssueActivity) fTarget).getDsKind();
+		if (fTarget instanceof IssueCommandActivity){
+			return ((IssueCommandActivity) fTarget).getDsKind();
 		}
 	
 		if (fTarget instanceof RetrieveDataActivity){
@@ -70,11 +70,11 @@ public class SetDsKindCommand extends SetCommand {
 	 */
 	@Override
 	public void set(Object o) {
-		if (fTarget instanceof QueryActivity) {
-			((QueryActivity) fTarget).setDsKind((String) o);
+		if (fTarget instanceof QueryDataActivity) {
+			((QueryDataActivity) fTarget).setDsKind((String) o);
 			
-		} else if (fTarget instanceof IssueActivity) {
-			((IssueActivity) fTarget).setDsKind((String) o);
+		} else if (fTarget instanceof IssueCommandActivity) {
+			((IssueCommandActivity) fTarget).setDsKind((String) o);
 		} else if (fTarget instanceof RetrieveDataActivity) {
       ((RetrieveDataActivity) fTarget).setDsKind((String) o);
     } else if (fTarget instanceof WriteDataBackActivity) {

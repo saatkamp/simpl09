@@ -2,7 +2,7 @@ package org.eclipse.bpel.simpl.ui.hovers;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.ui.IHoverHelper;
 import org.eclipse.bpel.ui.adapters.IAnnotatedElement;
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
+
 
 /**
  * <b>Purpose:</b> <br>
@@ -97,13 +98,13 @@ public class SIMPLHoverHelper implements IHoverHelper {
 						panel.add(new Label(annotation[i + 1]));
 					}
 				}
-				if (modelObject instanceof QueryActivity) {
-					if (!((QueryActivity) modelObject).getQueryTarget()
+				if (modelObject instanceof QueryDataActivity) {
+					if (!((QueryDataActivity) modelObject).getQueryTarget()
 							.isEmpty()) {
 						panel.add(new Label(ModelPackage.eINSTANCE
-								.getQueryActivity_QueryTarget().getName()
+								.getQueryDataActivity_QueryTarget().getName()
 								+ " :"));
-						panel.add(new Label(((QueryActivity) modelObject)
+						panel.add(new Label(((QueryDataActivity) modelObject)
 								.getQueryTarget()));
 					}
 				}

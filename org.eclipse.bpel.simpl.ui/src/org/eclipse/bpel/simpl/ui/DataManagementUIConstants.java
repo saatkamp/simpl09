@@ -24,16 +24,16 @@ public class DataManagementUIConstants {
 	
 	// Activities
 	/** The Constant ICON_QUERY_16. */
-	public static final String ICON_QUERY_16 = "obj16/queryactivity.png";
+	public static final String ICON_QUERY_16 = "obj16/querydataactivity.png";
 	
 	/** The Constant ICON_QUERY_32. */
-	public static final String ICON_QUERY_32 = "obj20/queryactivity.png";
+	public static final String ICON_QUERY_32 = "obj20/querydataactivity.png";
 	
 	/** The Constant ICON_INSERT_16. */
-	public static final String ICON_ISSUE_16 = "obj16/issueactivity.png";
+	public static final String ICON_ISSUE_16 = "obj16/issuecommandactivity.png";
 	
 	/** The Constant ICON_INSERT_32. */
-	public static final String ICON_ISSUE_32 = "obj20/issueactivity.png";
+	public static final String ICON_ISSUE_32 = "obj20/issuecommandactivity.png";
 	
 	/** The Constant ICON_RETRIEVEDATA_16. */
 	public static final String ICON_RETRIEVEDATA_16 = "obj16/retrievedataactivity.png";
@@ -51,8 +51,8 @@ public class DataManagementUIConstants {
 	public static final String ICON_REFERENCE_VARIABLE_16 = "obj16/reference.png";
 	
 	/** The Constant ICON_TRANSFER_VARIABLE_16. */
-	public static final String ICON_TRANSFER_16 = "obj16/transferactivity.png";
+	public static final String ICON_TRANSFER_16 = "obj16/transferdataactivity.png";
 	
 	/** The Constant ICON_TRANSFER_VARIABLE_32. */
-	public static final String ICON_TRANSFER_20 = "obj20/transferactivity.png";
+	public static final String ICON_TRANSFER_20 = "obj20/transferdataactivity.png";
 }

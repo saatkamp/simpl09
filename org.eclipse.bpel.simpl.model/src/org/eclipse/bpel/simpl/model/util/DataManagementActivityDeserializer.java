@@ -22,12 +22,12 @@ import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.extensions.BPELActivityDeserializer;
 import org.eclipse.bpel.model.resource.BPELReader;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.IssueActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.emf.common.util.URI;
 import org.w3c.dom.Element;
@@ -56,11 +56,11 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
     /*
      * QueryActivity
      */
-    if (DataManagementConstants.ND_QUERY_ACTIVITY.equals(elementType.getLocalPart())) {
+    if (DataManagementConstants.ND_QUERY_DATA_ACTIVITY.equals(elementType.getLocalPart())) {
       Element queryActivityElement = (Element) node;
 
       // create a QueryActivity model object
-      QueryActivity activity = ModelFactory.eINSTANCE.createQueryActivity();
+      QueryDataActivity activity = ModelFactory.eINSTANCE.createQueryDataActivity();
 
       // attach the DOM node to our new activity
       activity.setElement(queryActivityElement);
@@ -69,7 +69,7 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       this.setCommonAttributes(activity, node);
 
       // handle the QueryActivity attributes
-      String attQueryTarget = ModelPackage.eINSTANCE.getQueryActivity_QueryTarget()
+      String attQueryTarget = ModelPackage.eINSTANCE.getQueryDataActivity_QueryTarget()
           .getName();
 
       if (((Element) node).getAttribute(attQueryTarget) != null) {
@@ -82,11 +82,11 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
     /*
      * IssueActivity
      */
-    if (DataManagementConstants.ND_ISSUE_ACTIVITY.equals(elementType.getLocalPart())) {
+    if (DataManagementConstants.ND_ISSUE_COMMAND_ACTIVITY.equals(elementType.getLocalPart())) {
       Element issueActivityElement = (Element) node;
 
       // create a InsertActivity model object
-      IssueActivity activity = ModelFactory.eINSTANCE.createIssueActivity();
+      IssueCommandActivity activity = ModelFactory.eINSTANCE.createIssueCommandActivity();
 
       // attach the DOM node to our new activity
       activity.setElement(issueActivityElement);
@@ -157,23 +157,23 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
     }
 
     /*
-     * TransferActivity
+     * TransferDataActivity
      */
-    if (DataManagementConstants.ND_TRANSFER_ACTIVITY.equals(elementType.getLocalPart())) {
-      Element transferActivityElement = (Element) node;
+    if (DataManagementConstants.ND_TRANSFER_DATA_ACTIVITY.equals(elementType.getLocalPart())) {
+      Element transferDataActivityElement = (Element) node;
 
-      // create a TransferActivity model object
-      TransferActivity activity = ModelFactory.eINSTANCE.createTransferActivity();
+      // create a TransferDataActivity model object
+      TransferDataActivity activity = ModelFactory.eINSTANCE.createTransferDataActivity();
 
       // attach the DOM node to our new activity
-      activity.setElement(transferActivityElement);
+      activity.setElement(transferDataActivityElement);
 
       // handle the DataManagementActivity attributes
       this.setCommonAttributes(activity, node);
 
-      // handle the TransferActivity attributes
+      // handle the TransferDataActivity attributes
       String attTargetContainer = ModelPackage.eINSTANCE
-          .getTransferActivity_TargetDsContainer().getName();
+          .getTransferDataActivity_TargetDsContainer().getName();
       String attTargetKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind()
           .getName();
       String attTargetType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType()
@@ -183,26 +183,26 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       String attTargetLanguage = ModelPackage.eINSTANCE
           .getDataManagementActivity_DsLanguage().getName();
 
-      if (transferActivityElement.getAttribute(attTargetContainer) != null) {
-        activity.setTargetDsContainer(transferActivityElement
+      if (transferDataActivityElement.getAttribute(attTargetContainer) != null) {
+        activity.setTargetDsContainer(transferDataActivityElement
             .getAttribute(attTargetContainer));
       }
 
-      if (transferActivityElement.getAttribute(attTargetKind) != null) {
-        activity.setTargetDsKind(transferActivityElement.getAttribute(attTargetKind));
+      if (transferDataActivityElement.getAttribute(attTargetKind) != null) {
+        activity.setTargetDsKind(transferDataActivityElement.getAttribute(attTargetKind));
       }
 
-      if (transferActivityElement.getAttribute(attTargetType) != null) {
-        activity.setTargetDsType(transferActivityElement.getAttribute(attTargetType));
+      if (transferDataActivityElement.getAttribute(attTargetType) != null) {
+        activity.setTargetDsType(transferDataActivityElement.getAttribute(attTargetType));
       }
 
-      if (transferActivityElement.getAttribute(attTargetAddress) != null) {
-        activity.setTargetDsAddress(transferActivityElement
+      if (transferDataActivityElement.getAttribute(attTargetAddress) != null) {
+        activity.setTargetDsAddress(transferDataActivityElement
             .getAttribute(attTargetAddress));
       }
 
-      if (transferActivityElement.getAttribute(attTargetLanguage) != null) {
-        activity.setTargetDsLanguage(transferActivityElement
+      if (transferDataActivityElement.getAttribute(attTargetLanguage) != null) {
+        activity.setTargetDsLanguage(transferDataActivityElement
             .getAttribute(attTargetLanguage));
       }
 

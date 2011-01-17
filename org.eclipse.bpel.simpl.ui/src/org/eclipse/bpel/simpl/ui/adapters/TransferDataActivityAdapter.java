@@ -17,6 +17,6 @@ package org.eclipse.bpel.simpl.ui.adapters;
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  */
-public class TransferActivityAdapter extends DMActivityAdapter {
+public class TransferDataActivityAdapter extends DMActivityAdapter {
 
 }

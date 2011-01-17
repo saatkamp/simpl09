@@ -11,7 +11,8 @@
  */
 package org.eclipse.bpel.simpl.ui.command;
 
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.commands.SetCommand;
 import org.eclipse.emf.ecore.EObject;
 
@@ -38,9 +39,13 @@ public class SetQueryTargetCommand extends SetCommand {
 	 */
 	@Override
 	public Object get() {
-		if (fTarget instanceof QueryActivity){
-			return ((QueryActivity) fTarget).getQueryTarget();
+		if (fTarget instanceof QueryDataActivity){
+			return ((QueryDataActivity) fTarget).getQueryTarget();
 		}
+
+    if (fTarget instanceof WriteDataBackActivity){
+      return ((WriteDataBackActivity) fTarget).getQueryTarget();
+    }
 		
 		throw new IllegalArgumentException("This model object has no variable to get");
 	}
@@ -50,12 +55,15 @@ public class SetQueryTargetCommand extends SetCommand {
 	 */
 	@Override
 	public void set(Object o) {
-		if (fTarget instanceof QueryActivity) {
-			((QueryActivity) fTarget).setQueryTarget((String) o);
-		} else {
-			throw new IllegalArgumentException(
-					"This model object has no query target to get");
-		}
+    if (fTarget instanceof QueryDataActivity) {
+      ((QueryDataActivity) fTarget).setQueryTarget((String) o);
+    } else if (fTarget instanceof WriteDataBackActivity) {
+      ((WriteDataBackActivity) fTarget).setQueryTarget((String) o);
+    }
+
+    else {
+      throw new IllegalArgumentException("This model object has no query target to get");
+    }
 	}
 	
 }

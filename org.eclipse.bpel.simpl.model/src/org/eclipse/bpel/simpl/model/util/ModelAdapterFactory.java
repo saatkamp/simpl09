@@ -18,11 +18,11 @@ import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.IssueActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -93,12 +93,12 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
         return createDataManagementActivityAdapter();
       }
       @Override
-      public Adapter caseQueryActivity(QueryActivity object) {
-        return createQueryActivityAdapter();
+      public Adapter caseQueryDataActivity(QueryDataActivity object) {
+        return createQueryDataActivityAdapter();
       }
       @Override
-      public Adapter caseIssueActivity(IssueActivity object) {
-        return createIssueActivityAdapter();
+      public Adapter caseIssueCommandActivity(IssueCommandActivity object) {
+        return createIssueCommandActivityAdapter();
       }
       @Override
       public Adapter caseRetrieveDataActivity(RetrieveDataActivity object) {
@@ -109,8 +109,8 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
         return createWriteDataBackActivityAdapter();
       }
       @Override
-      public Adapter caseTransferActivity(TransferActivity object) {
-        return createTransferActivityAdapter();
+      public Adapter caseTransferDataActivity(TransferDataActivity object) {
+        return createTransferDataActivityAdapter();
       }
       @Override
       public Adapter caseWSDLElement(WSDLElement object) {
@@ -175,30 +175,30 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
   }
 
 	/**
-   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.QueryActivity <em>Query Activity</em>}'.
-   * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.bpel.simpl.model.QueryActivity
-   * @generated
-   */
-	public Adapter createQueryActivityAdapter() {
-    return null;
-  }
-
-	/**
-   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.IssueActivity <em>Issue Activity</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.QueryDataActivity <em>Query Data Activity</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.bpel.simpl.model.IssueActivity
+   * @see org.eclipse.bpel.simpl.model.QueryDataActivity
    * @generated
    */
-  public Adapter createIssueActivityAdapter() {
+  public Adapter createQueryDataActivityAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.IssueCommandActivity <em>Issue Command Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.bpel.simpl.model.IssueCommandActivity
+   * @generated
+   */
+  public Adapter createIssueCommandActivityAdapter() {
     return null;
   }
 
@@ -217,6 +217,20 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.TransferDataActivity <em>Transfer Data Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity
+   * @generated
+   */
+  public Adapter createTransferDataActivityAdapter() {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity <em>Retrieve Data Activity</em>}'.
    * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -227,20 +241,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
    * @generated
    */
 	public Adapter createRetrieveDataActivityAdapter() {
-    return null;
-  }
-
-	/**
-   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.TransferActivity <em>Transfer Activity</em>}'.
-   * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.bpel.simpl.model.TransferActivity
-   * @generated
-   */
-	public Adapter createTransferActivityAdapter() {
     return null;
   }
 

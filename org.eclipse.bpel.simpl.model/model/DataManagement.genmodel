@@ -16,10 +16,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsStatement"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsLanguage"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//QueryActivity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//QueryActivity/queryTarget"/>
+    <genClasses ecoreClass="DataManagement.ecore#//QueryDataActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//QueryDataActivity/queryTarget"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//IssueActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//IssueCommandActivity"/>
     <genClasses ecoreClass="DataManagement.ecore#//RetrieveDataActivity">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//RetrieveDataActivity/dataVariable"/>
     </genClasses>
@@ -27,12 +27,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//WriteDataBackActivity/dataVariable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//WriteDataBackActivity/queryTarget"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//TransferActivity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsAddress"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsKind"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsLanguage"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/targetDsContainer"/>
+    <genClasses ecoreClass="DataManagement.ecore#//TransferDataActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsKind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsContainer"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

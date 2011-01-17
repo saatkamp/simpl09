@@ -18,11 +18,11 @@ package org.eclipse.bpel.simpl.model.util;
 public class DataManagementConstants {
 
 	// node names
-	/** The Constant ND_QUERY_ACTIVITY. */
-	public static final String ND_QUERY_ACTIVITY = "queryActivity";
+	/** The Constant ND_QUERY_DATA_ACTIVITY. */
+	public static final String ND_QUERY_DATA_ACTIVITY = "queryDataActivity";
 	
-	/** The Constant ND_ISSUE_ACTIVITY. */
-	public static final String ND_ISSUE_ACTIVITY = "issueActivity";
+	/** The Constant ND_ISSUE_COMMAND_ACTIVITY. */
+	public static final String ND_ISSUE_COMMAND_ACTIVITY = "issueCommandActivity";
 
   /** The Constant ND_WRITE_DATA_BACK_ACTIVITY. */
   public static final String ND_WRITE_DATA_BACK_ACTIVITY = "writeDataBackActivity";
@@ -30,8 +30,8 @@ public class DataManagementConstants {
 	/** The Constant ND_RETRIEVE_DATA_ACTIVITY. */
 	public static final String ND_RETRIEVE_DATA_ACTIVITY = "retrieveDataActivity";
 	
-	/** The Constant ND_TRANSFER_ACTIVITY. */
-	public static final String ND_TRANSFER_ACTIVITY = "transferActivity";
+	/** The Constant ND_TRANSFER_DATA_ACTIVITY. */
+	public static final String ND_TRANSFER_DATA_ACTIVITY = "transferDataActivity";
 
 	/** The Constant ND_DATA_MANAGEMENT_ACTIVITY. */
 	public static final String ND_DATA_MANAGEMENT_ACTIVITY = "dataManagementActivity";

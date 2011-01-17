@@ -1,17 +1,15 @@
 /**
- * <b>Purpose:</b> <br>
+ * <b>Purpose:</b> Implements the property section for the {@link WriteDataBackActivity}. <br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
  * 
- * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id: WriteDataBackVariableSection.java 1730 2010-12-09 14:19:43Z michael.schneidt@arcor.de $ <br>
+ * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>, Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
+ * @version $Id: QueryActivityPropertySection.java 1743 2010-12-19 13:32:19Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.properties;
-
-import java.io.File;
 
 import org.eclipse.bpel.common.ui.assist.FieldAssistAdapter;
 import org.eclipse.bpel.model.Variable;
@@ -22,6 +20,7 @@ import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
+import org.eclipse.bpel.simpl.ui.command.SetQueryTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
@@ -33,11 +32,8 @@ import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;
 import org.eclipse.bpel.ui.details.providers.VariableContentProvider;
 import org.eclipse.bpel.ui.details.providers.VariableFilter;
 import org.eclipse.bpel.ui.proposal.providers.ModelContentProposalProvider;
-import org.eclipse.bpel.ui.util.BatchedMultiObjectAdapter;
 import org.eclipse.bpel.ui.util.ModelHelper;
-import org.eclipse.bpel.ui.util.MultiObjectAdapter;
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
@@ -45,7 +41,6 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener;
 import org.eclipse.jface.fieldassist.IControlContentAdapter;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.ModifyEvent;
@@ -60,19 +55,17 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.xsd.XSDTypeDefinition;
 import org.simpl.core.webservices.client.DataSource;
 
-/**
- * The Class WriteDataBackVariableSection.
- */
+
+@SuppressWarnings("unused")
 public class WriteDataBackActivityPropertySection extends ADataManagementActivityPropertySection {
 
-	private VariableFilter fInputVariableFilter = new VariableFilter();
+  private VariableFilter fInputVariableFilter = new VariableFilter();
 
 	/** The tabels pop window tables. */
 	SchemaListPopUp schemaPopWindow;
@@ -83,24 +76,29 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
+	private Label statementLabel = null;
+	//private Text statementText = null;
+	private Button showStatementCheckBox = null;
 	private Label dataSourceAddressLabel = null;
 	private CCombo dataSourceAddressCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
-	//private Button openEditorButton = null;
-	private Button openStatementTestWizardButton = null;
 	private Label languageLabel = null;
 	private Text languageText = null;
-
+	private Composite parentComposite = null;
+	private Label queryTargetLabel = null;
+	private CCombo queryTargetCombo = null;
+	
+  private Button inputVariableButton;
+  private Label inputVariableLabel;
+  private Text inputVariableText;
+	
 	private LiveEditStyleText statementText = null;
-	private Button insertParameterVariable = null;
-	private Button insertContainerVariable = null;
-	private Button insertTable = null;
-	private Button Save = null;
-	private Button command = null, file = null; //, folder = null, driver = null;
-
+	
+	
 	private WriteDataBackActivity activity;
-
+	private Button command = null, file = null; //, folder = null, driver = null;
+	
 	/**
 	 * Make this section use all the vertical space it can get.
 	 * 
@@ -120,18 +118,22 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 
 		createWidgets(parent);
 
-		if (activity.getDsStatement() == null) {
+		if (activity.getDsStatement() == null){
 			// Setzen das Statement
 			setStatement("");
-		} else {
+		}else {
 			// Setzen das Statement
 			setStatement(activity.getDsStatement());
 		}
-
+		
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(activity.getDsAddress());
+		// Setzen die Zieleinheit des Queries.
+		queryTargetCombo.setText(!activity.getQueryTarget().equals("target") ? activity.getQueryTarget() : "");
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
+		
+		
 	}
 
 	/**
@@ -140,13 +142,12 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 	 * @param composite
 	 *            to put the content in.
 	 */
-	@SuppressWarnings("unused")
-  private void createWidgets(Composite composite) {
+	private void createWidgets(Composite composite) {
 		this.parentComposite = composite;
-		GridData gridData130 = new GridData();
-		gridData130.horizontalAlignment = GridData.FILL;
-		gridData130.grabExcessHorizontalSpace = true;
-		gridData130.verticalAlignment = GridData.CENTER;
+		GridData gridData13 = new GridData();
+		gridData13.horizontalAlignment = GridData.FILL;
+		gridData13.grabExcessHorizontalSpace = true;
+		gridData13.verticalAlignment = GridData.CENTER;
 		GridData gridData4 = new GridData();
 		gridData4.horizontalAlignment = GridData.FILL;
 		gridData4.verticalAlignment = GridData.CENTER;
@@ -186,7 +187,7 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 		parentComposite.setLayout(gridLayout);
 		parentComposite.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		parentComposite.setSize(new Point(582, 350));
+		parentComposite.setSize(new Point(582, 294));
 		typeLabel = new Label(composite, SWT.NONE);
 		typeLabel.setText("Type of data source:");
 		typeLabel.setBackground(Display.getCurrent().getSystemColor(
@@ -217,18 +218,15 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 								dataSourceAddressCombo.getText()));
 
 				DataSource dataSource = getDataSource();
-				if (dataSource != null) {
+				if (dataSource != null){
 					typeText.setText(dataSource.getType());
 					kindText.setText(dataSource.getSubType());
 					languageText.setText(dataSource.getLanguage());
-					
-					PropertySectionUtils.downloadSchema(dataSource, getProcess());
 				}
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils
-				.getAllDataSourceNames(getProcess()));
-
+		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
+		
 		dataSourceAddressLabel.setText("Data source name:");
 		dataSourceAddressCombo.setEditable(false);
 		dataSourceAddressCombo.setBackground(Display.getCurrent()
@@ -243,407 +241,148 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 		languageText.setEditable(false);
 		languageText.setLayoutData(gridData4);
 		languageText.addModifyListener(new ModifyListener() {
-
+			
 			@Override
 			public void modifyText(ModifyEvent e) {
 				// Auswahl im Modell speichern
 				getCommandFramework().execute(
-						new SetDsLanguageCommand(getModel(), languageText
-								.getText()));
-				
-				/* TODO: uncomment if editor is ready to use
-				if (languageText.getText().isEmpty()) {
-					openEditorButton.setEnabled(false);
-				} else {
-					openEditorButton.setEnabled(true);
-				}*/
+						new SetDsLanguageCommand(getModel(), languageText.getText()));
 			}
 		});
+
+		queryTargetLabel = new Label(composite, SWT.NONE);
+		queryTargetLabel.setText("Target to insert the query result:");
+		queryTargetLabel.setBackground(Display.getCurrent().getSystemColor(
+				SWT.COLOR_WHITE));
 
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
+		queryTargetCombo = new CCombo(composite, SWT.BORDER);
+		queryTargetCombo.setLayoutData(gridData13);
+		queryTargetCombo.setItems(VariableUtils.getUseableVariables(getProcess()).toArray(new String[0]));
+		queryTargetCombo.addModifyListener(new ModifyListener() {
 
-		createInputVariableWidgets();
-
-    /* TODO: uncomment if editor is ready to use
-		Label filler43 = new Label(composite, SWT.NONE);
+			@Override
+			public void modifyText(ModifyEvent e) {
+				getCommandFramework().execute(
+						new SetQueryTargetCommand(getModel(), !queryTargetCombo
+								.getText().equals("target") ? queryTargetCombo.getText() : ""));
+			}
+		});
 		
-		openEditorButton = new Button(composite, SWT.NONE);
-		openEditorButton.setText("Open Editor");
-		openEditorButton.setLayoutData(gridData21);
-		openEditorButton.addSelectionListener(new SelectionListener() {
+		this.createInputVariableWidgets();
+	}
+	
+	@SuppressWarnings("deprecation")
+  private void createInputVariableWidgets() {
+    Composite inputVariableComp = new Composite(parentComposite, SWT.NONE);
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-				widgetSelected(arg0);
-			}
+    GridLayout gridLayout = new GridLayout();
+    gridLayout.numColumns = 3;
+    inputVariableComp.setLayout(gridLayout);
+    inputVariableComp.setBackground(Display.getCurrent().getSystemColor(
+        SWT.COLOR_WHITE));
+    GridData gridData12 = new GridData();
+    gridData12.horizontalSpan = 2;
+    gridData12.grabExcessHorizontalSpace = true;
+    gridData12.verticalAlignment = GridData.CENTER;
+    gridData12.horizontalAlignment = GridData.FILL;
+    inputVariableComp.setLayoutData(gridData12);
 
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				MetaDataXMLParser metaDataXMLParser_Objekt = new MetaDataXMLParser();
-				ArrayList<DBTable> listOfTables = metaDataXMLParser_Objekt
-						.loadTablesFromDB(PropertySectionUtils
-								.findDataSourceByName(getProcess(),
-										dataSourceAddressCombo.getText()));
+    GridData gridData6 = new GridData();
+    gridData6.horizontalAlignment = GridData.FILL;
+    gridData6.verticalAlignment = GridData.CENTER;
+    gridData6.grabExcessHorizontalSpace = true;
 
-				openStatementEditor(ModelPackage.eINSTANCE
-						.getWriteDataBackActivity().getInstanceClassName(),
-						activity.getDsLanguage(), activity.getName());
-			}
-		});*/
+    inputVariableLabel = fWidgetFactory.createLabel(inputVariableComp,
+        "Data variable:");
+    inputVariableText = fWidgetFactory.createText(inputVariableComp,
+        EMPTY_STRING);
+    inputVariableButton = fWidgetFactory.createButton(inputVariableComp,
+        EMPTY_STRING, SWT.ARROW | SWT.DOWN | SWT.CENTER);
 
-    openStatementTestWizardButton = new Button(composite, SWT.NONE);
-    openStatementTestWizardButton.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-    openStatementTestWizardButton.setText("Test Statement");
-    openStatementTestWizardButton.addSelectionListener(new SelectionListener() {
-      @Override
-      public void widgetDefaultSelected(SelectionEvent e) {
-        widgetSelected(e);
-      }
+    VariableContentProvider provider = new VariableContentProvider(false);
+    ModelContentProposalProvider proposalProvider;
+    proposalProvider = new ModelContentProposalProvider(
+        new ModelContentProposalProvider.ValueProvider() {
+          @Override
+          public Object value() {
+            return getInput();
+          }
+        }, provider, fInputVariableFilter);
 
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        // open wizard
-        WizardLauncher.launch(activity, getProcess());
+    final FieldAssistAdapter contentAssist = new FieldAssistAdapter(
+        inputVariableText, fTextContentAdapter, proposalProvider, null,
+        null, true);
+    
+    contentAssist.setLabelProvider(new ModelLabelProvider());
+    contentAssist.setPopupSize(new Point(300, 100));
+    contentAssist.setFilterStyle(ContentProposalAdapter.FILTER_CUMULATIVE);
+    contentAssist
+        .setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
+    contentAssist
+        .addContentProposalListener(new IContentProposalListener() {
+
+          public void proposalAccepted(IContentProposal chosenProposal) {
+            if (chosenProposal.getContent() == null) {
+              return;
+            }
+            Variable variable = null;
+            try {
+              variable = (Variable) ((Adapter) chosenProposal)
+                  .getTarget();
+            } catch (Throwable t) {
+              return;
+            }
+            SetDataVariableCommand cmd = new SetDataVariableCommand(
+                getInput(), variable);
+            getCommandFramework().execute(cmd);
+          }
+        });
+
+    // End of Content Assist for variable
+    inputVariableButton.addListener(SWT.Selection, new Listener() {
+      public void handleEvent(Event event) {
+        contentAssist.openProposals();
       }
     });
-		
-		Label filler = new Label(composite, SWT.NONE);
-		Label filler6 = new Label(composite, SWT.NONE);
 
-		GridData gridData14 = new GridData();
-		gridData14.horizontalSpan = 4;
-		gridData14.horizontalAlignment = GridData.FILL;
-		gridData14.verticalAlignment = GridData.FILL;
-		gridData14.grabExcessVerticalSpace = true;
-		gridData14.grabExcessHorizontalSpace = true;
-
-		if (activity.getDsType() != null) {
-			if (activity.getDsType().equals("Filesystem")) {
-				//System.out.print("\r Filesystem");
-
-				createFileSystemWidgets();
-
-			} else if (activity.getDsType().equals("Database")) {
-				//System.out.print("\r Database");
-
-				createDBWidgets();
-			}
-		}
-
-		GridData gridData15 = new GridData();
-		gridData15.horizontalSpan = 4;
-		gridData15.horizontalAlignment = GridData.FILL;
-		gridData15.verticalAlignment = GridData.FILL;
-		gridData15.grabExcessVerticalSpace = true;
-		gridData15.grabExcessHorizontalSpace = true;
-
-		insertParameterVariable = new Button(composite, SWT.NONE);
-		insertParameterVariable.setText("Insert Parameter Variable");
-		insertParameterVariable.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				bpelVariableWindow = new ParametersListPopUp(statementText);
-
-				bpelVariableWindow.setText("Insert Parameter Variable");
-
-				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
-						.getUseableVariables(getProcess(),
-								VariableUtils.PARAMETER_VAR);
-				bpelVariableWindow
-						.loadBPELVariables(listOfBPELVariablesAsStrings);
-				
-        if (!listOfBPELVariablesAsStrings.isEmpty()) {
-          if (!bpelVariableWindow.isWindowOpen()) {
-            bpelVariableWindow.openWindow();
-            bpelVariableWindow.setWindowIsOpen(true);
-          }
-        } else {
-          MessageDialog.openInformation(parentComposite.getShell(), "Information",
-              "No parameter variables found.\n\nPlease create at least one variable of primitive type");
+    inputVariableText.addListener(SWT.KeyDown, new Listener() {
+      public void handleEvent(Event event) {
+        if (event.keyCode == SWT.CR) {
+          findAndSetVariable(inputVariableText.getText());
         }
-			}
+      }
+    });
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				widgetSelected(e);
-			}
-		});
+    inputVariableText.setLayoutData(gridData6);
+  }
 
-		insertContainerVariable = new Button(composite, SWT.NONE);
-		insertContainerVariable.setText("Insert Container Reference Variable");
-		insertContainerVariable.addSelectionListener(new SelectionListener() {
+  private void findAndSetVariable(String text) {
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				bpelVariableWindow = new ParametersListPopUp(statementText);
+    text = text.trim();
+    EObject model = getInput();
 
-				bpelVariableWindow
-						.setText("Insert Container Reference Variable");
+    SetDataVariableCommand cmd = new SetDataVariableCommand(getInput(),
+        null);
+    if (text.length() > 0) {
+      Variable variable = (Variable) ModelHelper
+          .findElementByName(ModelHelper.getContainingScope(model),
+              text, Variable.class);
+      if (variable == null) {
 
-				java.util.List<String> listOfBPELVariablesAsStrings = VariableUtils
-						.getUseableVariables(getProcess(),
-								VariableUtils.CONTAINER_VAR);
-				bpelVariableWindow
-						.loadBPELVariables(listOfBPELVariablesAsStrings);
-				
-        if (!listOfBPELVariablesAsStrings.isEmpty()) {
-          if (!bpelVariableWindow.isWindowOpen()) {
-            bpelVariableWindow.openWindow();
-            bpelVariableWindow.setWindowIsOpen(true);
-          }
-        } else {
-          MessageDialog.openInformation(
-              parentComposite.getShell(),
-              "Information",
-              "No container reference variable found.\n\nPlease create at least one variable of type 'ContainerReferenceType'.");
-        }
-			}
+        return;
+      }
 
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				widgetSelected(e);
-			}
-		});
-		
-		Save = new Button(composite, SWT.NONE);
-		Save.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
-		Save.setText("Save");
-		Save.addSelectionListener(new SelectionListener() {
+      cmd.setNewValue(variable);
+    }
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				setStatement(statementText.getText());
-				saveStatementToModel();
+    getCommandFramework().execute(cmd);
+  }
 
-//				if (tabelsPopWindowTables != null){
-//					tabelsPopWindowTables.closeWindow();
-//					tabelsPopWindowTables.setWindowIsOpen(false);
-//				}
-//				if (tabelsPopWindowBPELVariables != null){
-//					tabelsPopWindowBPELVariables.closeWindow();
-//					tabelsPopWindowBPELVariables.setWindowIsOpen(false);
-//				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				widgetSelected(e);
-			}
-		});
-
-		insertParameterVariable.setBackground(Display.getCurrent()
-				.getSystemColor(SWT.COLOR_WHITE));
-		insertContainerVariable.setBackground(Display.getCurrent()
-				.getSystemColor(SWT.COLOR_WHITE));
-
-		Label filler1 = new Label(composite, SWT.NONE);
-
-		Label statementLabel = new Label(composite, SWT.NONE);
-		statementLabel.setText("Data management operation:");
-		statementLabel.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		statementText = new LiveEditStyleText(composite);
-		statementText.setLayoutData(gridData15);
-
-		statementText.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-
-		typeText.setEnabled(false);
-		kindText.setEnabled(false);
-		languageText.setEnabled(false);
-	}
-
-	/**
-	 * for creating the GUI elements of DB data source as child Composite.
-	 * 
-	 * @param parentCompo
-	 * @return
-	 */
-	private void createDBWidgets() {
-		// ----------------------------------------------------------
-		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 3;
-		contentCompo.setLayout(gridLayout2);
-		contentCompo.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-
-		GridData gridData14 = new GridData();
-		gridData14.horizontalSpan = 4;
-		gridData14.horizontalAlignment = GridData.FILL;
-		gridData14.verticalAlignment = GridData.FILL;
-		gridData14.grabExcessVerticalSpace = true;
-		gridData14.grabExcessHorizontalSpace = true;
-		contentCompo.setLayoutData(gridData14);
-
-		// statementCompo.setSize(new Point(150,70));
-
-		insertTable = new Button(contentCompo, SWT.NONE);
-		insertTable.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				schemaPopWindow = new SchemaListPopUp(statementText);
-				schemaPopWindow.setText("Select Table Name");
-				schemaPopWindow.loadSchemasFromDB(getDataSource());
-
-				if (!schemaPopWindow.isWindowOpen()) {
-					schemaPopWindow.openWindow();
-					schemaPopWindow.setWindowIsOpen(true);
-				}
-
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-
-		insertTable.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		insertTable.setText("Insert Table Name");
-	}
-
-	/**
-	 * for creating the GUI elements of FileSystem data source as child
-	 * Composite.
-	 * 
-	 * @param parentCompo
-	 * @return
-	 */
-	private void createFileSystemWidgets() {
-		// this.parentComposite = composite;
-		Composite contentCompo = new Composite(this.parentComposite, SWT.NONE);
-		GridLayout gridLayout2 = new GridLayout();
-		gridLayout2.numColumns = 4;
-		contentCompo.setLayout(gridLayout2);
-		contentCompo.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-
-		GridData gridData14 = new GridData();
-		gridData14.horizontalSpan = 4;
-		gridData14.horizontalAlignment = GridData.FILL;
-		gridData14.verticalAlignment = GridData.FILL;
-		gridData14.grabExcessVerticalSpace = true;
-		gridData14.grabExcessHorizontalSpace = true;
-		contentCompo.setLayoutData(gridData14);
-
-		command = new Button(contentCompo, SWT.NONE);
-		command.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		command.setText("Select Command");
-		command.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				fSysElementsPopWindow = new FileSysListPopUp("COMMAND",
-						statementText);
-				fSysElementsPopWindow.setText("Select Command");
-				fSysElementsPopWindow.loadDataToFSysElementList("COMMAND",
-						getDataSource());
-
-				if (!fSysElementsPopWindow.isWindowOpen()) {
-					fSysElementsPopWindow.openWindow();
-					fSysElementsPopWindow.setWindowIsOpen(true);
-				}
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-
-		file = new Button(contentCompo, SWT.NONE);
-		file
-				.setBackground(Display.getCurrent().getSystemColor(
-						SWT.COLOR_WHITE));
-		file.setText("Select File");
-		file.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				FileDialog dialog = new FileDialog(parentComposite.getShell(), SWT.OPEN);
-			    dialog
-			        .setFilterNames(new String[] { "Comma Separated Values", "All Files (*.*)" });
-			    dialog.setFilterExtensions(new String[] { "*.csv", "*.*" });                   
-			    dialog.setFilterPath(getDataSource().getAddress());
-			    dialog.setFileName("");
-			    
-			    dialog.open();
-			    
-			    statementText.append(" " + dialog.getFilterPath() + File.separator + dialog.getFileName());
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-
-			}
-		});
-//		folder = new Button(contentCompo, SWT.NONE);
-//		folder.setBackground(Display.getCurrent().getSystemColor(
-//				SWT.COLOR_WHITE));
-//		folder.setText("Select Folder");
-//		folder.addSelectionListener(new SelectionListener() {
-//
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				fSysElementsPopWindow = new FileSysListPopUp("FOLDER",
-//						statementText);
-//				fSysElementsPopWindow.setText("Select Folder");
-//				fSysElementsPopWindow.loadDataToFSysElementList("FOLDER",
-//						getDataSource());
-//
-//				if (!fSysElementsPopWindow.isWindowOpen()) {
-//					fSysElementsPopWindow.openWindow();
-//					fSysElementsPopWindow.setWindowIsOpen(true);
-//				}
-//			}
-//
-//			@Override
-//			public void widgetDefaultSelected(SelectionEvent e) {
-//
-//			}
-//		});
-//		driver = new Button(contentCompo, SWT.NONE);
-//		driver.setBackground(Display.getCurrent().getSystemColor(
-//				SWT.COLOR_WHITE));
-//		driver.setText("Select Driver");
-//		driver.addSelectionListener(new SelectionListener() {
-//
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				fSysElementsPopWindow = new FileSysListPopUp("DRIVE",
-//						statementText);
-//				fSysElementsPopWindow.setText("Select Folder");
-//				fSysElementsPopWindow.loadDataToFSysElementList("DRIVE",
-//						getDataSource());
-//
-//				if (!fSysElementsPopWindow.isWindowOpen()) {
-//					fSysElementsPopWindow.openWindow();
-//					fSysElementsPopWindow.setWindowIsOpen(true);
-//				}
-//			}
-//
-//			@Override
-//			public void widgetDefaultSelected(SelectionEvent e) {
-//
-//			}
-//		});
-
-		GridData gridData15 = new GridData();
-		gridData15.grabExcessHorizontalSpace = true;
-		gridData15.verticalAlignment = GridData.CENTER;
-		gridData15.horizontalAlignment = GridData.FILL;
-
-	}
-
+	
 	/**
 	 * This method initializes typeCombo
 	 * 
@@ -660,7 +399,7 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 
 		// Aktualisieren der KindCombo-Daten
 		typeText.addModifyListener(new ModifyListener() {
-
+			
 			@Override
 			public void modifyText(ModifyEvent e) {
 				// TODO Auto-generated method stub
@@ -691,7 +430,7 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 		kindText.setLayoutData(gridData6);
 
 		kindText.addModifyListener(new ModifyListener() {
-
+			
 			@Override
 			public void modifyText(ModifyEvent e) {
 				// TODO Auto-generated method stub
@@ -700,17 +439,13 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 						new SetDsKindCommand(getModel(), kindText.getText()));
 			}
 		});
-
+				
 		// Wert aus Modell setzen
 		kindText.setText(this.activity.getDsKind());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getStatement
-	 * ()
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getStatement()
 	 */
 	@Override
 	public String getStatement() {
@@ -718,26 +453,21 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 		return this.statement;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#setStatement
-	 * (java.lang.String)
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#setStatement(java.lang.String)
 	 */
 	@Override
 	public void setStatement(String statement) {
+		// TODO Auto-generated method stub
 		if (statementText != null && statement != null) {
 			statementText.setText(statement);
 			this.statement = statement;
+			//this.activity.setDsStatement(statement);
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @seeorg.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#
-	 * saveStatementToModel()
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#saveStatementToModel()
 	 */
 	@Override
 	public void saveStatementToModel() {
@@ -745,202 +475,59 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 				new SetDsStatementCommand(getModel(), this.statement));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getDataSource
-	 * ()
+	/* (non-Javadoc)
+	 * @see org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection#getDataSource()
 	 */
 	@Override
 	public DataSource getDataSource() {
-		return PropertySectionUtils.findDataSourceByName(getProcess(),
+		return PropertySectionUtils
+		.findDataSourceByName(getProcess(),
 				dataSourceAddressCombo.getText());
 	}
+	
+  private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {
+    @Override
+    public void insertControlContents(Control control, String text,
+        int cursorPosition) {
+      if (text != null) {
+        super.insertControlContents(control, text, cursorPosition);
+      }
+    }
 
-	private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {
-		@Override
-		public void insertControlContents(Control control, String text,
-				int cursorPosition) {
-			if (text != null) {
-				super.insertControlContents(control, text, cursorPosition);
-			}
-		}
+    @Override
+    public void setControlContents(Control control, String text,
+        int cursorPosition) {
+      if (text != null) {
+        super.setControlContents(control, text, cursorPosition);
+      }
+    }
+  };
+	
+  /*
+   * (non-Javadoc)
+   * 
+   * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
+   */
+  @Override
+  public void refresh() {
+    super.refresh();
+    updateInputVariableWidgets();
+  }
 
-		@Override
-		public void setControlContents(Control control, String text,
-				int cursorPosition) {
-			if (text != null) {
-				super.setControlContents(control, text, cursorPosition);
-			}
-		}
-	};
-	private Button inputVariableButton;
-	@SuppressWarnings("unused")
-  private Label inputVariableLabel;
-	private Text inputVariableText;
-	private Composite parentComposite;
+  private void updateInputVariableWidgets() {
+    Variable inputVar = activity.getDataVariable();
 
-	@Override
-	protected void addAllAdapters() {
-		// model object
-		super.addAllAdapters();
-	}
+    if (inputVar != null) {
+      inputVariableText.setText(inputVar.getName());
 
-	@Override
-	protected void basicSetInput(EObject newInput) {
-		super.basicSetInput(newInput);
-	}
-
-	@Override
-	protected MultiObjectAdapter[] createAdapters() {
-		return new MultiObjectAdapter[] {
-		/* model object */
-		new BatchedMultiObjectAdapter() {
-
-			@Override
-			public void finish() {
-				refresh();
-			}
-
-			@Override
-			public void notify(Notification n) {
-			}
-		} };
-	}
-
-	@SuppressWarnings("deprecation")
-  private void createInputVariableWidgets() {
-		Composite inputVariableComp = new Composite(parentComposite, SWT.NONE);
-
-		GridLayout gridLayout = new GridLayout();
-		gridLayout.numColumns = 3;
-		inputVariableComp.setLayout(gridLayout);
-		inputVariableComp.setBackground(Display.getCurrent().getSystemColor(
-				SWT.COLOR_WHITE));
-		GridData gridData12 = new GridData();
-		gridData12.horizontalSpan = 2;
-		gridData12.grabExcessHorizontalSpace = true;
-		gridData12.verticalAlignment = GridData.CENTER;
-		gridData12.horizontalAlignment = GridData.FILL;
-		inputVariableComp.setLayoutData(gridData12);
-
-		GridData gridData6 = new GridData();
-		gridData6.horizontalAlignment = GridData.FILL;
-		gridData6.verticalAlignment = GridData.CENTER;
-		gridData6.grabExcessHorizontalSpace = true;
-
-		inputVariableLabel = fWidgetFactory.createLabel(inputVariableComp,
-				"Data variable:");
-		inputVariableText = fWidgetFactory.createText(inputVariableComp,
-				EMPTY_STRING);
-		inputVariableButton = fWidgetFactory.createButton(inputVariableComp,
-				EMPTY_STRING, SWT.ARROW | SWT.DOWN | SWT.CENTER);
-
-		VariableContentProvider provider = new VariableContentProvider(false);
-		ModelContentProposalProvider proposalProvider;
-		proposalProvider = new ModelContentProposalProvider(
-				new ModelContentProposalProvider.ValueProvider() {
-					@Override
-					public Object value() {
-						return getInput();
-					}
-				}, provider, fInputVariableFilter);
-
-		final FieldAssistAdapter contentAssist = new FieldAssistAdapter(
-				inputVariableText, fTextContentAdapter, proposalProvider, null,
-				null, true);
-		// 
-		contentAssist.setLabelProvider(new ModelLabelProvider());
-		contentAssist.setPopupSize(new Point(300, 100));
-		contentAssist.setFilterStyle(ContentProposalAdapter.FILTER_CUMULATIVE);
-		contentAssist
-				.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-		contentAssist
-				.addContentProposalListener(new IContentProposalListener() {
-
-					public void proposalAccepted(IContentProposal chosenProposal) {
-						if (chosenProposal.getContent() == null) {
-							return;
-						}
-						Variable variable = null;
-						try {
-							variable = (Variable) ((Adapter) chosenProposal)
-									.getTarget();
-						} catch (Throwable t) {
-							return;
-						}
-						SetDataVariableCommand cmd = new SetDataVariableCommand(
-								getInput(), variable);
-						getCommandFramework().execute(cmd);
-					}
-				});
-
-		// End of Content Assist for variable
-		inputVariableButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				contentAssist.openProposals();
-			}
-		});
-
-		inputVariableText.addListener(SWT.KeyDown, new Listener() {
-			public void handleEvent(Event event) {
-				if (event.keyCode == SWT.CR) {
-					findAndSetVariable(inputVariableText.getText());
-				}
-			}
-		});
-
-		inputVariableText.setLayoutData(gridData6);
-	}
-
-	private void findAndSetVariable(String text) {
-
-		text = text.trim();
-		EObject model = getInput();
-
-		SetDataVariableCommand cmd = new SetDataVariableCommand(getInput(),
-				null);
-		if (text.length() > 0) {
-			Variable variable = (Variable) ModelHelper
-					.findElementByName(ModelHelper.getContainingScope(model),
-							text, Variable.class);
-			if (variable == null) {
-
-				return;
-			}
-
-			cmd.setNewValue(variable);
-		}
-
-		getCommandFramework().execute(cmd);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
-	 */
-	@Override
-	public void refresh() {
-		super.refresh();
-		updateInputVariableWidgets();
-	}
-
-	private void updateInputVariableWidgets() {
-		Variable inputVar = activity.getDataVariable();
-
-		if (inputVar != null) {
-			inputVariableText.setText(inputVar.getName());
-
-			// Figure out the type of the variable XSDTypeDefinition.
-			fInputVariableFilter.clear();
-			Object type = inputVar.getType();
-			if (type != null && type instanceof XSDTypeDefinition) {
-				fInputVariableFilter.setType((XSDTypeDefinition) type);
-			}
-		} else {
-			inputVariableText.setText(EMPTY_STRING);
-		}
-	}
+      // Figure out the type of the variable XSDTypeDefinition.
+      fInputVariableFilter.clear();
+      Object type = inputVar.getType();
+      if (type != null && type instanceof XSDTypeDefinition) {
+        fInputVariableFilter.setType((XSDTypeDefinition) type);
+      }
+    } else {
+      inputVariableText.setText(EMPTY_STRING);
+    }
+  }
 }

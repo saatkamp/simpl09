@@ -92,6 +92,13 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	private Label languageLabel = null;
 	private Text languageText = null;
 
+	 private Button inputVariableButton;
+   @SuppressWarnings("unused")
+   private Label inputVariableLabel;
+   private Text inputVariableText;
+   private Composite parentComposite;
+
+	
 	private LiveEditStyleText statementText = null;
 	private Button insertParameterVariable = null;
 	private Button insertContainerVariable = null;
@@ -774,11 +781,6 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 			}
 		}
 	};
-	private Button inputVariableButton;
-	@SuppressWarnings("unused")
-  private Label inputVariableLabel;
-	private Text inputVariableText;
-	private Composite parentComposite;
 
 	@Override
 	protected void addAllAdapters() {

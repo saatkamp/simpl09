@@ -20,11 +20,11 @@ import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.IssueActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -116,31 +116,31 @@ public class ModelSwitch<T> {
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.QUERY_ACTIVITY: {
-        QueryActivity queryActivity = (QueryActivity)theEObject;
-        T result = caseQueryActivity(queryActivity);
-        if (result == null) result = caseDataManagementActivity(queryActivity);
-        if (result == null) result = caseExtensionActivity(queryActivity);
-        if (result == null) result = caseActivity(queryActivity);
-        if (result == null) result = caseBPEL_ExtensibleElement(queryActivity);
-        if (result == null) result = caseExtensibleElement(queryActivity);
-        if (result == null) result = caseWSDLElement(queryActivity);
-        if (result == null) result = caseIElementExtensible(queryActivity);
-        if (result == null) result = caseIAttributeExtensible(queryActivity);
+      case ModelPackage.QUERY_DATA_ACTIVITY: {
+        QueryDataActivity queryDataActivity = (QueryDataActivity)theEObject;
+        T result = caseQueryDataActivity(queryDataActivity);
+        if (result == null) result = caseDataManagementActivity(queryDataActivity);
+        if (result == null) result = caseExtensionActivity(queryDataActivity);
+        if (result == null) result = caseActivity(queryDataActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(queryDataActivity);
+        if (result == null) result = caseExtensibleElement(queryDataActivity);
+        if (result == null) result = caseWSDLElement(queryDataActivity);
+        if (result == null) result = caseIElementExtensible(queryDataActivity);
+        if (result == null) result = caseIAttributeExtensible(queryDataActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.ISSUE_ACTIVITY: {
-        IssueActivity issueActivity = (IssueActivity)theEObject;
-        T result = caseIssueActivity(issueActivity);
-        if (result == null) result = caseDataManagementActivity(issueActivity);
-        if (result == null) result = caseExtensionActivity(issueActivity);
-        if (result == null) result = caseActivity(issueActivity);
-        if (result == null) result = caseBPEL_ExtensibleElement(issueActivity);
-        if (result == null) result = caseExtensibleElement(issueActivity);
-        if (result == null) result = caseWSDLElement(issueActivity);
-        if (result == null) result = caseIElementExtensible(issueActivity);
-        if (result == null) result = caseIAttributeExtensible(issueActivity);
+      case ModelPackage.ISSUE_COMMAND_ACTIVITY: {
+        IssueCommandActivity issueCommandActivity = (IssueCommandActivity)theEObject;
+        T result = caseIssueCommandActivity(issueCommandActivity);
+        if (result == null) result = caseDataManagementActivity(issueCommandActivity);
+        if (result == null) result = caseExtensionActivity(issueCommandActivity);
+        if (result == null) result = caseActivity(issueCommandActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(issueCommandActivity);
+        if (result == null) result = caseExtensibleElement(issueCommandActivity);
+        if (result == null) result = caseWSDLElement(issueCommandActivity);
+        if (result == null) result = caseIElementExtensible(issueCommandActivity);
+        if (result == null) result = caseIAttributeExtensible(issueCommandActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -172,17 +172,17 @@ public class ModelSwitch<T> {
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.TRANSFER_ACTIVITY: {
-        TransferActivity transferActivity = (TransferActivity)theEObject;
-        T result = caseTransferActivity(transferActivity);
-        if (result == null) result = caseDataManagementActivity(transferActivity);
-        if (result == null) result = caseExtensionActivity(transferActivity);
-        if (result == null) result = caseActivity(transferActivity);
-        if (result == null) result = caseBPEL_ExtensibleElement(transferActivity);
-        if (result == null) result = caseExtensibleElement(transferActivity);
-        if (result == null) result = caseWSDLElement(transferActivity);
-        if (result == null) result = caseIElementExtensible(transferActivity);
-        if (result == null) result = caseIAttributeExtensible(transferActivity);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY: {
+        TransferDataActivity transferDataActivity = (TransferDataActivity)theEObject;
+        T result = caseTransferDataActivity(transferDataActivity);
+        if (result == null) result = caseDataManagementActivity(transferDataActivity);
+        if (result == null) result = caseExtensionActivity(transferDataActivity);
+        if (result == null) result = caseActivity(transferDataActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(transferDataActivity);
+        if (result == null) result = caseExtensibleElement(transferDataActivity);
+        if (result == null) result = caseWSDLElement(transferDataActivity);
+        if (result == null) result = caseIElementExtensible(transferDataActivity);
+        if (result == null) result = caseIAttributeExtensible(transferDataActivity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -205,31 +205,32 @@ public class ModelSwitch<T> {
   }
 
 	/**
-   * Returns the result of interpreting the object as an instance of '<em>Query Activity</em>'.
-   * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Query Activity</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-	public T caseQueryActivity(QueryActivity object) {
-    return null;
-  }
-
-	/**
-   * Returns the result of interpreting the object as an instance of '<em>Issue Activity</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Query Data Activity</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Issue Activity</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Query Data Activity</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseIssueActivity(IssueActivity object) {
+  public T caseQueryDataActivity(QueryDataActivity object) {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Issue Command Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Issue Command Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIssueCommandActivity(IssueCommandActivity object) {
     return null;
   }
 
@@ -249,6 +250,21 @@ public class ModelSwitch<T> {
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Transfer Data Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Transfer Data Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTransferDataActivity(TransferDataActivity object) {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Retrieve Data Activity</em>'.
    * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
@@ -259,21 +275,6 @@ public class ModelSwitch<T> {
    * @generated
    */
 	public T caseRetrieveDataActivity(RetrieveDataActivity object) {
-    return null;
-  }
-
-	/**
-   * Returns the result of interpreting the object as an instance of '<em>Transfer Activity</em>'.
-   * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Transfer Activity</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-	public T caseTransferActivity(TransferActivity object) {
     return null;
   }
 

@@ -44,10 +44,10 @@ public class WizardLauncher {
       dialog.setHelpAvailable(false);
 
       // recognize the issue of the statement
-      if (dmActivity.eClass().getName().equals(DMActivityTypes.ISSUE_ACTIVITY)) {
+      if (dmActivity.eClass().getName().equals(DMActivityTypes.ISSUE_COMMAND_ACTIVITY)) {
         issue = IssueRecognition.getInstance().recognizeIssue(dmActivity.getDsLanguage(),
             dmActivity.getDsStatement());
-        
+
         if (issue != null) {
           statementTestWizard.getStatementTest().setIssue(issue);
         }
