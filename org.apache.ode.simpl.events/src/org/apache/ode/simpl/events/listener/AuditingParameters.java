@@ -3,6 +3,8 @@ package org.apache.ode.simpl.events.listener;
 import java.util.HashMap;
 
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.services.datasource.Connector;
+import org.simpl.core.services.datasource.DataFormat;
 import org.simpl.core.services.datasource.DataSource;
 
 public class AuditingParameters {
@@ -57,11 +59,17 @@ public class AuditingParameters {
 		if (!this.settings.isEmpty()
 				&& !this.settings.equals(this.lastSettings)) {
 			DataSource data = new DataSource();
+			Connector connector = new Connector();
+			DataFormat dataFormat = new DataFormat();
+		
 			data.setAddress(this.settings.get(AUDITING_DS_ADDRESS));
 			data.setType(this.settings.get(DS_TYPE));
 			data.setSubType(this.settings.get(DS_SUBTYPE));
-			data.setDataFormat(this.settings.get(DS_FORMAT));
-
+			dataFormat.setName(this.settings.get(DS_FORMAT));
+ 
+      connector.setConverterDataFormat(dataFormat);
+      data.setConnector(connector);      
+			
 			data.getAuthentication().setUser(this.settings.get(DS_USER));
 			data.getAuthentication()
 					.setPassword(this.settings.get(DS_PASSWORD));
@@ -99,6 +107,8 @@ public class AuditingParameters {
 				this.mode = false;
 			}
 		}
+		//TODO: remove output
+		System.out.println("AUDITING IS ON: " + this.mode);
 		return mode;
 	}
 

@@ -31,7 +31,7 @@ public class DeploymentInfos {
 			String dataSourceName) {
 		DataSource data = null;
 
-		if (dataSourceName.contains("rf:")) {
+		if (dataSourceName.contains("rm:")) {
 			// Query the data source from resource management (on demand)
 			data = DeploymentUtils.getInstance().getResourceManagementDataSourceByName(
 					dataSourceName);
@@ -78,7 +78,7 @@ public class DeploymentInfos {
 					+ data.getAuthentication().getPassword());
 		}
 		if (logger.isDebugEnabled()) {
-			logger.debug("Format of ds: " + data.getDataFormat());
+			logger.debug("Format of ds: " + data.getConnector().getConverterDataFormat().getName());
 		}
 
 		return data;

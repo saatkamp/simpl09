@@ -24,8 +24,8 @@ public class Converter {
   private String id;
   private String name;
   private String implementation;
-  private DataFormat connectorDataFormat;
-  private DataFormat workflowDataFormat;
+  private DataFormat connectorDataFormat = new DataFormat();
+  private DataFormat workflowDataFormat = new DataFormat();
 
   /**
    * @return the id

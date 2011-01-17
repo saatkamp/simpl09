@@ -26,7 +26,7 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  *
  */
-public class TransferActivity extends DataManagementActivity {
+public class TransferDataActivity extends DataManagementActivity {
 
 	@Override
 	protected void runSync(ExtensionContext context, Element element)

@@ -26,7 +26,7 @@ public class Connector {
   private String name;
   private String implementation;
   private String propertiesDescription;
-  private DataFormat converterDataFormat;
+  private DataFormat converterDataFormat = new DataFormat();
 
   /**
    * @return the id

@@ -189,7 +189,7 @@ public class DeploymentUtils {
             + resultDataSource.getAuthentication().getPassword());
       }
       if (logger.isDebugEnabled()) {
-        logger.debug("Format of ds: " + resultDataSource.getDataFormat());
+        logger.debug("Format of ds: " + resultDataSource.getConnector().getConverterDataFormat().getName());
 
       }
     }
@@ -276,6 +276,7 @@ public class DeploymentUtils {
               }
 
               DataSource dataSource = new DataSource();
+              
               dataSource.setName(name);
               dataSource.setAddress(address);
               dataSource.setType(type);
@@ -284,8 +285,8 @@ public class DeploymentUtils {
               auth.setUser(username);
               auth.setPassword(password);
               dataSource.setAuthentication(auth);
-              dataSource.setDataFormat(format);
-
+              dataSource.getConnector().getConverterDataFormat().setName(format);
+              
               dataSourceElements.add(dataSource);
             }
 
@@ -384,7 +385,7 @@ public class DeploymentUtils {
     result.setAddress(staticDs.getAddress());
     result.setType(staticDs.getType());
     result.setSubType(staticDs.getSubType());
-    result.setDataFormat(staticDs.getDataFormat());
+    result.getConnector().getConverterDataFormat().setName(staticDs.getConnector().getConverterDataFormat().getName());
     result.setAuthentication(staticDs.getAuthentication());
     result.setLateBinding(lateBindingDs.getLateBinding());
 
@@ -403,7 +404,7 @@ public class DeploymentUtils {
     DataSource convertedDataSource = new DataSource();
 
     convertedDataSource.setAddress(dataSource.getAddress());
-    convertedDataSource.setDataFormat(dataSource.getDataFormat());
+    convertedDataSource.getConnector().getConverterDataFormat().setName(dataSource.getConnector().getConverterDataFormat().getName());
     convertedDataSource.setLanguage(dataSource.getLanguage());
     convertedDataSource.setType(dataSource.getType());
     convertedDataSource.setSubType(dataSource.getSubType());
@@ -413,9 +414,12 @@ public class DeploymentUtils {
         dataSource.getAuthentication().getPassword());
     convertedDataSource.getLateBinding().setPolicy(
         dataSource.getLateBinding().getPolicy());
-    convertedDataSource.getLateBinding().setResourceManagementAddress(dataSource.getLateBinding().getResourceManagementAddress());
-    
-    if (dataSource.getLateBinding().getStrategy().equals(org.simpl.core.webservices.client.Strategy.FIRST_FIND)) {
+    convertedDataSource.getLateBinding().setResourceManagementAddress(
+        dataSource.getLateBinding().getResourceManagementAddress());
+
+    if (dataSource.getLateBinding().getStrategy() != null
+        && dataSource.getLateBinding().getStrategy()
+            .equals(org.simpl.core.webservices.client.Strategy.FIRST_FIND)) {
       convertedDataSource.getLateBinding().setStrategy(Strategy.FIRST_FIND);
     }
     
