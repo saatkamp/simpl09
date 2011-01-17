@@ -22,11 +22,11 @@ public class SimplExtensionBundle extends AbstractExtensionBundle {
 	    PropertyConfigurator.configure("log4j.properties");
 		
 		// TODO Auto-generated method stub
-		super.registerExtensionOperation("queryActivity", QueryActivity.class);
-		super.registerExtensionOperation("issueActivity", IssueActivity.class);
+		super.registerExtensionOperation("queryDataActivity", QueryDataActivity.class);
+		super.registerExtensionOperation("issueCommandActivity", IssueCommandActivity.class);
 		super.registerExtensionOperation("retrieveDataActivity", RetrieveDataActivity.class);
 		super.registerExtensionOperation("writeDataBackActivity", WriteDataBackActivity.class);
-		super.registerExtensionOperation("transferActivity", TransferActivity.class);
+		super.registerExtensionOperation("transferDataActivity", TransferDataActivity.class);
 		
 		logger.debug("SIMPL Extension Bundle loaded successfully.");
 	}

@@ -4,7 +4,6 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
-import org.apache.ode.simpl.ea.util.SDOUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
@@ -26,7 +25,7 @@ public class WriteDataBackActivity extends DataManagementActivity {
 		// Load all attribute values from the activity.
 		loadSIMPLAttributes(context, element);
 
-		// Load all specific attribute values from the RetrieveDataActivity.
+		// Load all specific attribute values from the WriteDataBackActivity.
 		Attr dataVarAttr = element.getAttributeNode("dataVariable");
 		String dataVariableName = dataVarAttr.getValue();
 
@@ -35,6 +34,8 @@ public class WriteDataBackActivity extends DataManagementActivity {
 		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore
 				.getInstance().dataSourceService();
 
+		DataObject dataFromBPELVariable = null;
+		
 		try {
 		  Node value = null;
       Variable variable = context.getVisibleVariables().get(
@@ -44,9 +45,11 @@ public class WriteDataBackActivity extends DataManagementActivity {
         value = context.readVariable(variable);
       }
       
+      // TODO: remove output
+      System.out.println("HALLO VARIABLE: " + value);
       // TODO: variable in SDO zurück verwandeln (XSD muss irgendwo her geholt werden, sollte beim Prozess liegen)
       // TODO: writeData  beim SIMPL Core ausführen
-			boolean successful = false;
+			boolean successful =  datasourceService.writeBack(ds, dataFromBPELVariable);
 
 			if (!successful) {
 //				ScopeEvent DMFailure = new DMFailure(

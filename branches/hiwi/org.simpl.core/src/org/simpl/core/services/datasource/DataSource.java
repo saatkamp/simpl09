@@ -33,8 +33,7 @@ public class DataSource {
   private String subType;
   private String language;
   private String connectorPropertiesDescription;
-  private Connector connector;
-
+  private Connector connector = new Connector();
   private Authentication authentication = new Authentication();
   private LateBinding lateBinding = new LateBinding();
 
