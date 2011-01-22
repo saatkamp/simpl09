@@ -42,9 +42,7 @@ public class SetDataVariableCommand extends SetCommand {
 	public Object get() {
 		if (fTarget instanceof RetrieveDataActivity) {
 			return ((RetrieveDataActivity) fTarget).getDataVariable();
-		}
-
-    if (fTarget instanceof WriteDataBackActivity) {
+		} else if (fTarget instanceof WriteDataBackActivity) {
       return ((WriteDataBackActivity) fTarget).getDataVariable();
     }
 		
@@ -62,7 +60,7 @@ public class SetDataVariableCommand extends SetCommand {
     } else if (fTarget instanceof WriteDataBackActivity) {
       ((WriteDataBackActivity) fTarget).setDataVariable((Variable) o);
     } else {
-      throw new IllegalArgumentException("This model object has no variable to get");
+      throw new IllegalArgumentException("This model object has no variable to set");
     }
 	}
 

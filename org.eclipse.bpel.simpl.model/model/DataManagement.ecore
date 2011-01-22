@@ -27,7 +27,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IssueCommandActivity" eSuperTypes="#//DataManagementActivity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Allows to insert data on a data source."/>
+      <details key="documentation" value="Allows to execute an issue command on a data source."/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RetrieveDataActivity" eSuperTypes="#//DataManagementActivity">
@@ -38,11 +38,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WriteDataBackActivity" eSuperTypes="#//DataManagementActivity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Allows to update data on a data source."/>
+      <details key="documentation" value="Allows to write data back to a data source."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataVariable" eType="ecore:EClass ../../org.eclipse.bpel.model/src/model/bpel.ecore#//Variable"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryTarget" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="target"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TransferDataActivity" eSuperTypes="#//DataManagementActivity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

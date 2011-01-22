@@ -42,7 +42,7 @@ public abstract class DataManagementActivity extends
 		this.activityName = element.getAttribute("name").toString();
 		
 		DataManagementActivity.setProcessName(context.getOActivity().getOwner().getName());
-		DataManagementActivity.setDeployDir(context.getDUDir().getPath()+"deploy.xml");
+		DataManagementActivity.setDeployDir(context.getDUDir().getPath() + "deploy.xml");
 	}
 
 	/**

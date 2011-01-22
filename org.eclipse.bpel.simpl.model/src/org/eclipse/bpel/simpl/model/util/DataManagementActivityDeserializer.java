@@ -54,21 +54,21 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       ExtensionRegistry extReg, URI uri, BPELReader bpelReader) {
 
     /*
-     * QueryActivity
+     * QueryDataActivity
      */
     if (DataManagementConstants.ND_QUERY_DATA_ACTIVITY.equals(elementType.getLocalPart())) {
-      Element queryActivityElement = (Element) node;
+      Element querydataActivityElement = (Element) node;
 
-      // create a QueryActivity model object
+      // create a QueryDataActivity model object
       QueryDataActivity activity = ModelFactory.eINSTANCE.createQueryDataActivity();
 
       // attach the DOM node to our new activity
-      activity.setElement(queryActivityElement);
+      activity.setElement(querydataActivityElement);
 
       // handle the DataManagementActivity attributes
       this.setCommonAttributes(activity, node);
 
-      // handle the QueryActivity attributes
+      // handle the QueryDataActivity attributes
       String attQueryTarget = ModelPackage.eINSTANCE.getQueryDataActivity_QueryTarget()
           .getName();
 
@@ -80,7 +80,7 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
     }
 
     /*
-     * IssueActivity
+     * IssueCommandActivity
      */
     if (DataManagementConstants.ND_ISSUE_COMMAND_ACTIVITY.equals(elementType.getLocalPart())) {
       Element issueActivityElement = (Element) node;

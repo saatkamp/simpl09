@@ -7,15 +7,12 @@
 package org.eclipse.bpel.simpl.model.impl;
 
 import org.eclipse.bpel.model.Variable;
-
+import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -26,12 +23,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.WriteDataBackActivityImpl#getDataVariable <em>Data Variable</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.WriteDataBackActivityImpl#getQueryTarget <em>Query Target</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
+@SuppressWarnings("restriction")
 public class WriteDataBackActivityImpl extends DataManagementActivityImpl implements WriteDataBackActivity {
   /**
    * The cached value of the '{@link #getDataVariable() <em>Data Variable</em>}' reference.
@@ -42,25 +39,6 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
    * @ordered
    */
   protected Variable dataVariable;
-
-  /**
-   * The default value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getQueryTarget()
-   * @generated
-   * @ordered
-   */
-  protected static final String QUERY_TARGET_EDEFAULT = "target";
-  /**
-   * The cached value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getQueryTarget()
-   * @generated
-   * @ordered
-   */
-  protected String queryTarget = QUERY_TARGET_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,30 +92,15 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
    */
   public void setDataVariable(Variable newDataVariable) {
     Variable oldDataVariable = dataVariable;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getRetrieveDataActivity_DataVariable().getName(),
+          newDataVariable == null ? null : newDataVariable
+              .getName());
+    }
     dataVariable = newDataVariable;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE, oldDataVariable, dataVariable));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getQueryTarget() {
-    return queryTarget;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setQueryTarget(String newQueryTarget) {
-    String oldQueryTarget = queryTarget;
-    queryTarget = newQueryTarget;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.WRITE_DATA_BACK_ACTIVITY__QUERY_TARGET, oldQueryTarget, queryTarget));
   }
 
   /**
@@ -151,8 +114,6 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         if (resolve) return getDataVariable();
         return basicGetDataVariable();
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__QUERY_TARGET:
-        return getQueryTarget();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -167,9 +128,6 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
     switch (featureID) {
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         setDataVariable((Variable)newValue);
-        return;
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__QUERY_TARGET:
-        setQueryTarget((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -186,9 +144,6 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         setDataVariable((Variable)null);
         return;
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__QUERY_TARGET:
-        setQueryTarget(QUERY_TARGET_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -203,26 +158,8 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
     switch (featureID) {
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         return dataVariable != null;
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__QUERY_TARGET:
-        return QUERY_TARGET_EDEFAULT == null ? queryTarget != null : !QUERY_TARGET_EDEFAULT.equals(queryTarget);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString() {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (queryTarget: ");
-    result.append(queryTarget);
-    result.append(')');
-    return result.toString();
   }
 
 } //WriteDataBackActivityImpl
