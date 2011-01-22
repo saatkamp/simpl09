@@ -6,6 +6,7 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
+import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryDataActivity;
 
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
+@SuppressWarnings("restriction")
 public class QueryDataActivityImpl extends DataManagementActivityImpl implements QueryDataActivity {
   /**
    * The default value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
@@ -84,6 +86,11 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
    */
   public void setQueryTarget(String newQueryTarget) {
     String oldQueryTarget = queryTarget;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getQueryDataActivity_QueryTarget().getName(),
+          newQueryTarget == null ? null : newQueryTarget);
+    }
     queryTarget = newQueryTarget;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.QUERY_DATA_ACTIVITY__QUERY_TARGET, oldQueryTarget, queryTarget));

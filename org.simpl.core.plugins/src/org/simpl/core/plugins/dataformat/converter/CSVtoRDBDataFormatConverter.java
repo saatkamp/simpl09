@@ -33,8 +33,8 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
    * Initialize the plug-in.
    */
   public CSVtoRDBDataFormatConverter() {
-    this.setFromDataFormat("CSV");
-    this.setToDataFormat("RDB");
+    this.setFromDataFormat("CSVDataFormat");
+    this.setToDataFormat("RDBDataFormat");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -57,7 +57,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
 
     // use csv SDO and replace csv table meta data with rdb table meta data
     DataObject rdbSDO = csvSDO;
-    rdbSDO.setString("dataFormatType", "RDB");
+    rdbSDO.setString("dataFormatType", "RDBDataFormat");
 
     DataObject csvTableMetaDataObject = null;
     DataObject rdbTableMetaDataObject = null;
@@ -140,7 +140,7 @@ public class CSVtoRDBDataFormatConverter extends DataFormatConverterPlugin {
 
     // use rdb SDO and add csv table meta data
     DataObject csvSDO = rdbSDO;
-    csvSDO.setString("dataFormatType", "CSV");
+    csvSDO.setString("dataFormatType", "CSVDataFormat");
 
     DataObject csvTableMetaDataObject = null;
     DataObject rdbTableMetaDataObject = null;

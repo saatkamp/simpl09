@@ -28,7 +28,7 @@ public class QueryDataActivity extends DataManagementActivity {
 
 		// Load all specific attribute values from the QueryActivity.
 		String queryTarget = element.getAttribute("queryTarget").toString();
-
+		
 		if (queryTarget.contains("[") || queryTarget.contains("#")){
 			//queryTarget enthält eine BPEL-Variable als Referenz
 			Map<String, Variable> variables = null;
@@ -55,9 +55,11 @@ public class QueryDataActivity extends DataManagementActivity {
 				.dataSourceService();
 
 		try {
-			this.successfullExecution = datasourceService.depositData(
-					ds, getDsStatement(context), queryTarget);
-
+		  if (!queryTarget.equals("")) {
+  			this.successfullExecution = datasourceService.depositData(
+  					ds, getDsStatement(context), queryTarget);
+		  }
+		  
 			if (!this.successfullExecution) {
 				ActivityFailureEvent event = new ActivityFailureEvent();
 				event.setActivityName(context.getActivityName());

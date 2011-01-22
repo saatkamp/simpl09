@@ -10,7 +10,6 @@ import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
-import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;
@@ -39,11 +38,8 @@ public class TransferDataActivity extends DataManagementActivity {
 		loadSIMPLAttributes(context, element);
 
 		// Load all specific attribute values from the TransferActivity.
-		Attr targetDsAddressAttr = element.getAttributeNode("targetDsAddress");
-		String targetDsAddress = targetDsAddressAttr.getValue();
-		
-		Attr targetDsContainerAttr = element.getAttributeNode("targetDsContainer");
-		String targetDsContainer = targetDsContainerAttr.getValue();
+		String targetDsAddress = element.getAttribute("targetDsAddress");
+		String targetDsContainer = element.getAttribute("targetDsContainer");
 
 		if (targetDsContainer.contains("[") || targetDsContainer.contains("#")){
 			//targetDsContainer enthält eine BPEL-Variable als Referenz
@@ -64,7 +60,7 @@ public class TransferDataActivity extends DataManagementActivity {
 			
 			targetDsContainer = String.valueOf(StatementUtils.resolveVariable(context, variables, targetDsContainer));
 		}
-		
+
 		DataSource dsFrom = getDataSource(getActivityName(), getDsAddress());
 		DataSource dsTo = getDataSource(getActivityName(), targetDsAddress);
 		
@@ -72,30 +68,29 @@ public class TransferDataActivity extends DataManagementActivity {
 				.getInstance().dataSourceService();
 
 		try {
-			DataObject dataObject = datasourceService.retrieveData(dsFrom,
-					getDsStatement(context));
-
-			if (dataObject == null) {
-//				ScopeEvent DMFailure = new DMFailure(
-//						"The result of the query is null");
-//				context.getInternalInstance().sendEvent(DMFailure);
-			} else {
-				this.successfullExecution = datasourceService.writeData(dsTo, dataObject, targetDsContainer);
-
-				if (!this.successfullExecution) {
-					ActivityFailureEvent event = new ActivityFailureEvent();
-					event.setActivityName(context.getActivityName());
-					event.setActivityId(context.getOActivity().getId());
-					event.setActivityType("TransferDataActivity");
-					event.setScopeName(context.getOActivity().getParent().name);
-					event.setScopeId(0L);
-					event.setScopeDeclerationId(context.getOActivity().getParent()
-							.getId());
-					context.getInternalInstance().sendEvent(event);
-					context.completeWithFault(new Throwable("SIMPL Exception"));
-				}
-			}
-
+  	    if (!targetDsAddress.equals("") || !targetDsContainer.equals("")) {
+  			DataObject dataObject = datasourceService.retrieveData(dsFrom,
+  					getDsStatement(context));
+  
+  			if (dataObject == null) {
+  			  this.successfullExecution = false;
+  			} else {
+  				this.successfullExecution = datasourceService.writeData(dsTo, dataObject, targetDsContainer);
+  			}
+  	  } 
+  	    
+      if (!this.successfullExecution) {
+        ActivityFailureEvent event = new ActivityFailureEvent();
+        event.setActivityName(context.getActivityName());
+        event.setActivityId(context.getOActivity().getId());
+        event.setActivityType("TransferDataActivity");
+        event.setScopeName(context.getOActivity().getParent().name);
+        event.setScopeId(0L);
+        event.setScopeDeclerationId(context.getOActivity().getParent()
+            .getId());
+        context.getInternalInstance().sendEvent(event);
+        context.completeWithFault(new Throwable("SIMPL Exception"));
+      }
 		} catch (Exception e) {
 			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 			event.setActivityName(context.getActivityName());
@@ -108,5 +103,4 @@ public class TransferDataActivity extends DataManagementActivity {
 			context.getInternalInstance().sendEvent(event);
 		}
 	}
-
 }

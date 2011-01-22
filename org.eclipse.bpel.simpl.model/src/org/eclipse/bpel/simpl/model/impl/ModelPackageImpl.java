@@ -319,6 +319,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getWriteDataBackActivity_WriteTarget() {
+    return (EAttribute)writeDataBackActivityEClass.getEStructuralFeatures().get(1);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getTransferDataActivity() {
     return transferDataActivityEClass;
   }
@@ -441,6 +451,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
     writeDataBackActivityEClass = createEClass(WRITE_DATA_BACK_ACTIVITY);
     createEReference(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE);
+    createEAttribute(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET);
 
     transferDataActivityEClass = createEClass(TRANSFER_DATA_ACTIVITY);
     createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS);
@@ -506,6 +517,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
     initEClass(writeDataBackActivityEClass, WriteDataBackActivity.class, "WriteDataBackActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWriteDataBackActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWriteDataBackActivity_WriteTarget(), ecorePackage.getEString(), "writeTarget", "target", 0, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(transferDataActivityEClass, TransferDataActivity.class, "TransferDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTransferDataActivity_TargetDsAddress(), ecorePackage.getEString(), "targetDsAddress", "address", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

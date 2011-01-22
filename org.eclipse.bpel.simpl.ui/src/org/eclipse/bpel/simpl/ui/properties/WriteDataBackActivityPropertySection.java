@@ -20,7 +20,9 @@ import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
+import org.eclipse.bpel.simpl.ui.command.SetWriteTargetCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
+import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
@@ -83,13 +85,16 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
   //private Button openEditorButton = null;
   private Label languageLabel = null;
   private Text languageText = null;
-
-   private Button inputVariableButton;
-   @SuppressWarnings("unused")
-   private Label inputVariableLabel;
-   private Text inputVariableText;
-   private Composite parentComposite;
+  private Label writeTargetLabel = null;
+  private CCombo writeTargetCombo = null;
   
+  private Button inputVariableButton;
+  @SuppressWarnings("unused")
+  private Label inputVariableLabel;
+  private Text inputVariableText;
+  private Composite parentComposite;
+
+   
   private WriteDataBackActivity activity;
 
   /**
@@ -121,6 +126,8 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
 
     // Setzen die Datenquellenadresse
     dataSourceAddressCombo.setText(activity.getDsAddress());
+    // Setzen die Zieleinheit des Write.
+    writeTargetCombo.setText(!activity.getWriteTarget().equals("target") ? activity.getWriteTarget() : "");
     // Setzen die Sprache
     languageText.setText(activity.getDsLanguage());
   }
@@ -249,6 +256,29 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
     languageLabel.setBackground(Display.getCurrent().getSystemColor(
         SWT.COLOR_WHITE));
 
+
+    writeTargetLabel = new Label(composite, SWT.NONE);
+    writeTargetLabel.setText("Target to write the data variable:");
+    writeTargetLabel.setBackground(Display.getCurrent().getSystemColor(
+        SWT.COLOR_WHITE));
+
+    languageLabel.setText("Query language:");
+    languageLabel.setVisible(true);
+    languageLabel.setBackground(Display.getCurrent().getSystemColor(
+        SWT.COLOR_WHITE));
+    writeTargetCombo = new CCombo(composite, SWT.BORDER);
+    writeTargetCombo.setLayoutData(gridData130);
+    writeTargetCombo.setItems(VariableUtils.getUseableVariables(getProcess()).toArray(new String[0]));
+    writeTargetCombo.addModifyListener(new ModifyListener() {
+
+      @Override
+      public void modifyText(ModifyEvent e) {
+        getCommandFramework().execute(
+            new SetWriteTargetCommand(getModel(), writeTargetCombo
+                .getText()));
+      }
+    });
+    
     createInputVariableWidgets();
   }
 

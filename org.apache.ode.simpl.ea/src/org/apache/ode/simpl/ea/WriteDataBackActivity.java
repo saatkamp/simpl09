@@ -35,8 +35,10 @@ public class WriteDataBackActivity extends DataManagementActivity {
     loadSIMPLAttributes(context, element);
 
     // Load all specific attribute values from the WriteDataBackActivity.
+    String writeTarget = element.getAttribute("writeTarget");
     Attr dataVarAttr = element.getAttributeNode("dataVariable");
     String dataVariableName = dataVarAttr.getValue();
+    
     DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
     DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
@@ -68,12 +70,23 @@ public class WriteDataBackActivity extends DataManagementActivity {
       DataObject sdo = xmlDoc.getRootObject();
 
       // write data back
-      boolean successful = datasourceService.writeBack(ds, sdo);
+      if (writeTarget != null) {
+        this.successfullExecution = datasourceService.writeData(ds, sdo, writeTarget);
+      } else {
+        this.successfullExecution = datasourceService.writeBack(ds, sdo);
+      }
 
-      if (!successful) {
-        // ScopeEvent DMFailure = new DMFailure(
-        // "The result of the query is null");
-        // context.getInternalInstance().sendEvent(DMFailure);
+      if (!this.successfullExecution) {
+        ActivityFailureEvent event = new ActivityFailureEvent();
+        event.setActivityName(context.getActivityName());
+        event.setActivityId(context.getOActivity().getId());
+        event.setActivityType("WriteDataBackActivity");
+        event.setScopeName(context.getOActivity().getParent().name);
+        event.setScopeId(0L);
+        event.setScopeDeclerationId(context.getOActivity().getParent()
+            .getId());
+        context.getInternalInstance().sendEvent(event);
+        context.completeWithFault(new Throwable("SIMPL Exception"));
       }
     } catch (Exception e) {
       ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
