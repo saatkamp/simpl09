@@ -43,10 +43,6 @@ public class SetQueryTargetCommand extends SetCommand {
 			return ((QueryDataActivity) fTarget).getQueryTarget();
 		}
 
-    if (fTarget instanceof WriteDataBackActivity){
-      return ((WriteDataBackActivity) fTarget).getQueryTarget();
-    }
-		
 		throw new IllegalArgumentException("This model object has no variable to get");
 	}
 
@@ -57,8 +53,6 @@ public class SetQueryTargetCommand extends SetCommand {
 	public void set(Object o) {
     if (fTarget instanceof QueryDataActivity) {
       ((QueryDataActivity) fTarget).setQueryTarget((String) o);
-    } else if (fTarget instanceof WriteDataBackActivity) {
-      ((WriteDataBackActivity) fTarget).setQueryTarget((String) o);
     }
 
     else {

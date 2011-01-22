@@ -4,6 +4,7 @@ import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.IHoverHelper;
 import org.eclipse.bpel.ui.adapters.IAnnotatedElement;
 import org.eclipse.bpel.ui.adapters.ILabeledElement;
@@ -121,6 +122,20 @@ public class SIMPLHoverHelper implements IHoverHelper {
 										.getDataVariable().getName()));
 					}
 				}
+				
+        if (modelObject instanceof WriteDataBackActivity) {
+          if (((WriteDataBackActivity) modelObject).getDataVariable() != null
+              && !((WriteDataBackActivity) modelObject)
+                  .getDataVariable().getName().isEmpty()) {
+            panel.add(new Label(ModelPackage.eINSTANCE
+                .getWriteDataBackActivity_DataVariable()
+                .getName()
+                + " :"));
+            panel.add(new Label(
+                ((WriteDataBackActivity) modelObject)
+                    .getDataVariable().getName()));
+          }
+        }
 			}
 
 		} else {

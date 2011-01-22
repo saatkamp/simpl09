@@ -35,7 +35,7 @@ public class IssueCommandActivity extends DataManagementActivity {
 				ActivityFailureEvent event = new ActivityFailureEvent();
 				event.setActivityName(context.getActivityName());
 				event.setActivityId(context.getOActivity().getId());
-				event.setActivityType("IssueActivity");
+				event.setActivityType("IssueCommandActivity");
 				event.setScopeName(context.getOActivity().getParent().name);
 				event.setScopeId(0L);
 				event.setScopeDeclerationId(context.getOActivity().getParent()
@@ -48,7 +48,7 @@ public class IssueCommandActivity extends DataManagementActivity {
 			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 			event.setActivityName(context.getActivityName());
 			event.setActivityId(context.getOActivity().getId());
-			event.setActivityType("IssueActivity");
+			event.setActivityType("IssueCommandActivity");
 			event.setScopeName(context.getOActivity().getParent().name);
 			event.setScopeId(0L);
 			event.setScopeDeclerationId(context.getOActivity().getParent().getId());

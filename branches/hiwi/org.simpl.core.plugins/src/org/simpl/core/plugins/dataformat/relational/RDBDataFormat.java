@@ -278,7 +278,7 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   }
 
   /**
-   * Creates a comma sparated columns and values statement for an insert statement.
+   * Creates a comma separated columns and values statement for an insert statement.
    * 
    * @param columns
    * @param tableMetaData

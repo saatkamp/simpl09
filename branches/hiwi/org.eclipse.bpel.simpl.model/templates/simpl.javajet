@@ -3,7 +3,7 @@
 <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.example.org/simpl"
   xmlns:simpl="http://www.example.org/simpl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-  <xsd:element name="queryActivity" type="simpl:QueryActivityType" />
+  <xsd:element name="queryActivity" type="simpl:QueryDataActivityType" />
 
   <xsd:complexType name="DataManagementActivityType">
     <xsd:attribute name="name" type="xsd:string" use="optional" />
@@ -16,7 +16,7 @@
       use="optional" />
   </xsd:complexType>
 
-  <xsd:complexType name="QueryActivityType">
+  <xsd:complexType name="QueryDataActivityType">
     <xsd:complexContent>
       <xsd:extension base="simpl:DataManagementActivityType">
 
@@ -36,17 +36,9 @@
     </xsd:complexContent>
   </xsd:complexType>
 
-  <xsd:element name="issueActivity"
+  <xsd:element name="issueCommandActivity"
     type="simpl:DataManagementActivityType">
   </xsd:element>
-
-  <xsd:element name="updateActivity"
-    type="simpl:DataManagementActivityType">
-  </xsd:element>
-
-
-
-
 
   <xsd:element name="retrieveDataActivity"
     type="simpl:RetrieveDataActivityType">

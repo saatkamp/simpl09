@@ -14,14 +14,13 @@ import org.eclipse.bpel.model.Variable;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Allows to update data on a data source.
+ * Allows to write data back to a data source.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity#getDataVariable <em>Data Variable</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity#getQueryTarget <em>Query Target</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,32 +54,5 @@ public interface WriteDataBackActivity extends DataManagementActivity {
    * @generated
    */
   void setDataVariable(Variable value);
-
-  /**
-   * Returns the value of the '<em><b>Query Target</b></em>' attribute.
-   * The default value is <code>"target"</code>.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Query Target</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Query Target</em>' attribute.
-   * @see #setQueryTarget(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getWriteDataBackActivity_QueryTarget()
-   * @model default="target"
-   * @generated
-   */
-  String getQueryTarget();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity#getQueryTarget <em>Query Target</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Query Target</em>' attribute.
-   * @see #getQueryTarget()
-   * @generated
-   */
-  void setQueryTarget(String value);
 
 } // WriteDataBackActivity

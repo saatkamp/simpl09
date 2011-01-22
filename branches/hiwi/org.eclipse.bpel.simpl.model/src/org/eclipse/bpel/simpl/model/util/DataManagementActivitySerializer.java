@@ -90,7 +90,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			activityElement
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
-			// handle the QueryActivity Attributes
+			// handle the QueryDataActivity Attributes
 			if (((QueryDataActivity) activity).getDsStatement() != null) {
 				String attName = ModelPackage.eINSTANCE
 						.getDataManagementActivity_DsStatement().getName();
@@ -138,7 +138,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 		}
 
 		/*
-		 * IssueActivity
+		 * IssueCommandActivity
 		 */
 		if (activity instanceof IssueCommandActivity) {
 
@@ -149,7 +149,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			activityElement
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
-			// handle the IssueActivity Attributes
+			// handle the IssueCommandActivity Attributes
 			if (((IssueCommandActivity) activity).getDsStatement() != null) {
 				String attName = ModelPackage.eINSTANCE
 						.getDataManagementActivity_DsStatement().getName();
@@ -296,7 +296,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
         activityElement.setAttribute(attName,
             ((WriteDataBackActivity) activity).getDsLanguage());
       }
-
+      
       if (((WriteDataBackActivity) activity).getDataVariable() != null) {
         String attName = ModelPackage.eINSTANCE
             .getWriteDataBackActivity_DataVariable().getName();
@@ -311,7 +311,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 
 		
 		/*
-		 * TransferActivity
+		 * TransferDataActivity
 		 */
 		if (activity instanceof TransferDataActivity) {
 

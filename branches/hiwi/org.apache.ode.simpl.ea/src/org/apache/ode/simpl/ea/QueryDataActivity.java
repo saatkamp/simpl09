@@ -38,7 +38,7 @@ public class QueryDataActivity extends DataManagementActivity {
 				ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 				event.setActivityName(context.getActivityName());
 				event.setActivityId(context.getOActivity().getId());
-				event.setActivityType("QueryActivity");
+				event.setActivityType("QueryDataActivity");
 				event.setScopeName(context.getOActivity().getParent().name);
 				event.setScopeId(0L);
 				event.setScopeDeclerationId(context.getOActivity().getParent().getId());
@@ -62,7 +62,7 @@ public class QueryDataActivity extends DataManagementActivity {
 				ActivityFailureEvent event = new ActivityFailureEvent();
 				event.setActivityName(context.getActivityName());
 				event.setActivityId(context.getOActivity().getId());
-				event.setActivityType("QueryActivity");
+				event.setActivityType("QueryDataActivity");
 				event.setScopeName(context.getOActivity().getParent().name);
 				event.setScopeId(0L);
 				event.setScopeDeclerationId(context.getOActivity().getParent()
@@ -70,12 +70,11 @@ public class QueryDataActivity extends DataManagementActivity {
 				context.getInternalInstance().sendEvent(event);
 				context.completeWithFault(new Throwable("SIMPL Exception"));
 			}
-
 		} catch (Exception e) {
 			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 			event.setActivityName(context.getActivityName());
 			event.setActivityId(context.getOActivity().getId());
-			event.setActivityType("QueryActivity");
+			event.setActivityType("QueryDataActivity");
 			event.setScopeName(context.getOActivity().getParent().name);
 			event.setScopeId(0L);
 			event.setScopeDeclerationId(context.getOActivity().getParent().getId());

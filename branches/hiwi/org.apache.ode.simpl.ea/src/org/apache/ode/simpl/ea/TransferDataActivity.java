@@ -54,7 +54,7 @@ public class TransferDataActivity extends DataManagementActivity {
 				ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 				event.setActivityName(context.getActivityName());
 				event.setActivityId(context.getOActivity().getId());
-				event.setActivityType("TransferActivity");
+				event.setActivityType("TransferDataActivity");
 				event.setScopeName(context.getOActivity().getParent().name);
 				event.setScopeId(0L);
 				event.setScopeDeclerationId(context.getOActivity().getParent().getId());
@@ -86,7 +86,7 @@ public class TransferDataActivity extends DataManagementActivity {
 					ActivityFailureEvent event = new ActivityFailureEvent();
 					event.setActivityName(context.getActivityName());
 					event.setActivityId(context.getOActivity().getId());
-					event.setActivityType("TransferActivity");
+					event.setActivityType("TransferDataActivity");
 					event.setScopeName(context.getOActivity().getParent().name);
 					event.setScopeId(0L);
 					event.setScopeDeclerationId(context.getOActivity().getParent()
@@ -100,7 +100,7 @@ public class TransferDataActivity extends DataManagementActivity {
 			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
 			event.setActivityName(context.getActivityName());
 			event.setActivityId(context.getOActivity().getId());
-			event.setActivityType("TransferActivity");
+			event.setActivityType("TransferDataActivity");
 			event.setScopeName(context.getOActivity().getParent().name);
 			event.setScopeId(0L);
 			event.setScopeDeclerationId(context.getOActivity().getParent().getId());

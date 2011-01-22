@@ -13,7 +13,7 @@ package org.eclipse.bpel.simpl.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Allows to insert data on a data source.
+ * Allows to execute an issue command on a data source.
  * <!-- end-model-doc -->
  *
  *
