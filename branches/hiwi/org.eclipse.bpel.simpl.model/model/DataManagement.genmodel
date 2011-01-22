@@ -25,6 +25,7 @@
     </genClasses>
     <genClasses ecoreClass="DataManagement.ecore#//WriteDataBackActivity">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//WriteDataBackActivity/dataVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//WriteDataBackActivity/writeTarget"/>
     </genClasses>
     <genClasses ecoreClass="DataManagement.ecore#//TransferDataActivity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsAddress"/>

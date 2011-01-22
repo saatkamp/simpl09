@@ -766,13 +766,22 @@ public interface ModelPackage extends EPackage {
   int WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Write Target</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Write Data Back Activity</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_DATA_BACK_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
+  int WRITE_DATA_BACK_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 2;
 
 
 	/**
@@ -1069,6 +1078,17 @@ public interface ModelPackage extends EPackage {
   EReference getWriteDataBackActivity_DataVariable();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity#getWriteTarget <em>Write Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Write Target</em>'.
+   * @see org.eclipse.bpel.simpl.model.WriteDataBackActivity#getWriteTarget()
+   * @see #getWriteDataBackActivity()
+   * @generated
+   */
+  EAttribute getWriteDataBackActivity_WriteTarget();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.TransferDataActivity <em>Transfer Data Activity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1271,6 +1291,14 @@ public interface ModelPackage extends EPackage {
      * @generated
      */
     EReference WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE = eINSTANCE.getWriteDataBackActivity_DataVariable();
+
+    /**
+     * The meta object literal for the '<em><b>Write Target</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET = eINSTANCE.getWriteDataBackActivity_WriteTarget();
 
     /**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl <em>Transfer Data Activity</em>}' class.

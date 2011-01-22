@@ -45,8 +45,8 @@ public class TransferDataActivityPropertySection extends
 	private Label languageLabel = null;
 	private Text languageText = null;
 	private Composite parentComposite = null;
-	private Label targetLabel = null;
-	private CCombo targetCombo = null;
+	private Label writeTargetLabel = null;
+	private CCombo writeTargetCombo = null;
 
 	private TransferDataActivity transferDataActivity;
 
@@ -71,7 +71,7 @@ public class TransferDataActivityPropertySection extends
 
 		// Setzen die Datenquellenadresse
 		dataSourceAddressCombo.setText(transferDataActivity.getTargetDsAddress());
-		targetCombo.setText(transferDataActivity.getTargetDsContainer());
+		writeTargetCombo.setText(transferDataActivity.getTargetDsContainer());
 		// Setzen die Sprache
 		languageText.setText(transferDataActivity.getTargetDsLanguage());
 	}
@@ -199,20 +199,20 @@ public class TransferDataActivityPropertySection extends
 			}
 		});
 
-		targetLabel = new Label(composite, SWT.NONE);
-		targetLabel.setText("Target to insert the data:");
-		targetLabel.setBackground(Display.getCurrent().getSystemColor(
+		writeTargetLabel = new Label(composite, SWT.NONE);
+		writeTargetLabel.setText("Target to insert the data:");
+		writeTargetLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 
 		languageLabel.setText("Query language:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		targetCombo = new CCombo(composite, SWT.BORDER);
-		targetCombo.setLayoutData(gridData13);
-		targetCombo.setItems(VariableUtils.getUseableVariables(getProcess())
+		writeTargetCombo = new CCombo(composite, SWT.BORDER);
+		writeTargetCombo.setLayoutData(gridData13);
+		writeTargetCombo.setItems(VariableUtils.getUseableVariables(getProcess())
 				.toArray(new String[0]));
-		targetCombo.addModifyListener(new ModifyListener() {
+		writeTargetCombo.addModifyListener(new ModifyListener() {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -220,7 +220,7 @@ public class TransferDataActivityPropertySection extends
 						.execute(
 								new SetCommand(
 										transferDataActivity,
-										targetCombo.getText(),
+										writeTargetCombo.getText(),
 										ModelPackage.eINSTANCE
 												.getTransferDataActivity_TargetDsContainer()));
 			}

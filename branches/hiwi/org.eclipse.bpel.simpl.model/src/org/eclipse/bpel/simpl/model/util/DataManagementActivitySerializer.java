@@ -305,6 +305,13 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
                 .getName());
       }
 
+      if (((WriteDataBackActivity) activity).getWriteTarget() != null) {
+        String attName = ModelPackage.eINSTANCE
+            .getWriteDataBackActivity_WriteTarget().getName();
+        activityElement.setAttribute(attName,
+            ((WriteDataBackActivity) activity).getWriteTarget());
+      }
+      
       // insert the DOM element into the DOM tree
       parentNode.appendChild(activityElement);
     }

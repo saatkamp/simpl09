@@ -144,13 +144,18 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       this.setCommonAttributes(activity, node);
 
       // handle the WriteDataBackDataActivity attributes
-      String attDataVariable = ModelPackage.eINSTANCE
-          .getWriteDataBackActivity_DataVariable().getName();
+      String attDataVariable = ModelPackage.eINSTANCE.getWriteDataBackActivity_DataVariable().getName();
       String dataVariableName = ((Element) node).getAttribute(attDataVariable);
 
       if (dataVariableName != null) {
         activity.setDataVariable(BPELReader.getVariable(process.getVariables(),
             dataVariableName));
+      }
+      
+      String attWriteTarget = ModelPackage.eINSTANCE.getWriteDataBackActivity_WriteTarget().getName();
+
+      if (((Element) node).getAttribute(attWriteTarget) != null) {
+        activity.setWriteTarget(((Element) node).getAttribute(attWriteTarget));
       }
 
       return activity;
@@ -174,14 +179,14 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       // handle the TransferDataActivity attributes
       String attTargetContainer = ModelPackage.eINSTANCE
           .getTransferDataActivity_TargetDsContainer().getName();
-      String attTargetKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind()
+      String attTargetKind = ModelPackage.eINSTANCE.getTransferDataActivity_TargetDsKind()
           .getName();
-      String attTargetType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType()
+      String attTargetType = ModelPackage.eINSTANCE.getTransferDataActivity_TargetDsType()
           .getName();
       String attTargetAddress = ModelPackage.eINSTANCE
-          .getDataManagementActivity_DsAddress().getName();
+          .getTransferDataActivity_TargetDsAddress().getName();
       String attTargetLanguage = ModelPackage.eINSTANCE
-          .getDataManagementActivity_DsLanguage().getName();
+          .getTransferDataActivity_TargetDsLanguage().getName();
 
       if (transferDataActivityElement.getAttribute(attTargetContainer) != null) {
         activity.setTargetDsContainer(transferDataActivityElement

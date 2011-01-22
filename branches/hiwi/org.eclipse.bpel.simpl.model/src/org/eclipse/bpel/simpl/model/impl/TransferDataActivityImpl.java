@@ -6,6 +6,7 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
+import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.TransferDataActivity;
 
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
+@SuppressWarnings("restriction")
 public class TransferDataActivityImpl extends DataManagementActivityImpl implements TransferDataActivity {
   /**
    * The default value of the '{@link #getTargetDsAddress() <em>Target Ds Address</em>}' attribute.
@@ -168,6 +170,11 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    */
   public void setTargetDsAddress(String newTargetDsAddress) {
     String oldTargetDsAddress = targetDsAddress;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsAddress().getName(),
+          newTargetDsAddress == null ? null : newTargetDsAddress);
+    }
     targetDsAddress = newTargetDsAddress;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS, oldTargetDsAddress, targetDsAddress));
@@ -189,6 +196,11 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    */
   public void setTargetDsType(String newTargetDsType) {
     String oldTargetDsType = targetDsType;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsType().getName(),
+          newTargetDsType == null ? null : newTargetDsType);
+    }
     targetDsType = newTargetDsType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE, oldTargetDsType, targetDsType));
@@ -210,6 +222,11 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    */
   public void setTargetDsKind(String newTargetDsKind) {
     String oldTargetDsKind = targetDsKind;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsKind().getName(),
+          newTargetDsKind == null ? null : newTargetDsKind);
+    }
     targetDsKind = newTargetDsKind;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND, oldTargetDsKind, targetDsKind));
@@ -231,6 +248,11 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    */
   public void setTargetDsLanguage(String newTargetDsLanguage) {
     String oldTargetDsLanguage = targetDsLanguage;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsLanguage().getName(),
+          newTargetDsLanguage == null ? null : newTargetDsLanguage);
+    }    
     targetDsLanguage = newTargetDsLanguage;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE, oldTargetDsLanguage, targetDsLanguage));
@@ -252,6 +274,11 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    */
   public void setTargetDsContainer(String newTargetDsContainer) {
     String oldTargetDsContainer = targetDsContainer;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsContainer().getName(),
+          newTargetDsContainer == null ? null : newTargetDsContainer);
+    }
     targetDsContainer = newTargetDsContainer;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER, oldTargetDsContainer, targetDsContainer));

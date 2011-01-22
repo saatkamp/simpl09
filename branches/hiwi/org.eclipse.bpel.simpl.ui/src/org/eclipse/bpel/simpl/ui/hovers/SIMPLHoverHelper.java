@@ -134,6 +134,11 @@ public class SIMPLHoverHelper implements IHoverHelper {
             panel.add(new Label(
                 ((WriteDataBackActivity) modelObject)
                     .getDataVariable().getName()));
+            panel.add(new Label(ModelPackage.eINSTANCE
+                .getWriteDataBackActivity_WriteTarget().getName()
+                + " :"));
+            panel.add(new Label(((WriteDataBackActivity) modelObject)
+                .getWriteTarget()));
           }
         }
 			}
