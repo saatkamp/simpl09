@@ -95,15 +95,15 @@ LANGUAGE SQL;
 
 CREATE LANGUAGE plpgsql;
 
-/* tries to find a connector for a new inserted data source, based on its connector_properties_description */
+/* tries to find a connector for a new inserted or updated data source, based on its connector_properties_description */
 CREATE OR REPLACE FUNCTION setDataSourceConnector() RETURNS trigger AS '
   DECLARE
     matching_connector_id INTEGER;
   BEGIN
     RAISE NOTICE ''[Trigger] set_data_source_connector activated'';
     IF NEW.connector_properties_description IS NOT NULL THEN 
-	    SELECT INTO matching_connector_id id FROM connectors WHERE getConnectorXMLProperty(''type'', connectors.properties_description) = getDataSourceXMLProperty(''type'', NEW.connector_properties_description) AND getConnectorXMLProperty(''subType'', connectors.properties_description) = getDataSourceXMLProperty(''subType'', NEW.connector_properties_description) AND getConnectorXMLProperty(''language'', connectors.properties_description) = getDataSourceXMLProperty(''language'', NEW.connector_properties_description) LIMIT 1;
-	    IF matching_connector_id IS NOT NULL THEN
+	    SELECT INTO matching_connector_id id FROM connectors WHERE getConnectorXMLProperty(''type'', connectors.properties_description) = getDataSourceXMLProperty(''type'', NEW.connector_properties_description) AND getConnectorXMLProperty(''subType'', connectors.properties_description) = getDataSourceXMLProperty(''subType'', NEW.connector_properties_description) AND getConnectorXMLProperty(''language'', connectors.properties_description) = getDataSourceXMLProperty(''language'', NEW.connector_properties_description) AND getConnectorXMLProperty(''dataFormatName'', connectors.properties_description) = getDataSourceXMLProperty(''dataFormatName'', NEW.connector_properties_description) LIMIT 1;
+      IF matching_connector_id IS NOT NULL THEN
         /* avoid a second update if this function is triggered by an UPDATE from updateDataSourceConnectors() */
         IF NEW.connector_id IS NULL OR (NEW.connector_id <> matching_connector_id) THEN
           NEW.connector_id := matching_connector_id;
