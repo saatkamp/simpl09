@@ -7,27 +7,51 @@
   </welcome-file-list>
   
   <servlet>
-    <description>IndexAction</description>
-    <display-name>IndexAction</display-name>
-    <servlet-name>IndexAction</servlet-name>
-    <servlet-class>org.simpl.resource.management.webinterface.IndexAction</servlet-class>
+    <description>DataSourceListAction</description>
+    <display-name>DataSourceListAction</display-name>
+    <servlet-name>DataSourceListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceListAction</servlet-class>
   </servlet>
   
   <servlet>
-    <description>FormAction</description>
-    <display-name>FormAction</display-name>
-    <servlet-name>FormAction</servlet-name>
-    <servlet-class>org.simpl.resource.management.webinterface.FormAction</servlet-class>
+    <description>DataSourceFormAction</description>
+    <display-name>DataSourceFormAction</display-name>
+    <servlet-name>DataSourceFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>ConnectorListAction</description>
+    <display-name>ConnectorListAction</display-name>
+    <servlet-name>ConnectorListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.ConnectorListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>ConnectorFormAction</description>
+    <display-name>ConnectorFormAction</display-name>
+    <servlet-name>ConnectorFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.ConnectorFormAction</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>IndexAction</servlet-name>
-    <url-pattern>/IndexAction</url-pattern>
+    <servlet-name>DataSourceListAction</servlet-name>
+    <url-pattern>/DataSourceListAction</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
-    <servlet-name>FormAction</servlet-name>
-    <url-pattern>/FormAction</url-pattern>
+    <servlet-name>DataSourceFormAction</servlet-name>
+    <url-pattern>/DataSourceFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ConnectorListAction</servlet-name>
+    <url-pattern>/ConnectorListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ConnectorFormAction</servlet-name>
+    <url-pattern>/ConnectorFormAction</url-pattern>
   </servlet-mapping>
   
   <security-constraint>

@@ -13,8 +13,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SIMPL Resource Management Web Interface: data source</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>SIMPL Resource Management Web Interface</title>
 </head>
 
 <body>
@@ -48,8 +48,8 @@
     }
   }
 
-  if (parameters.get("indexSubmit") != null
-      && parameters.get("indexSubmit").equals("Edit") && parameters.get("id") != null) { // edit action from index.jsp
+  if (parameters.get("dataSourceListSubmit") != null
+      && parameters.get("dataSourceListSubmit").equals("Edit") && parameters.get("id") != null) { // edit action from datasource_list.jsp
     dataSource = resourceManagement.getDataSourceById(Integer.valueOf(parameters
         .get("id")));
 
@@ -66,8 +66,8 @@
       dataformat = dataSource.getConnector().getConverterDataFormat().getName();
       connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
-  } else if (parameters.get("formSubmit") != null
-      && parameters.get("formSubmit").equals("Save")) { // TODO: return to form after saving (does not work yet)
+  } else if (parameters.get("dataSourceFormSubmit") != null
+      && parameters.get("dataSourceFormSubmit").equals("Save")) { // TODO: return to form after saving (does not work yet)
     id = parameters.get("id");
     name = parameters.get("name");
     address = parameters.get("address");
@@ -82,9 +82,10 @@
     connectorProperties = parameters.get("connectorProperties");
   }
 %>
-<h2>SIMPL Resource Management: Data Source Form</h2>
-
-<form name="datasource" action="FormAction" method="post" enctype="multipart/form-data">
+<h2>SIMPL Resource Management - Data Source Editing</h2>
+<a href="index.jsp">Home</a> &gt; <a href="datasource_list.jsp">Data Source Management</a> &gt; Data Source Editing
+<br/><br/>
+<form name="datasourceForm" action="DataSourceFormAction" method="post" enctype="multipart/form-data">
 <table cellspacing="3" cellpadding="3" style="border: 1px solid;">
   <tr>
     <td><label>Name</label></td>
@@ -148,8 +149,8 @@
 
 <br/>
 <input type="hidden" name="id" value="<%=id%>" />
-<input type="submit" name="formSubmit" value="Save" />
-<input type="submit" name="formSubmit" value="Cancel"/>
+<input type="submit" name="dataSourceFormSubmit" value="Save" />
+<input type="submit" name="dataSourceFormSubmit" value="Cancel"/>
 </form>
 
 <br/>
@@ -159,5 +160,6 @@
           .getParameter("message") : "")%>
   </b>
 </div>
+
 </body>
 </html>

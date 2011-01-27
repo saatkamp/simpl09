@@ -3,7 +3,8 @@ package org.simpl.resource.management.webinterface;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class FormValidator {
+// TODO: benutzen
+public class DataSourceFormValidator {
   public static String validateForm(HttpServletRequest request) {
     String message = "";
     String name = request.getParameter("name");
