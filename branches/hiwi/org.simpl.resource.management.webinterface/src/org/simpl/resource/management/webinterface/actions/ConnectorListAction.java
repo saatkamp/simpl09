@@ -1,4 +1,4 @@
-package org.simpl.resource.management.webinterface;
+package org.simpl.resource.management.webinterface.actions;
 
 import java.io.IOException;
 
@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.webinterface.RMWebConfig;
 
 /**
- * <b>Purpose:</b>Receiver for actions from the index.jsp. <br>
+ * <b>Purpose:</b>Receiver for actions from the connector_list.jsp. <br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -25,11 +26,11 @@ import org.simpl.resource.management.client.ResourceManagementClient;
  * @link http://code.google.com/p/simpl09/
  */
 @SuppressWarnings("serial")
-public class IndexAction extends HttpServlet {
+public class ConnectorListAction extends HttpServlet {
   private ResourceManagement resourceManagementService = ResourceManagementClient
       .getService(RMWebConfig.getInstance().getResourceManagementAddress());
 
-  public IndexAction() {
+  public ConnectorListAction() {
     super();
   }
 
@@ -42,23 +43,23 @@ public class IndexAction extends HttpServlet {
     RequestDispatcher dispatcher = null;
     String nextJSP = null;
     
-    if (request.getParameter("indexSubmit").equals("Delete")) {
+    if (request.getParameter("connectorListSubmit").equals("Delete")) {
       if (this.delete(request)) {
-        response.sendRedirect("index.jsp?message=Successfully deleted data source");
+        response.sendRedirect("connector_list.jsp?message=Successfully deleted connector.");
       } else {
-        response.sendRedirect("index.jsp?message=Failed to delete data source");
+        response.sendRedirect("connector_list.jsp?message=Failed to delete connector.");
       }
-    } else if (request.getParameter("indexSubmit").equals("Edit")) {
+    } else if (request.getParameter("connectorListSubmit").equals("Edit")) {
       if (request.getParameter("id") == null) {
-        nextJSP = "/index.jsp?message=No datasource selected";
+        nextJSP = "/connector_list.jsp?message=Please select a connector.";
       } else {
-        nextJSP = "/form.jsp";
+        nextJSP = "/connector_form.jsp";
       }
 
       dispatcher = this.getServletContext().getRequestDispatcher(nextJSP);
       dispatcher.forward(request, response);
-    } else if (request.getParameter("indexSubmit").equals("New")) {
-      nextJSP = "/form.jsp";
+    } else if (request.getParameter("connectorListSubmit").equals("New")) {
+      nextJSP = "/connector_form.jsp";
       
       dispatcher = this.getServletContext().getRequestDispatcher(nextJSP);
       dispatcher.forward(request, response);
@@ -69,7 +70,7 @@ public class IndexAction extends HttpServlet {
     boolean success = false;
 
     try {
-      success = resourceManagementService.deleteDataSource(Integer.valueOf(request
+      success = resourceManagementService.deleteConnector(Integer.valueOf(request
           .getParameter("id")));
     } catch (Exception_Exception e) {
       e.printStackTrace();

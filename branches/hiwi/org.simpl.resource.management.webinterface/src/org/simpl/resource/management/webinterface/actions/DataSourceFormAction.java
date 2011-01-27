@@ -1,4 +1,4 @@
-package org.simpl.resource.management.webinterface;
+package org.simpl.resource.management.webinterface.actions;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,9 +17,12 @@ import org.simpl.core.webservices.client.LateBinding;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.webinterface.FormMetaData;
+import org.simpl.resource.management.webinterface.MultipartForm;
+import org.simpl.resource.management.webinterface.RMWebConfig;
 
 /**
- * <b>Purpose:</b>Receiver for actions from the form.jsp. <br>
+ * <b>Purpose:</b>Receiver for actions from the datasource_form.jsp. <br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -30,11 +33,11 @@ import org.simpl.resource.management.client.ResourceManagementClient;
  * @link http://code.google.com/p/simpl09/
  */
 @SuppressWarnings("serial")
-public class FormAction extends HttpServlet {
+public class DataSourceFormAction extends HttpServlet {
   private ResourceManagement resourceManagementService = ResourceManagementClient
       .getService(RMWebConfig.getInstance().getResourceManagementAddress());
 
-  public FormAction() {
+  public DataSourceFormAction() {
     super();
   }
 
@@ -46,20 +49,22 @@ public class FormAction extends HttpServlet {
       throws ServletException, IOException {
     HashMap<String, String> parameters = MultipartForm.getParameters(request);
     
-    if (parameters.get("formSubmit").equals("Save") && parameters.get("id").equals("")) {
-      if (this.save(parameters)) {
-        response.sendRedirect("index.jsp?message=Successfully created data source.");
+    if (parameters.get("dataSourceFormSubmit").equals("Save") && parameters.get("id").equals("")) {
+      if (this.add(parameters)) {
+        response.sendRedirect("datasource_list.jsp?message=Successfully created data source.");
+        FormMetaData.refresh();
       } else {
-        response.sendRedirect("index.jsp?message=Failed to create data source.");
+        response.sendRedirect("datasource_list.jsp?message=Failed to create data source.");
       }
-    } else if (parameters.get("formSubmit").equals("Save")) {
+    } else if (parameters.get("dataSourceFormSubmit").equals("Save")) {
       if (this.update(parameters)) {
-        response.sendRedirect("index.jsp?message=Successfully updated data source.");
+        response.sendRedirect("datasource_list.jsp?message=Successfully updated data source.");
+        FormMetaData.refresh();
       } else {
-        response.sendRedirect("index.jsp?message=Failed to update data source.");
+        response.sendRedirect("datasource_list.jsp?message=Failed to update data source.");
       }
-    } else if (parameters.get("formSubmit").equals("Cancel")) {
-      response.sendRedirect("index.jsp");
+    } else if (parameters.get("dataSourceFormSubmit").equals("Cancel")) {
+      response.sendRedirect("datasource_list.jsp");
     }
   }
 
@@ -69,7 +74,7 @@ public class FormAction extends HttpServlet {
    * @param parameters
    * @return
    */
-  private boolean save(HashMap<String, String> parameters) {
+  private boolean add(HashMap<String, String> parameters) {
     boolean success = false;
     DataSource newDataSource = parametersToDataSource(parameters);
 
@@ -104,7 +109,7 @@ public class FormAction extends HttpServlet {
   }
 
   /**
-   * Deletes a data source.
+   * Creates a data source object from form parameters.
    * 
    * @param parameters
    * @return
@@ -135,7 +140,7 @@ public class FormAction extends HttpServlet {
       if (!parameters.get("oldConnectorPropertiesData").equals(parameters.get("connectorPropertiesData"))) {
         dataSource.setConnectorPropertiesDescription(parameters.get("connectorPropertiesData"));
       } else {
-        // if the properties description data didn't change, the properties are regenerated from the form fields
+        // if the properties description data didn't change, it will be regenerated from the form fields
         dataSource.setConnectorPropertiesDescription("");
       }
     }
