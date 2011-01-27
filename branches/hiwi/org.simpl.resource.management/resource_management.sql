@@ -153,9 +153,16 @@ CREATE OR REPLACE FUNCTION updateDataSourceConnectors() RETURNS trigger AS '
           AND (datasource_record.connector_id IS NULL OR (datasource_record.connector_id <> NEW.id)) THEN
           UPDATE datasources SET connector_id = NEW.id WHERE datasources.id = datasource_record.id;
 	        RAISE NOTICE ''[Trigger] updated connector_id (id = %) on datasource (id = %)'', NEW.id, datasource_record.id;
-	      ELSE
-	        RAISE NOTICE ''[Trigger] no connector update for datasource: %, %, %, %'',datasource_type, datasource_sub_type, datasource_language, datasource_data_format_name;
 	      END IF;
+        /* remove connector from data source if the connector changed and does not fit anymore*/
+        IF ((connector_type <> datasource_type 
+	        OR connector_sub_type <> datasource_sub_type 
+	        OR connector_language <> datasource_language 
+	        OR connector_data_format_name <> datasource_data_format_name) 
+	        AND (datasource_record.connector_id = NEW.id)) THEN
+          UPDATE datasources SET connector_id = NULL WHERE datasources.id = datasource_record.id;
+          RAISE NOTICE ''[Trigger] updated connector_id (id = %) on datasource (id = %)'', NEW.id, datasource_record.id;
+        END IF;
 	    END LOOP;
     END IF;
     RETURN NEW;
