@@ -236,6 +236,21 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.Connector
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getConnectorById")
+    @WebResult(partName = "return")
+    public Connector getConnectorById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns org.simpl.resource.management.client.ConnectorList
      * @throws Exception_Exception
