@@ -19,12 +19,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "Connector")
-@XmlType(name = "Connector", propOrder = { "id", "name", "implementation",
-    "propertiesDescription", "converterDataFormat" })
+@XmlType(name = "Connector", propOrder = { "id", "name", "implementation", "type",
+    "subType", "language", "propertiesDescription", "converterDataFormat" })
 public class Connector {
   private String id;
   private String name;
   private String implementation;
+  private String type;
+  private String subType;
+  private String language;
   private String propertiesDescription;
   private DataFormat converterDataFormat = new DataFormat();
 
@@ -71,6 +74,51 @@ public class Connector {
    */
   public void setImplementation(String implementation) {
     this.implementation = implementation;
+  }
+
+  /**
+   * @return the type
+   */
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * @param type
+   *          the type to set
+   */
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  /**
+   * @return the subType
+   */
+  public String getSubType() {
+    return subType;
+  }
+
+  /**
+   * @param subType
+   *          the subType to set
+   */
+  public void setSubType(String subType) {
+    this.subType = subType;
+  }
+
+  /**
+   * @return the language
+   */
+  public String getLanguage() {
+    return language;
+  }
+
+  /**
+   * @param language
+   *          the language to set
+   */
+  public void setLanguage(String language) {
+    this.language = language;
   }
 
   /**

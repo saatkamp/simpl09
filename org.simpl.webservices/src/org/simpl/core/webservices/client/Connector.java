@@ -19,6 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="implementation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="subType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="propertiesDescription" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="converterDataFormat" type="{http://webservices.core.simpl.org/}DataFormat" minOccurs="0"/>
  *       &lt;/sequence>
@@ -34,6 +37,9 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "name",
     "implementation",
+    "type",
+    "subType",
+    "language",
     "propertiesDescription",
     "converterDataFormat"
 })
@@ -42,6 +48,9 @@ public class Connector {
     protected String id;
     protected String name;
     protected String implementation;
+    protected String type;
+    protected String subType;
+    protected String language;
     protected String propertiesDescription;
     protected DataFormat converterDataFormat;
 
@@ -115,6 +124,78 @@ public class Connector {
      */
     public void setImplementation(String value) {
         this.implementation = value;
+    }
+
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setType(String value) {
+        this.type = value;
+    }
+
+    /**
+     * Gets the value of the subType property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSubType() {
+        return subType;
+    }
+
+    /**
+     * Sets the value of the subType property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSubType(String value) {
+        this.subType = value;
+    }
+
+    /**
+     * Gets the value of the language property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLanguage() {
+        return language;
+    }
+
+    /**
+     * Sets the value of the language property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLanguage(String value) {
+        this.language = value;
     }
 
     /**
