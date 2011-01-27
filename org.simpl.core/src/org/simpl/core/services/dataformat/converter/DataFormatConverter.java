@@ -33,7 +33,7 @@ public interface DataFormatConverter {
 
   /**
    * Converts the given SDO to the supported "from" data format if the data source service
-   * is registered for this converter in the SIMPL config file
+   * is registered for this converter in the SIMPL config file.
    * 
    * @param data
    * @param dataSourceService
@@ -45,7 +45,7 @@ public interface DataFormatConverter {
   /**
    * Converts automatically between the supported data formats if the data source service
    * is registered for this converter in the SIMPL config file. The given SDO's format is
-   * recognized by its dataFormatType attribute to decide wheather to use the
+   * recognized by its dataFormatType attribute to decide weather to use the
    * {@link #convertTo(DataObject)} or {@link #convertFrom(DataObject)} method.
    * 
    * @param dataObject
