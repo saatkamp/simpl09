@@ -134,6 +134,21 @@ public interface ResourceManagement {
      * 
      * @param arg0
      * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addConverter")
+    @WebResult(partName = "return")
+    public boolean addConverter(
+        @WebParam(name = "arg0", partName = "arg0")
+        Converter arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
      *     returns java.lang.String
      * @throws Exception_Exception
      */
@@ -407,9 +422,39 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
+    @WebMethod(action = "updateConverter")
+    @WebResult(partName = "return")
+    public boolean updateConverter(
+        @WebParam(name = "arg0", partName = "arg0")
+        Converter arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
     @WebMethod(action = "deleteDataFormat")
     @WebResult(partName = "return")
     public boolean deleteDataFormat(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteConverter")
+    @WebResult(partName = "return")
+    public boolean deleteConverter(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
         throws Exception_Exception
