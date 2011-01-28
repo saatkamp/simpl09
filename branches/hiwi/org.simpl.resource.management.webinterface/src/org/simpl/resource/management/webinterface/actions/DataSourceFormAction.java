@@ -51,17 +51,17 @@ public class DataSourceFormAction extends HttpServlet {
     
     if (parameters.get("dataSourceFormSubmit").equals("Save") && parameters.get("id").equals("")) {
       if (this.add(parameters)) {
-        response.sendRedirect("datasource_list.jsp?message=Successfully created data source.");
+        response.sendRedirect("datasource_list.jsp?message=Successfully created data source");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("datasource_list.jsp?message=Failed to create data source.");
+        response.sendRedirect("datasource_list.jsp?message=Failed to create data source");
       }
     } else if (parameters.get("dataSourceFormSubmit").equals("Save")) {
       if (this.update(parameters)) {
-        response.sendRedirect("datasource_list.jsp?message=Successfully updated data source.");
+        response.sendRedirect("datasource_list.jsp?message=Successfully updated data source");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("datasource_list.jsp?message=Failed to update data source.");
+        response.sendRedirect("datasource_list.jsp?message=Failed to update data source");
       }
     } else if (parameters.get("dataSourceFormSubmit").equals("Cancel")) {
       response.sendRedirect("datasource_list.jsp");

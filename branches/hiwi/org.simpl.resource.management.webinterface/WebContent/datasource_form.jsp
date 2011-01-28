@@ -116,7 +116,7 @@
   <tr>
     <td><label>Policy File</label></td>
     <td>
-      <textarea name="policyData" cols="77" rows="5"><%=policy%></textarea>
+      <textarea name="policyData" cols="77" rows="10"><%=policy%></textarea>
       <br/>
       <input name="policy" type="file" size="100"/>
     </td>
@@ -125,7 +125,7 @@
   <tr>
     <td><label>Connector Properties Description</label></td>
     <td>
-      <textarea name="connectorPropertiesData" cols="77" rows="5"><%=connectorProperties%></textarea>
+      <textarea name="connectorPropertiesData" cols="77" rows="10"><%=connectorProperties%></textarea>
       <textarea name="oldConnectorPropertiesData" cols="0" rows="0" style="height:0px;width:0px;position:absolute;top:0px;left:0px;visibility:hidden"><%=connectorProperties%></textarea>
       <br/>
       <input name="connectorProperties" type="file" size="100"/>

@@ -45,13 +45,13 @@ public class ConverterListAction extends HttpServlet {
     
     if (request.getParameter("converterListSubmit").equals("Delete")) {
       if (this.delete(request)) {
-        response.sendRedirect("converter_list.jsp?message=Successfully deleted converter.");
+        response.sendRedirect("converter_list.jsp?message=Successfully deleted converter");
       } else {
-        response.sendRedirect("converter_list.jsp?message=Failed to delete converter.");
+        response.sendRedirect("converter_list.jsp?message=Failed to delete converter");
       }
     } else if (request.getParameter("converterListSubmit").equals("Edit")) {
       if (request.getParameter("id") == null) {
-        nextJSP = "/converter_list.jsp?message=Please select a converter.";
+        nextJSP = "/converter_list.jsp?message=Please select a converter";
       } else {
         nextJSP = "/converter_form.jsp";
       }

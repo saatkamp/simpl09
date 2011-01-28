@@ -45,13 +45,13 @@ public class ConnectorListAction extends HttpServlet {
     
     if (request.getParameter("connectorListSubmit").equals("Delete")) {
       if (this.delete(request)) {
-        response.sendRedirect("connector_list.jsp?message=Successfully deleted connector.");
+        response.sendRedirect("connector_list.jsp?message=Successfully deleted connector");
       } else {
-        response.sendRedirect("connector_list.jsp?message=Failed to delete connector.");
+        response.sendRedirect("connector_list.jsp?message=Failed to delete connector");
       }
     } else if (request.getParameter("connectorListSubmit").equals("Edit")) {
       if (request.getParameter("id") == null) {
-        nextJSP = "/connector_list.jsp?message=Please select a connector.";
+        nextJSP = "/connector_list.jsp?message=Please select a connector";
       } else {
         nextJSP = "/connector_form.jsp";
       }

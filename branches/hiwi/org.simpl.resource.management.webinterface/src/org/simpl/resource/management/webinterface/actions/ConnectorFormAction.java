@@ -48,17 +48,17 @@ public class ConnectorFormAction extends HttpServlet {
     
     if (parameters.get("connectorFormSubmit").equals("Save") && parameters.get("id").equals("")) {
       if (this.save(parameters)) {
-        response.sendRedirect("connector_list.jsp?message=Successfully created connector.");
+        response.sendRedirect("connector_list.jsp?message=Successfully created connector");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("connector_list.jsp?message=Failed to create connector.");
+        response.sendRedirect("connector_list.jsp?message=Failed to create connector");
       }
     } else if (parameters.get("connectorFormSubmit").equals("Save")) {
       if (this.update(parameters)) {
-        response.sendRedirect("connector_list.jsp?message=Successfully updated connector.");
+        response.sendRedirect("connector_list.jsp?message=Successfully updated connector");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("connector_list.jsp?message=Failed to update connector.");
+        response.sendRedirect("connector_list.jsp?message=Failed to update connector");
       }
     } else if (parameters.get("connectorFormSubmit").equals("Cancel")) {
       response.sendRedirect("connector_list.jsp");

@@ -98,7 +98,7 @@
   <tr>
     <td><label>Properties Description</label></td>
     <td>
-      <textarea name="propertiesData" cols="77" rows="5"><%=properties%></textarea>
+      <textarea name="propertiesData" cols="77" rows="10"><%=properties%></textarea>
       <textarea name="oldPropertiesData" cols="0" rows="0" style="height:0px;width:0px;position:absolute;top:0px;left:0px;visibility:hidden"><%=properties%></textarea>
       <br/>
       <input name="properties" type="file" size="100"/>
