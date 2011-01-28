@@ -754,7 +754,7 @@ public class ResourceManagement {
   /**
    * Adds a connector.
    * 
-   * @param dataSource
+   * @param connector
    * @return
    * @throws Exception
    */
@@ -817,6 +817,32 @@ public class ResourceManagement {
     return successful;
   }
 
+  /**
+   * Adds a converter.
+   * 
+   * @param Converter
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "addConverter")
+  public boolean addConverter(Converter converter) throws Exception {
+    boolean successful = false;
+    String statement = null;
+
+    // build SQL insert statement
+    statement = "INSERT INTO converters (name, implementation, connector_dataformat_id, workflow_dataformat_id) VALUES (";
+    statement += "'" + converter.getName() + "', ";
+    statement += "'" + converter.getImplementation() + "'";
+    statement += "(SELECT id FROM dataformats WHERE name LIKE '" + converter.getConnectorDataFormat().getName() + "')";
+    statement += "(SELECT id FROM dataformats WHERE name LIKE '" + converter.getWorkflowDataFormat().getName() + "')";
+    statement += ")";
+
+    // add converter
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+  
   /**
    * Updates a data source.
    * 
@@ -934,6 +960,31 @@ public class ResourceManagement {
   }
 
   /**
+   * Updates a converter.
+   * 
+   * @param converter
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "updateConverter")
+  public boolean updateConverter(Converter converter) throws Exception {
+    boolean successful = false;
+    String statement = "";
+    
+    // build SQL update statement
+    statement += "UPDATE converters SET ";
+    statement += "name='" + converter.getName() + "',";
+    statement += "implementation='" + converter.getImplementation() + "',";
+    statement += "connector_dataformat_id=(SELECT id FROM dataformats WHERE name LIKE '" + converter.getConnectorDataFormat().getName() + "')";
+    statement += "workflow_dataformat_id=(SELECT id FROM dataformats WHERE name LIKE '" + converter.getWorkflowDataFormat().getName() + "')";
+
+    // update connector
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+    
+    return successful;
+  }
+  
+  /**
    * Deletes a data source.
    * 
    * @param id
@@ -987,6 +1038,24 @@ public class ResourceManagement {
     return successful;
   }
 
+  /**
+   * Deletes a converter.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "deleteConverter")
+  public boolean deleteConverter(int id) throws Exception {
+    boolean successful = false;
+    String statement = "DELETE FROM converters WHERE id = " + String.valueOf(id);
+
+    // delete converter
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+  
   /**
    * Creates the tables for the Resource Management in the configured PostgreSQL data
    * source.
