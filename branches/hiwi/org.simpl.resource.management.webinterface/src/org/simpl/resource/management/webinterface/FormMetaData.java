@@ -44,16 +44,18 @@ public class FormMetaData {
   /**
    * Returns the data formats as HTML select element.
    * 
+   * @param name
+   *          Name of the form element
    * @param selectedItem
    *          Selected item
    * @return HTML select element
    * @throws Exception
    */
-  public String getDataFormatSelect(String selectedItem) throws Exception {
+  public String getDataFormatSelect(String name, String selectedItem) throws Exception {
     this.retrieveDataFormats();
 
     String select = this
-        .createSelectElement("dataformat", selectedItem, this.dataFormats);
+        .createSelectElement(name, selectedItem, this.dataFormats);
 
     return select;
   }

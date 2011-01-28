@@ -33,6 +33,27 @@
     <servlet-name>ConnectorFormAction</servlet-name>
     <servlet-class>org.simpl.resource.management.webinterface.actions.ConnectorFormAction</servlet-class>
   </servlet>
+
+  <servlet>
+    <description>ConverterListAction</description>
+    <display-name>ConverterListAction</display-name>
+    <servlet-name>ConverterListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.ConverterListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>ConverterFormAction</description>
+    <display-name>ConverterFormAction</display-name>
+    <servlet-name>ConverterFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.ConverterFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>InstallAction</description>
+    <display-name>InstallAction</display-name>
+    <servlet-name>InstallAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.InstallAction</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>DataSourceListAction</servlet-name>
@@ -52,6 +73,21 @@
   <servlet-mapping>
     <servlet-name>ConnectorFormAction</servlet-name>
     <url-pattern>/ConnectorFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ConverterListAction</servlet-name>
+    <url-pattern>/ConverterListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ConverterFormAction</servlet-name>
+    <url-pattern>/ConverterFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>InstallAction</servlet-name>
+    <url-pattern>/InstallAction</url-pattern>
   </servlet-mapping>
   
   <security-constraint>

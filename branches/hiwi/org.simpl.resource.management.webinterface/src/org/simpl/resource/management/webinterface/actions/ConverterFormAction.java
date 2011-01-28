@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.Converter;
 import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
@@ -19,7 +19,7 @@ import org.simpl.resource.management.webinterface.MultipartForm;
 import org.simpl.resource.management.webinterface.RMWebConfig;
 
 /**
- * <b>Purpose:</b>Receiver for actions from the connector_form.jsp. <br>
+ * <b>Purpose:</b>Receiver for actions from the converter_form.jsp. <br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -30,11 +30,11 @@ import org.simpl.resource.management.webinterface.RMWebConfig;
  * @link http://code.google.com/p/simpl09/
  */
 @SuppressWarnings("serial")
-public class ConnectorFormAction extends HttpServlet {
+public class ConverterFormAction extends HttpServlet {
   private ResourceManagement resourceManagementService = ResourceManagementClient
       .getService(RMWebConfig.getInstance().getResourceManagementAddress());
 
-  public ConnectorFormAction() {
+  public ConverterFormAction() {
     super();
   }
 
@@ -46,37 +46,37 @@ public class ConnectorFormAction extends HttpServlet {
       throws ServletException, IOException {
     HashMap<String, String> parameters = MultipartForm.getParameters(request);
     
-    if (parameters.get("connectorFormSubmit").equals("Save") && parameters.get("id").equals("")) {
+    if (parameters.get("converterFormSubmit").equals("Save") && parameters.get("id").equals("")) {
       if (this.save(parameters)) {
-        response.sendRedirect("connector_list.jsp?message=Successfully created connector.");
+        response.sendRedirect("converter_list.jsp?message=Successfully created converter.");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("connector_list.jsp?message=Failed to create connector.");
+        response.sendRedirect("converter_list.jsp?message=Failed to create converter.");
       }
-    } else if (parameters.get("connectorFormSubmit").equals("Save")) {
+    } else if (parameters.get("converterFormSubmit").equals("Save")) {
       if (this.update(parameters)) {
-        response.sendRedirect("connector_list.jsp?message=Successfully updated connector.");
+        response.sendRedirect("converter_list.jsp?message=Successfully updated converter.");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("connector_list.jsp?message=Failed to update connector.");
+        response.sendRedirect("converter_list.jsp?message=Failed to update converter.");
       }
-    } else if (parameters.get("connectorFormSubmit").equals("Cancel")) {
-      response.sendRedirect("connector_list.jsp");
+    } else if (parameters.get("converterFormSubmit").equals("Cancel")) {
+      response.sendRedirect("converter_list.jsp");
     }
   }
 
   /**
-   * Adds a new connector
+   * Adds a new converter
    * 
    * @param parameters
    * @return
    */
   private boolean save(HashMap<String, String> parameters) {
     boolean success = false;
-    Connector newConnector = parametersToConnector(parameters);
+    Converter newConverter = parametersToConverter(parameters);
 
     try {
-      success = resourceManagementService.addConnector(newConnector);
+      success = resourceManagementService.addConverter(newConverter);
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -93,10 +93,10 @@ public class ConnectorFormAction extends HttpServlet {
    */
   private boolean update(HashMap<String, String> parameters) {
     boolean success = false;
-    Connector connector = parametersToConnector(parameters);
+    Converter converter = parametersToConverter(parameters);
 
     try {
-      success = resourceManagementService.updateConnector(connector);
+      success = resourceManagementService.updateConverter(converter);
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -106,38 +106,25 @@ public class ConnectorFormAction extends HttpServlet {
   }
 
   /**
-   * Creates a connector object from form parameters.
+   * Creates a converter object from form parameters.
    * 
    * @param parameters
    * @return
    */
-  private Connector parametersToConnector(HashMap<String, String> parameters) {
-    Connector connector = new Connector();
-    DataFormat converterDataFormat = new DataFormat();
-   
-    // use existing connector properties data if no file is chosen
-    if (!parameters.get("properties").equals("")) {
-      connector.setPropertiesDescription(parameters.get("properties"));
-    } else {
-      if (!parameters.get("oldPropertiesData").equals(parameters.get("propertiesData"))) {
-        connector.setPropertiesDescription(parameters.get("propertiesData"));
-      } else {
-        // if the properties description data didn't change, it will be regenerated from the form fields
-        connector.setPropertiesDescription("");
-      }
-    }
+  private Converter parametersToConverter(HashMap<String, String> parameters) {
+    Converter converter = new Converter();
+    DataFormat connectorDataFormat = new DataFormat();
+    DataFormat workflowDataFormat = new DataFormat();
     
-    // initialize connector
-    connector.setId(parameters.get("id"));
-    connector.setName(parameters.get("name"));
-    connector.setImplementation(parameters.get("implementation"));
-    connector.setType(parameters.get("type"));
-    connector.setSubType(parameters.get("subtype"));
-    connector.setLanguage(parameters.get("language"));
+    // initialize converter
+    converter.setId(parameters.get("id"));
+    converter.setName(parameters.get("name"));
+    converter.setImplementation(parameters.get("implementation"));
+    connectorDataFormat.setName(parameters.get("connectorDataFormat"));
+    workflowDataFormat.setName(parameters.get("workflowDataFormat"));   
+    converter.setConnectorDataFormat(connectorDataFormat);
+    converter.setWorkflowDataFormat(workflowDataFormat);
     
-    converterDataFormat.setName(parameters.get("dataformat"));
-    connector.setConverterDataFormat(converterDataFormat);
-
-    return connector;
+    return converter;
   }
 }

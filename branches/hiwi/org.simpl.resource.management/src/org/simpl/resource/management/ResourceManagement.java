@@ -832,8 +832,8 @@ public class ResourceManagement {
     // build SQL insert statement
     statement = "INSERT INTO converters (name, implementation, connector_dataformat_id, workflow_dataformat_id) VALUES (";
     statement += "'" + converter.getName() + "', ";
-    statement += "'" + converter.getImplementation() + "'";
-    statement += "(SELECT id FROM dataformats WHERE name LIKE '" + converter.getConnectorDataFormat().getName() + "')";
+    statement += "'" + converter.getImplementation() + "', ";
+    statement += "(SELECT id FROM dataformats WHERE name LIKE '" + converter.getConnectorDataFormat().getName() + "'), ";
     statement += "(SELECT id FROM dataformats WHERE name LIKE '" + converter.getWorkflowDataFormat().getName() + "')";
     statement += ")";
 
@@ -975,9 +975,10 @@ public class ResourceManagement {
     statement += "UPDATE converters SET ";
     statement += "name='" + converter.getName() + "',";
     statement += "implementation='" + converter.getImplementation() + "',";
-    statement += "connector_dataformat_id=(SELECT id FROM dataformats WHERE name LIKE '" + converter.getConnectorDataFormat().getName() + "')";
+    statement += "connector_dataformat_id=(SELECT id FROM dataformats WHERE name LIKE '" + converter.getConnectorDataFormat().getName() + "'), ";
     statement += "workflow_dataformat_id=(SELECT id FROM dataformats WHERE name LIKE '" + converter.getWorkflowDataFormat().getName() + "')";
-
+    statement += " WHERE id=" + converter.getId();
+    
     // update connector
     successful = dataSourceService.executeStatement(rmDataSource, statement);
     
@@ -1301,8 +1302,8 @@ public class ResourceManagement {
           converter.setImplementation(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("connector_dataformat_name")) {
           connectorDataFormat.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("converter_dataformat_name")) {
-          workflowDataFormat.setImplementation(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("workflow_dataformat_name")) {
+          workflowDataFormat.setName(column.getValue());
         }
       }
 

@@ -44,7 +44,7 @@
       <% } %>
     </table>
   <% } else { %>
-    No connectors available, please create a new connector.
+    No connectors available, please create a connector.
     <br/>
   <% } %>
   <br/>

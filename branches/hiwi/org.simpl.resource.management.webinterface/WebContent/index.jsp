@@ -16,15 +16,13 @@
 </head>
 
 <body>
-<h2>SIMPL Resource Management - Home</h2>
-
-<a href="datasource_list.jsp">Data Source Management</a>
-<br/>
-<a href="connector_list.jsp">Connector Management</a>
-<br/>
-<a href="coverter_list.jsp">Converter Management</a>
-<br/>
-<br/>
-<a href="install.jsp">Install</a>
-
+  <h2>SIMPL Resource Management - Home</h2>
+  <a href="datasource_list.jsp">Data Source Management</a>
+  <br/>
+  <a href="connector_list.jsp">Connector Management</a>
+  <br/>
+  <a href="converter_list.jsp">Converter Management</a>
+  <br/>
+  <br/>
+  <a href="install.jsp">Installation</a>
 </body>
