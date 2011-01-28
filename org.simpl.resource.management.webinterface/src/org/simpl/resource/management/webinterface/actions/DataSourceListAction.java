@@ -45,13 +45,13 @@ public class DataSourceListAction extends HttpServlet {
     
     if (request.getParameter("dataSourceListSubmit").equals("Delete")) {
       if (this.delete(request)) {
-        response.sendRedirect("datasource_list.jsp?message=Successfully deleted data source.");
+        response.sendRedirect("datasource_list.jsp?message=Successfully deleted data source");
       } else {
-        response.sendRedirect("datasource_list.jsp?message=Failed to delete data source.");
+        response.sendRedirect("datasource_list.jsp?message=Failed to delete data source");
       }
     } else if (request.getParameter("dataSourceListSubmit").equals("Edit")) {
       if (request.getParameter("id") == null) {
-        nextJSP = "/datasource_list.jsp?message=Please select a data source.";
+        nextJSP = "/datasource_list.jsp?message=Please select a data source";
       } else {
         nextJSP = "/datasource_form.jsp";
       }

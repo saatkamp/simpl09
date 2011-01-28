@@ -48,17 +48,17 @@ public class ConverterFormAction extends HttpServlet {
     
     if (parameters.get("converterFormSubmit").equals("Save") && parameters.get("id").equals("")) {
       if (this.save(parameters)) {
-        response.sendRedirect("converter_list.jsp?message=Successfully created converter.");
+        response.sendRedirect("converter_list.jsp?message=Successfully created converter");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("converter_list.jsp?message=Failed to create converter.");
+        response.sendRedirect("converter_list.jsp?message=Failed to create converter");
       }
     } else if (parameters.get("converterFormSubmit").equals("Save")) {
       if (this.update(parameters)) {
-        response.sendRedirect("converter_list.jsp?message=Successfully updated converter.");
+        response.sendRedirect("converter_list.jsp?message=Successfully updated converter");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("converter_list.jsp?message=Failed to update converter.");
+        response.sendRedirect("converter_list.jsp?message=Failed to update converter");
       }
     } else if (parameters.get("converterFormSubmit").equals("Cancel")) {
       response.sendRedirect("converter_list.jsp");
