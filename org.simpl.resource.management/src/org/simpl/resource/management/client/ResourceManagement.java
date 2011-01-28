@@ -9,6 +9,7 @@ import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.simpl.core.webservices.client.Connector;
+import org.simpl.core.webservices.client.Converter;
 import org.simpl.core.webservices.client.DataFormat;
 import org.simpl.core.webservices.client.DataSource;
 
@@ -39,6 +40,48 @@ public interface ResourceManagement {
     public boolean addConnector(
         @WebParam(name = "arg0", partName = "arg0")
         Connector arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateConnector")
+    @WebResult(partName = "return")
+    public boolean updateConnector(
+        @WebParam(name = "arg0", partName = "arg0")
+        Connector arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "createResourceManagementTables")
+    @WebResult(partName = "return")
+    public boolean createResourceManagementTables()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteConnector")
+    @WebResult(partName = "return")
+    public boolean deleteConnector(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
         throws Exception_Exception
     ;
 
@@ -251,6 +294,21 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.Converter
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getConverterById")
+    @WebResult(partName = "return")
+    public Converter getConverterById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns org.simpl.resource.management.client.ConnectorList
      * @throws Exception_Exception
@@ -334,21 +392,6 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "updateConnector")
-    @WebResult(partName = "return")
-    public boolean updateConnector(
-        @WebParam(name = "arg0", partName = "arg0")
-        Connector arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
     @WebMethod(action = "updateDataFormat")
     @WebResult(partName = "return")
     public boolean updateDataFormat(
@@ -364,38 +407,11 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "deleteConnector")
-    @WebResult(partName = "return")
-    public boolean deleteConnector(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
     @WebMethod(action = "deleteDataFormat")
     @WebResult(partName = "return")
     public boolean deleteDataFormat(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "createResourceManagementTables")
-    @WebResult(partName = "return")
-    public boolean createResourceManagementTables()
         throws Exception_Exception
     ;
 

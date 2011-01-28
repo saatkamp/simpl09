@@ -241,7 +241,7 @@ public class ResourceManagement {
   @WebMethod(action = "getConnectorById")
   public Connector getConnectorById(@WebParam(name = "id") int id) throws Exception {
     Connector resultConnector = new Connector();
-    ConnectorList dataSourceList = new ConnectorList();
+    ConnectorList connectorList = new ConnectorList();
     ArrayList<Connector> connectors = null;
     String statement = "";
     String result = null;
@@ -252,17 +252,52 @@ public class ResourceManagement {
     statement += "LEFT JOIN dataformats ON (connectors.converter_dataformat_id = dataformats.id) ";
     statement += "WHERE connectors.id = " + id;
 
-    // retrieve data source
+    // retrieve connnector
     result = dataSourceService.retrieveData(rmDataSource, statement);
     connectors = this.getConnectorsFromResult(result);
 
-    dataSourceList.getConnectors().addAll(connectors);
+    connectorList.getConnectors().addAll(connectors);
 
     if (connectors.size() > 0) {
       resultConnector = connectors.get(0);
     }
 
     return resultConnector;
+  }
+
+  /**
+   * Returns a coconverter by id.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getConverterById")
+  public Converter getConverterById(@WebParam(name = "id") int id) throws Exception {
+    Converter resultConverter = new Converter();
+    ConverterList converterList = new ConverterList();
+    ArrayList<Converter> converters = null;
+    String statement = "";
+    String result = null;
+
+    // build select statement
+    statement += "SELECT converters.*, connector_dataformats.name connector_dataformat_name, workflow_dataformats.name workflow_dataformat_name ";
+    statement += "FROM converters ";
+    statement += "LEFT JOIN dataformats connector_dataformats ON (converters.connector_dataformat_id = connector_dataformats.id) ";
+    statement += "LEFT JOIN dataformats workflow_dataformats ON (converters.workflow_dataformat_id = workflow_dataformats.id) ";
+    statement += "WHERE converters.id = " + id;
+
+    // retrieve converter
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    converters = this.getConvertersFromResult(result);
+
+    converterList.getConverters().addAll(converters);
+
+    if (converters.size() > 0) {
+      resultConverter = converters.get(0);
+    }
+
+    return resultConverter;
   }
   
   /**
@@ -1158,6 +1193,57 @@ public class ResourceManagement {
     return connectors;
   }
 
+  /**
+   * Creates Converter objects from a RDB data format result.
+   * 
+   * @param result
+   * @return
+   * @throws IOException
+   * @throws JDOMException
+   * @throws Exception
+   */
+  @SuppressWarnings("unchecked")
+  private ArrayList<Converter> getConvertersFromResult(String result)
+      throws JDOMException, IOException {
+    ArrayList<Converter> converters = new ArrayList<Converter>();
+
+    Document configDoc = null;
+    Element root = null;
+    List<Element> rows = null;
+    SAXBuilder saxBuilder = new SAXBuilder();
+
+    // transform the document to a list of data source objects
+    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    root = configDoc.getRootElement();
+    rows = root.getChild("table").getChildren("row");
+
+    for (Element row : rows) {
+      Converter converter = new Converter();
+      DataFormat connectorDataFormat = new DataFormat();
+      DataFormat workflowDataFormat = new DataFormat();
+      List<Element> columns = row.getChildren("column");
+
+      for (Element column : columns) {
+        if (column.getAttribute("name").getValue().equals("id")) {
+          converter.setId(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("name")) {
+          converter.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("implementation")) {
+          converter.setImplementation(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("connector_dataformat_name")) {
+          connectorDataFormat.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("converter_dataformat_name")) {
+          workflowDataFormat.setImplementation(column.getValue());
+        }
+      }
+
+      converter.setConnectorDataFormat(connectorDataFormat);
+      converter.setWorkflowDataFormat(workflowDataFormat);
+      converters.add(converter);
+    }
+
+    return converters;
+  }  
   
   /**
    * Returns a list of all items from the given column.

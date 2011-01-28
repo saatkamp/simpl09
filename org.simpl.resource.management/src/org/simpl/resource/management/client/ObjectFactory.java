@@ -41,6 +41,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link StringList }
+     * 
+     */
+    public StringList createStringList() {
+        return new StringList();
+    }
+
+    /**
      * Create an instance of {@link Converter }
      * 
      */
@@ -49,19 +57,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConnectorList }
+     * Create an instance of {@link Exception }
      * 
      */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
-     * Create an instance of {@link Authentication }
+     * Create an instance of {@link LateBinding }
      * 
      */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public LateBinding createLateBinding() {
+        return new LateBinding();
+    }
+
+    /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
     }
 
     /**
@@ -70,14 +86,6 @@ public class ObjectFactory {
      */
     public DataSourceList createDataSourceList() {
         return new DataSourceList();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
     }
 
     /**
@@ -97,30 +105,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
-    }
-
-    /**
-     * Create an instance of {@link StringList }
-     * 
-     */
-    public StringList createStringList() {
-        return new StringList();
-    }
-
-    /**
      * Create an instance of {@link DataFormatList }
      * 
      */
@@ -134,6 +118,22 @@ public class ObjectFactory {
      */
     public Connector createConnector() {
         return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link ConnectorList }
+     * 
+     */
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
