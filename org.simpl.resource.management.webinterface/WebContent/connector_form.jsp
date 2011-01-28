@@ -91,8 +91,8 @@
   </tr>
 
   <tr>
-    <td><label>Data format</label></td>
-    <td><%=FormMetaData.getInstance().getDataFormatSelect(dataformat)%></td>
+    <td><label>Data Format</label></td>
+    <td><%=FormMetaData.getInstance().getDataFormatSelect("dataformat", dataformat)%></td>
   </tr>
   
   <tr>

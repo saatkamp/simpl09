@@ -71,11 +71,11 @@ public class DataFormatConverterProvider {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
     DataFormatConverterPlugin dataFormatConverter = null;
 
-    HashMap<String, ArrayList<String>> dataFormatCoverterMapping = SIMPLCoreConfig
+    HashMap<String, ArrayList<String>> dataFormatConverterMapping = SIMPLCoreConfig
         .getInstance().getDataFormatConverterMapping();
 
-    for (String dataFormatConverterClassName : dataFormatCoverterMapping.keySet()) {
-      List<String> dataSourceServiceClassNames = dataFormatCoverterMapping
+    for (String dataFormatConverterClassName : dataFormatConverterMapping.keySet()) {
+      List<String> dataSourceServiceClassNames = dataFormatConverterMapping
           .get(dataFormatConverterClassName);
 
       try {

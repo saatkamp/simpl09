@@ -59,7 +59,7 @@
       <% } %>
     </table>
   <% } else { %>
-    No data sources available, please create a new data source.
+    No data sources available, please create a data source.
     <br/>
   <% } %>
   <br/>

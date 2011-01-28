@@ -66,20 +66,6 @@
       dataformat = dataSource.getConnector().getConverterDataFormat().getName();
       connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
-  } else if (parameters.get("dataSourceFormSubmit") != null
-      && parameters.get("dataSourceFormSubmit").equals("Save")) { // TODO: return to form after saving (does not work yet)
-    id = parameters.get("id");
-    name = parameters.get("name");
-    address = parameters.get("address");
-    type = parameters.get("type");
-    subtype = parameters.get("subtype");
-    policy = parameters.get("policy");
-    key = parameters.get("key");
-    username = parameters.get("username");
-    password = parameters.get("password");
-    language = parameters.get("language");
-    dataformat = parameters.get("dataformat");
-    connectorProperties = parameters.get("connectorProperties");
   }
 %>
 <h2>SIMPL Resource Management - Data Source Editing</h2>
@@ -113,12 +99,12 @@
   </tr>
 
   <tr>
-    <td><label>Data format</label></td>
-    <td><%=FormMetaData.getInstance().getDataFormatSelect(dataformat)%></td>
+    <td><label>Data Format</label></td>
+    <td><%=FormMetaData.getInstance().getDataFormatSelect("dataformat", dataformat)%></td>
   </tr>
 
   <tr>
-    <td><label>User name</label></td>
+    <td><label>User Name</label></td>
     <td><input name="username" type="text" value="<%=username%>" size="100" /></td>
   </tr>
 
@@ -128,7 +114,7 @@
   </tr>
 
   <tr>
-    <td><label>Policy file</label></td>
+    <td><label>Policy File</label></td>
     <td>
       <textarea name="policyData" cols="77" rows="5"><%=policy%></textarea>
       <br/>
