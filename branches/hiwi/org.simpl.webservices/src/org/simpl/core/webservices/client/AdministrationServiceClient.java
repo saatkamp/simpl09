@@ -1,5 +1,10 @@
 package org.simpl.core.webservices.client;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /**
  * <b>Purpose:</b><br>
  * <b>Description:</b><br>
@@ -17,7 +22,7 @@ public class AdministrationServiceClient {
   private static AdministrationService service = null;
 
   public static AdministrationService getService() {
-    if (service == null) {
+    if (service == null && isAvailable()) {
       service = new AdministrationService_Service().getAdministrationServicePort();
     }
 
@@ -27,10 +32,42 @@ public class AdministrationServiceClient {
   public static AdministrationService getService(String address) {
     if (address != null) {
       serviceAddress = address;
-
+    }
+    
+    if (isAvailable()) {
       service = new AdministrationService_Service().getAdministrationServicePort();
+    } else {
+      service = null;
     }
 
     return service;
+  }
+  
+  /**
+   * Checks if the administration web service is available.
+   * 
+   * @return
+   */
+  public static boolean isAvailable() {
+    boolean available = false;
+
+    HttpURLConnection con;
+
+    try {
+      con = (HttpURLConnection) new URL(serviceAddress).openConnection();
+      con.setRequestMethod("HEAD");
+
+      if (con.getResponseCode() == HttpURLConnection.HTTP_OK) {
+        available = true;
+      }
+    } catch (MalformedURLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return available;
   }
 }

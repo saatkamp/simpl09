@@ -159,8 +159,11 @@ public class SIMPLCoreService {
 
   public String getResourceManagementAddress() {
     LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-    settings = this.load("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
-
+    
+    if (getAdministrationService() != null) {
+      settings = this.load("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
+    }
+    
     return settings.get("ADDRESS");
   }
 }
