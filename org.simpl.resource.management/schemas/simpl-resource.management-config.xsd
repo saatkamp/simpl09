@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema targetNamespace="http://org.simpl.resource.management" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.resource.management">
+	<xsd:attribute name="NewAttribute" type="xsd:IDREF"></xsd:attribute>
+
+    <xsd:complexType name="tDataSource">
+      <xsd:sequence>
+        <xsd:element name="name" type="xsd:string"></xsd:element>
+        <xsd:element name="address" type="xsd:string"></xsd:element>
+        <xsd:element name="type" type="xsd:string"></xsd:element>
+        <xsd:element name="subType" type="xsd:string"></xsd:element>
+        <xsd:element name="dataFormat" type="xsd:string"></xsd:element>
+        <xsd:element name="Authentication" type="tAuthentication"></xsd:element>
+      </xsd:sequence>
+
+    </xsd:complexType>
+
+    <xsd:complexType name="tAuthentication">
+      <xsd:sequence>
+        <xsd:element name="user" type="xsd:string"></xsd:element>
+        <xsd:element name="password" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ResourceManagement" type="tResourceManagement"></xsd:element>
+    
+    <xsd:complexType name="tResourceManagement">
+      <xsd:sequence>
+        <xsd:element name="DataSource" type="tDataSource"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

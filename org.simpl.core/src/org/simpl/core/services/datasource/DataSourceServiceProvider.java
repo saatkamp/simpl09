@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.simpl.core.SIMPLCoreConfig;
+import org.simpl.core.SIMPLResourceManagement;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 
 /**
@@ -70,8 +70,8 @@ public class DataSourceServiceProvider {
    * supported types, subtypes and languages.
    */
   @SuppressWarnings("unchecked")
-  private static void loadPlugins() {
-    List<String> plugins = SIMPLCoreConfig.getInstance().getDataSourceServicePlugins();
+  public static void loadPlugins() {
+    List<String> plugins = SIMPLResourceManagement.getInstance().getDataSourceServicePlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataSourceServicePlugin<Object, Object> dataSourceServiceInstance = null;
     String dataSourceType = null;

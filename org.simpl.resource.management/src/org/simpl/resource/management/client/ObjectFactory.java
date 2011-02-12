@@ -6,13 +6,6 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import org.simpl.core.webservices.client.Authentication;
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.core.webservices.client.Converter;
-import org.simpl.core.webservices.client.DataFormat;
-import org.simpl.core.webservices.client.DataSource;
-import org.simpl.core.webservices.client.LateBinding;
-
 
 /**
  * This object contains factory methods for each 
@@ -41,38 +34,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataFormatList }
-     * 
-     */
-    public DataFormatList createDataFormatList() {
-        return new DataFormatList();
-    }
-
-    /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
-    }
-
-    /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
      * Create an instance of {@link StringList }
      * 
      */
@@ -89,11 +50,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Converter }
+     * Create an instance of {@link DataSource }
      * 
      */
-    public Converter createConverter() {
-        return new Converter();
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link DataFormatList }
+     * 
+     */
+    public DataFormatList createDataFormatList() {
+        return new DataFormatList();
     }
 
     /**
@@ -102,6 +71,38 @@ public class ObjectFactory {
      */
     public Exception createException() {
         return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link DataFormat }
+     * 
+     */
+    public DataFormat createDataFormat() {
+        return new DataFormat();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
+     * Create an instance of {@link ConverterList }
+     * 
+     */
+    public ConverterList createConverterList() {
+        return new ConverterList();
     }
 
     /**
@@ -121,19 +122,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConverterList }
+     * Create an instance of {@link Converter }
      * 
      */
-    public ConverterList createConverterList() {
-        return new ConverterList();
-    }
-
-    /**
-     * Create an instance of {@link DataFormat }
-     * 
-     */
-    public DataFormat createDataFormat() {
-        return new DataFormat();
+    public Converter createConverter() {
+        return new Converter();
     }
 
     /**

@@ -13,8 +13,8 @@ import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.dataformat.relational.CSVResult;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
-import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
+import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
 

@@ -3,7 +3,7 @@ package org.simpl.resource.management.webinterface;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.simpl.core.webservices.client.DataFormat;
+import org.simpl.resource.management.client.DataFormat;
 import org.simpl.resource.management.client.DataFormatList;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
@@ -125,8 +125,8 @@ public class FormMetaData {
       this.dataFormats = new ArrayList<String>();
       
       DataFormatList dataFormats = resourceManagement.getAllDataFormats();
-
-      for (DataFormat dataFormat : dataFormats.getDataFormats()) {
+      
+      for (DataFormat dataFormat : dataFormats.getDataFormat()) {
         if (!this.dataFormats.contains(dataFormat.getName())) {
           this.dataFormats.add(dataFormat.getName());
         }

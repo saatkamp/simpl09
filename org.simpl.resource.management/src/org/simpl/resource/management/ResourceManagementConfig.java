@@ -9,10 +9,10 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import org.simpl.core.webservices.client.Authentication;
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.core.webservices.client.DataFormat;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataSource;
 
 /**
  * <b>Purpose:</b><br>
@@ -49,7 +49,6 @@ public class ResourceManagementConfig {
    */
   private static final ResourceManagementConfig instance = new ResourceManagementConfig();
 
-  Element dataSourceServiceElement = null;
   Element dataSourceElement = null;
 
   /**
@@ -83,7 +82,6 @@ public class ResourceManagementConfig {
       root = configDoc.getRootElement();
 
       // read elements
-      dataSourceServiceElement = root.getChild("DataSourceService");
       dataSourceElement = root.getChild("DataSource");
     } catch (JDOMException e) {
       // TODO Auto-generated catch block
@@ -121,9 +119,5 @@ public class ResourceManagementConfig {
     dataSource.setConnector(connector);
     
     return dataSource;
-  }
-
-  public String getDataSourceServiceAddress() {
-    return dataSourceServiceElement.getChildText("address");
   }
 }

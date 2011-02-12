@@ -3,13 +3,10 @@ package org.simpl.resource.management.client;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.simpl.core.webservices.client.Converter;
 
 
 /**
@@ -22,7 +19,7 @@ import org.simpl.core.webservices.client.Converter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="converters" type="{http://webservices.core.simpl.org/}Converter" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="converter" type="{http://management.resource.simpl.org/}converter" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,26 +30,26 @@ import org.simpl.core.webservices.client.Converter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "converterList", propOrder = {
-    "converters"
+    "converter"
 })
 public class ConverterList {
 
     @XmlElement(nillable = true)
-    protected List<Converter> converters;
+    protected List<Converter> converter;
 
     /**
-     * Gets the value of the converters property.
+     * Gets the value of the converter property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the converters property.
+     * This is why there is not a <CODE>set</CODE> method for the converter property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getConverters().add(newItem);
+     *    getConverter().add(newItem);
      * </pre>
      * 
      * 
@@ -62,11 +59,11 @@ public class ConverterList {
      * 
      * 
      */
-    public List<Converter> getConverters() {
-        if (converters == null) {
-            converters = new ArrayList<Converter>();
+    public List<Converter> getConverter() {
+        if (converter == null) {
+            converter = new ArrayList<Converter>();
         }
-        return this.converters;
+        return this.converter;
     }
 
 }

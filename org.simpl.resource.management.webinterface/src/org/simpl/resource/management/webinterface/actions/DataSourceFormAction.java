@@ -9,11 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.simpl.core.webservices.client.Authentication;
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.core.webservices.client.DataFormat;
-import org.simpl.core.webservices.client.DataSource;
-import org.simpl.core.webservices.client.LateBinding;
+import org.simpl.resource.management.client.Authentication;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.DataFormat;
+import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
@@ -121,16 +120,15 @@ public class DataSourceFormAction extends HttpServlet {
     
     // initialize authentication and late binding
     Authentication auth = new Authentication();
-    LateBinding lateBinding = new LateBinding();
 
     auth.setPassword(parameters.get("password"));
     auth.setUser(parameters.get("username"));
     
-    // use existing policy data if no file is chosen
-    if (!parameters.get("policy").equals("")) {
-      lateBinding.setPolicy(parameters.get("policy"));
+    // use existing propertiesDescription data if no file is chosen
+    if (!parameters.get("propertiesDescription").equals("")) {
+      dataSource.setPropertiesDescription(parameters.get("propertiesDescription"));
     } else {
-      lateBinding.setPolicy(parameters.get("policyData"));
+      dataSource.setPropertiesDescription(parameters.get("propertiesDescriptionData"));
     }
 
     // use existing connector properties data if no file is chosen
@@ -158,7 +156,6 @@ public class DataSourceFormAction extends HttpServlet {
     
     dataSource.setConnector(connector);
     dataSource.setAuthentication(auth);
-    dataSource.setLateBinding(lateBinding);
 
     return dataSource;
   }

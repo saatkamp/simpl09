@@ -3,24 +3,23 @@ package org.simpl.core.services.datasource;
 import java.io.InputStream;
 import java.util.List;
 
-import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
-import org.simpl.core.services.strategy.StrategyService;
-import org.simpl.core.services.strategy.StrategyServiceImpl;
+import org.simpl.core.services.discovery.DiscoveryService;
+import org.simpl.core.services.discovery.DiscoveryServiceImpl;
+import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Implementation of the data source service.<br>
- * <b>Description:</b>Receives all requests to data sources and forward them to one of the
+ * <b>Purpose:</b>Implementation of a common data source service that unites all data
+ * source service plug-ins.<br>
+ * <b>Description:</b>Receives all requests to data source services and forward them to one of the
  * data source service instances that are provided by data source service plugins.<br>
- * If the given data source is not fully specified and contains late binding information,
- * the strategy service is consulted to find a matching full specified data source.<br>
- * The given data on writeback is tested to match the given data source's data format and
+ * The given data on write back is tested to match the given data source's data format and
  * if necessary converts the data with a data format converter.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -32,6 +31,8 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class DataSourceServiceImpl implements DataSourceService<DataObject, DataObject> {
+  DiscoveryService discoveryService = new DiscoveryServiceImpl();
+  
   /*
    * (non-Javadoc)
    * @see
@@ -43,14 +44,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       String target) throws ConnectionException {
     boolean success = false;
     DataSourceService<Object, Object> dataSourceService;
-    StrategyService strategyService = new StrategyServiceImpl();
-
+    
     try {
-      // late binding
-      if (this.hasLateBindingInformation(dataSource)) {
-        dataSource = strategyService.findDataSource(dataSource);
-      }
-
       if (this.isDataSourceComplete(dataSource)) {
         dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
@@ -71,21 +66,12 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * .services.datasource.DataSource, java.lang.String)
    */
   @Override
-  public synchronized boolean executeStatement(DataSource dataSource, String statement)
-      throws ConnectionException {
+  public synchronized boolean executeStatement(DataSource dataSource, String statement) throws ConnectionException {
     boolean success = false;
 
     DataSourceService<Object, Object> dataSourceService = null;
-    DataSource lateBindingDataSource = null;
 
     try {
-      // late binding
-      lateBindingDataSource = findLateBindingDataSource(dataSource);
-
-      if (lateBindingDataSource != null) {
-        dataSource = lateBindingDataSource;
-      }
-
       // execute statement
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
@@ -114,16 +100,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
     DataObject retrievedData = null;
     Object data = null;
     DataSourceService<Object, Object> dataSourceService = null;
-    DataSource lateBindingDataSource = null;
 
     try {
-      // late binding
-      lateBindingDataSource = findLateBindingDataSource(dataSource);
-
-      if (lateBindingDataSource != null) {
-        dataSource = lateBindingDataSource;
-      }
-
       // retrieve data
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
@@ -160,16 +138,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
     DataSourceService<Object, Object> dataSourceService = null;
     Object writeData = null;
-    DataSource lateBindingDataSource = null;
 
     try {
-      // late binding
-      lateBindingDataSource = findLateBindingDataSource(dataSource);
-
-      if (lateBindingDataSource != null) {
-        dataSource = lateBindingDataSource;
-      }
-
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
         dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
@@ -203,16 +173,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
     DataSourceService<Object, Object> dataSourceService = null;
     Object writeData = null;
-    DataSource lateBindingDataSource = null;
 
     try {
-      // late binding
-      lateBindingDataSource = findLateBindingDataSource(dataSource);
-
-      if (lateBindingDataSource != null) {
-        dataSource = lateBindingDataSource;
-      }
-
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
         dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
@@ -244,16 +206,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       throws ConnectionException {
     DataObject data = null;
     DataSourceService<Object, Object> dataSourceService;
-    DataSource lateBindingDataSource = null;
 
     try {
-      // late binding
-      lateBindingDataSource = findLateBindingDataSource(dataSource);
-
-      if (lateBindingDataSource != null) {
-        dataSource = lateBindingDataSource;
-      }
-
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
         dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
@@ -489,40 +443,6 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * Finds a new data source with the late binding information of a given data source
-   * using the strategy service.
-   * 
-   * @return Data source from registry
-   */
-  private DataSource findLateBindingDataSource(DataSource dataSource) {
-    DataSource registryDataSource = null;
-    StrategyService strategyService = SIMPLCore.getInstance().strategyService();
-
-    if (this.hasLateBindingInformation(dataSource)) {
-      registryDataSource = strategyService.findDataSource(dataSource);
-    }
-
-    return registryDataSource;
-  }
-
-  /**
-   * Checks if a given data source has late binding information.
-   * 
-   * @param dataSource
-   * @return
-   */
-  private boolean hasLateBindingInformation(DataSource dataSource) {
-    boolean hasLateBindingInformation = false;
-
-    hasLateBindingInformation = dataSource != null
-        && dataSource.getLateBinding().getPolicy() != null
-        && dataSource.getLateBinding().getStrategy() != null
-        && dataSource.getLateBinding().getResourceManagementAddress() != null;
-
-    return hasLateBindingInformation;
-  }
-
-  /**
    * @param dataSource
    * @return <i>true</i> if data source contains all necessary information to execute an
    *         operation, <i>false</i> otherwise
@@ -536,20 +456,4 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
 
     return complete;
   }
-
-  /**
-   * Checks if the given data's format is supported by the current data source service
-   * instance.
-   * 
-   * @param dataFormat
-   * @return
-   */
-  // private boolean isSupported(DataObject data) {
-  // boolean supported = ((DataFormatPlugin<Object, Object>) ((DataSourceServicePlugin)
-  // this.dataSourceService)
-  // .getDataFormat()).getType().equals(data.getString("formatType"));
-  //
-  // return supported;
-  // }
-
 }

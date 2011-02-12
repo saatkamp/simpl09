@@ -2,7 +2,7 @@ package org.simpl.core.plugins.dataformat.relational;
 
 import java.io.File;
 
-import org.simpl.core.services.datasource.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose:</b>Used by CSVDataFormat to hold the file object and meta data like the
