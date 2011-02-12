@@ -2,7 +2,6 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
-<%@page import="org.simpl.core.webservices.client.*"%>
 <%
   PrintWriter output = response.getWriter();
   ResourceManagement resourceManagement = ResourceManagementClient
@@ -17,8 +16,7 @@
 
 <body>
 <%
-  List<DataSource> dataSources = resourceManagement.getAllDataSources()
-      .getDataSources();
+  List<DataSource> dataSources = resourceManagement.getAllDataSources().getDataSource();
 %>
 <h2>SIMPL Resource Management - Data Source Management</h2>
 <a href="index.jsp">Home</a> &gt; Data Source Management
@@ -52,7 +50,7 @@
           <td><%=!source.getConnector().getConverterDataFormat().getName().equals("") ? source.getConnector().getConverterDataFormat().getName() : ""%></td>
           <td><%=!source.getAuthentication().getUser().equals("") ? source.getAuthentication().getUser() : ""%></td>
           <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
-          <td><%=!source.getLateBinding().getPolicy().equals("")%></td>
+          <td><%=!source.getPropertiesDescription().equals("")%></td>
           <td><%=!source.getConnectorPropertiesDescription().equals("")%></td>
           <td><%=source.getConnector().getName()%></td>
         </tr>

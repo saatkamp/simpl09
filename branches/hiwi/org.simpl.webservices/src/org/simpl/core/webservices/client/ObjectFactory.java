@@ -6,6 +6,12 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import org.simpl.resource.management.client.Authentication;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.DataFormat;
+import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.client.LateBinding;
+
 
 /**
  * This object contains factory methods for each 
@@ -24,10 +30,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Converter_QNAME = new QName("http://webservices.core.simpl.org/", "Converter");
-    private final static QName _Connector_QNAME = new QName("http://webservices.core.simpl.org/", "Connector");
-    private final static QName _DataFormat_QNAME = new QName("http://webservices.core.simpl.org/", "DataFormat");
-    private final static QName _DataSource_QNAME = new QName("http://webservices.core.simpl.org/", "DataSource");
     private final static QName _Exception_QNAME = new QName("http://webservices.core.simpl.org/", "Exception");
 
     /**
@@ -35,46 +37,6 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
-    }
-
-    /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link DataFormat }
-     * 
-     */
-    public DataFormat createDataFormat() {
-        return new DataFormat();
     }
 
     /**
@@ -86,47 +48,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Converter }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public Converter createConverter() {
-        return new Converter();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Converter }{@code >}}
+     * Create an instance of {@link LateBinding }
      * 
      */
-    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "Converter")
-    public JAXBElement<Converter> createConverter(Converter value) {
-        return new JAXBElement<Converter>(_Converter_QNAME, Converter.class, null, value);
+    public LateBinding createLateBinding() {
+        return new LateBinding();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Connector }{@code >}}
+     * Create an instance of {@link DataFormat }
      * 
      */
-    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "Connector")
-    public JAXBElement<Connector> createConnector(Connector value) {
-        return new JAXBElement<Connector>(_Connector_QNAME, Connector.class, null, value);
+    public DataFormat createDataFormat() {
+        return new DataFormat();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataFormat }{@code >}}
+     * Create an instance of {@link Connector }
      * 
      */
-    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "DataFormat")
-    public JAXBElement<DataFormat> createDataFormat(DataFormat value) {
-        return new JAXBElement<DataFormat>(_DataFormat_QNAME, DataFormat.class, null, value);
+    public Connector createConnector() {
+        return new Connector();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataSource }{@code >}}
+     * Create an instance of {@link Exception }
      * 
      */
-    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "DataSource")
-    public JAXBElement<DataSource> createDataSource(DataSource value) {
-        return new JAXBElement<DataSource>(_DataSource_QNAME, DataSource.class, null, value);
+    public Exception createException() {
+        return new Exception();
     }
 
     /**

@@ -3,7 +3,7 @@ package org.simpl.core.plugins.dataformat.relational;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 
-import org.simpl.core.services.datasource.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose: Used by RDBDataFormat to hold the resultSet and the associated database

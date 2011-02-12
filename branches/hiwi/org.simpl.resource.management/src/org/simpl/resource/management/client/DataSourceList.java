@@ -3,13 +3,10 @@ package org.simpl.resource.management.client;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.simpl.core.webservices.client.DataSource;
 
 
 /**
@@ -22,7 +19,7 @@ import org.simpl.core.webservices.client.DataSource;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="dataSources" type="{http://webservices.core.simpl.org/}DataSource" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="dataSource" type="{http://management.resource.simpl.org/}dataSource" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,26 +30,26 @@ import org.simpl.core.webservices.client.DataSource;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataSourceList", propOrder = {
-    "dataSources"
+    "dataSource"
 })
 public class DataSourceList {
 
     @XmlElement(nillable = true)
-    protected List<DataSource> dataSources;
+    protected List<DataSource> dataSource;
 
     /**
-     * Gets the value of the dataSources property.
+     * Gets the value of the dataSource property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataSources property.
+     * This is why there is not a <CODE>set</CODE> method for the dataSource property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDataSources().add(newItem);
+     *    getDataSource().add(newItem);
      * </pre>
      * 
      * 
@@ -62,11 +59,11 @@ public class DataSourceList {
      * 
      * 
      */
-    public List<DataSource> getDataSources() {
-        if (dataSources == null) {
-            dataSources = new ArrayList<DataSource>();
+    public List<DataSource> getDataSource() {
+        if (dataSource == null) {
+            dataSource = new ArrayList<DataSource>();
         }
-        return this.dataSources;
+        return this.dataSource;
     }
 
 }

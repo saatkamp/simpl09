@@ -19,11 +19,11 @@
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.dataformat.converter"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.datasource"/>
         <file path="/org.simpl.core/log4j.properties"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.strategy"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.dataformat"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.datasource.exceptions"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.datasource"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.datasource.metadata"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.discovery"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.dataformat"/>
     </selectedElements>
 </jardesc>

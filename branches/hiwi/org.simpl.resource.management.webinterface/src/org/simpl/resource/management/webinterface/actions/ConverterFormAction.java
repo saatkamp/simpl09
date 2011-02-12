@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.simpl.core.webservices.client.Converter;
-import org.simpl.core.webservices.client.DataFormat;
+import org.simpl.resource.management.client.Converter;
+import org.simpl.resource.management.client.DataFormat;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;

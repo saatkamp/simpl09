@@ -12,7 +12,7 @@ package org.simpl.core.webservices.client;
  * @link http://code.google.com/p/simpl09/
  */
 public class AdministrationServiceClient {
-  static String serviceAddress = "http://localhost:8080/ode/processes/AdministrationService.AdministrationServicePort?wsdl";
+  static String serviceAddress = null;
 
   private static AdministrationService service = null;
 

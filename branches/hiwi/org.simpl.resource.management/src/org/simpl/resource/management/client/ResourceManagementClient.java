@@ -17,7 +17,7 @@ import java.net.URL;
  * @link http://code.google.com/p/simpl09/
  */
 public class ResourceManagementClient {
-  public static String serviceAddress = "http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl";
+  public static String serviceAddress = null;
   private static ResourceManagement service = null;
 
   public static ResourceManagement getService() {
@@ -35,6 +35,8 @@ public class ResourceManagementClient {
 
     if (isAvailable()) {
       service = new ResourceManagementService().getResourceManagementPort();
+    } else {
+      service = null;
     }
 
     return service;

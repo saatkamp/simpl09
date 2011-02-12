@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.simpl.core.SIMPLCoreConfig;
+import org.simpl.core.SIMPLResourceManagement;
 import org.simpl.core.plugins.dataformat.converter.DataFormatConverterPlugin;
 import org.simpl.core.services.datasource.DataSourceService;
 
@@ -71,7 +71,7 @@ public class DataFormatConverterProvider {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
     DataFormatConverterPlugin dataFormatConverter = null;
 
-    HashMap<String, ArrayList<String>> dataFormatConverterMapping = SIMPLCoreConfig
+    HashMap<String, ArrayList<String>> dataFormatConverterMapping = SIMPLResourceManagement
         .getInstance().getDataFormatConverterMapping();
 
     for (String dataFormatConverterClassName : dataFormatConverterMapping.keySet()) {
@@ -111,8 +111,8 @@ public class DataFormatConverterProvider {
    * Loads instances of the data format converter plug-ins and retrieves information about
    * their supported data source type and subtype.
    */
-  private static void loadPlugins() {
-    List<String> plugins = SIMPLCoreConfig.getInstance().getDataFormatConverterPlugins();
+  public static void loadPlugins() {
+    List<String> plugins = SIMPLResourceManagement.getInstance().getDataFormatConverterPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataFormatConverterPlugin dataFormatConverterInstance;
     String toDataFormat = null;

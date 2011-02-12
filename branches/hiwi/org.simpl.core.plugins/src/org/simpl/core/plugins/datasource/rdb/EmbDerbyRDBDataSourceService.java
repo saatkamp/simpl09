@@ -15,8 +15,8 @@ import org.simpl.core.SIMPLCore;
 import org.simpl.core.plugins.dataformat.relational.RDBResult;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.connection.JDCConnectionDriver;
-import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
+import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
 

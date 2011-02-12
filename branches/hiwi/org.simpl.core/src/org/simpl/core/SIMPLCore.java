@@ -3,8 +3,9 @@ package org.simpl.core;
 import org.simpl.core.services.administration.AdministrationService;
 import org.simpl.core.services.administration.AdministrationServiceImpl;
 import org.simpl.core.services.datasource.DataSourceServiceImpl;
-import org.simpl.core.services.strategy.StrategyService;
-import org.simpl.core.services.strategy.StrategyServiceImpl;
+import org.simpl.core.services.datasource.DataSourceServiceInterface;
+import org.simpl.core.services.discovery.DiscoveryService;
+import org.simpl.core.services.discovery.DiscoveryServiceImpl;
 
 /**
  * <b>Purpose: Provides access to all services and info of the SIMPLCore.</b> <br>
@@ -20,8 +21,9 @@ import org.simpl.core.services.strategy.StrategyServiceImpl;
 public class SIMPLCore {
   private static SIMPLCore instance = new SIMPLCore();
   private static AdministrationServiceImpl administrationService = new AdministrationServiceImpl();
-  private static StrategyServiceImpl strategyService = new StrategyServiceImpl();
+  private static DiscoveryServiceImpl strategyService = new DiscoveryServiceImpl();
   private static DataSourceServiceImpl dataSourceService = new DataSourceServiceImpl();
+  private static DataSourceServiceInterface dataSourceServiceInterface = new DataSourceServiceInterface();
 
   /**
    * Private constructor for singleton.
@@ -48,12 +50,19 @@ public class SIMPLCore {
   /**
    * @return The instance of the strategy service.
    */
-  public StrategyService strategyService() {
+  public DiscoveryService strategyService() {
     return SIMPLCore.strategyService;
   }
 
   /**
-   * @return The instance of the data source service.
+   * @return The instance of the data source service interface.
+   */
+  public DataSourceServiceInterface dataSourceServiceInterface() {
+    return SIMPLCore.dataSourceServiceInterface;
+  }
+
+  /**
+   * @return The instance of the data source service implementation.
    */
   public DataSourceServiceImpl dataSourceService() {
     return SIMPLCore.dataSourceService;

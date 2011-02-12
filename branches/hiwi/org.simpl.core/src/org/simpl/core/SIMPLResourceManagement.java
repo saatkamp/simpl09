@@ -3,12 +3,16 @@ package org.simpl.core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.core.webservices.client.Converter;
+import org.simpl.resource.management.client.Connector;
 import org.simpl.resource.management.client.ConnectorList;
+import org.simpl.resource.management.client.Converter;
 import org.simpl.resource.management.client.ConverterList;
+import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.client.DataSourceList;
+import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
@@ -70,70 +74,7 @@ public class SIMPLResourceManagement {
    * Initialize data.
    */
   private SIMPLResourceManagement() {
-    ConnectorList connectors = new ConnectorList();
-    ConverterList dataConverters = new ConverterList();
-    String resourceManagementLocation = SIMPLCoreConfig.getInstance()
-        .getWebServiceAddress("ResourceManagement");
-
-    try {
-      if (resourceManagementLocation != null && !resourceManagementLocation.equals("")) {
-        resourceManagement = ResourceManagementClient
-            .getService(resourceManagementLocation);
-
-        connectors = resourceManagement.getAllConnectors();
-        dataConverters = resourceManagement.getAllConverters();
-      }
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-
-    if (connectors.getConnectors().size() > 0) {
-      for (Connector dataSourceConnector : connectors
-          .getConnectors()) {
-        // retrieve data source service plug-ins
-        this.dataSourceServicePlugins.add(dataSourceConnector.getImplementation());
-
-        // retrieve data format plug-ins
-        if (!this.dataFormatPlugins.contains(dataSourceConnector.getConverterDataFormat().getImplementation())) {
-          this.dataFormatPlugins.add(dataSourceConnector.getConverterDataFormat().getImplementation());
-        }
-
-        // retrieve data format mapping
-        if (this.dataFormatMapping.containsKey(dataSourceConnector
-            .getConverterDataFormat().getImplementation())) {
-          this.dataFormatMapping.get(dataSourceConnector.getConverterDataFormat().getImplementation())
-              .add(dataSourceConnector.getImplementation());
-        } else {
-          this.dataFormatMapping.put(dataSourceConnector.getConverterDataFormat().getImplementation(),
-              new ArrayList<String>(Arrays.asList(dataSourceConnector.getImplementation())));
-        }
-      }
-    }
-
-    // retrieve data format converter plug-ins
-    if (dataConverters.getConverters().size() > 0) {
-      for (Converter dataConverter : dataConverters.getConverters()) {
-        this.dataFormatConverterPlugins.add(dataConverter.getImplementation());
-
-        // retrieve data format converter mapping
-        for (Connector connector : connectors
-            .getConnectors()) {
-          if (connector.getConverterDataFormat().getImplementation().equals(
-              dataConverter.getConnectorDataFormat().getImplementation())
-              || connector.getConverterDataFormat().getImplementation().equals(
-                  dataConverter.getWorkflowDataFormat().getImplementation())) {
-            if (this.dataFormatConverterMapping.containsKey(dataConverter.getImplementation())) {
-              this.dataFormatConverterMapping.get(dataConverter.getImplementation()).add(
-                  connector.getImplementation());
-            } else {
-              this.dataFormatConverterMapping.put(dataConverter.getImplementation(),
-                  new ArrayList<String>(Arrays.asList(connector.getImplementation())));
-            }
-          }
-        }
-      }
-    }
+    this.reload();
   }
 
   /**
@@ -176,8 +117,8 @@ public class SIMPLResourceManagement {
   }
 
   /**
-   * Returns a map of data formats and their supported data source services, key and values
-   * are full qualified class names.
+   * Returns a map of data formats and their supported data source services, key and
+   * values are full qualified class names.
    * 
    * @return data format mapping
    */
@@ -193,5 +134,124 @@ public class SIMPLResourceManagement {
    */
   public HashMap<String, ArrayList<String>> getDataFormatConverterMapping() {
     return dataFormatConverterMapping;
+  }
+
+  /**
+   * Returns a data source by its data source descriptor.
+   * 
+   * @return
+   */
+  public DataSource getDataSourceByName(String dataSourceDescriptor) {
+    DataSource dataSource = null;
+
+    try {
+      dataSource = this.resourceManagement.getDataSourceByName(dataSourceDescriptor);
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataSource;
+  }
+
+  /**
+   * Returns all data sources.
+   * 
+   * @return
+   */
+  public DataSourceList getAllDataSources() {
+    DataSourceList dataSources = null;
+
+    try {
+      dataSources = this.resourceManagement.getAllDataSources();
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataSources;
+  }
+  
+  /**
+   * Reloads the data from the Resource Management.
+   */
+  public void reload() {
+    ConnectorList connectors = new ConnectorList();
+    ConverterList dataConverters = new ConverterList();
+    String resourceManagementAddress = null;
+    
+    // retrieve the resource management address from the internal embedded derby simplDB
+    LinkedHashMap<String, String> settings = SIMPLCore.getInstance().administrationService()
+        .loadSettings("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
+    resourceManagementAddress = settings.get("ADDRESS");
+
+    try {
+      if (resourceManagementAddress != null) {
+        resourceManagement = ResourceManagementClient
+            .getService(resourceManagementAddress);
+
+        if (resourceManagement != null) {
+          connectors = resourceManagement.getAllConnectors();
+          dataConverters = resourceManagement.getAllConverters();
+        } else {
+          connectors = new ConnectorList();
+          dataConverters = new ConverterList();
+        }
+      }
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    if (connectors.getConnector().size() > 0) {
+      for (Connector dataSourceConnector : connectors.getConnector()) {
+        // retrieve data source service plug-ins
+        this.dataSourceServicePlugins.add(dataSourceConnector.getImplementation());
+
+        // retrieve data format plug-ins
+        if (!this.dataFormatPlugins.contains(dataSourceConnector.getConverterDataFormat()
+            .getImplementation())) {
+          this.dataFormatPlugins.add(dataSourceConnector.getConverterDataFormat()
+              .getImplementation());
+        }
+
+        // retrieve data format mapping
+        if (this.dataFormatMapping.containsKey(dataSourceConnector
+            .getConverterDataFormat().getImplementation())) {
+          this.dataFormatMapping.get(
+              dataSourceConnector.getConverterDataFormat().getImplementation()).add(
+              dataSourceConnector.getImplementation());
+        } else {
+          this.dataFormatMapping.put(
+              dataSourceConnector.getConverterDataFormat().getImplementation(),
+              new ArrayList<String>(
+                  Arrays.asList(dataSourceConnector.getImplementation())));
+        }
+      }
+    }
+
+    // retrieve data format converter plug-ins
+    if (dataConverters.getConverter().size() > 0) {
+      for (Converter dataConverter : dataConverters.getConverter()) {
+        this.dataFormatConverterPlugins.add(dataConverter.getImplementation());
+
+        // retrieve data format converter mapping
+        for (Connector connector : connectors.getConnector()) {
+          if (connector.getConverterDataFormat().getImplementation()
+              .equals(dataConverter.getConnectorDataFormat().getImplementation())
+              || connector.getConverterDataFormat().getImplementation()
+                  .equals(dataConverter.getWorkflowDataFormat().getImplementation())) {
+            if (this.dataFormatConverterMapping.containsKey(dataConverter
+                .getImplementation())) {
+              this.dataFormatConverterMapping.get(dataConverter.getImplementation()).add(
+                  connector.getImplementation());
+            } else {
+              this.dataFormatConverterMapping.put(dataConverter.getImplementation(),
+                  new ArrayList<String>(Arrays.asList(connector.getImplementation())));
+            }
+          }
+        }
+      }
+    }
   }
 }

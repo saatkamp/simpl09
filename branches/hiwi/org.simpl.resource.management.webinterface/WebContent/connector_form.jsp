@@ -4,7 +4,6 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
-<%@page import="org.simpl.core.webservices.client.*"%>
 <%
   PrintWriter output = response.getWriter();
   ResourceManagement resourceManagement = ResourceManagementClient

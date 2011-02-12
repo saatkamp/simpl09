@@ -7,7 +7,6 @@ First time setup:
 Generate the client:
 1) Launch the Resource Management (Tomcat)
 2) Select the org.simpl.resource.management.ResourceManagement.java file and run the "wsimport ResourceManagement" external tool.
-3) Delete all files under org.simpl.resource.management.client that are not under version control (SVN)
-4) Correct the errors in the other files in importing unknown classes from "org.simpl.core.webservices.client"
-5) Create the client jar file by using the simpl-resource-management-client.jardesc
-6) Run the "distribute simpl-resource-management-client.jar" external tool to distribute the client among the projects.
+3) SVN Revert the ResourceManagementService.java
+4) Create the client jar file by using the simpl-resource-management-client.jardesc
+5) Run the "distribute simpl-resource-management-client.jar" external tool to distribute the client among the projects.

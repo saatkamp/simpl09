@@ -3,8 +3,15 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_ODE"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_CORE_WEBSERVICES_CLIENT"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_RESOURCE_MANAGEMENT_AXIS2"/>
+	<classpathentry kind="lib" path="lib/tuscany-sdo-api-r2.1-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="lib/tuscany-sdo-impl-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="lib/tuscany-sdo-lib-1.0-incubating.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-8.4-702.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/ecore-2.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/ecore-change-2.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/ecore-xmi-2.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/common-2.2.3.jar"/>
+	<classpathentry kind="lib" path="lib/xsd-2.2.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

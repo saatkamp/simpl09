@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.simpl.core.SIMPLCoreConfig;
+import org.simpl.core.SIMPLResourceManagement;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 import org.simpl.core.services.datasource.DataSourceService;
 
@@ -65,7 +65,7 @@ public class DataFormatProvider {
   public static List<String> getSupportedDataFormatTypes(
       DataSourceService dataSourceService) {
     List<String> dataFormats = new ArrayList<String>();
-    HashMap<String, ArrayList<String>> dataFormatMapping = SIMPLCoreConfig.getInstance()
+    HashMap<String, ArrayList<String>> dataFormatMapping = SIMPLResourceManagement.getInstance()
         .getDataFormatMapping();
 
     for (String dataFormatClassName : dataFormatMapping.keySet()) {
@@ -95,8 +95,8 @@ public class DataFormatProvider {
    * supported type.
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  private static void loadPlugins() {
-    List<String> plugins = SIMPLCoreConfig.getInstance().getDataFormatPlugins();
+  public static void loadPlugins() {
+    List<String> plugins = SIMPLResourceManagement.getInstance().getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataFormatPlugin<Object, Object> dataFormatServiceInstance;
     String dataFormatType = null;

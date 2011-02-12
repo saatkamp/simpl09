@@ -3,13 +3,10 @@ package org.simpl.resource.management.client;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.simpl.core.webservices.client.DataFormat;
 
 
 /**
@@ -22,7 +19,7 @@ import org.simpl.core.webservices.client.DataFormat;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="dataFormats" type="{http://webservices.core.simpl.org/}DataFormat" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="dataFormat" type="{http://management.resource.simpl.org/}dataFormat" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,26 +30,26 @@ import org.simpl.core.webservices.client.DataFormat;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataFormatList", propOrder = {
-    "dataFormats"
+    "dataFormat"
 })
 public class DataFormatList {
 
     @XmlElement(nillable = true)
-    protected List<DataFormat> dataFormats;
+    protected List<DataFormat> dataFormat;
 
     /**
-     * Gets the value of the dataFormats property.
+     * Gets the value of the dataFormat property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the dataFormats property.
+     * This is why there is not a <CODE>set</CODE> method for the dataFormat property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDataFormats().add(newItem);
+     *    getDataFormat().add(newItem);
      * </pre>
      * 
      * 
@@ -62,11 +59,11 @@ public class DataFormatList {
      * 
      * 
      */
-    public List<DataFormat> getDataFormats() {
-        if (dataFormats == null) {
-            dataFormats = new ArrayList<DataFormat>();
+    public List<DataFormat> getDataFormat() {
+        if (dataFormat == null) {
+            dataFormat = new ArrayList<DataFormat>();
         }
-        return this.dataFormats;
+        return this.dataFormat;
     }
 
 }

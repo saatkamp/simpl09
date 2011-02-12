@@ -9,6 +9,10 @@ import java.sql.Statement;
 import java.util.LinkedHashMap;
 
 import org.apache.ode.simpl.events.listener.AuditingParameters;
+import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.services.dataformat.DataFormatProvider;
+import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
+import org.simpl.core.services.datasource.DataSourceServiceProvider;
 
 /**
  * <b>Purpose:</b><br>
@@ -55,6 +59,17 @@ public class AdministrationServiceImpl implements AdministrationService {
       statement.close();
       conn.close();
       success = true;
+
+      // reload the data from resource management because it may have changed
+      if (schema.equals("ResourceManagement")) {
+        System.out.println("REALOAD RESOURCE MANAGEMENT DATA");
+        SIMPLResourceManagement.getInstance().reload();
+        
+        // update plugins
+        DataSourceServiceProvider.loadPlugins();
+        DataFormatProvider.loadPlugins();
+        DataFormatConverterProvider.loadPlugins();
+      }
     } catch (Throwable e) {
       e.printStackTrace();
     }

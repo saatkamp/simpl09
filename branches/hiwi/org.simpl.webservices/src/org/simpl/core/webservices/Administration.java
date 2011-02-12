@@ -21,16 +21,16 @@ import org.simpl.core.helpers.Parameter;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-@WebService(name = "AdministrationService", targetNamespace = "")
+@WebService(name = "AdministrationService")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class Administration {
   @WebMethod(action = "saveSettings")
   @SuppressWarnings("unchecked")
   public boolean saveSettings(
-      @WebParam(name = "schema", targetNamespace = "") String schema,
-      @WebParam(name = "table", targetNamespace = "") String table,
-      @WebParam(name = "settingName", targetNamespace = "") String settingName,
-      @WebParam(name = "settings", targetNamespace = "") String settings) {
+      @WebParam(name = "schema") String schema,
+      @WebParam(name = "table") String table,
+      @WebParam(name = "settingName") String settingName,
+      @WebParam(name = "settings") String settings) {
     boolean success = false;
     LinkedHashMap<String, String> settingsHashMap = null;
 
@@ -43,14 +43,14 @@ public class Administration {
 
   @WebMethod(action = "loadSettings")
   public String loadSettings(
-      @WebParam(name = "schema", targetNamespace = "") String schema,
-      @WebParam(name = "table", targetNamespace = "") String table,
-      @WebParam(name = "settingName", targetNamespace = "") String settingName) {
+      @WebParam(name = "schema") String schema,
+      @WebParam(name = "table") String table,
+      @WebParam(name = "settingName") String settingName) {
     LinkedHashMap<String, String> settings = null;
 
     settings = SIMPLCore.getInstance().administrationService().loadSettings(schema,
         table, settingName);
-
+    System.out.println("SAVE SETTINGS: " + settings.size()); 
     return Parameter.serialize(settings);
   }
 }

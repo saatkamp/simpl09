@@ -3,13 +3,10 @@ package org.simpl.resource.management.client;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import org.simpl.core.webservices.client.Connector;
 
 
 /**
@@ -22,7 +19,7 @@ import org.simpl.core.webservices.client.Connector;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="connectors" type="{http://webservices.core.simpl.org/}Connector" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="connector" type="{http://management.resource.simpl.org/}connector" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,26 +30,26 @@ import org.simpl.core.webservices.client.Connector;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "connectorList", propOrder = {
-    "connectors"
+    "connector"
 })
 public class ConnectorList {
 
     @XmlElement(nillable = true)
-    protected List<Connector> connectors;
+    protected List<Connector> connector;
 
     /**
-     * Gets the value of the connectors property.
+     * Gets the value of the connector property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the connectors property.
+     * This is why there is not a <CODE>set</CODE> method for the connector property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getConnectors().add(newItem);
+     *    getConnector().add(newItem);
      * </pre>
      * 
      * 
@@ -62,11 +59,11 @@ public class ConnectorList {
      * 
      * 
      */
-    public List<Connector> getConnectors() {
-        if (connectors == null) {
-            connectors = new ArrayList<Connector>();
+    public List<Connector> getConnector() {
+        if (connector == null) {
+            connector = new ArrayList<Connector>();
         }
-        return this.connectors;
+        return this.connector;
     }
 
 }
