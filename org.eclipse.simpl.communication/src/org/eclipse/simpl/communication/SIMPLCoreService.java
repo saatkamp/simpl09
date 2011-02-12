@@ -8,18 +8,18 @@ import java.util.List;
 import org.simpl.core.helpers.Parameter;
 import org.simpl.core.webservices.client.AdministrationService;
 import org.simpl.core.webservices.client.AdministrationServiceClient;
-import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
 import org.simpl.core.webservices.client.Exception_Exception;
+import org.simpl.resource.management.client.DataSource;
 
 /**
+ * SIMPL Core Service that gives access to all SIMPL Core web services.
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
- * 
  */
 @SuppressWarnings("unchecked")
-public class SIMPLCore {
+public class SIMPLCoreService {
   AdministrationService administrationService = null;
   DatasourceService datasourceService = null;
 
@@ -29,14 +29,14 @@ public class SIMPLCore {
   private final static String AS_WSDL_ADDRESS = CommunicationPlugIn.getDefault()
       .getPreferenceStore().getString("SIMPL_CORE_AS_ADDRESS");
 
-  private DatasourceService getDatasourceService() {
+  public DatasourceService getDatasourceService() {
     if (datasourceService == null) {
       datasourceService = DatasourceServiceClient.getService(DSS_WSDL_ADDRESS);
     }
     return datasourceService;
   }
 
-  private AdministrationService getAdministrationService() {
+  public AdministrationService getAdministrationService() {
     if (administrationService == null) {
       administrationService = AdministrationServiceClient.getService(AS_WSDL_ADDRESS);
     }
@@ -47,8 +47,10 @@ public class SIMPLCore {
       LinkedHashMap<String, String> settings) {
     boolean success = false;
 
-    success = getAdministrationService().saveSettings(schema, table, settingName,
-        Parameter.serialize(settings));
+    if (getAdministrationService() != null) {
+      success = getAdministrationService().saveSettings(schema, table, settingName,
+          Parameter.serialize(settings));
+    }
 
     return success;
   }
@@ -57,8 +59,11 @@ public class SIMPLCore {
       String settingName) {
     LinkedHashMap<String, String> settings = null;
 
-    settings = (LinkedHashMap<String, String>) Parameter
-        .deserialize(getAdministrationService().loadSettings(schema, table, settingName));
+    if (getAdministrationService() != null) {
+      settings = (LinkedHashMap<String, String>) Parameter
+          .deserialize(getAdministrationService()
+              .loadSettings(schema, table, settingName));
+    }
 
     return settings;
   }
@@ -66,28 +71,44 @@ public class SIMPLCore {
   public String getMetaData(DataSource dataSource, String filter)
       throws Exception_Exception {
 
-    String metaData = getDatasourceService().getMetaData(dataSource, filter);
+    String metaData = null;
+
+    if (getDatasourceService() != null) {
+      metaData = getDatasourceService().getMetaData(dataSource, filter);
+    }
 
     return metaData;
   }
 
   public List<String> getDatasourceTypes() {
-    List<String> dsTypes = (List<String>) Parameter.deserialize(getDatasourceService()
-        .getDataSourceTypes());
+    List<String> dsTypes = null;
+
+    if (getDatasourceService() != null) {
+      dsTypes = (List<String>) Parameter.deserialize(getDatasourceService()
+          .getDataSourceTypes());
+    }
 
     return dsTypes;
   }
 
   public List<String> getDatasourceSubTypes(String dsType) {
-    List<String> dsSubTypes = (List<String>) Parameter.deserialize(getDatasourceService()
-        .getDataSourceSubTypes(dsType));
+    List<String> dsSubTypes = null;
+
+    if (getDatasourceService() != null) {
+      dsSubTypes = (List<String>) Parameter.deserialize(getDatasourceService()
+          .getDataSourceSubTypes(dsType));
+    }
 
     return dsSubTypes;
   }
 
   public List<String> getDatasourceLanguages(String dsSubtype) {
-    List<String> dsSubTypeLanguages = (List<String>) Parameter
-        .deserialize(getDatasourceService().getDataSourceLanguages(dsSubtype));
+    List<String> dsSubTypeLanguages = null;
+
+    if (getDatasourceService() != null) {
+      dsSubTypeLanguages = (List<String>) Parameter.deserialize(getDatasourceService()
+          .getDataSourceLanguages(dsSubtype));
+    }
 
     return dsSubTypeLanguages;
   }
@@ -97,21 +118,23 @@ public class SIMPLCore {
    * @return
    */
   public List<String> getSupportedDataFormats(DataSource dataSource) {
-    try {
-      List<String> dsDataFormat = (List<String>) Parameter
-          .deserialize(getDatasourceService().getSupportedDataFormatTypes(dataSource));
+    List<String> dsDataFormat = null;
 
-      return dsDataFormat;
-    } catch (Exception e) {
-      return null;
+    if (getDatasourceService() != null) {
+      dsDataFormat = (List<String>) Parameter.deserialize(getDatasourceService()
+          .getSupportedDataFormatTypes(dataSource));
     }
+
+    return dsDataFormat;
   }
 
   public String getDataFormatSchema(DataSource dataSource) {
     String dataFormatSchema = "";
 
     try {
-      dataFormatSchema = getDatasourceService().getDataFormatSchema(dataSource);
+      if (getDatasourceService() != null) {
+        dataFormatSchema = getDatasourceService().getDataFormatSchema(dataSource);
+      }
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -132,5 +155,12 @@ public class SIMPLCore {
       isAvailable = false;
     }
     return isAvailable;
+  }
+
+  public String getResourceManagementAddress() {
+    LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
+    settings = this.load("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
+
+    return settings.get("ADDRESS");
   }
 }

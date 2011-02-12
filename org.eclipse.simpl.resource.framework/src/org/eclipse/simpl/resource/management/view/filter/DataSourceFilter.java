@@ -4,7 +4,7 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 public class DataSourceFilter extends ViewerFilter {
 

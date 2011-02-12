@@ -7,14 +7,14 @@ Bundle-Activator: org.eclipse.simpl.resource.management.ResourceManagementPlugIn
 Bundle-Vendor: SIMPL
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.simpl.communication;bundle-version="0.1.0"
+ org.eclipse.simpl.communication;bundle-version="0.1.0",
+ org.eclipse.simpl.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.ecore
 Bundle-ClassPath: .,
  lib/commons-configuration-1.5.jar,
- lib/commons-lang-2.3.jar,
- lib/simpl-resource-management-client.jar
+ lib/commons-lang-2.3.jar
 Export-Package: org.apache.commons.configuration;
   uses:="org.apache.commons.logging,
    org.apache.commons.collections,
@@ -55,13 +55,10 @@ Export-Package: org.apache.commons.configuration;
  org.apache.commons.lang.text,
  org.apache.commons.lang.time,
  org.eclipse.simpl.resource.management;uses:="org.eclipse.ui.plugin,org.osgi.framework",
- org.eclipse.simpl.resource.management.model;uses:="org.eclipse.simpl.communication.client",
- org.eclipse.simpl.resource.management.preferences;uses:="org.eclipse.jface.preference,org.eclipse.ui",
  org.eclipse.simpl.resource.management.view;
   uses:="org.eclipse.swt.graphics,
    org.eclipse.jface.viewers,
    org.eclipse.ui.part,
    org.eclipse.swt.widgets",
  org.eclipse.simpl.resource.management.view.filter;uses:="org.eclipse.jface.viewers",
- org.eclipse.simpl.resource.management.view.sorter;uses:="org.eclipse.jface.viewers",
- org.simpl.resource.management.client
+ org.eclipse.simpl.resource.management.view.sorter;uses:="org.eclipse.jface.viewers"
