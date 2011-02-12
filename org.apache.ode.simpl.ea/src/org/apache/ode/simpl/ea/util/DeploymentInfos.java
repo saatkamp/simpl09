@@ -1,7 +1,7 @@
 package org.apache.ode.simpl.ea.util;
 
 import org.apache.log4j.Logger;
-import org.simpl.core.services.datasource.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose:</b> <br>

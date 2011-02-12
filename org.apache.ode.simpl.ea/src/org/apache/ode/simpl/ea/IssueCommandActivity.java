@@ -4,8 +4,8 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.resource.management.client.DataSource;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;

@@ -31,8 +31,8 @@ public class FilesystemStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.dataSourceService.retrieveData(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
+      String result = this.dataSourceService.retrieveDataByDataSourceObject(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
@@ -63,8 +63,8 @@ public class FilesystemStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      successed = this.dataSourceService.executeStatement(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
+      successed = this.dataSourceService.executeStatementByDataSourceObject(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
 
       if (successed) {
         statementTest.setExecuted(true);

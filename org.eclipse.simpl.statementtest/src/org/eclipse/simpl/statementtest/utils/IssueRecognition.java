@@ -5,14 +5,13 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.simpl.resource.management.ResourceManagementPlugIn;
+import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
-import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.client.StringList;
 import org.xml.sax.InputSource;
 
@@ -39,9 +38,7 @@ public class IssueRecognition {
 
   @SuppressWarnings("unchecked")
   private IssueRecognition() {
-    ResourceManagement resourceManagement = ResourceManagementClient
-        .getService(ResourceManagementPlugIn.getDefault().getPreferenceStore()
-            .getString("RESOURCE_MANAGEMENT_ADDRESS"));
+    ResourceManagement resourceManagement = ResourceManagementCommunication.getInstance().getService();
     StringList languages = null;
     String statementDescription = null;
 

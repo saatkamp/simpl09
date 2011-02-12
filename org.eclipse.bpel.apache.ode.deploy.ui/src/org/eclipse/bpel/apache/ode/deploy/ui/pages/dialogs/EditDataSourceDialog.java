@@ -8,8 +8,6 @@ import org.eclipse.bpel.apache.ode.deploy.ui.util.SIMPLCoreMetaData;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.SIMPLCore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;

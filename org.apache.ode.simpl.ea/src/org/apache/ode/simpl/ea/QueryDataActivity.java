@@ -8,8 +8,8 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSource;
 import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.resource.management.client.DataSource;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;

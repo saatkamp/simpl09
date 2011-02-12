@@ -19,11 +19,11 @@ import java.util.List;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.simpl.communication.CommunicationPlugIn;
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.SIMPLCore;
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.core.webservices.client.DataFormat;
-import org.simpl.core.webservices.client.DataSource;
+import org.eclipse.simpl.communication.SIMPLCoreCommunication;
+import org.eclipse.simpl.communication.SIMPLCoreService;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.DataFormat;
+import org.simpl.resource.management.client.DataSource;
 
 public class SIMPLCoreMetaData {
 
@@ -54,7 +54,7 @@ public class SIMPLCoreMetaData {
 	 */
 	public static void init() {
 		// Holen uns eine Verbindung zum SIMPL Core.
-		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+		SIMPLCoreService simplCore = SIMPLCoreCommunication.getInstance();
 
 		// Laden alle Datenquellentypen aus dem SIMPL Core.
 		dataSourceTypes = simplCore.getDatasourceTypes();
@@ -112,7 +112,7 @@ public class SIMPLCoreMetaData {
 	 * @return the supported data formats for a given data source.
 	 */
 	public static List<String> getDataSourceFormats(TDatasource dataSource) {
-		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+		SIMPLCoreService simplCore = SIMPLCoreCommunication.getInstance();
 		
 		return simplCore.getSupportedDataFormats(tDs2ds(dataSource));
 	}

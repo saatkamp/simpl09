@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose:</b> <br>

@@ -2,9 +2,7 @@ package org.eclipse.simpl.core.auditing.ui;
 
 import java.util.LinkedHashMap;
 
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.simpl.core.webservices.client.Authentication;
-import org.simpl.core.webservices.client.DataSource;
+import org.eclipse.simpl.communication.SIMPLCoreCommunication;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -14,6 +12,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.simpl.resource.management.client.Authentication;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.DataFormat;
+import org.simpl.resource.management.client.DataSource;
 
 public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 	// Global hinterlegte Keys der Einstellungen
@@ -40,7 +42,11 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 
 	@Override
 	public void createComposite(Composite composite) {
-
+    Connector connector = new Connector();
+    DataFormat dataFormat = new DataFormat();
+    connector.setConverterDataFormat(dataFormat);	  
+	  dataSource.setConnector(connector);
+    
 		dataSource.setName("local");
 		dataSource.setType("Database");
 		dataSource.setSubType("EmbeddedDerby");
@@ -144,7 +150,7 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 			settings.put(this.AUDITING_DS_ADDRESS, this.bAuditingDSAddress);
 			
 			// Über den SIMPL Core in einer embedded DerbyDB speichern
-			SIMPLCommunication.getConnection().save(parentItem, item,
+			SIMPLCoreCommunication.getInstance().save(parentItem, item,
 					settingName, settings);
 
 			// Last-Saved Werte aktualisieren
@@ -158,14 +164,14 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
 		// LastSaved-Einstellungen aus SIMPL Core DB laden
-		settings = SIMPLCommunication.getConnection().load(parentItem, item,
+		settings = SIMPLCoreCommunication.getInstance().load(parentItem, item,
 				"lastSaved");
 
 		if (!settings.isEmpty()) {
 			this.lAuditingDSAddress = settings.get(this.AUDITING_DS_ADDRESS);
 			this.bAuditingDSAddress = this.lAuditingDSAddress;
 		}else {
-			this.bAuditingDSAddress = "../Tomcat-root/simplDB";
+			this.bAuditingDSAddress = "../Tomcat-Root/simplDB";
 		}
 	}
 
@@ -182,7 +188,7 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 	@Override
 	public void loadSettingsFromBuffer(String settingName) {
 		if (settingName.equals("default")) {
-			if (!getComposite().isDisposed()) {
+			if (getComposite() != null && !getComposite().isDisposed()) {
 				addressText.setText("../Tomcat-Root/simplDB");
 				// Buffer-Werte aktualisieren
 				this.bAuditingDSAddress = addressText.getText();
@@ -190,7 +196,7 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 			
 		} else {
 			if (settingName.equals("lastSaved")) {
-				if (!getComposite().isDisposed()) {
+				if (getComposite() != null && !getComposite().isDisposed()) {
 					// Last-Saved Werte in GUI-Elementen setzen
 					addressText.setText(this.lAuditingDSAddress);
 				}
@@ -198,7 +204,7 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 				this.bAuditingDSAddress = this.lAuditingDSAddress;
 				
 			} else {
-				if (!getComposite().isDisposed()) {
+				if (getComposite() != null && !getComposite().isDisposed()) {
 					// Buffer-Werte in GUI-Elementen setzen
 					addressText.setText(this.bAuditingDSAddress == null || this.bAuditingDSAddress.isEmpty() ? "../Tomcat-root/simplDB" : this.bAuditingDSAddress);
 				}

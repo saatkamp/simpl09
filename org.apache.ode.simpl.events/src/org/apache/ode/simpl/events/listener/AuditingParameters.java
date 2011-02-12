@@ -3,9 +3,10 @@ package org.apache.ode.simpl.events.listener;
 import java.util.HashMap;
 
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.Connector;
-import org.simpl.core.services.datasource.DataFormat;
-import org.simpl.core.services.datasource.DataSource;
+import org.simpl.resource.management.client.Authentication;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.DataFormat;
+import org.simpl.resource.management.client.DataSource;
 
 public class AuditingParameters {
 
@@ -61,18 +62,19 @@ public class AuditingParameters {
 			DataSource data = new DataSource();
 			Connector connector = new Connector();
 			DataFormat dataFormat = new DataFormat();
-		
+			Authentication authentication = new Authentication();
+			
 			data.setAddress(this.settings.get(AUDITING_DS_ADDRESS));
 			data.setType(this.settings.get(DS_TYPE));
 			data.setSubType(this.settings.get(DS_SUBTYPE));
 			dataFormat.setName(this.settings.get(DS_FORMAT));
  
       connector.setConverterDataFormat(dataFormat);
-      data.setConnector(connector);      
+      data.setConnector(connector);
 			
-			data.getAuthentication().setUser(this.settings.get(DS_USER));
-			data.getAuthentication()
-					.setPassword(this.settings.get(DS_PASSWORD));
+      authentication.setUser(this.settings.get(DS_USER));
+      authentication.setPassword(this.settings.get(DS_PASSWORD));
+      data.setAuthentication(authentication);
 
 			this.dataSource = data;
 

@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.IHandlerService;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose:</b>Wizard page for the data source selection.<br>

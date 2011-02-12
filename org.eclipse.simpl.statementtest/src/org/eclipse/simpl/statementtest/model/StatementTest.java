@@ -11,7 +11,7 @@ import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.simpl.statementtest.model.results.Result;
 import org.eclipse.simpl.statementtest.model.variables.ContainerVariable;
 import org.eclipse.simpl.statementtest.model.variables.ParameterVariable;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose: Represents a statement test and holds all information about the test
