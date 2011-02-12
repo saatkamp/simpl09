@@ -11,6 +11,7 @@ import org.eclipse.simpl.statementtest.model.results.CreateTableResult;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 import org.eclipse.simpl.statementtest.utils.StringUtils;
 import org.simpl.core.webservices.client.DatasourceService;
+import org.simpl.resource.management.client.LateBinding;
 
 /**
  * TODO <b>Purpose:</b><br>
@@ -344,7 +345,7 @@ public class DatabaseStatementExecution extends StatementExecution {
           + this.statementTest.getGeneratedStatement());
 
       boolean result = this.dataSourceService.executeStatementByDataSourceObject(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
       statementTest.setExecuted(result);
 
       if (result) {
@@ -372,7 +373,7 @@ public class DatabaseStatementExecution extends StatementExecution {
           + this.statementTest.getGeneratedStatement());
 
       String result = this.dataSourceService.retrieveDataByDataSourceObject(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
@@ -426,7 +427,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Retrieve result before: " + execStatement);
 
       resultBefore = this.dataSourceService.retrieveDataByDataSourceObject(
-          this.statementTest.getDataSource(), execStatement, null);
+          this.statementTest.getDataSource(), execStatement, new LateBinding());
 
       // set table name (for drop activity)
       RelationalResult result = new RelationalResult(resultBefore);
@@ -455,7 +456,7 @@ public class DatabaseStatementExecution extends StatementExecution {
           + this.statementTest.getGeneratedStatement());
 
       boolean result = dataSourceService.executeStatementByDataSourceObject(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
       statementTest.setExecuted(result);
 
       if (result) {
@@ -486,7 +487,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       try {
         statementTest.log("Retrieve result after: " + execStatement);
         resultAfter = this.dataSourceService.retrieveDataByDataSourceObject(
-            this.statementTest.getDataSource(), execStatement, null);
+            this.statementTest.getDataSource(), execStatement, new LateBinding());
 
         if (resultAfter != null && !resultAfter.equals("")) {
           this.statementTest.setResult(new RelationalResult(resultAfter));

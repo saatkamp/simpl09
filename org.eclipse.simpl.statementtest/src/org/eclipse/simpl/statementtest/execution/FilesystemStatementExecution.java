@@ -3,6 +3,7 @@ package org.eclipse.simpl.statementtest.execution;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 import org.simpl.core.webservices.client.DatasourceService;
+import org.simpl.resource.management.client.LateBinding;
 
 /**
  * TODO <b>Purpose:</b><br>
@@ -64,7 +65,7 @@ public class FilesystemStatementExecution extends StatementExecution {
           + this.statementTest.getGeneratedStatement());
 
       successed = this.dataSourceService.executeStatementByDataSourceObject(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
 
       if (successed) {
         statementTest.setExecuted(true);
