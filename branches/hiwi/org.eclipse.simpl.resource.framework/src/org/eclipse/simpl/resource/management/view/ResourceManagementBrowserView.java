@@ -2,7 +2,7 @@ package org.eclipse.simpl.resource.management.view;
 
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
-import org.eclipse.simpl.resource.management.model.ModelProvider;
+import org.eclipse.simpl.resource.management.data.DataProvider;
 import org.eclipse.simpl.resource.management.view.filter.DataSourceFilter;
 import org.eclipse.simpl.resource.management.view.sorter.TableSorter;
 import org.eclipse.swt.SWT;
@@ -50,7 +50,7 @@ public class ResourceManagementBrowserView extends ViewPart {
 		viewer.setLabelProvider(new ResourceManagementLabelProvider());
 		// Get the content for the viewer, setInput will call getElements in the
 		// contentProvider
-		viewer.setInput(ModelProvider.getInstance().getDataSources());
+		viewer.setInput(DataProvider.getInstance().getDataSources());
 		// Make the selection available
 		getSite().setSelectionProvider(viewer);
 		// Set the sorter for the table

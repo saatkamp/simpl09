@@ -1,30 +1,32 @@
-package org.eclipse.simpl.resource.management.model;
+package org.eclipse.simpl.resource.management.data;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.simpl.resource.management.ResourceManagementPlugIn;
-import org.simpl.core.webservices.client.DataSource;
-import org.simpl.resource.management.client.Exception_Exception;
-import org.simpl.resource.management.client.ResourceManagement;
-import org.simpl.resource.management.client.ResourceManagementClient;
+import org.eclipse.simpl.communication.ResourceManagementCommunication;
+import org.simpl.resource.management.client.DataSource;
 
-public class ModelProvider {
-  private static ModelProvider content;
+/**
+ * Provides the data for the view.
+ * 
+ * @author Michael Schneidt
+ */
+public class DataProvider {
+  private static DataProvider content;
   private List<DataSource> datasources = new ArrayList<DataSource>();
   private List<String> dsNames = new ArrayList<String>();
 
-  private ModelProvider() {
+  private DataProvider() {
     this.refresh();
   }
 
-  public static synchronized ModelProvider getInstance() {
+  public static synchronized DataProvider getInstance() {
     if (content != null) {
       return content;
     }
 
-    content = new ModelProvider();
+    content = new DataProvider();
 
     return content;
   }
@@ -73,22 +75,12 @@ public class ModelProvider {
     dsNames.clear();
     datasources.clear();
 
-    try {
-      ResourceManagement resourceManagementService = ResourceManagementClient
-          .getService(ResourceManagementPlugIn.getDefault().getPreferenceStore()
-              .getString("RESOURCE_MANAGEMENT_ADDRESS"));
-      List<DataSource> dataSources = null;
+    List<DataSource> dataSources = null;
 
-      if (resourceManagementService != null) {
-        dataSources = resourceManagementService.getAllDataSources().getDataSources();
+    dataSources = ResourceManagementCommunication.getInstance().getDataSources();
 
-        if (dataSources != null) {
-          datasources.addAll(dataSources);
-        }
-      }
-    } catch (Exception_Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    if (dataSources != null) {
+      datasources.addAll(dataSources);
     }
 
     for (DataSource source : datasources) {

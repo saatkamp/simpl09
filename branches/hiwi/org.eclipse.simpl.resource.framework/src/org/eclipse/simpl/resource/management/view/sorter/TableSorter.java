@@ -2,7 +2,7 @@ package org.eclipse.simpl.resource.management.view.sorter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 public class TableSorter extends ViewerSorter {
 	private int propertyIndex;
