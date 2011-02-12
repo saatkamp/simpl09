@@ -11,9 +11,10 @@
  */
 package org.eclipse.bpel.simpl.ui.properties;
 
+import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.ui.Application;
 import org.eclipse.bpel.ui.properties.BPELPropertySection;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.DataSource;
 
 public abstract class ADataManagementActivityPropertySection extends BPELPropertySection {
 

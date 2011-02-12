@@ -9,17 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.simpl.resource.management.model.ModelProvider;
+import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.ui.PlatformUI;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
-import org.simpl.core.webservices.client.Authentication;
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.core.webservices.client.DataFormat;
-import org.simpl.core.webservices.client.DataSource;
+import org.simpl.resource.management.client.Authentication;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.DataFormat;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose:</b>Util functions for data source retrieval.<br>
@@ -196,7 +196,7 @@ public class DataSourceUtils {
   private static List<String> getRMDatasourceNames() {
     List<String> dataSourceNames = new ArrayList<String>();
 
-    List<DataSource> dataSources = ModelProvider.getInstance().getDataSources();
+    List<DataSource> dataSources = ResourceManagementCommunication.getInstance().getDataSources();
 
     for (DataSource dat : dataSources) {
       dataSourceNames.add(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX + ":"
@@ -226,7 +226,7 @@ public class DataSourceUtils {
           name[1]);
     } else {
       if (name[0].equals(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX)) {
-        data = ModelProvider.getInstance().findDataSourceByName(name[1]);
+        data = ResourceManagementCommunication.getInstance().findDataSourceByName(name[1]);
       }
     }
     return data;

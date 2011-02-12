@@ -20,13 +20,13 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
-import org.simpl.core.services.datasource.Authentication;
-import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.LateBinding;
-import org.simpl.core.services.strategy.Strategy;
+import org.simpl.resource.management.client.Authentication;
+import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.Exception_Exception;
+import org.simpl.resource.management.client.LateBinding;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementService;
+import org.simpl.resource.management.client.Strategy;
 
 /**
  * <b>Purpose:</b> <br>
@@ -68,10 +68,6 @@ public class DeploymentUtils {
   private static final String AT_MAPPING_POLICY_DATA = "policyData";
   private static final String AT_MAPPING_STRATEGY = "strategy";
 
-  private static final String AT_ATTACHED_RM_ADDRESS = "attachedRMAddress";
-
-  private static String PROCESS_RM_ADDRESS = "http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl";
-
   private final Namespace DD_NAMESPACE = Namespace
       .getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
 
@@ -92,6 +88,11 @@ public class DeploymentUtils {
    */
   private Map<String, DataSource> activityMappings = new HashMap<String, DataSource>();
 
+  /**
+   * This maps holds all late binding mappings for the activities.
+   */
+  private Map<String, LateBinding> lateBindingMappings = new HashMap<String, LateBinding>();
+  
   private Boolean AUDITING_MODE = false;
 
   private static String lastProcess = "";
@@ -228,9 +229,9 @@ public class DeploymentUtils {
           Element processElement = (Element) processObj;
           if (processElement.getAttributeValue(AT_NAME).contains(process)) {
 
-            // Read the attached Resource Management address
-            PROCESS_RM_ADDRESS = ((Element) processElement)
-                .getAttributeValue(AT_ATTACHED_RM_ADDRESS);
+            // TODO: Read the attached Resource Management address
+            //PROCESS_RM_ADDRESS = ((Element) processElement)
+            //    .getAttributeValue(AT_ATTACHED_RM_ADDRESS);
 
             // Read the auditing mode to set to the SIMPL Event Listener
             if (((Element) processElement).getChild(EL_AUDITING_MODE, DD_NAMESPACE) != null) {
@@ -310,15 +311,13 @@ public class DeploymentUtils {
                 logger.debug("Policy of ds: " + policyData);
               }
 
-              String RMAddress = PROCESS_RM_ADDRESS;
-
               DataSource newDs = new DataSource();
               LateBinding lateBinding = new LateBinding();
               lateBinding.setPolicy(policyData);
               lateBinding.setStrategy(strategy);
-              lateBinding.setResourceManagementAddress(RMAddress);
-              newDs.setLateBinding(lateBinding);
+              
               activityMappings.put(activity, newDs);
+              lateBindingMappings.put(activity, lateBinding);
             }
           }
         }
@@ -387,7 +386,8 @@ public class DeploymentUtils {
     result.setSubType(staticDs.getSubType());
     result.getConnector().getConverterDataFormat().setName(staticDs.getConnector().getConverterDataFormat().getName());
     result.setAuthentication(staticDs.getAuthentication());
-    result.setLateBinding(lateBindingDs.getLateBinding());
+    // TODO: LateBinding
+    //result.setLateBinding(lateBindingDs.getLateBinding());
 
     return result;
   }
@@ -399,8 +399,7 @@ public class DeploymentUtils {
    * @param dataSource
    * @return
    */
-  public DataSource convertWebServiceClientDataSource(
-      org.simpl.core.webservices.client.DataSource dataSource) {
+  public DataSource convertWebServiceClientDataSource(DataSource dataSource) {
     DataSource convertedDataSource = new DataSource();
 
     convertedDataSource.setAddress(dataSource.getAddress());
@@ -412,17 +411,18 @@ public class DeploymentUtils {
         dataSource.getAuthentication().getUser());
     convertedDataSource.getAuthentication().setPassword(
         dataSource.getAuthentication().getPassword());
-    convertedDataSource.getLateBinding().setPolicy(
-        dataSource.getLateBinding().getPolicy());
-    convertedDataSource.getLateBinding().setResourceManagementAddress(
-        dataSource.getLateBinding().getResourceManagementAddress());
-
-    if (dataSource.getLateBinding().getStrategy() != null
-        && dataSource.getLateBinding().getStrategy()
-            .equals(org.simpl.core.webservices.client.Strategy.FIRST_FIND)) {
-      convertedDataSource.getLateBinding().setStrategy(Strategy.FIRST_FIND);
-    }
-    
+// TODO: LateBinding
+//    convertedDataSource.getLateBinding().setPolicy(
+//        dataSource.getLateBinding().getPolicy());
+//    convertedDataSource.getLateBinding().setResourceManagementAddress(
+//        dataSource.getLateBinding().getResourceManagementAddress());
+//
+//    if (dataSource.getLateBinding().getStrategy() != null
+//        && dataSource.getLateBinding().getStrategy()
+//            .equals(org.simpl.core.webservices.client.Strategy.FIRST_FIND)) {
+//      convertedDataSource.getLateBinding().setStrategy(Strategy.FIRST_FIND);
+//    }
+//    
     return convertedDataSource;
   }
 }

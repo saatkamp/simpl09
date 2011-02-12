@@ -2,8 +2,7 @@ package org.eclipse.simpl.core.auditing.ui;
 
 import java.util.LinkedHashMap;
 
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.simpl.core.webservices.client.DataSource;
+import org.eclipse.simpl.communication.SIMPLCoreCommunication;
 import org.eclipse.simpl.core.extensions.AAdminConsoleComposite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -15,6 +14,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.simpl.resource.management.client.DataSource;
 
 public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	// Global hinterlegte Keys der Einstellungen
@@ -242,7 +242,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			settings.put(this.DS_PASSWORD, this.bPasswordOfDS);
 
 			// Über den SIMPL Core in einer embedded DerbyDB speichern
-			SIMPLCommunication.getConnection().save(parentItem, item,
+			SIMPLCoreCommunication.getInstance().save(parentItem, item,
 					settingName, settings);
 
 			// Last-Saved Werte aktualisieren
@@ -263,7 +263,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
 		// LastSaved-Einstellungen aus SIMPL Core DB laden
-		settings = SIMPLCommunication.getConnection().load(parentItem, item,
+		settings = SIMPLCoreCommunication.getInstance().load(parentItem, item,
 				"lastSaved");
 
 		if (!settings.isEmpty()) {
@@ -291,13 +291,19 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			this.bAuditingDSAddress = data.getAddress();
 			this.bTypeOfDS = data.getType();
 			this.bSubtypeOfDS = data.getSubType();
-			this.bFormatOfDS = data.getConnector().getConverterDataFormat().getName();
+			
+			if (data.getConnector() != null) {
+			  this.bFormatOfDS = data.getConnector().getConverterDataFormat().getName();
+			} else {
+			  this.bFormatOfDS = "";
+			}
+			
 			this.bUserNameOfDS = "";
 			this.bPasswordOfDS = "";
 		}
 
 		// Default-Einstellungen aus SIMPL Core DB laden
-		settings = SIMPLCommunication.getConnection().load(parentItem, item,
+		settings = SIMPLCoreCommunication.getInstance().load(parentItem, item,
 				"default");
 
 		if (!settings.isEmpty()) {
@@ -331,7 +337,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	@Override
 	public void loadSettingsFromBuffer(String settingName) {
 		if (settingName.equals("default")) {
-			if (!getComposite().isDisposed()) {
+			if (getComposite() != null && !getComposite().isDisposed()) {
 
 				// Default-Werte in GUI-Elementen setzen
 				if (this.dMode.equals("active")) {
@@ -360,7 +366,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 			this.bPasswordOfDS = this.dPasswordOfDS;
 		} else {
 			if (settingName.equals("lastSaved")) {
-				if (!getComposite().isDisposed()) {
+				if (getComposite() != null && !getComposite().isDisposed()) {
 					// Last-Saved Werte in GUI-Elementen setzen
 					if (this.lMode.equals("active")) {
 						auditingCheckBox.setSelection(true);
@@ -387,7 +393,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 				this.bUserNameOfDS = this.lUserNameOfDS;
 				this.bPasswordOfDS = this.lPasswordOfDS;
 			} else {
-				if (!getComposite().isDisposed()) {
+				if (getComposite() != null && !getComposite().isDisposed()) {
 					// Buffer-Werte in GUI-Elementen setzen
 					if (this.bMode.equals("active")) {
 						auditingCheckBox.setSelection(true);

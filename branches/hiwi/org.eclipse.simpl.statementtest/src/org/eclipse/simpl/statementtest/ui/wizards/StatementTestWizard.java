@@ -32,11 +32,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
-import org.simpl.core.webservices.client.Connector;
-import org.simpl.core.webservices.client.DataFormat;
-import org.simpl.core.webservices.client.DataSource;
 import org.simpl.core.webservices.client.DatasourceService;
 import org.simpl.core.webservices.client.DatasourceServiceClient;
+import org.simpl.resource.management.client.Connector;
+import org.simpl.resource.management.client.DataFormat;
+import org.simpl.resource.management.client.DataSource;
 
 /**
  * <b>Purpose:</b>Wizard to create a new statement test.<br>

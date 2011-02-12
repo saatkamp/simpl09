@@ -343,8 +343,8 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = this.dataSourceService.executeStatement(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
+      boolean result = this.dataSourceService.executeStatementByDataSourceObject(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
       statementTest.setExecuted(result);
 
       if (result) {
@@ -371,8 +371,8 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.dataSourceService.retrieveData(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
+      String result = this.dataSourceService.retrieveDataByDataSourceObject(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
@@ -425,8 +425,8 @@ public class DatabaseStatementExecution extends StatementExecution {
     try {
       this.statementTest.log("Retrieve result before: " + execStatement);
 
-      resultBefore = this.dataSourceService.retrieveData(
-          this.statementTest.getDataSource(), execStatement);
+      resultBefore = this.dataSourceService.retrieveDataByDataSourceObject(
+          this.statementTest.getDataSource(), execStatement, null);
 
       // set table name (for drop activity)
       RelationalResult result = new RelationalResult(resultBefore);
@@ -454,8 +454,8 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = dataSourceService.executeStatement(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement());
+      boolean result = dataSourceService.executeStatementByDataSourceObject(
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
       statementTest.setExecuted(result);
 
       if (result) {
@@ -485,8 +485,8 @@ public class DatabaseStatementExecution extends StatementExecution {
       // retrieve result after
       try {
         statementTest.log("Retrieve result after: " + execStatement);
-        resultAfter = this.dataSourceService.retrieveData(
-            this.statementTest.getDataSource(), execStatement);
+        resultAfter = this.dataSourceService.retrieveDataByDataSourceObject(
+            this.statementTest.getDataSource(), execStatement, null);
 
         if (resultAfter != null && !resultAfter.equals("")) {
           this.statementTest.setResult(new RelationalResult(resultAfter));
