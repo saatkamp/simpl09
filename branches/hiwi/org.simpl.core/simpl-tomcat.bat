@@ -38,7 +38,7 @@ xcopy "%1\webapps\axis2\*.*" "%2\webapps\axis2" /E
 xcopy "%1\webapps\rmweb\*.*" "%2\webapps\rmweb" /E
 xcopy "%1\simplDB\*.*" "%2\simplDB\" /E
 copy "%2\..\log4j.properties" "%2"
-copy "%2\..\simpl-tomcat-readme.txt" "%2"
+copy "%2\..\readme.txt" "%2"
 
 @echo off
 REM create simpl-tomcat.zip in %2
