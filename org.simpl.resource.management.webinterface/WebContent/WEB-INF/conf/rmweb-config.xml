@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rmweb:ResourceManagementWebInterface xmlns:rmweb="http://org.resource.management/rmweb-config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.resource.management/rmweb-config rmweb-config.xsd ">
-  <!--SIMPL Core data source web service-->
-  <DataSourceService>
-    <address>http://localhost:8080/ode/processes/DatasourceService.DatasourceServicePort?wsdl</address>
-  </DataSourceService>
-  
   <!--SIMPL resource management web service-->
   <ResourceManagement>
     <address>http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl</address>
