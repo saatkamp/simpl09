@@ -32,7 +32,6 @@ public class RMWebConfig {
    */
   private static final RMWebConfig instance = new RMWebConfig();
 
-  Element dataSourceServiceElement = null;
   Element resourceManagementElement = null;
 
   /**
@@ -70,7 +69,6 @@ public class RMWebConfig {
         root = configDoc.getRootElement();
 
         // read elements
-        dataSourceServiceElement = root.getChild("DataSourceService");
         resourceManagementElement = root.getChild("ResourceManagement");
       } catch (JDOMException e) {
         // TODO Auto-generated catch block
@@ -91,16 +89,6 @@ public class RMWebConfig {
 
     if (resourceManagementElement != null) {
       address = resourceManagementElement.getChildText("address");
-    }
-
-    return address;
-  }
-
-  public String getDataSourceServiceAddress() {
-    String address = null;
-
-    if (dataSourceServiceElement != null) {
-      address = dataSourceServiceElement.getChildText("address");
     }
 
     return address;
