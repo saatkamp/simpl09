@@ -1,5 +1,6 @@
 = Content =
 SIMPL Core
+SIMPL Core Web Services
 SIMPL Core Plug-Ins
 SIMPL ODE Extensions
 SIMPL RRS (Reference Resolution System)
