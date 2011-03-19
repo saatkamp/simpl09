@@ -28,10 +28,10 @@ public class IssueCommandActivity extends DataManagementActivity {
 				.dataSourceService();
 		
 		try {
-			this.successfullExecution = datasourceService.executeStatement(ds,
+			this.successfulExecution = datasourceService.executeStatement(ds,
 					getDsStatement(context));
 
-			if (!this.successfullExecution) {
+			if (!this.successfulExecution) {
 				ActivityFailureEvent event = new ActivityFailureEvent();
 				event.setActivityName(context.getActivityName());
 				event.setActivityId(context.getOActivity().getId());

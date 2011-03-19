@@ -56,11 +56,11 @@ public class QueryDataActivity extends DataManagementActivity {
 
 		try {
 		  if (!queryTarget.equals("")) {
-  			this.successfullExecution = datasourceService.depositData(
+  			this.successfulExecution = datasourceService.depositData(
   					ds, getDsStatement(context), queryTarget);
 		  }
 		  
-			if (!this.successfullExecution) {
+			if (!this.successfulExecution) {
 				ActivityFailureEvent event = new ActivityFailureEvent();
 				event.setActivityName(context.getActivityName());
 				event.setActivityId(context.getOActivity().getId());

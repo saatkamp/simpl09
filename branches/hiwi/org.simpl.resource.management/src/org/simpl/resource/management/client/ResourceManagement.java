@@ -414,6 +414,21 @@ public interface ResourceManagement {
      *     returns org.simpl.resource.management.client.StringList
      * @throws Exception_Exception
      */
+    @WebMethod(action = "getSupportedDataFormatTypes")
+    @WebResult(partName = "return")
+    public StringList getSupportedDataFormatTypes(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataSource arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
     @WebMethod(action = "getSupportedConvertDataFormatTypes")
     @WebResult(partName = "return")
     public StringList getSupportedConvertDataFormatTypes(

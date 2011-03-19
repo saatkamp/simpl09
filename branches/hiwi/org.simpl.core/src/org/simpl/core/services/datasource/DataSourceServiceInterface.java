@@ -1,7 +1,6 @@
 package org.simpl.core.services.datasource;
 
 import java.io.InputStream;
-import java.util.List;
 
 import org.simpl.core.SIMPLResourceManagement;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
@@ -175,30 +174,6 @@ public class DataSourceServiceInterface {
 
   public InputStream getMetaDataSchemaFile(DataSource dataSource) {
     return this.dataSourceService.getMetaDataSchemaFile(dataSource);
-  }
-
-  public InputStream getDataFormatSchemaFile(DataSource dataSource) {
-    return this.dataSourceService.getDataFormatSchemaFile(dataSource);
-  }
-
-  public List<String> getDataSourceTypes() {
-    return this.dataSourceService.getDataSourceTypes();
-  }
-
-  public List<String> getDataSourceSubTypes(String dsType) {
-    return this.dataSourceService.getDataSourceSubTypes(dsType);
-  }
-
-  public List<String> getDataSourceLanguages(String dsSubtype) {
-    return this.dataSourceService.getDataSourceLanguages(dsSubtype);
-  }
-
-  public List<String> getSupportedDataFormatTypes(DataSource dataSource) {
-    return this.dataSourceService.getSupportedDataFormatTypes(dataSource);
-  }
-
-  public List<String> getSupportedConvertDataFormatTypes(DataSource dataSource) {
-    return this.dataSourceService.getSupportedConvertDataFormatTypes(dataSource);
   }
 
   /**

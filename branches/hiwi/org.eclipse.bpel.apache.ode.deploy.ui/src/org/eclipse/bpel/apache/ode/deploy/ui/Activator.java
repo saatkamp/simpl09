@@ -11,7 +11,7 @@
 
 package org.eclipse.bpel.apache.ode.deploy.ui;
 
-import org.eclipse.bpel.apache.ode.deploy.ui.util.SIMPLCoreMetaData;
+import org.eclipse.bpel.apache.ode.deploy.ui.util.ResourceManagementMetaData;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -55,7 +55,7 @@ public class Activator extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		try {
-			SIMPLCoreMetaData.init();
+			ResourceManagementMetaData.init();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

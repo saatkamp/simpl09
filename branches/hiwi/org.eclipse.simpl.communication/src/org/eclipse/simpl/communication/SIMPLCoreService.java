@@ -3,7 +3,6 @@ package org.eclipse.simpl.communication;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 import org.simpl.core.helpers.Parameter;
 import org.simpl.core.webservices.client.AdministrationService;
@@ -70,7 +69,6 @@ public class SIMPLCoreService {
 
   public String getMetaData(DataSource dataSource, String filter)
       throws Exception_Exception {
-
     String metaData = null;
 
     if (getDatasourceService() != null) {
@@ -80,72 +78,10 @@ public class SIMPLCoreService {
     return metaData;
   }
 
-  public List<String> getDatasourceTypes() {
-    List<String> dsTypes = null;
-
-    if (getDatasourceService() != null) {
-      dsTypes = (List<String>) Parameter.deserialize(getDatasourceService()
-          .getDataSourceTypes());
-    }
-
-    return dsTypes;
-  }
-
-  public List<String> getDatasourceSubTypes(String dsType) {
-    List<String> dsSubTypes = null;
-
-    if (getDatasourceService() != null) {
-      dsSubTypes = (List<String>) Parameter.deserialize(getDatasourceService()
-          .getDataSourceSubTypes(dsType));
-    }
-
-    return dsSubTypes;
-  }
-
-  public List<String> getDatasourceLanguages(String dsSubtype) {
-    List<String> dsSubTypeLanguages = null;
-
-    if (getDatasourceService() != null) {
-      dsSubTypeLanguages = (List<String>) Parameter.deserialize(getDatasourceService()
-          .getDataSourceLanguages(dsSubtype));
-    }
-
-    return dsSubTypeLanguages;
-  }
-
-  /**
-   * @param subTypeName
-   * @return
-   */
-  public List<String> getSupportedDataFormats(DataSource dataSource) {
-    List<String> dsDataFormat = null;
-
-    if (getDatasourceService() != null) {
-      dsDataFormat = (List<String>) Parameter.deserialize(getDatasourceService()
-          .getSupportedDataFormatTypes(dataSource));
-    }
-
-    return dsDataFormat;
-  }
-
-  public String getDataFormatSchema(DataSource dataSource) {
-    String dataFormatSchema = "";
-
-    try {
-      if (getDatasourceService() != null) {
-        dataFormatSchema = getDatasourceService().getDataFormatSchema(dataSource);
-      }
-    } catch (Exception_Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-
-    return dataFormatSchema;
-  }
-
   public boolean isSIMPLCoreAvailable() {
     boolean isAvailable = false;
     URL url;
+    
     try {
       url = new URL(DSS_WSDL_ADDRESS);
       URLConnection connection = url.openConnection();

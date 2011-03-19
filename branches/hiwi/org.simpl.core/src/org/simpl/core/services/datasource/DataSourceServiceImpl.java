@@ -3,7 +3,6 @@ package org.simpl.core.services.datasource;
 import java.io.InputStream;
 import java.util.List;
 
-import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.dataformat.DataFormatProvider;
 import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
@@ -265,87 +264,6 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   }
 
   /**
-   * Returns the data source's primary data format schema file as InputStream.
-   * 
-   * @param dataSource
-   * @return
-   */
-  @SuppressWarnings({ "rawtypes" })
-  public InputStream getDataFormatSchemaFile(DataSource dataSource) {
-    InputStream inputStream = null;
-    DataSourceService dataSourceService = null;
-    List<String> supportedDataFormatTypes = null;
-
-    dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
-        dataSource.getSubType());
-
-    supportedDataFormatTypes = DataFormatProvider
-        .getSupportedDataFormatTypes(dataSourceService);
-
-    inputStream = ((DataFormatPlugin) DataFormatProvider
-        .getInstance(supportedDataFormatTypes.get(0))).getSchemaFile();
-
-    return inputStream;
-  }
-
-  /**
-   * Returns all data source types that are supported by the SIMPL Core.
-   * 
-   * @return A list of data source types.
-   */
-  public List<String> getDataSourceTypes() {
-    return DataSourceServiceProvider.getTypes();
-  }
-
-  /**
-   * Returns all data source subtypes of a given data source type.
-   * 
-   * @param dsType
-   * @return A list of data source subtypes.
-   */
-  public List<String> getDataSourceSubTypes(String dsType) {
-    return DataSourceServiceProvider.getSubTypes(dsType);
-  }
-
-  /**
-   * Returns all data source languages of a given data source subtype.
-   * 
-   * @param dsSubtype
-   * @return List of data source languages.
-   */
-  public List<String> getDataSourceLanguages(String dsSubtype) {
-    return DataSourceServiceProvider.getLanguages(dsSubtype);
-  }
-
-  /**
-   * Returns a list of data format types that are available for the given data source.
-   * 
-   * @param dataSource
-   * @return List of data format types.
-   */
-  public List<String> getSupportedDataFormatTypes(DataSource dataSource) {
-    DataSourceService<Object, Object> dataSourceService = DataSourceServiceProvider
-        .getInstance(dataSource.getType(), dataSource.getSubType());
-
-    return DataFormatProvider.getSupportedDataFormatTypes(dataSourceService);
-  }
-
-  /**
-   * Returns a list of data format types that can be converted to and from the given data
-   * source data format type.
-   * 
-   * @param dataFormat
-   * @return List of data format types.
-   */
-  public List<String> getSupportedConvertDataFormatTypes(DataSource dataSource) {
-    DataSourceService<Object, Object> dataSourceService = DataSourceServiceProvider
-        .getInstance(dataSource.getType(), dataSource.getSubType());
-
-    return DataFormatConverterProvider.getSupportedConvertDataFormatTypes(
-        dataSourceService, dataSource.getConnector().getConverterDataFormat().getName());
-  }
-
-  /**
    * Formats SDO data to a format that can be understand and is writeable by the given
    * data source service and its underlying data format. If the data format is not
    * supported by the data source service, it is looked for a data format converter that
@@ -356,6 +274,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * 
    * @param dataSourceService
    * @param data
+   * @param dataSource
+   * @param target
    * @return
    * @throws ConnectionException
    */
@@ -420,7 +340,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * 
    * @param dataSourceService
    * @param data
-   * @param dataSourceFs
+   * @param dataormatType
    * @return
    */
   @SuppressWarnings({ "rawtypes" })

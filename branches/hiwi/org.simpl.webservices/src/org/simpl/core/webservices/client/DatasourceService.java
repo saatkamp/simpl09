@@ -46,69 +46,6 @@ public interface DatasourceService {
 
     /**
      * 
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "getDataSourceTypes")
-    @WebResult(partName = "return")
-    public String getDataSourceTypes();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "getDataSourceSubTypes")
-    @WebResult(partName = "return")
-    public String getDataSourceSubTypes(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "getDataSourceLanguages")
-    @WebResult(partName = "return")
-    public String getDataSourceLanguages(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param dataSource
-     * @return
-     *     returns java.lang.String
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "getDataFormatSchema")
-    @WebResult(partName = "return")
-    public String getDataFormatSchema(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param dataSource
-     * @param dataFormatType
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "getSupportedConvertDataFormatTypes")
-    @WebResult(partName = "return")
-    public String getSupportedConvertDataFormatTypes(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource,
-        @WebParam(name = "dataFormatType", partName = "dataFormatType")
-        String dataFormatType);
-
-    /**
-     * 
      * @param statement
      * @param dataSource
      * @param lateBinding
@@ -343,17 +280,5 @@ public interface DatasourceService {
         DataSource dataSource)
         throws Exception_Exception
     ;
-
-    /**
-     * 
-     * @param dataSource
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "getSupportedDataFormatTypes")
-    @WebResult(partName = "return")
-    public String getSupportedDataFormatTypes(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource);
 
 }

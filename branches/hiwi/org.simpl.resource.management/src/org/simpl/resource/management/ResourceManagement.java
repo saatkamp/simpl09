@@ -51,7 +51,8 @@ import org.xml.sax.InputSource;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author hiwi<br>
- * @version $Id$<br>
+ * @version $Id: ResourceManagement.java 1769 2011-02-12 14:33:51Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  * @author Michael Schneidt <michael.schneidt@arcor.de>
  */
@@ -669,11 +670,40 @@ public class ResourceManagement {
   }
 
   /**
+   * Returns a list of data format types that are available for the given data source.
+   * 
+   * @param dataSource
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getSupportedDataFormatTypes")
+  public StringList getSupportedDataFormatTypes(DataSource dataSource) throws Exception {
+    StringList stringList = new StringList();
+    String statement = "";
+    String result = null;
+
+    statement += "SELECT dataformats.name ";
+    statement += "FROM connectors ";
+    statement += "INNER JOIN dataformats ON (connectors.converter_dataformat_id = dataformats.id) ";
+    statement += "WHERE getConnectorXMLProperty('type', connectors.properties_description) = '" + dataSource.getType() + "' ";
+    statement += "AND getConnectorXMLProperty('subType', connectors.properties_description) = '" + dataSource.getSubType() + "' ";
+    statement += "AND getConnectorXMLProperty('language', connectors.properties_description) =  '" + dataSource.getLanguage() + "' ";
+    
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    stringList.getItems().addAll(getColumnValuesFromResult(result, "name"));
+
+    // sort items
+    Collections.sort(stringList.getItems());
+
+    return stringList;
+  }
+
+  /**
    * Returns a list of data format types that can be converted to and from the data format
    * type of the given data source.
    * 
    * @param dataSource
-   * @param dataFormatType
    * @return
    * @throws Exception
    */
@@ -1145,11 +1175,11 @@ public class ResourceManagement {
   /**
    * Dummy function in order to get unused data types generated on wsimport.
    * 
-   * This is a workaround, these data types should be based in org.simpl.core.discovery,
+   * This is a workaround, the parameter data types should belong to org.simpl.core.discovery,
    * but they are not added to the JAXB context by the SIMPL Core data source web service
    * client when they are not packaged with org.simpl.core.webservices. But if they are
-   * packaged with org.simpl.core.webservices, the data types from
-   * org.simpl.resource.management.data are not added.
+   * packaged with org.simpl.core.webservices, however the data types from
+   * org.simpl.resource.management.data are not added anymore.
    * 
    * @param lateBinding
    * @param strategy

@@ -40,19 +40,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSource }
+     * Create an instance of {@link Exception }
      * 
      */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
@@ -72,6 +64,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
      * Create an instance of {@link Connector }
      * 
      */
@@ -80,11 +80,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exception }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public Exception createException() {
-        return new Exception();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
