@@ -1,5 +1,7 @@
 package org.apache.ode.simpl.ea;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.StringWriter;
 
 import javax.xml.transform.Result;
@@ -16,6 +18,7 @@ import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.simpl.core.SIMPLCore;
 import org.simpl.core.services.datasource.DataSourceService;
 import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.client.ResourceManagementClient;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -61,9 +64,10 @@ public class WriteDataBackActivity extends DataManagementActivity {
       transformer.transform(source, result);
       String xmlValue = stringWriter.getBuffer().toString();
 
-      // retrieve the schema file
-      XSDHelper.INSTANCE.define(SIMPLCore.getInstance().dataSourceService()
-          .getDataFormatSchemaFile(ds), null);
+      // retrieve the schema file and define it for SDO
+      String schema = ResourceManagementClient.getService().getDataFormatSchema(ds.getConnector().getConverterDataFormat().getName());
+      InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
+      XSDHelper.INSTANCE.define(schemaInputStream, null);
 
       // convert xml string to SDO
       XMLDocument xmlDoc = XMLHelper.INSTANCE.load(xmlValue);
@@ -71,12 +75,12 @@ public class WriteDataBackActivity extends DataManagementActivity {
 
       // write data back
       if (writeTarget != null) {
-        this.successfullExecution = datasourceService.writeData(ds, sdo, writeTarget);
+        this.successfulExecution = datasourceService.writeData(ds, sdo, writeTarget);
       } else {
-        this.successfullExecution = datasourceService.writeBack(ds, sdo);
+        this.successfulExecution = datasourceService.writeBack(ds, sdo);
       }
 
-      if (!this.successfullExecution) {
+      if (!this.successfulExecution) {
         ActivityFailureEvent event = new ActivityFailureEvent();
         event.setActivityName(context.getActivityName());
         event.setActivityId(context.getOActivity().getId());

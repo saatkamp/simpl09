@@ -73,13 +73,13 @@ public class TransferDataActivity extends DataManagementActivity {
   					getDsStatement(context));
   
   			if (dataObject == null) {
-  			  this.successfullExecution = false;
+  			  this.successfulExecution = false;
   			} else {
-  				this.successfullExecution = datasourceService.writeData(dsTo, dataObject, targetDsContainer);
+  				this.successfulExecution = datasourceService.writeData(dsTo, dataObject, targetDsContainer);
   			}
   	  } 
   	    
-      if (!this.successfullExecution) {
+      if (!this.successfulExecution) {
         ActivityFailureEvent event = new ActivityFailureEvent();
         event.setActivityName(context.getActivityName());
         event.setActivityId(context.getOActivity().getId());

@@ -24,7 +24,7 @@ public class ReloadPlugInDataHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 			//Laden die Daten des SIMPL Cores neu
-			SIMPLCoreMetaData.init();
+			ResourceManagementMetaData.init();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

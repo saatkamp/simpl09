@@ -22,7 +22,7 @@ public abstract class DataManagementActivity extends
 	private String dsSubType;
 	private String dsLanguage;
 	private String activityName;
-	public boolean successfullExecution;
+	public boolean successfulExecution;
 	
 	private static String deployDir = "";
 	private static String processName = "";

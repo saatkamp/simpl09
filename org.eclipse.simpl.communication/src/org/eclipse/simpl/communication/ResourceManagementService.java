@@ -84,6 +84,73 @@ public class ResourceManagementService {
     return dataSourceNames;
   }
 
+  public List<String> getDataSourceLanguages(String subType) {
+    List<String> dataSourceLanguages = new ArrayList<String>();
+
+    try {
+      dataSourceLanguages = this.getService().getDataSourceLanguages(subType).getItems();
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataSourceLanguages;
+  }
+
+  public List<String> getDataSourceTypes() {
+    List<String> dataSourceTypes = new ArrayList<String>();
+
+    try {
+      dataSourceTypes = this.getService().getDataSourceTypes().getItems();
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataSourceTypes;
+  }
+
+  public List<String> getDataSourceSubTypes(String type) {
+    List<String> dataSourceSubTypes = new ArrayList<String>();
+
+    try {
+      dataSourceSubTypes = this.getService().getDataSourceSubTypes(type).getItems();
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataSourceSubTypes;
+  }
+
+  public List<String> getSupportedDataFormats(DataSource dataSource) {
+    List<String> dataFormats = new ArrayList<String>();
+
+    try {
+      dataFormats = this.getService().getSupportedDataFormatTypes(dataSource)
+          .getItems();
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataFormats;
+  }
+  
+  public List<String> getSupportedConvertDataFormats(DataSource dataSource) {
+    List<String> dataFormats = new ArrayList<String>();
+
+    try {
+      dataFormats = this.getService().getSupportedConvertDataFormatTypes(dataSource)
+          .getItems();
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataFormats;
+  }
+
   public ResourceManagement getService() {
     service = ResourceManagementClient.getService(SIMPLCoreCommunication.getInstance()
         .getResourceManagementAddress());

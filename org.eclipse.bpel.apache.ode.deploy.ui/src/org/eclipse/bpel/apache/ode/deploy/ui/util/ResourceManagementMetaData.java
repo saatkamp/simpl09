@@ -19,13 +19,13 @@ import java.util.List;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.simpl.communication.CommunicationPlugIn;
-import org.eclipse.simpl.communication.SIMPLCoreCommunication;
-import org.eclipse.simpl.communication.SIMPLCoreService;
+import org.eclipse.simpl.communication.ResourceManagementCommunication;
+import org.eclipse.simpl.communication.ResourceManagementService;
 import org.simpl.resource.management.client.Connector;
 import org.simpl.resource.management.client.DataFormat;
 import org.simpl.resource.management.client.DataSource;
 
-public class SIMPLCoreMetaData {
+public class ResourceManagementMetaData {
 
 	/**
 	 * This variable holds all types of data sources, which can be chosen during
@@ -54,22 +54,22 @@ public class SIMPLCoreMetaData {
 	 */
 	public static void init() {
 		// Holen uns eine Verbindung zum SIMPL Core.
-		SIMPLCoreService simplCore = SIMPLCoreCommunication.getInstance();
+		ResourceManagementService simplCore = ResourceManagementCommunication.getInstance();
 
 		// Laden alle Datenquellentypen aus dem SIMPL Core.
-		dataSourceTypes = simplCore.getDatasourceTypes();
+		dataSourceTypes = simplCore.getDataSourceTypes();
 
 		// Laden die Subtypen aller Datenquellentypen aus dem SIMPL Core.
 		for (String typeName : dataSourceTypes) {
 			dataSourceSubTypes.put(typeName, simplCore
-					.getDatasourceSubTypes(typeName));
+					.getDataSourceSubTypes(typeName));
 		}
 
 		// Laden alle Abfragesprachen der Subtypen aus dem SIMPL Core.
 		for (String datasource : dataSourceTypes) {
 			for (String subTypeName : getDataSourceSubTypes(datasource)) {
 				dataSourceSubTypeLanguages.put(subTypeName, simplCore
-						.getDatasourceLanguages(subTypeName));
+						.getDataSourceLanguages(subTypeName));
 			}
 		}
 	}
@@ -112,9 +112,9 @@ public class SIMPLCoreMetaData {
 	 * @return the supported data formats for a given data source.
 	 */
 	public static List<String> getDataSourceFormats(TDatasource dataSource) {
-		SIMPLCoreService simplCore = SIMPLCoreCommunication.getInstance();
+		ResourceManagementService resourceManagement = ResourceManagementCommunication.getInstance();
 		
-		return simplCore.getSupportedDataFormats(tDs2ds(dataSource));
+		return resourceManagement.getSupportedDataFormats(tDs2ds(dataSource));
 	}
 	
 	private static DataSource tDs2ds (TDatasource data){
