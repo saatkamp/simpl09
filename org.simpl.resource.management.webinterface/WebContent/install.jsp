@@ -30,5 +30,5 @@ The installation will create all necessary tables for the Resource Management on
   </div>
 </form>
 <br/>
-<div style="color:red;font-weight:bold">Attention: Do not press this button if the Resource Management is already installed and you don't want to have all resources deleted!</div>
+<div style="color:red;font-weight:bold">Attention: Do not press this button if the Resource Management is already installed and you don't want to delete all resources!</div>
 </body>

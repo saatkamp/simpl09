@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.datasource;
+package org.simpl.core.plugins.connector;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,23 +6,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.connector.Connector;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create a data source plug-in for the
- * SIMPL Core, to realize the access to a specific type of data source.<br>
- * <b>Description:</b>A data source service plug-in supports just one type of data source
- * (e.g. database, file system), but several subtypes (e.g. MySQL, DB2) and languages
- * (e.g. SQL, XQuery).<br>
+ * <b>Purpose:</b>This abstract class is used to create a connector plug-in for the SIMPL
+ * Core, to realize the access to a specific type of data source.<br>
+ * <b>Description:</b>A connector plug-in supports just one type of data source (e.g.
+ * database, file system), but can support several sub types (e.g. MySQL, DB2) and
+ * languages (e.g. SQL, XQuery).<br>
  * The meta data of a data source is made available as a service data object (SDO). The
  * SDO is created from of a XML schema file, that defines the meta data structure in a
  * schema element type and can be set for each plug-in individually. If no schema file is
- * set, the standard meta data schema file defined in the SIMPL Core is used as default.
- * Type, subtypes, languages, meta data schema and schema element type must be set in the
+ * set, the default meta data schema file is used that is defined in the SIMPL Core.
+ * Type, sub types, languages, meta data schema and schema element type must be set in the
  * plug-in's constructor.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -33,19 +33,19 @@ import commonj.sdo.helper.XSDHelper;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataSourceServicePlugin<S, T> implements DataSourceService<S, T> {
+public abstract class ConnectorPlugin<S, T> implements Connector<S, T> {
   /**
    * Type of the supported data source (database, file system, ...).
    */
   private String type = "Database";
 
   /**
-   * Subtypes of the supported data source (DB2, MySQL, ...).
+   * Sub types of the supported data source (DB2, MySQL, ...).
    */
   private List<String> subtypes = new ArrayList<String>();
 
   /**
-   * Languages supported by the data source subtypes (SQL, XQuery, ...).
+   * Languages supported by the data source sub types (SQL, XQuery, ...).
    */
   private HashMap<String, List<String>> languages = new HashMap<String, List<String>>();
 
@@ -76,14 +76,14 @@ public abstract class DataSourceServicePlugin<S, T> implements DataSourceService
   }
 
   /**
-   * @return List of the supported data source subtypes.
+   * @return List of the supported data source sub types.
    */
   public List<String> getSubtypes() {
     return this.subtypes;
   }
 
   /**
-   * Adds a supported data source subtype.
+   * Adds a supported data source sub type.
    * 
    * @param dsSubtype
    */
@@ -94,14 +94,14 @@ public abstract class DataSourceServicePlugin<S, T> implements DataSourceService
   }
 
   /**
-   * @return HashMap of the supported languages of subtypes.
+   * @return HashMap of the supported languages of sub types.
    */
   public HashMap<String, List<String>> getLanguages() {
     return this.languages;
   }
 
   /**
-   * Adds a supported language of a subtype.
+   * Adds a supported language of a sub type.
    * 
    * @param dsSubtype
    * @param dsLanguage

@@ -4,7 +4,7 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.connector.Connector;
 import org.simpl.resource.management.client.DataSource;
 import org.w3c.dom.Element;
 
@@ -24,7 +24,7 @@ public class IssueCommandActivity extends DataManagementActivity {
 
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
-		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
+		Connector<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
 				.dataSourceService();
 		
 		try {

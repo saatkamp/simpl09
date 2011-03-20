@@ -1,4 +1,4 @@
-package org.simpl.core.services.datasource;
+package org.simpl.core.connector;
 
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
@@ -6,8 +6,8 @@ import org.simpl.resource.management.client.DataSource;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Defines the common methods that a data source service must implement to work
- * with a data source.<br>
+ * <b>Purpose:</b>Defines the methods that a connector must implement to work with a data
+ * source.<br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -23,7 +23,7 @@ import commonj.sdo.DataObject;
  * @param <T>
  *          outgoing data type
  */
-public interface DataSourceService<S, T> {
+public interface Connector<S, T> {
   /**
    * Executes a statement on the data source.
    * 
@@ -46,7 +46,7 @@ public interface DataSourceService<S, T> {
    */
   public T retrieveData(DataSource dataSource, String statement)
       throws ConnectionException;
-  
+
   /**
    * Writes back data that was retrieved by {@link #retrieveData(DataSource, String)}.
    * 
@@ -56,7 +56,7 @@ public interface DataSourceService<S, T> {
    * @throws ConnectionException
    */
   public boolean writeBack(DataSource dataSource, S data) throws ConnectionException;
-  
+
   /**
    * Writes new data to the data source.
    * 
@@ -67,7 +67,7 @@ public interface DataSourceService<S, T> {
    */
   public boolean writeData(DataSource dataSource, S data, String target)
       throws ConnectionException;
-  
+
   /**
    * Deposits the data that is specified by the statement on the data source. The data is
    * deposit to a target reference that can be used in further statements.

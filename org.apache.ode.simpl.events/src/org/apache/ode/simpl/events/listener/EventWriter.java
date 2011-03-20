@@ -7,7 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.pmapi.TEventInfo;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.dataformat.DataFormatProvider;
+import org.simpl.core.dataformat.DataFormatProvider;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 
 import commonj.sdo.DataObject;

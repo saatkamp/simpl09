@@ -1,4 +1,4 @@
-package org.simpl.core.services.dataformat;
+package org.simpl.core.dataformat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,14 +6,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.connector.Connector;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
-import org.simpl.core.services.datasource.DataSourceService;
 
 /**
- * <b>Purpose:</b>Provides access to the data format services that are created from data
- * format plug-ins.<br>
- * <b>Description:</b> Instances of data format services are retrieved by the data format
- * type, using {@link #getInstance(String)}.<br>
+ * <b>Purpose:</b>Provides access to the data formats that are loaded from data format
+ * plug-ins.<br>
+ * <b>Description:</b>Data format instances are retrieved by data format type, using
+ * {@link #getInstance(String)}.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -25,19 +25,19 @@ import org.simpl.core.services.datasource.DataSourceService;
  */
 public class DataFormatProvider {
   /**
-   * Maps the data format to a list of supporting data format plugin instances.
+   * Maps the data format to a list of supporting data format plug-in instances.
    */
   private static HashMap<String, DataFormatPlugin<Object, Object>> dataFormats = new HashMap<String, DataFormatPlugin<Object, Object>>();
 
   /**
-   * Initialize all data format plugins.
+   * Initially load the data format plug-ins.
    */
   static {
     DataFormatProvider.loadPlugins();
   }
 
   /**
-   * Returns the DataFormat instance that supports the given data format type.
+   * Returns the data format instance that supports the given data format type.
    * 
    * @param dfType
    * @return
@@ -47,7 +47,7 @@ public class DataFormatProvider {
   }
 
   /**
-   * Returns all data source types loaded from the plugins.
+   * Returns all data source types loaded from the plug-ins.
    * 
    * @return
    */
@@ -56,21 +56,20 @@ public class DataFormatProvider {
   }
 
   /**
-   * Returns a list of data format types that support the given data source service.
+   * Returns a list of data format types that support the given connector.
    * 
-   * @param dataSourceService
+   * @param connector
    * @return
    */
   @SuppressWarnings({ "rawtypes" })
-  public static List<String> getSupportedDataFormatTypes(
-      DataSourceService dataSourceService) {
+  public static List<String> getSupportedDataFormatTypes(Connector connector) {
     List<String> dataFormats = new ArrayList<String>();
-    HashMap<String, ArrayList<String>> dataFormatMapping = SIMPLResourceManagement.getInstance()
-        .getDataFormatMapping();
+    HashMap<String, ArrayList<String>> dataFormatMapping = SIMPLResourceManagement
+        .getInstance().getDataFormatMapping();
 
     for (String dataFormatClassName : dataFormatMapping.keySet()) {
       if (dataFormatMapping.get(dataFormatClassName).contains(
-          dataSourceService.getClass().getName())) {
+          connector.getClass().getName())) {
         try {
           dataFormats.add(((DataFormatPlugin) Class.forName(dataFormatClassName)
               .newInstance()).getType());
@@ -91,8 +90,7 @@ public class DataFormatProvider {
   }
 
   /**
-   * Loads instances of the data format plugins and retrieves information about their
-   * supported type.
+   * Loads the data format plug-ins.
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public static void loadPlugins() {
